@@ -206,7 +206,7 @@
                                   <object class="GtkToolButton" id="add_new_entry_button">
                                     <property name="visible">True</property>
                                     <property name="tooltip_text" translatable="yes">Add a tag or a category entry</property>
-                                    <property name="label" translatable="yes">Annotate</property>
+                                    <property name="label" translatable="yes">Add Tag</property>
                                     <property name="use_underline">True</property>
                                     <property name="stock_id">gtk-edit</property>
                                     <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>

@@ -248,7 +248,7 @@ have to explicitly state the date when you added the todo item, you just add it
 on one day and it remains there until you delete it.
 
 Here is how it works:
-- On the right click on "Annotate"
+- On the right click on "Add Tag"
 - Fill "%(todo)s" and "Remember the milk" in the fields and hit "OK"
 - Select the categories cloud from the drop down menu on the left
 - Now you can click on "%(todo)s" and see all your todo items
