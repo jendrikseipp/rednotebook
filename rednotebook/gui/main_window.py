@@ -222,8 +222,8 @@ class MainWindow(object):
         #   self.day_text_field.day_text_view.add_accelerator(signal, self.accel_group,
         #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
-        shortcuts = [(self.back_one_day_button, 'clicked', '<Ctrl>Page_Down'),
-                    (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Up'),
+        shortcuts = [(self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
+                    (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
                     #(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
                     #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
                     #(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),

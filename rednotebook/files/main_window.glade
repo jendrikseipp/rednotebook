@@ -23,7 +23,7 @@
                     <child>
                       <object class="GtkToolButton" id="back_one_day_button">
                         <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Go to previous day (Ctrl+PageDown)</property>
+                        <property name="tooltip_text" translatable="yes">Go to previous day (Ctrl+PageUp)</property>
                         <property name="stock_id">gtk-go-back</property>
                         <signal name="clicked" handler="on_back_one_day_button_clicked"/>
                       </object>
@@ -49,7 +49,7 @@
                     <child>
                       <object class="GtkToolButton" id="forward_one_day_button">
                         <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Go to next day (Ctrl+PageUp)</property>
+                        <property name="tooltip_text" translatable="yes">Go to next day (Ctrl+PageDown)</property>
                         <property name="stock_id">gtk-go-forward</property>
                         <signal name="clicked" handler="on_forward_one_day_button_clicked"/>
                       </object>

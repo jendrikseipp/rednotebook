@@ -479,8 +479,8 @@ same directory.
 ||   Action          |   Shortcut             |
 | Preview (On/Off)   | <Ctrl> + P             |
 | Find               | <Ctrl> + F             |
-| Go back one day    | <Ctrl> + PageDown      |
-| Go forward one day | <Ctrl> + PageUp        |
+| Go back one day    | <Ctrl> + PageUp        |
+| Go forward one day | <Ctrl> + PageDown      |
 | Insert link        | <Ctrl> + L             |
 | Insert date/time   | <Ctrl> + D             |
 | New category entry | <Ctrl> + N             |
