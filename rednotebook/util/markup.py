@@ -191,6 +191,9 @@ def _get_config(type):
     # Allow line breaks, r'\\\\' are 2 \ for regexes
     config['preproc'].append([REGEX_LINEBREAK, 'LINEBREAK'])
 
+    # Highlight hashtags.
+    config['preproc'].append([r'(#\S+)', r'{\1|color:red}'])
+
     # Escape color markup.
     config['preproc'].append([r'\{(.*?)\|color:(.+?)\}',
                               r'BEGINCOLOR\1SEP\2ENDCOLOR'])
