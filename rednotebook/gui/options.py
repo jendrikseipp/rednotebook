@@ -321,10 +321,10 @@ class OptionsManager(object):
         self.options.extend([
                 FontSizeOption(_('Font Size'), 'mainFontSize'),
                 DateFormatOption(_('Date/Time format'), 'dateTimeString'),
-                CsvTextOption(_('Exclude from clouds'), 'cloudIgnoreList',
-                                tooltip=_('Do not show those comma separated words in any cloud')),
-                CsvTextOption(_('Allow small words in clouds'), 'cloudIncludeList',
-                                tooltip=_('Allow those words with 4 letters or less in the text cloud')),
+                CsvTextOption(_('Exclude from cloud'), 'cloudIgnoreList',
+                                tooltip=_('Do not show these comma separated words in the word cloud')),
+                CsvTextOption(_('Include small words in cloud'), 'cloudIncludeList',
+                                tooltip=_('Allow these words with 4 letters or less')),
                 ])
 
 
