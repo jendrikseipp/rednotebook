@@ -20,6 +20,7 @@
 from __future__ import division
 
 import datetime
+import re
 
 
 TEXT_RESULT_LENGTH = 42
@@ -134,6 +135,10 @@ class Day(object):
             for entry in entries:
                 self.add_category_entry(category, entry)
 
+    @property
+    def hashtags(self):
+        # The same tag can occur multiple times.
+        return re.findall(r'#(\S+)', self.text)
 
     @property
     def categories(self):
@@ -157,6 +162,9 @@ class Day(object):
                 pairs[category] = []
             else:
                 pairs[category] = content.keys()
+        # Include hashtags
+        for tag in self.hashtags:
+            pairs[tag] = []
         return pairs
 
 
