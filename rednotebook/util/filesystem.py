@@ -245,9 +245,7 @@ def get_platform_info():
 
     functions = [platform.machine, platform.platform, platform.processor,
                 platform.python_version, platform.release, platform.system,]
-    values = map(lambda function: function(), functions)
-    functions = map(lambda function: function.__name__, functions)
-    names_values = zip(functions, values)
+    names_values = [(func.__name__, func()) for func in functions]
 
     lib_values = [('GTK version', gtk, 'gtk_version'),
                     ('PyGTK version', gtk, 'pygtk_version'),
