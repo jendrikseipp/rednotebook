@@ -1,0 +1,19 @@
+TODO:
+
+Suche implementieren
+Shortcuts
+Coole Dinge Liste
+Configuration Files
+Toolbar
+Hyperlinks in TreeCtrl
+
+DONE:
+Backup
+Calendar
+löschen unbenutzter Monate
+
+
+
+While there exist many journalling applications for publicating content on the web there are very few applications with which you can just keep track of the stuff you did and the thoughts you had on your desktop and only for personal use.
+
+The program is written in Python and uses wxPython for the GUI.
