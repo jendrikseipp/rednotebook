@@ -2,14 +2,14 @@ import yaml, wx
 
 import datetime, os, zipfile
 
-import wxGladeGui
+from gui import wxGladeGui
 from util import filesystem, unicode, dates
 
 
 class RedNotebook(wx.App):
     
     version = '0.1'
-    dataDir = "../../data/"
+    dataDir = "../data/"
     fileNameExtension = '.txt'
     
     minDate = datetime.date(1970, 1, 1)

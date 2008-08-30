@@ -6,6 +6,8 @@ Coole Dinge Liste
 Configuration Files
 Toolbar
 Hyperlinks in TreeCtrl
+Wiki Markup
+Vorschau
 
 DONE:
 Backup
