@@ -9,7 +9,8 @@ from util import filesystem, unicode, dates
 class RedNotebook(wx.App):
     
     version = '0.1'
-    dataDir = "../data/"
+    homedir = os.path.expanduser('~')
+    dataDir = os.path.join(homedir, "data/")
     fileNameExtension = '.txt'
     
     minDate = datetime.date(1970, 1, 1)
