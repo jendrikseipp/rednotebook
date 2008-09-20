@@ -5,7 +5,7 @@
 import wx, datetime, wx.calendar
 from wx.lib.wordwrap import wordwrap
 
-from diaryGui import DiaryCalendar
+import diaryGui
 from contentTree import ContentTree
 
 # begin wxGlade: extracode
@@ -72,14 +72,16 @@ class MainFrame(wx.Frame):
         self.mainFrame_statusbar = self.CreateStatusBar(1, wx.ST_SIZEGRIP)
         
         # Tool Bar
-        #self.mainFrame_toolbar = wx.ToolBar(self, -1)
-        #self.SetToolBar(self.mainFrame_toolbar)
-        #self.mainFrame_toolbar.AddLabelTool(wx.ID_SAVE, "Save", wx.NullBitmap, wx.NullBitmap, wx.ITEM_NORMAL, "", "")
+        self.mainFrame_toolbar = wx.ToolBar(self, -1)
+        self.SetToolBar(self.mainFrame_toolbar)
+        self.mainFrame_toolbar.AddLabelTool(wx.ID_SAVE, "Save", wx.NullBitmap, wx.NullBitmap, wx.ITEM_NORMAL, "", "")
         # Tool Bar end
-        self.calendar = DiaryCalendar(self.window_1_pane_1, -1, style=wx.calendar.CAL_MONDAY_FIRST)
+        self.calendar = diaryGui.DiaryCalendar(self.window_1_pane_1, -1, style=wx.calendar.CAL_MONDAY_FIRST)
         self.buttonPrevDay = wx.Button(self.window_1_pane_1, wx.ID_BACKWARD, "")
         self.buttonNextDay = wx.Button(self.window_1_pane_1, wx.ID_FORWARD, "")
         self.buttonToday = wx.Button(self.window_1_pane_1, -1, "&Today")
+        self.searchPanel = diaryGui.SearchPanel(self.window_1_pane_1, self)
+        self.resultPanel = diaryGui.ResultPanel(self.window_1_pane_1, self)
         self.mainTextField = wx.TextCtrl(self.window_2_pane_1, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_MULTILINE|wx.TE_WORDWRAP)
         self.contentTree = ContentTree(self.window_2_pane_2, -1, style=wx.TR_HAS_BUTTONS|wx.TR_NO_LINES|wx.TR_EDIT_LABELS|wx.TR_HIDE_ROOT|wx.TR_HAS_VARIABLE_ROW_HEIGHT|wx.TR_DEFAULT_STYLE|wx.SUNKEN_BORDER)
 
@@ -96,6 +98,11 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.onButtonNextDay, self.buttonNextDay)
         self.Bind(wx.EVT_BUTTON, self.onButtonToday, self.buttonToday)
         # end wxGlade
+        
+        
+        #self.resultPanel = diaryGui.ResultPanel(self.window_1_pane_1, self)
+        #self.searchPanel = diaryGui.SearchPanel(self.window_1_pane_1, self.redNotebook, self.resultPanel)
+        
             
         #rausgenommen, da immer das D von CHANGED weggelassen wird
         self.Bind(wx.calendar.EVT_CALENDAR_SEL_CHANGED, self.onDateChange, self.calendar)
@@ -114,18 +121,20 @@ class MainFrame(wx.Frame):
     def __set_properties(self):
         # begin wxGlade: MainFrame.__set_properties
         self.SetTitle("The Red Notebook")
-        _icon = wx.EmptyIcon()
-        _icon.CopyFromBitmap(wx.Bitmap("../../icons/redNotebook-16.png", wx.BITMAP_TYPE_ANY))
-        self.SetIcon(_icon)
-        self.SetSize((1000, 700))
+        self.SetSize((1014, 748))
         self.mainFrame_statusbar.SetStatusWidths([-1])
         # statusbar fields
         mainFrame_statusbar_fields = [""]
         for i in range(len(mainFrame_statusbar_fields)):
             self.mainFrame_statusbar.SetStatusText(mainFrame_statusbar_fields[i], i)
-        #self.mainFrame_toolbar.Realize()
+        self.mainFrame_toolbar.Realize()
         self.window_1.SetMinimumPaneSize(256)
         # end wxGlade
+        
+        #Set Icon
+        _icon = wx.EmptyIcon()
+        _icon.CopyFromBitmap(diaryGui.getBitmap("redNotebook-16.png"))
+        self.SetIcon(_icon)
 
     def __do_layout(self):
         # begin wxGlade: MainFrame.__do_layout
@@ -140,14 +149,16 @@ class MainFrame(wx.Frame):
         sizer_5.Add(self.buttonPrevDay, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
         sizer_5.Add(self.buttonNextDay, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
         sizer_6.Add(sizer_5, 0, 0, 0)
-        sizer_7.Add(self.buttonToday, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
-        sizer_6.Add(sizer_7, 1, wx.EXPAND, 0)
+        sizer_7.Add(self.buttonToday, 0, 0, 0)
+        sizer_6.Add(sizer_7, 0, 0, 0)
+        sizer_6.Add(self.searchPanel, 0, wx.EXPAND, 0)
+        sizer_6.Add(self.resultPanel, 1, wx.EXPAND, 0)
         self.window_1_pane_1.SetSizer(sizer_6)
         sizer_3.Add(self.mainTextField, 1, wx.EXPAND, 0)
         self.window_2_pane_1.SetSizer(sizer_3)
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 513)
+        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 534)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)

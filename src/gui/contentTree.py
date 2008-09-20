@@ -5,6 +5,8 @@ import webbrowser
 
 import wx.lib.customtreectrl as CT
 
+import diaryGui
+
 #---------------------------------------------------------------------------
 
 
@@ -12,6 +14,7 @@ class TreeItem(object):
     def __init__(self, name, id):
         self.name = name
         self.id = id
+        
 
 #---------------------------------------------------------------------------
 # CustomTreeCtrl Demo Implementation
@@ -24,7 +27,6 @@ class ContentTree(CT.CustomTreeCtrl):
 
         CT.CustomTreeCtrl.__init__(self, parent, id, pos, size, style)
 
-        
         self.item = None
         
         self.categories = []
@@ -128,6 +130,11 @@ class ContentTree(CT.CustomTreeCtrl):
         if not(self.GetTreeStyle() & CT.TR_HIDE_ROOT):
             self.SelectItem(self.root)
             self.Expand(self.root)
+    
+    #def _getAvailabe
+    #def _setAvailableCategories(self, list):
+        #self.definedCategories = list
+    #availableCategories = property(_setAvailableCategories)
             
     def addCategory(self, name):
         self.addItem(self.root, name)
@@ -215,6 +222,8 @@ class ContentTree(CT.CustomTreeCtrl):
             self.item = item
             #self.log.write("OnRightClick: %s, %s, %s" % (self.GetItemText(item), type(item), item.__class__) + "\n")
             self.SelectItem(item)
+        else:
+            self.item = None
 
     def showCreateItemContextMenu(self):
         
@@ -306,8 +315,6 @@ class ContentTree(CT.CustomTreeCtrl):
         item7 = menu.Append(wx.ID_ANY, "Disable Item")
         
         menu.AppendSeparator()
-        item8 = menu.Append(wx.ID_ANY, "Change Item Icons")
-        menu.AppendSeparator()
         item9 = menu.Append(wx.ID_ANY, "Get Other Information For This Item")
         menu.AppendSeparator()
 
@@ -324,7 +331,6 @@ class ContentTree(CT.CustomTreeCtrl):
         self.Bind(wx.EVT_MENU, self.OnItemHyperText, item5)
         self.Bind(wx.EVT_MENU, self.OnEnableWindow, item6)
         self.Bind(wx.EVT_MENU, self.OnDisableItem, item7)
-        self.Bind(wx.EVT_MENU, self.OnItemIcons, item8)
         self.Bind(wx.EVT_MENU, self.OnItemInfo, item9)
         self.Bind(wx.EVT_MENU, self.OnItemDelete, item10)
         self.Bind(wx.EVT_MENU, self.OnItemPrepend, item11)
@@ -403,17 +409,6 @@ class ContentTree(CT.CustomTreeCtrl):
     def OnDisableItem(self, event):
 
         self.EnableItem(self.current, False)
-        
-
-    def OnItemIcons(self, event):
-
-        bitmaps = [self.itemdict["normal"], self.itemdict["selected"],
-                   self.itemdict["expanded"], self.itemdict["selexp"]]
-
-        wx.BeginBusyCursor()        
-        dlg = TreeIcons(self, -1, bitmaps=bitmaps)
-        wx.EndBusyCursor()
-        dlg.ShowModal()
 
 
     def SetNewIcons(self, bitmaps):
@@ -480,7 +475,9 @@ class ContentTree(CT.CustomTreeCtrl):
         
     def OnItemCreate(self, event):
 
-        dlg = wx.TextEntryDialog(self, "Please Enter The New Item Name", 'Item Naming', 'Ideas')
+        #dlg = wx.TextEntryDialog(self, "Please Enter The New Item Name", 'Item Naming', 'Ideas')
+        
+        dlg = diaryGui.ComboBoxDialog(title='Add Category', list=self.categories)
 
         if dlg.ShowModal() == wx.ID_OK:
             newname = dlg.GetValue()
@@ -494,6 +491,8 @@ class ContentTree(CT.CustomTreeCtrl):
 
         dlg = wx.TextEntryDialog(self, "Please Enter The New Item Name", 'Item Naming', 'Python')
 
+       
+        
         if dlg.ShowModal() == wx.ID_OK:
             newname = dlg.GetValue()
             newitem = self.AppendItem(self.current, newname)

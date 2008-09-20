@@ -1,8 +1,19 @@
 import os
 
+appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../'))
+imageDir = os.path.join(appDir, 'icons/')
+userHomedir = os.path.expanduser('~')
+redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
+dataDir = os.path.join(redNotebookUserDir, "data/")
+fileNameExtension = '.txt'
+
 def makeDirectory(dir):
     if not os.path.exists(dir):
         os.makedirs(dir)
+        
+def makeDirectories(dirs):
+    for dir in dirs:
+        makeDirectory(dir)
         
 def getAbsPathFromAbsFileAndRelFile(absFilePath, relFilePath):
     absDir = os.path.abspath(os.path.dirname(absFilePath))

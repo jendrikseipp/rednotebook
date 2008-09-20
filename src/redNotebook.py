@@ -9,8 +9,11 @@ from util import filesystem, unicode, dates
 class RedNotebook(wx.App):
     
     version = '0.1'
-    homedir = os.path.expanduser('~')
-    dataDir = os.path.join(homedir, "data/")
+    appDir = os.path.join('../', os.path.dirname(os.path.abspath(__file__)))
+    imageDir = os.path.join(appDir, 'images/')
+    userHomedir = os.path.expanduser('~')
+    redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
+    dataDir = os.path.join(redNotebookUserDir, "data/")
     fileNameExtension = '.txt'
     
     minDate = datetime.date(1970, 1, 1)
@@ -23,13 +26,15 @@ class RedNotebook(wx.App):
         self.frame = mainFrame
 
         
-        filesystem.makeDirectory(self.dataDir)
+        filesystem.makeDirectories((self.redNotebookUserDir, self.dataDir))
            
         actualDate = datetime.date.today()
         
         self.month = None
         self.date = None
-        self.loadedMonths = {}
+        self.months = {}
+        
+        self.loadAllMonthsFromDisk()
         
          #Nothing to save before first day change
         self.loadDay(actualDate)
@@ -59,7 +64,7 @@ class RedNotebook(wx.App):
     def saveToDisk(self):
         self.saveOldDay()
         
-        for yearAndMonth, month in self.loadedMonths.iteritems():
+        for yearAndMonth, month in self.months.iteritems():
             if not month.empty:
                 monthFile = open(self.dataDir + yearAndMonth + self.fileNameExtension, 'w')
                 monthContent = {}
@@ -76,27 +81,58 @@ class RedNotebook(wx.App):
         print 'The content has been saved'
         #savedDialog.ShowModal()
         #savedDialog.Destroy()
+        
+    def loadAllMonthsFromDisk(self):
+        for root, dirs, files in os.walk(self.dataDir):
+            for file in files:
+                self.loadMonthFromDisk(os.path.join(root, file))
+    
+    def loadMonthFromDisk(self, file):
+        
+        yearAndMonth = file[-11:-4] #dates.getYearAndMonthFromDate(date)
+        yearNumber = yearAndMonth[:4]
+        monthNumber = yearAndMonth[-2:]
+        print monthNumber
+        print yearNumber
+        #print yearAndMonth
+        
+        #Selected month has not been loaded
+        #if not self.months.has_key(yearAndMonth):
+        monthFileString = file #self.dataDir + yearAndMonth + self.fileNameExtension
+        if not os.path.isfile(monthFileString):
+            #File not found
+            #Create new month
+            print 'not found', monthFileString
+            self.months[yearAndMonth] = Month(yearNumber, monthNumber)
+             
+        else:
+            #File found
+            monthFile = open(monthFileString, 'r')
+            monthContents = yaml.load(monthFile)
+            self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
+            
+        return self.months[yearAndMonth]
     
     def loadMonth(self, date):
         
         yearAndMonth = dates.getYearAndMonthFromDate(date)
         
         #Selected month has not been loaded
-        if not self.loadedMonths.has_key(yearAndMonth):
-            monthFileString = self.dataDir + yearAndMonth + self.fileNameExtension
-            if not os.path.isfile(monthFileString):
+        if not self.months.has_key(yearAndMonth):
+            #monthFileString = self.dataDir + yearAndMonth + self.fileNameExtension
+            #if not os.path.isfile(monthFileString):
                 #File not found
                 #Create new month
-                print 'not found', monthFileString
-                self.loadedMonths[yearAndMonth] = Month()
+                #print 'not found', monthFileString
+            self.months[yearAndMonth] = Month(date.year, date.month)
                  
-            else:
+            #else:
                 #File found
-                monthFile = open(monthFileString, 'r')
-                monthContents = yaml.load(monthFile)
-                self.loadedMonths[yearAndMonth] = Month(monthContents)
+                #monthFile = open(monthFileString, 'r')
+                #monthContents = yaml.load(monthFile)
+                #self.months[yearAndMonth] = Month(monthContents)
             
-        return self.loadedMonths[yearAndMonth]
+        return self.months[yearAndMonth]
     
     def saveOldDay(self):  
         #Order important
@@ -114,13 +150,14 @@ class RedNotebook(wx.App):
         
         self.frame.calendar.PySetDate(self.date)
         self.frame.showDay(self.day)
+        self.frame.contentTree.categories = self.nodeNames
         
     def _getCurrentDay(self):
         return self.month.getDay(self.date.day)
     day = property(_getCurrentDay)
     
     def changeDate(self, date):
-        self.saveOldDay()     
+        self.saveOldDay()
         self.loadDay(date)
         
     def goToNextDay(self):
@@ -150,13 +187,42 @@ class RedNotebook(wx.App):
             
     def showMessage(self, messageText):
         self.frame.showMessageInStatusBar(messageText)
+        
+    def _getNodeNames(self):
+        nodeNames = set([])
+        for month in self.months.values():
+            nodeNames |= set(month.nodeNames)
+        return list(nodeNames)
+    nodeNames = property(_getNodeNames)
+    
+    def search(self, text):
+        results = []
+        for day in self.days:
+            if not day.search(text) == None:
+                results.append(day.search(text))
+        return results
+    
+    def _getAllEditedDays(self):
+        days = []
+        for month in self.months.values():
+            days.extend(month.days.values())
+        print days
+        return days
+    days = property(_getAllEditedDays)
+        
+        
+class Label(object):
+    def __init__(self, name):
+        self.name = name
+        
             
 
 class Day(object):
-    def __init__(self, dayNumber, dayContent = None):
+    def __init__(self, month, dayNumber, dayContent = None):
         if dayContent == None:
             dayContent = {}
-    
+            
+        self.month = month
         self.dayNumber = dayNumber
         self.content = dayContent
     
@@ -192,15 +258,36 @@ class Day(object):
             return ''
     def setContent(self, key, value):
         self.content[key] = value
+        
+    def _getTree(self):
+        tree = self.content.copy()
+        if tree.has_key('text'):
+            del tree['text']
+        return tree
+    tree = property(_getTree)
+        
+    def _getNodeNames(self):
+        return self.tree.keys()
+    nodeNames = property(_getNodeNames)
+    
+    def search(self, text):
+        occurence = self.text.find(text)
+        if occurence > -1:
+            return (self, '...' + self.text[occurence - 10 : occurence + len(text) + 10] + '...')
+        else:
+            return None
+            
 
 class Month(object):
-    def __init__(self, monthContent = None):
+    def __init__(self, yearNumber, monthNumber, monthContent = None):
         if monthContent == None:
             monthContent = {}
         
+        self.yearNumber = yearNumber
+        self.monthNumber = monthNumber
         self.days = {}
         for dayNumber, dayContent in monthContent.iteritems():
-            self.days[dayNumber] = Day(dayNumber, dayContent)
+            self.days[dayNumber] = Day(self, dayNumber, dayContent)
     
     def getDay(self, dayNumber):
         if self.days.has_key(dayNumber):
@@ -208,7 +295,7 @@ class Month(object):
             return self.days[dayNumber]
         else:
             #print 'Key not found', dayNumber
-            newDay = Day(dayNumber)
+            newDay = Day(self, dayNumber)
             self.days[dayNumber] = newDay
             return newDay
         
@@ -229,11 +316,20 @@ class Month(object):
         return True
     empty = property(_isEmpty)
     
+    def _getNodeNames(self):
+        nodeNames = set([])
+        for day in self.days.values():
+            nodeNames |= set(day.nodeNames)
+        return nodeNames
+    nodeNames = property(_getNodeNames)
+    
     def sameMonth(date1, date2):
         if date1 == None or date2 == None:
             return False
         return date1.month == date2.month and date1.year == date2.year
     sameMonth = staticmethod(sameMonth)
+        
+    
     
         
     

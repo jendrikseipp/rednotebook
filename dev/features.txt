@@ -8,6 +8,7 @@ Toolbar
 Hyperlinks in TreeCtrl
 Wiki Markup
 Vorschau
+dataDir Lock (for multiple TRN instances)
 
 DONE:
 Backup
