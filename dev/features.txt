@@ -1,6 +1,10 @@
 TODO:
 
-Suche implementieren
+0.1:
+first use distutils (later if necessary setuptools)
+
+
+Later:
 Shortcuts
 Coole Dinge Liste
 Configuration Files
@@ -9,11 +13,15 @@ Hyperlinks in TreeCtrl
 Wiki Markup
 Vorschau
 dataDir Lock (for multiple TRN instances)
+Encryption
+
 
 DONE:
 Backup
 Calendar
 löschen unbenutzter Monate
+Suche implementieren
+Example Text for first day
 
 
 

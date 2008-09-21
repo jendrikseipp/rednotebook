@@ -20,24 +20,32 @@ class RedNotebook(wx.App):
     maxDate = datetime.date(2020, 1, 1)
     
     def OnInit(self):
+        self.month = None
+        self.date = None
+        self.months = {}
+        
         mainFrame = wxGladeGui.MainFrame(self, None, -1, "")
         mainFrame.Show()
         self.SetTopWindow(mainFrame)
         self.frame = mainFrame
 
+        #show instructions at first start
+        if not os.path.exists(self.dataDir):
+            self.firstTimeExecution = True
         
         filesystem.makeDirectories((self.redNotebookUserDir, self.dataDir))
            
         actualDate = datetime.date.today()
         
-        self.month = None
-        self.date = None
-        self.months = {}
+        
         
         self.loadAllMonthsFromDisk()
         
          #Nothing to save before first day change
         self.loadDay(actualDate)
+        
+        if self.firstTimeExecution == True:
+            self.addInstructionContent()
 
         return True
     
@@ -92,9 +100,6 @@ class RedNotebook(wx.App):
         yearAndMonth = file[-11:-4] #dates.getYearAndMonthFromDate(date)
         yearNumber = yearAndMonth[:4]
         monthNumber = yearAndMonth[-2:]
-        print monthNumber
-        print yearNumber
-        #print yearAndMonth
         
         #Selected month has not been loaded
         #if not self.months.has_key(yearAndMonth):
@@ -206,9 +211,43 @@ class RedNotebook(wx.App):
         days = []
         for month in self.months.values():
             days.extend(month.days.values())
-        print days
         return days
     days = property(_getAllEditedDays)
+    
+    def addInstructionContent(self):
+        instructionText = """\
+Hello, 
+this is the RedNotebook, a simple diary. This program helps you to keep track of your activities and thoughts. \
+Thank you very much for giving it a try.
+The text field in which you are reading this text is the container for your normal diary entries: 
+
+Today I went to a pet shop and bought myself a tiger. Then we went to the park and had a nice time playing \
+ultimate frisbee together.
+
+The usual stuff.
+On the right there is space for extra entries. Things that can easily be sorted into categories. Those entries \
+are shown in a tree. For example you could add the category Ideas and then add an entry which reminds you of \
+what your idea was about:
+
+> Ideas
+  Found a way to end all wars. (More on that tomorrow.)
+  
+In addition you could add:
+
+> Cool Stuff
+  Went to see the pope
+  
+For the really cool things you did that day. On the right panel you control everything with right-clicks. Either \
+on the white space or on existing categories.
+
+Everything you enter will be saved automatically when you exit the program. If you want to double check you can save \
+pressing "Strg-S" or using the menu entry under "File" in the top left corner. "Backup" saves all your entered data in a \
+zip file. After pressing the button you can select a location for that.
+
+There are many features I have planned to add in the future so stay tuned.
+I hope you enjoy the program!
+            """
+        self.frame.mainTextField.SetValue(instructionText)
         
         
 class Label(object):
@@ -270,10 +309,25 @@ class Day(object):
         return self.tree.keys()
     nodeNames = property(_getNodeNames)
     
-    def search(self, text):
-        occurence = self.text.find(text)
+    def search(self, searchText):
+        occurence = self.text.find(searchText)
+        
         if occurence > -1:
-            return (self, '...' + self.text[occurence - 10 : occurence + len(text) + 10] + '...')
+            spaceSearchLeftStart = occurence-15
+            if spaceSearchLeftStart < 0:
+                spaceSearchLeftStart = 0
+            spaceSearchRightEnd = occurence + len(searchText) + 15
+            if spaceSearchRightEnd > len(self.text):
+                spaceSearchRightEnd = len(self.text)
+                
+            resultTextStart = self.text.find(' ', spaceSearchLeftStart, occurence)
+            resultTextEnd = self.text.rfind(' ', occurence + len(searchText), spaceSearchRightEnd)
+            if resultTextStart == -1:
+                resultTextStart = occurence - 10
+            if resultTextEnd == -1:
+                resultTextEnd = occurence + len(searchText) + 10
+                
+            return (self, '... ' + unicode.substring(self.text, resultTextStart, resultTextEnd).strip() + ' ...')
         else:
             return None
             

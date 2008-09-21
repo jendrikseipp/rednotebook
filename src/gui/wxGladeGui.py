@@ -78,12 +78,13 @@ class MainFrame(wx.Frame):
         # Tool Bar end
         self.calendar = diaryGui.DiaryCalendar(self.window_1_pane_1, -1, style=wx.calendar.CAL_MONDAY_FIRST)
         self.buttonPrevDay = wx.Button(self.window_1_pane_1, wx.ID_BACKWARD, "")
+        self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, wx.Bitmap("/home/jendrik/projects/RedNotebook/icons/today-22.png", wx.BITMAP_TYPE_ANY))
         self.buttonNextDay = wx.Button(self.window_1_pane_1, wx.ID_FORWARD, "")
-        self.buttonToday = wx.Button(self.window_1_pane_1, -1, "&Today")
         self.searchPanel = diaryGui.SearchPanel(self.window_1_pane_1, self)
         self.resultPanel = diaryGui.ResultPanel(self.window_1_pane_1, self)
         self.mainTextField = wx.TextCtrl(self.window_2_pane_1, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_MULTILINE|wx.TE_WORDWRAP)
         self.contentTree = ContentTree(self.window_2_pane_2, -1, style=wx.TR_HAS_BUTTONS|wx.TR_NO_LINES|wx.TR_EDIT_LABELS|wx.TR_HIDE_ROOT|wx.TR_HAS_VARIABLE_ROW_HEIGHT|wx.TR_DEFAULT_STYLE|wx.SUNKEN_BORDER)
+        self.button_1 = wx.Button(self.window_2_pane_2, -1, "Add Category")
 
         self.__set_properties()
         self.__do_layout()
@@ -95,8 +96,9 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.onButtonNextDay, id=wx.ID_FORWARD)
         self.Bind(wx.EVT_MENU, self.onAbout, id=ID_ABOUT)
         self.Bind(wx.EVT_BUTTON, self.onButtonPrevDay, self.buttonPrevDay)
+        self.Bind(wx.EVT_BUTTON, self.onButtonToday, self.bitmap_button_1)
         self.Bind(wx.EVT_BUTTON, self.onButtonNextDay, self.buttonNextDay)
-        self.Bind(wx.EVT_BUTTON, self.onButtonToday, self.buttonToday)
+        self.Bind(wx.EVT_BUTTON, self.onAddCategory, self.button_1)
         # end wxGlade
         
         
@@ -128,6 +130,8 @@ class MainFrame(wx.Frame):
         for i in range(len(mainFrame_statusbar_fields)):
             self.mainFrame_statusbar.SetStatusText(mainFrame_statusbar_fields[i], i)
         self.mainFrame_toolbar.Realize()
+        self.bitmap_button_1.SetSize(self.bitmap_button_1.GetBestSize())
+        self.contentTree.SetToolTipString("Right-Click to Add Content")
         self.window_1.SetMinimumPaneSize(256)
         # end wxGlade
         
@@ -140,25 +144,24 @@ class MainFrame(wx.Frame):
         # begin wxGlade: MainFrame.__do_layout
         sizer_1 = wx.BoxSizer(wx.VERTICAL)
         sizer_2 = wx.BoxSizer(wx.VERTICAL)
-        sizer_4 = wx.BoxSizer(wx.HORIZONTAL)
+        sizer_4 = wx.BoxSizer(wx.VERTICAL)
         sizer_3 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_6 = wx.BoxSizer(wx.VERTICAL)
-        sizer_7 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_5 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_6.Add(self.calendar, 0, 0, 0)
         sizer_5.Add(self.buttonPrevDay, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
+        sizer_5.Add(self.bitmap_button_1, 0, 0, 0)
         sizer_5.Add(self.buttonNextDay, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
         sizer_6.Add(sizer_5, 0, 0, 0)
-        sizer_7.Add(self.buttonToday, 0, 0, 0)
-        sizer_6.Add(sizer_7, 0, 0, 0)
         sizer_6.Add(self.searchPanel, 0, wx.EXPAND, 0)
         sizer_6.Add(self.resultPanel, 1, wx.EXPAND, 0)
         self.window_1_pane_1.SetSizer(sizer_6)
         sizer_3.Add(self.mainTextField, 1, wx.EXPAND, 0)
         self.window_2_pane_1.SetSizer(sizer_3)
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
+        sizer_4.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 534)
+        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 468)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)
@@ -186,7 +189,7 @@ class MainFrame(wx.Frame):
         info.Version = self.redNotebook.version
         info.Copyright = "(C) 2008 Jendrik Seipp"
         info.Description = wordwrap(
-            "A simple diary application.", 
+            "A simple diary.", 
             350, wx.ClientDC(self.window_1_pane_1)) # change the wx.ClientDC to use self.panel instead of self
         info.WebSite = ("http://sourceforge.net/projects/rednotebook/", "Red Notebook Website")
         info.Developers = ["Jendrik Seipp"]
@@ -275,6 +278,10 @@ class MainFrame(wx.Frame):
 
     def onBackup(self, event): # wxGlade: MainFrame.<event_handler>
         self.redNotebook.backupContents()
+        event.Skip()
+
+    def onAddCategory(self, event): # wxGlade: MainFrame.<event_handler>
+        self.contentTree.OnItemCreate(event)
         event.Skip()
 
 # end of class MainFrame

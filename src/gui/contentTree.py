@@ -45,57 +45,6 @@ class ContentTree(CT.CustomTreeCtrl):
             self.SetPyData(self.root, None)
             self.SetItemImage(self.root, 24, CT.TreeItemIcon_Normal)
             self.SetItemImage(self.root, 13, CT.TreeItemIcon_Expanded)
-            
-        
-        #self.addCategory('Yahoo')
-
-        #textctrl = wx.TextCtrl(self, -1, "I Am A Simple\nMultiline wx.TexCtrl", style=wx.TE_MULTILINE)
-        #self.gauge = wx.Gauge(self, -1, 50, style=wx.GA_HORIZONTAL|wx.GA_SMOOTH)
-        #self.gauge.SetValue(0)
-        #combobox = wx.ComboBox(self, -1, choices=["That", "Was", "A", "Nice", "Holyday!"], style=wx.CB_READONLY|wx.CB_DROPDOWN)
-
-        #textctrl.Bind(wx.EVT_CHAR, self.OnTextCtrl)
-        
-        #self.AppendItem(self.root, 'Yeah!')
-        #combobox.Bind(wx.EVT_COMBOBOX, self.OnComboBox)
-
-#        for x in range(15):
-#            if x == 1:
-#                child = self.AppendItem(self.root, "Item %d" % x + "\nHello World\nHappy wxPython-ing!")
-#                self.SetItemBold(child, True)
-#            else:
-#                child = self.AppendItem(self.root, "Item %d" % x)
-#            self.SetPyData(child, None)
-#            self.SetItemImage(child, 24, CT.TreeItemIcon_Normal)
-#            self.SetItemImage(child, 13, CT.TreeItemIcon_Expanded)
-#
-#            for y in range(5):
-#                if y == 0 and x == 1:
-#                    last = self.AppendItem(child, "item %d-%s" % (x, chr(ord("a")+y)), ct_type=2, wnd=self.gauge)
-#                elif y == 1 and x == 2:
-#                    last = self.AppendItem(child, "Item %d-%s" % (x, chr(ord("a")+y)), ct_type=1, wnd=textctrl)
-#                elif 2 < y < 4:
-#                    last = self.AppendItem(child, "item %d-%s" % (x, chr(ord("a")+y)))
-#                elif y == 4 and x == 1:
-#                    last = self.AppendItem(child, "item %d-%s" % (x, chr(ord("a")+y)), wnd=combobox)
-#                else:
-#                    last = self.AppendItem(child, "item %d-%s" % (x, chr(ord("a")+y)), ct_type=2)
-#                    
-#                self.SetPyData(last, None)
-#                self.SetItemImage(last, 24, CT.TreeItemIcon_Normal)
-#                self.SetItemImage(last, 13, CT.TreeItemIcon_Expanded)
-#                    
-#                for z in range(5):
-#                    if z > 2:
-#                        item = self.AppendItem(last,  "item %d-%s-%d" % (x, chr(ord("a")+y), z), ct_type=1)
-#                    elif 0 < z <= 2:
-#                        item = self.AppendItem(last,  "item %d-%s-%d" % (x, chr(ord("a")+y), z), ct_type=2)
-#                    elif z == 0:
-#                        item = self.AppendItem(last,  "item %d-%s-%d" % (x, chr(ord("a")+y), z))
-#                        self.SetItemHyperText(item, True)
-#                    self.SetPyData(item, None)
-#                    self.SetItemImage(item, 28, CT.TreeItemIcon_Normal)
-#                    #self.SetItemImage(item, numicons-1, CT.TreeItemIcon_Selected)
 
         self.Bind(wx.EVT_LEFT_DCLICK, self.OnLeftDClick)
         #self.Bind(wx.EVT_IDLE, self.OnIdle)
@@ -103,13 +52,9 @@ class ContentTree(CT.CustomTreeCtrl):
         self.eventdict = {'EVT_TREE_BEGIN_DRAG': self.OnBeginDrag, 'EVT_TREE_BEGIN_LABEL_EDIT': self.OnBeginEdit,
                           'EVT_TREE_BEGIN_RDRAG': self.OnBeginRDrag, 'EVT_TREE_DELETE_ITEM': self.OnDeleteItem,
                           'EVT_TREE_END_DRAG': self.OnEndDrag, 'EVT_TREE_END_LABEL_EDIT': self.OnEndEdit,
-                          'EVT_TREE_ITEM_ACTIVATED': self.OnActivate, 'EVT_TREE_ITEM_CHECKED': self.OnItemCheck,
-                          'EVT_TREE_ITEM_CHECKING': self.OnItemChecking, 'EVT_TREE_ITEM_COLLAPSED': self.OnItemCollapsed,
-                          'EVT_TREE_ITEM_COLLAPSING': self.OnItemCollapsing, 'EVT_TREE_ITEM_EXPANDED': self.OnItemExpanded,
-                          'EVT_TREE_ITEM_EXPANDING': self.OnItemExpanding, 'EVT_TREE_ITEM_GETTOOLTIP': self.OnToolTip,
+                          'EVT_TREE_ITEM_GETTOOLTIP': self.OnToolTip,
                           'EVT_TREE_ITEM_MENU': self.OnItemMenu, 'EVT_TREE_ITEM_RIGHT_CLICK': self.OnRightDown,
-                          'EVT_TREE_KEY_DOWN': self.OnKey, 'EVT_TREE_SEL_CHANGED': self.OnSelChanged,
-                          'EVT_TREE_SEL_CHANGING': self.OnSelChanging, "EVT_TREE_ITEM_HYPERLINK": self.OnHyperLink}
+                          "EVT_TREE_ITEM_HYPERLINK": self.OnHyperLink}
 
         mainframe = wx.GetTopLevelParent(self)
         
@@ -229,12 +174,17 @@ class ContentTree(CT.CustomTreeCtrl):
         
         menu = wx.Menu()
 
-        menuItemCreate = menu.Append(wx.ID_ANY, "Create New Item")
+        menuItemCreate = menu.Append(wx.ID_ANY, "Add New Category")
 
         self.Bind(wx.EVT_MENU, self.OnItemCreate, menuItemCreate)
         
         self.PopupMenu(menu)
         menu.Destroy()
+        
+    def itemIsCategory(self, item):
+        itemText = self.GetItemText(item)
+        #return self.categories.count(itemText) > 0
+        return self.GetItemParent(item) == self.root
         
 
     def OnRightUp(self, event):
@@ -250,25 +200,6 @@ class ContentTree(CT.CustomTreeCtrl):
             event.Skip()
             return
 
-        # Item Text Appearance
-        ishtml = self.IsItemHyperText(item)
-        back = self.GetItemBackgroundColour(item)
-        fore = self.GetItemTextColour(item)
-        isbold = self.IsBold(item)
-        font = self.GetItemFont(item)
-
-        # Icons On Item
-        normal = self.GetItemImage(item, CT.TreeItemIcon_Normal)
-        selected = self.GetItemImage(item, CT.TreeItemIcon_Selected)
-        expanded = self.GetItemImage(item, CT.TreeItemIcon_Expanded)
-        selexp = self.GetItemImage(item, CT.TreeItemIcon_SelectedExpanded)
-
-        # Enabling/Disabling Windows Associated To An Item
-        haswin = self.GetItemWindow(item)
-
-        # Enabling/Disabling Items
-        enabled = self.IsItemEnabled(item)
-
         # Generic Item's Info
         children = self.GetChildrenCount(item)
         itemtype = self.GetItemType(item)
@@ -276,171 +207,37 @@ class ContentTree(CT.CustomTreeCtrl):
         pydata = self.GetPyData(item)
         
         self.current = item
-        self.itemdict = {"ishtml": ishtml, "back": back, "fore": fore, "isbold": isbold,
-                         "font": font, "normal": normal, "selected": selected, "expanded": expanded,
-                         "selexp": selexp, "haswin": haswin, "children": children,
-                         "itemtype": itemtype, "text": text, "pydata": pydata, "enabled": enabled}
+        self.itemdict = {"children": children, "text": text, "pydata": pydata}
         
         menu = wx.Menu()
 
-        item1 = menu.Append(wx.ID_ANY, "Change Item Background Colour")
-        item2 = menu.Append(wx.ID_ANY, "Modify Item Text Colour")
-        menu.AppendSeparator()
-        if isbold:
-            strs = "Make Item Text Not Bold"
-        else:
-            strs = "Make Item Text Bold"
-        item3 = menu.Append(wx.ID_ANY, strs)
-        item4 = menu.Append(wx.ID_ANY, "Change Item Font")
-        menu.AppendSeparator()
-        if ishtml:
-            strs = "Set Item As Non-Hyperlink"
-        else:
-            strs = "Set Item As Hyperlink"
-        item5 = menu.Append(wx.ID_ANY, strs)
-        menu.AppendSeparator()
-        if haswin:
-            enabled = self.GetItemWindowEnabled(item)
-            if enabled:
-                strs = "Disable Associated Widget"
-            else:
-                strs = "Enable Associated Widget"
-        else:
-            strs = "Enable Associated Widget"
-        item6 = menu.Append(wx.ID_ANY, strs)
-
-        if not haswin:
-            item6.Enable(False)
-
-        item7 = menu.Append(wx.ID_ANY, "Disable Item")
-        
-        menu.AppendSeparator()
-        item9 = menu.Append(wx.ID_ANY, "Get Other Information For This Item")
-        menu.AppendSeparator()
+        #if ishtml:
+        #    strs = "Set Item As Non-Hyperlink"
+        #else:
+        #    strs = "Set Item As Hyperlink"
+        #item5 = menu.Append(wx.ID_ANY, strs)
 
         item10 = menu.Append(wx.ID_ANY, "Delete Item")
         if item == self.GetRootItem():
             item10.Enable(False)
-        item11 = menu.Append(wx.ID_ANY, "Prepend An Item")
-        item12 = menu.Append(wx.ID_ANY, "Append An Item")
+        #item11 = menu.Append(wx.ID_ANY, "Prepend An Item")
+        
+        if self.itemIsCategory(item):
+            item12 = menu.Append(wx.ID_ANY, "Add Entry")
+            self.Bind(wx.EVT_MENU, self.OnItemAppend, item12)
 
-        self.Bind(wx.EVT_MENU, self.OnItemBackground, item1)
-        self.Bind(wx.EVT_MENU, self.OnItemForeground, item2)
-        self.Bind(wx.EVT_MENU, self.OnItemBold, item3)
-        self.Bind(wx.EVT_MENU, self.OnItemFont, item4)
-        self.Bind(wx.EVT_MENU, self.OnItemHyperText, item5)
-        self.Bind(wx.EVT_MENU, self.OnEnableWindow, item6)
-        self.Bind(wx.EVT_MENU, self.OnDisableItem, item7)
-        self.Bind(wx.EVT_MENU, self.OnItemInfo, item9)
+        #self.Bind(wx.EVT_MENU, self.OnItemHyperText, item5)
         self.Bind(wx.EVT_MENU, self.OnItemDelete, item10)
-        self.Bind(wx.EVT_MENU, self.OnItemPrepend, item11)
-        self.Bind(wx.EVT_MENU, self.OnItemAppend, item12)
+        #self.Bind(wx.EVT_MENU, self.OnItemPrepend, item11)
+        
         
         self.PopupMenu(menu)
         menu.Destroy()
         
 
-    def OnItemBackground(self, event):
-
-        colourdata = wx.ColourData()
-        colourdata.SetColour(self.itemdict["back"])
-        dlg = wx.ColourDialog(self, colourdata)
-        
-        dlg.GetColourData().SetChooseFull(True)
-
-        if dlg.ShowModal() == wx.ID_OK:
-            data = dlg.GetColourData()
-            col1 = data.GetColour().Get()
-            self.SetItemBackgroundColour(self.current, col1)
-        dlg.Destroy()
-
-
-    def OnItemForeground(self, event):
-
-        colourdata = wx.ColourData()
-        colourdata.SetColour(self.itemdict["fore"])
-        dlg = wx.ColourDialog(self, colourdata)
-        
-        dlg.GetColourData().SetChooseFull(True)
-
-        if dlg.ShowModal() == wx.ID_OK:
-            data = dlg.GetColourData()
-            col1 = data.GetColour().Get()
-            self.SetItemTextColour(self.current, col1)
-        dlg.Destroy()
-
-
-    def OnItemBold(self, event):
-
-        self.SetItemBold(self.current, not self.itemdict["isbold"])
-
-
-    def OnItemFont(self, event):
-
-        data = wx.FontData()
-        font = self.itemdict["font"]
-        
-        if font is None:
-            font = wx.SystemSettings_GetFont(wx.SYS_DEFAULT_GUI_FONT)
-            
-        data.SetInitialFont(font)
-
-        dlg = wx.FontDialog(self, data)
-        
-        if dlg.ShowModal() == wx.ID_OK:
-            data = dlg.GetFontData()
-            font = data.GetChosenFont()
-            self.SetItemFont(self.current, font)
-
-        dlg.Destroy()
-        
-
     def OnItemHyperText(self, event):
 
         self.SetItemHyperText(self.current, not self.itemdict["ishtml"])
-
-
-    def OnEnableWindow(self, event):
-
-        enable = self.GetItemWindowEnabled(self.current)
-        self.SetItemWindowEnabled(self.current, not enable)
-
-
-    def OnDisableItem(self, event):
-
-        self.EnableItem(self.current, False)
-
-
-    def SetNewIcons(self, bitmaps):
-
-        self.SetItemImage(self.current, bitmaps[0], CT.TreeItemIcon_Normal)
-        self.SetItemImage(self.current, bitmaps[1], CT.TreeItemIcon_Selected)
-        self.SetItemImage(self.current, bitmaps[2], CT.TreeItemIcon_Expanded)
-        self.SetItemImage(self.current, bitmaps[3], CT.TreeItemIcon_SelectedExpanded)
-
-
-    def OnItemInfo(self, event):
-
-        itemtext = self.itemdict["text"]
-        numchildren = str(self.itemdict["children"])
-        itemtype = self.itemdict["itemtype"]
-        pydata = repr(type(self.itemdict["pydata"]))
-
-        if itemtype == 0:
-            itemtype = "Normal"
-        elif itemtype == 1:
-            itemtype = "CheckBox"
-        else:
-            itemtype = "RadioButton"
-
-        strs = "Information On Selected Item:\n\n" + "Text: " + itemtext + "\n" \
-               "Number Of Children: " + numchildren + "\n" \
-               "Item Type: " + itemtype + "\n" \
-               "Item Data Type: " + pydata + "\n"
-
-        dlg = wx.MessageDialog(self, strs, "CustomTreeCtrlDemo Info", wx.OK | wx.ICON_INFORMATION)
-        dlg.ShowModal()
-        dlg.Destroy()
                 
         
 
@@ -489,7 +286,7 @@ class ContentTree(CT.CustomTreeCtrl):
 
     def OnItemAppend(self, event):
 
-        dlg = wx.TextEntryDialog(self, "Please Enter The New Item Name", 'Item Naming', 'Python')
+        dlg = wx.TextEntryDialog(self, "Please Enter The New Entry's Text", 'New Entry', 'Entry Text')
 
        
         
@@ -647,20 +444,6 @@ class ContentTree(CT.CustomTreeCtrl):
         event.Skip()
         
 
-    def OnItemCheck(self, event):
-
-        item = event.GetItem()
-        #self.log.write("Item " + self.GetItemText(item) + " Has Been Checked!\n")
-        event.Skip()
-
-
-    def OnItemChecking(self, event):
-
-        item = event.GetItem()
-        #self.log.write("Item " + self.GetItemText(item) + " Is Being Checked...\n")
-        event.Skip()
-        
-
     def OnToolTip(self, event):
 
         item = event.GetItem()
@@ -674,39 +457,6 @@ class ContentTree(CT.CustomTreeCtrl):
         #if item:
             #self.log.write("OnItemMenu: %s" % self.GetItemText(item) + "\n")
     
-        event.Skip()
-
-
-    def OnKey(self, event):
-
-        keycode = event.GetKeyCode()
-        keyname = keyMap.get(keycode, None)
-                
-        if keycode == wx.WXK_BACK:
-            #self.log.write("OnKeyDown: HAHAHAHA! I Vetoed Your Backspace! HAHAHAHA\n")
-            return
-
-        if keyname is None:
-            if "unicode" in wx.PlatformInfo:
-                keycode = event.GetUnicodeKey()
-                if keycode <= 127:
-                    keycode = event.GetKeyCode()
-                keyname = "\"" + unichr(event.GetUnicodeKey()) + "\""
-                if keycode < 27:
-                    keyname = "Ctrl-%s" % chr(ord('A') + keycode-1)
-                
-            elif keycode < 256:
-                if keycode == 0:
-                    keyname = "NUL"
-                elif keycode < 27:
-                    keyname = "Ctrl-%s" % chr(ord('A') + keycode-1)
-                else:
-                    keyname = "\"%s\"" % chr(keycode)
-            else:
-                keyname = "unknown (%s)" % keycode
-                
-        #self.log.write("OnKeyDown: You Pressed '" + keyname + "'\n")
-
         event.Skip()
         
         
@@ -722,20 +472,3 @@ class ContentTree(CT.CustomTreeCtrl):
         print 'Go to link'
         item = event.GetItem()
         webbrowser.open(item.GetText())
-        #if item:
-            #self.log.write("OnHyperLink: %s" % self.GetItemText(self.item) + "\n")
-            
-
-    def OnTextCtrl(self, event):
-
-        char = chr(event.GetKeyCode())
-        #self.log.write("EDITING THE TEXTCTRL: You Wrote '" + char + \
-                      # "' (KeyCode = " + str(event.GetKeyCode()) + ")\n")
-        event.Skip()
-
-
-    def OnComboBox(self, event):
-
-        selection = event.GetEventObject().GetValue()
-        #self.log.write("CHOICE FROM COMBOBOX: You Chose '" + selection + "'\n")
-        event.Skip()
