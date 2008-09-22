@@ -1,7 +1,7 @@
 import os
 
-appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../'))
-imageDir = os.path.join(appDir, 'icons/')
+appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
+imageDir = os.path.join(appDir, 'images/')
 userHomedir = os.path.expanduser('~')
 redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
 dataDir = os.path.join(redNotebookUserDir, "data/")

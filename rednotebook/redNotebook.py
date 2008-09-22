@@ -8,9 +8,9 @@ from util import filesystem, unicode, dates
 
 class RedNotebook(wx.App):
     
-    version = '0.1'
-    appDir = os.path.join('../', os.path.dirname(os.path.abspath(__file__)))
-    imageDir = os.path.join(appDir, 'images/')
+    version = '0.1.0'
+    appDir = filesystem.appDir
+    imageDir = filesystem.imageDir
     userHomedir = os.path.expanduser('~')
     redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
     dataDir = os.path.join(redNotebookUserDir, "data/")
@@ -30,8 +30,7 @@ class RedNotebook(wx.App):
         self.frame = mainFrame
 
         #show instructions at first start
-        if not os.path.exists(self.dataDir):
-            self.firstTimeExecution = True
+        self.firstTimeExecution = not os.path.exists(self.dataDir)
         
         filesystem.makeDirectories((self.redNotebookUserDir, self.dataDir))
            
@@ -44,7 +43,7 @@ class RedNotebook(wx.App):
          #Nothing to save before first day change
         self.loadDay(actualDate)
         
-        if self.firstTimeExecution == True:
+        if self.firstTimeExecution is True:
             self.addInstructionContent()
 
         return True

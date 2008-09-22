@@ -78,7 +78,7 @@ class MainFrame(wx.Frame):
         # Tool Bar end
         self.calendar = diaryGui.DiaryCalendar(self.window_1_pane_1, -1, style=wx.calendar.CAL_MONDAY_FIRST)
         self.buttonPrevDay = wx.Button(self.window_1_pane_1, wx.ID_BACKWARD, "")
-        self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, wx.Bitmap("/home/jendrik/projects/RedNotebook/icons/today-22.png", wx.BITMAP_TYPE_ANY))
+        self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, diaryGui.getBitmap('today-22.png'))
         self.buttonNextDay = wx.Button(self.window_1_pane_1, wx.ID_FORWARD, "")
         self.searchPanel = diaryGui.SearchPanel(self.window_1_pane_1, self)
         self.resultPanel = diaryGui.ResultPanel(self.window_1_pane_1, self)
@@ -104,6 +104,7 @@ class MainFrame(wx.Frame):
         
         #self.resultPanel = diaryGui.ResultPanel(self.window_1_pane_1, self)
         #self.searchPanel = diaryGui.SearchPanel(self.window_1_pane_1, self.redNotebook, self.resultPanel)
+        #self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, diaryGui.getBitmap('today-22.png'))
         
             
         #rausgenommen, da immer das D von CHANGED weggelassen wird
@@ -185,13 +186,14 @@ class MainFrame(wx.Frame):
     def onAbout(self,event): # wxGlade: MainFrame.<event_handler>    
         # First we create and fill the info object
         info = wx.AboutDialogInfo()
+        info.Icon = diaryGui.getIcon('redNotebook-128.png')
         info.Name = "The Red Notebook"
         info.Version = self.redNotebook.version
         info.Copyright = "(C) 2008 Jendrik Seipp"
         info.Description = wordwrap(
             "A simple diary.", 
             350, wx.ClientDC(self.window_1_pane_1)) # change the wx.ClientDC to use self.panel instead of self
-        info.WebSite = ("http://sourceforge.net/projects/rednotebook/", "Red Notebook Website")
+        info.WebSite = ("http://rednotebook.sourceforge.net/", "Red Notebook Website")
         info.Developers = ["Jendrik Seipp"]
         
         licenseText = "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"
