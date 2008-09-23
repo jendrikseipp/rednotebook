@@ -390,7 +390,7 @@ class Month(object):
         
     
 def main():
-    app = RedNotebook()
+    app = RedNotebook(redirect=False)
     wx.InitAllImageHandlers()    
     app.MainLoop()
 
