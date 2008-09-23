@@ -70,15 +70,9 @@ class MainFrame(wx.Frame):
         self.SetMenuBar(self.mainFrame_menubar)
         # Menu Bar end
         self.mainFrame_statusbar = self.CreateStatusBar(1, wx.ST_SIZEGRIP)
-        
-        # Tool Bar
-        self.mainFrame_toolbar = wx.ToolBar(self, -1)
-        self.SetToolBar(self.mainFrame_toolbar)
-        self.mainFrame_toolbar.AddLabelTool(wx.ID_SAVE, "Save", wx.NullBitmap, wx.NullBitmap, wx.ITEM_NORMAL, "", "")
-        # Tool Bar end
         self.calendar = diaryGui.DiaryCalendar(self.window_1_pane_1, -1, style=wx.calendar.CAL_MONDAY_FIRST)
         self.buttonPrevDay = wx.Button(self.window_1_pane_1, wx.ID_BACKWARD, "")
-        self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, diaryGui.getBitmap('today-22.png'))
+        self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, wx.NullBitmap)
         self.buttonNextDay = wx.Button(self.window_1_pane_1, wx.ID_FORWARD, "")
         self.searchPanel = diaryGui.SearchPanel(self.window_1_pane_1, self)
         self.resultPanel = diaryGui.ResultPanel(self.window_1_pane_1, self)
@@ -130,7 +124,7 @@ class MainFrame(wx.Frame):
         mainFrame_statusbar_fields = [""]
         for i in range(len(mainFrame_statusbar_fields)):
             self.mainFrame_statusbar.SetStatusText(mainFrame_statusbar_fields[i], i)
-        self.mainFrame_toolbar.Realize()
+        self.bitmap_button_1.SetBitmapLabel(diaryGui.getBitmap('today-22.png'))
         self.bitmap_button_1.SetSize(self.bitmap_button_1.GetBestSize())
         self.contentTree.SetToolTipString("Right-Click to Add Content")
         self.window_1.SetMinimumPaneSize(256)
@@ -157,12 +151,12 @@ class MainFrame(wx.Frame):
         sizer_6.Add(self.searchPanel, 0, wx.EXPAND, 0)
         sizer_6.Add(self.resultPanel, 1, wx.EXPAND, 0)
         self.window_1_pane_1.SetSizer(sizer_6)
-        sizer_3.Add(self.mainTextField, 1, wx.EXPAND, 0)
+        sizer_3.Add(self.mainTextField, 1, wx.ALL|wx.EXPAND, 0)
         self.window_2_pane_1.SetSizer(sizer_3)
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
         sizer_4.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 468)
+        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 513)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)
