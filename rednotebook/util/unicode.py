@@ -9,3 +9,6 @@ def substring(s, start=0, end=None):
     if end > len(s):
         end = len(s)
     return s[start:end]
+
+def contains(string, substring):
+    return string.find(substring) > -1

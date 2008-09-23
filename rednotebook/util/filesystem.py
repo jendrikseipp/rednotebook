@@ -1,4 +1,5 @@
 import os
+import zipfile
 
 appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
 imageDir = os.path.join(appDir, 'images/')
@@ -30,3 +31,13 @@ def dirExistsOrCanBeCreated(dir):
         return False
     else:
         return True
+    
+def writeArchive(archiveFileName, files, baseDir='', arcBaseDir=''):
+    """
+    use baseDir for relative filenames, in case you don't 
+    want your archive to contain '/home/...'
+    """
+    archive = zipfile.ZipFile(archiveFileName, "w")
+    for file in files:
+        archive.write(file, os.path.join(arcBaseDir, file[len(baseDir):]))
+    archive.close()

@@ -1,0 +1,10 @@
+==== 0.1.0 ====
+  - Initial Release
+  - Available Features
+    - Enter Day Content
+    - Add Day Categories
+    - (Live-) Search for Day Content
+    - Automatic saving
+    - Backup to zip archive
+    - Mark edited days
+    - Calendar Navigation

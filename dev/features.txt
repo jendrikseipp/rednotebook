@@ -1,7 +1,7 @@
 TODO:
 
 0.1:
-first use distutils (later if necessary setuptools)
+
 
 
 Later:
@@ -22,6 +22,7 @@ Calendar
 löschen unbenutzter Monate
 Suche implementieren
 Example Text for first day
+first use distutils (later if necessary setuptools)
 
 
 

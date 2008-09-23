@@ -4,11 +4,12 @@ import datetime, os, zipfile
 
 from gui import wxGladeGui
 from util import filesystem, unicode, dates
+import info
 
 
 class RedNotebook(wx.App):
     
-    version = '0.1.0'
+    version = info.version
     appDir = filesystem.appDir
     imageDir = filesystem.imageDir
     userHomedir = os.path.expanduser('~')
@@ -62,10 +63,12 @@ class RedNotebook(wx.App):
                 if not dialog.ShowModal() == wx.ID_YES:
                     return
             
-            archive = zipfile.ZipFile(archiveFileName, "w")
+            archiveFiles = []
             for root, dirs, files in os.walk(self.dataDir):
                 for file in files:
-                    archive.write(os.path.join(root,file))
+                    archiveFiles.append(os.path.join(root,file))
+            
+            filesystem.writeArchive(archiveFileName, archiveFiles, self.dataDir)
 
     
     def saveToDisk(self):
