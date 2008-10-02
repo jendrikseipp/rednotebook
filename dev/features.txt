@@ -1,10 +1,22 @@
 TODO:
 
-0.1:
+0.2:
+X Windows Exe
+O Exe Icon
+X Windows Installer with NSIS
 
+
+0.1:
+X Backup
+X Calendar
+X löschen unbenutzter Monate
+X Suche implementieren
+X Example Text for first day
+X first use distutils (later if necessary setuptools)
 
 
 Later:
+Example Categories in Right Pane
 Shortcuts
 Coole Dinge Liste
 Configuration Files
@@ -16,15 +28,7 @@ dataDir Lock (for multiple TRN instances)
 Encryption
 
 
-DONE:
-Backup
-Calendar
-löschen unbenutzter Monate
-Suche implementieren
-Example Text for first day
-first use distutils (later if necessary setuptools)
-
-
+DESCRIPTION
 
 While there exist many journalling applications for publicating content on the web there are very few applications with which you can just keep track of the stuff you did and the thoughts you had on your desktop and only for personal use.
 

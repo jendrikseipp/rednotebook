@@ -1,9 +1,31 @@
 #/usr/bin/python
 
+import sys
+
 import ez_setup
 ez_setup.use_setuptools()
 
-from setuptools import setup, find_packages
+from setuptools import setup#, find_packages
+
+# check for win32 support
+if sys.platform == 'win32':
+	#from distutils.core import setup
+	# win32 allows building of executables
+	import py2exe
+
+# check for OS X support
+#if sys.platform == 'darwin':
+#    import py2app
+#    pkg_data.append( ('../Frameworks', 
+#       ['/usr/local/lib/wxPython-unicode-2.5.3.1/lib/libwx_macud-2.5.3.rsrc'])
+#    )
+
+
+
+
+#else:
+
+	
 
 #funktioniert so (nur ein Verzeichnis in site-packages)
 #don't use MANIFEST.in

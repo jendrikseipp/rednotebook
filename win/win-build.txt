@@ -1,0 +1,3 @@
+====== Windows Release ======
+  * (in win/) run 'python win-build.py py2exe'
+  * in win/ Right-Click on 'installer.nsi' and select 'Compile NSIS Script'

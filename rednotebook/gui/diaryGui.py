@@ -277,7 +277,9 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
         
             
 def getBitmap(file):
-    return wx.Bitmap(os.path.join(filesystem.imageDir, file), wx.BITMAP_TYPE_ANY)
+	print 'imageDir', filesystem.imageDir
+	print 'file', os.path.join(filesystem.imageDir, file)
+	return wx.Bitmap(os.path.join(filesystem.imageDir, file), wx.BITMAP_TYPE_ANY)
 
 def getIcon(file):
     icon = wx.EmptyIcon()

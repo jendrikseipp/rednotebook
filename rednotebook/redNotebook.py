@@ -1,10 +1,12 @@
 import yaml, wx
 
+print 'Hallo'
+
 import datetime, os, zipfile
 
-from gui import wxGladeGui
-from util import filesystem, unicode, dates
-import info
+from rednotebook.gui import wxGladeGui
+from rednotebook.util import filesystem, unicode, dates
+from rednotebook import info
 
 
 class RedNotebook(wx.App):
@@ -391,7 +393,7 @@ class Month(object):
     
 def main():
     app = RedNotebook(redirect=False)
-    wx.InitAllImageHandlers()    
+    wx.InitAllImageHandlers()
     app.MainLoop()
 
 if __name__ == '__main__':

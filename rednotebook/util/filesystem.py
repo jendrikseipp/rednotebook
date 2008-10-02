@@ -1,12 +1,33 @@
 import os
 import zipfile
 
-appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
+#from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
+import imp, os, sys
+
+def main_is_frozen():
+   return (hasattr(sys, "frozen") or # new py2exe
+           hasattr(sys, "importers") # old py2exe
+           or imp.is_frozen("__main__")) # tools/freeze
+
+def get_main_dir():
+   if main_is_frozen():
+       return os.path.dirname(sys.executable)
+   return os.path.dirname(sys.argv[0])
+#--------------------------------------------------------------------------------------------------------
+
+if not main_is_frozen():
+	appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
+else:
+	appDir = get_main_dir()
+print "frozen", main_is_frozen()
+print 'appDir:', appDir
 imageDir = os.path.join(appDir, 'images/')
 userHomedir = os.path.expanduser('~')
 redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
 dataDir = os.path.join(redNotebookUserDir, "data/")
 fileNameExtension = '.txt'
+
+
 
 def makeDirectory(dir):
     if not os.path.exists(dir):
