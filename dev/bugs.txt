@@ -1,0 +1,2 @@
+Bugs:
+Date in SearchResults editable

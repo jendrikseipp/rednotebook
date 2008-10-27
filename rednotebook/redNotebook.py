@@ -1,12 +1,15 @@
-import yaml, wx
+import yaml
+import wxversion
+wxversion.select("2.8")
+import wx
 
-print 'Hallo'
 
 import datetime, os, zipfile
 
-from rednotebook.gui import wxGladeGui
-from rednotebook.util import filesystem, unicode, dates
-from rednotebook import info
+from gui import wxGladeGui
+#from rednotebook.gui import wxGladeGui
+from util import filesystem, unicode, dates
+import info
 
 
 class RedNotebook(wx.App):
@@ -396,6 +399,6 @@ def main():
     wx.InitAllImageHandlers()
     app.MainLoop()
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+main()
     

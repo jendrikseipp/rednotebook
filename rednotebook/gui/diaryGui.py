@@ -1,12 +1,14 @@
 import os
+import wxversion
+wxversion.select("2.8")
 import wx
 import sys
 import datetime
 from wx.lib.customtreectrl import CustomTreeCtrl
 import wx.lib.mixins.listctrl as listmix
-#import redNotebook
 
-from rednotebook.util import filesystem
+#from rednotebook.util import filesystem
+from util import filesystem
 
 class DiaryCalendar(wx.calendar.CalendarCtrl):
     def __init__(self, parent, id=-1, date=wx.DefaultDateTime, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.calendar.CAL_SHOW_HOLIDAYS|wx.WANTS_CHARS):  
@@ -167,7 +169,7 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
                                  style=wx.LC_REPORT 
                                  #| wx.BORDER_SUNKEN
                                  | wx.BORDER_NONE
-                                 | wx.LC_EDIT_LABELS
+                                 #| wx.LC_EDIT_LABELS
                                  | wx.LC_SORT_ASCENDING
                                  #| wx.LC_NO_HEADER
                                  #| wx.LC_VRULES
@@ -277,8 +279,8 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
         
             
 def getBitmap(file):
-	print 'imageDir', filesystem.imageDir
-	print 'file', os.path.join(filesystem.imageDir, file)
+	#print 'imageDir', filesystem.imageDir
+	#print 'file', os.path.join(filesystem.imageDir, file)
 	return wx.Bitmap(os.path.join(filesystem.imageDir, file), wx.BITMAP_TYPE_ANY)
 
 def getIcon(file):

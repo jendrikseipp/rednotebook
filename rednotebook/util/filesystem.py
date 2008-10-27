@@ -19,8 +19,7 @@ if not main_is_frozen():
 	appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
 else:
 	appDir = get_main_dir()
-print "frozen", main_is_frozen()
-print 'appDir:', appDir
+
 imageDir = os.path.join(appDir, 'images/')
 userHomedir = os.path.expanduser('~')
 redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")

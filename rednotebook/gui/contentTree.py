@@ -1,3 +1,5 @@
+import wxversion
+wxversion.select("2.8")
 import wx
 import string
 import webbrowser

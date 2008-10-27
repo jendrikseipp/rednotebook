@@ -26,6 +26,8 @@ Wiki Markup
 Vorschau
 dataDir Lock (for multiple TRN instances)
 Encryption
+Statistics: Number of words, entries, categories, most often used words
+After adding new category, directly add new entry
 
 
 DESCRIPTION
