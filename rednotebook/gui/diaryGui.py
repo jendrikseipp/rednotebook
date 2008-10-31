@@ -7,8 +7,13 @@ import datetime
 from wx.lib.customtreectrl import CustomTreeCtrl
 import wx.lib.mixins.listctrl as listmix
 
-#from rednotebook.util import filesystem
-from util import filesystem
+
+
+try:
+    from rednotebook.util import filesystem
+except ImportError:
+    print sys.path
+
 
 class DiaryCalendar(wx.calendar.CalendarCtrl):
     def __init__(self, parent, id=-1, date=wx.DefaultDateTime, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.calendar.CAL_SHOW_HOLIDAYS|wx.WANTS_CHARS):  

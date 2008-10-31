@@ -2,13 +2,27 @@ import yaml
 import wxversion
 wxversion.select("2.8")
 import wx
+import sys
+import datetime
+import os
+import zipfile
+#from __future__ import absolute_imports
 
 
-import datetime, os, zipfile
+from util import filesystem
+print 'AppDir:', filesystem.appDir
+baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
+print 'BaseDir:', baseDir
+if baseDir not in sys.path:
+    print 'Adding BaseDir to sys.path'
+    sys.path.insert(0, baseDir)
 
+
+
+
+#from gui import wxGladeGui
 from gui import wxGladeGui
-#from rednotebook.gui import wxGladeGui
-from util import filesystem, unicode, dates
+from util import unicode, dates
 import info
 
 

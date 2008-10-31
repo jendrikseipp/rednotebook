@@ -1,0 +1,12 @@
+Source: rednotebook
+Section: Office
+Priority: extra
+Maintainer: Jendrik <jendrikseipp@web.de>
+
+Package: rednotebook
+Architecture: all
+Depends: python-wxgtk2.8, python-yaml
+Description: A Simple Desktop Diary
+ RedNotebook is a diary that helps you keep track of your activities and thoughts
+ .
+ 

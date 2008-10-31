@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=RedNotebook
+Comment=A Desktop Diary
+Exec=/usr/bin/rednotebook
+#Icon=rednotebook
+Terminal=false
+Type=Application
+Categories=Office
+StartupNotify=true
+MimeType=text/x-yaml;
+GenericName=Diary

@@ -1,0 +1,3 @@
+include rednotebook/images/*.png
+include CHANGELOG.txt
+include README.txt
