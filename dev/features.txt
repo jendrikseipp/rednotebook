@@ -4,30 +4,35 @@ TODO:
 X Windows Exe
 O Exe Icon
 X Windows Installer with NSIS
+X Frame Icons in Multiple Resolutions
+X After adding new category, directly add new entry
+X Example Categories in Right Pane
+X Case-insensitive search
+X Statistics: Number of words, entries, 
+O	categories, most often used words
 
 
 0.1:
 X Backup
 X Calendar
-X löschen unbenutzter Monate
-X Suche implementieren
+X delete unused months
+X Search
 X Example Text for first day
-X first use distutils (later if necessary setuptools)
+X distutils
+X Keyboard Shortcuts
 
 
 Later:
-Example Categories in Right Pane
-Shortcuts
-Coole Dinge Liste
+Export Categories separately
 Configuration Files
-Toolbar
-Hyperlinks in TreeCtrl
+Toolbar?
+Hyperlinks in TreeCtrl?
 Wiki Markup
-Vorschau
+Day Preview
 dataDir Lock (for multiple TRN instances)
-Encryption
-Statistics: Number of words, entries, categories, most often used words
-After adding new category, directly add new entry
+Encryption?
+Tag Cloud
+
 
 
 DESCRIPTION

@@ -280,10 +280,23 @@ class ContentTree(CT.CustomTreeCtrl):
 
         if dlg.ShowModal() == wx.ID_OK:
             newname = dlg.GetValue()
-            newitem = self.AppendItem(self.root, newname)
-            self.EnsureVisible(newitem)
+            if newname in self.categories:
+                categoryNameWarningDialog = wx.MessageDialog(self, "Category already exists.\n" \
+                         +"Please add the content to the existing category or choose another name.", 
+                "Category Exists", wx.OK | wx.ICON_EXCLAMATION) # Create a message dialog box
+                categoryNameWarningDialog.ShowModal()
+            else:
+                newitem = self.AppendItem(self.root, newname)
+                self.EnsureVisible(newitem)
+                
+                #self.item = newitem
+                self.current = newitem
+            
+                self.OnItemAppend(event)
 
         dlg.Destroy()
+        
+        
 
 
     def OnItemAppend(self, event):

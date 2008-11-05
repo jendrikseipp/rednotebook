@@ -6,11 +6,14 @@ import wxversion
 wxversion.select("2.8")
 import wx
 import wx.calendar
+import os
 import datetime 
 from wx.lib.wordwrap import wordwrap
 
 import diaryGui
 from contentTree import ContentTree
+
+from rednotebook.util import filesystem
 
 # begin wxGlade: extracode
 # end wxGlade
@@ -73,7 +76,7 @@ class MainFrame(wx.Frame):
         self.mainFrame_menubar.Append(wxglade_tmp_menu, "&Help")
         self.SetMenuBar(self.mainFrame_menubar)
         # Menu Bar end
-        self.mainFrame_statusbar = self.CreateStatusBar(1, wx.ST_SIZEGRIP)
+        self.statusbar = self.CreateStatusBar(2, wx.ST_SIZEGRIP)
         self.calendar = diaryGui.DiaryCalendar(self.window_1_pane_1, -1, style=wx.calendar.CAL_MONDAY_FIRST)
         self.buttonPrevDay = wx.Button(self.window_1_pane_1, wx.ID_BACKWARD, "")
         self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, wx.NullBitmap)
@@ -123,11 +126,11 @@ class MainFrame(wx.Frame):
         # begin wxGlade: MainFrame.__set_properties
         self.SetTitle("The Red Notebook")
         self.SetSize((1014, 748))
-        self.mainFrame_statusbar.SetStatusWidths([-1])
+        self.statusbar.SetStatusWidths([-1, 250])
         # statusbar fields
-        mainFrame_statusbar_fields = [""]
-        for i in range(len(mainFrame_statusbar_fields)):
-            self.mainFrame_statusbar.SetStatusText(mainFrame_statusbar_fields[i], i)
+        statusbar_fields = ["", "Test"]
+        for i in range(len(statusbar_fields)):
+            self.statusbar.SetStatusText(statusbar_fields[i], i)
         self.bitmap_button_1.SetBitmapLabel(diaryGui.getBitmap('today-22.png'))
         self.bitmap_button_1.SetSize(self.bitmap_button_1.GetBestSize())
         self.contentTree.SetToolTipString("Right-Click to Add Content")
@@ -135,9 +138,7 @@ class MainFrame(wx.Frame):
         # end wxGlade
         
         #Set Icon
-        _icon = wx.EmptyIcon()
-        _icon.CopyFromBitmap(diaryGui.getBitmap("redNotebook-16.png"))
-        self.SetIcon(_icon)
+        self.SetIcons(diaryGui.getIconBundle(filesystem.frameIconDir))
 
     def __do_layout(self):
         # begin wxGlade: MainFrame.__do_layout
@@ -160,7 +161,7 @@ class MainFrame(wx.Frame):
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
         sizer_4.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 513)
+        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 510)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)
@@ -226,6 +227,8 @@ class MainFrame(wx.Frame):
         self.mainTextField.SetValue(day.text)
         self.contentTree.addDayContent(day)
         self.contentTree.ExpandAll()
+        self.setStatusBarText(str(self.redNotebook.getNumberOfWords()) + ' words in '\
+                              + str(self.redNotebook.getNumberOfEntries()) + ' entries', 1)
         
     def getDayText(self):
         return self.mainTextField.GetValue()
@@ -243,9 +246,9 @@ class MainFrame(wx.Frame):
             self.timer.Stop()
             self.timerRound = 0
             
-    def setStatusBarText(self, text):
-        self.mainFrame_statusbar.SetStatusText(text, 0)
-        self.mainFrame_statusbar.Refresh()
+    def setStatusBarText(self, text, field=0):
+        self.statusbar.SetStatusText(text, field)
+        self.statusbar.Refresh()
 
     def onButtonToday(self, event): # wxGlade: MainFrame.<event_handler>
         actualDate = datetime.date.today()

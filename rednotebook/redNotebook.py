@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import with_statement
+
 import yaml
 import wxversion
 wxversion.select("2.8")
@@ -6,7 +10,7 @@ import sys
 import datetime
 import os
 import zipfile
-#from __future__ import absolute_imports
+
 
 
 from util import filesystem
@@ -54,14 +58,12 @@ class RedNotebook(wx.App):
         
         filesystem.makeDirectories((self.redNotebookUserDir, self.dataDir))
            
-        actualDate = datetime.date.today()
-        
-        
+        self.actualDate = datetime.date.today()
         
         self.loadAllMonthsFromDisk()
         
          #Nothing to save before first day change
-        self.loadDay(actualDate)
+        self.loadDay(self.actualDate)
         
         if self.firstTimeExecution is True:
             self.addInstructionContent()
@@ -235,7 +237,28 @@ class RedNotebook(wx.App):
         return days
     days = property(_getAllEditedDays)
     
+    def getNumberOfWords(self):
+        #def countWords(day1, day2):
+        #    return day1.getNumberOfWords() + day2.getNumberOfWords()
+        #return reduce(countWords, self.days, 0)
+        numberOfWords = 0
+        for day in self.days:
+            numberOfWords += day.getNumberOfWords()
+        return numberOfWords
+    
+    def getNumberOfEntries(self):
+        return len(self.days)
+    
     def addInstructionContent(self):
+        instructionDayContent = {u'Cool Stuff': {u'Went to see the pope': None}, 
+                                 u'Ideas': {u'Found a way to end all wars. (More on that tomorrow.)': None}}
+        
+        #Dates don't matter as only the categories are shown
+        instructionDay = Day(self.actualDate.month, self.actualDate.day, dayContent = instructionDayContent)
+        
+        self.frame.contentTree.addDayContent(instructionDay)
+        self.frame.contentTree.ExpandAll()
+        
         instructionText = """\
 Hello, 
 this is the RedNotebook, a simple diary. This program helps you to keep track of your activities and thoughts. \
@@ -243,7 +266,7 @@ Thank you very much for giving it a try.
 The text field in which you are reading this text is the container for your normal diary entries: 
 
 Today I went to a pet shop and bought myself a tiger. Then we went to the park and had a nice time playing \
-ultimate frisbee together.
+ultimate frisbee together. After that we watched the Flying Circus.
 
 The usual stuff.
 On the right there is space for extra entries. Things that can easily be sorted into categories. Those entries \
@@ -269,6 +292,7 @@ There are many features I have planned to add in the future so stay tuned.
 I hope you enjoy the program!
             """
         self.frame.mainTextField.SetValue(instructionText)
+        
         
         
 class Label(object):
@@ -330,8 +354,15 @@ class Day(object):
         return self.tree.keys()
     nodeNames = property(_getNodeNames)
     
+    def getNumberOfWords(self):
+        return len(self.text.split())
+    
+    
     def search(self, searchText):
-        occurence = self.text.find(searchText)
+        '''Case-insensitive search'''
+        upCaseSearchText = searchText.upper()
+        upCaseDayText = self.text.upper()
+        occurence = upCaseDayText.find(upCaseSearchText)
         
         if occurence > -1:
             spaceSearchLeftStart = occurence-15

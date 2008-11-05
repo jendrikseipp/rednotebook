@@ -286,12 +286,28 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
 def getBitmap(file):
 	#print 'imageDir', filesystem.imageDir
 	#print 'file', os.path.join(filesystem.imageDir, file)
-	return wx.Bitmap(os.path.join(filesystem.imageDir, file), wx.BITMAP_TYPE_ANY)
+    #print file
+    if not os.path.isabs(file):
+        file = os.path.abspath(os.path.join(filesystem.imageDir, file))
+    return wx.Bitmap(file, wx.BITMAP_TYPE_ANY)
 
 def getIcon(file):
     icon = wx.EmptyIcon()
     icon.CopyFromBitmap(getBitmap(file))
     return icon
+
+def getIconBundle(iconDir):
+    iconFiles = []
+    for base, dirs, files in os.walk(filesystem.frameIconDir):
+        for file in files:
+            file = os.path.join(base, file)
+            iconFiles.append(file)
+    iconBundle = wx.IconBundle()
+    for iconFile in iconFiles:
+        icon = wx.EmptyIcon()
+        icon.CopyFromBitmap(getBitmap(iconFile))
+        iconBundle.AddIcon(icon)
+    return iconBundle
         
     
         

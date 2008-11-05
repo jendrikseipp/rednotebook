@@ -21,6 +21,7 @@ else:
 	appDir = get_main_dir()
 
 imageDir = os.path.join(appDir, 'images/')
+frameIconDir = os.path.join(imageDir, 'redNotebookIcon/')
 userHomedir = os.path.expanduser('~')
 redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
 dataDir = os.path.join(redNotebookUserDir, "data/")
