@@ -1,9 +1,9 @@
 ====== The Red Notebook ======
 
 ===== REQUIREMENTS =====
-  - Python (2.5)
-  - PyYaml (3.05)
-  - wxPython (2.8.8.1)
+  - Python (2.5) (www.python.org)
+  - PyYaml (3.05) (www.yaml.org)
+  - wxPython (2.8.8.1) (www.wxpython.org)
   
 On Ubuntu you type 'sudo apt-get install python-yaml python-wxgtk2.8'
 
@@ -19,7 +19,10 @@ or run 'python setup.py install --root=testDir'
 
 ===== RUN =====
 
-type 'rednotebook' and hit enter
+If you installed the program into "site-packages" you can now run the command "rednotebook"
+in any shell.
+
+Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py".
 
 
 

@@ -1,3 +1,4 @@
 include rednotebook/images/*.png
+include rednotebook/images/redNotebookIcon/*.png
 include CHANGELOG.txt
 include README.txt

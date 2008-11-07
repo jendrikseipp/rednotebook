@@ -4,6 +4,9 @@ wxversion.select("2.8")
 import wx
 import sys
 import datetime
+import random
+import operator
+import wx.html as html
 from wx.lib.customtreectrl import CustomTreeCtrl
 import wx.lib.mixins.listctrl as listmix
 
@@ -11,6 +14,7 @@ import wx.lib.mixins.listctrl as listmix
 
 try:
     from rednotebook.util import filesystem
+    from rednotebook.util import utils
 except ImportError:
     print sys.path
 
@@ -74,9 +78,6 @@ class SearchPanel(wx.Panel):
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add((15,15))
         sizer.Add(self.search, 0, wx.ALL, 10)
-
-##         self.tc = wx.TextCtrl(self)  # just for testing that heights match...
-##         sizer.Add(self.tc, 0, wx.TOP, 15)
 
         self.SetSizer(sizer)
 
@@ -281,12 +282,89 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
         
         event.Skip()
         
+# This class exists to catch the OnLinkClicked non-event.  (It's a virtual
+# method in the C++ code...)
+class TagCloudWindow(wx.html.HtmlWindow):
+    def __init__(self, parent, mainFrame, id=-1):
+        wx.html.HtmlWindow.__init__(self, parent, id, style=wx.NO_FULL_REPAINT_ON_RESIZE)
+        if "gtk2" in wx.PlatformInfo:
+            self.SetStandardFonts()
+        self.frame = mainFrame
+
+    def OnLinkClicked(self, linkinfo):
+        '''Open the search tab with the selected word'''
+        self.frame.notebook_1.ChangeSelection(0)
+        self.frame.searchPanel.search.SetValue(linkinfo.GetHref())
+        
+
+class TagCloudPanel(wx.Panel):
+    def __init__(self, parent, frame):
+        wx.Panel.__init__(self, parent, -1, style=wx.NO_FULL_REPAINT_ON_RESIZE)
+        
+        self.frame = frame
+        
+
+        self.html = TagCloudWindow(self, self.frame, id=-1)
+
+        self.box = wx.BoxSizer(wx.VERTICAL)
+        self.box.Add(self.html, 1, wx.GROW)
+
+        self.SetSizer(self.box)
+        self.SetAutoLayout(True)
+        
+        
+    
+    def setWordCountDict(self, wordCountDict):
+        htmlDoc = self.getHtmlDocFromWordCountDict(wordCountDict)
+        self.html.SetPage(htmlDoc)
+        
+    def getHtmlDocFromWordCountDict(self, wordCountDict):
+        sortedDict = utils.getSortedDictByValues(wordCountDict)
+        #print sortedDict
+        longWords = filter(lambda x: len(x[0]) > 4, sortedDict)
+        #print longWords
+        
+        oftenUsedWords = []
+        numberOfWords = 42
+        '''only take the longest words. If there are less words than n, len(longWords) words are returned'''
+        tagCloudWords = longWords[-numberOfWords:]
+        minCount = tagCloudWords[0][1]
+        maxCount = tagCloudWords[-1][1]
+        
+        deltaCount = maxCount - minCount
+        if deltaCount == 0:
+            deltaCount = 1
+        
+        minFontSize = 2
+        maxFontSize = 42
+        
+        fontDelta = maxFontSize - minFontSize
+        
+        htmlElements = []
+        
+        htmlHead = '<html><body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#000000" VLINK="#000000" ALINK="#000000">\n<center>'
+        htmlTail = '</center></body></html>'
+        for word, count in tagCloudWords:
+            fontFactor = utils.floatDiv((count - minCount), (deltaCount))
+            fontSize = int(minFontSize + fontFactor * (fontDelta))
+            
+            htmlElements.append('<a href="' + word + '">'\
+                                + '<font size="' + str(int(fontSize)) + '">' \
+                                + word + '</font></a>' + '&nbsp;'*random.randint(1,5) + '\n')
+            
+        random.shuffle(htmlElements)
+        
+        htmlDoc = htmlHead 
+        htmlDoc += reduce(operator.add, htmlElements, '')
+        htmlDoc += htmlTail
+        
+        #print htmlDoc.encode("utf-8")
+        return htmlDoc
+        
+        
         
             
 def getBitmap(file):
-	#print 'imageDir', filesystem.imageDir
-	#print 'file', os.path.join(filesystem.imageDir, file)
-    #print file
     if not os.path.isabs(file):
         file = os.path.abspath(os.path.join(filesystem.imageDir, file))
     return wx.Bitmap(file, wx.BITMAP_TYPE_ANY)
@@ -300,8 +378,9 @@ def getIconBundle(iconDir):
     iconFiles = []
     for base, dirs, files in os.walk(filesystem.frameIconDir):
         for file in files:
-            file = os.path.join(base, file)
-            iconFiles.append(file)
+            if file.endswith(".png"):
+                file = os.path.join(base, file)
+                iconFiles.append(file)
     iconBundle = wx.IconBundle()
     for iconFile in iconFiles:
         icon = wx.EmptyIcon()

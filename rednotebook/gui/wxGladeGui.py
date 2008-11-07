@@ -57,6 +57,9 @@ class MainFrame(wx.Frame):
         self.window_2_pane_2 = wx.Panel(self.window_2, -1)
         self.window_2_pane_1 = wx.Panel(self.window_2, -1)
         self.window_1_pane_1 = wx.Panel(self.window_1, -1)
+        self.notebook_1 = wx.Notebook(self.window_1_pane_1, -1, style=wx.NB_BOTTOM)
+        self.notebook_1_pane_2 = wx.Panel(self.notebook_1, -1)
+        self.notebook_1_pane_1 = wx.Panel(self.notebook_1, -1)
         
         # Menu Bar
         self.mainFrame_menubar = wx.MenuBar()
@@ -81,8 +84,9 @@ class MainFrame(wx.Frame):
         self.buttonPrevDay = wx.Button(self.window_1_pane_1, wx.ID_BACKWARD, "")
         self.bitmap_button_1 = wx.BitmapButton(self.window_1_pane_1, -1, wx.NullBitmap)
         self.buttonNextDay = wx.Button(self.window_1_pane_1, wx.ID_FORWARD, "")
-        self.searchPanel = diaryGui.SearchPanel(self.window_1_pane_1, self)
-        self.resultPanel = diaryGui.ResultPanel(self.window_1_pane_1, self)
+        self.searchPanel = diaryGui.SearchPanel(self.notebook_1_pane_1, self)
+        self.resultPanel = diaryGui.ResultPanel(self.notebook_1_pane_1, self)
+        self.tagCloudPanel = diaryGui.TagCloudPanel(self.notebook_1_pane_2, self)
         self.mainTextField = wx.TextCtrl(self.window_2_pane_1, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_MULTILINE|wx.TE_WORDWRAP)
         self.contentTree = ContentTree(self.window_2_pane_2, -1, style=wx.TR_HAS_BUTTONS|wx.TR_NO_LINES|wx.TR_EDIT_LABELS|wx.TR_HIDE_ROOT|wx.TR_HAS_VARIABLE_ROW_HEIGHT|wx.TR_DEFAULT_STYLE|wx.SUNKEN_BORDER)
         self.button_1 = wx.Button(self.window_2_pane_2, -1, "Add Category")
@@ -147,21 +151,29 @@ class MainFrame(wx.Frame):
         sizer_4 = wx.BoxSizer(wx.VERTICAL)
         sizer_3 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_6 = wx.BoxSizer(wx.VERTICAL)
+        sizer_8 = wx.BoxSizer(wx.VERTICAL)
+        sizer_7 = wx.BoxSizer(wx.VERTICAL)
         sizer_5 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_6.Add(self.calendar, 0, 0, 0)
         sizer_5.Add(self.buttonPrevDay, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
         sizer_5.Add(self.bitmap_button_1, 0, 0, 0)
         sizer_5.Add(self.buttonNextDay, 0, wx.ALIGN_CENTER_HORIZONTAL, 0)
         sizer_6.Add(sizer_5, 0, 0, 0)
-        sizer_6.Add(self.searchPanel, 0, wx.EXPAND, 0)
-        sizer_6.Add(self.resultPanel, 1, wx.EXPAND, 0)
+        sizer_7.Add(self.searchPanel, 0, wx.EXPAND, 0)
+        sizer_7.Add(self.resultPanel, 1, wx.EXPAND, 0)
+        self.notebook_1_pane_1.SetSizer(sizer_7)
+        sizer_8.Add(self.tagCloudPanel, 1, wx.EXPAND, 0)
+        self.notebook_1_pane_2.SetSizer(sizer_8)
+        self.notebook_1.AddPage(self.notebook_1_pane_1, "Search")
+        self.notebook_1.AddPage(self.notebook_1_pane_2, "Word Cloud")
+        sizer_6.Add(self.notebook_1, 1, wx.EXPAND, 0)
         self.window_1_pane_1.SetSizer(sizer_6)
         sizer_3.Add(self.mainTextField, 1, wx.ALL|wx.EXPAND, 0)
         self.window_2_pane_1.SetSizer(sizer_3)
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
         sizer_4.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 510)
+        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 503)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)
@@ -180,6 +192,7 @@ class MainFrame(wx.Frame):
 
     def onSave(self, event): # wxGlade: MainFrame.<event_handler>
         self.redNotebook.saveToDisk()
+        self.updateStatistics()
         event.Skip()
         
     def onAbout(self,event): # wxGlade: MainFrame.<event_handler>    
@@ -222,13 +235,16 @@ class MainFrame(wx.Frame):
         print "Event handler `onWebsite' not implemented"
         event.Skip()
         
+    def updateStatistics(self):
+        self.tagCloudPanel.setWordCountDict(self.redNotebook.getWordCountDict())
+        self.setStatusBarText(str(self.redNotebook.getNumberOfWords()) + ' words in '\
+                              + str(self.redNotebook.getNumberOfEntries()) + ' entries', 1)
+        
     def showDay(self, day):
         self.contentTree.clear()
         self.mainTextField.SetValue(day.text)
         self.contentTree.addDayContent(day)
         self.contentTree.ExpandAll()
-        self.setStatusBarText(str(self.redNotebook.getNumberOfWords()) + ' words in '\
-                              + str(self.redNotebook.getNumberOfEntries()) + ' entries', 1)
         
     def getDayText(self):
         return self.mainTextField.GetValue()

@@ -8,8 +8,8 @@ X Frame Icons in Multiple Resolutions
 X After adding new category, directly add new entry
 X Example Categories in Right Pane
 X Case-insensitive search
-X Statistics: Number of words, entries, 
-O	categories, most often used words
+X Statistics: Number of words, entries
+X Tag Cloud
 
 
 0.1:
@@ -31,7 +31,12 @@ Wiki Markup
 Day Preview
 dataDir Lock (for multiple TRN instances)
 Encryption?
-Tag Cloud
+i18n
+Tags in text entries (e.g. @film:Batman)
+Template entries
+Export functionality
+Import of Backups
+Ubuntu Menu Entry
 
 
 

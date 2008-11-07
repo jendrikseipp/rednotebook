@@ -27,6 +27,7 @@ if baseDir not in sys.path:
 #from gui import wxGladeGui
 from gui import wxGladeGui
 from util import unicode, dates
+from util import utils
 import info
 
 
@@ -64,6 +65,8 @@ class RedNotebook(wx.App):
         
          #Nothing to save before first day change
         self.loadDay(self.actualDate)
+        
+        self.frame.updateStatistics()
         
         if self.firstTimeExecution is True:
             self.addInstructionContent()
@@ -249,6 +252,14 @@ class RedNotebook(wx.App):
     def getNumberOfEntries(self):
         return len(self.days)
     
+    def getWordCountDict(self):
+        wordDict = utils.ZeroBasedDict()
+        for day in self.days:
+            for word in day.getWords(withSpecialChars=False):
+                wordDict[word.lower()] += 1
+        return wordDict
+            
+    
     def addInstructionContent(self):
         instructionDayContent = {u'Cool Stuff': {u'Went to see the pope': None}, 
                                  u'Ideas': {u'Found a way to end all wars. (More on that tomorrow.)': None}}
@@ -298,6 +309,9 @@ I hope you enjoy the program!
 class Label(object):
     def __init__(self, name):
         self.name = name
+        
+        
+
         
             
 
@@ -354,8 +368,23 @@ class Day(object):
         return self.tree.keys()
     nodeNames = property(_getNodeNames)
     
+    def getWords(self, withSpecialChars=True):
+        if withSpecialChars:
+            return self.text.split()
+        
+        #def stripSpecialCharacters(word):
+            #return word.strip('.|-!"/()=?`´*+~#_:;,<>^°{}[]')
+        wordList = self.text.split()
+        realWords = []
+        for word in wordList:
+            word = word.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]')
+            if len(word) > 0:
+                realWords.append(word)
+        return realWords
+    words = property(getWords)
+    
     def getNumberOfWords(self):
-        return len(self.text.split())
+        return len(self.words)
     
     
     def search(self, searchText):

@@ -273,26 +273,28 @@ class ContentTree(CT.CustomTreeCtrl):
         
         
     def OnItemCreate(self, event):
-
-        #dlg = wx.TextEntryDialog(self, "Please Enter The New Item Name", 'Item Naming', 'Ideas')
         
         dlg = diaryGui.ComboBoxDialog(title='Add Category', list=self.categories)
 
         if dlg.ShowModal() == wx.ID_OK:
             newname = dlg.GetValue()
-            if newname in self.categories:
-                categoryNameWarningDialog = wx.MessageDialog(self, "Category already exists.\n" \
-                         +"Please add the content to the existing category or choose another name.", 
-                "Category Exists", wx.OK | wx.ICON_EXCLAMATION) # Create a message dialog box
-                categoryNameWarningDialog.ShowModal()
-            else:
-                newitem = self.AppendItem(self.root, newname)
-                self.EnsureVisible(newitem)
-                
-                #self.item = newitem
-                self.current = newitem
             
-                self.OnItemAppend(event)
+            '''If category exists add entry to existing category'''
+            dayCategories = self.root.GetChildren()
+            for category in dayCategories:
+                if newname == category.GetText():
+                    self.current = category
+                    self.OnItemAppend(event)
+                    return
+                
+            '''Else create new node'''
+            newitem = self.AppendItem(self.root, newname)
+            self.EnsureVisible(newitem)
+            
+            #self.item = newitem
+            self.current = newitem
+        
+            self.OnItemAppend(event)
 
         dlg.Destroy()
         

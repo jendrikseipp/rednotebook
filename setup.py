@@ -1,27 +1,34 @@
 #/usr/bin/python
-#DISTUTILS_DEBUG = 'TRUE'
+
+import os
+import sys
+
+#print dir(sys)
+
 from distutils.core import setup
 
 #Testinstall with: python setup.py install --root=test
 
-#funktioniert so (nur ein Verzeichnis in site-packages)
-#don't use MANIFEST.in
+#print sys.argv[0]
+baseDir = os.path.dirname(sys.argv[0])
+sys.path.insert(0, baseDir)
+
+from rednotebook import info
+#rednotebookDir = os.path.join(setupDir, 'rednotebook
+
+#Additionally use MANIFEST.in for image files
 setup(name          = "rednotebook",
-      version       = "0.1.0",
+      version       = info.version,
       description   = "A Simple Desktop Diary",
       long_description = "RedNotebook is a diary that helps you keep track of your activities and thoughts",
-      author        = "Jendrik Seipp",
-      author_email  = "jendrikseipp@web.de",
-      maintainer        = "Jendrik Seipp",
-      maintainer_email  = "jendrikseipp@web.de",
-      url           = "http://rednotebook.sourceforge.net",
+      author        = info.author,
+      author_email  = info.authorMail,
+      maintainer        = info.author,
+      maintainer_email  = info.authorMail,
+      url           = info.url,
       license       = "GPL",
       keywords      = "diary",
       scripts       = ['rednotebook/rednotebook'],
       packages      = ['rednotebook', 'rednotebook.gui', 'rednotebook.util'],
-      package_data  = {'rednotebook': ['images/*']},
-      #data_files=[('lib/python2.5/site-packages/rednotebook/images', ['rednotebook/images/arrowUp.png', 'rednotebook/images/arrowDown.png']),
-                  #('config', ['cfg/data.cfg']),
-                  #('/etc/init.d', ['init-script'])
-                  #],
+      package_data  = {'rednotebook': ['images/*.png', 'images/redNotebookIcon/*.png']},
 )
