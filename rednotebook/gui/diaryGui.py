@@ -328,6 +328,8 @@ class TagCloudPanel(wx.Panel):
         numberOfWords = 42
         '''only take the longest words. If there are less words than n, len(longWords) words are returned'''
         tagCloudWords = longWords[-numberOfWords:]
+        if len(tagCloudWords) < 1:
+            return '<html></html>'
         minCount = tagCloudWords[0][1]
         maxCount = tagCloudWords[-1][1]
         

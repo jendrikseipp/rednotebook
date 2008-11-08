@@ -1,19 +1,20 @@
-==== 0.2.0 ====
-  - Tag Cloud
-  - Frame Icons in Multiple Resolutions
-  - After adding new category, directly add new entry
-  - Example Categories in Right Pane
-  - Case-insensitive search
-  - Statistics: Number of words, entries
+==== Changelog ====
 
+=== 0.2.0 (2008-11-07) ===
+  * Word Cloud
+  * Frame Icons in Multiple Resolutions
+  * After adding new category, directly add new entry
+  * Example Categories in Right Pane
+  * Case-insensitive search
+  * Statistics: Number of words, entries
 
-==== 0.1.0 ====
-  - Initial Release
-  - Available Features
-    - Enter Day Content
-    - Add Day Categories
-    - (Live-) Search for Day Content
-    - Automatic saving
-    - Backup to zip archive
-    - Mark edited days
-    - Calendar Navigation
+=== 0.1.0 (2008-09-23) ===
+  * Initial Release
+  * Available Features
+    * Enter Day Content
+    * Add Day Categories
+    * (Live-) Search for Day Content
+    * Automatic saving
+    * Backup to zip archive
+    * Mark edited days
+    * Calendar Navigation
