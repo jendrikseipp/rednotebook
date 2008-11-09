@@ -2,18 +2,32 @@
 # -*- coding: utf-8 -*-
 from __future__ import with_statement
 
-import yaml
-import wxversion
-wxversion.select("2.8")
-import wx
+print 'before sys'
 import sys
+print 'after sys'
+
+#Handle wx specific problems
+if not sys.platform == 'win32':
+	#should only be called once (at start of program)
+	import wxversion
+	wxversion.select("2.8")
+import wx
+
+import yaml
+
+
+
+
 import datetime
 import os
 import zipfile
 
 
+if hasattr(sys, "frozen"):
+	from rednotebook.util import filesystem
+else:
+	from util import filesystem
 
-from util import filesystem
 print 'AppDir:', filesystem.appDir
 baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
 print 'BaseDir:', baseDir
@@ -25,10 +39,12 @@ if baseDir not in sys.path:
 
 
 #from gui import wxGladeGui
-from gui import wxGladeGui
-from util import unicode, dates
-from util import utils
-import info
+#This version of import is needed for win32 to work
+from rednotebook.gui import wxGladeGui
+from rednotebook.util import unicode
+from rednotebook.util import dates
+from rednotebook.util import utils
+from rednotebook import info
 
 
 class RedNotebook(wx.App):

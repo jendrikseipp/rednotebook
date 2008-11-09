@@ -7,6 +7,10 @@ import sys
 
 from distutils.core import setup
 
+if sys.platform == 'win32':
+	print 'running on win32. Importing py2exe'
+	import py2exe
+
 #Testinstall with: python setup.py install --root=test
 
 #print sys.argv[0]
@@ -31,4 +35,12 @@ setup(name          = "rednotebook",
       scripts       = ['rednotebook/rednotebook'],
       packages      = ['rednotebook', 'rednotebook.gui', 'rednotebook.util'],
       package_data  = {'rednotebook': ['images/*.png', 'images/redNotebookIcon/*.png']},
+	  options = {'py2exe': {'bundle_files': 1,
+	  						'includes': ['rednotebook.gui', 'rednotebook.util',]}},
+	  #3 (default) don't bundle, 2: bundle everything but the Python interpreter, 1: bundle everything, including the Python interpreter 
+	  options = {'py2exe': {'bundle_files': 1}}, 
+	  #include library in exe
+	  zipfile = None,
+	  #windows for gui, console for cli
+	  windows=['rednotebook/redNotebook.py'],
 )

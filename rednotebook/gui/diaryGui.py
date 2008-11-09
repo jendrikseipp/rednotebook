@@ -1,6 +1,6 @@
 import os
-import wxversion
-wxversion.select("2.8")
+#import wxversion
+#wxversion.select("2.8")
 import wx
 import sys
 import datetime
@@ -167,9 +167,9 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
             
         self.il = wx.ImageList(16, 16)
 
-        self.idx1 = self.il.Add(getBitmap("redNotebook-16.png"))
-        self.sm_up = self.il.Add(getBitmap("arrowUp.png"))
-        self.sm_dn = self.il.Add(getBitmap("arrowDown.png"))
+        #self.idx1 = self.il.Add(getBitmap("redNotebook-16.png"))
+        self.sm_up = self.il.Add(getBitmapFromFile("arrowUp.png"))
+        self.sm_dn = self.il.Add(getBitmapFromFile("arrowDown.png"))
 
         self.list = ResultListCtrl(self, tID,
                                  style=wx.LC_REPORT 
@@ -362,9 +362,19 @@ class TagCloudPanel(wx.Panel):
         
         #print htmlDoc.encode("utf-8")
         return htmlDoc
-        
-        
-        
+
+
+def getBitmapFromFile(file):
+	if not os.path.isabs(file):
+		file = os.path.abspath(os.path.join(filesystem.imageDir, file))
+	image = wx.Image(file, type=wx.BITMAP_TYPE_PNG)
+	assert image.Ok(), file
+	try:
+		bitmap = wx.BitmapFromImage(image)
+	except PyAssertionError:
+		#assert bitmap.Ok(), file
+		print 'Error:', file
+	return bitmap
             
 def getBitmap(file):
     if not os.path.isabs(file):

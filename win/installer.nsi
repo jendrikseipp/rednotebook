@@ -25,6 +25,8 @@
 ; change this to wherever the files to be packaged reside
 ;!define srcdir "."
 !define srcdir "..\dist\"
+
+!define imagesrcdir "..\rednotebook\images\"
  
 ;!define company "Technicat"
 ;!define company "No Company"
@@ -159,7 +161,14 @@ Section
 ; assume files are in the correct places
 File /a "${srcdir}\${exec}"
 
-File /r "${srcdir}\*.*" ;/r for recursive file adding /x for excluding
+File /r /x *.log "${srcdir}\*.*" ;/r for recursive file adding /x for excluding
+
+;Copy the images
+;Set Outpath to image dir
+SetOutPath "$INSTDIR\images\"
+File /r /x .svn "${imagesrcdir}\*.*" ;/r for recursive file adding /x for excluding
+;Reset Outpath
+SetOutPath $INSTDIR
  
 !ifdef licensefile
 File /a "${srcdir}\${licensefile}"
@@ -250,7 +259,7 @@ Delete "$INSTDIR\${exec}"
 ;Delete all the files that were added
 Delete "$INSTDIR\*.*"
 Delete "$INSTDIR\images\*.*"
-Delete "$INSTDIR\images\"
-Delete "$INSTDIR\"
+RMDir /r "$INSTDIR\images\"
+RMDir "$INSTDIR\"
 
 SectionEnd

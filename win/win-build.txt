@@ -1,3 +1,5 @@
 ====== Windows Release ======
-  * (in win/) run 'python win-build.py py2exe'
+  * (in ../) run 'python setup.py py2exe'
+	(This stand-alone exe is not working, because the images are missing)
   * in win/ Right-Click on 'installer.nsi' and select 'Compile NSIS Script'
+	(after installing this everything should work)
