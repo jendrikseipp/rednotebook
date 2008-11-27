@@ -14,6 +14,7 @@ import diaryGui
 from contentTree import ContentTree
 
 from rednotebook.util import filesystem
+from rednotebook import info
 
 # begin wxGlade: extracode
 # end wxGlade
@@ -55,7 +56,6 @@ class MainFrame(wx.Frame):
         self.window_1_pane_2 = wx.Panel(self.window_1, -1)
         self.window_2 = wx.SplitterWindow(self.window_1_pane_2, -1, style=wx.SP_3D|wx.SP_BORDER)
         self.window_2_pane_2 = wx.Panel(self.window_2, -1)
-        self.window_2_pane_1 = wx.Panel(self.window_2, -1)
         self.window_1_pane_1 = wx.Panel(self.window_1, -1)
         self.notebook_1 = wx.Notebook(self.window_1_pane_1, -1, style=wx.NB_BOTTOM)
         self.notebook_1_pane_2 = wx.Panel(self.notebook_1, -1)
@@ -66,7 +66,7 @@ class MainFrame(wx.Frame):
         global ID_ABOUT; ID_ABOUT = wx.ID_ABOUT
         wxglade_tmp_menu = wx.Menu()
         wxglade_tmp_menu.Append(wx.ID_SAVE, "&Save", "Save all contents", wx.ITEM_NORMAL)
-        wxglade_tmp_menu.Append(wx.ID_DUPLICATE, "Backup", "", wx.ITEM_NORMAL)
+        wxglade_tmp_menu.Append(wx.ID_DUPLICATE, "&Backup", "", wx.ITEM_NORMAL)
         wxglade_tmp_menu.AppendSeparator()
         wxglade_tmp_menu.Append(wx.ID_EXIT, "Exit", "Close the application", wx.ITEM_NORMAL)
         self.mainFrame_menubar.Append(wxglade_tmp_menu, "&File")
@@ -75,6 +75,8 @@ class MainFrame(wx.Frame):
         wxglade_tmp_menu.Append(wx.ID_FORWARD, "&Forward\tCtrl+F", "Go To Next Day", wx.ITEM_NORMAL)
         self.mainFrame_menubar.Append(wxglade_tmp_menu, "&Navigate")
         wxglade_tmp_menu = wx.Menu()
+        self.showHelp = wx.MenuItem(wxglade_tmp_menu, wx.ID_HELP, "Show H&elp\tF1", "Show Help Topics", wx.ITEM_NORMAL)
+        wxglade_tmp_menu.AppendItem(self.showHelp)
         wxglade_tmp_menu.Append(ID_ABOUT, "&About", "Show information about the application", wx.ITEM_NORMAL)
         self.mainFrame_menubar.Append(wxglade_tmp_menu, "&Help")
         self.SetMenuBar(self.mainFrame_menubar)
@@ -87,7 +89,7 @@ class MainFrame(wx.Frame):
         self.searchPanel = diaryGui.SearchPanel(self.notebook_1_pane_1, self)
         self.resultPanel = diaryGui.ResultPanel(self.notebook_1_pane_1, self)
         self.tagCloudPanel = diaryGui.TagCloudPanel(self.notebook_1_pane_2, self)
-        self.mainTextField = wx.TextCtrl(self.window_2_pane_1, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_MULTILINE|wx.TE_WORDWRAP)
+        self.textPanel = diaryGui.MainTextPanel(self.window_2, -1)
         self.contentTree = ContentTree(self.window_2_pane_2, -1, style=wx.TR_HAS_BUTTONS|wx.TR_NO_LINES|wx.TR_EDIT_LABELS|wx.TR_HIDE_ROOT|wx.TR_HAS_VARIABLE_ROW_HEIGHT|wx.TR_DEFAULT_STYLE|wx.SUNKEN_BORDER)
         self.button_1 = wx.Button(self.window_2_pane_2, -1, "Add Category")
 
@@ -99,6 +101,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.onExit, id=wx.ID_EXIT)
         self.Bind(wx.EVT_MENU, self.onButtonPrevDay, id=wx.ID_BACKWARD)
         self.Bind(wx.EVT_MENU, self.onButtonNextDay, id=wx.ID_FORWARD)
+        self.Bind(wx.EVT_MENU, self.onShowHelp, self.showHelp)
         self.Bind(wx.EVT_MENU, self.onAbout, id=ID_ABOUT)
         self.Bind(wx.EVT_BUTTON, self.onButtonPrevDay, self.buttonPrevDay)
         self.Bind(wx.EVT_BUTTON, self.onButtonToday, self.bitmap_button_1)
@@ -124,12 +127,14 @@ class MainFrame(wx.Frame):
         self.timer = wx.Timer(self, ID_TIMER)
         self.timerRound = 0
         self.Bind(wx.EVT_TIMER, self.OnTimer, id=ID_TIMER)
+        
+        self.textPanel.redNotebook = self.redNotebook
 
 
     def __set_properties(self):
         # begin wxGlade: MainFrame.__set_properties
         self.SetTitle("The Red Notebook")
-        self.SetSize((1014, 748))
+        self.SetSize((1024, 768))
         self.statusbar.SetStatusWidths([-1, 250])
         # statusbar fields
         statusbar_fields = ["", "Test"]
@@ -143,13 +148,23 @@ class MainFrame(wx.Frame):
         
         #Set Icon
         self.SetIcons(diaryGui.getIconBundle(filesystem.frameIconDir))
+        
+        #Control Frame Size
+        #print self.GetSize()
+        currentSize = self.GetSize()
+        maxSize = wx.DisplaySize()
+        #print maxSize
+        width = min(currentSize[0], maxSize[0])
+        height = min(currentSize[1], maxSize[1])
+        self.SetSize((width, height))
+    
+        
 
     def __do_layout(self):
         # begin wxGlade: MainFrame.__do_layout
         sizer_1 = wx.BoxSizer(wx.VERTICAL)
         sizer_2 = wx.BoxSizer(wx.VERTICAL)
         sizer_4 = wx.BoxSizer(wx.VERTICAL)
-        sizer_3 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_6 = wx.BoxSizer(wx.VERTICAL)
         sizer_8 = wx.BoxSizer(wx.VERTICAL)
         sizer_7 = wx.BoxSizer(wx.VERTICAL)
@@ -168,12 +183,10 @@ class MainFrame(wx.Frame):
         self.notebook_1.AddPage(self.notebook_1_pane_2, "Word Cloud")
         sizer_6.Add(self.notebook_1, 1, wx.EXPAND, 0)
         self.window_1_pane_1.SetSizer(sizer_6)
-        sizer_3.Add(self.mainTextField, 1, wx.ALL|wx.EXPAND, 0)
-        self.window_2_pane_1.SetSizer(sizer_3)
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
         sizer_4.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.window_2_pane_1, self.window_2_pane_2, 503)
+        self.window_2.SplitVertically(self.textPanel, self.window_2_pane_2, 515)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)
@@ -197,24 +210,24 @@ class MainFrame(wx.Frame):
         
     def onAbout(self,event): # wxGlade: MainFrame.<event_handler>    
         # First we create and fill the info object
-        info = wx.AboutDialogInfo()
-        info.Icon = diaryGui.getIcon('redNotebook-128.png')
-        info.Name = "The Red Notebook"
-        info.Version = self.redNotebook.version
-        info.Copyright = "(C) 2008 Jendrik Seipp"
-        info.Description = wordwrap(
-            "A simple diary.", 
+        dialogInfo = wx.AboutDialogInfo()
+        dialogInfo.Icon = diaryGui.getIcon('redNotebook-128.png')
+        dialogInfo.Name = "The Red Notebook"
+        dialogInfo.Version = info.version
+        dialogInfo.Copyright = "(C) 2008 Jendrik Seipp"
+        dialogInfo.Description = wordwrap(
+            "A desktop diary.", 
             350, wx.ClientDC(self.window_1_pane_1)) # change the wx.ClientDC to use self.panel instead of self
-        info.WebSite = ("http://rednotebook.sourceforge.net/", "Red Notebook Website")
-        info.Developers = ["Jendrik Seipp"]
+        dialogInfo.WebSite = (info.url, "Red Notebook Website")
+        dialogInfo.Developers = info.developers
         
         licenseText = "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"
 
         # change the wx.ClientDC to use self.panel instead of self
-        info.License = wordwrap(licenseText, 500, wx.ClientDC(self.window_1_pane_1))
+        dialogInfo.License = wordwrap(licenseText, 500, wx.ClientDC(self.window_1_pane_1))
 
         # Then we call wx.AboutBox giving it that info object
-        wx.AboutBox(info)
+        wx.AboutBox(dialogInfo)
         
     def onExit(self, event): # wxGlade: MainFrame.<event_handler>
         self.Close(True)  # Close the frame.
@@ -240,14 +253,25 @@ class MainFrame(wx.Frame):
         self.setStatusBarText(str(self.redNotebook.getNumberOfWords()) + ' words in '\
                               + str(self.redNotebook.getNumberOfEntries()) + ' entries', 1)
         
-    def showDay(self, day):
+    def showDay(self, day, date):
         self.contentTree.clear()
-        self.mainTextField.SetValue(day.text)
+        
+        '''
+        Load the day's text. If there is none, try loading the template
+        '''
+        dayText = day.text
+        #if len(dayText) > 0:
+        textToLoad = dayText
+        #else:
+        #    '''Load template'''
+        #    textToLoad = self.redNotebook.getTemplateEntry(date)
+        self.textPanel.showDayText(textToLoad)
+            
         self.contentTree.addDayContent(day)
         self.contentTree.ExpandAll()
         
     def getDayText(self):
-        return self.mainTextField.GetValue()
+        return self.textPanel.textField.GetValue()
     
     def showMessageInStatusBar(self, messageText):
         self.setStatusBarText(messageText)
@@ -302,6 +326,12 @@ class MainFrame(wx.Frame):
     def onAddCategory(self, event): # wxGlade: MainFrame.<event_handler>
         self.contentTree.OnItemCreate(event)
         event.Skip()
+    
+    
+
+    def onShowHelp(self, event): # wxGlade: MainFrame.<event_handler>
+        helpWindow = diaryGui.HelpWindow(self, wx.ID_ANY, 'Help')
+        event.Skip()
 
 # end of class MainFrame
 
@@ -312,4 +342,3 @@ class MainFrame(wx.Frame):
 #    app.SetTopWindow(mainFrame)
 #    mainFrame.Show()
 #    app.MainLoop()
-

@@ -1,5 +1,16 @@
 TODO:
 
+0.4:
+
+
+0.3:
+X Frame not bigger than screen
+X Template entries
+O Ubuntu Menu Entry
+X Separate Data Dir for Testing Purposes
+X Undo & Redo
+X Improve Documentation and Help
+
 0.2:
 X Windows Exe
 O Exe Icon
@@ -33,10 +44,10 @@ dataDir Lock (for multiple TRN instances)
 Encryption?
 i18n
 Tags in text entries (e.g. @film:Batman)
-Template entries
 Export functionality
 Import of Backups
-Ubuntu Menu Entry
+
+
 
 
 
