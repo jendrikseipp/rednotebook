@@ -152,10 +152,10 @@ class MainFrame(wx.Frame):
         #Control Frame Size
         #print self.GetSize()
         currentSize = self.GetSize()
-        maxSize = wx.DisplaySize()
-        #print maxSize
-        width = min(currentSize[0], maxSize[0])
-        height = min(currentSize[1], maxSize[1])
+        workArea = wx.ClientDisplayRect()
+        #print 'DisplaySize', maxSize
+        width = min(currentSize[0], workArea[2])
+        height = min(currentSize[1], workArea[3])
         self.SetSize((width, height))
     
         

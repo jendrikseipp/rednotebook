@@ -41,18 +41,23 @@ if os.path.exists('/usr/share/applications/'):
 	parameters['data_files'] = [('/usr/share/applications/', ['rednotebook.desktop']),
 							    ('/usr/share/pixmaps/', ['rednotebook.png'])]
 
-windowsParameters= {
+#For the use of py2exe you have to checkout the repository.
+#To create Windows Installers have a look at the file 'win/win-build.txt'
+py2exeParameters = {
 	  				#3 (default) don't bundle, 2: bundle everything but the Python interpreter, 1: bundle everything, including the Python interpreter
 	  	  			'options' : {'py2exe': {'bundle_files': 1, 
 	  						'includes': ['rednotebook.gui', 'rednotebook.util', ]}}, 
 	  				#include library in exe
 	  	  			'zipfile' : None, 
 	  				#windows for gui, console for cli
-	  	  			'windows' : ['rednotebook/redNotebook.py'], 
+	  	  			'windows' : [{
+									'script': 'rednotebook/redNotebook.py',
+									'icon_resources': [(1, 'win/rednotebook.ico')],
+								}], 
 	  	  			}
 
-if sys.platform == 'win32':
-	parameters += windowsParameters   
+if 'py2exe' in sys.argv:
+	parameters.update(py2exeParameters)   
 
 #Additionally use MANIFEST.in for image files
 setup(**parameters)

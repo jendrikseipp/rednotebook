@@ -32,7 +32,7 @@
 ;!define company "No Company"
  
 ;!define prodname "Application"
-!define prodname "The Red Notebook"
+!define prodname "RedNotebook"
 ;!define exec "program.exe"
 !define exec "redNotebook.exe"
  
