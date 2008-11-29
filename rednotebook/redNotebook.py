@@ -62,8 +62,8 @@ class RedNotebook(wx.App):
 		self.SetTopWindow(mainFrame)
 		self.frame = mainFrame
 
-		#show instructions at first start
-		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or True #TODO: remove
+		#show instructions at first start or if testing
+		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or testing
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, filesystem.templateDir])
 		self.makeEmptyTemplateFiles()

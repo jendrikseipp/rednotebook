@@ -3,3 +3,5 @@ include rednotebook/images/redNotebookIcon/*.png
 include CHANGELOG.txt
 include README.txt
 include MANIFEST.in
+include rednotebook.desktop
+include rednotebook.png

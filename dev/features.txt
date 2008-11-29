@@ -1,4 +1,4 @@
-TODO:
+Changelog:
 
 0.4:
 
@@ -6,14 +6,14 @@ TODO:
 0.3:
 X Frame not bigger than screen
 X Template entries
-O Ubuntu Menu Entry
+X Ubuntu Menu Entry
 X Separate Data Dir for Testing Purposes
 X Undo & Redo
 X Improve Documentation and Help
+O Exe Icon
 
 0.2:
 X Windows Exe
-O Exe Icon
 X Windows Installer with NSIS
 X Frame Icons in Multiple Resolutions
 X After adding new category, directly add new entry
@@ -33,7 +33,8 @@ X distutils
 X Keyboard Shortcuts
 
 
-Later:
+TODO:
+
 Export Categories separately
 Configuration Files
 Toolbar?

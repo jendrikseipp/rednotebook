@@ -363,159 +363,142 @@ class TagCloudPanel(wx.Panel):
 		
 		#print htmlDoc.encode("utf-8")
 		return htmlDoc
-        
+		
 class MainTextPanel(wx.Panel):
-    def __init__(self, *args, **kwargs):
-        wx.Panel.__init__(self, *args, **kwargs)
-        
-        self.buttonInsertTemplate = wx.Button(self, -1, "Insert Template")
+	def __init__(self, *args, **kwargs):
+		wx.Panel.__init__(self, *args, **kwargs)
+		
+		self.buttonInsertTemplate = wx.Button(self, -1, "Insert Template")
 
-        self.undoButton = wx.BitmapButton(self, -1, wx.NullBitmap)
-        self.redoButton = wx.BitmapButton(self, -1, wx.NullBitmap)
-        self.undoButton.SetBitmapLabel(getBitmap('edit-undo.png'))
-        self.redoButton.SetBitmapLabel(getBitmap('edit-redo.png'))
-        self.undoButton.Enable(False)
-        self.redoButton.Enable(False)
-        
-        self.buttonInsertTemplate.SetToolTipString("Insert text defined for that weekday in template file")
-        
-        self.textField = MainTextField(self, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_MULTILINE|wx.TE_WORDWRAP)
-        self.textField.textPanel = self
-        
-        self.Bind(wx.EVT_BUTTON, self.onInsertTemplate, self.buttonInsertTemplate)
-        self.Bind(wx.EVT_BUTTON, self.onUndo, self.undoButton)
-        self.Bind(wx.EVT_BUTTON, self.onRedo, self.redoButton)
-        
-        self.__do_layout()
-        
-    def __do_layout(self):
-        sizer_3 = wx.BoxSizer(wx.VERTICAL)
-        sizer_9 = wx.BoxSizer(wx.HORIZONTAL)
-        sizer_9.Add(self.buttonInsertTemplate, 0, wx.ADJUST_MINSIZE, 0)
-        sizer_9.Add(self.undoButton, 0, wx.ADJUST_MINSIZE, 0)
-        sizer_9.Add(self.redoButton, 0, wx.ADJUST_MINSIZE, 0)
-        sizer_3.Add(sizer_9, 0, 0, 0)
-        sizer_3.Add(self.textField, 1, wx.ALL|wx.EXPAND, 0)
-        self.SetSizer(sizer_3)
-        
-    def showDayText(self, text):
-        self.redoButton.Enable(False)
-        self.undoButton.Enable(False)
-        self.textField.stockRedo = []
-        self.textField.stockUndo = []
-        self.textField.ChangeValue(text)
-        
-    def onInsertTemplate(self, event):
-        '''Load template'''
-        textToLoad = self.redNotebook.getTemplateEntry()
-        currentText = self.textField.GetValue()
-        newText = textToLoad + currentText.encode('utf-8')
-        self.textField.SetValue(newText)
-        event.Skip()
-        
-    def onUndo(self, event):
-        stockUndo = self.textField.stockUndo
-        stockRedo = self.textField.stockRedo
-        
-        if len(stockUndo) == 0:
-            return
+		self.undoButton = wx.BitmapButton(self, -1, wx.NullBitmap)
+		self.redoButton = wx.BitmapButton(self, -1, wx.NullBitmap)
+		self.undoButton.SetBitmapLabel(getBitmap('edit-undo.png'))
+		self.redoButton.SetBitmapLabel(getBitmap('edit-redo.png'))
+		self.undoButton.Enable(False)
+		self.redoButton.Enable(False)
+		self.undoButton.SetToolTipString('Undo')
+		self.redoButton.SetToolTipString('Redo')
+		
+		self.buttonInsertTemplate.SetToolTipString("Insert text defined for that weekday in template file")
+		
+		self.textField = wx.TextCtrl(self, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_MULTILINE|wx.TE_WORDWRAP)
+		self.textField.textPanel = self
+		
+		self.Bind(wx.EVT_BUTTON, self.onInsertTemplate, self.buttonInsertTemplate)
+		self.Bind(wx.EVT_BUTTON, self.onUndo, self.undoButton)
+		self.Bind(wx.EVT_BUTTON, self.onRedo, self.redoButton)
+		self.Bind(wx.EVT_TEXT, self.onTextChange, self.textField)
+		
+		self.__do_layout()
+		
+		self.history = []
+		self.historyPosition = -1
+		
+	def __do_layout(self):
+		sizer_3 = wx.BoxSizer(wx.VERTICAL)
+		sizer_9 = wx.BoxSizer(wx.HORIZONTAL)
+		sizer_9.Add(self.buttonInsertTemplate, 0, wx.ADJUST_MINSIZE, 0)
+		sizer_9.Add(self.undoButton, 0, wx.ADJUST_MINSIZE, 0)
+		sizer_9.Add(self.redoButton, 0, wx.ADJUST_MINSIZE, 0)
+		sizer_3.Add(sizer_9, 0, 0, 0)
+		sizer_3.Add(self.textField, 1, wx.ALL|wx.EXPAND, 0)
+		self.SetSizer(sizer_3)
+		
+	def showDayText(self, text):
+		self.redoButton.Enable(False)
+		self.undoButton.Enable(False)
+		self.history = []
+		self.historyPosition = -1
+		self.textField.SetValue(text)
+		
+	def onInsertTemplate(self, event):
+		
+		'''Load template'''
+		textToLoad = self.redNotebook.getTemplateEntry()
+		if len(textToLoad) == 0:
+			dialog = wx.MessageDialog(self, "The template file for this weekday is empty.\n" + \
+									  "You can edit the template files in the directory '" + \
+									  filesystem.templateDir + "'.", 
+									  "Template empty", wx.OK | wx.ICON_INFORMATION) # Create a message dialog box
+			dialog.ShowModal()
+		currentText = self.textField.GetValue()
+		newText = textToLoad + currentText.encode('utf-8')
+		self.textField.SetValue(newText)
+		#print self.history
+		event.Skip()
+		
+	def onTextChange(self, event):
 
-        a = stockUndo.pop()
-        if len(stockUndo) == 0:
-            self.undoButton.Enable(False)
+		'''Delete the history after the current historyPosition'''
+		del self.history[self.historyPosition + 1:]
+		
+		'''Disable the undo button'''
+		self.redoButton.Enable(False)
+		
+		currentText = self.textField.GetValue()
+		
+		'''Only log the bigger changes'''
+		#print 'X:', currentText, self.history[self.historyPosition]
+		if self.historyPosition == -1 or abs(len(currentText) - len(self.history[self.historyPosition])) >= 5:
+		
+			self.history.append(currentText)
+			self.historyPosition = len(self.history) - 1
+			#print self.history, self.historyPosition
+			
+			'''Enable the undo button'''
+			if self.historyPosition > 0:
+				self.undoButton.Enable(True)
+		
+		
+		
+	def onUndo(self, event):
+		
+		if self.historyPosition == 0:
+			return
+		
+		self.historyPosition -= 1
+		previousText = self.history[self.historyPosition]
+		self.textField.ChangeValue(previousText)
+		
+		if self.historyPosition == 0:
+			self.undoButton.Enable(False)
+			
+		self.redoButton.Enable(True)
+		
+		#print self.history
 
-        a.undo()
-        stockRedo.append(a)
-        self.redoButton.Enable(True)
-
-    def onRedo(self, event):
-        stockUndo = self.textField.stockUndo
-        stockRedo = self.textField.stockRedo
-        
-        if len(stockRedo) == 0:
-            return
-
-        a = stockRedo.pop()
-        if len(stockRedo) == 0:
-            self.redoButton.Enable(False)
-
-        a.redo()
-        stockUndo.append(a)
-
-        self.undoButton.Enable(True)
-        
-
-class MainTextField(wx.TextCtrl):
-    def __init__(self, *args, **kwargs):
-        wx.TextCtrl.__init__(self, *args, **kwargs)
-        
-        self.Bind(wx.EVT_TEXT, self.onTextChange, self)
-        
-        self.stockUndo = []
-        self.stockRedo = []
-        
-        self.text = ''
-        
-    
-        
-    def onTextChange(self, event):
-        if (self.textPanel.undoButton.IsEnabled() == False):
-            self.textPanel.undoButton.Enable(True)
-        text = self.GetValue()
-        # self.text - text before change
-        # text - text after change
-        if abs(len(text) - len(self.text)) >= 5:
-            undo = UndoText(self, self.text, text)
-            self.stockUndo.append(undo)
-            
-            self.text = text
-    
-            if self.stockRedo:
-                # this might be surprising, but it is a standard behaviour
-                # in all spreadsheets
-                del self.stockRedo[:]
-                self.textPanel.redoButton.Enable(False)
-            
-    
+	def onRedo(self, event):
+		
+		if self.historyPosition == len(self.history) - 1:
+			return
+		
+		self.historyPosition += 1
+		redoText = self.history[self.historyPosition]
+		self.textField.ChangeValue(redoText)
+		
+		if self.historyPosition == len(self.history) - 1:
+			self.redoButton.Enable(False)
+			
+		self.undoButton.Enable(True)
+		
+		#print self.history
+			
+	
 class HelpWindow(wx.Frame):
-    def __init__(self, parent, id, title):
-        wx.Frame.__init__(self, parent, id, title, size=(800, 600))
+	def __init__(self, parent, id, title):
+		wx.Frame.__init__(self, parent, id, title, size=(800, 600))
 
-        self.panel = wx.Panel(self, wx.ID_ANY)
-        vbox = wx.BoxSizer(wx.VERTICAL)
+		self.panel = wx.Panel(self, wx.ID_ANY)
+		vbox = wx.BoxSizer(wx.VERTICAL)
 
-        help = html.HtmlWindow(self.panel, wx.ID_ANY, style=wx.NO_BORDER)
-        help.SetPage(info.htmlHelp)
-        vbox.Add(help, 1, wx.ALL|wx.EXPAND)
-        self.panel.SetSizer(vbox)
-        self.panel.SetFocus()
+		help = html.HtmlWindow(self.panel, wx.ID_ANY, style=wx.NO_BORDER)
+		help.SetPage(info.htmlHelp)
+		vbox.Add(help, 1, wx.ALL|wx.EXPAND)
+		self.panel.SetSizer(vbox)
+		self.panel.SetFocus()
 
-        self.Centre()
-        self.Show(True)        
-        
-  
-class UndoText(object):
-    '''
-    Class that makes it possible to undo and redo editing
-    
-    ideas from http://zetcode.com/wxpython/tips/
-    '''
-    def __init__(self, textCtrl, textBefore, textAfter):
-        self.RedoText = textAfter
-        self.UndoText = textBefore
-        self.textCtrl = textCtrl
-
-    def undo(self):
-        self.RedoText = self.textCtrl.GetValue()
-        if self.UndoText ==  None:
-            print 'None'
-            self.textCtrl.ChangeValue('')
-        else: self.textCtrl.ChangeValue(self.UndoText)
-
-    def redo(self):
-        if self.RedoText == None:
-            self.textCtrl.ChangeValue('')
-        else: self.textCtrl.ChangeValue(self.RedoText)
+		self.Centre()
+		self.Show(True)		
 
 
 def getBitmapFromFile(file):

@@ -1,11 +1,13 @@
 [Desktop Entry]
+#Version=1.0 #Not mandatory
+#Encoding=UTF-­8 #Encoding causes problems
 Name=RedNotebook
-Comment=A Desktop Diary
-Exec=/usr/bin/rednotebook
-#Icon=rednotebook
+GenericName=Diary
+Comment=A desktop diary
+Exec=rednotebook
+Icon=/usr/share/pixmaps/rednotebook.png
 Terminal=false
 Type=Application
-Categories=Office
+Categories=Office;
 StartupNotify=true
-MimeType=text/x-yaml;
-GenericName=Diary
+#MimeType=application/x-bittorrent;

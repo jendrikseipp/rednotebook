@@ -1,0 +1,7 @@
+python setup.py sdist
+python setup.py bdist_rpm
+cd dist/
+sudo alien -gk rednotebook-0.3.0-1.noarch.rpm 
+sudo cp ../debian/control rednotebook-0.3.0/debian/
+cd rednotebook-0.3.0
+sudo debian/rules binary

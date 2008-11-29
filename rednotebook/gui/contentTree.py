@@ -279,6 +279,9 @@ class ContentTree(CT.CustomTreeCtrl):
         if dlg.ShowModal() == wx.ID_OK:
             newname = dlg.GetValue()
             
+            if newname == 'text':
+                newname = 'Text'
+            
             '''If category exists add entry to existing category'''
             dayCategories = self.root.GetChildren()
             for category in dayCategories:

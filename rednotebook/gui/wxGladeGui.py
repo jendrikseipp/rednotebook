@@ -211,7 +211,7 @@ class MainFrame(wx.Frame):
     def onAbout(self,event): # wxGlade: MainFrame.<event_handler>    
         # First we create and fill the info object
         dialogInfo = wx.AboutDialogInfo()
-        dialogInfo.Icon = diaryGui.getIcon('redNotebook-128.png')
+        dialogInfo.Icon = diaryGui.getIcon('redNotebookIcon/rn-128.png')
         dialogInfo.Name = "The Red Notebook"
         dialogInfo.Version = info.version
         dialogInfo.Copyright = "(C) 2008 Jendrik Seipp"
