@@ -36,6 +36,7 @@ class DiaryCalendar(wx.calendar.CalendarCtrl):
 		for dayNumber, day in month.days.iteritems():
 			self.setDayEdited(dayNumber, not day.empty)
 			
+			
 class ComboBoxDialog(wx.Dialog):
 	def __init__(self, parent=None, id=wx.ID_ANY, title='', list=None):
 		wx.Dialog.__init__(self, parent, id, title)
@@ -60,6 +61,7 @@ class ComboBoxDialog(wx.Dialog):
 		
 	def GetValue(self):
 		return self.comboBox.GetValue()
+		
 		
 class SearchPanel(wx.Panel):
 	def __init__(self, parent, mainFrame):
@@ -89,9 +91,6 @@ class SearchPanel(wx.Panel):
 		self.Bind(wx.EVT_TEXT_ENTER, self.OnDoEnterSearch, self.search)
 		#Live Search
 		self.Bind(wx.EVT_TEXT, self.OnDoLiveSearch, self.search)	 
-		
-	
-
 
 	def OnSearchButton(self, evt):
 		self.updateMenu()
@@ -133,11 +132,6 @@ class SearchPanel(wx.Panel):
 		for category in self.recentSearches:
 			menu.Append(-1, category)
 		return menu
-	
-
-
-		
-
 
 
 #---------------------------------------------------------------------------
@@ -251,7 +245,6 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
 
 		self.currentItem = 0
 
-
 	# Used by the ColumnSorterMixin, see wx/lib/mixins/listctrl.py
 	def GetListCtrl(self):
 		return self.list
@@ -259,7 +252,6 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
 	# Used by the ColumnSorterMixin, see wx/lib/mixins/listctrl.py
 	def GetSortImages(self):
 		return (self.sm_dn, self.sm_up)
-
 
 	def OnRightDown(self, event):
 		x = event.GetX()
@@ -270,7 +262,6 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
 			self.list.Select(item)
 
 		event.Skip()
-
 
 	def OnItemSelected(self, event):
 		self.currentItem = event.m_itemIndex

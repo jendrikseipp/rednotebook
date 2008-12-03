@@ -1,4 +1,4 @@
-====== The Red Notebook ======
+====== RedNotebook ======
 
 ===== REQUIREMENTS =====
   - Python (2.5) (www.python.org)
@@ -25,5 +25,10 @@ in any shell.
 Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py".
 
 
+===== THANKS =====
+  - The authors of the programs listed under 'requirements'
+  - Everaldo Coelho (www.everaldo.com) for the excellent icon
 
-Have fun!
+
+
+Enjoy!

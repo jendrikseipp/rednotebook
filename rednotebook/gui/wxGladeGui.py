@@ -129,11 +129,15 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.OnTimer, id=ID_TIMER)
         
         self.textPanel.redNotebook = self.redNotebook
+        
+        '''Adjust the right sash position to the saved value'''
+        if self.redNotebook.config.Exists('rightSashPosition'):
+            self.window_2.SetSashPosition(self.redNotebook.config.ReadInt('rightSashPosition'))
 
 
     def __set_properties(self):
         # begin wxGlade: MainFrame.__set_properties
-        self.SetTitle("The Red Notebook")
+        self.SetTitle("RedNotebook")
         self.SetSize((1024, 768))
         self.statusbar.SetStatusWidths([-1, 250])
         # statusbar fields
@@ -151,6 +155,10 @@ class MainFrame(wx.Frame):
         
         #Control Frame Size
         #print self.GetSize()
+        savedFrameWidth = self.redNotebook.config.ReadInt('mainFrameWidth', 1024)
+        savedFrameHeight = self.redNotebook.config.ReadInt('mainFrameHeight', 768)
+        savedFrameSize = (savedFrameWidth, savedFrameHeight)
+        self.SetSize(savedFrameSize)
         currentSize = self.GetSize()
         workArea = wx.ClientDisplayRect()
         #print 'DisplaySize', maxSize
@@ -186,7 +194,7 @@ class MainFrame(wx.Frame):
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
         sizer_4.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.textPanel, self.window_2_pane_2, 515)
+        self.window_2.SplitVertically(self.textPanel, self.window_2_pane_2, 513)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)
@@ -196,7 +204,15 @@ class MainFrame(wx.Frame):
         self.Centre()
         # end wxGlade
         
-    
+    def saveConfig(self):
+        config = self.redNotebook.config
+        width, height = self.GetSize()
+        #print self.redNotebook.config.GetPath()
+        config.WriteInt('mainFrameWidth', width)
+        config.WriteInt('mainFrameHeight', height)
+        config.WriteInt('rightSashPosition', self.window_2.GetSashPosition())
+        config.Flush()
+        print 'Configuration saved'
 
     def onDateChange(self, event): # wxGlade: MainFrame.<event_handler>
         newDate = self.calendar.PyGetDate()
@@ -212,13 +228,13 @@ class MainFrame(wx.Frame):
         # First we create and fill the info object
         dialogInfo = wx.AboutDialogInfo()
         dialogInfo.Icon = diaryGui.getIcon('redNotebookIcon/rn-128.png')
-        dialogInfo.Name = "The Red Notebook"
+        dialogInfo.Name = "RedNotebook"
         dialogInfo.Version = info.version
         dialogInfo.Copyright = "(C) 2008 Jendrik Seipp"
         dialogInfo.Description = wordwrap(
             "A desktop diary.", 
             350, wx.ClientDC(self.window_1_pane_1)) # change the wx.ClientDC to use self.panel instead of self
-        dialogInfo.WebSite = (info.url, "Red Notebook Website")
+        dialogInfo.WebSite = (info.url, "RedNotebook Website")
         dialogInfo.Developers = info.developers
         
         licenseText = "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"
@@ -228,25 +244,17 @@ class MainFrame(wx.Frame):
 
         # Then we call wx.AboutBox giving it that info object
         wx.AboutBox(dialogInfo)
-        
+    
     def onExit(self, event): # wxGlade: MainFrame.<event_handler>
+        '''Called when user clicks exit'''
         self.Close(True)  # Close the frame.
         event.Skip()
 
     def onClose(self, event): # wxGlade: MainFrame.<event_handler>
-        #TODO: Uncomment
-        #dial = wx.MessageDialog(None, 'Are you sure to quit?', 'Question',
-         #   wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION)
-        #ret = dial.ShowModal()
-        #if ret == wx.ID_YES:
-            self.redNotebook.saveToDisk()
-            self.Destroy()
-        #else:
-          #  event.Veto()
-
-    def onWebsite(self, event): # wxGlade: MainFrame.<event_handler>
-        print "Event handler `onWebsite' not implemented"
-        event.Skip()
+        '''Called when the frame is closed in any way'''
+        self.redNotebook.saveToDisk()
+        self.saveConfig()
+        self.Destroy()
         
     def updateStatistics(self):
         self.tagCloudPanel.setWordCountDict(self.redNotebook.getWordCountDict())
@@ -317,8 +325,6 @@ class MainFrame(wx.Frame):
         self.redNotebook.goToNextEditedDay()
         event.Skip()
 
-    
-
     def onBackup(self, event): # wxGlade: MainFrame.<event_handler>
         self.redNotebook.backupContents()
         event.Skip()
@@ -326,19 +332,9 @@ class MainFrame(wx.Frame):
     def onAddCategory(self, event): # wxGlade: MainFrame.<event_handler>
         self.contentTree.OnItemCreate(event)
         event.Skip()
-    
-    
 
     def onShowHelp(self, event): # wxGlade: MainFrame.<event_handler>
         helpWindow = diaryGui.HelpWindow(self, wx.ID_ANY, 'Help')
         event.Skip()
 
 # end of class MainFrame
-
-#if __name__ == "__main__":
-#    app = wx.PySimpleApp(0)
-#    wx.InitAllImageHandlers()
-#    mainFrame = MainFrame(None, -1, "")
-#    app.SetTopWindow(mainFrame)
-#    mainFrame.Show()
-#    app.MainLoop()

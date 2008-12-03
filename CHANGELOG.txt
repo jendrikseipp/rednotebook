@@ -1,5 +1,11 @@
 ==== Changelog ====
 
+=== 0.3.0 (2008-11-29) ===
+    * Template entries for each weekday
+    * Undo & Redo
+    * Ubuntu Main Menu Entry
+    * Improved Documentation
+
 === 0.2.0 (2008-11-07) ===
   * Word Cloud
   * Frame Icons in Multiple Resolutions

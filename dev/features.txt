@@ -1,7 +1,9 @@
 Changelog:
 
 0.4:
-
+X Configuration File
+X Rename Frame Title to "RedNotebook"
+X Save Frame Size and Sash Position
 
 0.3:
 X Frame not bigger than screen
@@ -10,7 +12,7 @@ X Ubuntu Menu Entry
 X Separate Data Dir for Testing Purposes
 X Undo & Redo
 X Improve Documentation and Help
-O Exe Icon
+X Exe Icon
 
 0.2:
 X Windows Exe
@@ -36,10 +38,9 @@ X Keyboard Shortcuts
 TODO:
 
 Export Categories separately
-Configuration Files
 Toolbar?
 Hyperlinks in TreeCtrl?
-Wiki Markup
+Wiki Markup (Extend Markdown to support Dokuwiki Syntax)
 Day Preview
 dataDir Lock (for multiple TRN instances)
 Encryption?

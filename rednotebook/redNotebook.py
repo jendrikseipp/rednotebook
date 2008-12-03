@@ -14,8 +14,6 @@ import wx
 import yaml
 
 
-
-
 import datetime
 import os
 import zipfile
@@ -45,6 +43,7 @@ from rednotebook.util import unicode
 from rednotebook.util import dates
 from rednotebook.util import utils
 from rednotebook import info
+from rednotebook import config
 
 
 class RedNotebook(wx.App):
@@ -57,6 +56,12 @@ class RedNotebook(wx.App):
 		self.date = None
 		self.months = {}
 		
+		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, filesystem.templateDir])
+		self.makeEmptyTemplateFiles()
+		filesystem.makeFiles([(filesystem.configFile, '')])
+		
+		self.config = config.redNotebookConfig(localFilename=filesystem.configFile)
+		
 		mainFrame = wxGladeGui.MainFrame(self, None, -1, "")
 		mainFrame.Show()
 		self.SetTopWindow(mainFrame)
@@ -64,16 +69,12 @@ class RedNotebook(wx.App):
 
 		#show instructions at first start or if testing
 		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or testing
-		
-		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, filesystem.templateDir])
-		self.makeEmptyTemplateFiles()
-		
 		   
 		self.actualDate = datetime.date.today()
 		
 		self.loadAllMonthsFromDisk()
 		
-		 #Nothing to save before first day change
+		#Nothing to save before first day change
 		self.loadDay(self.actualDate)
 		
 		self.frame.updateStatistics()
@@ -85,9 +86,18 @@ class RedNotebook(wx.App):
 		
 	   
 	def makeEmptyTemplateFiles(self):
-		templateFiles = map(lambda dayNumber: os.path.join(filesystem.templateDir, \
-														   str(dayNumber) + filesystem.fileNameExtension), range(1, 8))
-		fileContentPairs = map(lambda file: (file, ''), templateFiles)
+		def getInstruction(dayNumber):
+			return 'The Template-Text for this weekday has not been edited. ' + \
+					'If you want to have some text that you can add to that day every week, ' + \
+					'edit the file "' + filesystem.getTemplateFile(dayNumber) + \
+					'" in a text editor.'
+					
+		fileContentPairs = []
+		for dayNumber in range(1, 8):
+			fileContentPairs.append((filesystem.getTemplateFile(dayNumber), getInstruction(dayNumber)))
+		#templateFiles = map(lambda dayNumber: filesystem.getTemplateFile(dayNumber), range(1, 8))
+		
+		#fileContentPairs = map(lambda file: (file, ''), templateFiles)
 		filesystem.makeFiles(fileContentPairs)
 	
 	def backupContents(self):
@@ -126,12 +136,8 @@ class RedNotebook(wx.App):
 					#month.prettyPrint()
 					yaml.dump(monthContent, monthFile)
 		
-		#TODO: Uncomment
-		#savedDialog = wx.MessageDialog(None, message='The content has been saved.', caption='Saved', style=wx.OK)
 		self.showMessage('The content has been saved')
 		print 'The content has been saved'
-		#savedDialog.ShowModal()
-		#savedDialog.Destroy()
 		
 	def loadAllMonthsFromDisk(self):
 		for root, dirs, files in os.walk(filesystem.dataDir):
@@ -305,14 +311,6 @@ class RedNotebook(wx.App):
 		
 		instructionText = info.completeWelcomeText
 		self.frame.textPanel.showDayText(instructionText)
-		
-		
-		
-class Label(object):
-	def __init__(self, name):
-		self.name = name
-		
-		
 
 		
 			
