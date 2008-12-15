@@ -32,7 +32,7 @@ print 'BaseDir:', baseDir
 if baseDir not in sys.path:
 	print 'Adding BaseDir to sys.path'
 	sys.path.insert(0, baseDir)
-
+	
 
 
 
@@ -44,6 +44,8 @@ from rednotebook.util import dates
 from rednotebook.util import utils
 from rednotebook import info
 from rednotebook import config
+from rednotebook import export
+
 
 
 class RedNotebook(wx.App):
@@ -52,6 +54,12 @@ class RedNotebook(wx.App):
 	maxDate = datetime.date(2020, 1, 1)
 	
 	def OnInit(self):
+		self.testing = False
+		if 'testing' in sys.argv:
+			self.testing = True
+			print 'Testing Mode'
+			filesystem.dataDir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
+		
 		self.month = None
 		self.date = None
 		self.months = {}
@@ -67,14 +75,14 @@ class RedNotebook(wx.App):
 		self.SetTopWindow(mainFrame)
 		self.frame = mainFrame
 
-		#show instructions at first start or if testing
-		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or testing
+		'show instructions at first start or if testing'
+		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
 		   
 		self.actualDate = datetime.date.today()
 		
 		self.loadAllMonthsFromDisk()
 		
-		#Nothing to save before first day change
+		'Nothing to save before first day change'
 		self.loadDay(self.actualDate)
 		
 		self.frame.updateStatistics()
@@ -83,11 +91,37 @@ class RedNotebook(wx.App):
 			self.addInstructionContent()
 
 		return True
+	
+	def getDaysInDateRange(self, range):
+		startDate, endDate = range
+		assert startDate < endDate
 		
+		sortedDays = self.sortedDays
+		daysInDateRange = []
+		for day in sortedDays:
+			if day.date < startDate:
+				continue
+			elif day.date >= startDate and day.date <= endDate:
+				daysInDateRange.append(day)
+			elif day.date > endDate:
+				break
+		return daysInDateRange
+		
+	def _getSortedDays(self):
+		return sorted(self.days, dates.compareTwoDays)
+	sortedDays = property(_getSortedDays)
+	
+	def getEditDateOfEntryNumber(self, entryNumber):
+		sortedDays = self.sortedDays
+		if len(self.sortedDays) == 0:
+			return datetime.date.today()
+		#entryNumber = utils.restrain(entryNumber, (0, len(sortedDays)-1))
+		return dates.getDateFromDay(self.sortedDays[entryNumber % len(sortedDays)])
+	
 	   
 	def makeEmptyTemplateFiles(self):
 		def getInstruction(dayNumber):
-			return 'The Template-Text for this weekday has not been edited. ' + \
+			return 'The template for this weekday has not been edited. ' + \
 					'If you want to have some text that you can add to that day every week, ' + \
 					'edit the file "' + filesystem.getTemplateFile(dayNumber) + \
 					'" in a text editor.'
@@ -99,8 +133,22 @@ class RedNotebook(wx.App):
 		
 		#fileContentPairs = map(lambda file: (file, ''), templateFiles)
 		filesystem.makeFiles(fileContentPairs)
+		
+	def exportDiary(self):
+		self.saveOldDay()
+		
+		'Create wizard'
+		exportWizard = export.ExportWizard(self, 'Export', img_filename='redNotebookIcon/rn-128.png')
+		
+		'Show the main window'
+		exportWizard.run() 
+	
+		'Cleanup'
+		exportWizard.Destroy()
+        #export.export(self)
 	
 	def backupContents(self):
+		self.saveToDisk()
 		proposedFileName = 'RedNotebook-Backup_' + str(datetime.date.today()) + ".zip"
 		dlg = wx.FileDialog(self.frame, "Choose Backup File", '', proposedFileName, "*.zip", wx.SAVE)
 		returnValue = dlg.ShowModal()
@@ -137,7 +185,6 @@ class RedNotebook(wx.App):
 					yaml.dump(monthContent, monthFile)
 		
 		self.showMessage('The content has been saved')
-		print 'The content has been saved'
 		
 	def loadAllMonthsFromDisk(self):
 		for root, dirs, files in os.walk(filesystem.dataDir):
@@ -147,22 +194,21 @@ class RedNotebook(wx.App):
 	def loadMonthFromDisk(self, file):
 		
 		yearAndMonth = file[-11:-4] #dates.getYearAndMonthFromDate(date)
-		yearNumber = yearAndMonth[:4]
-		monthNumber = yearAndMonth[-2:]
+		yearNumber = int(yearAndMonth[:4])
+		monthNumber = int(yearAndMonth[-2:])
 		
-		#Selected month has not been loaded
-		#if not self.months.has_key(yearAndMonth):
 		monthFileString = file #self.dataDir + yearAndMonth + self.fileNameExtension
 		if not os.path.isfile(monthFileString):
-			#File not found
-			#Create new month
-			print 'not found', monthFileString
-			self.months[yearAndMonth] = Month(yearNumber, monthNumber)
+			'If file is not found, create new month'
+			try:	
+				raise IOError('file not found: ' + monthFileString)
+			except:
+				self.months[yearAndMonth] = Month(yearNumber, monthNumber)
 			 
 		else:
-			#File found
-			monthFile = open(monthFileString, 'r')
-			monthContents = yaml.load(monthFile)
+			'File found'
+			with open(monthFileString, 'r') as monthFile:
+				monthContents = yaml.load(monthFile)
 			self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
 			
 		return self.months[yearAndMonth]
@@ -171,25 +217,14 @@ class RedNotebook(wx.App):
 		
 		yearAndMonth = dates.getYearAndMonthFromDate(date)
 		
-		#Selected month has not been loaded
+		'Selected month has not been loaded or created yet'
 		if not self.months.has_key(yearAndMonth):
-			#monthFileString = self.dataDir + yearAndMonth + self.fileNameExtension
-			#if not os.path.isfile(monthFileString):
-				#File not found
-				#Create new month
-				#print 'not found', monthFileString
 			self.months[yearAndMonth] = Month(date.year, date.month)
-				 
-			#else:
-				#File found
-				#monthFile = open(monthFileString, 'r')
-				#monthContents = yaml.load(monthFile)
-				#self.months[yearAndMonth] = Month(monthContents)
 			
 		return self.months[yearAndMonth]
 	
 	def saveOldDay(self):  
-		#Order important
+		'Order is important'
 		self.day.content = self.frame.contentTree.getDayContent()
 		self.day.text = self.frame.getDayText()
 		self.frame.calendar.setDayEdited(self.date.day, not self.day.empty)
@@ -229,7 +264,6 @@ class RedNotebook(wx.App):
 			print 'No edited day exists after this one'
 			self.changeDate(oldDate)
 		
-		
 	def goToPrevEditedDay(self):
 		oldDate = self.date	
 		self.goToPrevDay()
@@ -241,6 +275,7 @@ class RedNotebook(wx.App):
 			
 	def showMessage(self, messageText):
 		self.frame.showMessageInStatusBar(messageText)
+		print messageText
 		
 	def _getNodeNames(self):
 		nodeNames = set([])
@@ -368,6 +403,15 @@ class Day(object):
 		return self.tree.keys()
 	nodeNames = property(_getNodeNames)
 	
+	def getCategoryContentPairs(self):
+		pairs = self.tree.copy()
+		for category, content in pairs.iteritems():
+			entryList = []
+			for entry, nonetype in content.iteritems():
+				entryList.append(entry)
+			pairs[category] = entryList
+		return pairs
+	
 	def getWords(self, withSpecialChars=True):
 		if withSpecialChars:
 			return self.text.split()
@@ -411,6 +455,10 @@ class Day(object):
 			return (self, '... ' + unicode.substring(self.text, resultTextStart, resultTextEnd).strip() + ' ...')
 		else:
 			return None
+		
+	def _date(self):
+		return dates.getDateFromDay(self)
+	date = property(_date)
 			
 
 class Month(object):
@@ -468,17 +516,10 @@ class Month(object):
 	
 		
 	
-def main():
-	global testing
-	testing = False
-	if 'testing' in sys.argv:
-		testing = True
-		filesystem.testing = True
-		print 'Testing Mode'
-		filesystem.dataDir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
-	app = RedNotebook(redirect=False)
+def main():	
+	redNotebook = RedNotebook(redirect=False)
 	wx.InitAllImageHandlers()
-	app.MainLoop()
+	redNotebook.MainLoop()
 
 #if __name__ == '__main__':
 main()

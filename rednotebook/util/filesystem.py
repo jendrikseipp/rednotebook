@@ -2,10 +2,10 @@ from __future__ import with_statement
 import os
 import zipfile
 
+
+
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
 import imp, os, sys
-
-#from rednotebook import redNotebook
 
 def main_is_frozen():
    return (hasattr(sys, "frozen") or # new py2exe
@@ -17,6 +17,7 @@ def get_main_dir():
 	   return os.path.dirname(sys.executable)
    return os.path.dirname(sys.argv[0])
 #--------------------------------------------------------------------------------------------------------
+
 
 if not main_is_frozen():
 	appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
@@ -32,6 +33,7 @@ redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
 dataDir = os.path.join(redNotebookUserDir, "data/")
 templateDir = os.path.join(redNotebookUserDir, "templates/")
 configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
+filesDir = os.path.join(appDir, 'files/')
 fileNameExtension = '.txt'
 
 

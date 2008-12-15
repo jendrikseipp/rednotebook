@@ -66,6 +66,7 @@ class MainFrame(wx.Frame):
         global ID_ABOUT; ID_ABOUT = wx.ID_ABOUT
         wxglade_tmp_menu = wx.Menu()
         wxglade_tmp_menu.Append(wx.ID_SAVE, "&Save", "Save all contents", wx.ITEM_NORMAL)
+        wxglade_tmp_menu.Append(wx.ID_ANY, "Export", "Export the diary to various formats", wx.ITEM_NORMAL)
         wxglade_tmp_menu.Append(wx.ID_DUPLICATE, "&Backup", "", wx.ITEM_NORMAL)
         wxglade_tmp_menu.AppendSeparator()
         wxglade_tmp_menu.Append(wx.ID_EXIT, "Exit", "Close the application", wx.ITEM_NORMAL)
@@ -97,6 +98,7 @@ class MainFrame(wx.Frame):
         self.__do_layout()
 
         self.Bind(wx.EVT_MENU, self.onSave, id=wx.ID_SAVE)
+        self.Bind(wx.EVT_MENU, self.onExport, id=wx.ID_ANY)
         self.Bind(wx.EVT_MENU, self.onBackup, id=wx.ID_DUPLICATE)
         self.Bind(wx.EVT_MENU, self.onExit, id=wx.ID_EXIT)
         self.Bind(wx.EVT_MENU, self.onButtonPrevDay, id=wx.ID_BACKWARD)
@@ -288,7 +290,7 @@ class MainFrame(wx.Frame):
         
     def OnTimer(self, event):
         self.timerRound += 1
-        if self.timerRound == 30:
+        if self.timerRound == 60:
             #self.statusbar.SetBackgroundColour('#E0E2EB')
             self.setStatusBarText('')
             self.timer.Stop()
@@ -335,6 +337,10 @@ class MainFrame(wx.Frame):
 
     def onShowHelp(self, event): # wxGlade: MainFrame.<event_handler>
         helpWindow = diaryGui.HelpWindow(self, wx.ID_ANY, 'Help')
+        event.Skip()
+
+    def onExport(self, event): # wxGlade: MainFrame.<event_handler>
+    	self.redNotebook.exportDiary()
         event.Skip()
 
 # end of class MainFrame

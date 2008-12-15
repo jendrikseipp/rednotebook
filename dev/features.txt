@@ -1,9 +1,19 @@
 Changelog:
 
+0.5:
+O Import of Backups
+O i18n
+O HTML Preview
+
 0.4:
 X Configuration File
 X Rename Frame Title to "RedNotebook"
 X Save Frame Size and Sash Position
+X Export functionality
+X  - Text
+X  - HTML
+X  - LaTeX
+X  - PDF
 
 0.3:
 X Frame not bigger than screen
@@ -40,21 +50,18 @@ TODO:
 Export Categories separately
 Toolbar?
 Hyperlinks in TreeCtrl?
-Wiki Markup (Extend Markdown to support Dokuwiki Syntax)
 Day Preview
-dataDir Lock (for multiple TRN instances)
+dataDir Lock (for multiple TRN instances)?
 Encryption?
-i18n
 Tags in text entries (e.g. @film:Batman)
-Export functionality
-Import of Backups
+(Extend Markdown to support Dokuwiki Syntax) ?
 
+Later:
+O Add RedNotebook to Startup Programs
+    0 Linux: Option in Program
+    O Win: Installer Option
 
-
-
-
-DESCRIPTION
-
-While there exist many journalling applications for publicating content on the web there are very few applications with which you can just keep track of the stuff you did and the thoughts you had on your desktop and only for personal use.
-
-The program is written in Python and uses wxPython for the GUI.
+Wishlist:
+Pictures?
+HTML?
+Task Bar Icon

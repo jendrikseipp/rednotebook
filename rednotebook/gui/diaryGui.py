@@ -2,6 +2,7 @@ import os
 #import wxversion
 #wxversion.select("2.8")
 import wx
+#from wx import calendar
 import sys
 import datetime
 import random
@@ -311,7 +312,7 @@ class TagCloudPanel(wx.Panel):
 		self.html.SetPage(htmlDoc)
 		
 	def getHtmlDocFromWordCountDict(self, wordCountDict):
-		sortedDict = utils.getSortedDictByValues(wordCountDict)
+		sortedDict = utils.sortDictByValues(wordCountDict)
 		#print sortedDict
 		longWords = filter(lambda x: len(x[0]) > 4, sortedDict)
 		#print longWords
