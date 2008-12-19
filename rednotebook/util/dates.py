@@ -20,11 +20,15 @@ def compareTwoDays(day1, day2):
 	return getNumberOfDaysBetweenTwoDays(day1, day2)
 
 def getWXDateTimeFromPyDate(date):
-	wxDateTime = wx.DateTime()
-	wxDateTime.SetYear(date.year)
+	wxDateTime = wx.DateTime.Now()
+	#print date.year, date.month, date.day
+	#print wxDateTime
+	#wxDateTime.SetYear(date.year)
 	'Implementation buggy'
-	wxDateTime.SetMonth(date.month - 1)
-	wxDateTime.SetDay(date.day)
+	wxDateTime.Set(date.day, date.month-1, date.year)
+	#print wxDateTime
+	#wxDateTime.SetMonth(date.month - 1)
+	#wxDateTime.SetDay(date.day)
 	return wxDateTime
 
 def getPyDateFromWXDateTime(wxDateTime):
