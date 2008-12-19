@@ -5,6 +5,10 @@ O Import of Backups
 O i18n
 O HTML Preview
 
+O Do not export empty days
+O Fix PDF export for windows?
+0 remove tcl/Tk dependency
+
 0.4:
 X Configuration File
 X Rename Frame Title to "RedNotebook"

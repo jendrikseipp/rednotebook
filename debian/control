@@ -6,7 +6,7 @@ Maintainer: Jendrik <jendrikseipp@web.de>
 Package: rednotebook
 Architecture: all
 Depends: python, python-wxgtk2.8, python-yaml
-Recommends: texlive-latex-base
+Recommends: texlive-latex-base, texlive-latex-recommended
 Description: A Desktop Diary
  RedNotebook is a journal software that helps you keep track of your activities and thoughts
  .
