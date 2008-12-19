@@ -405,11 +405,16 @@ class Day(object):
 	nodeNames = property(_getNodeNames)
 	
 	def getCategoryContentPairs(self):
+		'''
+		Returns a list of (category, contentInCategoryAsList) pairs.
+		contentInCategoryAsList can be empty
+		'''
 		pairs = self.tree.copy()
 		for category, content in pairs.iteritems():
 			entryList = []
-			for entry, nonetype in content.iteritems():
-				entryList.append(entry)
+			if content is not None:
+				for entry, nonetype in content.iteritems():
+					entryList.append(entry)
 			pairs[category] = entryList
 		return pairs
 	
