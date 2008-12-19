@@ -33,7 +33,8 @@ parameters = {'name'          : 'rednotebook',
                     'keywords'      : "diary", 
                     'scripts'       : ['rednotebook/rednotebook'], 
                     'packages'      : ['rednotebook', 'rednotebook.gui', 'rednotebook.util'], 
-                    'package_data'  : {'rednotebook': ['images/*.png', 'images/redNotebookIcon/*.png']},
+                    'package_data'  : {'rednotebook': ['images/*.png', 'images/redNotebookIcon/*.png',
+														'files/*.css',]},
                    }
 
 #Debian parameters

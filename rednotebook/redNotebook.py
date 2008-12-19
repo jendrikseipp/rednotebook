@@ -163,11 +163,11 @@ class RedNotebook(wx.App):
 					return
 			
 			archiveFiles = []
-			for root, dirs, files in os.walk(self.dataDir):
+			for root, dirs, files in os.walk(filesystem.dataDir):
 				for file in files:
 					archiveFiles.append(os.path.join(root, file))
 			
-			filesystem.writeArchive(archiveFileName, archiveFiles, self.dataDir)
+			filesystem.writeArchive(archiveFileName, archiveFiles, filesystem.dataDir)
 
 	
 	def saveToDisk(self):
@@ -336,7 +336,8 @@ class RedNotebook(wx.App):
 	
 	def addInstructionContent(self):
 		instructionDayContent = {u'Cool Stuff': {u'Went to see the pope': None}, 
-								 u'Ideas': {u'Found a way to end all wars. (More on that tomorrow.)': None}}
+								 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
+								 }
 		
 		#Dates don't matter as only the categories are shown
 		instructionDay = Day(self.actualDate.month, self.actualDate.day, dayContent = instructionDayContent)

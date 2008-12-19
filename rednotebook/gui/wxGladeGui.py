@@ -66,7 +66,7 @@ class MainFrame(wx.Frame):
         global ID_ABOUT; ID_ABOUT = wx.ID_ABOUT
         wxglade_tmp_menu = wx.Menu()
         wxglade_tmp_menu.Append(wx.ID_SAVE, "&Save", "Save all contents", wx.ITEM_NORMAL)
-        wxglade_tmp_menu.Append(wx.ID_ANY, "Export", "Export the diary to various formats", wx.ITEM_NORMAL)
+        wxglade_tmp_menu.Append(100, "Export", "Export the diary to various formats", wx.ITEM_NORMAL)
         wxglade_tmp_menu.Append(wx.ID_DUPLICATE, "&Backup", "", wx.ITEM_NORMAL)
         wxglade_tmp_menu.AppendSeparator()
         wxglade_tmp_menu.Append(wx.ID_EXIT, "Exit", "Close the application", wx.ITEM_NORMAL)
@@ -98,7 +98,7 @@ class MainFrame(wx.Frame):
         self.__do_layout()
 
         self.Bind(wx.EVT_MENU, self.onSave, id=wx.ID_SAVE)
-        self.Bind(wx.EVT_MENU, self.onExport, id=wx.ID_ANY)
+        self.Bind(wx.EVT_MENU, self.onExport, id=100)
         self.Bind(wx.EVT_MENU, self.onBackup, id=wx.ID_DUPLICATE)
         self.Bind(wx.EVT_MENU, self.onExit, id=wx.ID_EXIT)
         self.Bind(wx.EVT_MENU, self.onButtonPrevDay, id=wx.ID_BACKWARD)
@@ -196,7 +196,7 @@ class MainFrame(wx.Frame):
         sizer_4.Add(self.contentTree, 1, wx.EXPAND|wx.ALIGN_RIGHT, 0)
         sizer_4.Add(self.button_1, 0, wx.ALIGN_RIGHT, 0)
         self.window_2_pane_2.SetSizer(sizer_4)
-        self.window_2.SplitVertically(self.textPanel, self.window_2_pane_2, 513)
+        self.window_2.SplitVertically(self.textPanel, self.window_2_pane_2, 514)
         sizer_2.Add(self.window_2, 1, wx.EXPAND, 0)
         self.window_1_pane_2.SetSizer(sizer_2)
         self.window_1.SplitVertically(self.window_1_pane_1, self.window_1_pane_2, 256)
@@ -285,12 +285,12 @@ class MainFrame(wx.Frame):
     
     def showMessageInStatusBar(self, messageText):
         self.setStatusBarText(messageText)
-        #start timer. The timer raises a Timer event every 50 ms and OnTimer is called
-        self.timer.Start(50)
+        #start timer. The timer raises a Timer event every 100 ms and OnTimer is called
+        self.timer.Start(100)
         
     def OnTimer(self, event):
         self.timerRound += 1
-        if self.timerRound == 60:
+        if self.timerRound == 80:
             #self.statusbar.SetBackgroundColour('#E0E2EB')
             self.setStatusBarText('')
             self.timer.Stop()

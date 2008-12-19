@@ -211,19 +211,30 @@ class ExportWizard(Wizard):
 					print 'Creating PDF'
 					outputDir = os.path.dirname(exportFileName)
 					pdfCommand = 'pdflatex -interaction=nonstopmode '
-					outputDirCommand = '-output-directory ' + outputDir + ' '
-					completeCommand = pdfCommand + outputDirCommand + exportFileName
+					outputDirCommand = '-output-directory "' + outputDir + '" '
+					completeCommand = pdfCommand + outputDirCommand + '"' + exportFileName + '"'
 					print 'Executing Command', completeCommand
 					process = subprocess.Popen(completeCommand, shell=True, stdout=subprocess.PIPE)
 					processOut = process.stdout
 					returnCode = process.wait()
-					print processOut.read()
-					print returnCode
-					self.redNotebook.showMessage('Content has been exported to ' + pdfExportFileName)
+					#print processOut.read()
+					#print returnCode
+					if returnCode == 0:
+						self.redNotebook.showMessage('Content exported to ' + pdfExportFileName)
+					else:
+						message = 'There were errors exporting the content. '
+						if os.path.exists(pdfExportFileName):
+							message += 'Better check the pdf.'
+						else:
+							message += 'No output file created. See Help.'
+						self.redNotebook.showMessage(message)
+						print 'pdflatex returned', returnCode
+						print '***************** PDFLATEX OUTPUT *****************'
+						print processOut.read()
 				else:
-					self.redNotebook.showMessage('Content has been exported to ' + exportFileName)
+					self.redNotebook.showMessage('Content exported to ' + exportFileName)
 			except:
-				self.redNotebook.showMessage('Exporting the content to ' + exportFileName + ' failed')
+				self.redNotebook.showMessage('Exporting to ' + exportFileName + ' failed')
 				
 		'''
 		htmldoc --toctitle "RedNotebook" --no-title --toclevels 2 -t htmlsep -d htmloutput2/ rn.html
@@ -263,7 +274,7 @@ class ExportWizard(Wizard):
 		
 			exportDays = self.redNotebook.getDaysInDateRange((fromDate, toDate))
 		else:
-			exportDays = self.redNotebook.days
+			exportDays = self.redNotebook.sortedDays
 		
 		def convertCategoriesToMarkup(categories):
 			markup = '=== Categories ===\n'
@@ -298,8 +309,17 @@ class ExportWizard(Wizard):
 			
 			parameters = {'target': target,}
 			
+			'Important: do not forget ":" after preproc'
+			
+			'''
+			Euro signs do not work in Latex, but they also cannot be
+			substituted by txt2tags
+			'''
+			
 			if target == 'tex':
-				parameters.update({'encoding': 'utf8'})
+				parameters.update({'encoding': 'utf8',	
+									#'preproc': [('€', 'Euro'), ('w', 'WWWW'), ('a', 'AAAA'),],
+									})
 			elif target == 'html':
 				parameters.update({'encoding': 'UTF-8',
 								'style': [os.path.join(filesystem.filesDir, 'stylesheet.css')],
