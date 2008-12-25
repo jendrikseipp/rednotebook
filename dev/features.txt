@@ -1,13 +1,18 @@
-Changelog:
+Roadmap:
+
+Soon:
+O Import of exported backups
+O i18n
+O Comment Code
 
 0.5:
-O Import of Backups
-O i18n
-O HTML Preview
+O Markup Editing
+O Day Preview
 
+0.4.1:
 O Do not export empty days
 O Fix PDF export for windows?
-0 remove tcl/Tk dependency
+O remove tcl/Tk dependency
 
 0.4:
 X Configuration File
@@ -54,7 +59,6 @@ TODO:
 Export Categories separately
 Toolbar?
 Hyperlinks in TreeCtrl?
-Day Preview
 dataDir Lock (for multiple TRN instances)?
 Encryption?
 Tags in text entries (e.g. @film:Batman)
