@@ -60,7 +60,6 @@ Export Categories separately
 Toolbar?
 Hyperlinks in TreeCtrl?
 dataDir Lock (for multiple TRN instances)?
-Encryption?
 Tags in text entries (e.g. @film:Batman)
 (Extend Markdown to support Dokuwiki Syntax) ?
 
@@ -73,3 +72,6 @@ Wishlist:
 Pictures?
 HTML?
 Task Bar Icon
+Timestamp insertion with keypress
+Tags for entries
+Encryption
