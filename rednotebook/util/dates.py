@@ -5,7 +5,9 @@ import wx
 oneDay = datetime.date(1,1,2) - datetime.date(1,1,1)
 		
 def getYearAndMonthFromDate(date):
-	return date.strftime('%Y-%m')
+	yearAndMonth = date.strftime('%Y-%m')
+	assert len(yearAndMonth) == 7
+	return yearAndMonth
 
 def getDateFromDay(day):
 	return datetime.date(day.month.yearNumber, day.month.monthNumber, day.dayNumber)

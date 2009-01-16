@@ -21,10 +21,13 @@ padding = 5
 
 
 
-def systemCommandAvailable(command):	
-	process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-	returnCode = process.wait()
-	return returnCode == 0
+def systemCommandAvailable(command):
+	try:	
+		process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+		returnCode = process.wait()
+		return returnCode == 0
+	except:
+		return False
 
 
 class WizardPage(wizmod.PyWizardPage):

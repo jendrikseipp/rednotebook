@@ -1,6 +1,6 @@
 from rednotebook.util import filesystem
 
-version = '0.4.0'
+version = '0.4.1'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = "http://rednotebook.sourceforge.net"

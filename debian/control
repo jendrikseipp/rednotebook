@@ -7,7 +7,9 @@ Package: rednotebook
 Architecture: all
 Depends: python, python-wxgtk2.8, python-yaml
 Recommends: texlive-latex-base, texlive-latex-recommended
-Description: A Desktop Diary
- RedNotebook is a journal software that helps you keep track of your activities and thoughts
+Description: graphical daily journal with calendar, templates and keyword searching
+ RedNotebook is a graphical diary and journal to keep track of notes and 
+ thoughts throughout the day. It includes a calendar navigation, customizable 
+ templates for each day, export functionality and a keyword search and cloud.
  .
  

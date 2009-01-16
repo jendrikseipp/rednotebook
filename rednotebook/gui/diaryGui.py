@@ -198,12 +198,12 @@ class ResultPanel(wx.Panel, listmix.ColumnSorterMixin):
 		self.list.Bind(wx.EVT_RIGHT_DOWN, self.OnRightDown)
 		
 	def addResult(self, day, text):
-		dayNumberString = str(day.dayNumber)
-		if len(dayNumberString) < 2:
-			dayNumberString = '0' + dayNumberString
+		dayNumberString = str(day.dayNumber).zfill(2)
+		monthNumberString = str(day.month.monthNumber).zfill(2)
+		yearNumberString = str(day.month.yearNumber)
 			
-		dateString = str(day.month.yearNumber) + '-' + str(day.month.monthNumber) + '-' + dayNumberString
-		dateNumber = long(str(day.month.yearNumber) + str(day.month.monthNumber) + dayNumberString)
+		dateString = yearNumberString + '-' + monthNumberString + '-' + dayNumberString
+		dateNumber = long(yearNumberString + monthNumberString + dayNumberString)
 		
 		#For itemDataMap
 		self.itemDataMap[dateNumber] = (dateString, text)

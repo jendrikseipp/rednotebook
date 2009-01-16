@@ -7,8 +7,11 @@ import sys
 #Handle wx specific problems
 if not sys.platform == 'win32':
 	#should only be called once (at start of program)
-	import wxversion
-	wxversion.select("2.8")
+	try:
+		import wxversion
+		wxversion.select("2.8")
+	except ImportError:
+		pass
 import wx
 
 import yaml
@@ -153,7 +156,7 @@ class RedNotebook(wx.App):
 		dlg = wx.FileDialog(self.frame, "Choose Backup File", '', proposedFileName, "*.zip", wx.SAVE)
 		returnValue = dlg.ShowModal()
 		dlg.Destroy()
-		if returnValue == wx.ID_OK:			
+		if returnValue == wx.ID_OK:
 			archiveFileName = dlg.GetPath()
 			
 			if os.path.exists(archiveFileName):
@@ -175,10 +178,12 @@ class RedNotebook(wx.App):
 		
 		for yearAndMonth, month in self.months.iteritems():
 			if not month.empty:
-				with open(filesystem.dataDir + yearAndMonth + filesystem.fileNameExtension, 'w') as monthFile:
+				monthFileString = os.path.join(filesystem.dataDir, yearAndMonth + \
+											filesystem.fileNameExtension)
+				with open(monthFileString, 'w') as monthFile:
 					monthContent = {}
 					for dayNumber, day in month.days.iteritems():
-						#do not add empty days
+						'do not add empty days'
 						if not day.empty:
 							monthContent[dayNumber] = day.content
 					#month.prettyPrint()
@@ -191,27 +196,33 @@ class RedNotebook(wx.App):
 			for file in files:
 				self.loadMonthFromDisk(os.path.join(root, file))
 	
-	def loadMonthFromDisk(self, file):
+	def loadMonthFromDisk(self, path):
+		fileName = os.path.basename(path)
 		
-		yearAndMonth = file[-11:-4] #dates.getYearAndMonthFromDate(date)
-		yearNumber = int(yearAndMonth[:4])
-		monthNumber = int(yearAndMonth[-2:])
+		try:
+			'Get Year and Month from /something/somewhere/2009-01.txt'
+			yearAndMonth, extension = os.path.splitext(fileName)
+			yearNumber, monthNumber = yearAndMonth.split('-')
+			yearNumber = int(yearNumber)
+			monthNumber = int(monthNumber)
+		except Exception:
+			print 'Error:', fileName, 'is an incorrect filename.'
+			print 'filenames have to have the following form: 2009-01.txt ' + \
+					'for January 2009 (yearWith4Digits-monthWith2Digits.txt)'
+			return
 		
-		monthFileString = file #self.dataDir + yearAndMonth + self.fileNameExtension
-		if not os.path.isfile(monthFileString):
-			'If file is not found, create new month'
-			try:	
-				raise IOError('file not found: ' + monthFileString)
-			except:
-				self.months[yearAndMonth] = Month(yearNumber, monthNumber)
-			 
-		else:
-			'File found'
+		monthFileString = path
+		
+		try:
+			'Try to read the contents of the file'
 			with open(monthFileString, 'r') as monthFile:
 				monthContents = yaml.load(monthFile)
-			self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
-			
-		return self.months[yearAndMonth]
+				self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
+		except:
+			'If that fails there is nothing to load, so just display an error message'
+			print 'An Error occured while loading', fileName
+		
+		
 	
 	def loadMonth(self, date):
 		
@@ -223,7 +234,7 @@ class RedNotebook(wx.App):
 			
 		return self.months[yearAndMonth]
 	
-	def saveOldDay(self):  
+	def saveOldDay(self):
 		'Order is important'
 		self.day.content = self.frame.contentTree.getDayContent()
 		self.day.text = self.frame.getDayText()
@@ -294,7 +305,11 @@ class RedNotebook(wx.App):
 	def _getAllEditedDays(self):
 		days = []
 		for month in self.months.values():
-			days.extend(month.days.values())
+			daysInMonth = month.days.values()
+			
+			'Filter out days without content'
+			daysInMonth = filter(lambda day: not day.empty, daysInMonth)
+			days.extend(daysInMonth)
 		return days
 	days = property(_getAllEditedDays)
 	

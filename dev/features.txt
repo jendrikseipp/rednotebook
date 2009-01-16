@@ -8,11 +8,13 @@ O Comment Code
 0.5:
 O Markup Editing
 O Day Preview
+X remove tcl/Tk dependency
+O Fix PDF export for windows?
 
 0.4.1:
-O Do not export empty days
-O Fix PDF export for windows?
-O remove tcl/Tk dependency
+X Do not export empty days (Fixes Bug #314385)
+X Fix search for single digit months (Fixes Bug #312988)
+
 
 0.4:
 X Configuration File
