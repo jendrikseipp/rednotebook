@@ -8,11 +8,11 @@ import sys
 if not sys.platform == 'win32':
 	#should only be called once (at start of program)
 	try:
-		import wxversion
-		wxversion.select("2.8")
+		import gtk
 	except ImportError:
-		pass
-import wx
+		print 'Please install pyGTK'
+		sys.exit(1)
+#import wx
 
 import yaml
 
@@ -49,14 +49,17 @@ from rednotebook import info
 from rednotebook import config
 from rednotebook import export
 
+from rednotebook.gui.mainWindow import MainWindow
+from rednotebook.util.statistics import Statistics
 
 
-class RedNotebook(wx.App):
+
+class RedNotebook:
 	
-	minDate = datetime.date(1970, 1, 1)
-	maxDate = datetime.date(2020, 1, 1)
+	#minDate = datetime.date(1970, 1, 1)
+	#maxDate = datetime.date(2020, 1, 1)
 	
-	def OnInit(self):
+	def __init__(self):
 		self.testing = False
 		if 'testing' in sys.argv:
 			self.testing = True
@@ -67,15 +70,14 @@ class RedNotebook(wx.App):
 		self.date = None
 		self.months = {}
 		
-		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, filesystem.templateDir])
+		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
+								filesystem.templateDir])
 		self.makeEmptyTemplateFiles()
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
 		self.config = config.redNotebookConfig(localFilename=filesystem.configFile)
 		
-		mainFrame = wxGladeGui.MainFrame(self, None, -1, "")
-		mainFrame.Show()
-		self.SetTopWindow(mainFrame)
+		mainFrame = MainWindow(self)
 		self.frame = mainFrame
 
 		'show instructions at first start or if testing'
@@ -88,12 +90,13 @@ class RedNotebook(wx.App):
 		'Nothing to save before first day change'
 		self.loadDay(self.actualDate)
 		
-		self.frame.updateStatistics()
+		self.stats = Statistics(self)
 		
-		if self.firstTimeExecution is True:
-			self.addInstructionContent()
-
-		return True
+		print 'RN_NODES', self.nodeNames
+		self.frame.categoriesTreeView.categories = self.nodeNames
+		
+		#if self.firstTimeExecution is True:
+			#self.addInstructionContent()
 	
 	def getDaysInDateRange(self, range):
 		startDate, endDate = range
@@ -152,25 +155,16 @@ class RedNotebook(wx.App):
 	
 	def backupContents(self):
 		self.saveToDisk()
-		proposedFileName = 'RedNotebook-Backup_' + str(datetime.date.today()) + ".zip"
-		dlg = wx.FileDialog(self.frame, "Choose Backup File", '', proposedFileName, "*.zip", wx.SAVE)
-		returnValue = dlg.ShowModal()
-		dlg.Destroy()
-		if returnValue == wx.ID_OK:
-			archiveFileName = dlg.GetPath()
-			
-			if os.path.exists(archiveFileName):
-				dialog = wx.MessageDialog(self.frame, "File already exists. Are you sure you want to override it?", 
-				"File Exists", wx.YES_NO | wx.CANCEL | wx.ICON_QUESTION) # Create a message dialog box
-				if not dialog.ShowModal() == wx.ID_YES:
-					return
+		backupFile = self.frame.get_backup_file()
+		
+		if backupFile:
 			
 			archiveFiles = []
 			for root, dirs, files in os.walk(filesystem.dataDir):
 				for file in files:
 					archiveFiles.append(os.path.join(root, file))
 			
-			filesystem.writeArchive(archiveFileName, archiveFiles, filesystem.dataDir)
+			filesystem.writeArchive(backupFile, archiveFiles, filesystem.dataDir)
 
 	
 	def saveToDisk(self):
@@ -205,6 +199,7 @@ class RedNotebook(wx.App):
 			yearNumber, monthNumber = yearAndMonth.split('-')
 			yearNumber = int(yearNumber)
 			monthNumber = int(monthNumber)
+			assert monthNumber in range(1,13)
 		except Exception:
 			print 'Error:', fileName, 'is an incorrect filename.'
 			print 'filenames have to have the following form: 2009-01.txt ' + \
@@ -236,8 +231,12 @@ class RedNotebook(wx.App):
 	
 	def saveOldDay(self):
 		'Order is important'
-		self.day.content = self.frame.contentTree.getDayContent()
-		self.day.text = self.frame.getDayText()
+		#print 'Content', self.frame.categoriesTreeView.get_day_content()
+		self.day.content = self.frame.categoriesTreeView.get_day_content()
+		#print 'save', self.frame.get_day_text()
+		
+		self.day.text = self.frame.get_day_text()
+		#print 'save', self.day.text
 		self.frame.calendar.setDayEdited(self.date.day, not self.day.empty)
 	
 	def loadDay(self, newDate):
@@ -246,46 +245,28 @@ class RedNotebook(wx.App):
 		
 		if not Month.sameMonth(newDate, oldDate):
 			self.month = self.loadMonth(self.date)
-			self.frame.calendar.setMonth(self.month)
-		
-		self.frame.calendar.PySetDate(self.date)
-		self.frame.showDay(self.day, self.date)
-		self.frame.contentTree.categories = self.nodeNames
+		self.frame.set_date(self.month, self.date, self.day)
 		
 	def _getCurrentDay(self):
 		return self.month.getDay(self.date.day)
 	day = property(_getCurrentDay)
 	
-	def changeDate(self, date):
+	def changeDate(self, newDate):
+		if newDate == self.date:
+			print 'Same dates'
+			return
+		
 		self.saveOldDay()
-		self.loadDay(date)
+		self.loadDay(newDate)
 		
 	def goToNextDay(self):
 		self.changeDate(self.date + dates.oneDay)
 		
 	def goToPrevDay(self):
 		self.changeDate(self.date - dates.oneDay)
-		
-	def goToNextEditedDay(self):
-		oldDate = self.date
-		self.goToNextDay()
-		while self.day.empty and not self.date > self.maxDate:
-			self.goToNextDay()
-		if self.date > self.maxDate:
-			print 'No edited day exists after this one'
-			self.changeDate(oldDate)
-		
-	def goToPrevEditedDay(self):
-		oldDate = self.date	
-		self.goToPrevDay()
-		while not self.day.empty and not self.date < self.minDate:
-			self.goToPrevDay()
-		if self.date < self.minDate:
-			print 'No edited day exists before this one'
-			self.changeDate(oldDate)
 			
 	def showMessage(self, messageText):
-		self.frame.showMessageInStatusBar(messageText)
+		self.frame.statusbar.showText(messageText)
 		print messageText
 		
 	def _getNodeNames(self):
@@ -538,9 +519,8 @@ class Month(object):
 		
 	
 def main():	
-	redNotebook = RedNotebook(redirect=False)
-	wx.InitAllImageHandlers()
-	redNotebook.MainLoop()
+	redNotebook = RedNotebook()
+	gtk.main()
 
 #if __name__ == '__main__':
 main()

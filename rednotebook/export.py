@@ -14,6 +14,7 @@ from rednotebook.gui.diaryGui import getBitmapFromFile
 from rednotebook.util import dates
 from rednotebook import txt2tags
 from rednotebook.util import filesystem
+from rednotebook.util import markup
 
 
 
@@ -22,6 +23,8 @@ padding = 5
 
 
 def systemCommandAvailable(command):
+	'checks whether a system command is available'
+	'This could probably be improved'
 	try:	
 		process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 		returnCode = process.wait()
@@ -279,75 +282,13 @@ class ExportWizard(Wizard):
 		else:
 			exportDays = self.redNotebook.sortedDays
 		
-		def convertCategoriesToMarkup(categories):
-			markup = '=== Categories ===\n'
-			for category, entryList in categories.iteritems():
-				markup += '- ' + category + '\n'
-				for entry in entryList:
-					markup += '  - ' + entry + '\n'
-				markup += '\n\n'
-			return markup
-		
-		def getMarkupForDay(day):			
-			'Add date and text'
-			exportString = '= ' + str(day.date) + ' =\n\n' + day.text
-			
-			'Add Categories'
-			categoryContentPairs = day.getCategoryContentPairs()
-			
-			if len(categoryContentPairs) > 0:
-				exportString += '\n\n\n' + convertCategoriesToMarkup(categoryContentPairs)
-			else:
-				exportString += '\n\n'
-			
-			exportString += '\n\n\n'
-			return exportString
-		
-		def convertMarkupToTarget(markup, target):
-			markup = markup.splitlines()
-			
-			source = txt2tags.process_source_file(contents=markup)			
-			
-			full_parsed, headConfBody = source
-			
-			parameters = {'target': target,}
-			
-			'Important: do not forget ":" after preproc'
-			
-			'''
-			Euro signs do not work in Latex, but they also cannot be
-			substituted by txt2tags
-			'''
-			
-			if target == 'tex':
-				parameters.update({'encoding': 'utf8',	
-									#'preproc': [('€', 'Euro'), ('w', 'WWWW'), ('a', 'AAAA'),],
-									})
-			elif target == 'html':
-				parameters.update({'encoding': 'UTF-8',
-								'style': [os.path.join(filesystem.filesDir, 'stylesheet.css')],
-								'css-inside': 1,
-								})
-				
-			
-			full_parsed.update(parameters)
-			
-			source = txt2tags.convert_this_files([source])[0]
-			
-			output = ''
-			for line in source:
-				output += line + '\n'
-			
-			return output
-		
-		
-		markupStringHeader = 'RedNotebook\n\n\n'	#No Author provided
-		markupStringsForEachDay = map(getMarkupForDay, exportDays)
-		markupString = markupStringHeader + reduce(operator.add, markupStringsForEachDay)
+		markupStringHeader = 'RedNotebook'
+		markupStringsForEachDay = map(markup.getMarkupForDay, exportDays)
+		markupString = reduce(operator.add, markupStringsForEachDay)
 		
 		target = self.formatExtensionMap.get(exportFormat)
 		
-		return convertMarkupToTarget(markupString, target)
+		return markup.convertMarkupToTarget(markupString, target, markupStringHeader)
 			
 		
 		

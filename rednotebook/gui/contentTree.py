@@ -112,18 +112,18 @@ class ContentTree(CT.CustomTreeCtrl):
         else:
             return {}
         
-    def addElement(self, parent, elementContent):
-        for key, value in elementContent.iteritems():
-            newChild = self.addItem(parent, key)
-            if not value == None:
-                #print 'set', key
-                self.addElement(newChild, value)
-            
-        
-    def addDayContent(self, day):
-        for key, value in day.content.iteritems():
-            if not key == 'text':
-                self.addElement(self.root, {key: value})
+	def addElement(self, parent, elementContent):
+		for key, value in elementContent.iteritems():
+			newChild = self.addItem(parent, key)
+			if not value == None:
+				#print 'set', key
+				self.addElement(newChild, value)
+			
+		
+	def addDayContent(self, day):
+		for key, value in day.content.iteritems():
+			if not key == 'text':
+				self.addElement(self.root, {key: value})
                 
 
     def BindEvents(self, choice, recreate=False):
