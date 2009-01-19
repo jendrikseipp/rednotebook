@@ -92,11 +92,10 @@ class RedNotebook:
 		
 		self.stats = Statistics(self)
 		
-		print 'RN_NODES', self.nodeNames
 		self.frame.categoriesTreeView.categories = self.nodeNames
 		
-		#if self.firstTimeExecution is True:
-			#self.addInstructionContent()
+		if self.firstTimeExecution is True:
+			self.addInstructionContent()
 	
 	def getDaysInDateRange(self, range):
 		startDate, endDate = range
@@ -183,7 +182,7 @@ class RedNotebook:
 					#month.prettyPrint()
 					yaml.dump(monthContent, monthFile)
 		
-		self.showMessage('The content has been saved')
+		self.showMessage('The content has been saved', error=False)
 		
 	def loadAllMonthsFromDisk(self):
 		for root, dirs, files in os.walk(filesystem.dataDir):
@@ -253,7 +252,7 @@ class RedNotebook:
 	
 	def changeDate(self, newDate):
 		if newDate == self.date:
-			print 'Same dates'
+			#print 'Same dates'
 			return
 		
 		self.saveOldDay()
@@ -265,8 +264,8 @@ class RedNotebook:
 	def goToPrevDay(self):
 		self.changeDate(self.date - dates.oneDay)
 			
-	def showMessage(self, messageText):
-		self.frame.statusbar.showText(messageText)
+	def showMessage(self, messageText, error=False, countdown=True):
+		self.frame.statusbar.showText(messageText, error, countdown)
 		print messageText
 		
 	def _getNodeNames(self):
@@ -303,7 +302,6 @@ class RedNotebook:
 			with open(templateFileString, 'r') as templateFile:
 				 lines = templateFile.readlines()
 				 templateText = reduce(operator.add, lines, '')
-				 #templateText.encode('utf-8')
 		except IOError, Error:
 			print 'Template File', weekDayNumber, 'not found'
 			templateText = ''
@@ -335,14 +333,19 @@ class RedNotebook:
 								 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
 								 }
 		
-		#Dates don't matter as only the categories are shown
-		instructionDay = Day(self.actualDate.month, self.actualDate.day, dayContent = instructionDayContent)
+		'Dates do not matter as only the categories are shown'
+		#instructionDay = Day(self.month, self.actualDate.day, dayContent = instructionDayContent)
 		
-		self.frame.contentTree.addDayContent(instructionDay)
-		self.frame.contentTree.ExpandAll()
+		self.day.content = instructionDayContent
+		self.day.text = info.completeWelcomeText
 		
-		instructionText = info.completeWelcomeText
-		self.frame.textPanel.showDayText(instructionText)
+		self.frame.set_date(self.month, self.date, self.day)
+		
+		#self.frame.categoriesTreeView.set_day_content(instructionDay)
+		#self.frame.contentTree.ExpandAll()
+		
+		#instructionText = info.completeWelcomeText
+		#self.frame.textPanel.showDayText(instructionText)
 
 		
 			

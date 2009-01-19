@@ -349,8 +349,4 @@ class EntryPanel(RadioButtonPanel):
 		wizard.tillText.Enable(enabled)
 
 	
-		
-#def export(redNotebook):
-
-	
 	

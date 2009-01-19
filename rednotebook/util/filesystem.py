@@ -87,3 +87,12 @@ def writeArchive(archiveFileName, files, baseDir='', arcBaseDir=''):
 def getTemplateFile(dayNumber):
 	assert dayNumber in range(1,8)
 	return os.path.join(templateDir, str(dayNumber) + fileNameExtension)
+
+def get_icons():
+	iconFiles = []
+	for base, dirs, files in os.walk(frameIconDir):
+		for file in files:
+			if file.endswith(".png"):
+				file = os.path.join(base, file)
+				iconFiles.append(file)
+	return iconFiles

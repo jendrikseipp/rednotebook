@@ -2,6 +2,8 @@
 from __future__ import with_statement
 import os
 import datetime
+import urllib
+import urlparse
 import pygtk
 pygtk.require("2.0")
 import gtk
@@ -13,23 +15,10 @@ import gtk.glade
 
 import gnome
 import gtkhtml2
-#TODO: Is this really needed?
-#if os.path.exists('/usr/lib/xulrunner-1.9.0.5'):
-#	print 'XUL path changed'
-#	gtkmozembed.set_comp_path('/usr/lib/xulrunner-1.9.0.5')
-#import gnome.ui
-
-#gnome.init()
-#print help(gnome)
 
 from rednotebook.util import filesystem
 from rednotebook import info
-from rednotebook.gui.htmltextview import HtmlTextView
 from rednotebook.util import markup
-
-
-
-	
 
 
 class MainWindow(object):
@@ -44,6 +33,25 @@ class MainWindow(object):
 		self.wTree = gtk.glade.XML(self.gladefile)
 		
 			
+		
+		
+		'Get the main window and set the icon'
+		self.mainFrame = self.wTree.get_widget('mainFrame')
+		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
+								filesystem.get_icons()))
+		
+		self.calendar = Calendar(self.wTree.get_widget('calendar'))
+		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'))
+		self.statusbar = Statusbar(self.wTree.get_widget('statusbar'))
+		
+		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
+									'categoriesTreeView'), self)
+		
+		self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
+		self.preview = Preview(self.previewScrolledWindow)
+		
+		self.set_shortcuts()
+		
 		'Create an event->method dictionary and connect it to the widgets'
 		dic = {
 			'on_backOneDayButton_clicked': self.on_backOneDayButton_clicked,
@@ -52,33 +60,43 @@ class MainWindow(object):
 			'on_calendar_day_selected': self.on_calendar_day_selected,
 			'on_saveButton_clicked': self.on_saveButton_clicked,
 			'on_saveMenuItem_activate': self.on_saveButton_clicked,
+			
+			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
+			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
+			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
+			
 			'on_exportMenuItem_activate': self.on_exportMenuItem_activate,
 			'on_statisticsMenuItem_activate': self.on_statisticsMenuItem_activate,
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
 			'on_deleteEntryButton_clicked': self.on_deleteEntryButton_clicked,
 			'on_dayNotebook_switch_page': self.on_dayNotebook_switch_page,
+			'on_templateButton_clicked': self.on_templateButton_clicked,
 			'on_info_activate': self.on_info_activate,
+			'on_helpMenuItem_activate': self.on_helpMenuItem_activate,
 			'on_backup_activate': self.on_backup_activate,
 			'on_quit_activate': self.on_quit_activate,
 			'on_mainFrame_destroy': self.on_mainFrame_destroy,
 			 }
 		self.wTree.signal_autoconnect(dic)
 		
-		'Get the main window and set the icon'
-		self.mainFrame = self.wTree.get_widget('mainFrame')
-		#self.mainFrame.set_icon(gtk.gdk.pixbuf_new_from_file('logo-64.png'))
 		
-		self.calendar = Calendar(self.wTree.get_widget('calendar'))
-		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'))
-		self.statusbar = Statusbar(self.wTree.get_widget('statusbar'))
+	def set_shortcuts(self):
+		self.accel_group = gtk.AccelGroup()
+		self.mainFrame.add_accel_group(self.accel_group)
+		for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'), \
+							('X', 'cut_clipboard')]:
+			self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
+							ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+							
+							
+	def on_copyMenuItem_activate(self, widget):
+		self.dayTextField.dayTextView.emit('copy_clipboard')
 		
-		print 'Nodes', self.redNotebook.nodeNames
+	def on_pasteMenuItem_activate(self, widget):
+		self.dayTextField.dayTextView.emit('paste_clipboard')
 		
-		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
-									'categoriesTreeView'), self)
-		
-		self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
-		self.preview = Preview(self.previewScrolledWindow)
+	def on_cutMenuItem_activate(self, widget):
+		self.dayTextField.dayTextView.emit('cut_clipboard')
 		
 		
 	def on_backOneDayButton_clicked(self, widget):
@@ -92,7 +110,6 @@ class MainWindow(object):
 		self.redNotebook.goToNextDay()
 		
 	def on_calendar_day_selected(self, widget):
-		print 'Date changed', widget
 		self.redNotebook.changeDate(self.calendar.get_date())
 		
 	def on_saveButton_clicked(self, widget):
@@ -105,6 +122,9 @@ class MainWindow(object):
 		
 	def on_backup_activate(self, widget):
 		self.redNotebook.backupContents()
+		
+	def on_templateButton_clicked(self, widget):
+		self.dayTextField.insert_template(self.redNotebook.getTemplateEntry())
 		
 	def on_quit_activate(self, widget):
 		self.on_mainFrame_destroy(None)
@@ -130,9 +150,12 @@ class MainWindow(object):
 	def on_statisticsMenuItem_activate(self, widget):
 		
 		statisticsScrolledWindow = self.wTree.get_widget('statisticsScrolledWindow')
-		statsHTMLView = HTMLView()
-		statsHTMLView.write(self.redNotebook.stats.getStatsHTML())
-		statisticsScrolledWindow.add(statsHTMLView)
+		self.statsHTMLView = HTMLView()
+		for child in statisticsScrolledWindow.get_children():
+			statisticsScrolledWindow.remove(child)
+			
+		self.statsHTMLView.write(self.redNotebook.stats.getStatsHTML())
+		statisticsScrolledWindow.add(self.statsHTMLView)
 		
 		statisticsDialog = self.wTree.get_widget('statisticsDialog')
 		statisticsDialog.set_default_size(350, 200)
@@ -154,6 +177,7 @@ class MainWindow(object):
 			return
 		
 		categoryName = self.categoriesComboBox.get_active_text()
+		print 'categoryName', categoryName
 		if not self.categoriesTreeView.check_category(categoryName):
 			return
 		
@@ -166,6 +190,21 @@ class MainWindow(object):
 		
 	def on_deleteEntryButton_clicked(self, widget):
 		self.categoriesTreeView.delete_selected_node()
+		
+	def on_helpMenuItem_activate(self, widget):
+		helpScrolledWindow = self.wTree.get_widget('helpScrolledWindow')
+		for child in helpScrolledWindow.get_children():
+			helpScrolledWindow.remove(child)
+		helpHTMLView = HTMLView()
+		helpHTMLView.write(info.htmlHelp)
+		helpScrolledWindow.add(helpHTMLView)
+		
+		helpDialog = self.wTree.get_widget('helpDialog')
+		helpDialog.set_default_size(350, 200)
+		helpDialog.run()
+		helpDialog.hide()
+		
+		
 		
 	def set_date(self, newMonth, newDate, day):
 		self.categoriesTreeView.clear()
@@ -226,17 +265,25 @@ class CustomComboBox:
 		else:
 			return ''
 		
-
 	
 class HTMLView(gtkhtml2.View):
 	def __init__(self, *args, **kargs):
 		gtkhtml2.View.__init__(self, *args, **kargs)
+		
+		self.opener = urllib.FancyURLopener()
+		self.currentURL = None
+		
 		self.document = gtkhtml2.Document()
 		self.document.clear()
 		
 		#view = gtkhtml2.View()
 		self.set_document(self.document)
 		self.show()
+		
+		self.connect('request_object', self.request_object)
+		self.document.connect('request_url', self.request_url)
+		self.document.connect('link_clicked', self.link_clicked)
+		
 		
 	def write(self, text):
 		self.document.clear()
@@ -246,6 +293,50 @@ class HTMLView(gtkhtml2.View):
 		
 		
 	
+	def is_relative_to_server(self, url):
+		parts = urlparse.urlparse(url)
+		if parts[0] or parts[1]:
+			return 0
+		return 1
+	
+	def open_url(self, url):
+		uri = self.resolve_uri(url)
+		return self.opener.open(uri)
+	
+	def resolve_uri(self, uri):
+		if self.is_relative_to_server(uri):
+			return urlparse.urljoin(self.currentURL, uri)
+		return uri
+	
+	def request_url(self, document, url, stream):
+		f = self.open_url(url)
+		stream.write(f.read())
+	
+	def link_clicked(self, document, link):
+		print 'link_clicked:', link
+		try:
+			f = self.open_url(link)
+		except OSError:
+			print "failed to open", link
+			return
+		self.currentURL = self.resolve_uri(link)
+		self.document.clear()
+		headers = f.info()
+		mime = headers.getheader('Content-type').split(';')[0]
+		print mime
+		if mime:
+			self.document.open_stream(mime)
+		else:
+			self.document.open_stream('text/plain')
+		self.document.write_stream(f.read())
+		self.document.close_stream()
+		
+	def request_object(self, *args):
+		print 'request object', args
+    	
+    	 	
+	
+		
 
 class Preview(object):
 	def __init__(self, previewScrolledWindow):
@@ -255,12 +346,10 @@ class Preview(object):
 		
 	def set_day(self, day):
 		markupText = markup.getMarkupForDay(day, withDate=False)
+		#print markupText
 		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
 		#print html
 		self.htmlView.write(html)
-		
-	
-		
 	
 
 class CategoriesTreeView(object):
@@ -343,7 +432,6 @@ class CategoriesTreeView(object):
 	def add_element(self, parent, elementContent):
 		'''Recursive Method for adding the content'''
 		for key, value in elementContent.iteritems():
-			print parent, key
 			newChild = self.treeStore.append(parent, [key])
 			if not value == None:
 				#print 'set', key
@@ -353,7 +441,6 @@ class CategoriesTreeView(object):
 	def set_day_content(self, day):
 		for key, value in day.content.iteritems():
 			if not key == 'text':
-				print key, value
 				self.add_element(None, {key: value})
 		self.treeView.expand_all()
 				
@@ -392,7 +479,6 @@ class CategoriesTreeView(object):
 		for iterIndex in range(self.treeStore.iter_n_children(None)):
 			currentCategoryIter = self.treeStore.iter_nth_child(None, iterIndex)
 			currentCategoryName = self.get_iter_value(currentCategoryIter)
-			print 'CMP:', currentCategoryName, categoryName
 			if currentCategoryName == categoryName:
 				return currentCategoryIter
 		
@@ -405,9 +491,11 @@ class CategoriesTreeView(object):
 			
 		categoryIter = self._get_category_iter(categoryName)
 		if categoryIter is None:
+			'If category does not exist add new category'
 			categoryIter = self.treeStore.append(None, [categoryName])
 			self.treeStore.append(categoryIter, [text])
 		else:
+			'If category exists add entry to existing category'
 			self.treeStore.append(categoryIter, [text])
 		
 	def delete_selected_node(self):
@@ -423,13 +511,7 @@ class CategoriesTreeView(object):
 			
 			if response == gtk.RESPONSE_YES:
 				model.remove(selectedIter)
-
 		
-		
-			
-		
-		
-
 		
 class DayTextField(object):
 	def __init__(self, dayTextView):
@@ -437,47 +519,31 @@ class DayTextField(object):
 		self.dayTextBuffer = gtk.TextBuffer()
 		self.dayTextView.set_buffer(self.dayTextBuffer)
 		
-	
-		
-		
-	def __wxinit__(self, *args, **kwargs):
-		wx.Panel.__init__(self, *args, **kwargs)
-		
-		self.buttonInsertTemplate = wx.Button(self, -1, "Insert Template")
+		'''First, get an instance of the default display 
+		from the globalgtk.gdk.DisplayManager:'''
+		#self.display = gtk.gdk.display_manager_get().get_default_display()
 
-		self.undoButton = wx.BitmapButton(self, -1, wx.NullBitmap)
-		self.redoButton = wx.BitmapButton(self, -1, wx.NullBitmap)
-		self.undoButton.SetBitmapLabel(getBitmap('edit-undo.png'))
-		self.redoButton.SetBitmapLabel(getBitmap('edit-redo.png'))
-		self.undoButton.Enable(False)
-		self.redoButton.Enable(False)
-		self.undoButton.SetToolTipString('Undo')
-		self.redoButton.SetToolTipString('Redo')
+		'''Then get a reference to a gtk.Clipboard object, specifying 
+		the CLIPBOARD clipboard (and *not* PRIMARY):'''
+		#self.clipboard = gtk.Clipboard(self.display, "CLIPBOARD")
 		
-		self.buttonInsertTemplate.SetToolTipString("Insert text defined for that weekday in template file")
+		'Now your cut/copy/paste callbacks can be written as follows:'
+	
+	#def on_cut_activate(self, obj):
+	#	self.dayTextBuffer.cut_clipboard(self.clipboard, \
+	#									self.dayTextView.get_editable())
 		
-		self.textField = wx.TextCtrl(self, -1, "", style=wx.TE_PROCESS_TAB|wx.TE_MULTILINE|wx.TE_WORDWRAP)
-		self.textField.textPanel = self
+	#def on_copy_activate(self, obj):
+	#	pass#self.dayTextBuffer.copy_clipboard(self.clipboard)
 		
-		self.Bind(wx.EVT_BUTTON, self.onInsertTemplate, self.buttonInsertTemplate)
-		self.Bind(wx.EVT_BUTTON, self.onUndo, self.undoButton)
-		self.Bind(wx.EVT_BUTTON, self.onRedo, self.redoButton)
-		self.Bind(wx.EVT_TEXT, self.onTextChange, self.textField)
-		
-		self.__do_layout()
+	#def on_paste_activate(self, obj):
+	#	self.dayTextBuffer.paste_clipboard(self.clipboard, None, \
+	#									self.dayTextView.get_editable())	
+	
+	def __wxinit__(self, *args, **kwargs):
 		
 		self.history = []
 		self.historyPosition = -1
-		
-	def __do_layout(self):
-		sizer_3 = wx.BoxSizer(wx.VERTICAL)
-		sizer_9 = wx.BoxSizer(wx.HORIZONTAL)
-		sizer_9.Add(self.buttonInsertTemplate, 0, wx.ADJUST_MINSIZE, 0)
-		sizer_9.Add(self.undoButton, 0, wx.ADJUST_MINSIZE, 0)
-		sizer_9.Add(self.redoButton, 0, wx.ADJUST_MINSIZE, 0)
-		sizer_3.Add(sizer_9, 0, 0, 0)
-		sizer_3.Add(self.textField, 1, wx.ALL|wx.EXPAND, 0)
-		self.SetSizer(sizer_3)
 		
 	def set_text(self, text):
 		#self.redoButton.Enable(False)
@@ -490,23 +556,12 @@ class DayTextField(object):
 		iterStart = self.dayTextBuffer.get_start_iter()
 		iterEnd = self.dayTextBuffer.get_end_iter()
 		return self.dayTextBuffer.get_text(iterStart, iterEnd)
+	
+	def insert_template(self, template):
+		currentText = self.get_text()
+		self.set_text(template.encode('utf-8') + currentText.encode('utf-8'))
 		
-		
-	def onInsertTemplate(self, event):
-		
-		'''Load template'''
-		textToLoad = self.redNotebook.getTemplateEntry()
-		if len(textToLoad) == 0:
-			dialog = wx.MessageDialog(self, "The template file for this weekday is empty.\n" + \
-									  "You can edit the template files in the directory '" + \
-									  filesystem.templateDir + "'.", 
-									  "Template empty", wx.OK | wx.ICON_INFORMATION) # Create a message dialog box
-			dialog.ShowModal()
-		currentText = self.textField.GetValue()
-		newText = textToLoad + currentText.encode('utf-8')
-		self.textField.SetValue(newText)
-		#print self.history
-		event.Skip()
+	#TODO: implement UNDO/REDO
 		
 	def onTextChange(self, event):
 
@@ -562,7 +617,6 @@ class DayTextField(object):
 			
 		self.undoButton.Enable(True)
 		
-		#print self.history
 		
 class Statusbar(object):
 	def __init__(self, statusbar):
@@ -576,6 +630,8 @@ class Statusbar(object):
 		if self.lastMessageID is not None:
 			self.statusbar.remove(self.contextID, self.lastMessageID)
 		self.lastMessageID = self.statusbar.push(self.contextID, text)
+		
+		self.error = error
 		
 		if error:
 			red = gtk.gdk.color_parse("red")
@@ -591,12 +647,12 @@ class Statusbar(object):
 		
 	def count_down(self):
 		self.timeLeft -= 1
-		print self.timeLeft
 		
-		if self.timeLeft % 2 == 0:
-			self.showText('', countdown=False)
-		else:
-			self.showText(self.savedText, countdown=False)
+		if self.error:
+			if self.timeLeft % 2 == 0:
+				self.showText('', error=self.error, countdown=False)
+			else:
+				self.showText(self.savedText, error=self.error, countdown=False)
 			
 		if self.timeLeft <= 0:
 			gobject.source_remove(self.countdown)
@@ -631,9 +687,3 @@ class Calendar(object):
 			self.setDayEdited(dayNumber, False)
 		for dayNumber, day in month.days.iteritems():
 			self.setDayEdited(dayNumber, not day.empty)
-		
-		
-if __name__ == "__main__":
-	print 0
-	application = MainWindow(None)
-	gtk.main()

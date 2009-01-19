@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sun Jan 18 20:29:52 2009 -->
+<!--*- mode: xml -*-->
 <glade-interface>
   <widget class="GtkWindow" id="mainFrame">
     <property name="visible">True</property>
@@ -25,9 +25,10 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="saveMenuItem">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-save</property>
+                        <property name="label">gtk-save</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_saveMenuItem_activate"/>
                       </widget>
                     </child>
                     <child>
@@ -55,7 +56,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="quit">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-quit</property>
+                        <property name="label">gtk-quit</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_quit_activate"/>
@@ -74,27 +75,30 @@
                   <widget class="GtkMenu" id="menu2">
                     <property name="visible">True</property>
                     <child>
-                      <widget class="GtkImageMenuItem" id="imagemenuitem6">
+                      <widget class="GtkImageMenuItem" id="cutMenuItem">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-cut</property>
+                        <property name="label">gtk-cut</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_cutMenuItem_activate"/>
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkImageMenuItem" id="imagemenuitem7">
+                      <widget class="GtkImageMenuItem" id="copyMenuItem">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-copy</property>
+                        <property name="label">gtk-copy</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_copyMenuItem_activate"/>
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkImageMenuItem" id="imagemenuitem8">
+                      <widget class="GtkImageMenuItem" id="pasteMenuItem">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-paste</property>
+                        <property name="label">gtk-paste</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_pasteMenuItem_activate"/>
                       </widget>
                     </child>
                   </widget>
@@ -118,9 +122,18 @@
                       </widget>
                     </child>
                     <child>
+                      <widget class="GtkImageMenuItem" id="helpMenuItem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">gtk-help</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_helpMenuItem_activate"/>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkImageMenuItem" id="info">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-about</property>
+                        <property name="label">gtk-about</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_info_activate"/>
@@ -138,6 +151,7 @@
         <child>
           <widget class="GtkToolbar" id="toolbar2">
             <property name="visible">True</property>
+            <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
             <child>
               <widget class="GtkToolButton" id="backOneDayButton">
                 <property name="visible">True</property>
@@ -152,6 +166,7 @@
               <widget class="GtkToolButton" id="todayButton">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Today</property>
+                <property name="use_underline">True</property>
                 <property name="stock_id">gtk-home</property>
                 <signal name="clicked" handler="on_todayButton_clicked"/>
               </widget>
@@ -189,7 +204,6 @@
             </child>
             <child>
               <widget class="GtkToolButton" id="undoButton">
-                <property name="visible">True</property>
                 <property name="stock_id">gtk-undo</property>
               </widget>
               <packing>
@@ -198,8 +212,18 @@
             </child>
             <child>
               <widget class="GtkToolButton" id="redoButton">
-                <property name="visible">True</property>
                 <property name="stock_id">gtk-redo</property>
+              </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolButton" id="templateButton">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Insert Template</property>
+                <property name="stock_id">gtk-paste</property>
+                <signal name="clicked" handler="on_templateButton_clicked"/>
               </widget>
               <packing>
                 <property name="homogeneous">True</property>
@@ -222,8 +246,6 @@
                   <widget class="GtkCalendar" id="calendar">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="year">2009</property>
-                    <property name="day">16</property>
                     <signal name="day_selected" handler="on_calendar_day_selected"/>
                   </widget>
                   <packing>
@@ -252,14 +274,22 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="position">600</property>
-                    <property name="position_set">True</property>
                     <child>
-                      <widget class="GtkTextView" id="dayTextView">
+                      <widget class="GtkScrolledWindow" id="scrolledwindow1">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="wrap_mode">GTK_WRAP_WORD</property>
-                        <property name="left_margin">2</property>
-                        <property name="right_margin">2</property>
+                        <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                        <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                        <property name="shadow_type">GTK_SHADOW_IN</property>
+                        <child>
+                          <widget class="GtkTextView" id="dayTextView">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="wrap_mode">GTK_WRAP_WORD</property>
+                            <property name="left_margin">2</property>
+                            <property name="right_margin">2</property>
+                          </widget>
+                        </child>
                       </widget>
                       <packing>
                         <property name="resize">False</property>
@@ -272,11 +302,12 @@
                         <child>
                           <widget class="GtkToolbar" id="toolbar1">
                             <property name="visible">True</property>
-                            <property name="icon_size">GTK_ICON_SIZE_SMALL_TOOLBAR</property>
+                            <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
                             <child>
                               <widget class="GtkToolButton" id="addNewEntryButton">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">New Entry</property>
+                                <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-new</property>
                                 <signal name="clicked" handler="on_addNewEntryButton_clicked"/>
                               </widget>
@@ -288,6 +319,7 @@
                               <widget class="GtkToolButton" id="deleteEntryButton">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Delete</property>
+                                <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-delete</property>
                                 <signal name="clicked" handler="on_deleteEntryButton_clicked"/>
                               </widget>
@@ -304,7 +336,6 @@
                           <widget class="GtkTreeView" id="categoriesTreeView">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="enable_grid_lines">GTK_TREE_VIEW_GRID_LINES_BOTH</property>
                           </widget>
                           <packing>
                             <property name="position">1</property>
@@ -372,7 +403,6 @@
         <child>
           <widget class="GtkStatusbar" id="statusbar">
             <property name="visible">True</property>
-            <property name="spacing">2</property>
           </widget>
           <packing>
             <property name="expand">False</property>
@@ -384,12 +414,8 @@
   </widget>
   <widget class="GtkAboutDialog" id="aboutDialog">
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">About Glade</property>
-    <property name="resizable">False</property>
-    <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
-    <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="has_separator">False</property>
-    <property name="program_name">RedNotebook</property>
+    <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+    <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -467,8 +493,7 @@
               <widget class="GtkButton" id="button2">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-close</property>
+                <property name="label">gtk-close</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">0</property>
               </widget>
@@ -587,8 +612,7 @@
               <widget class="GtkButton" id="button3">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">0</property>
               </widget>
@@ -597,8 +621,7 @@
               <widget class="GtkButton" id="newEntryDialogOKButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-5</property>
                 <signal name="activate" handler="on_newEntryDialogOKButton_activate"/>
@@ -621,9 +644,8 @@
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="has_separator">False</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -639,8 +661,7 @@
               <widget class="GtkButton" id="button4">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-6</property>
               </widget>
@@ -649,10 +670,63 @@
               <widget class="GtkButton" id="button1">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-save</property>
+                <property name="label">gtk-save</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-5</property>
+              </widget>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">GTK_PACK_END</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="GtkDialog" id="helpDialog">
+    <property name="width_request">800</property>
+    <property name="height_request">600</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Help</property>
+    <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
+    <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+    <property name="has_separator">False</property>
+    <child internal-child="vbox">
+      <widget class="GtkVBox" id="dialog-vbox7">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <widget class="GtkScrolledWindow" id="helpScrolledWindow">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+            <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+            <child>
+              <placeholder/>
+            </child>
+          </widget>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child internal-child="action_area">
+          <widget class="GtkHButtonBox" id="dialog-action_area7">
+            <property name="visible">True</property>
+            <property name="layout_style">GTK_BUTTONBOX_END</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <widget class="GtkButton" id="button5">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="label">gtk-close</property>
+                <property name="use_stock">True</property>
+                <property name="response_id">0</property>
               </widget>
               <packing>
                 <property name="position">1</property>
