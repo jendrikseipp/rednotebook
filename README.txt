@@ -3,9 +3,11 @@
 ===== REQUIREMENTS =====
   - Python (2.5) (www.python.org)
   - PyYaml (3.05) (www.yaml.org)
-  - wxPython (2.8.8.1) (www.wxpython.org)
+  - pyGTK (2.13) (www.pygtk.org)
+  - python-gtkhtml2 (2.19.1)
+  - python-gtkmozembed 
   
-On Ubuntu you type 'sudo apt-get install python-yaml python-wxgtk2.8'
+On Ubuntu you type 'sudo apt-get install python-yaml python-gtk2 python-gtkhtml2 python-gtkmozembed'
 
 
 ===== INSTALL =====
@@ -28,6 +30,7 @@ Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py
 ===== THANKS =====
   - The authors of the programs listed under 'requirements'
   - Everaldo Coelho (www.everaldo.com) for the excellent icon
+  - The txt2tags team for their super handy markup-tool
 
 
 

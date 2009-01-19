@@ -10,7 +10,7 @@ import sys
 import codecs
 import subprocess
 
-from rednotebook.gui.diaryGui import getBitmapFromFile
+#from rednotebook.gui.diaryGui import getBitmapFromFile
 from rednotebook.util import dates
 from rednotebook import txt2tags
 from rednotebook.util import filesystem

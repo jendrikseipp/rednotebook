@@ -15,6 +15,7 @@ import gtk.glade
 
 import gnome
 import gtkhtml2
+import gtkmozembed
 
 from rednotebook.util import filesystem
 from rednotebook import info
@@ -47,9 +48,10 @@ class MainWindow(object):
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
-		self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
-		self.preview = Preview(self.previewScrolledWindow)
-		
+		#self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
+		#self.preview = Preview(self.previewScrolledWindow)
+		self.preview = MozillaView(self.wTree.get_widget('previewBox'))
+								
 		self.set_shortcuts()
 		
 		'Create an event->method dictionary and connect it to the widgets'
@@ -177,7 +179,7 @@ class MainWindow(object):
 			return
 		
 		categoryName = self.categoriesComboBox.get_active_text()
-		print 'categoryName', categoryName
+		#print 'categoryName', categoryName
 		if not self.categoriesTreeView.check_category(categoryName):
 			return
 		
@@ -257,7 +259,7 @@ class CustomComboBox:
 			self.liststore.append([entry])
 		self.comboBox.set_active(0)
 	
-	def get_active_text(self):
+	def _get_active_text(self):
 		model = self.comboBox.get_model()
 		index = self.comboBox.get_active()
 		if index > -1:
@@ -265,6 +267,52 @@ class CustomComboBox:
 		else:
 			return ''
 		
+	def get_active_text(self):		
+		return self.comboBox.child.get_text()
+		
+class MozillaView(gtkmozembed.MozEmbed):
+	def __init__(self, containerBox):
+		gtkmozembed.MozEmbed.__init__(self)
+		# Create the browser widget
+		gtkmozembed.set_profile_path("/tmp", "simple_browser_user") # Set a temporary Mozilla profile (works around some bug)
+		#mozbrowser = gtkmozembed.MozEmbed() # Create the browser widget
+		# Set-up the browser widget before we display it
+		containerBox.add(self) # Add the 'mozbrowser' widget 
+		self.load_url("file:///home/jendrik/projects/RedNotebook/rednotebook/testhtml.html") # Load a web page
+		#mozbrowser.render_data('hallo', 102400, 'about:blank', 'text/plain')
+		self.set_size_request(600,400) # Attempt to set the size of the browser widget to 600x400 pixels
+		self.show() # Try to show the browser widget before we show the window, so that the window appears at the correct size (600x400)
+	
+	def write(self, html):
+		#import tempfile
+		#with tempfile.NamedTemporaryFile(suffix='.html') as tempFile:
+#			tempFile.write("Yeah")
+#			print 'TMP', tempFile.readlines()
+		with open(os.path.join(filesystem.tempDir, 'tmp.html'), 'w+r') as tempFile:
+			tempFile.write(html)
+			tempFile.flush()
+			#import time
+			#time.sleep(6)
+			#'Move to beginning of file'
+			#tempFile.seek(0, 0)
+			#print 'TMP', tempFile.readlines()
+			#tempFile.close()
+			#print str(tempFile.name)
+			htmlFile = os.path.abspath(tempFile.name)
+			#os.chmod(htmlFile, 0777)
+			htmlFile = 'file://' + htmlFile
+			#print htmlFile
+			
+			self.load_url(htmlFile)
+			
+			
+	def set_day(self, day):
+		markupText = markup.getMarkupForDay(day, withDate=False)
+		#print markupText
+		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
+		#print html
+		self.write(html)
+				
 	
 class HTMLView(gtkhtml2.View):
 	def __init__(self, *args, **kargs):
@@ -284,14 +332,11 @@ class HTMLView(gtkhtml2.View):
 		self.document.connect('request_url', self.request_url)
 		self.document.connect('link_clicked', self.link_clicked)
 		
-		
 	def write(self, text):
 		self.document.clear()
 		self.document.open_stream('text/html')
 		self.document.write_stream(text)
 		self.document.close_stream()
-		
-		
 	
 	def is_relative_to_server(self, url):
 		parts = urlparse.urlparse(url)
@@ -338,18 +383,18 @@ class HTMLView(gtkhtml2.View):
 	
 		
 
-class Preview(object):
-	def __init__(self, previewScrolledWindow):
-		self.previewScrolledWindow = previewScrolledWindow
-		self.htmlView = HTMLView()
-		self.previewScrolledWindow.add(self.htmlView)
-		
-	def set_day(self, day):
-		markupText = markup.getMarkupForDay(day, withDate=False)
-		#print markupText
-		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
-		#print html
-		self.htmlView.write(html)
+#class Preview(object):
+#	def __init__(self, previewScrolledWindow):
+#		self.previewScrolledWindow = previewScrolledWindow
+#		self.htmlView = HTMLView()
+#		self.previewScrolledWindow.add(self.htmlView)
+#		
+#	def set_day(self, day):
+#		markupText = markup.getMarkupForDay(day, withDate=False)
+#		#print markupText
+#		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
+#		#print html
+#		self.htmlView.write(html)
 	
 
 class CategoriesTreeView(object):
@@ -397,10 +442,12 @@ class CategoriesTreeView(object):
 		# Allow drag and drop reordering of rows
 		#self.treeView.set_reorderable(True)
 		
+	def node_on_top_level(self, path):
+		return ':' not in path
+		
 	def edited_cb(self, cell, path, new_text, user_data):
 		'''Called when text in a cell is changed'''
-		print 'Path', path
-		if new_text == 'text':
+		if new_text == 'text' and self.node_on_top_level(path):
 			self.statusbar.showText('"text" is a reserved keyword', error=True)
 			return
 		if len(new_text) < 1:
@@ -475,7 +522,7 @@ class CategoriesTreeView(object):
 		return self.treeStore.get_value(iter, 0)
 		
 	def _get_category_iter(self, categoryName):
-		print 'Number of Categories:', self.treeStore.iter_n_children(None)
+		#print 'Number of Categories:', self.treeStore.iter_n_children(None)
 		for iterIndex in range(self.treeStore.iter_n_children(None)):
 			currentCategoryIter = self.treeStore.iter_nth_child(None, iterIndex)
 			currentCategoryName = self.get_iter_value(currentCategoryIter)

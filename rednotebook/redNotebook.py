@@ -40,8 +40,8 @@ if baseDir not in sys.path:
 
 
 #from gui import wxGladeGui
-#This version of import is needed for win32 to work
-from rednotebook.gui import wxGladeGui
+'This version of import is needed for win32 to work'
+#from rednotebook.gui import wxGladeGui
 from rednotebook.util import unicode
 from rednotebook.util import dates
 from rednotebook.util import utils
@@ -71,7 +71,7 @@ class RedNotebook:
 		self.months = {}
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
-								filesystem.templateDir])
+								filesystem.templateDir, filesystem.tempDir])
 		self.makeEmptyTemplateFiles()
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
