@@ -2,7 +2,7 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.4.1'
+version = '0.5.0'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = "http://rednotebook.sourceforge.net"
@@ -60,8 +60,8 @@ pressing "Strg-S" or using the menu entry under "File" in the top left corner. "
 zip file. In the same menu you also find an "Export"-Button. \
 Click on it and export your diary to Plain Text, HTML, Latex or PDF (Linux only, see Help for instructions).
 
-Now you can erase this help text and enter e.g. what you have done today. To read the instructions again, press "F1" or \
-go to "Help -> Show Help" in the menu bar.
+Now you can erase this help text and enter e.g. what you have done today. To read the instructions again, \
+go to "Help -> Help" in the menu bar.
 
 There are many features I have planned to add in the future so stay tuned.
 I hope you enjoy the program!'''

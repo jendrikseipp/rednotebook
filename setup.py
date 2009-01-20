@@ -60,7 +60,7 @@ parameters = {'name'          : 'rednotebook',
                     'scripts'       : ['rednotebook/rednotebook'], 
                     'packages'      : ['rednotebook', 'rednotebook.gui', 'rednotebook.util'], 
                     'package_data'  : {'rednotebook': ['images/*.png', 'images/redNotebookIcon/*.png',
-														'files/*.css',]},
+														'files/*.css', 'files/*.glade',]},
                    }
 
 #Debian parameters

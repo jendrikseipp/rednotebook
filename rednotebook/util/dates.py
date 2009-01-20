@@ -1,5 +1,4 @@
 import datetime
-import wx
 
 
 oneDay = datetime.date(1,1,2) - datetime.date(1,1,1)
@@ -20,23 +19,6 @@ def getNumberOfDaysBetweenTwoDays(day1, day2):
 
 def compareTwoDays(day1, day2):
 	return getNumberOfDaysBetweenTwoDays(day1, day2)
-
-def getWXDateTimeFromPyDate(date):
-	wxDateTime = wx.DateTime.Now()
-	#print date.year, date.month, date.day
-	#print wxDateTime
-	#wxDateTime.SetYear(date.year)
-	'Implementation buggy'
-	wxDateTime.Set(date.day, date.month-1, date.year)
-	#print wxDateTime
-	#wxDateTime.SetMonth(date.month - 1)
-	#wxDateTime.SetDay(date.day)
-	return wxDateTime
-
-def getPyDateFromWXDateTime(wxDateTime):
-	'Implementation buggy'
-	pyDate = datetime.date(wxDateTime.Year, wxDateTime.Month + 1, wxDateTime.Day)
-	return pyDate
 
 
 

@@ -38,6 +38,7 @@ class MainWindow(object):
 		
 		'Get the main window and set the icon'
 		self.mainFrame = self.wTree.get_widget('mainFrame')
+		self.mainFrame.set_title('RedNotebook')
 		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
 								filesystem.get_icons()))
 		
@@ -587,7 +588,7 @@ class DayTextField(object):
 	#	self.dayTextBuffer.paste_clipboard(self.clipboard, None, \
 	#									self.dayTextView.get_editable())	
 	
-	def __wxinit__(self, *args, **kwargs):
+	def wxinit(self, *args, **kwargs):
 		
 		self.history = []
 		self.historyPosition = -1

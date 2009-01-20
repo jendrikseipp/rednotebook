@@ -11,8 +11,8 @@ O only make the entry submittable, if text has been entered
 O Markup Editing
 
 0.5:
-O Port the GUI to pyGTK
-O Day Preview
+X Port the GUI to pyGTK
+X Day Preview
 X remove tcl/Tk dependency
 
 

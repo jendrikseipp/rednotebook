@@ -5,9 +5,9 @@ Maintainer: Jendrik <jendrikseipp@web.de>
 
 Package: rednotebook
 Architecture: all
-Depends: python, python-wxgtk2.8, python-yaml
+Depends: python, python-gtk2, python-yaml, python-gtkhtml2, python-gnome2-extras, python-glade2
 Recommends: texlive-latex-base, texlive-latex-recommended
-Description: graphical daily journal with calendar, templates and keyword searching
+Description: Graphical daily journal with calendar, templates and keyword searching
  RedNotebook is a graphical diary and journal to keep track of notes and 
  thoughts throughout the day. It includes a calendar navigation, customizable 
  templates for each day, export functionality and a keyword search and cloud.

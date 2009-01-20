@@ -7,7 +7,7 @@
   - python-gtkhtml2 (2.19.1)
   - python-gtkmozembed 
   
-On Ubuntu you type 'sudo apt-get install python-yaml python-gtk2 python-gtkhtml2 python-gtkmozembed'
+On Ubuntu you type 'sudo apt-get install python-yaml python-gtk2 python-gtkhtml2 python-gnome2-extras'
 
 
 ===== INSTALL =====

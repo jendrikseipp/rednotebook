@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import with_statement
 
-import wx
-import wx.wizard as wizmod
 import os.path
 import datetime
 import operator

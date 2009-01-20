@@ -4,15 +4,12 @@ from __future__ import with_statement
 
 import sys
 
-#Handle wx specific problems
-if not sys.platform == 'win32':
-	#should only be called once (at start of program)
-	try:
-		import gtk
-	except ImportError:
-		print 'Please install pyGTK'
-		sys.exit(1)
-#import wx
+
+try:
+	import gtk
+except ImportError:
+	print 'Please install pyGTK'
+	sys.exit(1)
 
 import yaml
 
@@ -39,15 +36,13 @@ if baseDir not in sys.path:
 
 
 
-#from gui import wxGladeGui
 'This version of import is needed for win32 to work'
-#from rednotebook.gui import wxGladeGui
 from rednotebook.util import unicode
 from rednotebook.util import dates
 from rednotebook.util import utils
 from rednotebook import info
 from rednotebook import config
-from rednotebook import export
+#from rednotebook import export
 
 from rednotebook.gui.mainWindow import MainWindow
 from rednotebook.util.statistics import Statistics
@@ -75,7 +70,7 @@ class RedNotebook:
 		self.makeEmptyTemplateFiles()
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
-		self.config = config.redNotebookConfig(localFilename=filesystem.configFile)
+		#self.config = config.redNotebookConfig(localFilename=filesystem.configFile)
 		
 		mainFrame = MainWindow(self)
 		self.frame = mainFrame
