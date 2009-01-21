@@ -1,3 +1,6 @@
+def printError(message):
+	print '\nERROR:', message
+
 def floatDiv(a, b):
 	return float(float(a)/float(b))
 

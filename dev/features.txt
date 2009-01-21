@@ -6,20 +6,30 @@ O i18n
 O Comment Code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
 O only make the entry submittable, if text has been entered
+O remove gtkhtml2
+O add password
 
 0.6:
 O Markup Editing
+O Search
+O Easier Tagging
+O Category View
+
+0.5.1
+X Tagging of days
+X Format text
+X Fix gnome dependency bug
+X Small Bugfixes
+X Better import handling
 
 0.5:
 X Port the GUI to pyGTK
 X Day Preview
 X remove tcl/Tk dependency
 
-
 0.4.1:
 X Do not export empty days (Fixes Bug #314385)
 X Fix search for single digit months (Fixes Bug #312988)
-
 
 0.4:
 X Configuration File
@@ -49,7 +59,6 @@ X Example Categories in Right Pane
 X Case-insensitive search
 X Statistics: Number of words, entries
 X Tag Cloud
-
 
 0.1:
 X Backup

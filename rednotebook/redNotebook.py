@@ -3,17 +3,6 @@
 from __future__ import with_statement
 
 import sys
-
-
-try:
-	import gtk
-except ImportError:
-	print 'Please install pyGTK'
-	sys.exit(1)
-
-import yaml
-
-
 import datetime
 import os
 import zipfile
@@ -22,8 +11,23 @@ import operator
 
 if hasattr(sys, "frozen"):
 	from rednotebook.util import filesystem
+	from rednotebook.util import utils
 else:
 	from util import filesystem
+	from util import utils
+
+try:
+	import gtk
+except ImportError:
+	utils.printError('Please install PyGTK')
+	sys.exit(1)
+
+try:
+	import yaml
+except ImportError:
+	utils.printError('Yaml is not installed')
+	sys.exit(1)
+
 	
 
 print 'AppDir:', filesystem.appDir
@@ -39,7 +43,6 @@ if baseDir not in sys.path:
 'This version of import is needed for win32 to work'
 from rednotebook.util import unicode
 from rednotebook.util import dates
-from rednotebook.util import utils
 from rednotebook import info
 from rednotebook import config
 #from rednotebook import export
@@ -50,9 +53,6 @@ from rednotebook.util.statistics import Statistics
 
 
 class RedNotebook:
-	
-	#minDate = datetime.date(1970, 1, 1)
-	#maxDate = datetime.date(2020, 1, 1)
 	
 	def __init__(self):
 		self.testing = False
@@ -65,6 +65,9 @@ class RedNotebook:
 		self.date = None
 		self.months = {}
 		
+		'show instructions at first start or if testing'
+		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
+		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
 								filesystem.templateDir, filesystem.tempDir])
 		self.makeEmptyTemplateFiles()
@@ -74,9 +77,6 @@ class RedNotebook:
 		
 		mainFrame = MainWindow(self)
 		self.frame = mainFrame
-
-		'show instructions at first start or if testing'
-		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
 		   
 		self.actualDate = datetime.date.today()
 		
@@ -326,6 +326,7 @@ class RedNotebook:
 	def addInstructionContent(self):
 		instructionDayContent = {u'Cool Stuff': {u'Went to see the pope': None}, 
 								 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
+								 u'Tags': {u'Work': None, u'Projects': None},
 								 }
 		
 		'Dates do not matter as only the categories are shown'

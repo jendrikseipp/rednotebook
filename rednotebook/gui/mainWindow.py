@@ -1,21 +1,35 @@
 #!/usr/bin/env python
 from __future__ import with_statement
+import sys
 import os
 import datetime
 import urllib
 import urlparse
+import webbrowser
+
 import pygtk
 pygtk.require("2.0")
 import gtk
 import gobject
+import gtk.glade
 
 'Initialize the gtk thread engine'
 #gtk.gdk.threads_init()
-import gtk.glade
 
-import gnome
-import gtkhtml2
-import gtkmozembed
+from rednotebook.util import utils
+
+try:
+	import gtkhtml2
+except ImportError:
+	utils.printError('gtkhtml2 is not installed')
+	sys.exit(1)
+
+try:
+	import gtkmozembed
+except ImportError:
+	utils.printError('gtkmozembed is not installed')
+	sys.exit(1)
+
 
 from rednotebook.util import filesystem
 from rednotebook import info
@@ -23,7 +37,9 @@ from rednotebook.util import markup
 
 
 class MainWindow(object):
-	'''Class
+	'''
+	Class that holds the reference to the main glade file and handles
+	all actions
 	'''
 	def __init__(self, redNotebook):
 		
@@ -137,7 +153,7 @@ class MainWindow(object):
 		self.infoDialog.set_version(info.version)
 		self.infoDialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
 		self.infoDialog.set_comments('A Desktop Diary')
-		gtk.about_dialog_set_url_hook(lambda dialog, url: gnome.url_show(url))
+		gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
 		self.infoDialog.set_website(info.url)
 		self.infoDialog.set_website_label(info.url)
 		self.infoDialog.set_authors(info.developers)
@@ -244,8 +260,9 @@ class MainWindow(object):
 	def on_dayNotebook_switch_page(self, notebook, page, pageNumber):
 		if pageNumber == 1:
 			'Switched to preview tab'
-			self.day.text = self.get_day_text()
-			self.preview.set_day(self.day)
+			self.redNotebook.saveOldDay()
+			#self.day.text = self.get_day_text()
+			self.preview.set_day(self.redNotebook.day)
 			
 			
 class CustomComboBox:

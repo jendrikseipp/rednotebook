@@ -2,7 +2,7 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.5.0'
+version = '0.5.1'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = "http://rednotebook.sourceforge.net"
@@ -37,23 +37,26 @@ this is the RedNotebook, a desktop diary. This program helps you to keep track o
 Thank you very much for giving it a try.
 The text field containing this text is the container for your normal diary entries like this one: 
 
-Today I went to a pet shop and bought a tiger. Then we went to the park and had a nice time playing \
-ultimate frisbee. Afterwards we watched "Life of Brian".
+Today I went to a //pet shop// and bought a **tiger**. Then we went to the --pool-- park and had a nice time playing \
+ultimate frisbee. Afterwards we watched "__Life of Brian__".
+
+As you can see you can format your text **bold**, //italic//, --stricken-- and __underlined__. \
+To see the results, just click on the "Preview" tab.
 
 On the right there is space for extra content, things that can easily be sorted into categories. \
 Those entries are shown in a tree. For example you could add the category Ideas and then add your ideas \
 of that day to it:
 
 > Ideas
-     Invent Anti-Hangover-Machine 
-
-On the right panel where you can see the examples, everything is controlled with right-clicks. You can click \
-on the white space or on existing categories.
+	Invent Anti-Hangover-Machine 
 
 RedNotebook supports a template system: In the directory "''' + filesystem.templateDir + '''" you find seven \
 text files. One for each day of the week. You can edit those files \
 with your favourite text editor and the text for a given weekday will be inserted when you press the button \
 "Insert Template".
+
+Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "New Entry" and insert "Tags" \
+and "Work" into the dialog. 
 
 Everything you enter will be saved automatically when you exit the program. If you want to double check you can save \
 pressing "Strg-S" or using the menu entry under "File" in the top left corner. "Backup" saves all your entered data in a \

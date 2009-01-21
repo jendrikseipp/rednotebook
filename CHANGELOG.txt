@@ -1,5 +1,10 @@
 ==== Changelog ====
 
+=== 0.5.1 (2009-01-21) ===
+  * Days can be tagged
+  * Formatting text is possible
+  * Bugfixes
+
 === 0.5.0 (2009-01-19) ===
 	* The GUI has been ported to PyGTK
 	* Almost all of the features have been adapted to the new interface
