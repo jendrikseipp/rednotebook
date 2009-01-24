@@ -16,6 +16,7 @@ class ExportAssistant (object):
         
         self.formatExtensionMap = {'Text': 'txt', 'HTML': 'html', 'Latex': 'tex', 'PDF' : 'pdf'}
         self.assistant = gtk.Assistant()
+        self.assistant.set_title('Export')
         self.assistant.connect('close', self.onQuit)
         self.assistant.connect('cancel', self.onCancel)
         self.assistant.connect('delete_event', self.onCancel)
@@ -113,7 +114,7 @@ class ExportAssistant (object):
     
     def onCancel (self, widget, other=None):
         self.redNotebook.showMessage('Cancelling export assistant.')
-	self.assistant.destroy()
+        self.assistant.destroy()
 
     def changeDateSelectorStatus (self, widget):
         if (self.allEntriesButton.get_active()) :

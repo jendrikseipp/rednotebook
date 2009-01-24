@@ -34,6 +34,7 @@ except ImportError:
 from rednotebook.util import filesystem
 from rednotebook import info
 from rednotebook.util import markup
+from rednotebook.util import dates
 
 from exportAssistant import ExportAssistant
 
@@ -93,6 +94,7 @@ class MainWindow(object):
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
 			'on_deleteEntryButton_clicked': self.on_deleteEntryButton_clicked,
 			'on_dayNotebook_switch_page': self.on_dayNotebook_switch_page,
+			'on_searchNotebook_switch_page': self.on_searchNotebook_switch_page,
 			'on_templateButton_clicked': self.on_templateButton_clicked,
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
 			'on_info_activate': self.on_info_activate,
@@ -188,6 +190,7 @@ class MainWindow(object):
 		self.infoDialog.hide()
 		
 	def on_exportMenuItem_activate(self, widget):
+		self.redNotebook.saveOldDay()
 		assistant = ExportAssistant (self)
 		
 	def on_statisticsMenuItem_activate(self, widget):
@@ -288,8 +291,11 @@ class MainWindow(object):
 			self.redNotebook.saveOldDay()
 			#self.day.text = self.get_day_text()
 			self.preview.set_day(self.redNotebook.day)
-		if pageNumber == 2:
+			
+	def on_searchNotebook_switch_page(self, notebook, page, pageNumber):
+		if pageNumber == 0:
 			'Switched to search tab'
+			print 'Switched to search tab'
 			self.searchTreeView.update_data()
 			
 			
@@ -299,11 +305,14 @@ class CustomComboBox:
 		self.liststore = self.comboBox.get_model()
 		print self.liststore
 		#self.comboBox.set_wrap_width(5)
+		
+	def add_entry(self, entry):
+		self.liststore.append([entry])
 	
 	def set_entries(self, value_list):
 		self.liststore.clear()
 		for entry in value_list:
-			self.liststore.append([entry])
+			self.add_entry(entry)
 		
 		if len(value_list) > 0:
 			self.comboBox.set_active(0)
@@ -329,11 +338,8 @@ class SearchComboBox(CustomComboBox):
 		
 		self.entry = self.comboBox.get_child()
 		
-		#self.comboBox.child = SearchEntry().entry
-		#self.liststore.connect()
-		
-		self.timeout = 500
-		self.change_id = None
+		#self.timeout = 100
+		#self.change_id = None
 
 		self.entry.connect('changed', self.on_entry_changed)
 		self.entry.connect('activate', self.on_entry_activated)
@@ -357,49 +363,40 @@ class SearchComboBox(CustomComboBox):
 		self.searchType = searchType
 		
 
-	def on_entry_changed(self, *e):
+	def on_entry_changed(self, entry):
 		"""
 			Called when the entry changes
 		"""
-		if self.change_id:
-			gobject.source_remove(self.change_id)
-
-		self.change_id = gobject.timeout_add(self.timeout,
-			self.entry_activate)
-
-	def entry_activate(self, *e):
-		"""
-			Emit the activate signal
-		"""
-		self.entry.emit('activate')
-		print 'Activate'
+		self.search(entry.get_text())
 		
 	def on_entry_activated(self, entry):
+		"""
+			Called when the user hits enter
+		"""
 		searchText = entry.get_text()
-		print searchText
-		
-		searchTreeView = self.mainWindow.searchTreeView
-		
-		searchTreeView.update_data(searchText)
 		
 		if self.searchType == 0:
 			'Search for text'
 			self.recentSearches.append(searchText)
 			self.recentSearches = self.recentSearches[-20:]
+			self.add_entry(searchText)
+			
+		self.search(searchText)
+			
+	def search(self, searchText):
+		self.mainWindow.searchTreeView.update_data(searchText)
+		
+		
 		
 		
 class MozillaView(gtkmozembed.MozEmbed):
 	def __init__(self, containerBox):
 		gtkmozembed.MozEmbed.__init__(self)
-		# Create the browser widget
 		gtkmozembed.set_profile_path("/tmp", "simple_browser_user") # Set a temporary Mozilla profile (works around some bug)
-		#mozbrowser = gtkmozembed.MozEmbed() # Create the browser widget
-		# Set-up the browser widget before we display it
-		containerBox.add(self) # Add the 'mozbrowser' widget 
-		self.load_url("file:///home/jendrik/projects/RedNotebook/rednotebook/testhtml.html") # Load a web page
-		#mozbrowser.render_data('hallo', 102400, 'about:blank', 'text/plain')
-		self.set_size_request(600,400) # Attempt to set the size of the browser widget to 600x400 pixels
-		self.show() # Try to show the browser widget before we show the window, so that the window appears at the correct size (600x400)
+		containerBox.add(self)
+		'Attempt to set the size of the browser widget to 600x400 pixels'
+		self.set_size_request(600,400) 
+		self.show()
 	
 	def write(self, html):
 		#import tempfile
@@ -426,9 +423,7 @@ class MozillaView(gtkmozembed.MozEmbed):
 			
 	def set_day(self, day):
 		markupText = markup.getMarkupForDay(day, withDate=False)
-		#print markupText
 		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
-		#print html
 		self.write(html)
 				
 	
@@ -536,22 +531,22 @@ class SearchTreeView(object):
 						#self.categoryColumn, self.entryColumn]
 		
 		#TODO: Change into cell
-		cellRenderers = {}
+		#cellRenderers = {}
 
 		'add tvcolumns to treeView'
 		for column in range(len(columns)):
 			self.treeView.append_column(columns[column])
 
 			'create a CellRendererText to render the data'
-			cellRenderers[column] = gtk.CellRendererText()
+			cellRenderer = gtk.CellRendererText()
 
 			'add the cell to the tvcolumn and allow it to expand'
-			columns[column].pack_start(cellRenderers[column], True)
+			columns[column].pack_start(cellRenderer, True)
 
-			columns[column].set_attributes(cellRenderers[column], text=column)
+			columns[column].set_attributes(cellRenderer, text=column)
 			
 			'Allow sorting on the column'
-			columns[column].set_sort_column_id(0)
+			columns[column].set_sort_column_id(column)
 			
 		self.treeStore.append(['1', '2',])# '3', '4'])
 		self.treeStore.append(['5', '6',])# '7', '8'])
@@ -566,6 +561,8 @@ class SearchTreeView(object):
 
 		# Allow drag and drop reordering of rows
 		#self.treeView.set_reorderable(True)
+		
+		self.treeView.connect('row_activated', self.on_row_activated)
 		
 	def update_data(self, searchText=''):
 		self.treeStore.clear()
@@ -593,7 +590,12 @@ class SearchTreeView(object):
 		if rows:
 			for dateString, resultString in rows:
 				self.treeStore.append([dateString, resultString])
-		
+				
+	def on_row_activated(self, treeview, path, view_column):
+		dateString = self.treeStore[path][0]
+		newDate = dates.get_date_from_date_string(dateString)
+		self.redNotebook.changeDate(newDate)
+		print self.treeStore[path][0], self.treeStore[path][1]
 		
 	def set_search_type(self, searchType):		
 		self.searchType = searchType

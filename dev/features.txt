@@ -14,10 +14,12 @@ O Markup Editing
 O Easier Tagging
 O Category View
 
+0.5.3
+O Export Categories separately
+
 0.5.2
 X Alexandre reimplemented the export wizard
 O Search
-O Export Categories separately
 
 0.5.1
 X Tagging of days

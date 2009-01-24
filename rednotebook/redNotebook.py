@@ -133,19 +133,6 @@ class RedNotebook:
 		
 		#fileContentPairs = map(lambda file: (file, ''), templateFiles)
 		filesystem.makeFiles(fileContentPairs)
-		
-	def exportDiary(self):
-		self.saveOldDay()
-		
-		'Create wizard'
-		exportWizard = export.ExportWizard(self, 'Export', img_filename='redNotebookIcon/rn-128.png')
-		
-		'Show the main window'
-		exportWizard.run() 
-	
-		'Cleanup'
-		exportWizard.Destroy()
-        #export.export(self)
 	
 	def backupContents(self):
 		self.saveToDisk()
@@ -350,19 +337,10 @@ class RedNotebook:
 								 u'Tags': {u'Work': None, u'Projects': None},
 								 }
 		
-		'Dates do not matter as only the categories are shown'
-		#instructionDay = Day(self.month, self.actualDate.day, dayContent = instructionDayContent)
-		
 		self.day.content = instructionDayContent
 		self.day.text = info.completeWelcomeText
 		
 		self.frame.set_date(self.month, self.date, self.day)
-		
-		#self.frame.categoriesTreeView.set_day_content(instructionDay)
-		#self.frame.contentTree.ExpandAll()
-		
-		#instructionText = info.completeWelcomeText
-		#self.frame.textPanel.showDayText(instructionText)
 
 		
 			
@@ -376,9 +354,9 @@ class Day(object):
 		self.dayNumber = dayNumber
 		self.content = dayContent
 		
-		self.searchResultLength = 100
+		self.searchResultLength = 50
 	
-	#Text
+	'Text'
 	def _getText(self):
 		if self.content.has_key('text'):
 			return self.content['text']
@@ -402,14 +380,6 @@ class Day(object):
 		else:
 			return False
 	empty = property(_isEmpty)
-	
-	def getContent(self, key):
-		if self.content.has_key(key):
-			return self.content[key]
-		else:
-			return ''
-	def setContent(self, key, value):
-		self.content[key] = value
 		
 	def _getTree(self):
 		tree = self.content.copy()
@@ -430,6 +400,7 @@ class Day(object):
 		return set(tags)
 	tags = property(_getTags)
 	
+	
 	def getCategoryContentPairs(self):
 		'''
 		Returns a list of (category, contentInCategoryAsList) pairs.
@@ -445,12 +416,11 @@ class Day(object):
 			pairs[category] = entryList
 		return pairs
 	
+	
 	def _getWords(self, withSpecialChars=True):
 		if withSpecialChars:
 			return self.text.split()
 		
-		#def stripSpecialCharacters(word):
-			#return word.strip('.|-!"/()=?`´*+~#_:;,<>^°{}[]')
 		wordList = self.text.split()
 		realWords = []
 		for word in wordList:
@@ -459,6 +429,7 @@ class Day(object):
 				realWords.append(word)
 		return realWords
 	words = property(_getWords)
+	
 	
 	def getNumberOfWords(self):
 		return len(self.words)
@@ -471,12 +442,10 @@ class Day(object):
 		occurence = upCaseDayText.find(upCaseSearchText)
 		
 		if occurence > -1:
-			spaceSearchLeftStart = occurence - self.searchResultLength/2
-			if spaceSearchLeftStart < 0:
-				spaceSearchLeftStart = 0
-			spaceSearchRightEnd = occurence + len(searchText) + self.searchResultLength/2
-			if spaceSearchRightEnd > len(self.text):
-				spaceSearchRightEnd = len(self.text)
+			'searchText in text'
+			spaceSearchLeftStart = max(0, occurence - self.searchResultLength/2)
+			spaceSearchRightEnd = min(len(self.text), \
+									occurence + len(searchText) + self.searchResultLength/2)
 				
 			resultTextStart = self.text.find(' ', spaceSearchLeftStart, occurence)
 			resultTextEnd = self.text.rfind(' ', occurence + len(searchText), spaceSearchRightEnd)
@@ -485,8 +454,20 @@ class Day(object):
 			if resultTextEnd == -1:
 				resultTextEnd = occurence + len(searchText) + self.searchResultLength/2
 				
-			return (str(self), '... ' + unicode.substring(self.text, \
-					resultTextStart, resultTextEnd).strip() + ' ...')
+			'Add leading and trailing ... if appropriate'
+			resultText = ''
+			if resultTextStart > 0:
+				resultText += '... '
+				
+			resultText += unicode.substring(self.text, resultTextStart, resultTextEnd).strip()
+			
+			if resultTextEnd < len(self.text) - 1:
+				resultText += ' ...'
+				
+			'Delete newlines'
+			resultText = resultText.replace('\n', '')
+				
+			return (str(self), resultText)
 		else:
 			return None
 		
@@ -503,7 +484,19 @@ class Day(object):
 		for category, contentList in self.getCategoryContentPairs().iteritems():
 			if category.upper() == 'TAGS' and contentList:
 				if searchTag.upper() in map(lambda x: x.upper(), contentList):
-					return (str(self), self.text[:self.searchResultLength])
+					firstWhitespace = self.text.find(' ', self.searchResultLength)
+					
+					if firstWhitespace == -1:
+						'No whitespace found'
+						textStart = self.text
+					else:
+						textStart = self.text[:firstWhitespace + 1]
+						
+					textStart = textStart.replace('\n', '')
+					
+					if len(textStart) < len(self.text):
+						textStart += ' ...'
+					return (str(self), textStart)
 		return None
 		
 	def _date(self):
