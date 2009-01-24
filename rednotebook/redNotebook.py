@@ -19,13 +19,13 @@ else:
 try:
 	import gtk
 except ImportError:
-	utils.printError('Please install PyGTK')
+	utils.printError('Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
 try:
 	import yaml
 except ImportError:
-	utils.printError('Yaml is not installed')
+	utils.printError('Yaml is not installed (install python-yaml)')
 	sys.exit(1)
 
 	
@@ -270,12 +270,33 @@ class RedNotebook:
 		return list(nodeNames)
 	nodeNames = property(_getNodeNames)
 	
-	def search(self, text):
+	def _getTags(self):
+		tags = set([])
+		for month in self.months.values():
+			tags |= set(month.tags)
+		return list(tags)
+	tags = property(_getTags)
+	
+	def search(self, text=None, category=None, tag=None):
 		results = []
 		for day in self.days:
-			if not day.search(text) == None:
-				results.append(day.search(text))
+			result = None
+			if text:
+				result = day.search_text(text)
+			elif category:
+				result = day.search_category(category)
+			elif tag:
+				result = day.search_tag(tag)
+			
+			if result:
+				if category:
+					results.extend(result)
+				else:
+					results.append(result)
+					
 		return results
+	
+	
 	
 	def _getAllEditedDays(self):
 		days = []
@@ -354,6 +375,8 @@ class Day(object):
 		self.month = month
 		self.dayNumber = dayNumber
 		self.content = dayContent
+		
+		self.searchResultLength = 100
 	
 	#Text
 	def _getText(self):
@@ -394,18 +417,27 @@ class Day(object):
 			del tree['text']
 		return tree
 	tree = property(_getTree)
-		
+	
 	def _getNodeNames(self):
 		return self.tree.keys()
 	nodeNames = property(_getNodeNames)
+		
+	def _getTags(self):
+		tags = []
+		for category, listContent in self.getCategoryContentPairs().iteritems():
+			if category.upper() == 'TAGS':
+				tags.extend(listContent)
+		return set(tags)
+	tags = property(_getTags)
 	
 	def getCategoryContentPairs(self):
 		'''
 		Returns a list of (category, contentInCategoryAsList) pairs.
 		contentInCategoryAsList can be empty
 		'''
-		pairs = self.tree.copy()
-		for category, content in pairs.iteritems():
+		originalTree = self.tree.copy()
+		pairs = {}
+		for category, content in originalTree.iteritems():
 			entryList = []
 			if content is not None:
 				for entry, nonetype in content.iteritems():
@@ -413,7 +445,7 @@ class Day(object):
 			pairs[category] = entryList
 		return pairs
 	
-	def getWords(self, withSpecialChars=True):
+	def _getWords(self, withSpecialChars=True):
 		if withSpecialChars:
 			return self.text.split()
 		
@@ -426,40 +458,65 @@ class Day(object):
 			if len(word) > 0:
 				realWords.append(word)
 		return realWords
-	words = property(getWords)
+	words = property(_getWords)
 	
 	def getNumberOfWords(self):
 		return len(self.words)
 	
 	
-	def search(self, searchText):
+	def search_text(self, searchText):
 		'''Case-insensitive search'''
 		upCaseSearchText = searchText.upper()
 		upCaseDayText = self.text.upper()
 		occurence = upCaseDayText.find(upCaseSearchText)
 		
 		if occurence > -1:
-			spaceSearchLeftStart = occurence-15
+			spaceSearchLeftStart = occurence - self.searchResultLength/2
 			if spaceSearchLeftStart < 0:
 				spaceSearchLeftStart = 0
-			spaceSearchRightEnd = occurence + len(searchText) + 15
+			spaceSearchRightEnd = occurence + len(searchText) + self.searchResultLength/2
 			if spaceSearchRightEnd > len(self.text):
 				spaceSearchRightEnd = len(self.text)
 				
 			resultTextStart = self.text.find(' ', spaceSearchLeftStart, occurence)
 			resultTextEnd = self.text.rfind(' ', occurence + len(searchText), spaceSearchRightEnd)
 			if resultTextStart == -1:
-				resultTextStart = occurence - 10
+				resultTextStart = occurence - self.searchResultLength/2
 			if resultTextEnd == -1:
-				resultTextEnd = occurence + len(searchText) + 10
+				resultTextEnd = occurence + len(searchText) + self.searchResultLength/2
 				
-			return (self, '... ' + unicode.substring(self.text, resultTextStart, resultTextEnd).strip() + ' ...')
+			return (str(self), '... ' + unicode.substring(self.text, \
+					resultTextStart, resultTextEnd).strip() + ' ...')
 		else:
 			return None
+		
+	def search_category(self, searchCategory):
+		results = []
+		for category, content in self.getCategoryContentPairs().iteritems():
+			if content:
+				if searchCategory.upper() in category.upper():
+					for entry in content:
+						results.append((str(self), entry))
+		return results
+	
+	def search_tag(self, searchTag):
+		for category, contentList in self.getCategoryContentPairs().iteritems():
+			if category.upper() == 'TAGS' and contentList:
+				if searchTag.upper() in map(lambda x: x.upper(), contentList):
+					return (str(self), self.text[:self.searchResultLength])
+		return None
 		
 	def _date(self):
 		return dates.getDateFromDay(self)
 	date = property(_date)
+	
+	def __str__(self):
+		dayNumberString = str(self.dayNumber).zfill(2)
+		monthNumberString = str(self.month.monthNumber).zfill(2)
+		yearNumberString = str(self.month.yearNumber)
+			
+		return yearNumberString + '-' + monthNumberString + '-' + dayNumberString
+
 			
 
 class Month(object):
@@ -506,6 +563,13 @@ class Month(object):
 			nodeNames |= set(day.nodeNames)
 		return nodeNames
 	nodeNames = property(_getNodeNames)
+	
+	def _getTags(self):
+		tags = set([])
+		for day in self.days.values():
+			tags |= set(day.tags)
+		return tags
+	tags = property(_getTags)
 	
 	def sameMonth(date1, date2):
 		if date1 == None or date2 == None:

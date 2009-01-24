@@ -11,9 +11,13 @@ O add password
 
 0.6:
 O Markup Editing
-O Search
 O Easier Tagging
 O Category View
+
+0.5.2
+X Alexandre reimplemented the export wizard
+O Search
+O Export Categories separately
 
 0.5.1
 X Tagging of days
@@ -73,9 +77,8 @@ X Keyboard Shortcuts
 TODO:
 
 Export Categories separately
-Toolbar?
-Hyperlinks in TreeCtrl?
-dataDir Lock (for multiple TRN instances)?
+Hyperlinks in TreeCtrl? -> Done, but undocumented
+dataDir Lock (for multiple TRN instances)? -> No
 Tags in text entries (e.g. @film:Batman)
 (Extend Markdown to support Dokuwiki Syntax) ?
 
@@ -86,9 +89,12 @@ O Add RedNotebook to Startup Programs
 O Fix PDF export for windows?
 
 Wishlist:
-Pictures?
-HTML?
-Task Bar Icon
-Timestamp insertion with keypress
-Tags for entries
+Pictures? -> Yes
+HTML? -> No, we use txt2tags markup
+Task Bar Icon? -> Probably not
+Timestamp insertion with keypress -> Undecided
 Encryption
+SSH, FTP saving
+
+Internal Stuff:
+remove months
