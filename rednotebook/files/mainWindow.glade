@@ -360,7 +360,7 @@ Tag</property>
                   <widget class="GtkHPaned" id="hpaned4">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="position">600</property>
+                    <property name="position">550</property>
                     <child>
                       <widget class="GtkScrolledWindow" id="scrolledwindow1">
                         <property name="visible">True</property>
@@ -421,9 +421,23 @@ Tag</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkTreeView" id="categoriesTreeView">
+                          <widget class="GtkScrolledWindow" id="scrolledwindow3">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                            <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                            <child>
+                              <widget class="GtkViewport" id="viewport2">
+                                <property name="visible">True</property>
+                                <property name="resize_mode">GTK_RESIZE_QUEUE</property>
+                                <child>
+                                  <widget class="GtkTreeView" id="categoriesTreeView">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                  </widget>
+                                </child>
+                              </widget>
+                            </child>
                           </widget>
                           <packing>
                             <property name="position">1</property>
@@ -728,8 +742,8 @@ Tag</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -827,6 +841,7 @@ Tag</property>
   </widget>
   <widget class="GtkWindow" id="exportAssistant">
     <property name="title" translatable="yes">window2</property>
+    <property name="window_position">GTK_WIN_POS_CENTER</property>
     <child>
       <widget class="GtkVBox" id="vbox7">
         <property name="visible">True</property>

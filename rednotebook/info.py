@@ -2,11 +2,13 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.5.1'
+version = '0.5.2'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = "http://rednotebook.sourceforge.net"
-developers = [author + ' <' + authorMail + '>']
+developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
+				'Alexandre Cucumel <superkiouk@gmail.com>',
+				]
 comments = '''\
 RedNotebook is a graphical diary and journal to keep track of notes and \
 thoughts throughout the day. It includes a calendar navigation, customizable \ 
@@ -33,36 +35,42 @@ with RedNotebook; if not, write to the Free Software Foundation, Inc.,
             
 completeWelcomeText = '''\
 Hello, 
-this is the RedNotebook, a desktop diary. This program helps you to keep track of your activities and thoughts. \
-Thank you very much for giving it a try.
+this is the RedNotebook, a desktop diary. Thank you very much for giving it a try.
 The text field containing this text is the container for your normal diary entries like this one: 
 
 Today I went to a //pet shop// and bought a **tiger**. Then we went to the --pool-- park and had a nice time playing \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
+=== Format ===
 As you can see you can format your text **bold**, //italic//, --stricken-- and __underlined__. \
 To see the results, just click on the "Preview" tab.
 
+=== Extra Content ===
 On the right there is space for extra content, things that can easily be sorted into categories. \
-Those entries are shown in a tree. For example you could add the category Ideas and then add your ideas \
-of that day to it:
+For example you could add the category Ideas and then add your ideas \
+of that day to it. On the right you can see what that looks like.
 
-> Ideas
-	Invent Anti-Hangover-Machine 
-
+=== Templates ===
 RedNotebook supports a template system: In the directory "''' + filesystem.templateDir + '''" you find seven \
 text files. One for each day of the week. You can edit those files \
 with your favourite text editor and the text for a given weekday will be inserted when you press the button \
 "Insert Template".
 
+=== Tags ===
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "New Entry" and insert "Tags" \
 and "Work" into the dialog. 
 
+=== Search ===
+On the left you find the fancy search field. You can search for text, display a \
+category's content or show all days with a given tag.
+
+=== Save and Export ===
 Everything you enter will be saved automatically when you exit the program. If you want to double check you can save \
 pressing "Strg-S" or using the menu entry under "File" in the top left corner. "Backup" saves all your entered data in a \
 zip file. In the same menu you also find an "Export"-Button. \
 Click on it and export your diary to Plain Text, HTML, Latex or PDF (Linux only, see Help for instructions).
 
+=== Help ===
 Now you can erase this help text and enter e.g. what you have done today. To read the instructions again, \
 go to "Help -> Help" in the menu bar.
 

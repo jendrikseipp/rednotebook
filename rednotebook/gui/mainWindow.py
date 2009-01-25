@@ -114,23 +114,20 @@ class MainWindow(object):
 			self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
 							ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 			
+			
 	def setup_search(self):
 		self.searchTreeView = SearchTreeView(self.wTree.get_widget(\
 									'searchTreeView'), self)
-		#searchContainerBox = self.wTree.get_widget('searchContainerBox')
 		self.searchTypeBox = self.wTree.get_widget('searchTypeBox')
 		self.searchTypeBox.set_active(0)
-		print 'BOX', self.wTree.get_widget('searchBox').get_model()
 		self.searchBox = SearchComboBox(self.wTree.get_widget('searchBox'), \
 									self)
-		#self.searchBoxCategory = SearchComboBox(self.wTree.get_widget('searchBoxCategory'))
-		#self.searchBoxEntry = SearchComboBox(self.wTree.get_widget('searchBoxEntry'))
 		
 		
 	def on_searchTypeBox_changed(self, widget):
 		searchType = widget.get_active()
 		self.searchBox.set_search_type(searchType)
-		self.searchTreeView.set_search_type(searchType)
+		
 		
 							
 							
@@ -176,6 +173,7 @@ class MainWindow(object):
 		
 	def on_info_activate(self, widget):
 		self.infoDialog = self.wTree.get_widget('aboutDialog')
+		self.infoDialog.set_name('RedNotebook')
 		self.infoDialog.set_version(info.version)
 		self.infoDialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
 		self.infoDialog.set_comments('A Desktop Diary')
@@ -210,7 +208,6 @@ class MainWindow(object):
 		
 	def on_addNewEntryButton_clicked(self, widget):
 		self.newEntryDialog = self.wTree.get_widget('newEntryDialog')
-		print 'CBOX', self.wTree.get_widget('categoriesComboBox').get_model()
 		self.categoriesComboBox = CustomComboBox(self.wTree.get_widget('categoriesComboBox'))
 		self.newEntryTextBox = self.wTree.get_widget('newEntryTextBox')
 		self.newEntryTextBox.set_text('')
@@ -224,7 +221,6 @@ class MainWindow(object):
 			return
 		
 		categoryName = self.categoriesComboBox.get_active_text()
-		#print 'categoryName', categoryName
 		if not self.categoriesTreeView.check_category(categoryName):
 			return
 		
@@ -270,7 +266,7 @@ class MainWindow(object):
 	def get_backup_file(self):
 		proposedFileName = 'RedNotebook-Backup_' + str(datetime.date.today()) + ".zip"
 		backupDialog = self.wTree.get_widget('backupDialog')
-		#backupDialog.set_current_folder(pathname)
+		backupDialog.set_current_folder(os.path.expanduser('~'))
 		backupDialog.set_current_name(proposedFileName)
 		
 		filter = gtk.FileFilter()
@@ -295,22 +291,22 @@ class MainWindow(object):
 	def on_searchNotebook_switch_page(self, notebook, page, pageNumber):
 		if pageNumber == 0:
 			'Switched to search tab'
-			print 'Switched to search tab'
-			self.searchTreeView.update_data()
+			#self.searchTreeView.update_data()
 			
 			
 class CustomComboBox:
 	def __init__(self, comboBox):
 		self.comboBox = comboBox
 		self.liststore = self.comboBox.get_model()
-		print self.liststore
 		#self.comboBox.set_wrap_width(5)
+		self.entry = self.comboBox.get_child()
 		
 	def add_entry(self, entry):
 		self.liststore.append([entry])
 	
 	def set_entries(self, value_list):
 		self.liststore.clear()
+		self.entry.set_text('')
 		for entry in value_list:
 			self.add_entry(entry)
 		
@@ -329,6 +325,8 @@ class CustomComboBox:
 		entry = self.comboBox.get_child()
 		return entry.get_text()
 	
+	
+	
 class SearchComboBox(CustomComboBox):
 	def __init__(self, comboBox, mainWindow):
 		CustomComboBox.__init__(self, comboBox)
@@ -337,9 +335,7 @@ class SearchComboBox(CustomComboBox):
 		self.redNotebook = mainWindow.redNotebook
 		
 		self.entry = self.comboBox.get_child()
-		
-		#self.timeout = 100
-		#self.change_id = None
+		self.entry.set_text('Search ...')
 
 		self.entry.connect('changed', self.on_entry_changed)
 		self.entry.connect('activate', self.on_entry_activated)
@@ -348,7 +344,11 @@ class SearchComboBox(CustomComboBox):
 		
 		self.searchType = 0
 		
+		
 	def set_search_type(self, searchType):
+		
+		self.mainWindow.searchTreeView.set_search_type(searchType)
+		
 		if searchType == 0:
 			'Search for text'
 			self.set_entries(self.recentSearches)
@@ -406,8 +406,6 @@ class MozillaView(gtkmozembed.MozEmbed):
 		with open(os.path.join(filesystem.tempDir, 'tmp.html'), 'w+r') as tempFile:
 			tempFile.write(html)
 			tempFile.flush()
-			#import time
-			#time.sleep(6)
 			#'Move to beginning of file'
 			#tempFile.seek(0, 0)
 			#print 'TMP', tempFile.readlines()
@@ -506,32 +504,18 @@ class SearchTreeView(object):
 		
 		self.searchType = 0
 		
-		'Maintain a list of all entered categories'
-		#self.categories = self.mainWindow.redNotebook.nodeNames
-		
-		self.statusbar = self.mainWindow.statusbar
-		
-		# create a TreeStore with one string column to use as the model
+		'create a TreeStore with two string columns to use as the model'
 		self.treeStore = gtk.ListStore(str, str)
-		
-		#self.textStore = gtk.ListStore(str, str)
-		#self.categoryStore = gtk.ListStore(str, str, str, str)
 
-		# create the TreeView using treeStore
+		'create the TreeView using treeStore'
 		self.treeView.set_model(self.treeStore)
 
 		'create the TreeViewColumns to display the data'
 		self.dateColumn = gtk.TreeViewColumn('Date')
 		self.matchingColumn = gtk.TreeViewColumn('Text')
-		#self.categoryColumn = gtk.TreeViewColumn('Categories')
-		#self.entryColumn = gtk.TreeViewColumn('Entries')
-		#self.entryColumn.set_visible(False)
 		
 		columns = [self.dateColumn,self.matchingColumn, ]
 						#self.categoryColumn, self.entryColumn]
-		
-		#TODO: Change into cell
-		#cellRenderers = {}
 
 		'add tvcolumns to treeView'
 		for column in range(len(columns)):
@@ -543,26 +527,19 @@ class SearchTreeView(object):
 			'add the cell to the tvcolumn and allow it to expand'
 			columns[column].pack_start(cellRenderer, True)
 
-			columns[column].set_attributes(cellRenderer, text=column)
+			'Get markup for column, not text'
+			columns[column].set_attributes(cellRenderer, markup=column)
 			
 			'Allow sorting on the column'
 			columns[column].set_sort_column_id(column)
-			
-		self.treeStore.append(['1', '2',])# '3', '4'])
-		self.treeStore.append(['5', '6',])# '7', '8'])
 		
 		self.update_data()
 
-		# make it searchable
-		#self.treeView.set_search_column(0)
-
-		# Allow sorting on the column
-		#self.tvcolumn.set_sort_column_id(0)
-
-		# Allow drag and drop reordering of rows
-		#self.treeView.set_reorderable(True)
+		'make it searchable'
+		self.treeView.set_search_column(1)
 		
 		self.treeView.connect('row_activated', self.on_row_activated)
+		
 		
 	def update_data(self, searchText=''):
 		self.treeStore.clear()
@@ -573,32 +550,29 @@ class SearchTreeView(object):
 			'Search for text'
 			self.matchingColumn.set_title('Text')
 			rows = self.redNotebook.search(text=searchText)
-			#self.set_entries(self.recentSearches)
 		if self.searchType == 1:
 			'Search for category'
-			self.matchingColumn.set_title('Categories')
+			self.matchingColumn.set_title('Entry')
 			rows = self.redNotebook.search(category=searchText)
-			#self.set_entries(self.categories)
 		if self.searchType == 2:
 			'Search for tags'
 			self.matchingColumn.set_title('Text')
 			rows = self.redNotebook.search(tag=searchText)
-			#self.set_entries(self.tags)
-			
-		print rows
 			
 		if rows:
 			for dateString, resultString in rows:
 				self.treeStore.append([dateString, resultString])
 				
+				
 	def on_row_activated(self, treeview, path, view_column):
 		dateString = self.treeStore[path][0]
 		newDate = dates.get_date_from_date_string(dateString)
 		self.redNotebook.changeDate(newDate)
-		print self.treeStore[path][0], self.treeStore[path][1]
+		
 		
 	def set_search_type(self, searchType):		
 		self.searchType = searchType
+		
 	
 
 class CategoriesTreeView(object):
@@ -612,42 +586,41 @@ class CategoriesTreeView(object):
 		
 		self.statusbar = self.mainWindow.statusbar
 		
-		# create a TreeStore with one string column to use as the model
+		'create a TreeStore with one string column to use as the model'
 		self.treeStore = gtk.TreeStore(str)
 
-		# create the TreeView using treeStore
+		'create the TreeView using treeStore'
 		self.treeView.set_model(self.treeStore)
 
-		# create the TreeViewColumn to display the data
+		'create the TreeViewColumn to display the data'
 		self.tvcolumn = gtk.TreeViewColumn('Categories')
 
-		# add tvcolumn to treeView
+		'add tvcolumn to treeView'
 		self.treeView.append_column(self.tvcolumn)
 
-		# create a CellRendererText to render the data
+		'create a CellRendererText to render the data'
 		self.cell = gtk.CellRendererText()
 		
 		self.cell.set_property('editable', True)
 		self.cell.connect('edited', self.edited_cb, self.treeStore)
 
-		# add the cell to the tvcolumn and allow it to expand
+		'add the cell to the tvcolumn and allow it to expand'
 		self.tvcolumn.pack_start(self.cell, True)
 
-		# set the cell "text" attribute to column 0 - retrieve text
-		# from that column in treeStore
+		''' set the cell "text" attribute to column 0 - retrieve text
+			from that column in treeStore'''
 		self.tvcolumn.add_attribute(self.cell, 'text', 0)
 
-		# make it searchable
+		'make it searchable'
 		self.treeView.set_search_column(0)
 
-		# Allow sorting on the column
+		'Allow sorting on the column'
 		self.tvcolumn.set_sort_column_id(0)
 
-		# Allow drag and drop reordering of rows
-		#self.treeView.set_reorderable(True)
 		
 	def node_on_top_level(self, path):
 		return ':' not in path
+		
 		
 	def edited_cb(self, cell, path, new_text, user_data):
 		'''Called when text in a cell is changed'''
@@ -685,7 +658,6 @@ class CategoriesTreeView(object):
 		for key, value in elementContent.iteritems():
 			newChild = self.treeStore.append(parent, [key])
 			if not value == None:
-				#print 'set', key
 				self.add_element(newChild, value)
 			
 		
@@ -695,11 +667,13 @@ class CategoriesTreeView(object):
 				self.add_element(None, {key: value})
 		self.treeView.expand_all()
 				
+				
 	def get_day_content(self):
-		if not self.empty():#self.treeStore.iter_has_child(None):
+		if not self.empty():
 			return self.get_element_content(None)
 		else:
 			return {}
+		   
 		   
 	def get_element_content(self, element):
 		model = self.treeStore
@@ -710,20 +684,24 @@ class CategoriesTreeView(object):
 				
 			for i in range(model.iter_n_children(element)):
 				child = model.iter_nth_child(element, i)
-				text = self.get_iter_value(child)#model.get_value(child, 0)
+				text = self.get_iter_value(child)
 				content[text] = self.get_element_content(child)
 			
 			return content
 		
+		
 	def empty(self):
 		return self.treeStore.iter_n_children(None) == 0
+		
 		
 	def clear(self):
 		self.treeStore.clear()
 		assert self.empty(), self.treeStore.iter_n_children(None)
 		
+		
 	def get_iter_value(self, iter):
 		return self.treeStore.get_value(iter, 0)
+		
 		
 	def _get_category_iter(self, categoryName):
 		#print 'Number of Categories:', self.treeStore.iter_n_children(None)
@@ -735,6 +713,7 @@ class CategoriesTreeView(object):
 		
 		'If the category was not found, return None'
 		return None
+	
 	
 	def addEntry(self, categoryName, text):
 		if categoryName not in self.categories and categoryName is not None:
@@ -749,6 +728,7 @@ class CategoriesTreeView(object):
 			'If category exists add entry to existing category'
 			self.treeStore.append(categoryIter, [text])
 		
+		
 	def delete_selected_node(self):
 		treeSelection = self.treeView.get_selection()
 		model, selectedIter = treeSelection.get_selected()
@@ -762,6 +742,7 @@ class CategoriesTreeView(object):
 			
 			if response == gtk.RESPONSE_YES:
 				model.remove(selectedIter)
+		
 		
 		
 class DayTextField(object):
@@ -810,7 +791,8 @@ class DayTextField(object):
 	
 	def insert_template(self, template):
 		currentText = self.get_text()
-		self.set_text(template.encode('utf-8') + currentText.encode('utf-8'))
+		self.set_text(template.encode('utf-8') + '\n' + \
+						currentText.encode('utf-8'))
 		
 	#TODO: implement UNDO/REDO
 		
@@ -851,8 +833,7 @@ class DayTextField(object):
 			self.undoButton.Enable(False)
 			
 		self.redoButton.Enable(True)
-		
-		#print self.history
+	
 
 	def onRedo(self, event):
 		

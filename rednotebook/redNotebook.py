@@ -92,6 +92,7 @@ class RedNotebook:
 		if self.firstTimeExecution is True:
 			self.addInstructionContent()
 	
+	
 	def getDaysInDateRange(self, range):
 		startDate, endDate = range
 		assert startDate < endDate
@@ -107,9 +108,11 @@ class RedNotebook:
 				break
 		return daysInDateRange
 		
+		
 	def _getSortedDays(self):
 		return sorted(self.days, dates.compareTwoDays)
 	sortedDays = property(_getSortedDays)
+	
 	
 	def getEditDateOfEntryNumber(self, entryNumber):
 		sortedDays = self.sortedDays
@@ -133,6 +136,7 @@ class RedNotebook:
 		
 		#fileContentPairs = map(lambda file: (file, ''), templateFiles)
 		filesystem.makeFiles(fileContentPairs)
+	
 	
 	def backupContents(self):
 		self.saveToDisk()
@@ -166,10 +170,12 @@ class RedNotebook:
 		
 		self.showMessage('The content has been saved', error=False)
 		
+		
 	def loadAllMonthsFromDisk(self):
 		for root, dirs, files in os.walk(filesystem.dataDir):
 			for file in files:
 				self.loadMonthFromDisk(os.path.join(root, file))
+	
 	
 	def loadMonthFromDisk(self, path):
 		fileName = os.path.basename(path)
@@ -199,7 +205,6 @@ class RedNotebook:
 			print 'An Error occured while loading', fileName
 		
 		
-	
 	def loadMonth(self, date):
 		
 		yearAndMonth = dates.getYearAndMonthFromDate(date)
@@ -210,15 +215,14 @@ class RedNotebook:
 			
 		return self.months[yearAndMonth]
 	
+	
 	def saveOldDay(self):
 		'Order is important'
-		#print 'Content', self.frame.categoriesTreeView.get_day_content()
 		self.day.content = self.frame.categoriesTreeView.get_day_content()
-		#print 'save', self.frame.get_day_text()
 		
 		self.day.text = self.frame.get_day_text()
-		#print 'save', self.day.text
 		self.frame.calendar.setDayEdited(self.date.day, not self.day.empty)
+	
 	
 	def loadDay(self, newDate):
 		oldDate = self.date
@@ -228,27 +232,32 @@ class RedNotebook:
 			self.month = self.loadMonth(self.date)
 		self.frame.set_date(self.month, self.date, self.day)
 		
+		
 	def _getCurrentDay(self):
 		return self.month.getDay(self.date.day)
 	day = property(_getCurrentDay)
 	
+	
 	def changeDate(self, newDate):
 		if newDate == self.date:
-			#print 'Same dates'
 			return
 		
 		self.saveOldDay()
 		self.loadDay(newDate)
 		
+		
 	def goToNextDay(self):
 		self.changeDate(self.date + dates.oneDay)
+		
 		
 	def goToPrevDay(self):
 		self.changeDate(self.date - dates.oneDay)
 			
+			
 	def showMessage(self, messageText, error=False, countdown=True):
 		self.frame.statusbar.showText(messageText, error, countdown)
 		print messageText
+		
 		
 	def _getNodeNames(self):
 		nodeNames = set([])
@@ -257,12 +266,14 @@ class RedNotebook:
 		return list(nodeNames)
 	nodeNames = property(_getNodeNames)
 	
+	
 	def _getTags(self):
 		tags = set([])
 		for month in self.months.values():
 			tags |= set(month.tags)
 		return list(tags)
 	tags = property(_getTags)
+	
 	
 	def search(self, text=None, category=None, tag=None):
 		results = []
@@ -284,7 +295,6 @@ class RedNotebook:
 		return results
 	
 	
-	
 	def _getAllEditedDays(self):
 		days = []
 		for month in self.months.values():
@@ -295,6 +305,7 @@ class RedNotebook:
 			days.extend(daysInMonth)
 		return days
 	days = property(_getAllEditedDays)
+	
 	
 	def getTemplateEntry(self, date=None):
 		if date is None:
@@ -320,8 +331,10 @@ class RedNotebook:
 			numberOfWords += day.getNumberOfWords()
 		return numberOfWords
 	
+	
 	def getNumberOfEntries(self):
 		return len(self.days)
+	
 	
 	def getWordCountDict(self):
 		wordDict = utils.ZeroBasedDict()
@@ -342,7 +355,6 @@ class RedNotebook:
 		
 		self.frame.set_date(self.month, self.date, self.day)
 
-		
 			
 
 class Day(object):
@@ -356,21 +368,22 @@ class Day(object):
 		
 		self.searchResultLength = 50
 	
+	
 	'Text'
 	def _getText(self):
 		if self.content.has_key('text'):
 			return self.content['text']
 		else:
 		   return ''
-		#self.getContent('text')
+		
 	def _setText(self, text):
 		self.content['text'] = text
-		#self.setContent('text', text)
 	text = property(_getText, _setText)
 	
 	def _hasText(self):
 		return len(self.text.strip()) > 0
 	hasText = property(_hasText)
+	
 	
 	def _isEmpty(self):
 		if len(self.content.keys()) == 0:
@@ -381,6 +394,7 @@ class Day(object):
 			return False
 	empty = property(_isEmpty)
 		
+		
 	def _getTree(self):
 		tree = self.content.copy()
 		if tree.has_key('text'):
@@ -388,9 +402,11 @@ class Day(object):
 		return tree
 	tree = property(_getTree)
 	
+	
 	def _getNodeNames(self):
 		return self.tree.keys()
 	nodeNames = property(_getNodeNames)
+		
 		
 	def _getTags(self):
 		tags = []
@@ -442,7 +458,10 @@ class Day(object):
 		occurence = upCaseDayText.find(upCaseSearchText)
 		
 		if occurence > -1:
-			'searchText in text'
+			'searchText is in text'
+			
+			searchedStringInText = self.text[occurence:occurence + len(searchText)]
+			
 			spaceSearchLeftStart = max(0, occurence - self.searchResultLength/2)
 			spaceSearchRightEnd = min(len(self.text), \
 									occurence + len(searchText) + self.searchResultLength/2)
@@ -461,6 +480,9 @@ class Day(object):
 				
 			resultText += unicode.substring(self.text, resultTextStart, resultTextEnd).strip()
 			
+			'Make the searchedText bold'
+			resultText = resultText.replace(searchedStringInText, '<b>' + searchedStringInText + '</b>')
+			
 			if resultTextEnd < len(self.text) - 1:
 				resultText += ' ...'
 				
@@ -471,6 +493,7 @@ class Day(object):
 		else:
 			return None
 		
+		
 	def search_category(self, searchCategory):
 		results = []
 		for category, content in self.getCategoryContentPairs().iteritems():
@@ -479,6 +502,7 @@ class Day(object):
 					for entry in content:
 						results.append((str(self), entry))
 		return results
+	
 	
 	def search_tag(self, searchTag):
 		for category, contentList in self.getCategoryContentPairs().iteritems():
@@ -499,9 +523,11 @@ class Day(object):
 					return (str(self), textStart)
 		return None
 		
+		
 	def _date(self):
 		return dates.getDateFromDay(self)
 	date = property(_date)
+	
 	
 	def __str__(self):
 		dayNumberString = str(self.dayNumber).zfill(2)
@@ -523,18 +549,19 @@ class Month(object):
 		for dayNumber, dayContent in monthContent.iteritems():
 			self.days[dayNumber] = Day(self, dayNumber, dayContent)
 	
+	
 	def getDay(self, dayNumber):
 		if self.days.has_key(dayNumber):
-			#print 'Key found', dayNumber
 			return self.days[dayNumber]
 		else:
-			#print 'Key not found', dayNumber
 			newDay = Day(self, dayNumber)
 			self.days[dayNumber] = newDay
 			return newDay
 		
+		
 	def setDay(self, dayNumber, day):
 		self.days[dayNumber] = day
+		
 		
 	def prettyPrint(self):
 		print '***'
@@ -543,12 +570,14 @@ class Month(object):
 			unicode.printUnicode(day.text)
 		print '---'
 		
+		
 	def _isEmpty(self):
 		for day in self.days.values():
 			if not day.empty:
 				return False
 		return True
 	empty = property(_isEmpty)
+	
 	
 	def _getNodeNames(self):
 		nodeNames = set([])
@@ -557,12 +586,14 @@ class Month(object):
 		return nodeNames
 	nodeNames = property(_getNodeNames)
 	
+	
 	def _getTags(self):
 		tags = set([])
 		for day in self.days.values():
 			tags |= set(day.tags)
 		return tags
 	tags = property(_getTags)
+	
 	
 	def sameMonth(date1, date2):
 		if date1 == None or date2 == None:
@@ -572,12 +603,9 @@ class Month(object):
 		
 	
 	
-		
-	
 def main():	
 	redNotebook = RedNotebook()
 	gtk.main()
 
-#if __name__ == '__main__':
 main()
 	

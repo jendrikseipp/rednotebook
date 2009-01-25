@@ -19,7 +19,7 @@ O Export Categories separately
 
 0.5.2
 X Alexandre reimplemented the export wizard
-O Search
+X Search
 
 0.5.1
 X Tagging of days
