@@ -1,5 +1,9 @@
 ==== Changelog ====
 
+=== 0.5.2 (2009-01-27) ===
+  * The Export Wizard is back again (Thanks Alexandre)
+  * It is now possible to search for text, categories and tags
+
 === 0.5.1 (2009-01-21) ===
   * Days can be tagged
   * Formatting text is possible

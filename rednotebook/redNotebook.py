@@ -45,7 +45,6 @@ from rednotebook.util import unicode
 from rednotebook.util import dates
 from rednotebook import info
 from rednotebook import config
-#from rednotebook import export
 
 from rednotebook.gui.mainWindow import MainWindow
 from rednotebook.util.statistics import Statistics

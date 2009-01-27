@@ -36,7 +36,9 @@ from rednotebook import info
 from rednotebook.util import markup
 from rednotebook.util import dates
 
-from exportAssistant import ExportAssistant
+print sys.path
+
+from rednotebook.gui.exportAssistant import ExportAssistant
 
 
 class MainWindow(object):
