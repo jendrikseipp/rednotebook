@@ -12,10 +12,15 @@ O Markup Editing
 O Easier Tagging
 O remove gtkhtml2
 O only make the entry submittable, if text has been entered
+O update checker
+O add copyright notice to source files
+
+0.5.4
+O Export Categories separately
 
 0.5.3
-O Export Categories separately
 O word, tag and category clouds
+0 Catch abnormal aborts and save content to disk
 
 0.5.2
 X Alexandre reimplemented the export wizard

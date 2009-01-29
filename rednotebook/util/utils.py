@@ -1,3 +1,6 @@
+import sys
+import signal
+
 def printError(message):
 	print '\nERROR:', message
 
@@ -43,3 +46,36 @@ def restrain(valueToRestrain, range):
 	if valueToRestrain > rangeEnd:
 		entryNumber = rangeEnd
 	return valueToRestrain
+
+
+
+def setup_signal_handlers(redNotebook):
+	'''
+	Catch abnormal exits of the program and save content to disk
+	Look in signal man page for signal names
+	
+	SIGKILL cannot be caught
+	SIGINT is caught again by KeyboardInterrupt
+	'''
+	
+	signals = [	signal.SIGHUP,  #Terminal closed, Parent process dead
+				signal.SIGINT,  #Interrupt from keyboard (CTRL-C)
+				signal.SIGQUIT, #Quit from keyboard
+				signal.SIGABRT, #Abort signal from abort(3)
+				signal.SIGTERM, #Termination signal
+				signal.SIGSTOP, #Stop process
+				signal.SIGTSTP, #Stop typed at tty
+				]
+	
+	
+	def signal_handler(signum, frame):
+		redNotebook.saveToDisk()
+		sys.exit()
+
+
+	for signalNumber in signals:
+		if signalNumber != signal.SIGKILL:
+			try:
+				signal.signal(signalNumber, signal_handler)
+			except RuntimeError:
+				print 'False Signal Number:', signalNumber

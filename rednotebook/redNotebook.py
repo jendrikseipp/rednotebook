@@ -117,7 +117,6 @@ class RedNotebook:
 		sortedDays = self.sortedDays
 		if len(self.sortedDays) == 0:
 			return datetime.date.today()
-		#entryNumber = utils.restrain(entryNumber, (0, len(sortedDays)-1))
 		return dates.getDateFromDay(self.sortedDays[entryNumber % len(sortedDays)])
 	
 	   
@@ -131,9 +130,7 @@ class RedNotebook:
 		fileContentPairs = []
 		for dayNumber in range(1, 8):
 			fileContentPairs.append((filesystem.getTemplateFile(dayNumber), getInstruction(dayNumber)))
-		#templateFiles = map(lambda dayNumber: filesystem.getTemplateFile(dayNumber), range(1, 8))
 		
-		#fileContentPairs = map(lambda file: (file, ''), templateFiles)
 		filesystem.makeFiles(fileContentPairs)
 	
 	
@@ -602,9 +599,17 @@ class Month(object):
 		
 	
 	
-def main():	
+def main():
 	redNotebook = RedNotebook()
-	gtk.main()
+	utils.setup_signal_handlers(redNotebook)
+	
+	try:
+		gtk.main()
+	except KeyboardInterrupt:
+		#print 'Interrupt'
+		#redNotebook.saveToDisk()
+		sys.exit()
+		
 
 main()
 	

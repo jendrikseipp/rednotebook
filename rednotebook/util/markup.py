@@ -7,7 +7,7 @@ from rednotebook import txt2tags
 from rednotebook.util import filesystem
 
 def _convertCategoriesToMarkup(categories):
-	markup = '=== Categories ===\n'
+	markup = '== Categories ==\n'
 	for category, entryList in categories.iteritems():
 		markup += '- ' + category + '\n'
 		for entry in entryList:
@@ -15,7 +15,7 @@ def _convertCategoriesToMarkup(categories):
 		markup += '\n\n'
 	return markup
 
-def getMarkupForDay(day, withDate=True):			
+def getMarkupForDay(day, withDate=True):
 	'Add date and text'
 	if withDate:
 		exportString = '= ' + str(day.date) + ' =\n\n' + day.text

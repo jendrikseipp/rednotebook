@@ -36,8 +36,6 @@ from rednotebook import info
 from rednotebook.util import markup
 from rednotebook.util import dates
 
-print sys.path
-
 from rednotebook.gui.exportAssistant import ExportAssistant
 
 
@@ -84,7 +82,7 @@ class MainWindow(object):
 			'on_todayButton_clicked': self.on_todayButton_clicked,
 			'on_forwardOneDayButton_clicked': self.on_forwardOneDayButton_clicked,
 			'on_calendar_day_selected': self.on_calendar_day_selected,
-			'on_saveButton_clicked': self.on_saveButton_clicked,
+			#'on_saveButton_clicked': self.on_saveButton_clicked,
 			'on_saveMenuItem_activate': self.on_saveButton_clicked,
 			
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,

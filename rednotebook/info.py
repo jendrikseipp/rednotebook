@@ -2,7 +2,7 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.5.2'
+version = '0.5.3'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = "http://rednotebook.sourceforge.net"
@@ -43,7 +43,7 @@ ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 === Format ===
 As you can see you can format your text **bold**, //italic//, --stricken-- and __underlined__. \
-To see the results, just click on the "Preview" tab.
+To see the results, just click on the "View" tab.
 
 === Extra Content ===
 On the right there is space for extra content, things that can easily be sorted into categories. \
