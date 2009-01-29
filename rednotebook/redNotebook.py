@@ -148,7 +148,7 @@ class RedNotebook:
 			filesystem.writeArchive(backupFile, archiveFiles, filesystem.dataDir)
 
 	
-	def saveToDisk(self):
+	def saveToDisk(self, exitImminent=False):
 		self.saveOldDay()
 		
 		for yearAndMonth, month in self.months.iteritems():
@@ -165,6 +165,9 @@ class RedNotebook:
 					yaml.dump(monthContent, monthFile)
 		
 		self.showMessage('The content has been saved', error=False)
+		
+		if not exitImminent:
+			'Update clouds'
 		
 		
 	def loadAllMonthsFromDisk(self):
@@ -332,10 +335,17 @@ class RedNotebook:
 		return len(self.days)
 	
 	
-	def getWordCountDict(self):
+	def getWordCountDict(self, type):
 		wordDict = utils.ZeroBasedDict()
 		for day in self.days:
-			for word in day.getWords(withSpecialChars=False):
+			if type == 'word':
+				words = day.words
+			if type == 'category':
+				words = day.nodeNames
+			if type == 'tag':
+				words = day.tags
+			
+			for word in words:
 				wordDict[word.lower()] += 1
 		return wordDict
 			
@@ -429,7 +439,7 @@ class Day(object):
 		return pairs
 	
 	
-	def _getWords(self, withSpecialChars=True):
+	def _getWords(self, withSpecialChars=False):
 		if withSpecialChars:
 			return self.text.split()
 		
@@ -444,7 +454,7 @@ class Day(object):
 	
 	
 	def getNumberOfWords(self):
-		return len(self.words)
+		return len(self._getWords(withSpecialChars=True))
 	
 	
 	def search_text(self, searchText):

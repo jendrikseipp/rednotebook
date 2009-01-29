@@ -69,6 +69,7 @@ class MainWindow(object):
 									'categoriesTreeView'), self)
 		
 		self.setup_search()
+		self.setup_clouds()
 		
 		#self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
 		#self.preview = Preview(self.previewScrolledWindow)
@@ -129,6 +130,13 @@ class MainWindow(object):
 		self.searchBox.set_search_type(searchType)
 		
 		
+	def setup_clouds(self):
+		self.wordCloud = CloudView(self.wTree.get_widget('wordCloudBox'), \
+								'word', self.redNotebook)
+		self.categoryCloud = CloudView(self.wTree.get_widget('categoryCloudBox'), \
+								'category', self.redNotebook)
+		self.tagCloud = CloudView(self.wTree.get_widget('tagCloudBox'), \
+								'tag', self.redNotebook)
 							
 							
 	def on_copyMenuItem_activate(self, widget):
@@ -292,6 +300,16 @@ class MainWindow(object):
 		if pageNumber == 0:
 			'Switched to search tab'
 			#self.searchTreeView.update_data()
+		if pageNumber == 1:
+			'Word Cloud'
+			self.wordCloud.update()
+		if pageNumber == 2:
+			'Category Cloud'
+			self.categoryCloud.update()
+		if pageNumber == 3:
+			'Tag Cloud'
+			self.tagCloud.update()
+			
 			
 			
 class CustomComboBox:
@@ -394,8 +412,8 @@ class MozillaView(gtkmozembed.MozEmbed):
 		gtkmozembed.MozEmbed.__init__(self)
 		gtkmozembed.set_profile_path("/tmp", "simple_browser_user") # Set a temporary Mozilla profile (works around some bug)
 		containerBox.add(self)
-		'Attempt to set the size of the browser widget to 600x400 pixels'
-		self.set_size_request(600,400) 
+		#'Attempt to set the size of the browser widget to 600x400 pixels'
+		#self.set_size_request(600,400)
 		self.show()
 	
 	def write(self, html):
@@ -423,6 +441,29 @@ class MozillaView(gtkmozembed.MozEmbed):
 		markupText = markup.getMarkupForDay(day, withDate=False)
 		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
 		self.write(html)
+		
+		
+class CloudView(MozillaView):
+	def __init__(self, box, type, redNotebook):
+		MozillaView.__init__(self, box)
+		self.type = type
+		self.redNotebook = redNotebook
+		
+		self.connect('open-uri', self.word_clicked)
+		
+	def update(self):
+		wordCountDict = self.redNotebook.getWordCountDict(self.type)
+		html = utils.getHtmlDocFromWordCountDict(wordCountDict, self.type)
+		self.write(html)
+		
+	def word_clicked(self, mozembed, uri):
+		'uri has the form "something/somewhere/search/searchText"'
+		print 'Clicked', uri
+		if 'search' in uri:
+			'searchText is the part after last slash'
+			searchText = uri.split('/')[-1]
+			print 'Search', searchText
+		
 				
 	
 class HTMLView(gtkhtml2.View):

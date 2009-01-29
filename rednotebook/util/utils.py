@@ -1,5 +1,7 @@
 import sys
 import signal
+import random
+import operator
 
 def printError(message):
 	print '\nERROR:', message
@@ -48,6 +50,59 @@ def restrain(valueToRestrain, range):
 	return valueToRestrain
 
 
+def getHtmlDocFromWordCountDict(wordCountDict, type):
+	sortedDict = sortDictByValues(wordCountDict)
+	
+	if type == 'word':
+		'filter short words'
+		sortedDict = filter(lambda x: len(x[0]) > 4, sortedDict)
+	
+	oftenUsedWords = []
+	numberOfWords = 42
+	
+	'''
+	only take the longest words. If there are less words than n, 
+	len(longWords) words are returned
+	'''
+	tagCloudWords = sortedDict[-numberOfWords:]
+	if len(tagCloudWords) < 1:
+		return '<html></html>'
+	minCount = tagCloudWords[0][1]
+	maxCount = tagCloudWords[-1][1]
+	
+	deltaCount = maxCount - minCount
+	if deltaCount == 0:
+		deltaCount = 1
+	
+	minFontSize = 10
+	maxFontSize = 50
+	
+	fontDelta = maxFontSize - minFontSize
+	
+	htmlElements = []
+	
+	htmlHead = '<html><body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#000000" VLINK="#000000" ALINK="#000000">\n<center>'
+	htmlTail = '</center></body></html>'
+	for word, count in tagCloudWords:
+		fontFactor = floatDiv((count - minCount), (deltaCount))
+		fontSize = int(minFontSize + fontFactor * fontDelta)
+		
+		htmlElements.append('<a href="search/' + word + '">' + \
+								'<span style="font-size:' + str(int(fontSize)) + 'px;">' + \
+									word + \
+								'</span>' + \
+							'</a>' + \
+							'&nbsp;'*random.randint(1,4) + '\n')
+		
+	random.shuffle(htmlElements)
+	
+	htmlDoc = htmlHead 
+	htmlDoc += reduce(operator.add, htmlElements, '')
+	htmlDoc += htmlTail
+	
+	print htmlDoc#.encode("utf-8")
+	return htmlDoc
+
 
 def setup_signal_handlers(redNotebook):
 	'''
@@ -63,7 +118,7 @@ def setup_signal_handlers(redNotebook):
 				signal.SIGQUIT, #Quit from keyboard
 				signal.SIGABRT, #Abort signal from abort(3)
 				signal.SIGTERM, #Termination signal
-				signal.SIGSTOP, #Stop process
+				#signal.SIGSTOP, #Stop process
 				signal.SIGTSTP, #Stop typed at tty
 				]
 	
