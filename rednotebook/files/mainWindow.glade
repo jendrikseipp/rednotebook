@@ -290,8 +290,20 @@ Tag</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkVBox" id="wordCloudBox">
+                      <widget class="GtkVBox" id="cloudBox">
                         <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkComboBox" id="cloudComboBox">
+                            <property name="visible">True</property>
+                            <property name="items" translatable="yes">Words
+Categories
+Tags</property>
+                            <signal name="changed" handler="on_cloudComboBox_changed"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                          </packing>
+                        </child>
                         <child>
                           <placeholder/>
                         </child>
@@ -303,55 +315,11 @@ Tag</property>
                     <child>
                       <widget class="GtkLabel" id="label7">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Words</property>
+                        <property name="label" translatable="yes">Clouds</property>
                       </widget>
                       <packing>
                         <property name="type">tab</property>
                         <property name="position">1</property>
-                        <property name="tab_fill">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="GtkVBox" id="categoryCloudBox">
-                        <property name="visible">True</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                      </widget>
-                      <packing>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="GtkLabel" id="label12">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Categories</property>
-                      </widget>
-                      <packing>
-                        <property name="type">tab</property>
-                        <property name="position">2</property>
-                        <property name="tab_fill">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="GtkVBox" id="tagCloudBox">
-                        <property name="visible">True</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                      </widget>
-                      <packing>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="GtkLabel" id="label13">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Tags</property>
-                      </widget>
-                      <packing>
-                        <property name="type">tab</property>
-                        <property name="position">3</property>
                         <property name="tab_fill">False</property>
                       </packing>
                     </child>
@@ -804,8 +772,8 @@ Tag</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>

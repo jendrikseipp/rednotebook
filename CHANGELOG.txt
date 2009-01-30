@@ -1,5 +1,10 @@
 ==== Changelog ====
 
+
+=== 0.5.3 (2009-01-30) ===
+  * Word, tag and category clouds
+  * Catch abnormal aborts and save content to disk
+
 === 0.5.2 (2009-01-27) ===
   * The Export Wizard is back again (Thanks Alexandre)
   * It is now possible to search for text, categories and tags

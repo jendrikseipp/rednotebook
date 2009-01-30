@@ -5,7 +5,7 @@ from rednotebook.util import filesystem
 version = '0.5.3'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
-url = "http://rednotebook.sourceforge.net"
+url = 'http://rednotebook.sourceforge.net'
 developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
 				'Alexandre Cucumel <superkiouk@gmail.com>',
 				]
@@ -36,7 +36,7 @@ with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 completeWelcomeText = '''\
 Hello, 
 this is the RedNotebook, a desktop diary. Thank you very much for giving it a try.
-The text field containing this text is the container for your normal diary entries like this one: 
+This text field is the container for your normal diary entries like this one: 
 
 Today I went to a //pet shop// and bought a **tiger**. Then we went to the --pool-- park and had a nice time playing \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".

@@ -90,6 +90,9 @@ class RedNotebook:
 		
 		if self.firstTimeExecution is True:
 			self.addInstructionContent()
+			
+		'Show cloud tab'
+		self.frame.searchNotebook.set_current_page(1)
 	
 	
 	def getDaysInDateRange(self, range):

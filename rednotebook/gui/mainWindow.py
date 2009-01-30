@@ -17,6 +17,7 @@ import gtk.glade
 #gtk.gdk.threads_init()
 
 from rednotebook.util import utils
+import rednotebook.util.unicode
 
 try:
 	import gtkhtml2
@@ -68,14 +69,11 @@ class MainWindow(object):
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
-		self.setup_search()
-		self.setup_clouds()
-		
 		#self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
 		#self.preview = Preview(self.previewScrolledWindow)
 		self.preview = MozillaView(self.wTree.get_widget('previewBox'))
-								
-		self.set_shortcuts()
+		
+		self.setup_search()
 		
 		'Create an event->method dictionary and connect it to the widgets'
 		dic = {
@@ -98,6 +96,7 @@ class MainWindow(object):
 			'on_searchNotebook_switch_page': self.on_searchNotebook_switch_page,
 			'on_templateButton_clicked': self.on_templateButton_clicked,
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
+			'on_cloudComboBox_changed': self.on_cloudComboBox_changed,
 			'on_info_activate': self.on_info_activate,
 			'on_helpMenuItem_activate': self.on_helpMenuItem_activate,
 			'on_backup_activate': self.on_backup_activate,
@@ -105,6 +104,10 @@ class MainWindow(object):
 			'on_mainFrame_destroy': self.on_mainFrame_destroy,
 			 }
 		self.wTree.signal_autoconnect(dic)
+		
+		
+		self.setup_clouds()
+		self.set_shortcuts()
 		
 		
 	def set_shortcuts(self):
@@ -117,6 +120,8 @@ class MainWindow(object):
 			
 			
 	def setup_search(self):
+		self.searchNotebook = self.wTree.get_widget('searchNotebook')
+		
 		self.searchTreeView = SearchTreeView(self.wTree.get_widget(\
 									'searchTreeView'), self)
 		self.searchTypeBox = self.wTree.get_widget('searchTypeBox')
@@ -129,15 +134,50 @@ class MainWindow(object):
 		searchType = widget.get_active()
 		self.searchBox.set_search_type(searchType)
 		
+			
+	def on_searchNotebook_switch_page(self, notebook, page, pageNumber):
+		if pageNumber == 0:
+			'Switched to search tab'
+			#self.searchTreeView.update_data()
+		if pageNumber == 1:
+			'Switched to cloud tab'
+			self.wordCloud.update()
+		
 		
 	def setup_clouds(self):
-		self.wordCloud = CloudView(self.wTree.get_widget('wordCloudBox'), \
-								'word', self.redNotebook)
-		self.categoryCloud = CloudView(self.wTree.get_widget('categoryCloudBox'), \
-								'category', self.redNotebook)
-		self.tagCloud = CloudView(self.wTree.get_widget('tagCloudBox'), \
-								'tag', self.redNotebook)
-							
+		self.cloudBox = self.wTree.get_widget('cloudBox')
+		
+		self.wordCloud = CloudView(self.cloudBox, 'word', self.redNotebook)
+		self.categoryCloud = CloudView(self.cloudBox, 'category', \
+											self.redNotebook)
+		self.tagCloud = CloudView(self.cloudBox, 'tag', self.redNotebook)
+		
+		self.cloudComboBox = self.wTree.get_widget('cloudComboBox')
+		self.cloudComboBox.set_active(0)
+		
+		
+	def on_cloudComboBox_changed(self, cloudComboBox):
+		clouds = [self.wordCloud, self.categoryCloud, self.tagCloud]
+		value = cloudComboBox.get_active()
+		visibleCloud = clouds[value]
+		
+		visibleCloud.update()
+		visibleCloud.show()
+		
+		invisibleCloudNumbers = range(3)
+		invisibleCloudNumbers.remove(value)
+		
+		for cloudNumber in invisibleCloudNumbers:
+			clouds[cloudNumber].hide()
+			
+			
+	def on_dayNotebook_switch_page(self, notebook, page, pageNumber):
+		if pageNumber == 1:
+			'Switched to preview tab'
+			self.redNotebook.saveOldDay()
+			#self.day.text = self.get_day_text()
+			self.preview.set_day(self.redNotebook.day)
+					
 							
 	def on_copyMenuItem_activate(self, widget):
 		self.dayTextField.dayTextView.emit('copy_clipboard')
@@ -289,26 +329,7 @@ class MainWindow(object):
 			return backupDialog.get_filename()
 	
 	
-	def on_dayNotebook_switch_page(self, notebook, page, pageNumber):
-		if pageNumber == 1:
-			'Switched to preview tab'
-			self.redNotebook.saveOldDay()
-			#self.day.text = self.get_day_text()
-			self.preview.set_day(self.redNotebook.day)
-			
-	def on_searchNotebook_switch_page(self, notebook, page, pageNumber):
-		if pageNumber == 0:
-			'Switched to search tab'
-			#self.searchTreeView.update_data()
-		if pageNumber == 1:
-			'Word Cloud'
-			self.wordCloud.update()
-		if pageNumber == 2:
-			'Category Cloud'
-			self.categoryCloud.update()
-		if pageNumber == 3:
-			'Tag Cloud'
-			self.tagCloud.update()
+	
 			
 			
 			
@@ -340,8 +361,10 @@ class CustomComboBox:
 			return ''
 		
 	def get_active_text(self):
-		entry = self.comboBox.get_child()
-		return entry.get_text()
+		return self.entry.get_text()
+	
+	def set_active_text(self, text):
+		return self.entry.set_text(text)
 	
 	
 	
@@ -410,13 +433,24 @@ class SearchComboBox(CustomComboBox):
 class MozillaView(gtkmozembed.MozEmbed):
 	def __init__(self, containerBox):
 		gtkmozembed.MozEmbed.__init__(self)
-		gtkmozembed.set_profile_path("/tmp", "simple_browser_user") # Set a temporary Mozilla profile (works around some bug)
-		containerBox.add(self)
+		'Set a temporary Mozilla profile (works around some bug)'
+		gtkmozembed.set_profile_path("/tmp", "simple_browser_user")
+		containerBox.pack_start(self)
 		#'Attempt to set the size of the browser widget to 600x400 pixels'
 		#self.set_size_request(600,400)
 		self.show()
 	
 	def write(self, html):
+		'''
+		The following line produces a segfault
+		In Python 2.6 a proper method for variable size detection was added,
+		so we will use that method later...
+		
+		For now write the html to a file and display it.
+		
+		#self.render_data(html, long(len(html)), 'file:///', 'text/html')
+		'''
+		
 		#import tempfile
 		#with tempfile.NamedTemporaryFile(suffix='.html') as tempFile:
 #			tempFile.write("Yeah")
@@ -451,18 +485,29 @@ class CloudView(MozillaView):
 		
 		self.connect('open-uri', self.word_clicked)
 		
+		'save type as int'
+		typeDict = {'word': 0, 'category': 1, 'tag': 2}
+		self.typeInt = typeDict.get(self.type)
+		
 	def update(self):
 		wordCountDict = self.redNotebook.getWordCountDict(self.type)
-		html = utils.getHtmlDocFromWordCountDict(wordCountDict, self.type)
+		self.tagCloudWords, html = utils.getHtmlDocFromWordCountDict(wordCountDict, \
+															self.type)
 		self.write(html)
 		
 	def word_clicked(self, mozembed, uri):
-		'uri has the form "something/somewhere/search/searchText"'
-		print 'Clicked', uri
+		'uri has the form "something/somewhere/search/searchIndex"'
 		if 'search' in uri:
-			'searchText is the part after last slash'
-			searchText = uri.split('/')[-1]
-			print 'Search', searchText
+			'searchIndex is the part after last slash'
+			searchIndex = int(uri.split('/')[-1])
+			searchText = self.tagCloudWords[searchIndex]
+			
+			self.redNotebook.frame.searchTypeBox.set_active(self.typeInt)
+			self.redNotebook.frame.searchBox.set_active_text(searchText)
+			self.redNotebook.frame.searchNotebook.set_current_page(0)
+			
+			'returning True here stops loading the document'
+			return True
 		
 				
 	

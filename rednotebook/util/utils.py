@@ -3,6 +3,8 @@ import signal
 import random
 import operator
 
+import unicode
+
 def printError(message):
 	print '\nERROR:', message
 
@@ -24,10 +26,13 @@ def getSortedDictByKeys(adict):
 	items.sort()
 	return items
    
-def sortDictByKeys(adict):
+def sortDictByKeys(adict, sortFunction=None):
 	'''Returns a sorted list of values, sorted by key'''
 	keys = adict.keys()
-	keys.sort()
+	if sortFunction is None:
+		keys.sort()
+	else:
+		keys.sort(key=sortFunction)
 	return map(adict.get, keys)
 
 def sortDictByValues(adict):
@@ -39,6 +44,20 @@ def sortDictByValues(adict):
 	items = adict.items()
 	items.sort(lambda (key1, value1), (key2, value2): cmp(value1, value2))
 	return items
+
+def sort_pair_list_by_keys(aList, sortFunction=None):
+	'''Returns a sorted list of values, sorted by key'''
+	def compare_two_pairs(pair1, pair2):
+		key1, value1 = pair1
+		key2, value2 = pair2
+		
+	#return sort(lambda)
+	keys = adict.keys()
+	if sortFunction is None:
+		keys.sort()
+	else:
+		keys.sort(key=sortFunction)
+	return map(adict.get, keys)
 
 
 def restrain(valueToRestrain, range):
@@ -66,7 +85,8 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 	'''
 	tagCloudWords = sortedDict[-numberOfWords:]
 	if len(tagCloudWords) < 1:
-		return '<html></html>'
+		return [], '<html></html>'
+	
 	minCount = tagCloudWords[0][1]
 	maxCount = tagCloudWords[-1][1]
 	
@@ -79,29 +99,40 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 	
 	fontDelta = maxFontSize - minFontSize
 	
+	'delete count information from word list'
+	tagCloudWords = map(lambda (word, count): word, tagCloudWords)
+	
+	'search words with unicode sort function'
+	tagCloudWords.sort(key=unicode.coll)
+	
 	htmlElements = []
 	
-	htmlHead = '<html><body TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#000000" VLINK="#000000" ALINK="#000000">\n<center>'
+	htmlHead = '<html><head>' + \
+				'<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">' + \
+				'<body TEXT="black" BGCOLOR="white" LINK="black" VLINK="black" ALINK="black">\n<center>'
 	htmlTail = '</center></body></html>'
-	for word, count in tagCloudWords:
+	
+	for wordIndex in range(len(tagCloudWords)):
+		count = wordCountDict.get(tagCloudWords[wordIndex])
 		fontFactor = floatDiv((count - minCount), (deltaCount))
 		fontSize = int(minFontSize + fontFactor * fontDelta)
 		
-		htmlElements.append('<a href="search/' + word + '">' + \
+		htmlElements.append('<a href="search/' + str(wordIndex) + '">' + \
 								'<span style="font-size:' + str(int(fontSize)) + 'px;">' + \
-									word + \
+									tagCloudWords[wordIndex] + \
 								'</span>' + \
 							'</a>' + \
-							'&nbsp;'*random.randint(1,4) + '\n')
+							#'&nbsp;'*random.randint(1,1) + 
+							'\n')
 		
-	random.shuffle(htmlElements)
+	#random.shuffle(htmlElements)
+	
 	
 	htmlDoc = htmlHead 
 	htmlDoc += reduce(operator.add, htmlElements, '')
 	htmlDoc += htmlTail
 	
-	print htmlDoc#.encode("utf-8")
-	return htmlDoc
+	return (tagCloudWords, htmlDoc)
 
 
 def setup_signal_handlers(redNotebook):

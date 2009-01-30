@@ -19,8 +19,9 @@ O add copyright notice to source files
 O Export Categories separately
 
 0.5.3
-O word, tag and category clouds
-0 Catch abnormal aborts and save content to disk
+X word, tag and category clouds
+X Catch abnormal aborts and save content to disk
+X Allow unicode in clouds
 
 0.5.2
 X Alexandre reimplemented the export wizard
