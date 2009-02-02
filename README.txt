@@ -5,9 +5,13 @@
   - PyYaml (3.05) (www.yaml.org)
   - pyGTK (2.13) (www.pygtk.org)
   - python-gtkhtml2 (2.19.1)
-  - python-gtkmozembed 
+  - python-gtkmozembed (in package python-gnome2-extras)
   
+=== Ubuntu ===
 On Ubuntu you type 'sudo apt-get install python-yaml python-gtk2 python-gtkhtml2 python-gnome2-extras'
+
+=== Fedora ===
+yum -y install python-devel PyYAML gnome-python2-gtkmozembed 
 
 
 ===== INSTALL =====

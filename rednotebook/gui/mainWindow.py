@@ -329,7 +329,16 @@ class MainWindow(object):
 			return backupDialog.get_filename()
 	
 	
-	
+	def show_new_version_dialog(self):
+		newVersionDialog = self.wTree.get_widget('newVersionDialog')
+		response = newVersionDialog.run()
+		newVersionDialog.hide()
+		
+		if response == gtk.RESPONSE_OK:
+			webbrowser.open(info.url)
+		elif response == 20:
+			'do not ask again'
+			
 			
 			
 			
@@ -434,7 +443,7 @@ class MozillaView(gtkmozembed.MozEmbed):
 	def __init__(self, containerBox):
 		gtkmozembed.MozEmbed.__init__(self)
 		'Set a temporary Mozilla profile (works around some bug)'
-		gtkmozembed.set_profile_path("/tmp", "simple_browser_user")
+		gtkmozembed.set_profile_path('/tmp', 'simple_browser_user')
 		containerBox.pack_start(self)
 		#'Attempt to set the size of the browser widget to 600x400 pixels'
 		#self.set_size_request(600,400)

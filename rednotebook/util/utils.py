@@ -2,6 +2,9 @@ import sys
 import signal
 import random
 import operator
+import os
+from threading import Thread
+from urllib2 import urlopen
 
 import unicode
 
@@ -135,6 +138,17 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 	return (tagCloudWords, htmlDoc)
 
 
+def set_environment_vaiables():
+	variables = {	'LD_LIBRARY_PATH': '/usr/lib/xulrunner-1.9',
+					 'MOZILLA_FIVE_HOME': '/usr/lib/xulrunner-1.9',
+				}
+	
+	for variable, value in variables.iteritems():
+		if not os.environ.has_key(variable) or True:
+			os.environ[variable] = value
+			print variable, 'set to', value
+
+
 def setup_signal_handlers(redNotebook):
 	'''
 	Catch abnormal exits of the program and save content to disk
@@ -155,6 +169,7 @@ def setup_signal_handlers(redNotebook):
 	
 	
 	def signal_handler(signum, frame):
+		print 'Program was abnormally aborted with signal', signum
 		redNotebook.saveToDisk()
 		sys.exit()
 
@@ -165,3 +180,27 @@ def setup_signal_handlers(redNotebook):
 				signal.signal(signalNumber, signal_handler)
 			except RuntimeError:
 				print 'False Signal Number:', signalNumber
+				
+
+def get_new_version_number(currentVersion):
+	newVersion = None
+	
+	try:
+		projectXML = urlopen('http://freshmeat.net/projects-xml/rednotebook/rednotebook.xml').read()
+		tag = '<latest_release_version>'
+		position = projectXML.find(tag)
+		newVersion = projectXML[position + len(tag):position + len(tag) + 5]
+		print newVersion, 'is newest version'
+	except Exception:
+		print 'New version info could not be read'
+		raise
+	
+	if newVersion:
+		if newVersion > currentVersion:
+			return newVersion
+	
+	return None
+
+def check_new_version(mainFrame, currentVersion):
+	if get_new_version_number(currentVersion):
+		mainFrame.show_new_version_dialog()

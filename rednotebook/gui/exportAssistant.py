@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import gtk
+import gobject
 import datetime
 import os
 import codecs
@@ -10,149 +11,254 @@ from rednotebook.util import markup
 
 class ExportAssistant (object):
     def __init__ (self, mainWindow):
-        
+                
         self.redNotebook = mainWindow.redNotebook
-        self.gladefile = mainWindow.gladefile
+        self.mainWindow = mainWindow
         
-        self.formatExtensionMap = {'Text': 'txt', 'HTML': 'html', 'Latex': 'tex', 'PDF' : 'pdf'}
-        self.assistant = gtk.Assistant()
-        self.assistant.set_title('Export')
-        self.assistant.connect('close', self.onQuit)
-        self.assistant.connect('cancel', self.onCancel)
-        self.assistant.connect('delete_event', self.onCancel)
-
+        self.format_extension_map = {'Text': 'txt', 'HTML': 'html', 'Latex': 'tex', 'PDF' : 'pdf'}
+        cache_wtree = self.mainWindow.wTree
+        self.assistant = cache_wtree.get_widget('export_assistant')
+        dic = {
+               'on_quit': self.on_quit,
+               'on_cancel': self.on_cancel,
+               }
+        
+        cache_wtree.signal_autoconnect(dic)
+        
         self.append_first_page()
         self.append_second_page()
         self.append_third_page()
+        self.append_fourth_page()
         
         self.assistant.set_forward_page_func(self.prepare_next_page, None)
         
         self.assistant.show()
 
     def append_first_page (self) :
-
-        cloned_glade = gtk.glade.XML(self.gladefile, 'exportAssistant_1') 
-        page1 = cloned_glade.get_widget('exportAssistant_1')
+        cache_wtree = self.mainWindow.wTree
+        page1 = cache_wtree.get_widget('export_assistant_1')
         page1.show()
 
-        self.assistant.append_page(page1)
-        self.assistant.set_page_title(page1, 'Export Assistant, step 1')
-        self.assistant.set_page_type(page1, gtk.ASSISTANT_PAGE_CONTENT)
         self.assistant.set_page_complete(page1, True)
 
-        self.textButton = cloned_glade.get_widget('text')
-        self.htmlButton = cloned_glade.get_widget('html')
-        self.latexButton = cloned_glade.get_widget('latex')
-        self.pdfButton = cloned_glade.get_widget('pdf')
-        if not self.isPDFSupported() :
-            self.pdfButton.hide()
+        self.text_button = cache_wtree.get_widget('text')
+        self.html_button = cache_wtree.get_widget('html')
+        self.latex_button = cache_wtree.get_widget('latex')
+        self.pdf_button = cache_wtree.get_widget('pdf')
+        if not self.is_pdf_supported() :
+            self.pdf_button.hide()
         else :
-            self.pdfButton.show()
+            self.pdf_button.show()
             
 
 
-    def append_second_page (self) :
-        cloned_glade = gtk.glade.XML(self.gladefile, 'exportAssistant_2')
-        dic = {
-            'changeDateSelectorStatus': self.changeDateSelectorStatus
-        }
-        cloned_glade.signal_autoconnect(dic)
+    def append_second_page (self) :    
+        cache_wtree = self.mainWindow.wTree
+        dic = {'change_date_selector_status': self.change_date_selector_status}
+        cache_wtree.signal_autoconnect(dic)
         
-        page2 = cloned_glade.get_widget('exportAssistant_2')
+        page2 = cache_wtree.get_widget('export_assistant_2')
         page2.show()
-        self.assistant.append_page(page2)
-        self.assistant.set_page_title(page2, 'Export Assistant, step 2')
-        self.assistant.set_page_type(page2, gtk.ASSISTANT_PAGE_CONTENT)
+        
         self.assistant.set_page_complete(page2, True)
         
-        self.allEntriesButton = cloned_glade.get_widget('allEntries')
-        self.selectedRangeButton = cloned_glade.get_widget('selectedRange')
-        self.startDate = cloned_glade.get_widget('startDate')
-        self.endDate = cloned_glade.get_widget('endDate')
+        self.all_entries_button = cache_wtree.get_widget('all_entries')
+        self.selected_range_button = cache_wtree.get_widget('selected_range')
+        self.start_date = cache_wtree.get_widget('start_date')
+        self.end_date = cache_wtree.get_widget('end_date')
         
         
-        startDateValue = self.redNotebook.getEditDateOfEntryNumber(0)
-        self.startDate.select_month(startDateValue.month - 1, startDateValue.year)
-        self.startDate.select_day (startDateValue.day)
+        start_date_value = self.redNotebook.getEditDateOfEntryNumber(0)
+        self.start_date.select_month(start_date_value.month - 1, start_date_value.year)
+        self.start_date.select_day (start_date_value.day)
 
-        endDateValue = self.redNotebook.getEditDateOfEntryNumber(-1)
-        self.endDate.select_month(endDateValue.month - 1, endDateValue.year)
-        self.endDate.select_day (endDateValue.day)
+        end_date_value = self.redNotebook.getEditDateOfEntryNumber(-1)
+        self.end_date.select_month(end_date_value.month - 1, end_date_value.year)
+        self.end_date.select_day (end_date_value.day)
         
-        self.changeDateSelectorStatus(self.assistant)
+        self.change_date_selector_status(self.assistant)
 
     
     def append_third_page (self) :
-        cloned_glade = gtk.glade.XML(self.gladefile, 'exportAssistant_3')
-        page3 = cloned_glade.get_widget('exportAssistant_3')
+        cache_wtree = self.mainWindow.wTree
+        
+        dic = {'select_category': self.select_category,
+               'unselect_category': self.unselect_category,
+               'change_categories_selector_status': self.change_categories_selector_status,
+               }
+        cache_wtree.signal_autoconnect(dic)
+        
+        page3 = cache_wtree.get_widget('export_assistant_3')
         page3.show()
         
-        self.assistant.append_page(page3)
-        self.assistant.set_page_title(page3, 'Export Assistant, step 3')
-        self.assistant.set_page_type(page3, gtk.ASSISTANT_PAGE_CONFIRM)
         self.assistant.set_page_complete(page3, True)
+        
+        self.all_categories = cache_wtree.get_widget('all_categories')
+        self.selected_categories_radio = cache_wtree.get_widget('selected_categories_radio')
+        self.hbox_categories = cache_wtree.get_widget('hbox_categories')
+        
+        
+        self.available_categories = cache_wtree.get_widget('available_categories')
+        model_available = gtk.ListStore(gobject.TYPE_STRING)
+        self.available_categories.set_model(model_available)
+        
+        existing_columns = self.available_categories.get_columns()
+        for column in existing_columns :
+            self.available_categories.remove_column(column)
+        
+        column = gtk.TreeViewColumn('Available Categories')
+        self.available_categories.append_column(column)
+        cell = gtk.CellRendererText()
+        column.pack_start(cell, True)
+        column.add_attribute(cell, 'text', 0)
+        
+        categories = self.mainWindow.redNotebook.nodeNames
+        for category in categories :
+            newRow = model_available.insert(0)
+            model_available.set(newRow, 0, category)
+        
+        self.selected_categories = cache_wtree.get_widget('selected_categories')
+        model_selected = gtk.ListStore(gobject.TYPE_STRING)
+        self.selected_categories.set_model(model_selected)
 
-        self.filnameChooser = cloned_glade.get_widget('filenameChooser')
+        existing_columns = self.selected_categories.get_columns()
+        for column in existing_columns :
+            self.selected_categories.remove_column(column)
+
+        column = gtk.TreeViewColumn('Selected Categories')
+        self.selected_categories.append_column(column)
+        cell = gtk.CellRendererText()
+        column.pack_start(cell, True)
+        column.add_attribute(cell, 'text', 0)
+        
+        self.change_categories_selector_status(self.assistant)   
+
+
+    def append_fourth_page (self) :
+        cache_wtree = self.mainWindow.wTree
+        page4 = cache_wtree.get_widget('export_assistant_4')
+        page4.show()
+        
+        self.assistant.set_page_complete(page4, True)
+
+        self.filename_chooser = cache_wtree.get_widget('filename_chooser')
         
     
     def prepare_next_page (self, currentPage, data):
         if currentPage == 0 :
             proposedFileName = 'RedNotebook-Export_' + str(datetime.date.today()) + \
-                                '.' + self.formatExtensionMap.get(self.getSelectedFormat())
+                                '.' + self.format_extension_map.get(self.get_selected_format())
 
             home = os.getenv('USERPROFILE') or os.getenv('HOME')
-            self.filnameChooser.set_current_folder(home)
-            self.filnameChooser.set_current_name (proposedFileName)
+            self.filename_chooser.set_current_folder(home)
+            self.filename_chooser.set_current_name (proposedFileName)
             
         return currentPage + 1
     
     
-    def onQuit (self, widget):
-        self.fileName = self.filnameChooser.get_filename()
-        self.assistant.destroy()
+    def on_quit (self, widget):
+        self.fileName = self.filename_chooser.get_filename()
+        self.selected_categories_values = self.get_selected_categories_values()
+        
+        self.assistant.hide()
         self.export()
     
-    def onCancel (self, widget, other=None):
+    def on_cancel (self, widget, other=None):
         self.redNotebook.showMessage('Cancelling export assistant.')
-        self.assistant.destroy()
+        self.assistant.hide()
 
-    def changeDateSelectorStatus (self, widget):
-        if (self.allEntriesButton.get_active()) :
-            self.startDate.set_sensitive(False)
-            self.endDate.set_sensitive(False)
+    def change_date_selector_status (self, widget):
+        if (self.all_entries_button.get_active()) :
+            self.start_date.set_sensitive(False)
+            self.end_date.set_sensitive(False)
         else :
-            self.startDate.set_sensitive(True)
-            self.endDate.set_sensitive(True)
+            self.start_date.set_sensitive(True)
+            self.end_date.set_sensitive(True)
+
+    def change_categories_selector_status (self, widget):
+        if (self.all_categories.get_active()) :
+            self.hbox_categories.set_sensitive(False)
+        else :
+            self.hbox_categories.set_sensitive(True)
+    
+    def select_category (self, widget):
+        selection = self.available_categories.get_selection()
+        nb_selected, selected_iter = selection.get_selected()
+        
+        if selected_iter != None :        
+            model_available = self.available_categories.get_model()
+            model_selected = self.selected_categories.get_model()
             
-    def getStartDate (self):
-        year, month, day = self.startDate.get_date()
+            row =  model_available[selected_iter]
+            
+            newRow = model_selected.insert(0)
+            model_selected.set(newRow, 0, row[0])
+            
+            model_available.remove(selected_iter)
+
+    def unselect_category (self, widget):
+        selection = self.selected_categories.get_selection()
+        nb_selected, selected_iter = selection.get_selected()
+        
+        if selected_iter != None :
+            model_available = self.available_categories.get_model()
+            model_selected = self.selected_categories.get_model()
+            
+            row =  model_selected[selected_iter]
+            
+            newRow = model_available.insert(0)
+            model_available.set(newRow, 0, row[0])
+            
+            model_selected.remove(selected_iter)
+
+    
+    def get_start_date (self):
+        year, month, day = self.start_date.get_date()
         return datetime.date(year, month + 1, day)
 
-    def getEndDate (self):
-        year, month, day = self.endDate.get_date()
+    def get_end_date (self):
+        year, month, day = self.end_date.get_date()
         return datetime.date(year, month + 1, day)
     
-    def getSelectedFormat (self):
-        if self.latexButton.get_active():
+    def get_selected_format (self):
+        if self.latex_button.get_active():
             return "Latex"
-        if self.htmlButton.get_active():
+        if self.html_button.get_active():
             return "HTML"
-        if self.pdfButton.get_active() :
+        if self.pdf_button.get_active() :
             return "PDF"
         return "Text"
     
-    def isAllEntriesSelected (self):
-        if self.allEntriesButton.get_active():
+    def get_selected_categories_values (self):
+        selected_categories = []
+        
+        if self.is_all_categories_selected() :
+            selected_categories = self.mainWindow.redNotebook.nodeNames
+        else :
+            model_selected = self.selected_categories.get_model()
+            
+            for row in model_selected :
+                selected_categories.append(row[0])
+        
+        return selected_categories
+    
+    def is_all_entries_selected (self):
+        if self.all_entries_button.get_active():
+            return True
+        return False
+
+    def is_all_categories_selected (self):
+        if self.all_categories.get_active():
             return True
         return False
         
-    def isPDFSupported (self):
+    def is_pdf_supported (self):
         #TODO: Implement that
         return False
     
     def export (self):
         #TODO: Implement that
-        exportString = self.getExportString(self.getSelectedFormat())
+        exportString = self.get_export_string(self.get_selected_format())
         
         try:
             exportFile = codecs.open(self.fileName, 'w', 'utf-8')
@@ -162,17 +268,17 @@ class ExportAssistant (object):
         except:
             self.redNotebook.showMessage('Exporting to ' + self.fileName + ' failed')
 
-    def getExportString(self, format):
-        if self.isAllEntriesSelected() :
+    def get_export_string(self, format):
+        if self.is_all_entries_selected() :
             exportDays = self.redNotebook.sortedDays
         else:
-            exportDays = self.redNotebook.getDaysInDateRange((self.getStartDate(), self.getEndDate()))
+            exportDays = self.redNotebook.getDaysInDateRange((self.get_start_date(), self.get_end_date()))
 
         markupStringHeader = 'RedNotebook'
         markupStringsForEachDay = map(markup.getMarkupForDay, exportDays)
         markupString = reduce(operator.add, markupStringsForEachDay)
         
-        target = self.formatExtensionMap.get(self.getSelectedFormat())
+        target = self.format_extension_map.get(self.get_selected_format())
         
         return markup.convertMarkupToTarget(markupString, target, markupStringHeader)
     

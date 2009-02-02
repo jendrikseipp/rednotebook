@@ -93,11 +93,15 @@ class RedNotebook:
 			
 		'Show cloud tab'
 		self.frame.searchNotebook.set_current_page(1)
+		
+		'Check for a new version'
+		utils.check_new_version(self.frame, info.version)
+		
 	
 	
 	def getDaysInDateRange(self, range):
 		startDate, endDate = range
-		assert startDate < endDate
+		assert startDate <= endDate
 		
 		sortedDays = self.sortedDays
 		daysInDateRange = []
@@ -613,6 +617,8 @@ class Month(object):
 	
 	
 def main():
+	utils.set_environment_vaiables()
+	
 	redNotebook = RedNotebook()
 	utils.setup_signal_handlers(redNotebook)
 	
