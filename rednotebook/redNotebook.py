@@ -72,10 +72,9 @@ class RedNotebook:
 		self.makeEmptyTemplateFiles()
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
-		#self.config = config.redNotebookConfig(localFilename=filesystem.configFile)
+		self.config = config.Config()
 		
-		mainFrame = MainWindow(self)
-		self.frame = mainFrame
+		self.frame = MainWindow(self)
 		   
 		self.actualDate = datetime.date.today()
 		
@@ -95,7 +94,8 @@ class RedNotebook:
 		self.frame.searchNotebook.set_current_page(1)
 		
 		'Check for a new version'
-		utils.check_new_version(self.frame, info.version)
+		if self.config.read('checkForNewVersion', default=1) == 1:
+			utils.check_new_version(self.frame, info.version)
 		
 	
 	

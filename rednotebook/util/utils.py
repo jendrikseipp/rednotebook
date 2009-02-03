@@ -4,7 +4,7 @@ import random
 import operator
 import os
 from threading import Thread
-from urllib2 import urlopen
+from urllib2 import urlopen, URLError
 
 import unicode
 
@@ -144,7 +144,7 @@ def set_environment_vaiables():
 				}
 	
 	for variable, value in variables.iteritems():
-		if not os.environ.has_key(variable) or True:
+		if not os.environ.has_key(variable):
 			os.environ[variable] = value
 			print variable, 'set to', value
 
@@ -191,9 +191,8 @@ def get_new_version_number(currentVersion):
 		position = projectXML.find(tag)
 		newVersion = projectXML[position + len(tag):position + len(tag) + 5]
 		print newVersion, 'is newest version'
-	except Exception:
+	except URLError:
 		print 'New version info could not be read'
-		raise
 	
 	if newVersion:
 		if newVersion > currentVersion:

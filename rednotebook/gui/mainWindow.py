@@ -207,7 +207,7 @@ class MainWindow(object):
 		
 	def on_mainFrame_destroy(self, widget):
 		self.redNotebook.saveToDisk()
-		#self.redNotebook.saveConfig()
+		self.redNotebook.config.saveToDisk()
 		gtk.main_quit()
 		
 	def on_backup_activate(self, widget):
@@ -338,6 +338,7 @@ class MainWindow(object):
 			webbrowser.open(info.url)
 		elif response == 20:
 			'do not ask again'
+			self.redNotebook.config['checkForNewVersion'] = 0
 			
 			
 			

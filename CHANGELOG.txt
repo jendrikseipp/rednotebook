@@ -1,6 +1,11 @@
 ==== Changelog ====
 
 
+=== 0.5.4 (2009-02-02) ===
+  * RedNotebook now checks for new version when it is started
+  * The configuration is saved in a file when the program exits
+  * The Fedora gtkmozembed bug has been fixed (LP:320492)
+
 === 0.5.3 (2009-01-30) ===
   * Word, tag and category clouds
   * Catch abnormal aborts and save content to disk
@@ -15,23 +20,23 @@
   * Bugfixes
 
 === 0.5.0 (2009-01-19) ===
-	* The GUI has been ported to PyGTK
-	* Almost all of the features have been adapted to the new interface
-	* A Preview Tab for a day's content was added
+  * The GUI has been ported to PyGTK
+  * Almost all of the features have been adapted to the new interface
+  * A Preview Tab for a day's content was added
 
 === 0.4.1 (2009-01-15) ===
-	* Do not export empty days (Fixes Bug #314385)
-	* Fix search for single digit months (Fixes Bug #312988)
+  * Do not export empty days (Fixes Bug #314385)
+  * Fix search for single digit months (Fixes Bug #312988)
 
 === 0.4.0 (2008-12-18) ===
-    * Export Functionality added: Text, HTML, Latex
-    * Use of Configuration Files
+  * Export Functionality added: Text, HTML, Latex
+  * Use of Configuration Files
 
 === 0.3.0 (2008-11-29) ===
-    * Template entries for each weekday
-    * Undo & Redo
-    * Ubuntu Main Menu Entry
-    * Improved Documentation
+  * Template entries for each weekday
+  * Undo & Redo
+  * Ubuntu Main Menu Entry
+  * Improved Documentation
 
 === 0.2.0 (2008-11-07) ===
   * Word Cloud

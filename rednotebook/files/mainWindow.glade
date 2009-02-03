@@ -750,8 +750,8 @@ Tags</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -1059,7 +1059,7 @@ Tags</property>
                 <child>
                   <widget class="GtkLabel" id="label11">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Choose tags to export&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Currently this has no effect. It will be implemented soon.&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </widget>
                 </child>
@@ -1067,7 +1067,7 @@ Tags</property>
                   <widget class="GtkRadioButton" id="all_categories">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">Select all categories</property>
+                    <property name="label" translatable="yes">Export all categories</property>
                     <property name="response_id">0</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
@@ -1081,7 +1081,7 @@ Tags</property>
                   <widget class="GtkRadioButton" id="selected_categories_radio">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">Only the Selected Categories</property>
+                    <property name="label" translatable="yes">Export only the selected categories</property>
                     <property name="response_id">0</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
@@ -1101,39 +1101,48 @@ Tags</property>
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkVBox" id="vbox8">
+                      <widget class="GtkAlignment" id="alignment7">
                         <property name="visible">True</property>
                         <child>
-                          <widget class="GtkButton" id="select_category">
+                          <widget class="GtkVBox" id="vbox8">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="label" translatable="yes">Select &gt;&gt;</property>
-                            <property name="response_id">0</property>
-                            <signal name="clicked" handler="select_category"/>
+                            <child>
+                              <widget class="GtkButton" id="select_category">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="label" translatable="yes">Select &gt;&gt;</property>
+                                <property name="response_id">0</property>
+                                <signal name="clicked" handler="select_category"/>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkHSeparator" id="hseparator1">
+                                <property name="visible">True</property>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkButton" id="unselect_category">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="label" translatable="yes">&lt;&lt; Unselect</property>
+                                <property name="response_id">0</property>
+                                <signal name="clicked" handler="unselect_category"/>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
                           </widget>
-                        </child>
-                        <child>
-                          <widget class="GtkHSeparator" id="hseparator1">
-                            <property name="visible">True</property>
-                          </widget>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkButton" id="unselect_category">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="label" translatable="yes">&lt;&lt; Unselect</property>
-                            <property name="response_id">0</property>
-                            <signal name="clicked" handler="unselect_category"/>
-                          </widget>
-                          <packing>
-                            <property name="position">2</property>
-                          </packing>
                         </child>
                       </widget>
                       <packing>

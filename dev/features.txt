@@ -18,12 +18,14 @@ O Shortcuts to navigate
 
 0.5.5
 O Allow linking of files
+O Export Categories separately
+O More documentation and examples
+O Make a menu entry to add the documentation
 
 0.5.4
-O Export Categories separately
-O update checker
-O Config File
-O More documentation and examples
+X update checker
+X Config File
+X Fix Fedora gtkmozembed bug (LP:320492)
 
 0.5.3
 X word, tag and category clouds
