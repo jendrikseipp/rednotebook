@@ -2,7 +2,7 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.5.4'
+version = '0.5.5'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'

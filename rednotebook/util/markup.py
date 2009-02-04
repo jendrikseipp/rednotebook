@@ -34,10 +34,13 @@ def getMarkupForDay(day, with_text=True, selected_categories=None, with_date=Tru
 	'Add Categories'
 	categoryContentPairs = day.getCategoryContentPairs()
 	
+	categories_of_this_day = map(lambda category: category.upper(), categoryContentPairs.keys())
+	
 	if selected_categories:
 		export_categories = {}
 		for selected_category in selected_categories:
-			export_categories[selected_category] = categoryContentPairs[selected_category]
+			if selected_category.upper() in categories_of_this_day:
+				export_categories[selected_category] = categoryContentPairs[selected_category]
 	else:
 		export_categories = categoryContentPairs
 	
