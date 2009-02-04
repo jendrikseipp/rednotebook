@@ -237,7 +237,8 @@ class MainWindow(object):
 		
 	def on_exportMenuItem_activate(self, widget):
 		self.redNotebook.saveOldDay()
-		assistant = ExportAssistant (self)
+		assistant = ExportAssistant.get_instance(self)
+		assistant.run()
 		
 	def on_statisticsMenuItem_activate(self, widget):
 		
@@ -482,7 +483,7 @@ class MozillaView(gtkmozembed.MozEmbed):
 			
 			
 	def set_day(self, day):
-		markupText = markup.getMarkupForDay(day, withDate=False)
+		markupText = markup.getMarkupForDay(day, with_date=False)
 		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
 		self.write(html)
 		

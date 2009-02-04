@@ -6,8 +6,13 @@ import os
 from rednotebook import txt2tags
 from rednotebook.util import filesystem
 
-def _convertCategoriesToMarkup(categories):
-	markup = '== Categories ==\n'
+def _convertCategoriesToMarkup(categories, with_category_title=True):
+	'Only add Category title if the text is displayed'
+	if with_category_title:
+		markup = '== Categories ==\n'
+	else:
+		markup = ''
+		
 	for category, entryList in categories.iteritems():
 		markup += '- ' + category + '\n'
 		for entry in entryList:
@@ -15,18 +20,31 @@ def _convertCategoriesToMarkup(categories):
 		markup += '\n\n'
 	return markup
 
-def getMarkupForDay(day, withDate=True):
-	'Add date and text'
-	if withDate:
-		exportString = '= ' + str(day.date) + ' =\n\n' + day.text
-	else:
-		exportString = day.text
+def getMarkupForDay(day, with_text=True, selected_categories=None, with_date=True):
+	exportString = ''
+	
+	'Add date'
+	if with_date:
+		exportString += '= ' + str(day.date) + ' =\n\n'
+		
+	'Add text'
+	if with_text:
+		exportString += day.text
 	
 	'Add Categories'
 	categoryContentPairs = day.getCategoryContentPairs()
 	
-	if len(categoryContentPairs) > 0:
-		exportString += '\n\n\n' + _convertCategoriesToMarkup(categoryContentPairs)
+	if selected_categories:
+		export_categories = {}
+		for selected_category in selected_categories:
+			export_categories[selected_category] = categoryContentPairs[selected_category]
+	else:
+		export_categories = categoryContentPairs
+	
+	
+	if len(export_categories) > 0:
+		exportString += '\n\n\n' + _convertCategoriesToMarkup(export_categories, \
+															with_category_title=with_text)
 	else:
 		exportString += '\n\n'
 	

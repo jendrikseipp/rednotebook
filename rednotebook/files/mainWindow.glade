@@ -848,6 +848,7 @@ Tags</property>
     </child>
   </widget>
   <widget class="GtkAssistant" id="export_assistant">
+    <property name="title" translatable="yes">Export Assistant</property>
     <signal name="close" handler="on_quit"/>
     <signal name="cancel" handler="on_cancel"/>
     <child>
@@ -940,7 +941,7 @@ Tags</property>
         </child>
       </widget>
       <packing>
-        <property name="title">Export Assistant, step 1</property>
+        <property name="title">Format - (2 of 4)</property>
       </packing>
     </child>
     <child>
@@ -1042,7 +1043,7 @@ Tags</property>
         </child>
       </widget>
       <packing>
-        <property name="title">Export Assistant, step 2</property>
+        <property name="title">Date Range - (3 of 4)</property>
       </packing>
     </child>
     <child>
@@ -1106,6 +1107,17 @@ Tags</property>
                         <child>
                           <widget class="GtkVBox" id="vbox8">
                             <property name="visible">True</property>
+                            <property name="border_width">5</property>
+                            <child>
+                              <widget class="GtkAspectFrame" id="aspectframe1">
+                                <property name="visible">True</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">GTK_SHADOW_NONE</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </widget>
+                            </child>
                             <child>
                               <widget class="GtkButton" id="select_category">
                                 <property name="visible">True</property>
@@ -1117,6 +1129,7 @@ Tags</property>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
+                                <property name="position">1</property>
                               </packing>
                             </child>
                             <child>
@@ -1125,7 +1138,7 @@ Tags</property>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
-                                <property name="position">1</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                             <child>
@@ -1139,7 +1152,20 @@ Tags</property>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
-                                <property name="position">2</property>
+                                <property name="position">3</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkAspectFrame" id="aspectframe2">
+                                <property name="visible">True</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">GTK_SHADOW_NONE</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="position">4</property>
                               </packing>
                             </child>
                           </widget>
@@ -1172,7 +1198,7 @@ Tags</property>
         </child>
       </widget>
       <packing>
-        <property name="title">Export Assistant, step 3</property>
+        <property name="title">Content - (3 of 4)</property>
       </packing>
     </child>
     <child>
@@ -1205,7 +1231,7 @@ Tags</property>
       </widget>
       <packing>
         <property name="page_type">GTK_ASSISTANT_PAGE_CONFIRM</property>
-        <property name="title">Export Assistant, step 4</property>
+        <property name="title">Filename - (4 of 4)</property>
       </packing>
     </child>
   </widget>
@@ -1290,6 +1316,32 @@ Tags</property>
           </packing>
         </child>
       </widget>
+    </child>
+  </widget>
+  <widget class="GtkAssistant" id="assistant1">
+    <child>
+      <widget class="GtkLabel" id="label14">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Introduction page</property>
+      </widget>
+      <packing>
+        <property name="page_type">GTK_ASSISTANT_PAGE_INTRO</property>
+      </packing>
+    </child>
+    <child>
+      <widget class="GtkLabel" id="label16">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Content page</property>
+      </widget>
+    </child>
+    <child>
+      <widget class="GtkLabel" id="label17">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Confirmation page</property>
+      </widget>
+      <packing>
+        <property name="page_type">GTK_ASSISTANT_PAGE_CONFIRM</property>
+      </packing>
     </child>
   </widget>
 </glade-interface>

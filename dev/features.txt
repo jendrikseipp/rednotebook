@@ -6,6 +6,7 @@ O i18n
 O Comment Code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
 O add password XOR encryption
+O save sash positions and frame size
 
 0.6
 O Markup Editing

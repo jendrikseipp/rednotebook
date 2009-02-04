@@ -10,14 +10,25 @@ import operator
 from rednotebook.util import markup
 
 class ExportAssistant (object):
-    def __init__ (self, mainWindow):
+    
+    _instance = None
+    
+    @staticmethod
+    def get_instance (main_window):
+        if ExportAssistant._instance is None :
+            ExportAssistant._instance = ExportAssistant (main_window)
+        return ExportAssistant._instance
+    
+    
+    def __init__ (self, main_window):
                 
-        self.redNotebook = mainWindow.redNotebook
-        self.mainWindow = mainWindow
+        self.redNotebook = main_window.redNotebook
+        self.main_window = main_window
         
         self.format_extension_map = {'Text': 'txt', 'HTML': 'html', 'Latex': 'tex', 'PDF' : 'pdf'}
-        cache_wtree = self.mainWindow.wTree
+        cache_wtree = self.main_window.wTree
         self.assistant = cache_wtree.get_widget('export_assistant')
+        
         dic = {
                'on_quit': self.on_quit,
                'on_cancel': self.on_cancel,
@@ -31,11 +42,14 @@ class ExportAssistant (object):
         self.append_fourth_page()
         
         self.assistant.set_forward_page_func(self.prepare_next_page, None)
-        
+        self.assistant.set_title('Export Assistant')
+    
+    def run (self):
+        self.refresh_categories_list()
         self.assistant.show()
 
     def append_first_page (self) :
-        cache_wtree = self.mainWindow.wTree
+        cache_wtree = self.main_window.wTree
         page1 = cache_wtree.get_widget('export_assistant_1')
         page1.show()
 
@@ -53,7 +67,7 @@ class ExportAssistant (object):
 
 
     def append_second_page (self) :    
-        cache_wtree = self.mainWindow.wTree
+        cache_wtree = self.main_window.wTree
         dic = {'change_date_selector_status': self.change_date_selector_status}
         cache_wtree.signal_autoconnect(dic)
         
@@ -80,7 +94,7 @@ class ExportAssistant (object):
 
     
     def append_third_page (self) :
-        cache_wtree = self.mainWindow.wTree
+        cache_wtree = self.main_window.wTree
         
         dic = {'select_category': self.select_category,
                'unselect_category': self.unselect_category,
@@ -99,32 +113,15 @@ class ExportAssistant (object):
         
         
         self.available_categories = cache_wtree.get_widget('available_categories')
-        model_available = gtk.ListStore(gobject.TYPE_STRING)
-        self.available_categories.set_model(model_available)
-        
-        existing_columns = self.available_categories.get_columns()
-        for column in existing_columns :
-            self.available_categories.remove_column(column)
         
         column = gtk.TreeViewColumn('Available Categories')
         self.available_categories.append_column(column)
         cell = gtk.CellRendererText()
         column.pack_start(cell, True)
         column.add_attribute(cell, 'text', 0)
-        
-        categories = self.mainWindow.redNotebook.nodeNames
-        for category in categories :
-            newRow = model_available.insert(0)
-            model_available.set(newRow, 0, category)
-        
+                
         self.selected_categories = cache_wtree.get_widget('selected_categories')
-        model_selected = gtk.ListStore(gobject.TYPE_STRING)
-        self.selected_categories.set_model(model_selected)
-
-        existing_columns = self.selected_categories.get_columns()
-        for column in existing_columns :
-            self.selected_categories.remove_column(column)
-
+        
         column = gtk.TreeViewColumn('Selected Categories')
         self.selected_categories.append_column(column)
         cell = gtk.CellRendererText()
@@ -135,7 +132,7 @@ class ExportAssistant (object):
 
 
     def append_fourth_page (self) :
-        cache_wtree = self.mainWindow.wTree
+        cache_wtree = self.main_window.wTree
         page4 = cache_wtree.get_widget('export_assistant_4')
         page4.show()
         
@@ -157,7 +154,7 @@ class ExportAssistant (object):
     
     
     def on_quit (self, widget):
-        self.fileName = self.filename_chooser.get_filename()
+        self.filename = self.filename_chooser.get_filename()
         self.selected_categories_values = self.get_selected_categories_values()
         
         self.assistant.hide()
@@ -233,7 +230,7 @@ class ExportAssistant (object):
         selected_categories = []
         
         if self.is_all_categories_selected() :
-            selected_categories = self.mainWindow.redNotebook.nodeNames
+            selected_categories = self.main_window.redNotebook.nodeNames
         else :
             model_selected = self.selected_categories.get_model()
             
@@ -251,22 +248,35 @@ class ExportAssistant (object):
         if self.all_categories.get_active():
             return True
         return False
-        
+    
+    def refresh_categories_list (self):
+        model_available = gtk.ListStore(gobject.TYPE_STRING)
+        categories = self.main_window.redNotebook.nodeNames
+        for category in categories :
+            newRow = model_available.insert(0)
+            model_available.set(newRow, 0, category)
+
+        self.available_categories.set_model(model_available)
+        model_selected = gtk.ListStore(gobject.TYPE_STRING)
+        self.selected_categories.set_model(model_selected)
+
+    
+    
     def is_pdf_supported (self):
         #TODO: Implement that
         return False
     
     def export (self):
         #TODO: Implement that
-        exportString = self.get_export_string(self.get_selected_format())
+        export_string = self.get_export_string(self.get_selected_format())
         
         try:
-            exportFile = codecs.open(self.fileName, 'w', 'utf-8')
-            exportFile.write(exportString)
-            exportFile.flush()
-            self.redNotebook.showMessage('Content exported to ' + self.fileName)
+            export_file = codecs.open(self.filename, 'w', 'utf-8')
+            export_file.write(export_string)
+            export_file.flush()
+            self.redNotebook.showMessage('Content exported to ' + self.filename)
         except:
-            self.redNotebook.showMessage('Exporting to ' + self.fileName + ' failed')
+            self.redNotebook.showMessage('Exporting to ' + self.filename + ' failed')
 
     def get_export_string(self, format):
         if self.is_all_entries_selected() :
