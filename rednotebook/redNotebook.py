@@ -61,7 +61,7 @@ from rednotebook.util.statistics import Statistics
 
 class RedNotebook:
 	
-	def __init__(self, config):
+	def __init__(self):
 		self.testing = False
 		if 'testing' in sys.argv:
 			self.testing = True
@@ -80,7 +80,8 @@ class RedNotebook:
 		self.makeEmptyTemplateFiles()
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
-		self.config = config
+		self.config = config.Config()
+		utils.set_environment_variables(self.config)
 		
 		self.frame = MainWindow(self)
 		   
@@ -626,10 +627,7 @@ class Month(object):
 	
 def main():
 	
-	configuration = config.Config()
-	utils.set_environment_variables(configuration)
-	
-	redNotebook = RedNotebook(configuration)
+	redNotebook = RedNotebook()
 	utils.setup_signal_handlers(redNotebook)
 	
 	try:
