@@ -161,14 +161,32 @@ def setup_signal_handlers(redNotebook):
 	SIGINT is caught again by KeyboardInterrupt
 	'''
 	
-	signals = [	signal.SIGHUP,  #Terminal closed, Parent process dead
-				signal.SIGINT,  #Interrupt from keyboard (CTRL-C)
-				signal.SIGQUIT, #Quit from keyboard
-				signal.SIGABRT, #Abort signal from abort(3)
-				signal.SIGTERM, #Termination signal
-				#signal.SIGSTOP, #Stop process
-				signal.SIGTSTP, #Stop typed at tty
-				]
+	signals = []
+	
+	try:
+		signals.append(signal.SIGHUP)  #Terminal closed, Parent process dead
+	except AttributeError: 
+		pass
+	try:
+		signals.append(signal.SIGINT)  #Interrupt from keyboard (CTRL-C)
+	except AttributeError: 
+		pass
+	try:
+		signals.append(signal.SIGQUIT) #Quit from keyboard
+	except AttributeError: 
+		pass
+	try:
+		signals.append(signal.SIGABRT) #Abort signal from abort(3)
+	except AttributeError: 
+		pass
+	try:
+		signals.append(signal.SIGTERM) #Termination signal
+	except AttributeError: 
+		pass
+	try:
+		signals.append(signal.SIGTSTP) #Stop typed at tty
+	except AttributeError: 
+		pass
 	
 	
 	def signal_handler(signum, frame):
@@ -180,6 +198,7 @@ def setup_signal_handlers(redNotebook):
 	for signalNumber in signals:
 		if signalNumber != signal.SIGKILL:
 			try:
+				print 'Connected Signal:', signalNumber
 				signal.signal(signalNumber, signal_handler)
 			except RuntimeError:
 				print 'False Signal Number:', signalNumber
