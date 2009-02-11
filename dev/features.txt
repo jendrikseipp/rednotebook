@@ -28,12 +28,14 @@ O Allow linking of files
 0 Allow embedding images
 O More documentation and examples
 O Make a menu entry to add the documentation
-O Make GTKMozembed optional
-O Use preview in browser instead
-  O make frame with days in left column and day preview in the right
+
 
 0.5.5
 O Export Categories separately
+X Make GTKMozembed optional
+X Use preview in browser instead
+  X make frame with days in left column and day preview in the right
+X Add browser navigation buttons
 X Add day to title in preview
 
 0.5.4

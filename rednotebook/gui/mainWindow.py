@@ -8,7 +8,7 @@ import urlparse
 import webbrowser
 
 import pygtk
-pygtk.require("2.0")
+pygtk.require("2.4")
 import gtk
 import gobject
 import gtk.glade
@@ -18,12 +18,6 @@ import gtk.glade
 
 from rednotebook.util import utils
 import rednotebook.util.unicode
-
-try:
-	import gtkhtml2
-except ImportError:
-	utils.printError('gtkhtml2 is not installed (install python-gtkhtml2)')
-	sys.exit(1)
 
 try:
 	from rednotebook.gui import mozembed
@@ -72,7 +66,7 @@ class MainWindow(object):
 									'categoriesTreeView'), self)
 		
 		if use_moz:
-			self.preview = Browser(self)
+			self.preview = Preview(self)
 			self.wTree.get_widget('dayBox').pack_start(self.preview)
 			self.preview.hide()
 		
@@ -241,19 +235,7 @@ class MainWindow(object):
 		assistant.run()
 		
 	def on_statisticsMenuItem_activate(self, widget):
-		
-		statisticsScrolledWindow = self.wTree.get_widget('statisticsScrolledWindow')
-		self.statsHTMLView = HTMLView()
-		for child in statisticsScrolledWindow.get_children():
-			statisticsScrolledWindow.remove(child)
-			
-		self.statsHTMLView.write(self.redNotebook.stats.getStatsHTML())
-		statisticsScrolledWindow.add(self.statsHTMLView)
-		
-		statisticsDialog = self.wTree.get_widget('statisticsDialog')
-		statisticsDialog.set_default_size(350, 200)
-		statisticsDialog.run()
-		statisticsDialog.hide()
+		utils.show_html_in_browser(self.redNotebook.stats.getStatsHTML())
 		
 	def on_addNewEntryButton_clicked(self, widget):
 		self.newEntryDialog = self.wTree.get_widget('newEntryDialog')
@@ -284,18 +266,7 @@ class MainWindow(object):
 		self.categoriesTreeView.delete_selected_node()
 		
 	def on_helpMenuItem_activate(self, widget):
-		helpScrolledWindow = self.wTree.get_widget('helpScrolledWindow')
-		for child in helpScrolledWindow.get_children():
-			helpScrolledWindow.remove(child)
-		helpHTMLView = HTMLView()
-		helpHTMLView.write(info.htmlHelp)
-		helpScrolledWindow.add(helpHTMLView)
-		
-		helpDialog = self.wTree.get_widget('helpDialog')
-		helpDialog.set_default_size(350, 200)
-		helpDialog.run()
-		helpDialog.hide()
-		
+		utils.show_html_in_browser(info.htmlHelp)
 		
 		
 	def set_date(self, newMonth, newDate, day):
@@ -442,7 +413,7 @@ class SearchComboBox(CustomComboBox):
 		
 		
 
-class Browser(gtk.VBox):
+class Preview(gtk.VBox):
 	"""
 		An HTML window
 		
@@ -580,58 +551,8 @@ class Browser(gtk.VBox):
 		markupText = markup.getMarkupForDay(day, with_date=False)
 		html = markup.convertMarkupToTarget(markupText, 'html', \
 										title=dates.get_date_string(day.date))
-		print 'SET'
 		self.view.set_data('file://', html)
 		self.open_browser_button.set_sensitive(False)
-		
-		
-#class Preview(mozembed):
-#	def __init__(self, containerBox):
-#		gtkmozembed.MozEmbed.__init__(self)
-#		'Set a temporary Mozilla profile (works around some bug)'
-#		gtkmozembed.set_profile_path('/tmp', 'simple_browser_user')
-#		
-#		containerBox.pack_start(self)
-#		#'Attempt to set the size of the browser widget to 600x400 pixels'
-#		#self.set_size_request(600,400)
-#		self.show()
-#	
-#	def write(self, html):
-#		'''
-#		The following line produces a segfault
-#		In Python 2.6 a proper method for variable size detection was added,
-#		so we will use that method later...
-#		
-#		For now write the html to a file and display it.
-#		
-#		#self.render_data(html, long(len(html)), 'file:///', 'text/html')
-#		'''
-#		
-#		#import tempfile
-#		#with tempfile.NamedTemporaryFile(suffix='.html') as tempFile:
-##			tempFile.write("Yeah")
-##			print 'TMP', tempFile.readlines()
-#		with open(os.path.join(filesystem.tempDir, 'tmp.html'), 'w+r') as tempFile:
-#			tempFile.write(html)
-#			tempFile.flush()
-#			#'Move to beginning of file'
-#			#tempFile.seek(0, 0)
-#			#print 'TMP', tempFile.readlines()
-#			#tempFile.close()
-#			#print str(tempFile.name)
-#			htmlFile = os.path.abspath(tempFile.name)
-#			#os.chmod(htmlFile, 0777)
-#			htmlFile = 'file://' + htmlFile
-#			#print htmlFile
-#			
-#			self.load_url(htmlFile)
-#			
-#			
-#	def set_day(self, day):
-#		markupText = markup.getMarkupForDay(day, with_date=False)
-#		html = markup.convertMarkupToTarget(markupText, 'html', \
-#										title=dates.get_date_string(day.date))
-#		self.write(html)
 		
 		
 class CloudView(HtmlWindow):
@@ -657,7 +578,6 @@ class CloudView(HtmlWindow):
 		self.write(html)
 		
 	def word_clicked(self, htmlview, uri, type_):
-		print "url-clicked", uri, type_
 		'uri has the form "something/somewhere/search/searchIndex"'
 		if 'search' in uri:
 			'searchIndex is the part after last slash'
@@ -670,76 +590,6 @@ class CloudView(HtmlWindow):
 			
 			'returning True here stops loading the document'
 			return True
-		
-				
-	
-class HTMLView(gtkhtml2.View):
-	def __init__(self, *args, **kargs):
-		gtkhtml2.View.__init__(self, *args, **kargs)
-		
-		self.opener = urllib.FancyURLopener()
-		self.currentURL = None
-		
-		self.document = gtkhtml2.Document()
-		self.document.clear()
-		
-		#view = gtkhtml2.View()
-		self.set_document(self.document)
-		self.show()
-		
-		self.connect('request_object', self.request_object)
-		self.document.connect('request_url', self.request_url)
-		self.document.connect('link_clicked', self.link_clicked)
-		
-	def write(self, text):
-		self.document.clear()
-		self.document.open_stream('text/html')
-		self.document.write_stream(text)
-		self.document.close_stream()
-	
-	def is_relative_to_server(self, url):
-		parts = urlparse.urlparse(url)
-		if parts[0] or parts[1]:
-			return 0
-		return 1
-	
-	def open_url(self, url):
-		uri = self.resolve_uri(url)
-		return self.opener.open(uri)
-	
-	def resolve_uri(self, uri):
-		if self.is_relative_to_server(uri):
-			return urlparse.urljoin(self.currentURL, uri)
-		return uri
-	
-	def request_url(self, document, url, stream):
-		f = self.open_url(url)
-		stream.write(f.read())
-	
-	def link_clicked(self, document, link):
-		print 'link_clicked:', link
-		try:
-			f = self.open_url(link)
-		except OSError:
-			print "failed to open", link
-			return
-		self.currentURL = self.resolve_uri(link)
-		self.document.clear()
-		headers = f.info()
-		mime = headers.getheader('Content-type').split(';')[0]
-		print mime
-		if mime:
-			self.document.open_stream(mime)
-		else:
-			self.document.open_stream('text/plain')
-		self.document.write_stream(f.read())
-		self.document.close_stream()
-		
-	def request_object(self, *args):
-		print 'request object', args
-		
-		 	
-	
 		
 
 class SearchTreeView(object):
