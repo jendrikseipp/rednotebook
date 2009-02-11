@@ -194,14 +194,16 @@ def setup_signal_handlers(redNotebook):
 		redNotebook.saveToDisk()
 		sys.exit()
 
-
+	
+	print 'Connected Signal:',
+	
 	for signalNumber in signals:
-		if signalNumber != signal.SIGKILL:
-			try:
-				print 'Connected Signal:', signalNumber
-				signal.signal(signalNumber, signal_handler)
-			except RuntimeError:
-				print 'False Signal Number:', signalNumber
+		try:
+			print signalNumber,
+			signal.signal(signalNumber, signal_handler)
+		except RuntimeError:
+			print '\nFalse Signal Number:', signalNumber
+	print
 				
 
 def get_new_version_number(currentVersion):
