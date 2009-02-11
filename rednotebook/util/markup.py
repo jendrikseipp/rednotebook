@@ -172,5 +172,5 @@ def preview_in_browser(days, current_day):
 	with open(os.path.join(filesystem.tempDir, 'toc.html'), 'w') as toc_file:
 		toc_file.write(get_toc_html(days))
 		
-	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook')
+	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook.html')
 			

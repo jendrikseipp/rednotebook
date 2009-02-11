@@ -74,6 +74,7 @@ class RedNotebook:
 		
 		'show instructions at first start or if testing'
 		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
+		print 'First Start:', self.firstTimeExecution
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
 								filesystem.templateDir, filesystem.tempDir])

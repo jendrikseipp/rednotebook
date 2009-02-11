@@ -195,7 +195,7 @@ def setup_signal_handlers(redNotebook):
 		sys.exit()
 
 	
-	print 'Connected Signal:',
+	print 'Connected Signals:',
 	
 	for signalNumber in signals:
 		try:
