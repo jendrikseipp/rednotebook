@@ -7,8 +7,6 @@ import urllib
 import urlparse
 import webbrowser
 
-import pygtk
-pygtk.require("2.4")
 import gtk
 import gobject
 import gtk.glade

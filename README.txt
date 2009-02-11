@@ -4,14 +4,28 @@
   - Python (2.5) (www.python.org)
   - PyYaml (3.05) (www.yaml.org)
   - PyGTK (2.13) (www.pygtk.org)
-  - python-gtkhtml2 (2.19.1)
-  - python-gtkmozembed (in package python-gnome2-extras)
+  
   
     === Ubuntu ===
-    On Ubuntu you type 'sudo apt-get install python-yaml python-gtk2 python-gtkhtml2 python-gnome2-extras'
+    sudo apt-get install python-yaml python-gtk2
+    
+    optionally: sudo apt-get install python-gnome2-extras
+    
 
     === Fedora ===
-    yum -y install python-devel PyYAML gnome-python2-gtkmozembed 
+    yum -y install python-devel PyYAML
+    
+    optionally: yum -y install gnome-python2-gtkmozembed
+    
+    
+    
+    === Optional ===
+    
+    - python-gtkmozembed can be used optionally.
+      RedNotebook can run without it, but if you want to see the day preview 
+      inside RedNotebook instead of in your browser, please install gtkmozembed.
+      Sometimes it is found packages called python-gnome2-extras or similar.
+    
 
 
 ===== INSTALL =====

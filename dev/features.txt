@@ -17,7 +17,6 @@ O Update text descriptions
 0.7
 O Markup Editing
 O Easier Tagging
-O remove gtkhtml2
 O only make the entry submittable, if text has been entered
 
 O add copyright notice to source files
@@ -36,6 +35,7 @@ X Make GTKMozembed optional
 X Use preview in browser instead
   X make frame with days in left column and day preview in the right
 X Add browser navigation buttons
+X Remove gtkhtml2
 X Add day to title in preview
 
 0.5.4

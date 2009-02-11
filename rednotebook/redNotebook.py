@@ -17,8 +17,16 @@ else:
 	from util import utils
 
 try:
-	import gtk
+	import pygtk
 except ImportError:
+	utils.printError('Please install PyGTK (python-gtk2)')
+	sys.exit(1)
+
+pygtk.require("2.0")
+
+try:
+	import gtk
+except ImportError, AssertionError:
 	utils.printError('Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
