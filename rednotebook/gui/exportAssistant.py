@@ -28,7 +28,6 @@ class ExportAssistant (object):
         self.format_extension_map = {'Text': 'txt', 'HTML': 'html', 'Latex': 'tex', 'PDF' : 'pdf'}
         cache_wtree = self.main_window.wTree
         self.assistant = cache_wtree.get_widget('export_assistant')
-        
         dic = {
                'on_quit': self.on_quit,
                'on_cancel': self.on_cancel,
@@ -36,6 +35,7 @@ class ExportAssistant (object):
         
         cache_wtree.signal_autoconnect(dic)
         
+        self.append_introduction_page()
         self.append_first_page()
         self.append_second_page()
         self.append_third_page()
@@ -48,6 +48,12 @@ class ExportAssistant (object):
         self.refresh_categories_list()
         self.assistant.show()
 
+    def append_introduction_page (self) :
+        cache_wtree = self.main_window.wTree
+        page0 = cache_wtree.get_widget('export_assistant_0')
+        page0.show()        
+        self.assistant.set_page_complete(page0, True)
+    
     def append_first_page (self) :
         cache_wtree = self.main_window.wTree
         page1 = cache_wtree.get_widget('export_assistant_1')
@@ -99,6 +105,7 @@ class ExportAssistant (object):
         dic = {'select_category': self.select_category,
                'unselect_category': self.unselect_category,
                'change_categories_selector_status': self.change_categories_selector_status,
+               'change_export_text_status': self.change_export_text_status,
                }
         cache_wtree.signal_autoconnect(dic)
         
@@ -106,7 +113,12 @@ class ExportAssistant (object):
         page3.show()
         
         self.assistant.set_page_complete(page3, True)
+
+        self.nothing_exported_warning = cache_wtree.get_widget('nothing_exported_warning')
+
+        self.export_text = cache_wtree.get_widget('export_text')
         
+        self.no_categories = cache_wtree.get_widget('no_categories')
         self.all_categories = cache_wtree.get_widget('all_categories')
         self.selected_categories_radio = cache_wtree.get_widget('selected_categories_radio')
         self.hbox_categories = cache_wtree.get_widget('hbox_categories')
@@ -141,16 +153,15 @@ class ExportAssistant (object):
         self.filename_chooser = cache_wtree.get_widget('filename_chooser')
         
     
-    def prepare_next_page (self, currentPage, data):
-        if currentPage == 0 :
+    def prepare_next_page (self, current_page, data):
+        if current_page == 1 :
             proposedFileName = 'RedNotebook-Export_' + str(datetime.date.today()) + \
                                 '.' + self.format_extension_map.get(self.get_selected_format())
 
             home = os.getenv('USERPROFILE') or os.getenv('HOME')
             self.filename_chooser.set_current_folder(home)
             self.filename_chooser.set_current_name (proposedFileName)
-            
-        return currentPage + 1
+        return current_page + 1
     
     
     def on_quit (self, widget):
@@ -165,18 +176,30 @@ class ExportAssistant (object):
         self.assistant.hide()
 
     def change_date_selector_status (self, widget):
-        if (self.all_entries_button.get_active()) :
+        if (self.is_all_entries_selected()) :
             self.start_date.set_sensitive(False)
             self.end_date.set_sensitive(False)
         else :
             self.start_date.set_sensitive(True)
             self.end_date.set_sensitive(True)
 
+    def change_export_text_status (self, widget):
+        if self.is_export_text_selected () :
+            self.no_categories.set_sensitive(True)
+        else :
+            if self.is_no_categories_selected() :
+                self.all_categories.set_active(True)
+            self.no_categories.set_sensitive(False)
+        self.check_exported_content_is_valid()
+
+
+
     def change_categories_selector_status (self, widget):
-        if (self.all_categories.get_active()) :
+        if (self.is_all_categories_selected() or self.is_no_categories_selected()) :
             self.hbox_categories.set_sensitive(False)
         else :
             self.hbox_categories.set_sensitive(True)
+        self.check_exported_content_is_valid()
     
     def select_category (self, widget):
         selection = self.available_categories.get_selection()
@@ -192,6 +215,7 @@ class ExportAssistant (object):
             model_selected.set(newRow, 0, row[0])
             
             model_available.remove(selected_iter)
+        self.check_exported_content_is_valid()
 
     def unselect_category (self, widget):
         selection = self.selected_categories.get_selection()
@@ -207,7 +231,20 @@ class ExportAssistant (object):
             model_available.set(newRow, 0, row[0])
             
             model_selected.remove(selected_iter)
+        
+        self.check_exported_content_is_valid()
 
+    def check_exported_content_is_valid (self):
+        current_page = self.assistant.get_nth_page(3) 
+        
+        if not self.is_export_text_selected() \
+           and len (self.get_selected_categories_values()) == 0 :
+            self.nothing_exported_warning.show()
+            self.assistant.set_page_complete(current_page, False)
+        else :
+            self.nothing_exported_warning.hide()
+            self.assistant.set_page_complete(current_page, True)
+            
     
     def get_start_date (self):
         year, month, day = self.start_date.get_date()
@@ -231,7 +268,7 @@ class ExportAssistant (object):
         
         if self.is_all_categories_selected() :
             selected_categories = self.main_window.redNotebook.nodeNames
-        else :
+        elif not self.is_no_categories_selected() :
             model_selected = self.selected_categories.get_model()
             
             for row in model_selected :
@@ -239,6 +276,11 @@ class ExportAssistant (object):
         
         return selected_categories
     
+    def is_export_text_selected (self):
+        if self.export_text.get_active() :
+            return True
+        return False
+        
     def is_all_entries_selected (self):
         if self.all_entries_button.get_active():
             return True
@@ -246,6 +288,11 @@ class ExportAssistant (object):
 
     def is_all_categories_selected (self):
         if self.all_categories.get_active():
+            return True
+        return False
+
+    def is_no_categories_selected (self):
+        if self.no_categories.get_active():
             return True
         return False
     
@@ -267,7 +314,7 @@ class ExportAssistant (object):
         return False
     
     def export (self):
-        #TODO: Implement that
+        #TODO: Add content page values management
         export_string = self.get_export_string(self.get_selected_format())
         
         try:

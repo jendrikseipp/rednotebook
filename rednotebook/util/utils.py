@@ -88,7 +88,7 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 	'''
 	tagCloudWords = sortedDict[-numberOfWords:]
 	if len(tagCloudWords) < 1:
-		return [], '<html></html>'
+		return [], ''
 	
 	minCount = tagCloudWords[0][1]
 	maxCount = tagCloudWords[-1][1]
@@ -110,10 +110,8 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 	
 	htmlElements = []
 	
-	htmlHead = '<html><head>' + \
-				'<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">' + \
-				'<body TEXT="black" BGCOLOR="white" LINK="black" VLINK="black" ALINK="black">\n<center>'
-	htmlTail = '</center></body></html>'
+	htmlHead = 	'<body><div style="text-align:center; font-family: sans-serif">'
+	htmlTail = '</div></body>'
 	
 	for wordIndex in range(len(tagCloudWords)):
 		count = wordCountDict.get(tagCloudWords[wordIndex])
@@ -121,15 +119,16 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 		fontSize = int(minFontSize + fontFactor * fontDelta)
 		
 		htmlElements.append('<a href="search/' + str(wordIndex) + '">' + \
-								'<span style="font-size:' + str(int(fontSize)) + 'px;">' + \
+								'<span style="font-size:' + str(int(fontSize)) + 'px">' + \
 									tagCloudWords[wordIndex] + \
 								'</span>' + \
 							'</a>' + \
-							#'&nbsp;'*random.randint(1,1) + 
+							#Add some whitespace
+							'<span style="font-size:5px; color:white"> _ </span>' + \
+							#'&nbsp;'*3 + 
 							'\n')
 		
-	#random.shuffle(htmlElements)
-	
+	#random.shuffle(htmlElements)	
 	
 	htmlDoc = htmlHead 
 	htmlDoc += reduce(operator.add, htmlElements, '')
@@ -138,14 +137,14 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 	return (tagCloudWords, htmlDoc)
 
 
-def set_environment_vaiables():
+def set_environment_variables(config):
 	variables = {	'LD_LIBRARY_PATH': '/usr/lib/xulrunner-1.9',
 					 'MOZILLA_FIVE_HOME': '/usr/lib/xulrunner-1.9',
 				}
 	
 	for variable, value in variables.iteritems():
-		if not os.environ.has_key(variable):
-			os.environ[variable] = value
+		if not os.environ.has_key(variable) or config.has_key(variable):
+			os.environ[variable] = config.read(variable, default=value)
 			print variable, 'set to', value
 
 
@@ -199,6 +198,7 @@ def get_new_version_number(currentVersion):
 			return newVersion
 	
 	return None
+
 
 def check_new_version(mainFrame, currentVersion):
 	if get_new_version_number(currentVersion):

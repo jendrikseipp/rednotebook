@@ -31,7 +31,7 @@ except ImportError:
 	utils.printError('gtkmozembed is not installed (install python-gnome2-extras)')
 	sys.exit(1)
 
-
+from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.util import filesystem
 from rednotebook import info
 from rednotebook.util import markup
@@ -53,8 +53,6 @@ class MainWindow(object):
 		self.gladefile = os.path.join(filesystem.filesDir, 'mainWindow.glade')
 		self.wTree = gtk.glade.XML(self.gladefile)
 		
-			
-		
 		
 		'Get the main window and set the icon'
 		self.mainFrame = self.wTree.get_widget('mainFrame')
@@ -69,9 +67,14 @@ class MainWindow(object):
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
+		
+		
 		#self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
 		#self.preview = Preview(self.previewScrolledWindow)
-		self.preview = MozillaView(self.wTree.get_widget('previewBox'))
+		self.preview = MozillaView(self.wTree.get_widget('dayBox'))
+		self.preview.hide()
+		
+		self.editPane = self.wTree.get_widget('editPane')
 		
 		self.setup_search()
 		
@@ -88,11 +91,14 @@ class MainWindow(object):
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
 			
+			'on_previewToggleButton_toggled': self.on_previewToggleButton_toggled,
+			'on_previewButton_clicked': self.on_previewButton_clicked,
+			
 			'on_exportMenuItem_activate': self.on_exportMenuItem_activate,
 			'on_statisticsMenuItem_activate': self.on_statisticsMenuItem_activate,
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
 			'on_deleteEntryButton_clicked': self.on_deleteEntryButton_clicked,
-			'on_dayNotebook_switch_page': self.on_dayNotebook_switch_page,
+			#'on_dayNotebook_switch_page': self.on_dayNotebook_switch_page,
 			'on_searchNotebook_switch_page': self.on_searchNotebook_switch_page,
 			'on_templateButton_clicked': self.on_templateButton_clicked,
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
@@ -118,6 +124,38 @@ class MainWindow(object):
 			self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
 							ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 			
+	
+	def on_previewToggleButton_toggled(self, toggle_button):
+		print toggle_button.get_active()
+		preview_toggled = toggle_button.get_active()
+		
+		print toggle_button.get_label()
+		print toggle_button.get_stock_id()
+		
+		
+		if preview_toggled:
+			'Switched to preview'
+			self.redNotebook.saveOldDay()
+			#self.day.text = self.get_day_text()
+			self.preview.set_day(self.redNotebook.day)
+			
+			self.preview.show()
+			self.editPane.hide()
+			
+			toggle_button.set_stock_id('gtk-media-play')
+			
+		else:
+			self.preview.hide()
+			self.editPane.show()
+			
+			toggle_button.set_stock_id('gtk-edit')
+			#toggle_button.set_label('Edit')
+			
+			
+	def on_previewButton_clicked(self, button):
+		markup.preview_in_browser(self.redNotebook.sortedDays, None)
+		
+			
 			
 	def setup_search(self):
 		self.searchNotebook = self.wTree.get_widget('searchNotebook')
@@ -141,42 +179,22 @@ class MainWindow(object):
 			#self.searchTreeView.update_data()
 		if pageNumber == 1:
 			'Switched to cloud tab'
-			self.wordCloud.update()
+			self.cloud.update()
 		
 		
 	def setup_clouds(self):
 		self.cloudBox = self.wTree.get_widget('cloudBox')
 		
-		self.wordCloud = CloudView(self.cloudBox, 'word', self.redNotebook)
-		self.categoryCloud = CloudView(self.cloudBox, 'category', \
-											self.redNotebook)
-		self.tagCloud = CloudView(self.cloudBox, 'tag', self.redNotebook)
+		self.cloud = CloudView(self.redNotebook)
+		self.cloudBox.pack_start(self.cloud)
 		
 		self.cloudComboBox = self.wTree.get_widget('cloudComboBox')
 		self.cloudComboBox.set_active(0)
 		
 		
 	def on_cloudComboBox_changed(self, cloudComboBox):
-		clouds = [self.wordCloud, self.categoryCloud, self.tagCloud]
-		value = cloudComboBox.get_active()
-		visibleCloud = clouds[value]
-		
-		visibleCloud.update()
-		visibleCloud.show()
-		
-		invisibleCloudNumbers = range(3)
-		invisibleCloudNumbers.remove(value)
-		
-		for cloudNumber in invisibleCloudNumbers:
-			clouds[cloudNumber].hide()
-			
-			
-	def on_dayNotebook_switch_page(self, notebook, page, pageNumber):
-		if pageNumber == 1:
-			'Switched to preview tab'
-			self.redNotebook.saveOldDay()
-			#self.day.text = self.get_day_text()
-			self.preview.set_day(self.redNotebook.day)
+		value_int = cloudComboBox.get_active()
+		self.cloud.set_type(value_int)
 					
 							
 	def on_copyMenuItem_activate(self, widget):
@@ -446,6 +464,7 @@ class MozillaView(gtkmozembed.MozEmbed):
 		gtkmozembed.MozEmbed.__init__(self)
 		'Set a temporary Mozilla profile (works around some bug)'
 		gtkmozembed.set_profile_path('/tmp', 'simple_browser_user')
+		
 		containerBox.pack_start(self)
 		#'Attempt to set the size of the browser widget to 600x400 pixels'
 		#self.set_size_request(600,400)
@@ -484,21 +503,26 @@ class MozillaView(gtkmozembed.MozEmbed):
 			
 	def set_day(self, day):
 		markupText = markup.getMarkupForDay(day, with_date=False)
-		html = markup.convertMarkupToTarget(markupText, 'html', title=str(day.date))
+		html = markup.convertMarkupToTarget(markupText, 'html', \
+										title=dates.get_date_string(day.date))
 		self.write(html)
 		
 		
-class CloudView(MozillaView):
-	def __init__(self, box, type, redNotebook):
-		MozillaView.__init__(self, box)
-		self.type = type
+class CloudView(HtmlWindow):
+	def __init__(self, redNotebook):
+		HtmlWindow.__init__(self)
+		
 		self.redNotebook = redNotebook
 		
-		self.connect('open-uri', self.word_clicked)
+		self.htmlview.connect("url-clicked", self.word_clicked)
 		
-		'save type as int'
-		typeDict = {'word': 0, 'category': 1, 'tag': 2}
-		self.typeInt = typeDict.get(self.type)
+		self.set_type(0, init=True)
+		
+	def set_type(self, type_int, init=False):
+		self.type_int = type_int
+		self.type = ['word', 'category', 'tag'][type_int]
+		if not init:
+			self.update()
 		
 	def update(self):
 		wordCountDict = self.redNotebook.getWordCountDict(self.type)
@@ -506,14 +530,15 @@ class CloudView(MozillaView):
 															self.type)
 		self.write(html)
 		
-	def word_clicked(self, mozembed, uri):
+	def word_clicked(self, htmlview, uri, type_):
+		print "url-clicked", uri, type_
 		'uri has the form "something/somewhere/search/searchIndex"'
 		if 'search' in uri:
 			'searchIndex is the part after last slash'
 			searchIndex = int(uri.split('/')[-1])
 			searchText = self.tagCloudWords[searchIndex]
 			
-			self.redNotebook.frame.searchTypeBox.set_active(self.typeInt)
+			self.redNotebook.frame.searchTypeBox.set_active(self.type_int)
 			self.redNotebook.frame.searchBox.set_active_text(searchText)
 			self.redNotebook.frame.searchNotebook.set_current_page(0)
 			
@@ -890,6 +915,9 @@ class DayTextField(object):
 		currentText = self.get_text()
 		self.set_text(template.encode('utf-8') + '\n' + \
 						currentText.encode('utf-8'))
+		
+	def hide(self):
+		self.dayTextView.hide()
 		
 	#TODO: implement UNDO/REDO
 		

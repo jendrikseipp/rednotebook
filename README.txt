@@ -3,15 +3,15 @@
 ===== REQUIREMENTS =====
   - Python (2.5) (www.python.org)
   - PyYaml (3.05) (www.yaml.org)
-  - pyGTK (2.13) (www.pygtk.org)
+  - PyGTK (2.13) (www.pygtk.org)
   - python-gtkhtml2 (2.19.1)
   - python-gtkmozembed (in package python-gnome2-extras)
   
-=== Ubuntu ===
-On Ubuntu you type 'sudo apt-get install python-yaml python-gtk2 python-gtkhtml2 python-gnome2-extras'
+    === Ubuntu ===
+    On Ubuntu you type 'sudo apt-get install python-yaml python-gtk2 python-gtkhtml2 python-gnome2-extras'
 
-=== Fedora ===
-yum -y install python-devel PyYAML gnome-python2-gtkmozembed 
+    === Fedora ===
+    yum -y install python-devel PyYAML gnome-python2-gtkmozembed 
 
 
 ===== INSTALL =====
@@ -32,9 +32,10 @@ Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py
 
 
 ===== THANKS =====
-  - The authors of the programs listed under 'requirements'
+  - The authors of the programs listed under 'requirements'. Remember that
+           without them, RedNotebook would not be possible
   - Everaldo Coelho (www.everaldo.com) for the excellent icon
-  - The txt2tags team for their super handy markup-tool
+  - The txt2tags team (http://txt2tags.sf.net) for their super cool markup-tool
 
 
 

@@ -5,6 +5,8 @@ import os
 
 from rednotebook import txt2tags
 from rednotebook.util import filesystem
+from rednotebook.util import dates
+
 
 def _convertCategoriesToMarkup(categories, with_category_title=True):
 	'Only add Category title if the text is displayed'
@@ -20,12 +22,13 @@ def _convertCategoriesToMarkup(categories, with_category_title=True):
 		markup += '\n\n'
 	return markup
 
+
 def getMarkupForDay(day, with_text=True, selected_categories=None, with_date=True):
 	exportString = ''
 	
 	'Add date'
 	if with_date:
-		exportString += '= ' + str(day.date) + ' =\n\n'
+		exportString += '= ' + dates.get_date_string(day.date) + ' =\n\n'
 		
 	'Add text'
 	if with_text:
@@ -53,6 +56,7 @@ def getMarkupForDay(day, with_text=True, selected_categories=None, with_date=Tru
 	
 	exportString += '\n\n\n'
 	return exportString
+
 
 def convertMarkupToTarget(markup, target, title):
 	markup = title + '\n\n\n' + markup #no author provided
@@ -91,3 +95,32 @@ def convertMarkupToTarget(markup, target, title):
 		output += line + '\n'
 	
 	return output
+
+
+def get_toc_html(days):
+	
+	'No title nor author'
+	markup = '\n\n\n**Contents**\n'
+	
+	for day in days:
+		markup += '- [' + str(day) + ' ' + str(day) + '.html]\n'
+	
+	'Close the list'
+	markup += '\n\n'
+	
+	return convertMarkupToTarget(markup, 'html', title='')
+
+
+def preview_in_browser(days, current_day):
+	'write the html to files in tmp dir'
+	for day in days:
+		date_string = str(day)
+		markupText = getMarkupForDay(day, with_date=False)
+		html = convertMarkupToTarget(markupText, 'html', \
+									title=dates.get_date_string(day.date))
+		with open(os.path.join(filesystem.tempDir, date_string + '.html'), 'w') as html_file:
+			html_file.write(html)
+	
+	with open(os.path.join(filesystem.tempDir, 'toc.html'), 'w') as toc_file:
+		toc_file.write(get_toc_html(days))
+			

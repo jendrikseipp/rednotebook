@@ -192,6 +192,26 @@
                         <property name="homogeneous">True</property>
                       </packing>
                     </child>
+                    <child>
+                      <widget class="GtkToggleToolButton" id="previewToggleButton">
+                        <property name="visible">True</property>
+                        <property name="stock_id">gtk-edit</property>
+                        <signal name="toggled" handler="on_previewToggleButton_toggled"/>
+                      </widget>
+                      <packing>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkToolButton" id="previewButton">
+                        <property name="visible">True</property>
+                        <property name="stock_id">gtk-media-play</property>
+                        <signal name="clicked" handler="on_previewButton_clicked"/>
+                      </widget>
+                      <packing>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
                   </widget>
                   <packing>
                     <property name="expand">False</property>
@@ -325,7 +345,7 @@ Tags</property>
                     </child>
                   </widget>
                   <packing>
-                    <property name="position">2</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </widget>
@@ -335,13 +355,10 @@ Tags</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkNotebook" id="dayNotebook">
+              <widget class="GtkVBox" id="dayBox">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="tab_vborder">0</property>
-                <signal name="switch_page" handler="on_dayNotebook_switch_page"/>
                 <child>
-                  <widget class="GtkHPaned" id="hpaned4">
+                  <widget class="GtkHPaned" id="editPane">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="position">550</property>
@@ -480,41 +497,6 @@ Tags</property>
                       </packing>
                     </child>
                   </widget>
-                  <packing>
-                    <property name="position">550</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label3">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">Edit</property>
-                  </widget>
-                  <packing>
-                    <property name="type">tab</property>
-                    <property name="tab_fill">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkVBox" id="previewBox">
-                    <property name="visible">True</property>
-                    <child>
-                      <placeholder/>
-                    </child>
-                  </widget>
-                  <packing>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label4">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">View</property>
-                  </widget>
-                  <packing>
-                    <property name="type">tab</property>
-                    <property name="position">1</property>
-                    <property name="tab_fill">False</property>
-                  </packing>
                 </child>
               </widget>
               <packing>
@@ -852,6 +834,18 @@ Tags</property>
     <signal name="close" handler="on_quit"/>
     <signal name="cancel" handler="on_cancel"/>
     <child>
+      <widget class="GtkLabel" id="export_assistant_0">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Welcome to the Export Assistant. 
+This wizard will help you to export your journal to various formats. You can select the days you want to export and where the output will be saved.</property>
+        <property name="wrap">True</property>
+      </widget>
+      <packing>
+        <property name="page_type">GTK_ASSISTANT_PAGE_INTRO</property>
+        <property name="title">Introduction - (0 of 4)</property>
+      </packing>
+    </child>
+    <child>
       <widget class="GtkFrame" id="export_assistant_1">
         <property name="visible">True</property>
         <property name="label_xalign">0</property>
@@ -941,7 +935,7 @@ Tags</property>
         </child>
       </widget>
       <packing>
-        <property name="title">Format - (2 of 4)</property>
+        <property name="title">Format - (1 of 4)</property>
       </packing>
     </child>
     <child>
@@ -1043,7 +1037,7 @@ Tags</property>
         </child>
       </widget>
       <packing>
-        <property name="title">Date Range - (3 of 4)</property>
+        <property name="title">Date Range - (2 of 4)</property>
       </packing>
     </child>
     <child>
@@ -1065,6 +1059,29 @@ Tags</property>
                   </widget>
                 </child>
                 <child>
+                  <widget class="GtkCheckButton" id="export_text">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes">Export Text</property>
+                    <property name="response_id">0</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="change_export_text_status"/>
+                  </widget>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator2">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
                   <widget class="GtkRadioButton" id="all_categories">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -1075,7 +1092,22 @@ Tags</property>
                     <signal name="toggled" handler="change_categories_selector_status"/>
                   </widget>
                   <packing>
-                    <property name="position">1</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkRadioButton" id="no_categories">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes">Do not export categories</property>
+                    <property name="response_id">0</property>
+                    <property name="active">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">all_categories</property>
+                    <signal name="toggled" handler="change_categories_selector_status"/>
+                  </widget>
+                  <packing>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -1089,7 +1121,7 @@ Tags</property>
                     <property name="group">all_categories</property>
                   </widget>
                   <packing>
-                    <property name="position">2</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
                 <child>
@@ -1186,7 +1218,25 @@ Tags</property>
                     </child>
                   </widget>
                   <packing>
-                    <property name="position">3</property>
+                    <property name="position">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkHSeparator" id="hseparator3">
+                    <property name="visible">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="nothing_exported_warning">
+                    <property name="label" translatable="yes">If export text is not selected, you have to select at least one category.</property>
+                    <property name="wrap">True</property>
+                  </widget>
+                  <packing>
+                    <property name="position">8</property>
                   </packing>
                 </child>
               </widget>

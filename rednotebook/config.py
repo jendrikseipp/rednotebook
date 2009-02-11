@@ -43,6 +43,7 @@ class Config(dict):
 		if self.has_key(key):
 			return self.get(key)
 		else:
+			self[key] = default
 			return default
 						
 	def saveToDisk(self):

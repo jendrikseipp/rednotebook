@@ -1,5 +1,8 @@
 Roadmap:
 
+Later:
+O Allow dragging of files and pictures into RedNotebook
+
 Soon:
 O Import of exported backups
 O i18n
@@ -7,6 +10,9 @@ O Comment Code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
 O add password XOR encryption
 O save sash positions and frame size
+O CTRL-C should copy the html text when in view tab
+O Add "Check for new version" menu entry
+O Update text descriptions
 
 0.7
 O Markup Editing
@@ -19,11 +25,16 @@ O Shortcuts to navigate
 
 0.6
 O Allow linking of files
+0 Allow embedding images
 O More documentation and examples
 O Make a menu entry to add the documentation
+O Make GTKMozembed optional
+O Use preview in browser instead
+  O make frame with days in left column and day preview in the right
 
 0.5.5
 O Export Categories separately
+X Add day to title in preview
 
 0.5.4
 X update checker
@@ -117,3 +128,5 @@ SSH, FTP saving
 
 Internal Stuff:
 remove months
+let day inherit from date
+let wordClouds use same html renderer
