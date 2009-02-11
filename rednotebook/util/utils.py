@@ -1,3 +1,4 @@
+from __future__ import with_statement
 import sys
 import signal
 import random
@@ -5,8 +6,11 @@ import operator
 import os
 from threading import Thread
 from urllib2 import urlopen, URLError
-
+import webbrowser
 import unicode
+
+
+import filesystem
 
 def printError(message):
 	print '\nERROR:', message
@@ -203,3 +207,15 @@ def get_new_version_number(currentVersion):
 def check_new_version(mainFrame, currentVersion):
 	if get_new_version_number(currentVersion):
 		mainFrame.show_new_version_dialog()
+		
+
+def show_html_in_browser(html, filename='tmp.html'):
+	filename = open(os.path.join(filesystem.tempDir, filename), 'w')
+	with filename as html_file:
+		html_file.write(html)
+	
+	html_file = os.path.abspath(filename.name)
+	html_file = 'file://' + html_file
+	webbrowser.open(html_file)
+	
+	

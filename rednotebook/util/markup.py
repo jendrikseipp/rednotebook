@@ -6,6 +6,7 @@ import os
 from rednotebook import txt2tags
 from rednotebook.util import filesystem
 from rednotebook.util import dates
+from rednotebook.util import utils
 
 
 def _convertCategoriesToMarkup(categories, with_category_title=True):
@@ -99,16 +100,63 @@ def convertMarkupToTarget(markup, target, title):
 
 def get_toc_html(days):
 	
-	'No title nor author'
-	markup = '\n\n\n**Contents**\n'
+#	'No title nor author'
+#	markup = '\n\n\n**Contents**\n'
+#	
+#	for day in days:
+#		markup += '- [' + str(day) + ' ' + str(day) + '.html]\n'
+#	
+#	'Close the list'
+#	markup += '\n\n'
+#	
+#	return convertMarkupToTarget(markup, 'html', title='')
 	
+	html = '''\
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+<STYLE TYPE="text/css">
+body {
+    font-family: sans-serif;
+}
+</STYLE>
+
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<P>
+<B>Contents</B>
+
+</P>
+<UL>
+'''
 	for day in days:
-		markup += '- [' + str(day) + ' ' + str(day) + '.html]\n'
+		html += '<LI><A HREF="' + str(day) + '.html" TARGET="Content">' + str(day) + '</A>\n'
+		
+	html += '</UL></BODY></HTML>'
 	
-	'Close the list'
-	markup += '\n\n'
-	
-	return convertMarkupToTarget(markup, 'html', title='')
+	return html
+
+
+def get_frameset_html(current_day):
+	return '''\
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+   "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<title>RedNotebook</title>
+</head>
+
+<frameset cols="200,*">
+  <frame src="toc.html" name="navigation">
+  <frame src="%s.html" name="Content">
+</frameset>
+</html>
+''' % str(current_day)
+
 
 
 def preview_in_browser(days, current_day):
@@ -123,4 +171,6 @@ def preview_in_browser(days, current_day):
 	
 	with open(os.path.join(filesystem.tempDir, 'toc.html'), 'w') as toc_file:
 		toc_file.write(get_toc_html(days))
+		
+	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook')
 			

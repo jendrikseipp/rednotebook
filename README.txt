@@ -36,6 +36,7 @@ Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py
            without them, RedNotebook would not be possible
   - Everaldo Coelho (www.everaldo.com) for the excellent icon
   - The txt2tags team (http://txt2tags.sf.net) for their super cool markup-tool
+  - Gustavo J. A. M. Carneiro for his htmltextview.py module
 
 
 

@@ -192,26 +192,6 @@
                         <property name="homogeneous">True</property>
                       </packing>
                     </child>
-                    <child>
-                      <widget class="GtkToggleToolButton" id="previewToggleButton">
-                        <property name="visible">True</property>
-                        <property name="stock_id">gtk-edit</property>
-                        <signal name="toggled" handler="on_previewToggleButton_toggled"/>
-                      </widget>
-                      <packing>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="GtkToolButton" id="previewButton">
-                        <property name="visible">True</property>
-                        <property name="stock_id">gtk-media-play</property>
-                        <signal name="clicked" handler="on_previewButton_clicked"/>
-                      </widget>
-                      <packing>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
                   </widget>
                   <packing>
                     <property name="expand">False</property>
@@ -345,7 +325,7 @@ Tags</property>
                     </child>
                   </widget>
                   <packing>
-                    <property name="position">1</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </widget>
@@ -371,6 +351,17 @@ Tags</property>
                             <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
                             <property name="icon_size">GTK_ICON_SIZE_SMALL_TOOLBAR</property>
                             <child>
+                              <widget class="GtkToolButton" id="previewButton">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Preview</property>
+                                <property name="stock_id">gtk-media-play</property>
+                                <signal name="clicked" handler="on_previewButton_clicked"/>
+                              </widget>
+                              <packing>
+                                <property name="homogeneous">True</property>
+                              </packing>
+                            </child>
+                            <child>
                               <widget class="GtkToolButton" id="undoButton">
                                 <property name="stock_id">gtk-undo</property>
                               </widget>
@@ -390,7 +381,6 @@ Tags</property>
                               <widget class="GtkToolButton" id="templateButton">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Insert Template</property>
-                                <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-paste</property>
                                 <signal name="clicked" handler="on_templateButton_clicked"/>
                               </widget>

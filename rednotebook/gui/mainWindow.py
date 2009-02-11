@@ -26,10 +26,14 @@ except ImportError:
 	sys.exit(1)
 
 try:
-	import gtkmozembed
+	from rednotebook.gui import mozembed
+	use_moz = True
 except ImportError:
-	utils.printError('gtkmozembed is not installed (install python-gnome2-extras)')
-	sys.exit(1)
+	use_moz = False
+	utils.printError('gtkmozembed is not installed. RedNotebook can run without it,\n'
+					'but if you want to see the day preview inside RedNotebook instead of \n'
+					'in your browser, please install gtkmozembed (sometimes it is \n'
+					'found in the package python-gnome2-extras).')
 
 from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.util import filesystem
@@ -67,12 +71,10 @@ class MainWindow(object):
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
-		
-		
-		#self.previewScrolledWindow = self.wTree.get_widget('previewScrolledWindow')
-		#self.preview = Preview(self.previewScrolledWindow)
-		self.preview = MozillaView(self.wTree.get_widget('dayBox'))
-		self.preview.hide()
+		if use_moz:
+			self.preview = Browser(self)
+			self.wTree.get_widget('dayBox').pack_start(self.preview)
+			self.preview.hide()
 		
 		self.editPane = self.wTree.get_widget('editPane')
 		
@@ -91,7 +93,6 @@ class MainWindow(object):
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
 			
-			'on_previewToggleButton_toggled': self.on_previewToggleButton_toggled,
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			
 			'on_exportMenuItem_activate': self.on_exportMenuItem_activate,
@@ -124,16 +125,9 @@ class MainWindow(object):
 			self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
 							ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 			
-	
-	def on_previewToggleButton_toggled(self, toggle_button):
-		print toggle_button.get_active()
-		preview_toggled = toggle_button.get_active()
-		
-		print toggle_button.get_label()
-		print toggle_button.get_stock_id()
-		
-		
-		if preview_toggled:
+			
+	def on_previewButton_clicked(self, button):
+		if use_moz:
 			'Switched to preview'
 			self.redNotebook.saveOldDay()
 			#self.day.text = self.get_day_text()
@@ -141,21 +135,9 @@ class MainWindow(object):
 			
 			self.preview.show()
 			self.editPane.hide()
-			
-			toggle_button.set_stock_id('gtk-media-play')
-			
 		else:
-			self.preview.hide()
-			self.editPane.show()
-			
-			toggle_button.set_stock_id('gtk-edit')
-			#toggle_button.set_label('Edit')
-			
-			
-	def on_previewButton_clicked(self, button):
-		markup.preview_in_browser(self.redNotebook.sortedDays, None)
+			markup.preview_in_browser(self.redNotebook.sortedDays, self.redNotebook.day)
 		
-			
 			
 	def setup_search(self):
 		self.searchNotebook = self.wTree.get_widget('searchNotebook')
@@ -323,7 +305,9 @@ class MainWindow(object):
 		self.calendar.set_date(newDate)
 		self.dayTextField.set_text(day.text)
 		self.categoriesTreeView.set_day_content(day)
-		self.preview.set_day(day)
+		
+		if use_moz:
+			self.preview.set_day(day)
 		
 		self.day = day
 		
@@ -457,55 +441,197 @@ class SearchComboBox(CustomComboBox):
 		self.mainWindow.searchTreeView.update_data(searchText)
 		
 		
+
+class Browser(gtk.VBox):
+	"""
+		An HTML window
 		
+		Code taken from Exaile 0.2.14
+	"""
+	def __init__(self, main_frame):
+		"""
+			Initializes the window
+		"""
+		gtk.VBox.__init__(self)
+		self.set_border_width(5)
+		self.set_spacing(3)
+		self.action_count = 0
 		
-class MozillaView(gtkmozembed.MozEmbed):
-	def __init__(self, containerBox):
-		gtkmozembed.MozEmbed.__init__(self)
-		'Set a temporary Mozilla profile (works around some bug)'
-		gtkmozembed.set_profile_path('/tmp', 'simple_browser_user')
+		self.main_frame = main_frame
+
 		
-		containerBox.pack_start(self)
-		#'Attempt to set the size of the browser widget to 600x400 pixels'
-		#self.set_size_request(600,400)
-		self.show()
-	
-	def write(self, html):
-		'''
-		The following line produces a segfault
-		In Python 2.6 a proper method for variable size detection was added,
-		so we will use that method later...
+		top = gtk.HBox()
+		top.set_spacing(3)
 		
-		For now write the html to a file and display it.
+		self.edit_button = gtk.Button(label=None, stock='gtk-edit')
+		self.edit_button.connect('clicked', self.on_edit_button_clicked)
+		top.pack_start(self.edit_button, False, False)
+
+		self.back = gtk.Button()
+		image = gtk.Image()
+		image.set_from_stock('gtk-go-back', gtk.ICON_SIZE_SMALL_TOOLBAR)
+		self.back.set_image(image)
+		self.back.set_sensitive(False)
+		self.back.connect('clicked', self.on_back)
+		top.pack_start(self.back, False, False)
+
+		self.next = gtk.Button()
+		image = gtk.Image()
+		image.set_from_stock('gtk-go-forward', gtk.ICON_SIZE_SMALL_TOOLBAR)
+		self.next.set_image(image)
+		self.next.connect('clicked', self.on_next)
+		self.next.set_sensitive(False)
+		top.pack_start(self.next, False, False)
+
+		self.open_browser_button = gtk.Button("Open Browser")
+		self.open_browser_button.connect('clicked', self.on_open_browser)
+		top.pack_start(self.open_browser_button, False, False)
+
+		self.entry = gtk.Entry()
+		self.entry.connect('activate', self.entry_activate)
+		top.pack_start(self.entry, True, True)
+		self.pack_start(top, False, True)
+
+		self.view = mozembed.MozClient()
+		self.pack_start(self.view, True, True)
 		
-		#self.render_data(html, long(len(html)), 'file:///', 'text/html')
-		'''
+		self.view.connect('location', self.on_location_change)
+
+		self.show_all()
+		#finish()
+
+		self.view.set_data('<html><body><b>' + 'Loading requested'
+			' information...' + '</b></body></html>', '')
+		self.view.connect('net-stop', self.on_net_stop)
 		
-		#import tempfile
-		#with tempfile.NamedTemporaryFile(suffix='.html') as tempFile:
-#			tempFile.write("Yeah")
-#			print 'TMP', tempFile.readlines()
-		with open(os.path.join(filesystem.tempDir, 'tmp.html'), 'w+r') as tempFile:
-			tempFile.write(html)
-			tempFile.flush()
-			#'Move to beginning of file'
-			#tempFile.seek(0, 0)
-			#print 'TMP', tempFile.readlines()
-			#tempFile.close()
-			#print str(tempFile.name)
-			htmlFile = os.path.abspath(tempFile.name)
-			#os.chmod(htmlFile, 0777)
-			htmlFile = 'file://' + htmlFile
-			#print htmlFile
+		self.view.connect('open-uri', self.on_open_uri)
+
+		#self.server = ''
 			
-			self.load_url(htmlFile)
+	def on_edit_button_clicked(self, button):
+		self.main_frame.preview.hide()
+		self.main_frame.editPane.show()
 			
+	def on_open_uri(self, mozembed, uri):
+		print 'Load URI:', uri
+		self.open_browser_button.set_sensitive(True)
+
+	def on_net_stop(self, *args):
+		"""
+			Called when mozilla is done loading the page
+		"""
+		#self.exaile.status.set_first(None)
+
+	def set_text(self, text):
+		"""
+			Sets the text of the browser window
+
+		"""
+		self.view.set_data(text, '')
+
+	def entry_activate(self, *e):
+		"""
+			Called when the user presses enter in the address bar
+		"""
+		url = unicode(self.entry.get_text(), 'utf-8')
+		self.load_url(url, self.action_count)
+
+	def on_location_change(self, mozembed):
+		# Only called when not self.nostyles
+		self.entry.set_text(mozembed.get_location())
+		self.back.set_sensitive(self.view.can_go_back())
+		self.next.set_sensitive(self.view.can_go_forward())
+
+	def on_next(self, widget):
+		"""
+			Goes to the next entry in history
+		"""
+		self.view.go_forward()
+			
+	def on_back(self, widget):
+		"""
+			Goes to the previous entry in history
+		"""
+		self.view.go_back()
+
+	def on_open_browser(self, button):
+		"""
+			Opens the current URL in a new browser window (if possible).
+		"""
+		# This method is rarely used, so we only do the import when we need to.
+		import webbrowser
+		# "new=1" is to request new window.
+		webbrowser.open(self.view.get_location(), new=1)
+
+	def load_url(self, url, action_count, history=False):
+		"""
+			Loads a URL, either from the cache, or from the website specified
+		"""
+		self.view.load_url(url)
+		self.open_browser_button.set_sensitive(True)
+
+		if not self.nostyles:
+			if self.view.can_go_back(): self.back.set_sensitive(True)
+			if not self.view.can_go_forward(): self.next.set_sensitive(False)
+			self.entry.set_sensitive(True)
+			self.entry.set_text(url)
 			
 	def set_day(self, day):
 		markupText = markup.getMarkupForDay(day, with_date=False)
 		html = markup.convertMarkupToTarget(markupText, 'html', \
 										title=dates.get_date_string(day.date))
-		self.write(html)
+		print 'SET'
+		self.view.set_data('file://', html)
+		self.open_browser_button.set_sensitive(False)
+		
+		
+#class Preview(mozembed):
+#	def __init__(self, containerBox):
+#		gtkmozembed.MozEmbed.__init__(self)
+#		'Set a temporary Mozilla profile (works around some bug)'
+#		gtkmozembed.set_profile_path('/tmp', 'simple_browser_user')
+#		
+#		containerBox.pack_start(self)
+#		#'Attempt to set the size of the browser widget to 600x400 pixels'
+#		#self.set_size_request(600,400)
+#		self.show()
+#	
+#	def write(self, html):
+#		'''
+#		The following line produces a segfault
+#		In Python 2.6 a proper method for variable size detection was added,
+#		so we will use that method later...
+#		
+#		For now write the html to a file and display it.
+#		
+#		#self.render_data(html, long(len(html)), 'file:///', 'text/html')
+#		'''
+#		
+#		#import tempfile
+#		#with tempfile.NamedTemporaryFile(suffix='.html') as tempFile:
+##			tempFile.write("Yeah")
+##			print 'TMP', tempFile.readlines()
+#		with open(os.path.join(filesystem.tempDir, 'tmp.html'), 'w+r') as tempFile:
+#			tempFile.write(html)
+#			tempFile.flush()
+#			#'Move to beginning of file'
+#			#tempFile.seek(0, 0)
+#			#print 'TMP', tempFile.readlines()
+#			#tempFile.close()
+#			#print str(tempFile.name)
+#			htmlFile = os.path.abspath(tempFile.name)
+#			#os.chmod(htmlFile, 0777)
+#			htmlFile = 'file://' + htmlFile
+#			#print htmlFile
+#			
+#			self.load_url(htmlFile)
+#			
+#			
+#	def set_day(self, day):
+#		markupText = markup.getMarkupForDay(day, with_date=False)
+#		html = markup.convertMarkupToTarget(markupText, 'html', \
+#										title=dates.get_date_string(day.date))
+#		self.write(html)
 		
 		
 class CloudView(HtmlWindow):

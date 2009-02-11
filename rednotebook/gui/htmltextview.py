@@ -21,6 +21,8 @@
 '''
 A gtk.TextView-based renderer for XHTML-IM, as described in:
   http://www.jabber.org/jeps/jep-0071.html
+  
+  Smaller changes by Jendrik Seipp
 '''
 import gobject
 import pango
@@ -542,8 +544,7 @@ class HtmlWindow(gtk.ScrolledWindow):
 	def write(self, html):
 		'Clear any previously entered text'
 		self.htmlview.get_buffer().set_text('')
-		print 'HTML'
-		print html
+		
 		html = html.encode('utf-8')
 		if len(html.strip()) == 0:
 			self.htmlview.display_html('<body></body>')
@@ -572,8 +573,6 @@ if __name__ == '__main__':
 </body>
 '''
 
-	
-	#htmlview.display_html('<a href="search/41"><span style="font-size:10px;font-family: sans-serif">watched</span></a>')
 	htmlview.display_html(test)
 	htmlview.display_html('<div><span style="color: red; text-decoration:underline">Hello</span><br/>\n'
 						  '  <img src="http://images.slashdot.org/topics/topicsoftware.gif"/><br/>\n'
