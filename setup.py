@@ -71,9 +71,14 @@ if os.path.exists('/usr/share/applications/'):
 #For the use of py2exe you have to checkout the repository.
 #To create Windows Installers have a look at the file 'win/win-build.txt'
 py2exeParameters = {
-	  				#3 (default) don't bundle, 2: bundle everything but the Python interpreter, 1: bundle everything, including the Python interpreter
+	  				#3 (default) don't bundle, 
+					#2: bundle everything but the Python interpreter, 
+					#1: bundle everything, including the Python interpreter
 	  	  			'options' : {'py2exe': {'bundle_files': 1, 
-	  						'includes': ['rednotebook.gui', 'rednotebook.util', ]}}, 
+											'includes': 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject',
+											'packages':'encodings',
+											}
+								}, 
 	  				#include library in exe
 	  	  			'zipfile' : None, 
 	  				#windows for gui, console for cli
@@ -81,7 +86,7 @@ py2exeParameters = {
 									'script': 'rednotebook/redNotebook.py',
 									'icon_resources': [(1, 'win/rednotebook.ico')],
 									"other_resources": [(24,1,manifest)],
-								}], 
+								}],
 	  	  			}
 
 if 'py2exe' in sys.argv:
