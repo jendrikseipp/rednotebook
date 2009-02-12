@@ -1,6 +1,13 @@
 ==== Changelog ====
 
 
+=== 0.5.5 (2009-02-12) ===
+  * Make GTKMozembed optional
+  * Use preview in browser if GTKMozembed not installed
+  * Add browser navigation buttons to preview
+  * Remove gtkhtml2 dependency
+  * Add name of day to title in preview and export
+
 === 0.5.4 (2009-02-02) ===
   * RedNotebook now checks for new version when it is started
   * The configuration is saved in a file when the program exits

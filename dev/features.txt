@@ -20,17 +20,17 @@ O Easier Tagging
 O only make the entry submittable, if text has been entered
 
 O add copyright notice to source files
-O Shortcuts to navigate
+O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 
 0.6
 O Allow linking of files
 0 Allow embedding images
 O More documentation and examples
 O Make a menu entry to add the documentation
+O Export Categories separately
 
 
 0.5.5
-O Export Categories separately
 X Make GTKMozembed optional
 X Use preview in browser instead
   X make frame with days in left column and day preview in the right
