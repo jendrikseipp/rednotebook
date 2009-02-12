@@ -85,7 +85,7 @@ py2exeParameters = {
 	  	  			'windows' : [{
 									'script': 'rednotebook/redNotebook.py',
 									'icon_resources': [(1, 'win/rednotebook.ico')],
-									"other_resources": [(24,1,manifest)],
+									#"other_resources": [(24,1,manifest)],
 								}],
 	  	  			}
 

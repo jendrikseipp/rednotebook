@@ -168,6 +168,8 @@ class RedNotebook:
 	def saveToDisk(self, exitImminent=False):
 		self.saveOldDay()
 		
+		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir,])
+		
 		for yearAndMonth, month in self.months.iteritems():
 			if not month.empty:
 				monthFileString = os.path.join(filesystem.dataDir, yearAndMonth + \

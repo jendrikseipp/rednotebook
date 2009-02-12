@@ -128,6 +128,7 @@ class MainWindow(object):
 			self.preview.show()
 			self.editPane.hide()
 		else:
+			self.redNotebook.saveOldDay()
 			markup.preview_in_browser(self.redNotebook.sortedDays, self.redNotebook.day)
 		
 			

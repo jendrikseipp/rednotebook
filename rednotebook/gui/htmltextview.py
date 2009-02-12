@@ -548,7 +548,7 @@ class HtmlWindow(gtk.ScrolledWindow):
 		html = html.encode('utf-8')
 		if len(html.strip()) == 0:
 			self.htmlview.display_html('<body></body>')
-			print 'No HTML to display'
+			#print 'No HTML to display'
 		else:
 			try:
 				self.htmlview.display_html(html)
