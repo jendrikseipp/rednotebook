@@ -10,32 +10,6 @@ from distutils.core import setup
 if sys.platform == 'win32':
 	print 'running on win32. Importing py2exe'
 	import py2exe
-	
-manifest = """
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<assembly xmlns="urn:schemas-microsoft-com:asm.v1"
-manifestVersion="1.0">
-<assemblyIdentity
-version="0.64.1.0"
-processorArchitecture="x86"
-name="Controls"
-type="win32"
-/>
-<description>myProgram</description>
-<dependency>
-<dependentAssembly>
-<assemblyIdentity
-type="win32"
-name="Microsoft.Windows.Common-Controls"
-version="6.0.0.0"
-processorArchitecture="X86"
-publicKeyToken="6595b64144ccf1df"
-language="*"
-/>
-</dependentAssembly>
-</dependency>
-</assembly>
-"""
 
 #Testinstall with: python setup.py install --root=test
 
@@ -44,7 +18,6 @@ baseDir = os.path.dirname(sys.argv[0])
 sys.path.insert(0, baseDir)
 
 from rednotebook import info
-#rednotebookDir = os.path.join(setupDir, 'rednotebook
 
 parameters = {'name'          : 'rednotebook', 
       				'version'       : info.version, 
@@ -74,7 +47,8 @@ py2exeParameters = {
 	  				#3 (default) don't bundle, 
 					#2: bundle everything but the Python interpreter, 
 					#1: bundle everything, including the Python interpreter
-	  	  			'options' : {'py2exe': {'bundle_files': 1, 
+					#It seems that only option 3 works with PyGTK
+	  	  			'options' : {'py2exe': {'bundle_files': 3, 
 											'includes': 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject',
 											'packages':'encodings',
 											}
@@ -85,8 +59,11 @@ py2exeParameters = {
 	  	  			'windows' : [{
 									'script': 'rednotebook/redNotebook.py',
 									'icon_resources': [(1, 'win/rednotebook.ico')],
-									#"other_resources": [(24,1,manifest)],
+									#Adding manifest seems to have no effect
+									#"other_resources": [(24,1,manifest)], 
 								}],
+					'data_files' : [('files',['rednotebook/files/mainWindow.glade',
+												'rednotebook/files/stylesheet.css',])],
 	  	  			}
 
 if 'py2exe' in sys.argv:

@@ -1,5 +1,22 @@
-====== Windows Release ======
-  * (in ../) run 'python setup.py py2exe'
-	(This stand-alone exe is not working, because the images are missing)
-  * in win/ Right-Click on 'installer.nsi' and select 'Compile NSIS Script'
-	(after installing this everything should work)
+====== Install GTK ======
+(view http://faq.pygtk.org/index.py?req=show&file=faq21.001.htp for more details)
+  * Install Python 2.4 or greater for Microsoft Windows from the Python website [www.python.org] .
+  * Install the GTK+ 2.10 developer runtime from the GTK+/Glade for Win32 
+    project website [http://gladewin32.sourceforge.net/] 
+    or use the (more up-to-date) GTK+ stack bundle provided by the GTK+ 
+	project linked from [http://www.pygtk.org/downloads.html]
+  * Install PyCairo, PyGobject and PyGTK installers from the PyGTK project 
+    website [http://www.pygtk.org/downloads.html] , 
+    note that you need them all installed to get PyGTK working. 
+	
+====== Test RedNotebook ======
+  * Checkout SVN (as you've already done)
+  * Open a commandline and navigate to PathToRedNotebook\rednotebook
+  * execute python redNotebook.py
+
+====== Build Exe ======
+  * Open a commandline and navigate to RedNotebook's base directory (../ from here)
+  * run 'python setup.py py2exe'
+  * A dist/ directory is created containing the exe, but the GTK files are still missing
+  * Copy the directories etc, lib and share to the newly created dist directory
+  * Now clicking redNotebook.exe should start the application
