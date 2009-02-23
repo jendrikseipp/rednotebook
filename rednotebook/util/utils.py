@@ -1,3 +1,22 @@
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
+
 from __future__ import with_statement
 import sys
 import signal
@@ -147,9 +166,16 @@ def set_environment_variables(config):
 				}
 	
 	for variable, value in variables.iteritems():
-		if not os.environ.has_key(variable) or config.has_key(variable):
+		if not os.environ.has_key(variable) and config.has_key(variable):
+			# Only add environment variable if it does not exist yet
 			os.environ[variable] = config.read(variable, default=value)
 			print variable, 'set to', value
+			
+	for variable in variables.keys():
+		if os.environ.has_key(variable):
+			print 'The environment variable', variable, 'has value', os.environ.get(variable)
+		else:
+			print 'There is no environment variable called', variable
 
 
 def setup_signal_handlers(redNotebook):
@@ -225,9 +251,11 @@ def get_new_version_number(currentVersion):
 	return None
 
 
-def check_new_version(mainFrame, currentVersion):
+def check_new_version(mainFrame, currentVersion, startup=False):
 	if get_new_version_number(currentVersion):
 		mainFrame.show_new_version_dialog()
+	elif not startup:
+		mainFrame.show_no_new_version_dialog()
 		
 
 def show_html_in_browser(html, filename='tmp.html'):

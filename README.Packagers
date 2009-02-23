@@ -1,0 +1,52 @@
+Notes for package maintainers
+-----------------------------
+(most of these notes have been taken from the geany (geany.org) tarball)
+
+
+About this file
+---------------
+The following notes are intended for package maintainers. These are not
+meant as strict rules but only as hints and ideas to make a package
+maintainer's life a little bit easier.
+So it doesn't make much sense to include this file in any created
+packages for general distribution.
+
+
+Packaging hints
+---------------
+In the file rednotebook/files/default.cfg you can customise some settings for
+your distribution/target. Detailed descriptions can be found there.
+
+
+Feedback
+--------
+If you have to modify anything to package the RedNotebook sources for your
+distribution/target and these changes might be generally useful, please
+report your changes to us (the RedNotebook developers) so we can apply them.
+Such changes could be removing/adding any files, modifying the distutils
+configuration, any modifications to some "meta" files (like
+rednotebook.desktop, images/icons, ...) or even if you have to
+modify the source code to fix broken compilation or something like this.
+Please inform us about changes you made, so maybe you don't have to
+change it again with the next release and we can fix it in RedNotebook itself
+so others could also benefit from these changes.
+
+
+Announce your packages
+---------------------
+After finishing your package creation, feel free to drop a note in
+RedNotebook's forum or directly to us (the RedNotebook developers) to
+inform us about it. If you wish, we can also add a link on RedNotebook's
+website to your package.
+
+
+RedNotebook announcements
+-------------------
+Package maintainers are encouraged to subscribe to the Freshmeat or Sourceforge
+announcements to stay informed about new releases.
+
+
+
+--
+2008-2009 by Jendrik Seipp
+jendrikseipp(at)web(dot)de

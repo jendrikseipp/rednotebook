@@ -2,9 +2,13 @@ include rednotebook/images/*.png
 include rednotebook/images/redNotebookIcon/*.png
 include rednotebook/files/*.glade
 include rednotebook/files/*.css
+include rednotebook/files/*.cfg
 include rednotebook/gui/*.py
-include CHANGELOG.txt
-include README.txt
+include CHANGELOG
+include README
+include README.Packagers
+include AUTHORS
+include LICENSE
 include MANIFEST.in
 include rednotebook.desktop
 include rednotebook.png

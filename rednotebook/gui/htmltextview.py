@@ -22,8 +22,9 @@
 A gtk.TextView-based renderer for XHTML-IM, as described in:
   http://www.jabber.org/jeps/jep-0071.html
   
-  Smaller changes by Jendrik Seipp
+  Smaller changes made by Jendrik Seipp
 '''
+
 import gobject
 import pango
 import gtk

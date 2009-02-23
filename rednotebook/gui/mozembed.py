@@ -21,12 +21,15 @@
 
 ####
 ##
-## This code taken from Listen media player: http://www.listen-project.org
+## This code was taken from Listen media player: http://www.listen-project.org
 ##
 ####
 
 import gobject
 import gtkmozembed
+import os
+
+from rednotebook.util import filesystem
 
 """
 This class wrap MozEmbed
@@ -89,3 +92,36 @@ class MozClient(gtkmozembed.MozEmbed):
 			
 	def print_dbg(self,*arg):
 		if self.dbg: print "DBG:MozClient:",arg
+		
+		
+def xulrunner_paths_correct():
+	'''Helper function that checks the env variables for xulrunner 
+	
+	Author: Jendrik Seipp
+	'''
+	
+	if not os.environ.has_key('LD_LIBRARY_PATH') or \
+				not os.environ.has_key('MOZILLA_FIVE_HOME'):
+		return False
+	
+	try:
+		#lib_paths = os.environ.get('LD_LIBRARY_PATH').split(':')
+		#lib_paths = map(lambda line: line.strip(), lib_paths)
+		
+		#Take the first path that contains 'xulrunner'
+		#xul_path = filter(lambda path: 'xulrunner' in path.lower(), lib_paths).pop()
+		
+		moz_paths = os.environ.get('MOZILLA_FIVE_HOME').split(':')
+		moz_paths = map(lambda line: line.strip(), moz_paths)
+		
+		#Take the first path that contains 'xulrunner'
+		moz_five_path = filter(lambda path: 'xulrunner' in path.lower(), moz_paths).pop()
+		
+		return os.path.exists(moz_five_path) #and os.path.exists(xul_path)
+	
+	except Exception:
+		print 'Errors occured during the parsing of the environment variables',
+		print 'for xulrunner. GTKMozembed will be disabled. You can change the paths',
+		print 'in the file', filesystem.configFile
+		return False
+		

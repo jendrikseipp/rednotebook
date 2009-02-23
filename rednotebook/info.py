@@ -1,8 +1,27 @@
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
+
 from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.5.5'
+version = '0.5.6'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
@@ -11,12 +30,13 @@ developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
 				]
 comments = '''\
 RedNotebook is a graphical diary and journal to keep track of notes and \
-thoughts throughout the day. It includes a calendar navigation, customizable \ 
-templates for each day, export functionality and a keyword search and cloud. \
+thoughts. It includes a calendar navigation, customizable \ 
+templates for each day, export functionality and word clouds. You can also \
+tag and search your entries.\
 '''
 
 licenseText = '''\
-Copyright (C) 2008  Jendrik Seipp
+Copyright (c) 2009  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

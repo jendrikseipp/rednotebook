@@ -1,4 +1,22 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
+
 from __future__ import with_statement
 import sys
 import os
@@ -19,6 +37,8 @@ import rednotebook.util.unicode
 
 try:
 	from rednotebook.gui import mozembed
+	# Enable gtkmozembed only if the environment variables for xulrunner are present
+	#use_moz = mozembed.xulrunner_paths_correct()
 	use_moz = True
 except ImportError:
 	use_moz = False
@@ -63,10 +83,17 @@ class MainWindow(object):
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
-		if use_moz:
+		global use_moz
+		
+		if use_moz and self.redNotebook.config.read('useGTKMozembed', 1):
+			#global use_moz
+			use_moz = True
 			self.preview = Preview(self)
 			self.wTree.get_widget('dayBox').pack_start(self.preview)
 			self.preview.hide()
+		else:
+			#global use_moz
+			use_moz = False
 		
 		self.editPane = self.wTree.get_widget('editPane')
 		
@@ -86,6 +113,7 @@ class MainWindow(object):
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
 			
 			'on_previewButton_clicked': self.on_previewButton_clicked,
+			'on_checkVersionMenuItem_activate': self.on_checkVersionMenuItem_activate,
 			
 			'on_exportMenuItem_activate': self.on_exportMenuItem_activate,
 			'on_statisticsMenuItem_activate': self.on_statisticsMenuItem_activate,
@@ -267,6 +295,9 @@ class MainWindow(object):
 	def on_helpMenuItem_activate(self, widget):
 		utils.show_html_in_browser(info.htmlHelp)
 		
+	def on_checkVersionMenuItem_activate(self, widget):
+		utils.check_new_version(self, info.version)
+		
 		
 	def set_date(self, newMonth, newDate, day):
 		self.categoriesTreeView.clear()
@@ -310,8 +341,17 @@ class MainWindow(object):
 		if response == gtk.RESPONSE_OK:
 			webbrowser.open(info.url)
 		elif response == 20:
-			'do not ask again'
+			#do not ask again
 			self.redNotebook.config['checkForNewVersion'] = 0
+			
+	def show_no_new_version_dialog(self):
+		dialog = self.wTree.get_widget('noNewVersionDialog')
+		response = dialog.run()
+		dialog.hide()
+		
+		if response == 30:
+			#Ask at startup
+			self.redNotebook.config['checkForNewVersion'] = 1
 			
 			
 			

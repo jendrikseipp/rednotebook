@@ -1,4 +1,4 @@
-#/usr/bin/python
+#!/usr/bin/env python
 
 import os
 import sys
@@ -13,7 +13,6 @@ if sys.platform == 'win32':
 
 #Testinstall with: python setup.py install --root=test
 
-#print sys.argv[0]
 baseDir = os.path.dirname(sys.argv[0])
 sys.path.insert(0, baseDir)
 
@@ -21,8 +20,8 @@ from rednotebook import info
 
 parameters = {'name'          : 'rednotebook', 
       				'version'       : info.version, 
-          			'description'   : "A Simple Desktop Diary", 
-             		'long_description' : "RedNotebook is a diary that helps you keep track of your activities and thoughts", 
+          			'description'   : "Graphical daily journal with calendar, templates and keyword searching", 
+             		'long_description' : info.comments, 
                		'author'        : info.author, 
                  	'author_email'  : info.authorMail, 
                   	'maintainer'        : info.author, 
@@ -33,7 +32,7 @@ parameters = {'name'          : 'rednotebook',
                     'scripts'       : ['rednotebook/rednotebook'], 
                     'packages'      : ['rednotebook', 'rednotebook.gui', 'rednotebook.util'], 
                     'package_data'  : {'rednotebook': ['images/*.png', 'images/redNotebookIcon/*.png',
-														'files/*.css', 'files/*.glade',]},
+														'files/*.css', 'files/*.glade', 'files/*.cfg',]},
                    }
 
 #Debian parameters

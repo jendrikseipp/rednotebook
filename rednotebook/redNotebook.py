@@ -1,5 +1,23 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
+
 from __future__ import with_statement
 
 import sys
@@ -104,8 +122,8 @@ class RedNotebook:
 		self.frame.searchNotebook.set_current_page(1)
 		
 		'Check for a new version'
-		if self.config.read('checkForNewVersion', default=1) == 1:
-			utils.check_new_version(self.frame, info.version)
+		if self.config.read('checkForNewVersion', default=0) == 1:
+			utils.check_new_version(self.frame, info.version, startup=True)
 		
 	
 	
