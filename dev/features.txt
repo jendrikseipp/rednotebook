@@ -26,6 +26,7 @@ O Allow embedding images
 O More documentation and examples
 O Make a menu entry to add the documentation
 O Export Categories separately
+O If current day is empty add some text, so that preview is not 404
 
 0.5.6
 X Add copyright notice to source files
