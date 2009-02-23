@@ -83,6 +83,8 @@ class MainWindow(object):
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
+		self.wTree.get_widget('insert_popup_menu').set_active(0)
+		
 		global use_moz
 		
 		if use_moz and self.redNotebook.config.read('useGTKMozembed', 1):
@@ -98,6 +100,7 @@ class MainWindow(object):
 		self.editPane = self.wTree.get_widget('editPane')
 		
 		self.setup_search()
+		self.setup_insert_menu()
 		
 		'Create an event->method dictionary and connect it to the widgets'
 		dic = {
@@ -111,6 +114,10 @@ class MainWindow(object):
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
+			
+			'on_insert_pic_menu_item_activate': self.on_insert_pic_menu_item_activate,
+			'on_insert_file_menu_item_activate': self.on_insert_file_menu_item_activate,
+			'on_insert_link_menu_item_activate': self.on_insert_link_menu_item_activate,
 			
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			'on_checkVersionMenuItem_activate': self.on_checkVersionMenuItem_activate,
@@ -232,10 +239,79 @@ class MainWindow(object):
 		gtk.main_quit()
 		
 	def on_backup_activate(self, widget):
-		self.redNotebook.backupContents()
+		self.redNotebook.backupContents(backup_file=self.get_backup_file())
 		
 	def on_templateButton_clicked(self, widget):
 		self.dayTextField.insert_template(self.redNotebook.getTemplateEntry())
+		
+	def setup_insert_menu(self):
+		menu = self.wTree.get_widget('insert_popup_menu')
+		single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
+		edit_toolbar = self.wTree.get_widget('edit_toolbar')
+		edit_toolbar.insert(single_menu_toolbutton, -1)
+		single_menu_toolbutton.show()
+		
+	def on_insert_pic_menu_item_activate(self, widget):
+		xml = gtk.glade.XML(self.gladefile, 'picture_chooser')
+		picture_chooser = xml.get_widget('picture_chooser')
+		picture_chooser.set_current_folder(filesystem.last_pic_dir)
+		
+		filter = gtk.FileFilter()
+		filter.set_name("Images")
+		filter.add_mime_type("image/png")
+		filter.add_mime_type("image/jpeg")
+		filter.add_mime_type("image/gif")
+		filter.add_pattern("*.png")
+		filter.add_pattern("*.jpg")
+		filter.add_pattern("*.gif")
+
+		picture_chooser.add_filter(filter)
+
+		response = picture_chooser.run()
+		picture_chooser.hide()
+		
+		if response == gtk.RESPONSE_OK:
+			filesystem.last_pic_dir = picture_chooser.get_current_folder()
+			base, ext = os.path.splitext(picture_chooser.get_filename())
+			self.dayTextField.insert('[""' + base + '""' + ext + ']')
+			
+	def on_insert_file_menu_item_activate(self, widget):
+		xml = gtk.glade.XML(self.gladefile, 'file_chooser')
+		file_chooser = xml.get_widget('file_chooser')
+		file_chooser.set_current_folder(filesystem.last_file_dir)
+
+		response = file_chooser.run()
+		file_chooser.hide()
+		
+		if response == gtk.RESPONSE_OK:
+			filesystem.last_file_dir = file_chooser.get_current_folder()
+			filename = file_chooser.get_filename()
+			head, tail = os.path.split(filename)
+			self.dayTextField.insert('[' + tail + ' ' + filename + ']')
+			
+	def on_insert_link_menu_item_activate(self, widget):
+		xml = gtk.glade.XML(self.gladefile, 'link_creator')
+		link_creator = xml.get_widget('link_creator')
+		link_location_entry = xml.get_widget('link_location_entry')
+		link_name_entry = xml.get_widget('link_name_entry')
+		
+		link_location_entry.set_text('http://')
+		link_name_entry.set_text('')
+
+		response = link_creator.run()
+		link_creator.hide()
+		
+		if response == gtk.RESPONSE_OK:
+			link_location = xml.get_widget('link_location_entry').get_text()
+			link_name = xml.get_widget('link_name_entry').get_text()
+			
+			if link_location and link_name:
+				self.dayTextField.insert('[' + link_name + ' ""' + link_location + '""]')
+			elif link_location:
+				self.dayTextField.insert(link_location)
+			else:
+				self.redNotebook.showMessage('No link location has been entered', error=True)
+		
 		
 	def on_quit_activate(self, widget):
 		self.on_mainFrame_destroy(None)
@@ -317,7 +393,8 @@ class MainWindow(object):
 	
 	def get_backup_file(self):
 		proposedFileName = 'RedNotebook-Backup_' + str(datetime.date.today()) + ".zip"
-		backupDialog = self.wTree.get_widget('backupDialog')
+		xml = gtk.glade.XML(self.gladefile, 'backupDialog')
+		backupDialog = xml.get_widget('backupDialog')
 		backupDialog.set_current_folder(os.path.expanduser('~'))
 		backupDialog.set_current_name(proposedFileName)
 		
@@ -468,6 +545,9 @@ class Preview(gtk.VBox):
 		self.action_count = 0
 		
 		self.main_frame = main_frame
+		
+		self.last_location = ''
+		self.last_uri = ''
 
 		
 		top = gtk.HBox()
@@ -508,15 +588,13 @@ class Preview(gtk.VBox):
 		self.view.connect('location', self.on_location_change)
 
 		self.show_all()
-		#finish()
 
 		self.view.set_data('<html><body><b>' + 'Loading requested'
 			' information...' + '</b></body></html>', '')
+		self.view.connect('net-start', self.on_net_start)
 		self.view.connect('net-stop', self.on_net_stop)
 		
 		self.view.connect('open-uri', self.on_open_uri)
-
-		#self.server = ''
 			
 	def on_edit_button_clicked(self, button):
 		self.main_frame.preview.hide()
@@ -524,13 +602,32 @@ class Preview(gtk.VBox):
 			
 	def on_open_uri(self, mozembed, uri):
 		print 'Load URI:', uri
+		self.last_uri = uri
 		self.open_browser_button.set_sensitive(True)
+		
+	def _try_loading_file(self, uri, mozilla_failed_loading_page):
+		if mozilla_failed_loading_page and filesystem.uri_is_local(uri):
+			#try loading the file alone
+			try:
+				os.system('xdg-open ' + uri)
+			except Exception:
+				print 'The file could not be opened. Maybe xdg-open is missing'
+		
+	def on_net_start(self, *args):
+		"""
+			Called when mozilla starts loading the page
+		"""
+		print 'Net Start'
 
 	def on_net_stop(self, *args):
 		"""
 			Called when mozilla is done loading the page
 		"""
-		#self.exaile.status.set_first(None)
+		mozilla_failed_loading_page = self.last_location == self.view.get_location()
+		print 'Mozilla failed:', mozilla_failed_loading_page
+		print 'Net Stop'
+		self._try_loading_file(self.last_uri, mozilla_failed_loading_page)
+		self.last_location = self.view.get_location()
 
 	def set_text(self, text):
 		"""
@@ -547,7 +644,11 @@ class Preview(gtk.VBox):
 		self.load_url(url, self.action_count)
 
 	def on_location_change(self, mozembed):
-		# Only called when not self.nostyles
+		'''
+		You cannot go back to the entry after you clicked a link,
+		as the text is added to mozembed in RAM only
+		'''
+		print 'Location:', mozembed.get_location()
 		self.entry.set_text(mozembed.get_location())
 		self.back.set_sensitive(self.view.can_go_back())
 		self.next.set_sensitive(self.view.can_go_forward())
@@ -926,6 +1027,9 @@ class DayTextField(object):
 		iterEnd = self.dayTextBuffer.get_end_iter()
 		return self.dayTextBuffer.get_text(iterStart, iterEnd)
 	
+	def insert(self, text):
+		self.dayTextBuffer.insert_at_cursor(text)
+	
 	def insert_template(self, template):
 		currentText = self.get_text()
 		self.set_text(template.encode('utf-8') + '\n' + \
@@ -1030,6 +1134,27 @@ class Statusbar(object):
 			gobject.source_remove(self.countdown)
 			self.showText('', countdown=False)
 		return True
+	
+	
+class SingleMenuToolButton(gtk.MenuToolButton):
+	def __init__(self, menu, label_text):
+		gtk.MenuToolButton.__init__(self, None, None)
+		
+		self.set_menu(menu)
+		hbox = self.get_child()
+		button, toggle_button = hbox.get_children()
+		hbox.remove(button)
+		img = gtk.image_new_from_stock(gtk.STOCK_ORIENTATION_PORTRAIT,
+										gtk.ICON_SIZE_LARGE_TOOLBAR)
+		arrow = toggle_button.get_child()
+		toggle_button.remove(arrow)
+		vbox = gtk.VBox()
+		vbox.pack_start(img, False, False)
+		vbox.pack_start(gtk.Label(label_text), False, False)
+		hbox = gtk.HBox()
+		hbox.pack_start(vbox, False, False)
+		hbox.pack_start(arrow, False, False)
+		toggle_button.add(hbox)
 		
 	
 		

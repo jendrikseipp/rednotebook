@@ -118,17 +118,6 @@ def convertMarkupToTarget(markup, target, title):
 
 def get_toc_html(days):
 	
-#	'No title nor author'
-#	markup = '\n\n\n**Contents**\n'
-#	
-#	for day in days:
-#		markup += '- [' + str(day) + ' ' + str(day) + '.html]\n'
-#	
-#	'Close the list'
-#	markup += '\n\n'
-#	
-#	return convertMarkupToTarget(markup, 'html', title='')
-	
 	html = '''\
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
@@ -151,6 +140,7 @@ body {
 </P>
 <UL>
 '''
+		
 	for day in days:
 		html += '<LI><A HREF="' + str(day) + '.html" TARGET="Content">' + str(day) + '</A>\n'
 		
@@ -178,7 +168,11 @@ def get_frameset_html(current_day):
 
 
 def preview_in_browser(days, current_day):
-	'write the html to files in tmp dir'
+	'''write the html to files in tmp dir'''
+	
+	if current_day not in days:
+		days.append(current_day)
+		
 	for day in days:
 		date_string = str(day)
 		markupText = getMarkupForDay(day, with_date=False)

@@ -63,12 +63,12 @@ ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 === Format ===
 As you can see you can format your text **bold**, //italic//, --stricken-- and __underlined__. \
-To see the results, just click on the "View" tab.
+To see the results, just click on the "Preview" button.
 
 === Extra Content ===
 On the right there is space for extra content, things that can easily be sorted into categories. \
 For example you could add the category Ideas and then add your ideas \
-of that day to it. On the right you can see what that looks like.
+of that day to it.
 
 === Templates ===
 RedNotebook supports a template system: In the directory "''' + filesystem.templateDir + '''" you find seven \

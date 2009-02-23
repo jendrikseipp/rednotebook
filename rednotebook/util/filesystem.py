@@ -56,6 +56,9 @@ configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
 filesDir = os.path.join(appDir, 'files/')
 fileNameExtension = '.txt'
 
+last_pic_dir = userHomedir
+last_file_dir = userHomedir
+
 
 
 def makeDirectory(dir):
@@ -116,3 +119,6 @@ def get_icons():
 				file = os.path.join(base, file)
 				iconFiles.append(file)
 	return iconFiles
+
+def uri_is_local(uri):
+	return uri.startswith('file://')

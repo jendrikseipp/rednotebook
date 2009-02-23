@@ -169,18 +169,17 @@ class RedNotebook:
 		filesystem.makeFiles(fileContentPairs)
 	
 	
-	def backupContents(self):
+	def backupContents(self, backup_file):
 		self.saveToDisk()
-		backupFile = self.frame.get_backup_file()
 		
-		if backupFile:
+		if backup_file:
 			
 			archiveFiles = []
 			for root, dirs, files in os.walk(filesystem.dataDir):
 				for file in files:
 					archiveFiles.append(os.path.join(root, file))
 			
-			filesystem.writeArchive(backupFile, archiveFiles, filesystem.dataDir)
+			filesystem.writeArchive(backup_file, archiveFiles, filesystem.dataDir)
 
 	
 	def saveToDisk(self, exitImminent=False):

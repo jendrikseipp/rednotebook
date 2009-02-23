@@ -13,6 +13,18 @@ O save sash positions and frame size
 O CTRL-C should copy the html text when in view tab
 O Update text descriptions
 
+Proposed:
+O Ignore list for clouds (e.g. right click on a word in the cloud and banish it to the list)
+O Click on an existing category then right mouse click to add a new entry as 
+  opposed to clicking new entry, then having to select the category.
+O Add a list of previously associated tags
+O Enable cut/pase using <ctrl>+c/+v, or +x to the categories edit box
+O Fix: A modified category name is not modified in the  category drop down list
+  until you reload the application.
+O Add ability to insert date time stamp into text (straigt text) (e.g. <ctrl>+t
+  inserts the current time/date)
+O more formatting options and examples
+
 0.7
 O Markup Editing
 O Easier Tagging
@@ -21,12 +33,12 @@ O only make the entry submittable, if text has been entered
 O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 
 0.6
-O Allow linking of files
-O Allow embedding images
+X Allow linking of files
+X Allow embedding images
 O More documentation and examples
 O Make a menu entry to add the documentation
 O Export Categories separately
-O If current day is empty add some text, so that preview is not 404
+X If current day is empty add some text, so that preview is not 404
 
 0.5.6
 X Add copyright notice to source files
