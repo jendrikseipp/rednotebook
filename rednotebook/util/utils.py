@@ -257,13 +257,18 @@ def check_new_version(mainFrame, currentVersion, startup=False):
 	elif not startup:
 		mainFrame.show_no_new_version_dialog()
 		
+		
+def write_file(content, filename):
+	filename = os.path.join(filesystem.tempDir, filename)
+	with open(filename, 'w') as file:
+		file.write(content)
+		
 
 def show_html_in_browser(html, filename='tmp.html'):
-	filename = open(os.path.join(filesystem.tempDir, filename), 'w')
-	with filename as html_file:
-		html_file.write(html)
+	write_file(html, filename)
+	filename = os.path.join(filesystem.tempDir, filename)
 	
-	html_file = os.path.abspath(filename.name)
+	html_file = os.path.abspath(filename)
 	html_file = 'file://' + html_file
 	webbrowser.open(html_file)
 	

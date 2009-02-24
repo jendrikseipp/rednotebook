@@ -29,15 +29,13 @@ O more formatting options and examples
 O Markup Editing
 O Easier Tagging
 O only make the entry submittable, if text has been entered
-
+O Export Categories separately
 O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 
 0.6
 X Allow linking of files
 X Allow embedding images
 O More documentation and examples
-O Make a menu entry to add the documentation
-O Export Categories separately
 X If current day is empty add some text, so that preview is not 404
 
 0.5.6

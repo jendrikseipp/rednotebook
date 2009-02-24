@@ -126,7 +126,7 @@ def get_toc_html(days):
 
 <STYLE TYPE="text/css">
 body {
-    font-family: sans-serif;
+	font-family: sans-serif;
 }
 </STYLE>
 
@@ -166,7 +166,6 @@ def get_frameset_html(current_day):
 ''' % str(current_day)
 
 
-
 def preview_in_browser(days, current_day):
 	'''write the html to files in tmp dir'''
 	
@@ -178,11 +177,58 @@ def preview_in_browser(days, current_day):
 		markupText = getMarkupForDay(day, with_date=False)
 		html = convertMarkupToTarget(markupText, 'html', \
 									title=dates.get_date_string(day.date))
-		with open(os.path.join(filesystem.tempDir, date_string + '.html'), 'w') as html_file:
-			html_file.write(html)
+		utils.write_html_file(html, date_string + '.html')
 	
-	with open(os.path.join(filesystem.tempDir, 'toc.html'), 'w') as toc_file:
-		toc_file.write(get_toc_html(days))
+	utils.write_html_file(get_toc_html(days), 'toc.html')
 		
 	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook.html')
-			
+	
+
+def convert_markup_to_html(txt, headers=None):
+	'''
+	Code partly taken from txt2tags tarball
+	'''
+	
+	# Here is the marked body text, it must be a list.
+	txt = txt.split('\n')
+	
+	# Set the three header fields
+	if headers is None:
+		headers = ['', '', '']
+	
+	# Set the configuration on the 'config' dict.
+	config = txt2tags.ConfigMaster()._get_defaults()
+	config['outfile'] = txt2tags.MODULEOUT  # results as list
+	config['target'] = 'html'			   # target type: HTML
+	config['encoding'] = 'UTF-8'	   # document encoding
+	config['toc'] = 1	   # document encoding
+	#config['css-sugar'] = 1                 # CSS flag
+	
+	# The Pre (and Post) processing config is a list of lists:
+	# [ [this, that], [foo, bar], [patt, replace] ]
+	#config['preproc'] = []
+	#config['preproc'].append(['nice','VERY NICE'])
+	#config['preproc'].append(['day','life'])
+	
+	# Let's do the conversion
+	try:
+		headers   = txt2tags.doHeader(headers, config)
+		body, toc = txt2tags.convert(txt, config)
+		toc = txt2tags.toc_tagger(toc, config)
+		footer	= txt2tags.doFooter(config)
+		full_doc  = headers + toc + body + footer
+		finished  = txt2tags.finish_him(full_doc, config)
+		html = '\n'.join(finished)
+	
+	# Txt2tags error, show the messsage to the user
+	except txt2tags.error, msg:
+		print msg
+		html = msg
+	
+	# Unknown error, show the traceback to the user
+	except:
+		html = txt2tags.getUnknownErrorMessage()
+		print html
+		
+	return html
+				

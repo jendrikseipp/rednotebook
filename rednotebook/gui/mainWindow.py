@@ -369,7 +369,10 @@ class MainWindow(object):
 		self.categoriesTreeView.delete_selected_node()
 		
 	def on_helpMenuItem_activate(self, widget):
-		utils.show_html_in_browser(info.htmlHelp)
+		utils.write_file(info.helpText, './source.txt')
+		headers = ['RedNotebook Documentation', info.version, '']
+		html = markup.convert_markup_to_html(info.helpText, headers)
+		utils.show_html_in_browser(html)
 		
 	def on_checkVersionMenuItem_activate(self, widget):
 		utils.check_new_version(self, info.version)
@@ -617,15 +620,15 @@ class Preview(gtk.VBox):
 		"""
 			Called when mozilla starts loading the page
 		"""
-		print 'Net Start'
+		#print 'Net Start'
 
 	def on_net_stop(self, *args):
 		"""
 			Called when mozilla is done loading the page
 		"""
 		mozilla_failed_loading_page = self.last_location == self.view.get_location()
-		print 'Mozilla failed:', mozilla_failed_loading_page
-		print 'Net Stop'
+		#print 'Mozilla failed:', mozilla_failed_loading_page
+		#print 'Net Stop'
 		self._try_loading_file(self.last_uri, mozilla_failed_loading_page)
 		self.last_location = self.view.get_location()
 
@@ -648,7 +651,7 @@ class Preview(gtk.VBox):
 		You cannot go back to the entry after you clicked a link,
 		as the text is added to mozembed in RAM only
 		'''
-		print 'Location:', mozembed.get_location()
+		#print 'Location:', mozembed.get_location()
 		self.entry.set_text(mozembed.get_location())
 		self.back.set_sensitive(self.view.can_go_back())
 		self.next.set_sensitive(self.view.can_go_forward())
@@ -691,7 +694,12 @@ class Preview(gtk.VBox):
 		markupText = markup.getMarkupForDay(day, with_date=False)
 		html = markup.convertMarkupToTarget(markupText, 'html', \
 										title=dates.get_date_string(day.date))
-		self.view.set_data('file://', html)
+		
+		filename = os.path.join(filesystem.tempDir, 'tmp.html')
+		html_file = os.path.abspath(filename)
+		html_file = 'file://' + html_file
+		
+		self.view.set_data(html_file, html)
 		self.open_browser_button.set_sensitive(False)
 		
 		
