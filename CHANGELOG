@@ -1,5 +1,11 @@
 ==== Changelog ====
 
+=== 0.6.0 (2009-02-25) ===
+ * Allow linking of files
+ * Allow embedding images
+ * Links and mail addresses are recognized automatically
+ * Adding named links to websites is now possible
+ * Better documentation
 
 === 0.5.6 (2009-02-23) ===
  * Disable automatic update checking

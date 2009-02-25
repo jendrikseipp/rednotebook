@@ -35,7 +35,8 @@ O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 0.6
 X Allow linking of files
 X Allow embedding images
-O More documentation and examples
+X Adding links is now possible, links without names and mail addresses are recognized automatically
+X More documentation and examples
 X If current day is empty add some text, so that preview is not 404
 
 0.5.6

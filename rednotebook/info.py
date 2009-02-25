@@ -128,6 +128,11 @@ of that day to it:
   - Invent Anti-Hangover-Machine
 
 
+=== Images, Files and Links ===
+RedNotebook lets you insert images, files and links into your entries. To do so, select the \
+appropriate option in the "Insert" pull-down menu above the main text field. The text will \
+be inserted at the current cursor position.
+
 === Templates ===
 RedNotebook supports a template system: In the directory "''' + filesystem.templateDir + '''" you find seven \
 text files. 
@@ -137,11 +142,22 @@ with your favourite text editor and the text for a given weekday will be inserte
 
 === Tags ===
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "New Entry" and insert "Tags" \
-and "Work" into the dialog. 
+and "Work" into the dialog. The result looks like:
+
+- Tags
+  - Work
+  
+
+You can see all days with a given tag by clicking on the tag in the tag cloud.
 
 === Search ===
 On the left you find the fancy search field. You can search for text, display a \
-category's content or show all days with a given tag.
+category's content or show all days with a given tag. Double-clicking on a day takes you directly \
+to it. 
+
+=== Clouds ===
+Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
+You can select to view your category or tag clouds by clicking on the scroll-down menu.
 
 === Save ===
 Everything you enter will be saved automatically when you exit the program. \
