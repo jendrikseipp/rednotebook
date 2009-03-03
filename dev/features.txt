@@ -21,16 +21,29 @@ O Add a list of previously associated tags
 O Enable cut/pase using <ctrl>+c/+v, or +x to the categories edit box
 O Fix: A modified category name is not modified in the  category drop down list
   until you reload the application.
-O Add ability to insert date time stamp into text (straigt text) (e.g. <ctrl>+t
+O Add ability to insert date time stamp into text (e.g. <ctrl>+t
   inserts the current time/date)
 O more formatting options and examples
 
+O more than one notebook
+
+
 0.7
-O Markup Editing
 O Easier Tagging
 O only make the entry submittable, if text has been entered
-O Export Categories separately
 O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
+
+0.6.2
+O Added an option to insert the current time and date
+O Export Categories separately
+O Check xulrunner paths at startup
+O Check if RedNotebook started without crashing
+    change useGTKMozembed to 0 if it didn't
+O Add new screenshots (with pictures and files)
+O Fix opening files from mozembed
+
+0.6.1
+X New types to insert: Bullet List, Numbered List, Title, Line
 
 0.6
 X Allow linking of files

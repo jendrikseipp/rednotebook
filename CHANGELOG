@@ -1,5 +1,8 @@
 ==== Changelog ====
 
+=== 0.6.1 (2009-03-03) ===
+ * New types to insert: Bullet List, Numbered List, Title, Line
+
 === 0.6.0 (2009-02-25) ===
  * Allow linking of files
  * Allow embedding images

@@ -96,9 +96,12 @@ class Config(dict):
 			return default
 						
 	def saveToDisk(self):
-		with open(filesystem.configFile, 'w') as configFile:
-			for key, value in self.iteritems():
-				configFile.write(key + '=' + str(value) + '\n')
-			print 'Configuration has been saved'
+		try:
+			with open(filesystem.configFile, 'w') as configFile:
+				for key, value in self.iteritems():
+					configFile.write(key + '=' + str(value) + '\n')
+				print 'Configuration has been saved'
+		except IOError:
+			print 'Error: Configuration could not be saved'
         
 

@@ -1434,43 +1434,36 @@ This wizard will help you to export your journal to various formats. You can sel
     <child>
       <widget class="GtkImageMenuItem" id="insert_pic_menu_item">
         <property name="visible">True</property>
-        <property name="label" translatable="yes">Insert Picture</property>
+        <property name="label" translatable="yes">gtk-orientation-portrait</property>
         <property name="use_underline">True</property>
-        <signal name="activate" handler="on_insert_pic_menu_item_activate"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="menu-item-image1">
-            <property name="visible">True</property>
-            <property name="stock">gtk-orientation-portrait</property>
-          </widget>
-        </child>
+        <property name="use_stock">True</property>
       </widget>
     </child>
     <child>
       <widget class="GtkImageMenuItem" id="insert_file_menu_item">
         <property name="visible">True</property>
-        <property name="label" translatable="yes">Insert file</property>
+        <property name="label" translatable="yes">gtk-harddisk</property>
         <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
         <signal name="activate" handler="on_insert_file_menu_item_activate"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="menu-item-image3">
-            <property name="visible">True</property>
-            <property name="stock">gtk-harddisk</property>
-          </widget>
-        </child>
       </widget>
     </child>
     <child>
       <widget class="GtkImageMenuItem" id="insert_link_menu_item">
         <property name="visible">True</property>
-        <property name="label" translatable="yes">Insert Link</property>
+        <property name="label" translatable="yes">gtk-jump-to</property>
         <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
         <signal name="activate" handler="on_insert_link_menu_item_activate"/>
-        <child internal-child="image">
-          <widget class="GtkImage" id="menu-item-image6">
-            <property name="visible">True</property>
-            <property name="stock">gtk-jump-to</property>
-          </widget>
-        </child>
+      </widget>
+    </child>
+    <child>
+      <widget class="GtkMenuItem" id="insert_line_menu_item">
+        <property name="visible">True</property>
+        <property name="tooltip" translatable="yes">Insert a horizontal separator line</property>
+        <property name="label" translatable="yes">Insert Line</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_insert_line_menu_item_activate"/>
       </widget>
     </child>
   </widget>

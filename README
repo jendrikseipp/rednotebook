@@ -24,7 +24,7 @@
     - python-gtkmozembed can be used optionally.
       RedNotebook can run without it, but if you want to see the day preview 
       inside RedNotebook instead of in your browser, please install gtkmozembed.
-      Sometimes it is found packages called python-gnome2-extras or similar.
+      Sometimes it is found in packages called python-gnome2-extras or similar.
     
 
 
@@ -61,6 +61,8 @@ Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py
   - Everaldo Coelho (www.everaldo.com) for the excellent icon
   - The txt2tags team (http://txt2tags.sf.net) for their super cool markup-tool
   - Gustavo J. A. M. Carneiro for his htmltextview.py module
+  - The people behind the Tango Icon Project and the creators of the Human Theme
+           Their work can be downloaded from http://tango.freedesktop.org/
 
 
 

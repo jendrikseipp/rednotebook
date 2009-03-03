@@ -76,6 +76,8 @@ class MainWindow(object):
 		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
 								filesystem.get_icons()))
 		
+		self.uimanager = gtk.UIManager()
+		
 		self.calendar = Calendar(self.wTree.get_widget('calendar'))
 		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'))
 		self.statusbar = Statusbar(self.wTree.get_widget('statusbar'))
@@ -88,13 +90,11 @@ class MainWindow(object):
 		global use_moz
 		
 		if use_moz and self.redNotebook.config.read('useGTKMozembed', 1):
-			#global use_moz
 			use_moz = True
 			self.preview = Preview(self)
 			self.wTree.get_widget('dayBox').pack_start(self.preview)
 			self.preview.hide()
 		else:
-			#global use_moz
 			use_moz = False
 		
 		self.editPane = self.wTree.get_widget('editPane')
@@ -108,16 +108,11 @@ class MainWindow(object):
 			'on_todayButton_clicked': self.on_todayButton_clicked,
 			'on_forwardOneDayButton_clicked': self.on_forwardOneDayButton_clicked,
 			'on_calendar_day_selected': self.on_calendar_day_selected,
-			#'on_saveButton_clicked': self.on_saveButton_clicked,
 			'on_saveMenuItem_activate': self.on_saveButton_clicked,
 			
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
-			
-			'on_insert_pic_menu_item_activate': self.on_insert_pic_menu_item_activate,
-			'on_insert_file_menu_item_activate': self.on_insert_file_menu_item_activate,
-			'on_insert_link_menu_item_activate': self.on_insert_link_menu_item_activate,
 			
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			'on_checkVersionMenuItem_activate': self.on_checkVersionMenuItem_activate,
@@ -126,7 +121,6 @@ class MainWindow(object):
 			'on_statisticsMenuItem_activate': self.on_statisticsMenuItem_activate,
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
 			'on_deleteEntryButton_clicked': self.on_deleteEntryButton_clicked,
-			#'on_dayNotebook_switch_page': self.on_dayNotebook_switch_page,
 			'on_searchNotebook_switch_page': self.on_searchNotebook_switch_page,
 			'on_templateButton_clicked': self.on_templateButton_clicked,
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
@@ -245,7 +239,92 @@ class MainWindow(object):
 		self.dayTextField.insert_template(self.redNotebook.getTemplateEntry())
 		
 	def setup_insert_menu(self):
-		menu = self.wTree.get_widget('insert_popup_menu')
+		'''
+		See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
+		A popup menu cannot show accelerators (HIG).
+		'''
+		
+		insert_menu_xml = '''
+		<ui>
+		<popup action="InsertMenu">
+			<menuitem action="Picture"/>
+			<menuitem action="File"/>
+			<menuitem action="Link"/>
+			<menuitem action="BulletList"/>
+			<menuitem action="NumberedList"/>
+			<menuitem action="Title"/>
+			<menuitem action="Line"/>
+			<!-- <menuitem action="Table"/> -->
+		</popup>
+		</ui>'''
+			
+		uimanager = self.uimanager
+
+		# Add the accelerator group to the toplevel window
+		accelgroup = uimanager.get_accel_group()
+		self.mainFrame.add_accel_group(accelgroup)
+
+		# Create an ActionGroup
+		actiongroup = gtk.ActionGroup('InsertActionGroup')
+		self.actiongroup = actiongroup
+		
+		line = '\n====================\n'
+		bullet_list = '\n- First Item\n- Second Item\n  - Indented Item ' + \
+						'(Two blank lines close the list)\n\n\n'
+		numbered_list = bullet_list.replace('-', '+')
+		title = '\n=== Title text ===\n'
+		table = '''
+||   1st Heading   |   2nd Heading    |   3rd Heading    | 
+|    right aligned |     centered     | left aligned     |
+|           Having |      tables      | is               |
+|               so |     awesome!     |                  |
+'''
+
+		# Create actions
+		actiongroup.add_actions([
+			('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, '_Picture', \
+				'<Control>p', 'Insert a picture at the current position', \
+				self.on_insert_pic_menu_item_activate),
+			('File', gtk.STOCK_FILE, '_File', '<Control>f', \
+				'Insert a file at the current position', \
+				self.on_insert_file_menu_item_activate),
+			('Link', gtk.STOCK_JUMP_TO, '_Link', '<Control>L', \
+				'Insert a link at the current position', \
+				self.on_insert_link_menu_item_activate),
+			('BulletList', None, 'Bullet List', None, \
+				'Insert a bullet list at the current position', \
+				lambda widget: self.dayTextField.insert(bullet_list)),
+			('NumberedList', None, 'Numbered List', None, \
+				'Insert a numbered list at the current position', \
+				lambda widget: self.dayTextField.insert(numbered_list)),
+			('Title', None, 'Title', None, \
+				'Insert a title at the current position', \
+				lambda widget: self.dayTextField.insert(title)),
+			('Line', None, 'Line', None, \
+				'Insert a separator line at the current position', \
+				lambda widget: self.dayTextField.insert(line)),
+			('Table', None, 'Table', None, \
+				'Insert a table at the current position', \
+				lambda widget: self.dayTextField.insert(table)),
+			])
+
+		# Add the actiongroup to the uimanager
+		uimanager.insert_action_group(actiongroup, 0)
+
+		# Add a UI description
+		uimanager.add_ui_from_string(insert_menu_xml)
+
+		# Create a Menu
+		menu = uimanager.get_widget('/InsertMenu')
+		
+		image_items = 'Picture Link BulletList NumberedList Title Line'.split()
+		image_file_names = 'picture-16 link bulletlist numberedlist title line'.split()
+		items_and_files = zip(image_items, image_file_names)
+		
+		for item, file_name in items_and_files:
+			menu_item = uimanager.get_widget('/InsertMenu/'+ item)
+			menu_item.set_image(get_image(file_name + '.png'))
+		
 		single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
 		edit_toolbar = self.wTree.get_widget('edit_toolbar')
 		edit_toolbar.insert(single_menu_toolbutton, -1)
@@ -310,8 +389,7 @@ class MainWindow(object):
 			elif link_location:
 				self.dayTextField.insert(link_location)
 			else:
-				self.redNotebook.showMessage('No link location has been entered', error=True)
-		
+				self.redNotebook.showMessage('No link location has been entered', error=True)		
 		
 	def on_quit_activate(self, widget):
 		self.on_mainFrame_destroy(None)
@@ -1152,8 +1230,7 @@ class SingleMenuToolButton(gtk.MenuToolButton):
 		hbox = self.get_child()
 		button, toggle_button = hbox.get_children()
 		hbox.remove(button)
-		img = gtk.image_new_from_stock(gtk.STOCK_ORIENTATION_PORTRAIT,
-										gtk.ICON_SIZE_LARGE_TOOLBAR)
+		img = get_image('picture-24.png')
 		arrow = toggle_button.get_child()
 		toggle_button.remove(arrow)
 		vbox = gtk.VBox()
@@ -1163,7 +1240,6 @@ class SingleMenuToolButton(gtk.MenuToolButton):
 		hbox.pack_start(vbox, False, False)
 		hbox.pack_start(arrow, False, False)
 		toggle_button.add(hbox)
-		
 	
 		
 class Calendar(object):
@@ -1192,3 +1268,10 @@ class Calendar(object):
 			self.setDayEdited(dayNumber, False)
 		for dayNumber, day in month.days.iteritems():
 			self.setDayEdited(dayNumber, not day.empty)
+			
+			
+def get_image(name):
+	image = gtk.Image()
+	file_name = os.path.join(filesystem.imageDir, name)
+	image.set_from_file(file_name)
+	return image

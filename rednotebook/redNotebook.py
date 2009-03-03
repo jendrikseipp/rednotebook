@@ -100,6 +100,8 @@ class RedNotebook:
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
 		self.config = config.Config()
+		# Save the config before Mozembed may crash
+		self.config.saveToDisk()
 		utils.set_environment_variables(self.config)
 		
 		self.frame = MainWindow(self)
