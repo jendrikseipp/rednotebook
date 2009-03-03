@@ -40,6 +40,12 @@ if os.path.exists('/usr/share/applications/'):
 	parameters['data_files'] = [('/usr/share/applications/', ['rednotebook.desktop']),
 							    ('/usr/share/pixmaps/', ['rednotebook.png'])]
 
+def get_image_files():
+	image_dir = 'rednotebook/images/'
+	all_files_in_pic_dir = os.listdir('rednotebook/images/')
+	all_files_in_pic_dir = map(lambda file: os.path.join(image_dir, file), all_files_in_pic_dir)
+	return filter(lambda file: file.endswith('.png'), all_files_in_pic_dir)
+
 #For the use of py2exe you have to checkout the repository.
 #To create Windows Installers have a look at the file 'win/win-build.txt'
 py2exeParameters = {
@@ -61,8 +67,9 @@ py2exeParameters = {
 									#Adding manifest seems to have no effect
 									#"other_resources": [(24,1,manifest)], 
 								}],
-					'data_files' : [('files',['rednotebook/files/mainWindow.glade',
-												'rednotebook/files/stylesheet.css',])],
+					'data_files' : [('files', ['rednotebook/files/mainWindow.glade',
+												'rednotebook/files/stylesheet.css',]),
+									('images', get_image_files())],
 	  	  			}
 
 if 'py2exe' in sys.argv:
