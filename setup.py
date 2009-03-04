@@ -35,10 +35,12 @@ parameters = {'name'          : 'rednotebook',
 														'files/*.css', 'files/*.glade', 'files/*.cfg',]},
                    }
 
-#Debian parameters
-if os.path.exists('/usr/share/applications/'):
-	parameters['data_files'] = [('/usr/share/applications/', ['rednotebook.desktop']),
-							    ('/usr/share/pixmaps/', ['rednotebook.png'])]
+# Freedesktop parameters
+if os.path.exists(os.path.join(sys.prefix, 'share/applications/')):
+	parameters['data_files'] = [('share/applications/', ['rednotebook.desktop']),
+							    ('share/icons/hicolor/48x48/apps', ['rednotebook.png']),# new freedesktop.org spec
+							    ('share/pixmaps/', ['rednotebook.png']),				# for older configurations
+							    ]
 
 def get_image_files():
 	image_dir = 'rednotebook/images/'
@@ -53,7 +55,7 @@ py2exeParameters = {
 					#2: bundle everything but the Python interpreter, 
 					#1: bundle everything, including the Python interpreter
 					#It seems that only option 3 works with PyGTK
-	  	  			'options' : {'py2exe': {'bundle_files': 3, 
+	  	  			'options' : {'py2exe': {'bundle_files': 3,
 											'includes': 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject',
 											'packages':'encodings',
 											}
