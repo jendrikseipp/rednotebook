@@ -325,10 +325,24 @@ class MainWindow(object):
 			menu_item = uimanager.get_widget('/InsertMenu/'+ item)
 			menu_item.set_image(get_image(file_name + '.png'))
 		
-		single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
+		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
+		self.single_menu_toolbutton = gtk.MenuToolButton(get_image('picture-24.png'), 'Insert ')
+		self.single_menu_toolbutton.set_menu(menu)
+		self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)
 		edit_toolbar = self.wTree.get_widget('edit_toolbar')
-		edit_toolbar.insert(single_menu_toolbutton, -1)
-		single_menu_toolbutton.show()
+		edit_toolbar.insert(self.single_menu_toolbutton, -1)
+		self.single_menu_toolbutton.show()
+		
+	def show_insert_menu(self, button):
+		'''
+		Show the insert menu, when the Insert Button is clicked.
+		
+		A little hack for button and activate_time is needed as the "clicked" does
+		not have an associated event parameter. Otherwise we would use event.button
+		and event.time
+		'''
+		self.single_menu_toolbutton.get_menu().popup(parent_menu_shell=None, \
+							parent_menu_item=None, func=None, button=0, activate_time=0, data=None)
 		
 	def on_insert_pic_menu_item_activate(self, widget):
 		xml = gtk.glade.XML(self.gladefile, 'picture_chooser')
