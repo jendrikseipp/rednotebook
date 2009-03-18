@@ -44,6 +44,7 @@ pygtk.require("2.0")
 
 try:
 	import gtk
+	import gobject
 except ImportError, AssertionError:
 	utils.printError('Please install PyGTK (python-gtk2)')
 	sys.exit(1)
@@ -126,6 +127,10 @@ class RedNotebook:
 		'Check for a new version'
 		if self.config.read('checkForNewVersion', default=0) == 1:
 			utils.check_new_version(self.frame, info.version, startup=True)
+			
+		# Automatically save the content after a period of time
+		one_minute = 1000 * 60
+		gobject.timeout_add(10 * one_minute, self.saveToDisk)
 		
 	
 	
@@ -206,6 +211,9 @@ class RedNotebook:
 		
 		if not exitImminent:
 			'Update clouds'
+			
+		# tell gobject to keep saving the content
+		return True
 		
 		
 	def loadAllMonthsFromDisk(self):

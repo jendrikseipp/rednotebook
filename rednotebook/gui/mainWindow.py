@@ -326,7 +326,7 @@ class MainWindow(object):
 			menu_item.set_image(get_image(file_name + '.png'))
 		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
-		self.single_menu_toolbutton = gtk.MenuToolButton(get_image('picture-24.png'), 'Insert ')
+		self.single_menu_toolbutton = gtk.MenuToolButton(get_image('picture-24.png'), 'Insert')
 		self.single_menu_toolbutton.set_menu(menu)
 		self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)
 		edit_toolbar = self.wTree.get_widget('edit_toolbar')

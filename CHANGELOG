@@ -1,5 +1,9 @@
 ==== Changelog ====
 
+=== 0.6.2 (2009-03-17) ===
+ * Content is automatically saved every ten minutes
+ * Fix Debian/Jaunty Bug (LP:340101)
+
 === 0.6.1 (2009-03-03) ===
  * New types to insert: Bullet List, Numbered List, Title, Line
 

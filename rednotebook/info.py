@@ -21,7 +21,7 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.6.1'
+version = '0.6.2'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
@@ -87,11 +87,13 @@ On the left you find the fancy search field. You can search for text, display a 
 category's content or show all days with a given tag.
 
 === Save and Export ===
-Everything you enter will be saved automatically when you exit the program. \
-If you want to double check you can save pressing "Strg-S" 
-or using the menu entry under "File" in the top left corner. "Backup" saves all your entered data in a \
-zip file. In the same menu you also find an "Export"-Button.
-Click on it and export your diary to Plain Text, HTML, Latex or PDF (Linux only, see Help for instructions).
+Everything you enter will be saved automatically at regular intervals and when you exit the program. \
+If you want to double check you can save your contents by pressing "Strg-S" \
+or using the menu entry under "File" in the top left corner. 
+To avoid data loss you should also backup your content regularly. "Backup" in the "File" menu saves \
+all your entered data in a zip file.
+In the same menu you also find an "Export"-Button. \
+Click on it and export your diary to Plain Text, HTML or Latex.
 
 === Help ===
 Now you can erase this help text and enter e.g. what you have done today. To read the instructions again, \
@@ -160,13 +162,14 @@ Clicking on the "Clouds" tab on the left lets you view the most often used words
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
 
 === Save ===
-Everything you enter will be saved automatically when you exit the program. \
-If you want to double check you can save pressing "Strg-S" 
-or using the menu entry under "File" in the top left corner. "Backup" saves all your entered data in a \
-zip file. 
+Everything you enter will be saved automatically at regular intervals and when you exit the program. \
+If you want to double check you can save your contents by pressing "Strg-S" \
+or using the menu entry under "File" in the top left corner. 
+To avoid data loss you should also backup your content regularly. "Backup" in the "File" menu saves \
+all your entered data in a zip file.
 
 === Export ===
-In the same menu you also find an "Export"-Button. Click on it and export your diary to Plain Text, HTML, Latex.
+In the same menu you also find an "Export"-Button. Click on it and export your diary to Plain Text, HTML or Latex.
 
 === Questions ===
 If you have any questions or comments, feel free to post them in the forum or \
