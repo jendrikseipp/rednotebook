@@ -236,11 +236,11 @@ def get_new_version_number(currentVersion):
 	newVersion = None
 	
 	try:
-		projectXML = urlopen('http://freshmeat.net/projects-xml/rednotebook/rednotebook.xml').read()
-		tag = '<latest_release_version>'
-		position = projectXML.find(tag)
+		projectXML = urlopen('http://www.gnomefiles.org/app.php/RedNotebook').read()
+		tag = 'version '
+		position = projectXML.upper().find(tag.upper())
 		newVersion = projectXML[position + len(tag):position + len(tag) + 5]
-		print newVersion, 'is newest version'
+		print newVersion, 'is newest version. You have version', currentVersion
 	except URLError:
 		print 'New version info could not be read'
 	

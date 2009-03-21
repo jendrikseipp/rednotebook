@@ -75,6 +75,8 @@ class MainWindow(object):
 		self.mainFrame.set_title('RedNotebook')
 		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
 								filesystem.get_icons()))
+		self.load_values_from_config()
+		self.mainFrame.show()
 		
 		self.uimanager = gtk.UIManager()
 		
@@ -117,6 +119,8 @@ class MainWindow(object):
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			'on_checkVersionMenuItem_activate': self.on_checkVersionMenuItem_activate,
 			
+			'on_mainFrame_configure_event': self.on_mainFrame_configure_event,
+			
 			'on_exportMenuItem_activate': self.on_exportMenuItem_activate,
 			'on_statisticsMenuItem_activate': self.on_statisticsMenuItem_activate,
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
@@ -136,6 +140,8 @@ class MainWindow(object):
 		
 		self.setup_clouds()
 		self.set_shortcuts()
+		
+		
 		
 		
 	def set_shortcuts(self):
@@ -210,6 +216,16 @@ class MainWindow(object):
 	def on_cutMenuItem_activate(self, widget):
 		self.dayTextField.dayTextView.emit('cut_clipboard')
 		
+	def on_mainFrame_configure_event(self, widget, event):
+		'''
+		Is called when the frame size is changed. Unfortunately this is
+		the way to go as asking for frame.get_size() at program termination
+		gives strange results.		
+		'''
+		mainFrameWidth, mainFrameHeight = self.mainFrame.get_size()
+		# print 'SIZE GET', mainFrameWidth, mainFrameHeight
+		self.redNotebook.config['mainFrameWidth'] = mainFrameWidth
+		self.redNotebook.config['mainFrameHeight'] = mainFrameHeight
 		
 	def on_backOneDayButton_clicked(self, widget):
 		self.redNotebook.goToPrevDay()
@@ -229,6 +245,7 @@ class MainWindow(object):
 		
 	def on_mainFrame_destroy(self, widget):
 		self.redNotebook.saveToDisk()
+		self.add_values_to_config()
 		self.redNotebook.config.saveToDisk()
 		gtk.main_quit()
 		
@@ -237,6 +254,27 @@ class MainWindow(object):
 		
 	def on_templateButton_clicked(self, widget):
 		self.dayTextField.insert_template(self.redNotebook.getTemplateEntry())
+		
+	def add_values_to_config(self):
+		self.redNotebook.config['leftDividerPosition'] = \
+				self.wTree.get_widget('mainPane').get_position()
+		self.redNotebook.config['rightDividerPosition'] = \
+				self.wTree.get_widget('editPane').get_position()
+		self.redNotebook.config.saveToDisk()
+	
+	def load_values_from_config(self):
+		config = self.redNotebook.config
+		mainFrameWidth = config.read('mainFrameWidth', 1024)
+		mainFrameHeight = config.read('mainFrameHeight', 768)
+		#print 'SIZE', mainFrameWidth, mainFrameHeight
+		#self.mainFrame.show()
+		self.mainFrame.resize(mainFrameWidth, mainFrameHeight)
+		
+		if config.has_key('leftDividerPosition'):
+			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))				
+		self.wTree.get_widget('editPane').set_position(config.read('rightDividerPosition', 500))
+				
+		
 		
 	def setup_insert_menu(self):
 		'''

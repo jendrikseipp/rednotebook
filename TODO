@@ -10,7 +10,6 @@ O Import of exported backups
 O i18n
 O Better comment code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
-O save sash positions and frame size
 O CTRL-C should copy the html text when in view tab
 O Update text descriptions
 O Ignore list for clouds (e.g. right click on a word in the cloud and banish it to the list)
@@ -21,6 +20,7 @@ O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Fix: A modified category name is not modified in the  category drop down list
   until you reload the application.
 O more formatting options and examples (fill some days of the journal at first startup)
+O Fix opening files from mozembed
 
 
 Maybe even some of those features will make it into RedNotebook:
@@ -35,6 +35,7 @@ O Encryption XOR Password
 O SSH, FTP saving
 O more than one notebook
 O Allow dragging of files and pictures into RedNotebook
+O Check xulrunner paths at startup
 
 
 1.0
@@ -45,15 +46,16 @@ O Easier Tagging
 O only make the entry submittable, if text has been entered
 O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 
+0.6.4
+O Automatic Backups
+
 0.6.3
 O Add an option to insert the current time and date
+X Save divider positions and frame size
 O Export Categories separately
-O Check xulrunner paths at startup
-O Check if RedNotebook started without crashing
+X Check if RedNotebook started without crashing
     change useGTKMozembed to 0 if it didn't
 O Add new screenshots (with pictures and files)
-O Fix opening files from mozembed
-O Automatic Backups
 O remove search for categories and tags, as clouds already do that?
 
 0.6.2

@@ -3,10 +3,8 @@
 <!--*- mode: xml -*-->
 <glade-interface>
   <widget class="GtkWindow" id="mainFrame">
-    <property name="visible">True</property>
     <property name="window_position">GTK_WIN_POS_CENTER</property>
-    <property name="default_width">1024</property>
-    <property name="default_height">800</property>
+    <signal name="configure_event" handler="on_mainFrame_configure_event"/>
     <signal name="destroy" handler="on_mainFrame_destroy"/>
     <child>
       <widget class="GtkVBox" id="vbox3">
@@ -158,7 +156,7 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkHPaned" id="hpaned3">
+          <widget class="GtkHPaned" id="mainPane">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>

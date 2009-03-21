@@ -177,9 +177,9 @@ def preview_in_browser(days, current_day):
 		markupText = getMarkupForDay(day, with_date=False)
 		html = convertMarkupToTarget(markupText, 'html', \
 									title=dates.get_date_string(day.date))
-		utils.write_html_file(html, date_string + '.html')
+		utils.write_file(html, date_string + '.html')
 	
-	utils.write_html_file(get_toc_html(days), 'toc.html')
+	utils.write_file(get_toc_html(days), 'toc.html')
 		
 	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook.html')
 	
@@ -214,8 +214,9 @@ def convert_markup_to_html(txt, headers=None):
 	try:
 		headers   = txt2tags.doHeader(headers, config)
 		body, toc = txt2tags.convert(txt, config)
-		toc = txt2tags.toc_tagger(toc, config)
 		footer	= txt2tags.doFooter(config)
+		toc = txt2tags.toc_tagger(toc, config)
+		toc = txt2tags.toc_formatter(toc, config)
 		full_doc  = headers + toc + body + footer
 		finished  = txt2tags.finish_him(full_doc, config)
 		html = '\n'.join(finished)
