@@ -17,12 +17,43 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+from __future__ import division
+
+from rednotebook.util import dates
+
 class Statistics(object):
 	def __init__(self, redNotebook):
 		self.redNotebook = redNotebook
 		
-	def get_number_of_entries(self):
-		pass
+	def getNumberOfWords(self):
+		numberOfWords = 0
+		for day in self.redNotebook.days:
+			numberOfWords += day.getNumberOfWords()
+		return numberOfWords
+	
+	def get_number_of_usage_days(self):
+		'''Returns the timespan between the first and last entry'''
+		sorted_days = self.redNotebook.sortedDays
+		if len(sorted_days) <= 1:
+			return len(sorted_days)
+		first_day = sorted_days[0]
+		last_day = sorted_days[-1]
+		return abs(dates.getNumberOfDaysBetweenTwoDays(first_day, last_day) + 1)
+	
+	def getNumberOfEntries(self):
+		return len(self.redNotebook.days)
+	
+	def get_edit_percentage(self):
+		total = self.get_number_of_usage_days()
+		edited = self.getNumberOfEntries()
+		if total == 0:
+			return 0
+		return round(edited / total, 2)
+	
+	def get_average_number_of_words(self):
+		if self.getNumberOfEntries() == 0:
+			return 0
+		return round(self.getNumberOfWords() / self.getNumberOfEntries(), 2)
 	
 	def _getHTMLRow(self, key, value):
 		return '<tr align="left">' +\
@@ -32,12 +63,16 @@ class Statistics(object):
 		
 	
 	def getStatsHTML(self):
-		page = '<html><body bgcolor="#8e8e95"><table cellspacing="5" border="0" width="250">\n'
-		stats = {
-				'Number of Entries': self.redNotebook.getNumberOfEntries(),
-				'Number of Words': self.redNotebook.getNumberOfWords(),
-				}
-		for key, value in stats.iteritems():
+		self.redNotebook.saveToDisk()
+		page = '<html><body bgcolor="#8e8e95"><table cellspacing="5" border="0" width="400">\n'
+		stats = [
+				('Number of Words', self.getNumberOfWords()),
+				('Number of Entries', self.getNumberOfEntries()),
+				('Average Number of Words', self.get_average_number_of_words()),
+				('Days between first and last Entry', self.get_number_of_usage_days()),
+				('Percentage of Edited Days', self.get_edit_percentage()),
+				]
+		for key, value in stats:
 			page += self._getHTMLRow(key, value)
 			
 		page += '</body></table></html>'

@@ -1,5 +1,11 @@
 ==== Changelog ====
 
+=== 0.6.3 (2009-03-21) ===
+ * Add an option to insert the current time and date
+ * Save divider positions and frame size
+ * Add new statistics
+ * Disable GTKMozembed automatically if RedNotebook crashes
+
 === 0.6.2 (2009-03-17) ===
  * Content is automatically saved every ten minutes
  * Fix Debian/Jaunty Bug (LP:340101)

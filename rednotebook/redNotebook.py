@@ -226,6 +226,8 @@ class RedNotebook:
 		
 		self.showMessage('The content has been saved', error=False)
 		
+		self.config.saveToDisk()
+		
 		if not exitImminent:
 			'Update clouds'
 			
@@ -382,20 +384,6 @@ class RedNotebook:
 			print 'Template File', weekDayNumber, 'not found'
 			templateText = ''
 		return templateText
-		
-	
-	def getNumberOfWords(self):
-		#def countWords(day1, day2):
-		#	return day1.getNumberOfWords() + day2.getNumberOfWords()
-		#return reduce(countWords, self.days, 0)
-		numberOfWords = 0
-		for day in self.days:
-			numberOfWords += day.getNumberOfWords()
-		return numberOfWords
-	
-	
-	def getNumberOfEntries(self):
-		return len(self.days)
 	
 	
 	def getWordCountDict(self, type):

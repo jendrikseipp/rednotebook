@@ -5,6 +5,7 @@ echo "Hi $VERSION!"
 
 cd ../
 sudo rm -r dist/
+rm MANIFEST # Fore recalculation of files so that none is missed
 
 python setup.py sdist
 python setup.py bdist_rpm

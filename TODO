@@ -36,6 +36,7 @@ O SSH, FTP saving
 O more than one notebook
 O Allow dragging of files and pictures into RedNotebook
 O Check xulrunner paths at startup
+O remove search for categories and tags, as clouds already do that?
 
 
 1.0
@@ -48,15 +49,15 @@ O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 
 0.6.4
 O Automatic Backups
+O Export Categories separately
+O Add new screenshots (with pictures and files)
 
 0.6.3
-O Add an option to insert the current time and date
+X Add an option to insert the current time and date
 X Save divider positions and frame size
-O Export Categories separately
+X Add new statistics
 X Check if RedNotebook started without crashing
     change useGTKMozembed to 0 if it didn't
-O Add new screenshots (with pictures and files)
-O remove search for categories and tags, as clouds already do that?
 
 0.6.2
 X Content is automatically saved every ten minutes

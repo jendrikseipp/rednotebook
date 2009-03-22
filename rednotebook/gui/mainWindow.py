@@ -244,9 +244,8 @@ class MainWindow(object):
 		self.redNotebook.saveToDisk()
 		
 	def on_mainFrame_destroy(self, widget):
-		self.redNotebook.saveToDisk()
 		self.add_values_to_config()
-		self.redNotebook.config.saveToDisk()
+		self.redNotebook.saveToDisk()
 		gtk.main_quit()
 		
 	def on_backup_activate(self, widget):
@@ -260,7 +259,6 @@ class MainWindow(object):
 				self.wTree.get_widget('mainPane').get_position()
 		self.redNotebook.config['rightDividerPosition'] = \
 				self.wTree.get_widget('editPane').get_position()
-		self.redNotebook.config.saveToDisk()
 	
 	def load_values_from_config(self):
 		config = self.redNotebook.config
@@ -292,6 +290,7 @@ class MainWindow(object):
 			<menuitem action="NumberedList"/>
 			<menuitem action="Title"/>
 			<menuitem action="Line"/>
+			<menuitem action="Date"/>
 			<!-- <menuitem action="Table"/> -->
 		</popup>
 		</ui>'''
@@ -311,6 +310,10 @@ class MainWindow(object):
 						'(Two blank lines close the list)\n\n\n'
 		numbered_list = bullet_list.replace('-', '+')
 		title = '\n=== Title text ===\n'
+		
+		default_date_string = '%A, %x %X'
+		date_string = self.redNotebook.config.read('dateTimeString', default_date_string)
+		
 		table = '''
 ||   1st Heading   |   2nd Heading    |   3rd Heading    | 
 |    right aligned |     centered     | left aligned     |
@@ -344,6 +347,9 @@ class MainWindow(object):
 			('Table', None, 'Table', None, \
 				'Insert a table at the current position', \
 				lambda widget: self.dayTextField.insert(table)),
+			('Date', None, 'Date/Time', None, \
+				'Insert the current date and time at the current position', \
+				lambda widget: self.dayTextField.insert(datetime.datetime.now().strftime(date_string))),
 			])
 
 		# Add the actiongroup to the uimanager
@@ -355,8 +361,8 @@ class MainWindow(object):
 		# Create a Menu
 		menu = uimanager.get_widget('/InsertMenu')
 		
-		image_items = 'Picture Link BulletList NumberedList Title Line'.split()
-		image_file_names = 'picture-16 link bulletlist numberedlist title line'.split()
+		image_items = 'Picture Link BulletList NumberedList Title Line Date'.split()
+		image_file_names = 'picture-16 link bulletlist numberedlist title line date'.split()
 		items_and_files = zip(image_items, image_file_names)
 		
 		for item, file_name in items_and_files:
