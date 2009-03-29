@@ -163,9 +163,9 @@ class MainWindow(object):
 		#	self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
 		#					ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 		self.backOneDayButton.add_accelerator('clicked', self.accel_group,
-							ord('U'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+							ord('D'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 		self.forwardOneDayButton.add_accelerator('clicked', self.accel_group,
-							gtk.gdk.GDK_a, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+							ord('U'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 		
 			
 			

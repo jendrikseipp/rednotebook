@@ -43,15 +43,15 @@ O Fix opening files from mozembed
 O WYSIWYG editing as an alternative to markup text?
 
 0.7
-O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
+O Automatic Backups
+O Export Categories separately
 
 0.6.4
 X Easier Tagging
 X Show Tags in ComboBox when "Tags" is selected as category
 X only make the entry submittable, if text has been entered
 O Allow submitting entries with <Enter>
-O Automatic Backups
-O Export Categories separately
+O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 X Add new screenshots (with pictures and files)
 
 0.6.3
