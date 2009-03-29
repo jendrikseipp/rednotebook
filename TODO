@@ -20,6 +20,7 @@ O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Fix: A modified category name is not modified in the  category drop down list
   until you reload the application.
 O more formatting options and examples (fill some days of the journal at first startup)
+O Allow submitting entries with <Enter>
 
 
 Maybe even some of those features will make it into RedNotebook:
@@ -48,10 +49,9 @@ O Export Categories separately
 
 0.6.4
 X Easier Tagging
-X Show Tags in ComboBox when "Tags" is selected as category
-X only make the entry submittable, if text has been entered
-O Allow submitting entries with <Enter>
-O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
+X New-Entry-Dialog: Show previous tags in drop-down menu when "Tags" is selected as category
+X Only make a new entry submittable, if text has been entered
+X Shortcuts to navigate between days (<Ctrl> + PageUp, <Ctrl> + PageDown)
 X Add new screenshots (with pictures and files)
 
 0.6.3

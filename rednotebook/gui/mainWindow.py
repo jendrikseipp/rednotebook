@@ -162,11 +162,12 @@ class MainWindow(object):
 		#					('X', 'cut_clipboard')]:
 		#	self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
 		#					ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
-		self.backOneDayButton.add_accelerator('clicked', self.accel_group,
-							ord('D'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
-		self.forwardOneDayButton.add_accelerator('clicked', self.accel_group,
-							ord('U'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
-		
+		(page_down_keyval, mod) = gtk.accelerator_parse('<Ctrl>Page_Down')
+		self.backOneDayButton.add_accelerator('clicked', self.accel_group, \
+							page_down_keyval, mod, gtk.ACCEL_VISIBLE)
+		(page_up_keyval, mod) = gtk.accelerator_parse('<Ctrl>Page_Up')
+		self.forwardOneDayButton.add_accelerator('clicked', self.accel_group, \
+							page_up_keyval, mod, gtk.ACCEL_VISIBLE)
 			
 			
 	def on_previewButton_clicked(self, button):

@@ -171,6 +171,13 @@ all your entered data in a zip file.
 === Export ===
 In the same menu you also find an "Export"-Button. Click on it and export your diary to Plain Text, HTML or Latex.
 
+=== Keyboard Shortcuts ===
+||   Action   |   Shortcut    |
+| Go back one day    | <Ctrl> + PageDown      |
+| Go forward one day | <Ctrl> + PageUp        |
+
+You can find other shortcuts in the menus.
+
 === Questions ===
 If you have any questions or comments, feel free to post them in the forum or \
 contact me directly.
