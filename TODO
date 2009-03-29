@@ -20,7 +20,6 @@ O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Fix: A modified category name is not modified in the  category drop down list
   until you reload the application.
 O more formatting options and examples (fill some days of the journal at first startup)
-O Fix opening files from mozembed
 
 
 Maybe even some of those features will make it into RedNotebook:
@@ -37,20 +36,23 @@ O more than one notebook
 O Allow dragging of files and pictures into RedNotebook
 O Check xulrunner paths at startup
 O remove search for categories and tags, as clouds already do that?
+O Fix opening files from mozembed
 
 
 1.0
 O WYSIWYG editing as an alternative to markup text?
 
 0.7
-O Easier Tagging
-O only make the entry submittable, if text has been entered
 O Shortcuts to navigate between days (CTRL-PageUp, CTRL-PageDown)
 
 0.6.4
+X Easier Tagging
+X Show Tags in ComboBox when "Tags" is selected as category
+X only make the entry submittable, if text has been entered
+O Allow submitting entries with <Enter>
 O Automatic Backups
 O Export Categories separately
-O Add new screenshots (with pictures and files)
+X Add new screenshots (with pictures and files)
 
 0.6.3
 X Add an option to insert the current time and date

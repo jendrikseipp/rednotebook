@@ -145,7 +145,9 @@ class RedNotebook:
 			
 		# Automatically save the content after a period of time
 		one_minute = 1000 * 60
-		gobject.timeout_add(10 * one_minute, self.saveToDisk)
+		
+		if not self.testing:
+			gobject.timeout_add(10 * one_minute, self.saveToDisk)
 		
 		
 		

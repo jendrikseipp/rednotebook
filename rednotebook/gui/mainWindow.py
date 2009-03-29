@@ -87,6 +87,11 @@ class MainWindow(object):
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
+		self.newEntryDialog = NewEntryDialog(self)
+		
+		self.backOneDayButton = self.wTree.get_widget('backOneDayButton')
+		self.forwardOneDayButton = self.wTree.get_widget('forwardOneDayButton')
+		
 		self.wTree.get_widget('insert_popup_menu').set_active(0)
 		
 		global use_moz
@@ -123,8 +128,11 @@ class MainWindow(object):
 			
 			'on_exportMenuItem_activate': self.on_exportMenuItem_activate,
 			'on_statisticsMenuItem_activate': self.on_statisticsMenuItem_activate,
+			
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
+			'on_addTagButton_clicked': self.on_addTagButton_clicked,
 			'on_deleteEntryButton_clicked': self.on_deleteEntryButton_clicked,
+			
 			'on_searchNotebook_switch_page': self.on_searchNotebook_switch_page,
 			'on_templateButton_clicked': self.on_templateButton_clicked,
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
@@ -145,12 +153,20 @@ class MainWindow(object):
 		
 		
 	def set_shortcuts(self):
+		'''
+		This method actually is not responsible for the Ctrl-C etc. actions
+		'''
 		self.accel_group = gtk.AccelGroup()
 		self.mainFrame.add_accel_group(self.accel_group)
-		for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'), \
-							('X', 'cut_clipboard')]:
-			self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
-							ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+		#for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'), \
+		#					('X', 'cut_clipboard')]:
+		#	self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
+		#					ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+		self.backOneDayButton.add_accelerator('clicked', self.accel_group,
+							ord('U'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+		self.forwardOneDayButton.add_accelerator('clicked', self.accel_group,
+							gtk.gdk.GDK_a, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+		
 			
 			
 	def on_previewButton_clicked(self, button):
@@ -477,29 +493,10 @@ class MainWindow(object):
 		utils.show_html_in_browser(self.redNotebook.stats.getStatsHTML())
 		
 	def on_addNewEntryButton_clicked(self, widget):
-		self.newEntryDialog = self.wTree.get_widget('newEntryDialog')
-		self.categoriesComboBox = CustomComboBox(self.wTree.get_widget('categoriesComboBox'))
-		self.newEntryTextBox = self.wTree.get_widget('newEntryTextBox')
-		self.newEntryTextBox.set_text('')
+		self.newEntryDialog.show_dialog(adding_tag=False)
 		
-		self.categoriesComboBox.set_entries(self.categoriesTreeView.categories)
-		
-		response = self.newEntryDialog.run()
-		self.newEntryDialog.hide()
-		
-		if response != gtk.RESPONSE_OK:
-			return
-		
-		categoryName = self.categoriesComboBox.get_active_text()
-		if not self.categoriesTreeView.check_category(categoryName):
-			return
-		
-		entryText = self.newEntryTextBox.get_text()
-		if not self.categoriesTreeView.check_entry(entryText):
-			return
-		
-		self.categoriesTreeView.addEntry(categoryName, entryText)
-		self.categoriesTreeView.treeView.expand_all()
+	def on_addTagButton_clicked(self, widget):
+		self.newEntryDialog.show_dialog(adding_tag=True)
 		
 	def on_deleteEntryButton_clicked(self, widget):
 		self.categoriesTreeView.delete_selected_node()
@@ -569,6 +566,73 @@ class MainWindow(object):
 			#Ask at startup
 			self.redNotebook.config['checkForNewVersion'] = 1
 			
+
+class NewEntryDialog(object):
+	def __init__(self, mainFrame):
+		dialog = mainFrame.wTree.get_widget('newEntryDialog')
+		self.dialog = dialog
+		
+		self.mainFrame = mainFrame
+		self.redNotebook = self.mainFrame.redNotebook
+		self.categoriesComboBox = CustomComboBox(mainFrame.wTree.get_widget('categoriesComboBox'))
+		self.newEntryComboBox = CustomComboBox(mainFrame.wTree.get_widget('entryComboBox'))
+		
+		# Allow hitting enter to submit the entry #TODO: Fix
+		#print self.dialog.flags()
+		#self.dialog.set_flags(gtk.CAN_DEFAULT)
+		#self.dialog.set_flags(gtk.HAS_DEFAULT)
+		#self.dialog.set_default_response(gtk.RESPONSE_OK)
+		self.newEntryComboBox.entry.set_activates_default(True)
+		
+		self.categoriesTreeView = self.mainFrame.categoriesTreeView
+		
+		self.categoriesComboBox.connect('changed', self.on_category_changed)
+		self.newEntryComboBox.connect('changed', self.on_entry_changed)
+		
+	def on_category_changed(self, widget):
+		'''Show Tags in ComboBox when "Tags" is selected as category'''
+		if self.categoriesComboBox.get_active_text().upper() == 'TAGS':
+			 self.newEntryComboBox.set_entries(self.redNotebook.tags)
+			 
+		# only make the entry submittable, if text has been entered
+		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
+		
+	def on_entry_changed(self, widget):			 
+		# only make the entry submittable, if text has been entered
+		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
+			 
+	def _text_entered(self):
+		return len(self.categoriesComboBox.get_active_text()) > 0 and \
+				len(self.newEntryComboBox.get_active_text()) > 0
+		
+	def show_dialog(self, adding_tag=False):
+		# Show the list of categories even if adding a tag
+		self.categoriesComboBox.set_entries(self.categoriesTreeView.categories)
+		
+		if adding_tag:
+			self.categoriesComboBox.set_active_text('Tags')
+			self.newEntryComboBox.set_entries(self.redNotebook.tags)
+			self.dialog.set_focus(self.newEntryComboBox.comboBox)
+		else:
+			self.newEntryComboBox.clear()
+			self.dialog.set_focus(self.categoriesComboBox.comboBox)
+		
+		response = self.dialog.run()
+		self.dialog.hide()
+		
+		if response != gtk.RESPONSE_OK:
+			return
+		
+		categoryName = self.categoriesComboBox.get_active_text()
+		if not self.categoriesTreeView.check_category(categoryName):
+			return
+		
+		entryText = self.newEntryComboBox.get_active_text()
+		if not self.categoriesTreeView.check_entry(entryText):
+			return
+		
+		self.categoriesTreeView.addEntry(categoryName, entryText)
+		self.categoriesTreeView.treeView.expand_all()
 			
 			
 			
@@ -583,8 +647,7 @@ class CustomComboBox:
 		self.liststore.append([entry])
 	
 	def set_entries(self, value_list):
-		self.liststore.clear()
-		self.entry.set_text('')
+		self.clear()
 		for entry in value_list:
 			self.add_entry(entry)
 		
@@ -605,7 +668,13 @@ class CustomComboBox:
 	def set_active_text(self, text):
 		return self.entry.set_text(text)
 	
+	def clear(self):
+		if self.liststore:
+			self.liststore.clear()
+		self.set_active_text('')
 	
+	def connect(self, *args, **kargs):
+		self.comboBox.connect(*args, **kargs)
 	
 class SearchComboBox(CustomComboBox):
 	def __init__(self, comboBox, mainWindow):
@@ -1099,7 +1168,7 @@ class CategoriesTreeView(object):
 	
 	def addEntry(self, categoryName, text):
 		if categoryName not in self.categories and categoryName is not None:
-			self.categories.append(categoryName)
+			self.categories.insert(0, categoryName)
 			
 		categoryIter = self._get_category_iter(categoryName)
 		if categoryIter is None:

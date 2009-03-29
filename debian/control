@@ -1,11 +1,11 @@
 Source: rednotebook
-Section: office
+Section: text
 Priority: extra
-Maintainer: Jendrik <jendrikseipp@web.de>
-
+Maintainer: Jendrik Seipp <jendrikseipp@web.de>
 Package: rednotebook
 Architecture: all
-Depends: python, python-gtk2, python-yaml, python-gnome2-extras, python-glade2
+Homepage: http://rednotebook.sourceforge.net
+Depends: python (>= 2.5), python-support (>= 0.7.1), python-yaml (>= 3.05), python-gtk2 (>= 2.12), python-gnome2-extras, python-glade2
 Recommends: texlive-latex-base, texlive-latex-recommended
 Description: Graphical daily journal with calendar, templates and keyword searching
  RedNotebook is a graphical diary and journal to keep track of notes and 

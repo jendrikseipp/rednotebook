@@ -447,6 +447,17 @@ Tags</property>
                               </packing>
                             </child>
                             <child>
+                              <widget class="GtkToolButton" id="addTagButton">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Add Tag</property>
+                                <property name="stock_id">gtk-dialog-info</property>
+                                <signal name="clicked" handler="on_addTagButton_clicked"/>
+                              </widget>
+                              <packing>
+                                <property name="homogeneous">True</property>
+                              </packing>
+                            </child>
+                            <child>
                               <widget class="GtkToolButton" id="deleteEntryButton">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Delete</property>
@@ -622,6 +633,7 @@ Tags</property>
                     <child>
                       <widget class="GtkComboBoxEntry" id="categoriesComboBox">
                         <property name="visible">True</property>
+                        <property name="can_focus">True</property>
                         <property name="items" translatable="yes"></property>
                         <child internal-child="entry">
                           <widget class="GtkEntry" id="comboboxentry-entry1">
@@ -659,9 +671,17 @@ Tags</property>
                     <property name="visible">True</property>
                     <property name="left_padding">12</property>
                     <child>
-                      <widget class="GtkEntry" id="newEntryTextBox">
+                      <widget class="GtkComboBoxEntry" id="entryComboBox">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="items" translatable="yes"></property>
+                        <child internal-child="entry">
+                          <widget class="GtkEntry" id="comboboxentry-entry5">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="text" translatable="yes">filename</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                   </widget>
@@ -728,8 +748,8 @@ Tags</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
