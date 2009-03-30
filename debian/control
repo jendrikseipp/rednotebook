@@ -1,7 +1,8 @@
 Source: rednotebook
-Section: text
+Section: office
 Priority: extra
 Maintainer: Jendrik Seipp <jendrikseipp@web.de>
+
 Package: rednotebook
 Architecture: all
 Homepage: http://rednotebook.sourceforge.net
