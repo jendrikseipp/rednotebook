@@ -30,6 +30,7 @@ import operator
 if hasattr(sys, "frozen"):
 	from rednotebook.util import filesystem
 	from rednotebook.util import utils
+	utils.redirect_output_to_file()
 else:
 	from util import filesystem
 	from util import utils

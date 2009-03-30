@@ -195,6 +195,29 @@ def set_environment_variables(config):
 			print 'The environment variable', variable, 'has value', os.environ.get(variable)
 		else:
 			print 'There is no environment variable called', variable
+	
+			
+def redirect_output_to_file():
+	'''
+	Changes stdout and stderr to a file or None if the file could not be opened.
+	
+	This is necessary to suppress the error messages on Windows when closing 
+	the application.
+	'''
+	try:
+		assert sys.platform == 'win32'
+	except AssertionError:
+		return
+	
+	logfile_path = os.path.join(filesystem.appDir, 'rednotebook.log')
+	
+	try:
+		logfile = open(logfile_path, 'w')
+	except IOError:
+		logfile = None
+	
+	sys.stdout = logfile
+	sys.stderr = logfile
 
 
 def setup_signal_handlers(redNotebook):
