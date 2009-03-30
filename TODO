@@ -12,15 +12,13 @@ O Better comment code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
 O CTRL-C should copy the html text when in view tab
 O Update text descriptions
-O Ignore list for clouds (e.g. right click on a word in the cloud and banish it to the list)
-O Click on an existing category then right mouse click to add a new entry as 
-  opposed to clicking new entry, then having to select the category.
-O Add a list of previously associated tags
 O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Fix: A modified category name is not modified in the  category drop down list
   until you reload the application.
 O more formatting options and examples (fill some days of the journal at first startup)
-O Allow submitting entries with <Enter>
+O Allow submitting new entries with <Enter>
+O Arbitrarily named templates
+O Switch from libglade to GtkBuilder
 
 
 Maybe even some of those features will make it into RedNotebook:
@@ -46,6 +44,12 @@ O WYSIWYG editing as an alternative to markup text?
 0.7
 O Automatic Backups
 O Export Categories separately
+
+0.6.5
+O Ignore list for clouds (e.g. right click on a word in the cloud and banish it to the list)
+O Click on an existing category then right mouse click to add a new entry as 
+  opposed to clicking new entry, then having to select the category.
+O Make Windows installer
 
 0.6.4
 X Easier Tagging

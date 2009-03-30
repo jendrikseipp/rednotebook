@@ -332,7 +332,7 @@ class MainWindow(object):
 		date_string = self.redNotebook.config.read('dateTimeString', default_date_string)
 		
 		table = '''
-||   1st Heading   |   2nd Heading    |   3rd Heading    | 
+||   1st Heading   |   2nd Heading    |   3rd Heading    |
 |    right aligned |     centered     | left aligned     |
 |           Having |      tables      | is               |
 |               so |     awesome!     |                  |

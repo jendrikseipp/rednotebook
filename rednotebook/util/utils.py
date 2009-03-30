@@ -161,12 +161,31 @@ def getHtmlDocFromWordCountDict(wordCountDict, type):
 
 
 def set_environment_variables(config):
-	variables = {	'LD_LIBRARY_PATH': '/usr/lib/xulrunner-1.9',
-					 'MOZILLA_FIVE_HOME': '/usr/lib/xulrunner-1.9',
+	#Add some paths that xulrunner may live in
+	possible_moz_paths = ['/usr/lib/xulrunner-1.9', '/usr/lib64/xulrunner-1.9', 
+						'/usr/lib/xulrunner-addons', '/usr/lib64/xulrunner-addons']
+	
+	#Check all paths for existence, start with those in the config file
+	variables = ['LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
+	for variable in variables:
+		if config.has_key(variable):
+			value = config.read(variable, None)
+			if value:
+				possible_moz_paths.insert(0, value)
+	
+	moz_path = possible_moz_paths[0]
+	for path in possible_moz_paths:
+		if os.path.exists(path):
+			moz_path = path
+			break
+	
+	
+	variables = {	'LD_LIBRARY_PATH': moz_path,
+					 'MOZILLA_FIVE_HOME': moz_path,
 				}
 	
 	for variable, value in variables.iteritems():
-		if not os.environ.has_key(variable) and config.has_key(variable):
+		if not os.environ.has_key(variable): #and config.has_key(variable):
 			# Only add environment variable if it does not exist yet
 			os.environ[variable] = config.read(variable, default=value)
 			print variable, 'set to', value
