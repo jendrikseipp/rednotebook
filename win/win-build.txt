@@ -19,4 +19,5 @@
   * run 'python setup.py py2exe'
   * A dist/ directory is created containing the exe, but the GTK files are still missing
   * Copy the directories etc, lib and share to the newly created dist directory
+  * Copy the directories "files/" and "images/" from "rednotebook/" into "dist/"
   * Now clicking redNotebook.exe should start the application
