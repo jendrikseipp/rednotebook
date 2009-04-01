@@ -1405,26 +1405,6 @@ class Statusbar(object):
 			self.showText('', countdown=False)
 		return True
 	
-	
-class SingleMenuToolButton(gtk.MenuToolButton):
-	def __init__(self, menu, label_text):
-		gtk.MenuToolButton.__init__(self, None, None)
-		
-		self.set_menu(menu)
-		hbox = self.get_child()
-		button, toggle_button = hbox.get_children()
-		hbox.remove(button)
-		img = get_image('picture-24.png')
-		arrow = toggle_button.get_child()
-		toggle_button.remove(arrow)
-		vbox = gtk.VBox()
-		vbox.pack_start(img, False, False)
-		vbox.pack_start(gtk.Label(label_text), False, False)
-		hbox = gtk.HBox()
-		hbox.pack_start(vbox, False, False)
-		hbox.pack_start(arrow, False, False)
-		toggle_button.add(hbox)
-	
 		
 class Calendar(object):
 	def __init__(self, calendar):

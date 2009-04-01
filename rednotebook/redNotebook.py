@@ -171,7 +171,7 @@ class RedNotebook:
 		
 		
 	def _getSortedDays(self):
-		return sorted(self.days, dates.compareTwoDays)
+		return sorted(self.days, key=lambda day: day.date) #dates.compareTwoDays)
 	sortedDays = property(_getSortedDays)
 	
 	
@@ -179,7 +179,7 @@ class RedNotebook:
 		sortedDays = self.sortedDays
 		if len(self.sortedDays) == 0:
 			return datetime.date.today()
-		return dates.getDateFromDay(self.sortedDays[entryNumber % len(sortedDays)])
+		return self.sortedDays[entryNumber % len(sortedDays)].date
 	
 	   
 	def makeEmptyTemplateFiles(self):
@@ -425,11 +425,16 @@ class Day(object):
 		if dayContent == None:
 			dayContent = {}
 			
+		self.date = datetime.date(month.yearNumber, month.monthNumber, dayNumber)
+			
 		self.month = month
 		self.dayNumber = dayNumber
 		self.content = dayContent
 		
 		self.searchResultLength = 50
+		
+	def __getattr__(self, name):
+		return getattr(self.date, name)
 	
 	
 	'Text'
@@ -585,11 +590,6 @@ class Day(object):
 						textStart += ' ...'
 					return (str(self), textStart)
 		return None
-		
-		
-	def _date(self):
-		return dates.getDateFromDay(self)
-	date = property(_date)
 	
 	
 	def __str__(self):
