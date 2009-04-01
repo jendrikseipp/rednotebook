@@ -21,7 +21,7 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.6.4'
+version = '0.6.5'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
@@ -175,6 +175,10 @@ In the same menu you also find an "Export"-Button. Click on it and export your d
 ||   Action   |   Shortcut    |
 | Go back one day    | <Ctrl> + PageDown      |
 | Go forward one day | <Ctrl> + PageUp        |
+| Insert picture | <Ctrl> + P        |
+| Insert file | <Ctrl> + F        |
+| Insert link | <Ctrl> + L        |
+| Insert date/time | <Ctrl> + D        |
 
 You can find other shortcuts in the menus.
 

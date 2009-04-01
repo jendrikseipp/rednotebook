@@ -45,11 +45,13 @@ O WYSIWYG editing as an alternative to markup text?
 O Automatic Backups
 O Export Categories separately
 
-0.6.5
-O Ignore list for clouds (e.g. right click on a word in the cloud and banish it to the list)
+0.6.6
 O Click on an existing category then right mouse click to add a new entry as 
   opposed to clicking new entry, then having to select the category.
-O Make Windows installer
+
+0.6.5
+X Ignore list for clouds (Mark word(s) in cloud, right-click and select "Hide")
+X Keyboard shortcuts for inserting pictures, files, links and the date
 
 0.6.4
 X Easier Tagging
@@ -57,6 +59,7 @@ X New-Entry-Dialog: Show previous tags in drop-down menu when "Tags" is selected
 X Only make a new entry submittable, if text has been entered
 X Shortcuts to navigate between days (<Ctrl> + PageUp, <Ctrl> + PageDown)
 X Add new screenshots (with pictures and files)
+X Make Windows installer
 
 0.6.3
 X Add an option to insert the current time and date

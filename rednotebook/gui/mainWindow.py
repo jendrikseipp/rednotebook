@@ -272,10 +272,13 @@ class MainWindow(object):
 		self.dayTextField.insert_template(self.redNotebook.getTemplateEntry())
 		
 	def add_values_to_config(self):
-		self.redNotebook.config['leftDividerPosition'] = \
+		config = self.redNotebook.config
+		config['leftDividerPosition'] = \
 				self.wTree.get_widget('mainPane').get_position()
-		self.redNotebook.config['rightDividerPosition'] = \
+		config['rightDividerPosition'] = \
 				self.wTree.get_widget('editPane').get_position()
+		config.write_list('cloudIgnoreList', self.cloud.ignore_list)
+		
 	
 	def load_values_from_config(self):
 		config = self.redNotebook.config
@@ -338,15 +341,19 @@ class MainWindow(object):
 |               so |     awesome!     |                  |
 '''
 
+		def tmpl(letter):
+			return ' (Ctrl+%s)' % letter
+		
 		# Create actions
 		actiongroup.add_actions([
-			('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, '_Picture', \
-				'<Control>p', 'Insert a picture at the current position', \
+			('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, \
+				'_Picture' + tmpl('P'), \
+				'<Control>P', 'Insert a picture at the current position', \
 				self.on_insert_pic_menu_item_activate),
-			('File', gtk.STOCK_FILE, '_File', '<Control>f', \
+			('File', gtk.STOCK_FILE, '_File' + tmpl('F'), '<Control>F', \
 				'Insert a file at the current position', \
 				self.on_insert_file_menu_item_activate),
-			('Link', gtk.STOCK_JUMP_TO, '_Link', '<Control>L', \
+			('Link', gtk.STOCK_JUMP_TO, '_Link' + tmpl('L'), '<Control>L', \
 				'Insert a link at the current position', \
 				self.on_insert_link_menu_item_activate),
 			('BulletList', None, 'Bullet List', None, \
@@ -364,7 +371,7 @@ class MainWindow(object):
 			('Table', None, 'Table', None, \
 				'Insert a table at the current position', \
 				lambda widget: self.dayTextField.insert(table)),
-			('Date', None, 'Date/Time', None, \
+			('Date', None, 'Date/Time' + tmpl('D'), '<Ctrl>D', \
 				'Insert the current date and time at the current position', \
 				lambda widget: self.dayTextField.insert(datetime.datetime.now().strftime(date_string))),
 			])
@@ -915,7 +922,14 @@ class CloudView(HtmlWindow):
 		
 		self.redNotebook = redNotebook
 		
+		default_ignore_list = 'filter, these, comma, separated, words'
+		self.ignore_list = self.redNotebook.config.read_list('cloudIgnoreList', \
+															default_ignore_list)
+		self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
+		print 'Cloud ignore list:', self.ignore_list
+		
 		self.htmlview.connect("url-clicked", self.word_clicked)
+		self.htmlview.connect('populate-popup', self.create_popup_menu)
 		
 		self.set_type(0, init=True)
 		
@@ -928,7 +942,7 @@ class CloudView(HtmlWindow):
 	def update(self):
 		wordCountDict = self.redNotebook.getWordCountDict(self.type)
 		self.tagCloudWords, html = utils.getHtmlDocFromWordCountDict(wordCountDict, \
-															self.type)
+												self.type, self.ignore_list)
 		self.write(html)
 		
 	def word_clicked(self, htmlview, uri, type_):
@@ -944,6 +958,48 @@ class CloudView(HtmlWindow):
 			
 			'returning True here stops loading the document'
 			return True
+		
+	def create_popup_menu(self, textview, menu):
+		'''
+		Called when the cloud's popup menu is created
+		'''
+		label = 'Hide selected words'
+		ignore_menu_item = gtk.MenuItem(label)
+		separator = gtk.SeparatorMenuItem()
+		
+		ignore_menu_item.show()
+		separator.show()
+		
+		menu.prepend(separator)
+		menu.prepend(ignore_menu_item)
+		
+		ignore_menu_item.connect('activate', self.on_ignore_menu_activate)
+		
+	def on_ignore_menu_activate(self, menu_item):
+		selected_words = self.get_selected_words()
+		print 'The following words will be hidden from clouds:', selected_words
+		self.ignore_list.extend(selected_words)
+		self.update()
+		
+	def get_selected_words(self):
+		bounds = self.htmlview.get_buffer().get_selection_bounds()
+		if not bounds:
+			return []
+		
+		text = self.htmlview.get_buffer().get_text(*bounds)
+		words = text.split(' ')
+		
+		# Delete pseudo whitespace
+		words = map(lambda word: word.replace('_', ''), words)
+		
+		# Delete whitespace
+		words = map(lambda word: word.strip(), words)
+		
+		# Delete empty words
+		words = filter(lambda word: len(word) > 0, words)
+		
+		return words
+		
 		
 
 class SearchTreeView(object):

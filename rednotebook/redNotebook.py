@@ -390,6 +390,9 @@ class RedNotebook:
 	
 	
 	def getWordCountDict(self, type):
+		'''
+		Returns a dictionary mapping the words to their number of appearance
+		'''
 		wordDict = utils.ZeroBasedDict()
 		for day in self.days:
 			if type == 'word':

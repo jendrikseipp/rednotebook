@@ -72,7 +72,9 @@ class Config(dict):
 			for keyValuePair in keyValuePairs:
 				if '=' in keyValuePair:
 					try:
-						key, value = keyValuePair.split('=')
+						# Delete whitespace around =
+						pair = keyValuePair.split('=')
+						key, value = map(lambda item: item.strip(), pair)
 						
 						try:
 							#Save value as int if possible
@@ -94,6 +96,42 @@ class Config(dict):
 		else:
 			self[key] = default
 			return default
+		
+	def read_list(self, key, default):
+		'''
+		Reads the string corresponding to key and converts it to a list
+		
+		alpha,beta gamma;delta -> ['alpha', 'beta', 'gamma', 'delta']
+		
+		default should be of the form 'alpha,beta gamma;delta'
+		'''
+		string = self.read(key, default)
+		string = str(string)
+		if not string:
+			return []
+		
+		# Try to convert the string to a list
+		separators = [',', ';']
+		for separator in separators:
+			string = string.replace(separator, ' ')
+		
+		list = string.split(' ')
+		
+		# Remove whitespace
+		list = map(lambda item: item.strip(), list)
+		
+		# Remove empty items
+		list = filter(lambda item: len(item) > 0, list)
+		
+		return list
+	
+	def write_list(self, key, list):
+		string = ''
+		for item in list:
+			string += item + ', '
+		if string.endswith(', '):
+			string = string[:-2]
+		self[key] = string
 						
 	def saveToDisk(self):
 		try:

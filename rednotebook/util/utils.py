@@ -95,12 +95,15 @@ def restrain(valueToRestrain, range):
 	return valueToRestrain
 
 
-def getHtmlDocFromWordCountDict(wordCountDict, type):
+def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 	sortedDict = sortDictByValues(wordCountDict)
 	
 	if type == 'word':
-		'filter short words'
-		sortedDict = filter(lambda x: len(x[0]) > 4, sortedDict)
+		# filter short words and words in ignore_list
+		sortedDict = filter(lambda (word, freq): len(word) > 4, sortedDict)
+		
+	# filter words in ignore_list'	
+	sortedDict = filter(lambda (word, freq): word.lower() not in ignore_list, sortedDict)
 	
 	oftenUsedWords = []
 	numberOfWords = 42
