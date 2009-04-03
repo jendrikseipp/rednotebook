@@ -37,7 +37,7 @@ import operator
 
 __all__ = ['HtmlTextView']
 
-link_color = 'black'
+link_color = None #'black'
 links_underlined = False
 
 whitespace_rx = re.compile("\\s+")
@@ -361,8 +361,10 @@ class HtmlHandler(xml.sax.handler.ContentHandler):
 		if name == 'a':
 			tag = self.textbuf.create_tag()
 			
-			'Allow choosing link color'
-			tag.set_property('foreground', link_color)
+			# Allow choosing link color. Don't change if no color has been set
+			if link_color:
+				tag.set_property('foreground', link_color)
+				
 			if links_underlined:
 				tag.set_property('underline', pango.UNDERLINE_SINGLE)
 				
@@ -384,7 +386,11 @@ class HtmlHandler(xml.sax.handler.ContentHandler):
 			if not self.iter.starts_line():
 				self._insert_text("\n")
 		elif name == 'span':
-			pass
+			## Changed: Jendrik
+			## Insert ' ' when a <span> tag is encountered to allow spans with
+			## only a whitespace character
+			##pass
+			self._insert_text(' ')
 		elif name == 'ul':
 			if not self.iter.starts_line():
 				self._insert_text("\n")
@@ -475,6 +481,7 @@ class HtmlTextView(gtk.TextView):
 	def __init__(self):
 		gtk.TextView.__init__(self)
 		self.set_wrap_mode(gtk.WRAP_CHAR)
+		#self.set_wrap_mode(gtk.WRAP_WORD)
 		self.set_editable(False)
 		self._changed_cursor = False
 		self.connect("motion-notify-event", self.__motion_notify_event)
@@ -565,16 +572,16 @@ if __name__ == '__main__':
 	def url_cb(view, url, type_):
 		print "url-clicked", url, type_
 	htmlview.connect("url-clicked", url_cb)
-	test = '''\
-<body TEXT="black" BGCOLOR="white" LINK="black" VLINK="black" ALINK="black">
-<div style="text-align:center;color:red;"><a href="search/0"><span style="font-size:10px">again</span></a>
-<a href="search/1"><span style="font-size:11px;text:black">automatically</span></a>
-<a href="search/41"><span style="font-size:10px;">wäté@»¢“ðßðđched</span></a>  normal
-</div>
-</body>
-'''
-
-	htmlview.display_html(test)
+#	test = '''\
+#<body TEXT="black" BGCOLOR="white" LINK="black" VLINK="black" ALINK="black">
+#<div style="text-align:center;color:red;"><a href="search/0"><span style="font-size:10px">again</span></a>
+#<a href="search/1"><span style="font-size:11px;text:black">automatically</span></a>
+#<a href="search/41"><span style="font-size:10px;">wäté@»¢“ðßðđched</span></a>  normal
+#</div>
+#</body>
+#'''
+#
+#	htmlview.display_html(test)
 	htmlview.display_html('<div><span style="color: red; text-decoration:underline">Hello</span><br/>\n'
 						  '  <img src="http://images.slashdot.org/topics/topicsoftware.gif"/><br/>\n'
 						  '  <span style="font-size: 500%; font-family: serif">World</span>\n'

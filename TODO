@@ -10,11 +10,7 @@ O Import of exported backups
 O i18n
 O Better comment code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
-O CTRL-C should copy the html text when in view tab
-O Update text descriptions
 O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
-O Fix: A modified category name is not modified in the  category drop down list
-  until you reload the application.
 O more formatting options and examples (fill some days of the journal at first startup)
 O Allow submitting new entries with <Enter>
 O Arbitrarily named templates
@@ -33,9 +29,9 @@ O Encryption XOR Password
 O SSH, FTP saving
 O more than one notebook
 O Allow dragging of files and pictures into RedNotebook
-O Check xulrunner paths at startup
 O remove search for categories and tags, as clouds already do that?
 O Fix opening files from mozembed
+O CTRL-C should copy the html text when in view tab
 
 
 1.0
@@ -48,6 +44,9 @@ O Export Categories separately
 0.6.6
 O Click on an existing category then right mouse click to add a new entry as 
   opposed to clicking new entry, then having to select the category.
+X Fix: A modified category and tag name is not modified in the  category drop 
+  down list until you reload the application.
+X Fix: Font color in words cloud should be the same as text_color (LP:353738)
 
 0.6.5
 X Ignore list for clouds (Mark word(s) in cloud, right-click and select "Hide")
@@ -58,6 +57,7 @@ X Easier Tagging
 X New-Entry-Dialog: Show previous tags in drop-down menu when "Tags" is selected as category
 X Only make a new entry submittable, if text has been entered
 X Shortcuts to navigate between days (<Ctrl> + PageUp, <Ctrl> + PageDown)
+X Check xulrunner paths at startup
 X Add new screenshots (with pictures and files)
 X Make Windows installer
 

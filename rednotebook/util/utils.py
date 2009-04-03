@@ -149,9 +149,9 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 									tagCloudWords[wordIndex] + \
 								'</span>' + \
 							'</a>' + \
-							#Add some whitespace
-							'<span style="font-size:5px; color:white"> _ </span>' + \
-							#'&nbsp;'*3 + 
+							#Add some whitespace &#xA0;
+							#'<span style="font-size:5px; color:white"> _ </span>' + \
+							'<span>&#xA0;</span>' + \
 							'\n')
 		
 	#random.shuffle(htmlElements)	

@@ -132,7 +132,8 @@ class RedNotebook:
 		
 		self.stats = Statistics(self)
 		
-		self.frame.categoriesTreeView.categories = self.nodeNames
+		sortedCategories = sorted(self.nodeNames, key=lambda category: str(category).lower())
+		self.frame.categoriesTreeView.categories = sortedCategories
 		
 		if self.firstTimeExecution is True:
 			self.addInstructionContent()
@@ -234,7 +235,7 @@ class RedNotebook:
 		if not exitImminent:
 			'Update clouds'
 			
-		# tell gobject to keep saving the content
+		# tell gobject to keep saving the content in regular intervals
 		return True
 		
 		

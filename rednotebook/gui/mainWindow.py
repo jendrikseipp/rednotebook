@@ -1089,8 +1089,8 @@ class CategoriesTreeView(object):
 		
 		self.mainWindow = mainWindow
 		
-		'Maintain a list of all entered categories'
-		self.categories = self.mainWindow.redNotebook.nodeNames
+		'Maintain a list of all entered categories. Initialized by rn.__init__()'
+		self.categories = None
 		
 		self.statusbar = self.mainWindow.statusbar
 		
@@ -1127,6 +1127,8 @@ class CategoriesTreeView(object):
 
 		
 	def node_on_top_level(self, path):
+		if type(path) == gtk.TreeIter:
+			path = self.treeStore.get_path(path)
 		return ':' not in path
 		
 		
@@ -1138,8 +1140,24 @@ class CategoriesTreeView(object):
 		if len(new_text) < 1:
 			self.statusbar.showText('Empty nodes are not allowed', error=True)
 			return
+		
 		liststore = user_data
 		liststore[path][0] = new_text
+		
+		# Category name changed
+		if self.node_on_top_level(path):
+			if new_text not in self.categories:
+				self.categories.insert(0, new_text)
+		
+		# Tag name changed
+		if not self.node_on_top_level(path):
+			iter = self.treeStore.get_iter(path)
+			iter_parent = self.treeStore.iter_parent(iter)
+			tags_iter = self._get_category_iter('Tags')
+			
+			tags_node_is_parent = self.get_iter_value(iter_parent).capitalize() == 'Tags'
+			if tags_node_is_parent and self.node_on_top_level(iter_parent):
+				self.mainWindow.redNotebook.saveOldDay()		
 		
 		
 	def check_category(self, category):
@@ -1216,7 +1234,7 @@ class CategoriesTreeView(object):
 		for iterIndex in range(self.treeStore.iter_n_children(None)):
 			currentCategoryIter = self.treeStore.iter_nth_child(None, iterIndex)
 			currentCategoryName = self.get_iter_value(currentCategoryIter)
-			if currentCategoryName == categoryName:
+			if currentCategoryName.lower() == categoryName.lower():
 				return currentCategoryIter
 		
 		'If the category was not found, return None'

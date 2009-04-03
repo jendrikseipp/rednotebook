@@ -9,6 +9,7 @@
  * New-Entry-Dialog: Show previous tags in drop-down menu when "Tags" is selected as category
  * New-Entry-Dialog: Only make a new entry submittable, if text has been entered
  * Shortcuts to navigate between days (<Ctrl> + PageUp, <Ctrl> + PageDown)
+ * Check xulrunner paths at startup
  * Made Windows installer
 
 === 0.6.3 (2009-03-21) ===
