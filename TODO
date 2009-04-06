@@ -42,13 +42,13 @@ O Allow choosing a folder for RedNotebook content
 	O more formatting options and examples (fill some days of the journal at first startup)
 	O provide TrueCrypt encryption HowTo
 	O Import of exported backups
-
-0.6.6
 O Click on an existing category then right mouse click to add a new entry as 
   opposed to clicking new entry, then having to select the category.
-X Fix: A modified category and tag name is not modified in the  category drop 
+
+0.6.6
+X Fix: A modified category and tag name is not modified in the category drop 
   down list until you reload the application.
-X Fix: Font color in words cloud should be the same as text_color (LP:353738)
+X Fix: Cloud words should have the same color as text words (LP:353738)
 
 0.6.5
 X Ignore list for clouds (Mark word(s) in cloud, right-click and select "Hide")

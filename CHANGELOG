@@ -1,5 +1,10 @@
 ==== Changelog ====
 
+=== 0.6.6 (2009-04-07) ===
+ * Fix: A modified category and tag name is not modified in the category drop 
+   down list until you reload the application.
+ * Fix: Cloud words should have the same color as text words (LP:353738)
+
 === 0.6.5 (2009-04-01) ===
  * Ignore list for clouds (Mark word(s) in cloud, right-click and select "Hide")
  * Keyboard shortcuts for inserting pictures, files, links and the date

@@ -38,7 +38,8 @@ class Statistics(object):
 			return len(sorted_days)
 		first_day = sorted_days[0]
 		last_day = sorted_days[-1]
-		return abs(dates.getNumberOfDaysBetweenTwoDays(first_day, last_day) + 1)
+		timespan = last_day.date - first_day.date
+		return abs(timespan.days) + 1
 	
 	def getNumberOfEntries(self):
 		return len(self.redNotebook.days)
