@@ -448,7 +448,10 @@ class MainWindow(object):
 			filesystem.last_file_dir = file_chooser.get_current_folder()
 			filename = file_chooser.get_filename()
 			head, tail = os.path.split(filename)
-			self.dayTextField.insert('[' + tail + ' ' + filename + ']')
+			if ' ' in filename:
+				self.dayTextField.insert('[' + tail + ' ""' + filename + '""]')
+			else:
+				self.dayTextField.insert('[' + tail + ' ' + filename + ']')
 			
 	def on_insert_link_menu_item_activate(self, widget):
 		xml = gtk.glade.XML(self.gladefile, 'link_creator')

@@ -264,13 +264,16 @@ class RedNotebook:
 		monthFileString = path
 		
 		try:
-			'Try to read the contents of the file'
+			# Try to read the contents of the file
 			with open(monthFileString, 'r') as monthFile:
 				monthContents = yaml.load(monthFile)
 				self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
-		except:
-			'If that fails there is nothing to load, so just display an error message'
-			print 'An Error occured while loading', fileName
+		except yaml.YAMLError, exc:
+			print 'Error in file', monthFileString + ':'
+			print exc
+		except IOError:
+			#If that fails, there is nothing to load, so just display an error message
+			print 'Error: The file', monthFileString, 'could not be read'
 		
 		
 	def loadMonth(self, date):

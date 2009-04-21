@@ -1,4 +1,8 @@
 #!/usr/bin/env python
 
+# Dirty fix for Python 2.6 compatibility
+import sys
+sys.path.insert(0, '/usr/lib/python2.5/site-packages')
+
 import rednotebook.redNotebook
 rednotebook.redNotebook.main()

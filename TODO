@@ -35,7 +35,7 @@ O CTRL-C should copy the html text when in view tab
 1.0
 O WYSIWYG editing as an alternative to markup text?
 
-0.7
+0.8
 O Automatic Backups
 O Export Categories separately
 O Allow choosing a folder for RedNotebook content
@@ -44,6 +44,15 @@ O Allow choosing a folder for RedNotebook content
 	O Import of exported backups
 O Click on an existing category then right mouse click to add a new entry as 
   opposed to clicking new entry, then having to select the category.
+  
+0.7
+O Remove GTKMozembed dependency
+O setup.py ... --install-layout=deb
+  
+0.6.7
+X Make deb package Python 2.6 compatible
+X Add yaml-parser error handling
+X Fix inserting file links containing whitespace
 
 0.6.6
 X Fix: A modified category and tag name is not modified in the category drop 

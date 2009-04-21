@@ -1,5 +1,10 @@
 ==== Changelog ====
 
+=== 0.6.7 (2009-04-21) ===
+ * Make deb package Python 2.6 compatible
+ * Add yaml-parser error handling
+ * Fix inserting file links containing whitespace
+
 === 0.6.6 (2009-04-07) ===
  * Fix: A modified category and tag name is not modified in the category drop 
    down list until you reload the application.
