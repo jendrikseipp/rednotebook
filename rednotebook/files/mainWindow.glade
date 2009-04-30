@@ -349,7 +349,7 @@ Tags</property>
                     <property name="can_focus">True</property>
                     <property name="position">550</property>
                     <child>
-                      <widget class="GtkVBox" id="vbox1">
+                      <widget class="GtkVBox" id="text_vbox">
                         <property name="visible">True</property>
                         <child>
                           <widget class="GtkToolbar" id="edit_toolbar">
@@ -400,7 +400,7 @@ Tags</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkScrolledWindow" id="scrolledwindow1">
+                          <widget class="GtkScrolledWindow" id="text_scrolledwindow">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
@@ -411,8 +411,8 @@ Tags</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="wrap_mode">GTK_WRAP_WORD</property>
-                                <property name="left_margin">2</property>
-                                <property name="right_margin">2</property>
+                                <property name="left_margin">5</property>
+                                <property name="right_margin">5</property>
                               </widget>
                             </child>
                           </widget>

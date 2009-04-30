@@ -21,11 +21,13 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.6.7'
+version = '0.6.8'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
 developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
+				'',
+				'Contributors:',
 				'Alexandre Cucumel <superkiouk@gmail.com>',
 				]
 comments = '''\

@@ -6,7 +6,7 @@
  * Fix inserting file links containing whitespace
 
 === 0.6.6 (2009-04-07) ===
- * Fix: A modified category and tag name is not modified in the category drop 
+ * Fix: A modified category and tag name is not modified in the category drop
    down list until you reload the application.
  * Fix: Cloud words should have the same color as text words (LP:353738)
 

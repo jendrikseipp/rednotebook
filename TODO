@@ -13,6 +13,8 @@ O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Allow submitting new entries with <Enter>
 O Arbitrarily named templates
 O Switch from libglade to GtkBuilder
+O Automatic insertion of photo links for current day
+X Fix: The following words will be hidden from clouds: ['\xc2\xa0'...
 
 
 Maybe even some of those features will make it into RedNotebook:
@@ -47,6 +49,11 @@ O Click on an existing category then right mouse click to add a new entry as
   
 0.7
 O Remove GTKMozembed dependency
+   O Add keepnote modules
+   X h3
+   X hr
+   O remove numbered lists
+   O enable stricken text with postproc '(?i)(</?)s>'  '\1strike>'
 O setup.py ... --install-layout=deb
   
 0.6.7

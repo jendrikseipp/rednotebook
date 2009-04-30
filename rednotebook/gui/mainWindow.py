@@ -48,6 +48,7 @@ except ImportError:
 					'found in the package python-gnome2-extras).')
 
 from rednotebook.gui.htmltextview import HtmlWindow
+from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import info
 from rednotebook.util import markup
@@ -105,6 +106,15 @@ class MainWindow(object):
 			use_moz = False
 		
 		self.editPane = self.wTree.get_widget('editPane')
+		
+		self.html_editor = HtmlEditor()
+		self.text_vbox = self.wTree.get_widget('text_vbox')
+		self.text_vbox.pack_start(self.html_editor)
+		self.html_editor.hide()
+		self.html_editor.set_editable(False)
+		self.preview_mode = False
+		self.preview_button = self.wTree.get_widget('previewButton')
+		
 		
 		self.setup_search()
 		self.setup_insert_menu()
@@ -171,17 +181,44 @@ class MainWindow(object):
 			
 			
 	def on_previewButton_clicked(self, button):
+		self.redNotebook.saveOldDay()
 		if use_moz:
 			'Switched to preview'
-			self.redNotebook.saveOldDay()
+			
 			#self.day.text = self.get_day_text()
 			self.preview.set_day(self.redNotebook.day)
 			
 			self.preview.show()
 			self.editPane.hide()
 		else:
-			self.redNotebook.saveOldDay()
-			markup.preview_in_browser(self.redNotebook.sortedDays, self.redNotebook.day)
+			text_scrolledwindow = self.wTree.get_widget('text_scrolledwindow')
+			if self.preview_mode:
+				text_scrolledwindow.show()
+				self.html_editor.hide()
+				self.preview_button.set_stock_id('gtk-media-play')
+				self.preview_button.set_label('Preview')
+				self.preview_mode = False
+			else:
+				text_scrolledwindow.hide()
+				self.html_editor.show()
+				day = self.redNotebook.day
+				text_markup = day.text
+				html = markup.convertMarkupToTarget(text_markup, 'xhtml')
+				self.html_editor.load_html(html)
+				#markup.preview_in_browser(self.redNotebook.sortedDays, self.redNotebook.day)
+				
+				#image = gtk.Image()
+				#image.set_from_stock('gtk-edit', gtk.ICON_SIZE_SMALL_TOOLBAR)
+				#self.preview_button.set_image(image)
+				self.preview_button.set_stock_id('gtk-edit')
+				self.preview_button.set_label('   Edit    ')
+				#self.preview_button.set_sensitive(False)
+				#self.back.connect('clicked', self.on_back)
+				#top.pack_start(self.back, False, False)
+			
+				self.preview_mode = True
+			
+			
 		
 			
 	def setup_search(self):
@@ -307,7 +344,7 @@ class MainWindow(object):
 			<menuitem action="File"/>
 			<menuitem action="Link"/>
 			<menuitem action="BulletList"/>
-			<menuitem action="NumberedList"/>
+			<!-- <menuitem action="NumberedList"/> -->
 			<menuitem action="Title"/>
 			<menuitem action="Line"/>
 			<menuitem action="Date"/>
@@ -385,8 +422,8 @@ class MainWindow(object):
 		# Create a Menu
 		menu = uimanager.get_widget('/InsertMenu')
 		
-		image_items = 'Picture Link BulletList NumberedList Title Line Date'.split()
-		image_file_names = 'picture-16 link bulletlist numberedlist title line date'.split()
+		image_items = 'Picture Link BulletList Title Line Date'.split()
+		image_file_names = 'picture-16 link bulletlist title line date'.split()
 		items_and_files = zip(image_items, image_file_names)
 		
 		for item, file_name in items_and_files:
@@ -528,6 +565,7 @@ class MainWindow(object):
 		
 		self.calendar.set_date(newDate)
 		self.dayTextField.set_text(day.text)
+		self.html_editor.load_html(markup.convertMarkupToTarget(day.text, 'xhtml'))
 		self.categoriesTreeView.set_day_content(day)
 		
 		if use_moz:
@@ -908,7 +946,7 @@ class Preview(gtk.VBox):
 			
 	def set_day(self, day):
 		markupText = markup.getMarkupForDay(day, with_date=False)
-		html = markup.convertMarkupToTarget(markupText, 'html', \
+		html = markup.convertMarkupToTarget(markupText, 'xhtml', \
 										title=dates.get_date_string(day.date))
 		
 		filename = os.path.join(filesystem.tempDir, 'tmp.html')

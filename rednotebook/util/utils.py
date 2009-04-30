@@ -151,7 +151,7 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 							'</a>' + \
 							#Add some whitespace &#xA0;
 							#'<span style="font-size:5px; color:white"> _ </span>' + \
-							'<span>&#xA0;</span>' + \
+							'<span> </span>' + \
 							'\n')
 		
 	#random.shuffle(htmlElements)	

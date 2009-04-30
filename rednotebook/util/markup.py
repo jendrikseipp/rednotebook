@@ -77,7 +77,7 @@ def getMarkupForDay(day, with_text=True, selected_categories=None, with_date=Tru
 	return exportString
 
 
-def convertMarkupToTarget(markup, target, title):
+def convertMarkupToTarget(markup, target, title=''):
 	markup = title + '\n\n\n' + markup #no author provided
 	markup = markup.splitlines()
 	
@@ -98,7 +98,7 @@ def convertMarkupToTarget(markup, target, title):
 		parameters.update({'encoding': 'utf8',	
 							#'preproc': [('€', 'Euro'), ('w', 'WWWW'), ('a', 'AAAA'),],
 							})
-	elif target == 'html':
+	elif target == 'html' or target == 'xhtml':
 		parameters.update({'encoding': 'UTF-8',
 						'style': [os.path.join(filesystem.filesDir, 'stylesheet.css')],
 						'css-inside': 1,
@@ -175,7 +175,7 @@ def preview_in_browser(days, current_day):
 	for day in days:
 		date_string = str(day)
 		markupText = getMarkupForDay(day, with_date=False)
-		html = convertMarkupToTarget(markupText, 'html', \
+		html = convertMarkupToTarget(markupText, 'xhtml', \
 									title=dates.get_date_string(day.date))
 		utils.write_file(html, date_string + '.html')
 	
