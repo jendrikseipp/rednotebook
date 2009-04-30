@@ -121,7 +121,7 @@ class Config(dict):
 		list = map(lambda item: item.strip(), list)
 		
 		# Remove empty items
-		list = filter(lambda item: len(item) > 0, list)
+		list = filter(lambda item: len(item.strip()) > 0, list)
 		
 		return list
 	

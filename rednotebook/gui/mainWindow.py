@@ -192,12 +192,17 @@ class MainWindow(object):
 			self.editPane.hide()
 		else:
 			text_scrolledwindow = self.wTree.get_widget('text_scrolledwindow')
+			template_button = self.wTree.get_widget('templateButton')
+			
+			
 			if self.preview_mode:
 				text_scrolledwindow.show()
 				self.html_editor.hide()
 				self.preview_button.set_stock_id('gtk-media-play')
 				self.preview_button.set_label('Preview')
 				self.preview_mode = False
+				
+				
 			else:
 				text_scrolledwindow.hide()
 				self.html_editor.show()
@@ -217,7 +222,9 @@ class MainWindow(object):
 				#top.pack_start(self.back, False, False)
 			
 				self.preview_mode = True
-			
+				
+			template_button.set_sensitive(not self.preview_mode)
+			self.single_menu_toolbutton.set_sensitive(not self.preview_mode)
 			
 		
 			

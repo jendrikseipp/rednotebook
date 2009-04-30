@@ -9,7 +9,7 @@ import StringIO
 import keepnote
 
 '''
-No ol's anymore: Let txt2tags produce only ul's
+No ol's anymore: Let txt2tags produce ol's, but only convert back to ul's
 h3 already works
 line: works
 link: should work
@@ -44,7 +44,7 @@ class RichTextH3Tag(RichTextTag):
 
 class HtmlTagH3Reader(HtmlTagReader):
 	def __init__(self, io):
-		print '?' * 200
+		#print '?' * 200
 		HtmlTagReader.__init__(self, io, "h3")
 
 	def parse_starttag(self, htmltag, attrs):
@@ -72,12 +72,12 @@ class HtmlTagParReader(HtmlTagReader):
     	if self.paragraphs > 0:
 			self._io.append_text("\n")
     	self.paragraphs += 1
-    	print 'self.paragraphs', self.paragraphs
+    	#print 'self.paragraphs', self.paragraphs
         
         
 
     def parse_endtag(self, htmltag):
-    	print 'O' * 20
+    	#print 'O' * 20
         self._io.append_text("\n")
 		
 #class HtmlTagH3Writer(HtmlTagWriter):
@@ -321,7 +321,7 @@ class HtmlEditor(KeepNoteEditor):
 		self.show_all()
 		
 	def load_html(self, html):
-		print html
+		#print html
 		html = html.replace('\n', '')
 		self._textview_io.load(self._textview, self._textview.get_buffer(), \
 								html)
@@ -342,6 +342,7 @@ class HtmlEditor(KeepNoteEditor):
 	
 	def set_editable(self, editable):
 		self._textview.set_editable(editable)
+		self._textview.set_cursor_visible(editable)
                                        
       
 		
