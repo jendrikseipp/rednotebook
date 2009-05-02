@@ -1,12 +1,15 @@
 import sys
 import os
-sys.path.insert(0, '/home/jendrik/projects/RedNotebook/ref/keepnote-0.5.2')
+#sys.path.insert(0, '/home/jendrik/projects/RedNotebook/ref/keepnote-0.5.2')
+
+
+sys.path.insert(0, '/home/jendrik/projects/RedNotebook/rednotebook/gui')
 
 import gtk
 import pango
 import StringIO
 
-import keepnote
+#import keepnote
 
 '''
 No ol's anymore: Let txt2tags produce ol's, but only convert back to ul's
@@ -21,13 +24,9 @@ from keepnote_gui.editor import KeepNoteEditor
 from keepnote_gui.richtext import RichTextView, RichTextModTag, RichTextIO, HtmlError, RichTextError, RichTextImage, is_relative_file
 from keepnote_gui.richtext.richtext_html import HtmlBuffer, HtmlTagReader, HtmlTagWriter, unnest_indent_tags
 from keepnote_gui.richtext.textbuffer_tools import TagNameDom
-#from keepnote_gui.richtext.richtextbuffer import ignore_tag
 from keepnote_gui.richtext.textbuffer_tools import iter_buffer_contents, TextBufferDom
 from keepnote_gui.richtext.richtext_tags import RichTextTag, RichTextIndentTag
-
-#from BeautifulSoup import BeautifulSoup
-
-
+#from keepnote_gui.richtext.richtextbuffer import ignore_tag
 
 
 

@@ -14,7 +14,6 @@ O Allow submitting new entries with <Enter>
 O Arbitrarily named templates
 O Switch from libglade to GtkBuilder
 O Automatic insertion of photo links for current day
-X Fix: The following words will be hidden from clouds: ['\xc2\xa0'...
 
 
 Maybe even some of those features will make it into RedNotebook:
@@ -55,6 +54,7 @@ O Remove GTKMozembed dependency
    O remove numbered lists
    O enable stricken text with postproc '(?i)(</?)s>'  '\1strike>'
 O setup.py ... --install-layout=deb
+X Fix: The following words will be hidden from clouds: ['\xc2\xa0'...
   
 0.6.7
 X Make deb package Python 2.6 compatible
