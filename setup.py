@@ -30,7 +30,9 @@ parameters = {'name'          : 'rednotebook',
                     'license'       : "GPL", 
                     'keywords'      : "diary", 
                     'scripts'       : ['rednotebook/rednotebook'], 
-                    'packages'      : ['rednotebook', 'rednotebook.gui', 'rednotebook.util'], 
+                    'packages'      : ['rednotebook', 'rednotebook.util', 'rednotebook.gui', \
+									'rednotebook.gui.keepnote', 'rednotebook.gui.keepnote.gui', \
+									'rednotebook.gui.keepnote.gui.richtext'],
                     'package_data'  : {'rednotebook': ['images/*.png', 'images/redNotebookIcon/*.png',
 														'files/*.css', 'files/*.glade', 'files/*.cfg',]},
                    }

@@ -45,16 +45,19 @@ O Allow choosing a folder for RedNotebook content
 	O Import of exported backups
 O Click on an existing category then right mouse click to add a new entry as 
   opposed to clicking new entry, then having to select the category.
-  
-0.7
-O Remove GTKMozembed dependency
+
+0.6.9
+O enable stricken text with postproc '(?i)(</?)s>'  '\1strike>'
+O Handle local file opening
+O setup.py ... --install-layout=deb together with --prefix=/usr/local
+O Allow inserting directories
+O Middle toolbar is too big
+
+0.6.8
+X Drop GTKMozembed dependency
    X Add keepnote modules
-   X h3
-   X hr
-   O remove numbered lists
-   O enable stricken text with postproc '(?i)(</?)s>'  '\1strike>'
-O setup.py ... --install-layout=deb
-X Fix: The following words will be hidden from clouds: ['\xc2\xa0'...
+   X remove numbered lists
+X Minor Bugfixes
   
 0.6.7
 X Make deb package Python 2.6 compatible

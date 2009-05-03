@@ -9,22 +9,9 @@
     === Ubuntu/Debian ===
     sudo apt-get install python-yaml python-gtk2
     
-    optionally: sudo apt-get install python-gnome2-extras
-    
 
     === Fedora ===
     yum -y install python-devel PyYAML
-    
-    optionally: yum -y install gnome-python2-gtkmozembed
-    
-    
-    
-    === Optional ===
-    
-    - python-gtkmozembed can be used optionally.
-      RedNotebook can run without it, but if you want to see the day preview 
-      inside RedNotebook instead of in your browser, please install gtkmozembed.
-      Sometimes it is found in packages called python-gnome2-extras or similar.
     
 
 
@@ -43,16 +30,6 @@ If you installed the program into "site-packages" you can now run the command "r
 in any shell.
 
 Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py".
-
-
-    == GTKMozembed ==
-    If RedNotebook crashes at startup, there is probably a problem with GTKMozembed.
-    To solve it, you can edit $HOME/.rednotebook/configuration.cfg (The file will exist
-    after the first execution of RedNotebook).
-    In the config file you must change the two paths containing "xulrunner" to 
-    point to the correct location of xulrunner on your system.
-    
-    If that does not solve the problem, try setting useGTKMozembed to 0.
 
 
 ===== THANKS =====

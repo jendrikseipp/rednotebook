@@ -197,9 +197,8 @@ class MainWindow(object):
 				self.html_editor.hide()
 				self.preview_button.set_stock_id('gtk-media-play')
 				self.preview_button.set_label('Preview')
+				
 				self.preview_mode = False
-				
-				
 			else:
 				text_scrolledwindow.hide()
 				self.html_editor.show()
@@ -207,16 +206,9 @@ class MainWindow(object):
 				text_markup = day.text
 				html = markup.convertMarkupToTarget(text_markup, 'xhtml')
 				self.html_editor.load_html(html)
-				#markup.preview_in_browser(self.redNotebook.sortedDays, self.redNotebook.day)
 				
-				#image = gtk.Image()
-				#image.set_from_stock('gtk-edit', gtk.ICON_SIZE_SMALL_TOOLBAR)
-				#self.preview_button.set_image(image)
 				self.preview_button.set_stock_id('gtk-edit')
 				self.preview_button.set_label('   Edit    ')
-				#self.preview_button.set_sensitive(False)
-				#self.back.connect('clicked', self.on_back)
-				#top.pack_start(self.back, False, False)
 			
 				self.preview_mode = True
 				
