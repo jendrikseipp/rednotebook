@@ -26,6 +26,8 @@ import pango
 
 from rednotebook.util import filesystem
 
+print filesystem.guiDir
+
 # Make the import of "keepnote" possible
 sys.path.insert(0, filesystem.guiDir)
 

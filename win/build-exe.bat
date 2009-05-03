@@ -7,3 +7,5 @@ cd dist
 
 REM try the exe
 redNotebook.exe
+
+pause
