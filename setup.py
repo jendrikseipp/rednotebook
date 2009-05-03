@@ -61,16 +61,16 @@ py2exeParameters = {
 	  	  			'options' : {'py2exe': {'bundle_files': 3,
 											'includes': 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject',
 											'packages':'encodings',
+											#'skip_archive': 1,
 											}
 								}, 
 	  				#include library in exe
 	  	  			'zipfile' : None, 
+					
 	  				#windows for gui, console for cli
 	  	  			'windows' : [{
 									'script': 'rednotebook/redNotebook.py',
 									'icon_resources': [(1, 'win/rednotebook.ico')],
-									#Adding manifest seems to have no effect
-									#"other_resources": [(24,1,manifest)], 
 								}],
 					'data_files' : [('files', ['rednotebook/files/mainWindow.glade',
 												'rednotebook/files/stylesheet.css',]),

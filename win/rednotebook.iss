@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
-AppVerName=RedNotebook 0.6.4
+AppVerName=RedNotebook 0.6.8
 ; AppPublisher=Jendrik Seipp
 AppPublisherURL=http://rednotebook.sourceforge.net
 AppSupportURL=http://rednotebook.sourceforge.net
@@ -15,7 +15,7 @@ AppUpdatesURL=http://rednotebook.sourceforge.net
 DefaultDirName={pf}\RedNotebook
 DefaultGroupName=RedNotebook
 AllowNoIcons=yes
-OutputBaseFilename=rednotebook-0.6.4-win32
+OutputBaseFilename=rednotebook-0.6.8-win32
 SetupIconFile=rednotebook.ico
 Compression=lzma
 SolidCompression=yes
@@ -29,7 +29,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\dist\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\dist\*"; Excludes: "rednotebook.log"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
