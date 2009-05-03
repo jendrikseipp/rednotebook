@@ -15,8 +15,8 @@ import gtk.glade
 
 
 # keepnote imports
-import keepnote
-from keepnote import get_resource
+##import keepnote
+##from keepnote import get_resource
 
 
 

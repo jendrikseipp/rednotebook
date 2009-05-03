@@ -18,13 +18,13 @@ import gtk.glade
 import gobject
 
 # keepnote imports
-import keepnote
-from keepnote import \
-     KeepNoteError
-from keepnote.notebook import \
-     NoteBookError, \
-     NoteBookVersionError
-from keepnote import notebook as notebooklib
+##import keepnote
+##from keepnote import \
+##     KeepNoteError
+##from keepnote.notebook import \
+##     NoteBookError, \
+##     NoteBookVersionError
+##from keepnote import notebook as notebooklib
 from keepnote.gui import richtext
 from keepnote.gui.richtext import RichTextView, RichTextIO, RichTextError
 from keepnote.gui import \

@@ -2,7 +2,6 @@ import sys
 import os
 #sys.path.insert(0, '/home/jendrik/projects/RedNotebook/ref/keepnote-0.5.2')
 
-
 sys.path.insert(0, '/home/jendrik/projects/RedNotebook/rednotebook/gui')
 
 import gtk
@@ -17,16 +16,18 @@ h3 already works
 line: works
 link: should work
 picture: local pictures work, remote ones now also do
+
+remove imports from keepnote files:
+sed -i '/.*import.*/s/^/#/' sedTest.txt
 '''
 
 
-from keepnote_gui.editor import KeepNoteEditor
-from keepnote_gui.richtext import RichTextView, RichTextModTag, RichTextIO, HtmlError, RichTextError, RichTextImage, is_relative_file
-from keepnote_gui.richtext.richtext_html import HtmlBuffer, HtmlTagReader, HtmlTagWriter, unnest_indent_tags
-from keepnote_gui.richtext.textbuffer_tools import TagNameDom
-from keepnote_gui.richtext.textbuffer_tools import iter_buffer_contents, TextBufferDom
-from keepnote_gui.richtext.richtext_tags import RichTextTag, RichTextIndentTag
-#from keepnote_gui.richtext.richtextbuffer import ignore_tag
+from keepnote.gui.editor import KeepNoteEditor
+from keepnote.gui.richtext import RichTextView, RichTextModTag, RichTextIO, HtmlError, RichTextError, RichTextImage, is_relative_file
+from keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlTagReader, HtmlTagWriter, unnest_indent_tags
+from keepnote.gui.richtext.textbuffer_tools import TagNameDom, TextBufferDom, iter_buffer_contents
+from keepnote.gui.richtext.richtext_tags import RichTextTag#, RichTextIndentTag
+#from keepnote.gui.richtext.richtextbuffer import ignore_tag
 
 
 
@@ -219,14 +220,14 @@ class HtmlIO(RichTextIO):
 		except IOError:
 			pass
 			
-		#except (HtmlError, IOError, Exception), e:
-			#print 'ERROR', e
-			#err = e
+		except (HtmlError, IOError, Exception), e:
+			print 'ERROR', e
+			err = e
 			
-			## TODO: turn into function
-			#textbuffer.clear()
-			#textview.set_buffer(textbuffer)
-			#ret = False
+			# TODO: turn into function
+			textbuffer.clear()
+			textview.set_buffer(textbuffer)
+			ret = False
 		else:
 			# finish loading
 			path = os.path.dirname(os.path.abspath(__file__))#filename)

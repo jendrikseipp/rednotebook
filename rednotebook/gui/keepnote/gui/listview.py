@@ -20,8 +20,8 @@ from keepnote.gui import \
      get_resource_image, \
      get_resource_pixbuf
 from keepnote.gui import treemodel
-from keepnote import notebook
-from keepnote.notebook import NoteBookError
+##from keepnote import notebook
+##from keepnote.notebook import NoteBookError
 
 
 

@@ -14,8 +14,8 @@ pygtk.require('2.0')
 import gtk.glade
 
 # keepnote imports
-import keepnote
-from keepnote import get_resource
+##import keepnote
+##from keepnote import get_resource
 from keepnote.gui.font_selector import FontSelector
 from keepnote.gui import richtext
 

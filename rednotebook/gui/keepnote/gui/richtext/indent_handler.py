@@ -6,8 +6,8 @@ import gtk, gobject, pango
 from gtk import gdk
 
 # keepnote imports
-import keepnote
-from keepnote.undo import UndoStack
+##import keepnote
+##from keepnote.undo import UndoStack
 
 from keepnote.gui.richtext.textbuffer_tools import \
      iter_buffer_contents, \

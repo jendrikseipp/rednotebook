@@ -27,19 +27,19 @@ import gobject
 import pango
 
 # keepnote imports
-import keepnote
-from keepnote import KeepNoteError
+##import keepnote
+##from keepnote import KeepNoteError
 from keepnote.gui import \
      get_resource, \
      get_resource_image, \
      get_resource_pixbuf, \
      get_accel_file, \
      lookup_icon_filename
-from keepnote.notebook import \
-     NoteBookError, \
-     NoteBookVersionError
-from keepnote import notebook as notebooklib
-import keepnote.search
+##from keepnote.notebook import \
+##     NoteBookError, \
+##     NoteBookVersionError
+##from keepnote import notebook as notebooklib
+##import keepnote.search
 from keepnote.gui import richtext
 from keepnote.gui.richtext import RichTextView, RichTextImage, RichTextError
 from keepnote.gui.treeview import KeepNoteTreeView
@@ -56,7 +56,7 @@ from keepnote.gui import \
 from keepnote.gui.editor import KeepNoteEditor, EditorMenus
 from keepnote.gui.icon_menu import IconMenu
 
-from keepnote import tasklib
+##from keepnote import tasklib
 
 
 CONTEXT_MENU_ACCEL_PATH = "<main>/context_menu"

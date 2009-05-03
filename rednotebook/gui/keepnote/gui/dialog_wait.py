@@ -16,9 +16,9 @@ import gtk.glade
 import gobject
 
 # keepnote imports
-import keepnote
-from keepnote import get_resource
-from keepnote import tasklib    
+##import keepnote
+##from keepnote import get_resource
+##from keepnote import tasklib    
     
 
 class WaitDialog (object):

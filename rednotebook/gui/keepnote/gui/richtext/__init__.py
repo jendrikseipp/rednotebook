@@ -51,7 +51,7 @@ from keepnote.gui.richtext.richtext_tags import \
 # richtext io
 from keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlError
 
-from keepnote import safefile
+##from keepnote import safefile
 
 
 #=============================================================================
