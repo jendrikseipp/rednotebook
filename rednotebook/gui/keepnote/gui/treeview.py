@@ -14,9 +14,9 @@ import gtk, gobject, pango
 from gtk import gdk
 
 # keepnote imports
-from keepnote.gui import treemodel
-from keepnote.gui import basetreeview
-##from keepnote.notebook import NoteBookTrash, \
+from rednotebook.gui.keepnote.gui import treemodel
+from rednotebook.gui.keepnote.gui import basetreeview
+##from rednotebook.gui.keepnote.notebook import NoteBookTrash, \
 ##              NoteBookError
 
 

@@ -18,7 +18,7 @@ import gtk.glade
 import gobject
 import pango
 
-from keepnote.gui import get_resource_image
+from rednotebook.gui.keepnote.gui import get_resource_image
 
 
 FONT_LETTER = "A"

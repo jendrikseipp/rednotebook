@@ -68,7 +68,7 @@ if baseDir not in sys.path:
 
 
 
-'This version of import is needed for win32 to work'
+# This version of import is needed for win32 to work
 from rednotebook.util import unicode
 from rednotebook.util import dates
 from rednotebook import info

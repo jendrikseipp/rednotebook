@@ -9,7 +9,7 @@
 
 import sys
 
-from keepnote.linked_list import LinkedList
+from rednotebook.gui.keepnote.linked_list import LinkedList
 
 
 

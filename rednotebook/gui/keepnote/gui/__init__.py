@@ -19,8 +19,10 @@ import gobject
 
 # keepnote imports
 ##import keepnote
-from keepnote import get_resource
-##from keepnote.notebook import \
+
+## Seems to be needed
+from rednotebook.gui.keepnote import get_resource
+##from rednotebook.gui.keepnote.notebook import \
 ##     NoteBookError, \
 ##     NoteBookTrash
 ##import keepnote.notebook as notebooklib

@@ -7,9 +7,9 @@ from gtk import gdk
 
 # keepnote imports
 ##import keepnote
-##from keepnote.undo import UndoStack
+##from rednotebook.gui.keepnote.undo import UndoStack
 
-from keepnote.gui.richtext.textbuffer_tools import \
+from rednotebook.gui.keepnote.gui.richtext.textbuffer_tools import \
      iter_buffer_contents, \
      buffer_contents_iter_to_offset, \
      normalize_tags, \
@@ -17,11 +17,11 @@ from keepnote.gui.richtext.textbuffer_tools import \
      buffer_contents_apply_tags
 
 # import tags
-from keepnote.gui.richtext.richtext_tags import \
+from rednotebook.gui.keepnote.gui.richtext.richtext_tags import \
      RichTextIndentTag, \
      RichTextBulletTag
 
-from keepnote.gui.richtext.richtextbasebuffer import \
+from rednotebook.gui.keepnote.gui.richtext.richtextbasebuffer import \
      RichTextBaseBuffer, \
      add_child_to_buffer, \
      move_to_start_of_line, \

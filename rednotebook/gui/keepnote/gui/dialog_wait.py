@@ -17,8 +17,8 @@ import gobject
 
 # keepnote imports
 ##import keepnote
-##from keepnote import get_resource
-##from keepnote import tasklib    
+##from rednotebook.gui.keepnote import get_resource
+##from rednotebook.gui.keepnote import tasklib    
     
 
 class WaitDialog (object):

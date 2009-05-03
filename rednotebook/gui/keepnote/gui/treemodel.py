@@ -8,8 +8,8 @@ import gtk, gobject, pango
 from gtk import gdk
 
 # keepnote imports
-from keepnote.gui import get_node_icon
-##from keepnote.notebook import NoteBookError, get_str_timestamp
+from rednotebook.gui.keepnote.gui import get_node_icon
+##from rednotebook.gui.keepnote.notebook import NoteBookError, get_str_timestamp
 
 
 

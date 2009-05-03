@@ -8,8 +8,8 @@ import gtk, gobject, pango
 from gtk import gdk
 
 # keepnote imports
-##from keepnote.notebook import NoteBookError, NoteBookTrash
-from keepnote.gui.treemodel import \
+##from rednotebook.gui.keepnote.notebook import NoteBookError, NoteBookTrash
+from rednotebook.gui.keepnote.gui.treemodel import \
      get_path_from_node
      
 

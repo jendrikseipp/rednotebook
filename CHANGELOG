@@ -1,5 +1,11 @@
 ==== Changelog ====
 
+=== 0.6.8 (2009-05-03) ===
+* Drop GTKMozembed dependency
+   * Add keepnote modules
+   * remove numbered lists
+* Minor Bugfixes
+
 === 0.6.7 (2009-04-21) ===
  * Make deb package Python 2.6 compatible
  * Add yaml-parser error handling

@@ -3,11 +3,11 @@ MAX_UNDOS = 100
 
 
 # keepnote imports
-from keepnote.undo import UndoStack
-from keepnote.listening import Listeners
+from rednotebook.gui.keepnote.undo import UndoStack
+from rednotebook.gui.keepnote.listening import Listeners
 
 # import textbuffer tools
-from keepnote.gui.richtext.textbuffer_tools import \
+from rednotebook.gui.keepnote.gui.richtext.textbuffer_tools import \
      iter_buffer_contents, \
      buffer_contents_iter_to_offset, \
      normalize_tags, \
@@ -15,7 +15,7 @@ from keepnote.gui.richtext.textbuffer_tools import \
      buffer_contents_apply_tags
 
 # richtext imports
-from keepnote.gui.richtext.richtextbase_tags import \
+from rednotebook.gui.keepnote.gui.richtext.richtextbase_tags import \
      RichTextTag
 
 

@@ -28,23 +28,23 @@ import pango
 
 # keepnote imports
 ##import keepnote
-##from keepnote import KeepNoteError
-from keepnote.gui import \
+##from rednotebook.gui.keepnote import KeepNoteError
+from rednotebook.gui.keepnote.gui import \
      get_resource, \
      get_resource_image, \
      get_resource_pixbuf, \
      get_accel_file, \
      lookup_icon_filename
-##from keepnote.notebook import \
+##from rednotebook.gui.keepnote.notebook import \
 ##     NoteBookError, \
 ##     NoteBookVersionError
-##from keepnote import notebook as notebooklib
+##from rednotebook.gui.keepnote import notebook as notebooklib
 ##import keepnote.search
-from keepnote.gui import richtext
-from keepnote.gui.richtext import RichTextView, RichTextImage, RichTextError
-from keepnote.gui.treeview import KeepNoteTreeView
-from keepnote.gui.listview import KeepNoteListView
-from keepnote.gui import \
+from rednotebook.gui.keepnote.gui import richtext
+from rednotebook.gui.keepnote.gui.richtext import RichTextView, RichTextImage, RichTextError
+from rednotebook.gui.keepnote.gui.treeview import KeepNoteTreeView
+from rednotebook.gui.keepnote.gui.listview import KeepNoteListView
+from rednotebook.gui.keepnote.gui import \
     screenshot_win, \
     dialog_app_options, \
     dialog_find, \
@@ -53,10 +53,10 @@ from keepnote.gui import \
     dialog_wait, \
     dialog_update_notebook, \
     dialog_node_icon
-from keepnote.gui.editor import KeepNoteEditor, EditorMenus
-from keepnote.gui.icon_menu import IconMenu
+from rednotebook.gui.keepnote.gui.editor import KeepNoteEditor, EditorMenus
+from rednotebook.gui.keepnote.gui.icon_menu import IconMenu
 
-##from keepnote import tasklib
+##from rednotebook.gui.keepnote import tasklib
 
 
 CONTEXT_MENU_ACCEL_PATH = "<main>/context_menu"

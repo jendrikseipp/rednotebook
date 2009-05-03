@@ -24,13 +24,6 @@ import StringIO
 import gtk
 import pango
 
-from rednotebook.util import filesystem
-
-print filesystem.guiDir
-
-# Make the import of "keepnote" possible
-sys.path.insert(0, filesystem.guiDir)
-
 '''
 Notes:
 This module makes use of the keepnote gui module and especially its richtext 
@@ -40,19 +33,19 @@ Later the richtext editing feature will be added.
 
 Some code in this module has been taken from keepnote modules and was altered 
 to fit RedNotebook's needs. The original keepnote modules have not been altered
-in any significant way. Only some imports where commented out.
+in any significant way. Only some imports where changed or commented out.
 '''
 
 
-from keepnote.gui.editor import KeepNoteEditor
-from keepnote.gui.richtext import RichTextView, RichTextModTag, RichTextIO, \
+from rednotebook.gui.keepnote.gui.editor import KeepNoteEditor
+from rednotebook.gui.keepnote.gui.richtext import RichTextView, RichTextModTag, RichTextIO, \
 					HtmlError, RichTextError, RichTextImage, is_relative_file
-from keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlTagReader, \
+from rednotebook.gui.keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlTagReader, \
 											HtmlTagWriter, unnest_indent_tags
-from keepnote.gui.richtext.textbuffer_tools import TagNameDom, TextBufferDom, \
+from rednotebook.gui.keepnote.gui.richtext.textbuffer_tools import TagNameDom, TextBufferDom, \
 													iter_buffer_contents
-from keepnote.gui.richtext.richtext_tags import RichTextTag
-from keepnote.gui.richtext.richtextbuffer import ignore_tag
+from rednotebook.gui.keepnote.gui.richtext.richtext_tags import RichTextTag
+from rednotebook.gui.keepnote.gui.richtext.richtextbuffer import ignore_tag
 
 
 

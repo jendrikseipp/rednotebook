@@ -14,14 +14,14 @@ import gtk, gobject, pango
 from gtk import gdk
 
 
-from keepnote.gui import basetreeview
-from keepnote.gui import \
+from rednotebook.gui.keepnote.gui import basetreeview
+from rednotebook.gui.keepnote.gui import \
      get_resource, \
      get_resource_image, \
      get_resource_pixbuf
-from keepnote.gui import treemodel
-##from keepnote import notebook
-##from keepnote.notebook import NoteBookError
+from rednotebook.gui.keepnote.gui import treemodel
+##from rednotebook.gui.keepnote import notebook
+##from rednotebook.gui.keepnote.notebook import NoteBookError
 
 
 

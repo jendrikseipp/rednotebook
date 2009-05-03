@@ -19,21 +19,21 @@ import gobject
 
 # keepnote imports
 ##import keepnote
-##from keepnote import \
+##from rednotebook.gui.keepnote import \
 ##     KeepNoteError
-##from keepnote.notebook import \
+##from rednotebook.gui.keepnote.notebook import \
 ##     NoteBookError, \
 ##     NoteBookVersionError
-##from keepnote import notebook as notebooklib
-from keepnote.gui import richtext
-from keepnote.gui.richtext import RichTextView, RichTextIO, RichTextError
-from keepnote.gui import \
+##from rednotebook.gui.keepnote import notebook as notebooklib
+from rednotebook.gui.keepnote.gui import richtext
+from rednotebook.gui.keepnote.gui.richtext import RichTextView, RichTextIO, RichTextError
+from rednotebook.gui.keepnote.gui import \
      get_resource, \
      get_resource_image, \
      get_resource_pixbuf
-from keepnote.gui.font_selector import FontSelector
-from keepnote.gui.colortool import FgColorTool, BgColorTool
-from keepnote.gui.richtext.richtext_tags import color_tuple_to_string
+from rednotebook.gui.keepnote.gui.font_selector import FontSelector
+from rednotebook.gui.keepnote.gui.colortool import FgColorTool, BgColorTool
+from rednotebook.gui.keepnote.gui.richtext.richtext_tags import color_tuple_to_string
 
 
 

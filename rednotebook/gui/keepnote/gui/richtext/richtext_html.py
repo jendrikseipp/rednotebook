@@ -9,7 +9,7 @@ from HTMLParser import HTMLParser
 from xml.sax.saxutils import escape
 
 # keepnote imports
-from keepnote.gui.richtext.textbuffer_tools import \
+from rednotebook.gui.keepnote.gui.richtext.textbuffer_tools import \
      iter_buffer_contents, \
      buffer_contents_iter_to_offset, \
      normalize_tags, \
@@ -22,12 +22,12 @@ from keepnote.gui.richtext.textbuffer_tools import \
      TagNameDom
 
 
-from keepnote.gui.richtext.richtextbuffer import \
+from rednotebook.gui.keepnote.gui.richtext.richtextbuffer import \
      RichTextBuffer, \
      RichTextImage, \
      RichTextHorizontalRule
 
-from keepnote.gui.richtext.richtext_tags import \
+from rednotebook.gui.keepnote.gui.richtext.richtext_tags import \
      RichTextTag, \
      RichTextModTag, \
      RichTextFamilyTag, \

@@ -16,7 +16,7 @@ import gtk.glade
 
 # keepnote imports
 ##import keepnote
-##from keepnote import get_resource
+##from rednotebook.gui.keepnote import get_resource
 
 # TODO: separate out error callback
 

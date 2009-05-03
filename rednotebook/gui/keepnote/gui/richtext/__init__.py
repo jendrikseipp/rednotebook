@@ -25,11 +25,11 @@ except ImportError:
 
 
 # textbuffer_tools imports
-from keepnote.gui.richtext.textbuffer_tools import \
+from rednotebook.gui.keepnote.gui.richtext.textbuffer_tools import \
      iter_buffer_contents
 
 # richtextbuffer imports
-from keepnote.gui.richtext.richtextbuffer import \
+from rednotebook.gui.keepnote.gui.richtext.richtextbuffer import \
      ignore_tag, \
      add_child_to_buffer, \
      RichTextBuffer, \
@@ -37,7 +37,7 @@ from keepnote.gui.richtext.richtextbuffer import \
      RichTextIndentTag
 
 # tag imports
-from keepnote.gui.richtext.richtext_tags import \
+from rednotebook.gui.keepnote.gui.richtext.richtext_tags import \
      RichTextModTag, \
      RichTextJustifyTag, \
      RichTextFamilyTag, \
@@ -49,9 +49,9 @@ from keepnote.gui.richtext.richtext_tags import \
      RichTextLinkTag
 
 # richtext io
-from keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlError
+from rednotebook.gui.keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlError
 
-##from keepnote import safefile
+##from rednotebook.gui.keepnote import safefile
 
 
 #=============================================================================

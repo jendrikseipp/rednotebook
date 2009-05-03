@@ -13,8 +13,13 @@ def comment_out_imports(file):
 	for lineIndex in range(len(lines)):
 		line = lines[lineIndex]
 		
+		if ('import ' in line and 'keepnote' in line):
+			lines[lineIndex] = line.replace('from keepnote', 'from rednotebook.gui.keepnote')
+		
 		if line.strip().startswith('#'):
 			continue
+		
+		
 		
 		for item in whitelist:
 			if item in line:

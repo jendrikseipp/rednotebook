@@ -6,8 +6,8 @@
 
 """
 
-##from keepnote.linked_list import LinkedList
-from keepnote.linked_tree import LinkedTreeNode
+##from rednotebook.gui.keepnote.linked_list import LinkedList
+from rednotebook.gui.keepnote.linked_tree import LinkedTreeNode
 
 
 # TextBuffer uses this char for anchors and pixbufs

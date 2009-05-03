@@ -12,7 +12,7 @@ from gtk import gdk
 
 
 # richtext imports
-from keepnote.gui.richtext.richtextbase_tags import \
+from rednotebook.gui.keepnote.gui.richtext.richtextbase_tags import \
      RichTextBaseTagTable, \
      RichTextTagClass, \
      RichTextTag

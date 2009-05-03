@@ -18,16 +18,16 @@ import gobject
 
 # keepnote imports
 ##import keepnote
-from keepnote.gui import \
+from rednotebook.gui.keepnote.gui import \
      guess_open_icon_filename, \
      lookup_icon_filename, \
      get_pixbuf, \
      builtin_icons, \
      get_all_icon_basenames
-##from keepnote import tasklib
-##from keepnote import notebook_update
-##from keepnote import notebook as notebooklib
-from keepnote.gui import get_resource
+##from rednotebook.gui.keepnote import tasklib
+##from rednotebook.gui.keepnote import notebook_update
+##from rednotebook.gui.keepnote import notebook as notebooklib
+from rednotebook.gui.keepnote.gui import get_resource
 
 
 def browse_file(parent, title, filename=None):

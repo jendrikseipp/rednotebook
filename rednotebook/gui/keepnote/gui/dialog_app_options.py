@@ -15,9 +15,9 @@ import gtk.glade
 
 # keepnote imports
 ##import keepnote
-##from keepnote import get_resource
-from keepnote.gui.font_selector import FontSelector
-from keepnote.gui import richtext
+##from rednotebook.gui.keepnote import get_resource
+from rednotebook.gui.keepnote.gui.font_selector import FontSelector
+from rednotebook.gui.keepnote.gui import richtext
 
 
 class ApplicationOptionsDialog (object):

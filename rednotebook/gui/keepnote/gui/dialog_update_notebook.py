@@ -17,11 +17,11 @@ import gobject
 
 # keepnote imports
 ##import keepnote
-from keepnote.gui import dialog_wait
-##from keepnote import tasklib
-##from keepnote import notebook_update
-##from keepnote import notebook as notebooklib
-from keepnote.gui import get_resource
+from rednotebook.gui.keepnote.gui import dialog_wait
+##from rednotebook.gui.keepnote import tasklib
+##from rednotebook.gui.keepnote import notebook_update
+##from rednotebook.gui.keepnote import notebook as notebooklib
+from rednotebook.gui.keepnote.gui import get_resource
 
 
 MESSAGE_TEXT = "This notebook has format version %d and must be updated to version %d before openning."
