@@ -42,10 +42,7 @@ try:
 	use_moz = True
 except ImportError:
 	use_moz = False
-	utils.printError('gtkmozembed is not installed. RedNotebook can run without it,\n'
-					'but if you want to see the day preview inside RedNotebook instead of \n'
-					'in your browser, please install gtkmozembed (sometimes it is \n'
-					'found in the package python-gnome2-extras).')
+	print 'The internal preview is used in favor of gtkmozembed.'
 
 from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.gui.richtext import HtmlEditor

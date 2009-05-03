@@ -1,3 +1,22 @@
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
+
 import sys
 import os
 
@@ -11,23 +30,27 @@ from rednotebook.util import filesystem
 sys.path.insert(0, filesystem.guiDir)
 
 '''
-No ol's anymore: Let txt2tags produce ol's, but only convert back to ul's
-h3 already works
-line: works
-link: should work
-picture: local pictures work, remote ones now also do
+Notes:
+This module makes use of the keepnote gui module and especially its richtext 
+submodule.
+It provides the HtmlEditor class which is used for previewing a day's text.
+Later the richtext editing feature will be added.
 
-remove imports from keepnote files:
-sed -i '/.*import.*/s/^/#/' sedTest.txt
+Some code in this module has been taken from keepnote modules and was altered 
+to fit RedNotebook's needs. The original keepnote modules have not been altered
+in any significant way. Only some imports where commented out.
 '''
 
 
 from keepnote.gui.editor import KeepNoteEditor
-from keepnote.gui.richtext import RichTextView, RichTextModTag, RichTextIO, HtmlError, RichTextError, RichTextImage, is_relative_file
-from keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlTagReader, HtmlTagWriter, unnest_indent_tags
-from keepnote.gui.richtext.textbuffer_tools import TagNameDom, TextBufferDom, iter_buffer_contents
-from keepnote.gui.richtext.richtext_tags import RichTextTag#, RichTextIndentTag
-#from keepnote.gui.richtext.richtextbuffer import ignore_tag
+from keepnote.gui.richtext import RichTextView, RichTextModTag, RichTextIO, \
+					HtmlError, RichTextError, RichTextImage, is_relative_file
+from keepnote.gui.richtext.richtext_html import HtmlBuffer, HtmlTagReader, \
+											HtmlTagWriter, unnest_indent_tags
+from keepnote.gui.richtext.textbuffer_tools import TagNameDom, TextBufferDom, \
+													iter_buffer_contents
+from keepnote.gui.richtext.richtext_tags import RichTextTag
+from keepnote.gui.richtext.richtextbuffer import ignore_tag
 
 
 
@@ -36,6 +59,7 @@ IGNORE_TAGS = set(["gtkspell-misspelled"])
 
 def ignore_tag(tag):
     return tag.get_property("name") in IGNORE_TAGS
+   
     
 class RichTextH3Tag(RichTextTag):
 	def __init__(self, kind):
