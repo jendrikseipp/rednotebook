@@ -55,7 +55,7 @@ templateDir = os.path.join(redNotebookUserDir, "templates/")
 configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
 filesDir = os.path.join(appDir, 'files/')
 fileNameExtension = '.txt'
-guiDir = os.path.join(appDir, 'gui/')
+guiDir = os.path.join(appDir, 'gui')
 
 last_pic_dir = userHomedir
 last_file_dir = userHomedir

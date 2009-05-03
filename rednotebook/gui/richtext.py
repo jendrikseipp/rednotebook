@@ -311,10 +311,10 @@ class HtmlEditor(KeepNoteEditor):
 		self._sw.add(self._textview)
 		self.pack_start(self._sw)
 		
-		self._textview.connect("font-change", self._on_font_callback)
+		##self._textview.connect("font-change", self._on_font_callback)
 		##self._textview.connect("modified", self._on_modified_callback)
-		self._textview.connect("child-activated", self._on_child_activated)
-		self._textview.connect("visit-url", self._on_visit_url)
+		##self._textview.connect("child-activated", self._on_child_activated)
+		##self._textview.connect("visit-url", self._on_visit_url)
 		self._textview.disable()
 		
 		self.load_html('<html></html>')
