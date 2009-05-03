@@ -1,14 +1,14 @@
 import sys
 import os
-#sys.path.insert(0, '/home/jendrik/projects/RedNotebook/ref/keepnote-0.5.2')
-
-sys.path.insert(0, '/home/jendrik/projects/RedNotebook/rednotebook/gui')
 
 import gtk
 import pango
 import StringIO
 
-#import keepnote
+from rednotebook.util import filesystem
+
+# Make the import of "keepnote" possible
+sys.path.insert(0, filesystem.guiDir)
 
 '''
 No ol's anymore: Let txt2tags produce ol's, but only convert back to ul's
