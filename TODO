@@ -31,6 +31,7 @@ O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
 O Fix opening files from mozembed
 O CTRL-C should copy the html text when in view tab
+O Allow inserting directories
 
 
 1.0
@@ -48,10 +49,10 @@ O Click on an existing category then right mouse click to add a new entry as
 
 0.6.9
 O enable stricken text with postproc '(?i)(</?)s>'  '\1strike>'
-O Handle local file opening
+X Handle local file opening
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
-O Allow inserting directories
-O Middle toolbar is too big
+X Middle toolbar is too big
+O Delete GTKMozembed cruft
 
 0.6.8
 X Drop GTKMozembed dependency
