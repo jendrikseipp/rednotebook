@@ -42,7 +42,8 @@ class ExportAssistant (object):
         self.redNotebook = main_window.redNotebook
         self.main_window = main_window
         
-        self.format_extension_map = {'Text': 'txt', 'HTML': 'html', 'Latex': 'tex', 'PDF' : 'pdf'}
+        self.format_extension_map = {'Text': 'txt', 'HTML': 'html', \
+									'Latex': 'tex', 'PDF' : 'pdf'}
         cache_wtree = self.main_window.wTree
         self.assistant = cache_wtree.get_widget('export_assistant')
         dic = {
@@ -346,9 +347,21 @@ class ExportAssistant (object):
         if self.is_all_entries_selected() :
             exportDays = self.redNotebook.sortedDays
         else:
-            exportDays = self.redNotebook.getDaysInDateRange((self.get_start_date(), self.get_end_date()))
+            exportDays = self.redNotebook.getDaysInDateRange((self.get_start_date(), \
+															self.get_end_date()))
+            
+        selected_categories = self.get_selected_categories_values()
+        export_text = self.is_export_text_selected()
+        
+        print 'selected_categories:', selected_categories
+        
+        markupStringsForEachDay = []
+        for day in exportDays:
+        	day_markup = markup.getMarkupForDay(day, with_text=export_text, \
+											categories=selected_categories)
+        	markupStringsForEachDay.append(day_markup)
 
-        markupStringsForEachDay = map(markup.getMarkupForDay, exportDays)
+        #markupStringsForEachDay = map(markup.getMarkupForDay, exportDays)
         markupString = reduce(operator.add, markupStringsForEachDay)
         
         target = self.format_extension_map.get(self.get_selected_format())

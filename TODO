@@ -46,13 +46,14 @@ O Allow choosing a folder for RedNotebook content
 	O Import of exported backups
 O Click on an existing category then right mouse click to add a new entry as 
   opposed to clicking new entry, then having to select the category.
+O setup.py ... --install-layout=deb together with --prefix=/usr/local
 
 0.6.9
-O enable stricken text with postproc '(?i)(</?)s>'  '\1strike>'
-O Export Categories separately
+X enable stricken text
+X Selection of categories to export
+X Export only text, or only categories
 X Handle local file opening
-O setup.py ... --install-layout=deb together with --prefix=/usr/local
-X Middle toolbar is too big
+X Make toolbars equally sized
 O Delete GTKMozembed cruft
 X Delete markup cruft
 
