@@ -348,12 +348,13 @@ class ExportAssistant (object):
         else:
             exportDays = self.redNotebook.getDaysInDateRange((self.get_start_date(), self.get_end_date()))
 
-        markupStringHeader = 'RedNotebook'
         markupStringsForEachDay = map(markup.getMarkupForDay, exportDays)
         markupString = reduce(operator.add, markupStringsForEachDay)
         
         target = self.format_extension_map.get(self.get_selected_format())
         
-        return markup.convertMarkupToTarget(markupString, target, markupStringHeader)
+        headers = ['RedNotebook', '', '']
+        
+        return markup.convert(markupString, target, headers)
     
     

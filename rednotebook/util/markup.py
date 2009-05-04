@@ -77,45 +77,6 @@ def getMarkupForDay(day, with_text=True, selected_categories=None, with_date=Tru
 	return exportString
 
 
-def convertMarkupToTarget(markup, target, title=''):
-	markup = title + '\n\n\n' + markup #no author provided
-	markup = markup.splitlines()
-	
-	source = txt2tags.process_source_file(contents=markup)			
-	
-	full_parsed, headConfBody = source
-	
-	parameters = {'target': target,}
-	
-	'Important: do not forget ":" after preproc'
-	
-	'''
-	Euro signs do not work in Latex, but they also cannot be
-	substituted by txt2tags
-	'''
-	
-	if target == 'tex':
-		parameters.update({'encoding': 'utf8',	
-							#'preproc': [('€', 'Euro'), ('w', 'WWWW'), ('a', 'AAAA'),],
-							})
-	elif target == 'html' or target == 'xhtml':
-		parameters.update({'encoding': 'UTF-8',
-						'style': [os.path.join(filesystem.filesDir, 'stylesheet.css')],
-						'css-inside': 1,
-						})
-		
-	
-	full_parsed.update(parameters)
-	
-	source = txt2tags.convert_this_files([source])[0]
-	
-	output = ''
-	for line in source:
-		output += line + '\n'
-	
-	return output
-
-
 def get_toc_html(days):
 	
 	html = '''\
@@ -175,8 +136,8 @@ def preview_in_browser(days, current_day):
 	for day in days:
 		date_string = str(day)
 		markupText = getMarkupForDay(day, with_date=False)
-		html = convertMarkupToTarget(markupText, 'xhtml', \
-									title=dates.get_date_string(day.date))
+		headers = [dates.get_date_string(day.date), '', '']
+		html = convert(markupText, 'xhtml', headers)
 		utils.write_file(html, date_string + '.html')
 	
 	utils.write_file(get_toc_html(days), 'toc.html')
@@ -184,7 +145,34 @@ def preview_in_browser(days, current_day):
 	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook.html')
 	
 
-def convert_markup_to_html(txt, headers=None):
+def _get_config(type):
+	
+	config = {}
+	
+	# Set the configuration on the 'config' dict.
+	config = txt2tags.ConfigMaster()._get_defaults()
+	
+	# The Pre (and Post) processing config is a list of lists:
+	# [ [this, that], [foo, bar], [patt, replace] ]
+	config['postproc'] = []
+	config['preproc'] = []
+	
+	if type == 'xhtml' or type == 'html':
+		config['encoding'] = 'UTF-8'	   # document encoding
+		config['toc'] = 0
+		config['style'] = [os.path.join(filesystem.filesDir, 'stylesheet.css')]
+		config['css-inside'] = 1
+	
+		config['postproc'].append(['(?i)(</?)s>', '\\1strike>'])
+		
+	elif type == 'tex':
+		config['encoding'] = 'utf8'
+		config['preproc'].append(['€', 'Euro'])
+	
+	return config
+	
+
+def convert(txt, target, headers=None):
 	'''
 	Code partly taken from txt2tags tarball
 	'''
@@ -196,19 +184,10 @@ def convert_markup_to_html(txt, headers=None):
 	if headers is None:
 		headers = ['', '', '']
 	
-	# Set the configuration on the 'config' dict.
-	config = txt2tags.ConfigMaster()._get_defaults()
-	config['outfile'] = txt2tags.MODULEOUT  # results as list
-	config['target'] = 'html'			   # target type: HTML
-	config['encoding'] = 'UTF-8'	   # document encoding
-	config['toc'] = 1	   # document encoding
-	#config['css-sugar'] = 1                 # CSS flag
+	config = _get_config(target)
 	
-	# The Pre (and Post) processing config is a list of lists:
-	# [ [this, that], [foo, bar], [patt, replace] ]
-	#config['preproc'] = []
-	#config['preproc'].append(['nice','VERY NICE'])
-	#config['preproc'].append(['day','life'])
+	config['outfile'] = txt2tags.MODULEOUT  # results as list
+	config['target'] = target	
 	
 	# Let's do the conversion
 	try:
@@ -219,17 +198,17 @@ def convert_markup_to_html(txt, headers=None):
 		toc = txt2tags.toc_formatter(toc, config)
 		full_doc  = headers + toc + body + footer
 		finished  = txt2tags.finish_him(full_doc, config)
-		html = '\n'.join(finished)
+		result = '\n'.join(finished)
 	
 	# Txt2tags error, show the messsage to the user
 	except txt2tags.error, msg:
 		print msg
-		html = msg
+		result = msg
 	
 	# Unknown error, show the traceback to the user
 	except:
-		html = txt2tags.getUnknownErrorMessage()
-		print html
+		result = txt2tags.getUnknownErrorMessage()
+		print result
 		
-	return html
+	return result
 				

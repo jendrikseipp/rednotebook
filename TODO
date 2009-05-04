@@ -39,7 +39,7 @@ O WYSIWYG editing as an alternative to markup text?
 
 0.8
 O Automatic Backups
-O Export Categories separately
+
 O Allow choosing a folder for RedNotebook content
 	O more formatting options and examples (fill some days of the journal at first startup)
 	O provide TrueCrypt encryption HowTo
@@ -49,10 +49,12 @@ O Click on an existing category then right mouse click to add a new entry as
 
 0.6.9
 O enable stricken text with postproc '(?i)(</?)s>'  '\1strike>'
+O Export Categories separately
 X Handle local file opening
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
 X Middle toolbar is too big
 O Delete GTKMozembed cruft
+X Delete markup cruft
 
 0.6.8
 X Drop GTKMozembed dependency

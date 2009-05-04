@@ -204,7 +204,9 @@ class MainWindow(object):
 				self.html_editor.show()
 				day = self.redNotebook.day
 				text_markup = day.text
-				html = markup.convertMarkupToTarget(text_markup, 'xhtml')
+				html = markup.convert(text_markup, 'xhtml')
+				#html2 = markup.convert_markup_to_html(text_markup)
+				
 				self.html_editor.load_html(html)
 				
 				self.preview_button.set_stock_id('gtk-edit')
@@ -548,7 +550,7 @@ class MainWindow(object):
 	def on_helpMenuItem_activate(self, widget):
 		utils.write_file(info.helpText, './source.txt')
 		headers = ['RedNotebook Documentation', info.version, '']
-		html = markup.convert_markup_to_html(info.helpText, headers)
+		html = markup.convert(info.helpText, 'xhtml', headers)
 		utils.show_html_in_browser(html)
 		
 	def on_checkVersionMenuItem_activate(self, widget):
@@ -561,7 +563,7 @@ class MainWindow(object):
 		
 		self.calendar.set_date(newDate)
 		self.dayTextField.set_text(day.text)
-		self.html_editor.load_html(markup.convertMarkupToTarget(day.text, 'xhtml'))
+		self.html_editor.load_html(markup.convert(day.text, 'xhtml'))
 		self.categoriesTreeView.set_day_content(day)
 		
 		if use_moz:
@@ -941,9 +943,9 @@ class Preview(gtk.VBox):
 			self.entry.set_text(url)
 			
 	def set_day(self, day):
+		title = dates.get_date_string(day.date)
 		markupText = markup.getMarkupForDay(day, with_date=False)
-		html = markup.convertMarkupToTarget(markupText, 'xhtml', \
-										title=dates.get_date_string(day.date))
+		html = markup.convert(markupText, 'xhtml', headers=[title, '', ''])
 		
 		filename = os.path.join(filesystem.tempDir, 'tmp.html')
 		html_file = os.path.abspath(filename)
