@@ -11,7 +11,6 @@ O Better comment code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
 O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Allow submitting new entries with <Enter>
-O Arbitrarily named templates
 O Switch from libglade to GtkBuilder
 O Automatic insertion of photo links for current day
 
@@ -37,24 +36,27 @@ O Allow inserting directories
 1.0
 O WYSIWYG editing as an alternative to markup text?
 
+0.9
+O Arbitrarily named templates
+
 0.8
 O Automatic Backups
-
 O Allow choosing a folder for RedNotebook content
 	O more formatting options and examples (fill some days of the journal at first startup)
 	O provide TrueCrypt encryption HowTo
 	O Import of exported backups
-O Click on an existing category then right mouse click to add a new entry as 
-  opposed to clicking new entry, then having to select the category.
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
 
 0.6.9
-X enable stricken text
+X Reenable stricken text
 X Selection of categories to export
 X Export only text, or only categories
 X Handle local file opening
+O Click on an existing category then right mouse click to add a new entry as 
+  opposed to clicking new entry, then having to select the category.
 X Make toolbars equally sized
 O Delete GTKMozembed cruft
+  O Delete mozembed module from listen-project.org
 X Delete markup cruft
 
 0.6.8
