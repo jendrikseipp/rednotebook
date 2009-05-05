@@ -184,7 +184,7 @@ class MainWindow(object):
 			self.html_editor.load_html(html)
 			
 			self.preview_button.set_stock_id('gtk-edit')
-			self.preview_button.set_label('   Edit	')
+			self.preview_button.set_label('   Edit   ')
 		
 			self.preview_mode = True
 			
@@ -629,6 +629,8 @@ class NewEntryDialog(object):
 		
 		if category:
 			self.categoriesComboBox.set_active_text(category)
+			if category.capitalize() == 'Tags':
+				adding_tag = True
 		
 		if adding_tag:
 			self.categoriesComboBox.set_active_text('Tags')

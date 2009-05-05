@@ -58,7 +58,7 @@ def getMarkupForDay(day, with_text=True, categories=None, with_date=True):
 	
 	categories_of_this_day = map(lambda category: category.upper(), categoryContentPairs.keys())
 	
-	if categories:
+	if categories is not None:
 		export_categories = {}
 		for selected_category in categories:
 			if selected_category.upper() in categories_of_this_day:

@@ -1,5 +1,19 @@
 ==== Changelog ====
 
+=== 0.6.9 (2009-05-05) ===
+ * Reenable stricken text
+ * Select individual categories to export
+ * Export only text, or only categories, or both
+ * Handle local file opening
+   Double-clicks on links in the preview open the link with the preferred app
+ * Categories can be edited with right mouse clicks:
+   Click on an existing category then right mouse click to add a new entry
+ * Link template files
+ * Make toolbars equally sized
+ * Delete GTKMozembed cruft
+   * Delete mozembed.py module from (originally taken from listen-project)
+ * Delete markup cruft
+
 === 0.6.8 (2009-05-03) ===
 * Drop GTKMozembed dependency
    * Add keepnote modules
