@@ -23,7 +23,6 @@ import signal
 import random
 import operator
 import os
-from threading import Thread
 from urllib2 import urlopen, URLError
 import webbrowser
 import unicode
@@ -72,12 +71,7 @@ def sortDictByValues(adict):
 	return items
 
 def sort_pair_list_by_keys(aList, sortFunction=None):
-	'''Returns a sorted list of values, sorted by key'''
-	def compare_two_pairs(pair1, pair2):
-		key1, value1 = pair1
-		key2, value2 = pair2
-		
-	#return sort(lambda)
+	'''Returns a sorted list of values, sorted by key'''		
 	keys = adict.keys()
 	if sortFunction is None:
 		keys.sort()
@@ -164,28 +158,7 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 
 
 def set_environment_variables(config):
-	#Add some paths that xulrunner may live in
-	possible_moz_paths = ['/usr/lib/xulrunner-1.9', '/usr/lib64/xulrunner-1.9', 
-						'/usr/lib/xulrunner-addons', '/usr/lib64/xulrunner-addons']
-	
-	#Check all paths for existence, start with those in the config file
-	variables = ['LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
-	for variable in variables:
-		if config.has_key(variable):
-			value = config.read(variable, None)
-			if value:
-				possible_moz_paths.insert(0, value)
-	
-	moz_path = possible_moz_paths[0]
-	for path in possible_moz_paths:
-		if os.path.exists(path):
-			moz_path = path
-			break
-	
-	
-	variables = {	'LD_LIBRARY_PATH': moz_path,
-					 'MOZILLA_FIVE_HOME': moz_path,
-				}
+	variables = {}
 	
 	for variable, value in variables.iteritems():
 		if not os.environ.has_key(variable): #and config.has_key(variable):

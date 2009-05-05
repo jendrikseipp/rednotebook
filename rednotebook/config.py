@@ -29,6 +29,8 @@ class Config(dict):
 	def __init__(self):
 		dict.__init__(self)
 		
+		self.obsoleteKeys = ['useGTKMozembed', 'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
+		
 		default_config_file = os.path.join(filesystem.filesDir, 'default.cfg')
 		default_config = self._read_file(default_config_file)
 		
@@ -75,6 +77,11 @@ class Config(dict):
 						# Delete whitespace around =
 						pair = keyValuePair.split('=')
 						key, value = map(lambda item: item.strip(), pair)
+						
+						# Do not add obsolete keys -> they will not be rewritten
+						# to disk
+						if key in self.obsoleteKeys:
+							continue
 						
 						try:
 							#Save value as int if possible

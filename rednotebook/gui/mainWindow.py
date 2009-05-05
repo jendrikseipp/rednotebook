@@ -35,15 +35,6 @@ import gtk.glade
 from rednotebook.util import utils
 import rednotebook.util.unicode
 
-try:
-	from rednotebook.gui import mozembed
-	# Enable gtkmozembed only if the environment variables for xulrunner are present
-	#use_moz = mozembed.xulrunner_paths_correct()
-	use_moz = True
-except ImportError:
-	use_moz = False
-	print 'The internal preview is used in favor of gtkmozembed.'
-
 from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
@@ -93,16 +84,6 @@ class MainWindow(object):
 		self.forwardOneDayButton = self.wTree.get_widget('forwardOneDayButton')
 		
 		self.wTree.get_widget('insert_popup_menu').set_active(0)
-		
-		global use_moz
-		
-		if use_moz and self.redNotebook.config.read('useGTKMozembed', 1):
-			use_moz = True
-			self.preview = Preview(self)
-			self.wTree.get_widget('dayBox').pack_start(self.preview)
-			self.preview.hide()
-		else:
-			use_moz = False
 		
 		self.editPane = self.wTree.get_widget('editPane')
 		
@@ -181,43 +162,34 @@ class MainWindow(object):
 			
 	def on_previewButton_clicked(self, button):
 		self.redNotebook.saveOldDay()
-		if use_moz:
-			'Switched to preview'
+		
+		text_scrolledwindow = self.wTree.get_widget('text_scrolledwindow')
+		template_button = self.wTree.get_widget('templateButton')
+		
+		
+		if self.preview_mode:
+			text_scrolledwindow.show()
+			self.html_editor.hide()
+			self.preview_button.set_stock_id('gtk-media-play')
+			self.preview_button.set_label('Preview')
 			
-			#self.day.text = self.get_day_text()
-			self.preview.set_day(self.redNotebook.day)
-			
-			self.preview.show()
-			self.editPane.hide()
+			self.preview_mode = False
 		else:
-			text_scrolledwindow = self.wTree.get_widget('text_scrolledwindow')
-			template_button = self.wTree.get_widget('templateButton')
+			text_scrolledwindow.hide()
+			self.html_editor.show()
+			day = self.redNotebook.day
+			text_markup = day.text
+			html = markup.convert(text_markup, 'xhtml')
 			
+			self.html_editor.load_html(html)
 			
-			if self.preview_mode:
-				text_scrolledwindow.show()
-				self.html_editor.hide()
-				self.preview_button.set_stock_id('gtk-media-play')
-				self.preview_button.set_label('Preview')
-				
-				self.preview_mode = False
-			else:
-				text_scrolledwindow.hide()
-				self.html_editor.show()
-				day = self.redNotebook.day
-				text_markup = day.text
-				html = markup.convert(text_markup, 'xhtml')
-				#html2 = markup.convert_markup_to_html(text_markup)
-				
-				self.html_editor.load_html(html)
-				
-				self.preview_button.set_stock_id('gtk-edit')
-				self.preview_button.set_label('   Edit	')
+			self.preview_button.set_stock_id('gtk-edit')
+			self.preview_button.set_label('   Edit	')
+		
+			self.preview_mode = True
 			
-				self.preview_mode = True
-				
-			template_button.set_sensitive(not self.preview_mode)
-			self.single_menu_toolbutton.set_sensitive(not self.preview_mode)
+		template_button.set_sensitive(not self.preview_mode)
+		self.single_menu_toolbutton.set_sensitive(not self.preview_mode)
 			
 		
 			
@@ -568,9 +540,6 @@ class MainWindow(object):
 		self.html_editor.load_html(markup.convert(day.text, 'xhtml'))
 		self.categoriesTreeView.set_day_content(day)
 		
-		if use_moz:
-			self.preview.set_day(day)
-		
 		self.day = day
 		
 	def get_day_text(self):
@@ -728,6 +697,7 @@ class CustomComboBox:
 	def connect(self, *args, **kargs):
 		self.comboBox.connect(*args, **kargs)
 	
+	
 class SearchComboBox(CustomComboBox):
 	def __init__(self, comboBox, mainWindow):
 		CustomComboBox.__init__(self, comboBox)
@@ -787,177 +757,6 @@ class SearchComboBox(CustomComboBox):
 	def search(self, searchText):
 		self.mainWindow.searchTreeView.update_data(searchText)
 		
-		
-
-class Preview(gtk.VBox):
-	"""
-		An HTML window
-		
-		Code taken from Exaile 0.2.14
-	"""
-	def __init__(self, main_frame):
-		"""
-			Initializes the window
-		"""
-		gtk.VBox.__init__(self)
-		self.set_border_width(5)
-		self.set_spacing(3)
-		self.action_count = 0
-		
-		self.main_frame = main_frame
-		
-		self.last_location = ''
-		self.last_uri = ''
-
-		
-		top = gtk.HBox()
-		top.set_spacing(3)
-		
-		self.edit_button = gtk.Button(label=None, stock='gtk-edit')
-		self.edit_button.connect('clicked', self.on_edit_button_clicked)
-		top.pack_start(self.edit_button, False, False)
-
-		self.back = gtk.Button()
-		image = gtk.Image()
-		image.set_from_stock('gtk-go-back', gtk.ICON_SIZE_SMALL_TOOLBAR)
-		self.back.set_image(image)
-		self.back.set_sensitive(False)
-		self.back.connect('clicked', self.on_back)
-		top.pack_start(self.back, False, False)
-
-		self.next = gtk.Button()
-		image = gtk.Image()
-		image.set_from_stock('gtk-go-forward', gtk.ICON_SIZE_SMALL_TOOLBAR)
-		self.next.set_image(image)
-		self.next.connect('clicked', self.on_next)
-		self.next.set_sensitive(False)
-		top.pack_start(self.next, False, False)
-
-		self.open_browser_button = gtk.Button("Open Browser")
-		self.open_browser_button.connect('clicked', self.on_open_browser)
-		top.pack_start(self.open_browser_button, False, False)
-
-		self.entry = gtk.Entry()
-		self.entry.connect('activate', self.entry_activate)
-		top.pack_start(self.entry, True, True)
-		self.pack_start(top, False, True)
-
-		self.view = mozembed.MozClient()
-		self.pack_start(self.view, True, True)
-		
-		self.view.connect('location', self.on_location_change)
-
-		self.show_all()
-
-		self.view.set_data('<html><body><b>' + 'Loading requested'
-			' information...' + '</b></body></html>', '')
-		self.view.connect('net-start', self.on_net_start)
-		self.view.connect('net-stop', self.on_net_stop)
-		
-		self.view.connect('open-uri', self.on_open_uri)
-			
-	def on_edit_button_clicked(self, button):
-		self.main_frame.preview.hide()
-		self.main_frame.editPane.show()
-			
-	def on_open_uri(self, mozembed, uri):
-		print 'Load URI:', uri
-		self.last_uri = uri
-		self.open_browser_button.set_sensitive(True)
-		
-	def _try_loading_file(self, uri, mozilla_failed_loading_page):
-		if mozilla_failed_loading_page and filesystem.uri_is_local(uri):
-			#try loading the file alone
-			try:
-				os.system('xdg-open ' + uri)
-			except Exception:
-				print 'The file could not be opened. Maybe xdg-open is missing'
-		
-	def on_net_start(self, *args):
-		"""
-			Called when mozilla starts loading the page
-		"""
-		#print 'Net Start'
-
-	def on_net_stop(self, *args):
-		"""
-			Called when mozilla is done loading the page
-		"""
-		mozilla_failed_loading_page = self.last_location == self.view.get_location()
-		#print 'Mozilla failed:', mozilla_failed_loading_page
-		#print 'Net Stop'
-		self._try_loading_file(self.last_uri, mozilla_failed_loading_page)
-		self.last_location = self.view.get_location()
-
-	def set_text(self, text):
-		"""
-			Sets the text of the browser window
-
-		"""
-		self.view.set_data(text, '')
-
-	def entry_activate(self, *e):
-		"""
-			Called when the user presses enter in the address bar
-		"""
-		url = unicode(self.entry.get_text(), 'utf-8')
-		self.load_url(url, self.action_count)
-
-	def on_location_change(self, mozembed):
-		'''
-		You cannot go back to the entry after you clicked a link,
-		as the text is added to mozembed in RAM only
-		'''
-		#print 'Location:', mozembed.get_location()
-		self.entry.set_text(mozembed.get_location())
-		self.back.set_sensitive(self.view.can_go_back())
-		self.next.set_sensitive(self.view.can_go_forward())
-
-	def on_next(self, widget):
-		"""
-			Goes to the next entry in history
-		"""
-		self.view.go_forward()
-			
-	def on_back(self, widget):
-		"""
-			Goes to the previous entry in history
-		"""
-		self.view.go_back()
-
-	def on_open_browser(self, button):
-		"""
-			Opens the current URL in a new browser window (if possible).
-		"""
-		# This method is rarely used, so we only do the import when we need to.
-		import webbrowser
-		# "new=1" is to request new window.
-		webbrowser.open(self.view.get_location(), new=1)
-
-	def load_url(self, url, action_count, history=False):
-		"""
-			Loads a URL, either from the cache, or from the website specified
-		"""
-		self.view.load_url(url)
-		self.open_browser_button.set_sensitive(True)
-
-		if not self.nostyles:
-			if self.view.can_go_back(): self.back.set_sensitive(True)
-			if not self.view.can_go_forward(): self.next.set_sensitive(False)
-			self.entry.set_sensitive(True)
-			self.entry.set_text(url)
-			
-	def set_day(self, day):
-		title = dates.get_date_string(day.date)
-		markupText = markup.getMarkupForDay(day, with_date=False)
-		html = markup.convert(markupText, 'xhtml', headers=[title, '', ''])
-		
-		filename = os.path.join(filesystem.tempDir, 'tmp.html')
-		html_file = os.path.abspath(filename)
-		html_file = 'file://' + html_file
-		
-		self.view.set_data(html_file, html)
-		self.open_browser_button.set_sensitive(False)
 		
 		
 class CloudView(HtmlWindow):
@@ -1354,10 +1153,6 @@ class CategoriesTreeView(object):
 		</ui>'''
 			
 		uimanager = self.mainWindow.uimanager
-
-		# Add the accelerator group to the toplevel window
-		accelgroup = uimanager.get_accel_group()
-		self.mainWindow.mainFrame.add_accel_group(accelgroup)
 
 		# Create an ActionGroup
 		actiongroup = gtk.ActionGroup('ContextMenuActionGroup')

@@ -95,9 +95,6 @@ class RedNotebook:
 		'show instructions at first start or if testing'
 		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
 		print 'First Start:', self.firstTimeExecution
-		if self.firstTimeExecution:
-			print 'Info: If RedNotebook crashes at the first startup, just run it' \
-				' one more time. Then it will disable GTKMozembed and everything should work.'
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
 								filesystem.templateDir, filesystem.tempDir])
@@ -105,19 +102,6 @@ class RedNotebook:
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
 		self.config = config.Config()
-		
-		# Save the original value to restore it later
-		originalMozValue = self.config.read('useGTKMozembed', 0)
-		
-		# Set the Moz Flag to false and only set it to one again at the
-		# end of this method if there is no segfault in between
-		self.config['useGTKMozembed'] = 0
-		
-		# Save the config before Mozembed may crash
-		self.config.saveToDisk()
-		
-		# Now we can reset the value
-		self.config['useGTKMozembed'] = originalMozValue
 		
 		utils.set_environment_variables(self.config)
 		
