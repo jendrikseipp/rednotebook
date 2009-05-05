@@ -185,10 +185,13 @@ class RedNotebook:
 	   
 	def makeEmptyTemplateFiles(self):
 		def getInstruction(dayNumber):
+			file = filesystem.getTemplateFile(dayNumber)
 			return 'The template for this weekday has not been edited. ' + \
 					'If you want to have some text that you can add to that day every week, ' + \
-					'edit the file "' + filesystem.getTemplateFile(dayNumber) + \
-					'" in a text editor.'
+					'edit the file [' + os.path.basename(file) + ' ""' + file + '""] ' + \
+					'in a text editor.\n' + \
+					'To do so, you can activate "Preview" and click on the link to ' + \
+					'that file.'
 					
 		fileContentPairs = []
 		for dayNumber in range(1, 8):

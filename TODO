@@ -52,8 +52,10 @@ X Reenable stricken text
 X Selection of categories to export
 X Export only text, or only categories
 X Handle local file opening
-O Click on an existing category then right mouse click to add a new entry as 
+X Categories can be edited with right mouse clicks:
+  Click on an existing category then right mouse click to add a new entry as 
   opposed to clicking new entry, then having to select the category.
+X Link template files
 X Make toolbars equally sized
 O Delete GTKMozembed cruft
   O Delete mozembed module from listen-project.org

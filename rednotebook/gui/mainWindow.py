@@ -82,10 +82,12 @@ class MainWindow(object):
 		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'))
 		self.statusbar = Statusbar(self.wTree.get_widget('statusbar'))
 		
+		self.newEntryDialog = NewEntryDialog(self)
+		
 		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
 									'categoriesTreeView'), self)
 		
-		self.newEntryDialog = NewEntryDialog(self)
+		self.newEntryDialog.categoriesTreeView = self.categoriesTreeView
 		
 		self.backOneDayButton = self.wTree.get_widget('backOneDayButton')
 		self.forwardOneDayButton = self.wTree.get_widget('forwardOneDayButton')
@@ -210,7 +212,7 @@ class MainWindow(object):
 				self.html_editor.load_html(html)
 				
 				self.preview_button.set_stock_id('gtk-edit')
-				self.preview_button.set_label('   Edit    ')
+				self.preview_button.set_label('   Edit	')
 			
 				self.preview_mode = True
 				
@@ -370,10 +372,10 @@ class MainWindow(object):
 		date_string = self.redNotebook.config.read('dateTimeString', default_date_string)
 		
 		table = '''
-||   1st Heading   |   2nd Heading    |   3rd Heading    |
-|    right aligned |     centered     | left aligned     |
-|           Having |      tables      | is               |
-|               so |     awesome!     |                  |
+||   1st Heading   |   2nd Heading	|   3rd Heading	|
+|	right aligned |	 centered	 | left aligned	 |
+|		   Having |	  tables	  | is			   |
+|			   so |	 awesome!	 |				  |
 '''
 
 		def tmpl(letter):
@@ -631,7 +633,7 @@ class NewEntryDialog(object):
 		#self.dialog.set_default_response(gtk.RESPONSE_OK)
 		self.newEntryComboBox.entry.set_activates_default(True)
 		
-		self.categoriesTreeView = self.mainFrame.categoriesTreeView
+		#self.categoriesTreeView = self.mainFrame.categoriesTreeView
 		
 		self.categoriesComboBox.connect('changed', self.on_category_changed)
 		self.newEntryComboBox.connect('changed', self.on_entry_changed)
@@ -652,9 +654,12 @@ class NewEntryDialog(object):
 		return len(self.categoriesComboBox.get_active_text()) > 0 and \
 				len(self.newEntryComboBox.get_active_text()) > 0
 		
-	def show_dialog(self, adding_tag=False):
+	def show_dialog(self, category=None, adding_tag=False):
 		# Show the list of categories even if adding a tag
 		self.categoriesComboBox.set_entries(self.categoriesTreeView.categories)
+		
+		if category:
+			self.categoriesComboBox.set_active_text(category)
 		
 		if adding_tag:
 			self.categoriesComboBox.set_active_text('Tags')
@@ -1163,12 +1168,17 @@ class CategoriesTreeView(object):
 
 		'Allow sorting on the column'
 		self.tvcolumn.set_sort_column_id(0)
+		
+		# Enable a context menu
+		self.context_menu = self._get_context_menu()
+		self.treeView.connect('button-press-event', self.on_button_press_event)
 
 		
-	def node_on_top_level(self, path):
-		if type(path) == gtk.TreeIter:
-			path = self.treeStore.get_path(path)
-		return ':' not in path
+	def node_on_top_level(self, iter):
+		if not type(iter) == gtk.TreeIter:
+			# iter is a path -> convert to iter
+			iter = self.treeStore.get_iter(iter)
+		return self.treeStore.iter_depth(iter) == 0
 		
 		
 	def edited_cb(self, cell, path, new_text, user_data):
@@ -1307,7 +1317,111 @@ class CategoriesTreeView(object):
 			
 			if response == gtk.RESPONSE_YES:
 				model.remove(selectedIter)
+				
+	def on_button_press_event(self, widget, event):
+		"""
+		@param widget - gtk.TreeView - The Tree View
+		@param event - gtk.gdk.event - Event information
+		"""
+		#Get the path at the specific mouse position
+		path = widget.get_path_at_pos(int(event.x), int(event.y))
+		if (path == None):
+			"""If we didn't get a path then we don't want anything
+			to be selected."""
+			selection = widget.get_selection()
+			selection.unselect_all()
+			
+		# Do not show change and delete options, if nothing is selected
+		something_selected = (path is not None)
+		uimanager = self.mainWindow.uimanager
+		change_entry_item = uimanager.get_widget('/ContextMenu/ChangeEntry')
+		change_entry_item.set_sensitive(something_selected)
+		delete_entry_item = uimanager.get_widget('/ContextMenu/Delete')
+		delete_entry_item.set_sensitive(something_selected)
+			
+		if (event.button == 3):
+			#This is a right-click
+			self.context_menu.popup(None, None, None, event.button, event.time)
+			
+	def _get_context_menu(self):
+		context_menu_xml = '''
+		<ui>
+		<popup action="ContextMenu">
+			<menuitem action="ChangeEntry"/>
+			<menuitem action="AddEntry"/>
+			<menuitem action="Delete"/>
+		</popup>
+		</ui>'''
+			
+		uimanager = self.mainWindow.uimanager
+
+		# Add the accelerator group to the toplevel window
+		accelgroup = uimanager.get_accel_group()
+		self.mainWindow.mainFrame.add_accel_group(accelgroup)
+
+		# Create an ActionGroup
+		actiongroup = gtk.ActionGroup('ContextMenuActionGroup')
 		
+		new_entry_dialog = self.mainWindow.newEntryDialog
+		
+		# Create actions
+		actiongroup.add_actions([
+			('ChangeEntry', gtk.STOCK_EDIT, \
+				'Change this text', \
+				None, None, self._on_change_entry_clicked
+			),
+			('AddEntry', gtk.STOCK_NEW, \
+				'Add new entry', \
+				None, None, self._on_add_entry_clicked
+			),
+			('Delete', gtk.STOCK_DELETE, \
+				'Delete this node', \
+				None, None, self._on_delete_entry_clicked
+			),
+			])
+
+		# Add the actiongroup to the uimanager
+		uimanager.insert_action_group(actiongroup, 0)
+
+		# Add a UI description
+		uimanager.add_ui_from_string(context_menu_xml)
+
+		# Create a Menu
+		menu = uimanager.get_widget('/ContextMenu')
+		return menu
+	
+	def _on_change_entry_clicked(self, action):
+		selection = self.treeView.get_selection()
+		model, iter = selection.get_selected()
+		
+		self.treeView.set_cursor(self.treeStore.get_path(iter), \
+								focus_column=self.tvcolumn, start_editing=True)
+		self.treeView.grab_focus()
+	
+	def _on_add_entry_clicked(self, action):
+		
+		selection = self.treeView.get_selection()
+		model, iter = selection.get_selected()
+		
+		dialog = self.mainWindow.newEntryDialog
+		
+		# Either nothing was selected -> show normal newEntryDialog
+		if iter is None:
+			dialog.show_dialog()
+		# or a category was selected
+		elif self.node_on_top_level(iter):
+			category = self.get_iter_value(iter)
+			dialog.show_dialog(category=category)
+		# or an entry was selected
+		else:
+			parent_iter = self.treeStore.iter_parent(iter)
+			category = self.get_iter_value(parent_iter)
+			dialog.show_dialog(category=category)
+			
+	def _on_delete_entry_clicked(self, action):
+		self.delete_selected_node()
+		
+	
 		
 		
 class DayTextField(object):

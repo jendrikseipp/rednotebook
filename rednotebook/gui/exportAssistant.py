@@ -353,15 +353,12 @@ class ExportAssistant (object):
         selected_categories = self.get_selected_categories_values()
         export_text = self.is_export_text_selected()
         
-        print 'selected_categories:', selected_categories
-        
         markupStringsForEachDay = []
         for day in exportDays:
         	day_markup = markup.getMarkupForDay(day, with_text=export_text, \
 											categories=selected_categories)
         	markupStringsForEachDay.append(day_markup)
 
-        #markupStringsForEachDay = map(markup.getMarkupForDay, exportDays)
         markupString = reduce(operator.add, markupStringsForEachDay)
         
         target = self.format_extension_map.get(self.get_selected_format())
