@@ -16,7 +16,7 @@ O Automatic insertion of photo links for current day
 
 
 Maybe even some of those features will make it into RedNotebook:
-O Hyperlinks in Categories?
+O Hyperlinks in Categories? -> Already implemented, add documentation
 O dataDir Lock (for multiple TRN instances)? -> Probably not
 O Tags in text entries (e.g. @film:Batman)?
 O Add RedNotebook to Startup Programs
@@ -25,11 +25,8 @@ O Add RedNotebook to Startup Programs
 O Task Bar Icon? -> Probably not
 O Encryption XOR Password
 O SSH, FTP saving
-O more than one notebook
 O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
-O Fix opening files from mozembed
-O CTRL-C should copy the html text when in view tab
 O Allow inserting directories
 
 
@@ -45,6 +42,7 @@ O Allow choosing a folder for RedNotebook content
 	O more formatting options and examples (fill some days of the journal at first startup)
 	O provide TrueCrypt encryption HowTo
 	O Import of exported backups
+	O more than one notebook
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
 
 0.6.9

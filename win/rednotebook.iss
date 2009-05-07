@@ -38,6 +38,10 @@ Name: "{group}\{cm:UninstallProgram,RedNotebook}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: quicklaunchicon
 
+;experimental
+Name: "{userstartup}\RedNotebook"; Filename: "{app}\redNotebook.exe"; Flags: unchecked
+
+
 [Run]
 Filename: "{app}\redNotebook.exe"; Description: "{cm:LaunchProgram,RedNotebook}"; Flags: nowait postinstall skipifsilent
 
