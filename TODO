@@ -13,6 +13,13 @@ O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Allow submitting new entries with <Enter>
 O Switch from libglade to GtkBuilder
 O Automatic insertion of photo links for current day
+O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date
+O Daily word count. At least the current date that is presently active.
+O Spell Checker
+O ``monospaced`` / verbatim / raw?
+O allow opening config file from within RedNotebook?
+O Fix opening files for Win/Mac (os.system('open "name") / os.startfile(name))
+
 
 
 Maybe even some of those features will make it into RedNotebook:

@@ -295,7 +295,16 @@ class MainWindow(object):
 		mainFrameHeight = config.read('mainFrameHeight', 768)
 		#print 'SIZE', mainFrameWidth, mainFrameHeight
 		#self.mainFrame.show()
+		
+		screen_width = gtk.gdk.screen_width()
+		screen_height = gtk.gdk.screen_height()
+		
+		mainFrameWidth = min(mainFrameWidth, screen_width)
+		mainFrameHeight = min(mainFrameHeight, screen_height)
+		
 		self.mainFrame.resize(mainFrameWidth, mainFrameHeight)
+		
+		#self.mainFrame.maximize()
 		
 		if config.has_key('leftDividerPosition'):
 			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))				
