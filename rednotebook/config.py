@@ -24,6 +24,20 @@ import os
 from rednotebook.util import filesystem
 from rednotebook.util import utils
 
+
+
+def delete_comment(line):
+	'''
+	delete comment, do not alter the line, 
+	if no comment sign is found
+	'''
+	comment_pos = line.find('#')
+	if comment_pos >= 0:
+		return line[:comment_pos]
+	else:
+		return line
+
+
 class Config(dict):
 	
 	def __init__(self):
@@ -58,9 +72,9 @@ class Config(dict):
 			
 		if keyValuePairs:
 			#something could be read
-			
-			#delete comments
-			keyValuePairs = map(lambda line: line[:line.find('#')], keyValuePairs)
+		
+			# delete comments
+			keyValuePairs = map(lambda line: delete_comment(line), keyValuePairs)
 			
 			#delete whitespace
 			keyValuePairs = map(lambda line: line.strip(), keyValuePairs)
