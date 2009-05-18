@@ -57,32 +57,31 @@ with RedNotebook; if not, write to the Free Software Foundation, Inc.,
             
 completeWelcomeText = '''\
 Hello, 
-this is the RedNotebook, a desktop diary. Thank you very much for giving it a try.
-This text field is the container for your normal diary entries like this one: 
+this is RedNotebook, a desktop journal/diary. Thank you very much for giving it a try. 
+This text field is the container for your normal entries like this one: 
 
 Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
 --pool-- park and had a nice time playing \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 === Format ===
-As you can see you can format your text **bold**, //italic//, --stricken-- and __underlined__. \
+As you see you can format your text **bold**, //italic//, --stricken-- and __underlined__. \
 To see the results, just click on the "Preview" button. 
 
 === Extra Content ===
 On the right there is space for extra content, things that can easily be sorted into categories.
-For example you could add the category Ideas and then add your ideas \
-of that day to it.
+For example you could add the category "Ideas" and then today's ideas to it.
 
 === Templates ===
 RedNotebook supports a template system: In the directory "''' + filesystem.templateDir + '''" you find seven \
-text files. 
-One for each day of the week. You can edit those files \
+text files. One for each day of the week. You can edit those files \
 with your favourite text editor and the text for a given weekday will be inserted when you press the button \
 "Insert Template".
 
 === Tags ===
-Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "New Entry" and insert "Tags" \
-and "Work" into the dialog. 
+Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
+"Work" into the lower textbox. You can see a tag cloud on the left by activating the "Clouds" tab and \
+selecting "Tags".
 
 === Search ===
 On the left you find the fancy search field. You can search for text, display a \
@@ -90,10 +89,10 @@ category's content or show all days with a given tag.
 
 === Save and Export ===
 Everything you enter will be saved automatically at regular intervals and when you exit the program. \
-If you want to double check you can save your contents by pressing "Strg-S" \
+If you want to double check you can save your contents by pressing "Ctrl-S" \
 or using the menu entry under "File" in the top left corner. 
 To avoid data loss you should also backup your content regularly. "Backup" in the "File" menu saves \
-all your entered data in a zip file.
+all your entered data in a zip file. 
 In the same menu you also find an "Export"-Button. \
 Click on it and export your diary to Plain Text, HTML or Latex.
 
@@ -113,7 +112,7 @@ Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 === Format ===
-As you can see you can format your text ""**""**bold**""**"", ""//""//italic//""//"", \
+As you see you can format your text ""**""**bold**""**"", ""//""//italic//""//"", \
 ""--""--stricken--""--"" and ""__""__underlined__""__"".
 
 % Formatting commands inside two pairs of "" are not interpreted
@@ -145,14 +144,15 @@ with your favourite text editor and the text for a given weekday will be inserte
 "Insert Template".
 
 === Tags ===
-Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "New Entry" and insert "Tags" \
-and "Work" into the dialog. The result looks like:
+Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
+"Work" into the lower textbox. The result looks like:
 
 - Tags
   - Work
   
 
-You can see all days with a given tag by clicking on the tag in the tag cloud.
+You can see a tag cloud on the left by activating the "Clouds" tab and \
+selecting "Tags". Get a list of all tags with a given name by clicking on that tag in the cloud.
 
 === Search ===
 On the left you find the fancy search field. You can search for text, display a \

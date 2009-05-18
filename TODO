@@ -9,7 +9,6 @@ Features that will probably soon be implemented:
 O i18n
 O Better comment code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
-O Enable cut/paste using <ctrl>+c/+v, or +x to the categories edit box
 O Allow submitting new entries with <Enter>
 O Switch from libglade to GtkBuilder
 O Automatic insertion of photo links for current day
@@ -51,6 +50,7 @@ O Allow choosing a folder for RedNotebook content
 	O Import of exported backups
 	O more than one notebook
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
+X Enable copy/paste using in categories edit box
 
 0.6.9
 X Reenable stricken text

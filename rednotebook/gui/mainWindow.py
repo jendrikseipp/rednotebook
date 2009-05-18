@@ -240,6 +240,10 @@ class MainWindow(object):
 		self.dayTextField.dayTextView.emit('paste_clipboard')
 		
 	def on_cutMenuItem_activate(self, widget):
+#		event = gtk.gdk.Event(gtk.gdk.KEY_PRESS)
+#		event.keyval = ord("X")
+#		event.state = gtk.gdk.CONTROL_MASK
+#		self.mainFrame.emit("key_press_event",event)
 		self.dayTextField.dayTextView.emit('cut_clipboard')
 		
 	def on_mainFrame_configure_event(self, widget, event):
@@ -1112,11 +1116,22 @@ class CategoriesTreeView(object):
 		else:
 			'If category exists add entry to existing category'
 			self.treeStore.append(categoryIter, [text])
+			
+	
+	def get_selected_node(self):
+		'''
+		Returns selected node or None if none is selected
+		'''
+		treeSelection = self.treeView.get_selection()
+		model, selectedIter = treeSelection.get_selected()
+		return selectedIter
+	
+	def on_cut(self):
+		self.get_selected_node().emit('cut_clipboard')
 		
 		
 	def delete_selected_node(self):
-		treeSelection = self.treeView.get_selection()
-		model, selectedIter = treeSelection.get_selected()
+		selectedIter = self.get_selected_node()
 		if selectedIter:
 			message = 'Do you really want to delete this node?'
 			sortOptimalDialog = gtk.MessageDialog(parent=self.mainWindow.mainFrame, \
