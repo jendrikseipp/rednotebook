@@ -17,7 +17,7 @@ O Daily word count. At least the current date that is presently active.
 O Spell Checker
 O ``monospaced`` / verbatim / raw?
 O allow opening config file from within RedNotebook?
-O Fix opening files for Win/Mac (os.system('open "name") / os.startfile(name))
+O Fix opening files for Mac (os.system(open "name"))
 
 
 
@@ -34,6 +34,8 @@ O SSH, FTP saving
 O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
 O Allow inserting directories
+O Allow opening pictures by double-clicking them
+O Allow remote pictures
 
 
 1.0
@@ -49,7 +51,8 @@ O Allow choosing a folder for RedNotebook content
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
 
 0.7.1
-O Open template files from within RedNotebook
+X Open template files from within RedNotebook
+O Fix opening files for Win
 
 0.7
 X Arbitrarily named templates

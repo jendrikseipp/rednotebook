@@ -47,6 +47,8 @@ from rednotebook.gui.keepnote.gui.richtext.textbuffer_tools import TagNameDom, T
 from rednotebook.gui.keepnote.gui.richtext.richtext_tags import RichTextTag
 from rednotebook.gui.keepnote.gui.richtext.richtextbuffer import ignore_tag
 
+from rednotebook.util import filesystem
+
 
 
 # these tags will not be enumerated by iter_buffer_contents
@@ -156,33 +158,8 @@ class HtmlView(RichTextView):
 	def _on_visit_url(self, textview, url):
 		print 'clicked', url
 		
-		import subprocess
+		filesystem.open_url(url)
 		
-		# Try opening the file locally
-		if sys.platform == 'win32':
-			try:
-				print 'Trying to open %s with "open"' % url
-				os.startfile(os.path.normpath(url))
-				return
-			except OSError:
-				print 'Opening the file with "open" failed'
-		else:
-			
-			try:
-				subprocess.check_call(['xdg-open', '--version'])
-				print 'Trying to open file with xdg-open'
-				subprocess.call(['xdg-open', url])
-				return
-			except OSError, subprocess.CalledProcessError:
-				print 'Opening the file with xdg-open failed'
-			
-		# If everything failed, try the webbrowser
-		import webbrowser
-		try:
-			print 'Trying to open file with webbrowser'
-			webbrowser.open(url)
-		except webbrowser.Error:
-			print 'Failed to open web browser'
 		
 class HtmlIO(RichTextIO):
 	def __init__(self):

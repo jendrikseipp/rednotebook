@@ -321,6 +321,7 @@ class MainWindow(object):
 		
 	def setup_template_menu(self):
 		self.template_menu_button = self.wTree.get_widget('templateMenuButton')
+		self.template_menu_button.set_menu(gtk.Menu())
 		self.template_menu_button.set_menu(self.template_manager.get_menu())
 				
 	

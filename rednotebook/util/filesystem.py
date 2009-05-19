@@ -18,8 +18,10 @@
 # -----------------------------------------------------------------------
 
 from __future__ import with_statement
+
 import os
 import zipfile
+import subprocess
 
 
 
@@ -122,3 +124,35 @@ def get_icons():
 
 def uri_is_local(uri):
 	return uri.startswith('file://')
+
+
+def open_url(url):
+	'''
+	Opens a file with the platform's preferred method 
+	'''
+		
+	# Try opening the file locally
+	if sys.platform == 'win32':
+		try:
+			print 'Trying to open %s with "open"' % url
+			os.startfile(os.path.normpath(url))
+			return
+		except OSError:
+			print 'Opening %s with "open" failed' % url
+	else:
+		
+		try:
+			subprocess.check_call(['xdg-open', '--version'])
+			print 'Trying to open %s with xdg-open' % url
+			subprocess.call(['xdg-open', url])
+			return
+		except OSError, subprocess.CalledProcessError:
+			print 'Opening %s with xdg-open failed' % url
+		
+	# If everything failed, try the webbrowser
+	import webbrowser
+	try:
+		print 'Trying to open %s with webbrowser' % url
+		webbrowser.open(url)
+	except webbrowser.Error:
+		print 'Failed to open web browser'

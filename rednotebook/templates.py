@@ -34,6 +34,7 @@ class TemplateManager(object):
 		self.mainWindow = mainWindow
 		
 		self.merge_id = None
+		self.actiongroup = None
 		
 	
 	def on_insert(self, action):
@@ -44,6 +45,81 @@ class TemplateManager(object):
 		else:
 			text = self.get_text(title)
 		self.mainWindow.dayTextField.insert_template(text)
+		
+		
+	def on_edit(self, action):
+		'''
+		Open the template file in an editor
+		'''
+		edit_title = action.get_name()
+		title = edit_title[4:]
+		
+		if title == 'Weekday':
+			date = self.mainWindow.redNotebook.date
+			weekDayNumber = date.weekday() + 1
+			title = str(weekDayNumber)
+		
+		filename = self.titles_to_files.get(title)
+		filesystem.open_url(filename)
+		
+	def on_new_template(self, action):
+		dialog = gtk.Dialog('Choose Template Name')
+		dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+		dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+		
+		entry = gtk.Entry()
+		entry.set_size_request(300, -1)
+		dialog.get_content_area().pack_start(entry)
+		dialog.show_all()
+		response = dialog.run()
+		dialog.hide()
+		
+		example_text = '''\
+This is a template file. It can contain any formatting or content that is also \
+allowed in normal entries.
+
+Your text can be:
+
+- **bold**
+- //italic//
+- __underlined__
+- --stricken--
+
+
+You can add images to your template:
+
+**images:** [""/path/to/your/picture"".jpg]
+
+You can link to almost everything:
+
+- **links to files on your computer:** [filename.txt ""/path/to/filename.txt""]
+- **links to directories:** [directory name ""/path/to/directory/""]
+- **links to websites:** [RedNotebook Homepage ""http://rednotebook.sourceforge.net""]
+
+
+As you see, **bullet lists** are also available. As always you have to add two \
+empty lines to the end of a list.
+
+Additionally you can have **titles** and **horizontal lines**:
+
+===Title===
+
+==================== 
+		'''
+		
+		if response == gtk.RESPONSE_OK:
+			title = entry.get_text()
+			if not title.lower().endswith('.txt'):
+				title += '.txt'
+			filename = os.path.join(filesystem.templateDir, title)
+			
+			filesystem.makeFile(filename, example_text)
+			
+			filesystem.open_url(filename)
+			
+	
+	def on_open_template_dir(self):
+		filesystem.open_url(filesystem.templateDir)
 		
 		
 	def get_text(self, title):
@@ -75,6 +151,9 @@ class TemplateManager(object):
 		# No directories allowed
 		files = filter(lambda file:os.path.isfile(file), files)
 		
+		# No tempfiles
+		files = filter(lambda file: not file.endswith('~'), files)
+		
 		#textfiles = []
 		#for file in files:
 		#	type, encoding = mimetypes.guess_type(file)
@@ -99,55 +178,103 @@ class TemplateManager(object):
 			root, ext = os.path.splitext(file)
 			title = os.path.basename(root)
 			self.titles_to_files[title] = file
+			
+		sorted_titles = sorted(self.titles_to_files.keys())
 		
 		menu_xml = '''
 		<ui>
 		<popup action="TemplateMenu">
-			<menuitem action="Weekday"/>
-			<separator name="sep1"/>
+			<menuitem action="NewTemplate"/>
+			<menuitem action="OpenTemplateDirectory"/>
+		'''
+			
+		edit_menu_xml = '''\
+			<menu action="EditMenu">
+				<menuitem action="EditWeekday"/>
+				<separator name="sep3"/>
 		'''
 		
-		sorted_titles = sorted(self.titles_to_files.keys())
-			
 		for title in sorted_titles:
 			if title not in map(str, range(1,8)):
-				menu_xml += '<menuitem action="%s"/>\n' % title
-				#<menuitem action="BulletList"/>
-			
+				edit_menu_xml += '''
+				<menuitem action="Edit%s"/>
+				''' % title
+				
+		edit_menu_xml += '''\
+			</menu>
+		'''
+		menu_xml += edit_menu_xml
+		
+		menu_xml += '''\
+			<separator name="sep3"/>
+			<menuitem action="Weekday"/>
+		'''
+		
+		for title in sorted_titles:
+			if title not in map(str, range(1,8)):
+				menu_xml += '''\
+			<menuitem action="%s"/>
+				''' % title
+		
 		menu_xml += '''\
 		</popup>
 		</ui>'''
 			
 		uimanager = self.mainWindow.uimanager
+		
+		if self.actiongroup:
+			uimanager.remove_action_group(self.actiongroup)
 
 		# Create an ActionGroup
-		actiongroup = gtk.ActionGroup('TemplateActionGroup')
+		self.actiongroup = gtk.ActionGroup('TemplateActionGroup')
 
 		
 		actions = []
 		
-		actions.append(('Weekday', None, 'For This Weekday', None, None, \
-					lambda widget: self.on_insert(widget)))
+		
 			
 		
-		for title in self.titles_to_files:
-			action = (title, None, title, None, None, \
+		for title in sorted_titles:
+			insert_action = (title, None, title, None, None, \
 					lambda widget: self.on_insert(widget))
-			actions.append(action)
+			actions.append(insert_action)
+			edit_action = ('Edit' + title, None, title, None, None, \
+					lambda widget: self.on_edit(widget))
+			actions.append(edit_action)
+			
+			
+		actions.append(('Weekday', gtk.STOCK_HOME, "This Weekday's Template", None, None, \
+					lambda widget: self.on_insert(widget)))
+		
+		actions.append(('EditMenu', gtk.STOCK_EDIT, 'Edit Template', None, None, \
+					None))
+		
+		actions.append(('EditWeekday', gtk.STOCK_HOME, 'This Weekday', None, None, \
+					lambda widget: self.on_edit(widget)))
+		
+		actions.append(('NewTemplate', gtk.STOCK_NEW, 'Create New Template', None, None, \
+					lambda widget: self.on_new_template(widget)))
+		
+		actions.append(('OpenTemplateDirectory', gtk.STOCK_DIRECTORY, 'Open Template Directory', None, None, \
+					lambda widget: self.on_open_template_dir()))
 		
 		
 		# Create actions
-		actiongroup.add_actions(actions)
+		self.actiongroup.add_actions(actions)
 
-		# Add the actiongroup to the uimanager
-		uimanager.insert_action_group(actiongroup, 0)
+		
 
 		# Remove the lasts ui description
 		if self.merge_id:
 			uimanager.remove_ui(self.merge_id)
+			
+		print menu_xml
 
 		# Add a UI description
 		self.merge_id = uimanager.add_ui_from_string(menu_xml)
+		
+		# Add the actiongroup to the uimanager
+		uimanager.insert_action_group(self.actiongroup, 0)
 
 		# Create a Menu
 		menu = uimanager.get_widget('/TemplateMenu')
@@ -192,6 +319,11 @@ from it.
 		
 		template_help_filename = filesystem.getTemplateFile('Help')
 		fileContentPairs.append((template_help_filename, template_help_text))
+		
+		# Only add the example templates the first time
+		if not self.mainWindow.redNotebook.firstTimeExecution:
+			filesystem.makeFiles(fileContentPairs)
+			return
 		
 		
 		template_meeting_text = '''\
