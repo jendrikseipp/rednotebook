@@ -156,16 +156,27 @@ class HtmlView(RichTextView):
 	def _on_visit_url(self, textview, url):
 		print 'clicked', url
 		
-		# Try opening the file locally
 		import subprocess
-		try:
-			subprocess.check_call(['xdg-open', '--version'])
-			print 'Trying to open file with xdg-open'
-			subprocess.call(['xdg-open', url])
-			return
-		except OSError, subprocess.CalledProcessError:
-			print 'Opening the file with xdg-open failed'
 		
+		# Try opening the file locally
+		if sys.platform == 'win32':
+			try:
+				print 'Trying to open %s with "open"' % url
+				os.startfile(os.path.normpath(url))
+				return
+			except OSError:
+				print 'Opening the file with "open" failed'
+		else:
+			
+			try:
+				subprocess.check_call(['xdg-open', '--version'])
+				print 'Trying to open file with xdg-open'
+				subprocess.call(['xdg-open', url])
+				return
+			except OSError, subprocess.CalledProcessError:
+				print 'Opening the file with xdg-open failed'
+			
+		# If everything failed, try the webbrowser
 		import webbrowser
 		try:
 			print 'Trying to open file with webbrowser'

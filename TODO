@@ -52,8 +52,9 @@ O setup.py ... --install-layout=deb together with --prefix=/usr/local
 O Open template files from within RedNotebook
 
 0.7
-O Arbitrarily named templates
+X Arbitrarily named templates
 X Enable copy/paste in categories edit box
+X Live update of clouds after categories have been edited
 
 0.6.9
 X Reenable stricken text

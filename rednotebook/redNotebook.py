@@ -104,6 +104,8 @@ class RedNotebook:
 		
 		utils.set_environment_variables(self.config)
 		
+		# Let components check if the MainWindow has been created
+		self.frame = None
 		self.frame = MainWindow(self)
 		   
 		self.actualDate = datetime.date.today()
@@ -133,9 +135,6 @@ class RedNotebook:
 		
 		if not self.testing:
 			gobject.timeout_add(10 * one_minute, self.saveToDisk)
-		
-		
-		
 	
 	
 	def getDaysInDateRange(self, range):
@@ -202,7 +201,8 @@ class RedNotebook:
 		self.config.saveToDisk()
 		
 		if not exitImminent:
-			'Update clouds'
+			# Update cloud
+			self.frame.cloud.update(force_update=True)
 			
 		# tell gobject to keep saving the content in regular intervals
 		return True

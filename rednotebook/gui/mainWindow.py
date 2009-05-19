@@ -222,7 +222,7 @@ class MainWindow(object):
 			#self.searchTreeView.update_data()
 		if pageNumber == 1:
 			'Switched to cloud tab'
-			self.cloud.update()
+			self.cloud.update(force_update=True)
 		
 		
 	def setup_clouds(self):
@@ -689,6 +689,10 @@ class NewEntryDialog(object):
 		
 		self.categoriesTreeView.addEntry(categoryName, entryText)
 		self.categoriesTreeView.treeView.expand_all()
+		
+		# Update cloud
+		self.mainFrame.cloud.update()
+		
 			
 			
 			
@@ -815,9 +819,16 @@ class CloudView(HtmlWindow):
 		self.type_int = type_int
 		self.type = ['word', 'category', 'tag'][type_int]
 		if not init:
-			self.update()
+			self.update(force_update=True)
 		
-	def update(self):
+	def update(self, force_update=False):
+		# Do not update the cloud with words as it requires a lot of searching
+		if self.type == 'word' and not force_update:
+			print 'No update'
+			return
+		
+		if self.redNotebook.frame is not None:
+			self.redNotebook.saveOldDay()
 		wordCountDict = self.redNotebook.getWordCountDict(self.type)
 		self.tagCloudWords, html = utils.getHtmlDocFromWordCountDict(wordCountDict, \
 												self.type, self.ignore_list)
@@ -1033,14 +1044,17 @@ class CategoriesTreeView(object):
 				self.categories.insert(0, new_text)
 		
 		# Tag name changed
-		if not self.node_on_top_level(path):
+		else:
 			iter = self.treeStore.get_iter(path)
 			iter_parent = self.treeStore.iter_parent(iter)
 			tags_iter = self._get_category_iter('Tags')
 			
 			tags_node_is_parent = self.get_iter_value(iter_parent).capitalize() == 'Tags'
 			if tags_node_is_parent and self.node_on_top_level(iter_parent):
-				self.mainWindow.redNotebook.saveOldDay()		
+				self.mainWindow.redNotebook.saveOldDay()
+				
+		# Update cloud
+		self.mainWindow.cloud.update()		
 		
 		
 	def check_category(self, category):
@@ -1161,7 +1175,11 @@ class CategoriesTreeView(object):
 			sortOptimalDialog.hide()
 			
 			if response == gtk.RESPONSE_YES:
-				model.remove(selectedIter)
+				self.treeStore.remove(selectedIter)
+				
+				# Update cloud
+				self.mainWindow.cloud.update()
+				
 				
 	def on_button_press_event(self, widget, event):
 		"""

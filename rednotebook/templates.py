@@ -72,6 +72,9 @@ class TemplateManager(object):
 		files = os.listdir(dir)
 		files = map(lambda basename: os.path.join(dir, basename), files)
 		
+		# No directories allowed
+		files = filter(lambda file:os.path.isfile(file), files)
+		
 		#textfiles = []
 		#for file in files:
 		#	type, encoding = mimetypes.guess_type(file)
@@ -110,7 +113,6 @@ class TemplateManager(object):
 			if title not in map(str, range(1,8)):
 				menu_xml += '<menuitem action="%s"/>\n' % title
 				#<menuitem action="BulletList"/>
-				#<!-- <menuitem action="NumberedList"/> -->
 			
 		menu_xml += '''\
 		</popup>
@@ -124,7 +126,7 @@ class TemplateManager(object):
 		
 		actions = []
 		
-		actions.append(('Weekday', None, 'This Weekday', None, None, \
+		actions.append(('Weekday', None, 'For This Weekday', None, None, \
 					lambda widget: self.on_insert(widget)))
 			
 		
@@ -162,8 +164,7 @@ The template for this weekday has not been edited.
 If you want to have some text that you can add to that day every week, \
 edit the file [%s ""%s""] in a text editor.
 
-To do so, you can switch to "Preview" and click on the link to 
-that file.
+To do so, you can switch to "Preview" and click on the link to that file.
 			''' % (os.path.basename(file), file)
 			return text
 					
