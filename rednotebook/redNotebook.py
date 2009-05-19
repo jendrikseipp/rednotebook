@@ -98,7 +98,6 @@ class RedNotebook:
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
 								filesystem.templateDir, filesystem.tempDir])
-		self.makeEmptyTemplateFiles()
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
 		self.config = config.Config()
@@ -165,23 +164,6 @@ class RedNotebook:
 		if len(self.sortedDays) == 0:
 			return datetime.date.today()
 		return self.sortedDays[entryNumber % len(sortedDays)].date
-	
-	   
-	def makeEmptyTemplateFiles(self):
-		def getInstruction(dayNumber):
-			file = filesystem.getTemplateFile(dayNumber)
-			return 'The template for this weekday has not been edited. ' + \
-					'If you want to have some text that you can add to that day every week, ' + \
-					'edit the file [' + os.path.basename(file) + ' ""' + file + '""] ' + \
-					'in a text editor.\n' + \
-					'To do so, you can activate "Preview" and click on the link to ' + \
-					'that file.'
-					
-		fileContentPairs = []
-		for dayNumber in range(1, 8):
-			fileContentPairs.append((filesystem.getTemplateFile(dayNumber), getInstruction(dayNumber)))
-		
-		filesystem.makeFiles(fileContentPairs)
 	
 	
 	def backupContents(self, backup_file):
@@ -363,21 +345,6 @@ class RedNotebook:
 			days.extend(daysInMonth)
 		return days
 	days = property(_getAllEditedDays)
-	
-	
-	def getTemplateEntry(self, date=None):
-		if date is None:
-			date = self.date
-		weekDayNumber = date.weekday() + 1
-		templateFileString = filesystem.getTemplateFile(weekDayNumber)
-		try:
-			with open(templateFileString, 'r') as templateFile:
-				 lines = templateFile.readlines()
-				 templateText = reduce(operator.add, lines, '')
-		except IOError, Error:
-			print 'Template File', weekDayNumber, 'not found'
-			templateText = ''
-		return templateText
 	
 	
 	def getWordCountDict(self, type):

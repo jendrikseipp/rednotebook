@@ -108,9 +108,9 @@ def writeArchive(archiveFileName, files, baseDir='', arcBaseDir=''):
 		archive.write(file, os.path.join(arcBaseDir, file[len(baseDir):]))
 	archive.close()
 	
-def getTemplateFile(dayNumber):
-	assert dayNumber in range(1,8)
-	return os.path.join(templateDir, str(dayNumber) + fileNameExtension)
+def getTemplateFile(basename):
+	#assert dayNumber in range(1,8)
+	return os.path.join(templateDir, str(basename) + fileNameExtension)
 
 def get_icons():
 	iconFiles = []

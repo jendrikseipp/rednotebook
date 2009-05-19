@@ -39,6 +39,7 @@ from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import info
+from rednotebook import templates
 from rednotebook.util import markup
 from rednotebook.util import dates
 
@@ -83,8 +84,6 @@ class MainWindow(object):
 		self.backOneDayButton = self.wTree.get_widget('backOneDayButton')
 		self.forwardOneDayButton = self.wTree.get_widget('forwardOneDayButton')
 		
-		self.wTree.get_widget('insert_popup_menu').set_active(0)
-		
 		self.editPane = self.wTree.get_widget('editPane')
 		
 		self.html_editor = HtmlEditor()
@@ -124,7 +123,11 @@ class MainWindow(object):
 			'on_deleteEntryButton_clicked': self.on_deleteEntryButton_clicked,
 			
 			'on_searchNotebook_switch_page': self.on_searchNotebook_switch_page,
+			
 			'on_templateButton_clicked': self.on_templateButton_clicked,
+			'on_templateMenu_show_menu': self.on_templateMenu_show_menu,
+			'on_templateMenu_clicked': self.on_templateMenu_clicked,
+			
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
 			'on_cloudComboBox_changed': self.on_cloudComboBox_changed,
 			'on_info_activate': self.on_info_activate,
@@ -138,6 +141,10 @@ class MainWindow(object):
 		
 		self.setup_clouds()
 		self.set_shortcuts()
+		
+		self.template_manager = templates.TemplateManager(self)
+		self.template_manager.make_empty_template_files()
+		self.setup_template_menu()
 		
 		
 		
@@ -164,7 +171,7 @@ class MainWindow(object):
 		self.redNotebook.saveOldDay()
 		
 		text_scrolledwindow = self.wTree.get_widget('text_scrolledwindow')
-		template_button = self.wTree.get_widget('templateButton')
+		template_button = self.wTree.get_widget('templateMenuButton')
 		
 		
 		if self.preview_mode:
@@ -281,9 +288,6 @@ class MainWindow(object):
 	def on_backup_activate(self, widget):
 		self.redNotebook.backupContents(backup_file=self.get_backup_file())
 		
-	def on_templateButton_clicked(self, widget):
-		self.dayTextField.insert_template(self.redNotebook.getTemplateEntry())
-		
 	def add_values_to_config(self):
 		config = self.redNotebook.config
 		config['leftDividerPosition'] = \
@@ -313,7 +317,23 @@ class MainWindow(object):
 		if config.has_key('leftDividerPosition'):
 			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))				
 		self.wTree.get_widget('editPane').set_position(config.read('rightDividerPosition', 500))
+		
+		
+	def setup_template_menu(self):
+		self.template_menu_button = self.wTree.get_widget('templateMenuButton')
+		self.template_menu_button.set_menu(self.template_manager.get_menu())
 				
+	
+	def on_templateMenu_show_menu(self, widget):
+		self.template_menu_button.set_menu(self.template_manager.get_menu())
+		
+	def on_templateMenu_clicked(self, widget):
+		text = self.template_manager.get_weekday_text()
+		self.dayTextField.insert_template(text)
+		
+	def on_templateButton_clicked(self, widget):
+		text = self.template_manager.get_weekday_text()
+		self.dayTextField.insert_template(text)
 		
 		
 	def setup_insert_menu(self):
@@ -1294,8 +1314,12 @@ class DayTextField(object):
 	
 	def insert_template(self, template):
 		currentText = self.get_text()
-		self.set_text(template.encode('utf-8') + '\n' + \
+		try:
+			self.set_text(template.encode('utf-8') + '\n' + \
 						currentText.encode('utf-8'))
+		except UnicodeDecodeError, err:
+			print 'Template file contains unreadable content. Is it really just ' \
+			'a text file?'
 		
 	def hide(self):
 		self.dayTextView.hide()

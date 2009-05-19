@@ -1,8 +1,6 @@
 from HTMLParser import HTMLParser
 import re
 
-from BeautifulSoup import BeautifulSoup
-
 html = '''\
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,7 +38,7 @@ html = '''\
  <br/>
 <a href="www.heise.de">Heise<br/>
 </a><hr/><br/>
-<h1>Boah</h1>
+<h1>Title</h1>
 </body></html>
 '''
 
@@ -58,7 +56,7 @@ class DataElement(object):
 		self.data = data
 	
 
-class MyHTMLParser(HTMLParser):
+class T2THtmlParser(HTMLParser):
 	
 	def __init__(self, *args, **kargs):
 		HTMLParser.__init__(self, *args, **kargs)
@@ -229,24 +227,19 @@ class MyHTMLParser(HTMLParser):
 				return element
 				
 			
-#html = str(BeautifulSoup(html))
-
-#print html
-
-parser = MyHTMLParser()
-
-parser.feed(html)
-
-print
-text = parser.markup
-
-print text
-
-import sys, os
-#print __file__
-dir = os.path.join(os.path.dirname(__file__), '../../')
-#print dir
-sys.path.insert(0, dir)
-from rednotebook.util import markup
-
-print markup.convert(text, 'xhtml')
+if __name__ == '__main__':
+	parser = T2THtmlParser()
+	
+	parser.feed(html)
+	
+	print
+	text = parser.markup
+	
+	print text
+	
+	import sys, os
+	dir = os.path.join(os.path.dirname(__file__), '../../')
+	sys.path.insert(0, dir)
+	from rednotebook.util import markup
+	
+	print markup.convert(text, 'xhtml')

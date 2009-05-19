@@ -39,10 +39,7 @@ O Allow inserting directories
 1.0
 O WYSIWYG editing as an alternative to markup text?
 
-0.9
-O Arbitrarily named templates
-
-0.7
+0.8
 O Automatic Backups
 O Allow choosing a folder for RedNotebook content
 	O more formatting options and examples (fill some days of the journal at first startup)
@@ -50,7 +47,13 @@ O Allow choosing a folder for RedNotebook content
 	O Import of exported backups
 	O more than one notebook
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
-X Enable copy/paste using in categories edit box
+
+0.7.1
+O Open template files from within RedNotebook
+
+0.7
+O Arbitrarily named templates
+X Enable copy/paste in categories edit box
 
 0.6.9
 X Reenable stricken text
