@@ -172,7 +172,7 @@ def _get_config(type):
 	return config
 	
 
-def convert(txt, target, headers=None):
+def convert(txt, target, headers=None, options=None):
 	'''
 	Code partly taken from txt2tags tarball
 	'''
@@ -187,7 +187,10 @@ def convert(txt, target, headers=None):
 	config = _get_config(target)
 	
 	config['outfile'] = txt2tags.MODULEOUT  # results as list
-	config['target'] = target	
+	config['target'] = target
+	
+	if options is not None:
+		config.update(options)
 	
 	# Let's do the conversion
 	try:

@@ -1,4 +1,9 @@
-==== Changelog ====
+==== RedNotebook Changelog ====
+
+=== 0.7.0 (2009-05-19) ===
+ * Arbitrarily named templates
+ * Enable copy/paste in categories edit box
+ * Live update of clouds after categories have been edited
 
 === 0.6.9 (2009-05-05) ===
  * Reenable stricken text

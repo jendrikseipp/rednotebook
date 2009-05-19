@@ -25,7 +25,7 @@ cp -f rednotebook-$VERSION.tar.gz ../releases/
 
 cd ../releases/
 
-rsync -avP -e ssh rednotebook_$VERSION-1_all.deb rednotebook-$VERSION.tar.gz jseipp@frs.sourceforge.net:uploads/
-
+#rsync -avP -e ssh rednotebook_$VERSION-1_all.deb rednotebook-$VERSION.tar.gz jseipp@frs.sourceforge.net:uploads/
+rsync -avP -e ssh rednotebook-$VERSION.tar.gz jseipp@frs.sourceforge.net:uploads/
 
 

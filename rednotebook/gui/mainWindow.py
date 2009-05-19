@@ -557,7 +557,8 @@ class MainWindow(object):
 	def on_helpMenuItem_activate(self, widget):
 		utils.write_file(info.helpText, './source.txt')
 		headers = ['RedNotebook Documentation', info.version, '']
-		html = markup.convert(info.helpText, 'xhtml', headers)
+		options = {'toc': 1,}
+		html = markup.convert(info.helpText, 'xhtml', headers, options)
 		utils.show_html_in_browser(html)
 		
 	def on_checkVersionMenuItem_activate(self, widget):
@@ -1159,9 +1160,6 @@ class CategoriesTreeView(object):
 		treeSelection = self.treeView.get_selection()
 		model, selectedIter = treeSelection.get_selected()
 		return selectedIter
-	
-	def on_cut(self):
-		self.get_selected_node().emit('cut_clipboard')
 		
 		
 	def delete_selected_node(self):

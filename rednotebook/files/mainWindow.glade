@@ -79,7 +79,6 @@
                         <property name="label" translatable="yes">Cut</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_cutMenuItem_activate"/>
-                        <accelerator key="X" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="menu-item-image1">
                             <property name="visible">True</property>
@@ -94,7 +93,6 @@
                         <property name="label" translatable="yes">Copy</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_copyMenuItem_activate"/>
-                        <accelerator key="C" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="menu-item-image2">
                             <property name="visible">True</property>
@@ -109,7 +107,6 @@
                         <property name="label" translatable="yes">Paste</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_pasteMenuItem_activate"/>
-                        <accelerator key="V" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="menu-item-image3">
                             <property name="visible">True</property>
@@ -752,8 +749,8 @@ Tags</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
