@@ -30,6 +30,28 @@
                       </widget>
                     </child>
                     <child>
+                      <widget class="GtkImageMenuItem" id="New Journal">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Create a new journal
+The old one will be saved</property>
+                        <property name="label" translatable="yes">gtk-new</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_new_activate"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkImageMenuItem" id="Open Journal">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Load an existing journal
+The old journal will be saved</property>
+                        <property name="label" translatable="yes">gtk-open</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_open_activate"/>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkMenuItem" id="exportMenuItem">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Export</property>
@@ -1646,6 +1668,56 @@ This wizard will help you to export your journal to various formats. You can sel
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="label">gtk-ok</property>
+                <property name="use_stock">True</property>
+                <property name="response_id">-5</property>
+              </widget>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">GTK_PACK_END</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="GtkFileChooserDialog" id="dir_chooser">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Select a directory</property>
+    <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
+    <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+    <property name="has_separator">False</property>
+    <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
+    <child internal-child="vbox">
+      <widget class="GtkVBox" id="dialog-vbox17">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child internal-child="action_area">
+          <widget class="GtkHButtonBox" id="dialog-action_area17">
+            <property name="visible">True</property>
+            <property name="layout_style">GTK_BUTTONBOX_END</property>
+            <child>
+              <widget class="GtkButton" id="button16">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="use_stock">True</property>
+                <property name="response_id">-6</property>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkButton" id="button17">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="label" translatable="yes">gtk-ok</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">-5</property>
               </widget>

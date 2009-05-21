@@ -42,14 +42,22 @@ O Copy/Paste category notes
 1.0
 O WYSIWYG editing as an alternative to markup text?
 
+0.9
+O Graphical configuration window
+
 0.8
-O Automatic Backups
-O Allow choosing a folder for RedNotebook content
-	O more formatting options and examples (fill some days of the journal at first startup)
-	O provide TrueCrypt encryption HowTo
-	O Import of exported backups
-	O more than one notebook
+O more formatting options and examples (fill some days of the journal at first startup)
+O provide TrueCrypt encryption HowTo
+O Import of exported backups
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
+
+0.7.3
+O Automatic Backups
+
+0.7.2
+O Choose a folder for journal (Save-As)
+O Have more than one journal (New)
+X Open existing journals (Open)
 
 0.7.1
 X Open and create template files from within RedNotebook

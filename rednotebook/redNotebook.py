@@ -85,8 +85,7 @@ class RedNotebook:
 		self.testing = False
 		if 'testing' in sys.argv:
 			self.testing = True
-			print 'Testing Mode'
-			filesystem.dataDir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
+			print 'Testing Mode is on'
 		
 		self.month = None
 		self.date = None
@@ -109,8 +108,14 @@ class RedNotebook:
 		self.frame = MainWindow(self)
 		   
 		self.actualDate = datetime.date.today()
+		
+		data_dir = self.config.read('dataDir', filesystem.dataDir)
+		
+		if self.testing:
+			data_dir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
+			filesystem.makeDirectory(data_dir)
 
-		self.open_notebook(filesystem.dataDir)
+		self.open_journal(data_dir)
 		
 		# Check for a new version
 		if self.config.read('checkForNewVersion', default=0) == 1:
@@ -164,7 +169,7 @@ class RedNotebook:
 			filesystem.writeArchive(backup_file, archiveFiles, filesystem.dataDir)
 
 	
-	def saveToDisk(self, exitImminent=False):
+	def saveToDisk(self, exitImminent=False, changing_journal=False):
 		self.saveOldDay()
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir,])
@@ -182,11 +187,11 @@ class RedNotebook:
 					#month.prettyPrint()
 					yaml.dump(monthContent, monthFile)
 		
-		self.showMessage('The content has been saved', error=False)
+		self.showMessage('The content has been saved to %s' % filesystem.dataDir, error=False)
 		
 		self.config.saveToDisk()
 		
-		if not exitImminent:
+		if not (exitImminent or changing_journal):
 			# Update cloud
 			self.frame.cloud.update(force_update=True)
 			
@@ -194,12 +199,31 @@ class RedNotebook:
 		return True
 	
 	
-	def open_notebook(self, data_dir):
+	def open_journal(self, data_dir, new=False):
+		
+		if self.months:
+			self.saveToDisk(changing_journal=True)
+		
+		print 'Opening journal at %s' % data_dir
+		
+		data_dir_empty = not os.listdir(data_dir)
+		
+		if new and not data_dir_empty:
+			self.showMessage('The selected folder is not empty. Be careful, ' + \
+							'you might overwrite data.', error=False)
+		elif not new and data_dir_empty:
+			self.showMessage('The selected folder is empty. A new journal ' + \
+							'has been created.', error=False)
+		
 		filesystem.dataDir = data_dir
 		
+		print 'R filesystem.dataDir', filesystem.dataDir
+		
+		self.month = None
 		self.months.clear()
 		
-		self.loadAllMonthsFromDisk()
+		if not new:
+			self.loadAllMonthsFromDisk()
 		
 		# Nothing to save before first day change
 		self.loadDay(self.actualDate)
@@ -210,10 +234,29 @@ class RedNotebook:
 		self.frame.categoriesTreeView.categories = sortedCategories
 		
 		if self.firstTimeExecution is True:
-			self.addInstructionContent()
+			pass#self.addInstructionContent()
 			
 		# Show cloud tab
 		self.frame.searchNotebook.set_current_page(1)
+		self.frame.cloud.update(force_update=True)
+		
+		# Reset Search
+		self.frame.searchBox.clear()
+		
+		# Set frame title
+		if os.path.samefile(filesystem.dataDir, filesystem.defaultDataDir):
+			frame_title = 'RedNotebook'
+		else:
+			frame_title = 'RedNotebook - ' + filesystem.get_journal_title(data_dir)
+		self.frame.mainFrame.set_title(frame_title)
+		
+		# Save the folder for next start
+		self.config['dataDir'] = data_dir
+		
+		
+	def new_journal(self, data_dir):
+		self.open_journal(data_dir, new=True)
+		
 		
 		
 	def loadAllMonthsFromDisk(self):
@@ -278,7 +321,7 @@ class RedNotebook:
 		oldDate = self.date
 		self.date = newDate
 		
-		if not Month.sameMonth(newDate, oldDate):
+		if not Month.sameMonth(newDate, oldDate) or self.month is None:
 			self.month = self.loadMonth(self.date)
 		self.frame.set_date(self.month, self.date, self.day)
 		

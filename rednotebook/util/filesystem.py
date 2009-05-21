@@ -51,7 +51,8 @@ imageDir = os.path.join(appDir, 'images/')
 frameIconDir = os.path.join(imageDir, 'redNotebookIcon/')
 userHomedir = os.path.expanduser('~')
 redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
-dataDir = os.path.join(redNotebookUserDir, "data/")
+defaultDataDir = os.path.join(redNotebookUserDir, "data/")
+dataDir = defaultDataDir
 tempDir = os.path.join(redNotebookUserDir, "tmp/")
 templateDir = os.path.join(redNotebookUserDir, "templates/")
 configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
@@ -61,6 +62,7 @@ guiDir = os.path.join(appDir, 'gui')
 
 last_pic_dir = userHomedir
 last_file_dir = userHomedir
+#last_journal_dir = dataDir
 
 
 
@@ -124,6 +126,26 @@ def get_icons():
 
 def uri_is_local(uri):
 	return uri.startswith('file://')
+
+
+def get_journal_title(dir):
+	'''
+	returns the last dir name in path
+	'''
+	# Remove double slashes and last slash
+	dir = os.path.normpath(dir)
+	dir = os.path.abspath(dir)
+	
+	upper_dir = os.path.join(dir, '../')
+	upper_dir = os.path.abspath(upper_dir)
+	
+	upper_dir_length = len(upper_dir)
+	if upper_dir_length > 1:
+		title = dir[upper_dir_length+1:]
+	else:
+		title = dir[upper_dir_length:]
+	return title
+	
 
 
 def open_url(url):
