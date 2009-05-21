@@ -295,7 +295,6 @@ class MainWindow(object):
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
 			dir_chooser.set_title("Select an existing journal directory")
 			label.set_markup("<b>The directory should contain your journal's data files</b>")
-		#dir_chooser.set_current_folder(filesystem.last_journal_dir)
 		dir_chooser.set_current_folder(filesystem.dataDir)
 		
 		response = dir_chooser.run()
