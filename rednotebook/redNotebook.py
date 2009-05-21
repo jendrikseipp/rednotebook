@@ -92,7 +92,7 @@ class RedNotebook:
 		self.date = None
 		self.months = {}
 		
-		'show instructions at first start or if testing'
+		# show instructions at first start or if testing
 		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
 		print 'First Start:', self.firstTimeExecution
 		
@@ -109,24 +109,10 @@ class RedNotebook:
 		self.frame = MainWindow(self)
 		   
 		self.actualDate = datetime.date.today()
+
+		self.open_notebook(filesystem.dataDir)
 		
-		self.loadAllMonthsFromDisk()
-		
-		'Nothing to save before first day change'
-		self.loadDay(self.actualDate)
-		
-		self.stats = Statistics(self)
-		
-		sortedCategories = sorted(self.nodeNames, key=lambda category: str(category).lower())
-		self.frame.categoriesTreeView.categories = sortedCategories
-		
-		if self.firstTimeExecution is True:
-			self.addInstructionContent()
-			
-		'Show cloud tab'
-		self.frame.searchNotebook.set_current_page(1)
-		
-		'Check for a new version'
+		# Check for a new version
 		if self.config.read('checkForNewVersion', default=0) == 1:
 			utils.check_new_version(self.frame, info.version, startup=True)
 			
@@ -154,7 +140,7 @@ class RedNotebook:
 		
 		
 	def _getSortedDays(self):
-		return sorted(self.days, key=lambda day: day.date) #dates.compareTwoDays)
+		return sorted(self.days, key=lambda day: day.date)
 	sortedDays = property(_getSortedDays)
 	
 	
@@ -206,6 +192,28 @@ class RedNotebook:
 			
 		# tell gobject to keep saving the content in regular intervals
 		return True
+	
+	
+	def open_notebook(self, data_dir):
+		filesystem.dataDir = data_dir
+		
+		self.months.clear()
+		
+		self.loadAllMonthsFromDisk()
+		
+		# Nothing to save before first day change
+		self.loadDay(self.actualDate)
+		
+		self.stats = Statistics(self)
+		
+		sortedCategories = sorted(self.nodeNames, key=lambda category: str(category).lower())
+		self.frame.categoriesTreeView.categories = sortedCategories
+		
+		if self.firstTimeExecution is True:
+			self.addInstructionContent()
+			
+		# Show cloud tab
+		self.frame.searchNotebook.set_current_page(1)
 		
 		
 	def loadAllMonthsFromDisk(self):
@@ -215,10 +223,12 @@ class RedNotebook:
 	
 	
 	def loadMonthFromDisk(self, path):
+		# path: /something/somewhere/2009-01.txt
+		# fileName: 2009-01.txt
 		fileName = os.path.basename(path)
 		
 		try:
-			'Get Year and Month from /something/somewhere/2009-01.txt'
+			# Get Year and Month from filename
 			yearAndMonth, extension = os.path.splitext(fileName)
 			yearNumber, monthNumber = yearAndMonth.split('-')
 			yearNumber = int(yearNumber)

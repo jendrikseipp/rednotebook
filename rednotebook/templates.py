@@ -181,7 +181,7 @@ Additionally you can have **titles** and **horizontal lines**:
 			
 		sorted_titles = sorted(self.titles_to_files.keys())
 		
-		menu_xml = '''
+		menu_xml = '''\
 		<ui>
 		<popup action="TemplateMenu">
 			<menuitem action="NewTemplate"/>
@@ -196,7 +196,7 @@ Additionally you can have **titles** and **horizontal lines**:
 		
 		for title in sorted_titles:
 			if title not in map(str, range(1,8)):
-				edit_menu_xml += '''
+				edit_menu_xml += '''\
 				<menuitem action="Edit%s"/>
 				''' % title
 				
@@ -229,10 +229,8 @@ Additionally you can have **titles** and **horizontal lines**:
 		self.actiongroup = gtk.ActionGroup('TemplateActionGroup')
 
 		
-		actions = []
-		
-		
-			
+		# Create actions
+		actions = []			
 		
 		for title in sorted_titles:
 			insert_action = (title, None, title, None, None, \
@@ -241,7 +239,6 @@ Additionally you can have **titles** and **horizontal lines**:
 			edit_action = ('Edit' + title, None, title, None, None, \
 					lambda widget: self.on_edit(widget))
 			actions.append(edit_action)
-			
 			
 		actions.append(('Weekday', gtk.STOCK_HOME, "This Weekday's Template", None, None, \
 					lambda widget: self.on_insert(widget)))
@@ -259,7 +256,6 @@ Additionally you can have **titles** and **horizontal lines**:
 					lambda widget: self.on_open_template_dir()))
 		
 		
-		# Create actions
 		self.actiongroup.add_actions(actions)
 
 		
@@ -267,8 +263,6 @@ Additionally you can have **titles** and **horizontal lines**:
 		# Remove the lasts ui description
 		if self.merge_id:
 			uimanager.remove_ui(self.merge_id)
-			
-		print menu_xml
 
 		# Add a UI description
 		self.merge_id = uimanager.add_ui_from_string(menu_xml)

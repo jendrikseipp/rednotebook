@@ -36,6 +36,7 @@ O remove search for categories and tags, as clouds already do that?
 O Allow inserting directories
 O Allow opening pictures by double-clicking them
 O Allow remote pictures
+O Copy/Paste category notes
 
 
 1.0
@@ -51,8 +52,8 @@ O Allow choosing a folder for RedNotebook content
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
 
 0.7.1
-X Open template files from within RedNotebook
-O Fix opening files for Win
+X Open and create template files from within RedNotebook
+X Fix opening files for Win
 
 0.7
 X Arbitrarily named templates

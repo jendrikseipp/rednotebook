@@ -1,5 +1,8 @@
 ====== RedNotebook ======
 
+There are many packages available for different distributions, so you might
+want to check the Downloads page first. 
+
 ===== REQUIREMENTS =====
   - Python (2.5) (www.python.org)
   - PyYaml (3.05) (www.yaml.org)

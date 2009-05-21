@@ -17,6 +17,9 @@ Packaging hints
 In the file rednotebook/files/default.cfg you can customise some settings for
 your distribution/target. Detailed descriptions can be found there.
 
+Please use the URL http://rednotebook.sourceforge.net for any website
+information in your package.
+
 
 Feedback
 --------
@@ -26,10 +29,10 @@ report your changes to us (the RedNotebook developers) so we can apply them.
 Such changes could be removing/adding any files, modifying the distutils
 configuration, any modifications to some "meta" files (like
 rednotebook.desktop, images/icons, ...) or even if you have to
-modify the source code to fix broken compilation or something like this.
+modify the source code to fix broken compilation or something similar.
 Please inform us about changes you made, so maybe you don't have to
 change it again with the next release and we can fix it in RedNotebook itself
-so others could also benefit from these changes.
+so others can also benefit from these changes.
 
 
 Announce your packages
