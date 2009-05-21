@@ -217,8 +217,6 @@ class RedNotebook:
 		
 		filesystem.dataDir = data_dir
 		
-		print 'R filesystem.dataDir', filesystem.dataDir
-		
 		self.month = None
 		self.months.clear()
 		

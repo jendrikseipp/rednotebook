@@ -105,8 +105,8 @@ class MainWindow(object):
 			'on_forwardOneDayButton_clicked': self.on_forwardOneDayButton_clicked,
 			'on_calendar_day_selected': self.on_calendar_day_selected,
 			
-			'on_new_activate': self.on_new_activate,
-			'on_open_activate': self.on_open_activate,
+			'on_newJournalButton_activate': self.on_newJournalButton_activate,
+			'on_openJournalButton_activate': self.on_openJournalButton_activate,
 			'on_saveMenuItem_activate': self.on_saveButton_clicked,
 			
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
@@ -280,21 +280,23 @@ class MainWindow(object):
 	def on_calendar_day_selected(self, widget):
 		self.redNotebook.changeDate(self.calendar.get_date())
 		
-	def on_new_activate(self, widget):
-		self.on_open_activate(widget, new=True)
+	def on_newJournalButton_activate(self, widget):
+		self.on_openJournalButton_activate(widget, new=True)
 		
-	def on_open_activate(self, widget, new=False):
+	def on_openJournalButton_activate(self, widget, new=False):
 		dir_chooser = self.wTree.get_widget('dir_chooser')
+		label = self.wTree.get_widget('dir_chooser_label')
 		
 		if new:
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER)
-			dir_chooser.set_title('Select an empty folder for the new journal')
+			dir_chooser.set_title('Select an empty folder for your new journal')
+			label.set_markup('<b>The directory name will be the title of the new journal</b>')
 		else:
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
-			dir_chooser.set_title("Select the folder with your journal's data files")
+			dir_chooser.set_title("Select an existing journal directory")
+			label.set_markup("<b>The directory should contain your journal's data files</b>")
 		#dir_chooser.set_current_folder(filesystem.last_journal_dir)
 		dir_chooser.set_current_folder(filesystem.dataDir)
-		print 'M filesystem.dataDir', filesystem.dataDir
 		
 		response = dir_chooser.run()
 		dir_chooser.hide()
@@ -302,6 +304,7 @@ class MainWindow(object):
 		if response == gtk.RESPONSE_OK:
 			dir = dir_chooser.get_current_folder()
 			self.redNotebook.open_journal(dir, new)
+			filesystem.dataDir = dir
 		
 	def on_saveButton_clicked(self, widget):
 		self.redNotebook.saveToDisk()
