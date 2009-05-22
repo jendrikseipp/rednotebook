@@ -73,6 +73,7 @@ from rednotebook.util import unicode
 from rednotebook.util import dates
 from rednotebook import info
 from rednotebook import config
+from rednotebook import backup
 
 from rednotebook.gui.mainWindow import MainWindow
 from rednotebook.util.statistics import Statistics
@@ -90,6 +91,9 @@ class RedNotebook:
 		self.month = None
 		self.date = None
 		self.months = {}
+		
+		# The dir name is the title
+		self.title = ''
 		
 		# show instructions at first start or if testing
 		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
@@ -116,6 +120,8 @@ class RedNotebook:
 			filesystem.makeDirectory(data_dir)
 
 		self.open_journal(data_dir)
+		
+		self.archiver = backup.Archiver()
 		
 		# Check for a new version
 		if self.config.read('checkForNewVersion', default=0) == 1:
@@ -160,13 +166,7 @@ class RedNotebook:
 		self.saveToDisk()
 		
 		if backup_file:
-			
-			archiveFiles = []
-			for root, dirs, files in os.walk(filesystem.dataDir):
-				for file in files:
-					archiveFiles.append(os.path.join(root, file))
-			
-			filesystem.writeArchive(backup_file, archiveFiles, filesystem.dataDir)
+			self.archiver.backup(backup_file)
 
 	
 	def saveToDisk(self, exitImminent=False, changing_journal=False):
@@ -241,11 +241,13 @@ class RedNotebook:
 		# Reset Search
 		self.frame.searchBox.clear()
 		
+		self.title = filesystem.get_journal_title(data_dir)
+		
 		# Set frame title
 		if os.path.samefile(filesystem.dataDir, filesystem.defaultDataDir):
 			frame_title = 'RedNotebook'
 		else:
-			frame_title = 'RedNotebook - ' + filesystem.get_journal_title(data_dir)
+			frame_title = 'RedNotebook - ' + self.title
 		self.frame.mainFrame.set_title(frame_title)
 		
 		# Save the folder for next start

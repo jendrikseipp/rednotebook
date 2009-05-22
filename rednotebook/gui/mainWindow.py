@@ -609,7 +609,13 @@ class MainWindow(object):
 		return self.dayTextField.get_text()
 	
 	def get_backup_file(self):
-		proposedFileName = 'RedNotebook-Backup_' + str(datetime.date.today()) + ".zip"
+		if self.redNotebook.title == 'data':
+			name = ''
+		else:
+			name = '-' + self.redNotebook.title
+			
+		proposedFileName = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
+			
 		xml = gtk.glade.XML(self.gladefile, 'backupDialog')
 		backupDialog = xml.get_widget('backupDialog')
 		backupDialog.set_current_folder(os.path.expanduser('~'))
