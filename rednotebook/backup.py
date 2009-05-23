@@ -23,15 +23,16 @@ import os
 from rednotebook.util import filesystem
 
 class Archiver(object):
-	def __init__(self):
-		pass
+	def __init__(self, redNotebook):
+		self.redNotebook = redNotebook
 	
 	def backup(self, backup_file):
+		dataDir = self.redNotebook.dirs.dataDir
 		archiveFiles = []
-		for root, dirs, files in os.walk(filesystem.dataDir):
+		for root, dirs, files in os.walk(dataDir):
 			for file in files:
 				archiveFiles.append(os.path.join(root, file))
 		
-		filesystem.writeArchive(backup_file, archiveFiles, filesystem.dataDir)
+		filesystem.writeArchive(backup_file, archiveFiles, dataDir)
 		
 		print 'The content has been exported to %s' % backup_file

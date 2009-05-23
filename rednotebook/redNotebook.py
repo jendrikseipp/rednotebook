@@ -28,11 +28,13 @@ import operator
 
 
 if hasattr(sys, "frozen"):
+	#TODO:
 	from rednotebook.util import filesystem
 	from rednotebook.util import utils
 	utils.redirect_output_to_file()
 else:
-	from util import filesystem
+	from util import filesystem # creates a copy of filesystem module
+	#import util.filesystem # imports the original filesystem module
 	from util import utils
 
 try:
@@ -95,11 +97,13 @@ class RedNotebook:
 		# The dir name is the title
 		self.title = ''
 		
+		self.dirs = filesystem.Filenames()
+		
 		# show instructions at first start or if testing
-		self.firstTimeExecution = not os.path.exists(filesystem.dataDir) or self.testing
+		self.firstTimeExecution = not os.path.exists(self.dirs.dataDir) or self.testing
 		print 'First Start:', self.firstTimeExecution
 		
-		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
+		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir, \
 								filesystem.templateDir, filesystem.tempDir])
 		filesystem.makeFiles([(filesystem.configFile, '')])
 		
@@ -113,7 +117,9 @@ class RedNotebook:
 		   
 		self.actualDate = datetime.date.today()
 		
-		data_dir = self.config.read('dataDir', filesystem.dataDir)
+		self.dirs.dataDir = self.config.read('dataDir', self.dirs.dataDir)
+		
+		print 'WOW', self.dirs.dataDir
 		
 		if self.testing:
 			data_dir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
@@ -121,7 +127,7 @@ class RedNotebook:
 
 		self.open_journal(data_dir)
 		
-		self.archiver = backup.Archiver()
+		self.archiver = backup.Archiver(self)
 		
 		# Check for a new version
 		if self.config.read('checkForNewVersion', default=0) == 1:
@@ -172,11 +178,11 @@ class RedNotebook:
 	def saveToDisk(self, exitImminent=False, changing_journal=False):
 		self.saveOldDay()
 		
-		filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir,])
+		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir,])
 		
 		for yearAndMonth, month in self.months.iteritems():
 			if not month.empty:
-				monthFileString = os.path.join(filesystem.dataDir, yearAndMonth + \
+				monthFileString = os.path.join(self.dirs.dataDir, yearAndMonth + \
 											filesystem.fileNameExtension)
 				with open(monthFileString, 'w') as monthFile:
 					monthContent = {}
@@ -187,7 +193,7 @@ class RedNotebook:
 					#month.prettyPrint()
 					yaml.dump(monthContent, monthFile)
 		
-		self.showMessage('The content has been saved to %s' % filesystem.dataDir, error=False)
+		self.showMessage('The content has been saved to %s' % self.dirs.dataDir, error=False)
 		
 		self.config.saveToDisk()
 		
@@ -199,7 +205,7 @@ class RedNotebook:
 		return True
 	
 	
-	def open_journal(self, data_dir, new=False):
+	def open_journal(self, data_dir, load_files=True):
 		
 		if self.months:
 			self.saveToDisk(changing_journal=True)
@@ -208,19 +214,20 @@ class RedNotebook:
 		
 		data_dir_empty = not os.listdir(data_dir)
 		
-		if new and not data_dir_empty:
-			self.showMessage('The selected folder is not empty. Be careful, ' + \
-							'you might overwrite data.', error=False)
-		elif not new and data_dir_empty:
+		if not load_files and not data_dir_empty:
+			self.showMessage('The selected folder is not empty. To prevent ' + \
+							'you from overwriting data, the content has been ' + \
+							'imported into the new journal.', error=False)
+		elif load_files and data_dir_empty:
 			self.showMessage('The selected folder is empty. A new journal ' + \
 							'has been created.', error=False)
 		
-		filesystem.dataDir = data_dir
+		self.dirs.dataDir = data_dir
 		
 		self.month = None
 		self.months.clear()
 		
-		if not new:
+		if load_files or True:
 			self.loadAllMonthsFromDisk()
 		
 		# Nothing to save before first day change
@@ -244,7 +251,7 @@ class RedNotebook:
 		self.title = filesystem.get_journal_title(data_dir)
 		
 		# Set frame title
-		if os.path.samefile(filesystem.dataDir, filesystem.defaultDataDir):
+		if os.path.samefile(self.dirs.dataDir, filesystem.defaultDataDir):
 			frame_title = 'RedNotebook'
 		else:
 			frame_title = 'RedNotebook - ' + self.title
@@ -254,13 +261,9 @@ class RedNotebook:
 		self.config['dataDir'] = data_dir
 		
 		
-	def new_journal(self, data_dir):
-		self.open_journal(data_dir, new=True)
-		
-		
 		
 	def loadAllMonthsFromDisk(self):
-		for root, dirs, files in os.walk(filesystem.dataDir):
+		for root, dirs, files in os.walk(self.dirs.dataDir):
 			for file in files:
 				self.loadMonthFromDisk(os.path.join(root, file))
 	

@@ -68,6 +68,17 @@ The old journal will be saved</property>
                       </widget>
                     </child>
                     <child>
+                      <widget class="GtkImageMenuItem" id="saveAsMenuItem">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Save journal at a new location
+The old journal files will also be saved</property>
+                        <property name="label" translatable="yes">gtk-save-as</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_saveAsMenuItem_activate"/>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkSeparatorMenuItem" id="separatormenuitem5">
                         <property name="visible">True</property>
                       </widget>

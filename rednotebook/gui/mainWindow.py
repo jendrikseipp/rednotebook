@@ -108,6 +108,7 @@ class MainWindow(object):
 			'on_newJournalButton_activate': self.on_newJournalButton_activate,
 			'on_openJournalButton_activate': self.on_openJournalButton_activate,
 			'on_saveMenuItem_activate': self.on_saveButton_clicked,
+			'on_saveAsMenuItem_activate': self.on_saveAsMenuItem_activate,
 			
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
@@ -280,33 +281,49 @@ class MainWindow(object):
 	def on_calendar_day_selected(self, widget):
 		self.redNotebook.changeDate(self.calendar.get_date())
 		
-	def on_newJournalButton_activate(self, widget):
-		self.on_openJournalButton_activate(widget, new=True)
-		
-	def on_openJournalButton_activate(self, widget, new=False):
+	def show_dir_chooser(self, type):
 		dir_chooser = self.wTree.get_widget('dir_chooser')
 		label = self.wTree.get_widget('dir_chooser_label')
 		
-		if new:
+		if type == 'new':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER)
 			dir_chooser.set_title('Select an empty folder for your new journal')
 			label.set_markup('<b>The directory name will be the title of the new journal</b>')
-		else:
+		elif type == 'open':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
 			dir_chooser.set_title("Select an existing journal directory")
 			label.set_markup("<b>The directory should contain your journal's data files</b>")
-		dir_chooser.set_current_folder(filesystem.dataDir)
+		elif type == 'saveas':
+			dir_chooser.set_title('Select an empty folder for the new location your journal')
+			label.set_markup('<b>The directory name will be the new title of the journal</b>')
+		dir_chooser.set_current_folder(self.redNotebook.dirs.dataDir)
 		
 		response = dir_chooser.run()
 		dir_chooser.hide()
 		
 		if response == gtk.RESPONSE_OK:
 			dir = dir_chooser.get_current_folder()
-			self.redNotebook.open_journal(dir, new)
-			filesystem.dataDir = dir
+			
+			if type == 'saveas':
+				self.redNotebook.dirs.dataDir = dir
+				
+			load_files = type in ['open', 'saveas']
+			self.redNotebook.open_journal(dir, load_files=load_files)
+		
+	def on_newJournalButton_activate(self, widget):
+		self.show_dir_chooser('new')
+		
+	def on_openJournalButton_activate(self, widget):
+		self.show_dir_chooser('open')
 		
 	def on_saveButton_clicked(self, widget):
 		self.redNotebook.saveToDisk()
+		
+	def on_saveAsMenuItem_activate(self, widget):
+		self.on_saveButton_clicked(widget)
+		
+		self.show_dir_chooser('saveas')
+		
 		
 	def on_mainFrame_destroy(self, widget):
 		self.add_values_to_config()

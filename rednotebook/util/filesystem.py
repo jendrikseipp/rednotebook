@@ -49,8 +49,8 @@ else:
 
 imageDir = os.path.join(appDir, 'images/')
 frameIconDir = os.path.join(imageDir, 'redNotebookIcon/')
-userHomedir = os.path.expanduser('~')
-redNotebookUserDir = os.path.join(userHomedir, ".rednotebook/")
+userHomeDir = os.path.expanduser('~')
+redNotebookUserDir = os.path.join(userHomeDir, ".rednotebook/")
 defaultDataDir = os.path.join(redNotebookUserDir, "data/")
 dataDir = defaultDataDir
 tempDir = os.path.join(redNotebookUserDir, "tmp/")
@@ -60,10 +60,24 @@ filesDir = os.path.join(appDir, 'files/')
 fileNameExtension = '.txt'
 guiDir = os.path.join(appDir, 'gui')
 
-last_pic_dir = userHomedir
-last_file_dir = userHomedir
+last_pic_dir = userHomeDir
+last_file_dir = userHomeDir
 #last_journal_dir = dataDir
 
+class Filenames(dict):
+	'''
+	Dictionary for dirnames and filenames
+	'''
+	def __init__(self):
+		self.test = 'aha'
+		print locals()
+		for key, value in globals().items():
+			# Exclude "get_main_dir()"
+			if key.lower().endswith('dir') and type(value) is str:
+				self[key] = value
+				setattr(self, key, value)
+		print locals()
+		print self, len(self.keys())
 
 
 def makeDirectory(dir):

@@ -55,9 +55,9 @@ O setup.py ... --install-layout=deb together with --prefix=/usr/local
 O Automatic Backups
 
 0.7.2
-O Choose a folder for journal (Save-As)
-X Have more than one journal (New)
-X Open existing journals (Open)
+X Choose a folder for journal (Save-As)
+X Have more than one journal (New Journal)
+X Open existing journals (Open Journal)
 
 0.7.1
 X Open and create template files from within RedNotebook
