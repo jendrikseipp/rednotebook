@@ -1,5 +1,10 @@
 ==== RedNotebook Changelog ====
 
+=== 0.7.2 (2009-05-25) ===
+ * Choose a folder for journal (Save-As)
+ * Have more than one journal (New Journal)
+ * Open existing journals (Open Journal)
+
 === 0.7.1 (2009-05-21) ===
  * Open and create template files from within RedNotebook
  * Live update of template list

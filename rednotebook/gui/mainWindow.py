@@ -320,7 +320,7 @@ class MainWindow(object):
 		self.redNotebook.saveToDisk()
 		
 	def on_saveAsMenuItem_activate(self, widget):
-		self.on_saveButton_clicked(widget)
+		self.redNotebook.saveToDisk()
 		
 		self.show_dir_chooser('saveas')
 		
@@ -360,7 +360,7 @@ class MainWindow(object):
 		#self.mainFrame.maximize()
 		
 		if config.has_key('leftDividerPosition'):
-			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))				
+			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))	
 		self.wTree.get_widget('editPane').set_position(config.read('rightDividerPosition', 500))
 		
 		

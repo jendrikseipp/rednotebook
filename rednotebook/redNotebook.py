@@ -100,7 +100,7 @@ class RedNotebook:
 		self.dirs = filesystem.Filenames()
 		
 		# show instructions at first start or if testing
-		self.firstTimeExecution = not os.path.exists(self.dirs.dataDir) or self.testing
+		self.firstTimeExecution = not os.path.exists(self.dirs.dataDir)
 		print 'First Start:', self.firstTimeExecution
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir, \
@@ -119,13 +119,11 @@ class RedNotebook:
 		
 		self.dirs.dataDir = self.config.read('dataDir', self.dirs.dataDir)
 		
-		print 'WOW', self.dirs.dataDir
-		
 		if self.testing:
-			data_dir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
-			filesystem.makeDirectory(data_dir)
+			self.dirs.dataDir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
+			filesystem.makeDirectory(self.dirs.dataDir)
 
-		self.open_journal(data_dir)
+		self.open_journal(self.dirs.dataDir)
 		
 		self.archiver = backup.Archiver(self)
 		
@@ -239,7 +237,7 @@ class RedNotebook:
 		self.frame.categoriesTreeView.categories = sortedCategories
 		
 		if self.firstTimeExecution is True:
-			pass#self.addInstructionContent()
+			self.addInstructionContent()
 			
 		# Show cloud tab
 		self.frame.searchNotebook.set_current_page(1)
