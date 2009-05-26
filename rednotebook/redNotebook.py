@@ -249,7 +249,10 @@ class RedNotebook:
 		self.title = filesystem.get_journal_title(data_dir)
 		
 		# Set frame title
-		if os.path.samefile(self.dirs.dataDir, filesystem.defaultDataDir):
+		#data_dir = os.path.normpath(data_dir)
+		#if data_dir.endswith('.rednotebook/data') or data_dir.endswith('.rednotebook\data'):
+		#if os.path.samefile(self.dirs.dataDir, filesystem.defaultDataDir):
+		if self.title == 'data':
 			frame_title = 'RedNotebook'
 		else:
 			frame_title = 'RedNotebook - ' + self.title

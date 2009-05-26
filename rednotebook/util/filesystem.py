@@ -62,22 +62,18 @@ guiDir = os.path.join(appDir, 'gui')
 
 last_pic_dir = userHomeDir
 last_file_dir = userHomeDir
-#last_journal_dir = dataDir
+
 
 class Filenames(dict):
 	'''
 	Dictionary for dirnames and filenames
 	'''
 	def __init__(self):
-		self.test = 'aha'
-		print locals()
 		for key, value in globals().items():
 			# Exclude "get_main_dir()"
 			if key.lower().endswith('dir') and type(value) is str:
 				self[key] = value
 				setattr(self, key, value)
-		print locals()
-		print self, len(self.keys())
 
 
 def makeDirectory(dir):
@@ -164,7 +160,7 @@ def get_journal_title(dir):
 
 def open_url(url):
 	'''
-	Opens a file with the platform's preferred method 
+	Opens a file with the platform's preferred method
 	'''
 		
 	# Try opening the file locally
