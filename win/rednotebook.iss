@@ -28,6 +28,9 @@ Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
+;Startup
+name: "startupicon"; Description: "Run RedNotebook on Startup"; GroupDescription: "Additional tasks:"; MinVersion: 4,4; Flags: unchecked
+
 [Files]
 Source: "..\dist\*"; Excludes: "rednotebook.log"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
@@ -38,8 +41,8 @@ Name: "{group}\{cm:UninstallProgram,RedNotebook}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: quicklaunchicon
 
-;experimental
-Name: "{userstartup}\RedNotebook"; Filename: "{app}\redNotebook.exe"; Flags: unchecked
+;Startup
+Name: "{userstartup}\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: startupicon; workingdir: "{app}"
 
 
 [Run]
