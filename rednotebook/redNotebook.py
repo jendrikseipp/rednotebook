@@ -103,6 +103,8 @@ class RedNotebook:
 		self.firstTimeExecution = not os.path.exists(self.dirs.dataDir)
 		print 'First Start:', self.firstTimeExecution
 		
+		print filesystem.get_platform_info()
+		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir, \
 								filesystem.templateDir, filesystem.tempDir])
 		filesystem.makeFiles([(filesystem.configFile, '')])
@@ -300,6 +302,8 @@ class RedNotebook:
 		except IOError:
 			#If that fails, there is nothing to load, so just display an error message
 			print 'Error: The file', monthFileString, 'could not be read'
+		except Exception:
+			print 'An error occured while reading', monthFileString
 		
 		
 	def loadMonth(self, date):

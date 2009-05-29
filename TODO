@@ -27,10 +27,9 @@ O dataDir Lock (for multiple TRN instances)? -> Probably not
 O Tags in text entries (e.g. @film:Batman)?
 O Add RedNotebook to Startup Programs
     0 Linux: Option in Program
-    O Win: Installer Option
+    X Win: Installer Option
 O Task Bar Icon? -> Probably not
 O Encryption XOR Password
-O SSH, FTP saving
 O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
 O Allow inserting directories
@@ -53,6 +52,7 @@ O setup.py ... --install-layout=deb together with --prefix=/usr/local
 
 0.7.3
 O Automatic Backups
+O SSH, FTP saving -> Conduit HowTo
 
 0.7.2
 X Choose a folder for journal (Save-As)

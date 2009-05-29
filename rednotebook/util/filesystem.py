@@ -155,6 +155,26 @@ def get_journal_title(dir):
 	else:
 		title = dir[upper_dir_length:]
 	return title
+
+
+def get_platform_info():
+	import gtk
+	import platform
+	import yaml
+	functions = [platform.machine, platform.platform, platform.processor, \
+				platform.python_version, platform.release, platform.system,]
+	values = map(lambda function: function(), functions)
+	functions = map(lambda function: function.__name__, functions)
+	names_values = zip(functions, values)
+	names_values.extend([('GTK version', gtk.gtk_version),
+						('PyGTK version', gtk.pygtk_version),
+						('Yaml version', yaml.__version__),
+						])
+	strings = []
+	for name, value in names_values:
+		strings.extend([name, value])
+	strings = tuple(strings)
+	return 'System info: ' + '%s: %s, '*(len(strings)/2) % strings
 	
 
 
