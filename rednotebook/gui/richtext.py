@@ -20,6 +20,7 @@
 import sys
 import os
 import StringIO
+import logging
 
 import gtk
 import pango
@@ -156,7 +157,7 @@ class HtmlView(RichTextView):
 		return self._textbuffer
 		
 	def _on_visit_url(self, textview, url):
-		print 'clicked', url
+		logging.info('clicked %s' % url)
 		
 		filesystem.open_url(url)
 		
@@ -198,7 +199,7 @@ class HtmlIO(RichTextIO):
 			pass
 			
 		except (HtmlError, IOError, Exception), e:
-			print 'ERROR', e
+			logging.error(e)
 			err = e
 			
 			# TODO: turn into function

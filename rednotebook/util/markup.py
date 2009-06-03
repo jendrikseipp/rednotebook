@@ -20,6 +20,7 @@
 from __future__ import with_statement
 
 import os
+import logging
 
 from rednotebook import txt2tags
 from rednotebook.util import filesystem
@@ -205,13 +206,13 @@ def convert(txt, target, headers=None, options=None):
 	
 	# Txt2tags error, show the messsage to the user
 	except txt2tags.error, msg:
-		print msg
+		logging.error(msg)
 		result = msg
 	
 	# Unknown error, show the traceback to the user
 	except:
 		result = txt2tags.getUnknownErrorMessage()
-		print result
+		logging.error(result)
 		
 	return result
 				

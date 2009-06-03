@@ -23,6 +23,7 @@ from __future__ import with_statement
 import os
 import sys
 import mimetypes
+import logging
 
 import gtk
 
@@ -131,7 +132,7 @@ Additionally you can have **titles** and **horizontal lines**:
 			with open(filename, 'r') as templateFile:
 				 text = templateFile.read()
 		except IOError, Error:
-			print 'Error: Template File', name, 'not found'
+			logging.error('Template File %s not found' % name)
 			text = ''
 		return text
 		

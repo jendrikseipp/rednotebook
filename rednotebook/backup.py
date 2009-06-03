@@ -19,6 +19,7 @@
 # -----------------------------------------------------------------------
 
 import os
+import logging
 
 from rednotebook.util import filesystem
 
@@ -35,4 +36,4 @@ class Archiver(object):
 		
 		filesystem.writeArchive(backup_file, archiveFiles, dataDir)
 		
-		print 'The content has been exported to %s' % backup_file
+		logging.info('The content has been exported to %s' % backup_file)

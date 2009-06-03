@@ -37,6 +37,37 @@ else:
 	#import util.filesystem # imports the original filesystem module
 	from util import utils
 
+## Enable logging
+import logging
+loggingLevels = {'debug': logging.DEBUG,
+				'info': logging.INFO,
+				'warning': logging.WARNING,
+				'error': logging.ERROR,
+				'critical': logging.CRITICAL}
+
+# File logging
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(levelname)-8s %(message)s',
+                    filename=filesystem.logFile,
+                    filemode='w',
+                    #stream=sys.stdout,
+                    )
+
+level = logging.INFO
+if len(sys.argv) > 1:
+	level = loggingLevels.get(sys.argv[1], level)
+
+# define a Handler which writes INFO messages or higher to the sys.stderr
+console = logging.StreamHandler()
+console.setLevel(level)
+# set a format which is simpler for console use
+formatter = logging.Formatter('%(levelname)-8s %(message)s')
+# tell the handler to use this format
+console.setFormatter(formatter)
+# add the handler to the root logger
+logging.getLogger('').addHandler(console)
+
+
 try:
 	import pygtk
 except ImportError:
@@ -60,11 +91,11 @@ except ImportError:
 
 	
 
-print 'AppDir:', filesystem.appDir
+logging.info('AppDir: %s' % filesystem.appDir) 
 baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
-print 'BaseDir:', baseDir
+logging.info('BaseDir: %s' % baseDir) 
 if baseDir not in sys.path:
-	print 'Adding BaseDir to sys.path'
+	logging.info('Adding BaseDir to sys.path')
 	sys.path.insert(0, baseDir)
 	
 
@@ -86,9 +117,9 @@ class RedNotebook:
 	
 	def __init__(self):
 		self.testing = False
-		if 'testing' in sys.argv:
+		if 'debug' in sys.argv:
 			self.testing = True
-			print 'Testing Mode is on'
+			logging.debug('Debug Mode is on')
 		
 		self.month = None
 		self.date = None
@@ -101,13 +132,15 @@ class RedNotebook:
 		
 		# show instructions at first start or if testing
 		self.firstTimeExecution = not os.path.exists(self.dirs.dataDir)
-		print 'First Start:', self.firstTimeExecution
+		logging.info('First Start: %s' % self.firstTimeExecution)
 		
-		print filesystem.get_platform_info()
+		logging.info('RedNotebook version: %s' % info.version)
+		logging.info(filesystem.get_platform_info())
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir, \
 								filesystem.templateDir, filesystem.tempDir])
-		filesystem.makeFiles([(filesystem.configFile, '')])
+		filesystem.makeFiles([(filesystem.configFile, ''),
+								(filesystem.logFile, '')])
 		
 		self.config = config.Config()
 		
@@ -210,7 +243,7 @@ class RedNotebook:
 		if self.months:
 			self.saveToDisk(changing_journal=True)
 		
-		print 'Opening journal at %s' % data_dir
+		logging.info('Opening journal at %s' % data_dir)
 		
 		data_dir_empty = not os.listdir(data_dir)
 		
@@ -284,9 +317,10 @@ class RedNotebook:
 			monthNumber = int(monthNumber)
 			assert monthNumber in range(1,13)
 		except Exception:
-			print 'Error:', fileName, 'is an incorrect filename.'
-			print 'filenames have to have the following form: 2009-01.txt ' + \
-					'for January 2009 (yearWith4Digits-monthWith2Digits.txt)'
+			msg = '''Error: %s is an incorrect filename. \
+Filenames have to have the following form: 2009-01.txt \
+'for January 2009 (yearWith4Digits-monthWith2Digits.txt)''' % fileName
+			logging.error(msg)
 			return
 		
 		monthFileString = path
@@ -297,13 +331,12 @@ class RedNotebook:
 				monthContents = yaml.load(monthFile)
 				self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
 		except yaml.YAMLError, exc:
-			print 'Error in file', monthFileString + ':'
-			print exc
+			logging.error('Error in file %s:\n%s' % (monthFileString, exc))
 		except IOError:
 			#If that fails, there is nothing to load, so just display an error message
-			print 'Error: The file', monthFileString, 'could not be read'
+			logging.error('Error: The file %s could not be read' % monthFileString)
 		except Exception:
-			print 'An error occured while reading', monthFileString
+			logging.error('An error occured while reading %s' % monthFileString)
 		
 		
 	def loadMonth(self, date):
@@ -357,7 +390,7 @@ class RedNotebook:
 			
 	def showMessage(self, messageText, error=False, countdown=True):
 		self.frame.statusbar.showText(messageText, error, countdown)
-		print messageText
+		logging.info(messageText)
 		
 		
 	def _getNodeNames(self):

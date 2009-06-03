@@ -26,12 +26,13 @@ import os
 from urllib2 import urlopen, URLError
 import webbrowser
 import unicode
+import logging
 
 
 import filesystem
 
 def printError(message):
-	print '\nERROR:', message
+	logging.error(message)
 
 def floatDiv(a, b):
 	return float(float(a)/float(b))
@@ -164,13 +165,13 @@ def set_environment_variables(config):
 		if not os.environ.has_key(variable): #and config.has_key(variable):
 			# Only add environment variable if it does not exist yet
 			os.environ[variable] = config.read(variable, default=value)
-			print variable, 'set to', value
+			logging.info('%s set to %s' % (variable, value))
 			
 	for variable in variables.keys():
 		if os.environ.has_key(variable):
-			print 'The environment variable', variable, 'has value', os.environ.get(variable)
+			logging.info('The environment variable %s has value %s' % (variable, os.environ.get(variable)))
 		else:
-			print 'There is no environment variable called', variable
+			logging.info('There is no environment variable called %s' % variable)
 	
 			
 def redirect_output_to_file():
@@ -185,10 +186,11 @@ def redirect_output_to_file():
 	except AssertionError:
 		return
 	
-	logfile_path = os.path.join(filesystem.appDir, 'rednotebook.log')
+	#logfile_path = os.path.join(filesystem.appDir, 'rednotebook.log')
+	logfile_path = filesystem.logFile
 	
 	try:
-		logfile = open(logfile_path, 'w')
+		logfile = open(logfile_path, 'wa')
 	except IOError:
 		logfile = None
 	
@@ -234,20 +236,21 @@ def setup_signal_handlers(redNotebook):
 	
 	
 	def signal_handler(signum, frame):
-		print 'Program was abnormally aborted with signal', signum
+		logging.info('Program was abnormally aborted with signal %s' % signum)
 		redNotebook.saveToDisk()
 		sys.exit()
 
 	
-	print 'Connected Signals:',
+	msg = 'Connected Signals: '
 	
 	for signalNumber in signals:
 		try:
-			print signalNumber,
+			msg += str(signalNumber) + ' '
 			signal.signal(signalNumber, signal_handler)
 		except RuntimeError:
-			print '\nFalse Signal Number:', signalNumber
-	print
+			msg += '\nFalse Signal Number: ' + signalNumber
+	
+	logging.info(msg)
 				
 
 def get_new_version_number(currentVersion):
@@ -258,9 +261,9 @@ def get_new_version_number(currentVersion):
 		tag = 'version '
 		position = projectXML.upper().find(tag.upper())
 		newVersion = projectXML[position + len(tag):position + len(tag) + 5]
-		print newVersion, 'is newest version. You have version', currentVersion
+		logging.info('%s is newest version. You have version %s' % (newVersion, currentVersion))
 	except URLError:
-		print 'New version info could not be read'
+		logging.error('New version info could not be read')
 	
 	if newVersion:
 		if newVersion > currentVersion:

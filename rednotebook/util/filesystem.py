@@ -22,6 +22,7 @@ from __future__ import with_statement
 import os
 import zipfile
 import subprocess
+import logging
 
 
 
@@ -42,23 +43,26 @@ def get_main_dir():
 
 if not main_is_frozen():
 	appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
+	appDir = os.path.normpath(appDir)
 else:
 	appDir = get_main_dir()
 	
 
 
-imageDir = os.path.join(appDir, 'images/')
-frameIconDir = os.path.join(imageDir, 'redNotebookIcon/')
+imageDir = os.path.join(appDir, 'images')
+frameIconDir = os.path.join(imageDir, 'redNotebookIcon')
 userHomeDir = os.path.expanduser('~')
-redNotebookUserDir = os.path.join(userHomeDir, ".rednotebook/")
-defaultDataDir = os.path.join(redNotebookUserDir, "data/")
+redNotebookUserDir = os.path.join(userHomeDir, '.rednotebook')
+defaultDataDir = os.path.join(redNotebookUserDir, "data")
 dataDir = defaultDataDir
-tempDir = os.path.join(redNotebookUserDir, "tmp/")
-templateDir = os.path.join(redNotebookUserDir, "templates/")
-configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
-filesDir = os.path.join(appDir, 'files/')
+tempDir = os.path.join(redNotebookUserDir, "tmp")
+templateDir = os.path.join(redNotebookUserDir, "templates")
+filesDir = os.path.join(appDir, 'files')
 fileNameExtension = '.txt'
 guiDir = os.path.join(appDir, 'gui')
+
+configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
+logFile = os.path.join(redNotebookUserDir, 'rednotebook.log')
 
 last_pic_dir = userHomeDir
 last_file_dir = userHomeDir
@@ -158,9 +162,10 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
-	import gtk
 	import platform
+	import gtk
 	import yaml
+	
 	functions = [platform.machine, platform.platform, platform.processor, \
 				platform.python_version, platform.release, platform.system,]
 	values = map(lambda function: function(), functions)
@@ -186,25 +191,25 @@ def open_url(url):
 	# Try opening the file locally
 	if sys.platform == 'win32':
 		try:
-			print 'Trying to open %s with "open"' % url
+			logging.info('Trying to open %s with "open"' % url)
 			os.startfile(os.path.normpath(url))
 			return
 		except OSError:
-			print 'Opening %s with "open" failed' % url
+			logging.error('Opening %s with "open" failed' % url)
 	else:
 		
 		try:
 			subprocess.check_call(['xdg-open', '--version'])
-			print 'Trying to open %s with xdg-open' % url
+			logging.info( 'Trying to open %s with xdg-open' % url)
 			subprocess.call(['xdg-open', url])
 			return
 		except OSError, subprocess.CalledProcessError:
-			print 'Opening %s with xdg-open failed' % url
+			logging.error('Opening %s with xdg-open failed' % url)
 		
 	# If everything failed, try the webbrowser
 	import webbrowser
 	try:
-		print 'Trying to open %s with webbrowser' % url
+		logging.info('Trying to open %s with webbrowser' % url)
 		webbrowser.open(url)
 	except webbrowser.Error:
-		print 'Failed to open web browser'
+		logging.error('Failed to open web browser')

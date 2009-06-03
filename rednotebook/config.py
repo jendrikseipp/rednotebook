@@ -20,6 +20,7 @@
 from __future__ import with_statement
 
 import os
+import logging
 
 from rednotebook.util import filesystem
 from rednotebook.util import utils
@@ -66,7 +67,7 @@ class Config(dict):
 		try:
 			with open(file, 'r') as configFile:
 				keyValuePairs = configFile.readlines()
-				print 'The config file ' + file + ' was read'
+				logging.info('The config file %s was read' % file)
 		except IOError:
 			return {}
 			
@@ -159,8 +160,8 @@ class Config(dict):
 			with open(filesystem.configFile, 'w') as configFile:
 				for key, value in self.iteritems():
 					configFile.write(key + '=' + str(value) + '\n')
-				print 'Configuration has been saved'
+				logging.info('Configuration has been saved')
 		except IOError:
-			print 'Error: Configuration could not be saved'
+			logging.error('Configuration could not be saved')
         
 
