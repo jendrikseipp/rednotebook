@@ -356,8 +356,9 @@ class ExportAssistant (object):
         markupStringsForEachDay = []
         for day in exportDays:
             default_export_date_format = '%A, %x'
-            date_format = self.redNotebook.config.read('exportDateFormat', \
-													default_export_date_format)
+            #date_format = self.redNotebook.config.read('exportDateFormat', \
+		    #										default_export_date_format)
+            date_format = default_export_date_format
             date_string = day.date.strftime(date_format)
             day_markup = markup.getMarkupForDay(day, with_text=export_text, \
 											categories=selected_categories, \

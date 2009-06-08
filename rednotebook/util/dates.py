@@ -21,9 +21,6 @@ import datetime
 
 
 oneDay = datetime.timedelta(days=1)
-
-def get_date_string(date):
-	return date.strftime("%A, %x")
 		
 def getYearAndMonthFromDate(date):
 	yearAndMonth = date.strftime('%Y-%m')

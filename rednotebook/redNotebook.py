@@ -79,7 +79,7 @@ pygtk.require("2.0")
 try:
 	import gtk
 	import gobject
-except ImportError, AssertionError:
+except (ImportError, AssertionError):
 	utils.printError('Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
@@ -91,9 +91,9 @@ except ImportError:
 
 	
 
-logging.info('AppDir: %s' % filesystem.appDir) 
+logging.info('AppDir: %s' % filesystem.appDir)
 baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
-logging.info('BaseDir: %s' % baseDir) 
+logging.info('BaseDir: %s' % baseDir)
 if baseDir not in sys.path:
 	logging.info('Adding BaseDir to sys.path')
 	sys.path.insert(0, baseDir)

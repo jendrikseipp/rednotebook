@@ -48,7 +48,7 @@ O User dir configurable
 
 0.8
 O more formatting options and examples (fill some days of the journal at first startup)
-O provide TrueCrypt encryption HowTo
+O provide TrueCrypt encryption HowTo for Linux
 O Import of exported backups
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
 O Use threads for file loading and link opening
@@ -56,7 +56,6 @@ O Use threads for file loading and link opening
 0.7.3
 O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
-X Allow setting the date format for exports
 
 0.7.2
 X Choose a folder for journal (Save-As)

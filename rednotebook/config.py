@@ -67,7 +67,7 @@ class Config(dict):
 		Sets some default values that are not automatically set so that
 		they appear in the config file
 		'''
-		self.read('exportDateFormat', '%A, %x')
+		#self.read('exportDateFormat', '%A, %x')
 		
 						
 	def _read_file(self, file):
