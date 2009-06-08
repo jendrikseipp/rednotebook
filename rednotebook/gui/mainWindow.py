@@ -1342,27 +1342,6 @@ class DayTextField(object):
 		self.dayTextBuffer = gtk.TextBuffer()
 		self.dayTextView.set_buffer(self.dayTextBuffer)
 		
-		'''First, get an instance of the default display 
-		from the globalgtk.gdk.DisplayManager:'''
-		#self.display = gtk.gdk.display_manager_get().get_default_display()
-
-		'''Then get a reference to a gtk.Clipboard object, specifying 
-		the CLIPBOARD clipboard (and *not* PRIMARY):'''
-		#self.clipboard = gtk.Clipboard(self.display, "CLIPBOARD")
-		
-		'Now your cut/copy/paste callbacks can be written as follows:'
-	
-	#def on_cut_activate(self, obj):
-	#	self.dayTextBuffer.cut_clipboard(self.clipboard, \
-	#									self.dayTextView.get_editable())
-		
-	#def on_copy_activate(self, obj):
-	#	pass#self.dayTextBuffer.copy_clipboard(self.clipboard)
-		
-	#def on_paste_activate(self, obj):
-	#	self.dayTextBuffer.paste_clipboard(self.clipboard, None, \
-	#									self.dayTextView.get_editable())	
-	
 	def wxinit(self, *args, **kwargs):
 		
 		self.history = []

@@ -51,15 +51,19 @@ else:
 
 imageDir = os.path.join(appDir, 'images')
 frameIconDir = os.path.join(imageDir, 'redNotebookIcon')
-userHomeDir = os.path.expanduser('~')
-redNotebookUserDir = os.path.join(userHomeDir, '.rednotebook')
-defaultDataDir = os.path.join(redNotebookUserDir, "data")
-dataDir = defaultDataDir
-tempDir = os.path.join(redNotebookUserDir, "tmp")
-templateDir = os.path.join(redNotebookUserDir, "templates")
 filesDir = os.path.join(appDir, 'files')
-fileNameExtension = '.txt'
 guiDir = os.path.join(appDir, 'gui')
+
+userHomeDir = os.path.expanduser('~')
+
+redNotebookUserDir = os.path.join(userHomeDir, '.rednotebook')
+tempDir = os.path.join(redNotebookUserDir, 'tmp')
+templateDir = os.path.join(redNotebookUserDir, 'templates')
+
+defaultDataDir = os.path.join(redNotebookUserDir, 'data')
+dataDir = defaultDataDir
+
+fileNameExtension = '.txt'
 
 configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
 logFile = os.path.join(redNotebookUserDir, 'rednotebook.log')

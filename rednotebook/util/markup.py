@@ -43,12 +43,12 @@ def _convertCategoriesToMarkup(categories, with_category_title=True):
 	return markup
 
 
-def getMarkupForDay(day, with_text=True, categories=None, with_date=True):
+def getMarkupForDay(day, with_text=True, categories=None, date=None):#with_date=True):
 	exportString = ''
 	
 	'Add date'
-	if with_date:
-		exportString += '= ' + dates.get_date_string(day.date) + ' =\n\n'
+	if date:
+		exportString += '= ' + date + ' =\n\n'
 		
 	'Add text'
 	if with_text:
@@ -78,72 +78,72 @@ def getMarkupForDay(day, with_text=True, categories=None, with_date=True):
 	return exportString
 
 
-def get_toc_html(days):
-	
-	html = '''\
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
-
-<STYLE TYPE="text/css">
-body {
-	font-family: sans-serif;
-}
-</STYLE>
-
-</HEAD><BODY BGCOLOR="white" TEXT="black">
-<FONT SIZE="4">
-</FONT></CENTER>
-
-<P>
-<B>Contents</B>
-
-</P>
-<UL>
-'''
-		
-	for day in days:
-		html += '<LI><A HREF="' + str(day) + '.html" TARGET="Content">' + str(day) + '</A>\n'
-		
-	html += '</UL></BODY></HTML>'
-	
-	return html
-
-
-def get_frameset_html(current_day):
-	return '''\
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
-   "http://www.w3.org/TR/html4/frameset.dtd">
-<html>
-<head>
-<title>RedNotebook</title>
-</head>
-
-<frameset cols="200,*">
-  <frame src="toc.html" name="navigation">
-  <frame src="%s.html" name="Content">
-</frameset>
-</html>
-''' % str(current_day)
-
-
-def preview_in_browser(days, current_day):
-	'''write the html to files in tmp dir'''
-	
-	if current_day not in days:
-		days.append(current_day)
-		
-	for day in days:
-		date_string = str(day)
-		markupText = getMarkupForDay(day, with_date=False)
-		headers = [dates.get_date_string(day.date), '', '']
-		html = convert(markupText, 'xhtml', headers)
-		utils.write_file(html, date_string + '.html')
-	
-	utils.write_file(get_toc_html(days), 'toc.html')
-		
-	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook.html')
+#def get_toc_html(days):
+#	
+#	html = '''\
+#<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+#<HTML>
+#<HEAD>
+#<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+#
+#<STYLE TYPE="text/css">
+#body {
+#	font-family: sans-serif;
+#}
+#</STYLE>
+#
+#</HEAD><BODY BGCOLOR="white" TEXT="black">
+#<FONT SIZE="4">
+#</FONT></CENTER>
+#
+#<P>
+#<B>Contents</B>
+#
+#</P>
+#<UL>
+#'''
+#		
+#	for day in days:
+#		html += '<LI><A HREF="' + str(day) + '.html" TARGET="Content">' + str(day) + '</A>\n'
+#		
+#	html += '</UL></BODY></HTML>'
+#	
+#	return html
+#
+#
+#def get_frameset_html(current_day):
+#	return '''\
+#<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+#   "http://www.w3.org/TR/html4/frameset.dtd">
+#<html>
+#<head>
+#<title>RedNotebook</title>
+#</head>
+#
+#<frameset cols="200,*">
+#  <frame src="toc.html" name="navigation">
+#  <frame src="%s.html" name="Content">
+#</frameset>
+#</html>
+#''' % str(current_day)
+#
+#
+#def preview_in_browser(days, current_day):
+#	'''write the html to files in tmp dir'''
+#	
+#	if current_day not in days:
+#		days.append(current_day)
+#		
+#	for day in days:
+#		date_string = str(day)
+#		markupText = getMarkupForDay(day, with_date=False)
+#		headers = [dates.get_date_string(day.date), '', '']
+#		html = convert(markupText, 'xhtml', headers)
+#		utils.write_file(html, date_string + '.html')
+#	
+#	utils.write_file(get_toc_html(days), 'toc.html')
+#		
+#	utils.show_html_in_browser(get_frameset_html(current_day), 'RedNotebook.html')
 	
 
 def _get_config(type):

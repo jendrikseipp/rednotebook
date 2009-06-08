@@ -151,6 +151,7 @@ class HtmlView(RichTextView):
 		self._html_buffer = RedNotebookHtmlBuffer()
 		
 		self.enable_spell_check(False)
+		#print 'self.is_spell_check_enabled()', self.is_spell_check_enabled()
 		#self.set_editable(False)
 		
 	def get_buffer(self):

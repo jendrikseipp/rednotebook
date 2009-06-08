@@ -58,6 +58,16 @@ class Config(dict):
 		#Overwrite existing values with user options
 		if user_config:
 			self.update(user_config)
+			
+		self.set_default_values()
+		
+		
+	def set_default_values(self):
+		'''
+		Sets some default values that are not automatically set so that
+		they appear in the config file
+		'''
+		self.read('exportDateFormat', '%A, %x')
 		
 						
 	def _read_file(self, file):

@@ -14,10 +14,11 @@ O Switch from libglade to GtkBuilder
 O Automatic insertion of photo links for current day
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date
 O Daily word count. At least the current date that is presently active.
-O Spell Checker
+O Spell Checker (unify markup and html textviews first)
 O ``monospaced`` / verbatim / raw?
 O allow opening config file from within RedNotebook?
 O Fix opening files for Mac (os.system(open "name"))
+O Rethink linebreaks
 
 
 
@@ -43,16 +44,19 @@ O WYSIWYG editing as an alternative to markup text?
 
 0.9
 O Graphical configuration window
+O User dir configurable
 
 0.8
 O more formatting options and examples (fill some days of the journal at first startup)
 O provide TrueCrypt encryption HowTo
 O Import of exported backups
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
+O Use threads for file loading and link opening
 
 0.7.3
 O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
+X Allow setting the date format for exports
 
 0.7.2
 X Choose a folder for journal (Save-As)

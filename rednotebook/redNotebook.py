@@ -157,7 +157,10 @@ class RedNotebook:
 		if self.testing:
 			self.dirs.dataDir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
 			filesystem.makeDirectory(self.dirs.dataDir)
-
+		# HACK: Only load test dir with active debug option
+		elif self.dirs.dataDir == os.path.join(filesystem.redNotebookUserDir, "data-test/"):
+			self.dirs.dataDir = filesystem.defaultDataDir
+			
 		self.open_journal(self.dirs.dataDir)
 		
 		self.archiver = backup.Archiver(self)
