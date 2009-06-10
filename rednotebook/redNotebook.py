@@ -248,6 +248,18 @@ class RedNotebook:
 		
 		logging.info('Opening journal at %s' % data_dir)
 		
+		if not os.path.exists(data_dir):
+			logging.warning('The data dir %s does not exist. Select a different dir.' \
+						% data_dir)
+			
+			self.frame.show_dir_chooser('open')
+			return
+			# Just to be sure
+			#filesystem.makeDirectory(self.dirs.defaultDataDir)
+			
+			#data_dir = self.dirs.defaultDataDir
+			#logging.info('Opening journal at %s' % data_dir)
+		
 		data_dir_empty = not os.listdir(data_dir)
 		
 		if not load_files and not data_dir_empty:

@@ -56,11 +56,15 @@ O Use threads for file loading and link opening
 0.7.3
 O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
+X Improve logging
+X Automatically create a logfile for debugging
+X Fix: Check if directory exists before opening it
 
 0.7.2
 X Choose a folder for journal (Save-As)
 X Have more than one journal (New Journal)
 X Open existing journals (Open Journal)
+X Startup option in win installer
 
 0.7.1
 X Open and create template files from within RedNotebook
