@@ -289,7 +289,8 @@ class MainWindow(object):
 		if type == 'new':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER)
 			dir_chooser.set_title('Select an empty folder for your new journal')
-			label.set_markup('<b>The directory name will be the title of the new journal</b>')
+			label.set_markup('<b>Journals are saved in a directory, not in a single file.\n' \
+							'The directory name will be the title of the new journal.</b>')
 		elif type == 'open':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
 			dir_chooser.set_title("Select an existing journal directory")

@@ -5,6 +5,9 @@ per mail. Even if a feature is listed here already it might speed up the
 implementation if you tell me that you'd like its addition ;)
 
 
+Features that will **not** be implemented:
+- ``monospaced``
+
 Features that will probably soon be implemented:
 O i18n
 O Better comment code
@@ -15,7 +18,7 @@ O Automatic insertion of photo links for current day
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date
 O Daily word count. At least the current date that is presently active.
 O Spell Checker (unify markup and html textviews first)
-O ``monospaced`` / verbatim / raw?
+O verbatim / raw ( """ - already supported, undocumented) / comments ( % already supported, undocumented)?
 O allow opening config file from within RedNotebook?
 O Fix opening files for Mac (os.system(open "name"))
 O Rethink linebreaks
@@ -37,6 +40,7 @@ O Allow inserting directories
 O Allow opening pictures by double-clicking them
 O Allow remote pictures
 O Copy/Paste category notes
+O Make RedNotebook portable
 
 
 1.0
