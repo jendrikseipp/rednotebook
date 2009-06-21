@@ -192,6 +192,7 @@ def redirect_output_to_file():
 	try:
 		logfile = open(logfile_path, 'w')
 	except IOError:
+		logging.info('logfile could not be found, disabling logging')
 		logfile = None
 	
 	sys.stdout = logfile

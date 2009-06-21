@@ -47,17 +47,19 @@ loggingLevels = {'debug': logging.DEBUG,
 # File logging
 if sys.platform == 'win32' and hasattr(sys, "frozen"):
 	utils.redirect_output_to_file()
-else:
-	logging.basicConfig(level=logging.DEBUG,
-	                    format='%(asctime)s %(levelname)-8s %(message)s',
-	                    filename=filesystem.logFile,
-	                    filemode='w',
-	                    #stream=sys.stdout,
-	                    )
+
+logging.basicConfig(level=logging.DEBUG,
+					format='%(asctime)s %(levelname)-8s %(message)s',
+					filename=filesystem.logFile,
+					filemode='w',
+					#stream=sys.stdout,
+					)
 
 level = logging.INFO
 if len(sys.argv) > 1:
 	level = loggingLevels.get(sys.argv[1], level)
+	
+logging.debug('sys.sterr logging level: %s' % level)
 
 # define a Handler which writes INFO messages or higher to the sys.stderr
 console = logging.StreamHandler()
@@ -94,7 +96,9 @@ except ImportError:
 	
 
 logging.info('AppDir: %s' % filesystem.appDir)
+logging.info('Alpha')
 baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
+logging.info('Beta')
 logging.info('BaseDir: %s' % baseDir)
 if baseDir not in sys.path:
 	logging.info('Adding BaseDir to sys.path')
