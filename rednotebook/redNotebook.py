@@ -216,14 +216,14 @@ class RedNotebook:
 		
 		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir,])
 		
-		for yearAndMonth, month in self.months.iteritems():
-			if not month.empty:
+		for yearAndMonth, month in self.months.items():
+			if not month.empty and month.visited:
 				monthFileString = os.path.join(self.dirs.dataDir, yearAndMonth + \
 											filesystem.fileNameExtension)
 				with open(monthFileString, 'w') as monthFile:
 					monthContent = {}
 					for dayNumber, day in month.days.iteritems():
-						'do not add empty days'
+						# do not add empty days
 						if not day.empty:
 							monthContent[dayNumber] = day.content
 					#month.prettyPrint()
@@ -275,6 +275,7 @@ class RedNotebook:
 		self.month = None
 		self.months.clear()
 		
+		# We always want to load all files
 		if load_files or True:
 			self.loadAllMonthsFromDisk()
 		
@@ -289,9 +290,8 @@ class RedNotebook:
 		if self.firstTimeExecution is True:
 			self.addInstructionContent()
 			
-		# Show cloud tab
+		# Show cloud tab, cloud is updated automatically
 		self.frame.searchNotebook.set_current_page(1)
-		self.frame.cloud.update(force_update=True)
 		
 		# Reset Search
 		self.frame.searchBox.clear()
@@ -299,9 +299,6 @@ class RedNotebook:
 		self.title = filesystem.get_journal_title(data_dir)
 		
 		# Set frame title
-		#data_dir = os.path.normpath(data_dir)
-		#if data_dir.endswith('.rednotebook/data') or data_dir.endswith('.rednotebook\data'):
-		#if os.path.samefile(self.dirs.dataDir, filesystem.defaultDataDir):
 		if self.title == 'data':
 			frame_title = 'RedNotebook'
 		else:
@@ -379,6 +376,7 @@ Filenames have to have the following form: 2009-01.txt \
 		
 		if not Month.sameMonth(newDate, oldDate) or self.month is None:
 			self.month = self.loadMonth(self.date)
+			self.month.visited = True
 		self.frame.set_date(self.month, self.date, self.day)
 		
 		
@@ -678,6 +676,8 @@ class Month(object):
 		self.days = {}
 		for dayNumber, dayContent in monthContent.iteritems():
 			self.days[dayNumber] = Day(self, dayNumber, dayContent)
+			
+		self.visited = False
 	
 	
 	def getDay(self, dayNumber):
@@ -734,7 +734,6 @@ class Month(object):
 	
 	
 def main():
-	
 	redNotebook = RedNotebook()
 	utils.setup_signal_handlers(redNotebook)
 	

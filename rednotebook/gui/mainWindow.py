@@ -880,7 +880,7 @@ class CloudView(HtmlWindow):
 			self.update(force_update=True)
 		
 	def update(self, force_update=False):
-		# Do not update the cloud with words as it requires a lot of searching
+		# Do not update the cloud with words as it requires a lot of searching		
 		if self.type == 'word' and not force_update:
 			return
 		

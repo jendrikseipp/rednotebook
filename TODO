@@ -15,7 +15,8 @@ O Undu and Redo functionality extended for Categories (use function pointers for
 O Allow submitting new entries with <Enter>
 O Switch from libglade to GtkBuilder
 O Automatic insertion of photo links for current day
-O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date
+O Automatic insertion of holidays
+O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
 O Daily word count. At least the current date that is presently active.
 O Spell Checker (unify markup and html textviews first)
 O verbatim / raw ( """ - already supported, undocumented) / comments ( % already supported, undocumented)?
@@ -41,6 +42,7 @@ O Allow opening pictures by double-clicking them
 O Allow remote pictures
 O Copy/Paste category notes
 O Make RedNotebook portable
+O provide TrueCrypt encryption HowTo for Linux
 
 
 1.0
@@ -52,14 +54,18 @@ O User dir configurable
 
 0.8
 O more formatting options and examples (fill some days of the journal at first startup)
-O provide TrueCrypt encryption HowTo for Linux
+
 O Import of exported backups
 O setup.py ... --install-layout=deb together with --prefix=/usr/local
-O Use threads for file loading and link opening
-
-0.7.3
+O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
 O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
+
+0.7.4
+O Buttons for bold, italic, underlined text
+
+0.7.3
+X Only save months that have been visited for a faster exit
 X Improve logging
 X Automatically create a logfile for debugging
 X Fix: Check if directory exists before opening it
