@@ -45,9 +45,8 @@ loggingLevels = {'debug': logging.DEBUG,
 				'critical': logging.CRITICAL}
 
 # File logging
-if sys.platform == 'win32':
-	if hasattr(sys, "frozen"):
-		utils.redirect_output_to_file()
+if sys.platform == 'win32' and hasattr(sys, "frozen"):
+	utils.redirect_output_to_file()
 else:
 	logging.basicConfig(level=logging.DEBUG,
 	                    format='%(asctime)s %(levelname)-8s %(message)s',
