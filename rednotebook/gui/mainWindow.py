@@ -282,7 +282,7 @@ class MainWindow(object):
 	def on_calendar_day_selected(self, widget):
 		self.redNotebook.changeDate(self.calendar.get_date())
 		
-	def show_dir_chooser(self, type):
+	def show_dir_chooser(self, type, dir_not_found=False):
 		dir_chooser = self.wTree.get_widget('dir_chooser')
 		label = self.wTree.get_widget('dir_chooser_label')
 		
@@ -312,6 +312,14 @@ class MainWindow(object):
 			load_files = type in ['open', 'saveas']
 			self.redNotebook.open_journal(dir, load_files=load_files)
 		
+		# If the dir was not found previously, we have nothing to open
+		# if the user selects "Abort". So select default dir and show message
+		elif dir_not_found:
+			default_dir = self.redNotebook.dirs.defaultDataDir
+			self.redNotebook.open_journal(default_dir, load_files=True)
+			self.redNotebook.showMessage('The default journal has been opened')
+			
+		
 	def on_newJournalButton_activate(self, widget):
 		self.show_dir_chooser('new')
 		
@@ -328,9 +336,7 @@ class MainWindow(object):
 		
 		
 	def on_mainFrame_destroy(self, widget):
-		self.add_values_to_config()
-		self.redNotebook.saveToDisk()
-		gtk.main_quit()
+		self.redNotebook.exit()
 		
 	def on_backup_activate(self, widget):
 		self.redNotebook.backupContents(backup_file=self.get_backup_file())

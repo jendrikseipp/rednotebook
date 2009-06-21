@@ -212,6 +212,11 @@ class RedNotebook:
 		
 		if backup_file:
 			self.archiver.backup(backup_file)
+			
+	def exit(self):
+		self.frame.add_values_to_config()
+		self.saveToDisk()
+		gtk.main_quit()
 
 	
 	def saveToDisk(self, exitImminent=False, changing_journal=False):
@@ -255,7 +260,7 @@ class RedNotebook:
 			logging.warning('The data dir %s does not exist. Select a different dir.' \
 						% data_dir)
 			
-			self.frame.show_dir_chooser('open')
+			self.frame.show_dir_chooser('open', dir_not_found=True)
 			return
 			# Just to be sure
 			#filesystem.makeDirectory(self.dirs.defaultDataDir)
