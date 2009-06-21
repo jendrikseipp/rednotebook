@@ -190,7 +190,7 @@ def redirect_output_to_file():
 	logfile_path = filesystem.logFile
 	
 	try:
-		logfile = open(logfile_path, 'wa')
+		logfile = open(logfile_path, 'w')
 	except IOError:
 		logfile = None
 	

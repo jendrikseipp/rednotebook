@@ -31,7 +31,6 @@ if hasattr(sys, "frozen"):
 	#TODO:
 	from rednotebook.util import filesystem
 	from rednotebook.util import utils
-	utils.redirect_output_to_file()
 else:
 	from util import filesystem # creates a copy of filesystem module
 	#import util.filesystem # imports the original filesystem module
@@ -46,12 +45,16 @@ loggingLevels = {'debug': logging.DEBUG,
 				'critical': logging.CRITICAL}
 
 # File logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s %(levelname)-8s %(message)s',
-                    filename=filesystem.logFile,
-                    filemode='w',
-                    #stream=sys.stdout,
-                    )
+if sys.platform == 'win32':
+	if hasattr(sys, "frozen"):
+		utils.redirect_output_to_file()
+else:
+	logging.basicConfig(level=logging.DEBUG,
+	                    format='%(asctime)s %(levelname)-8s %(message)s',
+	                    filename=filesystem.logFile,
+	                    filemode='w',
+	                    #stream=sys.stdout,
+	                    )
 
 level = logging.INFO
 if len(sys.argv) > 1:
