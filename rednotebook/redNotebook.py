@@ -48,6 +48,7 @@ loggingLevels = {'debug': logging.DEBUG,
 if sys.platform == 'win32' and hasattr(sys, "frozen"):
 	utils.redirect_output_to_file()
 
+# Write a log containing every output to a log file
 logging.basicConfig(level=logging.DEBUG,
 					format='%(asctime)s %(levelname)-8s %(message)s',
 					filename=filesystem.logFile,
