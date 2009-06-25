@@ -62,9 +62,10 @@ O SSH, FTP saving -> Conduit HowTo
 
 0.7.5
 O Make RedNotebook portable
+O Buttons for bold, italic, underlined text
 
 0.7.4
-O Buttons for bold, italic, underlined text
+X Create ~/.rednotebook dir before logging is initialized (Closes LP:392235)
 X Set native theme for windows version
 
 0.7.3
@@ -235,7 +236,3 @@ X Search
 X Example Text for first day
 X distutils
 X Keyboard Shortcuts
-
-
-Internal Stuff:
-remove months?

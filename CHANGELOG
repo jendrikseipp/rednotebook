@@ -1,5 +1,9 @@
 ==== RedNotebook Changelog ====
 
+=== 0.7.4 (2009-06-25) ===
+ * Create ~/.rednotebook dir before logging is initialized (Closes LP:392235)
+ * Set native theme for windows version
+
 === 0.7.3 (2009-06-21) ===
  * Only save months that have been visited for a faster exit
  * Improve logging
