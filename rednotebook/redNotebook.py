@@ -47,6 +47,13 @@ loggingLevels = {'debug': logging.DEBUG,
 # File logging
 if sys.platform == 'win32' and hasattr(sys, "frozen"):
 	utils.redirect_output_to_file()
+	
+# Assert that all dirs and files are in place so that logging can take start
+filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
+							filesystem.templateDir, filesystem.tempDir])
+filesystem.makeFiles([(filesystem.configFile, ''),
+						(filesystem.logFile, '')])
+
 
 # Write a log containing every output to a log file
 logging.basicConfig(level=logging.DEBUG,
@@ -97,9 +104,7 @@ except ImportError:
 	
 
 logging.info('AppDir: %s' % filesystem.appDir)
-logging.info('Alpha')
 baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
-logging.info('Beta')
 logging.info('BaseDir: %s' % baseDir)
 if baseDir not in sys.path:
 	logging.info('Adding BaseDir to sys.path')
@@ -143,11 +148,6 @@ class RedNotebook:
 		
 		logging.info('RedNotebook version: %s' % info.version)
 		logging.info(filesystem.get_platform_info())
-		
-		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir, \
-								filesystem.templateDir, filesystem.tempDir])
-		filesystem.makeFiles([(filesystem.configFile, ''),
-								(filesystem.logFile, '')])
 		
 		self.config = config.Config()
 		

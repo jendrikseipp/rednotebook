@@ -41,7 +41,6 @@ O Allow inserting directories
 O Allow opening pictures by double-clicking them
 O Allow remote pictures
 O Copy/Paste category notes
-O Make RedNotebook portable
 O provide TrueCrypt encryption HowTo for Linux
 
 
@@ -61,8 +60,12 @@ O Use threads for file loading and link opening (Data opening takes 1.1 sec, oth
 O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
 
+0.7.5
+O Make RedNotebook portable
+
 0.7.4
 O Buttons for bold, italic, underlined text
+X Set native theme for windows version
 
 0.7.3
 X Only save months that have been visited for a faster exit
