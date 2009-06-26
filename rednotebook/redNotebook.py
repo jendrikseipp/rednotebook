@@ -143,7 +143,8 @@ class RedNotebook:
 		self.dirs = filesystem.Filenames()
 		
 		# show instructions at first start or if testing
-		self.firstTimeExecution = not os.path.exists(self.dirs.dataDir)
+		#self.firstTimeExecution = not path.exists(self.dirs.dataDir)
+		self.firstTimeExecution = len(os.listdir(self.dirs.dataDir)) == 0
 		logging.info('First Start: %s' % self.firstTimeExecution)
 		
 		logging.info('RedNotebook version: %s' % info.version)
