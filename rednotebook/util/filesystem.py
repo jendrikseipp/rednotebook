@@ -175,10 +175,17 @@ def get_platform_info():
 	values = map(lambda function: function(), functions)
 	functions = map(lambda function: function.__name__, functions)
 	names_values = zip(functions, values)
-	names_values.extend([('GTK version', gtk.gtk_version),
-						('PyGTK version', gtk.pygtk_version),
-						('Yaml version', yaml.__version__),
-						])
+	
+	lib_values = [('GTK version', gtk, 'gtk_version'),
+					('PyGTK version', gtk, 'pygtk_version'),
+					('Yaml version', yaml, '__version__'),]
+	
+	for name, object, value in lib_values:
+		try:
+			names_values.append((name, getattr(object, value)))
+		except AttributeError, err:
+			logging.warning('%s could not be determined' % name)
+			
 	strings = []
 	for name, value in names_values:
 		strings.extend([name, value])
