@@ -4,6 +4,7 @@
 try:
 	# Load module from same directory
 	import redNotebook
+	print 'Starting RedNotebook from the source directory'
 	redNotebook.main()
 except ImportError:
 	# Load installed module

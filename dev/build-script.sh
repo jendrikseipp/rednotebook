@@ -4,13 +4,14 @@ read VERSION
 echo "Hi $VERSION!"
 
 cd ../
-sudo rm -r dist/
+#sudo rm -r dist/
+rm -r dist/
 
 # Force recalculation of files so that none is missed
 rm MANIFEST 
 
 python setup.py sdist
-#python setup.py bdist_rpm
+#python setup.py bdist_rpm (--install-layout=deb together with --prefix=/usr/local)
 
 cd dist/
 

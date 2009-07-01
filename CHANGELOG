@@ -1,5 +1,10 @@
 ==== RedNotebook Changelog ====
 
+=== 0.7.5 (2009-06-30) ===
+ * Buttons for bold, italic, underlined text
+ * Fixed hardy bug: yaml 3.05 does not have __version__ attribute
+ * Removed shebangs from python modules (Closes LP:393602)
+
 === 0.7.4 (2009-06-25) ===
  * Create ~/.rednotebook dir before logging is initialized (Closes LP:392235)
  * Set native theme for windows version
