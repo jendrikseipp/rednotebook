@@ -98,6 +98,7 @@ class MainWindow(object):
 		
 		self.setup_search()
 		self.setup_insert_menu()
+		self.setup_format_menu()
 		
 		'Create an event->method dictionary and connect it to the widgets'
 		dic = {
@@ -388,6 +389,70 @@ class MainWindow(object):
 	def on_templateButton_clicked(self, widget):
 		text = self.template_manager.get_weekday_text()
 		self.dayTextField.insert_template(text)
+		
+		
+	def setup_format_menu(self):
+		'''
+		See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
+		A popup menu cannot show accelerators (HIG).
+		'''
+		
+		format_menu_xml = '''
+		<ui>
+		<popup action="FormatMenu">
+			<menuitem action="Bold"/>
+			<menuitem action="Italic"/>
+			<menuitem action="Underline"/>
+		</popup>
+		</ui>'''
+			
+		uimanager = self.uimanager
+
+		# Add the accelerator group to the toplevel window
+		#accelgroup = uimanager.get_accel_group()
+		#self.mainFrame.add_accel_group(accelgroup)
+
+		# Create an ActionGroup
+		actiongroup = gtk.ActionGroup('FormatActionGroup')
+		#self.actiongroup = actiongroup
+
+		def tmpl(word):
+			#text = word.ljust(20)
+			#shortcut = '\t(Ctrl+%s)' % word[0]
+			#print text[:-len(shortcut)]
+			#text = text[:-len(shortcut)] + shortcut
+			return word + ' (Ctrl+%s)' % word[0]
+		
+		def get_action(format):
+			return (format, getattr(gtk, 'STOCK_' + format.upper()), \
+				'_' + tmpl(format), \
+				'<Control>' + format[0], None, \
+				lambda widget: self.dayTextField.apply_format(format.lower()))
+		# Create actions
+		actiongroup.add_actions([
+			get_action('Bold'),
+			get_action('Italic'),
+			get_action('Underline')
+		])
+
+		# Add the actiongroup to the uimanager
+		uimanager.insert_action_group(actiongroup, 0)
+
+		# Add a UI description
+		uimanager.add_ui_from_string(format_menu_xml)
+
+		# Create a Menu
+		menu = uimanager.get_widget('/FormatMenu')
+		
+		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
+		self.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
+		self.format_toolbutton.set_label('Format')
+		self.format_toolbutton.set_menu(menu)
+		bold_func = lambda widget: self.dayTextField.apply_format('bold')
+		self.format_toolbutton.connect('clicked', bold_func)
+		edit_toolbar = self.wTree.get_widget('edit_toolbar')
+		edit_toolbar.insert(self.format_toolbutton, -1)
+		self.format_toolbutton.show()
 		
 		
 	def setup_insert_menu(self):
@@ -1366,8 +1431,13 @@ class DayTextField(object):
 		iterEnd = self.dayTextBuffer.get_end_iter()
 		return self.dayTextBuffer.get_text(iterStart, iterEnd)
 	
-	def insert(self, text):
-		self.dayTextBuffer.insert_at_cursor(text)
+	def insert(self, text, iter=None):
+		if iter is None:
+			self.dayTextBuffer.insert_at_cursor(text)
+		else:
+			if type(iter) == gtk.TextMark:
+				iter = self.dayTextBuffer.get_iter_at_mark(iter)
+			self.dayTextBuffer.insert(iter, text)
 	
 	def insert_template(self, template):
 		currentText = self.get_text()
@@ -1377,6 +1447,82 @@ class DayTextField(object):
 		except UnicodeDecodeError, err:
 			logging.error('Template file contains unreadable content. Is it really just ' \
 			'a text file?')
+			
+	def get_selected_text(self):
+		bounds = self.dayTextBuffer.get_selection_bounds()
+		if bounds:
+			return self.dayTextBuffer.get_text(*bounds)
+		else:
+			return None
+
+	def set_selection(self, iter1, iter2):
+		'''
+		Sort the two iters and select the text between them
+		'''		
+		sort_by_position = lambda iter: iter.get_offset()
+		iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
+		assert iter1.get_offset() <= iter2.get_offset()
+		self.dayTextBuffer.select_range(iter1, iter2)
+		
+	def get_selection_bounds(self):
+		'''
+		Return sorted iters
+		
+		Do not mix this method up with the textbuffer's method of the same name
+		That method returns an empty tuple, if there is no selection
+		'''
+		mark1 = self.dayTextBuffer.get_insert()
+		mark2 = self.dayTextBuffer.get_selection_bound()
+		
+		iter1 = self.dayTextBuffer.get_iter_at_mark(mark1)
+		iter2 = self.dayTextBuffer.get_iter_at_mark(mark2)
+		
+		sort_by_position = lambda iter: iter.get_offset()
+		iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
+		
+		assert iter1.get_offset() <= iter2.get_offset()
+		return (iter1, iter2)
+		
+			
+	def apply_format(self, format):
+		format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__'}
+		markup = format_to_markup[format]
+		
+		selected_text = self.get_selected_text()
+		
+		# If no text has been selected add example text and select it
+		if not selected_text:
+			selected_text = '%s text' % format
+			self.insert(selected_text)
+			
+			# Set the selection to the new text
+			
+			# get_insert() returns the position of the cursor (after 2nd markup)
+			insert_mark = self.dayTextBuffer.get_insert()
+			insert_iter = self.dayTextBuffer.get_iter_at_mark(insert_mark)
+			markup_start_iter = insert_iter.copy()
+			markup_end_iter = insert_iter.copy()
+			markup_start_iter.backward_chars(len(selected_text))
+			markup_end_iter.backward_chars(0)
+			self.set_selection(markup_start_iter, markup_end_iter)
+			
+		# Check that there is a selection
+		assert self.dayTextBuffer.get_selection_bounds()
+			
+		# Add the markup around the selected text
+		insert_bound = self.dayTextBuffer.get_insert()
+		selection_bound = self.dayTextBuffer.get_selection_bound()
+		self.insert(markup, insert_bound)
+		self.insert(markup, selection_bound)
+		
+		# Set the selection to the formatted text
+		iter1, iter2 = self.get_selection_bounds()
+		selection_start_iter = iter2.copy()
+		selection_end_iter = iter2.copy()
+		selection_start_iter.backward_chars(len(selected_text) + len(markup))
+		selection_end_iter.backward_chars(len(markup))
+		self.set_selection(selection_start_iter, selection_end_iter)
+			
 		
 	def hide(self):
 		self.dayTextView.hide()

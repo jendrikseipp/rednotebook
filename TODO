@@ -18,11 +18,14 @@ O Automatic insertion of photo links for current day
 O Automatic insertion of holidays
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
 O Daily word count. At least the current date that is presently active.
-O Spell Checker (unify markup and html textviews first)
+O Spell Checker (unify markup and html textviews first) (2 requests)
 O verbatim / raw ( """ - already supported, undocumented) / comments ( % already supported, undocumented)?
 O allow opening config file from within RedNotebook?
 O Fix opening files for Mac (os.system(open "name"))
 O Rethink linebreaks
+O make inserting date/time configurable
+O Undu and Redo (2 requests)
+O let the search function highlight found strings in the page
 
 
 
@@ -33,7 +36,6 @@ O Tags in text entries (e.g. @film:Batman)?
 O Add RedNotebook to Startup Programs
     0 Linux: Option in Program
     X Win: Installer Option
-O Task Bar Icon? -> Probably not
 O Encryption XOR Password
 O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
@@ -59,10 +61,15 @@ O setup.py ... --install-layout=deb together with --prefix=/usr/local
 O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
 O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
+O Task bar icon
+O Make RedNotebook portable
 
 0.7.5
-O Make RedNotebook portable
-O Buttons for bold, italic, underlined text
+X Buttons for bold, italic, underlined text
+X Fixed hardy bug: yaml 3.05 does not have __version__ attribute
+X Removed shebangs from python modules (Closes LP:393602)
+X The "rednotebook" script is now executable in the source directory
+
 
 0.7.4
 X Create ~/.rednotebook dir before logging is initialized (Closes LP:392235)
