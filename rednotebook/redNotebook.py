@@ -43,10 +43,7 @@ loggingLevels = {'debug': logging.DEBUG,
 				'error': logging.ERROR,
 				'critical': logging.CRITICAL}
 
-# File logging
-if sys.platform == 'win32' and hasattr(sys, "frozen"):
-	utils.redirect_output_to_file()
-	
+
 # Assert that all dirs and files are in place so that logging can take start
 filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
 							filesystem.templateDir, filesystem.tempDir])
@@ -54,22 +51,58 @@ filesystem.makeFiles([(filesystem.configFile, ''),
 						(filesystem.logFile, '')])
 
 
+# File logging
+if sys.platform == 'win32' and hasattr(sys, "frozen"):
+	utils.redirect_output_to_file()
+	
+class StreamDuplicator(object):
+	def __init__(self, default, duplicates):
+		if not type(duplicates) == list:
+			duplicates = [duplicates]
+		self.duplicates = duplicates
+		self.default = default
+		
+	@property
+	def streams(self):
+		return [self.default] + self.duplicates
+	
+	def write(self, str):
+		#print 'write', self.default, self.duplicates, self.streams
+		for stream in self.streams:
+			#print stream
+			stream.write(str)
+		
+	def flush(self):
+		for stream in self.streams:
+			stream.flush()
+			
+	#def close(self):
+	#	for stream in self.streams():
+	#		self.stream.close()
+		
+
+file_logging_stream = open(filesystem.logFile, 'w')
+
+# We want to have the error messages in the logfile
+sys.stderr = StreamDuplicator(sys.__stderr__, [file_logging_stream])
+
+
 # Write a log containing every output to a log file
 logging.basicConfig(level=logging.DEBUG,
 					format='%(asctime)s %(levelname)-8s %(message)s',
-					filename=filesystem.logFile,
-					filemode='w',
-					#stream=sys.stdout,
+					#filename=filesystem.logFile,
+					#filemode='w',
+					stream=file_logging_stream,#sys.stdout,
 					)
 
 level = logging.INFO
 if len(sys.argv) > 1:
 	level = loggingLevels.get(sys.argv[1], level)
 	
-logging.debug('sys.sterr logging level: %s' % level)
+logging.debug('sys.stdout logging level: %s' % level)
 
-# define a Handler which writes INFO messages or higher to the sys.stderr
-console = logging.StreamHandler()
+# define a Handler which writes INFO messages or higher to the sys.stdout
+console = logging.StreamHandler(sys.stdout)
 console.setLevel(level)
 # set a format which is simpler for console use
 formatter = logging.Formatter('%(levelname)-8s %(message)s')
@@ -82,7 +115,7 @@ logging.getLogger('').addHandler(console)
 try:
 	import pygtk
 except ImportError:
-	utils.printError('Please install PyGTK (python-gtk2)')
+	logging.error('Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
 pygtk.require("2.0")
@@ -91,13 +124,13 @@ try:
 	import gtk
 	import gobject
 except (ImportError, AssertionError):
-	utils.printError('Please install PyGTK (python-gtk2)')
+	logging.error('Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
 try:
 	import yaml
 except ImportError:
-	utils.printError('Yaml is not installed (install python-yaml)')
+	logging.error('Yaml is not installed (install python-yaml)')
 	sys.exit(1)
 
 	
@@ -220,6 +253,7 @@ class RedNotebook:
 	def exit(self):
 		self.frame.add_values_to_config()
 		self.saveToDisk()
+		logging.info('Goodbye!')
 		gtk.main_quit()
 
 	
@@ -750,7 +784,11 @@ def main():
 	utils.setup_signal_handlers(redNotebook)
 	
 	try:
+		logging.debug('Trying to enter the gtk main loop')
 		gtk.main()
+		print 'Close'
+		logging.debug('Closing logfile')
+		file_logging_stream.close()
 	except KeyboardInterrupt:
 		#print 'Interrupt'
 		#redNotebook.saveToDisk()

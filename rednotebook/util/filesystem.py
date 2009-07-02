@@ -184,7 +184,7 @@ def get_platform_info():
 		try:
 			names_values.append((name, getattr(object, value)))
 		except AttributeError, err:
-			logging.warning('%s could not be determined' % name)
+			logging.exception('%s could not be determined' % name)
 			
 	strings = []
 	for name, value in names_values:
@@ -206,7 +206,7 @@ def open_url(url):
 			os.startfile(os.path.normpath(url))
 			return
 		except OSError:
-			logging.error('Opening %s with "open" failed' % url)
+			logging.exception('Opening %s with "open" failed' % url)
 	else:
 		
 		try:
@@ -215,7 +215,7 @@ def open_url(url):
 			subprocess.call(['xdg-open', url])
 			return
 		except OSError, subprocess.CalledProcessError:
-			logging.error('Opening %s with xdg-open failed' % url)
+			logging.exception('Opening %s with xdg-open failed' % url)
 		
 	# If everything failed, try the webbrowser
 	import webbrowser
@@ -223,4 +223,4 @@ def open_url(url):
 		logging.info('Trying to open %s with webbrowser' % url)
 		webbrowser.open(url)
 	except webbrowser.Error:
-		logging.error('Failed to open web browser')
+		logging.exception('Failed to open web browser')

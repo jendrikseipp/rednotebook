@@ -38,6 +38,7 @@ class UndoRedoManager(object):
 		'''
 		self.undo_stack.append(action)
 		
+		# When a new action has been made, forget all redos
 		del self.redo_stack[:]
 		
 	def undo(self):
