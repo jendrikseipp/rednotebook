@@ -127,6 +127,33 @@ The old journal files will also be saved</property>
                   <widget class="GtkMenu" id="menu2">
                     <property name="visible">True</property>
                     <child>
+                      <widget class="GtkImageMenuItem" id="undo_menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">gtk-undo</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_undo_menuitem_activate"/>
+                        <accelerator key="Z" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkImageMenuItem" id="redo_menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">gtk-redo</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_redo_menuitem_activate"/>
+                        <accelerator key="Y" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkSeparatorMenuItem" id="menuitem6">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">menuitem6</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkImageMenuItem" id="cutMenuItem">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Cut</property>

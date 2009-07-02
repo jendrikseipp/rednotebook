@@ -43,6 +43,7 @@ from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import markup
 from rednotebook.util import dates
+from rednotebook import undo
 
 from rednotebook.gui.exportAssistant import ExportAssistant
 
@@ -69,10 +70,13 @@ class MainWindow(object):
 		self.load_values_from_config()
 		self.mainFrame.show()
 		
+		self.undo_redo_manager = undo.UndoRedoManager()
+		
 		self.uimanager = gtk.UIManager()
 		
 		self.calendar = Calendar(self.wTree.get_widget('calendar'))
-		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'))
+		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'), \
+										self.undo_redo_manager)
 		self.statusbar = Statusbar(self.wTree.get_widget('statusbar'))
 		
 		self.newEntryDialog = NewEntryDialog(self)
@@ -111,6 +115,9 @@ class MainWindow(object):
 			'on_openJournalButton_activate': self.on_openJournalButton_activate,
 			'on_saveMenuItem_activate': self.on_saveButton_clicked,
 			'on_saveAsMenuItem_activate': self.on_saveAsMenuItem_activate,
+			
+			'on_undo_menuitem_activate': self.dayTextField.on_undo,
+			'on_redo_menuitem_activate': self.dayTextField.on_redo,
 			
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
@@ -417,10 +424,6 @@ class MainWindow(object):
 		#self.actiongroup = actiongroup
 
 		def tmpl(word):
-			#text = word.ljust(20)
-			#shortcut = '\t(Ctrl+%s)' % word[0]
-			#print text[:-len(shortcut)]
-			#text = text[:-len(shortcut)] + shortcut
 			return word + ' (Ctrl+%s)' % word[0]
 		
 		def get_action(format):
@@ -696,7 +699,7 @@ class MainWindow(object):
 		self.calendar.setMonth(newMonth)
 		
 		self.calendar.set_date(newDate)
-		self.dayTextField.set_text(day.text)
+		self.dayTextField.set_text(day.text, clear_history=True)
 		self.html_editor.load_html(markup.convert(day.text, 'xhtml'))
 		self.categoriesTreeView.set_day_content(day)
 		
@@ -1416,22 +1419,31 @@ class CategoriesTreeView(object):
 		
 		
 class DayTextField(object):
-	def __init__(self, dayTextView):
+	def __init__(self, dayTextView, undo_redo_manager):
 		self.dayTextView = dayTextView
 		self.dayTextBuffer = gtk.TextBuffer()
 		self.dayTextView.set_buffer(self.dayTextBuffer)
+		
+		self.undo_redo_manager = undo_redo_manager
+		
+		self.changed_connection = self.dayTextBuffer.connect('changed', self.on_text_change)
+		
+		self.old_text = ''
 		
 	def wxinit(self, *args, **kwargs):
 		
 		self.history = []
 		self.historyPosition = -1
 		
-	def set_text(self, text):
+	def set_text(self, text, clear_history=False):
 		#self.redoButton.Enable(False)
 		#self.undoButton.Enable(False)
 		#self.history = []
 		#self.historyPosition = -1
 		self.dayTextBuffer.set_text(text)
+		
+		if clear_history:
+			self.clear_history()
 		
 	def get_text(self):
 		iterStart = self.dayTextBuffer.get_start_iter()
@@ -1534,7 +1546,38 @@ class DayTextField(object):
 	def hide(self):
 		self.dayTextView.hide()
 		
-	#TODO: implement UNDO/REDO
+	#TODO: Hide/Show Menu Entries
+	#TODO: Only log bigger changes (>5)
+	
+	def clear_history(self):
+		self.undo_redo_manager.delete_actions('day_text_field')
+	
+	def on_text_change(self, textbuffer):
+		#Determine whether to add a save point
+		
+		new_text = self.get_text()
+		#print 'NEW', new_text
+		#print 'OLD', self.old_text
+		old_text = self.old_text[:]
+		undo_func = lambda: self.set_text(old_text)
+		redo_func = lambda: self.set_text(new_text)
+		action = undo.Action(undo_func, redo_func, 'day_text_field')
+		self.undo_redo_manager.add_action(action)
+		
+		self.old_text = new_text
+		
+	def on_undo(self, widget):
+		print 'UNDO'
+		self.dayTextBuffer.handler_block(self.changed_connection)
+		self.undo_redo_manager.undo()
+		self.dayTextBuffer.handler_unblock(self.changed_connection)
+		
+	def on_redo(self, widget):
+		print 'REDO'
+		self.dayTextBuffer.handler_block(self.changed_connection)
+		self.undo_redo_manager.redo()
+		self.dayTextBuffer.handler_unblock(self.changed_connection)
+		
 		
 	def onTextChange(self, event):
 
