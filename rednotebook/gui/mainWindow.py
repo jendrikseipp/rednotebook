@@ -608,11 +608,14 @@ class MainWindow(object):
 		if response == gtk.RESPONSE_OK:
 			filesystem.last_file_dir = file_chooser.get_current_folder()
 			filename = file_chooser.get_filename()
+			filename = os.path.normpath(filename)
+			filename = 'file://' + filename
 			head, tail = os.path.split(filename)
-			if ' ' in filename:
-				self.dayTextField.insert('[' + tail + ' ""' + filename + '""]')
-			else:
-				self.dayTextField.insert('[' + tail + ' ' + filename + ']')
+			# It is always safer to add the "file://" protocol and the ""s
+			#if ' ' in filename:
+			self.dayTextField.insert('[%s ""%s""]' % (tail, filename))
+			#else:
+				#self.dayTextField.insert('[%s %s]' % (tail, filename))
 			
 	def on_insert_link_menu_item_activate(self, widget):
 		xml = gtk.glade.XML(self.gladefile, 'link_creator')
@@ -630,8 +633,12 @@ class MainWindow(object):
 			link_location = xml.get_widget('link_location_entry').get_text()
 			link_name = xml.get_widget('link_name_entry').get_text()
 			
+			# It is safer to add the http://
+			if not link_location.lower().startswith('http://'):
+				link_location = 'http://' + link_location
+			
 			if link_location and link_name:
-				self.dayTextField.insert('[' + link_name + ' ""' + link_location + '""]')
+				self.dayTextField.insert('[%s ""%s""]' % (link_name, link_location))
 			elif link_location:
 				self.dayTextField.insert(link_location)
 			else:

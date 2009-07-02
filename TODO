@@ -24,7 +24,6 @@ O allow opening config file from within RedNotebook?
 O Fix opening files for Mac (os.system(open "name"))
 O Rethink linebreaks
 O make inserting date/time configurable
-O Undu and Redo (2 requests)
 O let the search function highlight found strings in the page
 
 
@@ -41,7 +40,7 @@ O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
 O Allow inserting directories
 O Allow opening pictures by double-clicking them
-O Allow remote pictures
+O Allow remote pictures (pictures have to be downloaded and saved in a folder for exports)
 O Copy/Paste category notes
 O provide TrueCrypt encryption HowTo for Linux
 
@@ -61,3 +60,8 @@ O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
 O Task bar icon
 O Make RedNotebook portable
+
+0.7.6
+X Add information for Latex to PDF conversion
+X Fix URL and file link insertion
+O Undu and Redo (2 requests)

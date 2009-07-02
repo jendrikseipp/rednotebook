@@ -989,6 +989,21 @@ This wizard will help you to export your journal to various formats. You can sel
                     <property name="position">3</property>
                   </packing>
                 </child>
+                <child>
+                  <widget class="GtkLabel" id="label16">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">For information on how to convert the exported latex files to PDF, consult the Help document.</property>
+                    <property name="use_markup">True</property>
+                    <property name="justify">GTK_JUSTIFY_CENTER</property>
+                    <property name="wrap">True</property>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="padding">23</property>
+                    <property name="pack_type">GTK_PACK_END</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
               </widget>
             </child>
           </widget>

@@ -21,7 +21,7 @@ from __future__ import with_statement
 import os
 from rednotebook.util import filesystem
 
-version = '0.7.5'
+version = '0.7.6'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
@@ -105,14 +105,14 @@ There are many features I have planned to add in the future so stay tuned.
 I hope you enjoy the program!'''
 
 helpText = '''\n
-=== Text ===
+== Text ==
 This text field is the container for your normal diary entries like this one: 
 
 Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
 --pool-- park and had a nice time playing \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
-=== Format ===
+== Format ==
 As you see you can format your text ""**""**bold**""**"", ""//""//italic//""//"", \
 ""--""--stricken--""--"" and ""__""__underlined__""__"".
 
@@ -123,7 +123,7 @@ To see the results, just click on the "Preview" button.
 You can also see how \
 this text was formatted by looking at its [source source.txt].
 
-=== Extra Content ===
+== Extra Content ==
 On the right there is space for extra content, things that can easily be sorted into categories.
 For example you could add the category Ideas and then add your ideas \
 of that day to it:
@@ -132,19 +132,19 @@ of that day to it:
   - Invent Anti-Hangover-Machine
 
 
-=== Images, Files and Links ===
+== Images, Files and Links ==
 RedNotebook lets you insert images, files and links into your entries. To do so, select the \
 appropriate option in the "Insert" pull-down menu above the main text field. The text will \
 be inserted at the current cursor position.
 
-=== Templates ===
+== Templates ==
 RedNotebook supports a template system: In the directory "''' + filesystem.templateDir + '''" you find several \
 text files. The files "1.txt", "2.txt" etc. correspond to the days of the week. 
 Additionally you can have arbitrarily named templates. 
 Template files can be edited with your favourite text editor \
 and inserted by selecting them in the "Insert Template" drop-down menu.
 
-=== Tags ===
+== Tags ==
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
 "Work" into the lower textbox. The result looks like:
 
@@ -155,26 +155,71 @@ Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on
 You can see a tag cloud on the left by activating the "Clouds" tab and \
 selecting "Tags". Get a list of all tags with a given name by clicking on that tag in the cloud.
 
-=== Search ===
+== Search ==
 On the left you find the fancy search field. You can search for text, display a \
 category's content or show all days with a given tag. Double-clicking on a day takes you directly \
 to it. 
 
-=== Clouds ===
+== Clouds ==
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
 
-=== Save ===
+== Save ==
 Everything you enter will be saved automatically at regular intervals and when you exit the program. \
 If you want to double check you can save your contents by pressing "Strg-S" \
 or using the menu entry under "File" in the top left corner. 
 To avoid data loss you should also backup your content regularly. "Backup" in the "File" menu saves \
 all your entered data in a zip file.
 
-=== Export ===
+== Export ==
 In the same menu you also find an "Export"-Button. Click on it and export your diary to Plain Text, HTML or Latex.
 
-=== Keyboard Shortcuts ===
+**Latex caveats**
+
+Make sure to type all links with the full path including the protocol:
+
+- http://www.wikipedia.org or http://wikipedia.org (--wikipedia.org--, --"""www.wikipedia.org"""--)
+- file:///home/sam/myfile.txt (--/home/sam/myfile.txt--)
+
+
+===Export to PDF===
+
+Although you cannot export your journal directly to PDF, you can easily convert \
+the exported latex (.tex) files to PDF. Here is how you do it:
+
+**Linux**
+
+For the conversion on Linux you need two packages: texlive-latex-base and \
+texlive-latex-recommended. Those contain the pdflatex program and are \
+available in the repositories of most Linux distros. 
+
+You can convert the .tex file by typing the following text in a command line: \
+
+"""pdflatex your-rednotebook-export.tex"""
+
+Alternatively you can install a Latex editor like Kile \
+(http://kile.sourceforge.net/), open the .tex file with it and hit the export \
+button.
+
+However there are some pitfalls: Sometimes not all exported characters can be \
+converted to pdf. 
+E.g. problems occur when exporting \
+the euro sign (€) or other "non-standard" characters to pdf.
+
+If you run into any problems during the conversion, the easiest way to solve \
+them is to install a latex editor and do the conversion with it. That way \
+you can see the errors right away and get rid of them by editing the file. 
+
+**Windows**
+
+You can open an exported Latex file with Texniccenter and convert it to PDF \
+with MikTex. Visit www.texniccenter.org/ and www.miktex.org \
+for the programs and instructions. Basically you have to download both programs, \
+open the .tex file with Texniccenter and select "Build Output" from the \
+"Output" menu. The program will then create the beautifully looking PDF in the
+same directory.
+
+== Keyboard Shortcuts ==
 ||   Action   |   Shortcut    |
 | Go back one day    | <Ctrl> + PageDown      |
 | Go forward one day | <Ctrl> + PageUp        |
@@ -185,26 +230,7 @@ In the same menu you also find an "Export"-Button. Click on it and export your d
 
 You can find other shortcuts in the menus.
 
-=== Questions ===
+== Questions ==
 If you have any questions or comments, feel free to post them in the forum or \
 contact me directly.
 '''
-
-#**Linux**
-#
-#If you are on Linux, you can also export your diary directly to PDF. All you have to do is to install the packages \
-#texlive-latex-base and texlive-latex-recommended. Those contain the pdflatex program and are available in the \
-#repositories of most Linux distros.
-#
-#However there are some pitfalls: Not all characters can be exported to pdf. E.g. problems occur when exporting \
-#the euro sign or other "non-standard" characters to pdf.
-#
-#When you export to PDF, RedNotebook will create a Latex file (.tex) and then make an attempt to convert that file to pdf \
-#using pdflatex. If the .tex file contains odd characters this might or might not fail. Most of the time a pdf is created \
-#even if RedNotebook tells you that an error occured.
-#
-#**Windows**
-#
-#Windows users cannot export directly to pdf as of now. However you can open an exported \
-#Latex file with Texniccenter and MikTex and export it to pdf (Look over at www.toolscenter.org and www.miktex.org \
-#for programs and instructions).
