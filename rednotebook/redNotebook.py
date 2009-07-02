@@ -786,9 +786,8 @@ def main():
 	try:
 		logging.debug('Trying to enter the gtk main loop')
 		gtk.main()
-		print 'Close'
-		logging.debug('Closing logfile')
-		file_logging_stream.close()
+		#logging.debug('Closing logfile')
+		#file_logging_stream.close()
 	except KeyboardInterrupt:
 		#print 'Interrupt'
 		#redNotebook.saveToDisk()
