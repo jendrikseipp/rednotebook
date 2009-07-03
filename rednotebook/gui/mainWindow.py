@@ -1441,16 +1441,7 @@ class DayTextField(object):
 		
 		self.old_text = ''
 		
-	def wxinit(self, *args, **kwargs):
-		
-		self.history = []
-		self.historyPosition = -1
-		
 	def set_text(self, text, clear_history=False):
-		#self.redoButton.Enable(False)
-		#self.undoButton.Enable(False)
-		#self.history = []
-		#self.historyPosition = -1
 		self.dayTextBuffer.set_text(text)
 		
 		if clear_history:
@@ -1557,19 +1548,20 @@ class DayTextField(object):
 	def hide(self):
 		self.dayTextView.hide()
 		
-	#TODO: Hide/Show Menu Entries
 	#TODO: Only log bigger changes (>5)
 	
 	def clear_history(self):
 		self.undo_redo_manager.delete_actions('day_text_field')
 	
 	def on_text_change(self, textbuffer):
-		#Determine whether to add a save point
-		
 		new_text = self.get_text()
 		#print 'NEW', new_text
 		#print 'OLD', self.old_text
 		old_text = self.old_text[:]
+		
+		#Determine whether to add a save point
+		
+		
 		undo_func = lambda: self.set_text(old_text)
 		redo_func = lambda: self.set_text(new_text)
 		action = undo.Action(undo_func, redo_func, 'day_text_field')
@@ -1588,60 +1580,6 @@ class DayTextField(object):
 		self.dayTextBuffer.handler_block(self.changed_connection)
 		self.undo_redo_manager.redo()
 		self.dayTextBuffer.handler_unblock(self.changed_connection)
-		
-		
-	def onTextChange(self, event):
-
-		'''Delete the history after the current historyPosition'''
-		del self.history[self.historyPosition + 1:]
-		
-		'''Disable the undo button'''
-		self.redoButton.Enable(False)
-		
-		currentText = self.textField.GetValue()
-		
-		'''Only log the bigger changes'''
-		#print 'X:', currentText, self.history[self.historyPosition]
-		if self.historyPosition == -1 or abs(len(currentText) - len(self.history[self.historyPosition])) >= 5:
-		
-			self.history.append(currentText)
-			self.historyPosition = len(self.history) - 1
-			#print self.history, self.historyPosition
-			
-			'''Enable the undo button'''
-			if self.historyPosition > 0:
-				self.undoButton.Enable(True)
-		
-		
-		
-	def onUndo(self, event):
-		
-		if self.historyPosition == 0:
-			return
-		
-		self.historyPosition -= 1
-		previousText = self.history[self.historyPosition]
-		self.textField.ChangeValue(previousText)
-		
-		if self.historyPosition == 0:
-			self.undoButton.Enable(False)
-			
-		self.redoButton.Enable(True)
-	
-
-	def onRedo(self, event):
-		
-		if self.historyPosition == len(self.history) - 1:
-			return
-		
-		self.historyPosition += 1
-		redoText = self.history[self.historyPosition]
-		self.textField.ChangeValue(redoText)
-		
-		if self.historyPosition == len(self.history) - 1:
-			self.redoButton.Enable(False)
-			
-		self.undoButton.Enable(True)
 		
 		
 class Statusbar(object):
