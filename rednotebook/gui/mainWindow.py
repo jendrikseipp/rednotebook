@@ -70,7 +70,7 @@ class MainWindow(object):
 		self.load_values_from_config()
 		self.mainFrame.show()
 		
-		self.undo_redo_manager = undo.UndoRedoManager()
+		self.undo_redo_manager = undo.UndoRedoManager(self)
 		
 		self.uimanager = gtk.UIManager()
 		
@@ -1441,7 +1441,13 @@ class DayTextField(object):
 		
 		self.old_text = ''
 		
+		# Some actions should get a break point even if not much text has been
+		# changed
+		self.force_adding_undo_point = False
+		
 	def set_text(self, text, clear_history=False):
+		self.force_adding_undo_point = True
+		
 		self.dayTextBuffer.set_text(text)
 		
 		if clear_history:
@@ -1453,6 +1459,8 @@ class DayTextField(object):
 		return self.dayTextBuffer.get_text(iterStart, iterEnd)
 	
 	def insert(self, text, iter=None):
+		self.force_adding_undo_point = True
+		
 		if iter is None:
 			self.dayTextBuffer.insert_at_cursor(text)
 		else:
@@ -1547,36 +1555,33 @@ class DayTextField(object):
 		
 	def hide(self):
 		self.dayTextView.hide()
-		
-	#TODO: Only log bigger changes (>5)
 	
 	def clear_history(self):
 		self.undo_redo_manager.delete_actions('day_text_field')
 	
 	def on_text_change(self, textbuffer):
 		new_text = self.get_text()
-		#print 'NEW', new_text
-		#print 'OLD', self.old_text
 		old_text = self.old_text[:]
 		
 		#Determine whether to add a save point
+		much_text_changed = abs(len(new_text) - len(old_text)) >= 5
 		
+		if much_text_changed or self.force_adding_undo_point:
+			
+			undo_func = lambda: self.set_text(old_text)
+			redo_func = lambda: self.set_text(new_text)
+			action = undo.Action(undo_func, redo_func, 'day_text_field')
+			self.undo_redo_manager.add_action(action)
 		
-		undo_func = lambda: self.set_text(old_text)
-		redo_func = lambda: self.set_text(new_text)
-		action = undo.Action(undo_func, redo_func, 'day_text_field')
-		self.undo_redo_manager.add_action(action)
-		
-		self.old_text = new_text
+			self.old_text = new_text
+			self.force_adding_undo_point = False
 		
 	def on_undo(self, widget):
-		print 'UNDO'
 		self.dayTextBuffer.handler_block(self.changed_connection)
 		self.undo_redo_manager.undo()
 		self.dayTextBuffer.handler_unblock(self.changed_connection)
 		
 	def on_redo(self, widget):
-		print 'REDO'
 		self.dayTextBuffer.handler_block(self.changed_connection)
 		self.undo_redo_manager.redo()
 		self.dayTextBuffer.handler_unblock(self.changed_connection)

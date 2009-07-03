@@ -26,9 +26,17 @@ class Action(object):
 		self.tags = tags
 
 class UndoRedoManager(object):
-	def __init__(self):
+	size = 10
+	buffer = 2
+	def __init__(self, main_window):
+		self.main_window = main_window
+		self.undo_menu_item = self.main_window.wTree.get_widget('undo_menuitem')
+		self.redo_menu_item = self.main_window.wTree.get_widget('redo_menuitem')
+		
 		self.undo_stack = []
 		self.redo_stack = []
+		
+		self.update_buttons()
 		
 	
 	def add_action(self, action):
@@ -38,8 +46,14 @@ class UndoRedoManager(object):
 		'''
 		self.undo_stack.append(action)
 		
+		# Delete some items, if the undo stack grows too big
+		if len(self.undo_stack) > self.size + self.buffer:
+			del self.undo_stack[:self.buffer]
+		
 		# When a new action has been made, forget all redos
 		del self.redo_stack[:]
+		
+		self.update_buttons()
 		
 	def undo(self):
 		if not self.can_undo():
@@ -49,6 +63,8 @@ class UndoRedoManager(object):
 		action.undo_function()
 		self.redo_stack.append(action)
 		
+		self.update_buttons()
+		
 	def redo(self):
 		if not self.can_redo():
 			logging.info('There is nothing to redo')
@@ -56,6 +72,8 @@ class UndoRedoManager(object):
 		action = self.redo_stack.pop()
 		action.redo_function()
 		self.undo_stack.append(action)
+		
+		self.update_buttons()
 		
 	def can_undo(self):
 		return len(self.undo_stack) > 0
@@ -66,4 +84,11 @@ class UndoRedoManager(object):
 	def delete_actions(self, tag):
 		self.undo_stack = filter(lambda action: not tag in action.tags, self.undo_stack)
 		self.redo_stack = filter(lambda action: not tag in action.tags, self.redo_stack)
+		
+		self.update_buttons()
+		
+	def update_buttons(self):
+		self.undo_menu_item.set_sensitive(self.can_undo())
+		self.redo_menu_item.set_sensitive(self.can_redo())
+	
 		
