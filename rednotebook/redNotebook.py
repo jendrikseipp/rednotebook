@@ -25,6 +25,7 @@ import os
 import zipfile
 import operator
 import collections
+import time
 
 
 if hasattr(sys, "frozen"):
@@ -110,6 +111,15 @@ try:
 except ImportError:
 	logging.error('Yaml is not installed (install python-yaml)')
 	sys.exit(1)
+
+# The presence of the yaml module has been checked
+try:
+	from yaml import CLoader as Loader
+	from yaml import CDumper as Dumper
+	logging.info('Using libyaml for loading and dumping')
+except ImportError:
+	from yaml import Loader, Dumper
+	logging.info('Using pyyaml for loading and dumping')
 
 	
 
@@ -251,7 +261,7 @@ class RedNotebook:
 						if not day.empty:
 							monthContent[dayNumber] = day.content
 					#month.prettyPrint()
-					yaml.dump(monthContent, monthFile)
+					yaml.dump(monthContent, monthFile, Dumper=Dumper)
 		
 		self.showMessage('The content has been saved to %s' % self.dirs.dataDir, error=False)
 		
@@ -335,9 +345,11 @@ class RedNotebook:
 		
 		
 	def loadAllMonthsFromDisk(self):
+		logging.debug('Starting to load files in dir "%s"' % self.dirs.dataDir)
 		for root, dirs, files in os.walk(self.dirs.dataDir):
 			for file in files:
 				self.loadMonthFromDisk(os.path.join(root, file))
+		logging.debug('Finished loading files in dir "%s"' % self.dirs.dataDir)
 	
 	
 	def loadMonthFromDisk(self, path):
@@ -364,7 +376,9 @@ Filenames have to have the following form: 2009-01.txt \
 		try:
 			# Try to read the contents of the file
 			with open(monthFileString, 'r') as monthFile:
-				monthContents = yaml.load(monthFile)
+				logging.debug('Start loading file "%s"' % monthFileString)
+				monthContents = yaml.load(monthFile, Loader=Loader)
+				logging.debug('Finished loading file "%s"' % monthFileString)
 				self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
 		except yaml.YAMLError, exc:
 			logging.error('Error in file %s:\n%s' % (monthFileString, exc))
@@ -758,8 +772,11 @@ class Month(object):
 	
 	
 def main():
+	start_time = time.time()
 	redNotebook = RedNotebook()
 	utils.setup_signal_handlers(redNotebook)
+	end_time = time.time()
+	logging.debug('Start took %s seconds' % (end_time - start_time))
 	
 	try:
 		logging.debug('Trying to enter the gtk main loop')
