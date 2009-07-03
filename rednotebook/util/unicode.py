@@ -62,10 +62,3 @@ def coll(us, td=make_transdict()):
 		us = unicode(us, errors='replace')
 	return us.translate(td)
 
-def replace_html_encoding(text):
-	dict = {'%20': ' '}
-	result = text
-	for htmlText, normalText in dict.iteritems():
-		result = result.replace(htmlText, normalText)
-	return result
-

@@ -116,6 +116,7 @@ class MainWindow(object):
 			'on_saveMenuItem_activate': self.on_saveButton_clicked,
 			'on_saveAsMenuItem_activate': self.on_saveAsMenuItem_activate,
 			
+			'on_edit_menu_activate': self.on_edit_menu_activate,
 			'on_undo_menuitem_activate': self.dayTextField.on_undo,
 			'on_redo_menuitem_activate': self.dayTextField.on_redo,
 			
@@ -252,6 +253,16 @@ class MainWindow(object):
 		value_int = cloudComboBox.get_active()
 		self.cloud.set_type(value_int)
 					
+					
+	def on_edit_menu_activate(self, widget):
+		'''
+		Only set the menu items for undo and redo sensitive if the actions
+		can really be performed
+		'''
+		can_undo = self.undo_redo_manager.can_undo()
+		self.wTree.get_widget('undo_menuitem').set_sensitive(can_undo)
+		can_redo = self.undo_redo_manager.can_redo()
+		self.wTree.get_widget('redo_menuitem').set_sensitive(can_redo)
 							
 	def on_copyMenuItem_activate(self, widget):
 		self.dayTextField.dayTextView.emit('copy_clipboard')
