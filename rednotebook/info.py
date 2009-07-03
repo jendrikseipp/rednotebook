@@ -18,7 +18,9 @@
 # -----------------------------------------------------------------------
 
 from __future__ import with_statement
+
 import os
+
 from rednotebook.util import filesystem
 
 version = '0.7.6'

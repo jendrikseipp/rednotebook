@@ -24,6 +24,7 @@ import datetime
 import os
 import zipfile
 import operator
+import collections
 
 
 if hasattr(sys, "frozen"):
@@ -55,36 +56,13 @@ filesystem.makeFiles([(filesystem.configFile, ''),
 if sys.platform == 'win32' and hasattr(sys, "frozen"):
 	utils.redirect_output_to_file()
 	
-class StreamDuplicator(object):
-	def __init__(self, default, duplicates):
-		if not type(duplicates) == list:
-			duplicates = [duplicates]
-		self.duplicates = duplicates
-		self.default = default
-		
-	@property
-	def streams(self):
-		return [self.default] + self.duplicates
-	
-	def write(self, str):
-		#print 'write', self.default, self.duplicates, self.streams
-		for stream in self.streams:
-			#print stream
-			stream.write(str)
-		
-	def flush(self):
-		for stream in self.streams:
-			stream.flush()
-			
-	#def close(self):
-	#	for stream in self.streams():
-	#		self.stream.close()
+
 		
 
 file_logging_stream = open(filesystem.logFile, 'w')
 
 # We want to have the error messages in the logfile
-sys.stderr = StreamDuplicator(sys.__stderr__, [file_logging_stream])
+sys.stderr = utils.StreamDuplicator(sys.__stderr__, [file_logging_stream])
 
 
 # Write a log containing every output to a log file
@@ -504,7 +482,7 @@ Filenames have to have the following form: 2009-01.txt \
 		'''
 		Returns a dictionary mapping the words to their number of appearance
 		'''
-		wordDict = utils.ZeroBasedDict()
+		wordDict = collections.defaultdict(int)
 		for day in self.days:
 			if type == 'word':
 				words = day.words

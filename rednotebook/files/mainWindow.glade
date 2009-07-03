@@ -147,10 +147,8 @@ The old journal files will also be saved</property>
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="menuitem6">
+                      <widget class="GtkSeparatorMenuItem" id="separatormenuitem2">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">menuitem6</property>
-                        <property name="use_underline">True</property>
                       </widget>
                     </child>
                     <child>
@@ -829,8 +827,8 @@ Tags</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>

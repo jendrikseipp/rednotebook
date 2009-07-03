@@ -17,7 +17,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from __future__ import with_statement
+from __future__ import with_statement, division
+
 import sys
 import signal
 import random
@@ -28,70 +29,11 @@ import webbrowser
 import unicode
 import logging
 
-
 import filesystem
-
-def printError(message):
-	logging.error(message)
-
-def floatDiv(a, b):
-	return float(float(a)/float(b))
-
-#-----------DICTIONARY-----------------------------
-
-class ZeroBasedDict(dict):
-	def __getitem__(self, key):
-		if key in self:
-			return dict.__getitem__(self, key)
-		else:
-			return 0
-
-def getSortedDictByKeys(adict):
-	'''Returns a sorted list of (key, value) pairs, sorted by key'''
-	items = adict.items()
-	items.sort()
-	return items
-   
-def sortDictByKeys(adict, sortFunction=None):
-	'''Returns a sorted list of values, sorted by key'''
-	keys = adict.keys()
-	if sortFunction is None:
-		keys.sort()
-	else:
-		keys.sort(key=sortFunction)
-	return map(adict.get, keys)
-
-def sortDictByValues(adict):
-	'''
-	Returns a sorted list of (key, value) pairs, sorted by value
-	'''
-	
-	'''items returns a list of (key, value) pairs'''
-	items = adict.items()
-	items.sort(lambda (key1, value1), (key2, value2): cmp(value1, value2))
-	return items
-
-def sort_pair_list_by_keys(aList, sortFunction=None):
-	'''Returns a sorted list of values, sorted by key'''		
-	keys = adict.keys()
-	if sortFunction is None:
-		keys.sort()
-	else:
-		keys.sort(key=sortFunction)
-	return map(adict.get, keys)
-
-
-def restrain(valueToRestrain, range):
-	rangeStart, rangeEnd = range
-	if valueToRestrain < rangeStart:
-		valueToRestrain = rangeStart
-	if valueToRestrain > rangeEnd:
-		entryNumber = rangeEnd
-	return valueToRestrain
 
 
 def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
-	sortedDict = sortDictByValues(wordCountDict)
+	sortedDict = sorted(wordCountDict.items(), key=lambda (word, freq): freq)
 	
 	if type == 'word':
 		# filter short words and words in ignore_list
@@ -136,7 +78,7 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 	
 	for wordIndex in range(len(tagCloudWords)):
 		count = wordCountDict.get(tagCloudWords[wordIndex])
-		fontFactor = floatDiv((count - minCount), (deltaCount))
+		fontFactor = (count - minCount) / deltaCount
 		fontSize = int(minFontSize + fontFactor * fontDelta)
 		
 		htmlElements.append('<a href="search/' + str(wordIndex) + '">' + \
@@ -293,5 +235,30 @@ def show_html_in_browser(html, filename='tmp.html'):
 	html_file = os.path.abspath(filename)
 	html_file = 'file://' + html_file
 	webbrowser.open(html_file)
+	
+class StreamDuplicator(object):
+	def __init__(self, default, duplicates):
+		if not type(duplicates) == list:
+			duplicates = [duplicates]
+		self.duplicates = duplicates
+		self.default = default
+		
+	@property
+	def streams(self):
+		return [self.default] + self.duplicates
+	
+	def write(self, str):
+		#print 'write', self.default, self.duplicates, self.streams
+		for stream in self.streams:
+			#print stream
+			stream.write(str)
+		
+	def flush(self):
+		for stream in self.streams:
+			stream.flush()
+			
+	#def close(self):
+	#	for stream in self.streams():
+	#		self.stream.close()
 	
 	

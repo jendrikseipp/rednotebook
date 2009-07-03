@@ -116,7 +116,7 @@ class Config(dict):
 							dictionary[key] = value
 							
 					except Exception:
-						utils.printError('The line "' + keyValuePair + \
+						logging.error('The line "' + keyValuePair + \
 										'" in the config file contains errors')
 						
 			return dictionary
