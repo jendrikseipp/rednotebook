@@ -26,8 +26,8 @@ class Action(object):
 		self.tags = tags
 
 class UndoRedoManager(object):
-	size = 10
-	buffer = 2
+	size = 100
+	buffer = 20
 	def __init__(self, main_window):
 		self.main_window = main_window
 		self.undo_menu_item = self.main_window.wTree.get_widget('undo_menuitem')

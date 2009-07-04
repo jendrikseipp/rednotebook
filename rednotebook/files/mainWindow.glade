@@ -84,20 +84,32 @@ The old journal files will also be saved</property>
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="exportMenuItem">
+                      <widget class="GtkImageMenuItem" id="exportMenuItem">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Export</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_exportMenuItem_activate"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="menu-item-image6">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-convert</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="backup">
+                      <widget class="GtkImageMenuItem" id="backup">
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Save all the data in a zip archive</property>
                         <property name="label" translatable="yes">Backup</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_backup_activate"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="menu-item-image7">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-harddisk</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>

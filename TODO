@@ -5,17 +5,14 @@ per mail. Even if a feature is listed here already it might speed up the
 implementation if you tell me that you'd like its addition ;)
 
 
-Features that will **not** be implemented:
-- ``monospaced``
 
-Features that will probably soon be implemented:
+=== Features that will probably soon be implemented ===
+
 O i18n
 O Better comment code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
 O Allow submitting new entries with <Enter>
 O Switch from libglade to GtkBuilder
-O Automatic insertion of photo links for current day
-O Automatic insertion of holidays
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
 O Daily word count. At least the current date that is presently active.
 O Spell Checker (unify markup and html textviews first) (2 requests)
@@ -28,7 +25,8 @@ O let the search function highlight found strings in the page
 
 
 
-Maybe even some of those features will make it into RedNotebook:
+=== Maybe even some of those features will make it into RedNotebook ===
+
 O Hyperlinks in Categories? -> Already implemented, add documentation
 O dataDir Lock (for multiple TRN instances)? -> Probably not
 O Tags in text entries (e.g. @film:Batman)?
@@ -45,14 +43,24 @@ O Copy/Paste category notes
 O provide TrueCrypt encryption HowTo for Linux
 
 
+
+=== Features that will **not** be implemented ===
+
+- ``monospaced``
+
+
+
+=== Roadmap ===
+
 1.0
 O WYSIWYG editing as an alternative to markup text?
 
 0.9
-O Graphical configuration window
-O User dir configurable
+O Automatic insertion of photo links for current day
+O Automatic insertion of holidays
 
 0.8
+O Graphical configuration window
 O more formatting options and examples (fill some days of the journal at first startup)
 O Import of exported backups
 O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
@@ -60,11 +68,14 @@ O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
 O Task bar icon
 O Make RedNotebook portable
+    O User dir configurable
 
 0.7.6
-X Undu and Redo for the main text (2 requests)
+X Undu and Redo for the main text
 X Use libyaml for faster loading and dumping of files (Big journals now open ~10 times faster)
+X Speed improvements for navigation between days
 X Add information for Latex to PDF conversion
 X Fix URL and file link insertion
 X Append error messages to the logfile
+X Use new svn version of txt2tags
 
