@@ -62,7 +62,9 @@ O Task bar icon
 O Make RedNotebook portable
 
 0.7.6
-O Undu and Redo for the main text (2 requests)
+X Undu and Redo for the main text (2 requests)
+X Use libyaml for faster loading and dumping of files (Big journals now open ~10 times faster)
 X Add information for Latex to PDF conversion
 X Fix URL and file link insertion
+X Append error messages to the logfile
 

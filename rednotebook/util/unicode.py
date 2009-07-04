@@ -19,8 +19,6 @@
 
 import htmlentitydefs
 
-def printUnicode(unicodeString):
-	print unicodeString.encode("latin-1")
 	
 def substring(s, start=0, end=None):
 	if end == None:

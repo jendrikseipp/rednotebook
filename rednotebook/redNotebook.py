@@ -29,7 +29,6 @@ import time
 
 
 if hasattr(sys, "frozen"):
-	#TODO:
 	from rednotebook.util import filesystem
 	from rednotebook.util import utils
 else:
@@ -731,12 +730,11 @@ class Month(object):
 		self.days[dayNumber] = day
 		
 		
-	def prettyPrint(self):
-		print '***'
+	def __str__(self):
+		res = 'Month %s %s\n' % (self.yearNumber, self.monthNumber)
 		for dayNumber, day in self.days.iteritems():
-			print dayNumber, 
-			unicode.printUnicode(day.text)
-		print '---'
+			res += '%s: %s\n' % (dayNumber, day.text)
+		return res
 		
 		
 	def _isEmpty(self):
