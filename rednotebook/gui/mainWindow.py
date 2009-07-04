@@ -187,8 +187,12 @@ class MainWindow(object):
 		text_scrolledwindow = self.wTree.get_widget('text_scrolledwindow')
 		template_button = self.wTree.get_widget('templateMenuButton')
 		
+		# Do not forget to update the text in editor and preview respectively
 		
 		if self.preview_mode:
+			# Enter edit mode
+			self.dayTextField.set_text(self.day.text, clear_history=True)
+			
 			text_scrolledwindow.show()
 			self.html_editor.hide()
 			self.preview_button.set_stock_id('gtk-media-play')
@@ -196,6 +200,11 @@ class MainWindow(object):
 			
 			self.preview_mode = False
 		else:
+			# Enter preview mode
+			html = markup.convert(self.dayTextField.get_text(), 'xhtml')
+			self.html_editor.load_html(html)
+			
+			
 			text_scrolledwindow.hide()
 			self.html_editor.show()
 			day = self.redNotebook.day
@@ -211,6 +220,8 @@ class MainWindow(object):
 			
 		template_button.set_sensitive(not self.preview_mode)
 		self.single_menu_toolbutton.set_sensitive(not self.preview_mode)
+		self.format_toolbutton.set_sensitive(not self.preview_mode)
+		
 			
 		
 			
@@ -373,8 +384,6 @@ class MainWindow(object):
 		config = self.redNotebook.config
 		mainFrameWidth = config.read('mainFrameWidth', 1024)
 		mainFrameHeight = config.read('mainFrameHeight', 768)
-		#print 'SIZE', mainFrameWidth, mainFrameHeight
-		#self.mainFrame.show()
 		
 		screen_width = gtk.gdk.screen_width()
 		screen_height = gtk.gdk.screen_height()
@@ -425,10 +434,6 @@ class MainWindow(object):
 		</ui>'''
 			
 		uimanager = self.uimanager
-
-		# Add the accelerator group to the toplevel window
-		#accelgroup = uimanager.get_accel_group()
-		#self.mainFrame.add_accel_group(accelgroup)
 
 		# Create an ActionGroup
 		actiongroup = gtk.ActionGroup('FormatActionGroup')
@@ -710,8 +715,13 @@ class MainWindow(object):
 		self.calendar.setMonth(newMonth)
 		
 		self.calendar.set_date(newDate)
+		
+		# Converting markup to html takes time, so only do it when necessary
+		if self.preview_mode:
+			html = markup.convert(day.text, 'xhtml')
+			self.html_editor.load_html(html)
+		# Why do we always have to set the text of the dayTextField?
 		self.dayTextField.set_text(day.text, clear_history=True)
-		self.html_editor.load_html(markup.convert(day.text, 'xhtml'))
 		self.categoriesTreeView.set_day_content(day)
 		
 		self.day = day

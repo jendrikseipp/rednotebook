@@ -162,7 +162,6 @@ class RedNotebook:
 		self.dirs = filesystem.Filenames()
 		
 		# show instructions at first start or if testing
-		#self.firstTimeExecution = not path.exists(self.dirs.dataDir)
 		self.firstTimeExecution = len(os.listdir(self.dirs.dataDir)) == 0
 		logging.info('First Start: %s' % self.firstTimeExecution)
 		
@@ -287,11 +286,6 @@ class RedNotebook:
 			
 			self.frame.show_dir_chooser('open', dir_not_found=True)
 			return
-			# Just to be sure
-			#filesystem.makeDirectory(self.dirs.defaultDataDir)
-			
-			#data_dir = self.dirs.defaultDataDir
-			#logging.info('Opening journal at %s' % data_dir)
 		
 		data_dir_empty = not os.listdir(data_dir)
 		
