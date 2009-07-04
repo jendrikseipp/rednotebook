@@ -317,8 +317,13 @@ class RedNotebook:
 		if self.firstTimeExecution is True:
 			self.addInstructionContent()
 			
-		# Show cloud tab, cloud is updated automatically
-		self.frame.searchNotebook.set_current_page(1)
+		# Notebook is only on page 1 here, if we are opening a journal the second time
+		if self.frame.searchNotebook.get_current_page() == 1:
+			# We have opened a new journal
+			self.frame.cloud.update(force_update=True)
+		else:
+			# Show cloud tab, cloud is updated automatically
+			self.frame.searchNotebook.set_current_page(1)
 		
 		# Reset Search
 		self.frame.searchBox.clear()
