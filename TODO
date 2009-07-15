@@ -70,14 +70,6 @@ O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
 O Task bar icon
 
-0.7.6
-X Undu and Redo for the main text
-X Use libyaml for faster loading and dumping of files (Big journals now open ~10 times faster)
-X Speed improvements for navigation between days
-X Add information for Latex to PDF conversion
-X Shortcut for turning on/off the preview: Ctrl+P
-X New entry in Edit menu: "Find"
-X Append error messages to the logfile
-X Use new svn version of txt2tags
-X Fix URL and file link insertion
+0.7.7
+O Fix: Win Version should use smaller insert-image icon (16x16)
 

@@ -1,5 +1,16 @@
 ==== RedNotebook Changelog ====
 
+=== 0.7.6 (2009-07-15) ===
+ * Undu and redo for the main text
+ * Use libyaml for faster loading and dumping of files (Big journals now open ~10 times faster)
+ * Speed improvements for navigation between days
+ * Add information for Latex to PDF conversion
+ * Shortcut for turning on/off the preview: Ctrl+P
+ * New entry in Edit menu: "Find"
+ * Append error messages to the logfile
+ * Use new svn version of txt2tags
+ * Fix URL and file link insertion
+
 === 0.7.5 (2009-06-30) ===
  * Buttons for bold, italic, underlined text
  * Fixed hardy bug: yaml 3.05 does not have __version__ attribute
