@@ -103,6 +103,8 @@ Click on it and export your diary to Plain Text, HTML or Latex.
 Now you can erase this help text and enter e.g. what you have done today. To read the instructions again, \
 go to "Help -> Help" in the menu bar.
 
+If you encounter any errors, please drop me a note so I can fix them.
+
 There are many features I have planned to add in the future so stay tuned.
 I hope you enjoy the program!'''
 
@@ -132,7 +134,17 @@ of that day to it:
 
 - Ideas
   - Invent Anti-Hangover-Machine
+  
+  
+The name “Categories” is a little bit confusing. It does not mean that a day is put into a category, but that there is additional content on the right, sorted into categories. “Topics” would probably be a better name.
 
+Those topics have several items distributed over various days. \
+I’ll give you an example: I like to maintain a list of cool things I have done. \
+So if I did a cool thing on some day, I navigate to that day, add the category \
+“Cool Stuff” and add an entry “Visit the pope” (Sadly I haven’t done that, yet ;-) ). \
+When I have done more cool things on many days, they all have a category “Cool Stuff” \
+and many different entries. Now it is possible to export only that category and \
+get a list of the cool stuff that happened to me with the respective dates.
 
 == Images, Files and Links ==
 RedNotebook lets you insert images, files and links into your entries. To do so, select the \
@@ -222,17 +234,24 @@ open the .tex file with Texniccenter and select "Build Output" from the \
 same directory.
 
 == Keyboard Shortcuts ==
-||   Action   |   Shortcut    |
+||   Action          |   Shortcut             |
+| Preview (On/Off)   | <Ctrl> + P             |
+| Find               | <Ctrl> + F             |
 | Go back one day    | <Ctrl> + PageDown      |
 | Go forward one day | <Ctrl> + PageUp        |
-| Insert picture | <Ctrl> + P        |
-| Insert file | <Ctrl> + F        |
-| Insert link | <Ctrl> + L        |
-| Insert date/time | <Ctrl> + D        |
+| Insert link        | <Ctrl> + L             |
+| Insert date/time   | <Ctrl> + D             |
 
 You can find other shortcuts in the menus.
 
 == Questions ==
 If you have any questions or comments, feel free to post them in the forum or \
 contact me directly.
+
+== Bugs ==
+There is no software without bugs, so if you encounter one please drop me a note.
+This way RedNotebook can get better not only for you, but for all users.
+
+Bug reports should go [here https://bugs.launchpad.net/rednotebook], but if you
+don't know how to use that site, a simple mail is equally fine.
 '''

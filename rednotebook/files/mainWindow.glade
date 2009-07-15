@@ -206,6 +206,20 @@ The old journal files will also be saved</property>
                         </child>
                       </widget>
                     </child>
+                    <child>
+                      <widget class="GtkSeparatorMenuItem" id="separatormenuitem3">
+                        <property name="visible">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkImageMenuItem" id="find_menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">gtk-find</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_find_menuitem_activate"/>
+                      </widget>
+                    </child>
                   </widget>
                 </child>
               </widget>
@@ -465,9 +479,11 @@ Tags</property>
                             <child>
                               <widget class="GtkToolButton" id="previewButton">
                                 <property name="visible">True</property>
+                                <property name="tooltip" translatable="yes">Show a formatted preview of the text (Ctrl+P)</property>
                                 <property name="label" translatable="yes">Preview</property>
                                 <property name="stock_id">gtk-media-play</property>
                                 <signal name="clicked" handler="on_previewButton_clicked"/>
+                                <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="homogeneous">True</property>

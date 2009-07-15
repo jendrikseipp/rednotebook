@@ -124,6 +124,8 @@ class MainWindow(object):
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
 			
+			'on_find_menuitem_activate': self.on_find_menuitem_activate,
+			
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			'on_checkVersionMenuItem_activate': self.on_checkVersionMenuItem_activate,
 			
@@ -287,6 +289,13 @@ class MainWindow(object):
 #		event.state = gtk.gdk.CONTROL_MASK
 #		self.mainFrame.emit("key_press_event",event)
 		self.dayTextField.dayTextView.emit('cut_clipboard')
+		
+	def on_find_menuitem_activate(self, widget):
+		'''
+		Change to search page and put the cursor into the search box
+		'''
+		self.searchNotebook.set_current_page(0)
+		self.searchBox.entry.grab_focus()
 		
 	def on_mainFrame_configure_event(self, widget, event):
 		'''
@@ -527,10 +536,10 @@ class MainWindow(object):
 		# Create actions
 		actiongroup.add_actions([
 			('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, \
-				'_Picture' + tmpl('P'), \
-				'<Control>P', 'Insert a picture at the current position', \
+				'Picture', \
+				None, 'Insert a picture at the current position', \
 				self.on_insert_pic_menu_item_activate),
-			('File', gtk.STOCK_FILE, '_File' + tmpl('F'), '<Control>F', \
+			('File', gtk.STOCK_FILE, 'File', None, \
 				'Insert a file at the current position', \
 				self.on_insert_file_menu_item_activate),
 			('Link', gtk.STOCK_JUMP_TO, '_Link' + tmpl('L'), '<Control>L', \
@@ -1027,7 +1036,7 @@ class CloudView(HtmlWindow):
 		selected_words = self.get_selected_words()
 		logging.info('The following words will be hidden from clouds: %s' % selected_words)
 		self.ignore_list.extend(selected_words)
-		self.update()
+		self.update(force_update=True)
 		
 	def get_selected_words(self):
 		bounds = self.htmlview.get_buffer().get_selection_bounds()
@@ -1213,7 +1222,7 @@ class CategoriesTreeView(object):
 				self.mainWindow.redNotebook.saveOldDay()
 				
 		# Update cloud
-		self.mainWindow.cloud.update()		
+		self.mainWindow.cloud.update()
 		
 		
 	def check_category(self, category):

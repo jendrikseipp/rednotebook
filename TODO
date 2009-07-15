@@ -22,6 +22,8 @@ O Fix opening files for Mac (os.system(open "name"))
 O Rethink linebreaks
 O make inserting date/time configurable
 O let the search function highlight found strings in the page
+O Make RedNotebook portable
+    O User dir configurable
 
 
 
@@ -67,15 +69,15 @@ O Use threads for file loading and link opening (Data opening takes 1.1 sec, oth
 O Automatic Backups
 O SSH, FTP saving -> Conduit HowTo
 O Task bar icon
-O Make RedNotebook portable
-    O User dir configurable
 
 0.7.6
 X Undu and Redo for the main text
 X Use libyaml for faster loading and dumping of files (Big journals now open ~10 times faster)
 X Speed improvements for navigation between days
 X Add information for Latex to PDF conversion
-X Fix URL and file link insertion
+X Shortcut for turning on/off the preview: Ctrl+P
+X New entry in Edit menu: "Find"
 X Append error messages to the logfile
 X Use new svn version of txt2tags
+X Fix URL and file link insertion
 
