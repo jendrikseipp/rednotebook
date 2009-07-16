@@ -16,11 +16,11 @@ O Switch from libglade to GtkBuilder
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
 O Daily word count. At least the current date that is presently active.
 O Spell Checker (unify markup and html textviews first) (2 requests)
-O verbatim / raw ( """ - already supported, undocumented) / comments ( % already supported, undocumented)?
+O comments ( % already supported, undocumented)?
 O allow opening config file from within RedNotebook?
 O Fix opening files for Mac (os.system(open "name"))
 O Rethink linebreaks
-O make inserting date/time configurable
+O make date format configurable for exports
 O let the search function highlight found strings in the page
 O Make RedNotebook portable
     O User dir configurable
@@ -30,7 +30,7 @@ O Make RedNotebook portable
 === Maybe even some of those features will make it into RedNotebook ===
 
 O Hyperlinks in Categories? -> Already implemented, add documentation
-O dataDir Lock (for multiple TRN instances)? -> Probably not
+
 O Tags in text entries (e.g. @film:Batman)?
 O Add RedNotebook to Startup Programs
     0 Linux: Option in Program
@@ -40,15 +40,14 @@ O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
 O Allow inserting directories
 O Allow opening pictures by double-clicking them
-O Allow remote pictures (pictures have to be downloaded and saved in a folder for exports)
 O Copy/Paste category notes
 O provide TrueCrypt encryption HowTo for Linux
+O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
+O more formatting options and examples (fill some days of the journal at first startup)
+O SSH, FTP saving -> Conduit HowTo
 
 
 
-=== Features that will **not** be implemented ===
-
-- ``monospaced``
 
 
 
@@ -61,15 +60,26 @@ O WYSIWYG editing as an alternative to markup text?
 O Automatic insertion of photo links for current day
 O Automatic insertion of holidays
 
-0.8
-O Graphical configuration window
-O more formatting options and examples (fill some days of the journal at first startup)
+0.8.x
 O Import of exported backups
-O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
 O Automatic Backups
-O SSH, FTP saving -> Conduit HowTo
-O Task bar icon
 
-0.7.7
+
+0.8.0
+O Graphical configuration window
+O Task bar icon
+O make inserting date/time configurable in the preferences dialog
 O Fix: Win Version should use smaller insert-image icon (16x16)
+
+
+
+
+
+
+=== Features that will **not** be implemented ===
+
+- ``monospaced`` (we only want one font)
+- verbatim / raw ( """/"" - supported, undocumented) (too confusing / poorly behaving) 
+- remote pictures (pictures would have to be downloaded and saved in a folder for exports)
+- dataDir Lock (for multiple TRN instances) (unneeded)
 

@@ -540,8 +540,12 @@ class Day(object):
 	
 	'Text'
 	def _getText(self):
+		'''
+		Returns the day's text encoded as UTF-8
+		decode means "decode from the standard ascii representation"
+		'''
 		if self.content.has_key('text'):
-			return self.content['text']
+			return self.content['text'].decode('utf-8')
 		else:
 		   return ''
 		

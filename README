@@ -3,10 +3,11 @@
 There are many packages available for different distributions, so you might
 want to check the Downloads page first. 
 
+
 ===== REQUIREMENTS =====
   - Python (2.5) (www.python.org)
-  - PyYaml (3.05) (www.yaml.org)
-  - PyGTK (2.13) (www.pygtk.org)
+  - PyYaml (>3.05) (www.yaml.org)
+  - PyGTK (>2.13) (www.pygtk.org)
   
   
     === Ubuntu/Debian ===
@@ -20,22 +21,24 @@ want to check the Downloads page first.
 
 ===== INSTALL =====
 
-as root run 'python setup.py install'
-(install into path-to-python/site-packages/)
-
-or run 'python setup.py install --root=testDir'
-(install into current-directory/testDir/path-to-python/site-packages/)
+As root run 'python setup.py install'
+(installs into path-to-python/site-packages/)
 
 
 ===== RUN =====
 
-If you installed the program into "site-packages" you can now run the command "rednotebook"
-in any shell.
+After installing you can run the command "rednotebook" in any shell. 
+You should also find a menu entry for RedNotebook under "Office".
 
-Otherwise navigate to the "rednotebook" directory and run "python redNotebook.py".
+
+
+(Running without installing: Just navigate to the "rednotebook" directory 
+                             and run "./rednotebook".)
+
 
 
 ===== THANKS =====
+
   - The authors of the programs listed under 'requirements'. Remember that
 			without them, RedNotebook would not be possible
   - Everaldo Coelho (www.everaldo.com) for the excellent icon

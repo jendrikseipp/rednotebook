@@ -862,7 +862,7 @@ class NewEntryDialog(object):
 			
 			
 			
-class CustomComboBox:
+class CustomComboBox(object):
 	def __init__(self, comboBox):
 		self.comboBox = comboBox
 		self.liststore = self.comboBox.get_model()
@@ -889,7 +889,7 @@ class CustomComboBox:
 			return ''
 		
 	def get_active_text(self):
-		return self.entry.get_text()
+		return self.entry.get_text().decode('utf-8')
 	
 	def set_active_text(self, text):
 		return self.entry.set_text(text)
@@ -943,7 +943,8 @@ class SearchComboBox(CustomComboBox):
 		"""
 			Called when the entry changes
 		"""
-		self.search(entry.get_text())
+		#self.search(entry.get_text())
+		self.search(self.get_search_text())
 		
 	def on_entry_activated(self, entry):
 		"""
@@ -957,13 +958,17 @@ class SearchComboBox(CustomComboBox):
 			self.recentSearches = self.recentSearches[-20:]
 			self.add_entry(searchText)
 			
-		self.search(searchText)
+		self.search(self.get_search_text())
 			
 	def search(self, searchText):
 		self.mainWindow.searchTreeView.update_data(searchText)
 		
 	def clear(self):
+		CustomComboBox.clear(self)
 		self.entry.set_text('')
+		
+	def get_search_text(self):
+		return self.get_active_text()
 		
 		
 		
@@ -1043,7 +1048,7 @@ class CloudView(HtmlWindow):
 		if not bounds:
 			return []
 		
-		text = self.htmlview.get_buffer().get_text(*bounds)
+		text = self.htmlview.get_buffer().get_text(*bounds).decode('utf-8')
 		words = text.split(' ')
 		
 		# Delete pseudo whitespace
@@ -1275,7 +1280,7 @@ class CategoriesTreeView(object):
 				
 			for i in range(model.iter_n_children(element)):
 				child = model.iter_nth_child(element, i)
-				text = self.get_iter_value(child)
+				text = self.get_iter_value(child).decode('utf-8')
 				content[text] = self.get_element_content(child)
 			
 			return content
@@ -1475,7 +1480,7 @@ class DayTextField(object):
 	def get_text(self):
 		iterStart = self.dayTextBuffer.get_start_iter()
 		iterEnd = self.dayTextBuffer.get_end_iter()
-		return self.dayTextBuffer.get_text(iterStart, iterEnd)
+		return self.dayTextBuffer.get_text(iterStart, iterEnd).decode('utf-8')
 	
 	def insert(self, text, iter=None):
 		self.force_adding_undo_point = True
@@ -1499,7 +1504,7 @@ class DayTextField(object):
 	def get_selected_text(self):
 		bounds = self.dayTextBuffer.get_selection_bounds()
 		if bounds:
-			return self.dayTextBuffer.get_text(*bounds)
+			return self.dayTextBuffer.get_text(*bounds).decode('utf-8')
 		else:
 			return None
 
