@@ -64,15 +64,14 @@ O Automatic insertion of holidays
 O Import of exported backups
 O Automatic Backups
 
-
-0.8.0
-O Graphical configuration window
+0.8.2
 O Task bar icon
+
+0.8.1
 O Password protection
-O make inserting date/time configurable in the preferences dialog
+O Filter list for clouds in GUI
 O make font size configurable
 O Fix: Win Version should use smaller insert-image icon (16x16)
-X Fix small Unicode bugs
 
 
 
