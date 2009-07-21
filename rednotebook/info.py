@@ -178,6 +178,10 @@ to it.
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
 
+== Options ==
+Make sure you check out the customizable options in the Preferences dialog. You can
+open this dialog by clicking on the entry in the "Edit" menu.
+
 == Save ==
 Everything you enter will be saved automatically at regular intervals and when you exit the program. \
 If you want to double check you can save your contents by pressing "Strg-S" \
@@ -203,9 +207,9 @@ the exported latex (.tex) files to PDF. Here is how you do it:
 
 **Linux**
 
-For the conversion on Linux you need two packages: texlive-latex-base and \
-texlive-latex-recommended. Those contain the pdflatex program and are \
-available in the repositories of most Linux distros. 
+For the conversion on Linux you need some extra packages: texlive-latex-base and \
+texlive-latex-recommended. Maybe you also need texlive-latex-extra. Those contain \
+the pdflatex program and are available in the repositories of most Linux distros. 
 
 You can convert the .tex file by typing the following text in a command line: \
 

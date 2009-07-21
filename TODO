@@ -68,8 +68,11 @@ O Automatic Backups
 0.8.0
 O Graphical configuration window
 O Task bar icon
+O Password protection
 O make inserting date/time configurable in the preferences dialog
+O make font size configurable
 O Fix: Win Version should use smaller insert-image icon (16x16)
+X Fix small Unicode bugs
 
 
 

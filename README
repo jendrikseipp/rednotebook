@@ -9,32 +9,24 @@ want to check the Downloads page first.
   - PyYaml (>3.05) (www.yaml.org)
   - PyGTK (>2.13) (www.pygtk.org)
   
-  
     === Ubuntu/Debian ===
     sudo apt-get install python-yaml python-gtk2
     
-
     === Fedora ===
     yum -y install python-devel PyYAML
     
 
-
 ===== INSTALL =====
-
 As root run 'python setup.py install'
 (installs into path-to-python/site-packages/)
 
 
 ===== RUN =====
-
 After installing you can run the command "rednotebook" in any shell. 
 You should also find a menu entry for RedNotebook under "Office".
 
-
-
 (Running without installing: Just navigate to the "rednotebook" directory 
                              and run "./rednotebook".)
-
 
 
 ===== THANKS =====
@@ -49,7 +41,6 @@ You should also find a menu entry for RedNotebook under "Office".
   - Matt Rasmussen and his KeepNote project (http://rasm.ods.org/keepnote/). 
   			RedNotebook uses his work on displaying HTML content 
 			in a PyGTK application for the preview.
-
 
 
 Enjoy!

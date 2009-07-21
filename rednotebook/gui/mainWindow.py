@@ -21,6 +21,7 @@ from __future__ import with_statement
 import sys
 import os
 import datetime
+import time
 import urllib
 import urlparse
 import webbrowser
@@ -37,6 +38,8 @@ from rednotebook.util import utils
 import rednotebook.util.unicode
 
 from rednotebook.gui.htmltextview import HtmlWindow
+from rednotebook.gui.options import OptionsManager
+from rednotebook.gui.widgets import CustomComboBox
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import info
@@ -99,6 +102,7 @@ class MainWindow(object):
 		self.preview_mode = False
 		self.preview_button = self.wTree.get_widget('previewButton')
 		
+		self.options_manager = OptionsManager(self)
 		
 		self.setup_search()
 		self.setup_insert_menu()
@@ -125,6 +129,7 @@ class MainWindow(object):
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
 			
 			'on_find_menuitem_activate': self.on_find_menuitem_activate,
+			'on_options_menuitem_activate': self.on_options_menuitem_activate,
 			
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			'on_checkVersionMenuItem_activate': self.on_checkVersionMenuItem_activate,
@@ -296,6 +301,9 @@ class MainWindow(object):
 		'''
 		self.searchNotebook.set_current_page(0)
 		self.searchBox.entry.grab_focus()
+		
+	def on_options_menuitem_activate(self, widget):
+		self.options_manager.on_options_dialog()
 		
 	def on_mainFrame_configure_event(self, widget, event):
 		'''
@@ -520,15 +528,10 @@ class MainWindow(object):
 		numbered_list = bullet_list.replace('-', '+')
 		title = '\n=== Title text ===\n'
 		
-		default_date_string = '%A, %x %X'
-		date_string = self.redNotebook.config.read('dateTimeString', default_date_string)
-		
-		table = '''
-||   1st Heading   |   2nd Heading	|   3rd Heading	|
-|	right aligned |	 centered	 | left aligned	 |
-|		   Having |	  tables	  | is			   |
-|			   so |	 awesome!	 |				  |
-'''
+		def insert_date_time(widget):
+			default_date_string = '%A, %x %X'
+			date_string = self.redNotebook.config.read('dateTimeString', default_date_string)
+			self.dayTextField.insert(time.strftime(date_string))
 
 		def tmpl(letter):
 			return ' (Ctrl+%s)' % letter
@@ -562,7 +565,7 @@ class MainWindow(object):
 				lambda widget: self.dayTextField.insert(table)),
 			('Date', None, 'Date/Time' + tmpl('D'), '<Ctrl>D', \
 				'Insert the current date and time at the current position', \
-				lambda widget: self.dayTextField.insert(datetime.datetime.now().strftime(date_string))),
+				insert_date_time),
 			])
 
 		# Add the actiongroup to the uimanager
@@ -862,45 +865,7 @@ class NewEntryDialog(object):
 			
 			
 			
-class CustomComboBox(object):
-	def __init__(self, comboBox):
-		self.comboBox = comboBox
-		self.liststore = self.comboBox.get_model()
-		#self.comboBox.set_wrap_width(5)
-		self.entry = self.comboBox.get_child()
-		
-	def add_entry(self, entry):
-		self.liststore.append([entry])
-	
-	def set_entries(self, value_list):
-		self.clear()
-		for entry in value_list:
-			self.add_entry(entry)
-		
-		if len(value_list) > 0:
-			self.comboBox.set_active(0)
-	
-	def _get_active_text(self):
-		model = self.comboBox.get_model()
-		index = self.comboBox.get_active()
-		if index > -1:
-			return model[index][0]
-		else:
-			return ''
-		
-	def get_active_text(self):
-		return self.entry.get_text().decode('utf-8')
-	
-	def set_active_text(self, text):
-		return self.entry.set_text(text)
-	
-	def clear(self):
-		if self.liststore:
-			self.liststore.clear()
-		self.set_active_text('')
-	
-	def connect(self, *args, **kargs):
-		self.comboBox.connect(*args, **kargs)
+
 	
 	
 class SearchComboBox(CustomComboBox):

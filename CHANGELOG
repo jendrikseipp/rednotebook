@@ -52,7 +52,7 @@
  * Link template files
  * Make toolbars equally sized
  * Delete GTKMozembed cruft
-   * Delete mozembed.py module from (originally taken from listen-project)
+   * Delete mozembed.py module (originally taken from listen-project)
  * Delete markup cruft
 
 === 0.6.8 (2009-05-03) ===
