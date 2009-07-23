@@ -164,7 +164,11 @@ def _get_config(type):
 		config['style'] = [os.path.join(filesystem.filesDir, 'stylesheet.css')]
 		config['css-inside'] = 1
 	
+		# keepnote only recognizes "<strike>"
 		config['postproc'].append(['(?i)(</?)s>', '\\1strike>'])
+		
+		# Allow line breaks, no idea why we need r'\\\\' here
+		config['postproc'].append([r'\\\\', '<BR>'])
 		
 	elif type == 'tex':
 		config['encoding'] = 'utf8'
@@ -188,7 +192,12 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 	We only need this for the keepnote input, the exports work fine
 	'''
 	if append_whitespace:
-		txt = map(lambda line: line + ' ', txt)
+		def add_whitespace(line):
+			if line.rstrip().endswith(r'\\'):
+				return line.rstrip()
+			else:
+				return line + ' '
+		txt = map(add_whitespace, txt)
 	
 	# Set the three header fields
 	if headers is None:
@@ -222,8 +231,6 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 	except:
 		result = txt2tags.getUnknownErrorMessage()
 		logging.error(result)
-		
-	print 'RES', result
 		
 	return result
 				

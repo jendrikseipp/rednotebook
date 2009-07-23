@@ -29,6 +29,7 @@ import logging
 
 import gtk
 import gobject
+import pango
 import gtk.glade
 
 'Initialize the gtk thread engine'
@@ -70,8 +71,7 @@ class MainWindow(object):
 		self.mainFrame.set_title('RedNotebook')
 		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
 								filesystem.get_icons()))
-		self.load_values_from_config()
-		self.mainFrame.show()
+		
 		
 		self.undo_redo_manager = undo.UndoRedoManager(self)
 		
@@ -101,6 +101,9 @@ class MainWindow(object):
 		self.html_editor.set_editable(False)
 		self.preview_mode = False
 		self.preview_button = self.wTree.get_widget('previewButton')
+		
+		self.load_values_from_config()
+		self.mainFrame.show()
 		
 		self.options_manager = OptionsManager(self)
 		
@@ -412,6 +415,12 @@ class MainWindow(object):
 			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))	
 		self.wTree.get_widget('editPane').set_position(config.read('rightDividerPosition', 500))
 		
+		# A font size of -1 applies the standard font size
+		main_font_size = config.read('mainFontSize', -1)
+		
+		self.dayTextField.set_font_size(main_font_size)
+		self.html_editor.set_font_size(main_font_size)
+		
 		
 	def setup_template_menu(self):
 		self.template_menu_button = self.wTree.get_widget('templateMenuButton')
@@ -504,7 +513,7 @@ class MainWindow(object):
 			<menuitem action="Title"/>
 			<menuitem action="Line"/>
 			<menuitem action="Date"/>
-			<!-- <menuitem action="Table"/> -->
+			<menuitem action="LineBreak"/>
 		</popup>
 		</ui>'''
 			
@@ -523,6 +532,7 @@ class MainWindow(object):
 						'(Two blank lines close the list)\n\n\n'
 		numbered_list = bullet_list.replace('-', '+')
 		title = '\n=== Title text ===\n'
+		line_break = r'\\'
 		
 		def insert_date_time(widget):
 			default_date_string = '%A, %x %X'
@@ -562,6 +572,9 @@ class MainWindow(object):
 			('Date', None, 'Date/Time' + tmpl('D'), '<Ctrl>D', \
 				'Insert the current date and time at the current position', \
 				insert_date_time),
+			('LineBreak', None, 'Line Break', None, \
+				'Insert a line break at the current position', \
+				lambda widget: self.dayTextField.insert(line_break)),
 			])
 
 		# Add the actiongroup to the uimanager
@@ -573,8 +586,8 @@ class MainWindow(object):
 		# Create a Menu
 		menu = uimanager.get_widget('/InsertMenu')
 		
-		image_items = 'Picture Link BulletList Title Line Date'.split()
-		image_file_names = 'picture-16 link bulletlist title line date'.split()
+		image_items = 'Picture Link BulletList Title Line Date LineBreak'.split()
+		image_file_names = 'picture-16 link bulletlist title line date enter'.split()
 		items_and_files = zip(image_items, image_file_names)
 		
 		for item, file_name in items_and_files:
@@ -1537,7 +1550,9 @@ class DayTextField(object):
 		selection_end_iter.backward_chars(len(markup))
 		self.set_selection(selection_start_iter, selection_end_iter)
 			
-		
+	def set_font_size(self, size):
+		self.dayTextView.modify_font(pango.FontDescription(str(size)))
+	
 	def hide(self):
 		self.dayTextView.hide()
 	

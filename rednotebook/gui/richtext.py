@@ -316,6 +316,10 @@ class HtmlEditor(KeepNoteEditor):
 	def set_editable(self, editable):
 		self._textview.set_editable(editable)
 		self._textview.set_cursor_visible(editable)
+		
+	def set_font_size(self, size):
+		self._textview.modify_font(pango.FontDescription(str(size)))
+		
 									   
 	  
 		

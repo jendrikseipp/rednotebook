@@ -19,7 +19,6 @@ O Spell Checker (unify markup and html textviews first) (2 requests)
 O comments ( % already supported, undocumented)?
 O allow opening config file from within RedNotebook?
 O Fix opening files for Mac (os.system(open "name"))
-O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
 O make date format configurable for exports
 O let the search function highlight found strings in the page
 O Make RedNotebook portable
@@ -44,7 +43,9 @@ O Copy/Paste category notes
 O provide TrueCrypt encryption HowTo for Linux
 O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
 O more formatting options and examples (fill some days of the journal at first startup)
+O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
 O SSH, FTP saving -> Conduit HowTo
+
 
 
 
@@ -64,14 +65,17 @@ O Automatic insertion of holidays
 O Import of exported backups
 O Automatic Backups
 
-0.8.2
+0.8.3
 O Task bar icon
 
-0.8.1
+0.8.2
 O Password protection
 O Filter list for clouds in GUI
-O make font size configurable
+
+0.8.1
+X make font size configurable
 O Fix: Win Version should use smaller insert-image icon (16x16)
+X Add line breaks (under insert menu)
 X Add a whitespace char between adjacent lines
 
 
