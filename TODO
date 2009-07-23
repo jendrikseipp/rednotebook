@@ -19,7 +19,7 @@ O Spell Checker (unify markup and html textviews first) (2 requests)
 O comments ( % already supported, undocumented)?
 O allow opening config file from within RedNotebook?
 O Fix opening files for Mac (os.system(open "name"))
-O Rethink linebreaks
+O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
 O make date format configurable for exports
 O let the search function highlight found strings in the page
 O Make RedNotebook portable
@@ -72,6 +72,7 @@ O Password protection
 O Filter list for clouds in GUI
 O make font size configurable
 O Fix: Win Version should use smaller insert-image icon (16x16)
+X Add a whitespace char between adjacent lines
 
 
 

@@ -173,13 +173,22 @@ def _get_config(type):
 	return config
 	
 
-def convert(txt, target, headers=None, options=None):
+def convert(txt, target, headers=None, options=None, append_whitespace=False):
 	'''
 	Code partly taken from txt2tags tarball
 	'''
 	
 	# Here is the marked body text, it must be a list.
 	txt = txt.split('\n')
+	
+	'''
+	Without this HACK "First Line\nSecond Line" is rendered to
+	"First LineSecond Line", but we want "First Line Second Line"
+	
+	We only need this for the keepnote input, the exports work fine
+	'''
+	if append_whitespace:
+		txt = map(lambda line: line + ' ', txt)
 	
 	# Set the three header fields
 	if headers is None:
@@ -213,6 +222,8 @@ def convert(txt, target, headers=None, options=None):
 	except:
 		result = txt2tags.getUnknownErrorMessage()
 		logging.error(result)
+		
+	print 'RES', result
 		
 	return result
 				

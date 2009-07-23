@@ -89,8 +89,10 @@ class DateFormatOption(ComboBoxAndButtonOption):
 	def __init__(self, text, name, button):
 		date_formats = ['%A, %x %X', '%A, %x, Day %j', '%H:%M', 'Week %W of Year %Y', \
 						'%y-%m-%d', 'Day %j', '%A', '%B']
+		
 		# Set default format if not present
 		Option.config.read(name, '%A, %x %X')
+		
 		ComboBoxAndButtonOption.__init__(self, text, name, date_formats, button)
 		
 		self.preview = gtk.Label()

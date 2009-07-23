@@ -207,21 +207,17 @@ class MainWindow(object):
 			
 			self.preview_mode = False
 		else:
-			# Enter preview mode
-			html = markup.convert(self.dayTextField.get_text(), 'xhtml')
-			self.html_editor.load_html(html)
-			
-			
+			# Enter preview mode			
 			text_scrolledwindow.hide()
 			self.html_editor.show()
 			day = self.redNotebook.day
 			text_markup = day.text
-			html = markup.convert(text_markup, 'xhtml')
+			html = markup.convert(text_markup, 'xhtml', append_whitespace=True)
 			
 			self.html_editor.load_html(html)
 			
 			self.preview_button.set_stock_id('gtk-edit')
-			self.preview_button.set_label('   Edit   ')
+			self.preview_button.set_label('   Edit    ')
 		
 			self.preview_mode = True
 			

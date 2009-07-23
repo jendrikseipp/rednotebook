@@ -23,7 +23,7 @@ import os
 
 from rednotebook.util import filesystem
 
-version = '0.8.0'
+version = '0.8.1'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
