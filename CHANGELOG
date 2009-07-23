@@ -1,5 +1,11 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.1 (2009-07-24) ===
+ * make font size configurable
+ * Add line breaks (under insert menu)
+ * Add a whitespace char between adjacent lines
+ * Fix: Win Version should use smaller insert-image icon (16x16)
+
 === 0.8.0 (2009-07-22) ===
  * Graphical preferences dialog (Under "Edit" menu)
  * Make date/time format configurable in the preferences dialog

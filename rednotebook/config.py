@@ -169,7 +169,7 @@ class Config(dict):
 		try:
 			with open(filesystem.configFile, 'w') as configFile:
 				for key, value in self.iteritems():
-					configFile.write(key + '=' + str(value) + '\n')
+					configFile.write('%s=%s\n' % (key, value))
 				logging.info('Configuration has been saved')
 		except IOError:
 			logging.error('Configuration could not be saved')

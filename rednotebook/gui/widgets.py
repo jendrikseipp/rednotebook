@@ -35,7 +35,7 @@ class UrlButton(ActionButton):
 		ActionButton.__init__(self, text, action)
 	
 
-class CustomComboBox(object):
+class CustomComboBoxEntry(object):
 	def __init__(self, comboBox):
 		self.comboBox = comboBox
 		self.liststore = self.comboBox.get_model()
@@ -74,4 +74,17 @@ class CustomComboBox(object):
 	
 	def connect(self, *args, **kargs):
 		self.comboBox.connect(*args, **kargs)
+		
+	def set_editable(self, editable):
+		self.entry.set_editable(editable)
+		
+
+class CustomComboBox(gtk.ComboBox):
+	def __new__(cls, entries):
+		return gtk.combo_box_new_text()
+	def __init__(self, entries):
+		print 1
+	def add_entries(self, entries):
+		for entry in entries:
+			self.append_text(entry)
 		

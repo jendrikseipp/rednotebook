@@ -40,7 +40,7 @@ import rednotebook.util.unicode
 
 from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
-from rednotebook.gui.widgets import CustomComboBox
+from rednotebook.gui.widgets import CustomComboBoxEntry
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import info
@@ -412,12 +412,15 @@ class MainWindow(object):
 		#self.mainFrame.maximize()
 		
 		if config.has_key('leftDividerPosition'):
-			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))	
+			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))
 		self.wTree.get_widget('editPane').set_position(config.read('rightDividerPosition', 500))
 		
 		# A font size of -1 applies the standard font size
 		main_font_size = config.read('mainFontSize', -1)
 		
+		self.set_font_size(main_font_size)
+		
+	def set_font_size(self, main_font_size):
 		self.dayTextField.set_font_size(main_font_size)
 		self.html_editor.set_font_size(main_font_size)
 		
@@ -595,7 +598,12 @@ class MainWindow(object):
 			menu_item.set_image(get_image(file_name + '.png'))
 		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
-		self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
+		# Ugly hack for windows: It expects toolbar icons to be 16x16
+		if sys.platform == 'win32':
+			self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-16.png'), 'Insert')
+		else:
+			self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
+			
 		self.single_menu_toolbutton.set_menu(menu)
 		self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)
 		edit_toolbar = self.wTree.get_widget('edit_toolbar')
@@ -803,8 +811,8 @@ class NewEntryDialog(object):
 		
 		self.mainFrame = mainFrame
 		self.redNotebook = self.mainFrame.redNotebook
-		self.categoriesComboBox = CustomComboBox(mainFrame.wTree.get_widget('categoriesComboBox'))
-		self.newEntryComboBox = CustomComboBox(mainFrame.wTree.get_widget('entryComboBox'))
+		self.categoriesComboBox = CustomComboBoxEntry(mainFrame.wTree.get_widget('categoriesComboBox'))
+		self.newEntryComboBox = CustomComboBoxEntry(mainFrame.wTree.get_widget('entryComboBox'))
 		
 		# Allow hitting enter to submit the entry #TODO: Fix
 		#print self.dialog.flags()
@@ -877,9 +885,9 @@ class NewEntryDialog(object):
 
 	
 	
-class SearchComboBox(CustomComboBox):
+class SearchComboBox(CustomComboBoxEntry):
 	def __init__(self, comboBox, mainWindow):
-		CustomComboBox.__init__(self, comboBox)
+		CustomComboBoxEntry.__init__(self, comboBox)
 		
 		self.mainWindow = mainWindow
 		self.redNotebook = mainWindow.redNotebook
@@ -938,7 +946,7 @@ class SearchComboBox(CustomComboBox):
 		self.mainWindow.searchTreeView.update_data(searchText)
 		
 	def clear(self):
-		CustomComboBox.clear(self)
+		CustomComboBoxEntry.clear(self)
 		self.entry.set_text('')
 		
 	def get_search_text(self):
