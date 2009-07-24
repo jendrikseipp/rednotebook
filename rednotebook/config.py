@@ -88,7 +88,7 @@ class Config(dict):
 			keyValuePairs = map(lambda line: delete_comment(line), keyValuePairs)
 			
 			#delete whitespace
-			keyValuePairs = map(lambda line: line.strip(), keyValuePairs)
+			keyValuePairs = map(str.strip, keyValuePairs)
 			
 			#delete empty lines
 			keyValuePairs = filter(lambda line: len(line) > 0, keyValuePairs)
@@ -101,7 +101,7 @@ class Config(dict):
 					try:
 						# Delete whitespace around =
 						pair = keyValuePair.split('=')
-						key, value = map(lambda item: item.strip(), pair)
+						key, value = map(str.strip, pair)
 						
 						# Do not add obsolete keys -> they will not be rewritten
 						# to disk
@@ -150,20 +150,15 @@ class Config(dict):
 		list = string.split(' ')
 		
 		# Remove whitespace
-		list = map(lambda item: item.strip(), list)
+		list = map(str.strip, list)
 		
 		# Remove empty items
-		list = filter(lambda item: len(item.strip()) > 0, list)
+		list = filter(lambda item: len(item) > 0, list)
 		
 		return list
 	
 	def write_list(self, key, list):
-		string = ''
-		for item in list:
-			string += item + ', '
-		if string.endswith(', '):
-			string = string[:-2]
-		self[key] = string
+		self[key] = ', '.join(list)
 						
 	def saveToDisk(self):
 		try:

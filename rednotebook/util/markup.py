@@ -167,12 +167,12 @@ def _get_config(type):
 		# keepnote only recognizes "<strike>"
 		config['postproc'].append(['(?i)(</?)s>', '\\1strike>'])
 		
-		# Allow line breaks, no idea why we need r'\\\\' here
-		config['postproc'].append([r'\\\\', '<BR>'])
-		
 	elif type == 'tex':
 		config['encoding'] = 'utf8'
 		config['preproc'].append(['€', 'Euro'])
+		
+	# Allow line breaks, no idea why we need r'\\\\' here
+	config['postproc'].append([r'\\\\', '<BR>'])
 	
 	return config
 	

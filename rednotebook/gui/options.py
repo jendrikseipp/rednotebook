@@ -65,13 +65,27 @@ class TickOption(Option):
 	
 #class TextOption(Option):
 #	def __init__(self, text, name):		
-#		self.entry = gtk.Entry(20)
+#		self.entry = gtk.Entry(30)
 #		self.entry.set_text(Option.config.read(name, ''))
 #		
-#		LabelAndWidgetOption.__init__(self, text, name, self.entry)
+#		Option.__init__(self, text, name, self.entry)
 #		
 #	def get_value(self):
 #		return self.entry.get_text()
+	
+class CsvTextOption(Option):
+	def __init__(self, text, option_name):
+		# directly read the string, not the list
+		values_string = Option.config.read(option_name, '')
+		
+		self.entry = gtk.Entry()
+		self.entry.set_text(values_string)
+		
+		Option.__init__(self, text, option_name)
+		self.pack_start(self.entry, True)
+	
+	def get_value(self):
+		return self.entry.get_text()
 	
 	
 #class TextAndButtonOption(TextOption):
@@ -102,8 +116,8 @@ class DateFormatOption(ComboBoxOption):
 		
 		self.preview = gtk.Label()
 		
-		ComboBoxOption.__init__(self, text, name, date_formats, self.preview, \
-										date_format_help_button)
+		ComboBoxOption.__init__(self, text, name, date_formats, self.preview,)
+		self.pack_end(date_format_help_button, False)
 		
 		# Set default format if not present
 		format = Option.config.read(name, '%A, %x %X')
@@ -207,6 +221,7 @@ class OptionsManager(object):
 		self.config = self.redNotebook.config
 		
 		self.dialog = OptionsDialog(self.xml.get_widget('options_dialog'))
+		self.dialog.set_default_size(600, 300)
 		self.dialog.add_category('general', self.xml.get_widget('general_vbox'))
 		
 	def on_options_dialog(self):
@@ -220,6 +235,7 @@ class OptionsManager(object):
 				TickOption('Check for new versions at startup', 'checkForNewVersion'),
 				DateFormatOption('Date/Time format', 'dateTimeString'),
 				FontSizeOption('Font Size', 'mainFontSize'),
+				CsvTextOption('Word blacklist for clouds', 'cloudIgnoreList')
 				]
 		
 		self.add_all_options()
@@ -228,6 +244,10 @@ class OptionsManager(object):
 		
 		if response == gtk.RESPONSE_OK:
 			self.save_options()
+			
+			# Applay some options
+			self.main_window.cloud.update_ignore_list()
+			self.main_window.cloud.update(force_update=True)
 		else:
 			# Reset some options
 			self.main_window.set_font_size(self.config.read('mainFontSize', -1))

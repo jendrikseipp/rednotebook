@@ -389,11 +389,15 @@ class MainWindow(object):
 		
 	def add_values_to_config(self):
 		config = self.redNotebook.config
+		
 		config['leftDividerPosition'] = \
 				self.wTree.get_widget('mainPane').get_position()
 		config['rightDividerPosition'] = \
 				self.wTree.get_widget('editPane').get_position()
-		config.write_list('cloudIgnoreList', self.cloud.ignore_list)
+		
+		# Actually this is unnecessary as the list gets saved when it changes
+		# so we use it to sort the list ;)
+		config.write_list('cloudIgnoreList', sorted(self.cloud.ignore_list))
 		
 	
 	def load_values_from_config(self):
@@ -960,11 +964,7 @@ class CloudView(HtmlWindow):
 		
 		self.redNotebook = redNotebook
 		
-		default_ignore_list = 'filter, these, comma, separated, words'
-		self.ignore_list = self.redNotebook.config.read_list('cloudIgnoreList', \
-															default_ignore_list)
-		self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
-		logging.info('Cloud ignore list: %s' % self.ignore_list)
+		self.update_ignore_list()
 		
 		self.htmlview.connect("url-clicked", self.word_clicked)
 		self.htmlview.connect('populate-popup', self.create_popup_menu)
@@ -976,6 +976,13 @@ class CloudView(HtmlWindow):
 		self.type = ['word', 'category', 'tag'][type_int]
 		if not init:
 			self.update(force_update=True)
+			
+	def update_ignore_list(self):
+		default_ignore_list = 'filter, these, comma, separated, words'
+		self.ignore_list = self.redNotebook.config.read_list('cloudIgnoreList', \
+															default_ignore_list)
+		self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
+		logging.info('Cloud ignore list: %s' % self.ignore_list)
 		
 	def update(self, force_update=False):
 		# Do not update the cloud with words as it requires a lot of searching		
@@ -1023,6 +1030,7 @@ class CloudView(HtmlWindow):
 		selected_words = self.get_selected_words()
 		logging.info('The following words will be hidden from clouds: %s' % selected_words)
 		self.ignore_list.extend(selected_words)
+		self.redNotebook.config.write_list('cloudIgnoreList', self.ignore_list)
 		self.update(force_update=True)
 		
 	def get_selected_words(self):
