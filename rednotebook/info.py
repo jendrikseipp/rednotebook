@@ -23,7 +23,7 @@ import os
 
 from rednotebook.util import filesystem
 
-version = '0.8.1'
+version = '0.8.2'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
@@ -121,7 +121,9 @@ As you see you can format your text ""**""**bold**""**"", ""//""//italic//""//""
 ""--""--stricken--""--"" and ""__""__underlined__""__"".
 
 % Formatting commands inside two pairs of "" are not interpreted
-% Comments can be inserted after percent signs (%)
+
+**Comments** can be inserted after percent signs (**%**). They will not be shown in the \
+preview and the exports. The % has to be the first character on the line.
 
 To see the results, just click on the "Preview" button. 
 You can also see how \
@@ -136,13 +138,14 @@ of that day to it:
   - Invent Anti-Hangover-Machine
   
   
-The name “Categories” is a little bit confusing. It does not mean that a day is put into a category, but that there is additional content on the right, sorted into categories. “Topics” would probably be a better name.
+The name "Categories" is a little bit confusing. It does not mean that a day is put into a category, 
+but that there is additional content on the right, sorted into categories. "Topics" would probably be a better name.
 
 Those topics have several items distributed over various days. \
 I’ll give you an example: I like to maintain a list of cool things I have done. \
 So if I did a cool thing on some day, I navigate to that day, add the category \
-“Cool Stuff” and add an entry “Visit the pope” (Sadly I haven’t done that, yet ;-) ). \
-When I have done more cool things on many days, they all have a category “Cool Stuff” \
+"Cool Stuff" and add an entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
+When I have done more cool things on many days, they all have a category "Cool Stuff" \
 and many different entries. Now it is possible to export only that category and \
 get a list of the cool stuff that happened to me with the respective dates.
 

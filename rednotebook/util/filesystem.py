@@ -186,13 +186,22 @@ def open_url(url):
 	# Try opening the file locally
 	if sys.platform == 'win32':
 		try:
-			logging.info('Trying to open %s with "open"' % url)
+			logging.info('Trying to open %s with "os.startfile"' % url)
+			# os.startfile is only available on windows
 			os.startfile(os.path.normpath(url))
 			return
 		except OSError:
+			logging.exception('Opening %s with "os.startfile" failed' % url)
+	
+	elif sys.platform == 'darwin':
+		try:
+			logging.info('Trying to open %s with "open"' % url)
+			subprocess.call(['open', url])
+			return
+		except OSError, subprocess.CalledProcessError:
 			logging.exception('Opening %s with "open" failed' % url)
+	
 	else:
-		
 		try:
 			subprocess.check_call(['xdg-open', '--version'])
 			logging.info( 'Trying to open %s with xdg-open' % url)

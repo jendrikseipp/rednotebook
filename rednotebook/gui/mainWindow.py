@@ -1064,6 +1064,9 @@ class SearchTreeView(object):
 		
 		self.searchType = 0
 		
+		# Normally unneeded, but just to be sure everything works fine
+		self.searched_text = ''
+		
 		'create a TreeStore with two string columns to use as the model'
 		self.treeStore = gtk.ListStore(str, str)
 
@@ -1123,11 +1126,17 @@ class SearchTreeView(object):
 			for dateString, resultString in rows:
 				self.treeStore.append([dateString, resultString])
 				
+		# Save the search text for highlighting
+		self.searched_text = searchText
+				
 				
 	def on_row_activated(self, treeview, path, view_column):
 		dateString = self.treeStore[path][0]
 		newDate = dates.get_date_from_date_string(dateString)
 		self.redNotebook.changeDate(newDate)
+		
+		# let the search function highlight found strings in the page
+		self.mainWindow.dayTextField.highlight(self.searched_text)
 		
 		
 	def set_search_type(self, searchType):		
@@ -1490,6 +1499,22 @@ class DayTextField(object):
 		except UnicodeDecodeError, err:
 			logging.error('Template file contains unreadable content. Is it really just ' \
 			'a text file?')
+			
+	def highlight(self, text):
+		iter_start = self.dayTextBuffer.get_start_iter()
+		
+		# Hack: Ignoring the case is not supported for the search so we search
+		# for the most common variants, but do not search identical ones
+		variants = set([text, text.capitalize(), text.lower(), text.upper()])
+		
+		for search_text in variants:
+			iter_tuple = iter_start.forward_search(search_text, gtk.TEXT_SEARCH_VISIBLE_ONLY)
+			
+			# When we find one variant, highlight it and quit
+			if iter_tuple:
+				self.set_selection(*iter_tuple)
+				return
+		
 			
 	def get_selected_text(self):
 		bounds = self.dayTextBuffer.get_selection_bounds()

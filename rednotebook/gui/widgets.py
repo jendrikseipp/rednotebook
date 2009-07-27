@@ -78,13 +78,3 @@ class CustomComboBoxEntry(object):
 	def set_editable(self, editable):
 		self.entry.set_editable(editable)
 		
-
-class CustomComboBox(gtk.ComboBox):
-	def __new__(cls, entries):
-		return gtk.combo_box_new_text()
-	def __init__(self, entries):
-		print 1
-	def add_entries(self, entries):
-		for entry in entries:
-			self.append_text(entry)
-		

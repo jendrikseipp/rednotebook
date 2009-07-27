@@ -178,7 +178,7 @@ class ExportAssistant (object):
 
             home = os.getenv('USERPROFILE') or os.getenv('HOME')
             self.filename_chooser.set_current_folder(home)
-            self.filename_chooser.set_current_name (proposedFileName)
+            self.filename_chooser.set_current_name(proposedFileName)
         return current_page + 1
     
     
@@ -356,6 +356,7 @@ class ExportAssistant (object):
         markupStringsForEachDay = []
         for day in exportDays:
             default_export_date_format = '%A, %x'
+            # probably no one needs to configure this as i18n already exists
             #date_format = self.redNotebook.config.read('exportDateFormat', \
 		    #										default_export_date_format)
             date_format = default_export_date_format
