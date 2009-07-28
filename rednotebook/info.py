@@ -23,7 +23,7 @@ import os
 
 from rednotebook.util import filesystem
 
-version = '0.8.2'
+version = '0.8.3'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
@@ -263,4 +263,18 @@ This way RedNotebook can get better not only for you, but for all users.
 
 Bug reports should go [here https://bugs.launchpad.net/rednotebook], but if you
 don't know how to use that site, a simple mail is equally fine.
+'''
+
+desktop_file = '''\
+[Desktop Entry]
+Version=1.0
+Name=RedNotebook
+GenericName=Journal
+Comment=Daily journal with calendar, templates and keyword searching
+Exec=rednotebook
+Icon=rednotebook
+Terminal=false
+Type=Application
+Categories=Office;
+StartupNotify=true
 '''

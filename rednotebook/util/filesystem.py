@@ -103,6 +103,11 @@ def makeFiles(fileContentPairs):
 			makeFile(file, content)
 		else:
 			makeFile(file)
+			
+def make_file_with_dir(file, content):
+	dir = os.path.dirname(file)
+	makeDirectory(dir)
+	makeFile(file, content)
 	
 def writeArchive(archiveFileName, files, baseDir='', arcBaseDir=''):
 	"""

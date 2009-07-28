@@ -17,12 +17,17 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import os
 import logging
+import platform
 
 import gtk
 import gobject
 
-from widgets import UrlButton, CustomComboBoxEntry
+
+from rednotebook.gui.widgets import UrlButton, CustomComboBoxEntry
+from rednotebook.util import filesystem
+from rednotebook import info
 
 class Option(gtk.HBox):
 	def __init__(self, text, option_name, *widgets):
@@ -46,10 +51,14 @@ class Option(gtk.HBox):
 
 
 class TickOption(Option):
-	def __init__(self, text, name):
+	def __init__(self, text, name, default_value=None):
 		self.text = text
 		self.check_button = gtk.CheckButton(self.text)
-		self.check_button.set_active(Option.config.read(name, 0) == 1)
+		
+		if default_value is None:
+			self.check_button.set_active(Option.config.read(name, 0) == 1)
+		else:
+			self.check_button.set_active(default_value)
 			
 		Option.__init__(self, '', name, self.check_button)
 		
@@ -62,6 +71,35 @@ class TickOption(Option):
 		'''
 		return int(self.get_value())
 	
+	
+class AutostartOption(TickOption):
+	def __init__(self):
+		home_dir = os.path.expanduser('~')
+		autostart_dir = os.path.join(home_dir, '.config/autostart/')
+		print autostart_dir
+		self.autostart_file = os.path.join(autostart_dir, 'rednotebook.desktop')
+		autostart_file_exists = os.path.exists(self.autostart_file)
+		print self.autostart_file, autostart_file_exists
+		TickOption.__init__(self, 'Load RedNotebook at startup', None, \
+						default_value=autostart_file_exists)
+		
+	def get_value(self):
+		return self.check_button.get_active()
+	
+	def set(self):
+		'''Apply the current setting'''
+		selected = self.get_value()
+		
+		print selected
+		
+		if selected:
+			# Add autostart file if it is not present
+			filesystem.make_file_with_dir(self.autostart_file, info.desktop_file)
+		else:
+			# Remove autostart file
+			if os.path.exists(self.autostart_file):
+				os.remove(self.autostart_file)
+			
 	
 #class TextOption(Option):
 #	def __init__(self, text, name):		
@@ -235,8 +273,14 @@ class OptionsManager(object):
 				TickOption('Check for new versions at startup', 'checkForNewVersion'),
 				DateFormatOption('Date/Time format', 'dateTimeString'),
 				FontSizeOption('Font Size', 'mainFontSize'),
-				CsvTextOption('Word blacklist for clouds', 'cloudIgnoreList')
+				CsvTextOption('Word blacklist for clouds', 'cloudIgnoreList'),
+				
 				]
+		
+		if platform.system() == 'Linux' and os.path.exists('/usr/bin/rednotebook'):
+			logging.debug('Running on Linux. Is installed. Adding autostart option')
+			self.options.insert(0, AutostartOption())
+			
 		
 		self.add_all_options()
 		
@@ -262,6 +306,9 @@ class OptionsManager(object):
 		logging.debug('Saving Options')
 		for option in self.options:
 			value = option.get_string_value()
-			logging.debug('Setting %s = %s' % (option.option_name, value))
-			self.config[option.option_name] = value
+			if option.option_name is not None:
+				logging.debug('Setting %s = %s' % (option.option_name, value))
+				self.config[option.option_name] = value
+			else:
+				option.set()
 			
