@@ -66,13 +66,7 @@ O Task bar icon
 O Password protection
 O Daily word count. At least the current date that is presently active. (Words, lines, chars)
 
-0.8.2
-X Blacklist for clouds in GUI
-X let the search function highlight found words
-X Fix line breaks for exports
-X Fix opening files on Mac
-X Add little section about comments to Help text
-X Fix size for insert icon by using a stock icon (LP:405991)
+
 
 
 

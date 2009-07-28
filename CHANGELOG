@@ -1,5 +1,13 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.2 (2009-07-28) ===
+ * Blacklist for clouds in GUI
+ * Let the search function highlight found words
+ * Fix line breaks for exports
+ * Fix opening files on Mac
+ * Add little section about comments to Help text
+ * Fix size for insert icon by using a stock icon (LP:405991)
+
 === 0.8.1 (2009-07-24) ===
  * make font size configurable (under preferences)
  * Add line breaks (under insert menu)

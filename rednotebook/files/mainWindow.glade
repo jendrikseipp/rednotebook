@@ -300,7 +300,6 @@ The old journal files will also be saved</property>
                 <child>
                   <widget class="GtkToolbar" id="toolbar3">
                     <property name="visible">True</property>
-                    <property name="icon_size">GTK_ICON_SIZE_SMALL_TOOLBAR</property>
                     <child>
                       <widget class="GtkToolButton" id="backOneDayButton">
                         <property name="visible">True</property>
@@ -490,7 +489,6 @@ Tags</property>
                           <widget class="GtkToolbar" id="edit_toolbar">
                             <property name="visible">True</property>
                             <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
-                            <property name="icon_size">GTK_ICON_SIZE_SMALL_TOOLBAR</property>
                             <child>
                               <widget class="GtkToolButton" id="previewButton">
                                 <property name="visible">True</property>
@@ -556,7 +554,6 @@ Tags</property>
                           <widget class="GtkToolbar" id="toolbar1">
                             <property name="visible">True</property>
                             <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
-                            <property name="icon_size">GTK_ICON_SIZE_SMALL_TOOLBAR</property>
                             <child>
                               <widget class="GtkToolButton" id="addNewEntryButton">
                                 <property name="visible">True</property>
@@ -871,8 +868,8 @@ Tags</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
