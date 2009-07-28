@@ -603,10 +603,12 @@ class MainWindow(object):
 		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
 		# Ugly hack for windows: It expects toolbar icons to be 16x16
-		if sys.platform == 'win32':
-			self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-16.png'), 'Insert')
-		else:
-			self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
+		#if sys.platform == 'win32':
+			#self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-16.png'), 'Insert')
+		#else:
+			#self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
+		self.single_menu_toolbutton = gtk.MenuToolButton(gtk.STOCK_ADD)
+		self.single_menu_toolbutton.set_label('Insert')
 			
 		self.single_menu_toolbutton.set_menu(menu)
 		self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)

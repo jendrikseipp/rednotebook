@@ -14,7 +14,6 @@ O Undu and Redo functionality extended for Categories (use function pointers for
 O Allow submitting new entries with <Enter>
 O Switch from libglade to GtkBuilder
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
-O Daily word count. At least the current date that is presently active. (Words, lines, chars)
 O Spell Checker (unify markup and html textviews first) (2 requests)
 O allow opening config file from within RedNotebook? (On advanced tab)
 O Make RedNotebook portable
@@ -60,16 +59,20 @@ O Automatic insertion of holidays
 O Import of exported backups
 O Automatic Backups
 
-0.8.3
+0.8.4
 O Task bar icon
 
-0.8.2
+0.8.3
 O Password protection
+O Daily word count. At least the current date that is presently active. (Words, lines, chars)
+
+0.8.2
 X Blacklist for clouds in GUI
 X let the search function highlight found words
 X Fix line breaks for exports
 X Fix opening files on Mac
 X Add little section about comments to Help text
+X Fix size for insert icon by using a stock icon (LP:405991)
 
 
 
