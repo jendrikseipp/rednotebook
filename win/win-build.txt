@@ -41,5 +41,6 @@
   * Adjust the two version numbers
   * Click compile
   * Click run to test the installer
+  * YOu find the installer under output/
   
 Yay, you made it!

@@ -16,8 +16,7 @@ O Switch from libglade to GtkBuilder
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
 O Spell Checker (unify markup and html textviews first) (2 requests)
 O allow opening config file from within RedNotebook? (On advanced tab)
-O Make RedNotebook portable
-    O User dir configurable
+
 
 
 
@@ -55,11 +54,13 @@ O Automatic insertion of holidays
 O Import of exported backups
 O Automatic Backups
 
-0.8.4
+0.8.5
 O Task bar icon
 
 0.8.4
 O Password protection
+O Make RedNotebook portable
+    O User dir configurable
 
 0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars
