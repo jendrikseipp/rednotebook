@@ -40,7 +40,7 @@ import rednotebook.util.unicode
 
 from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
-from rednotebook.gui.widgets import CustomComboBoxEntry
+from rednotebook.gui.widgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import info
@@ -165,6 +165,7 @@ class MainWindow(object):
 		
 		self.setup_clouds()
 		self.set_shortcuts()
+		self.setup_stats_dialog()
 		
 		self.template_manager = templates.TemplateManager(self)
 		self.template_manager.make_empty_template_files()
@@ -189,6 +190,19 @@ class MainWindow(object):
 		(page_up_keyval, mod) = gtk.accelerator_parse('<Ctrl>Page_Up')
 		self.forwardOneDayButton.add_accelerator('clicked', self.accel_group, \
 							page_up_keyval, mod, gtk.ACCEL_VISIBLE)
+		
+	def setup_stats_dialog(self):
+		self.stats_dialog = self.wTree.get_widget('stats_dialog')
+		overall_box = self.wTree.get_widget('overall_box')
+		day_box = self.wTree.get_widget('day_box')
+		overall_list = CustomListView()
+		day_list = CustomListView()
+		overall_box.pack_start(overall_list, True, True)
+		day_box.pack_start(day_list, True, True)
+		setattr(self.stats_dialog, 'overall_list', overall_list)
+		setattr(self.stats_dialog, 'day_list', day_list)
+		for list in [overall_list, day_list]:
+			list.set_headers_visible(False)
 			
 			
 	def on_previewButton_clicked(self, button):
@@ -723,7 +737,8 @@ class MainWindow(object):
 		assistant.run()
 		
 	def on_statisticsMenuItem_activate(self, widget):
-		utils.show_html_in_browser(self.redNotebook.stats.getStatsHTML())
+		self.redNotebook.stats.show_dialog(self.stats_dialog)
+		#utils.show_html_in_browser(self.redNotebook.stats.getStatsHTML())
 		
 	def on_addNewEntryButton_clicked(self, widget):
 		self.newEntryDialog.show_dialog(adding_tag=False)

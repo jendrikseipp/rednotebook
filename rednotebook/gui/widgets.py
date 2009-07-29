@@ -78,3 +78,44 @@ class CustomComboBoxEntry(object):
 	def set_editable(self, editable):
 		self.entry.set_editable(editable)
 		
+
+class CustomListView(gtk.TreeView):
+	def __init__(self):
+		gtk.TreeView.__init__(self)
+		'create a TreeStore with two string columns to use as the model'
+		self.set_model(gtk.ListStore(str, str))
+
+		#'create the TreeView using treeStore'
+		#self.treeView.set_model(self.treeStore)
+
+		#'create the TreeViewColumns to display the data'
+		#self.dateColumn = gtk.TreeViewColumn('Date')
+		#self.matchingColumn = gtk.TreeViewColumn('Text')
+		
+		#columns = [self.dateColumn,self.matchingColumn, ]
+						#self.categoryColumn, self.entryColumn]
+		columns = [gtk.TreeViewColumn('1'), gtk.TreeViewColumn('2')]
+
+		'add tvcolumns to treeView'
+		for index, column in enumerate(columns):
+			self.append_column(column)
+
+			'create a CellRendererText to render the data'
+			cellRenderer = gtk.CellRendererText()
+
+			'add the cell to the tvcolumn and allow it to expand'
+			column.pack_start(cellRenderer, True)
+
+			'Get markup for column, not text'
+			column.set_attributes(cellRenderer, markup=index)
+			
+			'Allow sorting on the column'
+			column.set_sort_column_id(index)
+		
+		#self.update_data()
+
+		'make it searchable'
+		self.set_search_column(1)
+		
+		#self.connect('row_activated', self.on_row_activated)
+		

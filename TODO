@@ -60,8 +60,8 @@ O Task bar icon
 
 0.8.3
 O Password protection
-O Daily word count. At least the current date that is presently active. (Words, lines, chars)
-O more formatting options and examples (fill some days of the journal at first startup)
+X New statistics dialog with daily word count. Shows number of words, lines, and chars
+O more formatting options and examples (fill some days of the journal with common question solutions at first startup)
 X Add "Autostart RedNotebook" option
     X Linux: Option in Program
     X Win: Installer Option
