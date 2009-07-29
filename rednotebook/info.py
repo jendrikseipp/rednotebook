@@ -182,6 +182,7 @@ Clicking on the "Clouds" tab on the left lets you view the most often used words
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
 If words appear in the cloud that you don't want to see there, you can exclude them. Just mark the \
 words and right click on the selection. Then click on "Hide selected words".
+Alternatively you can open the Preferences dialog and add the words to the cloud blocklist there.
 
 == Options ==
 Make sure you check out the customizable options in the Preferences dialog. You can

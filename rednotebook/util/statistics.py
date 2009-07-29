@@ -55,7 +55,8 @@ class Statistics(object):
 		edited = self.getNumberOfEntries()
 		if total == 0:
 			return 0
-		return round(edited / total, 2)
+		percent = round(100 * edited / total, 2) 
+		return '%s%%' % percent
 	
 	def get_average_number_of_words(self):
 		if self.getNumberOfEntries() == 0:

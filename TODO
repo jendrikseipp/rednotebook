@@ -58,13 +58,16 @@ O Automatic Backups
 0.8.4
 O Task bar icon
 
-0.8.3
+0.8.4
 O Password protection
+
+0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars
 O more formatting options and examples (fill some days of the journal with common question solutions at first startup)
 X Add "Autostart RedNotebook" option
     X Linux: Option in Program
     X Win: Installer Option
+X Put the initial focus in the text window (LP:406450)
 
 
 

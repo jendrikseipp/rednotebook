@@ -80,6 +80,8 @@ class MainWindow(object):
 		self.calendar = Calendar(self.wTree.get_widget('calendar'))
 		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'), \
 										self.undo_redo_manager)
+		self.dayTextField.dayTextView.grab_focus()
+		
 		self.statusbar = Statusbar(self.wTree.get_widget('statusbar'))
 		
 		self.newEntryDialog = NewEntryDialog(self)
@@ -216,6 +218,7 @@ class MainWindow(object):
 		if self.preview_mode:
 			# Enter edit mode
 			self.dayTextField.set_text(self.day.text, clear_history=True)
+			self.dayTextField.dayTextView.grab_focus()
 			
 			text_scrolledwindow.show()
 			self.html_editor.hide()

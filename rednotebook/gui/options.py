@@ -98,7 +98,7 @@ class AutostartOption(TickOption):
 			
 	
 #class TextOption(Option):
-#	def __init__(self, text, name):		
+#	def __init__(self, text, name):
 #		self.entry = gtk.Entry(30)
 #		self.entry.set_text(Option.config.read(name, ''))
 #		
