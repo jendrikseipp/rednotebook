@@ -63,7 +63,8 @@ O Password protection
 
 0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars
-O more formatting options and examples (fill some days of the journal with common question solutions at first startup)
+X Fill some days of the journal with solutions of common question at first startup
+X Add option to restore that example content. It will be placed after the last edited day 
 X Add "Autostart RedNotebook" option
     X Linux: Option in Program
     X Win: Installer Option

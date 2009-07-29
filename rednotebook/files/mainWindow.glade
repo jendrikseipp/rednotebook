@@ -258,9 +258,18 @@ The old journal files will also be saved</property>
                     <child>
                       <widget class="GtkMenuItem" id="checkVersionMenuItem">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Check For New Version</property>
+                        <property name="label" translatable="yes">Check For New Version Now</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_checkVersionMenuItem_activate"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="example_menu_item">
+                        <property name="visible">True</property>
+                        <property name="tooltip" translatable="yes">Fill next free days with example content, Do not overwrite anything</property>
+                        <property name="label" translatable="yes">Restore example content</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_example_menu_item_activate"/>
                       </widget>
                     </child>
                     <child>

@@ -144,7 +144,7 @@ class HtmlView(RichTextView):
 		tag_table.new_tag_class("h3", RichTextH3Tag)
 		
 		# 14pt corresponds to h3
-		tag_table.tag_class_add("h3", RichTextModTag("h3", weight=pango.WEIGHT_BOLD, size_points=14))
+		tag_table.tag_class_add("h3", RichTextModTag("h3", weight=pango.WEIGHT_BOLD, size_points=16))
 		
 		self.connect("visit-url", self._on_visit_url)
 		

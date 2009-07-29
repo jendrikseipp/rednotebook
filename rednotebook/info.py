@@ -56,7 +56,7 @@ You should have received a copy of the GNU General Public License along
 with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '''
-            
+
 completeWelcomeText = '''\
 Hello, 
 this is RedNotebook, a desktop journal/diary. Thank you very much for giving it a try. 
@@ -67,7 +67,8 @@ Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 === Format ===
-As you see you can format your text **bold**, //italic//, --stricken-- and __underlined__. \
+As you see you can format your text ""**""**bold**""**"", ""//""//italic//""//"", \
+""--""--stricken--""--"" and ""__""__underlined__""__"". \
 To see the results, just click on the "Preview" button. 
 
 === Extra Content ===
@@ -107,6 +108,85 @@ If you encounter any errors, please drop me a note so I can fix them.
 
 There are many features I have planned to add in the future so stay tuned.
 I hope you enjoy the program!'''
+
+welcome_day = {'text': completeWelcomeText,
+u'Cool Stuff': {u'Ate **two** cans of spam': None},
+u'Ideas': {u'Use a cool journal app': None},
+u'Tags': {u'Work': None, u'Documentation': None},
+}
+
+example_day1 = {
+'text': '''\
+===Categories===
+On the right there is space for extra content, things that can easily be sorted into categories.
+For example you could add the category Ideas and then add your ideas \
+of that day to it:
+
+- Ideas
+  - Invent Anti-Hangover-Machine
+  
+  
+The name "Categories" is a little bit confusing. It does not mean that a day is \
+put into a category, but that there is additional content on the right, \
+sorted into categories. "Topics" would probably be a better name.
+
+Those topics have several items distributed over various days.
+
+I’ll give you an example: I like to maintain a list of cool things I have done. \
+So if I did a cool thing on some day, I navigate to that day, add the category \
+"Cool Stuff" and add an entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
+When I have done more cool things on many days, they all have a category "Cool Stuff" \
+and many different entries. It is possible to export only that category and \
+get a list of the cool stuff that happened to me with the respective dates.
+
+Additionally you can select the "Cool Stuff" category in the word cloud window \
+to get a list of all the cool things.''',
+u'Cool Stuff': {u'Went to see the pope': None},
+u'Ideas': {u'Invent Anti-Hangover-Machine': None},
+u'Tags': {u'Documentation': None, u'Projects': None},
+u'Todo': {u'Wash the dishes': None},
+}
+
+example_day2 = {
+'text': '''\
+=== Multiple Entries ===
+You can add multiple entries to one day in two ways:
+- Use two different journals (one named “Work”, the other “Play”)
+- Separate your two entries by different titles (===Work===, ===Play===) 
+- Use a horizontal separator line (20 “=”s)
+
+
+====================
+
+=== Work ===
+Here goes the first entry.
+
+====================
+
+=== Play ===
+Here comes the entry about the fun stuff.''',
+u'Tags': {u'Documentation': None, u'Work': None, u'Play': None},}
+
+example_day3 = {
+'text': '''\
+=== Todo list ===
+You can also use RedNotebook as a todo list. A big advantage is, that you never \
+have to explicitly state the date when you added the todo item, you just add it \
+on one day and it remains there until you delete it. 
+
+Here is how it goes:
+- On the right click on "New Entry"
+- Fill "Todo" and "Remember the milk" in the fields and hit "OK"
+- Select the categories cloud from the drop down menu on the left
+- Now you can click on "todo" and see all your todo items
+
+
+''',
+u'Tags': {u'Documentation': None,},
+u'Todo': {u'Remember the milk': None},
+}
+
+example_content = [welcome_day, example_day1, example_day2, example_day3]
 
 helpText = '''\n
 == Text ==

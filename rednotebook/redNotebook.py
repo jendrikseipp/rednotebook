@@ -314,7 +314,8 @@ class RedNotebook:
 		sortedCategories = sorted(self.nodeNames, key=lambda category: str(category).lower())
 		self.frame.categoriesTreeView.categories = sortedCategories
 		
-		if self.firstTimeExecution is True:
+		if self.firstTimeExecution or True:
+			logging.info('Adding example content')
 			self.addInstructionContent()
 			
 		# Notebook is only on page 1 here, if we are opening a journal the second time
@@ -479,6 +480,10 @@ Filenames have to have the following form: 2009-01.txt \
 	
 	
 	def _getAllEditedDays(self):
+		# The day being edited counts too
+		if self.frame:
+			self.saveOldDay()
+			
 		days = []
 		for month in self.months.values():
 			daysInMonth = month.days.values()
@@ -506,18 +511,34 @@ Filenames have to have the following form: 2009-01.txt \
 			for word in words:
 				wordDict[word.lower()] += 1
 		return wordDict
+	
+	def go_to_first_empty_day(self):
+		if len(self.sortedDays) == 0:
+			return datetime.date.today()
+		
+		last_edited_day = self.sortedDays[-1]
+		first_empty_date = last_edited_day.date + dates.oneDay
+		self.changeDate(first_empty_date)
+		print first_empty_date
+		#while not self.day.empty:
+			#self.goToNextDay()
 			
 	
 	def addInstructionContent(self):
-		instructionDayContent = {u'Cool Stuff': {u'Went to see the pope': None}, 
-								 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
-								 u'Tags': {u'Work': None, u'Projects': None},
-								 }
 		
-		self.day.content = instructionDayContent
-		self.day.text = info.completeWelcomeText
 		
-		self.frame.set_date(self.month, self.date, self.day)
+		#if not self.testing:
+		self.go_to_first_empty_day()
+		current_date = self.date
+		
+		for example_day in info.example_content:
+			self.day.content = example_day
+			self.frame.set_date(self.month, self.date, self.day)
+			self.goToNextDay()
+		
+		self.changeDate(current_date)
+		
+		
 
 			
 

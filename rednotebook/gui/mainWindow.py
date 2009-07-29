@@ -157,6 +157,7 @@ class MainWindow(object):
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
 			'on_cloudComboBox_changed': self.on_cloudComboBox_changed,
 			'on_info_activate': self.on_info_activate,
+			'on_example_menu_item_activate': self.on_example_menu_item_activate,
 			'on_helpMenuItem_activate': self.on_helpMenuItem_activate,
 			'on_backup_activate': self.on_backup_activate,
 			'on_quit_activate': self.on_quit_activate,
@@ -752,6 +753,9 @@ class MainWindow(object):
 	def on_deleteEntryButton_clicked(self, widget):
 		self.categoriesTreeView.delete_selected_node()
 		
+	def on_example_menu_item_activate(self, widget):
+		self.redNotebook.addInstructionContent()
+		
 	def on_helpMenuItem_activate(self, widget):
 		utils.write_file(info.helpText, './source.txt')
 		headers = ['RedNotebook Documentation', info.version, '']
@@ -1017,6 +1021,7 @@ class CloudView(HtmlWindow):
 		self.write(html)
 		
 	def word_clicked(self, htmlview, uri, type_):
+		self.redNotebook.saveOldDay()
 		'uri has the form "something/somewhere/search/searchIndex"'
 		if 'search' in uri:
 			'searchIndex is the part after last slash'
@@ -1128,6 +1133,10 @@ class SearchTreeView(object):
 		self.treeStore.clear()
 		
 		rows = None
+		
+		print searchText
+		if not searchText:
+			return
 		
 		if self.searchType == 0:
 			'Search for text'
