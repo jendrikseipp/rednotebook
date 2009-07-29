@@ -1134,7 +1134,6 @@ class SearchTreeView(object):
 		
 		rows = None
 		
-		print searchText
 		if not searchText:
 			return
 		

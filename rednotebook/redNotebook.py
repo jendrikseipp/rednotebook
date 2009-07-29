@@ -314,7 +314,7 @@ class RedNotebook:
 		sortedCategories = sorted(self.nodeNames, key=lambda category: str(category).lower())
 		self.frame.categoriesTreeView.categories = sortedCategories
 		
-		if self.firstTimeExecution or True:
+		if self.firstTimeExecution:
 			logging.info('Adding example content')
 			self.addInstructionContent()
 			
@@ -519,14 +519,9 @@ Filenames have to have the following form: 2009-01.txt \
 		last_edited_day = self.sortedDays[-1]
 		first_empty_date = last_edited_day.date + dates.oneDay
 		self.changeDate(first_empty_date)
-		print first_empty_date
-		#while not self.day.empty:
-			#self.goToNextDay()
 			
 	
 	def addInstructionContent(self):
-		
-		
 		#if not self.testing:
 		self.go_to_first_empty_day()
 		current_date = self.date
