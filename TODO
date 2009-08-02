@@ -61,15 +61,17 @@ O Task bar icon
 O Password protection
 O Make RedNotebook portable
     O User dir configurable
+O Use html preview of categories for search window
 
 0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars
 X Fill some days of the journal with solutions of common question at first startup
-X Add option to restore that example content. It will be placed after the last edited day 
+X Add option to restore that example content. It will be placed after the last edited day
 X Add "Autostart RedNotebook" option
     X Linux: Option in Program
     X Win: Installer Option
-X Put the initial focus in the text window (LP:406450)
+X Let the user finish a new category entry by hitting ENTER
+X Put the initial focus in the text window for direct typing (LP:406450)
 
 
 

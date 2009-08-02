@@ -749,86 +749,56 @@ Tags</property>
         <child>
           <widget class="GtkVBox" id="vbox5">
             <property name="visible">True</property>
-            <property name="spacing">15</property>
+            <property name="spacing">12</property>
             <child>
-              <widget class="GtkFrame" id="frame1">
+              <widget class="GtkLabel" id="label2">
                 <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">GTK_SHADOW_NONE</property>
-                <child>
-                  <widget class="GtkAlignment" id="alignment1">
+                <property name="label" translatable="yes">&lt;b&gt;Select existing or new Category&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkComboBoxEntry" id="categoriesComboBox">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="items" translatable="yes"></property>
+                <child internal-child="entry">
+                  <widget class="GtkEntry" id="comboboxentry-entry1">
                     <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <widget class="GtkComboBoxEntry" id="categoriesComboBox">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="items" translatable="yes"></property>
-                        <child internal-child="entry">
-                          <widget class="GtkEntry" id="comboboxentry-entry1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="text" translatable="yes">filename</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
+                    <property name="can_focus">True</property>
+                    <property name="text" translatable="yes">filename</property>
                   </widget>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label2">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Select existing or new Category&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </widget>
-                  <packing>
-                    <property name="type">label_item</property>
-                  </packing>
                 </child>
               </widget>
               <packing>
-                <property name="expand">False</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkFrame" id="frame2">
+              <widget class="GtkLabel" id="label5">
                 <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">GTK_SHADOW_NONE</property>
-                <child>
-                  <widget class="GtkAlignment" id="alignment2">
+                <property name="label" translatable="yes">&lt;b&gt;Write entry&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </widget>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkComboBoxEntry" id="entryComboBox">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="items" translatable="yes"></property>
+                <child internal-child="entry">
+                  <widget class="GtkEntry" id="comboboxentry-entry5">
                     <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <widget class="GtkComboBoxEntry" id="entryComboBox">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="items" translatable="yes"></property>
-                        <child internal-child="entry">
-                          <widget class="GtkEntry" id="comboboxentry-entry5">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="text" translatable="yes">filename</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
+                    <property name="can_focus">True</property>
+                    <property name="text" translatable="yes">filename</property>
                   </widget>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label5">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Write entry&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </widget>
-                  <packing>
-                    <property name="type">label_item</property>
-                  </packing>
                 </child>
               </widget>
               <packing>
-                <property name="expand">False</property>
-                <property name="position">1</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </widget>

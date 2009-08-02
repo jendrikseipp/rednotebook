@@ -85,15 +85,6 @@ class CustomListView(gtk.TreeView):
 		'create a TreeStore with two string columns to use as the model'
 		self.set_model(gtk.ListStore(str, str))
 
-		#'create the TreeView using treeStore'
-		#self.treeView.set_model(self.treeStore)
-
-		#'create the TreeViewColumns to display the data'
-		#self.dateColumn = gtk.TreeViewColumn('Date')
-		#self.matchingColumn = gtk.TreeViewColumn('Text')
-		
-		#columns = [self.dateColumn,self.matchingColumn, ]
-						#self.categoryColumn, self.entryColumn]
 		columns = [gtk.TreeViewColumn('1'), gtk.TreeViewColumn('2')]
 
 		'add tvcolumns to treeView'
@@ -111,11 +102,7 @@ class CustomListView(gtk.TreeView):
 			
 			'Allow sorting on the column'
 			column.set_sort_column_id(index)
-		
-		#self.update_data()
 
 		'make it searchable'
 		self.set_search_column(1)
-		
-		#self.connect('row_activated', self.on_row_activated)
 		

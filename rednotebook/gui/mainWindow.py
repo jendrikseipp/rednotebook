@@ -842,12 +842,28 @@ class NewEntryDialog(object):
 		self.categoriesComboBox = CustomComboBoxEntry(mainFrame.wTree.get_widget('categoriesComboBox'))
 		self.newEntryComboBox = CustomComboBoxEntry(mainFrame.wTree.get_widget('entryComboBox'))
 		
-		# Allow hitting enter to submit the entry #TODO: Fix
-		#print self.dialog.flags()
-		#self.dialog.set_flags(gtk.CAN_DEFAULT)
-		#self.dialog.set_flags(gtk.HAS_DEFAULT)
-		#self.dialog.set_default_response(gtk.RESPONSE_OK)
-		self.newEntryComboBox.entry.set_activates_default(True)
+		box1 = mainFrame.wTree.get_widget('categoriesComboBox')
+		box2 = mainFrame.wTree.get_widget('entryComboBox')
+		
+		# TODO: Allow navigating with TAB
+		
+		#box1.set_focus_chain([box1.get_child()])
+		#box2.set_focus_chain([box2.get_child()])
+		
+		#print gtk.ComboBoxEntry().set_fo
+		#vbox5 = mainFrame.wTree.get_widget('vbox5')
+		
+		#self.categoriesComboBox.comboBox.set_flags(gtk.CAN_FOCUS)
+		#self.newEntryComboBox.comboBox.set_flags(gtk.CAN_FOCUS)
+		#vbox5.set_focus_chain([self.categoriesComboBox.comboBox, self.newEntryComboBox.comboBox])
+		#vbox5.set_focus_chain([box1, box2])
+		
+		# Let the user finish a new category entry by hitting ENTER
+		def respond(widget):
+			if self._text_entered():
+				self.dialog.response(gtk.RESPONSE_OK)
+		self.newEntryComboBox.entry.connect('activate', respond)
+		self.categoriesComboBox.entry.connect('activate', respond)
 		
 		#self.categoriesTreeView = self.mainFrame.categoriesTreeView
 		
@@ -882,10 +898,12 @@ class NewEntryDialog(object):
 		if adding_tag:
 			self.categoriesComboBox.set_active_text('Tags')
 			self.newEntryComboBox.set_entries(self.redNotebook.tags)
-			self.dialog.set_focus(self.newEntryComboBox.comboBox)
+			#self.dialog.set_focus(self.newEntryComboBox.comboBox)
+			self.newEntryComboBox.comboBox.grab_focus()
 		else:
 			self.newEntryComboBox.clear()
-			self.dialog.set_focus(self.categoriesComboBox.comboBox)
+			#self.dialog.set_focus(self.categoriesComboBox.comboBox)
+			self.categoriesComboBox.comboBox.grab_focus()
 		
 		response = self.dialog.run()
 		self.dialog.hide()
