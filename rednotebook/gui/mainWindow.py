@@ -845,7 +845,7 @@ class NewEntryDialog(object):
 		box1 = mainFrame.wTree.get_widget('categoriesComboBox')
 		box2 = mainFrame.wTree.get_widget('entryComboBox')
 		
-		# TODO: Allow navigating with TAB
+		# TODO: Allow navigating with TAB (Wait for gtkbuilder, maybe the error is fixed there)
 		
 		#box1.set_focus_chain([box1.get_child()])
 		#box2.set_focus_chain([box2.get_child()])

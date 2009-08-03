@@ -14,7 +14,7 @@ O Undu and Redo functionality extended for Categories (use function pointers for
 O Allow submitting new entries with <Enter>
 O Switch from libglade to GtkBuilder
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
-O Spell Checker (unify markup and html textviews first) (2 requests)
+O Spell Checker (unify markup and html textviews first) (3 requests)
 O allow opening config file from within RedNotebook? (On advanced tab)
 
 
@@ -62,6 +62,7 @@ O Password protection
 O Make RedNotebook portable
     O User dir configurable
 O Use html preview of categories for search window
+O Hide cloud words with right-click
 
 0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars

@@ -400,10 +400,10 @@ Filenames have to have the following form: 2009-01.txt \
 	
 	
 	def saveOldDay(self):
-		'Order is important'
+		'''Order is important'''
 		self.day.content = self.frame.categoriesTreeView.get_day_content()
-		
 		self.day.text = self.frame.get_day_text()
+		
 		self.frame.calendar.setDayEdited(self.date.day, not self.day.empty)
 	
 	

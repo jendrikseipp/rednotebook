@@ -36,10 +36,10 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 	sortedDict = sorted(wordCountDict.items(), key=lambda (word, freq): freq)
 	
 	if type == 'word':
-		# filter short words and words in ignore_list
+		# filter short words
 		sortedDict = filter(lambda (word, freq): len(word) > 4, sortedDict)
 		
-	# filter words in ignore_list'	
+	# filter words in ignore_list
 	sortedDict = filter(lambda (word, freq): word.lower() not in ignore_list, sortedDict)
 	
 	oftenUsedWords = []
@@ -93,7 +93,7 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 		
 	#random.shuffle(htmlElements)	
 	
-	htmlDoc = htmlHead 
+	htmlDoc = htmlHead
 	htmlDoc += reduce(operator.add, htmlElements, '')
 	htmlDoc += htmlTail
 	
