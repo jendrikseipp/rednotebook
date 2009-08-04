@@ -1026,17 +1026,30 @@ class CloudView(HtmlWindow):
 		self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
 		logging.info('Cloud ignore list: %s' % self.ignore_list)
 		
+		
 	def update(self, force_update=False):
+		if self.redNotebook.frame is None:
+			return
+		
+		logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
+		
 		# Do not update the cloud with words as it requires a lot of searching		
 		if self.type == 'word' and not force_update:
 			return
 		
-		if self.redNotebook.frame is not None:
-			self.redNotebook.saveOldDay()
+		self.redNotebook.saveOldDay()
+		
 		wordCountDict = self.redNotebook.getWordCountDict(self.type)
+		logging.debug('Retrieved WordCountDict. Length: %s' % len(wordCountDict))
+		
 		self.tagCloudWords, html = utils.getHtmlDocFromWordCountDict(wordCountDict, \
 												self.type, self.ignore_list)
+		logging.debug('%s cloud words found' % len(self.tagCloudWords))
+		
 		self.write(html)
+		
+		logging.debug('Cloud updated')
+		
 		
 	def word_clicked(self, htmlview, uri, type_):
 		self.redNotebook.saveOldDay()
@@ -1044,7 +1057,7 @@ class CloudView(HtmlWindow):
 		if 'search' in uri:
 			'searchIndex is the part after last slash'
 			searchIndex = int(uri.split('/')[-1])
-			searchText = self.tagCloudWords[searchIndex]
+			searchText, count = self.tagCloudWords[searchIndex]
 			
 			self.redNotebook.frame.searchTypeBox.set_active(self.type_int)
 			self.redNotebook.frame.searchBox.set_active_text(searchText)

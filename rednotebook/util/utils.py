@@ -23,6 +23,7 @@ import sys
 import signal
 import random
 import operator
+from operator import itemgetter
 import os
 from urllib2 import urlopen, URLError
 import webbrowser
@@ -33,28 +34,37 @@ import filesystem
 
 
 def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
+	logging.debug('Turning the wordCountDict into html')
+	logging.debug('Length wordCountDict: %s' % len(wordCountDict))
+	
 	sortedDict = sorted(wordCountDict.items(), key=lambda (word, freq): freq)
 	
 	if type == 'word':
 		# filter short words
 		sortedDict = filter(lambda (word, freq): len(word) > 4, sortedDict)
+		logging.debug('Filtered short words. Length wordCountDict: %s' % len(sortedDict))
 		
 	# filter words in ignore_list
 	sortedDict = filter(lambda (word, freq): word.lower() not in ignore_list, sortedDict)
+	logging.debug('Filtered blacklist words. Length wordCountDict: %s' % len(sortedDict))
 	
 	oftenUsedWords = []
 	numberOfWords = 42
 	
 	'''
 	only take the longest words. If there are less words than n, 
-	len(longWords) words are returned
+	len(sortedDict) words are returned
 	'''
-	tagCloudWords = sortedDict[-numberOfWords:]
-	if len(tagCloudWords) < 1:
+	cloud_words = sortedDict[-numberOfWords:]
+	logging.debug('Selected most frequent words. Length CloudWords: %s' % len(cloud_words))
+	
+	if len(cloud_words) < 1:
 		return [], ''
 	
-	minCount = tagCloudWords[0][1]
-	maxCount = tagCloudWords[-1][1]
+	minCount = cloud_words[0][1]
+	maxCount = cloud_words[-1][1]
+	
+	logging.debug('Min word count: %s, Max word count: %s' % (minCount, maxCount))
 	
 	deltaCount = maxCount - minCount
 	if deltaCount == 0:
@@ -65,39 +75,34 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 	
 	fontDelta = maxFontSize - minFontSize
 	
-	'delete count information from word list'
-	tagCloudWords = map(lambda (word, count): word, tagCloudWords)
+	# sort words with unicode sort function
+	cloud_words.sort(key=lambda (word, count): unicode.coll(word))
 	
-	'search words with unicode sort function'
-	tagCloudWords.sort(key=unicode.coll)
+	logging.debug('Sorted cloud words. Length CloudWords: %s' % len(cloud_words))
 	
 	htmlElements = []
 	
-	htmlHead = 	'<body><div style="text-align:center; font-family: sans-serif">'
+	htmlHead = 	'<body><div style="text-align:center; font-family: sans-serif">\n'
 	htmlTail = '</div></body>'
 	
-	for wordIndex in range(len(tagCloudWords)):
-		count = wordCountDict.get(tagCloudWords[wordIndex])
+	for index, (word, count) in enumerate(cloud_words):
 		fontFactor = (count - minCount) / deltaCount
 		fontSize = int(minFontSize + fontFactor * fontDelta)
 		
-		htmlElements.append('<a href="search/' + str(wordIndex) + '">' + \
-								'<span style="font-size:' + str(int(fontSize)) + 'px">' + \
-									tagCloudWords[wordIndex] + \
-								'</span>' + \
-							'</a>' + \
-							#Add some whitespace &#xA0;
-							#'<span style="font-size:5px; color:white"> _ </span>' + \
-							'<span> </span>' + \
-							'\n')
+		htmlElements.append('<a href="search/%s">' 
+								'<span style="font-size:%spx">%s</span></a>' \
+								% (index, fontSize, word) + \
+									
+							#Add some whitespace (previously &#xA0;)
+							'<span> </span>')
 		
-	#random.shuffle(htmlElements)	
+	#random.shuffle(htmlElements)
 	
 	htmlDoc = htmlHead
-	htmlDoc += reduce(operator.add, htmlElements, '')
+	htmlDoc += '\n'.join(htmlElements) + '\n'
 	htmlDoc += htmlTail
 	
-	return (tagCloudWords, htmlDoc)
+	return (cloud_words, htmlDoc)
 
 
 def set_environment_variables(config):

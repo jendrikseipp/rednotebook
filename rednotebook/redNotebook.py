@@ -238,7 +238,7 @@ class RedNotebook:
 			
 	def exit(self):
 		self.frame.add_values_to_config()
-		self.saveToDisk()
+		self.saveToDisk(exitImminent=True)
 		logging.info('Goodbye!')
 		gtk.main_quit()
 

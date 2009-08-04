@@ -63,6 +63,7 @@ O Make RedNotebook portable
     O User dir configurable
 O Use html preview of categories for search window
 O Hide cloud words with right-click
+O Show number of different words
 
 0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars
