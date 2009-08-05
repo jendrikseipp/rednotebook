@@ -1137,20 +1137,20 @@ class SearchTreeView(object):
 						#self.categoryColumn, self.entryColumn]
 
 		'add tvcolumns to treeView'
-		for column in range(len(columns)):
-			self.treeView.append_column(columns[column])
+		for index, column in enumerate(columns):
+			self.treeView.append_column(column)
 
 			'create a CellRendererText to render the data'
 			cellRenderer = gtk.CellRendererText()
 
 			'add the cell to the tvcolumn and allow it to expand'
-			columns[column].pack_start(cellRenderer, True)
+			column.pack_start(cellRenderer, True)
 
 			'Get markup for column, not text'
-			columns[column].set_attributes(cellRenderer, markup=column)
+			column.set_attributes(cellRenderer, markup=index)
 			
 			'Allow sorting on the column'
-			columns[column].set_sort_column_id(column)
+			column.set_sort_column_id(index)
 		
 		self.update_data()
 
@@ -1168,6 +1168,9 @@ class SearchTreeView(object):
 		if not searchText:
 			return
 		
+		# Save the search text for highlighting
+		self.searched_text = searchText
+		
 		if self.searchType == 0:
 			'Search for text'
 			self.matchingColumn.set_title('Text')
@@ -1182,11 +1185,12 @@ class SearchTreeView(object):
 			rows = self.redNotebook.search(tag=searchText)
 			
 		if rows:
-			for dateString, resultString in rows:
-				self.treeStore.append([dateString, resultString])
+			for dateString, entry in rows:
+				if not self.searchType == 0:
+					entry = markup.convert_to_pango(entry)
+					print entry
 				
-		# Save the search text for highlighting
-		self.searched_text = searchText
+				self.treeStore.append([dateString, entry])
 				
 				
 	def on_row_activated(self, treeview, path, view_column):
@@ -1198,7 +1202,7 @@ class SearchTreeView(object):
 		self.mainWindow.dayTextField.highlight(self.searched_text)
 		
 		
-	def set_search_type(self, searchType):		
+	def set_search_type(self, searchType):
 		self.searchType = searchType
 		
 	

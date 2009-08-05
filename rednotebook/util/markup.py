@@ -22,6 +22,9 @@ from __future__ import with_statement
 import os
 import logging
 
+import pango
+import gobject
+
 from rednotebook import txt2tags
 from rednotebook.util import filesystem
 from rednotebook.util import dates
@@ -242,4 +245,64 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 		logging.error(result)
 		
 	return result
+
+def convert_to_pango(txt, headers=None, options=None):
+	'''
+	Code partly taken from txt2tags tarball
+	'''
+	original_txt = txt
+	
+	# Here is the marked body text, it must be a list.
+	txt = txt.split('\n')
+	
+	# Set the three header fields
+	if headers is None:
+		headers = ['', '', '']
+	
+	config = txt2tags.ConfigMaster()._get_defaults()
+	
+	config['outfile'] = txt2tags.MODULEOUT  # results as list
+	config['target'] = 'xhtml'
+	
+	# Allow line breaks, r'\\\\' are 2 \ for regexes
+	config['postproc'] = []
+	config['postproc'].append([r'\\\\', '\n'])
+	
+	if options is not None:
+		config.update(options)
+	
+	# Let's do the conversion
+	try:
+		#headers   = txt2tags.doHeader(headers, config)
+		body, toc = txt2tags.convert(txt, config)
+		#footer	= txt2tags.doFooter(config)
+		#toc = txt2tags.toc_tagger(toc, config)
+		#toc = txt2tags.toc_formatter(toc, config)
+		full_doc  = body#headers + toc + body + footer
+		finished  = txt2tags.finish_him(full_doc, config)
+		#result = '\n'.join(finished)
+		result = ''.join(finished)
+	
+	# Txt2tags error, show the messsage to the user
+	except txt2tags.error, msg:
+		logging.error(msg)
+		result = msg
+	
+	# Unknown error, show the traceback to the user
+	except:
+		result = txt2tags.getUnknownErrorMessage()
+		logging.error(result)
+		
+	# remove unwanted paragraphs
+	result = result.replace('<p>', '').replace('</p>', '')
+	
+	try:
+		attr_list, plain, accel = pango.parse_markup(result)
+		
+		# result is valid pango markup, return the markup
+		return result
+	except gobject.GError:
+		# There are unknown tags in the markup, return the original text
+		logging.debug('There are unknown tags in the markup: %s' % result)
+		return original_txt
 				

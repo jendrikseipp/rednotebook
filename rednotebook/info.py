@@ -144,7 +144,7 @@ to get a list of all the cool things.''',
 u'Cool Stuff': {u'Went to see the pope': None},
 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
 u'Tags': {u'Documentation': None, u'Projects': None},
-u'Todo': {u'Wash the dishes': None},
+u'Todo': {u'**Wash the dishes**': None},
 }
 
 example_day2 = {
@@ -181,9 +181,21 @@ Here is how it goes:
 - Now you can click on "todo" and see all your todo items
 
 
-''',
+- To tick off a todo item you can strike it out by adding "--" around the item.
+- To mark an item as important, add "**" around it.
+
+
+So --Remember the milk-- becomes stricken and **Wash the dishes** becomes bold. 
+
+Open the todo category in the search list to see the results. There you can also \
+group your todo items into important and finished items by hitting "Entry" \
+at the top of the list.
+
+It probably sometimes makes sense to add the todo items to the day you want to \
+have completed them (deadline day).''',
 u'Tags': {u'Documentation': None,},
-u'Todo': {u'Remember the milk': None},
+u'Todo': {u'--Remember the milk--': None,
+		u'Take a break': None},
 }
 
 example_content = [welcome_day, example_day1, example_day2, example_day3]

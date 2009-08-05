@@ -11,11 +11,9 @@ implementation if you tell me that you'd like its addition ;)
 O i18n
 O Better comment code
 O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
-O Allow submitting new entries with <Enter>
+O Copy/Paste category entries
 O Switch from libglade to GtkBuilder
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
-O Spell Checker (unify markup and html textviews first) (3 requests)
-O allow opening config file from within RedNotebook? (On advanced tab)
 
 
 
@@ -23,17 +21,16 @@ O allow opening config file from within RedNotebook? (On advanced tab)
 === Maybe even some of those features will make it into RedNotebook ===
 
 O Hyperlinks in Categories? -> Already implemented, add documentation
-O Tags in text entries (e.g. @film:Batman)?
 O Encryption XOR Password
 O Allow dragging of files and pictures into RedNotebook
 O remove search for categories and tags, as clouds already do that?
 O Allow inserting directories
 O Allow opening pictures by double-clicking them
-O Copy/Paste category notes
 O provide TrueCrypt encryption HowTo for Linux
 O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
 O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
 O SSH, FTP saving -> Conduit HowTo
+O allow opening config file from within RedNotebook? (On advanced tab)
 
 
 
@@ -54,16 +51,19 @@ O Automatic insertion of holidays
 O Import of exported backups
 O Automatic Backups
 
-0.8.5
+0.8.6
 O Task bar icon
+
+0.8.5
+O Spell Checking (unify markup and html textviews first) (3 requests)
 
 0.8.4
 O Password protection
 O Make RedNotebook portable
     O User dir configurable
-O Use html preview of categories for search window
 O Hide cloud words with right-click
 O Show number of different words
+O Live preview of category entries
 
 0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars
@@ -72,7 +72,9 @@ X Add option to restore that example content. It will be placed after the last e
 X Add "Autostart RedNotebook" option
     X Linux: Option in Program
     X Win: Installer Option
-X Let the user finish a new category entry by hitting ENTER
+X Format category entries in search window
+O Add option for time interval between automatic savings
+X Finish a new category entry by hitting ENTER
 X Put the initial focus in the text window for direct typing (LP:406450)
 
 
@@ -91,4 +93,5 @@ X Put the initial focus in the text window for direct typing (LP:406450)
 - remote pictures (pictures would have to be downloaded and saved in a folder for exports)
 - dataDir Lock (for multiple TRN instances) (unneeded)
 - make date format configurable for exports (probably no one needs this as i18n already exists)
+- Tags in text entries (e.g. @film:Batman) (KISS)
 
