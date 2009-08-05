@@ -273,14 +273,9 @@ def convert_to_pango(txt, headers=None, options=None):
 	
 	# Let's do the conversion
 	try:
-		#headers   = txt2tags.doHeader(headers, config)
 		body, toc = txt2tags.convert(txt, config)
-		#footer	= txt2tags.doFooter(config)
-		#toc = txt2tags.toc_tagger(toc, config)
-		#toc = txt2tags.toc_formatter(toc, config)
-		full_doc  = body#headers + toc + body + footer
+		full_doc  = body
 		finished  = txt2tags.finish_him(full_doc, config)
-		#result = '\n'.join(finished)
 		result = ''.join(finished)
 	
 	# Txt2tags error, show the messsage to the user

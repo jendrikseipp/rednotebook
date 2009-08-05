@@ -76,6 +76,7 @@ X Format category entries in search window
 O Add option for time interval between automatic savings
 X Finish a new category entry by hitting ENTER
 X Put the initial focus in the text window for direct typing (LP:406450)
+X Fix calendar warning
 
 
 

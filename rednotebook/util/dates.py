@@ -32,6 +32,17 @@ def get_date_from_date_string(dateString):
 	year, month, day = map(int, dateArray)
 	return datetime.date(year, month, day)
 
+# Number of days per month (except for February in leap years)
+month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+def isleap(year):
+	"""Return 1 for leap years, 0 for non-leap years."""
+	return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+def get_number_of_days(year, month):
+	days = month_days[month] + (month == 2 and isleap(year))
+	return days
+
 
 
 

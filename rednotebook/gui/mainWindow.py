@@ -1186,9 +1186,8 @@ class SearchTreeView(object):
 			
 		if rows:
 			for dateString, entry in rows:
-				if not self.searchType == 0:
-					entry = markup.convert_to_pango(entry)
-					print entry
+				#if not self.searchType == 0:
+				entry = markup.convert_to_pango(entry)
 				
 				self.treeStore.append([dateString, entry])
 				
@@ -1755,9 +1754,10 @@ class Calendar(object):
 			self.calendar.unmark_day(dayNumber)
 			
 	def setMonth(self, month):
-		for dayNumber in range(1, 31 + 1):
+		month_days = dates.get_number_of_days(month.yearNumber, month.monthNumber)
+		for dayNumber in range(1, month_days + 1):
 			self.setDayEdited(dayNumber, False)
-		for dayNumber, day in month.days.iteritems():
+		for dayNumber, day in month.days.items():
 			self.setDayEdited(dayNumber, not day.empty)
 			
 			
