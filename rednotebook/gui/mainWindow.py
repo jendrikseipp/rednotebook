@@ -1186,8 +1186,8 @@ class SearchTreeView(object):
 			
 		if rows:
 			for dateString, entry in rows:
-				#if not self.searchType == 0:
-				entry = markup.convert_to_pango(entry)
+				if not self.searchType == 0:
+					entry = markup.convert_to_pango(entry)
 				
 				self.treeStore.append([dateString, entry])
 				

@@ -195,11 +195,9 @@ class RedNotebook:
 		if self.config.read('checkForNewVersion', default=0) == 1:
 			utils.check_new_version(self.frame, info.version, startup=True)
 			
-		# Automatically save the content after a period of time
-		one_minute = 1000 * 60
-		
-		if not self.testing:
-			gobject.timeout_add(10 * one_minute, self.saveToDisk)
+		# Automatically save the content after a period of time		
+		if not self.testing or True:
+			gobject.timeout_add_seconds(600, self.saveToDisk)
 	
 	
 	def getDaysInDateRange(self, range):
