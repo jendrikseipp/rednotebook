@@ -162,6 +162,30 @@ class HtmlView(RichTextView):
 		
 		filesystem.open_url(url)
 		
+	def highlight(self, text):
+		iter_start = self.get_buffer().get_start_iter()
+		
+		# Hack: Ignoring the case is not supported for the search so we search
+		# for the most common variants, but do not search identical ones
+		variants = set([text, text.capitalize(), text.lower(), text.upper()])
+		
+		for search_text in variants:
+			iter_tuple = iter_start.forward_search(search_text, gtk.TEXT_SEARCH_VISIBLE_ONLY)
+			
+			# When we find one variant, highlight it and quit
+			if iter_tuple:
+				self.set_selection(*iter_tuple)
+				return
+			
+	def set_selection(self, iter1, iter2):
+		'''
+		Sort the two iters and select the text between them
+		'''		
+		sort_by_position = lambda iter: iter.get_offset()
+		iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
+		assert iter1.get_offset() <= iter2.get_offset()
+		self.get_buffer().select_range(iter1, iter2)
+		
 		
 class HtmlIO(RichTextIO):
 	def __init__(self):

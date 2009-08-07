@@ -195,8 +195,8 @@ class RedNotebook:
 		if self.config.read('checkForNewVersion', default=0) == 1:
 			utils.check_new_version(self.frame, info.version, startup=True)
 			
-		# Automatically save the content after a period of time		
-		if not self.testing or True:
+		# Automatically save the content after a period of time
+		if not self.testing:
 			gobject.timeout_add_seconds(600, self.saveToDisk)
 	
 	

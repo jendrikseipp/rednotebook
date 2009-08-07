@@ -31,6 +31,7 @@ O Use threads for file loading and link opening (Data opening takes 1.1 sec, oth
 O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
 O SSH, FTP saving -> Conduit HowTo
 O allow opening config file from within RedNotebook? (On advanced tab)
+O Add option for time interval between automatic savings
 
 
 
@@ -62,8 +63,9 @@ O Password protection
 O Make RedNotebook portable
     O User dir configurable
 O Hide cloud words with right-click
-O Show number of different words
+O Statistics: Show number of different words
 O Live preview of category entries
+O Highlight search word in preview too
 
 0.8.3
 X New statistics dialog with daily word count. Shows number of words, lines, and chars
@@ -73,11 +75,12 @@ X Add "Autostart RedNotebook" option
     X Linux: Option in Program
     X Win: Installer Option
 X Format category entries in search window
-O Add option for time interval between automatic savings
 X Finish a new category entry by hitting ENTER
 X Put the initial focus in the text window for direct typing (LP:406450)
 X Fix calendar warning
-X Use glib.timeout_add_seconds for automatic saving for less energy use
+X Use glib.timeout_add_seconds for automatic saving for less energy consumption on laptops
+X Highlight found words in preview too
+
 
 
 

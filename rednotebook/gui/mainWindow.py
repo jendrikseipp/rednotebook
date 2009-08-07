@@ -1186,7 +1186,7 @@ class SearchTreeView(object):
 			
 		if rows:
 			for dateString, entry in rows:
-				if not self.searchType == 0:
+				if self.searchType == 1:
 					entry = markup.convert_to_pango(entry)
 				
 				self.treeStore.append([dateString, entry])
@@ -1197,8 +1197,12 @@ class SearchTreeView(object):
 		newDate = dates.get_date_from_date_string(dateString)
 		self.redNotebook.changeDate(newDate)
 		
-		# let the search function highlight found strings in the page
-		self.mainWindow.dayTextField.highlight(self.searched_text)
+		if self.searchType == 0:
+			# let the search function highlight found strings in the page
+			if self.mainWindow.preview_mode:
+				self.mainWindow.html_editor._textview.highlight(self.searched_text)
+			else:
+				self.mainWindow.dayTextField.highlight(self.searched_text)
 		
 		
 	def set_search_type(self, searchType):
