@@ -31,6 +31,11 @@ class Statistics(object):
 			numberOfWords += day.getNumberOfWords()
 		return numberOfWords
 	
+	def get_number_of_distinct_words(self):
+		word_count_dict = self.redNotebook.getWordCountDict('word')
+		number_of_distinct_words = len(word_count_dict)
+		return number_of_distinct_words
+	
 	def getNumberOfChars(self):
 		numberOfChars = 0
 		for day in self.redNotebook.days:
@@ -72,12 +77,13 @@ class Statistics(object):
 	@property
 	def overall_pairs(self):
 		return [
-				['Number of Words', self.getNumberOfWords()],
-				['Number of Entries', self.getNumberOfEntries()],
-				['Average Number of Words', self.get_average_number_of_words()],
+				['Words', self.getNumberOfWords()],
+				['Distinct Words', self.get_number_of_distinct_words()],
+				['Entries', self.getNumberOfEntries()],
+				['Letters', self.getNumberOfChars()],
 				['Days between first and last Entry', self.get_number_of_usage_days()],
-				['Percentage of Edited Days', self.get_edit_percentage()],
-				['Number of Letters', self.getNumberOfChars()],
+				['Average number of Words', self.get_average_number_of_words()],
+				['Percentage of edited Days', self.get_edit_percentage()],
 				]
 		
 	@property
