@@ -1,5 +1,19 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.3 ===
+ * New statistics dialog with daily word count. Shows number of words, lines, and chars
+ * Fill some days of the journal with solutions of common question at first startup
+ * Add option to restore that example content. It will be placed after the last edited day
+ * Add "Autostart RedNotebook" option
+     * Linux: Option in Program
+     * Win: Installer Option
+ * Format category entries in search window
+ * Finish a new category entry by hitting ENTER
+ * Put the initial focus in the text window for direct typing (LP:406450)
+ * Fix calendar warning
+ * Use glib.timeout_add_seconds for automatic saving for less energy consumption on laptops
+ * Highlight searched words in preview too
+
 === 0.8.2 (2009-07-28) ===
  * Blacklist for clouds in GUI
  * Let the search function highlight found words

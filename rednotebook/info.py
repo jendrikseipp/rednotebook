@@ -192,10 +192,14 @@ group your todo items into important and finished items by hitting "Entry" \
 at the top of the list.
 
 It probably sometimes makes sense to add the todo items to the day you want to \
-have completed them (deadline day).''',
+have completed them (deadline day).
+
+Once you've finished an item, you could also change its category name from \
+"Todo" to e.g. "Done".''',
 u'Tags': {u'Documentation': None,},
 u'Todo': {u'--Remember the milk--': None,
 		u'Take a break': None},
+u'Done': {u'--Check mail--': None,},
 }
 
 example_content = [welcome_day, example_day1, example_day2, example_day3]

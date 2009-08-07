@@ -90,7 +90,7 @@ class Statistics(object):
 				]
 	
 	def getStatsHTML(self):
-		self.redNotebook.saveToDisk()
+		self.redNotebook.saveOldDay()
 		page = '<html><body bgcolor="#8e8e95"><table cellspacing="5" border="0" width="400">\n'
 		stats = self.pairs
 		for key, value in stats:
@@ -100,7 +100,7 @@ class Statistics(object):
 		return page
 	
 	def show_dialog(self, dialog):
-		self.redNotebook.saveToDisk()
+		self.redNotebook.saveOldDay()
 		
 		day_store = dialog.day_list.get_model()
 		day_store.clear()

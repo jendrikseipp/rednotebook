@@ -65,21 +65,6 @@ O Make RedNotebook portable
 O Hide cloud words with right-click
 O Statistics: Show number of different words
 O Live preview of category entries
-O Highlight search word in preview too
-
-0.8.3
-X New statistics dialog with daily word count. Shows number of words, lines, and chars
-X Fill some days of the journal with solutions of common question at first startup
-X Add option to restore that example content. It will be placed after the last edited day
-X Add "Autostart RedNotebook" option
-    X Linux: Option in Program
-    X Win: Installer Option
-X Format category entries in search window
-X Finish a new category entry by hitting ENTER
-X Put the initial focus in the text window for direct typing (LP:406450)
-X Fix calendar warning
-X Use glib.timeout_add_seconds for automatic saving for less energy consumption on laptops
-X Highlight found words in preview too
 
 
 
