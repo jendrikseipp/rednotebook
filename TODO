@@ -64,7 +64,7 @@ O Make RedNotebook portable
     O User dir configurable
 X Hide cloud words with right-click
 X Statistics: Show number of different words
-O Live preview of category entries
+X Live preview of category entries
 
 
 
@@ -79,7 +79,7 @@ O Live preview of category entries
 === Features that will **not** be implemented ===
 
 - ``monospaced`` (we only want one font)
-- verbatim / raw ( """/"" - supported, undocumented) (too confusing / poorly behaving) 
+- verbatim / raw ( """/"" - supported, undocumented) (too confusing / poorly behaving)
 - remote pictures (pictures would have to be downloaded and saved in a folder for exports)
 - dataDir Lock (for multiple TRN instances) (unneeded)
 - make date format configurable for exports (probably no one needs this as i18n already exists)

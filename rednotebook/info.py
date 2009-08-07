@@ -23,7 +23,7 @@ import os
 
 from rednotebook.util import filesystem
 
-version = '0.8.3'
+version = '0.8.4'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
@@ -187,7 +187,8 @@ Here is how it goes:
 
 So --Remember the milk-- becomes stricken and **Wash the dishes** becomes bold. 
 
-Open the todo category in the search list to see the results. There you can also \
+You can see all your todo items at once by clicking "todo" in the category cloud \
+on the left. There you can also \
 group your todo items into important and finished items by hitting "Entry" \
 at the top of the list.
 

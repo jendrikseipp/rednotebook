@@ -57,7 +57,6 @@ guiDir = os.path.join(appDir, 'gui')
 userHomeDir = os.path.expanduser('~')
 
 redNotebookUserDir = os.path.join(userHomeDir, '.rednotebook')
-tempDir = os.path.join(redNotebookUserDir, 'tmp')
 templateDir = os.path.join(redNotebookUserDir, 'templates')
 
 defaultDataDir = os.path.join(redNotebookUserDir, 'data')

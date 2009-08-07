@@ -47,7 +47,7 @@ loggingLevels = {'debug': logging.DEBUG,
 
 # Assert that all dirs and files are in place so that logging can take start
 filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
-							filesystem.templateDir, filesystem.tempDir])
+							filesystem.templateDir])
 filesystem.makeFiles([(filesystem.configFile, ''),
 						(filesystem.logFile, '')])
 
