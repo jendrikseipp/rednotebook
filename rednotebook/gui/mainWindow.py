@@ -1010,6 +1010,9 @@ class CloudView(HtmlWindow):
 		
 		self.htmlview.connect("url-clicked", self.word_clicked)
 		self.htmlview.connect('populate-popup', self.create_popup_menu)
+		self.htmlview.connect('right-click', self.on_right_click)
+		
+		self.htmlview.set_cursor_visible(False)
 		
 		self.set_type(0, init=True)
 		
@@ -1053,9 +1056,9 @@ class CloudView(HtmlWindow):
 		
 	def word_clicked(self, htmlview, uri, type_):
 		self.redNotebook.saveOldDay()
-		'uri has the form "something/somewhere/search/searchIndex"'
+		# uri has the form "something/somewhere/search/searchIndex"
 		if 'search' in uri:
-			'searchIndex is the part after last slash'
+			# searchIndex is the part after last slash
 			searchIndex = int(uri.split('/')[-1])
 			searchText, count = self.tagCloudWords[searchIndex]
 			
@@ -1065,6 +1068,13 @@ class CloudView(HtmlWindow):
 			
 			'returning True here stops loading the document'
 			return True
+
+	def on_right_click(self, view, uri, type_):
+		#logging.debug('URI clicked %s' % uri)
+		# searchIndex is the part after last slash
+		searchIndex = int(uri.split('/')[-1])
+		word, count = self.tagCloudWords[searchIndex]
+		self.on_ignore_menu_activate(None, selected_words=[word])
 		
 	def create_popup_menu(self, textview, menu):
 		'''
@@ -1082,8 +1092,10 @@ class CloudView(HtmlWindow):
 		
 		ignore_menu_item.connect('activate', self.on_ignore_menu_activate)
 		
-	def on_ignore_menu_activate(self, menu_item):
-		selected_words = self.get_selected_words()
+	def on_ignore_menu_activate(self, menu_item, selected_words=None):
+		if selected_words is None:
+			selected_words = self.get_selected_words()
+			
 		logging.info('The following words will be hidden from clouds: %s' % selected_words)
 		self.ignore_list.extend(selected_words)
 		self.redNotebook.config.write_list('cloudIgnoreList', self.ignore_list)
@@ -1091,6 +1103,11 @@ class CloudView(HtmlWindow):
 		
 	def get_selected_words(self):
 		bounds = self.htmlview.get_buffer().get_selection_bounds()
+		cursor = self.htmlview.get_buffer().get_insert()
+		cursor = self.htmlview.get_buffer().get_iter_at_mark(cursor)
+		#start = self.htmlview.get_buffer().get_start_iter()
+		print cursor, cursor.is_start(), cursor.inside_word()
+		
 		if not bounds:
 			return []
 		

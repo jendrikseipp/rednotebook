@@ -303,7 +303,7 @@ class HtmlHandler(xml.sax.handler.ContentHandler):
 		if tag is None:
 			tag = self.textbuf.create_tag()
 			
-		'Fix ";" issue when appearing at the end'
+		## Fix ";" issue when appearing at the end
 		style = style.rstrip()
 		if style.endswith(';'):
 			style = style[:-1]
@@ -339,6 +339,11 @@ class HtmlHandler(xml.sax.handler.ContentHandler):
 	def _anchor_event(self, tag, textview, event, iter, href, type_):
 		if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
 			self.textview.emit("url-clicked", href, type_)
+			return True
+		## Added for right-clicks
+		## A little hack. Only works for right clicks on links
+		if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+			self.textview.emit("right-click", href, type_)
 			return True
 		return False
 		
@@ -475,6 +480,8 @@ class HtmlTextView(gtk.TextView):
 	__gtype_name__ = 'HtmlTextView'
 	__gsignals__ = {
 		'url-clicked': (gobject.SIGNAL_RUN_LAST, None, (str, str)), # href, type
+		## Added for right-clicks
+		'right-click': (gobject.SIGNAL_RUN_LAST, None, (str, str)), # href, type
 	}
 	
 	def __init__(self):
@@ -571,6 +578,11 @@ if __name__ == '__main__':
 	def url_cb(view, url, type_):
 		print "url-clicked", url, type_
 	htmlview.connect("url-clicked", url_cb)
+	
+	def right_clicked(view, word, type_):
+		print 'Word clicked', word
+	
+	htmlview.connect('right-click', right_clicked)
 #	test = '''\
 #<body TEXT="black" BGCOLOR="white" LINK="black" VLINK="black" ALINK="black">
 #<div style="text-align:center;color:red;"><a href="search/0"><span style="font-size:10px">again</span></a>
@@ -581,6 +593,7 @@ if __name__ == '__main__':
 #'''
 #
 #	htmlview.display_html(test)
+	htmlview.display_html('<a href="www.heise.de">Heise</a>')
 	htmlview.display_html('<div><span style="color: red; text-decoration:underline">Hello</span><br/>\n'
 						  '  <img src="http://images.slashdot.org/topics/topicsoftware.gif"/><br/>\n'
 						  '  <span style="font-size: 500%; font-family: serif">World</span>\n'
