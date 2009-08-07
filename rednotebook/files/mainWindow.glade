@@ -514,8 +514,8 @@ Tags</property>
                             <child>
                               <widget class="GtkMenuToolButton" id="templateMenuButton">
                                 <property name="visible">True</property>
-                                <property name="tooltip" translatable="yes">Click the arrow on the right for more options</property>
-                                <property name="label" translatable="yes">Insert Template</property>
+                                <property name="tooltip_markup">Insert this weekday's template\nClick the arrow on the right for more options</property>
+                                <property name="label" translatable="yes">Template</property>
                                 <property name="stock_id">gtk-paste</property>
                                 <signal name="show_menu" handler="on_templateMenu_show_menu"/>
                                 <signal name="clicked" handler="on_templateMenu_clicked"/>
