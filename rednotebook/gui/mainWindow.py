@@ -329,7 +329,6 @@ class MainWindow(object):
 		gives strange results.		
 		'''
 		mainFrameWidth, mainFrameHeight = self.mainFrame.get_size()
-		# print 'SIZE GET', mainFrameWidth, mainFrameHeight
 		self.redNotebook.config['mainFrameWidth'] = mainFrameWidth
 		self.redNotebook.config['mainFrameHeight'] = mainFrameHeight
 		
@@ -742,10 +741,9 @@ class MainWindow(object):
 		
 	def on_statisticsMenuItem_activate(self, widget):
 		self.redNotebook.stats.show_dialog(self.stats_dialog)
-		#utils.show_html_in_browser(self.redNotebook.stats.getStatsHTML())
 		
 	def on_addNewEntryButton_clicked(self, widget):
-		self.newEntryDialog.show_dialog(adding_tag=False)
+		self.categoriesTreeView._on_add_entry_clicked(None)
 		
 	def on_addTagButton_clicked(self, widget):
 		self.newEntryDialog.show_dialog(adding_tag=True)
@@ -850,7 +848,7 @@ class NewEntryDialog(object):
 		#box1.set_focus_chain([box1.get_child()])
 		#box2.set_focus_chain([box2.get_child()])
 		
-		#print gtk.ComboBoxEntry().set_fo
+		
 		#vbox5 = mainFrame.wTree.get_widget('vbox5')
 		
 		#self.categoriesComboBox.comboBox.set_flags(gtk.CAN_FOCUS)
@@ -1103,10 +1101,6 @@ class CloudView(HtmlWindow):
 		
 	def get_selected_words(self):
 		bounds = self.htmlview.get_buffer().get_selection_bounds()
-		cursor = self.htmlview.get_buffer().get_insert()
-		cursor = self.htmlview.get_buffer().get_iter_at_mark(cursor)
-		#start = self.htmlview.get_buffer().get_start_iter()
-		print cursor, cursor.is_start(), cursor.inside_word()
 		
 		if not bounds:
 			return []
@@ -1255,13 +1249,15 @@ class CategoriesTreeView(object):
 		
 		self.cell.set_property('editable', True)
 		self.cell.connect('edited', self.edited_cb, self.treeStore)
+		self.cell.connect('editing-started', self.on_editing_started)
 
 		'add the cell to the tvcolumn and allow it to expand'
 		self.tvcolumn.pack_start(self.cell, True)
 
 		''' set the cell "text" attribute to column 0 - retrieve text
 			from that column in treeStore'''
-		self.tvcolumn.add_attribute(self.cell, 'text', 0)
+		#self.tvcolumn.add_attribute(self.cell, 'text', 0)
+		self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 
 		'make it searchable'
 		self.treeView.set_search_column(0)
@@ -1271,7 +1267,6 @@ class CategoriesTreeView(object):
 		
 		# Enable a context menu
 		self.context_menu = self._get_context_menu()
-		self.treeView.connect('button-press-event', self.on_button_press_event)
 
 		
 	def node_on_top_level(self, iter):
@@ -1281,8 +1276,28 @@ class CategoriesTreeView(object):
 		return self.treeStore.iter_depth(iter) == 0
 		
 		
+	def on_editing_started(self, cell, editable, path):		
+		# Let the renderer use text not markup temporarily
+		self.tvcolumn.clear_attributes(self.cell)
+		self.tvcolumn.add_attribute(self.cell, 'text', 0)
+		
+		# Fetch the markup
+		pango_markup = self.treeStore[path][0]
+		
+		# Reset the renderer to use markup
+		self.tvcolumn.clear_attributes(self.cell)
+		self.tvcolumn.add_attribute(self.cell, 'markup', 0)
+		
+		# We want to show txt2tags markup and not pango markup
+		editable.set_text(markup.convert_from_pango(pango_markup))
+		
+		
 	def edited_cb(self, cell, path, new_text, user_data):
-		'''Called when text in a cell is changed'''
+		'''
+		Called when text in a cell is changed
+		
+		new_text is txt2tags markup
+		'''
 		if new_text == 'text' and self.node_on_top_level(path):
 			self.statusbar.showText('"text" is a reserved keyword', error=True)
 			return
@@ -1291,7 +1306,8 @@ class CategoriesTreeView(object):
 			return
 		
 		liststore = user_data
-		liststore[path][0] = new_text
+		pango_markup = markup.convert_to_pango(new_text)
+		liststore[path][0] = pango_markup
 		
 		# Category name changed
 		if self.node_on_top_level(path):
@@ -1334,7 +1350,9 @@ class CategoriesTreeView(object):
 	def add_element(self, parent, elementContent):
 		'''Recursive Method for adding the content'''
 		for key, value in elementContent.iteritems():
-			newChild = self.treeStore.append(parent, [key])
+			if key is not None:
+				key_pango = markup.convert_to_pango(key)
+			newChild = self.treeStore.append(parent, [key_pango])
 			if not value == None:
 				self.add_element(newChild, value)
 			
@@ -1347,13 +1365,23 @@ class CategoriesTreeView(object):
 				
 				
 	def get_day_content(self):
-		if not self.empty():
-			return self.get_element_content(None)
-		else:
+		if self.empty():
 			return {}
+		
+		# Let the renderer use text not markup temporarily
+		self.tvcolumn.clear_attributes(self.cell)
+		self.tvcolumn.add_attribute(self.cell, 'text', 0)
+		
+		content = self._get_element_content(None)
+	
+		# Reset the renderer to use markup
+		self.tvcolumn.clear_attributes(self.cell)
+		self.tvcolumn.add_attribute(self.cell, 'markup', 0)
+		
+		return content
 		   
 		   
-	def get_element_content(self, element):
+	def _get_element_content(self, element):
 		model = self.treeStore
 		if self.treeStore.iter_n_children(element) == 0:
 			return None
@@ -1362,8 +1390,12 @@ class CategoriesTreeView(object):
 				
 			for i in range(model.iter_n_children(element)):
 				child = model.iter_nth_child(element, i)
-				text = self.get_iter_value(child).decode('utf-8')
-				content[text] = self.get_element_content(child)
+				pango_markup = self.get_iter_value(child).decode('utf-8')
+				
+				# We want to have txt2tags markup and not pango markup
+				text = markup.convert_from_pango(pango_markup)
+				
+				content[text] = self._get_element_content(child)
 			
 			return content
 		
@@ -1382,7 +1414,6 @@ class CategoriesTreeView(object):
 		
 		
 	def _get_category_iter(self, categoryName):
-		#print 'Number of Categories:', self.treeStore.iter_n_children(None)
 		for iterIndex in range(self.treeStore.iter_n_children(None)):
 			currentCategoryIter = self.treeStore.iter_nth_child(None, iterIndex)
 			currentCategoryName = self.get_iter_value(currentCategoryIter)

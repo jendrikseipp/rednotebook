@@ -62,7 +62,7 @@ O Spell Checking (unify markup and html textviews first) (3 requests)
 O Password protection
 O Make RedNotebook portable
     O User dir configurable
-O Hide cloud words with right-click
+X Hide cloud words with right-click
 X Statistics: Show number of different words
 O Live preview of category entries
 

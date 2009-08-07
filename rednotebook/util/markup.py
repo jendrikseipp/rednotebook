@@ -291,6 +291,8 @@ def convert_to_pango(txt, headers=None, options=None):
 	# remove unwanted paragraphs
 	result = result.replace('<p>', '').replace('</p>', '')
 	
+	logging.debug('Converted "%s" text to "%s" txt2tags markup' % (original_txt, result))
+	
 	try:
 		attr_list, plain, accel = pango.parse_markup(result)
 		
@@ -300,4 +302,20 @@ def convert_to_pango(txt, headers=None, options=None):
 		# There are unknown tags in the markup, return the original text
 		logging.debug('There are unknown tags in the markup: %s' % result)
 		return original_txt
+	
+	
+def convert_from_pango(pango_markup):
+	original_txt = pango_markup
+	replacements = dict((('<b>', '**'), ('</b>', '**'),
+						('<i>', '//'), ('</i>', '//'),
+						('<s>', '--'), ('</s>', '--'),
+						('<u>', '__'), ('</u>', '__'),
+						('&amp;', '&'), ('&lt;', '<'), ('&gt;', '>'),
+						))
+	for orig, repl in replacements.items():
+		pango_markup = pango_markup.replace(orig, repl)
+		
+	logging.debug('Converted "%s" pango to "%s" txt2tags' % \
+				(original_txt, pango_markup))
+	return pango_markup
 				
