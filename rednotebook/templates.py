@@ -33,6 +33,8 @@ class TemplateManager(object):
 	def __init__(self, mainWindow):
 		self.mainWindow = mainWindow
 		
+		self.dirs = mainWindow.redNotebook.dirs
+		
 		self.merge_id = None
 		self.actiongroup = None
 		
@@ -111,7 +113,7 @@ Additionally you can have **titles** and **horizontal lines**:
 			title = entry.get_text()
 			if not title.lower().endswith('.txt'):
 				title += '.txt'
-			filename = os.path.join(filesystem.templateDir, title)
+			filename = os.path.join(self.dirs.templateDir, title)
 			
 			filesystem.makeFile(filename, example_text)
 			
@@ -119,7 +121,11 @@ Additionally you can have **titles** and **horizontal lines**:
 			
 	
 	def on_open_template_dir(self):
-		filesystem.open_url(filesystem.templateDir)
+		filesystem.open_url(self.dirs.templateDir)
+		
+	
+	def getTemplateFile(self, basename):
+		return os.path.join(self.dirs.templateDir, str(basename) + '.txt')
 		
 		
 	def get_text(self, title):
@@ -144,7 +150,7 @@ Additionally you can have **titles** and **horizontal lines**:
 		
 	
 	def get_available_template_files(self):
-		dir = filesystem.templateDir
+		dir = self.dirs.templateDir
 		files = os.listdir(dir)
 		files = map(lambda basename: os.path.join(dir, basename), files)
 		
@@ -154,12 +160,6 @@ Additionally you can have **titles** and **horizontal lines**:
 		# No tempfiles
 		files = filter(lambda file: not file.endswith('~'), files)
 		
-		#textfiles = []
-		#for file in files:
-		#	type, encoding = mimetypes.guess_type(file)
-		#	if type == 'text/plain':
-		#		textfiles.append(file)
-		#print 'TPL Files', files
 		return files
 	
 	
@@ -279,7 +279,7 @@ Additionally you can have **titles** and **horizontal lines**:
 	
 	def make_empty_template_files(self):
 		def getInstruction(dayNumber):
-			file = filesystem.getTemplateFile(dayNumber)
+			file = self.getTemplateFile(dayNumber)
 			text = '''\
 The template for this weekday has not been edited. 
 If you want to have some text that you can add to that day every week, \
@@ -291,7 +291,7 @@ To do so, you can switch to "Preview" and click on the link to that file.
 					
 		fileContentPairs = []
 		for dayNumber in range(1, 8):
-			fileContentPairs.append((filesystem.getTemplateFile(dayNumber), getInstruction(dayNumber)))
+			fileContentPairs.append((self.getTemplateFile(dayNumber), getInstruction(dayNumber)))
 		
 		template_help_text = '''\
 Besides templates for weekdays you can also have arbitrary named templates. 
@@ -309,9 +309,9 @@ You can switch to "Preview" mode and click on the link to get to the \
 If you come up with templates that could be useful for other people as well, \
 I would appreciate if you sent me your template file, so others can benefit \
 from it.
-		''' % (filesystem.templateDir, filesystem.templateDir)
+		''' % (self.dirs.templateDir, self.dirs.templateDir)
 		
-		template_help_filename = filesystem.getTemplateFile('Help')
+		template_help_filename = self.getTemplateFile('Help')
 		fileContentPairs.append((template_help_filename, template_help_text))
 		
 		# Only add the example templates the first time
@@ -355,7 +355,7 @@ Additional items: Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Xxxxxxxxxxxxxxxxxxxxx
  - Xxxxxxxxxx Xxxxxxxxxxxx
 		'''
 		
-		template_meeting_filename = filesystem.getTemplateFile('Meeting')
+		template_meeting_filename = self.getTemplateFile('Meeting')
 		fileContentPairs.append((template_meeting_filename, template_meeting_text))
 		
 		
@@ -373,7 +373,7 @@ First we went to xxxxx then we got to yyyyy ...
 **Pictures:** [Image folder ""/path/to/the/images/""]
 		'''
 		
-		template_journey_filename = filesystem.getTemplateFile('Journey')
+		template_journey_filename = self.getTemplateFile('Journey')
 		fileContentPairs.append((template_journey_filename, template_journey_text))
 		
 		

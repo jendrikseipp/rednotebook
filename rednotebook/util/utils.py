@@ -228,14 +228,13 @@ def check_new_version(mainFrame, currentVersion, startup=False):
 		
 		
 def write_file(content, filename):
-	filename = os.path.join(filesystem.tempDir, filename)
+	assert os.path.isabs(filename)
 	with open(filename, 'w') as file:
 		file.write(content)
 		
 
-def show_html_in_browser(html, filename='tmp.html'):
+def show_html_in_browser(html, filename):
 	write_file(html, filename)
-	filename = os.path.join(filesystem.tempDir, filename)
 	
 	html_file = os.path.abspath(filename)
 	html_file = 'file://' + html_file
@@ -266,4 +265,5 @@ class StreamDuplicator(object):
 	#	for stream in self.streams():
 	#		self.stream.close()
 	
-	
+
+

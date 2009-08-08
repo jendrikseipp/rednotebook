@@ -56,19 +56,19 @@ guiDir = os.path.join(appDir, 'gui')
 
 userHomeDir = os.path.expanduser('~')
 
-redNotebookUserDir = os.path.join(userHomeDir, '.rednotebook')
-templateDir = os.path.join(redNotebookUserDir, 'templates')
+#redNotebookUserDir = os.path.join(userHomeDir, '.rednotebook')
+#templateDir = os.path.join(redNotebookUserDir, 'templates')
 
-defaultDataDir = os.path.join(redNotebookUserDir, 'data')
-dataDir = defaultDataDir
+#defaultDataDir = os.path.join(redNotebookUserDir, 'data')
+#dataDir = defaultDataDir
 
 fileNameExtension = '.txt'
 
-configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
-logFile = os.path.join(redNotebookUserDir, 'rednotebook.log')
+#configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
+#logFile = os.path.join(redNotebookUserDir, 'rednotebook.log')
 
-last_pic_dir = userHomeDir
-last_file_dir = userHomeDir
+#last_pic_dir = userHomeDir
+#last_file_dir = userHomeDir
 
 
 class Filenames(dict):
@@ -81,6 +81,68 @@ class Filenames(dict):
 			if key.lower().endswith('dir') and type(value) is str:
 				self[key] = value
 				setattr(self, key, value)
+		
+		self.portable = self._portable()
+		
+		if self.portable:
+			self.redNotebookUserDir = os.path.join(self.appDir, 'user')
+		else:
+			self.redNotebookUserDir = os.path.join(self.userHomeDir, '.rednotebook')
+		
+		self.dataDir = self.defaultDataDir
+			
+		# Assert that all dirs and files are in place so that logging can take start
+		makeDirectories([self.redNotebookUserDir, self.dataDir, self.templateDir,
+						self.tempDir])
+		makeFiles([(self.configFile, ''), (self.logFile, '')])
+		
+		self.last_pic_dir = self.userHomeDir
+		self.last_file_dir = self.userHomeDir
+			
+			
+		
+	def _portable(self):
+		'''determine whether we are running standalone'''
+		
+		default_config_file = os.path.join(self.filesDir, 'default.cfg')
+		
+		with open(default_config_file, 'r') as file:
+			lines = file.readlines()
+			
+		lines = filter(lambda line: line.strip().startswith('portable'), lines)
+		
+		if len(lines) < 1:
+			return False
+		
+		pair = lines[0].split('=')
+		
+		if len(pair) < 1:
+			return False
+		
+		key, portable_value = pair
+		
+		try:
+			portable_value = portable_value.strip()
+			return bool(int(portable_value))
+		except ValueError:
+			return False
+		
+		
+		
+				
+	def __getattribute__(self, attr):
+		user_paths = dict((('templateDir', 'templates'),
+						('tempDir', 'tmp'),
+						('defaultDataDir', 'data'),
+						('configFile', 'configuration.cfg'),
+						('logFile', 'rednotebook.log'),
+						))
+							
+		if attr in user_paths:
+			return os.path.join(self.redNotebookUserDir, user_paths.get(attr))
+		
+		return dict.__getattribute__(self, attr)
+	
 
 
 def makeDirectory(dir):
@@ -117,9 +179,6 @@ def writeArchive(archiveFileName, files, baseDir='', arcBaseDir=''):
 	for file in files:
 		archive.write(file, os.path.join(arcBaseDir, file[len(baseDir):]))
 	archive.close()
-	
-def getTemplateFile(basename):
-	return os.path.join(templateDir, str(basename) + fileNameExtension)
 
 def get_icons():
 	iconFiles = []

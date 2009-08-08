@@ -38,56 +38,50 @@ else:
 
 ## Enable logging
 import logging
-loggingLevels = {'debug': logging.DEBUG,
-				'info': logging.INFO,
-				'warning': logging.WARNING,
-				'error': logging.ERROR,
-				'critical': logging.CRITICAL}
 
-
-# Assert that all dirs and files are in place so that logging can take start
-filesystem.makeDirectories([filesystem.redNotebookUserDir, filesystem.dataDir, \
-							filesystem.templateDir])
-filesystem.makeFiles([(filesystem.configFile, ''),
-						(filesystem.logFile, '')])
-
-
-# File logging
-if sys.platform == 'win32' and hasattr(sys, "frozen"):
-	utils.redirect_output_to_file()
+def setup_logging(log_file):
+	loggingLevels = {'debug': logging.DEBUG,
+					'info': logging.INFO,
+					'warning': logging.WARNING,
+					'error': logging.ERROR,
+					'critical': logging.CRITICAL}
 	
-
+	# File logging
+	if sys.platform == 'win32' and hasattr(sys, "frozen"):
+		redirect_output_to_file()
+	
+	file_logging_stream = open(log_file, 'w')
+	
+	# We want to have the error messages in the logfile
+	sys.stderr = utils.StreamDuplicator(sys.__stderr__, [file_logging_stream])
+	
+	# Write a log containing every output to a log file
+	logging.basicConfig(level=logging.DEBUG,
+						format='%(asctime)s %(levelname)-8s %(message)s',
+						#filename=filesystem.logFile,
+						#filemode='w',
+						stream=file_logging_stream,#sys.stdout,
+						)
+	
+	level = logging.INFO
+	if len(sys.argv) > 1:
+		level = loggingLevels.get(sys.argv[1], level)
 		
-
-file_logging_stream = open(filesystem.logFile, 'w')
-
-# We want to have the error messages in the logfile
-sys.stderr = utils.StreamDuplicator(sys.__stderr__, [file_logging_stream])
-
-
-# Write a log containing every output to a log file
-logging.basicConfig(level=logging.DEBUG,
-					format='%(asctime)s %(levelname)-8s %(message)s',
-					#filename=filesystem.logFile,
-					#filemode='w',
-					stream=file_logging_stream,#sys.stdout,
-					)
-
-level = logging.INFO
-if len(sys.argv) > 1:
-	level = loggingLevels.get(sys.argv[1], level)
+	logging.debug('sys.stdout logging level: %s' % level)
+	logging.info('Writing log to file "%s"' % log_file)
 	
-logging.debug('sys.stdout logging level: %s' % level)
+	# define a Handler which writes INFO messages or higher to the sys.stdout
+	console = logging.StreamHandler(sys.stdout)
+	console.setLevel(level)
+	# set a format which is simpler for console use
+	formatter = logging.Formatter('%(levelname)-8s %(message)s')
+	# tell the handler to use this format
+	console.setFormatter(formatter)
+	# add the handler to the root logger
+	logging.getLogger('').addHandler(console)
 
-# define a Handler which writes INFO messages or higher to the sys.stdout
-console = logging.StreamHandler(sys.stdout)
-console.setLevel(level)
-# set a format which is simpler for console use
-formatter = logging.Formatter('%(levelname)-8s %(message)s')
-# tell the handler to use this format
-console.setFormatter(formatter)
-# add the handler to the root logger
-logging.getLogger('').addHandler(console)
+dirs = filesystem.Filenames()
+setup_logging(dirs.logFile)
 
 
 try:
@@ -147,6 +141,11 @@ from rednotebook.util.statistics import Statistics
 class RedNotebook:
 	
 	def __init__(self):
+		self.dirs = filesystem.Filenames()
+		
+		self.config = config.Config(self.dirs)
+		logging.info('Running in portable mode: %s' % self.config.read('portable', 0))
+		
 		self.testing = False
 		if 'debug' in sys.argv:
 			self.testing = True
@@ -159,7 +158,7 @@ class RedNotebook:
 		# The dir name is the title
 		self.title = ''
 		
-		self.dirs = filesystem.Filenames()
+		
 		
 		# show instructions at first start or if testing
 		self.firstTimeExecution = len(os.listdir(self.dirs.dataDir)) == 0
@@ -167,8 +166,6 @@ class RedNotebook:
 		
 		logging.info('RedNotebook version: %s' % info.version)
 		logging.info(filesystem.get_platform_info())
-		
-		self.config = config.Config()
 		
 		utils.set_environment_variables(self.config)
 		
@@ -181,11 +178,11 @@ class RedNotebook:
 		self.dirs.dataDir = self.config.read('dataDir', self.dirs.dataDir)
 		
 		if self.testing:
-			self.dirs.dataDir = os.path.join(filesystem.redNotebookUserDir, "data-test/")
+			self.dirs.dataDir = os.path.join(self.dirs.redNotebookUserDir, "data-test/")
 			filesystem.makeDirectory(self.dirs.dataDir)
 		# HACK: Only load test dir with active debug option
-		elif self.dirs.dataDir == os.path.join(filesystem.redNotebookUserDir, "data-test/"):
-			self.dirs.dataDir = filesystem.defaultDataDir
+		elif self.dirs.dataDir == os.path.join(self.dirs.redNotebookUserDir, "data-test/"):
+			self.dirs.dataDir = self.dirs.defaultDataDir
 			
 		self.open_journal(self.dirs.dataDir)
 		
@@ -244,7 +241,7 @@ class RedNotebook:
 	def saveToDisk(self, exitImminent=False, changing_journal=False):
 		self.saveOldDay()
 		
-		filesystem.makeDirectories([filesystem.redNotebookUserDir, self.dirs.dataDir,])
+		filesystem.makeDirectories([self.dirs.redNotebookUserDir, self.dirs.dataDir,])
 		
 		for yearAndMonth, month in self.months.items():
 			if not month.empty and month.visited:
@@ -799,7 +796,7 @@ def main():
 		#logging.debug('Closing logfile')
 		#file_logging_stream.close()
 	except KeyboardInterrupt:
-		#print 'Interrupt'
+		# 'Interrupt'
 		#redNotebook.saveToDisk()
 		sys.exit()
 		

@@ -22,9 +22,6 @@ from __future__ import with_statement
 import os
 import logging
 
-from rednotebook.util import filesystem
-from rednotebook.util import utils
-
 
 
 def delete_comment(line):
@@ -41,15 +38,17 @@ def delete_comment(line):
 
 class Config(dict):
 	
-	def __init__(self):
+	def __init__(self, dirs):
 		dict.__init__(self)
+		
+		self.dirs = dirs
 		
 		self.obsoleteKeys = ['useGTKMozembed', 'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
 		
-		default_config_file = os.path.join(filesystem.filesDir, 'default.cfg')
+		default_config_file = os.path.join(dirs.filesDir, 'default.cfg')
 		default_config = self._read_file(default_config_file)
 		
-		user_config = self._read_file(filesystem.configFile)
+		user_config = self._read_file(dirs.configFile)
 		
 		#Add the defaults
 		if default_config:
@@ -162,7 +161,7 @@ class Config(dict):
 						
 	def saveToDisk(self):
 		try:
-			with open(filesystem.configFile, 'w') as configFile:
+			with open(self.dirs.configFile, 'w') as configFile:
 				for key, value in self.iteritems():
 					configFile.write('%s=%s\n' % (key, value))
 				logging.info('Configuration has been saved')

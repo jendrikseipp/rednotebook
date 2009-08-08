@@ -645,9 +645,10 @@ class MainWindow(object):
 							parent_menu_item=None, func=None, button=0, activate_time=0, data=None)
 		
 	def on_insert_pic_menu_item_activate(self, widget):
+		dirs = self.redNotebook.dirs
 		xml = gtk.glade.XML(self.gladefile, 'picture_chooser')
 		picture_chooser = xml.get_widget('picture_chooser')
-		picture_chooser.set_current_folder(filesystem.last_pic_dir)
+		picture_chooser.set_current_folder(dirs.last_pic_dir)
 		
 		filter = gtk.FileFilter()
 		filter.set_name("Images")
@@ -664,20 +665,21 @@ class MainWindow(object):
 		picture_chooser.hide()
 		
 		if response == gtk.RESPONSE_OK:
-			filesystem.last_pic_dir = picture_chooser.get_current_folder()
+			dirs.last_pic_dir = picture_chooser.get_current_folder()
 			base, ext = os.path.splitext(picture_chooser.get_filename())
 			self.dayTextField.insert('[""' + base + '""' + ext + ']')
 			
 	def on_insert_file_menu_item_activate(self, widget):
+		dirs = self.redNotebook.dirs
 		xml = gtk.glade.XML(self.gladefile, 'file_chooser')
 		file_chooser = xml.get_widget('file_chooser')
-		file_chooser.set_current_folder(filesystem.last_file_dir)
+		file_chooser.set_current_folder(dirs.last_file_dir)
 
 		response = file_chooser.run()
 		file_chooser.hide()
 		
 		if response == gtk.RESPONSE_OK:
-			filesystem.last_file_dir = file_chooser.get_current_folder()
+			dirs.last_file_dir = file_chooser.get_current_folder()
 			filename = file_chooser.get_filename()
 			filename = os.path.normpath(filename)
 			filename = 'file://' + filename
@@ -755,11 +757,12 @@ class MainWindow(object):
 		self.redNotebook.addInstructionContent()
 		
 	def on_helpMenuItem_activate(self, widget):
-		utils.write_file(info.helpText, './source.txt')
+		temp_dir = self.redNotebook.dirs.tempDir
+		utils.write_file(info.helpText, os.path.join(temp_dir, 'source.txt'))
 		headers = ['RedNotebook Documentation', info.version, '']
 		options = {'toc': 1,}
 		html = markup.convert(info.helpText, 'xhtml', headers, options)
-		utils.show_html_in_browser(html)
+		utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
 		
 	def on_checkVersionMenuItem_activate(self, widget):
 		utils.check_new_version(self, info.version)
