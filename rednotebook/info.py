@@ -76,11 +76,9 @@ On the right there is space for extra content, things that can easily be sorted 
 For example you could add the category "Ideas" and then today's ideas to it.
 
 === Templates ===
-RedNotebook supports a template system: In the directory "%s" you find several \
-text files. The files "1.txt", "2.txt" etc. correspond to the days of the week. 
-Additionally you can have arbitrarily named templates. 
-Template files can be edited with your favourite text editor \
-and inserted by selecting them in the "Insert Template" drop-down menu.
+RedNotebook supports a template system. Click on the arrow next to the \
+"Template" button to see the available options. You can have one template for every day \
+of the week and unlimited arbitrarily named templates.
 
 === Tags ===
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
@@ -101,8 +99,10 @@ In the same menu you also find an "Export"-Button. \
 Click on it and export your diary to Plain Text, HTML or Latex.
 
 === Help ===
-Now you can erase this help text and enter e.g. what you have done today. To read the instructions again, \
-go to "Help -> Help" in the menu bar.
+Now you can erase this help text and enter e.g. what you have done today. \
+To restore these instructions click on "Help" -> "Restore example content". \
+The examples will be added after the last edited day in the journal.
+Alternatively you can find some documentation under "Help" -> "Help".
 
 If you encounter any errors, please drop me a note so I can fix them.
 
@@ -252,11 +252,9 @@ appropriate option in the "Insert" pull-down menu above the main text field. The
 be inserted at the current cursor position.
 
 == Templates ==
-RedNotebook supports a template system: In the directory "%s" you find several \
-text files. The files "1.txt", "2.txt" etc. correspond to the days of the week. 
-Additionally you can have arbitrarily named templates. 
-Template files can be edited with your favourite text editor \
-and inserted by selecting them in the "Insert Template" drop-down menu.
+RedNotebook supports a template system. Click on the arrow next to the \
+"Template" button to see the available options. You can have one template for every day \
+of the week and unlimited arbitrarily named templates.
 
 == Tags ==
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \

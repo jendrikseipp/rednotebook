@@ -60,8 +60,8 @@ O Spell Checking (unify markup and html textviews first) (3 requests)
 
 0.8.4
 O Password protection
-O Make RedNotebook portable
-    O User dir configurable
+X Make RedNotebook portable
+    X User dir configurable
 X Hide cloud words with right-click
 X Statistics: Show number of different words
 X Live preview of category entries

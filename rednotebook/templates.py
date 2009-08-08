@@ -184,8 +184,27 @@ Additionally you can have **titles** and **horizontal lines**:
 		menu_xml = '''\
 		<ui>
 		<popup action="TemplateMenu">
+		'''
+		
+		insert_menu_xml = '''\
+			<menu action="InsertMenu">
+				<menuitem action="Weekday"/>
+				<separator name="sep4"/>
+		'''
+		for title in sorted_titles:
+			if title not in map(str, range(1,8)):
+				insert_menu_xml += '''\
+				<menuitem action="%s"/>
+				''' % title
+		insert_menu_xml += '''\
+			</menu>
+		'''
+		
+		menu_xml += insert_menu_xml
+		
+		menu_xml += '''\
+			<separator name="sep5"/>
 			<menuitem action="NewTemplate"/>
-			<menuitem action="OpenTemplateDirectory"/>
 		'''
 			
 		edit_menu_xml = '''\
@@ -193,30 +212,24 @@ Additionally you can have **titles** and **horizontal lines**:
 				<menuitem action="EditWeekday"/>
 				<separator name="sep3"/>
 		'''
-		
 		for title in sorted_titles:
 			if title not in map(str, range(1,8)):
 				edit_menu_xml += '''\
 				<menuitem action="Edit%s"/>
 				''' % title
-				
 		edit_menu_xml += '''\
 			</menu>
 		'''
+		
+		
 		menu_xml += edit_menu_xml
 		
-		menu_xml += '''\
-			<separator name="sep3"/>
-			<menuitem action="Weekday"/>
-		'''
 		
-		for title in sorted_titles:
-			if title not in map(str, range(1,8)):
-				menu_xml += '''\
-			<menuitem action="%s"/>
-				''' % title
 		
-		menu_xml += '''\
+		
+		
+		menu_xml +='''\
+			<menuitem action="OpenTemplateDirectory"/>
 		</popup>
 		</ui>'''
 			
@@ -244,6 +257,9 @@ Additionally you can have **titles** and **horizontal lines**:
 					lambda widget: self.on_insert(widget)))
 		
 		actions.append(('EditMenu', gtk.STOCK_EDIT, 'Edit Template', None, None, \
+					None))
+		
+		actions.append(('InsertMenu', gtk.STOCK_ADD, 'Insert Template', None, None, \
 					None))
 		
 		actions.append(('EditWeekday', gtk.STOCK_HOME, 'This Weekday', None, None, \
