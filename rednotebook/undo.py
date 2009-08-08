@@ -55,7 +55,7 @@ class UndoRedoManager(object):
 		
 		self.update_buttons()
 		
-	def undo(self):
+	def undo(self, *args):
 		if not self.can_undo():
 			logging.info('There is nothing to undo')
 			return
@@ -65,7 +65,7 @@ class UndoRedoManager(object):
 		
 		self.update_buttons()
 		
-	def redo(self):
+	def redo(self, *args):
 		if not self.can_redo():
 			logging.info('There is nothing to redo')
 			return
@@ -90,5 +90,10 @@ class UndoRedoManager(object):
 	def update_buttons(self):
 		self.undo_menu_item.set_sensitive(self.can_undo())
 		self.redo_menu_item.set_sensitive(self.can_redo())
+		
+	def clear(self):
+		del self.undo_stack[:]
+		del self.redo_stack[:]
+		self.update_buttons()
 	
 		

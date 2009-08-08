@@ -272,6 +272,9 @@ class RedNotebook:
 		
 		if self.months:
 			self.saveToDisk(changing_journal=True)
+			
+		# Password Protection
+		#password = self.config.read('password', '')
 		
 		logging.info('Opening journal at %s' % data_dir)
 		

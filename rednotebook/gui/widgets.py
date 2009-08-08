@@ -106,3 +106,38 @@ class CustomListView(gtk.TreeView):
 		'make it searchable'
 		self.set_search_column(1)
 		
+
+class EntryDialog(gtk.MessageDialog):
+	# base this on a message dialog
+	def __init__(self, title, value_name, subtitle=''):
+		gtk.MessageDialog.__init__(self, None,
+								gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+								gtk.MESSAGE_QUESTION,
+								gtk.BUTTONS_OK,
+								None)
+		self.set_markup(title)
+		
+		# create the text input field
+		self.entry = gtk.Entry()
+		
+		# allow the user to press enter to do ok
+		def responseToDialog(entry, response):
+			self.response(response)
+		self.entry.connect("activate", responseToDialog, gtk.RESPONSE_OK)
+		
+		# create a horizontal box to pack the entry and a label
+		hbox = gtk.HBox()
+		hbox.pack_start(gtk.Label(value_name), False, 5, 5)
+		hbox.pack_end(self.entry)
+		
+		if subtitle:
+			# some secondary text
+			self.format_secondary_markup(subtitle)
+		
+		# add it and show it
+		self.vbox.pack_end(hbox, True, True, 0)
+		self.show_all()
+		
+	def get_value(self):
+		return self.entry.get_text()
+		

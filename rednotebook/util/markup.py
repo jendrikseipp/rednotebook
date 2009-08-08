@@ -291,8 +291,8 @@ def convert_to_pango(txt, headers=None, options=None):
 	# remove unwanted paragraphs
 	result = result.replace('<p>', '').replace('</p>', '')
 	
-	logging.debug('Converted "%s" text to "%s" txt2tags markup' % (original_txt, result))
-	
+	logging.log(5, 'Converted "%s" text to "%s" txt2tags markup' % (original_txt, result))
+
 	try:
 		attr_list, plain, accel = pango.parse_markup(result)
 		
@@ -315,7 +315,7 @@ def convert_from_pango(pango_markup):
 	for orig, repl in replacements.items():
 		pango_markup = pango_markup.replace(orig, repl)
 		
-	logging.debug('Converted "%s" pango to "%s" txt2tags' % \
+	logging.log(5, 'Converted "%s" pango to "%s" txt2tags' % \
 				(original_txt, pango_markup))
 	return pango_markup
 				

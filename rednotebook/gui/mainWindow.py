@@ -126,8 +126,8 @@ class MainWindow(object):
 			'on_saveAsMenuItem_activate': self.on_saveAsMenuItem_activate,
 			
 			'on_edit_menu_activate': self.on_edit_menu_activate,
-			'on_undo_menuitem_activate': self.dayTextField.on_undo,
-			'on_redo_menuitem_activate': self.dayTextField.on_redo,
+			'on_undo_menuitem_activate': self.undo_redo_manager.undo,#dayTextField.on_undo,
+			'on_redo_menuitem_activate': self.undo_redo_manager.redo,#dayTextField.on_redo,
 			
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
@@ -218,7 +218,7 @@ class MainWindow(object):
 		
 		if self.preview_mode:
 			# Enter edit mode
-			self.dayTextField.set_text(self.day.text, clear_history=True)
+			self.dayTextField.set_text(self.day.text, undoing=True)
 			self.dayTextField.dayTextView.grab_focus()
 			
 			text_scrolledwindow.show()
@@ -779,8 +779,10 @@ class MainWindow(object):
 			html = markup.convert(day.text, 'xhtml')
 			self.html_editor.load_html(html)
 		# Why do we always have to set the text of the dayTextField?
-		self.dayTextField.set_text(day.text, clear_history=True)
+		self.dayTextField.set_text(day.text)
 		self.categoriesTreeView.set_day_content(day)
+		
+		self.undo_redo_manager.clear()
 		
 		self.day = day
 		
@@ -1229,6 +1231,7 @@ class CategoriesTreeView(object):
 		self.treeView = treeView
 		
 		self.mainWindow = mainWindow
+		self.undo_redo_manager = mainWindow.undo_redo_manager
 		
 		'Maintain a list of all entered categories. Initialized by rn.__init__()'
 		self.categories = None
@@ -1270,12 +1273,15 @@ class CategoriesTreeView(object):
 		
 		# Enable a context menu
 		self.context_menu = self._get_context_menu()
+		
+		self.treeView.connect('button-press-event', self.on_button_press_event)
 
 		
 	def node_on_top_level(self, iter):
 		if not type(iter) == gtk.TreeIter:
 			# iter is a path -> convert to iter
 			iter = self.treeStore.get_iter(iter)
+		assert self.treeStore.iter_is_valid(iter)
 		return self.treeStore.iter_depth(iter) == 0
 		
 		
@@ -1403,8 +1409,13 @@ class CategoriesTreeView(object):
 			return content
 		
 		
-	def empty(self):
-		return self.treeStore.iter_n_children(None) == 0
+	def empty(self, category_iter=None):
+		'''
+		Tests whether a category has children
+		
+		If no category is given, test whether there are any categories
+		'''
+		return self.treeStore.iter_n_children(category_iter) == 0
 		
 		
 	def clear(self):
@@ -1414,31 +1425,60 @@ class CategoriesTreeView(object):
 		
 	def get_iter_value(self, iter):
 		return self.treeStore.get_value(iter, 0)
+	
+	
+	def find_iter(self, category, entry):
+		logging.debug('Looking for iter: "%s", "%s"' % (category, entry))
+		category_iter = self._get_category_iter(category)
+		
+		if not category_iter:
+			# If the category was not found, return None
+			return None
+		
+		for iterIndex in range(self.treeStore.iter_n_children(category_iter)):
+			current_entry_iter = self.treeStore.iter_nth_child(category_iter, iterIndex)
+			current_entry = self.get_iter_value(current_entry_iter)
+			if str(current_entry) == str(entry):
+				return current_entry_iter
+		
+		# If the entry was not found, return None
+		logging.debug('Iter not found: "%s", "%s"' % (category, entry))
+		return None
+		
 		
 		
 	def _get_category_iter(self, categoryName):
 		for iterIndex in range(self.treeStore.iter_n_children(None)):
 			currentCategoryIter = self.treeStore.iter_nth_child(None, iterIndex)
 			currentCategoryName = self.get_iter_value(currentCategoryIter)
-			if currentCategoryName.lower() == categoryName.lower():
+			if str(currentCategoryName).lower() == str(categoryName).lower():
 				return currentCategoryIter
 		
-		'If the category was not found, return None'
+		# If the category was not found, return None
+		logging.debug('Category not found: "%s"' % categoryName)
 		return None
 	
 	
-	def addEntry(self, categoryName, text):
-		if categoryName not in self.categories and categoryName is not None:
-			self.categories.insert(0, categoryName)
+	def addEntry(self, category, entry, undoing=False):
+		if category not in self.categories and category is not None:
+			self.categories.insert(0, category)	
 			
-		categoryIter = self._get_category_iter(categoryName)
+		categoryIter = self._get_category_iter(category)
 		if categoryIter is None:
 			'If category does not exist add new category'
-			categoryIter = self.treeStore.append(None, [categoryName])
-			self.treeStore.append(categoryIter, [text])
+			categoryIter = self.treeStore.append(None, [category])
+			entry_node = self.treeStore.append(categoryIter, [entry])
 		else:
 			'If category exists add entry to existing category'
-			self.treeStore.append(categoryIter, [text])
+			entry_node = self.treeStore.append(categoryIter, [entry])
+			
+		if not undoing:
+			undo_func = lambda: self.delete_node(self.find_iter(category, entry), undoing=True)
+			redo_func = lambda: self.addEntry(category, entry, undoing=True)
+			action = undo.Action(undo_func, redo_func, 'categories_tree_view')
+			self.undo_redo_manager.add_action(action)
+		
+		self.treeView.expand_all()
 			
 	
 	def get_selected_node(self):
@@ -1448,11 +1488,72 @@ class CategoriesTreeView(object):
 		treeSelection = self.treeView.get_selection()
 		model, selectedIter = treeSelection.get_selected()
 		return selectedIter
+	
+	
+	def delete_node(self, iter, undoing=False):
+		if not iter:
+			# The user has changed the text of the node or deleted it
+			return
+		
+		# Save for undoing ------------------------------------
+		
+		# An entry is deleted
+		# We want to delete empty categories too
+		if not self.node_on_top_level(iter):
+			deleting_entry = True
+			category_iter = self.treeStore.iter_parent(iter)
+			category = self.get_iter_value(category_iter)
+			entries = [self.get_iter_value(iter)]
+		
+		# A category is deleted
+		else:
+			deleting_entry = False
+			category_iter = iter
+			category = self.get_iter_value(category_iter)
+			entries = self._get_element_content(category_iter).keys()
+			
+			
+		# Delete ---------------------------------------------
+			
+		self.treeStore.remove(iter)
+		
+		# Delete empty category
+		if deleting_entry and self.empty(category_iter):
+			self.treeStore.remove(category_iter)
+		
+		# ----------------------------------------------------
+			
+			
+		
+		if not undoing:
+				
+			def undo_func():
+				for entry in entries:
+					self.addEntry(category, entry, undoing=True)
+					
+			def redo_func():
+				for entry in entries:
+					delete_iter = self.find_iter(category, entry)
+					self.delete_node(delete_iter, undoing=True)
+				
+			action = undo.Action(undo_func, redo_func, 'categories_tree_view')
+			self.undo_redo_manager.add_action(action)
+		
+		# Update cloud
+		self.mainWindow.cloud.update()
 		
 		
 	def delete_selected_node(self):
+		'''
+		This method used to show a warning dialog. This has become obsolete
+		with the addition of undo functionality for the categories
+		'''
 		selectedIter = self.get_selected_node()
 		if selectedIter:
+			self.delete_node(selectedIter)
+			return
+		
+		
 			message = 'Do you really want to delete this node?'
 			sortOptimalDialog = gtk.MessageDialog(parent=self.mainWindow.mainFrame, \
 									flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_QUESTION, \
@@ -1461,10 +1562,9 @@ class CategoriesTreeView(object):
 			sortOptimalDialog.hide()
 			
 			if response == gtk.RESPONSE_YES:
-				self.treeStore.remove(selectedIter)
+				self.delete_node(selectedIter)
 				
-				# Update cloud
-				self.mainWindow.cloud.update()
+				
 				
 				
 	def on_button_press_event(self, widget, event):
@@ -1585,21 +1685,25 @@ class DayTextField(object):
 		# changed
 		self.force_adding_undo_point = False
 		
-	def set_text(self, text, clear_history=False):
-		self.force_adding_undo_point = True
 		
-		self.dayTextBuffer.set_text(text)
+	def set_text(self, text, undoing=False):
+		self.insert(text, overwrite=True, undoing=undoing)
 		
-		if clear_history:
-			self.clear_history()
 		
 	def get_text(self):
 		iterStart = self.dayTextBuffer.get_start_iter()
 		iterEnd = self.dayTextBuffer.get_end_iter()
 		return self.dayTextBuffer.get_text(iterStart, iterEnd).decode('utf-8')
 	
-	def insert(self, text, iter=None):
+	
+	def insert(self, text, iter=None, overwrite=False, undoing=False):
 		self.force_adding_undo_point = True
+		
+		self.dayTextBuffer.handler_block(self.changed_connection)
+		
+		if overwrite:
+			self.dayTextBuffer.set_text('')
+			iter = self.dayTextBuffer.get_start_iter()
 		
 		if iter is None:
 			self.dayTextBuffer.insert_at_cursor(text)
@@ -1607,12 +1711,17 @@ class DayTextField(object):
 			if type(iter) == gtk.TextMark:
 				iter = self.dayTextBuffer.get_iter_at_mark(iter)
 			self.dayTextBuffer.insert(iter, text)
+			
+		self.dayTextBuffer.handler_unblock(self.changed_connection)
+		
+		self.on_text_change(self.dayTextBuffer, undoing=undoing)
+		
 	
 	def insert_template(self, template):
+		logging.debug('Inserting template')
 		currentText = self.get_text()
 		try:
-			self.set_text(template.encode('utf-8') + '\n' + \
-						currentText.encode('utf-8'))
+			self.insert(template.encode('utf-8') + '\n', self.dayTextBuffer.get_start_iter())
 		except UnicodeDecodeError, err:
 			logging.error('Template file contains unreadable content. Is it really just ' \
 			'a text file?')
@@ -1714,35 +1823,33 @@ class DayTextField(object):
 	def hide(self):
 		self.dayTextView.hide()
 	
-	def clear_history(self):
-		self.undo_redo_manager.delete_actions('day_text_field')
-	
-	def on_text_change(self, textbuffer):
+	def on_text_change(self, textbuffer, undoing=False):
+		# Do not record changes while undoing or redoing
+		if undoing:
+			self.old_text = self.get_text()
+			return
+		
 		new_text = self.get_text()
-		old_text = self.old_text[:]
+		old_text = self.old_text[:]		
 		
 		#Determine whether to add a save point
 		much_text_changed = abs(len(new_text) - len(old_text)) >= 5
 		
 		if much_text_changed or self.force_adding_undo_point:
 			
-			undo_func = lambda: self.set_text(old_text)
-			redo_func = lambda: self.set_text(new_text)
+			def undo_func():
+				self.set_text(old_text, undoing=True)
+				
+			def redo_func():
+				self.set_text(new_text, undoing=True)
+				
 			action = undo.Action(undo_func, redo_func, 'day_text_field')
 			self.undo_redo_manager.add_action(action)
 		
 			self.old_text = new_text
 			self.force_adding_undo_point = False
 		
-	def on_undo(self, widget):
-		self.dayTextBuffer.handler_block(self.changed_connection)
-		self.undo_redo_manager.undo()
-		self.dayTextBuffer.handler_unblock(self.changed_connection)
-		
-	def on_redo(self, widget):
-		self.dayTextBuffer.handler_block(self.changed_connection)
-		self.undo_redo_manager.redo()
-		self.dayTextBuffer.handler_unblock(self.changed_connection)
+	
 		
 		
 class Statusbar(object):

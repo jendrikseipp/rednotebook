@@ -10,7 +10,6 @@ implementation if you tell me that you'd like its addition ;)
 
 O i18n
 O Better comment code
-O Undu and Redo functionality extended for Categories (use function pointers for restoring things)
 O Copy/Paste category entries
 O Switch from libglade to GtkBuilder
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
@@ -23,7 +22,6 @@ O way of embedding a formula/tag/etc that I can put in the template to automatic
 O Hyperlinks in Categories? -> Already implemented, add documentation
 O Encryption XOR Password
 O Allow dragging of files and pictures into RedNotebook
-O remove search for categories and tags, as clouds already do that?
 O Allow inserting directories
 O Allow opening pictures by double-clicking them
 O provide TrueCrypt encryption HowTo for Linux
@@ -57,14 +55,16 @@ O Task bar icon
 
 0.8.5
 O Spell Checking (unify markup and html textviews first) (3 requests)
+O Password protection
 
 0.8.4
-O Password protection
+X Undu and Redo for Categories (Hit Ctrl-Z for restoring a deleted category entry)
 X Make RedNotebook portable
     X User dir configurable
 X Hide cloud words with right-click
 X Statistics: Show number of different words
 X Live preview of category entries
+X Fix undo and redo
 
 
 
@@ -84,4 +84,5 @@ X Live preview of category entries
 - dataDir Lock (for multiple TRN instances) (unneeded)
 - make date format configurable for exports (probably no one needs this as i18n already exists)
 - Tags in text entries (e.g. @film:Batman) (KISS)
+- remove search for categories and tags, as clouds already do that (Unituitive and not trivial to remove)
 
