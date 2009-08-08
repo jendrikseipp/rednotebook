@@ -1377,15 +1377,7 @@ class CategoriesTreeView(object):
 		if self.empty():
 			return {}
 		
-		# Let the renderer use text not markup temporarily
-		self.tvcolumn.clear_attributes(self.cell)
-		self.tvcolumn.add_attribute(self.cell, 'text', 0)
-		
 		content = self._get_element_content(None)
-	
-		# Reset the renderer to use markup
-		self.tvcolumn.clear_attributes(self.cell)
-		self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 		
 		return content
 		   
@@ -1399,12 +1391,8 @@ class CategoriesTreeView(object):
 				
 			for i in range(model.iter_n_children(element)):
 				child = model.iter_nth_child(element, i)
-				pango_markup = self.get_iter_value(child).decode('utf-8')
-				
-				# We want to have txt2tags markup and not pango markup
-				text = markup.convert_from_pango(pango_markup)
-				
-				content[text] = self._get_element_content(child)
+				txt2tags_markup = self.get_iter_value(child)				
+				content[txt2tags_markup] = self._get_element_content(child)
 			
 			return content
 		
@@ -1424,7 +1412,19 @@ class CategoriesTreeView(object):
 		
 		
 	def get_iter_value(self, iter):
-		return self.treeStore.get_value(iter, 0)
+		# Let the renderer use text not markup temporarily
+		self.tvcolumn.clear_attributes(self.cell)
+		self.tvcolumn.add_attribute(self.cell, 'text', 0)
+		
+		pango_markup = self.treeStore.get_value(iter, 0).decode('utf-8')
+		
+		# Reset the renderer to use markup
+		self.tvcolumn.clear_attributes(self.cell)
+		self.tvcolumn.add_attribute(self.cell, 'markup', 0)
+				
+		# We want to have txt2tags markup and not pango markup
+		text = markup.convert_from_pango(pango_markup)
+		return text
 	
 	
 	def find_iter(self, category, entry):
@@ -1461,16 +1461,20 @@ class CategoriesTreeView(object):
 	
 	def addEntry(self, category, entry, undoing=False):
 		if category not in self.categories and category is not None:
-			self.categories.insert(0, category)	
+			self.categories.insert(0, category)
 			
 		categoryIter = self._get_category_iter(category)
+			
+		entry_pango = markup.convert_to_pango(entry)
+		category_pango = markup.convert_to_pango(category)	
+		
 		if categoryIter is None:
 			'If category does not exist add new category'
-			categoryIter = self.treeStore.append(None, [category])
-			entry_node = self.treeStore.append(categoryIter, [entry])
+			categoryIter = self.treeStore.append(None, [category_pango])
+			entry_node = self.treeStore.append(categoryIter, [entry_pango])
 		else:
 			'If category exists add entry to existing category'
-			entry_node = self.treeStore.append(categoryIter, [entry])
+			entry_node = self.treeStore.append(categoryIter, [entry_pango])
 			
 		if not undoing:
 			undo_func = lambda: self.delete_node(self.find_iter(category, entry), undoing=True)
@@ -1504,6 +1508,7 @@ class CategoriesTreeView(object):
 			category_iter = self.treeStore.iter_parent(iter)
 			category = self.get_iter_value(category_iter)
 			entries = [self.get_iter_value(iter)]
+			print entries
 		
 		# A category is deleted
 		else:
@@ -1511,6 +1516,7 @@ class CategoriesTreeView(object):
 			category_iter = iter
 			category = self.get_iter_value(category_iter)
 			entries = self._get_element_content(category_iter).keys()
+			print entries
 			
 			
 		# Delete ---------------------------------------------
