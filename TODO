@@ -64,7 +64,10 @@ X Make RedNotebook portable
 X Hide cloud words with right-click
 X Statistics: Show number of different words
 X Live preview of category entries
-X Fix undo and redo
+X New Shortcuts:
+    X Ctrl-N: Add a new entry to a category
+    X Ctrl-T: Tag the current day
+X Fix undo and redo for main text
 
 
 

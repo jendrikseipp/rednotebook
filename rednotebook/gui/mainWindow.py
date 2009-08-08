@@ -1508,7 +1508,6 @@ class CategoriesTreeView(object):
 			category_iter = self.treeStore.iter_parent(iter)
 			category = self.get_iter_value(category_iter)
 			entries = [self.get_iter_value(iter)]
-			print entries
 		
 		# A category is deleted
 		else:
@@ -1516,7 +1515,6 @@ class CategoriesTreeView(object):
 			category_iter = iter
 			category = self.get_iter_value(category_iter)
 			entries = self._get_element_content(category_iter).keys()
-			print entries
 			
 			
 		# Delete ---------------------------------------------

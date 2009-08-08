@@ -346,6 +346,8 @@ same directory.
 | Go forward one day | <Ctrl> + PageUp        |
 | Insert link        | <Ctrl> + L             |
 | Insert date/time   | <Ctrl> + D             |
+| New entry          | <Ctrl> + N             |
+| Add Tag            | <Ctrl> + T             |
 
 You can find other shortcuts in the menus.
 
