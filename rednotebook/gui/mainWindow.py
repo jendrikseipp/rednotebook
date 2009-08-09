@@ -498,6 +498,7 @@ class MainWindow(object):
 			<menuitem action="Bold"/>
 			<menuitem action="Italic"/>
 			<menuitem action="Underline"/>
+			<menuitem action="Stricken"/>
 		</popup>
 		</ui>'''
 			
@@ -511,7 +512,8 @@ class MainWindow(object):
 			return word + ' (Ctrl+%s)' % word[0]
 		
 		def apply_format(action):
-			format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__'}
+			format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__',
+								'stricken': '--'}
 			if type(action) == gtk.Action:
 				format = action.get_name().lower()
 			else:
@@ -537,15 +539,13 @@ class MainWindow(object):
 			return (format, getattr(gtk, 'STOCK_' + format.upper()), \
 				'_' + tmpl(format), \
 				'<Control>' + format[0], None, \
-				#lambda widget: self.dayTextField.apply_format(format.lower()),
 				apply_format,
 				)
 		# Create actions
-		actiongroup.add_actions([
-			get_action('Bold'),
-			get_action('Italic'),
-			get_action('Underline')
-		])
+		strike_action = ('Stricken', gtk.STOCK_STRIKETHROUGH, \
+				'Stricken', None, None, apply_format,)
+		actions = map(get_action, ['Bold', 'Italic', 'Underline']) + [strike_action]
+		actiongroup.add_actions(actions)
 
 		# Add the actiongroup to the uimanager
 		uimanager.insert_action_group(actiongroup, 0)
