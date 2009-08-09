@@ -64,10 +64,11 @@ X Make RedNotebook portable
 X Hide cloud words with right-click
 X Statistics: Show number of different words
 X Live preview of category entries
+X Format category entries with the Format button
 X New Shortcuts:
     X Ctrl-N: Add a new entry to a category
     X Ctrl-T: Tag the current day
-X Switch from libglade to GtkBuilder
+X Switch from libglade to GtkBuilder (the python-glade dep can be dropped)
 X Fix undo and redo for main text
 X Allow using TAB to navigate in "New entry dialog"
 

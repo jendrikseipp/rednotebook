@@ -128,6 +128,8 @@ class MainWindow(object):
 			'on_undo_menuitem_activate': self.undo_redo_manager.undo,
 			'on_redo_menuitem_activate': self.undo_redo_manager.redo,
 			
+			# We cannot add shortcuts for this. With shortcuts all button
+			# presses are caught and you cannot e.g. copy category entries
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
 			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
@@ -508,11 +510,36 @@ class MainWindow(object):
 		def tmpl(word):
 			return word + ' (Ctrl+%s)' % word[0]
 		
+		def apply_format(action):
+			format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__'}
+			if type(action) == gtk.Action:
+				format = action.get_name().lower()
+			else:
+				format = 'bold'
+			
+			markup = format_to_markup[format]
+			
+			focus = self.mainFrame.get_focus()
+			
+			
+			if focus == self.categoriesTreeView.treeView:
+				iter = self.categoriesTreeView.get_selected_node()
+				if iter:
+					text = self.categoriesTreeView.get_iter_value(iter)
+					text = '%s%s%s' % (markup, text, markup)
+					self.categoriesTreeView.set_iter_value(iter, text)
+					return
+			#if focus is None or focus == self.dayTextField.dayTextView:
+			self.dayTextField.apply_format(format, markup)
+			
+		
 		def get_action(format):
 			return (format, getattr(gtk, 'STOCK_' + format.upper()), \
 				'_' + tmpl(format), \
 				'<Control>' + format[0], None, \
-				lambda widget: self.dayTextField.apply_format(format.lower()))
+				#lambda widget: self.dayTextField.apply_format(format.lower()),
+				apply_format,
+				)
 		# Create actions
 		actiongroup.add_actions([
 			get_action('Bold'),
@@ -529,11 +556,15 @@ class MainWindow(object):
 		# Create a Menu
 		menu = uimanager.get_widget('/FormatMenu')
 		
+		tooltips = gtk.Tooltips()
+		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
 		self.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
 		self.format_toolbutton.set_label('Format')
+		tip = 'Format the selected text or category entry'
+		self.format_toolbutton.set_tooltip(tooltips, tip)
 		self.format_toolbutton.set_menu(menu)
-		bold_func = lambda widget: self.dayTextField.apply_format('bold')
+		bold_func = apply_format#lambda widget: self.dayTextField.apply_format('bold')
 		self.format_toolbutton.connect('clicked', bold_func)
 		edit_toolbar = self.builder.get_object('edit_toolbar')
 		edit_toolbar.insert(self.format_toolbutton, -1)
@@ -1422,6 +1453,13 @@ class CategoriesTreeView(object):
 		return text
 	
 	
+	def set_iter_value(self, iter, txt2tags_markup):
+		'''
+		text is txt2tags markup
+		'''
+		pango_markup = markup.convert_to_pango(txt2tags_markup)
+		self.treeStore.set_value(iter, 0, pango_markup)
+	
 	def find_iter(self, category, entry):
 		logging.debug('Looking for iter: "%s", "%s"' % (category, entry))
 		category_iter = self._get_category_iter(category)
@@ -1635,17 +1673,13 @@ class CategoriesTreeView(object):
 		return menu
 	
 	def _on_change_entry_clicked(self, action):
-		selection = self.treeView.get_selection()
-		model, iter = selection.get_selected()
-		
+		iter = self.get_selected_node()
 		self.treeView.set_cursor(self.treeStore.get_path(iter), \
 								focus_column=self.tvcolumn, start_editing=True)
 		self.treeView.grab_focus()
 	
 	def _on_add_entry_clicked(self, action):
-		
-		selection = self.treeView.get_selection()
-		model, iter = selection.get_selected()
+		iter = self.get_selected_node()
 		
 		dialog = self.mainWindow.newEntryDialog
 		
@@ -1777,10 +1811,7 @@ class DayTextField(object):
 		return (iter1, iter2)
 		
 			
-	def apply_format(self, format):
-		format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__'}
-		markup = format_to_markup[format]
-		
+	def apply_format(self, format, markup):
 		selected_text = self.get_selected_text()
 		
 		# If no text has been selected add example text and select it
