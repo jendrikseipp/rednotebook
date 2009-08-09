@@ -717,7 +717,7 @@ class MainWindow(object):
 		if response == gtk.RESPONSE_OK:
 			dirs.last_pic_dir = picture_chooser.get_current_folder()
 			base, ext = os.path.splitext(picture_chooser.get_filename())
-			self.dayTextField.insert('[""' + base + '""' + ext + ']')
+			self.dayTextField.insert('[""%s""%s]' % (base, ext))
 			
 	def on_insert_file_menu_item_activate(self, widget):
 		dirs = self.redNotebook.dirs

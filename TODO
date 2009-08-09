@@ -22,7 +22,6 @@ O Hyperlinks in Categories? -> Already implemented, add documentation
 O Encryption XOR Password
 O Allow dragging of files and pictures into RedNotebook
 O Allow inserting directories
-O Allow opening pictures by double-clicking them
 O provide TrueCrypt encryption HowTo for Linux
 O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
 O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
@@ -62,6 +61,7 @@ X Undu and Redo for Categories (Hit Ctrl-Z for restoring a deleted category entr
 X Make RedNotebook portable
     X User dir configurable
 X Hide cloud words with right-click
+X Open pictures by double-clicking them (in preview)
 X Statistics: Show number of different words
 X Live preview of category entries
 X Format category entries with the Format button

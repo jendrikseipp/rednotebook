@@ -154,6 +154,7 @@ class HtmlView(RichTextView):
 		#print 'self.is_spell_check_enabled()', self.is_spell_check_enabled()
 		#self.set_editable(False)
 		
+		
 	def get_buffer(self):
 		return self._textbuffer
 		
@@ -313,7 +314,7 @@ class HtmlEditor(KeepNoteEditor):
 		
 		##self._textview.connect("font-change", self._on_font_callback)
 		##self._textview.connect("modified", self._on_modified_callback)
-		##self._textview.connect("child-activated", self._on_child_activated)
+		self._textview.connect("child-activated", self._on_child_activated)
 		##self._textview.connect("visit-url", self._on_visit_url)
 		self._textview.disable()
 		
@@ -324,6 +325,10 @@ class HtmlEditor(KeepNoteEditor):
 		html = html.replace('\n', '')
 		self._textview_io.load(self._textview, self._textview.get_buffer(), \
 								html)
+		
+	def _on_child_activated(self, textview, child):
+		if isinstance(child, RichTextImage):
+			filesystem.open_url(child.get_filename())
 								
 	def get_html(self):
 		self._textview_io.save(self._textview.get_buffer())
@@ -396,4 +401,3 @@ if __name__ == '__main__':
 	win.show()
 	
 	gtk.main()
-

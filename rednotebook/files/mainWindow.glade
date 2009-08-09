@@ -4,19 +4,19 @@
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore2">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore3">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -33,13 +33,13 @@
   </object>
   <object class="GtkListStore" id="liststore4">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore5">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -93,6 +93,7 @@ The old one will be saved</property>
                         <property name="visible">True</property>
                         <property name="tooltip_text" translatable="yes">Load an existing journal
 The old journal will be saved</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="accel_group">accelgroup1</property>
                         <accelerator key="O" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -1737,6 +1738,8 @@ This wizard will help you to export your journal to various formats. You can sel
                 <property name="label">gtk-open</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
                 <property name="receives_default">False</property>
                 <property name="use_stock">True</property>
               </object>
@@ -1796,6 +1799,8 @@ This wizard will help you to export your journal to various formats. You can sel
                 <property name="label">gtk-open</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
                 <property name="receives_default">False</property>
                 <property name="use_stock">True</property>
               </object>
@@ -1924,6 +1929,8 @@ This wizard will help you to export your journal to various formats. You can sel
                 <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
                 <property name="receives_default">False</property>
                 <property name="use_stock">True</property>
               </object>
