@@ -59,6 +59,9 @@ class UndoRedoManager(object):
 		if not self.can_undo():
 			logging.info('There is nothing to undo')
 			return
+		
+		logging.debug('Undo')
+		
 		action = self.undo_stack.pop()
 		action.undo_function()
 		self.redo_stack.append(action)
@@ -69,6 +72,9 @@ class UndoRedoManager(object):
 		if not self.can_redo():
 			logging.info('There is nothing to redo')
 			return
+		
+		logging.debug('Redo')
+		
 		action = self.redo_stack.pop()
 		action.redo_function()
 		self.undo_stack.append(action)

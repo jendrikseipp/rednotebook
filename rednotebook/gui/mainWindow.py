@@ -192,18 +192,27 @@ class MainWindow(object):
 		'''
 		This method actually is not responsible for the Ctrl-C etc. actions
 		'''
+		#self.accel_group = self.builder.get_object('accelgroup1')#gtk.AccelGroup()
 		self.accel_group = gtk.AccelGroup()
 		self.mainFrame.add_accel_group(self.accel_group)
+		#self.mainFrame.add_accel_group()
 		#for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'), \
 		#					('X', 'cut_clipboard')]:
 		#	self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
 		#					ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
-		(page_down_keyval, mod) = gtk.accelerator_parse('<Ctrl>Page_Down')
-		self.backOneDayButton.add_accelerator('clicked', self.accel_group, \
-							page_down_keyval, mod, gtk.ACCEL_VISIBLE)
-		(page_up_keyval, mod) = gtk.accelerator_parse('<Ctrl>Page_Up')
-		self.forwardOneDayButton.add_accelerator('clicked', self.accel_group, \
-							page_up_keyval, mod, gtk.ACCEL_VISIBLE)
+		
+		shortcuts = [(self.backOneDayButton, 'clicked', '<Ctrl>Page_Down'),
+					(self.forwardOneDayButton, 'clicked', '<Ctrl>Page_Up'),
+					(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
+					(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
+					(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
+					]
+		
+		for button, signal, shortcut in shortcuts:
+			(keyval, mod) = gtk.accelerator_parse(shortcut)
+			button.add_accelerator(signal, self.accel_group, \
+								keyval, mod, gtk.ACCEL_VISIBLE)
+		
 		
 	def setup_stats_dialog(self):
 		self.stats_dialog = self.builder.get_object('stats_dialog')
@@ -889,11 +898,9 @@ class NewEntryDialog(object):
 		if adding_tag:
 			self.categoriesComboBox.set_active_text('Tags')
 			self.newEntryComboBox.set_entries(self.redNotebook.tags)
-			#self.dialog.set_focus(self.newEntryComboBox.comboBox)
 			self.newEntryComboBox.comboBox.grab_focus()
 		else:
 			self.newEntryComboBox.clear()
-			#self.dialog.set_focus(self.categoriesComboBox.comboBox)
 			self.categoriesComboBox.comboBox.grab_focus()
 		
 		response = self.dialog.run()

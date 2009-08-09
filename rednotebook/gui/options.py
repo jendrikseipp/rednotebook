@@ -131,7 +131,7 @@ class CsvTextOption(Option):
 		
 class ComboBoxOption(Option):
 	def __init__(self, text, name, entries, *widgets):
-		self.combo = CustomComboBoxEntry(gtk.ComboBoxEntry(gtk.ListStore(gobject.TYPE_STRING)))
+		self.combo = CustomComboBoxEntry(gtk.ComboBoxEntry())
 		self.combo.set_entries(entries)
 		
 		Option.__init__(self, text, name, self.combo.comboBox, *widgets)

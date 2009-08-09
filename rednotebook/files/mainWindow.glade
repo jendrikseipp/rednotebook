@@ -70,14 +70,14 @@
             <child>
               <object class="GtkMenuItem" id="menuitem1">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_File</property>
+                <property name="label" translatable="yes">_Journal</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu1">
                     <property name="visible">True</property>
                     <child>
                       <object class="GtkImageMenuItem" id="newJournalButton">
-                        <property name="label" translatable="yes">New Journal</property>
+                        <property name="label" translatable="yes">New</property>
                         <property name="visible">True</property>
                         <property name="tooltip_text" translatable="yes">Create a new journal
 The old one will be saved</property>
@@ -89,12 +89,11 @@ The old one will be saved</property>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="openJournalButton">
-                        <property name="label" translatable="yes">Open Journal</property>
+                        <property name="label">gtk-open</property>
                         <property name="visible">True</property>
                         <property name="tooltip_text" translatable="yes">Load an existing journal
 The old journal will be saved</property>
-                        <property name="image">image1</property>
-                        <property name="use_stock">False</property>
+                        <property name="use_stock">True</property>
                         <property name="accel_group">accelgroup1</property>
                         <accelerator key="O" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_openJournalButton_activate"/>
@@ -189,7 +188,6 @@ The old journal files will also be saved</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="accel_group">accelgroup1</property>
-                        <accelerator key="Z" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_undo_menuitem_activate"/>
                       </object>
                     </child>
@@ -205,7 +203,7 @@ The old journal files will also be saved</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem2">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem7">
                         <property name="visible">True</property>
                       </object>
                     </child>
@@ -266,7 +264,7 @@ The old journal files will also be saved</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="accel_group">accelgroup1</property>
-                        <accelerator key="P" signal="activate" modifiers="GDK_CONTROL_MASK | GDK_MOD1_MASK"/>
+                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK | GDK_MOD1_MASK"/>
                         <signal name="activate" handler="on_options_menuitem_activate"/>
                       </object>
                     </child>
@@ -1993,7 +1991,9 @@ This wizard will help you to export your journal to various formats. You can sel
                 <property name="label" translatable="yes">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -2248,10 +2248,6 @@ This wizard will help you to export your journal to various formats. You can sel
     </action-widgets>
   </object>
   <object class="GtkAccelGroup" id="accelgroup1"/>
-  <object class="GtkImage" id="image1">
-    <property name="visible">True</property>
-    <property name="stock">gtk-open</property>
-  </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="stock">gtk-new</property>
