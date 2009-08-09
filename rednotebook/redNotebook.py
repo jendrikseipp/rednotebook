@@ -87,7 +87,7 @@ setup_logging(dirs.logFile)
 try:
 	import pygtk
 except ImportError:
-	logging.error('Please install PyGTK (python-gtk2)')
+	logging.error('pygtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
 pygtk.require("2.0")
@@ -96,7 +96,7 @@ try:
 	import gtk
 	import gobject
 except (ImportError, AssertionError):
-	logging.error('Please install PyGTK (python-gtk2)')
+	logging.error('gtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
 try:
@@ -375,6 +375,10 @@ Filenames have to have the following form: 2009-01.txt \
 			with open(monthFileString, 'r') as monthFile:
 				logging.debug('Start loading file "%s"' % monthFileString)
 				monthContents = yaml.load(monthFile, Loader=Loader)
+				#print monthContents
+				#monthContents = unicode.get_unicode_dict(monthContents)
+				#print monthContents
+				#print '*'*20
 				logging.debug('Finished loading file "%s"' % monthFileString)
 				self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
 		except yaml.YAMLError, exc:

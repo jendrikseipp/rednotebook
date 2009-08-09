@@ -30,7 +30,6 @@ import logging
 import gtk
 import gobject
 import pango
-import gtk.glade
 
 'Initialize the gtk thread engine'
 #gtk.gdk.threads_init()
@@ -61,53 +60,53 @@ class MainWindow(object):
 		
 		self.redNotebook = redNotebook
 		
-		'Set the Glade file'
+		# Set the Glade file
 		self.gladefile = os.path.join(filesystem.filesDir, 'mainWindow.glade')
-		self.wTree = gtk.glade.XML(self.gladefile)
+		self.builder = gtk.Builder()
+		self.builder.add_from_file(self.gladefile)		
 		
-		
-		'Get the main window and set the icon'
-		self.mainFrame = self.wTree.get_widget('mainFrame')
+		# Get the main window and set the icon
+		self.mainFrame = self.builder.get_object('mainFrame')
 		self.mainFrame.set_title('RedNotebook')
 		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
 								filesystem.get_icons()))
-		
 		
 		self.undo_redo_manager = undo.UndoRedoManager(self)
 		
 		self.uimanager = gtk.UIManager()
 		
-		self.calendar = Calendar(self.wTree.get_widget('calendar'))
-		self.dayTextField = DayTextField(self.wTree.get_widget('dayTextView'), \
+		self.calendar = Calendar(self.builder.get_object('calendar'))
+		self.dayTextField = DayTextField(self.builder.get_object('dayTextView'), \
 										self.undo_redo_manager)
 		self.dayTextField.dayTextView.grab_focus()
 		
-		self.statusbar = Statusbar(self.wTree.get_widget('statusbar'))
+		self.statusbar = Statusbar(self.builder.get_object('statusbar'))
 		
 		self.newEntryDialog = NewEntryDialog(self)
 		
-		self.categoriesTreeView = CategoriesTreeView(self.wTree.get_widget(\
+		self.categoriesTreeView = CategoriesTreeView(self.builder.get_object(\
 									'categoriesTreeView'), self)
 		
 		self.newEntryDialog.categoriesTreeView = self.categoriesTreeView
 		
-		self.backOneDayButton = self.wTree.get_widget('backOneDayButton')
-		self.forwardOneDayButton = self.wTree.get_widget('forwardOneDayButton')
+		self.backOneDayButton = self.builder.get_object('backOneDayButton')
+		self.forwardOneDayButton = self.builder.get_object('forwardOneDayButton')
 		
-		self.editPane = self.wTree.get_widget('editPane')
+		self.editPane = self.builder.get_object('editPane')
 		
 		self.html_editor = HtmlEditor()
-		self.text_vbox = self.wTree.get_widget('text_vbox')
+		self.text_vbox = self.builder.get_object('text_vbox')
 		self.text_vbox.pack_start(self.html_editor)
 		self.html_editor.hide()
 		self.html_editor.set_editable(False)
 		self.preview_mode = False
-		self.preview_button = self.wTree.get_widget('previewButton')
+		self.preview_button = self.builder.get_object('previewButton')
 		
 		self.load_values_from_config()
 		self.mainFrame.show()
 		
 		self.options_manager = OptionsManager(self)
+		self.export_assistant = ExportAssistant(self)#.get_instance(self)
 		
 		self.setup_search()
 		self.setup_insert_menu()
@@ -126,8 +125,8 @@ class MainWindow(object):
 			'on_saveAsMenuItem_activate': self.on_saveAsMenuItem_activate,
 			
 			'on_edit_menu_activate': self.on_edit_menu_activate,
-			'on_undo_menuitem_activate': self.undo_redo_manager.undo,#dayTextField.on_undo,
-			'on_redo_menuitem_activate': self.undo_redo_manager.redo,#dayTextField.on_redo,
+			'on_undo_menuitem_activate': self.undo_redo_manager.undo,
+			'on_redo_menuitem_activate': self.undo_redo_manager.redo,
 			
 			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
 			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
@@ -162,8 +161,20 @@ class MainWindow(object):
 			'on_backup_activate': self.on_backup_activate,
 			'on_quit_activate': self.on_quit_activate,
 			'on_mainFrame_destroy': self.on_mainFrame_destroy,
+			
+			# connect_signals can only be called once, it seems
+			# Otherwise RuntimeWarnings are raised: RuntimeWarning: missing handler '...'
+			
+			# Export Assistant
+			'on_export_assistant_quit': self.export_assistant.on_quit,
+			'on_export_assistant_cancel': self.export_assistant.on_cancel,
+			'change_date_selector_status': self.export_assistant.change_date_selector_status,
+			'select_category': self.export_assistant.select_category,
+			'unselect_category': self.export_assistant.unselect_category,
+			'change_categories_selector_status': self.export_assistant.change_categories_selector_status,
+			'change_export_text_status': self.export_assistant.change_export_text_status,
 			 }
-		self.wTree.signal_autoconnect(dic)
+		self.builder.connect_signals(dic)
 		
 		
 		self.setup_clouds()
@@ -195,9 +206,9 @@ class MainWindow(object):
 							page_up_keyval, mod, gtk.ACCEL_VISIBLE)
 		
 	def setup_stats_dialog(self):
-		self.stats_dialog = self.wTree.get_widget('stats_dialog')
-		overall_box = self.wTree.get_widget('overall_box')
-		day_box = self.wTree.get_widget('day_box')
+		self.stats_dialog = self.builder.get_object('stats_dialog')
+		overall_box = self.builder.get_object('overall_box')
+		day_box = self.builder.get_object('day_box')
 		overall_list = CustomListView()
 		day_list = CustomListView()
 		overall_box.pack_start(overall_list, True, True)
@@ -211,8 +222,8 @@ class MainWindow(object):
 	def on_previewButton_clicked(self, button):
 		self.redNotebook.saveOldDay()
 		
-		text_scrolledwindow = self.wTree.get_widget('text_scrolledwindow')
-		template_button = self.wTree.get_widget('templateMenuButton')
+		text_scrolledwindow = self.builder.get_object('text_scrolledwindow')
+		template_button = self.builder.get_object('templateMenuButton')
 		
 		# Do not forget to update the text in editor and preview respectively
 		
@@ -250,13 +261,13 @@ class MainWindow(object):
 		
 			
 	def setup_search(self):
-		self.searchNotebook = self.wTree.get_widget('searchNotebook')
+		self.searchNotebook = self.builder.get_object('searchNotebook')
 		
-		self.searchTreeView = SearchTreeView(self.wTree.get_widget(\
+		self.searchTreeView = SearchTreeView(self.builder.get_object(\
 									'searchTreeView'), self)
-		self.searchTypeBox = self.wTree.get_widget('searchTypeBox')
+		self.searchTypeBox = self.builder.get_object('searchTypeBox')
 		self.searchTypeBox.set_active(0)
-		self.searchBox = SearchComboBox(self.wTree.get_widget('searchBox'), \
+		self.searchBox = SearchComboBox(self.builder.get_object('searchBox'), \
 									self)
 		
 		
@@ -275,12 +286,12 @@ class MainWindow(object):
 		
 		
 	def setup_clouds(self):
-		self.cloudBox = self.wTree.get_widget('cloudBox')
+		self.cloudBox = self.builder.get_object('cloudBox')
 		
 		self.cloud = CloudView(self.redNotebook)
 		self.cloudBox.pack_start(self.cloud)
 		
-		self.cloudComboBox = self.wTree.get_widget('cloudComboBox')
+		self.cloudComboBox = self.builder.get_object('cloudComboBox')
 		self.cloudComboBox.set_active(0)
 		
 		
@@ -295,9 +306,9 @@ class MainWindow(object):
 		can really be performed
 		'''
 		can_undo = self.undo_redo_manager.can_undo()
-		self.wTree.get_widget('undo_menuitem').set_sensitive(can_undo)
+		self.builder.get_object('undo_menuitem').set_sensitive(can_undo)
 		can_redo = self.undo_redo_manager.can_redo()
-		self.wTree.get_widget('redo_menuitem').set_sensitive(can_redo)
+		self.builder.get_object('redo_menuitem').set_sensitive(can_redo)
 							
 	def on_copyMenuItem_activate(self, widget):
 		self.dayTextField.dayTextView.emit('copy_clipboard')
@@ -346,8 +357,8 @@ class MainWindow(object):
 		self.redNotebook.changeDate(self.calendar.get_date())
 		
 	def show_dir_chooser(self, type, dir_not_found=False):
-		dir_chooser = self.wTree.get_widget('dir_chooser')
-		label = self.wTree.get_widget('dir_chooser_label')
+		dir_chooser = self.builder.get_object('dir_chooser')
+		label = self.builder.get_object('dir_chooser_label')
 		
 		if type == 'new':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER)
@@ -408,9 +419,9 @@ class MainWindow(object):
 		config = self.redNotebook.config
 		
 		config['leftDividerPosition'] = \
-				self.wTree.get_widget('mainPane').get_position()
+				self.builder.get_object('mainPane').get_position()
 		config['rightDividerPosition'] = \
-				self.wTree.get_widget('editPane').get_position()
+				self.builder.get_object('editPane').get_position()
 		
 		# Actually this is unnecessary as the list gets saved when it changes
 		# so we use it to sort the list ;)
@@ -433,8 +444,8 @@ class MainWindow(object):
 		#self.mainFrame.maximize()
 		
 		if config.has_key('leftDividerPosition'):
-			self.wTree.get_widget('mainPane').set_position(config.read('leftDividerPosition', -1))
-		self.wTree.get_widget('editPane').set_position(config.read('rightDividerPosition', 500))
+			self.builder.get_object('mainPane').set_position(config.read('leftDividerPosition', -1))
+		self.builder.get_object('editPane').set_position(config.read('rightDividerPosition', 500))
 		
 		# A font size of -1 applies the standard font size
 		main_font_size = config.read('mainFontSize', -1)
@@ -447,7 +458,7 @@ class MainWindow(object):
 		
 		
 	def setup_template_menu(self):
-		self.template_menu_button = self.wTree.get_widget('templateMenuButton')
+		self.template_menu_button = self.builder.get_object('templateMenuButton')
 		self.template_menu_button.set_menu(gtk.Menu())
 		self.template_menu_button.set_menu(self.template_manager.get_menu())
 				
@@ -515,7 +526,7 @@ class MainWindow(object):
 		self.format_toolbutton.set_menu(menu)
 		bold_func = lambda widget: self.dayTextField.apply_format('bold')
 		self.format_toolbutton.connect('clicked', bold_func)
-		edit_toolbar = self.wTree.get_widget('edit_toolbar')
+		edit_toolbar = self.builder.get_object('edit_toolbar')
 		edit_toolbar.insert(self.format_toolbutton, -1)
 		self.format_toolbutton.show()
 		
@@ -629,7 +640,7 @@ class MainWindow(object):
 			
 		self.single_menu_toolbutton.set_menu(menu)
 		self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)
-		edit_toolbar = self.wTree.get_widget('edit_toolbar')
+		edit_toolbar = self.builder.get_object('edit_toolbar')
 		edit_toolbar.insert(self.single_menu_toolbutton, -1)
 		self.single_menu_toolbutton.show()
 		
@@ -646,8 +657,7 @@ class MainWindow(object):
 		
 	def on_insert_pic_menu_item_activate(self, widget):
 		dirs = self.redNotebook.dirs
-		xml = gtk.glade.XML(self.gladefile, 'picture_chooser')
-		picture_chooser = xml.get_widget('picture_chooser')
+		picture_chooser = self.builder.get_object('picture_chooser')
 		picture_chooser.set_current_folder(dirs.last_pic_dir)
 		
 		filter = gtk.FileFilter()
@@ -671,8 +681,7 @@ class MainWindow(object):
 			
 	def on_insert_file_menu_item_activate(self, widget):
 		dirs = self.redNotebook.dirs
-		xml = gtk.glade.XML(self.gladefile, 'file_chooser')
-		file_chooser = xml.get_widget('file_chooser')
+		file_chooser = self.builder.get_object('file_chooser')
 		file_chooser.set_current_folder(dirs.last_file_dir)
 
 		response = file_chooser.run()
@@ -691,10 +700,9 @@ class MainWindow(object):
 				#self.dayTextField.insert('[%s %s]' % (tail, filename))
 			
 	def on_insert_link_menu_item_activate(self, widget):
-		xml = gtk.glade.XML(self.gladefile, 'link_creator')
-		link_creator = xml.get_widget('link_creator')
-		link_location_entry = xml.get_widget('link_location_entry')
-		link_name_entry = xml.get_widget('link_name_entry')
+		link_creator = self.builder.get_object('link_creator')
+		link_location_entry = self.builder.get_object('link_location_entry')
+		link_name_entry = self.builder.get_object('link_name_entry')
 		
 		link_location_entry.set_text('http://')
 		link_name_entry.set_text('')
@@ -703,8 +711,8 @@ class MainWindow(object):
 		link_creator.hide()
 		
 		if response == gtk.RESPONSE_OK:
-			link_location = xml.get_widget('link_location_entry').get_text()
-			link_name = xml.get_widget('link_name_entry').get_text()
+			link_location = self.builder.get_object('link_location_entry').get_text()
+			link_name = self.builder.get_object('link_name_entry').get_text()
 			
 			# It is safer to add the http://
 			if not link_location.lower().startswith('http://'):
@@ -721,7 +729,7 @@ class MainWindow(object):
 		self.on_mainFrame_destroy(None)
 		
 	def on_info_activate(self, widget):
-		self.infoDialog = self.wTree.get_widget('aboutDialog')
+		self.infoDialog = self.builder.get_object('aboutDialog')
 		self.infoDialog.set_name('RedNotebook')
 		self.infoDialog.set_version(info.version)
 		self.infoDialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
@@ -738,8 +746,7 @@ class MainWindow(object):
 		
 	def on_exportMenuItem_activate(self, widget):
 		self.redNotebook.saveOldDay()
-		assistant = ExportAssistant.get_instance(self)
-		assistant.run()
+		self.export_assistant.run()
 		
 	def on_statisticsMenuItem_activate(self, widget):
 		self.redNotebook.stats.show_dialog(self.stats_dialog)
@@ -797,8 +804,7 @@ class MainWindow(object):
 			
 		proposedFileName = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
 			
-		xml = gtk.glade.XML(self.gladefile, 'backupDialog')
-		backupDialog = xml.get_widget('backupDialog')
+		backupDialog = self.builder.get_object('backupDialog')
 		backupDialog.set_current_folder(os.path.expanduser('~'))
 		backupDialog.set_current_name(proposedFileName)
 		
@@ -815,7 +821,7 @@ class MainWindow(object):
 	
 	
 	def show_new_version_dialog(self):
-		newVersionDialog = self.wTree.get_widget('newVersionDialog')
+		newVersionDialog = self.builder.get_object('newVersionDialog')
 		response = newVersionDialog.run()
 		newVersionDialog.hide()
 		
@@ -826,7 +832,7 @@ class MainWindow(object):
 			self.redNotebook.config['checkForNewVersion'] = 0
 			
 	def show_no_new_version_dialog(self):
-		dialog = self.wTree.get_widget('noNewVersionDialog')
+		dialog = self.builder.get_object('noNewVersionDialog')
 		response = dialog.run()
 		dialog.hide()
 		
@@ -837,29 +843,13 @@ class MainWindow(object):
 
 class NewEntryDialog(object):
 	def __init__(self, mainFrame):
-		dialog = mainFrame.wTree.get_widget('newEntryDialog')
+		dialog = mainFrame.builder.get_object('newEntryDialog')
 		self.dialog = dialog
 		
 		self.mainFrame = mainFrame
 		self.redNotebook = self.mainFrame.redNotebook
-		self.categoriesComboBox = CustomComboBoxEntry(mainFrame.wTree.get_widget('categoriesComboBox'))
-		self.newEntryComboBox = CustomComboBoxEntry(mainFrame.wTree.get_widget('entryComboBox'))
-		
-		box1 = mainFrame.wTree.get_widget('categoriesComboBox')
-		box2 = mainFrame.wTree.get_widget('entryComboBox')
-		
-		# TODO: Allow navigating with TAB (Wait for gtkbuilder, maybe the error is fixed there)
-		
-		#box1.set_focus_chain([box1.get_child()])
-		#box2.set_focus_chain([box2.get_child()])
-		
-		
-		#vbox5 = mainFrame.wTree.get_widget('vbox5')
-		
-		#self.categoriesComboBox.comboBox.set_flags(gtk.CAN_FOCUS)
-		#self.newEntryComboBox.comboBox.set_flags(gtk.CAN_FOCUS)
-		#vbox5.set_focus_chain([self.categoriesComboBox.comboBox, self.newEntryComboBox.comboBox])
-		#vbox5.set_focus_chain([box1, box2])
+		self.categoriesComboBox = CustomComboBoxEntry(mainFrame.builder.get_object('categoriesComboBox'))
+		self.newEntryComboBox = CustomComboBoxEntry(mainFrame.builder.get_object('entryComboBox'))
 		
 		# Let the user finish a new category entry by hitting ENTER
 		def respond(widget):
@@ -867,8 +857,6 @@ class NewEntryDialog(object):
 				self.dialog.response(gtk.RESPONSE_OK)
 		self.newEntryComboBox.entry.connect('activate', respond)
 		self.categoriesComboBox.entry.connect('activate', respond)
-		
-		#self.categoriesTreeView = self.mainFrame.categoriesTreeView
 		
 		self.categoriesComboBox.connect('changed', self.on_category_changed)
 		self.newEntryComboBox.connect('changed', self.on_entry_changed)
@@ -1725,7 +1713,7 @@ class DayTextField(object):
 		logging.debug('Inserting template')
 		currentText = self.get_text()
 		try:
-			self.insert(template.encode('utf-8') + '\n', self.dayTextBuffer.get_start_iter())
+			self.insert(template.decode('utf-8') + '\n', self.dayTextBuffer.get_start_iter())
 		except UnicodeDecodeError, err:
 			logging.error('Template file contains unreadable content. Is it really just ' \
 			'a text file?')

@@ -20,6 +20,7 @@
 import logging
 
 import gtk
+import gobject
 
 
 class ActionButton(gtk.Button):
@@ -38,20 +39,26 @@ class UrlButton(ActionButton):
 class CustomComboBoxEntry(object):
 	def __init__(self, comboBox):
 		self.comboBox = comboBox
-		self.liststore = self.comboBox.get_model()
+		
+		#self.liststore = self.comboBox.get_model()
+		#if self.liststore is None:
+		self.liststore = gtk.ListStore(gobject.TYPE_STRING)
+		self.comboBox.set_model(self.liststore)
 		#self.comboBox.set_wrap_width(5)
+		self.comboBox.set_text_column(0)
 		self.entry = self.comboBox.get_child()
 		
 	def add_entry(self, entry):
-		self.liststore.append([entry])
+		self.liststore.append(entry)
 	
 	def set_entries(self, value_list):
 		self.clear()
 		for entry in value_list:
-			self.add_entry(entry)
+			self.add_entry([entry])
 		
 		if len(value_list) > 0:
-			self.comboBox.set_active(0)
+			#self.comboBox.set_active(0)
+			self.set_active_text(value_list[0])
 	
 	def _get_active_text(self):
 		model = self.comboBox.get_model()

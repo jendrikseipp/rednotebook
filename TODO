@@ -11,7 +11,6 @@ implementation if you tell me that you'd like its addition ;)
 O i18n
 O Better comment code
 O Copy/Paste category entries
-O Switch from libglade to GtkBuilder
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
 
 
@@ -30,6 +29,7 @@ O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everyt
 O SSH, FTP saving -> Conduit HowTo
 O allow opening config file from within RedNotebook? (On advanced tab)
 O Add option for time interval between automatic savings
+O Convert all read strings to unicode before working with them?
 
 
 
@@ -67,7 +67,10 @@ X Live preview of category entries
 X New Shortcuts:
     X Ctrl-N: Add a new entry to a category
     X Ctrl-T: Tag the current day
+X Switch from libglade to GtkBuilder
 X Fix undo and redo for main text
+X Allow using TAB to navigate in "New entry dialog"
+
 
 
 

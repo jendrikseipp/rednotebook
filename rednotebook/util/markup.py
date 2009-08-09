@@ -46,7 +46,7 @@ def _convertCategoriesToMarkup(categories, with_category_title=True):
 	return markup
 
 
-def getMarkupForDay(day, with_text=True, categories=None, date=None):#with_date=True):
+def getMarkupForDay(day, with_text=True, categories=None, date=None):
 	exportString = ''
 	
 	'Add date'
@@ -60,13 +60,10 @@ def getMarkupForDay(day, with_text=True, categories=None, date=None):#with_date=
 	'Add Categories'
 	categoryContentPairs = day.getCategoryContentPairs()
 	
-	categories_of_this_day = map(lambda category: category.upper(), categoryContentPairs.keys())
-	
-	if categories is not None:
-		export_categories = {}
-		for selected_category in categories:
-			if selected_category.upper() in categories_of_this_day:
-				export_categories[selected_category] = categoryContentPairs[selected_category]
+	if categories:
+		categories = map(lambda string: str(string).lower(), categories)
+		export_categories = dict((x,y) for (x, y) in categoryContentPairs.items()
+						if x.lower() in categories)
 	else:
 		export_categories = categoryContentPairs
 	

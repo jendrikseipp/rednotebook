@@ -250,13 +250,13 @@ class OptionsDialog(object):
 class OptionsManager(object):
 	def __init__(self, main_window):
 		self.main_window = main_window
-		self.xml = main_window.wTree
+		self.builder = main_window.builder
 		self.redNotebook = main_window.redNotebook
 		self.config = self.redNotebook.config
 		
-		self.dialog = OptionsDialog(self.xml.get_widget('options_dialog'))
+		self.dialog = OptionsDialog(self.builder.get_object('options_dialog'))
 		self.dialog.set_default_size(600, 300)
-		self.dialog.add_category('general', self.xml.get_widget('general_vbox'))
+		self.dialog.add_category('general', self.builder.get_object('general_vbox'))
 		
 	def on_options_dialog(self):
 		self.dialog.clear()
