@@ -349,6 +349,7 @@ The old journal files will also be saved</property>
                     <child>
                       <object class="GtkToolButton" id="backOneDayButton">
                         <property name="visible">True</property>
+                        <property name="tooltip_text" translatable="yes">Go to previous day (Ctrl+PageDown)</property>
                         <property name="stock_id">gtk-go-back</property>
                         <signal name="clicked" handler="on_backOneDayButton_clicked"/>
                       </object>
@@ -373,6 +374,7 @@ The old journal files will also be saved</property>
                     <child>
                       <object class="GtkToolButton" id="forwardOneDayButton">
                         <property name="visible">True</property>
+                        <property name="tooltip_text" translatable="yes">Go to next day (Ctrl+PageUp)</property>
                         <property name="stock_id">gtk-go-forward</property>
                         <signal name="clicked" handler="on_forwardOneDayButton_clicked"/>
                       </object>

@@ -1,0 +1,30 @@
+====== Development notes ======
+
+O WYSIWYG as an alternative to markup??? (keepnote and htmltextview as reference)
+  notes:
+    2 options: Save in html or txt2tags format
+    HTML Editing: Keepnote
+    HTML Saving: Keepnote
+    HTML2txt2tags: Vim Script (port to python)
+    HTML2markdown: python module exists
+    HTML2Latex (write or use twisted lore)
+    HTML2PDF: xhtml2pdf
+  
+O Encryption/Password
+  - Save in password protected zipfiles (no open source tool to generate those)
+    seems to be very eays to hack
+  - Symmetric Encryption. AES (best method it seems)
+        with PyCrypto
+  		  http://www.dlitz.net/software/pycrypto/, 
+  		  http://www.codekoala.com/blog/2009/aes-encryption-python-using-pycrypto/
+  		  http://idsvandermolen.com/codefiles/crypto.py
+  		  available in repos of all major distros
+  		  ezpycrypto unneeded. mostly only simplifies key generation, ...
+  		Pure python AES module (check speed)
+  - Truecrypt (Commandline): Would probably work, but requires installation of
+    additional package that is not available in the repos
+    
+  --> Use pycrypto only
+  
+  - What should be encrypted? Files, Strings?
+  

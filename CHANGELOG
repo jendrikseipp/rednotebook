@@ -1,6 +1,6 @@
 ==== RedNotebook Changelog ====
 
-=== 0.8.3 ===
+=== 0.8.3 (2009-08-07) ===
  * New statistics dialog with daily word count. Shows number of words, lines, and chars
  * Fill some days of the journal with solutions of common question at first startup
  * Add option to restore that example content. It will be placed after the last edited day

@@ -9,8 +9,6 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
-O Better comment code
-O Copy/Paste category entries
 O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
 
 
@@ -18,16 +16,17 @@ O way of embedding a formula/tag/etc that I can put in the template to automatic
 
 === Maybe even some of those features will make it into RedNotebook ===
 
-O Hyperlinks in Categories? -> Already implemented, add documentation
-O Encryption XOR Password
-O Allow dragging of files and pictures into RedNotebook
-O Allow inserting directories
-O provide TrueCrypt encryption HowTo for Linux
-O Use threads for file loading and link opening (Data opening takes 1.1 sec, other setups take 0.3 sec)
-O Rethink linebreaks (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
+O Hyperlinks in Categories -> Already implemented, add documentation
+O Encryption XOR Password XOR provide TrueCrypt encryption HowTo for Linux
+O Allow inserting directories (Do not add menu item, just document the feature)
 O SSH, FTP saving -> Conduit HowTo
+
+O Use threads for file loading and link opening? (Data opening takes 1.1 sec, other setups take 0.3 sec)
+  (Probably a bad idea since threads are a source of errors)
+O Rethink linebreaks? (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
+  (Current behaviour should be fine)
 O allow opening config file from within RedNotebook? (On advanced tab)
-O Add option for time interval between automatic savings
+O Add option for time interval between automatic savings? (KISS)
 O Convert all read strings to unicode before working with them?
 
 
@@ -93,4 +92,6 @@ X Allow using TAB to navigate in "New entry dialog"
 - make date format configurable for exports (probably no one needs this as i18n already exists)
 - Tags in text entries (e.g. @film:Batman) (KISS)
 - remove search for categories and tags, as clouds already do that (Unituitive and not trivial to remove)
+- Allow dragging of files and pictures into RedNotebook (default behavior is good enough)
+- Copy/Paste category entries (Too complicated)
 
