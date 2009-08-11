@@ -121,26 +121,24 @@ def set_environment_variables(config):
 			logging.info('There is no environment variable called %s' % variable)
 	
 			
-def redirect_output_to_file(log_file):
+def redirect_output_to_file(logfile_path):
 	'''
-	Changes stdout and stderr to a file or None if the file could not be opened.
+	Changes stdout and stderr to a file.
+	Disables both streams if logfile_path is None or cannot be opened.
 	
 	This is necessary to suppress the error messages on Windows when closing 
 	the application.
 	'''
-	try:
-		assert sys.platform == 'win32'
-	except AssertionError:
-		return
+	assert sys.platform == 'win32'
 	
-	#logfile_path = os.path.join(filesystem.appDir, 'rednotebook.log')
-	logfile_path = log_file
-	
-	try:
-		logfile = open(logfile_path, 'w')
-	except IOError:
-		logging.info('logfile could not be found, disabling logging')
+	if logfile_path is None:
 		logfile = None
+	else:
+		try:
+			logfile = open(logfile_path, 'w')
+		except IOError:
+			logging.info('logfile %s could not be found, disabling output' % logfile_path)
+			logfile = None
 	
 	sys.stdout = logfile
 	sys.stderr = logfile

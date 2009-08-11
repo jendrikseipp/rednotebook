@@ -9,7 +9,7 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
-O way of embedding a formula/tag/etc that I can put in the template to automatically insert the current date (2 requests)
+O When inserting a template convert every "$date$" to the current date. (Specify date format in preferences) (2 requests)
 
 
 
