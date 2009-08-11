@@ -10,7 +10,8 @@ implementation if you tell me that you'd like its addition ;)
 
 O i18n
 O When inserting a template convert every "$date$" to the current date. (Specify date format in preferences) (2 requests)
-
+O permit opening a journal from the command	line 
+  (take a full path or a short name and search for in the default location)
 
 
 
