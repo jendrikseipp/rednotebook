@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
-AppVerName=RedNotebook 0.8.2
+AppVerName=RedNotebook 0.8.3
 ; AppPublisher=Jendrik Seipp
 AppPublisherURL=http://rednotebook.sourceforge.net
 AppSupportURL=http://rednotebook.sourceforge.net
@@ -15,7 +15,7 @@ AppUpdatesURL=http://rednotebook.sourceforge.net
 DefaultDirName={pf}\RedNotebook
 DefaultGroupName=RedNotebook
 AllowNoIcons=yes
-OutputBaseFilename=rednotebook-0.8.2-win32
+OutputBaseFilename=rednotebook-0.8.3-win32
 SetupIconFile=rednotebook.ico
 Compression=lzma
 SolidCompression=yes
@@ -23,6 +23,9 @@ SolidCompression=yes
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
+Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked

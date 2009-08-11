@@ -464,6 +464,11 @@ class MainWindow(object):
 		self.set_font_size(main_font_size)
 		
 	def set_font_size(self, main_font_size):
+		# -1 sets the default font size on Linux
+		# -1 does not work on windows, 0 means invisible
+		if sys.platform == 'win32' and main_font_size <= 0:
+			main_font_size = 10
+			
 		self.dayTextField.set_font_size(main_font_size)
 		self.html_editor.set_font_size(main_font_size)
 		
@@ -1848,7 +1853,8 @@ class DayTextField(object):
 		self.set_selection(selection_start_iter, selection_end_iter)
 			
 	def set_font_size(self, size):
-		self.dayTextView.modify_font(pango.FontDescription(str(size)))
+		font = pango.FontDescription(str(size))
+		self.dayTextView.modify_font(font)
 	
 	def hide(self):
 		self.dayTextView.hide()

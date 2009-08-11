@@ -121,7 +121,7 @@ def set_environment_variables(config):
 			logging.info('There is no environment variable called %s' % variable)
 	
 			
-def redirect_output_to_file():
+def redirect_output_to_file(log_file):
 	'''
 	Changes stdout and stderr to a file or None if the file could not be opened.
 	
@@ -134,7 +134,7 @@ def redirect_output_to_file():
 		return
 	
 	#logfile_path = os.path.join(filesystem.appDir, 'rednotebook.log')
-	logfile_path = filesystem.logFile
+	logfile_path = log_file
 	
 	try:
 		logfile = open(logfile_path, 'w')

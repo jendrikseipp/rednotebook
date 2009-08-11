@@ -27,6 +27,11 @@ import operator
 import collections
 import time
 
+# set the locale for all categories to the user’s default setting 
+# (typically specified in the LANG environment variable)
+import locale
+locale.setlocale(locale.LC_ALL, '')
+
 
 if hasattr(sys, "frozen"):
 	from rednotebook.util import filesystem
@@ -48,7 +53,7 @@ def setup_logging(log_file):
 	
 	# File logging
 	if sys.platform == 'win32' and hasattr(sys, "frozen"):
-		redirect_output_to_file()
+		utils.redirect_output_to_file(log_file)
 	
 	file_logging_stream = open(log_file, 'w')
 	

@@ -73,7 +73,8 @@ py2exeParameters = {
 									'icon_resources': [(1, 'win/rednotebook.ico')],
 								}],
 					'data_files' : [('files', ['rednotebook/files/mainWindow.glade',
-												'rednotebook/files/stylesheet.css',]),
+												'rednotebook/files/stylesheet.css',
+												'rednotebook/files/default.cfg']),
 									('images', get_image_files())],
 	  	  			}
 

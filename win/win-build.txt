@@ -18,11 +18,15 @@
   * execute "python redNotebook.py"
 
 ====== Build Exe ======
+  * Install py2exe (http://www.py2exe.org/)
   * Open a terminal and navigate to RedNotebook's base directory (../ from here)
   * run 'python setup.py py2exe'
   * A dist/ directory is created containing the exe, but the GTK files are still missing
   * Copy the directories etc, lib and share from the GTK path to the newly created dist directory
-  * Copy the directories "files/" and "images/" from "rednotebook/" into "dist/"
+  * If this wasn't done automatically, copy the directories "files/" and "images/" 
+    from "rednotebook/" into "dist/" (omit hidden svn stuff)
+  * You may want to remove the " doc" and "gtk-doc" subdirectories from the "share" directory
+    They only contain html documentation for gtk
   * Now clicking redNotebook.exe should start the application
   
 ====== Some important adjustments ======
