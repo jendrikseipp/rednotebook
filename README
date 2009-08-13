@@ -1,23 +1,42 @@
 ====== RedNotebook ======
 
 There are many packages available for different distributions, so you might
-want to check the Downloads page first. 
+want to check the Downloads page first.
 
+
+====== Short Instructions ======
+
+==== Ubuntu/Debian/Mint ====
+In the unpacked rednotebook-x.y.z directory:
+  - sudo apt-get install python-yaml
+  - sudo python setup.py install
+  
+==== Fedora ====
+In the unpacked rednotebook-x.y.z directory:
+  - yum -y install python-devel PyYAML
+  - sudo python setup.py install
+  
+
+You find a menu entry for RedNotebook under "Office".
+  
+
+
+====== Detailed Instructions ======
 
 ===== REQUIREMENTS =====
-  - Python (2.5) (www.python.org)
+  - Python (2.5/2.6) (www.python.org)
   - PyYaml (>3.05) (www.yaml.org)
   - PyGTK (>2.13) (www.pygtk.org)
   
     === Ubuntu/Debian ===
-    sudo apt-get install python-yaml python-gtk2
+    sudo apt-get install python-yaml
     
     === Fedora ===
     yum -y install python-devel PyYAML
     
 
 ===== INSTALL =====
-As root run 'python setup.py install'
+Run 'sudo python setup.py install'
 (installs into path-to-python/site-packages/)
 
 

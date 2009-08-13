@@ -28,3 +28,7 @@ O Encryption/Password
   
   - What should be encrypted? Files, Strings?
   
+  
+O Automatic insertions
+  - Use code from Zeitgeist
+  

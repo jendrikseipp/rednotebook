@@ -16,6 +16,7 @@ Packaging hints
 ---------------
 In the file rednotebook/files/default.cfg you can customise some settings for
 your distribution/target. Detailed descriptions can be found there.
+Currently there are no such options anymore.
 
 Please use the URL http://rednotebook.sourceforge.net for any website
 information in your package.

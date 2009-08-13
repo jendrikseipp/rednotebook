@@ -1,5 +1,24 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.4 (2009-08-13) ===
+ * Add Undu and Redo for Categories
+  (Hit Ctrl-Z to restore a deleted category entry)
+ * Hide cloud words with simple right-click
+ * Open pictures by double-clicking them (in preview)
+ * Statistics: Show number of distinct words
+ * Category items can now be formatted bold, italic, underlined, stricken
+  (Just put **, //, __ or -- around the entry text)
+ * Format category entries with the "Format" button
+  (Select a node on the right and apply a format from the "Format" menu)
+ * Add "Stricken" format button
+  (Useful e.g. for completed todo items)
+ * New Shortcuts:
+     * Ctrl-N: Add a new entry to a category
+     * Ctrl-T: Tag the current day
+ * You can now use TAB to navigate in the "New entry dialog"
+ * Switch from libglade to GtkBuilder (the python-glade dep can be dropped)
+ * Fix undo and redo for main text
+
 === 0.8.3 (2009-08-07) ===
  * New statistics dialog with daily word count. Shows number of words, lines, and chars
  * Fill some days of the journal with solutions of common question at first startup

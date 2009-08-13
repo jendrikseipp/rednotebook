@@ -43,7 +43,10 @@ class Config(dict):
 		
 		self.dirs = dirs
 		
-		self.obsoleteKeys = ['useGTKMozembed', 'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
+		self.obsolete_keys = ['useGTKMozembed', 'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
+		
+		# Allow changing the value of portable only in default.cfg
+		self.suppressed_keys = ['portable']
 		
 		default_config_file = os.path.join(dirs.filesDir, 'default.cfg')
 		default_config = self._read_file(default_config_file)
@@ -104,7 +107,7 @@ class Config(dict):
 						
 						# Do not add obsolete keys -> they will not be rewritten
 						# to disk
-						if key in self.obsoleteKeys:
+						if key in (self.obsolete_keys + self.suppressed_keys):
 							continue
 						
 						try:
@@ -163,7 +166,8 @@ class Config(dict):
 		try:
 			with open(self.dirs.configFile, 'w') as configFile:
 				for key, value in self.iteritems():
-					configFile.write('%s=%s\n' % (key, value))
+					if key not in self.suppressed_keys:
+						configFile.write('%s=%s\n' % (key, value))
 				logging.info('Configuration has been saved')
 		except IOError:
 			logging.error('Configuration could not be saved')

@@ -18,7 +18,6 @@
 # -----------------------------------------------------------------------
 
 import datetime
-import time
 
 
 oneDay = datetime.timedelta(days=1)

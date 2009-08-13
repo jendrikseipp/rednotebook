@@ -9,8 +9,9 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
-O When inserting a template convert every "$date$" to the current date. (Specify date format in preferences) (2 requests)
-O permit opening a journal from the command	line 
+O When inserting a template convert every "$date$" to the current date. 
+  (Specify date format in preferences) (2 requests)
+O permit opening a journal from the command	line
   (take a full path or a short name and search for in the default location)
 
 
@@ -22,9 +23,11 @@ O Encryption XOR Password XOR provide TrueCrypt encryption HowTo for Linux
 O Allow inserting directories (Do not add menu item, just document the feature)
 O SSH, FTP saving -> Conduit HowTo
 
-O Use threads for file loading and link opening? (Data opening takes 1.1 sec, other setups take 0.3 sec)
+O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
+  other setups take 0.3 sec)
   (Probably a bad idea since threads are a source of errors)
-O Rethink linebreaks? (Changing paragraphs in txt2tags will probably crash everything, so wait for rich text editing first)
+O Rethink linebreaks? (Changing paragraphs in txt2tags will probably crash 
+  everything, so wait for rich text editing first)
   (Current behaviour should be fine)
 O allow opening config file from within RedNotebook? (On advanced tab)
 O Add option for time interval between automatic savings? (KISS)
@@ -55,23 +58,10 @@ O Task bar icon
 0.8.5
 O Spell Checking (unify markup and html textviews first) (3 requests)
 O Password protection
-
-0.8.4
-X Undu and Redo for Categories (Hit Ctrl-Z for restoring a deleted category entry)
-X Make RedNotebook portable
-    X User dir configurable
-X Hide cloud words with right-click
-X Open pictures by double-clicking them (in preview)
-X Statistics: Show number of different words
-X Live preview of category entries
-X Format category entries with the Format button
-X Add "Stricken" format button
-X New Shortcuts:
-    X Ctrl-N: Add a new entry to a category
-    X Ctrl-T: Tag the current day
-X Switch from libglade to GtkBuilder (the python-glade dep can be dropped)
-X Fix undo and redo for main text
-X Allow using TAB to navigate in "New entry dialog"
+X RedNotebook can now be run in portable mode
+  (edit the setting in /rednotebook/files/default.cfg)
+   O Propose to portableapps
+   O Think of a way to make it portable for Linux as well
 
 
 

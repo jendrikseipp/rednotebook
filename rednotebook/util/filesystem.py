@@ -99,7 +99,6 @@ class Filenames(dict):
 		self.last_pic_dir = self.userHomeDir
 		self.last_file_dir = self.userHomeDir
 			
-			
 		
 	def _portable(self):
 		'''determine whether we are running standalone'''
@@ -127,9 +126,6 @@ class Filenames(dict):
 		except ValueError:
 			return False
 		
-		
-		
-				
 	def __getattribute__(self, attr):
 		user_paths = dict((('templateDir', 'templates'),
 						('tempDir', 'tmp'),
