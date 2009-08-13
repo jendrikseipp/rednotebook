@@ -54,14 +54,15 @@ O Automatic Backups
 
 0.8.6
 O Task bar icon
-
-0.8.5
-O Spell Checking (unify markup and html textviews first) (3 requests)
-O Password protection
 X RedNotebook can now be run in portable mode
   (edit the setting in /rednotebook/files/default.cfg)
    O Propose to portableapps
    O Think of a way to make it portable for Linux as well
+
+0.8.5
+O Spell Checking (unify markup and html textviews first) (3 requests)
+O Password protection
+
 
 
 
