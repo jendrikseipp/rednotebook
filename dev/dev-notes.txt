@@ -31,4 +31,12 @@ O Encryption/Password
   
 O Automatic insertions
   - Use code from Zeitgeist
+
+  
+O Spell-Checking
+  - Enchant depends on aspell and hunspell on ubuntu
+  - gtkspell depends on enchant
+  - Use either aspell directly or through enchant
+  - enchant is more up-to-date, but harder to use with gtk
+  - gtkspell seems to be the easiest solution
   

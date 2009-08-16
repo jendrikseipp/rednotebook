@@ -9,8 +9,6 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
-O When inserting a template convert every "$date$" to the current date. 
-  (Specify date format in preferences) (2 requests)
 O permit opening a journal from the command	line
   (take a full path or a short name and search for in the default location)
 
@@ -62,6 +60,8 @@ X RedNotebook can now be run in portable mode
 0.8.5
 O Spell Checking (unify markup and html textviews first) (3 requests)
 O Password protection
+X When inserting a template convert every "$date$" to the current date. 
+  (Set date format in preferences)
 
 
 

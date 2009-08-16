@@ -23,6 +23,7 @@ import os
 import sys
 import mimetypes
 import logging
+import time
 
 import gtk
 
@@ -139,6 +140,13 @@ Additionally you can have **titles** and **horizontal lines**:
 		except IOError, Error:
 			logging.error('Template File %s not found' % name)
 			text = ''
+			
+		# convert every "$date$" to the current date
+		default_date_string = '%A, %x %X'
+		date_string = self.mainWindow.redNotebook.config.read('dateTimeString', default_date_string)
+		date = time.strftime(date_string)
+		text = text.replace('$date$', date)
+		
 		return text
 		
 		
