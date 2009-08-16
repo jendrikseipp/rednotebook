@@ -330,7 +330,8 @@ from it.
 		template_help_filename = self.getTemplateFile('Help')
 		fileContentPairs.append((template_help_filename, template_help_text))
 		
-		# Only add the example templates the first time
+		# Only add the example templates the first time and just restore
+		# the day templates everytime
 		if not self.mainWindow.redNotebook.firstTimeExecution:
 			filesystem.makeFiles(fileContentPairs)
 			return

@@ -163,10 +163,10 @@ class RedNotebook:
 		# The dir name is the title
 		self.title = ''
 		
-		
-		
 		# show instructions at first start or if testing
-		self.firstTimeExecution = len(os.listdir(self.dirs.dataDir)) == 0
+		default_dir_selected = (self.dirs.dataDir == self.dirs.defaultDataDir)
+		self.firstTimeExecution = default_dir_selected and \
+									len(os.listdir(self.dirs.dataDir)) == 0
 		logging.info('First Start: %s' % self.firstTimeExecution)
 		
 		logging.info('RedNotebook version: %s' % info.version)

@@ -79,6 +79,7 @@ class Filenames(dict):
 		for key, value in globals().items():
 			# Exclude "get_main_dir()"
 			if key.lower().endswith('dir') and type(value) is str:
+				value = os.path.abspath(value)
 				self[key] = value
 				setattr(self, key, value)
 		
