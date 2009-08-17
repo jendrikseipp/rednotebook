@@ -344,6 +344,13 @@ class RedNotebook:
 		# Save the folder for next start
 		self.config['dataDir'] = data_dir
 		
+		# Set the date range for the export assistant
+		start_date = self.getEditDateOfEntryNumber(0)
+		self.frame.export_assistant.set_start_date(start_date)
+
+		end_date = self.getEditDateOfEntryNumber(-1)
+		self.frame.export_assistant.set_end_date(end_date)
+		
 		
 		
 	def loadAllMonthsFromDisk(self):

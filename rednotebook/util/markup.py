@@ -51,35 +51,47 @@ def _convertCategoriesToMarkup(categories, with_category_title=True):
 
 
 def getMarkupForDay(day, with_text=True, categories=None, date=None):
+	'''
+	Used for exporting days
+	'''
 	exportString = ''
 	
-	'Add date'
+	# Add date
 	if date:
 		exportString += '= ' + date + ' =\n\n'
 		
-	'Add text'
+	# Add text
 	if with_text:
 		exportString += day.text
 	
-	'Add Categories'
+	# Add Categories
 	categoryContentPairs = day.getCategoryContentPairs()
 	
 	if categories:
 		categories = map(lambda string: str(string).lower(), categories)
 		export_categories = dict((x,y) for (x, y) in categoryContentPairs.items()
 						if x.lower() in categories)
-	else:
+	elif categories is None:
+		# No restrictions
 		export_categories = categoryContentPairs
+	else:
+		# "Export no categories" selected
+		export_categories = []
 	
 	
-	if len(export_categories) > 0:
+	if export_categories:
 		exportString += '\n\n\n' + _convertCategoriesToMarkup(export_categories, \
 															with_category_title=with_text)
-	else:
+	elif with_text:
 		exportString += '\n\n'
+		
+	# Only return the string, when there is text or there are categories
+	# We don't want to list empty dates
+	if export_categories or with_text:
+		exportString += '\n\n\n'
+		return exportString
 	
-	exportString += '\n\n\n'
-	return exportString
+	return ''
 	
 
 def _get_config(type):

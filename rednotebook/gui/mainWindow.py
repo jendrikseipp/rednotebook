@@ -799,7 +799,7 @@ class MainWindow(object):
 		self.infoDialog.hide()
 		
 	def on_exportMenuItem_activate(self, widget):
-		self.redNotebook.saveOldDay()
+		self.redNotebook.saveOldDay()		
 		self.export_assistant.run()
 		
 	def on_statisticsMenuItem_activate(self, widget):

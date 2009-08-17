@@ -27,7 +27,8 @@ O Use threads for file loading and link opening? (Data opening takes 1.1 sec,
 O Rethink linebreaks? (Changing paragraphs in txt2tags will probably crash 
   everything, so wait for rich text editing first)
   (Current behaviour should be fine)
-O allow opening config file from within RedNotebook? (On advanced tab)
+O allow opening config file from within RedNotebook?
+  (Probably no good idea as some options might be unavailable or confusing)
 O Add option for time interval between automatic savings? (KISS)
 O Convert all read strings to unicode before working with them?
 

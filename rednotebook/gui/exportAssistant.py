@@ -23,6 +23,7 @@ import datetime
 import os
 import codecs
 import operator
+import logging
 
 from rednotebook.util import markup
 
@@ -94,19 +95,19 @@ class ExportAssistant (object):
 		self.start_date = self.builder.get_object('start_date')
 		self.end_date = self.builder.get_object('end_date')
 		
-		
-		start_date_value = self.redNotebook.getEditDateOfEntryNumber(0)
-		print 'start_date_value', start_date_value
-		self.start_date.select_month(start_date_value.month - 1, start_date_value.year)
-		self.start_date.select_day(start_date_value.day)
-
-		end_date_value = self.redNotebook.getEditDateOfEntryNumber(-1)
-		print 'end_date_value', end_date_value
-		self.end_date.select_month(end_date_value.month - 1, end_date_value.year)
-		self.end_date.select_day(end_date_value.day)
+		# The dates are set externally
 		
 		self.change_date_selector_status(self.assistant)
-
+		
+	def _set_date(self, calendar, date):
+		calendar.select_month(date.month - 1, date.year)
+		calendar.select_day(date.day)
+		
+	def set_start_date(self, date):
+		self._set_date(self.start_date, date)
+		
+	def set_end_date(self, date):
+		self._set_date(self.end_date, date)
 	
 	def append_third_page (self) :				
 		page3 = self.builder.get_object('export_assistant_3')
@@ -208,7 +209,7 @@ class ExportAssistant (object):
 			model_available = self.available_categories.get_model()
 			model_selected = self.selected_categories.get_model()
 			
-			row =  model_available[selected_iter]
+			row = model_available[selected_iter]
 			
 			newRow = model_selected.insert(0)
 			model_selected.set(newRow, 0, row[0])
@@ -224,7 +225,7 @@ class ExportAssistant (object):
 			model_available = self.available_categories.get_model()
 			model_selected = self.selected_categories.get_model()
 			
-			row =  model_selected[selected_iter]
+			row = model_selected[selected_iter]
 			
 			newRow = model_available.insert(0)
 			model_available.set(newRow, 0, row[0])
@@ -253,21 +254,21 @@ class ExportAssistant (object):
 		year, month, day = self.end_date.get_date()
 		return datetime.date(year, month + 1, day)
 	
-	def get_selected_format (self):
+	def get_selected_format(self):
 		if self.latex_button.get_active():
 			return "Latex"
 		if self.html_button.get_active():
 			return "HTML"
-		if self.pdf_button.get_active() :
+		if self.pdf_button.get_active():
 			return "PDF"
 		return "Text"
 	
-	def get_selected_categories_values (self):
+	def get_selected_categories_values(self):
 		selected_categories = []
 		
-		if self.is_all_categories_selected() :
+		if self.is_all_categories_selected():
 			selected_categories = self.main_window.redNotebook.nodeNames
-		elif not self.is_no_categories_selected() :
+		elif not self.is_no_categories_selected():
 			model_selected = self.selected_categories.get_model()
 			
 			for row in model_selected :
@@ -275,22 +276,22 @@ class ExportAssistant (object):
 		
 		return selected_categories
 	
-	def is_export_text_selected (self):
-		if self.export_text.get_active() :
+	def is_export_text_selected(self):
+		if self.export_text.get_active():
 			return True
 		return False
 		
-	def is_all_entries_selected (self):
+	def is_all_entries_selected(self):
 		if self.all_entries_button.get_active():
 			return True
 		return False
 
-	def is_all_categories_selected (self):
+	def is_all_categories_selected(self):
 		if self.all_categories.get_active():
 			return True
 		return False
 
-	def is_no_categories_selected (self):
+	def is_no_categories_selected(self):
 		if self.no_categories.get_active():
 			return True
 		return False
@@ -332,6 +333,7 @@ class ExportAssistant (object):
 															self.get_end_date()))
 			
 		selected_categories = self.get_selected_categories_values()
+		logging.debug('Selected Categories for Export: %s' % selected_categories)
 		export_text = self.is_export_text_selected()
 		
 		markupStringsForEachDay = []
