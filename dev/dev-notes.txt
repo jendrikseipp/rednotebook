@@ -38,5 +38,5 @@ O Spell-Checking
   - gtkspell depends on enchant
   - Use either aspell directly or through enchant
   - enchant is more up-to-date, but harder to use with gtk
-  - gtkspell seems to be the easiest solution
+  - gtkspell seems to be the easiest solution (python-gnome2-extras)
   

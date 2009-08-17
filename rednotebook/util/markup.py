@@ -25,10 +25,14 @@ import logging
 import pango
 import gobject
 
+import sys
+sys.path.insert(0, '/home/jendrik/projects/RedNotebook')
+
 from rednotebook import txt2tags
 from rednotebook.util import filesystem
 from rednotebook.util import dates
 from rednotebook.util import utils
+
 
 
 def _convertCategoriesToMarkup(categories, with_category_title=True):
@@ -105,6 +109,12 @@ def _get_config(type):
 	elif type == 'tex':
 		config['encoding'] = 'utf8'
 		config['preproc'].append(['€', 'Euro'])
+		
+		# Latex only allows whitespace and underscores in filenames if
+		# the filename is surrounded by "...". This is in turn only possible
+		# if the extension is omitted
+		config['preproc'].append([r'\[""', r'["""'])
+		config['preproc'].append([r'""\.', r'""".'])
 		
 		# Allow line breaks, r'\\\\' are 2 \ for regexes
 		config['postproc'].append([r'\$\\backslash\$\$\\backslash\$', r'\\\\'])
@@ -259,4 +269,23 @@ def get_table_markup(table):
 	table = map(lambda row: '| ' + ' | '.join(row) + ' |', table)
 	table[0] = '|' + table[0]
 	return '\n'.join(table)
+
+
+if __name__ == '__main__':
+	markup = '''\
+normal text, normal_text_with_underscores and ""raw_text_with_underscores""
+
+[Link ""http://www.co.whatcom.wa.us/health/environmental/site_hazard/sitehazard.jsp""]
+
+[hs_err_pid13673.log ""file:///home/jendrik/hs_err_pid13673.log""]
+
+[""/home/jendrik/Desktop/desktop pics/bg8_karte_s1_rgb"".jpg]'''
+
+	latex = convert(markup, 'tex')
+	print latex
+	
+	html = convert(markup, 'xhtml')
+	#print html
+	
+	
 				

@@ -96,12 +96,14 @@ class ExportAssistant (object):
 		
 		
 		start_date_value = self.redNotebook.getEditDateOfEntryNumber(0)
+		print 'start_date_value', start_date_value
 		self.start_date.select_month(start_date_value.month - 1, start_date_value.year)
-		self.start_date.select_day (start_date_value.day)
+		self.start_date.select_day(start_date_value.day)
 
 		end_date_value = self.redNotebook.getEditDateOfEntryNumber(-1)
+		print 'end_date_value', end_date_value
 		self.end_date.select_month(end_date_value.month - 1, end_date_value.year)
-		self.end_date.select_day (end_date_value.day)
+		self.end_date.select_day(end_date_value.day)
 		
 		self.change_date_selector_status(self.assistant)
 

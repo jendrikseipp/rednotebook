@@ -2868,6 +2868,10 @@ class MaskMaster:
 			elif r >= 0 and r < t and r < v:
 				txt = regex['raw'].search(line).group(1)
 				txt = doEscape(TARGET,txt)
+				## Jendrik
+				if TARGET == 'tex':
+					txt = txt.replace('_', 'vvvUnderscoreInRawTextvvv')
+					
 				self.rawbank.append(txt)
 				line = regex['raw'].sub(self.rawmask,line,1)
 
@@ -4292,6 +4296,8 @@ def doEscape(target,txt):
 		txt = re.sub('([~^])'    , ESCCHAR+r'\1{}', txt)  # \~{}
 		txt = re.sub('([<|>])'   ,         r'$\1$', txt)  # $>$
 		txt = txt.replace(tmpmask, maskEscapeChar(r'$\backslash$'))
+		##
+		##txt = txt.replace('_', 'vvvvTexUndervvvv')
 		# TIP the _ is escaped at the end
 	return txt
 
@@ -4305,6 +4311,8 @@ def doFinalEscape(target, txt):
 	elif target == 'tex' :
 		txt = txt.replace('_', r'\_')
 		txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
+		## Jendrik
+		txt = txt.replace('vvvUnderscoreInRawTextvvv', '_')
 	return txt
 
 def EscapeCharHandler(action, data):
@@ -4656,7 +4664,9 @@ def parse_images(line):
 		
 		if TARGET == 'tex':
 			tag = re.sub(r'\\b',r'\\\\b',tag)
+			print 'TEXT before', txt
 			txt = txt.replace('_', 'vvvvTexUndervvvv')
+			print 'TEXT after', txt
 		
 		line = regex['img'].sub(tag,line,1)
 		line = regex['x'].sub(txt,line,1)
