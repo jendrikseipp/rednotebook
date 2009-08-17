@@ -4664,10 +4664,8 @@ def parse_images(line):
 		
 		if TARGET == 'tex':
 			tag = re.sub(r'\\b',r'\\\\b',tag)
-			print 'TEXT before', txt
 			txt = txt.replace('_', 'vvvvTexUndervvvv')
-			print 'TEXT after', txt
-		
+			
 		line = regex['img'].sub(tag,line,1)
 		line = regex['x'].sub(txt,line,1)
 	return line

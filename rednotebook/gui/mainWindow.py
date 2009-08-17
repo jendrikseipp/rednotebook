@@ -31,6 +31,13 @@ import gtk
 import gobject
 import pango
 
+# try to import gtkspell
+try:
+	import gtkspell
+except ImportError:
+	gtkspell = None
+
+
 'Initialize the gtk thread engine'
 #gtk.gdk.threads_init()
 
@@ -79,6 +86,8 @@ class MainWindow(object):
 		self.dayTextField = DayTextField(self.builder.get_object('dayTextView'), \
 										self.undo_redo_manager)
 		self.dayTextField.dayTextView.grab_focus()
+		spell_check_enabled = self.redNotebook.config.read('spellcheck', 0)
+		self.dayTextField.enable_spell_check(spell_check_enabled)
 		
 		self.statusbar = Statusbar(self.builder.get_object('statusbar'))
 		
@@ -260,7 +269,7 @@ class MainWindow(object):
 			self.html_editor.load_html(html)
 			
 			self.preview_button.set_stock_id('gtk-edit')
-			self.preview_button.set_label('   Edit    ')
+			self.preview_button.set_label('   Edit	')
 		
 			self.preview_mode = True
 			
@@ -1723,6 +1732,10 @@ class DayTextField(object):
 		# changed
 		self.force_adding_undo_point = False
 		
+		# spell checker
+		self._spell_checker = None
+		self.enable_spell_check(False)
+		
 		
 	def set_text(self, text, undoing=False):
 		self.insert(text, overwrite=True, undoing=undoing)
@@ -1884,6 +1897,32 @@ class DayTextField(object):
 		
 			self.old_text = new_text
 			self.force_adding_undo_point = False
+			
+	#===========================================================
+	# Spell check code taken from KeepNote project
+	
+	def can_spell_check(self):
+		"""Returns True if spelling is available"""
+		return gtkspell is not None
+	
+	def enable_spell_check(self, enabled=True):
+		"""Enables/disables spell check"""
+		if not self.can_spell_check():
+			return
+		
+		if enabled:
+			if self._spell_checker is None:
+				self._spell_checker = gtkspell.Spell(self.dayTextView)
+		else:
+			if self._spell_checker is not None:
+				self._spell_checker.detach()
+				self._spell_checker = None
+
+	def is_spell_check_enabled(self):
+		"""Returns True if spell check is enabled"""
+		return self._spell_checker != None
+		
+	#===========================================================
 		
 	
 		

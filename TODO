@@ -51,6 +51,7 @@ O Import of exported backups
 O Automatic Backups
 
 0.8.6
+O Password protection
 O Task bar icon
 X RedNotebook can now be run in portable mode
   (edit the setting in /rednotebook/files/default.cfg)
@@ -58,10 +59,11 @@ X RedNotebook can now be run in portable mode
    O Think of a way to make it portable for Linux as well
 
 0.8.5
-O Spell Checking (unify markup and html textviews first) (3 requests)
-O Password protection
-X When inserting a template convert every "$date$" to the current date. 
+X Spell Checking
+  (requires gtkspell for python. This is included in the python-gnome2-extras package)
+X When a template is inserted, every occurence of "$date$" is converted to the current date
   (Set date format in preferences)
+X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
 
 
 

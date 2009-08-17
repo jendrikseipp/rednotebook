@@ -265,18 +265,23 @@ class OptionsManager(object):
 		Option.config = self.config
 		Option.main_window = self.main_window
 		
-		self.options = [
-				TickOption('Check for new versions at startup', 'checkForNewVersion'),
-				DateFormatOption('Date/Time format', 'dateTimeString'),
-				FontSizeOption('Font Size', 'mainFontSize'),
-				CsvTextOption('Word blacklist for clouds', 'cloudIgnoreList'),
-				
-				]
+		self.options = []
 		
 		if platform.system() == 'Linux' and os.path.exists('/usr/bin/rednotebook'):
 			logging.debug('Running on Linux. Is installed. Adding autostart option')
 			self.options.insert(0, AutostartOption())
-			
+		
+		self.options.append(TickOption('Check for new version at startup', 'checkForNewVersion'))
+		
+		if self.main_window.dayTextField.can_spell_check():
+			self.options.append(TickOption('Spell Check', 'spellcheck'))
+		
+		self.options.extend([
+				DateFormatOption('Date/Time format', 'dateTimeString'),
+				FontSizeOption('Font Size', 'mainFontSize'),
+				CsvTextOption('Word blacklist for clouds', 'cloudIgnoreList'),
+				])
+		
 		
 		self.add_all_options()
 		
@@ -288,6 +293,9 @@ class OptionsManager(object):
 			# Applay some options
 			self.main_window.cloud.update_ignore_list()
 			self.main_window.cloud.update(force_update=True)
+			
+			spell_check_enabled = self.config.read('spellcheck', 0)
+			self.main_window.dayTextField.enable_spell_check(spell_check_enabled)
 		else:
 			# Reset some options
 			self.main_window.set_font_size(self.config.read('mainFontSize', -1))
@@ -306,5 +314,6 @@ class OptionsManager(object):
 				logging.debug('Setting %s = %s' % (option.option_name, value))
 				self.config[option.option_name] = value
 			else:
+				# We don't save the autostart setting in the config file
 				option.set()
 			
