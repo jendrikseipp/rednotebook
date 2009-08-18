@@ -9,7 +9,6 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
-O Autocomplete category entries
 
 
 
@@ -53,11 +52,10 @@ O Automatic Backups
 0.8.6
 O Password protection
 O Task bar icon
-X RedNotebook can now be run in portable mode
+X Windows: RedNotebook can now be run in portable mode
   (edit the setting in /rednotebook/files/default.cfg)
    O Propose to portableapps
-   O Think of a way to make it portable for Linux as well
-   - Add --portable command line parameter (The default config file is better)
+   O Show message in windows installer
 
 0.8.5
 X Spell Checking
@@ -66,6 +64,7 @@ X When a template is inserted, every occurence of "$date$" is converted to the c
   (Set date format in preferences)
 X Open a specified journal from the command line
   (execute "rednotebook -h" for instructions)
+X Autocomplete category entries
 X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
 
 
@@ -92,4 +91,5 @@ X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
 - remove search for categories and tags, as clouds already do that (Unituitive and not trivial to remove)
 - Allow dragging of files and pictures into RedNotebook (default behavior is good enough)
 - Copy/Paste category entries (Too complicated)
+- Add --portable command line parameter (The default config file is better)
 

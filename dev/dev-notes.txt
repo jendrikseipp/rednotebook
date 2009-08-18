@@ -40,3 +40,7 @@ O Spell-Checking
   - enchant is more up-to-date, but harder to use with gtk
   - gtkspell seems to be the easiest solution (python-gnome2-extras)
   
+O Portable Version:
+  Linux users can use the setting too, if all the computers have the RedNotebook
+  requirements installed (pygtk, pyyaml)
+  
