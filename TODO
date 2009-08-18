@@ -9,8 +9,7 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
-O permit opening a journal from the command	line
-  (take a full path or a short name and search for in the default location)
+O Autocomplete category entries
 
 
 
@@ -58,13 +57,17 @@ X RedNotebook can now be run in portable mode
   (edit the setting in /rednotebook/files/default.cfg)
    O Propose to portableapps
    O Think of a way to make it portable for Linux as well
+   - Add --portable command line parameter (The default config file is better)
 
 0.8.5
 X Spell Checking
   (requires gtkspell for python. This is included in the python-gnome2-extras package)
 X When a template is inserted, every occurence of "$date$" is converted to the current date
   (Set date format in preferences)
+X Open a specified journal from the command line
+  (execute "rednotebook -h" for instructions)
 X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
+
 
 
 

@@ -25,6 +25,7 @@ import logging
 import pango
 import gobject
 
+# TODO: REMOVE
 import sys
 sys.path.insert(0, '/home/jendrik/projects/RedNotebook')
 

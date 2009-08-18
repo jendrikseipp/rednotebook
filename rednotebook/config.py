@@ -107,7 +107,7 @@ class Config(dict):
 						
 						# Do not add obsolete keys -> they will not be rewritten
 						# to disk
-						if key in (self.obsolete_keys + self.suppressed_keys):
+						if key in self.obsolete_keys:
 							continue
 						
 						try:

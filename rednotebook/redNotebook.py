@@ -26,6 +26,8 @@ import zipfile
 import operator
 import collections
 import time
+import textwrap
+from optparse import OptionParser, OptionValueError
 
 # set the locale for all categories to the user’s default setting 
 # (typically specified in the LANG environment variable)
@@ -36,10 +38,48 @@ locale.setlocale(locale.LC_ALL, '')
 if hasattr(sys, "frozen"):
 	from rednotebook.util import filesystem
 	from rednotebook.util import utils
+	from rednotebook import info
 else:
 	from util import filesystem # creates a copy of filesystem module
 	#import util.filesystem # imports the original filesystem module
 	from util import utils
+	import info
+	
+help = '''\
+RedNotebook %s
+
+The optional journal-path can be one of the following:
+ - An absolute path (e.g. /home/username/myjournal)
+ - A relative path (e.g. ../dir/myjournal/)
+ - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
+ 
+If the journal-path is omitted, the last opened journal will be used.
+At the first program start this defaults to "$HOME/.rednotebook/data".
+''' % info.version
+
+def parse_options():
+	parser = OptionParser(usage="usage: %prog [options] [journal-path]",
+						  description=help,
+						  #option_class=ExtOption,
+						  formatter=utils.IndentedHelpFormatterWithNL(),
+						  )
+#	parser.add_option(
+#		'-p', '--portable', dest='portable', default=False,
+#		action='store_true', 
+#		help='Run in portable mode ' \
+#			'(default: False)')
+	
+	parser.add_option(
+		'-d', '--debug', dest='debug', \
+		default=False, action='store_true',
+		help='Output debugging messages ' \
+			'(default: False)')
+	
+	options, args = parser.parse_args()
+		
+	return options, args
+
+options, args = parse_options()
 
 ## Enable logging
 import logging
@@ -69,11 +109,10 @@ def setup_logging(log_file):
 						)
 	
 	level = logging.INFO
-	if len(sys.argv) > 1:
-		level = loggingLevels.get(sys.argv[1], level)
-		
-	logging.debug('sys.stdout logging level: %s' % level)
-	logging.info('Writing log to file "%s"' % log_file)
+	#if len(sys.argv) > 1:
+		#level = loggingLevels.get(sys.argv[1], level)
+	if options.debug:
+		level = logging.DEBUG
 	
 	# define a Handler which writes INFO messages or higher to the sys.stdout
 	console = logging.StreamHandler(sys.stdout)
@@ -84,6 +123,10 @@ def setup_logging(log_file):
 	console.setFormatter(formatter)
 	# add the handler to the root logger
 	logging.getLogger('').addHandler(console)
+	
+	logging.debug('sys.stdout logging level: %s' % level)
+	logging.info('Writing log to file "%s"' % log_file)
+
 
 dirs = filesystem.Filenames()
 setup_logging(dirs.logFile)
@@ -134,7 +177,7 @@ if baseDir not in sys.path:
 # This version of import is needed for win32 to work
 from rednotebook.util import unicode
 from rednotebook.util import dates
-from rednotebook import info
+#from rednotebook import info
 from rednotebook import config
 from rednotebook import backup
 
@@ -146,13 +189,13 @@ from rednotebook.util.statistics import Statistics
 class RedNotebook:
 	
 	def __init__(self):
-		self.dirs = filesystem.Filenames()
+		self.dirs = dirs
 		
 		self.config = config.Config(self.dirs)
 		logging.info('Running in portable mode: %s' % self.config.read('portable', 0))
 		
 		self.testing = False
-		if 'debug' in sys.argv:
+		if options.debug:
 			self.testing = True
 			logging.debug('Debug Mode is on')
 		
@@ -180,16 +223,7 @@ class RedNotebook:
 		   
 		self.actualDate = datetime.date.today()
 		
-		self.dirs.dataDir = self.config.read('dataDir', self.dirs.dataDir)
-		
-		if self.testing:
-			self.dirs.dataDir = os.path.join(self.dirs.redNotebookUserDir, "data-test/")
-			filesystem.makeDirectory(self.dirs.dataDir)
-		# HACK: Only load test dir with active debug option
-		elif self.dirs.dataDir == os.path.join(self.dirs.redNotebookUserDir, "data-test/"):
-			self.dirs.dataDir = self.dirs.defaultDataDir
-			
-		self.open_journal(self.dirs.dataDir)
+		self.open_journal(self.get_journal_path())
 		
 		self.archiver = backup.Archiver(self)
 		
@@ -200,6 +234,39 @@ class RedNotebook:
 		# Automatically save the content after a period of time
 		if not self.testing:
 			gobject.timeout_add_seconds(600, self.saveToDisk)
+			
+	
+	def get_journal_path(self):
+		'''
+		Retrieve the path from optional args or return standard value if args
+		not present
+		'''
+		if not args:
+			return self.config.read('dataDir', self.dirs.dataDir)
+		
+		# path_arg can be e.g. data (under .rednotebook), data (elsewhere), 
+		# or an absolute path /home/username/myjournal
+		# Try to find the journal under the standard location or at the given
+		# absolute or relative location
+		path_arg = args[0]
+		
+		logging.debug('Trying to find journal "%s"' % path_arg)
+		
+		paths_to_check = [path_arg, os.path.join(self.dirs.redNotebookUserDir, path_arg)]
+		
+		for path in paths_to_check:
+			if os.path.exists(path):
+				if os.path.isdir(path):
+					return path
+				else:
+					logging.warning('To open a journal you must specify a '
+								'directory, not a file.')
+		
+		logging.error('The path "%s" is no valid journal directory. ' 
+					'Execute "rednotebook -h" for instructions' % path_arg)
+		sys.exit(1)
+			
+			
 	
 	
 	def getDaysInDateRange(self, range):
