@@ -108,6 +108,9 @@ Additionally you can have **titles** and **horizontal lines**:
 ===Title===
 
 ==================== 
+
+When a template is inserted, every occurence of "$date$" is converted to \
+the current date. You can set the date format in the preferences.
 		'''
 		
 		if response == gtk.RESPONSE_OK:

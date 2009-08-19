@@ -59,8 +59,8 @@
     <accel-groups>
       <group name="accelgroup1"/>
     </accel-groups>
-    <signal name="destroy" handler="on_mainFrame_destroy"/>
     <signal name="configure_event" handler="on_mainFrame_configure_event"/>
+    <signal name="delete_event" handler="on_mainFrame_delete_event"/>
     <child>
       <object class="GtkVBox" id="vbox3">
         <property name="visible">True</property>
@@ -163,6 +163,7 @@ The old journal files will also be saved</property>
                       <object class="GtkImageMenuItem" id="quit">
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
+                        <property name="tooltip_text" translatable="yes">Shutdown RedNotebook. It won't be sent to the tray.</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="accel_group">accelgroup1</property>
@@ -921,8 +922,8 @@ The old journal files will also be saved</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">save</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>

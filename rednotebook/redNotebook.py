@@ -45,21 +45,10 @@ else:
 	from util import utils
 	import info
 	
-help = '''\
-RedNotebook %s
-
-The optional journal-path can be one of the following:
- - An absolute path (e.g. /home/username/myjournal)
- - A relative path (e.g. ../dir/myjournal/)
- - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
- 
-If the journal-path is omitted, the last opened journal will be used.
-At the first program start this defaults to "$HOME/.rednotebook/data".
-''' % info.version
 
 def parse_options():
 	parser = OptionParser(usage="usage: %prog [options] [journal-path]",
-						  description=help,
+						  description=info.command_line_help,
 						  #option_class=ExtOption,
 						  formatter=utils.IndentedHelpFormatterWithNL(),
 						  )
@@ -303,6 +292,7 @@ class RedNotebook:
 		if backup_file:
 			self.archiver.backup(backup_file)
 			
+		
 	def exit(self):
 		self.frame.add_values_to_config()
 		self.saveToDisk(exitImminent=True)

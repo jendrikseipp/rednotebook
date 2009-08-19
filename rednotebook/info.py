@@ -55,6 +55,18 @@ with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '''
 
+command_line_help = '''\
+RedNotebook %s
+
+The optional journal-path can be one of the following:
+ - An absolute path (e.g. /home/username/myjournal)
+ - A relative path (e.g. ../dir/myjournal)
+ - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
+ 
+If the journal-path is omitted the last session's journal will be used.
+At the first program start this defaults to "$HOME/.rednotebook/data".
+''' % version
+
 completeWelcomeText = '''\
 Hello, 
 this is RedNotebook, a desktop journal/diary. Thank you very much for giving it a try. 

@@ -30,7 +30,7 @@ from rednotebook.util import filesystem
 from rednotebook import info
 
 class Option(gtk.HBox):
-	def __init__(self, text, option_name, *widgets):
+	def __init__(self, text, option_name, tooltip=''):
 		gtk.HBox.__init__(self)
 		
 		self.text = text
@@ -40,8 +40,9 @@ class Option(gtk.HBox):
 		
 		self.label = gtk.Label(self.text)
 		self.pack_start(self.label, False, False)
-		for widget in widgets:
-			self.pack_start(widget, False, False)
+		
+		if tooltip:
+			self.set_tooltip_text(tooltip)
 		
 	def get_value(self):
 		raise NotImplementedError
@@ -51,17 +52,18 @@ class Option(gtk.HBox):
 
 
 class TickOption(Option):
-	def __init__(self, text, name, default_value=None):
-		self.text = text
-		self.check_button = gtk.CheckButton(self.text)
+	def __init__(self, text, name, default_value=None, tooltip=''):
+		Option.__init__(self, '', name, tooltip=tooltip)
+		
+		self.check_button = gtk.CheckButton(text)
 		
 		if default_value is None:
 			self.check_button.set_active(Option.config.read(name, 0) == 1)
 		else:
 			self.check_button.set_active(default_value)
 			
-		Option.__init__(self, '', name, self.check_button)
-		
+		self.pack_start(self.check_button, False)
+			
 	def get_value(self):
 		return self.check_button.get_active()
 		
@@ -109,13 +111,14 @@ class AutostartOption(TickOption):
 	
 class CsvTextOption(Option):
 	def __init__(self, text, option_name):
+		Option.__init__(self, text, option_name)
+		
 		# directly read the string, not the list
 		values_string = Option.config.read(option_name, '')
 		
 		self.entry = gtk.Entry()
 		self.entry.set_text(values_string)
 		
-		Option.__init__(self, text, option_name)
 		self.pack_start(self.entry, True)
 	
 	def get_value(self):
@@ -130,11 +133,13 @@ class CsvTextOption(Option):
 		
 		
 class ComboBoxOption(Option):
-	def __init__(self, text, name, entries, *widgets):
+	def __init__(self, text, name, entries):
+		Option.__init__(self, text, name)
+		
 		self.combo = CustomComboBoxEntry(gtk.ComboBoxEntry())
 		self.combo.set_entries(entries)
 		
-		Option.__init__(self, text, name, self.combo.comboBox, *widgets)
+		self.pack_start(self.combo.comboBox, False)
 		
 	def get_value(self):
 		return self.combo.get_active_text()
@@ -145,12 +150,14 @@ class DateFormatOption(ComboBoxOption):
 		date_formats = ['%A, %x %X', '%A, %x, Day %j', '%H:%M', 'Week %W of Year %Y', \
 						'%y-%m-%d', 'Day %j', '%A', '%B']
 		
+		ComboBoxOption.__init__(self, text, name, date_formats)
+		
 		date_url = 'http://docs.python.org/library/time.html#time.strftime'
 		date_format_help_button = UrlButton('Help', date_url)
 		
 		self.preview = gtk.Label()
+		self.pack_start(self.preview, False)
 		
-		ComboBoxOption.__init__(self, text, name, date_formats, self.preview,)
 		self.pack_end(date_format_help_button, False)
 		
 		# Set default format if not present
@@ -273,8 +280,15 @@ class OptionsManager(object):
 		
 		self.options.append(TickOption('Check for new version at startup', 'checkForNewVersion'))
 		
-		if self.main_window.dayTextField.can_spell_check():
-			self.options.append(TickOption('Spell Check', 'spellcheck'))
+		# test on windows first
+		#self.options.append(TickOption('Close to system tray', 'closeToTray',
+		#		tooltip='Closing the window will send RedNotebook to the tray'))
+		
+		spell_check_option = TickOption('Spell Check', 'spellcheck',
+				tooltip='Requires gtkspell for python. This is included in '
+						'the python-gnome2-extras package')
+		self.options.append(spell_check_option)
+		spell_check_option.set_sensitive(self.main_window.dayTextField.can_spell_check())
 		
 		self.options.extend([
 				DateFormatOption('Date/Time format', 'dateTimeString'),
@@ -290,12 +304,15 @@ class OptionsManager(object):
 		if response == gtk.RESPONSE_OK:
 			self.save_options()
 			
-			# Applay some options
+			# Apply some options
 			self.main_window.cloud.update_ignore_list()
 			self.main_window.cloud.update(force_update=True)
 			
 			spell_check_enabled = self.config.read('spellcheck', 0)
 			self.main_window.dayTextField.enable_spell_check(spell_check_enabled)
+			
+			visible = (self.config.read('closeToTray', 0) == 1)
+			self.main_window.tray_icon.set_visible(visible)
 		else:
 			# Reset some options
 			self.main_window.set_font_size(self.config.read('mainFontSize', -1))

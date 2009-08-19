@@ -9,6 +9,7 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
+O Category view needs line wrap switch
 
 
 
@@ -51,15 +52,16 @@ O Automatic Backups
 
 0.8.6
 O Password protection
-O Task bar icon
+X Tray icon
+  (Closing the window sends RedNotebook to the tray)
 X Windows: RedNotebook can now be run in portable mode
-  (edit the setting in /rednotebook/files/default.cfg)
+  (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
    O Show message in windows installer
 
 0.8.5
 X Spell Checking
-  (requires gtkspell for python. This is included in the python-gnome2-extras package)
+  (Requires gtkspell for python. This is included in the python-gnome2-extras package)
 X When a template is inserted, every occurence of "$date$" is converted to the current date
   (Set date format in preferences)
 X Open a specified journal from the command line

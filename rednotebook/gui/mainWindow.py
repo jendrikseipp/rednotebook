@@ -46,6 +46,7 @@ import rednotebook.util.unicode
 
 from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
+from rednotebook.gui import widgets
 from rednotebook.gui.widgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
@@ -171,7 +172,7 @@ class MainWindow(object):
 			'on_helpMenuItem_activate': self.on_helpMenuItem_activate,
 			'on_backup_activate': self.on_backup_activate,
 			'on_quit_activate': self.on_quit_activate,
-			'on_mainFrame_destroy': self.on_mainFrame_destroy,
+			'on_mainFrame_delete_event': self.on_mainFrame_delete_event,
 			
 			# connect_signals can only be called once, it seems
 			# Otherwise RuntimeWarnings are raised: RuntimeWarning: missing handler '...'
@@ -195,6 +196,7 @@ class MainWindow(object):
 		self.template_manager = templates.TemplateManager(self)
 		self.template_manager.make_empty_template_files()
 		self.setup_template_menu()
+		self.setup_tray_icon()
 		
 		
 		
@@ -223,6 +225,92 @@ class MainWindow(object):
 			(keyval, mod) = gtk.accelerator_parse(shortcut)
 			button.add_accelerator(signal, self.accel_group, \
 								keyval, mod, gtk.ACCEL_VISIBLE)
+			
+			
+	# TRAY-ICON / CLOSE --------------------------------------------------------
+			
+	def setup_tray_icon(self):
+		self.tray_icon = widgets.RedNotebookTrayIcon()
+		visible = (self.redNotebook.config.read('closeToTray', 0) == 1)
+		self.tray_icon.set_visible(visible)
+		logging.debug('Tray icon visible: %s' % visible)
+		
+		self.tray_icon.set_tooltip('RedNotebook')
+		icon_file = os.path.join(self.redNotebook.dirs.frameIconDir, 'rn-48.png')
+		self.tray_icon.set_from_file(icon_file)
+		
+		self.tray_icon.connect('activate', self.on_tray_icon_activated)
+		self.tray_icon.connect('popup-menu', self.on_tray_popup_menu)
+		
+	def on_tray_icon_activated(self, tray_icon):
+		if self.mainFrame.get_property('visible'):
+			self.hide()
+		else:
+			self.mainFrame.show()
+			
+	def on_tray_popup_menu(self, status_icon, button, activate_time):
+		'''
+		Called when the user right-clicks the tray icon
+		'''
+			
+		tray_menu_xml = '''
+		<ui>
+		<popup action="TrayMenu">
+			<menuitem action="Show"/>
+			<menuitem action="Quit"/>
+		</popup>
+		</ui>'''
+
+		# Create an ActionGroup
+		actiongroup = gtk.ActionGroup('TrayActionGroup')
+		
+		# Create actions
+		actiongroup.add_actions([
+			('Show', gtk.STOCK_MEDIA_PLAY, 'Show RedNotebook', 
+				None, None, lambda widget: self.mainFrame.show()),
+			('Quit', gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
+			])
+
+		# Add the actiongroup to the uimanager
+		self.uimanager.insert_action_group(actiongroup, 0)
+
+		# Add a UI description
+		self.uimanager.add_ui_from_string(tray_menu_xml)
+
+		# Create a Menu
+		menu = self.uimanager.get_widget('/TrayMenu')
+		
+		menu.popup(None, None, gtk.status_icon_position_menu,
+				button, activate_time, status_icon)
+			
+	def hide(self):
+		self.mainFrame.hide()
+		self.redNotebook.saveToDisk(exitImminent=False)
+		
+	def on_mainFrame_delete_event(self, widget, event):
+		'''
+		Exit if not closeToTray
+		'''
+		#logging.debug('on_mainFrame_destroy')
+		#self.saveToDisk(exitImminent=False)
+		
+		if self.redNotebook.config.read('closeToTray', 0):
+			self.hide()
+		
+			# the default handler is _not_ to be called, 
+			# and therefore the window will not be destroyed. 
+			return True
+		else:
+			self.redNotebook.exit()
+		
+	def on_quit_activate(self, widget):
+		'''
+		User selected quit from the menu -> exit unconditionally
+		'''
+		#self.on_mainFrame_destroy(None)
+		self.redNotebook.exit()
+		
+	# -------------------------------------------------------- TRAY-ICON / CLOSE
 		
 		
 	def setup_stats_dialog(self):
@@ -429,11 +517,9 @@ class MainWindow(object):
 		self.show_dir_chooser('saveas')
 		
 		
-	def on_mainFrame_destroy(self, widget):
-		self.redNotebook.exit()
-		
 	def on_backup_activate(self, widget):
 		self.redNotebook.backupContents(backup_file=self.get_backup_file())
+		
 		
 	def add_values_to_config(self):
 		config = self.redNotebook.config
@@ -779,8 +865,6 @@ class MainWindow(object):
 			else:
 				self.redNotebook.showMessage('No link location has been entered', error=True)		
 		
-	def on_quit_activate(self, widget):
-		self.on_mainFrame_destroy(None)
 		
 	def on_info_activate(self, widget):
 		self.infoDialog = self.builder.get_object('aboutDialog')

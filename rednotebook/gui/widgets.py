@@ -154,4 +154,10 @@ class EntryDialog(gtk.MessageDialog):
 		
 	def get_value(self):
 		return self.entry.get_text()
+	
+	
+class RedNotebookTrayIcon(gtk.StatusIcon):
+	def __init__(self):
+		gtk.StatusIcon.__init__(self)
 		
+				

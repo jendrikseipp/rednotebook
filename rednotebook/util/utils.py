@@ -185,8 +185,7 @@ def setup_signal_handlers(redNotebook):
 	
 	def signal_handler(signum, frame):
 		logging.info('Program was abnormally aborted with signal %s' % signum)
-		redNotebook.saveToDisk()
-		sys.exit()
+		redNotebook.exit()
 
 	
 	msg = 'Connected Signals: '
