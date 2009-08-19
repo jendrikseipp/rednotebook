@@ -1399,6 +1399,11 @@ class CategoriesTreeView(object):
 		self.context_menu = self._get_context_menu()
 		
 		self.treeView.connect('button-press-event', self.on_button_press_event)
+		
+		# Wrap lines
+		self.cell.props.wrap_mode = pango.WRAP_WORD
+		self.cell.props.wrap_width = 200
+		self.treeView.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
 
 		
 	def node_on_top_level(self, iter):
@@ -1796,6 +1801,36 @@ class CategoriesTreeView(object):
 			
 	def _on_delete_entry_clicked(self, action):
 		self.delete_selected_node()
+		
+	
+	def on_size_allocate(self, treeview, allocation, column, cell):
+		'''
+		Code from pychess project
+		(http://code.google.com/p/pychess/source/browse/trunk/lib/pychess/
+		System/uistuff.py?r=1025#62)
+		
+		Allows dynamic line wrapping in a treeview
+		'''
+		otherColumns = (c for c in treeview.get_columns() if c != column)
+		newWidth = allocation.width - sum(c.get_width() for c in otherColumns)
+		newWidth -= treeview.style_get_property("horizontal-separator") * 2
+		
+		## Customize for treeview with expanders
+		## The behaviour can only be fitted to one depth -> take the second one
+		newWidth -= treeview.style_get_property('expander-size') * 3
+		
+		if cell.props.wrap_width == newWidth or newWidth <= 0:
+			return
+		cell.props.wrap_width = newWidth
+		store = treeview.get_model()
+		iter = store.get_iter_first()
+		while iter and store.iter_is_valid(iter):
+			store.row_changed(store.get_path(iter), iter)
+			iter = store.iter_next(iter)
+		treeview.set_size_request(0,-1)
+		
+		## The heights may have changed
+		column.queue_resize()
 		
 	
 		

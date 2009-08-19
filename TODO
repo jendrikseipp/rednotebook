@@ -67,6 +67,7 @@ X When a template is inserted, every occurence of "$date$" is converted to the c
 X Open a specified journal from the command line
   (execute "rednotebook -h" for instructions)
 X Autocomplete category entries
+X Wrap lines in categories view
 X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
 
 
