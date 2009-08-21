@@ -56,25 +56,18 @@ class CustomComboBoxEntry(object):
 		self.entry.set_completion(self.entry_completion)
 		
 	def add_entry(self, entry):
-		self.liststore.append(entry)
+		self.liststore.append([entry])
 	
 	def set_entries(self, value_list):
 		self.clear()
 		for entry in value_list:
-			self.add_entry([entry])
+			self.add_entry(entry)
 		
 		if len(value_list) > 0:
-			#self.comboBox.set_active(0)
+			self.comboBox.set_active(0)
 			self.set_active_text(value_list[0])
+			self.comboBox.queue_draw()
 	
-	def _get_active_text(self):
-		model = self.comboBox.get_model()
-		index = self.comboBox.get_active()
-		if index > -1:
-			return model[index][0]
-		else:
-			return ''
-		
 	def get_active_text(self):
 		return self.entry.get_text().decode('utf-8')
 	

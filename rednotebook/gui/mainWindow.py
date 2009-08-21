@@ -893,7 +893,7 @@ class MainWindow(object):
 		self.categoriesTreeView._on_add_entry_clicked(None)
 		
 	def on_addTagButton_clicked(self, widget):
-		self.newEntryDialog.show_dialog(adding_tag=True)
+		self.newEntryDialog.show_dialog(category='Tags')
 		
 	def on_deleteEntryButton_clicked(self, widget):
 		self.categoriesTreeView.delete_selected_node()
@@ -1002,7 +1002,7 @@ class NewEntryDialog(object):
 	def on_category_changed(self, widget):
 		'''Show Tags in ComboBox when "Tags" is selected as category'''
 		if self.categoriesComboBox.get_active_text().upper() == 'TAGS':
-			 self.newEntryComboBox.set_entries(self.redNotebook.tags)
+			self.newEntryComboBox.set_entries(self.redNotebook.tags)
 			 
 		# only make the entry submittable, if text has been entered
 		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
@@ -1012,30 +1012,28 @@ class NewEntryDialog(object):
 		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
 			 
 	def _text_entered(self):
-		return len(self.categoriesComboBox.get_active_text()) > 0 and \
-				len(self.newEntryComboBox.get_active_text()) > 0
+		return bool(self.categoriesComboBox.get_active_text() and \
+				self.newEntryComboBox.get_active_text())
 		
-	def show_dialog(self, category=None, adding_tag=False):
+	def show_dialog(self, category=''):
 		# Show the list of categories even if adding a tag
 		self.categoriesComboBox.set_entries(self.categoriesTreeView.categories)
 		
-		if category:
-			self.categoriesComboBox.set_active_text(category)
-			if category.capitalize() == 'Tags':
-				adding_tag = True
+		# Has to be first, because it may be popularized later
+		self.newEntryComboBox.clear()
 		
-		if adding_tag:
-			self.categoriesComboBox.set_active_text('Tags')
-			self.newEntryComboBox.set_entries(self.redNotebook.tags)
+		self.categoriesComboBox.set_active_text(category)
+		
+		if category:			
+			# We already know the category so let's get the entry
 			self.newEntryComboBox.comboBox.grab_focus()
 		else:
-			self.newEntryComboBox.clear()
 			self.categoriesComboBox.comboBox.grab_focus()
 		
 		response = self.dialog.run()
 		self.dialog.hide()
 		
-		if response != gtk.RESPONSE_OK:
+		if not response == gtk.RESPONSE_OK:
 			return
 		
 		categoryName = self.categoriesComboBox.get_active_text()
@@ -1047,7 +1045,6 @@ class NewEntryDialog(object):
 			return
 		
 		self.categoriesTreeView.addEntry(categoryName, entryText)
-		self.categoriesTreeView.treeView.expand_all()
 		
 		# Update cloud
 		self.mainFrame.cloud.update()
@@ -1065,8 +1062,8 @@ class SearchComboBox(CustomComboBoxEntry):
 		self.mainWindow = mainWindow
 		self.redNotebook = mainWindow.redNotebook
 		
-		self.entry = self.comboBox.get_child()
-		self.entry.set_text('Search ...')
+		#self.entry = self.comboBox.get_child()
+		self.set_active_text('Search ...')
 
 		self.entry.connect('changed', self.on_entry_changed)
 		self.entry.connect('activate', self.on_entry_activated)
@@ -1099,7 +1096,7 @@ class SearchComboBox(CustomComboBoxEntry):
 			Called when the entry changes
 		"""
 		#self.search(entry.get_text())
-		self.search(self.get_search_text())
+		self.search(self.get_active_text())
 		
 	def on_entry_activated(self, entry):
 		"""
@@ -1113,17 +1110,10 @@ class SearchComboBox(CustomComboBoxEntry):
 			self.recentSearches = self.recentSearches[-20:]
 			self.add_entry(searchText)
 			
-		self.search(self.get_search_text())
+		self.search(self.get_active_text())
 			
 	def search(self, searchText):
 		self.mainWindow.searchTreeView.update_data(searchText)
-		
-	def clear(self):
-		CustomComboBoxEntry.clear(self)
-		self.entry.set_text('')
-		
-	def get_search_text(self):
-		return self.get_active_text()
 		
 		
 		

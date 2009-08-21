@@ -9,8 +9,7 @@ implementation if you tell me that you'd like its addition ;)
 === Features that will probably soon be implemented ===
 
 O i18n
-O Category view needs line wrap switch
-
+O Todo tab next to clouds?
 
 
 === Maybe even some of those features will make it into RedNotebook ===
@@ -68,6 +67,7 @@ X Open a specified journal from the command line
   (execute "rednotebook -h" for instructions)
 X Autocomplete category entries
 X Wrap lines in categories view
+X When adding a new category entry, set focus in entry field, when the category was already selected
 X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
 
 

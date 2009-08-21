@@ -432,12 +432,8 @@ The old journal files will also be saved</property>
                             <child>
                               <object class="GtkComboBoxEntry" id="searchBox">
                                 <property name="visible">True</property>
-                                <property name="model">liststore4</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="cellrenderertext2"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
                                 </child>
                               </object>
                               <packing>
@@ -922,8 +918,8 @@ The old journal files will also be saved</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">save</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
