@@ -1,5 +1,19 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.5 (2009-08-29) ===
+ * Spell Checking (not for Windows)
+   (Requires gtkspell for python. This is included in the python-gnome2-extras package)
+ * When a template is inserted, every occurence of "$date$" is converted to the current date
+   (Set date format in preferences)
+ * Open a specified journal from the command line
+   (execute "rednotebook -h" for instructions)
+ * Autocomplete category entries
+ * Wrap lines in categories view
+ * When a category is selected on the right and you add a new category entry, 
+   set focus directly in entry field
+ * Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
+ * Fix: Reset min gtk version to 2.14
+
 === 0.8.4 (2009-08-13) ===
  * Add Undu and Redo for Categories
   (Hit Ctrl-Z to restore a deleted category entry)

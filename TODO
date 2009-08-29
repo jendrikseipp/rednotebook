@@ -11,7 +11,7 @@ implementation if you tell me that you'd like its addition ;)
 O i18n
 O Todo tab next to clouds?
 O Cloud words include list
-O Image resizing
+O Image resizing?
 
 
 === Maybe even some of those features will make it into RedNotebook ===
@@ -59,22 +59,6 @@ X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
    O Show message in windows installer
-
-0.8.5
-X Spell Checking
-  (Requires gtkspell for python. This is included in the python-gnome2-extras package)
-X When a template is inserted, every occurence of "$date$" is converted to the current date
-  (Set date format in preferences)
-X Open a specified journal from the command line
-  (execute "rednotebook -h" for instructions)
-X Autocomplete category entries
-X Wrap lines in categories view
-X When a category is selected on the right and you add a new category entry, 
-  set focus directly in entry field
-X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
-X Fix: Reset min gtk version to 2.14
-
-
 
 
 
