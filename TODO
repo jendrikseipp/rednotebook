@@ -10,6 +10,8 @@ implementation if you tell me that you'd like its addition ;)
 
 O i18n
 O Todo tab next to clouds?
+O Cloud words include list
+O Image resizing
 
 
 === Maybe even some of those features will make it into RedNotebook ===
@@ -69,6 +71,7 @@ X Autocomplete category entries
 X Wrap lines in categories view
 X When adding a new category entry, set focus in entry field, when the category was already selected
 X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
+X Fix: Do not require gtk version 2.16
 
 
 

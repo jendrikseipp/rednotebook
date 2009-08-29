@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-requires gtk+ 2.12 -->
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkListStore" id="liststore1">
     <columns>
@@ -918,8 +918,8 @@ The old journal files will also be saved</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">save</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -2253,7 +2253,6 @@ This wizard will help you to export your journal to various formats. You can sel
       <action-widget response="-5">button21</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkAccelGroup" id="accelgroup1"/>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="stock">gtk-new</property>
@@ -2278,4 +2277,5 @@ This wizard will help you to export your journal to various formats. You can sel
     <property name="visible">True</property>
     <property name="stock">gtk-paste</property>
   </object>
+  <object class="GtkAccelGroup" id="accelgroup1"/>
 </interface>

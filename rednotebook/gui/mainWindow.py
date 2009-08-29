@@ -71,7 +71,15 @@ class MainWindow(object):
 		# Set the Glade file
 		self.gladefile = os.path.join(filesystem.filesDir, 'mainWindow.glade')
 		self.builder = gtk.Builder()
-		self.builder.add_from_file(self.gladefile)		
+		try:
+			self.builder.add_from_file(self.gladefile)
+		except gobject.GError, err:
+			logging.error('An error occured while loading the GUI: %s' % err)
+			logging.error('RedNotebook requires at least gtk+ 2.14. '
+							'If you cannot update gtk, you might want to try an '
+							'older version of RedNotebook.')
+			sys.exit(1)
+			
 		
 		# Get the main window and set the icon
 		self.mainFrame = self.builder.get_object('mainFrame')
@@ -357,7 +365,7 @@ class MainWindow(object):
 			self.html_editor.load_html(html)
 			
 			self.preview_button.set_stock_id('gtk-edit')
-			self.preview_button.set_label('   Edit	')
+			self.preview_button.set_label(' '*3 + 'Edit' + ' '*4)
 		
 			self.preview_mode = True
 			
