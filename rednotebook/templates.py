@@ -47,7 +47,7 @@ class TemplateManager(object):
 			text = self.get_weekday_text()
 		else:
 			text = self.get_text(title)
-		self.mainWindow.dayTextField.insert_template(text)
+		self.mainWindow.dayTextField.insert(text)
 		
 		
 	def on_edit(self, action):
@@ -140,13 +140,17 @@ the current date. You can set the date format in the preferences.
 		try:
 			with open(filename, 'r') as templateFile:
 				text = templateFile.read()
-				text = text.decode('utf-8')
+		except IOError, Error:
+			logging.error('Template File %s not found' % name)
+			text = ''
+			
+		try:
+			#logging.debug('Read template content: "%s"', text)
+			# Only reading utf-8 files is supported
+			text = text.decode('utf-8', 'ignore')
 		except UnicodeDecodeError, UnicodeEncodeError:
 			logging.error('Template file contains unreadable content. Is it really just ' \
 						'a text file?')
-			#text = ''
-		except IOError, Error:
-			logging.error('Template File %s not found' % name)
 			text = ''
 			
 		# convert every "$date$" to the current date

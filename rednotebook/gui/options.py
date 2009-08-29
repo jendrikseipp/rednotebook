@@ -18,6 +18,7 @@
 # -----------------------------------------------------------------------
 
 import os
+import sys
 import logging
 import platform
 
@@ -287,7 +288,8 @@ class OptionsManager(object):
 		spell_check_option = TickOption('Spell Check', 'spellcheck',
 				tooltip='Requires gtkspell for python. This is included in '
 						'the python-gnome2-extras package')
-		self.options.append(spell_check_option)
+		if not sys.platform == 'win32':
+			self.options.append(spell_check_option)
 		spell_check_option.set_sensitive(self.main_window.dayTextField.can_spell_check())
 		
 		self.options.extend([
