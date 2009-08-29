@@ -213,8 +213,8 @@ class MainWindow(object):
 		'''
 		This method actually is not responsible for the Ctrl-C etc. actions
 		'''
-		#self.accel_group = self.builder.get_object('accelgroup1')#gtk.AccelGroup()
-		self.accel_group = gtk.AccelGroup()
+		self.accel_group = self.builder.get_object('accelgroup1')#gtk.AccelGroup()
+		#self.accel_group = gtk.AccelGroup()
 		self.mainFrame.add_accel_group(self.accel_group)
 		#self.mainFrame.add_accel_group()
 		#for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'), \

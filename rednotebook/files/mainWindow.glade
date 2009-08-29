@@ -56,9 +56,6 @@
   </object>
   <object class="GtkWindow" id="mainFrame">
     <property name="window_position">center</property>
-    <accel-groups>
-      <group name="accelgroup1"/>
-    </accel-groups>
     <signal name="configure_event" handler="on_mainFrame_configure_event"/>
     <signal name="delete_event" handler="on_mainFrame_delete_event"/>
     <child>
@@ -918,8 +915,8 @@ The old journal files will also be saved</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">save</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>

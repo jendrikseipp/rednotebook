@@ -69,9 +69,10 @@ X Open a specified journal from the command line
   (execute "rednotebook -h" for instructions)
 X Autocomplete category entries
 X Wrap lines in categories view
-X When adding a new category entry, set focus in entry field, when the category was already selected
+X When a category is selected on the right and you add a new category entry, 
+  set focus directly in entry field
 X Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
-X Fix: Do not require gtk version 2.16
+X Fix: Reset min gtk version to 2.14
 
 
 
