@@ -561,7 +561,7 @@ The old journal files will also be saved</property>
                             <child>
                               <object class="GtkMenuToolButton" id="templateMenuButton">
                                 <property name="visible">True</property>
-                                <property name="tooltip_markup">Insert this weekday's template\nClick the arrow on the right for more options</property>
+                                <property name="tooltip_markup">Insert this weekday's template. Click the arrow on the right for more options</property>
                                 <property name="label" translatable="yes">Template</property>
                                 <property name="stock_id">gtk-paste</property>
                                 <signal name="clicked" handler="on_templateMenu_clicked"/>

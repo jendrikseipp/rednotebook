@@ -587,11 +587,12 @@ class MainWindow(object):
 		
 	def on_templateMenu_clicked(self, widget):
 		text = self.template_manager.get_weekday_text()
-		self.dayTextField.insert_template(text)
+		#self.dayTextField.insert_template(text)
+		self.dayTextField.insert(text)
 		
 	def on_templateButton_clicked(self, widget):
 		text = self.template_manager.get_weekday_text()
-		self.dayTextField.insert_template(text)
+		self.dayTextField.insert(text)
 		
 		
 	def setup_format_menu(self):
@@ -1885,14 +1886,14 @@ class DayTextField(object):
 		self.on_text_change(self.dayTextBuffer, undoing=undoing)
 		
 	
-	def insert_template(self, template):
-		logging.debug('Inserting template')
-		currentText = self.get_text()
-		try:
-			self.insert(template.decode('utf-8') + '\n', self.dayTextBuffer.get_start_iter())
-		except UnicodeDecodeError, err:
-			logging.error('Template file contains unreadable content. Is it really just ' \
-			'a text file?')
+#	def insert_template(self, template):
+#		logging.debug('Inserting template')
+#		currentText = self.get_text()
+#		try:
+#			self.insert(template.decode('utf-8') + '\n', self.dayTextBuffer.get_start_iter())
+#		except UnicodeDecodeError, err:
+#			logging.error('Template file contains unreadable content. Is it really just ' \
+#			'a text file?')
 			
 	def highlight(self, text):
 		iter_start = self.dayTextBuffer.get_start_iter()
@@ -2093,7 +2094,11 @@ class Calendar(object):
 	def set_date(self, date):
 		if date == self.get_date():
 			return
-		'PyGTK calendars show months in range [0,11]'
+		
+		if not self._check_date(date.day):
+			return
+		
+		# PyGTK calendars show months in range [0,11]
 		self.calendar.select_month(date.month-1, date.year)
 		self.calendar.select_day(date.day)
 		
@@ -2102,6 +2107,9 @@ class Calendar(object):
 		return datetime.date(year, month+1, day)
 		
 	def setDayEdited(self, dayNumber, edited):
+		if not self._check_date(dayNumber):
+			return
+		
 		if edited:
 			self.calendar.mark_day(dayNumber)
 		else:
@@ -2113,6 +2121,20 @@ class Calendar(object):
 			self.setDayEdited(dayNumber, False)
 		for dayNumber, day in month.days.items():
 			self.setDayEdited(dayNumber, not day.empty)
+			
+	def _check_date(self, day_number):
+		'''
+		E.g. It may happen that text is edited on the 31.7. and then the month
+		is changed to June. There is no 31st in June, so we don't mark anything 
+		in the calendar. This behaviour is necessary since we use the calendar 
+		both for navigating and showing the current date.
+		'''
+		cal_date = self.get_date()
+		if not day_number in range(1, dates.get_number_of_days(cal_date.year, cal_date.month) + 1):
+			logging.debug('Non-existent date in calendar: %s.%s.%s' % \
+						(day_number, cal_date.month, cal_date.year))
+			return False
+		return True
 			
 			
 def get_image(name):

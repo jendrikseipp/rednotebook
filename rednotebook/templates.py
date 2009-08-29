@@ -139,7 +139,12 @@ the current date. You can set the date format in the preferences.
 		
 		try:
 			with open(filename, 'r') as templateFile:
-				 text = templateFile.read()
+				text = templateFile.read()
+				text = text.decode('utf-8')
+		except UnicodeDecodeError, UnicodeEncodeError:
+			logging.error('Template file contains unreadable content. Is it really just ' \
+						'a text file?')
+			#text = ''
 		except IOError, Error:
 			logging.error('Template File %s not found' % name)
 			text = ''
