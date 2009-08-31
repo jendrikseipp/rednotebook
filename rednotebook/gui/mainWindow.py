@@ -44,6 +44,7 @@ except ImportError:
 from rednotebook.util import utils
 import rednotebook.util.unicode
 
+from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
 from rednotebook.gui import widgets
@@ -87,9 +88,17 @@ class MainWindow(object):
 		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
 								filesystem.get_icons()))
 		
+		self.uimanager = gtk.UIManager()
+		
+		self.menubar_manager = MainMenuBar(self)
+		self.menubar = self.menubar_manager.get_menu_bar()
+		main_vbox = self.builder.get_object('vbox3')
+		main_vbox.pack_start(self.menubar, False)
+		main_vbox.reorder_child(self.menubar, 0)
+		
 		self.undo_redo_manager = undo.UndoRedoManager(self)
 		
-		self.uimanager = gtk.UIManager()
+		
 		
 		self.calendar = Calendar(self.builder.get_object('calendar'))
 		self.dayTextField = DayTextField(self.builder.get_object('dayTextView'), \
@@ -124,7 +133,7 @@ class MainWindow(object):
 		self.mainFrame.show()
 		
 		self.options_manager = OptionsManager(self)
-		self.export_assistant = ExportAssistant(self)#.get_instance(self)
+		self.export_assistant = ExportAssistant(self)
 		
 		self.setup_search()
 		self.setup_insert_menu()
@@ -137,31 +146,9 @@ class MainWindow(object):
 			'on_forwardOneDayButton_clicked': self.on_forwardOneDayButton_clicked,
 			'on_calendar_day_selected': self.on_calendar_day_selected,
 			
-			'on_newJournalButton_activate': self.on_newJournalButton_activate,
-			'on_openJournalButton_activate': self.on_openJournalButton_activate,
-			'on_saveMenuItem_activate': self.on_saveButton_clicked,
-			'on_saveAsMenuItem_activate': self.on_saveAsMenuItem_activate,
-			
-			'on_edit_menu_activate': self.on_edit_menu_activate,
-			'on_undo_menuitem_activate': self.undo_redo_manager.undo,
-			'on_redo_menuitem_activate': self.undo_redo_manager.redo,
-			
-			# We cannot add shortcuts for this. With shortcuts all button
-			# presses are caught and you cannot e.g. copy category entries
-			'on_copyMenuItem_activate': self.on_copyMenuItem_activate,
-			'on_pasteMenuItem_activate': self.on_pasteMenuItem_activate,
-			'on_cutMenuItem_activate': self.on_cutMenuItem_activate,
-			
-			'on_find_menuitem_activate': self.on_find_menuitem_activate,
-			'on_options_menuitem_activate': self.on_options_menuitem_activate,
-			
 			'on_previewButton_clicked': self.on_previewButton_clicked,
-			'on_checkVersionMenuItem_activate': self.on_checkVersionMenuItem_activate,
 			
 			'on_mainFrame_configure_event': self.on_mainFrame_configure_event,
-			
-			'on_exportMenuItem_activate': self.on_exportMenuItem_activate,
-			'on_statisticsMenuItem_activate': self.on_statisticsMenuItem_activate,
 			
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
 			'on_addTagButton_clicked': self.on_addTagButton_clicked,
@@ -175,11 +162,7 @@ class MainWindow(object):
 			
 			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
 			'on_cloudComboBox_changed': self.on_cloudComboBox_changed,
-			'on_info_activate': self.on_info_activate,
-			'on_example_menu_item_activate': self.on_example_menu_item_activate,
-			'on_helpMenuItem_activate': self.on_helpMenuItem_activate,
-			'on_backup_activate': self.on_backup_activate,
-			'on_quit_activate': self.on_quit_activate,
+			
 			'on_mainFrame_delete_event': self.on_mainFrame_delete_event,
 			
 			# connect_signals can only be called once, it seems
@@ -224,9 +207,9 @@ class MainWindow(object):
 		
 		shortcuts = [(self.backOneDayButton, 'clicked', '<Ctrl>Page_Down'),
 					(self.forwardOneDayButton, 'clicked', '<Ctrl>Page_Up'),
-					(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
-					(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
-					(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
+					#(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
+					#(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
+					#(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
 					]
 		
 		for button, signal, shortcut in shortcuts:
@@ -416,38 +399,7 @@ class MainWindow(object):
 		self.cloud.set_type(value_int)
 					
 					
-	def on_edit_menu_activate(self, widget):
-		'''
-		Only set the menu items for undo and redo sensitive if the actions
-		can really be performed
-		'''
-		can_undo = self.undo_redo_manager.can_undo()
-		self.builder.get_object('undo_menuitem').set_sensitive(can_undo)
-		can_redo = self.undo_redo_manager.can_redo()
-		self.builder.get_object('redo_menuitem').set_sensitive(can_redo)
-							
-	def on_copyMenuItem_activate(self, widget):
-		self.dayTextField.dayTextView.emit('copy_clipboard')
-		
-	def on_pasteMenuItem_activate(self, widget):
-		self.dayTextField.dayTextView.emit('paste_clipboard')
-		
-	def on_cutMenuItem_activate(self, widget):
-#		event = gtk.gdk.Event(gtk.gdk.KEY_PRESS)
-#		event.keyval = ord("X")
-#		event.state = gtk.gdk.CONTROL_MASK
-#		self.mainFrame.emit("key_press_event",event)
-		self.dayTextField.dayTextView.emit('cut_clipboard')
-		
-	def on_find_menuitem_activate(self, widget):
-		'''
-		Change to search page and put the cursor into the search box
-		'''
-		self.searchNotebook.set_current_page(0)
-		self.searchBox.entry.grab_focus()
-		
-	def on_options_menuitem_activate(self, widget):
-		self.options_manager.on_options_dialog()
+	
 		
 	def on_mainFrame_configure_event(self, widget, event):
 		'''
@@ -510,23 +462,7 @@ class MainWindow(object):
 			self.redNotebook.showMessage('The default journal has been opened')
 			
 		
-	def on_newJournalButton_activate(self, widget):
-		self.show_dir_chooser('new')
-		
-	def on_openJournalButton_activate(self, widget):
-		self.show_dir_chooser('open')
-		
-	def on_saveButton_clicked(self, widget):
-		self.redNotebook.saveToDisk()
-		
-	def on_saveAsMenuItem_activate(self, widget):
-		self.redNotebook.saveToDisk()
-		
-		self.show_dir_chooser('saveas')
-		
-		
-	def on_backup_activate(self, widget):
-		self.redNotebook.backupContents(backup_file=self.get_backup_file())
+	
 		
 		
 	def add_values_to_config(self):
@@ -873,30 +809,7 @@ class MainWindow(object):
 				self.dayTextField.insert(link_location)
 			else:
 				self.redNotebook.showMessage('No link location has been entered', error=True)		
-		
-		
-	def on_info_activate(self, widget):
-		self.infoDialog = self.builder.get_object('aboutDialog')
-		self.infoDialog.set_name('RedNotebook')
-		self.infoDialog.set_version(info.version)
-		self.infoDialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
-		self.infoDialog.set_comments('A Desktop Diary')
-		gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
-		self.infoDialog.set_website(info.url)
-		self.infoDialog.set_website_label(info.url)
-		self.infoDialog.set_authors(info.developers)
-		self.infoDialog.set_logo(gtk.gdk.pixbuf_new_from_file(\
-					os.path.join(filesystem.imageDir,'redNotebookIcon/rn-128.png')))
-		self.infoDialog.set_license(info.licenseText)
-		self.infoDialog.run()
-		self.infoDialog.hide()
-		
-	def on_exportMenuItem_activate(self, widget):
-		self.redNotebook.saveOldDay()		
-		self.export_assistant.run()
-		
-	def on_statisticsMenuItem_activate(self, widget):
-		self.redNotebook.stats.show_dialog(self.stats_dialog)
+	
 		
 	def on_addNewEntryButton_clicked(self, widget):
 		self.categoriesTreeView._on_add_entry_clicked(None)
@@ -907,19 +820,7 @@ class MainWindow(object):
 	def on_deleteEntryButton_clicked(self, widget):
 		self.categoriesTreeView.delete_selected_node()
 		
-	def on_example_menu_item_activate(self, widget):
-		self.redNotebook.addInstructionContent()
-		
-	def on_helpMenuItem_activate(self, widget):
-		temp_dir = self.redNotebook.dirs.tempDir
-		utils.write_file(info.helpText, os.path.join(temp_dir, 'source.txt'))
-		headers = ['RedNotebook Documentation', info.version, '']
-		options = {'toc': 1,}
-		html = markup.convert(info.helpText, 'xhtml', headers, options)
-		utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
-		
-	def on_checkVersionMenuItem_activate(self, widget):
-		utils.check_new_version(self, info.version)
+	
 		
 		
 	def set_date(self, newMonth, newDate, day):

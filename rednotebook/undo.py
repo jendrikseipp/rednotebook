@@ -30,8 +30,11 @@ class UndoRedoManager(object):
 	buffer = 20
 	def __init__(self, main_window):
 		self.main_window = main_window
-		self.undo_menu_item = self.main_window.builder.get_object('undo_menuitem')
-		self.redo_menu_item = self.main_window.builder.get_object('redo_menuitem')
+		#self.undo_menu_item = self.main_window.builder.get_object('undo_menuitem')
+		#self.redo_menu_item = self.main_window.builder.get_object('redo_menuitem')
+		
+		self.undo_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo')
+		self.redo_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo')
 		
 		self.undo_stack = []
 		self.redo_stack = []

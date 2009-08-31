@@ -43,6 +43,9 @@ class TemplateManager(object):
 	def on_insert(self, action):
 		title = action.get_name()
 		
+		# strip 'Insert'
+		title = title[6:]
+		
 		if title == 'Weekday':
 			text = self.get_weekday_text()
 		else:
@@ -214,7 +217,7 @@ the current date. You can set the date format in the preferences.
 		for title in sorted_titles:
 			if title not in map(str, range(1,8)):
 				insert_menu_xml += '''\
-				<menuitem action="%s"/>
+				<menuitem action="Insert%s"/>
 				''' % title
 		insert_menu_xml += '''\
 			</menu>
@@ -266,7 +269,7 @@ the current date. You can set the date format in the preferences.
 		actions = []			
 		
 		for title in sorted_titles:
-			insert_action = (title, None, title, None, None, \
+			insert_action = ('Insert' + title, None, title, None, None, \
 					lambda widget: self.on_insert(widget))
 			actions.append(insert_action)
 			edit_action = ('Edit' + title, None, title, None, None, \
