@@ -51,14 +51,17 @@ O Automatic insertion of holidays
 O Import of exported backups
 O Automatic Backups
 
-0.8.6
-O Password protection
-X Tray icon
-  (Closing the window sends RedNotebook to the tray)
+0.8.7
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
    O Show message in windows installer
+
+0.8.6
+O Password protection
+X Added an optional tray icon
+  (Closing the window sends RedNotebook to the system tray)
+X The menubar has been rewritten to support gtk+ 2.14
 
 
 

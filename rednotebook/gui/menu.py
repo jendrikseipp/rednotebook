@@ -1,6 +1,21 @@
-'''\
-
-'''
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
 import os
 
 import gtk
@@ -10,13 +25,10 @@ from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook.util import markup
 
+
 class MainMenuBar(object):
-	#def __new__(cls, uimanager, *args, **kwargs):
-		
 	
 	def __init__(self, main_window, *args, **kwargs):
-		#gtk.MenuBar.__init__(self, *args, **kwargs)
-		
 		self.main_window = main_window
 		self.uimanager = main_window.uimanager
 		self.redNotebook = self.main_window.redNotebook
@@ -150,11 +162,10 @@ class MainMenuBar(object):
 		
 		Probably useless since the buttons are set in undo.py
 		'''
-		return
-		#can_undo = self.main_window.undo_redo_manager.can_undo()
-		#self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo').set_sensitive(can_undo)
-		#can_redo = self.main_window.undo_redo_manager.can_redo()
-		#self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo').set_sensitive(can_redo)
+		can_undo = self.main_window.undo_redo_manager.can_undo()
+		self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo').set_sensitive(can_undo)
+		can_redo = self.main_window.undo_redo_manager.can_redo()
+		self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo').set_sensitive(can_redo)
 		
 	def on_undo(self, widget):
 		self.main_window.undo_redo_manager.undo()

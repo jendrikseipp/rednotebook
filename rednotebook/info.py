@@ -21,7 +21,7 @@ from __future__ import with_statement
 
 import os
 
-version = '0.8.5'
+version = '0.8.6'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'

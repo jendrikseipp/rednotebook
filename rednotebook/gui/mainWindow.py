@@ -357,8 +357,6 @@ class MainWindow(object):
 		self.format_toolbutton.set_sensitive(not self.preview_mode)
 		
 			
-		
-			
 	def setup_search(self):
 		self.searchNotebook = self.builder.get_object('searchNotebook')
 		
@@ -397,8 +395,6 @@ class MainWindow(object):
 	def on_cloudComboBox_changed(self, cloudComboBox):
 		value_int = cloudComboBox.get_active()
 		self.cloud.set_type(value_int)
-					
-					
 	
 		
 	def on_mainFrame_configure_event(self, widget, event):
@@ -460,9 +456,6 @@ class MainWindow(object):
 			default_dir = self.redNotebook.dirs.defaultDataDir
 			self.redNotebook.open_journal(default_dir, load_files=True)
 			self.redNotebook.showMessage('The default journal has been opened')
-			
-		
-	
 		
 		
 	def add_values_to_config(self):
@@ -820,14 +813,11 @@ class MainWindow(object):
 	def on_deleteEntryButton_clicked(self, widget):
 		self.categoriesTreeView.delete_selected_node()
 		
-	
-		
-		
 	def set_date(self, newMonth, newDate, day):
 		self.categoriesTreeView.clear()
-		self.calendar.setMonth(newMonth)
 		
 		self.calendar.set_date(newDate)
+		self.calendar.setMonth(newMonth)
 		
 		# Converting markup to html takes time, so only do it when necessary
 		if self.preview_mode:
@@ -1993,21 +1983,33 @@ class Calendar(object):
 		self.calendar = calendar
 		
 	def set_date(self, date):
+		'''
+		A date check makes no sense here since it is normal that a new month is 
+		set here that will contain the day
+		'''
 		if date == self.get_date():
 			return
 		
-		if not self._check_date(date.day):
-			return
+		# We need to set the day temporarily to a day that is present in all months
+		self.calendar.select_day(1)
 		
 		# PyGTK calendars show months in range [0,11]
 		self.calendar.select_month(date.month-1, date.year)
+		
+		# Select the day after the month and year have been set
 		self.calendar.select_day(date.day)
 		
 	def get_date(self):
 		year, month, day = self.calendar.get_date()
+		#print year, month, day
 		return datetime.date(year, month+1, day)
 		
 	def setDayEdited(self, dayNumber, edited):
+		'''
+		It may happen that we try to mark a day that is non-existent in this month
+		if we switch e.g. from Aug 31 to Sep 1. There is no Sep 31. Still
+		saveOldDay tries to mark the 31st.
+		'''
 		if not self._check_date(dayNumber):
 			return
 		
@@ -2017,9 +2019,10 @@ class Calendar(object):
 			self.calendar.unmark_day(dayNumber)
 			
 	def setMonth(self, month):
-		month_days = dates.get_number_of_days(month.yearNumber, month.monthNumber)
-		for dayNumber in range(1, month_days + 1):
-			self.setDayEdited(dayNumber, False)
+		#month_days = dates.get_number_of_days(month.yearNumber, month.monthNumber)
+		#for dayNumber in range(1, month_days + 1):
+		#	self.setDayEdited(dayNumber, False)
+		self.calendar.clear_marks()
 		for dayNumber, day in month.days.items():
 			self.setDayEdited(dayNumber, not day.empty)
 			
@@ -2030,10 +2033,11 @@ class Calendar(object):
 		in the calendar. This behaviour is necessary since we use the calendar 
 		both for navigating and showing the current date.
 		'''
-		cal_date = self.get_date()
-		if not day_number in range(1, dates.get_number_of_days(cal_date.year, cal_date.month) + 1):
+		cal_year, cal_month, cal_day = self.calendar.get_date()
+		cal_month += 1
+		if not day_number in range(1, dates.get_number_of_days(cal_year, cal_month) + 1):
 			logging.debug('Non-existent date in calendar: %s.%s.%s' % \
-						(day_number, cal_date.month, cal_date.year))
+						(day_number, cal_month, cal_year))
 			return False
 		return True
 			
