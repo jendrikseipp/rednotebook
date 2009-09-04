@@ -1,5 +1,13 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.6 (2009-09-04) ===
+ * Added an optional tray icon
+   (Closing the window sends RedNotebook to the system tray)
+ * The menubar has been rewritten to support gtk+ 2.14
+ * Fix "add example content"
+ * Fix calendar issue (again)
+ * Fix crash on Hardy
+
 === 0.8.5 (2009-08-29) ===
  * Spell Checking (not for Windows)
    (Requires gtkspell for python. This is included in the python-gnome2-extras package)
