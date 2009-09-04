@@ -1,5 +1,8 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.6.1 (2009-09-04) ===
+ * Fix duplicate naming bug (LP:424550)
+
 === 0.8.6 (2009-09-04) ===
  * Added an optional tray icon
    (Closing the window sends RedNotebook to the system tray)

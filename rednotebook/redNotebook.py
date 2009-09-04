@@ -131,8 +131,15 @@ pygtk.require("2.0")
 
 try:
 	import gtk
+	#logging.disable(logging.DEBUG)
+	#logging.disable(logging.INFO)
+	#logging.disable(logging.ERROR)
+	#logging.disable(logging.WARNING)
+	#logging.disable(logging.CRITICAL)
+	#gtk.gdk.threads_init()
+	#gtk.gdk.threads_enter()
+	
 	import gobject
-	gtk.gdk.threads_init()
 except (ImportError, AssertionError):
 	logging.error('gtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)

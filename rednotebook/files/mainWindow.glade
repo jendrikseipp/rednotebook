@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <interface>
   <!-- interface-requires gtk+ 2.12 -->
-  <!-- interface-naming-policy toplevel-contextual -->
+  <!-- interface-naming-policy project-wide -->
   <object class="GtkListStore" id="liststore1">
     <columns>
       <!-- column-name item -->
@@ -559,7 +559,7 @@
               <object class="GtkComboBoxEntry" id="categoriesComboBox">
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                  <object class="GtkCellRendererText" id="cellrenderertext4"/>
                 </child>
               </object>
               <packing>
@@ -580,7 +580,7 @@
               <object class="GtkComboBoxEntry" id="entryComboBox">
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                  <object class="GtkCellRendererText" id="cellrenderertext5"/>
                 </child>
               </object>
               <packing>
@@ -644,8 +644,8 @@
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">save</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
