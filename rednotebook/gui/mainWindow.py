@@ -227,7 +227,7 @@ class MainWindow(object):
 		logging.debug('Tray icon visible: %s' % visible)
 		
 		self.tray_icon.set_tooltip('RedNotebook')
-		icon_file = os.path.join(self.redNotebook.dirs.frameIconDir, 'rn-48.png')
+		icon_file = os.path.join(self.redNotebook.dirs.frameIconDir, 'rn-32.png')
 		self.tray_icon.set_from_file(icon_file)
 		
 		self.tray_icon.connect('activate', self.on_tray_icon_activated)

@@ -75,7 +75,8 @@ py2exeParameters = {
 					'data_files' : [('files', ['rednotebook/files/mainWindow.glade',
 												'rednotebook/files/stylesheet.css',
 												'rednotebook/files/default.cfg']),
-									('images', get_image_files())],
+									('images', get_image_files()),
+									('images/redNotebookIcon', ['rednotebook/images/redNotebookIcon/rn-32.png']),],
 	  	  			}
 
 if 'py2exe' in sys.argv:
