@@ -99,7 +99,6 @@ class MainWindow(object):
 		self.undo_redo_manager = undo.UndoRedoManager(self)
 		
 		
-		
 		self.calendar = Calendar(self.redNotebook, self.builder.get_object('calendar'))
 		self.dayTextField = DayTextField(self.builder.get_object('dayTextView'), \
 										self.undo_redo_manager)

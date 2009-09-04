@@ -455,7 +455,6 @@ Filenames have to have the following form: 2009-01.txt \
 				#print monthContents
 				#monthContents = unicode.get_unicode_dict(monthContents)
 				#print monthContents
-				#print '*'*20
 				logging.debug('Finished loading file "%s"' % monthFileString)
 				self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
 		except yaml.YAMLError, exc:
