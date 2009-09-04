@@ -228,7 +228,7 @@ def get_platform_info():
 		try:
 			names_values.append((name, getattr(object, value)))
 		except AttributeError, err:
-			logging.exception('%s could not be determined' % name)
+			logging.info('%s could not be determined' % name)
 			
 	strings = []
 	for name, value in names_values:

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <interface>
-  <requires lib="gtk+" version="2.14"/>
+  <!-- interface-requires gtk+ 2.12 -->
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkListStore" id="liststore1">
     <columns>
@@ -121,7 +121,6 @@
                   <object class="GtkCalendar" id="calendar">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <signal name="day_selected" handler="on_calendar_day_selected"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>

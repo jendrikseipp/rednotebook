@@ -100,7 +100,7 @@ class MainWindow(object):
 		
 		
 		
-		self.calendar = Calendar(self.builder.get_object('calendar'))
+		self.calendar = Calendar(self.redNotebook, self.builder.get_object('calendar'))
 		self.dayTextField = DayTextField(self.builder.get_object('dayTextView'), \
 										self.undo_redo_manager)
 		self.dayTextField.dayTextView.grab_focus()
@@ -144,7 +144,7 @@ class MainWindow(object):
 			'on_backOneDayButton_clicked': self.on_backOneDayButton_clicked,
 			'on_todayButton_clicked': self.on_todayButton_clicked,
 			'on_forwardOneDayButton_clicked': self.on_forwardOneDayButton_clicked,
-			'on_calendar_day_selected': self.on_calendar_day_selected,
+			#'on_calendar_day_selected': self.on_calendar_day_selected,
 			
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			
@@ -418,7 +418,8 @@ class MainWindow(object):
 		self.redNotebook.goToNextDay()
 		
 	def on_calendar_day_selected(self, widget):
-		self.redNotebook.changeDate(self.calendar.get_date())
+		pass#
+		#self.redNotebook.changeDate(self.calendar.get_date())
 		
 	def show_dir_chooser(self, type, dir_not_found=False):
 		dir_chooser = self.builder.get_object('dir_chooser')
@@ -1979,16 +1980,26 @@ class Statusbar(object):
 	
 		
 class Calendar(object):
-	def __init__(self, calendar):
+	def __init__(self, redNotebook, calendar):
+		self.redNotebook = redNotebook
 		self.calendar = calendar
+		
+		self.date_listener = self.calendar.connect('day-selected', self.on_day_selected)
+		
+	def on_day_selected(self, cal):
+		self.redNotebook.changeDate(self.get_date())
 		
 	def set_date(self, date):
 		'''
 		A date check makes no sense here since it is normal that a new month is 
 		set here that will contain the day
 		'''
+		# Probably useless
 		if date == self.get_date():
 			return
+		
+		# We do not want to listen to this programmatic date change
+		self.calendar.handler_block(self.date_listener)
 		
 		# We need to set the day temporarily to a day that is present in all months
 		self.calendar.select_day(1)
@@ -1999,16 +2010,19 @@ class Calendar(object):
 		# Select the day after the month and year have been set
 		self.calendar.select_day(date.day)
 		
+		# We want to listen to manual date changes
+		self.calendar.handler_unblock(self.date_listener)
+		
 	def get_date(self):
 		year, month, day = self.calendar.get_date()
-		#print year, month, day
 		return datetime.date(year, month+1, day)
 		
 	def setDayEdited(self, dayNumber, edited):
 		'''
 		It may happen that we try to mark a day that is non-existent in this month
-		if we switch e.g. from Aug 31 to Sep 1. There is no Sep 31. Still
-		saveOldDay tries to mark the 31st.
+		if we switch by clicking on the calendar e.g. from Aug 31 to Sep 1.
+		The month has already changed and there is no Sep 31. 
+		Still saveOldDay tries to mark the 31st.
 		'''
 		if not self._check_date(dayNumber):
 			return

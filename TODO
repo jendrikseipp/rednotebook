@@ -52,16 +52,22 @@ O Import of exported backups
 O Automatic Backups
 
 0.8.7
+O Password protection
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
    O Show message in windows installer
+O Language selection for spell checking
+O Update help
+  O explain how to use Categories as Todo items there
 
 0.8.6
-O Password protection
 X Added an optional tray icon
   (Closing the window sends RedNotebook to the system tray)
 X The menubar has been rewritten to support gtk+ 2.14
+X Fix "add example content"
+X Fix calendar issue (again)
+X Do not enforce gtk+ 2.14 anymore Remove <requires> tag from glade file
 
 
 

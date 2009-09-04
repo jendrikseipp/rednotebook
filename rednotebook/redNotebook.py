@@ -485,6 +485,7 @@ Filenames have to have the following form: 2009-01.txt \
 		if not Month.sameMonth(newDate, oldDate) or self.month is None:
 			self.month = self.loadMonth(self.date)
 			self.month.visited = True
+		
 		self.frame.set_date(self.month, self.date, self.day)
 		
 		
@@ -593,7 +594,6 @@ Filenames have to have the following form: 2009-01.txt \
 			
 	
 	def addInstructionContent(self):
-		#if not self.testing:
 		self.go_to_first_empty_day()
 		current_date = self.date
 		
