@@ -281,9 +281,9 @@ class OptionsManager(object):
 		
 		self.options.append(TickOption('Check for new version at startup', 'checkForNewVersion'))
 		
-		# test on windows first
-		#self.options.append(TickOption('Close to system tray', 'closeToTray',
-		#		tooltip='Closing the window will send RedNotebook to the tray'))
+		
+		self.options.append(TickOption('Close to system tray', 'closeToTray',
+				tooltip='Closing the window will send RedNotebook to the tray'))
 		
 		spell_check_option = TickOption('Spell Check', 'spellcheck',
 				tooltip='Requires gtkspell for python. This is included in '

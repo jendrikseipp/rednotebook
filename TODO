@@ -67,7 +67,7 @@ X Added an optional tray icon
 X The menubar has been rewritten to support gtk+ 2.14
 X Fix "add example content"
 X Fix calendar issue (again)
-X Do not enforce gtk+ 2.14 anymore Remove <requires> tag from glade file
+X Fix crash on Hardy
 
 
 
