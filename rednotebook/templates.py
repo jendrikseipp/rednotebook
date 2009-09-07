@@ -211,7 +211,7 @@ the current date. You can set the date format in the preferences.
 		
 		insert_menu_xml = '''\
 			<menu action="InsertMenu">
-				<menuitem action="Weekday"/>
+				<menuitem action="InsertWeekday"/>
 				<separator name="sep4"/>
 		'''
 		for title in sorted_titles:
@@ -276,7 +276,7 @@ the current date. You can set the date format in the preferences.
 					lambda widget: self.on_edit(widget))
 			actions.append(edit_action)
 			
-		actions.append(('Weekday', gtk.STOCK_HOME, "This Weekday's Template", None, None, \
+		actions.append(('InsertWeekday', gtk.STOCK_HOME, "This Weekday's Template", None, None, \
 					lambda widget: self.on_insert(widget)))
 		
 		actions.append(('EditMenu', gtk.STOCK_EDIT, 'Edit Template', None, None, \

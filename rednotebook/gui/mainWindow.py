@@ -594,13 +594,11 @@ class MainWindow(object):
 		# Create a Menu
 		menu = uimanager.get_widget('/FormatMenu')
 		
-		tooltips = gtk.Tooltips()
-		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
 		self.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
 		self.format_toolbutton.set_label('Format')
 		tip = 'Format the selected text or category entry'
-		self.format_toolbutton.set_tooltip(tooltips, tip)
+		self.format_toolbutton.set_tooltip_text(tip)
 		self.format_toolbutton.set_menu(menu)
 		bold_func = apply_format#lambda widget: self.dayTextField.apply_format('bold')
 		self.format_toolbutton.connect('clicked', bold_func)
