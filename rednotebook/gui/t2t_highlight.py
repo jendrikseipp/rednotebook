@@ -4,8 +4,10 @@ import sys
 import os.path
 import pango
 
+import time
+
 # if you don't have pygtkcodebuffer installed...
-sys.path.insert(0, os.path.abspath("./../"))
+sys.path.insert(0, os.path.abspath("./../external/pygtkcodebuffer"))
 
 from gtkcodebuffer import CodeBuffer, Pattern, String, LanguageDefinition 
 from gtkcodebuffer import SyntaxLoader, add_syntax_path, _log_debug
@@ -44,8 +46,6 @@ class MultiPattern(Pattern):
 		if not m: return None
 		
 		iter_pairs = []
-		
-		#print 'GROUPS', m.groups()
 		
 		for group, tag_name in self.group_tag_pairs:
 			mstart, mend = m.start(group), m.end(group)
@@ -138,13 +138,16 @@ class OverlapCodeBuffer(CodeBuffer):
 			max_end = max([end_iter for start_iter, end_iter, tag_name in group_iters_and_tags], key=key)
 			
 			#print max_end.get_offset(), map(lambda (siter, enditer, tag): enditer.get_offset(), group_iters_and_tags)
-			
+			#time.sleep(1)
 			# remove all tags from start..mend (mend == buffer-end if no match)		
-			self.remove_all_tags(start, max_end)
+			##self.remove_all_tags(start, max_end)
+			self.remove_all_tags(start, end)
+			#time.sleep(1)
 			# make start..mstart = DEFAUL (mstart == buffer-end if no match)
 			if not start.equal(min_start):
 				_log_debug("Apply DEFAULT")
-				self.apply_tag_by_name("DEFAULT", start, min_start)
+				##self.apply_tag_by_name("DEFAULT", start, min_start)
+				self.apply_tag_by_name("DEFAULT", start, end)
 			
 			for index, (mstart, mend, tagname) in enumerate(group_iters_and_tags):
 				
@@ -187,62 +190,51 @@ class OverlapCodeBuffer(CodeBuffer):
 				finished = True
 				continue
 
-def get_patterns(markup_symbols, style='DEFAULT', *args, **kwargs):
-	
-	regex = r'__(.+)__'
-	
-	pre = Pattern(r'(%s).+%s' % ((markup_symbols,) * 2), group=1, style='grey')
-	main = Pattern(r'%s(.+)%s' % ((markup_symbols,) * 2), group=1, style=style)
-	post = Pattern(r'%s.+(%s)' % ((markup_symbols,) * 2), group=1, style='grey')
-	
-	return [pre, main, post]
+def get_pattern(markup_symbols, style):
+	regex = r"(%s)(.+?)(%s)" % ((markup_symbols, ) * 2)
+	group_style_pairs = [(1, 'grey'), (2, style), (3, 'grey')]
+	return MultiPattern(regex, group_style_pairs)
 
 
 # additional style definitions:
 #   the update_syntax() method of CodeBuffer allows you to define new and modify
 #   already defined styles. Think of it like CSS.
-styles = { 'DEFAULT':   {'font': 'serif'},
-		   'bold':	  {'weight': 700},
+styles = { 'DEFAULT':   {},#{'font': 'serif'},
+		   'bold':	  {'weight': pango.WEIGHT_BOLD},
 		   'comment':   {'foreground': 'gray',
-						 'weight': 700},
-		   'heading':   {'variant': pango.VARIANT_SMALL_CAPS,
-						 'underline': pango.UNDERLINE_DOUBLE},
+						 #'weight': 700
+						 },
+		   #'heading':   {'variant': pango.VARIANT_SMALL_CAPS,
+			#			 'underline': pango.UNDERLINE_DOUBLE},
 		   'underlined':   {#'variant': pango.VARIANT_SMALL_CAPS,
 						 'underline': pango.UNDERLINE_SINGLE},
 			'grey':		{'foreground': 'gray'},
 			'red':		{'foreground': 'red'},
 			'italic':	{'style': pango.STYLE_ITALIC, # does not work
-						'foreground': 'green'},
+						#'foreground': 'green'
+						},
 			'stricken':	{'strikethrough': True},
 			'header':	{'weight': pango.WEIGHT_ULTRABOLD,
 						'scale': pango.SCALE_XX_LARGE,
 						'variant': pango.VARIANT_SMALL_CAPS},
+			'raw':		{},
 			}
 
 # Syntax definition
-#emph  = String(r"\*", r"\*", style="comment")
-#emph2 = String(r"\*\*", r"\*\*", style="bold")
-#emph2 = String(r"\*\*", r"\*\*", style="bold")
-#code  = String(r'`', r'`', style="special")
-#head  = MultiPattern(r"^#+.+$", style="heading")
-#list1 = Pattern(r"^(- ).+$", style="comment", group=1)
-#list2 = Pattern(r"^(\d+\. ).+$", style="comment", group=1)
 
-bold = MultiPattern(r"(\*\*){1}([^\*\*]+)(/*/*){1}", [(1, 'grey'), (2, 'bold'), (3, 'grey')])
-underlined = MultiPattern(r"(__){1}([^__]+)(__){1}", [(1, 'grey'), (2, 'underlined'), (3, 'grey')])
-italic = MultiPattern(r"(//){1}([^//]+)(//){1}", [(1, 'grey'), (2, 'italic'), (3, 'grey')])
-stricken = MultiPattern(r"(--){1}([^--]+)(--){1}", [(1, 'grey'), (2, 'stricken'), (3, 'grey')])
-
-header = MultiPattern(r"(===){1}([^===]+)(===){1}", [(1, 'grey'), (2, 'header'), (3, 'grey')])
+list = MultiPattern(r"^ *(- ).+$", [(1, 'bold')])
+comment = MultiPattern(r'^(\%.*)$', [(1, 'comment')])
 
 rules = [
-		bold,
-		underlined, 
-		italic,
-		stricken,
-		header,
+		get_pattern('\*\*', 'bold'),
+		get_pattern('__', 'underlined'),
+		get_pattern('//', 'italic'),
+		get_pattern('--', 'stricken'),
+		get_pattern('===', 'header'),
+		list,
+		comment,
+		get_pattern('""', 'raw') # verified in RedNotebook
 		]
-#rules += get_patterns(markup_symbols='aa', style='bold')
 
 
 # create lexer: 
