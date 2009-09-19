@@ -22,11 +22,9 @@ from __future__ import with_statement
 import sys
 import datetime
 import os
-import zipfile
 import operator
 import collections
 import time
-import textwrap
 from optparse import OptionParser, OptionValueError
 
 # set the locale for all categories to the user’s default setting 
@@ -313,8 +311,11 @@ class RedNotebook:
 		
 		filesystem.makeDirectories([self.dirs.redNotebookUserDir, self.dirs.dataDir,])
 		
+		something_saved = False
+		
 		for yearAndMonth, month in self.months.items():
-			if not month.empty and month.visited:
+			if not month.empty and month.edited:
+				something_saved = True
 				monthFileString = os.path.join(self.dirs.dataDir, yearAndMonth + \
 											filesystem.fileNameExtension)
 				with open(monthFileString, 'w') as monthFile:
@@ -325,12 +326,17 @@ class RedNotebook:
 							monthContent[dayNumber] = day.content
 					#month.prettyPrint()
 					yaml.dump(monthContent, monthFile, Dumper=Dumper)
+					month.edited = False
 		
-		self.showMessage('The content has been saved to %s' % self.dirs.dataDir, error=False)
+		if something_saved:
+			self.showMessage('The content has been saved to %s' % self.dirs.dataDir, error=False)
+		else:
+			self.showMessage('Nothing to save', error=False)
 		
-		self.config.saveToDisk()
+		if self.config.changed():
+			self.config.saveToDisk()
 		
-		if not (exitImminent or changing_journal):
+		if not (exitImminent or changing_journal) and something_saved:
 			# Update cloud
 			self.frame.cloud.update(force_update=True)
 			
@@ -479,8 +485,13 @@ Filenames have to have the following form: 2009-01.txt \
 	
 	def saveOldDay(self):
 		'''Order is important'''
+		old_content = self.day.content
 		self.day.content = self.frame.categoriesTreeView.get_day_content()
 		self.day.text = self.frame.get_day_text()
+		
+		content_changed = not (old_content == self.day.content)
+		if content_changed:
+			self.month.edited = True
 		
 		self.frame.calendar.setDayEdited(self.date.day, not self.day.empty)
 	
@@ -491,7 +502,7 @@ Filenames have to have the following form: 2009-01.txt \
 		
 		if not Month.sameMonth(newDate, oldDate) or self.month is None:
 			self.month = self.loadMonth(self.date)
-			self.month.visited = True
+			#self.month.visited = True
 		
 		self.frame.set_date(self.month, self.date, self.day)
 		
@@ -811,7 +822,7 @@ class Month(object):
 		for dayNumber, dayContent in monthContent.iteritems():
 			self.days[dayNumber] = Day(self, dayNumber, dayContent)
 			
-		self.visited = False
+		self.edited = False
 	
 	
 	def getDay(self, dayNumber):

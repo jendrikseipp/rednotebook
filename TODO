@@ -12,6 +12,7 @@ O i18n
 O Todo tab next to clouds?
 O Cloud words include list
 O Image resizing?
+O Add "Start minimized" command line parameter?
 
 
 === Maybe even some of those features will make it into RedNotebook ===
@@ -57,10 +58,13 @@ X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
    O Show message in windows installer
+   O Save dataDir relative to exe
 O Language selection for spell checking
 O Update help
   O explain how to use Categories as Todo items there
 X Fix "Insert this Weekday's Template"
+X Only save content and config when they have been changed
+O word wrapping while editing category entries
 
 
 

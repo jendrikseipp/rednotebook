@@ -8,17 +8,20 @@ import time
 
 # if you don't have pygtkcodebuffer installed...
 sys.path.insert(0, os.path.abspath("./../external/pygtkcodebuffer"))
+sys.path.insert(0, os.path.abspath("./../../"))
 
 from gtkcodebuffer import CodeBuffer, Pattern, String, LanguageDefinition 
 from gtkcodebuffer import SyntaxLoader, add_syntax_path, _log_debug
 
+from rednotebook.gui.richtext import HtmlEditor
+from rednotebook.util import markup
 
 txt = """
 === Header ===
 **bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken--
 
 # About 
-This example shows you a hard-coded markdown 
+This example shows you a hard-coded\\ markdown 
 syntax-definition. Supporting `code-segments`, 
 **emphasized text**, **2nd** or *emphasized text*.
 
@@ -90,7 +93,7 @@ class OverlapLanguageDefinition(LanguageDefinition):
 				continue
 			
 			##if m[0].compare(mstart)==0 and m[1].compare(mend)>0:
-			if min_start.compare(mstart)==0 and min_end.compare(mend)>0:
+			if min_start.compare(mstart) == 0 and max_end.compare(mend) > 0:
 				mstart, mend = min_start, max_end
 				#mtag = rule.tag_name
 				selected_pairs = iter_pairs
@@ -116,7 +119,7 @@ class OverlapCodeBuffer(CodeBuffer):
 			
 		# if not end defined
 		if not end: 
-			print 'Update'
+			#print 'Update'
 			end = self.get_end_iter()
 		
 		# We do not use recursion -> long files exceed rec-limit!
@@ -190,8 +193,11 @@ class OverlapCodeBuffer(CodeBuffer):
 				finished = True
 				continue
 
-def get_pattern(markup_symbols, style):
-	regex = r"(%s)(.+?)(%s)" % ((markup_symbols, ) * 2)
+def get_pattern(markup_symbols, style, allow_whitespace=False):
+	if allow_whitespace:
+		regex = r"(%s)(.+?)(%s)" % ((markup_symbols, ) * 2)
+	else:
+		regex = r"(%s)([^\s].+?[^\s])(%s)" % ((markup_symbols, ) * 2)
 	group_style_pairs = [(1, 'grey'), (2, style), (3, 'grey')]
 	return MultiPattern(regex, group_style_pairs)
 
@@ -230,11 +236,13 @@ rules = [
 		get_pattern('__', 'underlined'),
 		get_pattern('//', 'italic'),
 		get_pattern('--', 'stricken'),
-		get_pattern('===', 'header'),
+		get_pattern('===', 'header', allow_whitespace=True),
 		list,
 		comment,
-		get_pattern('""', 'raw') # verified in RedNotebook
+		get_pattern('""', 'raw', allow_whitespace=False) # verified in RedNotebook
 		]
+
+
 
 
 # create lexer: 
@@ -245,7 +253,21 @@ buff = OverlapCodeBuffer(lang=lang, styles=styles)
 
 win = gtk.Window(gtk.WINDOW_TOPLEVEL)
 scr = gtk.ScrolledWindow()
-win.add(scr)
+
+html_editor = HtmlEditor()
+
+def change_text(widget):
+	html = markup.convert(widget.get_text(widget.get_start_iter(), widget.get_end_iter()), \
+						  'xhtml', append_whitespace=True)
+			
+	html_editor.load_html(html)
+	
+buff.connect('changed', change_text)
+
+vbox = gtk.VBox()
+vbox.pack_start(scr)
+vbox.pack_start(html_editor)
+win.add(vbox)
 scr.add(gtk.TextView(buff))
 		
 win.set_default_size(600,400)

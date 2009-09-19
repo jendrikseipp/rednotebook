@@ -63,6 +63,8 @@ class Config(dict):
 			
 		self.set_default_values()
 		
+		self.old_config = self.copy()
+		
 		
 	def set_default_values(self):
 		'''
@@ -161,8 +163,13 @@ class Config(dict):
 	
 	def write_list(self, key, list):
 		self[key] = ', '.join(list)
+		
+	def changed(self):
+		return not (self == self.old_config)
 						
 	def saveToDisk(self):
+		assert self.changed()
+		
 		try:
 			with open(self.dirs.configFile, 'w') as configFile:
 				for key, value in self.iteritems():
@@ -171,5 +178,5 @@ class Config(dict):
 				logging.info('Configuration has been saved')
 		except IOError:
 			logging.error('Configuration could not be saved')
-        
+			
 
