@@ -62,9 +62,6 @@
       <object class="GtkVBox" id="vbox3">
         <property name="visible">True</property>
         <child>
-          <placeholder/>
-        </child>
-        <child>
           <object class="GtkHPaned" id="mainPane">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -89,6 +86,7 @@
                     <child>
                       <object class="GtkToolButton" id="todayButton">
                         <property name="visible">True</property>
+                        <property name="tooltip_text" translatable="yes">Jump to today</property>
                         <property name="label" translatable="yes">Today</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-home</property>
@@ -431,16 +429,17 @@
             </child>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkStatusbar" id="statusbar">
             <property name="visible">True</property>
+            <property name="spacing">2</property>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>

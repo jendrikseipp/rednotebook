@@ -51,17 +51,21 @@ O Automatic insertion of holidays
 0.8.x
 O Import of exported backups
 O Automatic Backups
+O Password protection
 
 0.8.7
-O Password protection
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
    O Show message in windows installer
    O Save dataDir relative to exe
 O Language selection for spell checking
+O Make the UI easier to understand
+  O provide more tooltips
 O Update help
   O explain how to use Categories as Todo items there
+  O make help topic centric
+  X cleanup template help
 X Fix "Insert this Weekday's Template"
 X Only save content and config when they have been changed
 O word wrapping while editing category entries

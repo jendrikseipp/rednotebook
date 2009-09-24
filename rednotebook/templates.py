@@ -30,6 +30,54 @@ import gtk
 
 from rednotebook.util import filesystem
 
+
+
+example_text = '''\
+=== This is a template ===
+
+To edit it, click the arrow right of "Template" \
+and select the template under "Edit Template".
+
+Templates can contain any formatting or content that is also \
+allowed in normal entries.
+
+Your text can be:
+
+- **bold**
+- //italic//
+- __underlined__
+- --stricken--
+
+
+You can add images to your template:
+
+**Images:** [""/path/to/your/picture"".jpg]
+
+You can link to almost everything:
+
+- **links to files on your computer:** [filename.txt ""/path/to/filename.txt""]
+- **links to directories:** [directory name ""/path/to/directory/""]
+- **links to websites:** [RedNotebook Homepage ""http://rednotebook.sourceforge.net""]
+
+
+As you see, **bullet lists** are also available. As always you have to add two \
+empty lines to end a list.
+
+Additionally you can have **titles** and **horizontal lines**:
+
+===Title===
+
+==================== 
+
+**Macros**:
+
+When a template is inserted, every occurence of "$date$" is converted to \
+the current date. You can set the date format in the preferences.
+'''
+
+
+
+
 class TemplateManager(object):
 	def __init__(self, mainWindow):
 		self.mainWindow = mainWindow
@@ -78,43 +126,7 @@ class TemplateManager(object):
 		dialog.get_content_area().pack_start(entry)
 		dialog.show_all()
 		response = dialog.run()
-		dialog.hide()
-		
-		example_text = '''\
-This is a template file. It can contain any formatting or content that is also \
-allowed in normal entries.
-
-Your text can be:
-
-- **bold**
-- //italic//
-- __underlined__
-- --stricken--
-
-
-You can add images to your template:
-
-**images:** [""/path/to/your/picture"".jpg]
-
-You can link to almost everything:
-
-- **links to files on your computer:** [filename.txt ""/path/to/filename.txt""]
-- **links to directories:** [directory name ""/path/to/directory/""]
-- **links to websites:** [RedNotebook Homepage ""http://rednotebook.sourceforge.net""]
-
-
-As you see, **bullet lists** are also available. As always you have to add two \
-empty lines to the end of a list.
-
-Additionally you can have **titles** and **horizontal lines**:
-
-===Title===
-
-==================== 
-
-When a template is inserted, every occurence of "$date$" is converted to \
-the current date. You can set the date format in the preferences.
-		'''
+		dialog.hide()		
 		
 		if response == gtk.RESPONSE_OK:
 			title = entry.get_text()
@@ -144,7 +156,7 @@ the current date. You can set the date format in the preferences.
 			with open(filename, 'r') as templateFile:
 				text = templateFile.read()
 		except IOError, Error:
-			logging.error('Template File %s not found' % name)
+			logging.error('Template File %s not found' % filename)
 			text = ''
 			
 		try:
@@ -161,6 +173,11 @@ the current date. You can set the date format in the preferences.
 		date_string = self.mainWindow.redNotebook.config.read('dateTimeString', default_date_string)
 		date = time.strftime(date_string)
 		text = text.replace('$date$', date)
+		
+		if not text:
+			text = 'This template contains no text or has unreadable content. To edit it, ' \
+					'click the arrow right of "Template" ' \
+					'and select the template under "Edit Template".'
 		
 		return text
 		
@@ -244,12 +261,7 @@ the current date. You can set the date format in the preferences.
 			</menu>
 		'''
 		
-		
 		menu_xml += edit_menu_xml
-		
-		
-		
-		
 		
 		menu_xml +='''\
 			<menuitem action="OpenTemplateDirectory"/>
@@ -285,7 +297,7 @@ the current date. You can set the date format in the preferences.
 		actions.append(('InsertMenu', gtk.STOCK_ADD, 'Insert Template', None, None, \
 					None))
 		
-		actions.append(('EditWeekday', gtk.STOCK_HOME, 'This Weekday', None, None, \
+		actions.append(('EditWeekday', gtk.STOCK_HOME, "This Weekday's Template", None, None, \
 					lambda widget: self.on_edit(widget)))
 		
 		actions.append(('NewTemplate', gtk.STOCK_NEW, 'Create New Template', None, None, \
@@ -319,13 +331,14 @@ the current date. You can set the date format in the preferences.
 	def make_empty_template_files(self):
 		def getInstruction(dayNumber):
 			file = self.getTemplateFile(dayNumber)
-			text = '''\
-The template for this weekday has not been edited. 
-If you want to have some text that you can add to that day every week, \
-edit the file [%s ""%s""] in a text editor.
-
-To do so, you can switch to "Preview" and click on the link to that file.
-			''' % (os.path.basename(file), file)
+			#text = '''\
+#The template for this weekday has not been edited. 
+#If you want to have some text that you can add to that day every week, \
+#edit the file [%s ""%s""] in a text editor.
+#
+#To do so, you can switch to "Preview" and click on the link to that file.
+#			''' % (os.path.basename(file), file)
+			text = example_text
 			return text
 					
 		fileContentPairs = []
