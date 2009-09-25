@@ -17,6 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 import os
+import webbrowser
 
 import gtk
 
@@ -119,14 +120,14 @@ class MainMenuBar(object):
 			
 			('HelpMenu', None, '_Help'),
 			('Statistics', None, 'Statistics', 
-				None, None, self.on_statisticsMenuItem_activate),
+				None, 'Show some statistics about the journal', self.on_statisticsMenuItem_activate),
 			('CheckVersion', None, 'Check For New Version', 
-				None, 'Check For New Version Now', self.on_checkVersionMenuItem_activate),
+				None, 'Check for a new version now', self.on_checkVersionMenuItem_activate),
 			('Examples', None, 'Restore example content', 
-				None, 'Fill some free days with example content, Do not overwrite anything', 
+				None, 'Fill some free days with example content. Do not overwrite anything', 
 				self.on_example_menu_item_activate),
 			('Help', gtk.STOCK_HELP, None, 
-				'<Ctrl>h', None, self.on_helpMenuItem_activate),
+				'<Ctrl>h', 'Show the help document', self.on_helpMenuItem_activate),
 			('Info', gtk.STOCK_ABOUT, None, 
 				None, None, self.on_info_activate),
 			])
@@ -140,6 +141,18 @@ class MainMenuBar(object):
 		# Create a Menu
 		self.menubar = self.uimanager.get_widget('/MainMenuBar')
 		return self.menubar
+	
+	def set_tooltips(self):
+		groups = self.uimanager.get_action_groups()
+		for group in groups:
+			actions = group.list_actions()
+			for action in actions:
+				widgets = action.get_proxies()
+				tooltip = action.get_property('tooltip')
+				print widgets, tooltip
+				if tooltip:
+					for widget in widgets:
+						widget.set_tooltip_markup(tooltip)
 		
 	def on_newJournalButton_activate(self, widget):
 		self.main_window.show_dir_chooser('new')

@@ -137,7 +137,7 @@ class RichTextError (StandardError):
 class RichTextMenu (gtk.Menu):
     """A popup menu for child widgets in a RichTextView"""
     def __inti__(self):
-        gkt.Menu.__init__(self)
+        gtk.Menu.__init__(self)
         self._child = None
 
     def set_child(self, child):
@@ -291,7 +291,8 @@ class RichTextView (gtk.TextView):
         
         # spell checker
         self._spell_checker = None
-        self.enable_spell_check(True)
+        ##self.enable_spell_check(True)
+        self.enable_spell_check(False)
         
         # signals        
         self.set_wrap_mode(gtk.WRAP_WORD)

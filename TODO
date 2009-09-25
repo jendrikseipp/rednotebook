@@ -11,7 +11,6 @@ implementation if you tell me that you'd like its addition ;)
 O i18n
 O Todo tab next to clouds?
 O Cloud words include list
-O Image resizing?
 O Add "Start minimized" command line parameter?
 
 
@@ -59,21 +58,14 @@ X Windows: RedNotebook can now be run in portable mode
    O Propose to portableapps
    O Show message in windows installer
    O Save dataDir relative to exe
-O Language selection for spell checking
-O Make the UI easier to understand
-  O provide more tooltips
+X Make the UI easier to understand
+  X provide more tooltips
 O Update help
   O explain how to use Categories as Todo items there
   O make help topic centric
   X cleanup template help
 X Fix "Insert this Weekday's Template"
 X Only save content and config when they have been changed
-O word wrapping while editing category entries
-
-
-
-
-
 
 
 
@@ -93,4 +85,6 @@ O word wrapping while editing category entries
 - Allow dragging of files and pictures into RedNotebook (default behavior is good enough)
 - Copy/Paste category entries (Too complicated)
 - Add --portable command line parameter (The default config file is better)
-
+- word wrapping while editing category entries (too complicated, would involve writing C code)
+- Language selection for spell checking (is already implemented in new versions of gtkspell)
+- Image resizing (KISS)

@@ -139,6 +139,7 @@
                             <child>
                               <object class="GtkComboBox" id="searchTypeBox">
                                 <property name="visible">True</property>
+                                <property name="tooltip_text" translatable="yes">Select where to search</property>
                                 <property name="model">liststore5</property>
                                 <signal name="changed" handler="on_searchTypeBox_changed"/>
                                 <child>
@@ -201,6 +202,7 @@
                     <child type="tab">
                       <object class="GtkLabel" id="label15">
                         <property name="visible">True</property>
+                        <property name="tooltip_text" translatable="yes">Search in entries, categories and tags</property>
                         <property name="label" translatable="yes">Search</property>
                       </object>
                       <packing>
@@ -213,6 +215,7 @@
                         <child>
                           <object class="GtkComboBox" id="cloudComboBox">
                             <property name="visible">True</property>
+                            <property name="tooltip_text" translatable="yes">Select a cloud</property>
                             <property name="model">liststore3</property>
                             <signal name="changed" handler="on_cloudComboBox_changed"/>
                             <child>
@@ -371,6 +374,7 @@
                             <child>
                               <object class="GtkToolButton" id="deleteEntryButton">
                                 <property name="visible">True</property>
+                                <property name="tooltip_text" translatable="yes">Delete the selected node</property>
                                 <property name="label" translatable="yes">Delete</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-delete</property>
