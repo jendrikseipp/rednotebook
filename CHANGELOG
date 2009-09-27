@@ -1,5 +1,15 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.7 (2009-09-27) ===
+ * Only save content and config when they have been changed
+ * Make the UI easier to understand
+   * provide more tooltips
+ * Update help
+   * explain how to use Categories as Todo items there
+   * make help topic centric
+   * cleanup template help
+ * Fix "Insert this Weekday's Template"
+
 === 0.8.6.1 (2009-09-04) ===
  * Fix duplicate naming bug (LP:424550)
 
