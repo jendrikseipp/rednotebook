@@ -69,7 +69,7 @@ At the first program start this defaults to "$HOME/.rednotebook/data".
 
 completeWelcomeText = '''\
 Hello, 
-this is RedNotebook, a desktop journal/diary. Thank you very much for giving it a try. 
+this is RedNotebook, a desktop journal. Thank you very much for giving it a try. 
 This text field is the container for your normal entries like this one: 
 
 Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
@@ -114,7 +114,8 @@ To restore these instructions click on "Help" -> "Restore example content". \
 The examples will be added after the last edited day in the journal.
 Alternatively you can find some documentation under "Help" -> "Help".
 
-If you encounter any errors, please drop me a note so I can fix them.
+If you encounter any errors, please drop me a note so I can fix them. \
+Any feedback is welcome.
 
 There are many features I have planned to add in the future so stay tuned.
 I hope you enjoy the program!'''
@@ -225,12 +226,14 @@ ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 == Format ==
 As you see you can format your text ""**""**bold**""**"", ""//""//italic//""//"", \
-""--""--stricken--""--"" and ""__""__underlined__""__"".
+""--""--stricken--""--"" and ""__""__underlined__""__"". As a convenience there \
+is also the "Format" button, with which you can format the main text and nodes \
+in the categories tree on the right.
 
-% Formatting commands inside two pairs of "" are not interpreted
+%% Formatting commands inside two pairs of "" are not interpreted
 
-**Comments** can be inserted after percent signs (**%**). They will not be shown in the \
-preview and the exports. The % has to be the first character on the line.
+**Comments** can be inserted after percent signs (**%%**). They will not be shown in the \
+preview and the exports. The %% has to be the first character on the line.
 
 To see the results, just click on the "Preview" button. 
 You can also see how \
@@ -255,6 +258,9 @@ So if I did a cool thing on some day, I navigate to that day, add the category \
 When I have done more cool things on many days, they all have a category "Cool Stuff" \
 and many different entries. Now it is possible to export only that category and \
 get a list of the cool stuff that happened to me with the respective dates.
+
+Additionally you can select the "Cool Stuff" category in the word cloud window \
+to get a list of all the cool things.
 
 == Images, Files and Links ==
 RedNotebook lets you insert images, files and links into your entries. To do so, select the \
@@ -361,6 +367,14 @@ same directory.
 
 You can find other shortcuts in the menus.
 
+== Example Content ==
+The following texts can also be viewed inside RedNotebook by clicking on "Example Content" \
+under the help menu. 
+
+%s
+
+%s
+
 == Questions ==
 If you have any questions or comments, feel free to post them in the forum or \
 contact me directly.
@@ -371,7 +385,8 @@ This way RedNotebook can get better not only for you, but for all users.
 
 Bug reports should go [here https://bugs.launchpad.net/rednotebook], but if you
 don't know how to use that site, a simple mail is equally fine.
-'''
+''' % (example_day2['text'].replace('=== Work ===', '**Work**\n').replace('=== Play ===', '**Play**\n'), \
+		example_day3['text'])
 
 desktop_file = '''\
 [Desktop Entry]

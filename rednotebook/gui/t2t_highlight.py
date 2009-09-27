@@ -246,6 +246,8 @@ line = MultiPattern(r'^\s*([_=-]{20,})\s*$', [(1, 'bold')])
 
 header = MultiPattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
 						[(1, 'grey'), (2, 'header'), (3, 'grey')])
+						
+linebreak = MultiPattern(r'(\\)', [(1, 'bold')])
 
 rules = [
 		get_pattern('\*\*', 'bold'),
@@ -257,7 +259,8 @@ rules = [
 		list,
 		comment,
 		line,
-		get_pattern('""', 'raw', allow_whitespace=False) # verified in RedNotebook
+		get_pattern('""', 'raw', allow_whitespace=False), # verified in RedNotebook
+		linebreak,
 		]
 
 
