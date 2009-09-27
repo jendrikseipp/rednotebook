@@ -68,7 +68,10 @@ def parse_options():
 
 options, args = parse_options()
 
-## Enable logging
+
+
+## ---------------------- Enable logging -------------------------------
+
 import logging
 
 def setup_logging(log_file):
@@ -117,6 +120,36 @@ def setup_logging(log_file):
 
 dirs = filesystem.Filenames()
 setup_logging(dirs.logFile)
+
+## ------------------ end Enable logging -------------------------------
+
+
+
+## ---------------------- Enable i18n -------------------------------
+
+LOCALE_PATH = os.path.join(dirs.appDir, 'i18n')
+
+# the name of the gettext domain. because we have our translation files
+# not in a global folder this doesn't really matter, setting it to the
+# application name is a good idea tough.
+GETTEXT_DOMAIN = 'rednotebook'
+
+# set up the gettext system
+import gettext
+
+for module in [gettext]:
+    module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
+    module.textdomain(GETTEXT_DOMAIN)
+
+# register the gettext function for the whole interpreter as "_"
+import __builtin__
+__builtin__._ = gettext.gettext
+
+
+
+## ------------------- end Enable i18n -------------------------------
+
+
 
 
 try:

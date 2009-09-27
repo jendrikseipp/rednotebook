@@ -729,7 +729,7 @@ class MainWindow(object):
 		#else:
 			#self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
 		self.single_menu_toolbutton = gtk.MenuToolButton(gtk.STOCK_ADD)
-		self.single_menu_toolbutton.set_label('Insert')
+		self.single_menu_toolbutton.set_label(_('Insert'))
 			
 		self.single_menu_toolbutton.set_menu(menu)
 		self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)
