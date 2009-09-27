@@ -13,12 +13,15 @@ sys.path.insert(0, os.path.abspath("./../../"))
 from gtkcodebuffer import CodeBuffer, Pattern, String, LanguageDefinition 
 from gtkcodebuffer import SyntaxLoader, add_syntax_path, _log_debug
 
+
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import markup
 
 txt = """
 === Header ===
 **bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken--
+
+====================
 
 # About 
 This example shows you a hard-coded\\ markdown 
@@ -197,7 +200,14 @@ def get_pattern(markup_symbols, style, allow_whitespace=False):
 	if allow_whitespace:
 		regex = r"(%s)(.+?)(%s)" % ((markup_symbols, ) * 2)
 	else:
-		regex = r"(%s)([^\s].+?[^\s])(%s)" % ((markup_symbols, ) * 2)
+		# original stricken in txt2tags: r'--([^\s](|.*?[^\s])-*)--'
+		# txt2tags docs say that format markup is greedy, but
+		# that doesn't seem to be the case
+		fill_ins = (markup_symbols, markup_symbols)
+		# Either one char, or two chars with (maybe empty) content
+		# between them
+		# In both cases no whitespaces between chars and markup
+		regex = r'(%s)([^\s]|[^\s].*?[^\s])(%s)' % fill_ins
 	group_style_pairs = [(1, 'grey'), (2, style), (3, 'grey')]
 	return MultiPattern(regex, group_style_pairs)
 
@@ -229,16 +239,24 @@ styles = { 'DEFAULT':   {},#{'font': 'serif'},
 # Syntax definition
 
 list = MultiPattern(r"^ *(- ).+$", [(1, 'bold')])
+#list = MultiPattern(r"^ *(- )(?=[^ ])$", [(1, 'bold')])
 comment = MultiPattern(r'^(\%.*)$', [(1, 'comment')])
+#line = MultiPattern(r'^(\s*)([_=-]{20,})\s*$', [(2, 'bold')])
+line = MultiPattern(r'^\s*([_=-]{20,})\s*$', [(1, 'bold')])
+
+header = MultiPattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
+						[(1, 'grey'), (2, 'header'), (3, 'grey')])
 
 rules = [
 		get_pattern('\*\*', 'bold'),
 		get_pattern('__', 'underlined'),
 		get_pattern('//', 'italic'),
 		get_pattern('--', 'stricken'),
-		get_pattern('===', 'header', allow_whitespace=True),
+		#get_pattern('===', 'header', allow_whitespace=True),
+		header,
 		list,
 		comment,
+		line,
 		get_pattern('""', 'raw', allow_whitespace=False) # verified in RedNotebook
 		]
 
