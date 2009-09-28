@@ -56,7 +56,7 @@ class ExportAssistant (object):
 		self.append_fourth_page()
 		
 		self.assistant.set_forward_page_func(self.prepare_next_page, None)
-		self.assistant.set_title('Export Assistant')		
+		self.assistant.set_title(_('Export Assistant'))		
 	
 	def run (self):
 		self.refresh_categories_list()
@@ -127,7 +127,7 @@ class ExportAssistant (object):
 		
 		self.available_categories = self.builder.get_object('available_categories')
 		
-		column = gtk.TreeViewColumn('Available Categories')
+		column = gtk.TreeViewColumn(_('Available Categories'))
 		self.available_categories.append_column(column)
 		cell = gtk.CellRendererText()
 		column.pack_start(cell, True)
@@ -135,7 +135,7 @@ class ExportAssistant (object):
 				
 		self.selected_categories = self.builder.get_object('selected_categories')
 		
-		column = gtk.TreeViewColumn('Selected Categories')
+		column = gtk.TreeViewColumn(_('Selected Categories'))
 		self.selected_categories.append_column(column)
 		cell = gtk.CellRendererText()
 		column.pack_start(cell, True)
@@ -172,7 +172,7 @@ class ExportAssistant (object):
 		self.export()
 	
 	def on_cancel (self, widget, other=None):
-		self.redNotebook.showMessage('Cancelling export assistant.')
+		self.redNotebook.showMessage(_('Cancelling export assistant.'))
 		self.assistant.hide()
 
 	def change_date_selector_status (self, widget):
@@ -321,9 +321,9 @@ class ExportAssistant (object):
 			export_file = codecs.open(self.filename, 'w', 'utf-8')
 			export_file.write(export_string)
 			export_file.flush()
-			self.redNotebook.showMessage('Content exported to ' + self.filename)
+			self.redNotebook.showMessage(_('Content exported to ') + self.filename)
 		except:
-			self.redNotebook.showMessage('Exporting to ' + self.filename + ' failed')
+			self.redNotebook.showMessage(_('Exporting to %s failed') % self.filename)
 
 	def get_export_string(self, format):
 		if self.is_all_entries_selected() :

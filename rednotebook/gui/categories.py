@@ -44,7 +44,7 @@ class CategoriesTreeView(object):
 		self.treeView.set_model(self.treeStore)
 
 		# create the TreeViewColumn to display the data
-		self.tvcolumn = gtk.TreeViewColumn('Categories')
+		self.tvcolumn = gtk.TreeViewColumn(_('Categories'))
 
 		# add tvcolumn to treeView
 		self.treeView.append_column(self.tvcolumn)
