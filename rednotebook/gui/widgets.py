@@ -89,28 +89,28 @@ class CustomComboBoxEntry(object):
 class CustomListView(gtk.TreeView):
 	def __init__(self):
 		gtk.TreeView.__init__(self)
-		'create a TreeStore with two string columns to use as the model'
+		# create a TreeStore with two string columns to use as the model
 		self.set_model(gtk.ListStore(str, str))
 
 		columns = [gtk.TreeViewColumn('1'), gtk.TreeViewColumn('2')]
 
-		'add tvcolumns to treeView'
+		# add tvcolumns to treeView
 		for index, column in enumerate(columns):
 			self.append_column(column)
 
-			'create a CellRendererText to render the data'
+			# create a CellRendererText to render the data
 			cellRenderer = gtk.CellRendererText()
 
-			'add the cell to the tvcolumn and allow it to expand'
+			# add the cell to the tvcolumn and allow it to expand
 			column.pack_start(cellRenderer, True)
 
-			'Get markup for column, not text'
+			# Get markup for column, not text
 			column.set_attributes(cellRenderer, markup=index)
 			
-			'Allow sorting on the column'
+			# Allow sorting on the column
 			column.set_sort_column_id(index)
 
-		'make it searchable'
+		# make it searchable
 		self.set_search_column(1)
 		
 

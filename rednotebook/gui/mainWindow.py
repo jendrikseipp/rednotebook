@@ -38,7 +38,7 @@ except ImportError:
 	gtkspell = None
 
 
-'Initialize the gtk thread engine'
+# Initialize the gtk thread engine
 #gtk.gdk.threads_init()
 
 from rednotebook.util import utils
@@ -139,7 +139,7 @@ class MainWindow(object):
 		self.setup_insert_menu()
 		self.setup_format_menu()
 		
-		'Create an event->method dictionary and connect it to the widgets'
+		# Create an event->method dictionary and connect it to the widgets
 		dic = {
 			'on_backOneDayButton_clicked': self.on_backOneDayButton_clicked,
 			'on_todayButton_clicked': self.on_todayButton_clicked,
@@ -276,7 +276,7 @@ class MainWindow(object):
 		
 		# Create actions
 		actiongroup.add_actions([
-			('Show', gtk.STOCK_MEDIA_PLAY, 'Show RedNotebook', 
+			('Show', gtk.STOCK_MEDIA_PLAY, _('Show RedNotebook'), 
 				None, None, lambda widget: self.mainFrame.show()),
 			('Quit', gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
 			])
@@ -353,7 +353,7 @@ class MainWindow(object):
 			text_scrolledwindow.show()
 			self.html_editor.hide()
 			self.preview_button.set_stock_id('gtk-media-play')
-			self.preview_button.set_label('Preview')
+			self.preview_button.set_label(_('Preview'))
 			
 			self.preview_mode = False
 		else:
@@ -367,7 +367,8 @@ class MainWindow(object):
 			self.html_editor.load_html(html)
 			
 			self.preview_button.set_stock_id('gtk-edit')
-			self.preview_button.set_label(' '*3 + 'Edit' + ' '*4)
+			#self.preview_button.set_label(' '*3 + 'Edit' + ' '*4)
+			self.preview_button.set_label(_('Edit'))
 		
 			self.preview_mode = True
 			
@@ -393,11 +394,11 @@ class MainWindow(object):
 		
 			
 	def on_searchNotebook_switch_page(self, notebook, page, pageNumber):
-		if pageNumber == 0:
-			'Switched to search tab'
+		#if pageNumber == 0:
+			# Switched to search tab
 			#self.searchTreeView.update_data()
 		if pageNumber == 1:
-			'Switched to cloud tab'
+			# Switched to cloud tab
 			self.cloud.update(force_update=True)
 		
 		
@@ -446,16 +447,17 @@ class MainWindow(object):
 		
 		if type == 'new':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER)
-			dir_chooser.set_title('Select an empty folder for your new journal')
-			label.set_markup('<b>Journals are saved in a directory, not in a single file.\n' \
-							'The directory name will be the title of the new journal.</b>')
+			dir_chooser.set_title(_('Select an empty folder for your new journal'))
+			msg_part1 = _('<b>Journals are saved in a directory, not in a single file.\n')
+			msg_part2 = _('The directory name will be the title of the new journal.</b>')
+			label.set_markup(msg_part1 + msg_part2)
 		elif type == 'open':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
-			dir_chooser.set_title("Select an existing journal directory")
-			label.set_markup("<b>The directory should contain your journal's data files</b>")
+			dir_chooser.set_title(_('Select an existing journal directory'))
+			label.set_markup(_("<b>The directory should contain your journal's data files</b>"))
 		elif type == 'saveas':
-			dir_chooser.set_title('Select an empty folder for the new location your journal')
-			label.set_markup('<b>The directory name will be the new title of the journal</b>')
+			dir_chooser.set_title(_('Select an empty folder for the new location your journal'))
+			label.set_markup(_('<b>The directory name will be the new title of the journal</b>'))
 		dir_chooser.set_current_folder(self.redNotebook.dirs.dataDir)
 		
 		response = dir_chooser.run()
@@ -475,7 +477,7 @@ class MainWindow(object):
 		elif dir_not_found:
 			default_dir = self.redNotebook.dirs.defaultDataDir
 			self.redNotebook.open_journal(default_dir, load_files=True)
-			self.redNotebook.showMessage('The default journal has been opened')
+			self.redNotebook.showMessage(_('The default journal has been opened'))
 		
 		
 	def add_values_to_config(self):
@@ -616,8 +618,8 @@ class MainWindow(object):
 		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
 		self.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
-		self.format_toolbutton.set_label('Format')
-		tip = 'Format the selected text or category entry'
+		self.format_toolbutton.set_label(_('Format'))
+		tip = _('Format the selected text or category entry')
 		self.format_toolbutton.set_tooltip_text(tip)
 		self.format_toolbutton.set_menu(menu)
 		bold_func = apply_format#lambda widget: self.dayTextField.apply_format('bold')
@@ -659,10 +661,17 @@ class MainWindow(object):
 		self.actiongroup = actiongroup
 		
 		line = '\n====================\n'
-		bullet_list = '\n- First Item\n- Second Item\n  - Indented Item ' + \
-						'(Two blank lines close the list)\n\n\n'
+		
+		item1 = _('First Item')
+		item2 = _('Second Item')
+		item3 = _('Indented Item')
+		close = _('Two blank lines close the list')
+		bullet_list = '\n- %s\n- %s\n  - %s (%s)\n\n\n' % (item1, item2, item3, close)
 		numbered_list = bullet_list.replace('-', '+')
-		title = '\n=== Title text ===\n'
+		
+		title_text = _('Title text')
+		title = '\n=== %s ===\n' % title_text
+		
 		line_break = r'\\'
 		
 		def insert_date_time(widget):
@@ -676,32 +685,32 @@ class MainWindow(object):
 		# Create actions
 		actiongroup.add_actions([
 			('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, \
-				'Picture', \
-				None, 'Insert an image from the harddisk', \
+				_('Picture'), \
+				None, _('Insert an image from the harddisk'), \
 				self.on_insert_pic_menu_item_activate),
-			('File', gtk.STOCK_FILE, 'File', None, \
-				'Insert a link to a file', \
+			('File', gtk.STOCK_FILE, _('File'), None, \
+				_('Insert a link to a file'), \
 				self.on_insert_file_menu_item_activate),
-			('Link', gtk.STOCK_JUMP_TO, '_Link' + tmpl('L'), '<Control>L', \
-				'Insert a link to a website', \
+			('Link', gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L', \
+				_('Insert a link to a website'), \
 				self.on_insert_link_menu_item_activate),
-			('BulletList', None, 'Bullet List', None, \
-				'Insert a bullet list', \
+			('BulletList', None, _('Bullet List'), None, \
+				_('Insert a bullet list'), \
 				lambda widget: self.dayTextField.insert(bullet_list)),
-			('NumberedList', None, 'Numbered List', None, \
-				'Insert a numbered list (2 empty lines close the list)', \
-				lambda widget: self.dayTextField.insert(numbered_list)),
-			('Title', None, 'Title', None, \
-				'Insert a title', \
+			#('NumberedList', None, 'Numbered List', None, \
+			#	'Insert a numbered list (2 empty lines close the list)', \
+			#	lambda widget: self.dayTextField.insert(numbered_list)),
+			('Title', None, _('Title'), None, \
+				_('Insert a title'), \
 				lambda widget: self.dayTextField.insert(title)),
-			('Line', None, 'Line', None, \
-				'Insert a separator line', \
+			('Line', None, _('Line'), None, \
+				_('Insert a separator line'), \
 				lambda widget: self.dayTextField.insert(line)),
-			('Date', None, 'Date/Time' + tmpl('D'), '<Ctrl>D', \
-				'Insert the current date and time (edit format in preferences)', \
+			('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D', \
+				_('Insert the current date and time (edit format in preferences)'), \
 				insert_date_time),
-			('LineBreak', None, 'Line Break', None, \
-				'Insert a manual line break', \
+			('LineBreak', None, _('Line Break'), None, \
+				_('Insert a manual line break'), \
 				lambda widget: self.dayTextField.insert(line_break)),
 			])
 
@@ -733,7 +742,7 @@ class MainWindow(object):
 			
 		self.single_menu_toolbutton.set_menu(menu)
 		self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)
-		self.single_menu_toolbutton.set_tooltip_text('Insert images, files, links and other content')
+		self.single_menu_toolbutton.set_tooltip_text(_('Insert images, files, links and other content'))
 		edit_toolbar = self.builder.get_object('edit_toolbar')
 		edit_toolbar.insert(self.single_menu_toolbutton, -1)
 		self.single_menu_toolbutton.show()
@@ -817,7 +826,7 @@ class MainWindow(object):
 			elif link_location:
 				self.dayTextField.insert(link_location)
 			else:
-				self.redNotebook.showMessage('No link location has been entered', error=True)		
+				self.redNotebook.showMessage(_('No link location has been entered'), error=True)		
 	
 		
 	def on_addNewEntryButton_clicked(self, widget):
@@ -979,7 +988,7 @@ class SearchComboBox(CustomComboBoxEntry):
 		self.redNotebook = mainWindow.redNotebook
 		
 		#self.entry = self.comboBox.get_child()
-		self.set_active_text('Search ...')
+		self.set_active_text(_('Search ...'))
 
 		self.entry.connect('changed', self.on_entry_changed)
 		self.entry.connect('activate', self.on_entry_activated)
@@ -994,14 +1003,14 @@ class SearchComboBox(CustomComboBoxEntry):
 		self.mainWindow.searchTreeView.set_search_type(searchType)
 		
 		if searchType == 0:
-			'Search for text'
+			# Search for text
 			self.set_entries(self.recentSearches)
 		if searchType == 1:
-			'Search for category'
+			# Search for category
 			categories = self.mainWindow.categoriesTreeView.categories
 			self.set_entries(categories)
 		if searchType == 2:
-			'Search for tags'
+			# Search for tags
 			self.set_entries(self.redNotebook.tags)
 			
 		self.searchType = searchType
@@ -1021,7 +1030,7 @@ class SearchComboBox(CustomComboBoxEntry):
 		searchText = entry.get_text()
 		
 		if self.searchType == 0:
-			'Search for text'
+			# Search for text
 			self.recentSearches.append(searchText)
 			self.recentSearches = self.recentSearches[-20:]
 			self.add_entry(searchText)
@@ -1056,7 +1065,7 @@ class CloudView(HtmlWindow):
 			self.update(force_update=True)
 			
 	def update_ignore_list(self):
-		default_ignore_list = 'filter, these, comma, separated, words'
+		default_ignore_list = _('filter, these, comma, separated, words')
 		self.ignore_list = self.redNotebook.config.read_list('cloudIgnoreList', \
 															default_ignore_list)
 		self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
@@ -1099,7 +1108,7 @@ class CloudView(HtmlWindow):
 			self.redNotebook.frame.searchBox.set_active_text(searchText)
 			self.redNotebook.frame.searchNotebook.set_current_page(0)
 			
-			'returning True here stops loading the document'
+			# returning True here stops loading the document
 			return True
 
 	def on_right_click(self, view, uri, type_):
@@ -1113,7 +1122,7 @@ class CloudView(HtmlWindow):
 		'''
 		Called when the cloud's popup menu is created
 		'''
-		label = 'Hide selected words'
+		label = _('Hide selected words')
 		ignore_menu_item = gtk.MenuItem(label)
 		separator = gtk.SeparatorMenuItem()
 		
@@ -1169,38 +1178,38 @@ class SearchTreeView(object):
 		# Normally unneeded, but just to be sure everything works fine
 		self.searched_text = ''
 		
-		'create a TreeStore with two string columns to use as the model'
+		# create a TreeStore with two string columns to use as the model
 		self.treeStore = gtk.ListStore(str, str)
 
-		'create the TreeView using treeStore'
+		# create the TreeView using treeStore
 		self.treeView.set_model(self.treeStore)
 
-		'create the TreeViewColumns to display the data'
-		self.dateColumn = gtk.TreeViewColumn('Date')
-		self.matchingColumn = gtk.TreeViewColumn('Text')
+		# create the TreeViewColumns to display the data
+		self.dateColumn = gtk.TreeViewColumn(_('Date'))
+		self.matchingColumn = gtk.TreeViewColumn(_('Text'))
 		
 		columns = [self.dateColumn,self.matchingColumn, ]
 						#self.categoryColumn, self.entryColumn]
 
-		'add tvcolumns to treeView'
+		# add tvcolumns to treeView
 		for index, column in enumerate(columns):
 			self.treeView.append_column(column)
 
-			'create a CellRendererText to render the data'
+			# create a CellRendererText to render the data
 			cellRenderer = gtk.CellRendererText()
 
-			'add the cell to the tvcolumn and allow it to expand'
+			# add the cell to the tvcolumn and allow it to expand
 			column.pack_start(cellRenderer, True)
 
-			'Get markup for column, not text'
+			# Get markup for column, not text
 			column.set_attributes(cellRenderer, markup=index)
 			
-			'Allow sorting on the column'
+			# Allow sorting on the column
 			column.set_sort_column_id(index)
 		
 		self.update_data()
 
-		'make it searchable'
+		# make it searchable
 		self.treeView.set_search_column(1)
 		
 		self.treeView.connect('row_activated', self.on_row_activated)
@@ -1218,16 +1227,16 @@ class SearchTreeView(object):
 		self.searched_text = searchText
 		
 		if self.searchType == 0:
-			'Search for text'
-			self.matchingColumn.set_title('Text')
+			# Search for text
+			self.matchingColumn.set_title(_('Text'))
 			rows = self.redNotebook.search(text=searchText)
 		if self.searchType == 1:
-			'Search for category'
-			self.matchingColumn.set_title('Entry')
+			# Search for category
+			self.matchingColumn.set_title(_('Entry'))
 			rows = self.redNotebook.search(category=searchText)
 		if self.searchType == 2:
-			'Search for tags'
-			self.matchingColumn.set_title('Text')
+			# Search for tags
+			self.matchingColumn.set_title(_('Text'))
 			rows = self.redNotebook.search(tag=searchText)
 			
 		if rows:

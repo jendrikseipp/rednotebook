@@ -87,26 +87,26 @@ class MainMenuBar(object):
 				'', 'Create a new journal. The old one will be saved', 
 				self.on_newJournalButton_activate),
 			('Open', gtk.STOCK_OPEN, None, 
-				None, 'Load an existing journal. The old journal will be saved', 
+				None, _('Load an existing journal. The old journal will be saved'), 
 				self.on_openJournalButton_activate),
 			('Save', gtk.STOCK_SAVE, None, 
 				None, None, self.on_saveButton_clicked),
 			('SaveAs', gtk.STOCK_SAVE_AS, None, 
-				None, 'Save journal at a new location. The old journal files will also be saved', 
+				None, _('Save journal at a new location. The old journal files will also be saved'), 
 				self.on_saveAsMenuItem_activate),
-			('Export', gtk.STOCK_CONVERT, 'Export', 
-				None, 'Open the export assistant', self.on_exportMenuItem_activate),
-			('Backup', gtk.STOCK_HARDDISK, 'Backup', 
-				None, 'Save all the data in a zip archive', self.on_backup_activate),
+			('Export', gtk.STOCK_CONVERT, _('Export'), 
+				None, _('Open the export assistant'), self.on_exportMenuItem_activate),
+			('Backup', gtk.STOCK_HARDDISK, _('Backup'), 
+				None, _('Save all the data in a zip archive'), self.on_backup_activate),
 			('Quit', gtk.STOCK_QUIT, None, 
-				None, 'Shutdown RedNotebook. It will not be sent to the tray.', 
+				None, _('Shutdown RedNotebook. It will not be sent to the tray.'), 
 				self.main_window.on_quit_activate),
 			
-			('Edit', None, '_Edit', None, None, self.on_edit_menu_activate),
+			('Edit', None, _('_Edit'), None, None, self.on_edit_menu_activate),
 			('Undo', gtk.STOCK_UNDO, None, 
-				'<Ctrl>z', 'Undo text edits or category entry deletions', self.on_undo),
+				'<Ctrl>z', _('Undo text edits or category entry deletions'), self.on_undo),
 			('Redo', gtk.STOCK_REDO, None, 
-				'<Ctrl>y', 'Redo text edits or category entry additions', self.on_redo),
+				'<Ctrl>y', _('Redo text edits or category entry additions'), self.on_redo),
 			('Cut', gtk.STOCK_CUT, None, 
 				'', None, self.on_cutMenuItem_activate),
 			('Copy', gtk.STOCK_COPY, None, 
@@ -118,16 +118,16 @@ class MainMenuBar(object):
 			('Options', gtk.STOCK_PREFERENCES, None, 
 				'<Ctrl><Alt>p', None, self.on_options_menuitem_activate),
 			
-			('HelpMenu', None, '_Help'),
-			('Statistics', None, 'Statistics', 
-				None, 'Show some statistics about the journal', self.on_statisticsMenuItem_activate),
-			('CheckVersion', None, 'Check For New Version', 
-				None, 'Check for a new version now', self.on_checkVersionMenuItem_activate),
-			('Examples', None, 'Restore example content', 
-				None, 'Fill some free days with example content. Do not overwrite anything', 
+			('HelpMenu', None, _('_Help')),
+			('Statistics', None, _('Statistics'), 
+				None, _('Show some statistics about the journal'), self.on_statisticsMenuItem_activate),
+			('CheckVersion', None, _('Check For New Version'), 
+				None, _('Check for a new version now'), self.on_checkVersionMenuItem_activate),
+			('Examples', None, _('Restore example content'), 
+				None, _('Fill some free days with example content. Do not overwrite anything'), 
 				self.on_example_menu_item_activate),
 			('Help', gtk.STOCK_HELP, None, 
-				'<Ctrl>h', 'Show the help document', self.on_helpMenuItem_activate),
+				'<Ctrl>h', _('Show the help document'), self.on_helpMenuItem_activate),
 			('Info', gtk.STOCK_ABOUT, None, 
 				None, None, self.on_info_activate),
 			])
@@ -226,7 +226,7 @@ class MainMenuBar(object):
 	def on_helpMenuItem_activate(self, widget):
 		temp_dir = self.redNotebook.dirs.tempDir
 		utils.write_file(info.helpText, os.path.join(temp_dir, 'source.txt'))
-		headers = ['RedNotebook Documentation', info.version, '']
+		headers = [_('RedNotebook Documentation'), info.version, '']
 		options = {'toc': 1,}
 		html = markup.convert(info.helpText, 'xhtml', headers, options)
 		utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
@@ -239,7 +239,7 @@ class MainMenuBar(object):
 		self.infoDialog.set_name('RedNotebook')
 		self.infoDialog.set_version(info.version)
 		self.infoDialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
-		self.infoDialog.set_comments('A Desktop Diary')
+		self.infoDialog.set_comments(_('A Desktop Journal'))
 		gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
 		self.infoDialog.set_website(info.url)
 		self.infoDialog.set_website_label(info.url)

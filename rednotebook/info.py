@@ -31,10 +31,10 @@ developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
 				'Alexandre Cucumel <superkiouk@gmail.com>',
 				]
 comments = '''\
-RedNotebook is a graphical diary and journal to keep track of notes and \
+RedNotebook is a graphical journal to keep track of notes and \
 thoughts. It includes a calendar navigation, customizable \ 
-templates for each day, export functionality and word clouds. You can also \
-tag and search your entries.\
+templates, export functionality and word clouds. You can also \
+format, tag and search your entries.\
 '''
 
 licenseText = '''\

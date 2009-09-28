@@ -362,9 +362,9 @@ class RedNotebook:
 					month.edited = False
 		
 		if something_saved:
-			self.showMessage('The content has been saved to %s' % self.dirs.dataDir, error=False)
+			self.showMessage(_('The content has been saved to %s') % self.dirs.dataDir, error=False)
 		else:
-			self.showMessage('Nothing to save', error=False)
+			self.showMessage(_('Nothing to save'), error=False)
 		
 		if self.config.changed():
 			self.config.saveToDisk()
@@ -397,12 +397,12 @@ class RedNotebook:
 		data_dir_empty = not os.listdir(data_dir)
 		
 		if not load_files and not data_dir_empty:
-			self.showMessage('The selected folder is not empty. To prevent ' + \
-							'you from overwriting data, the content has been ' + \
-							'imported into the new journal.', error=False)
+			msg_part1 = _('The selected folder is not empty.')
+			msg_part2 = _('To prevent you from overwriting data, the folder content has been imported into the new journal.')
+			self.showMessage('%s %s' % (msg_part1, msg_part2), error=False)
 		elif load_files and data_dir_empty:
-			self.showMessage('The selected folder is empty. A new journal ' + \
-							'has been created.', error=False)
+			self.showMessage(_('The selected folder is empty. A new journal ' + \
+							'has been created.'), error=False)
 		
 		self.dirs.dataDir = data_dir
 		
@@ -509,7 +509,7 @@ Filenames have to have the following form: 2009-01.txt \
 		
 		yearAndMonth = dates.getYearAndMonthFromDate(date)
 		
-		'Selected month has not been loaded or created yet'
+		# Selected month has not been loaded or created yet
 		if not self.months.has_key(yearAndMonth):
 			self.months[yearAndMonth] = Month(date.year, date.month)
 			
@@ -611,7 +611,7 @@ Filenames have to have the following form: 2009-01.txt \
 		for month in self.months.values():
 			daysInMonth = month.days.values()
 			
-			'Filter out days without content'
+			# Filter out days without content
 			daysInMonth = filter(lambda day: not day.empty, daysInMonth)
 			days.extend(daysInMonth)
 		return days
@@ -676,7 +676,7 @@ class Day(object):
 		return getattr(self.date, name)
 	
 	
-	'Text'
+	# Text
 	def _getText(self):
 		'''
 		Returns the day's text encoded as UTF-8
@@ -769,7 +769,7 @@ class Day(object):
 		occurence = upCaseDayText.find(upCaseSearchText)
 		
 		if occurence > -1:
-			'searchText is in text'
+			# searchText is in text
 			
 			searchedStringInText = self.text[occurence:occurence + len(searchText)]
 			
@@ -784,20 +784,20 @@ class Day(object):
 			if resultTextEnd == -1:
 				resultTextEnd = occurence + len(searchText) + self.searchResultLength/2
 				
-			'Add leading and trailing ... if appropriate'
+			# Add leading and trailing ... if appropriate
 			resultText = ''
 			if resultTextStart > 0:
 				resultText += '... '
 				
 			resultText += unicode.substring(self.text, resultTextStart, resultTextEnd).strip()
 			
-			'Make the searchedText bold'
+			# Make the searchedText bold
 			resultText = resultText.replace(searchedStringInText, '<b>' + searchedStringInText + '</b>')
 			
 			if resultTextEnd < len(self.text) - 1:
 				resultText += ' ...'
 				
-			'Delete newlines'
+			# Delete newlines
 			resultText = resultText.replace('\n', '')
 				
 			return (str(self), resultText)
@@ -822,7 +822,7 @@ class Day(object):
 					firstWhitespace = self.text.find(' ', self.searchResultLength)
 					
 					if firstWhitespace == -1:
-						'No whitespace found'
+						# No whitespace found
 						textStart = self.text
 					else:
 						textStart = self.text[:firstWhitespace + 1]

@@ -60,6 +60,10 @@ X Windows: RedNotebook can now be run in portable mode
    
 0.8.8
 O i18n
+  O mark translatable strings
+  O setup translating at launchpad
+  O make German translation
+  O install mo files with setup.py
    
 
 

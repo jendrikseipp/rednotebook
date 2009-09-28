@@ -32,31 +32,31 @@ class CategoriesTreeView(object):
 		self.mainWindow = mainWindow
 		self.undo_redo_manager = mainWindow.undo_redo_manager
 		
-		'Maintain a list of all entered categories. Initialized by rn.__init__()'
+		# Maintain a list of all entered categories. Initialized by rn.__init__()
 		self.categories = None
 		
 		self.statusbar = self.mainWindow.statusbar
 		
-		'create a TreeStore with one string column to use as the model'
+		# create a TreeStore with one string column to use as the model
 		self.treeStore = gtk.TreeStore(str)
 
-		'create the TreeView using treeStore'
+		# create the TreeView using treeStore
 		self.treeView.set_model(self.treeStore)
 
-		'create the TreeViewColumn to display the data'
+		# create the TreeViewColumn to display the data
 		self.tvcolumn = gtk.TreeViewColumn('Categories')
 
-		'add tvcolumn to treeView'
+		# add tvcolumn to treeView
 		self.treeView.append_column(self.tvcolumn)
 
-		'create a CellRendererText to render the data'
+		# create a CellRendererText to render the data
 		self.cell = gtk.CellRendererText()
 		
 		self.cell.set_property('editable', True)
 		self.cell.connect('edited', self.edited_cb, self.treeStore)
 		self.cell.connect('editing-started', self.on_editing_started)
 
-		'add the cell to the tvcolumn and allow it to expand'
+		# add the cell to the tvcolumn and allow it to expand
 		self.tvcolumn.pack_start(self.cell, True)
 
 		''' set the cell "text" attribute to column 0 - retrieve text
@@ -64,10 +64,10 @@ class CategoriesTreeView(object):
 		#self.tvcolumn.add_attribute(self.cell, 'text', 0)
 		self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 
-		'make it searchable'
+		# make it searchable
 		self.treeView.set_search_column(0)
 
-		'Allow sorting on the column'
+		# Allow sorting on the column
 		self.tvcolumn.set_sort_column_id(0)
 		
 		# Enable a context menu
@@ -115,7 +115,7 @@ class CategoriesTreeView(object):
 			self.statusbar.showText('"text" is a reserved keyword', error=True)
 			return
 		if len(new_text) < 1:
-			self.statusbar.showText('Empty nodes are not allowed', error=True)
+			self.statusbar.showText(_('Empty nodes are not allowed'), error=True)
 			return
 		
 		liststore = user_data
@@ -146,7 +146,7 @@ class CategoriesTreeView(object):
 			self.statusbar.showText('"text" is a reserved keyword', error=True)
 			return False
 		if len(category) < 1:
-			self.statusbar.showText('Empty category names are not allowed', error=True)
+			self.statusbar.showText(_('Empty category names are not allowed'), error=True)
 			return False
 		
 		return True
@@ -154,7 +154,7 @@ class CategoriesTreeView(object):
 		
 	def check_entry(self, text):
 		if len(text) < 1:
-			self.statusbar.showText('Empty entries are not allowed', error=True)
+			self.statusbar.showText(_('Empty entries are not allowed'), error=True)
 			return False
 		
 		return True
@@ -280,11 +280,11 @@ class CategoriesTreeView(object):
 		category_pango = markup.convert_to_pango(category)	
 		
 		if categoryIter is None:
-			'If category does not exist add new category'
+			# If category does not exist add new category
 			categoryIter = self.treeStore.append(None, [category_pango])
 			entry_node = self.treeStore.append(categoryIter, [entry_pango])
 		else:
-			'If category exists add entry to existing category'
+			# If category exists add entry to existing category
 			entry_node = self.treeStore.append(categoryIter, [entry_pango])
 			
 		if not undoing:
@@ -369,7 +369,7 @@ class CategoriesTreeView(object):
 			return
 		
 		
-			message = 'Do you really want to delete this node?'
+			message = _('Do you really want to delete this node?')
 			sortOptimalDialog = gtk.MessageDialog(parent=self.mainWindow.mainFrame, \
 									flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_QUESTION, \
 									buttons=gtk.BUTTONS_YES_NO, message_format=message)
@@ -427,15 +427,15 @@ class CategoriesTreeView(object):
 		# Create actions
 		actiongroup.add_actions([
 			('ChangeEntry', gtk.STOCK_EDIT, \
-				'Change this text', \
+				_('Change this text'), \
 				None, None, self._on_change_entry_clicked
 			),
 			('AddEntry', gtk.STOCK_NEW, \
-				'Add new entry', \
+				_('Add a new entry'), \
 				None, None, self._on_add_entry_clicked
 			),
 			('Delete', gtk.STOCK_DELETE, \
-				'Delete this node', \
+				_('Delete this node'), \
 				None, None, self._on_delete_entry_clicked
 			),
 			])
