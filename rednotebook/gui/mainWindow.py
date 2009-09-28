@@ -73,6 +73,7 @@ class MainWindow(object):
 		# Set the Glade file
 		self.gladefile = os.path.join(filesystem.filesDir, 'mainWindow.glade')
 		self.builder = gtk.Builder()
+		self.builder.set_translation_domain('rednotebook')
 		try:
 			self.builder.add_from_file(self.gladefile)
 		except gobject.GError, err:

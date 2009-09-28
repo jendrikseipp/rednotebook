@@ -291,7 +291,7 @@
                             <child>
                               <object class="GtkMenuToolButton" id="templateMenuButton">
                                 <property name="visible">True</property>
-                                <property name="tooltip_markup">Insert this weekday's template. Click the arrow on the right for more options</property>
+                                <property name="tooltip_text" translatable="yes">Insert this weekday's template. Click the arrow on the right for more options</property>
                                 <property name="label" translatable="yes">Template</property>
                                 <property name="stock_id">gtk-paste</property>
                                 <signal name="clicked" handler="on_templateMenu_clicked"/>
@@ -345,7 +345,7 @@
                             <child>
                               <object class="GtkToolButton" id="addNewEntryButton">
                                 <property name="visible">True</property>
-                                <property name="tooltip_markup">Add an entry to a category (Ctrl-N)</property>
+                                <property name="tooltip_text" translatable="yes">Add an entry to a category (Ctrl+N)</property>
                                 <property name="label" translatable="yes">New Entry</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-new</property>
@@ -360,7 +360,7 @@
                             <child>
                               <object class="GtkToolButton" id="addTagButton">
                                 <property name="visible">True</property>
-                                <property name="tooltip_markup">Tag this day (Ctrl-T)</property>
+                                <property name="tooltip_text" translatable="yes">Tag this day (Ctrl+T)</property>
                                 <property name="label" translatable="yes">Add Tag</property>
                                 <property name="stock_id">gtk-dialog-info</property>
                                 <accelerator key="T" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
@@ -647,8 +647,8 @@
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">save</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>

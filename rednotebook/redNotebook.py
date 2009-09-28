@@ -137,15 +137,27 @@ GETTEXT_DOMAIN = 'rednotebook'
 # set up the gettext system
 import gettext
 
-for module in [gettext]:
+modules = [gettext]
+
+# Little Hack: The C function bindtextdomain() has to be called for
+# gtkbuilder stuff to be translated. This is not yet done by gtkbuilder.
+# As a workaround we use gtk.glade.bindtextdomain
+try:
+	import gtk.glade
+	modules.append(gtk.glade)
+except ImportError, err:
+	logging.warning('Importing gtk.glade failed. Some strings may not be translated')
+
+for module in modules:
     module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
     module.textdomain(GETTEXT_DOMAIN)
+    
+
+
 
 # register the gettext function for the whole interpreter as "_"
 import __builtin__
 __builtin__._ = gettext.gettext
-
-
 
 ## ------------------- end Enable i18n -------------------------------
 
@@ -401,8 +413,8 @@ class RedNotebook:
 			msg_part2 = _('To prevent you from overwriting data, the folder content has been imported into the new journal.')
 			self.showMessage('%s %s' % (msg_part1, msg_part2), error=False)
 		elif load_files and data_dir_empty:
-			self.showMessage(_('The selected folder is empty. A new journal ' + \
-							'has been created.'), error=False)
+			self.showMessage(_('The selected folder is empty. A new journal has been created.'), \
+								error=False)
 		
 		self.dirs.dataDir = data_dir
 		

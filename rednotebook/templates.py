@@ -117,7 +117,7 @@ class TemplateManager(object):
 		filesystem.open_url(filename)
 		
 	def on_new_template(self, action):
-		dialog = gtk.Dialog('Choose Template Name')
+		dialog = gtk.Dialog(_('Choose Template Name'))
 		dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
 		dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
 		
@@ -288,22 +288,22 @@ class TemplateManager(object):
 					lambda widget: self.on_edit(widget))
 			actions.append(edit_action)
 			
-		actions.append(('InsertWeekday', gtk.STOCK_HOME, "This Weekday's Template", None, None, \
+		actions.append(('InsertWeekday', gtk.STOCK_HOME, _("This Weekday's Template"), None, None, \
 					lambda widget: self.on_insert(widget)))
 		
-		actions.append(('EditMenu', gtk.STOCK_EDIT, 'Edit Template', None, None, \
+		actions.append(('EditMenu', gtk.STOCK_EDIT, _('Edit Template'), None, None, \
 					None))
 		
-		actions.append(('InsertMenu', gtk.STOCK_ADD, 'Insert Template', None, None, \
+		actions.append(('InsertMenu', gtk.STOCK_ADD, _('Insert Template'), None, None, \
 					None))
 		
-		actions.append(('EditWeekday', gtk.STOCK_HOME, "This Weekday's Template", None, None, \
+		actions.append(('EditWeekday', gtk.STOCK_HOME, _("This Weekday's Template"), None, None, \
 					lambda widget: self.on_edit(widget)))
 		
-		actions.append(('NewTemplate', gtk.STOCK_NEW, 'Create New Template', None, None, \
+		actions.append(('NewTemplate', gtk.STOCK_NEW, _('Create New Template'), None, None, \
 					lambda widget: self.on_new_template(widget)))
 		
-		actions.append(('OpenTemplateDirectory', gtk.STOCK_DIRECTORY, 'Open Template Directory', None, None, \
+		actions.append(('OpenTemplateDirectory', gtk.STOCK_DIRECTORY, _('Open Template Directory'), None, None, \
 					lambda widget: self.on_open_template_dir()))
 		
 		
