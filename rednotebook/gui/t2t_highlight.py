@@ -242,12 +242,14 @@ list = MultiPattern(r"^ *(- ).+$", [(1, 'bold')])
 #list = MultiPattern(r"^ *(- )(?=[^ ])$", [(1, 'bold')])
 comment = MultiPattern(r'^(\%.*)$', [(1, 'comment')])
 #line = MultiPattern(r'^(\s*)([_=-]{20,})\s*$', [(2, 'bold')])
-line = MultiPattern(r'^\s*([_=-]{20,})\s*$', [(1, 'bold')])
+line = MultiPattern(r'^[\s]*([_=-]{20,})[\s]*$', [(1, 'bold')])
 
 header = MultiPattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
 						[(1, 'grey'), (2, 'header'), (3, 'grey')])
 						
-linebreak = MultiPattern(r'(\\)', [(1, 'bold')])
+linebreak = MultiPattern(r'(\\\\)', [(1, 'bold')])
+
+#TODO: link, photo, file
 
 rules = [
 		get_pattern('\*\*', 'bold'),

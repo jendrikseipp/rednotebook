@@ -10,7 +10,8 @@ implementation if you tell me that you'd like its addition ;)
 0.8.8
 O i18n
   X mark translatable strings
-  O setup translating at launchpad
+    O statistics, options
+  O setup translatinons at launchpad
   X make German translation
   X install mo files with setup.py
 X Add "Start minimized to tray" command line parameter
