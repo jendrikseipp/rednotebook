@@ -62,6 +62,12 @@ def parse_options():
 		help='Output debugging messages ' \
 			'(default: False)')
 	
+	parser.add_option(
+		'-m', '--minimized', dest='minimized', \
+		default=False, action='store_true',
+		help='Start mimimized to system tray ' \
+			'(default: False)')
+	
 	options, args = parser.parse_args()
 		
 	return options, args
@@ -238,6 +244,11 @@ class RedNotebook:
 		if options.debug:
 			self.testing = True
 			logging.debug('Debug Mode is on')
+			
+		# Allow starting minimized to tray
+		self.start_minimized = options.minimized
+		if self.start_minimized:
+			self.config['closeToTray'] = 1
 		
 		self.month = None
 		self.date = None

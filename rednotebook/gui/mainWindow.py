@@ -131,7 +131,10 @@ class MainWindow(object):
 		self.preview_button = self.builder.get_object('previewButton')
 		
 		self.load_values_from_config()
-		self.mainFrame.show()
+		
+		if not self.redNotebook.start_minimized:
+			self.mainFrame.show()
+		
 		
 		self.options_manager = OptionsManager(self)
 		self.export_assistant = ExportAssistant(self)
