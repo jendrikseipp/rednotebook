@@ -5,12 +5,39 @@ per mail. Even if a feature is listed here already it might speed up the
 implementation if you tell me that you'd like its addition ;)
 
 
+=== Roadmap ===
 
-=== Features that will probably soon be implemented ===
+0.8.8
+O i18n
+  X mark translatable strings
+  O setup translating at launchpad
+  X make German translation
+  X install mo files with setup.py
+X Add "Start minimized to tray" command line parameter
+X Cloud words white list for short words
 
-O Todo tab next to clouds?
-O Cloud words include list
-O Add "Start minimized" command line parameter?
+0.8.9
+X Windows: RedNotebook can now be run in portable mode
+  (edit the setting in "RedNotebook-directory/files/default.cfg")
+   O Propose to portableapps
+   O Show message in windows installer
+   O Save dataDir relative to exe
+   
+0.8.x
+O Import of exported backups
+O Password protection
+
+0.9
+O Automatic insertion of photo links for current day
+O Automatic insertion of holidays
+
+1.0
+O WYSIWYG editing as an alternative to markup text?
+
+
+
+
+
 
 
 === Maybe even some of those features will make it into RedNotebook ===
@@ -33,47 +60,6 @@ O Convert all read strings to unicode before working with them?
 
 
 
-
-
-
-
-=== Roadmap ===
-
-1.0
-O WYSIWYG editing as an alternative to markup text?
-
-0.9
-O Automatic insertion of photo links for current day
-O Automatic insertion of holidays
-
-0.8.x
-O Import of exported backups
-O Automatic Backups
-O Password protection
-
-0.8.9
-X Windows: RedNotebook can now be run in portable mode
-  (edit the setting in "RedNotebook-directory/files/default.cfg")
-   O Propose to portableapps
-   O Show message in windows installer
-   O Save dataDir relative to exe
-   
-0.8.8
-O i18n
-  X mark translatable strings
-  O setup translating at launchpad
-  X make German translation
-  X install mo files with setup.py
-   
-
-
-
-
-
-
-
-
-
 === Features that will **not** be implemented ===
 
 - ``monospaced`` (we only want one font)
@@ -89,3 +75,5 @@ O i18n
 - word wrapping while editing category entries (too complicated, would involve writing C code)
 - Language selection for spell checking (is already implemented in new versions of gtkspell)
 - Image resizing (KISS)
+- Todo tab next to clouds (KISS)
+- Automatic Backups (KISS, intruding, gentle messages are better)

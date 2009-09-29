@@ -35,7 +35,7 @@ import textwrap
 import filesystem
 
 
-def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
+def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list, include_list):
 	logging.debug('Turning the wordCountDict into html')
 	logging.debug('Length wordCountDict: %s' % len(wordCountDict))
 	
@@ -43,7 +43,9 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list):
 	
 	if type == 'word':
 		# filter short words
-		sortedDict = filter(lambda (word, freq): len(word) > 4, sortedDict)
+		include_list = map(str.lower, include_list)
+		get_long_words = lambda (word, freq): len(word) > 4 or word.lower() in include_list
+		sortedDict = filter(get_long_words, sortedDict)
 		logging.debug('Filtered short words. Length wordCountDict: %s' % len(sortedDict))
 		
 	# filter words in ignore_list

@@ -246,6 +246,7 @@ class RedNotebook:
 			logging.debug('Debug Mode is on')
 			
 		# Allow starting minimized to tray
+		# When we start minimized we have to set the tray icon visible
 		self.start_minimized = options.minimized
 		if self.start_minimized:
 			self.config['closeToTray'] = 1

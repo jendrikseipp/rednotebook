@@ -495,6 +495,7 @@ class MainWindow(object):
 		# Actually this is unnecessary as the list gets saved when it changes
 		# so we use it to sort the list ;)
 		config.write_list('cloudIgnoreList', sorted(self.cloud.ignore_list))
+		config.write_list('cloudIncludeList', sorted(self.cloud.include_list))
 		
 	
 	def load_values_from_config(self):
@@ -1052,7 +1053,7 @@ class CloudView(HtmlWindow):
 		
 		self.redNotebook = redNotebook
 		
-		self.update_ignore_list()
+		self.update_lists()
 		
 		self.htmlview.connect("url-clicked", self.word_clicked)
 		self.htmlview.connect('populate-popup', self.create_popup_menu)
@@ -1068,12 +1069,18 @@ class CloudView(HtmlWindow):
 		if not init:
 			self.update(force_update=True)
 			
-	def update_ignore_list(self):
+	def update_lists(self):
+		config = self.redNotebook.config
+		
 		default_ignore_list = _('filter, these, comma, separated, words')
-		self.ignore_list = self.redNotebook.config.read_list('cloudIgnoreList', \
-															default_ignore_list)
-		self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
+		self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
+		self.ignore_list = map(str.lower, self.ignore_list)
 		logging.info('Cloud ignore list: %s' % self.ignore_list)
+		
+		default_include_list = _('mtv, spam, work, job, play')
+		self.include_list = config.read_list('cloudIncludeList', default_include_list)
+		self.include_list = map(str.lower, self.include_list)
+		logging.info('Cloud include list: %s' % self.include_list)
 		
 		
 	def update(self, force_update=False):
@@ -1091,8 +1098,9 @@ class CloudView(HtmlWindow):
 		wordCountDict = self.redNotebook.getWordCountDict(self.type)
 		logging.debug('Retrieved WordCountDict. Length: %s' % len(wordCountDict))
 		
-		self.tagCloudWords, html = utils.getHtmlDocFromWordCountDict(wordCountDict, \
-												self.type, self.ignore_list)
+		self.tagCloudWords, html = \
+			utils.getHtmlDocFromWordCountDict(wordCountDict, self.type, \
+											self.ignore_list, self.include_list)
 		logging.debug('%s cloud words found' % len(self.tagCloudWords))
 		
 		self.write(html)

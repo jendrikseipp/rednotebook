@@ -111,8 +111,8 @@ class AutostartOption(TickOption):
 #		return self.entry.get_text()
 	
 class CsvTextOption(Option):
-	def __init__(self, text, option_name):
-		Option.__init__(self, text, option_name)
+	def __init__(self, text, option_name, **kwargs):
+		Option.__init__(self, text, option_name, **kwargs)
 		
 		# directly read the string, not the list
 		values_string = Option.config.read(option_name, '')
@@ -295,7 +295,10 @@ class OptionsManager(object):
 		self.options.extend([
 				DateFormatOption('Date/Time format', 'dateTimeString'),
 				FontSizeOption('Font Size', 'mainFontSize'),
-				CsvTextOption('Word blacklist for clouds', 'cloudIgnoreList'),
+				CsvTextOption('Exclude from clouds', 'cloudIgnoreList', \
+								tooltip='Do not show those comma separated words in any cloud'),
+				CsvTextOption('Allow small words in clouds', 'cloudIncludeList', \
+								tooltip='Allow those words with 4 letters or less in the text cloud'),
 				])
 		
 		
@@ -307,7 +310,7 @@ class OptionsManager(object):
 			self.save_options()
 			
 			# Apply some options
-			self.main_window.cloud.update_ignore_list()
+			self.main_window.cloud.update_lists()
 			self.main_window.cloud.update(force_update=True)
 			
 			spell_check_enabled = self.config.read('spellcheck', 0)
