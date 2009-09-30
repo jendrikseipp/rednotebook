@@ -45,7 +45,7 @@ from rednotebook.util import utils
 import rednotebook.util.unicode
 
 from rednotebook.gui.menu import MainMenuBar
-from rednotebook.gui.htmltextview import HtmlWindow
+from rednotebook.external.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
 from rednotebook.gui import widgets
 from rednotebook.gui.widgets import CustomComboBoxEntry, CustomListView

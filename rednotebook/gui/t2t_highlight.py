@@ -3,23 +3,29 @@ import gtk
 import sys
 import os.path
 import pango
+import logging
 
-import time
-
-# if you don't have pygtkcodebuffer installed...
-sys.path.insert(0, os.path.abspath("./../external/pygtkcodebuffer"))
 sys.path.insert(0, os.path.abspath("./../../"))
 
-from gtkcodebuffer import CodeBuffer, Pattern, String, LanguageDefinition 
-from gtkcodebuffer import SyntaxLoader, add_syntax_path, _log_debug
-
-
+from rednotebook.external import gtkcodebuffer 
+from rednotebook.external import txt2tags
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import markup
+
 
 txt = """
 === Header ===
 **bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken--
+
+     [""/home/user/Desktop/RedNotebook pic"".png]
+     
+     [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
+     
+     [heise ""http://heise.de""]
+     
+     www.heise.de
+     
+     http://www.hutzi.de
 
 ====================
 
@@ -41,9 +47,9 @@ syntax-definition. Supporting `code-segments`,
 
 
 
-class MultiPattern(Pattern):
+class MultiPattern(gtkcodebuffer.Pattern):
 	def __init__(self, regexp, group_tag_pairs, **kwargs):
-		Pattern.__init__(self, regexp, **kwargs)
+		gtkcodebuffer.Pattern.__init__(self, regexp, **kwargs)
 		
 		self.group_tag_pairs = group_tag_pairs
 		
@@ -61,7 +67,7 @@ class MultiPattern(Pattern):
 		
 		return iter_pairs
 	
-class OverlapLanguageDefinition(LanguageDefinition):
+class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 	
 	def __call__(self, buf, start, end=None):
 		# if no end given -> end of buffer
@@ -107,7 +113,7 @@ class OverlapLanguageDefinition(LanguageDefinition):
 		return selected_pairs#(mstart, mend, mtag)
 	
 
-class OverlapCodeBuffer(CodeBuffer):
+class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 	
 	def update_syntax(self, start, end=None):
 		""" More or less internal used method to update the 
@@ -118,7 +124,7 @@ class OverlapCodeBuffer(CodeBuffer):
 		
 		# if no lang set	
 		if not self._lang_def: return			 
-		_log_debug("Update syntax from %i"%start.get_offset())
+		logging.debug("Update syntax from %i"%start.get_offset())
 			
 		# if not end defined
 		if not end: 
@@ -151,7 +157,7 @@ class OverlapCodeBuffer(CodeBuffer):
 			#time.sleep(1)
 			# make start..mstart = DEFAUL (mstart == buffer-end if no match)
 			if not start.equal(min_start):
-				_log_debug("Apply DEFAULT")
+				logging.debug("Apply DEFAULT")
 				##self.apply_tag_by_name("DEFAULT", start, min_start)
 				self.apply_tag_by_name("DEFAULT", start, end)
 			
@@ -164,17 +170,17 @@ class OverlapCodeBuffer(CodeBuffer):
 				
 				# optimisation: if mstart-mend is allready tagged with tagname 
 				#   -> finished
-#				if tagname:	 #if something found
-#					tag = self.get_tag_table().lookup(tagname)
-#					if mstart.begins_tag(tag) and mend.ends_tag(tag) and not mstart.equal(start):
-#						self.remove_all_tags(start,mstart)
-#						self.apply_tag_by_name("DEFAULT", start, mstart)
-#						_log_debug("Optimized: Found old tag at %i (%s)"%(mstart.get_offset(), mstart.get_char()))
-#						# finish
-#						
-#						if all_groups_done:
-#							finished = True
-#						continue
+				if tagname:	 #if something found
+					tag = self.get_tag_table().lookup(tagname)
+					if mstart.begins_tag(tag) and mend.ends_tag(tag) and not mstart.equal(start):
+						self.remove_all_tags(start,mstart)
+						self.apply_tag_by_name("DEFAULT", start, mstart)
+						logging.debug("Optimized: Found old tag at %i (%s)"%(mstart.get_offset(), mstart.get_char()))
+						# finish
+						
+						if all_groups_done:
+							finished = True
+						continue
 						
 				
 			
@@ -185,7 +191,7 @@ class OverlapCodeBuffer(CodeBuffer):
 						continue
 			
 				# apply tag
-				_log_debug("Apply %s"%tagname)
+				logging.debug("Apply %s"%tagname)
 				self.apply_tag_by_name(tagname, mstart, mend)
 			
 			#print 'set new start', self.get_slice(self.get_start_iter(), max_end)
@@ -213,15 +219,13 @@ def get_pattern(markup_symbols, style, allow_whitespace=False):
 
 
 # additional style definitions:
-#   the update_syntax() method of CodeBuffer allows you to define new and modify
-#   already defined styles. Think of it like CSS.
+# the update_syntax() method of CodeBuffer allows you to define new and modify
+# already defined styles. Think of it like CSS.
 styles = { 'DEFAULT':   {},#{'font': 'serif'},
 		   'bold':	  {'weight': pango.WEIGHT_BOLD},
 		   'comment':   {'foreground': 'gray',
 						 #'weight': 700
 						 },
-		   #'heading':   {'variant': pango.VARIANT_SMALL_CAPS,
-			#			 'underline': pango.UNDERLINE_DOUBLE},
 		   'underlined':   {#'variant': pango.VARIANT_SMALL_CAPS,
 						 'underline': pango.UNDERLINE_SINGLE},
 			'grey':		{'foreground': 'gray'},
@@ -234,35 +238,57 @@ styles = { 'DEFAULT':   {},#{'font': 'serif'},
 						'scale': pango.SCALE_XX_LARGE,
 						'variant': pango.VARIANT_SMALL_CAPS},
 			'raw':		{},
+			'link':		{'foreground': 'blue',
+						'underline': pango.UNDERLINE_SINGLE,},
 			}
 
 # Syntax definition
 
 list = MultiPattern(r"^ *(- ).+$", [(1, 'bold')])
-#list = MultiPattern(r"^ *(- )(?=[^ ])$", [(1, 'bold')])
+
 comment = MultiPattern(r'^(\%.*)$', [(1, 'comment')])
-#line = MultiPattern(r'^(\s*)([_=-]{20,})\s*$', [(2, 'bold')])
+
 line = MultiPattern(r'^[\s]*([_=-]{20,})[\s]*$', [(1, 'bold')])
 
+# Whitespace is allowed, but nothing else
 header = MultiPattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
 						[(1, 'grey'), (2, 'header'), (3, 'grey')])
 						
 linebreak = MultiPattern(r'(\\\\)', [(1, 'bold')])
 
-#TODO: link, photo, file
+# pic [""/home/user/Desktop/RedNotebook pic"".png]
+# \w = [a-zA-Z0-9_]
+pic = MultiPattern(r'(\["")([^\s][\w\s_,.+%$#@!?+~/-]+[^\s]("")\.(png|jpe?g|gif|eps|bmp))(\])', \
+		[(1, 'grey'), (2, 'bold'), (3, 'grey'), (5, 'grey')], flags='LI')
+
+# named link on hdd [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
+# named link in web [heise ""http://heise.de""]
+named_link = MultiPattern(r'(\[)(.*)[\s]("")([^\s].*[^\s])(""\])', \
+		[(1, 'grey'), (2, 'link'), (3, 'grey'), (4, 'grey'), (5, 'grey')], flags='LI')
+
+# link http://heise.de
+# Use txt2tags link guessing mechanism
+regexes = txt2tags.getRegexes()
+link_regex = regexes['link']
+link = MultiPattern(r'overwritten', [(0, 'link')])
+link._regexp = link_regex
+
 
 rules = [
 		get_pattern('\*\*', 'bold'),
 		get_pattern('__', 'underlined'),
 		get_pattern('//', 'italic'),
 		get_pattern('--', 'stricken'),
-		#get_pattern('===', 'header', allow_whitespace=True),
+		#get_pattern('===', 'header', allow_whitespace=True), # not correct
 		header,
 		list,
 		comment,
 		line,
 		get_pattern('""', 'raw', allow_whitespace=False), # verified in RedNotebook
 		linebreak,
+		pic,
+		named_link,
+		link,
 		]
 
 

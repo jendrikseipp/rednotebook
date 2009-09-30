@@ -29,7 +29,7 @@ import gobject
 import sys
 sys.path.insert(0, '/home/jendrik/projects/RedNotebook')
 
-from rednotebook import txt2tags
+from rednotebook.external import txt2tags
 from rednotebook.util import filesystem
 from rednotebook.util import dates
 from rednotebook.util import utils
