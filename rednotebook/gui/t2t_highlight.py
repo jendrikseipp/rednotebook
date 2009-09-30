@@ -12,6 +12,8 @@ from rednotebook.external import txt2tags
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import markup
 
+logging.getLogger('').setLevel(logging.DEBUG)
+
 
 txt = """
 === Header ===
@@ -79,20 +81,21 @@ class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 		
 		selected_pairs = None
 		
-		##self.min_start
-		
 		# search min match
-		for rule in self._grammar:
+		##for rule in self._grammar:
+		logging.debug('Testing %s rules' % len(self._successful_rules))
+		for rule in self._successful_rules[:]:
 			# search pattern
 			iter_pairs = rule(txt, start, end)
-			if not iter_pairs: continue
+			if not iter_pairs:
+				## This rule will not find anything in the next round either
+				self._successful_rules.remove(rule)
+				continue
 			
 			key = lambda iter: iter.get_offset()
 			
 			min_start = min([start_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
 			max_end = max([end_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
-			
-			#for start_iter, end_iter, tag_name in iter_pairs:
 			
 			# prefer match with smallest start-iter 
 			if min_start.compare(mstart) < 0:
@@ -107,8 +110,6 @@ class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 				#mtag = rule.tag_name
 				selected_pairs = iter_pairs
 				continue
-			
-		#assert selected_pairs, txt
 
 		return selected_pairs#(mstart, mend, mtag)
 	
@@ -120,16 +121,22 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 			syntax-highlighting. """
 			
 		## Force renewal of complete text
-		start = self.get_start_iter()	
+		#TODO: Just update the edited line and all following lines
+		start = self.get_start_iter()
 		
 		# if no lang set	
-		if not self._lang_def: return			 
+		if not self._lang_def: 
+			return			 
 		logging.debug("Update syntax from %i"%start.get_offset())
 			
 		# if not end defined
 		if not end: 
-			#print 'Update'
 			end = self.get_end_iter()
+			
+		# We can omit those rules without occurrences in later searches
+		
+		# Reset rules
+		self._lang_def._successful_rules = self._lang_def._grammar[:]
 		
 		# We do not use recursion -> long files exceed rec-limit!
 		finished = False
@@ -137,8 +144,6 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 			# search first rule matching txt[start..end]			
 			##mstart, mend, tagname = self._lang_def(self, start, end)
 			group_iters_and_tags = self._lang_def(self, start, end)
-			
-			#print 'group_iters_and_tags', group_iters_and_tags
 			
 			if not group_iters_and_tags:
 				finished = True
@@ -149,22 +154,17 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 			min_start = min([start_iter for start_iter, end_iter, tag_name in group_iters_and_tags], key=key)
 			max_end = max([end_iter for start_iter, end_iter, tag_name in group_iters_and_tags], key=key)
 			
-			#print max_end.get_offset(), map(lambda (siter, enditer, tag): enditer.get_offset(), group_iters_and_tags)
-			#time.sleep(1)
 			# remove all tags from start..mend (mend == buffer-end if no match)		
 			##self.remove_all_tags(start, max_end)
 			self.remove_all_tags(start, end)
-			#time.sleep(1)
+			
 			# make start..mstart = DEFAUL (mstart == buffer-end if no match)
 			if not start.equal(min_start):
-				logging.debug("Apply DEFAULT")
+				#logging.debug("Apply DEFAULT")
 				##self.apply_tag_by_name("DEFAULT", start, min_start)
 				self.apply_tag_by_name("DEFAULT", start, end)
 			
 			for index, (mstart, mend, tagname) in enumerate(group_iters_and_tags):
-				
-				
-				#print 'slice', self.get_slice(mstart, mend)
 				
 				all_groups_done = (index == len(group_iters_and_tags) - 1)
 				
@@ -176,13 +176,11 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 						self.remove_all_tags(start,mstart)
 						self.apply_tag_by_name("DEFAULT", start, mstart)
 						logging.debug("Optimized: Found old tag at %i (%s)"%(mstart.get_offset(), mstart.get_char()))
-						# finish
 						
+						# finish
 						if all_groups_done:
 							finished = True
 						continue
-						
-				
 			
 				# nothing found -> finished
 				if not tagname: 
@@ -191,16 +189,16 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 						continue
 			
 				# apply tag
-				logging.debug("Apply %s"%tagname)
+				##logging.debug("Apply %s"%tagname)
 				self.apply_tag_by_name(tagname, mstart, mend)
 			
-			#print 'set new start', self.get_slice(self.get_start_iter(), max_end)
-			#print '*'*30
+			# Set new start
 			start = max_end
 			
 			if start == end: 
 				finished = True
 				continue
+				
 
 def get_pattern(markup_symbols, style, allow_whitespace=False):
 	if allow_whitespace:
