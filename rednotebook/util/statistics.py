@@ -77,22 +77,22 @@ class Statistics(object):
 	@property
 	def overall_pairs(self):
 		return [
-				['Words', self.getNumberOfWords()],
-				['Distinct Words', self.get_number_of_distinct_words()],
-				['Entries', self.getNumberOfEntries()],
-				['Letters', self.getNumberOfChars()],
-				['Days between first and last Entry', self.get_number_of_usage_days()],
-				['Average number of Words', self.get_average_number_of_words()],
-				['Percentage of edited Days', self.get_edit_percentage()],
+				[_('Words'), self.getNumberOfWords()],
+				[_('Distinct Words'), self.get_number_of_distinct_words()],
+				[_('Edited Days'), self.getNumberOfEntries()],
+				[_('Letters'), self.getNumberOfChars()],
+				[_('Days between first and last Entry'), self.get_number_of_usage_days()],
+				[_('Average number of Words'), self.get_average_number_of_words()],
+				[_('Percentage of edited Days'), self.get_edit_percentage()],
 				]
 		
 	@property
 	def day_pairs(self):
 		day = self.redNotebook.day
 		return [
-				['Words', day.getNumberOfWords()],
-				['Lines', len(day.text.splitlines())],
-				['Letters', len(day.text)],
+				[_('Words'), day.getNumberOfWords()],
+				[_('Lines'), len(day.text.splitlines())],
+				[_('Letters'), len(day.text)],
 				]
 	
 	def getStatsHTML(self):

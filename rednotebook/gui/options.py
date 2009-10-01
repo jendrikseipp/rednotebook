@@ -81,7 +81,7 @@ class AutostartOption(TickOption):
 		autostart_dir = os.path.join(home_dir, '.config/autostart/')
 		self.autostart_file = os.path.join(autostart_dir, 'rednotebook.desktop')
 		autostart_file_exists = os.path.exists(self.autostart_file)
-		TickOption.__init__(self, 'Load RedNotebook at startup', None, \
+		TickOption.__init__(self, _('Load RedNotebook at startup'), None, \
 						default_value=autostart_file_exists)
 		
 	def get_value(self):
@@ -147,14 +147,14 @@ class ComboBoxOption(Option):
 	
 	
 class DateFormatOption(ComboBoxOption):
-	def __init__(self, text, name):
-		date_formats = ['%A, %x %X', '%A, %x, Day %j', '%H:%M', 'Week %W of Year %Y', \
-						'%y-%m-%d', 'Day %j', '%A', '%B']
+	def __init__(self, text, name):		
+		date_formats = ['%A, %x %X', _('%A, %x, Day %j'), '%H:%M', _('Week %W of Year %Y'), \
+						'%y-%m-%d', _('Day %j'), '%A', '%B']
 		
 		ComboBoxOption.__init__(self, text, name, date_formats)
 		
 		date_url = 'http://docs.python.org/library/time.html#time.strftime'
-		date_format_help_button = UrlButton('Help', date_url)
+		date_format_help_button = UrlButton(_('Help'), date_url)
 		
 		self.preview = gtk.Label()
 		self.pack_start(self.preview, False)
@@ -172,7 +172,7 @@ class DateFormatOption(ComboBoxOption):
 		
 	def on_format_changed(self, widget):
 		import time
-		self.preview.set_text('Result: %s' % time.strftime(self.combo.get_active_text()))
+		self.preview.set_text(_('Preview: %s') % time.strftime(self.combo.get_active_text()))
 		
 class FontSizeOption(ComboBoxOption):
 	def __init__(self, text, name):
@@ -279,26 +279,28 @@ class OptionsManager(object):
 			logging.debug('Running on Linux. Is installed. Adding autostart option')
 			self.options.insert(0, AutostartOption())
 		
-		self.options.append(TickOption('Check for new version at startup', 'checkForNewVersion'))
+		self.options.append(TickOption(_('Check for new version at startup'), 'checkForNewVersion'))
 		
 		
-		self.options.append(TickOption('Close to system tray', 'closeToTray',
-				tooltip='Closing the window will send RedNotebook to the tray'))
+		self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
+				tooltip=_('Closing the window will send RedNotebook to the tray')))
 		
-		spell_check_option = TickOption('Spell Check', 'spellcheck',
-				tooltip='Requires gtkspell for python. This is included in '
-						'the python-gnome2-extras package')
+		able_to_spell_check = self.main_window.dayTextField.can_spell_check()
+		tooltip = _('Underline misspelled words') if able_to_spell_check else \
+				_('Requires gtkspell. This is included in the python-gnome2-extras package')
+		spell_check_option = TickOption(_('Spell Check'), 'spellcheck',
+				tooltip=tooltip)
 		if not sys.platform == 'win32':
 			self.options.append(spell_check_option)
-		spell_check_option.set_sensitive(self.main_window.dayTextField.can_spell_check())
+		spell_check_option.set_sensitive(able_to_spell_check)
 		
 		self.options.extend([
-				DateFormatOption('Date/Time format', 'dateTimeString'),
-				FontSizeOption('Font Size', 'mainFontSize'),
-				CsvTextOption('Exclude from clouds', 'cloudIgnoreList', \
-								tooltip='Do not show those comma separated words in any cloud'),
-				CsvTextOption('Allow small words in clouds', 'cloudIncludeList', \
-								tooltip='Allow those words with 4 letters or less in the text cloud'),
+				DateFormatOption(_('Date/Time format'), 'dateTimeString'),
+				FontSizeOption(_('Font Size'), 'mainFontSize'),
+				CsvTextOption(_('Exclude from clouds'), 'cloudIgnoreList', \
+								tooltip=_('Do not show those comma separated words in any cloud')),
+				CsvTextOption(_('Allow small words in clouds'), 'cloudIncludeList', \
+								tooltip=_('Allow those words with 4 letters or less in the text cloud')),
 				])
 		
 		
