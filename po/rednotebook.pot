@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-29 01:46+0200\n"
+"POT-Creation-Date: 2009-10-01 03:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,177 +16,254 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../rednotebook/gui/mainWindow.py:280
+#: ../rednotebook/gui/mainWindow.py:283
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:357 tmp/mainWindow.glade.h:51
+#: ../rednotebook/gui/mainWindow.py:360 tmp/mainWindow.glade.h:51
 msgid "Preview"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:372
+#: ../rednotebook/gui/mainWindow.py:375
 msgid "Edit"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:451
+#: ../rednotebook/gui/mainWindow.py:454
 msgid "Select an empty folder for your new journal"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:452
+#: ../rednotebook/gui/mainWindow.py:455
 msgid "<b>Journals are saved in a directory, not in a single file.\n"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:453
+#: ../rednotebook/gui/mainWindow.py:456
 msgid "The directory name will be the title of the new journal.</b>"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:457
+#: ../rednotebook/gui/mainWindow.py:460
 msgid "Select an existing journal directory"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:458
+#: ../rednotebook/gui/mainWindow.py:461
 msgid "<b>The directory should contain your journal's data files</b>"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:460
+#: ../rednotebook/gui/mainWindow.py:463
 msgid "Select an empty folder for the new location your journal"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:461
+#: ../rednotebook/gui/mainWindow.py:464
 msgid "<b>The directory name will be the new title of the journal</b>"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:481
+#: ../rednotebook/gui/mainWindow.py:484
 msgid "The default journal has been opened"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:622
+#: ../rednotebook/gui/mainWindow.py:626
 msgid "Format"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:623
+#: ../rednotebook/gui/mainWindow.py:627
 msgid "Format the selected text or category entry"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:666
+#: ../rednotebook/gui/mainWindow.py:670
 msgid "First Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:667
+#: ../rednotebook/gui/mainWindow.py:671
 msgid "Second Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:668
+#: ../rednotebook/gui/mainWindow.py:672
 msgid "Indented Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:669
+#: ../rednotebook/gui/mainWindow.py:673
 msgid "Two blank lines close the list"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:673
+#: ../rednotebook/gui/mainWindow.py:677
 msgid "Title text"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:689
+#: ../rednotebook/gui/mainWindow.py:693
 msgid "Picture"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:690
+#: ../rednotebook/gui/mainWindow.py:694
 msgid "Insert an image from the harddisk"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:692
+#: ../rednotebook/gui/mainWindow.py:696
 msgid "File"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:693
+#: ../rednotebook/gui/mainWindow.py:697
 msgid "Insert a link to a file"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:695
+#: ../rednotebook/gui/mainWindow.py:699
 msgid "_Link"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:696
+#: ../rednotebook/gui/mainWindow.py:700
 msgid "Insert a link to a website"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:698
+#: ../rednotebook/gui/mainWindow.py:702
 msgid "Bullet List"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:699
+#: ../rednotebook/gui/mainWindow.py:703
 msgid "Insert a bullet list"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:704
+#: ../rednotebook/gui/mainWindow.py:708
 msgid "Title"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:705
+#: ../rednotebook/gui/mainWindow.py:709
 msgid "Insert a title"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:707
+#: ../rednotebook/gui/mainWindow.py:711
 msgid "Line"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:708
+#: ../rednotebook/gui/mainWindow.py:712
 msgid "Insert a separator line"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:710
+#: ../rednotebook/gui/mainWindow.py:714
 msgid "Date/Time"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:711
+#: ../rednotebook/gui/mainWindow.py:715
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:713
+#: ../rednotebook/gui/mainWindow.py:717
 msgid "Line Break"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:714
+#: ../rednotebook/gui/mainWindow.py:718
 msgid "Insert a manual line break"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:742
+#: ../rednotebook/gui/mainWindow.py:746
 msgid "Insert"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:746
+#: ../rednotebook/gui/mainWindow.py:750
 msgid "Insert images, files, links and other content"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:830
+#: ../rednotebook/gui/mainWindow.py:834
 msgid "No link location has been entered"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:992
+#: ../rednotebook/gui/mainWindow.py:996
 msgid "Search ..."
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1069
+#: ../rednotebook/gui/mainWindow.py:1075
 msgid "filter, these, comma, separated, words"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1126
+#: ../rednotebook/gui/mainWindow.py:1080
+msgid "mtv, spam, work, job, play"
+msgstr ""
+
+#: ../rednotebook/gui/mainWindow.py:1137
 msgid "Hide selected words"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1189
+#: ../rednotebook/gui/mainWindow.py:1200
 msgid "Date"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1190 ../rednotebook/gui/mainWindow.py:1232
-#: ../rednotebook/gui/mainWindow.py:1240 tmp/mainWindow.glade.h:67
+#: ../rednotebook/gui/mainWindow.py:1201 ../rednotebook/gui/mainWindow.py:1243
+#: ../rednotebook/gui/mainWindow.py:1251 tmp/mainWindow.glade.h:67
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1236
+#: ../rednotebook/gui/mainWindow.py:1247
 msgid "Entry"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:84
+msgid "Load RedNotebook at startup"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:151
+msgid "%A, %x, Day %j"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:151
+msgid "Week %W of Year %Y"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:152
+msgid "Day %j"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:157 tmp/mainWindow.glade.h:38
+msgid "Help"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:175
+#, python-format
+msgid "Preview: %s"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:282
+msgid "Check for new version at startup"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:285
+msgid "Close to system tray"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:286
+msgid "Closing the window will send RedNotebook to the tray"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:289
+msgid "Underline misspelled words"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:290
+msgid "Requires gtkspell. This is included in the python-gnome2-extras package"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:291
+msgid "Spell Check"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:298
+msgid "Date/Time format"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:299
+msgid "Font Size"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:300
+msgid "Exclude from clouds"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:301
+msgid "Do not show those comma separated words in any cloud"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:302
+msgid "Allow small words in clouds"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:303
+msgid "Allow those words with 4 letters or less in the text cloud"
 msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:59 tmp/mainWindow.glade.h:29
@@ -330,26 +408,59 @@ msgstr ""
 msgid "Delete this node"
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:377
+#: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
+#: tmp/mainWindow.glade.h:71
+msgid "Words"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:81
+msgid "Distinct Words"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:82
+msgid "Edited Days"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:83 ../rednotebook/util/statistics.py:95
+msgid "Letters"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:84
+msgid "Days between first and last Entry"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:85
+msgid "Average number of Words"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:86
+msgid "Percentage of edited Days"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:94
+msgid "Lines"
+msgstr ""
+
+#: ../rednotebook/redNotebook.py:389
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:379
+#: ../rednotebook/redNotebook.py:391
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:412
+#: ../rednotebook/redNotebook.py:424
 msgid "The selected folder is not empty."
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:413
+#: ../rednotebook/redNotebook.py:425
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:416
+#: ../rednotebook/redNotebook.py:428
 msgid "The selected folder is empty. A new journal has been created."
 msgstr ""
 
@@ -519,10 +630,6 @@ msgstr ""
 msgid "HTML"
 msgstr ""
 
-#: tmp/mainWindow.glade.h:38
-msgid "Help"
-msgstr ""
-
 #: tmp/mainWindow.glade.h:39
 msgid ""
 "If export text is not selected, you have to select at least one category."
@@ -638,10 +745,6 @@ msgid ""
 "Welcome to the Export Assistant. \n"
 "This wizard will help you to export your journal to various formats. You can "
 "select the days you want to export and where the output will be saved."
-msgstr ""
-
-#: tmp/mainWindow.glade.h:71
-msgid "Words"
 msgstr ""
 
 #: tmp/mainWindow.glade.h:72
