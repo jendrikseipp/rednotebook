@@ -224,7 +224,7 @@ msgstr "Vorschau: %s"
 
 #: ../rednotebook/gui/options.py:282
 msgid "Check for new version at startup"
-msgstr "Prüfe Updates beim Programmstart"
+msgstr "Suche nach Updates beim Programmstart"
 
 #: ../rednotebook/gui/options.py:285
 msgid "Close to system tray"

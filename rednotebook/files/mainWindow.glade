@@ -1687,7 +1687,6 @@ This wizard will help you to export your journal to various formats. You can sel
     <property name="title" translatable="yes">Select a directory</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="has_separator">False</property>
     <property name="action">select-folder</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox17">

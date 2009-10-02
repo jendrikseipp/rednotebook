@@ -8,32 +8,42 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 0.8.8
-O i18n
-  X mark translatable strings
-    O statistics, options
-  O setup translations at launchpad
-  X make German translation
-  X install mo files with setup.py
+X Internationalization
+  X Mark translatable strings
+  X Setup translations at launchpad
+  X Make German translation
+  X Install mo files with setup.py
 X Add "Start minimized to tray" command line parameter
 X Cloud words white list for short words
 
 0.8.9
+O Add ssh and ftp support
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
    O Show message in windows installer
    O Save dataDir relative to exe
    
-0.8.x
-O Import of exported backups
-O Password protection
+0.9 
+O Markup Highlighting (similar to real WYSIWYG)
 
-0.9
+0.9.5
+O Use Zeitgeist for automatic category entries
+
+0.9.x
 O Automatic insertion of photo links for current day
 O Automatic insertion of holidays
+O Import of exported backups
+O Change to newer KeepNote Version
 
 1.0
-O WYSIWYG editing as an alternative to markup text?
+O Solid amount of translations
+O Stable
+O Fix freeze bug
+O Many automatic insertions
+
+1.1
+O Password protection or encryption
 
 
 

@@ -452,16 +452,18 @@ class MainWindow(object):
 		if type == 'new':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER)
 			dir_chooser.set_title(_('Select an empty folder for your new journal'))
-			msg_part1 = _('<b>Journals are saved in a directory, not in a single file.\n')
-			msg_part2 = _('The directory name will be the title of the new journal.</b>')
-			label.set_markup(msg_part1 + msg_part2)
+			msg_part1 = _('Journals are saved in a directory, not in a single file.')
+			msg_part2 = _('The directory name will be the title of the new journal.')
+			label.set_markup('<b>' + msg_part1 + '\n' + msg_part2 + '</b>')
 		elif type == 'open':
 			#dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
 			dir_chooser.set_title(_('Select an existing journal directory'))
-			label.set_markup(_("<b>The directory should contain your journal's data files</b>"))
+			label.set_markup('<b>' + \
+				_("The directory should contain your journal's data files") + '</b>')
 		elif type == 'saveas':
 			dir_chooser.set_title(_('Select an empty folder for the new location your journal'))
-			label.set_markup(_('<b>The directory name will be the new title of the journal</b>'))
+			label.set_markup('<b>' + \
+				_('The directory name will be the new title of the journal') + '</b>')
 		dir_chooser.set_current_folder(self.redNotebook.dirs.dataDir)
 		
 		response = dir_chooser.run()

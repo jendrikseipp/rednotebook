@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 03:17+0200\n"
+"POT-Creation-Date: 2009-10-02 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,163 +33,163 @@ msgid "Select an empty folder for your new journal"
 msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:455
-msgid "<b>Journals are saved in a directory, not in a single file.\n"
+msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:456
-msgid "The directory name will be the title of the new journal.</b>"
+msgid "The directory name will be the title of the new journal."
 msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:460
 msgid "Select an existing journal directory"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:461
-msgid "<b>The directory should contain your journal's data files</b>"
-msgstr ""
-
-#: ../rednotebook/gui/mainWindow.py:463
-msgid "Select an empty folder for the new location your journal"
+#: ../rednotebook/gui/mainWindow.py:462
+msgid "The directory should contain your journal's data files"
 msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:464
-msgid "<b>The directory name will be the new title of the journal</b>"
+msgid "Select an empty folder for the new location your journal"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:484
+#: ../rednotebook/gui/mainWindow.py:466
+msgid "The directory name will be the new title of the journal"
+msgstr ""
+
+#: ../rednotebook/gui/mainWindow.py:486
 msgid "The default journal has been opened"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:626
+#: ../rednotebook/gui/mainWindow.py:628
 msgid "Format"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:627
+#: ../rednotebook/gui/mainWindow.py:629
 msgid "Format the selected text or category entry"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:670
+#: ../rednotebook/gui/mainWindow.py:672
 msgid "First Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:671
+#: ../rednotebook/gui/mainWindow.py:673
 msgid "Second Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:672
+#: ../rednotebook/gui/mainWindow.py:674
 msgid "Indented Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:673
+#: ../rednotebook/gui/mainWindow.py:675
 msgid "Two blank lines close the list"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:677
+#: ../rednotebook/gui/mainWindow.py:679
 msgid "Title text"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:693
+#: ../rednotebook/gui/mainWindow.py:695
 msgid "Picture"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:694
+#: ../rednotebook/gui/mainWindow.py:696
 msgid "Insert an image from the harddisk"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:696
+#: ../rednotebook/gui/mainWindow.py:698
 msgid "File"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:697
+#: ../rednotebook/gui/mainWindow.py:699
 msgid "Insert a link to a file"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:699
+#: ../rednotebook/gui/mainWindow.py:701
 msgid "_Link"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:700
+#: ../rednotebook/gui/mainWindow.py:702
 msgid "Insert a link to a website"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:702
+#: ../rednotebook/gui/mainWindow.py:704
 msgid "Bullet List"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:703
+#: ../rednotebook/gui/mainWindow.py:705
 msgid "Insert a bullet list"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:708
+#: ../rednotebook/gui/mainWindow.py:710
 msgid "Title"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:709
+#: ../rednotebook/gui/mainWindow.py:711
 msgid "Insert a title"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:711
+#: ../rednotebook/gui/mainWindow.py:713
 msgid "Line"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:712
+#: ../rednotebook/gui/mainWindow.py:714
 msgid "Insert a separator line"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:714
+#: ../rednotebook/gui/mainWindow.py:716
 msgid "Date/Time"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:715
+#: ../rednotebook/gui/mainWindow.py:717
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:717
+#: ../rednotebook/gui/mainWindow.py:719
 msgid "Line Break"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:718
+#: ../rednotebook/gui/mainWindow.py:720
 msgid "Insert a manual line break"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:746
+#: ../rednotebook/gui/mainWindow.py:748
 msgid "Insert"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:750
+#: ../rednotebook/gui/mainWindow.py:752
 msgid "Insert images, files, links and other content"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:834
+#: ../rednotebook/gui/mainWindow.py:836
 msgid "No link location has been entered"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:996
+#: ../rednotebook/gui/mainWindow.py:998
 msgid "Search ..."
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1075
+#: ../rednotebook/gui/mainWindow.py:1077
 msgid "filter, these, comma, separated, words"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1080
+#: ../rednotebook/gui/mainWindow.py:1082
 msgid "mtv, spam, work, job, play"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1137
+#: ../rednotebook/gui/mainWindow.py:1139
 msgid "Hide selected words"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1200
+#: ../rednotebook/gui/mainWindow.py:1202
 msgid "Date"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1201 ../rednotebook/gui/mainWindow.py:1243
-#: ../rednotebook/gui/mainWindow.py:1251 tmp/mainWindow.glade.h:67
+#: ../rednotebook/gui/mainWindow.py:1203 ../rednotebook/gui/mainWindow.py:1245
+#: ../rednotebook/gui/mainWindow.py:1253 tmp/mainWindow.glade.h:67
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1247
+#: ../rednotebook/gui/mainWindow.py:1249
 msgid "Entry"
 msgstr ""
 
@@ -747,14 +747,6 @@ msgid ""
 "select the days you want to export and where the output will be saved."
 msgstr ""
 
-#: tmp/mainWindow.glade.h:72
-msgid "gtk-cancel"
-msgstr ""
-
 #: tmp/mainWindow.glade.h:73
-msgid "gtk-ok"
-msgstr ""
-
-#: tmp/mainWindow.glade.h:75
 msgid "translator-credits"
 msgstr ""
