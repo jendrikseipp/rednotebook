@@ -321,7 +321,7 @@ class ExportAssistant (object):
 			export_file = codecs.open(self.filename, 'w', 'utf-8')
 			export_file.write(export_string)
 			export_file.flush()
-			self.redNotebook.showMessage(_('Content exported to ') + self.filename)
+			self.redNotebook.showMessage(_('Content exported to %s') + self.filename)
 		except:
 			self.redNotebook.showMessage(_('Exporting to %s failed') % self.filename)
 

@@ -35,6 +35,7 @@ O Automatic insertion of photo links for current day
 O Automatic insertion of holidays
 O Import of exported backups
 O Change to newer KeepNote Version
+O Use attributes for formatting glade strings for easier translation
 
 1.0
 O Solid amount of translations
