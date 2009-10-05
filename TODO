@@ -18,17 +18,12 @@ X Cloud words white list for short words
 
 0.8.9
 O Add ssh and ftp support
-X Windows: RedNotebook can now be run in portable mode
-  (edit the setting in "RedNotebook-directory/files/default.cfg")
-   O Propose to portableapps
-   O Show message in windows installer
-   O Save dataDir relative to exe
    
 0.9 
 O Markup Highlighting (similar to real WYSIWYG)
 
 0.9.5
-O Use Zeitgeist for automatic category entries
+O Use Zeitgeist for automatic category entries (start with Karmic update)
 
 0.9.x
 O Automatic insertion of photo links for current day
@@ -36,6 +31,11 @@ O Automatic insertion of holidays
 O Import of exported backups
 O Change to newer KeepNote Version
 O Use attributes for formatting glade strings for easier translation
+X Windows: RedNotebook can now be run in portable mode
+  (edit the setting in "RedNotebook-directory/files/default.cfg")
+   O Propose to portableapps
+   O Show message in windows installer
+   O Save dataDir relative to exe
 
 1.0
 O Solid amount of translations
@@ -55,9 +55,7 @@ O Password protection or encryption
 === Maybe even some of those features will make it into RedNotebook ===
 
 O Hyperlinks in Categories -> Already implemented, add documentation
-O Encryption XOR Password XOR provide TrueCrypt encryption HowTo for Linux
 O Allow inserting directories (Do not add menu item, just document the feature)
-O SSH, FTP saving -> Conduit HowTo
 
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)

@@ -1,12 +1,16 @@
-#, fuzzy
+# Brazilian Portuguese translation for rednotebook
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the rednotebook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: rednotebook\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-02 17:28+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-10-03 02:08+0000\n"
+"Last-Translator: André Gondim <andregondim@ubuntu.com>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,15 +19,15 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:283
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "Mostar RedNotebook"
 
 #: ../rednotebook/gui/mainWindow.py:360 tmp/mainWindow.glade.h:51
 msgid "Preview"
-msgstr ""
+msgstr "Visualização"
 
 #: ../rednotebook/gui/mainWindow.py:375
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: ../rednotebook/gui/mainWindow.py:454
 msgid "Select an empty folder for your new journal"
@@ -59,7 +63,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:628
 msgid "Format"
-msgstr ""
+msgstr "Formatar"
 
 #: ../rednotebook/gui/mainWindow.py:629
 msgid "Format the selected text or category entry"
@@ -83,11 +87,11 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:679
 msgid "Title text"
-msgstr ""
+msgstr "Títutlo do texto"
 
 #: ../rednotebook/gui/mainWindow.py:695
 msgid "Picture"
-msgstr ""
+msgstr "Imagem"
 
 #: ../rednotebook/gui/mainWindow.py:696
 msgid "Insert an image from the harddisk"
@@ -95,7 +99,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:698
 msgid "File"
-msgstr ""
+msgstr "Arquivo"
 
 #: ../rednotebook/gui/mainWindow.py:699
 msgid "Insert a link to a file"
@@ -103,7 +107,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:701
 msgid "_Link"
-msgstr ""
+msgstr "_Link"
 
 #: ../rednotebook/gui/mainWindow.py:702
 msgid "Insert a link to a website"
@@ -111,7 +115,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:704
 msgid "Bullet List"
-msgstr ""
+msgstr "Lista de pontos"
 
 #: ../rednotebook/gui/mainWindow.py:705
 msgid "Insert a bullet list"
@@ -119,7 +123,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:710
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: ../rednotebook/gui/mainWindow.py:711
 msgid "Insert a title"
@@ -127,7 +131,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:713
 msgid "Line"
-msgstr ""
+msgstr "Linha"
 
 #: ../rednotebook/gui/mainWindow.py:714
 msgid "Insert a separator line"
@@ -135,7 +139,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:716
 msgid "Date/Time"
-msgstr ""
+msgstr "Data/hora"
 
 #: ../rednotebook/gui/mainWindow.py:717
 msgid "Insert the current date and time (edit format in preferences)"
@@ -143,7 +147,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:719
 msgid "Line Break"
-msgstr ""
+msgstr "Quebra de linha"
 
 #: ../rednotebook/gui/mainWindow.py:720
 msgid "Insert a manual line break"
@@ -151,7 +155,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:748
 msgid "Insert"
-msgstr ""
+msgstr "Inserir"
 
 #: ../rednotebook/gui/mainWindow.py:752
 msgid "Insert images, files, links and other content"
@@ -163,7 +167,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:998
 msgid "Search ..."
-msgstr ""
+msgstr "Pesquisar..."
 
 #: ../rednotebook/gui/mainWindow.py:1077
 msgid "filter, these, comma, separated, words"
@@ -179,16 +183,16 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:1202
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: ../rednotebook/gui/mainWindow.py:1203 ../rednotebook/gui/mainWindow.py:1245
 #: ../rednotebook/gui/mainWindow.py:1253 tmp/mainWindow.glade.h:67
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: ../rednotebook/gui/mainWindow.py:1249
 msgid "Entry"
-msgstr ""
+msgstr "Entrada"
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
@@ -208,12 +212,12 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:157 tmp/mainWindow.glade.h:38
 msgid "Help"
-msgstr ""
+msgstr "Ajuda"
 
 #: ../rednotebook/gui/options.py:175
 #, python-format
 msgid "Preview: %s"
-msgstr ""
+msgstr "Visualizar: %s"
 
 #: ../rednotebook/gui/options.py:282
 msgid "Check for new version at startup"
@@ -238,7 +242,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:291
 msgid "Spell Check"
-msgstr ""
+msgstr "Verificar ortografia"
 
 #: ../rednotebook/gui/options.py:298
 msgid "Date/Time format"
@@ -246,7 +250,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:299
 msgid "Font Size"
-msgstr ""
+msgstr "Tamanho da fonte"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Exclude from clouds"
@@ -304,7 +308,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Open the export assistant"
@@ -312,7 +316,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Backup"
-msgstr ""
+msgstr "Cópia de segurança"
 
 #: ../rednotebook/gui/menu.py:100
 msgid "Save all the data in a zip archive"
@@ -324,7 +328,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:105
 msgid "_Edit"
-msgstr ""
+msgstr "_Editar"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Undo text edits or category entry deletions"
@@ -336,11 +340,11 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:121
 msgid "_Help"
-msgstr ""
+msgstr "Aj_uda"
 
 #: ../rednotebook/gui/menu.py:122 tmp/mainWindow.glade.h:62
 msgid "Statistics"
-msgstr ""
+msgstr "Estatísticas"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Show some statistics about the journal"
@@ -376,7 +380,7 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:20
 msgid "Categories"
-msgstr ""
+msgstr "Categorias"
 
 #: ../rednotebook/gui/categories.py:118
 msgid "Empty nodes are not allowed"
@@ -400,7 +404,7 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:434
 msgid "Add a new entry"
-msgstr ""
+msgstr "Adicionar nova entrada"
 
 #: ../rednotebook/gui/categories.py:438
 msgid "Delete this node"
@@ -409,7 +413,7 @@ msgstr ""
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:71
 msgid "Words"
-msgstr ""
+msgstr "Palavras"
 
 #: ../rednotebook/util/statistics.py:81
 msgid "Distinct Words"
@@ -421,7 +425,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:83 ../rednotebook/util/statistics.py:95
 msgid "Letters"
-msgstr ""
+msgstr "Letras"
 
 #: ../rednotebook/util/statistics.py:84
 msgid "Days between first and last Entry"
@@ -437,7 +441,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Lines"
-msgstr ""
+msgstr "Linhas"
 
 #: ../rednotebook/redNotebook.py:389
 #, python-format
@@ -446,7 +450,7 @@ msgstr ""
 
 #: ../rednotebook/redNotebook.py:391
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nenhuma modificação a ser salva"
 
 #: ../rednotebook/redNotebook.py:424
 msgid "The selected folder is not empty."
@@ -472,7 +476,7 @@ msgstr ""
 
 #: ../rednotebook/templates.py:294
 msgid "Edit Template"
-msgstr ""
+msgstr "Editar modelo"
 
 #: ../rednotebook/templates.py:297
 msgid "Insert Template"
@@ -480,7 +484,7 @@ msgstr ""
 
 #: ../rednotebook/templates.py:303
 msgid "Create New Template"
-msgstr ""
+msgstr "Criar um novo modelo"
 
 #: ../rednotebook/templates.py:306
 msgid "Open Template Directory"
@@ -508,7 +512,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:6
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Geral</b>"
 
 #: tmp/mainWindow.glade.h:7
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
@@ -552,7 +556,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:17
 msgid "Add Tag"
-msgstr ""
+msgstr "Adicionar etiqueta"
 
 #: tmp/mainWindow.glade.h:18
 msgid "Add an entry to a category (Ctrl+N)"
@@ -560,11 +564,11 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:19
 msgid "All Entries"
-msgstr ""
+msgstr "Todas entradas"
 
 #: tmp/mainWindow.glade.h:21
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
 #: tmp/mainWindow.glade.h:22
 msgid "Check at Startup"
@@ -572,11 +576,11 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:23
 msgid "Clouds"
-msgstr ""
+msgstr "Nuvens"
 
 #: tmp/mainWindow.glade.h:24
 msgid "Delete"
-msgstr ""
+msgstr "Apagar"
 
 #: tmp/mainWindow.glade.h:25
 msgid "Delete the selected node"
@@ -584,7 +588,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:26
 msgid "Do not ask again"
-msgstr ""
+msgstr "Não perguntar novamente"
 
 #: tmp/mainWindow.glade.h:27
 msgid "Do not export categories"
@@ -596,7 +600,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:30
 msgid "Export Text"
-msgstr ""
+msgstr "Exportar texto"
 
 #: tmp/mainWindow.glade.h:31
 msgid "Export all categories"
@@ -614,7 +618,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:34
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: tmp/mainWindow.glade.h:35
 msgid "Go to next day (Ctrl+PageUp)"
@@ -626,7 +630,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:37
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: tmp/mainWindow.glade.h:39
 msgid ""
@@ -635,7 +639,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:40
 msgid "Insert Link"
-msgstr ""
+msgstr "Inserir link"
 
 #: tmp/mainWindow.glade.h:41
 msgid ""
@@ -652,7 +656,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:44
 msgid "New Entry"
-msgstr ""
+msgstr "Nova entrada"
 
 #: tmp/mainWindow.glade.h:45
 msgid "New Version"
@@ -660,7 +664,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:46
 msgid "New entry"
-msgstr ""
+msgstr "Nova entrada"
 
 #: tmp/mainWindow.glade.h:47
 msgid "No New Version"
@@ -672,15 +676,15 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:49
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: tmp/mainWindow.glade.h:50
 msgid "Preferences"
-msgstr ""
+msgstr "Preferências"
 
 #: tmp/mainWindow.glade.h:52
 msgid "Search"
-msgstr ""
+msgstr "Pesquisar"
 
 #: tmp/mainWindow.glade.h:53
 msgid "Search in entries, categories and tags"
@@ -696,11 +700,11 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:56
 msgid "Select a directory"
-msgstr ""
+msgstr "Selecionar um diretório"
 
 #: tmp/mainWindow.glade.h:57
 msgid "Select a file"
-msgstr ""
+msgstr "Selecionar um arquivo"
 
 #: tmp/mainWindow.glade.h:58
 msgid "Select a picture"
@@ -720,7 +724,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:63
 msgid "Tag"
-msgstr ""
+msgstr "Etiqueta"
 
 #: tmp/mainWindow.glade.h:64
 msgid "Tag this day (Ctrl+T)"
@@ -728,15 +732,15 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:65
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: tmp/mainWindow.glade.h:66
 msgid "Template"
-msgstr ""
+msgstr "Modelo"
 
 #: tmp/mainWindow.glade.h:68
 msgid "Today"
-msgstr ""
+msgstr "Hoje"
 
 #: tmp/mainWindow.glade.h:69
 msgid ""
@@ -748,3 +752,5 @@ msgstr ""
 #: tmp/mainWindow.glade.h:73
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  André Gondim https://launchpad.net/~andregondim"

@@ -87,9 +87,10 @@ def build_mo_files():
 		msgfmt.make(po_file, mo_file)
 		
 if 'i18n' in sys.argv:
-	build_mo_files()
+	#build_mo_files()
 	sys.exit()
-	
+
+# Built mo files unconditionally
 build_mo_files()
 
 def get_data_base_dir():
@@ -120,13 +121,6 @@ class wx_smart_install_data(distutils.command.install_data.install_data):
 	def run(self):
 		install_cmd = self.get_finalized_command('install')
 		self.install_dir = getattr(install_cmd, 'install_lib')
-		print self.install_dir
-		print
-		print dir(install_cmd)
-		print
-		#global data_base_dir
-		#data_base_dir = getattr(install_cmd, 'install_data')
-		#sys.exit()
 		return distutils.command.install_data.install_data.run(self)
 
 def find_data_files(srcdir, *wildcards, **kw):
@@ -245,9 +239,6 @@ if 'py2exe' in sys.argv:
 									('images/redNotebookIcon', \
 										['rednotebook/images/redNotebookIcon/rn-32.png']),])
 	parameters.update(py2exeParameters)
-	
-print parameters['data_files']
-#sys.exit()
 
 
 #Additionally use MANIFEST.in for image files

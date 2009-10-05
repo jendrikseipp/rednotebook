@@ -1,12 +1,16 @@
-#, fuzzy
+# Romanian translation for rednotebook
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the rednotebook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: rednotebook\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-02 17:28+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-10-02 14:31+0000\n"
+"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +23,11 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:360 tmp/mainWindow.glade.h:51
 msgid "Preview"
-msgstr ""
+msgstr "Previzualizare"
 
 #: ../rednotebook/gui/mainWindow.py:375
 msgid "Edit"
-msgstr ""
+msgstr "Editare"
 
 #: ../rednotebook/gui/mainWindow.py:454
 msgid "Select an empty folder for your new journal"
@@ -59,7 +63,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:628
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: ../rednotebook/gui/mainWindow.py:629
 msgid "Format the selected text or category entry"
@@ -83,11 +87,11 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:679
 msgid "Title text"
-msgstr ""
+msgstr "Text titlu"
 
 #: ../rednotebook/gui/mainWindow.py:695
 msgid "Picture"
-msgstr ""
+msgstr "Imagine"
 
 #: ../rednotebook/gui/mainWindow.py:696
 msgid "Insert an image from the harddisk"
@@ -95,7 +99,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:698
 msgid "File"
-msgstr ""
+msgstr "Fișier"
 
 #: ../rednotebook/gui/mainWindow.py:699
 msgid "Insert a link to a file"
@@ -103,7 +107,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:701
 msgid "_Link"
-msgstr ""
+msgstr "_Legătură"
 
 #: ../rednotebook/gui/mainWindow.py:702
 msgid "Insert a link to a website"
@@ -111,7 +115,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:704
 msgid "Bullet List"
-msgstr ""
+msgstr "Listă cu puncte"
 
 #: ../rednotebook/gui/mainWindow.py:705
 msgid "Insert a bullet list"
@@ -119,7 +123,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:710
 msgid "Title"
-msgstr ""
+msgstr "Titlu"
 
 #: ../rednotebook/gui/mainWindow.py:711
 msgid "Insert a title"
@@ -127,7 +131,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:713
 msgid "Line"
-msgstr ""
+msgstr "Linie"
 
 #: ../rednotebook/gui/mainWindow.py:714
 msgid "Insert a separator line"
@@ -135,7 +139,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:716
 msgid "Date/Time"
-msgstr ""
+msgstr "Dată/Oră"
 
 #: ../rednotebook/gui/mainWindow.py:717
 msgid "Insert the current date and time (edit format in preferences)"
@@ -143,7 +147,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:719
 msgid "Line Break"
-msgstr ""
+msgstr "Întrerupere de linie"
 
 #: ../rednotebook/gui/mainWindow.py:720
 msgid "Insert a manual line break"
@@ -151,11 +155,11 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:748
 msgid "Insert"
-msgstr ""
+msgstr "Inserare"
 
 #: ../rednotebook/gui/mainWindow.py:752
 msgid "Insert images, files, links and other content"
-msgstr ""
+msgstr "Inserează imagini, fișiere, legături sau alt tip de conținut"
 
 #: ../rednotebook/gui/mainWindow.py:836
 msgid "No link location has been entered"
@@ -163,118 +167,120 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:998
 msgid "Search ..."
-msgstr ""
+msgstr "Caută ..."
 
 #: ../rednotebook/gui/mainWindow.py:1077
 msgid "filter, these, comma, separated, words"
-msgstr ""
+msgstr "filtrează, aceste, cuvinte, separate, prin, virgule"
 
 #: ../rednotebook/gui/mainWindow.py:1082
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "mtv, spam, muncă, servici, joacă"
 
 #: ../rednotebook/gui/mainWindow.py:1139
 msgid "Hide selected words"
-msgstr ""
+msgstr "Ascunde cuvintele selectate"
 
 #: ../rednotebook/gui/mainWindow.py:1202
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: ../rednotebook/gui/mainWindow.py:1203 ../rednotebook/gui/mainWindow.py:1245
 #: ../rednotebook/gui/mainWindow.py:1253 tmp/mainWindow.glade.h:67
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: ../rednotebook/gui/mainWindow.py:1249
 msgid "Entry"
-msgstr ""
+msgstr "Intrare"
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "Pornește RedNotebook la pornirea calculatorului"
 
 #: ../rednotebook/gui/options.py:151
 msgid "%A, %x, Day %j"
-msgstr ""
+msgstr "%A, %x, ziua %j"
 
 #: ../rednotebook/gui/options.py:151
 msgid "Week %W of Year %Y"
-msgstr ""
+msgstr "Săptămâna %W, anul %Y"
 
 #: ../rednotebook/gui/options.py:152
 msgid "Day %j"
-msgstr ""
+msgstr "Ziua %j"
 
 #: ../rednotebook/gui/options.py:157 tmp/mainWindow.glade.h:38
 msgid "Help"
-msgstr ""
+msgstr "Ajutor"
 
 #: ../rednotebook/gui/options.py:175
 #, python-format
 msgid "Preview: %s"
-msgstr ""
+msgstr "Previzualizează: %s"
 
 #: ../rednotebook/gui/options.py:282
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "Verifică la pornire dacă au apărut versiuni noi"
 
 #: ../rednotebook/gui/options.py:285
 msgid "Close to system tray"
-msgstr ""
+msgstr "Trimite în zona de notificare la închidere"
 
 #: ../rednotebook/gui/options.py:286
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
+msgstr "Închizând fereastra veți trimite RedNotebook în zona de notificare"
 
 #: ../rednotebook/gui/options.py:289
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "Subliniază cuvintele ortografiate greșit"
 
 #: ../rednotebook/gui/options.py:290
 msgid ""
 "Requires gtkspell. This is included in the python-gnome2-extras package"
 msgstr ""
+"Necesită gtkspell. Acesta este inclus în pachetul python-gnome2-extras."
 
 #: ../rednotebook/gui/options.py:291
 msgid "Spell Check"
-msgstr ""
+msgstr "Verificare ortografică"
 
 #: ../rednotebook/gui/options.py:298
 msgid "Date/Time format"
-msgstr ""
+msgstr "Formatul pentru dată/oră"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Font Size"
-msgstr ""
+msgstr "Dimensiune font"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "Exclude din nori"
 
 #: ../rednotebook/gui/options.py:301
 msgid "Do not show those comma separated words in any cloud"
-msgstr ""
+msgstr "Nu afișa aceste cuvinte separate prin virgule în niciun nor"
 
 #: ../rednotebook/gui/options.py:302
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "Permite apariția cuvintelor de dumensiune mică în nori"
 
 #: ../rednotebook/gui/options.py:303
 msgid "Allow those words with 4 letters or less in the text cloud"
 msgstr ""
+"Permite apariția cuvintelor de 4 sau mai puține litere în norii de text"
 
 #: ../rednotebook/gui/exportAssistant.py:59 tmp/mainWindow.glade.h:29
 msgid "Export Assistant"
-msgstr ""
+msgstr "Asistent de exportare"
 
 #: ../rednotebook/gui/exportAssistant.py:130
 msgid "Available Categories"
-msgstr ""
+msgstr "Categorii disponibile"
 
 #: ../rednotebook/gui/exportAssistant.py:138
 msgid "Selected Categories"
-msgstr ""
+msgstr "Categorii selectate"
 
 #: ../rednotebook/gui/exportAssistant.py:175
 msgid "Cancelling export assistant."
@@ -282,49 +288,50 @@ msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:324
 msgid "Content exported to "
-msgstr ""
+msgstr "Conținutul exportat către "
 
 #: ../rednotebook/gui/exportAssistant.py:326
 #, python-format
 msgid "Exporting to %s failed"
-msgstr ""
+msgstr "Exportarea către %s a eșuat"
 
 #: ../rednotebook/gui/menu.py:87
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "Creează un jurnal nou. Cel vechi va fi salvat."
 
 #: ../rednotebook/gui/menu.py:90
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "Încarcă un jurnal existent. Cel vechi va fi salvat."
 
 #: ../rednotebook/gui/menu.py:95
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"Salvează jurnalul către o nouă locație. Vor fi salvate și jurnalele vechi."
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Export"
-msgstr ""
+msgstr "Exportare"
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Deschide asistentul de exportare"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Backup"
-msgstr ""
+msgstr "Salvare de siguranţă"
 
 #: ../rednotebook/gui/menu.py:100
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "Salvează toate datele într-o arhivă zip"
 
 #: ../rednotebook/gui/menu.py:102
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "Închide RedNotebook. Nu va fi trimis în zona de notificare."
 
 #: ../rednotebook/gui/menu.py:105
 msgid "_Edit"
-msgstr ""
+msgstr "_Editare"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Undo text edits or category entry deletions"
@@ -336,47 +343,47 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:121
 msgid "_Help"
-msgstr ""
+msgstr "_Ajutor"
 
 #: ../rednotebook/gui/menu.py:122 tmp/mainWindow.glade.h:62
 msgid "Statistics"
-msgstr ""
+msgstr "Statistici"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "Afișează statistici despre jurnal"
 
 #: ../rednotebook/gui/menu.py:124
 msgid "Check For New Version"
-msgstr ""
+msgstr "Verifică apariția unor noi versiuni"
 
 #: ../rednotebook/gui/menu.py:125
 msgid "Check for a new version now"
-msgstr ""
+msgstr "Verifică apariția unor noi versiuni acum"
 
 #: ../rednotebook/gui/menu.py:126
 msgid "Restore example content"
-msgstr ""
+msgstr "Restaurează conținutul exemplu"
 
 #: ../rednotebook/gui/menu.py:127
 msgid "Fill some free days with example content. Do not overwrite anything"
-msgstr ""
+msgstr "Umple niște zile libere cu conținut exemplu. Nu suprascrie nimic."
 
 #: ../rednotebook/gui/menu.py:130
 msgid "Show the help document"
-msgstr ""
+msgstr "Afișează documentul de ajutor"
 
 #: ../rednotebook/gui/menu.py:229
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "Documentație RedNotebook"
 
 #: ../rednotebook/gui/menu.py:242
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "Un jurnal pentru desktio"
 
 #: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:20
 msgid "Categories"
-msgstr ""
+msgstr "Categorii"
 
 #: ../rednotebook/gui/categories.py:118
 msgid "Empty nodes are not allowed"
@@ -396,61 +403,61 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:430
 msgid "Change this text"
-msgstr ""
+msgstr "Modifică acest text"
 
 #: ../rednotebook/gui/categories.py:434
 msgid "Add a new entry"
-msgstr ""
+msgstr "Adaugă o nouă intrare"
 
 #: ../rednotebook/gui/categories.py:438
 msgid "Delete this node"
-msgstr ""
+msgstr "Șterge acest nod"
 
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:71
 msgid "Words"
-msgstr ""
+msgstr "Cuvinte"
 
 #: ../rednotebook/util/statistics.py:81
 msgid "Distinct Words"
-msgstr ""
+msgstr "Cuvinte distincte"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Edited Days"
-msgstr ""
+msgstr "Zile editate"
 
 #: ../rednotebook/util/statistics.py:83 ../rednotebook/util/statistics.py:95
 msgid "Letters"
-msgstr ""
+msgstr "Litere"
 
 #: ../rednotebook/util/statistics.py:84
 msgid "Days between first and last Entry"
-msgstr ""
+msgstr "Număr de zile între prima și ultima intrare"
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Average number of Words"
-msgstr ""
+msgstr "Numărul mediu de cuvinte"
 
 #: ../rednotebook/util/statistics.py:86
 msgid "Percentage of edited Days"
-msgstr ""
+msgstr "Procentul zilelor în care s-a editat"
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Lines"
-msgstr ""
+msgstr "Linii"
 
 #: ../rednotebook/redNotebook.py:389
 #, python-format
 msgid "The content has been saved to %s"
-msgstr ""
+msgstr "Conținutul a fost salvat în %s"
 
 #: ../rednotebook/redNotebook.py:391
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nu este nimic de salvat"
 
 #: ../rednotebook/redNotebook.py:424
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "Dosarul selectat nu este gol"
 
 #: ../rednotebook/redNotebook.py:425
 msgid ""
@@ -460,31 +467,31 @@ msgstr ""
 
 #: ../rednotebook/redNotebook.py:428
 msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
+msgstr "Dosarul selectat este gol. Un nou jurnal a fost creat."
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
-msgstr ""
+msgstr "Alege numele șablonului"
 
 #: ../rednotebook/templates.py:291 ../rednotebook/templates.py:300
 msgid "This Weekday's Template"
-msgstr ""
+msgstr "Șablonul pentru miercurea curentă"
 
 #: ../rednotebook/templates.py:294
 msgid "Edit Template"
-msgstr ""
+msgstr "Editare șablon"
 
 #: ../rednotebook/templates.py:297
 msgid "Insert Template"
-msgstr ""
+msgstr "Inserare șablon"
 
 #: ../rednotebook/templates.py:303
 msgid "Create New Template"
-msgstr ""
+msgstr "Creează un șablon nou"
 
 #: ../rednotebook/templates.py:306
 msgid "Open Template Directory"
-msgstr ""
+msgstr "Deschide dosarul șabloanelor"
 
 #: tmp/mainWindow.glade.h:1
 msgid "<< Unselect"
@@ -552,7 +559,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:17
 msgid "Add Tag"
-msgstr ""
+msgstr "Adaugă etichetă"
 
 #: tmp/mainWindow.glade.h:18
 msgid "Add an entry to a category (Ctrl+N)"
@@ -560,35 +567,35 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:19
 msgid "All Entries"
-msgstr ""
+msgstr "Toate inregistrarile"
 
 #: tmp/mainWindow.glade.h:21
 msgid "Category"
-msgstr ""
+msgstr "Categorie"
 
 #: tmp/mainWindow.glade.h:22
 msgid "Check at Startup"
-msgstr ""
+msgstr "Verifică la pornire"
 
 #: tmp/mainWindow.glade.h:23
 msgid "Clouds"
-msgstr ""
+msgstr "Nori"
 
 #: tmp/mainWindow.glade.h:24
 msgid "Delete"
-msgstr ""
+msgstr "Șterge"
 
 #: tmp/mainWindow.glade.h:25
 msgid "Delete the selected node"
-msgstr ""
+msgstr "Șterge nodul selectat"
 
 #: tmp/mainWindow.glade.h:26
 msgid "Do not ask again"
-msgstr ""
+msgstr "Nu întreba din nou"
 
 #: tmp/mainWindow.glade.h:27
 msgid "Do not export categories"
-msgstr ""
+msgstr "Nu exporta categoriile"
 
 #: tmp/mainWindow.glade.h:28
 msgid "Do you want to visit the website?"
@@ -596,25 +603,27 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:30
 msgid "Export Text"
-msgstr ""
+msgstr "Exportă textul"
 
 #: tmp/mainWindow.glade.h:31
 msgid "Export all categories"
-msgstr ""
+msgstr "Exportă toate categoriile"
 
 #: tmp/mainWindow.glade.h:32
 msgid "Export only the selected categories"
-msgstr ""
+msgstr "Exportă doar categoriile selectate"
 
 #: tmp/mainWindow.glade.h:33
 msgid ""
 "For information on how to convert the exported latex files to PDF, consult "
 "the Help document."
 msgstr ""
+"Pentru informații despre conversia fișierelor LaTeX exportate către PDF, "
+"consultați documentul de Ajutor."
 
 #: tmp/mainWindow.glade.h:34
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: tmp/mainWindow.glade.h:35
 msgid "Go to next day (Ctrl+PageUp)"
@@ -626,7 +635,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:37
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: tmp/mainWindow.glade.h:39
 msgid ""
@@ -635,7 +644,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:40
 msgid "Insert Link"
-msgstr ""
+msgstr "Inserează legătură"
 
 #: tmp/mainWindow.glade.h:41
 msgid ""
@@ -644,27 +653,27 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:42
 msgid "Jump to today"
-msgstr ""
+msgstr "Sari la ziua curentă"
 
 #: tmp/mainWindow.glade.h:43
 msgid "Latex"
-msgstr ""
+msgstr "LaTeX"
 
 #: tmp/mainWindow.glade.h:44
 msgid "New Entry"
-msgstr ""
+msgstr "Înregistrare nouă"
 
 #: tmp/mainWindow.glade.h:45
 msgid "New Version"
-msgstr ""
+msgstr "Versiune nouă"
 
 #: tmp/mainWindow.glade.h:46
 msgid "New entry"
-msgstr ""
+msgstr "Înregistrare nouă"
 
 #: tmp/mainWindow.glade.h:47
 msgid "No New Version"
-msgstr ""
+msgstr "Nicio versiune nouă"
 
 #: tmp/mainWindow.glade.h:48
 msgid "Only the entries in the selected time range"
@@ -672,15 +681,15 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:49
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: tmp/mainWindow.glade.h:50
 msgid "Preferences"
-msgstr ""
+msgstr "Preferinţe"
 
 #: tmp/mainWindow.glade.h:52
 msgid "Search"
-msgstr ""
+msgstr "Caută"
 
 #: tmp/mainWindow.glade.h:53
 msgid "Search in entries, categories and tags"
@@ -688,31 +697,31 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:54
 msgid "Select >>"
-msgstr ""
+msgstr "Alegeți >>"
 
 #: tmp/mainWindow.glade.h:55
 msgid "Select a cloud"
-msgstr ""
+msgstr "Alegeți un nor"
 
 #: tmp/mainWindow.glade.h:56
 msgid "Select a directory"
-msgstr ""
+msgstr "Alegeți un dosar"
 
 #: tmp/mainWindow.glade.h:57
 msgid "Select a file"
-msgstr ""
+msgstr "Alegeți un fișier"
 
 #: tmp/mainWindow.glade.h:58
 msgid "Select a picture"
-msgstr ""
+msgstr "Alegeți o imagine"
 
 #: tmp/mainWindow.glade.h:59
 msgid "Select backup filename"
-msgstr ""
+msgstr "Alegeți un fișier copie de siguranță"
 
 #: tmp/mainWindow.glade.h:60
 msgid "Select where to search"
-msgstr ""
+msgstr "Alegeți unde să căutați"
 
 #: tmp/mainWindow.glade.h:61
 msgid "Show a formatted preview of the text (Ctrl+P)"
@@ -720,7 +729,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:63
 msgid "Tag"
-msgstr ""
+msgstr "Etichetă"
 
 #: tmp/mainWindow.glade.h:64
 msgid "Tag this day (Ctrl+T)"
@@ -728,15 +737,15 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:65
 msgid "Tags"
-msgstr ""
+msgstr "Etichete"
 
 #: tmp/mainWindow.glade.h:66
 msgid "Template"
-msgstr ""
+msgstr "Șablon"
 
 #: tmp/mainWindow.glade.h:68
 msgid "Today"
-msgstr ""
+msgstr "Astăzi"
 
 #: tmp/mainWindow.glade.h:69
 msgid ""
@@ -748,3 +757,5 @@ msgstr ""
 #: tmp/mainWindow.glade.h:73
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Lucian Adrian Grijincu https://launchpad.net/~lucian.grijincu"
