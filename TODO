@@ -18,8 +18,9 @@ X Cloud words white list for short words
 
 0.8.9
 O Add ssh and ftp support
+O Do not load backup files in data directory
    
-0.9 
+0.9
 O Markup Highlighting (similar to real WYSIWYG)
 
 0.9.5
@@ -60,11 +61,6 @@ O Allow inserting directories (Do not add menu item, just document the feature)
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)
   (Probably a bad idea since threads are a source of errors)
-O Rethink linebreaks? (Changing paragraphs in txt2tags will probably crash 
-  everything, so wait for rich text editing first)
-  (Current behaviour should be fine)
-O allow opening config file from within RedNotebook?
-  (Probably no good idea as some options might be unavailable or confusing)
 O Add option for time interval between automatic savings? (KISS)
 O Convert all read strings to unicode before working with them?
 
@@ -87,3 +83,7 @@ O Convert all read strings to unicode before working with them?
 - Image resizing (KISS)
 - Todo tab next to clouds (KISS)
 - Automatic Backups (KISS, intruding, gentle messages are better)
+- Rethink linebreaks? (Changing paragraphs in txt2tags will probably crash 
+  everything, Current behaviour should be fine)
+- allow opening config file from within RedNotebook
+  (Probably no good idea as some options might be unavailable or confusing)

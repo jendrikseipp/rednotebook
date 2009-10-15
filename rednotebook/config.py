@@ -175,7 +175,8 @@ class Config(dict):
 				for key, value in self.iteritems():
 					if key not in self.suppressed_keys:
 						configFile.write('%s=%s\n' % (key, value))
-				logging.info('Configuration has been saved')
+				logging.info('Configuration has been saved to disk')
+				self.old_config = self.copy()
 		except IOError:
 			logging.error('Configuration could not be saved')
 			

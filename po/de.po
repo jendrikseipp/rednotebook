@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 03:17+0200\n"
-"PO-Revision-Date: 2009-09-27 20:31+0200\n"
-"Last-Translator: Jendrik <jendrikseipp@web.de>\n"
+"POT-Creation-Date: 2009-10-02 17:28+0200\n"
+"PO-Revision-Date: 2009-10-03 12:20+0000\n"
+"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Launchpad-Export-Date: 2009-10-05 01:24+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/mainWindow.py:283
 msgid "Show RedNotebook"
@@ -33,168 +34,166 @@ msgid "Select an empty folder for your new journal"
 msgstr "Wählen Sie ein leeres Verzeichnis für das neue Journal"
 
 #: ../rednotebook/gui/mainWindow.py:455
-msgid "<b>Journals are saved in a directory, not in a single file.\n"
+msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
-"<b>Journals werden in Verzeichnissen gespeichert, nicht in einer einzigen "
-"Datei.\n"
+"Journals werden in einem Verzeichnis gespeichert, nicht in einer Datei"
 
 #: ../rednotebook/gui/mainWindow.py:456
-msgid "The directory name will be the title of the new journal.</b>"
-msgstr "Der Verzeichnisname wird als Name für das Journal benutzt werden.</b>"
+msgid "The directory name will be the title of the new journal."
+msgstr "Der Verzeichnisname wird als Name für das Journal benutzt werden"
 
 #: ../rednotebook/gui/mainWindow.py:460
 msgid "Select an existing journal directory"
 msgstr "Wähle ein existierendes Journal-Verzeichnis"
 
-#: ../rednotebook/gui/mainWindow.py:461
-msgid "<b>The directory should contain your journal's data files</b>"
-msgstr "<b>Das Verzeichnis sollte die Journal-Dateien enthalten</b>"
+#: ../rednotebook/gui/mainWindow.py:462
+msgid "The directory should contain your journal's data files"
+msgstr "Das Verzeichnis sollte die Journal Dateien enthalten"
 
-#: ../rednotebook/gui/mainWindow.py:463
+#: ../rednotebook/gui/mainWindow.py:464
 msgid "Select an empty folder for the new location your journal"
 msgstr "Wählen Sie ein leeres Verzeichnis für das neue Journal"
 
-#: ../rednotebook/gui/mainWindow.py:464
-msgid "<b>The directory name will be the new title of the journal</b>"
-msgstr ""
-"<b>Der Verzeichnisname wird als Name für das Journal benutzt werden</b>"
+#: ../rednotebook/gui/mainWindow.py:466
+msgid "The directory name will be the new title of the journal"
+msgstr "Der Verzeichnisname wird der neue Name des Journals werden"
 
-#: ../rednotebook/gui/mainWindow.py:484
+#: ../rednotebook/gui/mainWindow.py:486
 msgid "The default journal has been opened"
-msgstr "Das Standard Journal wurde geöffnet"
+msgstr "Das Standard-Journal wurde geöffnet"
 
-#: ../rednotebook/gui/mainWindow.py:626
+#: ../rednotebook/gui/mainWindow.py:628
 msgid "Format"
 msgstr "Format"
 
-#: ../rednotebook/gui/mainWindow.py:627
+#: ../rednotebook/gui/mainWindow.py:629
 msgid "Format the selected text or category entry"
 msgstr "Formatiere den ausgewählten Text oder Kategorie-Eintrag"
 
-#: ../rednotebook/gui/mainWindow.py:670
+#: ../rednotebook/gui/mainWindow.py:672
 msgid "First Item"
 msgstr "Erstes Objekt"
 
-#: ../rednotebook/gui/mainWindow.py:671
+#: ../rednotebook/gui/mainWindow.py:673
 msgid "Second Item"
 msgstr "Zweites Objekt"
 
-#: ../rednotebook/gui/mainWindow.py:672
+#: ../rednotebook/gui/mainWindow.py:674
 msgid "Indented Item"
 msgstr "Eingerücktes Objekt"
 
-#: ../rednotebook/gui/mainWindow.py:673
+#: ../rednotebook/gui/mainWindow.py:675
 msgid "Two blank lines close the list"
 msgstr "Zwei leere Zeilen beenden eine Liste"
 
-#: ../rednotebook/gui/mainWindow.py:677
+#: ../rednotebook/gui/mainWindow.py:679
 msgid "Title text"
 msgstr "Titeltext"
 
-#: ../rednotebook/gui/mainWindow.py:693
+#: ../rednotebook/gui/mainWindow.py:695
 msgid "Picture"
 msgstr "Bild"
 
-#: ../rednotebook/gui/mainWindow.py:694
+#: ../rednotebook/gui/mainWindow.py:696
 msgid "Insert an image from the harddisk"
 msgstr "Ein Bild von der Festplatte einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:696
+#: ../rednotebook/gui/mainWindow.py:698
 msgid "File"
 msgstr "Datei"
 
-#: ../rednotebook/gui/mainWindow.py:697
+#: ../rednotebook/gui/mainWindow.py:699
 msgid "Insert a link to a file"
 msgstr "Einen Verweis auf eine Datei einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:699
+#: ../rednotebook/gui/mainWindow.py:701
 msgid "_Link"
 msgstr "_Link"
 
-#: ../rednotebook/gui/mainWindow.py:700
+#: ../rednotebook/gui/mainWindow.py:702
 msgid "Insert a link to a website"
 msgstr "Einen Link zu einer Webseite einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:702
+#: ../rednotebook/gui/mainWindow.py:704
 msgid "Bullet List"
 msgstr "Liste"
 
-#: ../rednotebook/gui/mainWindow.py:703
+#: ../rednotebook/gui/mainWindow.py:705
 msgid "Insert a bullet list"
 msgstr "Eine Liste einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:708
+#: ../rednotebook/gui/mainWindow.py:710
 msgid "Title"
 msgstr "Titel"
 
-#: ../rednotebook/gui/mainWindow.py:709
+#: ../rednotebook/gui/mainWindow.py:711
 msgid "Insert a title"
 msgstr "Eine Überschrift einfuegen"
 
-#: ../rednotebook/gui/mainWindow.py:711
+#: ../rednotebook/gui/mainWindow.py:713
 msgid "Line"
 msgstr "Linie"
 
-#: ../rednotebook/gui/mainWindow.py:712
+#: ../rednotebook/gui/mainWindow.py:714
 msgid "Insert a separator line"
 msgstr "Eine Trennlinie einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:714
+#: ../rednotebook/gui/mainWindow.py:716
 msgid "Date/Time"
 msgstr "Datum/Uhrzeit"
 
-#: ../rednotebook/gui/mainWindow.py:715
+#: ../rednotebook/gui/mainWindow.py:717
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 "Das aktuelle Datum oder Uhrzeit einfügen (Format auswählbar in den "
 "Einstellungen)"
 
-#: ../rednotebook/gui/mainWindow.py:717
+#: ../rednotebook/gui/mainWindow.py:719
 msgid "Line Break"
 msgstr "Zeilenumbruch"
 
-#: ../rednotebook/gui/mainWindow.py:718
+#: ../rednotebook/gui/mainWindow.py:720
 msgid "Insert a manual line break"
 msgstr "Einen manuellen Zeilenumbruch einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:746
+#: ../rednotebook/gui/mainWindow.py:748
 msgid "Insert"
 msgstr "Einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:750
+#: ../rednotebook/gui/mainWindow.py:752
 msgid "Insert images, files, links and other content"
 msgstr "Bilder, Dateien, Links und andere Inhalte einfügen"
 
-#: ../rednotebook/gui/mainWindow.py:834
+#: ../rednotebook/gui/mainWindow.py:836
 msgid "No link location has been entered"
 msgstr "Es wurde keine Link Adresse angegeben"
 
-#: ../rednotebook/gui/mainWindow.py:996
+#: ../rednotebook/gui/mainWindow.py:998
 msgid "Search ..."
 msgstr "Suchen ..."
 
-#: ../rednotebook/gui/mainWindow.py:1075
+#: ../rednotebook/gui/mainWindow.py:1077
 msgid "filter, these, comma, separated, words"
 msgstr "filtere, diese, mit, kommas, getrennten, wörter"
 
-#: ../rednotebook/gui/mainWindow.py:1080
+#: ../rednotebook/gui/mainWindow.py:1082
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "mtv, spam, job, juli"
 
-#: ../rednotebook/gui/mainWindow.py:1137
+#: ../rednotebook/gui/mainWindow.py:1139
 msgid "Hide selected words"
 msgstr "Verstecke die ausgewählten Wörter"
 
-#: ../rednotebook/gui/mainWindow.py:1200
+#: ../rednotebook/gui/mainWindow.py:1202
 msgid "Date"
 msgstr "Datum"
 
-#: ../rednotebook/gui/mainWindow.py:1201 ../rednotebook/gui/mainWindow.py:1243
-#: ../rednotebook/gui/mainWindow.py:1251 tmp/mainWindow.glade.h:67
+#: ../rednotebook/gui/mainWindow.py:1203 ../rednotebook/gui/mainWindow.py:1245
+#: ../rednotebook/gui/mainWindow.py:1253 tmp/mainWindow.glade.h:67
 msgid "Text"
 msgstr "Text"
 
-#: ../rednotebook/gui/mainWindow.py:1247
+#: ../rednotebook/gui/mainWindow.py:1249
 msgid "Entry"
 msgstr "Eintrag"
 
@@ -219,6 +218,7 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: ../rednotebook/gui/options.py:175
+#, python-format
 msgid "Preview: %s"
 msgstr "Vorschau: %s"
 
@@ -232,14 +232,16 @@ msgstr "Schließe in den Infobereich"
 
 #: ../rednotebook/gui/options.py:286
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Minimiere RedNotebook in den Infobereich, wenn das Fenster geschlossen wird"
+msgstr ""
+"Minimiere RedNotebook in den Infobereich, wenn das Fenster geschlossen wird"
 
 #: ../rednotebook/gui/options.py:289
 msgid "Underline misspelled words"
 msgstr "Hebe die falsch geschriebenen Wörter hervor"
 
 #: ../rednotebook/gui/options.py:290
-msgid "Requires gtkspell. This is included in the python-gnome2-extras package"
+msgid ""
+"Requires gtkspell. This is included in the python-gnome2-extras package"
 msgstr "Benötigt gtkspell. Dies ist im Paket python-gnome2-extras enthalten"
 
 #: ../rednotebook/gui/options.py:291
@@ -268,7 +270,8 @@ msgstr "Wolken - Weiße Liste"
 
 #: ../rednotebook/gui/options.py:303
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr "Erlaube diese kurzen Wörter mit maximal 4 Buchstaben in der Textwolke"
+msgstr ""
+"Erlaube diese kurzen Wörter mit maximal 4 Buchstaben in der Textwolke"
 
 #: ../rednotebook/gui/exportAssistant.py:59 tmp/mainWindow.glade.h:29
 msgid "Export Assistant"
@@ -341,7 +344,8 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Redo text edits or category entry additions"
-msgstr "Wiederhole Änderungen im Text oder Löschungen von Kategorie-Einträgen"
+msgstr ""
+"Wiederhole Änderungen im Text oder Löschungen von Kategorie-Einträgen"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "_Help"
@@ -767,14 +771,27 @@ msgstr ""
 "Wählen Sie in den nächsten Schritten die zu exportierenden Tage aus und "
 "legen Sie fest, wohin der Export geschrieben werden soll."
 
-#: tmp/mainWindow.glade.h:72
-msgid "gtk-cancel"
-msgstr ""
-
 #: tmp/mainWindow.glade.h:73
-msgid "gtk-ok"
-msgstr ""
-
-#: tmp/mainWindow.glade.h:75
 msgid "translator-credits"
-msgstr "Jendrik Seipp"
+msgstr ""
+"Jendrik Seipp\n"
+"\n"
+"Launchpad Contributions:\n"
+"  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
+"  rubinstein https://launchpad.net/~rubinstein"
+
+#~ msgid "<b>Journals are saved in a directory, not in a single file.\n"
+#~ msgstr ""
+#~ "<b>Journals werden in Verzeichnissen gespeichert, nicht in einer einzigen "
+#~ "Datei.\n"
+
+#~ msgid "The directory name will be the title of the new journal.</b>"
+#~ msgstr ""
+#~ "Der Verzeichnisname wird als Name für das Journal benutzt werden.</b>"
+
+#~ msgid "<b>The directory should contain your journal's data files</b>"
+#~ msgstr "<b>Das Verzeichnis sollte die Journal-Dateien enthalten</b>"
+
+#~ msgid "<b>The directory name will be the new title of the journal</b>"
+#~ msgstr ""
+#~ "<b>Der Verzeichnisname wird als Name für das Journal benutzt werden</b>"

@@ -1,13 +1,15 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 import gtk
 import sys
 import os.path
 import pango
 import logging
 
-sys.path.insert(0, os.path.abspath("./../../"))
+if __name__ == '__main__':
+	sys.path.insert(0, os.path.abspath("./../../"))
 
-from rednotebook.external import gtkcodebuffer 
+from rednotebook.external import gtkcodebuffer
 from rednotebook.external import txt2tags
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import markup
@@ -17,7 +19,7 @@ logging.getLogger('').setLevel(logging.DEBUG)
 
 txt = """
 === Header ===
-**bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken--
+ä **bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken-- 
 
      [""/home/user/Desktop/RedNotebook pic"".png]
      
@@ -116,6 +118,14 @@ class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 
 class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 	
+	def get_slice(self, start, end):
+		'''
+		We have to search for the regexes in utf-8 text
+		'''
+		slice_text = gtkcodebuffer.CodeBuffer.get_slice(self, start, end)
+		slice_text = slice_text.decode('utf-8')
+		return slice_text
+	
 	def update_syntax(self, start, end=None):
 		""" More or less internal used method to update the 
 			syntax-highlighting. """
@@ -127,7 +137,7 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 		# if no lang set	
 		if not self._lang_def: 
 			return			 
-		logging.debug("Update syntax from %i"%start.get_offset())
+		logging.debug("Update syntax from %i" % start.get_offset())
 			
 		# if not end defined
 		if not end: 
@@ -146,6 +156,8 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 			group_iters_and_tags = self._lang_def(self, start, end)
 			
 			if not group_iters_and_tags:
+				self.remove_all_tags(start, end)
+				self.apply_tag_by_name("DEFAULT", start, end)
 				finished = True
 				continue
 			
@@ -290,38 +302,44 @@ rules = [
 		]
 
 
+def get_highlight_buffer():
+	# create lexer: 
+	lang = OverlapLanguageDefinition(rules)
 
-
-# create lexer: 
-lang = OverlapLanguageDefinition(rules)
-
-# create buffer and update style-definition 
-buff = OverlapCodeBuffer(lang=lang, styles=styles)
-
-win = gtk.Window(gtk.WINDOW_TOPLEVEL)
-scr = gtk.ScrolledWindow()
-
-html_editor = HtmlEditor()
-
-def change_text(widget):
-	html = markup.convert(widget.get_text(widget.get_start_iter(), widget.get_end_iter()), \
-						  'xhtml', append_whitespace=True)
-			
-	html_editor.load_html(html)
+	# create buffer and update style-definition
+	buff = OverlapCodeBuffer(lang=lang, styles=styles)
 	
-buff.connect('changed', change_text)
+	return buff
 
-vbox = gtk.VBox()
-vbox.pack_start(scr)
-vbox.pack_start(html_editor)
-win.add(vbox)
-scr.add(gtk.TextView(buff))
-		
-win.set_default_size(600,400)
-win.set_position(gtk.WIN_POS_CENTER)
-win.show_all()
-win.connect("destroy", lambda w: gtk.main_quit())
+# Testing
+if __name__ == '__main__':
+	
+	buff = get_highlight_buffer()
 
-buff.set_text(txt)
+	win = gtk.Window(gtk.WINDOW_TOPLEVEL)
+	scr = gtk.ScrolledWindow()
+
+	html_editor = HtmlEditor()
+
+	def change_text(widget):
+		html = markup.convert(widget.get_text(widget.get_start_iter(), widget.get_end_iter()), \
+							  'xhtml', append_whitespace=True)
+				
+		html_editor.load_html(html)
 		
-gtk.main()		
+	buff.connect('changed', change_text)
+
+	vbox = gtk.VBox()
+	vbox.pack_start(scr)
+	vbox.pack_start(html_editor)
+	win.add(vbox)
+	scr.add(gtk.TextView(buff))
+			
+	win.set_default_size(600,400)
+	win.set_position(gtk.WIN_POS_CENTER)
+	win.show_all()
+	win.connect("destroy", lambda w: gtk.main_quit())
+
+	buff.set_text(txt)
+			
+	gtk.main()		

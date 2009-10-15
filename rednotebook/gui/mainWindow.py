@@ -59,6 +59,7 @@ from rednotebook import undo
 
 from rednotebook.gui.exportAssistant import ExportAssistant
 from rednotebook.gui import categories
+from rednotebook.gui import t2t_highlight
 
 
 class MainWindow(object):
@@ -1284,6 +1285,7 @@ class DayTextField(object):
 	def __init__(self, dayTextView, undo_redo_manager):
 		self.dayTextView = dayTextView
 		self.dayTextBuffer = gtk.TextBuffer()
+		#self.dayTextBuffer = t2t_highlight.get_highlight_buffer()
 		self.dayTextView.set_buffer(self.dayTextBuffer)
 		
 		self.undo_redo_manager = undo_redo_manager

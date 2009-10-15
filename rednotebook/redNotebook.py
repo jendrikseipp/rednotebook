@@ -381,7 +381,7 @@ class RedNotebook:
 						# do not add empty days
 						if not day.empty:
 							monthContent[dayNumber] = day.content
-					#month.prettyPrint()
+					
 					yaml.dump(monthContent, monthFile, Dumper=Dumper)
 					month.edited = False
 		
@@ -802,7 +802,8 @@ class Day(object):
 									occurence + len(searchText) + self.searchResultLength/2)
 				
 			resultTextStart = self.text.find(' ', spaceSearchLeftStart, occurence)
-			resultTextEnd = self.text.rfind(' ', occurence + len(searchText), spaceSearchRightEnd)
+			resultTextEnd = self.text.rfind(' ', \
+						occurence + len(searchText), spaceSearchRightEnd)
 			if resultTextStart == -1:
 				resultTextStart = occurence - self.searchResultLength/2
 			if resultTextEnd == -1:
@@ -816,7 +817,8 @@ class Day(object):
 			resultText += unicode.substring(self.text, resultTextStart, resultTextEnd).strip()
 			
 			# Make the searchedText bold
-			resultText = resultText.replace(searchedStringInText, '<b>' + searchedStringInText + '</b>')
+			resultText = resultText.replace(searchedStringInText, \
+									'<b>' + searchedStringInText + '</b>')
 			
 			if resultTextEnd < len(self.text) - 1:
 				resultText += ' ...'
