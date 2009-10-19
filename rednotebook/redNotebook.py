@@ -27,10 +27,8 @@ import collections
 import time
 from optparse import OptionParser, OptionValueError
 
-# set the locale for all categories to the user’s default setting 
-# (typically specified in the LANG environment variable)
-import locale
-locale.setlocale(locale.LC_ALL, '')
+
+	
 
 
 if hasattr(sys, "frozen"):
@@ -132,6 +130,16 @@ setup_logging(dirs.logFile)
 
 
 ## ---------------------- Enable i18n -------------------------------
+
+# set the locale for all categories to the user’s default setting 
+# (typically specified in the LANG environment variable)
+import locale
+try:
+	locale.setlocale(locale.LC_ALL, '')
+except locale.Error, err:
+	# unsupported locale setting
+	logging.error('Locale could not be set: "%s"' % err)
+	logging.error('Probably you have to install the appropriate language files')
 
 LOCALE_PATH = os.path.join(dirs.appDir, 'i18n')
 

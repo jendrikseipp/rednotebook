@@ -68,7 +68,7 @@ def build_mo_files():
 	available_langs = filter(lambda file: file.endswith('.po'), available_langs)
 	available_langs = map(lambda file: file[:-3], available_langs)
 
-	print 'langs', available_langs
+	print 'Languages: ', available_langs
 
 	for lang in available_langs:
 		po_file = os.path.join(po_dir, lang+'.po')
@@ -86,12 +86,10 @@ def build_mo_files():
 		print 'Compiling %s to %s' % (po_file, mo_file)
 		msgfmt.make(po_file, mo_file)
 		
-if 'i18n' in sys.argv:
-	#build_mo_files()
-	sys.exit()
-
-# Built mo files unconditionally
-build_mo_files()
+if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv) > 0:
+	build_mo_files()
+	if 'i18n' in sys.argv:
+		sys.exit()
 
 def get_data_base_dir():
 	class helper_install_data(distutils.command.install_data.install_data):
