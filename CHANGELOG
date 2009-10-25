@@ -1,5 +1,26 @@
 ==== RedNotebook Changelog ====
 
+=== 0.8.8 (09-10-23) ===
+* Internationalization:
+  * RedNotebook is now available in:
+    * German
+    * Czech
+    * Hebrew
+    * Malay
+    * Romanian
+    * Russian
+    * Simplified Chinese
+    * French
+  * Translations are partly available for:
+    * Brazilian Portuguese
+    * Croatian
+    * Italian
+    * Dutch
+    * Belarusian
+  * New translations can be made at launchpad.net
+* Add "Start minimized to tray" command line parameter
+* Add cloud words white list for short words
+
 === 0.8.7 (2009-09-27) ===
  * Only save content and config when they have been changed
  * Make the UI easier to understand

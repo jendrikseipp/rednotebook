@@ -45,7 +45,7 @@ if sys.platform == 'win32':
 
 
 
-baseDir = os.path.dirname(sys.argv[0])
+baseDir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, baseDir)
 
 from rednotebook import info
@@ -85,13 +85,28 @@ def build_mo_files():
 		#call(cmd)
 		print 'Compiling %s to %s' % (po_file, mo_file)
 		msgfmt.make(po_file, mo_file)
+
 		
-if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv) > 0:
+if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
 	build_mo_files()
 	if 'i18n' in sys.argv:
 		sys.exit()
 
 def get_data_base_dir():
+	'''
+	Returns the dir where the data files (pixmaps etc.) are installed
+	
+	Hack for Jaunty: Check command line args directly for data-dir
+	
+	Normally we try to get the data-dir from the appropriate distutils
+	class
+	This is done by creating an otherwise unused install_data object
+	'''
+	for arg in sys.argv:
+		if arg.startswith('--install-data'):
+			install_data_text, data_dir = arg.split('=')
+			return data_dir
+			
 	class helper_install_data(distutils.command.install_data.install_data):
 		"""need to change self.install_dir to the actual library dir"""
 		def get_data_dir(self):
@@ -107,12 +122,10 @@ print 'data_base_dir', data_base_dir
 
 ## Code borrowed from wxPython's setup and config files
 ## Thanks to Robin Dunn for the suggestion.
-## I am not 100% sure what's going on, but it works!
 def opj(*args):
 	path = os.path.join(*args)
 	return os.path.normpath(path)
 
-## Added 10 Jan 2008
 # Specializations of some distutils command classes
 class wx_smart_install_data(distutils.command.install_data.install_data):
 	"""need to change self.install_dir to the actual library dir"""
@@ -180,20 +193,17 @@ parameters = {	'name'				: 'rednotebook',
 			}
 			
 
-
-## This is a list of files to install, and where:
-## Make sure the MANIFEST.in file points to all the right 
-## directories too.
-mo_files = find_data_files('rednotebook/i18n', '*.mo')
-
-print 'mo_files', mo_files
-			
-if 'install' in sys.argv:
+if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
+	## This is a list of files to install, and where:
+	## Make sure the MANIFEST.in file points to all the right 
+	## directories too.
+	mo_files = find_data_files('rednotebook/i18n', '*.mo')
+	print 'mo_files', mo_files
 	parameters['data_files'].extend(mo_files)
 
 # Freedesktop parameters
-if os.path.exists(os.path.join(sys.prefix, 'share/applications/')):
-	share_dir = join(data_base_dir, 'share')
+share_dir = join(get_data_base_dir(), 'share')
+if os.path.exists(share_dir): 
 	parameters['data_files'].extend([
 			(join(share_dir, 'applications'), ['rednotebook.desktop']),
 			(join(share_dir, 'icons/hicolor/48x48/apps'), ['rednotebook.png']),# new freedesktop.org spec

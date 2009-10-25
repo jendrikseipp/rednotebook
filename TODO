@@ -7,18 +7,11 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-0.8.8
-X Internationalization
-  X Mark translatable strings
-  X Setup translations at launchpad
-  X Make German translation
-  X Install mo files with setup.py
-X Add "Start minimized to tray" command line parameter
-X Cloud words white list for short words
-
 0.8.9
 O Add ssh and ftp support
-O Do not load backup files in data directory
+  O Catch potential errors
+X Do not load backup files in data directory
+O Check out lout for pdf generation
    
 0.9
 O Markup Highlighting (similar to real WYSIWYG)

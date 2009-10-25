@@ -138,8 +138,9 @@ try:
 	locale.setlocale(locale.LC_ALL, '')
 except locale.Error, err:
 	# unsupported locale setting
-	logging.error('Locale could not be set: "%s"' % err)
-	logging.error('Probably you have to install the appropriate language files')
+	lang = os.getenv('LANG')
+	logging.error('Locale "%s" could not be set: "%s"' % (lang, err))
+	logging.error('Probably you have to install the appropriate language packs')
 
 LOCALE_PATH = os.path.join(dirs.appDir, 'i18n')
 
@@ -493,7 +494,8 @@ class RedNotebook:
 		logging.debug('Starting to load files in dir "%s"' % self.dirs.dataDir)
 		for root, dirs, files in os.walk(self.dirs.dataDir):
 			for file in files:
-				self.loadMonthFromDisk(os.path.join(root, file))
+				if not file.endswith('~'):
+					self.loadMonthFromDisk(os.path.join(root, file))
 		logging.debug('Finished loading files in dir "%s"' % self.dirs.dataDir)
 	
 	
