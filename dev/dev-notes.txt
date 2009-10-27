@@ -8,14 +8,13 @@ O WYSIWYG as an alternative to markup??? (keepnote and htmltextview as reference
     HTML2txt2tags: Vim Script (port to python)
     HTML2markdown: python module exists
     HTML2Latex (write or use twisted lore)
-    HTML2PDF: xhtml2pdf, http://code.activestate.com/recipes/532908/
-	
-	PDF generation: possible, but only for plain text (no formatting)
-	ODF generation: no suitable library at the moment. PyODF is buggy
+    HTML2PDF: xhtml2pdf, http://code.activestate.com/recipes/532908/ possible, but only for plain text (no formatting)
+              webkit is a better option here
+    HTML2ODF: no suitable library at the moment. PyODF is buggy
   
 O Encryption/Password
   - Save in password protected zipfiles (no open source tool to generate those)
-    seems to be very eays to hack
+    seems to be very easy to hack
   - Symmetric Encryption. AES (best method it seems)
         with PyCrypto
   		  http://www.dlitz.net/software/pycrypto/, 

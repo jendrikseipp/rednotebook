@@ -31,7 +31,8 @@ class Archiver(object):
 		archiveFiles = []
 		for root, dirs, files in os.walk(dataDir):
 			for file in files:
-				archiveFiles.append(os.path.join(root, file))
+				if not file.endswith('~'):
+					archiveFiles.append(os.path.join(root, file))
 		
 		filesystem.writeArchive(backup_file, archiveFiles, dataDir)
 		

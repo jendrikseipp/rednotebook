@@ -462,7 +462,7 @@ class MainWindow(object):
 			label.set_markup('<b>' + \
 				_("The directory should contain your journal's data files") + '</b>')
 		elif type == 'saveas':
-			dir_chooser.set_title(_('Select an empty folder for the new location your journal'))
+			dir_chooser.set_title(_('Select an empty folder for the new location of your journal'))
 			label.set_markup('<b>' + \
 				_('The directory name will be the new title of the journal') + '</b>')
 		dir_chooser.set_current_folder(self.redNotebook.dirs.dataDir)
@@ -475,6 +475,7 @@ class MainWindow(object):
 			
 			if type == 'saveas':
 				self.redNotebook.dirs.dataDir = dir
+				self.redNotebook.saveToDisk(saveas=True)
 				
 			load_files = type in ['open', 'saveas']
 			self.redNotebook.open_journal(dir, load_files=load_files)
@@ -485,6 +486,28 @@ class MainWindow(object):
 			default_dir = self.redNotebook.dirs.defaultDataDir
 			self.redNotebook.open_journal(default_dir, load_files=True)
 			self.redNotebook.showMessage(_('The default journal has been opened'))
+			
+	def show_save_error_dialog(self, exitImminent):
+		dialog = self.builder.get_object('save_error_dialog')
+		
+		exit_without_save_button = self.builder.get_object('exit_without_save_button')
+		if exitImminent:
+			exit_without_save_button.show()
+		else:
+			exit_without_save_button.hide()
+		
+		answer = dialog.run()
+		dialog.hide()
+		
+		if answer == gtk.RESPONSE_OK:
+			# Let the user select a new directory. Nothing has been saved yet.
+			self.show_dir_chooser('saveas')
+		elif answer == gtk.RESPONSE_CANCEL and exitImminent:
+			self.redNotebook.is_allowed_to_exit = False
+		else: # answer == 10:
+			# Do nothing if user wants to exit without saving
+			pass
+			
 		
 		
 	def add_values_to_config(self):

@@ -647,8 +647,8 @@
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">save</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -1687,8 +1687,8 @@ This wizard will help you to export your journal to various formats. You can sel
     <property name="title" translatable="yes">Select a directory</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="local_only">False</property>
     <property name="action">select-folder</property>
+    <property name="local_only">False</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox17">
         <property name="visible">True</property>
@@ -1983,4 +1983,50 @@ This wizard will help you to export your journal to various formats. You can sel
     </action-widgets>
   </object>
   <object class="GtkAccelGroup" id="accelgroup1"/>
+  <object class="GtkMessageDialog" id="save_error_dialog">
+    <property name="border_width">5</property>
+    <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="message_type">error</property>
+    <property name="buttons">ok-cancel</property>
+    <property name="text">The Journal could not be saved</property>
+    <property name="secondary_text">You might want to check your permissions on the filesystem or your internet connection for ssh and ftp saving. Do you want to select a new location for the journal?</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox90">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area90">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="exit_without_save_button">
+                <property name="label" translatable="yes">Exit without saving</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="10">exit_without_save_button</action-widget>
+    </action-widgets>
+  </object>
 </interface>

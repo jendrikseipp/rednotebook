@@ -8,13 +8,16 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 0.8.9
-O Add ssh and ftp support
-  O Catch potential errors
+X Add ssh and ftp support
 X Do not load backup files in data directory
-O Check out lout for pdf generation
+X Fix "Save As"
    
 0.9
 O Markup Highlighting (similar to real WYSIWYG)
+
+0.9.1
+O Use webkit for direct pdf generation
+O Custom-style Journals?
 
 0.9.5
 O Use Zeitgeist for automatic category entries (start with Karmic update)
@@ -23,8 +26,9 @@ O Use Zeitgeist for automatic category entries (start with Karmic update)
 O Automatic insertion of photo links for current day
 O Automatic insertion of holidays
 O Import of exported backups
-O Change to newer KeepNote Version
-O Use attributes for formatting glade strings for easier translation
+O Change to newer KeepNote Version?
+O Use attributes for formatting glade strings for easier translation (gtk 2.16)
+O Show warning if last backup dates to one month before
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose to portableapps
@@ -39,6 +43,13 @@ O Many automatic insertions
 
 1.1
 O Password protection or encryption
+
+1.x
+O Tabled Data?
+
+2.0
+O Improve WYSIWYG?
+
 
 
 

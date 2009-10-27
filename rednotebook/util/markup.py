@@ -112,6 +112,7 @@ def _get_config(type):
 		config['toc'] = 0
 		config['style'] = [os.path.join(filesystem.filesDir, 'stylesheet.css')]
 		config['css-inside'] = 1
+		config['css-sugar'] = 1
 	
 		# keepnote only recognizes "<strike>"
 		config['postproc'].append(['(?i)(</?)s>', '\\1strike>'])
@@ -195,7 +196,7 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 	except:
 		result = txt2tags.getUnknownErrorMessage()
 		logging.error(result)
-		
+	
 	return result
 
 def convert_to_pango(txt, headers=None, options=None):

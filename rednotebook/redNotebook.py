@@ -367,20 +367,38 @@ class RedNotebook:
 		
 	def exit(self):
 		self.frame.add_values_to_config()
+		
+		# Make it possible to stop the program from exiting
+		# e.g. if the journal could not be saved
+		self.is_allowed_to_exit = True
 		self.saveToDisk(exitImminent=True)
-		logging.info('Goodbye!')
-		gtk.main_quit()
+		
+		if self.is_allowed_to_exit:
+			logging.info('Goodbye!')
+			gtk.main_quit()
 
 	
-	def saveToDisk(self, exitImminent=False, changing_journal=False):
+	def saveToDisk(self, exitImminent=False, changing_journal=False, saveas=False):
+		logging.info('Trying to save the journal')
+		
 		self.saveOldDay()
 		
-		filesystem.makeDirectories([self.dirs.redNotebookUserDir, self.dirs.dataDir,])
+		if not os.path.exists(self.dirs.dataDir):
+			logging.error('Save path does not exist')
+			self.frame.show_save_error_dialog(exitImminent)
+			return True
+			
+		try:
+			filesystem.makeDirectory(self.dirs.dataDir)
+		except OSError, err:
+			self.frame.show_save_error_dialog(exitImminent)
+			return True
 		
 		something_saved = False
 		
 		for yearAndMonth, month in self.months.items():
-			if not month.empty and month.edited:
+			# We always need to save everything when we are "saving as"
+			if (not month.empty and month.edited) or saveas:
 				something_saved = True
 				monthFileString = os.path.join(self.dirs.dataDir, yearAndMonth + \
 											filesystem.fileNameExtension)
@@ -391,8 +409,16 @@ class RedNotebook:
 						if not day.empty:
 							monthContent[dayNumber] = day.content
 					
-					yaml.dump(monthContent, monthFile, Dumper=Dumper)
-					month.edited = False
+					try:
+						yaml.dump(monthContent, monthFile, Dumper=Dumper)
+						month.edited = False
+					except OSError, err:
+						self.frame.show_save_error_dialog(exitImminent)
+						return True	
+					except IOError, err:
+						self.frame.show_save_error_dialog(exitImminent)
+						return True	
+					
 		
 		if something_saved:
 			self.showMessage(_('The content has been saved to %s') % self.dirs.dataDir, error=False)
@@ -400,7 +426,11 @@ class RedNotebook:
 			self.showMessage(_('Nothing to save'), error=False)
 		
 		if self.config.changed():
-			self.config.saveToDisk()
+			try:
+				filesystem.makeDirectory(self.dirs.redNotebookUserDir)
+				self.config.saveToDisk()
+			except IOError, err:
+				self.showMessage(_('Configuration could not be saved. Please check your permissions'))
 		
 		if not (exitImminent or changing_journal) and something_saved:
 			# Update cloud
