@@ -46,11 +46,6 @@ def can_print_pdf():
 		logging.info('UrlPrinter could not be created: "%s"' % err)
 		return False
 	
-	
 	frame = printer._webview.get_main_frame()
-	#if not has_attribute(frame
-	return hasattr(frame, 'print_full')	
-		
-	return True
-		
-print can_print_pdf()
+	
+	return hasattr(frame, 'print_full')
