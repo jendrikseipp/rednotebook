@@ -25,9 +25,10 @@ import logging
 import pango
 import gobject
 
-# TODO: REMOVE
-import sys
-sys.path.insert(0, '/home/jendrik/projects/RedNotebook')
+# Testing
+if __name__ == '__main__':
+	import sys
+	sys.path.insert(0, '../../')
 
 from rednotebook.external import txt2tags
 from rednotebook.util import filesystem
