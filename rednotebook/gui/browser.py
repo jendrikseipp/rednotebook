@@ -49,3 +49,9 @@ def can_print_pdf():
 	frame = printer._webview.get_main_frame()
 	
 	return hasattr(frame, 'print_full')
+	
+
+def print_pdf(html, filename):
+	# TODO: Implement
+	printer = interwibble.UrlPrinter()
+	

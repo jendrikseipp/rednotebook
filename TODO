@@ -11,7 +11,7 @@ implementation if you tell me that you'd like its addition ;)
 X Add ssh and ftp support
 X Do not load backup files in data directory
 X Fix "Save As"
-   
+
 0.9
 O Markup Highlighting (similar to real WYSIWYG)
 

@@ -26,6 +26,7 @@ import operator
 import logging
 
 from rednotebook.util import markup
+from rednotebook.gui import browser
 
 class ExportAssistant (object):
 	
@@ -77,12 +78,12 @@ class ExportAssistant (object):
 		self.html_button = self.builder.get_object('html')
 		self.latex_button = self.builder.get_object('latex')
 		self.pdf_button = self.builder.get_object('pdf')
-		if not self.is_pdf_supported() :
-			self.pdf_button.hide()
-		else :
-			self.pdf_button.show()
-			
-
+		
+		self.pdf_button.set_sensitive(self.is_pdf_supported())
+		tip1 = 'For direct PDF export, please install pywebkitgtk version 1.1.5 or later.'
+		tip2 = 'Alternatively consult the help document for Latex to PDF conversion.'
+		self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
+		
 
 	def append_second_page (self) :	
 		page2 = self.builder.get_object('export_assistant_2')
@@ -310,20 +311,30 @@ class ExportAssistant (object):
 	
 	
 	def is_pdf_supported (self):
-		#TODO: Implement that
-		return False
+		return browser.can_print_pdf()
 	
 	def export (self):
 		#TODO: Add content page values management
-		export_string = self.get_export_string(self.get_selected_format())
+		format = self.get_selected_format()
+		
+		if format == 'PDF':
+			self.export_pdf()
+			return
+		
+		export_string = self.get_export_string(format)
 		
 		try:
 			export_file = codecs.open(self.filename, 'w', 'utf-8')
 			export_file.write(export_string)
 			export_file.flush()
 			self.redNotebook.showMessage(_('Content exported to %s') + self.filename)
-		except:
+		except IOError:
 			self.redNotebook.showMessage(_('Exporting to %s failed') % self.filename)
+			
+	def export_pdf(self):
+		logging.info('Exporting to PDF')
+		html = self.get_export_string('HTML')
+		browser.print_pdf(html, self.filename)
 
 	def get_export_string(self, format):
 		if self.is_all_entries_selected() :
