@@ -194,7 +194,7 @@ try:
 	#logging.disable(logging.ERROR)
 	#logging.disable(logging.WARNING)
 	#logging.disable(logging.CRITICAL)
-	#gtk.gdk.threads_init()
+	gtk.gdk.threads_init()
 	#gtk.gdk.threads_enter()
 	
 	import gobject

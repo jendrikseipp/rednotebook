@@ -28,18 +28,18 @@ import logging
 from rednotebook.util import markup
 from rednotebook.gui import browser
 
-class ExportAssistant (object):
+class ExportAssistant(object):
 	
 	_instance = None
 	
 	@staticmethod
-	def get_instance (main_window):
+	def get_instance(main_window):
 		if ExportAssistant._instance is None :
 			ExportAssistant._instance = ExportAssistant(main_window)
 		return ExportAssistant._instance
 	
 	
-	def __init__ (self, main_window):
+	def __init__(self, main_window):
 				
 		self.redNotebook = main_window.redNotebook
 		self.main_window = main_window
@@ -59,16 +59,16 @@ class ExportAssistant (object):
 		self.assistant.set_forward_page_func(self.prepare_next_page, None)
 		self.assistant.set_title(_('Export Assistant'))		
 	
-	def run (self):
+	def run(self):
 		self.refresh_categories_list()
 		self.assistant.show()
 
-	def append_introduction_page (self) :
+	def append_introduction_page(self):
 		page0 = self.builder.get_object('export_assistant_0')
 		page0.show()		
 		self.assistant.set_page_complete(page0, True)
 	
-	def append_first_page (self) :
+	def append_first_page(self):
 		page1 = self.builder.get_object('export_assistant_1')
 		page1.show()
 
@@ -79,13 +79,15 @@ class ExportAssistant (object):
 		self.latex_button = self.builder.get_object('latex')
 		self.pdf_button = self.builder.get_object('pdf')
 		
-		self.pdf_button.set_sensitive(self.is_pdf_supported())
-		tip1 = 'For direct PDF export, please install pywebkitgtk version 1.1.5 or later.'
-		tip2 = 'Alternatively consult the help document for Latex to PDF conversion.'
-		self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
+		pdf_supported = self.is_pdf_supported()
+		self.pdf_button.set_sensitive(pdf_supported)
+		if not pdf_supported:
+			tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
+			tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
+			self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
 		
 
-	def append_second_page (self) :	
+	def append_second_page(self):	
 		page2 = self.builder.get_object('export_assistant_2')
 		page2.show()
 		
@@ -110,7 +112,7 @@ class ExportAssistant (object):
 	def set_end_date(self, date):
 		self._set_date(self.end_date, date)
 	
-	def append_third_page (self) :				
+	def append_third_page(self):				
 		page3 = self.builder.get_object('export_assistant_3')
 		page3.show()
 		
@@ -145,7 +147,7 @@ class ExportAssistant (object):
 		self.change_categories_selector_status(self.assistant)   
 
 
-	def append_fourth_page (self) :
+	def append_fourth_page(self):
 		page4 = self.builder.get_object('export_assistant_4')
 		page4.show()
 		
@@ -154,7 +156,7 @@ class ExportAssistant (object):
 		self.filename_chooser = self.builder.get_object('filename_chooser')
 		
 	
-	def prepare_next_page (self, current_page, data):
+	def prepare_next_page(self, current_page, data):
 		if current_page == 1 :
 			proposedFileName = 'RedNotebook-Export_' + str(datetime.date.today()) + \
 								'.' + self.format_extension_map.get(self.get_selected_format())
@@ -165,44 +167,44 @@ class ExportAssistant (object):
 		return current_page + 1
 	
 	
-	def on_quit (self, widget):
+	def on_quit(self, widget):
 		self.filename = self.filename_chooser.get_filename()
 		self.selected_categories_values = self.get_selected_categories_values()
 		
 		self.assistant.hide()
 		self.export()
 	
-	def on_cancel (self, widget, other=None):
+	def on_cancel(self, widget, other=None):
 		self.redNotebook.showMessage(_('Cancelling export assistant.'))
 		self.assistant.hide()
 
-	def change_date_selector_status (self, widget):
-		if (self.is_all_entries_selected()) :
+	def change_date_selector_status(self, widget):
+		if (self.is_all_entries_selected()):
 			self.start_date.set_sensitive(False)
 			self.end_date.set_sensitive(False)
 		else :
 			self.start_date.set_sensitive(True)
 			self.end_date.set_sensitive(True)
 
-	def change_export_text_status (self, widget):
-		if self.is_export_text_selected () :
+	def change_export_text_status(self, widget):
+		if self.is_export_text_selected():
 			self.no_categories.set_sensitive(True)
 		else :
-			if self.is_no_categories_selected() :
+			if self.is_no_categories_selected():
 				self.all_categories.set_active(True)
 			self.no_categories.set_sensitive(False)
 		self.check_exported_content_is_valid()
 
 
 
-	def change_categories_selector_status (self, widget):
-		if (self.is_all_categories_selected() or self.is_no_categories_selected()) :
+	def change_categories_selector_status(self, widget):
+		if (self.is_all_categories_selected() or self.is_no_categories_selected()):
 			self.hbox_categories.set_sensitive(False)
 		else :
 			self.hbox_categories.set_sensitive(True)
 		self.check_exported_content_is_valid()
 	
-	def select_category (self, widget):
+	def select_category(self, widget):
 		selection = self.available_categories.get_selection()
 		nb_selected, selected_iter = selection.get_selected()
 		
@@ -218,7 +220,7 @@ class ExportAssistant (object):
 			model_available.remove(selected_iter)
 		self.check_exported_content_is_valid()
 
-	def unselect_category (self, widget):
+	def unselect_category(self, widget):
 		selection = self.selected_categories.get_selection()
 		nb_selected, selected_iter = selection.get_selected()
 		
@@ -235,11 +237,11 @@ class ExportAssistant (object):
 		
 		self.check_exported_content_is_valid()
 
-	def check_exported_content_is_valid (self):
+	def check_exported_content_is_valid(self):
 		current_page = self.assistant.get_nth_page(3) 
 		
 		if not self.is_export_text_selected() \
-		   and len (self.get_selected_categories_values()) == 0 :
+		   and len(self.get_selected_categories_values()) == 0 :
 			self.nothing_exported_warning.show()
 			self.assistant.set_page_complete(current_page, False)
 		else :
@@ -247,11 +249,11 @@ class ExportAssistant (object):
 			self.assistant.set_page_complete(current_page, True)
 			
 	
-	def get_start_date (self):
+	def get_start_date(self):
 		year, month, day = self.start_date.get_date()
 		return datetime.date(year, month + 1, day)
 
-	def get_end_date (self):
+	def get_end_date(self):
 		year, month, day = self.end_date.get_date()
 		return datetime.date(year, month + 1, day)
 	
@@ -297,7 +299,7 @@ class ExportAssistant (object):
 			return True
 		return False
 	
-	def refresh_categories_list (self):
+	def refresh_categories_list(self):
 		model_available = gtk.ListStore(gobject.TYPE_STRING)
 		categories = self.main_window.redNotebook.nodeNames
 		for category in categories :
@@ -310,10 +312,10 @@ class ExportAssistant (object):
 
 	
 	
-	def is_pdf_supported (self):
+	def is_pdf_supported(self):
 		return browser.can_print_pdf()
 	
-	def export (self):
+	def export(self):
 		#TODO: Add content page values management
 		format = self.get_selected_format()
 		
@@ -337,7 +339,7 @@ class ExportAssistant (object):
 		browser.print_pdf(html, self.filename)
 
 	def get_export_string(self, format):
-		if self.is_all_entries_selected() :
+		if self.is_all_entries_selected():
 			exportDays = self.redNotebook.sortedDays
 		else:
 			exportDays = self.redNotebook.getDaysInDateRange((self.get_start_date(), \
@@ -362,7 +364,7 @@ class ExportAssistant (object):
 
 		markupString = ''.join(markupStringsForEachDay)
 		
-		target = self.format_extension_map.get(self.get_selected_format())
+		target = self.format_extension_map.get(format)
 		
 		headers = ['RedNotebook', '', '']
 		

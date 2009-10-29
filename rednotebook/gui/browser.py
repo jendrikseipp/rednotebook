@@ -22,7 +22,15 @@ if __name__ == '__main__':
 	import sys
 	sys.path.insert(0, '../../')
 	
+import sys
+import os
 import logging
+import warnings
+
+import gtk
+import glib
+
+from rednotebook.external import interwibble
 
 try:
 	import webkit
@@ -51,7 +59,50 @@ def can_print_pdf():
 	return hasattr(frame, 'print_full')
 	
 
+class HtmlPrinter(interwibble.UrlPrinter):
+	'''
+	Takes an html string and writes a PDF file to the disk
+	Idea and code mostly taken from http://github.com/eeejay/interwibble
+	'''
+	def print_html(self, html, outfile):
+		self._webview.load_html_string(html, 'http://www.pseudo.com')
+		self.handler = self._webview.connect(
+			'load-finished', self._load_finished_cb, outfile)
+
+		self._print_status('Loading HTML... ')
+
+		#self._webview.disconnect(handler)
+		
+	def _load_finished_cb(self, view, frame, outfile):
+		self._webview.disconnect(self.handler)
+		self._print_status('Done.')
+		print_op = gtk.PrintOperation()
+		print_op.set_export_filename(os.path.abspath(outfile))
+		self._print_status('Exporting PDF... ')
+		print_op.connect('end-print', self._end_print_cb)
+		try:
+			frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
+		except glib.GError, e:
+			self._print_error(e.message)
+			##gtk.main_quit()
+			
+	def _load_error_cb(self, view, frame, url, gp):
+		self._print_error("Error loading %s\n" % url)
+		##gtk.main_quit()
+			
+	def _end_print_cb(self, *args):
+		self._print_status('Done.')
+		##gtk.main_quit()
+		
+	def _print_status(self, status):
+		logging.info(status)
+		
+	def _print_error(self, status):
+		logging.error(status)
+	
+
 def print_pdf(html, filename):
 	# TODO: Implement
-	printer = interwibble.UrlPrinter()
+	printer = HtmlPrinter()
+	printer.print_html(html, filename)
 	
