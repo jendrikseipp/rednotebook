@@ -21,6 +21,10 @@ import warnings
 import sys
 import os
 
+## Jendrik:
+## Fix for pywebkitgtk 1.1.5
+gtk.gdk.threads_init()
+
 VERSION = '0.1'
 
 class UrlPrinter(object):

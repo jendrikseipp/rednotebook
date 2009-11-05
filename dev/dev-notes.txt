@@ -7,10 +7,17 @@ O WYSIWYG as an alternative to markup??? (keepnote and htmltextview as reference
     HTML Saving: Keepnote
     HTML2txt2tags: Vim Script (port to python)
     HTML2markdown: python module exists
-    HTML2Latex (write or use twisted lore)
+    HTML2Latex: Use HTML2txt2tags2Latex (write or use twisted lore)
     HTML2PDF: xhtml2pdf, http://code.activestate.com/recipes/532908/ possible, but only for plain text (no formatting)
               webkit is a better option here
     HTML2ODF: no suitable library at the moment. PyODF is buggy
+    
+    http://arstechnica.com/open-source/guides/2009/07/how-to-build-a-desktop-wysiwyg-editor-with-webkit-and-html-5.ars
+  
+    roadmap suggestion:
+    wait for pywebkitgtk to stabilize a bit more (new ubuntu version)
+    first add webkit as possible preview backend
+    save all content directly in html to have way more editing options
   
 O Encryption/Password
   - Save in password protected zipfiles (no open source tool to generate those)

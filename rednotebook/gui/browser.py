@@ -30,14 +30,16 @@ import warnings
 import gtk
 import glib
 
-from rednotebook.external import interwibble
+#from rednotebook.external import interwibble
 
-try:
-	import webkit
-except ImportError:
-	webkit = None
+#try:
+#	import webkit
+#except ImportError:
+#	webkit = None
 	
 def can_print_pdf():
+	return False
+	
 	if not webkit:
 		logging.info('Importing webkit failed')
 		return False
@@ -59,11 +61,17 @@ def can_print_pdf():
 	return hasattr(frame, 'print_full')
 	
 
-class HtmlPrinter(interwibble.UrlPrinter):
+class HtmlPrinter(object):
 	'''
 	Takes an html string and writes a PDF file to the disk
 	Idea and code mostly taken from http://github.com/eeejay/interwibble
 	'''
+	def __init__(self):
+		self._webview = webkit.WebView()
+		webkit_settings = self._webview.get_settings()
+		webkit_settings.set_property('enable-plugins', False)
+		self._webview.connect('load-error', self._load_error_cb)
+		
 	def print_html(self, html, outfile):
 		self._webview.load_html_string(html, 'http://www.pseudo.com')
 		self.handler = self._webview.connect(
@@ -82,6 +90,8 @@ class HtmlPrinter(interwibble.UrlPrinter):
 		print_op.connect('end-print', self._end_print_cb)
 		try:
 			frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
+			print 'print done'
+			print gtk.main_level()
 		except glib.GError, e:
 			self._print_error(e.message)
 			##gtk.main_quit()
@@ -105,4 +115,5 @@ def print_pdf(html, filename):
 	# TODO: Implement
 	printer = HtmlPrinter()
 	printer.print_html(html, filename)
+	return printer._webview
 	

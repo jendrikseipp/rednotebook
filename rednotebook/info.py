@@ -306,6 +306,19 @@ or using the menu entry under "File" in the top left corner.
 To avoid data loss you should also backup your content regularly. "Backup" in the "File" menu saves \
 all your entered data in a zip file.
 
+=== Save to remote FTP or SSH server ===
+Since version 0.8.9 you can have your journal directory on a remote server. The feature is \
+however only available on Linux machines. To use the feature you have to connect your computer \
+to the remote server. This is most easily done in Nautilus by clicking on "File" -> \
+"Connect to Server". Be sure to add a bookmark for the server. This way you can see your \
+server in Nautilus at all times on the left side. The next time you open RedNotebook you \
+will find your server in the "New", "Open" and "Save As" dialogs. There you can select \
+a new folder on the server for your journal. 
+
+Obviously you have to be connected to the internet to use that feature. Be sure to backup your \
+data regularly if you plan to save your content remotely. There are always more pitfalls when \
+an internet connection is involved.
+
 == Export ==
 In the same menu you also find an "Export"-Button. Click on it and export your diary to Plain Text, HTML or Latex.
 

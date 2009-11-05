@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-02 17:28+0200\n"
-"PO-Revision-Date: 2009-10-19 03:27+0000\n"
+"PO-Revision-Date: 2009-10-29 12:37+0000\n"
 "Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-10-21 17:44+0000\n"
+"X-Launchpad-Export-Date: 2009-11-05 01:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/mainWindow.py:283
@@ -571,7 +571,7 @@ msgstr "Adaugă o intrare într-o categorie (Ctrl+N)"
 
 #: tmp/mainWindow.glade.h:19
 msgid "All Entries"
-msgstr "Toate inregistrarile"
+msgstr "Toate înregistrarile"
 
 #: tmp/mainWindow.glade.h:21
 msgid "Category"

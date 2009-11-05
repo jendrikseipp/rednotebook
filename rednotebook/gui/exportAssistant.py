@@ -81,10 +81,11 @@ class ExportAssistant(object):
 		
 		pdf_supported = self.is_pdf_supported()
 		self.pdf_button.set_sensitive(pdf_supported)
-		if not pdf_supported:
-			tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
-			tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
-			self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
+		self.pdf_button.hide()
+		#if not pdf_supported:
+		#	tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
+		#	tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
+		#	self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
 		
 
 	def append_second_page(self):	
@@ -336,7 +337,7 @@ class ExportAssistant(object):
 	def export_pdf(self):
 		logging.info('Exporting to PDF')
 		html = self.get_export_string('HTML')
-		browser.print_pdf(html, self.filename)
+		self.webview = browser.print_pdf(html, self.filename)
 
 	def get_export_string(self, format):
 		if self.is_all_entries_selected():
