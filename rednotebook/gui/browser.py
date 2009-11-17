@@ -28,7 +28,8 @@ import logging
 import warnings
 
 import gtk
-import glib
+import gobject
+	
 
 #from rednotebook.external import interwibble
 
@@ -92,7 +93,7 @@ class HtmlPrinter(object):
 			frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
 			print 'print done'
 			print gtk.main_level()
-		except glib.GError, e:
+		except gobject.GError, e:
 			self._print_error(e.message)
 			##gtk.main_quit()
 			
