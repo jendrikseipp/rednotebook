@@ -828,10 +828,7 @@ class MainWindow(object):
 			filename = 'file://' + filename
 			head, tail = os.path.split(filename)
 			# It is always safer to add the "file://" protocol and the ""s
-			#if ' ' in filename:
 			self.dayTextField.insert('[%s ""%s""]' % (tail, filename))
-			#else:
-				#self.dayTextField.insert('[%s %s]' % (tail, filename))
 			
 	def on_insert_link_menu_item_activate(self, widget):
 		link_creator = self.builder.get_object('link_creator')
@@ -1307,8 +1304,8 @@ class SearchTreeView(object):
 class DayTextField(object):
 	def __init__(self, dayTextView, undo_redo_manager):
 		self.dayTextView = dayTextView
-		self.dayTextBuffer = gtk.TextBuffer()
-		#self.dayTextBuffer = t2t_highlight.get_highlight_buffer()
+		#self.dayTextBuffer = gtk.TextBuffer()
+		self.dayTextBuffer = t2t_highlight.get_highlight_buffer()
 		self.dayTextView.set_buffer(self.dayTextBuffer)
 		
 		self.undo_redo_manager = undo_redo_manager
@@ -1325,6 +1322,9 @@ class DayTextField(object):
 		self._spell_checker = None
 		self.enable_spell_check(False)
 		
+		# Enable drag&drop
+		#self.dayTextView.connect('drag-drop', self.on_drop) # unneeded
+		#self.dayTextView.connect('drag-data-received', self.on_drag_data_received)
 		
 	def set_text(self, text, undoing=False):
 		self.insert(text, overwrite=True, undoing=undoing)
@@ -1356,15 +1356,6 @@ class DayTextField(object):
 		
 		self.on_text_change(self.dayTextBuffer, undoing=undoing)
 		
-	
-#	def insert_template(self, template):
-#		logging.debug('Inserting template')
-#		currentText = self.get_text()
-#		try:
-#			self.insert(template.decode('utf-8') + '\n', self.dayTextBuffer.get_start_iter())
-#		except UnicodeDecodeError, err:
-#			logging.error('Template file contains unreadable content. Is it really just ' \
-#			'a text file?')
 			
 	def highlight(self, text):
 		iter_start = self.dayTextBuffer.get_start_iter()
@@ -1516,7 +1507,39 @@ class DayTextField(object):
 		return self._spell_checker != None
 		
 	#===========================================================
+	
+	#def on_drop(self, widget, drag_context, x, y, timestamp):
+		#logging.info('Drop occured')
+		#self.dayTextView.emit_stop_by_name('drag-drop')
+		#return True
 		
+	def on_drag_data_received(self, widget, drag_context, x, y, selection, info, timestamp):
+		# We do not want the default behaviour
+		self.dayTextView.emit_stop_by_name('drag-data-received')
+		
+		iter = self.dayTextView.get_iter_at_location(x, y)
+		
+		def is_pic(uri):
+			head, ext = os.path.splitext(uri)
+			return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp'.split()
+		
+		uris = selection.data.strip('\r\n\x00')
+		print 'URI', uris
+		uris = uris.split() # we may have more than one file dropped
+		uris = map(str.strip, uris)
+		for uri in uris:
+			uri = urllib.url2pathname(uri)
+			dirs, filename = os.path.split(uri)
+			uri_without_ext, ext = os.path.splitext(uri)
+			if is_pic(uri):
+				self.insert('[""%s""%s]\n' % (uri_without_ext, ext), iter)
+			else:
+				# It is always safer to add the "file://" protocol and the ""s
+				self.insert('[%s ""%s""]\n' % (filename, uri), iter)
+		
+		drag_context.finish(True, False, timestamp)
+		# No further processing
+		return True
 	
 		
 		

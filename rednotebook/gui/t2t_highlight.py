@@ -268,7 +268,8 @@ linebreak = MultiPattern(r'(\\\\)', [(1, 'bold')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 # \w = [a-zA-Z0-9_]
-pic = MultiPattern(r'(\["")([^\s][\w\s_,.+%$#@!?+~/-]+[^\s]("")\.(png|jpe?g|gif|eps|bmp))(\])', \
+# Added ":-" for "file://5-5.jpg"
+pic = MultiPattern(r'(\["")([^\s][\w\s_,.+%$#@!?+~/-:-]+[^\s]("")\.(png|jpe?g|gif|eps|bmp))(\])', \
 		[(1, 'grey'), (2, 'bold'), (3, 'grey'), (5, 'grey')], flags='LI')
 
 # named link on hdd [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]

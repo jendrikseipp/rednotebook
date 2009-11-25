@@ -287,7 +287,7 @@ class OptionsManager(object):
 		
 		able_to_spell_check = self.main_window.dayTextField.can_spell_check()
 		tooltip = _('Underline misspelled words') if able_to_spell_check else \
-				_('Requires gtkspell.') + ' ' + \ 
+				_('Requires gtkspell.') + ' ' + \
 				_('This is included in the python-gtkspell or python-gnome2-extras package')
 		spell_check_option = TickOption(_('Spell Check'), 'spellcheck',
 				tooltip=tooltip)

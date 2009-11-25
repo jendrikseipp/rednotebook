@@ -8,11 +8,13 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 0.9
-O Markup Highlighting (similar to real WYSIWYG)
+O Markup Highlighting (a little WYSIWYG)
 
 0.9.1
 O Use webkit for direct pdf generation
 O Custom-style Journals?
+O Allow dragging of files and pictures into RedNotebook
+O Image resizing with PIL (Image module)
 
 0.9.5
 O Use Zeitgeist for automatic category entries (start with Karmic update)
@@ -74,12 +76,10 @@ O Convert all read strings to unicode before working with them?
 - make date format configurable for exports (probably no one needs this as i18n already exists)
 - Tags in text entries (e.g. @film:Batman) (KISS)
 - remove search for categories and tags, as clouds already do that (Unituitive and not trivial to remove)
-- Allow dragging of files and pictures into RedNotebook (default behavior is good enough)
 - Copy/Paste category entries (Too complicated)
 - Add --portable command line parameter (The default config file is better)
 - word wrapping while editing category entries (too complicated, would involve writing C code)
 - Language selection for spell checking (is already implemented in new versions of gtkspell)
-- Image resizing (KISS)
 - Todo tab next to clouds (KISS)
 - Automatic Backups (KISS, intruding, gentle messages are better)
 - Rethink linebreaks? (Changing paragraphs in txt2tags will probably crash 
