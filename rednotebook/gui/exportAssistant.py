@@ -104,6 +104,9 @@ class ExportAssistant(object):
 		self.change_date_selector_status(self.assistant)
 		
 	def _set_date(self, calendar, date):
+		# Avoid errors by setting the day to one that exists in every month first
+		calendar.select_day(1)
+		
 		calendar.select_month(date.month - 1, date.year)
 		calendar.select_day(date.day)
 		
@@ -317,6 +320,13 @@ class ExportAssistant(object):
 		return browser.can_print_pdf()
 	
 	def export(self):
+		# Check sanity of dates
+		#if not self.is_all_entries_selected():
+		#	if not self.get_start_date() <= self.get_end_date():
+		#		self.redNotebook.showMessage(_('The start date is later than the end date'), \
+		#										error=True)
+		#		return
+		
 		#TODO: Add content page values management
 		format = self.get_selected_format()
 		
@@ -330,7 +340,7 @@ class ExportAssistant(object):
 			export_file = codecs.open(self.filename, 'w', 'utf-8')
 			export_file.write(export_string)
 			export_file.flush()
-			self.redNotebook.showMessage(_('Content exported to %s') + self.filename)
+			self.redNotebook.showMessage(_('Content exported to %s') % self.filename)
 		except IOError:
 			self.redNotebook.showMessage(_('Exporting to %s failed') % self.filename)
 			
@@ -343,8 +353,8 @@ class ExportAssistant(object):
 		if self.is_all_entries_selected():
 			exportDays = self.redNotebook.sortedDays
 		else:
-			exportDays = self.redNotebook.getDaysInDateRange((self.get_start_date(), \
-															self.get_end_date()))
+			start, end = sorted([self.get_start_date(),	self.get_end_date()])
+			exportDays = self.redNotebook.getDaysInDateRange((start, end))
 			
 		selected_categories = self.get_selected_categories_values()
 		logging.debug('Selected Categories for Export: %s' % selected_categories)

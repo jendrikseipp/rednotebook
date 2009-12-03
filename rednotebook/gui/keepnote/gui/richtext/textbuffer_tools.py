@@ -6,7 +6,7 @@
 
 """
 
-##from rednotebook.gui.keepnote.linked_list import LinkedList
+from rednotebook.gui.keepnote.linked_list import LinkedList
 from rednotebook.gui.keepnote.linked_tree import LinkedTreeNode
 
 

@@ -8,13 +8,13 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 0.9
-O Markup Highlighting (a little WYSIWYG)
+X Markup Highlighting (a little WYSIWYG)
 
 0.9.1
 O Use webkit for direct pdf generation
 O Custom-style Journals?
-O Allow dragging of files and pictures into RedNotebook
-O Image resizing with PIL (Image module)
+X Allow dragging of files and pictures into RedNotebook
+O Image resizing with PIL (Image module) (Figure out where to save new files first)
 
 0.9.5
 O Use Zeitgeist for automatic category entries (start with Karmic update)

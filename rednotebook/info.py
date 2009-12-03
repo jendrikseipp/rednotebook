@@ -77,8 +77,8 @@ Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 === Format ===
-As you see you can format your text ""**""**bold**""**"", ""//""//italic//""//"", \
-""--""--stricken--""--"" and ""__""__underlined__""__"". \
+As you see you can format your text **bold**, //italic//, \
+--stricken-- and __underlined__. \
 To see the results, just click on the "Preview" button. 
 
 === Extra Content ===
@@ -185,7 +185,7 @@ You can also use RedNotebook as a todo list. A big advantage is, that you never 
 have to explicitly state the date when you added the todo item, you just add it \
 on one day and it remains there until you delete it. 
 
-Here is how it goes:
+Here is how it works:
 - On the right click on "New Entry"
 - Fill "Todo" and "Remember the milk" in the fields and hit "OK"
 - Select the categories cloud from the drop down menu on the left
@@ -225,12 +225,12 @@ Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 == Format ==
-As you see you can format your text ""**""**bold**""**"", ""//""//italic//""//"", \
-""--""--stricken--""--"" and ""__""__underlined__""__"". As a convenience there \
+As you see you can format your text **bold**, //italic//, \
+--stricken-- and __underlined__. As a convenience there \
 is also the "Format" button, with which you can format the main text and nodes \
 in the categories tree on the right.
 
-%% Formatting commands inside two pairs of "" are not interpreted
+%% Formatting commands inside two pairs of "" are not interpreted (""**not bold**"")
 
 **Comments** can be inserted after percent signs (**%%**). They will not be shown in the \
 preview and the exports. The %% has to be the first character on the line.
