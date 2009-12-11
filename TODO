@@ -11,7 +11,7 @@ implementation if you tell me that you'd like its addition ;)
 X Markup Highlighting (a little WYSIWYG)
 
 0.9.1
-O Use webkit for direct pdf generation
+O Use webkit for direct pdf generation (Use toc for export?)
 O Custom-style Journals?
 X Allow dragging of files and pictures into RedNotebook
 O Image resizing with PIL (Image module) (Figure out where to save new files first)

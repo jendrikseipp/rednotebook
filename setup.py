@@ -32,6 +32,7 @@ import os
 import sys
 import glob
 import fnmatch
+import shutil
 from subprocess import call
 from os.path import join
 
@@ -53,13 +54,14 @@ from rednotebook.external import msgfmt
 
 
 # i18n
+i18n_dir = 'rednotebook/i18n/'
+
 def build_mo_files():
 	'''
 	Little script that compiles all available po files into mo files
 	'''
 	
 	po_dir = 'po'
-	i18n_dir = 'rednotebook/i18n/'
 
 	if not os.path.exists(i18n_dir):
 		os.mkdir(i18n_dir)
@@ -85,12 +87,15 @@ def build_mo_files():
 		#call(cmd)
 		print 'Compiling %s to %s' % (po_file, mo_file)
 		msgfmt.make(po_file, mo_file)
-
-		
+	
 if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
 	build_mo_files()
 	if 'i18n' in sys.argv:
 		sys.exit()
+		
+if 'clean' in sys.argv:
+	if os.path.exists(i18n_dir):
+		shutil.rmtree(i18n_dir)
 
 def get_data_base_dir():
 	'''

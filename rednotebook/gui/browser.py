@@ -17,12 +17,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import sys
+
 # Testing
 if __name__ == '__main__':
-	import sys
 	sys.path.insert(0, '../../')
 	
-import sys
 import os
 import logging
 import warnings
@@ -30,13 +30,13 @@ import warnings
 import gtk
 import gobject
 	
-
 #from rednotebook.external import interwibble
 
 #try:
 #	import webkit
 #except ImportError:
 #	webkit = None
+	
 	
 def can_print_pdf():
 	return False
@@ -62,48 +62,17 @@ def can_print_pdf():
 	return hasattr(frame, 'print_full')
 	
 
-class HtmlPrinter(object):
+class HtmlPrinter(object):#interwibble.UrlPrinter):
 	'''
 	Takes an html string and writes a PDF file to the disk
 	Idea and code mostly taken from http://github.com/eeejay/interwibble
 	'''
-	def __init__(self):
-		self._webview = webkit.WebView()
-		webkit_settings = self._webview.get_settings()
-		webkit_settings.set_property('enable-plugins', False)
-		self._webview.connect('load-error', self._load_error_cb)
 		
 	def print_html(self, html, outfile):
-		self._webview.load_html_string(html, 'http://www.pseudo.com')
-		self.handler = self._webview.connect(
-			'load-finished', self._load_finished_cb, outfile)
-
-		self._print_status('Loading HTML... ')
-
-		#self._webview.disconnect(handler)
-		
-	def _load_finished_cb(self, view, frame, outfile):
-		self._webview.disconnect(self.handler)
-		self._print_status('Done.')
-		print_op = gtk.PrintOperation()
-		print_op.set_export_filename(os.path.abspath(outfile))
-		self._print_status('Exporting PDF... ')
-		print_op.connect('end-print', self._end_print_cb)
-		try:
-			frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
-			print 'print done'
-			print gtk.main_level()
-		except gobject.GError, e:
-			self._print_error(e.message)
-			##gtk.main_quit()
-			
-	def _load_error_cb(self, view, frame, url, gp):
-		self._print_error("Error loading %s\n" % url)
-		##gtk.main_quit()
-			
-	def _end_print_cb(self, *args):
-		self._print_status('Done.')
-		##gtk.main_quit()
+		with open('tmpfile.html', 'w') as tmpfile:
+			tmpfile.write(html)
+		self.print_url('file://' + 'tmpfile.html', outfile)
+		#self._webview.load_html_string(html, 'http://www.heise.de')
 		
 	def _print_status(self, status):
 		logging.info(status)
@@ -113,8 +82,15 @@ class HtmlPrinter(object):
 	
 
 def print_pdf(html, filename):
-	# TODO: Implement
-	printer = HtmlPrinter()
+	printer = HtmlPrinter('a4')
 	printer.print_html(html, filename)
 	return printer._webview
+	
+if __name__ == '__main__':
+	sys.path.insert(0, os.path.abspath("./../../"))
+	from rednotebook.util import markup
+	text = 'Hello PDF'
+	html = markup.convert(text, 'html')#'<html><body></body></html>'
+	print html
+	print_pdf(html, '/tmp/export-test.pdf')
 	
