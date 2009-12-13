@@ -15,9 +15,10 @@ O Use webkit for direct pdf generation (Use toc for export?)
 O Custom-style Journals?
 X Allow dragging of files and pictures into RedNotebook
 O Image resizing with PIL (Image module) (Figure out where to save new files first)
+O Add comments for translators
 
 0.9.5
-O Use Zeitgeist for automatic category entries (start with Karmic update)
+O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
 
 0.9.x
 O Automatic insertion of photo links for current day

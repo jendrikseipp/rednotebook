@@ -522,10 +522,11 @@ class RedNotebook:
 		
 	def loadAllMonthsFromDisk(self):
 		logging.debug('Starting to load files in dir "%s"' % self.dirs.dataDir)
-		for root, dirs, files in os.walk(self.dirs.dataDir):
-			for file in files:
-				if not file.endswith('~'):
-					self.loadMonthFromDisk(os.path.join(root, file))
+		#for root, dirs, files in os.walk(self.dirs.dataDir):
+		files = os.listdir(self.dirs.dataDir)
+		for file in files:
+			if not file.endswith('~'):
+				self.loadMonthFromDisk(os.path.join(self.dirs.dataDir, file))
 		logging.debug('Finished loading files in dir "%s"' % self.dirs.dataDir)
 	
 	
