@@ -7,9 +7,6 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-0.9
-X Markup Highlighting (a little WYSIWYG)
-
 0.9.1
 O Use webkit for direct pdf generation (Use toc for export?)
 O Custom-style Journals?
