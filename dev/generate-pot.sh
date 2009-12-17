@@ -11,4 +11,12 @@ sed -i '/"gtk-/d' tmp/mainWindow.glade.h
 # Write a list of all sourcefiles
 find ../rednotebook -name "*.py" -not -path "*external*" -not -path "*keepnote*" > sourcefiles.txt
 
-xgettext --output=rednotebook.pot --language=Python --keyword=_ --keyword=N_ --from-code=utf-8 --files-from=sourcefiles.txt tmp/mainWindow.glade.h
+xgettext 	--output=rednotebook.pot \
+			--language=Python \
+			--keyword=_ \
+			--keyword=N_ \
+			--add-comments=/* \
+			--add-comments=\#\# \
+			--from-code=utf-8 \
+			--files-from=sourcefiles.txt \
+			tmp/mainWindow.glade.h

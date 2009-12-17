@@ -279,7 +279,7 @@
                               <object class="GtkToolButton" id="previewButton">
                                 <property name="visible">True</property>
                                 <property name="tooltip_text" translatable="yes">Show a formatted preview of the text (Ctrl+P)</property>
-                                <property name="label" translatable="yes">Preview</property>
+                                <property name="label" translatable="yes" comments="Verb">Preview</property>
                                 <property name="stock_id">gtk-media-play</property>
                                 <accelerator key="P" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                 <signal name="clicked" handler="on_previewButton_clicked"/>
@@ -347,7 +347,7 @@
                               <object class="GtkToolButton" id="addNewEntryButton">
                                 <property name="visible">True</property>
                                 <property name="tooltip_text" translatable="yes">Add an entry to a category (Ctrl+N)</property>
-                                <property name="label" translatable="yes">New Entry</property>
+                                <property name="label" translatable="yes">Annotate</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-new</property>
                                 <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
@@ -362,7 +362,7 @@
                               <object class="GtkToolButton" id="addTagButton">
                                 <property name="visible">True</property>
                                 <property name="tooltip_text" translatable="yes">Tag this day (Ctrl+T)</property>
-                                <property name="label" translatable="yes">Add Tag</property>
+                                <property name="label" translatable="yes" comments="This stands for the verb in &quot;Tag this day&quot;">Tag</property>
                                 <property name="stock_id">gtk-dialog-info</property>
                                 <accelerator key="T" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                 <signal name="clicked" handler="on_addTagButton_clicked"/>
@@ -648,8 +648,8 @@
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="action">save</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -769,6 +769,9 @@
     <property name="title" translatable="yes">Export Assistant</property>
     <signal name="cancel" handler="on_export_assistant_cancel"/>
     <signal name="close" handler="on_export_assistant_quit"/>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <placeholder/>
     </child>
@@ -1800,7 +1803,7 @@ This wizard will help you to export your journal to various formats. You can sel
                 <child type="label">
                   <object class="GtkLabel" id="label20">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;General&lt;/b&gt;</property>
+                    <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">&lt;b&gt;General&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -1809,7 +1812,7 @@ This wizard will help you to export your journal to various formats. You can sel
             <child type="tab">
               <object class="GtkLabel" id="label17">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">General</property>
+                <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">General</property>
               </object>
               <packing>
                 <property name="tab_fill">False</property>

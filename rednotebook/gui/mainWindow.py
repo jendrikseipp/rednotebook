@@ -358,6 +358,7 @@ class MainWindow(object):
 			text_scrolledwindow.show()
 			self.html_editor.hide()
 			self.preview_button.set_stock_id('gtk-media-play')
+			### Translators: Verb
 			self.preview_button.set_label(_('Preview'))
 			
 			self.preview_mode = False
@@ -485,6 +486,7 @@ class MainWindow(object):
 		elif dir_not_found:
 			default_dir = self.redNotebook.dirs.defaultDataDir
 			self.redNotebook.open_journal(default_dir, load_files=True)
+			### Translators: The default journal is located at $HOME/.rednotebook/data
 			self.redNotebook.showMessage(_('The default journal has been opened'))
 			
 	def show_save_error_dialog(self, exitImminent):
@@ -649,6 +651,7 @@ class MainWindow(object):
 		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
 		self.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
+		### Translators: noun
 		self.format_toolbutton.set_label(_('Format'))
 		tip = _('Format the selected text or category entry')
 		self.format_toolbutton.set_tooltip_text(tip)
@@ -722,6 +725,7 @@ class MainWindow(object):
 			('File', gtk.STOCK_FILE, _('File'), None, \
 				_('Insert a link to a file'), \
 				self.on_insert_file_menu_item_activate),
+			### Translators: Noun
 			('Link', gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L', \
 				_('Insert a link to a website'), \
 				self.on_insert_link_menu_item_activate),

@@ -172,6 +172,7 @@ class DateFormatOption(ComboBoxOption):
 		
 	def on_format_changed(self, widget):
 		import time
+		### Translators: Noun
 		self.preview.set_text(_('Preview: %s') % time.strftime(self.combo.get_active_text()))
 		
 class FontSizeOption(ComboBoxOption):
@@ -289,7 +290,7 @@ class OptionsManager(object):
 		tooltip = _('Underline misspelled words') if able_to_spell_check else \
 				_('Requires gtkspell.') + ' ' + \
 				_('This is included in the python-gtkspell or python-gnome2-extras package')
-		spell_check_option = TickOption(_('Spell Check'), 'spellcheck',
+		spell_check_option = TickOption(_('Check Spelling'), 'spellcheck',
 				tooltip=tooltip)
 		if not sys.platform == 'win32':
 			self.options.append(spell_check_option)

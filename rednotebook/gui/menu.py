@@ -94,8 +94,10 @@ class MainMenuBar(object):
 			('SaveAs', gtk.STOCK_SAVE_AS, None, 
 				None, _('Save journal at a new location. The old journal files will also be saved'), 
 				self.on_saveAsMenuItem_activate),
+			### Translators: Verb
 			('Export', gtk.STOCK_CONVERT, _('Export'), 
 				None, _('Open the export assistant'), self.on_exportMenuItem_activate),
+			### Translators: Verb
 			('Backup', gtk.STOCK_HARDDISK, _('Backup'), 
 				None, _('Save all the data in a zip archive'), self.on_backup_activate),
 			('Quit', gtk.STOCK_QUIT, None, 
