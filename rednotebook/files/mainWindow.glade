@@ -71,6 +71,7 @@
                 <child>
                   <object class="GtkToolbar" id="toolbar3">
                     <property name="visible">True</property>
+                    <property name="toolbar_style">both</property>
                     <child>
                       <object class="GtkToolButton" id="backOneDayButton">
                         <property name="visible">True</property>
@@ -647,8 +648,8 @@
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">save</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -768,6 +769,9 @@
     <property name="title" translatable="yes">Export Assistant</property>
     <signal name="cancel" handler="on_export_assistant_cancel"/>
     <signal name="close" handler="on_export_assistant_quit"/>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkLabel" id="export_assistant_0">
         <property name="visible">True</property>
@@ -1321,7 +1325,7 @@ This wizard will help you to export your journal to various formats. You can sel
             </child>
             <child>
               <object class="GtkButton" id="button9">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1335,7 +1339,7 @@ This wizard will help you to export your journal to various formats. You can sel
             </child>
             <child>
               <object class="GtkButton" id="button8">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1404,7 +1408,7 @@ This wizard will help you to export your journal to various formats. You can sel
             </child>
             <child>
               <object class="GtkButton" id="button11">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1687,8 +1691,8 @@ This wizard will help you to export your journal to various formats. You can sel
     <property name="title" translatable="yes">Select a directory</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="action">select-folder</property>
     <property name="local_only">False</property>
+    <property name="action">select-folder</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox17">
         <property name="visible">True</property>
@@ -1709,7 +1713,7 @@ This wizard will help you to export your journal to various formats. You can sel
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button16">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1723,7 +1727,7 @@ This wizard will help you to export your journal to various formats. You can sel
             </child>
             <child>
               <object class="GtkButton" id="button17">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -1825,7 +1829,7 @@ This wizard will help you to export your journal to various formats. You can sel
             </child>
             <child>
               <object class="GtkButton" id="button19">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1839,7 +1843,7 @@ This wizard will help you to export your journal to various formats. You can sel
             </child>
             <child>
               <object class="GtkButton" id="button18">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1957,7 +1961,7 @@ This wizard will help you to export your journal to various formats. You can sel
             </child>
             <child>
               <object class="GtkButton" id="button21">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
