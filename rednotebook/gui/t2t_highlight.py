@@ -19,23 +19,23 @@ logging.getLogger('').setLevel(logging.DEBUG)
 
 txt = """
 === Header ===
-ä **bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken-- 
+ä **bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken--
 
-     [""/home/user/Desktop/RedNotebook pic"".png]
-     
-     [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
-     
-     [heise ""http://heise.de""]
-     
-     www.heise.de
-     
-     http://www.hutzi.de
+	 [""/home/user/Desktop/RedNotebook pic"".png]
+
+	 [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
+
+	 [heise ""http://heise.de""]
+
+	 www.heise.de
+
+	 http://www.hutzi.de
 
 ====================
 
-# About 
-This example shows you a hard-coded\\ markdown 
-syntax-definition. Supporting `code-segments`, 
+# About
+This example shows you a hard-coded\\ markdown
+syntax-definition. Supporting `code-segments`,
 **emphasized text**, **2nd** or *emphasized text*.
 
 ## list-support
@@ -54,38 +54,35 @@ syntax-definition. Supporting `code-segments`,
 class MultiPattern(gtkcodebuffer.Pattern):
 	def __init__(self, regexp, group_tag_pairs, **kwargs):
 		gtkcodebuffer.Pattern.__init__(self, regexp, **kwargs)
-		
+
 		self.group_tag_pairs = group_tag_pairs
-		
+
 	def __call__(self, txt, start, end):
 		m = self._regexp.search(txt)
 		if not m: return None
-		
+
 		iter_pairs = []
-		
+
 		for group, tag_name in self.group_tag_pairs:
 			mstart, mend = m.start(group), m.end(group)
 			s = start.copy(); s.forward_chars(mstart)
 			e = start.copy(); e.forward_chars(mend)
 			iter_pairs.append([s, e, tag_name])
-		
+
 		return iter_pairs
-	
+
 class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
-	
-	def __call__(self, buf, start, end=None):
-		# if no end given -> end of buffer
-		if not end: end = buf.get_end_iter()
-	
+
+	def __call__(self, buf, start, end):
 		mstart = mend = end
 		mtag   = None
 		txt = buf.get_slice(start, end)
-		
+
 		selected_pairs = None
-		
+
 		# search min match
 		##for rule in self._grammar:
-		logging.debug('Testing %s rules' % len(self._successful_rules))
+		#logging.debug('Testing %s rules' % len(self._successful_rules))
 		for rule in self._successful_rules[:]:
 			# search pattern
 			iter_pairs = rule(txt, start, end)
@@ -93,19 +90,19 @@ class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 				## This rule will not find anything in the next round either
 				self._successful_rules.remove(rule)
 				continue
-			
+
 			key = lambda iter: iter.get_offset()
-			
+
 			min_start = min([start_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
 			max_end = max([end_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
-			
-			# prefer match with smallest start-iter 
+
+			# prefer match with smallest start-iter
 			if min_start.compare(mstart) < 0:
 				mstart, mend = min_start, max_end
 				#mtag = rule.tag_name
 				selected_pairs = iter_pairs
 				continue
-			
+
 			##if m[0].compare(mstart)==0 and m[1].compare(mend)>0:
 			if min_start.compare(mstart) == 0 and max_end.compare(mend) > 0:
 				mstart, mend = min_start, max_end
@@ -114,10 +111,10 @@ class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 				continue
 
 		return selected_pairs#(mstart, mend, mtag)
-	
+
 
 class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
-	
+
 	def get_slice(self, start, end):
 		'''
 		We have to search for the regexes in utf-8 text
@@ -125,92 +122,77 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 		slice_text = gtkcodebuffer.CodeBuffer.get_slice(self, start, end)
 		slice_text = slice_text.decode('utf-8')
 		return slice_text
-	
-	def update_syntax(self, start, end=None):
-		""" More or less internal used method to update the 
+
+	def _on_insert_text(self, buf, it, text, length):
+		end = it.copy()
+		start = it.copy()
+		start.backward_chars(length)
+
+		self._apply_tags = True
+		self.update_syntax(start, end)
+		self._apply_tags = False
+
+
+	def _on_delete_range(self, buf, start, end):
+		start = start.copy()
+
+		self._apply_tags = True
+		self.update_syntax(start, start)
+		self._apply_tags = False
+
+	def update_syntax(self, start, end):
+		""" More or less internal used method to update the
 			syntax-highlighting. """
 			
-		## Force renewal of complete text
-		#TODO: Just update the edited line and all following lines
-		start = self.get_start_iter()
+		# Just update from the start of the first edited line 
+		# to the end of the last edited line, because we can
+		# guarantee that there's no multiline rule
+		start_line_number = start.get_line()
+		start_line_iter = self.get_iter_at_line(start_line_number)
+		start = start_line_iter
 		
-		# if no lang set	
-		if not self._lang_def: 
-			return			 
-		logging.debug("Update syntax from %i" % start.get_offset())
-			
-		# if not end defined
-		if not end: 
-			end = self.get_end_iter()
-			
+		end.forward_to_line_end()
+
 		# We can omit those rules without occurrences in later searches
-		
+
 		# Reset rules
 		self._lang_def._successful_rules = self._lang_def._grammar[:]
-		
+
 		# We do not use recursion -> long files exceed rec-limit!
 		finished = False
-		while not finished: 
-			# search first rule matching txt[start..end]			
-			##mstart, mend, tagname = self._lang_def(self, start, end)
+		while not finished:
+			# search first rule matching txt[start..end]
 			group_iters_and_tags = self._lang_def(self, start, end)
-			
+
 			if not group_iters_and_tags:
 				self.remove_all_tags(start, end)
 				self.apply_tag_by_name("DEFAULT", start, end)
-				finished = True
-				continue
-			
+				return
+
 			key = lambda iter: iter.get_offset()
-			
-			min_start = min([start_iter for start_iter, end_iter, tag_name in group_iters_and_tags], key=key)
-			max_end = max([end_iter for start_iter, end_iter, tag_name in group_iters_and_tags], key=key)
-			
-			# remove all tags from start..mend (mend == buffer-end if no match)		
-			##self.remove_all_tags(start, max_end)
+
+			min_start = min([start_iter for start_iter, end_iter, tag_name \
+										in group_iters_and_tags], key=key)
+			max_end = max([end_iter for start_iter, end_iter, tag_name \
+										in group_iters_and_tags], key=key)
+
+			# remove all tags from start..end (mend == buffer-end if no match)
 			self.remove_all_tags(start, end)
-			
-			# make start..mstart = DEFAUL (mstart == buffer-end if no match)
+
+			# make start..min_start = DEFAULT (mstart == buffer-end if no match)
 			if not start.equal(min_start):
-				#logging.debug("Apply DEFAULT")
-				##self.apply_tag_by_name("DEFAULT", start, min_start)
-				self.apply_tag_by_name("DEFAULT", start, end)
-			
-			for index, (mstart, mend, tagname) in enumerate(group_iters_and_tags):
-				
-				all_groups_done = (index == len(group_iters_and_tags) - 1)
-				
-				# optimisation: if mstart-mend is allready tagged with tagname 
-				#   -> finished
-				if tagname:	 #if something found
-					tag = self.get_tag_table().lookup(tagname)
-					if mstart.begins_tag(tag) and mend.ends_tag(tag) and not mstart.equal(start):
-						self.remove_all_tags(start,mstart)
-						self.apply_tag_by_name("DEFAULT", start, mstart)
-						logging.debug("Optimized: Found old tag at %i (%s)"%(mstart.get_offset(), mstart.get_char()))
-						
-						# finish
-						if all_groups_done:
-							finished = True
-						continue
-			
-				# nothing found -> finished
-				if not tagname: 
-					if all_groups_done:
-						finished = True
-						continue
-			
+				self.apply_tag_by_name("DEFAULT", start, min_start)
+
+			for mstart, mend, tagname in group_iters_and_tags:
 				# apply tag
-				##logging.debug("Apply %s"%tagname)
 				self.apply_tag_by_name(tagname, mstart, mend)
-			
+
 			# Set new start
 			start = max_end
-			
-			if start == end: 
-				finished = True
-				continue
-				
+
+			if start == end:
+				return
+
 
 def get_pattern(markup_symbols, style, allow_whitespace=False):
 	if allow_whitespace:
@@ -263,7 +245,7 @@ line = MultiPattern(r'^[\s]*([_=-]{20,})[\s]*$', [(1, 'bold')])
 # Whitespace is allowed, but nothing else
 header = MultiPattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
 						[(1, 'grey'), (2, 'header'), (3, 'grey')])
-						
+
 linebreak = MultiPattern(r'(\\\\)', [(1, 'bold')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
@@ -304,17 +286,17 @@ rules = [
 
 
 def get_highlight_buffer():
-	# create lexer: 
+	# create lexer:
 	lang = OverlapLanguageDefinition(rules)
 
 	# create buffer and update style-definition
 	buff = OverlapCodeBuffer(lang=lang, styles=styles)
-	
+
 	return buff
 
 # Testing
 if __name__ == '__main__':
-	
+
 	buff = get_highlight_buffer()
 
 	win = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -325,9 +307,9 @@ if __name__ == '__main__':
 	def change_text(widget):
 		html = markup.convert(widget.get_text(widget.get_start_iter(), widget.get_end_iter()), \
 							  'xhtml', append_whitespace=True)
-				
+
 		html_editor.load_html(html)
-		
+
 	buff.connect('changed', change_text)
 
 	vbox = gtk.VBox()
@@ -335,12 +317,12 @@ if __name__ == '__main__':
 	vbox.pack_start(html_editor)
 	win.add(vbox)
 	scr.add(gtk.TextView(buff))
-			
+
 	win.set_default_size(600,400)
 	win.set_position(gtk.WIN_POS_CENTER)
 	win.show_all()
 	win.connect("destroy", lambda w: gtk.main_quit())
 
 	buff.set_text(txt)
-			
-	gtk.main()		
+
+	gtk.main()
