@@ -19,39 +19,36 @@ logging.getLogger('').setLevel(logging.DEBUG)
 
 txt = """
 === Header ===
-ä **bold**.*, //italic//,/italic/__underlined__, __aakaroaa__, --stricken--
+ä **bold**.*, //italic//,/italic/__underlined__, --stricken--
 
 	 [""/home/user/Desktop/RedNotebook pic"".png]
 
-	 [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
+	 [hs error.log ""file:///home/user/hs error.log""]
 
 	 [heise ""http://heise.de""]
 
 	 www.heise.de
 
-	 http://www.hutzi.de
+	 http://www.heise.de
 
 ====================
 
-# About
-This example shows you a hard-coded\\ markdown
-syntax-definition. Supporting `code-segments`,
-**emphasized text**, **2nd** or *emphasized text*.
-
-## list-support
-## 2list-support
+% list-support
 - a simple list item
 - an other
 
-1. A ordered list
+1. An ordered list
 2. other item
 
-#### n-th order heading
 """
 
 
 
 class MultiPattern(gtkcodebuffer.Pattern):
+	'''
+	Extension of the Pattern class that allows a pattern to have
+	subgroups with different formatting
+	'''
 	def __init__(self, regexp, group_tag_pairs, **kwargs):
 		gtkcodebuffer.Pattern.__init__(self, regexp, **kwargs)
 
@@ -71,6 +68,7 @@ class MultiPattern(gtkcodebuffer.Pattern):
 
 		return iter_pairs
 
+
 class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 
 	def __call__(self, buf, start, end):
@@ -81,7 +79,6 @@ class OverlapLanguageDefinition(gtkcodebuffer.LanguageDefinition):
 		selected_pairs = None
 
 		# search min match
-		##for rule in self._grammar:
 		#logging.debug('Testing %s rules' % len(self._successful_rules))
 		for rule in self._successful_rules[:]:
 			# search pattern
@@ -305,7 +302,8 @@ if __name__ == '__main__':
 	html_editor = HtmlEditor()
 
 	def change_text(widget):
-		html = markup.convert(widget.get_text(widget.get_start_iter(), widget.get_end_iter()), \
+		html = markup.convert(widget.get_text(widget.get_start_iter(), \
+								widget.get_end_iter()), \
 							  'xhtml', append_whitespace=True)
 
 		html_editor.load_html(html)

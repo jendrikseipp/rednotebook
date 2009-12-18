@@ -152,9 +152,11 @@ class HtmlView(gtk.ScrolledWindow):
 		self.webview.set_editable(editable)
 		
 	def set_font_size(self, size):
-		return
-		# TODO: implement
-		self.webview.set_zoom_level(size)
+		if size <= 0:
+			zoom = 1
+		else:
+			zoom = size / 10.0
+		self.webview.set_zoom_level(zoom)
 		
 	def highlight(self, string):
 		# Mark all occurences of "string", case-insensitive, no limit
