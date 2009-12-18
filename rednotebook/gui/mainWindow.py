@@ -39,7 +39,7 @@ except ImportError:
 
 
 # Initialize the gtk thread engine
-#gtk.gdk.threads_init()
+#gobject.threads_init()
 
 from rednotebook.util import utils
 import rednotebook.util.unicode

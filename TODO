@@ -8,18 +8,19 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 0.9.1
-O Add translation comments
-O Use webkit for direct pdf generation (Use toc for export?)
-O Custom-style Journals?
 X Allow dragging of files and pictures into RedNotebook
+X Add translation comments
+
+0.9.2
+X Use webkit for direct pdf generation (Use toc for export?)
+O Custom-style Journals?
 O Image resizing with PIL (Image module) (Figure out where to save new files first)
-O Add comments for translators
 
 0.9.5
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
 
 0.9.x
-O Automatic insertion of photo links for current day
+O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
 O Import of exported backups
 O Change to newer KeepNote Version?
@@ -32,7 +33,7 @@ X Windows: RedNotebook can now be run in portable mode
    O Save dataDir relative to exe
 
 1.0
-O Solid amount of translations
+X Solid amount of translations
 O Stable
 O Fix freeze bug
 O Many automatic insertions

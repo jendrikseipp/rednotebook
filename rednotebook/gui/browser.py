@@ -17,6 +17,9 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+# For Python 2.5 compatability.
+from __future__ import with_statement
+
 import sys
 
 # Testing
@@ -29,30 +32,25 @@ import warnings
 
 import gtk
 import gobject
-	
-#from rednotebook.external import interwibble
 
-#try:
-#	import webkit
-#except ImportError:
-#	webkit = None
+# Fix for pywebkitgtk 1.1.5
+#gtk.gdk.threads_init() # only initializes threading in the glib/gobject module
+gobject.threads_init() # also initializes the gdk threads
+	
+
+try:
+	import webkit
+except ImportError:
+	webkit = None
 	
 	
-def can_print_pdf():
-	return False
-	
+def can_print_pdf():	
 	if not webkit:
 		logging.info('Importing webkit failed')
 		return False
-	
-	try:
-		from rednotebook.external import interwibble
-	except ImportError:
-		logging.info('Importing interwibble failed')
-		return False
 		
 	try:
-		printer = interwibble.UrlPrinter()
+		printer = HtmlPrinter()
 	except TypeError, err:
 		logging.info('UrlPrinter could not be created: "%s"' % err)
 		return False
@@ -60,37 +58,101 @@ def can_print_pdf():
 	frame = printer._webview.get_main_frame()
 	
 	return hasattr(frame, 'print_full')
-	
 
-class HtmlPrinter(object):#interwibble.UrlPrinter):
+
+
+class HtmlPrinter(object):
 	'''
-	Takes an html string and writes a PDF file to the disk
-	Idea and code mostly taken from http://github.com/eeejay/interwibble
+	Idea and some code taken from interwibble, 
+	"A non-interactive tool for converting any given website to PDF"
+	
+	(http://github.com/eeejay/interwibble/)
 	'''
+	PAPER_SIZES = {'a3'		: gtk.PAPER_NAME_A3,
+				   'a4'		: gtk.PAPER_NAME_A4,
+				   'a5'		: gtk.PAPER_NAME_A5,
+				   'b5'		: gtk.PAPER_NAME_B5,
+				   'executive' : gtk.PAPER_NAME_EXECUTIVE,
+				   'legal'	 : gtk.PAPER_NAME_LEGAL,
+				   'letter'	: gtk.PAPER_NAME_LETTER}
+				   
+	def __init__(self, paper='a4'):
+		self._webview = webkit.WebView()
+		webkit_settings = self._webview.get_settings()
+		webkit_settings.set_property('enable-plugins', False)
+		self._webview.connect('load-error', self._load_error_cb)
+		self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
 		
 	def print_html(self, html, outfile):
-		with open('tmpfile.html', 'w') as tmpfile:
-			tmpfile.write(html)
-		self.print_url('file://' + 'tmpfile.html', outfile)
-		#self._webview.load_html_string(html, 'http://www.heise.de')
+		handler = self._webview.connect(
+			'load-finished', self._load_finished_cb, outfile)
+		self._webview.load_html_string(html, 'http://rednotebook-export.html');
+		
+		self._print_status('Loading URL...')
+
+		if hasattr(warnings, 'catch_warnings'):
+			with warnings.catch_warnings():
+				warnings.simplefilter("ignore")
+				while gtk.events_pending():
+					gtk.main_iteration()
+		else:
+			while gtk.events_pending():
+				gtk.main_iteration()
+
+		self._webview.disconnect(handler)
+
+	def _load_finished_cb(self, view, frame, outfile):
+		self._print_status('Loading done')
+		print_op = gtk.PrintOperation()
+		print_settings = print_op.get_print_settings() or gtk.PrintSettings()
+		print_settings.set_paper_size(self._paper_size)
+		print_op.set_print_settings(print_settings)
+		print_op.set_export_filename(os.path.abspath(outfile))
+		self._print_status('Exporting PDF...')
+		print_op.connect('end-print', self._end_print_cb)
+		try:
+			frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
+			while gtk.events_pending():
+				gtk.main_iteration()
+		except gobject.GError, e:
+			self._print_error(e.message)
+
+	def _load_error_cb(self, view, frame, url, gp):
+		self._print_error("Error loading %s" % url)
+	
+	def _end_print_cb(self, *args):
+		self._print_status('Exporting done')
+
+	def _print_error(self, status):
+		logging.error(status)
 		
 	def _print_status(self, status):
 		logging.info(status)
-		
-	def _print_error(self, status):
-		logging.error(status)
 	
 
 def print_pdf(html, filename):
-	printer = HtmlPrinter('a4')
+	printer = HtmlPrinter()
 	printer.print_html(html, filename)
-	return printer._webview
+	
 	
 if __name__ == '__main__':
 	sys.path.insert(0, os.path.abspath("./../../"))
 	from rednotebook.util import markup
-	text = 'Hello PDF'
-	html = markup.convert(text, 'html')#'<html><body></body></html>'
-	print html
-	print_pdf(html, '/tmp/export-test.pdf')
+	text = 'PDF export works'
+	html = markup.convert(text, 'xhtml')
+	
+	win = gtk.Window()
+	win.connect("destroy", lambda w: gtk.main_quit())
+	win.set_default_size(600,400)
+	
+	vbox = gtk.VBox()
+	
+	button = gtk.Button("Export")
+	button.connect('clicked', lambda button: print_pdf(html, '/tmp/export-test.pdf'))
+	vbox.pack_start(button, False, False)
+	
+	win.add(vbox)
+	win.show_all()
+	
+	gtk.main()
 	
