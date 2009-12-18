@@ -349,6 +349,9 @@ class HtmlEditor(KeepNoteEditor):
 	def set_font_size(self, size):
 		self._textview.modify_font(pango.FontDescription(str(size)))
 		
+	def highlight(self, string):
+		self._textview.highlight(string)
+		
 									   
 	  
 		

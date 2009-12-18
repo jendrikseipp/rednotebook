@@ -58,6 +58,11 @@ def can_print_pdf():
 	frame = printer._webview.get_main_frame()
 	
 	return hasattr(frame, 'print_full')
+	
+
+def print_pdf(html, filename):
+	printer = HtmlPrinter()
+	printer.print_html(html, filename)
 
 
 
@@ -130,10 +135,32 @@ class HtmlPrinter(object):
 		logging.info(status)
 	
 
-def print_pdf(html, filename):
-	printer = HtmlPrinter()
-	printer.print_html(html, filename)
+class HtmlView(gtk.ScrolledWindow):
+	def __init__(self, *args, **kargs):
+		gtk.ScrolledWindow.__init__(self, *args, **kargs)
+		self.webview = webkit.WebView()
+		self.add(self.webview)
+		self.show_all()
+		
+	def load_html(self, html):
+		html = self.webview.load_html_string(html, 'http://')
+								
+	def get_html(self):
+		pass
 	
+	def set_editable(self, editable):
+		self.webview.set_editable(editable)
+		
+	def set_font_size(self, size):
+		return
+		# TODO: implement
+		self.webview.set_zoom_level(size)
+		
+	def highlight(self, string):
+		# Mark all occurences of "string", case-insensitive, no limit
+		print 'Highlight'
+		self.webview.mark_text_matches(string, False, 0)
+		self.webview.set_highlight_text_matches(True)
 	
 if __name__ == '__main__':
 	sys.path.insert(0, os.path.abspath("./../../"))
@@ -150,6 +177,11 @@ if __name__ == '__main__':
 	button = gtk.Button("Export")
 	button.connect('clicked', lambda button: print_pdf(html, '/tmp/export-test.pdf'))
 	vbox.pack_start(button, False, False)
+	
+	html_view = HtmlView()
+	html_view.load_html(html)
+	html_view.highlight("work")
+	vbox.pack_start(html_view)
 	
 	win.add(vbox)
 	win.show_all()

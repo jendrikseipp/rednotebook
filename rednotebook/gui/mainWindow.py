@@ -60,6 +60,7 @@ from rednotebook import undo
 from rednotebook.gui.exportAssistant import ExportAssistant
 from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
+from rednotebook.gui import browser
 
 
 class MainWindow(object):
@@ -123,7 +124,7 @@ class MainWindow(object):
 		
 		self.editPane = self.builder.get_object('editPane')
 		
-		self.html_editor = HtmlEditor()
+		self.html_editor = browser.HtmlView()#HtmlEditor()
 		self.text_vbox = self.builder.get_object('text_vbox')
 		self.text_vbox.pack_start(self.html_editor)
 		self.html_editor.hide()
@@ -1294,7 +1295,7 @@ class SearchTreeView(object):
 		if self.searchType == 0:
 			# let the search function highlight found strings in the page
 			if self.mainWindow.preview_mode:
-				self.mainWindow.html_editor._textview.highlight(self.searched_text)
+				self.mainWindow.html_editor.highlight(self.searched_text)
 			else:
 				self.mainWindow.dayTextField.highlight(self.searched_text)
 		
