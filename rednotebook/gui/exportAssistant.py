@@ -45,7 +45,7 @@ class ExportAssistant(object):
 		self.main_window = main_window
 		self.builder = main_window.builder
 		
-		self.format_extension_map = {'Text': 'txt', 'HTML': 'html', \
+		self.format_extension_map = {'Text': 'txt', 'HTML': 'xhtml', \
 									'Latex': 'tex', 'PDF' : 'pdf'}
 		
 		self.assistant = self.builder.get_object('export_assistant')
@@ -81,11 +81,11 @@ class ExportAssistant(object):
 		
 		pdf_supported = self.is_pdf_supported()
 		self.pdf_button.set_sensitive(pdf_supported)
-		self.pdf_button.hide()
-		#if not pdf_supported:
-		#	tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
-		#	tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
-		#	self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
+		
+		if not pdf_supported:
+			tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
+			tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
+			self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
 		
 
 	def append_second_page(self):	
@@ -347,7 +347,7 @@ class ExportAssistant(object):
 	def export_pdf(self):
 		logging.info('Exporting to PDF')
 		html = self.get_export_string('HTML')
-		self.webview = browser.print_pdf(html, self.filename)
+		browser.print_pdf(html, self.filename)
 
 	def get_export_string(self, format):
 		if self.is_all_entries_selected():
@@ -379,6 +379,9 @@ class ExportAssistant(object):
 		
 		headers = ['RedNotebook', '', '']
 		
-		return markup.convert(markupString, target, headers)
+		options = {'toc': 0}
+		
+		return markup.convert(markupString, target, headers=headers, \
+								options=options)
 	
 	

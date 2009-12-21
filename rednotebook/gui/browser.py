@@ -17,15 +17,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-# For Python 2.5 compatability.
+# For Python 2.5 compatibility.
 from __future__ import with_statement
 
 import sys
-
-# Testing
-if __name__ == '__main__':
-	sys.path.insert(0, '../../')
-	
 import os
 import logging
 import warnings
@@ -33,9 +28,12 @@ import warnings
 import gtk
 import gobject
 
-# Fix for pywebkitgtk 1.1.5
-#gtk.gdk.threads_init() # only initializes threading in the glib/gobject module
-gobject.threads_init() # also initializes the gdk threads
+# Testing
+if __name__ == '__main__':
+	sys.path.insert(0, '../../')
+	# Fix for pywebkitgtk 1.1.5
+	#gtk.gdk.threads_init() # only initializes threading in the glib/gobject module
+	gobject.threads_init() # also initializes the gdk threads
 	
 
 try:
@@ -91,10 +89,10 @@ class HtmlPrinter(object):
 	def print_html(self, html, outfile):
 		handler = self._webview.connect(
 			'load-finished', self._load_finished_cb, outfile)
-		self._webview.load_html_string(html, 'http://rednotebook-export.html');
+		self._webview.load_html_string(html, 'file:///')
 		
 		self._print_status('Loading URL...')
-
+		
 		if hasattr(warnings, 'catch_warnings'):
 			with warnings.catch_warnings():
 				warnings.simplefilter("ignore")
@@ -140,10 +138,14 @@ class HtmlView(gtk.ScrolledWindow):
 		gtk.ScrolledWindow.__init__(self, *args, **kargs)
 		self.webview = webkit.WebView()
 		self.add(self.webview)
+		
+		#self.webview.connect('populate-popup', self.on_populate_popup)
+		self.webview.connect('button-press-event', self.on_button_press)
+		
 		self.show_all()
 		
 	def load_html(self, html):
-		html = self.webview.load_html_string(html, 'http://')
+		html = self.webview.load_html_string(html, 'file:///')
 								
 	def get_html(self):
 		pass
@@ -160,14 +162,29 @@ class HtmlView(gtk.ScrolledWindow):
 		
 	def highlight(self, string):
 		# Mark all occurences of "string", case-insensitive, no limit
-		print 'Highlight'
 		self.webview.mark_text_matches(string, False, 0)
 		self.webview.set_highlight_text_matches(True)
+		
+	def on_populate_popup(self, webview, menu):
+		'''
+		Unused
+		'''
+		
+	def on_button_press(self, webview, event):
+		'''
+		We don't want the context menus
+		'''
+		# Right mouse click
+		if event.button == 3:
+			#self.webview.emit_stop_by_name('button_press_event')
+			# Stop processing that event
+			return True
 	
 if __name__ == '__main__':
+	logging.getLogger('').setLevel(logging.DEBUG)
 	sys.path.insert(0, os.path.abspath("./../../"))
 	from rednotebook.util import markup
-	text = 'PDF export works'
+	text = 'PDF export works 1'
 	html = markup.convert(text, 'xhtml')
 	
 	win = gtk.Window()
@@ -176,13 +193,19 @@ if __name__ == '__main__':
 	
 	vbox = gtk.VBox()
 	
+	def test_export():
+		pdf_file = '/tmp/export-test.pdf'
+		print_pdf(html, pdf_file)
+		#os.system("evince " + pdf_file)
+	
 	button = gtk.Button("Export")
-	button.connect('clicked', lambda button: print_pdf(html, '/tmp/export-test.pdf'))
+	button.connect('clicked', lambda button: test_export())
 	vbox.pack_start(button, False, False)
 	
 	html_view = HtmlView()
 	html_view.load_html(html)
 	html_view.highlight("work")
+	html_view.set_editable(True)
 	vbox.pack_start(html_view)
 	
 	win.add(vbox)

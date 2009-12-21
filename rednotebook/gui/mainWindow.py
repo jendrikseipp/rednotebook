@@ -636,16 +636,21 @@ class MainWindow(object):
 			self.dayTextField.apply_format(format, markup)
 			
 		
-		def get_action(format):
+		def get_action(format, translation):
 			return (format, getattr(gtk, 'STOCK_' + format.upper()), \
-				'_' + tmpl(format), \
+				### Translators: The Control (Ctrl) key
+				translation + ' (%s+%s)' % (_('Ctrl'), format[0]), \
 				'<Control>' + format[0], None, \
 				apply_format,
 				)
 		# Create actions
 		strike_action = ('Stricken', gtk.STOCK_STRIKETHROUGH, \
-				'Stricken', None, None, apply_format,)
-		actions = map(get_action, ['Bold', 'Italic', 'Underline']) + [strike_action]
+				_('Stricken'), None, None, apply_format,)
+		actions = [get_action(format, trans) for format, trans in \
+					(('Bold', _('Bold')), \
+					('Italic', _('Italic')), \
+					('Underline', _('Underline')))] \
+					+ [strike_action]
 		actiongroup.add_actions(actions)
 
 		# Add the actiongroup to the uimanager
