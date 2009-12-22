@@ -21,6 +21,10 @@ from __future__ import with_statement
 
 import os
 
+# For testing
+def _(string):
+	return string
+
 version = '0.9.1'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
@@ -67,26 +71,39 @@ If the journal-path is omitted the last session's journal will be used.
 At the first program start this defaults to "$HOME/.rednotebook/data".
 ''' % version
 
-completeWelcomeText = '''\
-Hello, 
-this is RedNotebook, a desktop journal. Thank you very much for giving it a try. 
-This text field is the container for your normal entries like this one: 
+greeting = _('''Hello,
+this is RedNotebook, a desktop journal. Thank you very much for giving it a try.''')
+normal_entry = _('This text field is the container for normal text entries like the following one:')
 
-Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
+example_entry = _('''Today I went to the //pet shop// and bought a **tiger**. Then we went to the \
 --pool-- park and had a nice time playing \
-ultimate frisbee. Afterwards we watched "__Life of Brian__".
+ultimate frisbee. Afterwards we watched "__Life of Brian__".''')
 
-=== Format ===
-As you see you can format your text **bold**, //italic//, \
---stricken-- and __underlined__. \
-To see the results, just click on the "Preview" button. 
+format = _("Format")
+format_paragraph1 = '''As you see you can format your text **bold**, \
+//italic//, --stricken-- and __underlined__.'''
+format_paragraph2 = 'To see the results, just click on the "%s" button.' % _('Preview')
 
-=== Extra Content ===
-On the right there is space for extra content, things that can easily be sorted into categories.
-For example you could add the category "Ideas" and then today's ideas to it.
+annotations = _('Annotations')
+annotations_paragraph = _('''On the right there is space for annotations \
+to a day. Annotations are things \
+that can easily be sorted into categories.
+For example you could add the category "Ideas" and then add today's ideas to it.''')
+
+completeWelcomeText = '''%(greeting)s
+%(normal_entry)s
+
+%(example_entry)s
+
+=== %(format)s ===
+%(format_paragraph1)s
+%(format_paragraph2)s
+
+=== %(annotations)s ===
+%(annotations_paragraph)s
 
 === Templates ===
-RedNotebook supports a template system. Click on the arrow next to the \
+RedNotebook supports templates. Click on the arrow next to the \
 "Template" button to see the available options. You can have one template for every day \
 of the week and unlimited arbitrarily named templates.
 
@@ -118,7 +135,10 @@ If you encounter any errors, please drop me a note so I can fix them. \
 Any feedback is welcome.
 
 There are many features I have planned to add in the future so stay tuned.
-I hope you enjoy the program!'''
+I hope you enjoy the program!''' % globals()
+
+print globals()
+print completeWelcomeText
 
 welcome_day = {'text': completeWelcomeText,
 u'Cool Stuff': {u'Ate **two** cans of spam': None},

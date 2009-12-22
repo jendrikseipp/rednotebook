@@ -26,9 +26,12 @@ import operator
 import collections
 import time
 from optparse import OptionParser, OptionValueError
+import gettext
 
 
-	
+# register the gettext function for the whole interpreter as "_"
+import __builtin__
+__builtin__._ = gettext.gettext
 
 
 if hasattr(sys, "frozen"):
@@ -166,13 +169,6 @@ except ImportError, err:
 for module in modules:
     module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
     module.textdomain(GETTEXT_DOMAIN)
-    
-
-
-
-# register the gettext function for the whole interpreter as "_"
-import __builtin__
-__builtin__._ = gettext.gettext
 
 ## ------------------- end Enable i18n -------------------------------
 
@@ -194,10 +190,11 @@ try:
 	#logging.disable(logging.ERROR)
 	#logging.disable(logging.WARNING)
 	#logging.disable(logging.CRITICAL)
-	gtk.gdk.threads_init()
 	#gtk.gdk.threads_enter()
 	
 	import gobject
+	#gtk.gdk.threads_init() # only initializes threading in the glib/gobject module
+	gobject.threads_init() # also initializes the gdk threads
 except (ImportError, AssertionError):
 	logging.error('gtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 00:27+0100\n"
+"POT-Creation-Date: 2009-12-22 01:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,184 +16,205 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../rednotebook/gui/mainWindow.py:284
+#: ../rednotebook/gui/mainWindow.py:292
 msgid "Show RedNotebook"
 msgstr ""
 
 #. ## Translators: Verb
-#: ../rednotebook/gui/mainWindow.py:362 tmp/mainWindow.glade.h:54
+#: ../rednotebook/gui/mainWindow.py:370 tmp/mainWindow.glade.h:54
 msgid "Preview"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:377
+#: ../rednotebook/gui/mainWindow.py:385
 msgid "Edit"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:456
+#: ../rednotebook/gui/mainWindow.py:464
 msgid "Select an empty folder for your new journal"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:457
+#: ../rednotebook/gui/mainWindow.py:465
 msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:458
+#: ../rednotebook/gui/mainWindow.py:466
 msgid "The directory name will be the title of the new journal."
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:462
+#: ../rednotebook/gui/mainWindow.py:470
 msgid "Select an existing journal directory"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:464
+#: ../rednotebook/gui/mainWindow.py:472
 msgid "The directory should contain your journal's data files"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:466
+#: ../rednotebook/gui/mainWindow.py:474
 msgid "Select an empty folder for the new location of your journal"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:468
+#: ../rednotebook/gui/mainWindow.py:476
 msgid "The directory name will be the new title of the journal"
 msgstr ""
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
-#: ../rednotebook/gui/mainWindow.py:490
+#: ../rednotebook/gui/mainWindow.py:498
 msgid "The default journal has been opened"
 msgstr ""
 
+#. ## Translators: The Control (Ctrl) key
+#: ../rednotebook/gui/mainWindow.py:642
+msgid "Ctrl"
+msgstr ""
+
+#: ../rednotebook/gui/mainWindow.py:648
+msgid "Stricken"
+msgstr ""
+
+#: ../rednotebook/gui/mainWindow.py:650
+msgid "Bold"
+msgstr ""
+
+#: ../rednotebook/gui/mainWindow.py:651
+msgid "Italic"
+msgstr ""
+
+#: ../rednotebook/gui/mainWindow.py:652
+msgid "Underline"
+msgstr ""
+
 #. ## Translators: noun
-#: ../rednotebook/gui/mainWindow.py:655
+#: ../rednotebook/gui/mainWindow.py:668 ../rednotebook/info.py:81
 msgid "Format"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:656
+#: ../rednotebook/gui/mainWindow.py:669
 msgid "Format the selected text or category entry"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:699
+#: ../rednotebook/gui/mainWindow.py:712
 msgid "First Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:700
+#: ../rednotebook/gui/mainWindow.py:713
 msgid "Second Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:701
+#: ../rednotebook/gui/mainWindow.py:714
 msgid "Indented Item"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:702
+#: ../rednotebook/gui/mainWindow.py:715
 msgid "Two blank lines close the list"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:706
+#: ../rednotebook/gui/mainWindow.py:719
 msgid "Title text"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:722
+#: ../rednotebook/gui/mainWindow.py:735
 msgid "Picture"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:723
+#: ../rednotebook/gui/mainWindow.py:736
 msgid "Insert an image from the harddisk"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:725
+#: ../rednotebook/gui/mainWindow.py:738
 msgid "File"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:726
+#: ../rednotebook/gui/mainWindow.py:739
 msgid "Insert a link to a file"
 msgstr ""
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/mainWindow.py:729
+#: ../rednotebook/gui/mainWindow.py:742
 msgid "_Link"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:730
+#: ../rednotebook/gui/mainWindow.py:743
 msgid "Insert a link to a website"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:732
+#: ../rednotebook/gui/mainWindow.py:745
 msgid "Bullet List"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:733
+#: ../rednotebook/gui/mainWindow.py:746
 msgid "Insert a bullet list"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:738
+#: ../rednotebook/gui/mainWindow.py:751
 msgid "Title"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:739
+#: ../rednotebook/gui/mainWindow.py:752
 msgid "Insert a title"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:741
+#: ../rednotebook/gui/mainWindow.py:754
 msgid "Line"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:742
+#: ../rednotebook/gui/mainWindow.py:755
 msgid "Insert a separator line"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:744
+#: ../rednotebook/gui/mainWindow.py:757
 msgid "Date/Time"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:745
+#: ../rednotebook/gui/mainWindow.py:758
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:747
+#: ../rednotebook/gui/mainWindow.py:760
 msgid "Line Break"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:748
+#: ../rednotebook/gui/mainWindow.py:761
 msgid "Insert a manual line break"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:776
+#: ../rednotebook/gui/mainWindow.py:789
 msgid "Insert"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:780
+#: ../rednotebook/gui/mainWindow.py:793
 msgid "Insert images, files, links and other content"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:861
+#: ../rednotebook/gui/mainWindow.py:874
 msgid "No link location has been entered"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1023
+#: ../rednotebook/gui/mainWindow.py:1036
 msgid "Search ..."
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1102
+#: ../rednotebook/gui/mainWindow.py:1115
 msgid "filter, these, comma, separated, words"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1107
+#: ../rednotebook/gui/mainWindow.py:1120
 msgid "mtv, spam, work, job, play"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1164
+#: ../rednotebook/gui/mainWindow.py:1177
 msgid "Hide selected words"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1227
+#: ../rednotebook/gui/mainWindow.py:1240
 msgid "Date"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1228 ../rednotebook/gui/mainWindow.py:1270
-#: ../rednotebook/gui/mainWindow.py:1278 tmp/mainWindow.glade.h:71
+#: ../rednotebook/gui/mainWindow.py:1241 ../rednotebook/gui/mainWindow.py:1283
+#: ../rednotebook/gui/mainWindow.py:1291 tmp/mainWindow.glade.h:71
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1274
+#: ../rednotebook/gui/mainWindow.py:1287
 msgid "Entry"
 msgstr ""
 
@@ -398,6 +419,15 @@ msgstr ""
 msgid "Export Assistant"
 msgstr ""
 
+#: ../rednotebook/gui/exportAssistant.py:86
+msgid ""
+"For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+msgstr ""
+
+#: ../rednotebook/gui/exportAssistant.py:87
+msgid "Alternatively consult the help document for Latex to PDF conversion."
+msgstr ""
+
 #: ../rednotebook/gui/exportAssistant.py:137
 msgid "Available Categories"
 msgstr ""
@@ -444,30 +474,30 @@ msgstr ""
 msgid "Open Template Directory"
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:424
+#: ../rednotebook/redNotebook.py:421
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:426
+#: ../rednotebook/redNotebook.py:423
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:433
+#: ../rednotebook/redNotebook.py:430
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:463
+#: ../rednotebook/redNotebook.py:460
 msgid "The selected folder is not empty."
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:464
+#: ../rednotebook/redNotebook.py:461
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
 
-#: ../rednotebook/redNotebook.py:467
+#: ../rednotebook/redNotebook.py:464
 msgid "The selected folder is empty. A new journal has been created."
 msgstr ""
 
@@ -502,6 +532,26 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Lines"
+msgstr ""
+
+#: ../rednotebook/info.py:74
+msgid ""
+"Hello,\n"
+"this is RedNotebook, a desktop journal. Thank you very much for giving it a "
+"try."
+msgstr ""
+
+#: ../rednotebook/info.py:75
+msgid ""
+"This text field is the container for normal text entries like the following "
+"one:"
+msgstr ""
+
+#: ../rednotebook/info.py:77
+msgid ""
+"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
+"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
+"watched \"__Life of Brian__\"."
 msgstr ""
 
 #: tmp/mainWindow.glade.h:1

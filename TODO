@@ -13,7 +13,7 @@ X Make markup highlighting much faster
 X Add translation comments
 
 0.9.2
-X Use webkit for direct pdf generation (Use toc for export?)
+X Use webkit for direct pdf generation
 X Use webkit for previews where available
 O Custom-style Journals?
 O Image resizing with PIL (Image module) (Figure out where to save new files first)
@@ -25,7 +25,7 @@ O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availabil
 O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
 O Import of exported backups
-O Change to newer KeepNote Version?
+O Change to newer KeepNote Version? -> No.
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
 X Windows: RedNotebook can now be run in portable mode
@@ -47,7 +47,7 @@ O Password protection or encryption
 O Tabled Data?
 
 2.0
-O Improve WYSIWYG?
+O Improve WYSIWYG? (Pro direct copy-paste from browser with formatting)
 
 
 
