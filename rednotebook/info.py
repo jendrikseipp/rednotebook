@@ -73,72 +73,122 @@ At the first program start this defaults to "$HOME/.rednotebook/data".
 
 greeting = _('''Hello,
 this is RedNotebook, a desktop journal. Thank you very much for giving it a try.''')
-normal_entry = _('This text field is the container for normal text entries like the following one:')
+overview1 = _('The interface is divided into three parts:')
+### Translators: The location "left"
+overview21 = _('Left') 
+overview22 = _('Navigation with the calendar')
+### Translators: The location "center"
+overview31 = _('Center') 
+overview32 = _('Text entries')
+### Translators: The location "right"
+overview41 = _('Right')
+overview42 = _('Annotations to a day')
 
+text_entry = _('Text entries')
+text_entry_par = _('An entry could look like this:')
 example_entry = _('''Today I went to the //pet shop// and bought a **tiger**. Then we went to the \
 --pool-- park and had a nice time playing \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".''')
 
-format = _("Format")
-format_paragraph1 = '''As you see you can format your text **bold**, \
+### Translators: noun
+format = _('Format')
+format1 = '''As you see, the text can be formatted **bold**, \
 //italic//, --stricken-- and __underlined__.'''
-format_paragraph2 = 'To see the results, just click on the "%s" button.' % _('Preview')
+format2 = 'To see the result, click on the "Preview" button.'
+format_par = ' '.join([format1, format2])
 
 annotations = _('Annotations')
-annotations_paragraph = _('''On the right there is space for annotations \
-to a day. Annotations are things \
-that can easily be sorted into categories.
-For example you could add the category "Ideas" and then add today's ideas to it.''')
+ann1 = _('On the right there is space for annotations to a day.')
+ann2 = _('Annotations are notes that can easily be sorted into categories.')
+ann3 = _('''For example you could create the category "Ideas" \
+and then add today's ideas to it.''')
+ann_par = ' '.join([ann1, ann2, ann3])
 
-completeWelcomeText = '''%(greeting)s
-%(normal_entry)s
+templates = _('Templates')
+temp1 = _('RedNotebook supports templates.')
+temp2 = _('Click on the arrow next to the "Template" button to see some options.')
+temp3 = _('''You can have one template for every day \
+of the week and unlimited arbitrarily named templates.''')
+temp_par = ' '.join([temp1, temp2, temp3])
+
+tags = _('Tags')
+### Translators: "Work" -> noun
+tags1 = _('Tagging an entry (e.g. with the tag "Work") is also easy:')
+### Translators: "Tag" stands for the verb "to tag", "Work" -> noun
+tags2 = _('On the right, click on "Tag" and insert "Work" into the lower textbox.')
+tags3 = _('''You can see a tag cloud on the left if you change to the \
+"Clouds" tab and select "Tags".''')
+tags_par = ' '.join([tags1, tags2, tags3])
+
+search = _('Search')
+search1 = _('On the left you find the search box.')
+search2 = _('''You can search for text, display a \
+category's content or show all days with a given tag.''')
+search_par = ' '.join([search1, search2])
+
+save = _('Save and Export')
+save1 = _('''Everything you enter will be saved automatically at \
+regular intervals and when you exit the program.''')
+save2 = _('To avoid data loss you should backup your journal regularly.')
+save3 = _('"Backup" in the "Journal" menu saves all your entered data in a zip file.')
+save4 = _('In the "Journal" menu you also find the "Export" button.')
+save5 = _('Click on "Export" and export your diary to Plain Text, HTML or Latex.')
+save_par = ' '.join([save1, save2, save3, save4, save5])
+
+### Translators: noun
+help = _('Help')
+help1 = _('Now you can erase this help text and enter e.g. what you have done today.')
+### Translators: "Help" -> noun
+help2 = _('To restore these instructions click on "Help" -> "Restore example content".')
+### Translators: "Help" -> noun
+help3 = _('Alternatively you can find some documentation under "Help" -> "Help".')
+help_par = ' '.join([help1, help2, help3])
+
+error1 = _('If you encounter any errors, please drop me a note so I can fix them.')
+error2 = _('Any feedback is welcome.')
+error_par = ' '.join([error1, error2])
+
+goodbye_par = _('Enjoy the program!')
+
+
+completeWelcomeText = '''\
+%(greeting)s
+%(overview1)s
+
+- **%(overview21)s**: %(overview22)s
+- **%(overview31)s**: %(overview32)s
+- **%(overview41)s**: %(overview42)s
+
+
+=== %(text_entry)s ===
+%(text_entry_par)s
 
 %(example_entry)s
 
 === %(format)s ===
-%(format_paragraph1)s
-%(format_paragraph2)s
+%(format_par)s
 
 === %(annotations)s ===
-%(annotations_paragraph)s
+%(ann_par)s
 
-=== Templates ===
-RedNotebook supports templates. Click on the arrow next to the \
-"Template" button to see the available options. You can have one template for every day \
-of the week and unlimited arbitrarily named templates.
+=== %(templates)s ===
+%(temp_par)s
 
-=== Tags ===
-Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
-"Work" into the lower textbox. You can see a tag cloud on the left by activating the "Clouds" tab and \
-selecting "Tags".
+=== %(tags)s ===
+%(tags_par)s
 
-=== Search ===
-On the left you find the fancy search field. You can search for text, display a \
-category's content or show all days with a given tag.
+=== %(search)s ===
+%(search_par)s
 
-=== Save and Export ===
-Everything you enter will be saved automatically at regular intervals and when you exit the program. \
-If you want to double check you can save your contents by pressing "Ctrl-S" \
-or using the menu entry under "File" in the top left corner. 
-To avoid data loss you should also backup your content regularly. "Backup" in the "File" menu saves \
-all your entered data in a zip file. 
-In the same menu you also find an "Export"-Button. \
-Click on it and export your diary to Plain Text, HTML or Latex.
+=== %(save)s ===
+%(save_par)s
 
-=== Help ===
-Now you can erase this help text and enter e.g. what you have done today. \
-To restore these instructions click on "Help" -> "Restore example content". \
-The examples will be added after the last edited day in the journal.
-Alternatively you can find some documentation under "Help" -> "Help".
+=== %(help)s ===
+%(help_par)s
 
-If you encounter any errors, please drop me a note so I can fix them. \
-Any feedback is welcome.
+%(error_par)s
 
-There are many features I have planned to add in the future so stay tuned.
-I hope you enjoy the program!''' % globals()
-
-print globals()
-print completeWelcomeText
+%(goodbye_par)s''' % globals()
 
 welcome_day = {'text': completeWelcomeText,
 u'Cool Stuff': {u'Ate **two** cans of spam': None},
@@ -148,10 +198,8 @@ u'Tags': {u'Work': None, u'Documentation': None},
 
 example_day1 = {
 'text': '''\
-===Categories===
-On the right there is space for extra content, things that can easily be sorted into categories.
-For example you could add the category Ideas and then add your ideas \
-of that day to it:
+===%(annotations)s===
+%(ann_par)s
 
 - Ideas
   - Invent Anti-Hangover-Machine
@@ -171,7 +219,7 @@ and many different entries. It is possible to export only that category and \
 get a list of the cool stuff that happened to me with the respective dates.
 
 Additionally you can select the "Cool Stuff" category in the word cloud window \
-to get a list of all the cool things.''',
+to get a list of all the cool things.''' % globals(),
 u'Cool Stuff': {u'Went to see the pope': None},
 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
 u'Tags': {u'Documentation': None, u'Projects': None},
@@ -227,7 +275,7 @@ It probably sometimes makes sense to add the todo items to the day you want to \
 have completed them (deadline day).
 
 Once you've finished an item, you could also change its category name from \
-"Todo" to e.g. "Done".''',
+"Todo" to "Done".''',
 u'Tags': {u'Documentation': None,},
 u'Todo': {u'--Remember the milk--': None,
 		u'Take a break': None},
@@ -236,17 +284,18 @@ u'Done': {u'--Check mail--': None,},
 
 example_content = [welcome_day, example_day1, example_day2, example_day3]
 
+categories_help_text = example_day2['text'].replace('=== Work ===', '**Work**\n')
+categories_help_text = categories_help_text.replace('=== Play ===', '**Play**\n')
+todo_help_text = example_day3['text']
+
 helpText = '''\n
 == Text ==
-This text field is the container for your normal diary entries like this one: 
+The main text field is the container for your normal diary entries like this one: 
 
-Today I went to a //pet shop// and bought a **tiger**. Then we went to the \
---pool-- park and had a nice time playing \
-ultimate frisbee. Afterwards we watched "__Life of Brian__".
+%(example_entry)s
 
-== Format ==
-As you see you can format your text **bold**, //italic//, \
---stricken-- and __underlined__. As a convenience there \
+== %(format)s ==
+%(format1)s As a convenience there \
 is also the "Format" button, with which you can format the main text and nodes \
 in the categories tree on the right.
 
@@ -255,25 +304,19 @@ in the categories tree on the right.
 **Comments** can be inserted after percent signs (**%%**). They will not be shown in the \
 preview and the exports. The %% has to be the first character on the line.
 
-To see the results, just click on the "Preview" button. 
+%(format2)s
 You can also see how \
 this text was formatted by looking at its [source source.txt].
 
-== Extra Content ==
-On the right there is space for extra content, things that can easily be sorted into categories.
-For example you could add the category Ideas and then add your ideas \
-of that day to it:
+== %(annotations)s ==
+%(ann_par)s
 
 - Ideas
   - Invent Anti-Hangover-Machine
   
-  
-The name "Categories" is a little bit confusing. It does not mean that a day is put into a category, 
-but that there is additional content on the right, sorted into categories. "Topics" would probably be a better name.
 
-Those topics have several items distributed over various days. \
-I’ll give you an example: I like to maintain a list of cool things I have done. \
-So if I did a cool thing on some day, I navigate to that day, add the category \
+I’ll give you another example: I like to maintain a list of cool things I have done. \
+So if I did a cool thing some day, I navigate to that day, add the category \
 "Cool Stuff" and add an entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
 When I have done more cool things on many days, they all have a category "Cool Stuff" \
 and many different entries. Now it is possible to export only that category and \
@@ -287,12 +330,10 @@ RedNotebook lets you insert images, files and links into your entries. To do so,
 appropriate option in the "Insert" pull-down menu above the main text field. The text will \
 be inserted at the current cursor position.
 
-== Templates ==
-RedNotebook supports a template system. Click on the arrow next to the \
-"Template" button to see the available options. You can have one template for every day \
-of the week and unlimited arbitrarily named templates.
+== %(templates)s ==
+%(temp_par)s
 
-== Tags ==
+== %(tags)s ==
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
 "Work" into the lower textbox. The result looks like:
 
@@ -303,16 +344,13 @@ Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on
 You can see a tag cloud on the left by activating the "Clouds" tab and \
 selecting "Tags". Get a list of all tags with a given name by clicking on that tag in the cloud.
 
-== Search ==
-On the left you find the fancy search field. You can search for text, display a \
-category's content or show all days with a given tag. Double-clicking on a day takes you directly \
-to it. 
+== %(search)s ==
+%(search_par)s Double-clicking on a day lets you jump to it. 
 
 == Clouds ==
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
-If words appear in the cloud that you don't want to see there, you can exclude them. Just mark the \
-words and right click on the selection. Then click on "Hide selected words".
+If words appear in the cloud that you don't want to see there, just right-click on them. \
 Alternatively you can open the Preferences dialog and add the words to the cloud blocklist there.
 
 == Options ==
@@ -320,11 +358,7 @@ Make sure you check out the customizable options in the Preferences dialog. You 
 open this dialog by clicking on the entry in the "Edit" menu.
 
 == Save ==
-Everything you enter will be saved automatically at regular intervals and when you exit the program. \
-If you want to double check you can save your contents by pressing "Strg-S" \
-or using the menu entry under "File" in the top left corner. 
-To avoid data loss you should also backup your content regularly. "Backup" in the "File" menu saves \
-all your entered data in a zip file.
+%(save1)s %(save2)s %(save3)s
 
 === Save to remote FTP or SSH server ===
 Since version 0.8.9 you can have your journal directory on a remote server. The feature is \
@@ -340,7 +374,7 @@ data regularly if you plan to save your content remotely. There are always more 
 an internet connection is involved.
 
 == Export ==
-In the same menu you also find an "Export"-Button. Click on it and export your diary to Plain Text, HTML or Latex.
+%(save4)s %(save5)s
 
 **Latex caveats**
 
@@ -350,7 +384,7 @@ Make sure to type all links with the full path including the protocol:
 - file:///home/sam/myfile.txt (--/home/sam/myfile.txt--)
 
 
-===Export to PDF===
+===Convert Latex output to PDF===
 
 Although you cannot export your journal directly to PDF, you can easily convert \
 the exported latex (.tex) files to PDF. Here is how you do it:
@@ -401,12 +435,12 @@ same directory.
 You can find other shortcuts in the menus.
 
 == Example Content ==
-The following texts can also be viewed inside RedNotebook by clicking on "Example Content" \
-under the help menu. 
+The following texts can also be viewed inside RedNotebook by clicking \
+on "Restore Example Content" in the help menu. 
 
-%s
+%(categories_help_text)s
 
-%s
+%(todo_help_text)s
 
 == Questions ==
 If you have any questions or comments, feel free to post them in the forum or \
@@ -418,8 +452,7 @@ This way RedNotebook can get better not only for you, but for all users.
 
 Bug reports should go [here https://bugs.launchpad.net/rednotebook], but if you
 don't know how to use that site, a simple mail is equally fine.
-''' % (example_day2['text'].replace('=== Work ===', '**Work**\n').replace('=== Play ===', '**Play**\n'), \
-		example_day3['text'])
+''' % globals()
 
 desktop_file = '''\
 [Desktop Entry]
@@ -434,3 +467,18 @@ Type=Application
 Categories=Office;
 StartupNotify=true
 '''
+
+if __name__ == '__main__':
+	print completeWelcomeText
+	print 
+	print helpText
+	
+	#logging.getLogger('').setLevel(logging.DEBUG)
+	import sys
+	sys.path.insert(0, os.path.abspath("./../"))
+	from rednotebook.util import markup
+	html = markup.convert(helpText, 'xhtml')
+	filename = '/tmp/helptext.html'
+	open(filename, 'w').write(html)
+	import webbrowser
+	webbrowser.open('/tmp/helptext.html')

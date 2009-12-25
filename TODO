@@ -11,6 +11,7 @@ implementation if you tell me that you'd like its addition ;)
 X Allow dragging of files and pictures into RedNotebook
 X Make markup highlighting much faster
 X Add translation comments
+X Make pywebkitgtk an optional, but highly recommended package
 
 0.9.2
 X Use webkit for direct pdf generation
