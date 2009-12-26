@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-26 18:28+0100\n"
+"POT-Creation-Date: 2009-12-26 19:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,7 +235,7 @@ msgid "Day %j"
 msgstr ""
 
 #. ## Translators: noun
-#: ../rednotebook/gui/options.py:157 ../rednotebook/info.py:135
+#: ../rednotebook/gui/options.py:157 ../rednotebook/info.py:120
 #: tmp/mainWindow.glade.h:41
 msgid "Help"
 msgstr ""
@@ -377,7 +377,7 @@ msgstr ""
 msgid "Show the help document"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:231 ../rednotebook/info.py:457
+#: ../rednotebook/gui/menu.py:231 ../rednotebook/info.py:439
 msgid "RedNotebook Documentation"
 msgstr ""
 
@@ -625,70 +625,56 @@ msgid ""
 "arbitrarily named templates."
 msgstr ""
 
-#. ## Translators: "Work" -> noun
-#. tags1 = _('Tagging an entry (e.g. with the tag "Work") is also easy:')
-#. ## Translators: "Tag" stands for the verb "to tag", "Work" -> noun
-#. tags2 = _('On the right, click on "Tag" and insert "Work" into the lower textbox.')
-#. tags3 = _('''You can see a tag cloud on the left if you change to the \
-#. "Clouds" tab and select "Tags".''')
-#. tags_par = ' '.join([tags1, tags2, tags3])
-#. search = _('Search')
-#. search1 = _('On the left you find the search box.')
-#. search2 = _('''You can search for text, display a \
-#. category's content or show all days with a given tag.''')
-#. search_par = ' '.join([search1, search2])
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:125
+#: ../rednotebook/info.py:110
 msgid "Save and Export"
 msgstr ""
 
-#: ../rednotebook/info.py:126
+#: ../rednotebook/info.py:111
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
 
-#: ../rednotebook/info.py:128
+#: ../rednotebook/info.py:113
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 
-#: ../rednotebook/info.py:129
+#: ../rednotebook/info.py:114
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 
-#: ../rednotebook/info.py:130
+#: ../rednotebook/info.py:115
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr ""
 
-#: ../rednotebook/info.py:131
+#: ../rednotebook/info.py:116
 msgid "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
 
 #. ## Translators: "Help" -> noun
-#. help2 = _('To restore these instructions click on "Help" -> "Restore example content".')
-#. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:140
+#: ../rednotebook/info.py:122
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
 msgstr ""
 
-#: ../rednotebook/info.py:143
+#: ../rednotebook/info.py:125
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 
-#: ../rednotebook/info.py:144
+#: ../rednotebook/info.py:126
 msgid "Any feedback is appreciated."
 msgstr ""
 
-#: ../rednotebook/info.py:147
+#: ../rednotebook/info.py:129
 msgid "Have a nice day!"
 msgstr ""
 
-#: ../rednotebook/info.py:182
+#: ../rednotebook/info.py:164
 msgid "Ideas"
 msgstr ""
 
-#: ../rednotebook/info.py:182
+#: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
 msgstr ""
 
