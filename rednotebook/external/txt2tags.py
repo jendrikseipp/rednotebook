@@ -4222,7 +4222,9 @@ def doHeader(headers, config):
 			try:
 				contents = Readfile(cssfile, 1)
 				css = "\n%s\n%s\n%s\n%s\n" % (
-					doCommentLine("Included %s" % cssfile),
+					## Jendrik: We do not need the css filename
+					#doCommentLine("Included %s" % cssfile),
+					doCommentLine("Included css file"),
 					TAGS['cssOpen'],
 					'\n'.join(contents),
 					TAGS['cssClose'])

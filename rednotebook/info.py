@@ -22,8 +22,10 @@ from __future__ import with_statement
 import os
 
 # For testing
-def _(string):
-	return string
+import __builtin__
+if not hasattr(__builtin__, '_'):
+	def _(string):
+		return string
 
 version = '0.9.1'
 author = 'Jendrik Seipp'
@@ -79,7 +81,7 @@ overview21 = _('Left')
 overview22 = _('Navigation with the calendar')
 ### Translators: The location "center"
 overview31 = _('Center') 
-overview32 = _('Text entries')
+overview32 = _('Text for a day')
 ### Translators: The location "right"
 overview41 = _('Right')
 overview42 = _('Annotations to a day')
@@ -89,13 +91,6 @@ text_entry_par = _('An entry could look like this:')
 example_entry = _('''Today I went to the //pet shop// and bought a **tiger**. Then we went to the \
 --pool-- park and had a nice time playing \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".''')
-
-### Translators: noun
-format = _('Format')
-format1 = '''As you see, the text can be formatted **bold**, \
-//italic//, --stricken-- and __underlined__.'''
-format2 = 'To see the result, click on the "Preview" button.'
-format_par = ' '.join([format1, format2])
 
 annotations = _('Annotations')
 ann1 = _('On the right there is space for annotations to a day.')
@@ -111,21 +106,22 @@ temp3 = _('''You can have one template for every day \
 of the week and unlimited arbitrarily named templates.''')
 temp_par = ' '.join([temp1, temp2, temp3])
 
-tags = _('Tags')
+#tags = _('Tags')
 ### Translators: "Work" -> noun
-tags1 = _('Tagging an entry (e.g. with the tag "Work") is also easy:')
+#tags1 = _('Tagging an entry (e.g. with the tag "Work") is also easy:')
 ### Translators: "Tag" stands for the verb "to tag", "Work" -> noun
-tags2 = _('On the right, click on "Tag" and insert "Work" into the lower textbox.')
-tags3 = _('''You can see a tag cloud on the left if you change to the \
-"Clouds" tab and select "Tags".''')
-tags_par = ' '.join([tags1, tags2, tags3])
+#tags2 = _('On the right, click on "Tag" and insert "Work" into the lower textbox.')
+#tags3 = _('''You can see a tag cloud on the left if you change to the \
+#"Clouds" tab and select "Tags".''')
+#tags_par = ' '.join([tags1, tags2, tags3])
 
-search = _('Search')
-search1 = _('On the left you find the search box.')
-search2 = _('''You can search for text, display a \
-category's content or show all days with a given tag.''')
-search_par = ' '.join([search1, search2])
+#search = _('Search')
+#search1 = _('On the left you find the search box.')
+#search2 = _('''You can search for text, display a \
+#category's content or show all days with a given tag.''')
+#search_par = ' '.join([search1, search2])
 
+### Translators: both are verbs
 save = _('Save and Export')
 save1 = _('''Everything you enter will be saved automatically at \
 regular intervals and when you exit the program.''')
@@ -137,18 +133,18 @@ save_par = ' '.join([save1, save2, save3, save4, save5])
 
 ### Translators: noun
 help = _('Help')
-help1 = _('Now you can erase this help text and enter e.g. what you have done today.')
+#help1 = _('Now you can erase this help text and enter e.g. what you have done today.')
 ### Translators: "Help" -> noun
-help2 = _('To restore these instructions click on "Help" -> "Restore example content".')
+#help2 = _('To restore these instructions click on "Help" -> "Restore example content".')
 ### Translators: "Help" -> noun
-help3 = _('Alternatively you can find some documentation under "Help" -> "Help".')
-help_par = ' '.join([help1, help2, help3])
+help3 = _('You can find more documentation under "Help" -> "Help".')
+help_par = ' '.join([help3])
 
 error1 = _('If you encounter any errors, please drop me a note so I can fix them.')
-error2 = _('Any feedback is welcome.')
+error2 = _('Any feedback is appreciated.')
 error_par = ' '.join([error1, error2])
 
-goodbye_par = _('Enjoy the program!')
+goodbye_par = _('Have a nice day!')
 
 
 completeWelcomeText = '''\
@@ -165,20 +161,11 @@ completeWelcomeText = '''\
 
 %(example_entry)s
 
-=== %(format)s ===
-%(format_par)s
-
 === %(annotations)s ===
 %(ann_par)s
 
 === %(templates)s ===
 %(temp_par)s
-
-=== %(tags)s ===
-%(tags_par)s
-
-=== %(search)s ===
-%(search_par)s
 
 === %(save)s ===
 %(save_par)s
@@ -192,13 +179,13 @@ completeWelcomeText = '''\
 
 welcome_day = {'text': completeWelcomeText,
 u'Cool Stuff': {u'Ate **two** cans of spam': None},
-u'Ideas': {u'Use a cool journal app': None},
+_(u'Ideas'): {_(u'Use a cool journal app'): None},
 u'Tags': {u'Work': None, u'Documentation': None},
 }
 
 example_day1 = {
 'text': '''\
-===%(annotations)s===
+=== %(annotations)s ===
 %(ann_par)s
 
 - Ideas
@@ -231,7 +218,7 @@ example_day2 = {
 === Multiple Entries ===
 You can add multiple entries to one day in two ways:
 - Use two different journals (one named “Work”, the other “Play”)
-- Separate your two entries by different titles (===Work===, ===Play===) 
+- Separate your two entries by different titles (===Work===, ===Play===)
 - Use a horizontal separator line (20 “=”s)
 
 
@@ -284,18 +271,24 @@ u'Done': {u'--Check mail--': None,},
 
 example_content = [welcome_day, example_day1, example_day2, example_day3]
 
-categories_help_text = example_day2['text'].replace('=== Work ===', '**Work**\n')
-categories_help_text = categories_help_text.replace('=== Play ===', '**Play**\n')
-todo_help_text = example_day3['text']
+ann_help_text = example_day1['text'].replace('===', '==')
 
-helpText = '''\n
+multiple_entries_text = example_day2['text']#.replace('=== Multiple Entries ===', '== Multiple Entries ==')
+multiple_entries_text = multiple_entries_text.replace('=== Work ===', '**Work**\n')
+multiple_entries_text = multiple_entries_text.replace('=== Play ===', '**Play**\n')
+
+todo_help_text = example_day3['text']#.replace('=== Todo list ===', '== Todo list ==')
+
+
+helpText = '''
 == Text ==
-The main text field is the container for your normal diary entries like this one: 
+The main text field is the container for your normal diary entries like this one:
 
 %(example_entry)s
 
-== %(format)s ==
-%(format1)s As a convenience there \
+== Format ==
+As you see, the text can be formatted **bold**, \
+//italic//, --stricken-- and __underlined__. As a convenience there \
 is also the "Format" button, with which you can format the main text and nodes \
 in the categories tree on the right.
 
@@ -304,26 +297,11 @@ in the categories tree on the right.
 **Comments** can be inserted after percent signs (**%%**). They will not be shown in the \
 preview and the exports. The %% has to be the first character on the line.
 
-%(format2)s
+To see the result, click on the "Preview" button.
 You can also see how \
 this text was formatted by looking at its [source source.txt].
 
-== %(annotations)s ==
-%(ann_par)s
-
-- Ideas
-  - Invent Anti-Hangover-Machine
-  
-
-I’ll give you another example: I like to maintain a list of cool things I have done. \
-So if I did a cool thing some day, I navigate to that day, add the category \
-"Cool Stuff" and add an entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
-When I have done more cool things on many days, they all have a category "Cool Stuff" \
-and many different entries. Now it is possible to export only that category and \
-get a list of the cool stuff that happened to me with the respective dates.
-
-Additionally you can select the "Cool Stuff" category in the word cloud window \
-to get a list of all the cool things.
+%(ann_help_text)s
 
 == Images, Files and Links ==
 RedNotebook lets you insert images, files and links into your entries. To do so, select the \
@@ -333,7 +311,7 @@ be inserted at the current cursor position.
 == %(templates)s ==
 %(temp_par)s
 
-== %(tags)s ==
+== Tags ==
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
 "Work" into the lower textbox. The result looks like:
 
@@ -344,8 +322,10 @@ Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on
 You can see a tag cloud on the left by activating the "Clouds" tab and \
 selecting "Tags". Get a list of all tags with a given name by clicking on that tag in the cloud.
 
-== %(search)s ==
-%(search_par)s Double-clicking on a day lets you jump to it. 
+== Search ==
+On the left you find the search box. You can search for text, display a \
+category's content or show all days with a given tag. \
+Double-clicking on a day lets you jump to it. 
 
 == Clouds ==
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
@@ -434,11 +414,8 @@ same directory.
 
 You can find other shortcuts in the menus.
 
-== Example Content ==
-The following texts can also be viewed inside RedNotebook by clicking \
-on "Restore Example Content" in the help menu. 
-
-%(categories_help_text)s
+== Tips ==
+%(multiple_entries_text)s
 
 %(todo_help_text)s
 
@@ -468,17 +445,31 @@ Categories=Office;
 StartupNotify=true
 '''
 
-if __name__ == '__main__':
-	print completeWelcomeText
-	print 
-	print helpText
+def write_documentation(dir):
+	'''
+	Write the documenation as html to a directory
+	Include the original markup as "source.txt"
+	'''
+	from rednotebook.util import utils
+	from rednotebook.util import markup
 	
-	#logging.getLogger('').setLevel(logging.DEBUG)
+	utils.write_file(helpText, os.path.join(dir, 'source.txt'))
+	headers = [_('RedNotebook Documentation'), version, '']
+	options = {'toc': 1,}
+	html = markup.convert(helpText, 'xhtml', headers, options)
+	utils.write_file(html, os.path.join(dir, 'help.html'))
+
+if __name__ == '__main__':
 	import sys
 	sys.path.insert(0, os.path.abspath("./../"))
-	from rednotebook.util import markup
-	html = markup.convert(helpText, 'xhtml')
-	filename = '/tmp/helptext.html'
-	open(filename, 'w').write(html)
-	import webbrowser
-	webbrowser.open('/tmp/helptext.html')
+	
+	print completeWelcomeText
+	print '*'*80
+	print helpText
+	
+	doc_dir = '../doc'
+	doc_dir = os.path.abspath(doc_dir)
+	
+	write_documentation(doc_dir)
+	
+	#logging.getLogger('').setLevel(logging.DEBUG)
