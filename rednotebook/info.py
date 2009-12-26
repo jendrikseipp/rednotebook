@@ -106,21 +106,6 @@ temp3 = _('''You can have one template for every day \
 of the week and unlimited arbitrarily named templates.''')
 temp_par = ' '.join([temp1, temp2, temp3])
 
-#tags = _('Tags')
-### Translators: "Work" -> noun
-#tags1 = _('Tagging an entry (e.g. with the tag "Work") is also easy:')
-### Translators: "Tag" stands for the verb "to tag", "Work" -> noun
-#tags2 = _('On the right, click on "Tag" and insert "Work" into the lower textbox.')
-#tags3 = _('''You can see a tag cloud on the left if you change to the \
-#"Clouds" tab and select "Tags".''')
-#tags_par = ' '.join([tags1, tags2, tags3])
-
-#search = _('Search')
-#search1 = _('On the left you find the search box.')
-#search2 = _('''You can search for text, display a \
-#category's content or show all days with a given tag.''')
-#search_par = ' '.join([search1, search2])
-
 ### Translators: both are verbs
 save = _('Save and Export')
 save1 = _('''Everything you enter will be saved automatically at \
@@ -133,9 +118,6 @@ save_par = ' '.join([save1, save2, save3, save4, save5])
 
 ### Translators: noun
 help = _('Help')
-#help1 = _('Now you can erase this help text and enter e.g. what you have done today.')
-### Translators: "Help" -> noun
-#help2 = _('To restore these instructions click on "Help" -> "Restore example content".')
 ### Translators: "Help" -> noun
 help3 = _('You can find more documentation under "Help" -> "Help".')
 help_par = ' '.join([help3])
