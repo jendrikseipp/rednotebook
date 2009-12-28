@@ -1,5 +1,11 @@
 ==== RedNotebook Changelog ====
 
+=== 0.9.1 (09-12-27) ===
+ * Make markup highlighting much faster
+ * Make welcome text translatable
+ * Add translation comments
+ * Make help available online
+
 === 0.9.0 (09-12-17) ===
  * Markup Highlighting (a little WYSIWYG/RTF)
  * New translations: 

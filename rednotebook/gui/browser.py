@@ -39,12 +39,12 @@ if __name__ == '__main__':
 try:
 	import webkit
 except ImportError:
+	logging.info('Importing webkit failed')
 	webkit = None
 	
 	
-def can_print_pdf():	
+def can_print_pdf():
 	if not webkit:
-		logging.info('Importing webkit failed')
 		return False
 		
 	try:

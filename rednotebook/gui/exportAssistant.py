@@ -79,6 +79,9 @@ class ExportAssistant(object):
 		self.latex_button = self.builder.get_object('latex')
 		self.pdf_button = self.builder.get_object('pdf')
 		
+		#TODO: Uncomment when tested
+		self.pdf_button.hide()
+		
 		pdf_supported = self.is_pdf_supported()
 		self.pdf_button.set_sensitive(pdf_supported)
 		

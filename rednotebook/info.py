@@ -99,10 +99,10 @@ ann3 = _('''For example you could create the category "Ideas" \
 and then add today's ideas to it.''')
 ann_par = ' '.join([ann1, ann2, ann3])
 
-templates = _('Templates')
-temp1 = _('RedNotebook supports templates.')
-temp2 = _('Click on the arrow next to the "Template" button to see some options.')
-temp3 = _('''You can have one template for every day \
+templates = ('Templates')
+temp1 = ('RedNotebook supports templates.')
+temp2 = ('Click on the arrow next to the "Template" button to see some options.')
+temp3 = ('''You can have one template for every day \
 of the week and unlimited arbitrarily named templates.''')
 temp_par = ' '.join([temp1, temp2, temp3])
 
@@ -145,9 +145,6 @@ completeWelcomeText = '''\
 
 === %(annotations)s ===
 %(ann_par)s
-
-=== %(templates)s ===
-%(temp_par)s
 
 === %(save)s ===
 %(save_par)s
