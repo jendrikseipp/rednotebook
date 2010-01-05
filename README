@@ -8,12 +8,12 @@ want to check the Downloads page first.
 
 ==== Ubuntu/Debian/Mint ====
 In the unpacked rednotebook-x.y.z directory:
-  - sudo apt-get install python-yaml
+  - sudo apt-get install python-yaml python-webkit
   - sudo python setup.py install
   
 ==== Fedora ====
 In the unpacked rednotebook-x.y.z directory:
-  - yum -y install python-devel PyYAML
+  - yum -y install python-devel PyYAML pywebkitgtk
   - sudo python setup.py install
   
 
@@ -25,14 +25,17 @@ You find a menu entry for RedNotebook under "Office".
 
 ===== REQUIREMENTS =====
   - Python (2.5/2.6) (www.python.org)
-  - PyYaml (>=3.05) (www.yaml.org)
+  - PyYaml (>=3.05) (www.pyyaml.org)
   - PyGTK (>=2.13) (www.pygtk.org)
   
+  - OPTIONALLY:
+    - pywebkitgtk (>=1.1.5) (http://code.google.com/p/pywebkitgtk/)
+  
     === Ubuntu/Debian ===
-    sudo apt-get install python-yaml python-gtk2
+    sudo apt-get install python-yaml python-webkit
     
     === Fedora ===
-    yum -y install python-devel PyYAML
+    yum -y install python-devel PyYAML pywebkitgtk
     
 
 ===== INSTALL =====
