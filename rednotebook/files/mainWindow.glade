@@ -648,8 +648,8 @@
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="action">save</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
@@ -776,6 +776,9 @@
       <placeholder/>
     </child>
     <child>
+      <placeholder/>
+    </child>
+    <child>
       <object class="GtkLabel" id="export_assistant_0">
         <property name="visible">True</property>
         <property name="label" translatable="yes">Welcome to the Export Assistant. 
@@ -864,19 +867,7 @@ This wizard will help you to export your journal to various formats. You can sel
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label16">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">For information on how to convert the exported latex files to PDF, consult the Help document.</property>
-                    <property name="use_markup">True</property>
-                    <property name="justify">center</property>
-                    <property name="wrap">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="padding">23</property>
-                    <property name="pack_type">end</property>
-                    <property name="position">4</property>
-                  </packing>
+                  <placeholder/>
                 </child>
               </object>
             </child>
@@ -1397,17 +1388,7 @@ This wizard will help you to export your journal to various formats. You can sel
               <placeholder/>
             </child>
             <child>
-              <object class="GtkButton" id="button6">
-                <property name="label" translatable="yes">Check at Startup</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
               <object class="GtkButton" id="button11">
@@ -1433,7 +1414,6 @@ This wizard will help you to export your journal to various formats. You can sel
       </object>
     </child>
     <action-widgets>
-      <action-widget response="30">button6</action-widget>
       <action-widget response="-5">button11</action-widget>
     </action-widgets>
   </object>
@@ -1694,8 +1674,8 @@ This wizard will help you to export your journal to various formats. You can sel
     <property name="title" translatable="yes">Select a directory</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
-    <property name="local_only">False</property>
     <property name="action">select-folder</property>
+    <property name="local_only">False</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox17">
         <property name="visible">True</property>

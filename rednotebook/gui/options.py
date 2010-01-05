@@ -27,7 +27,8 @@ import gobject
 
 
 from rednotebook.gui.widgets import UrlButton, CustomComboBoxEntry
-from rednotebook.util import filesystem
+from rednotebook.gui.widgets import ActionButton
+from rednotebook.util import filesystem, utils
 from rednotebook import info
 
 class Option(gtk.HBox):
@@ -278,10 +279,7 @@ class OptionsManager(object):
 		
 		if platform.system() == 'Linux' and os.path.exists('/usr/bin/rednotebook'):
 			logging.debug('Running on Linux. Is installed. Adding autostart option')
-			self.options.insert(0, AutostartOption())
-		
-		self.options.append(TickOption(_('Check for new version at startup'), 'checkForNewVersion'))
-		
+			self.options.insert(0, AutostartOption())		
 		
 		self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
 				tooltip=_('Closing the window will send RedNotebook to the tray')))
@@ -296,9 +294,24 @@ class OptionsManager(object):
 			self.options.append(spell_check_option)
 		spell_check_option.set_sensitive(able_to_spell_check)
 		
+		
+		# Check for new version
+		
+		check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')
+		def check_version_action(widget):
+			utils.check_new_version(self.main_window, info.version)
+			# Apply changes from dialog to options window
+			check = bool(self.redNotebook.config.get('checkForNewVersion'))
+			check_version_option.check_button.set_active(check)
+			
+		check_version_button = ActionButton(_('Check now'), check_version_action)
+		check_version_option.pack_start(check_version_button, False, False)
+		self.options.append(check_version_option)
+		
+		
 		self.options.extend([
-				DateFormatOption(_('Date/Time format'), 'dateTimeString'),
 				FontSizeOption(_('Font Size'), 'mainFontSize'),
+				DateFormatOption(_('Date/Time format'), 'dateTimeString'),
 				CsvTextOption(_('Exclude from clouds'), 'cloudIgnoreList', \
 								tooltip=_('Do not show those comma separated words in any cloud')),
 				CsvTextOption(_('Allow small words in clouds'), 'cloudIncludeList', \

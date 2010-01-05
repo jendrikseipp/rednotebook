@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009  Jendrik Seipp
-# 
+#
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # RedNotebook is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License along
 # with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -27,10 +27,13 @@ if not hasattr(__builtin__, '_'):
 	def _(string):
 		return string
 
-version = '0.9.1'
+version = '0.9.2'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
+forum_url = 'http://apps.sourceforge.net/phpbb/rednotebook/'
+translation_url = 'https://translations.launchpad.net/rednotebook/'
+bug_url = 'https://bugs.launchpad.net/rednotebook/+filebug'
 developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
 				'',
 				'Contributors:',
@@ -38,7 +41,7 @@ developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
 				]
 comments = '''\
 RedNotebook is a graphical journal to keep track of notes and \
-thoughts. It includes a calendar navigation, customizable \ 
+thoughts. It includes a calendar navigation, customizable \
 templates, export functionality and word clouds. You can also \
 format, tag and search your entries.\
 '''
@@ -68,7 +71,7 @@ The optional journal-path can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)
  - A relative path (e.g. ../dir/myjournal)
  - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
- 
+
 If the journal-path is omitted the last session's journal will be used.
 At the first program start this defaults to "$HOME/.rednotebook/data".
 ''' % version
@@ -77,10 +80,10 @@ greeting = _('''Hello,
 this is RedNotebook, a desktop journal. Thank you very much for giving it a try.''')
 overview1 = _('The interface is divided into three parts:')
 ### Translators: The location "left"
-overview21 = _('Left') 
+overview21 = _('Left')
 overview22 = _('Navigation with the calendar')
 ### Translators: The location "center"
-overview31 = _('Center') 
+overview31 = _('Center')
 overview32 = _('Text for a day')
 ### Translators: The location "right"
 overview41 = _('Right')
@@ -169,8 +172,8 @@ example_day1 = {
 
 - Ideas
   - Invent Anti-Hangover-Machine
-  
-  
+
+
 The name "Categories" is a little bit confusing. It does not mean that a day is \
 put into a category, but that there is additional content on the right, \
 sorted into categories. "Topics" would probably be a better name.
@@ -217,7 +220,7 @@ example_day3 = {
 === Todo list ===
 You can also use RedNotebook as a todo list. A big advantage is, that you never \
 have to explicitly state the date when you added the todo item, you just add it \
-on one day and it remains there until you delete it. 
+on one day and it remains there until you delete it.
 
 Here is how it works:
 - On the right click on "New Entry"
@@ -230,7 +233,7 @@ Here is how it works:
 - To mark an item as important, add "**" around it.
 
 
-So --Remember the milk-- becomes stricken and **Wash the dishes** becomes bold. 
+So --Remember the milk-- becomes stricken and **Wash the dishes** becomes bold.
 
 You can see all your todo items at once by clicking "todo" in the category cloud \
 on the left. There you can also \
@@ -296,7 +299,7 @@ Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on
 
 - Tags
   - Work
-  
+
 
 You can see a tag cloud on the left by activating the "Clouds" tab and \
 selecting "Tags". Get a list of all tags with a given name by clicking on that tag in the cloud.
@@ -304,7 +307,7 @@ selecting "Tags". Get a list of all tags with a given name by clicking on that t
 == Search ==
 On the left you find the search box. You can search for text, display a \
 category's content or show all days with a given tag. \
-Double-clicking on a day lets you jump to it. 
+Double-clicking on a day lets you jump to it.
 
 == Clouds ==
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
@@ -326,7 +329,7 @@ to the remote server. This is most easily done in Nautilus by clicking on "File"
 "Connect to Server". Be sure to add a bookmark for the server. This way you can see your \
 server in Nautilus at all times on the left side. The next time you open RedNotebook you \
 will find your server in the "New", "Open" and "Save As" dialogs. There you can select \
-a new folder on the server for your journal. 
+a new folder on the server for your journal.
 
 Obviously you have to be connected to the internet to use that feature. Be sure to backup your \
 data regularly if you plan to save your content remotely. There are always more pitfalls when \
@@ -352,7 +355,7 @@ the exported latex (.tex) files to PDF. Here is how you do it:
 
 For the conversion on Linux you need some extra packages: texlive-latex-base and \
 texlive-latex-recommended. Maybe you also need texlive-latex-extra. Those contain \
-the pdflatex program and are available in the repositories of most Linux distros. 
+the pdflatex program and are available in the repositories of most Linux distros.
 
 You can convert the .tex file by typing the following text in a command line: \
 
@@ -363,13 +366,13 @@ Alternatively you can install a Latex editor like Kile \
 button.
 
 However there are some pitfalls: Sometimes not all exported characters can be \
-converted to pdf. 
+converted to pdf.
 E.g. problems occur when exporting \
 the euro sign (€) or other "non-standard" characters to pdf.
 
 If you run into any problems during the conversion, the easiest way to solve \
 them is to install a latex editor and do the conversion with it. That way \
-you can see the errors right away and get rid of them by editing the file. 
+you can see the errors right away and get rid of them by editing the file.
 
 **Windows**
 
@@ -431,7 +434,7 @@ def write_documentation(dir):
 	'''
 	from rednotebook.util import utils
 	from rednotebook.util import markup
-	
+
 	utils.write_file(helpText, os.path.join(dir, 'source.txt'))
 	headers = [_('RedNotebook Documentation'), version, '']
 	options = {'toc': 1,}
@@ -441,14 +444,14 @@ def write_documentation(dir):
 if __name__ == '__main__':
 	import sys
 	sys.path.insert(0, os.path.abspath("./../"))
-	
+
 	print completeWelcomeText
 	print '*'*80
 	print helpText
-	
+
 	doc_dir = '../doc'
 	doc_dir = os.path.abspath(doc_dir)
-	
+
 	write_documentation(doc_dir)
-	
+
 	#logging.getLogger('').setLevel(logging.DEBUG)
