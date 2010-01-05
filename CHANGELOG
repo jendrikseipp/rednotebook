@@ -2,6 +2,8 @@
 
 === 0.9.1 (09-12-27) ===
  * Make markup highlighting much faster
+ * Allow using webkit for previews (In the config file, set useWebkit to 1)
+ * Make pywebkitgtk (python-webkit) an optional, but highly recommended dependency
  * Make welcome text translatable
  * Add translation comments
  * Make help available online
