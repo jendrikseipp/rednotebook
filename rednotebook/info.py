@@ -348,8 +348,9 @@ Make sure to type all links with the full path including the protocol:
 
 ===Convert Latex output to PDF===
 
-Although you cannot export your journal directly to PDF, you can easily convert \
-the exported latex (.tex) files to PDF. Here is how you do it:
+Since version 0.9.2 you can export your journal directly to PDF, so this section \
+may be obsolete. However, there may be some people who prefer to export their \
+journal to Latex first and convert it to PDF later. Here is how you do it:
 
 **Linux**
 
@@ -402,7 +403,8 @@ You can find other shortcuts in the menus.
 %(todo_help_text)s
 
 == Questions ==
-If you have any questions or comments, feel free to post them in the forum or \
+If you have any questions or comments, feel free to post them in the \
+[forum http://apps.sourceforge.net/phpbb/rednotebook/] or \
 contact me directly.
 
 == Bugs ==
