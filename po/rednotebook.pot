@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 02:11+0100\n"
+"POT-Creation-Date: 2010-01-06 22:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,7 @@ msgid "Show RedNotebook"
 msgstr ""
 
 #. ## Translators: Verb
+#. ## Verb
 #: ../rednotebook/gui/mainWindow.py:373 tmp/mainWindow.glade.h:52
 msgid "Preview"
 msgstr ""
@@ -704,6 +705,7 @@ msgstr ""
 msgid "<b>Entries from:</b>"
 msgstr ""
 
+#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:7
 msgid "<b>General</b>"
 msgstr ""
@@ -804,6 +806,7 @@ msgstr ""
 msgid "Export only the selected categories"
 msgstr ""
 
+#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:35
 msgid "General"
 msgstr ""
@@ -906,6 +909,7 @@ msgstr ""
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr ""
 
+#. ## This stands for the verb in "Tag this day"
 #: tmp/mainWindow.glade.h:65
 msgid "Tag"
 msgstr ""
@@ -933,6 +937,7 @@ msgid ""
 "select the days you want to export and where the output will be saved."
 msgstr ""
 
+#. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/mainWindow.glade.h:75
 msgid "translator-credits"
 msgstr ""
