@@ -142,26 +142,18 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 		start = it.copy()
 		start.backward_chars(length)
 
-		self._apply_tags = True
 		self.update_syntax(start, end)
-		self._apply_tags = False
-
 
 	def _on_delete_range(self, buf, start, end):
 		start = start.copy()
 
-		self._apply_tags = True
 		self.update_syntax(start, start)
-		self._apply_tags = False
 		
 	def _on_apply_tag(self, buf, tag, start, end):
-		# FIXME This is a hack! It allows apply-tag only while
-		#	   _on_insert_text() and _on_delete_range()
-		#if not self._apply_tags:
-		#	self.emit_stop_by_name('apply-tag')
-		#	return True
+		'''
+		We want to allow applying tags for spellchecking
+		'''
 		return False
-		#_log_debug("tag \"%s\" as %s"%(self.get_slice(start,end), tag.get_property("name")))
 		
 	def remove_all_syntax_tags(self, start, end):
 		'''
@@ -208,10 +200,6 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 
 			# remove all tags from start..end (mend == buffer-end if no match)
 			self.remove_all_syntax_tags(start, end)
-
-			# make start..min_start = DEFAULT (mstart == buffer-end if no match)
-			#if not start.equal(min_start):
-			#	self.apply_tag_by_name("DEFAULT", start, min_start)
 
 			for mstart, mend, tagname in group_iters_and_tags:
 				# apply tag

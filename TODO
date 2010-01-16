@@ -14,12 +14,12 @@ X Improve menu layout
 X Add "Report A Problem" button
 X Add "Translate RedNotebook" button
 X Add "Get Help Online" button
-O Fix spellchecking
-O Change "Stricken" to "Strikethrough" (everywhere)
+X Fix spellchecking
 
 0.9.3
 X Use webkit for previews when available/selected (UI-Config Option? -> No, too unstable)
 O Catch opening of links
+O Change "Stricken" to "Strikethrough" (everywhere)
 O Custom-style Journals? (Mono-space)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
 
