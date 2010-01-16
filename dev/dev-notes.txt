@@ -35,7 +35,10 @@ O Encryption/Password
     
   --> Use pycrypto only
   
-  - What should be encrypted? Files, Strings?
+  - What should be encrypted? Files, Strings? -> Files better
+  
+  - Maybe use only one file for a journal, add journal dependent variables
+  - Maybe compress this file
   
   
 O Automatic insertions

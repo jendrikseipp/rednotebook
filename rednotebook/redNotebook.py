@@ -411,7 +411,7 @@ class RedNotebook:
 						month.edited = False
 					except OSError, err:
 						self.frame.show_save_error_dialog(exitImminent)
-						return True	
+						return True
 					except IOError, err:
 						self.frame.show_save_error_dialog(exitImminent)
 						return True	

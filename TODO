@@ -9,13 +9,17 @@ implementation if you tell me that you'd like its addition ;)
 
 0.9.2
 X Use webkit for direct pdf export
+X Drop pdflatex dependency
 X Improve menu layout
 X Add "Report A Problem" button
 X Add "Translate RedNotebook" button
 X Add "Get Help Online" button
+O Fix spellchecking
+O Change "Stricken" to "Strikethrough" (everywhere)
 
 0.9.3
-X Use webkit for previews when available
+X Use webkit for previews when available/selected (UI-Config Option? -> No, too unstable)
+O Catch opening of links
 O Custom-style Journals? (Mono-space)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
 
@@ -59,6 +63,7 @@ O Tabled Data?
 
 2.0
 O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting)
+O Let user change font
 
 
 

@@ -1,5 +1,22 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
+
 import gtk
 import sys
 import os.path
@@ -136,6 +153,22 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 		self._apply_tags = True
 		self.update_syntax(start, start)
 		self._apply_tags = False
+		
+	def _on_apply_tag(self, buf, tag, start, end):
+		# FIXME This is a hack! It allows apply-tag only while
+		#	   _on_insert_text() and _on_delete_range()
+		#if not self._apply_tags:
+		#	self.emit_stop_by_name('apply-tag')
+		#	return True
+		return False
+		#_log_debug("tag \"%s\" as %s"%(self.get_slice(start,end), tag.get_property("name")))
+		
+	def remove_all_syntax_tags(self, start, end):
+		'''
+		Do not remove the gtkspell highlighting
+		'''
+		for style in styles:
+			self.remove_tag_by_name(style, start, end)
 
 	def update_syntax(self, start, end):
 		""" More or less internal used method to update the
@@ -162,8 +195,8 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 			group_iters_and_tags = self._lang_def(self, start, end)
 
 			if not group_iters_and_tags:
-				self.remove_all_tags(start, end)
-				self.apply_tag_by_name("DEFAULT", start, end)
+				self.remove_all_syntax_tags(start, end)
+				#self.apply_tag_by_name("DEFAULT", start, end)
 				return
 
 			key = lambda iter: iter.get_offset()
@@ -174,11 +207,11 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 										in group_iters_and_tags], key=key)
 
 			# remove all tags from start..end (mend == buffer-end if no match)
-			self.remove_all_tags(start, end)
+			self.remove_all_syntax_tags(start, end)
 
 			# make start..min_start = DEFAULT (mstart == buffer-end if no match)
-			if not start.equal(min_start):
-				self.apply_tag_by_name("DEFAULT", start, min_start)
+			#if not start.equal(min_start):
+			#	self.apply_tag_by_name("DEFAULT", start, min_start)
 
 			for mstart, mend, tagname in group_iters_and_tags:
 				# apply tag
