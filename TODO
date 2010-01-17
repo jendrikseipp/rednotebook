@@ -14,11 +14,12 @@ X Improve menu layout
 X Add "Report A Problem" button
 X Add "Translate RedNotebook" button
 X Add "Get Help Online" button
+X Handle opening of links externally in webkit preview
 X Fix spellchecking
+X Improve documentation
 
 0.9.3
-X Use webkit for previews when available/selected (UI-Config Option? -> No, too unstable)
-O Catch opening of links
+X Use webkit for previews when selected (UI-Config Option)
 O Change "Stricken" to "Strikethrough" (everywhere)
 O Custom-style Journals? (Mono-space)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
@@ -41,6 +42,7 @@ O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
 O Import of exported backups
 O Change to newer KeepNote Version? -> No.
+O Make webkit default preview backend
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
 X Windows: RedNotebook can now be run in portable mode
@@ -63,7 +65,7 @@ O Tabled Data?
 
 2.0
 O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting)
-O Let user change font
+O Let user change font, color fonts
 
 
 

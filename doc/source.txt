@@ -7,6 +7,8 @@ Today I went to the //pet shop// and bought a **tiger**. Then we went to the --p
 == Format ==
 As you see, the text can be formatted **bold**, //italic//, --stricken-- and __underlined__. As a convenience there is also the "Format" button, with which you can format the main text and nodes in the categories tree on the right.
 
+A blank line starts a new **paragraph**, \ results in a newline.
+
 % Formatting commands inside two pairs of "" are not interpreted (""**not bold**"")
 
 **Comments** can be inserted after percent signs (**%**). They will not be shown in the preview and the exports. The % has to be the first character on the line.
@@ -33,7 +35,8 @@ Additionally you can select the "Cool Stuff" category in the word cloud window t
 RedNotebook lets you insert images, files and links into your entries. To do so, select the appropriate option in the "Insert" pull-down menu above the main text field. The text will be inserted at the current cursor position.
 
 == Templates ==
-RedNotebook supports templates. Click on the arrow next to the "Template" button to see some options. You can have one template for every day of the week and unlimited arbitrarily named templates.
+RedNotebook supports templates. Click on the arrow next to the "Template" button to see some options. You can have one template for every day of the week and unlimited arbitrarily named templates. 
+The files 1.txt to 7.txt in the template directory correspond to the templates for each day of the week. The current weekday's template will be filled into the text area when you click on "Template". You can open the template files from inside RedNotebook by opening the menu next to the "Template" button.
 
 == Tags ==
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert "Work" into the lower textbox. The result looks like:
