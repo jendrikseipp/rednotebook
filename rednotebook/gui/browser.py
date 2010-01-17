@@ -42,6 +42,8 @@ except ImportError:
 	logging.info('Importing webkit failed')
 	webkit = None
 	
+from rednotebook.util import filesystem
+	
 	
 def can_print_pdf():
 	if not webkit:
@@ -141,11 +143,14 @@ class HtmlView(gtk.ScrolledWindow):
 		
 		#self.webview.connect('populate-popup', self.on_populate_popup)
 		self.webview.connect('button-press-event', self.on_button_press)
+		self.nav_signal = self.webview.connect('navigation-requested', self.on_navigate)
 		
 		self.show_all()
 		
 	def load_html(self, html):
+		self.loading_html = True
 		html = self.webview.load_html_string(html, 'file:///')
+		self.loading_html = False
 								
 	def get_html(self):
 		pass
@@ -155,9 +160,13 @@ class HtmlView(gtk.ScrolledWindow):
 		
 	def set_font_size(self, size):
 		if size <= 0:
-			zoom = 1
+			zoom = 1.0
 		else:
 			zoom = size / 10.0
+		# It seems webkit shows text a little bit bigger
+		print zoom,
+		zoom *= 0.90
+		print zoom
 		self.webview.set_zoom_level(zoom)
 		
 	def highlight(self, string):
@@ -179,12 +188,27 @@ class HtmlView(gtk.ScrolledWindow):
 			#self.webview.emit_stop_by_name('button_press_event')
 			# Stop processing that event
 			return True
+			
+	def on_navigate(self, webview, frame, request):
+		'''
+		We want to load files and links externally
+		'''
+		if self.loading_html:
+			# Keep processing
+			return False
+			
+		uri = request.get_uri()
+		logging.info('Clicked URI "%s"' % uri)
+		filesystem.open_url(uri)
+		
+		# Stop processing that event
+		return True
 	
 if __name__ == '__main__':
 	logging.getLogger('').setLevel(logging.DEBUG)
 	sys.path.insert(0, os.path.abspath("./../../"))
 	from rednotebook.util import markup
-	text = 'PDF export works 1'
+	text = 'PDF export works 1 www.heise.de'
 	html = markup.convert(text, 'xhtml')
 	
 	win = gtk.Window()
