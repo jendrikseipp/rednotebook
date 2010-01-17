@@ -119,7 +119,7 @@ def _get_config(type):
 		config['postproc'].append(['(?i)(</?)s>', '\\1strike>'])
 		
 		# Allow line breaks, r'\\\\' are 2 \ for regexes
-		config['postproc'].append([r'\\\\', '<BR>'])
+		config['postproc'].append([r'\\\\', '<br />'])
 		
 	elif type == 'tex':
 		config['encoding'] = 'utf8'
