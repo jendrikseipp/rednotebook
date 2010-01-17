@@ -274,6 +274,8 @@ As you see, the text can be formatted **bold**, \
 is also the "Format" button, with which you can format the main text and nodes \
 in the categories tree on the right.
 
+A blank line starts a new **paragraph**, \\ results in a newline.
+
 %% Formatting commands inside two pairs of "" are not interpreted (""**not bold**"")
 
 **Comments** can be inserted after percent signs (**%%**). They will not be shown in the \
@@ -291,7 +293,11 @@ appropriate option in the "Insert" pull-down menu above the main text field. The
 be inserted at the current cursor position.
 
 == %(templates)s ==
-%(temp_par)s
+%(temp_par)s 
+The files 1.txt to 7.txt in the template directory correspond to the templates \
+for each day of the week. The current weekday's template will be filled \
+into the text area when you click on "Template". You can open the template files \
+from inside RedNotebook by opening the menu next to the "Template" button.
 
 == Tags ==
 Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \

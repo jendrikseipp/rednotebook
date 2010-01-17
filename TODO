@@ -9,7 +9,7 @@ implementation if you tell me that you'd like its addition ;)
 
 0.9.2
 X Use webkit for direct pdf export
-X Drop pdflatex dependency
+X Remove pdflatex (texlive) package suggestion
 X Improve menu layout
 X Add "Report A Problem" button
 X Add "Translate RedNotebook" button
@@ -75,6 +75,7 @@ O Let user change font
 === Maybe even some of those features will make it into RedNotebook ===
 
 O List recently opened journals under "Journal" -> "Recently Used"
+O Add a box on right click in cloud words to display a menu with "Avoid this word from cloud" (usability)
 
 O Hyperlinks in Categories -> Already implemented, add documentation
 O Allow inserting directories (Do not add menu item, just document the feature)
