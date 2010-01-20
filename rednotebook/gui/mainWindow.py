@@ -386,7 +386,7 @@ class MainWindow(object):
 			self.preview_button.set_stock_id('gtk-edit')
 			#self.preview_button.set_label(' '*3 + 'Edit' + ' '*4)
 			self.preview_button.set_label(_('Edit'))
-		
+			
 			self.preview_mode = True
 			
 		template_button.set_sensitive(not self.preview_mode)
@@ -1385,7 +1385,10 @@ class DayTextField(object):
 		variants = set([text, text.capitalize(), text.lower(), text.upper()])
 		
 		for search_text in variants:
-			iter_tuple = iter_start.forward_search(search_text, gtk.TEXT_SEARCH_VISIBLE_ONLY)
+			iter_tuple = iter_start.forward_search(search_text, \
+								gtk.TEXT_SEARCH_VISIBLE_ONLY \
+								#| gtk.SEARCH_CASE_INSENSITIVE # non-existent
+								)
 			
 			# When we find one variant, highlight it and quit
 			if iter_tuple:

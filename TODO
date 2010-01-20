@@ -16,10 +16,12 @@ X Add "Translate RedNotebook" button
 X Add "Get Help Online" button
 X Handle opening of links externally in webkit preview
 X Fix spellchecking
+X Fix linebreaks for XHTML
 X Improve documentation
 
 0.9.3
 X Use webkit for previews when selected (UI-Config Option)
+O Make the Format button remember its last action
 O Change "Stricken" to "Strikethrough" (everywhere)
 O Custom-style Journals? (Mono-space)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
@@ -62,10 +64,12 @@ O Password protection or encryption
 
 1.x
 O Tabled Data?
+O Document and highlight structured header feature (====Header====)
 
 2.0
 O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting)
 O Let user change font, color fonts
+O Copy all files and pictures into data subdirectory
 
 
 
@@ -109,3 +113,5 @@ O Convert all read strings to unicode before working with them?
   everything, Current behaviour should be fine)
 - allow opening config file from within RedNotebook
   (Probably no good idea as some options might be unavailable or confusing)
+- Let the Preview and the Edit button keep the same size -> No, keep code simple
+

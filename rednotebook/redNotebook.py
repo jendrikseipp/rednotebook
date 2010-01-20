@@ -193,8 +193,14 @@ try:
 	#gtk.gdk.threads_enter()
 	
 	import gobject
-	#gtk.gdk.threads_init() # only initializes threading in the glib/gobject module
-	gobject.threads_init() # also initializes the gdk threads
+	# Some notes on threads_init:
+	# only gtk.gdk.threads_init(): pdf export works, but gui hangs afterwards
+	# only gobject.threads_init(): pdf export works, gui works
+	# both: pdf export stopped once while loading, second time worked
+	#       only the first export seems to be not working
+	
+	gobject.threads_init() # only initializes threading in the glib/gobject module
+	#gtk.gdk.threads_init() # also initializes the gdk threads
 except (ImportError, AssertionError):
 	logging.error('gtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)

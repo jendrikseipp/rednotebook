@@ -164,9 +164,7 @@ class HtmlView(gtk.ScrolledWindow):
 		else:
 			zoom = size / 10.0
 		# It seems webkit shows text a little bit bigger
-		print zoom,
 		zoom *= 0.90
-		print zoom
 		self.webview.set_zoom_level(zoom)
 		
 	def highlight(self, string):
