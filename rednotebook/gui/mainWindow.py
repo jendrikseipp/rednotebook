@@ -602,7 +602,7 @@ class MainWindow(object):
 			<menuitem action="Bold"/>
 			<menuitem action="Italic"/>
 			<menuitem action="Underline"/>
-			<menuitem action="Stricken"/>
+			<menuitem action="Strikethrough"/>
 		</popup>
 		</ui>'''
 			
@@ -617,7 +617,7 @@ class MainWindow(object):
 		
 		def apply_format(action):
 			format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__',
-								'stricken': '--'}
+								'strikethrough': '--'}
 			if type(action) == gtk.Action:
 				format = action.get_name().lower()
 			else:
@@ -647,8 +647,8 @@ class MainWindow(object):
 				apply_format,
 				)
 		# Create actions
-		strike_action = ('Stricken', gtk.STOCK_STRIKETHROUGH, \
-				_('Stricken'), None, None, apply_format,)
+		strike_action = ('Strikethrough', gtk.STOCK_STRIKETHROUGH, \
+				_('Strikethrough'), None, None, apply_format,)
 		actions = [get_action(format, trans) for format, trans in \
 					(('Bold', _('Bold')), \
 					('Italic', _('Italic')), \

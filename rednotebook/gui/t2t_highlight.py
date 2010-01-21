@@ -36,7 +36,7 @@ logging.getLogger('').setLevel(logging.DEBUG)
 
 txt = """
 === Header ===
-ä **bold**.*, //italic//,/italic/__underlined__, --stricken--
+ä **bold**.*, //italic//,/italic/__underlined__, --strikethrough--
 
 	 [""/home/user/Desktop/RedNotebook pic"".png]
 
@@ -216,7 +216,7 @@ def get_pattern(markup_symbols, style, allow_whitespace=False):
 	if allow_whitespace:
 		regex = r"(%s)(.+?)(%s)" % ((markup_symbols, ) * 2)
 	else:
-		# original stricken in txt2tags: r'--([^\s](|.*?[^\s])-*)--'
+		# original strikethrough in txt2tags: r'--([^\s](|.*?[^\s])-*)--'
 		# txt2tags docs say that format markup is greedy, but
 		# that doesn't seem to be the case
 		fill_ins = (markup_symbols, markup_symbols)
@@ -231,25 +231,23 @@ def get_pattern(markup_symbols, style, allow_whitespace=False):
 # additional style definitions:
 # the update_syntax() method of CodeBuffer allows you to define new and modify
 # already defined styles. Think of it like CSS.
-styles = { 'DEFAULT':   {},#{'font': 'serif'},
-		   'bold':	  {'weight': pango.WEIGHT_BOLD},
-		   'comment':   {'foreground': 'gray',
-						 #'weight': 700
-						 },
-		   'underlined':   {#'variant': pango.VARIANT_SMALL_CAPS,
-						 'underline': pango.UNDERLINE_SINGLE},
-			'grey':		{'foreground': 'gray'},
-			'red':		{'foreground': 'red'},
-			'italic':	{'style': pango.STYLE_ITALIC, # does not work
-						#'foreground': 'green'
-						},
-			'stricken':	{'strikethrough': True},
-			'header':	{'weight': pango.WEIGHT_ULTRABOLD,
-						'scale': pango.SCALE_XX_LARGE,
-						'variant': pango.VARIANT_SMALL_CAPS},
-			'raw':		{},
-			'link':		{'foreground': 'blue',
-						'underline': pango.UNDERLINE_SINGLE,},
+styles = {	'DEFAULT':   		{},#{'font': 'serif'},
+			'bold':	  			{'weight': pango.WEIGHT_BOLD},
+			'comment':   		{'foreground': 'gray'},
+			'underlined':   	{#'variant': pango.VARIANT_SMALL_CAPS,
+								'underline': pango.UNDERLINE_SINGLE},
+			'grey':				{'foreground': 'gray'},
+			'red':				{'foreground': 'red'},
+			'italic':			{'style': pango.STYLE_ITALIC, # does not work
+								#'foreground': 'green'
+								},
+			'strikethrough':	{'strikethrough': True},
+			'header':			{'weight': pango.WEIGHT_ULTRABOLD,
+								'scale': pango.SCALE_XX_LARGE,
+								'variant': pango.VARIANT_SMALL_CAPS},
+			'raw':				{},
+			'link':				{'foreground': 'blue',
+								'underline': pango.UNDERLINE_SINGLE,},
 			}
 
 # Syntax definition
@@ -289,7 +287,7 @@ rules = [
 		get_pattern('\*\*', 'bold'),
 		get_pattern('__', 'underlined'),
 		get_pattern('//', 'italic'),
-		get_pattern('--', 'stricken'),
+		get_pattern('--', 'strikethrough'),
 		#get_pattern('===', 'header', allow_whitespace=True), # not correct
 		header,
 		list,

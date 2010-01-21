@@ -46,7 +46,7 @@ Your text can be:
 - **bold**
 - //italic//
 - __underlined__
-- --stricken--
+- --strikethrough--
 
 
 You can add images to your template:

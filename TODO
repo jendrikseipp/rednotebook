@@ -10,7 +10,7 @@ implementation if you tell me that you'd like its addition ;)
 0.9.3
 O Add graphical option to select webkit for previews
 O Make the Format button remember its last action
-O Change "Stricken" to "Strikethrough" (everywhere)
+X Change "Stricken" to "Strikethrough"
 O Custom-style Journals? (Mono-space)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
 

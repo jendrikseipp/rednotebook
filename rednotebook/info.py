@@ -235,7 +235,7 @@ Here is how it works:
 - To mark an item as important, add "**" around it.
 
 
-So --Remember the milk-- becomes stricken and **Wash the dishes** becomes bold.
+So --Remember the milk-- becomes struck through and **Wash the dishes** becomes bold.
 
 You can see all your todo items at once by clicking "todo" in the category cloud \
 on the left. There you can also \
@@ -272,7 +272,7 @@ The main text field is the container for your normal diary entries like this one
 
 == Format ==
 As you see, the text can be formatted **bold**, \
-//italic//, --stricken-- and __underlined__. As a convenience there \
+//italic//, --struck through-- and __underlined__. As a convenience there \
 is also the "Format" button, with which you can format the main text and nodes \
 in the categories tree on the right.
 
