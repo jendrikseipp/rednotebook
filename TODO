@@ -7,18 +7,6 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-0.9.2
-X Use webkit for direct pdf export
-X Remove pdflatex (texlive) package suggestion
-X Improve menu layout
-X Add "Report A Problem" button
-X Add "Translate RedNotebook" button
-X Add "Get Help Online" button
-X Handle opening of links externally in webkit preview
-X Fix spellchecking
-X Fix linebreaks for XHTML
-X Improve documentation
-
 0.9.3
 O Add graphical option to select webkit for previews
 O Make the Format button remember its last action
