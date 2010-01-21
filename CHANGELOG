@@ -1,7 +1,7 @@
 ==== RedNotebook Changelog ====
 
 === 0.9.2 (10-01-21) ===
- * Use webkit for direct pdf export
+ * Use webkit for direct PDF export
  * Remove pdflatex (texlive) package suggestion
  * Improve menu layout
  * Add "Report A Problem" button

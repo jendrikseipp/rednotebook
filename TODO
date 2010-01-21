@@ -16,6 +16,7 @@ O Image resizing with PIL? (Image module) (Figure out where to save new files fi
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
+O Make webkit the default preview backend
 
 0.9.5
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
