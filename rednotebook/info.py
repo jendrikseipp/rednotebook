@@ -27,18 +27,20 @@ if not hasattr(__builtin__, '_'):
 	def _(string):
 		return string
 
-version = '0.9.2'
-author = 'Jendrik Seipp'
-authorMail = 'jendrikseipp@web.de'
-url = 'http://rednotebook.sourceforge.net'
-forum_url = 'http://apps.sourceforge.net/phpbb/rednotebook/'
-translation_url = 'https://translations.launchpad.net/rednotebook/'
-bug_url = 'https://bugs.launchpad.net/rednotebook/+filebug'
+version = 			'0.9.2'
+author = 			'Jendrik Seipp'
+authorMail = 		'jendrikseipp@web.de'
+url = 				'http://rednotebook.sourceforge.net'
+forum_url = 		'http://apps.sourceforge.net/phpbb/rednotebook/'
+translation_url = 	'https://translations.launchpad.net/rednotebook/'
+bug_url = 			'https://bugs.launchpad.net/rednotebook/+filebug'
+
 developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
 				'',
 				'Contributors:',
 				'Alexandre Cucumel <superkiouk@gmail.com>',
 				]
+				
 comments = '''\
 RedNotebook is a graphical journal to keep track of notes and \
 thoughts. It includes a calendar navigation, customizable \

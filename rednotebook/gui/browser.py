@@ -91,20 +91,12 @@ class HtmlPrinter(object):
 	def print_html(self, html, outfile):
 		handler = self._webview.connect(
 			'load-finished', self._load_finished_cb, outfile)
+		self._print_status('Loading URL...')
 		self._webview.load_html_string(html, 'file:///')
 		
-		self._print_status('Loading URL...')
-		
-		if hasattr(warnings, 'catch_warnings'):
-			with warnings.catch_warnings():
-				warnings.simplefilter("ignore")
-				while gtk.events_pending():
-					gtk.main_iteration()
-		else:
-			while gtk.events_pending():
-				gtk.main_iteration()
-
-		self._webview.disconnect(handler)
+		while gtk.events_pending():
+			gtk.main_iteration()
+			
 
 	def _load_finished_cb(self, view, frame, outfile):
 		self._print_status('Loading done')

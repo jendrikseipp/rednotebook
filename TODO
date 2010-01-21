@@ -20,7 +20,7 @@ X Fix linebreaks for XHTML
 X Improve documentation
 
 0.9.3
-X Use webkit for previews when selected (UI-Config Option)
+O Add graphical option to select webkit for previews
 O Make the Format button remember its last action
 O Change "Stricken" to "Strikethrough" (everywhere)
 O Custom-style Journals? (Mono-space)
