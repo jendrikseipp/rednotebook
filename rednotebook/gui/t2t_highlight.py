@@ -234,13 +234,10 @@ def get_pattern(markup_symbols, style, allow_whitespace=False):
 styles = {	'DEFAULT':   		{},#{'font': 'serif'},
 			'bold':	  			{'weight': pango.WEIGHT_BOLD},
 			'comment':   		{'foreground': 'gray'},
-			'underlined':   	{#'variant': pango.VARIANT_SMALL_CAPS,
-								'underline': pango.UNDERLINE_SINGLE},
+			'underlined':   	{'underline': pango.UNDERLINE_SINGLE},
 			'grey':				{'foreground': 'gray'},
 			'red':				{'foreground': 'red'},
-			'italic':			{'style': pango.STYLE_ITALIC, # does not work
-								#'foreground': 'green'
-								},
+			'italic':			{'style': pango.STYLE_ITALIC},
 			'strikethrough':	{'strikethrough': True},
 			'header':			{'weight': pango.WEIGHT_ULTRABOLD,
 								'scale': pango.SCALE_XX_LARGE,

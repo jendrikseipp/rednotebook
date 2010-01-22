@@ -615,13 +615,11 @@ class MainWindow(object):
 		def tmpl(word):
 			return word + ' (Ctrl+%s)' % word[0]
 		
-		def apply_format(action):
+		def apply_format(action, format='bold'):
 			format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__',
 								'strikethrough': '--'}
 			if type(action) == gtk.Action:
 				format = action.get_name().lower()
-			else:
-				format = 'bold'
 			
 			markup = format_to_markup[format]
 			
