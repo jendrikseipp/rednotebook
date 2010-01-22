@@ -28,6 +28,7 @@ import gobject
 
 from rednotebook.gui.widgets import UrlButton, CustomComboBoxEntry
 from rednotebook.gui.widgets import ActionButton
+from rednotebook.gui import browser
 from rednotebook.util import filesystem, utils
 from rednotebook import info
 
@@ -293,6 +294,16 @@ class OptionsManager(object):
 		if not sys.platform == 'win32':
 			self.options.append(spell_check_option)
 		spell_check_option.set_sensitive(able_to_spell_check)
+		
+		webkit_available = bool(browser.webkit)
+		tooltip = _('Webkit offers a nicer preview') if webkit_available else \
+				_('Requires pywebkitgtk (python-webkit)')
+		webkit_label = _('Use webkit for previews') + ' ' + _('(Restart Required)')
+		webkit_option = TickOption(webkit_label, 'useWebkit',
+				tooltip=tooltip)
+		if not sys.platform == 'win32':
+			self.options.append(webkit_option)
+		webkit_option.set_sensitive(webkit_available)
 		
 		
 		# Check for new version
