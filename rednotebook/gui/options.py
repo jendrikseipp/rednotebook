@@ -298,7 +298,7 @@ class OptionsManager(object):
 		webkit_available = bool(browser.webkit)
 		tooltip = _('Webkit offers a nicer preview') if webkit_available else \
 				_('Requires pywebkitgtk (python-webkit)')
-		webkit_label = _('Use webkit for previews') + ' ' + _('(Restart Required)')
+		webkit_label = _('Use webkit for previews') + ' ' + _('(Restart required)')
 		webkit_option = TickOption(webkit_label, 'useWebkit',
 				tooltip=tooltip)
 		if not sys.platform == 'win32':

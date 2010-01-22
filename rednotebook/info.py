@@ -27,7 +27,7 @@ if not hasattr(__builtin__, '_'):
 	def _(string):
 		return string
 
-version = 			'0.9.2'
+version = 			'0.9.3'
 author = 			'Jendrik Seipp'
 authorMail = 		'jendrikseipp@web.de'
 url = 				'http://rednotebook.sourceforge.net'
@@ -322,6 +322,14 @@ Clicking on the "Clouds" tab on the left lets you view the most often used words
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
 If words appear in the cloud that you don't want to see there, just right-click on them. \
 Alternatively you can open the Preferences dialog and add the words to the cloud blocklist there.
+
+== Spellcheck ==
+RedNotebook supports spellchecking your entries if you have python-gtkspell installed. \
+To highlight all misspelled words in your entries, select the corresponding option in \
+the preferences window.
+
+Since gtkspell 2.0.15, you can select the spellchecking language by right-clicking on the \
+main text area (in edit mode) and choosing it from the submenu "Languages".
 
 == Options ==
 Make sure you check out the customizable options in the Preferences dialog. You can

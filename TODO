@@ -11,8 +11,7 @@ implementation if you tell me that you'd like its addition ;)
 X Add graphical option to select webkit for previews
 O Make the Format button remember its last action
 X Change "Stricken" to "Strikethrough"
-O Custom-style Journals? (Mono-space)
-O Image resizing with PIL? (Image module) (Figure out where to save new files first)
+O Build new Windows installer
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
@@ -31,9 +30,9 @@ O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availabil
 0.9.x
 O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
+O Custom-style Journals? (Mono-space)
+O Image resizing with PIL? (Image module) (Figure out where to save new files first)
 O Import of exported backups
-O Change to newer KeepNote Version? -> No.
-O Make webkit default preview backend
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
 X Windows: RedNotebook can now be run in portable mode
@@ -103,4 +102,6 @@ O Convert all read strings to unicode before working with them?
 - allow opening config file from within RedNotebook
   (Probably no good idea as some options might be unavailable or confusing)
 - Let the Preview and the Edit button keep the same size -> No, keep code simple
+- Change to newer KeepNote Version? -> No. A stable webkit will be available everywhere soon.
+
 

@@ -19,7 +19,7 @@ body {
 
 <div class="header" id="header">
 <h1>RedNotebook Documentation</h1>
-<h2>0.9.2</h2>
+<h2>0.9.3</h2>
 </div>
 
 <div class="toc" id="toc">
@@ -41,33 +41,35 @@ body {
     </li>
     <li><a href="#toc8">Clouds</a>
     </li>
-    <li><a href="#toc9">Options</a>
+    <li><a href="#toc9">Spellcheck</a>
     </li>
-    <li><a href="#toc10">Save</a>
+    <li><a href="#toc10">Options</a>
+    </li>
+    <li><a href="#toc11">Save</a>
       <ul>
-      <li><a href="#toc11">Save to remote FTP or SSH server</a>
+      <li><a href="#toc12">Save to remote FTP or SSH server</a>
       </li>
       </ul>
     </li>
-    <li><a href="#toc12">Export</a>
+    <li><a href="#toc13">Export</a>
       <ul>
-      <li><a href="#toc13">Convert Latex output to PDF</a>
+      <li><a href="#toc14">Convert Latex output to PDF</a>
       </li>
       </ul>
     </li>
-    <li><a href="#toc14">Keyboard Shortcuts</a>
+    <li><a href="#toc15">Keyboard Shortcuts</a>
     </li>
-    <li><a href="#toc15">Tips</a>
+    <li><a href="#toc16">Tips</a>
       <ul>
-      <li><a href="#toc16">Multiple Entries</a>
+      <li><a href="#toc17">Multiple Entries</a>
       </li>
-      <li><a href="#toc17">Todo list</a>
+      <li><a href="#toc18">Todo list</a>
       </li>
       </ul>
     </li>
-    <li><a href="#toc18">Questions</a>
+    <li><a href="#toc19">Questions</a>
     </li>
-    <li><a href="#toc19">Bugs</a>
+    <li><a href="#toc20">Bugs</a>
     </li>
     </ul>
 
@@ -88,7 +90,7 @@ Today I went to the <i>pet shop</i> and bought a <b>tiger</b>. Then we went to t
 <h2>Format</h2>
 
 <p>
-As you see, the text can be formatted <b>bold</b>, <i>italic</i>, <strike>stricken</strike> and <u>underlined</u>. As a convenience there is also the "Format" button, with which you can format the main text and nodes in the categories tree on the right.
+As you see, the text can be formatted <b>bold</b>, <i>italic</i>, <strike>struck through</strike> and <u>underlined</u>. As a convenience there is also the "Format" button, with which you can format the main text and nodes in the categories tree on the right.
 </p>
 <p>
 A blank line starts a new <b>paragraph</b>, \ results in a newline.
@@ -182,6 +184,16 @@ If words appear in the cloud that you don't want to see there, just right-click 
 </p>
 
 <a id="toc9" name="toc9"></a>
+<h2>Spellcheck</h2>
+
+<p>
+RedNotebook supports spellchecking your entries if you have python-gtkspell installed. To highlight all misspelled words in your entries, select the corresponding option in the preferences window.
+</p>
+<p>
+Since gtkspell 2.0.15, you can select the spellchecking language by right-clicking on the main text area (in edit mode) and choosing it from the submenu "Languages".
+</p>
+
+<a id="toc10" name="toc10"></a>
 <h2>Options</h2>
 
 <p>
@@ -189,14 +201,14 @@ Make sure you check out the customizable options in the Preferences dialog. You 
 open this dialog by clicking on the entry in the "Edit" menu.
 </p>
 
-<a id="toc10" name="toc10"></a>
+<a id="toc11" name="toc11"></a>
 <h2>Save</h2>
 
 <p>
 Everything you enter will be saved automatically at regular intervals and when you exit the program. To avoid data loss you should backup your journal regularly. "Backup" in the "Journal" menu saves all your entered data in a zip file.
 </p>
 
-<a id="toc11" name="toc11"></a>
+<a id="toc12" name="toc12"></a>
 <h3>Save to remote FTP or SSH server</h3>
 
 <p>
@@ -206,7 +218,7 @@ Since version 0.8.9 you can have your journal directory on a remote server. The 
 Obviously you have to be connected to the internet to use that feature. Be sure to backup your data regularly if you plan to save your content remotely. There are always more pitfalls when an internet connection is involved.
 </p>
 
-<a id="toc12" name="toc12"></a>
+<a id="toc13" name="toc13"></a>
 <h2>Export</h2>
 
 <p>
@@ -226,7 +238,7 @@ Make sure to type all links with the full path including the protocol:
 </li>
 </ul>
 
-<a id="toc13" name="toc13"></a>
+<a id="toc14" name="toc14"></a>
 <h3>Convert Latex output to PDF</h3>
 
 <p>
@@ -260,7 +272,7 @@ You can open an exported Latex file with Texniccenter and convert it to PDF with
 same directory.
 </p>
 
-<a id="toc14" name="toc14"></a>
+<a id="toc15" name="toc15"></a>
 <h2>Keyboard Shortcuts</h2>
 
 <table border="1">
@@ -306,10 +318,10 @@ same directory.
 You can find other shortcuts in the menus.
 </p>
 
-<a id="toc15" name="toc15"></a>
+<a id="toc16" name="toc16"></a>
 <h2>Tips</h2>
 
-<a id="toc16" name="toc16"></a>
+<a id="toc17" name="toc17"></a>
 <h3>Multiple Entries</h3>
 
 <p>
@@ -343,7 +355,7 @@ Here goes the first entry.
 Here comes the entry about the fun stuff.
 </p>
 
-<a id="toc17" name="toc17"></a>
+<a id="toc18" name="toc18"></a>
 <h3>Todo list</h3>
 
 <p>
@@ -372,7 +384,7 @@ Here is how it works:
 </ul>
 
 <p>
-So <strike>Remember the milk</strike> becomes stricken and <b>Wash the dishes</b> becomes bold.
+So <strike>Remember the milk</strike> becomes struck through and <b>Wash the dishes</b> becomes bold.
 </p>
 <p>
 You can see all your todo items at once by clicking "todo" in the category cloud on the left. There you can also group your todo items into important and finished items by hitting "Entry" at the top of the list.
@@ -384,14 +396,14 @@ It probably sometimes makes sense to add the todo items to the day you want to h
 Once you've finished an item, you could also change its category name from "Todo" to "Done".
 </p>
 
-<a id="toc18" name="toc18"></a>
+<a id="toc19" name="toc19"></a>
 <h2>Questions</h2>
 
 <p>
 If you have any questions or comments, feel free to post them in the <a href="http://apps.sourceforge.net/phpbb/rednotebook/">forum</a> or contact me directly.
 </p>
 
-<a id="toc19" name="toc19"></a>
+<a id="toc20" name="toc20"></a>
 <h2>Bugs</h2>
 
 <p>
