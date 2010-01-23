@@ -9,9 +9,9 @@ implementation if you tell me that you'd like its addition ;)
 
 0.9.3
 X Add graphical option to select webkit for previews
-O Make the Format button remember its last action
 X Change "Stricken" to "Strikethrough"
 O Build new Windows installer
+X Improve documentation
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
@@ -37,7 +37,7 @@ O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
-   O Propose to portableapps
+   O Propose for portableapps
    O Show message in windows installer
    O Save dataDir relative to exe
 
@@ -71,9 +71,6 @@ O Copy all files and pictures into data subdirectory
 O List recently opened journals under "Journal" -> "Recently Used"
 O Add a box on right click in cloud words to display a menu with "Avoid this word from cloud" (usability)
 
-O Hyperlinks in Categories -> Already implemented, add documentation
-O Allow inserting directories (Do not add menu item, just document the feature)
-
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)
   (Probably a bad idea since threads are a source of errors)
@@ -103,5 +100,6 @@ O Convert all read strings to unicode before working with them?
   (Probably no good idea as some options might be unavailable or confusing)
 - Let the Preview and the Edit button keep the same size -> No, keep code simple
 - Change to newer KeepNote Version? -> No. A stable webkit will be available everywhere soon.
+- Make the Format button remember its last action -> No, current behaviour good enough.
 
 
