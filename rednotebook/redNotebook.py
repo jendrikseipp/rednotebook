@@ -196,9 +196,7 @@ try:
 	# Some notes on threads_init:
 	# only gtk.gdk.threads_init(): pdf export works, but gui hangs afterwards
 	# only gobject.threads_init(): pdf export works, gui works
-	# both: pdf export stopped once while loading, second time worked
-	#       only the first export seems to be not working
-	
+	# both: pdf export works, gui hangs afterwards	
 	gobject.threads_init() # only initializes threading in the glib/gobject module
 	#gtk.gdk.threads_init() # also initializes the gdk threads
 except (ImportError, AssertionError):
@@ -236,7 +234,7 @@ if baseDir not in sys.path:
 from rednotebook.util import unicode
 from rednotebook.util import dates
 #from rednotebook import info
-from rednotebook import config
+from rednotebook import config as configuration
 from rednotebook import backup
 
 from rednotebook.gui.mainWindow import MainWindow
@@ -249,7 +247,7 @@ class RedNotebook:
 	def __init__(self):
 		self.dirs = dirs
 		
-		self.config = config.Config(self.dirs)
+		self.config = configuration.Config(self.dirs)
 		logging.info('Running in portable mode: %s' % self.config.read('portable', 0))
 		
 		self.testing = False
@@ -281,11 +279,11 @@ class RedNotebook:
 		
 		utils.set_environment_variables(self.config)
 		
+		self.actualDate = datetime.date.today()
+		
 		# Let components check if the MainWindow has been created
 		self.frame = None
 		self.frame = MainWindow(self)
-		   
-		self.actualDate = datetime.date.today()
 		
 		self.open_journal(self.get_journal_path())
 		

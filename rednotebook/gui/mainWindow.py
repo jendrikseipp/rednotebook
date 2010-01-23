@@ -208,6 +208,23 @@ class MainWindow(object):
 		#self.menubar_manager.set_tooltips()
 		self.set_tooltips()
 		
+		from rednotebook.gui import journalgeist
+		# Only add the config variable if zeitgeist is available
+		use_zeigeist = journalgeist.zeitgeist and \
+						self.redNotebook.config.read('useZeitgeist', 0)
+		logging.info('Using zeigeist: %s' % use_zeitgeist)
+		
+		if use_zeigeist:
+			self.setup_zeitgeist_view()
+		
+	
+	def setup_zeitgeist_view(self):
+		'''Zeigeist integration'''
+		#from rednotebook.gui.journalgeist import JournalZeitgeistWidget
+		zeitgeist_view = journalgeist.JournalZeitgeistWidget(self.redNotebook.actualDate)
+		right_vbox = self.builder.get_object('right_vbox')
+		right_vbox.pack_start(zeitgeist_view)
+		
 		
 	def set_tooltips(self):
 		'''

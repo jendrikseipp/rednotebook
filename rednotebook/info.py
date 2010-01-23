@@ -190,7 +190,10 @@ and many different entries. It is possible to export only that category and \
 get a list of the cool stuff that happened to me with the respective dates.
 
 Additionally you can select the "Cool Stuff" category in the word cloud window \
-to get a list of all the cool things.''' % globals(),
+to get a list of all the cool things.
+
+Category entries can have all of the formatting that the main text supports, \
+so e.g. you can add bold text, links or images.''' % globals(),
 u'Cool Stuff': {u'Went to see the pope': None},
 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
 u'Tags': {u'Documentation': None, u'Projects': None},
@@ -293,6 +296,9 @@ this text was formatted by looking at its [source source.txt].
 RedNotebook lets you insert images, files and links into your entries. To do so, select the \
 appropriate option in the "Insert" pull-down menu above the main text field. The text will \
 be inserted at the current cursor position.
+
+With the insert button you cannot insert **links to directories** on your computer. \
+Those can be inserted manually however (""[Home ""file:///home/""]"").
 
 == %(templates)s ==
 %(temp_par)s 

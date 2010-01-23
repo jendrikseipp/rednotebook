@@ -337,7 +337,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkVBox" id="vbox6">
+                      <object class="GtkVBox" id="right_vbox">
                         <property name="visible">True</property>
                         <child>
                           <object class="GtkToolbar" id="toolbar1">
