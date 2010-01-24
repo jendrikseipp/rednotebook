@@ -41,6 +41,7 @@ except ImportError:
 # Initialize the gtk thread engine
 #gobject.threads_init()
 
+from rednotebook.gui import journalgeist
 from rednotebook.util import utils
 import rednotebook.util.unicode
 
@@ -61,6 +62,7 @@ from rednotebook.gui.exportAssistant import ExportAssistant
 from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
 from rednotebook.gui import browser
+
 
 
 class MainWindow(object):
@@ -208,13 +210,13 @@ class MainWindow(object):
 		#self.menubar_manager.set_tooltips()
 		self.set_tooltips()
 		
-		from rednotebook.gui import journalgeist
+		
 		# Only add the config variable if zeitgeist is available
-		use_zeigeist = journalgeist.zeitgeist and \
+		use_zeitgeist = journalgeist.zeitgeist and \
 						self.redNotebook.config.read('useZeitgeist', 0)
 		logging.info('Using zeigeist: %s' % use_zeitgeist)
 		
-		if use_zeigeist:
+		if use_zeitgeist:
 			self.setup_zeitgeist_view()
 		
 	

@@ -228,17 +228,16 @@ if baseDir not in sys.path:
 	sys.path.insert(0, baseDir)
 	
 
-
-
 # This version of import is needed for win32 to work
 from rednotebook.util import unicode
 from rednotebook.util import dates
 #from rednotebook import info
-from rednotebook import config as configuration
+from rednotebook import configuration
 from rednotebook import backup
 
-from rednotebook.gui.mainWindow import MainWindow
+
 from rednotebook.util.statistics import Statistics
+from rednotebook.gui.mainWindow import MainWindow
 
 
 
