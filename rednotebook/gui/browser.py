@@ -39,7 +39,7 @@ if __name__ == '__main__':
 try:
 	import webkit
 except ImportError:
-	logging.info('Importing webkit failed')
+	logging.info('webkit not found. For a nicer preview install python-webkit or pywebkitgtk')
 	webkit = None
 	
 from rednotebook.util import filesystem

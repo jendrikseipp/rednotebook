@@ -209,7 +209,7 @@ except (ImportError, AssertionError), e:
 try:
 	import yaml
 except ImportError:
-	logging.error('Yaml is not installed (install python-yaml)')
+	logging.error('PyYAML not found. Please install python-yaml or PyYAML')
 	sys.exit(1)
 
 # The presence of the yaml module has been checked

@@ -3,17 +3,34 @@
 There are many packages available for different distributions, so you might
 want to check the Downloads page first.
 
+It is recommended to install the distribution's appropriate package, 
+but of course sometimes you want to try out the bleeding edge, hot new stuff.
 
-====== Short Instructions ======
+In order to not mess with your distribution's package system, you might
+want to just run the program, without installing it.
 
-==== Ubuntu/Debian/Mint ====
-In the unpacked rednotebook-x.y.z directory:
+
+=====  RUN RedNotebook on Ubuntu/Debian/Mint  =====
+In this directory:
+  - sudo apt-get install python-yaml python-webkit
+  - python rednotebook/redNotebook.py
+  
+=====  RUN RedNotebook on Fedora  =====
+In this directory:
+  - yum install python-devel PyYAML pywebkitgtk
+  - python rednotebook/redNotebook.py
+
+
+======  Short Install Instructions  ======
+
+====  INSTALL RedNotebook on Ubuntu/Debian/Mint  ====
+In this directory:
   - sudo apt-get install python-yaml python-webkit
   - sudo python setup.py install
   
-==== Fedora ====
-In the unpacked rednotebook-x.y.z directory:
-  - yum -y install python-devel PyYAML pywebkitgtk
+==== INSTALL RedNotebook on Fedora ====
+In this directory:
+  - yum install python-devel PyYAML pywebkitgtk
   - sudo python setup.py install
   
 
@@ -63,6 +80,9 @@ You should also find a menu entry for RedNotebook under "Office".
   - Matt Rasmussen and his KeepNote project (http://rasm.ods.org/keepnote/). 
   			RedNotebook uses his work on displaying HTML content 
 			in a PyGTK application for the preview.
+  - Ahmet Öztürk and Lifeograph for his markup highlighting idea
+  - Hannes Matuschek: RedNotebook uses pygtkcodebuffer for the markup
+			highlighting 
 
 
 Enjoy!

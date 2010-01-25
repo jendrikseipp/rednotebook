@@ -10,7 +10,6 @@ implementation if you tell me that you'd like its addition ;)
 0.9.3
 X Add graphical option to select webkit for previews
 X Change "Stricken" to "Strikethrough"
-O Build new Windows installer
 X Improve documentation
 
 0.9.4
@@ -35,6 +34,7 @@ O Image resizing with PIL? (Image module) (Figure out where to save new files fi
 O Import of exported backups
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
+O Build new Windows installer
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose for portableapps

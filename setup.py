@@ -181,7 +181,7 @@ parameters = {	'name'				: 'rednotebook',
 				'url'				: info.url, 
 				'license'			: "GPL", 
 				'keywords'			: "journal, diary", 
-				'scripts'			: ['rednotebook/rednotebook'], 
+				'scripts'			: ['rednotebook/rednotebook'],
 				'packages'			: ['rednotebook', 'rednotebook.util', 'rednotebook.gui', \
 										'rednotebook.external',
 										'rednotebook.gui.keepnote', 'rednotebook.gui.keepnote.gui', \
