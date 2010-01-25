@@ -134,6 +134,8 @@ setup_logging(dirs.logFile)
 
 ## ---------------------- Enable i18n -------------------------------
 
+#os.environ['LANG'] = 'de'
+
 # set the locale for all categories to the user’s default setting 
 # (typically specified in the LANG environment variable)
 import locale
@@ -164,6 +166,7 @@ try:
 	import gtk.glade
 	modules.append(gtk.glade)
 except ImportError, err:
+	logging.warning(err)
 	logging.warning('Importing gtk.glade failed. Some strings may not be translated')
 
 for module in modules:
@@ -190,7 +193,6 @@ try:
 	#logging.disable(logging.ERROR)
 	#logging.disable(logging.WARNING)
 	#logging.disable(logging.CRITICAL)
-	#gtk.gdk.threads_enter()
 	
 	import gobject
 	# Some notes on threads_init:
@@ -199,7 +201,8 @@ try:
 	# both: pdf export works, gui hangs afterwards	
 	gobject.threads_init() # only initializes threading in the glib/gobject module
 	#gtk.gdk.threads_init() # also initializes the gdk threads
-except (ImportError, AssertionError):
+except (ImportError, AssertionError), e:
+	logging.error(e)
 	logging.error('gtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 

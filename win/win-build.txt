@@ -1,6 +1,6 @@
 ====== Install GTK ======
 (view http://faq.pygtk.org/index.py?req=show&file=faq21.001.htp for more details)
-  * Install Python 2.5 or 2.6 for Microsoft Windows from the Python website [www.python.org] .
+  * Install Python 2.6 for Microsoft Windows from the Python website [www.python.org] .
   * Install the latest GTK+ stack bundle provided by the GTK+ 
 	project linked from [http://www.pygtk.org/downloads.html] or 
 	[http://ftp.gnome.org/pub/GNOME/binaries/win32/gtk+/]
@@ -16,6 +16,11 @@
   * Checkout SVN (as you've already done)
   * Open a commandline and navigate to PathToRedNotebook\rednotebook
   * execute "python redNotebook.py"
+  
+====== Translations ======
+  * Get the libglade-2.0-0.dll DLL from somewhere and copy it into the GTK\bin directory.
+  * Move up one directory
+  * Run "python setup.py i18n" to translate the po files to mo files
 
 ====== Build Exe ======
   * Install py2exe (http://www.py2exe.org/)
@@ -28,6 +33,7 @@
   * You may want to remove the " doc" and "gtk-doc" subdirectories from the "share" directory
     They only contain html documentation for gtk
   * Now clicking redNotebook.exe should start the application
+    If it doesn't start, you'll hopefully find an error log in C:\D&S\User\.rednotebook\rednotebook.log
   
 ====== Some important adjustments ======
   * To use the MS-Windows theme engine, create or edit a file in dist/etc/gtk-2.0/gtkrc
@@ -38,9 +44,10 @@
       to backup the file
     * Copy the file gtkrc from this directory to dist/share/themes/MS-Windows/gtk-2.0/
   * Sometimes the file jpg62.dll is missing in dist/
-    * If it is not there, copy it from the GTK bin directory into dist/
+    * If it is not there, copy it from the GTK bin directory (or from somewhere on the internet) into dist/
     
 ====== Build the installer ======
+  * Install Inno Setup (http://www.jrsoftware.org/isinfo.php)
   * Double-click rednotebook.iss
   * Adjust the two version numbers
   * Click compile
