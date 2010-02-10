@@ -17,12 +17,99 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+from __future__ import division
+
 import logging
 
 import gtk
 
 from rednotebook.gui.browser import HtmlView
-from rednotebook.util import utils
+from rednotebook.util import unicode
+
+
+def word_count_dict_to_html(wordCountDict, type, ignore_list, include_list):
+	logging.debug('Turning the wordCountDict into html')
+	logging.debug('Length wordCountDict: %s' % len(wordCountDict))
+	
+	sortedDict = sorted(wordCountDict.items(), key=lambda (word, freq): freq)
+	
+	if type == 'word':
+		# filter short words
+		include_list = map(str.lower, include_list)
+		get_long_words = lambda (word, freq): len(word) > 4 or word.lower() in include_list
+		sortedDict = filter(get_long_words, sortedDict)
+		logging.debug('Filtered short words. Length wordCountDict: %s' % len(sortedDict))
+		
+	# filter words in ignore_list
+	sortedDict = filter(lambda (word, freq): word.lower() not in ignore_list, sortedDict)
+	logging.debug('Filtered blacklist words. Length wordCountDict: %s' % len(sortedDict))
+	
+	oftenUsedWords = []
+	numberOfWords = 42
+	
+	'''
+	only take the longest words. If there are less words than n, 
+	len(sortedDict) words are returned
+	'''
+	cloud_words = sortedDict[-numberOfWords:]
+	logging.debug('Selected most frequent words. Length CloudWords: %s' % len(cloud_words))
+	
+	if len(cloud_words) < 1:
+		return [], ''
+	
+	minCount = cloud_words[0][1]
+	maxCount = cloud_words[-1][1]
+	
+	logging.debug('Min word count: %s, Max word count: %s' % (minCount, maxCount))
+	
+	deltaCount = maxCount - minCount
+	if deltaCount == 0:
+		deltaCount = 1
+	
+	minFontSize = 10
+	maxFontSize = 50
+	
+	fontDelta = maxFontSize - minFontSize
+	
+	# sort words with unicode sort function
+	cloud_words.sort(key=lambda (word, count): unicode.coll(word))
+	
+	logging.debug('Sorted cloud words. Length CloudWords: %s' % len(cloud_words))
+	
+	htmlElements = []
+	
+	
+	css = '''\
+	<style type="text/css">
+		body {
+			font-family: sans-serif;
+			text-align: center;
+		}
+		a:link { color:black; text-decoration:none; }
+		a:visited { color:black; text-decoration:none; }
+		a:focus { color:black; text-decoration:none; }
+		a:hover { color:black; text-decoration:none; }
+		a:active { color:black; text-decoration:none; }
+	</style>'''
+	
+	for index, (word, count) in enumerate(cloud_words):
+		fontFactor = (count - minCount) / deltaCount
+		fontSize = int(minFontSize + fontFactor * fontDelta)
+		
+		htmlElements.append('<a href="search/%s">' 
+							'<span style="font-size:%spx">%s</span></a>' \
+							% (index, fontSize, word) + \
+							#Add some whitespace
+							'&#xA0;')
+		
+	#random.shuffle(htmlElements)
+	
+	htmlBody = '<body>' + '\n'.join(htmlElements) + '\n</body>\n'
+	htmlDoc = '<html><head>' + css + '</head>' + htmlBody + '</html>'
+	
+	return (cloud_words, htmlDoc)
+
+
 
 class Cloud(HtmlView):
 	def __init__(self, redNotebook):
@@ -74,8 +161,8 @@ class Cloud(HtmlView):
 		logging.debug('Retrieved WordCountDict. Length: %s' % len(wordCountDict))
 		
 		self.tagCloudWords, html = \
-			utils.getHtmlDocFromWordCountDict(wordCountDict, self.type, \
-											self.ignore_list, self.include_list)
+			word_count_dict_to_html(wordCountDict, self.type, \
+									self.ignore_list, self.include_list)
 		logging.debug('%s cloud words found' % len(self.tagCloudWords))
 		
 		self.load_html(html)
