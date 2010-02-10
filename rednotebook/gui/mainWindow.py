@@ -443,7 +443,12 @@ class MainWindow(object):
 	def setup_clouds(self):
 		self.cloudBox = self.builder.get_object('cloudBox')
 		
-		self.cloud = CloudView(self.redNotebook)
+		if browser.webkit:
+			from rednotebook.gui.clouds import Cloud
+			self.cloud = Cloud(self.redNotebook)
+		else:
+			self.cloud = CloudView(self.redNotebook)
+			
 		self.cloudBox.pack_start(self.cloud)
 		
 		self.cloudComboBox = self.builder.get_object('cloudComboBox')

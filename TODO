@@ -10,7 +10,9 @@ implementation if you tell me that you'd like its addition ;)
 0.9.3
 X Add graphical option to select webkit for previews
 X Change "Stricken" to "Strikethrough"
+X Remove gtk.glade import and use locale for setting translation domain
 X Improve documentation
+
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
