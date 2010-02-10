@@ -9,6 +9,7 @@ implementation if you tell me that you'd like its addition ;)
 
 0.9.3
 X Add graphical option to select webkit for previews
+X Alternatively use webkit for clouds
 X Change "Stricken" to "Strikethrough"
 X Remove gtk.glade import and use locale for setting translation domain
 X Improve documentation
@@ -17,8 +18,6 @@ X Improve documentation
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
 O Make webkit the default preview backend
-O Make word clouds optional
-O Make word clouds use webkit
 O Open links externally in KDE too
 O Provide an option to export all days with a certain tag
 

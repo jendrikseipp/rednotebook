@@ -447,6 +447,7 @@ class MainWindow(object):
 			from rednotebook.gui.clouds import Cloud
 			self.cloud = Cloud(self.redNotebook)
 		else:
+			logging.warning('pywebkitgtk is not installed. You may experience errors')
 			#self.searchNotebook.remove_page(1)
 			self.cloud = CloudView(self.redNotebook)
 			
