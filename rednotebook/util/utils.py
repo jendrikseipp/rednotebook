@@ -86,20 +86,8 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list, include_list):
 	
 	htmlElements = []
 	
-	
-	css = '''\
-	<style type="text/css">
-		body {
-			font-family: sans-serif;
-			text-align: center;
-		}
-		a:link { color:black; text-decoration:none; }
-		a:visited { color:black; text-decoration:none; }
-		a:focus { color:black; text-decoration:none; }
-		a:hover { color:black; text-decoration:none; }
-		a:active { color:black; text-decoration:none; }
-
-	</style>'''
+	htmlHead = 	'<body><div style="text-align:center; font-family: sans-serif">\n'
+	htmlTail = '</div></body>'
 	
 	for index, (word, count) in enumerate(cloud_words):
 		fontFactor = (count - minCount) / deltaCount
@@ -110,14 +98,16 @@ def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list, include_list):
 								% (index, fontSize, word) + \
 									
 							#Add some whitespace (previously &#xA0;)
-							'&#xA0;')
+							'<span> </span>')
 		
 	#random.shuffle(htmlElements)
 	
-	htmlBody = '<body>' + '\n'.join(htmlElements) + '\n</body>\n'
-	htmlDoc = '<html><head>' + css + '</head>' + htmlBody + '</html>'
+	htmlDoc = htmlHead
+	htmlDoc += '\n'.join(htmlElements) + '\n'
+	htmlDoc += htmlTail
 	
 	return (cloud_words, htmlDoc)
+
 
 
 def set_environment_variables(config):
