@@ -157,21 +157,13 @@ GETTEXT_DOMAIN = 'rednotebook'
 # set up the gettext system
 import gettext
 
-modules = [gettext]
-
-# Little Hack: The C function bindtextdomain() has to be called for
-# gtkbuilder stuff to be translated. This is not yet done by gtkbuilder.
-# As a workaround we use gtk.glade.bindtextdomain
-try:
-	import gtk.glade
-	modules.append(gtk.glade)
-except ImportError, err:
-	logging.warning(err)
-	logging.warning('Importing gtk.glade failed. Some strings may not be translated')
+# Adding locale to the list of modules translates gtkbuilder strings
+modules = [gettext, locale]
 
 for module in modules:
-    module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
-    module.textdomain(GETTEXT_DOMAIN)
+	module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
+	module.textdomain(GETTEXT_DOMAIN)
+
 
 ## ------------------- end Enable i18n -------------------------------
 

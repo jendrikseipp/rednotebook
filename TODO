@@ -15,6 +15,10 @@ X Improve documentation
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
 O Make webkit the default preview backend
+O Make word clouds optional
+O Make word clouds use webkit
+O Open links externally in KDE too
+O Provide an option to export all days with a certain tag
 
 0.9.5
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
@@ -35,6 +39,9 @@ O Import of exported backups
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
 O Build new Windows installer
+O Fix Export on Windows
+O Get rid of CamelCase in sourcecode
+O Get proper file layout with one script not part of module
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose for portableapps
@@ -59,6 +66,9 @@ O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting)
 O Let user change font, color fonts
 O Copy all files and pictures into data subdirectory
 
+2.x
+O Think about using desktop-couch
+
 
 
 
@@ -70,6 +80,7 @@ O Copy all files and pictures into data subdirectory
 
 O List recently opened journals under "Journal" -> "Recently Used"
 O Add a box on right click in cloud words to display a menu with "Avoid this word from cloud" (usability)
+O Link to other days
 
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)
