@@ -181,7 +181,7 @@ parameters = {	'name'				: 'rednotebook',
 				'url'				: info.url, 
 				'license'			: "GPL", 
 				'keywords'			: "journal, diary", 
-				'scripts'			: ['rednotebook/rednotebook'],
+				'scripts'			: ['rednotebook/rednotebook'], 
 				'packages'			: ['rednotebook', 'rednotebook.util', 'rednotebook.gui', \
 										'rednotebook.external',
 										'rednotebook.gui.keepnote', 'rednotebook.gui.keepnote.gui', \
@@ -230,7 +230,7 @@ if 'py2exe' in sys.argv:
 					#1: bundle everything, including the Python interpreter
 					#It seems that only option 3 works with PyGTK
 	  	  			'options' : {'py2exe': {'bundle_files': 3,
-											'includes': 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject',
+											'includes': 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject, gio, gtk',
 											'packages':'encodings',
 											#'skip_archive': 1,
 											}
@@ -240,7 +240,7 @@ if 'py2exe' in sys.argv:
 					
 	  				#windows for gui, console for cli
 	  	  			'windows' : [{
-									'script': 'rednotebook/redNotebook.py',
+									'script': 'rednotebook/rednotebook',
 									'icon_resources': [(1, 'win/rednotebook.ico')],
 								}],
 	  	  			}

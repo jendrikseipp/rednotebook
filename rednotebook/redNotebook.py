@@ -160,9 +160,22 @@ import gettext
 # Adding locale to the list of modules translates gtkbuilder strings
 modules = [gettext, locale]
 
+# Sometimes this doesn't work though, 
+# so we try to call gtk.glade's function as well if glade is present
+try:
+	import gtk.glade
+	modules.append(gtk.glade)
+except ImportError, err:
+	pass
+
 for module in modules:
-	module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
-	module.textdomain(GETTEXT_DOMAIN)
+	try:
+		# locale.bintextdomain and locale textdomain not available on win
+		module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
+		module.textdomain(GETTEXT_DOMAIN)
+	except AttributeError, err:
+		logging.error(err)
+
 
 
 ## ------------------- end Enable i18n -------------------------------
@@ -172,11 +185,11 @@ for module in modules:
 
 try:
 	import pygtk
+	if not sys.platform == 'win32':
+		pygtk.require("2.0")
 except ImportError:
 	logging.error('pygtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)
-
-pygtk.require("2.0")
 
 try:
 	import gtk
