@@ -40,6 +40,9 @@ O Encryption/Password
   - Maybe use only one file for a journal, add journal dependent variables
   - Maybe compress this file
   
+  - AES uses fixed key-length -> bad for passwords -> use Blowfish with variable length
+  - Blowfish faster than AES
+  
   
 O Automatic insertions
   - Use code from Zeitgeist
