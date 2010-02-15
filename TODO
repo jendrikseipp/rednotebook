@@ -18,6 +18,7 @@ X Build new Windows installer
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
+X Allow setting the language in the config file
 O Make webkit the default preview backend
 O Fully translate windows version
 O Fix picture html export on Windows

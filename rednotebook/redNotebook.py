@@ -26,23 +26,20 @@ import operator
 import collections
 import time
 from optparse import OptionParser, OptionValueError
-import gettext
-
-
-# register the gettext function for the whole interpreter as "_"
-import __builtin__
-__builtin__._ = gettext.gettext
 
 
 if hasattr(sys, "frozen"):
 	from rednotebook.util import filesystem
 	from rednotebook.util import utils
 	from rednotebook import info
+	from rednotebook import configuration
 else:
 	from util import filesystem # creates a copy of filesystem module
 	#import util.filesystem # imports the original filesystem module
 	from util import utils
 	import info
+	import configuration
+	
 	
 
 def parse_options():
@@ -131,10 +128,14 @@ setup_logging(dirs.logFile)
 ## ------------------ end Enable logging -------------------------------
 
 
+config = configuration.Config(dirs)
+
 
 ## ---------------------- Enable i18n -------------------------------
 
-#os.environ['LANG'] = 'de'
+lang = config.read('lang', '')
+if lang:
+	os.environ['LANG'] = lang #en_EN.UTF-8'
 
 # set the locale for all categories to the user’s default setting 
 # (typically specified in the LANG environment variable)
@@ -175,6 +176,10 @@ for module in modules:
 		module.textdomain(GETTEXT_DOMAIN)
 	except AttributeError, err:
 		logging.error(err)
+		
+# register the gettext function for the whole interpreter as "_"
+import __builtin__
+__builtin__._ = gettext.gettext
 
 
 
@@ -240,7 +245,7 @@ if baseDir not in sys.path:
 from rednotebook.util import unicode
 from rednotebook.util import dates
 #from rednotebook import info
-from rednotebook import configuration
+#from rednotebook import configuration
 from rednotebook import backup
 
 
@@ -254,7 +259,8 @@ class RedNotebook:
 	def __init__(self):
 		self.dirs = dirs
 		
-		self.config = configuration.Config(self.dirs)
+		self.config = config#configuration.Config(self.dirs)
+		
 		logging.info('Running in portable mode: %s' % self.config.read('portable', 0))
 		
 		self.testing = False
