@@ -1,4 +1,21 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2009  Jendrik Seipp
+# 
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
 
 try:
 	from Crypto.Cipher import Blowfish
@@ -14,6 +31,8 @@ BLOCK_SIZE = 8
 # ----------------------------------------------------------------------
 #
 # Private functions
+
+# Public domain code from http://idsvandermolen.com/codefiles/crypto.py
 
 def nrPadBytes(blocksize, size):
 	'Return number of required pad bytes for block of size.'
@@ -36,6 +55,8 @@ def removePadding(blocksize, s):
 	if n > blocksize or n > len(s):
 		raise Error('invalid padding')
 	return s[:-n]
+	
+# ----------------------------------------------------------------------
 
 def encrypt_blowfish(cipher, string):
 	string = appendPadding(BLOCK_SIZE, string)
@@ -65,7 +86,7 @@ def decrypt(enc_text, password):
 # Testing
 
 if __name__ == '__main__':
-	secret_text = 'secret text'
+	secret_text = 'secret text\nwith üni¢ödé'
 	password = 'password'
 	enc_string = encrypt(secret_text, password)
 	print 'Encrypted string:', enc_string
