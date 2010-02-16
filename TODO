@@ -9,11 +9,10 @@ implementation if you tell me that you'd like its addition ;)
 
 0.9.3
 X Add graphical option to select webkit for previews
-X Alternatively use webkit for clouds
+X If available use webkit for clouds
 X Change "Stricken" to "Strikethrough"
 X Add locale functions for complete translations
 X Improve documentation
-O Get proper file layout with one script not part of module
 X Build new Windows installer
 
 0.9.4
@@ -44,6 +43,7 @@ O Import of exported backups
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
 O Get rid of CamelCase in sourcecode
+O Get proper file layout with one script not part of module
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose for portableapps
@@ -58,6 +58,7 @@ O Many automatic insertions
 
 1.1
 O Password protection or encryption
+O Add per journal configuration
 
 1.x
 O Tabled Data?

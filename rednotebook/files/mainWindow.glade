@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<interface>
+<?xml version="1.0" ?><interface>
   <!-- interface-requires gtk+ 2.12 -->
   <!-- interface-naming-policy project-wide -->
   <object class="GtkListStore" id="liststore1">
@@ -56,19 +55,22 @@
   </object>
   <object class="GtkWindow" id="mainFrame">
     <property name="window_position">center</property>
-    <signal name="configure_event" handler="on_mainFrame_configure_event"/>
-    <signal name="delete_event" handler="on_mainFrame_delete_event"/>
+    <signal handler="on_mainFrame_configure_event" name="configure_event"/>
+    <signal handler="on_mainFrame_delete_event" name="delete_event"/>
     <child>
       <object class="GtkVBox" id="vbox3">
         <property name="visible">True</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkHPaned" id="mainPane">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkVBox" id="vbox4">
                 <property name="visible">True</property>
-                <child>
+                <property name="orientation">vertical</property>
+<child>
                   <object class="GtkToolbar" id="toolbar3">
                     <property name="visible">True</property>
                     <property name="toolbar_style">both</property>
@@ -77,7 +79,7 @@
                         <property name="visible">True</property>
                         <property name="tooltip_text" translatable="yes">Go to previous day (Ctrl+PageDown)</property>
                         <property name="stock_id">gtk-go-back</property>
-                        <signal name="clicked" handler="on_backOneDayButton_clicked"/>
+                        <signal handler="on_backOneDayButton_clicked" name="clicked"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -91,7 +93,7 @@
                         <property name="label" translatable="yes">Today</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-home</property>
-                        <signal name="clicked" handler="on_todayButton_clicked"/>
+                        <signal handler="on_todayButton_clicked" name="clicked"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -103,7 +105,7 @@
                         <property name="visible">True</property>
                         <property name="tooltip_text" translatable="yes">Go to next day (Ctrl+PageUp)</property>
                         <property name="stock_id">gtk-go-forward</property>
-                        <signal name="clicked" handler="on_forwardOneDayButton_clicked"/>
+                        <signal handler="on_forwardOneDayButton_clicked" name="clicked"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -130,19 +132,21 @@
                   <object class="GtkNotebook" id="searchNotebook">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <signal name="switch_page" handler="on_searchNotebook_switch_page"/>
+                    <signal handler="on_searchNotebook_switch_page" name="switch_page"/>
                     <child>
                       <object class="GtkVBox" id="searchContainerBox">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <object class="GtkHBox" id="hbox1">
                             <property name="visible">True</property>
-                            <child>
+                            <property name="orientation">horizontal</property>
+<child>
                               <object class="GtkComboBox" id="searchTypeBox">
                                 <property name="visible">True</property>
                                 <property name="tooltip_text" translatable="yes">Select where to search</property>
                                 <property name="model">liststore5</property>
-                                <signal name="changed" handler="on_searchTypeBox_changed"/>
+                                <signal handler="on_searchTypeBox_changed" name="changed"/>
                                 <child>
                                   <object class="GtkCellRendererText" id="cellrenderertext3"/>
                                   <attributes>
@@ -213,12 +217,13 @@
                     <child>
                       <object class="GtkVBox" id="cloudBox">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <object class="GtkComboBox" id="cloudComboBox">
                             <property name="visible">True</property>
                             <property name="tooltip_text" translatable="yes">Select a cloud</property>
                             <property name="model">liststore3</property>
-                            <signal name="changed" handler="on_cloudComboBox_changed"/>
+                            <signal handler="on_cloudComboBox_changed" name="changed"/>
                             <child>
                               <object class="GtkCellRendererText" id="cellrenderertext1"/>
                               <attributes>
@@ -263,15 +268,18 @@
             <child>
               <object class="GtkVBox" id="dayBox">
                 <property name="visible">True</property>
-                <child>
+                <property name="orientation">vertical</property>
+<child>
                   <object class="GtkHPaned" id="editPane">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="position">550</property>
-                    <child>
+                    <property name="orientation">horizontal</property>
+<child>
                       <object class="GtkVBox" id="text_vbox">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <object class="GtkToolbar" id="edit_toolbar">
                             <property name="visible">True</property>
                             <property name="toolbar_style">both</property>
@@ -279,10 +287,10 @@
                               <object class="GtkToolButton" id="previewButton">
                                 <property name="visible">True</property>
                                 <property name="tooltip_text" translatable="yes">Show a formatted preview of the text (Ctrl+P)</property>
-                                <property name="label" translatable="yes" comments="Verb">Preview</property>
+                                <property comments="Verb" name="label" translatable="yes">Preview</property>
                                 <property name="stock_id">gtk-media-play</property>
-                                <accelerator key="P" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                                <signal name="clicked" handler="on_previewButton_clicked"/>
+                                <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+                                <signal handler="on_previewButton_clicked" name="clicked"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -295,8 +303,8 @@
                                 <property name="tooltip_text" translatable="yes">Insert this weekday's template. Click the arrow on the right for more options</property>
                                 <property name="label" translatable="yes">Template</property>
                                 <property name="stock_id">gtk-paste</property>
-                                <signal name="clicked" handler="on_templateMenu_clicked"/>
-                                <signal name="show_menu" handler="on_templateMenu_show_menu"/>
+                                <signal handler="on_templateMenu_clicked" name="clicked"/>
+                                <signal handler="on_templateMenu_show_menu" name="show_menu"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -339,7 +347,8 @@
                     <child>
                       <object class="GtkVBox" id="right_vbox">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <object class="GtkToolbar" id="toolbar1">
                             <property name="visible">True</property>
                             <property name="toolbar_style">both</property>
@@ -350,8 +359,8 @@
                                 <property name="label" translatable="yes">Annotate</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-new</property>
-                                <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                                <signal name="clicked" handler="on_addNewEntryButton_clicked"/>
+                                <accelerator key="N" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+                                <signal handler="on_addNewEntryButton_clicked" name="clicked"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -362,10 +371,10 @@
                               <object class="GtkToolButton" id="addTagButton">
                                 <property name="visible">True</property>
                                 <property name="tooltip_text" translatable="yes">Tag this day (Ctrl+T)</property>
-                                <property name="label" translatable="yes" comments="This stands for the verb in &quot;Tag this day&quot;">Tag</property>
+                                <property comments="This stands for the verb in &quot;Tag this day&quot;" name="label" translatable="yes">Tag</property>
                                 <property name="stock_id">gtk-dialog-info</property>
-                                <accelerator key="T" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                                <signal name="clicked" handler="on_addTagButton_clicked"/>
+                                <accelerator key="T" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+                                <signal handler="on_addTagButton_clicked" name="clicked"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -379,7 +388,7 @@
                                 <property name="label" translatable="yes">Delete</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-delete</property>
-                                <signal name="clicked" handler="on_deleteEntryButton_clicked"/>
+                                <signal handler="on_deleteEntryButton_clicked" name="clicked"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -453,19 +462,21 @@
   <object class="GtkAboutDialog" id="aboutDialog">
     <property name="border_width">5</property>
     <property name="type_hint">normal</property>
-    <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
+    <property comments="TRANSLATORS: Replace this string with your names, one name per line." name="translator_credits" translatable="yes">translator-credits</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <placeholder/>
         </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-          </object>
+          <property name="orientation">horizontal</property>
+</object>
           <packing>
             <property name="expand">False</property>
             <property name="pack_type">end</property>
@@ -485,7 +496,8 @@
       <object class="GtkVBox" id="dialog-vbox2">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkScrolledWindow" id="statisticsScrolledWindow">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -503,7 +515,8 @@
           <object class="GtkHButtonBox" id="dialog-action_area2">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <placeholder/>
             </child>
             <child>
@@ -545,11 +558,13 @@
       <object class="GtkVBox" id="dialog-vbox3">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkVBox" id="vbox5">
             <property name="visible">True</property>
             <property name="spacing">12</property>
-            <child>
+            <property name="orientation">vertical</property>
+<child>
               <object class="GtkLabel" id="label2">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">&lt;b&gt;Select existing or new Category&lt;/b&gt;</property>
@@ -601,7 +616,8 @@
           <object class="GtkHButtonBox" id="dialog-action_area3">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="button3">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
@@ -654,14 +670,16 @@
       <object class="GtkVBox" id="dialog-vbox4">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <placeholder/>
         </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area4">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="button4">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
@@ -717,7 +735,8 @@
       <object class="GtkVBox" id="dialog-vbox7">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkScrolledWindow" id="helpScrolledWindow">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -735,7 +754,8 @@
           <object class="GtkHButtonBox" id="dialog-action_area7">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <placeholder/>
             </child>
             <child>
@@ -767,8 +787,8 @@
   </object>
   <object class="GtkAssistant" id="export_assistant">
     <property name="title" translatable="yes">Export Assistant</property>
-    <signal name="cancel" handler="on_export_assistant_cancel"/>
-    <signal name="close" handler="on_export_assistant_quit"/>
+    <signal handler="on_export_assistant_cancel" name="cancel"/>
+    <signal handler="on_export_assistant_quit" name="close"/>
     <child>
       <placeholder/>
     </child>
@@ -803,7 +823,8 @@ This wizard will help you to export your journal to various formats. You can sel
               <object class="GtkVBox" id="vbox9">
                 <property name="visible">True</property>
                 <property name="spacing">2</property>
-                <child>
+                <property name="orientation">vertical</property>
+<child>
                   <object class="GtkRadioButton" id="text">
                     <property name="label" translatable="yes">Text</property>
                     <property name="visible">True</property>
@@ -898,7 +919,8 @@ This wizard will help you to export your journal to various formats. You can sel
               <object class="GtkVBox" id="vbox10">
                 <property name="visible">True</property>
                 <property name="spacing">2</property>
-                <child>
+                <property name="orientation">vertical</property>
+<child>
                   <object class="GtkRadioButton" id="all_entries">
                     <property name="label" translatable="yes">All Entries</property>
                     <property name="visible">True</property>
@@ -906,7 +928,7 @@ This wizard will help you to export your journal to various formats. You can sel
                     <property name="receives_default">False</property>
                     <property name="use_underline">True</property>
                     <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="change_date_selector_status"/>
+                    <signal handler="change_date_selector_status" name="toggled"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -933,10 +955,12 @@ This wizard will help you to export your journal to various formats. You can sel
                 <child>
                   <object class="GtkHBox" id="hbox2">
                     <property name="visible">True</property>
-                    <child>
+                    <property name="orientation">horizontal</property>
+<child>
                       <object class="GtkVBox" id="vbox12">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <object class="GtkLabel" id="label9">
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">&lt;b&gt;Entries from:&lt;/b&gt;</property>
@@ -966,7 +990,8 @@ This wizard will help you to export your journal to various formats. You can sel
                     <child>
                       <object class="GtkVBox" id="vbox13">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <object class="GtkLabel" id="label10">
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">&lt;b&gt;Till:&lt;/b&gt;</property>
@@ -1026,7 +1051,8 @@ This wizard will help you to export your journal to various formats. You can sel
               <object class="GtkVBox" id="vbox7">
                 <property name="visible">True</property>
                 <property name="spacing">2</property>
-                <child>
+                <property name="orientation">vertical</property>
+<child>
                   <object class="GtkLabel" id="label11">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">&lt;b&gt;Select the contents you want to export&lt;/b&gt;</property>
@@ -1044,7 +1070,7 @@ This wizard will help you to export your journal to various formats. You can sel
                     <property name="receives_default">False</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="change_export_text_status"/>
+                    <signal handler="change_export_text_status" name="toggled"/>
                   </object>
                   <packing>
                     <property name="position">1</property>
@@ -1053,7 +1079,8 @@ This wizard will help you to export your journal to various formats. You can sel
                 <child>
                   <object class="GtkHSeparator" id="hseparator2">
                     <property name="visible">True</property>
-                  </object>
+                  <property name="orientation">horizontal</property>
+</object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="position">2</property>
@@ -1067,7 +1094,7 @@ This wizard will help you to export your journal to various formats. You can sel
                     <property name="receives_default">False</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="change_categories_selector_status"/>
+                    <signal handler="change_categories_selector_status" name="toggled"/>
                   </object>
                   <packing>
                     <property name="position">3</property>
@@ -1082,7 +1109,7 @@ This wizard will help you to export your journal to various formats. You can sel
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">all_categories</property>
-                    <signal name="toggled" handler="change_categories_selector_status"/>
+                    <signal handler="change_categories_selector_status" name="toggled"/>
                   </object>
                   <packing>
                     <property name="position">4</property>
@@ -1105,7 +1132,8 @@ This wizard will help you to export your journal to various formats. You can sel
                 <child>
                   <object class="GtkHBox" id="hbox_categories">
                     <property name="visible">True</property>
-                    <child>
+                    <property name="orientation">horizontal</property>
+<child>
                       <object class="GtkTreeView" id="available_categories">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1121,7 +1149,8 @@ This wizard will help you to export your journal to various formats. You can sel
                           <object class="GtkVBox" id="vbox8">
                             <property name="visible">True</property>
                             <property name="border_width">5</property>
-                            <child>
+                            <property name="orientation">vertical</property>
+<child>
                               <object class="GtkAspectFrame" id="aspectframe1">
                                 <property name="visible">True</property>
                                 <property name="label_xalign">0</property>
@@ -1140,7 +1169,7 @@ This wizard will help you to export your journal to various formats. You can sel
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
-                                <signal name="clicked" handler="select_category"/>
+                                <signal handler="select_category" name="clicked"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1150,7 +1179,8 @@ This wizard will help you to export your journal to various formats. You can sel
                             <child>
                               <object class="GtkHSeparator" id="hseparator1">
                                 <property name="visible">True</property>
-                              </object>
+                              <property name="orientation">horizontal</property>
+</object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="position">2</property>
@@ -1162,7 +1192,7 @@ This wizard will help you to export your journal to various formats. You can sel
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
-                                <signal name="clicked" handler="unselect_category"/>
+                                <signal handler="unselect_category" name="clicked"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1206,7 +1236,8 @@ This wizard will help you to export your journal to various formats. You can sel
                 <child>
                   <object class="GtkHSeparator" id="hseparator3">
                     <property name="visible">True</property>
-                  </object>
+                  <property name="orientation">horizontal</property>
+</object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="position">7</property>
@@ -1271,11 +1302,13 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox8">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkVBox" id="vbox2">
             <property name="visible">True</property>
             <property name="spacing">20</property>
-            <child>
+            <property name="orientation">vertical</property>
+<child>
               <object class="GtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">&lt;b&gt;A new version of RedNotebook is available!&lt;/b&gt;</property>
@@ -1304,7 +1337,8 @@ This wizard will help you to export your journal to various formats. You can sel
           <object class="GtkHButtonBox" id="dialog-action_area8">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="button7">
                 <property name="label" translatable="yes">Do not ask again</property>
                 <property name="visible">True</property>
@@ -1370,7 +1404,8 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox11">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="label" translatable="yes">&lt;b&gt;You already have the latest version of RedNotebook&lt;/b&gt;</property>
@@ -1384,7 +1419,8 @@ This wizard will help you to export your journal to various formats. You can sel
           <object class="GtkHButtonBox" id="dialog-action_area11">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <placeholder/>
             </child>
             <child>
@@ -1427,14 +1463,16 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox12">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <placeholder/>
         </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area12">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="button10">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
@@ -1488,14 +1526,16 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox14">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <placeholder/>
         </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area14">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="button13">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
@@ -1551,11 +1591,13 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox16">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkVBox" id="vbox11">
             <property name="visible">True</property>
             <property name="spacing">15</property>
-            <child>
+            <property name="orientation">vertical</property>
+<child>
               <object class="GtkFrame" id="frame3">
                 <property name="visible">True</property>
                 <property name="label_xalign">0</property>
@@ -1625,7 +1667,8 @@ This wizard will help you to export your journal to various formats. You can sel
           <object class="GtkHButtonBox" id="dialog-action_area16">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="button15">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
@@ -1680,7 +1723,8 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox17">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkLabel" id="dir_chooser_label">
             <property name="visible">True</property>
             <property name="use_markup">True</property>
@@ -1694,7 +1738,8 @@ This wizard will help you to export your journal to various formats. You can sel
           <object class="GtkHButtonBox" id="dialog-action_area17">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="button16">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
@@ -1748,7 +1793,8 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox18">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkNotebook" id="notebook1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -1767,7 +1813,8 @@ This wizard will help you to export your journal to various formats. You can sel
                       <object class="GtkVBox" id="general_vbox">
                         <property name="visible">True</property>
                         <property name="spacing">5</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <placeholder/>
                         </child>
                         <child>
@@ -1783,7 +1830,7 @@ This wizard will help you to export your journal to various formats. You can sel
                 <child type="label">
                   <object class="GtkLabel" id="label20">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">&lt;b&gt;General&lt;/b&gt;</property>
+                    <property comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings" name="label" translatable="yes">&lt;b&gt;General&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -1792,7 +1839,7 @@ This wizard will help you to export your journal to various formats. You can sel
             <child type="tab">
               <object class="GtkLabel" id="label17">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">General</property>
+                <property comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings" name="label" translatable="yes">General</property>
               </object>
               <packing>
                 <property name="tab_fill">False</property>
@@ -1807,7 +1854,8 @@ This wizard will help you to export your journal to various formats. You can sel
           <object class="GtkHButtonBox" id="dialog-action_area18">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <placeholder/>
             </child>
             <child>
@@ -1862,10 +1910,12 @@ This wizard will help you to export your journal to various formats. You can sel
       <object class="GtkVBox" id="dialog-vbox20">
         <property name="visible">True</property>
         <property name="spacing">2</property>
-        <child>
+        <property name="orientation">vertical</property>
+<child>
           <object class="GtkVBox" id="vbox1">
             <property name="visible">True</property>
-            <child>
+            <property name="orientation">vertical</property>
+<child>
               <object class="GtkFrame" id="frame6">
                 <property name="visible">True</property>
                 <property name="label_xalign">0</property>
@@ -1877,7 +1927,8 @@ This wizard will help you to export your journal to various formats. You can sel
                     <child>
                       <object class="GtkVBox" id="day_box">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <placeholder/>
                         </child>
                       </object>
@@ -1908,7 +1959,8 @@ This wizard will help you to export your journal to various formats. You can sel
                     <child>
                       <object class="GtkVBox" id="overall_box">
                         <property name="visible">True</property>
-                        <child>
+                        <property name="orientation">vertical</property>
+<child>
                           <placeholder/>
                         </child>
                       </object>
@@ -1936,7 +1988,8 @@ This wizard will help you to export your journal to various formats. You can sel
           <object class="GtkHButtonBox" id="dialog-action_area20">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <placeholder/>
             </child>
             <child>
@@ -1987,7 +2040,8 @@ This wizard will help you to export your journal to various formats. You can sel
           <object class="GtkHButtonBox" id="dialog-action_area90">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
-            <child>
+            <property name="orientation">horizontal</property>
+<child>
               <object class="GtkButton" id="exit_without_save_button">
                 <property name="label" translatable="yes">Exit without saving</property>
                 <property name="visible">True</property>

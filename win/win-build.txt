@@ -28,8 +28,8 @@
   * run 'python setup.py py2exe'
   * A dist/ directory is created containing the exe, but the GTK files are still missing
   * Copy the directories etc, lib and share from the GTK path to the newly created dist directory
-  * If this wasn't done automatically, copy the directories "files/" and "images/" 
-    from "rednotebook/" into "dist/" (omit hidden svn stuff)
+  * If this wasn't done automatically, copy the directories "files/", "images/" and "i18n/"
+    from "rednotebook/" into "dist/" (omit hidden svn stuff if possible)
   * You may want to remove the " doc" and "gtk-doc" subdirectories from the "share" directory
     They only contain html documentation for gtk
   * Now clicking redNotebook.exe should start the application
