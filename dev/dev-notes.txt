@@ -43,6 +43,11 @@ O Encryption/Password
   - AES uses fixed key-length -> bad for passwords -> use Blowfish with variable length
   - Blowfish faster than AES
   
+  - Maybe just use 7z (only archive format that is widely known with good encryption)
+  - 7z can however also produce zip files with good encryption
+  - For 7z package p7zip is needed (only supports 7z)
+  - binary is called 7zr
+  
   
 O Automatic insertions
   - Use code from Zeitgeist
