@@ -133,9 +133,9 @@ config = configuration.Config(dirs)
 
 ## ---------------------- Enable i18n -------------------------------
 
-lang = config.read('lang', '')
-if lang:
-	os.environ['LANG'] = lang #en_EN.UTF-8'
+#lang = config.read('lang', '')
+#if lang:
+#	os.environ['LANG'] = lang #en_EN.UTF-8'
 
 # set the locale for all categories to the user’s default setting 
 # (typically specified in the LANG environment variable)
