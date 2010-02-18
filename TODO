@@ -14,13 +14,15 @@ X Change "Stricken" to "Strikethrough"
 X Add locale functions for complete translations
 X Improve documentation
 X Build new Windows installer
+O Improve categories documentation
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
-X Allow setting the language in the config file
+X Allow setting the language in the config file?
 O Make webkit the default preview backend
 O Fully translate windows version
 O Fix picture html export on Windows
+O Change xhtml extension to .html
 
 0.9.5
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)

@@ -1146,6 +1146,7 @@ class CloudView(HtmlWindow):
 		self.ignore_list = map(str.lower, self.ignore_list)
 		logging.info('Cloud ignore list: %s' % self.ignore_list)
 		
+		### Translators: These are example whitelist words with 4 or less letters
 		default_include_list = _('mtv, spam, work, job, play')
 		self.include_list = config.read_list('cloudIncludeList', default_include_list)
 		self.include_list = map(str.lower, self.include_list)

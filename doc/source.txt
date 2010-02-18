@@ -21,18 +21,24 @@ On the right there is space for annotations to a day. Annotations are notes that
 
 - Ideas
   - Invent Anti-Hangover-Machine
+- Movies
+  - Monty Python and the Holy Grail
 
 
-The name "Categories" is a little bit confusing. It does not mean that a day is put into a category, but that there is additional content on the right, sorted into categories. "Topics" would probably be a better name.
+The name "Categories" is a little bit confusing. It does not mean that a day is put into a category, but that there is additional content on the right, sorted into categories. Those categories have several items distributed over various days.
 
-Those topics have several items distributed over various days.
+For example you could want to remember all the movies you watch. Each time you watch a new one, add the categories "Movies" with the entry "Name of the movie" to the day.
 
-I’ll give you an example: I like to maintain a list of cool things I have done. So if I did a cool thing on some day, I navigate to that day, add the category "Cool Stuff" and add an entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). When I have done more cool things on many days, they all have a category "Cool Stuff" and many different entries. It is possible to export only that category and get a list of the cool stuff that happened to me with the respective dates.
+I’ll give you another example: I like to maintain a list of cool things I have done. So if I did a cool thing on some day, I navigate to that day and add the category "Cool Stuff" with the entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). When I have done more cool things on many days, they all have a category "Cool Stuff" and many different entries. It is possible to export only that category and get a list of the cool stuff that happened to me with the respective dates.
 
 Additionally you can select the "Cool Stuff" category in the word cloud window to get a list of all the cool things.
 
+Category entries can have all of the formatting that the main text supports, so e.g. you can add bold text, links or images.
+
 == Images, Files and Links ==
 RedNotebook lets you insert images, files and links into your entries. To do so, select the appropriate option in the "Insert" pull-down menu above the main text field. The text will be inserted at the current cursor position.
+
+With the insert button you cannot insert **links to directories** on your computer. Those can be inserted manually however (""[Home ""file:///home/""]"").
 
 == Templates ==
 RedNotebook supports templates. Click on the arrow next to the "Template" button to see some options. You can have one template for every day of the week and unlimited arbitrarily named templates. 

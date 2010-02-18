@@ -17,8 +17,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from __future__ import with_statement
-
 import os
 
 # For testing
@@ -164,6 +162,7 @@ completeWelcomeText = '''\
 welcome_day = {'text': completeWelcomeText,
 u'Cool Stuff': {u'Ate **two** cans of spam': None},
 _(u'Ideas'): {_(u'Use a cool journal app'): None},
+u'Movies': {u"Monty Python's Life of Brian": None},
 u'Tags': {u'Work': None, u'Documentation': None},
 }
 
@@ -174,17 +173,21 @@ example_day1 = {
 
 - Ideas
   - Invent Anti-Hangover-Machine
+- Movies
+  - Monty Python and the Holy Grail
 
 
 The name "Categories" is a little bit confusing. It does not mean that a day is \
 put into a category, but that there is additional content on the right, \
-sorted into categories. "Topics" would probably be a better name.
+sorted into categories. Those categories have several items distributed over various days.
 
-Those topics have several items distributed over various days.
+For example you could want to remember all the movies you watch. \
+Each time you watch a new one, add the categories "Movies" with the \
+entry "Name of the movie" to the day.
 
-I’ll give you an example: I like to maintain a list of cool things I have done. \
-So if I did a cool thing on some day, I navigate to that day, add the category \
-"Cool Stuff" and add an entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
+I’ll give you another example: I like to maintain a list of cool things I have done. \
+So if I did a cool thing on some day, I navigate to that day and add the category \
+"Cool Stuff" with the entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
 When I have done more cool things on many days, they all have a category "Cool Stuff" \
 and many different entries. It is possible to export only that category and \
 get a list of the cool stuff that happened to me with the respective dates.
@@ -196,6 +199,7 @@ Category entries can have all of the formatting that the main text supports, \
 so e.g. you can add bold text, links or images.''' % globals(),
 u'Cool Stuff': {u'Went to see the pope': None},
 u'Ideas': {u'Invent Anti-Hangover-Machine': None},
+u'Movies': {u'Monty Python and the Holy Grail': None},
 u'Tags': {u'Documentation': None, u'Projects': None},
 u'Todo': {u'**Wash the dishes**': None},
 }
