@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 21:52+0100\n"
+"POT-Creation-Date: 2010-02-19 18:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,8 @@ msgstr ""
 msgid "filter, these, comma, separated, words"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/mainWindow.py:1149
+#. ## Translators: These are example whitelist words with 4 or less letters
+#: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/mainWindow.py:1150
 msgid "mtv, spam, work, job, play"
 msgstr ""
 
@@ -206,20 +207,20 @@ msgstr ""
 msgid "Search ..."
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1206
+#: ../rednotebook/gui/mainWindow.py:1207
 msgid "Hide selected words"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1269
+#: ../rednotebook/gui/mainWindow.py:1270
 msgid "Date"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1270 ../rednotebook/gui/mainWindow.py:1312
-#: ../rednotebook/gui/mainWindow.py:1320 tmp/mainWindow.glade.h:65
+#: ../rednotebook/gui/mainWindow.py:1271 ../rednotebook/gui/mainWindow.py:1313
+#: ../rednotebook/gui/mainWindow.py:1321 tmp/mainWindow.glade.h:65
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/mainWindow.py:1316
+#: ../rednotebook/gui/mainWindow.py:1317
 msgid "Entry"
 msgstr ""
 
@@ -240,7 +241,7 @@ msgid "Day %j"
 msgstr ""
 
 #. ## Translators: noun
-#: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:125
+#: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:123
 #: tmp/mainWindow.glade.h:37
 msgid "Help"
 msgstr ""
@@ -321,6 +322,10 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:329
 msgid "Allow those words with 4 letters or less in the text cloud"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:89
+msgid "Journal"
 msgstr ""
 
 #: ../rednotebook/gui/menu.py:91
@@ -422,7 +427,7 @@ msgstr ""
 msgid "Fill out a short form about the problem"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:463
+#: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:467
 msgid "RedNotebook Documentation"
 msgstr ""
 
@@ -462,37 +467,37 @@ msgstr ""
 msgid "Delete this node"
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:60 tmp/mainWindow.glade.h:29
+#: ../rednotebook/gui/exportAssistant.py:61 tmp/mainWindow.glade.h:29
 msgid "Export Assistant"
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:88
+#: ../rednotebook/gui/exportAssistant.py:90
 msgid ""
 "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:89
+#: ../rednotebook/gui/exportAssistant.py:91
 msgid "Alternatively consult the help document for Latex to PDF conversion."
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:139
+#: ../rednotebook/gui/exportAssistant.py:141
 msgid "Available Categories"
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:147
+#: ../rednotebook/gui/exportAssistant.py:149
 msgid "Selected Categories"
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:184
+#: ../rednotebook/gui/exportAssistant.py:186
 msgid "Cancelling export assistant."
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:345
+#: ../rednotebook/gui/exportAssistant.py:347
 #, python-format
 msgid "Content exported to %s"
 msgstr ""
 
-#: ../rednotebook/gui/exportAssistant.py:347
+#: ../rednotebook/gui/exportAssistant.py:349
 #, python-format
 msgid "Exporting to %s failed"
 msgstr ""
@@ -581,127 +586,127 @@ msgstr ""
 msgid "Lines"
 msgstr ""
 
-#: ../rednotebook/info.py:81
+#: ../rednotebook/info.py:79
 msgid ""
 "Hello,\n"
 "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
 "try."
 msgstr ""
 
-#: ../rednotebook/info.py:83
+#: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
 msgstr ""
 
 #. ## Translators: The location "left"
-#: ../rednotebook/info.py:85
+#: ../rednotebook/info.py:83
 msgid "Left"
 msgstr ""
 
-#: ../rednotebook/info.py:86
+#: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
 msgstr ""
 
 #. ## Translators: The location "center"
-#: ../rednotebook/info.py:88
+#: ../rednotebook/info.py:86
 msgid "Center"
 msgstr ""
 
-#: ../rednotebook/info.py:89
+#: ../rednotebook/info.py:87
 msgid "Text for a day"
 msgstr ""
 
 #. ## Translators: The location "right"
-#: ../rednotebook/info.py:91
+#: ../rednotebook/info.py:89
 msgid "Right"
 msgstr ""
 
-#: ../rednotebook/info.py:92
+#: ../rednotebook/info.py:90
 msgid "Annotations to a day"
 msgstr ""
 
-#: ../rednotebook/info.py:94
+#: ../rednotebook/info.py:92
 msgid "Text entries"
 msgstr ""
 
-#: ../rednotebook/info.py:95
+#: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
 msgstr ""
 
-#: ../rednotebook/info.py:96
+#: ../rednotebook/info.py:94
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
 
-#: ../rednotebook/info.py:100
+#: ../rednotebook/info.py:98
 msgid "Annotations"
 msgstr ""
 
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
 msgstr ""
 
-#: ../rednotebook/info.py:102
+#: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
 msgstr ""
 
-#: ../rednotebook/info.py:103
+#: ../rednotebook/info.py:101
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:115
+#: ../rednotebook/info.py:113
 msgid "Save and Export"
 msgstr ""
 
-#: ../rednotebook/info.py:116
+#: ../rednotebook/info.py:114
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
 
-#: ../rednotebook/info.py:118
+#: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 
-#: ../rednotebook/info.py:119
+#: ../rednotebook/info.py:117
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 
-#: ../rednotebook/info.py:120
+#: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr ""
 
-#: ../rednotebook/info.py:121
+#: ../rednotebook/info.py:119
 msgid "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:127
+#: ../rednotebook/info.py:125
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
 msgstr ""
 
-#: ../rednotebook/info.py:130
+#: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 
-#: ../rednotebook/info.py:131
+#: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
 msgstr ""
 
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:132
 msgid "Have a nice day!"
 msgstr ""
 
-#: ../rednotebook/info.py:166
+#: ../rednotebook/info.py:164
 msgid "Ideas"
 msgstr ""
 
-#: ../rednotebook/info.py:166
+#: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
 msgstr ""
 

@@ -86,7 +86,7 @@ class MainMenuBar(object):
 
 		# Create actions
 		actiongroup.add_actions([
-			('Journal', None, '_Journal'),
+			('Journal', None, _('Journal')),
 			('New', gtk.STOCK_NEW, None,
 				'', _('Create a new journal. The old one will be saved'),
 				self.on_newJournalButton_activate),
