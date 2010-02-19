@@ -24,6 +24,7 @@ import os
 import codecs
 import operator
 import logging
+import sys
 
 from rednotebook.util import markup
 from rednotebook.gui import browser
@@ -79,15 +80,16 @@ class ExportAssistant(object):
 		self.latex_button = self.builder.get_object('latex')
 		self.pdf_button = self.builder.get_object('pdf')
 		
-		#self.pdf_button.hide()
-		
 		pdf_supported = self.is_pdf_supported()
 		self.pdf_button.set_sensitive(pdf_supported)
 		
 		if not pdf_supported:
-			tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
-			tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
-			self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
+			if sys.platform == 'win32':
+				self.pdf_button.hide()
+			else:
+				tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
+				tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
+				self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
 		
 
 	def append_second_page(self):	

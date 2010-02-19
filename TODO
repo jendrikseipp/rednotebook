@@ -14,15 +14,16 @@ X Change "Stricken" to "Strikethrough"
 X Add locale functions for complete translations
 X Improve documentation
 X Build new Windows installer
-O Improve categories documentation
+X Improve categories documentation
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
-X Allow setting the language in the config file?
+O Allow setting the language in the config file?
 O Make webkit the default preview backend
 O Fully translate windows version
 O Fix picture html export on Windows
 O Change xhtml extension to .html
+X Hide PDF export button on windows (pywebkitgtk not available)
 
 0.9.5
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
@@ -41,7 +42,7 @@ O Open links externally in KDE too
 O Provide an option to export all days with a certain tag
 O Custom-style Journals? (Mono-space)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
-O Import of exported backups
+O Import of exported backups (Check if saving to 7z makes sense first)
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to one month before
 O Get rid of CamelCase in sourcecode
