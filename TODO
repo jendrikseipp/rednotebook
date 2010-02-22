@@ -22,7 +22,7 @@ O Allow setting the language in the config file?
 O Make webkit the default preview backend
 O Fully translate windows version
 O Fix picture html export on Windows
-O Change xhtml extension to .html
+X Change xhtml extension to .html
 X Hide PDF export button on windows (pywebkitgtk not available)
 
 0.9.5
@@ -87,6 +87,10 @@ O Think about using desktop-couch
 O List recently opened journals under "Journal" -> "Recently Used"
 O Add a box on right click in cloud words to display a menu with "Avoid this word from cloud" (usability)
 O Link to other days
+
+O weeknumbers in calender
+O tabs for different notebooks
+O the possibility to set ToDo's to a special date
 
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)

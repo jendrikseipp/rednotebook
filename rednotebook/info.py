@@ -168,7 +168,7 @@ u'Tags': {u'Work': None, u'Documentation': None},
 
 example_day1 = {
 'text': '''\
-=== %(annotations)s ===
+=== Annotations in Categories ===
 %(ann_par)s
 
 - Ideas
@@ -179,10 +179,10 @@ example_day1 = {
 
 The name "Categories" is a little bit confusing. It does not mean that a day is \
 put into a category, but that there is additional content on the right, \
-sorted into categories. Those categories have several items distributed over various days.
+sorted into categories. A category will contain several notes distributed over various days.
 
 For example you could want to remember all the movies you watch. \
-Each time you watch a new one, add the categories "Movies" with the \
+Each time you watch a new one, add the category "Movies" with the \
 entry "Name of the movie" to the day.
 
 I’ll give you another example: I like to maintain a list of cool things I have done. \

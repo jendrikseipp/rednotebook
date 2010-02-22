@@ -166,8 +166,13 @@ class ExportAssistant(object):
 	
 	def prepare_next_page(self, current_page, data):
 		if current_page == 1 :
-			proposedFileName = 'RedNotebook-Export_' + str(datetime.date.today()) + \
-								'.' + self.format_extension_map.get(self.get_selected_format())
+			extension = self.format_extension_map.get(self.get_selected_format())
+			if extension == 'xhtml':
+				# xhtml extension is not recognized by IE 
+				extension = 'html'
+				
+			proposedFileName = 'RedNotebook-Export_%s.%s' % \
+								(datetime.date.today(), extension)
 
 			home = os.getenv('USERPROFILE') or os.getenv('HOME')
 			self.filename_chooser.set_current_folder(home)
