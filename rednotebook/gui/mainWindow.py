@@ -1370,7 +1370,7 @@ class DayTextField(object):
 		
 		# Enable drag&drop
 		#self.dayTextView.connect('drag-drop', self.on_drop) # unneeded
-		#self.dayTextView.connect('drag-data-received', self.on_drag_data_received)
+		self.dayTextView.connect('drag-data-received', self.on_drag_data_received)
 		
 	def set_text(self, text, undoing=False):
 		self.insert(text, overwrite=True, undoing=undoing)
