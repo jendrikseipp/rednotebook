@@ -129,8 +129,7 @@ class MainWindow(object):
 		self.editPane = self.builder.get_object('editPane')
 		
 		# Only add the config variable if webkit is available
-		#TODO: Change to 1 when tested
-		use_webkit = browser.webkit and self.redNotebook.config.read('useWebkit', 0)
+		use_webkit = browser.webkit and self.redNotebook.config.read('useWebkit', 1)
 		
 		logging.info('Using webkit: %s' % use_webkit)
 		
