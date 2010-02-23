@@ -1,5 +1,18 @@
 ==== RedNotebook Changelog ====
 
+=== 0.9.3 (10-02-23) ===
+ * Add graphical option to select webkit for previews
+ * If available use webkit for clouds
+ * Add context menu to the webkit clouds for hiding words
+ * Change "Stricken" to "Strikethrough"
+ * Add locale functions for complete translations
+ * Change xhtml extension to .html
+ * Improve documentation
+ * New translations:
+   * Italian
+ * Many translations updated
+ 
+
 === 0.9.2 (10-01-21) ===
  * Use webkit for direct PDF export
  * Remove pdflatex (texlive) package suggestion

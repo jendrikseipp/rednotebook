@@ -338,14 +338,14 @@ class MainWindow(object):
 		'''
 		Exit if not closeToTray
 		'''
-		#logging.debug('on_mainFrame_destroy')
+		logging.debug('Main frame destroyed')
 		#self.saveToDisk(exitImminent=False)
 		
 		if self.redNotebook.config.read('closeToTray', 0):
 			self.hide()
 		
 			# the default handler is _not_ to be called, 
-			# and therefore the window will not be destroyed. 
+			# and therefore the window will not be destroyed.
 			return True
 		else:
 			self.redNotebook.exit()

@@ -7,24 +7,14 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-0.9.3
-X Add graphical option to select webkit for previews
-X If available use webkit for clouds
-X Add context menu to the webkit clouds for hiding words
-X Change "Stricken" to "Strikethrough"
-X Add locale functions for complete translations
-X Improve documentation
-X Build new Windows installer
-X Improve categories documentation
-
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
 O Allow setting the language in the config file?
 O Make webkit the default preview backend
 O Fully translate windows version
 O Fix picture html export on Windows
-X Change xhtml extension to .html
 X Hide PDF export button on windows (pywebkitgtk not available)
+O Fix status icon on XFCE
 
 0.9.5
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
