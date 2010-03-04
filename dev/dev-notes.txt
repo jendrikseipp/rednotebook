@@ -64,3 +64,16 @@ O Portable Version:
   Linux users can use the setting too, if all the computers have the RedNotebook
   requirements installed (pygtk, pyyaml)
   
+O Completely Translate Windows Version:
+  - Inno Setup:
+    - The {language} constant returns the internal name of the selected language.
+    - On Windows NT/2000/XP/2003, environment variables are stored as string values 
+      in the registry, so it is possible to manipulate them using the [Registry] section. 
+      System-wide environment variables are located at:
+
+      HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+
+      User-specific environment variables are located at:
+
+      HKEY_CURRENT_USER\Environment
+  

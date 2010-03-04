@@ -9,14 +9,16 @@ implementation if you tell me that you'd like its addition ;)
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
-O Allow setting the language in the config file?
 X Make webkit the default preview backend
+O Let user select the language for RedNotebook in Windows installer
+O Add more languages to the windows installer
 O Fully translate windows version
 O Fix picture html export on Windows
 X Hide PDF export button on windows (pywebkitgtk not available)
-O Fix status icon on XFCE
 
 0.9.5
+O Allow setting the language in the config file?
+O Fix status icon on XFCE
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
   - Music tracks or albums
   - Pictures or picture folders
@@ -30,12 +32,11 @@ O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availabil
 O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
 O Open links externally in KDE too
-O Provide an option to export all days with a certain tag
 O Custom-style Journals? (Mono-space)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
 O Import of exported backups (Check if saving to 7z makes sense first)
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
-O Show warning if last backup dates to one month before
+O Show warning if last backup dates to more than one month before
 O Get rid of CamelCase in sourcecode
 O Get proper file layout with one script not part of module
 X Windows: RedNotebook can now be run in portable mode
@@ -65,6 +66,7 @@ O Copy all files and pictures into data subdirectory
 
 2.x
 O Think about using desktop-couch
+O Use categories for number data and present it graphically (KMs, Cash, Calories)
 
 
 
@@ -76,8 +78,8 @@ O Think about using desktop-couch
 === Maybe even some of those features will make it into RedNotebook ===
 
 O List recently opened journals under "Journal" -> "Recently Used"
-
 O Show week numbers in calendar
+O Provide an option to export all days with a certain tag
 
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)
