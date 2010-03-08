@@ -38,6 +38,7 @@ O Import of exported backups (Check if saving to 7z makes sense first)
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Show warning if last backup dates to more than one month before
 O Get rid of CamelCase in sourcecode
+O Consider using apport
 O Get proper file layout with one script not part of module
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
@@ -113,3 +114,4 @@ O Convert all read strings to unicode before working with them?
 - Tabs for different notebooks (KISS)
 - Add option for time interval between automatic savings? (KISS)
 - Link to other days (KISS)
+- Mathematic equations (KISS)

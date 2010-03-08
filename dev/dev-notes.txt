@@ -64,6 +64,9 @@ O Portable Version:
   Linux users can use the setting too, if all the computers have the RedNotebook
   requirements installed (pygtk, pyyaml)
   
+  - Provide Option in Setup for running RedNotebook portable. Maybe use file
+    that is only installed, when running this mode.
+  
 O Completely Translate Windows Version:
   - Inno Setup:
     - The {language} constant returns the internal name of the selected language.

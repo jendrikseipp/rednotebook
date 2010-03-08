@@ -131,7 +131,7 @@ class MainWindow(object):
 		# Only add the config variable if webkit is available
 		use_webkit = browser.webkit and self.redNotebook.config.read('useWebkit', 1)
 		
-		logging.info('Using webkit: %s' % use_webkit)
+		logging.info('Using webkit for previews: %s' % use_webkit)
 		
 		if use_webkit:
 			self.html_editor = browser.HtmlView()
@@ -445,8 +445,10 @@ class MainWindow(object):
 		if browser.webkit:
 			from rednotebook.gui.clouds import Cloud
 			self.cloud = Cloud(self.redNotebook)
+			logging.info('Using pywebkitgtk for the clouds.')
 		else:
-			logging.warning('pywebkitgtk is not installed. You may experience errors')
+			logging.warning('pywebkitgtk is not installed and cannot ' \
+					'be used for the clouds. You may experience errors')
 			#self.searchNotebook.remove_page(1)
 			self.cloud = CloudView(self.redNotebook)
 			
