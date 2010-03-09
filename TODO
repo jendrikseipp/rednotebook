@@ -10,10 +10,12 @@ implementation if you tell me that you'd like its addition ;)
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
 X Make webkit the default preview backend
-O Let user select the language for RedNotebook in Windows installer
-O Add more languages to the windows installer
-O Fully translate windows version
-O Fix picture html export on Windows
+X Add more languages to the windows installer
+X Fully translate windows version
+O Explain how to run RedNotebook portably on Windows
+O Save data dir relative to exe
+O Fix picture html export on Windows -> file:// needed for firefox win but not for keepnote
+O Remember if window was maximized
 X Hide PDF export button on windows (pywebkitgtk not available)
 
 0.9.5
@@ -43,8 +45,6 @@ O Get proper file layout with one script not part of module
 X Windows: RedNotebook can now be run in portable mode
   (edit the setting in "RedNotebook-directory/files/default.cfg")
    O Propose for portableapps
-   O Show message in windows installer
-   O Save dataDir relative to exe
 
 1.0
 X Solid amount of translations
@@ -115,3 +115,4 @@ O Convert all read strings to unicode before working with them?
 - Add option for time interval between automatic savings? (KISS)
 - Link to other days (KISS)
 - Mathematic equations (KISS)
+- Let user select the language for RedNotebook in Windows installer (User wants his win language)
