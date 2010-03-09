@@ -79,4 +79,8 @@ O Completely Translate Windows Version:
       User-specific environment variables are located at:
 
       HKEY_CURRENT_USER\Environment
+	  
+	automatic gtk stuff: Registry?
+	program strings:	 lang variable
+	gtkbuilder:			 Registry?
   
