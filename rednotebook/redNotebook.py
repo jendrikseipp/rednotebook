@@ -584,8 +584,9 @@ Filenames have to have the following form: 2009-01.txt \
 		except IOError:
 			#If that fails, there is nothing to load, so just display an error message
 			logging.error('Error: The file %s could not be read' % monthFileString)
-		except Exception:
-			logging.error('An error occured while reading %s' % monthFileString)
+		except Exception, err:
+			logging.error('An error occured while reading %s:' % monthFileString)
+			logging.error('%s' % err)
 		
 		
 	def loadMonth(self, date):

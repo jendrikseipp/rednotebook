@@ -281,6 +281,10 @@ class HtmlIO(RichTextIO):
 					if is_relative_file(filename):
 						filename = os.path.join(path, filename)
 					
+					## For absolute windows filenames
+					if filename.startswith('file://'):
+						filename = filename[7:]
+						
 					## Modified
 					if filename.startswith("http:") or \
 							filename.startswith("file:"):
