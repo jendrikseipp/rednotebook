@@ -68,7 +68,7 @@ name: "startupicon"; Description: "Run RedNotebook on Startup"; GroupDescription
 
 [Files]
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "..\dist\files"; Excludes: "rednotebook.log"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\dist\*"; Excludes: "rednotebook.log"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ;Source: "portable.cfg"; DestDir: "{app}\files"; DestName: "default.cfg"; Flags: ignoreversion; Components: portablecfgfile
 
 [Icons]
