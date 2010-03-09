@@ -14,7 +14,7 @@ X Add more languages to the windows installer
 X Fully translate windows version
 O Explain how to run RedNotebook portably on Windows
 O Save data dir relative to exe
-O Fix picture html export on Windows -> file:// needed for firefox win but not for keepnote
+X Fix picture export on Windows
 O Remember if window was maximized
 X Hide PDF export button on windows (pywebkitgtk not available)
 

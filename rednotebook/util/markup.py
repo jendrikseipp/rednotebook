@@ -131,6 +131,9 @@ def _get_config(type):
 		config['preproc'].append([r'\[""', r'["""'])
 		config['preproc'].append([r'""\.', r'""".'])
 		
+		# For images we have to omit the file:// prefix
+		config['postproc'].append([r'includegraphics\{"file://', r'includegraphics{"'])
+		
 		# Allow line breaks, r'\\\\' are 2 \ for regexes
 		config['postproc'].append([r'\$\\backslash\$\$\\backslash\$', r'\\\\'])
 		
