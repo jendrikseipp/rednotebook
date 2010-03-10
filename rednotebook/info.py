@@ -270,11 +270,11 @@ example_content = [welcome_day, example_day1, example_day2, example_day3]
 
 ann_help_text = example_day1['text'].replace('===', '==')
 
-multiple_entries_text = example_day2['text']#.replace('=== Multiple Entries ===', '== Multiple Entries ==')
+multiple_entries_text = example_day2['text']
 multiple_entries_text = multiple_entries_text.replace('=== Work ===', '**Work**\n')
 multiple_entries_text = multiple_entries_text.replace('=== Play ===', '**Play**\n')
 
-todo_help_text = example_day3['text']#.replace('=== Todo list ===', '== Todo list ==')
+todo_help_text = example_day3['text']
 
 
 helpText = '''
@@ -303,9 +303,10 @@ this text was formatted by looking at its [source source.txt].
 %(ann_help_text)s
 
 == Images, Files and Links ==
-RedNotebook lets you insert images, files and links into your entries. To do so, select the \
-appropriate option in the "Insert" pull-down menu above the main text field. The text will \
-be inserted at the current cursor position.
+RedNotebook lets you insert images, files and links into your entries. \
+To do so, select the appropriate option in the "Insert" pull-down menu \
+above the main text field. The text will be inserted at the current \
+cursor position.
 
 With the insert button you cannot insert **links to directories** on your computer. \
 Those can be inserted manually however (""[Home ""file:///home/""]"").
@@ -318,7 +319,8 @@ into the text area when you click on "Template". You can open the template files
 from inside RedNotebook by opening the menu next to the "Template" button.
 
 == Tags ==
-Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on "Add Tag" and insert \
+Tagging an entry (e.g. with the tag "Work") is also easy: \
+On the right, click on "Add Tag" and insert \
 "Work" into the lower textbox. The result looks like:
 
 - Tags
@@ -326,7 +328,8 @@ Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on
 
 
 You can see a tag cloud on the left by activating the "Clouds" tab and \
-selecting "Tags". Get a list of all tags with a given name by clicking on that tag in the cloud.
+selecting "Tags". Get a list of all tags with a given name by clicking \
+on that tag in the cloud.
 
 == Search ==
 On the left you find the search box. You can search for text, display a \
@@ -354,7 +357,17 @@ open this dialog by clicking on the entry in the "Edit" menu.
 == Save ==
 %(save1)s %(save2)s %(save3)s
 
-=== Save to remote FTP or SSH server ===
+== Synchronize across multiple computers ==
+Syncing RedNotebook with a remote server is easy. You can either use a \
+cloud service like Ubuntu One or Dropbox or save your journal to your \
+own server.
+
+=== Ubuntu One and Dropbox ===
+If you are registered for either [Ubuntu One ""http://one.ubuntu.com""] \
+or [Dropbox http://www.dropbox.com], you can just save your journal in \
+a subfolder of the respective synchronized folder in your home directory.
+
+=== Directly save to remote FTP or SSH server ===
 Since version 0.8.9 you can have your journal directory on a remote server. The feature is \
 however only available on Linux machines. To use the feature you have to connect your computer \
 to the remote server. This is most easily done in Nautilus by clicking on "File" -> \
@@ -362,6 +375,14 @@ to the remote server. This is most easily done in Nautilus by clicking on "File"
 server in Nautilus at all times on the left side. The next time you open RedNotebook you \
 will find your server in the "New", "Open" and "Save As" dialogs. There you can select \
 a new folder on the server for your journal.
+
+=== External sync with remote server ===
+If you have your own server, you might want to try \
+[Conduit http://www.conduit-project.org] or \
+[Unison http://www.cis.upenn.edu/~bcpierce/unison] for example. \
+To sync or backup your journal you have to sync your journal folder \
+(default is "$HOME/.rednotebook/data/") with a folder on your server. \
+It would be great if someone could write a tutorial about that.
 
 Obviously you have to be connected to the internet to use that feature. Be sure to backup your \
 data regularly if you plan to save your content remotely. There are always more pitfalls when \
@@ -428,6 +449,22 @@ same directory.
 | Add Tag            | <Ctrl> + T             |
 
 You can find other shortcuts in the menus.
+
+== Encryption ==
+You can use e.g. [TrueCrypt http://www.truecrypt.org] to encrypt your \
+journal. Nick Bair has written a nice tutorial about \
+[encrypting RedNotebook files \
+http://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=14] \
+on Windows. The procedure for other operating systems should be similar. \
+The general idea is to create and mount an encrypted folder with \
+TrueCrypt and put your journal files in there.
+
+In recent Linux distributions is has become pretty easy to encrypt \
+your entire home partition. I would recommend that to anyone who \
+wishes to protect her/his diary and all other personal files. \
+This method is especially useful for laptop users, because their \
+computers are more likely to be stolen. If you encrypt your home \
+partition all RedNotebook data will be encrypted, too.
 
 == Tips ==
 %(multiple_entries_text)s

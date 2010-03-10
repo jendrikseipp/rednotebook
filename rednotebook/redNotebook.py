@@ -265,7 +265,7 @@ class RedNotebook:
 		
 		self.config = config#configuration.Config(self.dirs)
 		
-		logging.info('Running in portable mode: %s' % self.config.read('portable', 0))
+		logging.info('Running in portable mode: %s' % self.dirs.portable)
 		
 		self.testing = False
 		if options.debug:
@@ -321,7 +321,11 @@ class RedNotebook:
 		not present
 		'''
 		if not args:
-			return self.config.read('dataDir', self.dirs.dataDir)
+			data_dir = self.config.read('dataDir', self.dirs.dataDir)
+			if not os.path.isabs(data_dir):
+				data_dir = os.path.join(self.dirs.appDir, data_dir)
+				data_dir = os.path.normpath(data_dir)
+			return data_dir
 		
 		# path_arg can be e.g. data (under .rednotebook), data (elsewhere), 
 		# or an absolute path /home/username/myjournal
@@ -527,7 +531,15 @@ class RedNotebook:
 		self.frame.mainFrame.set_title(frame_title)
 		
 		# Save the folder for next start
-		self.config['dataDir'] = data_dir
+		if not self.dirs.portable:
+			self.config['dataDir'] = data_dir
+		else:
+			# The relpath method is only available in python >= 2.6
+			if getattr(os.path, 'relpath', None):
+				rel_data_dir = os.path.relpath(data_dir, self.dirs.appDir)
+				self.config['dataDir'] = rel_data_dir
+			else:
+				self.config['dataDir'] = data_dir
 		
 		# Set the date range for the export assistant
 		start_date = self.getEditDateOfEntryNumber(0)

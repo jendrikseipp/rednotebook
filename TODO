@@ -13,7 +13,7 @@ X Make webkit the default preview backend
 X Add more languages to the windows installer
 X Fully translate windows version
 O Explain how to run RedNotebook portably on Windows
-O Save data dir relative to exe
+X Save data dir relative to application dir in portable mode
 X Fix picture export on Windows
 O Remember if window was maximized
 X Hide PDF export button on windows (pywebkitgtk not available)
