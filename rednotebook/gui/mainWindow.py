@@ -168,6 +168,7 @@ class MainWindow(object):
 			'on_previewButton_clicked': self.on_previewButton_clicked,
 			
 			'on_mainFrame_configure_event': self.on_mainFrame_configure_event,
+			'on_mainFrame_window_state_event': self.on_mainFrame_window_state_event,
 			
 			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
 			'on_addTagButton_clicked': self.on_addTagButton_clicked,
@@ -473,6 +474,20 @@ class MainWindow(object):
 		self.redNotebook.config['mainFrameWidth'] = mainFrameWidth
 		self.redNotebook.config['mainFrameHeight'] = mainFrameHeight
 		
+	def on_mainFrame_window_state_event(self, widget, event):
+		'''
+		The "window-state-event" signal is emitted when window state 
+		of widget changes. For example, for a toplevel window this 
+		event is signaled when the window is iconified, deiconified, 
+		minimized, maximized, made sticky, made not sticky, shaded or 
+		unshaded.	
+		'''
+		state = event.new_window_state
+		maximized = state and gtk.gdk.WINDOW_STATE_MAXIMIZED
+		maximized = int(bool(maximized))
+		self.redNotebook.config['mainFrameMaximized'] = maximized
+		
+		
 	def on_backOneDayButton_clicked(self, widget):
 		self.redNotebook.goToPrevDay()
 		
@@ -559,6 +574,9 @@ class MainWindow(object):
 				self.builder.get_object('mainPane').get_position()
 		config['rightDividerPosition'] = \
 				self.builder.get_object('editPane').get_position()
+				
+		# Remember if window was maximized
+		
 		
 		# Actually this is unnecessary as the list gets saved when it changes
 		# so we use it to sort the list ;)
@@ -579,7 +597,8 @@ class MainWindow(object):
 		
 		self.mainFrame.resize(mainFrameWidth, mainFrameHeight)
 		
-		#self.mainFrame.maximize()
+		if config.read('mainFrameMaximized', 0):
+			self.mainFrame.maximize()
 		
 		if config.has_key('leftDividerPosition'):
 			self.builder.get_object('mainPane').set_position(config.read('leftDividerPosition', -1))

@@ -388,6 +388,21 @@ Obviously you have to be connected to the internet to use that feature. Be sure 
 data regularly if you plan to save your content remotely. There are always more pitfalls when \
 an internet connection is involved.
 
+== Portable mode ==
+RedNotebook can be run in portable mode. In this mode, the \
+template directory and the configuration and log file are saved \
+in the application directory instead of in the home directory. \
+Additionally the path to the last opened journal is remembered \
+relatively to the application directory. 
+
+To use RedNotebook on a flash drive on Windows, run the installer and \
+select a directory on your USB drive as the installation directory. \
+You probably don't need the "Start Menu Group" and Desktop icons in \
+portable mode.
+
+To **activate portable mode**, change into the files/ directory and in the \
+default.cfg file set portable=1.
+
 == Export ==
 %(save4)s %(save5)s
 
