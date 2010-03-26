@@ -9,17 +9,20 @@ implementation if you tell me that you'd like its addition ;)
 
 0.9.4
 X Allow dragging of files and pictures into RedNotebook
-X Make webkit the default preview backend
-X Add more languages to the windows installer
-X Fully translate windows version
-X Explain how to run RedNotebook portably on Windows
 X Save data dir relative to application dir in portable mode
-X Fix picture export on Windows
 X Remember if window was maximized
-X Hide PDF export button on windows (pywebkitgtk not available)
+X Make webkit the default preview backend
+X Improve documentation (Synchronization, Portable mode)
+ X Windows:
+   X Fully translate Windows version
+   X Add more languages to the Windows installer
+   X Fix picture export on Windows
+   X Hide PDF export button on windows (pywebkitgtk not available)
+   X Portable mode has been improved
+
+
 
 0.9.5
-O Allow setting the language in the config file?
 O Fix status icon on XFCE
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
   - Music tracks or albums
@@ -34,23 +37,22 @@ O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availabil
 O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
 O Open links externally in KDE too
-O Custom-style Journals? (Mono-space)
-O Image resizing with PIL? (Image module) (Figure out where to save new files first)
-O Import of exported backups (Check if saving to 7z makes sense first)
-O Use attributes for formatting glade strings for easier translation (gtk 2.16)
-O Show warning if last backup dates to more than one month before
 O Get rid of CamelCase in sourcecode
-O Consider using apport
-O Get proper file layout with one script not part of module
-X Windows: RedNotebook can now be run in portable mode
-  (edit the setting in "RedNotebook-directory/files/default.cfg")
-   O Propose for portableapps
+O Propose for portableapps
 
 1.0
 X Solid amount of translations
 O Stable
 O Fix freeze bug
 O Many automatic insertions
+
+1.0.x
+O Custom-style Journals? (Mono-space)
+O Image resizing with PIL? (Image module) (Figure out where to save new files first)
+O Import of exported backups (Check if saving to 7z makes sense first)
+O Use attributes for formatting glade strings for easier translation (gtk 2.16)
+O Show warning if last backup dates to more than one month before
+O Consider using apport
 
 1.1
 O Password protection or encryption
@@ -116,3 +118,4 @@ O Convert all read strings to unicode before working with them?
 - Link to other days (KISS)
 - Mathematic equations (KISS)
 - Let user select the language for RedNotebook in Windows installer (User wants his win language)
+- Get proper file layout with one script not part of module (Everything works without name clashes)

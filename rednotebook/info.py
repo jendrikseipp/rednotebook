@@ -289,7 +289,7 @@ As you see, the text can be formatted **bold**, \
 is also the "Format" button, with which you can format the main text and nodes \
 in the categories tree on the right.
 
-A blank line starts a new **paragraph**, \\ results in a newline.
+A blank line starts a new **paragraph**, \\\\ results in a newline.
 
 %% Formatting commands inside two pairs of "" are not interpreted (""**not bold**"")
 
