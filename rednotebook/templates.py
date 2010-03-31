@@ -368,7 +368,7 @@ from it.
 		
 		# Only add the example templates the first time and just restore
 		# the day templates everytime
-		if not self.mainWindow.redNotebook.firstTimeExecution:
+		if not self.mainWindow.redNotebook.dirs.is_first_start:
 			filesystem.makeFiles(fileContentPairs)
 			return
 		

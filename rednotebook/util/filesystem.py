@@ -91,6 +91,9 @@ class Filenames(dict):
 			self.redNotebookUserDir = os.path.join(self.userHomeDir, '.rednotebook')
 		
 		self.dataDir = self.defaultDataDir
+		
+		# Is this the first run of RedNotebook?
+		self.is_first_start = not os.path.exists(self.redNotebookUserDir)
 			
 		# Assert that all dirs and files are in place so that logging can take start
 		makeDirectories([self.redNotebookUserDir, self.dataDir, self.templateDir,

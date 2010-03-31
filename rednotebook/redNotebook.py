@@ -285,11 +285,8 @@ class RedNotebook:
 		# The dir name is the title
 		self.title = ''
 		
-		# show instructions at first start or if testing
-		default_dir_selected = (self.dirs.dataDir == self.dirs.defaultDataDir)
-		self.firstTimeExecution = default_dir_selected and \
-									len(os.listdir(self.dirs.dataDir)) == 0
-		logging.info('First Start: %s' % self.firstTimeExecution)
+		# show instructions at first start
+		logging.info('First Start: %s' % self.dirs.is_first_start)
 		
 		logging.info('RedNotebook version: %s' % info.version)
 		logging.info(filesystem.get_platform_info())
@@ -506,7 +503,7 @@ class RedNotebook:
 		sortedCategories = sorted(self.nodeNames, key=lambda category: str(category).lower())
 		self.frame.categoriesTreeView.categories = sortedCategories
 		
-		if self.firstTimeExecution:
+		if self.dirs.is_first_start and data_dir_empty:
 			logging.info('Adding example content')
 			self.addInstructionContent()
 			
