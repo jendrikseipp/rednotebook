@@ -249,7 +249,7 @@ styles = {	'DEFAULT':   		{},#{'font': 'serif'},
 
 # Syntax definition
 
-list = MultiPattern(r"^ *(- ).+$", [(1, 'bold')])
+list = MultiPattern(r"^ *(- )[^\s].*$", [(1, 'bold')])
 
 comment = MultiPattern(r'^(\%.*)$', [(1, 'comment')])
 
