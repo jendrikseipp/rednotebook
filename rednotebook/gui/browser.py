@@ -137,6 +137,9 @@ class HtmlView(gtk.ScrolledWindow):
 		self.webview.connect('button-press-event', self.on_button_press)
 		self.nav_signal = self.webview.connect('navigation-requested', self.on_navigate)
 		
+		self.search_text = ''
+		self.webview.connect('load-finished', self.on_load_finished)
+		
 		self.show_all()
 		
 	def load_html(self, html):
@@ -145,8 +148,9 @@ class HtmlView(gtk.ScrolledWindow):
 		self.loading_html = False
 								
 	def get_html(self):
-		pass
-	
+		self.webview.execute_script("document.title=document.documentElement.innerHTML;")
+		return self.webview.get_main_frame().get_title()
+
 	def set_editable(self, editable):
 		self.webview.set_editable(editable)
 		
@@ -160,8 +164,11 @@ class HtmlView(gtk.ScrolledWindow):
 		self.webview.set_zoom_level(zoom)
 		
 	def highlight(self, string):
+		# Remove results from last highlighting
+		self.webview.unmark_text_matches()
+			
 		# Mark all occurences of "string", case-insensitive, no limit
-		self.webview.mark_text_matches(string, False, 0)
+		matches = self.webview.mark_text_matches(string, False, 0)
 		self.webview.set_highlight_text_matches(True)
 		
 	def on_populate_popup(self, webview, menu):
@@ -193,6 +200,20 @@ class HtmlView(gtk.ScrolledWindow):
 		
 		# Stop processing that event
 		return True
+		
+	def on_load_finished(self, webview, frame):
+		'''
+		We use this method to highlight searched text.
+		Whenever new searched text is entered it is saved in the HtmlView
+		instance and highlighted, when the html is loaded.
+		
+		Trying to highlight text while the page is still being loaded
+		does not work.
+		'''
+		if self.search_text:
+			self.highlight(self.search_text)
+		else:
+			self.webview.set_highlight_text_matches(False)
 	
 if __name__ == '__main__':
 	logging.getLogger('').setLevel(logging.DEBUG)
@@ -217,8 +238,14 @@ if __name__ == '__main__':
 	vbox.pack_start(button, False, False)
 	
 	html_view = HtmlView()
+	
+	def high(view, frame):
+		html_view.highlight("work")
+	html_view.webview.connect('load-finished', high)
+	
+	
 	html_view.load_html(html)
-	html_view.highlight("work")
+	
 	html_view.set_editable(True)
 	vbox.pack_start(html_view)
 	

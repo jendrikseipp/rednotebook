@@ -340,7 +340,7 @@ Double-clicking on a day lets you jump to it.
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
 If words appear in the cloud that you don't want to see there, just right-click on them. \
-Alternatively you can open the Preferences dialog and add the words to the cloud blocklist there.
+Alternatively you can open the Preferences dialog and add the words to the cloud blacklist there.
 
 == Spellcheck ==
 RedNotebook supports spellchecking your entries if you have python-gtkspell installed. \

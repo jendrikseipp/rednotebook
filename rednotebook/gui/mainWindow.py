@@ -1003,6 +1003,15 @@ class MainWindow(object):
 			#Ask at startup
 			self.redNotebook.config['checkForNewVersion'] = 1
 			
+	def highlight_text(self, search_text):
+		# let the search function highlight found strings in the page
+		#if self.preview_mode:
+			# If we search twice on the same day, the html is not reloaded
+			# so we have to manually highlight
+		self.html_editor.highlight(search_text)
+		#else:
+		self.dayTextField.highlight(search_text)
+			
 
 class NewEntryDialog(object):
 	def __init__(self, mainFrame):
@@ -1120,7 +1129,6 @@ class SearchComboBox(CustomComboBoxEntry):
 		"""
 			Called when the entry changes
 		"""
-		#self.search(entry.get_text())
 		self.search(self.get_active_text())
 		
 	def on_entry_activated(self, entry):
@@ -1138,6 +1146,13 @@ class SearchComboBox(CustomComboBoxEntry):
 		self.search(self.get_active_text())
 			
 	def search(self, searchText):
+		if self.searchType == 0:
+			# Tell the webview which text to highlight after the html is loaded
+			self.mainWindow.html_editor.search_text = searchText
+		
+			# Highlight all occurences in the current day's text
+			self.mainWindow.highlight_text(searchText)
+		
 		self.mainWindow.searchTreeView.update_data(searchText)
 		
 		
@@ -1323,7 +1338,7 @@ class SearchTreeView(object):
 		self.treeView.connect('row_activated', self.on_row_activated)
 		
 		
-	def update_data(self, searchText=''):
+	def update_data(self, searchText=''):		
 		self.treeStore.clear()
 		
 		rows = None
@@ -1361,11 +1376,7 @@ class SearchTreeView(object):
 		self.redNotebook.changeDate(newDate)
 		
 		if self.searchType == 0:
-			# let the search function highlight found strings in the page
-			if self.mainWindow.preview_mode:
-				self.mainWindow.html_editor.highlight(self.searched_text)
-			else:
-				self.mainWindow.dayTextField.highlight(self.searched_text)
+			self.mainWindow.highlight_text(self.searched_text)
 		
 		
 	def set_search_type(self, searchType):
@@ -1443,9 +1454,15 @@ class DayTextField(object):
 								#| gtk.SEARCH_CASE_INSENSITIVE # non-existent
 								)
 			
-			# When we find one variant, highlight it and quit
+			# When we find one variant, highlight it, scroll to it and quit
 			if iter_tuple:
 				self.set_selection(*iter_tuple)
+				
+				# It is safer to scroll to a mark than an iter
+				mark = self.dayTextBuffer.create_mark('highlight', iter_tuple[0], left_gravity=False)
+				#self.dayTextView.scroll_to_iter(iter_tuple[0], 0)
+				self.dayTextView.scroll_to_mark(mark, 0)
+				self.dayTextBuffer.delete_mark(mark)
 				return
 		
 			

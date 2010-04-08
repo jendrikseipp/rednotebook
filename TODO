@@ -13,14 +13,21 @@ X Save data dir relative to application dir in portable mode
 X Remember if window was maximized
 X Make webkit the default preview backend
 X Improve documentation (Synchronization, Portable mode)
+X Improve list markup highlighting
+X Only add help content at first startup (Closes LP:550814)
+X Live highlighting of searched words in text
+X Scroll to found word at search
  X Windows:
    X Fully translate Windows version
    X Add more languages to the Windows installer
    X Fix picture export on Windows
    X Hide PDF export button on windows (pywebkitgtk not available)
    X Portable mode has been improved
+   O Ensure that words vanish from clouds directly after right-click
+   O Check that blacklist words are added to blacklist
+   O Try to get rid of PangoWarnings
 
-
+O Feature Poll
 
 0.9.5
 O Fix status icon on XFCE
@@ -83,6 +90,8 @@ O Use categories for number data and present it graphically (KMs, Cash, Calories
 O List recently opened journals under "Journal" -> "Recently Used"
 O Show week numbers in calendar
 O Provide an option to export all days with a certain tag
+
+O Evolution Integration (zeitgeist?)
 
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)
