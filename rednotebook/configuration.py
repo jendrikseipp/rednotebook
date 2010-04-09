@@ -107,45 +107,46 @@ class Config(dict):
 		except IOError:
 			return {}
 			
-		if keyValuePairs:
-			#something could be read
+		if not keyValuePairs:
+			# nothing could be read
+			return {}
+	
+		# delete comments
+		keyValuePairs = map(lambda line: delete_comment(line), keyValuePairs)
 		
-			# delete comments
-			keyValuePairs = map(lambda line: delete_comment(line), keyValuePairs)
-			
-			#delete whitespace
-			keyValuePairs = map(str.strip, keyValuePairs)
-			
-			#delete empty lines
-			keyValuePairs = filter(lambda line: len(line) > 0, keyValuePairs)
-			
-			dictionary = {}
-			
-			#read keys and values
-			for keyValuePair in keyValuePairs:
-				if '=' in keyValuePair:
+		#delete whitespace
+		keyValuePairs = map(str.strip, keyValuePairs)
+		
+		#delete empty lines
+		keyValuePairs = filter(lambda line: len(line) > 0, keyValuePairs)
+		
+		dictionary = {}
+		
+		#read keys and values
+		for keyValuePair in keyValuePairs:
+			if '=' in keyValuePair:
+				try:
+					# Delete whitespace around =
+					pair = keyValuePair.split('=')
+					key, value = map(str.strip, pair)
+					
+					# Do not add obsolete keys -> they will not be rewritten
+					# to disk
+					if key in self.obsolete_keys:
+						continue
+					
 					try:
-						# Delete whitespace around =
-						pair = keyValuePair.split('=')
-						key, value = map(str.strip, pair)
+						#Save value as int if possible
+						valueInt = int(value)
+						dictionary[key] = valueInt
+					except ValueError:
+						dictionary[key] = value
 						
-						# Do not add obsolete keys -> they will not be rewritten
-						# to disk
-						if key in self.obsolete_keys:
-							continue
-						
-						try:
-							#Save value as int if possible
-							valueInt = int(value)
-							dictionary[key] = valueInt
-						except ValueError:
-							dictionary[key] = value
-							
-					except Exception:
-						logging.error('The line "' + keyValuePair + \
-										'" in the config file contains errors')
-						
-			return dictionary
+				except Exception:
+					logging.error('The line "' + keyValuePair + \
+									'" in the config file contains errors')
+					
+		return dictionary
 		
 	
 	def read(self, key, default):

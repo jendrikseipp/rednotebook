@@ -180,7 +180,7 @@ for module in modules:
 		module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
 		module.textdomain(GETTEXT_DOMAIN)
 	except AttributeError, err:
-		logging.error(err)
+		logging.info(err)
 		
 # register the gettext function for the whole interpreter as "_"
 import __builtin__
@@ -237,7 +237,7 @@ logging.info('AppDir: %s' % filesystem.appDir)
 baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
 logging.info('BaseDir: %s' % baseDir)
 if baseDir not in sys.path:
-	logging.info('Adding BaseDir to sys.path')
+	# Adding BaseDir to sys.path
 	sys.path.insert(0, baseDir)
 	
 

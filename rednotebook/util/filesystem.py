@@ -85,23 +85,7 @@ class Filenames(dict):
 		
 		self.portable = bool(config.read('portable', 0))
 		
-		# Find the user directory
-		if self.portable:
-			portable_default = os.path.join(self.appDir, 'user')
-			rel_portable_custom = config.read('userDir', '')
-			if rel_portable_custom:
-				# If a custom relative user dir has been set,
-				# construct the absolute path and use it
-				abs_portable_custom = os.path.join(self.appDir, rel_portable_custom)
-				self.redNotebookUserDir = abs_portable_custom
-			else:
-				# Otherwise just use the standard portable path
-				self.redNotebookUserDir = portable_default
-		else:
-			# If a custom absolute user dir has been set use it,
-			# otherwise use the default dir
-			stationary_default = os.path.join(self.userHomeDir, '.rednotebook')
-			self.redNotebookUserDir = config.read('userDir', stationary_default)
+		self.redNotebookUserDir = self.get_user_dir(config)
 		
 		self.dataDir = self.defaultDataDir
 		
@@ -115,6 +99,26 @@ class Filenames(dict):
 		
 		self.last_pic_dir = self.userHomeDir
 		self.last_file_dir = self.userHomeDir
+		
+	def get_user_dir(self, config):
+		custom = config.read('userDir', '')
+		
+		if custom:
+			# If a custom user dir has been set,
+			# construct the absolute path (if not absolute already) 
+			# and use it
+			if not os.path.isabs(custom):
+				custom = os.path.join(self.appDir, custom)
+			user_dir = custom
+		else:
+			if self.portable:
+				user_dir = os.path.join(self.appDir, 'user')
+			else:
+				user_dir = os.path.join(self.userHomeDir, '.rednotebook')
+		
+		return user_dir
+		
+		
 
 		
 	def __getattribute__(self, attr):
