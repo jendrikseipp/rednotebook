@@ -115,33 +115,7 @@ class Filenames(dict):
 		
 		self.last_pic_dir = self.userHomeDir
 		self.last_file_dir = self.userHomeDir
-			
-		
-	def _portable(self):
-		'''determine whether we are running standalone'''
-		
-		default_config_file = os.path.join(self.filesDir, 'default.cfg')
-		
-		with open(default_config_file, 'r') as file:
-			lines = file.readlines()
-			
-		lines = filter(lambda line: line.strip().startswith('portable'), lines)
-		
-		if len(lines) < 1:
-			return False
-		
-		pair = lines[0].split('=')
-		
-		if len(pair) < 1:
-			return False
-		
-		key, portable_value = pair
-		
-		try:
-			portable_value = portable_value.strip()
-			return bool(int(portable_value))
-		except ValueError:
-			return False
+
 		
 	def __getattribute__(self, attr):
 		user_paths = dict((('templateDir', 'templates'),

@@ -17,6 +17,7 @@ X Improve list markup highlighting
 X Only add help content at first startup (Closes LP:550814)
 X Live highlighting of searched words in text
 X Scroll to found word at search
+X Make user directory configurable in default.cfg
  X Windows:
    X Fully translate Windows version
    X Add more languages to the Windows installer
