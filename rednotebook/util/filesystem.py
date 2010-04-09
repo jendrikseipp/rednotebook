@@ -75,7 +75,7 @@ class Filenames(dict):
 	'''
 	Dictionary for dirnames and filenames
 	'''
-	def __init__(self):
+	def __init__(self, config):
 		for key, value in globals().items():
 			# Exclude "get_main_dir()"
 			if key.lower().endswith('dir') and type(value) is str:
@@ -83,12 +83,25 @@ class Filenames(dict):
 				self[key] = value
 				setattr(self, key, value)
 		
-		self.portable = self._portable()
+		self.portable = bool(config.read('portable', 0))
 		
+		# Find the user directory
 		if self.portable:
-			self.redNotebookUserDir = os.path.join(self.appDir, 'user')
+			portable_default = os.path.join(self.appDir, 'user')
+			rel_portable_custom = config.read('userDir', '')
+			if rel_portable_custom:
+				# If a custom relative user dir has been set,
+				# construct the absolute path and use it
+				abs_portable_custom = os.path.join(self.appDir, rel_portable_custom)
+				self.redNotebookUserDir = abs_portable_custom
+			else:
+				# Otherwise just use the standard portable path
+				self.redNotebookUserDir = portable_default
 		else:
-			self.redNotebookUserDir = os.path.join(self.userHomeDir, '.rednotebook')
+			# If a custom absolute user dir has been set use it,
+			# otherwise use the default dir
+			stationary_default = os.path.join(self.userHomeDir, '.rednotebook')
+			self.redNotebookUserDir = config.read('userDir', stationary_default)
 		
 		self.dataDir = self.defaultDataDir
 		
@@ -169,6 +182,17 @@ def make_file_with_dir(file, content):
 	dir = os.path.dirname(file)
 	makeDirectory(dir)
 	makeFile(file, content)
+	
+def get_relative_path(from_dir, to_dir):
+	'''
+	Try getting the relative path from from_dir to to_dir
+	The relpath method is only available in python >= 2.6
+	if we run python <= 2.5, return the absolute path to to_dir
+	'''
+	if getattr(os.path, 'relpath', None):
+		return os.path.relpath(to_dir, from_dir)
+	else:
+		return to_dir
 	
 def writeArchive(archiveFileName, files, baseDir='', arcBaseDir=''):
 	"""

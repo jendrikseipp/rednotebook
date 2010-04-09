@@ -122,13 +122,14 @@ def setup_logging(log_file):
 	logging.info('Writing log to file "%s"' % log_file)
 
 
-dirs = filesystem.Filenames()
+default_config_file = os.path.join(filesystem.appDir, 'files', 'default.cfg')
+default_config = configuration.Config(default_config_file)
+
+dirs = filesystem.Filenames(default_config)
 setup_logging(dirs.logFile)
 
 ## ------------------ end Enable logging -------------------------------
 
-
-config = configuration.Config(dirs)
 
 
 ## ---------------------- Enable i18n -------------------------------
@@ -202,11 +203,6 @@ except ImportError:
 
 try:
 	import gtk
-	#logging.disable(logging.DEBUG)
-	#logging.disable(logging.INFO)
-	#logging.disable(logging.ERROR)
-	#logging.disable(logging.WARNING)
-	#logging.disable(logging.CRITICAL)
 	
 	import gobject
 	# Some notes on threads_init:
@@ -263,7 +259,13 @@ class RedNotebook:
 	def __init__(self):
 		self.dirs = dirs
 		
-		self.config = config#configuration.Config(self.dirs)
+		user_config = configuration.Config(self.dirs.configFile)
+		# Apply defaults where no custom values have been set
+		for key, value in default_config.items():
+			if key not in user_config:
+				user_config[key] = value
+		self.config = user_config
+		self.config.save_state()
 		
 		logging.info('Running in portable mode: %s' % self.dirs.portable)
 		
@@ -531,12 +533,8 @@ class RedNotebook:
 		if not self.dirs.portable:
 			self.config['dataDir'] = data_dir
 		else:
-			# The relpath method is only available in python >= 2.6
-			if getattr(os.path, 'relpath', None):
-				rel_data_dir = os.path.relpath(data_dir, self.dirs.appDir)
-				self.config['dataDir'] = rel_data_dir
-			else:
-				self.config['dataDir'] = data_dir
+			rel_data_dir = filesystem.get_relative_path(self.dirs.appDir, data_dir)
+			self.config['dataDir'] = rel_data_dir
 		
 		# Set the date range for the export assistant
 		start_date = self.getEditDateOfEntryNumber(0)

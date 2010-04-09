@@ -34,35 +34,58 @@ def delete_comment(line):
 		return line[:comment_pos]
 	else:
 		return line
-
+		
+		
+def get_config(dirs):
+	default_config_file = os.path.join(dirs.filesDir, 'default.cfg')
+	default_config = Config(default_config_file)
+	
+	user_config = Config(dirs.configFile)
+	
+	config = Config()
+	
+	#Add the defaults
+	if default_config:
+		config.update(default_config)
+	
+	#Overwrite existing values with user options
+	if user_config:
+		config.update(user_config)
+		
+	return config
+	
 
 class Config(dict):
 	
-	def __init__(self, dirs):
+	def __init__(self, config_file):
 		dict.__init__(self)
 		
-		self.dirs = dirs
+		#self.dirs = dirs
+		self.file = config_file
 		
 		self.obsolete_keys = ['useGTKMozembed', 'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
 		
 		# Allow changing the value of portable only in default.cfg
-		self.suppressed_keys = ['portable']
+		self.suppressed_keys = ['portable', 'userDir']
 		
-		default_config_file = os.path.join(dirs.filesDir, 'default.cfg')
-		default_config = self._read_file(default_config_file)
+		#default_config_file = os.path.join(dirs.filesDir, 'default.cfg')
+		#default_config = self._read_file(default_config_file)
 		
-		user_config = self._read_file(dirs.configFile)
+		self.update(self._read_file(self.file))
 		
 		#Add the defaults
-		if default_config:
-			self.update(default_config)
+		#if default_config:
+		#	self.update(default_config)
 		
 		#Overwrite existing values with user options
-		if user_config:
-			self.update(user_config)
+		#if user_config:
+		#	self.update(user_config)
 			
 		self.set_default_values()
 		
+		
+	def save_state(self):
+		''' Save a copy of the dir to check for changes later '''
 		self.old_config = self.copy()
 		
 		
@@ -81,7 +104,6 @@ class Config(dict):
 		try:
 			with open(file, 'r') as configFile:
 				keyValuePairs = configFile.readlines()
-				logging.info('The config file %s was read' % file)
 		except IOError:
 			return {}
 			
@@ -125,7 +147,7 @@ class Config(dict):
 						
 			return dictionary
 		
-						
+	
 	def read(self, key, default):
 		if self.has_key(key):
 			return self.get(key)
@@ -171,7 +193,7 @@ class Config(dict):
 		assert self.changed()
 		
 		try:
-			with open(self.dirs.configFile, 'w') as configFile:
+			with open(self.file, 'w') as configFile:
 				for key, value in self.iteritems():
 					if key not in self.suppressed_keys:
 						configFile.write('%s=%s\n' % (key, value))
