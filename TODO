@@ -24,6 +24,7 @@ X Make user directory configurable in default.cfg
    X Fix picture export on Windows
    X Hide PDF export button on windows (pywebkitgtk not available)
    X Portable mode has been improved
+   O Let users insert templates again (Closes LP:538391)
    O Ensure that words vanish from clouds directly after right-click
    O Check that blacklist words are added to blacklist
    O Try to get rid of PangoWarnings
@@ -93,11 +94,13 @@ O Show week numbers in calendar
 O Provide an option to export all days with a certain tag
 
 O Evolution Integration (zeitgeist?)
+O ics import/export
+O Insert sound and video
+O Picture slide show in one entry with many images
 
 O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
   other setups take 0.3 sec)
   (Probably a bad idea since threads are a source of errors)
-O Convert all read strings to unicode before working with them?
 
 
 

@@ -119,6 +119,9 @@ class CsvTextOption(Option):
 		# directly read the string, not the list
 		values_string = Option.config.read(option_name, '')
 		
+		# Ensure that we have a string here
+		values_string = str(values_string)
+		
 		self.entry = gtk.Entry()
 		self.entry.set_text(values_string)
 		
