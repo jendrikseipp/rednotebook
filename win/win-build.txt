@@ -1,9 +1,7 @@
 ====== Install GTK ======
 (view http://faq.pygtk.org/index.py?req=show&file=faq21.001.htp for more details)
-  * Install Python 2.6 for Microsoft Windows from the Python website [www.python.org] .
-  * Install the latest GTK+ stack bundle provided by the GTK+ 
-	project linked from [http://www.pygtk.org/downloads.html] or 
-	[http://ftp.gnome.org/pub/GNOME/binaries/win32/gtk+/]
+  * Install Python 2.6 for Microsoft Windows from the Python website [www.python.org].
+  * Install the GTK+ 2.16 all-in-one bundle from gtk.org [http://www.gtk.org/download.html]
 	(To fully install this bundle you need to uncompress its contents in a folder 
 	and manually add the bin subfolder to the system path.)
   * Read the README.txt in the bundle zip file and check that GTK+ works
