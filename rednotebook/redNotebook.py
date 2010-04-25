@@ -137,7 +137,10 @@ setup_logging(dirs.logFile)
 # set the locale for all categories to the user’s default setting 
 # (typically specified in the LANG environment variable)
 import locale
+lang = os.environ.get('LANG', None)
+logging.debug('LANG: %s' % lang)
 default_locale = locale.getdefaultlocale()[0]
+logging.debug('Default locale: %s' % default_locale)
 try:
 	locale.setlocale(locale.LC_ALL, '')
 	logging.debug('Set default locale: "%s"' % default_locale)
@@ -150,7 +153,8 @@ except locale.Error, err:
 # has not been set externally, set LANG to the default locale
 # This is necessary only for windows where program strings are not
 # shown in the system language, but in English
-if default_locale and not os.environ.get('LANG', None):
+if default_locale and not lang:
+	logging.debug('Setting LANG to %s' % default_locale)
 	os.environ['LANG'] = default_locale
 	
 LOCALE_PATH = os.path.join(dirs.appDir, 'i18n')

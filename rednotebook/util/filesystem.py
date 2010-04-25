@@ -282,3 +282,48 @@ def open_url(url):
 		webbrowser.open(url)
 	except webbrowser.Error:
 		logging.exception('Failed to open web browser')
+		
+		
+def read_yaml_file(filename, loader=None):
+	'''
+	Unused
+	
+	Try to read the contents of the file, if an error occurs, return None
+	'''
+	import yaml
+	if loader is None:
+		loader = yaml.Loader
+		
+	try:
+		# Try to read the contents of the file
+		with open(filename, 'r') as file:
+			logging.debug('Start loading file "%s"' % filename)
+			content = yaml.load(file, Loader=loader)
+			logging.debug('Finished loading file "%s"' % filename)
+			return content
+	except yaml.YAMLError, exc:
+		logging.error('Error in file "%s":\n%s' % (filename, exc))
+	except IOError, err:
+		#If that fails, there is nothing to load, so just display an error message
+		logging.error('Error: The file "%s" could not be read:' % filename)
+		logging.error('%s' % err)
+	except Exception, err:
+		logging.error('An error occured while reading "%s":' % filename)
+		logging.error('%s' % err)
+		
+	return None
+	
+def read_file(filename):
+	import codecs
+	encodings = ['utf-8', 'latin1', 'latin2']
+	for encoding in encodings:
+		try:
+			file = codecs.open(filename, 'r', encoding=encoding, errors='strict')
+			data = file.read()
+			file.close()
+			return data
+		except ValueError, err:
+			logging.info(err)
+		except Exception, e:
+			logging.error(e)
+	return None

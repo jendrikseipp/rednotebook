@@ -21,9 +21,9 @@ from __future__ import with_statement
 
 import os
 import sys
-import mimetypes
 import logging
 import time
+import codecs
 
 import gtk
 
@@ -151,33 +151,20 @@ class TemplateManager(object):
 		filename = self.titles_to_files.get(title, None)
 		if not filename:
 			return ''
-		
-		try:
-			with open(filename, 'r') as templateFile:
-				text = templateFile.read()
-		except IOError, Error:
-			logging.error('Template File %s not found' % filename)
-			text = ''
 			
-		try:
-			#logging.debug('Read template content: "%s"', text)
-			# Only reading utf-8 files is supported
-			text = text.decode('utf-8', 'ignore')
-		except UnicodeDecodeError, UnicodeEncodeError:
-			logging.error('Template file contains unreadable content. Is it really just ' \
-						'a text file?')
-			text = ''
+		text = filesystem.read_file(filename)
+		
+		# An Error occured
+		if not text:
+			text = 'This template contains no text or has unreadable content. To edit it, ' \
+					'click the arrow right of "Template" ' \
+					'and select the template under "Edit Template".'		
 			
 		# convert every "$date$" to the current date
 		default_date_string = '%A, %x %X'
 		date_string = self.mainWindow.redNotebook.config.read('dateTimeString', default_date_string)
 		date = time.strftime(date_string)
 		text = text.replace('$date$', date)
-		
-		if not text:
-			text = 'This template contains no text or has unreadable content. To edit it, ' \
-					'click the arrow right of "Template" ' \
-					'and select the template under "Edit Template".'
 		
 		return text
 		

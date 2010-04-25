@@ -8,7 +8,7 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 0.9.4
-X Allow dragging of files and pictures into RedNotebook
+X Allow dragging of files and pictures into RedNotebook (Linux only)
 X Save data dir relative to application dir in portable mode
 X Remember if window was maximized
 X Make webkit the default preview backend
@@ -24,10 +24,8 @@ X Make user directory configurable in default.cfg
    X Fix picture export on Windows
    X Hide PDF export button on windows (pywebkitgtk not available)
    X Portable mode has been improved
-   O Let users insert templates again (Closes LP:538391)
-   O Ensure that words vanish from clouds directly after right-click
-   O Check that blacklist words are added to blacklist
-   O Try to get rid of PangoWarnings
+   X Let users insert templates again (Closes LP:538391)
+   
 
 O Feature Poll
 
@@ -47,7 +45,7 @@ O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
 O Open links externally in KDE too
 O Get rid of CamelCase in sourcecode
-O Propose for portableapps
+O Try to get rid of PangoWarnings on Windows
 
 1.0
 X Solid amount of translations
