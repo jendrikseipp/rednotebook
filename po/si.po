@@ -1,16 +1,16 @@
-# Czech translation for rednotebook
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Sinhalese translation for rednotebook
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the rednotebook package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2010-04-03 13:11+0000\n"
-"Last-Translator: Victor Yu. Kowalsky <Unknown>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"PO-Revision-Date: 2010-04-12 04:34+0000\n"
+"Last-Translator: චානක මධුෂාන් <Unknown>\n"
+"Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,586 +19,575 @@ msgstr ""
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
 msgid "filter, these, comma, separated, words"
-msgstr "фильтровать, эти, разделённые, запятыми, слова"
+msgstr ""
 
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/mainWindow.py:1191
 msgid "mtv, spam, work, job, play"
-msgstr "музыка, спам, работа, вакансии, игры"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr "Не показывать \"%s\" в облаке тэгов"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:316
 msgid "Show RedNotebook"
-msgstr "Показать RedNotebook"
+msgstr ""
 
 #. ## Translators: Verb
 #. ## Verb
 #: ../rednotebook/gui/mainWindow.py:394 tmp/mainWindow.glade.h:52
 msgid "Preview"
-msgstr "Предпросмотр"
+msgstr "පූර්‍ව දසුන"
 
 #: ../rednotebook/gui/mainWindow.py:409
 msgid "Edit"
-msgstr "Правка"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:511
 msgid "Select an empty folder for your new journal"
-msgstr "Выберите новую папку для вашего нового дневника"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:512
 msgid "Journals are saved in a directory, not in a single file."
-msgstr "Каждый дневник сохраняется не в отдельном файле, а в папке."
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:513
 msgid "The directory name will be the title of the new journal."
-msgstr "Имя папки станет названием для нового дневника."
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:517
 msgid "Select an existing journal directory"
-msgstr "Выберите папку существующего журнала"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:519
 msgid "The directory should contain your journal's data files"
-msgstr "Папка должна содержать данные дневника"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:521
 msgid "Select an empty folder for the new location of your journal"
-msgstr "Выберите пустую папку для вашего нового журнала"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:523
 msgid "The directory name will be the new title of the journal"
-msgstr "Имя папки станет новым названием дневника"
+msgstr ""
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
 #: ../rednotebook/gui/mainWindow.py:545
 msgid "The default journal has been opened"
-msgstr "Открыт дневник по умолчанию"
+msgstr ""
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/mainWindow.py:691
 msgid "Ctrl"
-msgstr "Ctrl"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:697
 msgid "Strikethrough"
-msgstr "Зачёркнутый"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:699
 msgid "Bold"
-msgstr "Полужирный"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:700
 msgid "Italic"
-msgstr "Курсив"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:701
 msgid "Underline"
-msgstr "Подчёркнутый"
+msgstr ""
 
 #. ## Translators: noun
 #: ../rednotebook/gui/mainWindow.py:717
 msgid "Format"
-msgstr "Формат"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:718
 msgid "Format the selected text or category entry"
-msgstr "Форматировать выделенный текст или категорию записи"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:761
 msgid "First Item"
-msgstr "Первый пункт"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:762
 msgid "Second Item"
-msgstr "Второй пункт"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:763
 msgid "Indented Item"
-msgstr "Пункт с отступом"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:764
 msgid "Two blank lines close the list"
-msgstr "Две пустые строки (Enter) закрывают список"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:768
 msgid "Title text"
-msgstr "Я заголовок!"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:784
 msgid "Picture"
-msgstr "Изображение"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:785
 msgid "Insert an image from the harddisk"
-msgstr "Вставить сохранённое изображение"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:787
 msgid "File"
-msgstr "Файл"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:788
 msgid "Insert a link to a file"
-msgstr "Вставить ссылку на файл"
+msgstr ""
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/mainWindow.py:791
 msgid "_Link"
-msgstr "_Ссылку"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:792
 msgid "Insert a link to a website"
-msgstr "Вставить ссылку на страницу интернета"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:794
 msgid "Bullet List"
-msgstr "Список"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:795
 msgid "Insert a bullet list"
-msgstr "Вставить список"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:800
 msgid "Title"
-msgstr "Заголовок"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:801
 msgid "Insert a title"
-msgstr "Вставить заголовок"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:803
 msgid "Line"
-msgstr "Линию"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:804
 msgid "Insert a separator line"
-msgstr "Вставить разделительную линию"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:806
 msgid "Date/Time"
-msgstr "Дату/время"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:807
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
-"Вставить текущую дату и время (формат даты/времени можно изменить в "
-"настройках)"
 
 #: ../rednotebook/gui/mainWindow.py:809
 msgid "Line Break"
-msgstr "Перенос строки"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:810
 msgid "Insert a manual line break"
-msgstr "Вставить принудительный перенос строки"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:838
 msgid "Insert"
-msgstr "Вставить"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:842
 msgid "Insert images, files, links and other content"
-msgstr "Вставить изображения, файлы, ссылки и другое содержимое в страницу"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:929
 msgid "No link location has been entered"
-msgstr "Не был указан адрес для ссылки"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:1100
 msgid "Search ..."
-msgstr "Поиск..."
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:1248
 msgid "Hide selected words"
-msgstr "Скрыть выделенные слова"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:1311
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:1312 ../rednotebook/gui/mainWindow.py:1354
 #: ../rednotebook/gui/mainWindow.py:1362 tmp/mainWindow.glade.h:69
 msgid "Text"
-msgstr "Текст"
+msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:1358
 msgid "Entry"
-msgstr "Запись"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr "Запускать RedNotebook при старте"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:153
 msgid "%A, %x, Day %j"
-msgstr "%A, %x, День %j."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:153
 msgid "Week %W of Year %Y"
-msgstr "%W-я неделя %Y-го года"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:154
 msgid "Day %j"
-msgstr "День %j."
+msgstr ""
 
 #. ## Translators: noun
 #: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:123
 #: tmp/mainWindow.glade.h:39
 msgid "Help"
-msgstr "Помощь"
+msgstr ""
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:178
 #, python-format
 msgid "Preview: %s"
-msgstr "Пример:  %s"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:285
 msgid "Close to system tray"
-msgstr "Сворачивать в системный трей при закрытии"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:286
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Закрытие окна свернёт RedNotebook в системный лоток"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:289
 msgid "Underline misspelled words"
-msgstr "Подчеркивать неправильно написанные слова"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:290
 msgid "Requires gtkspell."
-msgstr "Требуется библиотека gtkspell."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:291
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr "Она включена в пакеты python-gtkspell и python-gnome2-extras."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:292
 msgid "Check Spelling"
-msgstr "Проверять орфографию"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:299
 msgid "Webkit offers a nicer preview"
-msgstr "Веб-движок Webkit позволяет просматривать записи в удобной форме."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires pywebkitgtk (python-webkit)"
-msgstr "Требуется pywebkitgtk (python-webkit)"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:301
 msgid "Use webkit for previews"
-msgstr "Использовать движок WebKit для просмотра записей"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:301
 msgid "(Restart required)"
-msgstr "(требуется перезапуск)"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:311
 msgid "Check for new version at startup"
-msgstr "Проверять на наличие новых версий при запуске"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:318
 msgid "Check now"
-msgstr "Проверить"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:324
 msgid "Font Size"
-msgstr "Размер шрифта"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:325
 msgid "Date/Time format"
-msgstr "Формат даты/времени"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:326
 msgid "Exclude from clouds"
-msgstr "Исключить из облака тэгов"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:327
 msgid "Do not show those comma separated words in any cloud"
 msgstr ""
-"Не отображать эти слова ни в одном облаке тэгов (разделяйте слова запятыми)"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Allow small words in clouds"
-msgstr "Показывать короткие слова в облаке тэгов"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:329
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr "Показывать в облаке тэгов слова из 4 букв и менее"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:89
 msgid "Journal"
-msgstr "Журнал"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:91
 msgid "Create a new journal. The old one will be saved"
-msgstr "Создать новый дневник. Старый будет сохранён"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "Загрузить существующий дневник. Старый будет сохранён"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:99
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
-"Сохранить дневник в новом месте. Файлы старого дневника тоже будут сохранены"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:102
 msgid "Export"
-msgstr "Экспорт"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:103
 msgid "Open the export assistant"
-msgstr "Открыть менеджер экспорта"
+msgstr ""
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Backup"
-msgstr "Резервное копирование"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Save all the data in a zip archive"
-msgstr "Сохранить все данные в zip-архиве"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:107 tmp/mainWindow.glade.h:63
 msgid "Statistics"
-msgstr "Статистика"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:108
 msgid "Show some statistics about the journal"
-msgstr "Показать статистику по дневнику"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:110
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Закрыть RedNotebook. Иконка в трее тоже пропадёт"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:113
 msgid "_Edit"
-msgstr "_Правка"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Undo text edits or category entry deletions"
-msgstr "Отменить редактирование текста или удаление записи категорий"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:117
 msgid "Redo text edits or category entry additions"
-msgstr "Повторить редактирование текста или добавление записи категорий"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:129
 msgid "_Help"
-msgstr "_Помощь"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:132
 msgid "Contents"
-msgstr "Содержание"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:133
 msgid "Open the RedNotebook documentation"
-msgstr "Открыть документацию по RedNotebook"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:134
 msgid "Get Help Online"
-msgstr "Получить помощь в сети"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:135
 msgid "Visit the RedNotebook forum"
-msgstr "Посетить форум RedNotebook"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:136
 msgid "Restore example content"
-msgstr "Обновить содержимое"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:137
 msgid "Fill some free days with example content. Do not overwrite anything"
-msgstr "Заполнить несколько свободных дней примерным содержанием"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Translate RedNotebook"
-msgstr "Перевести это приложение"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Помочь перевести RedNotebook, используя Launchpad"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Report a Problem"
-msgstr "Сообщить об ошибке"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Fill out a short form about the problem"
-msgstr "Описать встретившуюся ошибку и помочь исправить её"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:525
 msgid "RedNotebook Documentation"
-msgstr "Документация к RedNotebook"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:269
 msgid "A Desktop Journal"
-msgstr "Дневник для рабочего стола"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:21
 msgid "Categories"
-msgstr "Категории"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:118
 msgid "Empty nodes are not allowed"
-msgstr "Пустые пункты недопустимы"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:149
 msgid "Empty category names are not allowed"
-msgstr "Пустые категории недопустимы"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:157
 msgid "Empty entries are not allowed"
-msgstr "Пустые записи недопустимы"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:372
 msgid "Do you really want to delete this node?"
-msgstr "Действительно хотите удалить этот пункт?"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:430
 msgid "Change this text"
-msgstr "Изменить этот текст"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:434
 msgid "Add a new entry"
-msgstr "Добавить новую запись"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:438
 msgid "Delete this node"
-msgstr "Удалить этот пункт"
+msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:61 tmp/mainWindow.glade.h:30
 msgid "Export Assistant"
-msgstr "Менеджер экспорта"
+msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:90
 msgid ""
 "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
 msgstr ""
-"Для записи в PDF напрямую нужно установить пакет pywebkitgtk версии 1.1.5 "
-"или новее."
 
 #: ../rednotebook/gui/exportAssistant.py:91
 msgid "Alternatively consult the help document for Latex to PDF conversion."
 msgstr ""
-"Если вам нравится экспериментировать, можете также отыскать в руководстве "
-"RedNotebook советы по конвертированию Latex в PDF."
 
 #: ../rednotebook/gui/exportAssistant.py:141
 msgid "Available Categories"
-msgstr "Доступные категории"
+msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:149
 msgid "Selected Categories"
-msgstr "Выбранные категории"
+msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:191
 msgid "Cancelling export assistant."
-msgstr "Отменяем работу менеджера экспорта."
+msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:352
 #, python-format
 msgid "Content exported to %s"
-msgstr "Содержимое записано в %s"
+msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:354
 #, python-format
 msgid "Exporting to %s failed"
-msgstr "Экспорт в %s прошёл неудачно"
+msgstr ""
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
-msgstr "Выберите имя для шаблона"
+msgstr ""
 
 #: ../rednotebook/templates.py:291 ../rednotebook/templates.py:300
 msgid "This Weekday's Template"
-msgstr "Шаблон для этого дня"
+msgstr ""
 
 #: ../rednotebook/templates.py:294
 msgid "Edit Template"
-msgstr "Редактировать шаблон"
+msgstr ""
 
 #: ../rednotebook/templates.py:297
 msgid "Insert Template"
-msgstr "Вставить шаблон"
+msgstr ""
 
 #: ../rednotebook/templates.py:303
 msgid "Create New Template"
-msgstr "Создать новый шаблон"
+msgstr ""
 
 #: ../rednotebook/templates.py:306
 msgid "Open Template Directory"
-msgstr "Открыть директорию с шаблонами"
+msgstr ""
 
 #: ../rednotebook/redNotebook.py:445
 #, python-format
 msgid "The content has been saved to %s"
-msgstr "Содержимое сохранено в %s"
+msgstr ""
 
 #: ../rednotebook/redNotebook.py:447
 msgid "Nothing to save"
-msgstr "Нечего сохранять"
+msgstr ""
 
 #: ../rednotebook/redNotebook.py:454
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr ""
-"Не удалось сохранить настройки. Пожалуйста, проверьте права на запись."
 
 #: ../rednotebook/redNotebook.py:484
 msgid "The selected folder is not empty."
-msgstr "Выбранный каталог не пуст."
+msgstr ""
 
 #: ../rednotebook/redNotebook.py:485
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
-"Во избежание перезаписи данных, содержимое каталога было импортировано в "
-"новый дневник."
 
 #: ../rednotebook/redNotebook.py:488
 msgid "The selected folder is empty. A new journal has been created."
-msgstr "Выбранный каталог пуст. Новый дневник был создан."
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:73
 msgid "Words"
-msgstr "Слов"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:81
 msgid "Distinct Words"
-msgstr "Отдельных слов"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Edited Days"
-msgstr "Дней с заметками"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:83 ../rednotebook/util/statistics.py:95
 msgid "Letters"
-msgstr "Символов"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:84
 msgid "Days between first and last Entry"
-msgstr "Дней между первой и последней записью"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Average number of Words"
-msgstr "Среднее количество слов"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:86
 msgid "Percentage of edited Days"
-msgstr "Процент заполненных дней"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Lines"
-msgstr "Строк"
+msgstr ""
 
 #: ../rednotebook/info.py:79
 msgid ""
@@ -606,49 +595,45 @@ msgid ""
 "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
 "try."
 msgstr ""
-"Доброго времени суток!\n"
-"Это RedNotebook, тетрадка для записей на вашем компьютере. Большое спасибо, "
-"что решили испытать её в деле!"
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
-msgstr "Интерфейс программы разделён на три части:"
+msgstr ""
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr "Слева"
+msgstr ""
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
-msgstr "инструменты для поиска и календарь"
+msgstr ""
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr "Посередине"
+msgstr ""
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
-msgstr "сама тетрадь"
+msgstr ""
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr "Справа"
+msgstr ""
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
-msgstr "пометки, задачи и примечания, связанные с этим днём"
+msgstr ""
 
 #: ../rednotebook/info.py:92
 msgid "Text entries"
-msgstr "Как тут писать?"
+msgstr ""
 
 #: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
 msgstr ""
-"Среднее поле (самое большое) можно заполнять каким угодно текстом. Например:"
 
 #: ../rednotebook/info.py:94
 msgid ""
@@ -656,345 +641,323 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
-"Сегодня я пошёл в //зверинец// и купил там себе **тигра**. Вместе с тигром "
-"мы  пошли в --бассейн-- парк и долго играли в летающую тарелку. Потом я "
-"предложил поиграть в \"__Nexuiz__\". Тигр победил в семи раундах!"
 
 #: ../rednotebook/info.py:98
 msgid "Annotations"
-msgstr "Примечания"
+msgstr ""
 
 #: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
-msgstr "Справа находится место для примечаний, связанных с этим днём."
+msgstr ""
 
 #: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
 msgstr ""
-"Примечаниями могут быть заметки, задачи и всё то, что лучше вынести чуть в "
-"сторону для удобства. Их легко можно рассортировать по категориям."
 
 #: ../rednotebook/info.py:101
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
-"К примеру, можно создать категорию \"Идеи\" и добавить туда все те идеи, "
-"которые пришли в голову в этот день. После этого идеи можно будет быстро "
-"отыскать через поиск в категориях."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
 msgid "Save and Export"
-msgstr "Сохранение и экспорт"
+msgstr ""
 
 #: ../rednotebook/info.py:114
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Всё, что вы добавляете в дневник, автоматически сохраняется каждые несколько "
-"минут и - на всякий случай - при выходе из программы."
 
 #: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
-"Чтобы избежать потери данных, рекомендуем периодически делать резервные "
-"копии."
 
 #: ../rednotebook/info.py:117
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
-"Пункт \"Резервное копирование\" в меню \"Журнал\" позволяет сохранить весь "
-"ваш дневник в zip-архив."
 
 #: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "В том же разделе \"Журнал\" находится пункт \"Экспорт\"."
+msgstr ""
 
 #: ../rednotebook/info.py:119
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
-"Вы можете экспортировать ваш дневник как текст, HTML-файл или файл в формате "
-"Latex."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:125
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
-msgstr "Более подробную документацию можно найти в разделе \"Помощь\"."
+msgstr ""
 
 #: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
-"Если вы нашли ошибку, напишите мне о ней несколько строк, чтобыя исправил её "
-"как можно быстрее (желательно на английском)."
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr "Буду благодарен за любую помощь."
+msgstr ""
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
-msgstr "Удачного дня!"
+msgstr ""
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
-msgstr "Идеи"
+msgstr ""
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
-msgstr "Поставить себе какую-нибудь крутую программу для ведения записей"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:1
 msgid "<< Unselect"
-msgstr "<< Отменить выбор"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:2
 msgid "<b>A new version of RedNotebook is available!</b>"
-msgstr "<b>Доступна новая версия RedNotebook!</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:3
 msgid "<b>Current Day</b>"
-msgstr "<b>Текущий день</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:4
 msgid "<b>Enter file name</b>"
-msgstr "<b>Введите имя файла</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:5
 msgid "<b>Entries from:</b>"
-msgstr "<b>Записи от:</b>"
+msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:7
 msgid "<b>General</b>"
-msgstr "<b>Общее</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:8
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr "<b>Ссылка на страницу (скажем, http://rednotebook.sf.net) </b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:9
 msgid "<b>Link name (optional)</b>"
-msgstr "<b>Название ссылки (необязательно)</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:10
 msgid "<b>Overall</b>"
-msgstr "<b>Всего</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:11
 msgid "<b>Select Entries</b>"
-msgstr "<b>Выберите записи</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:12
 msgid "<b>Select existing or new Category</b>"
-msgstr "<b>Выберите существующую или новую категорию</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:13
 msgid "<b>Select format</b>"
-msgstr "<b>Выберите формат</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:14
 msgid "<b>Select the contents you want to export</b>"
-msgstr "<b>Выберите содержимое для экспорта</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:15
 msgid "<b>Till:</b>"
-msgstr "<b>До:</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:16
 msgid "<b>Write entry</b>"
-msgstr "<b>Создать запись</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:17
 msgid "<b>You already have the latest version of RedNotebook</b>"
-msgstr "<b>У вас уже установлена самая новая версия RedNotebook</b>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:18
 msgid "Add an entry to a category (Ctrl+N)"
-msgstr "Добавить заметку к категории (Ctrl+N)"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:19
 msgid "All Entries"
-msgstr "Все записи"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:20
 msgid "Annotate"
-msgstr "Примечание"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:22
 msgid "Category"
-msgstr "Категория"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:23
 msgid "Clouds"
-msgstr "Облака тэгов"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:24
 msgid "Delete"
-msgstr "Удалить"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:25
 msgid "Delete the selected node"
-msgstr "Удалить выбранный пункт"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:26
 msgid "Do not ask again"
-msgstr "Больше не спрашивать"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:27
 msgid "Do not export categories"
-msgstr "Не экспортировать категории"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:28
 msgid "Do you want to visit the website?"
-msgstr "Хотите посетить сайт RedNotebook?"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:29
 msgid "Exit without saving"
-msgstr "Выйти без сохранения"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:31
 msgid "Export Text"
-msgstr "Экспортировать текст"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:32
 msgid "Export all categories"
-msgstr "Экспортировать все категории"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:33
 msgid "Export only the selected categories"
-msgstr "Экспортировать только выбранные категории"
+msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:35
 msgid "General"
-msgstr "Общие"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:36
 msgid "Go to next day (Ctrl+PageUp)"
-msgstr "Перейти к следующему дню (Ctrl+PageUp)"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:37
 msgid "Go to previous day (Ctrl+PageDown)"
-msgstr "Перейти к предыдущему дню (Ctrl+PageDown)"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:38
 msgid "HTML"
-msgstr "HTML"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:40
 msgid ""
 "If export text is not selected, you have to select at least one category."
 msgstr ""
-"Если вы не выбрали текст для экспорта, нужно выбрать как минимум одну "
-"категорию."
 
 #: tmp/mainWindow.glade.h:41
 msgid "Insert Link"
-msgstr "Вставить ссылку"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:42
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Вставить шаблон для этого дня. Нажмите на стрелку справа для получения "
-"дополнительных параметров"
 
 #: tmp/mainWindow.glade.h:43
 msgid "Jump to today"
-msgstr "Вернуться к сегодняшнему дню"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:44
 msgid "Latex"
-msgstr "Latex"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:45
 msgid "New Version"
-msgstr "Новая версия"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:46
 msgid "New entry"
-msgstr "Новая запись"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:47
 msgid "No New Version"
-msgstr "Нет новых версий"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:48
 msgid "Only the entries in the selected time range"
-msgstr "Только записи в выбранном временном интервале"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:49
 msgid "PDF"
-msgstr "PDF"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:50
 msgid "Preferences"
-msgstr "Параметры"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:53
 msgid "Search"
-msgstr "Поиск"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:54
 msgid "Search in entries, categories and tags"
-msgstr "Поиск в записях, категориях и метках"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:55
 msgid "Select >>"
-msgstr "Выберите >>"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:56
 msgid "Select a cloud"
-msgstr "Выберите облако тэгов"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:57
 msgid "Select a directory"
-msgstr "Выберите каталог"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:58
 msgid "Select a file"
-msgstr "Выберите файл"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:59
 msgid "Select a picture"
-msgstr "Выберите изображение"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:60
 msgid "Select backup filename"
-msgstr "Выберите имя файла резервной копии"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:61
 msgid "Select where to search"
-msgstr "Выберите место поиска"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:62
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr "Показать форматированное отображение текста (Ctrl+P)"
+msgstr ""
 
 #. ## This stands for the verb in "Tag this day"
 #: tmp/mainWindow.glade.h:65
 msgid "Tag"
-msgstr "Метка"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:66
 msgid "Tag this day (Ctrl+T)"
-msgstr "Добавить метку для этого дня (Ctrl+T)"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:67
 msgid "Tags"
-msgstr "Метки"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:68
 msgid "Template"
-msgstr "Шаблон"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:70
 msgid "Today"
-msgstr "Сегодня"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:71
 msgid ""
@@ -1002,19 +965,10 @@ msgid ""
 "This wizard will help you to export your journal to various formats. You can "
 "select the days you want to export and where the output will be saved."
 msgstr ""
-"Добро пожаловать в Менеджер экспорта. \n"
-"Этот менеджер облегчит экспорт вашего дневника в различные форматы. Вы "
-"можете выбрать дни, которые желаете экспортировать, и выбрать, куда "
-"сохранить экспортированные данные."
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/mainWindow.glade.h:75
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Andrey Novoselov https://launchpad.net/~ksynolog\n"
-"  LithiUm https://launchpad.net/~neo-anderson\n"
-"  MyOtheHedgeFox https://launchpad.net/~a-ztech\n"
-"  Sergey \"Shnatsel\" Davidoff https://launchpad.net/~shnatsel\n"
-"  Sergey Sedov https://launchpad.net/~serg-sedov\n"
-"  Victor Yu. Kowalsky https://launchpad.net/~vityokster"
+"  චානක මධුෂාන් https://launchpad.net/~chanakalin"

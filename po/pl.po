@@ -7,36 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-02-19 18:21+0100\n"
-"PO-Revision-Date: 2010-01-29 18:24+0000\n"
-"Last-Translator: TSr <Unknown>\n"
+"POT-Creation-Date: 2010-04-11 11:30+0200\n"
+"PO-Revision-Date: 2010-03-13 19:58+0000\n"
+"Last-Translator: Dariusz Jakoniuk <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-02-22 17:32+0000\n"
+"X-Launchpad-Export-Date: 2010-04-25 01:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1144
+#: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
 msgid "filter, these, comma, separated, words"
 msgstr "filtruj, te oddzielone, przecinkami, słowa"
 
 #. ## Translators: These are example whitelist words with 4 or less letters
-#: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/mainWindow.py:1150
+#: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/mainWindow.py:1191
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, spam, praca, robota, grać"
 
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Ukryj \"%s\" z chmur"
 
 #: ../rednotebook/gui/mainWindow.py:316
 msgid "Show RedNotebook"
 msgstr "Pokaż RedNotebook"
 
 #. ## Translators: Verb
-#: ../rednotebook/gui/mainWindow.py:394 tmp/mainWindow.glade.h:49
+#. ## Verb
+#: ../rednotebook/gui/mainWindow.py:394 tmp/mainWindow.glade.h:52
 msgid "Preview"
 msgstr "Podgląd"
 
@@ -44,184 +45,184 @@ msgstr "Podgląd"
 msgid "Edit"
 msgstr "Edycja"
 
-#: ../rednotebook/gui/mainWindow.py:495
+#: ../rednotebook/gui/mainWindow.py:511
 msgid "Select an empty folder for your new journal"
 msgstr "Wybierz pusty katalog na nowy dziennik"
 
-#: ../rednotebook/gui/mainWindow.py:496
+#: ../rednotebook/gui/mainWindow.py:512
 msgid "Journals are saved in a directory, not in a single file."
 msgstr "Dzienniki są zapisywane w katalogu, a nie w pojedyńczym pliku."
 
-#: ../rednotebook/gui/mainWindow.py:497
+#: ../rednotebook/gui/mainWindow.py:513
 msgid "The directory name will be the title of the new journal."
 msgstr "Nazwa katalogu będzie tytułem nowego dziennika"
 
-#: ../rednotebook/gui/mainWindow.py:501
+#: ../rednotebook/gui/mainWindow.py:517
 msgid "Select an existing journal directory"
 msgstr "Wybierz istniejący katalog dziennika"
 
-#: ../rednotebook/gui/mainWindow.py:503
+#: ../rednotebook/gui/mainWindow.py:519
 msgid "The directory should contain your journal's data files"
 msgstr "Katalog powinien zawierać pliki danych dziennika"
 
-#: ../rednotebook/gui/mainWindow.py:505
+#: ../rednotebook/gui/mainWindow.py:521
 msgid "Select an empty folder for the new location of your journal"
 msgstr "Wybierz pusty katalog dla nowej lokalizacji dziennika"
 
-#: ../rednotebook/gui/mainWindow.py:507
+#: ../rednotebook/gui/mainWindow.py:523
 msgid "The directory name will be the new title of the journal"
 msgstr "Nazwa katalogu będzie nowym tytułem dziennika"
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
-#: ../rednotebook/gui/mainWindow.py:529
+#: ../rednotebook/gui/mainWindow.py:545
 msgid "The default journal has been opened"
 msgstr "Otwarto domyślny dziennik"
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/mainWindow.py:671
+#: ../rednotebook/gui/mainWindow.py:691
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: ../rednotebook/gui/mainWindow.py:677
+#: ../rednotebook/gui/mainWindow.py:697
 msgid "Strikethrough"
 msgstr "Przekreślenie"
 
-#: ../rednotebook/gui/mainWindow.py:679
+#: ../rednotebook/gui/mainWindow.py:699
 msgid "Bold"
 msgstr "Pogrubienie"
 
-#: ../rednotebook/gui/mainWindow.py:680
+#: ../rednotebook/gui/mainWindow.py:700
 msgid "Italic"
 msgstr "Kursywa"
 
-#: ../rednotebook/gui/mainWindow.py:681
+#: ../rednotebook/gui/mainWindow.py:701
 msgid "Underline"
 msgstr "Podkreślenie"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/mainWindow.py:697
+#: ../rednotebook/gui/mainWindow.py:717
 msgid "Format"
 msgstr "Formatuj"
 
-#: ../rednotebook/gui/mainWindow.py:698
+#: ../rednotebook/gui/mainWindow.py:718
 msgid "Format the selected text or category entry"
 msgstr "Formatuj zaznaczony tekst albo kategorię wpisu"
 
-#: ../rednotebook/gui/mainWindow.py:741
+#: ../rednotebook/gui/mainWindow.py:761
 msgid "First Item"
 msgstr "Pierwsza pozycja"
 
-#: ../rednotebook/gui/mainWindow.py:742
+#: ../rednotebook/gui/mainWindow.py:762
 msgid "Second Item"
 msgstr "Druga pozycja"
 
-#: ../rednotebook/gui/mainWindow.py:743
+#: ../rednotebook/gui/mainWindow.py:763
 msgid "Indented Item"
 msgstr "Pozycja od akapitu"
 
-#: ../rednotebook/gui/mainWindow.py:744
+#: ../rednotebook/gui/mainWindow.py:764
 msgid "Two blank lines close the list"
 msgstr "Dwie puste linie zamykają listę"
 
-#: ../rednotebook/gui/mainWindow.py:748
+#: ../rednotebook/gui/mainWindow.py:768
 msgid "Title text"
 msgstr "Tekst tytułu"
 
-#: ../rednotebook/gui/mainWindow.py:764
+#: ../rednotebook/gui/mainWindow.py:784
 msgid "Picture"
 msgstr "Obraz"
 
-#: ../rednotebook/gui/mainWindow.py:765
+#: ../rednotebook/gui/mainWindow.py:785
 msgid "Insert an image from the harddisk"
 msgstr "Wstaw obraz z dysku twardego"
 
-#: ../rednotebook/gui/mainWindow.py:767
+#: ../rednotebook/gui/mainWindow.py:787
 msgid "File"
 msgstr "Plik"
 
-#: ../rednotebook/gui/mainWindow.py:768
+#: ../rednotebook/gui/mainWindow.py:788
 msgid "Insert a link to a file"
 msgstr "Wstaw odnośnik do pliku"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/mainWindow.py:771
+#: ../rednotebook/gui/mainWindow.py:791
 msgid "_Link"
 msgstr "_Odnośnik"
 
-#: ../rednotebook/gui/mainWindow.py:772
+#: ../rednotebook/gui/mainWindow.py:792
 msgid "Insert a link to a website"
 msgstr "Wstaw odnośnik do strony"
 
-#: ../rednotebook/gui/mainWindow.py:774
+#: ../rednotebook/gui/mainWindow.py:794
 msgid "Bullet List"
 msgstr "Lista punktowana"
 
-#: ../rednotebook/gui/mainWindow.py:775
+#: ../rednotebook/gui/mainWindow.py:795
 msgid "Insert a bullet list"
 msgstr "Wstaw listę punktowaną"
 
-#: ../rednotebook/gui/mainWindow.py:780
+#: ../rednotebook/gui/mainWindow.py:800
 msgid "Title"
 msgstr "Tytuł"
 
-#: ../rednotebook/gui/mainWindow.py:781
+#: ../rednotebook/gui/mainWindow.py:801
 msgid "Insert a title"
 msgstr "Wstaw tytuł"
 
-#: ../rednotebook/gui/mainWindow.py:783
+#: ../rednotebook/gui/mainWindow.py:803
 msgid "Line"
 msgstr "Linia"
 
-#: ../rednotebook/gui/mainWindow.py:784
+#: ../rednotebook/gui/mainWindow.py:804
 msgid "Insert a separator line"
 msgstr "Wstaw linię separatora"
 
-#: ../rednotebook/gui/mainWindow.py:786
+#: ../rednotebook/gui/mainWindow.py:806
 msgid "Date/Time"
 msgstr "Data/czas"
 
-#: ../rednotebook/gui/mainWindow.py:787
+#: ../rednotebook/gui/mainWindow.py:807
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "Wstaw bieżącą datę i czas (edytuj ich format w ustawieniach)"
 
-#: ../rednotebook/gui/mainWindow.py:789
+#: ../rednotebook/gui/mainWindow.py:809
 msgid "Line Break"
 msgstr "Znak nowego wiersza"
 
-#: ../rednotebook/gui/mainWindow.py:790
+#: ../rednotebook/gui/mainWindow.py:810
 msgid "Insert a manual line break"
 msgstr "Wstaw ręcznie znak nowego wiersza"
 
-#: ../rednotebook/gui/mainWindow.py:818
+#: ../rednotebook/gui/mainWindow.py:838
 msgid "Insert"
 msgstr "Wstaw"
 
-#: ../rednotebook/gui/mainWindow.py:822
+#: ../rednotebook/gui/mainWindow.py:842
 msgid "Insert images, files, links and other content"
 msgstr "Wstaw obrazy, pliki, odnośniki i inną zawartość"
 
-#: ../rednotebook/gui/mainWindow.py:903
+#: ../rednotebook/gui/mainWindow.py:929
 msgid "No link location has been entered"
 msgstr "Nie wprowadzono lokalizacji linku"
 
-#: ../rednotebook/gui/mainWindow.py:1065
+#: ../rednotebook/gui/mainWindow.py:1100
 msgid "Search ..."
 msgstr "Szukaj ..."
 
-#: ../rednotebook/gui/mainWindow.py:1207
+#: ../rednotebook/gui/mainWindow.py:1248
 msgid "Hide selected words"
 msgstr "Ukryj zaznaczone słowa"
 
-#: ../rednotebook/gui/mainWindow.py:1270
+#: ../rednotebook/gui/mainWindow.py:1311
 msgid "Date"
 msgstr "Data"
 
-#: ../rednotebook/gui/mainWindow.py:1271 ../rednotebook/gui/mainWindow.py:1313
-#: ../rednotebook/gui/mainWindow.py:1321 tmp/mainWindow.glade.h:65
+#: ../rednotebook/gui/mainWindow.py:1312 ../rednotebook/gui/mainWindow.py:1354
+#: ../rednotebook/gui/mainWindow.py:1362 tmp/mainWindow.glade.h:69
 msgid "Text"
 msgstr "Tekst"
 
-#: ../rednotebook/gui/mainWindow.py:1317
+#: ../rednotebook/gui/mainWindow.py:1358
 msgid "Entry"
 msgstr "Wpis"
 
@@ -243,7 +244,7 @@ msgstr "Dzień %j"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:123
-#: tmp/mainWindow.glade.h:37
+#: tmp/mainWindow.glade.h:39
 msgid "Help"
 msgstr "Pomoc"
 
@@ -328,7 +329,7 @@ msgstr "Dopuść wyrazy z mniej niż 4 literami w tekscie chmury"
 
 #: ../rednotebook/gui/menu.py:89
 msgid "Journal"
-msgstr ""
+msgstr "Dziennik"
 
 #: ../rednotebook/gui/menu.py:91
 msgid "Create a new journal. The old one will be saved"
@@ -363,7 +364,7 @@ msgstr "Kopia zapasowa"
 msgid "Save all the data in a zip archive"
 msgstr "Zapisz wszystkie dane jako plik zip"
 
-#: ../rednotebook/gui/menu.py:107 tmp/mainWindow.glade.h:60
+#: ../rednotebook/gui/menu.py:107 tmp/mainWindow.glade.h:63
 msgid "Statistics"
 msgstr "Statystyki"
 
@@ -433,7 +434,7 @@ msgstr "Zgłoś problem"
 msgid "Fill out a short form about the problem"
 msgstr "Wypełnij krótki formularz o problemie"
 
-#: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:467
+#: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:525
 msgid "RedNotebook Documentation"
 msgstr "Dokumentacja RedNotebook"
 
@@ -441,7 +442,7 @@ msgstr "Dokumentacja RedNotebook"
 msgid "A Desktop Journal"
 msgstr "Dziennik pulpitu"
 
-#: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:20
+#: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:21
 msgid "Categories"
 msgstr "Kategorie"
 
@@ -473,7 +474,7 @@ msgstr "Dodaj nowy wpis"
 msgid "Delete this node"
 msgstr "Usuń ten węzeł"
 
-#: ../rednotebook/gui/exportAssistant.py:61 tmp/mainWindow.glade.h:29
+#: ../rednotebook/gui/exportAssistant.py:61 tmp/mainWindow.glade.h:30
 msgid "Export Assistant"
 msgstr "Asystent eksportu"
 
@@ -496,16 +497,16 @@ msgstr "Dostępne kategorie"
 msgid "Selected Categories"
 msgstr "Wybrane kategorie"
 
-#: ../rednotebook/gui/exportAssistant.py:186
+#: ../rednotebook/gui/exportAssistant.py:191
 msgid "Cancelling export assistant."
 msgstr "Anulowanie asystenta eksportu"
 
-#: ../rednotebook/gui/exportAssistant.py:347
+#: ../rednotebook/gui/exportAssistant.py:352
 #, python-format
 msgid "Content exported to %s"
 msgstr "Zawartość eksportowana do %s"
 
-#: ../rednotebook/gui/exportAssistant.py:349
+#: ../rednotebook/gui/exportAssistant.py:354
 #, python-format
 msgid "Exporting to %s failed"
 msgstr "Eksportowanie do %s nie powiodło się"
@@ -534,24 +535,24 @@ msgstr "Utwórz nowy szablon"
 msgid "Open Template Directory"
 msgstr "Otwórz katalog szablonów"
 
-#: ../rednotebook/redNotebook.py:438
+#: ../rednotebook/redNotebook.py:445
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "Zawartość zapisano do %s"
 
-#: ../rednotebook/redNotebook.py:440
+#: ../rednotebook/redNotebook.py:447
 msgid "Nothing to save"
 msgstr "Nie ma nic do zapisania"
 
-#: ../rednotebook/redNotebook.py:447
+#: ../rednotebook/redNotebook.py:454
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr "Nie można zapisać konfiguracji. Sprawdź swoje uprawnienia"
 
-#: ../rednotebook/redNotebook.py:477
+#: ../rednotebook/redNotebook.py:484
 msgid "The selected folder is not empty."
 msgstr "Wybrany katalog nie jest pusty."
 
-#: ../rednotebook/redNotebook.py:478
+#: ../rednotebook/redNotebook.py:485
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
@@ -559,12 +560,12 @@ msgstr ""
 "Aby uniknąć nadpisania danych, zawartość katalogu importowano do nowego "
 "dziennika."
 
-#: ../rednotebook/redNotebook.py:481
+#: ../rednotebook/redNotebook.py:488
 msgid "The selected folder is empty. A new journal has been created."
 msgstr "Wybrany katalog jest pusty. Nowy dziennik został utworzony."
 
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
-#: tmp/mainWindow.glade.h:69
+#: tmp/mainWindow.glade.h:73
 msgid "Words"
 msgstr "Słowa"
 
@@ -757,233 +758,236 @@ msgstr "<b>Wprowadź nazwę pliku</b>"
 msgid "<b>Entries from:</b>"
 msgstr "<b>Wpisy od:</b>"
 
-#: tmp/mainWindow.glade.h:6
+#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
+#: tmp/mainWindow.glade.h:7
 msgid "<b>General</b>"
 msgstr "<b>Ogólne</b>"
 
-#: tmp/mainWindow.glade.h:7
+#: tmp/mainWindow.glade.h:8
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgstr "<b>Lokalizacja odnośnika (n.p. http://rednotebook.sf.net)</b>"
 
-#: tmp/mainWindow.glade.h:8
+#: tmp/mainWindow.glade.h:9
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>Nazwa odnośnika (opcjonalnie)</b>"
 
-#: tmp/mainWindow.glade.h:9
+#: tmp/mainWindow.glade.h:10
 msgid "<b>Overall</b>"
 msgstr "<b>W sumie</b>"
 
-#: tmp/mainWindow.glade.h:10
+#: tmp/mainWindow.glade.h:11
 msgid "<b>Select Entries</b>"
 msgstr "<b>Wybierz wpisy</b>"
 
-#: tmp/mainWindow.glade.h:11
+#: tmp/mainWindow.glade.h:12
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>Wybierz istniejącą lub nową kategorię</b>"
 
-#: tmp/mainWindow.glade.h:12
+#: tmp/mainWindow.glade.h:13
 msgid "<b>Select format</b>"
 msgstr "<b>Wybierz format</b>"
 
-#: tmp/mainWindow.glade.h:13
+#: tmp/mainWindow.glade.h:14
 msgid "<b>Select the contents you want to export</b>"
 msgstr "<b>Wybierz zawartość, którą chcesz eksportować</b>"
 
-#: tmp/mainWindow.glade.h:14
+#: tmp/mainWindow.glade.h:15
 msgid "<b>Till:</b>"
 msgstr "<b>Aż do:</b>"
 
-#: tmp/mainWindow.glade.h:15
+#: tmp/mainWindow.glade.h:16
 msgid "<b>Write entry</b>"
 msgstr "<b>Zapisz pozycję</b>"
 
-#: tmp/mainWindow.glade.h:16
+#: tmp/mainWindow.glade.h:17
 msgid "<b>You already have the latest version of RedNotebook</b>"
 msgstr "<b>Masz najnowszą wersję programu RedNotebook</b>"
 
-#: tmp/mainWindow.glade.h:17
+#: tmp/mainWindow.glade.h:18
 msgid "Add an entry to a category (Ctrl+N)"
 msgstr "Dodaj wpis do kategorii (Ctrl+N)"
 
-#: tmp/mainWindow.glade.h:18
+#: tmp/mainWindow.glade.h:19
 msgid "All Entries"
 msgstr "Wszystkie wpisy"
 
-#: tmp/mainWindow.glade.h:19
+#: tmp/mainWindow.glade.h:20
 msgid "Annotate"
 msgstr "Dodaj komentarz"
 
-#: tmp/mainWindow.glade.h:21
+#: tmp/mainWindow.glade.h:22
 msgid "Category"
 msgstr "Kategoria"
 
-#: tmp/mainWindow.glade.h:22
+#: tmp/mainWindow.glade.h:23
 msgid "Clouds"
 msgstr "Chmury"
 
-#: tmp/mainWindow.glade.h:23
+#: tmp/mainWindow.glade.h:24
 msgid "Delete"
 msgstr "Usuń"
 
-#: tmp/mainWindow.glade.h:24
+#: tmp/mainWindow.glade.h:25
 msgid "Delete the selected node"
 msgstr "Usuń zaznaczony węzeł"
 
-#: tmp/mainWindow.glade.h:25
+#: tmp/mainWindow.glade.h:26
 msgid "Do not ask again"
 msgstr "Nie pytaj ponownie"
 
-#: tmp/mainWindow.glade.h:26
+#: tmp/mainWindow.glade.h:27
 msgid "Do not export categories"
 msgstr "Nie eksportuj kategorii"
 
-#: tmp/mainWindow.glade.h:27
+#: tmp/mainWindow.glade.h:28
 msgid "Do you want to visit the website?"
 msgstr "Czy chcesz zobaczyć stronę w sieci?"
 
-#: tmp/mainWindow.glade.h:28
+#: tmp/mainWindow.glade.h:29
 msgid "Exit without saving"
 msgstr "Wyjdź bez zapisywania"
 
-#: tmp/mainWindow.glade.h:30
+#: tmp/mainWindow.glade.h:31
 msgid "Export Text"
 msgstr "Eksportuj tekst"
 
-#: tmp/mainWindow.glade.h:31
+#: tmp/mainWindow.glade.h:32
 msgid "Export all categories"
 msgstr "Eksportuj wszystkie kategorie"
 
-#: tmp/mainWindow.glade.h:32
+#: tmp/mainWindow.glade.h:33
 msgid "Export only the selected categories"
 msgstr "Eksportuj tylko zaznaczone kategorie"
 
-#: tmp/mainWindow.glade.h:33
+#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
+#: tmp/mainWindow.glade.h:35
 msgid "General"
 msgstr "Ogólnie"
 
-#: tmp/mainWindow.glade.h:34
+#: tmp/mainWindow.glade.h:36
 msgid "Go to next day (Ctrl+PageUp)"
 msgstr "Idź do następnego dnia (Ctrl+PageUp)"
 
-#: tmp/mainWindow.glade.h:35
+#: tmp/mainWindow.glade.h:37
 msgid "Go to previous day (Ctrl+PageDown)"
 msgstr "Idź do poprzedniego dnia (Ctrl+PageDown)"
 
-#: tmp/mainWindow.glade.h:36
+#: tmp/mainWindow.glade.h:38
 msgid "HTML"
 msgstr "HTML"
 
-#: tmp/mainWindow.glade.h:38
+#: tmp/mainWindow.glade.h:40
 msgid ""
 "If export text is not selected, you have to select at least one category."
 msgstr ""
 "Jeśli nie zaznaczono tekstu do eksportu, musisz zaznaczyć przynajmniej jedną "
 "kategorię."
 
-#: tmp/mainWindow.glade.h:39
+#: tmp/mainWindow.glade.h:41
 msgid "Insert Link"
 msgstr "Wstaw odnośnik"
 
-#: tmp/mainWindow.glade.h:40
+#: tmp/mainWindow.glade.h:42
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
 "Wstaw szablon dnia powszedniego. Kliknij strzałkę po prawej, aby uzyskać "
 "więcej opcji"
 
-#: tmp/mainWindow.glade.h:41
+#: tmp/mainWindow.glade.h:43
 msgid "Jump to today"
 msgstr "Dzisiaj"
 
-#: tmp/mainWindow.glade.h:42
+#: tmp/mainWindow.glade.h:44
 msgid "Latex"
 msgstr "Latex"
 
-#: tmp/mainWindow.glade.h:43
+#: tmp/mainWindow.glade.h:45
 msgid "New Version"
 msgstr "Nowa wersja"
 
-#: tmp/mainWindow.glade.h:44
+#: tmp/mainWindow.glade.h:46
 msgid "New entry"
 msgstr "Nowy wpis"
 
-#: tmp/mainWindow.glade.h:45
+#: tmp/mainWindow.glade.h:47
 msgid "No New Version"
 msgstr "Brak nowej wersji"
 
-#: tmp/mainWindow.glade.h:46
+#: tmp/mainWindow.glade.h:48
 msgid "Only the entries in the selected time range"
 msgstr "Tylko wpisy w zaznaczonym zakresie czasu"
 
-#: tmp/mainWindow.glade.h:47
+#: tmp/mainWindow.glade.h:49
 msgid "PDF"
 msgstr "PDF"
 
-#: tmp/mainWindow.glade.h:48
+#: tmp/mainWindow.glade.h:50
 msgid "Preferences"
 msgstr "Ustawienia"
 
-#: tmp/mainWindow.glade.h:50
+#: tmp/mainWindow.glade.h:53
 msgid "Search"
 msgstr "Szukaj"
 
-#: tmp/mainWindow.glade.h:51
+#: tmp/mainWindow.glade.h:54
 msgid "Search in entries, categories and tags"
 msgstr "Szukaj we wpisach, kategoriach i znacznikach"
 
-#: tmp/mainWindow.glade.h:52
+#: tmp/mainWindow.glade.h:55
 msgid "Select >>"
 msgstr "Zaznacz >>"
 
-#: tmp/mainWindow.glade.h:53
+#: tmp/mainWindow.glade.h:56
 msgid "Select a cloud"
 msgstr "Wybierz chmurę"
 
-#: tmp/mainWindow.glade.h:54
+#: tmp/mainWindow.glade.h:57
 msgid "Select a directory"
 msgstr "Wybierz katalog"
 
-#: tmp/mainWindow.glade.h:55
+#: tmp/mainWindow.glade.h:58
 msgid "Select a file"
 msgstr "Wybierz plik"
 
-#: tmp/mainWindow.glade.h:56
+#: tmp/mainWindow.glade.h:59
 msgid "Select a picture"
 msgstr "Wybierz obraz"
 
-#: tmp/mainWindow.glade.h:57
+#: tmp/mainWindow.glade.h:60
 msgid "Select backup filename"
 msgstr "Wybierz plik kopii zapasowej"
 
-#: tmp/mainWindow.glade.h:58
+#: tmp/mainWindow.glade.h:61
 msgid "Select where to search"
 msgstr "Wybierz gdzie szukać"
 
-#: tmp/mainWindow.glade.h:59
+#: tmp/mainWindow.glade.h:62
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "Pokaż sformatowany podgląd tekstu (Ctrl+P)"
 
-#: tmp/mainWindow.glade.h:61
+#. ## This stands for the verb in "Tag this day"
+#: tmp/mainWindow.glade.h:65
 msgid "Tag"
 msgstr "Znacznik"
 
-#: tmp/mainWindow.glade.h:62
+#: tmp/mainWindow.glade.h:66
 msgid "Tag this day (Ctrl+T)"
 msgstr "Dodaj znacznik do tego dnia (Ctrl+T)"
 
-#: tmp/mainWindow.glade.h:63
+#: tmp/mainWindow.glade.h:67
 msgid "Tags"
 msgstr "Znaczniki"
 
-#: tmp/mainWindow.glade.h:64
+#: tmp/mainWindow.glade.h:68
 msgid "Template"
 msgstr "Szablon"
 
-#: tmp/mainWindow.glade.h:66
+#: tmp/mainWindow.glade.h:70
 msgid "Today"
 msgstr "Dzisiaj"
 
-#: tmp/mainWindow.glade.h:67
+#: tmp/mainWindow.glade.h:71
 msgid ""
 "Welcome to the Export Assistant. \n"
 "This wizard will help you to export your journal to various formats. You can "
@@ -993,7 +997,8 @@ msgstr ""
 "Asystent pomoże ci wyeksportować dziennik do różnych formatów. Możesz wybrać "
 "dni, które chcesz eksportować i gdzie zapisać pliki wyjściowe."
 
-#: tmp/mainWindow.glade.h:70
+#. ## TRANSLATORS: Replace this string with your names, one name per line.
+#: tmp/mainWindow.glade.h:75
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
