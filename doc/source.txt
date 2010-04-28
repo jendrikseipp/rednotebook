@@ -63,7 +63,7 @@ On the left you find the search box. You can search for text, display a category
 == Clouds ==
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
-If words appear in the cloud that you don't want to see there, just right-click on them. Alternatively you can open the Preferences dialog and add the words to the cloud blocklist there.
+If words appear in the cloud that you don't want to see there, just right-click on them. Alternatively you can open the Preferences dialog and add the words to the cloud blacklist there.
 
 == Spellcheck ==
 RedNotebook supports spellchecking your entries if you have python-gtkspell installed. To highlight all misspelled words in your entries, select the corresponding option in the preferences window.
@@ -90,6 +90,11 @@ Since version 0.8.9 you can have your journal directory on a remote server. The 
 If you have your own server, you might want to try [Conduit http://www.conduit-project.org] or [Unison http://www.cis.upenn.edu/~bcpierce/unison] for example. To sync or backup your journal you have to sync your journal folder (default is "$HOME/.rednotebook/data/") with a folder on your server. It would be great if someone could write a tutorial about that.
 
 Obviously you have to be connected to the internet to use that feature. Be sure to backup your data regularly if you plan to save your content remotely. There are always more pitfalls when an internet connection is involved.
+
+=== Dual Boot ===
+Using RedNotebook from multiple operating systems on the same computer is also possible. Save your Journal with "Journal->Save As" in a directory all systems can access. Then on the other systems you can open the journal with "Journal->Open".
+
+Optionally you can also **share your settings** and templates. This is possible since version 0.9.4. The relevant setting is found in the file "rednotebook/files/default.cfg". There you can set the value of userDir to the path where you want to share your settings between the systems.
 
 == Portable mode ==
 RedNotebook can be run in portable mode. In this mode, the template directory and the configuration and log file are saved in the application directory instead of in the home directory. Additionally the path to the last opened journal is remembered relatively to the application directory. 

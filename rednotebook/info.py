@@ -388,6 +388,18 @@ Obviously you have to be connected to the internet to use that feature. Be sure 
 data regularly if you plan to save your content remotely. There are always more pitfalls when \
 an internet connection is involved.
 
+=== Dual Boot ===
+Using RedNotebook from multiple operating systems on the same computer is \
+also possible. Save your Journal with "Journal->Save As" in a directory \
+all systems can access. Then on the other systems you can open the \
+journal with "Journal->Open".
+
+Optionally you can also **share your settings** and templates. \
+This is possible since version 0.9.4. The relevant setting is found in \
+the file "rednotebook/files/default.cfg". There you can set the value of \
+userDir to the path where you want to share your settings between the \
+systems.
+
 == Portable mode ==
 RedNotebook can be run in portable mode. In this mode, the \
 template directory and the configuration and log file are saved \

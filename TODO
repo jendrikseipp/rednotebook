@@ -6,25 +6,6 @@ implementation if you tell me that you'd like its addition ;)
 
 
 === Roadmap ===
-
-0.9.4
-X Allow dragging of files and pictures into RedNotebook (Linux only)
-X Save data dir relative to application dir in portable mode
-X Remember if window was maximized
-X Make webkit the default preview backend
-X Improve documentation (Synchronization, Portable mode)
-X Improve list markup highlighting
-X Only add help content at first startup (Closes LP:550814)
-X Live highlighting of searched words in text
-X Scroll to found word at search
-X Make user directory configurable in default.cfg
- X Windows:
-   X Fully translate Windows version
-   X Add more languages to the Windows installer
-   X Fix picture export on Windows
-   X Hide PDF export button on windows (pywebkitgtk not available)
-   X Portable mode has been improved
-   X Let users insert templates again (Closes LP:538391)
    
 
 O Feature Poll
@@ -43,14 +24,14 @@ O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availabil
 0.9.x
 O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
-O Open links externally in KDE too
 O Get rid of CamelCase in sourcecode
 O Try to get rid of PangoWarnings on Windows
+O Drag and Drop for Windows
 
 1.0
 X Solid amount of translations
-O Stable
-O Fix freeze bug
+X Stable
+X Fix freeze bug
 O Many automatic insertions
 
 1.0.x

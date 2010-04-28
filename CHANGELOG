@@ -1,5 +1,27 @@
 ==== RedNotebook Changelog ====
 
+=== 0.9.4 (10-04-25) ===
+ * Allow dragging of files and pictures into RedNotebook (Linux only)
+ * Save data dir relative to application dir in portable mode
+ * Remember if window was maximized
+ * Make webkit the default preview backend
+ * Improve documentation (Synchronization, Portable mode)
+ * Improve list markup highlighting
+ * Only add help content at first startup (Closes LP:550814)
+ * Live highlighting of searched words in text
+ * Scroll to found word at search
+ * Make user directory configurable in default.cfg
+ * Windows:
+   * Fully translate Windows version
+   * Add more languages to the Windows installer
+   * Fix picture export on Windows
+   * Hide PDF export button on windows (pywebkitgtk not available)
+   * Portable mode has been improved
+   * Let users insert templates again (Closes LP:538391)
+ * New translations:
+   * Brazilian Portuguese
+ * Many translations updated
+
 === 0.9.3 (10-02-23) ===
  * Add graphical option to select webkit for previews
  * If available use webkit for clouds
