@@ -1682,7 +1682,10 @@ class Calendar(object):
 	def __init__(self, redNotebook, calendar):
 		self.redNotebook = redNotebook
 		self.calendar = calendar
-		#calendar.set_property('show-week-numbers', True)
+		
+		week_numbers = self.redNotebook.config.read('weekNumbers', 0)
+		if week_numbers:
+			calendar.set_property('show-week-numbers', True)
 		
 		self.date_listener = self.calendar.connect('day-selected', self.on_day_selected)
 		

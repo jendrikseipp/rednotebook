@@ -11,7 +11,8 @@ implementation if you tell me that you'd like its addition ;)
 O Feature Poll
 
 0.9.5
-O Fix status icon on XFCE
+X Show week numbers in calendar
+O Sort items in configuration.cfg
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
   - Music tracks or albums
   - Pictures or picture folders
@@ -25,6 +26,7 @@ O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availabil
 O Automatic insertion of photo links for current day (use zeitgeist)
 O Automatic insertion of holidays
 O Get rid of CamelCase in sourcecode
+O Fix status icon on XFCE
 O Try to get rid of PangoWarnings on Windows
 O Drag and Drop for Windows
 
@@ -69,7 +71,6 @@ O Use categories for number data and present it graphically (KMs, Cash, Calories
 === Maybe even some of those features will make it into RedNotebook ===
 
 O List recently opened journals under "Journal" -> "Recently Used"
-O Show week numbers in calendar
 O Provide an option to export all days with a certain tag
 
 O Evolution Integration (zeitgeist?)
