@@ -195,7 +195,7 @@ class Config(dict):
 		
 		try:
 			with open(self.file, 'w') as configFile:
-				for key, value in self.iteritems():
+				for key, value in sorted(self.iteritems()):
 					if key not in self.suppressed_keys:
 						configFile.write('%s=%s\n' % (key, value))
 				logging.info('Configuration has been saved to disk')

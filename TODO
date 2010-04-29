@@ -12,7 +12,7 @@ O Feature Poll
 
 0.9.5
 X Show week numbers in calendar
-O Sort items in configuration.cfg
+X Sort items in configuration.cfg
 O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
   - Music tracks or albums
   - Pictures or picture folders
