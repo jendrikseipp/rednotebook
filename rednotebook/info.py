@@ -25,7 +25,7 @@ if not hasattr(__builtin__, '_'):
 	def _(string):
 		return string
 
-version = 			'0.9.4'
+version = 			'0.9.5'
 author = 			'Jendrik Seipp'
 authorMail = 		'jendrikseipp@web.de'
 url = 				'http://rednotebook.sourceforge.net'
@@ -497,6 +497,11 @@ partition all RedNotebook data will be encrypted, too.
 %(multiple_entries_text)s
 
 %(todo_help_text)s
+
+=== Week Numbers ===
+If you'd like to see the week numbers in the calendar, you can set the \
+value of weekNumbers to 1 in the configuration file. This file \
+normally resides at $HOME/.rednotebook/configuration.cfg
 
 == Questions ==
 If you have any questions or comments, feel free to post them in the \
