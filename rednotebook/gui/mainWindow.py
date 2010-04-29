@@ -47,8 +47,8 @@ import rednotebook.util.unicode
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.external.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
-from rednotebook.gui import widgets
-from rednotebook.gui.widgets import CustomComboBoxEntry, CustomListView
+from rednotebook.gui import customwidgets
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import info
@@ -277,7 +277,7 @@ class MainWindow(object):
 	# TRAY-ICON / CLOSE --------------------------------------------------------
 			
 	def setup_tray_icon(self):
-		self.tray_icon = widgets.RedNotebookTrayIcon()
+		self.tray_icon = customwidgets.RedNotebookTrayIcon()
 		visible = (self.redNotebook.config.read('closeToTray', 0) == 1)
 		self.tray_icon.set_visible(visible)
 		logging.debug('Tray icon visible: %s' % visible)

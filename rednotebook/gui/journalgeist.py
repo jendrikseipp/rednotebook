@@ -36,7 +36,7 @@ class JournalZeitgeistWidget(DayWidget):
 		day_end = time.mktime(next_date.timetuple())
 		DayWidget.__init__(self, day_start, day_end)
 		
-		self.vbox.remove(self.daylabel)
+		#self.vbox.remove(self.daylabel)
 
 
 if __name__ == '__main__':

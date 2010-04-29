@@ -26,8 +26,8 @@ import gtk
 import gobject
 
 
-from rednotebook.gui.widgets import UrlButton, CustomComboBoxEntry
-from rednotebook.gui.widgets import ActionButton
+from rednotebook.gui.customwidgets import UrlButton, CustomComboBoxEntry
+from rednotebook.gui.customwidgets import ActionButton
 from rednotebook.gui import browser
 from rednotebook.util import filesystem, utils
 from rednotebook import info
