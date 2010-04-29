@@ -1,6 +1,6 @@
 ==== RedNotebook Changelog ====
 
-=== 0.9.4 (10-04-25) ===
+=== 0.9.4 (10-04-29) ===
  * Allow dragging of files and pictures into RedNotebook (Linux only)
  * Save data dir relative to application dir in portable mode
  * Remember if window was maximized

@@ -21,6 +21,14 @@ cd dist/
 #sudo debian/rules binary
 #cd ../
 
+if [ -d ../releases ]; then
+	# directory exists
+	echo "releases dir does not exist"
+else
+	# make dir
+	mkdir ../releases
+fi
+
 #Move files
 #cp -f rednotebook_$VERSION-1_all.deb ../releases/
 cp -f rednotebook-$VERSION.tar.gz ../releases/
