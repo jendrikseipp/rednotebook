@@ -62,7 +62,7 @@ from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
 from rednotebook.gui import browser
 
-test_zeitgeist = False
+test_zeitgeist = True
 if test_zeitgeist:
 	from rednotebook.gui import journalgeist
 
@@ -216,6 +216,7 @@ class MainWindow(object):
 		# Only add the config variable if zeitgeist is available
 		use_zeitgeist = test_zeitgeist and journalgeist.zeitgeist and \
 						self.redNotebook.config.read('useZeitgeist', 0)
+		use_zeitgeist = True
 		logging.info('Using zeitgeist: %s' % use_zeitgeist)
 		
 		if use_zeitgeist:
@@ -225,9 +226,9 @@ class MainWindow(object):
 	def setup_zeitgeist_view(self):
 		'''Zeigeist integration'''
 		#from rednotebook.gui.journalgeist import JournalZeitgeistWidget
-		zeitgeist_view = journalgeist.JournalZeitgeistWidget(self.redNotebook.actualDate)
-		right_vbox = self.builder.get_object('right_vbox')
-		right_vbox.pack_start(zeitgeist_view)
+		self.zeitgeist_widget = journalgeist.ZeitgeistWidget()
+		annotations_pane = self.builder.get_object('annotationsPane')
+		annotations_pane.add2(self.zeitgeist_widget)
 		
 		
 	def set_tooltips(self):
@@ -951,6 +952,8 @@ class MainWindow(object):
 		# Why do we always have to set the text of the dayTextField?
 		self.dayTextField.set_text(day.text)
 		self.categoriesTreeView.set_day_content(day)
+		
+		self.zeitgeist_widget.set_date(newDate)
 		
 		self.undo_redo_manager.clear()
 		
