@@ -123,7 +123,7 @@ class ZeitgeistWidget(gtk.VBox):
 
 		today = int(time.time() ) - 7*86400
 		self.daylabel = gtk.Label()
-		self.daylabel.set_markup('<b>Activities</b>')
+		self.daylabel.set_markup('<b>' + _('Activities') + '</b>')
 		self.daylabel.set_size_request(70, 30)
 		hbox = gtk.HBox()
 		hbox.pack_start(self.daylabel, False, False)
