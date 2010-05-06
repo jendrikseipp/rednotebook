@@ -23,6 +23,7 @@ import os
 import zipfile
 import subprocess
 import logging
+import codecs
 
 
 
@@ -146,7 +147,7 @@ def makeDirectories(dirs):
 		
 def makeFile(file, content=''):
 	if not os.path.exists(file):
-		with open(file, 'w') as f:
+		with codecs.open(file, 'w', encoding='utf-8') as f:
 			f.write(content)
 			
 def makeFiles(fileContentPairs):
@@ -242,6 +243,15 @@ def get_platform_info():
 	return 'System info: ' + '%s: %s, '*(len(strings)/2) % strings
 	
 
+def system_call(args):
+	'''
+	Asynchronous system call
+	
+	subprocess.call runs synchronously
+	'''
+	subprocess.Popen(args)
+	
+
 
 def open_url(url):
 	'''
@@ -261,7 +271,7 @@ def open_url(url):
 	elif sys.platform == 'darwin':
 		try:
 			logging.info('Trying to open %s with "open"' % url)
-			subprocess.call(['open', url])
+			system_call(['open', url])
 			return
 		except OSError, subprocess.CalledProcessError:
 			logging.exception('Opening %s with "open" failed' % url)
@@ -270,7 +280,7 @@ def open_url(url):
 		try:
 			subprocess.check_call(['xdg-open', '--version'])
 			logging.info( 'Trying to open %s with xdg-open' % url)
-			subprocess.call(['xdg-open', url])
+			system_call(['xdg-open', url])
 			return
 		except OSError, subprocess.CalledProcessError:
 			logging.exception('Opening %s with xdg-open failed' % url)
@@ -315,10 +325,10 @@ def read_yaml_file(filename, loader=None):
 	
 def read_file(filename):
 	import codecs
-	encodings = ['utf-8', 'latin1', 'latin2']
+	encodings = ['utf-8']#, 'latin1', 'latin2']
 	for encoding in encodings:
 		try:
-			file = codecs.open(filename, 'r', encoding=encoding, errors='strict')
+			file = codecs.open(filename, 'rb', encoding=encoding, errors='replace')
 			data = file.read()
 			file.close()
 			return data
