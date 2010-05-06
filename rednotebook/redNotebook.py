@@ -435,7 +435,9 @@ class RedNotebook:
 							monthContent[dayNumber] = day.content
 					
 					try:
-						yaml.dump(monthContent, monthFile, Dumper=Dumper)
+						# yaml.dump(monthContent, monthFile, Dumper=Dumper)
+						# This version produces readable unicode and no python directives
+						yaml.safe_dump(monthContent, monthFile, allow_unicode=True)
 						month.edited = False
 					except OSError, err:
 						self.frame.show_save_error_dialog(exitImminent)
