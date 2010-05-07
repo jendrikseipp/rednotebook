@@ -1647,9 +1647,16 @@ class Statusbar(object):
 		self.lastMessageID = None
 		self.timespan = 7
 		
+	def remove_message(self):
+		if hasattr(self.statusbar, 'remove_message'):
+			self.statusbar.remove_message(self.contextID, self.lastMessageID)
+		else:
+			# Deprecated
+			self.statusbar.remove(self.contextID, self.lastMessageID)
+		
 	def showText(self, text, error=False, countdown=True):
 		if self.lastMessageID is not None:
-			self.statusbar.remove(self.contextID, self.lastMessageID)
+			self.remove_message()
 		self.lastMessageID = self.statusbar.push(self.contextID, text)
 		
 		self.error = error
