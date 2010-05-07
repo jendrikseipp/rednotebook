@@ -603,6 +603,10 @@ Filenames have to have the following form: 2009-01.txt \
 		
 		
 	def loadMonth(self, date):
+		'''
+		Returns the corresponding month if it has previously been visited,
+		otherwise a new month is created and returned
+		'''
 		
 		yearAndMonth = dates.getYearAndMonthFromDate(date)
 		
@@ -635,6 +639,15 @@ Filenames have to have the following form: 2009-01.txt \
 			#self.month.visited = True
 		
 		self.frame.set_date(self.month, self.date, self.day)
+		
+		
+	def insert_days(self, days):
+		'''
+		Method used by importers
+		'''
+		self.saveOldDay()
+		
+		
 		
 		
 	def _getCurrentDay(self):
@@ -769,8 +782,8 @@ class Day(object):
 		
 		self.searchResultLength = 50
 		
-	def __getattr__(self, name):
-		return getattr(self.date, name)
+	#def __getattr__(self, name):
+	#	return getattr(self.date, name)
 	
 	
 	# Text
@@ -811,6 +824,28 @@ class Day(object):
 	tree = property(_getTree)
 	
 	
+	def add_category_entry(self, category, entry):
+		if self.content.has_key(category):
+			self.content[category][entry] = None
+		else:
+			self.content[category] = {entry: None}
+			
+	
+	def merge(self, same_day):
+		assert self.date == same_day.date
+		
+		# Merge texts
+		if self.text.strip() == same_day.text.strip():
+			pass
+		else:
+			self.text += '\n\n' + same_day.text
+			
+		# Merge categories
+		for category, entries in same_day.getCategoryContentPairs().items():
+			for entry in entries:
+				self.add_category_entry(category, entry)
+	
+	
 	def _getNodeNames(self):
 		return self.tree.keys()
 	nodeNames = property(_getNodeNames)
@@ -827,7 +862,7 @@ class Day(object):
 	
 	def getCategoryContentPairs(self):
 		'''
-		Returns a list of (category, contentInCategoryAsList) pairs.
+		Returns a dict of (category: contentInCategoryAsList) pairs.
 		contentInCategoryAsList can be empty
 		'''
 		originalTree = self.tree.copy()
