@@ -50,6 +50,7 @@ class MainMenuBar(object):
 				<menuitem action="Save"/>
 				<menuitem action="SaveAs"/>
 				<separator/>
+				<menuitem action="Import"/>
 				<menuitem action="Export"/>
 				<menuitem action="Backup"/>
 				<menuitem action="Statistics"/>
@@ -98,6 +99,9 @@ class MainMenuBar(object):
 			('SaveAs', gtk.STOCK_SAVE_AS, None,
 				None, _('Save journal at a new location. The old journal files will also be saved'),
 				self.on_saveAsMenuItem_activate),
+			### Translators: Verb
+			('Import', gtk.STOCK_ADD, _('Import'),
+				None, _('Open the import assistant'), self.on_importMenuItem_activate),
 			### Translators: Verb
 			('Export', gtk.STOCK_CONVERT, _('Export'),
 				None, _('Open the export assistant'), self.on_exportMenuItem_activate),
@@ -230,6 +234,10 @@ class MainMenuBar(object):
 
 	def on_backup_activate(self, widget):
 		self.redNotebook.backupContents(backup_file=self.main_window.get_backup_file())
+		
+	def on_importMenuItem_activate(self, widget):
+		self.redNotebook.saveOldDay()
+		self.main_window.export_assistant.run()
 
 	def on_exportMenuItem_activate(self, widget):
 		self.redNotebook.saveOldDay()

@@ -641,7 +641,7 @@ Filenames have to have the following form: 2009-01.txt \
 		self.frame.set_date(self.month, self.date, self.day)
 		
 		
-	def insert_days(self, days):
+	def merge_days(self, days):
 		'''
 		Method used by importers
 		'''

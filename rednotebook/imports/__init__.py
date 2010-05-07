@@ -70,5 +70,11 @@ if __name__ == '__main__':
 	print 'ALL TESTS SUCCEEDED'
 	
 
+plaintext_module = __import__('plaintext')
+print dir(plaintext_module)
+p = getattr(plaintext_module, 'aha')
+p = plaintext_module.PlainTextImporter()
+	
+
 		
 	
