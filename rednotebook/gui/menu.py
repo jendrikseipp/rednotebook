@@ -236,8 +236,9 @@ class MainMenuBar(object):
 		self.redNotebook.backupContents(backup_file=self.main_window.get_backup_file())
 		
 	def on_importMenuItem_activate(self, widget):
-		self.redNotebook.saveOldDay()
-		self.main_window.export_assistant.run()
+		from rednotebook.imports import ImportAssistant
+		assistant = ImportAssistant(self.redNotebook)
+		assistant.run()
 
 	def on_exportMenuItem_activate(self, widget):
 		self.redNotebook.saveOldDay()

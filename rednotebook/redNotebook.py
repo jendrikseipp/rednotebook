@@ -646,9 +646,13 @@ Filenames have to have the following form: 2009-01.txt \
 		Method used by importers
 		'''
 		self.saveOldDay()
-		
-		
-		
+		for new_day in days:
+			date = new_day.date
+			month = self.loadMonth(date)
+			old_day = month.getDay(date.day)
+			old_day.merge(new_day)
+			month.edited = True
+			
 		
 	def _getCurrentDay(self):
 		return self.month.getDay(self.date.day)
@@ -835,8 +839,14 @@ class Day(object):
 		assert self.date == same_day.date
 		
 		# Merge texts
-		if self.text.strip() == same_day.text.strip():
+		text1 = self.text.strip() 
+		text2 = same_day.text.strip()
+		if text2 in text1:
+			# self.text contains the other text
 			pass
+		elif text1 in text2:
+			# The other text contains contains self.text
+			self.text = same_day.text
 		else:
 			self.text += '\n\n' + same_day.text
 			

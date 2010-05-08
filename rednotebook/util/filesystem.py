@@ -324,8 +324,33 @@ def read_yaml_file(filename, loader=None):
 	return None
 	
 def read_file(filename):
-	import codecs
 	encodings = ['utf-8']#, 'latin1', 'latin2']
+	
+	try:
+		import chardet
+	except ImportError:
+		logging.info("chardet not found. Let's hope all your files are unicode")
+		chardet = None
+		
+	if chardet:
+		with open(filename, 'rb') as file:
+			content = file.read()
+		guess = chardet.detect(content)
+		logging.debug('Chardet guesses %s for %s' % (guess, filename))
+		encoding = guess.get('encoding')
+		
+		#print encoding, encoding == 'MacCyrrilic'
+		
+		# chardet makes error here sometimes
+		if encoding == 'MacCyrillic':
+			encoding = 'ISO-8859-2'
+			
+		if encoding:
+			encodings.insert(0, encoding)
+		
+		
+	import codecs
+	
 	for encoding in encodings:
 		try:
 			file = codecs.open(filename, 'rb', encoding=encoding, errors='replace')

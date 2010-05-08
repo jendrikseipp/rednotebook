@@ -28,16 +28,9 @@ from rednotebook.imports import ImportDay, Importer
 
 #from __init__ import Importer
 
-NAME = 'Plain Text'
-DESCRIPTION = 'Import Text from plain textfiles'
-REQUIREMENTS = []
 
-class PlainTextImporter(Importer):
-	def get_days():
-		day = Day(2010, 5, 7)
-		day.text = 'test text'
-		day.add_category_entry('cat', 'dog')
-		return [day]
+
+
 		
 	
 
