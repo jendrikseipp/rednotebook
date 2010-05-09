@@ -195,12 +195,12 @@ class ImportAssistant(gtk.Assistant):
 		
 		self.importers = get_importers()
 		
-		self.set_title('Import')
+		self.set_title('Import Assistant')
 		self.set_size_request(1000, 700)
 		
 		self.page0 = self._get_page0()
 		self.append_page(self.page0)
-		self.set_page_title(self.page0, 'Welcome to the Import Assistant')
+		self.set_page_title(self.page0, 'Import Assistant')
 		self.set_page_type(self.page0, gtk.ASSISTANT_PAGE_INTRO)
 		self.set_page_complete(self.page0, True)
 		
@@ -272,9 +272,9 @@ class ImportAssistant(gtk.Assistant):
 	def _get_page0(self):
 		page = AssistantPage()
 		label = gtk.Label()
-		text = 'This Assistant will help you to import your notes from ' \
+		text = 'This Assistant will help you to import notes from ' \
 				'other applications.\nYou can check the results on the ' \
-				'last page before any change is made to your journal.'
+				'last page before any change is made.'
 		label.set_markup(text)
 		page.pack_start(label, True, True)
 		return page
@@ -330,7 +330,40 @@ class PlainTextImporter(Importer):
 		assert os.path.isdir(dir)
 		files = os.listdir(dir)
 		files.sort()
-		days = []
+		#days = []
+		for file in files:
+			match = date_exp.match(file)
+			if match:
+				year = int(match.group(1))
+				month = int(match.group(2))
+				day = int(match.group(3))
+				
+				import_day = ImportDay(year, month, day)
+				
+				path = os.path.join(dir, file)
+				text = filesystem.read_file(path)
+				import_day.text = text
+				yield import_day
+				#days.append(import_day)
+				
+		#return days
+		
+		
+class RedNotebookImporter(Importer):
+	NAME = 'RedNotebook Journal'
+	DESCRIPTION = 'Import data from a different RedNotebook journal'
+	REQUIREMENTS = []
+	PATHTEXT = 'Select a directory containing RedNotebook data files'
+	PATHTYPE = 'DIR'
+	
+	def __init__(self):
+		date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
+	
+	def get_days(self, dir):
+		assert os.path.isdir(dir)
+		files = os.listdir(dir)
+		files.sort()
+		#days = []
 		for file in files:
 			match = date_exp.match(file)
 			if match:

@@ -25,6 +25,7 @@ import os
 import operator
 import collections
 import time
+import re
 from optparse import OptionParser, OptionValueError
 
 
@@ -501,7 +502,7 @@ class RedNotebook:
 		
 		# We always want to load all files
 		if load_files or True:
-			self.loadAllMonthsFromDisk()
+			self.months = self.load_all_months_from_disk(self.dirs.dataDir)
 		
 		# Nothing to save before first day change
 		self.loadDay(self.actualDate)
@@ -551,17 +552,40 @@ class RedNotebook:
 		
 		
 		
-	def loadAllMonthsFromDisk(self):
+	def load_all_months_from_disk(self, data_dir):
+		'''
+		Load all months and return a directory mapping year-month values
+		to month objects
+		'''
+		# Format: 2010-05.txt
+		date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
+		
+		months = {}
+		
 		logging.debug('Starting to load files in dir "%s"' % self.dirs.dataDir)
-		#for root, dirs, files in os.walk(self.dirs.dataDir):
-		files = os.listdir(self.dirs.dataDir)
+		files = sorted(os.listdir(data_dir))
 		for file in files:
-			if not file.endswith('~'):
-				self.loadMonthFromDisk(os.path.join(self.dirs.dataDir, file))
+			match = date_exp.match(file)
+			if match:
+				year_string = match.group(1)
+				month_string = match.group(2)
+				year_month = year_string + '-' + month_string
+				
+				path = os.path.join(self.dirs.dataDir, file)
+				
+				month = self.load_month_from_disk(path)
+				if month:
+					months[year_month] = month
 		logging.debug('Finished loading files in dir "%s"' % self.dirs.dataDir)
+		return months
 	
 	
-	def loadMonthFromDisk(self, path):
+	def load_month_from_disk(self, path):
+		'''
+		Load the month file at path and return a month object
+		
+		If an error occurs, return None
+		'''
 		# path: /something/somewhere/2009-01.txt
 		# fileName: 2009-01.txt
 		fileName = os.path.basename(path)
@@ -587,11 +611,9 @@ Filenames have to have the following form: 2009-01.txt \
 			with open(monthFileString, 'r') as monthFile:
 				logging.debug('Start loading file "%s"' % monthFileString)
 				monthContents = yaml.load(monthFile, Loader=Loader)
-				#print monthContents
-				#monthContents = unicode.get_unicode_dict(monthContents)
-				#print monthContents
 				logging.debug('Finished loading file "%s"' % monthFileString)
-				self.months[yearAndMonth] = Month(yearNumber, monthNumber, monthContents)
+				month = Month(yearNumber, monthNumber, monthContents)
+				return month
 		except yaml.YAMLError, exc:
 			logging.error('Error in file %s:\n%s' % (monthFileString, exc))
 		except IOError:
