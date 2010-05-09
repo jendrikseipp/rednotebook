@@ -25,7 +25,6 @@ import os
 import operator
 import collections
 import time
-import re
 from optparse import OptionParser, OptionValueError
 
 
@@ -221,21 +220,6 @@ except (ImportError, AssertionError), e:
 	logging.error('gtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
-try:
-	import yaml
-except ImportError:
-	logging.error('PyYAML not found. Please install python-yaml or PyYAML')
-	sys.exit(1)
-
-# The presence of the yaml module has been checked
-try:
-	from yaml import CLoader as Loader
-	from yaml import CDumper as Dumper
-	logging.info('Using libyaml for loading and dumping')
-except ImportError:
-	from yaml import Loader, Dumper
-	logging.info('Using pyyaml for loading and dumping')
-
 	
 
 logging.info('AppDir: %s' % filesystem.appDir)
@@ -256,8 +240,9 @@ from rednotebook import backup
 
 from rednotebook.util.statistics import Statistics
 from rednotebook.gui.mainWindow import MainWindow
-
-
+from rednotebook.storage import Storage
+#import rednotebook.storage
+from rednotebook.data import Month
 
 class RedNotebook:
 	
@@ -306,6 +291,7 @@ class RedNotebook:
 		self.frame = None
 		self.frame = MainWindow(self)
 		
+		self.storage = Storage()
 		self.open_journal(self.get_journal_path())
 		
 		self.archiver = backup.Archiver(self)
@@ -408,45 +394,21 @@ class RedNotebook:
 		logging.info('Trying to save the journal')
 		
 		self.saveOldDay()
-		
-		if not os.path.exists(self.dirs.dataDir):
-			logging.error('Save path does not exist')
-			self.frame.show_save_error_dialog(exitImminent)
-			return True
 			
 		try:
 			filesystem.makeDirectory(self.dirs.dataDir)
 		except OSError, err:
 			self.frame.show_save_error_dialog(exitImminent)
 			return True
+			
+		if not os.path.exists(self.dirs.dataDir):
+			logging.error('Save path does not exist')
+			self.frame.show_save_error_dialog(exitImminent)
+			return True
+			
 		
-		something_saved = False
-		
-		for yearAndMonth, month in self.months.items():
-			# We always need to save everything when we are "saving as"
-			if (not month.empty and month.edited) or saveas:
-				something_saved = True
-				monthFileString = os.path.join(self.dirs.dataDir, yearAndMonth + \
-											filesystem.fileNameExtension)
-				with open(monthFileString, 'w') as monthFile:
-					monthContent = {}
-					for dayNumber, day in month.days.iteritems():
-						# do not add empty days
-						if not day.empty:
-							monthContent[dayNumber] = day.content
-					
-					try:
-						# yaml.dump(monthContent, monthFile, Dumper=Dumper)
-						# This version produces readable unicode and no python directives
-						yaml.safe_dump(monthContent, monthFile, allow_unicode=True)
-						month.edited = False
-					except OSError, err:
-						self.frame.show_save_error_dialog(exitImminent)
-						return True
-					except IOError, err:
-						self.frame.show_save_error_dialog(exitImminent)
-						return True	
-					
+		something_saved = self.storage.save_to_disk(self.months, self.frame, \
+								exitImminent, changing_journal, saveas)					
 		
 		if something_saved:
 			self.showMessage(_('The content has been saved to %s') % self.dirs.dataDir, error=False)
@@ -502,7 +464,7 @@ class RedNotebook:
 		
 		# We always want to load all files
 		if load_files or True:
-			self.months = self.load_all_months_from_disk(self.dirs.dataDir)
+			self.months = self.storage.load_all_months_from_disk(data_dir)
 		
 		# Nothing to save before first day change
 		self.loadDay(self.actualDate)
@@ -549,82 +511,9 @@ class RedNotebook:
 
 		end_date = self.getEditDateOfEntryNumber(-1)
 		self.frame.export_assistant.set_end_date(end_date)
-		
-		
-		
-	def load_all_months_from_disk(self, data_dir):
-		'''
-		Load all months and return a directory mapping year-month values
-		to month objects
-		'''
-		# Format: 2010-05.txt
-		date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
-		
-		months = {}
-		
-		logging.debug('Starting to load files in dir "%s"' % self.dirs.dataDir)
-		files = sorted(os.listdir(data_dir))
-		for file in files:
-			match = date_exp.match(file)
-			if match:
-				year_string = match.group(1)
-				month_string = match.group(2)
-				year_month = year_string + '-' + month_string
-				
-				path = os.path.join(self.dirs.dataDir, file)
-				
-				month = self.load_month_from_disk(path)
-				if month:
-					months[year_month] = month
-		logging.debug('Finished loading files in dir "%s"' % self.dirs.dataDir)
-		return months
 	
-	
-	def load_month_from_disk(self, path):
-		'''
-		Load the month file at path and return a month object
 		
-		If an error occurs, return None
-		'''
-		# path: /something/somewhere/2009-01.txt
-		# fileName: 2009-01.txt
-		fileName = os.path.basename(path)
-		
-		try:
-			# Get Year and Month from filename
-			yearAndMonth, extension = os.path.splitext(fileName)
-			yearNumber, monthNumber = yearAndMonth.split('-')
-			yearNumber = int(yearNumber)
-			monthNumber = int(monthNumber)
-			assert monthNumber in range(1,13)
-		except Exception:
-			msg = '''Error: %s is an incorrect filename. \
-Filenames have to have the following form: 2009-01.txt \
-'for January 2009 (yearWith4Digits-monthWith2Digits.txt)''' % fileName
-			logging.error(msg)
-			return
-		
-		monthFileString = path
-		
-		try:
-			# Try to read the contents of the file
-			with open(monthFileString, 'r') as monthFile:
-				logging.debug('Start loading file "%s"' % monthFileString)
-				monthContents = yaml.load(monthFile, Loader=Loader)
-				logging.debug('Finished loading file "%s"' % monthFileString)
-				month = Month(yearNumber, monthNumber, monthContents)
-				return month
-		except yaml.YAMLError, exc:
-			logging.error('Error in file %s:\n%s' % (monthFileString, exc))
-		except IOError:
-			#If that fails, there is nothing to load, so just display an error message
-			logging.error('Error: The file %s could not be read' % monthFileString)
-		except Exception, err:
-			logging.error('An error occured while reading %s:' % monthFileString)
-			logging.error('%s' % err)
-		
-		
-	def loadMonth(self, date):
+	def get_month(self, date):
 		'''
 		Returns the corresponding month if it has previously been visited,
 		otherwise a new month is created and returned
@@ -657,7 +546,7 @@ Filenames have to have the following form: 2009-01.txt \
 		self.date = newDate
 		
 		if not Month.sameMonth(newDate, oldDate) or self.month is None:
-			self.month = self.loadMonth(self.date)
+			self.month = self.get_month(self.date)
 			#self.month.visited = True
 		
 		self.frame.set_date(self.month, self.date, self.day)
@@ -670,7 +559,7 @@ Filenames have to have the following form: 2009-01.txt \
 		self.saveOldDay()
 		for new_day in days:
 			date = new_day.date
-			month = self.loadMonth(date)
+			month = self.get_month(date)
 			old_day = month.getDay(date.day)
 			old_day.merge(new_day)
 			month.edited = True
@@ -790,289 +679,6 @@ Filenames have to have the following form: 2009-01.txt \
 			self.goToNextDay()
 		
 		self.changeDate(current_date)
-		
-		
-
-			
-
-class Day(object):
-	def __init__(self, month, dayNumber, dayContent = None):
-		if dayContent == None:
-			dayContent = {}
-			
-		self.date = datetime.date(month.yearNumber, month.monthNumber, dayNumber)
-			
-		self.month = month
-		self.dayNumber = dayNumber
-		self.content = dayContent
-		
-		self.searchResultLength = 50
-		
-	#def __getattr__(self, name):
-	#	return getattr(self.date, name)
-	
-	
-	# Text
-	def _getText(self):
-		'''
-		Returns the day's text encoded as UTF-8
-		decode means "decode from the standard ascii representation"
-		'''
-		if self.content.has_key('text'):
-			return self.content['text'].decode('utf-8')
-		else:
-		   return ''
-		
-	def _setText(self, text):
-		self.content['text'] = text
-	text = property(_getText, _setText)
-	
-	def _hasText(self):
-		return len(self.text.strip()) > 0
-	hasText = property(_hasText)
-	
-	
-	def _isEmpty(self):
-		if len(self.content.keys()) == 0:
-			return True
-		elif len(self.content.keys()) == 1 and self.content.has_key('text') and not self.hasText:
-			return True
-		else:
-			return False
-	empty = property(_isEmpty)
-		
-		
-	def _getTree(self):
-		tree = self.content.copy()
-		if tree.has_key('text'):
-			del tree['text']
-		return tree
-	tree = property(_getTree)
-	
-	
-	def add_category_entry(self, category, entry):
-		if self.content.has_key(category):
-			self.content[category][entry] = None
-		else:
-			self.content[category] = {entry: None}
-			
-	
-	def merge(self, same_day):
-		assert self.date == same_day.date
-		
-		# Merge texts
-		text1 = self.text.strip() 
-		text2 = same_day.text.strip()
-		if text2 in text1:
-			# self.text contains the other text
-			pass
-		elif text1 in text2:
-			# The other text contains contains self.text
-			self.text = same_day.text
-		else:
-			self.text += '\n\n' + same_day.text
-			
-		# Merge categories
-		for category, entries in same_day.getCategoryContentPairs().items():
-			for entry in entries:
-				self.add_category_entry(category, entry)
-	
-	
-	def _getNodeNames(self):
-		return self.tree.keys()
-	nodeNames = property(_getNodeNames)
-		
-		
-	def _getTags(self):
-		tags = []
-		for category, listContent in self.getCategoryContentPairs().iteritems():
-			if category.upper() == 'TAGS':
-				tags.extend(listContent)
-		return set(tags)
-	tags = property(_getTags)
-	
-	
-	def getCategoryContentPairs(self):
-		'''
-		Returns a dict of (category: contentInCategoryAsList) pairs.
-		contentInCategoryAsList can be empty
-		'''
-		originalTree = self.tree.copy()
-		pairs = {}
-		for category, content in originalTree.iteritems():
-			entryList = []
-			if content is not None:
-				for entry, nonetype in content.iteritems():
-					entryList.append(entry)
-			pairs[category] = entryList
-		return pairs
-	
-	
-	def _getWords(self, withSpecialChars=False):
-		if withSpecialChars:
-			return self.text.split()
-		
-		wordList = self.text.split()
-		realWords = []
-		for word in wordList:
-			word = word.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]')
-			if len(word) > 0:
-				realWords.append(word)
-		return realWords
-	words = property(_getWords)
-	
-	
-	def getNumberOfWords(self):
-		return len(self._getWords(withSpecialChars=True))
-	
-	
-	def search_text(self, searchText):
-		'''Case-insensitive search'''
-		upCaseSearchText = searchText.upper()
-		upCaseDayText = self.text.upper()
-		occurence = upCaseDayText.find(upCaseSearchText)
-		
-		if occurence > -1:
-			# searchText is in text
-			
-			searchedStringInText = self.text[occurence:occurence + len(searchText)]
-			
-			spaceSearchLeftStart = max(0, occurence - self.searchResultLength/2)
-			spaceSearchRightEnd = min(len(self.text), \
-									occurence + len(searchText) + self.searchResultLength/2)
-				
-			resultTextStart = self.text.find(' ', spaceSearchLeftStart, occurence)
-			resultTextEnd = self.text.rfind(' ', \
-						occurence + len(searchText), spaceSearchRightEnd)
-			if resultTextStart == -1:
-				resultTextStart = occurence - self.searchResultLength/2
-			if resultTextEnd == -1:
-				resultTextEnd = occurence + len(searchText) + self.searchResultLength/2
-				
-			# Add leading and trailing ... if appropriate
-			resultText = ''
-			if resultTextStart > 0:
-				resultText += '... '
-				
-			resultText += unicode.substring(self.text, resultTextStart, resultTextEnd).strip()
-			
-			# Make the searchedText bold
-			resultText = resultText.replace(searchedStringInText, \
-									'<b>' + searchedStringInText + '</b>')
-			
-			if resultTextEnd < len(self.text) - 1:
-				resultText += ' ...'
-				
-			# Delete newlines
-			resultText = resultText.replace('\n', '')
-				
-			return (str(self), resultText)
-		else:
-			return None
-		
-		
-	def search_category(self, searchCategory):
-		results = []
-		for category, content in self.getCategoryContentPairs().iteritems():
-			if content:
-				if searchCategory.upper() in category.upper():
-					for entry in content:
-						results.append((str(self), entry))
-		return results
-	
-	
-	def search_tag(self, searchTag):
-		for category, contentList in self.getCategoryContentPairs().iteritems():
-			if category.upper() == 'TAGS' and contentList:
-				if searchTag.upper() in map(lambda x: x.upper(), contentList):
-					firstWhitespace = self.text.find(' ', self.searchResultLength)
-					
-					if firstWhitespace == -1:
-						# No whitespace found
-						textStart = self.text
-					else:
-						textStart = self.text[:firstWhitespace + 1]
-						
-					textStart = textStart.replace('\n', '')
-					
-					if len(textStart) < len(self.text):
-						textStart += ' ...'
-					return (str(self), textStart)
-		return None
-	
-	
-	def __str__(self):
-		dayNumberString = str(self.dayNumber).zfill(2)
-		monthNumberString = str(self.month.monthNumber).zfill(2)
-		yearNumberString = str(self.month.yearNumber)
-			
-		return yearNumberString + '-' + monthNumberString + '-' + dayNumberString
-
-			
-
-class Month(object):
-	def __init__(self, yearNumber, monthNumber, monthContent = None):
-		if monthContent == None:
-			monthContent = {}
-		
-		self.yearNumber = yearNumber
-		self.monthNumber = monthNumber
-		self.days = {}
-		for dayNumber, dayContent in monthContent.iteritems():
-			self.days[dayNumber] = Day(self, dayNumber, dayContent)
-			
-		self.edited = False
-	
-	
-	def getDay(self, dayNumber):
-		if self.days.has_key(dayNumber):
-			return self.days[dayNumber]
-		else:
-			newDay = Day(self, dayNumber)
-			self.days[dayNumber] = newDay
-			return newDay
-		
-		
-	def setDay(self, dayNumber, day):
-		self.days[dayNumber] = day
-		
-		
-	def __str__(self):
-		res = 'Month %s %s\n' % (self.yearNumber, self.monthNumber)
-		for dayNumber, day in self.days.iteritems():
-			res += '%s: %s\n' % (dayNumber, day.text)
-		return res
-		
-		
-	def _isEmpty(self):
-		for day in self.days.values():
-			if not day.empty:
-				return False
-		return True
-	empty = property(_isEmpty)
-	
-	
-	def _getNodeNames(self):
-		nodeNames = set([])
-		for day in self.days.values():
-			nodeNames |= set(day.nodeNames)
-		return nodeNames
-	nodeNames = property(_getNodeNames)
-	
-	
-	def _getTags(self):
-		tags = set([])
-		for day in self.days.values():
-			tags |= set(day.tags)
-		return tags
-	tags = property(_getTags)
-	
-	
-	def sameMonth(date1, date2):
-		if date1 == None or date2 == None:
-			return False
-		return date1.month == date2.month and date1.year == date2.year
-	sameMonth = staticmethod(sameMonth)
 		
 	
 	
