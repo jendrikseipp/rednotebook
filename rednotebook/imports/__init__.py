@@ -24,6 +24,7 @@ import logging
 import re
 
 import gtk
+import gobject
 
 if __name__ == '__main__':
 	sys.path.insert(0, os.path.abspath("./../../"))
@@ -153,29 +154,6 @@ class SummaryPage(AssistantPage):
 	def __init__(self, *args, **kwargs):
 		AssistantPage.__init__(self, *args, **kwargs)
 		
-		self.lines = []
-		text = '<b>You have selected:</b>\n' \
-				'(You can check the results on the next page)'
-		self.set_header(text)
-		
-	def add_line(self, key, value):
-		label = gtk.Label()
-		text = '<b>%s</b>: %s' % (key, value)
-		label.set_markup(text)
-		label.set_alignment(0.0, 0.5)
-		self.pack_start(label, False, False)
-		label.show()
-		self.lines.append(label)
-		
-	def clear(self):
-		for line in self.lines:
-			self.remove(line)
-			
-			
-class ResultsPage(AssistantPage):
-	def __init__(self, *args, **kwargs):
-		AssistantPage.__init__(self, *args, **kwargs)
-		
 		scrolled_window = gtk.ScrolledWindow()
 		self.board = gtk.TextView()
 		self.board.set_editable(False)
@@ -183,17 +161,25 @@ class ResultsPage(AssistantPage):
 		self.board.set_wrap_mode(gtk.WRAP_WORD)
 		scrolled_window.add(self.board)
 		self.pack_start(scrolled_window)
-		self.set_header('<b>The following contents will be imported:</b>')
+		
+		
+	def prepare(self, type, path):
+		text = 'You have selected to import <b>%s</b> from <b>%s</b>\n\n' \
+				'The following contents will be imported:' % (type, path)
+		self.set_header(text)
+		self.clear()
 		
 	def add_day(self, day):
 		day_text = '=== %s ===\n%s\n\n' % (day.date, day.text)
-		self.append(day_text)
-		print day_text
+		self._append(day_text)
+		# Wait for the text to be drawn
+		while gtk.events_pending():
+			gtk.main_iteration()
 		
 	def clear(self):
 		self.board.get_buffer().set_text('')
 		
-	def append(self, text):
+	def _append(self, text):
 		buffer = self.board.get_buffer()
 		end_iter = buffer.get_end_iter()
 		buffer.insert(end_iter, text)
@@ -229,13 +215,8 @@ class ImportAssistant(gtk.Assistant):
 		
 		self.page3 = self._get_page3()
 		self.append_page(self.page3)
-		self.set_page_title(self.page3, 'Summary')		
-		
-		self.page4 = self._get_page4()
-		self.append_page(self.page4)
-		self.set_page_title(self.page4, 'Found Contents')
-		self.set_page_type(self.page4, gtk.ASSISTANT_PAGE_CONFIRM)
-		
+		self.set_page_title(self.page3, 'Summary')
+		self.set_page_type(self.page3, gtk.ASSISTANT_PAGE_CONFIRM)
 		
 		self.importer = None
 		self.path = None
@@ -244,22 +225,6 @@ class ImportAssistant(gtk.Assistant):
 		self.connect('cancel', self._on_cancel)
 		self.connect('close', self._on_close)
 		self.connect('prepare', self._on_prepare)
-		#self.set_forward_page_func(self._on_page_change, None)
-		
-	#def _on_page_change(self, current_page, user_data):
-	#	print current_page
-	#	
-	#	if current_page == 1:
-	#		self.importer = self.page1.get_selected_importer()
-	#		print 'importer', self.importer
-	#		
-	#		self.page2.prepare_chooser('DIR')
-	#	elif current_page == 2:
-	#		self.path = self.page2.get_selected_path()
-	#		print self.path
-	#		self.page3.add_line('Import type', self.importer)
-	#		self.page3.add_line('Import path', self.path)
-	#	return current_page + 1
 	
 	def run(self):
 		self.show_all()
@@ -275,11 +240,12 @@ class ImportAssistant(gtk.Assistant):
 		Do the import
 		'''
 		self.hide()
-		#print 'CLOSE', self.importer, self.path
-		#days = self.importer.get_days(self.path)
 		self.redNotebook.merge_days(self.days)
 		
 	def _on_prepare(self, assistant, page):
+		'''
+		Called when a new page should be prepared, before it is shown
+		'''
 		#print 'preparing page', assistant.get_current_page()
 		if page == self.page2:
 			self.importer = self.page1.get_selected_importer()
@@ -287,24 +253,28 @@ class ImportAssistant(gtk.Assistant):
 			self.set_page_complete(self.page2, True)
 		elif page == self.page3:
 			self.path = self.page2.get_selected_path()
-			self.page3.clear()
-			self.page3.add_line('Import', self.importer.NAME)
-			self.page3.add_line('from', self.path)
-			self.set_page_complete(self.page3, True)
-		elif page == self.page4:
-			self.days = self.importer.get_days(self.path)
-			self.days.sort(key=lambda day: day.date)
-			for day in self.days:
-				self.page4.add_day(day)
-			self.set_page_complete(self.page4, True)
+			self.set_page_complete(self.page3, False)
+			self.page3.prepare(self.importer.NAME, self.path)
+			
+			# We want the page to be shown first and the days added then
+			gobject.idle_add(self.add_days)
+			
+			
+	def add_days(self):
+		self.days = []
+		for day in self.importer.get_days(self.path):
+			#self.days.sort(key=lambda day: day.date)
+			self.page3.add_day(day)
+			self.days.append(day)
+		self.set_page_complete(self.page3, True)
 		
 			
 	def _get_page0(self):
 		page = AssistantPage()
 		label = gtk.Label()
-		text = 'This Assistant will help you to import your notes \nfrom ' \
-				'other applications. Before any change is made to your ' \
-				'journal, you can check the results.'
+		text = 'This Assistant will help you to import your notes from ' \
+				'other applications.\nYou can check the results on the ' \
+				'last page before any change is made to your journal.'
 		label.set_markup(text)
 		page.pack_start(label, True, True)
 		return page
@@ -324,10 +294,6 @@ class ImportAssistant(gtk.Assistant):
 		
 	def _get_page3(self):
 		page = SummaryPage()
-		return page
-		
-	def _get_page4(self):
-		page = ResultsPage()
 		return page
 		
 		
@@ -363,6 +329,7 @@ class PlainTextImporter(Importer):
 	def get_days(self, dir):
 		assert os.path.isdir(dir)
 		files = os.listdir(dir)
+		files.sort()
 		days = []
 		for file in files:
 			match = date_exp.match(file)
@@ -376,9 +343,10 @@ class PlainTextImporter(Importer):
 				path = os.path.join(dir, file)
 				text = filesystem.read_file(path)
 				import_day.text = text
-				days.append(import_day)
+				yield import_day
+				#days.append(import_day)
 				
-		return days
+		#return days
 		
 		
 class TomboyImporter(Importer):

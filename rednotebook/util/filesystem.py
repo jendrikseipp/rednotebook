@@ -339,10 +339,10 @@ def read_file(filename):
 		logging.debug('Chardet guesses %s for %s' % (guess, filename))
 		encoding = guess.get('encoding')
 		
-		#print encoding, encoding == 'MacCyrrilic'
+		#print encoding, encoding == 'MacCyrillic'
 		
 		# chardet makes error here sometimes
-		if encoding == 'MacCyrillic':
+		if encoding in ['MacCyrillic', 'ISO-8859-7']:
 			encoding = 'ISO-8859-2'
 			
 		if encoding:
