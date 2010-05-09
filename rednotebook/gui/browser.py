@@ -57,7 +57,12 @@ def can_print_pdf():
 	
 	frame = printer._webview.get_main_frame()
 	
-	return hasattr(frame, 'print_full')
+	can_print_full = hasattr(frame, 'print_full')
+	
+	if not can_print_full:
+		logging.info('This webkit version cannot print PDFs')
+	
+	return can_print_full
 	
 
 def print_pdf(html, filename):
@@ -85,7 +90,10 @@ class HtmlPrinter(object):
 		self._webview = webkit.WebView()
 		webkit_settings = self._webview.get_settings()
 		webkit_settings.set_property('enable-plugins', False)
-		self._webview.connect('load-error', self._load_error_cb)
+		try:
+			self._webview.connect('load-error', self._load_error_cb)
+		except TypeError, err:
+			logging.info(err)
 		self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
 		
 	def print_html(self, html, outfile):
@@ -164,12 +172,16 @@ class HtmlView(gtk.ScrolledWindow):
 		self.webview.set_zoom_level(zoom)
 		
 	def highlight(self, string):
-		# Remove results from last highlighting
-		self.webview.unmark_text_matches()
-			
-		# Mark all occurences of "string", case-insensitive, no limit
-		matches = self.webview.mark_text_matches(string, False, 0)
-		self.webview.set_highlight_text_matches(True)
+		# Not possible for all versions of pywebkitgtk
+		try:
+			# Remove results from last highlighting
+			self.webview.unmark_text_matches()
+				
+			# Mark all occurences of "string", case-insensitive, no limit
+			matches = self.webview.mark_text_matches(string, False, 0)
+			self.webview.set_highlight_text_matches(True)
+		except AttributeError, err:
+			logging.info(err)
 		
 	def on_populate_popup(self, webview, menu):
 		'''
