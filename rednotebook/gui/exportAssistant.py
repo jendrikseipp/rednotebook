@@ -58,7 +58,22 @@ class ExportAssistant(object):
 		self.append_fourth_page()
 		
 		self.assistant.set_forward_page_func(self.prepare_next_page, None)
-		self.assistant.set_title(_('Export Assistant'))		
+		self.assistant.set_title(_('Export Assistant'))
+		
+		#self.assistant.connect('prepare', self._on_prepare)
+		
+	def prepare_pdf_button(self):
+		pdf_supported = self.is_pdf_supported()
+		self.pdf_button.set_sensitive(pdf_supported)
+		
+		if not pdf_supported:
+			if sys.platform == 'win32':
+				self.pdf_button.hide()
+			else:
+				tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
+				tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
+				self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
+				self.pdf_button.set_label('PDF (' + _('requires pywebkitgtk') +')')
 	
 	def run(self):
 		self.refresh_categories_list()
@@ -78,20 +93,7 @@ class ExportAssistant(object):
 		self.text_button = self.builder.get_object('text')
 		self.html_button = self.builder.get_object('html')
 		self.latex_button = self.builder.get_object('latex')
-		self.pdf_button = self.builder.get_object('pdf')
-		
-		pdf_supported = self.is_pdf_supported()
-		self.pdf_button.set_sensitive(pdf_supported)
-		
-		if not pdf_supported:
-			if sys.platform == 'win32':
-				self.pdf_button.hide()
-			else:
-				tip1 = _('For direct PDF export, please install pywebkitgtk version 1.1.5 or later.')
-				tip2 = _('Alternatively consult the help document for Latex to PDF conversion.')
-				self.pdf_button.set_tooltip_text('%s\n%s' % (tip1, tip2))
-				self.pdf_button.set_label('PDF (' + _('requires pywebkitgtk') +')')
-		
+		self.pdf_button = self.builder.get_object('pdf')		
 
 	def append_second_page(self):	
 		page2 = self.builder.get_object('export_assistant_2')
@@ -163,6 +165,11 @@ class ExportAssistant(object):
 		self.assistant.set_page_complete(page4, True)
 
 		self.filename_chooser = self.builder.get_object('filename_chooser')
+		
+		
+	#def _on_prepare(self, assistant, page):
+	#	page_number = assistant.get_current_page()
+	#	print 'PAGE', page_number
 		
 	
 	def prepare_next_page(self, current_page, data):

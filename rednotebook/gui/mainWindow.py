@@ -17,7 +17,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from __future__ import with_statement
 import sys
 import os
 import datetime
@@ -149,7 +148,6 @@ class MainWindow(object):
 		
 		if not self.redNotebook.start_minimized:
 			self.mainFrame.show()
-		
 		
 		self.options_manager = OptionsManager(self)
 		self.export_assistant = ExportAssistant(self)

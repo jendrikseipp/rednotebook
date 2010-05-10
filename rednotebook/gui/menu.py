@@ -242,6 +242,14 @@ class MainMenuBar(object):
 
 	def on_exportMenuItem_activate(self, widget):
 		self.redNotebook.saveOldDay()
+		
+		# Set the date range for the export assistant
+		start_date = self.redNotebook.getEditDateOfEntryNumber(0)
+		self.main_window.export_assistant.set_start_date(start_date)
+		end_date = self.redNotebook.getEditDateOfEntryNumber(-1)
+		self.main_window.export_assistant.set_end_date(end_date)
+		
+		self.main_window.export_assistant.prepare_pdf_button()
 		self.main_window.export_assistant.run()
 
 	def on_statisticsMenuItem_activate(self, widget):

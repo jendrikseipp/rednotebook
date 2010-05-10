@@ -335,7 +335,6 @@ class PlainTextImporter(Importer):
 		assert os.path.isdir(dir)
 		files = os.listdir(dir)
 		files.sort()
-		#days = []
 		for file in files:
 			match = date_exp.match(file)
 			if match:
@@ -349,9 +348,6 @@ class PlainTextImporter(Importer):
 				text = filesystem.read_file(path)
 				import_day.text = text
 				yield import_day
-				#days.append(import_day)
-				
-		#return days
 		
 		
 class RedNotebookImporter(Importer):
@@ -397,7 +393,6 @@ class TomboyImporter(Importer):
 def get_importers():
 	importers = [cls for name, cls in globals().items() \
 				if name.endswith('Importer') and not name == 'Importer']
-	#print importers
 	
 	supported_importers = importers[:]
 	for importer in importers:
@@ -411,11 +406,9 @@ def get_importers():
 				supported_importers.remove(importer)
 				break
 			
-	#print supported_importers
 	supported_importers = [importer() for importer in supported_importers]
 	
 	return supported_importers
-	#importers = map() 
 		
 		
 		

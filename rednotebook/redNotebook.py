@@ -504,13 +504,6 @@ class RedNotebook:
 		else:
 			rel_data_dir = filesystem.get_relative_path(self.dirs.appDir, data_dir)
 			self.config['dataDir'] = rel_data_dir
-		
-		# Set the date range for the export assistant
-		start_date = self.getEditDateOfEntryNumber(0)
-		self.frame.export_assistant.set_start_date(start_date)
-
-		end_date = self.getEditDateOfEntryNumber(-1)
-		self.frame.export_assistant.set_end_date(end_date)
 	
 		
 	def get_month(self, date):
@@ -691,7 +684,7 @@ def main():
 	
 	try:
 		logging.debug('Trying to enter the gtk main loop')
-		gtk.main()
+		#gtk.main()
 		#logging.debug('Closing logfile')
 		#file_logging_stream.close()
 	except KeyboardInterrupt:
