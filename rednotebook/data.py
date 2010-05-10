@@ -233,6 +233,9 @@ class Day(object):
 			
 		return yearNumberString + '-' + monthNumberString + '-' + dayNumberString
 
+	
+	def __cmp__(self, other):
+		return cmp(self.date, other.date)
 			
 
 class Month(object):
@@ -298,3 +301,7 @@ class Month(object):
 			return False
 		return date1.month == date2.month and date1.year == date2.year
 	sameMonth = staticmethod(sameMonth)
+	
+	def __cmp__(self, other):
+		return cmp((self.yearNumber, self.monthNumber), \
+					(other.yearNumber, other.monthNumber))

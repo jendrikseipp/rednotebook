@@ -105,7 +105,7 @@ class Storage(object):
 		
 		try:
 			# Try to read the contents of the file
-			with open(monthFileString, 'r') as monthFile:
+			with open(monthFileString, 'rb') as monthFile:
 				logging.debug('Start loading file "%s"' % monthFileString)
 				monthContents = yaml.load(monthFile, Loader=Loader)
 				logging.debug('Finished loading file "%s"' % monthFileString)
@@ -120,7 +120,8 @@ class Storage(object):
 			logging.error('An error occured while reading %s:' % monthFileString)
 			logging.error('%s' % err)
 		
-	def saveToDisk(self, months, frame, exitImminent=False, changing_journal=False, saveas=False):
+		
+	def save_months_to_disk(self, months, dir, frame, exitImminent=False, changing_journal=False, saveas=False):
 		'''
 		Do the actual saving
 		'''
@@ -128,8 +129,7 @@ class Storage(object):
 			# We always need to save everything when we are "saving as"
 			if (not month.empty and month.edited) or saveas:
 				something_saved = True
-				monthFileString = os.path.join(self.dirs.dataDir, yearAndMonth + \
-											filesystem.fileNameExtension)
+				monthFileString = os.path.join(dir, yearAndMonth + '.txt')
 				with open(monthFileString, 'w') as monthFile:
 					monthContent = {}
 					for dayNumber, day in month.days.iteritems():

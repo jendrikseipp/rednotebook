@@ -407,8 +407,8 @@ class RedNotebook:
 			return True
 			
 		
-		something_saved = self.storage.save_to_disk(self.months, self.frame, \
-								exitImminent, changing_journal, saveas)					
+		something_saved = self.storage.save_months_to_disk(self.months, \
+			self.dirs.dataDir, self.frame, exitImminent, changing_journal, saveas)					
 		
 		if something_saved:
 			self.showMessage(_('The content has been saved to %s') % self.dirs.dataDir, error=False)

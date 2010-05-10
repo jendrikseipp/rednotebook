@@ -63,8 +63,6 @@ userHomeDir = os.path.expanduser('~')
 #defaultDataDir = os.path.join(redNotebookUserDir, 'data')
 #dataDir = defaultDataDir
 
-fileNameExtension = '.txt'
-
 #configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
 #logFile = os.path.join(redNotebookUserDir, 'rednotebook.log')
 

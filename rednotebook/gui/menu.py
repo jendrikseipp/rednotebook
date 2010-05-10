@@ -25,6 +25,7 @@ from rednotebook.util import utils
 from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook.util import markup
+from rednotebook.imports import ImportAssistant
 
 
 class MainMenuBar(object):
@@ -236,7 +237,6 @@ class MainMenuBar(object):
 		self.redNotebook.backupContents(backup_file=self.main_window.get_backup_file())
 		
 	def on_importMenuItem_activate(self, widget):
-		from rednotebook.imports import ImportAssistant
 		assistant = ImportAssistant(self.redNotebook)
 		assistant.run()
 

@@ -60,7 +60,8 @@ def can_print_pdf():
 	can_print_full = hasattr(frame, 'print_full')
 	
 	if not can_print_full:
-		logging.info('This webkit version cannot print PDFs')
+		msg = 'For direct PDF export, please install pywebkitgtk version 1.1.5 or later.'
+		logging.info(msg)
 	
 	return can_print_full
 	

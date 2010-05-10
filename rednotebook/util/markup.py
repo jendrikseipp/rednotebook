@@ -37,7 +37,7 @@ from rednotebook.util import utils
 
 
 
-def _convertCategoriesToMarkup(categories, with_category_title=True):
+def convertCategoriesToMarkup(categories, with_category_title=True):
 	'Only add Category title if the text is displayed'
 	if with_category_title:
 		markup = '== Categories ==\n'
@@ -48,7 +48,7 @@ def _convertCategoriesToMarkup(categories, with_category_title=True):
 		markup += '- ' + category + '\n'
 		for entry in entryList:
 			markup += '  - ' + entry + '\n'
-		markup += '\n\n'
+	markup += '\n\n'
 	return markup
 
 
@@ -82,7 +82,7 @@ def getMarkupForDay(day, with_text=True, categories=None, date=None):
 	
 	
 	if export_categories:
-		exportString += '\n\n\n' + _convertCategoriesToMarkup(export_categories, \
+		exportString += '\n\n\n' + convertCategoriesToMarkup(export_categories, \
 															with_category_title=with_text)
 	elif with_text:
 		exportString += '\n\n'

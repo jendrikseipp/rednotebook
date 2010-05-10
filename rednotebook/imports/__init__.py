@@ -29,9 +29,11 @@ import gobject
 if __name__ == '__main__':
 	sys.path.insert(0, os.path.abspath("./../../"))
 
-from rednotebook.redNotebook import Day, Month
+from rednotebook.data import Day, Month
 #from rednotebook.imports.plaintext import PlainTextImporter
 from rednotebook.util import filesystem
+from rednotebook.storage import Storage
+from rednotebook.util import markup
 
 class ImportDay(Day):
 	'''
@@ -171,6 +173,9 @@ class SummaryPage(AssistantPage):
 		
 	def add_day(self, day):
 		day_text = '=== %s ===\n%s\n\n' % (day.date, day.text)
+		categories = day.getCategoryContentPairs()
+		if categories:
+			day_text += markup.convertCategoriesToMarkup(categories, False)
 		self._append(day_text)
 		# Wait for the text to be drawn
 		while gtk.events_pending():
@@ -206,16 +211,16 @@ class ImportAssistant(gtk.Assistant):
 		
 		self.page1 = self._get_page1()
 		self.append_page(self.page1)
-		self.set_page_title(self.page1, 'Select what to import')
+		self.set_page_title(self.page1, 'Select what to import (1/3)')
 		self.set_page_complete(self.page1, True)
 		
 		self.page2 = self._get_page2()
 		self.append_page(self.page2)
-		self.set_page_title(self.page2, 'Select Import Path')
+		self.set_page_title(self.page2, 'Select Import Path (2/3)')
 		
 		self.page3 = self._get_page3()
 		self.append_page(self.page3)
-		self.set_page_title(self.page3, 'Summary')
+		self.set_page_title(self.page3, 'Summary (3/3)')
 		self.set_page_type(self.page3, gtk.ASSISTANT_PAGE_CONFIRM)
 		
 		self.importer = None
@@ -358,28 +363,14 @@ class RedNotebookImporter(Importer):
 	
 	def __init__(self):
 		date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
+		self.storage = Storage()
 	
 	def get_days(self, dir):
 		assert os.path.isdir(dir)
-		files = os.listdir(dir)
-		files.sort()
-		#days = []
-		for file in files:
-			match = date_exp.match(file)
-			if match:
-				year = int(match.group(1))
-				month = int(match.group(2))
-				day = int(match.group(3))
-				
-				import_day = ImportDay(year, month, day)
-				
-				path = os.path.join(dir, file)
-				text = filesystem.read_file(path)
-				import_day.text = text
-				yield import_day
-				#days.append(import_day)
-				
-		#return days
+		months = self.storage.load_all_months_from_disk(dir)
+		for month in sorted(months.values()):
+			for day in sorted(month.days.values()):
+				yield day
 		
 		
 class TomboyImporter(Importer):
@@ -406,7 +397,7 @@ class TomboyImporter(Importer):
 def get_importers():
 	importers = [cls for name, cls in globals().items() \
 				if name.endswith('Importer') and not name == 'Importer']
-	print importers
+	#print importers
 	
 	supported_importers = importers[:]
 	for importer in importers:
@@ -420,7 +411,7 @@ def get_importers():
 				supported_importers.remove(importer)
 				break
 			
-	print supported_importers
+	#print supported_importers
 	supported_importers = [importer() for importer in supported_importers]
 	
 	return supported_importers
