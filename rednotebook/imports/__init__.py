@@ -95,6 +95,7 @@ class RadioButtonPage(AssistantPage):
 		self.pack_start(button, False, False)
 		self.pack_start(description, False, False)
 		self.buttons.append(button)
+		button.set_active(True)
 		
 	def get_selected_importer(self):
 		for button in self.buttons:
@@ -172,7 +173,7 @@ class SummaryPage(AssistantPage):
 		self.clear()
 		
 	def add_day(self, day):
-		day_text = '=== %s ===\n%s\n\n' % (day.date, day.text)
+		day_text = '====== %s ======\n%s\n\n' % (day.date, day.text)
 		categories = day.getCategoryContentPairs()
 		if categories:
 			day_text += markup.convertCategoriesToMarkup(categories, False)
@@ -311,7 +312,18 @@ class Importer(object):
 	DEFAULTPATH = os.path.expanduser('~') #TODO
 	PATHTYPE = 'DIR'
 	EXTENSION = None
+	
+	def _get_files(self, dir):
+		'''
+		Convenience function that can be used by Importers that operate
+		on files in a directory
 		
+		returns a sorted list of all files in dir without the path
+		'''
+		assert os.path.isdir(dir)
+		files = os.listdir(dir)
+		files.sort()
+		return files
 
 
 # Allow 2010-05-08[.txt] with different separators
@@ -332,10 +344,7 @@ class PlainTextImporter(Importer):
 	PATHTYPE = 'DIR'
 	
 	def get_days(self, dir):
-		assert os.path.isdir(dir)
-		files = os.listdir(dir)
-		files.sort()
-		for file in files:
+		for file in self._get_files(dir):
 			match = date_exp.match(file)
 			if match:
 				year = int(match.group(1))
@@ -383,11 +392,34 @@ class TomboyImporter(Importer):
 							'Library', 'Application Support', 'Tomboy')
 	PATHTYPE = 'DIR'
 	
-	def get_days():
-		day = ImportDay(2010, 5, 7)
-		day.text = 'test text'
-		day.add_category_entry('cat', 'dog')
-		return [day]
+	def get_days(self, dir):
+		'''
+		We do not check if there are multiple notes for one day
+		explicitly as they will just be concatted anyway
+		'''
+		import xml.etree.ElementTree as ET
+		
+		xmlns = '{http://beatniksoftware.com/tomboy}'
+		
+		# date has format 2010-05-07T12:41:37.1619220+02:00
+		date_format = '%Y-%m-%d'
+		
+		for file in self._get_files(dir):
+			path = os.path.join(dir, file)
+			
+			tree = ET.parse(path)
+			
+			date_string = tree.findtext(xmlns + 'create-date')
+			short_date_string = date_string.split('T')[0]
+			date = datetime.datetime.strptime(short_date_string, date_format)
+			
+			title = tree.findtext(xmlns + 'title')
+			
+			text = tree.findtext(xmlns + 'text/' + xmlns + 'note-content')
+			
+			day = ImportDay(date.year, date.month, date.day)
+			day.text = '=== %s ===\n%s' % (title, text)
+			yield day
 		
 		
 def get_importers():
