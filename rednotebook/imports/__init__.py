@@ -404,7 +404,10 @@ class TomboyImporter(Importer):
 		# date has format 2010-05-07T12:41:37.1619220+02:00
 		date_format = '%Y-%m-%d'
 		
-		for file in self._get_files(dir):
+		files = self._get_files(dir)
+		files = filter(lambda file: file.endswith('.note'), files)
+		
+		for file in files:
 			path = os.path.join(dir, file)
 			
 			tree = ET.parse(path)
@@ -429,11 +432,11 @@ def get_importers():
 	supported_importers = importers[:]
 	for importer in importers:
 		for req in importer.REQUIREMENTS:
-			print req
 			try:
 				__import__(req)
 			except ImportError, err:
-				print '%s could not be imported' % req
+				logging.info('"%s" could not be imported. ' \
+					'You will not be able to import %s' % (req, importer.NAME))
 				# Importer cannot be used
 				supported_importers.remove(importer)
 				break

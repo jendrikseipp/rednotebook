@@ -322,6 +322,11 @@ def read_yaml_file(filename, loader=None):
 	return None
 	
 def read_file(filename):
+	'''
+	Tries to read a given file
+	
+	Returns None if an error is encountered
+	'''
 	encodings = ['utf-8']#, 'latin1', 'latin2']
 	
 	try:
@@ -337,17 +342,12 @@ def read_file(filename):
 		logging.debug('Chardet guesses %s for %s' % (guess, filename))
 		encoding = guess.get('encoding')
 		
-		#print encoding, encoding == 'MacCyrillic'
-		
 		# chardet makes error here sometimes
 		if encoding in ['MacCyrillic', 'ISO-8859-7']:
 			encoding = 'ISO-8859-2'
 			
 		if encoding:
 			encodings.insert(0, encoding)
-		
-		
-	import codecs
 	
 	for encoding in encodings:
 		try:
