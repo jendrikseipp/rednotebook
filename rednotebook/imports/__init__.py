@@ -28,6 +28,8 @@ import gobject
 
 if __name__ == '__main__':
 	sys.path.insert(0, os.path.abspath("./../../"))
+	logging.basicConfig(level=logging.DEBUG)
+
 
 from rednotebook.data import Day, Month
 #from rednotebook.imports.plaintext import PlainTextImporter
@@ -136,7 +138,7 @@ class PathChooserPage(AssistantPage):
 			if extension:
 				filter = gtk.FileFilter()
 				filter.set_name(extension)
-				filter.add_pattern("*.extension")
+				filter.add_pattern('*.' + extension)
 				self.chooser.add_filter(filter)
 		else:
 			logging.error('Wrong path_type "%s"' % path_type)
@@ -304,6 +306,10 @@ class ImportAssistant(gtk.Assistant):
 		
 		
 		
+
+		
+		
+		
 class Importer(object):
 	NAME = 'What do we import?'
 	DESCRIPTION = 'Short description of what we import'
@@ -312,6 +318,37 @@ class Importer(object):
 	DEFAULTPATH = os.path.expanduser('~') #TODO
 	PATHTYPE = 'DIR'
 	EXTENSION = None
+	
+	@classmethod
+	def _check_modules(cls, modules):
+		for module in modules:
+			try:
+				__import__(module)
+			except ImportError, err:
+				logging.info('"%s" could not be imported. ' \
+					'You will not be able to import %s' % (module, cls.NAME))
+				# Importer cannot be used
+				return False
+		return True
+	
+	@classmethod
+	def is_available(cls):
+		'''
+		This function should be implemented by the subclasses that may
+		not be available
+		
+		If their requirements are not met, they return False
+		'''
+		return True
+		
+	
+	def get_days(self):
+		'''
+		This function has to be implemented by all subclasses
+		
+		It should *yield* ImportDay objects
+		'''
+		
 	
 	def _get_files(self, dir):
 		'''
@@ -376,6 +413,47 @@ class RedNotebookImporter(Importer):
 		for month in sorted(months.values()):
 			for day in sorted(month.days.values()):
 				yield day
+				
+				
+class RedNotebookBackupImporter(RedNotebookImporter):
+	NAME = 'RedNotebook Zip Backup'
+	DESCRIPTION = 'Import a RedNotebook backup zip archive'
+	REQUIREMENTS = ['zipfile']
+	PATHTEXT = 'Select the backup zipfile'
+	PATHTYPE = 'FILE'
+	EXTENSION = 'zip'
+	
+	def __init__(self):
+		date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
+		self.storage = Storage()
+		
+	@classmethod
+	def is_available(cls):
+		import zipfile
+		can_extractall = hasattr(zipfile.ZipFile, 'extractall')
+		return can_extractall
+	
+	def get_days(self, file):
+		assert os.path.isfile(file)
+		
+		import zipfile
+		import tempfile
+		import shutil
+		
+		zip_archive = zipfile.ZipFile(file, 'r')
+		
+		tempdir = tempfile.mkdtemp()
+		
+		logging.info('Extracting backup zipfile to %s' % tempdir)
+		zip_archive.extractall(tempdir)
+		
+		for day in RedNotebookImporter.get_days(self, tempdir):
+			yield day
+		
+		# Cleanup
+		logging.info('Remove tempdir')
+		shutil.rmtree(tempdir)
+		zip_archive.close()
 		
 		
 class TomboyImporter(Importer):
@@ -391,6 +469,10 @@ class TomboyImporter(Importer):
 		DEFAULTPATH = os.path.join(os.path.expanduser('~'), \
 							'Library', 'Application Support', 'Tomboy')
 	PATHTYPE = 'DIR'
+	
+	@classmethod
+	def is_available(cls):
+		return cls._check_modules(['xml.etree'])
 	
 	def get_days(self, dir):
 		'''
@@ -429,21 +511,11 @@ def get_importers():
 	importers = [cls for name, cls in globals().items() \
 				if name.endswith('Importer') and not name == 'Importer']
 	
-	supported_importers = importers[:]
-	for importer in importers:
-		for req in importer.REQUIREMENTS:
-			try:
-				__import__(req)
-			except ImportError, err:
-				logging.info('"%s" could not be imported. ' \
-					'You will not be able to import %s' % (req, importer.NAME))
-				# Importer cannot be used
-				supported_importers.remove(importer)
-				break
-			
-	supported_importers = [importer() for importer in supported_importers]
+	importers = filter(lambda importer: importer.is_available(), importers)
 	
-	return supported_importers
+	# Instantiate importers
+	importers = map(lambda importer: importer(), importers)
+	return importers
 		
 		
 		
