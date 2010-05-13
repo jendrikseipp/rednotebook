@@ -265,8 +265,8 @@ class OptionsManager(object):
 	def __init__(self, main_window):
 		self.main_window = main_window
 		self.builder = main_window.builder
-		self.red_notebook = main_window.red_notebook
-		self.config = self.red_notebook.config
+		self.journal = main_window.journal
+		self.config = self.journal.config
 		
 		self.dialog = OptionsDialog(self.builder.get_object('options_dialog'))
 		self.dialog.set_default_size(600, 300)
@@ -315,7 +315,7 @@ class OptionsManager(object):
 		def check_version_action(widget):
 			utils.check_new_version(self.main_window, info.version)
 			# Apply changes from dialog to options window
-			check = bool(self.red_notebook.config.get('checkForNewVersion'))
+			check = bool(self.journal.config.get('checkForNewVersion'))
 			check_version_option.check_button.set_active(check)
 			
 		check_version_button = ActionButton(_('Check now'), check_version_action)

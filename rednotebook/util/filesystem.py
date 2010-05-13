@@ -72,15 +72,15 @@ class Filenames(dict):
 		
 		self.portable = bool(config.read('portable', 0))
 		
-		self.red_notebook_user_dir = self.get_user_dir(config)
+		self.journal_user_dir = self.get_user_dir(config)
 		
 		self.data_dir = self.default_data_dir
 		
 		# Is this the first run of RedNotebook?
-		self.is_first_start = not os.path.exists(self.red_notebook_user_dir)
+		self.is_first_start = not os.path.exists(self.journal_user_dir)
 			
 		# Assert that all dirs and files are in place so that logging can take start
-		make_directories([self.red_notebook_user_dir, self.data_dir, self.template_dir,
+		make_directories([self.journal_user_dir, self.data_dir, self.template_dir,
 						self.temp_dir])
 		make_files([(self.config_file, ''), (self.log_file, '')])
 		
@@ -117,7 +117,7 @@ class Filenames(dict):
 						))
 							
 		if attr in user_paths:
-			return os.path.join(self.red_notebook_user_dir, user_paths.get(attr))
+			return os.path.join(self.journal_user_dir, user_paths.get(attr))
 		
 		return dict.__getattribute__(self, attr)
 	

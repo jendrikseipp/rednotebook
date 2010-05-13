@@ -149,7 +149,7 @@ def redirect_output_to_file(logfile_path):
 	sys.stderr = logfile
 
 
-def setup_signal_handlers(red_notebook):
+def setup_signal_handlers(journal):
 	'''
 	Catch abnormal exits of the program and save content to disk
 	Look in signal man page for signal names
@@ -188,7 +188,7 @@ def setup_signal_handlers(red_notebook):
 	
 	def signal_handler(signum, frame):
 		logging.info('Program was abnormally aborted with signal %s' % signum)
-		red_notebook.exit()
+		journal.exit()
 
 	
 	msg = 'Connected Signals: '

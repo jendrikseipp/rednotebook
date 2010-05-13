@@ -82,7 +82,7 @@ class TemplateManager(object):
 	def __init__(self, main_window):
 		self.main_window = main_window
 		
-		self.dirs = main_window.red_notebook.dirs
+		self.dirs = main_window.journal.dirs
 		
 		self.merge_id = None
 		self.actiongroup = None
@@ -109,7 +109,7 @@ class TemplateManager(object):
 		title = edit_title[4:]
 		
 		if title == 'Weekday':
-			date = self.main_window.red_notebook.date
+			date = self.main_window.journal.date
 			week_day_number = date.weekday() + 1
 			title = str(week_day_number)
 		
@@ -162,7 +162,7 @@ class TemplateManager(object):
 			
 		# convert every "$date$" to the current date
 		default_date_string = '%A, %x %X'
-		date_string = self.main_window.red_notebook.config.read('dateTimeString', default_date_string)
+		date_string = self.main_window.journal.config.read('dateTimeString', default_date_string)
 		date = time.strftime(date_string)
 		text = text.replace('$date$', date)
 		
@@ -171,7 +171,7 @@ class TemplateManager(object):
 		
 	def get_weekday_text(self, date=None):
 		if date is None:
-			date = self.main_window.red_notebook.date
+			date = self.main_window.journal.date
 		week_day_number = date.weekday() + 1
 		return self.get_text(str(week_day_number))
 		
@@ -355,7 +355,7 @@ from it.
 		
 		# Only add the example templates the first time and just restore
 		# the day templates everytime
-		if not self.main_window.red_notebook.dirs.is_first_start:
+		if not self.main_window.journal.dirs.is_first_start:
 			filesystem.make_files(file_content_pairs)
 			return
 		

@@ -23,11 +23,11 @@ import logging
 from rednotebook.util import filesystem
 
 class Archiver(object):
-	def __init__(self, red_notebook):
-		self.red_notebook = red_notebook
+	def __init__(self, journal):
+		self.journal = journal
 	
 	def backup(self, backup_file):
-		data_dir = self.red_notebook.dirs.data_dir
+		data_dir = self.journal.dirs.data_dir
 		archive_files = []
 		for root, dirs, files in os.walk(data_dir):
 			for file in files:

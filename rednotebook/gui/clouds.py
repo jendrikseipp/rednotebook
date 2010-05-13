@@ -112,10 +112,10 @@ def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
 
 
 class Cloud(HtmlView):
-	def __init__(self, red_notebook):
+	def __init__(self, journal):
 		HtmlView.__init__(self)
 		
-		self.red_notebook = red_notebook
+		self.journal = journal
 		
 		self.update_lists()
 		
@@ -132,7 +132,7 @@ class Cloud(HtmlView):
 			self.update(force_update=True)
 			
 	def update_lists(self):
-		config = self.red_notebook.config
+		config = self.journal.config
 		
 		default_ignore_list = _('filter, these, comma, separated, words')
 		self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
@@ -146,7 +146,7 @@ class Cloud(HtmlView):
 		
 		
 	def update(self, force_update=False):
-		if self.red_notebook.frame is None:
+		if self.journal.frame is None:
 			return
 		
 		logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
@@ -155,9 +155,9 @@ class Cloud(HtmlView):
 		if self.type == 'word' and not force_update:
 			return
 		
-		self.red_notebook.save_old_day()
+		self.journal.save_old_day()
 		
-		word_count_dict = self.red_notebook.get_word_count_dict(self.type)
+		word_count_dict = self.journal.get_word_count_dict(self.type)
 		logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
 		
 		self.tag_cloud_words, html = \
@@ -182,7 +182,7 @@ class Cloud(HtmlView):
 		uri = request.get_uri()
 		logging.info('Clicked URI "%s"' % uri)
 		
-		self.red_notebook.save_old_day()
+		self.journal.save_old_day()
 		
 		# uri has the form "something/somewhere/search/search_index"
 		if 'search' in uri:
@@ -190,9 +190,9 @@ class Cloud(HtmlView):
 			search_index = int(uri.split('/')[-1])
 			search_text, count = self.tag_cloud_words[search_index]
 			
-			self.red_notebook.frame.search_type_box.set_active(self.type_int)
-			self.red_notebook.frame.search_box.set_active_text(search_text)
-			self.red_notebook.frame.search_notebook.set_current_page(0)
+			self.journal.frame.search_type_box.set_active(self.type_int)
+			self.journal.frame.search_box.set_active_text(search_text)
+			self.journal.frame.search_notebook.set_current_page(0)
 			
 			# returning True here stops loading the document
 			return True
@@ -237,5 +237,5 @@ class Cloud(HtmlView):
 	def on_ignore_menu_activate(self, menu_item, selected_word):
 		logging.info('"%s" will be hidden from clouds' % selected_word)
 		self.ignore_list.append(selected_word)
-		self.red_notebook.config.write_list('cloud_ignore_list', self.ignore_list)
+		self.journal.config.write_list('cloud_ignore_list', self.ignore_list)
 		self.update(force_update=True)

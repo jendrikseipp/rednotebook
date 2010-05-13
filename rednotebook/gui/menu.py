@@ -33,7 +33,7 @@ class MainMenuBar(object):
 	def __init__(self, main_window, *args, **kwargs):
 		self.main_window = main_window
 		self.uimanager = main_window.uimanager
-		self.red_notebook = self.main_window.red_notebook
+		self.journal = self.main_window.journal
 		self.menubar = None
 
 	def get_menu_bar(self):
@@ -184,10 +184,10 @@ class MainMenuBar(object):
 		self.main_window.show_dir_chooser('open')
 
 	def on_save_button_clicked(self, widget):
-		self.red_notebook.save_to_disk()
+		self.journal.save_to_disk()
 
 	def on_save_as_menu_item_activate(self, widget):
-		self.red_notebook.save_to_disk()
+		self.journal.save_to_disk()
 
 		self.main_window.show_dir_chooser('saveas')
 
@@ -234,32 +234,32 @@ class MainMenuBar(object):
 
 
 	def on_backup_activate(self, widget):
-		self.red_notebook.backup_contents(backup_file=self.main_window.get_backup_file())
+		self.journal.backup_contents(backup_file=self.main_window.get_backup_file())
 		
 	def on_import_menu_item_activate(self, widget):
-		assistant = ImportAssistant(self.red_notebook)
+		assistant = ImportAssistant(self.journal)
 		assistant.run()
 
 	def on_export_menu_item_activate(self, widget):
-		self.red_notebook.save_old_day()
+		self.journal.save_old_day()
 		
 		# Set the date range for the export assistant
-		start_date = self.red_notebook.get_edit_date_of_entry_number(0)
+		start_date = self.journal.get_edit_date_of_entry_number(0)
 		self.main_window.export_assistant.set_start_date(start_date)
-		end_date = self.red_notebook.get_edit_date_of_entry_number(-1)
+		end_date = self.journal.get_edit_date_of_entry_number(-1)
 		self.main_window.export_assistant.set_end_date(end_date)
 		
 		self.main_window.export_assistant.prepare_pdf_button()
 		self.main_window.export_assistant.run()
 
 	def on_statistics_menu_item_activate(self, widget):
-		self.red_notebook.stats.show_dialog(self.main_window.stats_dialog)
+		self.journal.stats.show_dialog(self.main_window.stats_dialog)
 
 	def on_example_menu_item_activate(self, widget):
-		self.red_notebook.add_instruction_content()
+		self.journal.add_instruction_content()
 
 	def on_help_menu_item_activate(self, widget):
-		temp_dir = self.red_notebook.dirs.temp_dir
+		temp_dir = self.journal.dirs.temp_dir
 		utils.write_file(info.help_text, os.path.join(temp_dir, 'source.txt'))
 		headers = [_('RedNotebook Documentation'), info.version, '']
 		options = {'toc': 1,}

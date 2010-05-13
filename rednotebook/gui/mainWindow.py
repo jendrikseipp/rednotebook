@@ -71,9 +71,9 @@ class MainWindow(object):
 	Class that holds the reference to the main glade file and handles
 	all actions
 	'''
-	def __init__(self, red_notebook):
+	def __init__(self, journal):
 		
-		self.red_notebook = red_notebook
+		self.journal = journal
 		
 		# Set the Glade file
 		self.gladefile = os.path.join(filesystem.files_dir, 'mainWindow.glade')
@@ -106,11 +106,11 @@ class MainWindow(object):
 		self.undo_redo_manager = undo.UndoRedoManager(self)
 		
 		
-		self.calendar = Calendar(self.red_notebook, self.builder.get_object('calendar'))
+		self.calendar = Calendar(self.journal, self.builder.get_object('calendar'))
 		self.day_text_field = DayTextField(self.builder.get_object('day_text_view'), \
 										self.undo_redo_manager)
 		self.day_text_field.day_text_view.grab_focus()
-		spell_check_enabled = self.red_notebook.config.read('spellcheck', 0)
+		spell_check_enabled = self.journal.config.read('spellcheck', 0)
 		self.day_text_field.enable_spell_check(spell_check_enabled)
 		
 		self.statusbar = Statusbar(self.builder.get_object('statusbar'))
@@ -128,7 +128,7 @@ class MainWindow(object):
 		self.edit_pane = self.builder.get_object('edit_pane')
 		
 		# Only add the config variable if webkit is available
-		use_webkit = browser.webkit and self.red_notebook.config.read('useWebkit', 1)
+		use_webkit = browser.webkit and self.journal.config.read('useWebkit', 1)
 		
 		logging.info('Using webkit for previews: %s' % use_webkit)
 		
@@ -146,7 +146,7 @@ class MainWindow(object):
 		
 		self.load_values_from_config()
 		
-		if not self.red_notebook.start_minimized:
+		if not self.journal.start_minimized:
 			self.main_frame.show()
 		
 		self.options_manager = OptionsManager(self)
@@ -213,7 +213,7 @@ class MainWindow(object):
 		
 		# Only add the config variable if zeitgeist is available
 		use_zeitgeist = test_zeitgeist and journalgeist.zeitgeist and \
-						self.red_notebook.config.read('useZeitgeist', 0)
+						self.journal.config.read('useZeitgeist', 0)
 		use_zeitgeist = True
 		logging.info('Using zeitgeist: %s' % use_zeitgeist)
 		
@@ -277,12 +277,12 @@ class MainWindow(object):
 			
 	def setup_tray_icon(self):
 		self.tray_icon = customwidgets.RedNotebookTrayIcon()
-		visible = (self.red_notebook.config.read('closeToTray', 0) == 1)
+		visible = (self.journal.config.read('closeToTray', 0) == 1)
 		self.tray_icon.set_visible(visible)
 		logging.debug('Tray icon visible: %s' % visible)
 		
 		self.tray_icon.set_tooltip('RedNotebook')
-		icon_file = os.path.join(self.red_notebook.dirs.frame_icon_dir, 'rn-32.png')
+		icon_file = os.path.join(self.journal.dirs.frame_icon_dir, 'rn-32.png')
 		self.tray_icon.set_from_file(icon_file)
 		
 		self.tray_icon.connect('activate', self.on_tray_icon_activated)
@@ -331,7 +331,7 @@ class MainWindow(object):
 			
 	def hide(self):
 		self.main_frame.hide()
-		self.red_notebook.save_to_disk(exit_imminent=False)
+		self.journal.save_to_disk(exit_imminent=False)
 		
 	def on_main_frame_delete_event(self, widget, event):
 		'''
@@ -340,21 +340,21 @@ class MainWindow(object):
 		logging.debug('Main frame destroyed')
 		#self.save_to_disk(exit_imminent=False)
 		
-		if self.red_notebook.config.read('closeToTray', 0):
+		if self.journal.config.read('closeToTray', 0):
 			self.hide()
 		
 			# the default handler is _not_ to be called, 
 			# and therefore the window will not be destroyed.
 			return True
 		else:
-			self.red_notebook.exit()
+			self.journal.exit()
 		
 	def on_quit_activate(self, widget):
 		'''
 		User selected quit from the menu -> exit unconditionally
 		'''
 		#self.on_main_frame_destroy(None)
-		self.red_notebook.exit()
+		self.journal.exit()
 		
 	# -------------------------------------------------------- TRAY-ICON / CLOSE
 		
@@ -374,7 +374,7 @@ class MainWindow(object):
 			
 			
 	def on_preview_button_clicked(self, button):
-		self.red_notebook.save_old_day()
+		self.journal.save_old_day()
 		
 		text_scrolledwindow = self.builder.get_object('text_scrolledwindow')
 		template_button = self.builder.get_object('template_menu_button')
@@ -397,7 +397,7 @@ class MainWindow(object):
 			# Enter preview mode			
 			text_scrolledwindow.hide()
 			self.html_editor.show()
-			day = self.red_notebook.day
+			day = self.journal.day
 			text_markup = day.text
 			html = markup.convert(text_markup, 'xhtml', append_whitespace=True)
 			
@@ -444,13 +444,13 @@ class MainWindow(object):
 		
 		if browser.webkit:
 			from rednotebook.gui.clouds import Cloud
-			self.cloud = Cloud(self.red_notebook)
+			self.cloud = Cloud(self.journal)
 			logging.info('Using pywebkitgtk for the clouds.')
 		else:
 			logging.warning('pywebkitgtk is not installed and cannot ' \
 					'be used for the clouds. You may experience errors')
 			#self.search_notebook.remove_page(1)
-			self.cloud = CloudView(self.red_notebook)
+			self.cloud = CloudView(self.journal)
 			
 		self.cloud_box.pack_start(self.cloud)
 		
@@ -470,8 +470,8 @@ class MainWindow(object):
 		gives strange results.		
 		'''
 		main_frame_width, main_frame_height = self.main_frame.get_size()
-		self.red_notebook.config['mainFrameWidth'] = main_frame_width
-		self.red_notebook.config['mainFrameHeight'] = main_frame_height
+		self.journal.config['mainFrameWidth'] = main_frame_width
+		self.journal.config['mainFrameHeight'] = main_frame_height
 		
 	def on_main_frame_window_state_event(self, widget, event):
 		'''
@@ -484,22 +484,22 @@ class MainWindow(object):
 		state = event.new_window_state
 		maximized = state and gtk.gdk.WINDOW_STATE_MAXIMIZED
 		maximized = int(bool(maximized))
-		self.red_notebook.config['mainFrameMaximized'] = maximized
+		self.journal.config['mainFrameMaximized'] = maximized
 		
 		
 	def on_back_one_day_button_clicked(self, widget):
-		self.red_notebook.go_to_prev_day()
+		self.journal.go_to_prev_day()
 		
 	def on_today_button_clicked(self, widget):
 		actual_date = datetime.date.today()
-		self.red_notebook.change_date(actual_date)
+		self.journal.change_date(actual_date)
 		
 	def on_forward_one_day_button_clicked(self, widget):
-		self.red_notebook.go_to_next_day()
+		self.journal.go_to_next_day()
 		
 	def on_calendar_day_selected(self, widget):
 		pass#
-		#self.red_notebook.change_date(self.calendar.get_date())
+		#self.journal.change_date(self.calendar.get_date())
 		
 	def show_dir_chooser(self, type, dir_not_found=False):
 		dir_chooser = self.builder.get_object('dir_chooser')
@@ -520,7 +520,7 @@ class MainWindow(object):
 			dir_chooser.set_title(_('Select an empty folder for the new location of your journal'))
 			label.set_markup('<b>' + \
 				_('The directory name will be the new title of the journal') + '</b>')
-		dir_chooser.set_current_folder(self.red_notebook.dirs.data_dir)
+		dir_chooser.set_current_folder(self.journal.dirs.data_dir)
 		
 		response = dir_chooser.run()
 		dir_chooser.hide()
@@ -529,19 +529,19 @@ class MainWindow(object):
 			dir = dir_chooser.get_current_folder()
 			
 			if type == 'saveas':
-				self.red_notebook.dirs.data_dir = dir
-				self.red_notebook.save_to_disk(saveas=True)
+				self.journal.dirs.data_dir = dir
+				self.journal.save_to_disk(saveas=True)
 				
 			load_files = type in ['open', 'saveas']
-			self.red_notebook.open_journal(dir, load_files=load_files)
+			self.journal.open_journal(dir, load_files=load_files)
 		
 		# If the dir was not found previously, we have nothing to open
 		# if the user selects "Abort". So select default dir and show message
 		elif dir_not_found:
-			default_dir = self.red_notebook.dirs.default_data_dir
-			self.red_notebook.open_journal(default_dir, load_files=True)
+			default_dir = self.journal.dirs.default_data_dir
+			self.journal.open_journal(default_dir, load_files=True)
 			### Translators: The default journal is located at $HOME/.rednotebook/data
-			self.red_notebook.show_message(_('The default journal has been opened'))
+			self.journal.show_message(_('The default journal has been opened'))
 			
 	def show_save_error_dialog(self, exit_imminent):
 		dialog = self.builder.get_object('save_error_dialog')
@@ -559,7 +559,7 @@ class MainWindow(object):
 			# Let the user select a new directory. Nothing has been saved yet.
 			self.show_dir_chooser('saveas')
 		elif answer == gtk.RESPONSE_CANCEL and exit_imminent:
-			self.red_notebook.is_allowed_to_exit = False
+			self.journal.is_allowed_to_exit = False
 		else: # answer == 10:
 			# Do nothing if user wants to exit without saving
 			pass
@@ -567,7 +567,7 @@ class MainWindow(object):
 		
 		
 	def add_values_to_config(self):
-		config = self.red_notebook.config
+		config = self.journal.config
 		
 		config['leftDividerPosition'] = \
 				self.builder.get_object('main_pane').get_position()
@@ -584,7 +584,7 @@ class MainWindow(object):
 		
 	
 	def load_values_from_config(self):
-		config = self.red_notebook.config
+		config = self.journal.config
 		main_frame_width = config.read('mainFrameWidth', 1024)
 		main_frame_height = config.read('mainFrameHeight', 768)
 		
@@ -771,7 +771,7 @@ class MainWindow(object):
 		
 		def insert_date_time(widget):
 			default_date_string = '%A, %x %X'
-			date_string = self.red_notebook.config.read('dateTimeString', default_date_string)
+			date_string = self.journal.config.read('dateTimeString', default_date_string)
 			self.day_text_field.insert(time.strftime(date_string))
 
 		def tmpl(letter):
@@ -855,7 +855,7 @@ class MainWindow(object):
 							parent_menu_item=None, func=None, button=0, activate_time=0, data=None)
 		
 	def on_insert_pic_menu_item_activate(self, widget):
-		dirs = self.red_notebook.dirs
+		dirs = self.journal.dirs
 		picture_chooser = self.builder.get_object('picture_chooser')
 		picture_chooser.set_current_folder(dirs.last_pic_dir)
 		
@@ -885,7 +885,7 @@ class MainWindow(object):
 			self.day_text_field.insert('[""%s""%s]' % (base, ext))
 			
 	def on_insert_file_menu_item_activate(self, widget):
-		dirs = self.red_notebook.dirs
+		dirs = self.journal.dirs
 		file_chooser = self.builder.get_object('file_chooser')
 		file_chooser.set_current_folder(dirs.last_file_dir)
 
@@ -925,7 +925,7 @@ class MainWindow(object):
 			elif link_location:
 				self.day_text_field.insert(link_location)
 			else:
-				self.red_notebook.show_message(_('No link location has been entered'), error=True)		
+				self.journal.show_message(_('No link location has been entered'), error=True)		
 	
 		
 	def on_add_new_entry_button_clicked(self, widget):
@@ -961,10 +961,10 @@ class MainWindow(object):
 		return self.day_text_field.get_text()
 	
 	def get_backup_file(self):
-		if self.red_notebook.title == 'data':
+		if self.journal.title == 'data':
 			name = ''
 		else:
-			name = '-' + self.red_notebook.title
+			name = '-' + self.journal.title
 			
 		proposed_file_name = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
 			
@@ -993,7 +993,7 @@ class MainWindow(object):
 			webbrowser.open(info.url)
 		elif response == 20:
 			#do not ask again
-			self.red_notebook.config['checkForNewVersion'] = 0
+			self.journal.config['checkForNewVersion'] = 0
 			
 	def show_no_new_version_dialog(self):
 		dialog = self.builder.get_object('no_new_version_dialog')
@@ -1002,7 +1002,7 @@ class MainWindow(object):
 		
 		if response == 30:
 			#Ask at startup
-			self.red_notebook.config['checkForNewVersion'] = 1
+			self.journal.config['checkForNewVersion'] = 1
 			
 	def highlight_text(self, search_text):
 		# let the search function highlight found strings in the page
@@ -1020,7 +1020,7 @@ class NewEntryDialog(object):
 		self.dialog = dialog
 		
 		self.main_frame = main_frame
-		self.red_notebook = self.main_frame.red_notebook
+		self.journal = self.main_frame.journal
 		self.categories_combo_box = CustomComboBoxEntry(main_frame.builder.get_object('categories_combo_box'))
 		self.new_entry_combo_box = CustomComboBoxEntry(main_frame.builder.get_object('entry_combo_box'))
 		
@@ -1037,7 +1037,7 @@ class NewEntryDialog(object):
 	def on_category_changed(self, widget):
 		'''Show Tags in ComboBox when "Tags" is selected as category'''
 		if self.categories_combo_box.get_active_text().upper() == 'TAGS':
-			self.new_entry_combo_box.set_entries(self.red_notebook.tags)
+			self.new_entry_combo_box.set_entries(self.journal.tags)
 			 
 		# only make the entry submittable, if text has been entered
 		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
@@ -1095,7 +1095,7 @@ class SearchComboBox(CustomComboBoxEntry):
 		CustomComboBoxEntry.__init__(self, combo_box)
 		
 		self.main_window = main_window
-		self.red_notebook = main_window.red_notebook
+		self.journal = main_window.journal
 		
 		#self.entry = self.combo_box.get_child()
 		self.set_active_text(_('Search ...'))
@@ -1121,7 +1121,7 @@ class SearchComboBox(CustomComboBoxEntry):
 			self.set_entries(categories)
 		if search_type == 2:
 			# Search for tags
-			self.set_entries(self.red_notebook.tags)
+			self.set_entries(self.journal.tags)
 			
 		self.search_type = search_type
 		
@@ -1159,10 +1159,10 @@ class SearchComboBox(CustomComboBoxEntry):
 		
 		
 class CloudView(HtmlWindow):
-	def __init__(self, red_notebook):
+	def __init__(self, journal):
 		HtmlWindow.__init__(self)
 		
-		self.red_notebook = red_notebook
+		self.journal = journal
 		
 		self.update_lists()
 		
@@ -1181,7 +1181,7 @@ class CloudView(HtmlWindow):
 			self.update(force_update=True)
 			
 	def update_lists(self):
-		config = self.red_notebook.config
+		config = self.journal.config
 		
 		default_ignore_list = _('filter, these, comma, separated, words')
 		self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
@@ -1196,7 +1196,7 @@ class CloudView(HtmlWindow):
 		
 		
 	def update(self, force_update=False):
-		if self.red_notebook.frame is None:
+		if self.journal.frame is None:
 			return
 		
 		logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
@@ -1205,9 +1205,9 @@ class CloudView(HtmlWindow):
 		if self.type == 'word' and not force_update:
 			return
 		
-		self.red_notebook.save_old_day()
+		self.journal.save_old_day()
 		
-		word_count_dict = self.red_notebook.get_word_count_dict(self.type)
+		word_count_dict = self.journal.get_word_count_dict(self.type)
 		logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
 		
 		self.tag_cloud_words, html = \
@@ -1221,16 +1221,16 @@ class CloudView(HtmlWindow):
 		
 		
 	def word_clicked(self, htmlview, uri, type_):
-		self.red_notebook.save_old_day()
+		self.journal.save_old_day()
 		# uri has the form "something/somewhere/search/search_index"
 		if 'search' in uri:
 			# search_index is the part after last slash
 			search_index = int(uri.split('/')[-1])
 			search_text, count = self.tag_cloud_words[search_index]
 			
-			self.red_notebook.frame.search_type_box.set_active(self.type_int)
-			self.red_notebook.frame.search_box.set_active_text(search_text)
-			self.red_notebook.frame.search_notebook.set_current_page(0)
+			self.journal.frame.search_type_box.set_active(self.type_int)
+			self.journal.frame.search_box.set_active_text(search_text)
+			self.journal.frame.search_notebook.set_current_page(0)
 			
 			# returning True here stops loading the document
 			return True
@@ -1264,7 +1264,7 @@ class CloudView(HtmlWindow):
 			
 		logging.info('The following words will be hidden from clouds: %s' % selected_words)
 		self.ignore_list.extend(selected_words)
-		self.red_notebook.config.write_list('cloudIgnoreList', self.ignore_list)
+		self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
 		self.update(force_update=True)
 		
 	def get_selected_words(self):
@@ -1295,7 +1295,7 @@ class SearchTreeView(object):
 		
 		self.main_window = main_window
 		
-		self.red_notebook = self.main_window.red_notebook
+		self.journal = self.main_window.journal
 		
 		self.search_type = 0
 		
@@ -1353,15 +1353,15 @@ class SearchTreeView(object):
 		if self.search_type == 0:
 			# Search for text
 			self.matching_column.set_title(_('Text'))
-			rows = self.red_notebook.search(text=search_text)
+			rows = self.journal.search(text=search_text)
 		if self.search_type == 1:
 			# Search for category
 			self.matching_column.set_title(_('Entry'))
-			rows = self.red_notebook.search(category=search_text)
+			rows = self.journal.search(category=search_text)
 		if self.search_type == 2:
 			# Search for tags
 			self.matching_column.set_title(_('Text'))
-			rows = self.red_notebook.search(tag=search_text)
+			rows = self.journal.search(tag=search_text)
 			
 		if rows:
 			for date_string, entry in rows:
@@ -1374,7 +1374,7 @@ class SearchTreeView(object):
 	def on_row_activated(self, treeview, path, view_column):
 		date_string = self.tree_store[path][0]
 		new_date = dates.get_date_from_date_string(date_string)
-		self.red_notebook.change_date(new_date)
+		self.journal.change_date(new_date)
 		
 		if self.search_type == 0:
 			self.main_window.highlight_text(self.searched_text)
@@ -1687,18 +1687,18 @@ class Statusbar(object):
 	
 		
 class Calendar(object):
-	def __init__(self, red_notebook, calendar):
-		self.red_notebook = red_notebook
+	def __init__(self, journal, calendar):
+		self.journal = journal
 		self.calendar = calendar
 		
-		week_numbers = self.red_notebook.config.read('weekNumbers', 0)
+		week_numbers = self.journal.config.read('weekNumbers', 0)
 		if week_numbers:
 			calendar.set_property('show-week-numbers', True)
 		
 		self.date_listener = self.calendar.connect('day-selected', self.on_day_selected)
 		
 	def on_day_selected(self, cal):
-		self.red_notebook.change_date(self.get_date())
+		self.journal.change_date(self.get_date())
 		
 	def set_date(self, date):
 		'''

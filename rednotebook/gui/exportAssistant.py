@@ -42,7 +42,7 @@ class ExportAssistant(object):
 	
 	def __init__(self, main_window):
 				
-		self.red_notebook = main_window.red_notebook
+		self.journal = main_window.journal
 		self.main_window = main_window
 		self.builder = main_window.builder
 		
@@ -196,7 +196,7 @@ class ExportAssistant(object):
 		self.export()
 	
 	def on_cancel(self, widget, other=None):
-		self.red_notebook.show_message(_('Cancelling export assistant.'))
+		self.journal.show_message(_('Cancelling export assistant.'))
 		self.assistant.hide()
 
 	def change_date_selector_status(self, widget):
@@ -291,7 +291,7 @@ class ExportAssistant(object):
 		selected_categories = []
 		
 		if self.is_all_categories_selected():
-			selected_categories = self.main_window.red_notebook.node_names
+			selected_categories = self.main_window.journal.node_names
 		elif not self.is_no_categories_selected():
 			model_selected = self.selected_categories.get_model()
 			
@@ -322,7 +322,7 @@ class ExportAssistant(object):
 	
 	def refresh_categories_list(self):
 		model_available = gtk.ListStore(gobject.TYPE_STRING)
-		categories = self.main_window.red_notebook.node_names
+		categories = self.main_window.journal.node_names
 		for category in categories :
 			new_row = model_available.insert(0)
 			model_available.set(new_row, 0, category)
@@ -340,7 +340,7 @@ class ExportAssistant(object):
 		# Check sanity of dates
 		#if not self.is_all_entries_selected():
 		#	if not self.get_start_date() <= self.get_end_date():
-		#		self.red_notebook.show_message(_('The start date is later than the end date'), \
+		#		self.journal.show_message(_('The start date is later than the end date'), \
 		#										error=True)
 		#		return
 		
@@ -357,9 +357,9 @@ class ExportAssistant(object):
 			export_file = codecs.open(self.filename, 'w', 'utf-8')
 			export_file.write(export_string)
 			export_file.flush()
-			self.red_notebook.show_message(_('Content exported to %s') % self.filename)
+			self.journal.show_message(_('Content exported to %s') % self.filename)
 		except IOError:
-			self.red_notebook.show_message(_('Exporting to %s failed') % self.filename)
+			self.journal.show_message(_('Exporting to %s failed') % self.filename)
 			
 	def export_pdf(self):
 		logging.info('Exporting to PDF')
@@ -368,10 +368,10 @@ class ExportAssistant(object):
 
 	def get_export_string(self, format):
 		if self.is_all_entries_selected():
-			export_days = self.red_notebook.sorted_days
+			export_days = self.journal.sorted_days
 		else:
 			start, end = sorted([self.get_start_date(),	self.get_end_date()])
-			export_days = self.red_notebook.get_days_in_date_range((start, end))
+			export_days = self.journal.get_days_in_date_range((start, end))
 			
 		selected_categories = self.get_selected_categories_values()
 		logging.debug('Selected Categories for Export: %s' % selected_categories)
@@ -381,7 +381,7 @@ class ExportAssistant(object):
 		for day in export_days:
 			default_export_date_format = '%A, %x'
 			# probably no one needs to configure this as i18n already exists
-			#date_format = self.red_notebook.config.read('exportDateFormat', \
+			#date_format = self.journal.config.read('exportDateFormat', \
 			#										default_export_date_format)
 			date_format = default_export_date_format
 			date_string = day.date.strftime(date_format)

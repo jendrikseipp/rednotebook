@@ -139,7 +139,7 @@ class CategoriesTreeView(object):
 			
 			tags_node_is_parent = self.get_iter_value(iter_parent).capitalize() == 'Tags'
 			if tags_node_is_parent and self.node_on_top_level(iter_parent):
-				self.main_window.red_notebook.save_old_day()
+				self.main_window.journal.save_old_day()
 				
 		# Update cloud
 		self.main_window.cloud.update()

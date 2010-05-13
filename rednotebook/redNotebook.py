@@ -412,7 +412,7 @@ class Journal:
 		
 		if self.config.changed():
 			try:
-				filesystem.make_directory(self.dirs.red_notebook_user_dir)
+				filesystem.make_directory(self.dirs.journal_user_dir)
 				self.config.save_to_disk()
 			except IOError, err:
 				self.show_message(_('Configuration could not be saved. Please check your permissions'))
