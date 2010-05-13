@@ -21,24 +21,24 @@ import datetime
 import logging
 
 class Day(object):
-	def __init__(self, month, dayNumber, dayContent = None):
-		if dayContent == None:
-			dayContent = {}
+	def __init__(self, month, day_number, day_content = None):
+		if day_content == None:
+			day_content = {}
 			
-		self.date = datetime.date(month.yearNumber, month.monthNumber, dayNumber)
+		self.date = datetime.date(month.year_number, month.month_number, day_number)
 			
 		self.month = month
-		self.dayNumber = dayNumber
-		self.content = dayContent
+		self.day_number = day_number
+		self.content = day_content
 		
-		self.searchResultLength = 50
+		self.search_result_length = 50
 		
 	#def __getattr__(self, name):
 	#	return getattr(self.date, name)
 	
 	
 	# Text
-	def _getText(self):
+	def _get_text(self):
 		'''
 		Returns the day's text encoded as UTF-8
 		decode means "decode from the standard ascii representation"
@@ -48,31 +48,31 @@ class Day(object):
 		else:
 		   return ''
 		
-	def _setText(self, text):
+	def _set_text(self, text):
 		self.content['text'] = text
-	text = property(_getText, _setText)
+	text = property(_get_text, _set_text)
 	
-	def _hasText(self):
+	def _has_text(self):
 		return len(self.text.strip()) > 0
-	hasText = property(_hasText)
+	has_text = property(_has_text)
 	
 	
-	def _isEmpty(self):
+	def _is_empty(self):
 		if len(self.content.keys()) == 0:
 			return True
-		elif len(self.content.keys()) == 1 and self.content.has_key('text') and not self.hasText:
+		elif len(self.content.keys()) == 1 and self.content.has_key('text') and not self.has_text:
 			return True
 		else:
 			return False
-	empty = property(_isEmpty)
+	empty = property(_is_empty)
 		
 		
-	def _getTree(self):
+	def _get_tree(self):
 		tree = self.content.copy()
 		if tree.has_key('text'):
 			del tree['text']
 		return tree
-	tree = property(_getTree)
+	tree = property(_get_tree)
 	
 	
 	def add_category_entry(self, category, entry):
@@ -98,140 +98,140 @@ class Day(object):
 			self.text += '\n\n' + same_day.text
 			
 		# Merge categories
-		for category, entries in same_day.getCategoryContentPairs().items():
+		for category, entries in same_day.get_category_content_pairs().items():
 			for entry in entries:
 				self.add_category_entry(category, entry)
 	
 	
-	def _getNodeNames(self):
+	def _get_node_names(self):
 		return self.tree.keys()
-	nodeNames = property(_getNodeNames)
+	node_names = property(_get_node_names)
 		
 		
-	def _getTags(self):
+	def _get_tags(self):
 		tags = []
-		for category, listContent in self.getCategoryContentPairs().iteritems():
+		for category, list_content in self.get_category_content_pairs().iteritems():
 			if category.upper() == 'TAGS':
-				tags.extend(listContent)
+				tags.extend(list_content)
 		return set(tags)
-	tags = property(_getTags)
+	tags = property(_get_tags)
 	
 	
-	def getCategoryContentPairs(self):
+	def get_category_content_pairs(self):
 		'''
-		Returns a dict of (category: contentInCategoryAsList) pairs.
-		contentInCategoryAsList can be empty
+		Returns a dict of (category: content_in_category_as_list) pairs.
+		content_in_category_as_list can be empty
 		'''
-		originalTree = self.tree.copy()
+		original_tree = self.tree.copy()
 		pairs = {}
-		for category, content in originalTree.iteritems():
-			entryList = []
+		for category, content in original_tree.iteritems():
+			entry_list = []
 			if content is not None:
 				for entry, nonetype in content.iteritems():
-					entryList.append(entry)
-			pairs[category] = entryList
+					entry_list.append(entry)
+			pairs[category] = entry_list
 		return pairs
 	
 	
-	def _getWords(self, withSpecialChars=False):
-		if withSpecialChars:
+	def _get_words(self, with_special_chars=False):
+		if with_special_chars:
 			return self.text.split()
 		
-		wordList = self.text.split()
-		realWords = []
-		for word in wordList:
+		word_list = self.text.split()
+		real_words = []
+		for word in word_list:
 			word = word.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]')
 			if len(word) > 0:
-				realWords.append(word)
-		return realWords
-	words = property(_getWords)
+				real_words.append(word)
+		return real_words
+	words = property(_get_words)
 	
 	
-	def getNumberOfWords(self):
-		return len(self._getWords(withSpecialChars=True))
+	def get_number_of_words(self):
+		return len(self._get_words(with_special_chars=True))
 	
 	
-	def search_text(self, searchText):
+	def search_text(self, search_text):
 		'''Case-insensitive search'''
-		upCaseSearchText = searchText.upper()
-		upCaseDayText = self.text.upper()
-		occurence = upCaseDayText.find(upCaseSearchText)
+		up_case_search_text = search_text.upper()
+		up_case_day_text = self.text.upper()
+		occurence = up_case_day_text.find(up_case_search_text)
 		
 		if occurence > -1:
-			# searchText is in text
+			# search_text is in text
 			
-			searchedStringInText = self.text[occurence:occurence + len(searchText)]
+			searched_string_in_text = self.text[occurence:occurence + len(search_text)]
 			
-			spaceSearchLeftStart = max(0, occurence - self.searchResultLength/2)
-			spaceSearchRightEnd = min(len(self.text), \
-									occurence + len(searchText) + self.searchResultLength/2)
+			space_search_left_start = max(0, occurence - self.search_result_length/2)
+			space_search_right_end = min(len(self.text), \
+									occurence + len(search_text) + self.search_result_length/2)
 				
-			resultTextStart = self.text.find(' ', spaceSearchLeftStart, occurence)
-			resultTextEnd = self.text.rfind(' ', \
-						occurence + len(searchText), spaceSearchRightEnd)
-			if resultTextStart == -1:
-				resultTextStart = occurence - self.searchResultLength/2
-			if resultTextEnd == -1:
-				resultTextEnd = occurence + len(searchText) + self.searchResultLength/2
+			result_text_start = self.text.find(' ', space_search_left_start, occurence)
+			result_text_end = self.text.rfind(' ', \
+						occurence + len(search_text), space_search_right_end)
+			if result_text_start == -1:
+				result_text_start = occurence - self.search_result_length/2
+			if result_text_end == -1:
+				result_text_end = occurence + len(search_text) + self.search_result_length/2
 				
 			# Add leading and trailing ... if appropriate
-			resultText = ''
-			if resultTextStart > 0:
-				resultText += '... '
+			result_text = ''
+			if result_text_start > 0:
+				result_text += '... '
 				
-			resultText += unicode.substring(self.text, resultTextStart, resultTextEnd).strip()
+			result_text += unicode.substring(self.text, result_text_start, result_text_end).strip()
 			
-			# Make the searchedText bold
-			resultText = resultText.replace(searchedStringInText, \
-									'<b>' + searchedStringInText + '</b>')
+			# Make the searched_text bold
+			result_text = result_text.replace(searched_string_in_text, \
+									'<b>' + searched_string_in_text + '</b>')
 			
-			if resultTextEnd < len(self.text) - 1:
-				resultText += ' ...'
+			if result_text_end < len(self.text) - 1:
+				result_text += ' ...'
 				
 			# Delete newlines
-			resultText = resultText.replace('\n', '')
+			result_text = result_text.replace('\n', '')
 				
-			return (str(self), resultText)
+			return (str(self), result_text)
 		else:
 			return None
 		
 		
-	def search_category(self, searchCategory):
+	def search_category(self, search_category):
 		results = []
-		for category, content in self.getCategoryContentPairs().iteritems():
+		for category, content in self.get_category_content_pairs().iteritems():
 			if content:
-				if searchCategory.upper() in category.upper():
+				if search_category.upper() in category.upper():
 					for entry in content:
 						results.append((str(self), entry))
 		return results
 	
 	
-	def search_tag(self, searchTag):
-		for category, contentList in self.getCategoryContentPairs().iteritems():
-			if category.upper() == 'TAGS' and contentList:
-				if searchTag.upper() in map(lambda x: x.upper(), contentList):
-					firstWhitespace = self.text.find(' ', self.searchResultLength)
+	def search_tag(self, search_tag):
+		for category, content_list in self.get_category_content_pairs().iteritems():
+			if category.upper() == 'TAGS' and content_list:
+				if search_tag.upper() in map(lambda x: x.upper(), content_list):
+					first_whitespace = self.text.find(' ', self.search_result_length)
 					
-					if firstWhitespace == -1:
+					if first_whitespace == -1:
 						# No whitespace found
-						textStart = self.text
+						text_start = self.text
 					else:
-						textStart = self.text[:firstWhitespace + 1]
+						text_start = self.text[:first_whitespace + 1]
 						
-					textStart = textStart.replace('\n', '')
+					text_start = text_start.replace('\n', '')
 					
-					if len(textStart) < len(self.text):
-						textStart += ' ...'
-					return (str(self), textStart)
+					if len(text_start) < len(self.text):
+						text_start += ' ...'
+					return (str(self), text_start)
 		return None
 	
 	
 	def __str__(self):
-		dayNumberString = str(self.dayNumber).zfill(2)
-		monthNumberString = str(self.month.monthNumber).zfill(2)
-		yearNumberString = str(self.month.yearNumber)
+		day_number_string = str(self.day_number).zfill(2)
+		month_number_string = str(self.month.month_number).zfill(2)
+		year_number_string = str(self.month.year_number)
 			
-		return yearNumberString + '-' + monthNumberString + '-' + dayNumberString
+		return year_number_string + '-' + month_number_string + '-' + day_number_string
 
 	
 	def __cmp__(self, other):
@@ -239,69 +239,69 @@ class Day(object):
 			
 
 class Month(object):
-	def __init__(self, yearNumber, monthNumber, monthContent = None):
-		if monthContent == None:
-			monthContent = {}
+	def __init__(self, year_number, month_number, month_content = None):
+		if month_content == None:
+			month_content = {}
 		
-		self.yearNumber = yearNumber
-		self.monthNumber = monthNumber
+		self.year_number = year_number
+		self.month_number = month_number
 		self.days = {}
-		for dayNumber, dayContent in monthContent.iteritems():
-			self.days[dayNumber] = Day(self, dayNumber, dayContent)
+		for day_number, day_content in month_content.iteritems():
+			self.days[day_number] = Day(self, day_number, day_content)
 			
 		self.edited = False
 	
 	
-	def getDay(self, dayNumber):
-		if self.days.has_key(dayNumber):
-			return self.days[dayNumber]
+	def get_day(self, day_number):
+		if self.days.has_key(day_number):
+			return self.days[day_number]
 		else:
-			newDay = Day(self, dayNumber)
-			self.days[dayNumber] = newDay
-			return newDay
+			new_day = Day(self, day_number)
+			self.days[day_number] = new_day
+			return new_day
 		
 		
-	def setDay(self, dayNumber, day):
-		self.days[dayNumber] = day
+	def set_day(self, day_number, day):
+		self.days[day_number] = day
 		
 		
 	def __str__(self):
-		res = 'Month %s %s\n' % (self.yearNumber, self.monthNumber)
-		for dayNumber, day in self.days.iteritems():
-			res += '%s: %s\n' % (dayNumber, day.text)
+		res = 'Month %s %s\n' % (self.year_number, self.month_number)
+		for day_number, day in self.days.iteritems():
+			res += '%s: %s\n' % (day_number, day.text)
 		return res
 		
 		
-	def _isEmpty(self):
+	def _is_empty(self):
 		for day in self.days.values():
 			if not day.empty:
 				return False
 		return True
-	empty = property(_isEmpty)
+	empty = property(_is_empty)
 	
 	
-	def _getNodeNames(self):
-		nodeNames = set([])
+	def _get_node_names(self):
+		node_names = set([])
 		for day in self.days.values():
-			nodeNames |= set(day.nodeNames)
-		return nodeNames
-	nodeNames = property(_getNodeNames)
+			node_names |= set(day.node_names)
+		return node_names
+	node_names = property(_get_node_names)
 	
 	
-	def _getTags(self):
+	def _get_tags(self):
 		tags = set([])
 		for day in self.days.values():
 			tags |= set(day.tags)
 		return tags
-	tags = property(_getTags)
+	tags = property(_get_tags)
 	
 	
-	def sameMonth(date1, date2):
+	def same_month(date1, date2):
 		if date1 == None or date2 == None:
 			return False
 		return date1.month == date2.month and date1.year == date2.year
-	sameMonth = staticmethod(sameMonth)
+	same_month = staticmethod(same_month)
 	
 	def __cmp__(self, other):
-		return cmp((self.yearNumber, self.monthNumber), \
-					(other.yearNumber, other.monthNumber))
+		return cmp((self.year_number, self.month_number), \
+					(other.year_number, other.month_number))

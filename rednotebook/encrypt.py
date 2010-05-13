@@ -34,22 +34,22 @@ BLOCK_SIZE = 8
 
 # Public domain code from http://idsvandermolen.com/codefiles/crypto.py
 
-def nrPadBytes(blocksize, size):
+def nr_pad_bytes(blocksize, size):
 	'Return number of required pad bytes for block of size.'
 	if not (0 < blocksize < 255):
 		raise Error('blocksize must be between 0 and 255')
 	return blocksize - (size % blocksize)
 
-def appendPadding(blocksize, s):
+def append_padding(blocksize, s):
 	'''Append rfc 1423 padding to string.
 	
 	RFC 1423 algorithm adds 1 up to blocksize padding bytes to string s. Each 
 	padding byte contains the number of padding bytes.
 	'''
-	n = nrPadBytes(blocksize, len(s))
+	n = nr_pad_bytes(blocksize, len(s))
 	return s + (chr(n) * n)
 
-def removePadding(blocksize, s):
+def remove_padding(blocksize, s):
 	'Remove rfc 1423 padding from string.'
 	n = ord(s[-1]) # last byte contains number of padding bytes
 	if n > blocksize or n > len(s):
@@ -59,12 +59,12 @@ def removePadding(blocksize, s):
 # ----------------------------------------------------------------------
 
 def encrypt_blowfish(cipher, string):
-	string = appendPadding(BLOCK_SIZE, string)
+	string = append_padding(BLOCK_SIZE, string)
 	return base64.b64encode(cipher.encrypt(string))
 	
 def decrypt_blowfish(cipher, encoded_string):
 	dec_string = cipher.decrypt(base64.b64decode(encoded_string))
-	return removePadding(BLOCK_SIZE, dec_string)
+	return remove_padding(BLOCK_SIZE, dec_string)
 	
 	
 	

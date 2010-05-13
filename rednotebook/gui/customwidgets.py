@@ -37,16 +37,16 @@ class UrlButton(ActionButton):
 	
 
 class CustomComboBoxEntry(object):
-	def __init__(self, comboBox):
-		self.comboBox = comboBox
+	def __init__(self, combo_box):
+		self.combo_box = combo_box
 		
-		#self.liststore = self.comboBox.get_model()
+		#self.liststore = self.combo_box.get_model()
 		#if self.liststore is None:
 		self.liststore = gtk.ListStore(gobject.TYPE_STRING)
-		self.comboBox.set_model(self.liststore)
-		#self.comboBox.set_wrap_width(5)
-		self.comboBox.set_text_column(0)
-		self.entry = self.comboBox.get_child()
+		self.combo_box.set_model(self.liststore)
+		#self.combo_box.set_wrap_width(5)
+		self.combo_box.set_text_column(0)
+		self.entry = self.combo_box.get_child()
 		
 		# Autocompletion
 		self.entry_completion = gtk.EntryCompletion()
@@ -64,9 +64,9 @@ class CustomComboBoxEntry(object):
 			self.add_entry(entry)
 		
 		if len(value_list) > 0:
-			self.comboBox.set_active(0)
+			self.combo_box.set_active(0)
 			self.set_active_text(value_list[0])
-			self.comboBox.queue_draw()
+			self.combo_box.queue_draw()
 	
 	def get_active_text(self):
 		return self.entry.get_text().decode('utf-8')
@@ -80,7 +80,7 @@ class CustomComboBoxEntry(object):
 		self.set_active_text('')
 	
 	def connect(self, *args, **kargs):
-		self.comboBox.connect(*args, **kargs)
+		self.combo_box.connect(*args, **kargs)
 		
 	def set_editable(self, editable):
 		self.entry.set_editable(editable)
@@ -94,18 +94,18 @@ class CustomListView(gtk.TreeView):
 
 		columns = [gtk.TreeViewColumn('1'), gtk.TreeViewColumn('2')]
 
-		# add tvcolumns to treeView
+		# add tvcolumns to tree_view
 		for index, column in enumerate(columns):
 			self.append_column(column)
 
 			# create a CellRendererText to render the data
-			cellRenderer = gtk.CellRendererText()
+			cell_renderer = gtk.CellRendererText()
 
 			# add the cell to the tvcolumn and allow it to expand
-			column.pack_start(cellRenderer, True)
+			column.pack_start(cell_renderer, True)
 
 			# Get markup for column, not text
-			column.set_attributes(cellRenderer, markup=index)
+			column.set_attributes(cell_renderer, markup=index)
 			
 			# Allow sorting on the column
 			column.set_sort_column_id(index)
@@ -128,9 +128,9 @@ class EntryDialog(gtk.MessageDialog):
 		self.entry = gtk.Entry()
 		
 		# allow the user to press enter to do ok
-		def responseToDialog(entry, response):
+		def response_to_dialog(entry, response):
 			self.response(response)
-		self.entry.connect("activate", responseToDialog, gtk.RESPONSE_OK)
+		self.entry.connect("activate", response_to_dialog, gtk.RESPONSE_OK)
 		
 		# create a horizontal box to pack the entry and a label
 		hbox = gtk.HBox()

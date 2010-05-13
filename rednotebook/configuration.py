@@ -37,10 +37,10 @@ def delete_comment(line):
 		
 		
 def get_config(dirs):
-	default_config_file = os.path.join(dirs.filesDir, 'default.cfg')
+	default_config_file = os.path.join(dirs.files_dir, 'default.cfg')
 	default_config = Config(default_config_file)
 	
-	user_config = Config(dirs.configFile)
+	user_config = Config(dirs.config_file)
 	
 	config = Config()
 	
@@ -63,12 +63,12 @@ class Config(dict):
 		#self.dirs = dirs
 		self.file = config_file
 		
-		self.obsolete_keys = ['useGTKMozembed', 'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
+		self.obsolete_keys = ['use_g_t_k_mozembed', 'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
 		
 		# Allow changing the value of portable only in default.cfg
-		self.suppressed_keys = ['portable', 'userDir']
+		self.suppressed_keys = ['portable', 'user_dir']
 		
-		#default_config_file = os.path.join(dirs.filesDir, 'default.cfg')
+		#default_config_file = os.path.join(dirs.files_dir, 'default.cfg')
 		#default_config = self._read_file(default_config_file)
 		
 		self.update(self._read_file(self.file))
@@ -94,40 +94,40 @@ class Config(dict):
 		Sets some default values that are not automatically set so that
 		they appear in the config file
 		'''
-		#self.read('exportDateFormat', '%A, %x')
+		#self.read('export_date_format', '%A, %x')
 		
 						
 	def _read_file(self, file):
 		
-		keyValuePairs = []
+		key_value_pairs = []
 		
 		try:
-			with open(file, 'r') as configFile:
-				keyValuePairs = configFile.readlines()
+			with open(file, 'r') as config_file:
+				key_value_pairs = config_file.readlines()
 		except IOError:
 			return {}
 			
-		if not keyValuePairs:
+		if not key_value_pairs:
 			# nothing could be read
 			return {}
 	
 		# delete comments
-		keyValuePairs = map(lambda line: delete_comment(line), keyValuePairs)
+		key_value_pairs = map(lambda line: delete_comment(line), key_value_pairs)
 		
 		#delete whitespace
-		keyValuePairs = map(str.strip, keyValuePairs)
+		key_value_pairs = map(str.strip, key_value_pairs)
 		
 		#delete empty lines
-		keyValuePairs = filter(lambda line: len(line) > 0, keyValuePairs)
+		key_value_pairs = filter(lambda line: len(line) > 0, key_value_pairs)
 		
 		dictionary = {}
 		
 		#read keys and values
-		for keyValuePair in keyValuePairs:
-			if '=' in keyValuePair:
+		for key_value_pair in key_value_pairs:
+			if '=' in key_value_pair:
 				try:
 					# Delete whitespace around =
-					pair = keyValuePair.split('=')
+					pair = key_value_pair.split('=')
 					key, value = map(str.strip, pair)
 					
 					# Do not add obsolete keys -> they will not be rewritten
@@ -137,13 +137,13 @@ class Config(dict):
 					
 					try:
 						#Save value as int if possible
-						valueInt = int(value)
-						dictionary[key] = valueInt
+						value_int = int(value)
+						dictionary[key] = value_int
 					except ValueError:
 						dictionary[key] = value
 						
 				except Exception:
-					logging.error('The line "' + keyValuePair + \
+					logging.error('The line "' + key_value_pair + \
 									'" in the config file contains errors')
 					
 		return dictionary
@@ -190,14 +190,14 @@ class Config(dict):
 	def changed(self):
 		return not (self == self.old_config)
 						
-	def saveToDisk(self):
+	def save_to_disk(self):
 		assert self.changed()
 		
 		try:
-			with open(self.file, 'w') as configFile:
+			with open(self.file, 'w') as config_file:
 				for key, value in sorted(self.iteritems()):
 					if key not in self.suppressed_keys:
-						configFile.write('%s=%s\n' % (key, value))
+						config_file.write('%s=%s\n' % (key, value))
 				logging.info('Configuration has been saved to disk')
 				self.old_config = self.copy()
 		except IOError:

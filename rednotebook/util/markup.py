@@ -37,61 +37,61 @@ from rednotebook.util import utils
 
 
 
-def convertCategoriesToMarkup(categories, with_category_title=True):
+def convert_categories_to_markup(categories, with_category_title=True):
 	'Only add Category title if the text is displayed'
 	if with_category_title:
 		markup = '== Categories ==\n'
 	else:
 		markup = ''
 		
-	for category, entryList in categories.iteritems():
+	for category, entry_list in categories.iteritems():
 		markup += '- ' + category + '\n'
-		for entry in entryList:
+		for entry in entry_list:
 			markup += '  - ' + entry + '\n'
 	markup += '\n\n'
 	return markup
 
 
-def getMarkupForDay(day, with_text=True, categories=None, date=None):
+def get_markup_for_day(day, with_text=True, categories=None, date=None):
 	'''
 	Used for exporting days
 	'''
-	exportString = ''
+	export_string = ''
 	
 	# Add date
 	if date:
-		exportString += '= ' + date + ' =\n\n'
+		export_string += '= ' + date + ' =\n\n'
 		
 	# Add text
 	if with_text:
-		exportString += day.text
+		export_string += day.text
 	
 	# Add Categories
-	categoryContentPairs = day.getCategoryContentPairs()
+	category_content_pairs = day.get_category_content_pairs()
 	
 	if categories:
 		categories = map(lambda string: str(string).lower(), categories)
-		export_categories = dict((x,y) for (x, y) in categoryContentPairs.items()
+		export_categories = dict((x,y) for (x, y) in category_content_pairs.items()
 						if x.lower() in categories)
 	elif categories is None:
 		# No restrictions
-		export_categories = categoryContentPairs
+		export_categories = category_content_pairs
 	else:
 		# "Export no categories" selected
 		export_categories = []
 	
 	
 	if export_categories:
-		exportString += '\n\n\n' + convertCategoriesToMarkup(export_categories, \
+		export_string += '\n\n\n' + convert_categories_to_markup(export_categories, \
 															with_category_title=with_text)
 	elif with_text:
-		exportString += '\n\n'
+		export_string += '\n\n'
 		
 	# Only return the string, when there is text or there are categories
 	# We don't want to list empty dates
 	if export_categories or with_text:
-		exportString += '\n\n\n'
-		return exportString
+		export_string += '\n\n\n'
+		return export_string
 	
 	return ''
 	
@@ -111,7 +111,7 @@ def _get_config(type):
 	if type == 'xhtml' or type == 'html':
 		config['encoding'] = 'UTF-8'	   # document encoding
 		config['toc'] = 0
-		config['style'] = [os.path.join(filesystem.filesDir, 'stylesheet.css')]
+		config['style'] = [os.path.join(filesystem.files_dir, 'stylesheet.css')]
 		config['css-inside'] = 1
 		config['css-sugar'] = 1
 	
@@ -155,7 +155,7 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 	txt = txt.split('\n')
 	
 	'''
-	Without this HACK "First Line\nSecond Line" is rendered to
+	Without this HACK "First Line\n_second Line" is rendered to
 	"First LineSecond Line", but we want "First Line Second Line"
 	
 	We only need this for the keepnote input, the exports work fine

@@ -26,22 +26,22 @@ from rednotebook.util import markup
 from rednotebook import undo
 
 class CategoriesTreeView(object):
-	def __init__(self, treeView, mainWindow):
-		self.treeView = treeView
+	def __init__(self, tree_view, main_window):
+		self.tree_view = tree_view
 		
-		self.mainWindow = mainWindow
-		self.undo_redo_manager = mainWindow.undo_redo_manager
+		self.main_window = main_window
+		self.undo_redo_manager = main_window.undo_redo_manager
 		
 		# Maintain a list of all entered categories. Initialized by rn.__init__()
 		self.categories = None
 		
-		self.statusbar = self.mainWindow.statusbar
+		self.statusbar = self.main_window.statusbar
 		
 		# create a TreeStore with one string column to use as the model
-		self.treeStore = gtk.TreeStore(str)
+		self.tree_store = gtk.TreeStore(str)
 
-		# create the TreeView using treeStore
-		self.treeView.set_model(self.treeStore)
+		# create the TreeView using tree_store
+		self.tree_view.set_model(self.tree_store)
 
 		# create the TreeViewColumn to display the data
 		self.tvcolumn = gtk.TreeViewColumn()
@@ -50,26 +50,26 @@ class CategoriesTreeView(object):
 		label.show()
 		self.tvcolumn.set_widget(label)
 
-		# add tvcolumn to treeView
-		self.treeView.append_column(self.tvcolumn)
+		# add tvcolumn to tree_view
+		self.tree_view.append_column(self.tvcolumn)
 
 		# create a CellRendererText to render the data
 		self.cell = gtk.CellRendererText()
 		
 		self.cell.set_property('editable', True)
-		self.cell.connect('edited', self.edited_cb, self.treeStore)
+		self.cell.connect('edited', self.edited_cb, self.tree_store)
 		self.cell.connect('editing-started', self.on_editing_started)
 
 		# add the cell to the tvcolumn and allow it to expand
 		self.tvcolumn.pack_start(self.cell, True)
 
 		''' set the cell "text" attribute to column 0 - retrieve text
-			from that column in treeStore'''
+			from that column in tree_store'''
 		#self.tvcolumn.add_attribute(self.cell, 'text', 0)
 		self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 
 		# make it searchable
-		self.treeView.set_search_column(0)
+		self.tree_view.set_search_column(0)
 
 		# Allow sorting on the column
 		self.tvcolumn.set_sort_column_id(0)
@@ -77,20 +77,20 @@ class CategoriesTreeView(object):
 		# Enable a context menu
 		self.context_menu = self._get_context_menu()
 		
-		self.treeView.connect('button-press-event', self.on_button_press_event)
+		self.tree_view.connect('button-press-event', self.on_button_press_event)
 		
 		# Wrap lines
 		self.cell.props.wrap_mode = pango.WRAP_WORD
 		self.cell.props.wrap_width = 200
-		self.treeView.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
+		self.tree_view.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
 		
 		
 	def node_on_top_level(self, iter):
 		if not type(iter) == gtk.TreeIter:
 			# iter is a path -> convert to iter
-			iter = self.treeStore.get_iter(iter)
-		assert self.treeStore.iter_is_valid(iter)
-		return self.treeStore.iter_depth(iter) == 0
+			iter = self.tree_store.get_iter(iter)
+		assert self.tree_store.iter_is_valid(iter)
+		return self.tree_store.iter_depth(iter) == 0
 		
 		
 	def on_editing_started(self, cell, editable, path):		
@@ -99,7 +99,7 @@ class CategoriesTreeView(object):
 		self.tvcolumn.add_attribute(self.cell, 'text', 0)
 		
 		# Fetch the markup
-		pango_markup = self.treeStore[path][0]
+		pango_markup = self.tree_store[path][0]
 		
 		# Reset the renderer to use markup
 		self.tvcolumn.clear_attributes(self.cell)
@@ -116,10 +116,10 @@ class CategoriesTreeView(object):
 		new_text is txt2tags markup
 		'''
 		if new_text == 'text' and self.node_on_top_level(path):
-			self.statusbar.showText('"text" is a reserved keyword', error=True)
+			self.statusbar.show_text('"text" is a reserved keyword', error=True)
 			return
 		if len(new_text) < 1:
-			self.statusbar.showText(_('Empty nodes are not allowed'), error=True)
+			self.statusbar.show_text(_('Empty nodes are not allowed'), error=True)
 			return
 		
 		liststore = user_data
@@ -133,24 +133,24 @@ class CategoriesTreeView(object):
 		
 		# Tag name changed
 		else:
-			iter = self.treeStore.get_iter(path)
-			iter_parent = self.treeStore.iter_parent(iter)
+			iter = self.tree_store.get_iter(path)
+			iter_parent = self.tree_store.iter_parent(iter)
 			tags_iter = self._get_category_iter('Tags')
 			
 			tags_node_is_parent = self.get_iter_value(iter_parent).capitalize() == 'Tags'
 			if tags_node_is_parent and self.node_on_top_level(iter_parent):
-				self.mainWindow.redNotebook.saveOldDay()
+				self.main_window.red_notebook.save_old_day()
 				
 		# Update cloud
-		self.mainWindow.cloud.update()
+		self.main_window.cloud.update()
 		
 		
 	def check_category(self, category):
 		if category == 'text':
-			self.statusbar.showText('"text" is a reserved keyword', error=True)
+			self.statusbar.show_text('"text" is a reserved keyword', error=True)
 			return False
 		if len(category) < 1:
-			self.statusbar.showText(_('Empty category names are not allowed'), error=True)
+			self.statusbar.show_text(_('Empty category names are not allowed'), error=True)
 			return False
 		
 		return True
@@ -158,27 +158,27 @@ class CategoriesTreeView(object):
 		
 	def check_entry(self, text):
 		if len(text) < 1:
-			self.statusbar.showText(_('Empty entries are not allowed'), error=True)
+			self.statusbar.show_text(_('Empty entries are not allowed'), error=True)
 			return False
 		
 		return True
 
 	
-	def add_element(self, parent, elementContent):
+	def add_element(self, parent, element_content):
 		'''Recursive Method for adding the content'''
-		for key, value in elementContent.iteritems():
+		for key, value in element_content.iteritems():
 			if key is not None:
 				key_pango = markup.convert_to_pango(key)
-			newChild = self.treeStore.append(parent, [key_pango])
+			new_child = self.tree_store.append(parent, [key_pango])
 			if not value == None:
-				self.add_element(newChild, value)
+				self.add_element(new_child, value)
 			
 		
 	def set_day_content(self, day):
 		for key, value in day.content.iteritems():
 			if not key == 'text':
 				self.add_element(None, {key: value})
-		self.treeView.expand_all()
+		self.tree_view.expand_all()
 				
 				
 	def get_day_content(self):
@@ -191,8 +191,8 @@ class CategoriesTreeView(object):
 		   
 		   
 	def _get_element_content(self, element):
-		model = self.treeStore
-		if self.treeStore.iter_n_children(element) == 0:
+		model = self.tree_store
+		if self.tree_store.iter_n_children(element) == 0:
 			return None
 		else:
 			content = {}
@@ -211,12 +211,12 @@ class CategoriesTreeView(object):
 		
 		If no category is given, test whether there are any categories
 		'''
-		return self.treeStore.iter_n_children(category_iter) == 0
+		return self.tree_store.iter_n_children(category_iter) == 0
 		
 		
 	def clear(self):
-		self.treeStore.clear()
-		assert self.empty(), self.treeStore.iter_n_children(None)
+		self.tree_store.clear()
+		assert self.empty(), self.tree_store.iter_n_children(None)
 		
 		
 	def get_iter_value(self, iter):
@@ -224,7 +224,7 @@ class CategoriesTreeView(object):
 		self.tvcolumn.clear_attributes(self.cell)
 		self.tvcolumn.add_attribute(self.cell, 'text', 0)
 		
-		pango_markup = self.treeStore.get_value(iter, 0).decode('utf-8')
+		pango_markup = self.tree_store.get_value(iter, 0).decode('utf-8')
 		
 		# Reset the renderer to use markup
 		self.tvcolumn.clear_attributes(self.cell)
@@ -240,7 +240,7 @@ class CategoriesTreeView(object):
 		text is txt2tags markup
 		'''
 		pango_markup = markup.convert_to_pango(txt2tags_markup)
-		self.treeStore.set_value(iter, 0, pango_markup)
+		self.tree_store.set_value(iter, 0, pango_markup)
 	
 	def find_iter(self, category, entry):
 		logging.debug('Looking for iter: "%s", "%s"' % (category, entry))
@@ -250,8 +250,8 @@ class CategoriesTreeView(object):
 			# If the category was not found, return None
 			return None
 		
-		for iterIndex in range(self.treeStore.iter_n_children(category_iter)):
-			current_entry_iter = self.treeStore.iter_nth_child(category_iter, iterIndex)
+		for iter_index in range(self.tree_store.iter_n_children(category_iter)):
+			current_entry_iter = self.tree_store.iter_nth_child(category_iter, iter_index)
 			current_entry = self.get_iter_value(current_entry_iter)
 			if str(current_entry) == str(entry):
 				return current_entry_iter
@@ -262,51 +262,51 @@ class CategoriesTreeView(object):
 		
 		
 		
-	def _get_category_iter(self, categoryName):
-		for iterIndex in range(self.treeStore.iter_n_children(None)):
-			currentCategoryIter = self.treeStore.iter_nth_child(None, iterIndex)
-			currentCategoryName = self.get_iter_value(currentCategoryIter)
-			if str(currentCategoryName).lower() == str(categoryName).lower():
-				return currentCategoryIter
+	def _get_category_iter(self, category_name):
+		for iter_index in range(self.tree_store.iter_n_children(None)):
+			current_category_iter = self.tree_store.iter_nth_child(None, iter_index)
+			current_category_name = self.get_iter_value(current_category_iter)
+			if str(current_category_name).lower() == str(category_name).lower():
+				return current_category_iter
 		
 		# If the category was not found, return None
-		logging.debug('Category not found: "%s"' % categoryName)
+		logging.debug('Category not found: "%s"' % category_name)
 		return None
 	
 	
-	def addEntry(self, category, entry, undoing=False):
+	def add_entry(self, category, entry, undoing=False):
 		if category not in self.categories and category is not None:
 			self.categories.insert(0, category)
 			
-		categoryIter = self._get_category_iter(category)
+		category_iter = self._get_category_iter(category)
 			
 		entry_pango = markup.convert_to_pango(entry)
 		category_pango = markup.convert_to_pango(category)	
 		
-		if categoryIter is None:
+		if category_iter is None:
 			# If category does not exist add new category
-			categoryIter = self.treeStore.append(None, [category_pango])
-			entry_node = self.treeStore.append(categoryIter, [entry_pango])
+			category_iter = self.tree_store.append(None, [category_pango])
+			entry_node = self.tree_store.append(category_iter, [entry_pango])
 		else:
 			# If category exists add entry to existing category
-			entry_node = self.treeStore.append(categoryIter, [entry_pango])
+			entry_node = self.tree_store.append(category_iter, [entry_pango])
 			
 		if not undoing:
 			undo_func = lambda: self.delete_node(self.find_iter(category, entry), undoing=True)
-			redo_func = lambda: self.addEntry(category, entry, undoing=True)
+			redo_func = lambda: self.add_entry(category, entry, undoing=True)
 			action = undo.Action(undo_func, redo_func, 'categories_tree_view')
 			self.undo_redo_manager.add_action(action)
 		
-		self.treeView.expand_all()
+		self.tree_view.expand_all()
 			
 	
 	def get_selected_node(self):
 		'''
 		Returns selected node or None if none is selected
 		'''
-		treeSelection = self.treeView.get_selection()
-		model, selectedIter = treeSelection.get_selected()
-		return selectedIter
+		tree_selection = self.tree_view.get_selection()
+		model, selected_iter = tree_selection.get_selected()
+		return selected_iter
 	
 	
 	def delete_node(self, iter, undoing=False):
@@ -320,7 +320,7 @@ class CategoriesTreeView(object):
 		# We want to delete empty categories too
 		if not self.node_on_top_level(iter):
 			deleting_entry = True
-			category_iter = self.treeStore.iter_parent(iter)
+			category_iter = self.tree_store.iter_parent(iter)
 			category = self.get_iter_value(category_iter)
 			entries = [self.get_iter_value(iter)]
 		
@@ -334,11 +334,11 @@ class CategoriesTreeView(object):
 			
 		# Delete ---------------------------------------------
 			
-		self.treeStore.remove(iter)
+		self.tree_store.remove(iter)
 		
 		# Delete empty category
 		if deleting_entry and self.empty(category_iter):
-			self.treeStore.remove(category_iter)
+			self.tree_store.remove(category_iter)
 		
 		# ----------------------------------------------------
 			
@@ -348,7 +348,7 @@ class CategoriesTreeView(object):
 				
 			def undo_func():
 				for entry in entries:
-					self.addEntry(category, entry, undoing=True)
+					self.add_entry(category, entry, undoing=True)
 					
 			def redo_func():
 				for entry in entries:
@@ -359,7 +359,7 @@ class CategoriesTreeView(object):
 			self.undo_redo_manager.add_action(action)
 		
 		# Update cloud
-		self.mainWindow.cloud.update()
+		self.main_window.cloud.update()
 		
 		
 	def delete_selected_node(self):
@@ -367,21 +367,21 @@ class CategoriesTreeView(object):
 		This method used to show a warning dialog. This has become obsolete
 		with the addition of undo functionality for the categories
 		'''
-		selectedIter = self.get_selected_node()
-		if selectedIter:
-			self.delete_node(selectedIter)
+		selected_iter = self.get_selected_node()
+		if selected_iter:
+			self.delete_node(selected_iter)
 			return
 		
 		
 			message = _('Do you really want to delete this node?')
-			sortOptimalDialog = gtk.MessageDialog(parent=self.mainWindow.mainFrame, \
+			sort_optimal_dialog = gtk.MessageDialog(parent=self.main_window.main_frame, \
 									flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_QUESTION, \
 									buttons=gtk.BUTTONS_YES_NO, message_format=message)
-			response = sortOptimalDialog.run()
-			sortOptimalDialog.hide()
+			response = sort_optimal_dialog.run()
+			sort_optimal_dialog.hide()
 			
 			if response == gtk.RESPONSE_YES:
-				self.delete_node(selectedIter)
+				self.delete_node(selected_iter)
 				
 				
 				
@@ -401,7 +401,7 @@ class CategoriesTreeView(object):
 			
 		# Do not show change and delete options, if nothing is selected
 		something_selected = (path is not None)
-		uimanager = self.mainWindow.uimanager
+		uimanager = self.main_window.uimanager
 		change_entry_item = uimanager.get_widget('/ContextMenu/ChangeEntry')
 		change_entry_item.set_sensitive(something_selected)
 		delete_entry_item = uimanager.get_widget('/ContextMenu/Delete')
@@ -421,12 +421,12 @@ class CategoriesTreeView(object):
 		</popup>
 		</ui>'''
 			
-		uimanager = self.mainWindow.uimanager
+		uimanager = self.main_window.uimanager
 
 		# Create an ActionGroup
 		actiongroup = gtk.ActionGroup('ContextMenuActionGroup')
 		
-		new_entry_dialog = self.mainWindow.newEntryDialog
+		new_entry_dialog = self.main_window.new_entry_dialog
 		
 		# Create actions
 		actiongroup.add_actions([
@@ -456,16 +456,16 @@ class CategoriesTreeView(object):
 	
 	def _on_change_entry_clicked(self, action):
 		iter = self.get_selected_node()
-		self.treeView.set_cursor(self.treeStore.get_path(iter), \
+		self.tree_view.set_cursor(self.tree_store.get_path(iter), \
 								focus_column=self.tvcolumn, start_editing=True)
-		self.treeView.grab_focus()
+		self.tree_view.grab_focus()
 	
 	def _on_add_entry_clicked(self, action):
 		iter = self.get_selected_node()
 		
-		dialog = self.mainWindow.newEntryDialog
+		dialog = self.main_window.new_entry_dialog
 		
-		# Either nothing was selected -> show normal newEntryDialog
+		# Either nothing was selected -> show normal new_entry_dialog
 		if iter is None:
 			dialog.show_dialog()
 		# or a category was selected
@@ -474,7 +474,7 @@ class CategoriesTreeView(object):
 			dialog.show_dialog(category=category)
 		# or an entry was selected
 		else:
-			parent_iter = self.treeStore.iter_parent(iter)
+			parent_iter = self.tree_store.iter_parent(iter)
 			category = self.get_iter_value(parent_iter)
 			dialog.show_dialog(category=category)
 			
@@ -490,17 +490,17 @@ class CategoriesTreeView(object):
 		
 		Allows dynamic line wrapping in a treeview
 		'''
-		otherColumns = (c for c in treeview.get_columns() if c != column)
-		newWidth = allocation.width - sum(c.get_width() for c in otherColumns)
-		newWidth -= treeview.style_get_property("horizontal-separator") * 2
+		other_columns = (c for c in treeview.get_columns() if c != column)
+		new_width = allocation.width - sum(c.get_width() for c in other_columns)
+		new_width -= treeview.style_get_property("horizontal-separator") * 2
 		
 		## Customize for treeview with expanders
 		## The behaviour can only be fitted to one depth -> take the second one
-		newWidth -= treeview.style_get_property('expander-size') * 3
+		new_width -= treeview.style_get_property('expander-size') * 3
 		
-		if cell.props.wrap_width == newWidth or newWidth <= 0:
+		if cell.props.wrap_width == new_width or new_width <= 0:
 			return
-		cell.props.wrap_width = newWidth
+		cell.props.wrap_width = new_width
 		store = treeview.get_model()
 		iter = store.get_iter_first()
 		while iter and store.iter_is_valid(iter):

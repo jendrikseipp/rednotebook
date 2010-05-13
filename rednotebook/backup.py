@@ -23,17 +23,17 @@ import logging
 from rednotebook.util import filesystem
 
 class Archiver(object):
-	def __init__(self, redNotebook):
-		self.redNotebook = redNotebook
+	def __init__(self, red_notebook):
+		self.red_notebook = red_notebook
 	
 	def backup(self, backup_file):
-		dataDir = self.redNotebook.dirs.dataDir
-		archiveFiles = []
-		for root, dirs, files in os.walk(dataDir):
+		data_dir = self.red_notebook.dirs.data_dir
+		archive_files = []
+		for root, dirs, files in os.walk(data_dir):
 			for file in files:
 				if not file.endswith('~'):
-					archiveFiles.append(os.path.join(root, file))
+					archive_files.append(os.path.join(root, file))
 		
-		filesystem.writeArchive(backup_file, archiveFiles, dataDir)
+		filesystem.write_archive(backup_file, archive_files, data_dir)
 		
 		logging.info('The content has been exported to %s' % backup_file)

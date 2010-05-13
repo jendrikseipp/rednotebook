@@ -42,7 +42,7 @@ class ExportAssistant(object):
 	
 	def __init__(self, main_window):
 				
-		self.redNotebook = main_window.redNotebook
+		self.red_notebook = main_window.red_notebook
 		self.main_window = main_window
 		self.builder = main_window.builder
 		
@@ -179,12 +179,12 @@ class ExportAssistant(object):
 				# xhtml extension is not recognized by IE 
 				extension = 'html'
 				
-			proposedFileName = 'RedNotebook-Export_%s.%s' % \
+			proposed_file_name = 'RedNotebook-Export_%s.%s' % \
 								(datetime.date.today(), extension)
 
 			home = os.getenv('USERPROFILE') or os.getenv('HOME')
 			self.filename_chooser.set_current_folder(home)
-			self.filename_chooser.set_current_name(proposedFileName)
+			self.filename_chooser.set_current_name(proposed_file_name)
 		return current_page + 1
 	
 	
@@ -196,7 +196,7 @@ class ExportAssistant(object):
 		self.export()
 	
 	def on_cancel(self, widget, other=None):
-		self.redNotebook.showMessage(_('Cancelling export assistant.'))
+		self.red_notebook.show_message(_('Cancelling export assistant.'))
 		self.assistant.hide()
 
 	def change_date_selector_status(self, widget):
@@ -235,8 +235,8 @@ class ExportAssistant(object):
 			
 			row = model_available[selected_iter]
 			
-			newRow = model_selected.insert(0)
-			model_selected.set(newRow, 0, row[0])
+			new_row = model_selected.insert(0)
+			model_selected.set(new_row, 0, row[0])
 			
 			model_available.remove(selected_iter)
 		self.check_exported_content_is_valid()
@@ -251,8 +251,8 @@ class ExportAssistant(object):
 			
 			row = model_selected[selected_iter]
 			
-			newRow = model_available.insert(0)
-			model_available.set(newRow, 0, row[0])
+			new_row = model_available.insert(0)
+			model_available.set(new_row, 0, row[0])
 			
 			model_selected.remove(selected_iter)
 		
@@ -291,7 +291,7 @@ class ExportAssistant(object):
 		selected_categories = []
 		
 		if self.is_all_categories_selected():
-			selected_categories = self.main_window.redNotebook.nodeNames
+			selected_categories = self.main_window.red_notebook.node_names
 		elif not self.is_no_categories_selected():
 			model_selected = self.selected_categories.get_model()
 			
@@ -322,10 +322,10 @@ class ExportAssistant(object):
 	
 	def refresh_categories_list(self):
 		model_available = gtk.ListStore(gobject.TYPE_STRING)
-		categories = self.main_window.redNotebook.nodeNames
+		categories = self.main_window.red_notebook.node_names
 		for category in categories :
-			newRow = model_available.insert(0)
-			model_available.set(newRow, 0, category)
+			new_row = model_available.insert(0)
+			model_available.set(new_row, 0, category)
 
 		self.available_categories.set_model(model_available)
 		model_selected = gtk.ListStore(gobject.TYPE_STRING)
@@ -340,7 +340,7 @@ class ExportAssistant(object):
 		# Check sanity of dates
 		#if not self.is_all_entries_selected():
 		#	if not self.get_start_date() <= self.get_end_date():
-		#		self.redNotebook.showMessage(_('The start date is later than the end date'), \
+		#		self.red_notebook.show_message(_('The start date is later than the end date'), \
 		#										error=True)
 		#		return
 		
@@ -357,9 +357,9 @@ class ExportAssistant(object):
 			export_file = codecs.open(self.filename, 'w', 'utf-8')
 			export_file.write(export_string)
 			export_file.flush()
-			self.redNotebook.showMessage(_('Content exported to %s') % self.filename)
+			self.red_notebook.show_message(_('Content exported to %s') % self.filename)
 		except IOError:
-			self.redNotebook.showMessage(_('Exporting to %s failed') % self.filename)
+			self.red_notebook.show_message(_('Exporting to %s failed') % self.filename)
 			
 	def export_pdf(self):
 		logging.info('Exporting to PDF')
@@ -368,29 +368,29 @@ class ExportAssistant(object):
 
 	def get_export_string(self, format):
 		if self.is_all_entries_selected():
-			exportDays = self.redNotebook.sortedDays
+			export_days = self.red_notebook.sorted_days
 		else:
 			start, end = sorted([self.get_start_date(),	self.get_end_date()])
-			exportDays = self.redNotebook.getDaysInDateRange((start, end))
+			export_days = self.red_notebook.get_days_in_date_range((start, end))
 			
 		selected_categories = self.get_selected_categories_values()
 		logging.debug('Selected Categories for Export: %s' % selected_categories)
 		export_text = self.is_export_text_selected()
 		
-		markupStringsForEachDay = []
-		for day in exportDays:
+		markup_strings_for_each_day = []
+		for day in export_days:
 			default_export_date_format = '%A, %x'
 			# probably no one needs to configure this as i18n already exists
-			#date_format = self.redNotebook.config.read('exportDateFormat', \
+			#date_format = self.red_notebook.config.read('exportDateFormat', \
 			#										default_export_date_format)
 			date_format = default_export_date_format
 			date_string = day.date.strftime(date_format)
-			day_markup = markup.getMarkupForDay(day, with_text=export_text, \
+			day_markup = markup.get_markup_for_day(day, with_text=export_text, \
 											categories=selected_categories, \
 											date=date_string)
-			markupStringsForEachDay.append(day_markup)
+			markup_strings_for_each_day.append(day_markup)
 
-		markupString = ''.join(markupStringsForEachDay)
+		markup_string = ''.join(markup_strings_for_each_day)
 		
 		target = self.format_extension_map.get(format)
 		
@@ -398,7 +398,7 @@ class ExportAssistant(object):
 		
 		options = {'toc': 0}
 		
-		return markup.convert(markupString, target, headers=headers, \
+		return markup.convert(markup_string, target, headers=headers, \
 								options=options)
 	
 	

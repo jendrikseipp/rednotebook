@@ -43,31 +43,19 @@ def get_main_dir():
 
 
 if not main_is_frozen():
-	appDir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
-	appDir = os.path.normpath(appDir)
+	app_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
+	app_dir = os.path.normpath(app_dir)
 else:
-	appDir = get_main_dir()
+	app_dir = get_main_dir()
 	
 
 
-imageDir = os.path.join(appDir, 'images')
-frameIconDir = os.path.join(imageDir, 'redNotebookIcon')
-filesDir = os.path.join(appDir, 'files')
-guiDir = os.path.join(appDir, 'gui')
+image_dir = os.path.join(app_dir, 'images')
+frame_icon_dir = os.path.join(image_dir, 'redNotebookIcon')
+files_dir = os.path.join(app_dir, 'files')
+gui_dir = os.path.join(app_dir, 'gui')
 
-userHomeDir = os.path.expanduser('~')
-
-#redNotebookUserDir = os.path.join(userHomeDir, '.rednotebook')
-#templateDir = os.path.join(redNotebookUserDir, 'templates')
-
-#defaultDataDir = os.path.join(redNotebookUserDir, 'data')
-#dataDir = defaultDataDir
-
-#configFile = os.path.join(redNotebookUserDir, 'configuration.cfg')
-#logFile = os.path.join(redNotebookUserDir, 'rednotebook.log')
-
-#last_pic_dir = userHomeDir
-#last_file_dir = userHomeDir
+user_home_dir = os.path.expanduser('~')
 
 
 class Filenames(dict):
@@ -84,20 +72,20 @@ class Filenames(dict):
 		
 		self.portable = bool(config.read('portable', 0))
 		
-		self.redNotebookUserDir = self.get_user_dir(config)
+		self.red_notebook_user_dir = self.get_user_dir(config)
 		
-		self.dataDir = self.defaultDataDir
+		self.data_dir = self.default_data_dir
 		
 		# Is this the first run of RedNotebook?
-		self.is_first_start = not os.path.exists(self.redNotebookUserDir)
+		self.is_first_start = not os.path.exists(self.red_notebook_user_dir)
 			
 		# Assert that all dirs and files are in place so that logging can take start
-		makeDirectories([self.redNotebookUserDir, self.dataDir, self.templateDir,
-						self.tempDir])
-		makeFiles([(self.configFile, ''), (self.logFile, '')])
+		make_directories([self.red_notebook_user_dir, self.data_dir, self.template_dir,
+						self.temp_dir])
+		make_files([(self.config_file, ''), (self.log_file, '')])
 		
-		self.last_pic_dir = self.userHomeDir
-		self.last_file_dir = self.userHomeDir
+		self.last_pic_dir = self.user_home_dir
+		self.last_file_dir = self.user_home_dir
 		
 	def get_user_dir(self, config):
 		custom = config.read('userDir', '')
@@ -107,13 +95,13 @@ class Filenames(dict):
 			# construct the absolute path (if not absolute already) 
 			# and use it
 			if not os.path.isabs(custom):
-				custom = os.path.join(self.appDir, custom)
+				custom = os.path.join(self.app_dir, custom)
 			user_dir = custom
 		else:
 			if self.portable:
-				user_dir = os.path.join(self.appDir, 'user')
+				user_dir = os.path.join(self.app_dir, 'user')
 			else:
-				user_dir = os.path.join(self.userHomeDir, '.rednotebook')
+				user_dir = os.path.join(self.user_home_dir, '.rednotebook')
 		
 		return user_dir
 		
@@ -121,44 +109,44 @@ class Filenames(dict):
 
 		
 	def __getattribute__(self, attr):
-		user_paths = dict((('templateDir', 'templates'),
-						('tempDir', 'tmp'),
-						('defaultDataDir', 'data'),
-						('configFile', 'configuration.cfg'),
-						('logFile', 'rednotebook.log'),
+		user_paths = dict((('template_dir', 'templates'),
+						('temp_dir', 'tmp'),
+						('default_data_dir', 'data'),
+						('config_file', 'configuration.cfg'),
+						('log_file', 'rednotebook.log'),
 						))
 							
 		if attr in user_paths:
-			return os.path.join(self.redNotebookUserDir, user_paths.get(attr))
+			return os.path.join(self.red_notebook_user_dir, user_paths.get(attr))
 		
 		return dict.__getattribute__(self, attr)
 	
 
 
-def makeDirectory(dir):
+def make_directory(dir):
 	if not os.path.exists(dir):
 		os.makedirs(dir)
 		
-def makeDirectories(dirs):
+def make_directories(dirs):
 	for dir in dirs:
-		makeDirectory(dir)
+		make_directory(dir)
 		
-def makeFile(file, content=''):
+def make_file(file, content=''):
 	if not os.path.exists(file):
 		with codecs.open(file, 'w', encoding='utf-8') as f:
 			f.write(content)
 			
-def makeFiles(fileContentPairs):
-	for file, content in fileContentPairs:
+def make_files(file_content_pairs):
+	for file, content in file_content_pairs:
 		if len(content) > 0:
-			makeFile(file, content)
+			make_file(file, content)
 		else:
-			makeFile(file)
+			make_file(file)
 			
 def make_file_with_dir(file, content):
 	dir = os.path.dirname(file)
-	makeDirectory(dir)
-	makeFile(file, content)
+	make_directory(dir)
+	make_file(file, content)
 	
 def get_relative_path(from_dir, to_dir):
 	'''
@@ -171,24 +159,24 @@ def get_relative_path(from_dir, to_dir):
 	else:
 		return to_dir
 	
-def writeArchive(archiveFileName, files, baseDir='', arcBaseDir=''):
+def write_archive(archive_file_name, files, base_dir='', arc_base_dir=''):
 	"""
-	use baseDir for relative filenames, in case you don't 
+	use base_dir for relative filenames, in case you don't 
 	want your archive to contain '/home/...'
 	"""
-	archive = zipfile.ZipFile(archiveFileName, "w")
+	archive = zipfile.ZipFile(archive_file_name, "w")
 	for file in files:
-		archive.write(file, os.path.join(arcBaseDir, file[len(baseDir):]))
+		archive.write(file, os.path.join(arc_base_dir, file[len(base_dir):]))
 	archive.close()
 
 def get_icons():
-	iconFiles = []
-	for base, dirs, files in os.walk(frameIconDir):
+	icon_files = []
+	for base, dirs, files in os.walk(frame_icon_dir):
 		for file in files:
 			if file.endswith(".png"):
 				file = os.path.join(base, file)
-				iconFiles.append(file)
-	return iconFiles
+				icon_files.append(file)
+	return icon_files
 
 def uri_is_local(uri):
 	return uri.startswith('file://')

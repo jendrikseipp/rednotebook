@@ -79,10 +79,10 @@ the current date. You can set the date format in the preferences.
 
 
 class TemplateManager(object):
-	def __init__(self, mainWindow):
-		self.mainWindow = mainWindow
+	def __init__(self, main_window):
+		self.main_window = main_window
 		
-		self.dirs = mainWindow.redNotebook.dirs
+		self.dirs = main_window.red_notebook.dirs
 		
 		self.merge_id = None
 		self.actiongroup = None
@@ -98,7 +98,7 @@ class TemplateManager(object):
 			text = self.get_weekday_text()
 		else:
 			text = self.get_text(title)
-		self.mainWindow.dayTextField.insert(text)
+		self.main_window.day_text_field.insert(text)
 		
 		
 	def on_edit(self, action):
@@ -109,9 +109,9 @@ class TemplateManager(object):
 		title = edit_title[4:]
 		
 		if title == 'Weekday':
-			date = self.mainWindow.redNotebook.date
-			weekDayNumber = date.weekday() + 1
-			title = str(weekDayNumber)
+			date = self.main_window.red_notebook.date
+			week_day_number = date.weekday() + 1
+			title = str(week_day_number)
 		
 		filename = self.titles_to_files.get(title)
 		filesystem.open_url(filename)
@@ -132,19 +132,19 @@ class TemplateManager(object):
 			title = entry.get_text()
 			if not title.lower().endswith('.txt'):
 				title += '.txt'
-			filename = os.path.join(self.dirs.templateDir, title)
+			filename = os.path.join(self.dirs.template_dir, title)
 			
-			filesystem.makeFile(filename, example_text)
+			filesystem.make_file(filename, example_text)
 			
 			filesystem.open_url(filename)
 			
 	
 	def on_open_template_dir(self):
-		filesystem.open_url(self.dirs.templateDir)
+		filesystem.open_url(self.dirs.template_dir)
 		
 	
-	def getTemplateFile(self, basename):
-		return os.path.join(self.dirs.templateDir, str(basename) + '.txt')
+	def get_template_file(self, basename):
+		return os.path.join(self.dirs.template_dir, str(basename) + '.txt')
 		
 		
 	def get_text(self, title):
@@ -162,7 +162,7 @@ class TemplateManager(object):
 			
 		# convert every "$date$" to the current date
 		default_date_string = '%A, %x %X'
-		date_string = self.mainWindow.redNotebook.config.read('dateTimeString', default_date_string)
+		date_string = self.main_window.red_notebook.config.read('dateTimeString', default_date_string)
 		date = time.strftime(date_string)
 		text = text.replace('$date$', date)
 		
@@ -171,13 +171,13 @@ class TemplateManager(object):
 		
 	def get_weekday_text(self, date=None):
 		if date is None:
-			date = self.mainWindow.redNotebook.date
-		weekDayNumber = date.weekday() + 1
-		return self.get_text(str(weekDayNumber))
+			date = self.main_window.red_notebook.date
+		week_day_number = date.weekday() + 1
+		return self.get_text(str(week_day_number))
 		
 	
 	def get_available_template_files(self):
-		dir = self.dirs.templateDir
+		dir = self.dirs.template_dir
 		files = os.listdir(dir)
 		files = map(lambda basename: os.path.join(dir, basename), files)
 		
@@ -255,7 +255,7 @@ class TemplateManager(object):
 		</popup>
 		</ui>'''
 			
-		uimanager = self.mainWindow.uimanager
+		uimanager = self.main_window.uimanager
 		
 		if self.actiongroup:
 			uimanager.remove_action_group(self.actiongroup)
@@ -316,8 +316,8 @@ class TemplateManager(object):
 		
 	
 	def make_empty_template_files(self):
-		def getInstruction(dayNumber):
-			file = self.getTemplateFile(dayNumber)
+		def get_instruction(day_number):
+			file = self.get_template_file(day_number)
 			#text = '''\
 #The template for this weekday has not been edited. 
 #If you want to have some text that you can add to that day every week, \
@@ -328,9 +328,9 @@ class TemplateManager(object):
 			text = example_text
 			return text
 					
-		fileContentPairs = []
-		for dayNumber in range(1, 8):
-			fileContentPairs.append((self.getTemplateFile(dayNumber), getInstruction(dayNumber)))
+		file_content_pairs = []
+		for day_number in range(1, 8):
+			file_content_pairs.append((self.get_template_file(day_number), get_instruction(day_number)))
 		
 		template_help_text = '''\
 Besides templates for weekdays you can also have arbitrary named templates. 
@@ -348,15 +348,15 @@ You can switch to "Preview" mode and click on the link to get to the \
 If you come up with templates that could be useful for other people as well, \
 I would appreciate if you sent me your template file, so others can benefit \
 from it.
-		''' % (self.dirs.templateDir, self.dirs.templateDir)
+		''' % (self.dirs.template_dir, self.dirs.template_dir)
 		
-		template_help_filename = self.getTemplateFile('Help')
-		fileContentPairs.append((template_help_filename, template_help_text))
+		template_help_filename = self.get_template_file('Help')
+		file_content_pairs.append((template_help_filename, template_help_text))
 		
 		# Only add the example templates the first time and just restore
 		# the day templates everytime
-		if not self.mainWindow.redNotebook.dirs.is_first_start:
-			filesystem.makeFiles(fileContentPairs)
+		if not self.main_window.red_notebook.dirs.is_first_start:
+			filesystem.make_files(file_content_pairs)
 			return
 		
 		
@@ -395,8 +395,8 @@ Additional items: Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Xxxxxxxxxxxxxxxxxxxxx
  - Xxxxxxxxxx Xxxxxxxxxxxx
 		'''
 		
-		template_meeting_filename = self.getTemplateFile('Meeting')
-		fileContentPairs.append((template_meeting_filename, template_meeting_text))
+		template_meeting_filename = self.get_template_file('Meeting')
+		file_content_pairs.append((template_meeting_filename, template_meeting_text))
 		
 		
 		template_journey_text = '''\
@@ -413,8 +413,8 @@ First we went to xxxxx then we got to yyyyy ...
 **Pictures:** [Image folder ""/path/to/the/images/""]
 		'''
 		
-		template_journey_filename = self.getTemplateFile('Journey')
-		fileContentPairs.append((template_journey_filename, template_journey_text))
+		template_journey_filename = self.get_template_file('Journey')
+		file_content_pairs.append((template_journey_filename, template_journey_text))
 		
 		
-		filesystem.makeFiles(fileContentPairs)
+		filesystem.make_files(file_content_pairs)

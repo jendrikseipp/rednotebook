@@ -20,16 +20,16 @@
 import datetime
 
 
-oneDay = datetime.timedelta(days=1)
+one_day = datetime.timedelta(days=1)
 		
-def getYearAndMonthFromDate(date):
-	yearAndMonth = date.strftime('%Y-%m')
-	assert len(yearAndMonth) == 7
-	return yearAndMonth
+def get_year_and_month_from_date(date):
+	year_and_month = date.strftime('%Y-%m')
+	assert len(year_and_month) == 7
+	return year_and_month
 
-def get_date_from_date_string(dateString):
-	dateArray = dateString.split('-')
-	year, month, day = map(int, dateArray)
+def get_date_from_date_string(date_string):
+	date_array = date_string.split('-')
+	year, month, day = map(int, date_array)
 	return datetime.date(year, month, day)
 
 # Number of days per month (except for February in leap years)

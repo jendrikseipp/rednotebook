@@ -157,7 +157,7 @@ class HtmlView(gtk.ScrolledWindow):
 		self.loading_html = False
 								
 	def get_html(self):
-		self.webview.execute_script("document.title=document.documentElement.innerHTML;")
+		self.webview.execute_script("document.title=document.document_element.inner_h_t_m_l;")
 		return self.webview.get_main_frame().get_title()
 
 	def set_editable(self, editable):
@@ -229,7 +229,7 @@ class HtmlView(gtk.ScrolledWindow):
 			self.webview.set_highlight_text_matches(False)
 	
 if __name__ == '__main__':
-	logging.getLogger('').setLevel(logging.DEBUG)
+	logging.get_logger('').set_level(logging.DEBUG)
 	sys.path.insert(0, os.path.abspath("./../../"))
 	from rednotebook.util import markup
 	text = 'PDF export works 1 www.heise.de'

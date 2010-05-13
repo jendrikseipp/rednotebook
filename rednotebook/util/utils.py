@@ -35,78 +35,78 @@ import textwrap
 import filesystem
 
 
-def getHtmlDocFromWordCountDict(wordCountDict, type, ignore_list, include_list):
-	logging.debug('Turning the wordCountDict into html')
-	logging.debug('Length wordCountDict: %s' % len(wordCountDict))
+def get_html_doc_from_word_count_dict(word_count_dict, type, ignore_list, include_list):
+	logging.debug('Turning the word_count_dict into html')
+	logging.debug('Length word_count_dict: %s' % len(word_count_dict))
 	
-	sortedDict = sorted(wordCountDict.items(), key=lambda (word, freq): freq)
+	sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
 	
 	if type == 'word':
 		# filter short words
 		include_list = map(str.lower, include_list)
 		get_long_words = lambda (word, freq): len(word) > 4 or word.lower() in include_list
-		sortedDict = filter(get_long_words, sortedDict)
-		logging.debug('Filtered short words. Length wordCountDict: %s' % len(sortedDict))
+		sorted_dict = filter(get_long_words, sorted_dict)
+		logging.debug('Filtered short words. Length word_count_dict: %s' % len(sorted_dict))
 		
 	# filter words in ignore_list
-	sortedDict = filter(lambda (word, freq): word.lower() not in ignore_list, sortedDict)
-	logging.debug('Filtered blacklist words. Length wordCountDict: %s' % len(sortedDict))
+	sorted_dict = filter(lambda (word, freq): word.lower() not in ignore_list, sorted_dict)
+	logging.debug('Filtered blacklist words. Length word_count_dict: %s' % len(sorted_dict))
 	
-	oftenUsedWords = []
-	numberOfWords = 42
+	often_used_words = []
+	number_of_words = 42
 	
 	'''
 	only take the longest words. If there are less words than n, 
-	len(sortedDict) words are returned
+	len(sorted_dict) words are returned
 	'''
-	cloud_words = sortedDict[-numberOfWords:]
+	cloud_words = sorted_dict[-number_of_words:]
 	logging.debug('Selected most frequent words. Length CloudWords: %s' % len(cloud_words))
 	
 	if len(cloud_words) < 1:
 		return [], ''
 	
-	minCount = cloud_words[0][1]
-	maxCount = cloud_words[-1][1]
+	min_count = cloud_words[0][1]
+	max_count = cloud_words[-1][1]
 	
-	logging.debug('Min word count: %s, Max word count: %s' % (minCount, maxCount))
+	logging.debug('Min word count: %s, Max word count: %s' % (min_count, max_count))
 	
-	deltaCount = maxCount - minCount
-	if deltaCount == 0:
-		deltaCount = 1
+	delta_count = max_count - min_count
+	if delta_count == 0:
+		delta_count = 1
 	
-	minFontSize = 10
-	maxFontSize = 50
+	min_font_size = 10
+	max_font_size = 50
 	
-	fontDelta = maxFontSize - minFontSize
+	font_delta = max_font_size - min_font_size
 	
 	# sort words with unicode sort function
 	cloud_words.sort(key=lambda (word, count): unicode.coll(word))
 	
 	logging.debug('Sorted cloud words. Length CloudWords: %s' % len(cloud_words))
 	
-	htmlElements = []
+	html_elements = []
 	
-	htmlHead = 	'<body><div style="text-align:center; font-family: sans-serif">\n'
-	htmlTail = '</div></body>'
+	html_head = 	'<body><div style="text-align:center; font-family: sans-serif">\n'
+	html_tail = '</div></body>'
 	
 	for index, (word, count) in enumerate(cloud_words):
-		fontFactor = (count - minCount) / deltaCount
-		fontSize = int(minFontSize + fontFactor * fontDelta)
+		font_factor = (count - min_count) / delta_count
+		font_size = int(min_font_size + font_factor * font_delta)
 		
-		htmlElements.append('<a href="search/%s">' 
+		html_elements.append('<a href="search/%s">' 
 								'<span style="font-size:%spx">%s</span></a>' \
-								% (index, fontSize, word) + \
+								% (index, font_size, word) + \
 									
 							#Add some whitespace (previously &#xA0;)
 							'<span> </span>')
 		
-	#random.shuffle(htmlElements)
+	#random.shuffle(html_elements)
 	
-	htmlDoc = htmlHead
-	htmlDoc += '\n'.join(htmlElements) + '\n'
-	htmlDoc += htmlTail
+	html_doc = html_head
+	html_doc += '\n'.join(html_elements) + '\n'
+	html_doc += html_tail
 	
-	return (cloud_words, htmlDoc)
+	return (cloud_words, html_doc)
 
 
 
@@ -149,7 +149,7 @@ def redirect_output_to_file(logfile_path):
 	sys.stderr = logfile
 
 
-def setup_signal_handlers(redNotebook):
+def setup_signal_handlers(red_notebook):
 	'''
 	Catch abnormal exits of the program and save content to disk
 	Look in signal man page for signal names
@@ -188,45 +188,45 @@ def setup_signal_handlers(redNotebook):
 	
 	def signal_handler(signum, frame):
 		logging.info('Program was abnormally aborted with signal %s' % signum)
-		redNotebook.exit()
+		red_notebook.exit()
 
 	
 	msg = 'Connected Signals: '
 	
-	for signalNumber in signals:
+	for signal_number in signals:
 		try:
-			msg += str(signalNumber) + ' '
-			signal.signal(signalNumber, signal_handler)
+			msg += str(signal_number) + ' '
+			signal.signal(signal_number, signal_handler)
 		except RuntimeError:
-			msg += '\nFalse Signal Number: ' + signalNumber
+			msg += '\n_false Signal Number: ' + signal_number
 	
 	logging.info(msg)
 				
 
-def get_new_version_number(currentVersion):
-	newVersion = None
+def get_new_version_number(current_version):
+	new_version = None
 	
 	try:
-		projectXML = urlopen('http://www.gnomefiles.org/app.php/RedNotebook').read()
+		project_x_m_l = urlopen('http://www.gnomefiles.org/app.php/RedNotebook').read()
 		tag = 'version '
-		position = projectXML.upper().find(tag.upper())
-		newVersion = projectXML[position + len(tag):position + len(tag) + 5]
-		logging.info('%s is newest version. You have version %s' % (newVersion, currentVersion))
+		position = project_x_m_l.upper().find(tag.upper())
+		new_version = project_x_m_l[position + len(tag):position + len(tag) + 5]
+		logging.info('%s is newest version. You have version %s' % (new_version, current_version))
 	except URLError:
 		logging.error('New version info could not be read')
 	
-	if newVersion:
-		if newVersion > currentVersion:
-			return newVersion
+	if new_version:
+		if new_version > current_version:
+			return new_version
 	
 	return None
 
 
-def check_new_version(mainFrame, currentVersion, startup=False):
-	if get_new_version_number(currentVersion):
-		mainFrame.show_new_version_dialog()
+def check_new_version(main_frame, current_version, startup=False):
+	if get_new_version_number(current_version):
+		main_frame.show_new_version_dialog()
 	elif not startup:
-		mainFrame.show_no_new_version_dialog()
+		main_frame.show_no_new_version_dialog()
 		
 		
 def write_file(content, filename):
@@ -293,7 +293,7 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
 	def format_option(self, option):
 		# The help for each option consists of two parts:
 		#	 * the opt strings and metavars
-		#	 eg. ("-x", or "-fFILENAME, --file=FILENAME")
+		#	 eg. ("-x", or "-f_f_i_l_e_n_a_m_e, --file=FILENAME")
 		#	 * the user-supplied help string
 		#	 eg. ("turn on expert mode", "read data from FILENAME")
 		#
@@ -303,7 +303,7 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
 		# But if the opt string list is too long, we put the help
 		# string on a second line, indented to the same column it would
 		# start in if it fit on the first line.
-		#	 -fFILENAME, --file=FILENAME
+		#	 -f_f_i_l_e_n_a_m_e, --file=FILENAME
 		#			 read data from FILENAME
 		result = []
 		opts = self.option_strings[option]

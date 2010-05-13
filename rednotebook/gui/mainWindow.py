@@ -71,12 +71,12 @@ class MainWindow(object):
 	Class that holds the reference to the main glade file and handles
 	all actions
 	'''
-	def __init__(self, redNotebook):
+	def __init__(self, red_notebook):
 		
-		self.redNotebook = redNotebook
+		self.red_notebook = red_notebook
 		
 		# Set the Glade file
-		self.gladefile = os.path.join(filesystem.filesDir, 'mainWindow.glade')
+		self.gladefile = os.path.join(filesystem.files_dir, 'mainWindow.glade')
 		self.builder = gtk.Builder()
 		self.builder.set_translation_domain('rednotebook')
 		try:
@@ -90,9 +90,9 @@ class MainWindow(object):
 			
 		
 		# Get the main window and set the icon
-		self.mainFrame = self.builder.get_object('mainFrame')
-		self.mainFrame.set_title('RedNotebook')
-		self.mainFrame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
+		self.main_frame = self.builder.get_object('main_frame')
+		self.main_frame.set_title('RedNotebook')
+		self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
 								filesystem.get_icons()))
 		
 		self.uimanager = gtk.UIManager()
@@ -106,29 +106,29 @@ class MainWindow(object):
 		self.undo_redo_manager = undo.UndoRedoManager(self)
 		
 		
-		self.calendar = Calendar(self.redNotebook, self.builder.get_object('calendar'))
-		self.dayTextField = DayTextField(self.builder.get_object('dayTextView'), \
+		self.calendar = Calendar(self.red_notebook, self.builder.get_object('calendar'))
+		self.day_text_field = DayTextField(self.builder.get_object('day_text_view'), \
 										self.undo_redo_manager)
-		self.dayTextField.dayTextView.grab_focus()
-		spell_check_enabled = self.redNotebook.config.read('spellcheck', 0)
-		self.dayTextField.enable_spell_check(spell_check_enabled)
+		self.day_text_field.day_text_view.grab_focus()
+		spell_check_enabled = self.red_notebook.config.read('spellcheck', 0)
+		self.day_text_field.enable_spell_check(spell_check_enabled)
 		
 		self.statusbar = Statusbar(self.builder.get_object('statusbar'))
 		
-		self.newEntryDialog = NewEntryDialog(self)
+		self.new_entry_dialog = NewEntryDialog(self)
 		
-		self.categoriesTreeView = categories.CategoriesTreeView(self.builder.get_object(\
-									'categoriesTreeView'), self)
+		self.categories_tree_view = categories.CategoriesTreeView(self.builder.get_object(\
+									'categories_tree_view'), self)
 		
-		self.newEntryDialog.categoriesTreeView = self.categoriesTreeView
+		self.new_entry_dialog.categories_tree_view = self.categories_tree_view
 		
-		self.backOneDayButton = self.builder.get_object('backOneDayButton')
-		self.forwardOneDayButton = self.builder.get_object('forwardOneDayButton')
+		self.back_one_day_button = self.builder.get_object('back_one_day_button')
+		self.forward_one_day_button = self.builder.get_object('forward_one_day_button')
 		
-		self.editPane = self.builder.get_object('editPane')
+		self.edit_pane = self.builder.get_object('edit_pane')
 		
 		# Only add the config variable if webkit is available
-		use_webkit = browser.webkit and self.redNotebook.config.read('useWebkit', 1)
+		use_webkit = browser.webkit and self.red_notebook.config.read('useWebkit', 1)
 		
 		logging.info('Using webkit for previews: %s' % use_webkit)
 		
@@ -142,12 +142,12 @@ class MainWindow(object):
 		self.html_editor.hide()
 		self.html_editor.set_editable(False)
 		self.preview_mode = False
-		self.preview_button = self.builder.get_object('previewButton')
+		self.preview_button = self.builder.get_object('preview_button')
 		
 		self.load_values_from_config()
 		
-		if not self.redNotebook.start_minimized:
-			self.mainFrame.show()
+		if not self.red_notebook.start_minimized:
+			self.main_frame.show()
 		
 		self.options_manager = OptionsManager(self)
 		self.export_assistant = ExportAssistant(self)
@@ -158,30 +158,30 @@ class MainWindow(object):
 		
 		# Create an event->method dictionary and connect it to the widgets
 		dic = {
-			'on_backOneDayButton_clicked': self.on_backOneDayButton_clicked,
-			'on_todayButton_clicked': self.on_todayButton_clicked,
-			'on_forwardOneDayButton_clicked': self.on_forwardOneDayButton_clicked,
+			'on_back_one_day_button_clicked': self.on_back_one_day_button_clicked,
+			'on_today_button_clicked': self.on_today_button_clicked,
+			'on_forward_one_day_button_clicked': self.on_forward_one_day_button_clicked,
 			#'on_calendar_day_selected': self.on_calendar_day_selected,
 			
-			'on_previewButton_clicked': self.on_previewButton_clicked,
+			'on_preview_button_clicked': self.on_preview_button_clicked,
 			
-			'on_mainFrame_configure_event': self.on_mainFrame_configure_event,
-			'on_mainFrame_window_state_event': self.on_mainFrame_window_state_event,
+			'on_main_frame_configure_event': self.on_main_frame_configure_event,
+			'on_main_frame_window_state_event': self.on_main_frame_window_state_event,
 			
-			'on_addNewEntryButton_clicked': self.on_addNewEntryButton_clicked,
-			'on_addTagButton_clicked': self.on_addTagButton_clicked,
-			'on_deleteEntryButton_clicked': self.on_deleteEntryButton_clicked,
+			'on_add_new_entry_button_clicked': self.on_add_new_entry_button_clicked,
+			'on_add_tag_button_clicked': self.on_add_tag_button_clicked,
+			'on_delete_entry_button_clicked': self.on_delete_entry_button_clicked,
 			
-			'on_searchNotebook_switch_page': self.on_searchNotebook_switch_page,
+			'on_search_notebook_switch_page': self.on_search_notebook_switch_page,
 			
-			'on_templateButton_clicked': self.on_templateButton_clicked,
-			'on_templateMenu_show_menu': self.on_templateMenu_show_menu,
-			'on_templateMenu_clicked': self.on_templateMenu_clicked,
+			'on_template_button_clicked': self.on_template_button_clicked,
+			'on_template_menu_show_menu': self.on_template_menu_show_menu,
+			'on_template_menu_clicked': self.on_template_menu_clicked,
 			
-			'on_searchTypeBox_changed': self.on_searchTypeBox_changed,
-			'on_cloudComboBox_changed': self.on_cloudComboBox_changed,
+			'on_search_type_box_changed': self.on_search_type_box_changed,
+			'on_cloud_combo_box_changed': self.on_cloud_combo_box_changed,
 			
-			'on_mainFrame_delete_event': self.on_mainFrame_delete_event,
+			'on_main_frame_delete_event': self.on_main_frame_delete_event,
 			
 			# connect_signals can only be called once, it seems
 			# Otherwise RuntimeWarnings are raised: RuntimeWarning: missing handler '...'
@@ -213,7 +213,7 @@ class MainWindow(object):
 		
 		# Only add the config variable if zeitgeist is available
 		use_zeitgeist = test_zeitgeist and journalgeist.zeitgeist and \
-						self.redNotebook.config.read('useZeitgeist', 0)
+						self.red_notebook.config.read('useZeitgeist', 0)
 		use_zeitgeist = True
 		logging.info('Using zeitgeist: %s' % use_zeitgeist)
 		
@@ -225,7 +225,7 @@ class MainWindow(object):
 		'''Zeigeist integration'''
 		#from rednotebook.gui.journalgeist import JournalZeitgeistWidget
 		self.zeitgeist_widget = journalgeist.ZeitgeistWidget()
-		annotations_pane = self.builder.get_object('annotationsPane')
+		annotations_pane = self.builder.get_object('annotations_pane')
 		annotations_pane.add2(self.zeitgeist_widget)
 		
 		
@@ -253,15 +253,15 @@ class MainWindow(object):
 		'''
 		self.accel_group = self.builder.get_object('accelgroup1')#gtk.AccelGroup()
 		#self.accel_group = gtk.AccelGroup()
-		self.mainFrame.add_accel_group(self.accel_group)
-		#self.mainFrame.add_accel_group()
+		self.main_frame.add_accel_group(self.accel_group)
+		#self.main_frame.add_accel_group()
 		#for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'), \
 		#					('X', 'cut_clipboard')]:
-		#	self.dayTextField.dayTextView.add_accelerator(signal, self.accel_group,
+		#	self.day_text_field.day_text_view.add_accelerator(signal, self.accel_group,
 		#					ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 		
-		shortcuts = [(self.backOneDayButton, 'clicked', '<Ctrl>Page_Down'),
-					(self.forwardOneDayButton, 'clicked', '<Ctrl>Page_Up'),
+		shortcuts = [(self.back_one_day_button, 'clicked', '<Ctrl>Page_Down'),
+					(self.forward_one_day_button, 'clicked', '<Ctrl>Page_Up'),
 					#(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
 					#(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
 					#(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
@@ -277,22 +277,22 @@ class MainWindow(object):
 			
 	def setup_tray_icon(self):
 		self.tray_icon = customwidgets.RedNotebookTrayIcon()
-		visible = (self.redNotebook.config.read('closeToTray', 0) == 1)
+		visible = (self.red_notebook.config.read('closeToTray', 0) == 1)
 		self.tray_icon.set_visible(visible)
 		logging.debug('Tray icon visible: %s' % visible)
 		
 		self.tray_icon.set_tooltip('RedNotebook')
-		icon_file = os.path.join(self.redNotebook.dirs.frameIconDir, 'rn-32.png')
+		icon_file = os.path.join(self.red_notebook.dirs.frame_icon_dir, 'rn-32.png')
 		self.tray_icon.set_from_file(icon_file)
 		
 		self.tray_icon.connect('activate', self.on_tray_icon_activated)
 		self.tray_icon.connect('popup-menu', self.on_tray_popup_menu)
 		
 	def on_tray_icon_activated(self, tray_icon):
-		if self.mainFrame.get_property('visible'):
+		if self.main_frame.get_property('visible'):
 			self.hide()
 		else:
-			self.mainFrame.show()
+			self.main_frame.show()
 			
 	def on_tray_popup_menu(self, status_icon, button, activate_time):
 		'''
@@ -313,7 +313,7 @@ class MainWindow(object):
 		# Create actions
 		actiongroup.add_actions([
 			('Show', gtk.STOCK_MEDIA_PLAY, _('Show RedNotebook'), 
-				None, None, lambda widget: self.mainFrame.show()),
+				None, None, lambda widget: self.main_frame.show()),
 			('Quit', gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
 			])
 
@@ -330,31 +330,31 @@ class MainWindow(object):
 				button, activate_time, status_icon)
 			
 	def hide(self):
-		self.mainFrame.hide()
-		self.redNotebook.saveToDisk(exitImminent=False)
+		self.main_frame.hide()
+		self.red_notebook.save_to_disk(exit_imminent=False)
 		
-	def on_mainFrame_delete_event(self, widget, event):
+	def on_main_frame_delete_event(self, widget, event):
 		'''
-		Exit if not closeToTray
+		Exit if not close_to_tray
 		'''
 		logging.debug('Main frame destroyed')
-		#self.saveToDisk(exitImminent=False)
+		#self.save_to_disk(exit_imminent=False)
 		
-		if self.redNotebook.config.read('closeToTray', 0):
+		if self.red_notebook.config.read('closeToTray', 0):
 			self.hide()
 		
 			# the default handler is _not_ to be called, 
 			# and therefore the window will not be destroyed.
 			return True
 		else:
-			self.redNotebook.exit()
+			self.red_notebook.exit()
 		
 	def on_quit_activate(self, widget):
 		'''
 		User selected quit from the menu -> exit unconditionally
 		'''
-		#self.on_mainFrame_destroy(None)
-		self.redNotebook.exit()
+		#self.on_main_frame_destroy(None)
+		self.red_notebook.exit()
 		
 	# -------------------------------------------------------- TRAY-ICON / CLOSE
 		
@@ -362,7 +362,7 @@ class MainWindow(object):
 	def setup_stats_dialog(self):
 		self.stats_dialog = self.builder.get_object('stats_dialog')
 		overall_box = self.builder.get_object('overall_box')
-		day_box = self.builder.get_object('day_box')
+		day_box = self.builder.get_object('day_stats_box')
 		overall_list = CustomListView()
 		day_list = CustomListView()
 		overall_box.pack_start(overall_list, True, True)
@@ -373,18 +373,18 @@ class MainWindow(object):
 			list.set_headers_visible(False)
 			
 			
-	def on_previewButton_clicked(self, button):
-		self.redNotebook.saveOldDay()
+	def on_preview_button_clicked(self, button):
+		self.red_notebook.save_old_day()
 		
 		text_scrolledwindow = self.builder.get_object('text_scrolledwindow')
-		template_button = self.builder.get_object('templateMenuButton')
+		template_button = self.builder.get_object('template_menu_button')
 		
 		# Do not forget to update the text in editor and preview respectively
 		
 		if self.preview_mode:
 			# Enter edit mode
-			self.dayTextField.set_text(self.day.text, undoing=True)
-			self.dayTextField.dayTextView.grab_focus()
+			self.day_text_field.set_text(self.day.text, undoing=True)
+			self.day_text_field.day_text_view.grab_focus()
 			
 			text_scrolledwindow.show()
 			self.html_editor.hide()
@@ -397,7 +397,7 @@ class MainWindow(object):
 			# Enter preview mode			
 			text_scrolledwindow.hide()
 			self.html_editor.show()
-			day = self.redNotebook.day
+			day = self.red_notebook.day
 			text_markup = day.text
 			html = markup.convert(text_markup, 'xhtml', append_whitespace=True)
 			
@@ -415,65 +415,65 @@ class MainWindow(object):
 		
 			
 	def setup_search(self):
-		self.searchNotebook = self.builder.get_object('searchNotebook')
+		self.search_notebook = self.builder.get_object('search_notebook')
 		
-		self.searchTreeView = SearchTreeView(self.builder.get_object(\
-									'searchTreeView'), self)
-		self.searchTypeBox = self.builder.get_object('searchTypeBox')
-		self.searchTypeBox.set_active(0)
-		self.searchBox = SearchComboBox(self.builder.get_object('searchBox'), \
+		self.search_tree_view = SearchTreeView(self.builder.get_object(\
+									'search_tree_view'), self)
+		self.search_type_box = self.builder.get_object('search_type_box')
+		self.search_type_box.set_active(0)
+		self.search_box = SearchComboBox(self.builder.get_object('search_box'), \
 									self)
 		
 		
-	def on_searchTypeBox_changed(self, widget):
-		searchType = widget.get_active()
-		self.searchBox.set_search_type(searchType)
+	def on_search_type_box_changed(self, widget):
+		search_type = widget.get_active()
+		self.search_box.set_search_type(search_type)
 		
 			
-	def on_searchNotebook_switch_page(self, notebook, page, pageNumber):
-		#if pageNumber == 0:
+	def on_search_notebook_switch_page(self, notebook, page, page_number):
+		#if page_number == 0:
 			# Switched to search tab
-			#self.searchTreeView.update_data()
-		if pageNumber == 1:
+			#self.search_tree_view.update_data()
+		if page_number == 1:
 			# Switched to cloud tab
 			self.cloud.update(force_update=True)
 		
 		
 	def setup_clouds(self):
-		self.cloudBox = self.builder.get_object('cloudBox')
+		self.cloud_box = self.builder.get_object('cloud_box')
 		
 		if browser.webkit:
 			from rednotebook.gui.clouds import Cloud
-			self.cloud = Cloud(self.redNotebook)
+			self.cloud = Cloud(self.red_notebook)
 			logging.info('Using pywebkitgtk for the clouds.')
 		else:
 			logging.warning('pywebkitgtk is not installed and cannot ' \
 					'be used for the clouds. You may experience errors')
-			#self.searchNotebook.remove_page(1)
-			self.cloud = CloudView(self.redNotebook)
+			#self.search_notebook.remove_page(1)
+			self.cloud = CloudView(self.red_notebook)
 			
-		self.cloudBox.pack_start(self.cloud)
+		self.cloud_box.pack_start(self.cloud)
 		
-		self.cloudComboBox = self.builder.get_object('cloudComboBox')
-		self.cloudComboBox.set_active(0)
+		self.cloud_combo_box = self.builder.get_object('cloud_combo_box')
+		self.cloud_combo_box.set_active(0)
 		
 		
-	def on_cloudComboBox_changed(self, cloudComboBox):
-		value_int = cloudComboBox.get_active()
+	def on_cloud_combo_box_changed(self, cloud_combo_box):
+		value_int = cloud_combo_box.get_active()
 		self.cloud.set_type(value_int)
 	
 		
-	def on_mainFrame_configure_event(self, widget, event):
+	def on_main_frame_configure_event(self, widget, event):
 		'''
 		Is called when the frame size is changed. Unfortunately this is
 		the way to go as asking for frame.get_size() at program termination
 		gives strange results.		
 		'''
-		mainFrameWidth, mainFrameHeight = self.mainFrame.get_size()
-		self.redNotebook.config['mainFrameWidth'] = mainFrameWidth
-		self.redNotebook.config['mainFrameHeight'] = mainFrameHeight
+		main_frame_width, main_frame_height = self.main_frame.get_size()
+		self.red_notebook.config['mainFrameWidth'] = main_frame_width
+		self.red_notebook.config['mainFrameHeight'] = main_frame_height
 		
-	def on_mainFrame_window_state_event(self, widget, event):
+	def on_main_frame_window_state_event(self, widget, event):
 		'''
 		The "window-state-event" signal is emitted when window state 
 		of widget changes. For example, for a toplevel window this 
@@ -484,22 +484,22 @@ class MainWindow(object):
 		state = event.new_window_state
 		maximized = state and gtk.gdk.WINDOW_STATE_MAXIMIZED
 		maximized = int(bool(maximized))
-		self.redNotebook.config['mainFrameMaximized'] = maximized
+		self.red_notebook.config['mainFrameMaximized'] = maximized
 		
 		
-	def on_backOneDayButton_clicked(self, widget):
-		self.redNotebook.goToPrevDay()
+	def on_back_one_day_button_clicked(self, widget):
+		self.red_notebook.go_to_prev_day()
 		
-	def on_todayButton_clicked(self, widget):
-		actualDate = datetime.date.today()
-		self.redNotebook.changeDate(actualDate)
+	def on_today_button_clicked(self, widget):
+		actual_date = datetime.date.today()
+		self.red_notebook.change_date(actual_date)
 		
-	def on_forwardOneDayButton_clicked(self, widget):
-		self.redNotebook.goToNextDay()
+	def on_forward_one_day_button_clicked(self, widget):
+		self.red_notebook.go_to_next_day()
 		
 	def on_calendar_day_selected(self, widget):
 		pass#
-		#self.redNotebook.changeDate(self.calendar.get_date())
+		#self.red_notebook.change_date(self.calendar.get_date())
 		
 	def show_dir_chooser(self, type, dir_not_found=False):
 		dir_chooser = self.builder.get_object('dir_chooser')
@@ -520,7 +520,7 @@ class MainWindow(object):
 			dir_chooser.set_title(_('Select an empty folder for the new location of your journal'))
 			label.set_markup('<b>' + \
 				_('The directory name will be the new title of the journal') + '</b>')
-		dir_chooser.set_current_folder(self.redNotebook.dirs.dataDir)
+		dir_chooser.set_current_folder(self.red_notebook.dirs.data_dir)
 		
 		response = dir_chooser.run()
 		dir_chooser.hide()
@@ -529,25 +529,25 @@ class MainWindow(object):
 			dir = dir_chooser.get_current_folder()
 			
 			if type == 'saveas':
-				self.redNotebook.dirs.dataDir = dir
-				self.redNotebook.saveToDisk(saveas=True)
+				self.red_notebook.dirs.data_dir = dir
+				self.red_notebook.save_to_disk(saveas=True)
 				
 			load_files = type in ['open', 'saveas']
-			self.redNotebook.open_journal(dir, load_files=load_files)
+			self.red_notebook.open_journal(dir, load_files=load_files)
 		
 		# If the dir was not found previously, we have nothing to open
 		# if the user selects "Abort". So select default dir and show message
 		elif dir_not_found:
-			default_dir = self.redNotebook.dirs.defaultDataDir
-			self.redNotebook.open_journal(default_dir, load_files=True)
+			default_dir = self.red_notebook.dirs.default_data_dir
+			self.red_notebook.open_journal(default_dir, load_files=True)
 			### Translators: The default journal is located at $HOME/.rednotebook/data
-			self.redNotebook.showMessage(_('The default journal has been opened'))
+			self.red_notebook.show_message(_('The default journal has been opened'))
 			
-	def show_save_error_dialog(self, exitImminent):
+	def show_save_error_dialog(self, exit_imminent):
 		dialog = self.builder.get_object('save_error_dialog')
 		
 		exit_without_save_button = self.builder.get_object('exit_without_save_button')
-		if exitImminent:
+		if exit_imminent:
 			exit_without_save_button.show()
 		else:
 			exit_without_save_button.hide()
@@ -558,8 +558,8 @@ class MainWindow(object):
 		if answer == gtk.RESPONSE_OK:
 			# Let the user select a new directory. Nothing has been saved yet.
 			self.show_dir_chooser('saveas')
-		elif answer == gtk.RESPONSE_CANCEL and exitImminent:
-			self.redNotebook.is_allowed_to_exit = False
+		elif answer == gtk.RESPONSE_CANCEL and exit_imminent:
+			self.red_notebook.is_allowed_to_exit = False
 		else: # answer == 10:
 			# Do nothing if user wants to exit without saving
 			pass
@@ -567,12 +567,12 @@ class MainWindow(object):
 		
 		
 	def add_values_to_config(self):
-		config = self.redNotebook.config
+		config = self.red_notebook.config
 		
 		config['leftDividerPosition'] = \
-				self.builder.get_object('mainPane').get_position()
+				self.builder.get_object('main_pane').get_position()
 		config['rightDividerPosition'] = \
-				self.builder.get_object('editPane').get_position()
+				self.builder.get_object('edit_pane').get_position()
 				
 		# Remember if window was maximized
 		
@@ -584,24 +584,24 @@ class MainWindow(object):
 		
 	
 	def load_values_from_config(self):
-		config = self.redNotebook.config
-		mainFrameWidth = config.read('mainFrameWidth', 1024)
-		mainFrameHeight = config.read('mainFrameHeight', 768)
+		config = self.red_notebook.config
+		main_frame_width = config.read('mainFrameWidth', 1024)
+		main_frame_height = config.read('mainFrameHeight', 768)
 		
 		screen_width = gtk.gdk.screen_width()
 		screen_height = gtk.gdk.screen_height()
 		
-		mainFrameWidth = min(mainFrameWidth, screen_width)
-		mainFrameHeight = min(mainFrameHeight, screen_height)
+		main_frame_width = min(main_frame_width, screen_width)
+		main_frame_height = min(main_frame_height, screen_height)
 		
-		self.mainFrame.resize(mainFrameWidth, mainFrameHeight)
+		self.main_frame.resize(main_frame_width, main_frame_height)
 		
 		if config.read('mainFrameMaximized', 0):
-			self.mainFrame.maximize()
+			self.main_frame.maximize()
 		
-		if config.has_key('leftDividerPosition'):
-			self.builder.get_object('mainPane').set_position(config.read('leftDividerPosition', -1))
-		self.builder.get_object('editPane').set_position(config.read('rightDividerPosition', 500))
+		if config.has_key('left_divider_position'):
+			self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))
+		self.builder.get_object('edit_pane').set_position(config.read('rightDividerPosition', 500))
 		
 		# A font size of -1 applies the standard font size
 		main_font_size = config.read('mainFontSize', -1)
@@ -614,27 +614,27 @@ class MainWindow(object):
 		if sys.platform == 'win32' and main_font_size <= 0:
 			main_font_size = 10
 			
-		self.dayTextField.set_font_size(main_font_size)
+		self.day_text_field.set_font_size(main_font_size)
 		self.html_editor.set_font_size(main_font_size)
 		
 		
 	def setup_template_menu(self):
-		self.template_menu_button = self.builder.get_object('templateMenuButton')
+		self.template_menu_button = self.builder.get_object('template_menu_button')
 		self.template_menu_button.set_menu(gtk.Menu())
 		self.template_menu_button.set_menu(self.template_manager.get_menu())
 				
 	
-	def on_templateMenu_show_menu(self, widget):
+	def on_template_menu_show_menu(self, widget):
 		self.template_menu_button.set_menu(self.template_manager.get_menu())
 		
-	def on_templateMenu_clicked(self, widget):
+	def on_template_menu_clicked(self, widget):
 		text = self.template_manager.get_weekday_text()
-		#self.dayTextField.insert_template(text)
-		self.dayTextField.insert(text)
+		#self.day_text_field.insert_template(text)
+		self.day_text_field.insert(text)
 		
-	def on_templateButton_clicked(self, widget):
+	def on_template_button_clicked(self, widget):
 		text = self.template_manager.get_weekday_text()
-		self.dayTextField.insert(text)
+		self.day_text_field.insert(text)
 		
 		
 	def setup_format_menu(self):
@@ -670,18 +670,18 @@ class MainWindow(object):
 			
 			markup = format_to_markup[format]
 			
-			focus = self.mainFrame.get_focus()
+			focus = self.main_frame.get_focus()
 			
 			
-			if focus == self.categoriesTreeView.treeView:
-				iter = self.categoriesTreeView.get_selected_node()
+			if focus == self.categories_tree_view.tree_view:
+				iter = self.categories_tree_view.get_selected_node()
 				if iter:
-					text = self.categoriesTreeView.get_iter_value(iter)
+					text = self.categories_tree_view.get_iter_value(iter)
 					text = '%s%s%s' % (markup, text, markup)
-					self.categoriesTreeView.set_iter_value(iter, text)
+					self.categories_tree_view.set_iter_value(iter, text)
 					return
-			#if focus is None or focus == self.dayTextField.dayTextView:
-			self.dayTextField.apply_format(format, markup)
+			#if focus is None or focus == self.day_text_field.day_text_view:
+			self.day_text_field.apply_format(format, markup)
 			
 		
 		def get_action(format, translation):
@@ -717,7 +717,7 @@ class MainWindow(object):
 		tip = _('Format the selected text or category entry')
 		self.format_toolbutton.set_tooltip_text(tip)
 		self.format_toolbutton.set_menu(menu)
-		bold_func = apply_format#lambda widget: self.dayTextField.apply_format('bold')
+		bold_func = apply_format#lambda widget: self.day_text_field.apply_format('bold')
 		self.format_toolbutton.connect('clicked', bold_func)
 		edit_toolbar = self.builder.get_object('edit_toolbar')
 		edit_toolbar.insert(self.format_toolbutton, -1)
@@ -749,7 +749,7 @@ class MainWindow(object):
 
 		# Add the accelerator group to the toplevel window
 		accelgroup = uimanager.get_accel_group()
-		self.mainFrame.add_accel_group(accelgroup)
+		self.main_frame.add_accel_group(accelgroup)
 
 		# Create an ActionGroup
 		actiongroup = gtk.ActionGroup('InsertActionGroup')
@@ -771,8 +771,8 @@ class MainWindow(object):
 		
 		def insert_date_time(widget):
 			default_date_string = '%A, %x %X'
-			date_string = self.redNotebook.config.read('dateTimeString', default_date_string)
-			self.dayTextField.insert(time.strftime(date_string))
+			date_string = self.red_notebook.config.read('dateTimeString', default_date_string)
+			self.day_text_field.insert(time.strftime(date_string))
 
 		def tmpl(letter):
 			return ' (Ctrl+%s)' % letter
@@ -792,22 +792,22 @@ class MainWindow(object):
 				self.on_insert_link_menu_item_activate),
 			('BulletList', None, _('Bullet List'), None, \
 				_('Insert a bullet list'), \
-				lambda widget: self.dayTextField.insert(bullet_list)),
+				lambda widget: self.day_text_field.insert(bullet_list)),
 			#('NumberedList', None, 'Numbered List', None, \
 			#	'Insert a numbered list (2 empty lines close the list)', \
-			#	lambda widget: self.dayTextField.insert(numbered_list)),
+			#	lambda widget: self.day_text_field.insert(numbered_list)),
 			('Title', None, _('Title'), None, \
 				_('Insert a title'), \
-				lambda widget: self.dayTextField.insert(title)),
+				lambda widget: self.day_text_field.insert(title)),
 			('Line', None, _('Line'), None, \
 				_('Insert a separator line'), \
-				lambda widget: self.dayTextField.insert(line)),
+				lambda widget: self.day_text_field.insert(line)),
 			('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D', \
 				_('Insert the current date and time (edit format in preferences)'), \
 				insert_date_time),
 			('LineBreak', None, _('Line Break'), None, \
 				_('Insert a manual line break'), \
-				lambda widget: self.dayTextField.insert(line_break)),
+				lambda widget: self.day_text_field.insert(line_break)),
 			])
 
 		# Add the actiongroup to the uimanager
@@ -855,7 +855,7 @@ class MainWindow(object):
 							parent_menu_item=None, func=None, button=0, activate_time=0, data=None)
 		
 	def on_insert_pic_menu_item_activate(self, widget):
-		dirs = self.redNotebook.dirs
+		dirs = self.red_notebook.dirs
 		picture_chooser = self.builder.get_object('picture_chooser')
 		picture_chooser.set_current_folder(dirs.last_pic_dir)
 		
@@ -882,10 +882,10 @@ class MainWindow(object):
 			if not base.startswith('file://'):
 				base = 'file://' + base
 				
-			self.dayTextField.insert('[""%s""%s]' % (base, ext))
+			self.day_text_field.insert('[""%s""%s]' % (base, ext))
 			
 	def on_insert_file_menu_item_activate(self, widget):
-		dirs = self.redNotebook.dirs
+		dirs = self.red_notebook.dirs
 		file_chooser = self.builder.get_object('file_chooser')
 		file_chooser.set_current_folder(dirs.last_file_dir)
 
@@ -899,7 +899,7 @@ class MainWindow(object):
 			filename = 'file://' + filename
 			head, tail = os.path.split(filename)
 			# It is always safer to add the "file://" protocol and the ""s
-			self.dayTextField.insert('[%s ""%s""]' % (tail, filename))
+			self.day_text_field.insert('[%s ""%s""]' % (tail, filename))
 			
 	def on_insert_link_menu_item_activate(self, widget):
 		link_creator = self.builder.get_object('link_creator')
@@ -921,88 +921,88 @@ class MainWindow(object):
 				link_location = 'http://' + link_location
 			
 			if link_location and link_name:
-				self.dayTextField.insert('[%s ""%s""]' % (link_name, link_location))
+				self.day_text_field.insert('[%s ""%s""]' % (link_name, link_location))
 			elif link_location:
-				self.dayTextField.insert(link_location)
+				self.day_text_field.insert(link_location)
 			else:
-				self.redNotebook.showMessage(_('No link location has been entered'), error=True)		
+				self.red_notebook.show_message(_('No link location has been entered'), error=True)		
 	
 		
-	def on_addNewEntryButton_clicked(self, widget):
-		self.categoriesTreeView._on_add_entry_clicked(None)
+	def on_add_new_entry_button_clicked(self, widget):
+		self.categories_tree_view._on_add_entry_clicked(None)
 		
-	def on_addTagButton_clicked(self, widget):
-		self.newEntryDialog.show_dialog(category='Tags')
+	def on_add_tag_button_clicked(self, widget):
+		self.new_entry_dialog.show_dialog(category='Tags')
 		
-	def on_deleteEntryButton_clicked(self, widget):
-		self.categoriesTreeView.delete_selected_node()
+	def on_delete_entry_button_clicked(self, widget):
+		self.categories_tree_view.delete_selected_node()
 		
-	def set_date(self, newMonth, newDate, day):
-		self.categoriesTreeView.clear()
+	def set_date(self, new_month, new_date, day):
+		self.categories_tree_view.clear()
 		
-		self.calendar.set_date(newDate)
-		self.calendar.setMonth(newMonth)
+		self.calendar.set_date(new_date)
+		self.calendar.set_month(new_month)
 		
 		# Converting markup to html takes time, so only do it when necessary
 		if self.preview_mode:
 			html = markup.convert(day.text, 'xhtml')
 			self.html_editor.load_html(html)
-		# Why do we always have to set the text of the dayTextField?
-		self.dayTextField.set_text(day.text)
-		self.categoriesTreeView.set_day_content(day)
+		# Why do we always have to set the text of the day_text_field?
+		self.day_text_field.set_text(day.text)
+		self.categories_tree_view.set_day_content(day)
 		
-		self.zeitgeist_widget.set_date(newDate)
+		self.zeitgeist_widget.set_date(new_date)
 		
 		self.undo_redo_manager.clear()
 		
 		self.day = day
 		
 	def get_day_text(self):
-		return self.dayTextField.get_text()
+		return self.day_text_field.get_text()
 	
 	def get_backup_file(self):
-		if self.redNotebook.title == 'data':
+		if self.red_notebook.title == 'data':
 			name = ''
 		else:
-			name = '-' + self.redNotebook.title
+			name = '-' + self.red_notebook.title
 			
-		proposedFileName = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
+		proposed_file_name = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
 			
-		backupDialog = self.builder.get_object('backupDialog')
-		backupDialog.set_current_folder(os.path.expanduser('~'))
-		backupDialog.set_current_name(proposedFileName)
+		backup_dialog = self.builder.get_object('backup_dialog')
+		backup_dialog.set_current_folder(os.path.expanduser('~'))
+		backup_dialog.set_current_name(proposed_file_name)
 		
 		filter = gtk.FileFilter()
 		filter.set_name("Zip")
 		filter.add_pattern("*.zip")
-		backupDialog.add_filter(filter)
+		backup_dialog.add_filter(filter)
 
-		response = backupDialog.run()
-		backupDialog.hide()
+		response = backup_dialog.run()
+		backup_dialog.hide()
 		
 		if response == gtk.RESPONSE_OK:
-			return backupDialog.get_filename()
+			return backup_dialog.get_filename()
 	
 	
 	def show_new_version_dialog(self):
-		newVersionDialog = self.builder.get_object('newVersionDialog')
-		response = newVersionDialog.run()
-		newVersionDialog.hide()
+		new_version_dialog = self.builder.get_object('new_version_dialog')
+		response = new_version_dialog.run()
+		new_version_dialog.hide()
 		
 		if response == gtk.RESPONSE_OK:
 			webbrowser.open(info.url)
 		elif response == 20:
 			#do not ask again
-			self.redNotebook.config['checkForNewVersion'] = 0
+			self.red_notebook.config['checkForNewVersion'] = 0
 			
 	def show_no_new_version_dialog(self):
-		dialog = self.builder.get_object('noNewVersionDialog')
+		dialog = self.builder.get_object('no_new_version_dialog')
 		response = dialog.run()
 		dialog.hide()
 		
 		if response == 30:
 			#Ask at startup
-			self.redNotebook.config['checkForNewVersion'] = 1
+			self.red_notebook.config['checkForNewVersion'] = 1
 			
 	def highlight_text(self, search_text):
 		# let the search function highlight found strings in the page
@@ -1011,33 +1011,33 @@ class MainWindow(object):
 			# so we have to manually highlight
 		self.html_editor.highlight(search_text)
 		#else:
-		self.dayTextField.highlight(search_text)
+		self.day_text_field.highlight(search_text)
 			
 
 class NewEntryDialog(object):
-	def __init__(self, mainFrame):
-		dialog = mainFrame.builder.get_object('newEntryDialog')
+	def __init__(self, main_frame):
+		dialog = main_frame.builder.get_object('new_entry_dialog')
 		self.dialog = dialog
 		
-		self.mainFrame = mainFrame
-		self.redNotebook = self.mainFrame.redNotebook
-		self.categoriesComboBox = CustomComboBoxEntry(mainFrame.builder.get_object('categoriesComboBox'))
-		self.newEntryComboBox = CustomComboBoxEntry(mainFrame.builder.get_object('entryComboBox'))
+		self.main_frame = main_frame
+		self.red_notebook = self.main_frame.red_notebook
+		self.categories_combo_box = CustomComboBoxEntry(main_frame.builder.get_object('categories_combo_box'))
+		self.new_entry_combo_box = CustomComboBoxEntry(main_frame.builder.get_object('entry_combo_box'))
 		
 		# Let the user finish a new category entry by hitting ENTER
 		def respond(widget):
 			if self._text_entered():
 				self.dialog.response(gtk.RESPONSE_OK)
-		self.newEntryComboBox.entry.connect('activate', respond)
-		self.categoriesComboBox.entry.connect('activate', respond)
+		self.new_entry_combo_box.entry.connect('activate', respond)
+		self.categories_combo_box.entry.connect('activate', respond)
 		
-		self.categoriesComboBox.connect('changed', self.on_category_changed)
-		self.newEntryComboBox.connect('changed', self.on_entry_changed)
+		self.categories_combo_box.connect('changed', self.on_category_changed)
+		self.new_entry_combo_box.connect('changed', self.on_entry_changed)
 		
 	def on_category_changed(self, widget):
 		'''Show Tags in ComboBox when "Tags" is selected as category'''
-		if self.categoriesComboBox.get_active_text().upper() == 'TAGS':
-			self.newEntryComboBox.set_entries(self.redNotebook.tags)
+		if self.categories_combo_box.get_active_text().upper() == 'TAGS':
+			self.new_entry_combo_box.set_entries(self.red_notebook.tags)
 			 
 		# only make the entry submittable, if text has been entered
 		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
@@ -1047,23 +1047,23 @@ class NewEntryDialog(object):
 		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
 			 
 	def _text_entered(self):
-		return bool(self.categoriesComboBox.get_active_text() and \
-				self.newEntryComboBox.get_active_text())
+		return bool(self.categories_combo_box.get_active_text() and \
+				self.new_entry_combo_box.get_active_text())
 		
 	def show_dialog(self, category=''):
 		# Show the list of categories even if adding a tag
-		self.categoriesComboBox.set_entries(self.categoriesTreeView.categories)
+		self.categories_combo_box.set_entries(self.categories_tree_view.categories)
 		
 		# Has to be first, because it may be popularized later
-		self.newEntryComboBox.clear()
+		self.new_entry_combo_box.clear()
 		
-		self.categoriesComboBox.set_active_text(category)
+		self.categories_combo_box.set_active_text(category)
 		
 		if category:			
 			# We already know the category so let's get the entry
-			self.newEntryComboBox.comboBox.grab_focus()
+			self.new_entry_combo_box.combo_box.grab_focus()
 		else:
-			self.categoriesComboBox.comboBox.grab_focus()
+			self.categories_combo_box.combo_box.grab_focus()
 		
 		response = self.dialog.run()
 		self.dialog.hide()
@@ -1071,18 +1071,18 @@ class NewEntryDialog(object):
 		if not response == gtk.RESPONSE_OK:
 			return
 		
-		categoryName = self.categoriesComboBox.get_active_text()
-		if not self.categoriesTreeView.check_category(categoryName):
+		category_name = self.categories_combo_box.get_active_text()
+		if not self.categories_tree_view.check_category(category_name):
 			return
 		
-		entryText = self.newEntryComboBox.get_active_text()
-		if not self.categoriesTreeView.check_entry(entryText):
+		entry_text = self.new_entry_combo_box.get_active_text()
+		if not self.categories_tree_view.check_entry(entry_text):
 			return
 		
-		self.categoriesTreeView.addEntry(categoryName, entryText)
+		self.categories_tree_view.add_entry(category_name, entry_text)
 		
 		# Update cloud
-		self.mainFrame.cloud.update()
+		self.main_frame.cloud.update()
 		
 			
 			
@@ -1091,39 +1091,39 @@ class NewEntryDialog(object):
 	
 	
 class SearchComboBox(CustomComboBoxEntry):
-	def __init__(self, comboBox, mainWindow):
-		CustomComboBoxEntry.__init__(self, comboBox)
+	def __init__(self, combo_box, main_window):
+		CustomComboBoxEntry.__init__(self, combo_box)
 		
-		self.mainWindow = mainWindow
-		self.redNotebook = mainWindow.redNotebook
+		self.main_window = main_window
+		self.red_notebook = main_window.red_notebook
 		
-		#self.entry = self.comboBox.get_child()
+		#self.entry = self.combo_box.get_child()
 		self.set_active_text(_('Search ...'))
 
 		self.entry.connect('changed', self.on_entry_changed)
 		self.entry.connect('activate', self.on_entry_activated)
 		
-		self.recentSearches = []
+		self.recent_searches = []
 		
-		self.searchType = 0
+		self.search_type = 0
 		
 		
-	def set_search_type(self, searchType):
+	def set_search_type(self, search_type):
 		
-		self.mainWindow.searchTreeView.set_search_type(searchType)
+		self.main_window.search_tree_view.set_search_type(search_type)
 		
-		if searchType == 0:
+		if search_type == 0:
 			# Search for text
-			self.set_entries(self.recentSearches)
-		if searchType == 1:
+			self.set_entries(self.recent_searches)
+		if search_type == 1:
 			# Search for category
-			categories = self.mainWindow.categoriesTreeView.categories
+			categories = self.main_window.categories_tree_view.categories
 			self.set_entries(categories)
-		if searchType == 2:
+		if search_type == 2:
 			# Search for tags
-			self.set_entries(self.redNotebook.tags)
+			self.set_entries(self.red_notebook.tags)
 			
-		self.searchType = searchType
+		self.search_type = search_type
 		
 
 	def on_entry_changed(self, entry):
@@ -1136,33 +1136,33 @@ class SearchComboBox(CustomComboBoxEntry):
 		"""
 			Called when the user hits enter
 		"""
-		searchText = entry.get_text()
+		search_text = entry.get_text()
 		
-		if self.searchType == 0:
+		if self.search_type == 0:
 			# Search for text
-			self.recentSearches.append(searchText)
-			self.recentSearches = self.recentSearches[-20:]
-			self.add_entry(searchText)
+			self.recent_searches.append(search_text)
+			self.recent_searches = self.recent_searches[-20:]
+			self.add_entry(search_text)
 			
 		self.search(self.get_active_text())
 			
-	def search(self, searchText):
-		if self.searchType == 0:
+	def search(self, search_text):
+		if self.search_type == 0:
 			# Tell the webview which text to highlight after the html is loaded
-			self.mainWindow.html_editor.search_text = searchText
+			self.main_window.html_editor.search_text = search_text
 		
 			# Highlight all occurences in the current day's text
-			self.mainWindow.highlight_text(searchText)
+			self.main_window.highlight_text(search_text)
 		
-		self.mainWindow.searchTreeView.update_data(searchText)
+		self.main_window.search_tree_view.update_data(search_text)
 		
 		
 		
 class CloudView(HtmlWindow):
-	def __init__(self, redNotebook):
+	def __init__(self, red_notebook):
 		HtmlWindow.__init__(self)
 		
-		self.redNotebook = redNotebook
+		self.red_notebook = red_notebook
 		
 		self.update_lists()
 		
@@ -1181,7 +1181,7 @@ class CloudView(HtmlWindow):
 			self.update(force_update=True)
 			
 	def update_lists(self):
-		config = self.redNotebook.config
+		config = self.red_notebook.config
 		
 		default_ignore_list = _('filter, these, comma, separated, words')
 		self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
@@ -1196,7 +1196,7 @@ class CloudView(HtmlWindow):
 		
 		
 	def update(self, force_update=False):
-		if self.redNotebook.frame is None:
+		if self.red_notebook.frame is None:
 			return
 		
 		logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
@@ -1205,15 +1205,15 @@ class CloudView(HtmlWindow):
 		if self.type == 'word' and not force_update:
 			return
 		
-		self.redNotebook.saveOldDay()
+		self.red_notebook.save_old_day()
 		
-		wordCountDict = self.redNotebook.getWordCountDict(self.type)
-		logging.debug('Retrieved WordCountDict. Length: %s' % len(wordCountDict))
+		word_count_dict = self.red_notebook.get_word_count_dict(self.type)
+		logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
 		
-		self.tagCloudWords, html = \
-			utils.getHtmlDocFromWordCountDict(wordCountDict, self.type, \
+		self.tag_cloud_words, html = \
+			utils.get_html_doc_from_word_count_dict(word_count_dict, self.type, \
 											self.ignore_list, self.include_list)
-		logging.debug('%s cloud words found' % len(self.tagCloudWords))
+		logging.debug('%s cloud words found' % len(self.tag_cloud_words))
 		
 		self.write(html)
 		
@@ -1221,25 +1221,25 @@ class CloudView(HtmlWindow):
 		
 		
 	def word_clicked(self, htmlview, uri, type_):
-		self.redNotebook.saveOldDay()
-		# uri has the form "something/somewhere/search/searchIndex"
+		self.red_notebook.save_old_day()
+		# uri has the form "something/somewhere/search/search_index"
 		if 'search' in uri:
-			# searchIndex is the part after last slash
-			searchIndex = int(uri.split('/')[-1])
-			searchText, count = self.tagCloudWords[searchIndex]
+			# search_index is the part after last slash
+			search_index = int(uri.split('/')[-1])
+			search_text, count = self.tag_cloud_words[search_index]
 			
-			self.redNotebook.frame.searchTypeBox.set_active(self.type_int)
-			self.redNotebook.frame.searchBox.set_active_text(searchText)
-			self.redNotebook.frame.searchNotebook.set_current_page(0)
+			self.red_notebook.frame.search_type_box.set_active(self.type_int)
+			self.red_notebook.frame.search_box.set_active_text(search_text)
+			self.red_notebook.frame.search_notebook.set_current_page(0)
 			
 			# returning True here stops loading the document
 			return True
 
 	def on_right_click(self, view, uri, type_):
 		#logging.debug('URI clicked %s' % uri)
-		# searchIndex is the part after last slash
-		searchIndex = int(uri.split('/')[-1])
-		word, count = self.tagCloudWords[searchIndex]
+		# search_index is the part after last slash
+		search_index = int(uri.split('/')[-1])
+		word, count = self.tag_cloud_words[search_index]
 		self.on_ignore_menu_activate(None, selected_words=[word])
 		
 	def create_popup_menu(self, textview, menu):
@@ -1264,7 +1264,7 @@ class CloudView(HtmlWindow):
 			
 		logging.info('The following words will be hidden from clouds: %s' % selected_words)
 		self.ignore_list.extend(selected_words)
-		self.redNotebook.config.write_list('cloudIgnoreList', self.ignore_list)
+		self.red_notebook.config.write_list('cloudIgnoreList', self.ignore_list)
 		self.update(force_update=True)
 		
 	def get_selected_words(self):
@@ -1290,43 +1290,43 @@ class CloudView(HtmlWindow):
 		
 
 class SearchTreeView(object):
-	def __init__(self, treeView, mainWindow):
-		self.treeView = treeView
+	def __init__(self, tree_view, main_window):
+		self.tree_view = tree_view
 		
-		self.mainWindow = mainWindow
+		self.main_window = main_window
 		
-		self.redNotebook = self.mainWindow.redNotebook
+		self.red_notebook = self.main_window.red_notebook
 		
-		self.searchType = 0
+		self.search_type = 0
 		
 		# Normally unneeded, but just to be sure everything works fine
 		self.searched_text = ''
 		
 		# create a TreeStore with two string columns to use as the model
-		self.treeStore = gtk.ListStore(str, str)
+		self.tree_store = gtk.ListStore(str, str)
 
-		# create the TreeView using treeStore
-		self.treeView.set_model(self.treeStore)
+		# create the TreeView using tree_store
+		self.tree_view.set_model(self.tree_store)
 
 		# create the TreeViewColumns to display the data
-		self.dateColumn = gtk.TreeViewColumn(_('Date'))
-		self.matchingColumn = gtk.TreeViewColumn(_('Text'))
+		self.date_column = gtk.TreeViewColumn(_('Date'))
+		self.matching_column = gtk.TreeViewColumn(_('Text'))
 		
-		columns = [self.dateColumn,self.matchingColumn, ]
-						#self.categoryColumn, self.entryColumn]
+		columns = [self.date_column,self.matching_column, ]
+						#self.category_column, self.entry_column]
 
-		# add tvcolumns to treeView
+		# add tvcolumns to tree_view
 		for index, column in enumerate(columns):
-			self.treeView.append_column(column)
+			self.tree_view.append_column(column)
 
 			# create a CellRendererText to render the data
-			cellRenderer = gtk.CellRendererText()
+			cell_renderer = gtk.CellRendererText()
 
 			# add the cell to the tvcolumn and allow it to expand
-			column.pack_start(cellRenderer, True)
+			column.pack_start(cell_renderer, True)
 
 			# Get markup for column, not text
-			column.set_attributes(cellRenderer, markup=index)
+			column.set_attributes(cell_renderer, markup=index)
 			
 			# Allow sorting on the column
 			column.set_sort_column_id(index)
@@ -1334,68 +1334,68 @@ class SearchTreeView(object):
 		self.update_data()
 
 		# make it searchable
-		self.treeView.set_search_column(1)
+		self.tree_view.set_search_column(1)
 		
-		self.treeView.connect('row_activated', self.on_row_activated)
+		self.tree_view.connect('row_activated', self.on_row_activated)
 		
 		
-	def update_data(self, searchText=''):		
-		self.treeStore.clear()
+	def update_data(self, search_text=''):		
+		self.tree_store.clear()
 		
 		rows = None
 		
-		if not searchText:
+		if not search_text:
 			return
 		
 		# Save the search text for highlighting
-		self.searched_text = searchText
+		self.searched_text = search_text
 		
-		if self.searchType == 0:
+		if self.search_type == 0:
 			# Search for text
-			self.matchingColumn.set_title(_('Text'))
-			rows = self.redNotebook.search(text=searchText)
-		if self.searchType == 1:
+			self.matching_column.set_title(_('Text'))
+			rows = self.red_notebook.search(text=search_text)
+		if self.search_type == 1:
 			# Search for category
-			self.matchingColumn.set_title(_('Entry'))
-			rows = self.redNotebook.search(category=searchText)
-		if self.searchType == 2:
+			self.matching_column.set_title(_('Entry'))
+			rows = self.red_notebook.search(category=search_text)
+		if self.search_type == 2:
 			# Search for tags
-			self.matchingColumn.set_title(_('Text'))
-			rows = self.redNotebook.search(tag=searchText)
+			self.matching_column.set_title(_('Text'))
+			rows = self.red_notebook.search(tag=search_text)
 			
 		if rows:
-			for dateString, entry in rows:
-				if self.searchType == 1:
+			for date_string, entry in rows:
+				if self.search_type == 1:
 					entry = markup.convert_to_pango(entry)
 				
-				self.treeStore.append([dateString, entry])
+				self.tree_store.append([date_string, entry])
 				
 				
 	def on_row_activated(self, treeview, path, view_column):
-		dateString = self.treeStore[path][0]
-		newDate = dates.get_date_from_date_string(dateString)
-		self.redNotebook.changeDate(newDate)
+		date_string = self.tree_store[path][0]
+		new_date = dates.get_date_from_date_string(date_string)
+		self.red_notebook.change_date(new_date)
 		
-		if self.searchType == 0:
-			self.mainWindow.highlight_text(self.searched_text)
+		if self.search_type == 0:
+			self.main_window.highlight_text(self.searched_text)
 		
 		
-	def set_search_type(self, searchType):
-		self.searchType = searchType
+	def set_search_type(self, search_type):
+		self.search_type = search_type
 		
 	
 		
 		
 class DayTextField(object):
-	def __init__(self, dayTextView, undo_redo_manager):
-		self.dayTextView = dayTextView
-		#self.dayTextBuffer = gtk.TextBuffer()
-		self.dayTextBuffer = t2t_highlight.get_highlight_buffer()
-		self.dayTextView.set_buffer(self.dayTextBuffer)
+	def __init__(self, day_text_view, undo_redo_manager):
+		self.day_text_view = day_text_view
+		#self.day_text_buffer = gtk.TextBuffer()
+		self.day_text_buffer = t2t_highlight.get_highlight_buffer()
+		self.day_text_view.set_buffer(self.day_text_buffer)
 		
 		self.undo_redo_manager = undo_redo_manager
 		
-		self.changed_connection = self.dayTextBuffer.connect('changed', self.on_text_change)
+		self.changed_connection = self.day_text_buffer.connect('changed', self.on_text_change)
 		
 		self.old_text = ''
 		
@@ -1408,42 +1408,42 @@ class DayTextField(object):
 		self.enable_spell_check(False)
 		
 		# Enable drag&drop
-		#self.dayTextView.connect('drag-drop', self.on_drop) # unneeded
-		self.dayTextView.connect('drag-data-received', self.on_drag_data_received)
+		#self.day_text_view.connect('drag-drop', self.on_drop) # unneeded
+		self.day_text_view.connect('drag-data-received', self.on_drag_data_received)
 		
 	def set_text(self, text, undoing=False):
 		self.insert(text, overwrite=True, undoing=undoing)
 		
 		
 	def get_text(self):
-		iterStart = self.dayTextBuffer.get_start_iter()
-		iterEnd = self.dayTextBuffer.get_end_iter()
-		return self.dayTextBuffer.get_text(iterStart, iterEnd).decode('utf-8')
+		iter_start = self.day_text_buffer.get_start_iter()
+		iter_end = self.day_text_buffer.get_end_iter()
+		return self.day_text_buffer.get_text(iter_start, iter_end).decode('utf-8')
 	
 	
 	def insert(self, text, iter=None, overwrite=False, undoing=False):
 		self.force_adding_undo_point = True
 		
-		self.dayTextBuffer.handler_block(self.changed_connection)
+		self.day_text_buffer.handler_block(self.changed_connection)
 		
 		if overwrite:
-			self.dayTextBuffer.set_text('')
-			iter = self.dayTextBuffer.get_start_iter()
+			self.day_text_buffer.set_text('')
+			iter = self.day_text_buffer.get_start_iter()
 		
 		if iter is None:
-			self.dayTextBuffer.insert_at_cursor(text)
+			self.day_text_buffer.insert_at_cursor(text)
 		else:
 			if type(iter) == gtk.TextMark:
-				iter = self.dayTextBuffer.get_iter_at_mark(iter)
-			self.dayTextBuffer.insert(iter, text)
+				iter = self.day_text_buffer.get_iter_at_mark(iter)
+			self.day_text_buffer.insert(iter, text)
 			
-		self.dayTextBuffer.handler_unblock(self.changed_connection)
+		self.day_text_buffer.handler_unblock(self.changed_connection)
 		
-		self.on_text_change(self.dayTextBuffer, undoing=undoing)
+		self.on_text_change(self.day_text_buffer, undoing=undoing)
 		
 			
 	def highlight(self, text):
-		iter_start = self.dayTextBuffer.get_start_iter()
+		iter_start = self.day_text_buffer.get_start_iter()
 		
 		# Hack: Ignoring the case is not supported for the search so we search
 		# for the most common variants, but do not search identical ones
@@ -1460,17 +1460,17 @@ class DayTextField(object):
 				self.set_selection(*iter_tuple)
 				
 				# It is safer to scroll to a mark than an iter
-				mark = self.dayTextBuffer.create_mark('highlight', iter_tuple[0], left_gravity=False)
-				#self.dayTextView.scroll_to_iter(iter_tuple[0], 0)
-				self.dayTextView.scroll_to_mark(mark, 0)
-				self.dayTextBuffer.delete_mark(mark)
+				mark = self.day_text_buffer.create_mark('highlight', iter_tuple[0], left_gravity=False)
+				#self.day_text_view.scroll_to_iter(iter_tuple[0], 0)
+				self.day_text_view.scroll_to_mark(mark, 0)
+				self.day_text_buffer.delete_mark(mark)
 				return
 		
 			
 	def get_selected_text(self):
-		bounds = self.dayTextBuffer.get_selection_bounds()
+		bounds = self.day_text_buffer.get_selection_bounds()
 		if bounds:
-			return self.dayTextBuffer.get_text(*bounds).decode('utf-8')
+			return self.day_text_buffer.get_text(*bounds).decode('utf-8')
 		else:
 			return None
 
@@ -1481,7 +1481,7 @@ class DayTextField(object):
 		sort_by_position = lambda iter: iter.get_offset()
 		iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
 		assert iter1.get_offset() <= iter2.get_offset()
-		self.dayTextBuffer.select_range(iter1, iter2)
+		self.day_text_buffer.select_range(iter1, iter2)
 		
 	def get_selection_bounds(self):
 		'''
@@ -1490,11 +1490,11 @@ class DayTextField(object):
 		Do not mix this method up with the textbuffer's method of the same name
 		That method returns an empty tuple, if there is no selection
 		'''
-		mark1 = self.dayTextBuffer.get_insert()
-		mark2 = self.dayTextBuffer.get_selection_bound()
+		mark1 = self.day_text_buffer.get_insert()
+		mark2 = self.day_text_buffer.get_selection_bound()
 		
-		iter1 = self.dayTextBuffer.get_iter_at_mark(mark1)
-		iter2 = self.dayTextBuffer.get_iter_at_mark(mark2)
+		iter1 = self.day_text_buffer.get_iter_at_mark(mark1)
+		iter2 = self.day_text_buffer.get_iter_at_mark(mark2)
 		
 		sort_by_position = lambda iter: iter.get_offset()
 		iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
@@ -1514,8 +1514,8 @@ class DayTextField(object):
 			# Set the selection to the new text
 			
 			# get_insert() returns the position of the cursor (after 2nd markup)
-			insert_mark = self.dayTextBuffer.get_insert()
-			insert_iter = self.dayTextBuffer.get_iter_at_mark(insert_mark)
+			insert_mark = self.day_text_buffer.get_insert()
+			insert_iter = self.day_text_buffer.get_iter_at_mark(insert_mark)
 			markup_start_iter = insert_iter.copy()
 			markup_end_iter = insert_iter.copy()
 			markup_start_iter.backward_chars(len(selected_text))
@@ -1523,11 +1523,11 @@ class DayTextField(object):
 			self.set_selection(markup_start_iter, markup_end_iter)
 			
 		# Check that there is a selection
-		assert self.dayTextBuffer.get_selection_bounds()
+		assert self.day_text_buffer.get_selection_bounds()
 			
 		# Add the markup around the selected text
-		insert_bound = self.dayTextBuffer.get_insert()
-		selection_bound = self.dayTextBuffer.get_selection_bound()
+		insert_bound = self.day_text_buffer.get_insert()
+		selection_bound = self.day_text_buffer.get_selection_bound()
 		self.insert(markup, insert_bound)
 		self.insert(markup, selection_bound)
 		
@@ -1541,10 +1541,10 @@ class DayTextField(object):
 			
 	def set_font_size(self, size):
 		font = pango.FontDescription(str(size))
-		self.dayTextView.modify_font(font)
+		self.day_text_view.modify_font(font)
 	
 	def hide(self):
-		self.dayTextView.hide()
+		self.day_text_view.hide()
 	
 	def on_text_change(self, textbuffer, undoing=False):
 		# Do not record changes while undoing or redoing
@@ -1587,7 +1587,7 @@ class DayTextField(object):
 		if enabled:
 			if self._spell_checker is None:
 				try:
-					self._spell_checker = gtkspell.Spell(self.dayTextView)
+					self._spell_checker = gtkspell.Spell(self.day_text_view)
 				except gobject.GError, err:
 					logging.error('Spell checking could not be enabled: "%s"' % err)
 					self._spell_checker = None
@@ -1604,14 +1604,14 @@ class DayTextField(object):
 	
 	#def on_drop(self, widget, drag_context, x, y, timestamp):
 		#logging.info('Drop occured')
-		#self.dayTextView.emit_stop_by_name('drag-drop')
+		#self.day_text_view.emit_stop_by_name('drag-drop')
 		#return True
 		
 	def on_drag_data_received(self, widget, drag_context, x, y, selection, info, timestamp):
 		# We do not want the default behaviour
-		self.dayTextView.emit_stop_by_name('drag-data-received')
+		self.day_text_view.emit_stop_by_name('drag-data-received')
 		
-		iter = self.dayTextView.get_iter_at_location(x, y)
+		iter = self.day_text_view.get_iter_at_location(x, y)
 		
 		def is_pic(uri):
 			head, ext = os.path.splitext(uri)
@@ -1641,21 +1641,21 @@ class Statusbar(object):
 	def __init__(self, statusbar):
 		self.statusbar = statusbar
 		
-		self.contextID = self.statusbar.get_context_id('RedNotebook')
-		self.lastMessageID = None
+		self.context_i_d = self.statusbar.get_context_id('RedNotebook')
+		self.last_message_i_d = None
 		self.timespan = 7
 		
 	def remove_message(self):
 		if hasattr(self.statusbar, 'remove_message'):
-			self.statusbar.remove_message(self.contextID, self.lastMessageID)
+			self.statusbar.remove_message(self.context_i_d, self.last_message_i_d)
 		else:
 			# Deprecated
-			self.statusbar.remove(self.contextID, self.lastMessageID)
+			self.statusbar.remove(self.context_i_d, self.last_message_i_d)
 		
-	def showText(self, text, error=False, countdown=True):
-		if self.lastMessageID is not None:
+	def show_text(self, text, error=False, countdown=True):
+		if self.last_message_i_d is not None:
 			self.remove_message()
-		self.lastMessageID = self.statusbar.push(self.contextID, text)
+		self.last_message_i_d = self.statusbar.push(self.context_i_d, text)
 		
 		self.error = error
 		
@@ -1667,38 +1667,38 @@ class Statusbar(object):
 			self.start_countdown(text)
 		
 	def start_countdown(self, text):
-		self.savedText = text
-		self.timeLeft = self.timespan
+		self.saved_text = text
+		self.time_left = self.timespan
 		self.countdown = gobject.timeout_add(1000, self.count_down)
 		
 	def count_down(self):
-		self.timeLeft -= 1
+		self.time_left -= 1
 		
 		if self.error:
-			if self.timeLeft % 2 == 0:
-				self.showText('', error=self.error, countdown=False)
+			if self.time_left % 2 == 0:
+				self.show_text('', error=self.error, countdown=False)
 			else:
-				self.showText(self.savedText, error=self.error, countdown=False)
+				self.show_text(self.saved_text, error=self.error, countdown=False)
 			
-		if self.timeLeft <= 0:
+		if self.time_left <= 0:
 			gobject.source_remove(self.countdown)
-			self.showText('', countdown=False)
+			self.show_text('', countdown=False)
 		return True
 	
 		
 class Calendar(object):
-	def __init__(self, redNotebook, calendar):
-		self.redNotebook = redNotebook
+	def __init__(self, red_notebook, calendar):
+		self.red_notebook = red_notebook
 		self.calendar = calendar
 		
-		week_numbers = self.redNotebook.config.read('weekNumbers', 0)
+		week_numbers = self.red_notebook.config.read('weekNumbers', 0)
 		if week_numbers:
 			calendar.set_property('show-week-numbers', True)
 		
 		self.date_listener = self.calendar.connect('day-selected', self.on_day_selected)
 		
 	def on_day_selected(self, cal):
-		self.redNotebook.changeDate(self.get_date())
+		self.red_notebook.change_date(self.get_date())
 		
 	def set_date(self, date):
 		'''
@@ -1728,28 +1728,28 @@ class Calendar(object):
 		year, month, day = self.calendar.get_date()
 		return datetime.date(year, month+1, day)
 		
-	def setDayEdited(self, dayNumber, edited):
+	def set_day_edited(self, day_number, edited):
 		'''
 		It may happen that we try to mark a day that is non-existent in this month
 		if we switch by clicking on the calendar e.g. from Aug 31 to Sep 1.
 		The month has already changed and there is no Sep 31. 
-		Still saveOldDay tries to mark the 31st.
+		Still save_old_day tries to mark the 31st.
 		'''
-		if not self._check_date(dayNumber):
+		if not self._check_date(day_number):
 			return
 		
 		if edited:
-			self.calendar.mark_day(dayNumber)
+			self.calendar.mark_day(day_number)
 		else:
-			self.calendar.unmark_day(dayNumber)
+			self.calendar.unmark_day(day_number)
 			
-	def setMonth(self, month):
-		#month_days = dates.get_number_of_days(month.yearNumber, month.monthNumber)
-		#for dayNumber in range(1, month_days + 1):
-		#	self.setDayEdited(dayNumber, False)
+	def set_month(self, month):
+		#month_days = dates.get_number_of_days(month.year_number, month.month_number)
+		#for day_number in range(1, month_days + 1):
+		#	self.set_day_edited(day_number, False)
 		self.calendar.clear_marks()
-		for dayNumber, day in month.days.items():
-			self.setDayEdited(dayNumber, not day.empty)
+		for day_number, day in month.days.items():
+			self.set_day_edited(day_number, not day.empty)
 			
 	def _check_date(self, day_number):
 		'''
@@ -1769,6 +1769,6 @@ class Calendar(object):
 			
 def get_image(name):
 	image = gtk.Image()
-	file_name = os.path.join(filesystem.imageDir, name)
+	file_name = os.path.join(filesystem.image_dir, name)
 	image.set_from_file(file_name)
 	return image

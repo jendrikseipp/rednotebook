@@ -27,56 +27,56 @@ from rednotebook.gui.browser import HtmlView
 from rednotebook.util import unicode
 
 
-def word_count_dict_to_html(wordCountDict, type, ignore_list, include_list):
-	logging.debug('Turning the wordCountDict into html')
-	logging.debug('Length wordCountDict: %s' % len(wordCountDict))
+def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
+	logging.debug('Turning the word_count_dict into html')
+	logging.debug('Length word_count_dict: %s' % len(word_count_dict))
 	
-	sortedDict = sorted(wordCountDict.items(), key=lambda (word, freq): freq)
+	sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
 	
 	if type == 'word':
 		# filter short words
 		include_list = map(str.lower, include_list)
 		get_long_words = lambda (word, freq): len(word) > 4 or word.lower() in include_list
-		sortedDict = filter(get_long_words, sortedDict)
-		logging.debug('Filtered short words. Length wordCountDict: %s' % len(sortedDict))
+		sorted_dict = filter(get_long_words, sorted_dict)
+		logging.debug('Filtered short words. Length word_count_dict: %s' % len(sorted_dict))
 		
 	# filter words in ignore_list
-	sortedDict = filter(lambda (word, freq): word.lower() not in ignore_list, sortedDict)
-	logging.debug('Filtered blacklist words. Length wordCountDict: %s' % len(sortedDict))
+	sorted_dict = filter(lambda (word, freq): word.lower() not in ignore_list, sorted_dict)
+	logging.debug('Filtered blacklist words. Length word_count_dict: %s' % len(sorted_dict))
 	
-	oftenUsedWords = []
-	numberOfWords = 42
+	often_used_words = []
+	number_of_words = 42
 	
 	'''
 	only take the longest words. If there are less words than n, 
-	len(sortedDict) words are returned
+	len(sorted_dict) words are returned
 	'''
-	cloud_words = sortedDict[-numberOfWords:]
+	cloud_words = sorted_dict[-number_of_words:]
 	logging.debug('Selected most frequent words. Length CloudWords: %s' % len(cloud_words))
 	
 	if len(cloud_words) < 1:
 		return [], ''
 	
-	minCount = cloud_words[0][1]
-	maxCount = cloud_words[-1][1]
+	min_count = cloud_words[0][1]
+	max_count = cloud_words[-1][1]
 	
-	logging.debug('Min word count: %s, Max word count: %s' % (minCount, maxCount))
+	logging.debug('Min word count: %s, Max word count: %s' % (min_count, max_count))
 	
-	deltaCount = maxCount - minCount
-	if deltaCount == 0:
-		deltaCount = 1
+	delta_count = max_count - min_count
+	if delta_count == 0:
+		delta_count = 1
 	
-	minFontSize = 10
-	maxFontSize = 50
+	min_font_size = 10
+	max_font_size = 50
 	
-	fontDelta = maxFontSize - minFontSize
+	font_delta = max_font_size - min_font_size
 	
 	# sort words with unicode sort function
 	cloud_words.sort(key=lambda (word, count): unicode.coll(word))
 	
 	logging.debug('Sorted cloud words. Length CloudWords: %s' % len(cloud_words))
 	
-	htmlElements = []
+	html_elements = []
 	
 	
 	css = '''\
@@ -93,29 +93,29 @@ def word_count_dict_to_html(wordCountDict, type, ignore_list, include_list):
 	</style>'''
 	
 	for index, (word, count) in enumerate(cloud_words):
-		fontFactor = (count - minCount) / deltaCount
-		fontSize = int(minFontSize + fontFactor * fontDelta)
+		font_factor = (count - min_count) / delta_count
+		font_size = int(min_font_size + font_factor * font_delta)
 		
-		htmlElements.append('<a href="search/%s">' 
+		html_elements.append('<a href="search/%s">' 
 							'<span style="font-size:%spx">%s</span></a>' \
-							% (index, fontSize, word) + \
+							% (index, font_size, word) + \
 							#Add some whitespace
 							'&#xA0;')
 		
-	#random.shuffle(htmlElements)
+	#random.shuffle(html_elements)
 	
-	htmlBody = '<body>' + '\n'.join(htmlElements) + '\n</body>\n'
-	htmlDoc = '<html><head>' + css + '</head>' + htmlBody + '</html>'
+	html_body = '<body>' + '\n'.join(html_elements) + '\n</body>\n'
+	html_doc = '<html><head>' + css + '</head>' + html_body + '</html>'
 	
-	return (cloud_words, htmlDoc)
+	return (cloud_words, html_doc)
 
 
 
 class Cloud(HtmlView):
-	def __init__(self, redNotebook):
+	def __init__(self, red_notebook):
 		HtmlView.__init__(self)
 		
-		self.redNotebook = redNotebook
+		self.red_notebook = red_notebook
 		
 		self.update_lists()
 		
@@ -132,7 +132,7 @@ class Cloud(HtmlView):
 			self.update(force_update=True)
 			
 	def update_lists(self):
-		config = self.redNotebook.config
+		config = self.red_notebook.config
 		
 		default_ignore_list = _('filter, these, comma, separated, words')
 		self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
@@ -146,7 +146,7 @@ class Cloud(HtmlView):
 		
 		
 	def update(self, force_update=False):
-		if self.redNotebook.frame is None:
+		if self.red_notebook.frame is None:
 			return
 		
 		logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
@@ -155,15 +155,15 @@ class Cloud(HtmlView):
 		if self.type == 'word' and not force_update:
 			return
 		
-		self.redNotebook.saveOldDay()
+		self.red_notebook.save_old_day()
 		
-		wordCountDict = self.redNotebook.getWordCountDict(self.type)
-		logging.debug('Retrieved WordCountDict. Length: %s' % len(wordCountDict))
+		word_count_dict = self.red_notebook.get_word_count_dict(self.type)
+		logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
 		
-		self.tagCloudWords, html = \
-			word_count_dict_to_html(wordCountDict, self.type, \
+		self.tag_cloud_words, html = \
+			word_count_dict_to_html(word_count_dict, self.type, \
 									self.ignore_list, self.include_list)
-		logging.debug('%s cloud words found' % len(self.tagCloudWords))
+		logging.debug('%s cloud words found' % len(self.tag_cloud_words))
 		
 		self.load_html(html)
 		self.last_hovered_word = None
@@ -182,17 +182,17 @@ class Cloud(HtmlView):
 		uri = request.get_uri()
 		logging.info('Clicked URI "%s"' % uri)
 		
-		self.redNotebook.saveOldDay()
+		self.red_notebook.save_old_day()
 		
-		# uri has the form "something/somewhere/search/searchIndex"
+		# uri has the form "something/somewhere/search/search_index"
 		if 'search' in uri:
-			# searchIndex is the part after last slash
-			searchIndex = int(uri.split('/')[-1])
-			searchText, count = self.tagCloudWords[searchIndex]
+			# search_index is the part after last slash
+			search_index = int(uri.split('/')[-1])
+			search_text, count = self.tag_cloud_words[search_index]
 			
-			self.redNotebook.frame.searchTypeBox.set_active(self.type_int)
-			self.redNotebook.frame.searchBox.set_active_text(searchText)
-			self.redNotebook.frame.searchNotebook.set_current_page(0)
+			self.red_notebook.frame.search_type_box.set_active(self.type_int)
+			self.red_notebook.frame.search_box.set_active_text(search_text)
+			self.red_notebook.frame.search_notebook.set_current_page(0)
 			
 			# returning True here stops loading the document
 			return True
@@ -212,9 +212,9 @@ class Cloud(HtmlView):
 		to the context menu when the user right-clicks the next time
 		'''
 		if uri:
-			searchIndex = int(uri.split('/')[-1])
-			searchText, count = self.tagCloudWords[searchIndex]
-			self.last_hovered_word = searchText
+			search_index = int(uri.split('/')[-1])
+			search_text, count = self.tag_cloud_words[search_index]
+			self.last_hovered_word = search_text
 			
 			
 	def on_populate_popup(self, webview, menu):
@@ -237,5 +237,5 @@ class Cloud(HtmlView):
 	def on_ignore_menu_activate(self, menu_item, selected_word):
 		logging.info('"%s" will be hidden from clouds' % selected_word)
 		self.ignore_list.append(selected_word)
-		self.redNotebook.config.write_list('cloudIgnoreList', self.ignore_list)
+		self.red_notebook.config.write_list('cloud_ignore_list', self.ignore_list)
 		self.update(force_update=True)

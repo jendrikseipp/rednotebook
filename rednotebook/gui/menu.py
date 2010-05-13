@@ -33,7 +33,7 @@ class MainMenuBar(object):
 	def __init__(self, main_window, *args, **kwargs):
 		self.main_window = main_window
 		self.uimanager = main_window.uimanager
-		self.redNotebook = self.main_window.redNotebook
+		self.red_notebook = self.main_window.red_notebook
 		self.menubar = None
 
 	def get_menu_bar(self):
@@ -91,26 +91,26 @@ class MainMenuBar(object):
 			('Journal', None, _('Journal')),
 			('New', gtk.STOCK_NEW, None,
 				'', _('Create a new journal. The old one will be saved'),
-				self.on_newJournalButton_activate),
+				self.on_new_journal_button_activate),
 			('Open', gtk.STOCK_OPEN, None,
 				None, _('Load an existing journal. The old journal will be saved'),
-				self.on_openJournalButton_activate),
+				self.on_open_journal_button_activate),
 			('Save', gtk.STOCK_SAVE, None,
-				None, None, self.on_saveButton_clicked),
+				None, None, self.on_save_button_clicked),
 			('SaveAs', gtk.STOCK_SAVE_AS, None,
 				None, _('Save journal at a new location. The old journal files will also be saved'),
-				self.on_saveAsMenuItem_activate),
+				self.on_save_as_menu_item_activate),
 			### Translators: Verb
 			('Import', gtk.STOCK_ADD, _('Import'),
-				None, _('Open the import assistant'), self.on_importMenuItem_activate),
+				None, _('Open the import assistant'), self.on_import_menu_item_activate),
 			### Translators: Verb
 			('Export', gtk.STOCK_CONVERT, _('Export'),
-				None, _('Open the export assistant'), self.on_exportMenuItem_activate),
+				None, _('Open the export assistant'), self.on_export_menu_item_activate),
 			### Translators: Verb
 			('Backup', gtk.STOCK_HARDDISK, _('Backup'),
 				None, _('Save all the data in a zip archive'), self.on_backup_activate),
 			('Statistics', None, _('Statistics'),
-				None, _('Show some statistics about the journal'), self.on_statisticsMenuItem_activate),
+				None, _('Show some statistics about the journal'), self.on_statistics_menu_item_activate),
 			('Quit', gtk.STOCK_QUIT, None,
 				None, _('Shutdown RedNotebook. It will not be sent to the tray.'),
 				self.main_window.on_quit_activate),
@@ -121,11 +121,11 @@ class MainMenuBar(object):
 			('Redo', gtk.STOCK_REDO, None,
 				'<Ctrl>y', _('Redo text edits or category entry additions'), self.on_redo),
 			('Cut', gtk.STOCK_CUT, None,
-				'', None, self.on_cutMenuItem_activate),
+				'', None, self.on_cut_menu_item_activate),
 			('Copy', gtk.STOCK_COPY, None,
-				'', None, self.on_copyMenuItem_activate),
+				'', None, self.on_copy_menu_item_activate),
 			('Paste', gtk.STOCK_PASTE, None,
-				'', None, self.on_pasteMenuItem_activate),
+				'', None, self.on_paste_menu_item_activate),
 			('Find', gtk.STOCK_FIND, None,
 				None, None, self.on_find_menuitem_activate),
 			('Options', gtk.STOCK_PREFERENCES, None,
@@ -133,9 +133,9 @@ class MainMenuBar(object):
 
 			('HelpMenu', None, _('_Help')),
 			#('CheckVersion', None, _('Check For New Version'),
-			#	None, _('Check for a new version now'), self.on_checkVersionMenuItem_activate),
+			#	None, _('Check for a new version now'), self.on_check_version_menu_item_activate),
 			('Help', gtk.STOCK_HELP, _('Contents'),
-				'<Ctrl>h', _('Open the RedNotebook documentation'), self.on_helpMenuItem_activate),
+				'<Ctrl>h', _('Open the RedNotebook documentation'), self.on_help_menu_item_activate),
 			('OnlineHelp', None, _('Get Help Online'),
 				None, _('Visit the RedNotebook forum'), self.on_online_help),
 			('Examples', None, _('Restore example content'),
@@ -177,17 +177,17 @@ class MainMenuBar(object):
 					for widget in widgets:
 						widget.set_tooltip_markup(tooltip)
 
-	def on_newJournalButton_activate(self, widget):
+	def on_new_journal_button_activate(self, widget):
 		self.main_window.show_dir_chooser('new')
 
-	def on_openJournalButton_activate(self, widget):
+	def on_open_journal_button_activate(self, widget):
 		self.main_window.show_dir_chooser('open')
 
-	def on_saveButton_clicked(self, widget):
-		self.redNotebook.saveToDisk()
+	def on_save_button_clicked(self, widget):
+		self.red_notebook.save_to_disk()
 
-	def on_saveAsMenuItem_activate(self, widget):
-		self.redNotebook.saveToDisk()
+	def on_save_as_menu_item_activate(self, widget):
+		self.red_notebook.save_to_disk()
 
 		self.main_window.show_dir_chooser('saveas')
 
@@ -209,64 +209,64 @@ class MainMenuBar(object):
 	def on_redo(self, widget):
 		self.main_window.undo_redo_manager.redo()
 
-	def on_copyMenuItem_activate(self, widget):
-		self.main_window.dayTextField.dayTextView.emit('copy_clipboard')
+	def on_copy_menu_item_activate(self, widget):
+		self.main_window.day_text_field.day_text_view.emit('copy_clipboard')
 
-	def on_pasteMenuItem_activate(self, widget):
-		self.main_window.dayTextField.dayTextView.emit('paste_clipboard')
+	def on_paste_menu_item_activate(self, widget):
+		self.main_window.day_text_field.day_text_view.emit('paste_clipboard')
 
-	def on_cutMenuItem_activate(self, widget):
+	def on_cut_menu_item_activate(self, widget):
 #		event = gtk.gdk.Event(gtk.gdk.KEY_PRESS)
 #		event.keyval = ord("X")
 #		event.state = gtk.gdk.CONTROL_MASK
-#		self.mainFrame.emit("key_press_event",event)
-		self.main_window.dayTextField.dayTextView.emit('cut_clipboard')
+#		self.main_frame.emit("key_press_event",event)
+		self.main_window.day_text_field.day_text_view.emit('cut_clipboard')
 
 	def on_find_menuitem_activate(self, widget):
 		'''
 		Change to search page and put the cursor into the search box
 		'''
-		self.main_window.searchNotebook.set_current_page(0)
-		self.main_window.searchBox.entry.grab_focus()
+		self.main_window.search_notebook.set_current_page(0)
+		self.main_window.search_box.entry.grab_focus()
 
 	def on_options_menuitem_activate(self, widget):
 		self.main_window.options_manager.on_options_dialog()
 
 
 	def on_backup_activate(self, widget):
-		self.redNotebook.backupContents(backup_file=self.main_window.get_backup_file())
+		self.red_notebook.backup_contents(backup_file=self.main_window.get_backup_file())
 		
-	def on_importMenuItem_activate(self, widget):
-		assistant = ImportAssistant(self.redNotebook)
+	def on_import_menu_item_activate(self, widget):
+		assistant = ImportAssistant(self.red_notebook)
 		assistant.run()
 
-	def on_exportMenuItem_activate(self, widget):
-		self.redNotebook.saveOldDay()
+	def on_export_menu_item_activate(self, widget):
+		self.red_notebook.save_old_day()
 		
 		# Set the date range for the export assistant
-		start_date = self.redNotebook.getEditDateOfEntryNumber(0)
+		start_date = self.red_notebook.get_edit_date_of_entry_number(0)
 		self.main_window.export_assistant.set_start_date(start_date)
-		end_date = self.redNotebook.getEditDateOfEntryNumber(-1)
+		end_date = self.red_notebook.get_edit_date_of_entry_number(-1)
 		self.main_window.export_assistant.set_end_date(end_date)
 		
 		self.main_window.export_assistant.prepare_pdf_button()
 		self.main_window.export_assistant.run()
 
-	def on_statisticsMenuItem_activate(self, widget):
-		self.redNotebook.stats.show_dialog(self.main_window.stats_dialog)
+	def on_statistics_menu_item_activate(self, widget):
+		self.red_notebook.stats.show_dialog(self.main_window.stats_dialog)
 
 	def on_example_menu_item_activate(self, widget):
-		self.redNotebook.addInstructionContent()
+		self.red_notebook.add_instruction_content()
 
-	def on_helpMenuItem_activate(self, widget):
-		temp_dir = self.redNotebook.dirs.tempDir
-		utils.write_file(info.helpText, os.path.join(temp_dir, 'source.txt'))
+	def on_help_menu_item_activate(self, widget):
+		temp_dir = self.red_notebook.dirs.temp_dir
+		utils.write_file(info.help_text, os.path.join(temp_dir, 'source.txt'))
 		headers = [_('RedNotebook Documentation'), info.version, '']
 		options = {'toc': 1,}
-		html = markup.convert(info.helpText, 'xhtml', headers, options)
+		html = markup.convert(info.help_text, 'xhtml', headers, options)
 		utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
 
-	#def on_checkVersionMenuItem_activate(self, widget):
+	#def on_check_version_menu_item_activate(self, widget):
 	#	utils.check_new_version(self.main_window, info.version)
 	
 	def on_online_help(self, widget):
@@ -279,19 +279,19 @@ class MainMenuBar(object):
 		webbrowser.open(info.bug_url)
 
 	def on_info_activate(self, widget):
-		self.infoDialog = self.main_window.builder.get_object('aboutDialog')
-		self.infoDialog.set_name('RedNotebook')
-		self.infoDialog.set_version(info.version)
-		self.infoDialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
-		self.infoDialog.set_comments(_('A Desktop Journal'))
+		self.info_dialog = self.main_window.builder.get_object('about_dialog')
+		self.info_dialog.set_name('RedNotebook')
+		self.info_dialog.set_version(info.version)
+		self.info_dialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
+		self.info_dialog.set_comments(_('A Desktop Journal'))
 		gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
-		self.infoDialog.set_website(info.url)
-		self.infoDialog.set_website_label(info.url)
-		self.infoDialog.set_authors(info.developers)
-		self.infoDialog.set_logo(gtk.gdk.pixbuf_new_from_file(\
-					os.path.join(filesystem.imageDir,'redNotebookIcon/rn-128.png')))
-		self.infoDialog.set_license(info.licenseText)
-		self.infoDialog.run()
-		self.infoDialog.hide()
+		self.info_dialog.set_website(info.url)
+		self.info_dialog.set_website_label(info.url)
+		self.info_dialog.set_authors(info.developers)
+		self.info_dialog.set_logo(gtk.gdk.pixbuf_new_from_file(\
+					os.path.join(filesystem.image_dir,'redNotebookIcon/rn-128.png')))
+		self.info_dialog.set_license(info.license_text)
+		self.info_dialog.run()
+		self.info_dialog.hide()
 
 

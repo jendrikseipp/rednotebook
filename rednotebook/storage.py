@@ -83,68 +83,68 @@ class Storage(object):
 		If an error occurs, return None
 		'''
 		# path: /something/somewhere/2009-01.txt
-		# fileName: 2009-01.txt
-		fileName = os.path.basename(path)
+		# file_name: 2009-01.txt
+		file_name = os.path.basename(path)
 		
 		try:
 			# Get Year and Month from filename
-			yearAndMonth, extension = os.path.splitext(fileName)
-			yearNumber, monthNumber = yearAndMonth.split('-')
-			yearNumber = int(yearNumber)
-			monthNumber = int(monthNumber)
-			assert monthNumber in range(1,13)
+			year_and_month, extension = os.path.splitext(file_name)
+			year_number, month_number = year_and_month.split('-')
+			year_number = int(year_number)
+			month_number = int(month_number)
+			assert month_number in range(1,13)
 		except Exception:
 			msg = 'Error: %s is an incorrect filename. ' \
 				'Filenames have to have the following form: ' \
 				'2009-01.txt for January 2009 ' \
-				'(yearWith4Digits-monthWith2Digits.txt)' % fileName
+				'(year_with4Digits-month_with2Digits.txt)' % file_name
 			logging.error(msg)
 			return
 		
-		monthFileString = path
+		month_file_string = path
 		
 		try:
 			# Try to read the contents of the file
-			with open(monthFileString, 'rb') as monthFile:
-				logging.debug('Start loading file "%s"' % monthFileString)
-				monthContents = yaml.load(monthFile, Loader=Loader)
-				logging.debug('Finished loading file "%s"' % monthFileString)
-				month = Month(yearNumber, monthNumber, monthContents)
+			with open(month_file_string, 'rb') as month_file:
+				logging.debug('Start loading file "%s"' % month_file_string)
+				month_contents = yaml.load(month_file, Loader=Loader)
+				logging.debug('Finished loading file "%s"' % month_file_string)
+				month = Month(year_number, month_number, month_contents)
 				return month
 		except yaml.YAMLError, exc:
-			logging.error('Error in file %s:\n%s' % (monthFileString, exc))
+			logging.error('Error in file %s:\n%s' % (month_file_string, exc))
 		except IOError:
 			#If that fails, there is nothing to load, so just display an error message
-			logging.error('Error: The file %s could not be read' % monthFileString)
+			logging.error('Error: The file %s could not be read' % month_file_string)
 		except Exception, err:
-			logging.error('An error occured while reading %s:' % monthFileString)
+			logging.error('An error occured while reading %s:' % month_file_string)
 			logging.error('%s' % err)
 		
 		
-	def save_months_to_disk(self, months, dir, frame, exitImminent=False, changing_journal=False, saveas=False):
+	def save_months_to_disk(self, months, dir, frame, exit_imminent=False, changing_journal=False, saveas=False):
 		'''
 		Do the actual saving
 		'''
-		for yearAndMonth, month in months.items():
+		for year_and_month, month in months.items():
 			# We always need to save everything when we are "saving as"
 			if (not month.empty and month.edited) or saveas:
 				something_saved = True
-				monthFileString = os.path.join(dir, yearAndMonth + '.txt')
-				with open(monthFileString, 'w') as monthFile:
-					monthContent = {}
-					for dayNumber, day in month.days.iteritems():
+				month_file_string = os.path.join(dir, year_and_month + '.txt')
+				with open(month_file_string, 'w') as month_file:
+					month_content = {}
+					for day_number, day in month.days.iteritems():
 						# do not add empty days
 						if not day.empty:
-							monthContent[dayNumber] = day.content
+							month_content[day_number] = day.content
 					
 					try:
-						# yaml.dump(monthContent, monthFile, Dumper=Dumper)
+						# yaml.dump(month_content, month_file, Dumper=Dumper)
 						# This version produces readable unicode and no python directives
-						yaml.safe_dump(monthContent, monthFile, allow_unicode=True)
+						yaml.safe_dump(month_content, month_file, allow_unicode=True)
 						month.edited = False
 					except OSError, err:
-						frame.show_save_error_dialog(exitImminent)
+						frame.show_save_error_dialog(exit_imminent)
 						return True
 					except IOError, err:
-						frame.show_save_error_dialog(exitImminent)
+						frame.show_save_error_dialog(exit_imminent)
 						return True	

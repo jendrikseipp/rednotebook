@@ -106,14 +106,14 @@ class RedNotebookHtmlBuffer(HtmlBuffer):
 		self.add_tag_reader(HtmlTagH3Reader(self))
 		
 		# overwrite keepnote par reader
-		self.parReader = HtmlTagParReader(self)
-		self.add_tag_reader(self.parReader)
+		self.par_reader = HtmlTagParReader(self)
+		self.add_tag_reader(self.par_reader)
 		
 	def read(self, html, partial=False, ignore_errors=False):
 		"""Read from stream infile to populate textbuffer"""
 		
 		# Enable check if we're at the top of a document
-		self.parReader.paragraphs = 0
+		self.par_reader.paragraphs = 0
 		
 		#self._text_queue = []
 		self._within_body = False
@@ -362,7 +362,7 @@ class HtmlEditor(KeepNoteEditor):
 	
 		
 if __name__ == '__main__':
-	txt2tagshtmlfile = '/home/jendrik/projects/Tests/completeTxt2tagsTest.html'
+	txt2tagshtmlfile = '/home/jendrik/projects/Tests/complete_txt2tags_test.html'
 	keepnotehtmlfile = '/home/jendrik/test/testpage/page.html'
 	knhtml = open(keepnotehtmlfile).read()
 	t2thtml = open(txt2tagshtmlfile).read()
@@ -400,7 +400,7 @@ if __name__ == '__main__':
 	
 	# Set-up the browser widget before we display it
 	win.add(mozbrowser) # Add the 'mozbrowser' widget to the main window 'win'
-	mozbrowser.load_url('file:///home/jendrik/projects/Tests/completeTxt2tagsTest.html') # Load a web page
+	mozbrowser.load_url('file:///home/jendrik/projects/Tests/complete_txt2tags_test.html') # Load a web page
 	mozbrowser.set_size_request(600,400) # Attempt to set the size of the browser widget to 600x400 pixels
 	mozbrowser.show() # Try to show the browser widget before we show the window, 
 	#so that the window appears at the correct size (600x400)

@@ -52,9 +52,9 @@ def coll(us, td=make_transdict()):
 	Unicode sort function
 	
 	Usage:
-	unicodeStrings = [u'\xe9cole', u'ecole', u'las', u'laß', u'lax', \
+	unicode_strings = [u'\xe9cole', u'ecole', u'las', u'laß', u'lax', \
 						u'ueber', u'über', u'zer']
-	unicodeStrings.sort(key=coll)
+	unicode_strings.sort(key=coll)
 	'''
 	if type(us) is not unicode:
 		us = unicode(us, errors='replace')

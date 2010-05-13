@@ -145,7 +145,7 @@ class ComboBoxOption(Option):
 		self.combo = CustomComboBoxEntry(gtk.ComboBoxEntry())
 		self.combo.set_entries(entries)
 		
-		self.pack_start(self.combo.comboBox, False)
+		self.pack_start(self.combo.combo_box, False)
 		
 	def get_value(self):
 		return self.combo.get_active_text()
@@ -196,7 +196,7 @@ class FontSizeOption(ComboBoxOption):
 			self.combo.set_active_text(str(size))
 			
 		self.combo.set_editable(False)
-		self.combo.comboBox.set_wrap_width(3)
+		self.combo.combo_box.set_wrap_width(3)
 		
 		self.combo.connect('changed', self.on_combo_changed)
 		
@@ -265,8 +265,8 @@ class OptionsManager(object):
 	def __init__(self, main_window):
 		self.main_window = main_window
 		self.builder = main_window.builder
-		self.redNotebook = main_window.redNotebook
-		self.config = self.redNotebook.config
+		self.red_notebook = main_window.red_notebook
+		self.config = self.red_notebook.config
 		
 		self.dialog = OptionsDialog(self.builder.get_object('options_dialog'))
 		self.dialog.set_default_size(600, 300)
@@ -288,7 +288,7 @@ class OptionsManager(object):
 		self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
 				tooltip=_('Closing the window will send RedNotebook to the tray')))
 		
-		able_to_spell_check = self.main_window.dayTextField.can_spell_check()
+		able_to_spell_check = self.main_window.day_text_field.can_spell_check()
 		tooltip = _('Underline misspelled words') if able_to_spell_check else \
 				_('Requires gtkspell.') + ' ' + \
 				_('This is included in the python-gtkspell or python-gnome2-extras package')
@@ -315,7 +315,7 @@ class OptionsManager(object):
 		def check_version_action(widget):
 			utils.check_new_version(self.main_window, info.version)
 			# Apply changes from dialog to options window
-			check = bool(self.redNotebook.config.get('checkForNewVersion'))
+			check = bool(self.red_notebook.config.get('checkForNewVersion'))
 			check_version_option.check_button.set_active(check)
 			
 		check_version_button = ActionButton(_('Check now'), check_version_action)
@@ -345,7 +345,7 @@ class OptionsManager(object):
 			self.main_window.cloud.update(force_update=True)
 			
 			spell_check_enabled = self.config.read('spellcheck', 0)
-			self.main_window.dayTextField.enable_spell_check(spell_check_enabled)
+			self.main_window.day_text_field.enable_spell_check(spell_check_enabled)
 			
 			visible = (self.config.read('closeToTray', 0) == 1)
 			self.main_window.tray_icon.set_visible(visible)

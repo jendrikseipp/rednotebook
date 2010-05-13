@@ -22,29 +22,29 @@ from __future__ import division
 from rednotebook.util import dates
 
 class Statistics(object):
-	def __init__(self, redNotebook):
-		self.redNotebook = redNotebook
+	def __init__(self, red_notebook):
+		self.red_notebook = red_notebook
 		
-	def getNumberOfWords(self):
-		numberOfWords = 0
-		for day in self.redNotebook.days:
-			numberOfWords += day.getNumberOfWords()
-		return numberOfWords
+	def get_number_of_words(self):
+		number_of_words = 0
+		for day in self.red_notebook.days:
+			number_of_words += day.get_number_of_words()
+		return number_of_words
 	
 	def get_number_of_distinct_words(self):
-		word_count_dict = self.redNotebook.getWordCountDict('word')
+		word_count_dict = self.red_notebook.get_word_count_dict('word')
 		number_of_distinct_words = len(word_count_dict)
 		return number_of_distinct_words
 	
-	def getNumberOfChars(self):
-		numberOfChars = 0
-		for day in self.redNotebook.days:
-			numberOfChars += len(day.text)
-		return numberOfChars
+	def get_number_of_chars(self):
+		number_of_chars = 0
+		for day in self.red_notebook.days:
+			number_of_chars += len(day.text)
+		return number_of_chars
 	
 	def get_number_of_usage_days(self):
 		'''Returns the timespan between the first and last entry'''
-		sorted_days = self.redNotebook.sortedDays
+		sorted_days = self.red_notebook.sorted_days
 		if len(sorted_days) <= 1:
 			return len(sorted_days)
 		first_day = sorted_days[0]
@@ -52,23 +52,23 @@ class Statistics(object):
 		timespan = last_day.date - first_day.date
 		return abs(timespan.days) + 1
 	
-	def getNumberOfEntries(self):
-		return len(self.redNotebook.days)
+	def get_number_of_entries(self):
+		return len(self.red_notebook.days)
 	
 	def get_edit_percentage(self):
 		total = self.get_number_of_usage_days()
-		edited = self.getNumberOfEntries()
+		edited = self.get_number_of_entries()
 		if total == 0:
 			return 0
 		percent = round(100 * edited / total, 2) 
 		return '%s%%' % percent
 	
 	def get_average_number_of_words(self):
-		if self.getNumberOfEntries() == 0:
+		if self.get_number_of_entries() == 0:
 			return 0
-		return round(self.getNumberOfWords() / self.getNumberOfEntries(), 2)
+		return round(self.get_number_of_words() / self.get_number_of_entries(), 2)
 	
-	def _getHTMLRow(self, key, value):
+	def _get_h_t_m_l_row(self, key, value):
 		return '<tr align="left">' +\
 				'<td bgcolor="#e7e7e7">&nbsp;&nbsp;' + key + '</td>' +\
 				'<td bgcolor="#aaaaaa">&nbsp;&nbsp;<b>' + str(value) + '</b></td>' + \
@@ -77,10 +77,10 @@ class Statistics(object):
 	@property
 	def overall_pairs(self):
 		return [
-				[_('Words'), self.getNumberOfWords()],
+				[_('Words'), self.get_number_of_words()],
 				[_('Distinct Words'), self.get_number_of_distinct_words()],
-				[_('Edited Days'), self.getNumberOfEntries()],
-				[_('Letters'), self.getNumberOfChars()],
+				[_('Edited Days'), self.get_number_of_entries()],
+				[_('Letters'), self.get_number_of_chars()],
 				[_('Days between first and last Entry'), self.get_number_of_usage_days()],
 				[_('Average number of Words'), self.get_average_number_of_words()],
 				[_('Percentage of edited Days'), self.get_edit_percentage()],
@@ -88,25 +88,25 @@ class Statistics(object):
 		
 	@property
 	def day_pairs(self):
-		day = self.redNotebook.day
+		day = self.red_notebook.day
 		return [
-				[_('Words'), day.getNumberOfWords()],
+				[_('Words'), day.get_number_of_words()],
 				[_('Lines'), len(day.text.splitlines())],
 				[_('Letters'), len(day.text)],
 				]
 	
-	def getStatsHTML(self):
-		self.redNotebook.saveOldDay()
+	def get_stats_h_t_m_l(self):
+		self.red_notebook.save_old_day()
 		page = '<html><body bgcolor="#8e8e95"><table cellspacing="5" border="0" width="400">\n'
 		stats = self.pairs
 		for key, value in stats:
-			page += self._getHTMLRow(key, value)
+			page += self._get_h_t_m_l_row(key, value)
 			
 		page += '</body></table></html>'
 		return page
 	
 	def show_dialog(self, dialog):
-		self.redNotebook.saveOldDay()
+		self.red_notebook.save_old_day()
 		
 		day_store = dialog.day_list.get_model()
 		day_store.clear()

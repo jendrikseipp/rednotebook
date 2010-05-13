@@ -27,7 +27,7 @@ if not hasattr(__builtin__, '_'):
 
 version = 			'0.9.5'
 author = 			'Jendrik Seipp'
-authorMail = 		'jendrikseipp@web.de'
+author_mail = 		'jendrikseipp@web.de'
 url = 				'http://rednotebook.sourceforge.net'
 forum_url = 		'http://apps.sourceforge.net/phpbb/rednotebook/'
 translation_url = 	'https://translations.launchpad.net/rednotebook/'
@@ -46,7 +46,7 @@ templates, export functionality and word clouds. You can also \
 format, tag and search your entries.\
 '''
 
-licenseText = '''\
+license_text = '''\
 Copyright (c) 2009  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
@@ -132,7 +132,7 @@ error_par = ' '.join([error1, error2])
 goodbye_par = _('Have a nice day!')
 
 
-completeWelcomeText = '''\
+complete_welcome_text = '''\
 %(greeting)s
 %(overview1)s
 
@@ -159,7 +159,7 @@ completeWelcomeText = '''\
 
 %(goodbye_par)s''' % globals()
 
-welcome_day = {'text': completeWelcomeText,
+welcome_day = {'text': complete_welcome_text,
 u'Cool Stuff': {u'Ate **two** cans of spam': None},
 _(u'Ideas'): {_(u'Use a cool journal app'): None},
 u'Movies': {u"Monty Python's Life of Brian": None},
@@ -277,7 +277,7 @@ multiple_entries_text = multiple_entries_text.replace('=== Play ===', '**Play**\
 todo_help_text = example_day3['text']
 
 
-helpText = '''
+help_text = '''
 == Text ==
 The main text field is the container for your normal diary entries like this one:
 
@@ -397,7 +397,7 @@ journal with "Journal->Open".
 Optionally you can also **share your settings** and templates. \
 This is possible since version 0.9.4. The relevant setting is found in \
 the file "rednotebook/files/default.cfg". There you can set the value of \
-userDir to the path where you want to share your settings between the \
+user_dir to the path where you want to share your settings between the \
 systems.
 
 == Portable mode ==
@@ -500,7 +500,7 @@ partition all RedNotebook data will be encrypted, too.
 
 === Week Numbers ===
 If you'd like to see the week numbers in the calendar, you can set the \
-value of weekNumbers to 1 in the configuration file. This file \
+value of week_numbers to 1 in the configuration file. This file \
 normally resides at $HOME/.rednotebook/configuration.cfg
 
 == Questions ==
@@ -538,23 +538,23 @@ def write_documentation(dir):
 	from rednotebook.util import utils
 	from rednotebook.util import markup
 
-	utils.write_file(helpText, os.path.join(dir, 'source.txt'))
+	utils.write_file(help_text, os.path.join(dir, 'source.txt'))
 	headers = [_('RedNotebook Documentation'), version, '']
 	options = {'toc': 1,}
-	html = markup.convert(helpText, 'xhtml', headers, options)
+	html = markup.convert(help_text, 'xhtml', headers, options)
 	utils.write_file(html, os.path.join(dir, 'help.html'))
 
 if __name__ == '__main__':
 	import sys
 	sys.path.insert(0, os.path.abspath("./../"))
 
-	print completeWelcomeText
+	print complete_welcome_text
 	print '*'*80
-	print helpText
+	print help_text
 
 	doc_dir = '../doc'
 	doc_dir = os.path.abspath(doc_dir)
 
 	write_documentation(doc_dir)
 
-	#logging.getLogger('').setLevel(logging.DEBUG)
+	#logging.get_logger('').set_level(logging.DEBUG)
