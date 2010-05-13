@@ -306,16 +306,11 @@ class ImportAssistant(gtk.Assistant):
 		
 		
 		
-
-		
-		
-		
 class Importer(object):
 	NAME = 'What do we import?'
 	DESCRIPTION = 'Short description of what we import'
-	REQUIREMENTS = [] #TODO
 	PATHTEXT = 'Select the directory containing the sources to import'
-	DEFAULTPATH = os.path.expanduser('~') #TODO
+	DEFAULTPATH = os.path.expanduser('~')
 	PATHTYPE = 'DIR'
 	EXTENSION = None
 	
@@ -363,26 +358,27 @@ class Importer(object):
 		return files
 
 
-# Allow 2010-05-08[.txt] with different separators
-sep = r'[:\._\-]?' # The separators :._-
-date_exp = re.compile(r'(\d{4})%s(\d{2})%s(\d{2})(?:\.txt)?' % (sep, sep))
-ref_date = datetime.date(2010, 5, 8)
-for test in ['2010-05-08', '2010.05-08', '2010:05_08.TxT', '20100508.TXT']:
-	match = date_exp.match(test)
-	date = datetime.date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
-	assert date == ref_date
+
 
 		
 class PlainTextImporter(Importer):
 	NAME = 'Plain Text'
 	DESCRIPTION = 'Import Text from plain textfiles'
-	REQUIREMENTS = []
 	PATHTEXT = 'Select a directory containing your data files'
 	PATHTYPE = 'DIR'
 	
+	# Allow 2010-05-08[.txt] with different or no separators
+	sep = r'[:\._\-]?' # The separators :._-
+	date_exp = re.compile(r'(\d{4})%s(\d{2})%s(\d{2})(?:\.txt)?' % (sep, sep))
+	ref_date = datetime.date(2010, 5, 8)
+	for test in ['2010-05-08', '2010.05-08', '2010:05_08.TxT', '20100508.TXT']:
+		match = date_exp.match(test)
+		date = datetime.date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+		assert date == ref_date
+	
 	def get_days(self, dir):
 		for file in self._get_files(dir):
-			match = date_exp.match(file)
+			match = self.date_exp.match(file)
 			if match:
 				year = int(match.group(1))
 				month = int(match.group(2))
@@ -399,7 +395,6 @@ class PlainTextImporter(Importer):
 class RedNotebookImporter(Importer):
 	NAME = 'RedNotebook Journal'
 	DESCRIPTION = 'Import data from a different RedNotebook journal'
-	REQUIREMENTS = []
 	PATHTEXT = 'Select a directory containing RedNotebook data files'
 	PATHTYPE = 'DIR'
 	
@@ -418,7 +413,6 @@ class RedNotebookImporter(Importer):
 class RedNotebookBackupImporter(RedNotebookImporter):
 	NAME = 'RedNotebook Zip Backup'
 	DESCRIPTION = 'Import a RedNotebook backup zip archive'
-	REQUIREMENTS = ['zipfile']
 	PATHTEXT = 'Select the backup zipfile'
 	PATHTYPE = 'FILE'
 	EXTENSION = 'zip'
@@ -459,7 +453,6 @@ class RedNotebookBackupImporter(RedNotebookImporter):
 class TomboyImporter(Importer):
 	NAME = 'Tomboy Notes'
 	DESCRIPTION = 'Import your Tomboy notes'
-	REQUIREMENTS = ['xml.etree']
 	PATHTEXT = 'Select the directory containing your tomboy notes'
 	DEFAULTPATH = os.getenv('XDG_DATA_HOME') or \
 		os.path.join(os.path.expanduser('~'), '.local', 'share', 'tomboy')

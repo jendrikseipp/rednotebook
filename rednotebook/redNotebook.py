@@ -48,11 +48,6 @@ def parse_options():
 						  #option_class=ExtOption,
 						  formatter=utils.IndentedHelpFormatterWithNL(),
 						  )
-#	parser.add_option(
-#		'-p', '--portable', dest='portable', default=False,
-#		action='store_true', 
-#		help='Run in portable mode ' \
-#			'(default: False)')
 	
 	parser.add_option(
 		'-d', '--debug', dest='debug', \
@@ -79,7 +74,7 @@ options, args = parse_options()
 import logging
 
 def setup_logging(log_file):
-	loggingLevels = {'debug': logging.DEBUG,
+	logging_levels = {'debug': logging.DEBUG,
 					'info': logging.INFO,
 					'warning': logging.WARNING,
 					'error': logging.ERROR,
@@ -97,14 +92,14 @@ def setup_logging(log_file):
 	# Write a log containing every output to a log file
 	logging.basicConfig(level=logging.DEBUG,
 						format='%(asctime)s %(levelname)-8s %(message)s',
-						#filename=filesystem.logFile,
+						#filename=filesystem.log_file,
 						#filemode='w',
 						stream=file_logging_stream,#sys.stdout,
 						)
 	
 	level = logging.INFO
 	#if len(sys.argv) > 1:
-		#level = loggingLevels.get(sys.argv[1], level)
+		#level = logging_levels.get(sys.argv[1], level)
 	if options.debug:
 		level = logging.DEBUG
 	
@@ -122,11 +117,11 @@ def setup_logging(log_file):
 	logging.info('Writing log to file "%s"' % log_file)
 
 
-default_config_file = os.path.join(filesystem.appDir, 'files', 'default.cfg')
+default_config_file = os.path.join(filesystem.app_dir, 'files', 'default.cfg')
 default_config = configuration.Config(default_config_file)
 
 dirs = filesystem.Filenames(default_config)
-setup_logging(dirs.logFile)
+setup_logging(dirs.log_file)
 
 ## ------------------ end Enable logging -------------------------------
 
@@ -157,7 +152,7 @@ if default_locale and not lang:
 	logging.debug('Setting LANG to %s' % default_locale)
 	os.environ['LANG'] = default_locale
 	
-LOCALE_PATH = os.path.join(dirs.appDir, 'i18n')
+LOCALE_PATH = os.path.join(dirs.app_dir, 'i18n')
 
 # the name of the gettext domain. because we have our translation files
 # not in a global folder this doesn't really matter, setting it to the
@@ -222,12 +217,12 @@ except (ImportError, AssertionError), e:
 
 	
 
-logging.info('AppDir: %s' % filesystem.appDir)
-baseDir = os.path.abspath(os.path.join(filesystem.appDir, '../'))
-logging.info('BaseDir: %s' % baseDir)
-if baseDir not in sys.path:
+logging.info('AppDir: %s' % filesystem.app_dir)
+base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
+logging.info('BaseDir: %s' % base_dir)
+if base_dir not in sys.path:
 	# Adding BaseDir to sys.path
-	sys.path.insert(0, baseDir)
+	sys.path.insert(0, base_dir)
 	
 
 # This version of import is needed for win32 to work
@@ -244,12 +239,12 @@ from rednotebook.storage import Storage
 #import rednotebook.storage
 from rednotebook.data import Month
 
-class RedNotebook:
+class Journal:
 	
 	def __init__(self):
 		self.dirs = dirs
 		
-		user_config = configuration.Config(self.dirs.configFile)
+		user_config = configuration.Config(self.dirs.config_file)
 		# Apply defaults where no custom values have been set
 		for key, value in default_config.items():
 			if key not in user_config:
@@ -285,7 +280,7 @@ class RedNotebook:
 		
 		utils.set_environment_variables(self.config)
 		
-		self.actualDate = datetime.date.today()
+		self.actual_date = datetime.date.today()
 		
 		# Let components check if the MainWindow has been created
 		self.frame = None
@@ -302,7 +297,7 @@ class RedNotebook:
 			
 		# Automatically save the content after a period of time
 		if not self.testing:
-			gobject.timeout_add_seconds(600, self.saveToDisk)
+			gobject.timeout_add_seconds(600, self.save_to_disk)
 			
 	
 	def get_journal_path(self):
@@ -311,9 +306,9 @@ class RedNotebook:
 		not present
 		'''
 		if not args:
-			data_dir = self.config.read('dataDir', self.dirs.dataDir)
+			data_dir = self.config.read('dataDir', self.dirs.data_dir)
 			if not os.path.isabs(data_dir):
-				data_dir = os.path.join(self.dirs.appDir, data_dir)
+				data_dir = os.path.join(self.dirs.app_dir, data_dir)
 				data_dir = os.path.normpath(data_dir)
 			return data_dir
 		
@@ -325,7 +320,7 @@ class RedNotebook:
 		
 		logging.debug('Trying to find journal "%s"' % path_arg)
 		
-		paths_to_check = [path_arg, os.path.join(self.dirs.redNotebookUserDir, path_arg)]
+		paths_to_check = [path_arg, os.path.join(self.dirs.rednotebook_user_dir, path_arg)]
 		
 		for path in paths_to_check:
 			if os.path.exists(path):
@@ -342,36 +337,36 @@ class RedNotebook:
 			
 	
 	
-	def getDaysInDateRange(self, range):
-		startDate, endDate = range
-		assert startDate <= endDate
+	def get_days_in_date_range(self, range):
+		start_date, end_date = range
+		assert start_date <= end_date
 		
-		sortedDays = self.sortedDays
-		daysInDateRange = []
-		for day in sortedDays:
-			if day.date < startDate:
+		sorted_days = self.sorted_days
+		days_in_date_range = []
+		for day in sorted_days:
+			if day.date < start_date:
 				continue
-			elif day.date >= startDate and day.date <= endDate:
-				daysInDateRange.append(day)
-			elif day.date > endDate:
+			elif day.date >= start_date and day.date <= end_date:
+				days_in_date_range.append(day)
+			elif day.date > end_date:
 				break
-		return daysInDateRange
+		return days_in_date_range
 		
 		
-	def _getSortedDays(self):
+	def _get_sorted_days(self):
 		return sorted(self.days, key=lambda day: day.date)
-	sortedDays = property(_getSortedDays)
+	sorted_days = property(_get_sorted_days)
 	
 	
-	def getEditDateOfEntryNumber(self, entryNumber):
-		sortedDays = self.sortedDays
-		if len(self.sortedDays) == 0:
+	def get_edit_date_of_entry_number(self, entry_number):
+		sorted_days = self.sorted_days
+		if len(self.sorted_days) == 0:
 			return datetime.date.today()
-		return self.sortedDays[entryNumber % len(sortedDays)].date
+		return self.sorted_days[entry_number % len(sorted_days)].date
 	
 	
-	def backupContents(self, backup_file):
-		self.saveToDisk()
+	def backup_contents(self, backup_file):
+		self.save_to_disk()
 		
 		if backup_file:
 			self.archiver.backup(backup_file)
@@ -383,46 +378,46 @@ class RedNotebook:
 		# Make it possible to stop the program from exiting
 		# e.g. if the journal could not be saved
 		self.is_allowed_to_exit = True
-		self.saveToDisk(exitImminent=True)
+		self.save_to_disk(exit_imminent=True)
 		
 		if self.is_allowed_to_exit:
 			logging.info('Goodbye!')
 			gtk.main_quit()
 
 	
-	def saveToDisk(self, exitImminent=False, changing_journal=False, saveas=False):
+	def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
 		logging.info('Trying to save the journal')
 		
-		self.saveOldDay()
+		self.save_old_day()
 			
 		try:
-			filesystem.makeDirectory(self.dirs.dataDir)
+			filesystem.make_directory(self.dirs.data_dir)
 		except OSError, err:
-			self.frame.show_save_error_dialog(exitImminent)
+			self.frame.show_save_error_dialog(exit_imminent)
 			return True
 			
-		if not os.path.exists(self.dirs.dataDir):
+		if not os.path.exists(self.dirs.data_dir):
 			logging.error('Save path does not exist')
-			self.frame.show_save_error_dialog(exitImminent)
+			self.frame.show_save_error_dialog(exit_imminent)
 			return True
 			
 		
 		something_saved = self.storage.save_months_to_disk(self.months, \
-			self.dirs.dataDir, self.frame, exitImminent, changing_journal, saveas)					
+			self.dirs.data_dir, self.frame, exit_imminent, changing_journal, saveas)					
 		
 		if something_saved:
-			self.showMessage(_('The content has been saved to %s') % self.dirs.dataDir, error=False)
+			self.show_message(_('The content has been saved to %s') % self.dirs.data_dir, error=False)
 		else:
-			self.showMessage(_('Nothing to save'), error=False)
+			self.show_message(_('Nothing to save'), error=False)
 		
 		if self.config.changed():
 			try:
-				filesystem.makeDirectory(self.dirs.redNotebookUserDir)
-				self.config.saveToDisk()
+				filesystem.make_directory(self.dirs.red_notebook_user_dir)
+				self.config.save_to_disk()
 			except IOError, err:
-				self.showMessage(_('Configuration could not be saved. Please check your permissions'))
+				self.show_message(_('Configuration could not be saved. Please check your permissions'))
 		
-		if not (exitImminent or changing_journal) and something_saved:
+		if not (exit_imminent or changing_journal) and something_saved:
 			# Update cloud
 			self.frame.cloud.update(force_update=True)
 			
@@ -433,7 +428,7 @@ class RedNotebook:
 	def open_journal(self, data_dir, load_files=True):
 		
 		if self.months:
-			self.saveToDisk(changing_journal=True)
+			self.save_to_disk(changing_journal=True)
 			
 		# Password Protection
 		#password = self.config.read('password', '')
@@ -452,12 +447,12 @@ class RedNotebook:
 		if not load_files and not data_dir_empty:
 			msg_part1 = _('The selected folder is not empty.')
 			msg_part2 = _('To prevent you from overwriting data, the folder content has been imported into the new journal.')
-			self.showMessage('%s %s' % (msg_part1, msg_part2), error=False)
+			self.show_message('%s %s' % (msg_part1, msg_part2), error=False)
 		elif load_files and data_dir_empty:
-			self.showMessage(_('The selected folder is empty. A new journal has been created.'), \
+			self.show_message(_('The selected folder is empty. A new journal has been created.'), \
 								error=False)
 		
-		self.dirs.dataDir = data_dir
+		self.dirs.data_dir = data_dir
 		
 		self.month = None
 		self.months.clear()
@@ -467,27 +462,27 @@ class RedNotebook:
 			self.months = self.storage.load_all_months_from_disk(data_dir)
 		
 		# Nothing to save before first day change
-		self.loadDay(self.actualDate)
+		self.load_day(self.actual_date)
 		
 		self.stats = Statistics(self)
 		
-		sortedCategories = sorted(self.nodeNames, key=lambda category: str(category).lower())
-		self.frame.categoriesTreeView.categories = sortedCategories
+		sorted_categories = sorted(self.node_names, key=lambda category: str(category).lower())
+		self.frame.categories_tree_view.categories = sorted_categories
 		
 		if self.dirs.is_first_start and data_dir_empty:
 			logging.info('Adding example content')
-			self.addInstructionContent()
+			self.add_instruction_content()
 			
 		# Notebook is only on page 1 here, if we are opening a journal the second time
-		if self.frame.searchNotebook.get_current_page() == 1:
+		if self.frame.search_notebook.get_current_page() == 1:
 			# We have opened a new journal
 			self.frame.cloud.update(force_update=True)
 		else:
 			# Show cloud tab, cloud is updated automatically
-			self.frame.searchNotebook.set_current_page(1)
+			self.frame.search_notebook.set_current_page(1)
 		
 		# Reset Search
-		self.frame.searchBox.clear()
+		self.frame.search_box.clear()
 		
 		self.title = filesystem.get_journal_title(data_dir)
 		
@@ -496,7 +491,7 @@ class RedNotebook:
 			frame_title = 'RedNotebook'
 		else:
 			frame_title = 'RedNotebook - ' + self.title
-		self.frame.mainFrame.set_title(frame_title)
+		self.frame.main_frame.set_title(frame_title)
 		
 		# Save the folder for next start
 		if not self.dirs.portable:
@@ -512,33 +507,33 @@ class RedNotebook:
 		otherwise a new month is created and returned
 		'''
 		
-		yearAndMonth = dates.getYearAndMonthFromDate(date)
+		year_and_month = dates.get_year_and_month_from_date(date)
 		
 		# Selected month has not been loaded or created yet
-		if not self.months.has_key(yearAndMonth):
-			self.months[yearAndMonth] = Month(date.year, date.month)
+		if not self.months.has_key(year_and_month):
+			self.months[year_and_month] = Month(date.year, date.month)
 			
-		return self.months[yearAndMonth]
+		return self.months[year_and_month]
 	
 	
-	def saveOldDay(self):
+	def save_old_day(self):
 		'''Order is important'''
 		old_content = self.day.content
-		self.day.content = self.frame.categoriesTreeView.get_day_content()
+		self.day.content = self.frame.categories_tree_view.get_day_content()
 		self.day.text = self.frame.get_day_text()
 		
 		content_changed = not (old_content == self.day.content)
 		if content_changed:
 			self.month.edited = True
 		
-		self.frame.calendar.setDayEdited(self.date.day, not self.day.empty)
+		self.frame.calendar.set_day_edited(self.date.day, not self.day.empty)
 	
 	
-	def loadDay(self, newDate):
-		oldDate = self.date
-		self.date = newDate
+	def load_day(self, new_date):
+		old_date = self.date
+		self.date = new_date
 		
-		if not Month.sameMonth(newDate, oldDate) or self.month is None:
+		if not Month.same_month(new_date, old_date) or self.month is None:
 			self.month = self.get_month(self.date)
 			#self.month.visited = True
 		
@@ -549,55 +544,55 @@ class RedNotebook:
 		'''
 		Method used by importers
 		'''
-		self.saveOldDay()
+		self.save_old_day()
 		for new_day in days:
 			date = new_day.date
 			month = self.get_month(date)
-			old_day = month.getDay(date.day)
+			old_day = month.get_day(date.day)
 			old_day.merge(new_day)
 			month.edited = True
 			
 		
-	def _getCurrentDay(self):
-		return self.month.getDay(self.date.day)
-	day = property(_getCurrentDay)
+	def _get_current_day(self):
+		return self.month.get_day(self.date.day)
+	day = property(_get_current_day)
 	
 	
-	def changeDate(self, newDate):
-		if newDate == self.date:
+	def change_date(self, new_date):
+		if new_date == self.date:
 			return
 		
-		self.saveOldDay()
-		self.loadDay(newDate)
+		self.save_old_day()
+		self.load_day(new_date)
 		
 		
-	def goToNextDay(self):
-		self.changeDate(self.date + dates.oneDay)
+	def go_to_next_day(self):
+		self.change_date(self.date + dates.one_day)
 		
 		
-	def goToPrevDay(self):
-		self.changeDate(self.date - dates.oneDay)
+	def go_to_prev_day(self):
+		self.change_date(self.date - dates.one_day)
 			
 			
-	def showMessage(self, messageText, error=False, countdown=True):
-		self.frame.statusbar.showText(messageText, error, countdown)
-		logging.info(messageText)
+	def show_message(self, message_text, error=False, countdown=True):
+		self.frame.statusbar.show_text(message_text, error, countdown)
+		logging.info(message_text)
 		
 		
-	def _getNodeNames(self):
-		nodeNames = set([])
+	def _get_node_names(self):
+		node_names = set([])
 		for month in self.months.values():
-			nodeNames |= set(month.nodeNames)
-		return list(nodeNames)
-	nodeNames = property(_getNodeNames)
+			node_names |= set(month.node_names)
+		return list(node_names)
+	node_names = property(_get_node_names)
 	
 	
-	def _getTags(self):
+	def _get_tags(self):
 		tags = set([])
 		for month in self.months.values():
 			tags |= set(month.tags)
 		return list(tags)
-	tags = property(_getTags)
+	tags = property(_get_tags)
 	
 	
 	def search(self, text=None, category=None, tag=None):
@@ -620,65 +615,65 @@ class RedNotebook:
 		return results
 	
 	
-	def _getAllEditedDays(self):
+	def _get_all_edited_days(self):
 		# The day being edited counts too
 		if self.frame:
-			self.saveOldDay()
+			self.save_old_day()
 			
 		days = []
 		for month in self.months.values():
-			daysInMonth = month.days.values()
+			days_in_month = month.days.values()
 			
 			# Filter out days without content
-			daysInMonth = filter(lambda day: not day.empty, daysInMonth)
-			days.extend(daysInMonth)
+			days_in_month = filter(lambda day: not day.empty, days_in_month)
+			days.extend(days_in_month)
 		return days
-	days = property(_getAllEditedDays)
+	days = property(_get_all_edited_days)
 	
 	
-	def getWordCountDict(self, type):
+	def get_word_count_dict(self, type):
 		'''
 		Returns a dictionary mapping the words to their number of appearance
 		'''
-		wordDict = collections.defaultdict(int)
+		word_dict = collections.defaultdict(int)
 		for day in self.days:
 			if type == 'word':
 				words = day.words
 			if type == 'category':
-				words = day.nodeNames
+				words = day.node_names
 			if type == 'tag':
 				words = day.tags
 			
 			for word in words:
-				wordDict[word.lower()] += 1
-		return wordDict
+				word_dict[word.lower()] += 1
+		return word_dict
 	
 	def go_to_first_empty_day(self):
-		if len(self.sortedDays) == 0:
+		if len(self.sorted_days) == 0:
 			return datetime.date.today()
 		
-		last_edited_day = self.sortedDays[-1]
-		first_empty_date = last_edited_day.date + dates.oneDay
-		self.changeDate(first_empty_date)
+		last_edited_day = self.sorted_days[-1]
+		first_empty_date = last_edited_day.date + dates.one_day
+		self.change_date(first_empty_date)
 			
 	
-	def addInstructionContent(self):
+	def add_instruction_content(self):
 		self.go_to_first_empty_day()
 		current_date = self.date
 		
 		for example_day in info.example_content:
 			self.day.content = example_day
 			self.frame.set_date(self.month, self.date, self.day)
-			self.goToNextDay()
+			self.go_to_next_day()
 		
-		self.changeDate(current_date)
+		self.change_date(current_date)
 		
 	
 	
 def main():
 	start_time = time.time()
-	redNotebook = RedNotebook()
-	utils.setup_signal_handlers(redNotebook)
+	journal = Journal()
+	utils.setup_signal_handlers(journal)
 	end_time = time.time()
 	logging.debug('Start took %s seconds' % (end_time - start_time))
 	
@@ -689,7 +684,7 @@ def main():
 		#file_logging_stream.close()
 	except KeyboardInterrupt:
 		# 'Interrupt'
-		#redNotebook.saveToDisk()
+		#journal.save_to_disk()
 		sys.exit()
 		
 
