@@ -234,7 +234,7 @@ from rednotebook import backup
 
 
 from rednotebook.util.statistics import Statistics
-from rednotebook.gui.mainWindow import MainWindow
+from rednotebook.gui.main_window import MainWindow
 from rednotebook.storage import Storage
 #import rednotebook.storage
 from rednotebook.data import Month

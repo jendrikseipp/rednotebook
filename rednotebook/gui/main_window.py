@@ -56,7 +56,7 @@ from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook import undo
 
-from rednotebook.gui.exportAssistant import ExportAssistant
+from rednotebook.gui.export_assistant import ExportAssistant
 from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
 from rednotebook.gui import browser
