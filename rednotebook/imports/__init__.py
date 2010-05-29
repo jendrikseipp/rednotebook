@@ -196,10 +196,10 @@ class SummaryPage(AssistantPage):
 		
 		
 class ImportAssistant(gtk.Assistant):
-	def __init__(self, redNotebook, *args, **kwargs):
+	def __init__(self, journal, *args, **kwargs):
 		gtk.Assistant.__init__(self, *args, **kwargs)
 		
-		self.redNotebook = redNotebook
+		self.journal = journal
 		
 		self.importers = get_importers()
 		
@@ -248,13 +248,16 @@ class ImportAssistant(gtk.Assistant):
 		Do the import
 		'''
 		self.hide()
-		self.redNotebook.merge_days(self.days)
+		self.journal.merge_days(self.days)
+		
+		# We want to see the new contents of the currently loaded day
+		# so reload current day
+		self.journal.load_day(self.journal.date)
 		
 	def _on_prepare(self, assistant, page):
 		'''
 		Called when a new page should be prepared, before it is shown
 		'''
-		#print 'preparing page', assistant.get_current_page()
 		if page == self.page2:
 			self.importer = self.page1.get_selected_importer()
 			self.page2.prepare(self.importer)
@@ -271,7 +274,6 @@ class ImportAssistant(gtk.Assistant):
 	def add_days(self):
 		self.days = []
 		for day in self.importer.get_days(self.path):
-			#self.days.sort(key=lambda day: day.date)
 			self.page3.add_day(day)
 			self.days.append(day)
 		self.set_page_complete(self.page3, True)

@@ -61,7 +61,7 @@ from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
 from rednotebook.gui import browser
 
-test_zeitgeist = True
+test_zeitgeist = False
 if test_zeitgeist:
 	from rednotebook.gui import journalgeist
 
@@ -214,7 +214,8 @@ class MainWindow(object):
 		# Only add the config variable if zeitgeist is available
 		use_zeitgeist = test_zeitgeist and journalgeist.zeitgeist and \
 						self.journal.config.read('useZeitgeist', 0)
-		use_zeitgeist = True
+		self.zeitgeist_widget = None
+		#use_zeitgeist = True
 		logging.info('Using zeitgeist: %s' % use_zeitgeist)
 		
 		if use_zeitgeist:
@@ -951,7 +952,8 @@ class MainWindow(object):
 		self.day_text_field.set_text(day.text)
 		self.categories_tree_view.set_day_content(day)
 		
-		self.zeitgeist_widget.set_date(new_date)
+		if self.zeitgeist_widget:
+			self.zeitgeist_widget.set_date(new_date)
 		
 		self.undo_redo_manager.clear()
 		

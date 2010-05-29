@@ -108,6 +108,7 @@ def _get_config(type):
 	config['postproc'] = []
 	config['preproc'] = []
 	
+	
 	if type == 'xhtml' or type == 'html':
 		config['encoding'] = 'UTF-8'	   # document encoding
 		config['toc'] = 0
@@ -116,10 +117,13 @@ def _get_config(type):
 		config['css-sugar'] = 1
 	
 		# keepnote only recognizes "<strike>"
-		config['postproc'].append(['(?i)(</?)s>', '\\1strike>'])
+		config['postproc'].append(['(?i)(</?)s>', r'\1strike>'])
 		
 		# Allow line breaks, r'\\\\' are 2 \ for regexes
 		config['postproc'].append([r'\\\\', '<br />'])
+		
+		# Apply image resizing
+		config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
 		
 	elif type == 'tex':
 		config['encoding'] = 'utf8'
@@ -132,16 +136,29 @@ def _get_config(type):
 		config['preproc'].append([r'""\.', r'""".'])
 		
 		# For images we have to omit the file:// prefix
-		config['postproc'].append([r'includegraphics\{"file://', r'includegraphics{"'])
+		config['postproc'].append([r'includegraphics\{(.*)"file://', r'includegraphics{"\1'])
+		#config['postproc'].append([r'includegraphics\{"file://', r'includegraphics{"'])
 		
 		# Allow line breaks, r'\\\\' are 2 \ for regexes
 		config['postproc'].append([r'\$\\backslash\$\$\\backslash\$', r'\\\\'])
+		
+		# Apply image resizing
+		config['postproc'].append([r'includegraphics\{("?)WIDTH(\d+)-', r'includegraphics[width=\2px]{\1'])
 		
 	elif type == 'txt':
 		# Allow line breaks, r'\\\\' are 2 \ for regexes
 		config['postproc'].append([r'\\\\', '\n'])
 		
+		# Apply image resizing ([WIDTH400-file:///pathtoimage.jpg])
+		config['postproc'].append([r'\[WIDTH(\d+)-(.+)\]', r'[\2?\1]'])
+		
+	# Allow resizing images by changing 
+	# [filename.png?width] to [WIDTHwidth-filename.png]
+	img_ext = r'png|jpe?g|gif|eps|bmp'
+	img_name = r'\S.*\S|\S'
 	
+	# Apply this prepoc only after the latex image quotes have been added
+	config['preproc'].append([r'\[(%s\.(%s))\?(\d+)\]' % (img_name, img_ext), r'[WIDTH\3-\1]'])
 	
 	return config
 	
@@ -299,11 +316,18 @@ normal text, normal_text_with_underscores and ""raw_text_with_underscores""
 
 [""/home/jendrik/Desktop/desktop pics/bg8_karte_s1_rgb"".jpg]'''
 
+	
+	
+	markup =  '[""/image"".png?50]\n'
+	markup += '[""/image"".jpg]\n'
+	markup += '[""file:///image"".png?10]\n'
+	markup += '[""file:///image"".jpg]\n'
+	
+	#html = convert(markup, 'xhtml')
+	#print html
+	
 	latex = convert(markup, 'tex')
 	print latex
-	
-	html = convert(markup, 'xhtml')
-	#print html
 	
 	
 				

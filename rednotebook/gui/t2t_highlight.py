@@ -28,7 +28,8 @@ if __name__ == '__main__':
 
 from rednotebook.external import gtkcodebuffer
 from rednotebook.external import txt2tags
-from rednotebook.gui.richtext import HtmlEditor
+#from rednotebook.gui.richtext import HtmlEditor
+from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
 
 logging.getLogger('').setLevel(logging.DEBUG)
@@ -264,8 +265,12 @@ linebreak = MultiPattern(r'(\\\\)', [(1, 'bold')])
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 # \w = [a-zA-Z0-9_]
 # Added ":-" for "file://5-5.jpg"
-pic = MultiPattern(r'(\["")([^\s][\w\s_,.+%$#@!?+~/-:-]+[^\s]("")\.(png|jpe?g|gif|eps|bmp))(\])', \
-		[(1, 'grey'), (2, 'bold'), (3, 'grey'), (5, 'grey')], flags='LI')
+# filename = One char or two chars with possibly whitespace in the middle
+#filename = r'\S[\w\s_,.+%$#@!?+~/-:-\(\)]*\S|\S'
+filename = r'\S.*\S|\S'
+ext = r'png|jpe?g|gif|eps|bmp'
+pic = MultiPattern(r'(\["")(%s)("")\.(%s)(\?\d+)?(\])' % (filename, ext), \
+		[(1, 'grey'), (2, 'bold'), (3, 'grey'), (4, 'bold'), (5, 'grey')], flags='LI')
 
 # named link on hdd [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
 # named link in web [heise ""http://heise.de""]
@@ -315,7 +320,7 @@ if __name__ == '__main__':
 	win = gtk.Window(gtk.WINDOW_TOPLEVEL)
 	scr = gtk.ScrolledWindow()
 
-	html_editor = HtmlEditor()
+	html_editor = HtmlView()
 
 	def change_text(widget):
 		html = markup.convert(widget.get_text(widget.get_start_iter(), \
@@ -332,7 +337,7 @@ if __name__ == '__main__':
 	win.add(vbox)
 	scr.add(gtk.TextView(buff))
 
-	win.set_default_size(600,400)
+	win.set_default_size(800,600)
 	win.set_position(gtk.WIN_POS_CENTER)
 	win.show_all()
 	win.connect("destroy", lambda w: gtk.main_quit())
