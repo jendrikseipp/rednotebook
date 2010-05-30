@@ -35,6 +35,28 @@ from rednotebook.util import filesystem
 from rednotebook.util import dates
 from rednotebook.util import utils
 
+use_mathjax = False
+
+mathjax_header = '''\
+<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/MathJax/MathJax.js">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js","TeX/noErrors.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+'''
+
+mathjax_header = '''\
+<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/MathJax/MathJax.js">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+'''
+
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -124,6 +146,10 @@ def _get_config(type):
 		
 		# Apply image resizing
 		config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
+		
+		if use_mathjax:
+			# Insert MathJax Header
+			config['postproc'].append(['</head>', mathjax_header + '</head>'])
 		
 	elif type == 'tex':
 		config['encoding'] = 'utf8'
@@ -217,7 +243,7 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 	except:
 		result = txt2tags.getUnknownErrorMessage()
 		logging.error(result)
-	
+	print result
 	return result
 
 def convert_to_pango(txt, headers=None, options=None):
@@ -323,11 +349,11 @@ normal text, normal_text_with_underscores and ""raw_text_with_underscores""
 	markup += '[""file:///image"".png?10]\n'
 	markup += '[""file:///image"".jpg]\n'
 	
-	#html = convert(markup, 'xhtml')
-	#print html
+	html = convert(markup, 'xhtml')
+	print html
 	
-	latex = convert(markup, 'tex')
-	print latex
+	#latex = convert(markup, 'tex')
+	#print latex
 	
 	
 				
