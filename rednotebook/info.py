@@ -25,7 +25,7 @@ if not hasattr(__builtin__, '_'):
 	def _(string):
 		return string
 
-version = 			'0.9.5'
+version = 			'1.0.0'
 author = 			'Jendrik Seipp'
 author_mail = 		'jendrikseipp@web.de'
 url = 				'http://rednotebook.sourceforge.net'
@@ -428,8 +428,9 @@ Make sure to type all links with the full path including the protocol:
 
 ===Convert Latex output to PDF===
 
-Since version 0.9.2 you can export your journal directly to PDF, so this section \
-may be obsolete. However, there may be some people who prefer to export their \
+Since version 0.9.2 you can export your journal directly to PDF on Linux, \
+so this section may be obsolete. \
+However, there may be some people who prefer to export their \
 journal to Latex first and convert it to PDF later. Here is how you do it:
 
 **Linux**
@@ -500,8 +501,96 @@ partition all RedNotebook data will be encrypted, too.
 
 === Week Numbers ===
 If you'd like to see the week numbers in the calendar, you can set the \
-value of week_numbers to 1 in the configuration file. This file \
+value of weekNumbers to 1 in the configuration file. This file \
 normally resides at $HOME/.rednotebook/configuration.cfg
+
+=== Language ===
+If you want to change RedNotebook's language, setting the environment \
+variable LANG to a different language code should be sufficient. \
+Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German). \
+To set the language to English you can also set the code to "C".
+
+On Linux, start a terminal and call ``LANG=de_DE.utf8``. Then in the \
+same terminal, run ``rednotebook``. The language change will be gone \
+however once you close the terminal.
+
+On Windows, set or create a PATH environment variable with the desired \
+code.
+
+=== Insert HTML or Latex code ===
+To insert custom code into your entries surround the code with single \
+quotes. Use 2 single quotes for inline insertions and 3 single quotes \
+if you want to insert a whole paragraph. For paragraphs be sure to put \
+the single quotes on their own line. \
+This feature requires you to use webkit for previews.
+
+||   Text                  |   Output                              |
+| ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
+| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' in Latex) |
+
+This feature can be used to insert e.g. latex formulas:
+
+```
+\'''
+$$\sum_{i=1}^{n} i = \\frac{n \cdot (n+1)}{2}$$
+\'''
+```
+
+will produce a nice looking formula in the Latex export.
+
+=== Insert verbatim text (Preserve format) ===
+To insert preformatted text preserving newlines and spaces, you can \
+use the backquotes (`). Use 2 backquotes for inline insertions and 3 \
+backquotes if you want to insert a whole paragraph. \
+For paragraphs be sure to put the backquotes on their own line. \
+This feature requires you to use webkit for previews.
+
+Two examples (have a look at the [source source.txt] to see how it's done):
+
+To install rednotebook use ``sudo apt-get install rednotebook``.
+
+```
+class Robot(object):
+    def greet(self):
+        print 'Hello World'
+
+robot = Robot()
+robot.greet()
+```
+
+=== List of all Entries ===
+To get a list of all entries, just search for " " (the space character). \
+This character is most likely included in all entries. You can sort the \
+resulting list chronologically by pressing the "Date" button.
+
+== Data Format ==
+In this paragraph I will explain shortly what the RedNotebook files \
+consist of. Firstly it is important to understand that the content \
+is saved in a directory with many files, not just one file. \
+The directory name is used as a name for the journal.
+
+In the directory there are several files all conforming to the naming \
+scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files \
+correspond to months (May 2010). 
+
+Each month file contains text for the days of that month. \
+The text is actually [YAML www.yaml.org] markup. Without the \
+(unnecessary) python directives the files look like this:
+
+```
+24: {text: "This is a normal text entry."}
+25:
+  Ideas: {"Invent Anti-Hangover machine": null}
+  text: "This is another text entry, shown in the main text area."
+```
+
+As you can see the data format uses a dictionary (or hashmap structure) \
+for storing the information. The outer dictionary has the daynumbers as \
+keys and the day content as values. The day values consist of another \
+dictionary. It can have a key "text" whose value will be inserted in \
+the main content area. Additionally there can be multiple other keys \
+that stand for the categories that belong to that day. Each category \
+contains a dictionary with only one key, the category entry.
 
 == Questions ==
 If you have any questions or comments, feel free to post them in the \
@@ -557,4 +646,4 @@ if __name__ == '__main__':
 
 	write_documentation(doc_dir)
 
-	#logging.get_logger('').set_level(logging.DEBUG)
+	#logging.getLogger('').setLevel(logging.DEBUG)

@@ -155,6 +155,15 @@ def get_relative_path(from_dir, to_dir):
 	if we run python <= 2.5, return the absolute path to to_dir
 	'''
 	if getattr(os.path, 'relpath', None):
+		# If the data is saved on two different windows partitions,
+		# return absolute path to to_dir
+		drive1, tail = os.path.splitdrive(from_dir)
+		drive2, tail = os.path.splitdrive(to_dir)
+		
+		# drive1 and drive2 are always empty strings on Unix
+		if not drive1.upper() == drive2.upper():
+			return to_dir
+		
 		return os.path.relpath(to_dir, from_dir)
 	else:
 		return to_dir
@@ -347,4 +356,4 @@ def read_file(filename):
 			logging.info(err)
 		except Exception, e:
 			logging.error(e)
-	return None
+	return ''

@@ -164,7 +164,12 @@ class TemplateManager(object):
 		default_date_string = '%A, %x %X'
 		date_string = self.main_window.journal.config.read('dateTimeString', default_date_string)
 		date = time.strftime(date_string)
-		text = text.replace('$date$', date)
+		try:
+			text = text.replace('$date$', date)
+		except UnicodeDecodeError, err:
+			# TODO: Figure out real source of the error,
+			# maybe load config with filesystem.read_file
+			logging.error('Error replacing $date$: "%s"' % err)
 		
 		return text
 		

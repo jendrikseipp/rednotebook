@@ -49,7 +49,7 @@ O Encryption/Password
   - binary is called 7zr
   
   
-O Automatic insertions
+X Automatic insertions
   - Use code from Zeitgeist
 
   
@@ -60,14 +60,14 @@ X Spell-Checking
   - enchant is more up-to-date, but harder to use with gtk
   - gtkspell seems to be the easiest solution (python-gnome2-extras)
   
-O Portable Version:
+X Portable Version:
   Linux users can use the setting too, if all the computers have the RedNotebook
   requirements installed (pygtk, pyyaml)
   
   - Provide Option in Setup for running RedNotebook portable. Maybe use file
     that is only installed, when running this mode.
   
-O Completely Translate Windows Version:
+X Completely Translate Windows Version:
   - Inno Setup:
     - The {language} constant returns the internal name of the selected language.
     - On Windows NT/2000/XP/2003, environment variables are stored as string values 

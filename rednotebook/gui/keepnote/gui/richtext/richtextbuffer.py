@@ -11,7 +11,7 @@ import gtk, gobject, pango
 from gtk import gdk
 
 # keepnote imports
-##import keepnote
+import rednotebook.gui.keepnote as keepnote 
 ##from rednotebook.gui.keepnote.undo import UndoStack
 
 # textbuffer imports

@@ -223,6 +223,7 @@ def get_image_files():
 
 # For the use of py2exe you have to checkout the repository.
 # To create Windows Installers have a look at the file 'win/win-build.txt'
+includes = 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject, gio, gtk, chardet'
 if 'py2exe' in sys.argv:
 	py2exeParameters = {
 	  				#3 (default) don't bundle, 
@@ -230,7 +231,7 @@ if 'py2exe' in sys.argv:
 					#1: bundle everything, including the Python interpreter
 					#It seems that only option 3 works with PyGTK
 	  	  			'options' : {'py2exe': {'bundle_files': 3,
-											'includes': 'rednotebook.gui, rednotebook.util, cairo, pango, pangocairo, atk, gobject, gio, gtk',
+											'includes': includes,
 											'packages':'encodings',
 											#'skip_archive': 1,
 											}

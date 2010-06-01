@@ -407,8 +407,10 @@ class Journal:
 		
 		if something_saved:
 			self.show_message(_('The content has been saved to %s') % self.dirs.data_dir, error=False)
+			logging.info('The content has been saved to %s' % self.dirs.data_dir)
 		else:
 			self.show_message(_('Nothing to save'), error=False)
+			logging.info('Nothing to save')
 		
 		if self.config.changed():
 			try:
@@ -416,6 +418,7 @@ class Journal:
 				self.config.save_to_disk()
 			except IOError, err:
 				self.show_message(_('Configuration could not be saved. Please check your permissions'))
+				logging.error('Configuration could not be saved. Please check your permissions')
 		
 		if not (exit_imminent or changing_journal) and something_saved:
 			# Update cloud
@@ -576,7 +579,6 @@ class Journal:
 			
 	def show_message(self, message_text, error=False, countdown=True):
 		self.frame.statusbar.show_text(message_text, error, countdown)
-		logging.info(message_text)
 		
 		
 	def _get_node_names(self):

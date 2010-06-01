@@ -6,59 +6,76 @@ implementation if you tell me that you'd like its addition ;)
 
 
 === Roadmap ===
-   
-
-O Feature Poll
-
-0.9.5
-X Show week numbers in calendar
-X Sort items in configuration.cfg
-O Use Zeitgeist for automatic category entries (wait for zeitgeist-0.3 availability in distros)
-  - Music tracks or albums
-  - Pictures or picture folders
-  - Movies
-  - Web History
-  - Documents
-  - Mails
-  - Twitter Messages
-
-0.9.x
-O Automatic insertion of photo links for current day (use zeitgeist)
-O Automatic insertion of holidays
-O Get rid of CamelCase in sourcecode
-O Fix status icon on XFCE
-O Try to get rid of PangoWarnings on Windows
-O Drag and Drop for Windows
 
 1.0
-X Solid amount of translations
-X Stable
-X Fix freeze bug
-O Many automatic insertions
+X Describe how to add latex math formulas and custom html tags in help
+X Fix crash on windows when data and program live on different drives in portable mode (LP:581646)
+X Fix display of italic text in edit mode
 
 1.0.x
-O Custom-style Journals? (Mono-space)
-O Image resizing with PIL? (Image module) (Figure out where to save new files first)
-O Import of exported backups (Check if saving to 7z makes sense first)
-O Use attributes for formatting glade strings for easier translation (gtk 2.16)
-O Show warning if last backup dates to more than one month before
-O Consider using apport
+Bugfixes only
 
 1.1
-O Password protection or encryption
-O Add per journal configuration
+O Use Zeitgeist for automatic category entries
+  O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
+  X Movies
+  O Web History (Firefox addon is being written by zeitgeist devs)
+  X Documents, Pictures
+  O Mails (Write Thunderbird zeitgeist addon)
+  O Twitter Messages (gwibber zeitgeist addon is being written by zeitgeist devs)
+O Imports
+  X RedNotebook Backup zipfile
+  X RedNotebook data directory
+  X Plain text files
+  O Almanah
+  O Lifeograph
+  O Evernote
+  O ics?
+  O Wordpress?
+  O Treepad?
+  X Tomboy
+  
+  
+1.1.x
+O Show warning if last backup dates to more than one month before
+O Provide an option to export only days with a certain tag
+O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
+O Automatic insertion of holidays (Search a website for holidays and display them in the category "Holidays")
+X Get rid of CamelCase in sourcecode
+X Open external files asynchronously with subprocess.Popen
+X Save yaml files as readable unicode
+X Save yaml files without python directives
+X Get rid of warnings caused by older webkit versions
+O Make startup faster
+O Fix status icon on XFCE (LP:525196)
+O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
+O Use attributes for formatting glade strings for easier translation (gtk 2.16)
+O Consider using apport
+O Use pywebkitgtk on Windows
+O Write documentation about ``, "", ''
+O Highlight ``, "", ''
+O Set title for exports
+O Include startup date patch
+X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
+O Use webkit by default
+O When searching for text, search in dates too (Search for 2010-05 displays all entries of May 2010)
+  
+1.3
+O Password protection or encryption (Think about new format first)
+O Add per journal configuration?
 
 1.x
 O Tabled Data?
-O Document and highlight structured header feature (====Header====)
+O Document and highlight structured header feature (====Header====)?
 
 2.0
-O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting)
+O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting) (Think about new format first)
 O Let user change font, color fonts
-O Copy all files and pictures into data subdirectory
+O Copy all files and pictures into data subdirectory (Think about new format first)
+O Image resizing with PIL? (Image module) (Figure out where to save new files first)
 
 2.x
-O Think about using desktop-couch
+O Think about using desktop-couch?
 O Use categories for number data and present it graphically (KMs, Cash, Calories)
 
 
@@ -70,17 +87,11 @@ O Use categories for number data and present it graphically (KMs, Cash, Calories
 
 === Maybe even some of those features will make it into RedNotebook ===
 
-O List recently opened journals under "Journal" -> "Recently Used"
-O Provide an option to export all days with a certain tag
-
-O Evolution Integration (zeitgeist?)
-O ics import/export
-O Insert sound and video
-O Picture slide show in one entry with many images
-
-O Use threads for file loading and link opening? (Data opening takes 1.1 sec, 
-  other setups take 0.3 sec)
-  (Probably a bad idea since threads are a source of errors)
+O Evolution Integration (evolution zeitgeist addon is being written by zeitgeist devs)
+O Picture slide show in one entry with many images (in preview show nice
+      javascript slide show of pics in linked picture directory) (Think about new format first)
+O HTML import?
+  
 
 
 
@@ -112,3 +123,6 @@ O Use threads for file loading and link opening? (Data opening takes 1.1 sec,
 - Mathematic equations (KISS)
 - Let user select the language for RedNotebook in Windows installer (User wants his win language)
 - Get proper file layout with one script not part of module (Everything works without name clashes)
+- Use threads for file loading and link opening (Probably a bad idea since threads are a source of errors)
+- List recently opened journals under "Journal" -> "Recently Used" (KISS, config option needed)
+- Drag and Drop for Windows (gtk inter application dnd isn't implemented on win32)

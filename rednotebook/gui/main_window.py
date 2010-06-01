@@ -432,10 +432,14 @@ class MainWindow(object):
 		
 			
 	def on_search_notebook_switch_page(self, notebook, page, page_number):
-		#if page_number == 0:
+		if page_number == 0:
 			# Switched to search tab
 			#self.search_tree_view.update_data()
-		if page_number == 1:
+			
+			# Put cursor into search field, when search tab is opened
+			# Strangely it only works with the idle_add workaround
+			gobject.idle_add(self.searchBox.entry.grab_focus)
+		if pageNumber == 1:
 			# Switched to cloud tab
 			self.cloud.update(force_update=True)
 		
@@ -1620,7 +1624,7 @@ class DayTextField(object):
 			return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp'.split()
 		
 		uris = selection.data.strip('\r\n\x00')
-		print 'URI', uris
+		logging.debug('URIs: "%s"' % uris)
 		uris = uris.split() # we may have more than one file dropped
 		uris = map(str.strip, uris)
 		for uri in uris:

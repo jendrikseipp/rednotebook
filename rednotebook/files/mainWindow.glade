@@ -50,7 +50,7 @@
         <col id="0" translatable="yes">Category</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Tag</col>
+        <col id="0" translatable="yes">Tags</col>
       </row>
     </data>
   </object>

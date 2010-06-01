@@ -1,5 +1,15 @@
 ==== RedNotebook Changelog ====
 
+=== 0.9.5 (10-05-11) ===
+ * Show week numbers in calendar (edit weekNumbers in config file)
+ * Sort items in configuration.cfg
+ * Automatically put cursor into search field, when search tab is opened
+ * Do not translate log
+ * Fix export error on Windows (LP:575999)
+ * Get rid of PangoWarnings on Windows
+ * Get rid of Statusbar deprecation message
+ * New recommended dependency: python-chardet
+
 === 0.9.4 (10-04-29) ===
  * Allow dragging of files and pictures into RedNotebook (Linux only)
  * Save data dir relative to application dir in portable mode

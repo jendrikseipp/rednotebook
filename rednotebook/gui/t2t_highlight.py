@@ -232,17 +232,22 @@ def get_pattern(markup_symbols, style, allow_whitespace=False):
 # additional style definitions:
 # the update_syntax() method of CodeBuffer allows you to define new and modify
 # already defined styles. Think of it like CSS.
-styles = {	'DEFAULT':   		{},#{'font': 'serif'},
+styles = {	'DEFAULT':   		{'font': 'sans'},#{'font': 'serif'},
 			'bold':	  			{'weight': pango.WEIGHT_BOLD},
 			'comment':   		{'foreground': 'gray'},
 			'underlined':   	{'underline': pango.UNDERLINE_SINGLE},
 			'grey':				{'foreground': 'gray'},
 			'red':				{'foreground': 'red'},
-			'italic':			{'style': pango.STYLE_ITALIC},
+			'italic':			{	# Just to be sure we live this in
+									'style': pango.STYLE_ITALIC,
+									# The font:Italic is actually needed
+									'font': 'Italic'},
 			'strikethrough':	{'strikethrough': True},
 			'header':			{'weight': pango.WEIGHT_ULTRABOLD,
 								'scale': pango.SCALE_XX_LARGE,
-								'variant': pango.VARIANT_SMALL_CAPS},
+								# causes PangoWarnings on Windows
+								#'variant': pango.VARIANT_SMALL_CAPS,
+								},
 			'raw':				{},
 			'link':				{'foreground': 'blue',
 								'underline': pango.UNDERLINE_SINGLE,},
