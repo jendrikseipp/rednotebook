@@ -25,6 +25,7 @@ import logging
 
 if __name__ == '__main__':
 	sys.path.insert(0, os.path.abspath("./../../"))
+	logging.getLogger('').setLevel(logging.DEBUG)
 
 from rednotebook.external import gtkcodebuffer
 from rednotebook.external import txt2tags
@@ -32,33 +33,6 @@ from rednotebook.external import txt2tags
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
 
-logging.getLogger('').setLevel(logging.DEBUG)
-
-
-txt = """
-=== Header ===
-ä **bold**.*, //italic//,/italic/__underlined__, --strikethrough--
-
-	 [""/home/user/Desktop/RedNotebook pic"".png]
-
-	 [hs error.log ""file:///home/user/hs error.log""]
-
-	 [heise ""http://heise.de""]
-
-	 www.heise.de
-
-	 http://www.heise.de
-
-====================
-
-% list-support
-- a simple list item
-- an other
-
-1. An ordered list
-2. other item
-
-"""
 
 
 
@@ -175,42 +149,42 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 		start = start_line_iter
 		
 		end.forward_to_line_end()
+		
+		text = self.get_text(start, end)
+		logging.debug('Update \n"%s"' % text)
 
 		# We can omit those rules without occurrences in later searches
 
 		# Reset rules
 		self._lang_def._successful_rules = self._lang_def._grammar[:]
+		
+		# remove all tags from start to end
+		self.remove_all_syntax_tags(start, end)
 
 		# We do not use recursion -> long files exceed rec-limit!
-		finished = False
-		while not finished:
+		#finished = False
+		while not start == end:#not finished:
+			
 			# search first rule matching txt[start..end]
 			group_iters_and_tags = self._lang_def(self, start, end)
 
 			if not group_iters_and_tags:
-				self.remove_all_syntax_tags(start, end)
-				#self.apply_tag_by_name("DEFAULT", start, end)
 				return
 
 			key = lambda iter: iter.get_offset()
 
-			min_start = min([start_iter for start_iter, end_iter, tag_name \
-										in group_iters_and_tags], key=key)
+			#min_start = min([start_iter for start_iter, end_iter, tag_name \
+			#							in group_iters_and_tags], key=key)
 			max_end = max([end_iter for start_iter, end_iter, tag_name \
 										in group_iters_and_tags], key=key)
-
-			# remove all tags from start..end (mend == buffer-end if no match)
-			self.remove_all_syntax_tags(start, end)
 
 			for mstart, mend, tagname in group_iters_and_tags:
 				# apply tag
 				self.apply_tag_by_name(tagname, mstart, mend)
+				print 'APPLYING', tagname, 'to', self.get_text(mstart, mend)
 
 			# Set new start
 			start = max_end
-
-			if start == end:
-				return
 
 
 def get_pattern(markup_symbols, style, allow_whitespace=False):
@@ -220,11 +194,11 @@ def get_pattern(markup_symbols, style, allow_whitespace=False):
 		# original strikethrough in txt2tags: r'--([^\s](|.*?[^\s])-*)--'
 		# txt2tags docs say that format markup is greedy, but
 		# that doesn't seem to be the case
-		fill_ins = (markup_symbols, markup_symbols)
+		
 		# Either one char, or two chars with (maybe empty) content
 		# between them
 		# In both cases no whitespaces between chars and markup
-		regex = r'(%s)([^\s]|[^\s].*?[^\s])(%s)' % fill_ins
+		regex = r'(%s)(\S.*\S)(%s)' % ((markup_symbols, ) * 2)
 	group_style_pairs = [(1, 'grey'), (2, style), (3, 'grey')]
 	return MultiPattern(regex, group_style_pairs)
 
@@ -248,7 +222,9 @@ styles = {	'DEFAULT':   		{'font': 'sans'},#{'font': 'serif'},
 								# causes PangoWarnings on Windows
 								#'variant': pango.VARIANT_SMALL_CAPS,
 								},
-			'raw':				{},
+			'raw':				{'font': 'Oblique'},
+			'verbatim':			{'font': 'monospace'},
+			'tagged':			{},
 			'link':				{'foreground': 'blue',
 								'underline': pango.UNDERLINE_SINGLE,},
 			}
@@ -275,7 +251,7 @@ linebreak = MultiPattern(r'(\\\\)', [(1, 'bold')])
 filename = r'\S.*\S|\S'
 ext = r'png|jpe?g|gif|eps|bmp'
 pic = MultiPattern(r'(\["")(%s)("")\.(%s)(\?\d+)?(\])' % (filename, ext), \
-		[(1, 'grey'), (2, 'bold'), (3, 'grey'), (4, 'bold'), (5, 'grey')], flags='LI')
+		[(1, 'grey'), (2, 'bold'), (3, 'grey'), (4, 'bold'), (5, 'grey')], flags='I')
 
 # named link on hdd [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
 # named link in web [heise ""http://heise.de""]
@@ -296,11 +272,13 @@ rules = [
 		get_pattern('//', 'italic'),
 		get_pattern('--', 'strikethrough'),
 		#get_pattern('===', 'header', allow_whitespace=True), # not correct
-		header,
+		#header,
 		list,
 		comment,
 		line,
-		get_pattern('""', 'raw', allow_whitespace=False), # verified in RedNotebook
+		#get_pattern('""', 'raw', allow_whitespace=False), # verified in RedNotebook
+		#get_pattern('``', 'verbatim', allow_whitespace=False),
+		#get_pattern("''", 'tagged', allow_whitespace=False),
 		linebreak,
 		pic,
 		named_link,
@@ -319,6 +297,31 @@ def get_highlight_buffer():
 
 # Testing
 if __name__ == '__main__':
+	
+	txt = """a
+=== Header ===
+ **bold**, //italic//,/italic/__underlined__, --strikethrough--
+
+[""/home/user/Desktop/RedNotebook pic"".png]
+
+[hs error.log ""file:///home/user/hs error.log""]
+
+[heise ""http://heise.de""]
+
+www.heise.de
+
+''$a^2$''  ""über oblique""  ``code mit python``
+
+====================
+
+% list-support
+- a simple list item
+- an other
+
+1. An ordered list
+2. other item
+
+"""
 
 	buff = get_highlight_buffer()
 
@@ -342,7 +345,7 @@ if __name__ == '__main__':
 	win.add(vbox)
 	scr.add(gtk.TextView(buff))
 
-	win.set_default_size(800,600)
+	win.set_default_size(900,1000)
 	win.set_position(gtk.WIN_POS_CENTER)
 	win.show_all()
 	win.connect("destroy", lambda w: gtk.main_quit())

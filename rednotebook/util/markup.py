@@ -35,10 +35,10 @@ from rednotebook.util import filesystem
 from rednotebook.util import dates
 from rednotebook.util import utils
 
-use_mathjax = False
+use_mathjax = True
 
 mathjax_header = '''\
-<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/MathJax/MathJax.js">
+<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/mathjax/MathJax.js">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js","TeX/noErrors.js"],
     jax: ["input/TeX","output/HTML-CSS"],
@@ -48,7 +48,7 @@ mathjax_header = '''\
 '''
 
 mathjax_header = '''\
-<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/MathJax/MathJax.js">
+<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/mathjax/MathJax.js">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/HTML-CSS"],
@@ -243,7 +243,7 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 	except:
 		result = txt2tags.getUnknownErrorMessage()
 		logging.error(result)
-	print result
+	
 	return result
 
 def convert_to_pango(txt, headers=None, options=None):
