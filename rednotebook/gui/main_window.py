@@ -439,7 +439,7 @@ class MainWindow(object):
 			# Put cursor into search field, when search tab is opened
 			# Strangely it only works with the idle_add workaround
 			gobject.idle_add(self.searchBox.entry.grab_focus)
-		if pageNumber == 1:
+		if page_number == 1:
 			# Switched to cloud tab
 			self.cloud.update(force_update=True)
 		
