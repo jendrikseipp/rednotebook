@@ -93,21 +93,27 @@ def setup_logging(log_file):
 	# We want to have the error messages in the logfile
 	sys.stderr = utils.StreamDuplicator(sys.__stderr__, [file_logging_stream])
 	
-	# Write a log containing every output to a log file
-	logging.basicConfig(level=logging.DEBUG,
-						format='%(asctime)s %(levelname)-8s %(message)s',
-						#filename=filesystem.log_file,
-						#filemode='w',
-						stream=file_logging_stream,#sys.stdout,
-						)
+	root_logger = logging.getLogger('')
+	
+	# Python adds a default handler if some log is generated before here
+	# Remove all handlers that have been added automatically
+	for handler in root_logger.handlers:
+		root_logger.removeHandler(handler)
+						
+	# define a Handler which writes DEBUG messages or higher to the logfile
+	filelog = logging.StreamHandler(file_logging_stream)
+	filelog.setLevel(logging.DEBUG)
+	filelog_formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
+	# tell the handler to use this format
+	filelog.setFormatter(filelog_formatter)
+	# add the handler to the root logger
+	logging.getLogger('').addHandler(filelog)
 	
 	level = logging.INFO
-	#if len(sys.argv) > 1:
-		#level = logging_levels.get(sys.argv[1], level)
 	if options.debug:
 		level = logging.DEBUG
 	
-	# define a Handler which writes INFO messages or higher to the sys.stdout
+	# define a Handler which writes INFO messages or higher to sys.stdout
 	console = logging.StreamHandler(sys.stdout)
 	console.setLevel(level)
 	# set a format which is simpler for console use
