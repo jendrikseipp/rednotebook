@@ -27,18 +27,22 @@ import collections
 import time
 from optparse import OptionParser, OptionValueError
 
-
+# Allow importing from rednotebook package
 if hasattr(sys, "frozen"):
 	from rednotebook.util import filesystem
-	from rednotebook.util import utils
-	from rednotebook import info
-	from rednotebook import configuration
 else:
-	from util import filesystem # creates a copy of filesystem module
-	#import util.filesystem # imports the original filesystem module
-	from util import utils
-	import info
-	import configuration
+	from util import filesystem
+
+base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
+if base_dir not in sys.path:
+	# Adding BaseDir to sys.path
+	sys.path.insert(0, base_dir)
+	
+from rednotebook.util import filesystem # creates a copy of filesystem module
+#import rednotebook.util.filesystem		# imports the original filesystem module
+from rednotebook.util import utils
+from rednotebook import info
+from rednotebook import configuration
 	
 	
 
@@ -215,14 +219,6 @@ except (ImportError, AssertionError), e:
 	logging.error('gtk not found. Please install PyGTK (python-gtk2)')
 	sys.exit(1)
 
-	
-
-logging.info('AppDir: %s' % filesystem.app_dir)
-base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
-logging.info('BaseDir: %s' % base_dir)
-if base_dir not in sys.path:
-	# Adding BaseDir to sys.path
-	sys.path.insert(0, base_dir)
 	
 
 # This version of import is needed for win32 to work

@@ -22,6 +22,8 @@ from __future__ import with_statement
 import os
 import logging
 
+from rednotebook.util import filesystem
+
 
 
 def delete_comment(line):
@@ -101,18 +103,15 @@ class Config(dict):
 		
 		key_value_pairs = []
 		
-		try:
-			with open(file, 'r') as config_file:
-				key_value_pairs = config_file.readlines()
-		except IOError:
+		content = filesystem.read_file(file)
+		if not content:
 			return {}
 			
-		if not key_value_pairs:
-			# nothing could be read
-			return {}
+		lines = content.split('\n')
+		lines = map(str, lines)
 	
 		# delete comments
-		key_value_pairs = map(lambda line: delete_comment(line), key_value_pairs)
+		key_value_pairs = map(lambda line: delete_comment(line), lines)
 		
 		#delete whitespace
 		key_value_pairs = map(str.strip, key_value_pairs)
