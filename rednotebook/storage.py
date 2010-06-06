@@ -123,8 +123,9 @@ class Storage(object):
 		
 	def save_months_to_disk(self, months, dir, frame, exit_imminent=False, changing_journal=False, saveas=False):
 		'''
-		Do the actual saving
+		Do the actual saving and return if something has been saved
 		'''
+		something_saved = False
 		for year_and_month, month in months.items():
 			# We always need to save everything when we are "saving as"
 			if (not month.empty and month.edited) or saveas:
@@ -144,7 +145,6 @@ class Storage(object):
 						month.edited = False
 					except OSError, err:
 						frame.show_save_error_dialog(exit_imminent)
-						return True
 					except IOError, err:
 						frame.show_save_error_dialog(exit_imminent)
-						return True	
+		return something_saved
