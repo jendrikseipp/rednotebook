@@ -478,12 +478,18 @@ class Journal:
 			self.add_instruction_content()
 			
 		# Notebook is only on page 1 here, if we are opening a journal the second time
-		if self.frame.search_notebook.get_current_page() == 1:
-			# We have opened a new journal
+		old_page = self.frame.search_notebook.get_current_page()
+		new_page = self.config.read('cloudTabActive', 1)
+		# 0 -> 0: search is cleared later
+		# 0 -> 1: change to cloud, update automatically
+		# 1 -> 0: change to search
+		# 1 -> 1: update cloud
+		
+		# At tab change, cloud is updated automatically
+		self.frame.search_notebook.set_current_page(new_page)
+		if new_page == old_page:
+			# Without tab change, force update
 			self.frame.cloud.update(force_update=True)
-		else:
-			# Show cloud tab, cloud is updated automatically
-			self.frame.search_notebook.set_current_page(1)
 		
 		# Reset Search
 		self.frame.search_box.clear()

@@ -432,6 +432,9 @@ class MainWindow(object):
 		
 			
 	def on_search_notebook_switch_page(self, notebook, page, page_number):
+		'''
+		Called when the page actually changes
+		'''
 		if page_number == 0:
 			# Switched to search tab
 			#self.search_tree_view.update_data()
@@ -579,8 +582,9 @@ class MainWindow(object):
 		config['rightDividerPosition'] = \
 				self.builder.get_object('edit_pane').get_position()
 				
-		# Remember if window was maximized
+		# Remember if window was maximized in separate method
 		
+		config['cloudTabActive'] = self.search_notebook.get_current_page()
 		
 		# Actually this is unnecessary as the list gets saved when it changes
 		# so we use it to sort the list ;)
