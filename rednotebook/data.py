@@ -32,10 +32,6 @@ class Day(object):
 		self.content = day_content
 		
 		self.search_result_length = 50
-		
-	#def __getattr__(self, name):
-	#	return getattr(self.date, name)
-	
 	
 	# Text
 	def _get_text(self):
@@ -152,48 +148,64 @@ class Day(object):
 	
 	
 	def search_text(self, search_text):
-		'''Case-insensitive search'''
-		up_case_search_text = search_text.upper()
-		up_case_day_text = self.text.upper()
-		occurence = up_case_day_text.find(up_case_search_text)
+		'''
+		Try searching in date first, then in the text
+		Uses case-insensitive search
+		'''
+		def get_text_with_dots(start, end, found_text=None):
+			'''
+			Find the outermost spaces and add dots if needed
+			The bound1 text and the bound2 found_text bound3 with more bound4 text
+			'''
+			text = self.text
+			bound1 = max(0, start - self.search_result_length/2)
+			bound2 = start
+			bound3 = end
+			bound4 = min(len(text), end + self.search_result_length/2)
+			
+			if bound1 == 0:
+				start = 0
+			else:
+				start = max(bound1, text.find(' ', bound1, bound2))
+			
+			if bound4 == len(text):
+				end = len(text)
+			else:
+				end = text.rfind(' ', bound3, bound4)
+				if end == -1:
+					end = bound4
+			
+			res = ''
+			if start > 0:
+				res += '... '
+			res += text[start:end]
+			if end < len(text):
+				res += ' ...'
+				
+			res = res.replace('\n', ' ')
+				
+			if found_text:
+				# Make the searched_text bold
+				res = res.replace(found_text, '<b>' + found_text + '</b>')
+				
+			return res
+			
+		# Search in date
+		if search_text in str(self):
+			return (str(self), get_text_with_dots(0, self.search_result_length/2))
+		
+		# Search in text
+		upcase_search_text = search_text.upper()
+		upcase_day_text = self.text.upper()
+		occurence = upcase_day_text.find(upcase_search_text)
 		
 		if occurence > -1:
 			# search_text is in text
 			
-			searched_string_in_text = self.text[occurence:occurence + len(search_text)]
+			found_text = self.text[occurence:occurence + len(search_text)]
 			
-			space_search_left_start = max(0, occurence - self.search_result_length/2)
-			space_search_right_end = min(len(self.text), \
-									occurence + len(search_text) + self.search_result_length/2)
-				
-			result_text_start = self.text.find(' ', space_search_left_start, occurence)
-			result_text_end = self.text.rfind(' ', \
-						occurence + len(search_text), space_search_right_end)
-			if result_text_start == -1:
-				result_text_start = occurence - self.search_result_length/2
-			if result_text_end == -1:
-				result_text_end = occurence + len(search_text) + self.search_result_length/2
-				
-			# Add leading and trailing ... if appropriate
-			result_text = ''
-			if result_text_start > 0:
-				result_text += '... '
-				
-			result_text += unicode.substring(self.text, result_text_start, result_text_end).strip()
-			
-			# Make the searched_text bold
-			result_text = result_text.replace(searched_string_in_text, \
-									'<b>' + searched_string_in_text + '</b>')
-			
-			if result_text_end < len(self.text) - 1:
-				result_text += ' ...'
-				
-			# Delete newlines
-			result_text = result_text.replace('\n', '')
-				
+			result_text = get_text_with_dots(occurence, occurence + len(search_text), found_text)
 			return (str(self), result_text)
-		else:
-			return None
 		
 		
 	def search_category(self, search_category):
@@ -226,12 +238,8 @@ class Day(object):
 		return None
 	
 	
-	def __str__(self):
-		day_number_string = str(self.day_number).zfill(2)
-		month_number_string = str(self.month.month_number).zfill(2)
-		year_number_string = str(self.month.year_number)
-			
-		return year_number_string + '-' + month_number_string + '-' + day_number_string
+	def __str__(self):			
+		return self.date.strftime('%Y-%m-%d')
 
 	
 	def __cmp__(self, other):

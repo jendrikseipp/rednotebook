@@ -40,6 +40,9 @@ def isleap(year):
 	return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 def get_number_of_days(year, month):
+	'''
+	Return the number of days in a given month of a given year
+	'''
 	days = month_days[month] + (month == 2 and isleap(year))
 	return days
 
