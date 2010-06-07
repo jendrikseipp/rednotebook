@@ -17,6 +17,11 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+'''
+This module takes the ideas and some code from the highlighting module
+PyGTKCodeBuffer by Hannes Matuschek (http://code.google.com/p/pygtkcodebuffer/).
+'''
+
 import gtk
 import sys
 import os.path
@@ -28,7 +33,7 @@ if __name__ == '__main__':
 	sys.path.insert(0, os.path.abspath("./../../"))
 	logging.getLogger('').setLevel(logging.DEBUG)
 
-from rednotebook.external import gtkcodebuffer
+#from rednotebook.external import gtkcodebuffer
 from rednotebook.external import txt2tags
 #from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.gui.browser import HtmlView
@@ -37,17 +42,32 @@ from rednotebook.util import markup
 
 
 
-class MultiPattern(gtkcodebuffer.Pattern):
+class Pattern(object):
 	'''
-	Extension of the Pattern class that allows a pattern to have
+	A pattern object allows a regex-pattern to have
 	subgroups with different formatting
 	'''
-	def __init__(self, pattern_or_regex, group_tag_pairs, **kwargs):
-		if type(pattern_or_regex) == str:
-			pattern = pattern_or_regex
+	def __init__(self, pattern, group_tag_pairs, regex=None, flags=""):
+		# assemble re-flag
+		flags += "ML"
+		flag = 0
+		
+		for char in flags:
+			if char == 'M': flag |= re.M
+			if char == 'L': flag |= re.L
+			if char == 'S': flag |= re.S
+			if char == 'I': flag |= re.I
+			if char == 'U': flag |= re.U
+			if char == 'X': flag |= re.X
+		
+		if regex:
+			self._regexp = regex
 		else:
-			pattern = pattern_or_regex.pattern
-		gtkcodebuffer.Pattern.__init__(self, pattern, **kwargs)
+			# compile re
+			try:
+				self._regexp = re.compile(pattern, flag)
+			except re.error, e:
+				raise Exception("Invalid regexp \"%s\": %s"%(regexp,str(e)))
 
 		self.group_tag_pairs = group_tag_pairs
 
@@ -65,41 +85,11 @@ class MultiPattern(gtkcodebuffer.Pattern):
 			s = start.copy(); s.forward_chars(mstart)
 			e = start.copy(); e.forward_chars(mend)
 			iter_pairs.append([s, e, tag_name])
-		print 'GROUP', m.group(0)
-
-		return iter_pairs
-		
-		
-class Rule(object):
-	'''
-	Extension of the Pattern class that allows a pattern to have
-	subgroups with different formatting
-	'''
-	def __init__(self, regex, group_tag_pairs, **kwargs):
-		#gtkcodebuffer.Pattern.__init__(self, regexp, **kwargs)
-		self.regex = regex
-		self.group_tag_pairs = group_tag_pairs
-
-	def __call__(self, txt, start, end):
-		m = self.regex.search(txt)
-		if not m: return None
-
-		iter_pairs = []
-		
-		groups = len(m.groups()) + 1#[m.group(0)] + m.groups()
-
-		for group, tag_name in self.group_tag_pairs:
-			print 'GROUP', group, m.group(group)
-			mstart, mend = m.start(group), m.end(group)
-			s = start.copy(); s.forward_chars(mstart)
-			e = start.copy(); e.forward_chars(mend)
-			#tag_name = self.group_tag_pairs[group]
-			iter_pairs.append([s, e, tag_name])
 
 		return iter_pairs
 
 
-class OverlapLanguageDefinition(object):
+class MarkupDefinition(object):
 	
 	def __init__(self, rules):
 		self.rules = rules
@@ -111,13 +101,12 @@ class OverlapLanguageDefinition(object):
 	def __call__(self, buf, start, end):
 		mstart = end.copy()
 		mend = end.copy()
-		#mtag   = None
+		
 		txt = buf.get_slice(start, end)
 
 		selected_pairs = None
 
 		# search min match
-		#logging.debug('Testing %s rules' % len(self._successful_rules))
 		for rule in self._successful_rules[:]:
 			print rule._regexp.pattern
 			# search pattern
@@ -126,75 +115,29 @@ class OverlapLanguageDefinition(object):
 				## This rule will not find anything in the next round either
 				self._successful_rules.remove(rule)
 				continue
-				
-			print 'FOUND'
-			for s, e, tag in iter_pairs:
-				print buf.get_slice(s, e), '->', tag
 
 			key = lambda iter: iter.get_offset()
 
 			min_start = min([start_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
-			iters = [start_iter for start_iter, end_iter, tag_name in iter_pairs]
-			print 'ITERS', map(key, iters)
-			iters = sorted(iters, key=key)
-			print 'ITERS', map(key, iters)
-			min_start2 = sorted([start_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)[0]
-			assert min_start.equal(min_start2)
-			max_end = end#max([end_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
+			max_end = max([end_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
 			
-			print 'FOUND2'
-			for s, e, tag in iter_pairs:
-				print buf.get_slice(s, e), '->', tag
-			
-			#min_start_end = min_start.copy()
-			#min_start_end.forward_to_line_end()
-			print 'MIN_START', buf.get_slice(min_start, buf.get_end_iter())
-			
-			mstart_end = mstart.copy()
-			mstart_end.forward_to_line_end()
-			print 'MSTART', buf.get_slice(mstart, mstart_end)
-
 			# prefer match with smallest start-iter
 			if min_start.compare(mstart) == -1:
-				print 'SMALLER'
-				for s, e, tag in iter_pairs:
-					print buf.get_slice(s, e), '->', tag
-				mstart, mend = min_start.copy(), max_end.copy()
-				#mtag = rule.tag_name
-				selected_pairs = iter_pairs
-				continue
-
-			##if m[0].compare(mstart)==0 and m[1].compare(mend)>0:
-			if min_start.equal(mstart) and max_end.compare(mend) > 0:
-				print 'EQUAL'
 				mstart, mend = min_start, max_end
-				#mtag = rule.tag_name
 				selected_pairs = iter_pairs
 				continue
-		#print 'SELECTED'
-		#for s, e, tag in selected_pairs:
-		#	print buf.get_slice(s, e), '->', tag
-		return selected_pairs#(mstart, mend, mtag)
+
+			if min_start.equal(mstart) and max_end.compare(mend) == 1:
+				mstart, mend = min_start, max_end
+				selected_pairs = iter_pairs
+		return selected_pairs
 
 
-class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
+class MarkupBuffer(gtk.TextBuffer):
 	
 	def __init__(self, table=None, lang=None, styles={}):
-		""" The constructor takes 3 optional arguments. 
-		
-			table specifies a tag-table associated with the TextBuffer-instance.
-			This argument will be passed directly to the constructor of the 
-			TextBuffer-class. 
-			
-			lang specifies the language-definition. You have to load one using
-			the SyntaxLoader-class or you may hard-code your syntax-definition 
-			using the LanguageDefinition-class. 
-			
-			styles is a dictionary used to extend or overwrite the default styles
-			provided by this module (DEFAULT_STYLE) and any language specific 
-			styles defined by the LanguageDefinition. """
 		gtk.TextBuffer.__init__(self, table)
-					   			   
+		
 		# update styles with user-defined
 		self.styles = styles
 		
@@ -209,13 +152,12 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 		
 		self.connect_after("insert-text", self._on_insert_text)
 		self.connect_after("delete-range", self._on_delete_range)
-		#self.connect('apply-tag', self._on_apply_tag)
 
 	def get_slice(self, start, end):
 		'''
 		We have to search for the regexes in utf-8 text
 		'''
-		slice_text = gtkcodebuffer.CodeBuffer.get_slice(self, start, end)
+		slice_text = gtk.TextBuffer.get_slice(self, start, end)
 		slice_text = slice_text.decode('utf-8')
 		return slice_text
 
@@ -257,8 +199,7 @@ class OverlapCodeBuffer(gtkcodebuffer.CodeBuffer):
 		end.forward_to_line_end()
 		
 		text = self.get_text(start, end)
-		logging.debug('Update \n"%s"' % text)
-
+		
 		# We can omit those rules without occurrences in later searches
 
 		# Reset rules
@@ -326,7 +267,6 @@ styles = {	'DEFAULT':   		{'font': 'sans'},#{'font': 'serif'},
 # Syntax definition
 
 bank = txt2tags.getRegexes()
-bold = MultiPattern(bank['fontBold'], [(0, 'grey'), (1, 'bold'),])
 
 def get_pattern(char, style):
 	# original strikethrough in txt2tags: r'--([^\s](|.*?[^\s])-*)--'
@@ -339,28 +279,28 @@ def get_pattern(char, style):
 	#regex = r'(%s)(\S.*\S)(%s)' % ((markup_symbols, ) * 2)
 	regex = r'(%s%s)(\S|.*?\S%s*)(%s%s)' % ((char, ) * 5)
 	group_style_pairs = [(1, 'grey'), (2, style), (3, 'grey')]
-	return MultiPattern(regex, group_style_pairs)
+	return Pattern(regex, group_style_pairs)
 
 
-list    = MultiPattern(r"^ *(- )[^ ].*$",  [(1, 'red'), (1, 'bold')])
-numlist = MultiPattern(r"^ *(\+ )[^ ].*$", [(1, 'red'), (1, 'bold')])
+list	= Pattern(r"^ *(- )[^ ].*$",  [(1, 'red'), (1, 'bold')])
+numlist = Pattern(r"^ *(\+ )[^ ].*$", [(1, 'red'), (1, 'bold')])
 
-comment = MultiPattern(r'^(\%.*)$', [(1, 'comment')])
+comment = Pattern(r'^(\%.*)$', [(1, 'comment')])
 
-line = MultiPattern(r'^[\s]*([_=-]{20,})[\s]*$', [(1, 'bold')])
+line = Pattern(r'^[\s]*([_=-]{20,})[\s]*$', [(1, 'bold')])
 
 # Whitespace is allowed, but nothing else
-#header = MultiPattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
+#header = Pattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
 #						[(1, 'grey'), (2, 'header'), (3, 'grey')])
 
 title_style = [(1, 'grey'), (2, 'header'), (3, 'grey'), (4, 'grey')]
 titskel = r'^ *(%s)(%s)(\1)(\[[\w-]*\])?\s*$'
-title_pattern    = titskel % ('[=]{1,5}','[^=]|.*[^=]')
+title_pattern	= titskel % ('[=]{1,5}','[^=]|.*[^=]')
 numtitle_pattern = titskel % ('[+]{1,5}','[^+]|.*[^+]')
-title = MultiPattern(title_pattern, title_style)
-numtitle = MultiPattern(numtitle_pattern, title_style)
+title = Pattern(title_pattern, title_style)
+numtitle = Pattern(numtitle_pattern, title_style)
 
-linebreak = MultiPattern(r'(\\\\)', [(1, 'grey')])
+linebreak = Pattern(r'(\\\\)', [(1, 'grey')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 # \w = [a-zA-Z0-9_]
@@ -369,22 +309,22 @@ linebreak = MultiPattern(r'(\\\\)', [(1, 'grey')])
 #filename = r'\S[\w\s_,.+%$#@!?+~/-:-\(\)]*\S|\S'
 filename = r'\S.*\S|\S'
 ext = r'png|jpe?g|gif|eps|bmp'
-pic = MultiPattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext), \
+pic = Pattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext), \
 		[(1, 'grey'), (2, 'bold'), (3, 'grey'), (4, 'bold'), (5, 'grey'), (6, 'grey')], flags='I')
 
 # named link on hdd [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
 # named link in web [heise ""http://heise.de""]
-named_link = MultiPattern(r'(\[)(.*)\s("")(\S.*\S)(""\])', \
+named_link = Pattern(r'(\[)(.*)\s("")(\S.*\S)(""\])', \
 		[(1, 'grey'), (2, 'link'), (3, 'grey'), (4, 'grey'), (5, 'grey')], flags='LI')
 
 # link http://heise.de
 # Use txt2tags link guessing mechanism
-link_regex = bank['link']
-link = MultiPattern(r'overwritten', [(0, 'link')])
-link._regexp = link_regex
+#link_regex = 
+link = Pattern('OVERWRITE', [(0, 'link')], regex=bank['link'])
+#link._regexp = link_regex
 
 # We do not support multiline regexes
-#blockverbatim = MultiPattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'grey'), (2, 'verbatim'), (3, 'grey')])
+#blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'grey'), (2, 'verbatim'), (3, 'grey')])
 
 
 rules = [
@@ -410,10 +350,10 @@ rules = [
 
 def get_highlight_buffer():
 	# create lexer:
-	lang = OverlapLanguageDefinition(rules)
+	lang = MarkupDefinition(rules)
 
 	# create buffer and update style-definition
-	buff = OverlapCodeBuffer(lang=lang, styles=styles)
+	buff = MarkupBuffer(lang=lang, styles=styles)
 
 	return buff
 
