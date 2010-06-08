@@ -67,7 +67,7 @@ class Pattern(object):
 			try:
 				self._regexp = re.compile(pattern, flag)
 			except re.error, e:
-				raise Exception("Invalid regexp \"%s\": %s"%(regexp,str(e)))
+				raise Exception("Invalid regexp \"%s\": %s"%(pattern,str(e)))
 
 		self.group_tag_pairs = group_tag_pairs
 
@@ -260,6 +260,20 @@ styles = {	'DEFAULT':   		{'font': 'sans'},#{'font': 'serif'},
 			'link':				{'foreground': 'blue',
 								'underline': pango.UNDERLINE_SINGLE,},
 			}
+def add_header_styles():
+	sizes = [
+			pango.SCALE_XX_LARGE,
+			pango.SCALE_X_LARGE,
+			pango.SCALE_LARGE,
+			pango.SCALE_MEDIUM,
+			pango.SCALE_SMALL,
+			]
+	for level, size in enumerate(sizes):
+		style = {'weight': pango.WEIGHT_ULTRABOLD,
+				'scale': size}
+		name = 'title%s' % (level+1)
+		styles[name] = style
+add_header_styles()
 
 # Syntax definition
 
@@ -297,6 +311,17 @@ numtitle_pattern = titskel % ('[+]{1,5}','[^+]|.*[^+]')
 title = Pattern(title_pattern, title_style)
 numtitle = Pattern(numtitle_pattern, title_style)
 
+title_patterns = []
+title_style = [(1, 'grey'), (3, 'grey'), (4, 'grey')]
+titskel = r'^ *(%s)(%s)(\1)(\[[\w-]*\])?\s*$'
+for level in range(1, 6):
+	title_pattern	 = titskel % ('[=]{%s}'%(6-level),'[^=]|.*[^=]')
+	numtitle_pattern = titskel % ('[+]{%s}'%(6-level),'[^+]|.*[^+]')
+	style_name = 'title%s' % level
+	title = Pattern(title_pattern, title_style + [(2, style_name)])
+	numtitle = Pattern(numtitle_pattern, title_style + [(2, style_name)])
+	title_patterns += [title, numtitle]
+
 linebreak = Pattern(r'(\\\\)', [(1, 'grey')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
@@ -324,13 +349,13 @@ link = Pattern('OVERWRITE', [(0, 'link')], regex=bank['link'])
 #blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'grey'), (2, 'verbatim'), (3, 'grey')])
 
 
-rules = [
+patterns = [
 		get_pattern('\*', 'bold'),
 		get_pattern('_', 'underlined'),
 		get_pattern('/', 'italic'),
 		get_pattern('-', 'strikethrough'),
-		title,
-		numtitle,
+		#title,
+		#numtitle,
 		list,
 		numlist,
 		comment,
@@ -342,12 +367,12 @@ rules = [
 		pic,
 		named_link,
 		link,
-		]
+		] + title_patterns
 
 
 def get_highlight_buffer():
 	# create lexer:
-	lang = MarkupDefinition(rules)
+	lang = MarkupDefinition(patterns)
 
 	# create buffer and update style-definition
 	buff = MarkupBuffer(lang=lang, styles=styles)
@@ -361,6 +386,8 @@ if __name__ == '__main__':
 = Header1 =
 == Header2 ==
 === Header3 ===
+==== Header4 ====
+===== Header5 =====
 +++++ d +++++
 ++++ c ++++
 +++ a +++
