@@ -60,8 +60,6 @@ class ExportAssistant(object):
 		self.assistant.set_forward_page_func(self.prepare_next_page, None)
 		self.assistant.set_title(_('Export Assistant'))
 		
-		#self.assistant.connect('prepare', self._on_prepare)
-		
 	def prepare_pdf_button(self):
 		pdf_supported = self.is_pdf_supported()
 		self.pdf_button.set_sensitive(pdf_supported)
@@ -165,11 +163,6 @@ class ExportAssistant(object):
 		self.assistant.set_page_complete(page4, True)
 
 		self.filename_chooser = self.builder.get_object('filename_chooser')
-		
-		
-	#def _on_prepare(self, assistant, page):
-	#	page_number = assistant.get_current_page()
-	#	print 'PAGE', page_number
 		
 	
 	def prepare_next_page(self, current_page, data):

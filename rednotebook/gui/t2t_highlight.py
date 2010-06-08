@@ -108,7 +108,6 @@ class MarkupDefinition(object):
 
 		# search min match
 		for rule in self._successful_rules[:]:
-			print rule._regexp.pattern
 			# search pattern
 			iter_pairs = rule(txt, start, end)
 			if not iter_pairs:
@@ -228,8 +227,6 @@ class MarkupBuffer(gtk.TextBuffer):
 			for mstart, mend, tagname in group_iters_and_tags:
 				# apply tag
 				self.apply_tag_by_name(tagname, mstart, mend)
-				#self.apply_tag_by_name('red', mstart, mend)
-				#print 'APPLYING', tagname, 'to', self.get_text(mstart, mend)
 
 			# Set new start
 			start = max_end
@@ -361,7 +358,13 @@ def get_highlight_buffer():
 if __name__ == '__main__':
 	
 	txt = """== Main==[oho] 
-=== Header ===
+= Header1 =
+== Header2 ==
+=== Header3 ===
++++++ d +++++
+++++ c ++++
++++ a +++
+++ b ++
  **bold**, //italic//,/italic/__underlined__, --strikethrough--
 
 [""/home/user/Desktop/RedNotebook pic"".png]

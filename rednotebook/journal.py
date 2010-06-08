@@ -44,7 +44,7 @@ from rednotebook.util import utils
 from rednotebook import info
 from rednotebook import configuration
 	
-	
+
 
 def parse_options():
 	parser = OptionParser(usage="usage: %prog [options] [journal-path]",
@@ -77,11 +77,11 @@ options, args = parse_options()
 import logging
 
 def setup_logging(log_file):
-	logging_levels = {'debug': logging.DEBUG,
-					'info': logging.INFO,
-					'warning': logging.WARNING,
-					'error': logging.ERROR,
-					'critical': logging.CRITICAL}
+	#logging_levels = {'debug': logging.DEBUG,
+	#				'info': logging.INFO,
+	#				'warning': logging.WARNING,
+	#				'error': logging.ERROR,
+	#				'critical': logging.CRITICAL}
 	
 	# File logging
 	if sys.platform == 'win32' and hasattr(sys, "frozen"):
@@ -93,6 +93,7 @@ def setup_logging(log_file):
 	sys.stderr = utils.StreamDuplicator(sys.__stderr__, [file_logging_stream])
 	
 	root_logger = logging.getLogger('')
+	root_logger.setLevel(logging.DEBUG)
 	
 	# Python adds a default handler if some log is generated before here
 	# Remove all handlers that have been added automatically
@@ -106,7 +107,7 @@ def setup_logging(log_file):
 	# tell the handler to use this format
 	filelog.setFormatter(filelog_formatter)
 	# add the handler to the root logger
-	logging.getLogger('').addHandler(filelog)
+	root_logger.addHandler(filelog)
 	
 	level = logging.INFO
 	if options.debug:
@@ -120,7 +121,7 @@ def setup_logging(log_file):
 	# tell the handler to use this format
 	console.setFormatter(formatter)
 	# add the handler to the root logger
-	logging.getLogger('').addHandler(console)
+	root_logger.addHandler(console)
 	
 	logging.debug('sys.stdout logging level: %s' % level)
 	logging.info('Writing log to file "%s"' % log_file)

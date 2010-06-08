@@ -3056,6 +3056,10 @@ class TitleMaster:
 		# Extract line info
 		match = regex[kind].search(line)
 		level = len(match.group('id'))
+		
+		## JS: ===== Header ===== -> <h1>Header</h1>
+		level = 6 - level
+		
 		txt   = match.group('txt').strip()
 		label = match.group('label')
 		# Parse info & save
