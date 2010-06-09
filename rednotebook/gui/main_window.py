@@ -739,6 +739,8 @@ class MainWindow(object):
 		A popup menu cannot show accelerators (HIG).
 		'''
 		
+		on_win = True#(sys.platform == 'win32')
+		
 		insert_menu_xml = '''
 		<ui>
 		<popup action="InsertMenu">
@@ -746,13 +748,19 @@ class MainWindow(object):
 			<menuitem action="File"/>
 			<menuitem action="Link"/>
 			<menuitem action="BulletList"/>
-			<!-- <menuitem action="NumberedList"/> -->
+			%(numlist_ui)s
 			<menuitem action="Title"/>
 			<menuitem action="Line"/>
+			%(title_ui)s
 			<menuitem action="Date"/>
 			<menuitem action="LineBreak"/>
 		</popup>
 		</ui>'''
+		
+		numlist_ui = '<menuitem action="NumberedList"/>' if not on_win else ''
+		title_ui = '<menuitem action="Table"/>' if not on_win else ''
+		
+		insert_menu_xml = insert_menu_xml % locals()
 			
 		uimanager = self.uimanager
 
@@ -775,6 +783,14 @@ class MainWindow(object):
 		
 		title_text = _('Title text')
 		title = '\n=== %s ===\n' % title_text
+		
+		table = '\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n' \
+				   '| 1               | more than 1     | Align left   |\n' \
+				   '|     more than 1 |               1 |   Align right |\n' \
+				   '|   more than 1   |   more than 1   |   Center   |\n' \
+				   '|| Title rows | are always | centered |\n' \
+				   '|  Use two vertical  |  lines on the left  |  for title rows  |\n' \
+				   '|  Always use  |  at least  |  one whitespace  |\n' \
 		
 		line_break = r'\\'
 		
@@ -802,15 +818,17 @@ class MainWindow(object):
 			('BulletList', None, _('Bullet List'), None, \
 				_('Insert a bullet list'), \
 				lambda widget: self.day_text_field.insert(bullet_list)),
-			#('NumberedList', None, 'Numbered List', None, \
-			#	'Insert a numbered list (2 empty lines close the list)', \
-			#	lambda widget: self.day_text_field.insert(numbered_list)),
+			('NumberedList', None, _('Numbered List'), None, \
+				_('Insert a numbered list'), \
+				lambda widget: self.day_text_field.insert(numbered_list)),
 			('Title', None, _('Title'), None, \
 				_('Insert a title'), \
 				lambda widget: self.day_text_field.insert(title)),
 			('Line', None, _('Line'), None, \
 				_('Insert a separator line'), \
 				lambda widget: self.day_text_field.insert(line)),
+			('Table', None, _('Table'), None, None, \
+				lambda widget: self.day_text_field.insert(table)),
 			('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D', \
 				_('Insert the current date and time (edit format in preferences)'), \
 				insert_date_time),
@@ -828,13 +846,18 @@ class MainWindow(object):
 		# Create a Menu
 		menu = uimanager.get_widget('/InsertMenu')
 		
-		image_items = 'Picture Link BulletList Title Line Date LineBreak'.split()
-		image_file_names = 'picture-16 link bulletlist title line date enter'.split()
-		items_and_files = zip(image_items, image_file_names)
+		image_items = 'Picture Link BulletList Title Line Date LineBreak Table'.split()
+		#image_file_names = 'picture-16 link bulletlist title line date enter table'.split()
+		#items_and_files = [('Picture', 'picture-16'),
+		#					('Link', 'link'),
+		#					]zip(image_items, image_file_names)
 		
-		for item, file_name in items_and_files:
+		for item in image_items:
 			menu_item = uimanager.get_widget('/InsertMenu/'+ item)
-			menu_item.set_image(get_image(file_name + '.png'))
+			filename = item.lower()
+			# We may have disabled menu items
+			if menu_item:
+				menu_item.set_image(get_image(filename + '.png'))
 		
 		#single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
 		# Ugly hack for windows: It expects toolbar icons to be 16x16

@@ -322,7 +322,7 @@ class Journal:
 		
 		logging.debug('Trying to find journal "%s"' % path_arg)
 		
-		paths_to_check = [path_arg, os.path.join(self.dirs.rednotebook_user_dir, path_arg)]
+		paths_to_check = [path_arg, os.path.join(self.dirs.journal_user_dir, path_arg)]
 		
 		for path in paths_to_check:
 			if os.path.exists(path):
