@@ -128,11 +128,11 @@ class MainWindow(object):
 		self.edit_pane = self.builder.get_object('edit_pane')
 		
 		# Only add the config variable if webkit is available
-		use_webkit = browser.webkit and self.journal.config.read('useWebkit', 1)
+		self.use_webkit = browser.webkit and self.journal.config.read('useWebkit', 1)
 		
-		logging.info('Using webkit for previews: %s' % use_webkit)
+		logging.info('Using webkit for previews: %s' % self.use_webkit)
 		
-		if use_webkit:
+		if self.use_webkit:
 			self.html_editor = browser.HtmlView()
 		else:
 			self.html_editor = HtmlEditor()
@@ -739,8 +739,6 @@ class MainWindow(object):
 		A popup menu cannot show accelerators (HIG).
 		'''
 		
-		on_win = True#(sys.platform == 'win32')
-		
 		insert_menu_xml = '''
 		<ui>
 		<popup action="InsertMenu">
@@ -757,8 +755,8 @@ class MainWindow(object):
 		</popup>
 		</ui>'''
 		
-		numlist_ui = '<menuitem action="NumberedList"/>' if not on_win else ''
-		title_ui = '<menuitem action="Table"/>' if not on_win else ''
+		numlist_ui = '<menuitem action="NumberedList"/>' if self.use_webkit else ''
+		title_ui = '<menuitem action="Table"/>' if self.use_webkit else ''
 		
 		insert_menu_xml = insert_menu_xml % locals()
 			
