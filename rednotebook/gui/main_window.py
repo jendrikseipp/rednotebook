@@ -1069,6 +1069,8 @@ class NewEntryDialog(object):
 		'''Show Tags in ComboBox when "Tags" is selected as category'''
 		if self.categories_combo_box.get_active_text().upper() == 'TAGS':
 			self.new_entry_combo_box.set_entries(self.journal.tags)
+		else:
+			self.new_entry_combo_box.clear()
 			 
 		# only make the entry submittable, if text has been entered
 		self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
@@ -1082,13 +1084,14 @@ class NewEntryDialog(object):
 				self.new_entry_combo_box.get_active_text())
 		
 	def show_dialog(self, category=''):
+		# Has to be first, because it may be populated later
+		self.new_entry_combo_box.clear()
+		
 		# Show the list of categories even if adding a tag
 		self.categories_combo_box.set_entries(self.categories_tree_view.categories)
 		
-		# Has to be first, because it may be popularized later
-		self.new_entry_combo_box.clear()
-		
-		self.categories_combo_box.set_active_text(category)
+		if category:
+			self.categories_combo_box.set_active_text(category)
 		
 		if category:			
 			# We already know the category so let's get the entry
