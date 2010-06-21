@@ -49,6 +49,7 @@ from rednotebook import configuration
 def parse_options():
 	parser = OptionParser(usage="usage: %prog [options] [journal-path]",
 						  description=info.command_line_help,
+						  version="RedNotebook %s" % info.version,
 						  formatter=utils.IndentedHelpFormatterWithNL(),
 						  )
 	
