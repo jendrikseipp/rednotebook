@@ -27,7 +27,7 @@ if not hasattr(__builtin__, '_'):
 
 version = 			'1.0.0'
 author = 			'Jendrik Seipp'
-author_mail = 		'jendrikseipp@web.de'
+authorMail = 		'jendrikseipp@web.de'
 url = 				'http://rednotebook.sourceforge.net'
 forum_url = 		'http://apps.sourceforge.net/phpbb/rednotebook/'
 translation_url = 	'https://translations.launchpad.net/rednotebook/'
@@ -46,7 +46,7 @@ templates, export functionality and word clouds. You can also \
 format, tag and search your entries.\
 '''
 
-license_text = '''\
+licenseText = '''\
 Copyright (c) 2009  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
@@ -132,7 +132,7 @@ error_par = ' '.join([error1, error2])
 goodbye_par = _('Have a nice day!')
 
 
-complete_welcome_text = '''\
+completeWelcomeText = '''\
 %(greeting)s
 %(overview1)s
 
@@ -159,7 +159,7 @@ complete_welcome_text = '''\
 
 %(goodbye_par)s''' % globals()
 
-welcome_day = {'text': complete_welcome_text,
+welcome_day = {'text': completeWelcomeText,
 u'Cool Stuff': {u'Ate **two** cans of spam': None},
 _(u'Ideas'): {_(u'Use a cool journal app'): None},
 u'Movies': {u"Monty Python's Life of Brian": None},
@@ -277,7 +277,7 @@ multiple_entries_text = multiple_entries_text.replace('=== Play ===', '**Play**\
 todo_help_text = example_day3['text']
 
 
-help_text = '''
+helpText = '''
 == Text ==
 The main text field is the container for your normal diary entries like this one:
 
@@ -343,7 +343,8 @@ If words appear in the cloud that you don't want to see there, just right-click 
 Alternatively you can open the Preferences dialog and add the words to the cloud blacklist there.
 
 == Spellcheck ==
-RedNotebook supports spellchecking your entries if you have python-gtkspell installed. \
+RedNotebook supports spellchecking your entries if you have \
+python-gtkspell installed (Only available on Linux). \
 To highlight all misspelled words in your entries, select the corresponding option in \
 the preferences window.
 
@@ -357,7 +358,7 @@ open this dialog by clicking on the entry in the "Edit" menu.
 == Save ==
 %(save1)s %(save2)s %(save3)s
 
-== Synchronize across multiple computers ==
+== Synchronize across multiple computers ==[sync]
 Syncing RedNotebook with a remote server is easy. You can either use a \
 cloud service like Ubuntu One or Dropbox or save your journal to your \
 own server.
@@ -397,7 +398,7 @@ journal with "Journal->Open".
 Optionally you can also **share your settings** and templates. \
 This is possible since version 0.9.4. The relevant setting is found in \
 the file "rednotebook/files/default.cfg". There you can set the value of \
-user_dir to the path where you want to share your settings between the \
+userDir to the path where you want to share your settings between the \
 systems.
 
 == Portable mode ==
@@ -522,7 +523,7 @@ To insert custom code into your entries surround the code with single \
 quotes. Use 2 single quotes for inline insertions and 3 single quotes \
 if you want to insert a whole paragraph. For paragraphs be sure to put \
 the single quotes on their own line. \
-This feature requires you to use webkit for previews.
+This feature requires you to use webkit for previews (Only available on Linux).
 
 ||   Text                  |   Output                              |
 | ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
@@ -543,7 +544,7 @@ To insert preformatted text preserving newlines and spaces, you can \
 use the backquotes (`). Use 2 backquotes for inline insertions and 3 \
 backquotes if you want to insert a whole paragraph. \
 For paragraphs be sure to put the backquotes on their own line. \
-This feature requires you to use webkit for previews.
+This feature requires you to use webkit for previews (Only available on Linux).
 
 Two examples (have a look at the [source source.txt] to see how it's done):
 
@@ -562,6 +563,29 @@ robot.greet()
 To get a list of all entries, just search for " " (the space character). \
 This character is most likely included in all entries. You can sort the \
 resulting list chronologically by pressing the "Date" button.
+
+== Command line options ==
+```
+Usage: rednotebook [options] [journal-path]
+
+RedNotebook %(version)s
+
+The optional journal-path can be one of the following:
+ - An absolute path (e.g. /home/username/myjournal)
+ - A relative path (e.g. ../dir/myjournal)
+ - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
+
+If the journal-path is omitted the last session's journal will be used.
+At the first program start this defaults to "$HOME/.rednotebook/data".
+
+
+Options:
+  -h, --help     	show this help message and exit
+
+  -d, --debug    	Output debugging messages (default: False)
+
+  -m, --minimized	Start mimimized to system tray (default: False)
+```
 
 == Data Format ==
 In this paragraph I will explain shortly what the RedNotebook files \
@@ -627,19 +651,19 @@ def write_documentation(dir):
 	from rednotebook.util import utils
 	from rednotebook.util import markup
 
-	utils.write_file(help_text, os.path.join(dir, 'source.txt'))
+	utils.write_file(helpText, os.path.join(dir, 'source.txt'))
 	headers = [_('RedNotebook Documentation'), version, '']
 	options = {'toc': 1,}
-	html = markup.convert(help_text, 'xhtml', headers, options)
+	html = markup.convert(helpText, 'xhtml', headers, options)
 	utils.write_file(html, os.path.join(dir, 'help.html'))
 
 if __name__ == '__main__':
 	import sys
 	sys.path.insert(0, os.path.abspath("./../"))
 
-	print complete_welcome_text
+	print completeWelcomeText
 	print '*'*80
-	print help_text
+	print helpText
 
 	doc_dir = '../doc'
 	doc_dir = os.path.abspath(doc_dir)

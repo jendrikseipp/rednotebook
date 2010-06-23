@@ -1,5 +1,13 @@
 ==== RedNotebook Changelog ====
 
+=== 1.0.0 (10-06-23) ===
+ * Describe how to add latex math formulas and custom html tags in help
+ * Fix crash on windows when data and program live on different drives in portable mode (LP:581646)
+ * Fix display of italic text in edit mode
+ * Fix inserting templates on Windows
+ * New Translations:
+   * Faroese
+
 === 0.9.5 (10-05-11) ===
  * Show week numbers in calendar (edit weekNumbers in config file)
  * Sort items in configuration.cfg
