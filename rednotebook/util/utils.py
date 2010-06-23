@@ -25,6 +25,7 @@ import random
 import operator
 from operator import itemgetter
 import os
+import re
 from urllib2 import urlopen, URLError
 import webbrowser
 import unicode
@@ -204,37 +205,72 @@ def setup_signal_handlers(journal):
                 
 
 def get_new_version_number():
-    new_version = ''
+    '''
+    Reads version number from website and returns None if it cannot be read
+    '''
+    version_pattern = re.compile(r'<B>version (.+)</b>')
     
     try:
         project_xml = urlopen('http://www.gnomefiles.org/app.php/RedNotebook').read()
-        tag = 'version '
-        position = project_xml.upper().find(tag.upper())
-        new_version = project_xml[position + len(tag):position + len(tag) + 5]
-        logging.info('%s is the latest version. You have version %s' % (new_version, current_version))
+        match = version_pattern.search(project_xml)
+        if not match:
+            return None
+        new_version = match.group(1)
+        logging.info('%s is the latest version' % new_version)
+        return new_version
     except URLError:
-        logging.error('New version info could not be read')
+        return None
     
-    return new_version
+    
 
 
-def check_new_version(main_frame, current_version, startup=False):
+def check_new_version(journal, current_version, startup=False):
     from distutils.version import StrictVersion
-    new_version = get_new_version_number()
-    new_version = StrictVersion(new_version)
-    current_version = StrictVersion(current_version)
-    newer_version_available = new_version > current_version
-    logging.info('A newer version is available: %s' % newer_version_available)
-    dialog = customwidgets.NewVersionDialog()
-    #if newer_version_available:
-        
-    dialog.run()
-    dialog.hide()
+    from rednotebook.gui import customwidgets
+    from rednotebook import info
+    import webbrowser
+    import gtk
     
-    #   main_frame.show_new_version_dialog()
-    #elif not startup:
-#       main_frame.show_no_new_version_dialog()
+    new_version = get_new_version_number()
+    
+    if new_version:
+        new_version = StrictVersion(new_version)
+    else:
+        logging.error('New version info could not be read')
+        new_version = 'unknown'
+    
+    current_version = StrictVersion(current_version)
+    # Only compare versions if new version could be read
+    newer_version_available = (new_version > current_version) if isinstance(new_version, StrictVersion) else True
+    logging.info('A newer version is available: %s' % newer_version_available)
+    
+    if newer_version_available or not startup:
+        dialog = customwidgets.NewVersionDialog()
+        primary_text = _('You have version <b>%s</b>. The latest version is <b>%s</b>.')
+        primary_text %= (current_version, new_version)
+        secondary_text = _('Do you want to visit the RedNotebook homepage?')
+        dialog.set_markup(primary_text)
+        dialog.format_secondary_text(secondary_text)
         
+        # Let user disable checks
+        if startup:
+            # Add button on the left side
+            dialog.add_button(_('Do not ask again'), 30)
+            settings = gtk.settings_get_default()
+            settings.set_property('gtk-alternative-button-order', True)
+
+            dialog.set_alternative_button_order([30, gtk.RESPONSE_NO,
+                                       gtk.RESPONSE_YES])
+        
+        response = dialog.run()
+        dialog.hide()
+        
+        if response == gtk.RESPONSE_YES:
+            webbrowser.open(info.url)
+        elif response == 30:
+            logging.info('Checks for new versions disabled')
+            journal.config['checkForNewVersion'] = 0
+    
         
 def write_file(content, filename):
     assert os.path.isabs(filename)

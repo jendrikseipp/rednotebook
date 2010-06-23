@@ -32,7 +32,7 @@ O Imports
   
   
 1.1.x
-O Improve checking for new version (Show version numbers)
+X Improve checking for new version (Show version numbers)
 O Show warning if last backup dates to more than one month before
 O Provide an option to export only days with a certain tag
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)

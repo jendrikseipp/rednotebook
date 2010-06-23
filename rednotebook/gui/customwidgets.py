@@ -156,5 +156,5 @@ class RedNotebookTrayIcon(gtk.StatusIcon):
                 
 class NewVersionDialog(gtk.MessageDialog):
     def __init__(self):
-        gtk.MessageDialog.__init__(parent=None, flags=gtk.DIALOG_MODAL, \
+        gtk.MessageDialog.__init__(self, parent=None, flags=gtk.DIALOG_MODAL, \
             type=gtk.MESSAGE_INFO, buttons=gtk.BUTTONS_YES_NO, message_format=None)

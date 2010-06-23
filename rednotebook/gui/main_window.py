@@ -1013,27 +1013,7 @@ class MainWindow(object):
         
         if response == gtk.RESPONSE_OK:
             return backup_dialog.get_filename()
-    
-    
-    def show_new_version_dialog(self):
-        new_version_dialog = self.builder.get_object('new_version_dialog')
-        response = new_version_dialog.run()
-        new_version_dialog.hide()
-        
-        if response == gtk.RESPONSE_OK:
-            webbrowser.open(info.url)
-        elif response == 20:
-            #do not ask again
-            self.journal.config['checkForNewVersion'] = 0
             
-    def show_no_new_version_dialog(self):
-        dialog = self.builder.get_object('no_new_version_dialog')
-        response = dialog.run()
-        dialog.hide()
-        
-        if response == 30:
-            #Ask at startup
-            self.journal.config['checkForNewVersion'] = 1
             
     def highlight_text(self, search_text):
         # let the search function highlight found strings in the page
