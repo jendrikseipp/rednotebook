@@ -32,7 +32,12 @@ import unicode
 import logging
 from optparse import IndentedHelpFormatter
 import textwrap
+from distutils.version import StrictVersion
 
+import gtk
+
+from rednotebook.gui import customwidgets
+from rednotebook import info
 import filesystem
 
 
@@ -225,12 +230,6 @@ def get_new_version_number():
 
 
 def check_new_version(journal, current_version, startup=False):
-    from distutils.version import StrictVersion
-    from rednotebook.gui import customwidgets
-    from rednotebook import info
-    import webbrowser
-    import gtk
-    
     new_version = get_new_version_number()
     
     if new_version:
@@ -245,7 +244,8 @@ def check_new_version(journal, current_version, startup=False):
     logging.info('A newer version is available: %s' % newer_version_available)
     
     if newer_version_available or not startup:
-        dialog = customwidgets.NewVersionDialog()
+        dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL, \
+            type=gtk.MESSAGE_INFO, buttons=gtk.BUTTONS_YES_NO, message_format=None)
         primary_text = _('You have version <b>%s</b>. The latest version is <b>%s</b>.')
         primary_text %= (current_version, new_version)
         secondary_text = _('Do you want to visit the RedNotebook homepage?')

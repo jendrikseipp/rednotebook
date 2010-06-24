@@ -148,13 +148,3 @@ class EntryDialog(gtk.MessageDialog):
     def get_value(self):
         return self.entry.get_text()
     
-    
-class RedNotebookTrayIcon(gtk.StatusIcon):
-    def __init__(self):
-        gtk.StatusIcon.__init__(self)
-        
-                
-class NewVersionDialog(gtk.MessageDialog):
-    def __init__(self):
-        gtk.MessageDialog.__init__(self, parent=None, flags=gtk.DIALOG_MODAL, \
-            type=gtk.MESSAGE_INFO, buttons=gtk.BUTTONS_YES_NO, message_format=None)

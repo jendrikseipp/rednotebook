@@ -277,7 +277,7 @@ class MainWindow(object):
     # TRAY-ICON / CLOSE --------------------------------------------------------
             
     def setup_tray_icon(self):
-        self.tray_icon = customwidgets.RedNotebookTrayIcon()
+        self.tray_icon = gtk.StatusIcon()
         visible = (self.journal.config.read('closeToTray', 0) == 1)
         self.tray_icon.set_visible(visible)
         logging.debug('Tray icon visible: %s' % visible)
