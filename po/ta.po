@@ -1,21 +1,20 @@
-# Serbian translation for rednotebook
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Tamil translation for rednotebook
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the rednotebook package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2009-12-17 00:43+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
-"Language-Team: Serbian <sr@li.org>\n"
+"PO-Revision-Date: 2010-06-08 18:52+0000\n"
+"Last-Translator: Ramesh <rame20002007@yahoo.com>\n"
+"Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-25 03:48+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -40,11 +39,11 @@ msgstr ""
 #. ## Verb
 #: ../rednotebook/gui/mainWindow.py:394 tmp/mainWindow.glade.h:52
 msgid "Preview"
-msgstr ""
+msgstr "முன்பார்வை"
 
 #: ../rednotebook/gui/mainWindow.py:409
 msgid "Edit"
-msgstr ""
+msgstr "திருத்து"
 
 #: ../rednotebook/gui/mainWindow.py:511
 msgid "Select an empty folder for your new journal"
@@ -82,28 +81,28 @@ msgstr ""
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/mainWindow.py:691
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../rednotebook/gui/mainWindow.py:697
 msgid "Strikethrough"
-msgstr ""
+msgstr "நடு-கோடு"
 
 #: ../rednotebook/gui/mainWindow.py:699
 msgid "Bold"
-msgstr ""
+msgstr "தடித்த"
 
 #: ../rednotebook/gui/mainWindow.py:700
 msgid "Italic"
-msgstr ""
+msgstr "சாய்ந்த"
 
 #: ../rednotebook/gui/mainWindow.py:701
 msgid "Underline"
-msgstr ""
+msgstr "அடிக்கோடு"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/mainWindow.py:717
 msgid "Format"
-msgstr ""
+msgstr "வடிவமைப்பு"
 
 #: ../rednotebook/gui/mainWindow.py:718
 msgid "Format the selected text or category entry"
@@ -111,11 +110,11 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:761
 msgid "First Item"
-msgstr ""
+msgstr "முதலாவது உருப்படி"
 
 #: ../rednotebook/gui/mainWindow.py:762
 msgid "Second Item"
-msgstr ""
+msgstr "இரண்டாவது உருப்படி"
 
 #: ../rednotebook/gui/mainWindow.py:763
 msgid "Indented Item"
@@ -127,60 +126,60 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:768
 msgid "Title text"
-msgstr ""
+msgstr "தலைப்பு உரை"
 
 #: ../rednotebook/gui/mainWindow.py:784
 msgid "Picture"
-msgstr ""
+msgstr "படம்"
 
 #: ../rednotebook/gui/mainWindow.py:785
 msgid "Insert an image from the harddisk"
-msgstr ""
+msgstr "வன்தட்டில் இருந்து ஒரு படத்தை உள்ளிடு"
 
 #: ../rednotebook/gui/mainWindow.py:787
 msgid "File"
-msgstr ""
+msgstr "கோப்பு"
 
 #: ../rednotebook/gui/mainWindow.py:788
 msgid "Insert a link to a file"
-msgstr ""
+msgstr "கோப்பிற்கான இணைப்பை நுழை"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/mainWindow.py:791
 msgid "_Link"
-msgstr ""
+msgstr "இணைப்பு (_L)"
 
 #: ../rednotebook/gui/mainWindow.py:792
 msgid "Insert a link to a website"
-msgstr ""
+msgstr "வலைத்தளத்திற்கான இணைப்பை நுழை"
 
 #: ../rednotebook/gui/mainWindow.py:794
 msgid "Bullet List"
-msgstr ""
+msgstr "குண்டுப் பட்டியல்"
 
 #: ../rednotebook/gui/mainWindow.py:795
 msgid "Insert a bullet list"
-msgstr ""
+msgstr "குண்டுப் பட்டியலை நுழை"
 
 #: ../rednotebook/gui/mainWindow.py:800
 msgid "Title"
-msgstr ""
+msgstr "தலைப்பு"
 
 #: ../rednotebook/gui/mainWindow.py:801
 msgid "Insert a title"
-msgstr ""
+msgstr "தலைப்பை நுழை"
 
 #: ../rednotebook/gui/mainWindow.py:803
 msgid "Line"
-msgstr ""
+msgstr "வரி"
 
 #: ../rednotebook/gui/mainWindow.py:804
 msgid "Insert a separator line"
-msgstr ""
+msgstr "பிரிப்புக் கோட்டை நுழை"
 
 #: ../rednotebook/gui/mainWindow.py:806
 msgid "Date/Time"
-msgstr ""
+msgstr "திகதி/நேரம்"
 
 #: ../rednotebook/gui/mainWindow.py:807
 msgid "Insert the current date and time (edit format in preferences)"
@@ -196,7 +195,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:838
 msgid "Insert"
-msgstr ""
+msgstr "நுழை"
 
 #: ../rednotebook/gui/mainWindow.py:842
 msgid "Insert images, files, links and other content"
@@ -221,7 +220,7 @@ msgstr ""
 #: ../rednotebook/gui/mainWindow.py:1312 ../rednotebook/gui/mainWindow.py:1354
 #: ../rednotebook/gui/mainWindow.py:1362 tmp/mainWindow.glade.h:69
 msgid "Text"
-msgstr ""
+msgstr "உரை"
 
 #: ../rednotebook/gui/mainWindow.py:1358
 msgid "Entry"
@@ -233,27 +232,27 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:153
 msgid "%A, %x, Day %j"
-msgstr ""
+msgstr "%A, %x, நாள் %j"
 
 #: ../rednotebook/gui/options.py:153
 msgid "Week %W of Year %Y"
-msgstr ""
+msgstr "%Y வருடத்தின் %W வாரம்"
 
 #: ../rednotebook/gui/options.py:154
 msgid "Day %j"
-msgstr ""
+msgstr "நாள் %j"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:123
 #: tmp/mainWindow.glade.h:39
 msgid "Help"
-msgstr ""
+msgstr "உதவி"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:178
 #, python-format
 msgid "Preview: %s"
-msgstr ""
+msgstr "முன்பார்வை: %s"
 
 #: ../rednotebook/gui/options.py:285
 msgid "Close to system tray"
@@ -278,7 +277,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:292
 msgid "Check Spelling"
-msgstr ""
+msgstr "சொல்லை சரிபார்"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Webkit offers a nicer preview"
@@ -294,7 +293,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:301
 msgid "(Restart required)"
-msgstr ""
+msgstr "(மறுதுவக்கம் தேவைப்படுகிறது)"
 
 #: ../rednotebook/gui/options.py:311
 msgid "Check for new version at startup"
@@ -302,15 +301,15 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:318
 msgid "Check now"
-msgstr ""
+msgstr "இப்போது பார்"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Font Size"
-msgstr ""
+msgstr "எழுத்துரு அளவு"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Date/Time format"
-msgstr ""
+msgstr "நாள்/நேரம் படிவமை"
 
 #: ../rednotebook/gui/options.py:326
 msgid "Exclude from clouds"
@@ -322,7 +321,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:328
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "சிறிய சொற்களை மேகங்களில் அனுமதி"
 
 #: ../rednotebook/gui/options.py:329
 msgid "Allow those words with 4 letters or less in the text cloud"
@@ -330,15 +329,18 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:89
 msgid "Journal"
-msgstr ""
+msgstr "நாட்குறிப்பேடு"
 
 #: ../rednotebook/gui/menu.py:91
 msgid "Create a new journal. The old one will be saved"
 msgstr ""
+"புது நாட்குறிப்பேட்டை உருவாக்கு. பழைய நாட்குறிப்பேடு சேமிக்கப்பட்டுவிடும்."
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Load an existing journal. The old journal will be saved"
 msgstr ""
+"ஏற்கனவே உள்ள நாட்குறிப்பேட்டை ஏற்று. பழைய நாட்குறிப்பேடு "
+"சேமிக்கப்பட்டுவிடும்."
 
 #: ../rednotebook/gui/menu.py:99
 msgid ""
@@ -348,7 +350,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:102
 msgid "Export"
-msgstr ""
+msgstr "ஏற்றுமதி செய்"
 
 #: ../rednotebook/gui/menu.py:103
 msgid "Open the export assistant"
@@ -357,7 +359,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Backup"
-msgstr ""
+msgstr "காப்பு"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Save all the data in a zip archive"
@@ -365,11 +367,11 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:107 tmp/mainWindow.glade.h:63
 msgid "Statistics"
-msgstr ""
+msgstr "புள்ளிவிவரம்"
 
 #: ../rednotebook/gui/menu.py:108
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "நாட்குறிப்பேட்டை பற்றிய புள்ளிவிவரத்தை கட்டு"
 
 #: ../rednotebook/gui/menu.py:110
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -377,7 +379,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:113
 msgid "_Edit"
-msgstr ""
+msgstr "தொகு (_E)"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Undo text edits or category entry deletions"
@@ -389,11 +391,11 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:129
 msgid "_Help"
-msgstr ""
+msgstr "உதவி (_H)"
 
 #: ../rednotebook/gui/menu.py:132
 msgid "Contents"
-msgstr ""
+msgstr "உள்ளடக்கங்கள்"
 
 #: ../rednotebook/gui/menu.py:133
 msgid "Open the RedNotebook documentation"
@@ -401,7 +403,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:134
 msgid "Get Help Online"
-msgstr ""
+msgstr "இணையத்தில் உதவியைப் பெற"
 
 #: ../rednotebook/gui/menu.py:135
 msgid "Visit the RedNotebook forum"
@@ -425,7 +427,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Report a Problem"
-msgstr ""
+msgstr "பிரச்சனையை புகார் செய்"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Fill out a short form about the problem"
@@ -441,7 +443,7 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:21
 msgid "Categories"
-msgstr ""
+msgstr "வகைகள்"
 
 #: ../rednotebook/gui/categories.py:118
 msgid "Empty nodes are not allowed"
@@ -461,11 +463,11 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:430
 msgid "Change this text"
-msgstr ""
+msgstr "இந்த உரையை மாற்று"
 
 #: ../rednotebook/gui/categories.py:434
 msgid "Add a new entry"
-msgstr ""
+msgstr "புதிய உள்ளீட்டை சேர்"
 
 #: ../rednotebook/gui/categories.py:438
 msgid "Delete this node"
@@ -490,7 +492,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:149
 msgid "Selected Categories"
-msgstr ""
+msgstr "தெரிவுசெய்த வகைகள்"
 
 #: ../rednotebook/gui/exportAssistant.py:191
 msgid "Cancelling export assistant."
@@ -499,12 +501,12 @@ msgstr ""
 #: ../rednotebook/gui/exportAssistant.py:352
 #, python-format
 msgid "Content exported to %s"
-msgstr ""
+msgstr "உள்ளடக்கம் %s இற்கு ஏற்றப்பட்டுவிட்டது"
 
 #: ../rednotebook/gui/exportAssistant.py:354
 #, python-format
 msgid "Exporting to %s failed"
-msgstr ""
+msgstr "%s இற்கு ஈருமதி தோல்வியடைந்தது"
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
@@ -533,11 +535,11 @@ msgstr ""
 #: ../rednotebook/redNotebook.py:445
 #, python-format
 msgid "The content has been saved to %s"
-msgstr ""
+msgstr "உள்ளடக்கமானது %s இற்கு சேமிக்கப்பட்டது."
 
 #: ../rednotebook/redNotebook.py:447
 msgid "Nothing to save"
-msgstr ""
+msgstr "சேமிக்க ஒன்றுமில்லை"
 
 #: ../rednotebook/redNotebook.py:454
 msgid "Configuration could not be saved. Please check your permissions"
@@ -545,7 +547,7 @@ msgstr ""
 
 #: ../rednotebook/redNotebook.py:484
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "தெரிவு செய்த அடைவில் ஒன்றுமில்லை."
 
 #: ../rednotebook/redNotebook.py:485
 msgid ""
@@ -556,6 +558,8 @@ msgstr ""
 #: ../rednotebook/redNotebook.py:488
 msgid "The selected folder is empty. A new journal has been created."
 msgstr ""
+"தெரிவுசெய்த அடைவில் ஒன்றுமில்லை. ஒரு புதிய நாட்குறிப்பேடு "
+"உருவாக்கப்பட்டுவிட்டது."
 
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:73
@@ -599,12 +603,12 @@ msgstr ""
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "முகப்பானது மூன்று பகுதிகளாக பிரிக்கப்பட்டுள்ளது:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr ""
+msgstr "இடது"
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
@@ -613,7 +617,7 @@ msgstr ""
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr ""
+msgstr "மையம்"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
@@ -622,7 +626,7 @@ msgstr ""
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr ""
+msgstr "வலது"
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
@@ -630,11 +634,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:92
 msgid "Text entries"
-msgstr ""
+msgstr "உரை உள்ளீடுகள்"
 
 #: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
-msgstr ""
+msgstr "உள்ளீடானது இவ்வாறு இருக்கலாம்:"
 
 #: ../rednotebook/info.py:94
 msgid ""
@@ -664,7 +668,7 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
 msgid "Save and Export"
-msgstr ""
+msgstr "சேமித்து தரவேற்று"
 
 #: ../rednotebook/info.py:114
 msgid ""
@@ -693,7 +697,7 @@ msgstr ""
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:125
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
-msgstr ""
+msgstr "மேலும் பல ஆவணங்களை \"உதவி\" -> \"உதவி\"யில் நீங்கள் பெறலாம்."
 
 #: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
@@ -701,7 +705,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "எந்த வகையான பின்னூட்டமும் வரவேற்கப்படுகிறது."
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
@@ -709,7 +713,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
-msgstr ""
+msgstr "யோசனைகள்"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
@@ -942,23 +946,23 @@ msgstr ""
 #. ## This stands for the verb in "Tag this day"
 #: tmp/mainWindow.glade.h:65
 msgid "Tag"
-msgstr ""
+msgstr "குறியிடு"
 
 #: tmp/mainWindow.glade.h:66
 msgid "Tag this day (Ctrl+T)"
-msgstr ""
+msgstr "இந்த நாளை குறியிடு (Ctrl+T)"
 
 #: tmp/mainWindow.glade.h:67
 msgid "Tags"
-msgstr ""
+msgstr "குறியீடுகள்"
 
 #: tmp/mainWindow.glade.h:68
 msgid "Template"
-msgstr ""
+msgstr "வார்ப்புரு"
 
 #: tmp/mainWindow.glade.h:70
 msgid "Today"
-msgstr ""
+msgstr "இன்று"
 
 #: tmp/mainWindow.glade.h:71
 msgid ""
@@ -972,4 +976,4 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Nikola B https://launchpad.net/~eniaroyah"
+"  Ramesh https://launchpad.net/~rame20002007"

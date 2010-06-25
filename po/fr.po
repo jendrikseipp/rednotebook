@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2010-04-18 23:43+0000\n"
-"Last-Translator: François Blondel <Unknown>\n"
+"PO-Revision-Date: 2010-06-22 17:41+0000\n"
+"Last-Translator: Nicolas Delvaux <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-25 01:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -29,7 +29,7 @@ msgstr "mtv, pourriel, travail, boulot, jeu"
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Cacher « %s » des nuages"
 
 #: ../rednotebook/gui/mainWindow.py:316
 msgid "Show RedNotebook"
@@ -64,7 +64,7 @@ msgstr "Sélectionner un dossier de journal existant"
 
 #: ../rednotebook/gui/mainWindow.py:519
 msgid "The directory should contain your journal's data files"
-msgstr "Le répertoire doit contenir vos fichiers de données du journal"
+msgstr "Le dossier doit contenir les fichiers de donnée de votre journal"
 
 #: ../rednotebook/gui/mainWindow.py:521
 msgid "Select an empty folder for the new location of your journal"
@@ -87,7 +87,7 @@ msgstr "Ctrl"
 
 #: ../rednotebook/gui/mainWindow.py:697
 msgid "Strikethrough"
-msgstr ""
+msgstr "Barrer"
 
 #: ../rednotebook/gui/mainWindow.py:699
 msgid "Bold"
@@ -285,19 +285,19 @@ msgstr "Vérifier l'orthographe"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Webkit offers a nicer preview"
-msgstr ""
+msgstr "Le webkit fournit un meilleur aperçu"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires pywebkitgtk (python-webkit)"
-msgstr ""
+msgstr "Nécessite pywebkitgtk (python-webkit)"
 
 #: ../rednotebook/gui/options.py:301
 msgid "Use webkit for previews"
-msgstr ""
+msgstr "Utiliser webkit pour les aperçus"
 
 #: ../rednotebook/gui/options.py:301
 msgid "(Restart required)"
-msgstr ""
+msgstr "(Redémarrage nécessaire)"
 
 #: ../rednotebook/gui/options.py:311
 msgid "Check for new version at startup"
@@ -305,7 +305,7 @@ msgstr "Vérifier l'existence d'une nouvelle version au démarrage"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Check now"
-msgstr ""
+msgstr "Vérifier maintenant"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Font Size"
@@ -333,7 +333,7 @@ msgstr "Autoriser ces mots de 4 lettres ou moins dans le nuage de texte"
 
 #: ../rednotebook/gui/menu.py:89
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
 
 #: ../rednotebook/gui/menu.py:91
 msgid "Create a new journal. The old one will be saved"
@@ -405,15 +405,15 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:133
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Ouvrir la documentation de RedNotebook"
 
 #: ../rednotebook/gui/menu.py:134
 msgid "Get Help Online"
-msgstr ""
+msgstr "Obtenir de l'aide en-ligne"
 
 #: ../rednotebook/gui/menu.py:135
 msgid "Visit the RedNotebook forum"
-msgstr ""
+msgstr "Visiter le forum de RedNotebook"
 
 #: ../rednotebook/gui/menu.py:136
 msgid "Restore example content"
@@ -427,11 +427,11 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Traduire RedNotebook"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
+msgstr "Se connecter au site Launchpad pour aider à traduire RedNotebook"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Report a Problem"
@@ -439,7 +439,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "Remplir un court formulaire relatif à votre problème"
 
 #: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:525
 msgid "RedNotebook Documentation"
@@ -489,6 +489,8 @@ msgstr "Assistant d'exportation"
 msgid ""
 "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
 msgstr ""
+"Pour l'exportation directe en format PDF, veuillez installer pywebkitgtk "
+"version 1.1.5 ou supérieure."
 
 #: ../rednotebook/gui/exportAssistant.py:91
 msgid "Alternatively consult the help document for Latex to PDF conversion."
@@ -618,25 +620,25 @@ msgstr "L'interface est divisée en trois parties:"
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr ""
+msgstr "Gauche"
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "Navigation avec le calendrier"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr ""
+msgstr "Centre"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
-msgstr ""
+msgstr "Texte du jour"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr ""
+msgstr "Droite"
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
@@ -994,6 +996,9 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Daniel Kessler https://launchpad.net/~hornord\n"
+"  Guillaume Royer https://launchpad.net/~guilro\n"
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Nicolas DERIVE https://launchpad.net/~kalon33\n"
+"  Nicolas Delvaux https://launchpad.net/~malaria\n"
 "  Pierre Slamich https://launchpad.net/~pierre-slamich"

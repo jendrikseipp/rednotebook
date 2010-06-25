@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2010-04-03 13:11+0000\n"
-"Last-Translator: Victor Yu. Kowalsky <Unknown>\n"
+"PO-Revision-Date: 2010-05-06 08:05+0000\n"
+"Last-Translator: MyOtheHedgeFox <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-25 01:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -126,7 +126,7 @@ msgstr "Две пустые строки (Enter) закрывают список
 
 #: ../rednotebook/gui/mainWindow.py:768
 msgid "Title text"
-msgstr "Я заголовок!"
+msgstr "Текст заголовка"
 
 #: ../rednotebook/gui/mainWindow.py:784
 msgid "Picture"
@@ -151,15 +151,15 @@ msgstr "_Ссылку"
 
 #: ../rednotebook/gui/mainWindow.py:792
 msgid "Insert a link to a website"
-msgstr "Вставить ссылку на страницу интернета"
+msgstr "Вставить ссылку на сайт"
 
 #: ../rednotebook/gui/mainWindow.py:794
 msgid "Bullet List"
-msgstr "Список"
+msgstr "Маркированный список"
 
 #: ../rednotebook/gui/mainWindow.py:795
 msgid "Insert a bullet list"
-msgstr "Вставить список"
+msgstr "Вставить маркированный список"
 
 #: ../rednotebook/gui/mainWindow.py:800
 msgid "Title"
@@ -201,7 +201,7 @@ msgstr "Вставить"
 
 #: ../rednotebook/gui/mainWindow.py:842
 msgid "Insert images, files, links and other content"
-msgstr "Вставить изображения, файлы, ссылки и другое содержимое в страницу"
+msgstr "Вставить изображения, файлы, ссылки и другое содержимое"
 
 #: ../rednotebook/gui/mainWindow.py:929
 msgid "No link location has been entered"
@@ -258,11 +258,11 @@ msgstr "Пример:  %s"
 
 #: ../rednotebook/gui/options.py:285
 msgid "Close to system tray"
-msgstr "Сворачивать в системный трей при закрытии"
+msgstr "Сворачивать в системный трей"
 
 #: ../rednotebook/gui/options.py:286
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Закрытие окна свернёт RedNotebook в системный лоток"
+msgstr "Закрытие окна свернёт RedNotebook в системный трей"
 
 #: ../rednotebook/gui/options.py:289
 msgid "Underline misspelled words"
@@ -275,11 +275,11 @@ msgstr "Требуется библиотека gtkspell."
 #: ../rednotebook/gui/options.py:291
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr "Она включена в пакеты python-gtkspell и python-gnome2-extras."
+msgstr "Она входит в состав пакетов python-gtkspell и python-gnome2-extras."
 
 #: ../rednotebook/gui/options.py:292
 msgid "Check Spelling"
-msgstr "Проверять орфографию"
+msgstr "Проверка орфографии"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Webkit offers a nicer preview"
@@ -303,7 +303,7 @@ msgstr "Проверять на наличие новых версий при з
 
 #: ../rednotebook/gui/options.py:318
 msgid "Check now"
-msgstr "Проверить"
+msgstr "Проверить сейчас"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Font Size"
@@ -416,7 +416,9 @@ msgstr "Обновить содержимое"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "Fill some free days with example content. Do not overwrite anything"
-msgstr "Заполнить несколько свободных дней примерным содержанием"
+msgstr ""
+"Заполнить несколько свободных дней пробным содержанием. Не затирает уже "
+"внесённые записи"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Translate RedNotebook"
@@ -570,19 +572,19 @@ msgstr "Выбранный каталог пуст. Новый дневник б
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:73
 msgid "Words"
-msgstr "Слов"
+msgstr "Слова"
 
 #: ../rednotebook/util/statistics.py:81
 msgid "Distinct Words"
-msgstr "Отдельных слов"
+msgstr "Отдельные слова"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Edited Days"
-msgstr "Дней с заметками"
+msgstr "Кол-во заполненных дней"
 
 #: ../rednotebook/util/statistics.py:83 ../rednotebook/util/statistics.py:95
 msgid "Letters"
-msgstr "Символов"
+msgstr "Кол-во символов"
 
 #: ../rednotebook/util/statistics.py:84
 msgid "Days between first and last Entry"
@@ -598,7 +600,7 @@ msgstr "Процент заполненных дней"
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Lines"
-msgstr "Строк"
+msgstr "Кол-во строк"
 
 #: ../rednotebook/info.py:79
 msgid ""
@@ -757,7 +759,7 @@ msgstr "<b>Доступна новая версия RedNotebook!</b>"
 
 #: tmp/mainWindow.glade.h:3
 msgid "<b>Current Day</b>"
-msgstr "<b>Текущий день</b>"
+msgstr "<b>За текущий день</b>"
 
 #: tmp/mainWindow.glade.h:4
 msgid "<b>Enter file name</b>"
@@ -782,7 +784,7 @@ msgstr "<b>Название ссылки (необязательно)</b>"
 
 #: tmp/mainWindow.glade.h:10
 msgid "<b>Overall</b>"
-msgstr "<b>Всего</b>"
+msgstr "<b>Общая статистика</b>"
 
 #: tmp/mainWindow.glade.h:11
 msgid "<b>Select Entries</b>"
@@ -1015,6 +1017,7 @@ msgstr ""
 "  Andrey Novoselov https://launchpad.net/~ksynolog\n"
 "  LithiUm https://launchpad.net/~neo-anderson\n"
 "  MyOtheHedgeFox https://launchpad.net/~a-ztech\n"
+"  Nick https://launchpad.net/~nick222-yandex\n"
 "  Sergey \"Shnatsel\" Davidoff https://launchpad.net/~shnatsel\n"
 "  Sergey Sedov https://launchpad.net/~serg-sedov\n"
 "  Victor Yu. Kowalsky https://launchpad.net/~vityokster"

@@ -1,21 +1,20 @@
-# Serbian translation for rednotebook
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Walser translation for rednotebook
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the rednotebook package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2009-12-17 00:43+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
-"Language-Team: Serbian <sr@li.org>\n"
+"PO-Revision-Date: 2010-06-08 20:12+0000\n"
+"Last-Translator: bortis <Unknown>\n"
+"Language-Team: Walser <wae@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-25 03:48+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -229,7 +228,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "Z'RedNotebook bim üfstarte lade"
 
 #: ../rednotebook/gui/options.py:153
 msgid "%A, %x, Day %j"
@@ -247,264 +246,273 @@ msgstr ""
 #: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:123
 #: tmp/mainWindow.glade.h:39
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:178
 #, python-format
 msgid "Preview: %s"
-msgstr ""
+msgstr "Vorschau: %s"
 
 #: ../rednotebook/gui/options.py:285
 msgid "Close to system tray"
-msgstr ""
+msgstr "Schliesse in die start lischta"
 
 #: ../rednotebook/gui/options.py:286
 msgid "Closing the window will send RedNotebook to the tray"
 msgstr ""
+"Z'schliesse fam fänschter verchlinnert z'RedNotebook in die start lischta"
 
 #: ../rednotebook/gui/options.py:289
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "D'falsch gschribne werter unerstriche"
 
 #: ../rednotebook/gui/options.py:290
 msgid "Requires gtkspell."
-msgstr ""
+msgstr "gtkspell isch verüssetzig."
 
 #: ../rednotebook/gui/options.py:291
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr ""
+msgstr "Äs isch im packet python-gtkspell oder python-gnome2-extras enthalte"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Check Spelling"
-msgstr ""
+msgstr "D'rächt schribig kontrolliere"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Webkit offers a nicer preview"
-msgstr ""
+msgstr "Webkit stellt en schnönneri vorschau zer verfiegig"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires pywebkitgtk (python-webkit)"
-msgstr ""
+msgstr "pywebkitgtk (python-webkit) isch vorüssetzig"
 
 #: ../rednotebook/gui/options.py:301
 msgid "Use webkit for previews"
-msgstr ""
+msgstr "webkit ver die vorschau verwende"
 
 #: ../rednotebook/gui/options.py:301
 msgid "(Restart required)"
-msgstr ""
+msgstr "(Niwstart netig)"
 
 #: ../rednotebook/gui/options.py:311
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "Ufeni niweri version bim üfstarte kontrolliere"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Check now"
-msgstr ""
+msgstr "Jetzt kontrolliere"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Font Size"
-msgstr ""
+msgstr "Schrift gresi"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Date/Time format"
-msgstr ""
+msgstr "Datum/Zit format"
 
 #: ../rednotebook/gui/options.py:326
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "Fa der wolcha üsnäh"
 
 #: ../rednotebook/gui/options.py:327
 msgid "Do not show those comma separated words in any cloud"
-msgstr ""
+msgstr "Die komma separierte werter nit innere wolcha azeige"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "Chlini werter innere wolcha züelah"
 
 #: ../rednotebook/gui/options.py:329
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
+msgstr "Werter mit 4 büech stabe oder weniger innere wolcha züelah"
 
 #: ../rednotebook/gui/menu.py:89
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
 
 #: ../rednotebook/gui/menu.py:91
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "Es niws journal erstelle. RedNotebook spichert zersch nu z'alta"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Load an existing journal. The old journal will be saved"
 msgstr ""
+"Es exischtierends journal üftüe. RedNotebook spichert zersch nu z'alta"
 
 #: ../rednotebook/gui/menu.py:99
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"Z'journal eme neue ort spichere. RedNotebook spichert zersch nu d'datie vam "
+"alte journal"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:102
 msgid "Export"
-msgstr ""
+msgstr "Exportiere"
 
 #: ../rednotebook/gui/menu.py:103
 msgid "Open the export assistant"
-msgstr ""
+msgstr "De export asischtänt effne"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Backup"
-msgstr ""
+msgstr "Backup"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "Spichert alli date imme zip archiv"
 
 #: ../rednotebook/gui/menu.py:107 tmp/mainWindow.glade.h:63
 msgid "Statistics"
-msgstr ""
+msgstr "Statistikä"
 
 #: ../rednotebook/gui/menu.py:108
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "Em paar statistikä uber z'journal azeige"
 
 #: ../rednotebook/gui/menu.py:110
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "RedNotebook beende. Äs wird nit in die start lischta verchlinnert."
 
 #: ../rednotebook/gui/menu.py:113
 msgid "_Edit"
-msgstr ""
+msgstr "B_earbeite"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Undo text edits or category entry deletions"
-msgstr ""
+msgstr "En text ändrig oder es empfärne vannere kategorie rückgängig mache"
 
 #: ../rednotebook/gui/menu.py:117
 msgid "Redo text edits or category entry additions"
-msgstr ""
+msgstr "En text ändrig oder es hinzüefiege vannere kategorie wider härstelle"
 
 #: ../rednotebook/gui/menu.py:129
 msgid "_Help"
-msgstr ""
+msgstr "_Hilfe"
 
 #: ../rednotebook/gui/menu.py:132
 msgid "Contents"
-msgstr ""
+msgstr "Ihalt"
 
 #: ../rednotebook/gui/menu.py:133
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "D'RedNotebook dokumentation effne"
 
 #: ../rednotebook/gui/menu.py:134
 msgid "Get Help Online"
-msgstr ""
+msgstr "Zer online hilf"
 
 #: ../rednotebook/gui/menu.py:135
 msgid "Visit the RedNotebook forum"
-msgstr ""
+msgstr "Z'RedNotebook forum bsüeche"
 
 #: ../rednotebook/gui/menu.py:136
 msgid "Restore example content"
-msgstr ""
+msgstr "De bischbil ihalt wider härstelle"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "Fill some free days with example content. Do not overwrite anything"
-msgstr ""
+msgstr "Em paar frii täg mit bischbil ihalte fille. Äs wird nix uberschribe"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "RedNotebook ubersetze"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
+"Zur Launchpad websita verbinne, um bi der ubersetzig fam RedNotebook z'hälfe"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Report a Problem"
-msgstr ""
+msgstr "Es problem mälde"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "En chlina fähler bricht üsfille"
 
 #: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:525
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "RedNotebook Dokumentation"
 
 #: ../rednotebook/gui/menu.py:269
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "Es desktop journal"
 
 #: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:21
 msgid "Categories"
-msgstr ""
+msgstr "Kategorie"
 
 #: ../rednotebook/gui/categories.py:118
 msgid "Empty nodes are not allowed"
-msgstr ""
+msgstr "Läri chnote sind nit erläubt"
 
 #: ../rednotebook/gui/categories.py:149
 msgid "Empty category names are not allowed"
-msgstr ""
+msgstr "Läri kategorie näme sind nit erläubt"
 
 #: ../rednotebook/gui/categories.py:157
 msgid "Empty entries are not allowed"
-msgstr ""
+msgstr "Läri iträg sind nit erläubt"
 
 #: ../rednotebook/gui/categories.py:372
 msgid "Do you really want to delete this node?"
-msgstr ""
+msgstr "Willt dischä chnote wirklich lesche?"
 
 #: ../rednotebook/gui/categories.py:430
 msgid "Change this text"
-msgstr ""
+msgstr "Dischä text ändere"
 
 #: ../rednotebook/gui/categories.py:434
 msgid "Add a new entry"
-msgstr ""
+msgstr "En niwä itrag erstelle"
 
 #: ../rednotebook/gui/categories.py:438
 msgid "Delete this node"
-msgstr ""
+msgstr "Dischä chnote lesche"
 
 #: ../rednotebook/gui/exportAssistant.py:61 tmp/mainWindow.glade.h:30
 msgid "Export Assistant"
-msgstr ""
+msgstr "Export asischtänt"
 
 #: ../rednotebook/gui/exportAssistant.py:90
 msgid ""
 "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
 msgstr ""
+"Fer en diräkta PDF export müesch nu z'packet pywebkitgtk, version 1.1.5 oder "
+"neuer installiere."
 
 #: ../rednotebook/gui/exportAssistant.py:91
 msgid "Alternatively consult the help document for Latex to PDF conversion."
 msgstr ""
+"Alternativ chansch em hilfs dokument fader LaTeX zu PDF konvertierig "
+"nahschlah."
 
 #: ../rednotebook/gui/exportAssistant.py:141
 msgid "Available Categories"
-msgstr ""
+msgstr "Verfiegbari kategorie"
 
 #: ../rednotebook/gui/exportAssistant.py:149
 msgid "Selected Categories"
-msgstr ""
+msgstr "Markierti kategorie"
 
 #: ../rednotebook/gui/exportAssistant.py:191
 msgid "Cancelling export assistant."
-msgstr ""
+msgstr "De export assischtänt abbräche"
 
 #: ../rednotebook/gui/exportAssistant.py:352
 #, python-format
 msgid "Content exported to %s"
-msgstr ""
+msgstr "De ihalt isch exportiert nah %s"
 
 #: ../rednotebook/gui/exportAssistant.py:354
 #, python-format
 msgid "Exporting to %s failed"
-msgstr ""
+msgstr "Z'exportiere nah %s isch fähl gange"
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
@@ -533,29 +541,33 @@ msgstr ""
 #: ../rednotebook/redNotebook.py:445
 #, python-format
 msgid "The content has been saved to %s"
-msgstr ""
+msgstr "De ihalt isch jetzt uner %s gspichert"
 
 #: ../rednotebook/redNotebook.py:447
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nix z'spichere"
 
 #: ../rednotebook/redNotebook.py:454
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr ""
+"Äs isch nit megli gsi d'konfiguration z'spichere. Bitte die berächtigunge "
+"kontrolliere"
 
 #: ../rednotebook/redNotebook.py:484
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "De üsgwählt ordner isch nit lär."
 
 #: ../rednotebook/redNotebook.py:485
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
+"Damit nix cha uberschribe wärde, isch de ordner ihalt ins tagebüech "
+"importiert worde."
 
 #: ../rednotebook/redNotebook.py:488
 msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
+msgstr "De üsgwählt ordner isch lär. Es neüs tagebüech isch erstellt worde."
 
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:73
@@ -596,45 +608,47 @@ msgid ""
 "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
 "try."
 msgstr ""
+"Hallo,\n"
+"ditz isch RedNotebook, es desktop journal. Wier danke dases üsprobiersch."
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "D'benutzer oberflächi isch in dri bereicha üfteilt:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr ""
+msgstr "Lings"
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "Navigation mitem kaländer"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr ""
+msgstr "D'mitti"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
-msgstr ""
+msgstr "De text fer en tag"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr ""
+msgstr "Rächts"
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
-msgstr ""
+msgstr "En amerkig zum tag"
 
 #: ../rednotebook/info.py:92
 msgid "Text entries"
-msgstr ""
+msgstr "Text iträg"
 
 #: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
-msgstr ""
+msgstr "En itrag chenti so üsgseh:"
 
 #: ../rednotebook/info.py:94
 msgid ""
@@ -642,78 +656,92 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"Hitte bini ent //tier handlig// gange und hä en **tiger** käuft. Nacher "
+"siwer ens --fribad-- gange und hei frisbee gspillt. Denah heiwer nu de "
+"\"__Life of Brian__\" glüegt."
 
 #: ../rednotebook/info.py:98
 msgid "Annotations"
-msgstr ""
+msgstr "Amerkigä"
 
 #: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
-msgstr ""
+msgstr "Üf der rächt sita isch platz fer die amerkigä zum tag."
 
 #: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
-msgstr ""
+msgstr "Amerkigä sind notizä, wame ganz eifach nach kategorie cha glidere."
 
 #: ../rednotebook/info.py:101
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
+"Als bischbil chentesch die kategorie \"Idee\" alegge und die hitige idee "
+"dezüetüe."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
 msgid "Save and Export"
-msgstr ""
+msgstr "Spichere und exportiere"
 
 #: ../rednotebook/info.py:114
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"Alli igabe spicherts automatisch in definierte interval und went z'program "
+"gschliessesch."
 
 #: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Um en date verluscht z'verhindere seltesch in regemässige abständ z'journal "
+"sichere."
 
 #: ../rednotebook/info.py:117
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"\"Backup\" im \"Journal\" menü spichert alli iträg bequem innere zip dati."
 
 #: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "Im \"Journal\" menü gfinsch eü de \"Exportiere\" chnopf."
 
 #: ../rednotebook/info.py:119
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
+"Miteme klick üf \"Exportiere\" chansch dies tagebüech als Text, HTML oder "
+"LaTeX dokumänt spichere."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:125
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
-msgstr ""
+msgstr "Meh dokumentation gfinsch uner \"Hilfe\" -> \"Hilfe\""
 
 #: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
+"Went en fähler gfinsch, wäri froh wentmer en chlini notiz chentesch "
+"hinerlah, so dasi de fähler cha behäbe."
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Jedä kommentar zu dieschem program isch willkomme"
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
-msgstr ""
+msgstr "En hibschä tag nu!"
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
-msgstr ""
+msgstr "Idee"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "Brüch es cools journal program"
 
 #: tmp/mainWindow.glade.h:1
 msgid "<< Unselect"
@@ -972,4 +1000,4 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Nikola B https://launchpad.net/~eniaroyah"
+"  bortis https://launchpad.net/~bortis"

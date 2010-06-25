@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2010-02-25 14:15+0000\n"
-"Last-Translator: Emre Ayca <Unknown>\n"
+"PO-Revision-Date: 2010-06-12 20:01+0000\n"
+"Last-Translator: Angel Spy <melissadilara@yahoo.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-25 01:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -24,7 +24,7 @@ msgstr "virgülle, ayrılmış, bu, kelimeleri, filtrele"
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/mainWindow.py:1191
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "mtv, boş, yap, iş, oyna"
 
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
@@ -189,7 +189,7 @@ msgstr ""
 
 #: ../rednotebook/gui/mainWindow.py:809
 msgid "Line Break"
-msgstr ""
+msgstr "Satır Sonu"
 
 #: ../rednotebook/gui/mainWindow.py:810
 msgid "Insert a manual line break"
@@ -234,7 +234,7 @@ msgstr "RedNotebook'u açılışta başlat"
 
 #: ../rednotebook/gui/options.py:153
 msgid "%A, %x, Day %j"
-msgstr ""
+msgstr "%A, %x, Gün %j"
 
 #: ../rednotebook/gui/options.py:153
 msgid "Week %W of Year %Y"
@@ -242,7 +242,7 @@ msgstr "%Y Yılının %W Haftası"
 
 #: ../rednotebook/gui/options.py:154
 msgid "Day %j"
-msgstr ""
+msgstr "Gün %j"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:123
@@ -495,7 +495,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exportAssistant.py:149
 msgid "Selected Categories"
-msgstr ""
+msgstr "Seçilen Kategoriler"
 
 #: ../rednotebook/gui/exportAssistant.py:191
 msgid "Cancelling export assistant."
@@ -517,7 +517,7 @@ msgstr "Şablon Adı Seç"
 
 #: ../rednotebook/templates.py:291 ../rednotebook/templates.py:300
 msgid "This Weekday's Template"
-msgstr ""
+msgstr "Bu Hafta İçinin Şablonu"
 
 #: ../rednotebook/templates.py:294
 msgid "Edit Template"
@@ -529,11 +529,11 @@ msgstr ""
 
 #: ../rednotebook/templates.py:303
 msgid "Create New Template"
-msgstr ""
+msgstr "Yeni Şablon Oluştur"
 
 #: ../rednotebook/templates.py:306
 msgid "Open Template Directory"
-msgstr ""
+msgstr "Şablon Dizinini Aç"
 
 #: ../rednotebook/redNotebook.py:445
 #, python-format
@@ -542,15 +542,15 @@ msgstr ""
 
 #: ../rednotebook/redNotebook.py:447
 msgid "Nothing to save"
-msgstr ""
+msgstr "Kaydedilecek bir şey yok"
 
 #: ../rednotebook/redNotebook.py:454
 msgid "Configuration could not be saved. Please check your permissions"
-msgstr ""
+msgstr "Yapılandırma kaydedilemedi. İzinlerinizi kontrol edin"
 
 #: ../rednotebook/redNotebook.py:484
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "Seçilen klasör boş değil."
 
 #: ../rednotebook/redNotebook.py:485
 msgid ""
@@ -565,7 +565,7 @@ msgstr ""
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:73
 msgid "Words"
-msgstr ""
+msgstr "Kelimeler"
 
 #: ../rednotebook/util/statistics.py:81
 msgid "Distinct Words"
@@ -573,27 +573,27 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Edited Days"
-msgstr ""
+msgstr "Düzenlenen Günler"
 
 #: ../rednotebook/util/statistics.py:83 ../rednotebook/util/statistics.py:95
 msgid "Letters"
-msgstr ""
+msgstr "Harfler"
 
 #: ../rednotebook/util/statistics.py:84
 msgid "Days between first and last Entry"
-msgstr ""
+msgstr "İlk ve son Girdi arasındaki günler"
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Average number of Words"
-msgstr ""
+msgstr "Ortalama kelime sayısı"
 
 #: ../rednotebook/util/statistics.py:86
 msgid "Percentage of edited Days"
-msgstr ""
+msgstr "Düzenlenen Günlerin yüzdesi"
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Lines"
-msgstr ""
+msgstr "Satırlar"
 
 #: ../rednotebook/info.py:79
 msgid ""
@@ -609,7 +609,7 @@ msgstr ""
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr ""
+msgstr "Sol"
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
@@ -618,7 +618,7 @@ msgstr ""
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr ""
+msgstr "Orta"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
@@ -627,7 +627,7 @@ msgstr ""
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr ""
+msgstr "Sağ"
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
@@ -635,7 +635,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:92
 msgid "Text entries"
-msgstr ""
+msgstr "Metin girdileri"
 
 #: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
@@ -710,11 +710,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
-msgstr ""
+msgstr "İyi günler!"
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
-msgstr ""
+msgstr "Fikirler"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
@@ -726,15 +726,15 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:2
 msgid "<b>A new version of RedNotebook is available!</b>"
-msgstr ""
+msgstr "<b>RedNotebook'un yeni sürümü mevcut!</b>"
 
 #: tmp/mainWindow.glade.h:3
 msgid "<b>Current Day</b>"
-msgstr ""
+msgstr "<b>Geçerli Gün</b>"
 
 #: tmp/mainWindow.glade.h:4
 msgid "<b>Enter file name</b>"
-msgstr ""
+msgstr "<b>Dosya adını girin</b>"
 
 #: tmp/mainWindow.glade.h:5
 msgid "<b>Entries from:</b>"
@@ -743,11 +743,11 @@ msgstr ""
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:7
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Genel</b>"
 
 #: tmp/mainWindow.glade.h:8
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr ""
+msgstr "<b>Bağlantı konumu (ör. http://rednotebook.sf.net)</b>"
 
 #: tmp/mainWindow.glade.h:9
 msgid "<b>Link name (optional)</b>"
@@ -759,7 +759,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:11
 msgid "<b>Select Entries</b>"
-msgstr ""
+msgstr "<b>Girdileri Seçin</b>"
 
 #: tmp/mainWindow.glade.h:12
 msgid "<b>Select existing or new Category</b>"
@@ -767,7 +767,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:13
 msgid "<b>Select format</b>"
-msgstr ""
+msgstr "<b>Biçimi seçin</b>"
 
 #: tmp/mainWindow.glade.h:14
 msgid "<b>Select the contents you want to export</b>"
@@ -779,7 +779,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:16
 msgid "<b>Write entry</b>"
-msgstr ""
+msgstr "<b>Girdi yazın</b>"
 
 #: tmp/mainWindow.glade.h:17
 msgid "<b>You already have the latest version of RedNotebook</b>"
@@ -787,11 +787,11 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:18
 msgid "Add an entry to a category (Ctrl+N)"
-msgstr ""
+msgstr "Kategoriye girdi ekleyin (Ctrl+N)"
 
 #: tmp/mainWindow.glade.h:19
 msgid "All Entries"
-msgstr ""
+msgstr "Tüm Girdiler"
 
 #: tmp/mainWindow.glade.h:20
 msgid "Annotate"
@@ -799,15 +799,15 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:22
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
 #: tmp/mainWindow.glade.h:23
 msgid "Clouds"
-msgstr ""
+msgstr "Bulutlar"
 
 #: tmp/mainWindow.glade.h:24
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: tmp/mainWindow.glade.h:25
 msgid "Delete the selected node"
@@ -815,7 +815,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:26
 msgid "Do not ask again"
-msgstr ""
+msgstr "Bir daha sorma"
 
 #: tmp/mainWindow.glade.h:27
 msgid "Do not export categories"
@@ -823,11 +823,11 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:28
 msgid "Do you want to visit the website?"
-msgstr ""
+msgstr "Web sitesini ziyaret etmek istiyor musunuz?"
 
 #: tmp/mainWindow.glade.h:29
 msgid "Exit without saving"
-msgstr ""
+msgstr "Kaydetmeden çık"
 
 #: tmp/mainWindow.glade.h:31
 msgid "Export Text"
@@ -844,19 +844,19 @@ msgstr ""
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:35
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: tmp/mainWindow.glade.h:36
 msgid "Go to next day (Ctrl+PageUp)"
-msgstr ""
+msgstr "Sonraki güne git (Ctrl+PageUp)"
 
 #: tmp/mainWindow.glade.h:37
 msgid "Go to previous day (Ctrl+PageDown)"
-msgstr ""
+msgstr "Önceki güne git (Ctrl+PageDown)"
 
 #: tmp/mainWindow.glade.h:38
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: tmp/mainWindow.glade.h:40
 msgid ""
@@ -874,7 +874,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:43
 msgid "Jump to today"
-msgstr ""
+msgstr "Bugüne atla"
 
 #: tmp/mainWindow.glade.h:44
 msgid "Latex"
@@ -882,15 +882,15 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:45
 msgid "New Version"
-msgstr ""
+msgstr "Yeni Sürüm"
 
 #: tmp/mainWindow.glade.h:46
 msgid "New entry"
-msgstr ""
+msgstr "Yeni girdi"
 
 #: tmp/mainWindow.glade.h:47
 msgid "No New Version"
-msgstr ""
+msgstr "Yeni Sürüm Yok"
 
 #: tmp/mainWindow.glade.h:48
 msgid "Only the entries in the selected time range"
@@ -898,39 +898,39 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:49
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: tmp/mainWindow.glade.h:50
 msgid "Preferences"
-msgstr ""
+msgstr "Tercihler"
 
 #: tmp/mainWindow.glade.h:53
 msgid "Search"
-msgstr ""
+msgstr "Ara"
 
 #: tmp/mainWindow.glade.h:54
 msgid "Search in entries, categories and tags"
-msgstr ""
+msgstr "Girdilerde, kategorilerde ve etiketlerde ara"
 
 #: tmp/mainWindow.glade.h:55
 msgid "Select >>"
-msgstr ""
+msgstr "Seç >>"
 
 #: tmp/mainWindow.glade.h:56
 msgid "Select a cloud"
-msgstr ""
+msgstr "Bulut seç"
 
 #: tmp/mainWindow.glade.h:57
 msgid "Select a directory"
-msgstr ""
+msgstr "Dizin seç"
 
 #: tmp/mainWindow.glade.h:58
 msgid "Select a file"
-msgstr ""
+msgstr "Dosya Seç"
 
 #: tmp/mainWindow.glade.h:59
 msgid "Select a picture"
-msgstr ""
+msgstr "Resim seç"
 
 #: tmp/mainWindow.glade.h:60
 msgid "Select backup filename"
@@ -938,7 +938,7 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:61
 msgid "Select where to search"
-msgstr ""
+msgstr "Aranacak yeri seçin"
 
 #: tmp/mainWindow.glade.h:62
 msgid "Show a formatted preview of the text (Ctrl+P)"
@@ -947,23 +947,23 @@ msgstr ""
 #. ## This stands for the verb in "Tag this day"
 #: tmp/mainWindow.glade.h:65
 msgid "Tag"
-msgstr ""
+msgstr "Etiket"
 
 #: tmp/mainWindow.glade.h:66
 msgid "Tag this day (Ctrl+T)"
-msgstr ""
+msgstr "Bu günü etiketle (Ctrl+T)"
 
 #: tmp/mainWindow.glade.h:67
 msgid "Tags"
-msgstr ""
+msgstr "Etiketler"
 
 #: tmp/mainWindow.glade.h:68
 msgid "Template"
-msgstr ""
+msgstr "Şablon"
 
 #: tmp/mainWindow.glade.h:70
 msgid "Today"
-msgstr ""
+msgstr "Bugün"
 
 #: tmp/mainWindow.glade.h:71
 msgid ""
@@ -977,5 +977,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Angel Spy https://launchpad.net/~dilara.ekinci\n"
 "  Emre Ayca https://launchpad.net/~anatolica\n"
 "  Hüseyin Sevgi https://launchpad.net/~hsevgi"

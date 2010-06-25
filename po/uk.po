@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2009-12-04 12:39+0000\n"
-"Last-Translator: Сергій Матрунчик (SkyMan) <Unknown>\n"
+"PO-Revision-Date: 2010-05-27 07:13+0000\n"
+"Last-Translator: Nivelir <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-25 01:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -29,7 +29,7 @@ msgstr "mtv, спам, робота, праця, гра"
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Не показувати \"%s\" в хмарці тегів"
 
 #: ../rednotebook/gui/mainWindow.py:316
 msgid "Show RedNotebook"
@@ -81,23 +81,23 @@ msgstr "Відкрито журнал по замовчуванню"
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/mainWindow.py:691
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../rednotebook/gui/mainWindow.py:697
 msgid "Strikethrough"
-msgstr ""
+msgstr "Перекреслений"
 
 #: ../rednotebook/gui/mainWindow.py:699
 msgid "Bold"
-msgstr ""
+msgstr "Напівжирний"
 
 #: ../rednotebook/gui/mainWindow.py:700
 msgid "Italic"
-msgstr ""
+msgstr "Курсив"
 
 #: ../rednotebook/gui/mainWindow.py:701
 msgid "Underline"
-msgstr ""
+msgstr "Підкреслений"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/mainWindow.py:717
@@ -246,7 +246,7 @@ msgstr "День %j."
 #: ../rednotebook/gui/options.py:159 ../rednotebook/info.py:123
 #: tmp/mainWindow.glade.h:39
 msgid "Help"
-msgstr "Довідка"
+msgstr "Допомога"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:178
@@ -277,23 +277,23 @@ msgstr "Входить у пакунок python-gtkspell або python-gnome2-ex
 
 #: ../rednotebook/gui/options.py:292
 msgid "Check Spelling"
-msgstr ""
+msgstr "Перевірка орфографії"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Webkit offers a nicer preview"
-msgstr ""
+msgstr "Веб-рушій Webkit забезпечує перегляд записів у зручній формі."
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires pywebkitgtk (python-webkit)"
-msgstr ""
+msgstr "Вимагає pywebkitgtk (python-webkit)"
 
 #: ../rednotebook/gui/options.py:301
 msgid "Use webkit for previews"
-msgstr ""
+msgstr "Використовувати рушій WebKit для перегляду записів"
 
 #: ../rednotebook/gui/options.py:301
 msgid "(Restart required)"
-msgstr ""
+msgstr "(Необхідний перезапуск)"
 
 #: ../rednotebook/gui/options.py:311
 msgid "Check for new version at startup"
@@ -301,7 +301,7 @@ msgstr "Перевирити наявність нової версії при �
 
 #: ../rednotebook/gui/options.py:318
 msgid "Check now"
-msgstr ""
+msgstr "Перевірити зараз"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Font Size"
@@ -329,7 +329,7 @@ msgstr "Дозволити ці слова з 4 літер або менше у 
 
 #: ../rednotebook/gui/menu.py:89
 msgid "Journal"
-msgstr ""
+msgstr "Журнал"
 
 #: ../rednotebook/gui/menu.py:91
 msgid "Create a new journal. The old one will be saved"
@@ -343,7 +343,7 @@ msgstr "Завантажити існуючий журнал. Старий жу�
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
-"Зберегти журнал у новому місця. Старі файли журналу теж будуть збережені."
+"Зберегти журнал у новому місці. Старі файли журналу теж будуть збережені"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:102
@@ -393,19 +393,19 @@ msgstr "_Довідка"
 
 #: ../rednotebook/gui/menu.py:132
 msgid "Contents"
-msgstr ""
+msgstr "Зміст"
 
 #: ../rednotebook/gui/menu.py:133
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Відкрити документацію по RedNotebook"
 
 #: ../rednotebook/gui/menu.py:134
 msgid "Get Help Online"
-msgstr ""
+msgstr "Отримати допогу в мережі"
 
 #: ../rednotebook/gui/menu.py:135
 msgid "Visit the RedNotebook forum"
-msgstr ""
+msgstr "Відвідати форум RedNotebook"
 
 #: ../rednotebook/gui/menu.py:136
 msgid "Restore example content"
@@ -417,19 +417,19 @@ msgstr "Заповнити кілька вільних днів вмістом-�
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Перевести цю програму"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
+msgstr "Допомогти з перекладом RedNotebook, використовуючи Launchpad"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Report a Problem"
-msgstr ""
+msgstr "Повідомити про проблему"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "Заповнити форму з приводу помилки"
 
 #: ../rednotebook/gui/menu.py:247 ../rednotebook/info.py:525
 msgid "RedNotebook Documentation"
@@ -479,10 +479,14 @@ msgstr "Помічник експортування"
 msgid ""
 "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
 msgstr ""
+"Для запису в PDF напряму необхідно встановити пакет pywebkitgtk версії 1.1.5 "
+"чи новішої."
 
 #: ../rednotebook/gui/exportAssistant.py:91
 msgid "Alternatively consult the help document for Latex to PDF conversion."
 msgstr ""
+"Щоб дізнатися, як конвертувати Latex в PDF, зверніться до документації "
+"RedNotebook"
 
 #: ../rednotebook/gui/exportAssistant.py:141
 msgid "Available Categories"
@@ -542,7 +546,7 @@ msgstr "Нічого зберігати"
 #: ../rednotebook/redNotebook.py:454
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr ""
-"Налаштування не можуть бути збережені. Будь-ласка, перевірте свої права "
+"Налаштування не можуть бути збережені. Будь ласка, перевірте свої права "
 "доступу"
 
 #: ../rednotebook/redNotebook.py:484
@@ -600,45 +604,48 @@ msgid ""
 "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
 "try."
 msgstr ""
+"Вітаю!\n"
+"Це RedNotebook, журнал для записів на вашому комп’ютері. Велике спасибі, що "
+"вирішили випробувати її на ділі!"
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "Інтерфейс програми розділено на три части:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr ""
+msgstr "Ліворуч"
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "Навігація та календар"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr ""
+msgstr "У центрі"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
-msgstr ""
+msgstr "Текст дня"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr ""
+msgstr "Праворуч"
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
-msgstr ""
+msgstr "Примітки дня"
 
 #: ../rednotebook/info.py:92
 msgid "Text entries"
-msgstr ""
+msgstr "Текстові дані"
 
 #: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
-msgstr ""
+msgstr "Введені дані можуть виглядати наступним чином:"
 
 #: ../rednotebook/info.py:94
 msgid ""
@@ -646,78 +653,93 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"Сьогодні я пішол у //звіринець// і купив там собі **тигра**. Разом з тигром "
+"ми пішли до --басейну-- парку і довго грали з літаючою тарілкою. Потім я "
+"запропонував пограти в \"__Nexuiz__\". Тигр переміг у семи раундах!"
 
 #: ../rednotebook/info.py:98
 msgid "Annotations"
-msgstr ""
+msgstr "Примітки"
 
 #: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
-msgstr ""
+msgstr "Праворуч розміщене поле для приміток, пов’язаних з цим днем."
 
 #: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
-msgstr ""
+msgstr "Примітки можна легко відсортувати за категоріями."
 
 #: ../rednotebook/info.py:101
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
+"До прикладу, можна створити категорію \"Ідеї\" та додавати туди всі ті ідеї, "
+"що прийшли в голову за цей день. Після цього ідеї можна буде швидко "
+"відшукати через пошук по категоріях."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
 msgid "Save and Export"
-msgstr ""
+msgstr "Збереження та експорт"
 
 #: ../rednotebook/info.py:114
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"Всі введені дані автоматично зберігяються кожні кілька хвилин, а також при "
+"виході з програми (на всяк випадок)."
 
 #: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Щоб запобігти втраті даних, рекомендується періодично робити резервні копії."
 
 #: ../rednotebook/info.py:117
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"Пункт \"Резервне копіювння\" в меню \"Журнал\" дозволя зберегти введені вами "
+"дані в zip-архів (зберігається тільки текст)."
 
 #: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "В цьому ж розділі (\"Журнал\") знаходиться пункт \"Експорт\"."
 
 #: ../rednotebook/info.py:119
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
+"Ви можете експортувати ваші записи як текст, HTML-файл чи файл у форматі "
+"Latex."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:125
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
-msgstr ""
+msgstr "Більш детальну документацію можна знайти в разділі \"Допомога\"."
 
 #: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
+"Якщо ви виявили помилку, напишіть мені про неї кілька рядків, щоб я виправив "
+"її якомога швидше (бажано на англійській)."
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Буду вдячним за любу допомогу."
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
-msgstr ""
+msgstr "На все добре!"
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
-msgstr ""
+msgstr "Ідеї"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "Використовувати \"круту\" програму для ведення записів"
 
 #: tmp/mainWindow.glade.h:1
 msgid "<< Unselect"
@@ -794,7 +816,7 @@ msgstr "Всі дописи"
 
 #: tmp/mainWindow.glade.h:20
 msgid "Annotate"
-msgstr ""
+msgstr "Примітка"
 
 #: tmp/mainWindow.glade.h:22
 msgid "Category"
@@ -985,4 +1007,5 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Andriy Tsykholyas https://launchpad.net/~andriy-tsykholyas\n"
+"  Nivelir https://launchpad.net/~z32-list\n"
 "  Сергій Матрунчик (SkyMan) https://launchpad.net/~skymanphp"

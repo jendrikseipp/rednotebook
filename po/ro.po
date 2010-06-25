@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2010-04-15 17:52+0000\n"
+"PO-Revision-Date: 2010-06-07 22:30+0000\n"
 "Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-25 01:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -442,7 +442,7 @@ msgstr "Documentație RedNotebook"
 
 #: ../rednotebook/gui/menu.py:269
 msgid "A Desktop Journal"
-msgstr "Un jurnal pentru desktio"
+msgstr "Un jurnal pentru desktop"
 
 #: ../rednotebook/gui/categories.py:47 tmp/mainWindow.glade.h:21
 msgid "Categories"
@@ -553,7 +553,7 @@ msgstr "Configurația nu a putut fi salvată. Verificați permisiunile"
 
 #: ../rednotebook/redNotebook.py:484
 msgid "The selected folder is not empty."
-msgstr "Dosarul selectat nu este gol"
+msgstr "Dosarul selectat nu este gol."
 
 #: ../rednotebook/redNotebook.py:485
 msgid ""
@@ -612,7 +612,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
-msgstr "Interfața este divizată în trei părți:"
+msgstr "Interfața este împărțită în trei componente:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
@@ -626,7 +626,7 @@ msgstr "Navigare prin calendar"
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr "Centrat"
+msgstr "Centru"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
@@ -665,18 +665,18 @@ msgstr "Adnotări"
 
 #: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
-msgstr "În partea dreaptă este spațiu pentru adnotările unei zile"
+msgstr "În partea dreaptă este spațiu pentru adnotările unei zile."
 
 #: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
-msgstr "Adnotările sunt notițe care pot fi sortate ușor în categorii"
+msgstr "Adnotările sunt notițe care pot fi sortate ușor în categorii."
 
 #: ../rednotebook/info.py:101
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
-"De ex., puteți crea categoria „idei” și să adăugați ideile de azi în ea."
+"De exemplu, puteți crea categoria „idei” și să adăugați ideile de azi în ea."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
@@ -694,8 +694,8 @@ msgstr ""
 #: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
-"Pentru a preveni pierderea datelor ar trebui să faceți copii de siguranță "
-"regulate."
+"Pentru a preveni pierderea datelor ar trebui să faceți regulat copii de "
+"siguranță."
 
 #: ../rednotebook/info.py:117
 msgid ""
@@ -706,7 +706,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "În meniul „Jurnal” veți găsi și butonul „Exportă”"
+msgstr "În meniul „Jurnal” veți găsi și butonul „Exportă”."
 
 #: ../rednotebook/info.py:119
 msgid ""
@@ -928,7 +928,7 @@ msgstr "PDF"
 
 #: tmp/mainWindow.glade.h:50
 msgid "Preferences"
-msgstr "Preferinţe"
+msgstr "Preferințe"
 
 #: tmp/mainWindow.glade.h:53
 msgid "Search"

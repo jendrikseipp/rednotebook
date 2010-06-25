@@ -1,26 +1,26 @@
-# Serbian translation for rednotebook
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Tagalog translation for rednotebook
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the rednotebook package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2009-12-17 00:43+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
-"Language-Team: Serbian <sr@li.org>\n"
+"PO-Revision-Date: 2010-05-15 14:07+0000\n"
+"Last-Translator: Shikihime <Unknown>\n"
+"Language-Team: Tagalog <tl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-25 03:48+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
 msgid "filter, these, comma, separated, words"
 msgstr ""
+"i-filter, ang, mga, gantiong, salita, na, nakahiwalay, gamit, ang, comma"
 
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/mainWindow.py:1191
@@ -30,37 +30,39 @@ msgstr ""
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Huwag ipakita ang \"%s\" sa mga ulap"
 
 #: ../rednotebook/gui/mainWindow.py:316
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "Ipakita ang RedNotebook"
 
 #. ## Translators: Verb
 #. ## Verb
 #: ../rednotebook/gui/mainWindow.py:394 tmp/mainWindow.glade.h:52
 msgid "Preview"
-msgstr ""
+msgstr "kalalabasan"
 
 #: ../rednotebook/gui/mainWindow.py:409
 msgid "Edit"
-msgstr ""
+msgstr "baguhin"
 
 #: ../rednotebook/gui/mainWindow.py:511
 msgid "Select an empty folder for your new journal"
-msgstr ""
+msgstr "Pumili ng folder na walang laman para sa iyong bagong journal"
 
 #: ../rednotebook/gui/mainWindow.py:512
 msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
+"Ang mga journal ay naka-save sa loob ng isang directory, hindi sa iisang "
+"file lang."
 
 #: ../rednotebook/gui/mainWindow.py:513
 msgid "The directory name will be the title of the new journal."
-msgstr ""
+msgstr "Ang pangalan ng directory ay magiging title ng bagong journal"
 
 #: ../rednotebook/gui/mainWindow.py:517
 msgid "Select an existing journal directory"
-msgstr ""
+msgstr "Mamili ng isang nagawang journal directory"
 
 #: ../rednotebook/gui/mainWindow.py:519
 msgid "The directory should contain your journal's data files"
@@ -972,4 +974,4 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Nikola B https://launchpad.net/~eniaroyah"
+"  Shikihime https://launchpad.net/~yeeh69"

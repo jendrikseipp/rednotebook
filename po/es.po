@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2010-04-16 15:25+0000\n"
-"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
+"PO-Revision-Date: 2010-06-08 17:02+0000\n"
+"Last-Translator: Paco Molinero <paco@byasl.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-25 01:28+0000\n"
+"X-Launchpad-Export-Date: 2010-06-25 03:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -345,7 +345,8 @@ msgstr "Cargar un diario existente. El antiguo se guardará"
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
-"Guardar el diario en una nueva ubicación. El antiguo diario se guardará"
+"Guardar el diario en una nueva ubicación. El antiguo diario también se "
+"guardará"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:102
@@ -946,11 +947,11 @@ msgstr "Selecione una nube"
 
 #: tmp/mainWindow.glade.h:57
 msgid "Select a directory"
-msgstr "Seleccione una carpeta"
+msgstr "Selecciona un directorio"
 
 #: tmp/mainWindow.glade.h:58
 msgid "Select a file"
-msgstr "Seleccione un archivo"
+msgstr ""
 
 #: tmp/mainWindow.glade.h:59
 msgid "Select a picture"
@@ -971,7 +972,7 @@ msgstr "Mostrar vista previa de texto con formato (Ctrl+P)"
 #. ## This stands for the verb in "Tag this day"
 #: tmp/mainWindow.glade.h:65
 msgid "Tag"
-msgstr "Etiqueta"
+msgstr "Etiquetar"
 
 #: tmp/mainWindow.glade.h:66
 msgid "Tag this day (Ctrl+T)"
