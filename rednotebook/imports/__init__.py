@@ -459,7 +459,8 @@ class TomboyImporter(Importer):
 	DEFAULTPATH = os.getenv('XDG_DATA_HOME') or \
 		os.path.join(os.path.expanduser('~'), '.local', 'share', 'tomboy')
 	if sys.platform == 'win32':
-		DEFAULTPATH = os.path.join(os.getenv('%APPDATA%'), 'Tomboy', 'notes')
+		appdata = os.getenv('APPDATA')
+		DEFAULTPATH = os.path.join(appdata, 'Tomboy', 'notes')
 	elif sys.platform == 'darwin':
 		DEFAULTPATH = os.path.join(os.path.expanduser('~'), \
 							'Library', 'Application Support', 'Tomboy')
