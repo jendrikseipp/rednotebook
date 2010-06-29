@@ -304,8 +304,8 @@ class OptionsManager(object):
 		webkit_label = _('Use webkit for previews') + ' ' + _('(Restart required)')
 		webkit_option = TickOption(webkit_label, 'useWebkit',
 				tooltip=tooltip)
-		if not sys.platform == 'win32':
-			self.options.append(webkit_option)
+		#if not sys.platform == 'win32':
+		self.options.append(webkit_option)
 		webkit_option.set_sensitive(webkit_available)
 		
 		
