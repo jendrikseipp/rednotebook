@@ -92,8 +92,10 @@ class MainWindow(object):
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
-        self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
-                                filesystem.get_icons()))
+        icons = [gtk.gdk.pixbuf_new_from_file(file) for file in filesystem.get_icons()]
+        self.main_frame.set_icon_list(*icons)
+        #self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
+        #                        filesystem.get_icons()))
         
         self.uimanager = gtk.UIManager()
         
