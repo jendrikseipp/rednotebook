@@ -13,12 +13,12 @@ want to just run the program, without installing it.
 =====  RUN RedNotebook on Ubuntu/Debian/Mint  =====
 In this directory:
   - sudo apt-get install python-yaml python-webkit
-  - python rednotebook/redNotebook.py
+  - python rednotebook/journal.py
   
 =====  RUN RedNotebook on Fedora  =====
 In this directory:
   - yum install python-devel PyYAML pywebkitgtk
-  - python rednotebook/redNotebook.py
+  - python rednotebook/journal.py
 
 
 ======  Short Install Instructions  ======
@@ -74,18 +74,18 @@ You should also find a menu entry for RedNotebook under "Office".
 ===== THANKS =====
 
   - The authors of the programs listed under 'requirements'. Remember that
-			without them, RedNotebook would not be possible
+            without them, RedNotebook would not be possible
   - Everaldo Coelho (www.everaldo.com) for the excellent icon
   - The txt2tags team (http://txt2tags.sf.net) for their super cool markup tool
   - Gustavo J. A. M. Carneiro for his htmltextview.py module used by the clouds
   - The people behind the Tango Icon Project and the creators of the Human Theme
-			Their work can be downloaded from http://tango.freedesktop.org/
+            Their work can be downloaded from http://tango.freedesktop.org/
   - Matt Rasmussen and his KeepNote project (http://rasm.ods.org/keepnote/). 
-  			RedNotebook uses his work on displaying HTML content 
-			in a PyGTK application for the preview.
+            RedNotebook uses his work on displaying HTML content 
+            in a PyGTK application for the preview.
   - Ahmet Öztürk and Lifeograph for his markup highlighting idea
   - Hannes Matuschek: RedNotebook uses pygtkcodebuffer for the markup
-			highlighting 
+            highlighting 
 
 
 Enjoy!

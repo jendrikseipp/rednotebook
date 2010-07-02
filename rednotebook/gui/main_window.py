@@ -130,7 +130,8 @@ class MainWindow(object):
         self.edit_pane = self.builder.get_object('edit_pane')
         
         # Only add the config variable if webkit is available
-        self.use_webkit = browser.webkit and self.journal.config.read('useWebkit', 1)
+        # Use webkit by default if it is available
+        self.use_webkit = browser.webkit# and self.journal.config.read('useWebkit', 1)
         
         logging.info('Using webkit for previews: %s' % self.use_webkit)
         
