@@ -48,6 +48,7 @@ O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mon
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
 O Use pywebkitgtk on Windows
+O Bundle msvcr dll in windows installer
 O Write documentation about ``, "", ''
 X Highlight ``, "", ''
 O Set title for exports
