@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-11 11:30+0200\n"
-"PO-Revision-Date: 2010-02-22 16:16+0000\n"
-"Last-Translator: slaanco <slaanco@gmail.com>\n"
+"PO-Revision-Date: 2010-07-09 19:49+0000\n"
+"Last-Translator: Vlado Jendroľ <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-07 03:41+0000\n"
+"X-Launchpad-Export-Date: 2010-07-10 04:03+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/mainWindow.py:1185
@@ -106,7 +106,7 @@ msgstr "Formát"
 
 #: ../rednotebook/gui/mainWindow.py:718
 msgid "Format the selected text or category entry"
-msgstr ""
+msgstr "Formátovať vybraný text alebo položku kategórie"
 
 #: ../rednotebook/gui/mainWindow.py:761
 msgid "First Item"
@@ -118,7 +118,7 @@ msgstr "Druhá položka"
 
 #: ../rednotebook/gui/mainWindow.py:763
 msgid "Indented Item"
-msgstr ""
+msgstr "Vnorená položka"
 
 #: ../rednotebook/gui/mainWindow.py:764
 msgid "Two blank lines close the list"
@@ -126,7 +126,7 @@ msgstr "Dva prázdne riadky ukončia zoznam"
 
 #: ../rednotebook/gui/mainWindow.py:768
 msgid "Title text"
-msgstr ""
+msgstr "Text titulku"
 
 #: ../rednotebook/gui/mainWindow.py:784
 msgid "Picture"
@@ -556,10 +556,12 @@ msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
+"Aby sa predišlo prepísaniu dát, obsah priečinka bude importovaný do nového "
+"denníka."
 
 #: ../rednotebook/redNotebook.py:488
 msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
+msgstr "Zvolený priečinok je prázdny. Bol vytvorený nový denník."
 
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:93
 #: tmp/mainWindow.glade.h:73
@@ -568,7 +570,7 @@ msgstr "Slová"
 
 #: ../rednotebook/util/statistics.py:81
 msgid "Distinct Words"
-msgstr ""
+msgstr "Unikátne slová"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Edited Days"
@@ -576,23 +578,23 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:83 ../rednotebook/util/statistics.py:95
 msgid "Letters"
-msgstr ""
+msgstr "Písmená"
 
 #: ../rednotebook/util/statistics.py:84
 msgid "Days between first and last Entry"
-msgstr ""
+msgstr "Dni medzi prvým a posledným zápisom"
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Average number of Words"
-msgstr ""
+msgstr "Priemerný počet slov"
 
 #: ../rednotebook/util/statistics.py:86
 msgid "Percentage of edited Days"
-msgstr ""
+msgstr "Percento dní so zápisom"
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Lines"
-msgstr ""
+msgstr "Riadkov"
 
 #: ../rednotebook/info.py:79
 msgid ""
@@ -600,45 +602,47 @@ msgid ""
 "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
 "try."
 msgstr ""
+"Ahoj,\n"
+"toto je RedNotebook, počítačový denník. Ďakujeme za vyskúšanie."
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "Rozhranie je rozdelené do troch častí:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr ""
+msgstr "Vľavo"
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "Navigácia s kalendárom"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr ""
+msgstr "Stred"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
-msgstr ""
+msgstr "Text na deň"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr ""
+msgstr "Vpravo"
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
-msgstr ""
+msgstr "Anotácia dňa"
 
 #: ../rednotebook/info.py:92
 msgid "Text entries"
-msgstr ""
+msgstr "Textový zápis"
 
 #: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
-msgstr ""
+msgstr "Záznam môže vyzerať takto:"
 
 #: ../rednotebook/info.py:94
 msgid ""
@@ -649,26 +653,28 @@ msgstr ""
 
 #: ../rednotebook/info.py:98
 msgid "Annotations"
-msgstr ""
+msgstr "Anotácie"
 
 #: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
-msgstr ""
+msgstr "Vpravo je miesto pre anotácie k dňu."
 
 #: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
-msgstr ""
+msgstr "Anotácie sú poznámky, ktoré sa dajú ľahko triediť do kategórií."
 
 #: ../rednotebook/info.py:101
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
+"Napríklad si môžte vytvoriť kategóriu \"Nápady\" a potom do nej pridať "
+"dnešné nápady."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
 msgid "Save and Export"
-msgstr ""
+msgstr "Uložiť a exportovať"
 
 #: ../rednotebook/info.py:114
 msgid ""
@@ -679,20 +685,25 @@ msgstr ""
 #: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Aby ste predišli strate dát, mali by ste váš denník pravidelne zálohovať."
 
 #: ../rednotebook/info.py:117
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"Pomocou voľby \"Zálohovať\" v menu \"Zápisník\" uložíte všetky dáta do "
+"súboru zip."
 
 #: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "V menu \"Zápisník\" nájdete aj tlačidlo \"Exportovať\"."
 
 #: ../rednotebook/info.py:119
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
+"Pomocou voľby \"Exportovať\" exportujete svoj denník do jednoduchého textu, "
+"HTML alebo Latex."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:125
@@ -702,22 +713,24 @@ msgstr ""
 #: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
+"Ak narazíte na akékoľvek chyby, dajte mi prosím vedieť, aby som ich mohol "
+"opraviť."
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Akákoľvek spätná väzba sa cení."
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Želám Vám pekný deň!"
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
-msgstr ""
+msgstr "Nápady"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "Použite cool denníkovu aplikáciu."
 
 #: tmp/mainWindow.glade.h:1
 msgid "<< Unselect"
@@ -725,24 +738,24 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:2
 msgid "<b>A new version of RedNotebook is available!</b>"
-msgstr ""
+msgstr "<b>Je k dispozícii je nová verzia RedNotebooku</b>"
 
 #: tmp/mainWindow.glade.h:3
 msgid "<b>Current Day</b>"
-msgstr ""
+msgstr "<b>Aktuálny deň</b>"
 
 #: tmp/mainWindow.glade.h:4
 msgid "<b>Enter file name</b>"
-msgstr ""
+msgstr "<b>Zadajte meno súboru</b>"
 
 #: tmp/mainWindow.glade.h:5
 msgid "<b>Entries from:</b>"
-msgstr ""
+msgstr "<b>Zápisky od:</b>"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:7
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Všeobecné</b>"
 
 #: tmp/mainWindow.glade.h:8
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
@@ -750,31 +763,31 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:9
 msgid "<b>Link name (optional)</b>"
-msgstr ""
+msgstr "<b>Názov odkazu (nepovinné)</b>"
 
 #: tmp/mainWindow.glade.h:10
 msgid "<b>Overall</b>"
-msgstr ""
+msgstr "<b>Celkom</b>"
 
 #: tmp/mainWindow.glade.h:11
 msgid "<b>Select Entries</b>"
-msgstr ""
+msgstr "<b>Vybrať zápisky</b>"
 
 #: tmp/mainWindow.glade.h:12
 msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgstr "<b>Vybrať existujúcu alebo novú kategóriu</b>"
 
 #: tmp/mainWindow.glade.h:13
 msgid "<b>Select format</b>"
-msgstr ""
+msgstr "<b>Vybrať formát</b>"
 
 #: tmp/mainWindow.glade.h:14
 msgid "<b>Select the contents you want to export</b>"
-msgstr ""
+msgstr "<b>Vybrať obsah, ktorý chcete exportovať</b>"
 
 #: tmp/mainWindow.glade.h:15
 msgid "<b>Till:</b>"
-msgstr ""
+msgstr "<b>Do:</b>"
 
 #: tmp/mainWindow.glade.h:16
 msgid "<b>Write entry</b>"
@@ -782,80 +795,80 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:17
 msgid "<b>You already have the latest version of RedNotebook</b>"
-msgstr ""
+msgstr "<b>Už používate najnovšiu verziu RedNotebooku</b>"
 
 #: tmp/mainWindow.glade.h:18
 msgid "Add an entry to a category (Ctrl+N)"
-msgstr ""
+msgstr "Pridať heslo do kategórie (Ctrl₊N)"
 
 #: tmp/mainWindow.glade.h:19
 msgid "All Entries"
-msgstr ""
+msgstr "Všetky zápisky"
 
 #: tmp/mainWindow.glade.h:20
 msgid "Annotate"
-msgstr ""
+msgstr "Anotácie"
 
 #: tmp/mainWindow.glade.h:22
 msgid "Category"
-msgstr ""
+msgstr "Kategória"
 
 #: tmp/mainWindow.glade.h:23
 msgid "Clouds"
-msgstr ""
+msgstr "Oblaky"
 
 #: tmp/mainWindow.glade.h:24
 msgid "Delete"
-msgstr ""
+msgstr "Zmazať"
 
 #: tmp/mainWindow.glade.h:25
 msgid "Delete the selected node"
-msgstr ""
+msgstr "Zmazať vybrané heslo"
 
 #: tmp/mainWindow.glade.h:26
 msgid "Do not ask again"
-msgstr ""
+msgstr "Znovu sa už nepýtať"
 
 #: tmp/mainWindow.glade.h:27
 msgid "Do not export categories"
-msgstr ""
+msgstr "Neexportovať kategórie"
 
 #: tmp/mainWindow.glade.h:28
 msgid "Do you want to visit the website?"
-msgstr ""
+msgstr "Chcete navštíviť webovú stránku?"
 
 #: tmp/mainWindow.glade.h:29
 msgid "Exit without saving"
-msgstr ""
+msgstr "Ukončiť bez uloženia"
 
 #: tmp/mainWindow.glade.h:31
 msgid "Export Text"
-msgstr ""
+msgstr "Exportovať text"
 
 #: tmp/mainWindow.glade.h:32
 msgid "Export all categories"
-msgstr ""
+msgstr "Exportovať všetky kategórie"
 
 #: tmp/mainWindow.glade.h:33
 msgid "Export only the selected categories"
-msgstr ""
+msgstr "Exportovať iba vybrané kategórie"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/mainWindow.glade.h:35
 msgid "General"
-msgstr ""
+msgstr "Všeobecné"
 
 #: tmp/mainWindow.glade.h:36
 msgid "Go to next day (Ctrl+PageUp)"
-msgstr ""
+msgstr "Prejsť na ďalší deň (Ctrl₊PageUp)"
 
 #: tmp/mainWindow.glade.h:37
 msgid "Go to previous day (Ctrl+PageDown)"
-msgstr ""
+msgstr "Vrátiť sa na predchádzajúci deň (Ctrl+PageDown)"
 
 #: tmp/mainWindow.glade.h:38
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: tmp/mainWindow.glade.h:40
 msgid ""
@@ -864,105 +877,107 @@ msgstr ""
 
 #: tmp/mainWindow.glade.h:41
 msgid "Insert Link"
-msgstr ""
+msgstr "Vložiť odkaz"
 
 #: tmp/mainWindow.glade.h:42
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
+"Vložiť šablónu na pracovný deň. Kliknutím na šípku vpravo zobrazíte viacero "
+"možností."
 
 #: tmp/mainWindow.glade.h:43
 msgid "Jump to today"
-msgstr ""
+msgstr "Zobraziť dnešok."
 
 #: tmp/mainWindow.glade.h:44
 msgid "Latex"
-msgstr ""
+msgstr "Latex"
 
 #: tmp/mainWindow.glade.h:45
 msgid "New Version"
-msgstr ""
+msgstr "Nová verzia"
 
 #: tmp/mainWindow.glade.h:46
 msgid "New entry"
-msgstr ""
+msgstr "Nový záznam"
 
 #: tmp/mainWindow.glade.h:47
 msgid "No New Version"
-msgstr ""
+msgstr "Novšia verzia neexistuje."
 
 #: tmp/mainWindow.glade.h:48
 msgid "Only the entries in the selected time range"
-msgstr ""
+msgstr "Iba zápisy zo zvoleného časového rozpätia."
 
 #: tmp/mainWindow.glade.h:49
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: tmp/mainWindow.glade.h:50
 msgid "Preferences"
-msgstr ""
+msgstr "Nastavenia"
 
 #: tmp/mainWindow.glade.h:53
 msgid "Search"
-msgstr ""
+msgstr "Hľadať"
 
 #: tmp/mainWindow.glade.h:54
 msgid "Search in entries, categories and tags"
-msgstr ""
+msgstr "Hľadať v zápisoch, kategóriách a štítkoch"
 
 #: tmp/mainWindow.glade.h:55
 msgid "Select >>"
-msgstr ""
+msgstr "Vybrať >>"
 
 #: tmp/mainWindow.glade.h:56
 msgid "Select a cloud"
-msgstr ""
+msgstr "Vyberte oblak štítkov"
 
 #: tmp/mainWindow.glade.h:57
 msgid "Select a directory"
-msgstr ""
+msgstr "Vyberte priečinok"
 
 #: tmp/mainWindow.glade.h:58
 msgid "Select a file"
-msgstr ""
+msgstr "Vybrať súbor"
 
 #: tmp/mainWindow.glade.h:59
 msgid "Select a picture"
-msgstr ""
+msgstr "Vyberte obrázok"
 
 #: tmp/mainWindow.glade.h:60
 msgid "Select backup filename"
-msgstr ""
+msgstr "Napíšte meno záložného súboru"
 
 #: tmp/mainWindow.glade.h:61
 msgid "Select where to search"
-msgstr ""
+msgstr "Vyberte, kde hľadať"
 
 #: tmp/mainWindow.glade.h:62
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr ""
+msgstr "Ukázať formátovaný náhľad textu (Ctrl+P)"
 
 #. ## This stands for the verb in "Tag this day"
 #: tmp/mainWindow.glade.h:65
 msgid "Tag"
-msgstr ""
+msgstr "Štítok"
 
 #: tmp/mainWindow.glade.h:66
 msgid "Tag this day (Ctrl+T)"
-msgstr ""
+msgstr "Štítok k tomuto dňu"
 
 #: tmp/mainWindow.glade.h:67
 msgid "Tags"
-msgstr ""
+msgstr "Štítky"
 
 #: tmp/mainWindow.glade.h:68
 msgid "Template"
-msgstr ""
+msgstr "Šablóna"
 
 #: tmp/mainWindow.glade.h:70
 msgid "Today"
-msgstr ""
+msgstr "Dnes"
 
 #: tmp/mainWindow.glade.h:71
 msgid ""
@@ -970,10 +985,15 @@ msgid ""
 "This wizard will help you to export your journal to various formats. You can "
 "select the days you want to export and where the output will be saved."
 msgstr ""
+"Víta vás sprievodca exportom.\n"
+"Tento sprievodca vám pomôže exportovať váš denník do rôznych formátov. "
+"Môžete vybrať dni, ktoré chcete exportovať a zvoliť umiestnenie kam budú "
+"uložené."
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/mainWindow.glade.h:75
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Vlado Jendroľ https://launchpad.net/~vladimir-jendrol\n"
 "  slaanco https://launchpad.net/~slaanco"
