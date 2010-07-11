@@ -22,23 +22,23 @@ import os
 # For testing
 import __builtin__
 if not hasattr(__builtin__, '_'):
-	def _(string):
-		return string
+    def _(string):
+        return string
 
-version = 			'1.0.0'
-author = 			'Jendrik Seipp'
-authorMail = 		'jendrikseipp@web.de'
-url = 				'http://rednotebook.sourceforge.net'
-forum_url = 		'http://apps.sourceforge.net/phpbb/rednotebook/'
-translation_url = 	'https://translations.launchpad.net/rednotebook/'
-bug_url = 			'https://bugs.launchpad.net/rednotebook/+filebug'
+version =           '1.1.0'
+author =            'Jendrik Seipp'
+authorMail =        'jendrikseipp@web.de'
+url =               'http://rednotebook.sourceforge.net'
+forum_url =         'http://apps.sourceforge.net/phpbb/rednotebook/'
+translation_url =   'https://translations.launchpad.net/rednotebook/'
+bug_url =           'https://bugs.launchpad.net/rednotebook/+filebug'
 
-developers = 	['Jendrik Seipp <jendrikseipp@web.de>',
-				'',
-				'Contributors:',
-				'Alexandre Cucumel <superkiouk@gmail.com>',
-				]
-				
+developers =    ['Jendrik Seipp <jendrikseipp@web.de>',
+                '',
+                'Contributors:',
+                'Alexandre Cucumel <superkiouk@gmail.com>',
+                ]
+                
 comments = '''\
 RedNotebook is a graphical journal to keep track of notes and \
 thoughts. It includes a calendar navigation, customizable \
@@ -47,7 +47,7 @@ format, tag and search your entries.\
 '''
 
 licenseText = '''\
-Copyright (c) 2009  Jendrik Seipp
+Copyright (c) 2009,2010  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -262,7 +262,7 @@ Once you've finished an item, you could also change its category name from \
 "Todo" to "Done".''',
 u'Tags': {u'Documentation': None,},
 u'Todo': {u'--Remember the milk--': None,
-		u'Take a break': None},
+        u'Take a break': None},
 u'Done': {u'--Check mail--': None,},
 }
 
@@ -580,11 +580,11 @@ At the first program start this defaults to "$HOME/.rednotebook/data".
 
 
 Options:
-  -h, --help     	show this help message and exit
+  -h, --help        show this help message and exit
 
-  -d, --debug    	Output debugging messages (default: False)
+  -d, --debug       Output debugging messages (default: False)
 
-  -m, --minimized	Start mimimized to system tray (default: False)
+  -m, --minimized   Start mimimized to system tray (default: False)
 ```
 
 == Data Format ==
@@ -644,30 +644,30 @@ StartupNotify=true
 '''
 
 def write_documentation(dir):
-	'''
-	Write the documenation as html to a directory
-	Include the original markup as "source.txt"
-	'''
-	from rednotebook.util import utils
-	from rednotebook.util import markup
+    '''
+    Write the documenation as html to a directory
+    Include the original markup as "source.txt"
+    '''
+    from rednotebook.util import utils
+    from rednotebook.util import markup
 
-	utils.write_file(helpText, os.path.join(dir, 'source.txt'))
-	headers = [_('RedNotebook Documentation'), version, '']
-	options = {'toc': 1,}
-	html = markup.convert(helpText, 'xhtml', headers, options)
-	utils.write_file(html, os.path.join(dir, 'help.html'))
+    utils.write_file(helpText, os.path.join(dir, 'source.txt'))
+    headers = [_('RedNotebook Documentation'), version, '']
+    options = {'toc': 1,}
+    html = markup.convert(helpText, 'xhtml', headers, options)
+    utils.write_file(html, os.path.join(dir, 'help.html'))
 
 if __name__ == '__main__':
-	import sys
-	sys.path.insert(0, os.path.abspath("./../"))
+    import sys
+    sys.path.insert(0, os.path.abspath("./../"))
 
-	print completeWelcomeText
-	print '*'*80
-	print helpText
+    print completeWelcomeText
+    print '*'*80
+    print helpText
 
-	doc_dir = '../doc'
-	doc_dir = os.path.abspath(doc_dir)
+    doc_dir = '../doc'
+    doc_dir = os.path.abspath(doc_dir)
 
-	write_documentation(doc_dir)
+    write_documentation(doc_dir)
 
-	#logging.getLogger('').setLevel(logging.DEBUG)
+    #logging.getLogger('').setLevel(logging.DEBUG)

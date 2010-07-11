@@ -758,8 +758,8 @@ class MainWindow(object):
         </popup>
         </ui>'''
         
-        numlist_ui = '<menuitem action="NumberedList"/>' if self.use_webkit else ''
-        title_ui = '<menuitem action="Table"/>' if self.use_webkit else ''
+        numlist_ui = '' #'<menuitem action="NumberedList"/>' if self.use_webkit else ''
+        title_ui = ''# '<menuitem action="Table"/>' if self.use_webkit else ''
         
         insert_menu_xml = insert_menu_xml % locals()
             
