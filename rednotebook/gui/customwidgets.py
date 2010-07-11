@@ -147,4 +147,29 @@ class EntryDialog(gtk.MessageDialog):
         
     def get_value(self):
         return self.entry.get_text()
-    
+        
+        
+class Calendar(gtk.Calendar):
+    def __init__(self, week_numbers=False):
+        gtk.Calendar.__init__(self)
+        if week_numbers:
+            calendar.set_property('show-week-numbers', True)
+        
+    def set_date(self, date):
+        '''
+        A date check makes no sense here since it is normal that a new month is 
+        set here that will contain the day
+        '''
+        # We need to set the day temporarily to a day that is present in all months
+        self.select_day(1)
+        
+        # PyGTK calendars show months in range [0,11]
+        self.select_month(date.month-1, date.year)
+        
+        # Select the day after the month and year have been set
+        self.select_day(date.day)
+        
+        
+    def get_date(self):
+        year, month, day = gtk.Calendar.get_date(self)
+        return datetime.date(year, month+1, day)

@@ -66,7 +66,6 @@ class AssistantPage(gtk.VBox):
         self.reorder_child(self.separator, 1)
         self.show_all()
         
-        
     def set_header(self, text):
         if not self.header:
             self._add_header()
@@ -208,7 +207,7 @@ class ImportAssistant(gtk.Assistant):
         
         self.page0 = self._get_page0()
         self.append_page(self.page0)
-        self.set_page_title(self.page0, 'Import Assistant')
+        self.set_page_title(self.page0, 'Introduction')
         self.set_page_type(self.page0, gtk.ASSISTANT_PAGE_INTRO)
         self.set_page_complete(self.page0, True)
         
