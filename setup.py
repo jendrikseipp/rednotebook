@@ -254,7 +254,7 @@ if 'py2exe' in sys.argv:
                     }
 
     parameters['data_files'].extend([
-                                        ('files', ['rednotebook/files/mainWindow.glade',
+                                        ('files', ['rednotebook/files/main_window.glade',
                                                 'rednotebook/files/stylesheet.css',
                                                 'rednotebook/files/default.cfg']),
                                     ('images', glob(join('rednotebook', 'images', '*.png'))),

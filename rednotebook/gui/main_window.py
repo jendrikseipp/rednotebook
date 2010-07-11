@@ -76,7 +76,7 @@ class MainWindow(object):
         self.journal = journal
         
         # Set the Glade file
-        self.gladefile = os.path.join(filesystem.files_dir, 'mainWindow.glade')
+        self.gladefile = os.path.join(filesystem.files_dir, 'main_window.glade')
         self.builder = gtk.Builder()
         self.builder.set_translation_domain('rednotebook')
         try:
