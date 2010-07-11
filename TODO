@@ -24,7 +24,8 @@ X Get rid of CamelCase in sourcecode
 X Open external files asynchronously with subprocess.Popen
 O Bundle msvcr dll in windows installer
 O Fix export
-X Correctly highlight multiple links and images on one line
+X Fix: Correctly highlight multiple links and images on one line
+X Fix: Months that have been cleared of all text are now rewritten to disk
 
 1.1.1
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
