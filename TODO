@@ -12,7 +12,6 @@ Bugfixes only
 
 1.1.0
 X When searching for text, search in dates too (Search for 2010-05 displays all entries of May 2010)
-O Show warning if last backup dates to more than one month before
 X Improve checking for new version (Show version numbers)
 X Save last selected tab (Search/Clouds) (LP:590483)
 X Save yaml files as readable unicode
@@ -23,11 +22,13 @@ X Use webkit by default
 X Get rid of CamelCase in sourcecode
 X Open external files asynchronously with subprocess.Popen
 O Bundle msvcr dll in windows installer
-O Fix export
 X Fix: Correctly highlight multiple links and images on one line
 X Fix: Months that have been cleared of all text are now rewritten to disk
+X Rewrite export code
+X Much more code rewritten or restructured
 
 1.1.1
+O Show warning if last backup dates to more than one month before
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists

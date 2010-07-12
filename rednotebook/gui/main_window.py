@@ -56,7 +56,7 @@ from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook import undo
 
-from rednotebook.gui.export_assistant import ExportAssistant
+from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
 from rednotebook.gui import browser
@@ -154,7 +154,7 @@ class MainWindow(object):
             self.main_frame.show()
         
         self.options_manager = OptionsManager(self)
-        self.export_assistant = ExportAssistant(self)
+        self.export_assistant = ExportAssistant(self.journal)
         
         self.setup_search()
         self.setup_insert_menu()
@@ -189,15 +189,6 @@ class MainWindow(object):
             
             # connect_signals can only be called once, it seems
             # Otherwise RuntimeWarnings are raised: RuntimeWarning: missing handler '...'
-            
-            # Export Assistant
-            'on_export_assistant_quit': self.export_assistant.on_quit,
-            'on_export_assistant_cancel': self.export_assistant.on_cancel,
-            'change_date_selector_status': self.export_assistant.change_date_selector_status,
-            'select_category': self.export_assistant.select_category,
-            'unselect_category': self.export_assistant.unselect_category,
-            'change_categories_selector_status': self.export_assistant.change_categories_selector_status,
-            'change_export_text_status': self.export_assistant.change_export_text_status,
              }
         self.builder.connect_signals(dic)
         
@@ -696,22 +687,16 @@ class MainWindow(object):
             #if focus is None or focus == self.day_text_field.day_text_view:
             self.day_text_field.apply_format(format, markup)
             
+        def shortcut(char):
+            ### Translators: The Control (Ctrl) key
+            return ' (%s+%s)' % (_('Ctrl'), char)
         
-        def get_action(format, translation):
-            return (format, getattr(gtk, 'STOCK_' + format.upper()), \
-                ### Translators: The Control (Ctrl) key
-                translation + ' (%s+%s)' % (_('Ctrl'), format[0]), \
-                '<Control>' + format[0], None, \
-                apply_format,
-                )
         # Create actions
-        strike_action = ('Strikethrough', gtk.STOCK_STRIKETHROUGH, \
-                _('Strikethrough'), None, None, apply_format,)
-        actions = [get_action(format, trans) for format, trans in \
-                    (('Bold', _('Bold')), \
-                    ('Italic', _('Italic')), \
-                    ('Underline', _('Underline')))] \
-                    + [strike_action]
+        actions = [ ('Bold', gtk.STOCK_BOLD, _('Bold') + shortcut('B'), '<Control>B', None, apply_format),
+                    ('Italic', gtk.STOCK_ITALIC, _('Italic') + shortcut('I'), '<Control>I', None, apply_format),
+                    ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'), '<Control>U', None, apply_format),
+                    ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough'), None, None, apply_format)]
+        
         actiongroup.add_actions(actions)
 
         # Add the actiongroup to the uimanager

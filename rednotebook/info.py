@@ -46,7 +46,7 @@ templates, export functionality and word clouds. You can also \
 format, tag and search your entries.\
 '''
 
-licenseText = '''\
+license_text = '''\
 Copyright (c) 2009,2010  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
@@ -418,6 +418,11 @@ default.cfg file set portable=1.
 
 == Export ==
 %(save4)s %(save5)s
+
+Since version 0.9.2 you can also directly export your journal to PDF. If the \
+option does not show up in the export assistant, you need to install \
+pywebkitgtk version 1.1.5 or later (the package is sometime called \
+python-webkit). 
 
 **Latex caveats**
 

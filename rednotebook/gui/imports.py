@@ -26,16 +26,23 @@ import re
 import gtk
 import gobject
 
+# For testing
+import __builtin__
+if not hasattr(__builtin__, '_'):
+    __builtin__._ = lambda x: x
+
 if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("./../../"))
     logging.basicConfig(level=logging.DEBUG)
+    
 
 
 from rednotebook.data import Day, Month
-#from rednotebook.imports.plaintext import PlainTextImporter
 from rednotebook.util import filesystem
 from rednotebook.storage import Storage
 from rednotebook.util import markup
+from rednotebook.gui.customwidgets import AssistantPage, \
+                    IntroductionPage, RadioButtonPage, PathChooserPage, Assistant
 
 class ImportDay(Day):
     '''
@@ -45,113 +52,6 @@ class ImportDay(Day):
         import_month = Month(year, month)
         Day.__init__(self, import_month, day)
         
-        
-class AssistantPage(gtk.VBox):
-    def __init__(self, *args, **kwargs):
-        gtk.VBox.__init__(self, *args, **kwargs)
-        
-        self.set_spacing(5)
-        self.set_border_width(10)
-        
-        self.header = None
-        
-    def _add_header(self):
-        self.header = gtk.Label()
-        self.header.set_markup('Unset')
-        self.header.set_alignment(0.0, 0.5)
-        self.pack_start(self.header, False, False)
-        self.separator = gtk.HSeparator()
-        self.pack_start(self.separator, False, False)
-        self.reorder_child(self.header, 0)
-        self.reorder_child(self.separator, 1)
-        self.show_all()
-        
-    def set_header(self, text):
-        if not self.header:
-            self._add_header()
-        self.header.set_markup(text)
-        
-        
-class RadioButtonPage(AssistantPage):
-    def __init__(self, *args, **kwargs):
-        AssistantPage.__init__(self, *args, **kwargs)
-        
-        self.buttons = []
-        
-    def add_radio_option(self, label, tooltip, importer):
-        bold_label = label
-        #bold_label = gtk.Label()
-        #bold_label.set_markup('<b>%s</b>' % label)
-        group = self.buttons[0] if self.buttons else None
-        button = gtk.RadioButton(group=group)
-        button.set_tooltip_markup(tooltip)
-        button.set_label(bold_label)
-        button.importer = importer
-        description = gtk.Label()
-        description.set_alignment(0.0, 0.5)
-        description.set_markup(tooltip)
-        #hbox = gtk.HBox()
-        #hbox.set_border_width(10)
-        #hbox.pack_start(description, False, False)
-        self.pack_start(button, False, False)
-        self.pack_start(description, False, False)
-        self.buttons.append(button)
-        button.set_active(True)
-        
-    def get_selected_importer(self):
-        for button in self.buttons:
-            if button.get_active():
-                return button.importer
-                
-                
-class PathChooserPage(AssistantPage):
-    def __init__(self, *args, **kwargs):
-        AssistantPage.__init__(self, *args, **kwargs)
-        
-        self.last_path = os.path.expanduser('~')
-        
-        self.chooser = gtk.FileChooserWidget()
-        
-        self.pack_start(self.chooser)
-        
-    def _remove_filters(self):
-        for filter in self.chooser.list_filters():
-            self.chooser.remove_filter()
-            
-        
-    def prepare(self, importer):
-        self._remove_filters()
-        
-        path_type = importer.PATHTYPE
-        path = importer.DEFAULTPATH
-        extension = importer.EXTENSION
-        helptext = importer.PATHTEXT
-        
-        if helptext:
-            self.set_header(helptext)
-        
-        if path_type.upper() == 'DIR':
-            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
-        elif path_type.upper() == 'FILE':
-            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_OPEN)
-            if extension:
-                filter = gtk.FileFilter()
-                filter.set_name(extension)
-                filter.add_pattern('*.' + extension)
-                self.chooser.add_filter(filter)
-        else:
-            logging.error('Wrong path_type "%s"' % path_type)
-            
-        path = path or self.last_path
-            
-        if os.path.isdir(path):
-            self.chooser.set_current_folder(path)
-        else:
-            self.chooser.set_filename(path)
-        
-    def get_selected_path(self):
-        self.last_path = self.chooser.get_filename()
-        return self.last_path
         
 
 class SummaryPage(AssistantPage):
@@ -168,23 +68,27 @@ class SummaryPage(AssistantPage):
         
         
     def prepare(self, type, path):
-        text = 'You have selected to import <b>%s</b> from <b>%s</b>\n\n' \
-                'The following contents will be imported:' % (type, path)
-        self.set_header(text)
+        parts = [   _('Import type:') + ' <b>' + type + '</b>\n',
+                    _('Path:') + ' <b>' + path + '</b>\n\n',
+                    _('The following contents will be imported:')]
+        self.set_header(''.join(parts))
         self.clear()
+        
         
     def add_day(self, day):
         day_text = '====== %s ======\n%s\n\n' % (day.date, day.text)
-        categories = day.getCategoryContentPairs()
+        categories = day.get_category_content_pairs()
         if categories:
-            day_text += markup.convertCategoriesToMarkup(categories, False)
+            day_text += markup.convert_categories_to_markup(categories, False)
         self._append(day_text)
         # Wait for the text to be drawn
         while gtk.events_pending():
             gtk.main_iteration()
         
+        
     def clear(self):
         self.board.get_buffer().set_text('')
+        
         
     def _append(self, text):
         buffer = self.board.get_buffer()
@@ -193,54 +97,40 @@ class SummaryPage(AssistantPage):
         
                 
         
-        
-class ImportAssistant(gtk.Assistant):
-    def __init__(self, journal, *args, **kwargs):
-        gtk.Assistant.__init__(self, *args, **kwargs)
-        
-        self.journal = journal
+class ImportAssistant(Assistant):
+    def __init__(self, *args, **kwargs):
+        Assistant.__init__(self, *args, **kwargs)
         
         self.importers = get_importers()
         
-        self.set_title('Import Assistant')
-        self.set_size_request(1000, 700)
+        self.set_title(_('Import Assistant'))
         
-        self.page0 = self._get_page0()
-        self.append_page(self.page0)
-        self.set_page_title(self.page0, 'Introduction')
-        self.set_page_type(self.page0, gtk.ASSISTANT_PAGE_INTRO)
-        self.set_page_complete(self.page0, True)
+        texts = [_('This Assistant lets you import notes from other applications.'),
+                _('You can check the results on the last page before any change is made.')]
+        self.page0 = self._add_intro_page('\n'.join(texts))
         
         self.page1 = self._get_page1()
         self.append_page(self.page1)
-        self.set_page_title(self.page1, 'Select what to import (1/3)')
+        self.set_page_title(self.page1, _('Select what to import') + ' (1/3)')
         self.set_page_complete(self.page1, True)
         
-        self.page2 = self._get_page2()
+        self.page2 = PathChooserPage(self.journal)
         self.append_page(self.page2)
-        self.set_page_title(self.page2, 'Select Import Path (2/3)')
+        self.set_page_title(self.page2, _('Select Import Path') + ' (2/3)')
         
-        self.page3 = self._get_page3()
+        self.page3 = SummaryPage()
         self.append_page(self.page3)
-        self.set_page_title(self.page3, 'Summary (3/3)')
+        self.set_page_title(self.page3, _('Summary') + ' (3/3)')
         self.set_page_type(self.page3, gtk.ASSISTANT_PAGE_CONFIRM)
         
         self.importer = None
         self.path = None
         self.days = []
-        
-        self.connect('cancel', self._on_cancel)
-        self.connect('close', self._on_close)
-        self.connect('prepare', self._on_prepare)
+    
     
     def run(self):
         self.show_all()
         
-    def _on_cancel(self, assistant):
-        '''
-        Cancelled -> Hide assistant
-        '''
-        self.hide()
         
     def _on_close(self, assistant):
         '''
@@ -253,12 +143,13 @@ class ImportAssistant(gtk.Assistant):
         # so reload current day
         self.journal.load_day(self.journal.date)
         
+        
     def _on_prepare(self, assistant, page):
         '''
         Called when a new page should be prepared, before it is shown
         '''
         if page == self.page2:
-            self.importer = self.page1.get_selected_importer()
+            self.importer = self.page1.get_selected_object()
             self.page2.prepare(self.importer)
             self.set_page_complete(self.page2, True)
         elif page == self.page3:
@@ -277,40 +168,22 @@ class ImportAssistant(gtk.Assistant):
             self.days.append(day)
         self.set_page_complete(self.page3, True)
         
-            
-    def _get_page0(self):
-        page = AssistantPage()
-        label = gtk.Label()
-        text = 'This Assistant will help you to import notes from ' \
-                'other applications.\nYou can check the results on the ' \
-                'last page before any change is made.'
-        label.set_markup(text)
-        page.pack_start(label, True, True)
-        return page
-        
         
     def _get_page1(self):
         page = RadioButtonPage()
         for importer in self.importers:
             name = importer.NAME
             desc = importer.DESCRIPTION
-            page.add_radio_option(name, desc, importer)
+            page.add_radio_option(importer, name, desc)
         return page
         
-    def _get_page2(self):
-        page = PathChooserPage()
-        return page
-        
-    def _get_page3(self):
-        page = SummaryPage()
-        return page
         
         
         
 class Importer(object):
     NAME = 'What do we import?'
     DESCRIPTION = 'Short description of what we import'
-    PATHTEXT = 'Select the directory containing the sources to import'
+    PATHTEXT = _('Select the directory containing the sources to import')
     DEFAULTPATH = os.path.expanduser('~')
     PATHTYPE = 'DIR'
     EXTENSION = None
@@ -364,8 +237,8 @@ class Importer(object):
         
 class PlainTextImporter(Importer):
     NAME = 'Plain Text'
-    DESCRIPTION = 'Import Text from plain textfiles'
-    PATHTEXT = 'Select a directory containing your data files'
+    DESCRIPTION = _('Import Text from plain textfiles')
+    PATHTEXT = _('Select a directory containing your data files')
     PATHTYPE = 'DIR'
     
     # Allow 2010-05-08[.txt] with different or no separators
@@ -394,9 +267,9 @@ class PlainTextImporter(Importer):
         
         
 class RedNotebookImporter(Importer):
-    NAME = 'RedNotebook Journal'
-    DESCRIPTION = 'Import data from a different RedNotebook journal'
-    PATHTEXT = 'Select a directory containing RedNotebook data files'
+    NAME = _('RedNotebook Journal')
+    DESCRIPTION = _('Import data from a different RedNotebook journal')
+    PATHTEXT = _('Select a directory containing RedNotebook data files')
     PATHTYPE = 'DIR'
     
     def __init__(self):
@@ -412,9 +285,9 @@ class RedNotebookImporter(Importer):
                 
                 
 class RedNotebookBackupImporter(RedNotebookImporter):
-    NAME = 'RedNotebook Zip Backup'
-    DESCRIPTION = 'Import a RedNotebook backup zip archive'
-    PATHTEXT = 'Select the backup zipfile'
+    NAME = _('RedNotebook Zip Backup')
+    DESCRIPTION = _('Import a RedNotebook backup zip archive')
+    PATHTEXT = _('Select a backup zipfile')
     PATHTYPE = 'FILE'
     EXTENSION = 'zip'
     
@@ -452,9 +325,9 @@ class RedNotebookBackupImporter(RedNotebookImporter):
         
         
 class TomboyImporter(Importer):
-    NAME = 'Tomboy Notes'
-    DESCRIPTION = 'Import your Tomboy notes'
-    PATHTEXT = 'Select the directory containing your tomboy notes'
+    NAME = _('Tomboy Notes')
+    DESCRIPTION = _('Import your Tomboy notes')
+    PATHTEXT = _('Select the directory containing your tomboy notes')
     DEFAULTPATH = os.getenv('XDG_DATA_HOME') or \
         os.path.join(os.path.expanduser('~'), '.local', 'share', 'tomboy')
     if sys.platform == 'win32':

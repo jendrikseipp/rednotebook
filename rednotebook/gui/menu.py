@@ -25,7 +25,7 @@ from rednotebook.util import utils
 from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook.util import markup
-from rednotebook.imports import ImportAssistant
+from rednotebook.gui.imports import ImportAssistant
 
 
 class MainMenuBar(object):
@@ -243,13 +243,6 @@ class MainMenuBar(object):
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()
         
-        # Set the date range for the export assistant
-        start_date = self.journal.get_edit_date_of_entry_number(0)
-        self.main_window.export_assistant.set_start_date(start_date)
-        end_date = self.journal.get_edit_date_of_entry_number(-1)
-        self.main_window.export_assistant.set_end_date(end_date)
-        
-        self.main_window.export_assistant.prepare_pdf_button()
         self.main_window.export_assistant.run()
 
     def on_statistics_menu_item_activate(self, widget):
@@ -289,7 +282,7 @@ class MainMenuBar(object):
         self.info_dialog.set_website_label(info.url)
         self.info_dialog.set_authors(info.developers)
         self.info_dialog.set_logo(gtk.gdk.pixbuf_new_from_file(\
-                    os.path.join(filesystem.image_dir,'redNotebookIcon/rn-128.png')))
+                    os.path.join(filesystem.image_dir,'rednotebook-icon/rn-128.png')))
         self.info_dialog.set_license(info.license_text)
         self.info_dialog.run()
         self.info_dialog.hide()
