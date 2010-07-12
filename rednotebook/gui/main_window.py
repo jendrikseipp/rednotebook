@@ -56,7 +56,7 @@ from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook import undo
 
-from rednotebook.gui.export_assistant import ExportAssistant
+from rednotebook.gui.export import ExportAssistant
 from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
 from rednotebook.gui import browser
@@ -154,7 +154,7 @@ class MainWindow(object):
             self.main_frame.show()
         
         self.options_manager = OptionsManager(self)
-        self.export_assistant = ExportAssistant(self)
+        self.export_assistant = ExportAssistant(self.journal)
         
         self.setup_search()
         self.setup_insert_menu()
@@ -189,15 +189,6 @@ class MainWindow(object):
             
             # connect_signals can only be called once, it seems
             # Otherwise RuntimeWarnings are raised: RuntimeWarning: missing handler '...'
-            
-            # Export Assistant
-            'on_export_assistant_quit': self.export_assistant.on_quit,
-            'on_export_assistant_cancel': self.export_assistant.on_cancel,
-            'change_date_selector_status': self.export_assistant.change_date_selector_status,
-            'select_category': self.export_assistant.select_category,
-            'unselect_category': self.export_assistant.unselect_category,
-            'change_categories_selector_status': self.export_assistant.change_categories_selector_status,
-            'change_export_text_status': self.export_assistant.change_export_text_status,
              }
         self.builder.connect_signals(dic)
         

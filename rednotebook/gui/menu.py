@@ -243,13 +243,6 @@ class MainMenuBar(object):
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()
         
-        # Set the date range for the export assistant
-        start_date = self.journal.get_edit_date_of_entry_number(0)
-        self.main_window.export_assistant.set_start_date(start_date)
-        end_date = self.journal.get_edit_date_of_entry_number(-1)
-        self.main_window.export_assistant.set_end_date(end_date)
-        
-        self.main_window.export_assistant.prepare_pdf_button()
         self.main_window.export_assistant.run()
 
     def on_statistics_menu_item_activate(self, widget):

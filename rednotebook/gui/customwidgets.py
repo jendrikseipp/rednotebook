@@ -18,6 +18,7 @@
 # -----------------------------------------------------------------------
 
 import logging
+import datetime
 
 import gtk
 import gobject
