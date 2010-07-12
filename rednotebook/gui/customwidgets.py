@@ -19,6 +19,7 @@
 
 import logging
 import datetime
+import os
 
 import gtk
 import gobject
@@ -174,3 +175,203 @@ class Calendar(gtk.Calendar):
     def get_date(self):
         year, month, day = gtk.Calendar.get_date(self)
         return datetime.date(year, month+1, day)
+        
+        
+# ------------------------- Assistant Pages ------------------------------------
+
+class AssistantPage(gtk.VBox):
+    def __init__(self, *args, **kwargs):
+        gtk.VBox.__init__(self, *args, **kwargs)
+        
+        self.set_spacing(5)
+        self.set_border_width(10)
+        
+        self.header = None
+        self.show_all()
+        
+    def _add_header(self):
+        self.header = gtk.Label()
+        self.header.set_markup('Unset')
+        self.header.set_alignment(0.0, 0.5)
+        self.pack_start(self.header, False, False)
+        self.separator = gtk.HSeparator()
+        self.pack_start(self.separator, False, False)
+        self.reorder_child(self.header, 0)
+        self.reorder_child(self.separator, 1)
+        self.show_all()
+        
+    def set_header(self, text):
+        if not self.header:
+            self._add_header()
+        self.header.set_markup(text)
+        
+        
+        
+class IntroductionPage(AssistantPage):
+    def __init__(self, text, *args, **kwargs):
+        AssistantPage.__init__(self, *args, **kwargs)
+        
+        label = gtk.Label(text)
+        
+        self.pack_start(label)
+        
+        
+
+class RadioButtonPage(AssistantPage):
+    def __init__(self, *args, **kwargs):
+        AssistantPage.__init__(self, *args, **kwargs)
+        
+        self.buttons = []
+        
+        
+    def add_radio_option(self, object, label, tooltip=''):
+        sensitive = object.is_available()
+        
+        group = self.buttons[0] if self.buttons else None
+        button = gtk.RadioButton(group=group)
+        button.set_tooltip_markup(tooltip)
+        button.set_label(label)
+        button.object = object
+        button.set_sensitive(sensitive)
+        self.pack_start(button, False, False)
+        self.buttons.append(button)
+        
+        if tooltip:
+            description = gtk.Label()
+            description.set_alignment(0.0, 0.5)
+            description.set_markup(' '*5 + tooltip)
+            description.set_sensitive(sensitive)
+            self.pack_start(description, False, False)
+        
+        
+    def get_selected_object(self):
+        for button in self.buttons:
+            if button.get_active():
+                return button.object
+                
+                
+                
+class PathChooserPage(AssistantPage):
+    def __init__(self, assistant, *args, **kwargs):
+        AssistantPage.__init__(self, *args, **kwargs)
+        
+        self.assistant = assistant
+        
+        self.last_path = None
+        
+        self.chooser = gtk.FileChooserWidget()
+        self.chooser.connect('selection-changed', self.on_path_changed)
+        
+        self.pack_start(self.chooser)
+        
+        
+    def _remove_filters(self):
+        for filter in self.chooser.list_filters():
+            self.chooser.remove_filter(filter)
+            
+        
+    def prepare(self, porter):
+        self._remove_filters()
+        
+        self.path_type = porter.PATHTYPE.upper()
+        path = porter.DEFAULTPATH
+        extension = porter.EXTENSION
+        helptext = porter.PATHTEXT
+        
+        if helptext:
+            self.set_header(helptext)
+        
+        if self.path_type == 'DIR':
+            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
+        elif self.path_type == 'FILE':
+            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_OPEN)
+        elif self.path_type == 'NEWFILE':
+            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_SAVE)
+        else:
+            logging.error('Wrong path_type "%s"' % path_type)
+            
+        if self.path_type in ['FILE', 'NEWFILE'] and extension:
+            filter = gtk.FileFilter()
+            filter.set_name(extension)
+            filter.add_pattern('*.' + extension)
+            self.chooser.add_filter(filter)
+            
+        #path = self.last_path or path
+                    
+        if os.path.isdir(path):
+            self.chooser.set_current_folder(path)
+        else:
+            if os.path.exists(path):
+                # Method is for existing files
+                self.chooser.set_filename(path)
+            else:
+                self.chooser.set_current_folder(os.path.dirname(path))
+                self.chooser.set_current_name(os.path.basename(path))
+        
+        
+    def get_selected_path(self):
+        self.last_path = self.chooser.get_filename()
+        return self.last_path
+        
+        
+    def on_path_changed(self, widget):
+        # TODO: Try to make this smarter
+        return
+        
+        correct = False
+        path = self.chooser.get_filename()
+        if path is None:
+            correct = False
+        elif self.path_type == 'DIR':
+            correct = os.path.isdir(path)
+        elif self.path_type == 'FILE':
+            correct = os.path.isfile(path)
+        elif self.path_type == 'NEWFILE':
+            correct = os.path.isfile(path)
+            
+            
+
+class Assistant(gtk.Assistant):
+    def __init__(self, journal, *args, **kwargs):
+        gtk.Assistant.__init__(self, *args, **kwargs)
+        
+        self.journal = journal
+        
+        self.set_size_request(1000, 700)
+        
+        self.connect('cancel', self._on_cancel)
+        self.connect('close', self._on_close)
+        self.connect('prepare', self._on_prepare)
+    
+    
+    def run(self):
+        '''
+        Show assistant
+        '''
+        
+        
+    def _on_cancel(self, assistant):
+        '''
+        Cancelled -> Hide assistant
+        '''
+        self.hide()
+        
+        
+    def _on_close(self, assistant):
+        '''
+        Do the action
+        '''
+        
+        
+    def _on_prepare(self, assistant, page):
+        '''
+        Called when a new page should be prepared, before it is shown
+        '''
+        
+            
+    def _add_intro_page(self, text):
+        page = IntroductionPage(text)
+        self.append_page(page)
+        self.set_page_title(page, _('Introduction'))
+        self.set_page_type(page, gtk.ASSISTANT_PAGE_INTRO)
+        self.set_page_complete(page, True)
