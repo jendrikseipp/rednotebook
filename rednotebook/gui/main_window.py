@@ -803,13 +803,13 @@ class MainWindow(object):
                 _('Insert a link to a website'), \
                 self.on_insert_link_menu_item_activate),
             ('BulletList', None, _('Bullet List'), None, \
-                _('Insert a bullet list'), \
+                None, \
                 lambda widget: self.day_text_field.insert(bullet_list)),
             ('NumberedList', None, _('Numbered List'), None, \
-                _('Insert a numbered list'), \
+                None, \
                 lambda widget: self.day_text_field.insert(numbered_list)),
             ('Title', None, _('Title'), None, \
-                _('Insert a title'), \
+                None, \
                 lambda widget: self.day_text_field.insert(title)),
             ('Line', None, _('Line'), None, \
                 _('Insert a separator line'), \

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-12 05:00+0200\n"
+"POT-Creation-Date: 2010-07-12 20:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -505,24 +505,12 @@ msgstr ""
 msgid "Bullet List"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:806
-msgid "Insert a bullet list"
-msgstr ""
-
 #: ../rednotebook/gui/main_window.py:808
 msgid "Numbered List"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:809
-msgid "Insert a numbered list"
-msgstr ""
-
 #: ../rednotebook/gui/main_window.py:811
 msgid "Title"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:812
-msgid "Insert a title"
 msgstr ""
 
 #: ../rednotebook/gui/main_window.py:814
@@ -617,8 +605,8 @@ msgstr ""
 msgid "To:"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:120 ../rednotebook/gui/exports.py:389
-msgid "Export text"
+#: ../rednotebook/gui/exports.py:120
+msgid "Export texts"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:121
@@ -702,6 +690,10 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:387
 msgid "End date"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:389
+msgid "Export text"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:390

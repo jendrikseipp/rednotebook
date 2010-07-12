@@ -117,7 +117,7 @@ class ContentsPage(AssistantPage):
         self.journal = journal
         self.assistant = assistant
         
-        self.text_button = gtk.CheckButton(label=_('Export text'))
+        self.text_button = gtk.CheckButton(label=_('Export texts'))
         self.all_categories_button = gtk.RadioButton(label=_('Export all categories'))
         self.no_categories_button = gtk.RadioButton(label=_('Do not export categories'),
                                             group=self.all_categories_button)
