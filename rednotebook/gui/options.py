@@ -178,7 +178,8 @@ class DateFormatOption(ComboBoxOption):
     def on_format_changed(self, widget):
         import time
         ### Translators: Noun
-        self.preview.set_text(_('Preview: %s') % time.strftime(self.combo.get_active_text()))
+        self.preview.set_text(_('Preview:') + ' ' + time.strftime(self.combo.get_active_text()))
+        
         
 class FontSizeOption(ComboBoxOption):
     def __init__(self, text, name):

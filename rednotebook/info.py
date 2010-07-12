@@ -46,7 +46,7 @@ templates, export functionality and word clouds. You can also \
 format, tag and search your entries.\
 '''
 
-licenseText = '''\
+license_text = '''\
 Copyright (c) 2009,2010  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify

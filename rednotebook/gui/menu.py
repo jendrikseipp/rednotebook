@@ -282,7 +282,7 @@ class MainMenuBar(object):
         self.info_dialog.set_website_label(info.url)
         self.info_dialog.set_authors(info.developers)
         self.info_dialog.set_logo(gtk.gdk.pixbuf_new_from_file(\
-                    os.path.join(filesystem.image_dir,'redNotebookIcon/rn-128.png')))
+                    os.path.join(filesystem.image_dir,'rednotebook-icon/rn-128.png')))
         self.info_dialog.set_license(info.license_text)
         self.info_dialog.run()
         self.info_dialog.hide()

@@ -62,9 +62,9 @@ class SummaryPage(AssistantPage):
         
         
     def prepare(self, type, path):
-        text = 'You have selected to import <b>%s</b> from <b>%s</b>\n\n' \
-                'The following contents will be imported:' % (type, path)
-        self.set_header(text)
+        part1 = _('You have selected to import <b>%s</b> from <b>%s</b>') % (type, path)
+        part2 = _('The following contents will be imported:')
+        self.set_header(part1 + '\n\n' + part2)
         self.clear()
         
         
@@ -96,26 +96,28 @@ class ImportAssistant(Assistant):
         
         self.importers = get_importers()
         
-        self.set_title('Import Assistant')
+        self.set_title(_('Import Assistant'))
         
-        self.page0 = self._get_page0()
+        texts = [_("This Assistant let's you import notes from other applications."),
+                _('You can check the results on the last page before any change is made.')]
+        self.page0 = self._add_intro_page('\n'.join(texts))
         self.append_page(self.page0)
-        self.set_page_title(self.page0, 'Introduction')
+        self.set_page_title(self.page0, _('Introduction'))
         self.set_page_type(self.page0, gtk.ASSISTANT_PAGE_INTRO)
         self.set_page_complete(self.page0, True)
         
         self.page1 = self._get_page1()
         self.append_page(self.page1)
-        self.set_page_title(self.page1, 'Select what to import' + ' (1/3)')
+        self.set_page_title(self.page1, _('Select what to import') + ' (1/3)')
         self.set_page_complete(self.page1, True)
         
         self.page2 = PathChooserPage(self.journal)
         self.append_page(self.page2)
-        self.set_page_title(self.page2, 'Select Import Path' + ' (2/3)')
+        self.set_page_title(self.page2, _('Select Import Path') + ' (2/3)')
         
         self.page3 = SummaryPage()
         self.append_page(self.page3)
-        self.set_page_title(self.page3, 'Summary' + ' (3/3)')
+        self.set_page_title(self.page3, _('Summary') + ' (3/3)')
         self.set_page_type(self.page3, gtk.ASSISTANT_PAGE_CONFIRM)
         
         self.importer = None
@@ -163,17 +165,6 @@ class ImportAssistant(Assistant):
             self.days.append(day)
         self.set_page_complete(self.page3, True)
         
-            
-    def _get_page0(self):
-        page = AssistantPage()
-        label = gtk.Label()
-        text = 'This Assistant will help you to import notes from ' \
-                'other applications.\nYou can check the results on the ' \
-                'last page before any change is made.'
-        label.set_markup(text)
-        page.pack_start(label, True, True)
-        return page
-        
         
     def _get_page1(self):
         page = RadioButtonPage()
@@ -189,7 +180,7 @@ class ImportAssistant(Assistant):
 class Importer(object):
     NAME = 'What do we import?'
     DESCRIPTION = 'Short description of what we import'
-    PATHTEXT = 'Select the directory containing the sources to import'
+    PATHTEXT = _('Select the directory containing the sources to import')
     DEFAULTPATH = os.path.expanduser('~')
     PATHTYPE = 'DIR'
     EXTENSION = None
@@ -243,8 +234,8 @@ class Importer(object):
         
 class PlainTextImporter(Importer):
     NAME = 'Plain Text'
-    DESCRIPTION = 'Import Text from plain textfiles'
-    PATHTEXT = 'Select a directory containing your data files'
+    DESCRIPTION = _('Import Text from plain textfiles')
+    PATHTEXT = _('Select a directory containing your data files')
     PATHTYPE = 'DIR'
     
     # Allow 2010-05-08[.txt] with different or no separators
@@ -273,9 +264,9 @@ class PlainTextImporter(Importer):
         
         
 class RedNotebookImporter(Importer):
-    NAME = 'RedNotebook Journal'
-    DESCRIPTION = 'Import data from a different RedNotebook journal'
-    PATHTEXT = 'Select a directory containing RedNotebook data files'
+    NAME = _('RedNotebook Journal')
+    DESCRIPTION = _('Import data from a different RedNotebook journal')
+    PATHTEXT = _('Select a directory containing RedNotebook data files')
     PATHTYPE = 'DIR'
     
     def __init__(self):
@@ -291,9 +282,9 @@ class RedNotebookImporter(Importer):
                 
                 
 class RedNotebookBackupImporter(RedNotebookImporter):
-    NAME = 'RedNotebook Zip Backup'
-    DESCRIPTION = 'Import a RedNotebook backup zip archive'
-    PATHTEXT = 'Select the backup zipfile'
+    NAME = _('RedNotebook Zip Backup')
+    DESCRIPTION = _('Import a RedNotebook backup zip archive')
+    PATHTEXT = _('Select a backup zipfile')
     PATHTYPE = 'FILE'
     EXTENSION = 'zip'
     
@@ -331,9 +322,9 @@ class RedNotebookBackupImporter(RedNotebookImporter):
         
         
 class TomboyImporter(Importer):
-    NAME = 'Tomboy Notes'
-    DESCRIPTION = 'Import your Tomboy notes'
-    PATHTEXT = 'Select the directory containing your tomboy notes'
+    NAME = _('Tomboy Notes')
+    DESCRIPTION = _('Import your Tomboy notes')
+    PATHTEXT = _('Select the directory containing your tomboy notes')
     DEFAULTPATH = os.getenv('XDG_DATA_HOME') or \
         os.path.join(os.path.expanduser('~'), '.local', 'share', 'tomboy')
     if sys.platform == 'win32':

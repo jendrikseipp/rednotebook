@@ -48,17 +48,17 @@ class DatePage(AssistantPage):
         
         self.journal = journal
         
-        self.all_days_button = gtk.RadioButton(label='All days')
-        self.sel_days_button = gtk.RadioButton(label='Only the days in the selected time range',
+        self.all_days_button = gtk.RadioButton(label=_('Export all days'))
+        self.sel_days_button = gtk.RadioButton(label=_('Export only the days in the selected time range'),
                                             group=self.all_days_button)
                                             
         self.pack_start(self.all_days_button, False)
         self.pack_start(self.sel_days_button, False)
         
         label1 = gtk.Label()
-        label1.set_markup('<b>' + 'From:' + '</b>')
+        label1.set_markup('<b>' + _('From:') + '</b>')
         label2 = gtk.Label()
-        label2.set_markup('<b>' + 'To:' + '</b>')
+        label2.set_markup('<b>' + _('To:') + '</b>')
         
         self.calendar1 = Calendar()
         self.calendar2 = Calendar()
@@ -117,11 +117,11 @@ class ContentsPage(AssistantPage):
         self.journal = journal
         self.assistant = assistant
         
-        self.text_button = gtk.CheckButton(label='Export text')
-        self.all_categories_button = gtk.RadioButton(label='Export all categories')
-        self.no_categories_button = gtk.RadioButton(label='Do not export categories',
+        self.text_button = gtk.CheckButton(label=_('Export text'))
+        self.all_categories_button = gtk.RadioButton(label=_('Export all categories'))
+        self.no_categories_button = gtk.RadioButton(label=_('Do not export categories'),
                                             group=self.all_categories_button)
-        self.sel_categories_button = gtk.RadioButton(label='Export only the selected categories',
+        self.sel_categories_button = gtk.RadioButton(label=_('Export only the selected categories'),
                                             group=self.all_categories_button)
                                             
         self.pack_start(self.text_button, False)
@@ -145,8 +145,8 @@ class ContentsPage(AssistantPage):
         column.pack_start(cell, True)
         column.add_attribute(cell, 'text', 0)
         
-        self.select_button = gtk.Button('Select' + ' >>')
-        self.unselect_button = gtk.Button('<< ' + 'Unselect')
+        self.select_button = gtk.Button(_('Select') + ' >>')
+        self.unselect_button = gtk.Button('<< ' + _('Unselect'))
         
         self.select_button.connect('clicked', self.on_select_category)
         self.unselect_button.connect('clicked', self.on_unselect_category)
@@ -250,7 +250,7 @@ class ContentsPage(AssistantPage):
             
     def check_selection(self, *args):
         if not self.is_text_exported() and not self.get_categories():
-            error = 'If export text is not selected, you have to select at least one category.'
+            error = _('If export text is not selected, you have to select at least one category.')
             self.set_error_text(error)
             correct = False
         else:
@@ -274,7 +274,7 @@ class SummaryPage(AssistantPage):
         self.settings = []
         
     def prepare(self):
-        text = 'You have selected the following settings:'
+        text = _('You have selected the following settings:')
         self.set_header(text)
         self.clear()
         
@@ -299,13 +299,13 @@ class ExportAssistant(Assistant):
         
         self.exporters = get_exporters()
         
-        self.set_title('Export Assistant')
+        self.set_title(_('Export Assistant'))
         
-        texts = ['Welcome to the Export Assistant.',
-                'This wizard will help you to export your journal to various formats.',
-                'You can select the days you want to export and where the output will be saved.']
+        texts = [_('Welcome to the Export Assistant.'),
+                _('This wizard will help you to export your journal to various formats.'),
+                _('You can select the days you want to export and where the output will be saved.')]
         text = '\n'.join(texts)
-        self._add_intro_page(text)#self._get_page0()
+        self._add_intro_page(text)
         
         self.page1 = RadioButtonPage()
         for exporter in self.exporters:
@@ -313,28 +313,28 @@ class ExportAssistant(Assistant):
             desc = exporter.DESCRIPTION
             self.page1.add_radio_option(exporter, name, desc)
         self.append_page(self.page1)
-        self.set_page_title(self.page1, 'Select Export Format' + ' (1/5)')
+        self.set_page_title(self.page1, _('Select Export Format') + ' (1/5)')
         self.set_page_complete(self.page1, True)
         
         self.page2 = DatePage(self.journal)
         self.append_page(self.page2)
-        self.set_page_title(self.page2, 'Select Date Range' + ' (2/5)')
+        self.set_page_title(self.page2, _('Select Date Range') + ' (2/5)')
         self.set_page_complete(self.page2, True)
         
         self.page3 = ContentsPage(self.journal, self)
         self.append_page(self.page3)
-        self.set_page_title(self.page3, 'Select Contents' + ' (3/5)')
+        self.set_page_title(self.page3, _('Select Contents') + ' (3/5)')
         self.set_page_complete(self.page3, True)
         self.page3.check_selection()
         
         self.page4 = PathChooserPage(self)
         self.append_page(self.page4)
-        self.set_page_title(self.page4, 'Select Export Path' + ' (4/5)')
+        self.set_page_title(self.page4, _('Select Export Path') + ' (4/5)')
         self.set_page_complete(self.page4, True)
         
         self.page5 = SummaryPage()
         self.append_page(self.page5)
-        self.set_page_title(self.page5, 'Summary' + ' (5/5)')
+        self.set_page_title(self.page5, _('Summary') + ' (5/5)')
         self.set_page_type(self.page5, gtk.ASSISTANT_PAGE_CONFIRM)
         self.set_page_complete(self.page5, True)
         
@@ -379,20 +379,20 @@ class ExportAssistant(Assistant):
             self.is_text_exported = self.page3.is_text_exported()
             self.exported_categories = self.page3.get_categories()
             
-            self.page5.add_setting('Format', format)
-            self.page5.add_setting('Export all days', self.yes_no(self.export_all_days))
+            self.page5.add_setting(_('Format'), format)
+            self.page5.add_setting(_('Export all days'), self.yes_no(self.export_all_days))
             if not self.export_all_days:
                 self.start_date, self.end_date = self.page2.get_date_range()
-                self.page5.add_setting('Start date', self.start_date)
-                self.page5.add_setting('End date', self.end_date)
+                self.page5.add_setting(_('Start date'), self.start_date)
+                self.page5.add_setting(_('End date'), self.end_date)
             is_text_exported = self.yes_no(self.is_text_exported)
-            self.page5.add_setting('Export text', is_text_exported)
-            self.page5.add_setting('Exported categories', ', '.join(self.exported_categories))
-            self.page5.add_setting('Export path', self.path)
+            self.page5.add_setting(_('Export text'), is_text_exported)
+            self.page5.add_setting(_('Selected categories'), ', '.join(self.exported_categories))
+            self.page5.add_setting(_('Export path'), self.path)
        
         
     def yes_no(self, value):
-        return 'Yes' if value else 'No'
+        return _('Yes') if value else _('No')
         
     
     def get_export_string(self, format):
