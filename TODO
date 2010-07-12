@@ -26,6 +26,7 @@ O Bundle msvcr dll in windows installer
 O Fix export
 X Fix: Correctly highlight multiple links and images on one line
 X Fix: Months that have been cleared of all text are now rewritten to disk
+X Much code rewritten or restructured 
 
 1.1.1
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
