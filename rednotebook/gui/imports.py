@@ -32,7 +32,6 @@ if __name__ == '__main__':
 
 
 from rednotebook.data import Day, Month
-#from rednotebook.imports.plaintext import PlainTextImporter
 from rednotebook.util import filesystem
 from rednotebook.storage import Storage
 from rednotebook.util import markup
