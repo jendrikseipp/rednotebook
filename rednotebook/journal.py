@@ -336,36 +336,6 @@ class Journal:
         logging.error('The path "%s" is no valid journal directory. ' 
                     'Execute "rednotebook -h" for instructions' % path_arg)
         sys.exit(1)
-            
-            
-    
-    
-    def get_days_in_date_range(self, range):
-        start_date, end_date = range
-        assert start_date <= end_date
-        
-        sorted_days = self.sorted_days
-        days_in_date_range = []
-        for day in sorted_days:
-            if day.date < start_date:
-                continue
-            elif day.date >= start_date and day.date <= end_date:
-                days_in_date_range.append(day)
-            elif day.date > end_date:
-                break
-        return days_in_date_range
-        
-        
-    def _get_sorted_days(self):
-        return sorted(self.days, key=lambda day: day.date)
-    sorted_days = property(_get_sorted_days)
-    
-    
-    def get_edit_date_of_entry_number(self, entry_number):
-        sorted_days = self.sorted_days
-        if len(self.sorted_days) == 0:
-            return datetime.date.today()
-        return self.sorted_days[entry_number % len(sorted_days)].date
     
     
     def backup_contents(self, backup_file):
@@ -589,21 +559,21 @@ class Journal:
     def show_message(self, message_text, error=False, countdown=True):
         self.frame.statusbar.show_text(message_text, error, countdown)
         
-        
-    def _get_node_names(self):
+    
+    @property
+    def node_names(self):
         node_names = set([])
         for month in self.months.values():
             node_names |= set(month.node_names)
         return list(node_names)
-    node_names = property(_get_node_names)
     
     
-    def _get_tags(self):
+    @property
+    def tags(self):
         tags = set([])
         for month in self.months.values():
             tags |= set(month.tags)
         return list(tags)
-    tags = property(_get_tags)
     
     
     def search(self, text=None, category=None, tag=None):
@@ -626,7 +596,11 @@ class Journal:
         return results
     
     
-    def _get_all_edited_days(self):
+    @property
+    def days(self):
+        '''
+        Returns all edited days ordered by their date
+        '''
         # The day being edited counts too
         if self.frame:
             self.save_old_day()
@@ -636,10 +610,12 @@ class Journal:
             days_in_month = month.days.values()
             
             # Filter out days without content
-            days_in_month = filter(lambda day: not day.empty, days_in_month)
+            days_in_month = [day for day in days_in_month if not day.empty]
             days.extend(days_in_month)
+        
+        # Sort days
+        days = sorted(days, key=lambda day: day.date)
         return days
-    days = property(_get_all_edited_days)
     
     
     def get_word_count_dict(self, type):
@@ -658,12 +634,36 @@ class Journal:
             for word in words:
                 word_dict[word.lower()] += 1
         return word_dict
+        
+    
+    def get_days_in_date_range(self, range):
+        start_date, end_date = range
+        assert start_date <= end_date
+        
+        sorted_days = self.days
+        days_in_date_range = []
+        for day in sorted_days:
+            if day.date < start_date:
+                continue
+            elif day.date >= start_date and day.date <= end_date:
+                days_in_date_range.append(day)
+            elif day.date > end_date:
+                break
+        return days_in_date_range
+    
+    
+    def get_edit_date_of_entry_number(self, entry_number):
+        sorted_days = self.days
+        if len(sorted_days) == 0:
+            return datetime.date.today()
+        return sorted_days[entry_number % len(sorted_days)].date
+    
     
     def go_to_first_empty_day(self):
-        if len(self.sorted_days) == 0:
+        if len(self.days) == 0:
             return datetime.date.today()
         
-        last_edited_day = self.sorted_days[-1]
+        last_edited_day = self.days[-1]
         first_empty_date = last_edited_day.date + dates.one_day
         self.change_date(first_empty_date)
             
