@@ -343,12 +343,10 @@ class Assistant(gtk.Assistant):
         self.connect('close', self._on_close)
         self.connect('prepare', self._on_prepare)
     
-    
     def run(self):
         '''
         Show assistant
         '''
-        
         
     def _on_cancel(self, assistant):
         '''
@@ -356,18 +354,15 @@ class Assistant(gtk.Assistant):
         '''
         self.hide()
         
-        
     def _on_close(self, assistant):
         '''
         Do the action
         '''
         
-        
     def _on_prepare(self, assistant, page):
         '''
         Called when a new page should be prepared, before it is shown
         '''
-        
             
     def _add_intro_page(self, text):
         page = IntroductionPage(text)

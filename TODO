@@ -14,8 +14,8 @@ Bugfixes only
 X When searching for text, search in dates too (Search for 2010-05 displays all entries of May 2010)
 X Improve checking for new version (Show version numbers)
 X Save last selected tab (Search/Clouds) (LP:590483)
-X Save yaml files as readable unicode
-X Save yaml files without python directives
+X Save journal files as readable unicode
+X Save journal files without python directives
 X Get rid of warnings caused by older webkit versions
 X Use webkit on Windows
 X Use webkit by default

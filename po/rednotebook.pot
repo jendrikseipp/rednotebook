@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-12 04:35+0200\n"
+"POT-Creation-Date: 2010-07-12 05:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,7 +150,7 @@ msgstr ""
 msgid "RedNotebook Documentation"
 msgstr ""
 
-#: ../rednotebook/gui/customwidgets.py:375
+#: ../rednotebook/gui/customwidgets.py:370
 msgid "Introduction"
 msgstr ""
 
@@ -268,106 +268,6 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:279
 msgid "A Desktop Journal"
-msgstr ""
-
-#: ../rednotebook/gui/journalgeist.py:82
-msgid "Morning"
-msgstr ""
-
-#: ../rednotebook/gui/journalgeist.py:83
-msgid "Afternoon"
-msgstr ""
-
-#: ../rednotebook/gui/journalgeist.py:84
-msgid "Evening"
-msgstr ""
-
-#: ../rednotebook/gui/journalgeist.py:85
-msgid "Night"
-msgstr ""
-
-#: ../rednotebook/gui/journalgeist.py:126
-msgid "Activities"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:71
-msgid "Import type:"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:72
-msgid "Path:"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:73
-msgid "The following contents will be imported:"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:106
-msgid "Import Assistant"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:108
-msgid "This Assistant lets you import notes from other applications."
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:109
-msgid "You can check the results on the last page before any change is made."
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:114
-msgid "Select what to import"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:119
-msgid "Select Import Path"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:123 ../rednotebook/gui/exports.py:337
-msgid "Summary"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:240
-msgid "Import Text from plain textfiles"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:241
-msgid "Select a directory containing your data files"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:270
-msgid "RedNotebook Journal"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:271
-msgid "Import data from a different RedNotebook journal"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:272
-msgid "Select a directory containing RedNotebook data files"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:288
-msgid "RedNotebook Zip Backup"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:289
-msgid "Import a RedNotebook backup zip archive"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:290
-msgid "Select a backup zipfile"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:328
-msgid "Tomboy Notes"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:329
-msgid "Import your Tomboy notes"
-msgstr ""
-
-#: ../rednotebook/gui/imports.py:330
-msgid "Select the directory containing your tomboy notes"
 msgstr ""
 
 #: ../rednotebook/gui/categories.py:49 tmp/main_window.glade.h:10
@@ -790,6 +690,10 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:332
 msgid "Select Export Path"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:337
+msgid "Summary"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:386
