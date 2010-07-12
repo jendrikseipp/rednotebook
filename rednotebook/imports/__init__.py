@@ -153,6 +153,7 @@ class PathChooserPage(AssistantPage):
         self.last_path = self.chooser.get_filename()
         return self.last_path
         
+        
 
 class SummaryPage(AssistantPage):
     def __init__(self, *args, **kwargs):
@@ -173,6 +174,7 @@ class SummaryPage(AssistantPage):
         self.set_header(text)
         self.clear()
         
+        
     def add_day(self, day):
         day_text = '====== %s ======\n%s\n\n' % (day.date, day.text)
         categories = day.getCategoryContentPairs()
@@ -183,8 +185,10 @@ class SummaryPage(AssistantPage):
         while gtk.events_pending():
             gtk.main_iteration()
         
+        
     def clear(self):
         self.board.get_buffer().set_text('')
+        
         
     def _append(self, text):
         buffer = self.board.get_buffer()
@@ -192,7 +196,6 @@ class SummaryPage(AssistantPage):
         buffer.insert(end_iter, text)
         
                 
-        
         
 class ImportAssistant(gtk.Assistant):
     def __init__(self, journal, *args, **kwargs):
@@ -233,14 +236,17 @@ class ImportAssistant(gtk.Assistant):
         self.connect('close', self._on_close)
         self.connect('prepare', self._on_prepare)
     
+    
     def run(self):
         self.show_all()
+        
         
     def _on_cancel(self, assistant):
         '''
         Cancelled -> Hide assistant
         '''
         self.hide()
+        
         
     def _on_close(self, assistant):
         '''
@@ -252,6 +258,7 @@ class ImportAssistant(gtk.Assistant):
         # We want to see the new contents of the currently loaded day
         # so reload current day
         self.journal.load_day(self.journal.date)
+        
         
     def _on_prepare(self, assistant, page):
         '''

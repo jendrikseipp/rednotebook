@@ -605,7 +605,6 @@ class ExportAssistant(gtk.Assistant):
                                 options=options)
                                 
     def export(self):
-        #TODO: Add content page values management
         format = self.exporter.FORMAT
         
         if format == 'pdf':
@@ -639,7 +638,7 @@ class Exporter(object):
     DESCRIPTION = ''
     # Export destination
     PATHTEXT = ''
-    PATHTYPE = 'DIR'
+    PATHTYPE = 'NEWFILE'
     EXTENSION = None
     
     @classmethod
@@ -687,7 +686,6 @@ class Exporter(object):
 class PlainTextExporter(Exporter):
     NAME = 'Plain Text'
     #DESCRIPTION = 'Export journal to a plain textfile'
-    PATHTYPE = 'NEWFILE'
     EXTENSION = 'txt'
     FORMAT = 'txt'
     
@@ -695,7 +693,6 @@ class PlainTextExporter(Exporter):
 class HtmlExporter(Exporter):
     NAME = 'HTML'
     #DESCRIPTION = 'Export journal to HTML'
-    PATHTYPE = 'NEWFILE'
     EXTENSION = 'html'
     FORMAT = 'xhtml'
     
@@ -703,7 +700,6 @@ class HtmlExporter(Exporter):
 class LatexExporter(Exporter):
     NAME = 'Latex'
     #DESCRIPTION = 'Create a tex file'
-    PATHTYPE = 'NEWFILE'
     EXTENSION = 'tex'
     FORMAT = 'tex'
     
@@ -711,7 +707,6 @@ class LatexExporter(Exporter):
 class PdfExporter(Exporter):
     NAME = 'PDF'
     #DESCRIPTION = 'Create a PDF file'
-    PATHTYPE = 'NEWFILE'
     EXTENSION = 'pdf'
     FORMAT = 'pdf'
     
