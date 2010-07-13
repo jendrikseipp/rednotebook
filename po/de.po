@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-12 05:00+0200\n"
-"PO-Revision-Date: 2010-07-12 03:16+0000\n"
+"POT-Creation-Date: 2010-07-12 20:47+0200\n"
+"PO-Revision-Date: 2010-07-12 16:55+0000\n"
 "Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-12 03:47+0000\n"
+"X-Launchpad-Export-Date: 2010-07-13 03:51+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/info.py:79
@@ -348,7 +348,7 @@ msgstr "Tag %j"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr ""
+msgstr "Vorschau:"
 
 #: ../rednotebook/gui/options.py:289
 msgid "Close to system tray"
@@ -537,25 +537,13 @@ msgstr "Einen Link zu einer Webseite einfügen"
 msgid "Bullet List"
 msgstr "Liste"
 
-#: ../rednotebook/gui/main_window.py:806
-msgid "Insert a bullet list"
-msgstr "Eine Liste einfügen"
-
 #: ../rednotebook/gui/main_window.py:808
 msgid "Numbered List"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:809
-msgid "Insert a numbered list"
-msgstr ""
+msgstr "Nummerierte Liste"
 
 #: ../rednotebook/gui/main_window.py:811
 msgid "Title"
 msgstr "Titel"
-
-#: ../rednotebook/gui/main_window.py:812
-msgid "Insert a title"
-msgstr "Eine Überschrift einfuegen"
 
 #: ../rednotebook/gui/main_window.py:814
 msgid "Line"
@@ -651,8 +639,8 @@ msgstr "Von:"
 msgid "To:"
 msgstr "Bis:"
 
-#: ../rednotebook/gui/exports.py:120 ../rednotebook/gui/exports.py:389
-msgid "Export text"
+#: ../rednotebook/gui/exports.py:120
+msgid "Export texts"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:121
@@ -730,14 +718,18 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
-msgstr ""
+msgstr "Zusammenfassung"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "Start date"
-msgstr ""
+msgstr "Startdatum"
 
 #: ../rednotebook/gui/exports.py:387
 msgid "End date"
+msgstr "Enddatum"
+
+#: ../rednotebook/gui/exports.py:389
+msgid "Export text"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:390
@@ -1045,6 +1037,12 @@ msgstr ""
 #~ msgid "<b>The directory name will be the new title of the journal</b>"
 #~ msgstr ""
 #~ "<b>Der Verzeichnisname wird als Name für das Journal benutzt werden</b>"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Eine Liste einfügen"
+
+#~ msgid "Insert a title"
+#~ msgstr "Eine Überschrift einfuegen"
 
 #, python-format
 #~ msgid "Preview: %s"
