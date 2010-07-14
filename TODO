@@ -16,16 +16,17 @@ X Improve checking for new version (Show version numbers)
 X Save last selected tab (Search/Clouds) (LP:590483)
 X Save journal files as readable unicode
 X Save journal files without python directives
+X Let the Preview and the Edit button always have the same size
 X Get rid of warnings caused by older webkit versions
 X Use webkit on Windows
 X Use webkit by default
 X Get rid of CamelCase in sourcecode
 X Open external files asynchronously with subprocess.Popen
-O Bundle msvcr dll in windows installer
 X Fix: Correctly highlight multiple links and images on one line
 X Fix: Months that have been cleared of all text are now rewritten to disk
 X Rewrite export code
 X Much more code rewritten or restructured
+O Bundle msvcr dll in windows installer
 
 1.1.1
 O Show warning if last backup dates to more than one month before
@@ -123,7 +124,6 @@ O Change an entry's category (Useful for Todo items) (KISS?)
   everything, Current behaviour should be fine)
 - allow opening config file from within RedNotebook
   (Probably no good idea as some options might be unavailable or confusing)
-- Let the Preview and the Edit button keep the same size -> No, keep code simple
 - Change to newer KeepNote Version? -> No. A stable webkit will be available everywhere soon.
 - Make the Format button remember its last action -> No, current behaviour good enough.
 - Tabs for different notebooks (KISS)

@@ -47,7 +47,8 @@ from rednotebook.gui.menu import MainMenuBar
 from rednotebook.external.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
 from rednotebook.gui import customwidgets
-from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView, \
+                                            get_button_width
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import info
@@ -147,6 +148,14 @@ class MainWindow(object):
         self.html_editor.set_editable(False)
         self.preview_mode = False
         self.preview_button = self.builder.get_object('preview_button')
+        
+        # Let the preview button always have the same size        
+        preview_button = self.preview_button
+        preview_button.realize()
+        width_edit = get_button_width(preview_button, _('Edit'))
+        width_preview = get_button_width(preview_button, _('Preview'))
+        preview_button.set_size_request(max([width_edit, width_preview]), -1)
+        
         
         self.load_values_from_config()
         
@@ -853,7 +862,8 @@ class MainWindow(object):
         #else:
             #self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
         self.single_menu_toolbutton = gtk.MenuToolButton(gtk.STOCK_ADD)
-        self.single_menu_toolbutton.set_label(_('Insert'))
+        #self.single_menu_toolbutton.set_label(_('Insert'))
+        self.single_menu_toolbutton.set_label(_('Insertingsmenubar'))
             
         self.single_menu_toolbutton.set_menu(menu)
         self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)

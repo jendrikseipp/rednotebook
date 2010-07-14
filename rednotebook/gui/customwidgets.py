@@ -25,6 +25,13 @@ import gtk
 import gobject
 
 
+def get_button_width(button, label):
+    button.set_label(label)
+    while gtk.events_pending():
+        gtk.main_iteration()
+    return button.allocation.width
+
+
 class ActionButton(gtk.Button):
     def __init__(self, text, action):
         gtk.Button.__init__(self, text)
