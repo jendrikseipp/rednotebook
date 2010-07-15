@@ -1,7 +1,7 @@
 include po/*.pot
 include po/*.po
 include rednotebook/images/*.png
-include rednotebook/images/redNotebookIcon/*.png
+include rednotebook/images/rednotebook-icon/*.png
 include rednotebook/files/*.glade
 include rednotebook/files/*.css
 include rednotebook/files/*.cfg

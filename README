@@ -1,4 +1,11 @@
-====== RedNotebook ======
+=====  Short Instructions  =====
+$ sudo apt-get install python-yaml python-webkit python-chardet
+$ python rednotebook/journal.py
+  
+
+
+
+===== Detailed Instructions =====
 
 There are many packages available for different distributions, so you might
 want to check the Downloads page first.
@@ -9,38 +16,7 @@ but of course sometimes you want to try out the bleeding edge, hot new stuff.
 In order to not mess with your distribution's package system, you might
 want to just run the program, without installing it.
 
-
-=====  RUN RedNotebook on Ubuntu/Debian/Mint  =====
-In this directory:
-  - sudo apt-get install python-yaml python-webkit
-  - python rednotebook/journal.py
-  
-=====  RUN RedNotebook on Fedora  =====
-In this directory:
-  - yum install python-devel PyYAML pywebkitgtk
-  - python rednotebook/journal.py
-
-
-======  Short Install Instructions  ======
-
-====  INSTALL RedNotebook on Ubuntu/Debian/Mint  ====
-In this directory:
-  - sudo apt-get install python-yaml python-webkit
-  - sudo python setup.py install
-  
-==== INSTALL RedNotebook on Fedora ====
-In this directory:
-  - yum install python-devel PyYAML pywebkitgtk
-  - sudo python setup.py install
-  
-
-You find a menu entry for RedNotebook under "Office".
-  
-
-
-====== Detailed Instructions ======
-
-===== REQUIREMENTS =====
+==== REQUIREMENTS ====
   - Python (2.5/2.6) (www.python.org)
   - PyYaml (>=3.05) (www.pyyaml.org)
   - PyGTK (>=2.13) (www.pygtk.org)
@@ -55,20 +31,21 @@ You find a menu entry for RedNotebook under "Office".
     sudo apt-get install python-yaml python-webkit
     
     === Fedora ===
-    yum -y install python-devel PyYAML pywebkitgtk
+    yum install python-devel PyYAML pywebkitgtk
     
 
-===== INSTALL =====
+==== INSTALL ====
 Run 'sudo python setup.py install'
 (installs into path-to-python/site-packages/)
 
 
-===== RUN =====
+==== RUN ====
 After installing you can run the command "rednotebook" in any shell. 
 You should also find a menu entry for RedNotebook under "Office".
 
 (Running without installing: Just navigate to the "rednotebook" directory 
                              and run "./rednotebook".)
+
 
 
 ===== THANKS =====

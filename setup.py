@@ -44,14 +44,13 @@ if sys.platform == 'win32':
     print 'running on win32. Importing py2exe'
     import py2exe
     
-    
-# We want to include some dlls that py2exe excludes
-origIsSystemDLL = py2exe.build_exe.isSystemDLL
-def isSystemDLL(pathname):
-        if os.path.basename(pathname).lower() in ("libxml2-2.dll", "libtasn1-3.dll"):
-                return 0
-        return origIsSystemDLL(pathname)
-py2exe.build_exe.isSystemDLL = isSystemDLL
+    # We want to include some dlls that py2exe excludes
+    origIsSystemDLL = py2exe.build_exe.isSystemDLL
+    def isSystemDLL(pathname):
+            if os.path.basename(pathname).lower() in ("libxml2-2.dll", "libtasn1-3.dll"):
+                    return 0
+            return origIsSystemDLL(pathname)
+    py2exe.build_exe.isSystemDLL = isSystemDLL
 
 
 
@@ -193,7 +192,7 @@ parameters = {  'name'              : 'rednotebook',
                 'keywords'          : "journal, diary", 
                 'scripts'           : ['rednotebook/rednotebook'], 
                 'packages'          : ['rednotebook', 'rednotebook.util', 'rednotebook.gui',
-                                        'rednotebook.external', 'rednotebook.imports',
+                                        'rednotebook.external', 
                                         'rednotebook.gui.keepnote', 'rednotebook.gui.keepnote.gui',
                                         'rednotebook.gui.keepnote.gui.richtext'],
                 'package_data'      : {'rednotebook': 
@@ -263,8 +262,8 @@ if 'py2exe' in sys.argv:
                                     ('.', [r'C:\GTK\bin\libintl-8.dll']),
                                     ])
     parameters.update(py2exeParameters)
-from pprint import pprint
-pprint(parameters)
+#from pprint import pprint
+#pprint(parameters)
 #sys.exit()
 #Additionally use MANIFEST.in for image files
 setup(**parameters)

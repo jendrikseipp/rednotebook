@@ -14,12 +14,19 @@ body {
 }
 </style>
 
+<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/mathjax/MathJax.js">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\(","\)"]]}
+  });
+</script>
 </head>
 <body>
 
 <div class="header" id="header">
 <h1>RedNotebook Documentation</h1>
-<h2>0.9.4</h2>
+<h2>1.1.0</h2>
 </div>
 
 <div class="toc" id="toc">
@@ -29,25 +36,25 @@ body {
     </li>
     <li><a href="#toc2">Format</a>
     </li>
-    <li><a href="#toc3">Annotations in Categories</a>
+    <li><a href="#toc3">Images, Files and Links</a>
     </li>
-    <li><a href="#toc4">Images, Files and Links</a>
+    <li><a href="#toc4">Templates</a>
     </li>
-    <li><a href="#toc5">Templates</a>
+    <li><a href="#toc5">Tags</a>
     </li>
-    <li><a href="#toc6">Tags</a>
+    <li><a href="#toc6">Search</a>
     </li>
-    <li><a href="#toc7">Search</a>
+    <li><a href="#toc7">Clouds</a>
     </li>
-    <li><a href="#toc8">Clouds</a>
+    <li><a href="#toc8">Spellcheck</a>
     </li>
-    <li><a href="#toc9">Spellcheck</a>
+    <li><a href="#toc9">Options</a>
     </li>
-    <li><a href="#toc10">Options</a>
+    <li><a href="#toc10">Save</a>
     </li>
-    <li><a href="#toc11">Save</a>
+    <li><a href="#toc11">Export</a>
     </li>
-    <li><a href="#toc12">Synchronize across multiple computers</a>
+    <li><a href="#sync">Synchronize across multiple computers</a>
       <ul>
       <li><a href="#toc13">Ubuntu One and Dropbox</a>
       </li>
@@ -60,28 +67,40 @@ body {
       </ul>
     </li>
     <li><a href="#toc17">Portable mode</a>
-    </li>
-    <li><a href="#toc18">Export</a>
       <ul>
-      <li><a href="#toc19">Convert Latex output to PDF</a>
+      <li><a href="#toc18">Convert Latex output to PDF</a>
       </li>
       </ul>
     </li>
-    <li><a href="#toc20">Keyboard Shortcuts</a>
+    <li><a href="#toc19">Keyboard Shortcuts</a>
     </li>
-    <li><a href="#toc21">Encryption</a>
+    <li><a href="#toc20">Encryption</a>
     </li>
-    <li><a href="#toc22">Tips</a>
+    <li><a href="#toc21">Tips</a>
       <ul>
-      <li><a href="#toc23">Multiple Entries</a>
+      <li><a href="#toc22">Multiple Entries</a>
       </li>
-      <li><a href="#toc24">Todo list</a>
+      <li><a href="#toc23">Todo list</a>
+      </li>
+      <li><a href="#toc24">Week Numbers</a>
+      </li>
+      <li><a href="#toc25">Language</a>
+      </li>
+      <li><a href="#toc26">Insert HTML or Latex code</a>
+      </li>
+      <li><a href="#toc27">Insert verbatim text (Preserve format)</a>
+      </li>
+      <li><a href="#toc28">List of all Entries</a>
       </li>
       </ul>
     </li>
-    <li><a href="#toc25">Questions</a>
+    <li><a href="#toc29">Command line options</a>
     </li>
-    <li><a href="#toc26">Bugs</a>
+    <li><a href="#toc30">Data Format</a>
+    </li>
+    <li><a href="#toc31">Questions</a>
+    </li>
+    <li><a href="#toc32">Bugs</a>
     </li>
     </ul>
 
@@ -115,8 +134,7 @@ To see the result, click on the "Preview" button.
 You can also see how this text was formatted by looking at its <a href="source.txt">source</a>.
 </p>
 
-<a id="toc3" name="toc3"></a>
-<h2>Annotations in Categories</h2>
+<h4>Annotations in Categories</h4>
 
 <p>
 On the right there is space for annotations to a day. Annotations are notes that can easily be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it.
@@ -158,7 +176,7 @@ Similarly you can have a category "Movies" and add it together with the movie's 
 Category entries can have all of the formatting that the main text supports, so e.g. you can add bold text, links or images.
 </p>
 
-<a id="toc4" name="toc4"></a>
+<a id="toc3" name="toc3"></a>
 <h2>Images, Files and Links</h2>
 
 <p>
@@ -168,7 +186,7 @@ RedNotebook lets you insert images, files and links into your entries. To do so,
 With the insert button you cannot insert <b>links to directories</b> on your computer. Those can be inserted manually however ([Home ""file:///home/]"").
 </p>
 
-<a id="toc5" name="toc5"></a>
+<a id="toc4" name="toc4"></a>
 <h2>Templates</h2>
 
 <p>
@@ -176,7 +194,7 @@ RedNotebook supports templates. Click on the arrow next to the "Template" button
 The files 1.txt to 7.txt in the template directory correspond to the templates for each day of the week. The current weekday's template will be filled into the text area when you click on "Template". You can open the template files from inside RedNotebook by opening the menu next to the "Template" button.
 </p>
 
-<a id="toc6" name="toc6"></a>
+<a id="toc5" name="toc5"></a>
 <h2>Tags</h2>
 
 <p>
@@ -196,14 +214,14 @@ Tagging an entry (e.g. with the tag "Work") is also easy: On the right, click on
 You can see a tag cloud on the left by activating the "Clouds" tab and selecting "Tags". Get a list of all tags with a given name by clicking on that tag in the cloud.
 </p>
 
-<a id="toc7" name="toc7"></a>
+<a id="toc6" name="toc6"></a>
 <h2>Search</h2>
 
 <p>
 On the left you find the search box. You can search for text, display a category's content or show all days with a given tag. Double-clicking on a day lets you jump to it.
 </p>
 
-<a id="toc8" name="toc8"></a>
+<a id="toc7" name="toc7"></a>
 <h2>Clouds</h2>
 
 <p>
@@ -212,17 +230,17 @@ You can select to view your category or tag clouds by clicking on the scroll-dow
 If words appear in the cloud that you don't want to see there, just right-click on them. Alternatively you can open the Preferences dialog and add the words to the cloud blacklist there.
 </p>
 
-<a id="toc9" name="toc9"></a>
+<a id="toc8" name="toc8"></a>
 <h2>Spellcheck</h2>
 
 <p>
-RedNotebook supports spellchecking your entries if you have python-gtkspell installed. To highlight all misspelled words in your entries, select the corresponding option in the preferences window.
+RedNotebook supports spellchecking your entries if you have python-gtkspell installed (Only available on Linux). To highlight all misspelled words in your entries, select the corresponding option in the preferences window.
 </p>
 <p>
 Since gtkspell 2.0.15, you can select the spellchecking language by right-clicking on the main text area (in edit mode) and choosing it from the submenu "Languages".
 </p>
 
-<a id="toc10" name="toc10"></a>
+<a id="toc9" name="toc9"></a>
 <h2>Options</h2>
 
 <p>
@@ -230,14 +248,37 @@ Make sure you check out the customizable options in the Preferences dialog. You 
 open this dialog by clicking on the entry in the "Edit" menu.
 </p>
 
-<a id="toc11" name="toc11"></a>
+<a id="toc10" name="toc10"></a>
 <h2>Save</h2>
 
 <p>
 Everything you enter will be saved automatically at regular intervals and when you exit the program. To avoid data loss you should backup your journal regularly. "Backup" in the "Journal" menu saves all your entered data in a zip file.
 </p>
 
-<a id="toc12" name="toc12"></a>
+<a id="toc11" name="toc11"></a>
+<h2>Export</h2>
+
+<p>
+In the "Journal" menu you also find the "Export" button. Click on "Export" and export your diary to Plain Text, HTML or Latex.
+</p>
+<p>
+Since version 0.9.2 you can also directly export your journal to PDF. If the option does not show up in the export assistant, you need to install pywebkitgtk version 1.1.5 or later (the package is sometime called python-webkit). 
+</p>
+<p>
+<b>Latex caveats</b>
+</p>
+<p>
+Make sure to type all links with the full path including the protocol:
+</p>
+
+<ul>
+<li><a href="http://www.wikipedia.org">http://www.wikipedia.org</a> or <a href="http://wikipedia.org">http://wikipedia.org</a> (<strike>wikipedia.org</strike>, <strike>"www.wikipedia.org"</strike>)
+</li>
+<li>file:///home/sam/myfile.txt (<strike>/home/sam/myfile.txt</strike>)
+</li>
+</ul>
+
+<a id="sync" name="sync"></a>
 <h2>Synchronize across multiple computers</h2>
 
 <p>
@@ -292,34 +333,14 @@ To <b>activate portable mode</b>, change into the files/ directory and in the de
 </p>
 
 <a id="toc18" name="toc18"></a>
-<h2>Export</h2>
-
-<p>
-In the "Journal" menu you also find the "Export" button. Click on "Export" and export your diary to Plain Text, HTML or Latex.
-</p>
-<p>
-<b>Latex caveats</b>
-</p>
-<p>
-Make sure to type all links with the full path including the protocol:
-</p>
-
-<ul>
-<li><a href="http://www.wikipedia.org">http://www.wikipedia.org</a> or <a href="http://wikipedia.org">http://wikipedia.org</a> (<strike>wikipedia.org</strike>, <strike>"www.wikipedia.org"</strike>)
-</li>
-<li>file:///home/sam/myfile.txt (<strike>/home/sam/myfile.txt</strike>)
-</li>
-</ul>
-
-<a id="toc19" name="toc19"></a>
 <h3>Convert Latex output to PDF</h3>
 
 <p>
-Since version 0.9.2 you can export your journal directly to PDF, so this section may be obsolete. However, there may be some people who prefer to export their journal to Latex first and convert it to PDF later. Here is how you do it:
+In recent RedNotebook versions you can export your journal directly to PDF, so this section may be obsolete. However, there may be some people who prefer to export their journal to Latex first and convert it to PDF later. Here is how you do it:
 </p>
-<p>
-<b>Linux</b>
-</p>
+
+<h4>Linux</h4>
+
 <p>
 For the conversion on Linux you need some extra packages: texlive-latex-base and texlive-latex-recommended. Maybe you also need texlive-latex-extra. Those contain the pdflatex program and are available in the repositories of most Linux distros.
 </p>
@@ -337,15 +358,15 @@ E.g. problems occur when exporting the euro sign (€) or other "non-standard" c
 <p>
 If you run into any problems during the conversion, the easiest way to solve them is to install a latex editor and do the conversion with it. That way you can see the errors right away and get rid of them by editing the file.
 </p>
-<p>
-<b>Windows</b>
-</p>
+
+<h4>Windows</h4>
+
 <p>
 You can open an exported Latex file with Texniccenter and convert it to PDF with MikTex. Visit <a href="http://www.texniccenter.org/">www.texniccenter.org/</a> and <a href="http://www.miktex.org">www.miktex.org</a> for the programs and instructions. Basically you have to download both programs, open the .tex file with Texniccenter and select "Build Output" from the "Output" menu. The program will then create the beautifully looking PDF in the
 same directory.
 </p>
 
-<a id="toc20" name="toc20"></a>
+<a id="toc19" name="toc19"></a>
 <h2>Keyboard Shortcuts</h2>
 
 <table border="1">
@@ -391,7 +412,7 @@ same directory.
 You can find other shortcuts in the menus.
 </p>
 
-<a id="toc21" name="toc21"></a>
+<a id="toc20" name="toc20"></a>
 <h2>Encryption</h2>
 
 <p>
@@ -401,10 +422,10 @@ You can use e.g. <a href="http://www.truecrypt.org">TrueCrypt</a> to encrypt you
 In recent Linux distributions is has become pretty easy to encrypt your entire home partition. I would recommend that to anyone who wishes to protect her/his diary and all other personal files. This method is especially useful for laptop users, because their computers are more likely to be stolen. If you encrypt your home partition all RedNotebook data will be encrypted, too.
 </p>
 
-<a id="toc22" name="toc22"></a>
+<a id="toc21" name="toc21"></a>
 <h2>Tips</h2>
 
-<a id="toc23" name="toc23"></a>
+<a id="toc22" name="toc22"></a>
 <h3>Multiple Entries</h3>
 
 <p>
@@ -438,7 +459,7 @@ Here goes the first entry.
 Here comes the entry about the fun stuff.
 </p>
 
-<a id="toc24" name="toc24"></a>
+<a id="toc23" name="toc23"></a>
 <h3>Todo list</h3>
 
 <p>
@@ -479,14 +500,148 @@ It probably sometimes makes sense to add the todo items to the day you want to h
 Once you've finished an item, you could also change its category name from "Todo" to "Done".
 </p>
 
+<a id="toc24" name="toc24"></a>
+<h3>Week Numbers</h3>
+
+<p>
+If you'd like to see the week numbers in the calendar, you can set the value of weekNumbers to 1 in the configuration file. This file normally resides at $HOME/.rednotebook/configuration.cfg
+</p>
+
 <a id="toc25" name="toc25"></a>
+<h3>Language</h3>
+
+<p>
+If you want to change RedNotebook's language, setting the environment variable LANG to a different language code should be sufficient. Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German). To set the language to English you can also set the code to "C".
+</p>
+<p>
+On Linux, start a terminal and call <code>LANG=de_DE.utf8</code>. Then in the same terminal, run <code>rednotebook</code>. The language change will be gone however once you close the terminal.
+</p>
+<p>
+On Windows, set or create a PATH environment variable with the desired code.
+</p>
+
+<a id="toc26" name="toc26"></a>
+<h3>Insert HTML or Latex code</h3>
+
+<p>
+To insert custom code into your entries surround the code with single quotes. Use 2 single quotes for inline insertions and 3 single quotes if you want to insert a whole paragraph. For paragraphs be sure to put the single quotes on their own line. This feature requires you to use webkit for previews (Only available on Linux).
+</p>
+
+<table border="1">
+<tr>
+<th>Text</th>
+<th>Output</th>
+</tr>
+<tr>
+<td><code>''&lt;font color="red"&gt;Red&lt;/font&gt;''</code></td>
+<td><font color="red">Red</font></td>
+</tr>
+<tr>
+<td><code>''$a^2$''</code></td>
+<td>$a^2$ (a<sup>2</sup> in Latex)</td>
+</tr>
+</table>
+
+<p>
+This feature can be used to insert e.g. latex formulas:
+</p>
+
+<pre>
+'''
+$$\sum_{i=1}^{n} i = \frac{n \cdot (n+1)}{2}$$
+'''
+</pre>
+
+<p>
+will produce a nice looking formula in the Latex export.
+</p>
+
+<a id="toc27" name="toc27"></a>
+<h3>Insert verbatim text (Preserve format)</h3>
+
+<p>
+To insert preformatted text preserving newlines and spaces, you can use the backquotes (`). Use 2 backquotes for inline insertions and 3 backquotes if you want to insert a whole paragraph. For paragraphs be sure to put the backquotes on their own line. This feature requires you to use webkit for previews (Only available on Linux).
+</p>
+<p>
+Two examples (have a look at the <a href="source.txt">source</a> to see how it's done):
+</p>
+<p>
+To install rednotebook use <code>sudo apt-get install rednotebook</code>.
+</p>
+
+<pre>
+class Robot(object):
+    def greet(self):
+        print 'Hello World'
+
+robot = Robot()
+robot.greet()
+</pre>
+
+<a id="toc28" name="toc28"></a>
+<h3>List of all Entries</h3>
+
+<p>
+To get a list of all entries, just search for " " (the space character). This character is most likely included in all entries. You can sort the resulting list chronologically by pressing the "Date" button.
+</p>
+
+<a id="toc29" name="toc29"></a>
+<h2>Command line options</h2>
+
+<pre>
+Usage: rednotebook [options] [journal-path]
+
+RedNotebook 1.1.0
+
+The optional journal-path can be one of the following:
+ - An absolute path (e.g. /home/username/myjournal)
+ - A relative path (e.g. ../dir/myjournal)
+ - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
+
+If the journal-path is omitted the last session's journal will be used.
+At the first program start this defaults to "$HOME/.rednotebook/data".
+
+
+Options:
+  -h, --help        show this help message and exit
+
+  -d, --debug       Output debugging messages (default: False)
+
+  -m, --minimized   Start mimimized to system tray (default: False)
+</pre>
+
+<a id="toc30" name="toc30"></a>
+<h2>Data Format</h2>
+
+<p>
+In this paragraph I will explain shortly what the RedNotebook files consist of. Firstly it is important to understand that the content is saved in a directory with many files, not just one file. The directory name is used as a name for the journal.
+</p>
+<p>
+In the directory there are several files all conforming to the naming scheme "2010-05.txt" (&lt;year&gt;-&lt;month&gt;.txt). Obviously these files correspond to months (May 2010). 
+</p>
+<p>
+Each month file contains text for the days of that month. The text is actually <a href="http://www.yaml.org">YAML</a> markup. Without the (unnecessary) python directives the files look like this:
+</p>
+
+<pre>
+24: {text: "This is a normal text entry."}
+25:
+  Ideas: {"Invent Anti-Hangover machine": null}
+  text: "This is another text entry, shown in the main text area."
+</pre>
+
+<p>
+As you can see the data format uses a dictionary (or hashmap structure) for storing the information. The outer dictionary has the daynumbers as keys and the day content as values. The day values consist of another dictionary. It can have a key "text" whose value will be inserted in the main content area. Additionally there can be multiple other keys that stand for the categories that belong to that day. Each category contains a dictionary with only one key, the category entry.
+</p>
+
+<a id="toc31" name="toc31"></a>
 <h2>Questions</h2>
 
 <p>
 If you have any questions or comments, feel free to post them in the <a href="http://apps.sourceforge.net/phpbb/rednotebook/">forum</a> or contact me directly.
 </p>
 
-<a id="toc26" name="toc26"></a>
+<a id="toc32" name="toc32"></a>
 <h2>Bugs</h2>
 
 <p>
