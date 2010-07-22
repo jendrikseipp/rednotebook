@@ -93,9 +93,7 @@ class MainWindow(object):
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
-        print filesystem.get_icons()
         icons = [gtk.gdk.pixbuf_new_from_file(file) for file in filesystem.get_icons()]
-        #self.main_frame.set_icon_list(*icons)
         self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
                                 filesystem.get_icons()))
         
@@ -862,8 +860,7 @@ class MainWindow(object):
         #else:
             #self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
         self.single_menu_toolbutton = gtk.MenuToolButton(gtk.STOCK_ADD)
-        #self.single_menu_toolbutton.set_label(_('Insert'))
-        self.single_menu_toolbutton.set_label(_('Insertingsmenubar'))
+        self.single_menu_toolbutton.set_label(_('Insert'))
             
         self.single_menu_toolbutton.set_menu(menu)
         self.single_menu_toolbutton.connect('clicked', self.show_insert_menu)

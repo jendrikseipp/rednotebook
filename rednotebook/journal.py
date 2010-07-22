@@ -359,7 +359,7 @@ class Journal:
 
     
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
-        logging.info('Trying to save the journal')
+        #logging.info('Trying to save the journal')
         
         self.save_old_day()
             
@@ -383,7 +383,7 @@ class Journal:
             logging.info('The content has been saved to %s' % self.dirs.data_dir)
         else:
             self.show_message(_('Nothing to save'), error=False)
-            logging.info('Nothing to save')
+            #logging.info('Nothing to save')
         
         if self.config.changed():
             try:

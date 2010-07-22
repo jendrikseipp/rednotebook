@@ -363,7 +363,6 @@ class ExportAssistant(Assistant):
         if page == self.page2:
             # Date Range
             self.exporter = self.page1.get_selected_object()
-            
         elif page == self.page3:
             # Categories
             pass

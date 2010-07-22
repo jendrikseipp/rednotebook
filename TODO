@@ -10,9 +10,6 @@ implementation if you tell me that you'd like its addition ;)
 1.0.x
 Bugfixes only
 
-1.1.0
-O Bundle msvcr dll in windows installer
-
 1.1.1
 O Show warning if last backup dates to more than one month before
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -22,6 +19,7 @@ X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsecti
 O Document structured headers
 X Highlight ``, "", ''
 O Write documentation about ``, "", ''
+O Journal -> _Journal in menu
 
 1.1.x
 O Use Zeitgeist for automatic category entries

@@ -21,7 +21,6 @@ else
 fi
 
 #Move files
-#cp -f rednotebook_$VERSION-1_all.deb ../releases/
 cp -f dist/rednotebook-$VERSION.tar.gz releases/
 
 cd releases/

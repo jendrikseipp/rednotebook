@@ -1,4 +1,5 @@
 =====  Short Instructions  =====
+
 $ sudo apt-get install python-yaml python-webkit python-chardet
 $ python rednotebook/journal.py
   
@@ -43,8 +44,7 @@ Run 'sudo python setup.py install'
 After installing you can run the command "rednotebook" in any shell. 
 You should also find a menu entry for RedNotebook under "Office".
 
-(Running without installing: Just navigate to the "rednotebook" directory 
-                             and run "./rednotebook".)
+(Running without installing: Run "python rednotebook/journal.py")
 
 
 

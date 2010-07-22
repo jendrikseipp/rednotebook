@@ -277,7 +277,7 @@ multiple_entries_text = multiple_entries_text.replace('=== Play ===', '**Play**\
 todo_help_text = example_day3['text']
 
 
-helpText = '''
+help_text = '''
 ==== Text ====
 The main text field is the container for your normal diary entries like this one:
 
@@ -656,10 +656,10 @@ def write_documentation(dir):
     from rednotebook.util import utils
     from rednotebook.util import markup
 
-    utils.write_file(helpText, os.path.join(dir, 'source.txt'))
+    utils.write_file(help_text, os.path.join(dir, 'source.txt'))
     headers = [_('RedNotebook Documentation'), version, '']
     options = {'toc': 1,}
-    html = markup.convert(helpText, 'xhtml', headers, options)
+    html = markup.convert(help_text, 'xhtml', headers, options)
     utils.write_file(html, os.path.join(dir, 'help.html'))
 
 if __name__ == '__main__':
