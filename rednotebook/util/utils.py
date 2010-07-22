@@ -226,8 +226,6 @@ def get_new_version_number():
     except URLError:
         return None
     
-    
-
 
 def check_new_version(journal, current_version, startup=False):
     new_version = get_new_version_number()
@@ -285,6 +283,8 @@ def show_html_in_browser(html, filename):
     html_file = 'file://' + html_file
     webbrowser.open(html_file)
     
+    
+    
 class StreamDuplicator(object):
     def __init__(self, default, duplicates):
         if not type(duplicates) == list:
@@ -310,6 +310,7 @@ class StreamDuplicator(object):
     #   for stream in self.streams():
     #       self.stream.close()
     
+
 
 class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
     '''

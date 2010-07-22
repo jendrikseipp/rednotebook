@@ -841,10 +841,6 @@ class MainWindow(object):
         menu = uimanager.get_widget('/InsertMenu')
         
         image_items = 'Picture Link BulletList Title Line Date LineBreak Table'.split()
-        #image_file_names = 'picture-16 link bulletlist title line date enter table'.split()
-        #items_and_files = [('Picture', 'picture-16'),
-        #                   ('Link', 'link'),
-        #                   ]zip(image_items, image_file_names)
         
         for item in image_items:
             menu_item = uimanager.get_widget('/InsertMenu/'+ item)
@@ -853,12 +849,6 @@ class MainWindow(object):
             if menu_item:
                 menu_item.set_image(get_image(filename + '.png'))
         
-        #single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
-        # Ugly hack for windows: It expects toolbar icons to be 16x16
-        #if sys.platform == 'win32':
-            #self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-16.png'), 'Insert')
-        #else:
-            #self.single_menu_toolbutton = gtk.MenuToolButton(get_image('insert-image-22.png'), 'Insert')
         self.single_menu_toolbutton = gtk.MenuToolButton(gtk.STOCK_ADD)
         self.single_menu_toolbutton.set_label(_('Insert'))
             
