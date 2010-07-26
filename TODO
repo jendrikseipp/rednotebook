@@ -20,6 +20,8 @@ O Document structured headers
 X Highlight ``, "", ''
 O Write documentation about ``, "", ''
 O Journal -> _Journal in menu
+O Let user delete category with 'DELETE'
+O Get rid of python3.0 warnings
 
 1.1.x
 O Use Zeitgeist for automatic category entries

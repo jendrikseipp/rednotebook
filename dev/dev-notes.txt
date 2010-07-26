@@ -83,4 +83,10 @@ X Completely Translate Windows Version:
 	automatic gtk stuff: Registry?
 	program strings:	 lang variable
 	gtkbuilder:			 Registry?
+    
+    
+O Custom Downloads:
+  - Ubuntu: Open install.html
+  - Windows: Direct Download
+  - Debian: sudo apt-get install
   

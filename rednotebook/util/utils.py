@@ -120,13 +120,13 @@ def set_environment_variables(config):
     variables = {}
     
     for variable, value in variables.iteritems():
-        if not os.environ.has_key(variable): #and config.has_key(variable):
+        if not variable in os.environ:
             # Only add environment variable if it does not exist yet
             os.environ[variable] = config.read(variable, default=value)
             logging.info('%s set to %s' % (variable, value))
             
     for variable in variables.keys():
-        if os.environ.has_key(variable):
+        if variable in os.environ:
             logging.info('The environment variable %s has value %s' % (variable, os.environ.get(variable)))
         else:
             logging.info('There is no environment variable called %s' % variable)

@@ -226,11 +226,8 @@ def get_platform_info():
         except AttributeError, err:
             logging.info('%s could not be determined' % name)
             
-    strings = []
-    for name, value in names_values:
-        strings.extend([name, value])
-    strings = tuple(strings)
-    return 'System info: ' + '%s: %s, '*(len(strings)/2) % strings
+    vals = ['%s: %s' % (name, val) for name, val in names_values]
+    return 'System info: ' + ', '.join(vals)
     
 
 def system_call(args):

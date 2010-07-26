@@ -610,7 +610,7 @@ class MainWindow(object):
         if config.read('mainFrameMaximized', 0):
             self.main_frame.maximize()
         
-        if config.has_key('left_divider_position'):
+        if 'left_divider_position' in config:
             self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))
         self.builder.get_object('edit_pane').set_position(config.read('rightDividerPosition', 500))
         

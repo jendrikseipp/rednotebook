@@ -57,12 +57,12 @@ def get_config(dirs):
     return config
     
 
+
 class Config(dict):
     
     def __init__(self, config_file):
         dict.__init__(self)
         
-        #self.dirs = dirs
         self.file = config_file
         
         self.obsolete_keys = ['useWebkit', 'useGTKMozembed', 
@@ -71,18 +71,7 @@ class Config(dict):
         # Allow changing the value of portable only in default.cfg
         self.suppressed_keys = ['portable', 'user_dir']
         
-        #default_config_file = os.path.join(dirs.files_dir, 'default.cfg')
-        #default_config = self._read_file(default_config_file)
-        
         self.update(self._read_file(self.file))
-        
-        #Add the defaults
-        #if default_config:
-        #   self.update(default_config)
-        
-        #Overwrite existing values with user options
-        #if user_config:
-        #   self.update(user_config)
             
         self.set_default_values()
         
@@ -145,16 +134,16 @@ class Config(dict):
                 except Exception:
                     logging.error('The line "' + key_value_pair + \
                                     '" in the config file contains errors')
-                    
         return dictionary
         
     
     def read(self, key, default):
-        if self.has_key(key):
+        if key in self:
             return self.get(key)
         else:
             self[key] = default
             return default
+            
         
     def read_list(self, key, default):
         '''
@@ -183,12 +172,15 @@ class Config(dict):
         list = filter(lambda item: len(item) > 0, list)
         
         return list
+        
     
     def write_list(self, key, list):
         self[key] = ', '.join(list)
         
+        
     def changed(self):
         return not (self == self.old_config)
+        
                         
     def save_to_disk(self):
         assert self.changed()
@@ -203,4 +195,3 @@ class Config(dict):
         except IOError:
             logging.error('Configuration could not be saved')
             
-

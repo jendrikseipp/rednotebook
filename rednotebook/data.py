@@ -40,7 +40,7 @@ class Day(object):
         Returns the day's text encoded as UTF-8
         decode means "decode from the standard ascii representation"
         '''
-        if self.content.has_key('text'):
+        if 'text' in self.content:
             return self.content['text'].decode('utf-8')
         else:
            return ''
@@ -57,7 +57,7 @@ class Day(object):
     def _is_empty(self):
         if len(self.content.keys()) == 0:
             return True
-        elif len(self.content.keys()) == 1 and self.content.has_key('text') and not self.has_text:
+        elif len(self.content.keys()) == 1 and 'text' in self.content and not self.has_text:
             return True
         else:
             return False
@@ -66,14 +66,14 @@ class Day(object):
         
     def _get_tree(self):
         tree = self.content.copy()
-        if tree.has_key('text'):
+        if 'text' in tree:
             del tree['text']
         return tree
     tree = property(_get_tree)
     
     
     def add_category_entry(self, category, entry):
-        if self.content.has_key(category):
+        if category in self.content:
             self.content[category][entry] = None
         else:
             self.content[category] = {entry: None}
@@ -263,7 +263,7 @@ class Month(object):
     
     
     def get_day(self, day_number):
-        if self.days.has_key(day_number):
+        if day_number in self.days:
             return self.days[day_number]
         else:
             new_day = Day(self, day_number)
