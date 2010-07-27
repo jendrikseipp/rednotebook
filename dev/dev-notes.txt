@@ -85,7 +85,7 @@ X Completely Translate Windows Version:
     gtkbuilder:          Registry?
     
     
-O Custom Downloads:
+X Custom Downloads:
   - Front page: Only link to download page, no js
   - Download page:
       - Ubuntu: Link to install.html
@@ -94,8 +94,4 @@ O Custom Downloads:
       - Fedora: yum install rednotebook
       - Mac: Instructions
       - Source
-      
-      
-Fonts:
-TeXGyreChorus Medium Italic
   
