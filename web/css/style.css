@@ -9,7 +9,7 @@
 	font-style: normal;
 }
 
-* {margin:0;}
+/* * {margin:0;} */
 
 html, body {height: 100%;}
 
@@ -373,16 +373,24 @@ body.no-sidebars #page {
 }
 
 /* Download block */
-
+#download-block {
+  width: 339px;
+  margin-left: 20px;
+}
+#download-block a {
+}
 #download-button {
-  background-image: url(../images/download-block.png);
+
+  margin-left: 45px;
+  
+  background-image: url(../images/download-block-blank.png);
   background-position:left top;
   background-repeat: no-repeat;
   color: white;
   cursor: pointer;
   display: block;
   height: 119px;
-  padding: 15px 20px 10px 90px;
+  padding: 15px 20px 10px 40px;
   text-align: right;
   width: 229px;
 }
@@ -398,10 +406,11 @@ body.no-sidebars #page {
   font-style: normal;
   font-weight: normal;
   line-height: normal;
-  font-size: 26px;
+  font-size: 32px;
 }
 #download-version {
-  color: #be1400;
+  #color: #be1400;
+  font-size: 45px;
 }
 #download-os {
   font-size: 30px;
