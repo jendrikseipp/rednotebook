@@ -24,11 +24,6 @@ from rednotebook.util import dates
 class Statistics(object):
     def __init__(self, journal):
         self.journal = journal
-        self.update()
-        
-        
-    def update(self):
-        self.days = self.journal.days
         
         
     def get_number_of_words(self):
@@ -124,6 +119,7 @@ class Statistics(object):
     
     def show_dialog(self, dialog):
         self.journal.save_old_day()
+        self.days = self.journal.days
         
         day_store = dialog.day_list.get_model()
         day_store.clear()
