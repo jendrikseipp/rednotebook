@@ -105,8 +105,8 @@ a img {
 /* Main page element styles */
 #wrapper {
   
-  overflow:auto;
-  padding-bottom: 80px;  /* must be same height as the footer */
+  overflow: hidden;
+  padding-bottom: 110px;  /* must be same height as the footer */
 
   background-image: url('../images/body-decoration.png');
   background-position: right top;
@@ -220,7 +220,7 @@ a img {
 #footer {
   position: relative;
   margin-top: -82px; /* negative value of footer height */
-  height: 80px;
+  height: 82px;
   clear:both;
   background-color: #454545;
   color: white;
