@@ -12,6 +12,7 @@ Bugfixes only
 
 1.1.1
 O Show warning if last backup dates to more than one month before
+O Search for multiple words at the same time
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
