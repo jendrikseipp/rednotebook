@@ -29,6 +29,8 @@ import gobject
 if __name__ == '__main__':
     import sys
     sys.path.insert(0, '../../')
+    logging.basicConfig(level=logging.DEBUG,
+                    format='%(levelname)-8s %(message)s',)
 
 from rednotebook.external import txt2tags
 from rednotebook.util import filesystem
@@ -249,7 +251,7 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 def convert_to_pango(txt, headers=None, options=None):
     '''
     Code partly taken from txt2tags tarball
-    '''
+    '''    
     original_txt = txt
     
     # Here is the marked body text, it must be a list.
@@ -263,6 +265,9 @@ def convert_to_pango(txt, headers=None, options=None):
     
     config['outfile'] = txt2tags.MODULEOUT  # results as list
     config['target'] = 'xhtml'
+    
+    config['preproc'] = []
+    config['preproc'].append([r'&amp;', '&'])
     
     # Allow line breaks, r'\\\\' are 2 \ for regexes
     config['postproc'] = []
@@ -301,7 +306,13 @@ def convert_to_pango(txt, headers=None, options=None):
     except gobject.GError:
         # There are unknown tags in the markup, return the original text
         logging.debug('There are unknown tags in the markup: %s' % result)
-        return original_txt
+        # We have to take care of the ampersands in links 
+        # (since links always contain an unknown tag, the "a" tag)        
+        txt = original_txt.replace('&amp;', 'XXX_SAVE_AMPERSAND_XXX')
+        txt = txt.replace('&', '&amp;')
+        txt = txt.replace('XXX_SAVE_AMPERSAND_XXX', '&amp;')
+        return txt
+    
     
     
 def convert_from_pango(pango_markup):
@@ -310,7 +321,8 @@ def convert_from_pango(pango_markup):
                         ('<i>', '//'), ('</i>', '//'),
                         ('<s>', '--'), ('</s>', '--'),
                         ('<u>', '__'), ('</u>', '__'),
-                        ('&amp;', '&'), ('&lt;', '<'), ('&gt;', '>'),
+                        ('&amp;', '&'), 
+                        ('&lt;', '<'), ('&gt;', '>'),
                         ))
     for orig, repl in replacements.items():
         pango_markup = pango_markup.replace(orig, repl)
@@ -349,8 +361,17 @@ normal text, normal_text_with_underscores and ""raw_text_with_underscores""
     markup += '[""file:///image"".png?10]\n'
     markup += '[""file:///image"".jpg]\n'
     
-    html = convert(markup, 'xhtml')
-    print html
+    markups = ['http://site/s.php?q&c', 'http://site/s.php?q&amp;c', '&', '&amp;']
+    for markup in markups:
+        print 'MARKUP    ', markup
+        p = convert_to_pango(markup)
+        print 'PANGO     ', p
+        new_markup = convert_from_pango(p)
+        print 'NEW MARKUP', new_markup
+        print
+    
+    #html = convert(markup, 'xhtml')
+    #print html
     
     #latex = convert(markup, 'tex')
     #print latex
