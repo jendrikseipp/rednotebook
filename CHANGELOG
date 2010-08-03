@@ -1,6 +1,6 @@
 ==== RedNotebook Changelog ====
 
-=== 1.1.0 () ===
+=== 1.1.0 (10-08-03) ===
  * When searching for text, search in dates too (Search for 2010-05 displays all entries of May 2010)
  * Improve checking for new version (Show version numbers)
  * Save last selected tab (Search/Clouds) (LP:590483)
