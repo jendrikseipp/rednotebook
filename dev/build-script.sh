@@ -30,7 +30,7 @@ cd releases/
 #rsync -avP -e ssh rednotebook-$VERSION.tar.gz jseipp@frs.sourceforge.net:uploads/
 #rsync -avP -e ssh rednotebook-$VERSION.tar.gz jseipp,rednotebook@frs.sourceforge.net:/home/frs/project/r/re/rednotebook/
 
-#scp rednotebook-$VERSION.tar.gz jseipp,rednotebook@frs.sourceforge.net:/home/frs/project/r/re/rednotebook/
+scp rednotebook-$VERSION.tar.gz jseipp,rednotebook@frs.sourceforge.net:/home/frs/project/r/re/rednotebook/
 
 
 

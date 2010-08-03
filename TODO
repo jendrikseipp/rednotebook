@@ -20,7 +20,8 @@ X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsecti
 O Document structured headers
 X Highlight ``, "", ''
 O Write documentation about ``, "", ''
-O Journal -> _Journal in menu
+X Sort categories (LP:612859)
+X Journal -> _Journal in menu
 O Let user delete category with 'DELETE'
 O Get rid of python3.0 warnings
 
