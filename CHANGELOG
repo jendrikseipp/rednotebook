@@ -14,9 +14,13 @@
  * Open external files asynchronously with subprocess.Popen from preview
  * Fix: Correctly highlight multiple links and images on one line
  * Fix: Months that have been cleared of all text are now rewritten to disk
+ * Fix: Allow ampersands in annotation links (LP:612490)
  * Rewrite export assistant code
  * Much more code rewritten or restructured
  * Bundle msvcr dll in windows installer (Fixes Error 14001)
+ * New translations:
+   * Chinese (Traditional)
+ * Many translations updated
 
 === 1.0.0 (10-06-23) ===
  * Describe how to add latex math formulas and custom html tags in help
