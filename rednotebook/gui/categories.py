@@ -463,7 +463,6 @@ class CategoriesTreeView(object):
         iter = self.get_selected_node()
         self.tree_view.set_cursor(self.tree_store.get_path(iter), \
                                 focus_column=self.tvcolumn, start_editing=True)
-        self.tree_view.grab_focus()
     
     def _on_add_entry_clicked(self, action):
         iter = self.get_selected_node()

@@ -21,6 +21,7 @@ O Document structured headers
 X Highlight ``, "", ''
 O Write documentation about ``, "", ''
 X Sort categories (LP:612859)
+X After clicking "Change the text" on an annotation, directly edit it (LP:612861)
 X Journal -> _Journal in menu
 O Let user delete category with 'DELETE'
 O Get rid of python3.0 warnings
