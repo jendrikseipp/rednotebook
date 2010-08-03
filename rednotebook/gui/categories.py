@@ -175,7 +175,12 @@ class CategoriesTreeView(object):
             
         
     def set_day_content(self, day):
-        for key, value in day.content.iteritems():
+        # We want to order the categories ascendingly, having Tags first
+        ascending = lambda x: '000' if x.lower() == 'tags' else x.lower()
+        sorted_keys = sorted(day.content.keys(), key=ascending)
+        
+        for key in sorted_keys:
+            value = day.content[key]
             if not key == 'text':
                 self.add_element(None, {key: value})
         self.tree_view.expand_all()
