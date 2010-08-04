@@ -78,6 +78,7 @@ class CategoriesTreeView(object):
         self.context_menu = self._get_context_menu()
         
         self.tree_view.connect('button-press-event', self.on_button_press_event)
+        self.tree_view.connect('key-press-event', self.on_key_press_event)
         
         # Wrap lines
         self.cell.props.wrap_mode = pango.WRAP_WORD
@@ -389,6 +390,16 @@ class CategoriesTreeView(object):
                 self.delete_node(selected_iter)
                 
                 
+    def on_key_press_event(self, widget, event):
+        """
+        @param widget - gtk.TreeView - The Tree View
+        @param event - gtk.gdk.event - Event information
+        
+        Delete an annotation node when user hits "Delete"
+        """
+        delete_key = gtk.gdk.keyval_from_name('Delete')
+        if event.keyval == delete_key:
+            self._on_delete_entry_clicked(None)
                 
                 
     def on_button_press_event(self, widget, event):
@@ -415,6 +426,7 @@ class CategoriesTreeView(object):
         if (event.button == 3):
             #This is a right-click
             self.context_menu.popup(None, None, None, event.button, event.time)
+            
             
     def _get_context_menu(self):
         context_menu_xml = '''
@@ -481,6 +493,7 @@ class CategoriesTreeView(object):
             parent_iter = self.tree_store.iter_parent(iter)
             category = self.get_iter_value(parent_iter)
             dialog.show_dialog(category=category)
+            
             
     def _on_delete_entry_clicked(self, action):
         self.delete_selected_node()
