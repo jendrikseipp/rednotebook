@@ -76,6 +76,7 @@ class CategoriesTreeView(object):
         
         # Enable a context menu
         self.context_menu = self._get_context_menu()
+        self.context_menu.attach_to_widget(self.tree_view, lambda x,y:None)
         
         self.tree_view.connect('button-press-event', self.on_button_press_event)
         self.tree_view.connect('key-press-event', self.on_key_press_event)
@@ -397,9 +398,15 @@ class CategoriesTreeView(object):
         
         Delete an annotation node when user hits "Delete"
         """
-        delete_key = gtk.gdk.keyval_from_name('Delete')
-        if event.keyval == delete_key:
+        keyname = gtk.gdk.keyval_name(event.keyval)
+        logging.info('Pressed key: %s' % keyname)
+        
+        if keyname == 'Delete':
             self._on_delete_entry_clicked(None)
+        elif keyname == 'Menu':
+            # Does not work
+            logging.info('Context Menu does not work')
+            self.context_menu.popup(None, None, None, 0, event.time)
                 
                 
     def on_button_press_event(self, widget, event):
@@ -426,7 +433,7 @@ class CategoriesTreeView(object):
         if (event.button == 3):
             #This is a right-click
             self.context_menu.popup(None, None, None, event.button, event.time)
-            
+                        
             
     def _get_context_menu(self):
         context_menu_xml = '''
