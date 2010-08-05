@@ -1011,6 +1011,7 @@ class MainWindow(object):
         self.day_text_field.highlight(search_text)
             
 
+
 class NewEntryDialog(object):
     def __init__(self, main_frame):
         dialog = main_frame.builder.get_object('new_entry_dialog')
@@ -1365,7 +1366,12 @@ class SearchTreeView(object):
             
         if rows:
             for date_string, entry in rows:
-                entry = markup.convert_to_pango(entry)
+                if self.search_type == 1:
+                    # We want **done** to be bold in the list,
+                    # but the text should only be bold where the search text occurs
+                    entry = markup.convert_to_pango(entry)
+                else:
+                    entry = entry.replace('&', '&amp;')
                 self.tree_store.append([date_string, entry])
                 
                 

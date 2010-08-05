@@ -189,7 +189,7 @@ class Day(object):
                 
             if found_text:
                 # Make the searched_text bold
-                res = res.replace(found_text, '**%s**' % found_text)
+                res = res.replace(found_text, '<b>%s</b>' % found_text)
                 
             return res
             
