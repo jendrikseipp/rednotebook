@@ -17,6 +17,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+from __future__ import division
+
 import datetime
 import logging
 
@@ -159,10 +161,10 @@ class Day(object):
             The bound1 text and the bound2 found_text bound3 with more bound4 text
             '''
             text = self.text
-            bound1 = max(0, start - self.search_result_length/2)
+            bound1 = max(0, start - int(self.search_result_length//2))
             bound2 = start
             bound3 = end
-            bound4 = min(len(text), end + self.search_result_length/2)
+            bound4 = min(len(text), end + int(self.search_result_length//2))
             
             if bound1 == 0:
                 start = 0
@@ -187,13 +189,13 @@ class Day(object):
                 
             if found_text:
                 # Make the searched_text bold
-                res = res.replace(found_text, '<b>' + found_text + '</b>')
+                res = res.replace(found_text, '**%s**' % found_text)
                 
             return res
             
         # Search in date
         if search_text in str(self):
-            return (str(self), get_text_with_dots(0, self.search_result_length/2))
+            return (str(self), get_text_with_dots(0, int(self.search_result_length//2)))
         
         # Search in text
         upcase_search_text = search_text.upper()
@@ -211,7 +213,7 @@ class Day(object):
         
     def search_category(self, search_category):
         results = []
-        for category, content in self.get_category_content_pairs().iteritems():
+        for category, content in self.get_category_content_pairs().items():
             if content:
                 if search_category.upper() in category.upper():
                     for entry in content:
@@ -220,7 +222,7 @@ class Day(object):
     
     
     def search_tag(self, search_tag):
-        for category, content_list in self.get_category_content_pairs().iteritems():
+        for category, content_list in self.get_category_content_pairs().items():
             if category.upper() == 'TAGS' and content_list:
                 if search_tag.upper() in map(lambda x: x.upper(), content_list):
                     first_whitespace = self.text.find(' ', self.search_result_length)
