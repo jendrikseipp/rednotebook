@@ -1036,7 +1036,7 @@ class NewEntryDialog(object):
         '''Show Tags in ComboBox when "Tags" is selected as category'''
         if self.categories_combo_box.get_active_text().upper() == 'TAGS':
             self.new_entry_combo_box.set_entries(self.journal.tags)
-        elif: self.new_entry_combo_box.liststore:
+        elif self.new_entry_combo_box.liststore:
             self.new_entry_combo_box.liststore.clear()
             
         # only make the entry submittable, if text has been entered

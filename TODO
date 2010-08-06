@@ -24,7 +24,7 @@ X Sort categories (LP:612859)
 X After clicking "Change the text" on an annotation, directly edit it (LP:612861)
 X Journal -> _Journal in menu
 X Let user delete category with 'DELETE' (LP:608717)
-O Get rid of python3.0 warnings
+X Fix: Do not clear entry when category is changed in new-entry dialog
 
 1.1.x
 O Use Zeitgeist for automatic category entries
@@ -56,6 +56,7 @@ O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mon
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
 O Set title for exports
+O Get rid of python3.0 warnings
 
 
   
