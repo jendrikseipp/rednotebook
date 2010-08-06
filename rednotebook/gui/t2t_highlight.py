@@ -315,8 +315,8 @@ title_patterns = []
 title_style = [(1, 'grey'), (3, 'grey'), (4, 'grey')]
 titskel = r'^ *(%s)(%s)(\1)(\[[\w-]*\])?\s*$'
 for level in range(1, 6):
-    title_pattern    = titskel % ('[=]{%s}'%(6-level),'[^=]|[^=].*[^=]')
-    numtitle_pattern = titskel % ('[+]{%s}'%(6-level),'[^+]|[^+].*[^+]')
+    title_pattern    = titskel % ('[=]{%s}'%(level),'[^=]|[^=].*[^=]')
+    numtitle_pattern = titskel % ('[+]{%s}'%(level),'[^+]|[^+].*[^+]')
     style_name = 'title%s' % level
     title = Pattern(title_pattern, title_style + [(2, style_name)])
     numtitle = Pattern(numtitle_pattern, title_style + [(2, style_name)])
@@ -384,8 +384,7 @@ if __name__ == '__main__':
 text [link 1 ""http://en.wikipedia.org/wiki/Personal_wiki#Free_software""] another text [link2 ""http://digitaldump.wordpress.com/projects/rednotebook/""] end
 
 pic [""/home/user/Desktop/RedNotebook pic"".png] pic [""/home/user/Desktop/RedNotebook pic"".png]
-"""
-    """== Main==[oho] 
+== Main==[oho] 
 = Header1 =
 == Header2 ==
 === Header3 ===
