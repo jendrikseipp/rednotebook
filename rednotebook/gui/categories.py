@@ -167,8 +167,13 @@ class CategoriesTreeView(object):
 
     
     def add_element(self, parent, element_content):
-        '''Recursive Method for adding the content'''
-        for key, value in element_content.iteritems():
+        '''
+        Recursive Method for adding the content
+        '''
+        # We want to order the entries ascendingly
+        ascending = lambda (key, value): key.lower()
+        
+        for key, value in sorted(element_content.iteritems(), key=ascending):
             if key is not None:
                 key_pango = markup.convert_to_pango(key)
             new_child = self.tree_store.append(parent, [key_pango])
