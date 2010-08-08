@@ -57,6 +57,7 @@ O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
 O Set title for exports
 O Get rid of python3.0 warnings
+O Remove support for the notification area (http://design.canonical.com/2010/04/notification-area/)
 
 
   
