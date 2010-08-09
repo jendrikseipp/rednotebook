@@ -37,7 +37,7 @@ from rednotebook.util import filesystem
 from rednotebook.util import dates
 from rednotebook.util import utils
 
-use_mathjax = True
+use_mathjax = False
 
 mathjax_header = '''\
 <script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/mathjax/MathJax.js">
@@ -246,6 +246,7 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
         result = txt2tags.getUnknownErrorMessage()
         logging.error(result)
     
+    print result
     return result
 
 def convert_to_pango(txt, headers=None, options=None):
