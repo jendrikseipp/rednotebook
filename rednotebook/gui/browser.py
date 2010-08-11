@@ -47,7 +47,6 @@ def windows_webkit_import():
     
     if filesystem.main_is_frozen():
         gtk_bin_dir = filesystem.app_dir
-        print gtk_bin_dir
     else:
         gtk_bin_dir = r'C:\GTK\bin'
         

@@ -295,8 +295,8 @@ class OptionsManager(object):
                 _('This is included in the python-gtkspell or python-gnome2-extras package')
         spell_check_option = TickOption(_('Check Spelling'), 'spellcheck',
                 tooltip=tooltip)
-        #if not sys.platform == 'win32':
-        self.options.append(spell_check_option)
+        if not sys.platform == 'win32':
+            self.options.append(spell_check_option)
         spell_check_option.set_sensitive(able_to_spell_check)
         
         #webkit_available = bool(browser.webkit)

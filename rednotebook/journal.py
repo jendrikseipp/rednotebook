@@ -140,6 +140,11 @@ setup_logging(dirs.log_file)
 
 ## ---------------------- Enable i18n -------------------------------
 
+# We need to translate 3 different types of strings:
+# * sourcecode strings
+# * gtkbuilder strings
+# * gtk stock names
+
 # set the locale for all categories to the user’s default setting 
 # (typically specified in the LANG environment variable)
 import locale
@@ -149,7 +154,7 @@ default_locale = locale.getdefaultlocale()[0]
 logging.debug('Default locale: %s' % default_locale)
 try:
     locale.setlocale(locale.LC_ALL, '')
-    logging.debug('Set default locale: "%s"' % default_locale)
+    logging.info('Set default locale: "%s"' % default_locale)
 except locale.Error, err:
     # unsupported locale setting
     logging.error('Locale "%s" could not be set: "%s"' % (default_locale, err))
@@ -160,7 +165,8 @@ except locale.Error, err:
 # This is necessary only for windows where program strings are not
 # shown in the system language, but in English
 if default_locale and not lang:
-    logging.debug('Setting LANG to %s' % default_locale)
+    logging.info('Setting LANG to %s' % default_locale)
+    # sourcecode strings
     os.environ['LANG'] = default_locale
     
 LOCALE_PATH = os.path.join(dirs.app_dir, 'i18n')
@@ -181,8 +187,9 @@ modules = [gettext, locale]
 try:
     import gtk.glade
     modules.append(gtk.glade)
+    logging.info('Module glade found')
 except ImportError, err:
-    pass
+    logging.info('Module glade not found')
 
 for module in modules:
     try:

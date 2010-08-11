@@ -152,8 +152,11 @@ class MainWindow(object):
         preview_button.realize()
         width_edit = get_button_width(preview_button, _('Edit'))
         width_preview = get_button_width(preview_button, _('Preview'))
-        preview_button.set_size_request(max([width_edit, width_preview]), -1)
-        
+        width = max([width_edit, width_preview])
+        if sys.platform == 'win32':
+            # Calculation does not work on windows
+            width += 30
+        preview_button.set_size_request(width, -1)
         
         self.load_values_from_config()
         
