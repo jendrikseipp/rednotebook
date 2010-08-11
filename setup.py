@@ -260,6 +260,8 @@ if 'py2exe' in sys.argv:
                                     ('images/rednotebook-icon', \
                                         glob(join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),
                                     ('.', [r'C:\GTK\bin\libintl-8.dll']),
+                                    # Bundle the visual studio files
+                                    ("Microsoft.VC90.CRT", ['win/Microsoft.VC90.CRT.manifest', 'win/msvcr90.dll']),
                                     ])
     parameters.update(py2exeParameters)
 #from pprint import pprint

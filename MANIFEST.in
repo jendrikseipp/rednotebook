@@ -14,3 +14,5 @@ include LICENSE
 include MANIFEST.in
 include rednotebook.desktop
 include rednotebook.png
+include win/*.manifest
+include win/*.dll
