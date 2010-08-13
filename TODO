@@ -11,8 +11,19 @@ implementation if you tell me that you'd like its addition ;)
 Bugfixes only
 
 1.1.1
+X Sort categories (LP:612859)
+X After clicking "Change the text" on an annotation, directly edit it (LP:612861)
+X Journal -> _Journal in menu
+X Let user delete category with 'DELETE' (LP:608717)
+X Fix: Do not clear entry when category is changed in new-entry dialog
+X Windows: Shrink installer size
+O Windows: Enable spellcheck
+X Windows: Update gtk libs
+
+1.1.2
 O Show warning if last backup dates to more than one month before
-O Search for multiple words at the same time
+O Highlight all found occurences of the searched word
+O Rethink logfile
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
@@ -20,11 +31,7 @@ X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsecti
 O Document structured headers
 X Highlight ``, "", ''
 O Write documentation about ``, "", ''
-X Sort categories (LP:612859)
-X After clicking "Change the text" on an annotation, directly edit it (LP:612861)
-X Journal -> _Journal in menu
-X Let user delete category with 'DELETE' (LP:608717)
-X Fix: Do not clear entry when category is changed in new-entry dialog
+
 
 1.1.x
 O Use Zeitgeist for automatic category entries
@@ -126,3 +133,4 @@ O Change an entry's category (Useful for Todo items) (KISS?)
 - List recently opened journals under "Journal" -> "Recently Used" (KISS, config option needed)
 - Drag and Drop for Windows (gtk inter application dnd isn't implemented on win32)
 - Use configobj for config files (KISS, Never change A running system ;)
+- Search for multiple words at the same time (KISS)
