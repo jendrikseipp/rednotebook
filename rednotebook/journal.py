@@ -189,7 +189,7 @@ try:
     modules.append(gtk.glade)
     logging.info('Module glade found')
 except ImportError, err:
-    logging.info('Module glade not found')
+    logging.info('Module glade not found: %s' % err)
 
 for module in modules:
     try:

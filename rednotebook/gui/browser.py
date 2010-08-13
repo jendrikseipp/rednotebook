@@ -48,7 +48,7 @@ def windows_webkit_import():
     if filesystem.main_is_frozen():
         gtk_bin_dir = filesystem.app_dir
     else:
-        gtk_bin_dir = r'C:\GTK\bin'
+        gtk_bin_dir = r'C:\GTK'
         
     try:
         # It seems the dlls are only found if we are in the bin dir
@@ -64,7 +64,7 @@ def windows_webkit_import():
         logging.info('webkit not found. For a nicer preview install python-webkit or pywebkitgtk')
     os.chdir(cwd)
 
-if sys.platform == 'win32':
+if False and sys.platform == 'win32':
     windows_webkit_import()
 else:
     try:
