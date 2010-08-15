@@ -105,7 +105,7 @@ a img {
 #wrapper {
   
   overflow: hidden;
-  padding-bottom: 110px;  /* must be same height as the footer */
+  padding-bottom: 120px;  /* must be same height as the footer */
 
   background-image: url('../images/body-decoration.png');
   background-position: right top;
@@ -218,8 +218,8 @@ a img {
 
 #footer {
   position: relative;
-  margin-top: -82px; /* negative value of footer height */
-  height: 82px;
+  margin-top: -92px; /* negative value of footer height */
+  height: 92px;
   clear:both;
   background-color: #454545;
   color: white;
@@ -455,4 +455,60 @@ pre {
   margin-left: 2em;
   padding-left: 1em;
   border-left: 3px solid #be1400;
+}
+
+
+/* DOWNLOAD PAGE */
+
+div#distros {
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1em;
+    clear: both;
+}
+
+/* Distro Button */
+
+div#distros div.button {
+    display: block;
+    float: left;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-align: center;
+    padding: 3px 10px 3px 20px;
+    margin: 0 .5em 0 0;
+}
+
+div#distros div.button:hover,
+div#distros div.button.chosen {
+    border: 1px solid #be1400;/*#afec74;*/
+    background: #fff url("../images/download-button-bg.png") no-repeat;
+}
+
+div#distros div.button h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 0.75em;
+}
+
+div#distros div.button div.details {
+    display: none;
+}
+
+/* Details Box */
+
+#distro-details {
+    margin: 0 2.5em 3em 2.5em;
+    display: none;
+}
+
+#distro-details ul {
+    margin: 0 0 0 1em;
+    padding: 0;
+}
+
+h3.download {
+    clear: both;
+    padding-top: 20px;
 }
