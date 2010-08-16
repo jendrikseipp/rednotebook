@@ -344,7 +344,7 @@ class Assistant(gtk.Assistant):
         
         self.journal = journal
         
-        self.set_size_request(1000, 700)
+        self.set_size_request(1000, 500)
         
         self.connect('cancel', self._on_cancel)
         self.connect('close', self._on_close)
