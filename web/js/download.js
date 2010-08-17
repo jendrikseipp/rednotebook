@@ -10,8 +10,8 @@ function detect_os (ua_fragment, output_os)
     }
 }
 
-detect_os ("Win", "Win");
 detect_os ("Intel Mac OS X", "OSX");
+detect_os ("Win", "Win");
 detect_os ("openSUSE", "openSUSE");
 detect_os ("SUSE", "openSUSE");
 detect_os ("SLED", "SLED");
@@ -45,7 +45,7 @@ function show_distro_details (button)
     });
     
     $('distro-details').innerHTML = content;
-    header = "Install on" + ' ' + title;
+    header = "Install on " + title;
     if (title == "Source") {
         header = "Install from Source";
     }
