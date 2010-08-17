@@ -20,6 +20,10 @@ about = {
 downloads = {
     'title': 'Downloads | RedNotebook',
     'filename': 'downloads.html',
+    'scripts': '''\
+<script type="text/javascript" src="js/prototype.js"></script>
+  <script type="text/javascript" src="js/download.js"></script>
+'''
 }
 
 screenshots = {
@@ -44,5 +48,10 @@ for page in pages:
         page['content'] = file.read()
     html = template.replace('***TITLE***', page['title'])
     html = html.replace('***CONTENT***', page['content'])
+    if 'scripts' in page:
+        scripts = page['scripts']
+    else:
+        scripts = ''
+    html = html.replace('***SCRIPTS***', scripts)
     with open(os.path.join(dest, filename), 'w') as file:
         file.write(html)

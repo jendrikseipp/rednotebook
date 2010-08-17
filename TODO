@@ -17,8 +17,9 @@ X Fix: After clicking "Change the text" on an annotation, directly edit it (LP:6
 X Fix: Journal -> _Journal in menu
 X Fix: Do not clear entry when category is changed in new-entry dialog
 X Windows: Shrink installer size
-O Windows: Enable spellcheck
 X Windows: Update gtk libs
+X Windows: New theme
+X Windows: New icons
 
 1.1.2
 O Show warning if last backup dates to more than one month before
@@ -31,6 +32,8 @@ X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsecti
 O Document structured headers
 X Highlight ``, "", ''
 O Write documentation about ``, "", ''
+O Translate help
+O Windows: Enable spellcheck
 
 
 1.1.x
@@ -65,6 +68,7 @@ O Consider using apport
 O Set title for exports
 O Get rid of python3.0 warnings
 O Remove support for the notification area (http://design.canonical.com/2010/04/notification-area/)
+O Recurring events
 
 
   
