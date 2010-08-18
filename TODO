@@ -22,6 +22,7 @@ X Windows: New theme
 X Windows: New icons
 
 1.1.2
+O Download the latest version from the server without the need using the repos
 O Show warning if last backup dates to more than one month before
 O Highlight all found occurences of the searched word
 O Rethink logfile
@@ -102,6 +103,7 @@ O Picture slide show in one entry with many images (in preview show nice
 O HTML import?
 O Include startup date patch?
 O Change an entry's category (Useful for Todo items) (KISS?)
+O Ability to make certain entries, eg. birthdays, with frequencies
   
 
 
