@@ -16,6 +16,7 @@ X Sort categories alphabetically (LP:612859)
 X Fix: After clicking "Change the text" on an annotation, directly edit it (LP:612861)
 X Fix: Journal -> _Journal in menu
 X Fix: Do not clear entry when category is changed in new-entry dialog
+X Fix: restore left divider position
 X Windows: Shrink installer size
 X Windows: Update gtk libs
 X Windows: New theme
