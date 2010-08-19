@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-08-15 23:20+0000\n"
+"PO-Revision-Date: 2010-08-18 16:28+0000\n"
 "Last-Translator: Børge Johannessen <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-16 06:47+0000\n"
+"X-Launchpad-Export-Date: 2010-08-19 03:50+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -27,11 +27,11 @@ msgstr "Eksporter bare dager i avmerket tidsrom"
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
-msgstr ""
+msgstr "Fra:"
 
 #: ../rednotebook/gui/exports.py:61
 msgid "To:"
-msgstr ""
+msgstr "Til:"
 
 #: ../rednotebook/gui/exports.py:120
 msgid "Export texts"
@@ -43,11 +43,11 @@ msgstr "Eksporter alle kategorier"
 
 #: ../rednotebook/gui/exports.py:122
 msgid "Do not export categories"
-msgstr ""
+msgstr "Ikke eksporter kategorier"
 
 #: ../rednotebook/gui/exports.py:124
 msgid "Export only the selected categories"
-msgstr ""
+msgstr "Kun eksporter valgte kategorier"
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Available Categories"
@@ -94,6 +94,7 @@ msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"Du kan velge dager du ønsker å eksportere og hvor resultatet vil bli lagret."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "Select Export Format"
@@ -113,7 +114,7 @@ msgstr "Velg Eksport Sti"
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
-msgstr ""
+msgstr "Sammendrag"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/exports.py:381 ../rednotebook/gui/main_window.py:721
@@ -122,7 +123,7 @@ msgstr "Format"
 
 #: ../rednotebook/gui/exports.py:385
 msgid "Start date"
-msgstr ""
+msgstr "Oppstartsdato"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "End date"
@@ -151,7 +152,7 @@ msgstr "Nei"
 #: ../rednotebook/gui/exports.py:443
 #, python-format
 msgid "Content exported to %s"
-msgstr ""
+msgstr "Innholdet er eksportert til %s"
 
 #: ../rednotebook/gui/exports.py:445
 #, python-format
@@ -160,7 +161,7 @@ msgstr "Eksportering til %s feilet"
 
 #: ../rednotebook/gui/exports.py:542
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "krever pywebkitgtk"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/main_window.py:1187
 msgid "filter, these, comma, separated, words"
@@ -174,11 +175,11 @@ msgstr "mtv, spam, arbeid, jobb, lek"
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Gjem \"%s\" fra skyer"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr ""
+msgstr "Presentasjon"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -205,7 +206,7 @@ msgstr "Hjelp"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr ""
+msgstr "Forhåndsvisning:"
 
 #: ../rednotebook/gui/options.py:289
 msgid "Close to system tray"
@@ -227,6 +228,7 @@ msgstr "Avhengig av gtkspell"
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
 msgstr ""
+"Dette er inkludert i python-gtkspell eller python-gnome2-extras programpakke"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Check Spelling"
@@ -266,7 +268,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:91
 msgid "_Journal"
-msgstr ""
+msgstr "_Logg"
 
 #: ../rednotebook/gui/menu.py:93
 msgid "Create a new journal. The old one will be saved"
@@ -280,11 +282,12 @@ msgstr "Last inn en eksisterende dagbok. Den gamle dagboken vil bli lagret"
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"Lagre logg på en ny adresse. De gamle loggfilene vil også bli lagret."
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:104
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: ../rednotebook/gui/menu.py:105
 msgid "Open the import assistant"
@@ -314,7 +317,7 @@ msgstr "Statistikk"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "Vis statistikk fra logg"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -322,7 +325,7 @@ msgstr "Avslutt RedNotebook. Den vil ikke bli sendt til systemkurven."
 
 #: ../rednotebook/gui/menu.py:118
 msgid "_Edit"
-msgstr ""
+msgstr "_Rediger"
 
 #: ../rednotebook/gui/menu.py:120
 msgid "Undo text edits or category entry deletions"
@@ -338,11 +341,11 @@ msgstr "Hjelp"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "Contents"
-msgstr ""
+msgstr "Innhold"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Åpne dokumentasjonen til RedNotebook"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Get Help Online"
@@ -350,7 +353,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Visit the RedNotebook forum"
-msgstr ""
+msgstr "Besøk forumet til RedNotebook"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Restore example content"
@@ -363,19 +366,20 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:144
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Oversette RedNotebook"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
+"Gå til Launchpad side på Internett og hjelp til med å oversette RedNotebook"
 
 #: ../rednotebook/gui/menu.py:147
 msgid "Report a Problem"
-msgstr ""
+msgstr "Rapporter et problem"
 
 #: ../rednotebook/gui/menu.py:148
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "Gi en kort beskrivelse av problemet"
 
 #: ../rednotebook/gui/menu.py:257 ../rednotebook/info.py:660
 msgid "RedNotebook Documentation"
@@ -484,7 +488,7 @@ msgstr "Understreking"
 
 #: ../rednotebook/gui/main_window.py:705
 msgid "Strikethrough"
-msgstr ""
+msgstr "Gjennomstreket"
 
 #: ../rednotebook/gui/main_window.py:722
 msgid "Format the selected text or category entry"
@@ -541,7 +545,7 @@ msgstr "Punktliste"
 
 #: ../rednotebook/gui/main_window.py:815
 msgid "Numbered List"
-msgstr ""
+msgstr "Nummerert liste"
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Title"
@@ -557,7 +561,7 @@ msgstr "Sett inn en skillelinje"
 
 #: ../rednotebook/gui/main_window.py:824
 msgid "Table"
-msgstr ""
+msgstr "Tabell"
 
 #: ../rednotebook/gui/main_window.py:826
 msgid "Date/Time"
@@ -611,7 +615,7 @@ msgstr "Oppføring"
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
-msgstr ""
+msgstr "Velg malnavn"
 
 #: ../rednotebook/templates.py:283 ../rednotebook/templates.py:292
 msgid "This Weekday's Template"
@@ -631,17 +635,17 @@ msgstr "Lag en ny mal"
 
 #: ../rednotebook/templates.py:298
 msgid "Open Template Directory"
-msgstr ""
+msgstr "Åpne malmappen"
 
 #: ../rednotebook/util/utils.py:247
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "Du bruker versjon <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:248
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "Siste versjon er <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:249
 msgid "Do you want to visit the RedNotebook homepage?"

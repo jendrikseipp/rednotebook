@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-07-17 11:27+0000\n"
-"Last-Translator: Nivelir <Unknown>\n"
+"PO-Revision-Date: 2010-08-18 15:52+0000\n"
+"Last-Translator: Roman Oleskevich <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:14+0000\n"
+"X-Launchpad-Export-Date: 2010-08-19 03:50+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -266,7 +266,7 @@ msgstr "Дозволити ці слова з 4 літер або менше у 
 
 #: ../rednotebook/gui/menu.py:91
 msgid "_Journal"
-msgstr ""
+msgstr "Журнал"
 
 #: ../rednotebook/gui/menu.py:93
 msgid "Create a new journal. The old one will be saved"
@@ -1003,4 +1003,5 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Andriy Tsykholyas https://launchpad.net/~andriy-tsykholyas\n"
 "  Nivelir https://launchpad.net/~z32-list\n"
+"  Roman Oleskevich https://launchpad.net/~oleskevich\n"
 "  Сергій Матрунчик (SkyMan) https://launchpad.net/~skymanphp"
