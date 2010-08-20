@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-08-18 16:28+0000\n"
+"PO-Revision-Date: 2010-08-19 11:58+0000\n"
 "Last-Translator: Børge Johannessen <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-19 03:50+0000\n"
+"X-Launchpad-Export-Date: 2010-08-20 03:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -73,36 +73,37 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:277
 msgid "You have selected the following settings:"
-msgstr "Du har valgt følgende instillinger"
+msgstr "Du har valgt følgende innstillinger"
 
 #: ../rednotebook/gui/exports.py:302
 msgid "Export Assistant"
-msgstr "Eksport Assistent"
+msgstr "Eksportassistent"
 
 #: ../rednotebook/gui/exports.py:304
 msgid "Welcome to the Export Assistant."
-msgstr "Velkommen til Eksport Assistenten"
+msgstr "Velkommen til Eksportassistenten"
 
 #: ../rednotebook/gui/exports.py:305
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
 "Denne guiden vil hjelpe deg å eksportere dine journaler til forskjellige "
-"formateringer."
+"formler."
 
 #: ../rednotebook/gui/exports.py:306
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
-"Du kan velge dager du ønsker å eksportere og hvor resultatet vil bli lagret."
+"Du kan velge hvilke dager du ønsker å eksportere og hvor resultatet vil bli "
+"lagret."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "Select Export Format"
-msgstr "Velg Eksport Formatering"
+msgstr "Velg Eksportformel"
 
 #: ../rednotebook/gui/exports.py:321
 msgid "Select Date Range"
-msgstr "Velg Dato Tidsrom"
+msgstr "Velg dagsrom"
 
 #: ../rednotebook/gui/exports.py:326
 msgid "Select Contents"
@@ -110,7 +111,7 @@ msgstr "Velg Emne"
 
 #: ../rednotebook/gui/exports.py:332
 msgid "Select Export Path"
-msgstr "Velg Eksport Sti"
+msgstr "Velg eksportsti"
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
@@ -119,7 +120,7 @@ msgstr "Sammendrag"
 #. ## Translators: noun
 #: ../rednotebook/gui/exports.py:381 ../rednotebook/gui/main_window.py:721
 msgid "Format"
-msgstr "Format"
+msgstr "Formel"
 
 #: ../rednotebook/gui/exports.py:385
 msgid "Start date"
@@ -131,7 +132,7 @@ msgstr "Sluttdato"
 
 #: ../rednotebook/gui/exports.py:388
 msgid "Export text"
-msgstr "Eksport tekst"
+msgstr "Teksteksport"
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Selected categories"
@@ -139,7 +140,7 @@ msgstr "Valgte kategorier"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Export path"
-msgstr "Eksport sti"
+msgstr "Eksportsti"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Yes"
@@ -183,7 +184,7 @@ msgstr "Presentasjon"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr "last inn RedNotebook ved oppstart"
+msgstr "Last inn RedNotebook ved oppstart"
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
@@ -214,7 +215,7 @@ msgstr "lukk til systemkurv"
 
 #: ../rednotebook/gui/options.py:290
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Lukke vinduet vil sende RedNotebook til systemkurven"
+msgstr "Lukking av vinduet vil sende RedNotebook til systemkurven"
 
 #: ../rednotebook/gui/options.py:293
 msgid "Underline misspelled words"
@@ -232,19 +233,19 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:296
 msgid "Check Spelling"
-msgstr "Sjekk staving"
+msgstr "Stavekontroll"
 
 #: ../rednotebook/gui/options.py:315
 msgid "Check for new version at startup"
-msgstr "Se etter nyere versjon ved oppstart"
+msgstr "Se etter ny versjon ved oppstart"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Check now"
-msgstr ""
+msgstr "Sjekk nå"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Font Size"
-msgstr "Font størrelse"
+msgstr "Skriftstørrelse"
 
 #: ../rednotebook/gui/options.py:329
 msgid "Date/Time format"
@@ -252,23 +253,23 @@ msgstr "Dato/Tid format"
 
 #: ../rednotebook/gui/options.py:330
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "Ekskluder fra skyer"
 
 #: ../rednotebook/gui/options.py:331
 msgid "Do not show those comma separated words in any cloud"
-msgstr ""
+msgstr "Ikke vis de komma-separerte ordene i noen skyer"
 
 #: ../rednotebook/gui/options.py:332
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "Tillat småord i skyer"
 
 #: ../rednotebook/gui/options.py:333
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
+msgstr "Tillat ord med 4 bokstaver eller mindre i tekstskyen"
 
 #: ../rednotebook/gui/menu.py:91
 msgid "_Journal"
-msgstr "_Logg"
+msgstr "_Dagbok"
 
 #: ../rednotebook/gui/menu.py:93
 msgid "Create a new journal. The old one will be saved"
@@ -282,7 +283,7 @@ msgstr "Last inn en eksisterende dagbok. Den gamle dagboken vil bli lagret"
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
-"Lagre logg på en ny adresse. De gamle loggfilene vil også bli lagret."
+"Lagre dagboken på en ny adresse. Den gamle dagboken vil også bli lagret."
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:104
@@ -291,7 +292,7 @@ msgstr "Importer"
 
 #: ../rednotebook/gui/menu.py:105
 msgid "Open the import assistant"
-msgstr ""
+msgstr "Åpne import-veiledningshjelp"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:107
@@ -300,7 +301,7 @@ msgstr "Eksporter"
 
 #: ../rednotebook/gui/menu.py:108
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Åpne eksport-veiledningshjelp"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:110
@@ -309,7 +310,7 @@ msgstr "Sikkerhetskopi"
 
 #: ../rednotebook/gui/menu.py:111
 msgid "Save all the data in a zip archive"
-msgstr "Lagre all dataen til et ZIP arkiv."
+msgstr "Lagre all data til et ZIP arkiv."
 
 #: ../rednotebook/gui/menu.py:112 tmp/main_window.glade.h:36
 msgid "Statistics"
@@ -317,7 +318,7 @@ msgstr "Statistikk"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Show some statistics about the journal"
-msgstr "Vis statistikk fra logg"
+msgstr "Vis noen statistikker fra dagboken"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -337,7 +338,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:134
 msgid "_Help"
-msgstr "Hjelp"
+msgstr "_Hjelp"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "Contents"
@@ -349,7 +350,7 @@ msgstr "Åpne dokumentasjonen til RedNotebook"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Get Help Online"
-msgstr ""
+msgstr "Få hjelp via Internett"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Visit the RedNotebook forum"
@@ -357,12 +358,12 @@ msgstr "Besøk forumet til RedNotebook"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Restore example content"
-msgstr "Gjenopprett eksempel notatene"
+msgstr "Gjenopprett eksempel-notater"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Fill some free days with example content. Do not overwrite anything"
 msgstr ""
-"Fyller inn eksempel notatene i ubrukte dager. Ingenting vil bli overskrivet."
+"Fyller inn eksempel-notater på ubrukte dager. Ingenting vil bli overskrevet."
 
 #: ../rednotebook/gui/menu.py:144
 msgid "Translate RedNotebook"
@@ -387,7 +388,7 @@ msgstr "RedNotebook Dokumentasjon"
 
 #: ../rednotebook/gui/menu.py:279
 msgid "A Desktop Journal"
-msgstr "En skriveborddagbok"
+msgstr "En skrivebordsdagbok"
 
 #: ../rednotebook/gui/categories.py:49 tmp/main_window.glade.h:10
 msgid "Categories"
@@ -458,16 +459,16 @@ msgstr "Mappen må innholde de eksisterende filene for din dagbok."
 
 #: ../rednotebook/gui/main_window.py:530
 msgid "Select an empty folder for the new location of your journal"
-msgstr ""
+msgstr "Velg en ny mappe til din dagbok. Mappen må være tom."
 
 #: ../rednotebook/gui/main_window.py:532
 msgid "The directory name will be the new title of the journal"
-msgstr "Mappens navn blir den nye tiltelen på din dagbok."
+msgstr "Mappens navn blir den nye tilttelen på din dagbok."
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
 #: ../rednotebook/gui/main_window.py:554
 msgid "The default journal has been opened"
-msgstr "Standard dagboken ble åpnet"
+msgstr "Standard-dagboken ble åpnet"
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:699
@@ -619,7 +620,7 @@ msgstr "Velg malnavn"
 
 #: ../rednotebook/templates.py:283 ../rednotebook/templates.py:292
 msgid "This Weekday's Template"
-msgstr "Denne ukedagens mal"
+msgstr "Aktuelle ukedagsmal"
 
 #: ../rednotebook/templates.py:286
 msgid "Edit Template"
@@ -631,11 +632,11 @@ msgstr "sett inn mal"
 
 #: ../rednotebook/templates.py:295
 msgid "Create New Template"
-msgstr "Lag en ny mal"
+msgstr "Lag ny mal"
 
 #: ../rednotebook/templates.py:298
 msgid "Open Template Directory"
-msgstr "Åpne malmappen"
+msgstr "Åpne malmappe"
 
 #: ../rednotebook/util/utils.py:247
 #, python-format
@@ -649,7 +650,7 @@ msgstr "Siste versjon er <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:249
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "Ønsker du å besøke RedNotebook's hjemmeside?"
 
 #: ../rednotebook/util/utils.py:256
 msgid "Do not ask again"
@@ -674,7 +675,7 @@ msgstr "bokstaver"
 
 #: ../rednotebook/util/statistics.py:93
 msgid "Days between first and last Entry"
-msgstr ""
+msgstr "Dager mellom første og siste oppføring"
 
 #: ../rednotebook/util/statistics.py:94
 msgid "Average number of Words"
@@ -703,17 +704,19 @@ msgstr ""
 
 #: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "Den valgte mappen er ikke tom"
 
 #: ../rednotebook/journal.py:425
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
+"For å forhindre du skriver over data, vil innholdet i mappen bli importert "
+"til en ny dagbok."
 
 #: ../rednotebook/journal.py:428
 msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
+msgstr "Den valgte mappen er tom. En ny dagbok har blitt opprettet."
 
 #: ../rednotebook/info.py:79
 msgid ""
@@ -721,37 +724,40 @@ msgid ""
 "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
 "try."
 msgstr ""
+"Hallo,\n"
+"dette er RedNotebook, en skrivebordsdagbok. Tusen takk for du er villig å "
+"prøve den."
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "Grensesnittet har blitt delt i tre deler:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:83
 msgid "Left"
-msgstr ""
+msgstr "Venstre"
 
 #: ../rednotebook/info.py:84
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "Navigasjon med kalenderen"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:86
 msgid "Center"
-msgstr ""
+msgstr "Senter"
 
 #: ../rednotebook/info.py:87
 msgid "Text for a day"
-msgstr ""
+msgstr "Dagstekster"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:89
 msgid "Right"
-msgstr ""
+msgstr "Høyre"
 
 #: ../rednotebook/info.py:90
 msgid "Annotations to a day"
-msgstr ""
+msgstr "Dagskommentarer"
 
 #: ../rednotebook/info.py:92
 msgid "Text entries"
@@ -767,78 +773,90 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"I dag gikk jeg til //dyrebutikken// og kjøpte en **tiger**. Også gikk vi til "
+"--basseng-- parken og hadde det hyggelig mens vi spilte med den ultimate "
+"frisbee. Etterpå så vi \"__Life of Brian__\"."
 
 #: ../rednotebook/info.py:98
 msgid "Annotations"
-msgstr ""
+msgstr "Kommentarer"
 
 #: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
-msgstr ""
+msgstr "Til høyre er plass for dagskommentarer"
 
 #: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
-msgstr ""
+msgstr "Kommentarer er notater som lett kan bli sortert i kategorier"
 
 #: ../rednotebook/info.py:101
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
+"For eksempel kan du lage kategorien \"Ideer\" også legge dagen's ideer dit."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
 msgid "Save and Export"
-msgstr ""
+msgstr "Lagre og eksporter"
 
 #: ../rednotebook/info.py:114
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"Alt du skriver vil automatisk bli lagret regelmessig og når du avslutter "
+"programmet."
 
 #: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"For å forhindre datatap bør du sikkerhetskopiere din dagbok regelmessig."
 
 #: ../rednotebook/info.py:117
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"\"Sikkerhetskopier\" i \"Dagbok\" meny lagrer alle dine skrevne data til en "
+"ZIP-fil."
 
 #: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "I \"Dagbok\" menyen vil du også finne en \"Eksporter\" knapp"
 
 #: ../rednotebook/info.py:119
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
+"Klikk \"Eksporter\" og eksporter din dagbok til ren tekst, HTML eller LaTeX."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:125
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
-msgstr ""
+msgstr "Du kan finner mer dokumentasjon under \"Hjelp\" -> \"Hjelp\"."
 
 #: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
+"Hvis du støter på et problem, vær vennlig å send meg en notis så jeg kan "
+"reparere dem."
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Alle tilbakemeldinger settes pris på."
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Ha en fin dag!"
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
-msgstr ""
+msgstr "Ideer"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "Bruk et kult dagbok-program"
 
 #: tmp/main_window.glade.h:1
 msgid "<b>Current Day</b>"
@@ -847,31 +865,31 @@ msgstr "<b>Nåværende dag</b>"
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:3
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Generelt</b>"
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr ""
+msgstr "<b>Lenke-adresse (f.eks. http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:5
 msgid "<b>Link name (optional)</b>"
-msgstr ""
+msgstr "<b>Lenkenavn (valgfritt)</b>"
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Overall</b>"
-msgstr ""
+msgstr "<b>Samlet</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgstr "<b>Velg eksisterende eller ny kategori</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
-msgstr ""
+msgstr "<b>Skrive adgang</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Annotate"
-msgstr ""
+msgstr "Påføre"
 
 #: tmp/main_window.glade.h:11
 msgid "Category"
@@ -879,7 +897,7 @@ msgstr "Kategori"
 
 #: tmp/main_window.glade.h:12
 msgid "Clouds"
-msgstr ""
+msgstr "Skyer"
 
 #: tmp/main_window.glade.h:13
 msgid "Delete"
@@ -892,7 +910,7 @@ msgstr "Lukk uten å lagre"
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:16
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: tmp/main_window.glade.h:17
 msgid "Go to next day (Ctrl+PageUp)"
@@ -930,7 +948,7 @@ msgstr "Søk"
 
 #: tmp/main_window.glade.h:28
 msgid "Search in entries, categories and tags"
-msgstr ""
+msgstr "Søk i oppføringer, kategorier og etiketter"
 
 #: tmp/main_window.glade.h:29
 msgid "Select a cloud"
@@ -954,7 +972,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:34
 msgid "Select where to search"
-msgstr ""
+msgstr "Velg søkested"
 
 #: tmp/main_window.glade.h:35
 msgid "Show a formatted preview of the text (Ctrl+P)"
@@ -963,11 +981,11 @@ msgstr ""
 #. ## This stands for the verb in "Tag this day"
 #: tmp/main_window.glade.h:38
 msgid "Tag"
-msgstr ""
+msgstr "Merk"
 
 #: tmp/main_window.glade.h:39
 msgid "Tags"
-msgstr ""
+msgstr "Etiketter"
 
 #: tmp/main_window.glade.h:40
 msgid "Template"
