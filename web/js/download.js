@@ -45,7 +45,7 @@ function show_distro_details (button)
     });
     
     $('distro-details').innerHTML = content;
-    header = "Install on " + title;
+    var header = "Install on " + title;
     if (title == "Source") {
         header = "Install from Source";
     }
