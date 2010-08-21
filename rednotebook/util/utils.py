@@ -213,10 +213,10 @@ def get_new_version_number():
     '''
     Reads version number from website and returns None if it cannot be read
     '''
-    version_pattern = re.compile(r'<B>version (.+)</b>')
+    version_pattern = re.compile(r'<span id="download-version">(.+)</span>')
     
     try:
-        project_xml = urlopen('http://www.gnomefiles.org/app.php/RedNotebook').read()
+        project_xml = urlopen('http://rednotebook.sourceforge.net/index.html').read()
         match = version_pattern.search(project_xml)
         if not match:
             return None
@@ -238,7 +238,8 @@ def check_new_version(journal, current_version, startup=False):
     
     current_version = StrictVersion(current_version)
     # Only compare versions if new version could be read
-    newer_version_available = (new_version > current_version) if isinstance(new_version, StrictVersion) else True
+    newer_version_available = (new_version > current_version) \
+                    if isinstance(new_version, StrictVersion) else True
     logging.info('A newer version is available: %s' % newer_version_available)
     
     if newer_version_available or not startup:
