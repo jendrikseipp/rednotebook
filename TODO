@@ -10,20 +10,7 @@ implementation if you tell me that you'd like its addition ;)
 1.0.x
 Bugfixes only
 
-1.1.1
-X Let user delete category with 'DELETE' key (LP:608717)
-X Sort categories alphabetically (LP:612859)
-X Fix: After clicking "Change the text" on an annotation, directly edit it (LP:612861)
-X Fix: Journal -> _Journal in menu
-X Fix: Do not clear entry when category is changed in new-entry dialog
-X Fix: restore left divider position
-X Windows: Shrink installer size
-X Windows: Update gtk libs
-X Windows: New theme
-X Windows: New icons
-
 1.1.2
-O Download the latest version from the server without the need using the repos
 O Show warning if last backup dates to more than one month before
 O Highlight all found occurences of the searched word
 O Rethink logfile

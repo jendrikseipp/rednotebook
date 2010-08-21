@@ -1,8 +1,20 @@
 ==== RedNotebook Changelog ====
 
-=== 1.1.1 (10-08-?) ===
+=== 1.1.1 (10-08-21) ===
+ * Let user delete category with 'DELETE' key (LP:608717)
+ * Sort categories alphabetically (LP:612859)
+ * Fix: After clicking "Change the text" on an annotation, directly edit it (LP:612861)
+ * Fix: Journal -> _Journal in menu
+ * Fix: Do not clear entry when category is changed in new-entry dialog
+ * Fix: restore left divider position
+ * Fix: Use rednotebook website for retrieving newest version information (LP:621975)
+ * Windows: Shrink installer size
+ * Windows: Update gtk libs
+ * Windows: New theme
+ * Windows: New icons
  * New translations:
    * English (United Kingdom)
+   * Norwegian Bokmal
  * Many translations updated
 
 === 1.1.0 (10-08-03) ===
