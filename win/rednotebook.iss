@@ -15,7 +15,7 @@ AppUpdatesURL=http://rednotebook.sourceforge.net
 DefaultDirName={pf}\RedNotebook
 DefaultGroupName=RedNotebook
 AllowNoIcons=yes
-OutputBaseFilename=rednotebook-1.1.1b8-win32
+OutputBaseFilename=rednotebook-1.1.1-win32
 SetupIconFile=rednotebook.ico
 Compression=lzma
 SolidCompression=yes
@@ -68,7 +68,7 @@ name: "startupicon"; Description: "Run RedNotebook on Startup"; GroupDescription
 
 [Files]
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "..\dist\*"; Excludes: "*.log,*.a,*.def,*.h,*.lib,*.pc,*.exe,Thumbs.db"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\dist\*"; Excludes: "*.log,*.a,*.def,*.h,*.lib,*.pc,*.exe,Thumbs.db,*.aff,*.dic"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\dist\redNotebook.exe"; DestDir: "{app}"; Flags: ignoreversion
 ;Source: "portable.cfg"; DestDir: "{app}\files"; DestName: "default.cfg"; Flags: ignoreversion; Components: portablecfgfile
 

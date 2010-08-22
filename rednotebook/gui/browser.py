@@ -38,39 +38,12 @@ if __name__ == '__main__':
 
 from rednotebook.util import filesystem
 
+
 webkit = None
-
-def windows_webkit_import():
-    global webkit
-    
-    cwd = os.getcwd()
-    
-    if filesystem.main_is_frozen():
-        gtk_bin_dir = filesystem.app_dir
-    else:
-        gtk_bin_dir = r'C:\GTK'
-        
-    try:
-        # It seems the dlls are only found if we are in the bin dir
-        # during import
-        os.chdir(gtk_bin_dir)
-    except WindowsError:
-        logging.error('Changing dir to "%s" failed' % gtk_bin_dir)
-        return
-    
-    try:
-        import webkit
-    except ImportError:
-        logging.info('webkit not found. For a nicer preview install python-webkit or pywebkitgtk')
-    os.chdir(cwd)
-
-if False and sys.platform == 'win32':
-    windows_webkit_import()
-else:
-    try:
-        import webkit
-    except ImportError:
-        logging.info('webkit not found. For a nicer preview install python-webkit or pywebkitgtk')
+try:
+    import webkit
+except ImportError:
+    logging.info('webkit not found. For a nicer preview install python-webkit or pywebkitgtk')
     
     
     
