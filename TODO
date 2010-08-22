@@ -13,7 +13,7 @@ Bugfixes only
 1.1.2
 X Add fullscreen mode (F11)
 O Show warning if last backup dates to more than one month before
-O Highlight all found occurences of the searched word
+X Highlight all found occurences of the searched word
 O Rethink logfile
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables

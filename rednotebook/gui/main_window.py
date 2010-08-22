@@ -1463,6 +1463,8 @@ class DayTextField(object):
         
             
     def highlight(self, text):
+        self.day_text_buffer.set_search_text(text)
+        return
         iter_start = self.day_text_buffer.get_start_iter()
         
         # Hack: Ignoring the case is not supported for the search so we search

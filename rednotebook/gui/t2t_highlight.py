@@ -93,11 +93,7 @@ class MarkupDefinition(object):
     
     def __init__(self, rules):
         self.rules = rules
-        self.styles = dict()
         
-    def get_styles(self):
-        return self.styles
-
     def __call__(self, buf, start, end):
         mstart = end.copy()
         mend = end.copy()
@@ -149,8 +145,16 @@ class MarkupBuffer(gtk.TextBuffer):
         # store lang-definition
         self._lang_def = lang
         
+        self.highlight_rule = None
+        
         self.connect_after("insert-text", self._on_insert_text)
         self.connect_after("delete-range", self._on_delete_range)
+        
+    def set_search_text(self, text):
+        if not text:
+            self.highlight_rule = None
+        self.highlight_rule = Pattern(r"(%s)" % text,  [(1, 'highlight')], flags='I')
+        self.update_syntax(self.get_start_iter(), self.get_end_iter())
 
     def get_slice(self, start, end):
         '''
@@ -202,7 +206,8 @@ class MarkupBuffer(gtk.TextBuffer):
         # We can omit those rules without occurrences in later searches
 
         # Reset rules
-        self._lang_def._successful_rules = self._lang_def.rules[:]
+        rules = self._lang_def.rules[:] + [self.highlight_rule]
+        self._lang_def._successful_rules = rules
         
         # remove all tags from start to end
         self.remove_all_syntax_tags(start, end)
@@ -259,6 +264,7 @@ styles = {  'DEFAULT':          {'font': 'sans'},#{'font': 'serif'},
             'tagged':           {},
             'link':             {'foreground': 'blue',
                                 'underline': pango.UNDERLINE_SINGLE,},
+            'highlight':        {'background': 'yellow'},
             }
 def add_header_styles():
     sizes = [
@@ -374,6 +380,8 @@ def get_highlight_buffer():
 
     # create buffer and update style-definition
     buff = MarkupBuffer(lang=lang, styles=styles)
+    
+    buff.set_search_text('aha')
 
     return buff
 
