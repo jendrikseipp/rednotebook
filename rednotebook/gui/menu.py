@@ -66,6 +66,8 @@ class MainMenuBar(object):
                 <menuitem action="Copy"/>
                 <menuitem action="Paste"/>
                 <separator/>
+                <menuitem action="Fullscreen"/>
+                <separator/>
                 <menuitem action="Find"/>
                 <separator/>
                 <menuitem action="Options"/>
@@ -126,6 +128,8 @@ class MainMenuBar(object):
                 '', None, self.on_copy_menu_item_activate),
             ('Paste', gtk.STOCK_PASTE, None,
                 '', None, self.on_paste_menu_item_activate),
+            ('Fullscreen', gtk.STOCK_FULLSCREEN, None,
+                'F11', None, self.on_fullscreen_menuitem_activate),
             ('Find', gtk.STOCK_FIND, None,
                 None, None, self.on_find_menuitem_activate),
             ('Options', gtk.STOCK_PREFERENCES, None,
@@ -221,6 +225,9 @@ class MainMenuBar(object):
 #       event.state = gtk.gdk.CONTROL_MASK
 #       self.main_frame.emit("key_press_event",event)
         self.main_window.day_text_field.day_text_view.emit('cut_clipboard')
+        
+    def on_fullscreen_menuitem_activate(self, widget):
+        self.main_window.toggle_fullscreen()
 
     def on_find_menuitem_activate(self, widget):
         '''

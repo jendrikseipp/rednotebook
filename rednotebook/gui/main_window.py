@@ -97,6 +97,9 @@ class MainWindow(object):
         self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
                                 filesystem.get_icons()))
         
+        self.is_fullscreen = False
+        #self.main_frame.fullscreen()
+        
         self.uimanager = gtk.UIManager()
         
         self.menubar_manager = MainMenuBar(self)
@@ -499,6 +502,16 @@ class MainWindow(object):
         maximized = int(bool(maximized))
         self.journal.config['mainFrameMaximized'] = maximized
         
+        # Does not work correctly -> Track fullscreen state in program
+        #self.is_fullscreen = bool(state and gtk.gdk.WINDOW_STATE_FULLSCREEN)
+        
+    def toggle_fullscreen(self):
+        if self.is_fullscreen:
+            self.main_frame.unfullscreen()
+            self.is_fullscreen = False
+        else:
+            self.main_frame.fullscreen()
+            self.is_fullscreen = True
         
     def on_back_one_day_button_clicked(self, widget):
         self.journal.go_to_prev_day()
