@@ -142,7 +142,7 @@ class MarkupDefinition(object):
         
         tag_groups = []
         
-        rules = self.rules
+        rules = self.rules[:]
         if self.highlight_rule:
             rules.append(self.highlight_rule)
         

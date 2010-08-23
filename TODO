@@ -14,7 +14,8 @@ Bugfixes only
 X Add fullscreen mode (F11)
 O Show warning if last backup dates to more than one month before
 X Highlight all found occurences of the searched word
-X Highlight mixed markups (**__Bold underline__**)
+X Highlight mixed markups (**__Bold underline__**) 
+X Fix: Correctly highlight lists (LP:622456)
 O Rethink logfile
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
