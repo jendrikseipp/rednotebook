@@ -8,34 +8,34 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-06-10 20:00+0000\n"
+"PO-Revision-Date: 2010-08-22 20:43+0000\n"
 "Last-Translator: Gunleif Joensen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:14+0000\n"
+"X-Launchpad-Export-Date: 2010-08-23 04:03+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
 msgid "Export all days"
-msgstr ""
+msgstr "Útflyt allar dagar"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export only the days in the selected time range"
-msgstr ""
+msgstr "Útflyt einans dagarnar í tí útvalda tíðarskeiðinum"
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
-msgstr ""
+msgstr "Frá:"
 
 #: ../rednotebook/gui/exports.py:61
 msgid "To:"
-msgstr ""
+msgstr "Til:"
 
 #: ../rednotebook/gui/exports.py:120
 msgid "Export texts"
-msgstr ""
+msgstr "Útflyt tekstir"
 
 #: ../rednotebook/gui/exports.py:121
 msgid "Export all categories"
@@ -59,20 +59,21 @@ msgstr "Valdir bólkar"
 
 #: ../rednotebook/gui/exports.py:148
 msgid "Select"
-msgstr ""
+msgstr "Vel"
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Unselect"
-msgstr ""
+msgstr "Frável"
 
 #: ../rednotebook/gui/exports.py:253
 msgid ""
 "If export text is not selected, you have to select at least one category."
 msgstr ""
+"Tú mást í minsta lagi velja ein bólk, tá ið útflyt tekst ikki er valt."
 
 #: ../rednotebook/gui/exports.py:277
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "Tú hevur valt fylgandi innstillingar:"
 
 #: ../rednotebook/gui/exports.py:302
 msgid "Export Assistant"
@@ -85,32 +86,34 @@ msgstr ""
 #: ../rednotebook/gui/exports.py:305
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
+"Vegleiðingin ferð at hjálpa tær, at útflyta tína dagbók til ymisk snið."
 
 #: ../rednotebook/gui/exports.py:306
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"Tú kanst velja dagrnar, ið tú vil útflyta, og hvar durnar skullu goymast."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "Select Export Format"
-msgstr ""
+msgstr "Vel útflutningssnið"
 
 #: ../rednotebook/gui/exports.py:321
 msgid "Select Date Range"
-msgstr ""
+msgstr "Vel tíðarskeið"
 
 #: ../rednotebook/gui/exports.py:326
 msgid "Select Contents"
-msgstr ""
+msgstr "Vel innihald"
 
 #: ../rednotebook/gui/exports.py:332
 msgid "Select Export Path"
-msgstr ""
+msgstr "Vel útflutningsleið"
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
-msgstr ""
+msgstr "Samandráttur"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/exports.py:381 ../rednotebook/gui/main_window.py:721
@@ -119,31 +122,31 @@ msgstr "Snið"
 
 #: ../rednotebook/gui/exports.py:385
 msgid "Start date"
-msgstr ""
+msgstr "Byrjunardato"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "End date"
-msgstr ""
+msgstr "Endadato"
 
 #: ../rednotebook/gui/exports.py:388
 msgid "Export text"
-msgstr ""
+msgstr "Útflyt tekst"
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Selected categories"
-msgstr ""
+msgstr "Vel bólkar"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Export path"
-msgstr ""
+msgstr "Útflutningsleið"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "No"
-msgstr ""
+msgstr "Nei"
 
 #: ../rednotebook/gui/exports.py:443
 #, python-format
@@ -157,7 +160,7 @@ msgstr "Útflytan til %s miseydnaðist"
 
 #: ../rednotebook/gui/exports.py:542
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "tørvar pywebkitgtk"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/main_window.py:1187
 msgid "filter, these, comma, separated, words"
@@ -171,11 +174,11 @@ msgstr ""
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Fjal \"%s\" frá skýggjum"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr ""
+msgstr "Innleiðing"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -202,7 +205,7 @@ msgstr "Hjálp"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr ""
+msgstr "Forsýn:"
 
 #: ../rednotebook/gui/options.py:289
 msgid "Close to system tray"
@@ -499,7 +502,7 @@ msgstr "Annar liður"
 
 #: ../rednotebook/gui/main_window.py:773
 msgid "Indented Item"
-msgstr ""
+msgstr "Innriktur liður"
 
 #: ../rednotebook/gui/main_window.py:774
 msgid "Two blank lines close the list"
@@ -636,16 +639,16 @@ msgstr "Lat formfíluskránna upp"
 #: ../rednotebook/util/utils.py:247
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "Tú hevur útgávu <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:248
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "Nýggjasta útgáva er <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:249
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "Vil tú vitja heimasíðuna hjá RedNotebook?"
 
 #: ../rednotebook/util/utils.py:256
 msgid "Do not ask again"
@@ -844,7 +847,7 @@ msgstr "Einnhvør afturboðan er virrða"
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Farvæl!"
 
 #: ../rednotebook/info.py:164
 msgid "Ideas"
@@ -873,7 +876,7 @@ msgstr "<b>Leinkjunavn (valgfrítt)</b>"
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Overall</b>"
-msgstr ""
+msgstr "<b>Samlað</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Select existing or new Category</b>"
@@ -947,7 +950,7 @@ msgstr "Leita í innskrivingum, bólkum og spjøldrum"
 
 #: tmp/main_window.glade.h:29
 msgid "Select a cloud"
-msgstr ""
+msgstr "Vel eina skýggj"
 
 #: tmp/main_window.glade.h:30
 msgid "Select a directory"
