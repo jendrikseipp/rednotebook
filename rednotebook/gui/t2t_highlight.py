@@ -40,14 +40,54 @@ from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
 
 
-
+class Tag(object):
+    def __init__(self, start, end, tagname, rule):
+        self.start = start
+        self.end = end
+        self.name = tagname
+        self.rule = rule
+        
+    def list(self):
+        return [self.start, self.end, self.name]
+        
+    
+class TagGroup(list):
+    @property
+    def min_start(self):
+        return min([tag.start for tag in self], key=lambda i: i.get_offset()).copy()
+        
+    @property
+    def max_end(self):
+        return max([tag.end for tag in self], key=lambda i: i.get_offset()).copy()
+        
+    def sort(self):
+        print type(list)
+        key = lambda tag: (tag.start.get_offset(), -tag.end.get_offset(), tag.name)
+        list.sort(self, key=key)
+    
+    @property    
+    def rule(self):
+        if len(self) == 0:
+            return 'NO ITEM'
+        return self[0].rule
+        
+    def list(self):
+        return map(lambda g: g.list(), self)
+        
+    #def __cmp__(self, other):
+    #    return cmp((self.min_start, other.min_start))
+        
 
 class Pattern(object):
     '''
     A pattern object allows a regex-pattern to have
     subgroups with different formatting
     '''
-    def __init__(self, pattern, group_tag_pairs, regex=None, flags=""):
+    def __init__(self, pattern, group_tag_pairs, regex=None, flags="",
+                        overlap=False, name='unnamed'):
+        self.overlap = overlap
+        self.name = name
+        
         # assemble re-flag
         flags += "ML"
         flag = 0
@@ -75,8 +115,8 @@ class Pattern(object):
         m = self._regexp.search(txt)
         if not m: return None
 
-        iter_pairs = []
-
+        tags = TagGroup()
+        
         for group, tag_name in self.group_tag_pairs:
             group_matched = bool(m.group(group))
             if not group_matched:
@@ -84,48 +124,40 @@ class Pattern(object):
             mstart, mend = m.start(group), m.end(group)
             s = start.copy(); s.forward_chars(mstart)
             e = start.copy(); e.forward_chars(mend)
-            iter_pairs.append([s, e, tag_name])
+            tag = Tag(s, e, tag_name, self.name)
+            tags.append(tag)
 
-        return iter_pairs
+        return tags
 
 
 class MarkupDefinition(object):
     
     def __init__(self, rules):
         self.rules = rules
+        self.highlight_rule = None
         
     def __call__(self, buf, start, end):
-        mstart = end.copy()
-        mend = end.copy()
         
         txt = buf.get_slice(start, end)
-
-        selected_pairs = None
-
+        
+        tag_groups = []
+        
+        rules = self.rules
+        if self.highlight_rule:
+            rules.append(self.highlight_rule)
+        
         # search min match
-        for rule in self._successful_rules[:]:
+        for rule in rules:
             # search pattern
-            iter_pairs = rule(txt, start, end)
-            if not iter_pairs:
-                ## This rule will not find anything in the next round either
-                self._successful_rules.remove(rule)
-                continue
-
-            key = lambda iter: iter.get_offset()
-
-            min_start = min([start_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
-            max_end = max([end_iter for start_iter, end_iter, tag_name in iter_pairs], key=key)
+            tags = rule(txt, start, end)
+            while tags:
+                tag_groups.append(tags)
+                subtext = buf.get_slice(tags.max_end, end)
+                tags = rule(subtext, tags.max_end, end)
             
-            # prefer match with smallest start-iter
-            if min_start.compare(mstart) == -1:
-                mstart, mend = min_start, max_end
-                selected_pairs = iter_pairs
-                continue
-
-            if min_start.equal(mstart) and max_end.compare(mend) == 1:
-                mstart, mend = min_start, max_end
-                selected_pairs = iter_pairs
-        return selected_pairs
+        tag_groups.sort(key=lambda g: (g.min_start.get_offset(), -g.max_end.get_offset()))
+        
+        return tag_groups
 
 
 class MarkupBuffer(gtk.TextBuffer):
@@ -138,22 +170,24 @@ class MarkupBuffer(gtk.TextBuffer):
         
         # create tags
         for name, props in self.styles.items():
-            style = {}#dict(self.styles['DEFAULT']) # take default
-            style.update(props)                  # and update with props
+            style = {}
+            style.update(props)
             self.create_tag(name, **style)
         
         # store lang-definition
         self._lang_def = lang
         
-        self.highlight_rule = None
+        self.overlaps = ['bold', 'italic', 'underline', 'strikethrough', \
+                        'highlight', 'list', 'numlist']
         
         self.connect_after("insert-text", self._on_insert_text)
         self.connect_after("delete-range", self._on_delete_range)
         
     def set_search_text(self, text):
         if not text:
-            self.highlight_rule = None
-        self.highlight_rule = Pattern(r"(%s)" % text,  [(1, 'highlight')], flags='I')
+            self._lang_def.highlight_rule = None
+        self._lang_def.highlight_rule = Pattern(r"(%s)" % text,  [(1, 'highlight')], 
+                                name='highlight', flags='I', overlap=True)
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
 
     def get_slice(self, start, end):
@@ -182,6 +216,11 @@ class MarkupBuffer(gtk.TextBuffer):
         '''
         for style in self.styles:
             self.remove_tag_by_name(style, start, end)
+            
+    def apply_tags(self, tags):
+        for mstart, mend, tagname in tags.list():
+            # apply tag
+            self.apply_tag_by_name(tagname, mstart, mend)
 
     def update_syntax(self, start, end):
         """ More or less internal used method to update the
@@ -201,64 +240,41 @@ class MarkupBuffer(gtk.TextBuffer):
         
         end.forward_to_line_end()
         
-        text = self.get_text(start, end)
-        
-        # We can omit those rules without occurrences in later searches
-
-        # Reset rules
-        rules = self._lang_def.rules[:] + [self.highlight_rule]
-        self._lang_def._successful_rules = rules
-        
         # remove all tags from start to end
         self.remove_all_syntax_tags(start, end)
+        
+        tag_groups = self._lang_def(self, start, end)
+        
+        min_start = start.copy()
+        
+        for tags in tag_groups:
+            if tags.rule == 'highlight':
+                self.apply_tags(tags)
 
-        # We do not use recursion -> long files exceed rec-limit!
-        #finished = False
-        while not start == end:#not finished:
-            
-            # search first rule matching txt[start..end]
-            group_iters_and_tags = self._lang_def(self, start, end)
-
-            if not group_iters_and_tags:
-                return
-
-            key = lambda iter: iter.get_offset()
-
-            #min_start = min([start_iter for start_iter, end_iter, tag_name \
-            #                           in group_iters_and_tags], key=key)
-            max_end = max([end_iter for start_iter, end_iter, tag_name \
-                                        in group_iters_and_tags], key=key)
-
-            for mstart, mend, tagname in group_iters_and_tags:
-                # apply tag
-                self.apply_tag_by_name(tagname, mstart, mend)
-
-            # Set new start
-            start = max_end
-
-
-
+            elif min_start.compare(tags.min_start) in [-1, 0]:
+                # min_start is left or equal to tags.min_start
+                self.apply_tags(tags)
+                
+                if tags.rule in self.overlaps:
+                    min_start = tags.min_start
+                else:
+                    min_start = tags.max_end
 
 
 # additional style definitions:
 # the update_syntax() method of CodeBuffer allows you to define new and modify
 # already defined styles. Think of it like CSS.
-styles = {  'DEFAULT':          {'font': 'sans'},#{'font': 'serif'},
-            'bold':             {'weight': pango.WEIGHT_BOLD},
-            'comment':          {'foreground': 'gray'},
-            'underlined':       {'underline': pango.UNDERLINE_SINGLE},
-            'grey':             {'foreground': 'gray'},
-            'red':              {'foreground': 'red'},
-            'italic':           {   # Just to be sure we live this in
+styles = {  'bold':             {'weight': pango.WEIGHT_BOLD},
+            'italic':           {   # Just to be sure we leave this in
                                     'style': pango.STYLE_ITALIC,
                                     # The font:Italic is actually needed
-                                    'font': 'Italic'},
+                                    #'font': 'Italic',
+                                    },
+            'underline':        {'underline': pango.UNDERLINE_SINGLE},
             'strikethrough':    {'strikethrough': True},
-            'header':           {'weight': pango.WEIGHT_ULTRABOLD,
-                                'scale': pango.SCALE_XX_LARGE,
-                                # causes PangoWarnings on Windows
-                                #'variant': pango.VARIANT_SMALL_CAPS,
-                                },
+            'gray':             {'foreground': 'gray'},
+            'red':              {'foreground': 'red'},
+            'green':            {'foreground': 'darkgreen'},
             'raw':              {'font': 'Oblique'},
             'verbatim':         {'font': 'monospace'},
             'tagged':           {},
@@ -295,30 +311,19 @@ def get_pattern(char, style):
     # In both cases no whitespaces between chars and markup
     #regex = r'(%s)(\S.*\S)(%s)' % ((markup_symbols, ) * 2)
     regex = r'(%s%s)(\S|.*?\S%s*)(%s%s)' % ((char, ) * 5)
-    group_style_pairs = [(1, 'grey'), (2, style), (3, 'grey')]
-    return Pattern(regex, group_style_pairs)
+    group_style_pairs = [(1, 'gray'), (2, style), (3, 'gray')]
+    return Pattern(regex, group_style_pairs, name=style)
 
 
-list    = Pattern(r"^ *(- )[^ ].*$",  [(1, 'red'), (1, 'bold')])
-numlist = Pattern(r"^ *(\+ )[^ ].*$", [(1, 'red'), (1, 'bold')])
+list    = Pattern(r"^ *(\-) [^ ].*$", [(1, 'red'), (1, 'bold')], name='list')
+numlist = Pattern(r"^ *(\+) [^ ].*$", [(1, 'red'), (1, 'bold')], name='numlist')
 
-comment = Pattern(r'^(\%.*)$', [(1, 'comment')])
+comment = Pattern(r'^(\%.*)$', [(1, 'gray')])
 
 line = Pattern(r'^[\s]*([_=-]{20,})[\s]*$', [(1, 'bold')])
 
-# Whitespace is allowed, but nothing else
-#header = Pattern(r'^[\s]*(===)([^=]|[^=].*[^=])(===)[\s]*$', \
-#                       [(1, 'grey'), (2, 'header'), (3, 'grey')])
-
-title_style = [(1, 'grey'), (2, 'header'), (3, 'grey'), (4, 'grey')]
-titskel = r'^ *(%s)(%s)(\1)(\[[\w-]*\])?\s*$'
-title_pattern   = titskel % ('[=]{1,5}','[^=]|.*[^=]')
-numtitle_pattern = titskel % ('[+]{1,5}','[^+]|.*[^+]')
-title = Pattern(title_pattern, title_style)
-numtitle = Pattern(numtitle_pattern, title_style)
-
 title_patterns = []
-title_style = [(1, 'grey'), (3, 'grey'), (4, 'grey')]
+title_style = [(1, 'gray'), (3, 'gray'), (4, 'gray')]
 titskel = r'^ *(%s)(%s)(\1)(\[[\w-]*\])?\s*$'
 for level in range(1, 6):
     title_pattern    = titskel % ('[=]{%s}'%(level),'[^=]|[^=].*[^=]')
@@ -328,7 +333,7 @@ for level in range(1, 6):
     numtitle = Pattern(numtitle_pattern, title_style + [(2, style_name)])
     title_patterns += [title, numtitle]
 
-linebreak = Pattern(r'(\\\\)', [(1, 'grey')])
+linebreak = Pattern(r'(\\\\)', [(1, 'gray')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 # \w = [a-zA-Z0-9_]
@@ -338,26 +343,24 @@ linebreak = Pattern(r'(\\\\)', [(1, 'grey')])
 filename = r'\S.*?\S|\S'
 ext = r'png|jpe?g|gif|eps|bmp'
 pic = Pattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext), \
-        [(1, 'grey'), (2, 'bold'), (3, 'grey'), (4, 'bold'), (5, 'grey'), (6, 'grey')], flags='I')
+        [(1, 'gray'), (2, 'green'), (3, 'gray'), (4, 'green'), (5, 'gray'), (6, 'gray')], flags='I')
 
 # named link on hdd [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
 # named link in web [heise ""http://heise.de""]
 named_link = Pattern(r'(\[)(.*?)\s("")(\S.*?\S)(""\])', \
-        [(1, 'grey'), (2, 'link'), (3, 'grey'), (4, 'grey'), (5, 'grey')], flags='LI')
+        [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')], flags='LI')
 
 # link http://heise.de
 # Use txt2tags link guessing mechanism
-#link_regex = 
-link = Pattern('OVERWRITE', [(0, 'link')], regex=bank['link'])
-#link._regexp = link_regex
+link = Pattern('OVERWRITE', [(0, 'link')], regex=bank['link'], name='link')
 
 # We do not support multiline regexes
-#blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'grey'), (2, 'verbatim'), (3, 'grey')])
+#blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'gray'), (2, 'verbatim'), (3, 'gray')])
 
 
 patterns = [
         get_pattern('\*', 'bold'),
-        get_pattern('_', 'underlined'),
+        get_pattern('_', 'underline'),
         get_pattern('/', 'italic'),
         get_pattern('-', 'strikethrough'),
         list,
@@ -380,15 +383,16 @@ def get_highlight_buffer():
 
     # create buffer and update style-definition
     buff = MarkupBuffer(lang=lang, styles=styles)
-    
-    buff.set_search_text('aha')
 
     return buff
 
 # Testing
 if __name__ == '__main__':
     
-    txt = """
+    txt = """aha**aha**
+
+**a//b//c** //a**b**c// __a**b**c__ __a//b//c__
+    
 text [link 1 ""http://en.wikipedia.org/wiki/Personal_wiki#Free_software""] another text [link2 ""http://digitaldump.wordpress.com/projects/rednotebook/""] end
 
 pic [""/home/user/Desktop/RedNotebook pic"".png] pic [""/home/user/Desktop/RedNotebook pic"".png]
@@ -426,8 +430,13 @@ www.heise.de, alex@web.de
 
 
 """
-
+    #txt = '- an other'
+    
+    search_text = 'aha'
+    
     buff = get_highlight_buffer()
+    
+    buff.set_search_text(search_text)
 
     win = gtk.Window(gtk.WINDOW_TOPLEVEL)
     scr = gtk.ScrolledWindow()
@@ -440,6 +449,7 @@ www.heise.de, alex@web.de
                               'xhtml', append_whitespace=True)
 
         html_editor.load_html(html)
+        html_editor.highlight(search_text)
 
     buff.connect('changed', change_text)
 
