@@ -8,22 +8,22 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-07-16 01:16+0000\n"
+"PO-Revision-Date: 2010-08-31 01:41+0000\n"
 "Last-Translator: Ramesh <rame20002007@yahoo.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:14+0000\n"
+"X-Launchpad-Export-Date: 2010-08-31 04:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
 msgid "Export all days"
-msgstr ""
+msgstr "அனைத்து நாட்களையும் ஏற்று"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export only the days in the selected time range"
-msgstr ""
+msgstr "தெரிவு செய்த கால எல்லைக்குள் இருக்கும் நாட்களை மட்டும் ஏற்று"
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
@@ -35,23 +35,23 @@ msgstr "பெறுனர்:"
 
 #: ../rednotebook/gui/exports.py:120
 msgid "Export texts"
-msgstr ""
+msgstr "உரைகளை ஏற்று"
 
 #: ../rednotebook/gui/exports.py:121
 msgid "Export all categories"
-msgstr ""
+msgstr "அனைத்து வகைகளையும் ஏற்று"
 
 #: ../rednotebook/gui/exports.py:122
 msgid "Do not export categories"
-msgstr ""
+msgstr "வகைகளை ஏற்றாதே"
 
 #: ../rednotebook/gui/exports.py:124
 msgid "Export only the selected categories"
-msgstr ""
+msgstr "தெரிவு செய்த வகைகளை மட்டும் ஏற்று"
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Available Categories"
-msgstr ""
+msgstr "கிடைக்கக்கூடிய வகைகள்"
 
 #: ../rednotebook/gui/exports.py:142
 msgid "Selected Categories"
@@ -59,11 +59,11 @@ msgstr "தெரிவுசெய்த வகைகள்"
 
 #: ../rednotebook/gui/exports.py:148
 msgid "Select"
-msgstr ""
+msgstr "தெரிவு செய்"
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Unselect"
-msgstr ""
+msgstr "தெரிவகற்று"
 
 #: ../rednotebook/gui/exports.py:253
 msgid ""
@@ -72,15 +72,15 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:277
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "நீங்கள் கீழ்வரும் அமைப்புகளை தெரிவு செய்துள்ளீர்கள்:"
 
 #: ../rednotebook/gui/exports.py:302
 msgid "Export Assistant"
-msgstr ""
+msgstr "ஏற்றுமதி உதவியாளர்"
 
 #: ../rednotebook/gui/exports.py:304
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "ஏற்றுமதி உதவியாளரிற்கு வரவேற்கிறோம்."
 
 #: ../rednotebook/gui/exports.py:305
 msgid "This wizard will help you to export your journal to various formats."
@@ -91,14 +91,16 @@ msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"நீ ஏற்றுமதி செய்ய வேண்டிய நாட்களையும் வெளியீட்டை சேமிக்க வேண்டிய இடத்தையும் "
+"தெரிவு செய்யலாம்."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "Select Export Format"
-msgstr ""
+msgstr "ஏற்றுமதி வடிவத்தை தெரிவு செய்"
 
 #: ../rednotebook/gui/exports.py:321
 msgid "Select Date Range"
-msgstr ""
+msgstr "தரவு வீச்சை தெரிவு செய்"
 
 #: ../rednotebook/gui/exports.py:326
 msgid "Select Contents"
