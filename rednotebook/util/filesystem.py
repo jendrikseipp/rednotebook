@@ -188,21 +188,15 @@ def uri_is_local(uri):
 
 def get_journal_title(dir):
     '''
-    returns the last dir name in path
+    returns the last dirname in path
     '''
+    dir = os.path.abspath(dir)
     # Remove double slashes and last slash
     dir = os.path.normpath(dir)
-    dir = os.path.abspath(dir)
     
-    upper_dir = os.path.join(dir, '../')
-    upper_dir = os.path.abspath(upper_dir)
-    
-    upper_dir_length = len(upper_dir)
-    if upper_dir_length > 1:
-        title = dir[upper_dir_length+1:]
-    else:
-        title = dir[upper_dir_length:]
-    return title
+    dirname, basename = os.path.split(dir)
+    # Return "/" if journal is located at /
+    return basename or dirname
 
 
 def get_platform_info():
@@ -349,3 +343,10 @@ def read_file(filename):
         except Exception, e:
             logging.error(e)
     return ''
+    
+if __name__ == '__main__':
+    dirs = ['/home/my journal', '/my journal/', r'C:\\Dok u E\journal',
+            '/home/name/journal', '/']
+    for dir in dirs:
+        title = get_journal_title(dir)
+        print '%s -> %s' % (dir, title)
