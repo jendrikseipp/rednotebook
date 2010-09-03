@@ -98,7 +98,6 @@ class MainWindow(object):
                                 filesystem.get_icons()))
         
         self.is_fullscreen = False
-        #self.main_frame.fullscreen()
         
         self.uimanager = gtk.UIManager()
         

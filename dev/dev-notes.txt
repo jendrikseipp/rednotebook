@@ -36,6 +36,7 @@ O Encryption/Password
   --> Use pycrypto only
   
   - What should be encrypted? Files, Strings? -> Files better
+    Lifeograph only writes to one file, encrypts a string
   
   - Maybe use only one file for a journal, add journal dependent variables
   - Maybe compress this file
@@ -43,10 +44,14 @@ O Encryption/Password
   - AES uses fixed key-length -> bad for passwords -> use Blowfish with variable length
   - Blowfish faster than AES
   
-  - Maybe just use 7z (only archive format that is widely known with good encryption)
+  - Maybe just use 7z (only archive format that is widely known with good encryption (AES-256))
   - 7z can however also produce zip files with good encryption
   - For 7z package p7zip is needed (only supports 7z)
   - binary is called 7zr
+  - Handling of extracted text files only in memory should be possible
+    - What about pictures?
+    
+  - Maybe find a way to encrypt the whole directory
   
   
 X Automatic insertions
