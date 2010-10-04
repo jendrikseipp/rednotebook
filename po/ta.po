@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-08-31 01:41+0000\n"
-"Last-Translator: Ramesh <rame20002007@yahoo.com>\n"
+"PO-Revision-Date: 2010-10-03 18:57+0000\n"
+"Last-Translator: vijayaraj Mani <vijayaraj83@gmail.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-09-01 04:02+0000\n"
+"X-Launchpad-Export-Date: 2010-10-04 04:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -63,12 +63,14 @@ msgstr "தெரிவு செய்"
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Unselect"
-msgstr "தெரிவகற்று"
+msgstr "தேர்வை ரத்து செய்யவும்"
 
 #: ../rednotebook/gui/exports.py:253
 msgid ""
 "If export text is not selected, you have to select at least one category."
 msgstr ""
+"ஏற்றுமதிக்கான எழுத்துக்களை தேர்வு செய்திராவிடில் ,ஒரு வகையையாவது தேர்வு "
+"தேர்வு செய்யவும் ."
 
 #: ../rednotebook/gui/exports.py:277
 msgid "You have selected the following settings:"
@@ -80,7 +82,7 @@ msgstr "ஏற்றுமதி உதவியாளர்"
 
 #: ../rednotebook/gui/exports.py:304
 msgid "Welcome to the Export Assistant."
-msgstr "ஏற்றுமதி உதவியாளரிற்கு வரவேற்கிறோம்."
+msgstr "ஏற்றுமதி உதவியாளர்க்கு வரவேற்கிறோம்."
 
 #: ../rednotebook/gui/exports.py:305
 msgid "This wizard will help you to export your journal to various formats."
@@ -104,15 +106,15 @@ msgstr "தரவு வீச்சை தெரிவு செய்"
 
 #: ../rednotebook/gui/exports.py:326
 msgid "Select Contents"
-msgstr ""
+msgstr "தகவல்களை தேர்வு செய்யவும்"
 
 #: ../rednotebook/gui/exports.py:332
 msgid "Select Export Path"
-msgstr ""
+msgstr "ஏற்றுமதி பாதையை தேர்வு செய்யவும்"
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
-msgstr ""
+msgstr "சுருக்கம்"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/exports.py:381 ../rednotebook/gui/main_window.py:721
@@ -121,31 +123,31 @@ msgstr "வடிவமைப்பு"
 
 #: ../rednotebook/gui/exports.py:385
 msgid "Start date"
-msgstr ""
+msgstr "துவக்க தேதி"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "End date"
-msgstr ""
+msgstr "முடிவு தேதி"
 
 #: ../rednotebook/gui/exports.py:388
 msgid "Export text"
-msgstr ""
+msgstr "ஏற்றுமதி எழுத்துக்கள்"
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Selected categories"
-msgstr ""
+msgstr "தேர்ந்தேடுக்கப்பட்ட வகைகள்"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Export path"
-msgstr ""
+msgstr "ஏற்றுமதி பாதை"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Yes"
-msgstr ""
+msgstr "சரி\\ஆம்"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "No"
-msgstr ""
+msgstr "இல்லை\\வேண்டாம்"
 
 #: ../rednotebook/gui/exports.py:443
 #, python-format
@@ -159,21 +161,21 @@ msgstr "%s இற்கு ஈருமதி தோல்வியடைந்�
 
 #: ../rednotebook/gui/exports.py:542
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "pywebkitgtk தேவைப்படுகிறது"
 
 #: ../rednotebook/gui/clouds.py:137 ../rednotebook/gui/main_window.py:1187
 msgid "filter, these, comma, separated, words"
-msgstr ""
+msgstr "வடிகட்டி,இவை, கம்மா, பிரிக்கப்பட்ட, வார்த்தைகள்"
 
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/clouds.py:142 ../rednotebook/gui/main_window.py:1193
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "எம்டிவி ,இச்பேம் ,வேலை,பணி,விளையாட்டு"
 
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "மேகங்களிடமிருந்து \"%s\" ஐ மறைக்கவும்"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
@@ -181,7 +183,7 @@ msgstr "அறிமுகம்"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "ரெட்நோட்புக்கை ஆரம்பத்திலேயே தானாகத்துவக்கவும்"
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
@@ -212,20 +214,22 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:290
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
+msgstr "இந்தச்சாளரத்தை மூடினால் ரெட்நோட்புக் பெட்டகத்திற்கு சென்றுவிடும்"
 
 #: ../rednotebook/gui/options.py:293
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "தவறாக உச்சரிக்கப்பட்ட வார்த்தைகளை அடிக்கோடிடவும்"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Requires gtkspell."
-msgstr ""
+msgstr "gtkspell தேவைப்படுகிறது"
 
 #: ../rednotebook/gui/options.py:295
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
 msgstr ""
+"இது python-gtkspell இல் அல்லது python-gnome2-extras package இல் "
+"கொடுக்கப்படிருகிறது ."
 
 #: ../rednotebook/gui/options.py:296
 msgid "Check Spelling"
@@ -233,7 +237,7 @@ msgstr "சொல்லை சரிபார்"
 
 #: ../rednotebook/gui/options.py:315
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "இதன் புது பதிப்பினை தொடக்கதிரையில் காணவும்"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Check now"
@@ -249,11 +253,11 @@ msgstr "நாள்/நேரம் படிவமை"
 
 #: ../rednotebook/gui/options.py:330
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "மேகங்களிடமிருந்து இதனை பாகு படுத்தவும்"
 
 #: ../rednotebook/gui/options.py:331
 msgid "Do not show those comma separated words in any cloud"
-msgstr ""
+msgstr "இந்த கம்மா இடப்பட்ட வார்த்தைகளை எந்த மேகத்திலும் காட்டப்படவேண்டாம்"
 
 #: ../rednotebook/gui/options.py:332
 msgid "Allow small words in clouds"
@@ -262,10 +266,12 @@ msgstr "சிறிய சொற்களை மேகங்களில் அ
 #: ../rednotebook/gui/options.py:333
 msgid "Allow those words with 4 letters or less in the text cloud"
 msgstr ""
+"நான்கு அல்லது அதற்கு குறைந்த எழுதுள்ள வார்த்தைகளை எழுத்து மேகத்தில் "
+"அனுமதிக்கவும்."
 
 #: ../rednotebook/gui/menu.py:91
 msgid "_Journal"
-msgstr ""
+msgstr "_படைப்புக்கள்"
 
 #: ../rednotebook/gui/menu.py:93
 msgid "Create a new journal. The old one will be saved"
@@ -282,6 +288,7 @@ msgstr ""
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"புது படைப்புக்களை புது இடத்தில சேமிக்கவும்.பழைய படைப்புகளும் சேமிக்கப்படும்."
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:104
@@ -290,7 +297,7 @@ msgstr "இறக்குமதி செய்"
 
 #: ../rednotebook/gui/menu.py:105
 msgid "Open the import assistant"
-msgstr ""
+msgstr "இறக்குமதி உதவியாளரை திறக்கவும்"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:107
@@ -299,7 +306,7 @@ msgstr "ஏற்றுமதி செய்"
 
 #: ../rednotebook/gui/menu.py:108
 msgid "Open the export assistant"
-msgstr ""
+msgstr "ஏற்றுமதி உதவியாளரை திறக்கவும்"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:110
@@ -356,15 +363,17 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Restore example content"
-msgstr ""
+msgstr "உதாரண உள்ளடக்கத்தை புனருத்தாரணம்(restore) செய்யவும்"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Fill some free days with example content. Do not overwrite anything"
 msgstr ""
+"சும்மா இருக்கும் சில நாட்களில் உதாரணங்களை நிரப்பவும் .எதையும் அழித்து மேல் "
+"எழுத வேண்டாம்."
 
 #: ../rednotebook/gui/menu.py:144
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "ரெட்நோட்புக்கை மொழிபெயர்க்கவும்"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Connect to the Launchpad website to help translate RedNotebook"
@@ -980,4 +989,5 @@ msgstr "இன்று"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Ramesh https://launchpad.net/~rame20002007"
+"  Ramesh https://launchpad.net/~rame20002007\n"
+"  vijayaraj Mani https://launchpad.net/~vijayaraj83"
