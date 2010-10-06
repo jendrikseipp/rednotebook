@@ -436,14 +436,8 @@ class ExportAssistant(Assistant):
         
         export_string = self.get_export_string(format)
         
-        try:
-            export_file = codecs.open(self.path, 'w', 'utf-8')
-            export_file.write(export_string)
-            export_file.flush()
-            self.journal.show_message(_('Content exported to %s') % self.path)
-        except IOError:
-            self.journal.show_message(_('Exporting to %s failed') % self.path)
-            logging.error('Exporting to %s failed' % self.path)
+        filesystem.write_file(self.path, export_string)
+        self.journal.show_message(_('Content exported to %s') % self.path)
             
             
     def export_pdf(self):

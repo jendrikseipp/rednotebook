@@ -260,7 +260,7 @@ class MainMenuBar(object):
 
     def on_help_menu_item_activate(self, widget):
         temp_dir = self.journal.dirs.temp_dir
-        utils.write_file(info.help_text, os.path.join(temp_dir, 'source.txt'))
+        filesystem.write_file(os.path.join(temp_dir, 'source.txt'), info.help_text)
         headers = [_('RedNotebook Documentation'), info.version, '']
         options = {'toc': 1,}
         html = markup.convert(info.help_text, 'xhtml', headers, options)

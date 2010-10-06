@@ -24,6 +24,7 @@ import os
 import sys
 import logging
 import re
+import codecs
 
 try:
     import yaml
@@ -105,7 +106,7 @@ class Storage(object):
         
         try:
             # Try to read the contents of the file
-            with open(month_file_string, 'rb') as month_file:
+            with codecs.open(month_file_string, 'rb', encoding='utf-8') as month_file:
                 logging.debug('Start loading file "%s"' % month_file_string)
                 month_contents = yaml.load(month_file, Loader=Loader)
                 logging.debug('Finished loading file "%s"' % month_file_string)
@@ -131,7 +132,7 @@ class Storage(object):
             if month.edited or saveas:
                 something_saved = True
                 month_file_string = os.path.join(dir, year_and_month + '.txt')
-                with open(month_file_string, 'w') as month_file:
+                with codecs.open(month_file_string, 'wb', encoding='utf-8') as month_file:
                     month_content = {}
                     for day_number, day in month.days.iteritems():
                         # do not add empty days

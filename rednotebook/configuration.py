@@ -185,13 +185,11 @@ class Config(dict):
     def save_to_disk(self):
         assert self.changed()
         
-        try:
-            with open(self.file, 'w') as config_file:
-                for key, value in sorted(self.iteritems()):
-                    if key not in self.suppressed_keys:
-                        config_file.write('%s=%s\n' % (key, value))
-                logging.info('Configuration has been saved to disk')
-                self.old_config = self.copy()
-        except IOError:
-            logging.error('Configuration could not be saved')
-            
+        content = ''
+        for key, value in sorted(self.iteritems()):
+            if key not in self.suppressed_keys:
+                content += ('%s=%s\n' % (key, value))
+                
+        filesystem.write_file(self.file, content)
+        logging.info('Configuration has been saved to disk')
+        self.old_config = self.copy()

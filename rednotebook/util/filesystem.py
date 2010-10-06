@@ -88,6 +88,7 @@ class Filenames(dict):
         self.last_pic_dir = self.user_home_dir
         self.last_file_dir = self.user_home_dir
         
+        
     def get_user_dir(self, config):
         custom = config.read('userDir', '')
         
@@ -107,8 +108,6 @@ class Filenames(dict):
         return user_dir
         
         
-
-        
     def __getattribute__(self, attr):
         user_paths = dict((('template_dir', 'templates'),
                         ('temp_dir', 'tmp'),
@@ -121,6 +120,61 @@ class Filenames(dict):
             return os.path.join(self.journal_user_dir, user_paths.get(attr))
         
         return dict.__getattribute__(self, attr)
+        
+        
+        
+def read_file(filename):
+    '''
+    Tries to read a given file
+    
+    Returns None if an error is encountered
+    '''
+    encodings = ['utf-8']#, 'latin1', 'latin2']
+    
+    try:
+        import chardet
+    except ImportError:
+        logging.info("chardet not found. Let's hope all your files are unicode")
+        chardet = None
+        
+    if chardet:
+        with open(filename, 'rb') as file:
+            content = file.read()
+        guess = chardet.detect(content)
+        logging.debug('Chardet guesses %s for %s' % (guess, filename))
+        encoding = guess.get('encoding')
+        
+        # chardet makes errors here sometimes
+        if encoding in ['MacCyrillic', 'ISO-8859-7']:
+            encoding = 'ISO-8859-2'
+            
+        if encoding:
+            encodings.insert(0, encoding)
+    
+    # Only check the first encoding
+    for encoding in encodings[:1]:
+        try:
+            with codecs.open(filename, 'rb', encoding=encoding, errors='replace') as file:
+                data = file.read()
+                if not type(data) == unicode:
+                    data = unicode(data, 'utf-8')
+                return data
+        except ValueError, err:
+            logging.info(err)
+        except Exception, e:
+            logging.error(e)
+    return ''
+    
+    
+def write_file(filename, content):
+    assert os.path.isabs(filename)
+    try:
+        with codecs.open(filename, 'wb', encoding='utf-8') as file:
+            file.write(content)
+            file.flush()
+            file.close()
+    except IOError, e:
+        logging.error('Error while writing to "%s": %s' % (filename, e))
     
 
 
@@ -134,8 +188,7 @@ def make_directories(dirs):
         
 def make_file(file, content=''):
     if not os.path.exists(file):
-        with codecs.open(file, 'w', encoding='utf-8') as f:
-            f.write(content)
+        write_file(file, content)
             
 def make_files(file_content_pairs):
     for file, content in file_content_pairs:
@@ -274,75 +327,6 @@ def open_url(url):
     except webbrowser.Error:
         logging.exception('Failed to open web browser')
         
-        
-def read_yaml_file(filename, loader=None):
-    '''
-    Unused
-    
-    Try to read the contents of the file, if an error occurs, return None
-    '''
-    import yaml
-    if loader is None:
-        loader = yaml.Loader
-        
-    try:
-        # Try to read the contents of the file
-        with open(filename, 'r') as file:
-            logging.debug('Start loading file "%s"' % filename)
-            content = yaml.load(file, Loader=loader)
-            logging.debug('Finished loading file "%s"' % filename)
-            return content
-    except yaml.YAMLError, exc:
-        logging.error('Error in file "%s":\n%s' % (filename, exc))
-    except IOError, err:
-        #If that fails, there is nothing to load, so just display an error message
-        logging.error('Error: The file "%s" could not be read:' % filename)
-        logging.error('%s' % err)
-    except Exception, err:
-        logging.error('An error occured while reading "%s":' % filename)
-        logging.error('%s' % err)
-        
-    return None
-    
-def read_file(filename):
-    '''
-    Tries to read a given file
-    
-    Returns None if an error is encountered
-    '''
-    encodings = ['utf-8']#, 'latin1', 'latin2']
-    
-    try:
-        import chardet
-    except ImportError:
-        logging.info("chardet not found. Let's hope all your files are unicode")
-        chardet = None
-        
-    if chardet:
-        with open(filename, 'rb') as file:
-            content = file.read()
-        guess = chardet.detect(content)
-        logging.debug('Chardet guesses %s for %s' % (guess, filename))
-        encoding = guess.get('encoding')
-        
-        # chardet makes error here sometimes
-        if encoding in ['MacCyrillic', 'ISO-8859-7']:
-            encoding = 'ISO-8859-2'
-            
-        if encoding:
-            encodings.insert(0, encoding)
-    
-    for encoding in encodings:
-        try:
-            file = codecs.open(filename, 'rb', encoding=encoding, errors='replace')
-            data = file.read()
-            file.close()
-            return data
-        except ValueError, err:
-            logging.info(err)
-        except Exception, e:
-            logging.error(e)
-    return ''
     
 if __name__ == '__main__':
     dirs = ['/home/my journal', '/my journal/', r'C:\\Dok u E\journal',

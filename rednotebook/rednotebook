@@ -2,11 +2,11 @@
 
 # Allow running this script in source directory
 try:
-	# Load module from same directory
-	import journal
-	print 'Starting RedNotebook from the source directory'
-	journal.main()
+    # Load module from same directory
+    import journal
+    print 'Starting RedNotebook from the source directory'
+    journal.main()
 except ImportError:
-	# Load installed module
-	import rednotebook.journal
-	rednotebook.journal.main()
+    # Load installed module
+    import rednotebook.journal
+    rednotebook.journal.main()

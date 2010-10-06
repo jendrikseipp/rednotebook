@@ -269,16 +269,10 @@ def check_new_version(journal, current_version, startup=False):
         elif response == 30:
             logging.info('Checks for new versions disabled')
             journal.config['checkForNewVersion'] = 0
-    
-        
-def write_file(content, filename):
-    assert os.path.isabs(filename)
-    with open(filename, 'w') as file:
-        file.write(content)
         
 
 def show_html_in_browser(html, filename):
-    write_file(html, filename)
+    filesystem.write_file(filename, html)
     
     html_file = os.path.abspath(filename)
     html_file = 'file://' + html_file

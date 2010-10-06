@@ -653,14 +653,14 @@ def write_documentation(dir):
     Write the documenation as html to a directory
     Include the original markup as "source.txt"
     '''
-    from rednotebook.util import utils
+    from rednotebook.util import filesystem
     from rednotebook.util import markup
 
-    utils.write_file(help_text, os.path.join(dir, 'source.txt'))
+    filesystem.write_file(os.path.join(dir, 'source.txt'), help_text)
     headers = [_('RedNotebook Documentation'), version, '']
     options = {'toc': 1,}
     html = markup.convert(help_text, 'xhtml', headers, options)
-    utils.write_file(html, os.path.join(dir, 'help.html'))
+    filesystem.write_file(os.path.join(dir, 'help.html'), html)
 
 if __name__ == '__main__':
     import sys

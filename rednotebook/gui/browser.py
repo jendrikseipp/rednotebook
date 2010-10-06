@@ -159,7 +159,7 @@ class HtmlView(gtk.ScrolledWindow):
         self.loading_html = False
                                 
     def get_html(self):
-        self.webview.execute_script("document.title=document.document_element.inner_h_t_m_l;")
+        self.webview.execute_script("document.title=document.document_element.innerHTML;")
         return self.webview.get_main_frame().get_title()
 
     def set_editable(self, editable):
