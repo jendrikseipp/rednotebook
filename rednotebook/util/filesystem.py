@@ -141,7 +141,7 @@ def read_file(filename):
         with open(filename, 'rb') as file:
             content = file.read()
         guess = chardet.detect(content)
-        logging.debug('Chardet guesses %s for %s' % (guess, filename))
+        logging.info('Chardet guesses %s for %s' % (guess, filename))
         encoding = guess.get('encoding')
         
         # chardet makes errors here sometimes
