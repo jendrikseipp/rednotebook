@@ -164,14 +164,18 @@ class TemplateManager(object):
         default_date_string = '%A, %x %X'
         date_string = self.main_window.journal.config.read('dateTimeString', default_date_string)
         date = time.strftime(date_string)
+        # Turn date into unicode string
+        date = date.decode(date)
+        
         try:
-            text = text.replace('$date$', date)
+            template_text = text.replace(u'$date$', date)
         except UnicodeDecodeError, err:
             # TODO: Figure out real source of the error,
             # maybe load config with filesystem.read_file
             logging.error('Error replacing $date$: "%s"' % err)
+            template_text = text
         
-        return text
+        return template_text
         
         
     def get_weekday_text(self, date=None):

@@ -154,10 +154,11 @@ def read_file(filename):
     # Only check the first encoding
     for encoding in encodings[:1]:
         try:
+            # codecs.open returns a file object that can write unicode objects
+            # and whose read() method also returns unicode objects
+            # Internally we want to have unicode only
             with codecs.open(filename, 'rb', encoding=encoding, errors='replace') as file:
                 data = file.read()
-                if not type(data) == unicode:
-                    data = unicode(data, 'utf-8')
                 return data
         except ValueError, err:
             logging.info(err)
@@ -168,6 +169,9 @@ def read_file(filename):
     
 def write_file(filename, content):
     assert os.path.isabs(filename)
+    if not type(content) == unicode:
+        # Turn content into unicode string
+        content = content.decode('utf-8')
     try:
         with codecs.open(filename, 'wb', encoding='utf-8') as file:
             file.write(content)
@@ -334,3 +338,7 @@ if __name__ == '__main__':
     for dir in dirs:
         title = get_journal_title(dir)
         print '%s -> %s' % (dir, title)
+        
+    content = read_file('/home/jendrik/projects/Tests/encoding.txt')
+    print type(content)
+    print content

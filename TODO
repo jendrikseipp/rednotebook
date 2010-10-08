@@ -21,6 +21,7 @@ O Translate help
 O Windows: Enable spellcheck
 O Use argparse instead of optparse (Remove IndentedHelpFormatterWithNL)
 O Add "AddThis" Buttons to homepage
+O Use yaml for configuration and template files
 
 1.1.3
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -95,7 +96,7 @@ O Evolution Integration (evolution zeitgeist addon is being written by zeitgeist
 O Picture slide show in one entry with many images (in preview show nice
       javascript slide show of pics in linked picture directory) (Think about new format first)
 O HTML import?
-O Include startup date patch? (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
+O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Change an entry's category (Useful for Todo items) (KISS?)
 O Ability to make certain entries, eg. birthdays, with frequencies
 O Show warning if last backup dates to more than one month before (User should take care of that)
