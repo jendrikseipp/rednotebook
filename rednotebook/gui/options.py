@@ -128,7 +128,7 @@ class CsvTextOption(Option):
         self.pack_start(self.entry, True)
     
     def get_value(self):
-        return self.entry.get_text()
+        return self.entry.get_text().decode('utf-8')
     
     
 #class TextAndButtonOption(TextOption):
@@ -322,7 +322,6 @@ class OptionsManager(object):
         check_version_button = ActionButton(_('Check now'), check_version_action)
         check_version_option.pack_start(check_version_button, False, False)
         self.options.append(check_version_option)
-        
         
         self.options.extend([
                 FontSizeOption(_('Font Size'), 'mainFontSize'),

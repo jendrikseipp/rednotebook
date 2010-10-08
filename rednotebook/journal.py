@@ -180,7 +180,8 @@ GETTEXT_DOMAIN = 'rednotebook'
 import gettext
 
 # Adding locale to the list of modules translates gtkbuilder strings
-modules = [gettext, locale]
+modules = [#gettext, 
+            locale]
 
 # Sometimes this doesn't work though, 
 # so we try to call gtk.glade's function as well if glade is present
@@ -200,8 +201,10 @@ for module in modules:
         logging.info(err)
         
 # register the gettext function for the whole interpreter as "_"
-import __builtin__
-__builtin__._ = gettext.gettext
+#import __builtin__
+#__builtin__._ = gettext.gettext
+import gettext
+gettext.install(GETTEXT_DOMAIN, LOCALE_PATH, unicode=1)
 
 
 
