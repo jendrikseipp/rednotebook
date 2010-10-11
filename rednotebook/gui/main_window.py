@@ -1150,6 +1150,7 @@ class SearchComboBox(CustomComboBoxEntry):
         """
         self.search(self.get_active_text())
         
+        
     def on_entry_activated(self, entry):
         """
             Called when the user hits enter
@@ -1163,6 +1164,7 @@ class SearchComboBox(CustomComboBoxEntry):
             self.add_entry(search_text)
             
         self.search(self.get_active_text())
+            
             
     def search(self, search_text):
         if self.search_type == 0:

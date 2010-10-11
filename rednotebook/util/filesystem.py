@@ -173,7 +173,7 @@ def write_file(filename, content):
         # Turn content into unicode string
         content = content.decode('utf-8')
     try:
-        with codecs.open(filename, 'wb', encoding='utf-8') as file:
+        with codecs.open(filename, 'wb', encoding='utf-8', errors='replace') as file:
             file.write(content)
             file.flush()
             file.close()
