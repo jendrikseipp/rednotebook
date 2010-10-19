@@ -95,7 +95,7 @@ class CategoriesTreeView(object):
         return self.tree_store.iter_depth(iter) == 0
         
         
-    def on_editing_started(self, cell, editable, path):     
+    def on_editing_started(self, cell, editable, path):
         # Let the renderer use text not markup temporarily
         self.tvcolumn.clear_attributes(self.cell)
         self.tvcolumn.add_attribute(self.cell, 'text', 0)

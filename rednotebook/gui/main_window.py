@@ -160,6 +160,11 @@ class MainWindow(object):
             width += 30
         preview_button.set_size_request(width, -1)
         
+        # Let the edit_paned respect its childs size requests
+        edit_paned = self.builder.get_object('edit_pane')
+        text_vbox = self.builder.get_object('text_vbox')
+        edit_paned.child_set_property(text_vbox, 'shrink', False)
+        
         self.load_values_from_config()
         
         if not self.journal.start_minimized:
@@ -1433,6 +1438,10 @@ class DayTextField(object):
         # Enable drag&drop
         #self.day_text_view.connect('drag-drop', self.on_drop) # unneeded
         self.day_text_view.connect('drag-data-received', self.on_drag_data_received)
+        
+        # Sometimes making the editor window very small causes the program to freeze
+        # So we forbid that behaviour, by setting a minimum width
+        self.day_text_view.set_size_request(1, -1)
         
     def set_text(self, text, undoing=False):
         self.insert(text, overwrite=True, undoing=undoing)
