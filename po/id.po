@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-09-22 11:38+0000\n"
+"PO-Revision-Date: 2010-10-28 21:01+0000\n"
 "Last-Translator: Hertatijanto Hartono <dvertx@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-27 05:01+0000\n"
+"X-Launchpad-Export-Date: 2010-10-29 05:31+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -86,13 +86,15 @@ msgstr "Selamat Datang ke Asisten Ekspor"
 
 #: ../rednotebook/gui/exports.py:305
 msgid "This wizard will help you to export your journal to various formats."
-msgstr ""
+msgstr "Alat bantu ini akan mengekspor jurnal anda ke berbagai format."
 
 #: ../rednotebook/gui/exports.py:306
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"Anda dapat memilih hari2 yang akan di ekspor dan lokasi untuk menempatkan "
+"hasilnya."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "Select Export Format"
