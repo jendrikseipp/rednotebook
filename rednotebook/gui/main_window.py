@@ -501,10 +501,9 @@ class MainWindow(object):
         minimized, maximized, made sticky, made not sticky, shaded or 
         unshaded.   
         '''
-        state = event.new_window_state
-        maximized = state and gtk.gdk.WINDOW_STATE_MAXIMIZED
-        maximized = int(bool(maximized))
-        self.journal.config['mainFrameMaximized'] = maximized
+        if event.changed_mask & gtk.gdk.WINDOW_STATE_MAXIMIZED:
+            maximized = bool(event.new_window_state & gtk.gdk.WINDOW_STATE_MAXIMIZED)
+            self.journal.config['mainFrameMaximized'] = int(maximized)
         
         # Does not work correctly -> Track fullscreen state in program
         #self.is_fullscreen = bool(state and gtk.gdk.WINDOW_STATE_FULLSCREEN)

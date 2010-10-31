@@ -37,6 +37,7 @@ def make_transdict():
                 td[x] = unicode(n[-len(s)])
                 break
     return td
+    
 
 def coll(us, td=make_transdict()):
     '''
@@ -67,7 +68,6 @@ def test_unicode():
     print get_unicode(u'\u0411')
 
 
-
 def get_unicode_dict(dic):
     unicode_dict = {}
     for key, value in dic.items():
@@ -78,11 +78,3 @@ def get_unicode_dict(dic):
             
         unicode_dict[get_unicode(key)] = sub_dict
     return unicode_dict
-    
-    
-test_unicode()
-
-        
-    
-        
-
