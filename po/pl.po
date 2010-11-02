@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-03-13 19:58+0000\n"
-"Last-Translator: Dariusz Jakoniuk <Unknown>\n"
+"PO-Revision-Date: 2010-11-01 22:44+0000\n"
+"Last-Translator: Jarosław Ogrodnik <nobodythere@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-27 05:01+0000\n"
+"X-Launchpad-Export-Date: 2010-11-02 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
 msgid "Export all days"
-msgstr ""
+msgstr "Eksportuj wszystkie dni"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export only the days in the selected time range"
@@ -27,11 +27,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
-msgstr ""
+msgstr "Od:"
 
 #: ../rednotebook/gui/exports.py:61
 msgid "To:"
-msgstr ""
+msgstr "Do:"
 
 #: ../rednotebook/gui/exports.py:120
 msgid "Export texts"
@@ -59,11 +59,11 @@ msgstr "Wybrane kategorie"
 
 #: ../rednotebook/gui/exports.py:148
 msgid "Select"
-msgstr ""
+msgstr "Zaznacz"
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Unselect"
-msgstr ""
+msgstr "Odznacz"
 
 #: ../rednotebook/gui/exports.py:253
 msgid ""
@@ -112,7 +112,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
-msgstr ""
+msgstr "Podsumowanie"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/exports.py:381 ../rednotebook/gui/main_window.py:721
@@ -133,7 +133,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Selected categories"
-msgstr ""
+msgstr "Wybrane kategorie"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Export path"
@@ -141,11 +141,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: ../rednotebook/gui/exports.py:443
 #, python-format
@@ -177,7 +177,7 @@ msgstr "Ukryj \"%s\" z chmur"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr ""
+msgstr "Wprowadzenie"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -559,7 +559,7 @@ msgstr "Wstaw linię separatora"
 
 #: ../rednotebook/gui/main_window.py:824
 msgid "Table"
-msgstr ""
+msgstr "Tabela"
 
 #: ../rednotebook/gui/main_window.py:826
 msgid "Date/Time"
