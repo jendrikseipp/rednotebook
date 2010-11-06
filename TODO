@@ -17,23 +17,17 @@ X Highlight mixed markups (**__Bold underline__**)
 X Fix: Correctly highlight lists (LP:622456)
 O Fix Windows links (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=120)
   Probably a %20 vs. ' ' issue
-O Rethink logfile
-O Translate help
-O Windows: Enable spellcheck
-O Use argparse instead of optparse (Remove IndentedHelpFormatterWithNL)
-O Add "AddThis" Buttons to homepage
-O Use yaml for configuration and template files
 O Fix image preview in windows
-O Fix: Do not set maximized to True when sending RedNotebook to the tray (LP:657421)
+X Fix: Do not set maximized to True when sending RedNotebook to the tray (LP:657421)
 
 1.1.3
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
 X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsection====, =====Subsubsection=====)
-O Document structured headers
+X Document structured headers
 X Highlight ``, "", ''
-O Write documentation about ``, "", ''
+X Write documentation about ``, "", ''
 
 
 1.1.x
@@ -67,9 +61,15 @@ O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
 O Set title for exports
 O Get rid of python3.0 warnings
-O Remove support for the notification area (http://design.canonical.com/2010/04/notification-area/)
+O Remove support for the notification area on Linux (http://design.canonical.com/2010/04/notification-area/)
 O Only export days that have category X if category X is selected?
 O Let the next (prev) button have submenus (go to next entry, go to last entry)
+O Windows: Enable spellcheck
+O Translate help
+O Add "AddThis" Buttons to homepage
+O Rethink logfile
+O Use argparse instead of optparse (Remove IndentedHelpFormatterWithNL)
+O Use yaml for configuration and template files?
 
 
   

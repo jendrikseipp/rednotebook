@@ -278,31 +278,37 @@ todo_help_text = example_day3['text']
 
 
 help_text = '''
-==== Text ====
+== Text ==
 The main text field is the container for your normal diary entries like this one:
 
 %(example_entry)s
 
-==== Format ====
+== Format ==
 As you see, the text can be formatted **bold**, \
 //italic//, --struck through-- and __underlined__. As a convenience there \
 is also the "Format" button, with which you can format the main text and nodes \
 in the categories tree on the right.
 
-A blank line starts a new **paragraph**, \\\\ results in a newline.
-
-%% Formatting commands inside two pairs of "" are not interpreted (""**not bold**"")
-
-**Comments** can be inserted after percent signs (**%%**). They will not be shown in the \
-preview and the exports. The %% has to be the first character on the line.
+A blank line starts a new **paragraph**, two backslashes\\\\ result in a **newline**.
 
 To see the result, click on the "Preview" button.
 You can also see how \
 this text was formatted by looking at its [source source.txt].
 
+**Lists** can be created by using the following style, If you use "+" 
+instead of "-" you can create a **numbered list**.
+
+```
+- First Item
+  - Indented Item
+- Do not forget two blank lines after a list
+
+
+```
+
 %(ann_help_text)s
 
-==== Images, Files and Links ====
+== Images, Files and Links ==
 RedNotebook lets you insert images, files and links into your entries. \
 To do so, select the appropriate option in the "Insert" pull-down menu \
 above the main text field. The text will be inserted at the current \
@@ -311,14 +317,14 @@ cursor position.
 With the insert button you cannot insert **links to directories** on your computer. \
 Those can be inserted manually however (""[Home ""file:///home/""]"").
 
-==== %(templates)s ====
+== %(templates)s ==
 %(temp_par)s 
 The files 1.txt to 7.txt in the template directory correspond to the templates \
 for each day of the week. The current weekday's template will be filled \
 into the text area when you click on "Template". You can open the template files \
 from inside RedNotebook by opening the menu next to the "Template" button.
 
-==== Tags ====
+== Tags ==
 Tagging an entry (e.g. with the tag "Work") is also easy: \
 On the right, click on "Add Tag" and insert \
 "Work" into the lower textbox. The result looks like:
@@ -331,18 +337,18 @@ You can see a tag cloud on the left by activating the "Clouds" tab and \
 selecting "Tags". Get a list of all tags with a given name by clicking \
 on that tag in the cloud.
 
-==== Search ====
+== Search ==
 On the left you find the search box. You can search for text, display a \
 category's content or show all days with a given tag. \
 Double-clicking on a day lets you jump to it.
 
-==== Clouds ====
+== Clouds ==
 Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
 You can select to view your category or tag clouds by clicking on the scroll-down menu.
 If words appear in the cloud that you don't want to see there, just right-click on them. \
 Alternatively you can open the Preferences dialog and add the words to the cloud blacklist there.
 
-==== Spellcheck ====
+== Spellcheck ==
 RedNotebook supports spellchecking your entries if you have \
 python-gtkspell installed (Only available on Linux). \
 To highlight all misspelled words in your entries, select the corresponding option in \
@@ -351,14 +357,14 @@ the preferences window.
 Since gtkspell 2.0.15, you can select the spellchecking language by right-clicking on the \
 main text area (in edit mode) and choosing it from the submenu "Languages".
 
-==== Options ====
+== Options ==
 Make sure you check out the customizable options in the Preferences dialog. You can
 open this dialog by clicking on the entry in the "Edit" menu.
 
-==== Save ====
+== Save ==
 %(save1)s %(save2)s %(save3)s
 
-==== Export ====
+== Export ==
 %(save4)s %(save5)s
 
 Since version 0.9.2 you can also directly export your journal to PDF. If the \
@@ -374,7 +380,7 @@ Make sure to type all links with the full path including the protocol:
 - file:///home/sam/myfile.txt (--/home/sam/myfile.txt--)
 
 
-==== Synchronize across multiple computers ====[sync]
+== Synchronize across multiple computers ==[sync]
 Syncing RedNotebook with a remote server is easy. You can either use a \
 cloud service like Ubuntu One or Dropbox or save your journal to your \
 own server.
@@ -417,7 +423,7 @@ the file "rednotebook/files/default.cfg". There you can set the value of \
 userDir to the path where you want to share your settings between the \
 systems.
 
-==== Portable mode ====
+== Portable mode ==
 RedNotebook can be run in portable mode. In this mode, the \
 template directory and the configuration and log file are saved \
 in the application directory instead of in the home directory. \
@@ -432,14 +438,14 @@ portable mode.
 To **activate portable mode**, change into the files/ directory and in the \
 default.cfg file set portable=1.
 
-=== Convert Latex output to PDF ===
+== Convert Latex output to PDF ==
 
 In recent RedNotebook versions you can export your journal directly to PDF, \
 so this section may be obsolete. \
 However, there may be some people who prefer to export their \
 journal to Latex first and convert it to PDF later. Here is how you do it:
 
-== Linux ==
+=== Linux ===
 
 For the conversion on Linux you need some extra packages: texlive-latex-base and \
 texlive-latex-recommended. Maybe you also need texlive-latex-extra. Those contain \
@@ -447,7 +453,7 @@ the pdflatex program and are available in the repositories of most Linux distros
 
 You can convert the .tex file by typing the following text in a command line: \
 
-"""pdflatex your-rednotebook-export.tex"""
+``pdflatex your-rednotebook-export.tex``
 
 Alternatively you can install a Latex editor like Kile \
 (http://kile.sourceforge.net/), open the .tex file with it and hit the export \
@@ -462,7 +468,7 @@ If you run into any problems during the conversion, the easiest way to solve \
 them is to install a latex editor and do the conversion with it. That way \
 you can see the errors right away and get rid of them by editing the file.
 
-== Windows ==
+=== Windows ===
 
 You can open an exported Latex file with Texniccenter and convert it to PDF \
 with MikTex. Visit www.texniccenter.org/ and www.miktex.org \
@@ -471,7 +477,7 @@ open the .tex file with Texniccenter and select "Build Output" from the \
 "Output" menu. The program will then create the beautifully looking PDF in the
 same directory.
 
-==== Keyboard Shortcuts ====
+== Keyboard Shortcuts ==
 ||   Action          |   Shortcut             |
 | Preview (On/Off)   | <Ctrl> + P             |
 | Find               | <Ctrl> + F             |
@@ -484,7 +490,7 @@ same directory.
 
 You can find other shortcuts in the menus.
 
-==== Encryption ====
+== Encryption ==
 You can use e.g. [TrueCrypt http://www.truecrypt.org] to encrypt your \
 journal. Nick Bair has written a nice tutorial about \
 [encrypting RedNotebook files \
@@ -500,7 +506,7 @@ This method is especially useful for laptop users, because their \
 computers are more likely to be stolen. If you encrypt your home \
 partition all RedNotebook data will be encrypted, too.
 
-==== Tips ====
+== Tips ==
 %(multiple_entries_text)s
 
 %(todo_help_text)s
@@ -523,6 +529,16 @@ however once you close the terminal.
 On Windows, set or create a PATH environment variable with the desired \
 code.
 
+=== Titles ===
+You can insert titles into your post by adding "="s around your title
+text. = My Title = is the biggest heading, ====== My Title ====== is 
+the smallest heading. A title line can only contain the title, nothing 
+else.
+
+Numbered titles can be created by using "+" instead of "=". 
+""+ My Title +"" produces a title like "1.", ++++++ My Title ++++++
+produces a title like 0.0.0.0.0.1
+
 === Insert HTML or Latex code ===
 To insert custom code into your entries surround the code with single \
 quotes. Use 2 single quotes for inline insertions and 3 single quotes \
@@ -538,13 +554,13 @@ This feature can be used to insert e.g. latex formulas:
 
 ```
 \'''
-$$\sum_{i=1}^{n} i = \\frac{n \cdot (n+1)}{2}$$
+==\sum_{i=1}^{n} i = \\frac{n \cdot (n+1)}{2}==
 \'''
 ```
 
 will produce a nice looking formula in the Latex export.
 
-=== Insert verbatim text (Preserve format) ===
+=== Verbatim text (Preserve format) ===
 To insert preformatted text preserving newlines and spaces, you can \
 use the backquotes (`). Use 2 backquotes for inline insertions and 3 \
 backquotes if you want to insert a whole paragraph. \
@@ -564,12 +580,19 @@ robot = Robot()
 robot.greet()
 ```
 
+=== Unparsed text ===
+Formatting commands inside two pairs of "" are not interpreted (""**not bold**"").
+
+=== Comments ===
+Comments can be inserted after percent signs (**%%**). They will not be shown in the \
+preview and the exports. The %% has to be the first character on the line.
+
 === List of all Entries ===
 To get a list of all entries, just search for " " (the space character). \
 This character is most likely included in all entries. You can sort the \
 resulting list chronologically by pressing the "Date" button.
 
-==== Command line options ====
+== Command line options ==
 ```
 Usage: rednotebook [options] [journal-path]
 
@@ -592,7 +615,7 @@ Options:
   -m, --minimized   Start mimimized to system tray (default: False)
 ```
 
-==== Data Format ====
+== Data Format ==
 In this paragraph I will explain shortly what the RedNotebook files \
 consist of. Firstly it is important to understand that the content \
 is saved in a directory with many files, not just one file. \
@@ -621,12 +644,12 @@ the main content area. Additionally there can be multiple other keys \
 that stand for the categories that belong to that day. Each category \
 contains a dictionary with only one key, the category entry.
 
-==== Questions ====
+== Questions ==
 If you have any questions or comments, feel free to post them in the \
 [forum http://apps.sourceforge.net/phpbb/rednotebook/] or \
 contact me directly.
 
-==== Bugs ====
+== Bugs ==
 There is no software without bugs, so if you encounter one please drop me a note.
 This way RedNotebook can get better not only for you, but for all users.
 
@@ -668,7 +691,7 @@ if __name__ == '__main__':
 
     print completeWelcomeText
     print '*'*80
-    print helpText
+    print help_text
 
     doc_dir = '../doc'
     doc_dir = os.path.abspath(doc_dir)
