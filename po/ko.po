@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-11-10 05:04+0000\n"
+"PO-Revision-Date: 2010-11-10 05:24+0000\n"
 "Last-Translator: sunsun <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-10 05:05+0000\n"
+"X-Launchpad-Export-Date: 2010-11-11 04:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -379,7 +379,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:279
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "데스크탑용 저널(일지)"
 
 #: ../rednotebook/gui/categories.py:49 tmp/main_window.glade.h:10
 msgid "Categories"
@@ -442,7 +442,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:526
 msgid "Select an existing journal directory"
-msgstr ""
+msgstr "기존 저널(일지) 디텍토리를 선택하십시오"
 
 #: ../rednotebook/gui/main_window.py:528
 msgid "The directory should contain your journal's data files"
@@ -529,7 +529,7 @@ msgstr "링크(_L)"
 
 #: ../rednotebook/gui/main_window.py:810
 msgid "Insert a link to a website"
-msgstr ""
+msgstr "웹사이트(페이지)의 링크를 삽입합니다"
 
 #: ../rednotebook/gui/main_window.py:812
 msgid "Bullet List"
@@ -553,7 +553,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:824
 msgid "Table"
-msgstr ""
+msgstr "테이블"
 
 #: ../rednotebook/gui/main_window.py:826
 msgid "Date/Time"
