@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-08-13 13:04+0000\n"
-"Last-Translator: Peter Schelleman <Unknown>\n"
+"PO-Revision-Date: 2010-11-21 18:35+0000\n"
+"Last-Translator: Walco van Loon <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-27 05:01+0000\n"
+"X-Launchpad-Export-Date: 2010-11-22 04:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/main_window.py:318
@@ -493,7 +493,7 @@ msgstr "Doorhalen"
 
 #: ../rednotebook/gui/main_window.py:722
 msgid "Format the selected text or category entry"
-msgstr "Formateer de gekozen tekst of categorie"
+msgstr "Kies opmaak voor de gekozen tekst of categorie"
 
 #: ../rednotebook/gui/main_window.py:771
 msgid "First Item"
@@ -979,7 +979,7 @@ msgstr "Kies waar te zoeken"
 
 #: tmp/main_window.glade.h:35
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr "Toon een geformateerd voorbeeld van de tekst(Ctrl+P)"
+msgstr "Toon een opgemaakt voorbeeld van de tekst (Ctrl+P)"
 
 #. ## This stands for the verb in "Tag this day"
 #: tmp/main_window.glade.h:38
@@ -1005,4 +1005,5 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Fly-Man- https://launchpad.net/~flyman\n"
 "  Peter Schelleman https://launchpad.net/~peterschelleman\n"
-"  Tom https://launchpad.net/~d9ping"
+"  Tom https://launchpad.net/~d9ping\n"
+"  Walco van Loon https://launchpad.net/~wwwalco"
