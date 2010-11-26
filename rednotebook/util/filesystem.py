@@ -293,6 +293,28 @@ def system_call(args):
     
 
 
+def normalize_win_url(url):
+    logging.debug('Normalizing URL: %s' % url)
+    if url.startswith('file://'):
+        url = url.replace('file://', '')
+    url = url.replace('%20', ' ')
+    url = os.path.normpath(url)
+    # Check if colon has been omitted
+    if url[1] == "\\":
+        url = url[0] + ':' + url[1:]
+    logging.debug('Normalized URL:  %s' % url)
+    return url
+    
+def test_normalize_win_url():
+    if not sys.platform == 'win32':
+        return
+    assert normalize_win_url('C:\\a b\\c d.jpg') == 'C:\\a b\\c d.jpg'
+    assert normalize_win_url('C\\a b\\c d.jpg') == 'C:\\a b\\c d.jpg'
+    assert normalize_win_url('C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
+    assert normalize_win_url('file://C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
+    assert normalize_win_url('file://C/a%20b/c d.jpg') == 'C:\\a b\\c d.jpg'
+     
+
 def open_url(url):
     '''
     Opens a file with the platform's preferred method
@@ -301,11 +323,12 @@ def open_url(url):
     # Try opening the file locally
     if sys.platform == 'win32':
         try:
+            url = normalize_win_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
-            os.startfile(os.path.normpath(url))
+            os.startfile(url)
             return
-        except OSError:
+        except (WindowsError, OSError):
             logging.exception('Opening %s with "os.startfile" failed' % url)
     
     elif sys.platform == 'darwin':
@@ -340,7 +363,10 @@ if __name__ == '__main__':
     for dir in dirs:
         title = get_journal_title(dir)
         print '%s -> %s' % (dir, title)
-        
-    content = read_file('/home/jendrik/projects/Tests/encoding.txt')
-    print type(content)
-    print content
+    
+    
+    test_normalize_win_url()
+
+    #content = read_file('/home/jendrik/projects/Tests/encoding.txt')
+    #print type(content)
+    #print content
