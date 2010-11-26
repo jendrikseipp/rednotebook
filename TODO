@@ -19,6 +19,7 @@ O Fix Windows links (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.ph
   Probably a %20 vs. ' ' issue
 O Fix image preview in windows
 X Fix: Do not set maximized to True when sending RedNotebook to the tray (LP:657421)
+O Fix: About dialog on windows
 
 1.1.3
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -70,6 +71,10 @@ O Add "AddThis" Buttons to homepage
 O Rethink logfile
 O Use argparse instead of optparse (Remove IndentedHelpFormatterWithNL)
 O Use yaml for configuration and template files?
+O Select template file when clicking the button instead of adding weekday's file?
+O Ensure that date in export is bigger than rest of text
+O Fix txt2tags for turkish locale
+O Remember export and backup locations
 
 
   
@@ -107,7 +112,10 @@ O Change an entry's category (Useful for Todo items) (KISS?)
 O Ability to make certain entries, eg. birthdays, with frequencies
 O Show warning if last backup dates to more than one month before (User should take care of that)
 O Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
-  
+O let editor change to edit mode when viewing today's record and to preview mode when viewing any other record
+  https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=140
+O make date format configurable for exports (probably no one needs this as i18n already exists)
+  https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=139
 
 
 
@@ -117,7 +125,6 @@ O Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednoteb
 - verbatim / raw ( """/"" - supported, undocumented) (too confusing / poorly behaving)
 - remote pictures (pictures would have to be downloaded and saved in a folder for exports)
 - dataDir Lock (for multiple TRN instances) (unneeded)
-- make date format configurable for exports (probably no one needs this as i18n already exists)
 - Tags in text entries (e.g. @film:Batman) (KISS)
 - remove search for categories and tags, as clouds already do that (Unituitive and not trivial to remove)
 - Copy/Paste category entries (Too complicated)

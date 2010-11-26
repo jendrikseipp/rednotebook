@@ -169,9 +169,9 @@ def read_file(filename):
     
 def write_file(filename, content):
     assert os.path.isabs(filename)
-    if not type(content) == unicode:
+    #if not type(content) == unicode:
         # Turn content into unicode string
-        content = content.decode('utf-8')
+    #    content = content.decode('utf-8')
     try:
         with codecs.open(filename, 'wb', encoding='utf-8', errors='replace') as file:
             file.write(content)
