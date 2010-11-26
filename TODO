@@ -75,6 +75,7 @@ O Select template file when clicking the button instead of adding weekday's file
 O Ensure that date in export is bigger than rest of text
 O Fix txt2tags for turkish locale
 O Remember export and backup locations
+O Windows: Add correct newline character for editing previews in notepad
 
 
   
