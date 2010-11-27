@@ -185,6 +185,7 @@ class MainWindow(object):
             #'on_calendar_day_selected': self.on_calendar_day_selected,
             
             'on_preview_button_clicked': self.on_preview_button_clicked,
+            'on_edit_button_clicked': self.on_edit_button_clicked,
             
             'on_main_frame_configure_event': self.on_main_frame_configure_event,
             'on_main_frame_window_state_event': self.on_main_frame_window_state_event,
@@ -384,30 +385,25 @@ class MainWindow(object):
         setattr(self.stats_dialog, 'day_list', day_list)
         for list in [overall_list, day_list]:
             list.set_headers_visible(False)
-            
-            
-    def on_preview_button_clicked(self, button):
+        
+        
+    def change_mode(self, preview):
         self.journal.save_old_day()
         
         text_scrolledwindow = self.builder.get_object('text_scrolledwindow')
         template_button = self.builder.get_object('template_menu_button')
         
+        edit_button = self.builder.get_object('edit_button')
+        preview_button = self.builder.get_object('preview_button')
+        
+        size_group = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+        size_group.add_widget(edit_button)
+        size_group.add_widget(preview_button)
+        
         # Do not forget to update the text in editor and preview respectively
         
-        if self.preview_mode:
-            # Enter edit mode
-            self.day_text_field.set_text(self.day.text, undoing=True)
-            self.day_text_field.day_text_view.grab_focus()
-            
-            text_scrolledwindow.show()
-            self.html_editor.hide()
-            self.preview_button.set_stock_id('gtk-media-play')
-            ### Translators: Verb
-            self.preview_button.set_label(_('Preview'))
-            
-            self.preview_mode = False
-        else:
-            # Enter preview mode            
+        if preview:
+            # Enter preview mode
             text_scrolledwindow.hide()
             self.html_editor.show()
             day = self.journal.day
@@ -416,15 +412,28 @@ class MainWindow(object):
             
             self.html_editor.load_html(html)
             
-            self.preview_button.set_stock_id('gtk-edit')
-            #self.preview_button.set_label(' '*3 + 'Edit' + ' '*4)
-            self.preview_button.set_label(_('Edit'))
+            edit_button.show()
+            preview_button.hide()
+        else:
+            # Enter edit mode
+            self.day_text_field.set_text(self.day.text, undoing=True)
+            self.day_text_field.day_text_view.grab_focus()
             
-            self.preview_mode = True
+            text_scrolledwindow.show()
+            self.html_editor.hide()
             
-        template_button.set_sensitive(not self.preview_mode)
-        self.single_menu_toolbutton.set_sensitive(not self.preview_mode)
-        self.format_toolbutton.set_sensitive(not self.preview_mode)
+            preview_button.show()
+            edit_button.hide()
+            
+        template_button.set_sensitive(not preview)
+        self.single_menu_toolbutton.set_sensitive(not preview)
+        self.format_toolbutton.set_sensitive(not preview)
+        
+    def on_edit_button_clicked(self, button):
+        self.change_mode(preview=False)
+        
+    def on_preview_button_clicked(self, button):
+        self.change_mode(preview=True)
         
             
     def setup_search(self):

@@ -14,22 +14,20 @@ Bugfixes only
 X Add fullscreen mode (F11)
 X Highlight all found occurences of the searched word
 X Highlight mixed markups (**__Bold underline__**)
+X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsection====, =====Subsubsection=====)
+X Document structured headers
+X Highlight ``, "", ''
+X Write documentation about ``, "", ''
+X Let the preview and edit button have the same size
 X Fix: Correctly highlight lists (LP:622456)
-O Fix Windows links (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=120)
-  Probably a %20 vs. ' ' issue
-O Fix image preview in windows
 X Fix: Do not set maximized to True when sending RedNotebook to the tray (LP:657421)
-O Fix: About dialog on windows
+X Windows: Fix opening linked files (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=120)
+O Windows: Fix image preview
 
 1.1.3
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
-X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsection====, =====Subsubsection=====)
-X Document structured headers
-X Highlight ``, "", ''
-X Write documentation about ``, "", ''
-
 
 1.1.x
 O Use Zeitgeist for automatic category entries
@@ -76,6 +74,7 @@ O Ensure that date in export is bigger than rest of text
 O Fix txt2tags for turkish locale
 O Remember export and backup locations
 O Windows: Add correct newline character for editing previews in notepad
+O Fix local links with whitespace in latex
 
 
   
