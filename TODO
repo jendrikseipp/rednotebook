@@ -75,6 +75,8 @@ O Fix txt2tags for turkish locale
 O Remember export and backup locations
 O Windows: Add correct newline character for editing previews in notepad
 O Fix local links with whitespace in latex
+O Search in annotations
+O Use new txt2tags version when it supports turkish locale
 
 
   
@@ -93,6 +95,7 @@ O Image resizing with PIL? (Image module) (Figure out where to save new files fi
 2.x
 O Think about using desktop-couch?
 O Use categories for number data and present it graphically (KMs, Cash, Calories)
+O RTF export
 
 
 

@@ -489,7 +489,7 @@ class Journal:
         if not self.dirs.portable:
             self.config['dataDir'] = data_dir
         else:
-            rel_data_dir = filesystem.get_relative_path(self.dirs.appDir, data_dir)
+            rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config['dataDir'] = rel_data_dir
     
         
