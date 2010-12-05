@@ -149,23 +149,15 @@ class MainWindow(object):
         self.preview_mode = False
         self.preview_button = self.builder.get_object('preview_button')
         
-        # Let the preview button always have the same size        
-        preview_button = self.preview_button
-        preview_button.realize()
-        width_edit = get_button_width(preview_button, _('Edit'))
-        width_preview = get_button_width(preview_button, _('Preview'))
-        width = max([width_edit, width_preview])
-        if sys.platform == 'win32':
-            # Calculation does not work on windows
-            width += 30
-        preview_button.set_size_request(width, -1)
-        
         # Let the edit_paned respect its childs size requests
         edit_paned = self.builder.get_object('edit_pane')
         text_vbox = self.builder.get_object('text_vbox')
         edit_paned.child_set_property(text_vbox, 'shrink', False)
         
         self.load_values_from_config()
+        
+        if not sys.platform == 'win32':
+            self.main_frame.set_position(gtk.WIN_POS_CENTER)
         
         if not self.journal.start_minimized:
             self.main_frame.show()

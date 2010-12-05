@@ -55,7 +55,6 @@
     </data>
   </object>
   <object class="GtkWindow" id="main_frame">
-    <property name="window_position">center</property>
     <signal name="configure_event" handler="on_main_frame_configure_event"/>
     <signal name="delete_event" handler="on_main_frame_delete_event"/>
     <signal name="window_state_event" handler="on_main_frame_window_state_event"/>
