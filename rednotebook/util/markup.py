@@ -20,6 +20,7 @@
 from __future__ import with_statement
 
 import os
+import sys
 import logging
 
 import pango
@@ -163,9 +164,18 @@ def _get_config(type):
         config['preproc'].append([r'\[""', r'["""'])
         config['preproc'].append([r'""\.', r'""".'])
         
+        scheme = 'file:///' if sys.platform == 'win32' else 'file://'
+        
         # For images we have to omit the file:// prefix
-        config['postproc'].append([r'includegraphics\{(.*)"file://', r'includegraphics{"\1'])
+        config['postproc'].append([r'includegraphics\{(.*)"%s' % scheme, r'includegraphics{"\1'])
         #config['postproc'].append([r'includegraphics\{"file://', r'includegraphics{"'])
+        
+        # Special handling for LOCAL file links (Omit scheme, add run:)
+        # \htmladdnormallink{file.txt}{file:///home/user/file.txt}
+        # -->
+        # \htmladdnormallink{file.txt}{run:/home/user/file.txt}
+        config['postproc'].append([r'htmladdnormallink\{(.*)\}\{%s(.*)\}' % scheme, 
+                                   r'htmladdnormallink{\1}{run:\2}'])
         
         # Allow line breaks, r'\\\\' are 2 \ for regexes
         config['postproc'].append([r'\$\\backslash\$\$\\backslash\$', r'\\\\'])
@@ -349,10 +359,7 @@ if __name__ == '__main__':
 normal text, normal_text_with_underscores and ""raw_text_with_underscores""
 
 [Link ""http://www.co.whatcom.wa.us/health/environmental/site_hazard/sitehazard.jsp""]
-
-[hs_err_pid13673.log ""file:///home/jendrik/hs_err_pid13673.log""]
-
-[""/home/jendrik/Desktop/desktop pics/bg8_karte_s1_rgb"".jpg]'''
+'''
 
     
     

@@ -291,35 +291,6 @@ def system_call(args):
     '''
     subprocess.Popen(args)
     
-
-
-def normalize_win_url(url):
-    '''
-    Needed for windows file links
-    '''
-    logging.debug('Normalizing URL: %s' % url)
-    if url.startswith('file:///'):
-        url = url.replace('file:///', '')
-    if url.startswith('file://'):
-        url = url.replace('file://', '')
-    url = url.replace('%20', ' ')
-    url = os.path.normpath(url)
-    # Check if colon has been omitted
-    if url[1] == "\\":
-        url = url[0] + ':' + url[1:]
-    logging.debug('Normalized URL:  %s' % url)
-    return url
-    
-def test_normalize_win_url():
-    if not sys.platform == 'win32':
-        return
-    assert normalize_win_url('C:\\a b\\c d.jpg') == 'C:\\a b\\c d.jpg'
-    assert normalize_win_url('C\\a b\\c d.jpg') == 'C:\\a b\\c d.jpg'
-    assert normalize_win_url('C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
-    assert normalize_win_url('file://C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
-    assert normalize_win_url('file://C/a%20b/c d.jpg') == 'C:\\a b\\c d.jpg'
-    assert normalize_win_url('file:///C/a%20b/c d.jpg') == 'C:\\a b\\c d.jpg'
-    
     
 def get_local_url(url):
     '''
@@ -346,7 +317,7 @@ def open_url(url):
     # Try opening the file locally
     if sys.platform == 'win32':
         try:
-            #url = normalize_win_url(url)
+            url = get_local_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
             os.startfile(url)
