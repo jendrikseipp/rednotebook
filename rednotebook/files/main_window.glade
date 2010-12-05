@@ -295,6 +295,7 @@
                                 <property name="label" translatable="yes">Edit</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-edit</property>
+                                <accelerator key="p" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                 <signal name="clicked" handler="on_edit_button_clicked"/>
                               </object>
                               <packing>
