@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-12-03 06:36+0000\n"
+"PO-Revision-Date: 2010-12-05 03:40+0000\n"
 "Last-Translator: BlueForest <eigenjin@ku.edu>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-04 05:18+0000\n"
+"X-Launchpad-Export-Date: 2010-12-05 04:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -755,7 +755,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:93
 msgid "An entry could look like this:"
-msgstr ""
+msgstr "항목은 다음과 같습니다 :"
 
 #: ../rednotebook/info.py:94
 msgid ""
@@ -839,7 +839,7 @@ msgstr "아이디어"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "좋은 일정관리 프로그램을 사용합니다"
 
 #: tmp/main_window.glade.h:1
 msgid "<b>Current Day</b>"
