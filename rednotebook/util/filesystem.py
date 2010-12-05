@@ -298,6 +298,8 @@ def normalize_win_url(url):
     Needed for windows file links
     '''
     logging.debug('Normalizing URL: %s' % url)
+    if url.startswith('file:///'):
+        url = url.replace('file:///', '')
     if url.startswith('file://'):
         url = url.replace('file://', '')
     url = url.replace('%20', ' ')
@@ -316,6 +318,7 @@ def test_normalize_win_url():
     assert normalize_win_url('C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
     assert normalize_win_url('file://C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
     assert normalize_win_url('file://C/a%20b/c d.jpg') == 'C:\\a b\\c d.jpg'
+    assert normalize_win_url('file:///C/a%20b/c d.jpg') == 'C:\\a b\\c d.jpg'
     
     
 def get_local_url(url):
