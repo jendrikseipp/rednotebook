@@ -294,6 +294,9 @@ def system_call(args):
 
 
 def normalize_win_url(url):
+    '''
+    Needed for windows file links
+    '''
     logging.debug('Normalizing URL: %s' % url)
     if url.startswith('file://'):
         url = url.replace('file://', '')
@@ -313,6 +316,23 @@ def test_normalize_win_url():
     assert normalize_win_url('C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
     assert normalize_win_url('file://C/a b/c d.jpg') == 'C:\\a b\\c d.jpg'
     assert normalize_win_url('file://C/a%20b/c d.jpg') == 'C:\\a b\\c d.jpg'
+    
+    
+def get_local_url(url):
+    '''
+    Sanitize url, make it absolute and normalize it, then add file://(/) scheme
+    '''
+    orig_url = url
+    if url.startswith('file:///') and sys.platform == 'win32':
+        url = url.replace('file:///', '')
+    if url.startswith('file://'):
+        url = url.replace('file://', '')
+    url = os.path.normpath(url)
+    
+    scheme = 'file:///' if sys.platform == 'win32' else 'file://'
+    url = scheme + url
+    logging.debug('Transformed local URI %s to %s' % (orig_url, url))
+    return url
      
 
 def open_url(url):
@@ -323,7 +343,7 @@ def open_url(url):
     # Try opening the file locally
     if sys.platform == 'win32':
         try:
-            url = normalize_win_url(url)
+            #url = normalize_win_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
             os.startfile(url)

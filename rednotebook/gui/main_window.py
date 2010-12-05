@@ -925,8 +925,7 @@ class MainWindow(object):
             
             # On windows firefox accepts absolute filenames only 
             # with the file:// prefix
-            if not base.startswith('file://'):
-                base = 'file://' + base
+            base = filesystem.get_local_url(base)
                 
             self.day_text_field.insert('[""%s""%s]' % (base, ext))
             
@@ -941,8 +940,9 @@ class MainWindow(object):
         if response == gtk.RESPONSE_OK:
             dirs.last_file_dir = file_chooser.get_current_folder()
             filename = file_chooser.get_filename()
-            filename = os.path.normpath(filename)
-            filename = 'file://' + filename
+            #filename = os.path.normpath(filename)
+            #filename = 'file://' + filename
+            filename = filesystem.get_local_url(filename)
             head, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s
             self.day_text_field.insert('[%s ""%s""]' % (tail, filename))

@@ -77,6 +77,7 @@ O Windows: Add correct newline character for editing previews in notepad
 O Fix local links with whitespace in latex
 O Search in annotations
 O Use new txt2tags version when it supports turkish locale
+O "Export currently visible day only" option
 
 
   
@@ -119,6 +120,8 @@ O let editor change to edit mode when viewing today's record and to preview mode
   https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=140
 O make date format configurable for exports (probably no one needs this as i18n already exists)
   https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=139
+O Add additional one-click menu (like the one with Search and Tags Cloud) that contains quick links to other journals
+  (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23&sid=210fbd0a19cc2d2d5baec8c5cafb7c1f&p=582#p583)
 
 
 
