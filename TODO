@@ -30,6 +30,7 @@ X Windows: Fix image preview (LP:663944)
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
+O Fix: Special characters inflate cloud black-/whitelist
 
 1.1.x
 O Use Zeitgeist for automatic category entries

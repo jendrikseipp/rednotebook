@@ -421,6 +421,8 @@ class MainWindow(object):
         self.single_menu_toolbutton.set_sensitive(not preview)
         self.format_toolbutton.set_sensitive(not preview)
         
+        self.preview_mode = preview
+        
     def on_edit_button_clicked(self, button):
         self.change_mode(preview=False)
         
