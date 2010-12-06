@@ -261,7 +261,7 @@ if 'py2exe' in sys.argv:
                                     ('images', glob(join('rednotebook', 'images', '*.png'))),
                                     ('images/rednotebook-icon', \
                                         glob(join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),
-                                    ('.', [r'C:\GTK\libintl-8.dll']),
+                                    #('.', [r'C:\GTK\libintl-8.dll']),
                                     # Bundle the visual studio files
                                     ("Microsoft.VC90.CRT", ['win/Microsoft.VC90.CRT.manifest', 'win/msvcr90.dll']),
                                     ])
