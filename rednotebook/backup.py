@@ -23,17 +23,17 @@ import logging
 from rednotebook.util import filesystem
 
 class Archiver(object):
-	def __init__(self, journal):
-		self.journal = journal
-	
-	def backup(self, backup_file):
-		data_dir = self.journal.dirs.data_dir
-		archive_files = []
-		for root, dirs, files in os.walk(data_dir):
-			for file in files:
-				if not file.endswith('~'):
-					archive_files.append(os.path.join(root, file))
-		
-		filesystem.write_archive(backup_file, archive_files, data_dir)
-		
-		logging.info('The content has been exported to %s' % backup_file)
+    def __init__(self, journal):
+        self.journal = journal
+    
+    def backup(self, backup_file):
+        data_dir = self.journal.dirs.data_dir
+        archive_files = []
+        for root, dirs, files in os.walk(data_dir):
+            for file in files:
+                if not file.endswith('~'):
+                    archive_files.append(os.path.join(root, file))
+        
+        filesystem.write_archive(backup_file, archive_files, data_dir)
+        
+        logging.info('The content has been exported to %s' % backup_file)
