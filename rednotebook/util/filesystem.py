@@ -366,10 +366,3 @@ if __name__ == '__main__':
     for dir in dirs:
         title = get_journal_title(dir)
         print '%s -> %s' % (dir, title)
-    
-    
-    test_normalize_win_url()
-
-    #content = read_file('/home/jendrik/projects/Tests/encoding.txt')
-    #print type(content)
-    #print content

@@ -345,7 +345,7 @@ ext = r'png|jpe?g|gif|eps|bmp'
 pic = Pattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext), \
         [(1, 'gray'), (2, 'green'), (3, 'gray'), (4, 'green'), (5, 'gray'), (6, 'gray')], flags='I')
 
-# named link on hdd [hs err_pid9204.log ""file:///home/jendrik/hs err_pid9204.log""]
+# named link on hdd [my file.txt ""file:///home/user/my file.txt""]
 # named link in web [heise ""http://heise.de""]
 named_link = Pattern(r'(\[)(.*?)\s("")(\S.*?\S)(""\])', \
         [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')], flags='LI')
@@ -393,7 +393,8 @@ if __name__ == '__main__':
 
 **a//b//c** //a**b**c// __a**b**c__ __a//b//c__
     
-text [link 1 ""http://en.wikipedia.org/wiki/Personal_wiki#Free_software""] another text [link2 ""http://digitaldump.wordpress.com/projects/rednotebook/""] end
+text [link 1 ""http://en.wikipedia.org/wiki/Personal_wiki#Free_software""] another text 
+[link2 ""http://digitaldump.wordpress.com/projects/rednotebook/""] end
 
 pic [""/home/user/Desktop/RedNotebook pic"".png] pic [""/home/user/Desktop/RedNotebook pic"".png]
 == Main==[oho] 
@@ -414,7 +415,7 @@ pic [""/home/user/Desktop/RedNotebook pic"".png] pic [""/home/user/Desktop/RedNo
 ```
 [heise ""http://heise.de""]
 ```
-www.heise.de, alex@web.de
+www.heise.de, andy@web.de
 
 ''$a^2$''  ""über oblique""  ``code mit python``
 
