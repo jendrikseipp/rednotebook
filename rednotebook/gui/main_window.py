@@ -25,6 +25,7 @@ import urllib
 import urlparse
 import webbrowser
 import logging
+from xml.sax.saxutils import escape
 
 import gtk
 import gobject
@@ -1395,7 +1396,8 @@ class SearchTreeView(object):
                     # but the text should only be bold where the search text occurs
                     entry = markup.convert_to_pango(entry)
                 else:
-                    entry = entry.replace('&', '&amp;')
+                    entry = escape(entry)
+                    entry = entry.replace('STARTBOLD', '<b>').replace('ENDBOLD', '</b>')
                 self.tree_store.append([date_string, entry])
                 
                 
