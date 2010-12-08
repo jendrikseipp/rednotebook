@@ -324,6 +324,7 @@ def open_url(url):
     '''
     if url.startswith('http'):
         open_url_in_browser(url)
+        return
         
     # Try opening the file locally
     if sys.platform == 'win32':
