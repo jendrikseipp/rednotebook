@@ -24,6 +24,7 @@ import zipfile
 import subprocess
 import logging
 import codecs
+import webbrowser
 from glob import glob
 
 
@@ -307,17 +308,28 @@ def get_local_url(url):
     url = scheme + url
     logging.debug('Transformed local URI %s to %s' % (orig_url, url))
     return url
+    
+
+def open_url_in_browser(url):
+    try:
+        logging.info('Trying to open %s with webbrowser' % url)
+        webbrowser.open(url)
+    except webbrowser.Error:
+        logging.exception('Failed to open web browser')
      
 
 def open_url(url):
     '''
     Opens a file with the platform's preferred method
     '''
+    if url.startswith('http'):
+        open_url_in_browser(url)
         
     # Try opening the file locally
     if sys.platform == 'win32':
         try:
-            url = get_local_url(url)
+            if uri_is_local(url):
+                url = get_local_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
             os.startfile(url)
@@ -343,12 +355,8 @@ def open_url(url):
             logging.exception('Opening %s with xdg-open failed' % url)
         
     # If everything failed, try the webbrowser
-    import webbrowser
-    try:
-        logging.info('Trying to open %s with webbrowser' % url)
-        webbrowser.open(url)
-    except webbrowser.Error:
-        logging.exception('Failed to open web browser')
+    open_url_in_browser(url)
+    
         
     
 if __name__ == '__main__':
