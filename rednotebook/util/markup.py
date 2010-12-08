@@ -38,28 +38,6 @@ from rednotebook.util import filesystem
 from rednotebook.util import dates
 from rednotebook.util import utils
 
-use_mathjax = False
-
-mathjax_header = '''\
-<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/mathjax/MathJax.js">
-  MathJax.Hub.Config({
-    extensions: ["tex2jax.js","TeX/noErrors.js"],
-    jax: ["input/TeX","output/HTML-CSS"],
-    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
-  });
-</script>
-'''
-
-mathjax_header = '''\
-<script src="/home/jendrik/projects/RedNotebook/journalgeist/rednotebook/external/mathjax/MathJax.js">
-  MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX","output/HTML-CSS"],
-    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
-  });
-</script>
-'''
-
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -149,10 +127,6 @@ def _get_config(type):
         
         # Apply image resizing
         config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
-        
-        if use_mathjax:
-            # Insert MathJax Header
-            config['postproc'].append(['</head>', mathjax_header + '</head>'])
         
     elif type == 'tex':
         config['encoding'] = 'utf8'
