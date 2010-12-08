@@ -139,7 +139,7 @@ class Day(object):
         word_list = self.text.split()
         real_words = []
         for word in word_list:
-            word = word.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]')
+            word = word.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]\\')
             if len(word) > 0:
                 real_words.append(word)
         return real_words

@@ -82,6 +82,9 @@ O Search in annotations
 O Use new txt2tags version when it supports turkish locale
 O "Export currently visible day only" option
 O Do not write empty month files to disk
+O Update search window when a annotation has been added/changed
+O install .mo files (translations) in the standard directories
+X Add "\" to the list of ignored chars for word clouds
 
 
   
