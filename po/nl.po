@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-12-13 23:10+0000\n"
+"PO-Revision-Date: 2010-12-15 21:18+0000\n"
 "Last-Translator: Redmar <redmar@ubuntu-nl.org>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-14 05:40+0000\n"
+"X-Launchpad-Export-Date: 2010-12-16 04:50+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/main_window.py:318
@@ -451,15 +451,15 @@ msgstr "De naam van de map wordt de naam van het nieuwe dagboek"
 
 #: ../rednotebook/gui/main_window.py:526
 msgid "Select an existing journal directory"
-msgstr "Kies een bestaande dagboek map"
+msgstr "Kies een bestaande dagboekmap"
 
 #: ../rednotebook/gui/main_window.py:528
 msgid "The directory should contain your journal's data files"
-msgstr "De map moet de databestanden van je dagboek bevatten"
+msgstr "De map moet de databestanden van uw dagboek bevatten"
 
 #: ../rednotebook/gui/main_window.py:530
 msgid "Select an empty folder for the new location of your journal"
-msgstr "Kies een lege map voor de nieuwe plaats van uw dagboek"
+msgstr "Kies een lege map voor de nieuwe locatie van uw dagboek"
 
 #: ../rednotebook/gui/main_window.py:532
 msgid "The directory name will be the new title of the journal"
@@ -521,7 +521,7 @@ msgstr "Afbeelding"
 
 #: ../rednotebook/gui/main_window.py:803
 msgid "Insert an image from the harddisk"
-msgstr "Voeg een beeld van de harde schijf toe"
+msgstr "Voeg een afbeelding vanaf de harde schijf toe"
 
 #: ../rednotebook/gui/main_window.py:805
 msgid "File"
@@ -534,7 +534,7 @@ msgstr "Voeg een verwijzing naar een bestand toe"
 #. ## Translators: Noun
 #: ../rednotebook/gui/main_window.py:809
 msgid "_Link"
-msgstr "Verwijzing"
+msgstr "_Verwijzing"
 
 #: ../rednotebook/gui/main_window.py:810
 msgid "Insert a link to a website"
@@ -550,7 +550,7 @@ msgstr "Genummerde lijst"
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Title"
-msgstr "Bestandsnaam"
+msgstr "Titel"
 
 #: ../rednotebook/gui/main_window.py:821
 msgid "Line"
@@ -570,7 +570,7 @@ msgstr "Datum/tijd"
 
 #: ../rednotebook/gui/main_window.py:827
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr "Voeg de huidige datum en tijd in (pas het formaat in voorkeuren aan)"
+msgstr "Voeg de huidige datum en tijd in (pas de weergave in voorkeuren aan)"
 
 #: ../rednotebook/gui/main_window.py:829
 msgid "Line Break"
@@ -594,7 +594,7 @@ msgstr "Er is geen verwijzing ingevoegd"
 
 #: ../rednotebook/gui/main_window.py:1102
 msgid "Search ..."
-msgstr "Zoek ..."
+msgstr "Zoek …"
 
 #: ../rednotebook/gui/main_window.py:1250
 msgid "Hide selected words"
@@ -612,11 +612,11 @@ msgstr "Tekst"
 
 #: ../rednotebook/gui/main_window.py:1360
 msgid "Entry"
-msgstr "Invoer"
+msgstr "Categorie"
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
-msgstr "Kies sjabloon naam"
+msgstr "Kies naam voor sjabloon"
 
 #: ../rednotebook/templates.py:283 ../rednotebook/templates.py:292
 msgid "This Weekday's Template"
@@ -636,7 +636,7 @@ msgstr "Nieuwe sjabloon aanmaken"
 
 #: ../rednotebook/templates.py:298
 msgid "Open Template Directory"
-msgstr "Open sjabloon map"
+msgstr "Open sjabloon-map"
 
 #: ../rednotebook/util/utils.py:247
 #, python-format
@@ -650,7 +650,7 @@ msgstr "De laatste versie is <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:249
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "Wil je de homepage van RedNotebook bezoeken?"
+msgstr "Wilt u de webpagina van RedNotebook bezoeken?"
 
 #: ../rednotebook/util/utils.py:256
 msgid "Do not ask again"
@@ -711,12 +711,12 @@ msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
-"Om te verhinderen dat je gegevens overschrijft, is de inhoud van de map in "
-"het nieuwe dagboek geïmporteerd"
+"Om te verhinderen dat u gegevens overschrijft, is de inhoud van de map in "
+"het nieuwe dagboek geïmporteerd."
 
 #: ../rednotebook/journal.py:428
 msgid "The selected folder is empty. A new journal has been created."
-msgstr "De gekozen map is leeg. Een nieuw dagboek is gestart."
+msgstr "De gekozen map is leeg. Er is een nieuw dagboek aangemaakt."
 
 #: ../rednotebook/info.py:79
 msgid ""
@@ -725,8 +725,8 @@ msgid ""
 "try."
 msgstr ""
 "Hallo,\n"
-"dit is RedNotebook, een desktop dagboek. Hartelijk bedankt dat U het "
-"probeert."
+"dit is RedNotebook, een desktop dagboek. Hartelijk bedankt dat u het "
+"uitprobeert."
 
 #: ../rednotebook/info.py:81
 msgid "The interface is divided into three parts:"
@@ -774,8 +774,8 @@ msgid ""
 "watched \"__Life of Brian__\"."
 msgstr ""
 "Vandaag ging ik naar de //dierenwinkel// en kocht een **tijger**. Toen "
-"gingen we naar de --vijver-- park en hadden een leuke tijd met het spelen "
-"van frisbee. Daarna bekeken we \"_Life of Brian_\"."
+"gingen we naar de --vijver-- in het park en hadden een leuke tijd met het "
+"spelen van frisbee. Daarna bekeken we \"_Life of Brian_\"."
 
 #: ../rednotebook/info.py:98
 msgid "Annotations"
@@ -783,7 +783,7 @@ msgstr "Aantekeningen"
 
 #: ../rednotebook/info.py:99
 msgid "On the right there is space for annotations to a day."
-msgstr "Rechts ier er ruimte voor aantekeningen bij een dag"
+msgstr "Rechts is er ruimte voor aantekeningen bij een dag"
 
 #: ../rednotebook/info.py:100
 msgid "Annotations are notes that can easily be sorted into categories."
@@ -796,58 +796,59 @@ msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
-"Je kunt bijvoorbeeld de categorie \"ideeën\" maken en dan er de ideeën van "
-"vandaag aan toevoegen"
+"U kunt bijvoorbeeld de categorie \"ideeën\" maken en dan er de ideeën van "
+"vandaag aan toevoegen."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:113
 msgid "Save and Export"
-msgstr "Sla op en exporteer"
+msgstr "Opslaan en exporteren"
 
 #: ../rednotebook/info.py:114
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Alles wat je invoert wordt automatisch  regelmatig opgeslagen en als je het "
-"programma afsluit"
+"Alles wat u invoert wordt regelmatig tussendoor automatisch opgeslagen, en "
+"ook als u het programma afsluit."
 
 #: ../rednotebook/info.py:116
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
-"Om gegevensverlies te vermijden moet je je dagboek regelmatig in een "
-"reservebestand opslaan"
+"Om gegevensverlies te vermijden kunt u het beste regelmatig een back-up van "
+"uw dagboek maken."
 
 #: ../rednotebook/info.py:117
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
-"\"Backup\" in het \"dagboek\" menu slaat alle ingevoerde gegevens in een zip "
+"‘Back-up’ in het ‘dagboek’ menu slaat alle ingevoerde gegevens in een zip-"
 "bestand op."
 
 #: ../rednotebook/info.py:118
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "In het \"dagboek\" menu vind je ook de \"Exporteer\" knop"
+msgstr "In het ‘dagboek’ menu vindt u ook de ‘Exporteer’ knop."
 
 #: ../rednotebook/info.py:119
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
-"Klik op \"Exporteer\" en exporteer je dagboek naar gewonte tekst, HTML of "
-"Latex"
+"Klik op ‘Exporteer’ en exporteer w dagboek naar gewone tekst, HTML of Latex."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:125
 msgid "You can find more documentation under \"Help\" -> \"Help\"."
-msgstr "Je kunt meer documentatie onder \"Hulp\" -> \"Hulp\""
+msgstr "U kunt onder  ‘Hulp’ -> ‘Hulp’ meer documentatie vinden."
 
 #: ../rednotebook/info.py:128
 msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr "Als je fouten tegenkomt, bericht mij dat, zodat ik ze kan oplossen"
+msgstr ""
+"Als u fouten tegen komt kunt u deze aan mij doorgeven, zodat ik ze kan "
+"oplossen."
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr "Alle reacties worden gewaardeerd"
+msgstr "Alle reacties worden gewaardeerd."
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
@@ -859,7 +860,7 @@ msgstr "Ideeën"
 
 #: ../rednotebook/info.py:164
 msgid "Use a cool journal app"
-msgstr "Gebruik een fraaie dagboek applicatie"
+msgstr "Gebruik een fraaie dagboekapplicatie"
 
 #: tmp/main_window.glade.h:1
 msgid "<b>Current Day</b>"
@@ -880,7 +881,7 @@ msgstr "<b>Doorwijzing naam (keuze)</b>"
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Overall</b>"
-msgstr "<b>In het algemeen</b>"
+msgstr "<b>Algemeen</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Select existing or new Category</b>"
@@ -888,7 +889,7 @@ msgstr "<b>Kies bestaande of nieuwe categorie</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
-msgstr "<b>Schrijf inhoud</b>"
+msgstr "<b>Beschrijf inhoud</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Annotate"
