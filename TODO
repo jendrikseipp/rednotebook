@@ -26,6 +26,7 @@ X Windows: Fix opening linked files
 X Windows: Do not center window to prevent alignment issues
 X Windows: Fix image preview (LP:663944)
 O Windows: Fix portable mode
+X Internal: Replace tabs by whitespace in source code
 
 1.1.3
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -128,6 +129,12 @@ O make date format configurable for exports (probably no one needs this as i18n 
   https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=139
 O Add additional one-click menu (like the one with Search and Tags Cloud) that contains quick links to other journals
   (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23&sid=210fbd0a19cc2d2d5baec8c5cafb7c1f&p=582#p583)
+
+- an option to select searched entries with single click instead of double click
+- That the Annotate and Tag window box will remember where I moved it to between sessions
+- That the Search type selection will remember which selection I was on between sessions
+- For each journal to have its own templates
+- To show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 
 
 
