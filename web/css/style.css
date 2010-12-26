@@ -33,7 +33,7 @@ body {
 a:link,
 a:visited,
 a:active {
-  color: #3636AF;
+  color: #000089;
   text-decoration: none;
 }
 a:hover {
@@ -105,7 +105,7 @@ a img {
 #wrapper {
   
   overflow: hidden;
-  padding-bottom: 120px;  /* must be same height as the footer */
+  padding-bottom: 20px;  /* must be same height as the footer (120px)*/
 
   background-image: url('../images/body-decoration.png');
   background-position: right top;

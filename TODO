@@ -7,33 +7,13 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.1.2
-X Add fullscreen mode (F11)
-X Highlight all found occurences of the searched word (LP:614353)
-X Highlight mixed markups (**__Bold underline__**)
-X Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsection====, =====Subsubsection=====)
-X Document structured headers
-X Highlight ``, "", ''
-X Write documentation about ``, "", ''
-X Let the preview and edit button have the same size
-X Fix: Correctly highlight lists (LP:622456)
-X Fix: Do not set maximized to True when sending RedNotebook to the tray (LP:657421)
-X Fix: Add Ctrl-P shortcut for edit button (LP:685609)
-X Fix: Add "\" to the list of ignored chars for word clouds
-X Fix: Escape characters before adding results to the search list
-X Fix: Local links with whitespace in latex
-X Windows: Fix opening linked files
-X Windows: Do not center window to prevent alignment issues
-X Windows: Fix image preview (LP:663944)
-O Windows: Fix portable mode
-X Internal: Replace tabs by whitespace in source code
-
 1.1.3
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
 O Fix: Special characters inflate cloud black-/whitelist
 O "Export currently visible day only" option
+O Windows: Fix portable mode
 
 1.1.x
 O Use Zeitgeist for automatic category entries

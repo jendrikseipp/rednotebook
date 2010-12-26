@@ -1,15 +1,24 @@
 #! /usr/bin/env python 
 import os
+import sys
 
-src = os.path.abspath(os.path.join(os.path.abspath(__file__), '../'))
+spider_dir = os.path.abspath(os.path.dirname(__file__))
+rn_dir = os.path.abspath(os.path.join(spider_dir, '../../rednotebook'))
+sys.path.insert(0, rn_dir)
+
+import info
+
+version = info.version
+print version
+
+src = spider_dir
 print 'SOURCE:     ', src
 os.chdir(src)
 
-dest = os.path.abspath(os.path.join(os.path.abspath(__file__), '../../'))
+dest = os.path.abspath(os.path.dirname(spider_dir))
 print 'DESTINATION:', dest
 
-if not os.path.exists(dest):
-    os.mkdir(dest)
+assert os.path.exists(dest)
     
 
 about = {
@@ -47,6 +56,7 @@ for page in pages:
     with open(filename) as file:
         page['content'] = file.read()
     html = template.replace('***TITLE***', page['title'])
+    #html = html.replace('***VERSION***', version)
     html = html.replace('***CONTENT***', page['content'])
     if 'scripts' in page:
         scripts = page['scripts']
