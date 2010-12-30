@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1004,6 +1004,167 @@ msgstr "Astăzi"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Lucian Adrian Grijincu https://launchpad.net/~lucian.grijincu\n"
 "  youda.yu https://launchpad.net/~ch-yyd"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Previzualizează: %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Verificare ortografică"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr ""
+#~ "Necesită gtkspell. Acesta este inclus în pachetul python-gnome2-extras."
+
+#~ msgid "Content exported to "
+#~ msgstr "Conținutul exportat către "
+
+#~ msgid "Show the help document"
+#~ msgstr "Afișează documentul de ajutor"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Verifică apariția unor noi versiuni acum"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Verifică apariția unor noi versiuni"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Șterge nodul selectat"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Verifică la pornire"
+
+#~ msgid "Add Tag"
+#~ msgstr "Adaugă etichetă"
+
+#~ msgid "Export Text"
+#~ msgstr "Exportă textul"
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "Pentru informații despre conversia fișierelor LaTeX exportate către PDF, "
+#~ "consultați documentul de Ajutor."
+
+#~ msgid "New Entry"
+#~ msgstr "Înregistrare nouă"
+
+#~ msgid "Latex"
+#~ msgstr "LaTeX"
+
+#~ msgid "New Version"
+#~ msgstr "Versiune nouă"
+
+#~ msgid "No New Version"
+#~ msgstr "Nicio versiune nouă"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Select >>"
+#~ msgstr "Alegeți >>"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Alegeți un dosar gol pentru noua locație a jurnalului"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Inserează o listă cu buline"
+
+#~ msgid "Insert a title"
+#~ msgstr "Inserează un titlu"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Se anulează asistentul de exportare."
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Introduceți numele fișierului</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Întrări din:</b>"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Deselectează"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>O nouă versine a RedNotebook este disponibilă!</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Folosiți cea mai recentă versiune a RedNotebook</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Alegeți formatul</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Alegeți conținutul pe care doriți să-l exportați</b>"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Adaugă o intrare într-o categorie (Ctrl+N)"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Alegeți intrările</b>"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Doriți să visitați situl web?"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Până la:</b>"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Pune o etichetă acestei zile (Ctrl+T)"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Doar intrările din intervalul temporar ales"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Bun venit la Asistentul de exportare. \n"
+#~ "Acest asistent vă va ajuta să exportați jurnalul sub alte formate. Puteți "
+#~ "selecta intervalele temporare pe care doriți să le exportați și locația în "
+#~ "care vor fi plasate fișierele exportate."
+
+#~ msgid "All Entries"
+#~ msgstr "Toate înregistrarile"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit oferă o previzualizare mai plăcută"
+
+#~ msgid "Journal"
+#~ msgstr "Jurnal"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Necesită pywebkitgtk (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Repornire necesară)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Folosește webkit pentru previzualizări"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Alternativ, consultați documentația pentru conversie din Latex în PDF."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Pentru export direct ca PDF instalați pywebkitgtk versiunea 1.1.5 sau mai "
+#~ "nouă."

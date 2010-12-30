@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1001,9 +1001,165 @@ msgstr "I dag"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  AJenbo https://launchpad.net/~ajenbo\n"
 "  Ask Hjorth Larsen https://launchpad.net/~askhl\n"
 "  Joe Hansen https://launchpad.net/~joedalton2\n"
 "  TLE https://launchpad.net/~k-nielsen81\n"
 "  nanker https://launchpad.net/~nanker"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Vælg en tom mappe til den nye placering af din dagbog"
+
+#~ msgid "Insert a title"
+#~ msgstr "Indsæt en titel"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Indsæt en punktliste"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Forhåndsvis: %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Stavekontrol"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Kontrollér om der er en ny version nu"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Kontrollér om der er en ny version"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>En ny version af RedNotebook er tilgængelig!</b>"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Fravælg"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Valgte indtastninger</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Indtastninger fra:</b>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Indtast filnavn</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Du har allerede den seneste version af RedNotebook</b>"
+
+#~ msgid "Add Tag"
+#~ msgstr "Tilføj mærke"
+
+#~ msgid "All Entries"
+#~ msgstr "Alle indtastninger"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Vælg det indhold som du vil eksportere</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Indtil:</b>"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Tilføj en indtastning til en kategori (Ctrl+N)"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Slet den valgte knude"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Ønsker du at besøge websiden?"
+
+#~ msgid "Export Text"
+#~ msgstr "Eksportér tekst"
+
+#~ msgid "New Entry"
+#~ msgstr "Ny indtastning"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Ny version"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Kun indtastningerne i den valgte tidsramme"
+
+#~ msgid "No New Version"
+#~ msgstr "Ingen ny version"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Vælg >>"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr ""
+#~ "Kræver gtkspell. gtkspell er inkluderet i pakken python-gnome2-extras"
+
+#~ msgid "Content exported to "
+#~ msgstr "Indhold eksporteret til "
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Vælg formatering</b>"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Annullerer eksporteringsassistent."
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "Kig i hjælpedokumentet, for at finde information om hvordan man konverterer "
+#~ "de eksporterede latex-filer til PDF."
+
+#~ msgid "Show the help document"
+#~ msgstr "Vis hjælpedokumentet"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Tjek ved opstart"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Kræver pywebkitgtk (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(genstart påkrævet)"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Tildel et mærke til denne dag (Ctrl+T)"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Velkommen til eksporteringsassistenten. \n"
+#~ "Denne guide vil hjælpe dig med at eksportere din dagbog til forskellige "
+#~ "formater. Du kan vælge de dage du ønsker at eksportere, samt hvor resultatet "
+#~ "vil bliver gemt."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "For direkte PDF eksport, installer venligst pywebkitgtk version 1.1.5 eller "
+#~ "senere versioner."
+
+#~ msgid "Journal"
+#~ msgstr "Dagbog"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit giver en pænere forhåndsvisning"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Alternativt kan du finde information om konvertering af LaTeX til PDF i "
+#~ "hjælpedokumentet."
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Brug webkit til forhåndsvisninger"

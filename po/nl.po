@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-19 04:49+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/main_window.py:318
@@ -1011,3 +1011,159 @@ msgstr ""
 "  Redmar https://launchpad.net/~redmar\n"
 "  Tom https://launchpad.net/~d9ping\n"
 "  Walco van Loon https://launchpad.net/~wwwalco"
+
+#~ msgid "Spell Check"
+#~ msgstr "Spellingscontrole"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Kies een lege map voor de nieuwe plaats van je dagboek"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Voeg een lijst met opsommingen in"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Opheffen van exporteer assistent"
+
+#~ msgid "Content exported to "
+#~ msgstr "Inhoud geexporteerd naar "
+
+#~ msgid "Show the help document"
+#~ msgstr "Toon het help document"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Controleer nu op een nieuwe versie"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Controleer op een nieuwe versie"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<<Verwerp"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Voeg bestandsnaam in</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Kies de inhoud die je wilt exporteren</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Kies formaat</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Tot:</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Kies invoegingen</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Invoer van:</b>"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Controleer bij begin"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Een item aan een categorie toevoegen(Ctrl+N)"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Wil je de website bezoeken?"
+
+#~ msgid "Export Text"
+#~ msgstr "exporteer tekst"
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "Voor informatie hoe de geëxporteerde latex bestanden naar PDF te "
+#~ "converteren, raadpleeg het Help document"
+
+#~ msgid "New Entry"
+#~ msgstr "Nieuw item"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Nieuwe versie"
+
+#~ msgid "No New Version"
+#~ msgstr "Geen nieuwe versie"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Alleen de items in de gekozen tijdsperiode"
+
+#~ msgid "Select >>"
+#~ msgstr "Kies>>"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Label deze dag(Ctrl+T)"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Welkom bij de exporteer assistent. \n"
+#~ "Deze tovenaar helpt je je dagboek in verschillende formaten te exporteren. "
+#~ "Je kunt de dagen die je wilt exporteren kiezen en waar de uitvoer wordt "
+#~ "opgeslagen"
+
+#~ msgid "Insert a title"
+#~ msgstr "Voeg een bestandsnaam in"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Voorbeeld: %s"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr ""
+#~ "Vereist gtkspell. Dit is beschikbaar in het python-gnome 2-extras package"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>Een nieuwe versie van RedNotebook is beschikbaar!</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>U heeft al de laatste versie van RedNotebook</b>"
+
+#~ msgid "Add Tag"
+#~ msgstr "Tag toevoegen"
+
+#~ msgid "All Entries"
+#~ msgstr "Alle toevoegingen"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Verwijder de gekozen verknoping"
+
+#~ msgid "Stricken"
+#~ msgstr "Getroffen"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "U kunt ook het hulp document voor Latex naar PDF omzetting raadplegen"
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Voor rechtstreekse PDF export, installeer pywebkitgtk versie 1.1.5 of "
+#~ "recenter."
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Herstart nodig)"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit biedt een betere voorvertoning."
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Vereist pywebkitgtk"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "gebruik webkit voor voorbeeld"
+
+#~ msgid "Journal"
+#~ msgstr "Logboek"

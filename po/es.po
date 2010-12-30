@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1011,3 +1011,158 @@ msgstr ""
 "  hhlp https://launchpad.net/~hhlp\n"
 "  ovidio https://launchpad.net/~ovidiosf-gmail\n"
 "  surfinmdq https://launchpad.net/~surfinmdq"
+
+#~ msgid "Insert a title"
+#~ msgstr "Insertar un título"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Insertar una lista de viñetas"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Vista previa: %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Revisión ortográfica"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr "Requiere gtkspell. Se incluye en el paquete python-gnome2-extras"
+
+#~ msgid "Content exported to "
+#~ msgstr "Contenido exportado a "
+
+#~ msgid "Show the help document"
+#~ msgstr "Mostrar el documento de Ayuda"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Verificar por una nueva versión ahora"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Verificar por una nueva versión"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Quitar"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Hasta:</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Entradas desde:</b>"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Verificar al inicio"
+
+#~ msgid "Add Tag"
+#~ msgstr "Añadir etiqueta"
+
+#~ msgid "All Entries"
+#~ msgstr "Todas las entradas"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Añadir una entrada a categoría (Ctrl+N)"
+
+#~ msgid "No New Version"
+#~ msgstr "No hay nueva versión"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Seleccionar >>"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Etiquetar este día (Ctrl+T)"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Sólo las entradas en el intervalo de tiempo seleccionado"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Seleccionar una carpeta vacía para la nueva ubicación de su diario"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Ya cuenta con la última versión de RedNotebook</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Seleccione formato</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Seleccione el contenido a exportar</b>"
+
+#~ msgid "New Version"
+#~ msgstr "Nueva versión"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Bienvenido/a  al asistente de exportación.\n"
+#~ "Este asistente le ayudará a exportar su diario a otros formatos. Podrá "
+#~ "escoger los días que desea exportar y dónde guardar el archivo de salida."
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>¡Está disponible una nueva versión de RedNotebook!</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Seleccione entradas</b>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Introduzca el nombre del archivo</b>"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Borrar el nodo seleccionado"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "¿Desea visitar el sitio Web?"
+
+#~ msgid "Export Text"
+#~ msgstr "Exportar texto"
+
+#~ msgid "New Entry"
+#~ msgstr "Nueva entrada"
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Para exportar directamente PDF, instale la versión de pywebkitgtk 1.1.5 o "
+#~ "posterior."
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Alternativamente consulte la documentación de ayuda para la conversión de "
+#~ "PDF con Latex."
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Cancelando el asistente de exportación."
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "Para obtener información sobre cómo convertir los archivos latex exportados "
+#~ "a PDF, consulte la documentación de ayuda."
+
+#~ msgid "Stricken"
+#~ msgstr "Afligido"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit ofrece una bonita vista previa"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Requiere pywebkitgtk (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Requiere reiniciar)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Use webkit para las vistas previas"
+
+#~ msgid "Journal"
+#~ msgstr "Diario"

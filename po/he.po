@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -979,6 +979,177 @@ msgstr "היום"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Ddorda https://launchpad.net/~ddorda\n"
 "  Yaron https://launchpad.net/~sh-yaron"
+
+#~ msgid "The directory name will be the title of the new journal.</b>"
+#~ msgstr "שם התיקייה יהיה גם שמו של היומן החדש.</b>"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "יש לבחור בתיקייה ריקה עבור מיקום היומן שלך"
+
+#~ msgid "<b>The directory should contain your journal's data files</b>"
+#~ msgstr "<b>התיקייה אמורה להכיל את קובצי הנתונים של היומן שלך</b>"
+
+#~ msgid "<b>The directory name will be the new title of the journal</b>"
+#~ msgstr "<b>שם התיקייה יהיה השם החדש עבור היומן</b>"
+
+#~ msgid "<b>Journals are saved in a directory, not in a single file.\n"
+#~ msgstr "<b>יומנים נשמרים בתיקייה, לא בקובץ יחיד.\n"
+
+#~ msgid "Insert a title"
+#~ msgstr "הוספת הכותרת"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "הוספת רשימת תבליטים"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "תצוגה מקדימה: %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "בדיקת איות"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr "התוכנית gtkspell נדרשת. תוכנית זו כלולה בחבילה python-gnome2-extras"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "פעולת מסייע הייצוא מבוטלת."
+
+#~ msgid "Content exported to "
+#~ msgstr "התוכן ייוצא אל "
+
+#~ msgid "Show the help document"
+#~ msgstr "הצגת מסמך העזרה"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "בדיקה אחר גרסה חדשה כעת"
+
+#~ msgid "Check For New Version"
+#~ msgstr "בדיקה אחר גרסה חדשה"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>ישנה גרסה חדשה של RedNotebook זמינה!</b>"
+
+#~ msgid "<< Unselect"
+#~ msgstr "ביטול הבחירה >>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>הזנת שם הקובץ</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>בחירת התכנים שברצונך לייצא</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>בחירת עיצוב</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>עד:</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>בחירת רשומות</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>רשומות מ־:</b>"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "מחיקת הצומת הנוכחי"
+
+#~ msgid "Check at Startup"
+#~ msgstr "בדיקה עם ההפעלה"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>ברשותך הגרסה העדנית ביותר של RedNotebook</b>"
+
+#~ msgid "Add Tag"
+#~ msgstr "הוספת תגית"
+
+#~ msgid "All Entries"
+#~ msgstr "כל הרשומות"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "הוספת רשומה לקטגוריה (Ctrl+N)"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "האם ברצונך לבקר באתר?"
+
+#~ msgid "Export Text"
+#~ msgstr "הטקסט לייצוא"
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "לקבלת מידע אודות המרת קובצי ה־Latex המיוצאים ל־PDF, ניתן להוועץ במסמכי העזרה."
+
+#~ msgid "New Entry"
+#~ msgstr "רשומה חדשה"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "גרסה חדשה"
+
+#~ msgid "No New Version"
+#~ msgstr "אין גרסה חדשה"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "רק הרשומות בטווח הזמן הנבחר"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "<< בחירה"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "ברוכים הבאים אל מסייע הייצוא. \n"
+#~ "אשף זה יסייע לך לייצא את היומן שלך למגוון של סוגי קבצים. ניתן לבחור את הימים "
+#~ "לייצוא ולהיכן יישמר הפלט."
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "תיוג יום זה (Ctrl+T)"
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "Stricken"
+#~ msgstr "עם קו חוצה"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr "לחלוטין ניתן להוועץ במסמך העזרה של Latex להמרת PDF."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "על מנת לייצא PDF באופן ישיר, יש להתקין את pywebkitgtk גרסה 1.1.5 ומעלה."
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit מציע תצוגה מקדימה יפה יותר"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "לשם כך נדרש pywebkitgtk‏ (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(נדרש אתחול)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "שימוש ב־WebKit לתצוגות מקדימות"
+
+#~ msgid "Journal"
+#~ msgstr "יומן"

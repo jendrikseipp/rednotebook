@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1000,8 +1000,153 @@ msgstr "Сьогодні"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Andriy Tsykholyas https://launchpad.net/~andriy-tsykholyas\n"
 "  Nivelir https://launchpad.net/~z32-list\n"
 "  Roman Oleskevych https://launchpad.net/~oleskevych\n"
 "  Сергій Матрунчик (SkyMan) https://launchpad.net/~skymanphp"
+
+#~ msgid "Insert a title"
+#~ msgstr "Вставити загаловок"
+
+#~ msgid "Spell Check"
+#~ msgstr "Перевірка правопису"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Перевірити наявність нової версії зараз"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Перевіряти наявність нової версії"
+
+#~ msgid "Show the help document"
+#~ msgstr "Показати документ з довідкою"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Перевірити при старті"
+
+#~ msgid "Add Tag"
+#~ msgstr "Додати тег"
+
+#~ msgid "All Entries"
+#~ msgstr "Всі дописи"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Видалити виділений пункт"
+
+#~ msgid "Export Text"
+#~ msgstr "Експортувати текст"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "New Entry"
+#~ msgstr "Новий допис"
+
+#~ msgid "New Version"
+#~ msgstr "Нова версія"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Тільки дописи з обраного періоду часу"
+
+#~ msgid "No New Version"
+#~ msgstr "Нової версії немає"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>Є нова версія RedNotebook!</b>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Введіть назву файла</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Виберіть формат</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Виберіть контент для експорту</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>До:</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Обрати дописи</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Дописи від:</b>"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Бахаєте відвідати веб-сайт?"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Ви вже маєте останню версію RedNotebook</b>"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Додати допис до категорії (Ctrl+N)"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Помітити цей день тегом (Ctrl+T)"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Вставити ненумерований список"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Попередній перегляд:  %s"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Ласкаво просимо до помічника експортування\n"
+#~ "Цей помічник полегшить експортування вашого щоденника у різноманітні формати "
+#~ ". Ви можеье обрати дні. які бажаєте експортувати та куди збережуться дані "
+#~ "експортування."
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "За інформацією про конвертування  експортованих файлів latex до PDF, "
+#~ "зверніться до документу Довідка"
+
+#~ msgid "Select >>"
+#~ msgstr "Оберіть >>"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Відмінити вибір"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Не завантажувати помічника експортування"
+
+#~ msgid "Journal"
+#~ msgstr "Журнал"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Веб-рушій Webkit забезпечує перегляд записів у зручній формі."
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Вимагає pywebkitgtk (python-webkit)"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Щоб дізнатися, як конвертувати Latex в PDF, зверніться до документації "
+#~ "RedNotebook"
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Для запису в PDF напряму необхідно встановити пакет pywebkitgtk версії 1.1.5 "
+#~ "чи новішої."
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Необхідний перезапуск)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Використовувати рушій WebKit для перегляду записів"

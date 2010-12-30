@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:09+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -996,6 +996,149 @@ msgstr "Güei"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Iñigo Varela https://launchpad.net/~ivarela\n"
 "  Xuacu Saturio https://launchpad.net/~xuacusk8"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Inxertar una llista de viñetes"
+
+#~ msgid "Insert a title"
+#~ msgstr "Inxertar un títulu"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Vista previa: %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Revisión ortográfica"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Verificar por una nueva versión agora"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Verificar por una nueva versión"
+
+#~ msgid "Show the help document"
+#~ msgstr "Amosar el documentu d'Aida"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Encaboxando asistente d'esportación."
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>¡Hai una nueva versión de RedNotebook disponible!</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Entraes dende:</b>"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Quitar"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Introduz el nome del ficheru</b>"
+
+#~ msgid "Add Tag"
+#~ msgstr "Amestar etiqueta"
+
+#~ msgid "All Entries"
+#~ msgstr "Toles entraes"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Seleiciona formatu</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Seleiciona'l conteníu a esportar</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Hasta:</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Yá cuentes cola cabera versión de RedNotebook</b>"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Amestar una entrada a categoría (Ctrl+N)"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Seleiciona entraes</b>"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Desaniciar el nodu esbilláu"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Verificar al aniciu"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "¿Quies visitar el sitiu Web?"
+
+#~ msgid "Export Text"
+#~ msgstr "Esportar testu"
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "Pa obtener información sobre cómo convertir los ficheros latex esportados a "
+#~ "PDF, consulta la documentación d'Aida."
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "New Entry"
+#~ msgstr "Nueva entrada"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Nueva versión"
+
+#~ msgid "No New Version"
+#~ msgstr "Nun hai nueva versión"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Namái les entraes nel intervalu de tiempu seleicionáu"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Seleicionar >>"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Bienveníu/a  al asistente d'esportación.\n"
+#~ "Esti encontu aidaráte a esportar el to diariu a dellos otros formatos. "
+#~ "Podrás escoyer los díes que quies esportar y aú atroxar el ficheru de salida."
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Etiquetar esti día (Ctrl+T)"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit ufre una guapa entevista"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Requier pywebkitgtk (python-webkit)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Usar webkit pa entever"
+
+#~ msgid "Journal"
+#~ msgstr "Diariu"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Requier reaniciar)"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Alternativamente consulte'l documentu d'aida pa la conversión de Latex a PDF."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Pa esportar a PDF direutamente, instale la versión 1.1.5 o posterior de "
+#~ "pywebkitgtk."

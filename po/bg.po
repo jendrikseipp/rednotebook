@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -977,6 +977,39 @@ msgstr "Днес"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Svetoslav Stefanov https://launchpad.net/~svetlisashkov\n"
 "  svilborg https://launchpad.net/~svilborg"
+
+#~ msgid "Insert a title"
+#~ msgstr "Поставете заглавие"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Преглед: %s"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "WebKit предлага приятен предварителен преглед"
+
+#~ msgid "Journal"
+#~ msgstr "Дневник"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>Има нова версия на RedNotebook!</b>"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Искате ли да посетите сайта?"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "New Version"
+#~ msgstr "Нова Версия"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"

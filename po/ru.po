@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1017,3 +1017,157 @@ msgstr ""
 "  Sergey \"Shnatsel\" Davidoff https://launchpad.net/~shnatsel\n"
 "  Sergey Sedov https://launchpad.net/~serg-sedov\n"
 "  Victor Yu. Kowalsky https://launchpad.net/~vityokster"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Выберите пустую папку для нового расположения вашего дневника"
+
+#~ msgid "Insert a title"
+#~ msgstr "Вставить заголовок"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr ""
+#~ "Требуется gtkspell. Gtkspell входит в состав пакета python-gnome2-extras"
+
+#~ msgid "Spell Check"
+#~ msgstr "Проверка правописания"
+
+#~ msgid "Content exported to "
+#~ msgstr "Содержимое экспортировано до "
+
+#~ msgid "Check For New Version"
+#~ msgstr "Проверять на наличие новых версий"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Проверить на наличие новых версий"
+
+#~ msgid "Show the help document"
+#~ msgstr "Показать помощь"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Отменить выбор"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Введите имя файла</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Записи от:</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>До:</b>"
+
+#~ msgid "Add Tag"
+#~ msgstr "Добавить тег"
+
+#~ msgid "All Entries"
+#~ msgstr "Все записи"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Проверять при запуске"
+
+#~ msgid "Export Text"
+#~ msgstr "Экспортировать текст"
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "За информацией о конвертировании экспортированных latex файлов в PDF, "
+#~ "обратитесь к документу Помощь"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Entry"
+#~ msgstr "Новая Запись"
+
+#~ msgid "New Version"
+#~ msgstr "Новая версия"
+
+#~ msgid "No New Version"
+#~ msgstr "Нет новых версий"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Выберите >>"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Требуется pywebkitgtk (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(требуется перезапуск)"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Веб-движок Webkit позволяет просматривать записи в удобной форме."
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Использовать движок WebKit для просмотра записей"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>Доступна новая версия RedNotebook!</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Выберите записи</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Выберите формат</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Выберите содержимое для экспорта</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>У вас уже установлена самая новая версия RedNotebook</b>"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Добавить заметку к категории (Ctrl+N)"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Добавить метку для этого дня (Ctrl+T)"
+
+#~ msgid "Journal"
+#~ msgstr "Журнал"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Пример:  %s"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Если вам нравится экспериментировать, можете также отыскать в руководстве "
+#~ "RedNotebook советы по конвертированию Latex в PDF."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Для записи в PDF напрямую нужно установить пакет pywebkitgtk версии 1.1.5 "
+#~ "или новее."
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Отменяем работу менеджера экспорта."
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Удалить выбранный пункт"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Только записи в выбранном временном интервале"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Добро пожаловать в Менеджер экспорта. \n"
+#~ "Этот менеджер облегчит экспорт вашего дневника в различные форматы. Вы "
+#~ "можете выбрать дни, которые желаете экспортировать, и выбрать, куда "
+#~ "сохранить экспортированные данные."
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Вставить маркированный список"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Перейти на сайт программы?"

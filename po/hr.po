@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -973,5 +973,74 @@ msgstr "Danas"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Miro Glavić https://launchpad.net/~klek"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Pregled: %s"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Unesi Ime datoteke</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Odaberi format</b>"
+
+#~ msgid "Add Tag"
+#~ msgstr "Dodaj Oznaku"
+
+#~ msgid "All Entries"
+#~ msgstr "Svi Unosi"
+
+#~ msgid "Export Text"
+#~ msgstr "Izvezi Tekst"
+
+#~ msgid "New Entry"
+#~ msgstr "Novi Unos"
+
+#~ msgid "New Version"
+#~ msgstr "Nova Inačica"
+
+#~ msgid "No New Version"
+#~ msgstr "Nema Nove Inačice"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Odaberi >>"
+
+#~ msgid "Insert a title"
+#~ msgstr "Umetni naslov"
+
+#~ msgid "Content exported to "
+#~ msgstr "Sadržaj izvežen u "
+
+#~ msgid "Check For New Version"
+#~ msgstr "Potraži Novu Inačicu"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Potraži novi inačicu sada"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Odaberi sadržaj za izvoz</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Odaberi Unose</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Unosi od:</b>"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>Nova inačica RedNotebook je na raspolaganju</b>"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Dodaj unos u kategoriju (Ctrl+N)"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Označi ovaj dan (Ctrl+T)"

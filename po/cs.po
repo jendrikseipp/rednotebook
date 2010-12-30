@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -994,10 +994,172 @@ msgstr "Dnes"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
-"  6n64 https://launchpad.net/~6n\n"
+"  6n64 https://launchpad.net/~6n64\n"
 "  Kuvaly [LCT] https://launchpad.net/~kuvaly\n"
 "  Martin Rotter https://launchpad.net/~skunkic\n"
 "  Martin Schayna https://launchpad.net/~mschayna\n"
 "  Roman Horník https://launchpad.net/~roman.hornik\n"
 "  luisah https://launchpad.net/~luisah"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Vyberte prázdnou složku na nové umístění vašeho deníku"
+
+#~ msgid "Insert a title"
+#~ msgstr "Vložit nadpis"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Vložit odrážky"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Náhled:  %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Kontrola pravopisu"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr "Vyžaduje gtkspell. Gtkspell je součástí balíčku python-gnome2-extras"
+
+#~ msgid "Content exported to "
+#~ msgstr "Obsah byl exportován do "
+
+#~ msgid "Show the help document"
+#~ msgstr "Ukázat dokument s nápovědou"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Okamžitě zjistit novější verzi"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Zjistit novější verzi"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Nezvolený"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Zadejte jméno souboru</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Vybrat zápisky</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Zápisky od:</b>"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>K dispozici je nová verze RedNotebooku</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Vybrat formát</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Vybrat obsah, který chcete exportovat</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Do:</b>"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Smazat vybrané heslo"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Zkontrolovat při startu"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Již používáte nejnovější verzi RedNotebooku</b>"
+
+#~ msgid "All Entries"
+#~ msgstr "Všechny zápisky"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Přidat heslo do kategorií (Ctrl+N)"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Chcete navštívit webovou stránku?"
+
+#~ msgid "Export Text"
+#~ msgstr "Exportovat text"
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "Více informací, jak převést exportované latex soubory do PDF, naleznete v "
+#~ "nápovědě."
+
+#~ msgid "New Entry"
+#~ msgstr "Nový záznam"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Nová verze"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Vybrat >>"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Pouze zápisky ze zvoleného časového rozpětí."
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Štítek k tomuto dni (Ctrl+T)"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Průvodce exportem vás vítá.\n"
+#~ "Tento průvodce vám pomůže s exportem vašeho deníku do různých formátů. "
+#~ "Můžete exportovat zápisky týkající se jen vybraných dnů a můžete si zvolit "
+#~ "místo, kam chcete výsledek uložit."
+
+#~ msgid "No New Version"
+#~ msgstr "Novější verze neexistuje"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Přerušit průvodce exportem"
+
+#~ msgid "Add Tag"
+#~ msgstr "Přidat štítek"
+
+#~ msgid "Templates"
+#~ msgstr "Šablony"
+
+#~ msgid "RedNotebook supports templates."
+#~ msgstr "RedNotebook podporuje šablony."
+
+#~ msgid "Stricken"
+#~ msgstr "Přeškrtnutí"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr "Případně konzultuje s nápovědou k převodu Latex do PDF."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Pro přímý export do PDF prosím nainstalujte pywebkitgtk verze 1.1.5 nebo "
+#~ "novější."
+
+#~ msgid "Journal"
+#~ msgstr "Deník"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit nabídne hezčí náhled"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Vyžaduje pywebkitgtk (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Požadován restart)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Použít webkit pro náhled"

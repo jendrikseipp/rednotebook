@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -988,6 +988,27 @@ msgstr "இன்று"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Ramesh https://launchpad.net/~rame20002007\n"
 "  vijayaraj Mani https://launchpad.net/~vijayaraj83"
+
+#~ msgid "Journal"
+#~ msgstr "நாட்குறிப்பேடு"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "இந்த நாளை குறியிடு (Ctrl+T)"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "முன்பார்வை: %s"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(மறுதுவக்கம் தேவைப்படுகிறது)"
+
+#~ msgid "Insert a title"
+#~ msgstr "தலைப்பை நுழை"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "குண்டுப் பட்டியலை நுழை"

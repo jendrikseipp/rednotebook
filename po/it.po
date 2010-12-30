@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1007,3 +1007,138 @@ msgstr ""
 "  Giorgio Croci Candiani https://launchpad.net/~g-crocic\n"
 "  Paolo Sammicheli https://launchpad.net/~xdatap1\n"
 "  tommaso gardumi https://launchpad.net/~tommaso-gardumi"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Selezione di una cartella vuota per la nuova posizione del diario"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Anteprima: %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Controllo ortografico"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr "Richiede gtkspell, incluso nel pacchetto python-gnome2-extras"
+
+#~ msgid "Insert a title"
+#~ msgstr "Inserisce un titolo"
+
+#~ msgid "Content exported to "
+#~ msgstr "Contenuto esportato in "
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Controlla ora se esiste una nuova versione"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Controlla esistenza nuova versione"
+
+#~ msgid "Show the help document"
+#~ msgstr "Visualizza il documento d'aiuto"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Annullamento assistente esportazione."
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Inserisce un elenco puntato"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>E' disponibile una nuova versione di RedNotebook!</b>"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Deseleziona"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Elimina il nodo selezionato"
+
+#~ msgid "Export Text"
+#~ msgstr "Esporta testo"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr "Oppure consultare la guida per la conversione da Latex a PDF."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Per esportare direttamente su PDF, installare pywebkitgtk versione 1.1.5 o "
+#~ "successiva."
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit fornisce una piacevole anteprima"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Richiede pywebkitgtk (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(richiede riavvio)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Usa webkit per le anteprime"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Benvenuti all'assistenze di esportazione. \n"
+#~ "Questa procedura guidata permetterà l'esportazione del diario in diversi "
+#~ "formati. È possibile selezionare i giorni da esportare e la posizione ove "
+#~ "salvare i dati."
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Selezionare formato</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b> Selezionare il contenuto da esportare </b>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Inserire il nome del file</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Si dispone già dell'ultima versione di RedNotebook</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Fino:</b>"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Si desidera visitare il sito web?"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Nuova versione"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Solo le voci nell'arco temporale selezionato"
+
+#~ msgid "No New Version"
+#~ msgstr "Nessuna nuova versione"
+
+#~ msgid "Select >>"
+#~ msgstr "Seleziona >>"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Applica etichette a questo giorno (Crtl+T)"
+
+#~ msgid "All Entries"
+#~ msgstr "Tutte le voci"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Aggiunge la voce ad una categoria (Ctrl+N)"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Selezionare voci</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Voci da:</b>"
+
+#~ msgid "Journal"
+#~ msgstr "Diario"

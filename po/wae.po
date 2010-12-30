@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -997,5 +997,40 @@ msgstr ""
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  bortis https://launchpad.net/~bortis"
+
+#~ msgid "Journal"
+#~ msgstr "Journal"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Alternativ chansch em hilfs dokument fader LaTeX zu PDF konvertierig "
+#~ "nahschlah."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Fer en diräkta PDF export müesch nu z'packet pywebkitgtk, version 1.1.5 oder "
+#~ "neuer installiere."
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "De export assischtänt abbräche"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Vorschau: %s"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit stellt en schnönneri vorschau zer verfiegig"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "pywebkitgtk (python-webkit) isch vorüssetzig"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Niwstart netig)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "webkit ver die vorschau verwende"

@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -997,5 +997,110 @@ msgstr "Í dag"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Gunleif Joensen https://launchpad.net/~gunleif"
+
+#~ msgid "Journal"
+#~ msgstr "Dagbók"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "Tú kannst eisini finna uppysingar viðvíkjandi formbroytan av LaTeX til PDF í "
+#~ "vegleiðingini."
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Til beinleiðis PDF útflutning, vinarliga legg inn pywebkitgtk útgáva 1.1.5 "
+#~ "ella nýggjari."
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Ógilda útflutningsstuðul"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Forsýn: %s"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit gevur eina snøggari forsýning"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Krevur pywebkitgtk (python-webkit)"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(endurbyrjan tørvað)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Nýt webkit til forsýningar"
+
+#~ msgid "Insert a title"
+#~ msgstr "Set eina yvurskrift inn"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>Ein nýggjari útgáva av RedNotebook er tøk!</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Innskrivingar frá:</b>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Skriva inn fílunavn</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Vel snið</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Tú hevur longu nýggjastu útgávu av RedNotebook</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Vel innihaldið ið tú vil flyta út</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Vel innskrivingar</b>"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Strika tann valda knútin"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Vil tú vitja heimasíðuna"
+
+#~ msgid "All Entries"
+#~ msgstr "Allar innskrivingar"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Legg eina innskriving til ein bólk (Ctrl+N)"
+
+#~ msgid "Export Text"
+#~ msgstr "Útflyt tekst"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Nýggja útgáva"
+
+#~ msgid "No New Version"
+#~ msgstr "Eingin nýggja útgáva"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Vel >>"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Vælkomin til útflutningsstuðulin. \n"
+#~ "Hendan vegleiðingin ferð at hjálpa tær, at útflyta tína dagbók til ymisk "
+#~ "snið. Tú kannst velja teir dagar ið tú vil flyta út, og hvar í úttakið skal "
+#~ "goymast."
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Set frámerki á hendan dagin (Ctrl+T)"

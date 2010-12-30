@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -999,7 +999,84 @@ msgstr "I dag"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Børge Johannessen https://launchpad.net/~ubuntubruker\n"
 "  Magnus Christensen https://launchpad.net/~magnus-christensen\n"
-"  Terje Andre Arnøy https://launchpad.net/~terjeaar"
+"  Terje Andre Arnøy https://launchpad.net/~terjeaar\n"
+"  ehellabe https://launchpad.net/~einar-hellandberger"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr "Velg en tom mappe for å lagre din dagbok."
+
+#~ msgid "Spell Check"
+#~ msgstr "Stavekontroll"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Se etter ny versjon"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Se etter ny versjon nå"
+
+#~ msgid "Show the help document"
+#~ msgstr "Viser hjelpe dokumentasjonen i HTML"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Velg format</b>"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Du har allerede siste versjon av RedNotebook</b>"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Latex"
+#~ msgstr "LaTeX"
+
+#~ msgid "New Version"
+#~ msgstr "Ny version"
+
+#~ msgid "No New Version"
+#~ msgstr "Ingen ny version tilgjenglig"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Velg >>"
+
+#~ msgid "Insert a title"
+#~ msgstr "Sett inn en tittel"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Sett inn en punktliste"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Forhåndsvisning: %s"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr "Trenger gtkspell. Den er inkludert i python-gnome2-extras pakken"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>En ny versjon av RedNotebook er tilgjengelig!</b>"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Ønsker du å besøke nettstedet?"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Slett den valgte noden"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Skriv inn filnavn</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "Velg innholdet du ønsker å eksportere"
+
+#~ msgid "Export Text"
+#~ msgstr "Eksporter tekst"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Merk denne dagen"

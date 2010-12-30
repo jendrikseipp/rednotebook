@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-06 04:52+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -981,6 +981,33 @@ msgstr "오늘"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  BlueForest https://launchpad.net/~blueforest\n"
 "  Bundo https://launchpad.net/~kang-bundo"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "미리보기: %s"
+
+#~ msgid "Journal"
+#~ msgstr "저널"
+
+#~ msgid "All Entries"
+#~ msgstr "모든 항목"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "새 버전"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "No New Version"
+#~ msgstr "새버전이 없습니다"

@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -976,7 +976,82 @@ msgstr "Bugün"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Angel Spy https://launchpad.net/~dilara.ekinci\n"
 "  Emre Ayca https://launchpad.net/~anatolica\n"
 "  Hüseyin Sevgi https://launchpad.net/~hsevgi"
+
+#~ msgid "Stricken"
+#~ msgstr "Üstü çizili"
+
+#~ msgid "Insert a title"
+#~ msgstr "Bir başlık ekleyin"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Önizleme: %s"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Bir madde listesi ekle"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit daha güzel bir görüntüsunar"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Yeniden başlatmak gereklidir)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Önizlemeler için webkit kullan"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "pywebkitgtk (python-webkit) paketini gerektirir"
+
+#~ msgid "Journal"
+#~ msgstr "Günlük"
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Doğrudan PDF olarak dışa aktarabilmek için lütfen pywebkitgtk sürüm 1.1.5 "
+#~ "veya üstünü kurun."
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Web sitesini ziyaret etmek istiyor musunuz?"
+
+#~ msgid "All Entries"
+#~ msgstr "Tüm Girdiler"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Biçimi seçin</b>"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Kategoriye girdi ekleyin (Ctrl+N)"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Girdileri Seçin</b>"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>RedNotebook'un yeni sürümü mevcut!</b>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Dosya adını girin</b>"
+
+#~ msgid "New Version"
+#~ msgstr "Yeni Sürüm"
+
+#~ msgid "No New Version"
+#~ msgstr "Yeni Sürüm Yok"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Seç >>"
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Bu günü etiketle (Ctrl+T)"

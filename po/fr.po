@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1025,3 +1025,175 @@ msgstr ""
 "  Stanislas Michalak https://launchpad.net/~stanislas-michalak-live\n"
 "  Thibault Févry https://launchpad.net/~thibaultfevry\n"
 "  fbn69 https://launchpad.net/~fbn69"
+
+#~ msgid "The directory name will be the title of the new journal.</b>"
+#~ msgstr "Le nom du dossier sera le titre du nouveau journal.</b>"
+
+#~ msgid "Select an empty folder for the new location your journal"
+#~ msgstr ""
+#~ "Sélectionner un dossier vide pour la nouvelle localisation de votre journal"
+
+#~ msgid "<b>The directory should contain your journal's data files</b>"
+#~ msgstr ""
+#~ "<b>Le dossier doit contenir les fichiers de données de votre journal</b>"
+
+#~ msgid "<b>The directory name will be the new title of the journal</b>"
+#~ msgstr "<b>Le nom du dossier sera le nouveau titre du journal</b>"
+
+#~ msgid "<b>Journals are saved in a directory, not in a single file.\n"
+#~ msgstr ""
+#~ "<b>Les journaux sont sauvegardés dans un répertoire, pas dans un seul "
+#~ "fichier.\n"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Insert a title"
+#~ msgstr "Insérer un titre"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Insérer une liste à puces"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Aperçu : %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Vérification orthographique"
+
+#~ msgid ""
+#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
+#~ msgstr ""
+#~ "Requiert gtkspell. Cette application est incluse dans le paquet python-"
+#~ "gnome2-extras"
+
+#~ msgid "Cancelling export assistant."
+#~ msgstr "Annulation de l'assistant d'exportation."
+
+#~ msgid "Content exported to "
+#~ msgstr "Contenu exporté dans "
+
+#~ msgid "Show the help document"
+#~ msgstr "Afficher le document d'aide"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Chercher une nouvelle version maintenant"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Chercher une nouvelle version"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Désélectionner"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Entrer le nom du fichier</b>"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>Une nouvelle version de RedNotebook est disponible !</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Sélectionner le format</b>"
+
+#~ msgid "<b>Select the contents you want to export</b>"
+#~ msgstr "<b>Sélectionner les contenus que vous désirez exporter</b>"
+
+#~ msgid "<b>Till:</b>"
+#~ msgstr "<b>Jusqu'à :</b>"
+
+#~ msgid "<b>Select Entries</b>"
+#~ msgstr "<b>Sélectionner des entrées</b>"
+
+#~ msgid "<b>Entries from:</b>"
+#~ msgstr "<b>Entrées de :</b>"
+
+#~ msgid "Delete the selected node"
+#~ msgstr "Supprimer le noeud sélectionné"
+
+#~ msgid "Check at Startup"
+#~ msgstr "Vérifier au démarrage"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Vous possédez déjà la dernière version de RedNotebook</b>"
+
+#~ msgid "Add Tag"
+#~ msgstr "Ajouter une étiquette"
+
+#~ msgid "All Entries"
+#~ msgstr "Toutes les entrées"
+
+#~ msgid "Add an entry to a category (Ctrl+N)"
+#~ msgstr "Ajouter une entrée à une catégorie (Ctrl+N)"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Voulez-vous visiter le site web ?"
+
+#~ msgid "Export Text"
+#~ msgstr "Exporter le texte"
+
+#~ msgid ""
+#~ "For information on how to convert the exported latex files to PDF, consult "
+#~ "the Help document."
+#~ msgstr ""
+#~ "Pour des informations sur comment convertir les fichiers latex exportés en "
+#~ "PDF, consulter le document d'aide."
+
+#~ msgid "New Entry"
+#~ msgstr "Nouvelle entrée"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Nouvelle Version"
+
+#~ msgid "No New Version"
+#~ msgstr "Pas de Nouvelle Version"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Only the entries in the selected time range"
+#~ msgstr "Seulement les entrées dans l'intervalle de temps sélectionné"
+
+#~ msgid "Select >>"
+#~ msgstr "Sélectionner >>"
+
+#~ msgid ""
+#~ "Welcome to the Export Assistant. \n"
+#~ "This wizard will help you to export your journal to various formats. You can "
+#~ "select the days you want to export and where the output will be saved."
+#~ msgstr ""
+#~ "Bienvenue dans l'assistant d'exportation. \n"
+#~ "Ce module vous aidera à exporter votre journal dans divers formats. Vous "
+#~ "pouvez sélectionner les jours que vous souhaitez exporter et où les données "
+#~ "seront enregistrées."
+
+#~ msgid "Tag this day (Ctrl+T)"
+#~ msgstr "Étiqueter ce jour (Ctrl+T)"
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#~ msgid "Journal"
+#~ msgstr "Journal"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Nécessite pywebkitgtk (python-webkit)"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Le webkit fournit un meilleur aperçu"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Redémarrage nécessaire)"
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Pour l'exportation directe en format PDF, veuillez installer pywebkitgtk "
+#~ "version 1.1.5 ou supérieure."
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Utiliser webkit pour les aperçus"

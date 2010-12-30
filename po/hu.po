@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -972,7 +972,82 @@ msgstr "Ma"
 #: tmp/main_window.glade.h:45
 msgid "translator-credits"
 msgstr ""
+"This is a dummy translation so that the credits are counted as translated.\n"
+"\n"
 "Launchpad Contributions:\n"
 "  Gergely Szarka https://launchpad.net/~gszarka\n"
 "  Krasznecz Zoltán https://launchpad.net/~krasznecz-zoltan\n"
 "  Muszela Balázs https://launchpad.net/~bazsi86-deactivatedaccount"
+
+#, python-format
+#~ msgid "Preview: %s"
+#~ msgstr "Előnézet: %s"
+
+#~ msgid "Spell Check"
+#~ msgstr "Helyesírás-ellenőrzés"
+
+#~ msgid "Check for a new version now"
+#~ msgstr "Új verzió keresése most"
+
+#~ msgid "Check For New Version"
+#~ msgstr "Új verzió keresése"
+
+#~ msgid "Insert a title"
+#~ msgstr "Cím beszúrása"
+
+#~ msgid "Insert a bullet list"
+#~ msgstr "Pontozott lista beszúrása"
+
+#~ msgid "Templates"
+#~ msgstr "Sablonok"
+
+#~ msgid "<b>A new version of RedNotebook is available!</b>"
+#~ msgstr "<b>A RedNotebook új verziója érhető el!</b>"
+
+#~ msgid "<< Unselect"
+#~ msgstr "<< Kiválasztás törlése"
+
+#~ msgid "Do you want to visit the website?"
+#~ msgstr "Szeretné meglátogatni a weboldalt?"
+
+#~ msgid "Export Text"
+#~ msgstr "Szöveg exportálása"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
+
+#~ msgid "New Version"
+#~ msgstr "Új verzió"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "No New Version"
+#~ msgstr "Nincs új verzió"
+
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Select >>"
+#~ msgstr "Kiválasztás >>"
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Újraindítás szükséges)"
+
+#~ msgid "Journal"
+#~ msgstr "Napló"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Következőt igényli: pywebkitgtk (python-webkit)"
+
+#~ msgid "All Entries"
+#~ msgstr "Minden bejegyzés"
+
+#~ msgid "<b>You already have the latest version of RedNotebook</b>"
+#~ msgstr "<b>Ön már a RedNotebook legfrissebb verzióját használja</b>"
+
+#~ msgid "<b>Select format</b>"
+#~ msgstr "<b>Formátum kiválasztása</b>"
+
+#~ msgid "<b>Enter file name</b>"
+#~ msgstr "<b>Írja be a fájlnevet</b>"

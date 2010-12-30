@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-03 05:10+0000\n"
+"X-Launchpad-Export-Date: 2010-12-30 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -1166,3 +1166,57 @@ msgstr ""
 #~ "Er wird Ihnen helfen, ihr Journal in verschiedene Formate zu exportieren. "
 #~ "Wählen Sie in den nächsten Schritten die zu exportierenden Tage aus und "
 #~ "legen Sie fest, wohin der Export geschrieben werden soll."
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#~ msgid "Stricken"
+#~ msgstr "Durchgestrichen"
+
+#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
+#~ msgstr ""
+#~ "In der Hilfe finden Sie außerdem Informationen über das Konvertieren von "
+#~ "Latex- zu PDF-Dokumenten"
+
+#~ msgid ""
+#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
+#~ msgstr ""
+#~ "Um direkt nach PDF zu exportieren, installieren Sie bitte pywebkitgtk in "
+#~ "version 1.1.5 oder später"
+
+#~ msgid "Templates"
+#~ msgstr "Vorlagen"
+
+#~ msgid "RedNotebook supports templates."
+#~ msgstr "RedNotebook lässt Sie Templates einfügen."
+
+#~ msgid ""
+#~ "Click on the arrow next to the \"Template\" button to see some options."
+#~ msgstr ""
+#~ "Klicken Sie auf den Pfeil neben dem \"Vorlage\"-Knopf um einige "
+#~ "Möglichkeiten zu sehen."
+
+#~ msgid ""
+#~ "You can have one template for every day of the week and unlimited "
+#~ "arbitrarily named templates."
+#~ msgstr ""
+#~ "Sie können eine Vorlage für jeden Wochentag haben oder beliebig viele "
+#~ "thematische Vorlagen."
+
+#~ msgid "(Restart required)"
+#~ msgstr "(Neustart benötigt)"
+
+#~ msgid "Use webkit for previews"
+#~ msgstr "Benutze webkit für Vorschau"
+
+#~ msgid "Webkit offers a nicer preview"
+#~ msgstr "Webkit bietet eine schönere Vorschau"
+
+#~ msgid "Requires pywebkitgtk (python-webkit)"
+#~ msgstr "Benötigt pywebkitgtk (python-webkit)"
+
+#~ msgid "Journal"
+#~ msgstr "Journal"
