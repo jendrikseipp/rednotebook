@@ -99,4 +99,13 @@ X Custom Downloads:
       - Fedora: yum install rednotebook
       - Mac: Instructions
       - Source
-  
+
+Ideas:
+
+Have a viewable panel with a sort of tree-like structure, 
+that shows every single entry I've ever added, somewhat similar to how windows 
+folders are organised, but with a top level directory for each year, a sublevel 
+with months, and an entry level.. with a plus/minus option to display, or not, 
+each year/month and maybe a count next to each year/month, so we can quickly 
+and easily see how many entries were made each year/month. This would be a 
+great addition to the calendar method already available.
