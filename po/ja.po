@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2010-12-30 14:31+0000\n"
+"PO-Revision-Date: 2011-01-01 12:54+0000\n"
 "Last-Translator: Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-31 05:29+0000\n"
+"X-Launchpad-Export-Date: 2011-01-02 05:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -347,7 +347,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Visit the RedNotebook forum"
-msgstr ""
+msgstr "RedNotebook のフォーラムを訪問する"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Restore example content"
@@ -464,7 +464,7 @@ msgstr ""
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:699
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../rednotebook/gui/main_window.py:702
 msgid "Bold"
@@ -529,7 +529,7 @@ msgstr "リンク(_L)"
 
 #: ../rednotebook/gui/main_window.py:810
 msgid "Insert a link to a website"
-msgstr ""
+msgstr "web サイトへのリンクを挿入"
 
 #: ../rednotebook/gui/main_window.py:812
 msgid "Bullet List"
@@ -607,7 +607,7 @@ msgstr "エントリ"
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
-msgstr ""
+msgstr "テンプレート名称の選択"
 
 #: ../rednotebook/templates.py:283 ../rednotebook/templates.py:292
 msgid "This Weekday's Template"
@@ -615,11 +615,11 @@ msgstr ""
 
 #: ../rednotebook/templates.py:286
 msgid "Edit Template"
-msgstr ""
+msgstr "テンプレートの編集"
 
 #: ../rednotebook/templates.py:289
 msgid "Insert Template"
-msgstr ""
+msgstr "テンプレートの挿入"
 
 #: ../rednotebook/templates.py:295
 msgid "Create New Template"
@@ -641,11 +641,11 @@ msgstr "最新バージョンは <b>%s</b> です。"
 
 #: ../rednotebook/util/utils.py:249
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "RedNotebook のホームページを訪問しますか?"
 
 #: ../rednotebook/util/utils.py:256
 msgid "Do not ask again"
-msgstr ""
+msgstr "次回から確認しない"
 
 #: ../rednotebook/util/statistics.py:89 ../rednotebook/util/statistics.py:103
 #: tmp/main_window.glade.h:43
@@ -658,7 +658,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:91
 msgid "Edited Days"
-msgstr ""
+msgstr "編集日"
 
 #: ../rednotebook/util/statistics.py:92 ../rednotebook/util/statistics.py:105
 msgid "Letters"
@@ -695,7 +695,7 @@ msgstr ""
 
 #: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "選択されたフォルダは空ではありません。"
 
 #: ../rednotebook/journal.py:425
 msgid ""
