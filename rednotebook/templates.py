@@ -165,7 +165,7 @@ class TemplateManager(object):
         date_string = self.main_window.journal.config.read('dateTimeString', default_date_string)
         date = time.strftime(date_string)
         # Turn date into unicode string
-        date = date.decode(date)
+        date = date.decode()
         
         try:
             template_text = text.replace(u'$date$', date)
