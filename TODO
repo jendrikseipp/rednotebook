@@ -64,6 +64,7 @@ O Search in annotations
 O Do not write empty month files to disk
 O Update search window when an annotation has been added/changed?
 O install .mo files (translations) in the standard directories
+O Make windows installer truly portable (leave no traces in registry) 
 
 
   
