@@ -109,6 +109,12 @@ O make date format configurable for exports (probably no one needs this as i18n 
   https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=139
 O Add additional one-click menu (like the one with Search and Tags Cloud) that contains quick links to other journals
   (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23&sid=210fbd0a19cc2d2d5baec8c5cafb7c1f&p=582#p583)
+O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package. 
+  The 'hanging' occurs after navigating the cursor through the main edit window 
+  (in edit mode). Pressing the 'home' key or 'end' key usually causes a short beep 
+  and then locks my rednotebook application. The only thing I can then do is force 
+  the applicaiton to close. I have no such problems with the 1.1.0 version (with 
+  the 'older' user interface). 
 
 - an option to select searched entries with single click instead of double click
 - That the Annotate and Tag window box will remember where I moved it to between sessions
