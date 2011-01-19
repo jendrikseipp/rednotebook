@@ -107,7 +107,7 @@ class Pattern(object):
             try:
                 self._regexp = re.compile(pattern, flag)
             except re.error, e:
-                raise Exception("Invalid regexp \"%s\": %s"%(pattern,str(e)))
+                raise Exception("Invalid regexp \"%s\": %s" % (pattern, e))
 
         self.group_tag_pairs = group_tag_pairs
 

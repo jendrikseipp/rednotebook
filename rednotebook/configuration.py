@@ -154,7 +154,7 @@ class Config(dict):
         default should be of the form 'alpha,beta gamma;delta'
         '''
         string = self.read(key, default)
-        string = str(string)
+        string = unicode(string)
         if not string:
             return []
         

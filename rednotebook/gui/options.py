@@ -51,7 +51,7 @@ class Option(gtk.HBox):
         raise NotImplementedError
         
     def get_string_value(self):
-        return str(self.get_value()).strip()
+        return unicode(self.get_value()).strip()
 
 
 class TickOption(Option):
@@ -120,7 +120,7 @@ class CsvTextOption(Option):
         values_string = Option.config.read(option_name, '')
         
         # Ensure that we have a string here
-        values_string = str(values_string)
+        values_string = unicode(values_string)
         
         self.entry = gtk.Entry()
         self.entry.set_text(values_string)
@@ -168,7 +168,8 @@ class DateFormatOption(ComboBoxOption):
         
         # Set default format if not present
         format = Option.config.read(name, '%A, %x %X')
-        self.combo.set_active_text(str(format))
+        format = unicode(format)
+        self.combo.set_active_text(format)
         
         self.combo.connect('changed', self.on_format_changed)
         
@@ -177,8 +178,10 @@ class DateFormatOption(ComboBoxOption):
         
     def on_format_changed(self, widget):
         import time
+        string = self.get_value()
+        time_string = time.strftime(string)
         ### Translators: Noun
-        self.preview.set_text(_('Preview:') + ' ' + time.strftime(self.combo.get_active_text()))
+        self.preview.set_text(_('Preview:') + ' ' + time_string)
         
         
 class FontSizeOption(ComboBoxOption):
@@ -194,7 +197,7 @@ class FontSizeOption(ComboBoxOption):
         if size == -1:
             self.combo.set_active_text('default')
         else:
-            self.combo.set_active_text(str(size))
+            self.combo.set_active_text(unicode(size))
             
         self.combo.set_editable(False)
         self.combo.combo_box.set_wrap_width(3)

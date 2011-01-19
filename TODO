@@ -67,6 +67,10 @@ O Update search window when an annotation has been added/changed?
 O install .mo files (translations) in the standard directories
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
+O Do not allow starting two instances at the same time
+O store current screen coordinates upon exit or close to system tray,
+  so that next time it runs it comes back to the same place on the screen
+O Let the sub-screens be displayed relative to the main screen
 
 
   
