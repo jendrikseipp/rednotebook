@@ -23,13 +23,13 @@ detect_os ("Foresight", "Foresight");
 
 var default_distro = detected_os.toLowerCase ();
 
-/*var href_parts = document.location.href.split ('#');
+var href_parts = document.location.href.split ('#');
 if (href_parts.length > 1) {
     var override_distro = href_parts[href_parts.length - 1].toLowerCase ();
     if (override_distro.length > 1) {
         default_distro = override_distro;
     }
-}*/
+}
 
 
 function show_distro_details (button)

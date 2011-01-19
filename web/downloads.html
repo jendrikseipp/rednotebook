@@ -57,12 +57,18 @@
   <h4>Ubuntu</h4>
   <div class="details">
     <ul>
-      <li>RedNotebook is available from the official Ubuntu repositories; 
-            <b><a href="install.html">click here to install it</a></b>.
-            Ubuntu has a policy of not updating the version of a shipped application, so the version available might be old.</li>
-      <li>To keep up to date with the latest version, <a href="http://digitaldump.wordpress.com/2009/05/15/ubuntu-repository/">add the RedNotebook repository</a>.
-            Please note that it takes some time before a new version shows up in the repo. We want to test new debs thoroughly before uploading them.</li>
-      <li>You can also download the latest deb package directly from the <a href="http://robin.powdarrmonkey.net/ubuntu/">repository</a>.</li>
+      <li>You can find RedNotebook in the Ubuntu Software Center or <a href="install.html">install it directly</a>.</li>
+      <li>You can also add the RedNotebook repository and always get the latest version automatically
+(<a href="http://digitaldump.wordpress.com/2009/05/15/ubuntu-repository/">detailed instructions</a>):
+<pre>
+sudo add-apt-repository "deb https://robin.powdarrmonkey.net/ubuntu maverick/"
+sudo apt-get update
+sudo apt-get install rednotebook powdarrmonkey-keyring
+</pre>
+</li>
+      <li>Alternatively download the latest deb package directly from the <a href="http://robin.powdarrmonkey.net/ubuntu/">repository</a>.</li>
+      <li>Please note that it might take some time before the latest
+       release is packaged and added to the repository.</li>
     </ul>
   </div>
 </div>
