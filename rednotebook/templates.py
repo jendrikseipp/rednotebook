@@ -118,6 +118,7 @@ class TemplateManager(object):
         
     def on_new_template(self, action):
         dialog = gtk.Dialog(_('Choose Template Name'))
+        dialog.set_transient_for(self.main_window.main_frame)
         dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
         

@@ -273,6 +273,7 @@ class OptionsManager(object):
         self.config = self.journal.config
         
         self.dialog = OptionsDialog(self.builder.get_object('options_dialog'))
+        self.dialog.set_transient_for(self.main_window.main_frame)
         self.dialog.set_default_size(600, 300)
         self.dialog.add_category('general', self.builder.get_object('general_vbox'))
         

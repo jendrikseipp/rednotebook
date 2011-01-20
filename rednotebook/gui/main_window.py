@@ -367,6 +367,7 @@ class MainWindow(object):
         
     def setup_stats_dialog(self):
         self.stats_dialog = self.builder.get_object('stats_dialog')
+        self.stats_dialog.set_transient_for(self.main_frame)
         overall_box = self.builder.get_object('overall_box')
         day_box = self.builder.get_object('day_stats_box')
         overall_list = CustomListView()
@@ -537,6 +538,7 @@ class MainWindow(object):
         
     def show_dir_chooser(self, type, dir_not_found=False):
         dir_chooser = self.builder.get_object('dir_chooser')
+        dir_chooser.set_transient_for(self.main_frame)
         label = self.builder.get_object('dir_chooser_label')
         
         if type == 'new':
@@ -579,6 +581,7 @@ class MainWindow(object):
             
     def show_save_error_dialog(self, exit_imminent):
         dialog = self.builder.get_object('save_error_dialog')
+        dialog.set_transient_for(self.main_frame)
         
         exit_without_save_button = self.builder.get_object('exit_without_save_button')
         if exit_imminent:
@@ -1008,6 +1011,7 @@ class MainWindow(object):
         proposed_file_name = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
             
         backup_dialog = self.builder.get_object('backup_dialog')
+        backup_dialog.set_transient_for(self.main_frame)
         backup_dialog.set_current_folder(os.path.expanduser('~'))
         backup_dialog.set_current_name(proposed_file_name)
         
@@ -1038,7 +1042,8 @@ class NewEntryDialog(object):
     def __init__(self, main_frame):
         dialog = main_frame.builder.get_object('new_entry_dialog')
         self.dialog = dialog
-        
+        dialog.set_transient_for(main_frame.main_frame)
+
         self.main_frame = main_frame
         self.journal = self.main_frame.journal
         self.categories_combo_box = CustomComboBoxEntry(main_frame.builder.get_object('categories_combo_box'))

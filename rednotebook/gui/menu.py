@@ -280,6 +280,7 @@ class MainMenuBar(object):
 
     def on_info_activate(self, widget):
         self.info_dialog = self.main_window.builder.get_object('about_dialog')
+        self.info_dialog.set_transient_for(self.main_window.main_frame)
         self.info_dialog.set_name('RedNotebook')
         self.info_dialog.set_version(info.version)
         self.info_dialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')

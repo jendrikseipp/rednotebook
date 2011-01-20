@@ -383,19 +383,8 @@ class CategoriesTreeView(object):
         if selected_iter:
             self.delete_node(selected_iter)
             return
-        
-        
-            message = _('Do you really want to delete this node?')
-            sort_optimal_dialog = gtk.MessageDialog(parent=self.main_window.main_frame, \
-                                    flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_QUESTION, \
-                                    buttons=gtk.BUTTONS_YES_NO, message_format=message)
-            response = sort_optimal_dialog.run()
-            sort_optimal_dialog.hide()
-            
-            if response == gtk.RESPONSE_YES:
-                self.delete_node(selected_iter)
-                
-                
+
+
     def on_key_press_event(self, widget, event):
         """
         @param widget - gtk.TreeView - The Tree View
