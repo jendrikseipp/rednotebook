@@ -17,6 +17,7 @@ X Let the sub-windows be displayed relative to the main screen
 O Fix: Special characters inflate cloud black-/whitelist
 O "Export currently visible day only" option
 X Fix: Insertion of templates (LP:696205)
+X Fix: Do not load backup files accidentally (LP:705260)
 O Windows: Fix linked files with umlauts
 
 1.1.x

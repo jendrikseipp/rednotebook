@@ -67,60 +67,43 @@ class Storage(object):
                 year_string = match.group(1)
                 month_string = match.group(2)
                 year_month = year_string + '-' + month_string
+
+                year_number = int(year_string)
+                month_number = int(month_string)
+                assert month_number in range(1, 13)
                 
                 path = os.path.join(data_dir, file)
                 
-                month = self._load_month_from_disk(path)
+                month = self._load_month_from_disk(path, year_number, month_number)
                 if month:
                     months[year_month] = month
             else:
-                logging.debug('%s is not a valid month file' % file)
+                logging.debug('%s is not a valid month filename' % file)
         logging.debug('Finished loading files in dir "%s"' % data_dir)
         return months
     
     
-    def _load_month_from_disk(self, path):
+    def _load_month_from_disk(self, path, year_number, month_number):
         '''
         Load the month file at path and return a month object
         
         If an error occurs, return None
         '''
-        # path: /something/somewhere/2009-01.txt
-        # file_name: 2009-01.txt
-        file_name = os.path.basename(path)
-        
-        try:
-            # Get Year and Month from filename
-            year_and_month, extension = os.path.splitext(file_name)
-            year_number, month_number = year_and_month.split('-')
-            year_number = int(year_number)
-            month_number = int(month_number)
-            assert month_number in range(1,13)
-        except Exception:
-            msg = 'Error: %s is an incorrect filename. ' \
-                'Filenames have to have the following form: ' \
-                '2009-01.txt for January 2009 ' \
-                '(year_with4Digits-month_with2Digits.txt)' % file_name
-            logging.error(msg)
-            return
-        
-        month_file_string = path
-        
         try:
             # Try to read the contents of the file
-            with codecs.open(month_file_string, 'rb', encoding='utf-8') as month_file:
-                logging.debug('Start loading file "%s"' % month_file_string)
+            with codecs.open(path, 'rb', encoding='utf-8') as month_file:
+                logging.debug('Start loading file "%s"' % path)
                 month_contents = yaml.load(month_file, Loader=Loader)
-                logging.debug('Finished loading file "%s"' % month_file_string)
+                logging.debug('Finished loading file "%s"' % path)
                 month = Month(year_number, month_number, month_contents)
                 return month
         except yaml.YAMLError, exc:
-            logging.error('Error in file %s:\n%s' % (month_file_string, exc))
+            logging.error('Error in file %s:\n%s' % (path, exc))
         except IOError:
             #If that fails, there is nothing to load, so just display an error message
-            logging.error('Error: The file %s could not be read' % month_file_string)
+            logging.error('Error: The file %s could not be read' % path)
         except Exception, err:
-            logging.error('An error occured while reading %s:' % month_file_string)
+            logging.error('An error occured while reading %s:' % path)
             logging.error('%s' % err)
         
         
