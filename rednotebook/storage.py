@@ -55,7 +55,7 @@ class Storage(object):
         to month objects
         '''
         # Format: 2010-05.txt
-        date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
+        date_exp = re.compile(r'(\d{4})-(\d{2})\.txt$')
         
         months = {}
         
@@ -73,6 +73,8 @@ class Storage(object):
                 month = self._load_month_from_disk(path)
                 if month:
                     months[year_month] = month
+            else:
+                logging.debug('%s is not a valid month file' % file)
         logging.debug('Finished loading files in dir "%s"' % data_dir)
         return months
     
