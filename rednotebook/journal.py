@@ -236,21 +236,18 @@ except (ImportError, AssertionError), e:
     logging.error('gtk not found. Please install PyGTK (python-gtk2)')
     sys.exit(1)
 
-    
+
 
 # This version of import is needed for win32 to work
-from rednotebook.util import unicode
 from rednotebook.util import dates
-#from rednotebook import info
-#from rednotebook import configuration
 from rednotebook import backup
 
 
 from rednotebook.util.statistics import Statistics
 from rednotebook.gui.main_window import MainWindow
 from rednotebook.storage import Storage
-#import rednotebook.storage
 from rednotebook.data import Month
+
 
 class Journal:
     

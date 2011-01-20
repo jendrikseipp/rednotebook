@@ -51,7 +51,7 @@ class Option(gtk.HBox):
         raise NotImplementedError
         
     def get_string_value(self):
-        return unicode(self.get_value()).strip()
+        return str(self.get_value()).strip()
 
 
 class TickOption(Option):
@@ -120,7 +120,7 @@ class CsvTextOption(Option):
         values_string = Option.config.read(option_name, '')
         
         # Ensure that we have a string here
-        values_string = unicode(values_string)
+        values_string = str(values_string)
         
         self.entry = gtk.Entry()
         self.entry.set_text(values_string)
@@ -168,7 +168,7 @@ class DateFormatOption(ComboBoxOption):
         
         # Set default format if not present
         format = Option.config.read(name, '%A, %x %X')
-        format = unicode(format)
+        format = str(format)
         self.combo.set_active_text(format)
         
         self.combo.connect('changed', self.on_format_changed)

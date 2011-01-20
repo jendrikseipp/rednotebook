@@ -73,7 +73,7 @@ def get_markup_for_day(day, with_text=True, categories=None, date=None):
     category_content_pairs = day.get_category_content_pairs()
     
     if categories:
-        categories = map(lambda s: unicode(s).lower(), categories)
+        categories = map(lambda s: str(s).lower(), categories)
         export_categories = dict((x,y) for (x, y) in category_content_pairs.items()
                         if x.lower() in categories)
     elif categories is None:

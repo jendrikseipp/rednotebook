@@ -154,7 +154,8 @@ class Config(dict):
         default should be of the form 'alpha,beta gamma;delta'
         '''
         string = self.read(key, default)
-        string = unicode(string)
+        if not isinstance(string, basestring):
+            string = str(string)
         if not string:
             return []
         
