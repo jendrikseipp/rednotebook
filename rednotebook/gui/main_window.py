@@ -293,12 +293,16 @@ class MainWindow(object):
         
         self.tray_icon.connect('activate', self.on_tray_icon_activated)
         self.tray_icon.connect('popup-menu', self.on_tray_popup_menu)
+
+        self.position = None
         
     def on_tray_icon_activated(self, tray_icon):
         if self.main_frame.get_property('visible'):
             self.hide()
         else:
             self.main_frame.show()
+            if self.position:
+                self.main_frame.move(*self.position)
             
     def on_tray_popup_menu(self, status_icon, button, activate_time):
         '''
@@ -336,6 +340,7 @@ class MainWindow(object):
                 button, activate_time, status_icon)
             
     def hide(self):
+        self.position = self.main_frame.get_position()
         self.main_frame.hide()
         self.journal.save_to_disk(exit_imminent=False)
         
