@@ -156,9 +156,6 @@ class MainWindow(object):
         
         self.load_values_from_config()
         
-        if not sys.platform == 'win32':
-            self.main_frame.set_position(gtk.WIN_POS_CENTER)
-        
         if not self.journal.start_minimized:
             self.main_frame.show()
         
@@ -617,6 +614,11 @@ class MainWindow(object):
                 self.builder.get_object('edit_pane').get_position()
                 
         # Remember if window was maximized in separate method
+
+        # Remember window position
+        pos_x, pos_y = self.main_frame.get_position()
+        config['mainFrameX'] = pos_x
+        config['mainFrameY'] = pos_y
         
         config['cloudTabActive'] = self.search_notebook.get_current_page()
         
@@ -641,6 +643,12 @@ class MainWindow(object):
         
         if config.read('mainFrameMaximized', 0):
             self.main_frame.maximize()
+        else:
+            # If window is not maximized, restore last position
+            pos_x = config.read('mainFrameX', None)
+            pos_y = config.read('mainFrameY', None)
+            if pos_x is not None and pos_y is not None:
+                self.main_frame.move(pos_x, pos_y)
         
         if 'leftDividerPosition' in config:
             self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))
