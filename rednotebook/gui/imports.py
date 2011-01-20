@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
 from rednotebook.data import Day, Month
 from rednotebook.util import filesystem
-from rednotebook.storage import Storage
+from rednotebook import storage
 from rednotebook.util import markup
 from rednotebook.gui.customwidgets import AssistantPage, \
                     IntroductionPage, RadioButtonPage, PathChooserPage, Assistant
@@ -274,11 +274,10 @@ class RedNotebookImporter(Importer):
     
     def __init__(self):
         date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
-        self.storage = Storage()
     
     def get_days(self, dir):
         assert os.path.isdir(dir)
-        months = self.storage.load_all_months_from_disk(dir)
+        months = storage.load_all_months_from_disk(dir)
         for month in sorted(months.values()):
             for day in sorted(month.days.values()):
                 yield day
@@ -293,7 +292,6 @@ class RedNotebookBackupImporter(RedNotebookImporter):
     
     def __init__(self):
         date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
-        self.storage = Storage()
         
     @classmethod
     def is_available(cls):

@@ -245,7 +245,7 @@ from rednotebook import backup
 
 from rednotebook.util.statistics import Statistics
 from rednotebook.gui.main_window import MainWindow
-from rednotebook.storage import Storage
+from rednotebook import storage
 from rednotebook.data import Month
 
 
@@ -296,7 +296,6 @@ class Journal:
         self.frame = None
         self.frame = MainWindow(self)
         
-        self.storage = Storage()
         self.open_journal(self.get_journal_path())
         
         self.archiver = backup.Archiver(self)
@@ -382,7 +381,7 @@ class Journal:
             return True
             
         
-        something_saved = self.storage.save_months_to_disk(self.months, \
+        something_saved = storage.save_months_to_disk(self.months, \
             self.dirs.data_dir, self.frame, exit_imminent, changing_journal, saveas)                    
         
         if something_saved:
@@ -442,7 +441,7 @@ class Journal:
         
         # We always want to load all files
         if load_files or True:
-            self.months = self.storage.load_all_months_from_disk(data_dir)
+            self.months = storage.load_all_months_from_disk(data_dir)
         
         # Nothing to save before first day change
         self.load_day(self.actual_date)
