@@ -197,7 +197,7 @@ class FontSizeOption(ComboBoxOption):
         if size == -1:
             self.combo.set_active_text('default')
         else:
-            self.combo.set_active_text(unicode(size))
+            self.combo.set_active_text(str(size))
             
         self.combo.set_editable(False)
         self.combo.combo_box.set_wrap_width(3)
