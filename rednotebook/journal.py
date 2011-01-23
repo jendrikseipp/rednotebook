@@ -447,7 +447,6 @@ class Journal:
 
         self.stats = Statistics(self)
 
-        print 'CATS', repr(self.node_names)
         sorted_categories = sorted(self.node_names, key=lambda category: str(category).lower())
         self.frame.categories_tree_view.categories = sorted_categories
 

@@ -14,6 +14,7 @@ X Let the sub-windows be displayed relative to the main screen
 O Fix: Special characters inflate cloud black-/whitelist
 X Fix: Insertion of templates (LP:696205)
 X Fix: Do not load backup files accidentally (LP:705260)
+O Fix: Preferences window can't be opened (LP:696186)
 O Windows: Fix linked files with umlauts
 
 1.1.x
