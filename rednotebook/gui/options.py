@@ -51,7 +51,7 @@ class Option(gtk.HBox):
         raise NotImplementedError
 
     def get_string_value(self):
-        return str(self.get_value()).strip()
+        return unicode(self.get_value()).strip()
 
 
 class TickOption(Option):
@@ -120,7 +120,7 @@ class CsvTextOption(Option):
         values_string = Option.config.read(option_name, '')
 
         # Ensure that we have a string here
-        values_string = str(values_string)
+        values_string = unicode(values_string)
 
         self.entry = gtk.Entry()
         self.entry.set_text(values_string)
@@ -369,7 +369,7 @@ class OptionsManager(object):
         for option in self.options:
             value = option.get_string_value()
             if option.option_name is not None:
-                logging.debug('Setting %s = %s' % (option.option_name, value))
+                logging.debug('Setting %s = %s' % (option.option_name, repr(value)))
                 self.config[option.option_name] = value
             else:
                 # We don't save the autostart setting in the config file
