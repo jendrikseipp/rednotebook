@@ -301,6 +301,8 @@ def get_local_url(url):
         url = url.replace('file://', '')
     url = os.path.normpath(url)
 
+    import urllib
+    url = urllib.unquote(url).decode('utf-8')
     scheme = 'file:///' if sys.platform == 'win32' else 'file://'
     url = scheme + url
     logging.debug('Transformed local URI %s to %s' % (orig_url, url))
