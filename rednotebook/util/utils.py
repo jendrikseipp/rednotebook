@@ -245,7 +245,7 @@ def check_new_version(journal, current_version, startup=False):
     if newer_version_available or not startup:
         dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL, \
             type=gtk.MESSAGE_INFO, buttons=gtk.BUTTONS_YES_NO, message_format=None)
-        dialog.set_transient_for(journal.main_window.main_frame)
+        dialog.set_transient_for(journal.frame.main_frame)
         primary_text = _('You have version <b>%s</b>.') % current_version  + \
                         _('The latest version is <b>%s</b>.') % new_version
         secondary_text = _('Do you want to visit the RedNotebook homepage?')

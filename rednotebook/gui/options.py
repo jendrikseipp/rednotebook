@@ -319,7 +319,7 @@ class OptionsManager(object):
 
         check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')
         def check_version_action(widget):
-            utils.check_new_version(self.main_window, info.version)
+            utils.check_new_version(self.main_window.journal, info.version)
             # Apply changes from dialog to options window
             check = bool(self.journal.config.get('checkForNewVersion'))
             check_version_option.check_button.set_active(check)
