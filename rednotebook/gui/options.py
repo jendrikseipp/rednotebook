@@ -168,9 +168,7 @@ class DateFormatOption(ComboBoxOption):
 
         # Set default format if not present
         format = Option.config.read(name, '%A, %x %X')
-        print 'FORMAT', repr(format)
-        format = str(format)
-        print 'FORMAT', repr(format)
+        format = unicode(format)
         self.combo.set_active_text(format)
 
         self.combo.connect('changed', self.on_format_changed)
@@ -182,6 +180,7 @@ class DateFormatOption(ComboBoxOption):
         import time
         string = self.get_value()
         time_string = time.strftime(string)
+        time_string = unicode(time_string, encoding='utf-8', errors='replace')
         ### Translators: Noun
         self.preview.set_text(_('Preview:') + ' ' + time_string)
 
