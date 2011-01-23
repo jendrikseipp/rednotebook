@@ -33,6 +33,9 @@ class Day(object):
         self.month = month
         self.day_number = day_number
         self.content = day_content
+        print 'CONTENT'
+        for key, value in day_content.items():
+            print repr(key), repr(value)
 
         self.search_result_length = 50
 
@@ -194,8 +197,9 @@ class Day(object):
             return res
 
         # Search in date
-        if search_text in str(self):
-            return (str(self), get_text_with_dots(0, int(self.search_result_length//2)))
+        date = str(self)
+        if search_text in date:
+            return (date, get_text_with_dots(0, int(self.search_result_length//2)))
 
         # Search in text
         upcase_search_text = search_text.upper()
@@ -208,7 +212,7 @@ class Day(object):
             found_text = self.text[occurence:occurence + len(search_text)]
 
             result_text = get_text_with_dots(occurence, occurence + len(search_text), found_text)
-            return (str(self), result_text)
+            return (date, result_text)
 
 
     def search_category(self, search_category):

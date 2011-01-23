@@ -98,7 +98,6 @@ class Config(dict):
             return {}
 
         lines = content.split('\n')
-        #lines = map(str, lines)
 
         # delete comments
         key_value_pairs = map(lambda line: delete_comment(line), lines)

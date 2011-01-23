@@ -1229,13 +1229,13 @@ class CloudView(HtmlWindow):
 
         default_ignore_list = _('filter, these, comma, separated, words')
         self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
-        self.ignore_list = map(str.lower, self.ignore_list)
+        self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
         logging.info('Cloud ignore list: %s' % self.ignore_list)
 
         ### Translators: These are example whitelist words with 4 or less letters
         default_include_list = _('mtv, spam, work, job, play')
         self.include_list = config.read_list('cloudIncludeList', default_include_list)
-        self.include_list = map(str.lower, self.include_list)
+        self.include_list = map(lambda word: word.lower(), self.include_list)
         logging.info('Cloud include list: %s' % self.include_list)
 
 
@@ -1674,7 +1674,7 @@ class DayTextField(object):
         uris = selection.data.strip('\r\n\x00')
         logging.debug('URIs: "%s"' % uris)
         uris = uris.split() # we may have more than one file dropped
-        uris = map(str.strip, uris)
+        uris = map(lambda uri: uri.strip(), uris)
         for uri in uris:
             uri = urllib.url2pathname(uri)
             dirs, filename = os.path.split(uri)
