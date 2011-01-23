@@ -135,7 +135,7 @@ def read_file(filename):
     try:
         import chardet
     except ImportError:
-        logging.info("chardet not found. Let's hope all your files are unicode")
+        logging.info("chardet not found. 'utf-8' encoding will be assumed")
         chardet = None
 
     if chardet:
@@ -175,7 +175,7 @@ def write_file(filename, content):
         # Turn content into unicode string
     #    content = content.decode('utf-8')
     try:
-        with codecs.open(filename, 'wb', errors='replace') as file:
+        with codecs.open(filename, 'wb', errors='replace', encoding='utf-8') as file:
         #with open(filename, 'wb') as file:
             file.write(content)
             file.flush()
