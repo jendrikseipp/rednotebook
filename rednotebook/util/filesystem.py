@@ -125,8 +125,7 @@ class Filenames(dict):
 
 
 def read_file(filename):
-    '''
-    Tries to read a given file
+    '''Tries to read a given file
 
     Returns None if an error is encountered
     '''
@@ -138,7 +137,7 @@ def read_file(filename):
         logging.info("chardet not found. 'utf-8' encoding will be assumed")
         chardet = None
 
-    if chardet:
+    if False and chardet:
         with open(filename, 'rb') as file:
             content = file.read()
         guess = chardet.detect(content)
@@ -178,8 +177,6 @@ def write_file(filename, content):
         with codecs.open(filename, 'wb', errors='replace', encoding='utf-8') as file:
         #with open(filename, 'wb') as file:
             file.write(content)
-            file.flush()
-            file.close()
     except IOError, e:
         logging.error('Error while writing to "%s": %s' % (filename, e))
 
