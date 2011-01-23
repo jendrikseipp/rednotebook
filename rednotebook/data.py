@@ -33,9 +33,6 @@ class Day(object):
         self.month = month
         self.day_number = day_number
         self.content = day_content
-        print 'CONTENT'
-        for key, value in day_content.items():
-            print repr(key), repr(value)
 
         self.search_result_length = 50
 

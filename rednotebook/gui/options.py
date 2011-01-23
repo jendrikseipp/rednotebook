@@ -236,7 +236,6 @@ class FontSizeOption(ComboBoxOption):
 #       LabelAndWidgetOption.__init__(self, text, name, self.spin)
 #
 #   def get_value(self):
-#       print type(self.spin.get_value())
 #       return self.spin.get_value()
 #
 #   def get_string_value(self):

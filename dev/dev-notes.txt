@@ -11,20 +11,20 @@ O WYSIWYG as an alternative to markup??? (keepnote and htmltextview as reference
     HTML2PDF: xhtml2pdf, http://code.activestate.com/recipes/532908/ possible, but only for plain text (no formatting)
               webkit is a better option here
     HTML2ODF: no suitable library at the moment. PyODF is buggy
-    
+
     http://arstechnica.com/open-source/guides/2009/07/how-to-build-a-desktop-wysiwyg-editor-with-webkit-and-html-5.ars
-  
+
     roadmap suggestion:
     wait for pywebkitgtk to stabilize a bit more (new ubuntu version)
     first add webkit as possible preview backend
     save all content directly in html to have way more editing options
-  
+
 O Encryption/Password
   - Save in password protected zipfiles (no open source tool to generate those)
     seems to be very easy to hack
   - Symmetric Encryption. AES (best method it seems)
         with PyCrypto
-          http://www.dlitz.net/software/pycrypto/, 
+          http://www.dlitz.net/software/pycrypto/,
           http://www.codekoala.com/blog/2009/aes-encryption-python-using-pycrypto/
           http://idsvandermolen.com/codefiles/crypto.py
           available in repos of all major distros
@@ -32,51 +32,51 @@ O Encryption/Password
         Pure python AES module (check speed)
   - Truecrypt (Commandline): Would probably work, but requires installation of
     additional package that is not available in the repos
-    
+
   --> Use pycrypto only
-  
+
   - What should be encrypted? Files, Strings? -> Files better
     Lifeograph only writes to one file, encrypts a string
-  
+
   - Maybe use only one file for a journal, add journal dependent variables
   - Maybe compress this file
-  
+
   - AES uses fixed key-length -> bad for passwords -> use Blowfish with variable length
   - Blowfish faster than AES
-  
+
   - Maybe just use 7z (only archive format that is widely known with good encryption (AES-256))
   - 7z can however also produce zip files with good encryption
   - For 7z package p7zip is needed (only supports 7z)
   - binary is called 7zr
   - Handling of extracted text files only in memory should be possible
     - What about pictures?
-    
+
   - Maybe find a way to encrypt the whole directory
-  
-  
+
+
 X Automatic insertions
   - Use code from Zeitgeist
 
-  
+
 X Spell-Checking
   - Enchant depends on aspell and hunspell on ubuntu
   - gtkspell depends on enchant
   - Use either aspell directly or through enchant
   - enchant is more up-to-date, but harder to use with gtk
   - gtkspell seems to be the easiest solution (python-gnome2-extras)
-  
+
 X Portable Version:
   Linux users can use the setting too, if all the computers have the RedNotebook
   requirements installed (pygtk, pyyaml)
-  
+
   - Provide Option in Setup for running RedNotebook portable. Maybe use file
     that is only installed, when running this mode.
-  
+
 X Completely Translate Windows Version:
   - Inno Setup:
     - The {language} constant returns the internal name of the selected language.
-    - On Windows NT/2000/XP/2003, environment variables are stored as string values 
-      in the registry, so it is possible to manipulate them using the [Registry] section. 
+    - On Windows NT/2000/XP/2003, environment variables are stored as string values
+      in the registry, so it is possible to manipulate them using the [Registry] section.
       System-wide environment variables are located at:
 
       HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
@@ -84,12 +84,12 @@ X Completely Translate Windows Version:
       User-specific environment variables are located at:
 
       HKEY_CURRENT_USER\Environment
-      
+
     automatic gtk stuff: Registry?
     program strings:     lang variable
     gtkbuilder:          Registry?
-    
-    
+
+
 X Custom Downloads:
   - Front page: Only link to download page, no js
   - Download page:
@@ -102,10 +102,15 @@ X Custom Downloads:
 
 Ideas:
 
-Have a viewable panel with a sort of tree-like structure, 
-that shows every single entry I've ever added, somewhat similar to how windows 
-folders are organised, but with a top level directory for each year, a sublevel 
-with months, and an entry level.. with a plus/minus option to display, or not, 
-each year/month and maybe a count next to each year/month, so we can quickly 
-and easily see how many entries were made each year/month. This would be a 
+Have a viewable panel with a sort of tree-like structure,
+that shows every single entry I've ever added, somewhat similar to how windows
+folders are organised, but with a top level directory for each year, a sublevel
+with months, and an entry level.. with a plus/minus option to display, or not,
+each year/month and maybe a count next to each year/month, so we can quickly
+and easily see how many entries were made each year/month. This would be a
 great addition to the calendar method already available.
+
+Implementation notes:
+- PyYAML saves each string as ascii if it only contains ascii chars.
+  If there are unicode chars, a unicode object is saved.
+- The Days always turn their text into unicode before returning it.

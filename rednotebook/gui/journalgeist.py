@@ -163,7 +163,6 @@ class JournalZeitgeistWidget(DayWidget):
         day_part_widgets = self.view.get_children()
         day_part = day_part_widgets[1]
         day_part.get_events()
-        print day_part.events
 
         #self.vbox.remove(self.daylabel)
 

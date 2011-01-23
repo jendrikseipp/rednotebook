@@ -293,9 +293,7 @@ class StreamDuplicator(object):
         return [self.default] + self.duplicates
 
     def write(self, str):
-        #print 'write', self.default, self.duplicates, self.streams
         for stream in self.streams:
-            #print stream
             stream.write(str)
 
     def flush(self):

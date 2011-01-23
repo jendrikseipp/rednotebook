@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009  Jendrik Seipp
-# 
+#
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # RedNotebook is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License along
 # with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -46,37 +46,36 @@ class Tag(object):
         self.end = end
         self.name = tagname
         self.rule = rule
-        
+
     def list(self):
         return [self.start, self.end, self.name]
-        
-    
+
+
 class TagGroup(list):
     @property
     def min_start(self):
         return min([tag.start for tag in self], key=lambda i: i.get_offset()).copy()
-        
+
     @property
     def max_end(self):
         return max([tag.end for tag in self], key=lambda i: i.get_offset()).copy()
-        
+
     def sort(self):
-        print type(list)
         key = lambda tag: (tag.start.get_offset(), -tag.end.get_offset(), tag.name)
         list.sort(self, key=key)
-    
-    @property    
+
+    @property
     def rule(self):
         if len(self) == 0:
             return 'NO ITEM'
         return self[0].rule
-        
+
     def list(self):
         return map(lambda g: g.list(), self)
-        
+
     #def __cmp__(self, other):
     #    return cmp((self.min_start, other.min_start))
-        
+
 
 class Pattern(object):
     '''
@@ -87,11 +86,11 @@ class Pattern(object):
                         overlap=False, name='unnamed'):
         self.overlap = overlap
         self.name = name
-        
+
         # assemble re-flag
         flags += "ML"
         flag = 0
-        
+
         for char in flags:
             if char == 'M': flag |= re.M
             if char == 'L': flag |= re.L
@@ -99,7 +98,7 @@ class Pattern(object):
             if char == 'I': flag |= re.I
             if char == 'U': flag |= re.U
             if char == 'X': flag |= re.X
-        
+
         if regex:
             self._regexp = regex
         else:
@@ -116,7 +115,7 @@ class Pattern(object):
         if not m: return None
 
         tags = TagGroup()
-        
+
         for group, tag_name in self.group_tag_pairs:
             group_matched = bool(m.group(group))
             if not group_matched:
@@ -131,21 +130,21 @@ class Pattern(object):
 
 
 class MarkupDefinition(object):
-    
+
     def __init__(self, rules):
         self.rules = rules
         self.highlight_rule = None
-        
+
     def __call__(self, buf, start, end):
-        
+
         txt = buf.get_slice(start, end)
-        
+
         tag_groups = []
-        
+
         rules = self.rules[:]
         if self.highlight_rule:
             rules.append(self.highlight_rule)
-        
+
         # search min match
         for rule in rules:
             # search pattern
@@ -154,39 +153,39 @@ class MarkupDefinition(object):
                 tag_groups.append(tags)
                 subtext = buf.get_slice(tags.max_end, end)
                 tags = rule(subtext, tags.max_end, end)
-            
+
         tag_groups.sort(key=lambda g: (g.min_start.get_offset(), -g.max_end.get_offset()))
-        
+
         return tag_groups
 
 
 class MarkupBuffer(gtk.TextBuffer):
-    
+
     def __init__(self, table=None, lang=None, styles={}):
         gtk.TextBuffer.__init__(self, table)
-        
+
         # update styles with user-defined
         self.styles = styles
-        
+
         # create tags
         for name, props in self.styles.items():
             style = {}
             style.update(props)
             self.create_tag(name, **style)
-        
+
         # store lang-definition
         self._lang_def = lang
-        
+
         self.overlaps = ['bold', 'italic', 'underline', 'strikethrough', \
                         'highlight', 'list', 'numlist']
-        
+
         self.connect_after("insert-text", self._on_insert_text)
         self.connect_after("delete-range", self._on_delete_range)
-        
+
     def set_search_text(self, text):
         if not text:
             self._lang_def.highlight_rule = None
-        self._lang_def.highlight_rule = Pattern(r"(%s)" % text,  [(1, 'highlight')], 
+        self._lang_def.highlight_rule = Pattern(r"(%s)" % text,  [(1, 'highlight')],
                                 name='highlight', flags='I', overlap=True)
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
 
@@ -209,14 +208,14 @@ class MarkupBuffer(gtk.TextBuffer):
         start = start.copy()
 
         self.update_syntax(start, start)
-        
+
     def remove_all_syntax_tags(self, start, end):
         '''
         Do not remove the gtkspell highlighting
         '''
         for style in self.styles:
             self.remove_tag_by_name(style, start, end)
-            
+
     def apply_tags(self, tags):
         for mstart, mend, tagname in tags.list():
             # apply tag
@@ -227,26 +226,26 @@ class MarkupBuffer(gtk.TextBuffer):
             syntax-highlighting. """
         '''
         Use two categories of rules: one-line and multiline
-        
+
         Before running multiline rules: Check if e.g. - is present in changed string
         '''
-            
-        # Just update from the start of the first edited line 
+
+        # Just update from the start of the first edited line
         # to the end of the last edited line, because we can
         # guarantee that there's no multiline rule
         start_line_number = start.get_line()
         start_line_iter = self.get_iter_at_line(start_line_number)
         start = start_line_iter
-        
+
         end.forward_to_line_end()
-        
+
         # remove all tags from start to end
         self.remove_all_syntax_tags(start, end)
-        
+
         tag_groups = self._lang_def(self, start, end)
-        
+
         min_start = start.copy()
-        
+
         for tags in tag_groups:
             if tags.rule == 'highlight':
                 self.apply_tags(tags)
@@ -254,7 +253,7 @@ class MarkupBuffer(gtk.TextBuffer):
             elif min_start.compare(tags.min_start) in [-1, 0]:
                 # min_start is left or equal to tags.min_start
                 self.apply_tags(tags)
-                
+
                 if tags.rule in self.overlaps:
                     min_start = tags.min_start
                 else:
@@ -305,7 +304,7 @@ def get_pattern(char, style):
     # original strikethrough in txt2tags: r'--([^\s](|.*?[^\s])-*)--'
     # txt2tags docs say that format markup is greedy, but
     # that doesn't seem to be the case
-    
+
     # Either one char, or two chars with (maybe empty) content
     # between them
     # In both cases no whitespaces between chars and markup
@@ -388,16 +387,16 @@ def get_highlight_buffer():
 
 # Testing
 if __name__ == '__main__':
-    
+
     txt = """aha**aha**
 
 **a//b//c** //a**b**c// __a**b**c__ __a//b//c__
-    
-text [link 1 ""http://en.wikipedia.org/wiki/Personal_wiki#Free_software""] another text 
+
+text [link 1 ""http://en.wikipedia.org/wiki/Personal_wiki#Free_software""] another text
 [link2 ""http://digitaldump.wordpress.com/projects/rednotebook/""] end
 
 pic [""/home/user/Desktop/RedNotebook pic"".png] pic [""/home/user/Desktop/RedNotebook pic"".png]
-== Main==[oho] 
+== Main==[oho]
 = Header1 =
 == Header2 ==
 === Header3 ===
@@ -432,11 +431,11 @@ www.heise.de, andy@web.de
 
 """
     #txt = '- an other'
-    
+
     search_text = 'aha'
-    
+
     buff = get_highlight_buffer()
-    
+
     buff.set_search_text(search_text)
 
     win = gtk.Window(gtk.WINDOW_TOPLEVEL)

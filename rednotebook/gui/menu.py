@@ -160,7 +160,7 @@ class MainMenuBar(object):
 
         # Add a UI description
         self.uimanager.add_ui_from_string(menu_xml)
-        
+
         # We want to hide the examples button for now
         examples_button = self.uimanager.get_widget('/MainMenuBar/HelpMenu/Examples')
         examples_button.hide()
@@ -176,7 +176,6 @@ class MainMenuBar(object):
             for action in actions:
                 widgets = action.get_proxies()
                 tooltip = action.get_property('tooltip')
-                print widgets, tooltip
                 if tooltip:
                     for widget in widgets:
                         widget.set_tooltip_markup(tooltip)
@@ -225,7 +224,7 @@ class MainMenuBar(object):
 #       event.state = gtk.gdk.CONTROL_MASK
 #       self.main_frame.emit("key_press_event",event)
         self.main_window.day_text_field.day_text_view.emit('cut_clipboard')
-        
+
     def on_fullscreen_menuitem_activate(self, widget):
         self.main_window.toggle_fullscreen()
 
@@ -242,14 +241,14 @@ class MainMenuBar(object):
 
     def on_backup_activate(self, widget):
         self.journal.backup_contents(backup_file=self.main_window.get_backup_file())
-        
+
     def on_import_menu_item_activate(self, widget):
         assistant = ImportAssistant(self.journal)
         assistant.run()
 
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()
-        
+
         self.main_window.export_assistant.run()
 
     def on_statistics_menu_item_activate(self, widget):
@@ -268,13 +267,13 @@ class MainMenuBar(object):
 
     #def on_check_version_menu_item_activate(self, widget):
     #   utils.check_new_version(self.main_window, info.version)
-    
+
     def on_online_help(self, widget):
         webbrowser.open(info.forum_url)
-        
+
     def on_translate(self, widget):
         webbrowser.open(info.translation_url)
-        
+
     def on_report_bug(self, widget):
         webbrowser.open(info.bug_url)
 
