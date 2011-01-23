@@ -65,8 +65,8 @@ class Config(dict):
 
         self.file = config_file
 
-        self.obsolete_keys = ['useWebkit', 'useGTKMozembed',
-                                'LD_LIBRARY_PATH', 'MOZILLA_FIVE_HOME']
+        self.obsolete_keys = [u'useWebkit', u'useGTKMozembed',
+                              u'LD_LIBRARY_PATH', u'MOZILLA_FIVE_HOME']
 
         # Allow changing the value of portable only in default.cfg
         self.suppressed_keys = ['portable', 'user_dir']
@@ -98,16 +98,16 @@ class Config(dict):
             return {}
 
         lines = content.split('\n')
-        lines = map(str, lines)
+        #lines = map(str, lines)
 
         # delete comments
         key_value_pairs = map(lambda line: delete_comment(line), lines)
 
         #delete whitespace
-        key_value_pairs = map(str.strip, key_value_pairs)
+        key_value_pairs = map(unicode.strip, key_value_pairs)
 
         #delete empty lines
-        key_value_pairs = filter(lambda line: len(line) > 0, key_value_pairs)
+        key_value_pairs = filter(bool, key_value_pairs)
 
         dictionary = {}
 
@@ -117,7 +117,7 @@ class Config(dict):
                 try:
                     # Delete whitespace around =
                     pair = key_value_pair.split('=')
-                    key, value = map(str.strip, pair)
+                    key, value = map(unicode.strip, pair)
 
                     # Do not add obsolete keys -> they will not be rewritten
                     # to disk
@@ -126,14 +126,13 @@ class Config(dict):
 
                     try:
                         #Save value as int if possible
-                        value_int = int(value)
-                        dictionary[key] = value_int
+                        dictionary[key] = int(value)
                     except ValueError:
                         dictionary[key] = value
 
                 except Exception:
-                    logging.error('The line "' + key_value_pair + \
-                                    '" in the config file contains errors')
+                    msg = 'The line "%s" in the config file contains errors'
+                    logging.error(msg % key_value_pair)
         return dictionary
 
 
@@ -154,8 +153,7 @@ class Config(dict):
         default should be of the form 'alpha,beta gamma;delta'
         '''
         string = self.read(key, default)
-        if not isinstance(string, basestring):
-            string = str(string)
+        string = unicode(string)
         if not string:
             return []
 
@@ -164,13 +162,13 @@ class Config(dict):
         for separator in separators:
             string = string.replace(separator, ' ')
 
-        list = string.split(' ')
+        list = string.split()
 
         # Remove whitespace
-        list = map(str.strip, list)
+        list = map(unicode.strip, list)
 
         # Remove empty items
-        list = filter(lambda item: len(item) > 0, list)
+        list = filter(bool, list)
 
         return list
 
