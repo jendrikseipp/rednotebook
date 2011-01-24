@@ -11,12 +11,14 @@ implementation if you tell me that you'd like its addition ;)
 X Remember window position from last session
 X Restore window position when returning from tray
 X Let the sub-windows be displayed relative to the main screen
+X After searching change to date with single click instead of double-click
 X Fix: Special characters inflate cloud black-/whitelist
 X Fix: Insertion of templates (LP:696205)
 X Fix: Do not load backup files accidentally (LP:705260)
 X Fix: Preferences window can't be opened (LP:696186)
 X Windows: Fix opening linked files with umlauts or other special characters
 X Code: Remove backslashes at line endings
+X Code: Make pywebkitgtk an explicit requirement
 
 1.1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -72,8 +74,7 @@ O Install .mo files (translations) in the standard directories (check for better
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
 O Do not allow starting two instances at the same time
-O Remove keepnote and htmltextview sources
-O Select searched entries with single click instead of double click
+O Remove keepnote and htmltextview sources (make webkit mandatory first)
 O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 
 

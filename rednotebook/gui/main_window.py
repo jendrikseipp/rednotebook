@@ -1334,11 +1334,8 @@ class CloudView(HtmlWindow):
 class SearchTreeView(object):
     def __init__(self, tree_view, main_window):
         self.tree_view = tree_view
-
         self.main_window = main_window
-
         self.journal = self.main_window.journal
-
         self.search_type = 0
 
         # Normally unneeded, but just to be sure everything works fine
@@ -1378,12 +1375,11 @@ class SearchTreeView(object):
         # make it searchable
         self.tree_view.set_search_column(1)
 
-        self.tree_view.connect('row_activated', self.on_row_activated)
-
+        #self.tree_view.connect('row_activated', self.on_row_activated)
+        self.tree_view.connect('cursor_changed', self.on_cursor_changed)
 
     def update_data(self, search_text=''):
         self.tree_store.clear()
-
         rows = None
 
         if not search_text:
@@ -1416,15 +1412,18 @@ class SearchTreeView(object):
                     entry = entry.replace('STARTBOLD', '<b>').replace('ENDBOLD', '</b>')
                 self.tree_store.append([date_string, entry])
 
-
-    def on_row_activated(self, treeview, path, view_column):
-        date_string = self.tree_store[path][0]
+    def on_cursor_changed(self, treeview):
+        """Move to the selected day when user clicks on it"""
+        selection = self.tree_view.get_selection()
+        model, paths = selection.get_selected_rows()
+        if not paths:
+            return
+        date_string = self.tree_store[paths[0]][0]
         new_date = dates.get_date_from_date_string(date_string)
         self.journal.change_date(new_date)
 
         if self.search_type == 0:
             self.main_window.highlight_text(self.searched_text)
-
 
     def set_search_type(self, search_type):
         self.search_type = search_type
