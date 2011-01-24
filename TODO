@@ -16,6 +16,7 @@ X Fix: Insertion of templates (LP:696205)
 X Fix: Do not load backup files accidentally (LP:705260)
 X Fix: Preferences window can't be opened (LP:696186)
 X Windows: Fix opening linked files with umlauts or other special characters
+X Code: Remove backslashes at line endings
 
 1.1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -59,8 +60,7 @@ O Windows: Enable spellcheck
 O Translate help
 O Add "AddThis" Buttons to homepage
 O Rethink logfile
-O Use argparse instead of optparse (Remove IndentedHelpFormatterWithNL)
-O Use yaml for configuration and template files?
+O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
 O Ensure that date in export is bigger than rest of text
 O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
 O Remember export and backup locations
@@ -68,13 +68,13 @@ O Windows: Add correct newline character for editing previews in notepad
 O Search in annotations
 O Do not write empty month files to disk
 O Update search window when an annotation has been added/changed?
-O install .mo files (translations) in the standard directories (check for better build system first)
+O Install .mo files (translations) in the standard directories (check for better build system first)
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
 O Do not allow starting two instances at the same time
 O Remove keepnote and htmltextview sources
-O select searched entries with single click instead of double click
-O show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
+O Select searched entries with single click instead of double click
+O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 
 
 1.3

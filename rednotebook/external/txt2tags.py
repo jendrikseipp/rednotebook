@@ -1931,7 +1931,7 @@ def getRegexes():
 		'pass'  : r'[^ @]*',                   # for ftp://login:pass@dom.com
 		'chars' : r'A-Za-z0-9%._/~:,=$@&+-',   # %20(space), :80(port), D&D
 		'anchor': r'A-Za-z0-9%._-',            # %nn(encoded)
-		'form'  : r'A-Za-z0-9/%&=+;.,$@*_-',   # .,@*_-(as is)
+		'form'  : r'A-Za-z0-9/%&=+:;.,$@*_-',   # .,@*_-(as is)
 		'punct' : r'.,;:!?'
 	}
 	
