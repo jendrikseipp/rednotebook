@@ -25,7 +25,7 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-version =           '1.1.2'
+version =           '1.1.3'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
 url =               'http://rednotebook.sourceforge.net'
@@ -38,7 +38,7 @@ developers =    ['Jendrik Seipp <jendrikseipp@web.de>',
                 'Contributors:',
                 'Alexandre Cucumel <superkiouk@gmail.com>',
                 ]
-                
+
 comments = '''\
 RedNotebook is a graphical journal to keep track of notes and \
 thoughts. It includes a calendar navigation, customizable \
@@ -195,9 +195,9 @@ get a list of the cool stuff that happened to me with the respective dates.
 Additionally you can select the "Cool Stuff" category in the word cloud window \
 to get a list of all the cool things.
 
-Maybe a good thing to know is the following: 
+Maybe a good thing to know is the following:
 "Tags" is a category, the tagnames are entries in the category "Tags", \
-distributed over various days. 
+distributed over various days.
 Similarly you can have a category "Movies" and add it together with \
 the movie's name to every day on which you see a new film.
 
@@ -295,7 +295,7 @@ To see the result, click on the "Preview" button.
 You can also see how \
 this text was formatted by looking at its [source source.txt].
 
-**Lists** can be created by using the following style, If you use "+" 
+**Lists** can be created by using the following style, If you use "+"
 instead of "-" you can create a **numbered list**.
 
 ```
@@ -318,7 +318,7 @@ With the insert button you cannot insert **links to directories** on your comput
 Those can be inserted manually however (""[Home ""file:///home/""]"").
 
 == %(templates)s ==
-%(temp_par)s 
+%(temp_par)s
 The files 1.txt to 7.txt in the template directory correspond to the templates \
 for each day of the week. The current weekday's template will be filled \
 into the text area when you click on "Template". You can open the template files \
@@ -370,7 +370,7 @@ open this dialog by clicking on the entry in the "Edit" menu.
 Since version 0.9.2 you can also directly export your journal to PDF. If the \
 option does not show up in the export assistant, you need to install \
 pywebkitgtk version 1.1.5 or later (the package is sometime called \
-python-webkit). 
+python-webkit).
 
 **Latex caveats**
 
@@ -428,7 +428,7 @@ RedNotebook can be run in portable mode. In this mode, the \
 template directory and the configuration and log file are saved \
 in the application directory instead of in the home directory. \
 Additionally the path to the last opened journal is remembered \
-relatively to the application directory. 
+relatively to the application directory.
 
 To use RedNotebook on a flash drive on Windows, run the installer and \
 select a directory on your USB drive as the installation directory. \
@@ -531,11 +531,11 @@ code.
 
 === Titles ===
 You can insert titles into your post by adding "="s around your title
-text. = My Title = is the biggest heading, ====== My Title ====== is 
-the smallest heading. A title line can only contain the title, nothing 
+text. = My Title = is the biggest heading, ====== My Title ====== is
+the smallest heading. A title line can only contain the title, nothing
 else.
 
-Numbered titles can be created by using "+" instead of "=". 
+Numbered titles can be created by using "+" instead of "=".
 ""+ My Title +"" produces a title like "1.", ++++++ My Title ++++++
 produces a title like 0.0.0.0.0.1
 
@@ -623,7 +623,7 @@ The directory name is used as a name for the journal.
 
 In the directory there are several files all conforming to the naming \
 scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files \
-correspond to months (May 2010). 
+correspond to months (May 2010).
 
 Each month file contains text for the days of that month. \
 The text is actually [YAML www.yaml.org] markup. Without the \

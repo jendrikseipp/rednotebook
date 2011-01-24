@@ -11,11 +11,11 @@ implementation if you tell me that you'd like its addition ;)
 X Remember window position from last session
 X Restore window position when returning from tray
 X Let the sub-windows be displayed relative to the main screen
-O Fix: Special characters inflate cloud black-/whitelist
+X Fix: Special characters inflate cloud black-/whitelist
 X Fix: Insertion of templates (LP:696205)
 X Fix: Do not load backup files accidentally (LP:705260)
-O Fix: Preferences window can't be opened (LP:696186)
-O Windows: Fix linked files with umlauts
+X Fix: Preferences window can't be opened (LP:696186)
+X Windows: Fix opening linked files with umlauts or other special characters
 
 1.1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -73,6 +73,7 @@ O install .mo files (translations) in the standard directories
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
 O Do not allow starting two instances at the same time
+O Remove keepnote and htmltextview sources
 
 
 
