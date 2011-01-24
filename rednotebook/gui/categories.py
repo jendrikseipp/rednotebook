@@ -448,16 +448,16 @@ class CategoriesTreeView(object):
 
         # Create actions
         actiongroup.add_actions([
-            ('ChangeEntry', gtk.STOCK_EDIT, \
-                _('Change this text'), \
+            ('ChangeEntry', gtk.STOCK_EDIT,
+                _('Change this text'),
                 None, None, self._on_change_entry_clicked
             ),
-            ('AddEntry', gtk.STOCK_NEW, \
-                _('Add a new entry'), \
+            ('AddEntry', gtk.STOCK_NEW,
+                _('Add a new entry'),
                 None, None, self._on_add_entry_clicked
             ),
-            ('Delete', gtk.STOCK_DELETE, \
-                _('Delete this node'), \
+            ('Delete', gtk.STOCK_DELETE,
+                _('Delete this node'),
                 None, None, self._on_delete_entry_clicked
             ),
             ])
@@ -474,7 +474,7 @@ class CategoriesTreeView(object):
 
     def _on_change_entry_clicked(self, action):
         iter = self.get_selected_node()
-        self.tree_view.set_cursor(self.tree_store.get_path(iter), \
+        self.tree_view.set_cursor(self.tree_store.get_path(iter),
                                 focus_column=self.tvcolumn, start_editing=True)
 
     def _on_add_entry_clicked(self, action):

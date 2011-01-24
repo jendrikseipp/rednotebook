@@ -53,17 +53,13 @@ def parse_options():
                           formatter=utils.IndentedHelpFormatterWithNL(),
                           )
 
-    parser.add_option(
-        '-d', '--debug', dest='debug', \
-        default=False, action='store_true',
-        help='Output debugging messages ' \
-            '(default: False)')
+    parser.add_option('-d', '--debug', dest='debug', default=False,
+                      action='store_true', help='Output debugging messages'
+                      ' (default: False)')
 
-    parser.add_option(
-        '-m', '--minimized', dest='minimized', \
-        default=False, action='store_true',
-        help='Start mimimized to system tray ' \
-            '(default: False)')
+    parser.add_option('-m', '--minimized', dest='minimized', default=False,
+                      action='store_true', help='Start mimimized to system tray'
+                      ' (default: False)')
 
     options, args = parser.parse_args()
 
@@ -380,7 +376,7 @@ class Journal:
             return True
 
 
-        something_saved = storage.save_months_to_disk(self.months, \
+        something_saved = storage.save_months_to_disk(self.months,
             self.dirs.data_dir, self.frame, exit_imminent, changing_journal, saveas)
 
         if something_saved:
@@ -417,7 +413,7 @@ class Journal:
         logging.info('Opening journal at %s' % data_dir)
 
         if not os.path.exists(data_dir):
-            logging.warning('The data dir %s does not exist. Select a different dir.' \
+            logging.warning('The data dir %s does not exist. Select a different dir.'
                         % data_dir)
 
             self.frame.show_dir_chooser('open', dir_not_found=True)
@@ -430,7 +426,7 @@ class Journal:
             msg_part2 = _('To prevent you from overwriting data, the folder content has been imported into the new journal.')
             self.show_message('%s %s' % (msg_part1, msg_part2), error=False)
         elif load_files and data_dir_empty:
-            self.show_message(_('The selected folder is empty. A new journal has been created.'), \
+            self.show_message(_('The selected folder is empty. A new journal has been created.'),
                                 error=False)
 
         self.dirs.data_dir = data_dir

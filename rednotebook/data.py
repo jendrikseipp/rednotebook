@@ -316,5 +316,5 @@ class Month(object):
     same_month = staticmethod(same_month)
 
     def __cmp__(self, other):
-        return cmp((self.year_number, self.month_number), \
+        return cmp((self.year_number, self.month_number),
                     (other.year_number, other.month_number))

@@ -176,8 +176,8 @@ class MarkupBuffer(gtk.TextBuffer):
         # store lang-definition
         self._lang_def = lang
 
-        self.overlaps = ['bold', 'italic', 'underline', 'strikethrough', \
-                        'highlight', 'list', 'numlist']
+        self.overlaps = ['bold', 'italic', 'underline', 'strikethrough',
+                         'highlight', 'list', 'numlist']
 
         self.connect_after("insert-text", self._on_insert_text)
         self.connect_after("delete-range", self._on_delete_range)
@@ -341,12 +341,12 @@ linebreak = Pattern(r'(\\\\)', [(1, 'gray')])
 #filename = r'\S[\w\s_,.+%$#@!?+~/-:-\(\)]*\S|\S'
 filename = r'\S.*?\S|\S'
 ext = r'png|jpe?g|gif|eps|bmp'
-pic = Pattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext), \
+pic = Pattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext),
         [(1, 'gray'), (2, 'green'), (3, 'gray'), (4, 'green'), (5, 'gray'), (6, 'gray')], flags='I')
 
 # named link on hdd [my file.txt ""file:///home/user/my file.txt""]
 # named link in web [heise ""http://heise.de""]
-named_link = Pattern(r'(\[)(.*?)\s("")(\S.*?\S)(""\])', \
+named_link = Pattern(r'(\[)(.*?)\s("")(\S.*?\S)(""\])',
         [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')], flags='LI')
 
 # link http://heise.de
@@ -444,9 +444,9 @@ www.heise.de, andy@web.de
     html_editor = HtmlView()
 
     def change_text(widget):
-        html = markup.convert(widget.get_text(widget.get_start_iter(), \
-                                widget.get_end_iter()), \
-                              'xhtml', append_whitespace=True)
+        html = markup.convert(widget.get_text(widget.get_start_iter(),
+                              widget.get_end_iter()), 'xhtml',
+                              append_whitespace=True)
 
         html_editor.load_html(html)
         html_editor.highlight(search_text)

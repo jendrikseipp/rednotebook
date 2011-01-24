@@ -133,7 +133,7 @@ class T2THtmlParser(HTMLParser):
         beautifiers = 'b i u s'.split()
         if tag in beautifiers:
 
-            area_start = self.markup.rfind(self.symmetric_tags[tag], \
+            area_start = self.markup.rfind(self.symmetric_tags[tag],
                                         0, len(self.markup) - 2)
 
             left_markup = self.markup[:area_start]

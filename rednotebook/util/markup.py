@@ -85,7 +85,7 @@ def get_markup_for_day(day, with_text=True, categories=None, date=None):
 
 
     if export_categories:
-        export_string += '\n\n\n' + convert_categories_to_markup(export_categories, \
+        export_string += '\n\n\n' + convert_categories_to_markup(export_categories,
                                                             with_category_title=with_text)
     elif with_text:
         export_string += '\n\n'
@@ -311,7 +311,7 @@ def convert_from_pango(pango_markup):
     for orig, repl in replacements.items():
         pango_markup = pango_markup.replace(orig, repl)
 
-    logging.log(5, 'Converted "%s" pango to "%s" txt2tags' % \
+    logging.log(5, 'Converted "%s" pango to "%s" txt2tags' %
                 (original_txt, pango_markup))
     return pango_markup
 

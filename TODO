@@ -61,7 +61,6 @@ O Add "AddThis" Buttons to homepage
 O Rethink logfile
 O Use argparse instead of optparse (Remove IndentedHelpFormatterWithNL)
 O Use yaml for configuration and template files?
-O Select template file when clicking the button instead of adding weekday's file?
 O Ensure that date in export is bigger than rest of text
 O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
 O Remember export and backup locations
@@ -69,12 +68,13 @@ O Windows: Add correct newline character for editing previews in notepad
 O Search in annotations
 O Do not write empty month files to disk
 O Update search window when an annotation has been added/changed?
-O install .mo files (translations) in the standard directories
+O install .mo files (translations) in the standard directories (check for better build system first)
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
 O Do not allow starting two instances at the same time
 O Remove keepnote and htmltextview sources
-
+O select searched entries with single click instead of double click
+O show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 
 
 1.3
@@ -109,7 +109,6 @@ O Picture slide show in one entry with many images (in preview show nice
       javascript slide show of pics in linked picture directory) (Think about new format first)
 O HTML import?
 O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
-O Change an entry's category (Useful for Todo items) (KISS?)
 O Ability to make certain entries, eg. birthdays, with frequencies
 O Show warning if last backup dates to more than one month before (User should take care of that)
 O Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
@@ -126,11 +125,7 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
   the applicaiton to close. I have no such problems with the 1.1.0 version (with
   the 'older' user interface).
 
-- an option to select searched entries with single click instead of double click
-- That the Annotate and Tag window box will remember where I moved it to between sessions
-- That the Search type selection will remember which selection I was on between sessions
-- For each journal to have its own templates
-- To show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
+
 
 
 
@@ -165,3 +160,8 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
 - Drag and Drop for Windows (gtk inter application dnd isn't implemented on win32)
 - Use configobj for config files (KISS, Never change A running system ;)
 - Search for multiple words at the same time (KISS)
+- For each journal to have its own templates (KISS)
+- Let the Search type selection remember the selection between sessions (KISS)
+- Let the Annotate and Tag window box remember their positions between sessions (KISS)
+- Change an entry's category (Useful for Todo items) (KISS)
+- Select template file when clicking the button instead of adding weekday's file

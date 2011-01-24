@@ -100,8 +100,8 @@ def get_html_doc_from_word_count_dict(word_count_dict, type, ignore_list, includ
         font_size = int(min_font_size + font_factor * font_delta)
 
         html_elements.append('<a href="search/%s">'
-                                '<span style="font-size:%spx">%s</span></a>' \
-                                % (index, font_size, word) + \
+                                '<span style="font-size:%spx">%s</span></a>'
+                                % (index, font_size, word) +
 
                             #Add some whitespace (previously &#xA0;)
                             '<span> </span>')
@@ -238,16 +238,16 @@ def check_new_version(journal, current_version, startup=False):
 
     current_version = StrictVersion(current_version)
     # Only compare versions if new version could be read
-    newer_version_available = (new_version > current_version) \
-                    if isinstance(new_version, StrictVersion) else True
+    newer_version_available = ((new_version > current_version)
+                    if isinstance(new_version, StrictVersion) else True)
     logging.info('A newer version is available: %s' % newer_version_available)
 
     if newer_version_available or not startup:
-        dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL, \
+        dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL,
             type=gtk.MESSAGE_INFO, buttons=gtk.BUTTONS_YES_NO, message_format=None)
         dialog.set_transient_for(journal.frame.main_frame)
-        primary_text = _('You have version <b>%s</b>.') % current_version  + \
-                        _('The latest version is <b>%s</b>.') % new_version
+        primary_text = (_('You have version <b>%s</b>.') % current_version +
+                        _('The latest version is <b>%s</b>.') % new_version)
         secondary_text = _('Do you want to visit the RedNotebook homepage?')
         dialog.set_markup(primary_text)
         dialog.format_secondary_text(secondary_text)

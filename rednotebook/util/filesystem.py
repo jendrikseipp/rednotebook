@@ -261,7 +261,7 @@ def get_platform_info():
     import gtk
     import yaml
 
-    functions = [platform.machine, platform.platform, platform.processor, \
+    functions = [platform.machine, platform.platform, platform.processor,
                 platform.python_version, platform.release, platform.system,]
     values = map(lambda function: function(), functions)
     functions = map(lambda function: function.__name__, functions)

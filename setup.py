@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009  Jendrik Seipp
-# 
+#
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # RedNotebook is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License along
 # with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -43,7 +43,7 @@ import distutils.command.install_data
 if sys.platform == 'win32':
     print 'running on win32. Importing py2exe'
     import py2exe
-    
+
     # We want to include some dlls that py2exe excludes
     origIsSystemDLL = py2exe.build_exe.isSystemDLL
     dlls = ("libxml2-2.dll", "libtasn1-3.dll", 'libgtkspell-0.dll')
@@ -70,7 +70,7 @@ def build_mo_files():
     '''
     Little script that compiles all available po files into mo files
     '''
-    
+
     po_dir = 'po'
 
     if not os.path.exists(i18n_dir):
@@ -89,20 +89,20 @@ def build_mo_files():
         mo_file = os.path.join(mo_dir, 'rednotebook.mo')
         #cmd = ['msgfmt', '--output-file=%s' % mo_file, po_file]
         #print 'cmd', cmd
-        
+
         for dir in [lang_dir, mo_dir]:
             if not os.path.exists(dir):
                 os.mkdir(dir)
-        
+
         #call(cmd)
         print 'Compiling %s to %s' % (po_file, mo_file)
         msgfmt.make(po_file, mo_file)
-    
+
 if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
     build_mo_files()
     if 'i18n' in sys.argv:
         sys.exit()
-        
+
 if 'clean' in sys.argv:
     if os.path.exists(i18n_dir):
         shutil.rmtree(i18n_dir)
@@ -110,9 +110,9 @@ if 'clean' in sys.argv:
 def get_data_base_dir():
     '''
     Returns the dir where the data files (pixmaps etc.) are installed
-    
+
     Hack for Jaunty: Check command line args directly for data-dir
-    
+
     Normally we try to get the data-dir from the appropriate distutils
     class
     This is done by creating an otherwise unused install_data object
@@ -121,7 +121,7 @@ def get_data_base_dir():
         if arg.startswith('--install-data'):
             install_data_text, data_dir = arg.split('=')
             return data_dir
-            
+
     class helper_install_data(distutils.command.install_data.install_data):
         """need to change self.install_dir to the actual library dir"""
         def get_data_dir(self):
@@ -179,38 +179,38 @@ def find_data_files(srcdir, *wildcards, **kw):
 
 
 
-parameters = {  'name'              : 'rednotebook', 
-                'version'           : info.version, 
-                'description'       : 'Graphical daily journal with calendar, ' \
-                                        'templates and keyword searching', 
-                'long_description'  : info.comments, 
-                'author'            : info.author, 
-                'author_email'      : info.authorMail, 
-                'maintainer'        : info.author, 
-                'maintainer_email'  : info.authorMail, 
-                'url'               : info.url, 
-                'license'           : "GPL", 
-                'keywords'          : "journal, diary", 
-                'scripts'           : ['rednotebook/rednotebook'], 
+parameters = {  'name'              : 'rednotebook',
+                'version'           : info.version,
+                'description'       : 'Graphical daily journal with calendar, '
+                                        'templates and keyword searching',
+                'long_description'  : info.comments,
+                'author'            : info.author,
+                'author_email'      : info.authorMail,
+                'maintainer'        : info.author,
+                'maintainer_email'  : info.authorMail,
+                'url'               : info.url,
+                'license'           : "GPL",
+                'keywords'          : "journal, diary",
+                'scripts'           : ['rednotebook/rednotebook'],
                 'packages'          : ['rednotebook', 'rednotebook.util', 'rednotebook.gui',
-                                        'rednotebook.external', 
+                                        'rednotebook.external',
                                         'rednotebook.gui.keepnote', 'rednotebook.gui.keepnote.gui',
                                         'rednotebook.gui.keepnote.gui.richtext'],
-                'package_data'      : {'rednotebook': 
+                'package_data'      : {'rednotebook':
                                         ['images/*.png', 'images/rednotebook-icon/*.png',
                                         'files/*.css', 'files/*.glade', 'files/*.cfg']},
                 'data_files'        : [],
             }
-            
+
 if not sys.platform == 'win32':
     ## Borrowed from wxPython too:
     ## Causes the data_files to be installed into the modules directory.
     ## Override some of the default distutils command classes with my own.
-    parameters['cmdclass'] = {'install_data': wx_smart_install_data}            
+    parameters['cmdclass'] = {'install_data': wx_smart_install_data}
 
 if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
     ## This is a list of files to install, and where:
-    ## Make sure the MANIFEST.in file points to all the right 
+    ## Make sure the MANIFEST.in file points to all the right
     ## directories too.
     mo_files = find_data_files('rednotebook/i18n', '*.mo')
     if sys.platform == 'win32':
@@ -220,7 +220,7 @@ if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
 
 # Freedesktop parameters
 share_dir = join(get_data_base_dir(), 'share')
-if os.path.exists(share_dir): 
+if os.path.exists(share_dir):
     parameters['data_files'].extend([
             (join(share_dir, 'applications'), ['rednotebook.desktop']),
             (join(share_dir, 'icons/hicolor/48x48/apps'), ['rednotebook.png']),# new freedesktop.org spec
@@ -229,12 +229,12 @@ if os.path.exists(share_dir):
 
 # For the use of py2exe you have to checkout the repository.
 # To create Windows Installers have a look at the file 'win/win-build.txt'
-includes = 'rednotebook.gui, rednotebook.util, cairo, pango, ' + \
-            'pangocairo, atk, gobject, gio, gtk, chardet, zlib, glib, gtkspell'
+includes = ('rednotebook.gui, rednotebook.util, cairo, pango, '
+            'pangocairo, atk, gobject, gio, gtk, chardet, zlib, glib, gtkspell')
 if 'py2exe' in sys.argv:
     py2exeParameters = {
-                    #3 (default) don't bundle, 
-                    #2: bundle everything but the Python interpreter, 
+                    #3 (default) don't bundle,
+                    #2: bundle everything but the Python interpreter,
                     #1: bundle everything, including the Python interpreter
                     #It seems that only option 3 works with PyGTK
                     'options' : {'py2exe': {'bundle_files': 3,
@@ -243,10 +243,10 @@ if 'py2exe' in sys.argv:
                                             #'skip_archive': 1,
                                             'compressed': False,
                                             }
-                                }, 
+                                },
                     #include library in exe
-                    'zipfile' : None, 
-                    
+                    'zipfile' : None,
+
                     #windows for gui, console for cli
                     'windows' : [{
                                     'script': 'rednotebook/rednotebook',
@@ -259,7 +259,7 @@ if 'py2exe' in sys.argv:
                                                 'rednotebook/files/stylesheet.css',
                                                 'rednotebook/files/default.cfg']),
                                     ('images', glob(join('rednotebook', 'images', '*.png'))),
-                                    ('images/rednotebook-icon', \
+                                    ('images/rednotebook-icon',
                                         glob(join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),
                                     #('.', [r'C:\GTK\libintl-8.dll']),
                                     # Bundle the visual studio files

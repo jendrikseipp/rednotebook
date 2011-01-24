@@ -44,7 +44,7 @@ def coll(us, td=make_transdict()):
     Unicode sort function
 
     Usage:
-    unicode_strings = [u'\xe9cole', u'ecole', u'las', u'laß', u'lax', \
+    unicode_strings = [u'\xe9cole', u'ecole', u'las', u'laß', u'lax',
                         u'ueber', u'über', u'zer']
     unicode_strings.sort(key=coll)
     '''

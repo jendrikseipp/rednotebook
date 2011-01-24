@@ -83,7 +83,7 @@ class AutostartOption(TickOption):
         autostart_dir = os.path.join(home_dir, '.config/autostart/')
         self.autostart_file = os.path.join(autostart_dir, 'rednotebook.desktop')
         autostart_file_exists = os.path.exists(self.autostart_file)
-        TickOption.__init__(self, _('Load RedNotebook at startup'), None, \
+        TickOption.__init__(self, _('Load RedNotebook at startup'), None,
                         default_value=autostart_file_exists)
 
     def get_value(self):
@@ -153,7 +153,7 @@ class ComboBoxOption(Option):
 
 class DateFormatOption(ComboBoxOption):
     def __init__(self, text, name):
-        date_formats = ['%A, %x %X', _('%A, %x, Day %j'), '%H:%M', _('Week %W of Year %Y'), \
+        date_formats = ['%A, %x %X', _('%A, %x, Day %j'), '%H:%M', _('Week %W of Year %Y'),
                         '%y-%m-%d', _('Day %j'), '%A', '%B']
 
         ComboBoxOption.__init__(self, text, name, date_formats)
@@ -294,25 +294,14 @@ class OptionsManager(object):
                 tooltip=_('Closing the window will send RedNotebook to the tray')))
 
         able_to_spell_check = self.main_window.day_text_field.can_spell_check()
-        tooltip = _('Underline misspelled words') if able_to_spell_check else \
-                _('Requires gtkspell.') + ' ' + \
-                _('This is included in the python-gtkspell or python-gnome2-extras package')
+        tooltip = (_('Underline misspelled words') if able_to_spell_check else
+                _('Requires gtkspell.') + ' ' +
+                _('This is included in the python-gtkspell or python-gnome2-extras package'))
         spell_check_option = TickOption(_('Check Spelling'), 'spellcheck',
                 tooltip=tooltip)
         if not sys.platform == 'win32':
             self.options.append(spell_check_option)
         spell_check_option.set_sensitive(able_to_spell_check)
-
-        #webkit_available = bool(browser.webkit)
-        #tooltip = _('Webkit offers a nicer preview') if webkit_available else \
-        #        _('Requires pywebkitgtk (python-webkit)')
-        #webkit_label = _('Use webkit for previews') + ' ' + _('(Restart required)')
-        #webkit_option = TickOption(webkit_label, 'useWebkit',
-        #        tooltip=tooltip)
-        #if not sys.platform == 'win32':
-        #self.options.append(webkit_option)
-        #webkit_option.set_sensitive(webkit_available)
-
 
         # Check for new version
 
@@ -330,9 +319,9 @@ class OptionsManager(object):
         self.options.extend([
                 FontSizeOption(_('Font Size'), 'mainFontSize'),
                 DateFormatOption(_('Date/Time format'), 'dateTimeString'),
-                CsvTextOption(_('Exclude from clouds'), 'cloudIgnoreList', \
+                CsvTextOption(_('Exclude from clouds'), 'cloudIgnoreList',
                                 tooltip=_('Do not show those comma separated words in any cloud')),
-                CsvTextOption(_('Allow small words in clouds'), 'cloudIncludeList', \
+                CsvTextOption(_('Allow small words in clouds'), 'cloudIncludeList',
                                 tooltip=_('Allow those words with 4 letters or less in the text cloud')),
                 ])
 

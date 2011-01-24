@@ -157,9 +157,9 @@ class TemplateManager(object):
 
         # An Error occured
         if not text:
-            text = 'This template contains no text or has unreadable content. To edit it, ' \
-                    'click the arrow right of "Template" ' \
-                    'and select the template under "Edit Template".'
+            text = ('This template contains no text or has unreadable content. To edit it, '
+                    'click the arrow right of "Template" '
+                    'and select the template under "Edit Template".')
 
         # convert every "$date$" to the current date
         default_date_string = '%A, %x %X'
@@ -278,29 +278,31 @@ class TemplateManager(object):
         actions = []
 
         for title in sorted_titles:
-            insert_action = ('Insert' + title, None, title, None, None, \
+            insert_action = ('Insert' + title, None, title, None, None,
                     lambda widget: self.on_insert(widget))
             actions.append(insert_action)
-            edit_action = ('Edit' + title, None, title, None, None, \
+            edit_action = ('Edit' + title, None, title, None, None,
                     lambda widget: self.on_edit(widget))
             actions.append(edit_action)
 
-        actions.append(('InsertWeekday', gtk.STOCK_HOME, _("This Weekday's Template"), None, None, \
-                    lambda widget: self.on_insert(widget)))
+        actions.append(('InsertWeekday', gtk.STOCK_HOME,
+                        _("This Weekday's Template"), None, None,
+                        lambda widget: self.on_insert(widget)))
 
-        actions.append(('EditMenu', gtk.STOCK_EDIT, _('Edit Template'), None, None, \
-                    None))
+        actions.append(('EditMenu', gtk.STOCK_EDIT, _('Edit Template'), None,
+                        None, None))
 
-        actions.append(('InsertMenu', gtk.STOCK_ADD, _('Insert Template'), None, None, \
-                    None))
+        actions.append(('InsertMenu', gtk.STOCK_ADD, _('Insert Template'), None,
+                        None, None))
 
-        actions.append(('EditWeekday', gtk.STOCK_HOME, _("This Weekday's Template"), None, None, \
-                    lambda widget: self.on_edit(widget)))
+        actions.append(('EditWeekday', gtk.STOCK_HOME, _("This Weekday's Template"),
+                    None, None, lambda widget: self.on_edit(widget)))
 
-        actions.append(('NewTemplate', gtk.STOCK_NEW, _('Create New Template'), None, None, \
-                    lambda widget: self.on_new_template(widget)))
+        actions.append(('NewTemplate', gtk.STOCK_NEW, _('Create New Template'),
+                    None, None, lambda widget: self.on_new_template(widget)))
 
-        actions.append(('OpenTemplateDirectory', gtk.STOCK_DIRECTORY, _('Open Template Directory'), None, None, \
+        actions.append(('OpenTemplateDirectory', gtk.STOCK_DIRECTORY,
+                    _('Open Template Directory'), None, None,
                     lambda widget: self.on_open_template_dir()))
 
 
@@ -330,7 +332,7 @@ class TemplateManager(object):
             file = self.get_template_file(day_number)
             #text = '''\
 #The template for this weekday has not been edited.
-#If you want to have some text that you can add to that day every week, \
+#If you want to have some text that you can add to that day every week,
 #edit the file [%s ""%s""] in a text editor.
 #
 #To do so, you can switch to "Preview" and click on the link to that file.

@@ -97,8 +97,8 @@ def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
         font_size = int(min_font_size + font_factor * font_delta)
 
         html_elements.append('<a href="search/%s">'
-                            '<span style="font-size:%spx">%s</span></a>' \
-                            % (index, font_size, word) + \
+                            '<span style="font-size:%spx">%s</span></a>'
+                            % (index, font_size, word) +
                             #Add some whitespace
                             '&#xA0;')
 
@@ -160,9 +160,8 @@ class Cloud(HtmlView):
         word_count_dict = self.journal.get_word_count_dict(self.type)
         logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
 
-        self.tag_cloud_words, html = \
-            word_count_dict_to_html(word_count_dict, self.type, \
-                                    self.ignore_list, self.include_list)
+        self.tag_cloud_words, html = word_count_dict_to_html(word_count_dict,
+                                self.type, self.ignore_list, self.include_list)
         logging.debug('%s cloud words found' % len(self.tag_cloud_words))
 
         self.load_html(html)

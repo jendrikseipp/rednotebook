@@ -94,7 +94,7 @@ class MainWindow(object):
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
         icons = [gtk.gdk.pixbuf_new_from_file(file) for file in filesystem.get_icons()]
-        self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file), \
+        self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file),
                                 filesystem.get_icons()))
 
         self.is_fullscreen = False
@@ -111,7 +111,7 @@ class MainWindow(object):
 
 
         self.calendar = Calendar(self.journal, self.builder.get_object('calendar'))
-        self.day_text_field = DayTextField(self.builder.get_object('day_text_view'), \
+        self.day_text_field = DayTextField(self.builder.get_object('day_text_view'),
                                         self.undo_redo_manager)
         self.day_text_field.day_text_view.grab_focus()
         spell_check_enabled = self.journal.config.read('spellcheck', 0)
@@ -121,8 +121,8 @@ class MainWindow(object):
 
         self.new_entry_dialog = NewEntryDialog(self)
 
-        self.categories_tree_view = categories.CategoriesTreeView(self.builder.get_object(\
-                                    'categories_tree_view'), self)
+        self.categories_tree_view = categories.CategoriesTreeView(
+                        self.builder.get_object('categories_tree_view'), self)
 
         self.new_entry_dialog.categories_tree_view = self.categories_tree_view
 
@@ -215,8 +215,8 @@ class MainWindow(object):
 
 
         # Only add the config variable if zeitgeist is available
-        use_zeitgeist = test_zeitgeist and journalgeist.zeitgeist and \
-                        self.journal.config.read('useZeitgeist', 0)
+        use_zeitgeist = (test_zeitgeist and journalgeist.zeitgeist and
+                        self.journal.config.read('useZeitgeist', 0))
         self.zeitgeist_widget = None
         #use_zeitgeist = True
         logging.info('Using zeitgeist: %s' % use_zeitgeist)
@@ -259,7 +259,7 @@ class MainWindow(object):
         #self.accel_group = gtk.AccelGroup()
         self.main_frame.add_accel_group(self.accel_group)
         #self.main_frame.add_accel_group()
-        #for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'), \
+        #for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'),
         #                   ('X', 'cut_clipboard')]:
         #   self.day_text_field.day_text_view.add_accelerator(signal, self.accel_group,
         #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
@@ -273,7 +273,7 @@ class MainWindow(object):
 
         for button, signal, shortcut in shortcuts:
             (keyval, mod) = gtk.accelerator_parse(shortcut)
-            button.add_accelerator(signal, self.accel_group, \
+            button.add_accelerator(signal, self.accel_group,
                                 keyval, mod, gtk.ACCEL_VISIBLE)
 
 
@@ -441,7 +441,7 @@ class MainWindow(object):
                                     'search_tree_view'), self)
         self.search_type_box = self.builder.get_object('search_type_box')
         self.search_type_box.set_active(0)
-        self.search_box = SearchComboBox(self.builder.get_object('search_box'), \
+        self.search_box = SearchComboBox(self.builder.get_object('search_box'),
                                     self)
 
 
@@ -474,7 +474,7 @@ class MainWindow(object):
             self.cloud = Cloud(self.journal)
             logging.info('Using pywebkitgtk for the clouds.')
         else:
-            logging.warning('pywebkitgtk is not installed and cannot ' \
+            logging.warning('pywebkitgtk is not installed and cannot '
                     'be used for the clouds. You may experience errors')
             #self.search_notebook.remove_page(1)
             self.cloud = CloudView(self.journal)
@@ -553,11 +553,11 @@ class MainWindow(object):
         elif type == 'open':
             #dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
             dir_chooser.set_title(_('Select an existing journal directory'))
-            label.set_markup('<b>' + \
+            label.set_markup('<b>' +
                 _("The directory should contain your journal's data files") + '</b>')
         elif type == 'saveas':
             dir_chooser.set_title(_('Select an empty folder for the new location of your journal'))
-            label.set_markup('<b>' + \
+            label.set_markup('<b>' +
                 _('The directory name will be the new title of the journal') + '</b>')
         dir_chooser.set_current_folder(self.journal.dirs.data_dir)
 
@@ -609,10 +609,11 @@ class MainWindow(object):
     def add_values_to_config(self):
         config = self.journal.config
 
-        config['leftDividerPosition'] = \
-                self.builder.get_object('main_pane').get_position()
-        config['rightDividerPosition'] = \
-                self.builder.get_object('edit_pane').get_position()
+        left_div = self.builder.get_object('main_pane').get_position()
+        config['leftDividerPosition'] = left_div
+
+        right_div = self.builder.get_object('edit_pane').get_position()
+        config['rightDividerPosition'] = right_div
 
         # Remember if window was maximized in separate method
 
@@ -819,13 +820,13 @@ class MainWindow(object):
         title_text = _('Title text')
         title = '\n=== %s ===\n' % title_text
 
-        table = '\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n' \
-                   '| 1               | more than 1     | Align left   |\n' \
-                   '|     more than 1 |               1 |   Align right |\n' \
-                   '|   more than 1   |   more than 1   |   Center   |\n' \
-                   '|| Title rows | are always | centered |\n' \
-                   '|  Use two vertical  |  lines on the left  |  for title rows  |\n' \
-                   '|  Always use  |  at least  |  one whitespace  |\n' \
+        table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
+                   '| 1               | more than 1     | Align left   |\n'
+                   '|     more than 1 |               1 |   Align right |\n'
+                   '|   more than 1   |   more than 1   |   Center   |\n'
+                   '|| Title rows | are always | centered |\n'
+                   '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
+                   '|  Always use  |  at least  |  one whitespace  |\n')
 
         line_break = r'\\'
 
@@ -839,36 +840,33 @@ class MainWindow(object):
 
         # Create actions
         actiongroup.add_actions([
-            ('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, \
-                _('Picture'), \
-                None, _('Insert an image from the harddisk'), \
+            ('Picture', gtk.STOCK_ORIENTATION_PORTRAIT,
+                _('Picture'),
+                None, _('Insert an image from the harddisk'),
                 self.on_insert_pic_menu_item_activate),
-            ('File', gtk.STOCK_FILE, _('File'), None, \
-                _('Insert a link to a file'), \
+            ('File', gtk.STOCK_FILE, _('File'), None,
+                _('Insert a link to a file'),
                 self.on_insert_file_menu_item_activate),
             ### Translators: Noun
-            ('Link', gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L', \
-                _('Insert a link to a website'), \
+            ('Link', gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L',
+                _('Insert a link to a website'),
                 self.on_insert_link_menu_item_activate),
-            ('BulletList', None, _('Bullet List'), None, \
-                None, \
+            ('BulletList', None, _('Bullet List'), None, None,
                 lambda widget: self.day_text_field.insert(bullet_list)),
-            ('NumberedList', None, _('Numbered List'), None, \
-                None, \
+            ('NumberedList', None, _('Numbered List'), None, None,
                 lambda widget: self.day_text_field.insert(numbered_list)),
-            ('Title', None, _('Title'), None, \
-                None, \
+            ('Title', None, _('Title'), None, None,
                 lambda widget: self.day_text_field.insert(title)),
-            ('Line', None, _('Line'), None, \
-                _('Insert a separator line'), \
+            ('Line', None, _('Line'), None,
+                _('Insert a separator line'),
                 lambda widget: self.day_text_field.insert(line)),
-            ('Table', None, _('Table'), None, None, \
+            ('Table', None, _('Table'), None, None,
                 lambda widget: self.day_text_field.insert(table)),
-            ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D', \
-                _('Insert the current date and time (edit format in preferences)'), \
+            ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
+                _('Insert the current date and time (edit format in preferences)'),
                 insert_date_time),
-            ('LineBreak', None, _('Line Break'), None, \
-                _('Insert a manual line break'), \
+            ('LineBreak', None, _('Line Break'), None,
+                _('Insert a manual line break'),
                 lambda widget: self.day_text_field.insert(line_break)),
             ])
 
@@ -908,7 +906,7 @@ class MainWindow(object):
         not have an associated event parameter. Otherwise we would use event.button
         and event.time
         '''
-        self.single_menu_toolbutton.get_menu().popup(parent_menu_shell=None, \
+        self.single_menu_toolbutton.get_menu().popup(parent_menu_shell=None,
                             parent_menu_item=None, func=None, button=0, activate_time=0, data=None)
 
     def on_insert_pic_menu_item_activate(self, widget):
@@ -1088,7 +1086,7 @@ class NewEntryDialog(object):
         self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
 
     def _text_entered(self):
-        return bool(self.categories_combo_box.get_active_text() and \
+        return bool(self.categories_combo_box.get_active_text() and
                 self.new_entry_combo_box.get_active_text())
 
     def show_dialog(self, category=''):
@@ -1255,7 +1253,7 @@ class CloudView(HtmlWindow):
         logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
 
         self.tag_cloud_words, html = \
-            utils.get_html_doc_from_word_count_dict(word_count_dict, self.type, \
+            utils.get_html_doc_from_word_count_dict(word_count_dict, self.type,
                                             self.ignore_list, self.include_list)
         logging.debug('%s cloud words found' % len(self.tag_cloud_words))
 
@@ -1504,8 +1502,8 @@ class DayTextField(object):
         variants = set([text, text.capitalize(), text.lower(), text.upper()])
 
         for search_text in variants:
-            iter_tuple = iter_start.forward_search(search_text, \
-                                gtk.TEXT_SEARCH_VISIBLE_ONLY \
+            iter_tuple = iter_start.forward_search(search_text,
+                                gtk.TEXT_SEARCH_VISIBLE_ONLY
                                 #| gtk.SEARCH_CASE_INSENSITIVE # non-existent
                                 )
 
@@ -1815,7 +1813,7 @@ class Calendar(object):
         cal_year, cal_month, cal_day = self.calendar.get_date()
         cal_month += 1
         if not day_number in range(1, dates.get_number_of_days(cal_year, cal_month) + 1):
-            logging.debug('Non-existent date in calendar: %s.%s.%s' % \
+            logging.debug('Non-existent date in calendar: %s.%s.%s' %
                         (day_number, cal_month, cal_year))
             return False
         return True
