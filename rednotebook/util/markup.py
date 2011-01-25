@@ -189,6 +189,7 @@ def convert(txt, target, headers=None, options=None, append_whitespace=False):
 
     We only need this for the keepnote input, the exports work fine
     '''
+    #TODO: Remove once keepnote files have been removed
     if append_whitespace:
         def add_whitespace(line):
             if line.rstrip().endswith(r'\\'):
