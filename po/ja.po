@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2011-01-15 15:39+0000\n"
+"PO-Revision-Date: 2011-01-24 12:26+0000\n"
 "Last-Translator: Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-01-16 05:07+0000\n"
+"X-Launchpad-Export-Date: 2011-01-25 04:58+0000\n"
 "X-Generator: Launchpad (build 12177)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -223,7 +223,7 @@ msgstr "gtkspell が必要です。"
 #: ../rednotebook/gui/options.py:295
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr ""
+msgstr "これは python-gtkspell もしくは python-gnome2-extras パッケージに含まれています。"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Check Spelling"
@@ -251,7 +251,7 @@ msgstr "クラウドから除外"
 
 #: ../rednotebook/gui/options.py:331
 msgid "Do not show those comma separated words in any cloud"
-msgstr ""
+msgstr "クラウド内でコンマにより分離されたワードを表示しない"
 
 #: ../rednotebook/gui/options.py:332
 msgid "Allow small words in clouds"
@@ -315,7 +315,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "RedNotebookを終了します。トレイには送られません。"
 
 #: ../rednotebook/gui/menu.py:118
 msgid "_Edit"
@@ -343,7 +343,7 @@ msgstr "RedNotebook ドキュメントを開く"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Get Help Online"
-msgstr ""
+msgstr "オンラインでヘルプを取得"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Visit the RedNotebook forum"
@@ -426,7 +426,7 @@ msgstr "プレビュー"
 
 #: ../rednotebook/gui/main_window.py:318
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "RedNotebook を表示"
 
 #: ../rednotebook/gui/main_window.py:520
 msgid "Select an empty folder for your new journal"
@@ -520,7 +520,7 @@ msgstr "ファイル"
 
 #: ../rednotebook/gui/main_window.py:806
 msgid "Insert a link to a file"
-msgstr ""
+msgstr "ファイルにリンクを挿入"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/main_window.py:809
@@ -691,7 +691,7 @@ msgstr ""
 
 #: ../rednotebook/journal.py:393
 msgid "Configuration could not be saved. Please check your permissions"
-msgstr ""
+msgstr "設定が保存できませんでした。権限を確認してください"
 
 #: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
@@ -818,7 +818,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:129
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "どんなフィードバックでも歓迎します。"
 
 #: ../rednotebook/info.py:132
 msgid "Have a nice day!"
