@@ -54,6 +54,7 @@ def coll(us, td=make_transdict()):
 
 
 def get_unicode(some_var):
+    """Unused"""
     if type(some_var) == str:
         try:
             unicode_string = some_var.decode('utf-8')
@@ -69,6 +70,7 @@ def test_unicode():
 
 
 def get_unicode_dict(dic):
+    """Unused"""
     unicode_dict = {}
     for key, value in dic.items():
         if isinstance(value, dict):
@@ -78,3 +80,21 @@ def get_unicode_dict(dic):
 
         unicode_dict[get_unicode(key)] = sub_dict
     return unicode_dict
+
+def test_unicode_sorting():
+    l = [u'\xe9cole', u'ecole', u'las', u'laß', u'lax',
+         u'ueber', u'über', u'zer']
+    l = [u'z', u'äpfel', u'apfel', u'fohlen', u'école', u'e',
+         u'sonne', u'ßonne', u'somnia']
+    print sorted(l, key=coll)
+
+    from unicodedata import normalize
+    norm = map(lambda u: normalize('NFD', u.lower()), l)
+    print sorted(norm)
+
+    from locale import strxfrm
+    bin = map(lambda u: u.encode('utf-8'), l)
+    print sorted(bin, key=strxfrm)
+
+if __name__ == '__main__':
+    test_unicode_sorting()
