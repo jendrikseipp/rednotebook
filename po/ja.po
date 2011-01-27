@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2011-01-24 12:26+0000\n"
+"PO-Revision-Date: 2011-01-26 15:21+0000\n"
 "Last-Translator: Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-01-25 04:58+0000\n"
+"X-Launchpad-Export-Date: 2011-01-27 04:38+0000\n"
 "X-Generator: Launchpad (build 12177)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -148,12 +148,12 @@ msgstr "いいえ"
 #: ../rednotebook/gui/exports.py:443
 #, python-format
 msgid "Content exported to %s"
-msgstr "%sに保存されました。"
+msgstr "%sに 保存されました。"
 
 #: ../rednotebook/gui/exports.py:445
 #, python-format
 msgid "Exporting to %s failed"
-msgstr "%sへの保存失敗しました。"
+msgstr "%s への保存に失敗しました。"
 
 #: ../rednotebook/gui/exports.py:542
 msgid "requires pywebkitgtk"
@@ -171,7 +171,7 @@ msgstr ""
 #: ../rednotebook/gui/clouds.py:231
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr "\"%s\"　をクラウド非表示にする。"
+msgstr "\"%s\" をクラウド非表示にする。"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
@@ -179,7 +179,7 @@ msgstr "はじめに"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr "RedNotebookをスタートアップ時に開始する"
+msgstr "RedNotebook をスタートアップ時に開始する"
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
@@ -231,11 +231,11 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:315
 msgid "Check for new version at startup"
-msgstr "開始時に新しいバージョンをチェック"
+msgstr "起動時に新しいバージョンをチェック"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Check now"
-msgstr ""
+msgstr "今すぐチェック"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Font Size"
@@ -251,7 +251,7 @@ msgstr "クラウドから除外"
 
 #: ../rednotebook/gui/options.py:331
 msgid "Do not show those comma separated words in any cloud"
-msgstr "クラウド内でコンマにより分離されたワードを表示しない"
+msgstr "クラウド内でコンマにより分離された単語を表示しない"
 
 #: ../rednotebook/gui/options.py:332
 msgid "Allow small words in clouds"
@@ -315,7 +315,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "RedNotebookを終了します。トレイには送られません。"
+msgstr "RedNotebook を終了します。トレイには送られません。"
 
 #: ../rednotebook/gui/menu.py:118
 msgid "_Edit"
@@ -351,7 +351,7 @@ msgstr "RedNotebook のフォーラムを訪問する"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Restore example content"
-msgstr ""
+msgstr "サンプルコンテントを復元"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Fill some free days with example content. Do not overwrite anything"
