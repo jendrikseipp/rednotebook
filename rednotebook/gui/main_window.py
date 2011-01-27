@@ -969,10 +969,6 @@ class MainWindow(object):
             link_location = self.builder.get_object('link_location_entry').get_text()
             link_name = self.builder.get_object('link_name_entry').get_text()
 
-            # It is safer to add the http://
-            if not link_location.lower().startswith('http://'):
-                link_location = 'http://' + link_location
-
             if link_location and link_name:
                 self.day_text_field.insert('[%s ""%s""]' % (link_name, link_location))
             elif link_location:
