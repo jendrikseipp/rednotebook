@@ -133,7 +133,7 @@ class MainWindow(object):
 
         # Only add the config variable if webkit is available
         # Use webkit by default if it is available
-        self.use_webkit = bool(browser.webkit)# and self.journal.config.read('useWebkit', 1)
+        self.use_webkit = browser.webkit and self.journal.config.read('useWebkit', 1)
 
         logging.info('Using webkit for previews: %s' % self.use_webkit)
 
