@@ -12,7 +12,8 @@ X Remember window position from last session
 X Restore window position when returning from tray
 X Let the sub-windows be displayed relative to the main screen
 X After searching change to date with single click instead of double-click
-X Add useWebkit flag in configuration file (set it to 0 if webkit causes problems)
+X Add useWebkit flag in configuration file 
+  Can be set to 0 if webkit causes problems e.g. for Chinese fonts
 X Fix: Special characters inflate cloud black-/whitelist
 X Fix: Insertion of templates (LP:696205)
 X Fix: Do not load backup files accidentally (LP:705260)
