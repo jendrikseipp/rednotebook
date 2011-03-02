@@ -7,22 +7,7 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.1.3
-X Remember window position from last session
-X Restore window position when returning from tray
-X Let the sub-windows be displayed relative to the main screen
-X After searching change to date with single click instead of double-click
-X Add useWebkit flag in configuration file 
-  Can be set to 0 if webkit causes problems e.g. for Chinese fonts
-X Fix: Special characters inflate cloud black-/whitelist
-X Fix: Insertion of templates (LP:696205)
-X Fix: Do not load backup files accidentally (LP:705260)
-X Fix: Preferences window can't be opened (LP:696186)
-X Windows: Fix opening linked files with umlauts or other special characters
-X Code: Remove backslashes at line endings
-X Code: Make pywebkitgtk an explicit requirement
-
-1.1.x
+1.1.2
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
