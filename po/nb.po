@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-13 12:26+0200\n"
-"PO-Revision-Date: 2011-01-12 00:14+0000\n"
-"Last-Translator: Magnus Christensen <Unknown>\n"
+"PO-Revision-Date: 2011-03-03 06:54+0000\n"
+"Last-Translator: ehellabe <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-03 04:41+0000\n"
+"X-Launchpad-Export-Date: 2011-03-04 04:46+0000\n"
 "X-Generator: Launchpad (build 12351)\n"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
@@ -23,7 +23,7 @@ msgstr "Eksporter alle dager"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export only the days in the selected time range"
-msgstr "Eksporter bare dager i avmerket tidsrom"
+msgstr "Eksporter bare dager i valgt tidsrom"
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
@@ -55,7 +55,7 @@ msgstr "Tilgjengelige kategorier"
 
 #: ../rednotebook/gui/exports.py:142
 msgid "Selected Categories"
-msgstr "valgte kategorier"
+msgstr "Valgte kategorier"
 
 #: ../rednotebook/gui/exports.py:148
 msgid "Select"
