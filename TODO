@@ -9,8 +9,10 @@ implementation if you tell me that you'd like its addition ;)
 
 1.1.4
 X Fix: Application crashes while resetting last position (LP:728466)
+X Fix: Introductory text is not translated
 X When a format (bold, etc.) is applied without no text selected add whitespace, not descriptive text
 X Add a tooltip for the edit button
+X Improve introductory text
 X Do not refer to annotations as "nodes" but as "entries"
 X Translate the word "Categories" in exports
 X In statistics window use "Selected Day" instead of "Current Day"
