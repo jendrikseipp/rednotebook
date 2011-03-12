@@ -291,6 +291,7 @@
                             </child>
                             <child>
                               <object class="GtkToolButton" id="edit_button">
+                                <property name="tooltip_text" translatable="yes">Enable text editing (Ctrl+P)</property>
                                 <property name="label" translatable="yes">Edit</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-edit</property>
