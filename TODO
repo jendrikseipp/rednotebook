@@ -7,11 +7,16 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.1.2
+1.1.4
+X Fix: Application crashes while resetting last position (LP:728466)
+
+1.2
+O Set title for exports
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
 O "Export currently visible day only" option
+
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
   X Movies
@@ -40,7 +45,6 @@ O Fix status icon on XFCE (LP:525196)
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
-O Set title for exports
 O Get rid of python3.0 warnings
 O Remove support for the notification area on Linux (http://design.canonical.com/2010/04/notification-area/)
 O Only export days that have category X if category X is selected?

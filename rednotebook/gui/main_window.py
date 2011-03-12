@@ -649,8 +649,11 @@ class MainWindow(object):
             # If window is not maximized, restore last position
             pos_x = config.read('mainFrameX', None)
             pos_y = config.read('mainFrameY', None)
-            if pos_x is not None and pos_y is not None:
+            try:
                 self.main_frame.move(pos_x, pos_y)
+            except TypeError:
+                # Values have not been set
+                pass
 
         if 'leftDividerPosition' in config:
             self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))
