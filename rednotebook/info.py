@@ -76,8 +76,11 @@ If the journal-path is omitted the last session's journal will be used.
 At the first program start this defaults to "$HOME/.rednotebook/data".
 ''' % version
 
-greeting = _('''Hello,
-this is RedNotebook, a desktop journal. Thank you very much for giving it a try.''')
+greeting = _('Hello!')
+intro=_('''Some example text has been added to help you start and \
+you can erase it whenever you like.''')
+### Translators: "Help" -> noun
+help_par = _('The example text and more documentation is available under "Help" -> "Contents".')
 overview1 = _('The interface is divided into three parts:')
 ### Translators: The location "left"
 overview21 = _('Left')
@@ -89,18 +92,23 @@ overview32 = _('Text for a day')
 overview41 = _('Right')
 overview42 = _('Annotations to a day')
 
-text_entry = _('Text entries')
-text_entry_par = _('An entry could look like this:')
+### Translators: noun
+preview = _('Preview')
+preview1 = _('''There are two modes in RedNotebook, the __editing__ mode and \
+the __preview__ mode.''')
+### Translators: Preview -> noun
+preview2 = _('Click on Preview above to see the difference.')
+preview_par = ' '.join([preview1, preview2])
+
 example_entry = _('''Today I went to the //pet shop// and bought a **tiger**. Then we went to the \
 --pool-- park and had a nice time playing \
 ultimate frisbee. Afterwards we watched "__Life of Brian__".''')
 
 annotations = _('Annotations')
-ann1 = _('On the right there is space for annotations to a day.')
-ann2 = _('Annotations are notes that can easily be sorted into categories.')
+ann2 = _('Annotations are notes that can be sorted into categories.')
 ann3 = _('''For example you could create the category "Ideas" \
 and then add today's ideas to it.''')
-ann_par = ' '.join([ann1, ann2, ann3])
+ann_par = ' '.join([ann2, ann3])
 
 templates = ('Templates')
 temp1 = ('RedNotebook supports templates.')
@@ -119,12 +127,6 @@ save4 = _('In the "Journal" menu you also find the "Export" button.')
 save5 = _('Click on "Export" and export your diary to Plain Text, HTML or Latex.')
 save_par = ' '.join([save1, save2, save3, save4, save5])
 
-### Translators: noun
-help = _('Help')
-### Translators: "Help" -> noun
-help3 = _('You can find more documentation under "Help" -> "Help".')
-help_par = ' '.join([help3])
-
 error1 = _('If you encounter any errors, please drop me a note so I can fix them.')
 error2 = _('Any feedback is appreciated.')
 error_par = ' '.join([error1, error2])
@@ -133,7 +135,8 @@ goodbye_par = _('Have a nice day!')
 
 
 completeWelcomeText = '''\
-%(greeting)s
+%(greeting)s %(intro)s %(help_par)s
+
 %(overview1)s
 
 - **%(overview21)s**: %(overview22)s
@@ -141,19 +144,14 @@ completeWelcomeText = '''\
 - **%(overview41)s**: %(overview42)s
 
 
-=== %(text_entry)s ===
-%(text_entry_par)s
-
-%(example_entry)s
+=== %(preview)s ===
+%(preview_par)s
 
 === %(annotations)s ===
 %(ann_par)s
 
 === %(save)s ===
 %(save_par)s
-
-=== %(help)s ===
-%(help_par)s
 
 %(error_par)s
 
