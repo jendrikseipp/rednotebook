@@ -21,10 +21,10 @@ from __future__ import division
 
 from rednotebook.util import dates
 
+
 class Statistics(object):
     def __init__(self, journal):
         self.journal = journal
-
 
     def get_number_of_words(self):
         number_of_words = 0
@@ -32,19 +32,16 @@ class Statistics(object):
             number_of_words += day.get_number_of_words()
         return number_of_words
 
-
     def get_number_of_distinct_words(self):
         word_count_dict = self.journal.get_word_count_dict('word')
         number_of_distinct_words = len(word_count_dict)
         return number_of_distinct_words
-
 
     def get_number_of_chars(self):
         number_of_chars = 0
         for day in self.days:
             number_of_chars += len(day.text)
         return number_of_chars
-
 
     def get_number_of_usage_days(self):
         '''Returns the timespan between the first and last entry'''
@@ -56,10 +53,8 @@ class Statistics(object):
         timespan = last_day.date - first_day.date
         return abs(timespan.days) + 1
 
-
     def get_number_of_entries(self):
         return len(self.days)
-
 
     def get_edit_percentage(self):
         total = self.get_number_of_usage_days()
@@ -69,19 +64,16 @@ class Statistics(object):
         percent = round(100 * edited / total, 2)
         return '%s%%' % percent
 
-
     def get_average_number_of_words(self):
         if self.get_number_of_entries() == 0:
             return 0
         return round(self.get_number_of_words() / self.get_number_of_entries(), 2)
-
 
     def _get_html_row(self, key, value):
         return ('<tr align="left">'
                 '<td bgcolor="#e7e7e7">&nbsp;&nbsp;' + key + '</td>'
                 '<td bgcolor="#aaaaaa">&nbsp;&nbsp;<b>' + str(value) + '</b></td>'
                 '</tr>')
-
 
     @property
     def overall_pairs(self):
@@ -95,7 +87,6 @@ class Statistics(object):
                 [_('Percentage of edited Days'), self.get_edit_percentage()],
                 ]
 
-
     @property
     def day_pairs(self):
         day = self.journal.day
@@ -104,7 +95,6 @@ class Statistics(object):
                 [_('Lines'), len(day.text.splitlines())],
                 [_('Letters'), len(day.text)],
                 ]
-
 
     def get_stats_html(self):
         self.journal.save_old_day()
@@ -115,7 +105,6 @@ class Statistics(object):
 
         page += '</body></table></html>'
         return page
-
 
     def show_dialog(self, dialog):
         self.journal.save_old_day()
@@ -134,5 +123,3 @@ class Statistics(object):
         dialog.show_all()
         dialog.run()
         dialog.hide()
-
-
