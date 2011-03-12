@@ -25,7 +25,7 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-version =           '1.1.3'
+version =           '1.1.4'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
 url =               'http://rednotebook.sourceforge.net'
@@ -35,7 +35,7 @@ bug_url =           'https://bugs.launchpad.net/rednotebook/+filebug'
 
 developers =    ['Jendrik Seipp <jendrikseipp@web.de>',
                 '',
-                'Contributors:',
+                'Past Contributors:',
                 'Alexandre Cucumel <superkiouk@gmail.com>',
                 ]
 
@@ -47,7 +47,7 @@ format, tag and search your entries.\
 '''
 
 license_text = '''\
-Copyright (c) 2009,2010  Jendrik Seipp
+Copyright (c) 2009,2010,2011  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
