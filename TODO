@@ -9,6 +9,10 @@ implementation if you tell me that you'd like its addition ;)
 
 1.1.4
 X Fix: Application crashes while resetting last position (LP:728466)
+X When a format (bold, etc.) is applied without no text selected add whitespace, not descriptive text
+X Add a tooltip for the edit button
+X Do not refer to annotations as "nodes" but as "entries"
+X Translate the word "Categories" in exports
 
 1.2
 O Set title for exports

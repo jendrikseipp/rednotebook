@@ -1558,7 +1558,7 @@ class DayTextField(object):
 
         # If no text has been selected add example text and select it
         if not selected_text:
-            selected_text = '%s text' % format
+            selected_text = ' '  #'%s text' % format
             self.insert(selected_text)
 
             # Set the selection to the new text
