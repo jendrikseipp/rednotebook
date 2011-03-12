@@ -180,7 +180,7 @@ class DateFormatOption(ComboBoxOption):
         import time
         string = self.get_value()
         time_string = time.strftime(string)
-        time_string = unicode(time_string, encoding='utf-8', errors='replace')
+        #time_string = unicode(time_string, encoding='utf-8', errors='replace')
         ### Translators: Noun
         self.preview.set_text(_('Preview:') + ' ' + time_string)
 
