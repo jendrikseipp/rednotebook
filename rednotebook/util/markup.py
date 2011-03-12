@@ -43,7 +43,7 @@ from rednotebook.util import utils
 def convert_categories_to_markup(categories, with_category_title=True):
     'Only add Category title if the text is displayed'
     if with_category_title:
-        markup = '== Categories ==\n'
+        markup = '== %s ==\n' % _('Categories')
     else:
         markup = ''
 
