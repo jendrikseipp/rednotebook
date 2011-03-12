@@ -286,7 +286,7 @@ The main text field is the container for your normal diary entries like this one
 == Format ==
 As you see, the text can be formatted **bold**, \
 //italic//, --struck through-- and __underlined__. As a convenience there \
-is also the "Format" button, with which you can format the main text and nodes \
+is also the "Format" button, with which you can format the main text and entries \
 in the categories tree on the right.
 
 A blank line starts a new **paragraph**, two backslashes\\\\ result in a **newline**.

@@ -121,7 +121,7 @@ class CategoriesTreeView(object):
             self.statusbar.show_text('"text" is a reserved keyword', error=True)
             return
         if len(new_text) < 1:
-            self.statusbar.show_text(_('Empty nodes are not allowed'), error=True)
+            self.statusbar.show_text(_('Empty entries are not allowed'), error=True)
             return
 
         liststore = user_data
@@ -457,7 +457,7 @@ class CategoriesTreeView(object):
                 None, None, self._on_add_entry_clicked
             ),
             ('Delete', gtk.STOCK_DELETE,
-                _('Delete this node'),
+                _('Delete this entry'),
                 None, None, self._on_delete_entry_clicked
             ),
             ])
