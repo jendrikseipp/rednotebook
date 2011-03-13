@@ -208,8 +208,7 @@ u'Tags': {u'Documentation': None, u'Projects': None},
 u'Todo': {u'**Wash the dishes**': None},
 }
 
-example_day2 = {
-'text': '''\
+multiple_entries_text = '''\
 === Multiple Entries ===
 You can add multiple entries to one day in two ways:
 - Use two different journals (one named “Work”, the other “Play”)
@@ -217,6 +216,9 @@ You can add multiple entries to one day in two ways:
 - Use a horizontal separator line (20 “=”s)
 
 
+'''
+
+multiple_entries_example = '''\
 ====================
 
 === Work ===
@@ -225,7 +227,11 @@ Here goes the first entry.
 ====================
 
 === Play ===
-Here comes the entry about the fun stuff.''',
+Here comes the entry about the fun stuff.
+'''
+
+example_day2 = {
+'text': multiple_entries_text + multiple_entries_example,
 u'Tags': {u'Documentation': None, u'Work': None, u'Play': None},}
 
 example_day3 = {
@@ -267,15 +273,19 @@ u'Done': {u'--Check mail--': None,},
 example_content = [welcome_day, example_day1, example_day2, example_day3]
 
 ann_help_text = example_day1['text'].replace('===', '==')
-
-multiple_entries_text = example_day2['text']
-multiple_entries_text = multiple_entries_text.replace('=== Work ===', '**Work**\n')
-multiple_entries_text = multiple_entries_text.replace('=== Play ===', '**Play**\n')
-
 todo_help_text = example_day3['text']
 
 
 help_text = '''
+== Layout ==
+%(overview1)s
+- **%(overview21)s**: %(overview22)s
+- **%(overview31)s**: %(overview32)s
+- **%(overview41)s**: %(overview42)s
+
+
+%(preview1)s
+
 == Text ==
 The main text field is the container for your normal diary entries like this one:
 
@@ -524,8 +534,15 @@ On Linux, start a terminal and call ``LANG=de_DE.utf8``. Then in the \
 same terminal, run ``rednotebook``. The language change will be gone \
 however once you close the terminal.
 
-On Windows, set or create a PATH environment variable with the desired \
-code.
+On Windows, set or create a LANG environment variable with the desired \
+code:
+
++ Right-click My Computer and click Properties.
++ In the System Properties window, click on the Advanced tab.
++ In the Advanced section, click the Environment Variables button.
++ Click the New button and insert LANG at the top and e.g. de or de_DE or
+  de_DE.UTF-8 (use your [language code ""http://en.wikipedia.org/wiki/ISO_639-1""]).
+
 
 === Titles ===
 You can insert titles into your post by adding "="s around your title
