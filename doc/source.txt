@@ -5,14 +5,14 @@ The main text field is the container for your normal diary entries like this one
 Today I went to the //pet shop// and bought a **tiger**. Then we went to the --pool-- park and had a nice time playing ultimate frisbee. Afterwards we watched "__Life of Brian__".
 
 == Format ==
-As you see, the text can be formatted **bold**, //italic//, --struck through-- and __underlined__. As a convenience there is also the "Format" button, with which you can format the main text and nodes in the categories tree on the right.
+As you see, the text can be formatted **bold**, //italic//, --struck through-- and __underlined__. As a convenience there is also the "Format" button, with which you can format the main text and entries in the categories tree on the right.
 
 A blank line starts a new **paragraph**, two backslashes\\ result in a **newline**.
 
 To see the result, click on the "Preview" button.
 You can also see how this text was formatted by looking at its [source source.txt].
 
-**Lists** can be created by using the following style, If you use "+" 
+**Lists** can be created by using the following style, If you use "+"
 instead of "-" you can create a **numbered list**.
 
 ```
@@ -24,7 +24,7 @@ instead of "-" you can create a **numbered list**.
 ```
 
 == Annotations in Categories ==
-On the right there is space for annotations to a day. Annotations are notes that can easily be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it.
+Annotations are notes that can be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it.
 
 - Ideas
   - Invent Anti-Hangover-Machine
@@ -40,8 +40,8 @@ I’ll give you another example: I like to maintain a list of cool things I have
 
 Additionally you can select the "Cool Stuff" category in the word cloud window to get a list of all the cool things.
 
-Maybe a good thing to know is the following: 
-"Tags" is a category, the tagnames are entries in the category "Tags", distributed over various days. 
+Maybe a good thing to know is the following:
+"Tags" is a category, the tagnames are entries in the category "Tags", distributed over various days.
 Similarly you can have a category "Movies" and add it together with the movie's name to every day on which you see a new film.
 
 Category entries can have all of the formatting that the main text supports, so e.g. you can add bold text, links or images.
@@ -52,7 +52,7 @@ RedNotebook lets you insert images, files and links into your entries. To do so,
 With the insert button you cannot insert **links to directories** on your computer. Those can be inserted manually however (""[Home ""file:///home/""]"").
 
 == Templates ==
-RedNotebook supports templates. Click on the arrow next to the "Template" button to see some options. You can have one template for every day of the week and unlimited arbitrarily named templates. 
+RedNotebook supports templates. Click on the arrow next to the "Template" button to see some options. You can have one template for every day of the week and unlimited arbitrarily named templates.
 The files 1.txt to 7.txt in the template directory correspond to the templates for each day of the week. The current weekday's template will be filled into the text area when you click on "Template". You can open the template files from inside RedNotebook by opening the menu next to the "Template" button.
 
 == Tags ==
@@ -87,7 +87,7 @@ Everything you enter will be saved automatically at regular intervals and when y
 == Export ==
 In the "Journal" menu you also find the "Export" button. Click on "Export" and export your diary to Plain Text, HTML or Latex.
 
-Since version 0.9.2 you can also directly export your journal to PDF. If the option does not show up in the export assistant, you need to install pywebkitgtk version 1.1.5 or later (the package is sometime called python-webkit). 
+Since version 0.9.2 you can also directly export your journal to PDF. If the option does not show up in the export assistant, you need to install pywebkitgtk version 1.1.5 or later (the package is sometime called python-webkit).
 
 **Latex caveats**
 
@@ -117,7 +117,7 @@ Using RedNotebook from multiple operating systems on the same computer is also p
 Optionally you can also **share your settings** and templates. This is possible since version 0.9.4. The relevant setting is found in the file "rednotebook/files/default.cfg". There you can set the value of userDir to the path where you want to share your settings between the systems.
 
 == Portable mode ==
-RedNotebook can be run in portable mode. In this mode, the template directory and the configuration and log file are saved in the application directory instead of in the home directory. Additionally the path to the last opened journal is remembered relatively to the application directory. 
+RedNotebook can be run in portable mode. In this mode, the template directory and the configuration and log file are saved in the application directory instead of in the home directory. Additionally the path to the last opened journal is remembered relatively to the application directory.
 
 To use RedNotebook on a flash drive on Windows, run the installer and select a directory on your USB drive as the installation directory. You probably don't need the "Start Menu Group" and Desktop icons in portable mode.
 
@@ -214,15 +214,22 @@ If you want to change RedNotebook's language, setting the environment variable L
 
 On Linux, start a terminal and call ``LANG=de_DE.utf8``. Then in the same terminal, run ``rednotebook``. The language change will be gone however once you close the terminal.
 
-On Windows, set or create a PATH environment variable with the desired code.
+On Windows, set or create a LANG environment variable with the desired code:
+
++ Right-click My Computer and click Properties.
++ In the System Properties window, click on the Advanced tab.
++ In the Advanced section, click the Environment Variables button.
++ Click the New button and insert LANG at the top and e.g. de or de_DE or
+  de_DE.UTF-8 (use your [language code ""http://en.wikipedia.org/wiki/ISO_639-1""]).
+
 
 === Titles ===
 You can insert titles into your post by adding "="s around your title
-text. = My Title = is the biggest heading, ====== My Title ====== is 
-the smallest heading. A title line can only contain the title, nothing 
+text. = My Title = is the biggest heading, ====== My Title ====== is
+the smallest heading. A title line can only contain the title, nothing
 else.
 
-Numbered titles can be created by using "+" instead of "=". 
+Numbered titles can be created by using "+" instead of "=".
 ""+ My Title +"" produces a title like "1.", ++++++ My Title ++++++
 produces a title like 0.0.0.0.0.1
 
@@ -272,7 +279,7 @@ To get a list of all entries, just search for " " (the space character). This ch
 ```
 Usage: rednotebook [options] [journal-path]
 
-RedNotebook 1.1.2
+RedNotebook 1.1.4
 
 The optional journal-path can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)
@@ -294,7 +301,7 @@ Options:
 == Data Format ==
 In this paragraph I will explain shortly what the RedNotebook files consist of. Firstly it is important to understand that the content is saved in a directory with many files, not just one file. The directory name is used as a name for the journal.
 
-In the directory there are several files all conforming to the naming scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files correspond to months (May 2010). 
+In the directory there are several files all conforming to the naming scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files correspond to months (May 2010).
 
 Each month file contains text for the days of that month. The text is actually [YAML www.yaml.org] markup. Without the (unnecessary) python directives the files look like this:
 

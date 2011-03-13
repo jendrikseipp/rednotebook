@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-12 13:50+0100\n"
+"POT-Creation-Date: 2011-03-13 02:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr ""
 msgid "Use a cool journal app"
 msgstr ""
 
-#: ../rednotebook/info.py:681 ../rednotebook/gui/menu.py:263
+#: ../rednotebook/info.py:698 ../rednotebook/gui/menu.py:252
 msgid "RedNotebook Documentation"
 msgstr ""
 
@@ -159,119 +159,111 @@ msgstr ""
 msgid "Introduction"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:93
+#: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:95
+#: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:98
+#: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:103
+#: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
 
 #. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:106
+#: ../rednotebook/gui/menu.py:105
 msgid "Import"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:107
+#: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
 msgstr ""
 
 #. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:109
+#: ../rednotebook/gui/menu.py:108
 msgid "Export"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:110
+#: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
 msgstr ""
 
 #. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:112
+#: ../rednotebook/gui/menu.py:111
 msgid "Backup"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:113
+#: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:114 tmp/main_window.glade.h:37
+#: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
 msgid "Statistics"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:115
+#: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:117
+#: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:120
+#: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:122
+#: ../rednotebook/gui/menu.py:121
 msgid "Undo text edits or category entry deletions"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:124
+#: ../rednotebook/gui/menu.py:123
 msgid "Redo text edits or category entry additions"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:138
+#: ../rednotebook/gui/menu.py:137
 msgid "_Help"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:141
+#: ../rednotebook/gui/menu.py:140
 msgid "Contents"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:142
+#: ../rednotebook/gui/menu.py:141
 msgid "Open the RedNotebook documentation"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:143
+#: ../rednotebook/gui/menu.py:142
 msgid "Get Help Online"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:144
+#: ../rednotebook/gui/menu.py:143
 msgid "Visit the RedNotebook forum"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:145
-msgid "Restore example content"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:146
-msgid "Fill some free days with example content. Do not overwrite anything"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:148
+#: ../rednotebook/gui/menu.py:144
 msgid "Translate RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:149
+#: ../rednotebook/gui/menu.py:145
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:151
+#: ../rednotebook/gui/menu.py:147
 msgid "Report a Problem"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:152
+#: ../rednotebook/gui/menu.py:148
 msgid "Fill out a short form about the problem"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:286
+#: ../rednotebook/gui/menu.py:275
 msgid "A Desktop Journal"
 msgstr ""
 
@@ -788,30 +780,30 @@ msgstr ""
 msgid "Lines"
 msgstr ""
 
-#: ../rednotebook/journal.py:383
+#: ../rednotebook/journal.py:380
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:386
+#: ../rednotebook/journal.py:383
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:394
+#: ../rednotebook/journal.py:391
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr ""
 
-#: ../rednotebook/journal.py:425
+#: ../rednotebook/journal.py:422
 msgid "The selected folder is not empty."
 msgstr ""
 
-#: ../rednotebook/journal.py:426
+#: ../rednotebook/journal.py:423
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:429
+#: ../rednotebook/journal.py:426
 msgid "The selected folder is empty. A new journal has been created."
 msgstr ""
 
