@@ -33,8 +33,9 @@ from rednotebook.util import filesystem
 
 
 example_text = '''\
-=== This is a template ===
+=== This is an example template ===
 
+It has been created to show you what can be put into a template. \
 To edit it, click the arrow right of "Template" \
 and select the template under "Edit Template".
 
@@ -75,7 +76,91 @@ When a template is inserted, every occurence of "$date$" is converted to \
 the current date. You can set the date format in the preferences.
 '''
 
+help_text = '''\
+Besides templates for weekdays you can also have arbitrary named templates.
+For example you might want to have a template for "Meeting" or "Journey".
+All templates must reside in the directory "%s".
 
+To create a new template, just save an ordinary textfile in that directory. \
+You can use your favourite text editing program for that task \
+(e.g. gedit on Linux or the editor on Win).
+The name of the newly created file will be the template's title.
+
+You can switch to "Preview" mode and click on the link to get to the \
+[template directory ""%s""].
+
+If you come up with templates that could be useful for other people as well, \
+I would appreciate if you sent me your template file, so others can benefit \
+from it.
+'''
+
+meeting = '''\
+=== Meeting ===
+
+Purpose, date, and place
+
+**Present:**
++
++
++
+
+
+**Agenda:**
++
++
++
+
+
+**Discussion, Decisions, Assignments:**
++
++
++
+==================================
+'''
+
+journey = '''\
+=== Journey ===
+**Date:**
+
+**Location:**
+
+**Participants:**
+
+**The trip:**
+First we went to xxxxx then we got to yyyyy ...
+
+**Pictures:** [Image folder ""/path/to/the/images/""]
+'''
+
+call = '''\
+==================================
+=== Phone Call ===
+- **Person:**
+- **Time:**
+- **Topic:**
+- **Outcome and Follow up:**
+==================================
+'''
+
+personal = '''\
+=====================================
+=== Personal ===
+
++
++
++
+========================
+
+**How was the Day?**
+
+
+========================
+**What needs to be changed?**
++
++
++
+=====================================
+'''
 
 
 class TemplateManager(object):
@@ -86,7 +171,6 @@ class TemplateManager(object):
 
         self.merge_id = None
         self.actiongroup = None
-
 
     def on_insert(self, action):
         title = action.get_name()
@@ -99,7 +183,6 @@ class TemplateManager(object):
         else:
             text = self.get_text(title)
         self.main_window.day_text_field.insert(text)
-
 
     def on_edit(self, action):
         '''
@@ -139,14 +222,11 @@ class TemplateManager(object):
 
             filesystem.open_url(filename)
 
-
     def on_open_template_dir(self):
         filesystem.open_url(self.dirs.template_dir)
 
-
     def get_template_file(self, basename):
         return os.path.join(self.dirs.template_dir, str(basename) + '.txt')
-
 
     def get_text(self, title):
         filename = self.titles_to_files.get(title, None)
@@ -178,13 +258,11 @@ class TemplateManager(object):
 
         return template_text
 
-
     def get_weekday_text(self, date=None):
         if date is None:
             date = self.main_window.journal.date
         week_day_number = date.weekday() + 1
         return self.get_text(str(week_day_number))
-
 
     def get_available_template_files(self):
         dir = self.dirs.template_dir
@@ -196,9 +274,7 @@ class TemplateManager(object):
 
         # No tempfiles
         files = filter(lambda file: not file.endswith('~'), files)
-
         return files
-
 
     def get_menu(self):
         '''
@@ -273,7 +349,6 @@ class TemplateManager(object):
         # Create an ActionGroup
         self.actiongroup = gtk.ActionGroup('TemplateActionGroup')
 
-
         # Create actions
         actions = []
 
@@ -305,10 +380,7 @@ class TemplateManager(object):
                     _('Open Template Directory'), None, None,
                     lambda widget: self.on_open_template_dir()))
 
-
         self.actiongroup.add_actions(actions)
-
-
 
         # Remove the lasts ui description
         if self.merge_id:
@@ -322,111 +394,28 @@ class TemplateManager(object):
 
         # Create a Menu
         menu = uimanager.get_widget('/TemplateMenu')
-
         return menu
 
-
-
     def make_empty_template_files(self):
-        def get_instruction(day_number):
-            file = self.get_template_file(day_number)
-            #text = '''\
-#The template for this weekday has not been edited.
-#If you want to have some text that you can add to that day every week,
-#edit the file [%s ""%s""] in a text editor.
-#
-#To do so, you can switch to "Preview" and click on the link to that file.
-#           ''' % (os.path.basename(file), file)
-            text = example_text
-            return text
+        global help_text
 
-        file_content_pairs = []
+        files = []
         for day_number in range(1, 8):
-            file_content_pairs.append((self.get_template_file(day_number), get_instruction(day_number)))
+            files.append((self.get_template_file(day_number), example_text))
 
-        template_help_text = '''\
-Besides templates for weekdays you can also have arbitrary named templates.
-For example you might want to have a template for "Meeting" or "Journey".
-All templates must reside in the directory "%s".
+        help_text %= (self.dirs.template_dir, self.dirs.template_dir)
 
-To create a new template, just save an ordinary textfile in that directory. \
-You can use your favourite text editing program for that task \
-(e.g. gedit on Linux or the editor on Win).
-The name of the newly created file will be the template's title.
-
-You can switch to "Preview" mode and click on the link to get to the \
-[template directory ""%s""].
-
-If you come up with templates that could be useful for other people as well, \
-I would appreciate if you sent me your template file, so others can benefit \
-from it.
-        ''' % (self.dirs.template_dir, self.dirs.template_dir)
-
-        template_help_filename = self.get_template_file('Help')
-        file_content_pairs.append((template_help_filename, template_help_text))
+        files.append((self.get_template_file('Help'), help_text))
 
         # Only add the example templates the first time and just restore
         # the day templates everytime
         if not self.main_window.journal.dirs.is_first_start:
-            filesystem.make_files(file_content_pairs)
+            filesystem.make_files(files)
             return
 
+        files.append((self.get_template_file('Meeting'), meeting))
+        files.append((self.get_template_file('Journey'), journey))
+        files.append((self.get_template_file('Call'), call))
+        files.append((self.get_template_file('Personal'), personal))
 
-        template_meeting_text = '''\
-=== Meeting ===
-Group name, date, and place
-
-**Present**
-
- - Axxxx
- - Bxxxx
- - Cxxx
- - Dxxxxx
- - Exxxx
-
-
-**Agenda**
-
- - Xxxx xxxxx xxxxxxx xxxx
- - Xxxxxxx xxxxxxxxx xxxx xxxx
-   - Xxxx xxxxx
-
-
-**Discussion, decisions, assignments**
-
-First agenda item: Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-Second agenda item: Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Xxxxxxxxxxxxx
-
-Additional items: Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Xxxxxxxxxxxxxxxxxxxxx
-
-
-**Tentative agenda for the next meeting**
-
- - Xxxxxxxxxxxxxxx Xxxxx Xxxxxxxxxxx
- - Xxxxxxxxxx Xxxxxxxxxxxx
-        '''
-
-        template_meeting_filename = self.get_template_file('Meeting')
-        file_content_pairs.append((template_meeting_filename, template_meeting_text))
-
-
-        template_journey_text = '''\
-=== Journey ===
-**Date:** xx.xx.xxxx
-
-**Location:**
-
-**Participants:**
-
-**The trip:**
-First we went to xxxxx then we got to yyyyy ...
-
-**Pictures:** [Image folder ""/path/to/the/images/""]
-        '''
-
-        template_journey_filename = self.get_template_file('Journey')
-        file_content_pairs.append((template_journey_filename, template_journey_text))
-
-
-        filesystem.make_files(file_content_pairs)
+        filesystem.make_files(files)

@@ -129,7 +129,7 @@ def read_file(filename):
 
     Returns None if an error is encountered
     '''
-    encodings = ['utf-8']#, 'latin1', 'latin2']
+    encodings = ['utf-8']
 
     try:
         import chardet
