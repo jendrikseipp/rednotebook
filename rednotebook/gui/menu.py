@@ -79,7 +79,6 @@ class MainMenuBar(object):
                 <menuitem action="Translate"/>
                 <menuitem action="ReportBug"/>
                 <separator/>
-                <menuitem action="Examples"/>
                 <menuitem action="Info"/>
             </menu>
         </menubar>
@@ -142,9 +141,6 @@ class MainMenuBar(object):
                 '<Ctrl>h', _('Open the RedNotebook documentation'), self.on_help_menu_item_activate),
             ('OnlineHelp', None, _('Get Help Online'),
                 None, _('Visit the RedNotebook forum'), self.on_online_help),
-            ('Examples', None, _('Restore example content'),
-                None, _('Fill some free days with example content. Do not overwrite anything'),
-                self.on_example_menu_item_activate),
             ('Translate', None, _('Translate RedNotebook'),
                 None, _('Connect to the Launchpad website to help translate RedNotebook'),
                 self.on_translate),
@@ -160,10 +156,6 @@ class MainMenuBar(object):
 
         # Add a UI description
         self.uimanager.add_ui_from_string(menu_xml)
-
-        # We want to hide the examples button for now
-        examples_button = self.uimanager.get_widget('/MainMenuBar/HelpMenu/Examples')
-        examples_button.hide()
 
         # Create a Menu
         self.menubar = self.uimanager.get_widget('/MainMenuBar')
@@ -253,9 +245,6 @@ class MainMenuBar(object):
 
     def on_statistics_menu_item_activate(self, widget):
         self.journal.stats.show_dialog(self.main_window.stats_dialog)
-
-    def on_example_menu_item_activate(self, widget):
-        self.journal.add_instruction_content()
 
     def on_help_menu_item_activate(self, widget):
         temp_dir = self.journal.dirs.temp_dir
