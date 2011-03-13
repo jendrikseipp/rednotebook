@@ -135,8 +135,6 @@ class MainMenuBar(object):
                 '<Ctrl><Alt>p', None, self.on_options_menuitem_activate),
 
             ('HelpMenu', None, _('_Help')),
-            #('CheckVersion', None, _('Check For New Version'),
-            #   None, _('Check for a new version now'), self.on_check_version_menu_item_activate),
             ('Help', gtk.STOCK_HELP, _('Contents'),
                 '<Ctrl>h', _('Open the RedNotebook documentation'), self.on_help_menu_item_activate),
             ('OnlineHelp', None, _('Get Help Online'),
@@ -254,9 +252,6 @@ class MainMenuBar(object):
         html = markup.convert(info.help_text, 'xhtml', headers, options)
         utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
 
-    #def on_check_version_menu_item_activate(self, widget):
-    #   utils.check_new_version(self.main_window, info.version)
-
     def on_online_help(self, widget):
         webbrowser.open(info.forum_url)
 
@@ -271,7 +266,7 @@ class MainMenuBar(object):
         self.info_dialog.set_transient_for(self.main_window.main_frame)
         self.info_dialog.set_name('RedNotebook')
         self.info_dialog.set_version(info.version)
-        self.info_dialog.set_copyright('Copyright (c) 2008 Jendrik Seipp')
+        self.info_dialog.set_copyright('Copyright (c) 2008-2011 Jendrik Seipp')
         self.info_dialog.set_comments(_('A Desktop Journal'))
         gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
         self.info_dialog.set_website(info.url)
