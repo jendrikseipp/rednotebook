@@ -8,7 +8,9 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.1.4
+X Add "phone call" and "personal" templates
 X Fix: Application crashes while resetting last position (LP:728466)
+X Fix: Editing a category entry that contains a \\ removes the new line symbol (LP:719830)
 X Fix: Introductory text is not translated
 X When a format (bold, etc.) is applied without no text selected add whitespace, not descriptive text
 X Add a tooltip for the edit button
