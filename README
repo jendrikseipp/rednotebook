@@ -2,7 +2,7 @@
 
 $ sudo apt-get install python-yaml python-webkit python-chardet
 $ python rednotebook/journal.py
-  
+
 
 
 
@@ -11,29 +11,29 @@ $ python rednotebook/journal.py
 There are many packages available for different distributions, so you might
 want to check the Downloads page first.
 
-It is recommended to install the distribution's appropriate package, 
+It is recommended to install the distribution's appropriate package,
 but of course sometimes you want to try out the bleeding edge, hot new stuff.
 
 In order to not mess with your distribution's package system, you might
-want to just run the program, without installing it.
+want to just **run the program, without installing it**.
 
 ==== REQUIREMENTS ====
   - Python (2.5/2.6) (www.python.org)
   - PyYaml (>=3.05) (www.pyyaml.org)
   - PyGTK (>=2.13) (www.pygtk.org)
-  
+
   - OPTIONALLY:
     - pywebkitgtk (>=1.1.5) (http://code.google.com/p/pywebkitgtk/)
       Used for a nicer preview and PDF export
     - python-chardet (http://chardet.feedparser.org)
       Better recognition of file encodings
-  
+
     === Ubuntu/Debian ===
     sudo apt-get install python-yaml python-webkit
-    
+
     === Fedora ===
     yum install python-devel PyYAML pywebkitgtk
-    
+
 
 ==== INSTALL ====
 Run 'sudo python setup.py install'
@@ -41,7 +41,7 @@ Run 'sudo python setup.py install'
 
 
 ==== RUN ====
-After installing you can run the command "rednotebook" in any shell. 
+After installing you can run the command "rednotebook" in any shell.
 You should also find a menu entry for RedNotebook under "Office".
 
 (Running without installing: Run "python rednotebook/journal.py")
@@ -57,12 +57,12 @@ You should also find a menu entry for RedNotebook under "Office".
   - Gustavo J. A. M. Carneiro for his htmltextview.py module used by the clouds
   - The people behind the Tango Icon Project and the creators of the Human Theme
             Their work can be downloaded from http://tango.freedesktop.org/
-  - Matt Rasmussen and his KeepNote project (http://rasm.ods.org/keepnote/). 
-            RedNotebook uses his work on displaying HTML content 
+  - Matt Rasmussen and his KeepNote project (http://rasm.ods.org/keepnote/).
+            RedNotebook uses his work on displaying HTML content
             in a PyGTK application for the preview.
   - Ahmet Öztürk and Lifeograph for his markup highlighting idea
   - Hannes Matuschek: RedNotebook uses pygtkcodebuffer for the markup
-            highlighting 
+            highlighting
 
 
 Enjoy!
