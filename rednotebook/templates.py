@@ -29,6 +29,7 @@ import gtk
 
 
 from rednotebook.util import filesystem
+from rednotebook.util import dates
 
 
 
@@ -242,20 +243,11 @@ class TemplateManager(object):
                     'and select the template under "Edit Template".')
 
         # convert every "$date$" to the current date
-        default_date_string = '%A, %x %X'
-        date_string = self.main_window.journal.config.read('dateTimeString', default_date_string)
-        date = time.strftime(date_string)
-        # Turn date into unicode string
-        date = date.decode()
+        config = self.main_window.journal.config
+        date_string = config.read('dateTimeString', '%A, %x %X')
+        date = dates.format_date_string(date_string)
 
-        try:
-            template_text = text.replace(u'$date$', date)
-        except UnicodeDecodeError, err:
-            # TODO: Figure out real source of the error,
-            # maybe load config with filesystem.read_file
-            logging.error('Error replacing $date$: "%s"' % err)
-            template_text = text
-
+        template_text = text.replace(u'$date$', date)
         return template_text
 
     def get_weekday_text(self, date=None):

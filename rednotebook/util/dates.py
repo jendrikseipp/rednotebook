@@ -17,6 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import time
 import datetime
 
 
@@ -45,6 +46,12 @@ def get_number_of_days(year, month):
     '''
     days = month_days[month] + (month == 2 and isleap(year))
     return days
+
+def format_date_string(date_string):
+    date = time.strftime(date_string)
+    # Turn date into unicode string
+    date = date.decode('utf-8', 'replace')
+    return date
 
 
 

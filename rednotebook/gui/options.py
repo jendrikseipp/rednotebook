@@ -28,7 +28,7 @@ import gobject
 from rednotebook.gui.customwidgets import UrlButton, CustomComboBoxEntry
 from rednotebook.gui.customwidgets import ActionButton
 from rednotebook.gui import browser
-from rednotebook.util import filesystem, utils
+from rednotebook.util import filesystem, utils, dates
 from rednotebook import info
 
 
@@ -177,12 +177,11 @@ class DateFormatOption(ComboBoxOption):
         self.on_format_changed(None)
 
     def on_format_changed(self, widget):
-        import time
-        string = self.get_value()
-        time_string = time.strftime(string)
-        #time_string = unicode(time_string, encoding='utf-8', errors='replace')
+        date_string = self.get_value()
+        date = dates.format_date_string(date_string)
         ### Translators: Noun
-        self.preview.set_text(_('Preview:') + ' ' + time_string)
+        label_text = u'%s %s' % (_('Preview:'), date)
+        self.preview.set_text(label_text)
 
 
 class FontSizeOption(ComboBoxOption):
