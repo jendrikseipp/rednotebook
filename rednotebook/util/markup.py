@@ -281,7 +281,8 @@ def convert_to_pango(txt, headers=None, options=None):
     # remove unwanted paragraphs
     result = result.replace('<p>', '').replace('</p>', '')
 
-    logging.log(5, 'Converted "%s" text to "%s" txt2tags markup' % (original_txt, result))
+    logging.log(5, 'Converted "%s" text to "%s" txt2tags markup' %
+                (repr(original_txt), repr(result)))
 
     try:
         attr_list, plain, accel = pango.parse_markup(result)
@@ -299,7 +300,6 @@ def convert_to_pango(txt, headers=None, options=None):
         return txt
 
 
-
 def convert_from_pango(pango_markup):
     original_txt = pango_markup
     replacements = dict((('<b>', '**'), ('</b>', '**'),
@@ -308,12 +308,13 @@ def convert_from_pango(pango_markup):
                         ('<u>', '__'), ('</u>', '__'),
                         ('&amp;', '&'),
                         ('&lt;', '<'), ('&gt;', '>'),
+                        ('\n', r'\\'),
                         ))
     for orig, repl in replacements.items():
         pango_markup = pango_markup.replace(orig, repl)
 
     logging.log(5, 'Converted "%s" pango to "%s" txt2tags' %
-                (original_txt, pango_markup))
+                (repr(original_txt), repr(pango_markup)))
     return pango_markup
 
 
@@ -336,8 +337,6 @@ normal text, normal_text_with_underscores and ""raw_text_with_underscores""
 [Link ""http://www.co.whatcom.wa.us/health/environmental/site_hazard/sitehazard.jsp""]
 '''
 
-
-
     markup =  '[""/image"".png?50]\n'
     markup += '[""/image"".jpg]\n'
     markup += '[""file:///image"".png?10]\n'
@@ -357,6 +356,3 @@ normal text, normal_text_with_underscores and ""raw_text_with_underscores""
 
     #latex = convert(markup, 'tex')
     #print latex
-
-
-

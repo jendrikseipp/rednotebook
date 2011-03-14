@@ -25,6 +25,7 @@ import pango
 from rednotebook.util import markup
 from rednotebook import undo
 
+
 class CategoriesTreeView(object):
     def __init__(self, tree_view, main_window):
         self.tree_view = tree_view
@@ -86,14 +87,12 @@ class CategoriesTreeView(object):
         self.cell.props.wrap_width = 200
         self.tree_view.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
 
-
     def node_on_top_level(self, iter):
         if not type(iter) == gtk.TreeIter:
             # iter is a path -> convert to iter
             iter = self.tree_store.get_iter(iter)
         assert self.tree_store.iter_is_valid(iter)
         return self.tree_store.iter_depth(iter) == 0
-
 
     def on_editing_started(self, cell, editable, path):
         # Let the renderer use text not markup temporarily
@@ -109,7 +108,6 @@ class CategoriesTreeView(object):
 
         # We want to show txt2tags markup and not pango markup
         editable.set_text(markup.convert_from_pango(pango_markup))
-
 
     def edited_cb(self, cell, path, new_text, user_data):
         '''
@@ -146,7 +144,6 @@ class CategoriesTreeView(object):
         # Update cloud
         self.main_window.cloud.update()
 
-
     def check_category(self, category):
         if category == 'text':
             self.statusbar.show_text('"text" is a reserved keyword', error=True)
@@ -157,14 +154,12 @@ class CategoriesTreeView(object):
 
         return True
 
-
     def check_entry(self, text):
         if len(text) < 1:
             self.statusbar.show_text(_('Empty entries are not allowed'), error=True)
             return False
 
         return True
-
 
     def add_element(self, parent, element_content):
         '''
@@ -180,7 +175,6 @@ class CategoriesTreeView(object):
             if not value == None:
                 self.add_element(new_child, value)
 
-
     def set_day_content(self, day):
         # We want to order the categories ascendingly, having Tags first
         ascending = lambda x: '000' if x.lower() == 'tags' else x.lower()
@@ -192,7 +186,6 @@ class CategoriesTreeView(object):
                 self.add_element(None, {key: value})
         self.tree_view.expand_all()
 
-
     def get_day_content(self):
         if self.empty():
             return {}
@@ -200,7 +193,6 @@ class CategoriesTreeView(object):
         content = self._get_element_content(None)
 
         return content
-
 
     def _get_element_content(self, element):
         model = self.tree_store
@@ -216,7 +208,6 @@ class CategoriesTreeView(object):
 
             return content
 
-
     def empty(self, category_iter=None):
         '''
         Tests whether a category has children
@@ -225,11 +216,9 @@ class CategoriesTreeView(object):
         '''
         return self.tree_store.iter_n_children(category_iter) == 0
 
-
     def clear(self):
         self.tree_store.clear()
         assert self.empty(), self.tree_store.iter_n_children(None)
-
 
     def get_iter_value(self, iter):
         # Let the renderer use text not markup temporarily
@@ -245,7 +234,6 @@ class CategoriesTreeView(object):
         # We want to have txt2tags markup and not pango markup
         text = markup.convert_from_pango(pango_markup)
         return text
-
 
     def set_iter_value(self, iter, txt2tags_markup):
         '''
@@ -272,8 +260,6 @@ class CategoriesTreeView(object):
         logging.debug('Iter not found: "%s", "%s"' % (category, entry))
         return None
 
-
-
     def _get_category_iter(self, category_name):
         for iter_index in range(self.tree_store.iter_n_children(None)):
             current_category_iter = self.tree_store.iter_nth_child(None, iter_index)
@@ -284,7 +270,6 @@ class CategoriesTreeView(object):
         # If the category was not found, return None
         logging.debug('Category not found: "%s"' % category_name)
         return None
-
 
     def add_entry(self, category, entry, undoing=False):
         if category not in self.categories and category is not None:
@@ -311,7 +296,6 @@ class CategoriesTreeView(object):
 
         self.tree_view.expand_all()
 
-
     def get_selected_node(self):
         '''
         Returns selected node or None if none is selected
@@ -319,7 +303,6 @@ class CategoriesTreeView(object):
         tree_selection = self.tree_view.get_selection()
         model, selected_iter = tree_selection.get_selected()
         return selected_iter
-
 
     def delete_node(self, iter, undoing=False):
         if not iter:
@@ -343,7 +326,6 @@ class CategoriesTreeView(object):
             category = self.get_iter_value(category_iter)
             entries = self._get_element_content(category_iter).keys()
 
-
         # Delete ---------------------------------------------
 
         self.tree_store.remove(iter)
@@ -353,8 +335,6 @@ class CategoriesTreeView(object):
             self.tree_store.remove(category_iter)
 
         # ----------------------------------------------------
-
-
 
         if not undoing:
 
@@ -373,7 +353,6 @@ class CategoriesTreeView(object):
         # Update cloud
         self.main_window.cloud.update()
 
-
     def delete_selected_node(self):
         '''
         This method used to show a warning dialog. This has become obsolete
@@ -383,7 +362,6 @@ class CategoriesTreeView(object):
         if selected_iter:
             self.delete_node(selected_iter)
             return
-
 
     def on_key_press_event(self, widget, event):
         """
@@ -401,7 +379,6 @@ class CategoriesTreeView(object):
             # Does not work
             logging.info('Context Menu does not work')
             self.context_menu.popup(None, None, None, 0, event.time)
-
 
     def on_button_press_event(self, widget, event):
         """
@@ -427,7 +404,6 @@ class CategoriesTreeView(object):
         if (event.button == 3):
             #This is a right-click
             self.context_menu.popup(None, None, None, event.button, event.time)
-
 
     def _get_context_menu(self):
         context_menu_xml = '''
@@ -495,10 +471,8 @@ class CategoriesTreeView(object):
             category = self.get_iter_value(parent_iter)
             dialog.show_dialog(category=category)
 
-
     def _on_delete_entry_clicked(self, action):
         self.delete_selected_node()
-
 
     def on_size_allocate(self, treeview, allocation, column, cell):
         '''
