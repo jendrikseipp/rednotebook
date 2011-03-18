@@ -8,24 +8,26 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2011-03-10 14:45+0000\n"
-"Last-Translator: doiges <Unknown>\n"
+"PO-Revision-Date: 2011-03-17 19:55+0000\n"
+"Last-Translator: xc1024 <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-18 05:01+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Dzień dobry!"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Przykładowy tekst został dodany aby pomóc CI zacząć, możesz go usunąć kiedy "
+"zechcesz."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -33,6 +35,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Przykładowy tekst i więcej dokumentacji jest dostępne pod \"Pomoc\" -> "
+"\"Spis treści\"."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -75,7 +79,7 @@ msgstr "Podgląd"
 msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "RedNotebook ma dwa tryby, tryb __edycji__ i tryb __podglądu__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
@@ -98,7 +102,7 @@ msgstr "Przypisy"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Przypisy to notatki które można sortować w kategorie."
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -988,7 +992,8 @@ msgstr ""
 "  Jarosław Ogrodnik https://launchpad.net/~goz\n"
 "  NINa https://launchpad.net/~factory\n"
 "  TSr https://launchpad.net/~tsr\n"
-"  doiges https://launchpad.net/~bohopicasso"
+"  doiges https://launchpad.net/~bohopicasso\n"
+"  xc1024 https://launchpad.net/~xc1024"
 
 #~ msgid "Insert a title"
 #~ msgstr "Wstaw tytuł"
