@@ -13,6 +13,7 @@ X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pi
 X Tables
 X Numbered lists
 O "Export currently visible day only" option
+O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -66,6 +67,7 @@ O Remove keepnote and htmltextview sources (make webkit mandatory first)
 O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 O Create mono icon for panel?
 O Regularly check for new webkit version that supports chinese fonts
+O Check distutils --report option for remembering installed files
 
 
 1.3
@@ -115,6 +117,7 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
   and then locks my rednotebook application. The only thing I can then do is force
   the applicaiton to close. I have no such problems with the 1.1.0 version (with
   the 'older' user interface).
+- Change an entry's category (Useful for Todo items) (KISS?)
 
 
 
@@ -154,5 +157,4 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
 - For each journal to have its own templates (KISS)
 - Let the Search type selection remember the selection between sessions (KISS)
 - Let the Annotate and Tag window box remember their positions between sessions (KISS)
-- Change an entry's category (Useful for Todo items) (KISS)
 - Select template file when clicking the button instead of adding weekday's file

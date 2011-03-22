@@ -47,14 +47,10 @@ def get_number_of_days(year, month):
     days = month_days[month] + (month == 2 and isleap(year))
     return days
 
-def format_date_string(date_string):
-    date = time.strftime(date_string)
+def format_date(format_string, date=None):
+    if date is None:
+        date = datetime.date.today()
+    date_string = date.strftime(format_string)
     # Turn date into unicode string
-    date = date.decode('utf-8', 'replace')
-    return date
-
-
-
-
-
-
+    date_string = date_string.decode('utf-8', 'replace')
+    return date_string

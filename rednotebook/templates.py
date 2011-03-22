@@ -244,10 +244,10 @@ class TemplateManager(object):
 
         # convert every "$date$" to the current date
         config = self.main_window.journal.config
-        date_string = config.read('dateTimeString', '%A, %x %X')
-        date = dates.format_date_string(date_string)
+        format_string = config.read('dateTimeString', '%A, %x %X')
+        date_string = dates.format_date(format_string)
 
-        template_text = text.replace(u'$date$', date)
+        template_text = text.replace(u'$date$', date_string)
         return template_text
 
     def get_weekday_text(self, date=None):

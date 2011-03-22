@@ -834,9 +834,9 @@ class MainWindow(object):
         line_break = r'\\'
 
         def insert_date_time(widget):
-            default_date_string = '%A, %x %X'
-            date_string = self.journal.config.read('dateTimeString', default_date_string)
-            self.day_text_field.insert(time.strftime(date_string))
+            format_string = self.journal.config.read('dateTimeString', '%A, %x %X')
+            date_string = dates.format_date(format_string)
+            self.day_text_field.insert(date_string)
 
         def tmpl(letter):
             return ' (Ctrl+%s)' % letter

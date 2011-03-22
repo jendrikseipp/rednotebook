@@ -181,7 +181,6 @@ def write_file(filename, content):
         logging.error('Error while writing to "%s": %s' % (filename, e))
 
 
-
 def make_directory(dir):
     if not os.path.exists(dir):
         os.makedirs(dir)
@@ -196,10 +195,7 @@ def make_file(file, content=''):
 
 def make_files(file_content_pairs):
     for file, content in file_content_pairs:
-        if len(content) > 0:
-            make_file(file, content)
-        else:
-            make_file(file)
+        make_file(file, content)
 
 def make_file_with_dir(file, content):
     dir = os.path.dirname(file)

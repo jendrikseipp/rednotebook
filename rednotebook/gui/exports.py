@@ -36,6 +36,7 @@ if __name__ == '__main__':
 
 from rednotebook.util import filesystem
 from rednotebook.util import markup
+from rednotebook.util import dates
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
                     IntroductionPage, RadioButtonPage, PathChooserPage, Assistant
 from rednotebook.gui import browser
@@ -412,7 +413,7 @@ class ExportAssistant(Assistant):
             #date_format = self.journal.config.read('exportDateFormat',
             #                                       default_export_date_format)
             date_format = default_export_date_format
-            date_string = day.date.strftime(date_format)
+            date_string = dates.format_date(date_format, day.date)
             day_markup = markup.get_markup_for_day(day, with_text=export_text,
                                             categories=selected_categories,
                                             date=date_string)
