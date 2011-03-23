@@ -8,24 +8,26 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-08-13 16:53+0000\n"
+"PO-Revision-Date: 2011-03-23 01:25+0000\n"
 "Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-23 04:37+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "¡Bones!"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"S'amestó testu d'exemplu p'aidate nos primeros pasos, y pues desanicialu "
+"cuando te pete."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -33,6 +35,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"El testu d'exemplu y más documentación tan disponibles en \"Ayuda\" -> "
+"\"Conteníu\"."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -76,11 +80,12 @@ msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Hai dos moos en RedNotebook, el mou __edición__ y el mou __entever__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Calca Entever arriba pa ver la diferencia."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -97,15 +102,14 @@ msgstr "Anotaciones"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Les anotaciones son notes que puen axeitase'n categoríes."
 
 #: ../rednotebook/info.py:109
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
-"Por exemplu puede crear la categoría «Idegues» y amesta-y les idegues de "
-"güei."
+"Por exemplu pues crear la categoría «Idees» y amesta-y les idees de güei."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:121
@@ -117,13 +121,13 @@ msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Todo lo qu'escriba va guardase automáticamente a intervalos regulares y al "
+"Tolo qu'escribas va guardase automáticamente a intervalos regulares y al "
 "colar del programa."
 
 #: ../rednotebook/info.py:124
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
-"Pa evitar la perda de datos tendría de facer davezu una copia de seguridá "
+"Pa evitar la perda de datos tendríes de facer davezu una copia de seguridá "
 "del diariu."
 
 #: ../rednotebook/info.py:125
@@ -135,33 +139,32 @@ msgstr ""
 
 #: ../rednotebook/info.py:126
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "Nel menú «Diariu» tamién s'alcuentra el botón «Esportar»"
+msgstr "Nel menú «Diariu» tamién s'alcuentra'l botón «Esportar»"
 
 #: ../rednotebook/info.py:127
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
-msgstr ""
-"Calque en «Esportar» y esporte'l diariu a testu simple, HTML o Latex."
+msgstr "Calca en «Esportar» y esporta'l diariu a testu simple, HTML o Latex."
 
 #: ../rednotebook/info.py:130
 msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr "Si atopa fallos, unvíeme una nota pa que pueda igualos."
+msgstr "Si atopares fallos, unvíame una nota pa que pueda igualos."
 
 #: ../rednotebook/info.py:131
 msgid "Any feedback is appreciated."
-msgstr "Agradezse cualisquier comentariu."
+msgstr "S'agradez cualesquier comentariu."
 
 #: ../rednotebook/info.py:134
 msgid "Have a nice day!"
-msgstr "¡Que tenga un bon día!"
+msgstr "¡Que pases un bon día!"
 
 #: ../rednotebook/info.py:162
 msgid "Ideas"
-msgstr "Idegues"
+msgstr "Idees"
 
 #: ../rednotebook/info.py:162
 msgid "Use a cool journal app"
-msgstr "Use una prestosa aplicación de diariu"
+msgstr "Usa una prestosa aplicación de diariu"
 
 #: ../rednotebook/info.py:698 ../rednotebook/gui/menu.py:252
 msgid "RedNotebook Documentation"
@@ -302,7 +305,7 @@ msgstr "Amestar una entrada nueva"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "Desaniciar esta entrada"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -850,7 +853,7 @@ msgstr "<b>Seleiciona una categoría nueva o esistente</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Día seleicionáu</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -878,7 +881,7 @@ msgstr "Editar"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Activar edición del testu (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"

@@ -8,31 +8,31 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-08-13 14:20+0000\n"
+"PO-Revision-Date: 2011-03-23 03:05+0000\n"
 "Last-Translator: 英华 <wantinghard@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:49+0000\n"
+"X-Launchpad-Export-Date: 2011-03-23 04:37+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "您好！"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
-msgstr ""
+msgstr "程序添加了一些示例文本来帮助您开始使用，您可以随时擦除它。"
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
-msgstr ""
+msgstr "示例文本和更多的文档可以在“帮助”->“内容”菜单中找到。"
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -75,12 +75,12 @@ msgstr "预览"
 msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "RedNotebook 中有两种模式，__编辑__模式和__预览__模式。"
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "点击上面的预览查看差异。"
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -97,7 +97,7 @@ msgstr "备注"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "备注是可以归类的笔记。"
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -293,7 +293,7 @@ msgstr "添加新条目"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "删除该条目"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -834,7 +834,7 @@ msgstr "<b>选择现有的或新的类别</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>已选的日期y</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -862,7 +862,7 @@ msgstr "编辑"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "允许编辑文本(Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"

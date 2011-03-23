@@ -8,24 +8,27 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-08-13 18:54+0000\n"
-"Last-Translator: Rodrigo Borges <rbm0407@yahoo.com.br>\n"
+"PO-Revision-Date: 2011-03-23 02:42+0000\n"
+"Last-Translator: Paulo Guilherme Pilotti Duarte "
+"<guilhermepilotti@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:49+0000\n"
+"X-Launchpad-Export-Date: 2011-03-23 04:37+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Olá!"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Alguns exemplos de texto foram adicionados para ajudá-lo no início e você "
+"pode removê-los quando quiser."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -33,6 +36,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"O texto de exemplo e mais documentação estão disponíveis em \"Ajuda\" -> "
+"\"Conteúdo\"."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -76,11 +81,12 @@ msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Existem dois modos no RedNotebook, o modo __edição__ e o modo __visualizar__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Clique abaixo em visualizar para ver a diferença."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -98,7 +104,7 @@ msgstr "Anotações"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Anotações e notas podem ser classificadas em categorias."
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -306,7 +312,7 @@ msgstr "Adicionar nova entrada"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "Remover esta entrada"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -855,7 +861,7 @@ msgstr "<b>Selecionar categoria existente ou nova</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Dia selecionado</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -883,7 +889,7 @@ msgstr "Editar"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Habilitar edição de texto (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -983,9 +989,11 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  André Gondim https://launchpad.net/~andregondim\n"
+"  Eugênio F https://launchpad.net/~eugf\n"
 "  Fabio M. P. Bugnon https://launchpad.net/~fbugnon\n"
 "  Fedalto https://launchpad.net/~fedalto\n"
 "  Isaque Alves https://launchpad.net/~isaquealves\n"
+"  Paulo Guilherme Pilotti Duarte https://launchpad.net/~guilhermepilotti\n"
 "  Renzo de Sá https://launchpad.net/~renzo.sa\n"
 "  Rosiney Gomes Pereira https://launchpad.net/~rosiney-gp\n"
 "  Stefan Yohansson da Silva Areeira Pinto https://launchpad.net/~white-owl\n"
