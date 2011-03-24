@@ -8,24 +8,26 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-08-13 17:12+0000\n"
-"Last-Translator: Martin Rotter <skunkic@seznam.cz>\n"
+"PO-Revision-Date: 2011-03-23 09:26+0000\n"
+"Last-Translator: Konki <pavel.konkol@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-24 04:54+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Ahoj!"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Například byl přidán nějaký text, aby vám pomohl začít a když budete chtít, "
+"můžete ho kdykoli smazat."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -33,6 +35,7 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Text příkladu a další dokumentace je dostupná pod \"Pomoc\" -> \"Obsah\"."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -75,12 +78,12 @@ msgstr "Náhled"
 msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "Jsou zde dva módy v RedNotebooku, upravovací_mód a mód_náhledu."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Klikněte na Náhled níže, abyste viděli rozdíl."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -98,7 +101,7 @@ msgstr "Anotace"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Anotace jsou poznámky, které mohou být tříděny do kategorií."
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -305,7 +308,7 @@ msgstr "Vložit nový zápisek"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "Smazat tuto položku"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -850,7 +853,7 @@ msgstr "<b>Vybrat stávající nebo novou kategorii</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Vybrat den</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -878,7 +881,7 @@ msgstr "Úpravy"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Zapnout úpravu textu (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -979,6 +982,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  6n64 https://launchpad.net/~6n64\n"
+"  Konki https://launchpad.net/~pavel-konkol\n"
 "  Kuvaly [LCT] https://launchpad.net/~kuvaly\n"
 "  Martin Rotter https://launchpad.net/~skunkic\n"
 "  Martin Schayna https://launchpad.net/~mschayna\n"

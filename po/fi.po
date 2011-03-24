@@ -8,19 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-01-10 21:25+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"PO-Revision-Date: 2011-03-23 20:42+0000\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-24 04:54+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Hei!"
 
 #: ../rednotebook/info.py:80
 msgid ""
@@ -34,15 +33,17 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Esimerkkiteksti ja lisäohjeita on tarjolla valikossa kohdassa \"Ohje\" -> "
+"\"Sisältö\"."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "Käyttöliittymä on jaettu kolmeen osaan:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:86
 msgid "Left"
-msgstr ""
+msgstr "Vasen"
 
 #: ../rednotebook/info.py:87
 msgid "Navigation with the calendar"
@@ -51,7 +52,7 @@ msgstr ""
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:89
 msgid "Center"
-msgstr ""
+msgstr "Keskiosa"
 
 #: ../rednotebook/info.py:90
 msgid "Text for a day"
@@ -60,7 +61,7 @@ msgstr ""
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:92
 msgid "Right"
-msgstr ""
+msgstr "Oikea"
 
 #: ../rednotebook/info.py:93
 msgid "Annotations to a day"
@@ -70,7 +71,7 @@ msgstr ""
 #. ## Verb
 #: ../rednotebook/info.py:96 tmp/main_window.glade.h:27
 msgid "Preview"
-msgstr ""
+msgstr "Esikatsele"
 
 #: ../rednotebook/info.py:97
 msgid ""
@@ -107,7 +108,7 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:121
 msgid "Save and Export"
-msgstr ""
+msgstr "Tallenna ja vie"
 
 #: ../rednotebook/info.py:122
 msgid ""
@@ -118,11 +119,15 @@ msgstr ""
 #: ../rednotebook/info.py:124
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Välttääksesi tietojesi menetyksen, varmuuskopioi päiväkirjasi tasaisin "
+"väliajoin."
 
 #: ../rednotebook/info.py:125
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"Kohta \"Varmuuskopioi\" \"Päiväkirja\"-valikossa tallentaa kaikki tietosi "
+"zip-tiedostoon."
 
 #: ../rednotebook/info.py:126
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
@@ -139,11 +144,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:131
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Kaikki palaute on tervetullutta."
 
 #: ../rednotebook/info.py:134
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Mukavaa päivänjatkoa!"
 
 #: ../rednotebook/info.py:162
 msgid "Ideas"
@@ -155,71 +160,73 @@ msgstr ""
 
 #: ../rednotebook/info.py:698 ../rednotebook/gui/menu.py:252
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "RedNotebook-dokumentaatio"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr ""
+msgstr "Esittely"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "_Päiväkirja"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "Luo uusi päiväkirja. Vanha tallennetaan."
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "Lataa olemassa oleva päiväkirja. Vanha päiväkirja tallennetaan."
 
 #: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"Tallenna päiväkirja uuteen sijaintiin. Myös vanhat päiväkirjatiedostot "
+"tallennetaan."
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr ""
+msgstr "Tuo"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr ""
+msgstr "Avaa tuontiavustaja"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
 msgid "Export"
-msgstr ""
+msgstr "Vie"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Avaa vientiavustaja"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111
 msgid "Backup"
-msgstr ""
+msgstr "Varmuuskopioi"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "Tallenna kaikki tiedot zip-arkistoon"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
 msgid "Statistics"
-msgstr ""
+msgstr "Tilastot"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "Näytä tilastoja päiväkirjasta"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "Lopeta RedNotebook. Sitä ei pienennetä ilmoitusalueelle."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
-msgstr ""
+msgstr "_Muokkaa"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text edits or category entry deletions"
@@ -231,35 +238,35 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr ""
+msgstr "_Ohje"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Contents"
-msgstr ""
+msgstr "Sisältö"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Avaa RedNotebook-dokumentaatio"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Get Help Online"
-msgstr ""
+msgstr "Hae apua verkosta"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Visit the RedNotebook forum"
-msgstr ""
+msgstr "Vieraile RedNotebook-keskustelualueella"
 
 #: ../rednotebook/gui/menu.py:144
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Käännä RedNotebook"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
+msgstr "Yhdistä Launchpad-sivustoon auttaaksesi RedNotebookin kääntämisessä"
 
 #: ../rednotebook/gui/menu.py:147
 msgid "Report a Problem"
-msgstr ""
+msgstr "Raportoi ongelmasta"
 
 #: ../rednotebook/gui/menu.py:148
 msgid "Fill out a short form about the problem"
@@ -267,12 +274,12 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:275
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "Päiväkirja työpöydällesi"
 
 #: ../rednotebook/gui/categories.py:49 ../rednotebook/util/markup.py:46
 #: tmp/main_window.glade.h:10
 msgid "Categories"
-msgstr ""
+msgstr "Luokat"
 
 #: ../rednotebook/gui/categories.py:124 ../rednotebook/gui/categories.py:163
 msgid "Empty entries are not allowed"
@@ -284,7 +291,7 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:452
 msgid "Change this text"
-msgstr ""
+msgstr "Muuta tätä tekstiä"
 
 #: ../rednotebook/gui/categories.py:456
 msgid "Add a new entry"
@@ -296,7 +303,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "Käynnistä RedNotebook, kun kone käynnistyy"
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
@@ -312,57 +319,58 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:162
 msgid "Help"
-msgstr ""
+msgstr "Ohje"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:185
 msgid "Preview:"
-msgstr ""
+msgstr "Esikatselu:"
 
 #: ../rednotebook/gui/options.py:293
 msgid "Close to system tray"
-msgstr ""
+msgstr "Sulje ilmoitusalueelle"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
+msgstr "Ikkunan sulkeminen pienentää RedNotebookin ilmoitusalueelle"
 
 #: ../rednotebook/gui/options.py:297
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "Alleviivaa väärin kirjoitetut sanat"
 
 #: ../rednotebook/gui/options.py:298
 msgid "Requires gtkspell."
-msgstr ""
+msgstr "Vaatii gtkspellin."
 
 #: ../rednotebook/gui/options.py:299
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
 msgstr ""
+"Tämä sisältyy joko pakettiin python-gtkspell tai python-gnome2-extras."
 
 #: ../rednotebook/gui/options.py:300
 msgid "Check Spelling"
-msgstr ""
+msgstr "Tarkista oikeinkirjoitus"
 
 #: ../rednotebook/gui/options.py:308
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "Tarkista käynnistäessä uudemman version saatavuus"
 
 #: ../rednotebook/gui/options.py:315
 msgid "Check now"
-msgstr ""
+msgstr "Tarkista nyt"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Font Size"
-msgstr ""
+msgstr "Kirjasimen koko"
 
 #: ../rednotebook/gui/options.py:321
 msgid "Date/Time format"
-msgstr ""
+msgstr "Päiväyksen/ajan muoto"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "Jätä huomioimatta pilvistä"
 
 #: ../rednotebook/gui/options.py:323
 msgid "Do not show those comma separated words in any cloud"
@@ -370,19 +378,19 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:324
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "Salli pienet sanat pilvissä"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
+msgstr "Salli neljä tai vähemmän kirjaimia sisältävät sanat tekstipilvessä"
 
 #: ../rednotebook/gui/main_window.py:323
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "Näytä RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:549
 msgid "Select an empty folder for your new journal"
-msgstr ""
+msgstr "Valitse tyhjä kansio uudelle päiväkirjallesi"
 
 #: ../rednotebook/gui/main_window.py:550
 msgid "Journals are saved in a directory, not in a single file."
@@ -390,11 +398,11 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:551
 msgid "The directory name will be the title of the new journal."
-msgstr ""
+msgstr "Kansion nimi tulee olemaan uuden päiväkirjan nimi."
 
 #: ../rednotebook/gui/main_window.py:555
 msgid "Select an existing journal directory"
-msgstr ""
+msgstr "Valitse olemassa oleva päiväkirjakansio"
 
 #: ../rednotebook/gui/main_window.py:557
 msgid "The directory should contain your journal's data files"
@@ -402,42 +410,42 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:559
 msgid "Select an empty folder for the new location of your journal"
-msgstr ""
+msgstr "Valitse tyhjä kansio päiväkirjasi uudeksi sijainniksi"
 
 #: ../rednotebook/gui/main_window.py:561
 msgid "The directory name will be the new title of the journal"
-msgstr ""
+msgstr "Kansion nimi tulee olemaan päiväkirjan uusi nimi"
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
 #: ../rednotebook/gui/main_window.py:583
 msgid "The default journal has been opened"
-msgstr ""
+msgstr "Oletuspäiväkirja on avattu"
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:744
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../rednotebook/gui/main_window.py:747
 msgid "Bold"
-msgstr ""
+msgstr "Lihavoitu"
 
 #: ../rednotebook/gui/main_window.py:748
 msgid "Italic"
-msgstr ""
+msgstr "Kursivoitu"
 
 #: ../rednotebook/gui/main_window.py:749
 msgid "Underline"
-msgstr ""
+msgstr "Alleviivattu"
 
 #: ../rednotebook/gui/main_window.py:750
 msgid "Strikethrough"
-msgstr ""
+msgstr "Yliviivattu"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/main_window.py:766 ../rednotebook/gui/exports.py:381
 msgid "Format"
-msgstr ""
+msgstr "Muotoile"
 
 #: ../rednotebook/gui/main_window.py:767
 msgid "Format the selected text or category entry"
@@ -445,127 +453,127 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:816
 msgid "First Item"
-msgstr ""
+msgstr "Ensimmäinen kohta"
 
 #: ../rednotebook/gui/main_window.py:817
 msgid "Second Item"
-msgstr ""
+msgstr "Toinen kohta"
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Indented Item"
-msgstr ""
+msgstr "Sisennetty kohta"
 
 #: ../rednotebook/gui/main_window.py:819
 msgid "Two blank lines close the list"
-msgstr ""
+msgstr "Kaksi tyhjää riviä lopettaa luettelon"
 
 #: ../rednotebook/gui/main_window.py:823
 msgid "Title text"
-msgstr ""
+msgstr "Otsikkoteksti"
 
 #: ../rednotebook/gui/main_window.py:847
 msgid "Picture"
-msgstr ""
+msgstr "Kuva"
 
 #: ../rednotebook/gui/main_window.py:848
 msgid "Insert an image from the harddisk"
-msgstr ""
+msgstr "Lisää kuva kiintolevyltä"
 
 #: ../rednotebook/gui/main_window.py:850
 msgid "File"
-msgstr ""
+msgstr "Tiedosto"
 
 #: ../rednotebook/gui/main_window.py:851
 msgid "Insert a link to a file"
-msgstr ""
+msgstr "Lisää linkki tiedostoon"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/main_window.py:854
 msgid "_Link"
-msgstr ""
+msgstr "_Linkki"
 
 #: ../rednotebook/gui/main_window.py:855
 msgid "Insert a link to a website"
-msgstr ""
+msgstr "Lisää linkki verkkosivulle"
 
 #: ../rednotebook/gui/main_window.py:857
 msgid "Bullet List"
-msgstr ""
+msgstr "Luettelo"
 
 #: ../rednotebook/gui/main_window.py:859
 msgid "Numbered List"
-msgstr ""
+msgstr "Numeroitu luettelo"
 
 #: ../rednotebook/gui/main_window.py:861
 msgid "Title"
-msgstr ""
+msgstr "Otsikko"
 
 #: ../rednotebook/gui/main_window.py:863
 msgid "Line"
-msgstr ""
+msgstr "Viiva"
 
 #: ../rednotebook/gui/main_window.py:864
 msgid "Insert a separator line"
-msgstr ""
+msgstr "Lisää erotinviiva"
 
 #: ../rednotebook/gui/main_window.py:866
 msgid "Table"
-msgstr ""
+msgstr "Taulukko"
 
 #: ../rednotebook/gui/main_window.py:868
 msgid "Date/Time"
-msgstr ""
+msgstr "Päiväys/aika"
 
 #: ../rednotebook/gui/main_window.py:869
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr ""
+msgstr "Lisää nykyinen päiväys ja aika (muokkaa muotoa asetuksista)"
 
 #: ../rednotebook/gui/main_window.py:871
 msgid "Line Break"
-msgstr ""
+msgstr "Rivinvaihto"
 
 #: ../rednotebook/gui/main_window.py:872
 msgid "Insert a manual line break"
-msgstr ""
+msgstr "Lisää rivinvaihto käsin"
 
 #: ../rednotebook/gui/main_window.py:895
 msgid "Insert"
-msgstr ""
+msgstr "Lisää"
 
 #: ../rednotebook/gui/main_window.py:899
 msgid "Insert images, files, links and other content"
-msgstr ""
+msgstr "Lisää kuvia, tiedostoja, linkkejä ja muuta sisältöä"
 
 #: ../rednotebook/gui/main_window.py:980
 msgid "No link location has been entered"
-msgstr ""
+msgstr "Linkin sijaintia ei ole annettu"
 
 #: ../rednotebook/gui/main_window.py:1140
 msgid "Search ..."
-msgstr ""
+msgstr "Etsi..."
 
 #: ../rednotebook/gui/main_window.py:1227 ../rednotebook/gui/clouds.py:137
 msgid "filter, these, comma, separated, words"
-msgstr ""
+msgstr "suodata, nämä, pilkuin, erotetut, sanat"
 
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/main_window.py:1233 ../rednotebook/gui/clouds.py:142
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "mtv, roskaposti, työ, työ, peli"
 
 #: ../rednotebook/gui/main_window.py:1290
 msgid "Hide selected words"
-msgstr ""
+msgstr "Piilota valitut sanat"
 
 #: ../rednotebook/gui/main_window.py:1350
 msgid "Date"
-msgstr ""
+msgstr "Päiväys"
 
 #: ../rednotebook/gui/main_window.py:1351
 #: ../rednotebook/gui/main_window.py:1392
 #: ../rednotebook/gui/main_window.py:1400 tmp/main_window.glade.h:42
 msgid "Text"
-msgstr ""
+msgstr "Teksti"
 
 #: ../rednotebook/gui/main_window.py:1396
 msgid "Entry"
@@ -574,55 +582,55 @@ msgstr ""
 #: ../rednotebook/gui/clouds.py:230
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Piilota \"%s\" pilvistä"
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:382
 msgid "Export all days"
-msgstr ""
+msgstr "Vie kaikki päivät"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export only the days in the selected time range"
-msgstr ""
+msgstr "Vie vain valitun aikavälin päivät"
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
-msgstr ""
+msgstr "Mistä:"
 
 #: ../rednotebook/gui/exports.py:61
 msgid "To:"
-msgstr ""
+msgstr "Mihin:"
 
 #: ../rednotebook/gui/exports.py:120
 msgid "Export texts"
-msgstr ""
+msgstr "Vie tekstit"
 
 #: ../rednotebook/gui/exports.py:121
 msgid "Export all categories"
-msgstr ""
+msgstr "Vie kaikki luokat"
 
 #: ../rednotebook/gui/exports.py:122
 msgid "Do not export categories"
-msgstr ""
+msgstr "Älä vie luokkia"
 
 #: ../rednotebook/gui/exports.py:124
 msgid "Export only the selected categories"
-msgstr ""
+msgstr "Vie vain valitut luokat"
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Available Categories"
-msgstr ""
+msgstr "Saatavilla olevat luokat"
 
 #: ../rednotebook/gui/exports.py:142
 msgid "Selected Categories"
-msgstr ""
+msgstr "Valitut luokat"
 
 #: ../rednotebook/gui/exports.py:148
 msgid "Select"
-msgstr ""
+msgstr "Valitse"
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Unselect"
-msgstr ""
+msgstr "Poista valinta"
 
 #: ../rednotebook/gui/exports.py:253
 msgid ""
@@ -631,53 +639,54 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:277
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "Olet valinnut seuraavat asetukset:"
 
 #: ../rednotebook/gui/exports.py:302
 msgid "Export Assistant"
-msgstr ""
+msgstr "Vientiavustaja"
 
 #: ../rednotebook/gui/exports.py:304
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "Tervetuloa vientiavustajaan."
 
 #: ../rednotebook/gui/exports.py:305
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
+"Tämä avustaja auttaa sinua viemään päiväkirjasi erilaisiin tiedostomuotoihin."
 
 #: ../rednotebook/gui/exports.py:306
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
-msgstr ""
+msgstr "Voit valita päivät, jotka haluat viedä ja minne tuotos tallennetaan."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "Select Export Format"
-msgstr ""
+msgstr "Valitse tiedostomuoto"
 
 #: ../rednotebook/gui/exports.py:321
 msgid "Select Date Range"
-msgstr ""
+msgstr "Valitse aikaväli"
 
 #: ../rednotebook/gui/exports.py:326
 msgid "Select Contents"
-msgstr ""
+msgstr "Valitse sisältö"
 
 #: ../rednotebook/gui/exports.py:332
 msgid "Select Export Path"
-msgstr ""
+msgstr "Valitse viennin polku"
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
-msgstr ""
+msgstr "Yhteenveto"
 
 #: ../rednotebook/gui/exports.py:385
 msgid "Start date"
-msgstr ""
+msgstr "Aloituspäivä"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "End date"
-msgstr ""
+msgstr "Päättymispäivä"
 
 #: ../rednotebook/gui/exports.py:388
 msgid "Export text"
@@ -685,19 +694,19 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Selected categories"
-msgstr ""
+msgstr "Valitut luokat"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Export path"
-msgstr ""
+msgstr "Viennin polku"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: ../rednotebook/gui/exports.py:440
 #, python-format
@@ -706,54 +715,54 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:536
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "vaatii ptwebkitgtk:n"
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
-msgstr ""
+msgstr "Valitse mallipohjan nimi"
 
 #: ../rednotebook/templates.py:289 ../rednotebook/templates.py:298
 msgid "This Weekday's Template"
-msgstr ""
+msgstr "Tämän viikonpäivän mallipohja"
 
 #: ../rednotebook/templates.py:292
 msgid "Edit Template"
-msgstr ""
+msgstr "Muokkaa mallipohjaa"
 
 #: ../rednotebook/templates.py:295
 msgid "Insert Template"
-msgstr ""
+msgstr "Lisää mallipohja"
 
 #: ../rednotebook/templates.py:301
 msgid "Create New Template"
-msgstr ""
+msgstr "Luo uusi mallipohja"
 
 #: ../rednotebook/templates.py:305
 msgid "Open Template Directory"
-msgstr ""
+msgstr "Avaa mallipohjakansio"
 
 #: ../rednotebook/util/utils.py:249
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "Käytössäsi on versio <b<%s</b>."
 
 #: ../rednotebook/util/utils.py:250
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "Viimeisin versio on <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:251
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "Haluatko vierailla RedNotebookin verkkosivustolla?"
 
 #: ../rednotebook/util/utils.py:258
 msgid "Do not ask again"
-msgstr ""
+msgstr "Älä kysy uudelleen"
 
 #: ../rednotebook/util/statistics.py:81 ../rednotebook/util/statistics.py:94
 #: tmp/main_window.glade.h:44
 msgid "Words"
-msgstr ""
+msgstr "Sanoja"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Distinct Words"
@@ -765,7 +774,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:84 ../rednotebook/util/statistics.py:96
 msgid "Letters"
-msgstr ""
+msgstr "Kirjaimia"
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Days between first and last Entry"
@@ -773,7 +782,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:86
 msgid "Average number of Words"
-msgstr ""
+msgstr "Sanojen keskimääräinen lukumäärä"
 
 #: ../rednotebook/util/statistics.py:87
 msgid "Percentage of edited Days"
@@ -781,7 +790,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:95
 msgid "Lines"
-msgstr ""
+msgstr "Rivejä"
 
 #: ../rednotebook/journal.py:380
 #, python-format
@@ -790,15 +799,15 @@ msgstr ""
 
 #: ../rednotebook/journal.py:383
 msgid "Nothing to save"
-msgstr ""
+msgstr "Ei tallennettavaa"
 
 #: ../rednotebook/journal.py:391
 msgid "Configuration could not be saved. Please check your permissions"
-msgstr ""
+msgstr "Asetuksien tallennus ei onnistunut. Tarkista käyttöoikeutesi."
 
 #: ../rednotebook/journal.py:422
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "Valittu kansio ei ole tyhjä."
 
 #: ../rednotebook/journal.py:423
 msgid ""
@@ -808,32 +817,32 @@ msgstr ""
 
 #: ../rednotebook/journal.py:426
 msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
+msgstr "Valittu kansio on tyhjä. Uusi päiväkirja on luotu."
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Yleiset</b>"
 
 #: tmp/main_window.glade.h:3
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr ""
+msgstr "<b>Linkin sijainti (esim. http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
-msgstr ""
+msgstr "<b>Linkin nimi (valinnainen)</b>"
 
 #: tmp/main_window.glade.h:5
 msgid "<b>Overall</b>"
-msgstr ""
+msgstr "<b>Yhteensä</b>"
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgstr "<b>Valitse olemassa oleva tai uusi luokka</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Valittu päivä</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -845,44 +854,44 @@ msgstr ""
 
 #: tmp/main_window.glade.h:11
 msgid "Category"
-msgstr ""
+msgstr "Luokka"
 
 #: tmp/main_window.glade.h:12
 msgid "Clouds"
-msgstr ""
+msgstr "Pilvet"
 
 #: tmp/main_window.glade.h:13
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: tmp/main_window.glade.h:14
 msgid "Edit"
-msgstr ""
+msgstr "Muokkaa"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Siirry muokkaustilaan (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
-msgstr ""
+msgstr "Poistu tallentamatta"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:18
 msgid "General"
-msgstr ""
+msgstr "Yleiset"
 
 #: tmp/main_window.glade.h:19
 msgid "Go to next day (Ctrl+PageUp)"
-msgstr ""
+msgstr "Siirry seuraavaan päivään (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to previous day (Ctrl+PageDown)"
-msgstr ""
+msgstr "Siirry edelliseen päivään (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:21
 msgid "Insert Link"
-msgstr ""
+msgstr "Lisää linkki"
 
 #: tmp/main_window.glade.h:22
 msgid ""
@@ -891,7 +900,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:23
 msgid "Jump to today"
-msgstr ""
+msgstr "Siirry kuluvaan päivään"
 
 #: tmp/main_window.glade.h:24
 msgid "New entry"
@@ -899,35 +908,35 @@ msgstr ""
 
 #: tmp/main_window.glade.h:25
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: tmp/main_window.glade.h:28
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: tmp/main_window.glade.h:29
 msgid "Search in entries, categories and tags"
-msgstr ""
+msgstr "Etsi kohteista, luokista ja tunnisteista"
 
 #: tmp/main_window.glade.h:30
 msgid "Select a cloud"
-msgstr ""
+msgstr "Valitse pilvi"
 
 #: tmp/main_window.glade.h:31
 msgid "Select a directory"
-msgstr ""
+msgstr "Valitse kansio"
 
 #: tmp/main_window.glade.h:32
 msgid "Select a file"
-msgstr ""
+msgstr "Valitse tiedosto"
 
 #: tmp/main_window.glade.h:33
 msgid "Select a picture"
-msgstr ""
+msgstr "Valitse kuva"
 
 #: tmp/main_window.glade.h:34
 msgid "Select backup filename"
-msgstr ""
+msgstr "Valitse varmuuskopiotiedoston nimi"
 
 #: tmp/main_window.glade.h:35
 msgid "Select where to search"
@@ -935,24 +944,24 @@ msgstr ""
 
 #: tmp/main_window.glade.h:36
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr ""
+msgstr "Näytä muotoiltu esikatselu tekstistä (Ctrl+P)"
 
 #. ## This stands for the verb in "Tag this day"
 #: tmp/main_window.glade.h:39
 msgid "Tag"
-msgstr ""
+msgstr "Tunniste"
 
 #: tmp/main_window.glade.h:40
 msgid "Tags"
-msgstr ""
+msgstr "Tunnisteet"
 
 #: tmp/main_window.glade.h:41
 msgid "Template"
-msgstr ""
+msgstr "Mallipohja"
 
 #: tmp/main_window.glade.h:43
 msgid "Today"
-msgstr ""
+msgstr "Tänään"
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:46
@@ -960,4 +969,5 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Erkka Juhaninmäki https://launchpad.net/~erkkaj\n"
+"  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
 "  Juhana Uuttu https://launchpad.net/~rexroom"

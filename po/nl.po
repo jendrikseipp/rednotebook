@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-12-18 09:46+0000\n"
+"PO-Revision-Date: 2011-03-23 07:59+0000\n"
 "Last-Translator: Redmar <redmar@ubuntu-nl.org>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-24 04:54+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/gui/main_window.py:323
@@ -23,13 +23,15 @@ msgstr "RedNotebook weergeven"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Hallo!"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Er is wat voorbeeldtekst toegevoegd zodat u makkelijker kunt beginnen, u "
+"kunt deze tekst elk moment verwijderen."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -37,6 +39,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"De voorbeeldtekst en andere documentatie is te vinden bij \"Hulp\" -> "
+"\"Inhoud\"."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -79,12 +83,12 @@ msgstr "Voorbeeld weergeven"
 msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "RedNotebook heeft twee modi, __bewerken__ en __voorbeeld__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Klik op Voorbeeld hier boven om het verschil te zien."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -102,7 +106,7 @@ msgstr "Aantekeningen"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Annotaties zijn notities die in categorieën ingedeeld kunnen worden."
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -314,7 +318,7 @@ msgstr "Voeg een nieuw item toe"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "Verwijder dit item"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -859,7 +863,7 @@ msgstr "<b>Kies bestaande of nieuwe categorie</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Geselecteerde dag</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -887,7 +891,7 @@ msgstr "Bewerken"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Activeer bewerken van tekst (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"

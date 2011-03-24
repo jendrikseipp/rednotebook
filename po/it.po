@@ -8,24 +8,26 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-08-13 13:42+0000\n"
+"PO-Revision-Date: 2011-03-23 10:26+0000\n"
 "Last-Translator: Paolo Sammicheli <paolo@sammicheli.net>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-24 04:54+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Salve!"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Per velocizzare l'apprendimento sono stati aggiunti alcuni esempi che "
+"possono essere cancellati in qualsiasi momento."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -33,6 +35,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Il testo degli esempi ed ulteriore documentazione è disponibile nel menù "
+"Aiuto -> Contenuti."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -76,11 +80,13 @@ msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Ci sono due modalità in RedNotebook, la modalità __modifica__ e la modalità "
+"__anteprima__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Fare clic su Anteprima per vedere le differenze."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -98,7 +104,7 @@ msgstr "Annotazioni"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Le annotazioni sono note che possono essere ordinate in categorie."
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -244,7 +250,7 @@ msgstr "Ripristina modifiche a testo ed eliminazioni di voci"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr "_Aiuto"
+msgstr "A_iuto"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Contents"
@@ -293,7 +299,7 @@ msgstr "Non sono consentite voci vuote"
 
 #: ../rednotebook/gui/categories.py:155
 msgid "Empty category names are not allowed"
-msgstr "Non sono consentite nomi categorie vuoti"
+msgstr "Non sono consentiti nomi di categorie vuoti"
 
 #: ../rednotebook/gui/categories.py:452
 msgid "Change this text"
@@ -305,7 +311,7 @@ msgstr "Aggiungi una voce"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "Elimina questa voce"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -338,7 +344,8 @@ msgstr "Icona nell'area di notifica"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Chiudendo la finestra RedNotebook sarà nell'area di notifica"
+msgstr ""
+"Chiudendo la finestra RedNotebook sarà collocato nell'area di notifica"
 
 #: ../rednotebook/gui/options.py:297
 msgid "Underline misspelled words"
@@ -528,7 +535,7 @@ msgstr "Tabella"
 
 #: ../rednotebook/gui/main_window.py:868
 msgid "Date/Time"
-msgstr "_Data/ora"
+msgstr "Data/ora"
 
 #: ../rednotebook/gui/main_window.py:869
 msgid "Insert the current date and time (edit format in preferences)"
@@ -853,7 +860,7 @@ msgstr "<b>Selezionare esistenti o nuova categoria</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Giorno selezionato</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -881,7 +888,7 @@ msgstr "Modifica"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Abilita la modifica del testo (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -908,8 +915,8 @@ msgstr "Inserisci collegamento"
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Inserire il template di questo giorno della settimana. Clicca la freccia "
-"sulla destra per ulteriori opzioni"
+"Inserire il modello di questo giorno della settimana. Fare clic nella "
+"freccia sulla destra per ulteriori opzioni"
 
 #: tmp/main_window.glade.h:23
 msgid "Jump to today"
@@ -933,11 +940,11 @@ msgstr "Cerca in voci, categorie ed etichette"
 
 #: tmp/main_window.glade.h:30
 msgid "Select a cloud"
-msgstr "Seleziona una nuvola"
+msgstr "Selezionare una nuvola"
 
 #: tmp/main_window.glade.h:31
 msgid "Select a directory"
-msgstr "Selezionare una cartella"
+msgstr "Selezionare una directory"
 
 #: tmp/main_window.glade.h:32
 msgid "Select a file"

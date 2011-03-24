@@ -8,24 +8,26 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-08-13 11:20+0000\n"
-"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
+"PO-Revision-Date: 2011-03-23 12:37+0000\n"
+"Last-Translator: tim♡mint <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-24 04:54+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Hallo!"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Es wurden einige Beispiele als Starthilfe hinzugefügt, die aber jederzeit "
+"gelöscht werden können."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -33,6 +35,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Der Beispieltext und mehr Dokumentation ist unter 'Hilfe' -> 'Inhalte' "
+"verfügbar."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -80,7 +84,7 @@ msgstr ""
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Drücke auf Vorschau oben um den Unterschied zu sehen."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -310,7 +314,7 @@ msgstr "Neuer Eintrag"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "Diesen Eintrag löschen"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -867,7 +871,7 @@ msgstr "<b>Wähle eine vorhandene oder neue Kategorie</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Gewählter Tag</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -895,7 +899,7 @@ msgstr "Bearbeiten"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Textbearbeitung aktivieren (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1001,7 +1005,8 @@ msgstr ""
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Tobias Baldauf https://launchpad.net/~technopagan\n"
 "  rubinstein https://launchpad.net/~rubinstein\n"
-"  samy https://launchpad.net/~samuel2"
+"  samy https://launchpad.net/~samuel2\n"
+"  tim♡mint https://launchpad.net/~tim.h.s"
 
 #~ msgid "<b>Journals are saved in a directory, not in a single file.\n"
 #~ msgstr ""

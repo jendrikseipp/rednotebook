@@ -8,24 +8,26 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2010-08-13 17:46+0000\n"
+"PO-Revision-Date: 2011-03-23 17:41+0000\n"
 "Last-Translator: Nicolas Delvaux <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-14 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-03-24 04:54+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Hello!"
-msgstr ""
+msgstr "Bonjour !"
 
 #: ../rednotebook/info.py:80
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Un texte d'exemple a été ajouté pour vous aider à débuter ; vous pouvez "
+"l'effacer à tout moment."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:83
@@ -33,6 +35,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Vous pouvez accéder au texte d'exemple et à davantage de documentation via "
+"le menu « Aide -> Contenu »."
 
 #: ../rednotebook/info.py:84
 msgid "The interface is divided into three parts:"
@@ -76,11 +80,13 @@ msgid ""
 "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Il existe deux modes dans RedNotebook : le mode __édition__ et le mode "
+"__aperçu__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Cliquez sur Aperçu (ci-dessus) pour voir la différence."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -100,6 +106,7 @@ msgstr "Annotations"
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
 msgstr ""
+"Les annotations sont des notes qui peuvent être classées en catégories."
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -311,7 +318,7 @@ msgstr "Ajouter une nouvelle entrée"
 
 #: ../rednotebook/gui/categories.py:460
 msgid "Delete this entry"
-msgstr ""
+msgstr "Supprimer cette entrée"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -865,7 +872,7 @@ msgstr "<b>Sélectionner une catégorie nouvelle ou existante</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Jour sélectionné</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -893,7 +900,7 @@ msgstr "Édition"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Activer l'éditeur de texte (Ctrl+p)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
