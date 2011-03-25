@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-13 02:52+0100\n"
-"PO-Revision-Date: 2011-03-23 15:41+0000\n"
+"PO-Revision-Date: 2011-03-24 17:00+0000\n"
 "Last-Translator: Angel Spy <melissadilara@yahoo.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-24 04:54+0000\n"
+"X-Launchpad-Export-Date: 2011-03-25 04:42+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
@@ -84,7 +84,7 @@ msgstr ""
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Farkı görmek için yukarıdaki Öngörünüme tıklayın."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -638,7 +638,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:277
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "Şu ayarları seçtiniz:"
 
 #: ../rednotebook/gui/exports.py:302
 msgid "Export Assistant"
@@ -664,11 +664,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:321
 msgid "Select Date Range"
-msgstr ""
+msgstr "Tarih Aralığını Seç"
 
 #: ../rednotebook/gui/exports.py:326
 msgid "Select Contents"
-msgstr ""
+msgstr "İçerikleri Seç"
 
 #: ../rednotebook/gui/exports.py:332
 msgid "Select Export Path"
@@ -676,15 +676,15 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Summary"
-msgstr ""
+msgstr "Özet"
 
 #: ../rednotebook/gui/exports.py:385
 msgid "Start date"
-msgstr ""
+msgstr "Başlangıç tarihi"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "End date"
-msgstr ""
+msgstr "Bitiş tarihi"
 
 #: ../rednotebook/gui/exports.py:388
 msgid "Export text"
@@ -692,7 +692,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Selected categories"
-msgstr ""
+msgstr "Seçilen kategoriler"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Export path"
@@ -700,11 +700,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #: ../rednotebook/gui/exports.py:440
 #, python-format
@@ -713,7 +713,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:536
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "pywebkitgtk gerektiriyor"
 
 #: ../rednotebook/templates.py:120
 msgid "Choose Template Name"
@@ -742,16 +742,16 @@ msgstr "Şablon Dizinini Aç"
 #: ../rednotebook/util/utils.py:249
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "Sizde ki sürüm <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:250
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "Son sürüm <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:251
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "RedNotebook anasayfasını ziyaret etmek ister misin?"
 
 #: ../rednotebook/util/utils.py:258
 msgid "Do not ask again"
@@ -815,7 +815,7 @@ msgstr ""
 
 #: ../rednotebook/journal.py:426
 msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
+msgstr "Seçilen klasör boş. Yeni günlük yaratıldı."
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
@@ -836,11 +836,11 @@ msgstr ""
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgstr "<b>Varolan veya yeni Kategori seç</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Seçilen Gün</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -868,7 +868,7 @@ msgstr "Düzenle"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Metin düzenlemeyi etkinleştir (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -889,7 +889,7 @@ msgstr "Önceki güne git (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:21
 msgid "Insert Link"
-msgstr ""
+msgstr "Bağlantı Ekle"
 
 #: tmp/main_window.glade.h:22
 msgid ""
@@ -926,7 +926,7 @@ msgstr "Dizin seç"
 
 #: tmp/main_window.glade.h:32
 msgid "Select a file"
-msgstr "Dosya Seç"
+msgstr "Dosya seç"
 
 #: tmp/main_window.glade.h:33
 msgid "Select a picture"
