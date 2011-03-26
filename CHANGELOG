@@ -1,10 +1,11 @@
 ==== RedNotebook Changelog ====
 
-== 1.1.4 (11-03-14) ===
+== 1.1.4 (11-03-26) ===
 * Add "phone call" and "personal" templates
 * Fix: Application crashes while resetting last position (LP:728466)
 * Fix: Editing a category entry that contains a \\ removes the new line symbol (LP:719830)
 * Fix: Introductory text is not translated
+* Fix: Properly convert dates to unicode
 * When a format (bold, etc.) is applied with no text selected, add whitespace, not descriptive text
 * Add a tooltip for the edit button
 * Improve introductory text
