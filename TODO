@@ -7,6 +7,9 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.1.5
+X Mention "--record installed-files" setup.py's option for remembering installed files in README
+
 1.2
 O Set title for exports
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -67,7 +70,6 @@ O Remove keepnote and htmltextview sources (make webkit mandatory first)
 O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 O Create mono icon for panel?
 O Regularly check for new webkit version that supports chinese fonts
-O Check distutils --record option for remembering installed files
 
 
 1.3

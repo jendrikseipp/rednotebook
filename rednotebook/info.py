@@ -108,6 +108,8 @@ annotations = _('Annotations')
 ann2 = _('Annotations are notes that can be sorted into categories.')
 ann3 = _('''For example you could create the category "Ideas" \
 and then add today's ideas to it.''')
+ann4 = _('If you find this confusing you can simply hide the annotations for '
+         'now by moving the separator to the far right.')
 ann_par = ' '.join([ann2, ann3])
 
 templates = ('Templates')
