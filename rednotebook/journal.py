@@ -449,7 +449,7 @@ class Journal:
 
         # Notebook is only on page 1 here, if we are opening a journal the second time
         old_page = self.frame.search_notebook.get_current_page()
-        new_page = self.config.read('cloudTabActive', 1)
+        new_page = self.config.read('cloudTabActive', 0)
         # 0 -> 0: search is cleared later
         # 0 -> 1: change to cloud, update automatically
         # 1 -> 0: change to search
