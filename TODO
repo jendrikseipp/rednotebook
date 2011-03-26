@@ -67,7 +67,7 @@ O Remove keepnote and htmltextview sources (make webkit mandatory first)
 O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 O Create mono icon for panel?
 O Regularly check for new webkit version that supports chinese fonts
-O Check distutils --report option for remembering installed files
+O Check distutils --record option for remembering installed files
 
 
 1.3
