@@ -421,13 +421,9 @@ class ExportAssistant(Assistant):
 
         markup_string = ''.join(markup_strings_for_each_day)
 
-        #headers = ['RedNotebook', '', '']
-        headers = ['', '', '']
-
         options = {'toc': 0}
 
-        return markup.convert(markup_string, format, headers=headers,
-                                options=options)
+        return markup.convert(markup_string, format, options=options)
 
     def export(self):
         format = self.exporter.FORMAT
