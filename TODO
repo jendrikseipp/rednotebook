@@ -8,10 +8,10 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.1.5
+X Remove "RedNotebook" title in exports
 X Mention "--record installed-files" setup.py's option for remembering installed files in README
 
 1.2
-O Set title for exports
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists

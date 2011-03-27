@@ -421,7 +421,8 @@ class ExportAssistant(Assistant):
 
         markup_string = ''.join(markup_strings_for_each_day)
 
-        headers = ['RedNotebook', '', '']
+        #headers = ['RedNotebook', '', '']
+        headers = ['', '', '']
 
         options = {'toc': 0}
 
