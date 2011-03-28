@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-28 13:15+0200\n"
+"POT-Creation-Date: 2011-03-28 14:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,190 +38,190 @@ msgid "Work"
 msgstr ""
 
 #: ../rednotebook/info.py:84
-msgid "Documentation"
+msgid "Free time"
 msgstr ""
 
 #: ../rednotebook/info.py:85
-msgid "Todo"
+msgid "Documentation"
 msgstr ""
 
 #: ../rednotebook/info.py:86
-msgid "Done"
+msgid "Todo"
 msgstr ""
 
 #: ../rednotebook/info.py:87
-msgid "Remember the milk"
+msgid "Done"
 msgstr ""
 
 #: ../rednotebook/info.py:88
+msgid "Remember the milk"
+msgstr ""
+
+#: ../rednotebook/info.py:89
 msgid "Wash the dishes"
 msgstr ""
 
 #: ../rednotebook/info.py:90
+msgid "Check mail"
+msgstr ""
+
+#: ../rednotebook/info.py:92
 msgid "Hello!"
 msgstr ""
 
-#: ../rednotebook/info.py:91
+#: ../rednotebook/info.py:93
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:94
+#: ../rednotebook/info.py:96
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
 
-#: ../rednotebook/info.py:95
+#: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
 msgstr ""
 
 #. ## Translators: The location "left"
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:99
 msgid "Left"
 msgstr ""
 
-#: ../rednotebook/info.py:98
+#: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
 msgstr ""
 
 #. ## Translators: The location "center"
-#: ../rednotebook/info.py:100
+#: ../rednotebook/info.py:102
 msgid "Center"
 msgstr ""
 
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:103
 msgid "Text for a day"
 msgstr ""
 
 #. ## Translators: The location "right"
-#: ../rednotebook/info.py:103
+#: ../rednotebook/info.py:105
 msgid "Right"
 msgstr ""
 
-#: ../rednotebook/info.py:104
+#: ../rednotebook/info.py:106
 msgid "Annotations to a day"
 msgstr ""
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:107 tmp/main_window.glade.h:27
+#: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
 msgid "Preview"
 msgstr ""
 
-#: ../rednotebook/info.py:108
+#: ../rednotebook/info.py:110
 msgid ""
-"There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
+"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:111
+#: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
 msgstr ""
 
-#: ../rednotebook/info.py:114
+#: ../rednotebook/info.py:116
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
 
-#: ../rednotebook/info.py:118
+#: ../rednotebook/info.py:120
 msgid "Annotations"
 msgstr ""
 
-#: ../rednotebook/info.py:119
+#: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
 msgstr ""
 
-#: ../rednotebook/info.py:120
+#: ../rednotebook/info.py:122
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
 
-#: ../rednotebook/info.py:122
+#: ../rednotebook/info.py:124
 msgid ""
-"If you find this confusing you can simply hide the annotations for now by "
-"moving the separator to the far right."
+"If you find annotations confusing you can simply hide them for now by moving "
+"the separator to the far right."
 msgstr ""
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:136
 msgid "Save and Export"
 msgstr ""
 
-#: ../rednotebook/info.py:135
+#: ../rednotebook/info.py:137
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
 
-#: ../rednotebook/info.py:137
+#: ../rednotebook/info.py:139
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 
-#: ../rednotebook/info.py:138
+#: ../rednotebook/info.py:140
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 
-#: ../rednotebook/info.py:139
+#: ../rednotebook/info.py:141
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr ""
 
-#: ../rednotebook/info.py:140
+#: ../rednotebook/info.py:142
 msgid "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
 
-#: ../rednotebook/info.py:143
+#: ../rednotebook/info.py:145
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 
-#: ../rednotebook/info.py:144
+#: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
 msgstr ""
 
-#: ../rednotebook/info.py:147
+#: ../rednotebook/info.py:149
 msgid "Have a nice day!"
 msgstr ""
 
-#: ../rednotebook/info.py:174
+#: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
 msgstr ""
 
-#: ../rednotebook/info.py:175
+#: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
 msgstr ""
 
-#: ../rednotebook/info.py:176
+#: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
 msgstr ""
 
-#: ../rednotebook/info.py:215
+#: ../rednotebook/info.py:217
 msgid "Went to see the pope"
 msgstr ""
 
-#: ../rednotebook/info.py:216
+#: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"
 msgstr ""
 
-#: ../rednotebook/info.py:217
+#: ../rednotebook/info.py:219
 msgid "Monty Python and the Holy Grail"
 msgstr ""
 
-#: ../rednotebook/info.py:280
-msgid "Take a break"
-msgstr ""
-
-#: ../rednotebook/info.py:281
-msgid "--Check mail--"
-msgstr ""
-
-#: ../rednotebook/info.py:709 ../rednotebook/gui/menu.py:250
+#: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
 msgstr ""
 
@@ -775,27 +775,99 @@ msgstr ""
 msgid "requires pywebkitgtk"
 msgstr ""
 
-#: ../rednotebook/templates.py:204
+#: ../rednotebook/templates.py:93
+msgid ""
+"=== Meeting ===\n"
+"\n"
+"Purpose, date, and place\n"
+"\n"
+"**Present:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Discussion, Decisions, Assignments:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:117
+msgid ""
+"=== Journey ===\n"
+"**Date:**\n"
+"\n"
+"**Location:**\n"
+"\n"
+"**Participants:**\n"
+"\n"
+"**The trip:**\n"
+"First we went to xxxxx then we got to yyyyy ...\n"
+"\n"
+"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:131
+msgid ""
+"==================================\n"
+"=== Phone Call ===\n"
+"- **Person:**\n"
+"- **Time:**\n"
+"- **Topic:**\n"
+"- **Outcome and Follow up:**\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:141
+msgid ""
+"=====================================\n"
+"=== Personal ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**How was the Day?**\n"
+"\n"
+"\n"
+"========================\n"
+"**What needs to be changed?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:199
 msgid "Choose Template Name"
 msgstr ""
 
-#: ../rednotebook/templates.py:356 ../rednotebook/templates.py:365
+#: ../rednotebook/templates.py:351 ../rednotebook/templates.py:360
 msgid "This Weekday's Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:359
+#: ../rednotebook/templates.py:354
 msgid "Edit Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:362
+#: ../rednotebook/templates.py:357
 msgid "Insert Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:368
+#: ../rednotebook/templates.py:363
 msgid "Create New Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:372
+#: ../rednotebook/templates.py:367
 msgid "Open Template Directory"
 msgstr ""
 
@@ -850,30 +922,30 @@ msgstr ""
 msgid "Lines"
 msgstr ""
 
-#: ../rednotebook/journal.py:380
+#: ../rednotebook/journal.py:382
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:383
+#: ../rednotebook/journal.py:385
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:391
+#: ../rednotebook/journal.py:393
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr ""
 
-#: ../rednotebook/journal.py:422
+#: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
 msgstr ""
 
-#: ../rednotebook/journal.py:423
+#: ../rednotebook/journal.py:425
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:426
+#: ../rednotebook/journal.py:428
 msgid "The selected folder is empty. A new journal has been created."
 msgstr ""
 
