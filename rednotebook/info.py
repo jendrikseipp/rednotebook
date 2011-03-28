@@ -159,11 +159,22 @@ completeWelcomeText = '''\
 
 %(goodbye_par)s''' % globals()
 
+ideas = _('Ideas')
+tags = _('Tags')
+cool_stuff = _('Cool Stuff')
+movies = _('Movies')
+work = _('Work')
+documentation = _('Documentation')
+todo = _('Todo')
+done = _('Done')
+rtm = _('Remember the milk')
+dishes = _('Wash the dishes')
+
 welcome_day = {'text': completeWelcomeText,
-u'Cool Stuff': {u'Ate **two** cans of spam': None},
-_(u'Ideas'): {_(u'Use a cool journal app'): None},
-u'Movies': {u"Monty Python's Life of Brian": None},
-u'Tags': {u'Work': None, u'Documentation': None},
+cool_stuff: {_('Ate **two** cans of spam'): None},
+ideas: {_('Use a cool journal app'): None},
+movies: {_("Monty Python's Life of Brian"): None},
+tags: {work: None, documentation: None},
 }
 
 example_day1 = {
@@ -171,43 +182,39 @@ example_day1 = {
 === Annotations in Categories ===
 %(ann_par)s
 
-- Ideas
-  - Invent Anti-Hangover-Machine
-- Movies
-  - Monty Python and the Holy Grail
-
+Have a look at the right to see example categories with example entries.
 
 The name "Categories" is a little bit confusing. It does not mean that a day is \
 put into a category, but that there is additional content on the right, \
 sorted into categories. A category will contain several notes distributed over various days.
 
 For example you could want to remember all the movies you watch. \
-Each time you watch a new one, add the category "Movies" with the \
+Each time you watch a new one, add the category "%(movies)s" with the \
 entry "Name of the movie" to the day.
 
 I’ll give you another example: I like to maintain a list of cool things I have done. \
 So if I did a cool thing on some day, I navigate to that day and add the category \
-"Cool Stuff" with the entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
-When I have done more cool things on many days, they all have a category "Cool Stuff" \
+"%(cool_stuff)s" with the entry "Visit the pope" (Sadly I haven’t done that, yet ;-) ). \
+When I have done more cool things on many days, they all have a category "%(cool_stuff)s" \
 and many different entries. It is possible to export only that category and \
 get a list of the cool stuff that happened to me with the respective dates.
 
-Additionally you can select the "Cool Stuff" category in the word cloud window \
+Additionally you can select the "%(cool_stuff)s" category in the word cloud window \
 to get a list of all the cool things.
 
 Maybe a good thing to know is the following:
-"Tags" is a category, the tagnames are entries in the category "Tags", \
+"%(tags)s" is a category, the tagnames are entries in the category "%(tags)s", \
 distributed over various days.
-Similarly you can have a category "Movies" and add it together with \
+Similarly you can have a category "%(movies)s" and add it together with \
 the movie's name to every day on which you see a new film.
 
 Category entries can have all of the formatting that the main text supports, \
 so e.g. you can add bold text, links or images.''' % globals(),
-u'Cool Stuff': {u'Went to see the pope': None},
-u'Ideas': {u'Invent Anti-Hangover-Machine': None},
-u'Movies': {u'Monty Python and the Holy Grail': None},
-u'Tags': {u'Documentation': None, u'Projects': None},
-u'Todo': {u'**Wash the dishes**': None},
+cool_stuff: {_('Went to see the pope'): None},
+ideas: {_('Invent Anti-Hangover-Machine'): None},
+movies: {_('Monty Python and the Holy Grail'): None},
+tags: {documentation: None},
+todo: {_('**Wash the dishes**'): None},
 }
 
 multiple_entries_text = '''\
@@ -234,7 +241,7 @@ Here comes the entry about the fun stuff.
 
 example_day2 = {
 'text': multiple_entries_text + multiple_entries_example,
-u'Tags': {u'Documentation': None, u'Work': None, u'Play': None},}
+tags: {documentation: None, u'Work': None, u'Play': None},}
 
 example_day3 = {
 'text': '''\
@@ -245,18 +252,18 @@ on one day and it remains there until you delete it.
 
 Here is how it works:
 - On the right click on "New Entry"
-- Fill "Todo" and "Remember the milk" in the fields and hit "OK"
+- Fill "%(todo)s" and "Remember the milk" in the fields and hit "OK"
 - Select the categories cloud from the drop down menu on the left
-- Now you can click on "todo" and see all your todo items
+- Now you can click on "%(todo)s" and see all your todo items
 
 
 - To tick off a todo item you can strike it out by adding "--" around the item.
 - To mark an item as important, add "**" around it.
 
 
-So --Remember the milk-- becomes struck through and **Wash the dishes** becomes bold.
+So --%(rtm)s-- becomes struck through and **%(dishes)s** becomes bold.
 
-You can see all your todo items at once by clicking "todo" in the category cloud \
+You can see all your todo items at once by clicking "%(todo)s" in the category cloud \
 on the left. There you can also \
 group your todo items into important and finished items by hitting "Entry" \
 at the top of the list.
@@ -265,11 +272,11 @@ It probably sometimes makes sense to add the todo items to the day you want to \
 have completed them (deadline day).
 
 Once you've finished an item, you could also change its category name from \
-"Todo" to "Done".''',
-u'Tags': {u'Documentation': None,},
-u'Todo': {u'--Remember the milk--': None,
-        u'Take a break': None},
-u'Done': {u'--Check mail--': None,},
+"%(todo)s" to "%(done)s".''' % globals(),
+tags: {documentation: None,},
+todo: {u'--%(rtm)s--': None,
+       _(u'Take a break'): None},
+done: {_(u'--Check mail--'): None,},
 }
 
 example_content = [welcome_day, example_day1, example_day2, example_day3]

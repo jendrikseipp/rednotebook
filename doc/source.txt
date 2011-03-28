@@ -1,4 +1,13 @@
 
+== Layout ==
+The interface is divided into three parts:
+- **Left**: Navigation with the calendar
+- **Center**: Text for a day
+- **Right**: Annotations to a day
+
+
+There are two modes in RedNotebook, the __editing__ mode and the __preview__ mode.
+
 == Text ==
 The main text field is the container for your normal diary entries like this one:
 
@@ -26,11 +35,7 @@ instead of "-" you can create a **numbered list**.
 == Annotations in Categories ==
 Annotations are notes that can be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it.
 
-- Ideas
-  - Invent Anti-Hangover-Machine
-- Movies
-  - Monty Python and the Holy Grail
-
+Have a look at the right to see example categories with example entries.
 
 The name "Categories" is a little bit confusing. It does not mean that a day is put into a category, but that there is additional content on the right, sorted into categories. A category will contain several notes distributed over various days.
 
@@ -172,17 +177,7 @@ You can add multiple entries to one day in two ways:
 - Use a horizontal separator line (20 “=”s)
 
 
-====================
 
-**Work**
-
-Here goes the first entry.
-
-====================
-
-**Play**
-
-Here comes the entry about the fun stuff.
 
 === Todo list ===
 You can also use RedNotebook as a todo list. A big advantage is, that you never have to explicitly state the date when you added the todo item, you just add it on one day and it remains there until you delete it.
@@ -191,7 +186,7 @@ Here is how it works:
 - On the right click on "New Entry"
 - Fill "Todo" and "Remember the milk" in the fields and hit "OK"
 - Select the categories cloud from the drop down menu on the left
-- Now you can click on "todo" and see all your todo items
+- Now you can click on "Todo" and see all your todo items
 
 
 - To tick off a todo item you can strike it out by adding "--" around the item.
@@ -200,7 +195,7 @@ Here is how it works:
 
 So --Remember the milk-- becomes struck through and **Wash the dishes** becomes bold.
 
-You can see all your todo items at once by clicking "todo" in the category cloud on the left. There you can also group your todo items into important and finished items by hitting "Entry" at the top of the list.
+You can see all your todo items at once by clicking "Todo" in the category cloud on the left. There you can also group your todo items into important and finished items by hitting "Entry" at the top of the list.
 
 It probably sometimes makes sense to add the todo items to the day you want to have completed them (deadline day).
 
