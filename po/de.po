@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-26 23:36+0100\n"
-"PO-Revision-Date: 2011-03-23 12:37+0000\n"
-"Last-Translator: tim♡mint <Unknown>\n"
+"PO-Revision-Date: 2011-03-27 19:17+0000\n"
+"Last-Translator: günther kühnel <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-27 04:55+0000\n"
+"X-Launchpad-Export-Date: 2011-03-28 04:37+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
@@ -67,7 +67,7 @@ msgstr "Rechts"
 
 #: ../rednotebook/info.py:93
 msgid "Annotations to a day"
-msgstr "Annotationen zu einem Tag"
+msgstr "Anmerkungen zu einem Tag"
 
 #. ## Translators: noun
 #. ## Verb
@@ -84,7 +84,7 @@ msgstr ""
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:100
 msgid "Click on Preview above to see the difference."
-msgstr "Drücke auf Vorschau oben um den Unterschied zu sehen."
+msgstr "Klicken Sie oben auf Vorschau, um den Unterschied zu sehen."
 
 #: ../rednotebook/info.py:103
 msgid ""
@@ -99,11 +99,12 @@ msgstr ""
 
 #: ../rednotebook/info.py:107
 msgid "Annotations"
-msgstr "Annotationen"
+msgstr "Anmerkungen"
 
 #: ../rednotebook/info.py:108
 msgid "Annotations are notes that can be sorted into categories."
 msgstr ""
+"Anmerkungen sind Notizen, die in Kategorien eingeordnet werden können."
 
 #: ../rednotebook/info.py:109
 msgid ""
@@ -118,6 +119,8 @@ msgid ""
 "If you find this confusing you can simply hide the annotations for now by "
 "moving the separator to the far right."
 msgstr ""
+"Falls das verwirrend ist, können Sie auch die Anmerkungen zunächst "
+"ausblenden, indem Sie den Trenner ganz an den rechten Rand verschieben."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:123
@@ -129,8 +132,8 @@ msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Alles was Sie schreiben wird automatisch in regelmäßigen Abständen und beim "
-"Verlassen des Programms gespeichert."
+"Alles, was Sie eingeben,  wird in regelmäßigen Abständen und auch beim "
+"Verlassen des Programms gesichert."
 
 #: ../rednotebook/info.py:126
 msgid "To avoid data loss you should backup your journal regularly."
@@ -191,7 +194,8 @@ msgstr "_Journal"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr "Erstelle ein neues Journal. Das geöffnete Journal wird gespeichert"
+msgstr ""
+"Ein neues Journal erstellen. Das derzeit geöffnete Journal wird gespeichert."
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
@@ -211,7 +215,7 @@ msgstr "Importieren"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr "Den Import Assistenten öffnen"
+msgstr "Den Import-Assistenten öffnen"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
@@ -220,7 +224,7 @@ msgstr "Exportieren"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
-msgstr "Öffne den Export Assistenten"
+msgstr "Den Export-Assistenten öffnen"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111
@@ -229,7 +233,7 @@ msgstr "Sicherung"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr "Speichere die Journal Dateien in einem Zip-Archiv"
+msgstr "Alle Daten in einem Zip-Archiv sichern"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
 msgid "Statistics"
@@ -237,11 +241,11 @@ msgstr "Statistiken"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
-msgstr "Zeige einige Statistiken über das Journal"
+msgstr "Statistische Auswertungen zum Journal zeigen"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Beende RedNotebook. Minimiere nicht in die Taskleiste"
+msgstr "RedNotebook beenden (ohne weitere Anzeige im Benachrichtigungsfeld)"
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
@@ -255,7 +259,7 @@ msgstr ""
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text edits or category entry additions"
 msgstr ""
-"Wiederhole Änderungen im Text oder Löschungen von Kategorie-Einträgen"
+"Änderungen im Text oder das Löschen von Kategorie-Einträgen rückgängig machen"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -275,7 +279,7 @@ msgstr "Online Hilfe"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Visit the RedNotebook forum"
-msgstr "Besuche das RedNotebook Forum"
+msgstr "Das RedNotebook-Forum besuchen"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -295,7 +299,7 @@ msgstr "Füllen Sie einen kurzen Fragebogen über das Problem aus"
 
 #: ../rednotebook/gui/menu.py:270
 msgid "A Desktop Journal"
-msgstr "Ein Desktop Journal"
+msgstr "Ein Desktop-Journal"
 
 #: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
 #: tmp/main_window.glade.h:10
@@ -324,7 +328,7 @@ msgstr "Diesen Eintrag löschen"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr "RedNotebook bei Systemstart laden"
+msgstr "RedNotebook beim Systemstart laden"
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
@@ -349,7 +353,7 @@ msgstr "Vorschau:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Close to system tray"
-msgstr "Schließe in den Infobereich"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:293
 msgid "Closing the window will send RedNotebook to the tray"
@@ -376,7 +380,7 @@ msgstr "Rechtschreibung prüfen"
 
 #: ../rednotebook/gui/options.py:307
 msgid "Check for new version at startup"
-msgstr "Suche nach Updates beim Programmstart"
+msgstr "Beim Programmstart nach Aktualisierungen suchen"
 
 #: ../rednotebook/gui/options.py:314
 msgid "Check now"
@@ -1009,6 +1013,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Aljosha Papsch https://launchpad.net/~joschi-papsch\n"
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
+"  Mario Blättermann https://launchpad.net/~mario.blaettermann\n"
 "  Tobias Baldauf https://launchpad.net/~technopagan\n"
 "  günther kühnel https://launchpad.net/~guejo\n"
 "  rubinstein https://launchpad.net/~rubinstein\n"
