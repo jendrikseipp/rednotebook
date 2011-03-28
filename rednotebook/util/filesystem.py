@@ -78,9 +78,6 @@ class Filenames(dict):
 
         self.data_dir = self.default_data_dir
 
-        # Is this the first run of RedNotebook?
-        self.is_first_start = not os.path.exists(self.journal_user_dir)
-
         # Assert that all dirs and files are in place so that logging can take start
         make_directories([self.journal_user_dir, self.data_dir, self.template_dir,
                         self.temp_dir])

@@ -19,7 +19,7 @@ body {
 
 <div class="header" id="header">
 <h1>RedNotebook Documentation</h1>
-<h2>1.1.4</h2>
+<h2>1.1.5</h2>
 </div>
 
 <div class="toc" id="toc">
@@ -176,9 +176,16 @@ instead of "-" you can create a <b>numbered list</b>.
 <p>
 Annotations are notes that can be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it.
 </p>
-<p>
-Have a look at the right to see example categories with example entries.
-</p>
+
+<ul>
+<li>Todo
+  <ul>
+  <li>Wash the dishes
+  </li>
+  </ul>
+</li>
+</ul>
+
 <p>
 The name "Categories" is a little bit confusing. It does not mean that a day is put into a category, but that there is additional content on the right, sorted into categories. A category will contain several notes distributed over various days.
 </p>
@@ -459,9 +466,9 @@ You can add multiple entries to one day in two ways:
 </p>
 
 <ul>
-<li>Use two different journals (one named “Work”, the other “Play”)
+<li>Use two different journals (one named "%(work)s", the other "%(free_time)s")
 </li>
-<li>Separate your two entries by different titles (===Work===, ===Play===)
+<li>Separate your two entries by different titles (===%(work)s===, ===%(free_time)s===)
 </li>
 <li>Use a horizontal separator line (20 “=”s)
 </li>
@@ -640,7 +647,7 @@ To get a list of all entries, just search for " " (the space character). This ch
 <pre>
 Usage: rednotebook [options] [journal-path]
 
-RedNotebook 1.1.4
+RedNotebook 1.1.5
 
 The optional journal-path can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)

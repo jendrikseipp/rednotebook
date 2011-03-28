@@ -82,20 +82,15 @@ Besides templates for weekdays you can also have arbitrary named templates.
 For example you might want to have a template for "Meeting" or "Journey".
 All templates must reside in the directory "%s".
 
-To create a new template, just save an ordinary textfile in that directory. \
-You can use your favourite text editing program for that task \
-(e.g. gedit on Linux or the editor on Win).
-The name of the newly created file will be the template's title.
-
-You can switch to "Preview" mode and click on the link to get to the \
-[template directory ""%s""].
+The template button gives you the options to create a new template or to \
+visit the templates directory.
 
 If you come up with templates that could be useful for other people as well, \
 I would appreciate if you sent me your template file, so others can benefit \
 from it.
 '''
 
-meeting = '''\
+meeting = _('''\
 === Meeting ===
 
 Purpose, date, and place
@@ -117,9 +112,9 @@ Purpose, date, and place
 +
 +
 ==================================
-'''
+''')
 
-journey = '''\
+journey = _('''\
 === Journey ===
 **Date:**
 
@@ -131,9 +126,9 @@ journey = '''\
 First we went to xxxxx then we got to yyyyy ...
 
 **Pictures:** [Image folder ""/path/to/the/images/""]
-'''
+''')
 
-call = '''\
+call = _('''\
 ==================================
 === Phone Call ===
 - **Person:**
@@ -141,9 +136,9 @@ call = '''\
 - **Topic:**
 - **Outcome and Follow up:**
 ==================================
-'''
+''')
 
-personal = '''\
+personal = _('''\
 =====================================
 === Personal ===
 
@@ -161,7 +156,7 @@ personal = '''\
 +
 +
 =====================================
-'''
+''')
 
 
 class TemplateManager(object):
@@ -395,13 +390,13 @@ class TemplateManager(object):
         for day_number in range(1, 8):
             files.append((self.get_template_file(day_number), example_text))
 
-        help_text %= (self.dirs.template_dir, self.dirs.template_dir)
+        help_text %= (self.dirs.template_dir)
 
         files.append((self.get_template_file('Help'), help_text))
 
         # Only add the example templates the first time and just restore
         # the day templates everytime
-        if not self.main_window.journal.dirs.is_first_start:
+        if not self.main_window.journal.is_first_start:
             filesystem.make_files(files)
             return
 

@@ -275,7 +275,9 @@ class Journal:
         self.title = ''
 
         # show instructions at first start
-        logging.info('First Start: %s' % self.dirs.is_first_start)
+        self.is_first_start = self.config.read('firstStart', 1)
+        self.config['firstStart'] = 0
+        logging.info('First Start: %s' % bool(self.is_first_start))
 
         logging.info('RedNotebook version: %s' % info.version)
         logging.info(filesystem.get_platform_info())
@@ -443,8 +445,7 @@ class Journal:
         sorted_categories = sorted(self.node_names, key=lambda category: str(category).lower())
         self.frame.categories_tree_view.categories = sorted_categories
 
-        if self.dirs.is_first_start and data_dir_empty:
-            logging.info('Adding example content')
+        if self.is_first_start:
             self.add_instruction_content()
 
         # Notebook is only on page 1 here, if we are opening a journal the second time
@@ -669,6 +670,8 @@ class Journal:
     def add_instruction_content(self):
         self.go_to_first_empty_day()
         current_date = self.date
+
+        logging.info('Adding example content on %s' % current_date)
 
         for example_day in info.example_content:
             self.day.content = example_day

@@ -35,7 +35,9 @@ instead of "-" you can create a **numbered list**.
 == Annotations in Categories ==
 Annotations are notes that can be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it.
 
-Have a look at the right to see example categories with example entries.
+- Todo
+  - Wash the dishes
+
 
 The name "Categories" is a little bit confusing. It does not mean that a day is put into a category, but that there is additional content on the right, sorted into categories. A category will contain several notes distributed over various days.
 
@@ -172,8 +174,8 @@ In recent Linux distributions is has become pretty easy to encrypt your entire h
 == Tips ==
 === Multiple Entries ===
 You can add multiple entries to one day in two ways:
-- Use two different journals (one named “Work”, the other “Play”)
-- Separate your two entries by different titles (===Work===, ===Play===)
+- Use two different journals (one named "%(work)s", the other "%(free_time)s")
+- Separate your two entries by different titles (===%(work)s===, ===%(free_time)s===)
 - Use a horizontal separator line (20 “=”s)
 
 
@@ -274,7 +276,7 @@ To get a list of all entries, just search for " " (the space character). This ch
 ```
 Usage: rednotebook [options] [journal-path]
 
-RedNotebook 1.1.4
+RedNotebook 1.1.5
 
 The optional journal-path can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)

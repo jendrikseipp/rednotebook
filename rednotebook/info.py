@@ -81,11 +81,13 @@ tags = _('Tags')
 cool_stuff = _('Cool Stuff')
 movies = _('Movies')
 work = _('Work')
+free_time = _('Free time')
 documentation = _('Documentation')
 todo = _('Todo')
 done = _('Done')
 rtm = _('Remember the milk')
 dishes = _('Wash the dishes')
+check_mail = _('Check mail')
 
 greeting = _('Hello!')
 intro=_('''Some example text has been added to help you start and \
@@ -105,7 +107,7 @@ overview42 = _('Annotations to a day')
 
 ### Translators: noun
 preview = _('Preview')
-preview1 = _('''There are two modes in RedNotebook, the __editing__ mode and \
+preview1 = _('''There are two modes in RedNotebook, the __edit__ mode and \
 the __preview__ mode.''')
 ### Translators: Preview -> noun
 preview2 = _('Click on Preview above to see the difference.')
@@ -119,9 +121,9 @@ annotations = _('Annotations')
 ann2 = _('Annotations are notes that can be sorted into categories.')
 ann3 = _('''For example you could create the category "Ideas" \
 and then add today's ideas to it.''')
-ann4 = _('If you find this confusing you can simply hide the annotations for '
+ann4 = _('If you find annotations confusing you can simply hide them for '
          'now by moving the separator to the far right.')
-ann_par = ' '.join([ann2, ann3])
+ann_par = ' '.join([ann2, ann3, ann4])
 
 templates = ('Templates')
 temp1 = ('RedNotebook supports templates.')
@@ -174,7 +176,7 @@ welcome_day = {'text': completeWelcomeText,
 cool_stuff: {_('Ate **two** cans of spam'): None},
 ideas: {_('Use a cool journal app'): None},
 movies: {_("Monty Python's Life of Brian"): None},
-tags: {work: None, documentation: None},
+tags: {documentation: None},
 }
 
 example_day1 = {
@@ -222,28 +224,28 @@ todo: {'**%s**' % dishes: None},
 multiple_entries_text = '''\
 === Multiple Entries ===
 You can add multiple entries to one day in two ways:
-- Use two different journals (one named “Work”, the other “Play”)
-- Separate your two entries by different titles (===Work===, ===Play===)
+- Use two different journals (one named "%(work)s", the other "%(free_time)s")
+- Separate your two entries by different titles (===%(work)s===, ===%(free_time)s===)
 - Use a horizontal separator line (20 “=”s)
 
 
-'''
+''' % globals()
 
 multiple_entries_example = '''\
 ====================
 
-=== Work ===
+=== %(work)s ===
 Here goes the first entry.
 
 ====================
 
-=== Play ===
+=== %(free_time)s ===
 Here comes the entry about the fun stuff.
-'''
+''' % globals()
 
 example_day2 = {
 'text': multiple_entries_text + multiple_entries_example,
-tags: {documentation: None, u'Work': None, u'Play': None},}
+tags: {documentation: None, work: None, free_time: None},}
 
 example_day3 = {
 'text': '''\
@@ -276,9 +278,9 @@ have completed them (deadline day).
 Once you've finished an item, you could also change its category name from \
 "%(todo)s" to "%(done)s".''' % globals(),
 tags: {documentation: None,},
-todo: {u'--%(rtm)s--': None,
-       _(u'Take a break'): None},
-done: {_(u'--Check mail--'): None,},
+todo: {u'--%s--' % rtm: None,
+       u'**%s**' % dishes: None},
+done: {u'--%s--' % check_mail: None,},
 }
 
 example_content = [welcome_day, example_day1, example_day2, example_day3]

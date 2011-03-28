@@ -9,7 +9,7 @@ implementation if you tell me that you'd like its addition ;)
 
 1.1.5
 X Remove "RedNotebook" title in exports
-O Make entry templates translatable
+X Make templates translatable
 X Mention "--record installed-files" setup.py's option for remembering installed files in README
 
 1.2
