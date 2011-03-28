@@ -25,7 +25,7 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-version =           '1.1.4'
+version =           '1.1.5'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
 url =               'http://rednotebook.sourceforge.net'
@@ -75,6 +75,17 @@ The optional journal-path can be one of the following:
 If the journal-path is omitted the last session's journal will be used.
 At the first program start this defaults to "$HOME/.rednotebook/data".
 ''' % version
+
+ideas = _('Ideas')
+tags = _('Tags')
+cool_stuff = _('Cool Stuff')
+movies = _('Movies')
+work = _('Work')
+documentation = _('Documentation')
+todo = _('Todo')
+done = _('Done')
+rtm = _('Remember the milk')
+dishes = _('Wash the dishes')
 
 greeting = _('Hello!')
 intro=_('''Some example text has been added to help you start and \
@@ -135,7 +146,6 @@ error_par = ' '.join([error1, error2])
 
 goodbye_par = _('Have a nice day!')
 
-
 completeWelcomeText = '''\
 %(greeting)s %(intro)s %(help_par)s
 
@@ -159,16 +169,6 @@ completeWelcomeText = '''\
 
 %(goodbye_par)s''' % globals()
 
-ideas = _('Ideas')
-tags = _('Tags')
-cool_stuff = _('Cool Stuff')
-movies = _('Movies')
-work = _('Work')
-documentation = _('Documentation')
-todo = _('Todo')
-done = _('Done')
-rtm = _('Remember the milk')
-dishes = _('Wash the dishes')
 
 welcome_day = {'text': completeWelcomeText,
 cool_stuff: {_('Ate **two** cans of spam'): None},
@@ -182,7 +182,9 @@ example_day1 = {
 === Annotations in Categories ===
 %(ann_par)s
 
-Have a look at the right to see example categories with example entries.
+- %(todo)s
+  - %(dishes)s
+
 
 The name "Categories" is a little bit confusing. It does not mean that a day is \
 put into a category, but that there is additional content on the right, \
@@ -214,7 +216,7 @@ cool_stuff: {_('Went to see the pope'): None},
 ideas: {_('Invent Anti-Hangover-Machine'): None},
 movies: {_('Monty Python and the Holy Grail'): None},
 tags: {documentation: None},
-todo: {_('**Wash the dishes**'): None},
+todo: {'**%s**' % dishes: None},
 }
 
 multiple_entries_text = '''\
