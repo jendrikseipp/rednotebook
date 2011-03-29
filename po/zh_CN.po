@@ -7,82 +7,130 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-03-26 23:36+0100\n"
+"POT-Creation-Date: 2011-03-28 14:12+0200\n"
 "PO-Revision-Date: 2011-03-23 03:05+0000\n"
 "Last-Translator: 英华 <wantinghard@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-27 04:56+0000\n"
+"X-Launchpad-Export-Date: 2011-03-29 04:42+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
+msgid "Ideas"
+msgstr "建议"
+
+#: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
+msgid "Tags"
+msgstr "标签"
+
+#: ../rednotebook/info.py:81
+msgid "Cool Stuff"
+msgstr ""
+
+#: ../rednotebook/info.py:82
+msgid "Movies"
+msgstr ""
+
+#: ../rednotebook/info.py:83
+msgid "Work"
+msgstr ""
+
+#: ../rednotebook/info.py:84
+msgid "Free time"
+msgstr ""
+
+#: ../rednotebook/info.py:85
+msgid "Documentation"
+msgstr ""
+
+#: ../rednotebook/info.py:86
+msgid "Todo"
+msgstr ""
+
+#: ../rednotebook/info.py:87
+msgid "Done"
+msgstr ""
+
+#: ../rednotebook/info.py:88
+msgid "Remember the milk"
+msgstr ""
+
+#: ../rednotebook/info.py:89
+msgid "Wash the dishes"
+msgstr ""
+
+#: ../rednotebook/info.py:90
+msgid "Check mail"
+msgstr ""
+
+#: ../rednotebook/info.py:92
 msgid "Hello!"
 msgstr "您好！"
 
-#: ../rednotebook/info.py:80
+#: ../rednotebook/info.py:93
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr "程序添加了一些示例文本来帮助您开始使用，您可以随时擦除它。"
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:83
+#: ../rednotebook/info.py:96
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr "示例文本和更多的文档可以在“帮助”->“内容”菜单中找到。"
 
-#: ../rednotebook/info.py:84
+#: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
 msgstr "界面分为三部分："
 
 #. ## Translators: The location "left"
-#: ../rednotebook/info.py:86
+#: ../rednotebook/info.py:99
 msgid "Left"
 msgstr "左侧"
 
-#: ../rednotebook/info.py:87
+#: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
 msgstr "带日历的导航区"
 
 #. ## Translators: The location "center"
-#: ../rednotebook/info.py:89
+#: ../rednotebook/info.py:102
 msgid "Center"
 msgstr "中间"
 
-#: ../rednotebook/info.py:90
+#: ../rednotebook/info.py:103
 msgid "Text for a day"
 msgstr "某一天的内容"
 
 #. ## Translators: The location "right"
-#: ../rednotebook/info.py:92
+#: ../rednotebook/info.py:105
 msgid "Right"
 msgstr "右侧"
 
-#: ../rednotebook/info.py:93
+#: ../rednotebook/info.py:106
 msgid "Annotations to a day"
 msgstr "某一天的备注"
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:96 tmp/main_window.glade.h:27
+#: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
 msgid "Preview"
 msgstr "预览"
 
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:110
 msgid ""
-"There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
+"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
-msgstr "RedNotebook 中有两种模式，__编辑__模式和__预览__模式。"
+msgstr ""
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:100
+#: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
 msgstr "点击上面的预览查看差异。"
 
-#: ../rednotebook/info.py:103
+#: ../rednotebook/info.py:116
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -91,76 +139,92 @@ msgstr ""
 "今天我去了//宠物店// 买了一只 **小帅虎**，然后我们去了--游泳池--"
 "公园并非常开心的玩起了极限飞盘，之后观看了电影\"__布莱恩的幸福生活__\"。"
 
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:120
 msgid "Annotations"
 msgstr "备注"
 
-#: ../rednotebook/info.py:108
+#: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
 msgstr "备注是可以归类的笔记。"
 
-#: ../rednotebook/info.py:109
+#: ../rednotebook/info.py:122
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr "例如，您可以创建类别 \"构想\"然后向其中添加今日构想。"
 
-#: ../rednotebook/info.py:111
+#: ../rednotebook/info.py:124
 msgid ""
-"If you find this confusing you can simply hide the annotations for now by "
-"moving the separator to the far right."
+"If you find annotations confusing you can simply hide them for now by moving "
+"the separator to the far right."
 msgstr ""
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:123
+#: ../rednotebook/info.py:136
 msgid "Save and Export"
 msgstr "保存并导出"
 
-#: ../rednotebook/info.py:124
+#: ../rednotebook/info.py:137
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr "您输入的任何数据将在一定的间隔时间内自动保存，在您退出该程序时也会自动保存所有数据。"
 
-#: ../rednotebook/info.py:126
+#: ../rednotebook/info.py:139
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr "为避免数据丢失您需要定期备份您的日志。"
 
-#: ../rednotebook/info.py:127
+#: ../rednotebook/info.py:140
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr "“日志”下的“备份”菜单将会以压缩文件的形式保存您输入的所有数据。"
 
-#: ../rednotebook/info.py:128
+#: ../rednotebook/info.py:141
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "您也可以在“日志”菜单中找到“导出”按钮。"
 
-#: ../rednotebook/info.py:129
+#: ../rednotebook/info.py:142
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr "点击 “导出”将您的日记导出为纯文本、HTML 或 Latex 文件。"
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:145
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr "如果您遇到了错误，请给我留言，以便我修正它们。"
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
 msgstr "如有任何反馈信息将不胜感激。"
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:149
 msgid "Have a nice day!"
 msgstr "祝您过得愉快!"
 
-#: ../rednotebook/info.py:164
-msgid "Ideas"
-msgstr "建议"
+#: ../rednotebook/info.py:176
+msgid "Ate **two** cans of spam"
+msgstr ""
 
-#: ../rednotebook/info.py:164
+#: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
 msgstr "使用一款超酷的日记程序"
 
-#: ../rednotebook/info.py:700 ../rednotebook/gui/menu.py:250
+#: ../rednotebook/info.py:178
+msgid "Monty Python's Life of Brian"
+msgstr ""
+
+#: ../rednotebook/info.py:217
+msgid "Went to see the pope"
+msgstr ""
+
+#: ../rednotebook/info.py:218
+msgid "Invent Anti-Hangover-Machine"
+msgstr ""
+
+#: ../rednotebook/info.py:219
+msgid "Monty Python and the Holy Grail"
+msgstr ""
+
+#: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook 文档"
 
@@ -706,36 +770,108 @@ msgstr "确定"
 msgid "No"
 msgstr "取消"
 
-#: ../rednotebook/gui/exports.py:441
+#: ../rednotebook/gui/exports.py:438
 #, python-format
 msgid "Content exported to %s"
 msgstr "内容已导出到 %s"
 
-#: ../rednotebook/gui/exports.py:537
+#: ../rednotebook/gui/exports.py:534
 msgid "requires pywebkitgtk"
 msgstr "需要 pywebkitgtk"
 
-#: ../rednotebook/templates.py:204
+#: ../rednotebook/templates.py:93
+msgid ""
+"=== Meeting ===\n"
+"\n"
+"Purpose, date, and place\n"
+"\n"
+"**Present:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Discussion, Decisions, Assignments:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:117
+msgid ""
+"=== Journey ===\n"
+"**Date:**\n"
+"\n"
+"**Location:**\n"
+"\n"
+"**Participants:**\n"
+"\n"
+"**The trip:**\n"
+"First we went to xxxxx then we got to yyyyy ...\n"
+"\n"
+"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:131
+msgid ""
+"==================================\n"
+"=== Phone Call ===\n"
+"- **Person:**\n"
+"- **Time:**\n"
+"- **Topic:**\n"
+"- **Outcome and Follow up:**\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:141
+msgid ""
+"=====================================\n"
+"=== Personal ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**How was the Day?**\n"
+"\n"
+"\n"
+"========================\n"
+"**What needs to be changed?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:199
 msgid "Choose Template Name"
 msgstr "选择模板名称"
 
-#: ../rednotebook/templates.py:356 ../rednotebook/templates.py:365
+#: ../rednotebook/templates.py:351 ../rednotebook/templates.py:360
 msgid "This Weekday's Template"
 msgstr "此工作日模板"
 
-#: ../rednotebook/templates.py:359
+#: ../rednotebook/templates.py:354
 msgid "Edit Template"
 msgstr "编辑模板"
 
-#: ../rednotebook/templates.py:362
+#: ../rednotebook/templates.py:357
 msgid "Insert Template"
 msgstr "插入模板"
 
-#: ../rednotebook/templates.py:368
+#: ../rednotebook/templates.py:363
 msgid "Create New Template"
 msgstr "创建新模板"
 
-#: ../rednotebook/templates.py:372
+#: ../rednotebook/templates.py:367
 msgid "Open Template Directory"
 msgstr "打开模板目录"
 
@@ -790,30 +926,30 @@ msgstr "编辑过的日期所占的百分比"
 msgid "Lines"
 msgstr "行数"
 
-#: ../rednotebook/journal.py:380
+#: ../rednotebook/journal.py:382
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "内容已保存到 %s"
 
-#: ../rednotebook/journal.py:383
+#: ../rednotebook/journal.py:385
 msgid "Nothing to save"
 msgstr "无需保存"
 
-#: ../rednotebook/journal.py:391
+#: ../rednotebook/journal.py:393
 msgid "Configuration could not be saved. Please check your permissions"
 msgstr "配置无法保存。请检查您的权限"
 
-#: ../rednotebook/journal.py:422
+#: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
 msgstr "所选文件夹不为空。"
 
-#: ../rednotebook/journal.py:423
+#: ../rednotebook/journal.py:425
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
 msgstr "为防止覆盖数据，文件夹内容已被导入新日志。"
 
-#: ../rednotebook/journal.py:426
+#: ../rednotebook/journal.py:428
 msgid "The selected folder is empty. A new journal has been created."
 msgstr "所选文件夹为空。已创建新日志。"
 
@@ -947,10 +1083,6 @@ msgstr "显示文本格式的预览(Ctrl+P)"
 #. ## This stands for the verb in "Tag this day"
 #: tmp/main_window.glade.h:39
 msgid "Tag"
-msgstr "标签"
-
-#: tmp/main_window.glade.h:40
-msgid "Tags"
 msgstr "标签"
 
 #: tmp/main_window.glade.h:41
@@ -1169,3 +1301,8 @@ msgstr ""
 
 #~ msgid "You can find more documentation under \"Help\" -> \"Help\"."
 #~ msgstr "您可以在“帮助”->“帮助”下找到更多帮助文档。"
+
+#~ msgid ""
+#~ "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
+#~ "mode."
+#~ msgstr "RedNotebook 中有两种模式，__编辑__模式和__预览__模式。"
