@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-23 07:59+0000\n"
-"Last-Translator: Redmar <redmar@ubuntu-nl.org>\n"
+"PO-Revision-Date: 2011-03-29 11:06+0000\n"
+"Last-Translator: Rachid <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-29 04:41+0000\n"
+"X-Launchpad-Export-Date: 2011-03-30 04:39+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/gui/main_window.py:323
@@ -35,19 +35,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Films"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Werk"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Vrije tijd"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Documentatie"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
@@ -55,19 +55,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Afgerond"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "Melk halen"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Afwassen"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Mail controleren"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
@@ -230,19 +230,19 @@ msgstr "Gebruik een fraaie dagboekapplicatie"
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "Monty Python's Life of Brian"
 
 #: ../rednotebook/info.py:217
 msgid "Went to see the pope"
-msgstr ""
+msgstr "De paus bezocht"
 
 #: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"
-msgstr ""
+msgstr "Anti-kater-machine uitvinden"
 
 #: ../rednotebook/info.py:219
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "Monty Python and the Holy Grail"
 
 #: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
@@ -845,6 +845,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Reis ===\n"
+"**Datum:**\n"
+"\n"
+"**Locatie:**\n"
+"\n"
+"**Deelnemers:**\n"
+"\n"
+"**De toer:**\n"
+"Eerst gingen we naar xxxxx en toen gingen we naar yyyyy ...\n"
+"\n"
+"**Foto's:** [Fotomap \"\"/pad/naar/de/fotos/\"\"]\n"
 
 #: ../rednotebook/templates.py:131
 msgid ""
@@ -856,6 +867,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Telefoongesprek ===\n"
+"- **Persoon:**\n"
+"- **Tijd:**\n"
+"- **Onderwerp:**\n"
+"- **Uitkomst en vervolg:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:141
 msgid ""
@@ -1130,6 +1148,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Fly-Man- https://launchpad.net/~flyman\n"
 "  Peter Schelleman https://launchpad.net/~peterschelleman\n"
+"  Rachid https://launchpad.net/~rachidbm\n"
 "  Redmar https://launchpad.net/~redmar\n"
 "  Tom https://launchpad.net/~d9ping\n"
 "  Walco van Loon https://launchpad.net/~wwwalco"

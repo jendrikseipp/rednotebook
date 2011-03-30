@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2010-08-20 17:28+0000\n"
-"Last-Translator: Paco Molinero <paco@byasl.com>\n"
+"PO-Revision-Date: 2011-03-29 20:10+0000\n"
+"Last-Translator: Felipe Hommen <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-29 04:42+0000\n"
+"X-Launchpad-Export-Date: 2011-03-30 04:39+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
@@ -27,31 +27,31 @@ msgstr "Etiquetas"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "Cosas interesantes"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Películas"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Trabajo"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Tiempo libre"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Documentación"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "Tareas"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
@@ -59,21 +59,23 @@ msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Lavar los platos"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Comprobar el correo"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
-msgstr ""
+msgstr "¡Hola!"
 
 #: ../rednotebook/info.py:93
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Se han agregado algunos textos de ejemplo para ayudarle a comenzar, y puede "
+"borrarlos cuando usted quiera."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
@@ -81,6 +83,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"El texto de ejemplo y más documentación está disponible en «ayuda» -> "
+"«Contenidos\"»"
 
 #: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
@@ -124,11 +128,12 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Hay dos modos en RedNotebook, el modo __editar__ y el modo __previsualizar__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Pulse arriba sobre vista previa para ver la diferencia."
 
 #: ../rednotebook/info.py:116
 msgid ""
@@ -146,7 +151,7 @@ msgstr "Anotaciones"
 
 #: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Las anotaciones son notas que pueden ser clasificadas en categorías."
 
 #: ../rednotebook/info.py:122
 msgid ""
@@ -219,15 +224,15 @@ msgstr "Use una atractiva aplicación de diario"
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "La vida de Brian de los Monty Python"
 
 #: ../rednotebook/info.py:217
 msgid "Went to see the pope"
-msgstr ""
+msgstr "Fui a ver al Papa"
 
 #: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"
-msgstr ""
+msgstr "Inventar la máquina anti-resacas"
 
 #: ../rednotebook/info.py:219
 msgid "Monty Python and the Holy Grail"
@@ -375,7 +380,7 @@ msgstr "Añadir una entrada nueva"
 
 #: ../rednotebook/gui/categories.py:436
 msgid "Delete this entry"
-msgstr ""
+msgstr "Eliminar esta entrada"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -994,7 +999,7 @@ msgstr "<b>Seleccione una categoría nueva o existente</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Dia seleccionado</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -1022,7 +1027,7 @@ msgstr "Editar"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Activar la edición de texto (Ctrl + P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"

@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-23 03:05+0000\n"
+"PO-Revision-Date: 2011-03-29 13:58+0000\n"
 "Last-Translator: 英华 <wantinghard@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-29 04:42+0000\n"
+"X-Launchpad-Export-Date: 2011-03-30 04:39+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr "建议"
+msgstr "点子"
 
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
@@ -31,11 +31,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "电影"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "工作"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
@@ -43,15 +43,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "文档"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "待办"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
@@ -59,11 +59,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "洗碗"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "查看邮件"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
@@ -157,7 +157,7 @@ msgstr "例如，您可以创建类别 \"构想\"然后向其中添加今日构�
 msgid ""
 "If you find annotations confusing you can simply hide them for now by moving "
 "the separator to the far right."
-msgstr ""
+msgstr "如果您觉得这些注解令人困惑，可以将分隔条移至最右边，将它们隐藏起来。"
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
@@ -214,7 +214,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:217
 msgid "Went to see the pope"
-msgstr ""
+msgstr "去见教皇"
 
 #: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"

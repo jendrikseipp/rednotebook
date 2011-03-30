@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-28 11:28+0000\n"
-"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
+"PO-Revision-Date: 2011-03-29 14:44+0000\n"
+"Last-Translator: Matthias Loidolt <kedapperdrake@googlemail.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-29 04:41+0000\n"
+"X-Launchpad-Export-Date: 2011-03-30 04:39+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
@@ -23,11 +23,11 @@ msgstr "Ideen"
 
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
-msgstr "Tags"
+msgstr "Metadaten"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "Cooles Zeug"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
@@ -39,7 +39,7 @@ msgstr "Arbeit"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Freizeit"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
@@ -47,11 +47,11 @@ msgstr "Dokumentation"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "Zu erledigen"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Erledigt"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
@@ -59,11 +59,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Abwasch erledigen"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "E-Mails checken"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
@@ -1144,6 +1144,7 @@ msgstr ""
 "  Aljosha Papsch https://launchpad.net/~joschi-papsch\n"
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Mario Blättermann https://launchpad.net/~mario.blaettermann\n"
+"  Matthias Loidolt https://launchpad.net/~kedapperdrake\n"
 "  Tobias Baldauf https://launchpad.net/~technopagan\n"
 "  günther kühnel https://launchpad.net/~guejo\n"
 "  rubinstein https://launchpad.net/~rubinstein\n"

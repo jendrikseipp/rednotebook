@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-29 00:45+0000\n"
-"Last-Translator: Alexey Ivanov <alexey.ivanes@gmail.com>\n"
+"PO-Revision-Date: 2011-03-29 04:52+0000\n"
+"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-29 04:42+0000\n"
+"X-Launchpad-Export-Date: 2011-03-30 04:39+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
@@ -27,7 +27,7 @@ msgstr "Метки"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "Классная вещь"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
@@ -59,7 +59,7 @@ msgstr "Remember the milk"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Вымыть посуду"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
@@ -169,6 +169,8 @@ msgid ""
 "If you find annotations confusing you can simply hide them for now by moving "
 "the separator to the far right."
 msgstr ""
+"Если примечания Вам не нравятся, вы может спрятать их, передвинув "
+"разделитель вправо."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
@@ -223,7 +225,7 @@ msgstr "Удачного дня!"
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
-msgstr ""
+msgstr "Съесть **два** ведра с мусором"
 
 #: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
@@ -231,19 +233,19 @@ msgstr "Поставить себе крутую программу для ве�
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "«Жизнь Брайана» от Монти Пайтона"
 
 #: ../rednotebook/info.py:217
 msgid "Went to see the pope"
-msgstr ""
+msgstr "Увидеться со священником"
 
 #: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"
-msgstr ""
+msgstr "Изобрести антипохмельный аппарат"
 
 #: ../rednotebook/info.py:219
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "Монти Пайтон и Святой Грааль"
 
 #: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
@@ -830,6 +832,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== Встреча ===\n"
+"\n"
+"Цель, дата и время\n"
+"\n"
+"**Присутствовали:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Повестка дня:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Дискуссии, решения, соглашения:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:117
 msgid ""
@@ -845,6 +868,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Поездка ===\n"
+"**Дата:**\n"
+"\n"
+"**Место:**\n"
+"\n"
+"**Участники:**\n"
+"\n"
+"**Маршрут:**\n"
+"Сначала мы были в xxxxx, затем направились в yyyyy ...\n"
+"\n"
+"**Фотографии:** [Каталог с фото \"\"/путь/к/фотографиям/\"\"]\n"
 
 #: ../rednotebook/templates.py:131
 msgid ""
@@ -856,6 +890,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Телефонный звонок ===\n"
+"- **Собеседник:**\n"
+"- **Время:**\n"
+"- **Тема:**\n"
+"- **Результаты и решения:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:141
 msgid ""
@@ -877,6 +918,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Личное ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Как прошёл день?**\n"
+"\n"
+"\n"
+"========================\n"
+"**Что надо изменить?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:199
 msgid "Choose Template Name"
@@ -1136,6 +1194,7 @@ msgstr ""
 "  MyOtheHedgeFOx https://launchpad.net/~a-ztech-ya\n"
 "  MyOtheHedgeFox https://launchpad.net/~a-ztech\n"
 "  Nick https://launchpad.net/~nick222-yandex\n"
+"  Oleg Koptev https://launchpad.net/~koptev-oleg\n"
 "  Sergey \"Shnatsel\" Davidoff https://launchpad.net/~shnatsel\n"
 "  Sergey Sedov https://launchpad.net/~serg-sedov\n"
 "  Stanislav Hanzhin https://launchpad.net/~hanzhin-stas\n"
