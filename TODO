@@ -10,6 +10,7 @@ implementation if you tell me that you'd like its addition ;)
 1.1.5
 X Remove "RedNotebook" title in exports
 X Make templates translatable
+X Fix: Date insert function not displaying correct time (LP:744624)
 X Mention "--record installed-files" setup.py's option for remembering installed files in README
 
 1.2
@@ -18,6 +19,7 @@ X Tables
 X Numbered lists
 O "Export currently visible day only" option
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
+O Allow double backslashes (\\) in filenames (e.g. for UNC paths)
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
