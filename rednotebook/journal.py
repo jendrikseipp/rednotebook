@@ -634,16 +634,15 @@ class Journal:
         return word_dict
 
 
-    def get_days_in_date_range(self, range):
-        start_date, end_date = range
+    def get_days_in_date_range(self, start_date, end_date):
+        start_date, end_date = sorted([start_date, end_date])
         assert start_date <= end_date
 
-        sorted_days = self.days
         days_in_date_range = []
-        for day in sorted_days:
+        for day in self.days:
             if day.date < start_date:
                 continue
-            elif day.date >= start_date and day.date <= end_date:
+            elif start_date <= day.date <= end_date:
                 days_in_date_range.append(day)
             elif day.date > end_date:
                 break

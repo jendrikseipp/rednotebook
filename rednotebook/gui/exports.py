@@ -401,8 +401,7 @@ class ExportAssistant(Assistant):
         if self.export_all_days:
             export_days = self.journal.days
         else:
-            start, end = sorted([self.start_date, self.end_date])
-            export_days = self.journal.get_days_in_date_range((start, end))
+            export_days = self.journal.get_days_in_date_range(start, end)
 
         selected_categories = self.exported_categories
         logging.debug('Selected Categories for Export: %s' % selected_categories)

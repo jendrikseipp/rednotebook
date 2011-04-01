@@ -31,7 +31,7 @@ O Let the next (prev) button have submenus (go to next entry, go to last entry)
 X Remember last export and backup locations
 X Search in annotations
 X Do not write empty month files to disk
-O Do not allow starting two instances at the same time
+O Do not allow starting two instances at the same time (value in config?)
 X Show the most recent entries at the top of the search list by default
 
 O Use Zeitgeist for automatic category entries
