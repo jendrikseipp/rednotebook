@@ -185,8 +185,8 @@ class MarkupBuffer(gtk.TextBuffer):
     def set_search_text(self, text):
         if not text:
             self._lang_def.highlight_rule = None
-        self._lang_def.highlight_rule = Pattern(r"(%s)" % text,  [(1, 'highlight')],
-                                name='highlight', flags='I', overlap=True)
+        self._lang_def.highlight_rule = Pattern(r"(%s)" % re.escape(text),
+                [(1, 'highlight')], name='highlight', flags='I', overlap=True)
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
 
     def get_slice(self, start, end):
