@@ -20,7 +20,6 @@
 from __future__ import with_statement
 
 import os
-import sys
 import logging
 
 import pango
@@ -35,8 +34,6 @@ if __name__ == '__main__':
 
 from rednotebook.external import txt2tags
 from rednotebook.util import filesystem
-from rednotebook.util import dates
-from rednotebook.util import utils
 
 
 

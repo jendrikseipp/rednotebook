@@ -59,7 +59,7 @@ def get_unicode(some_var):
         try:
             unicode_string = some_var.decode('utf-8')
             return unicode_string
-        except UnicodeDecodeError, UnicodeEncodeError:
+        except (UnicodeDecodeError, UnicodeEncodeError):
             pass
     return some_var
 

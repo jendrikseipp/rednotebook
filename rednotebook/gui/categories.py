@@ -135,7 +135,6 @@ class CategoriesTreeView(object):
         else:
             iter = self.tree_store.get_iter(path)
             iter_parent = self.tree_store.iter_parent(iter)
-            tags_iter = self._get_category_iter('Tags')
 
             tags_node_is_parent = self.get_iter_value(iter_parent).capitalize() == 'Tags'
             if tags_node_is_parent and self.node_on_top_level(iter_parent):
@@ -286,7 +285,7 @@ class CategoriesTreeView(object):
             entry_node = self.tree_store.append(category_iter, [entry_pango])
         else:
             # If category exists add entry to existing category
-            entry_node = self.tree_store.append(category_iter, [entry_pango])
+            self.tree_store.append(category_iter, [entry_pango])
 
         if not undoing:
             undo_func = lambda: self.delete_node(self.find_iter(category, entry), undoing=True)
@@ -419,8 +418,6 @@ class CategoriesTreeView(object):
 
         # Create an ActionGroup
         actiongroup = gtk.ActionGroup('ContextMenuActionGroup')
-
-        new_entry_dialog = self.main_window.new_entry_dialog
 
         # Create actions
         actiongroup.add_actions([

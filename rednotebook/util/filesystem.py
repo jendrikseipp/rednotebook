@@ -20,6 +20,8 @@
 from __future__ import with_statement
 
 import os
+import imp
+import sys
 import zipfile
 import subprocess
 import logging
@@ -30,8 +32,6 @@ from glob import glob
 
 
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
-import imp, os, sys
-
 def main_is_frozen():
     return (hasattr(sys, "frozen") or # new py2exe
         hasattr(sys, "importers") # old py2exe
@@ -41,7 +41,7 @@ def get_main_dir():
     if main_is_frozen():
         return os.path.dirname(sys.executable)
     return os.path.dirname(sys.argv[0])
-#--------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
 
 if not main_is_frozen():
@@ -267,7 +267,7 @@ def get_platform_info():
     for name, object, value in lib_values:
         try:
             names_values.append((name, getattr(object, value)))
-        except AttributeError, err:
+        except AttributeError:
             logging.info('%s could not be determined' % name)
 
     vals = ['%s: %s' % (name, val) for name, val in names_values]
@@ -327,7 +327,7 @@ def open_url(url):
             # os.startfile is only available on windows
             os.startfile(url)
             return
-        except (WindowsError, OSError):
+        except OSError:
             logging.exception('Opening %s with "os.startfile" failed' % url)
 
     elif sys.platform == 'darwin':

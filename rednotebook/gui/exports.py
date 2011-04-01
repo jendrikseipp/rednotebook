@@ -19,11 +19,8 @@
 
 import sys
 import os
-import datetime
 import logging
-import re
 import datetime
-import codecs
 
 import gtk
 import gobject
@@ -38,7 +35,7 @@ from rednotebook.util import filesystem
 from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
-                    IntroductionPage, RadioButtonPage, PathChooserPage, Assistant
+                                    RadioButtonPage, PathChooserPage, Assistant
 from rednotebook.gui import browser
 
 
@@ -462,7 +459,7 @@ class Exporter(object):
         for module in modules:
             try:
                 __import__(module)
-            except ImportError, err:
+            except ImportError:
                 logging.info('"%s" could not be imported. '
                     'You will not be able to import %s' % (module, cls.NAME))
                 # Importer cannot be used

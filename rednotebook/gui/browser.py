@@ -23,7 +23,6 @@ from __future__ import with_statement
 import sys
 import os
 import logging
-import warnings
 
 import gtk
 import gobject
@@ -101,8 +100,7 @@ class HtmlPrinter(object):
         self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
 
     def print_html(self, html, outfile):
-        handler = self._webview.connect(
-            'load-finished', self._load_finished_cb, outfile)
+        self._webview.connect('load-finished', self._load_finished_cb, outfile)
         self._print_status('Loading URL...')
         self._webview.load_html_string(html, 'file:///')
 
@@ -181,7 +179,7 @@ class HtmlView(gtk.ScrolledWindow):
             self.webview.unmark_text_matches()
 
             # Mark all occurences of "string", case-insensitive, no limit
-            matches = self.webview.mark_text_matches(string, False, 0)
+            self.webview.mark_text_matches(string, False, 0)
             self.webview.set_highlight_text_matches(True)
         except AttributeError, err:
             logging.info(err)

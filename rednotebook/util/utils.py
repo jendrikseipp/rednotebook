@@ -21,9 +21,6 @@ from __future__ import with_statement, division
 
 import sys
 import signal
-import random
-import operator
-from operator import itemgetter
 import os
 import re
 from urllib2 import urlopen, URLError
@@ -36,7 +33,6 @@ from distutils.version import StrictVersion
 
 import gtk
 
-from rednotebook.gui import customwidgets
 from rednotebook import info
 import filesystem
 
@@ -58,7 +54,6 @@ def get_html_doc_from_word_count_dict(word_count_dict, type, ignore_list, includ
     sorted_dict = filter(lambda (word, freq): word.lower() not in ignore_list, sorted_dict)
     logging.debug('Filtered blacklist words. Length word_count_dict: %s' % len(sorted_dict))
 
-    often_used_words = []
     number_of_words = 42
 
     '''

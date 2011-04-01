@@ -20,17 +20,12 @@
 from __future__ import with_statement
 
 import os
-import sys
 import logging
-import time
-import codecs
 
 import gtk
 
-
 from rednotebook.util import filesystem
 from rednotebook.util import dates
-
 
 
 example_text = '''\

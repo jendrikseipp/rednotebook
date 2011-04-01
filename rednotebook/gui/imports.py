@@ -272,9 +272,6 @@ class RedNotebookImporter(Importer):
     PATHTEXT = _('Select a directory containing RedNotebook data files')
     PATHTYPE = 'DIR'
 
-    def __init__(self):
-        date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
-
     def get_days(self, dir):
         assert os.path.isdir(dir)
         months = storage.load_all_months_from_disk(dir)
@@ -289,9 +286,6 @@ class RedNotebookBackupImporter(RedNotebookImporter):
     PATHTEXT = _('Select a backup zipfile')
     PATHTYPE = 'FILE'
     EXTENSION = 'zip'
-
-    def __init__(self):
-        date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
 
     @classmethod
     def is_available(cls):

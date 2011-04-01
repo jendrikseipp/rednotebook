@@ -23,11 +23,9 @@ import logging
 import platform
 
 import gtk
-import gobject
 
 from rednotebook.gui.customwidgets import UrlButton, CustomComboBoxEntry
 from rednotebook.gui.customwidgets import ActionButton
-from rednotebook.gui import browser
 from rednotebook.util import filesystem, utils, dates
 from rednotebook import info
 

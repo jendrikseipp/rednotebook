@@ -22,11 +22,10 @@ from __future__ import with_statement
 import sys
 import datetime
 import os
-import operator
 import collections
 import time
 import logging
-from optparse import OptionParser, OptionValueError
+from optparse import OptionParser
 
 
 # Use basic stdout logging before we can initialize logging correctly
@@ -389,7 +388,7 @@ class Journal:
             try:
                 filesystem.make_directory(self.dirs.journal_user_dir)
                 self.config.save_to_disk()
-            except IOError, err:
+            except IOError:
                 self.show_message(_('Configuration could not be saved. Please check your permissions'))
                 logging.error('Configuration could not be saved. Please check your permissions')
 

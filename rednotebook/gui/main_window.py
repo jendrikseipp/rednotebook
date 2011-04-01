@@ -20,10 +20,7 @@
 import sys
 import os
 import datetime
-import time
 import urllib
-import urlparse
-import webbrowser
 import logging
 from xml.sax.saxutils import escape
 
@@ -38,25 +35,17 @@ except ImportError:
     gtkspell = None
 
 
-# Initialize the gtk thread engine
-#gobject.threads_init()
-
 from rednotebook.util import utils
-
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.external.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
-from rednotebook.gui import customwidgets
-from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView, \
-                                            get_button_width
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
-from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook import undo
-
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import categories
 from rednotebook.gui import t2t_highlight
@@ -93,9 +82,8 @@ class MainWindow(object):
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
-        icons = [gtk.gdk.pixbuf_new_from_file(file) for file in filesystem.get_icons()]
-        self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file),
-                                filesystem.get_icons()))
+        icons = [gtk.gdk.pixbuf_new_from_file(icon) for icon in filesystem.get_icons()]
+        self.main_frame.set_icon_list(*icons)
 
         self.is_fullscreen = False
 

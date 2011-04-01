@@ -124,8 +124,8 @@ def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journa
                     # This version produces readable unicode and no python directives
                     yaml.safe_dump(month_content, month_file, allow_unicode=True)
                     month.edited = False
-                except OSError, err:
+                except OSError:
                     frame.show_save_error_dialog(exit_imminent)
-                except IOError, err:
+                except IOError:
                     frame.show_save_error_dialog(exit_imminent)
     return something_saved

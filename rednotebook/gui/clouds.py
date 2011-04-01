@@ -44,7 +44,6 @@ def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
     sorted_dict = filter(lambda (word, freq): word.lower() not in ignore_list, sorted_dict)
     logging.debug('Filtered blacklist words. Length word_count_dict: %s' % len(sorted_dict))
 
-    often_used_words = []
     number_of_words = 42
 
     '''
