@@ -20,10 +20,19 @@ X Numbered lists
 O "Export currently visible day only" option
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 O Allow double backslashes (\\) in filenames (e.g. for UNC paths)
+O Ensure that date in export is bigger than rest of text
 O Abort startup if yaml file cannot be read
+X Escape regular expression syntax in searches (*, +, etc.)
 X Code optimizations
 X Remove old cloud implementation
 X Remove external module htmltextview.py
+O Remove dead code and get rid of python3.0 warnings
+O Let the next (prev) button have submenus (go to next entry, go to last entry)
+O Remember export and backup locations
+X Search in annotations
+O Do not write empty month files to disk
+O Do not allow starting two instances at the same time
+O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -53,28 +62,20 @@ O Fix status icon on XFCE (LP:525196)
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
-O Get rid of python3.0 warnings
 O Remove support for the notification area on Linux (http://design.canonical.com/2010/04/notification-area/)
 O Only export days that have category X if category X is selected?
-O Let the next (prev) button have submenus (go to next entry, go to last entry)
 O Windows: Enable spellcheck
-O Translate help
+O Translate help (Restructure first using Sphinx?)
 O Add "AddThis" Buttons to homepage
 O Rethink logfile
 O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
-O Ensure that date in export is bigger than rest of text
 O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
-O Remember export and backup locations
 O Windows: Add correct newline character for editing previews in notepad
-O Search in annotations
-O Do not write empty month files to disk
 O Update search window when an annotation has been added/changed?
-O Install .mo files (translations) in the standard directories (check for better build system first)
+O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
-O Do not allow starting two instances at the same time
-O Remove keepnote and htmltextview sources (make webkit mandatory first)
-O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
+O Remove keepnote sources (Wait for Chinese text rendering in Webkit)
 O Create mono icon for panel?
 O Regularly check for new webkit version that supports chinese fonts
 
@@ -94,12 +95,7 @@ O Image resizing with PIL? (Image module) (Figure out where to save new files fi
 
 2.x
 O Think about using desktop-couch?
-O Use categories for number data and present it graphically (KMs, Cash, Calories)
 O RTF export
-
-
-
-
 
 
 
@@ -167,3 +163,4 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
 - Let the Search type selection remember the selection between sessions (KISS)
 - Let the Annotate and Tag window box remember their positions between sessions (KISS)
 - Select template file when clicking the button instead of adding weekday's file
+- Use categories for number data and present it graphically (KMs, Cash, Calories) (KISS)

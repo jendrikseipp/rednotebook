@@ -22,6 +22,45 @@ from __future__ import division
 import datetime
 import logging
 
+TEXT_RESULT_LENGTH = 50
+
+
+def get_text_with_dots(text, start, end, found_text=None):
+    '''
+    Find the outermost spaces and add dots if needed
+    '''
+    bound1 = max(0, start - int(TEXT_RESULT_LENGTH//2))
+    bound2 = start
+    bound3 = end
+    bound4 = min(len(text), end + int(TEXT_RESULT_LENGTH//2))
+
+    if bound1 == 0:
+        start = 0
+    else:
+        start = max(bound1, text.find(' ', bound1, bound2))
+
+    if bound4 == len(text):
+        end = len(text)
+    else:
+        end = text.rfind(' ', bound3, bound4)
+        if end == -1:
+            end = bound4
+
+    res = ''
+    if start > 0:
+        res += '... '
+    res += text[start:end]
+    if end < len(text):
+        res += ' ...'
+
+    res = res.replace('\n', ' ')
+
+    if found_text:
+        # Make the searched_text bold
+        res = res.replace(found_text, 'STARTBOLD%sENDBOLD' % found_text)
+
+    return res
+
 
 class Day(object):
     def __init__(self, month, day_number, day_content = None):
@@ -33,8 +72,6 @@ class Day(object):
         self.month = month
         self.day_number = day_number
         self.content = day_content
-
-        self.search_result_length = 50
 
     # Text
     def _get_text(self):
@@ -150,66 +187,41 @@ class Day(object):
         return len(self._get_words(with_special_chars=True))
 
 
+    def get_date_and_start_of_text(self):
+        return (str(self), get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+
+
     def search_text(self, search_text):
         '''
-        Try searching in date first, then in the text
+        Try searching in date first, then in the text, then in the annotations
         Uses case-insensitive search
         '''
-        def get_text_with_dots(start, end, found_text=None):
-            '''
-            Find the outermost spaces and add dots if needed
-            The bound1 text and the bound2 found_text bound3 with more bound4 text
-            '''
-            text = self.text
-            bound1 = max(0, start - int(self.search_result_length//2))
-            bound2 = start
-            bound3 = end
-            bound4 = min(len(text), end + int(self.search_result_length//2))
-
-            if bound1 == 0:
-                start = 0
-            else:
-                start = max(bound1, text.find(' ', bound1, bound2))
-
-            if bound4 == len(text):
-                end = len(text)
-            else:
-                end = text.rfind(' ', bound3, bound4)
-                if end == -1:
-                    end = bound4
-
-            res = ''
-            if start > 0:
-                res += '... '
-            res += text[start:end]
-            if end < len(text):
-                res += ' ...'
-
-            res = res.replace('\n', ' ')
-
-            if found_text:
-                # Make the searched_text bold
-                res = res.replace(found_text, 'STARTBOLD%sENDBOLD' % found_text)
-
-            return res
-
         # Search in date
         date = str(self)
         if search_text in date:
-            return (date, get_text_with_dots(0, int(self.search_result_length//2)))
+            return self.get_date_and_start_of_text()
 
         # Search in text
         upcase_search_text = search_text.upper()
         upcase_day_text = self.text.upper()
         occurence = upcase_day_text.find(upcase_search_text)
 
+        # Check if search_text is in text
         if occurence > -1:
-            # search_text is in text
-
             found_text = self.text[occurence:occurence + len(search_text)]
 
-            result_text = get_text_with_dots(occurence, occurence + len(search_text), found_text)
+            result_text = get_text_with_dots(self.text, occurence,
+                                    occurence + len(search_text), found_text)
             return (date, result_text)
+
+        # Check if search_text is in annotations
+        for category, content_list in self.get_category_content_pairs().items():
+            if search_text.upper() in category.upper():
+                return self.get_date_and_start_of_text()
+
+            for tag in content_list:
+                if search_text.upper() in tag.upper():
+                    return self.get_date_and_start_of_text()
 
 
     def search_category(self, search_category):
@@ -224,22 +236,12 @@ class Day(object):
 
     def search_tag(self, search_tag):
         for category, content_list in self.get_category_content_pairs().items():
-            if category.upper() == 'TAGS' and content_list:
-                if search_tag.upper() in map(lambda x: x.upper(), content_list):
-                    first_whitespace = self.text.find(' ', self.search_result_length)
+            if not category.upper() == 'TAGS' or not content_list:
+                continue
+            if not search_tag.upper() in [tag.upper() for tag in content_list]:
+                continue
 
-                    if first_whitespace == -1:
-                        # No whitespace found
-                        text_start = self.text
-                    else:
-                        text_start = self.text[:first_whitespace + 1]
-
-                    text_start = text_start.replace('\n', '')
-
-                    if len(text_start) < len(self.text):
-                        text_start += ' ...'
-                    return (str(self), text_start)
-        return None
+            return self.get_date_and_start_of_text()
 
 
     def __str__(self):

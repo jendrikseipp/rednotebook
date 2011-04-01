@@ -44,10 +44,10 @@
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">Text</col>
+        <col id="0" translatable="yes">Everywhere</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Category</col>
+        <col id="0" translatable="yes">Categories</col>
       </row>
       <row>
         <col id="0" translatable="yes">Tags</col>
