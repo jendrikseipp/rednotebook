@@ -36,6 +36,9 @@ from rednotebook.external import txt2tags
 from rednotebook.util import filesystem
 
 
+REGEX_LINEBREAK = r'\\\\[\s]*$'
+
+
 
 def convert_categories_to_markup(categories, with_category_title=True):
     'Only add Category title if the text is displayed'
@@ -70,7 +73,7 @@ def get_markup_for_day(day, with_text=True, categories=None, date=None):
     category_content_pairs = day.get_category_content_pairs()
 
     if categories:
-        categories = map(lambda word: word.lower(), categories)
+        categories = [word.lower() for word in categories]
         export_categories = dict((x,y) for (x, y) in category_content_pairs.items()
                         if x.lower() in categories)
     elif categories is None:
@@ -108,6 +111,8 @@ def _get_config(type):
     config['postproc'] = []
     config['preproc'] = []
 
+    # Allow line breaks, r'\\\\' are 2 \ for regexes
+    config['preproc'].append([REGEX_LINEBREAK, 'REDNOTEBOOKLINEBREAK'])
 
     if type == 'xhtml' or type == 'html':
         config['encoding'] = 'UTF-8'       # document encoding
@@ -119,8 +124,8 @@ def _get_config(type):
         # keepnote only recognizes "<strike>"
         config['postproc'].append(['(?i)(</?)s>', r'\1strike>'])
 
-        # Allow line breaks, r'\\\\' are 2 \ for regexes
-        config['postproc'].append([r'\\\\', '<br />'])
+        # Line breaks
+        config['postproc'].append([r'REDNOTEBOOKLINEBREAK', '<br />'])
 
         # Apply image resizing
         config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
@@ -148,15 +153,15 @@ def _get_config(type):
         config['postproc'].append([r'htmladdnormallink\{(.*)\}\{%s(.*)\}' % scheme,
                                    r'htmladdnormallink{\1}{run:\2}'])
 
-        # Allow line breaks, r'\\\\' are 2 \ for regexes
-        config['postproc'].append([r'\$\\backslash\$\$\\backslash\$', r'\\\\'])
+        # Line breaks
+        config['postproc'].append([r'REDNOTEBOOKLINEBREAK', r'\\\\'])
 
         # Apply image resizing
         config['postproc'].append([r'includegraphics\{("?)WIDTH(\d+)-', r'includegraphics[width=\2px]{\1'])
 
     elif type == 'txt':
-        # Allow line breaks, r'\\\\' are 2 \ for regexes
-        config['postproc'].append([r'\\\\', '\n'])
+        # Line breaks
+        config['postproc'].append([r'REDNOTEBOOKLINEBREAK', '\n'])
 
         # Apply image resizing ([WIDTH400-file:///pathtoimage.jpg])
         config['postproc'].append([r'\[WIDTH(\d+)-(.+)\]', r'[\2?\1]'])
@@ -253,7 +258,7 @@ def convert_to_pango(txt, headers=None, options=None):
 
     # Allow line breaks, r'\\\\' are 2 \ for regexes
     config['postproc'] = []
-    config['postproc'].append([r'\\\\', '\n'])
+    config['postproc'].append([REGEX_LINEBREAK, '\n'])
 
     if options is not None:
         config.update(options)

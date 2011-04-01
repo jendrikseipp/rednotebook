@@ -19,8 +19,8 @@ X Tables
 X Numbered lists
 X Add "Export currently visible day" option in export assistant
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
-O Allow double backslashes (\\) in filenames (e.g. for UNC paths)
-O Ensure that date in export is bigger than rest of text
+X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
+X Allow linebreaks (\\) only at the end of lines
 X Abort startup if a yaml file cannot be read
 X Escape regular expression syntax in searches (*, +, etc.)
 X Code optimizations

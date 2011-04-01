@@ -332,7 +332,7 @@ for level in range(1, 6):
     numtitle = Pattern(numtitle_pattern, title_style + [(2, style_name)])
     title_patterns += [title, numtitle]
 
-linebreak = Pattern(r'(\\\\)', [(1, 'gray')])
+linebreak = Pattern(r'(%s)' % markup.REGEX_LINEBREAK, [(1, 'gray')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 # \w = [a-zA-Z0-9_]
