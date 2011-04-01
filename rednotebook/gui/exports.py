@@ -47,10 +47,15 @@ class DatePage(AssistantPage):
         self.journal = journal
 
         self.all_days_button = gtk.RadioButton(label=_('Export all days'))
-        self.sel_days_button = gtk.RadioButton(label=_('Export only the days in the selected time range'),
-                                            group=self.all_days_button)
+        self.one_day_button = gtk.RadioButton(
+                                    label=_('Export currently visible day'),
+                                    group=self.all_days_button)
+        self.sel_days_button = gtk.RadioButton(
+                    label=_('Export days in the selected time range'),
+                    group=self.all_days_button)
 
         self.pack_start(self.all_days_button, False)
+        self.pack_start(self.one_day_button, False)
         self.pack_start(self.sel_days_button, False)
 
         label1 = gtk.Label()
@@ -97,7 +102,7 @@ class DatePage(AssistantPage):
     def get_date_range(self):
         if self.select_days:
             return (self.calendar1.get_date(), self.calendar2.get_date())
-        return None
+        return (self.journal.day.date,) * 2
 
 
     def refresh_dates(self):

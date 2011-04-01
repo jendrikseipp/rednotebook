@@ -17,7 +17,7 @@ X Mention "--record installed-files" setup.py's option for remembering installed
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
-O "Export currently visible day only" option
+X Add "Export currently visible day" option in export assistant
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 O Allow double backslashes (\\) in filenames (e.g. for UNC paths)
 O Ensure that date in export is bigger than rest of text
