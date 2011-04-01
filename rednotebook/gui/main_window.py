@@ -999,12 +999,14 @@ class MainWindow(object):
         else:
             name = '-' + self.journal.title
 
-        proposed_file_name = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
+        proposed_filename = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
+        proposed_directory = self.journal.config.read('lastBackupDir',
+                                                      os.path.expanduser('~'))
 
         backup_dialog = self.builder.get_object('backup_dialog')
         backup_dialog.set_transient_for(self.main_frame)
-        backup_dialog.set_current_folder(os.path.expanduser('~'))
-        backup_dialog.set_current_name(proposed_file_name)
+        backup_dialog.set_current_folder(proposed_directory)
+        backup_dialog.set_current_name(proposed_filename)
 
         filter = gtk.FileFilter()
         filter.set_name("Zip")
@@ -1015,7 +1017,9 @@ class MainWindow(object):
         backup_dialog.hide()
 
         if response == gtk.RESPONSE_OK:
-            return backup_dialog.get_filename()
+            path = backup_dialog.get_filename()
+            self.journal.config['lastBackupDir'] = os.path.dirname(path)
+            return path
 
 
     def highlight_text(self, search_text):

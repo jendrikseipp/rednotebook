@@ -303,7 +303,8 @@ class PathChooserPage(AssistantPage):
             filter.add_pattern('*.' + extension)
             self.chooser.add_filter(filter)
 
-        #path = self.last_path or path
+        if self.last_path and os.path.exists(self.last_path):
+            path = self.last_path
 
         if os.path.isdir(path):
             self.chooser.set_current_folder(path)

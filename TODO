@@ -28,7 +28,7 @@ X Remove old cloud implementation
 X Remove external module htmltextview.py
 O Remove dead code and get rid of python3.0 warnings
 O Let the next (prev) button have submenus (go to next entry, go to last entry)
-O Remember export and backup locations
+X Remember last export and backup locations
 X Search in annotations
 O Do not write empty month files to disk
 O Do not allow starting two instances at the same time
