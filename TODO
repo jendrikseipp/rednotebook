@@ -32,7 +32,7 @@ X Remember last export and backup locations
 X Search in annotations
 O Do not write empty month files to disk
 O Do not allow starting two instances at the same time
-O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
+X Show the most recent entries at the top of the search list by default
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)

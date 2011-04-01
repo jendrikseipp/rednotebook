@@ -576,7 +576,7 @@ class Journal:
 
     def search(self, text=None, category=None, tag=None):
         results = []
-        for day in self.days:
+        for day in reversed(self.days):
             result = None
             if text:
                 result = day.search_text(text)
