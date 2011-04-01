@@ -114,13 +114,17 @@ def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journa
         if month.edited or saveas:
             something_saved = True
             month_file_string = os.path.join(dir, year_and_month + '.txt')
-            with codecs.open(month_file_string, 'wb', encoding='utf-8') as month_file:
-                month_content = {}
-                for day_number, day in month.days.iteritems():
-                    # do not add empty days
-                    if not day.empty:
-                        month_content[day_number] = day.content
+            month_content = {}
+            for day_number, day in month.days.iteritems():
+                # do not add empty days
+                if not day.empty:
+                    month_content[day_number] = day.content
 
+            # Do not save empty month files
+            if not month_content and not os.path.exists(month_file_string):
+                continue
+
+            with codecs.open(month_file_string, 'wb', encoding='utf-8') as month_file:
                 try:
                     # yaml.dump(month_content, month_file, Dumper=Dumper)
                     # This version produces readable unicode and no python directives
