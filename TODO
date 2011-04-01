@@ -21,6 +21,9 @@ O "Export currently visible day only" option
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 O Allow double backslashes (\\) in filenames (e.g. for UNC paths)
 O Abort startup if yaml file cannot be read
+X Code optimizations
+X Remove old cloud implementation
+X Remove external module htmltextview.py
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)

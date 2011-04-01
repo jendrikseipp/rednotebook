@@ -37,7 +37,6 @@ except ImportError:
 
 from rednotebook.util import utils
 from rednotebook.gui.menu import MainMenuBar
-from rednotebook.external.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.richtext import HtmlEditor
@@ -457,15 +456,8 @@ class MainWindow(object):
     def setup_clouds(self):
         self.cloud_box = self.builder.get_object('cloud_box')
 
-        if browser.webkit:
-            from rednotebook.gui.clouds import Cloud
-            self.cloud = Cloud(self.journal)
-            logging.info('Using pywebkitgtk for the clouds.')
-        else:
-            logging.warning('pywebkitgtk is not installed and cannot '
-                    'be used for the clouds. You may experience errors')
-            #self.search_notebook.remove_page(1)
-            self.cloud = CloudView(self.journal)
+        from rednotebook.gui.clouds import Cloud
+        self.cloud = Cloud(self.journal)
 
         self.cloud_box.pack_start(self.cloud)
 
@@ -1184,137 +1176,6 @@ class SearchComboBox(CustomComboBoxEntry):
             self.main_window.highlight_text(search_text)
 
         self.main_window.search_tree_view.update_data(search_text)
-
-
-
-class CloudView(HtmlWindow):
-    def __init__(self, journal):
-        HtmlWindow.__init__(self)
-
-        self.journal = journal
-
-        self.update_lists()
-
-        self.htmlview.connect("url-clicked", self.word_clicked)
-        self.htmlview.connect('populate-popup', self.create_popup_menu)
-        self.htmlview.connect('right-click', self.on_right_click)
-
-        self.htmlview.set_cursor_visible(False)
-
-        self.set_type(0, init=True)
-
-    def set_type(self, type_int, init=False):
-        self.type_int = type_int
-        self.type = ['word', 'category', 'tag'][type_int]
-        if not init:
-            self.update(force_update=True)
-
-    def update_lists(self):
-        config = self.journal.config
-
-        default_ignore_list = _('filter, these, comma, separated, words')
-        self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
-        self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
-        logging.info('Cloud ignore list: %s' % self.ignore_list)
-
-        ### Translators: These are example whitelist words with 4 or less letters
-        default_include_list = _('mtv, spam, work, job, play')
-        self.include_list = config.read_list('cloudIncludeList', default_include_list)
-        self.include_list = map(lambda word: word.lower(), self.include_list)
-        logging.info('Cloud include list: %s' % self.include_list)
-
-
-    def update(self, force_update=False):
-        if self.journal.frame is None:
-            return
-
-        logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
-
-        # Do not update the cloud with words as it requires a lot of searching
-        if self.type == 'word' and not force_update:
-            return
-
-        self.journal.save_old_day()
-
-        word_count_dict = self.journal.get_word_count_dict(self.type)
-        logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
-
-        self.tag_cloud_words, html = \
-            utils.get_html_doc_from_word_count_dict(word_count_dict, self.type,
-                                            self.ignore_list, self.include_list)
-        logging.debug('%s cloud words found' % len(self.tag_cloud_words))
-
-        self.write(html)
-
-        logging.debug('Cloud updated')
-
-
-    def word_clicked(self, htmlview, uri, type_):
-        self.journal.save_old_day()
-        # uri has the form "something/somewhere/search/search_index"
-        if 'search' in uri:
-            # search_index is the part after last slash
-            search_index = int(uri.split('/')[-1])
-            search_text, count = self.tag_cloud_words[search_index]
-
-            self.journal.frame.search_type_box.set_active(self.type_int)
-            self.journal.frame.search_box.set_active_text(search_text)
-            self.journal.frame.search_notebook.set_current_page(0)
-
-            # returning True here stops loading the document
-            return True
-
-    def on_right_click(self, view, uri, type_):
-        #logging.debug('URI clicked %s' % uri)
-        # search_index is the part after last slash
-        search_index = int(uri.split('/')[-1])
-        word, count = self.tag_cloud_words[search_index]
-        self.on_ignore_menu_activate(None, selected_words=[word])
-
-    def create_popup_menu(self, textview, menu):
-        '''
-        Called when the cloud's popup menu is created
-        '''
-        label = _('Hide selected words')
-        ignore_menu_item = gtk.MenuItem(label)
-        separator = gtk.SeparatorMenuItem()
-
-        ignore_menu_item.show()
-        separator.show()
-
-        menu.prepend(separator)
-        menu.prepend(ignore_menu_item)
-
-        ignore_menu_item.connect('activate', self.on_ignore_menu_activate)
-
-    def on_ignore_menu_activate(self, menu_item, selected_words=None):
-        if selected_words is None:
-            selected_words = self.get_selected_words()
-
-        logging.info('The following words will be hidden from clouds: %s' % selected_words)
-        self.ignore_list.extend(selected_words)
-        self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
-        self.update(force_update=True)
-
-    def get_selected_words(self):
-        bounds = self.htmlview.get_buffer().get_selection_bounds()
-
-        if not bounds:
-            return []
-
-        text = self.htmlview.get_buffer().get_text(*bounds).decode('utf-8')
-        words = text.split(' ')
-
-        # Delete pseudo whitespace
-        words = map(lambda word: word.replace('_', ''), words)
-
-        # Delete whitespace
-        words = map(lambda word: word.strip(), words)
-
-        # Delete empty words
-        words = filter(lambda word: len(word) > 0, words)
-
-        return words
 
 
 
