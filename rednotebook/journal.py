@@ -547,11 +547,19 @@ class Journal:
 
 
     def go_to_next_day(self):
-        self.change_date(self.date + dates.one_day)
+        next_date = self.date + dates.one_day
+        following_edited_days = self.get_days_in_date_range(start_date=next_date)
+        if following_edited_days:
+            next_date = following_edited_days[0].date
+        self.change_date(next_date)
 
 
     def go_to_prev_day(self):
-        self.change_date(self.date - dates.one_day)
+        prev_date = self.date - dates.one_day
+        previous_edited_days = self.get_days_in_date_range(end_date=prev_date)
+        if previous_edited_days:
+            prev_date = previous_edited_days[-1].date
+        self.change_date(prev_date)
 
 
     def show_message(self, message_text, error=False, countdown=True):
@@ -634,7 +642,12 @@ class Journal:
         return word_dict
 
 
-    def get_days_in_date_range(self, start_date, end_date):
+    def get_days_in_date_range(self, start_date=None, end_date=None):
+        if not start_date:
+            start_date = datetime.date.min
+        if not end_date:
+            end_date = datetime.date.max
+
         start_date, end_date = sorted([start_date, end_date])
         assert start_date <= end_date
 
