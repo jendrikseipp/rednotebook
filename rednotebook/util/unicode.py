@@ -53,34 +53,6 @@ def coll(us, td=make_transdict()):
     return us.translate(td)
 
 
-def get_unicode(some_var):
-    """Unused"""
-    if type(some_var) == str:
-        try:
-            unicode_string = some_var.decode('utf-8')
-            return unicode_string
-        except (UnicodeDecodeError, UnicodeEncodeError):
-            pass
-    return some_var
-
-def test_unicode():
-    print get_unicode('\xd0\x91')
-    print get_unicode('\u0411')
-    print get_unicode(u'\u0411')
-
-
-def get_unicode_dict(dic):
-    """Unused"""
-    unicode_dict = {}
-    for key, value in dic.items():
-        if isinstance(value, dict):
-            sub_dict = get_unicode_dict(value)
-        else:
-            sub_dict = get_unicode(value)
-
-        unicode_dict[get_unicode(key)] = sub_dict
-    return unicode_dict
-
 def test_unicode_sorting():
     l = [u'\xe9cole', u'ecole', u'las', u'laß', u'lax',
          u'ueber', u'über', u'zer']

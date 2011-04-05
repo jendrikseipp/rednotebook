@@ -53,6 +53,9 @@ O Encryption/Password
 
   - Maybe find a way to encrypt the whole directory
 
+  - Best option seems to be 7z. Encrypt the texts and files in a lzma file and
+    password protect it if needed. Use the command line instead of a library.
+
 
 X Automatic insertions
   - Use code from Zeitgeist
