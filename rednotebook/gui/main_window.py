@@ -1105,10 +1105,6 @@ class NewEntryDialog(object):
 
 
 
-
-
-
-
 class SearchComboBox(CustomComboBoxEntry):
     def __init__(self, combo_box, main_window):
         CustomComboBoxEntry.__init__(self, combo_box)

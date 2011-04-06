@@ -553,9 +553,9 @@ class Journal:
             month.edited = True
 
 
-    def _get_current_day(self):
+    @property
+    def day(self):
         return self.month.get_day(self.date.day)
-    day = property(_get_current_day)
 
 
     def change_date(self, new_date):
@@ -651,7 +651,7 @@ class Journal:
         word_dict = collections.defaultdict(int)
         for day in self.days:
             if type == 'word':
-                words = day.words
+                words = day.get_words()
             if type == 'category':
                 words = day.node_names
             if type == 'tag':

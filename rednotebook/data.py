@@ -93,22 +93,22 @@ class Day(object):
     has_text = property(_has_text)
 
 
-    def _is_empty(self):
+    @property
+    def empty(self):
         if len(self.content.keys()) == 0:
             return True
         elif len(self.content.keys()) == 1 and 'text' in self.content and not self.has_text:
             return True
         else:
             return False
-    empty = property(_is_empty)
 
 
-    def _get_tree(self):
+    @property
+    def tree(self):
         tree = self.content.copy()
         if 'text' in tree:
             del tree['text']
         return tree
-    tree = property(_get_tree)
 
 
     def add_category_entry(self, category, entry):
@@ -139,18 +139,18 @@ class Day(object):
                 self.add_category_entry(category, entry)
 
 
-    def _get_node_names(self):
+    @property
+    def node_names(self):
         return self.tree.keys()
-    node_names = property(_get_node_names)
 
 
-    def _get_tags(self):
+    @property
+    def tags(self):
         tags = []
         for category, list_content in self.get_category_content_pairs().iteritems():
             if category.upper() == 'TAGS':
                 tags.extend(list_content)
         return set(tags)
-    tags = property(_get_tags)
 
 
     def get_category_content_pairs(self):
@@ -169,7 +169,7 @@ class Day(object):
         return pairs
 
 
-    def _get_words(self, with_special_chars=False):
+    def get_words(self, with_special_chars=False):
         if with_special_chars:
             return self.text.split()
 
@@ -180,11 +180,10 @@ class Day(object):
             if len(word) > 0:
                 real_words.append(word)
         return real_words
-    words = property(_get_words)
 
 
     def get_number_of_words(self):
-        return len(self._get_words(with_special_chars=True))
+        return len(self.get_words(with_special_chars=True))
 
 
     def get_date_and_start_of_text(self):
@@ -287,28 +286,28 @@ class Month(object):
         return res
 
 
-    def _is_empty(self):
+    @property
+    def empty(self):
         for day in self.days.values():
             if not day.empty:
                 return False
         return True
-    empty = property(_is_empty)
 
 
-    def _get_node_names(self):
+    @property
+    def node_names(self):
         node_names = set([])
         for day in self.days.values():
             node_names |= set(day.node_names)
         return node_names
-    node_names = property(_get_node_names)
 
 
-    def _get_tags(self):
+    @property
+    def tags(self):
         tags = set([])
         for day in self.days.values():
             tags |= set(day.tags)
         return tags
-    tags = property(_get_tags)
 
 
     def same_month(date1, date2):
