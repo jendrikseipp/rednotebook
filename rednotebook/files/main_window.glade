@@ -388,19 +388,6 @@
                                     <property name="homogeneous">True</property>
                                   </packing>
                                 </child>
-                                <child>
-                                  <object class="GtkToolButton" id="delete_entry_button">
-                                    <property name="visible">True</property>
-                                    <property name="label" translatable="yes">Delete</property>
-                                    <property name="use_underline">True</property>
-                                    <property name="stock_id">gtk-delete</property>
-                                    <signal name="clicked" handler="on_delete_entry_button_clicked"/>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="homogeneous">True</property>
-                                  </packing>
-                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>

@@ -169,7 +169,6 @@ class MainWindow(object):
 
             'on_add_new_entry_button_clicked': self.on_add_new_entry_button_clicked,
             'on_add_tag_button_clicked': self.on_add_tag_button_clicked,
-            'on_delete_entry_button_clicked': self.on_delete_entry_button_clicked,
 
             'on_search_notebook_switch_page': self.on_search_notebook_switch_page,
 
@@ -965,9 +964,6 @@ class MainWindow(object):
 
     def on_add_tag_button_clicked(self, widget):
         self.new_entry_dialog.show_dialog(category='Tags')
-
-    def on_delete_entry_button_clicked(self, widget):
-        self.categories_tree_view.delete_selected_node()
 
     def set_date(self, new_month, new_date, day):
         self.categories_tree_view.clear()
