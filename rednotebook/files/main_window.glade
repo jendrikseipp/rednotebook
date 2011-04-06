@@ -367,7 +367,7 @@
                                     <property name="tooltip_text" translatable="yes">Add an entry to a new or existing category</property>
                                     <property name="label" translatable="yes">Annotate</property>
                                     <property name="use_underline">True</property>
-                                    <property name="stock_id">gtk-new</property>
+                                    <property name="stock_id">gtk-edit</property>
                                     <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                     <signal name="clicked" handler="on_add_new_entry_button_clicked"/>
                                   </object>

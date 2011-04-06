@@ -29,6 +29,7 @@ X Search in annotations
 X Do not write empty month files to disk
 X Show the most recent entries at the top of the search list by default
 X Remove "Delete Entry" button
+X add tooltips for category buttons
 X Remove dead unicode code
 
 1.x
@@ -36,6 +37,9 @@ X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pi
 X Tables
 X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
+O Use better icons for Annotate (pencil) and Tag (tag)
+O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
+O Fix non-ascii dates
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -126,16 +130,9 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
   the applicaiton to close. I have no such problems with the 1.1.0 version (with
   the 'older' user interface).
 - Change an entry's category (Useful for Todo items) (KISS?)
+- Plugin system?
 
 1. Have every category retain its subentries to suit to recurring activities, just like Tags does. E.g. I have one category named Clients; since I often meet the same persons, I find it annoying entering the same name more than one time - and you now, spelling errors and the like... And what if I look at any TV series?
-2. Tags and annotations could be more differentiated from the user point of view. E.g. two separated spaces on the right, one for each of them; when adding a new tag, no categories should appear and vice versa.
-3. In my opinion, the icons relevant to tags and annotations do not match well: why a light bulb instead of a tag? A tag is different from an idea! What about using a pencil for annotations and a tag for... er, tags? :)
-4. I did not manage to enter a time; if the formatting string involves time, "00:00:00" is always inserted.
-5. The weekday name may have problems with non-ASCII characters. E.g. English "wednesday" = Italian "mercoledì", and some character other than "ì" is shown.
-6. Speaking about grammar, the cloud should ignore some sintactic structures in order to prove more useful. E.g. the Italian translation of "other" is "altro, altra, altri, altre", and that's quite annoying either to have all of them ignored or to have them appear as four items. Another example: "host" is "ospite", "the host" is "l'ospite": one English item, two Italian items!
-7. Geotagging. Imagine travelling people (I was here and here and here on that day...). Perhaps a new tab beside Search and Clouds would help searching the days relevant to specific locations by using some Google/Bing Maps service. You know: pan, zoom, draw a frame and get your logs. I know SDKs are provided for such purposes, even if I have never used either of them; maybe OpenLayers would be a winning choice. Yes, I know its waaaay more complex ;)
-8. Hey, maybe no one on the Earth cares about either geotagging or grammar except me myself. Plugins are The Way!
-
 
 
 
