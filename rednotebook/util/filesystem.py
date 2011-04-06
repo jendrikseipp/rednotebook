@@ -166,13 +166,8 @@ def read_file(filename):
 
 def write_file(filename, content):
     assert os.path.isabs(filename)
-    #print 'CONTENT', type(content), repr(content)
-    #if not type(content) == unicode:
-        # Turn content into unicode string
-    #    content = content.decode('utf-8')
     try:
         with codecs.open(filename, 'wb', errors='replace', encoding='utf-8') as file:
-        #with open(filename, 'wb') as file:
             file.write(content)
     except IOError, e:
         logging.error('Error while writing to "%s": %s' % (filename, e))

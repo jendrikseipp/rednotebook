@@ -15,7 +15,7 @@ X Mention "--record installed-files" setup.py's option for remembering installed
 
 1.2
 X Add "Export currently visible day" option in export assistant
-X Show warning if second RedNotebook instance is started to prevent data loss
+X Show warning when second RedNotebook instance is started to prevent data loss
 X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
 X Allow linebreaks (\\) only at the end of lines
 X Abort startup if a yaml file cannot be read
