@@ -15,6 +15,7 @@ X Mention "--record installed-files" setup.py's option for remembering installed
 
 1.2
 X Add "Export currently visible day" option in export assistant
+X Show warning if second RedNotebook instance is started to prevent data loss
 X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
 X Allow linebreaks (\\) only at the end of lines
 X Abort startup if a yaml file cannot be read
@@ -26,14 +27,13 @@ X Let the "Back" and "Forward" button jump over blank days
 X Remember last export and backup locations
 X Search in annotations
 X Do not write empty month files to disk
-O Do not allow starting two instances at the same time (value in config?)
 X Show the most recent entries at the top of the search list by default
+X Remove dead unicode code
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
-O Remove dead code and get rid of python3.0 warnings
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 
 O Use Zeitgeist for automatic category entries
