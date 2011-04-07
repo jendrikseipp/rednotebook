@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-30 16:07+0000\n"
+"PO-Revision-Date: 2011-03-31 05:55+0000\n"
 "Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-31 04:37+0000\n"
+"X-Launchpad-Export-Date: 2011-04-01 04:49+0000\n"
 "X-Generator: Launchpad (build 12559)\n"
 
 #: ../rednotebook/info.py:79
@@ -380,11 +380,11 @@ msgstr "بۇ تېكستنى ئۆزگەرتىڭ"
 
 #: ../rednotebook/gui/categories.py:432
 msgid "Add a new entry"
-msgstr "يېڭى كىرگۈ قوشۇش"
+msgstr "يېڭى تۈردىن بىرنى قوش"
 
 #: ../rednotebook/gui/categories.py:436
 msgid "Delete this entry"
-msgstr "بۇ كىرگۈنى ئۆچۈرۈشبۇ كىرگۈنى ئۆچۈرۈش"
+msgstr "بۇ تۈرنى ئۆچۈر"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -392,7 +392,7 @@ msgstr "قوزغالغاندا RedNotebook نى يۈكلە"
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
-msgstr "%A، %x، كۈن %j"
+msgstr "%A، %x، %j-كۈنى"
 
 #: ../rednotebook/gui/options.py:156
 msgid "Week %W of Year %Y"
@@ -400,7 +400,7 @@ msgstr "%Y-يىلىنىڭ %W- ھەپتىسى"
 
 #: ../rednotebook/gui/options.py:157
 msgid "Day %j"
-msgstr "كۈن %j"
+msgstr "%j-كۈنى"
 
 #: ../rednotebook/gui/options.py:162
 msgid "Help"
@@ -409,7 +409,7 @@ msgstr "ياردەم"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:183
 msgid "Preview:"
-msgstr "ئالدىن كۆرۈش"
+msgstr "ئالدىن كۆزەت:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Close to system tray"
@@ -446,7 +446,7 @@ msgstr "ھازىر تەكشۈر"
 
 #: ../rednotebook/gui/options.py:319
 msgid "Font Size"
-msgstr "خەت نۇسخىسىنىڭ چوڭلۇقى"
+msgstr "خەت چوڭلۇقى"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Date/Time format"
@@ -548,7 +548,7 @@ msgstr "ئىككىنچى تۈر"
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Indented Item"
-msgstr "تارتىلغان تۈر"
+msgstr "تارايغان تۈر"
 
 #: ../rednotebook/gui/main_window.py:819
 msgid "Two blank lines close the list"
@@ -556,7 +556,7 @@ msgstr "ئىككى بوش قۇردا بۇ تىزىمنى ياپ"
 
 #: ../rednotebook/gui/main_window.py:823
 msgid "Title text"
-msgstr "ماۋزۇ"
+msgstr "ماۋزۇ تېكىستى"
 
 #: ../rednotebook/gui/main_window.py:847
 msgid "Picture"
@@ -597,7 +597,7 @@ msgstr "ماۋزۇ"
 
 #: ../rednotebook/gui/main_window.py:863
 msgid "Line"
-msgstr "قۇر"
+msgstr "سىزىق"
 
 #: ../rednotebook/gui/main_window.py:864
 msgid "Insert a separator line"
@@ -637,7 +637,7 @@ msgstr "ئۇلانما ئورنى كىرگۈزۈلمىدى"
 
 #: ../rednotebook/gui/main_window.py:1140
 msgid "Search ..."
-msgstr "ئىزدەش…"
+msgstr "ئىزدە…"
 
 #: ../rednotebook/gui/main_window.py:1227 ../rednotebook/gui/clouds.py:137
 msgid "filter, these, comma, separated, words"
@@ -681,11 +681,11 @@ msgstr "تاللانغان ۋاقىت دائىرىسىدىكى كۈنلەرنى�
 
 #: ../rednotebook/gui/exports.py:60
 msgid "From:"
-msgstr "يوللىغۇچى:"
+msgstr "مەنبە:"
 
 #: ../rednotebook/gui/exports.py:62
 msgid "To:"
-msgstr "خەت تاپشۇرۇۋالغۇچى："
+msgstr "نىشان:"
 
 #: ../rednotebook/gui/exports.py:121
 msgid "Export texts"
@@ -717,7 +717,7 @@ msgstr "تاللا"
 
 #: ../rednotebook/gui/exports.py:150
 msgid "Unselect"
-msgstr "تاللاشنى ئەمەلدىن قالدۇر"
+msgstr "تاللىما"
 
 #: ../rednotebook/gui/exports.py:254
 msgid ""
@@ -769,7 +769,7 @@ msgstr "چىقىرىدىغان يولنى تاللاڭ"
 
 #: ../rednotebook/gui/exports.py:338
 msgid "Summary"
-msgstr "ئۈزۈندى"
+msgstr "ئۈزۈندە"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "Start date"
