@@ -1051,11 +1051,10 @@ class NewEntryDialog(object):
         self.new_entry_combo_box.connect('changed', self.on_entry_changed)
 
     def on_category_changed(self, widget):
-        '''Show Tags in ComboBox when "Tags" is selected as category'''
-        if self.categories_combo_box.get_active_text().upper() == 'TAGS':
-            self.new_entry_combo_box.set_entries(self.journal.tags)
-        elif self.new_entry_combo_box.liststore:
-            self.new_entry_combo_box.liststore.clear()
+        '''Show old entries in ComboBox when a new category is selected'''
+        category = self.categories_combo_box.get_active_text()
+        old_entries = self.journal.get_entries(category)
+        self.new_entry_combo_box.set_entries(old_entries)
 
         # only make the entry submittable, if text has been entered
         self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())

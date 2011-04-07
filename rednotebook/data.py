@@ -146,11 +146,11 @@ class Day(object):
 
     @property
     def tags(self):
-        tags = []
-        for category, list_content in self.get_category_content_pairs().iteritems():
-            if category.upper() == 'TAGS':
-                tags.extend(list_content)
-        return set(tags)
+        return self.get_entries('Tags')
+
+
+    def get_entries(self, category):
+        return sorted(self.get_category_content_pairs().get(category, []))
 
 
     def get_category_content_pairs(self):
@@ -302,12 +302,11 @@ class Month(object):
         return node_names
 
 
-    @property
-    def tags(self):
-        tags = set([])
+    def get_entries(self, category):
+        entries = set([])
         for day in self.days.values():
-            tags |= set(day.tags)
-        return tags
+            entries |= set(day.get_entries(category))
+        return sorted(entries)
 
 
     def same_month(date1, date2):

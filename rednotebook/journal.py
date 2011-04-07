@@ -596,10 +596,14 @@ class Journal:
 
     @property
     def tags(self):
-        tags = set([])
+        return self.get_entries('Tags')
+
+
+    def get_entries(self, category):
+        entries = set()
         for month in self.months.values():
-            tags |= set(month.tags)
-        return list(tags)
+            entries |= set(month.get_entries(category))
+        return sorted(entries)
 
 
     def search(self, text=None, category=None, tag=None):
