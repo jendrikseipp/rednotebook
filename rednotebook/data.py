@@ -140,7 +140,7 @@ class Day(object):
 
 
     @property
-    def node_names(self):
+    def categories(self):
         return self.tree.keys()
 
 
@@ -292,14 +292,6 @@ class Month(object):
             if not day.empty:
                 return False
         return True
-
-
-    @property
-    def node_names(self):
-        node_names = set([])
-        for day in self.days.values():
-            node_names |= set(day.node_names)
-        return node_names
 
 
     def get_entries(self, category):

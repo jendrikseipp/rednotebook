@@ -182,8 +182,7 @@ class ContentsPage(AssistantPage):
 
     def refresh_categories_list(self):
         model_available = gtk.ListStore(gobject.TYPE_STRING)
-        categories = self.journal.node_names
-        for category in categories:
+        for category in self.journal.categories:
             new_row = model_available.insert(0)
             model_available.set(new_row, 0, category)
         self.available_categories.set_model(model_available)
@@ -238,7 +237,7 @@ class ContentsPage(AssistantPage):
 
     def get_categories(self):
         if self.all_categories_button.get_active():
-            return self.journal.node_names
+            return self.journal.categories
         elif self.no_categories_button.get_active():
             return []
         else:

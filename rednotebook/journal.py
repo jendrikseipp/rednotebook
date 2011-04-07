@@ -24,6 +24,7 @@ import datetime
 import os
 import collections
 import time
+import itertools
 import logging
 from optparse import OptionParser
 
@@ -461,7 +462,10 @@ class Journal:
 
         self.stats = Statistics(self)
 
-        sorted_categories = sorted(self.node_names, key=lambda category: str(category).lower())
+        def sort_asc(category):
+            return str(category).lower()
+
+        sorted_categories = sorted(self.categories, key=sort_asc)
         self.frame.categories_tree_view.categories = sorted_categories
 
         if self.is_first_start:
@@ -587,11 +591,9 @@ class Journal:
 
 
     @property
-    def node_names(self):
-        node_names = set([])
-        for month in self.months.values():
-            node_names |= set(month.node_names)
-        return list(node_names)
+    def categories(self):
+        return list(sorted(set(itertools.chain.from_iterable(
+                               day.categories for day in self.days))))
 
 
     @property
@@ -657,7 +659,7 @@ class Journal:
             if type == 'word':
                 words = day.get_words()
             if type == 'category':
-                words = day.node_names
+                words = day.categories
             if type == 'tag':
                 words = day.tags
 
