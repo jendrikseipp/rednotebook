@@ -265,7 +265,6 @@ class Month(object):
 
         self.edited = False
 
-
     def get_day(self, day_number):
         if day_number in self.days:
             return self.days[day_number]
@@ -274,10 +273,8 @@ class Month(object):
             self.days[day_number] = new_day
             return new_day
 
-
     def set_day(self, day_number, day):
         self.days[day_number] = day
-
 
     def __str__(self):
         res = 'Month %s %s\n' % (self.year_number, self.month_number)
@@ -285,21 +282,12 @@ class Month(object):
             res += '%s: %s\n' % (day_number, day.text)
         return res
 
-
     @property
     def empty(self):
         for day in self.days.values():
             if not day.empty:
                 return False
         return True
-
-
-    def get_entries(self, category):
-        entries = set([])
-        for day in self.days.values():
-            entries |= set(day.get_entries(category))
-        return sorted(entries)
-
 
     def same_month(date1, date2):
         if date1 == None or date2 == None:

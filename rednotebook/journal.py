@@ -603,8 +603,8 @@ class Journal:
 
     def get_entries(self, category):
         entries = set()
-        for month in self.months.values():
-            entries |= set(month.get_entries(category))
+        for day in self.days:
+            entries |= set(day.get_entries(category))
         return sorted(entries)
 
 
