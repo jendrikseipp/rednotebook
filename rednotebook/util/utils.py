@@ -37,6 +37,10 @@ from rednotebook import info
 import filesystem
 
 
+def sort_asc(string):
+    return str(string).lower()
+
+
 def set_environment_variables(config):
     variables = {}
 

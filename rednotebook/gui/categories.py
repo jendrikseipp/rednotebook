@@ -23,6 +23,7 @@ import gtk
 import pango
 
 from rednotebook.util import markup
+from rednotebook.util import utils
 from rednotebook import undo
 
 
@@ -34,7 +35,7 @@ class CategoriesTreeView(object):
         self.undo_redo_manager = main_window.undo_redo_manager
 
         # Maintain a list of all entered categories. Initialized by rn.__init__()
-        self.categories = None
+        self.categories = []
 
         self.statusbar = self.main_window.statusbar
 
@@ -87,6 +88,13 @@ class CategoriesTreeView(object):
         self.cell.props.wrap_width = 200
         self.tree_view.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
 
+    def add_category(self, category):
+        """Add a new category name and sort all categories."""
+        if category is None or category in self.categories:
+            return
+        self.categories.append(category)
+        self.categories.sort(key=utils.sort_asc)
+
     def node_on_top_level(self, iter):
         if not type(iter) == gtk.TreeIter:
             # iter is a path -> convert to iter
@@ -128,8 +136,7 @@ class CategoriesTreeView(object):
 
         # Category name changed
         if self.node_on_top_level(path):
-            if new_text not in self.categories:
-                self.categories.insert(0, new_text)
+            self.add_category(new_text)
 
         # Tag name changed
         else:
@@ -271,8 +278,7 @@ class CategoriesTreeView(object):
         return None
 
     def add_entry(self, category, entry, undoing=False):
-        if category not in self.categories and category is not None:
-            self.categories.insert(0, category)
+        self.add_category(category)
 
         category_iter = self._get_category_iter(category)
 

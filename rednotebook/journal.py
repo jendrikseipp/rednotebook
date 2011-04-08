@@ -462,11 +462,7 @@ class Journal:
 
         self.stats = Statistics(self)
 
-        def sort_asc(category):
-            return str(category).lower()
-
-        sorted_categories = sorted(self.categories, key=sort_asc)
-        self.frame.categories_tree_view.categories = sorted_categories
+        self.frame.categories_tree_view.categories = self.categories
 
         if self.is_first_start:
             self.add_instruction_content()
@@ -593,7 +589,8 @@ class Journal:
     @property
     def categories(self):
         return list(sorted(set(itertools.chain.from_iterable(
-                               day.categories for day in self.days))))
+                                        day.categories for day in self.days)),
+                           key=utils.sort_asc))
 
 
     @property
