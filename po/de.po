@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-04-03 19:41+0000\n"
+"PO-Revision-Date: 2011-04-10 15:25+0000\n"
 "Last-Translator: günther kühnel <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-04 04:49+0000\n"
-"X-Generator: Launchpad (build 12559)\n"
+"X-Launchpad-Export-Date: 2011-04-11 04:54+0000\n"
+"X-Generator: Launchpad (build 12735)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -209,8 +209,8 @@ msgstr ""
 #: ../rednotebook/info.py:145
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
-"Falls Sie einen Fehler im Programm finden, wäre es nett, wenn Sie ihn mir "
-"berichten würden. So kann ich ihn für die nächste Version beheben."
+"Falls Sie einen Fehler im Programm finden, melden Sie ihn bitte, damit er "
+"behoben werden kann."
 
 #: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
@@ -465,7 +465,7 @@ msgstr "Wolken - Schwarze Liste"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Do not show those comma separated words in any cloud"
-msgstr "Zeige diese mit Komma getrennten Wörter in keiner Wortwolke"
+msgstr "Zeige diese durch Komma getrennten Wörter in keiner Wortwolke"
 
 #: ../rednotebook/gui/options.py:323
 msgid "Allow small words in clouds"
@@ -473,8 +473,7 @@ msgstr "Wolken - Weiße Liste"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
-"Erlaube diese kurzen Wörter mit maximal 4 Buchstaben in der Textwolke"
+msgstr "Erlaube Wörter mit maximal 4 Buchstaben in der Textwolke"
 
 #: ../rednotebook/gui/main_window.py:323
 msgid "Show RedNotebook"
@@ -542,7 +541,7 @@ msgstr "Formatierung"
 
 #: ../rednotebook/gui/main_window.py:767
 msgid "Format the selected text or category entry"
-msgstr "Formatiere den ausgewählten Text oder Kategorie-Eintrag"
+msgstr "Formatiere den ausgewählten Text oder Kategorien-Eintrag"
 
 #: ../rednotebook/gui/main_window.py:816
 msgid "First Item"
@@ -1062,7 +1061,7 @@ msgstr "<b>Link-Adresse (z.B. http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
-msgstr "<b>Link name (optional)</b>"
+msgstr "<b>Link-Bezeichnung (optional)</b>"
 
 #: tmp/main_window.glade.h:5
 msgid "<b>Overall</b>"
