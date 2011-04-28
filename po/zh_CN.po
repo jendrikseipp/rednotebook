@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-04-14 09:34+0000\n"
+"PO-Revision-Date: 2011-04-28 00:31+0000\n"
 "Last-Translator: Phil <yalongbay@gmail.com>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-15 05:07+0000\n"
-"X-Generator: Launchpad (build 12735)\n"
+"X-Launchpad-Export-Date: 2011-04-28 04:38+0000\n"
+"X-Generator: Launchpad (build 12758)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -55,7 +55,7 @@ msgstr "完成"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "提醒"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
