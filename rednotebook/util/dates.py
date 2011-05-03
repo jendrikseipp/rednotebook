@@ -50,7 +50,11 @@ def get_number_of_days(year, month):
 def format_date(format_string, date=None):
     if date is None:
         date = datetime.datetime.now()
-    date_string = date.strftime(format_string)
+    try:
+        date_string = date.strftime(format_string)
+    except ValueError:
+        # This happens if the format string ends with "%"
+        date_string = _('Incorrect date format')
     # Turn date into unicode string
     date_string = date_string.decode('utf-8', 'replace')
     return date_string
