@@ -32,7 +32,7 @@ X Show the most recent entries at the top of the search list by default
 X Remove "Delete Entry" button
 X add tooltips for category buttons
 X Remove dead unicode code
-O Sort categories in search and annotations drop-down menus
+X Always keep categories sorted in search and annotations drop-down menus
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
