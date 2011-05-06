@@ -17,6 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import locale
 import time
 import datetime
 
@@ -56,5 +57,6 @@ def format_date(format_string, date=None):
         # This happens if the format string ends with "%"
         date_string = _('Incorrect date format')
     # Turn date into unicode string
-    date_string = date_string.decode('utf-8', 'replace')
+    locale_name, locale_encoding = locale.getlocale()
+    date_string = date_string.decode(locale_encoding, 'replace')
     return date_string
