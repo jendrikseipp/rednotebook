@@ -8,23 +8,22 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2009-12-17 00:43+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"PO-Revision-Date: 2011-05-05 15:52+0000\n"
+"Last-Translator: Rancher <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-29 04:42+0000\n"
-"X-Generator: Launchpad (build 12559)\n"
+"X-Launchpad-Export-Date: 2011-05-06 04:36+0000\n"
+"X-Generator: Launchpad (build 12959)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr ""
+msgstr "Идеје"
 
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
-msgstr ""
+msgstr "Ознаке"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
@@ -68,57 +67,59 @@ msgstr ""
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
-msgstr ""
+msgstr "Здраво!"
 
 #: ../rednotebook/info.py:93
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Примерак текста је додат како бисмо вам помогли да почнете. Можете га "
+"обрисати кад год желите."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
-msgstr ""
+msgstr "Примерак текста и документација су доступни под „Помоћ“ → „Садржај“."
 
 #: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "Сучеље је подељено на три дела:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:99
 msgid "Left"
-msgstr ""
+msgstr "Лево"
 
 #: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "Навигација с календаром"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:102
 msgid "Center"
-msgstr ""
+msgstr "Средина"
 
 #: ../rednotebook/info.py:103
 msgid "Text for a day"
-msgstr ""
+msgstr "Текст за дан"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:105
 msgid "Right"
-msgstr ""
+msgstr "Десно"
 
 #: ../rednotebook/info.py:106
 msgid "Annotations to a day"
-msgstr ""
+msgstr "Забелешке на дан"
 
 #. ## Translators: noun
 #. ## Verb
 #: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
 msgid "Preview"
-msgstr ""
+msgstr "Преглед"
 
 #: ../rednotebook/info.py:110
 msgid ""
@@ -129,7 +130,7 @@ msgstr ""
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Кликните на дугме „Преглед“ да видите разлике."
 
 #: ../rednotebook/info.py:116
 msgid ""
@@ -137,10 +138,13 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"Данас сам отишао у //продавницу кућних љубимаца// и купио **тигра**. Онда "
+"смо отишли на --базен-- и уживали играјући фризби. Након тога смо гледали "
+"филм „__Житије Брајаново__“."
 
 #: ../rednotebook/info.py:120
 msgid "Annotations"
-msgstr ""
+msgstr "Забелешке"
 
 #: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
@@ -151,6 +155,8 @@ msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
+"На пример, могли бисте направити категорију „Идеје“ у којој ћете додавати "
+"данашње идеје."
 
 #: ../rednotebook/info.py:124
 msgid ""
@@ -161,43 +167,50 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
 msgid "Save and Export"
-msgstr ""
+msgstr "Сачувај и извези"
 
 #: ../rednotebook/info.py:137
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"Све што унесете биће самостално сачувано у редовним интервалима  и  када "
+"изађете из програма."
 
 #: ../rednotebook/info.py:139
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Да бисте се заштитили од губитка података, редовно правите резерве дневника."
 
 #: ../rednotebook/info.py:140
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"„Направи резерву“ у менију „Дневник“ чува све унете податке у архиву."
 
 #: ../rednotebook/info.py:141
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "У менију „Дневник“ можете пронаћи и дугме „Извези“."
 
 #: ../rednotebook/info.py:142
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
+"Кликните на дугме „Извези“ да сачувате дневник као чист текст, HTML или "
+"Латех."
 
 #: ../rednotebook/info.py:145
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
+"Ако се сусретнете с грешком, обавестите ме о томе како бих је исправио."
 
 #: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Ценимо сваку повратну информацију."
 
 #: ../rednotebook/info.py:149
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Пријатан дан!"
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
@@ -205,7 +218,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "Користите програм за дневник"
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
@@ -225,95 +238,97 @@ msgstr ""
 
 #: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "Документација"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr ""
+msgstr "Увод"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "_Дневник"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "Направите нови дневник. Стари ће бити сачуван."
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "Учитајте постојећи дневник. Стари ће бити сачуван."
 
 #: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"Сачувајте дневник на новом месту. Подаци из старог дневника ће такође бити "
+"сачувани."
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr ""
+msgstr "Увези"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr ""
+msgstr "Отвори помоћника за увоз"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
 msgid "Export"
-msgstr ""
+msgstr "Извези"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Отвори помоћника за извоз"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111
 msgid "Backup"
-msgstr ""
+msgstr "Направи резерву"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "Сачувај све податке у архиву"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
 msgid "Statistics"
-msgstr ""
+msgstr "Статистика"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "Погледајте статистику дневника"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "Искључи Редноутбук. Програм неће бити послат у системску палету."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
-msgstr ""
+msgstr "_Уреди"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text edits or category entry deletions"
-msgstr ""
+msgstr "Опозови измене текста или брисања уноса категорије"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text edits or category entry additions"
-msgstr ""
+msgstr "Понови измене текста или допуне уноса категорије"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr ""
+msgstr "_Помоћ"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr ""
+msgstr "Садржај"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Отвори документацију Редноутбука"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr ""
+msgstr "Добави помоћ на мрежи"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Visit the RedNotebook forum"
@@ -1098,4 +1113,5 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Nikola B https://launchpad.net/~eniaroyah\n"
-"  Rancher https://launchpad.net/~rancher"
+"  Rancher https://launchpad.net/~rancher\n"
+"  Данило Шеган https://launchpad.net/~danilo"
