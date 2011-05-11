@@ -1,5 +1,9 @@
 ==== RedNotebook Changelog ====
 
+== 1.1.6 (11-05-11) ==
+* Fix date encoding (LP:775269)
+* Some translations updated
+
 == 1.1.5 (11-05-03) ==
 * Remove "RedNotebook" title in exports
 * Make templates translatable
