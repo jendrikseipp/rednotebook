@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
-AppVerName=RedNotebook 1.1.3
+AppVerName=RedNotebook 1.1.6
 ; AppPublisher=Jendrik Seipp
 AppPublisherURL=http://rednotebook.sourceforge.net
 AppSupportURL=http://rednotebook.sourceforge.net
@@ -15,10 +15,12 @@ AppUpdatesURL=http://rednotebook.sourceforge.net
 DefaultDirName={pf}\RedNotebook
 DefaultGroupName=RedNotebook
 AllowNoIcons=yes
-OutputBaseFilename=rednotebook-1.1.3-b2-win32
+OutputDir=userdocs:\My Dropbox\Public
+OutputBaseFilename=rednotebook-1.1.6
 SetupIconFile=rednotebook.ico
-Compression=lzma
+Compression=lzma2
 SolidCompression=yes
+;DisableWelcomePage=yes
 
 ; Show the language selector, if the default language can't be automatically found
 ShowLanguageDialog=auto

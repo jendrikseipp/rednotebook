@@ -250,7 +250,7 @@ if 'py2exe' in sys.argv:
                     #windows for gui, console for cli
                     'windows' : [{
                                     'script': 'rednotebook/rednotebook',
-                                    'icon_resources': [(1, 'win/rednotebook.ico')],
+                                    'icon_resources': [(0, 'win/rednotebook.ico')],
                                 }],
                     }
 
