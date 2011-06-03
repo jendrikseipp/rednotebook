@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-29 18:10+0000\n"
-"Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
+"PO-Revision-Date: 2011-06-02 05:25+0000\n"
+"Last-Translator: Xandru <xandru@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2011-06-03 04:41+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
 
 #: ../rednotebook/info.py:79
@@ -55,7 +55,7 @@ msgstr "Fecho"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr "Mercar llechi"
+msgstr "Recaos"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
@@ -1177,6 +1177,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Iñigo Varela https://launchpad.net/~ivarela\n"
+"  Xandru https://launchpad.net/~xandruarmesto\n"
 "  Xuacu Saturio https://launchpad.net/~xuacusk8"
 
 #~ msgid "Insert a bullet list"
