@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-23 00:17+0000\n"
-"Last-Translator: Tharique Azeez <Unknown>\n"
+"PO-Revision-Date: 2011-06-09 02:04+0000\n"
+"Last-Translator: balajijagadesh பாலாஜி <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-01 04:40+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-06-09 04:36+0000\n"
+"X-Generator: Launchpad (build 13168)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -31,11 +31,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "திரைப்படங்கள்"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "பணி"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "ஆவணம்"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "முடிந்தது"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
@@ -1116,6 +1116,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Ramesh https://launchpad.net/~rame20002007\n"
 "  Tharique Azeez https://launchpad.net/~tharique\n"
+"  balajijagadesh பாலாஜி https://launchpad.net/~balajijagadesh\n"
 "  vijayaraj Mani https://launchpad.net/~vijayaraj83"
 
 #~ msgid "Text entries"
