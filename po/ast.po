@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-06-08 18:59+0000\n"
+"PO-Revision-Date: 2011-06-10 02:50+0000\n"
 "Last-Translator: Xandru <xandru@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-09 04:36+0000\n"
+"X-Launchpad-Export-Date: 2011-06-10 04:38+0000\n"
 "X-Generator: Launchpad (build 13168)\n"
 
 #: ../rednotebook/info.py:79
@@ -316,11 +316,11 @@ msgstr "Refacer ediciones de testu o ingresos d'entraes a categoría"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr "_Aida"
+msgstr "_Ayuda"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr "Conteníu"
+msgstr "Conteníos"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
@@ -328,7 +328,7 @@ msgstr "Abrir la documentación de RedNotebook"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr "Consiguir aida en llinia"
+msgstr "Consiguir ayuda en llinia"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Visit the RedNotebook forum"
@@ -340,7 +340,7 @@ msgstr "Traducir RedNotebook"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Coneutar col sitiu web Launchpad p'aidar a traducir RedNotebook"
+msgstr "Coneutar col sitiu web Launchpad p'ayudar a traducir RedNotebook"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
@@ -352,7 +352,7 @@ msgstr "Rellenar un pequeñu formulariu sobro'l problema"
 
 #: ../rednotebook/gui/menu.py:270
 msgid "A Desktop Journal"
-msgstr "Un diariu d'escritoriu"
+msgstr "Un Diariu d'Escritoriu"
 
 #: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
 #: tmp/main_window.glade.h:10
@@ -361,7 +361,7 @@ msgstr "Categoríes"
 
 #: ../rednotebook/gui/categories.py:122 ../rednotebook/gui/categories.py:159
 msgid "Empty entries are not allowed"
-msgstr "Nun se permiten entraes baleres"
+msgstr "Nun se permiten entraes ermes"
 
 #: ../rednotebook/gui/categories.py:152
 msgid "Empty category names are not allowed"
@@ -377,7 +377,7 @@ msgstr "Amestar una entrada nueva"
 
 #: ../rednotebook/gui/categories.py:436
 msgid "Delete this entry"
-msgstr "Desaniciar esta entrada"
+msgstr "Esborrar esta entrada"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -389,7 +389,7 @@ msgstr "%A, %x, Día %j"
 
 #: ../rednotebook/gui/options.py:156
 msgid "Week %W of Year %Y"
-msgstr "Selmana %W del añu %Y"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:157
 msgid "Day %j"
@@ -397,7 +397,7 @@ msgstr "Día %j"
 
 #: ../rednotebook/gui/options.py:162
 msgid "Help"
-msgstr "Aida"
+msgstr "Ayuda"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:183
@@ -414,7 +414,7 @@ msgstr "Zarrar la ventana unviará a RedNotebook a la bandexa"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Underline misspelled words"
-msgstr "Solliñar pallabres con faltes d'ortografía"
+msgstr "Sorrayar pallabres con faltes d'ortografía"
 
 #: ../rednotebook/gui/options.py:297
 msgid "Requires gtkspell."
@@ -469,11 +469,11 @@ msgstr "Amosar RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:549
 msgid "Select an empty folder for your new journal"
-msgstr "Seleicione una carpeta balera pal nuevu diariu"
+msgstr "Seleiciona una carpeta erma pal nuevu diariu"
 
 #: ../rednotebook/gui/main_window.py:550
 msgid "Journals are saved in a directory, not in a single file."
-msgstr "Los diarios guárdense nuna carpeta, non nún únicu ficheru."
+msgstr "Los diarios guárdense nuna carpeta, non nun ficheru."
 
 #: ../rednotebook/gui/main_window.py:551
 msgid "The directory name will be the title of the new journal."
@@ -515,7 +515,7 @@ msgstr "Cursiva"
 
 #: ../rednotebook/gui/main_window.py:749
 msgid "Underline"
-msgstr "Solliñáu"
+msgstr "Sorrayáu"
 
 #: ../rednotebook/gui/main_window.py:750
 msgid "Strikethrough"
@@ -528,19 +528,19 @@ msgstr "Formatu"
 
 #: ../rednotebook/gui/main_window.py:767
 msgid "Format the selected text or category entry"
-msgstr "Dar formatu al testu esbilláu o a la categoría de la entrada"
+msgstr "Dar formatu al testu seleicionáu o a la categoría de la entrada"
 
 #: ../rednotebook/gui/main_window.py:816
 msgid "First Item"
-msgstr "Primer elementu"
+msgstr "Primer Elementu"
 
 #: ../rednotebook/gui/main_window.py:817
 msgid "Second Item"
-msgstr "Segundu elementu"
+msgstr "Segundu Elementu"
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Indented Item"
-msgstr "Elementu sangráu"
+msgstr "Elementu Sangráu"
 
 #: ../rednotebook/gui/main_window.py:819
 msgid "Two blank lines close the list"
@@ -609,7 +609,7 @@ msgstr "Inxertar la data y hora actual (edita'l formatu en preferencies)"
 
 #: ../rednotebook/gui/main_window.py:871
 msgid "Line Break"
-msgstr "Saltu de llinia"
+msgstr "Saltu de Llinia"
 
 #: ../rednotebook/gui/main_window.py:872
 msgid "Insert a manual line break"
@@ -638,7 +638,7 @@ msgstr "peñerar, estes, pallabres, separtaes, per, comes"
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/main_window.py:1233 ../rednotebook/gui/clouds.py:142
 msgid "mtv, spam, work, job, play"
-msgstr "MTV, spam, trabayar, trabayu, xugar"
+msgstr "mtv, spam, tayu"
 
 #: ../rednotebook/gui/main_window.py:1290
 msgid "Hide selected words"
@@ -697,11 +697,11 @@ msgstr "Esportar namái les categoríes seleicionaes"
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Available Categories"
-msgstr "Categoríes disponibles"
+msgstr "Categoríes Disponibles"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Selected Categories"
-msgstr "Categoríes esbillaes"
+msgstr "Categoríes Seleicionaes"
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Select"
@@ -715,7 +715,7 @@ msgstr "Deseleicionar"
 msgid ""
 "If export text is not selected, you have to select at least one category."
 msgstr ""
-"Si'l testu a esportar nun ta esbilláu, tienes d'escoyer polo menos una "
+"Si'l testu a esportar nun ta seleicionáu tienes d'escoyer polo menos una "
 "categoría."
 
 #: ../rednotebook/gui/exports.py:278
