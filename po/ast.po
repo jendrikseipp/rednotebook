@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-06-11 20:24+0000\n"
+"PO-Revision-Date: 2011-06-13 19:16+0000\n"
 "Last-Translator: Xandru <xandru@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-12 04:52+0000\n"
+"X-Launchpad-Export-Date: 2011-06-14 04:43+0000\n"
 "X-Generator: Launchpad (build 13168)\n"
 
 #: ../rednotebook/info.py:79
@@ -774,11 +774,11 @@ msgstr "Esportar testu"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Selected categories"
-msgstr "Categoríes esbillaes"
+msgstr "Categoríes seleicionaes"
 
 #: ../rednotebook/gui/exports.py:391
 msgid "Export path"
-msgstr "Camín de la esportación"
+msgstr "Camín pa la esportación"
 
 #: ../rednotebook/gui/exports.py:395
 msgid "Yes"
@@ -1003,7 +1003,7 @@ msgstr "Llinies"
 #: ../rednotebook/journal.py:382
 #, python-format
 msgid "The content has been saved to %s"
-msgstr "El conteníu atroxóse en %s"
+msgstr "El conteníu guardóse en %s"
 
 #: ../rednotebook/journal.py:385
 msgid "Nothing to save"
@@ -1011,11 +1011,11 @@ msgstr "Res que guardar"
 
 #: ../rednotebook/journal.py:393
 msgid "Configuration could not be saved. Please check your permissions"
-msgstr "La configuración nun pudo atroxase. Comprueba los permisos"
+msgstr "La configuración nun pudo guardase. Comprueba los permisos"
 
 #: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
-msgstr "La carpeta esbillada nun ta erma."
+msgstr "La carpeta seleicionada nun ta erma."
 
 #: ../rednotebook/journal.py:425
 msgid ""
@@ -1027,7 +1027,7 @@ msgstr ""
 
 #: ../rednotebook/journal.py:428
 msgid "The selected folder is empty. A new journal has been created."
-msgstr "La carpeta esbillada ta erma. Creóse un diariu nuevu."
+msgstr "La carpeta seleicionada ta erma. Creóse un diariu nuevu."
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
