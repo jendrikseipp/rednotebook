@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-06-15 05:10+0000\n"
-"Last-Translator: Xandru <xandru@softastur.org>\n"
+"PO-Revision-Date: 2011-06-16 17:09+0000\n"
+"Last-Translator: Iñigo Varela <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-16 04:40+0000\n"
+"X-Launchpad-Export-Date: 2011-06-17 04:39+0000\n"
 "X-Generator: Launchpad (build 13168)\n"
 
 #: ../rednotebook/info.py:79
@@ -389,7 +389,7 @@ msgstr "%A, %x, Día %j"
 
 #: ../rednotebook/gui/options.py:156
 msgid "Week %W of Year %Y"
-msgstr ""
+msgstr "Selmana %W del añu %Y"
 
 #: ../rednotebook/gui/options.py:157
 msgid "Day %j"
@@ -1116,7 +1116,7 @@ msgstr "Saltar a güei"
 
 #: tmp/main_window.glade.h:24
 msgid "New entry"
-msgstr "Nueva entrada"
+msgstr "Entrada Nueva"
 
 #: tmp/main_window.glade.h:25
 msgid "Preferences"
@@ -1152,7 +1152,7 @@ msgstr "Seleiciona un nome de ficheru pa la copia de seguridá"
 
 #: tmp/main_window.glade.h:35
 msgid "Select where to search"
-msgstr "Seleiciona aú guetar"
+msgstr "Seleiciona ónde guetar"
 
 #: tmp/main_window.glade.h:36
 msgid "Show a formatted preview of the text (Ctrl+P)"
