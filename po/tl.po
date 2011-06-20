@@ -8,22 +8,22 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2010-05-15 14:07+0000\n"
-"Last-Translator: Shikihime <Unknown>\n"
+"PO-Revision-Date: 2011-06-19 16:03+0000\n"
+"Last-Translator: Anthony Balico <Unknown>\n"
 "Language-Team: Tagalog <tl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-01 04:40+0000\n"
-"X-Generator: Launchpad (build 12959)\n"
+"X-Launchpad-Export-Date: 2011-06-20 04:34+0000\n"
+"X-Generator: Launchpad (build 13168)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr ""
+msgstr "Mga Kaisipan"
 
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
-msgstr ""
+msgstr "Mga Tanda"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
@@ -31,15 +31,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Mga Pelikula"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Trabaho"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Libreng oras"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
@@ -47,19 +47,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "Tungkulin"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Tapos"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "Tandaan ang gatas"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Hugasan ang mga pinggan"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
@@ -67,13 +67,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
-msgstr ""
+msgstr "Mabuhay!"
 
 #: ../rednotebook/info.py:93
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Ilang halimbawang salita ay idinagdag para tulungan ka na makapag-umpisa at "
+"maaari mo itong burahin kung sa kahit anong oras mo naisin"
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
@@ -89,7 +91,7 @@ msgstr ""
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:99
 msgid "Left"
-msgstr ""
+msgstr "Kaliwa"
 
 #: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
@@ -98,7 +100,7 @@ msgstr ""
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:102
 msgid "Center"
-msgstr ""
+msgstr "Gitna"
 
 #: ../rednotebook/info.py:103
 msgid "Text for a day"
@@ -107,7 +109,7 @@ msgstr ""
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:105
 msgid "Right"
-msgstr ""
+msgstr "Kanan"
 
 #: ../rednotebook/info.py:106
 msgid "Annotations to a day"
@@ -150,6 +152,8 @@ msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
+"Halimbawa, maaari kang lumikha ng kategoryang \"Ideas\" at saka idagdag dito "
+"ang mga kuro-kuro sa araw na ito."
 
 #: ../rednotebook/info.py:124
 msgid ""
@@ -623,7 +627,7 @@ msgstr ""
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/main_window.py:1233 ../rednotebook/gui/clouds.py:142
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "mtv, spam, trabaho, tungkulin, laro"
 
 #: ../rednotebook/gui/main_window.py:1290
 msgid "Hide selected words"
@@ -1099,4 +1103,5 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Anthony Balico https://launchpad.net/~anthony-balico\n"
 "  Shikihime https://launchpad.net/~yeeh69"
