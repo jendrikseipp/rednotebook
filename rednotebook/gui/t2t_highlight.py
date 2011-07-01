@@ -444,8 +444,7 @@ www.heise.de, andy@web.de
 
     def change_text(widget):
         html = markup.convert(widget.get_text(widget.get_start_iter(),
-                              widget.get_end_iter()), 'xhtml',
-                              append_whitespace=True)
+                              widget.get_end_iter()), 'xhtml')
 
         html_editor.load_html(html)
         html_editor.highlight(search_text)

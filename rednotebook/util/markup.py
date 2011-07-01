@@ -121,9 +121,6 @@ def _get_config(type):
         config['css-inside'] = 1
         config['css-sugar'] = 1
 
-        # keepnote only recognizes "<strike>"
-        config['postproc'].append(['(?i)(</?)s>', r'\1strike>'])
-
         # Line breaks
         config['postproc'].append([r'REDNOTEBOOKLINEBREAK', '<br />'])
 
@@ -177,28 +174,13 @@ def _get_config(type):
     return config
 
 
-def convert(txt, target, headers=None, options=None, append_whitespace=False):
+def convert(txt, target, headers=None, options=None):
     '''
     Code partly taken from txt2tags tarball
     '''
 
     # Here is the marked body text, it must be a list.
     txt = txt.split('\n')
-
-    '''
-    Without this HACK "First Line\n_second Line" is rendered to
-    "First LineSecond Line", but we want "First Line Second Line"
-
-    We only need this for the keepnote input, the exports work fine
-    '''
-    #TODO: Remove once keepnote files have been removed
-    if append_whitespace:
-        def add_whitespace(line):
-            if line.rstrip().endswith(r'\\'):
-                return line.rstrip()
-            else:
-                return line + ' '
-        txt = map(add_whitespace, txt)
 
     # Set the three header fields
     if headers is None:

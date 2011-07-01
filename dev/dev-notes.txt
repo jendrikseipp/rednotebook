@@ -1,10 +1,10 @@
 ====== Development notes ======
 
-O WYSIWYG as an alternative to markup??? (keepnote and htmltextview as reference)
+O WYSIWYG as an alternative to markup???
   notes:
     2 options: Save in html or txt2tags format
-    HTML Editing: Keepnote
-    HTML Saving: Keepnote
+    HTML Editing: Webkit
+    HTML Saving: Webkit
     HTML2txt2tags: Vim Script (port to python)
     HTML2markdown: python module exists
     HTML2Latex: Use HTML2txt2tags2Latex (write or use twisted lore)

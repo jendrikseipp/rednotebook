@@ -117,12 +117,6 @@ class MainWindow(object):
 
         self.edit_pane = self.builder.get_object('edit_pane')
 
-        # Only add the config variable if webkit is available
-        # Use webkit by default if it is available
-        self.use_webkit = browser.webkit and self.journal.config.read('useWebkit', 1)
-
-        logging.info('Using webkit for previews: %s' % self.use_webkit)
-
         self.html_editor = browser.HtmlView()
 
         self.text_vbox = self.builder.get_object('text_vbox')
@@ -386,7 +380,7 @@ class MainWindow(object):
             self.html_editor.show()
             day = self.journal.day
             text_markup = day.text
-            html = markup.convert(text_markup, 'xhtml', append_whitespace=True)
+            html = markup.convert(text_markup, 'xhtml')
 
             self.html_editor.load_html(html)
 
@@ -771,8 +765,8 @@ class MainWindow(object):
         </popup>
         </ui>'''
 
-        numlist_ui = '' #'<menuitem action="NumberedList"/>' if self.use_webkit else ''
-        title_ui = ''# '<menuitem action="Table"/>' if self.use_webkit else ''
+        numlist_ui = '' #'<menuitem action="NumberedList"/>'
+        title_ui = ''# '<menuitem action="Table"/>'
 
         insert_menu_xml = insert_menu_xml % locals()
 

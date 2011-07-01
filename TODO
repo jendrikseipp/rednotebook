@@ -35,7 +35,7 @@ X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
-O Remove keepnote sources (Wait for Chinese text rendering in Webkit)
+X Remove keepnote sources (Wait for Chinese text rendering in Webkit)
 O Upgrade txt2tags from 2.6b to 2.6
 
 O Use Zeitgeist for automatic category entries
@@ -152,7 +152,6 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
   everything, Current behaviour should be fine)
 - allow opening config file from within RedNotebook
   (Probably no good idea as some options might be unavailable or confusing)
-- Change to newer KeepNote Version? -> No. A stable webkit will be available everywhere soon.
 - Make the Format button remember its last action -> No, current behaviour good enough.
 - Tabs for different notebooks (KISS)
 - Add option for time interval between automatic savings? (KISS)

@@ -64,7 +64,7 @@ class Config(dict):
 
         self.file = config_file
 
-        self.obsolete_keys = [u'useGTKMozembed',
+        self.obsolete_keys = [u'useGTKMozembed', u'useWebkit',
                               u'LD_LIBRARY_PATH', u'MOZILLA_FIVE_HOME']
 
         # Allow changing the value of portable only in default.cfg
