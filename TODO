@@ -36,7 +36,6 @@ O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not sa
 O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
 X Remove keepnote sources (Wait for Chinese text rendering in Webkit)
-O Upgrade txt2tags from 2.6b to 2.6
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -80,7 +79,7 @@ O Install .mo files (translations) in the standard directories (wait for distuti
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
 O Create mono icon for panel?
-O Regularly check for new webkit version that supports chinese fonts
+O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 
 
 1.3
