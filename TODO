@@ -7,12 +7,6 @@ implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.1.5
-X Remove "RedNotebook" title in exports
-X Make templates translatable
-X Fix: Date insert function not displaying correct time (LP:744624)
-X Mention "--record installed-files" setup.py's option for remembering installed files in README
-
 1.2
 X Add "Export currently visible day" option in export assistant
 X Show warning when second RedNotebook instance is started to prevent data loss
@@ -41,7 +35,8 @@ X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
-O Fix non-ascii dates
+O Remove keepnote sources (Wait for Chinese text rendering in Webkit)
+O Upgrade txt2tags from 2.6b to 2.6
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -84,7 +79,6 @@ O Update search window when an annotation has been added/changed?
 O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
-O Remove keepnote sources (Wait for Chinese text rendering in Webkit)
 O Create mono icon for panel?
 O Regularly check for new webkit version that supports chinese fonts
 
