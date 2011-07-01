@@ -35,7 +35,6 @@ if __name__ == '__main__':
 
 #from rednotebook.external import gtkcodebuffer
 from rednotebook.external import txt2tags
-#from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
 

@@ -39,7 +39,6 @@ from rednotebook.util import utils
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
-from rednotebook.gui.richtext import HtmlEditor
 from rednotebook.util import filesystem
 from rednotebook import templates
 from rednotebook.util import markup
@@ -124,10 +123,7 @@ class MainWindow(object):
 
         logging.info('Using webkit for previews: %s' % self.use_webkit)
 
-        if self.use_webkit:
-            self.html_editor = browser.HtmlView()
-        else:
-            self.html_editor = HtmlEditor()
+        self.html_editor = browser.HtmlView()
 
         self.text_vbox = self.builder.get_object('text_vbox')
         self.text_vbox.pack_start(self.html_editor)
