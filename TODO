@@ -27,6 +27,7 @@ X Remove "Delete Entry" button
 X add tooltips for category buttons
 X Remove dead unicode code
 X Always keep categories sorted in search and annotations drop-down menus
+X Remove obsolete keepnote sources
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -35,7 +36,7 @@ X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
-X Remove keepnote sources (Wait for Chinese text rendering in Webkit)
+O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -80,6 +81,7 @@ O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
 O Create mono icon for panel?
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
+O Add online mathjax support (see Snippets/mathjax-test.html)
 
 
 1.3
@@ -93,6 +95,8 @@ O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting) (Think 
 O Let user change font, color fonts, highlighting colors
 O Copy all files and pictures into data subdirectory (Think about new format first)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
+O Entries without dates (bookmarks, contact lists)?
+O Filter exports by tag, category, word?
 
 
 2.x

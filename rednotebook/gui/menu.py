@@ -25,7 +25,7 @@ from rednotebook.util import utils
 from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook.util import markup
-from rednotebook.gui.imports import ImportAssistant
+#from rednotebook.gui.imports import ImportAssistant
 
 
 class MainMenuBar(object):

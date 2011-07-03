@@ -176,7 +176,6 @@ class MainWindow(object):
              }
         self.builder.connect_signals(dic)
 
-
         self.setup_clouds()
         self.set_shortcuts()
         self.setup_stats_dialog()
@@ -184,11 +183,9 @@ class MainWindow(object):
         self.template_manager = templates.TemplateManager(self)
         self.template_manager.make_empty_template_files()
         self.setup_template_menu()
-        self.setup_tray_icon()
 
         #self.menubar_manager.set_tooltips()
         self.set_tooltips()
-
 
         # Only add the config variable if zeitgeist is available
         use_zeitgeist = (test_zeitgeist and journalgeist.zeitgeist and
@@ -199,6 +196,8 @@ class MainWindow(object):
 
         if use_zeitgeist:
             self.setup_zeitgeist_view()
+
+        self.setup_tray_icon()
 
 
     def setup_zeitgeist_view(self):
