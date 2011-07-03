@@ -2,6 +2,7 @@
 
 == 1.1.7 () ==
 * Fix: Chinese characters are not correctly rendered in preview
+* Fix: Screen position not correctly remembered when opened from system tray (LP:804792)
 * Fix: Date is not inserted if default encoding can not be determined
 * Fix: Windows executable has no icon on Windows 7
 * Updated translations
