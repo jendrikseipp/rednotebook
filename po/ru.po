@@ -8,26 +8,28 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-29 04:52+0000\n"
-"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
+"PO-Revision-Date: 2011-07-08 04:47+0000\n"
+"Last-Translator: MyOtheHedgeFox <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-07-08 04:47+0000\n"
+"X-Launchpad-Export-Date: 2011-07-09 04:55+0000\n"
 "X-Generator: Launchpad (build 13168)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
 msgstr "Идеи"
 
+# The *Tags* category is used by the program by default in all the searchings and so on. I guess we should not make a fool of a user.
+# Категория *Tags* по умолчанию используется в программе для обработки всех меток. Боюсь, это пока что лучше оставить так: написал разработчику об ошибке.
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
-msgstr "Метки"
+msgstr "Tags"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr "Классная вещь"
+msgstr "Классные вещи"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
@@ -47,7 +49,7 @@ msgstr "Документация"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr "Список задач"
+msgstr "Что сделать"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
@@ -55,7 +57,7 @@ msgstr "Сделано"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr "Remember the milk"
+msgstr "Вспомнить про молоко"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
@@ -128,8 +130,8 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
-"Есть два режима в RedNotebook, режим __редактирования__ и режим "
-"__просмотра__."
+"В RedNotebook есть два режима работы с записями: режим __редактирования__ и "
+"режим __просмотра__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
@@ -169,8 +171,8 @@ msgid ""
 "If you find annotations confusing you can simply hide them for now by moving "
 "the separator to the far right."
 msgstr ""
-"Если примечания Вам не нравятся, вы может спрятать их, передвинув "
-"разделитель вправо."
+"Если вы не понимаете, как пользоваться примечаниями, вы может спрятать их, "
+"передвинув разделитель вправо."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
@@ -200,7 +202,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:141
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "В разделе \"Дневник\" также можно увидеть пункт \"Экспорт\"."
+msgstr "В разделе \"Дневник\" также можно найти пункт \"Экспорт\"."
 
 #: ../rednotebook/info.py:142
 msgid ""
@@ -225,7 +227,7 @@ msgstr "Удачного дня!"
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
-msgstr "Съесть **два** ведра с мусором"
+msgstr "Съел **две** банки консервов"
 
 #: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
@@ -233,11 +235,11 @@ msgstr "Поставить себе крутую программу для ве�
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
-msgstr "«Жизнь Брайана» от Монти Пайтона"
+msgstr "Житие Брайана по Монти Пайтону"
 
 #: ../rednotebook/info.py:217
 msgid "Went to see the pope"
-msgstr "Увидеться со священником"
+msgstr "Повидался с Папой Римским"
 
 #: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"
@@ -249,7 +251,7 @@ msgstr "Монти Пайтон и Святой Грааль"
 
 #: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
-msgstr "Документация к RedNotebook"
+msgstr "Руководство к RedNotebook"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
