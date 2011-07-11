@@ -26,6 +26,7 @@ import operator
 import collections
 import time
 import logging
+import locale
 from optparse import OptionParser, OptionValueError
 
 
@@ -66,7 +67,12 @@ LOCALE_PATH = os.path.join(filesystem.app_dir, 'i18n')
 GETTEXT_DOMAIN = 'rednotebook'
 
 # Register _() as a global translation function and set up the translation
-elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
+try:
+    elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
+except locale.Error, err:
+    # unsupported locale setting
+    logging.error('Locale could not be set: "%s"' %  err)
+    logging.error('Probably you have to install the appropriate language packs')
 
 # For some reason we sometimes (e.g. on Ubuntu) have to run these functions to
 # translate the gtkbuilder strings
