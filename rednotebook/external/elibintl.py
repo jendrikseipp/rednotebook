@@ -419,6 +419,13 @@ def _install(domain, localedir, asglobal=False):
         if sys.platform == 'win32' or sys.platform == 'nt':
             _putenv('LANGUAGE', _getscreenlanguage())
 
+    # The locale module on Max OS X lacks bindtextdomain so we specifically
+    # test on linux2 here. See commit 4ae8b26fd569382ab66a9e844daa0e01de409ceb
+    if sys.platform == 'linux2':
+        locale.bindtextdomain(domain, localedir)
+        locale.bind_textdomain_codeset(domain, 'UTF-8')
+        locale.textdomain(domain)
+
     # initialize Python's gettext interface
     gettext.bindtextdomain(domain, localedir)
     gettext.bind_textdomain_codeset(domain, 'UTF-8')

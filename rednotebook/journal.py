@@ -74,16 +74,6 @@ except locale.Error, err:
     logging.error('Locale could not be set: "%s"' %  err)
     logging.error('Probably you have to install the appropriate language packs')
 
-# For some reason we sometimes (e.g. on Ubuntu) have to run these functions to
-# translate the gtkbuilder strings
-try:
-    # locale.bintextdomain and locale.textdomain not available on Windows
-    import locale
-    locale.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
-    locale.textdomain(GETTEXT_DOMAIN)
-except AttributeError, err:
-    logging.info('locale module: %s' % err)
-
 ## ------------------- end Enable i18n -------------------------------
 
 
