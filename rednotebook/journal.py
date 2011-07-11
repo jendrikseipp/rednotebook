@@ -58,8 +58,6 @@ from rednotebook.external import elibintl
 # * gtkbuilder strings
 # * gtk stock names
 
-import locale
-
 LOCALE_PATH = os.path.join(filesystem.app_dir, 'i18n')
 
 # the name of the gettext domain. because we have our translation files
@@ -67,69 +65,18 @@ LOCALE_PATH = os.path.join(filesystem.app_dir, 'i18n')
 # application name is a good idea tough.
 GETTEXT_DOMAIN = 'rednotebook'
 
-def setup_intl():
-    # set the locale for all categories to the user’s default setting
-    # (typically specified in the LANG environment variable)
-    lang = os.environ.get('LANG', None)
-    logging.info('LANG: %s' % lang)
-    default_locale = locale.getdefaultlocale()[0]
-    logging.info('Default locale: %s' % default_locale)
-    try:
-        locale.setlocale(locale.LC_ALL, '')
-        logging.info('Set default locale: "%s"' % default_locale)
-    except locale.Error, err:
-        # unsupported locale setting
-        logging.error('Locale "%s" could not be set: "%s"' % (default_locale, err))
-        logging.error('Probably you have to install the appropriate language packs')
-
-    # If the default locale could be determined and the LANG env variable
-    # has not been set externally, set LANG to the default locale
-    # This is necessary only for windows where program strings are not
-    # shown in the system language, but in English
-    if default_locale and not lang:
-        logging.info('Setting LANG to %s' % default_locale)
-        # sourcecode strings
-        os.environ['LANG'] = default_locale
-
-    # set up the gettext system
-    import gettext
-
-    # Adding locale to the list of modules translates gtkbuilder strings
-    modules = [#gettext,
-                locale]
-
-    # Sometimes this doesn't work though,
-    # so we try to call gtk.glade's function as well if glade is present
-    try:
-        import gtk.glade
-        modules.append(gtk.glade)
-        logging.info('Module glade found')
-    except ImportError, err:
-        logging.info('Module glade not found: %s' % err)
-
-    for module in modules:
-        try:
-            # locale.bintextdomain and locale.textdomain not available on win
-            module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
-            module.textdomain(GETTEXT_DOMAIN)
-        except AttributeError, err:
-            logging.info(err)
-
-    # register the gettext function for the whole interpreter as "_"
-    gettext.install(GETTEXT_DOMAIN, LOCALE_PATH, unicode=1)
-
+# Register _() as a global translation function and set up the translation
 elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
 
-# Translate gtkbuilder strings
-if sys.platform == 'win32' or sys.platform == 'nt':
-    # On windows the locale module does not have these functions, but the glade
-    # module has them
-    import gtk.glade
-    gtk.glade.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
-    gtk.glade.textdomain(GETTEXT_DOMAIN)
-else:
+# For some reason we sometimes (e.g. on Ubuntu) have to run these functions to
+# translate the gtkbuilder strings
+try:
+    # locale.bintextdomain and locale.textdomain not available on Windows
+    import locale
     locale.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
     locale.textdomain(GETTEXT_DOMAIN)
+except AttributeError, err:
+    logging.info('locale module: %s' % err)
 
 ## ------------------- end Enable i18n -------------------------------
 
