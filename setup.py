@@ -230,7 +230,10 @@ if os.path.exists(share_dir):
 # For the use of py2exe you have to checkout the repository.
 # To create Windows Installers have a look at the file 'win/win-build.txt'
 includes = ('rednotebook.gui, rednotebook.util, cairo, pango, '
-            'pangocairo, atk, gobject, gio, gtk, chardet, zlib, glib, gtkspell')
+            'pangocairo, atk, gobject, gio, gtk, chardet, zlib, glib, '
+            'gtkspell')
+excludes = ('*.exe')
+dll_excludes = []
 if 'py2exe' in sys.argv:
     py2exeParameters = {
                     #3 (default) don't bundle,
@@ -239,6 +242,8 @@ if 'py2exe' in sys.argv:
                     #It seems that only option 3 works with PyGTK
                     'options' : {'py2exe': {'bundle_files': 3,
                                             'includes': includes,
+                                            'excludes': excludes,
+                                            'dll_excludes': dll_excludes,
                                             'packages':'encodings',
                                             #'skip_archive': 1,
                                             'compressed': False,

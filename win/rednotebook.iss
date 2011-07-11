@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
-AppVerName=RedNotebook 1.1.6
+AppVerName=RedNotebook 1.1.7
 ; AppPublisher=Jendrik Seipp
 AppPublisherURL=http://rednotebook.sourceforge.net
 AppSupportURL=http://rednotebook.sourceforge.net
@@ -16,7 +16,7 @@ DefaultDirName={pf}\RedNotebook
 DefaultGroupName=RedNotebook
 AllowNoIcons=yes
 OutputDir=userdocs:\My Dropbox\Public
-OutputBaseFilename=rednotebook-1.1.6
+OutputBaseFilename=rednotebook-1.1.7b1
 SetupIconFile=rednotebook.ico
 Compression=lzma2
 SolidCompression=yes
