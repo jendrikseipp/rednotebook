@@ -66,6 +66,7 @@ files in "files" to make an uninstallation easier)
   - Ahmet Öztürk and Lifeograph for his markup highlighting idea
   - Hannes Matuschek: RedNotebook uses pygtkcodebuffer for the markup
             highlighting
+  - Dieter Verfaillie: For his elib.intl module (https://github.com/dieterv/elib.intl)
 
 
 Enjoy!

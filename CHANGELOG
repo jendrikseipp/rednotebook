@@ -5,6 +5,8 @@
 * Fix: Screen position not correctly remembered when opened from system tray (LP:804792)
 * Fix: Date is not inserted if default encoding can not be determined
 * Fix: Windows executable has no icon on Windows 7
+* Windows installer: Update to newer GTK+ version
+* Code: Use smarter internationalization code from elib.intl
 * Updated translations
 
 == 1.1.6 (11-05-11) ==

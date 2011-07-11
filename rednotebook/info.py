@@ -25,7 +25,7 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-version =           '1.1.6'
+version =           '1.1.7'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
 url =               'http://rednotebook.sourceforge.net'
@@ -533,27 +533,29 @@ partition all RedNotebook data will be encrypted, too.
 %(todo_help_text)s
 
 === Week Numbers ===
-If you'd like to see the week numbers in the calendar, you can set the \
-value of weekNumbers to 1 in the configuration file. This file \
+If you'd like to see the week numbers in the calendar, you can set the
+value of weekNumbers to 1 in the configuration file. This file
 normally resides at $HOME/.rednotebook/configuration.cfg
 
 === Language ===
-If you want to change RedNotebook's language, setting the environment \
-variable LANG to a different language code should be sufficient. \
-Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German). \
-To set the language to English you can also set the code to "C".
+If you want to change RedNotebook's language, setting the environment
+variable LANG or LANGUAGE to a different language code should be sufficient.
+Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German).
+To set the language to English you can also set the code to "C". Before you
+change the language make sure you have the required language packs installed.
+Otherwise an error will be shown.
 
-On Linux, start a terminal and call ``LANG=de_DE.utf8``. Then in the \
-same terminal, run ``rednotebook``. The language change will be gone \
+On **Linux**, start a terminal and call ``LANG=de_DE.utf8``. Then in the
+same terminal, run ``rednotebook``. The language change will be gone
 however once you close the terminal.
 
-On Windows, set or create a LANG environment variable with the desired \
+On Windows, set or create a LANGUAGE environment variable with the desired
 code:
 
 + Right-click My Computer and click Properties.
 + In the System Properties window, click on the Advanced tab.
 + In the Advanced section, click the Environment Variables button.
-+ Click the New button and insert LANG at the top and e.g. de or de_DE or
++ Click the New button and insert LANGUAGE at the top and e.g. de or de_DE or
   de_DE.UTF-8 (use your [language code ""http://en.wikipedia.org/wiki/ISO_639-1""]).
 
 
