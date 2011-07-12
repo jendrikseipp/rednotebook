@@ -73,6 +73,9 @@ class Day(object):
         self.day_number = day_number
         self.content = day_content
 
+        # Remember the last edited position
+        self.last_edit_pos = None
+
     # Text
     def _get_text(self):
         '''

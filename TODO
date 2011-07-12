@@ -28,6 +28,7 @@ X add tooltips for category buttons
 X Remove dead unicode code
 X Always keep categories sorted in search and annotations drop-down menus
 X Remove obsolete keepnote sources
+X Use pyflakes to remove unnecessary imports and check for errors
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -37,7 +38,6 @@ O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not sa
 O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
 O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
-O Use pyflakes to remove unnecessary imports
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)

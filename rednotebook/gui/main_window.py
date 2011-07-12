@@ -370,14 +370,17 @@ class MainWindow(object):
         size_group.add_widget(edit_button)
         size_group.add_widget(preview_button)
 
-        # Do not forget to update the text in editor and preview respectively
+        scroll = self.builder.get_object('text_scrolledwindow')
 
+        # Do not forget to update the text in editor and preview respectively
         if preview:
+            # Get the old cursor location in the edit pane
+            self.day.last_edit_pos = (scroll.get_hscrollbar().get_value(),
+                                      scroll.get_vscrollbar().get_value())
             # Enter preview mode
             text_scrolledwindow.hide()
             self.html_editor.show()
-            day = self.journal.day
-            text_markup = day.text
+            text_markup = self.day.text
             html = markup.convert(text_markup, 'xhtml')
 
             self.html_editor.load_html(html)
@@ -394,6 +397,11 @@ class MainWindow(object):
 
             preview_button.show()
             edit_button.hide()
+
+            if self.day.last_edit_pos is not None:
+                x, y = self.day.last_edit_pos
+                gobject.idle_add(scroll.get_hscrollbar().set_value, x)
+                gobject.idle_add(scroll.get_vscrollbar().set_value, y)
 
         template_button.set_sensitive(not preview)
         self.single_menu_toolbutton.set_sensitive(not preview)
