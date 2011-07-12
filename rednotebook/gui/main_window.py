@@ -116,7 +116,7 @@ class MainWindow(object):
 
         self.edit_pane = self.builder.get_object('edit_pane')
 
-        self.html_editor = browser.HtmlView()
+        self.html_editor = Preview()
 
         self.text_vbox = self.builder.get_object('text_vbox')
         self.text_vbox.pack_start(self.html_editor)
@@ -360,7 +360,7 @@ class MainWindow(object):
     def change_mode(self, preview):
         self.journal.save_old_day()
 
-        text_scrolledwindow = self.builder.get_object('text_scrolledwindow')
+        edit_scroll = self.builder.get_object('text_scrolledwindow')
         template_button = self.builder.get_object('template_menu_button')
 
         edit_button = self.builder.get_object('edit_button')
@@ -370,20 +370,15 @@ class MainWindow(object):
         size_group.add_widget(edit_button)
         size_group.add_widget(preview_button)
 
-        scroll = self.builder.get_object('text_scrolledwindow')
-
         # Do not forget to update the text in editor and preview respectively
         if preview:
-            # Get the old cursor location in the edit pane
-            self.day.last_edit_pos = (scroll.get_hscrollbar().get_value(),
-                                      scroll.get_vscrollbar().get_value())
+            # Get the old position in the edit pane
+            self.day.last_edit_pos = (edit_scroll.get_hscrollbar().get_value(),
+                                      edit_scroll.get_vscrollbar().get_value())
             # Enter preview mode
-            text_scrolledwindow.hide()
+            edit_scroll.hide()
+            self.html_editor.show_day(self.day)
             self.html_editor.show()
-            text_markup = self.day.text
-            html = markup.convert(text_markup, 'xhtml')
-
-            self.html_editor.load_html(html)
 
             edit_button.show()
             preview_button.hide()
@@ -392,7 +387,7 @@ class MainWindow(object):
             self.day_text_field.set_text(self.day.text, undoing=True)
             self.day_text_field.day_text_view.grab_focus()
 
-            text_scrolledwindow.show()
+            edit_scroll.show()
             self.html_editor.hide()
 
             preview_button.show()
@@ -400,8 +395,8 @@ class MainWindow(object):
 
             if self.day.last_edit_pos is not None:
                 x, y = self.day.last_edit_pos
-                gobject.idle_add(scroll.get_hscrollbar().set_value, x)
-                gobject.idle_add(scroll.get_vscrollbar().set_value, y)
+                gobject.idle_add(edit_scroll.get_hscrollbar().set_value, x)
+                gobject.idle_add(edit_scroll.get_vscrollbar().set_value, y)
 
         template_button.set_sensitive(not preview)
         self.single_menu_toolbutton.set_sensitive(not preview)
@@ -578,7 +573,6 @@ class MainWindow(object):
         else: # answer == 10:
             # Do nothing if user wants to exit without saving
             pass
-
 
 
     def add_values_to_config(self):
@@ -969,8 +963,7 @@ class MainWindow(object):
 
         # Converting markup to html takes time, so only do it when necessary
         if self.preview_mode:
-            html = markup.convert(day.text, 'xhtml')
-            self.html_editor.load_html(html)
+            self.html_editor.show_day(day)
         # Why do we always have to set the text of the day_text_field?
         self.day_text_field.set_text(day.text)
         self.categories_tree_view.set_day_content(day)
@@ -1013,7 +1006,6 @@ class MainWindow(object):
             self.journal.config['lastBackupDir'] = os.path.dirname(path)
             return path
 
-
     def highlight_text(self, search_text):
         # let the search function highlight found strings in the page
         #if self.preview_mode:
@@ -1023,6 +1015,29 @@ class MainWindow(object):
         #else:
         self.day_text_field.highlight(search_text)
 
+
+class Preview(browser.HtmlView):
+    def __init__(self, *args, **kwargs):
+        browser.HtmlView.__init__(self, *args, **kwargs)
+        self.day = None
+
+    def show_day(self, new_day):
+        # Save the position in the preview pane for the old day
+        if self.day:
+            print 'SAVE', self.day
+            self.day.last_preview_pos = (self.get_hscrollbar().get_value(),
+                                         self.get_vscrollbar().get_value())
+
+        # Show new day
+        self.day = new_day
+        html = markup.convert(self.day.text, 'xhtml')
+        self.load_html(html)
+
+        if self.day.last_preview_pos is not None:
+            print 'LOAD', self.day
+            x, y = self.day.last_preview_pos
+            gobject.idle_add(self.get_hscrollbar().set_value, x)
+            gobject.idle_add(self.get_vscrollbar().set_value, y)
 
 
 class NewEntryDialog(object):

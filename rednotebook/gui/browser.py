@@ -38,7 +38,6 @@ if __name__ == '__main__':
 from rednotebook.util import filesystem
 
 
-webkit = None
 try:
     import webkit
 except ImportError:
