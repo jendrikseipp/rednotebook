@@ -37,7 +37,7 @@ BLOCK_SIZE = 8
 def nr_pad_bytes(blocksize, size):
     'Return number of required pad bytes for block of size.'
     if not (0 < blocksize < 255):
-        raise Error('blocksize must be between 0 and 255')
+        raise Exception('blocksize must be between 0 and 255')
     return blocksize - (size % blocksize)
 
 def append_padding(blocksize, s):
@@ -53,7 +53,7 @@ def remove_padding(blocksize, s):
     'Remove rfc 1423 padding from string.'
     n = ord(s[-1]) # last byte contains number of padding bytes
     if n > blocksize or n > len(s):
-        raise Error('invalid padding')
+        raise Exception('invalid padding')
     return s[:-n]
 
 # ----------------------------------------------------------------------

@@ -383,9 +383,9 @@ class ExportAssistant(Assistant):
             self.page5.add_setting(_('Format'), format)
             self.page5.add_setting(_('Export all days'), self.yes_no(self.export_all_days))
             if not self.export_all_days:
-                self.start_date, self.end_date = self.page2.get_date_range()
-                self.page5.add_setting(_('Start date'), self.start_date)
-                self.page5.add_setting(_('End date'), self.end_date)
+                start_date, end_date = self.page2.get_date_range()
+                self.page5.add_setting(_('Start date'), start_date)
+                self.page5.add_setting(_('End date'), end_date)
             is_text_exported = self.yes_no(self.is_text_exported)
             self.page5.add_setting(_('Export text'), is_text_exported)
             self.page5.add_setting(_('Selected categories'), ', '.join(self.exported_categories))
@@ -400,7 +400,7 @@ class ExportAssistant(Assistant):
         if self.export_all_days:
             export_days = self.journal.days
         else:
-            export_days = self.journal.get_days_in_date_range(start, end)
+            export_days = self.journal.get_days_in_date_range(*self.page2.get_date_range())
 
         selected_categories = self.exported_categories
         logging.debug('Selected Categories for Export: %s' % selected_categories)

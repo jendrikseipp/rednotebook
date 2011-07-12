@@ -41,8 +41,8 @@ from rednotebook.data import Day, Month
 from rednotebook.util import filesystem
 from rednotebook import storage
 from rednotebook.util import markup
-from rednotebook.gui.customwidgets import AssistantPage, \
-                    IntroductionPage, RadioButtonPage, PathChooserPage, Assistant
+from rednotebook.gui.customwidgets import AssistantPage, RadioButtonPage, \
+    PathChooserPage, Assistant
 
 class ImportDay(Day):
     '''
@@ -194,8 +194,8 @@ class Importer(object):
             try:
                 __import__(module)
             except ImportError, err:
-                logging.info('"%s" could not be imported. '
-                    'You will not be able to import %s' % (module, cls.NAME))
+                logging.info('"%s" could not be imported: %s\nYou will not be '
+                             'able to import %s' % (module, err, cls.NAME))
                 # Importer cannot be used
                 return False
         return True

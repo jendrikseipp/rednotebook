@@ -37,6 +37,7 @@ O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not sa
 O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
 O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
+O Use pyflakes to remove unnecessary imports
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -82,6 +83,8 @@ O Possibility to show all entries (Search for "*"?)
 O Create mono icon for panel?
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add online mathjax support (see Snippets/mathjax-test.html)
+O Remember cursor position when changing from Edit to Preview mode
+O Add shortcut to move the cursor into the main text area
 
 
 1.3

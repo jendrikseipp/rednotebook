@@ -391,7 +391,7 @@ class Journal:
 
         try:
             filesystem.make_directory(self.dirs.data_dir)
-        except OSError, err:
+        except OSError:
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 

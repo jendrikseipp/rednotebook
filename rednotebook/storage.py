@@ -35,10 +35,9 @@ except ImportError:
 # The presence of the yaml module has been checked
 try:
     from yaml import CLoader as Loader
-    from yaml import CDumper as Dumper
-    #logging.info('Using libyaml for loading and dumping')
+    #from yaml import CDumper as Dumper
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Loader #, Dumper
     logging.info('Using pyyaml for loading and dumping')
 
 from rednotebook.data import Month

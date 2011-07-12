@@ -35,7 +35,6 @@ except ImportError:
     gtkspell = None
 
 
-from rednotebook.util import utils
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView

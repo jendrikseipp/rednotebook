@@ -288,7 +288,7 @@ class CategoriesTreeView(object):
         if category_iter is None:
             # If category does not exist add new category
             category_iter = self.tree_store.append(None, [category_pango])
-            entry_node = self.tree_store.append(category_iter, [entry_pango])
+            self.tree_store.append(category_iter, [entry_pango])
         else:
             # If category exists add entry to existing category
             self.tree_store.append(category_iter, [entry_pango])

@@ -25,7 +25,6 @@ import os
 import re
 from urllib2 import urlopen, URLError
 import webbrowser
-import unicode
 import logging
 from optparse import IndentedHelpFormatter
 import textwrap
