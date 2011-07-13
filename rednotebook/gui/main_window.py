@@ -39,6 +39,7 @@ from rednotebook.gui import categories
 from rednotebook.gui import browser
 from rednotebook.gui import search
 from rednotebook.gui.editor import Editor
+from rednotebook.gui.clouds import Cloud
 
 test_zeitgeist = False
 if test_zeitgeist:
@@ -422,11 +423,8 @@ class MainWindow(object):
             # Switched to cloud tab
             self.cloud.update(force_update=True)
 
-
     def setup_clouds(self):
         self.cloud_box = self.builder.get_object('cloud_box')
-
-        from rednotebook.gui.clouds import Cloud
         self.cloud = Cloud(self.journal)
 
         self.cloud_box.pack_start(self.cloud)
@@ -434,11 +432,9 @@ class MainWindow(object):
         self.cloud_combo_box = self.builder.get_object('cloud_combo_box')
         self.cloud_combo_box.set_active(0)
 
-
     def on_cloud_combo_box_changed(self, cloud_combo_box):
         value_int = cloud_combo_box.get_active()
         self.cloud.set_type(value_int)
-
 
     def on_main_frame_configure_event(self, widget, event):
         '''
