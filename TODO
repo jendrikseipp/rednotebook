@@ -38,6 +38,7 @@ X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
+  Regexes?
 O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
 
 O Use Zeitgeist for automatic category entries
@@ -86,11 +87,21 @@ O Add online mathjax support (see Snippets/mathjax-test.html)
 O Add shortcut to move the cursor into the main text area
 O Restore previous cursor position in edit mode when coming from preview mode or another day
 
+O Let tags be categories without entries
+O Select the search location (text, categories, tags) after doing the search
+O Unify Clouds and search -> Show the search bar above the clouds
+  When a search is made, substitute the word cloud with the word list and
+  present a control to further refine the results.
+O Check for duplicates in cloud blacklists
+O Separate page and textarea instead of textbox for black- and white list?
+O Move the "update application" command into the help menu
+O Right-click on word in main text area to add it to cloud whitelist
+
 
 1.3
 O Password protection or encryption (Think about new format first)
 O Add per journal configuration?
-O Internal links
+O Internal links to other days
 
 
 2.0
