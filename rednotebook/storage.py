@@ -66,6 +66,8 @@ def _load_month_from_disk(path, year_number, month_number):
     except Exception, err:
         logging.error('An error occured while reading %s:' % path)
         logging.error('%s' % err)
+    # If we continued here, the possibly corrupted file would be overwritten
+    sys.exit(1)
 
 
 def load_all_months_from_disk(data_dir):

@@ -8,12 +8,38 @@ implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.2
+X Let the "Back" and "Forward" button jump over blank days
+X Add "Export currently visible day" option in export assistant
+X Show warning when second RedNotebook instance is started to prevent data loss
+X Remember scrollbar positions when changing between days and edit and preview mode
+X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
+X Use auto-completion for all category entries
+X Allow linebreaks (\\) only at the end of lines
+X Abort startup if a yaml file cannot be read
+X Escape regular expression syntax in searches (*, +, etc.)
+X Code optimizations
+X Remove old cloud implementation
+X Remove external module htmltextview.py
+X Remember last export and backup locations
+X Search in annotations
+X Do not write empty month files to disk
+X Show the most recent entries at the top of the search list by default
+X Remove "Delete Entry" button
+X add tooltips for category buttons
+X Remove dead unicode code
+X Always keep categories sorted in search and annotations drop-down menus
+X Remove obsolete keepnote sources
+X Use pyflakes to remove unnecessary imports and check for errors
+
+1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
-O "Export currently visible day only" option
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
-O Allow double backslashes (\\) in filenames (e.g. for UNC paths)
+O Use better icons for Annotate (pencil) and Tag (tag)
+O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
+  Regexes?
+O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -43,36 +69,39 @@ O Fix status icon on XFCE (LP:525196)
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
 O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
-O Get rid of python3.0 warnings
 O Remove support for the notification area on Linux (http://design.canonical.com/2010/04/notification-area/)
 O Only export days that have category X if category X is selected?
-O Let the next (prev) button have submenus (go to next entry, go to last entry)
 O Windows: Enable spellcheck
-O Translate help
+O Translate help (Restructure first using Sphinx?)
 O Add "AddThis" Buttons to homepage
 O Rethink logfile
 O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
-O Ensure that date in export is bigger than rest of text
 O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
-O Remember export and backup locations
-O Windows: Add correct newline character for editing previews in notepad
-O Search in annotations
-O Do not write empty month files to disk
 O Update search window when an annotation has been added/changed?
-O Install .mo files (translations) in the standard directories (check for better build system first)
+O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*"?)
-O Do not allow starting two instances at the same time
-O Remove keepnote and htmltextview sources (make webkit mandatory first)
-O Show by default the most recent entries at the top of the search list, or else to remember the ascending/descending order date selected
 O Create mono icon for panel?
-O Regularly check for new webkit version that supports chinese fonts
+O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
+O Add online mathjax support (see Snippets/mathjax-test.html)
+O Add shortcut to move the cursor into the main text area
+O Restore previous cursor position in edit mode when coming from preview mode or another day
+
+O Let tags be categories without entries
+O Select the search location (text, categories, tags) after doing the search
+O Unify Clouds and search -> Show the search bar above the clouds
+  When a search is made, substitute the word cloud with the word list and
+  present a control to further refine the results.
+O Check for duplicates in cloud blacklists
+O Separate page and textarea instead of textbox for black- and white list?
+O Move the "update application" command into the help menu
+O Right-click on word in main text area to add it to cloud whitelist
 
 
 1.3
 O Password protection or encryption (Think about new format first)
 O Add per journal configuration?
-O Internal links
+O Internal links to other days
 
 
 2.0
@@ -80,16 +109,13 @@ O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting) (Think 
 O Let user change font, color fonts, highlighting colors
 O Copy all files and pictures into data subdirectory (Think about new format first)
 O Image resizing with PIL? (Image module) (Figure out where to save new files first)
+O Entries without dates (bookmarks, contact lists)?
+O Filter exports by tag, category, word?
 
 
 2.x
 O Think about using desktop-couch?
-O Use categories for number data and present it graphically (KMs, Cash, Calories)
 O RTF export
-
-
-
-
 
 
 
@@ -117,6 +143,9 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
   the applicaiton to close. I have no such problems with the 1.1.0 version (with
   the 'older' user interface).
 - Change an entry's category (Useful for Todo items) (KISS?)
+- Plugin system?
+
+1. Have every category retain its subentries to suit to recurring activities, just like Tags does. E.g. I have one category named Clients; since I often meet the same persons, I find it annoying entering the same name more than one time - and you now, spelling errors and the like... And what if I look at any TV series?
 
 
 
@@ -140,7 +169,6 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
   everything, Current behaviour should be fine)
 - allow opening config file from within RedNotebook
   (Probably no good idea as some options might be unavailable or confusing)
-- Change to newer KeepNote Version? -> No. A stable webkit will be available everywhere soon.
 - Make the Format button remember its last action -> No, current behaviour good enough.
 - Tabs for different notebooks (KISS)
 - Add option for time interval between automatic savings? (KISS)
@@ -157,3 +185,4 @@ O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
 - Let the Search type selection remember the selection between sessions (KISS)
 - Let the Annotate and Tag window box remember their positions between sessions (KISS)
 - Select template file when clicking the button instead of adding weekday's file
+- Use categories for number data and present it graphically (KMs, Cash, Calories) (KISS)
