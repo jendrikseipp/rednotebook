@@ -19,7 +19,7 @@ body {
 
 <div class="header" id="header">
 <h1>RedNotebook Documentation</h1>
-<h2>1.1.5</h2>
+<h2>1.1.7</h2>
 </div>
 
 <div class="toc" id="toc">
@@ -131,7 +131,7 @@ The interface is divided into three parts:
 </ul>
 
 <p>
-There are two modes in RedNotebook, the <u>editing</u> mode and the <u>preview</u> mode.
+There are two modes in RedNotebook, the <u>edit</u> mode and the <u>preview</u> mode.
 </p>
 
 <a id="toc2" name="toc2"></a>
@@ -174,7 +174,7 @@ instead of "-" you can create a <b>numbered list</b>.
 <h2>Annotations in Categories</h2>
 
 <p>
-Annotations are notes that can be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it.
+Annotations are notes that can be sorted into categories. For example you could create the category "Ideas" and then add today's ideas to it. If you find annotations confusing you can simply hide them for now by moving the separator to the far right.
 </p>
 
 <ul>
@@ -466,9 +466,9 @@ You can add multiple entries to one day in two ways:
 </p>
 
 <ul>
-<li>Use two different journals (one named "%(work)s", the other "%(free_time)s")
+<li>Use two different journals (one named "Work", the other "Free time")
 </li>
-<li>Separate your two entries by different titles (===%(work)s===, ===%(free_time)s===)
+<li>Separate your two entries by different titles (===Work===, ===Free time===)
 </li>
 <li>Use a horizontal separator line (20 “=”s)
 </li>
@@ -519,20 +519,30 @@ Once you've finished an item, you could also change its category name from "Todo
 <h3>Week Numbers</h3>
 
 <p>
-If you'd like to see the week numbers in the calendar, you can set the value of weekNumbers to 1 in the configuration file. This file normally resides at $HOME/.rednotebook/configuration.cfg
+If you'd like to see the week numbers in the calendar, you can set the
+value of weekNumbers to 1 in the configuration file. This file
+normally resides at $HOME/.rednotebook/configuration.cfg
 </p>
 
 <a id="toc29" name="toc29"></a>
 <h3>Language</h3>
 
 <p>
-If you want to change RedNotebook's language, setting the environment variable LANG to a different language code should be sufficient. Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German). To set the language to English you can also set the code to "C".
+If you want to change RedNotebook's language, setting the environment
+variable LANG or LANGUAGE to a different language code should be sufficient.
+Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German).
+To set the language to English you can also set the code to "C". Before you
+change the language make sure you have the required language packs installed.
+Otherwise an error will be shown.
 </p>
 <p>
-On Linux, start a terminal and call <code>LANG=de_DE.utf8</code>. Then in the same terminal, run <code>rednotebook</code>. The language change will be gone however once you close the terminal.
+On <b>Linux</b>, start a terminal and call <code>LANG=de_DE.utf8</code>. Then in the
+same terminal, run <code>rednotebook</code>. The language change will be gone
+however once you close the terminal.
 </p>
 <p>
-On Windows, set or create a LANG environment variable with the desired code:
+On Windows, set or create a LANGUAGE environment variable with the desired
+code:
 </p>
 
 <ol>
@@ -542,7 +552,7 @@ On Windows, set or create a LANG environment variable with the desired code:
 </li>
 <li>In the Advanced section, click the Environment Variables button.
 </li>
-<li>Click the New button and insert LANG at the top and e.g. de or de_DE or
+<li>Click the New button and insert LANGUAGE at the top and e.g. de or de_DE or
   de_DE.UTF-8 (use your <a href="http://en.wikipedia.org/wiki/ISO_639-1">language code</a>).
 </li>
 </ol>
@@ -647,7 +657,7 @@ To get a list of all entries, just search for " " (the space character). This ch
 <pre>
 Usage: rednotebook [options] [journal-path]
 
-RedNotebook 1.1.5
+RedNotebook 1.1.7
 
 The optional journal-path can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)
@@ -670,13 +680,20 @@ Options:
 <h2>Data Format</h2>
 
 <p>
-In this paragraph I will explain shortly what the RedNotebook files consist of. Firstly it is important to understand that the content is saved in a directory with many files, not just one file. The directory name is used as a name for the journal.
+In this paragraph I will explain shortly what the RedNotebook files
+consist of. Firstly it is important to understand that the content
+is saved in a directory with many files, not just one file.
+The directory name is used as a name for the journal.
 </p>
 <p>
-In the directory there are several files all conforming to the naming scheme "2010-05.txt" (&lt;year&gt;-&lt;month&gt;.txt). Obviously these files correspond to months (May 2010).
+In the directory there are several files all conforming to the naming
+scheme "2010-05.txt" (&lt;year&gt;-&lt;month&gt;.txt). Obviously these files
+correspond to months (May 2010).
 </p>
 <p>
-Each month file contains text for the days of that month. The text is actually <a href="http://www.yaml.org">YAML</a> markup. Without the (unnecessary) python directives the files look like this:
+Each month file contains text for the days of that month.
+The text is actually <a href="http://www.yaml.org">YAML</a> markup. Without the
+(unnecessary) python directives the files look like this:
 </p>
 
 <pre>
@@ -687,14 +704,30 @@ Each month file contains text for the days of that month. The text is actually <
 </pre>
 
 <p>
-As you can see the data format uses a dictionary (or hashmap structure) for storing the information. The outer dictionary has the daynumbers as keys and the day content as values. The day values consist of another dictionary. It can have a key "text" whose value will be inserted in the main content area. Additionally there can be multiple other keys that stand for the categories that belong to that day. Each category contains a dictionary with only one key, the category entry.
+As you can see the data format uses a dictionary (or hashmap structure)
+for storing the information. The outer dictionary has the day numbers as
+keys and the day content as values. The day values consist of another
+dictionary. It can have a key "text" whose value will be inserted in
+the main content area. Additionally there can be multiple other keys
+that stand for the categories that belong to that day. Each category
+contains a dictionary mapping category entries to the null value.
+</p>
+<p>
+In summary the data format is a hierarchy of dictionaries. This way the format
+can be easily extended once the need for that arises.
+</p>
+<p>
+All textual content can be formatted or augmented with
+<a href="http://txt2tags.org/">txt2tags</a> markup.
 </p>
 
 <a id="toc38" name="toc38"></a>
 <h2>Questions</h2>
 
 <p>
-If you have any questions or comments, feel free to post them in the <a href="http://apps.sourceforge.net/phpbb/rednotebook/">forum</a> or contact me directly.
+If you have any questions or comments, feel free to post them in the
+<a href="http://apps.sourceforge.net/phpbb/rednotebook/">forum</a> or
+contact me directly.
 </p>
 
 <a id="toc39" name="toc39"></a>

@@ -646,17 +646,17 @@ Options:
 ```
 
 == Data Format ==
-In this paragraph I will explain shortly what the RedNotebook files \
-consist of. Firstly it is important to understand that the content \
-is saved in a directory with many files, not just one file. \
+In this paragraph I will explain shortly what the RedNotebook files
+consist of. Firstly it is important to understand that the content
+is saved in a directory with many files, not just one file.
 The directory name is used as a name for the journal.
 
-In the directory there are several files all conforming to the naming \
-scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files \
+In the directory there are several files all conforming to the naming
+scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files
 correspond to months (May 2010).
 
-Each month file contains text for the days of that month. \
-The text is actually [YAML www.yaml.org] markup. Without the \
+Each month file contains text for the days of that month.
+The text is actually [YAML www.yaml.org] markup. Without the
 (unnecessary) python directives the files look like this:
 
 ```
@@ -666,17 +666,23 @@ The text is actually [YAML www.yaml.org] markup. Without the \
   text: "This is another text entry, shown in the main text area."
 ```
 
-As you can see the data format uses a dictionary (or hashmap structure) \
-for storing the information. The outer dictionary has the daynumbers as \
-keys and the day content as values. The day values consist of another \
-dictionary. It can have a key "text" whose value will be inserted in \
-the main content area. Additionally there can be multiple other keys \
-that stand for the categories that belong to that day. Each category \
-contains a dictionary with only one key, the category entry.
+As you can see the data format uses a dictionary (or hashmap structure)
+for storing the information. The outer dictionary has the day numbers as
+keys and the day content as values. The day values consist of another
+dictionary. It can have a key "text" whose value will be inserted in
+the main content area. Additionally there can be multiple other keys
+that stand for the categories that belong to that day. Each category
+contains a dictionary mapping category entries to the null value.
+
+In summary the data format is a hierarchy of dictionaries. This way the format
+can be easily extended once the need for that arises.
+
+All textual content can be formatted or augmented with
+[txt2tags http://txt2tags.org/] markup.
 
 == Questions ==
-If you have any questions or comments, feel free to post them in the \
-[forum http://apps.sourceforge.net/phpbb/rednotebook/] or \
+If you have any questions or comments, feel free to post them in the
+[forum http://apps.sourceforge.net/phpbb/rednotebook/] or
 contact me directly.
 
 == Bugs ==
@@ -728,4 +734,4 @@ if __name__ == '__main__':
 
     write_documentation(doc_dir)
 
-    #logging.getLogger('').setLevel(logging.DEBUG)
+    print 'Wrote documentation to', os.path.join(doc_dir, 'help.html')
