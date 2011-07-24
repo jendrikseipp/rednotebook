@@ -1,5 +1,8 @@
 ==== RedNotebook Changelog ====
 
+== 1.1.8 (24-07-11) ==
+* Fix: Abort startup if yaml file cannot be read to avoid losing data
+
 == 1.1.7 (13-07-11) ==
 * Fix: Chinese characters are not correctly rendered in preview (LP:731273)
 * Fix: Screen position not correctly remembered when opened from system tray (LP:804792)
