@@ -22,13 +22,13 @@ from __future__ import with_statement
 import os
 import logging
 import re
+import sys
 
 import pango
 import gobject
 
 # Testing
 if __name__ == '__main__':
-    import sys
     sys.path.insert(0, '../../')
     logging.basicConfig(level=logging.DEBUG,
                     format='%(levelname)-8s %(message)s',)
@@ -318,31 +318,3 @@ def get_table_markup(table):
     table = map(lambda row: '| ' + ' | '.join(row) + ' |', table)
     table[0] = '|' + table[0]
     return '\n'.join(table)
-
-
-if __name__ == '__main__':
-    markup = '''\
-normal text, normal_text_with_underscores and ""raw_text_with_underscores""
-
-[Link ""http://www.co.whatcom.wa.us/health/environmental/site_hazard/sitehazard.jsp""]
-'''
-
-    markup =  '[""/image"".png?50]\n'
-    markup += '[""/image"".jpg]\n'
-    markup += '[""file:///image"".png?10]\n'
-    markup += '[""file:///image"".jpg]\n'
-
-    markups = ['http://site/s.php?q&c', 'http://site/s.php?q&amp;c', '&', '&amp;']
-    for markup in markups:
-        print 'MARKUP    ', markup
-        p = convert_to_pango(markup)
-        print 'PANGO     ', p
-        new_markup = convert_from_pango(p)
-        print 'NEW MARKUP', new_markup
-        print
-
-    #html = convert(markup, 'xhtml')
-    #print html
-
-    #latex = convert(markup, 'tex')
-    #print latex
