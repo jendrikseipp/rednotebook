@@ -1016,22 +1016,30 @@ class DayEditor(Editor):
         self.scrolled_win = self.day_text_view.get_parent()
 
     def show_day(self, new_day):
-        # Save the position in the preview pane for the old day
+        # Save the position in the edit pane for the old day
         if self.day:
+            cursor_pos = self.day_text_buffer.get_property('cursor-position')
+            # If there is a selection we save it, else we save the cursor position
+            selection = self.day_text_buffer.get_selection_bounds()
+            if selection:
+                selection = [it.get_offset() for it in selection]
+            else:
+                selection = [cursor_pos, cursor_pos]
             self.day.last_edit_pos = (self.scrolled_win.get_hscrollbar().get_value(),
                                       self.scrolled_win.get_vscrollbar().get_value(),
-                                      self.day_text_buffer.get_property('cursor-position'))
+                                      selection)
 
         # Show new day
         self.day = new_day
         self.set_text(self.day.text, undoing=True)
 
         if self.day.last_edit_pos is not None:
-            x, y, offset = self.day.last_edit_pos
+            x, y, selection = self.day.last_edit_pos
             gobject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
             gobject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
-            insert_iter = self.day_text_buffer.get_iter_at_offset(offset)
-            gobject.idle_add(self.day_text_buffer.place_cursor, insert_iter)
+            iters = [self.day_text_buffer.get_iter_at_offset(offset)
+                     for offset in selection]
+            gobject.idle_add(self.day_text_buffer.select_range, *iters)
             self.day_text_view.grab_focus()
 
 

@@ -12,13 +12,14 @@ X Let the "Back" and "Forward" button jump over blank days
 X Add "Export currently visible day" option in export assistant
 X Show warning when second RedNotebook instance is started to prevent data loss
 X Remember scrollbar positions when changing between days and edit and preview mode
+X Restore previous cursor position and text selection in edit mode when coming
+  from preview mode or another day
 X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
 X Use auto-completion for all category entries
 X Allow linebreaks (\\) only at the end of lines
 X Allow markup for links in categories (--http://mypage.com--)
 X Abort startup if a yaml file cannot be read
 X Escape regular expression syntax in searches (*, +, etc.)
-O Restore previous cursor position in edit mode when coming from preview mode or another day
 X Use a better icon for Annotate (Edit)
 X Code optimizations
 X Remove old cloud implementation
@@ -34,6 +35,7 @@ X Always keep categories sorted in search and annotations drop-down menus
 X Remove obsolete keepnote sources
 X Use pyflakes to remove unnecessary imports and check for errors
 X Let "Get help online" point to RedNotebook's answers section at launchpad
+X Add more markup examples to templates help text
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -97,8 +99,8 @@ O Check for duplicates in cloud blacklists
 O Separate page and textarea instead of textbox for black- and white list?
 O Move the "update application" command into the help menu
 O Right-click on word in main text area to add it to cloud whitelist
-O Add all possible markup to Templates->Help
 O Option to remove dates in export
+O Color submenu in format menu with additional color picker
 
 
 1.3
