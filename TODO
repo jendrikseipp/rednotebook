@@ -18,6 +18,7 @@ X Allow linebreaks (\\) only at the end of lines
 X Allow markup for links in categories (--http://mypage.com--)
 X Abort startup if a yaml file cannot be read
 X Escape regular expression syntax in searches (*, +, etc.)
+O Restore previous cursor position in edit mode when coming from preview mode or another day
 X Use a better icon for Annotate (Edit)
 X Code optimizations
 X Remove old cloud implementation
@@ -86,7 +87,6 @@ O Create mono icon for panel?
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add online mathjax support (see Snippets/mathjax-test.html)
 O Add shortcut to move the cursor into the main text area
-O Restore previous cursor position in edit mode when coming from preview mode or another day
 
 O Let tags be categories without entries
 O Select the search location (text, categories, tags) after doing the search

@@ -372,7 +372,6 @@ class MainWindow(object):
         else:
             # Enter edit mode
             self.day_text_field.show_day(self.day)
-            self.day_text_field.day_text_view.grab_focus()
 
             edit_scroll.show()
             self.html_editor.hide()
@@ -1020,16 +1019,20 @@ class DayEditor(Editor):
         # Save the position in the preview pane for the old day
         if self.day:
             self.day.last_edit_pos = (self.scrolled_win.get_hscrollbar().get_value(),
-                                      self.scrolled_win.get_vscrollbar().get_value())
+                                      self.scrolled_win.get_vscrollbar().get_value(),
+                                      self.day_text_buffer.get_property('cursor-position'))
 
         # Show new day
         self.day = new_day
         self.set_text(self.day.text, undoing=True)
 
         if self.day.last_edit_pos is not None:
-            x, y = self.day.last_edit_pos
+            x, y, offset = self.day.last_edit_pos
             gobject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
             gobject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
+            insert_iter = self.day_text_buffer.get_iter_at_offset(offset)
+            gobject.idle_add(self.day_text_buffer.place_cursor, insert_iter)
+            self.day_text_view.grab_focus()
 
 
 class NewEntryDialog(object):
