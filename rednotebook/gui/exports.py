@@ -28,7 +28,7 @@ import gobject
 if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("./../../"))
     logging.basicConfig(level=logging.DEBUG)
-    from rednotebook import Journal
+    from rednotebook.journal import Journal
 
 
 from rednotebook.util import filesystem
@@ -37,6 +37,7 @@ from rednotebook.util import dates
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
                                     RadioButtonPage, PathChooserPage, Assistant
 from rednotebook.gui import browser
+from rednotebook.gui import options
 
 
 
@@ -120,6 +121,11 @@ class ContentsPage(AssistantPage):
         self.journal = journal
         self.assistant = assistant
 
+        # TODO: Try to make this more elegant
+        options.Option.config = journal.config
+        # Set default date format string
+        options.Option.config['exportDateFormat'] = '%A, %x'
+        self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
         self.text_button = gtk.CheckButton(label=_('Export texts'))
         self.all_categories_button = gtk.RadioButton(label=_('Export all categories'))
         self.no_categories_button = gtk.RadioButton(label=_('Do not export categories'),
@@ -127,6 +133,7 @@ class ContentsPage(AssistantPage):
         self.sel_categories_button = gtk.RadioButton(label=_('Export only the selected categories'),
                                             group=self.all_categories_button)
 
+        self.pack_start(self.date_format, False)
         self.pack_start(self.text_button, False)
         self.pack_start(self.all_categories_button, False)
         self.pack_start(self.no_categories_button, False)
@@ -149,14 +156,14 @@ class ContentsPage(AssistantPage):
         column.add_attribute(cell, 'text', 0)
 
         self.select_button = gtk.Button(_('Select') + ' >>')
-        self.unselect_button = gtk.Button('<< ' + _('Unselect'))
+        self.deselect_button = gtk.Button('<< ' + _('Deselect'))
 
         self.select_button.connect('clicked', self.on_select_category)
-        self.unselect_button.connect('clicked', self.on_unselect_category)
+        self.deselect_button.connect('clicked', self.on_deselect_category)
 
         centered_vbox = gtk.VBox()
         centered_vbox.pack_start(self.select_button, True, False)
-        centered_vbox.pack_start(self.unselect_button, True, False)
+        centered_vbox.pack_start(self.deselect_button, True, False)
 
         vbox = gtk.VBox()
         vbox.pack_start(centered_vbox, True, False)
@@ -209,7 +216,7 @@ class ContentsPage(AssistantPage):
         self.check_selection()
 
 
-    def on_unselect_category(self, widget):
+    def on_deselect_category(self, widget):
         selection = self.selected_categories.get_selection()
         nb_selected, selected_iter = selection.get_selected()
 
@@ -263,7 +270,7 @@ class ContentsPage(AssistantPage):
         self.available_categories.set_sensitive(select)
         self.selected_categories.set_sensitive(select)
         self.select_button.set_sensitive(select)
-        self.unselect_button.set_sensitive(select)
+        self.deselect_button.set_sensitive(select)
 
         self.assistant.set_page_complete(self.assistant.page3, correct)
 
@@ -408,11 +415,9 @@ class ExportAssistant(Assistant):
 
         markup_strings_for_each_day = []
         for day in export_days:
-            default_export_date_format = '%A, %x'
-            # probably no one needs to configure this as i18n already exists
-            #date_format = self.journal.config.read('exportDateFormat',
-            #                                       default_export_date_format)
-            date_format = default_export_date_format
+            # Save selected date format
+            date_format = self.page3.date_format.get_value()
+            self.journal.config['exportDateFormat'] = date_format
             date_string = dates.format_date(date_format, day.date)
             day_markup = markup.get_markup_for_day(day, with_text=export_text,
                                             categories=selected_categories,
