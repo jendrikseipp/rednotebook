@@ -138,7 +138,7 @@ class MainMenuBar(object):
             ('Help', gtk.STOCK_HELP, _('Contents'),
                 '<Ctrl>h', _('Open the RedNotebook documentation'), self.on_help_menu_item_activate),
             ('OnlineHelp', None, _('Get Help Online'),
-                None, _('Visit the RedNotebook forum'), self.on_online_help),
+                None, _('Browse answered questions or ask a new one'), self.on_online_help),
             ('Translate', None, _('Translate RedNotebook'),
                 None, _('Connect to the Launchpad website to help translate RedNotebook'),
                 self.on_translate),
@@ -253,7 +253,7 @@ class MainMenuBar(object):
         utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
 
     def on_online_help(self, widget):
-        webbrowser.open(info.forum_url)
+        webbrowser.open(info.answers_url)
 
     def on_translate(self, widget):
         webbrowser.open(info.translation_url)

@@ -1,8 +1,8 @@
 TODO / Roadmap:
 
-If you have any suggestions or comments, feel free to contact me in the forum or
-per mail. Even if a feature is listed here already it might speed up the
-implementation if you tell me that you'd like its addition ;)
+If you have any suggestions or comments, feel free to contact me on the mailing
+list or directly per mail. Even if a feature is listed here already it might
+speed up the implementation if you tell me that you'd like its addition ;)
 
 
 === Roadmap ===
@@ -32,6 +32,7 @@ X Remove dead unicode code
 X Always keep categories sorted in search and annotations drop-down menus
 X Remove obsolete keepnote sources
 X Use pyflakes to remove unnecessary imports and check for errors
+X Let "Get help online" point to RedNotebook's answers section at launchpad
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -138,16 +139,9 @@ O make date format configurable for exports (probably no one needs this as i18n 
   https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=139
 O Add additional one-click menu (like the one with Search and Tags Cloud) that contains quick links to other journals
   (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23&sid=210fbd0a19cc2d2d5baec8c5cafb7c1f&p=582#p583)
-O I also see a problem with both 1.1.1 and 1.1.2 version of the WIndows package.
-  The 'hanging' occurs after navigating the cursor through the main edit window
-  (in edit mode). Pressing the 'home' key or 'end' key usually causes a short beep
-  and then locks my rednotebook application. The only thing I can then do is force
-  the applicaiton to close. I have no such problems with the 1.1.0 version (with
-  the 'older' user interface).
 - Change an entry's category (Useful for Todo items) (KISS?)
 - Plugin system?
-
-1. Have every category retain its subentries to suit to recurring activities, just like Tags does. E.g. I have one category named Clients; since I often meet the same persons, I find it annoying entering the same name more than one time - and you now, spelling errors and the like... And what if I look at any TV series?
+O Color picker for choosing HTML colors
 
 
 

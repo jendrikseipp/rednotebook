@@ -25,11 +25,11 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-version =           '1.1.5'
+version =           '2.0.0'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
 url =               'http://rednotebook.sourceforge.net'
-forum_url =         'http://apps.sourceforge.net/phpbb/rednotebook/'
+answers_url =       'https://answers.launchpad.net/rednotebook'
 translation_url =   'https://translations.launchpad.net/rednotebook/'
 bug_url =           'https://bugs.launchpad.net/rednotebook/+filebug'
 
@@ -673,9 +673,8 @@ that stand for the categories that belong to that day. Each category \
 contains a dictionary with only one key, the category entry.
 
 == Questions ==
-If you have any questions or comments, feel free to post them in the \
-[forum http://apps.sourceforge.net/phpbb/rednotebook/] or \
-contact me directly.
+If you have any questions or comments, feel free to post them on the mailing
+list or contact me directly.
 
 == Bugs ==
 There is no software without bugs, so if you encounter one please drop me a note.
