@@ -15,6 +15,7 @@ X Remember scrollbar positions when changing between days and edit and preview m
 X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
 X Use auto-completion for all category entries
 X Allow linebreaks (\\) only at the end of lines
+X Allow markup for links in categories (--http://mypage.com--)
 X Abort startup if a yaml file cannot be read
 X Escape regular expression syntax in searches (*, +, etc.)
 X Use a better icon for Annotate (Edit)
