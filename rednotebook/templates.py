@@ -44,6 +44,7 @@ Your text can be:
 - //italic//
 - __underlined__
 - --strikethrough--
+- or some **//__combination__//**
 
 
 You can add images to your template:
@@ -62,14 +63,25 @@ empty lines to end a list.
 
 Additionally you can have **titles** and **horizontal lines**:
 
-===Title===
+= Title level 1 =
+(The dates in the export will use this level, so it is recommended to use lower
+levels in your entries)
+== Title level 2 ==
+=== Title level 3 ===
+etc.
 
 ====================
+
+% Commentary text can be put on lines starting with a percent sign.
+% Those lines will not show up in the preview and the export.
 
 **Macros**:
 
 When a template is inserted, every occurence of "$date$" is converted to \
 the current date. You can set the date format in the preferences.
+
+There is even more markup that you can put into your templates. Have a look at
+the inline help (Ctrl+H) for information.
 '''
 
 help_text = '''\
