@@ -21,6 +21,7 @@ from __future__ import with_statement
 
 import os
 import logging
+import re
 
 import pango
 import gobject
@@ -36,8 +37,9 @@ from rednotebook.external import txt2tags
 from rednotebook.util import filesystem
 
 
+# Linebreaks are only allowed at line ends
 REGEX_LINEBREAK = r'\\\\[\s]*$'
-
+REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -217,6 +219,7 @@ def convert(txt, target, headers=None, options=None):
 
     return result
 
+
 def convert_to_pango(txt, headers=None, options=None):
     '''
     Code partly taken from txt2tags tarball
@@ -236,9 +239,11 @@ def convert_to_pango(txt, headers=None, options=None):
     config['target'] = 'xhtml'
 
     config['preproc'] = []
+    # We need to escape the ampersand here, otherwise "&amp;" would become
+    # "&amp;amp;"
     config['preproc'].append([r'&amp;', '&'])
 
-    # Allow line breaks, r'\\\\' are 2 \ for regexes
+    # Allow line breaks
     config['postproc'] = []
     config['postproc'].append([REGEX_LINEBREAK, '\n'])
 
@@ -268,6 +273,12 @@ def convert_to_pango(txt, headers=None, options=None):
     logging.log(5, 'Converted "%s" text to "%s" txt2tags markup' %
                 (repr(original_txt), repr(result)))
 
+    # Remove unknown tags (<a>)
+    def replace_links(match):
+        """Return the link name."""
+        return match.group(1)
+    result = re.sub(REGEX_HTML_LINK, replace_links, result)
+
     try:
         attr_list, plain, accel = pango.parse_markup(result)
 
@@ -276,12 +287,7 @@ def convert_to_pango(txt, headers=None, options=None):
     except gobject.GError:
         # There are unknown tags in the markup, return the original text
         logging.debug('There are unknown tags in the markup: %s' % result)
-        # We have to take care of the ampersands in links
-        # (since links always contain an unknown tag, the "a" tag)
-        txt = original_txt.replace('&amp;', 'XXX_SAVE_AMPERSAND_XXX')
-        txt = txt.replace('&', '&amp;')
-        txt = txt.replace('XXX_SAVE_AMPERSAND_XXX', '&amp;')
-        return txt
+        return original_txt
 
 
 def convert_from_pango(pango_markup):

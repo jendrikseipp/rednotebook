@@ -17,6 +17,7 @@ X Use auto-completion for all category entries
 X Allow linebreaks (\\) only at the end of lines
 X Abort startup if a yaml file cannot be read
 X Escape regular expression syntax in searches (*, +, etc.)
+X Use a better icon for Annotate (Edit)
 X Code optimizations
 X Remove old cloud implementation
 X Remove external module htmltextview.py
@@ -36,7 +37,6 @@ X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pi
 X Tables
 X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
-O Use better icons for Annotate (pencil) and Tag (tag)
 O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
   Regexes?
 O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
@@ -61,7 +61,6 @@ O Imports
   O Treepad?
   X Tomboy
 
-O Provide an option to export only days with a certain tag
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
 O Automatic insertion of holidays (Search a website for holidays and display them in the category "Holidays")
 O Make startup faster
@@ -96,6 +95,8 @@ O Check for duplicates in cloud blacklists
 O Separate page and textarea instead of textbox for black- and white list?
 O Move the "update application" command into the help menu
 O Right-click on word in main text area to add it to cloud whitelist
+O Add all possible markup to Templates->Help
+O Option to remove dates in export
 
 
 1.3
