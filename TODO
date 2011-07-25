@@ -85,7 +85,6 @@ O Create mono icon for panel?
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add online mathjax support (see Snippets/mathjax-test.html)
 O Add shortcut to move the cursor into the main text area
-O Restore previous cursor position in edit mode when coming from preview mode or another day
 
 O Let tags be categories without entries
 O Select the search location (text, categories, tags) after doing the search

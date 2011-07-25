@@ -539,7 +539,8 @@ normally resides at $HOME/.rednotebook/configuration.cfg
 
 === Language ===
 If you want to change RedNotebook's language, setting the environment
-variable LANG or LANGUAGE to a different language code should be sufficient.
+variable LANG (Linux) or LANGUAGE (Windows) to a different language code should
+be sufficient.
 Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German).
 To set the language to English you can also set the code to "C". Before you
 change the language make sure you have the required language packs installed.
@@ -553,7 +554,8 @@ On Windows, set or create a LANGUAGE environment variable with the desired
 code:
 
 + Right-click My Computer and click Properties.
-+ In the System Properties window, click on the Advanced tab.
++ In the System Properties window, click on the Advanced tab (Windows XP) or
+  go to Advanced System Settings (Windows 7).
 + In the Advanced section, click the Environment Variables button.
 + Click the New button and insert LANGUAGE at the top and e.g. de or de_DE or
   de_DE.UTF-8 (use your [language code ""http://en.wikipedia.org/wiki/ISO_639-1""]).
