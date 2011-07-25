@@ -126,6 +126,7 @@ class ContentsPage(AssistantPage):
         # Set default date format string
         options.Option.config['exportDateFormat'] = '%A, %x'
         self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
+        self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
         self.text_button = gtk.CheckButton(label=_('Export texts'))
         self.all_categories_button = gtk.RadioButton(label=_('Export all categories'))
         self.no_categories_button = gtk.RadioButton(label=_('Do not export categories'),

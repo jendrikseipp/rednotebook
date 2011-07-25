@@ -63,9 +63,9 @@ def get_markup_for_day(day, with_text=True, categories=None, date=None):
     '''
     export_string = ''
 
-    # Add date
+    # Add date if it is not None and not the empty string
     if date:
-        export_string += '= ' + date + ' =\n\n'
+        export_string += '= %s =\n\n' % date
 
     # Add text
     if with_text:

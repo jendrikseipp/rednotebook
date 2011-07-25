@@ -11,6 +11,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 X Let the "Back" and "Forward" button jump over blank days
 X Add "Export currently visible day" option in export assistant
 X Show warning when second RedNotebook instance is started to prevent data loss
+X Add option to set the date format for exports. An empty field removes dates from exports
 X Remember scrollbar positions when changing between days and edit and preview mode
 X Restore previous cursor position and text selection in edit mode when coming
   from preview mode or another day
@@ -96,8 +97,6 @@ O Unify Clouds and search -> Show the search bar above the clouds
   present a control to further refine the results.
 O Separate page and textarea instead of textbox for black- and white list?
 O Move the "update application" command into the help menu
-O Option to remove dates in export or make date format configurable for exports
-  https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=139
 O Color submenu in format menu with additional color picker
 O Search and replace (useful for renaming categories and other names)
 
