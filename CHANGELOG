@@ -1,12 +1,36 @@
 ==== RedNotebook Changelog ====
 
+== 1.1.8 (24-07-11) ==
+* Fix: Abort startup if yaml file cannot be read to avoid losing data
+
+== 1.1.7 (13-07-11) ==
+* Fix: Chinese characters are not correctly rendered in preview (LP:731273)
+* Fix: Screen position not correctly remembered when opened from system tray (LP:804792)
+* Fix: Date is not inserted if default encoding can not be determined
+* Fix: Windows executable has no icon on Windows 7
+* Windows installer: Update to GTK+-2.16.6
+* Code: Use smarter internationalization code from elib.intl
+* Updated translations
+
+== 1.1.6 (11-05-11) ==
+* Fix date encoding (LP:775269)
+* Some translations updated
+
+== 1.1.5 (11-05-03) ==
+* Remove "RedNotebook" title in exports
+* Make templates translatable
+* Fix: Inserted dates always shows the time 00:00h (LP:744624)
+* Mention "--record installed-files" setup.py's option for remembering
+  installed files in README
+
 == 1.1.4 (11-03-26) ===
 * Add "phone call" and "personal" templates
 * Fix: Application crashes while resetting last position (LP:728466)
 * Fix: Editing a category entry that contains a \\ removes the new line symbol (LP:719830)
 * Fix: Introductory text is not translated
 * Fix: Properly convert dates to unicode
-* When a format (bold, etc.) is applied with no text selected, add whitespace, not descriptive text
+* When a format (bold, etc.) is applied with no text selected, add whitespace,
+  not descriptive text
 * Add a tooltip for the edit button
 * Improve introductory text
 * Improve help text

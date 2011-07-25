@@ -1,0 +1,18 @@
+=== Release ===
+
+- Check version number in info.py
+- Move items from TODO to CHANGELOG
+- bzr update
+- Check if program is running correctly
+- cd dev/
+- ./build-tarball.sh
+- ./upload-file.sh ../rednotebook-x.y.z.tar.gz
+- Homepage:
+  - Update version number in index.html and downloads.html
+  - Write news
+  - ./upload-web.sh
+  - Check if downloads work
+- Announce on freshmeat
+- Announce on twitter
+- Send mail to rednotebook and python-announce lists
+- Build and release windows version

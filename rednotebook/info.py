@@ -533,27 +533,31 @@ partition all RedNotebook data will be encrypted, too.
 %(todo_help_text)s
 
 === Week Numbers ===
-If you'd like to see the week numbers in the calendar, you can set the \
-value of weekNumbers to 1 in the configuration file. This file \
+If you'd like to see the week numbers in the calendar, you can set the
+value of weekNumbers to 1 in the configuration file. This file
 normally resides at $HOME/.rednotebook/configuration.cfg
 
 === Language ===
-If you want to change RedNotebook's language, setting the environment \
-variable LANG to a different language code should be sufficient. \
-Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German). \
-To set the language to English you can also set the code to "C".
+If you want to change RedNotebook's language, setting the environment
+variable LANG (Linux) or LANGUAGE (Windows) to a different language code should
+be sufficient.
+Language codes have e.g. the format "de_DE" or "de_DE.UTF-8" (German).
+To set the language to English you can also set the code to "C". Before you
+change the language make sure you have the required language packs installed.
+Otherwise an error will be shown.
 
-On Linux, start a terminal and call ``LANG=de_DE.utf8``. Then in the \
-same terminal, run ``rednotebook``. The language change will be gone \
+On **Linux**, start a terminal and call ``LANG=de_DE.utf8``. Then in the
+same terminal, run ``rednotebook``. The language change will be gone
 however once you close the terminal.
 
-On Windows, set or create a LANG environment variable with the desired \
+On Windows, set or create a LANGUAGE environment variable with the desired
 code:
 
 + Right-click My Computer and click Properties.
-+ In the System Properties window, click on the Advanced tab.
++ In the System Properties window, click on the Advanced tab (Windows XP) or
+  go to Advanced System Settings (Windows 7).
 + In the Advanced section, click the Environment Variables button.
-+ Click the New button and insert LANG at the top and e.g. de or de_DE or
++ Click the New button and insert LANGUAGE at the top and e.g. de or de_DE or
   de_DE.UTF-8 (use your [language code ""http://en.wikipedia.org/wiki/ISO_639-1""]).
 
 
@@ -644,17 +648,17 @@ Options:
 ```
 
 == Data Format ==
-In this paragraph I will explain shortly what the RedNotebook files \
-consist of. Firstly it is important to understand that the content \
-is saved in a directory with many files, not just one file. \
+In this paragraph I will explain shortly what the RedNotebook files
+consist of. Firstly it is important to understand that the content
+is saved in a directory with many files, not just one file.
 The directory name is used as a name for the journal.
 
-In the directory there are several files all conforming to the naming \
-scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files \
+In the directory there are several files all conforming to the naming
+scheme "2010-05.txt" (<year>-<month>.txt). Obviously these files
 correspond to months (May 2010).
 
-Each month file contains text for the days of that month. \
-The text is actually [YAML www.yaml.org] markup. Without the \
+Each month file contains text for the days of that month.
+The text is actually [YAML www.yaml.org] markup. Without the
 (unnecessary) python directives the files look like this:
 
 ```
@@ -664,13 +668,19 @@ The text is actually [YAML www.yaml.org] markup. Without the \
   text: "This is another text entry, shown in the main text area."
 ```
 
-As you can see the data format uses a dictionary (or hashmap structure) \
-for storing the information. The outer dictionary has the daynumbers as \
-keys and the day content as values. The day values consist of another \
-dictionary. It can have a key "text" whose value will be inserted in \
-the main content area. Additionally there can be multiple other keys \
-that stand for the categories that belong to that day. Each category \
-contains a dictionary with only one key, the category entry.
+As you can see the data format uses a dictionary (or hashmap structure)
+for storing the information. The outer dictionary has the day numbers as
+keys and the day content as values. The day values consist of another
+dictionary. It can have a key "text" whose value will be inserted in
+the main content area. Additionally there can be multiple other keys
+that stand for the categories that belong to that day. Each category
+contains a dictionary mapping category entries to the null value.
+
+In summary the data format is a hierarchy of dictionaries. This way the format
+can be easily extended once the need for that arises.
+
+All textual content can be formatted or augmented with
+[txt2tags http://txt2tags.org/] markup.
 
 == Questions ==
 If you have any questions or comments, feel free to post them on the mailing

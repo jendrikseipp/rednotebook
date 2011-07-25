@@ -558,9 +558,7 @@ class MainWindow(object):
         # Remember if window was maximized in separate method
 
         # Remember window position
-        pos_x, pos_y = self.main_frame.get_position()
-        config['mainFrameX'] = pos_x
-        config['mainFrameY'] = pos_y
+        config['mainFrameX'], config['mainFrameY'] = self.main_frame.get_position()
 
         config['cloudTabActive'] = self.search_notebook.get_current_page()
 
@@ -587,13 +585,18 @@ class MainWindow(object):
             self.main_frame.maximize()
         else:
             # If window is not maximized, restore last position
-            pos_x = config.read('mainFrameX', None)
-            pos_y = config.read('mainFrameY', None)
+            x = config.read('mainFrameX', None)
+            y = config.read('mainFrameY', None)
             try:
-                self.main_frame.move(pos_x, pos_y)
-            except TypeError:
-                # Values have not been set
-                pass
+                x, y = int(x), int(y)
+                # Set to 0 if value is below 0
+                if 0 <= x <= screen_width and 0 <= y <= screen_height:
+                    self.main_frame.move(x, y)
+                else:
+                    self.main_frame.set_position(gtk.WIN_POS_CENTER)
+            except (ValueError, TypeError):
+                # Values have not been set or are not valid integers
+                self.main_frame.set_position(gtk.WIN_POS_CENTER)
 
         if 'leftDividerPosition' in config:
             self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))

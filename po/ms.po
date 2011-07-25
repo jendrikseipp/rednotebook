@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2010-02-23 14:31+0000\n"
-"Last-Translator: Ibrahim Elias <imen802003@netscape.net>\n"
+"PO-Revision-Date: 2011-04-07 10:18+0000\n"
+"Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-29 04:42+0000\n"
-"X-Generator: Launchpad (build 12559)\n"
+"X-Launchpad-Export-Date: 2011-07-19 04:35+0000\n"
+"X-Generator: Launchpad (build 13405)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -31,43 +31,43 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Cereka"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Kerja"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Waktu lapang"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentasi"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "Tugasan"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Selesai"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "Ingat penghantaran susu"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Cuci pinggan mangkuk"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Periksa mel"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
-msgstr ""
+msgstr "Helo!"
 
 #: ../rednotebook/info.py:93
 msgid ""
@@ -1117,7 +1117,8 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Hafiz, Muhammad https://launchpad.net/~muhammad-hafiz\n"
-"  Ibrahim Elias https://launchpad.net/~imen802003-netscape"
+"  Ibrahim Elias https://launchpad.net/~imen802003-netscape\n"
+"  abuyop https://launchpad.net/~abuyop"
 
 #~ msgid "Select an empty folder for the new location your journal"
 #~ msgstr "Pilih satu folder kosong untuk lokasi baru jurnal anda"

@@ -8,19 +8,7 @@
   <link type="text/css" rel="stylesheet" media="all" href="css/system-menus.css" />
   <link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
   
-<script type="text/javascript">
-<!--//--><![CDATA[//><!--
-    (function() {
-        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-        
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'http://api.flattr.com/js/0.5.0/load.js?mode=auto';
-        
-        t.parentNode.insertBefore(s, t);
-    })();//--><!]]>
-</script>
-  
+
 </head>
 <body class="front not-logged-in page-node node-type-page no-sidebars">
 
@@ -45,16 +33,16 @@
         <div id="page">
           <div id="node-2" class="node node-page">
             <div class="content">
-            
+
 <h1>About &amp; Features</h1>
 
 <div style="float: right; margin-top: 15px; width: 50%;" id="features">
   <ul>
     <li>Tagging</li>
-    <li>Spell Check</li>
     <li>Format your text <strong>bold</strong>, <em>italic</em> or <span style="text-decoration:underline;">underlined</span></li>
     <li>Insert Images, files and links to websites</li>
     <li>Links and mail addresses are recognized automatically</li>
+    <li>Spell Check on Linux</li>
     <li>Live-Search</li>
     <li>Automatic saving</li>
     <li>Backup to zip archive</li>
@@ -78,13 +66,8 @@
 
 <div id="download-block">
   <div onclick="location.href='downloads.html';" id="download-button">
-    <p id="download-title">RedNotebook <span id="download-version">1.1.4</span></p>
+    <p id="download-title">RedNotebook <span id="download-version">1.1.7</span></p>
     <p>Download the latest version now</p>
-    <!--<img src="images/ubuntu-logo.png" id="download-logo" alt="Download RedNotebook" />
-    <p id="download-os">Ubuntu</p>
-
-      <p id="download-arch">32-bit</p>-->
-
   </div>
 
   <div id="download-otherlinks">
@@ -101,10 +84,7 @@
 <h1>Screenshots</h1>
 
 <table>
-
-
     <tr>
-
   <td class="screenshot">
     <a href="screenshots/rednotebook-1.1-1.png">
       <img src="thumbnails/rednotebook-1.1-1.png" alt="rednotebook-1.1-1.png"/>
@@ -112,18 +92,13 @@
     <p>RedNotebook 1.1 on Ubuntu</p>
   </td>
 
-
-
   <td class="screenshot">
     <a href="screenshots/rednotebook-1.1-2.png">
       <img src="thumbnails/rednotebook-1.1-2.png" alt="rednotebook-1.1-2.png"/>
     </a>
     <p>RedNotebook 1.1 - Preview Mode</p>
   </td>
-
     </tr>
-
-
 </table>
 
 <div style="clear: both;"></div>
@@ -132,14 +107,33 @@
 
 <h1>News</h1>
 <a name="news"></a>
+  <div>
 
-<h3>Version 1.1.4 released - 2011-03-26</h3>
+    <h3>Version 1.1.7 released - 2011-07-13</h3>
+    <p class="content">This version fixes some important bugs for the windows
+    version: Chinese characters are now correctly displayed in the preview, the
+    screen position is correctly remembered when RedNotebook is opened from the
+    system tray and the windows executable has an icon again. Additionally, the
+    date is now inserted even if the default system encoding can not be found
+    and the internal translation setup has been improved.
+    Many translations have been updated.</p>
+
+    <h3>Version 1.1.6 released - 2011-05-11</h3>
+    <p class="content">This version fixes the encoding of times and dates.
+    No more strange characters should appear from now on.</p>
+
+    <h3>Version 1.1.5 released - 2011-05-03</h3>
+    <p class="content">This version fixes the insertion of the correct time.
+    Additionally exports do not contain the "RedNotebook" title anymore
+    allowing for easier custom usage of the exported files. Many translations
+    have been updated.</p>
+
+    <h3>Version 1.1.4 released - 2011-03-26</h3>
     <p class="content">This version fixes a critical bug that prevented the
     application from starting up if it had been minimized at shutdown.
     Two new templates "phone call" and "personal" have been added. The general
     usability and the help text have gotten better with many small fixes.</p>
 
-  <div>
     <h3>Version 1.1.3 released - 2011-03-02</h3>
     <p class="content">This version fixes a lot of bugs, especially
     on the Windows platform. Additionally some nice features have been added:
@@ -215,27 +209,27 @@
       </div>
     </div>
   </div>
-    
+
   <!--<div id="footer">
     <div id="block-block-1" class="block block-block">
       <div class="content">
-      
+
       </div>
     </div>
   </div>
-  
-  <!-- Piwik -->
-  <!--
-    <script type="text/javascript">
-    var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/rednotebook/" : "http://sourceforge.net/apps/piwik/rednotebook/");
-    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-    </script><script type="text/javascript">
-    try {
-    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
-    piwikTracker.trackPageView();
-    piwikTracker.enableLinkTracking();
-    } catch( err ) {}
-    </script><noscript><p><img src="http://sourceforge.net/apps/piwik/rednotebook/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>
-  <!-- End Piwik Tag -->
+
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/rednotebook/" : "http://sourceforge.net/apps/piwik/rednotebook/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://sourceforge.net/apps/piwik/rednotebook/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>
+<!-- End Piwik Tag -->
+
 </body>
 </html>

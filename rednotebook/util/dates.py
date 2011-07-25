@@ -17,6 +17,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import locale
+import time
 import datetime
 
 
@@ -49,7 +51,14 @@ def get_number_of_days(year, month):
 def format_date(format_string, date=None):
     if date is None:
         date = datetime.datetime.now()
-    date_string = date.strftime(format_string)
+    try:
+        date_string = date.strftime(format_string)
+    except ValueError:
+        # This happens if the format string ends with "%"
+        date_string = _('Incorrect date format')
     # Turn date into unicode string
-    date_string = date_string.decode('utf-8', 'replace')
+    locale_name, locale_encoding = locale.getlocale()
+    # locale_encoding may be None may if the value cannot be determined
+    locale_encoding = locale_encoding or 'UTF8'
+    date_string = date_string.decode(locale_encoding, 'replace')
     return date_string

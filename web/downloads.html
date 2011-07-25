@@ -10,19 +10,7 @@
   <script type="text/javascript" src="js/prototype.js"></script>
   <script type="text/javascript" src="js/download.js"></script>
 
-<script type="text/javascript">
-<!--//--><![CDATA[//><!--
-    (function() {
-        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-        
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'http://api.flattr.com/js/0.5.0/load.js?mode=auto';
-        
-        t.parentNode.insertBefore(s, t);
-    })();//--><!]]>
-</script>
-  
+
 </head>
 <body class="front not-logged-in page-node node-type-page no-sidebars">
 
@@ -47,7 +35,7 @@
         <div id="page">
           <div id="node-2" class="node node-page">
             <div class="content">
-            
+
 <h1>Select distribution</h1>
 
 <div id="distros">
@@ -130,13 +118,15 @@ sudo apt-get install rednotebook powdarrmonkey-keyring
 
     <ul>
       <li>Get the
-        <b><a href="http://sourceforge.net/projects/rednotebook/files/rednotebook-1.1.4-win32.exe/download">
-        latest Installer</a></b> or try
-        <a href="http://portableapps.com/apps/office/rednotebook_portable">RedNotebookPortable</a>.</li>
-      <li>(Close RedNotebook before updating, if you experience Error 14001, read
-        <a href="http://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=44">here</a>)</li>
+        <b><a href="http://sourceforge.net/projects/rednotebook/files/rednotebook-1.1.6.exe/download">
+        latest Installer</a></b> or try a portable version from
+        <a href="http://portableapps.com/apps/office/rednotebook_portable">PortableApps</a>
+        or <a href="http://www.winpenpack.com/en/download.php?view.1310">winPenPack</a>.</li>
+      <li>You must close RedNotebook before updating. If you experience Error 14001, read
+        <a href="http://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=44">here</a>.</li>
+      <li><strong>Important:</strong> Always backup your journal before upgrading.</li>
       <li>Please note that it may take some time before the version of the
-        installer catches up with the last RedNotebook source release</li>
+        installer catches up with the last RedNotebook source release.</li>
     </ul>
   </div>
 </div>
@@ -148,8 +138,8 @@ sudo apt-get install rednotebook powdarrmonkey-keyring
     <ul>
       <li>There is a
 <a href="http://trac.macports.org/browser/trunk/dports/office/rednotebook/Portfile">MacPort</a>
-for RedNotebook (you may have to uninstall Fink and reinstall Macports).</li>
-      <li>You can also find instructions on how to build and run RedNotebook on OS X at
+for RedNotebook (you may have to uninstall Fink and reinstall MacPorts).</li>
+      <li>Alternatively, you can find instructions on how to build and run RedNotebook on OS X at
 <a href="http://mac.softpedia.com/get/Utilities/RedNotebook.shtml">softpedia</a> and
 <a href="http://jamesthedisciple.wordpress.com/2010/04/09/rednotebook-on-osx-how-to/">here</a>.</li>
     </ul>
@@ -162,7 +152,7 @@ for RedNotebook (you may have to uninstall Fink and reinstall Macports).</li>
   <div class="details">
     <ul>
       <li>Download the latest
-            <a href="https://sourceforge.net/projects/rednotebook/files/rednotebook-1.1.4.tar.gz/download">
+            <a href="https://sourceforge.net/projects/rednotebook/files/rednotebook-1.1.7.tar.gz/download">
             source package</a>, unpack it and in a terminal window:</li>
     </ul>
 
@@ -198,15 +188,15 @@ $ python rednotebook/journal.py
 <hr class="division" />
 <h1>Other Distributions</h1>
 
-Search for "RedNotebook" in your package manager. Additional packages can be found here:
+Search for "RedNotebook" in your package manager.
+
+<p>Additional packages can be found here:</p>
 
 <ul>
   <li><strong>Arch Linux:</strong> <a href="http://aur.archlinux.org/packages.php?ID=21984">http://aur.archlinux.org/packages.php?ID=21984</a></li>
-  <li><strong>Slackware:</strong> <a href="http://slackbuilds.org/repository/13.0/office/rednotebook/">slackbuilds.org</a>,
-                                  <a href="http://slacky.eu/aadm/pkgs/index.php?ver=6&amp;pkg=2514">slacky.eu</a></li>
   <li><strong>Gentoo:</strong> <a href="http://packages.gentoo.org/package/x11-misc/rednotebook">http://packages.gentoo.org</a></li>
-  <li><strong>OpenSUSE:</strong> <a href="http://digitaldump.wordpress.com/2010/03/25/rednotebook-for-opensuse/">Instructions</a></li>
-  <li><strong>Sabayon:</strong> <a href="http://www.sabayon.org/packages/">Search for "rednotebook" package</a></li>
+  <li><strong>OpenSUSE:</strong> RedNotebook is available in YaST</li>
+  <li><strong>Sabayon:</strong> <a href="http://packages.sabayon.org/quicksearch?q=rednotebook&x=0&y=0">packages.sabayon.org</a></li>
   <li><strong>OpenBSD:</strong> <a href="http://www.openbsd.org/cgi-bin/cvsweb/ports/productivity/rednotebook/">Package at www.openbsd.org</a></li>
 </ul>
 
@@ -228,27 +218,27 @@ Search for "RedNotebook" in your package manager. Additional packages can be fou
       </div>
     </div>
   </div>
-    
+
   <!--<div id="footer">
     <div id="block-block-1" class="block block-block">
       <div class="content">
-      
+
       </div>
     </div>
   </div>
-  
-  <!-- Piwik -->
-  <!--
-    <script type="text/javascript">
-    var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/rednotebook/" : "http://sourceforge.net/apps/piwik/rednotebook/");
-    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-    </script><script type="text/javascript">
-    try {
-    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
-    piwikTracker.trackPageView();
-    piwikTracker.enableLinkTracking();
-    } catch( err ) {}
-    </script><noscript><p><img src="http://sourceforge.net/apps/piwik/rednotebook/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>
-  <!-- End Piwik Tag -->
+
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/rednotebook/" : "http://sourceforge.net/apps/piwik/rednotebook/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://sourceforge.net/apps/piwik/rednotebook/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>
+<!-- End Piwik Tag -->
+
 </body>
 </html>

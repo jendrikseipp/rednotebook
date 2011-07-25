@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-29 11:06+0000\n"
+"PO-Revision-Date: 2011-06-06 09:42+0000\n"
 "Last-Translator: Rachid <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-03-30 04:39+0000\n"
-"X-Generator: Launchpad (build 12559)\n"
+"X-Launchpad-Export-Date: 2011-07-19 04:35+0000\n"
+"X-Generator: Launchpad (build 13405)\n"
 
 #: ../rednotebook/gui/main_window.py:323
 msgid "Show RedNotebook"
@@ -222,7 +222,7 @@ msgstr "Nog een prettige dag!"
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
-msgstr ""
+msgstr "**twee** blikjes vlees gegeten"
 
 #: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
