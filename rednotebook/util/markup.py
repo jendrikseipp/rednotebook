@@ -171,6 +171,7 @@ def _get_config(type):
     img_name = r'\S.*\S|\S'
 
     # Apply this prepoc only after the latex image quotes have been added
+    # TODO: Allow whitespace around [ and ]
     config['preproc'].append([r'\[(%s\.(%s))\?(\d+)\]' % (img_name, img_ext), r'[WIDTH\3-\1]'])
 
     return config
@@ -306,15 +307,3 @@ def convert_from_pango(pango_markup):
     logging.log(5, 'Converted "%s" pango to "%s" txt2tags' %
                 (repr(original_txt), repr(pango_markup)))
     return pango_markup
-
-
-def get_table_markup(table):
-    '''
-    table is a list of lists
-
-    return the txt2tags markup for that table
-    '''
-    table = map(lambda row: (str(cell) for cell in row), table)
-    table = map(lambda row: '| ' + ' | '.join(row) + ' |', table)
-    table[0] = '|' + table[0]
-    return '\n'.join(table)
