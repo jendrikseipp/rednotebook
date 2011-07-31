@@ -37,6 +37,7 @@ X Remove obsolete keepnote sources
 X Use pyflakes to remove unnecessary imports and check for errors
 X Let "Get help online" point to RedNotebook's answers section at launchpad
 X Add more markup examples to templates help text
+X Fix: Txt2tags highlighting should not allow spaces between format markup and text
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])

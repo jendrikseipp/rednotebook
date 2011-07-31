@@ -307,8 +307,7 @@ def get_pattern(char, style):
     # Either one char, or two chars with (maybe empty) content
     # between them
     # In both cases no whitespaces between chars and markup
-    #regex = r'(%s)(\S.*\S)(%s)' % ((markup_symbols, ) * 2)
-    regex = r'(%s%s)(\S|.*?\S%s*)(%s%s)' % ((char, ) * 5)
+    regex = r'(%s%s)(\S|\S.*?\S%s*)(%s%s)' % ((char, ) * 5)
     group_style_pairs = [(1, 'gray'), (2, style), (3, 'gray')]
     return Pattern(regex, group_style_pairs, name=style)
 
