@@ -45,16 +45,16 @@ X Tables
 X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 X Allow regular expressions (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
-O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
+O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
 
 O Use Zeitgeist for automatic category entries
-  O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
+  X Music tracks or albums (Wrote decibel zeitgeist addon, addons for other players available)
   X Movies
-  O Web History (Firefox addon is being written by zeitgeist devs)
+  X Web History (Firefox addon written by zeitgeist devs)
   X Documents, Pictures
   O Mails (Write Thunderbird zeitgeist addon)
-  O Twitter Messages (gwibber zeitgeist addon is being written by zeitgeist devs)
+  X Twitter Messages (gwibber zeitgeist addon written by zeitgeist devs)
 
 O Imports
   X RedNotebook Backup zipfile
@@ -68,15 +68,11 @@ O Imports
   O Treepad?
   X Tomboy
 
-O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
-O Automatic insertion of holidays (Search a website for holidays and display them in the category "Holidays")
 O Make startup faster
 O Fix status icon on XFCE (LP:525196)
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
-O Use attributes for formatting glade strings for easier translation (gtk 2.16)
 O Consider using apport
 O Remove support for the notification area on Linux (http://design.canonical.com/2010/04/notification-area/)
-O Only export days that have category X if category X is selected?
 O Windows: Enable spellcheck
 O Translate help (Restructure first using Sphinx?)
 O Add "AddThis" Buttons to homepage
@@ -86,37 +82,29 @@ O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports t
 O Update search window when an annotation has been added/changed?
 O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Make windows installer truly portable (leave no traces in registry)
-O Possibility to show all entries (Search for "*"?)
+O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
 O Create mono icon for panel?
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add shortcut to move the cursor into the main text area
 
 O Let tags be categories without entries
 O Select the search location (text, categories, tags) after doing the search
+  or just make the distinction in the search results
 O Unify Clouds and search -> Show the search bar above the clouds
   When a search is made, substitute the word cloud with the word list and
   present a control to further refine the results.
 O Separate page and textarea instead of textbox for black- and white list?
-O Move the "update application" command into the help menu
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
 O Search and replace (useful for renaming categories and other names)
 
 
-1.3
-O Password protection or encryption (Think about new format first)
-O Add per journal configuration?
-O Internal links to other days
-
-
 2.0
-O Improve WYSIWYG? (Pro: direct copy-paste from browser with formatting) (Think about new format first)
-O Let user change font, color fonts, highlighting colors
 O Copy all files and pictures into data subdirectory (Think about new format first)
-O Entries without dates (bookmarks, contact lists)?
+O Password protection or encryption (Think about new format first)
+O Internal links to other days
+O Let user change font, foreground color, highlighting color
 O Filter exports by tag, category, word?
-
-
-2.x
+O Only export days that have category X if category X is selected?
 O RTF export
 
 
@@ -124,20 +112,21 @@ O RTF export
 
 === Maybe even some of those features will make it into RedNotebook ===
 
+O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
+O Automatic insertion of holidays (Search a website for holidays and display them in the category "Holidays")
 O Evolution Integration (evolution zeitgeist addon is being written by zeitgeist devs)
 O Picture slide show in one entry with many images (in preview show nice
   javascript slide show of pics in linked picture directory) (Think about new format first)
 O HTML import?
 O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Ability to make certain entries, eg. birthdays, with frequencies
-O Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
 O let editor change to edit mode when viewing today's record and to preview mode when viewing any other record
   https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=140
 O Add additional one-click menu (like the one with Search and Tags Cloud) that contains quick links to other journals
   (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23&sid=210fbd0a19cc2d2d5baec8c5cafb7c1f&p=582#p583)
 O Plugin system?
 O Think about using desktop-couch?
-
+O Entries without dates (bookmarks, contact lists)?
 
 
 
@@ -183,3 +172,9 @@ O Think about using desktop-couch?
 - Add online mathjax support (see Snippets/mathjax-test.html)
   (too much effort probably and not so many people actually use formulas)
 - Image resizing with PIL (The width parameter is more useful)
+- Use attributes for formatting glade strings for easier translation
+  (requires gtk+-2.16 and does not make much sense now that all strings have been translated)
+- Move the "update application" command into the help menu (central place for the checking is better)
+- Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
+  (This will be overkill for most users and having a data subdirectory for images etc. will suffice)
+- Add per journal configuration? (This makes things more difficult for the user)
