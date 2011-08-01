@@ -20,8 +20,10 @@
 from __future__ import division
 
 import logging
+import re
 
 import gtk
+import gobject
 
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import unicode
@@ -42,25 +44,28 @@ CLOUD_CSS = """\
 """
 
 
-def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
+def get_regex(word):
+    return re.compile(word + '$', re.I)
+
+
+def word_count_dict_to_html(word_count_dict, type, ignores, includes):
     sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
 
     if type == 'word':
         # filter short words
-        include_list = [word.lower() for word in include_list]
         sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                          if len(word) > 4 or word.lower() in include_list]
+                       if len(word) > 4 or
+                          any(pattern.match(word) for pattern in includes)]
 
     # filter words in ignore_list
     sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                   if word.lower() not in ignore_list]
+                   #if word.lower() not in ignore_list]
+                   if not any(pattern.match(word) for pattern in ignores)]
 
     number_of_words = 42
 
-    """
-    only take the longest words. If there are less words than n,
-    len(sorted_dict) words are returned
-    """
+    # only take the longest words. If there are less words than n,
+    # len(sorted_dict) words are returned
     cloud_words = sorted_dict[-number_of_words:]
 
     if not cloud_words:
@@ -124,29 +129,40 @@ class Cloud(HtmlView):
 
         default_ignore_list = _('filter, these, comma, separated, words')
         self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
-        self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
+        self.ignore_list = [word.lower() for word in self.ignore_list]
         logging.info('Cloud ignore list: %s' % self.ignore_list)
 
         default_include_list = _('mtv, spam, work, job, play')
         self.include_list = config.read_list('cloudIncludeList', default_include_list)
-        self.include_list = map(lambda word: word.lower(), self.include_list)
+        self.include_list = [word.lower() for word in self.include_list]
         logging.info('Cloud include list: %s' % self.include_list)
 
+        self.update_regexes()
+
+    def update_regexes(self):
+        logging.debug('Start compiling regexes')
+        self.regexes_ignore = [get_regex(word) for word in self.ignore_list]
+        self.regexes_include = [get_regex(word) for word in self.include_list]
+        logging.debug('Finished')
+
     def update(self, force_update=False):
+        """Public method that calls the private "_update"."""
         if self.journal.frame is None:
             return
-
-        logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
 
         # Do not update the cloud with words as it requires a lot of searching
         if self.type == 'word' and not force_update:
             return
 
+        gobject.idle_add(self._update)
+
+    def _update(self):
+        logging.debug('Update the cloud (Type: %s)' % self.type)
         self.journal.save_old_day()
 
         word_count_dict = self.journal.get_word_count_dict(self.type)
         self.tag_cloud_words, html = word_count_dict_to_html(word_count_dict,
-                                self.type, self.ignore_list, self.include_list)
+                                self.type, self.regexes_ignore, self.regexes_include)
 
         self.load_html(html)
         self.last_hovered_word = None
@@ -197,10 +213,7 @@ class Cloud(HtmlView):
             self.last_hovered_word = search_text
 
     def on_populate_popup(self, webview, menu):
-        """
-        Called when the cloud's popup menu is created
-        """
-
+        """Called when the cloud's popup menu is created."""
         # remove normal menu items
         children = menu.get_children()
         for child in children:
@@ -217,4 +230,5 @@ class Cloud(HtmlView):
         logging.info('"%s" will be hidden from clouds' % selected_word)
         self.ignore_list.append(selected_word)
         self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
+        self.regexes_ignore.append(get_regex(selected_word))
         self.update(force_update=True)

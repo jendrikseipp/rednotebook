@@ -44,8 +44,7 @@ X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pi
 X Tables
 X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
-O Allow wildcards (*,.) in cloud black/white lists ("altr." hides altro, altra, etc.)
-  Regexes?
+X Allow regular expressions (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
 
 O Use Zeitgeist for automatic category entries
