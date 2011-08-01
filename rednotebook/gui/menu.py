@@ -228,9 +228,8 @@ class MainMenuBar(object):
     def on_options_menuitem_activate(self, widget):
         self.main_window.options_manager.on_options_dialog()
 
-
     def on_backup_activate(self, widget):
-        self.journal.backup_contents(backup_file=self.main_window.get_backup_file())
+        self.journal.archiver.backup()
 
     def on_import_menu_item_activate(self, widget):
         assistant = ImportAssistant(self.journal)

@@ -46,6 +46,7 @@ X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
 X Allow regular expressions (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 O Use standard paths on windows (C:\Docs & Settings\username\My Documents)
+X Show warning if last backup dates to more than one month before
 
 O Use Zeitgeist for automatic category entries
   O Music tracks or albums (Write decibel/listen/exaile zeitgeist addon)
@@ -129,7 +130,6 @@ O Picture slide show in one entry with many images (in preview show nice
 O HTML import?
 O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Ability to make certain entries, eg. birthdays, with frequencies
-O Show warning if last backup dates to more than one month before (User should take care of that)
 O Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
 O let editor change to edit mode when viewing today's record and to preview mode when viewing any other record
   https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=140

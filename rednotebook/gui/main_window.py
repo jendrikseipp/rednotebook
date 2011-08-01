@@ -952,34 +952,6 @@ class MainWindow(object):
     def get_day_text(self):
         return self.day_text_field.get_text()
 
-    def get_backup_file(self):
-        if self.journal.title == 'data':
-            name = ''
-        else:
-            name = '-' + self.journal.title
-
-        proposed_filename = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
-        proposed_directory = self.journal.config.read('lastBackupDir',
-                                                      os.path.expanduser('~'))
-
-        backup_dialog = self.builder.get_object('backup_dialog')
-        backup_dialog.set_transient_for(self.main_frame)
-        backup_dialog.set_current_folder(proposed_directory)
-        backup_dialog.set_current_name(proposed_filename)
-
-        filter = gtk.FileFilter()
-        filter.set_name("Zip")
-        filter.add_pattern("*.zip")
-        backup_dialog.add_filter(filter)
-
-        response = backup_dialog.run()
-        backup_dialog.hide()
-
-        if response == gtk.RESPONSE_OK:
-            path = backup_dialog.get_filename()
-            self.journal.config['lastBackupDir'] = os.path.dirname(path)
-            return path
-
     def highlight_text(self, search_text):
         # let the search function highlight found strings in the page
         #if self.preview_mode:

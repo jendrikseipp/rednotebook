@@ -254,6 +254,7 @@ class Journal:
         self.open_journal(self.get_journal_path())
 
         self.archiver = backup.Archiver(self)
+        self.archiver.check_last_backup_date()
 
         # Check for a new version
         if self.config.read('checkForNewVersion', default=0) == 1:
@@ -319,13 +320,6 @@ class Journal:
         logging.error('The path "%s" is no valid journal directory. '
                     'Execute "rednotebook -h" for instructions' % path_arg)
         sys.exit(1)
-
-
-    def backup_contents(self, backup_file):
-        self.save_to_disk()
-
-        if backup_file:
-            self.archiver.backup(backup_file)
 
 
     def exit(self):

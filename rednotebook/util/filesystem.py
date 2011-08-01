@@ -22,7 +22,6 @@ from __future__ import with_statement
 import os
 import imp
 import sys
-import zipfile
 import subprocess
 import logging
 import codecs
@@ -213,16 +212,6 @@ def get_relative_path(from_dir, to_dir):
         return os.path.relpath(to_dir, from_dir)
     else:
         return to_dir
-
-def write_archive(archive_file_name, files, base_dir='', arc_base_dir=''):
-    """
-    use base_dir for relative filenames, in case you don't
-    want your archive to contain '/home/...'
-    """
-    archive = zipfile.ZipFile(archive_file_name, "w")
-    for file in files:
-        archive.write(file, os.path.join(arc_base_dir, file[len(base_dir):]))
-    archive.close()
 
 def get_icons():
     return glob(os.path.join(frame_icon_dir, '*.png'))
