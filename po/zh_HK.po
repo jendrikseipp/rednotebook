@@ -1,16 +1,16 @@
-# Korean translation for rednotebook
-# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# Chinese (Hong Kong) translation for rednotebook
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the rednotebook package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-08-03 03:00+0000\n"
-"Last-Translator: sjsaltus <eigenjin@ku.edu>\n"
-"Language-Team: Korean <ko@li.org>\n"
+"PO-Revision-Date: 2011-08-03 17:27+0000\n"
+"Last-Translator: Hon-Yu Lawrence Cheung <Unknown>\n"
+"Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,39 +19,39 @@ msgstr ""
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr "아이디어"
+msgstr "點子"
 
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
-msgstr "태그"
+msgstr "標籤"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "潮玩意"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr "영화"
+msgstr "電影"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "工作"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "空閒時間"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr "문서"
+msgstr "文件"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr "할 일"
+msgstr "待辦"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr "완료"
+msgstr "完成"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "洗碗碟"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
@@ -84,21 +84,21 @@ msgstr ""
 
 #: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
-msgstr "사용자 환경은 크게 3부분으로 나뉘어져 있습니다."
+msgstr ""
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:99
 msgid "Left"
-msgstr "왼쪽 사용자 환경"
+msgstr ""
 
 #: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
-msgstr "달력이 있는 항해일지"
+msgstr ""
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:102
 msgid "Center"
-msgstr "가운데 사용자 환경"
+msgstr ""
 
 #: ../rednotebook/info.py:103
 msgid "Text for a day"
@@ -107,7 +107,7 @@ msgstr ""
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:105
 msgid "Right"
-msgstr "오른쪽 사용자 환경"
+msgstr ""
 
 #: ../rednotebook/info.py:106
 msgid "Annotations to a day"
@@ -117,7 +117,7 @@ msgstr ""
 #. ## Verb
 #: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
 msgid "Preview"
-msgstr "미리 보기"
+msgstr ""
 
 #: ../rednotebook/info.py:110
 msgid ""
@@ -136,12 +136,10 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
-"오늘 나는 //애완용품 가계//에 가서 **호랑이** 한마리를 샀다. 그리고나서, 우리는 --수영장-이 있는 공원에 가서 원반던지기 "
-"놀이를 하면서 즐거운 시간을 보냈다. 그 후 우리는 영화 \"__Life of Brain__\" 룰 봤다."
 
 #: ../rednotebook/info.py:120
 msgid "Annotations"
-msgstr "주석, 주해"
+msgstr ""
 
 #: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
@@ -152,7 +150,6 @@ msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
 msgstr ""
-"예를 들어, 당신은 \"아이디어\"라는 항목을 생성할 수 있고, 그 후 오늘의 아이디어를 생성된 아이디어 항목에 넣을 수 있습니다."
 
 #: ../rednotebook/info.py:124
 msgid ""
@@ -163,45 +160,43 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
 msgid "Save and Export"
-msgstr "저장 그리고 변환"
+msgstr ""
 
 #: ../rednotebook/info.py:137
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
-msgstr "당신이 입력한 모든 내용은 자동 저장됩니다. 또한 프로그램 종료시에도 변환된 내용은 자동저장 됩니다."
+msgstr ""
 
 #: ../rednotebook/info.py:139
 msgid "To avoid data loss you should backup your journal regularly."
-msgstr "데이터의 손실을 막고 싶다면, 주기적으로 일지(저널)을 백업하십시오"
+msgstr ""
 
 #: ../rednotebook/info.py:140
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
-msgstr "\"일지(저널)\" 메뉴에 있는 \"백업\"버튼을 누르면 입력된 모든 데이터가 압축화일(zip) 형태로 저장됩니다."
+msgstr ""
 
 #: ../rednotebook/info.py:141
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "\"변환(내보내기)\" 버튼 또한  \"일지(저널)\" 메뉴에  있습니다."
+msgstr ""
 
 #: ../rednotebook/info.py:142
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
-"\"변환(내보내기)\" 버튼을 클릭하면, 작성된 일지가 Plain Text, HTML 또는 LaTeX 형태의 화일로 변환할 수 있습니다."
 
 #: ../rednotebook/info.py:145
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
-"만약, RedNotebook 사용중 문제를 발견하게 되면, 문제의 수정을 위해서 프로그램 제작자에게 버그를 리포트 해 주십시오."
 
 #: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
-msgstr "모든 피드백에 대해 감사들 드립니다."
+msgstr ""
 
 #: ../rednotebook/info.py:149
 msgid "Have a nice day!"
-msgstr "좋은 하루를 보내세요!"
+msgstr ""
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
@@ -209,7 +204,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
-msgstr "좋은 일정관리 프로그램을 사용합니다"
+msgstr ""
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
@@ -229,140 +224,140 @@ msgstr ""
 
 #: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
-msgstr "RedNotebook 문서"
+msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr "개요"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr "_일지(저널)"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr "새로운 저널(일지)를 생성합니다. 기존일지(저널)은 새로운 저널 생성과 동시에 저장될 것입니다."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "기존 저널(일지)를 불러옵니다. 현재 저녈(일지)는 저장될 것입니다."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
-msgstr "저널(일지)를 새로운 위치에 저장합니다. 기존 저널(일지)화일은 저장될 것입니다."
+msgstr ""
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr "불러오기"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr "불러오기 도우미를 실행합니다"
+msgstr ""
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
 msgid "Export"
-msgstr "내보내기"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
-msgstr "변환(내보내기) 도우미를 실행합니다"
+msgstr ""
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111
 msgid "Backup"
-msgstr "백업"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr "모든 데이터를 zip 압축화일 형태로 저장합니다."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
 msgid "Statistics"
-msgstr "사용통계"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
-msgstr "저널(일지)의 사용통계자료를 보여줍니다"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "RedNoteBook 프로그램을 종료합니다."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
-msgstr "편집(_E)"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text edits or category entry deletions"
-msgstr "문서 편집 또는 목록삭제 실행 명령을 취소합니다."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text edits or category entry additions"
-msgstr "문서 편집 또는 목록 추가 실행 명령을 다시 수행합니다"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr "도움말(_H)"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr "내용"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr "RedNotebook 문서화일을 엽니다."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr "온라인에서 도움말 얻기"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Visit the RedNotebook forum"
-msgstr "RedNotebook 온라인 포럼 방문"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
-msgstr "RedNotebook 한글화"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "RedNotebook 한글화를 돕기위해 Lanchpad 홈페이지로 접속합니다"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
-msgstr "문제 보고"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
-msgstr "발생된 문제에 대한 간단한 형태의 보고서를 작성합니다"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:270
 msgid "A Desktop Journal"
-msgstr "데스크탑용 저널(일지)"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
 #: tmp/main_window.glade.h:10
 msgid "Categories"
-msgstr "분류, 항목"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:122 ../rednotebook/gui/categories.py:159
 msgid "Empty entries are not allowed"
-msgstr "빈 항목들은 허용되지 않습니다."
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:152
 msgid "Empty category names are not allowed"
-msgstr "빈 항목 이름은 허용되지 않습니다"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:428
 msgid "Change this text"
-msgstr "문서 내용 변환"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:432
 msgid "Add a new entry"
-msgstr "항목 추가"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:436
 msgid "Delete this entry"
@@ -370,7 +365,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr "RedNotebook(레드노트북) 프로그램을 운영시스템 시작과 동시에 실행함"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
@@ -378,77 +373,77 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:156
 msgid "Week %W of Year %Y"
-msgstr "%Y 년 %W 주"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:157
 msgid "Day %j"
-msgstr "%j 일"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:162
 msgid "Help"
-msgstr "도움말"
+msgstr ""
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:183
 msgid "Preview:"
-msgstr "미리보기:"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:292
 msgid "Close to system tray"
-msgstr "시스템 트레이에서 닫기"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:293
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "윈도우 종료시 RedNotebook 프로그램을 시스템트레이로 보낼 것입니다."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:296
 msgid "Underline misspelled words"
-msgstr "철자가 틀린 단어에 밑줄이 표시됨"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:297
 msgid "Requires gtkspell."
-msgstr "gtkspell이 필요합니다"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:298
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr "이것은 python-gtkspell 또는 python-gnome2-extras 패키지에 포함되어 있습니다"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:299
 msgid "Check Spelling"
-msgstr "맞춤법 검사"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:307
 msgid "Check for new version at startup"
-msgstr "프로그램 시작과 동시에 새로운 버전이 있는지를 검사합니다."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:314
 msgid "Check now"
-msgstr "지금 검사를 시작합니다"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:319
 msgid "Font Size"
-msgstr "글자 크기"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:320
 msgid "Date/Time format"
-msgstr "날짜/시간 형식"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:321
 msgid "Exclude from clouds"
-msgstr "(태그)클라우드 목록으로 부터 제거합니다"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:322
 msgid "Do not show those comma separated words in any cloud"
-msgstr "(태그)클라우드 목록 내에서 콤마로 분리된 단어나 낱말을 표시하지 않습니다"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:323
 msgid "Allow small words in clouds"
-msgstr "(태그)클라우드 목록 내에 짧은 단어의 사용을 허용함"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:324
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr "(태그)클라우드 내에 4자 이내의 모든 단어나 낱말의 사용을 허용함"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:323
 msgid "Show RedNotebook"
@@ -456,167 +451,167 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:549
 msgid "Select an empty folder for your new journal"
-msgstr "새로운 저널(일지)를 위한 빈 폴더를 선택합니다."
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:550
 msgid "Journals are saved in a directory, not in a single file."
-msgstr "복수의 저널이 (하나의 화일이 아닌) 디렉토리 형태로 저장됩니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:551
 msgid "The directory name will be the title of the new journal."
-msgstr "디렉토리의 이름이 새로운 저널(일지)의 제목으로 사용됩니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:555
 msgid "Select an existing journal directory"
-msgstr "기존 저널(일지)가 있는 디텍토리를 선택하십시오"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:557
 msgid "The directory should contain your journal's data files"
-msgstr "디렉토리는  저널(일지)의 데이터 화일을 포함합니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:559
 msgid "Select an empty folder for the new location of your journal"
-msgstr "저널을 새로 저장할 빈 폴더를 선택하십시오"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:561
 msgid "The directory name will be the new title of the journal"
-msgstr "디렉토리의 이름이 새로운 저널(일지)의 제목이 될 것입니다."
+msgstr ""
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
 #: ../rednotebook/gui/main_window.py:583
 msgid "The default journal has been opened"
-msgstr "기본 저널(일지)가 열려있는 상태입니다. 기본저널은 경로는 $HOME/.rednotebook/data 입니다"
+msgstr ""
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:744
 msgid "Ctrl"
-msgstr "컨트롤"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:747
 msgid "Bold"
-msgstr "굵은 글꼴"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:748
 msgid "Italic"
-msgstr "이텔릭체"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:749
 msgid "Underline"
-msgstr "밑줄"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:750
 msgid "Strikethrough"
-msgstr "취소선"
+msgstr ""
 
 #. ## Translators: noun
 #: ../rednotebook/gui/main_window.py:766 ../rednotebook/gui/exports.py:382
 msgid "Format"
-msgstr "형식"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:767
 msgid "Format the selected text or category entry"
-msgstr "선택된 글자나 분류 항목으로 서식을 작성합니다."
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:816
 msgid "First Item"
-msgstr "첫번째 항목"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:817
 msgid "Second Item"
-msgstr "두번째 항목"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Indented Item"
-msgstr "항목 들여쓰기"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:819
 msgid "Two blank lines close the list"
-msgstr "두개의 빈줄을 입력하면 목록이 닫힙니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:823
 msgid "Title text"
-msgstr "제목 글자"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:847
 msgid "Picture"
-msgstr "그림 파일"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:848
 msgid "Insert an image from the harddisk"
-msgstr "하드디스크로부터 이미지화일을 삽입합니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:850
 msgid "File"
-msgstr "파일"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:851
 msgid "Insert a link to a file"
-msgstr "화일에 링크를 겁니다"
+msgstr ""
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/main_window.py:854
 msgid "_Link"
-msgstr "링크(_L)"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:855
 msgid "Insert a link to a website"
-msgstr "웹사이트(페이지)의 링크를 겁니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:857
 msgid "Bullet List"
-msgstr "게시판 형태의 목록"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:859
 msgid "Numbered List"
-msgstr "번호 목록"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:861
 msgid "Title"
-msgstr "제목"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:863
 msgid "Line"
-msgstr "라인"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:864
 msgid "Insert a separator line"
-msgstr "분리 라인 삽입"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:866
 msgid "Table"
-msgstr "도표"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:868
 msgid "Date/Time"
-msgstr "날짜/시각"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:869
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr "현재 시간과 날짜를 삽입(환경설정에서 변경가능)"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:871
 msgid "Line Break"
-msgstr "개행"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:872
 msgid "Insert a manual line break"
-msgstr "임으로 개행 라인 삽입합니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:895
 msgid "Insert"
-msgstr "삽입"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:899
 msgid "Insert images, files, links and other content"
-msgstr "이미지, 화일 및 다른 내용물을 삽입합니다"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:980
 msgid "No link location has been entered"
-msgstr "링크가 연결될 주소가 입력되지 않았습니다."
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1140
 msgid "Search ..."
-msgstr "검색..."
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1227 ../rednotebook/gui/clouds.py:137
 msgid "filter, these, comma, separated, words"
@@ -625,164 +620,162 @@ msgstr ""
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/main_window.py:1233 ../rednotebook/gui/clouds.py:142
 msgid "mtv, spam, work, job, play"
-msgstr "동영상, 스펨메일, 일관련, 유흥"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1290
 msgid "Hide selected words"
-msgstr "선택된 단어 숨기기"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1350
 msgid "Date"
-msgstr "날짜"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1351
 #: ../rednotebook/gui/main_window.py:1392
 #: ../rednotebook/gui/main_window.py:1400 tmp/main_window.glade.h:42
 msgid "Text"
-msgstr "본문"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1396
 msgid "Entry"
-msgstr "항목"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:230
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr "(태그)클라우에서 \"%s\"를 숨깁니다"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:52 ../rednotebook/gui/exports.py:383
 msgid "Export all days"
-msgstr "모든 날짜의 내용을 변환"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export only the days in the selected time range"
-msgstr "선택된 범위에 속한 날짜의 내용을 변환"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:60
 msgid "From:"
-msgstr "보내는 곳:"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:62
 msgid "To:"
-msgstr "받는 곳:"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:121
 msgid "Export texts"
-msgstr "텍스트 형식으로 변환"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:122
 msgid "Export all categories"
-msgstr "모든 범주의 내용을 변환함"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:123
 msgid "Do not export categories"
-msgstr "범주에 속한 내용들을 변환하지 마시오"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:125
 msgid "Export only the selected categories"
-msgstr "선택된 범주에 속한 내용만 변환함"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Available Categories"
-msgstr "사용가능한 범주"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Selected Categories"
-msgstr "선택된 범주"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Select"
-msgstr "선택"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:150
 msgid "Unselect"
-msgstr "선택되지 않음"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:254
 msgid ""
 "If export text is not selected, you have to select at least one category."
-msgstr "만약 변환될 문서가 정해지지 않았다면, 변환하기 위해서는 최소한 하나의 범주를 선택해야 합니다."
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:278
 msgid "You have selected the following settings:"
-msgstr "선택된 설정내용:"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:303
 msgid "Export Assistant"
-msgstr "문서변환 도움관리자"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:305
 msgid "Welcome to the Export Assistant."
-msgstr "문서변환 도움관리자 창에 오신것을 환영합니다"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:306
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
-"이 문서전환 마법사는 당신의 일지(저널,일기)를 다양한 형태의 문서형태(LaTex, PDF, HTML, TEXT)로 변환을 도와줄 "
-"것입니다."
 
 #: ../rednotebook/gui/exports.py:307
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
-msgstr "내용변경을 원하는 날짜를 선택하여 지정한 곳에 저장 할 수 있습니다."
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:317
 msgid "Select Export Format"
-msgstr "변환시키고 싶은 문서형태를 선택하십시오"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:322
 msgid "Select Date Range"
-msgstr "날짜의 범위를 선택하십시오"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:327
 msgid "Select Contents"
-msgstr "내용을 선택하십시오"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:333
 msgid "Select Export Path"
-msgstr "변환된 문서가 저장될 경로를 선택하십시오"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:338
 msgid "Summary"
-msgstr "요약"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:386
 msgid "Start date"
-msgstr "시작일"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:387
 msgid "End date"
-msgstr "종료일"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Export text"
-msgstr "텍스트 문서 형태로 변환함"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Selected categories"
-msgstr "선택된 범주"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:391
 msgid "Export path"
-msgstr "변환된 화일이 저장될 경로"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:395
 msgid "Yes"
-msgstr "승락"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:395
 msgid "No"
-msgstr "거부"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:438
 #, python-format
 msgid "Content exported to %s"
-msgstr "내용은  %s로 변환되었습니다"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:534
 msgid "requires pywebkitgtk"
-msgstr "파이썬 웹킷 gtk(pywebkitgtk) 가 필요합니다"
+msgstr ""
 
 #: ../rednotebook/templates.py:93
 msgid ""
@@ -858,118 +851,118 @@ msgstr ""
 
 #: ../rednotebook/templates.py:199
 msgid "Choose Template Name"
-msgstr "기본서식의 이름을 선택하십시오"
+msgstr ""
 
 #: ../rednotebook/templates.py:351 ../rednotebook/templates.py:360
 msgid "This Weekday's Template"
-msgstr "기본서식"
+msgstr ""
 
 #: ../rednotebook/templates.py:354
 msgid "Edit Template"
-msgstr "서식 편집"
+msgstr ""
 
 #: ../rednotebook/templates.py:357
 msgid "Insert Template"
-msgstr "서식 삽입"
+msgstr ""
 
 #: ../rednotebook/templates.py:363
 msgid "Create New Template"
-msgstr "새 서식 만들기"
+msgstr ""
 
 #: ../rednotebook/templates.py:367
 msgid "Open Template Directory"
-msgstr "서식이 있는 디렉토리를 엽니다"
+msgstr ""
 
 #: ../rednotebook/util/utils.py:249
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr "현재 버전은 <b>%s<b> 입니다"
+msgstr ""
 
 #: ../rednotebook/util/utils.py:250
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr "가장 최근 버전은  <b>%s<b> 입니다"
+msgstr ""
 
 #: ../rednotebook/util/utils.py:251
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "RedNoteBook 홈페이지에 접속할까요?"
+msgstr ""
 
 #: ../rednotebook/util/utils.py:258
 msgid "Do not ask again"
-msgstr "다시 물어보지 않음"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:81 ../rednotebook/util/statistics.py:94
 #: tmp/main_window.glade.h:44
 msgid "Words"
-msgstr "단어"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Distinct Words"
-msgstr "분명한 단어"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:83
 msgid "Edited Days"
-msgstr "편집된 날짜"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:84 ../rednotebook/util/statistics.py:96
 msgid "Letters"
-msgstr "글짜 수"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Days between first and last Entry"
-msgstr "처음과 마지막 항목 사이의 날짜"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:86
 msgid "Average number of Words"
-msgstr "평균 문자 수"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:87
 msgid "Percentage of edited Days"
-msgstr "편집된 날짜의 비율"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:95
 msgid "Lines"
-msgstr "선"
+msgstr ""
 
 #: ../rednotebook/journal.py:382
 #, python-format
 msgid "The content has been saved to %s"
-msgstr "%s 까지 문서가 저장되었습니다."
+msgstr ""
 
 #: ../rednotebook/journal.py:385
 msgid "Nothing to save"
-msgstr "새로 저장할 내용이 없습니다"
+msgstr ""
 
 #: ../rednotebook/journal.py:393
 msgid "Configuration could not be saved. Please check your permissions"
-msgstr "환경설정에서 변환된 내용이 저장되지 않았습니다. 환경설정을 변활할 수 있는 권한을 가지고 있는지 확인하십시오"
+msgstr ""
 
 #: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
-msgstr "선택돈 폴더는 빈폴더가 아닙니다."
+msgstr ""
 
 #: ../rednotebook/journal.py:425
 msgid ""
 "To prevent you from overwriting data, the folder content has been imported "
 "into the new journal."
-msgstr "데이터의 중복기재를 피하기 위해서는 새로운 저널로 폴더의 내용을 내보내십시오"
+msgstr ""
 
 #: ../rednotebook/journal.py:428
 msgid "The selected folder is empty. A new journal has been created."
-msgstr "선택된 폴더는 빈 폴더입니다. 새로운 저널(일지)가 생성되었습니다."
+msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
 msgid "<b>General</b>"
-msgstr "<b>일반</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:3
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr "<b>링크 위치 (예: http://rednotebook.sf.net)</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
-msgstr "<b>링크 이름 (선택사항)</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:5
 msgid "<b>Overall</b>"
@@ -977,7 +970,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Select existing or new Category</b>"
-msgstr "<b>새로운 항목이나 기존에 존재하는 항목 중 하나를 선택하십시오</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
@@ -985,27 +978,27 @@ msgstr ""
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
-msgstr "<b>항목 작성</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:9
 msgid "Annotate"
-msgstr "주석"
+msgstr ""
 
 #: tmp/main_window.glade.h:11
 msgid "Category"
-msgstr "분류"
+msgstr ""
 
 #: tmp/main_window.glade.h:12
 msgid "Clouds"
-msgstr "(태그)클라우드"
+msgstr ""
 
 #: tmp/main_window.glade.h:13
 msgid "Delete"
-msgstr "삭제"
+msgstr ""
 
 #: tmp/main_window.glade.h:14
 msgid "Edit"
-msgstr "편집"
+msgstr ""
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
@@ -1013,162 +1006,94 @@ msgstr ""
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
-msgstr "저장하지 않고 프로그램을 종료합니다"
+msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:18
 msgid "General"
-msgstr "일반"
+msgstr ""
 
 #: tmp/main_window.glade.h:19
 msgid "Go to next day (Ctrl+PageUp)"
-msgstr "다음 날짜로 이동(Ctrl+PageUp)"
+msgstr ""
 
 #: tmp/main_window.glade.h:20
 msgid "Go to previous day (Ctrl+PageDown)"
-msgstr "이전 날짜로 이동 (Ctrl+PageDown)"
+msgstr ""
 
 #: tmp/main_window.glade.h:21
 msgid "Insert Link"
-msgstr "링크 삽입"
+msgstr ""
 
 #: tmp/main_window.glade.h:22
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
-msgstr "기본서식을 입력합니다. 더 많은 선택사항을 보고 싶으면 오른쪽에 있는 화살표를 클릭하십시오"
+msgstr ""
 
 #: tmp/main_window.glade.h:23
 msgid "Jump to today"
-msgstr "오늘 날짜로 이동"
+msgstr ""
 
 #: tmp/main_window.glade.h:24
 msgid "New entry"
-msgstr "새 항목"
+msgstr ""
 
 #: tmp/main_window.glade.h:25
 msgid "Preferences"
-msgstr "환경설정"
+msgstr ""
 
 #: tmp/main_window.glade.h:28
 msgid "Search"
-msgstr "검색"
+msgstr ""
 
 #: tmp/main_window.glade.h:29
 msgid "Search in entries, categories and tags"
-msgstr "항목 및 태그 내용 검색"
+msgstr ""
 
 #: tmp/main_window.glade.h:30
 msgid "Select a cloud"
-msgstr "(태그)클라우드 선택"
+msgstr ""
 
 #: tmp/main_window.glade.h:31
 msgid "Select a directory"
-msgstr "디렉터리 선택"
+msgstr ""
 
 #: tmp/main_window.glade.h:32
 msgid "Select a file"
-msgstr "파일 선택"
+msgstr ""
 
 #: tmp/main_window.glade.h:33
 msgid "Select a picture"
-msgstr "그림 선택"
+msgstr ""
 
 #: tmp/main_window.glade.h:34
 msgid "Select backup filename"
-msgstr "백업 파일이름 선택"
+msgstr ""
 
 #: tmp/main_window.glade.h:35
 msgid "Select where to search"
-msgstr "검색할 곳을 선택하십시오"
+msgstr ""
 
 #: tmp/main_window.glade.h:36
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr "작성된 문서 미리보기(Ctrl+P)"
+msgstr ""
 
 #. ## This stands for the verb in "Tag this day"
 #: tmp/main_window.glade.h:39
 msgid "Tag"
-msgstr "태그"
+msgstr ""
 
 #: tmp/main_window.glade.h:41
 msgid "Template"
-msgstr "서식"
+msgstr ""
 
 #: tmp/main_window.glade.h:43
 msgid "Today"
-msgstr "오늘"
+msgstr ""
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:46
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Bundo https://launchpad.net/~kang-bundo\n"
-"  sjsaltus https://launchpad.net/~sjsaltus"
-
-#, python-format
-#~ msgid "Preview: %s"
-#~ msgstr "미리보기: %s"
-
-#~ msgid "Journal"
-#~ msgstr "저널"
-
-#~ msgid "All Entries"
-#~ msgstr "모든 항목"
-
-#~ msgid "HTML"
-#~ msgstr "HTML"
-
-#~ msgid "Latex"
-#~ msgstr "Latex"
-
-#~ msgid "New Version"
-#~ msgstr "새 버전"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "No New Version"
-#~ msgstr "새버전이 없습니다"
-
-#~ msgid "Restore example content"
-#~ msgstr "예제화일에 있는 내용을 복구합니다"
-
-#~ msgid "Fill some free days with example content. Do not overwrite anything"
-#~ msgstr "예제 문서의 내용을 빈 날짜에 넣습니다. 어떤것도 중복기재하지 마십시오."
-
-#~ msgid "Empty nodes are not allowed"
-#~ msgstr "빈 노드는 허용되지 않습니다"
-
-#~ msgid "Do you really want to delete this node?"
-#~ msgstr "정말로 이 노드를 삭제할까요?"
-
-#~ msgid "Delete this node"
-#~ msgstr "노드 삭제"
-
-#~ msgid ""
-#~ "Hello,\n"
-#~ "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
-#~ "try."
-#~ msgstr ""
-#~ "안녕하세요.\n"
-#~ "데스트탑용 저널(일지) 작성 프로그램인 RedNotebook입니다. RedNotebook을 사용해 주셔서 감사합니다."
-
-#, python-format
-#~ msgid "Exporting to %s failed"
-#~ msgstr "변환중 \"%s\"에서 오류가 발생했습니다"
-
-#~ msgid "On the right there is space for annotations to a day."
-#~ msgstr "오른쪽 사용자 환경에는 오늘에 대한 주석을 달 수 있는 공간이 있습니다"
-
-#~ msgid "Annotations are notes that can easily be sorted into categories."
-#~ msgstr "주석은 항목형태로 쉽게 분류될 수 있는 노트입니다."
-
-#~ msgid "You can find more documentation under \"Help\" -> \"Help\"."
-#~ msgstr "도움말이나 RedNotebook 관련 문서는 \"도움말\"항목 밑의 \"도움말\" 에서 찾을 수 있습니다."
-
-#~ msgid "<b>Current Day</b>"
-#~ msgstr "<b>오늘 날짜</b>"
-
-#~ msgid "An entry could look like this:"
-#~ msgstr "항목은 다음과 같습니다 :"
+"  Hon-Yu Lawrence Cheung https://launchpad.net/~cheunghonyu"
