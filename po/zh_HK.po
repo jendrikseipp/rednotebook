@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-08-03 17:27+0000\n"
+"PO-Revision-Date: 2011-08-12 08:04+0000\n"
 "Last-Translator: Hon-Yu Lawrence Cheung <Unknown>\n"
 "Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-08-04 04:36+0000\n"
-"X-Generator: Launchpad (build 13573)\n"
+"X-Launchpad-Export-Date: 2011-08-13 04:54+0000\n"
+"X-Generator: Launchpad (build 13674)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -31,7 +31,7 @@ msgstr "潮玩意"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr "電影"
+msgstr "影片"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
@@ -51,11 +51,11 @@ msgstr "待辦"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr "完成"
+msgstr "已完成"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "記得那種牛奶"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
@@ -63,72 +63,72 @@ msgstr "洗碗碟"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "檢查新電郵"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
-msgstr ""
+msgstr "哈囉！"
 
 #: ../rednotebook/info.py:93
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
-msgstr ""
+msgstr "這裡加入了幾個範例，可以幫你由零開始學習如何使用本軟件。你隨時都刪除任何的範例。"
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
-msgstr ""
+msgstr "範例和其他文件皆可以在下帶菜單 \"說明\" -> \"內容\" 找到"
 
 #: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "本介面分為三個部份"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:99
 msgid "Left"
-msgstr ""
+msgstr "左邊"
 
 #: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "日曆導航"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:102
 msgid "Center"
-msgstr ""
+msgstr "中間"
 
 #: ../rednotebook/info.py:103
 msgid "Text for a day"
-msgstr ""
+msgstr "本日文件"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:105
 msgid "Right"
-msgstr ""
+msgstr "右邊"
 
 #: ../rednotebook/info.py:106
 msgid "Annotations to a day"
-msgstr ""
+msgstr "本日註解"
 
 #. ## Translators: noun
 #. ## Verb
 #: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
 msgid "Preview"
-msgstr ""
+msgstr "預覽"
 
 #: ../rednotebook/info.py:110
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "RedNoteBook 執行模式有兩種: 編輯模式 和 預覽模式"
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Click 一下 \"預覽\" 檢視兩種執行模式的差異"
 
 #: ../rednotebook/info.py:116
 msgid ""
@@ -136,20 +136,21 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"今天 我去//寵物店//並 買了 一隻 **老虎**. 然後 我們又到--泳池--公園 玩了一會.我們玩了極限飛盤.之後我們看了\"_大腦生活_\"."
 
 #: ../rednotebook/info.py:120
 msgid "Annotations"
-msgstr ""
+msgstr "註記"
 
 #: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "註記是一些描述詞, 可以在類別表中排序"
 
 #: ../rednotebook/info.py:122
 msgid ""
 "For example you could create the category \"Ideas\" and then add today's "
 "ideas to it."
-msgstr ""
+msgstr "舉例, 您可新增類別\"想法\", 並新增到今天的想法"
 
 #: ../rednotebook/info.py:124
 msgid ""
@@ -160,43 +161,43 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
 msgid "Save and Export"
-msgstr ""
+msgstr "儲存並輸出"
 
 #: ../rednotebook/info.py:137
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
-msgstr ""
+msgstr "您所輸入的資料會自動的在離開和定期方式儲存"
 
 #: ../rednotebook/info.py:139
 msgid "To avoid data loss you should backup your journal regularly."
-msgstr ""
+msgstr "為避免資料流失,您必須要定期的備份您的日記"
 
 #: ../rednotebook/info.py:140
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
-msgstr ""
+msgstr "\"備份\"在\"日記\"選單中儲存所有您所輸入的資料成為ZIP壓縮檔"
 
 #: ../rednotebook/info.py:141
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "在\"日記\"選單中,您也可以找到\"輸出\"按鈕"
 
 #: ../rednotebook/info.py:142
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
-msgstr ""
+msgstr "點選\"輸出\"並將您的日記輸出為文字檔,HTML或Latex"
 
 #: ../rednotebook/info.py:145
 msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr ""
+msgstr "如您發現任何問題,請通知我,我才可以修正問題"
 
 #: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "感謝您的回應"
 
 #: ../rednotebook/info.py:149
 msgid "Have a nice day!"
-msgstr ""
+msgstr "祝您有美好的一天！"
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
