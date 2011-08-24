@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2010-10-28 21:01+0000\n"
-"Last-Translator: Hertatijanto Hartono <dvertx@gmail.com>\n"
+"PO-Revision-Date: 2011-08-23 14:21+0000\n"
+"Last-Translator: Ivan SM <ivan90112@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-07-28 04:36+0000\n"
-"X-Generator: Launchpad (build 13405)\n"
+"X-Launchpad-Export-Date: 2011-08-24 04:40+0000\n"
+"X-Generator: Launchpad (build 13697)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Waktu luang"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
@@ -59,11 +59,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Mencuci piring"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Mengecek email"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
@@ -74,6 +74,8 @@ msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Beberapa contoh teks telah ditambahkan untuk membantu Anda memulai dan Anda "
+"dapat menghapusnya kapan saja Anda suka."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
@@ -1122,211 +1124,6 @@ msgstr "Hari Ini"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  A. Akbar Hidayat https://launchpad.net/~keripix\n"
-"  Abdul Munif Hanafi https://launchpad.net/~nafica-coroz\n"
 "  Hertatijanto Hartono https://launchpad.net/~darkvertex\n"
 "  Ivan SM https://launchpad.net/~ivan90112\n"
 "  Waluyo Adi Siswanto https://launchpad.net/~was-wlk"
-
-#~ msgid "Select an empty folder for the new location your journal"
-#~ msgstr "Pilih direktori kosong untuk penempatan baru jurnal anda"
-
-#~ msgid "Insert a title"
-#~ msgstr "Sisipkan judul"
-
-#~ msgid "Insert a bullet list"
-#~ msgstr "Sisispkan senarai bertitik"
-
-#, python-format
-#~ msgid "Preview: %s"
-#~ msgstr "Pratilik: %s"
-
-#~ msgid "Spell Check"
-#~ msgstr "Periksa Ejaan"
-
-#~ msgid ""
-#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
-#~ msgstr "Membutuhkan gkspell. Ini tercakup dalam paket  python-gnome2-extras"
-
-#, python-format
-#~ msgid "Exporting to %s failed"
-#~ msgstr "Ekspor ke %s gagal"
-
-#~ msgid "Cancelling export assistant."
-#~ msgstr "Membatalkan asisten ekspor"
-
-#~ msgid "Content exported to "
-#~ msgstr "Isi di ekspor ke "
-
-#~ msgid "Restore example content"
-#~ msgstr "Pulihkan isi contoh"
-
-#~ msgid "Fill some free days with example content. Do not overwrite anything"
-#~ msgstr "Isikan hari kosong dengan isi contoh. Jangan timpa apapun"
-
-#~ msgid "Show the help document"
-#~ msgstr "Tampilkan dokumen panduan"
-
-#~ msgid "Check for a new version now"
-#~ msgstr "Periksa versi terbaru sekarang"
-
-#~ msgid "Check For New Version"
-#~ msgstr "Periksa Keberadaan Versi Terbaru"
-
-#~ msgid "Delete this node"
-#~ msgstr "Hapus simpul ini"
-
-#~ msgid "Do you really want to delete this node?"
-#~ msgstr "Apakah benar ingin menghapus simpul ini?"
-
-#~ msgid "Empty nodes are not allowed"
-#~ msgstr "Simpuil kosong tidak diperbolehkan"
-
-#~ msgid "<< Unselect"
-#~ msgstr "<< Batal pilihan"
-
-#~ msgid "<b>Current Day</b>"
-#~ msgstr "<b>Hari Ini</b>"
-
-#~ msgid "<b>Enter file name</b>"
-#~ msgstr "<b>Masukkan nama file</b>"
-
-#~ msgid "<b>A new version of RedNotebook is available!</b>"
-#~ msgstr "<b>Versi RedNotebook terbaru telah tersedia!</b>"
-
-#~ msgid "<b>Select format</b>"
-#~ msgstr "<b>Pilih format</b>"
-
-#~ msgid "<b>Select the contents you want to export</b>"
-#~ msgstr "<b>Pilih isi yang ingin di ekspor</b>"
-
-#~ msgid "<b>Till:</b>"
-#~ msgstr "<b>Hingga:</b>"
-
-#~ msgid "<b>Select Entries</b>"
-#~ msgstr "<b>Pilih Entri</b>"
-
-#~ msgid "<b>Entries from:</b>"
-#~ msgstr "<b>Masukan dari:</b>"
-
-#~ msgid "<b>You already have the latest version of RedNotebook</b>"
-#~ msgstr "<b>Anda telah memiliki versi RedNotebook termutakhir</b>"
-
-#~ msgid "Add Tag"
-#~ msgstr "Tambahkan Tag"
-
-#~ msgid "All Entries"
-#~ msgstr "Semua entri"
-
-#~ msgid "Add an entry to a category (Ctrl+N)"
-#~ msgstr "Tambahkan masukan pada kategori (Ctrl+N)"
-
-#~ msgid "Delete the selected node"
-#~ msgstr "Hapus simpul terpilih"
-
-#~ msgid "Check at Startup"
-#~ msgstr "Periksa saat memulai"
-
-#~ msgid "Do you want to visit the website?"
-#~ msgstr "Apakah anda ingin mengunjungi situs web ini?"
-
-#~ msgid "Export Text"
-#~ msgstr "Ekspor Teks"
-
-#~ msgid ""
-#~ "For information on how to convert the exported latex files to PDF, consult "
-#~ "the Help document."
-#~ msgstr ""
-#~ "Untuk informasi cara mengkonversi berkas latex terekspor ke ke bentuk PDF, "
-#~ "lihat dokumentasi Bantuan."
-
-#~ msgid "HTML"
-#~ msgstr "HTML"
-
-#~ msgid "New Entry"
-#~ msgstr "Masukan Baru"
-
-#~ msgid "New Version"
-#~ msgstr "Versi Baru"
-
-#~ msgid "Only the entries in the selected time range"
-#~ msgstr "Hanya entri pada jangkauan waktu terpilih"
-
-#~ msgid "No New Version"
-#~ msgstr "Tiada Versi Baru"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Latex"
-#~ msgstr "Latex"
-
-#~ msgid "Select >>"
-#~ msgstr "Pilih >>"
-
-#~ msgid ""
-#~ "Welcome to the Export Assistant. \n"
-#~ "This wizard will help you to export your journal to various formats. You can "
-#~ "select the days you want to export and where the output will be saved."
-#~ msgstr ""
-#~ "Selamat datang ke Asisten Ekspor. \n"
-#~ "Pemandu ini akan membantu anda saat mengekspor jurnal ke dalam berbagai "
-#~ "format. Anda dapat memilih sejumlah hari pelaksanaan ekspor dan lokasi "
-#~ "penyimpanan hasilnya."
-
-#~ msgid "Tag this day (Ctrl+T)"
-#~ msgstr "Tag hari ini"
-
-#~ msgid "Stricken"
-#~ msgstr "Garis tengah"
-
-#~ msgid ""
-#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
-#~ msgstr ""
-#~ "Untuk langsung ekspor PDF , mohon pasang  pywebkitgtk versi 1.1.5 atau yang "
-#~ "lebih baru."
-
-#~ msgid "Text entries"
-#~ msgstr "Masukan teks"
-
-#~ msgid "An entry could look like this:"
-#~ msgstr "Masukan teks dapat berupa seperti ini:"
-
-#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
-#~ msgstr ""
-#~ "Informasi lanjut  baca documen bantuan penggunaan Latex untuk konversi PDF."
-
-#~ msgid ""
-#~ "Hello,\n"
-#~ "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
-#~ "try."
-#~ msgstr ""
-#~ "Halo,\n"
-#~ "ini adalah RedNotebook, jurnal Desktop. Terima kasih atas kepercayaan anda "
-#~ "untuk mencoba."
-
-#~ msgid "On the right there is space for annotations to a day."
-#~ msgstr "Di sebelah kanan ada ruang untuk menulis catatan pada hari tertentu."
-
-#~ msgid "Annotations are notes that can easily be sorted into categories."
-#~ msgstr ""
-#~ "Catatan adalah suatu tulisan ringkas yang dapat diurutkan dalam beberapa "
-#~ "katagori."
-
-#~ msgid "You can find more documentation under \"Help\" -> \"Help\"."
-#~ msgstr "Anda dapat menemukan dokumentasi melalui \"Bantuan\" -> \"Bantuan\"."
-
-#~ msgid "Use webkit for previews"
-#~ msgstr "Gunakan webkit untuk pratilik"
-
-#~ msgid "Webkit offers a nicer preview"
-#~ msgstr "Webkit menyediakan pratilik yang lebih baik"
-
-#~ msgid "Requires pywebkitgtk (python-webkit)"
-#~ msgstr "Membutuhkan pywebkitgtk (python-webkit)"
-
-#~ msgid "(Restart required)"
-#~ msgstr "(Perlu di hidupkan ulang)"
-
-#~ msgid "Journal"
-#~ msgstr "Jurnal"
