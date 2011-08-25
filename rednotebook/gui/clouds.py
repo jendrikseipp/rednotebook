@@ -59,7 +59,6 @@ def word_count_dict_to_html(word_count_dict, type, ignores, includes):
 
     # filter words in ignore_list
     sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                   #if word.lower() not in ignore_list]
                    if not any(pattern.match(word) for pattern in ignores)]
 
     number_of_words = 42

@@ -138,15 +138,6 @@ class CategoriesTreeView(object):
         if self.node_on_top_level(path):
             self.add_category(new_text)
 
-        # Tag name changed
-        else:
-            iter = self.tree_store.get_iter(path)
-            iter_parent = self.tree_store.iter_parent(iter)
-
-            tags_node_is_parent = self.get_iter_value(iter_parent).capitalize() == 'Tags'
-            if tags_node_is_parent and self.node_on_top_level(iter_parent):
-                self.main_window.journal.save_old_day()
-
         # Update cloud
         self.main_window.cloud.update()
 
@@ -157,14 +148,6 @@ class CategoriesTreeView(object):
         if len(category) < 1:
             self.statusbar.show_text(_('Empty category names are not allowed'), error=True)
             return False
-
-        return True
-
-    def check_entry(self, text):
-        if len(text) < 1:
-            self.statusbar.show_text(_('Empty entries are not allowed'), error=True)
-            return False
-
         return True
 
     def add_element(self, parent, element_content):
@@ -182,9 +165,8 @@ class CategoriesTreeView(object):
                 self.add_element(new_child, value)
 
     def set_day_content(self, day):
-        # We want to order the categories ascendingly, having Tags first
-        ascending = lambda x: '000' if x.lower() == 'tags' else x.lower()
-        sorted_keys = sorted(day.content.keys(), key=ascending)
+        # We want to order the categories ascendingly
+        sorted_keys = sorted(day.content.keys(), key=lambda x: x.lower())
 
         for key in sorted_keys:
             value = day.content[key]
@@ -285,12 +267,12 @@ class CategoriesTreeView(object):
         entry_pango = markup.convert_to_pango(entry)
         category_pango = markup.convert_to_pango(category)
 
+        # If category exists add entry to existing category, else add new category
         if category_iter is None:
-            # If category does not exist add new category
             category_iter = self.tree_store.append(None, [category_pango])
-            self.tree_store.append(category_iter, [entry_pango])
-        else:
-            # If category exists add entry to existing category
+
+        # Only add entry if there is one
+        if entry_pango:
             self.tree_store.append(category_iter, [entry_pango])
 
         if not undoing:
@@ -317,27 +299,24 @@ class CategoriesTreeView(object):
         # Save for undoing ------------------------------------
 
         # An entry is deleted
-        # We want to delete empty categories too
         if not self.node_on_top_level(iter):
-            deleting_entry = True
             category_iter = self.tree_store.iter_parent(iter)
             category = self.get_iter_value(category_iter)
             entries = [self.get_iter_value(iter)]
 
         # A category is deleted
         else:
-            deleting_entry = False
             category_iter = iter
             category = self.get_iter_value(category_iter)
-            entries = self._get_element_content(category_iter).keys()
+            content = self._get_element_content(category_iter)
+            if content:
+                entries = content.keys()
+            else:
+                entries = []
 
         # Delete ---------------------------------------------
 
         self.tree_store.remove(iter)
-
-        # Delete empty category
-        if deleting_entry and self.empty(category_iter):
-            self.tree_store.remove(category_iter)
 
         # ----------------------------------------------------
 
@@ -359,10 +338,6 @@ class CategoriesTreeView(object):
         self.main_window.cloud.update()
 
     def delete_selected_node(self):
-        """
-        This method used to show a warning dialog. This has become obsolete
-        with the addition of undo functionality for the categories
-        """
         selected_iter = self.get_selected_node()
         if selected_iter:
             self.delete_node(selected_iter)

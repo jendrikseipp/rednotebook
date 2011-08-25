@@ -149,7 +149,6 @@ class MainWindow(object):
             'on_main_frame_window_state_event': self.on_main_frame_window_state_event,
 
             'on_add_new_entry_button_clicked': self.on_add_new_entry_button_clicked,
-            'on_add_tag_button_clicked': self.on_add_tag_button_clicked,
 
             'on_search_notebook_switch_page': self.on_search_notebook_switch_page,
 
@@ -926,9 +925,6 @@ class MainWindow(object):
     def on_add_new_entry_button_clicked(self, widget):
         self.categories_tree_view._on_add_entry_clicked(None)
 
-    def on_add_tag_button_clicked(self, widget):
-        self.new_entry_dialog.show_dialog(category='Tags')
-
     def set_date(self, new_month, new_date, day):
         self.categories_tree_view.clear()
 
@@ -1053,14 +1049,13 @@ class NewEntryDialog(object):
         self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
 
     def _text_entered(self):
-        return bool(self.categories_combo_box.get_active_text() and
-                self.new_entry_combo_box.get_active_text())
+        return bool(self.categories_combo_box.get_active_text())
 
     def show_dialog(self, category=''):
         # Has to be first, because it may be populated later
         self.new_entry_combo_box.clear()
 
-        # Show the list of categories even if adding a tag
+        # Show the list of categories
         self.categories_combo_box.set_entries(self.categories_tree_view.categories)
 
         if category:
@@ -1083,8 +1078,6 @@ class NewEntryDialog(object):
             return
 
         entry_text = self.new_entry_combo_box.get_active_text()
-        if not self.categories_tree_view.check_entry(entry_text):
-            return
 
         self.categories_tree_view.add_entry(category_name, entry_text)
 

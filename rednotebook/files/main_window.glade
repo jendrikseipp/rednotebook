@@ -376,20 +376,6 @@
                                     <property name="homogeneous">True</property>
                                   </packing>
                                 </child>
-                                <child>
-                                  <object class="GtkToolButton" id="add_tag_button">
-                                    <property name="visible">True</property>
-                                    <property name="tooltip_text" translatable="yes">Give this day a tag</property>
-                                    <property name="label" translatable="yes" comments="This stands for the verb in &quot;Tag this day&quot;">Tag</property>
-                                    <property name="stock_id">gtk-dialog-info</property>
-                                    <accelerator key="T" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                                    <signal name="clicked" handler="on_add_tag_button_clicked"/>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="homogeneous">True</property>
-                                  </packing>
-                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
