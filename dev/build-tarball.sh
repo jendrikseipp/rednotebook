@@ -2,7 +2,7 @@
 set -e
 
 cd ../
-rm -r dist/
+rm -rf dist/
 
 # Force recalculation of files so that none is missed
 rm MANIFEST
