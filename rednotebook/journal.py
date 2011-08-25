@@ -254,10 +254,10 @@ class Journal:
         self.open_journal(self.get_journal_path())
 
         self.archiver = backup.Archiver(self)
-        self.archiver.check_last_backup_date()
+        #self.archiver.check_last_backup_date()
 
         # Check for a new version
-        if self.config.read('checkForNewVersion', default=0) == 1:
+        if self.config.read('checkForNewVersion', 0) == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time

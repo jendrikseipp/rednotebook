@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.2
 X Let the "Back" and "Forward" button jump over blank days
+X Allow regular expressions (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 X Add "Export currently visible day" option in export assistant
 X Show warning when second RedNotebook instance is started to prevent data loss
 X Add option to set the date format for exports. An empty field removes dates from exports
@@ -44,7 +45,6 @@ X Tables
 X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
   Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
-X Allow regular expressions (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
 
@@ -70,16 +70,12 @@ O Imports
 
   O Suggest input encoding, but let user set it afterwards
 
-O Remove unneeded copied code
-O Make startup faster
 O Fix status icon on XFCE (LP:525196)
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
 O Consider using apport
 O Remove support for the notification area on Linux (http://design.canonical.com/2010/04/notification-area/)
 O Windows: Enable spellcheck
 O Translate help (Restructure first using Sphinx?)
-O Add "AddThis" Buttons to homepage
-O Create facebook page
 O Rethink logfile
 O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
 O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
