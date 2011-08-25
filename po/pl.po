@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-03-29 10:56+0000\n"
+"PO-Revision-Date: 2011-08-19 16:04+0000\n"
 "Last-Translator: Łukasz Wiśniewski <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-07-28 04:37+0000\n"
-"X-Generator: Launchpad (build 13405)\n"
+"X-Launchpad-Export-Date: 2011-08-20 04:54+0000\n"
+"X-Generator: Launchpad (build 13697)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -385,7 +385,7 @@ msgstr "Dodaj nowy wpis"
 
 #: ../rednotebook/gui/categories.py:436
 msgid "Delete this entry"
-msgstr ""
+msgstr "Usuń ten wpis"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -830,6 +830,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== Spotkanie ===\n"
+"\n"
+"Cel, Data, Miejsce\n"
+"\n"
+"**Obecni:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Dyskusja, Decyzje, Zobowiązania:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:117
 msgid ""
@@ -845,6 +866,18 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Podróż ===\n"
+"**Data:**\n"
+"\n"
+"**Miejsce:**\n"
+"\n"
+"**Uczestnicy:**\n"
+"\n"
+"**Wycieczka:**\n"
+"Pewnego razu wybraliśmy się do xxx. Kiedy dotarliśmy do yyy stało się zzz "
+"...\n"
+"\n"
+"**Zdjęcia:** [Folder ze zdjęciami \"\"/ścieżka/do/tych/zdjęć/\"\"]\n"
 
 #: ../rednotebook/templates.py:131
 msgid ""
@@ -856,6 +889,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Rozmowa Telefoniczna ===\n"
+"- **Osoba:**\n"
+"- **Czas:**\n"
+"- **Temat:**\n"
+"- **Co z tego wynikło:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:141
 msgid ""
@@ -877,6 +917,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Osobiste ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Jak udał się dzień?**\n"
+"\n"
+"\n"
+"========================\n"
+"**Co trzeba zmienić?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:199
 msgid "Choose Template Name"
@@ -1005,7 +1062,7 @@ msgstr "<b>Wybierz istniejącą lub nową kategorię</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Wybrany Dzień</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -1033,7 +1090,7 @@ msgstr "Edycja"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Włącz edycję tekstu (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1129,6 +1186,7 @@ msgstr "Dzisiaj"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Aleksandra https://launchpad.net/~ola31alo\n"
 "  Dariusz Jakoniuk https://launchpad.net/~darcio53\n"
 "  Jarosław Ogrodnik https://launchpad.net/~goz\n"
 "  NINa https://launchpad.net/~factory\n"
@@ -1136,207 +1194,3 @@ msgstr ""
 "  doiges https://launchpad.net/~bohopicasso\n"
 "  xc1024 https://launchpad.net/~xc1024\n"
 "  Łukasz Wiśniewski https://launchpad.net/~fr-luksus"
-
-#~ msgid "Insert a title"
-#~ msgstr "Wstaw tytuł"
-
-#, python-format
-#~ msgid "Preview: %s"
-#~ msgstr "Podgląd: %s"
-
-#~ msgid "Spell Check"
-#~ msgstr "Sprawdzanie pisowni"
-
-#~ msgid "Show the help document"
-#~ msgstr "Pokaż dokument pomocy"
-
-#~ msgid "Check for a new version now"
-#~ msgstr "Sprawdz teraz, czy jest nowa wersja"
-
-#~ msgid "Restore example content"
-#~ msgstr "Przywróć przykładową zawartość"
-
-#~ msgid "Check For New Version"
-#~ msgstr "Sprawdz, czy jest nowa wersja"
-
-#~ msgid "Check at Startup"
-#~ msgstr "Sprawdź przy starcie"
-
-#~ msgid "Add Tag"
-#~ msgstr "Dodaj znacznik"
-
-#~ msgid "Do you want to visit the website?"
-#~ msgstr "Czy chcesz zobaczyć stronę w sieci?"
-
-#~ msgid "Export Text"
-#~ msgstr "Eksportuj tekst"
-
-#~ msgid "New Entry"
-#~ msgstr "Nowy wpis"
-
-#~ msgid "Latex"
-#~ msgstr "Latex"
-
-#~ msgid "New Version"
-#~ msgstr "Nowa wersja"
-
-#~ msgid "No New Version"
-#~ msgstr "Brak nowej wersji"
-
-#~ msgid "HTML"
-#~ msgstr "HTML"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Select an empty folder for the new location your journal"
-#~ msgstr "Wybierz pusty folder dla nowej lokalizacji Twojego dziennika"
-
-#~ msgid "Insert a bullet list"
-#~ msgstr "Wstaw listę punktowaną"
-
-#~ msgid ""
-#~ "Requires gtkspell. This is included in the python-gnome2-extras package"
-#~ msgstr "Wymaga gtkspell. To jest zawarte w paczce python-gnome2-extras"
-
-#, python-format
-#~ msgid "Exporting to %s failed"
-#~ msgstr "Eksportowanie do %s nie powiodło się"
-
-#~ msgid "Cancelling export assistant."
-#~ msgstr "Anulowanie asystenta eksportu"
-
-#~ msgid "Content exported to "
-#~ msgstr "Zawartość eksportowana do "
-
-#~ msgid "Fill some free days with example content. Do not overwrite anything"
-#~ msgstr ""
-#~ "Wypełnij kilka wolnych dni przykładową zawartością. Nie nadpisuj niczego"
-
-#~ msgid "Do you really want to delete this node?"
-#~ msgstr "Czy napewno chcesz usunąć ten węzeł?"
-
-#~ msgid "Delete this node"
-#~ msgstr "Usuń ten węzeł"
-
-#~ msgid "Empty nodes are not allowed"
-#~ msgstr "Puste węzły nie są dozwolone"
-
-#~ msgid "<< Unselect"
-#~ msgstr "<< Odznacz"
-
-#~ msgid "<b>A new version of RedNotebook is available!</b>"
-#~ msgstr "<b>Nowa wersja programu RedNotebook jest dostępna!</b>"
-
-#~ msgid "<b>Enter file name</b>"
-#~ msgstr "<b>Wprowadź nazwę pliku</b>"
-
-#~ msgid "Delete the selected node"
-#~ msgstr "Usuń zaznaczony węzeł"
-
-#~ msgid "<b>You already have the latest version of RedNotebook</b>"
-#~ msgstr "<b>Masz najnowszą wersję programu RedNotebook</b>"
-
-#~ msgid "<b>Select format</b>"
-#~ msgstr "<b>Wybierz format</b>"
-
-#~ msgid "<b>Select the contents you want to export</b>"
-#~ msgstr "<b>Wybierz zawartość, którą chcesz eksportować</b>"
-
-#~ msgid "<b>Till:</b>"
-#~ msgstr "<b>Aż do:</b>"
-
-#~ msgid ""
-#~ "For information on how to convert the exported latex files to PDF, consult "
-#~ "the Help document."
-#~ msgstr ""
-#~ "Informacje, jak zamienić eksportowane pliki latex do PDF, znajdziesz w pliku "
-#~ "pomocy"
-
-#~ msgid "Add an entry to a category (Ctrl+N)"
-#~ msgstr "Dodaj wpis do kategorii (Ctrl+N)"
-
-#~ msgid "Only the entries in the selected time range"
-#~ msgstr "Tylko wpisy w zaznaczonym zakresie czasu"
-
-#~ msgid "Select >>"
-#~ msgstr "Zaznacz >>"
-
-#~ msgid "Tag this day (Ctrl+T)"
-#~ msgstr "Dodaj znacznik do tego dnia (Ctrl+T)"
-
-#~ msgid "<b>Entries from:</b>"
-#~ msgstr "<b>Wpisy od:</b>"
-
-#~ msgid "Stricken"
-#~ msgstr "Przekreślenie"
-
-#~ msgid ""
-#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
-#~ msgstr ""
-#~ "Celem bezpośredniego eksportu do formatu PDF zainstaluj pywebkitgtk w wersji "
-#~ "1.1.5 albo późniejszej."
-
-#~ msgid ""
-#~ "Hello,\n"
-#~ "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
-#~ "try."
-#~ msgstr ""
-#~ "Witaj,\n"
-#~ "tu dziennik RedNotebook. Dzięki za danie mi szansy."
-
-#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
-#~ msgstr "Alternatywnie skonsultuj dokument pomocy konwersji Latex do PDF."
-
-#~ msgid "On the right there is space for annotations to a day."
-#~ msgstr "Po prawej jest miejsce na przypisy do danego dnia."
-
-#~ msgid "Annotations are notes that can easily be sorted into categories."
-#~ msgstr "Przypisy są notatkami, które mogą być łatwo sortowane w kategorie."
-
-#~ msgid "(Restart required)"
-#~ msgstr "(Wymagany restart)"
-
-#~ msgid "Webkit offers a nicer preview"
-#~ msgstr "Webkit oferuje lepszy podgląd"
-
-#~ msgid "Requires pywebkitgtk (python-webkit)"
-#~ msgstr "Wymaga pywebkitgtk (python-webkit)"
-
-#~ msgid "Use webkit for previews"
-#~ msgstr "Używaj webkit do podglądów"
-
-#~ msgid "Text entries"
-#~ msgstr "Wpisy tekstowe"
-
-#~ msgid "An entry could look like this:"
-#~ msgstr "Wpis może wyglądać następująco:"
-
-#~ msgid "You can find more documentation under \"Help\" -> \"Help\"."
-#~ msgstr "Więcej dokumentacji znajdziesz w ''Pomoc'' -> \"Pomoc''"
-
-#~ msgid "<b>Current Day</b>"
-#~ msgstr "<b>Bieżący dzień</b>"
-
-#~ msgid "All Entries"
-#~ msgstr "Wszystkie wpisy"
-
-#~ msgid "<b>Select Entries</b>"
-#~ msgstr "<b>Wybierz wpisy</b>"
-
-#~ msgid ""
-#~ "Welcome to the Export Assistant. \n"
-#~ "This wizard will help you to export your journal to various formats. You can "
-#~ "select the days you want to export and where the output will be saved."
-#~ msgstr ""
-#~ "Witamy w asystencie eksportu. \n"
-#~ "Asystent pomoże ci wyeksportować dziennik do różnych formatów. Możesz wybrać "
-#~ "dni, które chcesz eksportować i gdzie zapisać pliki wyjściowe."
-
-#~ msgid "Journal"
-#~ msgstr "Dziennik"
-
-#~ msgid ""
-#~ "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
-#~ "mode."
-#~ msgstr "RedNotebook ma dwa tryby, tryb __edycji__ i tryb __podglądu__."
