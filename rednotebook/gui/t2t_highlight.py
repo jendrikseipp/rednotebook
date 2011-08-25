@@ -17,10 +17,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-'''
+"""
 This module takes the ideas and some code from the highlighting module
 PyGTKCodeBuffer by Hannes Matuschek (http://code.google.com/p/pygtkcodebuffer/).
-'''
+"""
 
 import gtk
 import sys
@@ -33,7 +33,6 @@ if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("./../../"))
     logging.getLogger('').setLevel(logging.DEBUG)
 
-#from rednotebook.external import gtkcodebuffer
 from rednotebook.external import txt2tags
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
@@ -77,10 +76,10 @@ class TagGroup(list):
 
 
 class Pattern(object):
-    '''
+    """
     A pattern object allows a regex-pattern to have
     subgroups with different formatting
-    '''
+    """
     def __init__(self, pattern, group_tag_pairs, regex=None, flags="",
                         overlap=False, name='unnamed'):
         self.overlap = overlap
@@ -129,13 +128,11 @@ class Pattern(object):
 
 
 class MarkupDefinition(object):
-
     def __init__(self, rules):
         self.rules = rules
         self.highlight_rule = None
 
     def __call__(self, buf, start, end):
-
         txt = buf.get_slice(start, end)
 
         tag_groups = []
@@ -159,7 +156,6 @@ class MarkupDefinition(object):
 
 
 class MarkupBuffer(gtk.TextBuffer):
-
     def __init__(self, table=None, lang=None, styles={}):
         gtk.TextBuffer.__init__(self, table)
 
@@ -189,9 +185,9 @@ class MarkupBuffer(gtk.TextBuffer):
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
 
     def get_slice(self, start, end):
-        '''
+        """
         We have to search for the regexes in utf-8 text
-        '''
+        """
         slice_text = gtk.TextBuffer.get_slice(self, start, end)
         slice_text = slice_text.decode('utf-8')
         return slice_text
@@ -209,9 +205,9 @@ class MarkupBuffer(gtk.TextBuffer):
         self.update_syntax(start, start)
 
     def remove_all_syntax_tags(self, start, end):
-        '''
+        """
         Do not remove the gtkspell highlighting
-        '''
+        """
         for style in self.styles:
             self.remove_tag_by_name(style, start, end)
 
@@ -221,14 +217,11 @@ class MarkupBuffer(gtk.TextBuffer):
             self.apply_tag_by_name(tagname, mstart, mend)
 
     def update_syntax(self, start, end):
-        """ More or less internal used method to update the
-            syntax-highlighting. """
-        '''
-        Use two categories of rules: one-line and multiline
+        """Use two categories of rules: one-line and multiline
 
-        Before running multiline rules: Check if e.g. - is present in changed string
-        '''
-
+        Before running multiline rules: Check if e.g. - is present in changed
+        string.
+        """
         # Just update from the start of the first edited line
         # to the end of the last edited line, because we can
         # guarantee that there's no multiline rule

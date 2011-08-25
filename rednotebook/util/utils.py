@@ -57,13 +57,13 @@ def set_environment_variables(config):
 
 
 def redirect_output_to_file(logfile_path):
-    '''
+    """
     Changes stdout and stderr to a file.
     Disables both streams if logfile_path is None or cannot be opened.
 
     This is necessary to suppress the error messages on Windows when closing
     the application.
-    '''
+    """
     assert sys.platform == 'win32'
 
     if logfile_path is None:
@@ -80,13 +80,13 @@ def redirect_output_to_file(logfile_path):
 
 
 def setup_signal_handlers(journal):
-    '''
+    """
     Catch abnormal exits of the program and save content to disk
     Look in signal man page for signal names
 
     SIGKILL cannot be caught
     SIGINT is caught again by KeyboardInterrupt
-    '''
+    """
 
     signals = []
 
@@ -134,9 +134,9 @@ def setup_signal_handlers(journal):
 
 
 def get_new_version_number():
-    '''
+    """
     Reads version number from website and returns None if it cannot be read
-    '''
+    """
     version_pattern = re.compile(r'<span id="download-version">(.+)</span>')
 
     try:
@@ -184,7 +184,7 @@ def check_new_version(journal, current_version, startup=False):
             settings.set_property('gtk-alternative-button-order', True)
 
             dialog.set_alternative_button_order([30, gtk.RESPONSE_NO,
-                                       gtk.RESPONSE_YES])
+                                                 gtk.RESPONSE_YES])
 
         response = dialog.run()
         dialog.hide()
@@ -231,12 +231,12 @@ class StreamDuplicator(object):
 
 
 class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
-    '''
+    """
     Code taken from "Dan"
     http://groups.google.com/group/comp.lang.python/browse_frm/thread/e72deee779d9989b/
 
     This class preserves newlines in the optparse help
-    '''
+    """
     def format_description(self, description):
         if not description: return ""
         desc_width = self.width - self.current_indent
@@ -255,7 +255,7 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
     def format_option(self, option):
         # The help for each option consists of two parts:
         #    * the opt strings and metavars
-        #    eg. ("-x", or "-f_f_i_l_e_n_a_m_e, --file=FILENAME")
+        #    eg. ("-x", or "-f FILENAME, --file=FILENAME")
         #    * the user-supplied help string
         #    eg. ("turn on expert mode", "read data from FILENAME")
         #
@@ -265,7 +265,7 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
         # But if the opt string list is too long, we put the help
         # string on a second line, indented to the same column it would
         # start in if it fit on the first line.
-        #    -f_f_i_l_e_n_a_m_e, --file=FILENAME
+        #    -f FILENAME, --file=FILENAME
         #            read data from FILENAME
         result = []
         opts = self.option_strings[option]

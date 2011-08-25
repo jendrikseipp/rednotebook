@@ -16,34 +16,34 @@ X Remember scrollbar positions when changing between days and edit and preview m
 X Restore previous cursor position and text selection in edit mode when coming
   from preview mode or another day
 X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
+X Remember last export and backup locations
+X Show the most recent entries at the top of the search list by default
+X Search in annotations as well
 X Use auto-completion for all category entries
 X Allow linebreaks (\\) only at the end of lines
+X Do not write empty month files to disk
+X Remove "Delete Entry" button
+X Add tooltips for category buttons
+X Always keep categories sorted in search and annotations drop-down menus
 X Allow markup for links in categories (--http://mypage.com--)
-X Abort startup if a yaml file cannot be read
 X Escape regular expression syntax in searches (*, +, etc.)
 X Use a better icon for Annotate (Edit)
-X Code optimizations
-X Remove old cloud implementation
-X Remove external module htmltextview.py
-X Remember last export and backup locations
-X Search in annotations
-X Do not write empty month files to disk
-X Show the most recent entries at the top of the search list by default
-X Remove "Delete Entry" button
-X add tooltips for category buttons
-X Remove dead unicode code
-X Always keep categories sorted in search and annotations drop-down menus
-X Remove obsolete keepnote sources
-X Use pyflakes to remove unnecessary imports and check for errors
-X Let "Get help online" point to RedNotebook's answers section at launchpad
 X Add more markup examples to templates help text
 X Fix: Txt2tags highlighting should not allow spaces between format markup and text
+X Let "Get help online" point to RedNotebook's answers section at launchpad
+X Code optimizations
+  X Remove old cloud implementation
+  X Remove external module htmltextview.py
+  X Remove dead unicode code
+  X Remove obsolete KeepNote source files
+  X Remove unnecessary imports
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
 X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
+  Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
 X Allow regular expressions (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
@@ -60,14 +60,17 @@ O Imports
   X RedNotebook Backup zipfile
   X RedNotebook data directory
   X Plain text files
+  O ics (used by Google Calendar)
   O Almanah
   O Lifeograph
   O Evernote
-  O ics?
   O Wordpress?
   O Treepad?
   X Tomboy
 
+  O Suggest input encoding, but let user set it afterwards
+
+O Remove unneeded copied code
 O Make startup faster
 O Fix status icon on XFCE (LP:525196)
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
@@ -76,6 +79,7 @@ O Remove support for the notification area on Linux (http://design.canonical.com
 O Windows: Enable spellcheck
 O Translate help (Restructure first using Sphinx?)
 O Add "AddThis" Buttons to homepage
+O Create facebook page
 O Rethink logfile
 O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
 O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
@@ -86,6 +90,7 @@ O Possibility to show all entries (Search for "*" or show all entries if no text
 O Create mono icon for panel?
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add shortcut to move the cursor into the main text area
+O Make txt2tags faster and fix bugs
 
 O Let tags be categories without entries
 O Select the search location (text, categories, tags) after doing the search
@@ -96,6 +101,7 @@ O Unify Clouds and search -> Show the search bar above the clouds
 O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
 O Search and replace (useful for renaming categories and other names)
+  (Add replace functionailty after search has been entered)
 
 
 2.0

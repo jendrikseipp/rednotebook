@@ -29,7 +29,6 @@ import webbrowser
 from glob import glob
 
 
-
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
 def main_is_frozen():
     return (hasattr(sys, "frozen") or # new py2exe
@@ -48,7 +47,6 @@ if not main_is_frozen():
     app_dir = os.path.normpath(app_dir)
 else:
     app_dir = get_main_dir()
-
 
 
 image_dir = os.path.join(app_dir, 'images')

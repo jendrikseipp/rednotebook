@@ -65,8 +65,8 @@ class CategoriesTreeView(object):
         # add the cell to the tvcolumn and allow it to expand
         self.tvcolumn.pack_start(self.cell, True)
 
-        ''' set the cell "text" attribute to column 0 - retrieve text
-            from that column in tree_store'''
+        """ set the cell "text" attribute to column 0 - retrieve text
+            from that column in tree_store"""
         #self.tvcolumn.add_attribute(self.cell, 'text', 0)
         self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 
@@ -118,11 +118,11 @@ class CategoriesTreeView(object):
         editable.set_text(markup.convert_from_pango(pango_markup))
 
     def edited_cb(self, cell, path, new_text, user_data):
-        '''
+        """
         Called when text in a cell is changed
 
         new_text is txt2tags markup
-        '''
+        """
         if new_text == 'text' and self.node_on_top_level(path):
             self.statusbar.show_text('"text" is a reserved keyword', error=True)
             return
@@ -168,9 +168,9 @@ class CategoriesTreeView(object):
         return True
 
     def add_element(self, parent, element_content):
-        '''
+        """
         Recursive Method for adding the content
-        '''
+        """
         # We want to order the entries ascendingly
         ascending = lambda (key, value): key.lower()
 
@@ -215,11 +215,11 @@ class CategoriesTreeView(object):
             return content
 
     def empty(self, category_iter=None):
-        '''
+        """
         Tests whether a category has children
 
         If no category is given, test whether there are any categories
-        '''
+        """
         return self.tree_store.iter_n_children(category_iter) == 0
 
     def clear(self):
@@ -242,9 +242,9 @@ class CategoriesTreeView(object):
         return text
 
     def set_iter_value(self, iter, txt2tags_markup):
-        '''
+        """
         text is txt2tags markup
-        '''
+        """
         pango_markup = markup.convert_to_pango(txt2tags_markup)
         self.tree_store.set_value(iter, 0, pango_markup)
 
@@ -302,9 +302,9 @@ class CategoriesTreeView(object):
         self.tree_view.expand_all()
 
     def get_selected_node(self):
-        '''
+        """
         Returns selected node or None if none is selected
-        '''
+        """
         tree_selection = self.tree_view.get_selection()
         model, selected_iter = tree_selection.get_selected()
         return selected_iter
@@ -359,10 +359,10 @@ class CategoriesTreeView(object):
         self.main_window.cloud.update()
 
     def delete_selected_node(self):
-        '''
+        """
         This method used to show a warning dialog. This has become obsolete
         with the addition of undo functionality for the categories
-        '''
+        """
         selected_iter = self.get_selected_node()
         if selected_iter:
             self.delete_node(selected_iter)
@@ -411,14 +411,14 @@ class CategoriesTreeView(object):
             self.context_menu.popup(None, None, None, event.button, event.time)
 
     def _get_context_menu(self):
-        context_menu_xml = '''
+        context_menu_xml = """
         <ui>
         <popup action="ContextMenu">
             <menuitem action="ChangeEntry"/>
             <menuitem action="AddEntry"/>
             <menuitem action="Delete"/>
         </popup>
-        </ui>'''
+        </ui>"""
 
         uimanager = self.main_window.uimanager
 
@@ -478,13 +478,13 @@ class CategoriesTreeView(object):
         self.delete_selected_node()
 
     def on_size_allocate(self, treeview, allocation, column, cell):
-        '''
+        """
         Code from pychess project
         (http://code.google.com/p/pychess/source/browse/trunk/lib/pychess/
         System/uistuff.py?r=1025#62)
 
         Allows dynamic line wrapping in a treeview
-        '''
+        """
         other_columns = (c for c in treeview.get_columns() if c != column)
         new_width = allocation.width - sum(c.get_width() for c in other_columns)
         new_width -= treeview.style_get_property("horizontal-separator") * 2

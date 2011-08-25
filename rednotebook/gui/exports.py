@@ -428,9 +428,7 @@ class ExportAssistant(Assistant):
 
         markup_string = ''.join(markup_strings_for_each_day)
 
-        options = {'toc': 0}
-
-        return markup.convert(markup_string, format, options=options)
+        return markup.convert(markup_string, format, options={'toc': 0})
 
     def export(self):
         format = self.exporter.FORMAT
@@ -447,8 +445,7 @@ class ExportAssistant(Assistant):
 
     def export_pdf(self):
         logging.info('Exporting to PDF')
-        html = self.get_export_string('xhtml')
-        browser.print_pdf(html, self.path)
+        browser.print_pdf(self.get_export_string('xhtml'), self.path)
 
 
 
