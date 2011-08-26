@@ -48,14 +48,13 @@ def get_regex(word):
     return re.compile(word + '$', re.I)
 
 
-def word_count_dict_to_html(word_count_dict, type, ignores, includes):
+def get_cloud_html(word_count_dict, categories, ignores, includes):
     sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
 
-    if type == 'word':
-        # filter short words
-        sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                       if len(word) > 4 or
-                          any(pattern.match(word) for pattern in includes)]
+    # filter short words
+    sorted_dict = [(word, freq) for (word, freq) in sorted_dict
+                   if len(word) > 4 or word in categories or
+                      any(pattern.match(word) for pattern in includes)]
 
     # filter words in ignore_list
     sorted_dict = [(word, freq) for (word, freq) in sorted_dict
@@ -114,14 +113,7 @@ class Cloud(HtmlView):
         self.webview.connect("hovering-over-link", self.on_hovering_over_link)
         self.webview.connect('populate-popup', self.on_populate_popup)
 
-        self.set_type(0, init=True)
         self.last_hovered_word = None
-
-    def set_type(self, type_int, init=False):
-        self.type_int = type_int
-        self.type = ['word', 'category', 'tag'][type_int]
-        if not init:
-            self.update(force_update=True)
 
     def update_lists(self):
         config = self.journal.config
@@ -150,18 +142,18 @@ class Cloud(HtmlView):
             return
 
         # Do not update the cloud with words as it requires a lot of searching
-        if self.type == 'word' and not force_update:
+        if not force_update:
             return
 
         gobject.idle_add(self._update)
 
     def _update(self):
-        logging.debug('Update the cloud (Type: %s)' % self.type)
+        logging.debug('Update the cloud')
         self.journal.save_old_day()
 
-        word_count_dict = self.journal.get_word_count_dict(self.type)
-        self.tag_cloud_words, html = word_count_dict_to_html(word_count_dict,
-                                self.type, self.regexes_ignore, self.regexes_include)
+        word_count_dict = self.journal.get_word_count_dict()
+        self.cloud_words, html = get_cloud_html(word_count_dict,
+            self.journal.categories, self.regexes_ignore, self.regexes_include)
 
         self.load_html(html)
         self.last_hovered_word = None
@@ -185,11 +177,9 @@ class Cloud(HtmlView):
         if 'search' in uri:
             # search_index is the part after last slash
             search_index = int(uri.split('/')[-1])
-            search_text, count = self.tag_cloud_words[search_index]
+            search_text, count = self.cloud_words[search_index]
 
-            self.journal.frame.search_type_box.set_active(self.type_int)
             self.journal.frame.search_box.set_active_text(search_text)
-            self.journal.frame.search_notebook.set_current_page(0)
 
             # returning True here stops loading the document
             return True
@@ -208,7 +198,7 @@ class Cloud(HtmlView):
         """
         if uri:
             search_index = int(uri.split('/')[-1])
-            search_text, count = self.tag_cloud_words[search_index]
+            search_text, count = self.cloud_words[search_index]
             self.last_hovered_word = search_text
 
     def on_populate_popup(self, webview, menu):

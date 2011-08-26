@@ -222,7 +222,6 @@ class MainMenuBar(object):
         '''
         Change to search page and put the cursor into the search box
         '''
-        self.main_window.search_notebook.set_current_page(0)
         self.main_window.search_box.entry.grab_focus()
 
     def on_options_menuitem_activate(self, widget):

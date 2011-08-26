@@ -132,6 +132,7 @@ class MainWindow(object):
         self.export_assistant = ExportAssistant(self.journal)
         self.export_assistant.set_transient_for(self.main_frame)
 
+        self.setup_clouds()
         self.setup_search()
         self.setup_insert_menu()
         self.setup_format_menu()
@@ -150,14 +151,9 @@ class MainWindow(object):
 
             'on_add_new_entry_button_clicked': self.on_add_new_entry_button_clicked,
 
-            'on_search_notebook_switch_page': self.on_search_notebook_switch_page,
-
             'on_template_button_clicked': self.on_template_button_clicked,
             'on_template_menu_show_menu': self.on_template_menu_show_menu,
             'on_template_menu_clicked': self.on_template_menu_clicked,
-
-            'on_search_type_box_changed': self.on_search_type_box_changed,
-            'on_cloud_combo_box_changed': self.on_cloud_combo_box_changed,
 
             'on_main_frame_delete_event': self.on_main_frame_delete_event,
 
@@ -166,7 +162,6 @@ class MainWindow(object):
              }
         self.builder.connect_signals(dic)
 
-        self.setup_clouds()
         self.set_shortcuts()
         self.setup_stats_dialog()
 
@@ -392,47 +387,17 @@ class MainWindow(object):
 
 
     def setup_search(self):
-        self.search_notebook = self.builder.get_object('search_notebook')
-
-        self.search_tree_view = search.SearchTreeView(self.builder.get_object(
-                                    'search_tree_view'), self)
-        self.search_type_box = self.builder.get_object('search_type_box')
-        self.search_type_box.set_active(0)
+        self.search_tree_view = search.SearchTreeView(self)
+        self.search_tree_view.show()
+        scroll = gtk.ScrolledWindow()
+        scroll.add(self.search_tree_view)
+        self.builder.get_object('search_container').pack_start(scroll)
         self.search_box = search.SearchComboBox(self.builder.get_object(
-                            'search_box'), self)
-
-
-    def on_search_type_box_changed(self, widget):
-        search_type = widget.get_active()
-        self.search_box.set_search_type(search_type)
-
-
-    def on_search_notebook_switch_page(self, notebook, page, page_number):
-        '''
-        Called when the page actually changes
-        '''
-        if page_number == 0:
-            # Switched to search tab
-            #self.search_tree_view.update_data()
-
-            # Put cursor into search field, when search tab is opened
-            gobject.idle_add(self.search_box.entry.grab_focus)
-        if page_number == 1:
-            # Switched to cloud tab
-            self.cloud.update(force_update=True)
+                                                        'search_box'), self)
 
     def setup_clouds(self):
-        self.cloud_box = self.builder.get_object('cloud_box')
         self.cloud = Cloud(self.journal)
-
-        self.cloud_box.pack_start(self.cloud)
-
-        self.cloud_combo_box = self.builder.get_object('cloud_combo_box')
-        self.cloud_combo_box.set_active(0)
-
-    def on_cloud_combo_box_changed(self, cloud_combo_box):
-        value_int = cloud_combo_box.get_active()
-        self.cloud.set_type(value_int)
+        self.builder.get_object('search_container').pack_start(self.cloud)
 
     def on_main_frame_configure_event(self, widget, event):
         '''
@@ -558,8 +523,6 @@ class MainWindow(object):
 
         # Remember window position
         config['mainFrameX'], config['mainFrameY'] = self.main_frame.get_position()
-
-        config['cloudTabActive'] = self.search_notebook.get_current_page()
 
         # Actually this is unnecessary as the list gets saved when it changes
         # so we use it to sort the list ;)

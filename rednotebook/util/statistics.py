@@ -31,9 +31,7 @@ class Statistics(object):
         return number_of_words
 
     def get_number_of_distinct_words(self):
-        word_count_dict = self.journal.get_word_count_dict('word')
-        number_of_distinct_words = len(word_count_dict)
-        return number_of_distinct_words
+        return len(self.journal.get_word_count_dict())
 
     def get_number_of_chars(self):
         number_of_chars = 0
