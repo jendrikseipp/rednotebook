@@ -17,6 +17,7 @@ X Remember scrollbar positions when changing between days and edit and preview m
 X Restore previous cursor position and text selection in edit mode when coming
   from preview mode or another day
 X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
+X Use Ubuntu font where available
 X Remember last export and backup locations
 X Show the most recent entries at the top of the search list by default
 X Search in annotations as well

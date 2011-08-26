@@ -41,6 +41,14 @@ from rednotebook.util import filesystem
 REGEX_LINEBREAK = r'\\\\[\s]*$'
 REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
 
+CSS = """\
+<style type="text/css">
+    body {
+        font-family: Ubuntu, sans-serif;
+    }
+</style>
+"""
+
 
 def convert_categories_to_markup(categories, with_category_title=True):
     'Only add Category title if the text is displayed'
@@ -117,11 +125,12 @@ def _get_config(type):
     config['preproc'].append([REGEX_LINEBREAK, 'REDNOTEBOOKLINEBREAK'])
 
     if type == 'xhtml' or type == 'html':
-        config['encoding'] = 'UTF-8'       # document encoding
+        config['encoding'] = 'UTF-8'  # document encoding
         config['toc'] = 0
-        config['style'] = [os.path.join(filesystem.files_dir, 'stylesheet.css')]
-        config['css-inside'] = 1
         config['css-sugar'] = 1
+
+        # Custom css
+        config['postproc'].append([r'</head>', CSS + '</head>'])
 
         # Line breaks
         config['postproc'].append([r'REDNOTEBOOKLINEBREAK', '<br />'])
@@ -217,7 +226,6 @@ def convert(txt, target, headers=None, options=None):
     except:
         result = txt2tags.getUnknownErrorMessage()
         logging.error(result)
-
     return result
 
 

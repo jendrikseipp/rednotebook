@@ -32,7 +32,7 @@ from rednotebook.util import unicode
 CLOUD_CSS = """\
 <style type="text/css">
     body {
-        font-family: sans-serif;
+        font-family: Ubuntu, sans-serif;
         text-align: center;
     }
     a:link { color:black; text-decoration:none; }
