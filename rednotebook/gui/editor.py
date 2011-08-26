@@ -64,6 +64,12 @@ class Editor(object):
         # So we forbid that behaviour, by setting a minimum width
         self.day_text_view.set_size_request(1, -1)
 
+        font_name = gtk.settings_get_default().get_property('gtk-font-name')
+        self.default_family, self.default_size = font_name.split()
+        self.default_size = int(self.default_size)
+
+        logging.debug('Default font: %s %s' % (self.default_family, self.default_size))
+
     def set_text(self, text, undoing=False):
         self.insert(text, overwrite=True, undoing=undoing)
 
@@ -189,7 +195,9 @@ class Editor(object):
         self.set_selection(selection_start_iter, selection_end_iter)
 
     def set_font_size(self, size):
-        font = pango.FontDescription(str(size))
+        if size <= 0:
+            size = self.default_size
+        font = pango.FontDescription('%s %s' % (self.default_family, size))
         self.day_text_view.modify_font(font)
 
     def hide(self):
