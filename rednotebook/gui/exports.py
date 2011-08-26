@@ -107,10 +107,8 @@ class DatePage(AssistantPage):
 
 
     def refresh_dates(self):
-        start = self.journal.get_edit_date_of_entry_number(0)
-        end = self.journal.get_edit_date_of_entry_number(-1)
-        self.calendar1.set_date(start)
-        self.calendar2.set_date(end)
+        self.calendar1.set_date(datetime.date.today())
+        self.calendar2.set_date(datetime.date.today())
 
 
 

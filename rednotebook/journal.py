@@ -638,13 +638,6 @@ class Journal:
         return days_in_date_range
 
 
-    def get_edit_date_of_entry_number(self, entry_number):
-        sorted_days = self.days
-        if len(sorted_days) == 0:
-            return datetime.date.today()
-        return sorted_days[entry_number % len(sorted_days)].date
-
-
     def go_to_first_empty_day(self):
         if len(self.days) == 0:
             return datetime.date.today()
