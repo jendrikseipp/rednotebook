@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-08-24 14:45+0000\n"
+"PO-Revision-Date: 2011-08-25 14:38+0000\n"
 "Last-Translator: Giorgi Maghlakelidze <acidlabz@gmail.com>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-08-25 04:38+0000\n"
-"X-Generator: Launchpad (build 13727)\n"
+"X-Launchpad-Export-Date: 2011-08-26 04:33+0000\n"
+"X-Generator: Launchpad (build 13779)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr ""
+msgstr "_დახმარება"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "RedNotebook'ის დამხმარე მასალის გახსნა"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
@@ -316,19 +316,19 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Visit the RedNotebook forum"
-msgstr ""
+msgstr "RedNotebook'ის ფორუმში გადასვლა"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "RedNotebook'ის თარგმნა"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
+msgstr "RedNotebook'ის თარგმანში წვლილის შეტანა Launchpad სისტემის მეშვეობით"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
-msgstr ""
+msgstr "პრობლემის შეტყობინება"
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
@@ -341,7 +341,7 @@ msgstr ""
 #: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
 #: tmp/main_window.glade.h:10
 msgid "Categories"
-msgstr ""
+msgstr "კატეგორიები"
 
 #: ../rednotebook/gui/categories.py:122 ../rednotebook/gui/categories.py:159
 msgid "Empty entries are not allowed"
@@ -357,7 +357,7 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:432
 msgid "Add a new entry"
-msgstr ""
+msgstr "ახალი ჩანაწერის დამატება"
 
 #: ../rednotebook/gui/categories.py:436
 msgid "Delete this entry"
@@ -365,23 +365,23 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "სისტემის  ჩართვასთან ერთად RedNotebook'ის გაშვება"
 
 #: ../rednotebook/gui/options.py:156
 msgid "%A, %x, Day %j"
-msgstr ""
+msgstr "%A, %x, დღე %j"
 
 #: ../rednotebook/gui/options.py:156
 msgid "Week %W of Year %Y"
-msgstr ""
+msgstr "კვირა %W-ე, წელიწადი %Y"
 
 #: ../rednotebook/gui/options.py:157
 msgid "Day %j"
-msgstr ""
+msgstr "დღე %j"
 
 #: ../rednotebook/gui/options.py:162
 msgid "Help"
-msgstr ""
+msgstr "დახმარება"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:183
@@ -411,7 +411,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:299
 msgid "Check Spelling"
-msgstr ""
+msgstr "მართლწერის შემოწმება"
 
 #: ../rednotebook/gui/options.py:307
 msgid "Check for new version at startup"
@@ -423,7 +423,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:319
 msgid "Font Size"
-msgstr ""
+msgstr "შრიფტის ზომა"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Date/Time format"
@@ -485,28 +485,28 @@ msgstr ""
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:744
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../rednotebook/gui/main_window.py:747
 msgid "Bold"
-msgstr ""
+msgstr "მსხვილი"
 
 #: ../rednotebook/gui/main_window.py:748
 msgid "Italic"
-msgstr ""
+msgstr "დახრილი"
 
 #: ../rednotebook/gui/main_window.py:749
 msgid "Underline"
-msgstr ""
+msgstr "ხაზგასმული"
 
 #: ../rednotebook/gui/main_window.py:750
 msgid "Strikethrough"
-msgstr ""
+msgstr "გადახაზული"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/main_window.py:766 ../rednotebook/gui/exports.py:382
 msgid "Format"
-msgstr ""
+msgstr "ფორმატი"
 
 #: ../rednotebook/gui/main_window.py:767
 msgid "Format the selected text or category entry"
@@ -514,11 +514,11 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:816
 msgid "First Item"
-msgstr ""
+msgstr "პირველი პუნქტი"
 
 #: ../rednotebook/gui/main_window.py:817
 msgid "Second Item"
-msgstr ""
+msgstr "მეორე პუნქტი"
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Indented Item"
@@ -534,7 +534,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:847
 msgid "Picture"
-msgstr ""
+msgstr "სურათი"
 
 #: ../rednotebook/gui/main_window.py:848
 msgid "Insert an image from the harddisk"
@@ -542,7 +542,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:850
 msgid "File"
-msgstr ""
+msgstr "ფაილი"
 
 #: ../rednotebook/gui/main_window.py:851
 msgid "Insert a link to a file"
@@ -567,11 +567,11 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:861
 msgid "Title"
-msgstr ""
+msgstr "სათაური"
 
 #: ../rednotebook/gui/main_window.py:863
 msgid "Line"
-msgstr ""
+msgstr "ხაზი"
 
 #: ../rednotebook/gui/main_window.py:864
 msgid "Insert a separator line"
@@ -579,11 +579,11 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:866
 msgid "Table"
-msgstr ""
+msgstr "ცხრილი"
 
 #: ../rednotebook/gui/main_window.py:868
 msgid "Date/Time"
-msgstr ""
+msgstr "თარიღი/დრო"
 
 #: ../rednotebook/gui/main_window.py:869
 msgid "Insert the current date and time (edit format in preferences)"
@@ -599,7 +599,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:895
 msgid "Insert"
-msgstr ""
+msgstr "ჩასმა"
 
 #: ../rednotebook/gui/main_window.py:899
 msgid "Insert images, files, links and other content"
@@ -628,13 +628,13 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1350
 msgid "Date"
-msgstr ""
+msgstr "თარიღი"
 
 #: ../rednotebook/gui/main_window.py:1351
 #: ../rednotebook/gui/main_window.py:1392
 #: ../rednotebook/gui/main_window.py:1400 tmp/main_window.glade.h:42
 msgid "Text"
-msgstr ""
+msgstr "ტექსტი"
 
 #: ../rednotebook/gui/main_window.py:1396
 msgid "Entry"
@@ -762,11 +762,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:395
 msgid "Yes"
-msgstr ""
+msgstr "დიახ"
 
 #: ../rednotebook/gui/exports.py:395
 msgid "No"
-msgstr ""
+msgstr "არა"
 
 #: ../rednotebook/gui/exports.py:438
 #, python-format
@@ -775,7 +775,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:534
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "მოითხოვს ბიბლიოთეკას pywebkitgtk"
 
 #: ../rednotebook/templates.py:93
 msgid ""
@@ -876,12 +876,12 @@ msgstr ""
 #: ../rednotebook/util/utils.py:249
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "თქვენი ვერსიაა <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:250
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "უახლესი ვერსია არის <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:251
 msgid "Do you want to visit the RedNotebook homepage?"
@@ -894,7 +894,7 @@ msgstr ""
 #: ../rednotebook/util/statistics.py:81 ../rednotebook/util/statistics.py:94
 #: tmp/main_window.glade.h:44
 msgid "Words"
-msgstr ""
+msgstr "სიტყვები"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Distinct Words"
@@ -906,7 +906,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:84 ../rednotebook/util/statistics.py:96
 msgid "Letters"
-msgstr ""
+msgstr "ასოები"
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Days between first and last Entry"
@@ -954,11 +954,11 @@ msgstr ""
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>ზოგადი</b>"
 
 #: tmp/main_window.glade.h:3
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr ""
+msgstr "<b>ვებ-მისამართი (მაგ. http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
