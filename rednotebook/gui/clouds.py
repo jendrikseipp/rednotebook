@@ -21,6 +21,7 @@ from __future__ import division
 
 import logging
 import re
+import sys
 
 import gtk
 import gobject
@@ -29,10 +30,12 @@ from rednotebook.gui.browser import HtmlView
 from rednotebook.util import unicode
 
 
+CLOUD_WORDS = 50
+
 CLOUD_CSS = """\
 <style type="text/css">
     body {
-        font-family: sans-serif;
+        font-family: Ubuntu, sans-serif;
         text-align: center;
     }
     a:link { color:black; text-decoration:none; }
@@ -49,30 +52,34 @@ def get_regex(word):
 
 
 def get_cloud_html(word_count_dict, categories, ignores, includes):
-    sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
+    words = word_count_dict.items()
 
     # filter short words
-    sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                   if len(word) > 4 or word in categories or
-                      any(pattern.match(word) for pattern in includes)]
+    words = [(word, freq) for (word, freq) in words
+             if len(word) > 4 or word in categories or
+             any(pattern.match(word) for pattern in includes)]
 
     # filter words in ignore_list
-    sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                   if not any(pattern.match(word) for pattern in ignores)]
+    words = [(word, freq) for (word, freq) in words
+             if not any(pattern.match(word) for pattern in ignores)]
 
-    number_of_words = 42
+    def frequency((word, freq)):
+        # We want the categories to be included no matter their frequency
+        if word in categories:
+            return sys.maxint
+        return freq
 
     # only take the longest words. If there are less words than n,
-    # len(sorted_dict) words are returned
-    cloud_words = sorted_dict[-number_of_words:]
+    # len(words) words are returned
+    words.sort(key=frequency)
+    cloud_words = words[-CLOUD_WORDS:]
 
     if not cloud_words:
         return [], ''
 
-    min_count = cloud_words[0][1]
-    max_count = cloud_words[-1][1]
-
-    delta_count = max_count - min_count
+    counts = [freq for (word, freq) in cloud_words]
+    min_count = min(counts)
+    delta_count = max(counts) - min_count
     if delta_count == 0:
         delta_count = 1
 
@@ -90,11 +97,13 @@ def get_cloud_html(word_count_dict, categories, ignores, includes):
         font_factor = (count - min_count) / delta_count
         font_size = int(min_font_size + font_factor * font_delta)
 
+        if word in categories:
+            word = '<u><b>%s</b></u>' % word
+
+        # Add some whitespace to separate words
         html_elements.append('<a href="search/%s">'
-                            '<span style="font-size:%spx">%s</span></a>'
-                            % (index, font_size, word) +
-                            #Add some whitespace
-                            '&#xA0;')
+                             '<span style="font-size:%spx">%s</span></a>&#160;'
+                             % (index, font_size, word))
 
     html_body = ''.join(['<body>', '\n'.join(html_elements), '\n</body>\n'])
     html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
