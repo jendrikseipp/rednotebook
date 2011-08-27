@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-08-25 14:38+0000\n"
+"PO-Revision-Date: 2011-08-26 14:30+0000\n"
 "Last-Translator: Giorgi Maghlakelidze <acidlabz@gmail.com>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-08-26 04:33+0000\n"
-"X-Generator: Launchpad (build 13779)\n"
+"X-Launchpad-Export-Date: 2011-08-27 05:42+0000\n"
+"X-Generator: Launchpad (build 13794)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr ""
+msgstr "აზრები"
 
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
@@ -39,7 +39,7 @@ msgstr "სამსახური"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "თავისუფალი დრო"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
@@ -47,33 +47,35 @@ msgstr "დოკუმენტაცია"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "გასაკეთებელი"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "შესრულებული"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "მაღაზიიდან რძის წამოღება"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "ჭურჭელი გასარეცხია"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "შევამოწმო ფოსტა"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
-msgstr ""
+msgstr "სალამი!"
 
 #: ../rednotebook/info.py:93
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"ჩვენ დავამატეთ რამდენიმე სანიმუშო ჩანაწერი RedNotebook-თან მუშაობის სწავლის "
+"გაადვილების მიზნით. შეგიძლიათ წაშალოთ ეს ჩანაწერები ნებისმიერ დროს."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
@@ -81,54 +83,58 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"სანიმუშო ტექსტი დამატებით ინფორმაციასთან ერთად ხელმისაწვდომია მენიუს პუნქტში "
+"\"დახმარება\" -> \"სარჩევი\""
 
 #: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "პროგრამის ინტერფეისი გაყოფილია სამ ნაწილად"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:99
 msgid "Left"
-msgstr ""
+msgstr "მარცხნივ"
 
 #: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
-msgstr ""
+msgstr "ნავიგაცია და კალენდარი"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:102
 msgid "Center"
-msgstr ""
+msgstr "ცენტრში"
 
 #: ../rednotebook/info.py:103
 msgid "Text for a day"
-msgstr ""
+msgstr "ჩანაწერი დღისთვის"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:105
 msgid "Right"
-msgstr ""
+msgstr "მარჯვნივ"
 
 #: ../rednotebook/info.py:106
 msgid "Annotations to a day"
-msgstr ""
+msgstr "დღის შენიშვნები"
 
 #. ## Translators: noun
 #. ## Verb
 #: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
 msgid "Preview"
-msgstr ""
+msgstr "გადახედვა"
 
 #: ../rednotebook/info.py:110
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"RedNotebook-ს აქვს მუშაობის ორი რეჟიმი:  __დამუშავების__ და __გადახედვის__ "
+"რეჟიმი."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "დააჭირეთ ზემოთ მყოფ ღილაკს \"გადახედვა\" რათა დაინახოთ განსხვავება."
 
 #: ../rednotebook/info.py:116
 msgid ""
@@ -139,7 +145,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:120
 msgid "Annotations"
-msgstr ""
+msgstr "შენიშვნები"
 
 #: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
@@ -160,17 +166,21 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
 msgid "Save and Export"
-msgstr ""
+msgstr "შენახვა და გატანა"
 
 #: ../rednotebook/info.py:137
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"ყველაფერი რასაც ჩაწერთ შეინახება რამდენიმე წუთში ერთხელ და პროგრამიდან "
+"გასვლისას."
 
 #: ../rednotebook/info.py:139
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"გირჩევთ პერიოდულად შექმნათ ჩანაწერების სამარქაფო ასლი, რათა თავი დაიზღვიოთ "
+"მნიშვნელოვანი ინფორმაციის დაკარგვისაგან"
 
 #: ../rednotebook/info.py:140
 msgid ""
@@ -192,74 +202,75 @@ msgstr ""
 
 #: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "მადლობელი დაგრჩებით ნებისმიერი გამოხმაურებისთვის."
 
 #: ../rednotebook/info.py:149
 msgid "Have a nice day!"
-msgstr ""
+msgstr "კარგად ბრძანდებოდეთ!"
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
-msgstr ""
+msgstr "შევჭამე შპროტის **ორი** ცალი კონსერვი"
 
 #: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "დღიურისთვის გამოვიყენო მაგარი პროგრამა"
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "ბრაიანის ცხოვრება პითონი მონტის მიერ"
 
 #: ../rednotebook/info.py:217
 msgid "Went to see the pope"
-msgstr ""
+msgstr "ვინახულე რომის პაპა"
 
 #: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"
-msgstr ""
+msgstr "გამოვიგონო ნასმურევის საწინააღმდეგო მანქანა"
 
 #: ../rednotebook/info.py:219
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "პიტონი მონტი და წმიდა გრაალი"
 
 #: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "RedNotebook'ის სახელმძღვანელო"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr ""
+msgstr "შესავალი"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "_დღიური"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "ახალი დღიურის შექმნა. ძველი დღიური შენარჩუნდება."
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "არსებული დღიურის ჩატვირთვა. ძველი დღიური შენარჩუნდება."
 
 #: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"ახალი დღიურის სხვა ადგილას შენახვა. აგრეთვე შეინახება ძველი დღიურის ფაილებიც"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr ""
+msgstr "შემოტანა..."
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr ""
+msgstr "შემოტანის დამხმარეს გახსნა"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
 msgid "Export"
-msgstr ""
+msgstr "გატანა"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
@@ -268,11 +279,11 @@ msgstr "გატანის დამხმარეს გახსნა"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111
 msgid "Backup"
-msgstr ""
+msgstr "სამარქაფო ასლი"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "ყველა მონაცემის zip არქივად შენახვა"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
 msgid "Statistics"
@@ -280,23 +291,25 @@ msgstr "სტატისტიკა"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "დღიურთან დაკავშირებული სტატისტიკა"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
 msgstr ""
+"RedNotebook'ის დახურვა. სისტემურ არეში მყოფი ხატულა აგრეთვე გაითიშება."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
-msgstr ""
+msgstr "_დამუშავება"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text edits or category entry deletions"
-msgstr ""
+msgstr "ტექსტში ბოლო შეტანილი ცვლილებებისა და შენიშვნების წაშლის გაუქმება"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text edits or category entry additions"
 msgstr ""
+"ტექსტში ბოლო შეტანილი ცვლილებებისა და შენიშვნების დამატების გამეორება"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -304,7 +317,7 @@ msgstr "_დახმარება"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr ""
+msgstr "სარჩევი"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
@@ -312,7 +325,7 @@ msgstr "RedNotebook'ის დამხმარე მასალის გა
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr ""
+msgstr "დახმარების მოძიება ინტერნეტში"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Visit the RedNotebook forum"
@@ -332,11 +345,11 @@ msgstr "პრობლემის შეტყობინება"
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "შეავსეთ მცირე ფორმა სადაც აღწერთ პრობლემას"
 
 #: ../rednotebook/gui/menu.py:270
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "კომპიუტერული დღიური"
 
 #: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
 #: tmp/main_window.glade.h:10
@@ -345,15 +358,15 @@ msgstr "კატეგორიები"
 
 #: ../rednotebook/gui/categories.py:122 ../rednotebook/gui/categories.py:159
 msgid "Empty entries are not allowed"
-msgstr ""
+msgstr "ცარიელი ჩანაწერები დაუშვებელია"
 
 #: ../rednotebook/gui/categories.py:152
 msgid "Empty category names are not allowed"
-msgstr ""
+msgstr "უსათაურო კატეგორიები დაუშვებელია"
 
 #: ../rednotebook/gui/categories.py:428
 msgid "Change this text"
-msgstr ""
+msgstr "ამ ტექსტის შეცვლა"
 
 #: ../rednotebook/gui/categories.py:432
 msgid "Add a new entry"
@@ -361,7 +374,7 @@ msgstr "ახალი ჩანაწერის დამატება"
 
 #: ../rednotebook/gui/categories.py:436
 msgid "Delete this entry"
-msgstr ""
+msgstr "მიმდინარე ჩანაწერის წაშლა"
 
 #: ../rednotebook/gui/options.py:86
 msgid "Load RedNotebook at startup"
@@ -386,28 +399,28 @@ msgstr "დახმარება"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:183
 msgid "Preview:"
-msgstr ""
+msgstr "გადახედვა:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Close to system tray"
-msgstr ""
+msgstr "მუშაობა სისტემურ არეში"
 
 #: ../rednotebook/gui/options.py:293
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
+msgstr "ფანჯრის დახურვისას, სისტემურ არეში გამოჩნდება RedNotebook'ის ხატულა"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "უმართებულოდ დაწერილი სიტყვებისთვის ხაზის გასმა"
 
 #: ../rednotebook/gui/options.py:297
 msgid "Requires gtkspell."
-msgstr ""
+msgstr "მოითხოვს ბიბლიოთეკას gtkspell."
 
 #: ../rednotebook/gui/options.py:298
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr ""
+msgstr "ის შედის პაკეტებში python-gtkspell და python-gnome2-extras"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Check Spelling"
@@ -415,11 +428,11 @@ msgstr "მართლწერის შემოწმება"
 
 #: ../rednotebook/gui/options.py:307
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "ახალ ვერსიაზე შემოწმება პროგრამის გაშვებისთანავე"
 
 #: ../rednotebook/gui/options.py:314
 msgid "Check now"
-msgstr ""
+msgstr "მყისვე შემოწმება"
 
 #: ../rednotebook/gui/options.py:319
 msgid "Font Size"
@@ -427,60 +440,60 @@ msgstr "შრიფტის ზომა"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Date/Time format"
-msgstr ""
+msgstr "თარიღი/დროის ფორმატი"
 
 #: ../rednotebook/gui/options.py:321
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "ღრუბლებიდან სიტყვების ამოღება:"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Do not show those comma separated words in any cloud"
-msgstr ""
+msgstr "ღრუბლებში არ გამოჩნდება მძიმეებით გამოყოფილი სიტყვები"
 
 #: ../rednotebook/gui/options.py:323
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "მცირე სიტყვები ღრუბლებში:"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
+msgstr "ღრუბლებში გამოსაჩენი 5 სიმბოლოზო მოკლე სიტყვები"
 
 #: ../rednotebook/gui/main_window.py:323
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "RedNotebook'ის გამოჩენა"
 
 #: ../rednotebook/gui/main_window.py:549
 msgid "Select an empty folder for your new journal"
-msgstr ""
+msgstr "აირჩიეთ ცარიელი საქაღალდე თქვენი ახალი დღიურისთვის"
 
 #: ../rednotebook/gui/main_window.py:550
 msgid "Journals are saved in a directory, not in a single file."
-msgstr ""
+msgstr "დღიურები ინახება არა ერთიან ფაილში, არმედ საქაღალდეში."
 
 #: ../rednotebook/gui/main_window.py:551
 msgid "The directory name will be the title of the new journal."
-msgstr ""
+msgstr "საქაღალდის სახელი იქნება ახალი დღიურის დასახელება."
 
 #: ../rednotebook/gui/main_window.py:555
 msgid "Select an existing journal directory"
-msgstr ""
+msgstr "აირრჩიეთ არსებული დღიურის საქაღალდე"
 
 #: ../rednotebook/gui/main_window.py:557
 msgid "The directory should contain your journal's data files"
-msgstr ""
+msgstr "საქაღალდე უნდა შეიცავდეს არსებული დღიურის ფაილებს"
 
 #: ../rednotebook/gui/main_window.py:559
 msgid "Select an empty folder for the new location of your journal"
-msgstr ""
+msgstr "აირჩიეთ ცარიელი საქაღალდე თქვენი ახალი დღიურისთვის"
 
 #: ../rednotebook/gui/main_window.py:561
 msgid "The directory name will be the new title of the journal"
-msgstr ""
+msgstr "საქაღალდის სახელი იქნება დღიურის ახალი დასახელება."
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
 #: ../rednotebook/gui/main_window.py:583
 msgid "The default journal has been opened"
-msgstr ""
+msgstr "გახსნილია ნაგულისხმები დღიური"
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:744
@@ -510,7 +523,7 @@ msgstr "ფორმატი"
 
 #: ../rednotebook/gui/main_window.py:767
 msgid "Format the selected text or category entry"
-msgstr ""
+msgstr "მონიშნული ტექსტის ან შენიშვნის ფორმატის შეცვლა"
 
 #: ../rednotebook/gui/main_window.py:816
 msgid "First Item"
@@ -522,15 +535,15 @@ msgstr "მეორე პუნქტი"
 
 #: ../rednotebook/gui/main_window.py:818
 msgid "Indented Item"
-msgstr ""
+msgstr "ჩაწეული პუნქტი"
 
 #: ../rednotebook/gui/main_window.py:819
 msgid "Two blank lines close the list"
-msgstr ""
+msgstr "ორი ცარიელი სტრიქონი ასრულებს ჩამონათვალს"
 
 #: ../rednotebook/gui/main_window.py:823
 msgid "Title text"
-msgstr ""
+msgstr "სათაურის ტექსტი"
 
 #: ../rednotebook/gui/main_window.py:847
 msgid "Picture"
@@ -538,7 +551,7 @@ msgstr "სურათი"
 
 #: ../rednotebook/gui/main_window.py:848
 msgid "Insert an image from the harddisk"
-msgstr ""
+msgstr "ხისტ დისკზე მყოფი სურათის ჩასმა"
 
 #: ../rednotebook/gui/main_window.py:850
 msgid "File"
@@ -546,24 +559,24 @@ msgstr "ფაილი"
 
 #: ../rednotebook/gui/main_window.py:851
 msgid "Insert a link to a file"
-msgstr ""
+msgstr "ფაილის ბმულის ჩასმა"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/main_window.py:854
 msgid "_Link"
-msgstr ""
+msgstr "_ბმული"
 
 #: ../rednotebook/gui/main_window.py:855
 msgid "Insert a link to a website"
-msgstr ""
+msgstr "საიტის ბმულის ჩასმა"
 
 #: ../rednotebook/gui/main_window.py:857
 msgid "Bullet List"
-msgstr ""
+msgstr "დაუნომრავი ნუსხა"
 
 #: ../rednotebook/gui/main_window.py:859
 msgid "Numbered List"
-msgstr ""
+msgstr "დანომრილი ნუსხა"
 
 #: ../rednotebook/gui/main_window.py:861
 msgid "Title"
@@ -575,7 +588,7 @@ msgstr "ხაზი"
 
 #: ../rednotebook/gui/main_window.py:864
 msgid "Insert a separator line"
-msgstr ""
+msgstr "გამყოფი ხაზის ჩასმა"
 
 #: ../rednotebook/gui/main_window.py:866
 msgid "Table"
@@ -587,15 +600,15 @@ msgstr "თარიღი/დრო"
 
 #: ../rednotebook/gui/main_window.py:869
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr ""
+msgstr "მიმდინარე თარიღისა და დროის ჩასმა (შესაძლოა ფორმატის გამართვა)"
 
 #: ../rednotebook/gui/main_window.py:871
 msgid "Line Break"
-msgstr ""
+msgstr "სტრიქონის გადატანა"
 
 #: ../rednotebook/gui/main_window.py:872
 msgid "Insert a manual line break"
-msgstr ""
+msgstr "ხაზის იძულებითი გამყოფის ჩასმა"
 
 #: ../rednotebook/gui/main_window.py:895
 msgid "Insert"
@@ -603,28 +616,28 @@ msgstr "ჩასმა"
 
 #: ../rednotebook/gui/main_window.py:899
 msgid "Insert images, files, links and other content"
-msgstr ""
+msgstr "სურათების, ფაილების, ბმულებისა და სხვა შიგთავსის ჩასმა"
 
 #: ../rednotebook/gui/main_window.py:980
 msgid "No link location has been entered"
-msgstr ""
+msgstr "ბმულის მისამართი მითითებული არ არის"
 
 #: ../rednotebook/gui/main_window.py:1140
 msgid "Search ..."
-msgstr ""
+msgstr "ძიება ..."
 
 #: ../rednotebook/gui/main_window.py:1227 ../rednotebook/gui/clouds.py:137
 msgid "filter, these, comma, separated, words"
-msgstr ""
+msgstr "მძიმეებით, გამოყოფილი, სიტყვები, არ, გამოჩნდება"
 
 #. ## Translators: These are example whitelist words with 4 or less letters
 #: ../rednotebook/gui/main_window.py:1233 ../rednotebook/gui/clouds.py:142
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "MTV, რძე, კატა, მზე, ხე"
 
 #: ../rednotebook/gui/main_window.py:1290
 msgid "Hide selected words"
-msgstr ""
+msgstr "მონიშნული სიტყვების დამალვა"
 
 #: ../rednotebook/gui/main_window.py:1350
 msgid "Date"
@@ -638,127 +651,129 @@ msgstr "ტექსტი"
 
 #: ../rednotebook/gui/main_window.py:1396
 msgid "Entry"
-msgstr ""
+msgstr "ჩანაწერი"
 
 #: ../rednotebook/gui/clouds.py:230
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "\"%s\"-ის ღრუბლებიდან გაქრობა"
 
 #: ../rednotebook/gui/exports.py:52 ../rednotebook/gui/exports.py:383
 msgid "Export all days"
-msgstr ""
+msgstr "ყველა დღის გატანა"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export only the days in the selected time range"
-msgstr ""
+msgstr "შერჩეულ პერიოდში შემავალი დღეების გატანა"
 
 #: ../rednotebook/gui/exports.py:60
 msgid "From:"
-msgstr ""
+msgstr "საწყისი თარიღი:"
 
 #: ../rednotebook/gui/exports.py:62
 msgid "To:"
-msgstr ""
+msgstr "საბოლოო თარიღი:"
 
 #: ../rednotebook/gui/exports.py:121
 msgid "Export texts"
-msgstr ""
+msgstr "ტექსტების გატანა"
 
 #: ../rednotebook/gui/exports.py:122
 msgid "Export all categories"
-msgstr ""
+msgstr "ყველა კატეგორიის გატანა"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "Do not export categories"
-msgstr ""
+msgstr "გატანა კატეგორიების გარეშე"
 
 #: ../rednotebook/gui/exports.py:125
 msgid "Export only the selected categories"
-msgstr ""
+msgstr "მონიშნული კატეგორიების გატანა"
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Available Categories"
-msgstr ""
+msgstr "ხელმისაწვდომი კატეგორიები"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Selected Categories"
-msgstr ""
+msgstr "მონიშნული კატეგორიები"
 
 #: ../rednotebook/gui/exports.py:149
 msgid "Select"
-msgstr ""
+msgstr "მონიშვნა"
 
 #: ../rednotebook/gui/exports.py:150
 msgid "Unselect"
-msgstr ""
+msgstr "მონიშვნის მოხსნა"
 
 #: ../rednotebook/gui/exports.py:254
 msgid ""
 "If export text is not selected, you have to select at least one category."
 msgstr ""
+"თუ არ გაქვთ არჩეული გასატანი ტექსტი, უნდა აირჩიოთ სულ მცირე ერთი კატეგორია."
 
 #: ../rednotebook/gui/exports.py:278
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "თქვენი არჩევანი"
 
 #: ../rednotebook/gui/exports.py:303
 msgid "Export Assistant"
-msgstr ""
+msgstr "გატანის დამხმარე"
 
 #: ../rednotebook/gui/exports.py:305
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "მოგესალმებათ გატანის დამხმარე."
 
 #: ../rednotebook/gui/exports.py:306
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
+"ის დაგეხმარებათ დღიურის შიგთავსის გატანაში ფაილთა სხვადასხვა ფორმატში."
 
 #: ../rednotebook/gui/exports.py:307
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
-msgstr ""
+msgstr "შეგეძლებათ აირჩიოთ გასატანი დღეები და გატანილი ფაილების მდებარეობა."
 
 #: ../rednotebook/gui/exports.py:317
 msgid "Select Export Format"
-msgstr ""
+msgstr "აირჩიეთ გატანის ფორმატი"
 
 #: ../rednotebook/gui/exports.py:322
 msgid "Select Date Range"
-msgstr ""
+msgstr "აირჩიეთ დროის ინტერვალი"
 
 #: ../rednotebook/gui/exports.py:327
 msgid "Select Contents"
-msgstr ""
+msgstr "არიჩიეთ შიგთავსი"
 
 #: ../rednotebook/gui/exports.py:333
 msgid "Select Export Path"
-msgstr ""
+msgstr "აირჩიეთ გატანის მდებარეობა"
 
 #: ../rednotebook/gui/exports.py:338
 msgid "Summary"
-msgstr ""
+msgstr "შეჯამება"
 
 #: ../rednotebook/gui/exports.py:386
 msgid "Start date"
-msgstr ""
+msgstr "დაწყების თარიღი"
 
 #: ../rednotebook/gui/exports.py:387
 msgid "End date"
-msgstr ""
+msgstr "დასრულების თარიღი"
 
 #: ../rednotebook/gui/exports.py:389
 msgid "Export text"
-msgstr ""
+msgstr "ტექსტის გატანა"
 
 #: ../rednotebook/gui/exports.py:390
 msgid "Selected categories"
-msgstr ""
+msgstr "შერჩეული კატეგორიები"
 
 #: ../rednotebook/gui/exports.py:391
 msgid "Export path"
-msgstr ""
+msgstr "გატანის მდებარეობა"
 
 #: ../rednotebook/gui/exports.py:395
 msgid "Yes"
@@ -771,7 +786,7 @@ msgstr "არა"
 #: ../rednotebook/gui/exports.py:438
 #, python-format
 msgid "Content exported to %s"
-msgstr ""
+msgstr "შიგთავსი გატანილია: %s"
 
 #: ../rednotebook/gui/exports.py:534
 msgid "requires pywebkitgtk"
@@ -801,6 +816,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== შეხვედრა ===\n"
+"\n"
+"მიზანი, თარიღი და ადგილი\n"
+"\n"
+"**ესწრება:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**საკითხები:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**განხილვები, გადაწყვეტილებები, დავალებები:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:117
 msgid ""
@@ -816,6 +852,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== მოგზაურობა ===\n"
+"**თარიღი:**\n"
+"\n"
+"**მდებარეობა:**\n"
+"\n"
+"**მონაწილეები:**\n"
+"\n"
+"**თავგადასავალი:**\n"
+"ჯერ ჩავედით xxxxx-ში, შემდეგ გავყევით yyyyy-ის გზას ...\n"
+"\n"
+"**სურათები:** [სურათების საქაღალდე \"\"/path/to/the/images/\"\"]\n"
 
 #: ../rednotebook/templates.py:131
 msgid ""
@@ -827,6 +874,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== სატელეფონო ზარი ===\n"
+"- **ადამიანი:**\n"
+"- **დრო:**\n"
+"- **თემა:**\n"
+"- **შედეგი და გამომდინარე:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:141
 msgid ""
@@ -848,30 +902,47 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== პირადული ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**როგორ ჩაიარა დღემ?**\n"
+"\n"
+"\n"
+"========================\n"
+"**რა უნდა შეიცვალოს?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:199
 msgid "Choose Template Name"
-msgstr ""
+msgstr "მიუთითეთ შაბლონის სახელი"
 
 #: ../rednotebook/templates.py:351 ../rednotebook/templates.py:360
 msgid "This Weekday's Template"
-msgstr ""
+msgstr "შაბლონი კვირის ამ დღისთვის"
 
 #: ../rednotebook/templates.py:354
 msgid "Edit Template"
-msgstr ""
+msgstr "შაბლონის დამუშავება"
 
 #: ../rednotebook/templates.py:357
 msgid "Insert Template"
-msgstr ""
+msgstr "შაბლონის ჩასმა"
 
 #: ../rednotebook/templates.py:363
 msgid "Create New Template"
-msgstr ""
+msgstr "ახალი შაბლონის შექმნა"
 
 #: ../rednotebook/templates.py:367
 msgid "Open Template Directory"
-msgstr ""
+msgstr "შაბლონთა საქაღალდის გახსნა"
 
 #: ../rednotebook/util/utils.py:249
 #, python-format
@@ -885,11 +956,11 @@ msgstr "უახლესი ვერსია არის <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:251
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "გნებავთ ეწვიოთ RedNotebook ვებგვერდს?"
 
 #: ../rednotebook/util/utils.py:258
 msgid "Do not ask again"
-msgstr ""
+msgstr "არჩევნის დამახსოვრება"
 
 #: ../rednotebook/util/statistics.py:81 ../rednotebook/util/statistics.py:94
 #: tmp/main_window.glade.h:44
@@ -898,11 +969,11 @@ msgstr "სიტყვები"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Distinct Words"
-msgstr ""
+msgstr "გამოკვეთილი სიტყვები"
 
 #: ../rednotebook/util/statistics.py:83
 msgid "Edited Days"
-msgstr ""
+msgstr "ჩასწორებული დღეები"
 
 #: ../rednotebook/util/statistics.py:84 ../rednotebook/util/statistics.py:96
 msgid "Letters"
@@ -910,36 +981,36 @@ msgstr "ასოები"
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Days between first and last Entry"
-msgstr ""
+msgstr "დღეები პირველ და ბოლო ჩანაწერს შორის"
 
 #: ../rednotebook/util/statistics.py:86
 msgid "Average number of Words"
-msgstr ""
+msgstr "სიტყვების საშუალო ოდენობა"
 
 #: ../rednotebook/util/statistics.py:87
 msgid "Percentage of edited Days"
-msgstr ""
+msgstr "ჩასწორებული დღეების პროცენტულობა"
 
 #: ../rednotebook/util/statistics.py:95
 msgid "Lines"
-msgstr ""
+msgstr "სტრიქონები"
 
 #: ../rednotebook/journal.py:382
 #, python-format
 msgid "The content has been saved to %s"
-msgstr ""
+msgstr "შიგთავსი შენახული იქნა საქაღალდეში %s"
 
 #: ../rednotebook/journal.py:385
 msgid "Nothing to save"
-msgstr ""
+msgstr "შესანახი არაფერია"
 
 #: ../rednotebook/journal.py:393
 msgid "Configuration could not be saved. Please check your permissions"
-msgstr ""
+msgstr "პარამეტრების შენახვა ვერ მოხერხდა. გადაამოწმეთ თქვენი უფლებები."
 
 #: ../rednotebook/journal.py:424
 msgid "The selected folder is not empty."
-msgstr ""
+msgstr "შერჩეული საქაღალდე ცარიელი არ არის."
 
 #: ../rednotebook/journal.py:425
 msgid ""
@@ -962,134 +1033,136 @@ msgstr "<b>ვებ-მისამართი (მაგ. http://rednotebook.
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
-msgstr ""
+msgstr "<b>ბმულის სახელწოდება (არჩევითი)</b>"
 
 #: tmp/main_window.glade.h:5
 msgid "<b>Overall</b>"
-msgstr ""
+msgstr "<b>ჯამში</b>"
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgstr "<b>აირჩიეთ კატეგორია</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>არჩეული დღე</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
-msgstr ""
+msgstr "<b>ჩანაწერის ტექსტი</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Annotate"
-msgstr ""
+msgstr "შენიშვნა"
 
 #: tmp/main_window.glade.h:11
 msgid "Category"
-msgstr ""
+msgstr "კატეგორია"
 
 #: tmp/main_window.glade.h:12
 msgid "Clouds"
-msgstr ""
+msgstr "ღრუბლები"
 
 #: tmp/main_window.glade.h:13
 msgid "Delete"
-msgstr ""
+msgstr "წაშლა"
 
 #: tmp/main_window.glade.h:14
 msgid "Edit"
-msgstr ""
+msgstr "დამუშავება"
 
 #: tmp/main_window.glade.h:15
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "ტექსტის დამუშავების ნებადართვა (Ctrl+P)"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
-msgstr ""
+msgstr "გასვლა შენახვის გარეშე"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:18
 msgid "General"
-msgstr ""
+msgstr "ძირითადი"
 
 #: tmp/main_window.glade.h:19
 msgid "Go to next day (Ctrl+PageUp)"
-msgstr ""
+msgstr "გადასვლა შემდეგ დღეზე (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to previous day (Ctrl+PageDown)"
-msgstr ""
+msgstr "გადასვლა წინა დღეზე (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:21
 msgid "Insert Link"
-msgstr ""
+msgstr "ბმულის ჩასმა"
 
 #: tmp/main_window.glade.h:22
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
+"ამ დღის შაბლონის ჩასმა. სხვა შაბლონის გამოყენებისთვის, დააჭირეთ მარჯვნივ "
+"მყოფ ისარს."
 
 #: tmp/main_window.glade.h:23
 msgid "Jump to today"
-msgstr ""
+msgstr "გადასვლა დღევანდელ დღეზე"
 
 #: tmp/main_window.glade.h:24
 msgid "New entry"
-msgstr ""
+msgstr "ახალი ჩანაწერი"
 
 #: tmp/main_window.glade.h:25
 msgid "Preferences"
-msgstr ""
+msgstr "გამართვა"
 
 #: tmp/main_window.glade.h:28
 msgid "Search"
-msgstr ""
+msgstr "ძიება"
 
 #: tmp/main_window.glade.h:29
 msgid "Search in entries, categories and tags"
-msgstr ""
+msgstr "ძიება კატეგორიებში, ჩანაწერებსა და ჭდეებში"
 
 #: tmp/main_window.glade.h:30
 msgid "Select a cloud"
-msgstr ""
+msgstr "აირჩიეთ ღრუბელი"
 
 #: tmp/main_window.glade.h:31
 msgid "Select a directory"
-msgstr ""
+msgstr "აირჩიეთ საქაღალდე"
 
 #: tmp/main_window.glade.h:32
 msgid "Select a file"
-msgstr ""
+msgstr "აირჩიეთ ფაილი"
 
 #: tmp/main_window.glade.h:33
 msgid "Select a picture"
-msgstr ""
+msgstr "აირჩიეთ სურათი"
 
 #: tmp/main_window.glade.h:34
 msgid "Select backup filename"
-msgstr ""
+msgstr "მიუთითეთ სამარქაფო ასლის დასახელება"
 
 #: tmp/main_window.glade.h:35
 msgid "Select where to search"
-msgstr ""
+msgstr "აირჩიეთ საძიებო ადგილი"
 
 #: tmp/main_window.glade.h:36
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr ""
+msgstr "ტექსტის გაფორმებული სახით ჩვენება (Ctrl+P)"
 
 #. ## This stands for the verb in "Tag this day"
 #: tmp/main_window.glade.h:39
 msgid "Tag"
-msgstr ""
+msgstr "ჭდე"
 
 #: tmp/main_window.glade.h:41
 msgid "Template"
-msgstr ""
+msgstr "შაბლონი"
 
 #: tmp/main_window.glade.h:43
 msgid "Today"
-msgstr ""
+msgstr "დღეს"
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:46
