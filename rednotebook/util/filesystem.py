@@ -214,9 +214,6 @@ def get_relative_path(from_dir, to_dir):
 def get_icons():
     return glob(os.path.join(frame_icon_dir, '*.png'))
 
-def uri_is_local(uri):
-    return uri.startswith('file://')
-
 
 def get_journal_title(dir):
     '''
@@ -296,15 +293,14 @@ def open_url(url):
     '''
     Opens a file with the platform's preferred method
     '''
-    if url.startswith('http'):
+    if url.lower().startswith('http'):
         open_url_in_browser(url)
         return
 
     # Try opening the file locally
     if sys.platform == 'win32':
         try:
-            if uri_is_local(url):
-                url = get_local_url(url)
+            url = get_local_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
             os.startfile(url)
@@ -322,7 +318,6 @@ def open_url(url):
 
     else:
         try:
-            subprocess.check_call(['xdg-open', '--version'])
             logging.info( 'Trying to open %s with xdg-open' % url)
             system_call(['xdg-open', url])
             return
