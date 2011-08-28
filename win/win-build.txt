@@ -1,55 +1,62 @@
-====== Install GTK ======
+== Install requirements ==
 (view http://faq.pygtk.org/index.py?req=show&file=faq21.001.htp for more details)
   * Install Python 2.6 for Microsoft Windows from the Python website [www.python.org].
-  * Install the GTK+ 2.16 all-in-one bundle from gtk.org [http://www.gtk.org/download.html]
-	(To fully install this bundle you need to uncompress its contents in a folder 
-	and manually add the bin subfolder to the system path.)
-  * Read the README.txt in the bundle zip file and check that GTK+ works
-  * Install PyCairo, PyGobject and PyGTK installers from the PyGTK project 
-    website [http://www.pygtk.org/downloads.html],
-    note that you need them all installed to get PyGTK working.
+  * Download the PyGTK/GTK all-in-one installer and make sure you select
+    the following subpackages: PyGTK, PyGObject, PyGTKSpell, PyWebkitGTK w/o Gstreamer
+    [http://opensourcepack.blogspot.com/2011/01/conservative-all-in-one-pygtk-installer.html]
   * Install PyYaml from [http://pyyaml.org/wiki/PyYAML]
-	
-====== Test RedNotebook ======
-  * Checkout SVN (as you've already done)
-  * Open a commandline and navigate to PathToRedNotebook\rednotebook
-  * execute "python redNotebook.py"
-  
-====== Translations ======
-  * Get the libglade-2.0-0.dll DLL from somewhere and copy it into the GTK\bin directory.
-  * Move up one directory
-  * Run "python setup.py i18n" to translate the po files to mo files
+  * Install Bzr with TortoiseBzr (https://launchpad.net/bzr/+download)
+  * Restart the system
 
-====== Build Exe ======
-  * Install py2exe (http://www.py2exe.org/)
-  * Open a terminal and navigate to RedNotebook's base directory (../ from here)
-  * run 'python setup.py py2exe'
-  * A dist/ directory is created containing the exe, but the GTK files are still missing
-  * Copy the directories etc, lib and share from the GTK path to the newly created dist directory
-  * If this wasn't done automatically, copy the directories "files/", "images/" and "i18n/"
-    from "rednotebook/" into "dist/" (omit hidden svn stuff if possible)
-  * You may want to remove the " doc" and "gtk-doc" subdirectories from the "share" directory
-    They only contain html documentation for gtk
-  * Now clicking redNotebook.exe should start the application
-    If it doesn't start, you'll hopefully find an error log in C:\D&S\User\.rednotebook\rednotebook.log
+== Test RedNotebook ==
+  * Open the Explorer and right-click to branch a local copy of RedNotebook
+  * Select "Bazaar Checkout or Branch" and branch the repo "lp:rednotebook"
+  * Open a terminal window and navigate to PathToRedNotebook\rednotebook
+  * Execute "python journal.py"
+  * If you don't need a .exe file and no translations you're done.
   
-====== Some important adjustments ======
-  * To use the MS-Windows theme engine, create or edit a file in dist/etc/gtk-2.0/gtkrc
-    containing the line:
-    	gtk-theme-name = "MS-Windows"
-  * We want to use a slightly optimized Windows style:
-    * Change the filename of dist/share/themes/MS-Windows/gtk-2.0/gtkrc to gtkrc.bak
-      to backup the file
-    * Copy the file gtkrc from this directory to dist/share/themes/MS-Windows/gtk-2.0/
-  * Sometimes the file jpg62.dll is missing in dist/
-    * If it is not there, copy it from the GTK bin directory (or from somewhere on the internet) into dist/
+== Translations ==
+  * In a terminal window, navigate to your RedNotebook directory
+  * Run "python setup.py i18n" to translate the po files to mo files
+  * RedNotebook should now be translated
+
+== Build Exe ==
+  * Microsoft Visual Studio files:
+    * In some environments the Visual Studio dlls are missing so we have
+      to provide them
+    * Find the files "Microsoft.VC90.CRT.manifest" and "msvcr90.dll" on
+      your system or on the Microsoft homepage (search for Microsoft 
+      Visual C++ 2005 Redistributable Package (x86))and copy them into 
+      the win directory
+  * Install py2exe [http://www.py2exe.org/]
+  * In the Explorer, go to the win directory and execute build-exe.bat
+  * build-exe.bat runs the RedNotebook exe at the end. If nothing 
+    happens, have a look at 
+    C:\Documents and Settings\username\.rednotebook\rednotebook.log
+  * A dist/ directory is created containing the exe, but some GTK files
+    are still missing
+  * Copy the directories etc, lib and share from the GTK path 
+    (C:\Python26\Lib\site-packages\gtk-2.16.6) to the newly created dist 
+    directory
+  * You may want to remove some themes or dictionaries from the 
+    "share" directory to save some space.
+  * Now clicking rednotebook.exe should start the application
+    If it doesn't start, you'll hopefully find an error log in 
+    C:\D&S\User\.rednotebook\rednotebook.log
+  
+== Some important adjustments ==
+  * To use a nicer theme open the file dist/etc/gtk-2.0/gtkrc in
+    an editor and replace its contents with the following three lines:
+    gtk-icon-sizes = "gtk-dialog=24,24:gtk-button=16,16:gtk-menu=16,16:gtk-small-toolbar=16,16:gtk-large-toolbar=24,24:gtk-dnd=32,32"
+    gtk-toolbar-icon-size = small-toolbar
+    gtk-theme-name = "Clearlooks"
     
-====== Build the installer ======
+== Build the installer ==
   * Install Inno Setup (http://www.jrsoftware.org/isinfo.php)
   * Double-click rednotebook.iss
-  * Adjust the two version numbers
+  * Adjust the two version numbers and the output directory
   * Click compile
   * Click run to test the installer
-  * You find the installer under output/
+  * You find the installer in the output directory
   
 Yay, you made it!
