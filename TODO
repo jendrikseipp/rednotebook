@@ -33,6 +33,7 @@ X Escape regular expression syntax in searches (*, +, etc.)
 X Use a better icon for Annotate (Edit)
 X Add more markup examples to templates help text
 X Fix: Txt2tags highlighting should not allow spaces between format markup and text
+X Fix: Do not use capitalize for fonts in txt2tags.py to support turkish locales
 X Fix on Windows: Correctly open local links with whitespace
 X Let "Get help online" point to RedNotebook's answers section at launchpad
 X Code optimizations
