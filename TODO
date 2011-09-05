@@ -83,7 +83,7 @@ O Translate help (Restructure first using Sphinx?)
 O Rethink logfile
 O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
 O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
-O Update search window when an annotation has been added/changed?
+O Update search window when an annotation has been added/changed
 O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
@@ -133,6 +133,9 @@ O Add additional one-click menu (like the one with Search and Tags Cloud) that c
 O Plugin system?
 O Think about using desktop-couch?
 O Entries without dates (bookmarks, contact lists)?
+O Add shortcuts for insertions
+O When the annotate button is selected or if a search is made, the previously selected annotation or search category should be
+  selected.
 
 
 
