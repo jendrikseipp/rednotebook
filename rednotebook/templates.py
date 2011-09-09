@@ -28,6 +28,10 @@ from rednotebook.util import filesystem
 from rednotebook.util import dates
 
 
+WEEKDAYS = (_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
+            _('Friday'), _('Saturday'), _('Sunday'))
+
+
 example_text = '''\
 === This is an example template ===
 
@@ -395,7 +399,10 @@ class TemplateManager(object):
 
         files = []
         for day_number in range(1, 8):
-            files.append((self.get_template_file(day_number), example_text))
+            weekday = WEEKDAYS[day_number - 1]
+            files.append((self.get_template_file(day_number),
+                          example_text.replace('template ===',
+                                               'template for %s ===' % weekday)))
 
         help_text %= (self.dirs.template_dir)
 
@@ -403,13 +410,10 @@ class TemplateManager(object):
 
         # Only add the example templates the first time and just restore
         # the day templates everytime
-        if not self.main_window.journal.is_first_start:
-            filesystem.make_files(files)
-            return
-
-        files.append((self.get_template_file('Meeting'), meeting))
-        files.append((self.get_template_file('Journey'), journey))
-        files.append((self.get_template_file('Call'), call))
-        files.append((self.get_template_file('Personal'), personal))
+        if self.main_window.journal.is_first_start:
+            files.append((self.get_template_file('Meeting'), meeting))
+            files.append((self.get_template_file('Journey'), journey))
+            files.append((self.get_template_file('Call'), call))
+            files.append((self.get_template_file('Personal'), personal))
 
         filesystem.make_files(files)

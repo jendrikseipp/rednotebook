@@ -23,6 +23,7 @@ X Remember last export and backup locations
 X Show the most recent entries at the top of the search list by default
 X Search in annotations as well
 X Use auto-completion for all category entries
+X Mention the name of the day in weekday templates
 X Allow linebreaks (\\) only at the end of lines
 X Do not write empty month files to disk
 X Remove "Delete Entry" button
@@ -103,6 +104,9 @@ O Color submenu in format menu with additional color picker and color highlighti
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionailty after search has been entered)
 
+O Apply formatting only once if a format button is clicked multiple times
+O Fix: When a tag is being edited, the format keys insert the formatting in the editor pane
+
 
 2.0
 O Copy all files and pictures into data subdirectory (Think about new format first)
@@ -133,9 +137,12 @@ O Add additional one-click menu (like the one with Search and Tags Cloud) that c
 O Plugin system?
 O Think about using desktop-couch?
 O Entries without dates (bookmarks, contact lists)?
-O Add shortcuts for insertions
 O When the annotate button is selected or if a search is made, the previously selected annotation or search category should be
   selected.
+O Add more shortcuts for insertions
+O Copy/paste annotations between different days
+O Drag and drop annotations on the same day
+
 
 
 
