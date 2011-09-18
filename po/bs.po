@@ -8,19 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-09-15 21:10+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"PO-Revision-Date: 2011-09-17 22:47+0000\n"
+"Last-Translator: Almir Selimovic <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-16 04:44+0000\n"
+"X-Launchpad-Export-Date: 2011-09-18 04:59+0000\n"
 "X-Generator: Launchpad (build 13955)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr ""
+msgstr "Ideje"
 
 #: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
 msgid "Tags"
@@ -32,19 +31,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Filmovi"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Posao"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Slobodno vrijeme"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacija"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
@@ -60,15 +59,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Oprati sudje"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Provjeriti postu"
 
 #: ../rednotebook/info.py:92
 msgid "Hello!"
-msgstr ""
+msgstr "Zdravo!"
 
 #: ../rednotebook/info.py:93
 msgid ""
@@ -90,7 +89,7 @@ msgstr ""
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:99
 msgid "Left"
-msgstr ""
+msgstr "Lijevo"
 
 #: ../rednotebook/info.py:100
 msgid "Navigation with the calendar"
@@ -108,7 +107,7 @@ msgstr ""
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:105
 msgid "Right"
-msgstr ""
+msgstr "Desno"
 
 #: ../rednotebook/info.py:106
 msgid "Annotations to a day"
@@ -229,7 +228,7 @@ msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Introduction"
-msgstr ""
+msgstr "Uvod"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
@@ -277,7 +276,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
 msgid "Statistics"
-msgstr ""
+msgstr "Statistike"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
@@ -301,11 +300,11 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr ""
+msgstr "_Pomoć"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr ""
+msgstr "Sadržaj"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
@@ -329,7 +328,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
-msgstr ""
+msgstr "Prijavite Problem"
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
@@ -342,7 +341,7 @@ msgstr ""
 #: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
 #: tmp/main_window.glade.h:10
 msgid "Categories"
-msgstr ""
+msgstr "Kategorije"
 
 #: ../rednotebook/gui/categories.py:122 ../rednotebook/gui/categories.py:159
 msgid "Empty entries are not allowed"
@@ -378,16 +377,16 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:157
 msgid "Day %j"
-msgstr ""
+msgstr "Dan %j"
 
 #: ../rednotebook/gui/options.py:162
 msgid "Help"
-msgstr ""
+msgstr "Pomoć"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:183
 msgid "Preview:"
-msgstr ""
+msgstr "Pregled:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Close to system tray"
@@ -412,7 +411,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:299
 msgid "Check Spelling"
-msgstr ""
+msgstr "Provjeri pravopis"
 
 #: ../rednotebook/gui/options.py:307
 msgid "Check for new version at startup"
@@ -420,11 +419,11 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:314
 msgid "Check now"
-msgstr ""
+msgstr "Provjeri sada"
 
 #: ../rednotebook/gui/options.py:319
 msgid "Font Size"
-msgstr ""
+msgstr "Veličina slova"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Date/Time format"
@@ -486,7 +485,7 @@ msgstr ""
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:744
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../rednotebook/gui/main_window.py:747
 msgid "Bold"
@@ -535,7 +534,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:847
 msgid "Picture"
-msgstr ""
+msgstr "Slika"
 
 #: ../rednotebook/gui/main_window.py:848
 msgid "Insert an image from the harddisk"
@@ -543,7 +542,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:850
 msgid "File"
-msgstr ""
+msgstr "Datoteka"
 
 #: ../rednotebook/gui/main_window.py:851
 msgid "Insert a link to a file"
@@ -560,19 +559,19 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:857
 msgid "Bullet List"
-msgstr ""
+msgstr "Lista sa tačkama"
 
 #: ../rednotebook/gui/main_window.py:859
 msgid "Numbered List"
-msgstr ""
+msgstr "Brojčana lista"
 
 #: ../rednotebook/gui/main_window.py:861
 msgid "Title"
-msgstr ""
+msgstr "Naslov"
 
 #: ../rednotebook/gui/main_window.py:863
 msgid "Line"
-msgstr ""
+msgstr "Linija"
 
 #: ../rednotebook/gui/main_window.py:864
 msgid "Insert a separator line"
@@ -580,11 +579,11 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:866
 msgid "Table"
-msgstr ""
+msgstr "Tabela"
 
 #: ../rednotebook/gui/main_window.py:868
 msgid "Date/Time"
-msgstr ""
+msgstr "Datum/Vrijeme"
 
 #: ../rednotebook/gui/main_window.py:869
 msgid "Insert the current date and time (edit format in preferences)"
@@ -600,7 +599,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:895
 msgid "Insert"
-msgstr ""
+msgstr "Ubaci"
 
 #: ../rednotebook/gui/main_window.py:899
 msgid "Insert images, files, links and other content"
@@ -629,13 +628,13 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:1350
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: ../rednotebook/gui/main_window.py:1351
 #: ../rednotebook/gui/main_window.py:1392
 #: ../rednotebook/gui/main_window.py:1400 tmp/main_window.glade.h:42
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: ../rednotebook/gui/main_window.py:1396
 msgid "Entry"
