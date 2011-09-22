@@ -142,6 +142,8 @@ O When the annotate button is selected or if a search is made, the previously se
 O Add more shortcuts for insertions
 O Copy/paste annotations between different days
 O Drag and drop annotations on the same day
+O Improve startup time by showing the window and doing the rest of the initialization
+  in an idle loader.
 
 
 

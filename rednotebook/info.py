@@ -586,7 +586,7 @@ This feature can be used to insert e.g. latex formulas:
 
 ```
 \'''
-==\sum_{i=1}^{n} i = \\frac{n \cdot (n+1)}{2}==
+$$\sum_{i=1}^{n} i = \\frac{n \cdot (n+1)}{2}$$
 \'''
 ```
 
