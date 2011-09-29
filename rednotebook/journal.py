@@ -42,10 +42,9 @@ if hasattr(sys, "frozen"):
 else:
     from util import filesystem
 
+# Add base directory to sys.path
 base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
-if base_dir not in sys.path:
-    # Adding BaseDir to sys.path
-    sys.path.insert(0, base_dir)
+sys.path.insert(0, base_dir)
 
 #from rednotebook.util import filesystem # creates a copy of filesystem module
 #import rednotebook.util.filesystem      # imports the original filesystem module

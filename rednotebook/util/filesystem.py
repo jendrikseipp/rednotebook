@@ -29,6 +29,10 @@ import webbrowser
 from glob import glob
 
 
+def get_unicode_path(path):
+    return unicode(path, encoding=sys.getfilesystemencoding())
+
+
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
 def main_is_frozen():
     return (hasattr(sys, "frozen") or # new py2exe
@@ -48,13 +52,14 @@ if not main_is_frozen():
 else:
     app_dir = get_main_dir()
 
+app_dir = get_unicode_path(app_dir)
 
 image_dir = os.path.join(app_dir, 'images')
 frame_icon_dir = os.path.join(image_dir, 'rednotebook-icon')
 files_dir = os.path.join(app_dir, 'files')
 gui_dir = os.path.join(app_dir, 'gui')
 
-user_home_dir = os.path.expanduser('~')
+user_home_dir = get_unicode_path(os.path.expanduser('~'))
 
 
 class Filenames(dict):
@@ -64,7 +69,7 @@ class Filenames(dict):
     def __init__(self, config):
         for key, value in globals().items():
             # Exclude "get_main_dir()"
-            if key.lower().endswith('dir') and type(value) is str:
+            if key.lower().endswith('dir') and isinstance(value, basestring):
                 value = os.path.abspath(value)
                 self[key] = value
                 setattr(self, key, value)
