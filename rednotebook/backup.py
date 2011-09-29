@@ -61,7 +61,7 @@ class Archiver(object):
         dialog.set_title(_('Backup'))
         dialog.format_secondary_text(text2)
         dialog.add_buttons(_('Backup now'), BACKUP_NOW,
-                           _('Ask at next startup'), ASK_NEXT_TIME,
+                           _('Ask at next start'), ASK_NEXT_TIME,
                            _('Never ask again'), NEVER_ASK_AGAIN)
 
         answer = dialog.run()
