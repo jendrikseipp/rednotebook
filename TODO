@@ -7,41 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.2
-X Let the "Back" and "Forward" button jump over blank days
-X Allow wildcards (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
-X Add "Export currently visible day" option in export assistant
-X By default select the time range from today to today in the export wizard
-X Show warning when second RedNotebook instance is started to prevent data loss
-X Add option to set the date format for exports. An empty field removes dates from exports.
-X Remember scrollbar and cursor positions when changing between days and edit and preview mode
-X Allow double backslashes (\\) in filenames (e.g. for UNC paths)
-X Use Ubuntu font in editor, preview and cloud if it's available
-X Remember last export and backup locations
-X Show the most recent entries at the top of the search list by default
-X Search in annotations as well
-X Use auto-completion for all category entries
-X Mention the name of the day in weekday templates
-X Allow linebreaks (\\) only at the end of lines
-X Do not write empty month files to disk
-X Remove "Delete Entry" button (Use the context menu or the delete key instead)
-X Add tooltips for category buttons
-X Always keep categories sorted in search and annotations drop-down menus
-X Allow markup for links in categories (--http://mypage.com--)
-X Escape regular expression syntax in searches (*, +, etc.)
-X Use a better icon for Annotate (Edit)
-X Add more markup examples to templates help text
-X Fix: Txt2tags highlighting should not allow spaces between format markup and text
-X Fix: Do not use str.capitalize() for fonts in txt2tags.py to support turkish locales
-X Fix on Windows: Correctly open local links with whitespace
-X Let "Get help online" point to RedNotebook's answers section at launchpad
-X Code optimizations
-  X Remove old cloud implementation
-  X Remove external module htmltextview.py
-  X Remove dead unicode code
-  X Remove obsolete KeepNote source files
-  X Remove unnecessary imports
-
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables

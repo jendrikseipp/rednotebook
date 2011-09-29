@@ -1,10 +1,46 @@
 ==== RedNotebook Changelog ====
 
-== 1.1.8 (08-08-11) ==
+== 1.2.0 (11-09-29) ==
+* Let the "Back" and "Forward" button jump over blank days
+* Allow wildcards (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
+* Add "Export currently visible day" option in export assistant
+* By default select the time range from today to today in the export wizard (LP:834489)
+* Show warning when second RedNotebook instance is started to prevent data loss (LP:771396)
+* Add option to set the date format for exports. An empty field removes dates from exports.
+* Remember scrollbar and cursor positions when changing between days and edit and preview mode
+* Allow double backslashes (\\) in filenames (e.g. for UNC paths)
+* Use Ubuntu font in editor, preview and cloud if it's available
+* Remember last export and backup locations
+* Show the most recent entries at the top of the search list by default
+* Search in annotations as well
+* Do not strip whitespace from date format (LP:838031)
+* Use auto-completion for all category entries
+* Mention the name of the day in weekday templates
+* Allow linebreaks (\\) only at the end of lines
+* Do not write empty month files to disk
+* Remove "Delete Entry" button (Use the context menu or the delete key instead)
+* Add tooltips for category buttons
+* Always keep categories sorted in search and annotations drop-down menus
+* Allow markup for links in categories (--http://mypage.com--) (LP:782697)
+* Escape regular expression syntax in searches (*, +, etc.)
+* Use a better icon for Annotate (Edit)
+* Add more markup examples to templates help text
+* Fix: Txt2tags highlighting should not allow spaces between format markup and text
+* Fix: Do not use str.capitalize() for fonts in txt2tags.py to support turkish locales (LP:841698)
+* Fix on Windows: Correctly open local links with whitespace (LP:824420)
+* Let "Get help online" point to RedNotebook's answers section at launchpad
+* Code optimizations
+  * Remove old cloud implementation
+  * Remove external module htmltextview.py
+  * Remove dead unicode code
+  * Remove obsolete KeepNote source files
+  * Remove unnecessary imports
+
+== 1.1.8 (11-08-08) ==
 * Fix: Abort startup if yaml file cannot be read to avoid losing data
 * Updated translations
 
-== 1.1.7 (13-07-11) ==
+== 1.1.7 (11-07-13) ==
 * Fix: Chinese characters are not correctly rendered in preview (LP:731273)
 * Fix: Screen position not correctly remembered when opened from system tray (LP:804792)
 * Fix: Date is not inserted if default encoding can not be determined
