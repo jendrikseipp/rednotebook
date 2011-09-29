@@ -21,14 +21,10 @@ from __future__ import with_statement, division
 
 import sys
 import signal
-import random
-import operator
-from operator import itemgetter
 import os
 import re
 from urllib2 import urlopen, URLError
 import webbrowser
-import unicode
 import logging
 from optparse import IndentedHelpFormatter
 import textwrap
@@ -36,84 +32,12 @@ from distutils.version import StrictVersion
 
 import gtk
 
-from rednotebook.gui import customwidgets
 from rednotebook import info
 import filesystem
 
 
-def get_html_doc_from_word_count_dict(word_count_dict, type, ignore_list, include_list):
-    logging.debug('Turning the word_count_dict into html')
-    logging.debug('Length word_count_dict: %s' % len(word_count_dict))
-
-    sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
-
-    if type == 'word':
-        # filter short words
-        include_list = map(lambda word: word.lower(), include_list)
-        get_long_words = lambda (word, freq): len(word) > 4 or word.lower() in include_list
-        sorted_dict = filter(get_long_words, sorted_dict)
-        logging.debug('Filtered short words. Length word_count_dict: %s' % len(sorted_dict))
-
-    # filter words in ignore_list
-    sorted_dict = filter(lambda (word, freq): word.lower() not in ignore_list, sorted_dict)
-    logging.debug('Filtered blacklist words. Length word_count_dict: %s' % len(sorted_dict))
-
-    often_used_words = []
-    number_of_words = 42
-
-    '''
-    only take the longest words. If there are less words than n,
-    len(sorted_dict) words are returned
-    '''
-    cloud_words = sorted_dict[-number_of_words:]
-    logging.debug('Selected most frequent words. Length CloudWords: %s' % len(cloud_words))
-
-    if len(cloud_words) < 1:
-        return [], ''
-
-    min_count = cloud_words[0][1]
-    max_count = cloud_words[-1][1]
-
-    logging.debug('Min word count: %s, Max word count: %s' % (min_count, max_count))
-
-    delta_count = max_count - min_count
-    if delta_count == 0:
-        delta_count = 1
-
-    min_font_size = 10
-    max_font_size = 50
-
-    font_delta = max_font_size - min_font_size
-
-    # sort words with unicode sort function
-    cloud_words.sort(key=lambda (word, count): unicode.coll(word))
-
-    logging.debug('Sorted cloud words. Length CloudWords: %s' % len(cloud_words))
-
-    html_elements = []
-
-    html_head =     '<body><div style="text-align:center; font-family: sans-serif">\n'
-    html_tail = '</div></body>'
-
-    for index, (word, count) in enumerate(cloud_words):
-        font_factor = (count - min_count) / delta_count
-        font_size = int(min_font_size + font_factor * font_delta)
-
-        html_elements.append('<a href="search/%s">'
-                                '<span style="font-size:%spx">%s</span></a>'
-                                % (index, font_size, word) +
-
-                            #Add some whitespace (previously &#xA0;)
-                            '<span> </span>')
-
-    #random.shuffle(html_elements)
-
-    html_doc = html_head
-    html_doc += '\n'.join(html_elements) + '\n'
-    html_doc += html_tail
-
-    return (cloud_words, html_doc)
-
+def sort_asc(string):
+    return str(string).lower()
 
 
 def set_environment_variables(config):
@@ -133,13 +57,13 @@ def set_environment_variables(config):
 
 
 def redirect_output_to_file(logfile_path):
-    '''
+    """
     Changes stdout and stderr to a file.
     Disables both streams if logfile_path is None or cannot be opened.
 
     This is necessary to suppress the error messages on Windows when closing
     the application.
-    '''
+    """
     assert sys.platform == 'win32'
 
     if logfile_path is None:
@@ -156,13 +80,13 @@ def redirect_output_to_file(logfile_path):
 
 
 def setup_signal_handlers(journal):
-    '''
+    """
     Catch abnormal exits of the program and save content to disk
     Look in signal man page for signal names
 
     SIGKILL cannot be caught
     SIGINT is caught again by KeyboardInterrupt
-    '''
+    """
 
     signals = []
 
@@ -210,9 +134,9 @@ def setup_signal_handlers(journal):
 
 
 def get_new_version_number():
-    '''
+    """
     Reads version number from website and returns None if it cannot be read
-    '''
+    """
     version_pattern = re.compile(r'<span id="download-version">(.+)</span>')
 
     try:
@@ -260,7 +184,7 @@ def check_new_version(journal, current_version, startup=False):
             settings.set_property('gtk-alternative-button-order', True)
 
             dialog.set_alternative_button_order([30, gtk.RESPONSE_NO,
-                                       gtk.RESPONSE_YES])
+                                                 gtk.RESPONSE_YES])
 
         response = dialog.run()
         dialog.hide()
@@ -307,12 +231,12 @@ class StreamDuplicator(object):
 
 
 class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
-    '''
+    """
     Code taken from "Dan"
     http://groups.google.com/group/comp.lang.python/browse_frm/thread/e72deee779d9989b/
 
     This class preserves newlines in the optparse help
-    '''
+    """
     def format_description(self, description):
         if not description: return ""
         desc_width = self.width - self.current_indent
@@ -331,7 +255,7 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
     def format_option(self, option):
         # The help for each option consists of two parts:
         #    * the opt strings and metavars
-        #    eg. ("-x", or "-f_f_i_l_e_n_a_m_e, --file=FILENAME")
+        #    eg. ("-x", or "-f FILENAME, --file=FILENAME")
         #    * the user-supplied help string
         #    eg. ("turn on expert mode", "read data from FILENAME")
         #
@@ -341,7 +265,7 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
         # But if the opt string list is too long, we put the help
         # string on a second line, indented to the same column it would
         # start in if it fit on the first line.
-        #    -f_f_i_l_e_n_a_m_e, --file=FILENAME
+        #    -f FILENAME, --file=FILENAME
         #            read data from FILENAME
         result = []
         opts = self.option_strings[option]

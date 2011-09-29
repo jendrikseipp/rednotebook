@@ -20,47 +20,26 @@
 import sys
 import os
 import datetime
-import time
-import urllib
-import urlparse
-import webbrowser
 import logging
-from xml.sax.saxutils import escape
 
 import gtk
 import gobject
-import pango
 
-# try to import gtkspell
-try:
-    import gtkspell
-except ImportError:
-    gtkspell = None
-
-
-# Initialize the gtk thread engine
-#gobject.threads_init()
-
-from rednotebook.util import utils
 
 from rednotebook.gui.menu import MainMenuBar
-from rednotebook.external.htmltextview import HtmlWindow
 from rednotebook.gui.options import OptionsManager
-from rednotebook.gui import customwidgets
-from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView, \
-                                            get_button_width
-from rednotebook.gui.richtext import HtmlEditor
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import filesystem
-from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook import undo
-
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import categories
-from rednotebook.gui import t2t_highlight
 from rednotebook.gui import browser
+from rednotebook.gui import search
+from rednotebook.gui.editor import Editor
+from rednotebook.gui.clouds import Cloud
 
 test_zeitgeist = False
 if test_zeitgeist:
@@ -93,9 +72,8 @@ class MainWindow(object):
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
-        icons = [gtk.gdk.pixbuf_new_from_file(file) for file in filesystem.get_icons()]
-        self.main_frame.set_icon_list(*map(lambda file: gtk.gdk.pixbuf_new_from_file(file),
-                                filesystem.get_icons()))
+        icons = [gtk.gdk.pixbuf_new_from_file(icon) for icon in filesystem.get_icons()]
+        self.main_frame.set_icon_list(*icons)
 
         self.is_fullscreen = False
 
@@ -111,7 +89,7 @@ class MainWindow(object):
 
 
         self.calendar = Calendar(self.journal, self.builder.get_object('calendar'))
-        self.day_text_field = DayTextField(self.builder.get_object('day_text_view'),
+        self.day_text_field = DayEditor(self.builder.get_object('day_text_view'),
                                         self.undo_redo_manager)
         self.day_text_field.day_text_view.grab_focus()
         spell_check_enabled = self.journal.config.read('spellcheck', 0)
@@ -131,16 +109,7 @@ class MainWindow(object):
 
         self.edit_pane = self.builder.get_object('edit_pane')
 
-        # Only add the config variable if webkit is available
-        # Use webkit by default if it is available
-        self.use_webkit = browser.webkit and self.journal.config.read('useWebkit', 1)
-
-        logging.info('Using webkit for previews: %s' % self.use_webkit)
-
-        if self.use_webkit:
-            self.html_editor = browser.HtmlView()
-        else:
-            self.html_editor = HtmlEditor()
+        self.html_editor = Preview()
 
         self.text_vbox = self.builder.get_object('text_vbox')
         self.text_vbox.pack_start(self.html_editor)
@@ -172,7 +141,6 @@ class MainWindow(object):
             'on_back_one_day_button_clicked': self.on_back_one_day_button_clicked,
             'on_today_button_clicked': self.on_today_button_clicked,
             'on_forward_one_day_button_clicked': self.on_forward_one_day_button_clicked,
-            #'on_calendar_day_selected': self.on_calendar_day_selected,
 
             'on_preview_button_clicked': self.on_preview_button_clicked,
             'on_edit_button_clicked': self.on_edit_button_clicked,
@@ -182,7 +150,6 @@ class MainWindow(object):
 
             'on_add_new_entry_button_clicked': self.on_add_new_entry_button_clicked,
             'on_add_tag_button_clicked': self.on_add_tag_button_clicked,
-            'on_delete_entry_button_clicked': self.on_delete_entry_button_clicked,
 
             'on_search_notebook_switch_page': self.on_search_notebook_switch_page,
 
@@ -200,7 +167,6 @@ class MainWindow(object):
              }
         self.builder.connect_signals(dic)
 
-
         self.setup_clouds()
         self.set_shortcuts()
         self.setup_stats_dialog()
@@ -208,11 +174,9 @@ class MainWindow(object):
         self.template_manager = templates.TemplateManager(self)
         self.template_manager.make_empty_template_files()
         self.setup_template_menu()
-        self.setup_tray_icon()
 
         #self.menubar_manager.set_tooltips()
         self.set_tooltips()
-
 
         # Only add the config variable if zeitgeist is available
         use_zeitgeist = (test_zeitgeist and journalgeist.zeitgeist and
@@ -223,6 +187,8 @@ class MainWindow(object):
 
         if use_zeitgeist:
             self.setup_zeitgeist_view()
+
+        self.setup_tray_icon()
 
 
     def setup_zeitgeist_view(self):
@@ -248,8 +214,6 @@ class MainWindow(object):
                 if tooltip:
                     for widget in widgets:
                         widget.set_tooltip_markup(tooltip)
-
-
 
     def set_shortcuts(self):
         '''
@@ -386,7 +350,7 @@ class MainWindow(object):
     def change_mode(self, preview):
         self.journal.save_old_day()
 
-        text_scrolledwindow = self.builder.get_object('text_scrolledwindow')
+        edit_scroll = self.builder.get_object('text_scrolledwindow')
         template_button = self.builder.get_object('template_menu_button')
 
         edit_button = self.builder.get_object('edit_button')
@@ -397,25 +361,19 @@ class MainWindow(object):
         size_group.add_widget(preview_button)
 
         # Do not forget to update the text in editor and preview respectively
-
         if preview:
             # Enter preview mode
-            text_scrolledwindow.hide()
+            edit_scroll.hide()
+            self.html_editor.show_day(self.day)
             self.html_editor.show()
-            day = self.journal.day
-            text_markup = day.text
-            html = markup.convert(text_markup, 'xhtml', append_whitespace=True)
-
-            self.html_editor.load_html(html)
 
             edit_button.show()
             preview_button.hide()
         else:
             # Enter edit mode
-            self.day_text_field.set_text(self.day.text, undoing=True)
-            self.day_text_field.day_text_view.grab_focus()
+            self.day_text_field.show_day(self.day)
 
-            text_scrolledwindow.show()
+            edit_scroll.show()
             self.html_editor.hide()
 
             preview_button.show()
@@ -437,12 +395,12 @@ class MainWindow(object):
     def setup_search(self):
         self.search_notebook = self.builder.get_object('search_notebook')
 
-        self.search_tree_view = SearchTreeView(self.builder.get_object(\
+        self.search_tree_view = search.SearchTreeView(self.builder.get_object(
                                     'search_tree_view'), self)
         self.search_type_box = self.builder.get_object('search_type_box')
         self.search_type_box.set_active(0)
-        self.search_box = SearchComboBox(self.builder.get_object('search_box'),
-                                    self)
+        self.search_box = search.SearchComboBox(self.builder.get_object(
+                            'search_box'), self)
 
 
     def on_search_type_box_changed(self, widget):
@@ -459,36 +417,23 @@ class MainWindow(object):
             #self.search_tree_view.update_data()
 
             # Put cursor into search field, when search tab is opened
-            # Strangely it only works with the idle_add workaround
             gobject.idle_add(self.search_box.entry.grab_focus)
         if page_number == 1:
             # Switched to cloud tab
             self.cloud.update(force_update=True)
 
-
     def setup_clouds(self):
         self.cloud_box = self.builder.get_object('cloud_box')
-
-        if browser.webkit:
-            from rednotebook.gui.clouds import Cloud
-            self.cloud = Cloud(self.journal)
-            logging.info('Using pywebkitgtk for the clouds.')
-        else:
-            logging.warning('pywebkitgtk is not installed and cannot '
-                    'be used for the clouds. You may experience errors')
-            #self.search_notebook.remove_page(1)
-            self.cloud = CloudView(self.journal)
+        self.cloud = Cloud(self.journal)
 
         self.cloud_box.pack_start(self.cloud)
 
         self.cloud_combo_box = self.builder.get_object('cloud_combo_box')
         self.cloud_combo_box.set_active(0)
 
-
     def on_cloud_combo_box_changed(self, cloud_combo_box):
         value_int = cloud_combo_box.get_active()
         self.cloud.set_type(value_int)
-
 
     def on_main_frame_configure_event(self, widget, event):
         '''
@@ -534,10 +479,6 @@ class MainWindow(object):
 
     def on_forward_one_day_button_clicked(self, widget):
         self.journal.go_to_next_day()
-
-    def on_calendar_day_selected(self, widget):
-        pass#
-        #self.journal.change_date(self.calendar.get_date())
 
     def show_dir_chooser(self, type, dir_not_found=False):
         dir_chooser = self.builder.get_object('dir_chooser')
@@ -798,8 +739,8 @@ class MainWindow(object):
         </popup>
         </ui>'''
 
-        numlist_ui = '' #'<menuitem action="NumberedList"/>' if self.use_webkit else ''
-        title_ui = ''# '<menuitem action="Table"/>' if self.use_webkit else ''
+        numlist_ui = '' #'<menuitem action="NumberedList"/>'
+        title_ui = ''# '<menuitem action="Table"/>'
 
         insert_menu_xml = insert_menu_xml % locals()
 
@@ -988,9 +929,6 @@ class MainWindow(object):
     def on_add_tag_button_clicked(self, widget):
         self.new_entry_dialog.show_dialog(category='Tags')
 
-    def on_delete_entry_button_clicked(self, widget):
-        self.categories_tree_view.delete_selected_node()
-
     def set_date(self, new_month, new_date, day):
         self.categories_tree_view.clear()
 
@@ -999,10 +937,9 @@ class MainWindow(object):
 
         # Converting markup to html takes time, so only do it when necessary
         if self.preview_mode:
-            html = markup.convert(day.text, 'xhtml')
-            self.html_editor.load_html(html)
+            self.html_editor.show_day(day)
         # Why do we always have to set the text of the day_text_field?
-        self.day_text_field.set_text(day.text)
+        self.day_text_field.show_day(day)
         self.categories_tree_view.set_day_content(day)
 
         if self.zeitgeist_widget:
@@ -1015,31 +952,6 @@ class MainWindow(object):
     def get_day_text(self):
         return self.day_text_field.get_text()
 
-    def get_backup_file(self):
-        if self.journal.title == 'data':
-            name = ''
-        else:
-            name = '-' + self.journal.title
-
-        proposed_file_name = 'RedNotebook-Backup%s_%s.zip' % (name, datetime.date.today())
-
-        backup_dialog = self.builder.get_object('backup_dialog')
-        backup_dialog.set_transient_for(self.main_frame)
-        backup_dialog.set_current_folder(os.path.expanduser('~'))
-        backup_dialog.set_current_name(proposed_file_name)
-
-        filter = gtk.FileFilter()
-        filter.set_name("Zip")
-        filter.add_pattern("*.zip")
-        backup_dialog.add_filter(filter)
-
-        response = backup_dialog.run()
-        backup_dialog.hide()
-
-        if response == gtk.RESPONSE_OK:
-            return backup_dialog.get_filename()
-
-
     def highlight_text(self, search_text):
         # let the search function highlight found strings in the page
         #if self.preview_mode:
@@ -1049,6 +961,61 @@ class MainWindow(object):
         #else:
         self.day_text_field.highlight(search_text)
 
+
+class Preview(browser.HtmlView):
+    def __init__(self, *args, **kwargs):
+        browser.HtmlView.__init__(self, *args, **kwargs)
+        self.day = None
+
+    def show_day(self, new_day):
+        # Save the position in the preview pane for the old day
+        if self.day:
+            self.day.last_preview_pos = (self.get_hscrollbar().get_value(),
+                                         self.get_vscrollbar().get_value())
+
+        # Show new day
+        self.day = new_day
+        html = markup.convert(self.day.text, 'xhtml')
+        self.load_html(html)
+
+        if self.day.last_preview_pos is not None:
+            x, y = self.day.last_preview_pos
+            gobject.idle_add(self.get_hscrollbar().set_value, x)
+            gobject.idle_add(self.get_vscrollbar().set_value, y)
+
+
+class DayEditor(Editor):
+    def __init__(self, *args, **kwargs):
+        Editor.__init__(self, *args, **kwargs)
+        self.day = None
+        self.scrolled_win = self.day_text_view.get_parent()
+
+    def show_day(self, new_day):
+        # Save the position in the edit pane for the old day
+        if self.day:
+            cursor_pos = self.day_text_buffer.get_property('cursor-position')
+            # If there is a selection we save it, else we save the cursor position
+            selection = self.day_text_buffer.get_selection_bounds()
+            if selection:
+                selection = [it.get_offset() for it in selection]
+            else:
+                selection = [cursor_pos, cursor_pos]
+            self.day.last_edit_pos = (self.scrolled_win.get_hscrollbar().get_value(),
+                                      self.scrolled_win.get_vscrollbar().get_value(),
+                                      selection)
+
+        # Show new day
+        self.day = new_day
+        self.set_text(self.day.text, undoing=True)
+
+        if self.day.last_edit_pos is not None:
+            x, y, selection = self.day.last_edit_pos
+            gobject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
+            gobject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
+            iters = [self.day_text_buffer.get_iter_at_offset(offset)
+                     for offset in selection]
+            gobject.idle_add(self.day_text_buffer.select_range, *iters)
+            self.day_text_view.grab_focus()
 
 
 class NewEntryDialog(object):
@@ -1073,11 +1040,10 @@ class NewEntryDialog(object):
         self.new_entry_combo_box.connect('changed', self.on_entry_changed)
 
     def on_category_changed(self, widget):
-        '''Show Tags in ComboBox when "Tags" is selected as category'''
-        if self.categories_combo_box.get_active_text().upper() == 'TAGS':
-            self.new_entry_combo_box.set_entries(self.journal.tags)
-        elif self.new_entry_combo_box.liststore:
-            self.new_entry_combo_box.liststore.clear()
+        '''Show old entries in ComboBox when a new category is selected'''
+        category = self.categories_combo_box.get_active_text()
+        old_entries = self.journal.get_entries(category)
+        self.new_entry_combo_box.set_entries(old_entries)
 
         # only make the entry submittable, if text has been entered
         self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
@@ -1124,569 +1090,6 @@ class NewEntryDialog(object):
 
         # Update cloud
         self.main_frame.cloud.update()
-
-
-
-
-
-
-
-class SearchComboBox(CustomComboBoxEntry):
-    def __init__(self, combo_box, main_window):
-        CustomComboBoxEntry.__init__(self, combo_box)
-
-        self.main_window = main_window
-        self.journal = main_window.journal
-
-        #self.entry = self.combo_box.get_child()
-        self.set_active_text(_('Search ...'))
-
-        self.entry.connect('changed', self.on_entry_changed)
-        self.entry.connect('activate', self.on_entry_activated)
-
-        self.recent_searches = []
-
-        self.search_type = 0
-
-
-    def set_search_type(self, search_type):
-
-        self.main_window.search_tree_view.set_search_type(search_type)
-
-        if search_type == 0:
-            # Search for text
-            self.set_entries(self.recent_searches)
-        if search_type == 1:
-            # Search for category
-            categories = self.main_window.categories_tree_view.categories
-            self.set_entries(categories)
-        if search_type == 2:
-            # Search for tags
-            self.set_entries(self.journal.tags)
-
-        self.search_type = search_type
-
-
-    def on_entry_changed(self, entry):
-        """
-            Called when the entry changes
-        """
-        self.search(self.get_active_text())
-
-
-    def on_entry_activated(self, entry):
-        """
-            Called when the user hits enter
-        """
-        search_text = entry.get_text()
-
-        if self.search_type == 0:
-            # Search for text
-            self.recent_searches.append(search_text)
-            self.recent_searches = self.recent_searches[-20:]
-            self.add_entry(search_text)
-
-        self.search(self.get_active_text())
-
-
-    def search(self, search_text):
-        if self.search_type == 0:
-            # Tell the webview which text to highlight after the html is loaded
-            self.main_window.html_editor.search_text = search_text
-
-            # Highlight all occurences in the current day's text
-            self.main_window.highlight_text(search_text)
-
-        self.main_window.search_tree_view.update_data(search_text)
-
-
-
-class CloudView(HtmlWindow):
-    def __init__(self, journal):
-        HtmlWindow.__init__(self)
-
-        self.journal = journal
-
-        self.update_lists()
-
-        self.htmlview.connect("url-clicked", self.word_clicked)
-        self.htmlview.connect('populate-popup', self.create_popup_menu)
-        self.htmlview.connect('right-click', self.on_right_click)
-
-        self.htmlview.set_cursor_visible(False)
-
-        self.set_type(0, init=True)
-
-    def set_type(self, type_int, init=False):
-        self.type_int = type_int
-        self.type = ['word', 'category', 'tag'][type_int]
-        if not init:
-            self.update(force_update=True)
-
-    def update_lists(self):
-        config = self.journal.config
-
-        default_ignore_list = _('filter, these, comma, separated, words')
-        self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
-        self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
-        logging.info('Cloud ignore list: %s' % self.ignore_list)
-
-        ### Translators: These are example whitelist words with 4 or less letters
-        default_include_list = _('mtv, spam, work, job, play')
-        self.include_list = config.read_list('cloudIncludeList', default_include_list)
-        self.include_list = map(lambda word: word.lower(), self.include_list)
-        logging.info('Cloud include list: %s' % self.include_list)
-
-
-    def update(self, force_update=False):
-        if self.journal.frame is None:
-            return
-
-        logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
-
-        # Do not update the cloud with words as it requires a lot of searching
-        if self.type == 'word' and not force_update:
-            return
-
-        self.journal.save_old_day()
-
-        word_count_dict = self.journal.get_word_count_dict(self.type)
-        logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
-
-        self.tag_cloud_words, html = \
-            utils.get_html_doc_from_word_count_dict(word_count_dict, self.type,
-                                            self.ignore_list, self.include_list)
-        logging.debug('%s cloud words found' % len(self.tag_cloud_words))
-
-        self.write(html)
-
-        logging.debug('Cloud updated')
-
-
-    def word_clicked(self, htmlview, uri, type_):
-        self.journal.save_old_day()
-        # uri has the form "something/somewhere/search/search_index"
-        if 'search' in uri:
-            # search_index is the part after last slash
-            search_index = int(uri.split('/')[-1])
-            search_text, count = self.tag_cloud_words[search_index]
-
-            self.journal.frame.search_type_box.set_active(self.type_int)
-            self.journal.frame.search_box.set_active_text(search_text)
-            self.journal.frame.search_notebook.set_current_page(0)
-
-            # returning True here stops loading the document
-            return True
-
-    def on_right_click(self, view, uri, type_):
-        #logging.debug('URI clicked %s' % uri)
-        # search_index is the part after last slash
-        search_index = int(uri.split('/')[-1])
-        word, count = self.tag_cloud_words[search_index]
-        self.on_ignore_menu_activate(None, selected_words=[word])
-
-    def create_popup_menu(self, textview, menu):
-        '''
-        Called when the cloud's popup menu is created
-        '''
-        label = _('Hide selected words')
-        ignore_menu_item = gtk.MenuItem(label)
-        separator = gtk.SeparatorMenuItem()
-
-        ignore_menu_item.show()
-        separator.show()
-
-        menu.prepend(separator)
-        menu.prepend(ignore_menu_item)
-
-        ignore_menu_item.connect('activate', self.on_ignore_menu_activate)
-
-    def on_ignore_menu_activate(self, menu_item, selected_words=None):
-        if selected_words is None:
-            selected_words = self.get_selected_words()
-
-        logging.info('The following words will be hidden from clouds: %s' % selected_words)
-        self.ignore_list.extend(selected_words)
-        self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
-        self.update(force_update=True)
-
-    def get_selected_words(self):
-        bounds = self.htmlview.get_buffer().get_selection_bounds()
-
-        if not bounds:
-            return []
-
-        text = self.htmlview.get_buffer().get_text(*bounds).decode('utf-8')
-        words = text.split(' ')
-
-        # Delete pseudo whitespace
-        words = map(lambda word: word.replace('_', ''), words)
-
-        # Delete whitespace
-        words = map(lambda word: word.strip(), words)
-
-        # Delete empty words
-        words = filter(lambda word: len(word) > 0, words)
-
-        return words
-
-
-
-class SearchTreeView(object):
-    def __init__(self, tree_view, main_window):
-        self.tree_view = tree_view
-        self.main_window = main_window
-        self.journal = self.main_window.journal
-        self.search_type = 0
-
-        # Normally unneeded, but just to be sure everything works fine
-        self.searched_text = ''
-
-        # create a TreeStore with two string columns to use as the model
-        self.tree_store = gtk.ListStore(str, str)
-
-        # create the TreeView using tree_store
-        self.tree_view.set_model(self.tree_store)
-
-        # create the TreeViewColumns to display the data
-        self.date_column = gtk.TreeViewColumn(_('Date'))
-        self.matching_column = gtk.TreeViewColumn(_('Text'))
-
-        columns = [self.date_column,self.matching_column, ]
-                        #self.category_column, self.entry_column]
-
-        # add tvcolumns to tree_view
-        for index, column in enumerate(columns):
-            self.tree_view.append_column(column)
-
-            # create a CellRendererText to render the data
-            cell_renderer = gtk.CellRendererText()
-
-            # add the cell to the tvcolumn and allow it to expand
-            column.pack_start(cell_renderer, True)
-
-            # Get markup for column, not text
-            column.set_attributes(cell_renderer, markup=index)
-
-            # Allow sorting on the column
-            column.set_sort_column_id(index)
-
-        self.update_data()
-
-        # make it searchable
-        self.tree_view.set_search_column(1)
-
-        #self.tree_view.connect('row_activated', self.on_row_activated)
-        self.tree_view.connect('cursor_changed', self.on_cursor_changed)
-
-    def update_data(self, search_text=''):
-        self.tree_store.clear()
-        rows = None
-
-        if not search_text:
-            return
-
-        # Save the search text for highlighting
-        self.searched_text = search_text
-
-        if self.search_type == 0:
-            # Search for text
-            self.matching_column.set_title(_('Text'))
-            rows = self.journal.search(text=search_text)
-        if self.search_type == 1:
-            # Search for category
-            self.matching_column.set_title(_('Entry'))
-            rows = self.journal.search(category=search_text)
-        if self.search_type == 2:
-            # Search for tags
-            self.matching_column.set_title(_('Text'))
-            rows = self.journal.search(tag=search_text)
-
-        if rows:
-            for date_string, entry in rows:
-                if self.search_type == 1:
-                    # We want **done** to be bold in the list,
-                    # but the text should only be bold where the search text occurs
-                    entry = markup.convert_to_pango(entry)
-                else:
-                    entry = escape(entry)
-                    entry = entry.replace('STARTBOLD', '<b>').replace('ENDBOLD', '</b>')
-                self.tree_store.append([date_string, entry])
-
-    def on_cursor_changed(self, treeview):
-        """Move to the selected day when user clicks on it"""
-        selection = self.tree_view.get_selection()
-        model, paths = selection.get_selected_rows()
-        if not paths:
-            return
-        date_string = self.tree_store[paths[0]][0]
-        new_date = dates.get_date_from_date_string(date_string)
-        self.journal.change_date(new_date)
-
-        if self.search_type == 0:
-            self.main_window.highlight_text(self.searched_text)
-
-    def set_search_type(self, search_type):
-        self.search_type = search_type
-
-
-
-
-class DayTextField(object):
-    def __init__(self, day_text_view, undo_redo_manager):
-        self.day_text_view = day_text_view
-        #self.day_text_buffer = gtk.TextBuffer()
-        self.day_text_buffer = t2t_highlight.get_highlight_buffer()
-        self.day_text_view.set_buffer(self.day_text_buffer)
-
-        self.undo_redo_manager = undo_redo_manager
-
-        self.changed_connection = self.day_text_buffer.connect('changed', self.on_text_change)
-
-        self.old_text = ''
-
-        # Some actions should get a break point even if not much text has been
-        # changed
-        self.force_adding_undo_point = False
-
-        # spell checker
-        self._spell_checker = None
-        self.enable_spell_check(False)
-
-        # Enable drag&drop
-        #self.day_text_view.connect('drag-drop', self.on_drop) # unneeded
-        self.day_text_view.connect('drag-data-received', self.on_drag_data_received)
-
-        # Sometimes making the editor window very small causes the program to freeze
-        # So we forbid that behaviour, by setting a minimum width
-        self.day_text_view.set_size_request(1, -1)
-
-    def set_text(self, text, undoing=False):
-        self.insert(text, overwrite=True, undoing=undoing)
-
-
-    def get_text(self):
-        iter_start = self.day_text_buffer.get_start_iter()
-        iter_end = self.day_text_buffer.get_end_iter()
-        return self.day_text_buffer.get_text(iter_start, iter_end).decode('utf-8')
-
-
-    def insert(self, text, iter=None, overwrite=False, undoing=False):
-        self.force_adding_undo_point = True
-
-        self.day_text_buffer.handler_block(self.changed_connection)
-
-        if overwrite:
-            self.day_text_buffer.set_text('')
-            iter = self.day_text_buffer.get_start_iter()
-
-        if iter is None:
-            self.day_text_buffer.insert_at_cursor(text)
-        else:
-            if type(iter) == gtk.TextMark:
-                iter = self.day_text_buffer.get_iter_at_mark(iter)
-            self.day_text_buffer.insert(iter, text)
-
-        self.day_text_buffer.handler_unblock(self.changed_connection)
-
-        self.on_text_change(self.day_text_buffer, undoing=undoing)
-
-
-    def highlight(self, text):
-        self.day_text_buffer.set_search_text(text)
-        return
-        iter_start = self.day_text_buffer.get_start_iter()
-
-        # Hack: Ignoring the case is not supported for the search so we search
-        # for the most common variants, but do not search identical ones
-        variants = set([text, text.capitalize(), text.lower(), text.upper()])
-
-        for search_text in variants:
-            iter_tuple = iter_start.forward_search(search_text,
-                                gtk.TEXT_SEARCH_VISIBLE_ONLY
-                                #| gtk.SEARCH_CASE_INSENSITIVE # non-existent
-                                )
-
-            # When we find one variant, highlight it, scroll to it and quit
-            if iter_tuple:
-                self.set_selection(*iter_tuple)
-
-                # It is safer to scroll to a mark than an iter
-                mark = self.day_text_buffer.create_mark('highlight', iter_tuple[0], left_gravity=False)
-                #self.day_text_view.scroll_to_iter(iter_tuple[0], 0)
-                self.day_text_view.scroll_to_mark(mark, 0)
-                self.day_text_buffer.delete_mark(mark)
-                return
-
-
-    def get_selected_text(self):
-        bounds = self.day_text_buffer.get_selection_bounds()
-        if bounds:
-            return self.day_text_buffer.get_text(*bounds).decode('utf-8')
-        else:
-            return None
-
-    def set_selection(self, iter1, iter2):
-        '''
-        Sort the two iters and select the text between them
-        '''
-        sort_by_position = lambda iter: iter.get_offset()
-        iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
-        assert iter1.get_offset() <= iter2.get_offset()
-        self.day_text_buffer.select_range(iter1, iter2)
-
-    def get_selection_bounds(self):
-        '''
-        Return sorted iters
-
-        Do not mix this method up with the textbuffer's method of the same name
-        That method returns an empty tuple, if there is no selection
-        '''
-        mark1 = self.day_text_buffer.get_insert()
-        mark2 = self.day_text_buffer.get_selection_bound()
-
-        iter1 = self.day_text_buffer.get_iter_at_mark(mark1)
-        iter2 = self.day_text_buffer.get_iter_at_mark(mark2)
-
-        sort_by_position = lambda iter: iter.get_offset()
-        iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
-
-        assert iter1.get_offset() <= iter2.get_offset()
-        return (iter1, iter2)
-
-
-    def apply_format(self, format, markup):
-        selected_text = self.get_selected_text()
-
-        # If no text has been selected add example text and select it
-        if not selected_text:
-            selected_text = ' '  #'%s text' % format
-            self.insert(selected_text)
-
-            # Set the selection to the new text
-
-            # get_insert() returns the position of the cursor (after 2nd markup)
-            insert_mark = self.day_text_buffer.get_insert()
-            insert_iter = self.day_text_buffer.get_iter_at_mark(insert_mark)
-            markup_start_iter = insert_iter.copy()
-            markup_end_iter = insert_iter.copy()
-            markup_start_iter.backward_chars(len(selected_text))
-            markup_end_iter.backward_chars(0)
-            self.set_selection(markup_start_iter, markup_end_iter)
-
-        # Check that there is a selection
-        assert self.day_text_buffer.get_selection_bounds()
-
-        # Add the markup around the selected text
-        insert_bound = self.day_text_buffer.get_insert()
-        selection_bound = self.day_text_buffer.get_selection_bound()
-        self.insert(markup, insert_bound)
-        self.insert(markup, selection_bound)
-
-        # Set the selection to the formatted text
-        iter1, iter2 = self.get_selection_bounds()
-        selection_start_iter = iter2.copy()
-        selection_end_iter = iter2.copy()
-        selection_start_iter.backward_chars(len(selected_text) + len(markup))
-        selection_end_iter.backward_chars(len(markup))
-        self.set_selection(selection_start_iter, selection_end_iter)
-
-    def set_font_size(self, size):
-        font = pango.FontDescription(str(size))
-        self.day_text_view.modify_font(font)
-
-    def hide(self):
-        self.day_text_view.hide()
-
-    def on_text_change(self, textbuffer, undoing=False):
-        # Do not record changes while undoing or redoing
-        if undoing:
-            self.old_text = self.get_text()
-            return
-
-        new_text = self.get_text()
-        old_text = self.old_text[:]
-
-        #Determine whether to add a save point
-        much_text_changed = abs(len(new_text) - len(old_text)) >= 5
-
-        if much_text_changed or self.force_adding_undo_point:
-
-            def undo_func():
-                self.set_text(old_text, undoing=True)
-
-            def redo_func():
-                self.set_text(new_text, undoing=True)
-
-            action = undo.Action(undo_func, redo_func, 'day_text_field')
-            self.undo_redo_manager.add_action(action)
-
-            self.old_text = new_text
-            self.force_adding_undo_point = False
-
-    #===========================================================
-    # Spell check code taken from KeepNote project
-
-    def can_spell_check(self):
-        """Returns True if spelling is available"""
-        return gtkspell is not None
-
-    def enable_spell_check(self, enabled=True):
-        """Enables/disables spell check"""
-        if not self.can_spell_check():
-            return
-
-        if enabled:
-            if self._spell_checker is None:
-                try:
-                    self._spell_checker = gtkspell.Spell(self.day_text_view)
-                except gobject.GError, err:
-                    logging.error('Spell checking could not be enabled: "%s"' % err)
-                    self._spell_checker = None
-        else:
-            if self._spell_checker is not None:
-                self._spell_checker.detach()
-                self._spell_checker = None
-
-    def is_spell_check_enabled(self):
-        """Returns True if spell check is enabled"""
-        return self._spell_checker != None
-
-    #===========================================================
-
-    #def on_drop(self, widget, drag_context, x, y, timestamp):
-        #logging.info('Drop occured')
-        #self.day_text_view.emit_stop_by_name('drag-drop')
-        #return True
-
-    def on_drag_data_received(self, widget, drag_context, x, y, selection, info, timestamp):
-        # We do not want the default behaviour
-        self.day_text_view.emit_stop_by_name('drag-data-received')
-
-        iter = self.day_text_view.get_iter_at_location(x, y)
-
-        def is_pic(uri):
-            head, ext = os.path.splitext(uri)
-            return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp'.split()
-
-        uris = selection.data.strip('\r\n\x00')
-        logging.debug('URIs: "%s"' % uris)
-        uris = uris.split() # we may have more than one file dropped
-        uris = map(lambda uri: uri.strip(), uris)
-        for uri in uris:
-            uri = urllib.url2pathname(uri)
-            dirs, filename = os.path.split(uri)
-            uri_without_ext, ext = os.path.splitext(uri)
-            if is_pic(uri):
-                self.insert('[""%s""%s]\n' % (uri_without_ext, ext), iter)
-            else:
-                # It is always safer to add the "file://" protocol and the ""s
-                self.insert('[%s ""%s""]\n' % (filename, uri), iter)
-
-        drag_context.finish(True, False, timestamp)
-        # No further processing
-        return True
-
 
 
 class Statusbar(object):

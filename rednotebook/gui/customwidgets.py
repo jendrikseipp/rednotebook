@@ -162,7 +162,7 @@ class Calendar(gtk.Calendar):
     def __init__(self, week_numbers=False):
         gtk.Calendar.__init__(self)
         if week_numbers:
-            calendar.set_property('show-week-numbers', True)
+            self.set_property('show-week-numbers', True)
 
     def set_date(self, date):
         '''
@@ -295,7 +295,7 @@ class PathChooserPage(AssistantPage):
         elif self.path_type == 'NEWFILE':
             self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_SAVE)
         else:
-            logging.error('Wrong path_type "%s"' % path_type)
+            logging.error('Wrong path_type "%s"' % self.path_type)
 
         if self.path_type in ['FILE', 'NEWFILE'] and extension:
             filter = gtk.FileFilter()
@@ -303,7 +303,8 @@ class PathChooserPage(AssistantPage):
             filter.add_pattern('*.' + extension)
             self.chooser.add_filter(filter)
 
-        #path = self.last_path or path
+        if self.last_path and os.path.exists(self.last_path):
+            path = self.last_path
 
         if os.path.isdir(path):
             self.chooser.set_current_folder(path)

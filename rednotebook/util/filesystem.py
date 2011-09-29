@@ -20,7 +20,8 @@
 from __future__ import with_statement
 
 import os
-import zipfile
+import imp
+import sys
 import subprocess
 import logging
 import codecs
@@ -28,10 +29,7 @@ import webbrowser
 from glob import glob
 
 
-
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
-import imp, os, sys
-
 def main_is_frozen():
     return (hasattr(sys, "frozen") or # new py2exe
         hasattr(sys, "importers") # old py2exe
@@ -41,7 +39,7 @@ def get_main_dir():
     if main_is_frozen():
         return os.path.dirname(sys.executable)
     return os.path.dirname(sys.argv[0])
-#--------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
 
 if not main_is_frozen():
@@ -49,7 +47,6 @@ if not main_is_frozen():
     app_dir = os.path.normpath(app_dir)
 else:
     app_dir = get_main_dir()
-
 
 
 image_dir = os.path.join(app_dir, 'images')
@@ -166,13 +163,8 @@ def read_file(filename):
 
 def write_file(filename, content):
     assert os.path.isabs(filename)
-    #print 'CONTENT', type(content), repr(content)
-    #if not type(content) == unicode:
-        # Turn content into unicode string
-    #    content = content.decode('utf-8')
     try:
         with codecs.open(filename, 'wb', errors='replace', encoding='utf-8') as file:
-        #with open(filename, 'wb') as file:
             file.write(content)
     except IOError, e:
         logging.error('Error while writing to "%s": %s' % (filename, e))
@@ -219,21 +211,8 @@ def get_relative_path(from_dir, to_dir):
     else:
         return to_dir
 
-def write_archive(archive_file_name, files, base_dir='', arc_base_dir=''):
-    """
-    use base_dir for relative filenames, in case you don't
-    want your archive to contain '/home/...'
-    """
-    archive = zipfile.ZipFile(archive_file_name, "w")
-    for file in files:
-        archive.write(file, os.path.join(arc_base_dir, file[len(base_dir):]))
-    archive.close()
-
 def get_icons():
     return glob(os.path.join(frame_icon_dir, '*.png'))
-
-def uri_is_local(uri):
-    return uri.startswith('file://')
 
 
 def get_journal_title(dir):
@@ -267,7 +246,7 @@ def get_platform_info():
     for name, object, value in lib_values:
         try:
             names_values.append((name, getattr(object, value)))
-        except AttributeError, err:
+        except AttributeError:
             logging.info('%s could not be determined' % name)
 
     vals = ['%s: %s' % (name, val) for name, val in names_values]
@@ -314,20 +293,19 @@ def open_url(url):
     '''
     Opens a file with the platform's preferred method
     '''
-    if url.startswith('http'):
+    if url.lower().startswith('http'):
         open_url_in_browser(url)
         return
 
     # Try opening the file locally
     if sys.platform == 'win32':
         try:
-            if uri_is_local(url):
-                url = get_local_url(url)
+            url = get_local_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
             os.startfile(url)
             return
-        except (WindowsError, OSError):
+        except OSError:
             logging.exception('Opening %s with "os.startfile" failed' % url)
 
     elif sys.platform == 'darwin':
@@ -340,7 +318,6 @@ def open_url(url):
 
     else:
         try:
-            subprocess.check_call(['xdg-open', '--version'])
             logging.info( 'Trying to open %s with xdg-open' % url)
             system_call(['xdg-open', url])
             return

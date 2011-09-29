@@ -23,7 +23,6 @@ from __future__ import with_statement
 import sys
 import os
 import logging
-import warnings
 
 import gtk
 import gobject
@@ -39,7 +38,6 @@ if __name__ == '__main__':
 from rednotebook.util import filesystem
 
 
-webkit = None
 try:
     import webkit
 except ImportError:
@@ -48,40 +46,12 @@ except ImportError:
     sys.exit(1)
 
 
-def can_print_pdf():
-    if not webkit:
-        return False
-
-    try:
-        printer = HtmlPrinter()
-    except TypeError, err:
-        logging.info('UrlPrinter could not be created: "%s"' % err)
-        return False
-
-    frame = printer._webview.get_main_frame()
-
-    can_print_full = hasattr(frame, 'print_full')
-
-    if not can_print_full:
-        msg = 'For direct PDF export, please install pywebkitgtk version 1.1.5 or later.'
-        logging.info(msg)
-
-    return can_print_full
-
-
-def print_pdf(html, filename):
-    printer = HtmlPrinter()
-    printer.print_html(html, filename)
-
-
-
 class HtmlPrinter(object):
-    '''
-    Idea and some code taken from interwibble,
+    """
+    Idea and code-snippets taken from interwibble,
     "A non-interactive tool for converting any given website to PDF"
-
     (http://github.com/eeejay/interwibble/)
-    '''
+    """
     PAPER_SIZES = {'a3'     : gtk.PAPER_NAME_A3,
                    'a4'     : gtk.PAPER_NAME_A4,
                    'a5'     : gtk.PAPER_NAME_A5,
@@ -101,41 +71,61 @@ class HtmlPrinter(object):
         self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
 
     def print_html(self, html, outfile):
-        handler = self._webview.connect(
-            'load-finished', self._load_finished_cb, outfile)
-        self._print_status('Loading URL...')
+        self._webview.connect('load-finished', self._load_finished_cb, outfile)
+        logging.info('Loading URL...')
         self._webview.load_html_string(html, 'file:///')
 
         while gtk.events_pending():
             gtk.main_iteration()
 
     def _load_finished_cb(self, view, frame, outfile):
-        self._print_status('Loading done')
+        logging.info('Loading done')
         print_op = gtk.PrintOperation()
         print_settings = print_op.get_print_settings() or gtk.PrintSettings()
         print_settings.set_paper_size(self._paper_size)
         print_op.set_print_settings(print_settings)
         print_op.set_export_filename(os.path.abspath(outfile))
-        self._print_status('Exporting PDF...')
+        logging.info('Exporting PDF...')
         print_op.connect('end-print', self._end_print_cb)
         try:
             frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
             while gtk.events_pending():
                 gtk.main_iteration()
         except gobject.GError, e:
-            self._print_error(e.message)
+            logging.error(e.message)
 
     def _load_error_cb(self, view, frame, url, gp):
-        self._print_error("Error loading %s" % url)
+        logging.error("Error loading %s" % url)
 
     def _end_print_cb(self, *args):
-        self._print_status('Exporting done')
+        logging.info('Exporting done')
 
-    def _print_error(self, status):
-        logging.error(status)
 
-    def _print_status(self, status):
-        logging.info(status)
+try:
+    printer = HtmlPrinter()
+except TypeError, err:
+    printer = None
+    logging.info('UrlPrinter could not be created: "%s"' % err)
+
+
+def can_print_pdf():
+    if not printer:
+        return False
+
+    frame = printer._webview.get_main_frame()
+
+    can_print_full = hasattr(frame, 'print_full')
+
+    if not can_print_full:
+        msg = 'For direct PDF export, please install pywebkitgtk version 1.1.5 or later.'
+        logging.info(msg)
+
+    return can_print_full
+
+
+def print_pdf(html, filename):
+    assert can_print_pdf()
+    printer.print_html(html, filename)
 
 
 class HtmlView(gtk.ScrolledWindow):
@@ -181,7 +171,7 @@ class HtmlView(gtk.ScrolledWindow):
             self.webview.unmark_text_matches()
 
             # Mark all occurences of "string", case-insensitive, no limit
-            matches = self.webview.mark_text_matches(string, False, 0)
+            self.webview.mark_text_matches(string, False, 0)
             self.webview.set_highlight_text_matches(True)
         except AttributeError, err:
             logging.info(err)

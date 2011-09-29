@@ -14,7 +14,7 @@ sed -i 's!\*/!!g' tmp/main_window.glade.h
 # Get strings from both glade helper file and the python files
 
 # Write a list of all sourcefiles
-find ../rednotebook -name "*.py" -not -path "*external*" -not -path "*keepnote*" -not -path "*journalgeist*" -not -path "*imports*"> sourcefiles.txt
+find ../rednotebook -name "*.py" -not -path "*external*" -not -path "*journalgeist*" -not -path "*imports*"> sourcefiles.txt
 
 xgettext    --output=rednotebook.pot \
             --language=Python \

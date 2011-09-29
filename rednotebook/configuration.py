@@ -59,13 +59,12 @@ def get_config(dirs):
 
 
 class Config(dict):
-
     def __init__(self, config_file):
         dict.__init__(self)
 
         self.file = config_file
 
-        self.obsolete_keys = [u'useGTKMozembed',
+        self.obsolete_keys = [u'useGTKMozembed', u'useWebkit',
                               u'LD_LIBRARY_PATH', u'MOZILLA_FIVE_HOME']
 
         # Allow changing the value of portable only in default.cfg
@@ -181,13 +180,21 @@ class Config(dict):
 
 
     def save_to_disk(self):
-        assert self.changed()
+        if not self.changed():
+            return
 
         content = ''
         for key, value in sorted(self.iteritems()):
             if key not in self.suppressed_keys:
                 content += ('%s=%s\n' % (key, value))
 
-        filesystem.write_file(self.file, content)
-        logging.info('Configuration has been saved to disk')
-        self.old_config = self.copy()
+        try:
+            filesystem.make_directory(os.path.dirname(self.file))
+            filesystem.write_file(self.file, content)
+        except IOError:
+            logging.error('Configuration could not be saved. Please check '
+                          'your permissions')
+            return
+
+        logging.info('Configuration has been saved to %s' % self.file)
+        self.save_state()

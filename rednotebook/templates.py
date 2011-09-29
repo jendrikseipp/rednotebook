@@ -20,17 +20,16 @@
 from __future__ import with_statement
 
 import os
-import sys
 import logging
-import time
-import codecs
 
 import gtk
-
 
 from rednotebook.util import filesystem
 from rednotebook.util import dates
 
+
+WEEKDAYS = (_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
+            _('Friday'), _('Saturday'), _('Sunday'))
 
 
 example_text = '''\
@@ -49,6 +48,7 @@ Your text can be:
 - //italic//
 - __underlined__
 - --strikethrough--
+- or some **//__combination__//**
 
 
 You can add images to your template:
@@ -67,14 +67,25 @@ empty lines to end a list.
 
 Additionally you can have **titles** and **horizontal lines**:
 
-===Title===
+= Title level 1 =
+(The dates in the export will use this level, so it is recommended to use lower
+levels in your entries)
+== Title level 2 ==
+=== Title level 3 ===
+etc.
 
 ====================
+
+% Commentary text can be put on lines starting with a percent sign.
+% Those lines will not show up in the preview and the export.
 
 **Macros**:
 
 When a template is inserted, every occurence of "$date$" is converted to \
 the current date. You can set the date format in the preferences.
+
+There is even more markup that you can put into your templates. Have a look at
+the inline help (Ctrl+H) for information.
 '''
 
 help_text = '''\
@@ -388,7 +399,10 @@ class TemplateManager(object):
 
         files = []
         for day_number in range(1, 8):
-            files.append((self.get_template_file(day_number), example_text))
+            weekday = WEEKDAYS[day_number - 1]
+            files.append((self.get_template_file(day_number),
+                          example_text.replace('template ===',
+                                               'template for %s ===' % weekday)))
 
         help_text %= (self.dirs.template_dir)
 
@@ -396,13 +410,10 @@ class TemplateManager(object):
 
         # Only add the example templates the first time and just restore
         # the day templates everytime
-        if not self.main_window.journal.is_first_start:
-            filesystem.make_files(files)
-            return
-
-        files.append((self.get_template_file('Meeting'), meeting))
-        files.append((self.get_template_file('Journey'), journey))
-        files.append((self.get_template_file('Call'), call))
-        files.append((self.get_template_file('Personal'), personal))
+        if self.main_window.journal.is_first_start:
+            files.append((self.get_template_file('Meeting'), meeting))
+            files.append((self.get_template_file('Journey'), journey))
+            files.append((self.get_template_file('Call'), call))
+            files.append((self.get_template_file('Personal'), personal))
 
         filesystem.make_files(files)

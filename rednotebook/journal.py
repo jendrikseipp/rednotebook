@@ -22,9 +22,9 @@ from __future__ import with_statement
 import sys
 import datetime
 import os
-import operator
 import collections
 import time
+import itertools
 import logging
 import locale
 from optparse import OptionParser, OptionValueError
@@ -213,6 +213,8 @@ class Journal:
         self.config = user_config
         self.config.save_state()
 
+        self.warn_if_second_instance()
+
         logging.info('Running in portable mode: %s' % self.dirs.portable)
 
         self.testing = False
@@ -252,14 +254,37 @@ class Journal:
         self.open_journal(self.get_journal_path())
 
         self.archiver = backup.Archiver(self)
+        #self.archiver.check_last_backup_date()
 
         # Check for a new version
-        if self.config.read('checkForNewVersion', default=0) == 1:
+        if self.config.read('checkForNewVersion', 0) == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
         if not self.testing:
             gobject.timeout_add_seconds(600, self.save_to_disk)
+
+    def warn_if_second_instance(self):
+        '''Show warning when a second instance is started'''
+        running = self.config.read('running', 0)
+        if running:
+            logging.warning('RedNotebook instance already running')
+            text1 = _('RedNotebook appears to be already running.')
+            text2 = _('This can happen if the application is hidden in the '
+                      'system tray or was not shut down correctly.')
+            text3 = _('Starting a second RedNotebook instance can lead to data '
+                      'loss and it might be best to see if there is another '
+                      'instance first.')
+            text4 = _('Do you want to start a new RedNotebook instance nevertheless?')
+            dialog = gtk.MessageDialog(type=gtk.MESSAGE_WARNING,
+                                       buttons=gtk.BUTTONS_YES_NO, message_format=text1)
+            dialog.format_secondary_text('%s %s\n\n%s' % (text2, text3, text4))
+            answer = dialog.run()
+            dialog.hide()
+            if not answer == gtk.RESPONSE_YES:
+                sys.exit()
+        self.config['running'] = 1
+        self.config.save_to_disk()
 
 
     def get_journal_path(self):
@@ -297,15 +322,10 @@ class Journal:
         sys.exit(1)
 
 
-    def backup_contents(self, backup_file):
-        self.save_to_disk()
-
-        if backup_file:
-            self.archiver.backup(backup_file)
-
-
     def exit(self):
         self.frame.add_values_to_config()
+
+        self.config['running'] = 0
 
         # Make it possible to stop the program from exiting
         # e.g. if the journal could not be saved
@@ -324,7 +344,7 @@ class Journal:
 
         try:
             filesystem.make_directory(self.dirs.data_dir)
-        except OSError, err:
+        except OSError:
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
@@ -344,13 +364,7 @@ class Journal:
             self.show_message(_('Nothing to save'), error=False)
             #logging.info('Nothing to save')
 
-        if self.config.changed():
-            try:
-                filesystem.make_directory(self.dirs.journal_user_dir)
-                self.config.save_to_disk()
-            except IOError, err:
-                self.show_message(_('Configuration could not be saved. Please check your permissions'))
-                logging.error('Configuration could not be saved. Please check your permissions')
+        self.config.save_to_disk()
 
         if not (exit_imminent or changing_journal) and something_saved:
             # Update cloud
@@ -401,8 +415,7 @@ class Journal:
 
         self.stats = Statistics(self)
 
-        sorted_categories = sorted(self.node_names, key=lambda category: str(category).lower())
-        self.frame.categories_tree_view.categories = sorted_categories
+        self.frame.categories_tree_view.categories = self.categories
 
         if self.is_first_start:
             self.add_instruction_content()
@@ -493,9 +506,9 @@ class Journal:
             month.edited = True
 
 
-    def _get_current_day(self):
+    @property
+    def day(self):
         return self.month.get_day(self.date.day)
-    day = property(_get_current_day)
 
 
     def change_date(self, new_date):
@@ -507,11 +520,19 @@ class Journal:
 
 
     def go_to_next_day(self):
-        self.change_date(self.date + dates.one_day)
+        next_date = self.date + dates.one_day
+        following_edited_days = self.get_days_in_date_range(start_date=next_date)
+        if following_edited_days:
+            next_date = following_edited_days[0].date
+        self.change_date(next_date)
 
 
     def go_to_prev_day(self):
-        self.change_date(self.date - dates.one_day)
+        prev_date = self.date - dates.one_day
+        previous_edited_days = self.get_days_in_date_range(end_date=prev_date)
+        if previous_edited_days:
+            prev_date = previous_edited_days[-1].date
+        self.change_date(prev_date)
 
 
     def show_message(self, message_text, error=False, countdown=True):
@@ -519,24 +540,27 @@ class Journal:
 
 
     @property
-    def node_names(self):
-        node_names = set([])
-        for month in self.months.values():
-            node_names |= set(month.node_names)
-        return list(node_names)
+    def categories(self):
+        return list(sorted(set(itertools.chain.from_iterable(
+                                        day.categories for day in self.days)),
+                           key=utils.sort_asc))
 
 
     @property
     def tags(self):
-        tags = set([])
-        for month in self.months.values():
-            tags |= set(month.tags)
-        return list(tags)
+        return self.get_entries('Tags')
+
+
+    def get_entries(self, category):
+        entries = set()
+        for day in self.days:
+            entries |= set(day.get_entries(category))
+        return sorted(entries)
 
 
     def search(self, text=None, category=None, tag=None):
         results = []
-        for day in self.days:
+        for day in reversed(self.days):
             result = None
             if text:
                 result = day.search_text(text)
@@ -583,9 +607,9 @@ class Journal:
         word_dict = collections.defaultdict(int)
         for day in self.days:
             if type == 'word':
-                words = day.words
+                words = day.get_words()
             if type == 'category':
-                words = day.node_names
+                words = day.categories
             if type == 'tag':
                 words = day.tags
 
@@ -594,27 +618,24 @@ class Journal:
         return word_dict
 
 
-    def get_days_in_date_range(self, range):
-        start_date, end_date = range
+    def get_days_in_date_range(self, start_date=None, end_date=None):
+        if not start_date:
+            start_date = datetime.date.min
+        if not end_date:
+            end_date = datetime.date.max
+
+        start_date, end_date = sorted([start_date, end_date])
         assert start_date <= end_date
 
-        sorted_days = self.days
         days_in_date_range = []
-        for day in sorted_days:
+        for day in self.days:
             if day.date < start_date:
                 continue
-            elif day.date >= start_date and day.date <= end_date:
+            elif start_date <= day.date <= end_date:
                 days_in_date_range.append(day)
             elif day.date > end_date:
                 break
         return days_in_date_range
-
-
-    def get_edit_date_of_entry_number(self, entry_number):
-        sorted_days = self.days
-        if len(sorted_days) == 0:
-            return datetime.date.today()
-        return sorted_days[entry_number % len(sorted_days)].date
 
 
     def go_to_first_empty_day(self):

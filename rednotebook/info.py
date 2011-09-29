@@ -25,11 +25,11 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-version =           '1.1.8'
+version =           '2.0.0'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
 url =               'http://rednotebook.sourceforge.net'
-forum_url =         'http://apps.sourceforge.net/phpbb/rednotebook/'
+answers_url =       'https://answers.launchpad.net/rednotebook'
 translation_url =   'https://translations.launchpad.net/rednotebook/'
 bug_url =           'https://bugs.launchpad.net/rednotebook/+filebug'
 
@@ -255,7 +255,7 @@ have to explicitly state the date when you added the todo item, you just add it 
 on one day and it remains there until you delete it.
 
 Here is how it works:
-- On the right click on "New Entry"
+- On the right click on "Annotate"
 - Fill "%(todo)s" and "Remember the milk" in the fields and hit "OK"
 - Select the categories cloud from the drop down menu on the left
 - Now you can click on "%(todo)s" and see all your todo items
@@ -586,7 +586,7 @@ This feature can be used to insert e.g. latex formulas:
 
 ```
 \'''
-==\sum_{i=1}^{n} i = \\frac{n \cdot (n+1)}{2}==
+$$\sum_{i=1}^{n} i = \\frac{n \cdot (n+1)}{2}$$
 \'''
 ```
 
@@ -683,9 +683,8 @@ All textual content can be formatted or augmented with
 [txt2tags http://txt2tags.org/] markup.
 
 == Questions ==
-If you have any questions or comments, feel free to post them in the
-[forum http://apps.sourceforge.net/phpbb/rednotebook/] or
-contact me directly.
+If you have any questions or comments, feel free to post them on the mailing
+list or contact me directly.
 
 == Bugs ==
 There is no software without bugs, so if you encounter one please drop me a note.
@@ -736,4 +735,4 @@ if __name__ == '__main__':
 
     write_documentation(doc_dir)
 
-    print 'Wrote documentation to', os.path.join(doc_dir, 'help.html')
+    #logging.getLogger('').setLevel(logging.DEBUG)

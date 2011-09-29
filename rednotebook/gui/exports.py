@@ -19,11 +19,8 @@
 
 import sys
 import os
-import datetime
 import logging
-import re
 import datetime
-import codecs
 
 import gtk
 import gobject
@@ -31,15 +28,16 @@ import gobject
 if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("./../../"))
     logging.basicConfig(level=logging.DEBUG)
-    from rednotebook import Journal
+    from rednotebook.journal import Journal
 
 
 from rednotebook.util import filesystem
 from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
-                    IntroductionPage, RadioButtonPage, PathChooserPage, Assistant
+                                    RadioButtonPage, PathChooserPage, Assistant
 from rednotebook.gui import browser
+from rednotebook.gui import options
 
 
 
@@ -50,10 +48,15 @@ class DatePage(AssistantPage):
         self.journal = journal
 
         self.all_days_button = gtk.RadioButton(label=_('Export all days'))
-        self.sel_days_button = gtk.RadioButton(label=_('Export only the days in the selected time range'),
-                                            group=self.all_days_button)
+        self.one_day_button = gtk.RadioButton(
+                                    label=_('Export currently visible day'),
+                                    group=self.all_days_button)
+        self.sel_days_button = gtk.RadioButton(
+                    label=_('Export days in the selected time range'),
+                    group=self.all_days_button)
 
         self.pack_start(self.all_days_button, False)
+        self.pack_start(self.one_day_button, False)
         self.pack_start(self.sel_days_button, False)
 
         label1 = gtk.Label()
@@ -100,14 +103,12 @@ class DatePage(AssistantPage):
     def get_date_range(self):
         if self.select_days:
             return (self.calendar1.get_date(), self.calendar2.get_date())
-        return None
+        return (self.journal.day.date,) * 2
 
 
     def refresh_dates(self):
-        start = self.journal.get_edit_date_of_entry_number(0)
-        end = self.journal.get_edit_date_of_entry_number(-1)
-        self.calendar1.set_date(start)
-        self.calendar2.set_date(end)
+        self.calendar1.set_date(datetime.date.today())
+        self.calendar2.set_date(datetime.date.today())
 
 
 
@@ -118,6 +119,13 @@ class ContentsPage(AssistantPage):
         self.journal = journal
         self.assistant = assistant
 
+        # Make the config available for the date format option
+        options.Option.config = journal.config
+        # Set default date format string
+        options.Option.config['exportDateFormat'] = '%A, %x'
+        self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
+        self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
+
         self.text_button = gtk.CheckButton(label=_('Export texts'))
         self.all_categories_button = gtk.RadioButton(label=_('Export all categories'))
         self.no_categories_button = gtk.RadioButton(label=_('Do not export categories'),
@@ -125,6 +133,7 @@ class ContentsPage(AssistantPage):
         self.sel_categories_button = gtk.RadioButton(label=_('Export only the selected categories'),
                                             group=self.all_categories_button)
 
+        self.pack_start(self.date_format, False)
         self.pack_start(self.text_button, False)
         self.pack_start(self.all_categories_button, False)
         self.pack_start(self.no_categories_button, False)
@@ -147,14 +156,14 @@ class ContentsPage(AssistantPage):
         column.add_attribute(cell, 'text', 0)
 
         self.select_button = gtk.Button(_('Select') + ' >>')
-        self.unselect_button = gtk.Button('<< ' + _('Unselect'))
+        self.deselect_button = gtk.Button('<< ' + _('Deselect'))
 
         self.select_button.connect('clicked', self.on_select_category)
-        self.unselect_button.connect('clicked', self.on_unselect_category)
+        self.deselect_button.connect('clicked', self.on_deselect_category)
 
         centered_vbox = gtk.VBox()
         centered_vbox.pack_start(self.select_button, True, False)
-        centered_vbox.pack_start(self.unselect_button, True, False)
+        centered_vbox.pack_start(self.deselect_button, True, False)
 
         vbox = gtk.VBox()
         vbox.pack_start(centered_vbox, True, False)
@@ -180,8 +189,7 @@ class ContentsPage(AssistantPage):
 
     def refresh_categories_list(self):
         model_available = gtk.ListStore(gobject.TYPE_STRING)
-        categories = self.journal.node_names
-        for category in categories:
+        for category in self.journal.categories:
             new_row = model_available.insert(0)
             model_available.set(new_row, 0, category)
         self.available_categories.set_model(model_available)
@@ -208,7 +216,7 @@ class ContentsPage(AssistantPage):
         self.check_selection()
 
 
-    def on_unselect_category(self, widget):
+    def on_deselect_category(self, widget):
         selection = self.selected_categories.get_selection()
         nb_selected, selected_iter = selection.get_selected()
 
@@ -236,7 +244,7 @@ class ContentsPage(AssistantPage):
 
     def get_categories(self):
         if self.all_categories_button.get_active():
-            return self.journal.node_names
+            return self.journal.categories
         elif self.no_categories_button.get_active():
             return []
         else:
@@ -262,7 +270,7 @@ class ContentsPage(AssistantPage):
         self.available_categories.set_sensitive(select)
         self.selected_categories.set_sensitive(select)
         self.select_button.set_sensitive(select)
-        self.unselect_button.set_sensitive(select)
+        self.deselect_button.set_sensitive(select)
 
         self.assistant.set_page_complete(self.assistant.page3, correct)
 
@@ -382,9 +390,9 @@ class ExportAssistant(Assistant):
             self.page5.add_setting(_('Format'), format)
             self.page5.add_setting(_('Export all days'), self.yes_no(self.export_all_days))
             if not self.export_all_days:
-                self.start_date, self.end_date = self.page2.get_date_range()
-                self.page5.add_setting(_('Start date'), self.start_date)
-                self.page5.add_setting(_('End date'), self.end_date)
+                start_date, end_date = self.page2.get_date_range()
+                self.page5.add_setting(_('Start date'), start_date)
+                self.page5.add_setting(_('End date'), end_date)
             is_text_exported = self.yes_no(self.is_text_exported)
             self.page5.add_setting(_('Export text'), is_text_exported)
             self.page5.add_setting(_('Selected categories'), ', '.join(self.exported_categories))
@@ -399,8 +407,7 @@ class ExportAssistant(Assistant):
         if self.export_all_days:
             export_days = self.journal.days
         else:
-            start, end = sorted([self.start_date, self.end_date])
-            export_days = self.journal.get_days_in_date_range((start, end))
+            export_days = self.journal.get_days_in_date_range(*self.page2.get_date_range())
 
         selected_categories = self.exported_categories
         logging.debug('Selected Categories for Export: %s' % selected_categories)
@@ -408,11 +415,9 @@ class ExportAssistant(Assistant):
 
         markup_strings_for_each_day = []
         for day in export_days:
-            default_export_date_format = '%A, %x'
-            # probably no one needs to configure this as i18n already exists
-            #date_format = self.journal.config.read('exportDateFormat',
-            #                                       default_export_date_format)
-            date_format = default_export_date_format
+            # Save selected date format
+            date_format = self.page3.date_format.get_value()
+            self.journal.config['exportDateFormat'] = date_format
             date_string = dates.format_date(date_format, day.date)
             day_markup = markup.get_markup_for_day(day, with_text=export_text,
                                             categories=selected_categories,
@@ -421,9 +426,7 @@ class ExportAssistant(Assistant):
 
         markup_string = ''.join(markup_strings_for_each_day)
 
-        options = {'toc': 0}
-
-        return markup.convert(markup_string, format, options=options)
+        return markup.convert(markup_string, format, options={'toc': 0})
 
     def export(self):
         format = self.exporter.FORMAT
@@ -440,8 +443,7 @@ class ExportAssistant(Assistant):
 
     def export_pdf(self):
         logging.info('Exporting to PDF')
-        html = self.get_export_string('xhtml')
-        browser.print_pdf(html, self.path)
+        browser.print_pdf(self.get_export_string('xhtml'), self.path)
 
 
 
@@ -462,7 +464,7 @@ class Exporter(object):
         for module in modules:
             try:
                 __import__(module)
-            except ImportError, err:
+            except ImportError:
                 logging.info('"%s" could not be imported. '
                     'You will not be able to import %s' % (module, cls.NAME))
                 # Importer cannot be used

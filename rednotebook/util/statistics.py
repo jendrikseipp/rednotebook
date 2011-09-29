@@ -19,8 +19,6 @@
 
 from __future__ import division
 
-from rednotebook.util import dates
-
 
 class Statistics(object):
     def __init__(self, journal):

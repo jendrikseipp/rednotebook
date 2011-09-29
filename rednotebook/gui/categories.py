@@ -23,6 +23,7 @@ import gtk
 import pango
 
 from rednotebook.util import markup
+from rednotebook.util import utils
 from rednotebook import undo
 
 
@@ -34,7 +35,7 @@ class CategoriesTreeView(object):
         self.undo_redo_manager = main_window.undo_redo_manager
 
         # Maintain a list of all entered categories. Initialized by rn.__init__()
-        self.categories = None
+        self.categories = []
 
         self.statusbar = self.main_window.statusbar
 
@@ -64,8 +65,8 @@ class CategoriesTreeView(object):
         # add the cell to the tvcolumn and allow it to expand
         self.tvcolumn.pack_start(self.cell, True)
 
-        ''' set the cell "text" attribute to column 0 - retrieve text
-            from that column in tree_store'''
+        """ set the cell "text" attribute to column 0 - retrieve text
+            from that column in tree_store"""
         #self.tvcolumn.add_attribute(self.cell, 'text', 0)
         self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 
@@ -86,6 +87,13 @@ class CategoriesTreeView(object):
         self.cell.props.wrap_mode = pango.WRAP_WORD
         self.cell.props.wrap_width = 200
         self.tree_view.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
+
+    def add_category(self, category):
+        """Add a new category name and sort all categories."""
+        if category is None or category in self.categories:
+            return
+        self.categories.append(category)
+        self.categories.sort(key=utils.sort_asc)
 
     def node_on_top_level(self, iter):
         if not type(iter) == gtk.TreeIter:
@@ -110,11 +118,11 @@ class CategoriesTreeView(object):
         editable.set_text(markup.convert_from_pango(pango_markup))
 
     def edited_cb(self, cell, path, new_text, user_data):
-        '''
+        """
         Called when text in a cell is changed
 
         new_text is txt2tags markup
-        '''
+        """
         if new_text == 'text' and self.node_on_top_level(path):
             self.statusbar.show_text('"text" is a reserved keyword', error=True)
             return
@@ -128,14 +136,12 @@ class CategoriesTreeView(object):
 
         # Category name changed
         if self.node_on_top_level(path):
-            if new_text not in self.categories:
-                self.categories.insert(0, new_text)
+            self.add_category(new_text)
 
         # Tag name changed
         else:
             iter = self.tree_store.get_iter(path)
             iter_parent = self.tree_store.iter_parent(iter)
-            tags_iter = self._get_category_iter('Tags')
 
             tags_node_is_parent = self.get_iter_value(iter_parent).capitalize() == 'Tags'
             if tags_node_is_parent and self.node_on_top_level(iter_parent):
@@ -162,9 +168,9 @@ class CategoriesTreeView(object):
         return True
 
     def add_element(self, parent, element_content):
-        '''
+        """
         Recursive Method for adding the content
-        '''
+        """
         # We want to order the entries ascendingly
         ascending = lambda (key, value): key.lower()
 
@@ -209,11 +215,11 @@ class CategoriesTreeView(object):
             return content
 
     def empty(self, category_iter=None):
-        '''
+        """
         Tests whether a category has children
 
         If no category is given, test whether there are any categories
-        '''
+        """
         return self.tree_store.iter_n_children(category_iter) == 0
 
     def clear(self):
@@ -236,9 +242,9 @@ class CategoriesTreeView(object):
         return text
 
     def set_iter_value(self, iter, txt2tags_markup):
-        '''
+        """
         text is txt2tags markup
-        '''
+        """
         pango_markup = markup.convert_to_pango(txt2tags_markup)
         self.tree_store.set_value(iter, 0, pango_markup)
 
@@ -272,8 +278,7 @@ class CategoriesTreeView(object):
         return None
 
     def add_entry(self, category, entry, undoing=False):
-        if category not in self.categories and category is not None:
-            self.categories.insert(0, category)
+        self.add_category(category)
 
         category_iter = self._get_category_iter(category)
 
@@ -283,10 +288,10 @@ class CategoriesTreeView(object):
         if category_iter is None:
             # If category does not exist add new category
             category_iter = self.tree_store.append(None, [category_pango])
-            entry_node = self.tree_store.append(category_iter, [entry_pango])
+            self.tree_store.append(category_iter, [entry_pango])
         else:
             # If category exists add entry to existing category
-            entry_node = self.tree_store.append(category_iter, [entry_pango])
+            self.tree_store.append(category_iter, [entry_pango])
 
         if not undoing:
             undo_func = lambda: self.delete_node(self.find_iter(category, entry), undoing=True)
@@ -297,9 +302,9 @@ class CategoriesTreeView(object):
         self.tree_view.expand_all()
 
     def get_selected_node(self):
-        '''
+        """
         Returns selected node or None if none is selected
-        '''
+        """
         tree_selection = self.tree_view.get_selection()
         model, selected_iter = tree_selection.get_selected()
         return selected_iter
@@ -354,10 +359,10 @@ class CategoriesTreeView(object):
         self.main_window.cloud.update()
 
     def delete_selected_node(self):
-        '''
+        """
         This method used to show a warning dialog. This has become obsolete
         with the addition of undo functionality for the categories
-        '''
+        """
         selected_iter = self.get_selected_node()
         if selected_iter:
             self.delete_node(selected_iter)
@@ -406,21 +411,19 @@ class CategoriesTreeView(object):
             self.context_menu.popup(None, None, None, event.button, event.time)
 
     def _get_context_menu(self):
-        context_menu_xml = '''
+        context_menu_xml = """
         <ui>
         <popup action="ContextMenu">
             <menuitem action="ChangeEntry"/>
             <menuitem action="AddEntry"/>
             <menuitem action="Delete"/>
         </popup>
-        </ui>'''
+        </ui>"""
 
         uimanager = self.main_window.uimanager
 
         # Create an ActionGroup
         actiongroup = gtk.ActionGroup('ContextMenuActionGroup')
-
-        new_entry_dialog = self.main_window.new_entry_dialog
 
         # Create actions
         actiongroup.add_actions([
@@ -475,13 +478,13 @@ class CategoriesTreeView(object):
         self.delete_selected_node()
 
     def on_size_allocate(self, treeview, allocation, column, cell):
-        '''
+        """
         Code from pychess project
         (http://code.google.com/p/pychess/source/browse/trunk/lib/pychess/
         System/uistuff.py?r=1025#62)
 
         Allows dynamic line wrapping in a treeview
-        '''
+        """
         other_columns = (c for c in treeview.get_columns() if c != column)
         new_width = allocation.width - sum(c.get_width() for c in other_columns)
         new_width -= treeview.style_get_property("horizontal-separator") * 2

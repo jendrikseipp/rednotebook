@@ -25,7 +25,7 @@ from rednotebook.util import utils
 from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook.util import markup
-from rednotebook.gui.imports import ImportAssistant
+#from rednotebook.gui.imports import ImportAssistant
 
 
 class MainMenuBar(object):
@@ -138,7 +138,7 @@ class MainMenuBar(object):
             ('Help', gtk.STOCK_HELP, _('Contents'),
                 '<Ctrl>h', _('Open the RedNotebook documentation'), self.on_help_menu_item_activate),
             ('OnlineHelp', None, _('Get Help Online'),
-                None, _('Visit the RedNotebook forum'), self.on_online_help),
+                None, _('Browse answered questions or ask a new one'), self.on_online_help),
             ('Translate', None, _('Translate RedNotebook'),
                 None, _('Connect to the Launchpad website to help translate RedNotebook'),
                 self.on_translate),
@@ -228,9 +228,8 @@ class MainMenuBar(object):
     def on_options_menuitem_activate(self, widget):
         self.main_window.options_manager.on_options_dialog()
 
-
     def on_backup_activate(self, widget):
-        self.journal.backup_contents(backup_file=self.main_window.get_backup_file())
+        self.journal.archiver.backup()
 
     def on_import_menu_item_activate(self, widget):
         assistant = ImportAssistant(self.journal)
@@ -253,7 +252,7 @@ class MainMenuBar(object):
         utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
 
     def on_online_help(self, widget):
-        webbrowser.open(info.forum_url)
+        webbrowser.open(info.answers_url)
 
     def on_translate(self, widget):
         webbrowser.open(info.translation_url)

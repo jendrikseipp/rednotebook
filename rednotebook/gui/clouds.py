@@ -20,47 +20,59 @@
 from __future__ import division
 
 import logging
+import re
 
 import gtk
+import gobject
 
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import unicode
 
 
-def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
-    logging.debug('Turning the word_count_dict into html')
-    logging.debug('Length word_count_dict: %s' % len(word_count_dict))
+CLOUD_CSS = """\
+<style type="text/css">
+    body {
+        font-family: Ubuntu, sans-serif;
+        text-align: center;
+    }
+    a:link { color:black; text-decoration:none; }
+    a:visited { color:black; text-decoration:none; }
+    a:focus { color:black; text-decoration:none; }
+    a:hover { color:black; text-decoration:none; }
+    a:active { color:black; text-decoration:none; }
+</style>
+"""
 
+
+def get_regex(word):
+    return re.compile(word + '$', re.I)
+
+
+def word_count_dict_to_html(word_count_dict, type, ignores, includes):
     sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
 
     if type == 'word':
         # filter short words
-        include_list = map(lambda word: word.lower(), include_list)
-        get_long_words = lambda (word, freq): len(word) > 4 or word.lower() in include_list
-        sorted_dict = filter(get_long_words, sorted_dict)
-        logging.debug('Filtered short words. Length word_count_dict: %s' % len(sorted_dict))
+        sorted_dict = [(word, freq) for (word, freq) in sorted_dict
+                       if len(word) > 4 or
+                          any(pattern.match(word) for pattern in includes)]
 
     # filter words in ignore_list
-    sorted_dict = filter(lambda (word, freq): word.lower() not in ignore_list, sorted_dict)
-    logging.debug('Filtered blacklist words. Length word_count_dict: %s' % len(sorted_dict))
+    sorted_dict = [(word, freq) for (word, freq) in sorted_dict
+                   #if word.lower() not in ignore_list]
+                   if not any(pattern.match(word) for pattern in ignores)]
 
-    often_used_words = []
     number_of_words = 42
 
-    '''
-    only take the longest words. If there are less words than n,
-    len(sorted_dict) words are returned
-    '''
+    # only take the longest words. If there are less words than n,
+    # len(sorted_dict) words are returned
     cloud_words = sorted_dict[-number_of_words:]
-    logging.debug('Selected most frequent words. Length CloudWords: %s' % len(cloud_words))
 
-    if len(cloud_words) < 1:
+    if not cloud_words:
         return [], ''
 
     min_count = cloud_words[0][1]
     max_count = cloud_words[-1][1]
-
-    logging.debug('Min word count: %s, Max word count: %s' % (min_count, max_count))
 
     delta_count = max_count - min_count
     if delta_count == 0:
@@ -74,23 +86,7 @@ def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
     # sort words with unicode sort function
     cloud_words.sort(key=lambda (word, count): unicode.coll(word))
 
-    logging.debug('Sorted cloud words. Length CloudWords: %s' % len(cloud_words))
-
     html_elements = []
-
-
-    css = '''\
-    <style type="text/css">
-        body {
-            font-family: sans-serif;
-            text-align: center;
-        }
-        a:link { color:black; text-decoration:none; }
-        a:visited { color:black; text-decoration:none; }
-        a:focus { color:black; text-decoration:none; }
-        a:hover { color:black; text-decoration:none; }
-        a:active { color:black; text-decoration:none; }
-    </style>'''
 
     for index, (word, count) in enumerate(cloud_words):
         font_factor = (count - min_count) / delta_count
@@ -102,13 +98,10 @@ def word_count_dict_to_html(word_count_dict, type, ignore_list, include_list):
                             #Add some whitespace
                             '&#xA0;')
 
-    #random.shuffle(html_elements)
-
-    html_body = '<body>' + '\n'.join(html_elements) + '\n</body>\n'
-    html_doc = '<html><head>' + css + '</head>' + html_body + '</html>'
+    html_body = ''.join(['<body>', '\n'.join(html_elements), '\n</body>\n'])
+    html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
 
     return (cloud_words, html_doc)
-
 
 
 class Cloud(HtmlView):
@@ -136,44 +129,50 @@ class Cloud(HtmlView):
 
         default_ignore_list = _('filter, these, comma, separated, words')
         self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
-        self.ignore_list = map(lambda word: word.lower(), self.ignore_list)
+        self.ignore_list = [word.lower() for word in self.ignore_list]
         logging.info('Cloud ignore list: %s' % self.ignore_list)
 
         default_include_list = _('mtv, spam, work, job, play')
         self.include_list = config.read_list('cloudIncludeList', default_include_list)
-        self.include_list = map(lambda word: word.lower(), self.include_list)
+        self.include_list = [word.lower() for word in self.include_list]
         logging.info('Cloud include list: %s' % self.include_list)
 
+        self.update_regexes()
+
+    def update_regexes(self):
+        logging.debug('Start compiling regexes')
+        self.regexes_ignore = [get_regex(word) for word in self.ignore_list]
+        self.regexes_include = [get_regex(word) for word in self.include_list]
+        logging.debug('Finished')
 
     def update(self, force_update=False):
+        """Public method that calls the private "_update"."""
         if self.journal.frame is None:
             return
-
-        logging.debug('Update the cloud (Type: %s, Force: %s)' % (self.type, force_update))
 
         # Do not update the cloud with words as it requires a lot of searching
         if self.type == 'word' and not force_update:
             return
 
+        gobject.idle_add(self._update)
+
+    def _update(self):
+        logging.debug('Update the cloud (Type: %s)' % self.type)
         self.journal.save_old_day()
 
         word_count_dict = self.journal.get_word_count_dict(self.type)
-        logging.debug('Retrieved WordCountDict. Length: %s' % len(word_count_dict))
-
         self.tag_cloud_words, html = word_count_dict_to_html(word_count_dict,
-                                self.type, self.ignore_list, self.include_list)
-        logging.debug('%s cloud words found' % len(self.tag_cloud_words))
+                                self.type, self.regexes_ignore, self.regexes_include)
 
         self.load_html(html)
         self.last_hovered_word = None
 
         logging.debug('Cloud updated')
 
-
     def on_navigate(self, webview, frame, request):
-        '''
+        """
         Called when user clicks on a cloud word
-        '''
+        """
         if self.loading_html:
             # Keep processing
             return False
@@ -196,31 +195,25 @@ class Cloud(HtmlView):
             # returning True here stops loading the document
             return True
 
-
     def on_button_press(self, webview, event):
-        '''
+        """
         Here we want the context menus
-        '''
+        """
         # keep processing
         return False
 
-
     def on_hovering_over_link(self, webview, title, uri):
-        '''
+        """
         We want to save the last hovered link to be able to add it
         to the context menu when the user right-clicks the next time
-        '''
+        """
         if uri:
             search_index = int(uri.split('/')[-1])
             search_text, count = self.tag_cloud_words[search_index]
             self.last_hovered_word = search_text
 
-
     def on_populate_popup(self, webview, menu):
-        '''
-        Called when the cloud's popup menu is created
-        '''
-
+        """Called when the cloud's popup menu is created."""
         # remove normal menu items
         children = menu.get_children()
         for child in children:
@@ -237,4 +230,5 @@ class Cloud(HtmlView):
         logging.info('"%s" will be hidden from clouds' % selected_word)
         self.ignore_list.append(selected_word)
         self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
+        self.regexes_ignore.append(get_regex(selected_word))
         self.update(force_update=True)

@@ -41,8 +41,8 @@ from rednotebook.data import Day, Month
 from rednotebook.util import filesystem
 from rednotebook import storage
 from rednotebook.util import markup
-from rednotebook.gui.customwidgets import AssistantPage, \
-                    IntroductionPage, RadioButtonPage, PathChooserPage, Assistant
+from rednotebook.gui.customwidgets import AssistantPage, RadioButtonPage, \
+    PathChooserPage, Assistant
 
 class ImportDay(Day):
     '''
@@ -194,8 +194,8 @@ class Importer(object):
             try:
                 __import__(module)
             except ImportError, err:
-                logging.info('"%s" could not be imported. '
-                    'You will not be able to import %s' % (module, cls.NAME))
+                logging.info('"%s" could not be imported: %s\nYou will not be '
+                             'able to import %s' % (module, err, cls.NAME))
                 # Importer cannot be used
                 return False
         return True
@@ -272,9 +272,6 @@ class RedNotebookImporter(Importer):
     PATHTEXT = _('Select a directory containing RedNotebook data files')
     PATHTYPE = 'DIR'
 
-    def __init__(self):
-        date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
-
     def get_days(self, dir):
         assert os.path.isdir(dir)
         months = storage.load_all_months_from_disk(dir)
@@ -289,9 +286,6 @@ class RedNotebookBackupImporter(RedNotebookImporter):
     PATHTEXT = _('Select a backup zipfile')
     PATHTYPE = 'FILE'
     EXTENSION = 'zip'
-
-    def __init__(self):
-        date_exp = re.compile(r'(\d{4})-(\d{2})\.txt')
 
     @classmethod
     def is_available(cls):

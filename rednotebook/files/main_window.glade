@@ -44,10 +44,10 @@
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">Text</col>
+        <col id="0" translatable="yes">Everywhere</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Category</col>
+        <col id="0" translatable="yes">Categories</col>
       </row>
       <row>
         <col id="0" translatable="yes">Tags</col>
@@ -364,9 +364,10 @@
                                 <child>
                                   <object class="GtkToolButton" id="add_new_entry_button">
                                     <property name="visible">True</property>
+                                    <property name="tooltip_text" translatable="yes">Add an entry to a new or existing category</property>
                                     <property name="label" translatable="yes">Annotate</property>
                                     <property name="use_underline">True</property>
-                                    <property name="stock_id">gtk-new</property>
+                                    <property name="stock_id">gtk-edit</property>
                                     <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                     <signal name="clicked" handler="on_add_new_entry_button_clicked"/>
                                   </object>
@@ -378,23 +379,11 @@
                                 <child>
                                   <object class="GtkToolButton" id="add_tag_button">
                                     <property name="visible">True</property>
+                                    <property name="tooltip_text" translatable="yes">Give this day a tag</property>
                                     <property name="label" translatable="yes" comments="This stands for the verb in &quot;Tag this day&quot;">Tag</property>
                                     <property name="stock_id">gtk-dialog-info</property>
                                     <accelerator key="T" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                     <signal name="clicked" handler="on_add_tag_button_clicked"/>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="homogeneous">True</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkToolButton" id="delete_entry_button">
-                                    <property name="visible">True</property>
-                                    <property name="label" translatable="yes">Delete</property>
-                                    <property name="use_underline">True</property>
-                                    <property name="stock_id">gtk-delete</property>
-                                    <signal name="clicked" handler="on_delete_entry_button_clicked"/>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>

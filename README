@@ -1,4 +1,4 @@
-=====  Short Instructions  =====
+===== Short Instructions =====
 
 $ sudo apt-get install python-yaml python-webkit python-chardet
 $ python rednotebook/journal.py
@@ -27,11 +27,11 @@ want to just **run the program, without installing it**.
     - python-chardet (http://chardet.feedparser.org)
       Better recognition of file encodings
 
-    === Ubuntu/Debian ===
-    $ sudo apt-get install python-yaml python-webkit
+  === Ubuntu/Debian ===
+  $ sudo apt-get install python-yaml python-webkit
 
-    === Fedora ===
-    $ yum install python-devel PyYAML pywebkitgtk
+  === Fedora ===
+  $ yum install python-devel PyYAML pywebkitgtk
 
 
 ==== RUNNING WITHOUT INSTALLATION ====
@@ -56,18 +56,14 @@ files in "files" to make an uninstallation easier)
   them, RedNotebook would not be possible.
 - Everaldo Coelho (www.everaldo.com) for the excellent icon (easymoblog.png)
 - The txt2tags team (http://txt2tags.sf.net) for their super cool markup tool
-- Gustavo J. A. M. Carneiro for his htmltextview.py module.
 - The people behind the Tango Icon Project and the creators of the Human Theme.
   Their work can be downloaded from http://tango.freedesktop.org/
-- Matt Rasmussen and his KeepNote project (http://rasm.ods.org/keepnote/).
-  RedNotebook uses his work on displaying HTML content in a PyGTK application
-  for the preview in setups where WebkitGTK is not available.
 - Ahmet Öztürk and Lifeograph for his markup highlighting idea
 - Hannes Matuschek: The code for markup highlighting uses a specialized version
   of his pygtkcodebuffer module (http://code.google.com/p/pygtkcodebuffer/).
 - Dieter Verfaillie: For his elib.intl module
   (https://github.com/dieterv/elib.intl)
-- Eitan Isaacson: RedNotebook to his idea and some code for converting HTML
+- Eitan Isaacson: RedNotebook took his idea and some code for converting HTML
   documents to PDF (http://github.com/eeejay/interwibble/).
 
 
