@@ -18,15 +18,13 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-'''
+"""
 This is the install file for RedNotebook.
 
 To install the program, run "python setup.py install"
-
 To do a (test) installation to a different dir: "python setup.py install --root=test-dir"
-
 To only compile the translations, run "python setup.py i18n"
-'''
+"""
 
 import os
 import sys
@@ -259,8 +257,7 @@ if 'py2exe' in sys.argv:
 
     parameters['data_files'].extend([
                                         ('files', ['rednotebook/files/main_window.glade',
-                                                'rednotebook/files/stylesheet.css',
-                                                'rednotebook/files/default.cfg']),
+                                                   'rednotebook/files/default.cfg']),
                                     ('images', glob(join('rednotebook', 'images', '*.png'))),
                                     ('images/rednotebook-icon',
                                         glob(join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),

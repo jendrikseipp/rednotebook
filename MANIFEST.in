@@ -3,15 +3,14 @@ include po/*.po
 include rednotebook/images/*.png
 include rednotebook/images/rednotebook-icon/*.png
 include rednotebook/files/*.glade
-include rednotebook/files/*.css
 include rednotebook/files/*.cfg
-include rednotebook/gui/*.py
 include CHANGELOG
 include README
 include README.Packagers
 include AUTHORS
 include LICENSE
 include MANIFEST.in
+include run
 include rednotebook.desktop
 include rednotebook.png
 include win/*.manifest
