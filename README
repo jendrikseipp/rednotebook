@@ -1,8 +1,9 @@
 ===== Short Instructions =====
 
-$ sudo apt-get install python-yaml python-webkit python-chardet
-$ python rednotebook/journal.py
+Install all dependencies, translate the application and run RedNotebook
+without installation:
 
+$ ./run
 
 
 
@@ -14,39 +15,27 @@ want to check the Downloads page first.
 It is recommended to install the distribution's appropriate package,
 but of course sometimes you want to try out the bleeding edge, hot new stuff.
 
-In order to not mess with your distribution's package system, you might
-want to just **run the program, without installing it**.
+If you don't want to mess with your distribution's package system, you might
+want to just run the program, without installing it by using the command above.
 
 ==== REQUIREMENTS ====
-  - Python (2.5/2.6) (www.python.org)
+  - Python (2.5/2.6/2.7) (www.python.org)
   - PyYaml (>=3.05) (www.pyyaml.org)
   - PyGTK (>=2.13) (www.pygtk.org)
   - pywebkitgtk (>=1.1.5) (http://code.google.com/p/pywebkitgtk/)
 
-  - OPTIONALLY:
+  - Optionally:
     - python-chardet (http://chardet.feedparser.org)
       Better recognition of file encodings
 
-  === Ubuntu/Debian ===
-  $ sudo apt-get install python-yaml python-webkit
-
-  === Fedora ===
-  $ yum install python-devel PyYAML pywebkitgtk
-
-
-==== RUNNING WITHOUT INSTALLATION ====
-To run RedNotebook without installing run the following command in a terminal:
-$ python rednotebook/journal.py
-
-
-==== INSTALL ====
+==== INSTALLATION ====
 Please pay attention: Installing is very easy, uninstalling however can only be
 done by removing the installed files manually.
 
-$ sudo python setup.py install --record files
-(installs into path-to-python/site-packages/ and saves a list of installed
-files in "files" to make an uninstallation easier)
+$ sudo python setup.py install --record installed-files
 
+(installs into path-to-python/site-packages/ and saves a list of installed
+files in "installed-files" to make an uninstallation easier)
 
 
 
