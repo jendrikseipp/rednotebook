@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Little helper script that installs all dependencies for RedNotebook and runs
-# it without installing. The script shuld work on all Ubuntu and Debian based
+# it without installing. The script should work on all Ubuntu and Debian based
 # distros, Fedora and OpenSUSE.
 #
 # Most of the code was taken from the gnome-shell build script.

@@ -49,7 +49,7 @@ class Option(gtk.HBox):
         raise NotImplementedError
 
     def get_string_value(self):
-        return unicode(self.get_value()).strip()
+        return unicode(self.get_value())
 
 
 class TickOption(Option):
