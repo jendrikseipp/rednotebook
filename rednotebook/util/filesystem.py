@@ -22,6 +22,7 @@ from __future__ import with_statement
 import os
 import imp
 import sys
+import locale
 import subprocess
 import logging
 import codecs
@@ -30,7 +31,10 @@ from glob import glob
 
 
 def get_unicode_path(path):
-    return unicode(path, encoding=sys.getfilesystemencoding())
+    # locale_encoding may be None may if the value cannot be determined
+    locale_name, locale_encoding = locale.getlocale()
+    encoding = sys.getfilesystemencoding() or locale_encoding or 'UTF-8'
+    return unicode(path, encoding)
 
 
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe

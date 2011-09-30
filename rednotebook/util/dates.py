@@ -59,6 +59,6 @@ def format_date(format_string, date=None):
     # Turn date into unicode string
     locale_name, locale_encoding = locale.getlocale()
     # locale_encoding may be None may if the value cannot be determined
-    locale_encoding = locale_encoding or 'UTF8'
+    locale_encoding = locale_encoding or 'UTF-8'
     date_string = date_string.decode(locale_encoding, 'replace')
     return date_string
