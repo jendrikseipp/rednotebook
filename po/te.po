@@ -7,21 +7,824 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-03-28 14:12+0200\n"
+"POT-Creation-Date: 2011-09-29 12:55+0200\n"
 "PO-Revision-Date: 2011-03-29 03:32+0000\n"
 "Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: Telugu <te@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-07-28 04:37+0000\n"
-"X-Generator: Launchpad (build 13405)\n"
+"X-Launchpad-Export-Date: 2011-09-30 04:42+0000\n"
+"X-Generator: Launchpad (build 14071)\n"
+
+#: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
+msgid "Export all days"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:52
+msgid "Export currently visible day"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:55
+msgid "Export days in the selected time range"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:63
+msgid "From:"
+msgstr "నుండి:"
+
+#: ../rednotebook/gui/exports.py:65
+msgid "To:"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:126
+msgid "Date format"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:127
+msgid "Leave blank to omit dates in export"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:129
+msgid "Export texts"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:130
+msgid "Export all categories"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:131
+msgid "Do not export categories"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:133
+msgid "Export only the selected categories"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:144
+msgid "Available Categories"
+msgstr "అందుబాటులో ఉన్న విభాగాలు"
+
+#: ../rednotebook/gui/exports.py:152
+msgid "Selected Categories"
+msgstr "ఎంపికచేసిన విభాగాలు"
+
+#: ../rednotebook/gui/exports.py:158
+msgid "Select"
+msgstr "ఎంచుకోండి"
+
+#: ../rednotebook/gui/exports.py:159
+msgid "Deselect"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:262
+msgid ""
+"If export text is not selected, you have to select at least one category."
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:286
+msgid "You have selected the following settings:"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:311
+msgid "Export Assistant"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:313
+msgid "Welcome to the Export Assistant."
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:314
+msgid "This wizard will help you to export your journal to various formats."
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:315
+msgid ""
+"You can select the days you want to export and where the output will be "
+"saved."
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:325
+msgid "Select Export Format"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:330
+msgid "Select Date Range"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:335
+msgid "Select Contents"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:341
+msgid "Select Export Path"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:346
+msgid "Summary"
+msgstr "సారాంశం"
+
+#. ## Translators: noun
+#: ../rednotebook/gui/exports.py:390 ../rednotebook/gui/main_window.py:709
+msgid "Format"
+msgstr "ఫార్మేట్"
+
+#: ../rednotebook/gui/exports.py:394
+msgid "Start date"
+msgstr "ప్రారంభ తేదీ"
+
+#: ../rednotebook/gui/exports.py:395
+msgid "End date"
+msgstr "ముగింపు తేదీ"
+
+#: ../rednotebook/gui/exports.py:397
+msgid "Export text"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:398
+msgid "Selected categories"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:399
+msgid "Export path"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:403
+msgid "Yes"
+msgstr "అవును"
+
+#: ../rednotebook/gui/exports.py:403
+msgid "No"
+msgstr "వద్దు"
+
+#: ../rednotebook/gui/exports.py:441
+#, python-format
+msgid "Content exported to %s"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:536
+msgid "requires pywebkitgtk"
+msgstr ""
+
+#: ../rednotebook/gui/clouds.py:130
+msgid "filter, these, comma, separated, words"
+msgstr ""
+
+#: ../rednotebook/gui/clouds.py:135
+msgid "mtv, spam, work, job, play"
+msgstr ""
+
+#: ../rednotebook/gui/clouds.py:223
+#, python-format
+msgid "Hide \"%s\" from clouds"
+msgstr ""
+
+#: ../rednotebook/gui/customwidgets.py:378
+msgid "Introduction"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:84
+msgid "Load RedNotebook at startup"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:154
+msgid "%A, %x, Day %j"
+msgstr "%A, %x, రోజు %j"
+
+#: ../rednotebook/gui/options.py:154
+msgid "Week %W of Year %Y"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:155
+msgid "Day %j"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:160
+msgid "Help"
+msgstr "సహాయం"
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/options.py:181
+msgid "Preview:"
+msgstr "మునుజూపు:"
+
+#: ../rednotebook/gui/options.py:290
+msgid "Close to system tray"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:291
+msgid "Closing the window will send RedNotebook to the tray"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:294
+msgid "Underline misspelled words"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:295
+msgid "Requires gtkspell."
+msgstr ""
+
+#: ../rednotebook/gui/options.py:296
+msgid ""
+"This is included in the python-gtkspell or python-gnome2-extras package"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:297
+msgid "Check Spelling"
+msgstr "అచ్చుతప్పులు సరిచూడు"
+
+#: ../rednotebook/gui/options.py:305
+msgid "Check for new version at startup"
+msgstr "కొత్త వెర్షన్ కోసం ప్రారంభంలోనే పరిశీలించు"
+
+#: ../rednotebook/gui/options.py:312
+msgid "Check now"
+msgstr "ఇపుడు పరిశీలించు"
+
+#: ../rednotebook/gui/options.py:317
+msgid "Font Size"
+msgstr "ఫాంటు పరిమాణం"
+
+#: ../rednotebook/gui/options.py:318
+msgid "Date/Time format"
+msgstr "తేదీ/సమయం ఫార్మేట్"
+
+#: ../rednotebook/gui/options.py:319
+msgid "Exclude from clouds"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:320
+msgid "Do not show those comma separated words in any cloud"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:321
+msgid "Allow small words in clouds"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:322
+msgid "Allow those words with 4 letters or less in the text cloud"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:92
+msgid "_Journal"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:94
+msgid "Create a new journal. The old one will be saved"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:97
+msgid "Load an existing journal. The old journal will be saved"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:102
+msgid ""
+"Save journal at a new location. The old journal files will also be saved"
+msgstr ""
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:105
+msgid "Import"
+msgstr "దిగుమతి చెయ్యి"
+
+#: ../rednotebook/gui/menu.py:106
+msgid "Open the import assistant"
+msgstr ""
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:108
+msgid "Export"
+msgstr "ఎగుమతిచేయి"
+
+#: ../rednotebook/gui/menu.py:109
+msgid "Open the export assistant"
+msgstr ""
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:111 ../rednotebook/backup.py:61
+msgid "Backup"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:112
+msgid "Save all the data in a zip archive"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:38
+msgid "Statistics"
+msgstr "గణాంకాలు"
+
+#: ../rednotebook/gui/menu.py:114
+msgid "Show some statistics about the journal"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:116
+msgid "Shutdown RedNotebook. It will not be sent to the tray."
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:119
+msgid "_Edit"
+msgstr "సవరణ (_E)"
+
+#: ../rednotebook/gui/menu.py:121
+msgid "Undo text edits or category entry deletions"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:123
+msgid "Redo text edits or category entry additions"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:137
+msgid "_Help"
+msgstr "సహాయం(_H)"
+
+#: ../rednotebook/gui/menu.py:138
+msgid "Contents"
+msgstr "విషయసూచిక"
+
+#: ../rednotebook/gui/menu.py:139
+msgid "Open the RedNotebook documentation"
+msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణను తెరవండి"
+
+#: ../rednotebook/gui/menu.py:140
+msgid "Get Help Online"
+msgstr "ఆన్‌లైనులో సహాయం పొందండి"
+
+#: ../rednotebook/gui/menu.py:141
+msgid "Browse answered questions or ask a new one"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:142
+msgid "Translate RedNotebook"
+msgstr "రెడ్‌నోట్‌బుక్‌ను  అనువదించండి"
+
+#: ../rednotebook/gui/menu.py:143
+msgid "Connect to the Launchpad website to help translate RedNotebook"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:145
+msgid "Report a Problem"
+msgstr "సమస్యని నివేదించండి"
+
+#: ../rednotebook/gui/menu.py:146
+msgid "Fill out a short form about the problem"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:249 ../rednotebook/info.py:720
+msgid "RedNotebook Documentation"
+msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణ"
+
+#: ../rednotebook/gui/menu.py:269
+msgid "A Desktop Journal"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:51 ../rednotebook/util/markup.py:56
+#: tmp/main_window.glade.h:11
+msgid "Categories"
+msgstr "విభాగాలు"
+
+#: ../rednotebook/gui/categories.py:130 ../rednotebook/gui/categories.py:165
+msgid "Empty entries are not allowed"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:158
+msgid "Empty category names are not allowed"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:431
+msgid "Change this text"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:435
+msgid "Add a new entry"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:439
+msgid "Delete this entry"
+msgstr ""
+
+#: ../rednotebook/gui/search.py:36
+msgid "Search ..."
+msgstr "వెతుకు ..."
+
+#: ../rednotebook/gui/search.py:104
+msgid "Date"
+msgstr "తేదీ"
+
+#: ../rednotebook/gui/search.py:105 ../rednotebook/gui/search.py:146
+#: ../rednotebook/gui/search.py:154
+msgid "Text"
+msgstr "పాఠ్యం"
+
+#: ../rednotebook/gui/search.py:150
+msgid "Entry"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:287
+msgid "Show RedNotebook"
+msgstr "రెడ్‌నోట్‌బుక్‌ను చూపించు"
+
+#: ../rednotebook/gui/main_window.py:490
+msgid "Select an empty folder for your new journal"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:491
+msgid "Journals are saved in a directory, not in a single file."
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:492
+msgid "The directory name will be the title of the new journal."
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:496
+msgid "Select an existing journal directory"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:498
+msgid "The directory should contain your journal's data files"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:500
+msgid "Select an empty folder for the new location of your journal"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:502
+msgid "The directory name will be the new title of the journal"
+msgstr ""
+
+#. ## Translators: The default journal is located at $HOME/.rednotebook/data
+#: ../rednotebook/gui/main_window.py:524
+msgid "The default journal has been opened"
+msgstr ""
+
+#. ## Translators: The Control (Ctrl) key
+#: ../rednotebook/gui/main_window.py:687
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: ../rednotebook/gui/main_window.py:690
+msgid "Bold"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:691
+msgid "Italic"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:692
+msgid "Underline"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:693
+msgid "Strikethrough"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:710
+msgid "Format the selected text or category entry"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:759
+msgid "First Item"
+msgstr "మొదటి అంశం"
+
+#: ../rednotebook/gui/main_window.py:760
+msgid "Second Item"
+msgstr "రెండవ అంశం"
+
+#: ../rednotebook/gui/main_window.py:761
+msgid "Indented Item"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:762
+msgid "Two blank lines close the list"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:766
+msgid "Title text"
+msgstr "శీర్షిక పాఠ్యం"
+
+#: ../rednotebook/gui/main_window.py:790
+msgid "Picture"
+msgstr "చిత్రము"
+
+#: ../rednotebook/gui/main_window.py:791
+msgid "Insert an image from the harddisk"
+msgstr "హార్డ్‍డిస్కు నుంచి ఒక చిత్రాన్ని చొప్పించు"
+
+#: ../rednotebook/gui/main_window.py:793
+msgid "File"
+msgstr "ఫైల్"
+
+#: ../rednotebook/gui/main_window.py:794
+msgid "Insert a link to a file"
+msgstr ""
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/main_window.py:797
+msgid "_Link"
+msgstr "లింకు (_L)"
+
+#: ../rednotebook/gui/main_window.py:798
+msgid "Insert a link to a website"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:800
+msgid "Bullet List"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:802
+msgid "Numbered List"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:804
+msgid "Title"
+msgstr "శీర్షిక"
+
+#: ../rednotebook/gui/main_window.py:806
+msgid "Line"
+msgstr "వరుస"
+
+#: ../rednotebook/gui/main_window.py:807
+msgid "Insert a separator line"
+msgstr "ఒక వేరుచేయి గీతను పెట్టు"
+
+#: ../rednotebook/gui/main_window.py:809
+msgid "Table"
+msgstr "పట్టిక"
+
+#: ../rednotebook/gui/main_window.py:811
+msgid "Date/Time"
+msgstr "తేదీ/సమయం"
+
+#: ../rednotebook/gui/main_window.py:812
+msgid "Insert the current date and time (edit format in preferences)"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:814
+msgid "Line Break"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:815
+msgid "Insert a manual line break"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:838
+msgid "Insert"
+msgstr "చేర్చు"
+
+#: ../rednotebook/gui/main_window.py:842
+msgid "Insert images, files, links and other content"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:923
+msgid "No link location has been entered"
+msgstr ""
+
+#: ../rednotebook/backup.py:55
+msgid "It has been a while since you made your last backup."
+msgstr ""
+
+#: ../rednotebook/backup.py:56
+msgid "You can backup your journal to a zip file to avoid data loss."
+msgstr ""
+
+#: ../rednotebook/backup.py:63
+msgid "Backup now"
+msgstr ""
+
+#: ../rednotebook/backup.py:64
+msgid "Ask at next start"
+msgstr ""
+
+#: ../rednotebook/backup.py:65
+msgid "Never ask again"
+msgstr ""
+
+#: ../rednotebook/templates.py:31
+msgid "Monday"
+msgstr ""
+
+#: ../rednotebook/templates.py:31
+msgid "Tuesday"
+msgstr ""
+
+#: ../rednotebook/templates.py:31
+msgid "Wednesday"
+msgstr ""
+
+#: ../rednotebook/templates.py:31
+msgid "Thursday"
+msgstr ""
+
+#: ../rednotebook/templates.py:32
+msgid "Friday"
+msgstr ""
+
+#: ../rednotebook/templates.py:32
+msgid "Saturday"
+msgstr ""
+
+#: ../rednotebook/templates.py:32
+msgid "Sunday"
+msgstr ""
+
+#: ../rednotebook/templates.py:104
+msgid ""
+"=== Meeting ===\n"
+"\n"
+"Purpose, date, and place\n"
+"\n"
+"**Present:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Discussion, Decisions, Assignments:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:128
+msgid ""
+"=== Journey ===\n"
+"**Date:**\n"
+"\n"
+"**Location:**\n"
+"\n"
+"**Participants:**\n"
+"\n"
+"**The trip:**\n"
+"First we went to xxxxx then we got to yyyyy ...\n"
+"\n"
+"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:142
+msgid ""
+"==================================\n"
+"=== Phone Call ===\n"
+"- **Person:**\n"
+"- **Time:**\n"
+"- **Topic:**\n"
+"- **Outcome and Follow up:**\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:152
+msgid ""
+"=====================================\n"
+"=== Personal ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**How was the Day?**\n"
+"\n"
+"\n"
+"========================\n"
+"**What needs to be changed?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:210
+msgid "Choose Template Name"
+msgstr ""
+
+#: ../rednotebook/templates.py:362 ../rednotebook/templates.py:371
+msgid "This Weekday's Template"
+msgstr ""
+
+#: ../rednotebook/templates.py:365
+msgid "Edit Template"
+msgstr ""
+
+#: ../rednotebook/templates.py:368
+msgid "Insert Template"
+msgstr ""
+
+#: ../rednotebook/templates.py:374
+msgid "Create New Template"
+msgstr ""
+
+#: ../rednotebook/templates.py:378
+msgid "Open Template Directory"
+msgstr ""
+
+#: ../rednotebook/util/utils.py:173
+#, python-format
+msgid "You have version <b>%s</b>."
+msgstr ""
+
+#: ../rednotebook/util/utils.py:174
+#, python-format
+msgid "The latest version is <b>%s</b>."
+msgstr ""
+
+#: ../rednotebook/util/utils.py:175
+msgid "Do you want to visit the RedNotebook homepage?"
+msgstr ""
+
+#: ../rednotebook/util/utils.py:182
+msgid "Do not ask again"
+msgstr ""
+
+#: ../rednotebook/util/dates.py:58
+msgid "Incorrect date format"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
+#: tmp/main_window.glade.h:44
+msgid "Words"
+msgstr "పదాలు"
+
+#: ../rednotebook/util/statistics.py:80
+msgid "Distinct Words"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:81
+msgid "Edited Days"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:82 ../rednotebook/util/statistics.py:94
+msgid "Letters"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:83
+msgid "Days between first and last Entry"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:84
+msgid "Average number of Words"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:85
+msgid "Percentage of edited Days"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:93
+msgid "Lines"
+msgstr ""
+
+#: ../rednotebook/journal.py:272
+msgid "RedNotebook appears to be already running."
+msgstr ""
+
+#: ../rednotebook/journal.py:273
+msgid ""
+"This can happen if the application is hidden in the system tray or was not "
+"shut down correctly."
+msgstr ""
+
+#: ../rednotebook/journal.py:275
+msgid ""
+"Starting a second RedNotebook instance can lead to data loss and it might be "
+"best to see if there is another instance first."
+msgstr ""
+
+#: ../rednotebook/journal.py:278
+msgid "Do you want to start a new RedNotebook instance nevertheless?"
+msgstr ""
+
+#: ../rednotebook/journal.py:361
+#, python-format
+msgid "The content has been saved to %s"
+msgstr ""
+
+#: ../rednotebook/journal.py:364
+msgid "Nothing to save"
+msgstr ""
+
+#: ../rednotebook/journal.py:397
+msgid "The selected folder is not empty."
+msgstr ""
+
+#: ../rednotebook/journal.py:398
+msgid ""
+"To prevent you from overwriting data, the folder content has been imported "
+"into the new journal."
+msgstr ""
+
+#: ../rednotebook/journal.py:401
+msgid "The selected folder is empty. A new journal has been created."
+msgstr ""
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
 msgstr "ఆలోచనలు"
 
-#: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
+#: ../rednotebook/info.py:80 tmp/main_window.glade.h:41
 msgid "Tags"
 msgstr "ట్యాగులు"
 
@@ -115,7 +918,7 @@ msgstr ""
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
+#: ../rednotebook/info.py:109 tmp/main_window.glade.h:28
 msgid "Preview"
 msgstr "మునుజూపు"
 
@@ -222,735 +1025,6 @@ msgstr ""
 msgid "Monty Python and the Holy Grail"
 msgstr ""
 
-#: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
-msgid "RedNotebook Documentation"
-msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణ"
-
-#: ../rednotebook/gui/customwidgets.py:377
-msgid "Introduction"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:92
-msgid "_Journal"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:94
-msgid "Create a new journal. The old one will be saved"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:97
-msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:102
-msgid ""
-"Save journal at a new location. The old journal files will also be saved"
-msgstr ""
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:105
-msgid "Import"
-msgstr "దిగుమతి చెయ్యి"
-
-#: ../rednotebook/gui/menu.py:106
-msgid "Open the import assistant"
-msgstr ""
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:108
-msgid "Export"
-msgstr "ఎగుమతిచేయి"
-
-#: ../rednotebook/gui/menu.py:109
-msgid "Open the export assistant"
-msgstr ""
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:111
-msgid "Backup"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:112
-msgid "Save all the data in a zip archive"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
-msgid "Statistics"
-msgstr "గణాంకాలు"
-
-#: ../rednotebook/gui/menu.py:114
-msgid "Show some statistics about the journal"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:116
-msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:119
-msgid "_Edit"
-msgstr "సవరణ (_E)"
-
-#: ../rednotebook/gui/menu.py:121
-msgid "Undo text edits or category entry deletions"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:123
-msgid "Redo text edits or category entry additions"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:137
-msgid "_Help"
-msgstr "సహాయం(_H)"
-
-#: ../rednotebook/gui/menu.py:138
-msgid "Contents"
-msgstr "విషయసూచిక"
-
-#: ../rednotebook/gui/menu.py:139
-msgid "Open the RedNotebook documentation"
-msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణను తెరవండి"
-
-#: ../rednotebook/gui/menu.py:140
-msgid "Get Help Online"
-msgstr "ఆన్‌లైనులో సహాయం పొందండి"
-
-#: ../rednotebook/gui/menu.py:141
-msgid "Visit the RedNotebook forum"
-msgstr "రెడ్‌నోట్‌బుక్ చర్చావేదికను సందర్శించండి"
-
-#: ../rednotebook/gui/menu.py:142
-msgid "Translate RedNotebook"
-msgstr "రెడ్‌నోట్‌బుక్‌ను  అనువదించండి"
-
-#: ../rednotebook/gui/menu.py:143
-msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:145
-msgid "Report a Problem"
-msgstr "సమస్యని నివేదించండి"
-
-#: ../rednotebook/gui/menu.py:146
-msgid "Fill out a short form about the problem"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:270
-msgid "A Desktop Journal"
-msgstr ""
-
-#: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
-#: tmp/main_window.glade.h:10
-msgid "Categories"
-msgstr "విభాగాలు"
-
-#: ../rednotebook/gui/categories.py:122 ../rednotebook/gui/categories.py:159
-msgid "Empty entries are not allowed"
-msgstr ""
-
-#: ../rednotebook/gui/categories.py:152
-msgid "Empty category names are not allowed"
-msgstr ""
-
-#: ../rednotebook/gui/categories.py:428
-msgid "Change this text"
-msgstr ""
-
-#: ../rednotebook/gui/categories.py:432
-msgid "Add a new entry"
-msgstr ""
-
-#: ../rednotebook/gui/categories.py:436
-msgid "Delete this entry"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:86
-msgid "Load RedNotebook at startup"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:156
-msgid "%A, %x, Day %j"
-msgstr "%A, %x, రోజు %j"
-
-#: ../rednotebook/gui/options.py:156
-msgid "Week %W of Year %Y"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:157
-msgid "Day %j"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:162
-msgid "Help"
-msgstr "సహాయం"
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/options.py:183
-msgid "Preview:"
-msgstr "మునుజూపు:"
-
-#: ../rednotebook/gui/options.py:292
-msgid "Close to system tray"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:293
-msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:296
-msgid "Underline misspelled words"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:297
-msgid "Requires gtkspell."
-msgstr ""
-
-#: ../rednotebook/gui/options.py:298
-msgid ""
-"This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:299
-msgid "Check Spelling"
-msgstr "అచ్చుతప్పులు సరిచూడు"
-
-#: ../rednotebook/gui/options.py:307
-msgid "Check for new version at startup"
-msgstr "కొత్త వెర్షన్ కోసం ప్రారంభంలోనే పరిశీలించు"
-
-#: ../rednotebook/gui/options.py:314
-msgid "Check now"
-msgstr "ఇపుడు పరిశీలించు"
-
-#: ../rednotebook/gui/options.py:319
-msgid "Font Size"
-msgstr "ఫాంటు పరిమాణం"
-
-#: ../rednotebook/gui/options.py:320
-msgid "Date/Time format"
-msgstr "తేదీ/సమయం ఫార్మేట్"
-
-#: ../rednotebook/gui/options.py:321
-msgid "Exclude from clouds"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:322
-msgid "Do not show those comma separated words in any cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:323
-msgid "Allow small words in clouds"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:324
-msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:323
-msgid "Show RedNotebook"
-msgstr "రెడ్‌నోట్‌బుక్‌ను చూపించు"
-
-#: ../rednotebook/gui/main_window.py:549
-msgid "Select an empty folder for your new journal"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:550
-msgid "Journals are saved in a directory, not in a single file."
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:551
-msgid "The directory name will be the title of the new journal."
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:555
-msgid "Select an existing journal directory"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:557
-msgid "The directory should contain your journal's data files"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:559
-msgid "Select an empty folder for the new location of your journal"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:561
-msgid "The directory name will be the new title of the journal"
-msgstr ""
-
-#. ## Translators: The default journal is located at $HOME/.rednotebook/data
-#: ../rednotebook/gui/main_window.py:583
-msgid "The default journal has been opened"
-msgstr ""
-
-#. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:744
-msgid "Ctrl"
-msgstr "Ctrl"
-
-#: ../rednotebook/gui/main_window.py:747
-msgid "Bold"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:748
-msgid "Italic"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:749
-msgid "Underline"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:750
-msgid "Strikethrough"
-msgstr ""
-
-#. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:766 ../rednotebook/gui/exports.py:382
-msgid "Format"
-msgstr "ఫార్మేట్"
-
-#: ../rednotebook/gui/main_window.py:767
-msgid "Format the selected text or category entry"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:816
-msgid "First Item"
-msgstr "మొదటి అంశం"
-
-#: ../rednotebook/gui/main_window.py:817
-msgid "Second Item"
-msgstr "రెండవ అంశం"
-
-#: ../rednotebook/gui/main_window.py:818
-msgid "Indented Item"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:819
-msgid "Two blank lines close the list"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:823
-msgid "Title text"
-msgstr "శీర్షిక పాఠ్యం"
-
-#: ../rednotebook/gui/main_window.py:847
-msgid "Picture"
-msgstr "చిత్రము"
-
-#: ../rednotebook/gui/main_window.py:848
-msgid "Insert an image from the harddisk"
-msgstr "హార్డ్‍డిస్కు నుంచి ఒక చిత్రాన్ని చొప్పించు"
-
-#: ../rednotebook/gui/main_window.py:850
-msgid "File"
-msgstr "ఫైల్"
-
-#: ../rednotebook/gui/main_window.py:851
-msgid "Insert a link to a file"
-msgstr ""
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:854
-msgid "_Link"
-msgstr "లింకు (_L)"
-
-#: ../rednotebook/gui/main_window.py:855
-msgid "Insert a link to a website"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:857
-msgid "Bullet List"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:859
-msgid "Numbered List"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:861
-msgid "Title"
-msgstr "శీర్షిక"
-
-#: ../rednotebook/gui/main_window.py:863
-msgid "Line"
-msgstr "వరుస"
-
-#: ../rednotebook/gui/main_window.py:864
-msgid "Insert a separator line"
-msgstr "ఒక వేరుచేయి గీతను పెట్టు"
-
-#: ../rednotebook/gui/main_window.py:866
-msgid "Table"
-msgstr "పట్టిక"
-
-#: ../rednotebook/gui/main_window.py:868
-msgid "Date/Time"
-msgstr "తేదీ/సమయం"
-
-#: ../rednotebook/gui/main_window.py:869
-msgid "Insert the current date and time (edit format in preferences)"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:871
-msgid "Line Break"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:872
-msgid "Insert a manual line break"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:895
-msgid "Insert"
-msgstr "చేర్చు"
-
-#: ../rednotebook/gui/main_window.py:899
-msgid "Insert images, files, links and other content"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:980
-msgid "No link location has been entered"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:1140
-msgid "Search ..."
-msgstr "వెతుకు ..."
-
-#: ../rednotebook/gui/main_window.py:1227 ../rednotebook/gui/clouds.py:137
-msgid "filter, these, comma, separated, words"
-msgstr ""
-
-#. ## Translators: These are example whitelist words with 4 or less letters
-#: ../rednotebook/gui/main_window.py:1233 ../rednotebook/gui/clouds.py:142
-msgid "mtv, spam, work, job, play"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:1290
-msgid "Hide selected words"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:1350
-msgid "Date"
-msgstr "తేదీ"
-
-#: ../rednotebook/gui/main_window.py:1351
-#: ../rednotebook/gui/main_window.py:1392
-#: ../rednotebook/gui/main_window.py:1400 tmp/main_window.glade.h:42
-msgid "Text"
-msgstr "పాఠ్యం"
-
-#: ../rednotebook/gui/main_window.py:1396
-msgid "Entry"
-msgstr ""
-
-#: ../rednotebook/gui/clouds.py:230
-#, python-format
-msgid "Hide \"%s\" from clouds"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:52 ../rednotebook/gui/exports.py:383
-msgid "Export all days"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:53
-msgid "Export only the days in the selected time range"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:60
-msgid "From:"
-msgstr "నుండి:"
-
-#: ../rednotebook/gui/exports.py:62
-msgid "To:"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:121
-msgid "Export texts"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:122
-msgid "Export all categories"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:123
-msgid "Do not export categories"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:125
-msgid "Export only the selected categories"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:135
-msgid "Available Categories"
-msgstr "అందుబాటులో ఉన్న విభాగాలు"
-
-#: ../rednotebook/gui/exports.py:143
-msgid "Selected Categories"
-msgstr "ఎంపికచేసిన విభాగాలు"
-
-#: ../rednotebook/gui/exports.py:149
-msgid "Select"
-msgstr "ఎంచుకోండి"
-
-#: ../rednotebook/gui/exports.py:150
-msgid "Unselect"
-msgstr "ఎంపికనురద్దుచేయి"
-
-#: ../rednotebook/gui/exports.py:254
-msgid ""
-"If export text is not selected, you have to select at least one category."
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:278
-msgid "You have selected the following settings:"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:303
-msgid "Export Assistant"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:305
-msgid "Welcome to the Export Assistant."
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:306
-msgid "This wizard will help you to export your journal to various formats."
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:307
-msgid ""
-"You can select the days you want to export and where the output will be "
-"saved."
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:317
-msgid "Select Export Format"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:322
-msgid "Select Date Range"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:327
-msgid "Select Contents"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:333
-msgid "Select Export Path"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:338
-msgid "Summary"
-msgstr "సారాంశం"
-
-#: ../rednotebook/gui/exports.py:386
-msgid "Start date"
-msgstr "ప్రారంభ తేదీ"
-
-#: ../rednotebook/gui/exports.py:387
-msgid "End date"
-msgstr "ముగింపు తేదీ"
-
-#: ../rednotebook/gui/exports.py:389
-msgid "Export text"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:390
-msgid "Selected categories"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:391
-msgid "Export path"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:395
-msgid "Yes"
-msgstr "అవును"
-
-#: ../rednotebook/gui/exports.py:395
-msgid "No"
-msgstr "వద్దు"
-
-#: ../rednotebook/gui/exports.py:438
-#, python-format
-msgid "Content exported to %s"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:534
-msgid "requires pywebkitgtk"
-msgstr ""
-
-#: ../rednotebook/templates.py:93
-msgid ""
-"=== Meeting ===\n"
-"\n"
-"Purpose, date, and place\n"
-"\n"
-"**Present:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Agenda:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Discussion, Decisions, Assignments:**\n"
-"+\n"
-"+\n"
-"+\n"
-"==================================\n"
-msgstr ""
-
-#: ../rednotebook/templates.py:117
-msgid ""
-"=== Journey ===\n"
-"**Date:**\n"
-"\n"
-"**Location:**\n"
-"\n"
-"**Participants:**\n"
-"\n"
-"**The trip:**\n"
-"First we went to xxxxx then we got to yyyyy ...\n"
-"\n"
-"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
-msgstr ""
-
-#: ../rednotebook/templates.py:131
-msgid ""
-"==================================\n"
-"=== Phone Call ===\n"
-"- **Person:**\n"
-"- **Time:**\n"
-"- **Topic:**\n"
-"- **Outcome and Follow up:**\n"
-"==================================\n"
-msgstr ""
-
-#: ../rednotebook/templates.py:141
-msgid ""
-"=====================================\n"
-"=== Personal ===\n"
-"\n"
-"+\n"
-"+\n"
-"+\n"
-"========================\n"
-"\n"
-"**How was the Day?**\n"
-"\n"
-"\n"
-"========================\n"
-"**What needs to be changed?**\n"
-"+\n"
-"+\n"
-"+\n"
-"=====================================\n"
-msgstr ""
-
-#: ../rednotebook/templates.py:199
-msgid "Choose Template Name"
-msgstr ""
-
-#: ../rednotebook/templates.py:351 ../rednotebook/templates.py:360
-msgid "This Weekday's Template"
-msgstr ""
-
-#: ../rednotebook/templates.py:354
-msgid "Edit Template"
-msgstr ""
-
-#: ../rednotebook/templates.py:357
-msgid "Insert Template"
-msgstr ""
-
-#: ../rednotebook/templates.py:363
-msgid "Create New Template"
-msgstr ""
-
-#: ../rednotebook/templates.py:367
-msgid "Open Template Directory"
-msgstr ""
-
-#: ../rednotebook/util/utils.py:249
-#, python-format
-msgid "You have version <b>%s</b>."
-msgstr ""
-
-#: ../rednotebook/util/utils.py:250
-#, python-format
-msgid "The latest version is <b>%s</b>."
-msgstr ""
-
-#: ../rednotebook/util/utils.py:251
-msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
-
-#: ../rednotebook/util/utils.py:258
-msgid "Do not ask again"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:81 ../rednotebook/util/statistics.py:94
-#: tmp/main_window.glade.h:44
-msgid "Words"
-msgstr "పదాలు"
-
-#: ../rednotebook/util/statistics.py:82
-msgid "Distinct Words"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:83
-msgid "Edited Days"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:84 ../rednotebook/util/statistics.py:96
-msgid "Letters"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:85
-msgid "Days between first and last Entry"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:86
-msgid "Average number of Words"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:87
-msgid "Percentage of edited Days"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:95
-msgid "Lines"
-msgstr ""
-
-#: ../rednotebook/journal.py:382
-#, python-format
-msgid "The content has been saved to %s"
-msgstr ""
-
-#: ../rednotebook/journal.py:385
-msgid "Nothing to save"
-msgstr ""
-
-#: ../rednotebook/journal.py:393
-msgid "Configuration could not be saved. Please check your permissions"
-msgstr ""
-
-#: ../rednotebook/journal.py:424
-msgid "The selected folder is not empty."
-msgstr ""
-
-#: ../rednotebook/journal.py:425
-msgid ""
-"To prevent you from overwriting data, the folder content has been imported "
-"into the new journal."
-msgstr ""
-
-#: ../rednotebook/journal.py:428
-msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
-
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
 msgid "<b>General</b>"
@@ -981,11 +1055,11 @@ msgid "<b>Write entry</b>"
 msgstr ""
 
 #: tmp/main_window.glade.h:9
-msgid "Annotate"
+msgid "Add an entry to a new or existing category"
 msgstr ""
 
-#: tmp/main_window.glade.h:11
-msgid "Category"
+#: tmp/main_window.glade.h:10
+msgid "Annotate"
 msgstr ""
 
 #: tmp/main_window.glade.h:12
@@ -993,15 +1067,15 @@ msgid "Clouds"
 msgstr ""
 
 #: tmp/main_window.glade.h:13
-msgid "Delete"
-msgstr ""
-
-#: tmp/main_window.glade.h:14
 msgid "Edit"
 msgstr "సవరించు"
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:14
 msgid "Enable text editing (Ctrl+P)"
+msgstr ""
+
+#: tmp/main_window.glade.h:15
+msgid "Everywhere"
 msgstr ""
 
 #: tmp/main_window.glade.h:16
@@ -1014,76 +1088,80 @@ msgid "General"
 msgstr "సాధారణ"
 
 #: tmp/main_window.glade.h:19
-msgid "Go to next day (Ctrl+PageUp)"
+msgid "Give this day a tag"
 msgstr ""
 
 #: tmp/main_window.glade.h:20
-msgid "Go to previous day (Ctrl+PageDown)"
+msgid "Go to next day (Ctrl+PageUp)"
 msgstr ""
 
 #: tmp/main_window.glade.h:21
-msgid "Insert Link"
+msgid "Go to previous day (Ctrl+PageDown)"
 msgstr ""
 
 #: tmp/main_window.glade.h:22
+msgid "Insert Link"
+msgstr ""
+
+#: tmp/main_window.glade.h:23
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:24
 msgid "Jump to today"
 msgstr ""
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:25
 msgid "New entry"
 msgstr ""
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:26
 msgid "Preferences"
 msgstr "ప్రాధాన్యతలు"
 
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:29
 msgid "Search"
 msgstr "వెతుకు"
 
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:30
 msgid "Search in entries, categories and tags"
 msgstr ""
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:31
 msgid "Select a cloud"
 msgstr ""
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:32
 msgid "Select a directory"
 msgstr ""
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:33
 msgid "Select a file"
 msgstr ""
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:34
 msgid "Select a picture"
 msgstr ""
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:35
 msgid "Select backup filename"
 msgstr ""
 
-#: tmp/main_window.glade.h:35
+#: tmp/main_window.glade.h:36
 msgid "Select where to search"
 msgstr ""
 
-#: tmp/main_window.glade.h:36
+#: tmp/main_window.glade.h:37
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr ""
 
 #. ## This stands for the verb in "Tag this day"
-#: tmp/main_window.glade.h:39
+#: tmp/main_window.glade.h:40
 msgid "Tag"
 msgstr ""
 
-#: tmp/main_window.glade.h:41
+#: tmp/main_window.glade.h:42
 msgid "Template"
 msgstr ""
 

@@ -7,21 +7,893 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-03-28 14:12+0200\n"
-"PO-Revision-Date: 2011-06-16 17:09+0000\n"
-"Last-Translator: Iñigo Varela <malditoastur@gmail.com>\n"
+"POT-Creation-Date: 2011-09-29 12:55+0200\n"
+"PO-Revision-Date: 2011-09-29 23:31+0000\n"
+"Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-07-28 04:36+0000\n"
-"X-Generator: Launchpad (build 13405)\n"
+"X-Launchpad-Export-Date: 2011-09-30 04:41+0000\n"
+"X-Generator: Launchpad (build 14071)\n"
+
+#: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
+msgid "Export all days"
+msgstr "Esportar tolos díes"
+
+#: ../rednotebook/gui/exports.py:52
+msgid "Export currently visible day"
+msgstr "Esportar día visible actual"
+
+#: ../rednotebook/gui/exports.py:55
+msgid "Export days in the selected time range"
+msgstr "Esportar díes nel rangu de tiempu seleicionáu"
+
+#: ../rednotebook/gui/exports.py:63
+msgid "From:"
+msgstr "De:"
+
+#: ../rednotebook/gui/exports.py:65
+msgid "To:"
+msgstr "A:"
+
+#: ../rednotebook/gui/exports.py:126
+msgid "Date format"
+msgstr "Formatu de data"
+
+#: ../rednotebook/gui/exports.py:127
+msgid "Leave blank to omit dates in export"
+msgstr "Dexar en blanco para saltase les feches na esportación"
+
+#: ../rednotebook/gui/exports.py:129
+msgid "Export texts"
+msgstr "Esportar testos"
+
+#: ../rednotebook/gui/exports.py:130
+msgid "Export all categories"
+msgstr "Esportar toles categoríes"
+
+#: ../rednotebook/gui/exports.py:131
+msgid "Do not export categories"
+msgstr "Nun esportar categoríes"
+
+#: ../rednotebook/gui/exports.py:133
+msgid "Export only the selected categories"
+msgstr "Esportar namái les categoríes seleicionaes"
+
+#: ../rednotebook/gui/exports.py:144
+msgid "Available Categories"
+msgstr "Categoríes Disponibles"
+
+#: ../rednotebook/gui/exports.py:152
+msgid "Selected Categories"
+msgstr "Categoríes Seleicionaes"
+
+#: ../rednotebook/gui/exports.py:158
+msgid "Select"
+msgstr "Seleicionar"
+
+#: ../rednotebook/gui/exports.py:159
+msgid "Deselect"
+msgstr "Desescoyer"
+
+#: ../rednotebook/gui/exports.py:262
+msgid ""
+"If export text is not selected, you have to select at least one category."
+msgstr ""
+"Si'l testu a esportar nun ta seleicionáu tienes d'escoyer polo menos una "
+"categoría."
+
+#: ../rednotebook/gui/exports.py:286
+msgid "You have selected the following settings:"
+msgstr "Seleicionasti los siguientes axustes:"
+
+#: ../rednotebook/gui/exports.py:311
+msgid "Export Assistant"
+msgstr "Asistente d'Esportación"
+
+#: ../rednotebook/gui/exports.py:313
+msgid "Welcome to the Export Assistant."
+msgstr "Afáyate nel Asistente d'Esportación"
+
+#: ../rednotebook/gui/exports.py:314
+msgid "This wizard will help you to export your journal to various formats."
+msgstr "Esti asistente ayuda a esportar el diariu a dellos formatos."
+
+#: ../rednotebook/gui/exports.py:315
+msgid ""
+"You can select the days you want to export and where the output will be "
+"saved."
+msgstr "Pues esbillar los díes que quies esportar y ónde lo guardar."
+
+#: ../rednotebook/gui/exports.py:325
+msgid "Select Export Format"
+msgstr "Seleicionar formatu d'esportación"
+
+#: ../rednotebook/gui/exports.py:330
+msgid "Select Date Range"
+msgstr "Seleicionar rangu de dates"
+
+#: ../rednotebook/gui/exports.py:335
+msgid "Select Contents"
+msgstr "Seleicionar conteníos"
+
+#: ../rednotebook/gui/exports.py:341
+msgid "Select Export Path"
+msgstr "Seleicionar camín d'esportación"
+
+#: ../rednotebook/gui/exports.py:346
+msgid "Summary"
+msgstr "Resume"
+
+#. ## Translators: noun
+#: ../rednotebook/gui/exports.py:390 ../rednotebook/gui/main_window.py:709
+msgid "Format"
+msgstr "Formatu"
+
+#: ../rednotebook/gui/exports.py:394
+msgid "Start date"
+msgstr "Data d'aniciu"
+
+#: ../rednotebook/gui/exports.py:395
+msgid "End date"
+msgstr "Data final"
+
+#: ../rednotebook/gui/exports.py:397
+msgid "Export text"
+msgstr "Esportar testu"
+
+#: ../rednotebook/gui/exports.py:398
+msgid "Selected categories"
+msgstr "Categoríes seleicionaes"
+
+#: ../rednotebook/gui/exports.py:399
+msgid "Export path"
+msgstr "Camín pa la esportación"
+
+#: ../rednotebook/gui/exports.py:403
+msgid "Yes"
+msgstr "Sí"
+
+#: ../rednotebook/gui/exports.py:403
+msgid "No"
+msgstr "Non"
+
+#: ../rednotebook/gui/exports.py:441
+#, python-format
+msgid "Content exported to %s"
+msgstr "Conteníu esportáu a %s"
+
+#: ../rednotebook/gui/exports.py:536
+msgid "requires pywebkitgtk"
+msgstr "requier pywebkitgtk"
+
+#: ../rednotebook/gui/clouds.py:130
+msgid "filter, these, comma, separated, words"
+msgstr "peñerar, estes, pallabres, separtaes, per, comes"
+
+#: ../rednotebook/gui/clouds.py:135
+msgid "mtv, spam, work, job, play"
+msgstr "mtv, spam, tayu"
+
+#: ../rednotebook/gui/clouds.py:223
+#, python-format
+msgid "Hide \"%s\" from clouds"
+msgstr "Anubrir «%s» de la nube"
+
+#: ../rednotebook/gui/customwidgets.py:378
+msgid "Introduction"
+msgstr "Introducción"
+
+#: ../rednotebook/gui/options.py:84
+msgid "Load RedNotebook at startup"
+msgstr "Cargar RedNotebook al aniciar"
+
+#: ../rednotebook/gui/options.py:154
+msgid "%A, %x, Day %j"
+msgstr "%A, %x, Día %j"
+
+#: ../rednotebook/gui/options.py:154
+msgid "Week %W of Year %Y"
+msgstr "Selmana %W del añu %Y"
+
+#: ../rednotebook/gui/options.py:155
+msgid "Day %j"
+msgstr "Día %j"
+
+#: ../rednotebook/gui/options.py:160
+msgid "Help"
+msgstr "Ayuda"
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/options.py:181
+msgid "Preview:"
+msgstr "Vista previa:"
+
+#: ../rednotebook/gui/options.py:290
+msgid "Close to system tray"
+msgstr "Zarrar a la bandexa del sistema"
+
+#: ../rednotebook/gui/options.py:291
+msgid "Closing the window will send RedNotebook to the tray"
+msgstr "Zarrar la ventana unviará a RedNotebook a la bandexa"
+
+#: ../rednotebook/gui/options.py:294
+msgid "Underline misspelled words"
+msgstr "Sorrayar pallabres con faltes d'ortografía"
+
+#: ../rednotebook/gui/options.py:295
+msgid "Requires gtkspell."
+msgstr "Requier de gtkspell."
+
+#: ../rednotebook/gui/options.py:296
+msgid ""
+"This is included in the python-gtkspell or python-gnome2-extras package"
+msgstr "Inclúise nel paquete python-gtkspell o python-gnome2-extras"
+
+#: ../rednotebook/gui/options.py:297
+msgid "Check Spelling"
+msgstr "Comprobar ortografía"
+
+#: ../rednotebook/gui/options.py:305
+msgid "Check for new version at startup"
+msgstr "Verificar si esiste una versión nueva al aniciar"
+
+#: ../rednotebook/gui/options.py:312
+msgid "Check now"
+msgstr "Comprobar agora"
+
+#: ../rednotebook/gui/options.py:317
+msgid "Font Size"
+msgstr "Tamañu de Fonte"
+
+#: ../rednotebook/gui/options.py:318
+msgid "Date/Time format"
+msgstr "Formatu de Data/Hora"
+
+#: ../rednotebook/gui/options.py:319
+msgid "Exclude from clouds"
+msgstr "Escluyir de la ñube de pallabres"
+
+#: ../rednotebook/gui/options.py:320
+msgid "Do not show those comma separated words in any cloud"
+msgstr "Nun amosar les pallabres separtaes per comes en denguna ñube"
+
+#: ../rednotebook/gui/options.py:321
+msgid "Allow small words in clouds"
+msgstr "Permite pallabres curties nes ñubes de pallabres"
+
+#: ../rednotebook/gui/options.py:322
+msgid "Allow those words with 4 letters or less in the text cloud"
+msgstr ""
+"Permite nes ñubes de pallabres les siguientes pallabres de menos de cuatro "
+"lletres"
+
+#: ../rednotebook/gui/menu.py:92
+msgid "_Journal"
+msgstr "_Diariu"
+
+#: ../rednotebook/gui/menu.py:94
+msgid "Create a new journal. The old one will be saved"
+msgstr "Facer un diariu nuevu. L'antiguu va guardase."
+
+#: ../rednotebook/gui/menu.py:97
+msgid "Load an existing journal. The old journal will be saved"
+msgstr "Cargar un diariu esistente. L'antiguu va guardase."
+
+#: ../rednotebook/gui/menu.py:102
+msgid ""
+"Save journal at a new location. The old journal files will also be saved"
+msgstr ""
+"Guardar diariu nún nuevu allugamientu. L'antiguu diariu va guardase tamién."
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:105
+msgid "Import"
+msgstr "Importar"
+
+#: ../rednotebook/gui/menu.py:106
+msgid "Open the import assistant"
+msgstr "Abrir l'asistente d'importación"
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:108
+msgid "Export"
+msgstr "Esportar"
+
+#: ../rednotebook/gui/menu.py:109
+msgid "Open the export assistant"
+msgstr "Abrir l'asistente d'esportación"
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:111 ../rednotebook/backup.py:61
+msgid "Backup"
+msgstr "Copia de seguridá"
+
+#: ../rednotebook/gui/menu.py:112
+msgid "Save all the data in a zip archive"
+msgstr "Guardar tolos datos nun archivu zip"
+
+#: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:38
+msgid "Statistics"
+msgstr "Estadístiques"
+
+#: ../rednotebook/gui/menu.py:114
+msgid "Show some statistics about the journal"
+msgstr "Amosar delles estadístiques del diariu"
+
+#: ../rednotebook/gui/menu.py:116
+msgid "Shutdown RedNotebook. It will not be sent to the tray."
+msgstr "Zarrar RedNotebook. Nun va unviase a la bandexa."
+
+#: ../rednotebook/gui/menu.py:119
+msgid "_Edit"
+msgstr "_Editar"
+
+#: ../rednotebook/gui/menu.py:121
+msgid "Undo text edits or category entry deletions"
+msgstr "Desfacer ediciones de testu o desanicios d'entraes de categoría"
+
+#: ../rednotebook/gui/menu.py:123
+msgid "Redo text edits or category entry additions"
+msgstr "Refacer ediciones de testu o ingresos d'entraes a categoría"
+
+#: ../rednotebook/gui/menu.py:137
+msgid "_Help"
+msgstr "_Ayuda"
+
+#: ../rednotebook/gui/menu.py:138
+msgid "Contents"
+msgstr "Conteníos"
+
+#: ../rednotebook/gui/menu.py:139
+msgid "Open the RedNotebook documentation"
+msgstr "Abrir la documentación de RedNotebook"
+
+#: ../rednotebook/gui/menu.py:140
+msgid "Get Help Online"
+msgstr "Consiguir ayuda en llinia"
+
+#: ../rednotebook/gui/menu.py:141
+msgid "Browse answered questions or ask a new one"
+msgstr "Guetar entrugues respondíes o facer una nueva"
+
+#: ../rednotebook/gui/menu.py:142
+msgid "Translate RedNotebook"
+msgstr "Traducir RedNotebook"
+
+#: ../rednotebook/gui/menu.py:143
+msgid "Connect to the Launchpad website to help translate RedNotebook"
+msgstr "Coneutar col sitiu web Launchpad p'ayudar a traducir RedNotebook"
+
+#: ../rednotebook/gui/menu.py:145
+msgid "Report a Problem"
+msgstr "Informar d'un problema"
+
+#: ../rednotebook/gui/menu.py:146
+msgid "Fill out a short form about the problem"
+msgstr "Rellenar un pequeñu formulariu sobro'l problema"
+
+#: ../rednotebook/gui/menu.py:249 ../rednotebook/info.py:720
+msgid "RedNotebook Documentation"
+msgstr "Documentación de RedNotebook"
+
+#: ../rednotebook/gui/menu.py:269
+msgid "A Desktop Journal"
+msgstr "Un Diariu d'Escritoriu"
+
+#: ../rednotebook/gui/categories.py:51 ../rednotebook/util/markup.py:56
+#: tmp/main_window.glade.h:11
+msgid "Categories"
+msgstr "Categoríes"
+
+#: ../rednotebook/gui/categories.py:130 ../rednotebook/gui/categories.py:165
+msgid "Empty entries are not allowed"
+msgstr "Nun se permiten entraes ermes"
+
+#: ../rednotebook/gui/categories.py:158
+msgid "Empty category names are not allowed"
+msgstr "Nun se permiten nomes de categoría ermos"
+
+#: ../rednotebook/gui/categories.py:431
+msgid "Change this text"
+msgstr "Camudar esti testu"
+
+#: ../rednotebook/gui/categories.py:435
+msgid "Add a new entry"
+msgstr "Amestar una entrada nueva"
+
+#: ../rednotebook/gui/categories.py:439
+msgid "Delete this entry"
+msgstr "Esborrar esta entrada"
+
+#: ../rednotebook/gui/search.py:36
+msgid "Search ..."
+msgstr "Guetar ..."
+
+#: ../rednotebook/gui/search.py:104
+msgid "Date"
+msgstr "Data"
+
+#: ../rednotebook/gui/search.py:105 ../rednotebook/gui/search.py:146
+#: ../rednotebook/gui/search.py:154
+msgid "Text"
+msgstr "Testu"
+
+#: ../rednotebook/gui/search.py:150
+msgid "Entry"
+msgstr "Entrada"
+
+#: ../rednotebook/gui/main_window.py:287
+msgid "Show RedNotebook"
+msgstr "Amosar RedNotebook"
+
+#: ../rednotebook/gui/main_window.py:490
+msgid "Select an empty folder for your new journal"
+msgstr "Seleiciona una carpeta erma pal nuevu diariu"
+
+#: ../rednotebook/gui/main_window.py:491
+msgid "Journals are saved in a directory, not in a single file."
+msgstr "Los diarios guárdense nuna carpeta, non nun ficheru."
+
+#: ../rednotebook/gui/main_window.py:492
+msgid "The directory name will be the title of the new journal."
+msgstr "El nome de la carpeta va ser el títulu del nuevu diariu."
+
+#: ../rednotebook/gui/main_window.py:496
+msgid "Select an existing journal directory"
+msgstr "Seleiciona la carpeta d'un diariu esistente"
+
+#: ../rednotebook/gui/main_window.py:498
+msgid "The directory should contain your journal's data files"
+msgstr "La carpeta tien de contener los ficheros del to diariu"
+
+#: ../rednotebook/gui/main_window.py:500
+msgid "Select an empty folder for the new location of your journal"
+msgstr "Seleiciona una carpeta erma pa la nueva llocalización del diariu"
+
+#: ../rednotebook/gui/main_window.py:502
+msgid "The directory name will be the new title of the journal"
+msgstr "El nome de la carpeta va ser el nuevu títulu del diariu"
+
+#. ## Translators: The default journal is located at $HOME/.rednotebook/data
+#: ../rednotebook/gui/main_window.py:524
+msgid "The default journal has been opened"
+msgstr "Abrióse'l diariu predefiníu"
+
+#. ## Translators: The Control (Ctrl) key
+#: ../rednotebook/gui/main_window.py:687
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: ../rednotebook/gui/main_window.py:690
+msgid "Bold"
+msgstr "Negrina"
+
+#: ../rednotebook/gui/main_window.py:691
+msgid "Italic"
+msgstr "Cursiva"
+
+#: ../rednotebook/gui/main_window.py:692
+msgid "Underline"
+msgstr "Sorrayáu"
+
+#: ../rednotebook/gui/main_window.py:693
+msgid "Strikethrough"
+msgstr "Tacháu"
+
+#: ../rednotebook/gui/main_window.py:710
+msgid "Format the selected text or category entry"
+msgstr "Dar formatu al testu seleicionáu o a la categoría de la entrada"
+
+#: ../rednotebook/gui/main_window.py:759
+msgid "First Item"
+msgstr "Primer Elementu"
+
+#: ../rednotebook/gui/main_window.py:760
+msgid "Second Item"
+msgstr "Segundu Elementu"
+
+#: ../rednotebook/gui/main_window.py:761
+msgid "Indented Item"
+msgstr "Elementu Sangráu"
+
+#: ../rednotebook/gui/main_window.py:762
+msgid "Two blank lines close the list"
+msgstr "Dos llinies en blanco zarren la llista"
+
+#: ../rednotebook/gui/main_window.py:766
+msgid "Title text"
+msgstr "Testu del títulu"
+
+#: ../rednotebook/gui/main_window.py:790
+msgid "Picture"
+msgstr "Imaxe"
+
+#: ../rednotebook/gui/main_window.py:791
+msgid "Insert an image from the harddisk"
+msgstr "Inxertar una imaxe dende'l discu"
+
+#: ../rednotebook/gui/main_window.py:793
+msgid "File"
+msgstr "Ficheru"
+
+#: ../rednotebook/gui/main_window.py:794
+msgid "Insert a link to a file"
+msgstr "Inxertar un enllaz a un ficheru"
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/main_window.py:797
+msgid "_Link"
+msgstr "_Enllaz"
+
+#: ../rednotebook/gui/main_window.py:798
+msgid "Insert a link to a website"
+msgstr "Inxertar un enllaz a un sitiu web"
+
+#: ../rednotebook/gui/main_window.py:800
+msgid "Bullet List"
+msgstr "Llista de viñetes"
+
+#: ../rednotebook/gui/main_window.py:802
+msgid "Numbered List"
+msgstr "Llista numberada"
+
+#: ../rednotebook/gui/main_window.py:804
+msgid "Title"
+msgstr "Títulu"
+
+#: ../rednotebook/gui/main_window.py:806
+msgid "Line"
+msgstr "Llinia"
+
+#: ../rednotebook/gui/main_window.py:807
+msgid "Insert a separator line"
+msgstr "Inxertar un separtador de llinia"
+
+#: ../rednotebook/gui/main_window.py:809
+msgid "Table"
+msgstr "Tabla"
+
+#: ../rednotebook/gui/main_window.py:811
+msgid "Date/Time"
+msgstr "Data/Hora"
+
+#: ../rednotebook/gui/main_window.py:812
+msgid "Insert the current date and time (edit format in preferences)"
+msgstr "Inxertar la data y hora actual (edita'l formatu en preferencies)"
+
+#: ../rednotebook/gui/main_window.py:814
+msgid "Line Break"
+msgstr "Saltu de Llinia"
+
+#: ../rednotebook/gui/main_window.py:815
+msgid "Insert a manual line break"
+msgstr "Inxertar un saltu de llinia manual"
+
+#: ../rednotebook/gui/main_window.py:838
+msgid "Insert"
+msgstr "Inxertar"
+
+#: ../rednotebook/gui/main_window.py:842
+msgid "Insert images, files, links and other content"
+msgstr "Inxertar imáxenes, ficheros, enllaces y otru conteníu"
+
+#: ../rednotebook/gui/main_window.py:923
+msgid "No link location has been entered"
+msgstr "Nun s'indicó una direición pal enllaz"
+
+#: ../rednotebook/backup.py:55
+msgid "It has been a while since you made your last backup."
+msgstr "Yá pasó un tiempu dende que ficisti la cabera copia de seguridá."
+
+#: ../rednotebook/backup.py:56
+msgid "You can backup your journal to a zip file to avoid data loss."
+msgstr ""
+"Pues facer copies de seguridá del diariu nún archivu .zip pa prevenir perdes "
+"de datos."
+
+#: ../rednotebook/backup.py:63
+msgid "Backup now"
+msgstr "Facer copia de seguridá agora"
+
+#: ../rednotebook/backup.py:64
+msgid "Ask at next start"
+msgstr "Entrugar nel siguiente aniciu"
+
+#: ../rednotebook/backup.py:65
+msgid "Never ask again"
+msgstr "Nun volver a entrugar más"
+
+#: ../rednotebook/templates.py:31
+msgid "Monday"
+msgstr "Llunes"
+
+#: ../rednotebook/templates.py:31
+msgid "Tuesday"
+msgstr "Martes"
+
+#: ../rednotebook/templates.py:31
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#: ../rednotebook/templates.py:31
+msgid "Thursday"
+msgstr "Xueves"
+
+#: ../rednotebook/templates.py:32
+msgid "Friday"
+msgstr "Vienres"
+
+#: ../rednotebook/templates.py:32
+msgid "Saturday"
+msgstr "Sábadu"
+
+#: ../rednotebook/templates.py:32
+msgid "Sunday"
+msgstr "Domingu"
+
+#: ../rednotebook/templates.py:104
+msgid ""
+"=== Meeting ===\n"
+"\n"
+"Purpose, date, and place\n"
+"\n"
+"**Present:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Discussion, Decisions, Assignments:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
+msgstr ""
+"=== Aconceyamientu ===\n"
+"\n"
+"Envís, data y llugar\n"
+"\n"
+"**Presentes:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Axenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Alderique, Decisiones, Encargos:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
+
+#: ../rednotebook/templates.py:128
+msgid ""
+"=== Journey ===\n"
+"**Date:**\n"
+"\n"
+"**Location:**\n"
+"\n"
+"**Participants:**\n"
+"\n"
+"**The trip:**\n"
+"First we went to xxxxx then we got to yyyyy ...\n"
+"\n"
+"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
+msgstr ""
+"=== Viaxe ===\n"
+"**Data:**\n"
+"\n"
+"**Llugar:**\n"
+"\n"
+"**Participantes:**\n"
+"\n"
+"**El viaxe:**\n"
+"Primero fuimos a xxxxx, darréu empobinamos pa yyyyy ...\n"
+"\n"
+"**Semeyes:** [Carpeta d'imaxes \"\"/camin/a/les/semeyes/\"\"]\n"
+
+#: ../rednotebook/templates.py:142
+msgid ""
+"==================================\n"
+"=== Phone Call ===\n"
+"- **Person:**\n"
+"- **Time:**\n"
+"- **Topic:**\n"
+"- **Outcome and Follow up:**\n"
+"==================================\n"
+msgstr ""
+"==================================\n"
+"=== Llamada de teléfonu ===\n"
+"- **Persona:**\n"
+"- **Hora:**\n"
+"- **Asuntu:**\n"
+"- **Resultáu y siguimientu:**\n"
+"==================================\n"
+
+#: ../rednotebook/templates.py:152
+msgid ""
+"=====================================\n"
+"=== Personal ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**How was the Day?**\n"
+"\n"
+"\n"
+"========================\n"
+"**What needs to be changed?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
+msgstr ""
+"=====================================\n"
+"=== Personal ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**¿Cómo fuera'l día?**\n"
+"\n"
+"\n"
+"========================\n"
+"**¿Qué tien de camudase?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
+
+#: ../rednotebook/templates.py:210
+msgid "Choose Template Name"
+msgstr "Escoyer nome de la plantía"
+
+#: ../rednotebook/templates.py:362 ../rednotebook/templates.py:371
+msgid "This Weekday's Template"
+msgstr "Plantía pa esta selmana"
+
+#: ../rednotebook/templates.py:365
+msgid "Edit Template"
+msgstr "Editar Plantía"
+
+#: ../rednotebook/templates.py:368
+msgid "Insert Template"
+msgstr "Inxertar Plantía"
+
+#: ../rednotebook/templates.py:374
+msgid "Create New Template"
+msgstr "Facer una Plantía Nueva"
+
+#: ../rednotebook/templates.py:378
+msgid "Open Template Directory"
+msgstr "Abrir carpeta de Plantía"
+
+#: ../rednotebook/util/utils.py:173
+#, python-format
+msgid "You have version <b>%s</b>."
+msgstr "La versión que tienes ye la <b>%s</b>."
+
+#: ../rednotebook/util/utils.py:174
+#, python-format
+msgid "The latest version is <b>%s</b>."
+msgstr "La cabera versión ye la <b>%s</b>."
+
+#: ../rednotebook/util/utils.py:175
+msgid "Do you want to visit the RedNotebook homepage?"
+msgstr "¿Quies visitar la páxina web de RedNotebook?"
+
+#: ../rednotebook/util/utils.py:182
+msgid "Do not ask again"
+msgstr "Nun entrugar más"
+
+#: ../rednotebook/util/dates.py:58
+msgid "Incorrect date format"
+msgstr "Formatu de data incorreutu"
+
+#: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
+#: tmp/main_window.glade.h:44
+msgid "Words"
+msgstr "Pallabres"
+
+#: ../rednotebook/util/statistics.py:80
+msgid "Distinct Words"
+msgstr "Marcar pallabres"
+
+#: ../rednotebook/util/statistics.py:81
+msgid "Edited Days"
+msgstr "Díes editaos"
+
+#: ../rednotebook/util/statistics.py:82 ../rednotebook/util/statistics.py:94
+msgid "Letters"
+msgstr "Lletres"
+
+#: ../rednotebook/util/statistics.py:83
+msgid "Days between first and last Entry"
+msgstr "Díes ente la primer y cabera entrada"
+
+#: ../rednotebook/util/statistics.py:84
+msgid "Average number of Words"
+msgstr "Númberu promediu de pallabres"
+
+#: ../rednotebook/util/statistics.py:85
+msgid "Percentage of edited Days"
+msgstr "Porcentaxe de díes editaos"
+
+#: ../rednotebook/util/statistics.py:93
+msgid "Lines"
+msgstr "Llinies"
+
+#: ../rednotebook/journal.py:272
+msgid "RedNotebook appears to be already running."
+msgstr "Paez que RedNotebook yá ta executándose."
+
+#: ../rednotebook/journal.py:273
+msgid ""
+"This can happen if the application is hidden in the system tray or was not "
+"shut down correctly."
+msgstr ""
+"Esto pue pasar si l'aplicación ta anubrida na bandexa del sistema o nun se "
+"zarró correutamente."
+
+#: ../rednotebook/journal.py:275
+msgid ""
+"Starting a second RedNotebook instance can lead to data loss and it might be "
+"best to see if there is another instance first."
+msgstr ""
+"Si s'abre una segunda instancia de RedNotebook podríen perdese datos y, "
+"seique, ye mejor ver primero si hai otra instancia abierta."
+
+#: ../rednotebook/journal.py:278
+msgid "Do you want to start a new RedNotebook instance nevertheless?"
+msgstr "¿Quies abrir otra instancia nueva de RedNotebook de toles maneres?"
+
+#: ../rednotebook/journal.py:361
+#, python-format
+msgid "The content has been saved to %s"
+msgstr "El conteníu guardóse en %s"
+
+#: ../rednotebook/journal.py:364
+msgid "Nothing to save"
+msgstr "Res que guardar"
+
+#: ../rednotebook/journal.py:397
+msgid "The selected folder is not empty."
+msgstr "La carpeta seleicionada nun ta erma."
+
+#: ../rednotebook/journal.py:398
+msgid ""
+"To prevent you from overwriting data, the folder content has been imported "
+"into the new journal."
+msgstr ""
+"Pa prevenir que se sobrescriban datos, el conteníu de la carpeta importóse "
+"nel nuevu diariu."
+
+#: ../rednotebook/journal.py:401
+msgid "The selected folder is empty. A new journal has been created."
+msgstr "La carpeta seleicionada ta erma. Creóse un diariu nuevu."
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
 msgstr "Idees"
 
-#: ../rednotebook/info.py:80 tmp/main_window.glade.h:40
+#: ../rednotebook/info.py:80 tmp/main_window.glade.h:41
 msgid "Tags"
 msgstr "Etiquetes"
 
@@ -119,7 +991,7 @@ msgstr "Anotaciones d'un día"
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:109 tmp/main_window.glade.h:27
+#: ../rednotebook/info.py:109 tmp/main_window.glade.h:28
 msgid "Preview"
 msgstr "Entever"
 
@@ -237,798 +1109,6 @@ msgstr "Inventar la Máquina-Anti-Resaques"
 msgid "Monty Python and the Holy Grail"
 msgstr "Monty Python y el Santu Grial"
 
-#: ../rednotebook/info.py:711 ../rednotebook/gui/menu.py:250
-msgid "RedNotebook Documentation"
-msgstr "Documentación de RedNotebook"
-
-#: ../rednotebook/gui/customwidgets.py:377
-msgid "Introduction"
-msgstr "Introducción"
-
-#: ../rednotebook/gui/menu.py:92
-msgid "_Journal"
-msgstr "_Diariu"
-
-#: ../rednotebook/gui/menu.py:94
-msgid "Create a new journal. The old one will be saved"
-msgstr "Facer un diariu nuevu. L'antiguu va guardase."
-
-#: ../rednotebook/gui/menu.py:97
-msgid "Load an existing journal. The old journal will be saved"
-msgstr "Cargar un diariu esistente. L'antiguu va guardase."
-
-#: ../rednotebook/gui/menu.py:102
-msgid ""
-"Save journal at a new location. The old journal files will also be saved"
-msgstr ""
-"Guardar diariu nún nuevu allugamientu. L'antiguu diariu va guardase tamién."
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:105
-msgid "Import"
-msgstr "Importar"
-
-#: ../rednotebook/gui/menu.py:106
-msgid "Open the import assistant"
-msgstr "Abrir l'asistente d'importación"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:108
-msgid "Export"
-msgstr "Esportar"
-
-#: ../rednotebook/gui/menu.py:109
-msgid "Open the export assistant"
-msgstr "Abrir l'asistente d'esportación"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:111
-msgid "Backup"
-msgstr "Copia de seguridá"
-
-#: ../rednotebook/gui/menu.py:112
-msgid "Save all the data in a zip archive"
-msgstr "Guardar tolos datos nun archivu zip"
-
-#: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:37
-msgid "Statistics"
-msgstr "Estadístiques"
-
-#: ../rednotebook/gui/menu.py:114
-msgid "Show some statistics about the journal"
-msgstr "Amosar delles estadístiques del diariu"
-
-#: ../rednotebook/gui/menu.py:116
-msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Zarrar RedNotebook. Nun va unviase a la bandexa."
-
-#: ../rednotebook/gui/menu.py:119
-msgid "_Edit"
-msgstr "_Editar"
-
-#: ../rednotebook/gui/menu.py:121
-msgid "Undo text edits or category entry deletions"
-msgstr "Desfacer ediciones de testu o desanicios d'entraes de categoría"
-
-#: ../rednotebook/gui/menu.py:123
-msgid "Redo text edits or category entry additions"
-msgstr "Refacer ediciones de testu o ingresos d'entraes a categoría"
-
-#: ../rednotebook/gui/menu.py:137
-msgid "_Help"
-msgstr "_Ayuda"
-
-#: ../rednotebook/gui/menu.py:138
-msgid "Contents"
-msgstr "Conteníos"
-
-#: ../rednotebook/gui/menu.py:139
-msgid "Open the RedNotebook documentation"
-msgstr "Abrir la documentación de RedNotebook"
-
-#: ../rednotebook/gui/menu.py:140
-msgid "Get Help Online"
-msgstr "Consiguir ayuda en llinia"
-
-#: ../rednotebook/gui/menu.py:141
-msgid "Visit the RedNotebook forum"
-msgstr "Visitar el foru de RedNotebook"
-
-#: ../rednotebook/gui/menu.py:142
-msgid "Translate RedNotebook"
-msgstr "Traducir RedNotebook"
-
-#: ../rednotebook/gui/menu.py:143
-msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Coneutar col sitiu web Launchpad p'ayudar a traducir RedNotebook"
-
-#: ../rednotebook/gui/menu.py:145
-msgid "Report a Problem"
-msgstr "Informar d'un problema"
-
-#: ../rednotebook/gui/menu.py:146
-msgid "Fill out a short form about the problem"
-msgstr "Rellenar un pequeñu formulariu sobro'l problema"
-
-#: ../rednotebook/gui/menu.py:270
-msgid "A Desktop Journal"
-msgstr "Un Diariu d'Escritoriu"
-
-#: ../rednotebook/gui/categories.py:50 ../rednotebook/util/markup.py:46
-#: tmp/main_window.glade.h:10
-msgid "Categories"
-msgstr "Categoríes"
-
-#: ../rednotebook/gui/categories.py:122 ../rednotebook/gui/categories.py:159
-msgid "Empty entries are not allowed"
-msgstr "Nun se permiten entraes ermes"
-
-#: ../rednotebook/gui/categories.py:152
-msgid "Empty category names are not allowed"
-msgstr "Nun se permiten nomes de categoría ermos"
-
-#: ../rednotebook/gui/categories.py:428
-msgid "Change this text"
-msgstr "Camudar esti testu"
-
-#: ../rednotebook/gui/categories.py:432
-msgid "Add a new entry"
-msgstr "Amestar una entrada nueva"
-
-#: ../rednotebook/gui/categories.py:436
-msgid "Delete this entry"
-msgstr "Esborrar esta entrada"
-
-#: ../rednotebook/gui/options.py:86
-msgid "Load RedNotebook at startup"
-msgstr "Cargar RedNotebook al aniciar"
-
-#: ../rednotebook/gui/options.py:156
-msgid "%A, %x, Day %j"
-msgstr "%A, %x, Día %j"
-
-#: ../rednotebook/gui/options.py:156
-msgid "Week %W of Year %Y"
-msgstr "Selmana %W del añu %Y"
-
-#: ../rednotebook/gui/options.py:157
-msgid "Day %j"
-msgstr "Día %j"
-
-#: ../rednotebook/gui/options.py:162
-msgid "Help"
-msgstr "Ayuda"
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/options.py:183
-msgid "Preview:"
-msgstr "Vista previa:"
-
-#: ../rednotebook/gui/options.py:292
-msgid "Close to system tray"
-msgstr "Zarrar a la bandexa del sistema"
-
-#: ../rednotebook/gui/options.py:293
-msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Zarrar la ventana unviará a RedNotebook a la bandexa"
-
-#: ../rednotebook/gui/options.py:296
-msgid "Underline misspelled words"
-msgstr "Sorrayar pallabres con faltes d'ortografía"
-
-#: ../rednotebook/gui/options.py:297
-msgid "Requires gtkspell."
-msgstr "Requier de gtkspell."
-
-#: ../rednotebook/gui/options.py:298
-msgid ""
-"This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr "Inclúise nel paquete python-gtkspell o python-gnome2-extras"
-
-#: ../rednotebook/gui/options.py:299
-msgid "Check Spelling"
-msgstr "Comprobar ortografía"
-
-#: ../rednotebook/gui/options.py:307
-msgid "Check for new version at startup"
-msgstr "Verificar si esiste una versión nueva al aniciar"
-
-#: ../rednotebook/gui/options.py:314
-msgid "Check now"
-msgstr "Comprobar agora"
-
-#: ../rednotebook/gui/options.py:319
-msgid "Font Size"
-msgstr "Tamañu de Fonte"
-
-#: ../rednotebook/gui/options.py:320
-msgid "Date/Time format"
-msgstr "Formatu de Data/Hora"
-
-#: ../rednotebook/gui/options.py:321
-msgid "Exclude from clouds"
-msgstr "Escluyir de la ñube de pallabres"
-
-#: ../rednotebook/gui/options.py:322
-msgid "Do not show those comma separated words in any cloud"
-msgstr "Nun amosar les pallabres separtaes per comes en denguna ñube"
-
-#: ../rednotebook/gui/options.py:323
-msgid "Allow small words in clouds"
-msgstr "Permite pallabres curties nes ñubes de pallabres"
-
-#: ../rednotebook/gui/options.py:324
-msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
-"Permite nes ñubes de pallabres les siguientes pallabres de menos de cuatro "
-"lletres"
-
-#: ../rednotebook/gui/main_window.py:323
-msgid "Show RedNotebook"
-msgstr "Amosar RedNotebook"
-
-#: ../rednotebook/gui/main_window.py:549
-msgid "Select an empty folder for your new journal"
-msgstr "Seleiciona una carpeta erma pal nuevu diariu"
-
-#: ../rednotebook/gui/main_window.py:550
-msgid "Journals are saved in a directory, not in a single file."
-msgstr "Los diarios guárdense nuna carpeta, non nun ficheru."
-
-#: ../rednotebook/gui/main_window.py:551
-msgid "The directory name will be the title of the new journal."
-msgstr "El nome de la carpeta va ser el títulu del nuevu diariu."
-
-#: ../rednotebook/gui/main_window.py:555
-msgid "Select an existing journal directory"
-msgstr "Seleiciona la carpeta d'un diariu esistente"
-
-#: ../rednotebook/gui/main_window.py:557
-msgid "The directory should contain your journal's data files"
-msgstr "La carpeta tien de contener los ficheros del to diariu"
-
-#: ../rednotebook/gui/main_window.py:559
-msgid "Select an empty folder for the new location of your journal"
-msgstr "Seleiciona una carpeta erma pa la nueva llocalización del diariu"
-
-#: ../rednotebook/gui/main_window.py:561
-msgid "The directory name will be the new title of the journal"
-msgstr "El nome de la carpeta va ser el nuevu títulu del diariu"
-
-#. ## Translators: The default journal is located at $HOME/.rednotebook/data
-#: ../rednotebook/gui/main_window.py:583
-msgid "The default journal has been opened"
-msgstr "Abrióse'l diariu predefiníu"
-
-#. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:744
-msgid "Ctrl"
-msgstr "Ctrl"
-
-#: ../rednotebook/gui/main_window.py:747
-msgid "Bold"
-msgstr "Negrina"
-
-#: ../rednotebook/gui/main_window.py:748
-msgid "Italic"
-msgstr "Cursiva"
-
-#: ../rednotebook/gui/main_window.py:749
-msgid "Underline"
-msgstr "Sorrayáu"
-
-#: ../rednotebook/gui/main_window.py:750
-msgid "Strikethrough"
-msgstr "Tacháu"
-
-#. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:766 ../rednotebook/gui/exports.py:382
-msgid "Format"
-msgstr "Formatu"
-
-#: ../rednotebook/gui/main_window.py:767
-msgid "Format the selected text or category entry"
-msgstr "Dar formatu al testu seleicionáu o a la categoría de la entrada"
-
-#: ../rednotebook/gui/main_window.py:816
-msgid "First Item"
-msgstr "Primer Elementu"
-
-#: ../rednotebook/gui/main_window.py:817
-msgid "Second Item"
-msgstr "Segundu Elementu"
-
-#: ../rednotebook/gui/main_window.py:818
-msgid "Indented Item"
-msgstr "Elementu Sangráu"
-
-#: ../rednotebook/gui/main_window.py:819
-msgid "Two blank lines close the list"
-msgstr "Dos llinies en blanco zarren la llista"
-
-#: ../rednotebook/gui/main_window.py:823
-msgid "Title text"
-msgstr "Testu del títulu"
-
-#: ../rednotebook/gui/main_window.py:847
-msgid "Picture"
-msgstr "Imaxe"
-
-#: ../rednotebook/gui/main_window.py:848
-msgid "Insert an image from the harddisk"
-msgstr "Inxertar una imaxe dende'l discu"
-
-#: ../rednotebook/gui/main_window.py:850
-msgid "File"
-msgstr "Ficheru"
-
-#: ../rednotebook/gui/main_window.py:851
-msgid "Insert a link to a file"
-msgstr "Inxertar un enllaz a un ficheru"
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:854
-msgid "_Link"
-msgstr "_Enllaz"
-
-#: ../rednotebook/gui/main_window.py:855
-msgid "Insert a link to a website"
-msgstr "Inxertar un enllaz a un sitiu web"
-
-#: ../rednotebook/gui/main_window.py:857
-msgid "Bullet List"
-msgstr "Llista de viñetes"
-
-#: ../rednotebook/gui/main_window.py:859
-msgid "Numbered List"
-msgstr "Llista numberada"
-
-#: ../rednotebook/gui/main_window.py:861
-msgid "Title"
-msgstr "Títulu"
-
-#: ../rednotebook/gui/main_window.py:863
-msgid "Line"
-msgstr "Llinia"
-
-#: ../rednotebook/gui/main_window.py:864
-msgid "Insert a separator line"
-msgstr "Inxertar un separtador de llinia"
-
-#: ../rednotebook/gui/main_window.py:866
-msgid "Table"
-msgstr "Tabla"
-
-#: ../rednotebook/gui/main_window.py:868
-msgid "Date/Time"
-msgstr "Data/Hora"
-
-#: ../rednotebook/gui/main_window.py:869
-msgid "Insert the current date and time (edit format in preferences)"
-msgstr "Inxertar la data y hora actual (edita'l formatu en preferencies)"
-
-#: ../rednotebook/gui/main_window.py:871
-msgid "Line Break"
-msgstr "Saltu de Llinia"
-
-#: ../rednotebook/gui/main_window.py:872
-msgid "Insert a manual line break"
-msgstr "Inxertar un saltu de llinia manual"
-
-#: ../rednotebook/gui/main_window.py:895
-msgid "Insert"
-msgstr "Inxertar"
-
-#: ../rednotebook/gui/main_window.py:899
-msgid "Insert images, files, links and other content"
-msgstr "Inxertar imáxenes, ficheros, enllaces y otru conteníu"
-
-#: ../rednotebook/gui/main_window.py:980
-msgid "No link location has been entered"
-msgstr "Nun s'indicó una direición pal enllaz"
-
-#: ../rednotebook/gui/main_window.py:1140
-msgid "Search ..."
-msgstr "Guetar ..."
-
-#: ../rednotebook/gui/main_window.py:1227 ../rednotebook/gui/clouds.py:137
-msgid "filter, these, comma, separated, words"
-msgstr "peñerar, estes, pallabres, separtaes, per, comes"
-
-#. ## Translators: These are example whitelist words with 4 or less letters
-#: ../rednotebook/gui/main_window.py:1233 ../rednotebook/gui/clouds.py:142
-msgid "mtv, spam, work, job, play"
-msgstr "mtv, spam, tayu"
-
-#: ../rednotebook/gui/main_window.py:1290
-msgid "Hide selected words"
-msgstr "Anubrir pallabres seleicionaes"
-
-#: ../rednotebook/gui/main_window.py:1350
-msgid "Date"
-msgstr "Data"
-
-#: ../rednotebook/gui/main_window.py:1351
-#: ../rednotebook/gui/main_window.py:1392
-#: ../rednotebook/gui/main_window.py:1400 tmp/main_window.glade.h:42
-msgid "Text"
-msgstr "Testu"
-
-#: ../rednotebook/gui/main_window.py:1396
-msgid "Entry"
-msgstr "Entrada"
-
-#: ../rednotebook/gui/clouds.py:230
-#, python-format
-msgid "Hide \"%s\" from clouds"
-msgstr "Anubrir «%s» de la nube"
-
-#: ../rednotebook/gui/exports.py:52 ../rednotebook/gui/exports.py:383
-msgid "Export all days"
-msgstr "Esportar tolos díes"
-
-#: ../rednotebook/gui/exports.py:53
-msgid "Export only the days in the selected time range"
-msgstr "Esportar namái los díes del rangu temporal seleicionáu"
-
-#: ../rednotebook/gui/exports.py:60
-msgid "From:"
-msgstr "De:"
-
-#: ../rednotebook/gui/exports.py:62
-msgid "To:"
-msgstr "A:"
-
-#: ../rednotebook/gui/exports.py:121
-msgid "Export texts"
-msgstr "Esportar testos"
-
-#: ../rednotebook/gui/exports.py:122
-msgid "Export all categories"
-msgstr "Esportar toles categoríes"
-
-#: ../rednotebook/gui/exports.py:123
-msgid "Do not export categories"
-msgstr "Nun esportar categoríes"
-
-#: ../rednotebook/gui/exports.py:125
-msgid "Export only the selected categories"
-msgstr "Esportar namái les categoríes seleicionaes"
-
-#: ../rednotebook/gui/exports.py:135
-msgid "Available Categories"
-msgstr "Categoríes Disponibles"
-
-#: ../rednotebook/gui/exports.py:143
-msgid "Selected Categories"
-msgstr "Categoríes Seleicionaes"
-
-#: ../rednotebook/gui/exports.py:149
-msgid "Select"
-msgstr "Seleicionar"
-
-#: ../rednotebook/gui/exports.py:150
-msgid "Unselect"
-msgstr "Deseleicionar"
-
-#: ../rednotebook/gui/exports.py:254
-msgid ""
-"If export text is not selected, you have to select at least one category."
-msgstr ""
-"Si'l testu a esportar nun ta seleicionáu tienes d'escoyer polo menos una "
-"categoría."
-
-#: ../rednotebook/gui/exports.py:278
-msgid "You have selected the following settings:"
-msgstr "Seleicionasti los siguientes axustes:"
-
-#: ../rednotebook/gui/exports.py:303
-msgid "Export Assistant"
-msgstr "Asistente d'Esportación"
-
-#: ../rednotebook/gui/exports.py:305
-msgid "Welcome to the Export Assistant."
-msgstr "Afáyate nel Asistente d'Esportación"
-
-#: ../rednotebook/gui/exports.py:306
-msgid "This wizard will help you to export your journal to various formats."
-msgstr "Esti asistente ayuda a esportar el diariu a dellos formatos."
-
-#: ../rednotebook/gui/exports.py:307
-msgid ""
-"You can select the days you want to export and where the output will be "
-"saved."
-msgstr "Pues esbillar los díes que quies esportar y ónde lo guardar."
-
-#: ../rednotebook/gui/exports.py:317
-msgid "Select Export Format"
-msgstr "Seleicionar formatu d'esportación"
-
-#: ../rednotebook/gui/exports.py:322
-msgid "Select Date Range"
-msgstr "Seleicionar rangu de dates"
-
-#: ../rednotebook/gui/exports.py:327
-msgid "Select Contents"
-msgstr "Seleicionar conteníos"
-
-#: ../rednotebook/gui/exports.py:333
-msgid "Select Export Path"
-msgstr "Seleicionar camín d'esportación"
-
-#: ../rednotebook/gui/exports.py:338
-msgid "Summary"
-msgstr "Resume"
-
-#: ../rednotebook/gui/exports.py:386
-msgid "Start date"
-msgstr "Data d'aniciu"
-
-#: ../rednotebook/gui/exports.py:387
-msgid "End date"
-msgstr "Data final"
-
-#: ../rednotebook/gui/exports.py:389
-msgid "Export text"
-msgstr "Esportar testu"
-
-#: ../rednotebook/gui/exports.py:390
-msgid "Selected categories"
-msgstr "Categoríes seleicionaes"
-
-#: ../rednotebook/gui/exports.py:391
-msgid "Export path"
-msgstr "Camín pa la esportación"
-
-#: ../rednotebook/gui/exports.py:395
-msgid "Yes"
-msgstr "Sí"
-
-#: ../rednotebook/gui/exports.py:395
-msgid "No"
-msgstr "Non"
-
-#: ../rednotebook/gui/exports.py:438
-#, python-format
-msgid "Content exported to %s"
-msgstr "Conteníu esportáu a %s"
-
-#: ../rednotebook/gui/exports.py:534
-msgid "requires pywebkitgtk"
-msgstr "requier pywebkitgtk"
-
-#: ../rednotebook/templates.py:93
-msgid ""
-"=== Meeting ===\n"
-"\n"
-"Purpose, date, and place\n"
-"\n"
-"**Present:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Agenda:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Discussion, Decisions, Assignments:**\n"
-"+\n"
-"+\n"
-"+\n"
-"==================================\n"
-msgstr ""
-"=== Aconceyamientu ===\n"
-"\n"
-"Envís, data y llugar\n"
-"\n"
-"**Presentes:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Axenda:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Alderique, Decisiones, Encargos:**\n"
-"+\n"
-"+\n"
-"+\n"
-"==================================\n"
-
-#: ../rednotebook/templates.py:117
-msgid ""
-"=== Journey ===\n"
-"**Date:**\n"
-"\n"
-"**Location:**\n"
-"\n"
-"**Participants:**\n"
-"\n"
-"**The trip:**\n"
-"First we went to xxxxx then we got to yyyyy ...\n"
-"\n"
-"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
-msgstr ""
-"=== Viaxe ===\n"
-"**Data:**\n"
-"\n"
-"**Llugar:**\n"
-"\n"
-"**Participantes:**\n"
-"\n"
-"**El viaxe:**\n"
-"Primero fuimos a xxxxx, darréu empobinamos pa yyyyy ...\n"
-"\n"
-"**Semeyes:** [Carpeta d'imaxes \"\"/camin/a/les/semeyes/\"\"]\n"
-
-#: ../rednotebook/templates.py:131
-msgid ""
-"==================================\n"
-"=== Phone Call ===\n"
-"- **Person:**\n"
-"- **Time:**\n"
-"- **Topic:**\n"
-"- **Outcome and Follow up:**\n"
-"==================================\n"
-msgstr ""
-"==================================\n"
-"=== Llamada de teléfonu ===\n"
-"- **Persona:**\n"
-"- **Hora:**\n"
-"- **Asuntu:**\n"
-"- **Resultáu y siguimientu:**\n"
-"==================================\n"
-
-#: ../rednotebook/templates.py:141
-msgid ""
-"=====================================\n"
-"=== Personal ===\n"
-"\n"
-"+\n"
-"+\n"
-"+\n"
-"========================\n"
-"\n"
-"**How was the Day?**\n"
-"\n"
-"\n"
-"========================\n"
-"**What needs to be changed?**\n"
-"+\n"
-"+\n"
-"+\n"
-"=====================================\n"
-msgstr ""
-"=====================================\n"
-"=== Personal ===\n"
-"\n"
-"+\n"
-"+\n"
-"+\n"
-"========================\n"
-"\n"
-"**¿Cómo fuera'l día?**\n"
-"\n"
-"\n"
-"========================\n"
-"**¿Qué tien de camudase?**\n"
-"+\n"
-"+\n"
-"+\n"
-"=====================================\n"
-
-#: ../rednotebook/templates.py:199
-msgid "Choose Template Name"
-msgstr "Escoyer nome de la plantía"
-
-#: ../rednotebook/templates.py:351 ../rednotebook/templates.py:360
-msgid "This Weekday's Template"
-msgstr "Plantía pa esta selmana"
-
-#: ../rednotebook/templates.py:354
-msgid "Edit Template"
-msgstr "Editar Plantía"
-
-#: ../rednotebook/templates.py:357
-msgid "Insert Template"
-msgstr "Inxertar Plantía"
-
-#: ../rednotebook/templates.py:363
-msgid "Create New Template"
-msgstr "Facer una Plantía Nueva"
-
-#: ../rednotebook/templates.py:367
-msgid "Open Template Directory"
-msgstr "Abrir carpeta de Plantía"
-
-#: ../rednotebook/util/utils.py:249
-#, python-format
-msgid "You have version <b>%s</b>."
-msgstr "La versión que tienes ye la <b>%s</b>."
-
-#: ../rednotebook/util/utils.py:250
-#, python-format
-msgid "The latest version is <b>%s</b>."
-msgstr "La cabera versión ye la <b>%s</b>."
-
-#: ../rednotebook/util/utils.py:251
-msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "¿Quies visitar la páxina web de RedNotebook?"
-
-#: ../rednotebook/util/utils.py:258
-msgid "Do not ask again"
-msgstr "Nun entrugar más"
-
-#: ../rednotebook/util/statistics.py:81 ../rednotebook/util/statistics.py:94
-#: tmp/main_window.glade.h:44
-msgid "Words"
-msgstr "Pallabres"
-
-#: ../rednotebook/util/statistics.py:82
-msgid "Distinct Words"
-msgstr "Marcar pallabres"
-
-#: ../rednotebook/util/statistics.py:83
-msgid "Edited Days"
-msgstr "Díes editaos"
-
-#: ../rednotebook/util/statistics.py:84 ../rednotebook/util/statistics.py:96
-msgid "Letters"
-msgstr "Lletres"
-
-#: ../rednotebook/util/statistics.py:85
-msgid "Days between first and last Entry"
-msgstr "Díes ente la primer y cabera entrada"
-
-#: ../rednotebook/util/statistics.py:86
-msgid "Average number of Words"
-msgstr "Númberu promediu de pallabres"
-
-#: ../rednotebook/util/statistics.py:87
-msgid "Percentage of edited Days"
-msgstr "Porcentaxe de díes editaos"
-
-#: ../rednotebook/util/statistics.py:95
-msgid "Lines"
-msgstr "Llinies"
-
-#: ../rednotebook/journal.py:382
-#, python-format
-msgid "The content has been saved to %s"
-msgstr "El conteníu guardóse en %s"
-
-#: ../rednotebook/journal.py:385
-msgid "Nothing to save"
-msgstr "Res que guardar"
-
-#: ../rednotebook/journal.py:393
-msgid "Configuration could not be saved. Please check your permissions"
-msgstr "La configuración nun pudo guardase. Comprueba los permisos"
-
-#: ../rednotebook/journal.py:424
-msgid "The selected folder is not empty."
-msgstr "La carpeta seleicionada nun ta erma."
-
-#: ../rednotebook/journal.py:425
-msgid ""
-"To prevent you from overwriting data, the folder content has been imported "
-"into the new journal."
-msgstr ""
-"Pa prevenir que se sobrescriban datos, el conteníu de la carpeta importóse "
-"nel nuevu diariu."
-
-#: ../rednotebook/journal.py:428
-msgid "The selected folder is empty. A new journal has been created."
-msgstr "La carpeta seleicionada ta erma. Creóse un diariu nuevu."
-
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
 msgid "<b>General</b>"
@@ -1059,28 +1139,28 @@ msgid "<b>Write entry</b>"
 msgstr "<b>Escribir entrada</b>"
 
 #: tmp/main_window.glade.h:9
+msgid "Add an entry to a new or existing category"
+msgstr "Amestar una entrada a una categoría nueva o esistente"
+
+#: tmp/main_window.glade.h:10
 msgid "Annotate"
 msgstr "Anotar"
-
-#: tmp/main_window.glade.h:11
-msgid "Category"
-msgstr "Categoría"
 
 #: tmp/main_window.glade.h:12
 msgid "Clouds"
 msgstr "Ñubes"
 
 #: tmp/main_window.glade.h:13
-msgid "Delete"
-msgstr "Esborrar"
-
-#: tmp/main_window.glade.h:14
 msgid "Edit"
 msgstr "Editar"
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:14
 msgid "Enable text editing (Ctrl+P)"
 msgstr "Activar edición del testu (Ctrl+P)"
+
+#: tmp/main_window.glade.h:15
+msgid "Everywhere"
+msgstr "En tolos llaos"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1092,78 +1172,82 @@ msgid "General"
 msgstr "Xeneral"
 
 #: tmp/main_window.glade.h:19
+msgid "Give this day a tag"
+msgstr "Dar una etiqueta a esti día"
+
+#: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"
 msgstr "Dir al próximu día (Ctrl+PageUp)"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:21
 msgid "Go to previous day (Ctrl+PageDown)"
 msgstr "Dir al día anterior (Ctrl+PageDown)"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:22
 msgid "Insert Link"
 msgstr "Inxertar Enllaz"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:23
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
 "Inxerta la plantía d'esti día de la selmana. Calca na flecha de la drecha pa "
 "más opciones"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:24
 msgid "Jump to today"
 msgstr "Saltar a güei"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:25
 msgid "New entry"
 msgstr "Entrada Nueva"
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:26
 msgid "Preferences"
 msgstr "Preferencies"
 
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:29
 msgid "Search"
 msgstr "Guetar"
 
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:30
 msgid "Search in entries, categories and tags"
 msgstr "Guetar nes entraes, categoríes y etiquetes"
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:31
 msgid "Select a cloud"
 msgstr "Seleiciona una ñube"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:32
 msgid "Select a directory"
 msgstr "Seleiciona un direutoriu"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:33
 msgid "Select a file"
 msgstr "Seleiciona un ficheru"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:34
 msgid "Select a picture"
 msgstr "Seleiciona una imaxe"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:35
 msgid "Select backup filename"
 msgstr "Seleiciona un nome de ficheru pa la copia de seguridá"
 
-#: tmp/main_window.glade.h:35
+#: tmp/main_window.glade.h:36
 msgid "Select where to search"
 msgstr "Seleiciona ónde guetar"
 
-#: tmp/main_window.glade.h:36
+#: tmp/main_window.glade.h:37
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "Amosar vista previa de testu con formatu (Ctrl+P)"
 
 #. ## This stands for the verb in "Tag this day"
-#: tmp/main_window.glade.h:39
+#: tmp/main_window.glade.h:40
 msgid "Tag"
 msgstr "Etiqueta"
 
-#: tmp/main_window.glade.h:41
+#: tmp/main_window.glade.h:42
 msgid "Template"
 msgstr "Plantía"
 
@@ -1179,197 +1263,3 @@ msgstr ""
 "  Iñigo Varela https://launchpad.net/~ivarela\n"
 "  Xandru https://launchpad.net/~xandruarmesto\n"
 "  Xuacu Saturio https://launchpad.net/~xuacusk8"
-
-#~ msgid "Insert a bullet list"
-#~ msgstr "Inxertar una llista de viñetes"
-
-#~ msgid "Insert a title"
-#~ msgstr "Inxertar un títulu"
-
-#, python-format
-#~ msgid "Preview: %s"
-#~ msgstr "Vista previa: %s"
-
-#~ msgid "Spell Check"
-#~ msgstr "Revisión ortográfica"
-
-#~ msgid "Restore example content"
-#~ msgstr "Restaurar conteníu d'exemplu"
-
-#~ msgid "Check for a new version now"
-#~ msgstr "Verificar por una nueva versión agora"
-
-#~ msgid "Check For New Version"
-#~ msgstr "Verificar por una nueva versión"
-
-#~ msgid "Fill some free days with example content. Do not overwrite anything"
-#~ msgstr ""
-#~ "Llenar dalgunos díes llibres con conteníu d'exemplu. Nun sobrescribir res"
-
-#~ msgid "Show the help document"
-#~ msgstr "Amosar el documentu d'Aida"
-
-#~ msgid "Empty nodes are not allowed"
-#~ msgstr "Nun se permiten nodos ermos"
-
-#~ msgid "Do you really want to delete this node?"
-#~ msgstr "¿Daveres que quies desaniciar esti nodu?"
-
-#~ msgid "Delete this node"
-#~ msgstr "Desaniciar esti nodu"
-
-#~ msgid "Cancelling export assistant."
-#~ msgstr "Encaboxando asistente d'esportación."
-
-#, python-format
-#~ msgid "Exporting to %s failed"
-#~ msgstr "Falló la esportación a %s"
-
-#~ msgid "<b>A new version of RedNotebook is available!</b>"
-#~ msgstr "<b>¡Hai una nueva versión de RedNotebook disponible!</b>"
-
-#~ msgid "<b>Entries from:</b>"
-#~ msgstr "<b>Entraes dende:</b>"
-
-#~ msgid "<< Unselect"
-#~ msgstr "<< Quitar"
-
-#~ msgid "<b>Current Day</b>"
-#~ msgstr "<b>Día actual</b>"
-
-#~ msgid "<b>Enter file name</b>"
-#~ msgstr "<b>Introduz el nome del ficheru</b>"
-
-#~ msgid "Add Tag"
-#~ msgstr "Amestar etiqueta"
-
-#~ msgid "All Entries"
-#~ msgstr "Toles entraes"
-
-#~ msgid "<b>Select format</b>"
-#~ msgstr "<b>Seleiciona formatu</b>"
-
-#~ msgid "<b>Select the contents you want to export</b>"
-#~ msgstr "<b>Seleiciona'l conteníu a esportar</b>"
-
-#~ msgid "<b>Till:</b>"
-#~ msgstr "<b>Hasta:</b>"
-
-#~ msgid "<b>You already have the latest version of RedNotebook</b>"
-#~ msgstr "<b>Yá cuentes cola cabera versión de RedNotebook</b>"
-
-#~ msgid "Add an entry to a category (Ctrl+N)"
-#~ msgstr "Amestar una entrada a categoría (Ctrl+N)"
-
-#~ msgid "<b>Select Entries</b>"
-#~ msgstr "<b>Seleiciona entraes</b>"
-
-#~ msgid "Delete the selected node"
-#~ msgstr "Desaniciar el nodu esbilláu"
-
-#~ msgid "Check at Startup"
-#~ msgstr "Verificar al aniciu"
-
-#~ msgid "Do you want to visit the website?"
-#~ msgstr "¿Quies visitar el sitiu Web?"
-
-#~ msgid "Export Text"
-#~ msgstr "Esportar testu"
-
-#~ msgid ""
-#~ "For information on how to convert the exported latex files to PDF, consult "
-#~ "the Help document."
-#~ msgstr ""
-#~ "Pa obtener información sobre cómo convertir los ficheros latex esportados a "
-#~ "PDF, consulta la documentación d'Aida."
-
-#~ msgid "HTML"
-#~ msgstr "HTML"
-
-#~ msgid "New Entry"
-#~ msgstr "Nueva entrada"
-
-#~ msgid "Latex"
-#~ msgstr "Latex"
-
-#~ msgid "New Version"
-#~ msgstr "Nueva versión"
-
-#~ msgid "No New Version"
-#~ msgstr "Nun hai nueva versión"
-
-#~ msgid "Only the entries in the selected time range"
-#~ msgstr "Namái les entraes nel intervalu de tiempu seleicionáu"
-
-#~ msgid "PDF"
-#~ msgstr "PDF"
-
-#~ msgid "Select >>"
-#~ msgstr "Seleicionar >>"
-
-#~ msgid ""
-#~ "Welcome to the Export Assistant. \n"
-#~ "This wizard will help you to export your journal to various formats. You can "
-#~ "select the days you want to export and where the output will be saved."
-#~ msgstr ""
-#~ "Bienveníu/a  al asistente d'esportación.\n"
-#~ "Esti encontu aidaráte a esportar el to diariu a dellos otros formatos. "
-#~ "Podrás escoyer los díes que quies esportar y aú atroxar el ficheru de salida."
-
-#~ msgid "Tag this day (Ctrl+T)"
-#~ msgstr "Etiquetar esti día (Ctrl+T)"
-
-#~ msgid "Webkit offers a nicer preview"
-#~ msgstr "Webkit ufre una guapa entevista"
-
-#~ msgid "Requires pywebkitgtk (python-webkit)"
-#~ msgstr "Requier pywebkitgtk (python-webkit)"
-
-#~ msgid "Use webkit for previews"
-#~ msgstr "Usar webkit pa entever"
-
-#~ msgid "Journal"
-#~ msgstr "Diariu"
-
-#~ msgid "(Restart required)"
-#~ msgstr "(Requier reaniciar)"
-
-#~ msgid ""
-#~ "Hello,\n"
-#~ "this is RedNotebook, a desktop journal. Thank you very much for giving it a "
-#~ "try."
-#~ msgstr ""
-#~ "Hola,\n"
-#~ "esto ye RedNotebook, un diariu d'escritoriu. Munches gracies por probalu."
-
-#~ msgid "Alternatively consult the help document for Latex to PDF conversion."
-#~ msgstr ""
-#~ "Alternativamente consulte'l documentu d'aida pa la conversión de Latex a PDF."
-
-#~ msgid ""
-#~ "For direct PDF export, please install pywebkitgtk version 1.1.5 or later."
-#~ msgstr ""
-#~ "Pa esportar a PDF direutamente, instale la versión 1.1.5 o posterior de "
-#~ "pywebkitgtk."
-
-#~ msgid "Text entries"
-#~ msgstr "Entraes de testu"
-
-#~ msgid "An entry could look like this:"
-#~ msgstr "Una entrada puede paecese a esto:"
-
-#~ msgid "On the right there is space for annotations to a day."
-#~ msgstr "A mandrecha hai un espaciu pa les anotaciones d'un día."
-
-#~ msgid "Annotations are notes that can easily be sorted into categories."
-#~ msgstr ""
-#~ "Les anotaciones son notes que pueden ordenase fácilmente en categoríes."
-
-#~ msgid "You can find more documentation under \"Help\" -> \"Help\"."
-#~ msgstr "Puede alcontrar más documentación en «Aida» -> «Aida»."
-
-#~ msgid ""
-#~ "There are two modes in RedNotebook, the __editing__ mode and the __preview__ "
-#~ "mode."
-#~ msgstr ""
-#~ "Hai dos moos en RedNotebook, el mou __edición__ y el mou __entever__."
