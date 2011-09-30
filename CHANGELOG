@@ -35,6 +35,7 @@
   * Remove dead unicode code
   * Remove obsolete KeepNote source files
   * Remove unnecessary imports
+* Updated translations
 
 == 1.1.8 (11-08-08) ==
 * Fix: Abort startup if yaml file cannot be read to avoid losing data

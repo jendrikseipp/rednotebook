@@ -29,12 +29,14 @@ import codecs
 import webbrowser
 from glob import glob
 
+ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or 'UTF-8'
+
 
 def get_unicode_path(path):
-    # locale_encoding may be None may if the value cannot be determined
-    locale_name, locale_encoding = locale.getlocale()
-    encoding = sys.getfilesystemencoding() or locale_encoding or 'UTF-8'
-    return unicode(path, encoding)
+    return unicode(path, ENCODING)
+
+def get_utf8_path(path):
+    return path.encode(ENCODING)
 
 
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
@@ -62,6 +64,7 @@ image_dir = os.path.join(app_dir, 'images')
 frame_icon_dir = os.path.join(image_dir, 'rednotebook-icon')
 files_dir = os.path.join(app_dir, 'files')
 gui_dir = os.path.join(app_dir, 'gui')
+locale_dir = os.path.join(app_dir, 'i18n')
 
 user_home_dir = get_unicode_path(os.path.expanduser('~'))
 

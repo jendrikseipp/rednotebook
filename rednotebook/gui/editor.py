@@ -38,7 +38,6 @@ from rednotebook import undo
 class Editor(object):
     def __init__(self, day_text_view, undo_redo_manager):
         self.day_text_view = day_text_view
-        #self.day_text_buffer = gtk.TextBuffer()
         self.day_text_buffer = t2t_highlight.get_highlight_buffer()
         self.day_text_view.set_buffer(self.day_text_buffer)
 

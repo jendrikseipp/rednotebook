@@ -58,7 +58,8 @@ from rednotebook.external import elibintl
 # * gtkbuilder strings
 # * gtk stock names
 
-LOCALE_PATH = os.path.join(filesystem.app_dir, 'i18n')
+LOCALE_PATH = filesystem.get_utf8_path(filesystem.locale_dir)
+print 'LOCALE PATH:', repr(LOCALE_PATH)
 
 # the name of the gettext domain. because we have our translation files
 # not in a global folder this doesn't really matter, setting it to the
