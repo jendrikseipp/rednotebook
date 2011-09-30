@@ -65,10 +65,10 @@ class Editor(object):
         self.day_text_view.set_size_request(1, -1)
 
         font_name = gtk.settings_get_default().get_property('gtk-font-name')
-        self.default_family, self.default_size = font_name.split()
-        self.default_size = int(self.default_size)
-
-        logging.debug('Default font: %s %s' % (self.default_family, self.default_size))
+        self.font = pango.FontDescription(font_name)
+        self.default_size = self.font.get_size() / pango.SCALE
+        logging.debug('Default font: %s' % self.font.to_string())
+        logging.debug('Default size: %s' % self.default_size)
 
     def set_text(self, text, undoing=False):
         self.insert(text, overwrite=True, undoing=undoing)
@@ -197,8 +197,8 @@ class Editor(object):
     def set_font_size(self, size):
         if size <= 0:
             size = self.default_size
-        font = pango.FontDescription('%s %s' % (self.default_family, size))
-        self.day_text_view.modify_font(font)
+        self.font.set_size(size * pango.SCALE)
+        self.day_text_view.modify_font(self.font)
 
     def hide(self):
         self.day_text_view.hide()

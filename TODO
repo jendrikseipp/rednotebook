@@ -46,7 +46,6 @@ O Windows: Enable spellcheck
 O Translate help (Restructure first using Sphinx?)
 O Rethink logfile
 O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
-O Fix txt2tags for turkish locale -> Use new txt2tags version when it supports turkish locale
 O Update search window when an annotation has been added/changed
 O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Make windows installer truly portable (leave no traces in registry)
@@ -65,7 +64,7 @@ O Unify Clouds and search -> Show the search bar above the clouds
 O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
 O Search and replace (useful for renaming categories and other names)
-  (Add replace functionailty after search has been entered)
+  (Add replace functionality after search has been entered)
 
 O Apply formatting only once if a format button is clicked multiple times
 O Fix: When a tag is being edited, the format keys insert the formatting in the editor pane
@@ -76,7 +75,7 @@ O Copy all files and pictures into data subdirectory (Think about new format fir
 O Password protection or encryption (Think about new format first)
 O Internal links to other days
 O Let user change font, foreground color, highlighting color
-O Filter exports by tag, category, word?
+O Filter exports by category, word?
 O Only export days that have category X if category X is selected?
 O RTF export
 
