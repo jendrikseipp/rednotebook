@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-09-06 09:17+0000\n"
+"PO-Revision-Date: 2011-09-30 14:24+0000\n"
 "Last-Translator: Giorgi Maghlakelidze <acidlabz@gmail.com>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-30 04:41+0000\n"
+"X-Launchpad-Export-Date: 2011-10-01 05:08+0000\n"
 "X-Generator: Launchpad (build 14071)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
@@ -23,11 +23,11 @@ msgstr "ყველა დღის გატანა"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export currently visible day"
-msgstr ""
+msgstr "მიმდინარე დღის გატანა"
 
 #: ../rednotebook/gui/exports.py:55
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "დღეების გატანა მითითებული შუალედიდან"
 
 #: ../rednotebook/gui/exports.py:63
 msgid "From:"
@@ -39,11 +39,11 @@ msgstr "საბოლოო თარიღი:"
 
 #: ../rednotebook/gui/exports.py:126
 msgid "Date format"
-msgstr ""
+msgstr "თარიღის ფორმატი"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "დატოვეთ ცარიელი, რათა გატანისას გამოსატოვოთ თარიღები"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
@@ -75,7 +75,7 @@ msgstr "მონიშვნა"
 
 #: ../rednotebook/gui/exports.py:159
 msgid "Deselect"
-msgstr ""
+msgstr "მონიშვნის მოხსნა"
 
 #: ../rednotebook/gui/exports.py:262
 msgid ""
@@ -356,7 +356,7 @@ msgstr "დახმარების მოძიება ინტერნ�
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "დასმული კითხვების დათალიერება ან ახლის დასმა"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -585,51 +585,53 @@ msgstr "ბმულის მისამართი მითითებუ�
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "ბოლო სამარქაფო ასლი დიდი ხნის წინ იყო გაკეთებული."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
+"მონაცემთა დაკარგვისაგან თავდაცვის მიზნით, შექმენით დღიურის სამარქაფო zip "
+"არქივი."
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "სამარქაფო ასლის გაკეთება"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "დასტურის აღება შემდეგ გაშვებაზე"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "აღარ იკითხო"
 
 #: ../rednotebook/templates.py:31
 msgid "Monday"
-msgstr ""
+msgstr "ორშაბათი"
 
 #: ../rednotebook/templates.py:31
 msgid "Tuesday"
-msgstr ""
+msgstr "სამშაბათი"
 
 #: ../rednotebook/templates.py:31
 msgid "Wednesday"
-msgstr ""
+msgstr "ოთხშაბათი"
 
 #: ../rednotebook/templates.py:31
 msgid "Thursday"
-msgstr ""
+msgstr "ხუთშაბათი"
 
 #: ../rednotebook/templates.py:32
 msgid "Friday"
-msgstr ""
+msgstr "პარასკევი"
 
 #: ../rednotebook/templates.py:32
 msgid "Saturday"
-msgstr ""
+msgstr "შაბათი"
 
 #: ../rednotebook/templates.py:32
 msgid "Sunday"
-msgstr ""
+msgstr "კვირა"
 
 #: ../rednotebook/templates.py:104
 msgid ""
@@ -803,7 +805,7 @@ msgstr "არჩევნის დამახსოვრება"
 
 #: ../rednotebook/util/dates.py:58
 msgid "Incorrect date format"
-msgstr ""
+msgstr "უმართებულო ფორმატის თარიღი"
 
 #: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
 #: tmp/main_window.glade.h:44
@@ -840,23 +842,26 @@ msgstr "სტრიქონები"
 
 #: ../rednotebook/journal.py:272
 msgid "RedNotebook appears to be already running."
-msgstr ""
+msgstr "როგორც ჩანს, RedNotebook უკვე გაშვებულია"
 
 #: ../rednotebook/journal.py:273
 msgid ""
 "This can happen if the application is hidden in the system tray or was not "
 "shut down correctly."
 msgstr ""
+"შესაძლოა, პროგრამა გაშვებულია სისტემურ არეში, ან უმართებულოდ დაიხურა."
 
 #: ../rednotebook/journal.py:275
 msgid ""
 "Starting a second RedNotebook instance can lead to data loss and it might be "
 "best to see if there is another instance first."
 msgstr ""
+"პროგრამის ასლის გაშვებამ შესაძლოა გამოიწვიოს მონაცემთა დაკარგვა. გაშვებამდე "
+"სასურველია დარწმუნდეთ, რომ RedNotebook გათიშულია."
 
 #: ../rednotebook/journal.py:278
 msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr ""
+msgstr "ნამდვილად გსურთ გაუშვათ RedNotebook-ის ახალი ასლი?"
 
 #: ../rednotebook/journal.py:361
 #, python-format
@@ -893,7 +898,7 @@ msgstr "ჭდეები"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "საინტერესო მასალა"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
@@ -1142,7 +1147,7 @@ msgstr "<b>ჩანაწერის ტექსტი</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
-msgstr ""
+msgstr "ჩაამატეთ ჩანაწერი არსებულ ან ახალ კატეგორიაში"
 
 #: tmp/main_window.glade.h:10
 msgid "Annotate"
@@ -1162,7 +1167,7 @@ msgstr "ტექსტის დამუშავების ნებად�
 
 #: tmp/main_window.glade.h:15
 msgid "Everywhere"
-msgstr ""
+msgstr "ყველგან"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1175,7 +1180,7 @@ msgstr "ძირითადი"
 
 #: tmp/main_window.glade.h:19
 msgid "Give this day a tag"
-msgstr ""
+msgstr "მონიშნეთ ეს დღე"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-09-30 04:39+0000\n"
-"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
+"PO-Revision-Date: 2011-09-30 12:37+0000\n"
+"Last-Translator: MyOtheHedgeFox <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-30 04:42+0000\n"
+"X-Launchpad-Export-Date: 2011-10-01 05:08+0000\n"
 "X-Generator: Launchpad (build 14071)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
@@ -43,7 +43,7 @@ msgstr "Формат даты"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr "Оставьте пустым если не хотите включать даты в вывод"
+msgstr "Оставьте поле пустым, если даты для вас не важны"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
@@ -239,7 +239,7 @@ msgstr "Проверка орфографии"
 
 #: ../rednotebook/gui/options.py:305
 msgid "Check for new version at startup"
-msgstr "Проверять на наличие новых версий при запуске"
+msgstr "Проверять наличие новых версий при запуске"
 
 #: ../rednotebook/gui/options.py:312
 msgid "Check now"
@@ -357,7 +357,9 @@ msgstr "Получить помощь в сети"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr "Просмотреть вопросы с ответами, либо задать новый"
+msgstr ""
+"Задать свой вопрос разработчику или посмотреть, на какие вопросы уже есть "
+"ответ"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -562,7 +564,8 @@ msgstr "Дату/время"
 
 #: ../rednotebook/gui/main_window.py:812
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr "Вставить текущую дату и время (формат можно изменить в настройках)"
+msgstr ""
+"Вставить текущую дату и время (формат можно изменить в параметрах программы)"
 
 #: ../rednotebook/gui/main_window.py:814
 msgid "Line Break"
@@ -702,7 +705,7 @@ msgstr ""
 "**Участники:**\n"
 "\n"
 "**Маршрут:**\n"
-"Сначала мы были в xxxxx, затем направились в yyyyy ...\n"
+"Сначала мы были в Ааааа, затем направились в Ббббб...\n"
 "\n"
 "**Фотографии:** [Каталог с фото \"\"/путь/к/фотографиям/\"\"]\n"
 
@@ -794,7 +797,7 @@ msgstr "У вас установлена версия <b>%s</b>."
 #: ../rednotebook/util/utils.py:174
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr "Самая новая версия - <b>%s</b>."
+msgstr "Самая новая версия -- <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:175
 msgid "Do you want to visit the RedNotebook homepage?"
@@ -1129,7 +1132,7 @@ msgstr "<b>Общее</b>"
 
 #: tmp/main_window.glade.h:3
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr "<b>Ссылка (скажем, http://example.com) </b>"
+msgstr "<b>Ссылка (скажем, http://example.com)</b>"
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
@@ -1153,7 +1156,9 @@ msgstr "<b>Текст примечания</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
-msgstr "Добавить запись в новую или существующую категорию"
+msgstr ""
+"Добавить примечание (можно выбрать уже существующую категорию или добавить "
+"новую)"
 
 #: tmp/main_window.glade.h:10
 msgid "Annotate"
@@ -1204,8 +1209,8 @@ msgstr "Вставить ссылку"
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Вставить шаблон для этого дня. Нажмите на стрелку справа, чтобы выбрать "
-"другой шаблон"
+"Вставить шаблон для текущего дня недели. Нажмите на стрелку справа, чтобы "
+"выбрать другой шаблон"
 
 #: tmp/main_window.glade.h:24
 msgid "Jump to today"
@@ -1276,7 +1281,6 @@ msgstr ""
 "  Alexey Ivanov https://launchpad.net/~alexey-ivanov\n"
 "  Andrey Novoselov https://launchpad.net/~ksynolog\n"
 "  LithiUm https://launchpad.net/~neo-anderson\n"
-"  MyOtheHedgeFOx https://launchpad.net/~a-ztech-ya\n"
 "  MyOtheHedgeFox https://launchpad.net/~a-ztech\n"
 "  Nick https://launchpad.net/~nick222-yandex\n"
 "  Oleg Koptev https://launchpad.net/~koptev-oleg\n"

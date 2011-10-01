@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-09-29 17:35+0000\n"
+"PO-Revision-Date: 2011-09-30 08:25+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-30 04:41+0000\n"
+"X-Launchpad-Export-Date: 2011-10-01 05:08+0000\n"
 "X-Generator: Launchpad (build 14071)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
@@ -401,11 +401,11 @@ msgstr "Muuta tätä tekstiä"
 
 #: ../rednotebook/gui/categories.py:435
 msgid "Add a new entry"
-msgstr "Lisää uusi kohta"
+msgstr "Lisää uusi merkintä"
 
 #: ../rednotebook/gui/categories.py:439
 msgid "Delete this entry"
-msgstr ""
+msgstr "Poista merkintä"
 
 #: ../rednotebook/gui/search.py:36
 msgid "Search ..."
@@ -422,7 +422,7 @@ msgstr "Teksti"
 
 #: ../rednotebook/gui/search.py:150
 msgid "Entry"
-msgstr "Tekstikenttä"
+msgstr "Merkintä"
 
 #: ../rednotebook/gui/main_window.py:287
 msgid "Show RedNotebook"
@@ -485,7 +485,7 @@ msgstr "Yliviivattu"
 
 #: ../rednotebook/gui/main_window.py:710
 msgid "Format the selected text or category entry"
-msgstr "Muotoile valittua tekstiä tai luokan kohtaa"
+msgstr "Muotoile valittua tekstiä tai luokan merkintää"
 
 #: ../rednotebook/gui/main_window.py:759
 msgid "First Item"
@@ -810,7 +810,7 @@ msgstr "Virheellinen päiväyksen muoto"
 #: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
 #: tmp/main_window.glade.h:44
 msgid "Words"
-msgstr "Sanat"
+msgstr "Sanoja"
 
 #: ../rednotebook/util/statistics.py:80
 msgid "Distinct Words"
@@ -857,10 +857,12 @@ msgid ""
 "Starting a second RedNotebook instance can lead to data loss and it might be "
 "best to see if there is another instance first."
 msgstr ""
+"Toisen RedNotebook-istunnon käynnistäminen voi johtaa tietojen menetykseen. "
+"Tämän vuoksi on syytä tarkistaa, onko RedNotebookista jo istunto käynnissä."
 
 #: ../rednotebook/journal.py:278
 msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr "Haluatko silti käynnistää uuden RedNotebook-ikkunan?"
+msgstr "Haluatko silti käynnistää uuden RedNotebook-istunnon?"
 
 #: ../rednotebook/journal.py:361
 #, python-format
@@ -942,8 +944,8 @@ msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
-"Esimerkkitekstiä on lisätty helpottamaan aloittamista ja voit poistaa sen "
-"milloin haluat."
+"Käytön aloituksen helpottamiseksi on lisätty esimerkkitekstiä. Voit poistaa "
+"esimerkkitekstin, jos niin haluat."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
@@ -996,12 +998,13 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
-"RedNoteBookissa on kaksi tilaa, __edititointi__ tila ja __esikatselu__ tila."
+"RedNoteBookissa on kaksi toimintatilaa, __muokkaustila__ ja "
+"__esikatselutila__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
-msgstr "Klikkaa Esikatselu yläpuolella nähdäksesi eron."
+msgstr "Napsauta yläpuolella olevaa Esikatsele-painiketta nähdäksesi eron."
 
 #: ../rednotebook/info.py:116
 msgid ""
@@ -1020,7 +1023,7 @@ msgstr "Sivuhuomautus"
 #: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
 msgstr ""
-"Sivuhuomautukset ovat muistiinpanoja, jotka voidaan lajitella kategorioihin."
+"Sivuhuomautukset ovat muistiinpanoja, jotka voidaan lajitella luokkiin."
 
 #: ../rednotebook/info.py:122
 msgid ""
@@ -1036,7 +1039,7 @@ msgid ""
 "the separator to the far right."
 msgstr ""
 "Jos sivuhuomautukset hämmentävät sinua, voit piilottaa ne helposti "
-"siirtämällä erottimen ääri-oikealle."
+"siirtämällä erottimen ikkunan oikeaan laitaan."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
@@ -1048,8 +1051,8 @@ msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Kaikki mitä kirjoitat tallennetaan automaattisesti tietyin väliajoin ja kun "
-"lopetat ohjelman käyttämisen."
+"Kaikki kirjoittamasi tallennetaan automaattisesti säännöllisin väliajoin ja "
+"lopettaessasi sovelluksen käytön."
 
 #: ../rednotebook/info.py:139
 msgid "To avoid data loss you should backup your journal regularly."
@@ -1061,23 +1064,25 @@ msgstr ""
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
-"Kohta \"Varmuuskopioi\" \"Päiväkirja\"-valikossa tallentaa kaikki tietosi "
+"\"Päiväkirja\"-valikon \"Varmuuskopioi\"-toiminto tallentaa kaikki tietosi "
 "zip-tiedostoon."
 
 #: ../rednotebook/info.py:141
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "\"Päiväkirja\" valikosta löydät myös \"Vie\" -painikkeen."
+msgstr "\"Päiväkirja\"-valikosta löytyy myös \"Vie\"-painike."
 
 #: ../rednotebook/info.py:142
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr ""
-"Klikkaa \"Vie\" -painiketta ja vie päiväkirjasi tavallisena tekstinä, HTML "
+"Napsauta \"Vie\"-painiketta ja vie päiväkirjasi tavallisena tekstinä, HTML- "
 "tai Latex-muotoisena."
 
 #: ../rednotebook/info.py:145
 msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr "Jos kohtaat virheitä, lähetä minulle merkintä, niin voin korjata ne."
+msgstr ""
+"Jos kohtaat virheitä, ilmoita asiasta käyttäen Ohje-valikon Raportoi "
+"ongelmasta -toimintoa."
 
 #: ../rednotebook/info.py:146
 msgid "Any feedback is appreciated."
@@ -1138,7 +1143,7 @@ msgstr "<b>Valittu päivä</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
-msgstr ""
+msgstr "<b>Kirjoita merkintä</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
@@ -1175,7 +1180,7 @@ msgstr "Yleiset"
 
 #: tmp/main_window.glade.h:19
 msgid "Give this day a tag"
-msgstr ""
+msgstr "Anna tälle päivälle tunniste"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"
@@ -1200,7 +1205,7 @@ msgstr "Siirry kuluvaan päivään"
 
 #: tmp/main_window.glade.h:25
 msgid "New entry"
-msgstr ""
+msgstr "Uusi merkintä"
 
 #: tmp/main_window.glade.h:26
 msgid "Preferences"
