@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-10-02 18:24+0000\n"
-"Last-Translator: Rodolphe BOUCHIER <ldnpub@hotmail.fr>\n"
+"PO-Revision-Date: 2011-10-03 15:46+0000\n"
+"Last-Translator: Moussouni Mehdi <mmoussouni47@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-03 04:41+0000\n"
+"X-Launchpad-Export-Date: 2011-10-04 05:02+0000\n"
 "X-Generator: Launchpad (build 14071)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
@@ -611,35 +611,35 @@ msgstr "Demandez au prochain démarrage"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Ne plus demander"
 
 #: ../rednotebook/templates.py:31
 msgid "Monday"
-msgstr ""
+msgstr "Lundi"
 
 #: ../rednotebook/templates.py:31
 msgid "Tuesday"
-msgstr ""
+msgstr "Mardi"
 
 #: ../rednotebook/templates.py:31
 msgid "Wednesday"
-msgstr ""
+msgstr "Mercredi"
 
 #: ../rednotebook/templates.py:31
 msgid "Thursday"
-msgstr ""
+msgstr "Jeudi"
 
 #: ../rednotebook/templates.py:32
 msgid "Friday"
-msgstr ""
+msgstr "Vendredi"
 
 #: ../rednotebook/templates.py:32
 msgid "Saturday"
-msgstr ""
+msgstr "Samedi"
 
 #: ../rednotebook/templates.py:32
 msgid "Sunday"
-msgstr ""
+msgstr "Dimanche"
 
 #: ../rednotebook/templates.py:104
 msgid ""
@@ -813,7 +813,7 @@ msgstr "Ne plus demander"
 
 #: ../rednotebook/util/dates.py:58
 msgid "Incorrect date format"
-msgstr ""
+msgstr "Format de date incorrect"
 
 #: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
 #: tmp/main_window.glade.h:44
@@ -850,23 +850,29 @@ msgstr "Lignes"
 
 #: ../rednotebook/journal.py:272
 msgid "RedNotebook appears to be already running."
-msgstr ""
+msgstr "RedNotebook semble être déjà en cours d’exécution."
 
 #: ../rednotebook/journal.py:273
 msgid ""
 "This can happen if the application is hidden in the system tray or was not "
 "shut down correctly."
 msgstr ""
+"Ceci peut survenir si l’application est cachée ou si le système ne s’est pas "
+"éteint correctement."
 
 #: ../rednotebook/journal.py:275
 msgid ""
 "Starting a second RedNotebook instance can lead to data loss and it might be "
 "best to see if there is another instance first."
 msgstr ""
+"Démarrer une seconde session de RedNotebook peut mener à une perte de "
+"données et il serait bon de vérifier s’il n’y a pas une autre session en "
+"premier lieu."
 
 #: ../rednotebook/journal.py:278
 msgid "Do you want to start a new RedNotebook instance nevertheless?"
 msgstr ""
+"Voulez-vous tout de même lancer une nouvelle instance de RedNotebook ?"
 
 #: ../rednotebook/journal.py:361
 #, python-format
@@ -1155,7 +1161,7 @@ msgstr "<b>Écrire une entrée</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
-msgstr ""
+msgstr "Ajouter une entrée à une catégorie nouvelle ou existante"
 
 #: tmp/main_window.glade.h:10
 msgid "Annotate"
@@ -1175,7 +1181,7 @@ msgstr "Activer l'éditeur de texte (Ctrl+p)"
 
 #: tmp/main_window.glade.h:15
 msgid "Everywhere"
-msgstr ""
+msgstr "Partout"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1188,7 +1194,7 @@ msgstr "Général"
 
 #: tmp/main_window.glade.h:19
 msgid "Give this day a tag"
-msgstr ""
+msgstr "Associer une étiquette à ce jour"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"
@@ -1280,7 +1286,9 @@ msgstr ""
 "  Guillaume Royer https://launchpad.net/~guilro\n"
 "  Jean-Luc Aufranc https://launchpad.net/~jean-luc-aufranc\n"
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
+"  Moussouni Mehdi https://launchpad.net/~mmoussouni47\n"
 "  Nicolas Delvaux https://launchpad.net/~malizor\n"
+"  Olivier FEBWIN https://launchpad.net/~febcrash\n"
 "  Pierre Slamich https://launchpad.net/~pierre-slamich\n"
 "  Quentin Pagès https://launchpad.net/~kwentin\n"
 "  Rodolphe BOUCHIER https://launchpad.net/~ldnpub\n"
