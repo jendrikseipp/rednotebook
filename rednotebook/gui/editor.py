@@ -72,9 +72,9 @@ class Editor(object):
     def set_text(self, text, undoing=False):
         self.insert(text, overwrite=True, undoing=undoing)
 
-    def get_text(self):
-        iter_start = self.day_text_buffer.get_start_iter()
-        iter_end = self.day_text_buffer.get_end_iter()
+    def get_text(self, iter_start=None, iter_end=None):
+        iter_start = iter_start or self.day_text_buffer.get_start_iter()
+        iter_end = iter_end or self.day_text_buffer.get_end_iter()
         return self.day_text_buffer.get_text(iter_start, iter_end).decode('utf-8')
 
     def insert(self, text, iter=None, overwrite=False, undoing=False):
@@ -125,9 +125,19 @@ class Editor(object):
     def get_selected_text(self):
         bounds = self.day_text_buffer.get_selection_bounds()
         if bounds:
-            return self.day_text_buffer.get_text(*bounds).decode('utf-8')
+            return self.get_text(*bounds)
         else:
             return None
+
+    def get_text_around_selected_text(self, length):
+        bounds = self.get_selection_bounds()
+        start1 = bounds[0].copy()
+        start1.backward_chars(length)
+        start2 = bounds[0]
+        end1 = bounds[1]
+        end2 = bounds[1].copy()
+        end2.forward_chars(length)
+        return (self.get_text(start1, start2), self.get_text(end1, end2))
 
     def set_selection(self, iter1, iter2):
         '''
@@ -158,6 +168,11 @@ class Editor(object):
         return (iter1, iter2)
 
     def apply_format(self, format, markup):
+        text_around_selection = self.get_text_around_selected_text(2)
+        # Apply formatting only once if a format button is clicked multiple times
+        if text_around_selection == (unicode(markup), unicode(markup)):
+            return
+
         selected_text = self.get_selected_text()
 
         # If no text has been selected add example text and select it

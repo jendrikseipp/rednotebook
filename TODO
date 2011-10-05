@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.2.1
 X Add Quotes by indenting them with a tab
+O Apply formatting only once if a format button is clicked multiple times
 X Fix: Correctly highlight all picture formats in edit mode
 X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
 
@@ -71,8 +72,6 @@ O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
-
-O Apply formatting only once if a format button is clicked multiple times
 
 
 2.0
