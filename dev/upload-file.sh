@@ -1,3 +1,3 @@
 #! /bin/bash
 set -e
-rsync -vre ssh $1 jseipp,rednotebook@web.sourceforge.net:htdocs
+scp $1 jseipp,rednotebook@frs.sourceforge.net:/home/frs/project/r/re/rednotebook/

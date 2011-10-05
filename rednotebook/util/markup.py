@@ -46,6 +46,11 @@ CSS = """\
     body {
         font-family: Ubuntu, sans-serif;
     }
+    blockquote {
+        border: 1px solid #000;
+        padding: 10px;
+        background-color: #ccc;
+    }
 </style>
 """
 

@@ -272,6 +272,7 @@ styles = {  'bold':             {'weight': pango.WEIGHT_BOLD},
             'link':             {'foreground': 'blue',
                                 'underline': pango.UNDERLINE_SINGLE,},
             'highlight':        {'background': 'yellow'},
+            'quote':            {'background': 'gray'},
             }
 def add_header_styles():
     sizes = [
@@ -347,6 +348,8 @@ link = Pattern('OVERWRITE', [(0, 'link')], regex=bank['link'], name='link')
 # We do not support multiline regexes
 #blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'gray'), (2, 'verbatim'), (3, 'gray')])
 
+quote = Pattern(r'^\t+(.*)$', [(1, 'quote')])
+
 
 patterns = [
         get_pattern('\*', 'bold'),
@@ -364,6 +367,7 @@ patterns = [
         pic,
         named_link,
         link,
+        quote,
         ] + title_patterns
 
 

@@ -1,7 +1,7 @@
 ==== RedNotebook Changelog ====
 
 == 1.2.0 (11-10-05) ==
-* Let the "Back" and "Forward" button jump over blank days
+* Let the "Back" and "Forward" button jump over empty days
 * Allow wildcards (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 * Add "Export currently visible day" option in export assistant
 * By default select the time range from today to today in the export wizard (LP:834489)
@@ -13,7 +13,6 @@
 * Remember last export and backup locations
 * Show the most recent entries at the top of the search list by default
 * Search in annotations as well
-* Do not strip whitespace from date format (LP:838031)
 * Use auto-completion for all category entries
 * Mention the name of the day in weekday templates
 * Allow linebreaks (\\) only at the end of lines
