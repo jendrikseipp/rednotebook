@@ -1,6 +1,6 @@
 ==== RedNotebook Changelog ====
 
-== 1.2.0 (11-09-29) ==
+== 1.2.0 (11-10-05) ==
 * Let the "Back" and "Forward" button jump over blank days
 * Allow wildcards (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 * Add "Export currently visible day" option in export assistant

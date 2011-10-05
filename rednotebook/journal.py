@@ -59,7 +59,6 @@ from rednotebook.external import elibintl
 # * gtk stock names
 
 LOCALE_PATH = filesystem.get_utf8_path(filesystem.locale_dir)
-print 'LOCALE PATH:', repr(LOCALE_PATH)
 
 # the name of the gettext domain. because we have our translation files
 # not in a global folder this doesn't really matter, setting it to the
@@ -353,7 +352,6 @@ class Journal:
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
-
         something_saved = storage.save_months_to_disk(self.months,
             self.dirs.data_dir, self.frame, exit_imminent, changing_journal, saveas)
 
@@ -362,7 +360,6 @@ class Journal:
             logging.info('The content has been saved to %s' % self.dirs.data_dir)
         else:
             self.show_message(_('Nothing to save'), error=False)
-            #logging.info('Nothing to save')
 
         self.config.save_to_disk()
 
