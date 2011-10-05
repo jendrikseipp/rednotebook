@@ -332,7 +332,7 @@ linebreak = Pattern(r'(%s)' % markup.REGEX_LINEBREAK, [(1, 'gray')])
 # filename = One char or two chars with possibly whitespace in the middle
 #filename = r'\S[\w\s_,.+%$#@!?+~/-:-\(\)]*\S|\S'
 filename = r'\S.*?\S|\S'
-ext = r'png|jpe?g|gif|eps|bmp'
+ext = r'(png|jpe?g|gif|eps|bmp)'
 pic = Pattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext),
         [(1, 'gray'), (2, 'green'), (3, 'gray'), (4, 'green'), (5, 'gray'), (6, 'gray')], flags='I')
 
