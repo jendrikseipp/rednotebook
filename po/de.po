@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-09-29 10:54+0000\n"
-"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
+"PO-Revision-Date: 2011-10-04 08:46+0000\n"
+"Last-Translator: günther kühnel <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-30 04:41+0000\n"
-"X-Generator: Launchpad (build 14071)\n"
+"X-Launchpad-Export-Date: 2011-10-05 04:45+0000\n"
+"X-Generator: Launchpad (build 14085)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
@@ -23,11 +23,11 @@ msgstr "Alle Tage exportieren"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export currently visible day"
-msgstr ""
+msgstr "Export des aktuell sichtbaren Tages"
 
 #: ../rednotebook/gui/exports.py:55
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "Export der Tage im gewählten Zeitrahmen"
 
 #: ../rednotebook/gui/exports.py:63
 msgid "From:"
@@ -43,7 +43,7 @@ msgstr "Datumsformat"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Leerlassen um das Datum wegzulassen"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
@@ -365,7 +365,7 @@ msgstr "Online Hilfe"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Die beantworteten Fragen durchsuchen oder eine neue Frage stellen"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -597,11 +597,13 @@ msgstr "Es wurde keine Link Adresse angegeben"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "Die letzte Datensicherung ist veraltet"
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
+"Um Datenverlust zu vermeiden, kann das Journal als zip-Datei gesichert "
+"werden."
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
@@ -609,11 +611,11 @@ msgstr "Jetzt Daten sichern"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "Beim nächsten Start nochmals nachfragen"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Nicht mehr nachfragen"
 
 #: ../rednotebook/templates.py:31
 msgid "Monday"
@@ -852,23 +854,28 @@ msgstr "Zeilen"
 
 #: ../rednotebook/journal.py:272
 msgid "RedNotebook appears to be already running."
-msgstr ""
+msgstr "RedNotebook scheint bereits zu laufen"
 
 #: ../rednotebook/journal.py:273
 msgid ""
 "This can happen if the application is hidden in the system tray or was not "
 "shut down correctly."
 msgstr ""
+"Das kann passieren, wenn sich die Anwendung im Systembereich verbirgt oder "
+"sie nicht korrekt beendet wurde."
 
 #: ../rednotebook/journal.py:275
 msgid ""
 "Starting a second RedNotebook instance can lead to data loss and it might be "
 "best to see if there is another instance first."
 msgstr ""
+"Wenn eine zweite Instanz von RedNotebook gestartet wird, kann das zu "
+"Datenverlusten führen. Bitte prüfe deshalb, ob die Anwendung nicht schon "
+"läuft."
 
 #: ../rednotebook/journal.py:278
 msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr ""
+msgstr "Soll trotzdem eine neue Instanz von RedNotebook gestartet werden?"
 
 #: ../rednotebook/journal.py:361
 #, python-format
@@ -1154,6 +1161,7 @@ msgstr "<b>Schreibe einen Eintrag</b>"
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
 msgstr ""
+"Einen Eintrag zu einer neuen oder einer bestehenden Kategorie hinzufügen."
 
 #: tmp/main_window.glade.h:10
 msgid "Annotate"
@@ -1186,7 +1194,7 @@ msgstr "Allgemein"
 
 #: tmp/main_window.glade.h:19
 msgid "Give this day a tag"
-msgstr ""
+msgstr "Diesen Tag  mit einem Stichwort versehen"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"
