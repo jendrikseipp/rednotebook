@@ -21,6 +21,7 @@ from __future__ import division
 
 import logging
 import re
+import sys
 
 import gtk
 import gobject
@@ -28,6 +29,8 @@ import gobject
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import unicode
 
+
+CLOUD_WORDS = 50
 
 CLOUD_CSS = """\
 <style type="text/css">
@@ -48,33 +51,35 @@ def get_regex(word):
     return re.compile(word + '$', re.I)
 
 
-def word_count_dict_to_html(word_count_dict, type, ignores, includes):
-    sorted_dict = sorted(word_count_dict.items(), key=lambda (word, freq): freq)
+def get_cloud_html(word_count_dict, categories, ignores, includes):
+    words = word_count_dict.items()
 
-    if type == 'word':
-        # filter short words
-        sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                       if len(word) > 4 or
-                          any(pattern.match(word) for pattern in includes)]
+    # filter short words
+    words = [(word, freq) for (word, freq) in words
+             if len(word) > 4 or word in categories or
+             any(pattern.match(word) for pattern in includes)]
 
     # filter words in ignore_list
-    sorted_dict = [(word, freq) for (word, freq) in sorted_dict
-                   #if word.lower() not in ignore_list]
-                   if not any(pattern.match(word) for pattern in ignores)]
+    words = [(word, freq) for (word, freq) in words
+             if not any(pattern.match(word) for pattern in ignores)]
 
-    number_of_words = 42
+    def frequency((word, freq)):
+        # We want the categories to be included no matter their frequency
+        if word in categories:
+            return sys.maxint
+        return freq
 
     # only take the longest words. If there are less words than n,
-    # len(sorted_dict) words are returned
-    cloud_words = sorted_dict[-number_of_words:]
+    # len(words) words are returned
+    words.sort(key=frequency)
+    cloud_words = words[-CLOUD_WORDS:]
 
     if not cloud_words:
         return [], ''
 
-    min_count = cloud_words[0][1]
-    max_count = cloud_words[-1][1]
-
-    delta_count = max_count - min_count
+    counts = [freq for (word, freq) in cloud_words]
+    min_count = min(counts)
+    delta_count = max(counts) - min_count
     if delta_count == 0:
         delta_count = 1
 
@@ -92,11 +97,13 @@ def word_count_dict_to_html(word_count_dict, type, ignores, includes):
         font_factor = (count - min_count) / delta_count
         font_size = int(min_font_size + font_factor * font_delta)
 
+        if word in categories:
+            word = '<u><b>%s</b></u>' % word
+
+        # Add some whitespace to separate words
         html_elements.append('<a href="search/%s">'
-                            '<span style="font-size:%spx">%s</span></a>'
-                            % (index, font_size, word) +
-                            #Add some whitespace
-                            '&#xA0;')
+                             '<span style="font-size:%spx">%s</span></a>&#160;'
+                             % (index, font_size, word))
 
     html_body = ''.join(['<body>', '\n'.join(html_elements), '\n</body>\n'])
     html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
@@ -115,14 +122,7 @@ class Cloud(HtmlView):
         self.webview.connect("hovering-over-link", self.on_hovering_over_link)
         self.webview.connect('populate-popup', self.on_populate_popup)
 
-        self.set_type(0, init=True)
         self.last_hovered_word = None
-
-    def set_type(self, type_int, init=False):
-        self.type_int = type_int
-        self.type = ['word', 'category', 'tag'][type_int]
-        if not init:
-            self.update(force_update=True)
 
     def update_lists(self):
         config = self.journal.config
@@ -151,18 +151,18 @@ class Cloud(HtmlView):
             return
 
         # Do not update the cloud with words as it requires a lot of searching
-        if self.type == 'word' and not force_update:
+        if not force_update:
             return
 
         gobject.idle_add(self._update)
 
     def _update(self):
-        logging.debug('Update the cloud (Type: %s)' % self.type)
+        logging.debug('Update the cloud')
         self.journal.save_old_day()
 
-        word_count_dict = self.journal.get_word_count_dict(self.type)
-        self.tag_cloud_words, html = word_count_dict_to_html(word_count_dict,
-                                self.type, self.regexes_ignore, self.regexes_include)
+        word_count_dict = self.journal.get_word_count_dict()
+        self.cloud_words, html = get_cloud_html(word_count_dict,
+            self.journal.categories, self.regexes_ignore, self.regexes_include)
 
         self.load_html(html)
         self.last_hovered_word = None
@@ -186,11 +186,9 @@ class Cloud(HtmlView):
         if 'search' in uri:
             # search_index is the part after last slash
             search_index = int(uri.split('/')[-1])
-            search_text, count = self.tag_cloud_words[search_index]
+            search_text, count = self.cloud_words[search_index]
 
-            self.journal.frame.search_type_box.set_active(self.type_int)
             self.journal.frame.search_box.set_active_text(search_text)
-            self.journal.frame.search_notebook.set_current_page(0)
 
             # returning True here stops loading the document
             return True
@@ -209,7 +207,7 @@ class Cloud(HtmlView):
         """
         if uri:
             search_index = int(uri.split('/')[-1])
-            search_text, count = self.tag_cloud_words[search_index]
+            search_text, count = self.cloud_words[search_index]
             self.last_hovered_word = search_text
 
     def on_populate_popup(self, webview, menu):

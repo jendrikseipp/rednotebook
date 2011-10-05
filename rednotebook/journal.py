@@ -22,12 +22,12 @@ from __future__ import with_statement
 import sys
 import datetime
 import os
-import collections
 import time
 import itertools
 import logging
 import locale
-from optparse import OptionParser, OptionValueError
+from optparse import OptionParser
+from collections import defaultdict
 
 
 # Use basic stdout logging before we can initialize logging correctly
@@ -417,19 +417,7 @@ class Journal:
         if self.is_first_start:
             self.add_instruction_content()
 
-        # Notebook is only on page 1 here, if we are opening a journal the second time
-        old_page = self.frame.search_notebook.get_current_page()
-        new_page = self.config.read('cloudTabActive', 0)
-        # 0 -> 0: search is cleared later
-        # 0 -> 1: change to cloud, update automatically
-        # 1 -> 0: change to search
-        # 1 -> 1: update cloud
-
-        # At tab change, cloud is updated automatically
-        self.frame.search_notebook.set_current_page(new_page)
-        if new_page == old_page:
-            # Without tab change, force update
-            self.frame.cloud.update(force_update=True)
+        self.frame.cloud.update(force_update=True)
 
         # Reset Search
         self.frame.search_box.clear()
@@ -543,11 +531,6 @@ class Journal:
                            key=utils.sort_asc))
 
 
-    @property
-    def tags(self):
-        return self.get_entries('Tags')
-
-
     def get_entries(self, category):
         entries = set()
         for day in self.days:
@@ -555,24 +538,23 @@ class Journal:
         return sorted(entries)
 
 
-    def search(self, text=None, category=None, tag=None):
+    def search(self, text):
         results = []
         for day in reversed(self.days):
-            result = None
-            if text:
-                result = day.search_text(text)
-            elif category:
-                result = day.search_category(category)
-            elif tag:
-                result = day.search_tag(tag)
-
-            if result:
-                if category:
-                    results.extend(result)
-                else:
-                    results.append(result)
-
+            results.append(day.search(text))
         return results
+
+
+    def get_word_count_dict(self):
+        '''
+        Returns a dictionary mapping the words to their number of appearance
+        '''
+        word_dict = defaultdict(int)
+        for day in self.days:
+            words = day.get_words()
+            for word in words:
+                word_dict[word.lower()] += 1
+        return word_dict
 
 
     @property
@@ -595,24 +577,6 @@ class Journal:
         # Sort days
         days = sorted(days, key=lambda day: day.date)
         return days
-
-
-    def get_word_count_dict(self, type):
-        '''
-        Returns a dictionary mapping the words to their number of appearance
-        '''
-        word_dict = collections.defaultdict(int)
-        for day in self.days:
-            if type == 'word':
-                words = day.get_words()
-            if type == 'category':
-                words = day.categories
-            if type == 'tag':
-                words = day.tags
-
-            for word in words:
-                word_dict[word.lower()] += 1
-        return word_dict
 
 
     def get_days_in_date_range(self, start_date=None, end_date=None):

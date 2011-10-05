@@ -22,7 +22,7 @@ from __future__ import division
 import datetime
 import logging
 
-TEXT_RESULT_LENGTH = 50
+TEXT_RESULT_LENGTH = 42
 
 
 def get_text_with_dots(text, start, end, found_text=None):
@@ -54,7 +54,6 @@ def get_text_with_dots(text, start, end, found_text=None):
         res += ' ...'
 
     res = res.replace('\n', ' ')
-
     if found_text:
         # Make the searched_text bold
         res = res.replace(found_text, 'STARTBOLD%sENDBOLD' % found_text)
@@ -148,11 +147,6 @@ class Day(object):
         return self.tree.keys()
 
 
-    @property
-    def tags(self):
-        return self.get_entries('Tags')
-
-
     def get_entries(self, category):
         return sorted(self.get_category_content_pairs().get(category, []))
 
@@ -160,10 +154,10 @@ class Day(object):
     def get_category_content_pairs(self):
         '''
         Returns a dict of (category: content_in_category_as_list) pairs.
-        content_in_category_as_list can be empty
         '''
         original_tree = self.tree.copy()
         pairs = {}
+        #TODO: Rewrite
         for category, content in original_tree.iteritems():
             entry_list = []
             if content is not None:
@@ -174,77 +168,64 @@ class Day(object):
 
 
     def get_words(self, with_special_chars=False):
-        if with_special_chars:
-            return self.text.split()
+        all_text = self.text
+        for category, content in self.get_category_content_pairs().items():
+            all_text += ' ' + ' '.join([category] + content)
 
-        word_list = self.text.split()
-        real_words = []
-        for word in word_list:
-            word = word.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]\\')
-            if len(word) > 0:
-                real_words.append(word)
-        return real_words
+        words = all_text.split()
+        if with_special_chars:
+            return words
+
+        words = [w.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]\\') for w in words]
+        return [word for word in words if word]
 
 
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))
 
 
-    def get_date_and_start_of_text(self):
-        return (str(self), get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+    def search(self, text):
+        results = []
+        # Search in date
+        if text in str(self):
+            results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+            return results
+        text_result = self.search_in_text(text)
+        if text_result:
+            results.append(text_result)
+        results.extend(self.search_in_categories(text))
+        return str(self), results
 
 
-    def search_text(self, search_text):
+    def search_in_text(self, search_text):
         '''
         Try searching in date first, then in the text, then in the annotations
         Uses case-insensitive search
         '''
-        # Search in date
-        date = str(self)
-        if search_text in date:
-            return self.get_date_and_start_of_text()
-
-        # Search in text
-        upcase_search_text = search_text.upper()
-        upcase_day_text = self.text.upper()
-        occurence = upcase_day_text.find(upcase_search_text)
+        occurence = self.text.upper().find(search_text.upper())
 
         # Check if search_text is in text
-        if occurence > -1:
-            found_text = self.text[occurence:occurence + len(search_text)]
+        if occurence < 0:
+            return None
 
-            result_text = get_text_with_dots(self.text, occurence,
+        found_text = self.text[occurence:occurence + len(search_text)]
+        result_text = get_text_with_dots(self.text, occurence,
                                     occurence + len(search_text), found_text)
-            return (date, result_text)
-
-        # Check if search_text is in annotations
-        for category, content_list in self.get_category_content_pairs().items():
-            if search_text.upper() in category.upper():
-                return self.get_date_and_start_of_text()
-
-            for tag in content_list:
-                if search_text.upper() in tag.upper():
-                    return self.get_date_and_start_of_text()
+        return result_text
 
 
-    def search_category(self, search_category):
+    def search_in_categories(self, text):
         results = []
         for category, content in self.get_category_content_pairs().items():
             if content:
-                if search_category.upper() in category.upper():
-                    for entry in content:
-                        results.append((str(self), entry))
+                if text.upper() in category.upper():
+                    results.extend(content)
+                else:
+                    results.extend(entry for entry in content
+                                   if text.upper() in entry.upper())
+            elif text.upper() in category.upper():
+                results.append(category)
         return results
-
-
-    def search_tag(self, search_tag):
-        for category, content_list in self.get_category_content_pairs().items():
-            if not category.upper() == 'TAGS' or not content_list:
-                continue
-            if not search_tag.upper() in [tag.upper() for tag in content_list]:
-                continue
-
-            return self.get_date_and_start_of_text()
 
 
     def __str__(self):
