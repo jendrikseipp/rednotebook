@@ -670,17 +670,27 @@ class MainWindow(object):
             markup = format_to_markup[format]
 
             focus = self.main_frame.get_focus()
+            iter = self.categories_tree_view.get_selected_node()
 
-
-            if focus == self.categories_tree_view.tree_view:
-                iter = self.categories_tree_view.get_selected_node()
-                if iter:
-                    text = self.categories_tree_view.get_iter_value(iter)
-                    text = '%s%s%s' % (markup, text, markup)
-                    self.categories_tree_view.set_iter_value(iter, text)
-                    return
-            #if focus is None or focus == self.day_text_field.day_text_view:
-            self.day_text_field.apply_format(format, markup)
+            if isinstance(focus, gtk.Entry):
+                entry = focus
+                pos = entry.get_position()
+                # bounds can be an empty tuple
+                bounds = entry.get_selection_bounds() or (pos, pos)
+                selected_text = entry.get_chars(*bounds).decode('utf-8')
+                entry.delete_text(*bounds)
+                entry.insert_text('%s%s%s' % (markup, selected_text, markup), bounds[0])
+                # Set cursor after the end of the formatted text
+                entry.set_position(bounds[0] + len(markup) + len(selected_text))
+            elif focus == self.categories_tree_view.tree_view and iter:
+                text = self.categories_tree_view.get_iter_value(iter)
+                text = '%s%s%s' % (markup, text, markup)
+                self.categories_tree_view.set_iter_value(iter, text)
+            elif focus == self.day_text_field.day_text_view:
+                self.day_text_field.apply_format(format, markup)
+            else:
+                self.journal.show_message(_('No text or category entry has been selected.'),
+                                          error=True)
 
         def shortcut(char):
             ### Translators: The Control (Ctrl) key

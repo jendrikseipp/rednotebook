@@ -9,6 +9,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.2.1
 X Add Quotes by indenting them with a tab
+X Fix: Correctly highlight all picture formats in edit mode
+X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -71,7 +73,6 @@ O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
 
 O Apply formatting only once if a format button is clicked multiple times
-O Fix: When a tag is being edited, the format keys insert the formatting in the editor pane
 
 
 2.0

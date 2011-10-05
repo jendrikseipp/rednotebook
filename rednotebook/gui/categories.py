@@ -110,14 +110,14 @@ class CategoriesTreeView(object):
         # Fetch the markup
         pango_markup = self.tree_store[path][0]
 
-        # Reset the renderer to use markup
+        # Tell the renderer NOT to use markup
         self.tvcolumn.clear_attributes(self.cell)
         self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 
         # We want to show txt2tags markup and not pango markup
         editable.set_text(markup.convert_from_pango(pango_markup))
 
-    def edited_cb(self, cell, path, new_text, user_data):
+    def edited_cb(self, cell, path, new_text, liststore):
         """
         Called when text in a cell is changed
 
@@ -130,9 +130,7 @@ class CategoriesTreeView(object):
             self.statusbar.show_text(_('Empty entries are not allowed'), error=True)
             return
 
-        liststore = user_data
-        pango_markup = markup.convert_to_pango(new_text)
-        liststore[path][0] = pango_markup
+        liststore[path][0] = markup.convert_to_pango(new_text)
 
         # Category name changed
         if self.node_on_top_level(path):
@@ -242,9 +240,6 @@ class CategoriesTreeView(object):
         return text
 
     def set_iter_value(self, iter, txt2tags_markup):
-        """
-        text is txt2tags markup
-        """
         pango_markup = markup.convert_to_pango(txt2tags_markup)
         self.tree_store.set_value(iter, 0, pango_markup)
 
