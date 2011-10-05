@@ -9,7 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.2.1
 X Add Quotes by indenting them with a tab
-O Apply formatting only once if a format button is clicked multiple times
+X Apply formatting only once if a format button is clicked multiple times
 X Fix: Correctly highlight all picture formats in edit mode
 X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
 
@@ -63,8 +63,6 @@ O Add shortcut to move the cursor into the main text area
 O Make txt2tags faster and fix bugs
 
 O Let tags be categories without entries
-O Select the search location (text, categories, tags) after doing the search
-  or just make the distinction in the search results
 O Unify Clouds and search -> Show the search bar above the clouds
   When a search is made, substitute the word cloud with the word list and
   present a control to further refine the results.
