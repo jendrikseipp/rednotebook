@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2009-12-03 21:01+0000\n"
-"Last-Translator: David Planella <david.planella@ubuntu.com>\n"
+"PO-Revision-Date: 2011-10-06 18:21+0000\n"
+"Last-Translator: Giorgio Grappa <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-30 04:41+0000\n"
-"X-Generator: Launchpad (build 14071)\n"
+"X-Launchpad-Export-Date: 2011-10-07 04:36+0000\n"
+"X-Generator: Launchpad (build 14085)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
-msgstr ""
+msgstr "Exporta tots els dies"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export currently visible day"
@@ -31,15 +31,15 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:63
 msgid "From:"
-msgstr ""
+msgstr "Des de:"
 
 #: ../rednotebook/gui/exports.py:65
 msgid "To:"
-msgstr ""
+msgstr "Fins a:"
 
 #: ../rednotebook/gui/exports.py:126
 msgid "Date format"
-msgstr ""
+msgstr "Format de la data"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
@@ -51,23 +51,23 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:130
 msgid "Export all categories"
-msgstr ""
+msgstr "Exporta totes les categories"
 
 #: ../rednotebook/gui/exports.py:131
 msgid "Do not export categories"
-msgstr ""
+msgstr "No exportis les categories"
 
 #: ../rednotebook/gui/exports.py:133
 msgid "Export only the selected categories"
-msgstr ""
+msgstr "Exporta només les categories seleccionades"
 
 #: ../rednotebook/gui/exports.py:144
 msgid "Available Categories"
-msgstr ""
+msgstr "Categories disponibles"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Selected Categories"
-msgstr ""
+msgstr "Categories seleccionades"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Select"
