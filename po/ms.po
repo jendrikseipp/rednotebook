@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-09-30 03:14+0000\n"
+"PO-Revision-Date: 2011-10-07 11:09+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-01 05:08+0000\n"
-"X-Generator: Launchpad (build 14071)\n"
+"X-Launchpad-Export-Date: 2011-10-08 05:17+0000\n"
+"X-Generator: Launchpad (build 14110)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "Anda telah memilih tetapan berikut:"
 
 #: ../rednotebook/gui/exports.py:311
 msgid "Export Assistant"
@@ -94,37 +94,40 @@ msgstr "Pembantu Eksport"
 
 #: ../rednotebook/gui/exports.py:313
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "Selamat datang ke Pembantu Eksport."
 
 #: ../rednotebook/gui/exports.py:314
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
+"Bestari ini akan membantu anda eksport jurnal anda ke perlbagai format."
 
 #: ../rednotebook/gui/exports.py:315
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"Anda boleh pilih hari yang anda ingin eksport dan di mana output akan "
+"disimpankan."
 
 #: ../rednotebook/gui/exports.py:325
 msgid "Select Export Format"
-msgstr ""
+msgstr "Pilih Format Eksport"
 
 #: ../rednotebook/gui/exports.py:330
 msgid "Select Date Range"
-msgstr ""
+msgstr "Pilih Julat Tarikh"
 
 #: ../rednotebook/gui/exports.py:335
 msgid "Select Contents"
-msgstr ""
+msgstr "Pilih Kandungan"
 
 #: ../rednotebook/gui/exports.py:341
 msgid "Select Export Path"
-msgstr ""
+msgstr "Pilih Laluan Eksport"
 
 #: ../rednotebook/gui/exports.py:346
 msgid "Summary"
-msgstr ""
+msgstr "Ringkasan"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/exports.py:390 ../rednotebook/gui/main_window.py:709
@@ -133,31 +136,31 @@ msgstr "Format"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Start date"
-msgstr ""
+msgstr "Tarikh mula"
 
 #: ../rednotebook/gui/exports.py:395
 msgid "End date"
-msgstr ""
+msgstr "Tarikh akhir"
 
 #: ../rednotebook/gui/exports.py:397
 msgid "Export text"
-msgstr ""
+msgstr "Eskport teks"
 
 #: ../rednotebook/gui/exports.py:398
 msgid "Selected categories"
-msgstr ""
+msgstr "Kategori terpilih"
 
 #: ../rednotebook/gui/exports.py:399
 msgid "Export path"
-msgstr ""
+msgstr "Eksport laluan"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "No"
-msgstr ""
+msgstr "Tidak"
 
 #: ../rednotebook/gui/exports.py:441
 #, python-format
@@ -166,7 +169,7 @@ msgstr "Kandungan dieksport ke %s"
 
 #: ../rednotebook/gui/exports.py:536
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "memerlukan pywebkitgtk"
 
 #: ../rednotebook/gui/clouds.py:130
 msgid "filter, these, comma, separated, words"
@@ -183,7 +186,7 @@ msgstr "Sembunyi \"%s\" dari clouds"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Introduction"
-msgstr ""
+msgstr "Pengenalan"
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
@@ -208,7 +211,7 @@ msgstr "Bantuan"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr ""
+msgstr "Pratonton:"
 
 #: ../rednotebook/gui/options.py:290
 msgid "Close to system tray"
@@ -270,7 +273,7 @@ msgstr "Benarkan perkataan dengan 4 huruf atau kurang dalam cloud teks"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "_Jurnal"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
@@ -288,11 +291,11 @@ msgstr "Simpan jurnal di lokasi baru. Fail jurnal lama juga akan disimpan"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr ""
+msgstr "Buka pembantu import"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
@@ -354,7 +357,7 @@ msgstr "Dapatkan Bantuan Dalam Talian"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Layar soalan terjawab atau tanya yang baru"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -403,7 +406,7 @@ msgstr "Tambah entri baru"
 
 #: ../rednotebook/gui/categories.py:439
 msgid "Delete this entry"
-msgstr ""
+msgstr "Padam masukan ini"
 
 #: ../rednotebook/gui/search.py:36
 msgid "Search ..."
@@ -535,7 +538,7 @@ msgstr "Senarai Bullet"
 
 #: ../rednotebook/gui/main_window.py:802
 msgid "Numbered List"
-msgstr ""
+msgstr "Senarai Bernombor"
 
 #: ../rednotebook/gui/main_window.py:804
 msgid "Title"
@@ -551,7 +554,7 @@ msgstr "Masuk garis pemisah"
 
 #: ../rednotebook/gui/main_window.py:809
 msgid "Table"
-msgstr ""
+msgstr "Jadual"
 
 #: ../rednotebook/gui/main_window.py:811
 msgid "Date/Time"
@@ -583,51 +586,52 @@ msgstr "Tiada lokasi pautan dimasukkan"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "Ia sudah ada semenjak anda lakukan sandar terakhir anda."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
+"Anda boleh sandar jurnal anda ke fail zip untuk menghindari kehilangan data."
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "Sandar sekarang"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "Tanya pada permukaan berikutnya"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Jangan tanya lagi"
 
 #: ../rednotebook/templates.py:31
 msgid "Monday"
-msgstr ""
+msgstr "Isnin"
 
 #: ../rednotebook/templates.py:31
 msgid "Tuesday"
-msgstr ""
+msgstr "Selasa"
 
 #: ../rednotebook/templates.py:31
 msgid "Wednesday"
-msgstr ""
+msgstr "Rabu"
 
 #: ../rednotebook/templates.py:31
 msgid "Thursday"
-msgstr ""
+msgstr "Khamis"
 
 #: ../rednotebook/templates.py:32
 msgid "Friday"
-msgstr ""
+msgstr "Jumaat"
 
 #: ../rednotebook/templates.py:32
 msgid "Saturday"
-msgstr ""
+msgstr "Sabtu"
 
 #: ../rednotebook/templates.py:32
 msgid "Sunday"
-msgstr ""
+msgstr "Ahad"
 
 #: ../rednotebook/templates.py:104
 msgid ""
@@ -653,6 +657,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== Mesyuarat ===\n"
+"\n"
+"Tujuan, tarikh, dan tempat\n"
+"\n"
+"**Hadir:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Perbincangan, Keputusan, Tugasan:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:128
 msgid ""
@@ -668,6 +693,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Perjalanan===\n"
+"**Tarikh:**\n"
+"\n"
+"**Lokasi:**\n"
+"\n"
+"**Peserta:**\n"
+"\n"
+"**Perancangan:**\n"
+"Mula-mula kita akan pergi ke xxxxx kemudian ke yyyyy ...\n"
+"\n"
+"**Gambar:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 
 #: ../rednotebook/templates.py:142
 msgid ""
@@ -679,6 +715,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Panggilan Telefon ===\n"
+"- **Individu:**\n"
+"- **Masa:**\n"
+"- **Tajuk:**\n"
+"- **Dapatan dan  Tindakan susulan:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:152
 msgid ""
@@ -700,6 +743,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Peribadi ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Apa yang berlaku hari ini?**\n"
+"\n"
+"\n"
+"========================\n"
+"**Apa yang perlu ditukar?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:210
 msgid "Choose Template Name"
@@ -728,16 +788,16 @@ msgstr "Buka Direktori Templat"
 #: ../rednotebook/util/utils.py:173
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "Anda mempunyai versi <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:174
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "Versi terkini ialah <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:175
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "Anda hendak lawati laman sesawang RedNotebook?"
 
 #: ../rednotebook/util/utils.py:182
 msgid "Do not ask again"
@@ -745,7 +805,7 @@ msgstr "Jangan tanya lagi"
 
 #: ../rednotebook/util/dates.py:58
 msgid "Incorrect date format"
-msgstr ""
+msgstr "Format tarikh tidak betul"
 
 #: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
 #: tmp/main_window.glade.h:44
@@ -782,23 +842,27 @@ msgstr "Garis"
 
 #: ../rednotebook/journal.py:272
 msgid "RedNotebook appears to be already running."
-msgstr ""
+msgstr "RedNotebook kelihatan sudah berjalan."
 
 #: ../rednotebook/journal.py:273
 msgid ""
 "This can happen if the application is hidden in the system tray or was not "
 "shut down correctly."
 msgstr ""
+"Ini boleh berlaku jika aplikasi tersembunyi didalam talam sistem atau tidak "
+"dimatikan dengan betul."
 
 #: ../rednotebook/journal.py:275
 msgid ""
 "Starting a second RedNotebook instance can lead to data loss and it might be "
 "best to see if there is another instance first."
 msgstr ""
+"Memulakan RedNotebook kali kedua boleh menyebabkan kehilangan data dan lebih "
+"baik lihat dahulu sama ada yang lain sudah ada."
 
 #: ../rednotebook/journal.py:278
 msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr ""
+msgstr "Anda hendak mulakan RedNotebook jua?"
 
 #: ../rednotebook/journal.py:361
 #, python-format
@@ -835,7 +899,7 @@ msgstr "Tag"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "Perkara Hebat"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
@@ -882,6 +946,8 @@ msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Beberapa teks contoh telah ditambah untuk membantu anda mula dan anda boleh "
+"padamnya bilamana anda kehendaki."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:96
@@ -889,6 +955,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Teks contoh dan lagi dokumentasi tersedia dibawah \"Bantuan\" -> "
+"\"Kandungan\"."
 
 #: ../rednotebook/info.py:97
 msgid "The interface is divided into three parts:"
@@ -932,11 +1000,12 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Terdapat dua mod dalam RedNotebook  mode__sunting__ dan mod__pratonton."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Klik pada pratonton diatas untuk lihat perbezaan."
 
 #: ../rednotebook/info.py:116
 msgid ""
@@ -954,7 +1023,7 @@ msgstr "Catatan"
 
 #: ../rednotebook/info.py:121
 msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
+msgstr "Catatan merupakan nota yang boleh diisih kepada kategori."
 
 #: ../rednotebook/info.py:122
 msgid ""
@@ -969,6 +1038,8 @@ msgid ""
 "If you find annotations confusing you can simply hide them for now by moving "
 "the separator to the far right."
 msgstr ""
+"Jika anda temui catatan mengelirukan, anda boleh sembunyikannya sekarang "
+"dengan mengalihkan pemisah menjauhi ke arah kanan."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
@@ -1022,7 +1093,7 @@ msgstr "Semoga ceria!"
 
 #: ../rednotebook/info.py:176
 msgid "Ate **two** cans of spam"
-msgstr ""
+msgstr "Makan **dua** tin spam"
 
 #: ../rednotebook/info.py:177
 msgid "Use a cool journal app"
@@ -1030,19 +1101,19 @@ msgstr "Guna app jurnal yang menarik"
 
 #: ../rednotebook/info.py:178
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "Monty Python's Life of Brian"
 
 #: ../rednotebook/info.py:217
 msgid "Went to see the pope"
-msgstr ""
+msgstr "Pergi menziarah imam"
 
 #: ../rednotebook/info.py:218
 msgid "Invent Anti-Hangover-Machine"
-msgstr ""
+msgstr "Cipta Mesin-Tah-Apa-apa"
 
 #: ../rednotebook/info.py:219
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "Monty Python dan Holy Grail"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
@@ -1067,7 +1138,7 @@ msgstr "<b>Pilih Kategori yang ada atau baru</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Hari Pilihan</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
@@ -1075,7 +1146,7 @@ msgstr "<b>Tulis entri</b>T"
 
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
-msgstr ""
+msgstr "Tambah masukan ke kategori baru atau sedia ada"
 
 #: tmp/main_window.glade.h:10
 msgid "Annotate"
@@ -1091,11 +1162,11 @@ msgstr "Sunting"
 
 #: tmp/main_window.glade.h:14
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Benarkan penyuntingan teks (Ctrl+P)"
 
 #: tmp/main_window.glade.h:15
 msgid "Everywhere"
-msgstr ""
+msgstr "Dimana Saja"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1108,7 +1179,7 @@ msgstr "Umum"
 
 #: tmp/main_window.glade.h:19
 msgid "Give this day a tag"
-msgstr ""
+msgstr "Berikan hari ini satu tag"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"
