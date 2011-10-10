@@ -52,9 +52,8 @@ def _load_month_from_disk(path, year_number, month_number):
     try:
         # Try to read the contents of the file
         with codecs.open(path, 'rb', encoding='utf-8') as month_file:
-            logging.debug('Start loading file "%s"' % path)
+            logging.debug('Loading file "%s"' % path)
             month_contents = yaml.load(month_file, Loader=Loader)
-            logging.debug('Finished loading file "%s"' % path)
             month = Month(year_number, month_number, month_contents)
             return month
     except yaml.YAMLError, exc:
@@ -129,6 +128,7 @@ def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journa
                     # This version produces readable unicode and no python directives
                     yaml.safe_dump(month_content, month_file, allow_unicode=True)
                     month.edited = False
+                    logging.debug('Wrote file %s' % month_file_string)
                 except OSError:
                     frame.show_save_error_dialog(exit_imminent)
                 except IOError:

@@ -7,11 +7,18 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.2.1
+1.3
+X Let tags be categories without entries. This greatly simplifies and in fact
+  unifies tags and categories.
+X Unify clouds and search -> Show the search bar above the clouds
+  When a search is made, substitute the word cloud with the search results.
 X Add Quotes by indenting them with a tab
 X Apply formatting only once if a format button is clicked multiple times
+O Update and revise help text
+O Make default css prettier
 X Fix: Correctly highlight all picture formats in edit mode
 X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
+X Write month only if changes are actually made (LP:871730)
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -62,10 +69,6 @@ O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add shortcut to move the cursor into the main text area
 O Make txt2tags faster and fix bugs
 
-O Let tags be categories without entries
-O Unify Clouds and search -> Show the search bar above the clouds
-  When a search is made, substitute the word cloud with the word list and
-  present a control to further refine the results.
 O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
 O Search and replace (useful for renaming categories and other names)

@@ -64,7 +64,7 @@ def get_text_with_dots(text, start, end, found_text=None):
 class Day(object):
     def __init__(self, month, day_number, day_content = None):
         if day_content == None:
-            day_content = {}
+            day_content = {'text': u''}
 
         self.date = datetime.date(month.year_number, month.month_number, day_number)
 
