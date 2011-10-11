@@ -48,7 +48,11 @@ CLOUD_CSS = """\
 
 
 def get_regex(word):
-    return re.compile(word + '$', re.I)
+    try:
+        return re.compile(word + '$', re.I)
+    except Exception, e:
+        logging.warning('"%s" is not a valid regular expression' % word)
+        return re.compile('^$')
 
 
 def get_cloud_html(word_count_dict, categories, ignores, includes):
