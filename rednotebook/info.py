@@ -186,7 +186,7 @@ documentation: None,
 
 example_day1 = {
 'text': '''\
-=== Annotations ===
+=== %(annotations)s ===
 %(ann_par)s
 
 Besides the main text for a day you can have additional content on the right,
@@ -204,7 +204,7 @@ Here are some examples of categories:
 As you can see you can add the category %(movies)s and fill it with the movies
 you watch on the respective days. Similarly you can record the things you do
 at work. If you just want to note that you went to work on a particular day,
-you can omit the "Group meeting" entry.
+you can omit the "%(team_meeting)s" entry.
 
 Category entries can be formatted **bold**, //italic//, etc.''' % globals(),
 #cool_stuff: {visit_paris: None},
@@ -308,7 +308,7 @@ A blank line starts a new **paragraph**, two backslashes \\\\ result in a **newl
 To see the result, click on the "Preview" button. You can also see how this
 text was formatted by looking at its [source source.txt].
 
-**Lists** can be created by using the following style, If you use "+"
+**Lists** can be created by using the following syntax, if you use "+"
 instead of "-" you can create a **numbered list**.
 
 ```
@@ -328,7 +328,7 @@ above the main text field. The text will be inserted at the current
 cursor position.
 
 With the insert button you cannot insert **links to directories** on your computer.
-Those can be inserted manually however (""[Home ""file:///home/""]"").
+Those can be inserted manually however (``""[Home ""file:///home/""]""``).
 
 == %(templates)s ==
 %(temp_par)s
@@ -368,7 +368,7 @@ open this dialog by clicking on the entry in the "Edit" menu.
 
 Since version 0.9.2 you can also directly export your journal to PDF. If the
 option does not show up in the export assistant, you need to install
-pywebkitgtk version 1.1.5 or later (the package is sometime called
+pywebkitgtk version 1.1.5 or later (the package is sometimes called
 python-webkit).
 
 **Latex caveats**
@@ -492,7 +492,7 @@ You can find other shortcuts in the menus.
 You can use e.g. [TrueCrypt http://www.truecrypt.org] to encrypt your
 journal. Nick Bair has written a nice tutorial about
 [encrypting RedNotebook files
-http://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=14]
+""http://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=14""]
 on Windows. The procedure for other operating systems should be similar.
 The general idea is to create and mount an encrypted folder with
 TrueCrypt and put your journal files in there.

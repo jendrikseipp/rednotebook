@@ -14,8 +14,9 @@ X Unify clouds and search -> Show the search bar above the clouds
   When a search is made, substitute the word cloud with the search results.
 X Add Quotes by indenting them with a tab
 X Apply formatting only once if a format button is clicked multiple times
-O Update and revise help text
+X Update and revise help text
 O Make default css prettier
+X Fix: Do not abort if a wrong regex is entered
 X Fix: Correctly highlight all picture formats in edit mode
 X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
 X Write month only if changes are actually made (LP:871730)
