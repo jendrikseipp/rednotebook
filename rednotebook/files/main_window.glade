@@ -77,6 +77,7 @@
                 <child>
                   <object class="GtkVBox" id="search_container">
                     <property name="visible">True</property>
+                    <property name="spacing">1</property>
                     <child>
                       <object class="GtkComboBoxEntry" id="search_box">
                         <property name="visible">True</property>
