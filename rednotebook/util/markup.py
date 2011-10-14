@@ -41,6 +41,9 @@ from rednotebook.util import filesystem
 REGEX_LINEBREAK = r'\\\\[\s]*$'
 REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
 
+TABLE_HEAD_BG = '#aaa'
+BLOCKQUOTE_BG = '#ccc'
+
 CSS = """\
 <style type="text/css">
     body {
@@ -49,10 +52,24 @@ CSS = """\
     blockquote {
         border: 1px solid #000;
         padding: 10px;
-        background-color: #ccc;
+        background-color: %(BLOCKQUOTE_BG)s;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    td, th {
+        border: 1px solid #888;
+        padding: 3px 7px 2px 7px;
+    }
+    th {
+        text-align: left;
+        padding-top: 5px;
+        padding-bottom: 4px;
+        background-color: %(TABLE_HEAD_BG)s;
+        color: #ffffff;
     }
 </style>
-"""
+""" % globals()
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -142,6 +159,9 @@ def _get_config(type):
 
         # Apply image resizing
         config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
+
+        # Remove border size
+        config['postproc'].append([r'<table border="1">', r'<table>'])
 
     elif type == 'tex':
         config['encoding'] = 'utf8'

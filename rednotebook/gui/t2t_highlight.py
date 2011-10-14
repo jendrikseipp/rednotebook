@@ -273,6 +273,8 @@ styles = {  'bold':             {'weight': pango.WEIGHT_BOLD},
                                 'underline': pango.UNDERLINE_SINGLE,},
             'highlight':        {'background': 'yellow'},
             'quote':            {'background': 'gray'},
+            'tablehead':        {'background': markup.TABLE_HEAD_BG},
+            'tablerow':         {'background': '#eee'}
             }
 def add_header_styles():
     sizes = [
@@ -350,6 +352,9 @@ link = Pattern('OVERWRITE', [(0, 'link')], regex=bank['link'], name='link')
 
 quote = Pattern(r'^\t+(.*)$', [(1, 'quote')])
 
+table_head = Pattern(r'^ *(\|\| .*)', [(1, 'tablehead')])
+table_row = Pattern(r'^ *(\| .*)', [(1, 'tablerow')])
+
 
 patterns = [
         get_pattern('\*', 'bold'),
@@ -368,6 +373,8 @@ patterns = [
         named_link,
         link,
         quote,
+        table_head,
+        table_row,
         ] + title_patterns
 
 
