@@ -1,0 +1,39 @@
+.\" Hey, EMACS: -*- nroff -*-
+.TH "REDNOTEBOOK" "1" "2009-08-31" "Jonathan Wiltshire" ""
+.SH "NAME"
+rednotebook \- daily journal with calendar, templates and keyword searching
+.SH "SYNOPSIS"
+.B rednotebook [\fIoptions\fP] [\fIjournal-path\fP]
+.SH "DESCRIPTION"
+.B RedNotebook
+is a desktop diary that makes it very easy for you to keep track of the stuff you do and the thoughts you have. This journal software helps you to write whole passages or just facts and does so in style.
+.SH "OPTIONS"
+.LP
+.TP
+\fB\-h, \-\-help\fR
+Show help text and exit
+.TP
+\fB\-d, \-\-debug\fR
+Output debugging messages (default: false)
+.TP
+\fB\-m, \-\-minimized
+Start RedNotebook and minimize it to the tray
+.LP
+\fBjournal-path\fR can be one of the following:
+ \- An absolute path (e.g. /home/username/myjournal)
+ \- A relative patch (e.g. ../dir/myjournal)
+ \- The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
+.LP
+If the \fBjournal-path\fR is omitted the last session's journal will be used.
+At the first program start this defaults to \fI$HOME/.rednotebook/data\fR.
+.LP
+Configuration is stored in the file \fI~/.rednotebook/configuration.cfg\fR.
+.SH "FILES"
+\fI/usr/bin/rednotebook\fR \- \fBRedNotebook\fR executable
+.br 
+\fI~/.rednotebook\fR \- per\-user configuration and notebooks
+.SH "AUTHOR"
+rednotebook was written by Jendrik Seipp <jendrikseipp@web.de>.
+.PP 
+This manual page was written by Jonathan Wiltshire <debian@jwiltshire.org.uk>,
+for the Debian project (and may be used by others).

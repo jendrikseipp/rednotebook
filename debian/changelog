@@ -1,0 +1,294 @@
+rednotebook (1.1.4-1) unstable; urgency=low
+
+  * [b37d7d] New upstream release
+  * [1954fb] Promote python-webkit to a dependency (Closes: #620708)
+  * [e91c75] Drop fix-windowpos-crash.patch
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Sun, 10 Apr 2011 13:20:27 +0100
+
+rednotebook (1.1.3-2) unstable; urgency=medium
+
+  * [20a9ed] Convert to source format 3.0 (quilt)
+  * [a3adc0] Backport fix for window position crashes (Closes: #619001)
+    (LP: #728466)
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Mon, 21 Mar 2011 09:22:51 +0000
+
+rednotebook (1.1.3-1) unstable; urgency=low
+
+  * [8f66e3] New upstream release
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Thu, 03 Mar 2011 00:03:42 +0000
+
+rednotebook (1.1.2-1) unstable; urgency=low
+
+  * [486e10] New upstream release
+  * [82dfc1] Add debian/gbp.conf with appropriate settings
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Wed, 29 Dec 2010 01:43:18 +0000
+
+rednotebook (1.1.1-1) unstable; urgency=low
+
+  * [27417e] New upstream release
+  * [3518c4] Patch gtk-stock.patch is integrated upstream, remove patch
+    logic
+  * [2549be] Update my email address and remove DMUA flag
+  * [2193e4] Standards version 3.9.1, no changes needed
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Mon, 20 Dec 2010 16:15:02 +0000
+
+rednotebook (1.0.0-2) unstable; urgency=low
+
+  * [e9808c] Enable quilt patch system and add dependency and
+    README.source
+  * [2968fb] New patch gtk-stock.patch to fix crash when in Turkish
+    locale (Closes: #588664) (LP: #555425)
+  * [32f521] Standards version 3.9.0 (no changes)
+  * [102b43] Remove mention of textlive-latex-extra in the description
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sun, 11 Jul 2010 00:17:20 +0100
+
+rednotebook (1.0.0-1) unstable; urgency=low
+
+  * [19cb84] New upstream release
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Wed, 23 Jun 2010 20:39:08 +0100
+
+rednotebook (0.9.5-1) unstable; urgency=low
+
+  * [e9f9ea] New upstream release
+  * [ec8858] Add Recommends on python-chardet
+  * [2f4313] Drop Suggests on texlive-latex-extra
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Thu, 13 May 2010 08:37:21 +0100
+
+rednotebook (0.9.4-1) unstable; urgency=low
+
+  * [ba3a88] New upstream version
+  * [41dcc5] Explicitly declare source format 1.0
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sat, 08 May 2010 19:02:40 +0100
+
+rednotebook (0.9.3-1) unstable; urgency=low
+
+  * [be5b34] New upstream version
+  * [418a9c] Update copyright information
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 15 Mar 2010 18:45:08 +0000
+
+rednotebook (0.9.2-1) unstable; urgency=low
+
+  * [7f1ca2] New upstream version
+  * [31f071] Standards version 3.8.4
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 01 Feb 2010 23:51:40 +0000
+
+rednotebook (0.9.1-1) unstable; urgency=low
+
+  * [ad68eb] New upstream version
+  * [99bd30] debian/control: Add recommendation on python-webkit
+  * [824087] debian/rednotebook.1: Spelling corrections
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Thu, 14 Jan 2010 19:48:50 +0000
+
+rednotebook (0.9.0-1) unstable; urgency=low
+
+  * [86bb8a] New upstream version:
+       - remove .mo files to allow building twice in a row
+         (Closes: #560711)
+  * [2db025] rednotebook/gui/browser.py: Import with_statement to allow
+    compilation with Python 2.5
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sat, 19 Dec 2009 12:04:48 +0000
+
+rednotebook (0.8.9-1) unstable; urgency=low
+
+  * [9b9498] New upstream version
+  * [93093b] Update copyright information
+  * [bbd9b2] rednotebook/external/interwibble.py: backport fixes for
+    Python 2.5 from interwibble's upstream
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Fri, 04 Dec 2009 13:03:57 +0000
+
+rednotebook (0.8.8-1) unstable; urgency=low
+
+  * [c53002] New upstream version
+  * [fb1191] debian/control: recommend python-gtkspell (Closes: #551826)
+  * [221152] debian/rednotebok.1: Add -m parameter to manual
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sat, 24 Oct 2009 16:37:26 +0100
+
+rednotebook (0.8.7-1) unstable; urgency=low
+
+  * [9d33ee] New upstream version
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sun, 27 Sep 2009 21:07:52 +0100
+
+rednotebook (0.8.6.1-1) unstable; urgency=low
+
+  * [d10aa1] New upstream version
+  * [72dd51] Standards version 3.8.3
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sun, 06 Sep 2009 00:11:49 +0100
+
+rednotebook (0.8.5-1) unstable; urgency=low
+
+  * [df4dcc] New upstream version
+  * [5c38bd] Update manual rednotebook.1
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 31 Aug 2009 10:59:26 +0100
+
+rednotebook (0.8.3-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 10 Aug 2009 17:58:46 +0100
+
+rednotebook (0.8.2-1) unstable; urgency=low
+
+  * [81e7f8] Imported Upstream version 0.8.2
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Wed, 29 Jul 2009 16:26:01 +0100
+
+rednotebook (0.8.1-1) unstable; urgency=low
+
+  * [995049] New upstream version
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sat, 25 Jul 2009 19:50:27 +0100
+
+rednotebook (0.8.0-1) unstable; urgency=low
+
+  * [79a906] New upstream version
+  * [2a5e9b] Add Suggests for texlive-latex-extra to permit PDF output,
+    and a hint in the binary package description
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Wed, 22 Jul 2009 09:35:41 +0100
+
+rednotebook (0.7.6-1) unstable; urgency=low
+
+  * [b08360] New upstream release: add an Undo/Redo function (LP: #393277)
+  * [be996f] Update debian/copyright
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Wed, 15 Jul 2009 23:56:03 +0100
+
+rednotebook (0.7.5-1) unstable; urgency=low
+
+  [ Jonathan Wiltshire]
+  * [960284] New upstream version
+
+  [ Piotr Ożarowski ]
+  * DM-Upload-Allowed set to yes
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Wed, 01 Jul 2009 15:32:44 +0100
+
+rednotebook (0.7.4-1) unstable; urgency=low
+
+  * [309859] New upstream version:
+    - create ~/.rednotebook before logging is initialized
+      (Closes: #534608, LP: #392235)
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Thu, 25 Jun 2009 23:19:43 +0100
+
+rednotebook (0.7.3-1) unstable; urgency=low
+
+  * [75ec96] New upstream version
+  * [494744] Standards version 3.8.2 (no changes required)
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sun, 21 Jun 2009 23:40:05 +0100
+
+rednotebook (0.7.2-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 25 May 2009 17:21:13 +0100
+
+rednotebook (0.7.0-1) unstable; urgency=low
+
+  * New upstream version:
+    - multiple, arbitrarily named templates can be defined
+    - enable copy/paste in categories edit box
+    - keep clouds up to date when categories have been edited
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Tue, 19 May 2009 19:51:39 +0100
+
+rednotebook (0.6.9-1) unstable; urgency=low
+
+  * New upstream version:
+    - enhance the Export functions
+    - allow links to be opened from the preview window
+    - remove the old code from GTKMozembed
+  * Use '--install-*' to put binaries and other shared files in /usr/bin,
+    not /usr/local/bin so that builds on Ubuntu work properly (LP: 373200)
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Fri, 08 May 2009 09:17:41 +0100
+
+rednotebook (0.6.8-1) unstable; urgency=low
+
+  * New Upstream version
+  * Drop dependency on python-gtkmozembed
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sun, 03 May 2009 23:15:05 +0100
+
+rednotebook (0.6.7-1) unstable; urgency=low
+
+  * New Upstream Version
+  * Update Homepage information
+  * Disable "dirty fix" that adds python2.5's site-packages to the sys.path
+    in rednotebook script
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 27 Apr 2009 11:45:56 +0100
+
+rednotebook (0.6.6-1) unstable; urgency=low
+
+  * New Upstream Version
+  * Add 'or' dependency on python-gnome2-extras to make Ubuntu syncs nice
+    and easy
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Thu, 09 Apr 2009 15:40:09 +0100
+
+rednotebook (0.6.4-1) unstable; urgency=low
+
+  * New Upstream Version:
+    - Easier Tagging (Added tag button)
+    - New Entry dialog: Show previous tags in drop-down menu when "Tags" is 
+      selected as category
+    - New Entry dialog: Only make a new entry submittable if text has been
+      entered
+    - Shortcuts to navigate between days (<Ctrl> + PageUp, <Ctrl> + PageDown)
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 30 Mar 2009 07:20:41 +0100
+
+rednotebook (0.6.3-1) unstable; urgency=low
+
+  * New Upstream Version
+  * Added explicit dependency on python-gobject
+  * Removed old dependency on python-gtkhtml2
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 23 Mar 2009 17:47:06 +0000
+
+rednotebook (0.6.2-1) unstable; urgency=low
+
+   * New Upstream Version:
+     - Notebook content is now saved automatically every 10 minutes
+   * Bump Standards-Version to 3.8.1 (no changes)
+   * Remove all lintian overrides (no longer needed)
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Wed, 18 Mar 2009 20:31:56 +0000
+
+rednotebook (0.6.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Upstream readme and changelog files no longer have .txt extensions;
+    updated debian/rules and debian/docs to reflect this
+  * Updated copyright information
+  * Override lintian errors postinst-does-not-call-updatemenus and
+    postrm-does-not-call-updatemenus (no longer errors for debhelper
+    7.2.3), see bug #518712
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Sun, 08 Mar 2009 18:56:16 +0000
+
+rednotebook (0.5.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #507939)
+
+ -- Jonathan Wiltshire <debian@jwiltshire.org.uk>  Mon, 02 Feb 2009 14:23:22 +0000

@@ -1,0 +1,21 @@
+Source: rednotebook
+Section: text
+Priority: optional
+Maintainer: Jonathan Wiltshire <jmw@debian.org>
+Build-Depends-Indep: python (>=2.5), python-support (>=0.5.3), debhelper (>= 7)
+Standards-Version: 3.9.1
+Homepage: http://rednotebook.sourceforge.net/
+Vcs-Browser: http://robin.powdarrmonkey.net/cgi-bin/gitweb.cgi?p=rednotebook
+Vcs-Git: git://robin.powdarrmonkey.net/git/rednotebook/
+
+Package: rednotebook
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, python-yaml (>=3.05), python-gtk2 (>=2.12), python-glade2, python-gobject (>= 2.14.2), python-webkit
+Recommends: python-gtkspell, python-chardet
+Description: daily journal with calendar, templates and keyword searching
+ RedNotebook is a graphical diary and journal to keep track of notes and
+ thoughts throughout the day. It includes a calendar navigation, customisable
+ templates for each day, and a keyword search and cloud.
+ .
+ To output journals in Portable Document Format (PDF), you also need the
+ python-webkit package.

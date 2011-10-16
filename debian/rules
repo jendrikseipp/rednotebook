@@ -1,0 +1,29 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+install: install-stamp
+install-stamp: 
+	dh install --before dh_auto_install
+	# install into a private directory
+	python setup.py install --root=$(CURDIR)/debian/rednotebook \
+		--install-lib=/usr/share/rednotebook \
+		--install-scripts=/usr/bin \
+		--install-data=/usr
+	# "--install-scripts=/usr/share/rednotebook" will not work here
+	# as binary name is the same as module name
+	mv $(CURDIR)/debian/rednotebook/usr/bin/rednotebook \
+		$(CURDIR)/debian/rednotebook/usr/share/rednotebook/run.py
+
+	#carry on
+	dh install --after dh_auto_install
+	touch install-stamp
+
+binary: binary-indep
+
+binary-indep: install
+
+%:
+	dh $@

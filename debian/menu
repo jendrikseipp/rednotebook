@@ -1,0 +1,2 @@
+?package(rednotebook):needs="X11" section="Applications/Office"\
+  title="RedNotebook" command="/usr/bin/rednotebook"
