@@ -1,3 +1,9 @@
+rednotebook (1.2.0-1) oneiric; urgency=low
+
+  * New upstream release
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 16 Oct 2011 14:18:10 +0200
+
 rednotebook (1.1.4-1) unstable; urgency=low
 
   * [b37d7d] New upstream release
@@ -250,7 +256,7 @@ rednotebook (0.6.4-1) unstable; urgency=low
 
   * New Upstream Version:
     - Easier Tagging (Added tag button)
-    - New Entry dialog: Show previous tags in drop-down menu when "Tags" is 
+    - New Entry dialog: Show previous tags in drop-down menu when "Tags" is
       selected as category
     - New Entry dialog: Only make a new entry submittable if text has been
       entered
