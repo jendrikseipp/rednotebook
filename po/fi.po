@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-09-30 08:25+0000\n"
-"Last-Translator: Jiri Grönroos <Unknown>\n"
+"PO-Revision-Date: 2011-10-18 13:47+0000\n"
+"Last-Translator: Jarno Rostén <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-18 04:53+0000\n"
+"X-Launchpad-Export-Date: 2011-10-19 05:54+0000\n"
 "X-Generator: Launchpad (build 14157)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
@@ -43,7 +43,7 @@ msgstr "Päiväyksen muoto"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Jätä vientipäivämäärä tyhjäksi"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
