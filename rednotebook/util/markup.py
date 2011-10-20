@@ -58,7 +58,7 @@ CSS = """\
         border-collapse: collapse;
     }
     td, th {
-        border: 1px solid #888;
+        <!--border: 1px solid #888;--> <!--Allow tables without borders-->
         padding: 3px 7px 2px 7px;
     }
     th {
@@ -159,9 +159,6 @@ def _get_config(type):
 
         # Apply image resizing
         config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
-
-        # Remove border size
-        config['postproc'].append([r'<table border="1">', r'<table>'])
 
     elif type == 'tex':
         config['encoding'] = 'utf8'
