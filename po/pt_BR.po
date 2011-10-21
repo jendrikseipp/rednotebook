@@ -8,15 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-03-28 23:43+0000\n"
-"Last-Translator: Paulo Guilherme Pilotti Duarte "
-"<guilhermepilotti@gmail.com>\n"
+"PO-Revision-Date: 2011-10-20 13:48+0000\n"
+"Last-Translator: Rafael Neri <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-18 04:54+0000\n"
-"X-Generator: Launchpad (build 14157)\n"
+"X-Launchpad-Export-Date: 2011-10-21 04:56+0000\n"
+"X-Generator: Launchpad (build 14165)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
@@ -24,11 +23,11 @@ msgstr "Exportar todos os dias"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export currently visible day"
-msgstr ""
+msgstr "Exportar o dia atualmente visível"
 
 #: ../rednotebook/gui/exports.py:55
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "Exportar os dias no intervalo de tempo selecionado"
 
 #: ../rednotebook/gui/exports.py:63
 msgid "From:"
@@ -1269,6 +1268,8 @@ msgstr ""
 "  Isaque Alves https://launchpad.net/~isaquealves\n"
 "  Livio de pinho tertuliano https://launchpad.net/~nice-boy-jp\n"
 "  Paulo Guilherme Pilotti Duarte https://launchpad.net/~guilhermepilotti\n"
+"  Rafael Neri https://launchpad.net/~rafepel\n"
+"  Rafael Saldanha https://launchpad.net/~rafa-s-liz-intro\n"
 "  Renzo de Sá https://launchpad.net/~renzo.sa\n"
 "  Rosiney Gomes Pereira https://launchpad.net/~rosiney-gp\n"
 "  Thiago Petermann Hodecker https://launchpad.net/~thiagoph\n"
