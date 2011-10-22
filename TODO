@@ -23,12 +23,21 @@ X Write month only if changes are actually made (LP:871730)
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
+  X Highlight tables in edit mode
+  O Use art target for text exports
 X Numbered lists
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
   Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
 O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
+O Add formulas
+  O Highlight formulas in edit mode
+  O Support Latex export
+  O Load HTML from string when no formulas are used
+  O Write common webview class
+  O Support PDF export
+
 
 O Use Zeitgeist for automatic category entries
   X Music tracks or albums (Wrote decibel zeitgeist addon, addons for other players available)
@@ -157,8 +166,6 @@ O Support for 'inline files': read content from file upon preview of page and
 - Right-click on word in main text area to add it to cloud whitelist
   (Functionality will be difficult to find, would have to be implemented for
   preview as well)
-- Add online mathjax support (see Snippets/mathjax-test.html)
-  (too much effort probably and not so many people actually use formulas)
 - Image resizing with PIL (The width parameter is more useful)
 - Use attributes for formatting glade strings for easier translation
   (requires gtk+-2.16 and does not make much sense now that all strings have been translated)

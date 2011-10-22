@@ -71,6 +71,17 @@ CSS = """\
 </style>
 """ % globals()
 
+MATHJAX = """\
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$']]}
+});
+</script>
+<script type="text/javascript"
+  src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+"""
+
 
 def convert_categories_to_markup(categories, with_category_title=True):
     'Only add Category title if the text is displayed'
@@ -144,18 +155,18 @@ def _get_config(type):
     config['preproc'] = []
 
     # Allow line breaks, r'\\\\' are 2 \ for regexes
-    config['preproc'].append([REGEX_LINEBREAK, 'REDNOTEBOOKLINEBREAK'])
+    config['preproc'].append([REGEX_LINEBREAK, 'LINEBREAK'])
 
     if type == 'xhtml' or type == 'html':
         config['encoding'] = 'UTF-8'  # document encoding
         config['toc'] = 0
         config['css-sugar'] = 1
 
-        # Custom css
-        config['postproc'].append([r'</head>', CSS + '</head>'])
+        # Custom css + mathjax
+        config['postproc'].append([r'</head>', CSS + MATHJAX + '</head>'])
 
         # Line breaks
-        config['postproc'].append([r'REDNOTEBOOKLINEBREAK', '<br />'])
+        config['postproc'].append([r'LINEBREAK', '<br />'])
 
         # Apply image resizing
         config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
@@ -184,14 +195,18 @@ def _get_config(type):
                                    r'htmladdnormallink{\1}{run:\2}'])
 
         # Line breaks
-        config['postproc'].append([r'REDNOTEBOOKLINEBREAK', r'\\\\'])
+        config['postproc'].append([r'LINEBREAK', r'\\\\'])
 
         # Apply image resizing
         config['postproc'].append([r'includegraphics\{("?)WIDTH(\d+)-', r'includegraphics[width=\2px]{\1'])
 
+        # We want the plain latex formulas unescaped
+        config['preproc'].append([r'\$\s*(.+?)\s*\$', r"BEGINFORMULA''\1''ENDFORMULA"])
+        config['postproc'].append([r'BEGINFORMULA(.+)ENDFORMULA', r'$\1$'])
+
     elif type == 'txt':
         # Line breaks
-        config['postproc'].append([r'REDNOTEBOOKLINEBREAK', '\n'])
+        config['postproc'].append([r'LINEBREAK', '\n'])
 
         # Apply image resizing ([WIDTH400-file:///pathtoimage.jpg])
         config['postproc'].append([r'\[WIDTH(\d+)-(.+)\]', r'[\2?\1]'])

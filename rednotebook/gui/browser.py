@@ -23,6 +23,7 @@ from __future__ import with_statement
 import sys
 import os
 import logging
+import tempfile
 
 import gtk
 import gobject
@@ -131,7 +132,11 @@ def print_pdf(html, filename):
 class HtmlView(gtk.ScrolledWindow):
     def __init__(self, *args, **kargs):
         gtk.ScrolledWindow.__init__(self, *args, **kargs)
+        self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
+        self.tmp_uri = 'file://' + self.tmp_file.name
         self.webview = webkit.WebView()
+        webkit_settings = self.webview.get_settings()
+        webkit_settings.set_property('enable-plugins', False)
         self.add(self.webview)
 
         #self.webview.connect('populate-popup', self.on_populate_popup)
@@ -145,7 +150,12 @@ class HtmlView(gtk.ScrolledWindow):
 
     def load_html(self, html):
         self.loading_html = True
-        html = self.webview.load_html_string(html, 'file:///')
+        self.tmp_file.truncate(0)
+        self.tmp_file.write(html)
+        self.tmp_file.flush()
+        #html = self.webview.load_html_string(html, 'file:///')
+        self.webview.load_uri(self.tmp_uri)
+        #self.webview.load_string(html, content_mimetype='application/html', content_encoding='UTF-8', base_uri='file:///')
         self.loading_html = False
 
     def get_html(self):
