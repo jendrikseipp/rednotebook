@@ -89,7 +89,7 @@ class Filenames(dict):
 
         # Assert that all dirs and files are in place so that logging can take start
         make_directories([self.journal_user_dir, self.data_dir, self.template_dir,
-                        self.temp_dir])
+                          self.temp_dir])
         make_files([(self.config_file, ''), (self.log_file, '')])
 
         self.last_pic_dir = self.user_home_dir
