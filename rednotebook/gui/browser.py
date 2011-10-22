@@ -47,6 +47,13 @@ except ImportError:
     sys.exit(1)
 
 
+class Browser(webkit.WebView):
+    def __init__(self):
+        webkit.WebView.__init__(self)
+        webkit_settings = self.get_settings()
+        webkit_settings.set_property('enable-plugins', False)
+
+
 class HtmlPrinter(object):
     """
     Idea and code-snippets taken from interwibble,
@@ -62,9 +69,7 @@ class HtmlPrinter(object):
                    'letter' : gtk.PAPER_NAME_LETTER}
 
     def __init__(self, paper='a4'):
-        self._webview = webkit.WebView()
-        webkit_settings = self._webview.get_settings()
-        webkit_settings.set_property('enable-plugins', False)
+        self._webview = Browser()
         try:
             self._webview.connect('load-error', self._load_error_cb)
         except TypeError, err:
@@ -134,9 +139,7 @@ class HtmlView(gtk.ScrolledWindow):
         gtk.ScrolledWindow.__init__(self, *args, **kargs)
         self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
         self.tmp_uri = 'file://' + self.tmp_file.name
-        self.webview = webkit.WebView()
-        webkit_settings = self.webview.get_settings()
-        webkit_settings.set_property('enable-plugins', False)
+        self.webview = Browser()
         self.add(self.webview)
 
         #self.webview.connect('populate-popup', self.on_populate_popup)

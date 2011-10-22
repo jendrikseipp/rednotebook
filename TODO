@@ -35,7 +35,7 @@ O Add formulas
   O Highlight formulas in edit mode
   O Support Latex export
   O Load HTML from string when no formulas are used
-  O Write common webview class
+  X Write common webview class
   O Support PDF export
 
 
