@@ -4,14 +4,6 @@ from rednotebook.util.markup import convert_to_pango, convert_from_pango, \
                                     convert
 
 
-def assert_equal(param, expected):
-    assert param == expected
-
-
-def assert_contains(a, b):
-    assert b in a
-
-
 def test_pango():
     vals = ((r'--stricken--', '<s>stricken</s>'),
             (r'//italic//', '<i>italic</i>'),
@@ -26,36 +18,50 @@ def test_pango():
            )
     for t2t_markup, expected in vals:
         pango = convert_to_pango(t2t_markup)
-        yield assert_equal, pango, expected
+        assert pango == expected
         # Ampersand escaping is only needed in sourcecode, so we do not try to
         # preserve the encoding
         if not '&amp;' in t2t_markup:
-            yield assert_equal, convert_from_pango(pango), t2t_markup
+            assert convert_from_pango(pango) == t2t_markup
 
 
 def test_images():
-    vals= [('[""/image"".png?50]',
-            '<img align="middle" width="50" src="/image.png" border="0" alt=""/>'),
-           ('[""/image"".jpg]',
-            '<img align="middle" src="/image.jpg" border="0" alt=""/>'),
-           ('[""file:///image"".png?10]',
-            '<img align="middle" width="10" src="file:///image.png" border="0" alt=""/>'),
-           ('[""file:///image"".jpg]', '<img align="middle" '
-                                       'src="file:///image.jpg" border="0" '
-                                       'alt=""/>'),
-          ]
+    vals = [('[""/image"".png?50]',
+             '<img align="middle" width="50" src="/image.png" border="0" alt=""/>'),
+            ('[""/image"".jpg]',
+             '<img align="middle" src="/image.jpg" border="0" alt=""/>'),
+            ('[""file:///image"".png?10]',
+             '<img align="middle" width="10" src="file:///image.png" border="0" alt=""/>'),
+            ('[""file:///image"".jpg]', '<img align="middle" '
+                                        'src="file:///image.jpg" border="0" '
+                                        'alt=""/>'),
+           ]
     for markup, expected in vals:
         html = convert(markup, 'xhtml')
         location = re.search(r'(<img.*?>)', html).group(1)
-        yield assert_equal, location, expected
+        assert location == expected
 
 
 def test_images_latex():
-    vals= [('[""/image"".png?50]', '\includegraphics[width=50px]{"/image".png}'),
-           ('[""/image"".jpg]', '\includegraphics{"/image".jpg}'),
-           ('[""file:///image"".png?10]', '\includegraphics[width=10px]{"/image".png}'),
-           ('[""file:///image"".jpg]', '\includegraphics{"/image".jpg}'),
-          ]
+    vals = [('[""/image"".png?50]', '\includegraphics[width=50px]{"/image".png}'),
+            ('[""/image"".jpg]', '\includegraphics{"/image".jpg}'),
+            ('[""file:///image"".png?10]', '\includegraphics[width=10px]{"/image".png}'),
+            ('[""file:///image"".jpg]', '\includegraphics{"/image".jpg}'),
+           ]
     for markup, expected in vals:
         latex = convert(markup, 'tex')
-        yield assert_contains, latex, expected
+        assert expected in latex
+
+
+def test_formula_latex():
+    vals = [('$abc$', '$abc$'), ('$ abc$', '$abc$'),
+            ('$abc $', '$abc$'), ('$ abc $', '$abc$'),
+            ('$\sum$', '$\sum$'),
+            ('$\sum_{i=1}$', '$\sum_{i=1}$'),
+            ('$\sum_{i=1}^n i = \\frac{n \\cdot (n+1)}{2}$',) * 2,
+            #('$$abc$$', '$$abc$$')
+            ]
+    for formula, expected in vals:
+        latex = convert(formula, 'tex')
+        latex = latex[latex.find('\\clearpage') + 13:latex.find('% LaTeX2e code') - 3]
+        assert expected == latex
