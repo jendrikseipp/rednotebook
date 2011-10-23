@@ -166,7 +166,7 @@ def _get_config(type):
         config['postproc'].append([r'</head>', CSS + '</head>'])
 
         # mathjax
-        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
+        #config['postproc'].append([r'</body>', MATHJAX + '</body>'])
 
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '<br />'])
