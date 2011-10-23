@@ -839,7 +839,9 @@ class MainWindow(object):
         filter.add_mime_type("image/gif")
         filter.add_pattern("*.png")
         filter.add_pattern("*.jpg")
+        filter.add_pattern("*.jpeg")
         filter.add_pattern("*.gif")
+        filter.add_pattern("*.bmp")
 
         picture_chooser.add_filter(filter)
 
