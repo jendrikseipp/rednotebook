@@ -163,7 +163,10 @@ def _get_config(type):
         config['css-sugar'] = 1
 
         # Custom css + mathjax
-        config['postproc'].append([r'</head>', CSS + MATHJAX + '</head>'])
+        config['postproc'].append([r'</head>', CSS + '</head>'])
+
+        # mathjax
+        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
 
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '<br />'])
