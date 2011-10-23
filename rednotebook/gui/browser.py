@@ -47,11 +47,39 @@ except ImportError:
     sys.exit(1)
 
 
+LOAD_HTML_FROM_FILE = False
+
+
 class Browser(webkit.WebView):
     def __init__(self):
         webkit.WebView.__init__(self)
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
+        self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
+        self.tmp_uri = 'file://' + self.tmp_file.name
+
+        #self.connect('notify::load-status', self._on_load_status_changed)
+
+    #def _on_load_status_changed(self, *args):
+    #    print 'LOAD STATUS CHANGED', self.get_property('load-status')
+
+    def load_html_from_file(self, html):
+        self.tmp_file.truncate(0)
+        self.tmp_file.write(html)
+        self.tmp_file.flush()
+        self.load_uri(self.tmp_uri)
+
+    def load_html(self, html):
+        if LOAD_HTML_FROM_FILE:
+            self.load_html_from_file(html)
+        else:
+            self.load_html_string(html, 'file:///')
+            #self.load_string(html, content_mimetype='text/html',
+            #                 content_encoding='UTF-8', base_uri='file:///')
+
+    def get_html(self):
+        self.execute_script("document.title=document.document_element.innerHTML;")
+        return self.get_main_frame().get_title()
 
 
 class HtmlPrinter(object):
@@ -79,7 +107,7 @@ class HtmlPrinter(object):
     def print_html(self, html, outfile):
         self._webview.connect('load-finished', self._load_finished_cb, outfile)
         logging.info('Loading URL...')
-        self._webview.load_html_string(html, 'file:///')
+        self._webview.load_html(html)
 
         while gtk.events_pending():
             gtk.main_iteration()
@@ -137,8 +165,6 @@ def print_pdf(html, filename):
 class HtmlView(gtk.ScrolledWindow):
     def __init__(self, *args, **kargs):
         gtk.ScrolledWindow.__init__(self, *args, **kargs)
-        self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
-        self.tmp_uri = 'file://' + self.tmp_file.name
         self.webview = Browser()
         self.add(self.webview)
 
@@ -153,17 +179,8 @@ class HtmlView(gtk.ScrolledWindow):
 
     def load_html(self, html):
         self.loading_html = True
-        self.tmp_file.truncate(0)
-        self.tmp_file.write(html)
-        self.tmp_file.flush()
-        #html = self.webview.load_html_string(html, 'file:///')
-        self.webview.load_uri(self.tmp_uri)
-        #self.webview.load_string(html, content_mimetype='application/html', content_encoding='UTF-8', base_uri='file:///')
+        self.webview.load_html(html)
         self.loading_html = False
-
-    def get_html(self):
-        self.webview.execute_script("document.title=document.document_element.innerHTML;")
-        return self.webview.get_main_frame().get_title()
 
     def set_editable(self, editable):
         self.webview.set_editable(editable)
