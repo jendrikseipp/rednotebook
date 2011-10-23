@@ -31,12 +31,6 @@ O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not sa
 O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
-O Add formulas
-  O Highlight formulas in edit mode
-  O Support Latex export
-  O Load HTML from string when no formulas are used
-  X Write common webview class
-  O Support PDF export
 
 
 O Use Zeitgeist for automatic category entries
@@ -84,6 +78,13 @@ O Color submenu in format menu with additional color picker and color highlighti
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
 
+O Add formulas
+  O Highlight formulas in edit mode
+  O Support Latex export
+  O Load HTML from string when no formulas are used
+  X Write common webview class
+  O Support PDF export
+
 
 2.0
 O Copy all files and pictures into data subdirectory (Think about new format first)
@@ -125,6 +126,10 @@ O Syntaxhighlighting support (pygments?)
 O Support for 'inline files': read content from file upon preview of page and
   add the contents of the file inline (which allowes for 'dynamic' content).
 
+O The concepts of insert and format can be unified for most entities this way:
+  If text is selected, formatting occurs (à la present-day format command). This feature can be applied also to headings, lists, file/web links.
+  Otherwise, standard insertion occurs. A few feature are meant exclusively for this purpose (e.g. horizontal separator).
+
 
 
 
@@ -135,7 +140,6 @@ O Support for 'inline files': read content from file upon preview of page and
 - remote pictures (pictures would have to be downloaded and saved in a folder for exports)
 - dataDir Lock (for multiple TRN instances) (unneeded)
 - Tags in text entries (e.g. @film:Batman) (KISS)
-- remove search for categories and tags, as clouds already do that (Unituitive and not trivial to remove)
 - Copy/Paste category entries (Too complicated)
 - Add --portable command line parameter (The default config file is better)
 - word wrapping while editing category entries (too complicated, would involve writing C code)
