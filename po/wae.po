@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2010-11-24 19:33+0000\n"
+"PO-Revision-Date: 2011-10-21 12:08+0000\n"
 "Last-Translator: bortis <Unknown>\n"
 "Language-Team: Walser <wae@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-18 04:54+0000\n"
-"X-Generator: Launchpad (build 14157)\n"
+"X-Launchpad-Export-Date: 2011-10-22 05:00+0000\n"
+"X-Generator: Launchpad (build 14170)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
@@ -385,7 +385,7 @@ msgstr "Es desktop journal"
 #: ../rednotebook/gui/categories.py:51 ../rednotebook/util/markup.py:56
 #: tmp/main_window.glade.h:11
 msgid "Categories"
-msgstr "Kategorie"
+msgstr "Kategoriä"
 
 #: ../rednotebook/gui/categories.py:130 ../rednotebook/gui/categories.py:165
 msgid "Empty entries are not allowed"
