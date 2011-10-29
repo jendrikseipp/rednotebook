@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-10-03 06:16+0000\n"
+"PO-Revision-Date: 2011-10-29 01:21+0000\n"
 "Last-Translator: Muhammet Kara <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-28 05:35+0000\n"
+"X-Launchpad-Export-Date: 2011-10-29 05:17+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
@@ -99,6 +99,7 @@ msgstr "Dışa Aktarma Yardımcısına Hoş Geldiniz"
 #: ../rednotebook/gui/exports.py:314
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
+"Bu sihirbaz, günlüğünüzü çeşitli biçimlerde dışa aktarmanıza yardım edecek."
 
 #: ../rednotebook/gui/exports.py:315
 msgid ""
@@ -179,7 +180,7 @@ msgstr "mtv, boş, yap, iş, oyna"
 #: ../rednotebook/gui/clouds.py:223
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "\"%s\"i bulutlardan sakla"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Introduction"
@@ -322,7 +323,7 @@ msgstr "Günlük ile ilgili bazı istatistikleri göster"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "RedNoteBook'u Kapat. Sistem tepsisine gönderilmeyecek."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
@@ -330,11 +331,11 @@ msgstr "_Düzenle"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text edits or category entry deletions"
-msgstr ""
+msgstr "Metin düzenlemelerini ya da kategori girdisi silinmelerini geri alın"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text edits or category entry additions"
-msgstr ""
+msgstr "Metin düzenlemelerini ya da kategori girdisi silinmelerini yineleyin"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -354,7 +355,7 @@ msgstr "Çevrimiçi Yardım Al"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Cevaplanmış sorulara gözatın ya da yeni bir soru sorun"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -499,7 +500,7 @@ msgstr "Girintili Madde"
 
 #: ../rednotebook/gui/main_window.py:762
 msgid "Two blank lines close the list"
-msgstr ""
+msgstr "İki boş satır, listeyi kapatır"
 
 #: ../rednotebook/gui/main_window.py:766
 msgid "Title text"
