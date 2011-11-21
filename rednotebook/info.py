@@ -404,7 +404,6 @@ If you have your own server, you might want to try
 [Unison http://www.cis.upenn.edu/~bcpierce/unison] for example.
 To sync or backup your journal you have to sync your journal folder
 (default is "$HOME/.rednotebook/data/") with a folder on your server.
-It would be great if someone could write a tutorial about that.
 
 Obviously you have to be connected to the internet to use that feature. Be sure to backup your
 data regularly if you plan to save your content remotely. There are always more pitfalls when

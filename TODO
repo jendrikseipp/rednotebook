@@ -12,13 +12,18 @@ X Let tags be categories without entries. This greatly simplifies and in fact
   unifies tags and categories.
 X Unify clouds and search -> Show the search bar above the clouds
   When a search is made, substitute the word cloud with the search results.
-X Add Quotes by indenting them with a tab
+X Apply styling for thick horizontal lines
+  - Thin line:  --------------------
+  - Thick line: ====================
 X Apply formatting only once if a format button is clicked multiple times
 X Update and revise help text
 X Fix: Do not abort if a wrong regex is entered
 X Fix: Correctly highlight all picture formats in edit mode
 X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
 X Write month only if changes are actually made (LP:871730)
+O Make tags/categories simpler
+O Link to RedNotebook review http://www.youtube.com/watch?v=JfIO9cN62I4
+O Open the exported file after the export
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -26,6 +31,7 @@ X Tables
   X Highlight tables in edit mode
   O Use art target for text exports
 X Numbered lists
+X Add quotes by indenting them with a tab
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
   Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
 O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
