@@ -68,6 +68,10 @@ CSS = """\
         background-color: %(TABLE_HEAD_BG)s;
         color: #ffffff;
     }
+    hr.heavy {
+        height: 2px;
+        background-color: black;
+    }
 </style>
 """ % globals()
 
