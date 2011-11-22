@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-10-20 13:48+0000\n"
-"Last-Translator: Rafael Neri <Unknown>\n"
+"PO-Revision-Date: 2011-11-08 00:19+0000\n"
+"Last-Translator: Neliton Pereira Junior <nelitonpjr@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-21 04:56+0000\n"
-"X-Generator: Launchpad (build 14165)\n"
+"X-Launchpad-Export-Date: 2011-11-09 04:50+0000\n"
+"X-Generator: Launchpad (build 14263)\n"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
@@ -39,11 +39,11 @@ msgstr "Para:"
 
 #: ../rednotebook/gui/exports.py:126
 msgid "Date format"
-msgstr ""
+msgstr "Formato da data"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Deixe em branco para omitir as datas na exportação"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
@@ -75,7 +75,7 @@ msgstr "Selecionar"
 
 #: ../rednotebook/gui/exports.py:159
 msgid "Deselect"
-msgstr ""
+msgstr "Desmarcar"
 
 #: ../rednotebook/gui/exports.py:262
 msgid ""
@@ -99,7 +99,7 @@ msgstr "Bem-vindo ao Assistente de Exportação."
 #: ../rednotebook/gui/exports.py:314
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
-"O assistente irá lhe ajudar a exportar a sua revista em diferentes formatos."
+"O assistente irá lhe ajudar a exportar o seu diário em diferentes formatos."
 
 #: ../rednotebook/gui/exports.py:315
 msgid ""
@@ -272,7 +272,7 @@ msgstr "Permitir palavras com 4 letras ou menos dentro das nuvens"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr "_Revista"
+msgstr "_Diário"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
@@ -356,7 +356,7 @@ msgstr "Obter ajuda on-line"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Procurar perguntas respondidas ou pedir um novo"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -380,7 +380,7 @@ msgstr "Documentação RedNotebook"
 
 #: ../rednotebook/gui/menu.py:269
 msgid "A Desktop Journal"
-msgstr "O Diário Área de Trabalho"
+msgstr "Um diário da área de trabalho"
 
 #: ../rednotebook/gui/categories.py:51 ../rednotebook/util/markup.py:56
 #: tmp/main_window.glade.h:11
@@ -585,51 +585,53 @@ msgstr "Não foi encontrado a localização do link"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "Faz algum tempo desde seu último backup."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
+"Você pode fazer uma cópia de segurança do seu diário em um arquivo zip, "
+"evitando assim perda de dados."
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "Fazer cópia de segurança agora"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "Pergunte ao abrir novamente o aplicativo"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Não pergunte novamente"
 
 #: ../rednotebook/templates.py:31
 msgid "Monday"
-msgstr ""
+msgstr "Segunda-feira"
 
 #: ../rednotebook/templates.py:31
 msgid "Tuesday"
-msgstr ""
+msgstr "Terça-feira"
 
 #: ../rednotebook/templates.py:31
 msgid "Wednesday"
-msgstr ""
+msgstr "Quarta-feira"
 
 #: ../rednotebook/templates.py:31
 msgid "Thursday"
-msgstr ""
+msgstr "Quinta-feira"
 
 #: ../rednotebook/templates.py:32
 msgid "Friday"
-msgstr ""
+msgstr "Sexta-feira"
 
 #: ../rednotebook/templates.py:32
 msgid "Saturday"
-msgstr ""
+msgstr "Sábado"
 
 #: ../rednotebook/templates.py:32
 msgid "Sunday"
-msgstr ""
+msgstr "Domingo"
 
 #: ../rednotebook/templates.py:104
 msgid ""
@@ -803,7 +805,7 @@ msgstr "Não perguntar novamente"
 
 #: ../rednotebook/util/dates.py:58
 msgid "Incorrect date format"
-msgstr ""
+msgstr "Formato de data incorreto"
 
 #: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
 #: tmp/main_window.glade.h:44
@@ -840,23 +842,27 @@ msgstr "Linhas"
 
 #: ../rednotebook/journal.py:272
 msgid "RedNotebook appears to be already running."
-msgstr ""
+msgstr "Parece que o RedNotebook já está em execução."
 
 #: ../rednotebook/journal.py:273
 msgid ""
 "This can happen if the application is hidden in the system tray or was not "
 "shut down correctly."
 msgstr ""
+"Isso pode acontecer se o aplicativo estiver oculto na área de notificação ou "
+"se ele não for desligado corretamente."
 
 #: ../rednotebook/journal.py:275
 msgid ""
 "Starting a second RedNotebook instance can lead to data loss and it might be "
 "best to see if there is another instance first."
 msgstr ""
+"Iniciar uma segunda instância do RedNotebook pode levar à perda de dados, "
+"seria recomendável verificar se uma primeira instância esta sendo executada."
 
 #: ../rednotebook/journal.py:278
 msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr ""
+msgstr "Você quer iniciar uma nova instância do RedNotebook mesmo assim?"
 
 #: ../rednotebook/journal.py:361
 #, python-format
@@ -1142,7 +1148,7 @@ msgstr "<b>Escrever entrada</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
-msgstr ""
+msgstr "Criar uma entrada para uma nova categoria ou para uma já existente"
 
 #: tmp/main_window.glade.h:10
 msgid "Annotate"
@@ -1162,7 +1168,7 @@ msgstr "Habilitar edição de texto (Ctrl+P)"
 
 #: tmp/main_window.glade.h:15
 msgid "Everywhere"
-msgstr ""
+msgstr "em toda parte"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1175,7 +1181,7 @@ msgstr "Geral"
 
 #: tmp/main_window.glade.h:19
 msgid "Give this day a tag"
-msgstr ""
+msgstr "dar uma tag para este dia"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"
@@ -1265,8 +1271,11 @@ msgstr ""
 "  Eugênio F https://launchpad.net/~eugf\n"
 "  Fabio M. P. Bugnon https://launchpad.net/~fbugnon\n"
 "  Fedalto https://launchpad.net/~fedalto\n"
+"  Gleyson Atanazio PE https://launchpad.net/~gleyson.atanazio.pe\n"
 "  Isaque Alves https://launchpad.net/~isaquealves\n"
+"  Joao Paulo Rojas Vidal https://launchpad.net/~joaorojas\n"
 "  Livio de pinho tertuliano https://launchpad.net/~nice-boy-jp\n"
+"  Neliton Pereira Junior https://launchpad.net/~nelitonpjr\n"
 "  Paulo Guilherme Pilotti Duarte https://launchpad.net/~guilhermepilotti\n"
 "  Rafael Neri https://launchpad.net/~rafepel\n"
 "  Rafael Saldanha https://launchpad.net/~rafa-s-liz-intro\n"
