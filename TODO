@@ -38,6 +38,7 @@ O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
+O Scroll to searched text when a result is clicked
 
 
 O Use Zeitgeist for automatic category entries
@@ -136,6 +137,9 @@ O Support for 'inline files': read content from file upon preview of page and
 O The concepts of insert and format can be unified for most entities this way:
   If text is selected, formatting occurs (à la present-day format command). This feature can be applied also to headings, lists, file/web links.
   Otherwise, standard insertion occurs. A few feature are meant exclusively for this purpose (e.g. horizontal separator).
+
+O Support %!include macro?
+O Let user change the style of the preview and the clouds
 
 
 
