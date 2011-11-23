@@ -2058,8 +2058,6 @@ def Readfile(file, remove_linebreaks=0, ignore_error=0):
         try: f = open(file); data = f.readlines() ; f.close()
         except:
             ## Jendrik: Do not raise Error if file cannot be read.
-            ##if not ignore_error:
--           ##    Error(_("Cannot read file:")+" %s"%file)
             msg = _("Cannot read file:") + " %s" % file
             return ['', '', '', msg]
     if remove_linebreaks:
