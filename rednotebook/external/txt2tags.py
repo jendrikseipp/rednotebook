@@ -2057,8 +2057,11 @@ def Readfile(file, remove_linebreaks=0, ignore_error=0):
     else:
         try: f = open(file); data = f.readlines() ; f.close()
         except:
-            if not ignore_error:
-                Error(_("Cannot read file:")+" %s"%file)
+            ## Jendrik: Do not raise Error if file cannot be read.
+            ##if not ignore_error:
+-           ##    Error(_("Cannot read file:")+" %s"%file)
+            msg = _("Cannot read file:") + " %s" % file
+            return ['', '', '', msg]
     if remove_linebreaks:
         data = map(lambda x:re.sub('[\n\r]+$','',x), data)
     Message(_("File read (%d lines): %s")%(len(data),file),2)
