@@ -22,8 +22,9 @@ X Fix: Correctly highlight all picture formats in edit mode
 X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
 X Write month only if changes are actually made (LP:871730)
 O Make tags/categories simpler
-O Link to RedNotebook review http://www.youtube.com/watch?v=JfIO9cN62I4
 O Open the exported file after the export
+O Fix link highlighting ([this does not work] and
+  [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])

@@ -344,8 +344,8 @@ named_link = Pattern(r'(\[)(.*?)\s("")(\S.*?\S)(""\])',
         [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')], flags='LI')
 
 # link http://heise.de
-# Use txt2tags link guessing mechanism
-link = Pattern('OVERWRITE', [(0, 'link')], regex=bank['link'], name='link')
+# Use txt2tags link guessing mechanism by setting regex explicitly
+link = Pattern('USEREGEX', [(0, 'link')], regex=bank['link'], name='link')
 
 # We do not support multiline regexes
 #blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'gray'), (2, 'verbatim'), (3, 'gray')])
