@@ -333,6 +333,9 @@ class Journal:
 
         if self.is_allowed_to_exit:
             logging.info('Goodbye!')
+            # Informs the logging system to perform an orderly shutdown by
+            # flushing and closing all handlers.
+            logging.shutdown()
             gtk.main_quit()
 
 
@@ -633,8 +636,6 @@ def main():
     try:
         logging.debug('Trying to enter the gtk main loop')
         gtk.main()
-        #logging.debug('Closing logfile')
-        #file_logging_stream.close()
     except KeyboardInterrupt:
         # 'Interrupt'
         #journal.save_to_disk()
