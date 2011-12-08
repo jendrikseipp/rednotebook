@@ -47,12 +47,21 @@ BLOCKQUOTE_BG = '#ccc'
 CSS = """\
 <style type="text/css">
     body {
-        font-family: Ubuntu, sans-serif;
+        font-family: Ubuntu, Helvetica, Arial, sans-serif;
     }
     blockquote {
-        border: 1px solid #000;
-        padding: 10px;
-        background-color: %(BLOCKQUOTE_BG)s;
+        margin: 1em 2em;
+        border-left: 2px solid #999;
+        font-style: oblique;
+        padding-left: 1em;
+    }
+    blockquote:first-letter {
+        margin: .2em .1em .1em 0;
+        font-size: 160%%;
+        font-weight: bold;
+    }
+    blockquote:first-line {
+        font-weight: bold;
     }
     table {
         border-collapse: collapse;
@@ -359,3 +368,10 @@ def convert_from_pango(pango_markup):
     logging.log(5, 'Converted "%s" pango to "%s" txt2tags' %
                 (repr(original_txt), repr(pango_markup)))
     return pango_markup
+
+
+if __name__ == '__main__':
+    from rednotebook.util.utils import show_html_in_browser
+    markup = 'Aha\n\tThis is a quote. It looks very nice. Even with many lines'
+    html = convert(markup, 'xhtml')
+    show_html_in_browser(html, '/tmp/test.html')
