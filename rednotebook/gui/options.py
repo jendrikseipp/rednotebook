@@ -287,7 +287,12 @@ class OptionsManager(object):
             logging.debug('Running on Linux. Is installed. Adding autostart option')
             self.options.insert(0, AutostartOption())
 
-        self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
+        # Most modern Linux distributions do not have a systray anymore.
+        # If this option is activated on a system without a systray, the
+        # application keeps on running in the background after it has been
+        # closed. The option can still be activated in the configuration file.
+        if sys.platform.startswith('win'):
+            self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
                 tooltip=_('Closing the window will send RedNotebook to the tray')))
 
         able_to_spell_check = self.main_window.day_text_field.can_spell_check()

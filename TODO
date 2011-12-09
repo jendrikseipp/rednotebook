@@ -16,6 +16,7 @@ X Apply styling for thick horizontal lines
   - Thin line:  --------------------
   - Thick line: ====================
 X Apply formatting only once if a format button is clicked multiple times
+X Allow "Close to tray" only on Windows as most modern Linux distros don't have a tray anymore (lp:902228)
 X Update and revise help text
 X Fix: Do not abort if a wrong regex is entered
 X Fix: Correctly highlight all picture formats in edit mode
