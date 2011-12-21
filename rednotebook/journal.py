@@ -417,7 +417,7 @@ class Journal:
 
         self.frame.categories_tree_view.categories = self.categories
 
-        if self.is_first_start:
+        if self.is_first_start and data_dir_empty:
             self.add_instruction_content()
 
         self.frame.cloud.update(force_update=True)
