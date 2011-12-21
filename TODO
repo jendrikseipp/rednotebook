@@ -26,6 +26,7 @@ O Make tags/categories simpler
 O Open the exported file after the export
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
+O PPA stats: https://code.launchpad.net/~fta/+junk/ppa-stats.head
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -142,6 +143,13 @@ O The concepts of insert and format can be unified for most entities this way:
 
 O Support %!include macro?
 O Let user change the style of the preview and the clouds
+O Generalize tags to "hierarchical tags"
+
+O I would like to be able to delete items from my categories list on the left side.
+  At the moment if I want to delete multiple items from my todo list, I have to click on one,
+  scroll to the right, right click and press delete, scroll back the left, and repeat.
+O It would be great to be able to change the category of an item without having to delete
+  it and make a new one. Maybe with a rightclick or drag and drop.
 
 
 
