@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-09-29 12:55+0200\n"
-"PO-Revision-Date: 2011-06-06 09:42+0000\n"
-"Last-Translator: Rachid <Unknown>\n"
+"PO-Revision-Date: 2011-12-29 12:27+0000\n"
+"Last-Translator: Redmar <redmar@ubuntu-nl.org>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-12-29 04:48+0000\n"
+"X-Launchpad-Export-Date: 2011-12-30 05:40+0000\n"
 "X-Generator: Launchpad (build 14560)\n"
 
 #: ../rednotebook/gui/main_window.py:287
@@ -27,11 +27,11 @@ msgstr "Exporteer alle dagen"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export currently visible day"
-msgstr ""
+msgstr "Exporteer de huidige zichtbare dag"
 
 #: ../rednotebook/gui/exports.py:55
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "Exporteer dagen in de gekozen tijdsspanne"
 
 #: ../rednotebook/gui/exports.py:63
 msgid "From:"
@@ -43,11 +43,11 @@ msgstr "Naar:"
 
 #: ../rednotebook/gui/exports.py:126
 msgid "Date format"
-msgstr ""
+msgstr "Datumopmaak"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Laat open om datums in de export weg te laten"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
@@ -79,7 +79,7 @@ msgstr "Selecteer"
 
 #: ../rednotebook/gui/exports.py:159
 msgid "Deselect"
-msgstr ""
+msgstr "Deselecteren"
 
 #: ../rednotebook/gui/exports.py:262
 msgid ""
@@ -136,7 +136,7 @@ msgstr "Samenvatting"
 #. ## Translators: noun
 #: ../rednotebook/gui/exports.py:390 ../rednotebook/gui/main_window.py:709
 msgid "Format"
-msgstr "Bestandstype"
+msgstr "Opmaak"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Start date"
@@ -365,7 +365,7 @@ msgstr "Verkrijg hulp online"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Bekijk beantwoorde vragen of stel een nieuwe vraag"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -411,11 +411,11 @@ msgstr "Verander deze tekst"
 
 #: ../rednotebook/gui/categories.py:435
 msgid "Add a new entry"
-msgstr "Voeg een nieuw item toe"
+msgstr "Nieuw item toevoegen"
 
 #: ../rednotebook/gui/categories.py:439
 msgid "Delete this entry"
-msgstr "Verwijder dit item"
+msgstr "Dit item verwijderen"
 
 #: ../rednotebook/gui/search.py:36
 msgid "Search ..."
@@ -591,51 +591,52 @@ msgstr "Er is geen verwijzing ingevoegd"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "Het is al een tijd geleden dat je je laatste backup maakte"
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
+"U kunt uw dagboek in een zip-bestand opslaan om dataverlies te voorkomen."
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "Nu backup uitvoeren"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "Vraag bij de volgende start"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Vraag dit nooit meer"
 
 #: ../rednotebook/templates.py:31
 msgid "Monday"
-msgstr ""
+msgstr "Maandag"
 
 #: ../rednotebook/templates.py:31
 msgid "Tuesday"
-msgstr ""
+msgstr "Dinsdag"
 
 #: ../rednotebook/templates.py:31
 msgid "Wednesday"
-msgstr ""
+msgstr "Woensdag"
 
 #: ../rednotebook/templates.py:31
 msgid "Thursday"
-msgstr ""
+msgstr "Donderdag"
 
 #: ../rednotebook/templates.py:32
 msgid "Friday"
-msgstr ""
+msgstr "Vrijdag"
 
 #: ../rednotebook/templates.py:32
 msgid "Saturday"
-msgstr ""
+msgstr "Zaterdag"
 
 #: ../rednotebook/templates.py:32
 msgid "Sunday"
-msgstr ""
+msgstr "Zondag"
 
 #: ../rednotebook/templates.py:104
 msgid ""
@@ -661,6 +662,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== Afspraak ===\n"
+"\n"
+"Doel, datum, en plaats\n"
+"\n"
+"**Aanwezig:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Discussie, Beslissingen, Taken toewijzen:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:128
 msgid ""
@@ -726,6 +748,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Persoonlijk ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Hoe was de dag?**\n"
+"\n"
+"\n"
+"========================\n"
+"**Wat moet anders?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:210
 msgid "Choose Template Name"
@@ -771,7 +810,7 @@ msgstr "Niet opnieuw vragen"
 
 #: ../rednotebook/util/dates.py:58
 msgid "Incorrect date format"
-msgstr ""
+msgstr "Onjuiste datum-opmaak"
 
 #: ../rednotebook/util/statistics.py:79 ../rednotebook/util/statistics.py:92
 #: tmp/main_window.glade.h:44
@@ -792,7 +831,7 @@ msgstr "Letters"
 
 #: ../rednotebook/util/statistics.py:83
 msgid "Days between first and last Entry"
-msgstr "Dagen tussen eerste en laatste tekst"
+msgstr "Dagen tussen eerste en laatste item"
 
 #: ../rednotebook/util/statistics.py:84
 msgid "Average number of Words"
@@ -808,23 +847,27 @@ msgstr "Regels"
 
 #: ../rednotebook/journal.py:272
 msgid "RedNotebook appears to be already running."
-msgstr ""
+msgstr "Het lijkt er op dat RedNotebook al actief is."
 
 #: ../rednotebook/journal.py:273
 msgid ""
 "This can happen if the application is hidden in the system tray or was not "
 "shut down correctly."
 msgstr ""
+"Dit kan gebeuren als het programma in de systeembalk actief is of niet juist "
+"is afgesloten."
 
 #: ../rednotebook/journal.py:275
 msgid ""
 "Starting a second RedNotebook instance can lead to data loss and it might be "
 "best to see if there is another instance first."
 msgstr ""
+"Een tweede RedNotebook sessie starten kan tot gegevens verlies leiden. U "
+"kunt beter eerst kijken of er een andere sessie actief is."
 
 #: ../rednotebook/journal.py:278
 msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr ""
+msgstr "Wilt u toch een nieuwe RedNotebook-sessie starten?"
 
 #: ../rednotebook/journal.py:361
 #, python-format
@@ -861,7 +904,7 @@ msgstr "Labels"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "Leuk!"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
@@ -881,7 +924,7 @@ msgstr "Documentatie"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "Taken"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
@@ -961,7 +1004,7 @@ msgstr "Voorbeeld weergeven"
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "RedNotebook heeft twee standen: __bewerken__ en __weergave__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:113
@@ -999,6 +1042,8 @@ msgid ""
 "If you find annotations confusing you can simply hide them for now by moving "
 "the separator to the far right."
 msgstr ""
+"Als u de annotaties verwarrend vindt kunt u ze verbergen door de "
+"scheidingslijn volledig naar rechts te schuiven."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:136
@@ -1101,11 +1146,11 @@ msgstr "<b>Geselecteerde dag</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b>"
-msgstr "<b>Beschrijf inhoud</b>"
+msgstr "<b>Beschrijf item</b>"
 
 #: tmp/main_window.glade.h:9
 msgid "Add an entry to a new or existing category"
-msgstr ""
+msgstr "Een item aan een nieuwe of bestaande categorie toevoegen"
 
 #: tmp/main_window.glade.h:10
 msgid "Annotate"
@@ -1125,7 +1170,7 @@ msgstr "Activeer bewerken van tekst (Ctrl+P)"
 
 #: tmp/main_window.glade.h:15
 msgid "Everywhere"
-msgstr ""
+msgstr "Overal"
 
 #: tmp/main_window.glade.h:16
 msgid "Exit without saving"
@@ -1138,7 +1183,7 @@ msgstr "Algemeen"
 
 #: tmp/main_window.glade.h:19
 msgid "Give this day a tag"
-msgstr ""
+msgstr "Geef deze datum een label"
 
 #: tmp/main_window.glade.h:20
 msgid "Go to next day (Ctrl+PageUp)"
