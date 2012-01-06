@@ -17,6 +17,7 @@ X Apply styling for thick horizontal lines
   - Thick line: ====================
 X Apply formatting only once if a format button is clicked multiple times
 X Allow "Close to tray" only on Windows as most modern Linux distros don't have a tray anymore (lp:902228)
+X Make journal saving more than twice as fast
 X Update and revise help text
 X Fix: Do not abort if a wrong regex is entered
 X Fix: Correctly highlight all picture formats in edit mode
@@ -41,6 +42,7 @@ X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked
+O Automated backups
 
 
 O Use Zeitgeist for automatic category entries

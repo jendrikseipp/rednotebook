@@ -83,6 +83,21 @@ O Formulas:
   - Latex export for multiline formulas is difficult (impossible?)
   - Installing MathJax locally might not be an option, because it needs a lot of ressources
 
+O Format:
+  - JSON is faster to decode and encode and we only use strings, ints and dicts
+    anyway.
+
+    The results for de-/encoding a typical example are:
+    * json_print      1.09020709991
+    * pickle_print    0.710677146912
+    * yaml_print      4.67402696609 -> we already get 2x fast
+    * cyaml_print     1.96824002266 -> json 2x as fast
+    * json_read       0.253901958466
+    * pickle_read     0.15873003006
+    * yaml_read       1.24900007248 -> json 5x as fast
+
+    However, the format is more verbose and requires more syntax.
+
 
 Ideas:
 
