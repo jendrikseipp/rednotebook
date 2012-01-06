@@ -212,7 +212,7 @@ class Journal:
         self.config = user_config
         self.config.save_state()
 
-        self.warn_if_second_instance()
+        #self.warn_if_second_instance()
 
         logging.info('Running in portable mode: %s' % self.dirs.portable)
 

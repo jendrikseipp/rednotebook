@@ -17,22 +17,22 @@ X Apply styling for thick horizontal lines
   - Thick line: ====================
 X Apply formatting only once if a format button is clicked multiple times
 X Allow "Close to tray" only on Windows as most modern Linux distros don't have a tray anymore (lp:902228)
+X Make journal saving more than twice as fast
 X Update and revise help text
 X Fix: Do not abort if a wrong regex is entered
 X Fix: Correctly highlight all picture formats in edit mode
 X Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
 X Write month only if changes are actually made (LP:871730)
-O Make tags/categories simpler
-O Open the exported file after the export
+X Call categories tags in more places
+X Print PDF export path after export
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
-O PPA stats: https://code.launchpad.net/~fta/+junk/ppa-stats.head
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
   X Highlight tables in edit mode
-  O Use art target for text exports
+  O Use art target for text exports (Wait for txt2tags 2.7)
 X Numbered lists
 X Add quotes by indenting them with a tab
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
@@ -42,6 +42,7 @@ X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked
+O Automated backups
 
 
 O Use Zeitgeist for automatic category entries
@@ -145,6 +146,7 @@ O Support %!include macro?
 O Let user change the style of the preview and the clouds
 O Generalize tags to "hierarchical tags"
 
+O Open the exported file after the export?
 O I would like to be able to delete items from my categories list on the left side.
   At the moment if I want to delete multiple items from my todo list, I have to click on one,
   scroll to the right, right click and press delete, scroll back the left, and repeat.

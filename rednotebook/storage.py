@@ -35,9 +35,9 @@ except ImportError:
 # The presence of the yaml module has been checked
 try:
     from yaml import CLoader as Loader
-    #from yaml import CDumper as Dumper
+    from yaml import CSafeDumper as Dumper
 except ImportError:
-    from yaml import Loader #, Dumper
+    from yaml import Loader, Dumper
     logging.info('Using pyyaml for loading and dumping')
 
 from rednotebook.data import Month
@@ -124,9 +124,9 @@ def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journa
 
             with codecs.open(month_file_string, 'wb', encoding='utf-8') as month_file:
                 try:
-                    # yaml.dump(month_content, month_file, Dumper=Dumper)
                     # This version produces readable unicode and no python directives
-                    yaml.safe_dump(month_content, month_file, allow_unicode=True)
+                    yaml.dump(month_content, month_file, Dumper=Dumper, allow_unicode=True)
+                    #yaml.safe_dump(month_content, month_file, allow_unicode=True)
                     month.edited = False
                     logging.debug('Wrote file %s' % month_file_string)
                 except OSError:

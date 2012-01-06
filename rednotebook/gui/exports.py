@@ -444,9 +444,7 @@ class ExportAssistant(Assistant):
     def export_pdf(self):
         logging.info('Exporting to PDF')
         browser.print_pdf(self.get_export_string('xhtml'), self.path)
-
-
-
+        self.journal.show_message(_('Content exported to %s') % self.path)
 
 
 
