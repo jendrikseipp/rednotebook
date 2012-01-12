@@ -18,6 +18,7 @@ X Apply styling for thick horizontal lines
 X Apply formatting only once if a format button is clicked multiple times
 X Allow "Close to tray" only on Windows as most modern Linux distros don't have a tray anymore (lp:902228)
 X Make journal saving more than twice as fast
+X Change Ctrl-PageUp(Down) directions to be more intuitive
 X Update and revise help text
 X Fix: Do not abort if a wrong regex is entered
 X Fix: Correctly highlight all picture formats in edit mode
@@ -25,8 +26,7 @@ X Fix: When the format button is clicked and a tag is selected, format it instea
 X Write month only if changes are actually made (LP:871730)
 X Call categories tags in more places
 X Print PDF export path after export
-O Fix link highlighting ([this does not work] and
-  [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
+
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -43,6 +43,8 @@ O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked
 O Automated backups
+O Fix link highlighting ([this does not work] and
+  [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 
 
 O Use Zeitgeist for automatic category entries
@@ -152,6 +154,8 @@ O I would like to be able to delete items from my categories list on the left si
   scroll to the right, right click and press delete, scroll back the left, and repeat.
 O It would be great to be able to change the category of an item without having to delete
   it and make a new one. Maybe with a rightclick or drag and drop.
+O Field or shortcut to enter a date and takes you there.
+O Check if Ctrl-Z still works or make sure we have a buffer for each day.
 
 
 
