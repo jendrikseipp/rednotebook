@@ -183,7 +183,7 @@ def write_file(filename, content):
 
 
 def make_directory(dir):
-    if not os.path.exists(dir):
+    if not os.path.isdir(dir):
         os.makedirs(dir)
 
 def make_directories(dirs):
@@ -191,7 +191,7 @@ def make_directories(dirs):
         make_directory(dir)
 
 def make_file(file, content=''):
-    if not os.path.exists(file):
+    if not os.path.isfile(file):
         write_file(file, content)
 
 def make_files(file_content_pairs):
