@@ -95,8 +95,8 @@ team_meeting = _('Team meeting')
 
 
 greeting = _('Hello!')
-intro=_('''Some example text has been added to help you start and
-you can erase it whenever you like.''')
+intro=_('Some example text has been added to help you start and '
+'you can erase it whenever you like.')
 ### Translators: "Help" -> noun
 help_par = _('The example text and more documentation is available under "Help" -> "Contents".')
 overview1 = _('The interface is divided into three parts:')
@@ -112,20 +112,18 @@ overview42 = _('Annotations to a day')
 
 ### Translators: noun
 preview = _('Preview')
-preview1 = _('''There are two modes in RedNotebook, the __edit__ mode and
-the __preview__ mode.''')
+preview1 = _('There are two modes in RedNotebook, the __edit__ mode and the __preview__ mode.')
 ### Translators: Preview -> noun
 preview2 = _('Click on Preview above to see the difference.')
 preview_par = ' '.join([preview1, preview2])
 
-example_entry = _('''Today I went to the //pet shop// and bought a **tiger**. Then we went to the
---pool-- park and had a nice time playing
-ultimate frisbee. Afterwards we watched "__Life of Brian__".''')
+example_entry = _('Today I went to the //pet shop// and bought a **tiger**. '
+'Then we went to the --pool-- park and had a nice time playing '
+'ultimate frisbee. Afterwards we watched "__Life of Brian__".')
 
 annotations = _('Annotations')
 ann2 = _('Annotations are notes that can be sorted into categories.')
-ann3 = _('''For example you could create the category "Ideas"
-and then add today's ideas to it.''')
+ann3 = _('For example you could create the category "Ideas" and then add today\'s ideas to it.')
 ann4 = _('If you find annotations confusing you can simply hide them for '
          'now by moving the separator to the far right.')
 ann_par = ' '.join([ann2, ann3, ann4])
@@ -139,8 +137,7 @@ temp_par = ' '.join([temp1, temp2, temp3])
 
 ### Translators: both are verbs
 save = _('Save and Export')
-save1 = _('''Everything you enter will be saved automatically at
-regular intervals and when you exit the program.''')
+save1 = _('Everything you enter will be saved automatically at regular intervals and when you exit the program.')
 save2 = _('To avoid data loss you should backup your journal regularly.')
 save3 = _('"Backup" in the "Journal" menu saves all your entered data in a zip file.')
 save4 = _('In the "Journal" menu you also find the "Export" button.')
