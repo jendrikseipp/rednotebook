@@ -102,13 +102,13 @@ help_par = _('The example text and more documentation is available under "Help" 
 overview1 = _('The interface is divided into three parts:')
 ### Translators: The location "left"
 overview21 = _('Left')
-overview22 = _('Navigation with the calendar')
+overview22 = _('Navigation and search')
 ### Translators: The location "center"
 overview31 = _('Center')
 overview32 = _('Text for a day')
 ### Translators: The location "right"
 overview41 = _('Right')
-overview42 = _('Annotations to a day')
+overview42 = _('Tags for this day')
 
 ### Translators: noun
 preview = _('Preview')
@@ -120,13 +120,6 @@ preview_par = ' '.join([preview1, preview2])
 example_entry = _('Today I went to the //pet shop// and bought a **tiger**. '
 'Then we went to the --pool-- park and had a nice time playing '
 'ultimate frisbee. Afterwards we watched "__Life of Brian__".')
-
-annotations = _('Annotations')
-ann2 = _('Annotations are notes that can be sorted into categories.')
-ann3 = _('For example you could create the category "Ideas" and then add today\'s ideas to it.')
-ann4 = _('If you find annotations confusing you can simply hide them for '
-         'now by moving the separator to the far right.')
-ann_par = ' '.join([ann2, ann3, ann4])
 
 templates = ('Templates')
 temp1 = ('RedNotebook supports templates.')
@@ -163,9 +156,6 @@ completeWelcomeText = '''\
 === %(preview)s ===
 %(preview_par)s
 
-=== %(annotations)s ===
-%(ann_par)s
-
 === %(save)s ===
 %(save_par)s
 
@@ -183,29 +173,16 @@ documentation: None,
 
 example_day1 = {
 'text': '''\
-=== %(annotations)s ===
-%(ann_par)s
+=== %(tags)s ===
+Besides the main text you can add tags to each day. A tag can have subtags as
+well. On the right you find some examples of tags.
 
-Besides the main text for a day you can have additional content on the right,
-sorted into categories. A category can contain several notes distributed over
-multiple days. If a category doesn't have an entry, it is basically a tag.
-
-Here are some examples of categories:
-
-- %(movies)s
-  - %(monty_python_grail)s
-- %(work)s
-  - %(team_meeting)s
-
-
-As you can see you can add the category %(movies)s and fill it with the movies
+As you can see you can add the tag %(movies)s and fill it with the movies
 you watch on the respective days. Similarly you can record the things you do
 at work. If you just want to note that you went to work on a particular day,
 you can omit the "%(team_meeting)s" entry.
 
-Category entries can be formatted **bold**, //italic//, etc.''' % globals(),
-#cool_stuff: {visit_paris: None},
-#ideas: {_('Invent Anti-Hangover-Machine'): None},
+Tags can be formatted **bold**, //italic//, etc.''' % globals(),
 movies: {monty_python_grail: None},
 documentation: None,
 work: {team_meeting: None},
@@ -247,8 +224,8 @@ on one day and it remains there until you delete it.
 Here is how it works:
 - On the right click on "Add Tag"
 - Fill "%(todo)s" and "Remember the milk" in the fields and hit "OK"
-- Select the categories cloud from the drop down menu on the left
-- Now you can click on "%(todo)s" and see all your todo items
+- In the cloud on the left you can now click on "%(todo)s" and see all your todo items
+- This list can be sorted by day or by todo item if you click on "Date" or "Text" in the header
 
 
 - To tick off a todo item you can strike it out by adding "--" around the item.
@@ -257,20 +234,12 @@ Here is how it works:
 
 So --%(rtm)s-- becomes struck through and **%(dishes)s** becomes bold.
 
-You can see all your todo items at once by clicking "%(todo)s" in the category cloud
-on the left. There you can also
-group your todo items into important and finished items by hitting "Entry"
-at the top of the list.
-
-It probably sometimes makes sense to add the todo items to the day you want to
-have completed them (deadline day).
-
-Once you've finished an item, you could also change its category name from
+Once you've finished an item, you could also change its tag name from
 "%(todo)s" to "%(done)s".''' % globals(),
 documentation: None,
 todo: {u'--%s--' % rtm: None,
        u'**%s**' % dishes: None},
-done: {u'--%s--' % check_mail: None,},
+done: {u'%s' % check_mail: None,},
 }
 
 example_content = [welcome_day, example_day1, example_day2, example_day3]
@@ -297,8 +266,7 @@ The main text field is the container for your normal diary entries like this one
 == Format ==
 As you see, the text can be formatted **bold**,
 //italic//, --struck through-- and __underlined__. As a convenience there
-is also the "Format" button, with which you can format the main text and entries
-in the categories tree on the right.
+is also the "Format" button, with which you can format the main text and tags.
 
 A blank line starts a new **paragraph**, two backslashes \\\\ result in a **newline**.
 
@@ -480,7 +448,7 @@ same directory.
 | Go forward one day | <Ctrl> + PageDown      |
 | Insert link        | <Ctrl> + L             |
 | Insert date/time   | <Ctrl> + D             |
-| New category entry | <Ctrl> + N             |
+| New tag            | <Ctrl> + N             |
 
 You can find other shortcuts in the menus.
 

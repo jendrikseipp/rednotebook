@@ -1,5 +1,28 @@
 ==== RedNotebook Changelog ====
 
+== 1.3.0 (12-01-18) ==
+* Let tags be categories without entries. This greatly simplifies and in fact
+  unifies tags and categories.
+* Unify clouds and search -> Show the search bar above the clouds
+  When a search is made, substitute the word cloud with the search results.
+* Apply styling for thick horizontal lines
+  - Thin line:  --------------------
+  - Thick line: ====================
+* Apply formatting only once if a format button is clicked multiple times
+* Allow "Close to tray" only on Windows as most modern Linux distros don't have a tray anymore (lp:902228)
+  If you still want the tray icon, set closeToTray=1 in the configuration file.
+* Make journal saving more than twice as fast by using libyaml.
+* Change Ctrl-PageUp(Down) directions to be more intuitive
+* Update and revise help text
+* Fix: Do not abort if a wrong regex is entered
+* Fix: Correctly highlight all picture formats in edit mode
+* Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane
+* Write month only if changes are actually made (LP:871730)
+* Call categories tags in more places
+* Print PDF export path after export
+* Do not warn if second instance is suspected (too many false-positives)
+* Updated translations
+
 == 1.2.0 (11-10-05) ==
 * Let the "Back" and "Forward" button jump over empty days
 * Allow wildcards (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)

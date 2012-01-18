@@ -127,10 +127,10 @@ class ContentsPage(AssistantPage):
         self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
 
         self.text_button = gtk.CheckButton(label=_('Export texts'))
-        self.all_categories_button = gtk.RadioButton(label=_('Export all categories'))
-        self.no_categories_button = gtk.RadioButton(label=_('Do not export categories'),
+        self.all_categories_button = gtk.RadioButton(label=_('Export all tags'))
+        self.no_categories_button = gtk.RadioButton(label=_('Do not export tags'),
                                             group=self.all_categories_button)
-        self.sel_categories_button = gtk.RadioButton(label=_('Export only the selected categories'),
+        self.sel_categories_button = gtk.RadioButton(label=_('Export only the selected tags'),
                                             group=self.all_categories_button)
 
         self.pack_start(self.date_format, False)
@@ -141,7 +141,7 @@ class ContentsPage(AssistantPage):
 
         self.available_categories = gtk.TreeView()
 
-        column = gtk.TreeViewColumn(_('Available Categories'))
+        column = gtk.TreeViewColumn(_('Available tags'))
         self.available_categories.append_column(column)
         cell = gtk.CellRendererText()
         column.pack_start(cell, True)
@@ -149,7 +149,7 @@ class ContentsPage(AssistantPage):
 
         self.selected_categories = gtk.TreeView()
 
-        column = gtk.TreeViewColumn(_('Selected Categories'))
+        column = gtk.TreeViewColumn(_('Selected tags'))
         self.selected_categories.append_column(column)
         cell = gtk.CellRendererText()
         column.pack_start(cell, True)
@@ -259,7 +259,7 @@ class ContentsPage(AssistantPage):
 
     def check_selection(self, *args):
         if not self.is_text_exported() and not self.get_categories():
-            error = _('If export text is not selected, you have to select at least one category.')
+            error = _('If export text is not selected, you have to select at least one tag.')
             self.set_error_text(error)
             correct = False
         else:
@@ -395,7 +395,7 @@ class ExportAssistant(Assistant):
                 self.page5.add_setting(_('End date'), end_date)
             is_text_exported = self.yes_no(self.is_text_exported)
             self.page5.add_setting(_('Export text'), is_text_exported)
-            self.page5.add_setting(_('Selected categories'), ', '.join(self.exported_categories))
+            self.page5.add_setting(_('Selected tags'), ', '.join(self.exported_categories))
             self.page5.add_setting(_('Export path'), self.path)
 
 

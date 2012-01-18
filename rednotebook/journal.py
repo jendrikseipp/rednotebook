@@ -374,7 +374,7 @@ class Journal:
         return True
 
 
-    def open_journal(self, data_dir, load_files=True):
+    def open_journal(self, data_dir):
 
         if self.months:
             self.save_to_disk(changing_journal=True)
@@ -393,11 +393,7 @@ class Journal:
 
         data_dir_empty = not os.listdir(data_dir)
 
-        if not load_files and not data_dir_empty:
-            msg_part1 = _('The selected folder is not empty.')
-            msg_part2 = _('To prevent you from overwriting data, the folder content has been imported into the new journal.')
-            self.show_message('%s %s' % (msg_part1, msg_part2), error=False)
-        elif load_files and data_dir_empty:
+        if data_dir_empty:
             self.show_message(_('The selected folder is empty. A new journal has been created.'),
                                 error=False)
 
@@ -406,9 +402,7 @@ class Journal:
         self.month = None
         self.months.clear()
 
-        # We always want to load all files
-        if load_files or True:
-            self.months = storage.load_all_months_from_disk(data_dir)
+        self.months = storage.load_all_months_from_disk(data_dir)
 
         # Nothing to save before first day change
         self.load_day(self.actual_date)
@@ -417,7 +411,7 @@ class Journal:
 
         self.frame.categories_tree_view.categories = self.categories
 
-        if self.is_first_start and data_dir_empty:
+        if self.is_first_start and data_dir_empty and len(self.days) == 0:
             self.add_instruction_content()
 
         self.frame.cloud.update(force_update=True)
@@ -602,17 +596,8 @@ class Journal:
         return days_in_date_range
 
 
-    def go_to_first_empty_day(self):
-        if len(self.days) == 0:
-            return datetime.date.today()
-
-        last_edited_day = self.days[-1]
-        first_empty_date = last_edited_day.date + dates.one_day
-        self.change_date(first_empty_date)
-
-
     def add_instruction_content(self):
-        self.go_to_first_empty_day()
+        self.change_date(datetime.date.today())
         current_date = self.date
 
         logging.info('Adding example content on %s' % current_date)

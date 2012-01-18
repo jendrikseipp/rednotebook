@@ -118,9 +118,9 @@ class MainMenuBar(object):
 
             ('Edit', None, _('_Edit'), None, None, self.on_edit_menu_activate),
             ('Undo', gtk.STOCK_UNDO, None,
-                '<Ctrl>z', _('Undo text edits or category entry deletions'), self.on_undo),
+                '<Ctrl>z', _('Undo text or tag edits'), self.on_undo),
             ('Redo', gtk.STOCK_REDO, None,
-                '<Ctrl>y', _('Redo text edits or category entry additions'), self.on_redo),
+                '<Ctrl>y', _('Redo text or tag edits'), self.on_redo),
             ('Cut', gtk.STOCK_CUT, None,
                 '', None, self.on_cut_menu_item_activate),
             ('Copy', gtk.STOCK_COPY, None,
