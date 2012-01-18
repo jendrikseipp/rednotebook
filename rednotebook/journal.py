@@ -396,10 +396,6 @@ class Journal:
         if data_dir_empty:
             self.show_message(_('The selected folder is empty. A new journal has been created.'),
                                 error=False)
-        else:
-            msg_part1 = _('The selected folder is not empty.')
-            msg_part2 = _('To prevent you from overwriting data, the folder content has been imported into the new journal.')
-            self.show_message('%s %s' % (msg_part1, msg_part2), error=False)
 
         self.dirs.data_dir = data_dir
 

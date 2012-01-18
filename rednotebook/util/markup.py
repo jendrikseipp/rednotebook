@@ -97,9 +97,9 @@ MathJax.Hub.Config({
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
-    'Only add Category title if the text is displayed'
+    # Only add Category title if the text is displayed
     if with_category_title:
-        markup = '== %s ==\n' % _('Categories')
+        markup = '== %s ==\n' % _('Tags')
     else:
         markup = ''
 

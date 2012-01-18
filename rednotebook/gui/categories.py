@@ -48,7 +48,7 @@ class CategoriesTreeView(object):
         # create the TreeViewColumn to display the data
         self.tvcolumn = gtk.TreeViewColumn()
         label = gtk.Label()
-        label.set_markup('<b>' + _('Categories') + '</b>')
+        label.set_markup('<b>' + _('Tags') + '</b>')
         label.show()
         self.tvcolumn.set_widget(label)
 
@@ -144,7 +144,7 @@ class CategoriesTreeView(object):
             self.statusbar.show_text('"text" is a reserved keyword', error=True)
             return False
         if len(category) < 1:
-            self.statusbar.show_text(_('Empty category names are not allowed'), error=True)
+            self.statusbar.show_text(_('Empty tag names are not allowed'), error=True)
             return False
         return True
 

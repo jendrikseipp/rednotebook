@@ -476,14 +476,13 @@ class MainWindow(object):
                 self.journal.dirs.data_dir = dir
                 self.journal.save_to_disk(saveas=True)
 
-            load_files = type in ['open', 'saveas']
-            self.journal.open_journal(dir, load_files=load_files)
+            self.journal.open_journal(dir)
 
         # If the dir was not found previously, we have nothing to open
         # if the user selects "Abort". So select default dir and show message
         elif dir_not_found:
             default_dir = self.journal.dirs.default_data_dir
-            self.journal.open_journal(default_dir, load_files=True)
+            self.journal.open_journal(default_dir)
             ### Translators: The default journal is located at $HOME/.rednotebook/data
             self.journal.show_message(_('The default journal has been opened'))
 
@@ -651,7 +650,7 @@ class MainWindow(object):
             elif focus == self.day_text_field.day_text_view:
                 self.day_text_field.apply_format(format, markup)
             else:
-                self.journal.show_message(_('No text or category entry has been selected.'),
+                self.journal.show_message(_('No text or tag has been selected.'),
                                           error=True)
 
         def shortcut(char):
@@ -679,7 +678,7 @@ class MainWindow(object):
         self.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
         ### Translators: noun
         self.format_toolbutton.set_label(_('Format'))
-        tip = _('Format the selected text or category entry')
+        tip = _('Format the selected text or tag')
         self.format_toolbutton.set_tooltip_text(tip)
         self.format_toolbutton.set_menu(menu)
         bold_func = apply_format#lambda widget: self.day_text_field.apply_format('bold')
