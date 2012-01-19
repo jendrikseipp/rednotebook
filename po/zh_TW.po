@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-12 12:49+0100\n"
+"POT-Creation-Date: 2012-01-18 21:27+0100\n"
 "PO-Revision-Date: 2010-07-26 16:01+0000\n"
 "Last-Translator: extraymond@gmail.com <extraymond@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-13 04:42+0000\n"
-"X-Generator: Launchpad (build 14664)\n"
+"X-Launchpad-Export-Date: 2012-01-19 04:53+0000\n"
+"X-Generator: Launchpad (build 14692)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
 msgstr "主意"
 
-#: ../rednotebook/info.py:80
+#: ../rednotebook/info.py:80 ../rednotebook/gui/categories.py:51
+#: ../rednotebook/util/markup.py:102
 msgid "Tags"
 msgstr "標籤"
 
@@ -105,8 +106,8 @@ msgid "Left"
 msgstr "左側"
 
 #: ../rednotebook/info.py:105
-msgid "Navigation with the calendar"
-msgstr "日曆導航"
+msgid "Navigation and search"
+msgstr ""
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:107
@@ -123,8 +124,8 @@ msgid "Right"
 msgstr "右側"
 
 #: ../rednotebook/info.py:111
-msgid "Annotations to a day"
-msgstr "本日註解"
+msgid "Tags for this day"
+msgstr ""
 
 #. ## Translators: noun
 #. ## Verb
@@ -150,80 +151,60 @@ msgid ""
 "watched \"__Life of Brian__\"."
 msgstr ""
 
-#: ../rednotebook/info.py:124
-msgid "Annotations"
-msgstr "註記"
-
-#: ../rednotebook/info.py:125
-msgid "Annotations are notes that can be sorted into categories."
-msgstr ""
-
-#: ../rednotebook/info.py:126
-msgid ""
-"For example you could create the category \"Ideas\" and then add today's "
-"ideas to it."
-msgstr "舉例,您可新增類別\"想法\"並新增到今天的想法"
-
-#: ../rednotebook/info.py:127
-msgid ""
-"If you find annotations confusing you can simply hide them for now by moving "
-"the separator to the far right."
-msgstr ""
-
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:139
+#: ../rednotebook/info.py:132
 msgid "Save and Export"
 msgstr "儲存並輸出"
 
-#: ../rednotebook/info.py:140
+#: ../rednotebook/info.py:133
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr "您所輸入的資料會自動的在離開和定期方式儲存"
 
-#: ../rednotebook/info.py:141
+#: ../rednotebook/info.py:134
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr "為避免資料流失,您必須要定期的備份您的日記"
 
-#: ../rednotebook/info.py:142
+#: ../rednotebook/info.py:135
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr "\"備份\"在\"日記\"選單中儲存所有您所輸入的資料成為ZIP壓縮檔"
 
-#: ../rednotebook/info.py:143
+#: ../rednotebook/info.py:136
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "在\"日記\"選單中,您也可以找到\"輸出\"按鈕"
 
-#: ../rednotebook/info.py:144
+#: ../rednotebook/info.py:137
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
 msgstr "點選\"輸出\"並將您的日記輸出為文字檔,HTML或Latex"
 
-#: ../rednotebook/info.py:147
+#: ../rednotebook/info.py:140
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr "如您發現任何問題,請通知我,我才可以修正問題"
 
-#: ../rednotebook/info.py:148
+#: ../rednotebook/info.py:141
 msgid "Any feedback is appreciated."
 msgstr "感謝您的回應"
 
-#: ../rednotebook/info.py:151
+#: ../rednotebook/info.py:144
 msgid "Have a nice day!"
 msgstr "祝您有美好的一天！"
 
-#: ../rednotebook/info.py:178
+#: ../rednotebook/info.py:168
 msgid "Ate **two** cans of spam"
 msgstr ""
 
-#: ../rednotebook/info.py:179
+#: ../rednotebook/info.py:169
 msgid "Use a cool journal app"
 msgstr "使用一個很酷的日記文件"
 
-#: ../rednotebook/info.py:180
+#: ../rednotebook/info.py:170
 msgid "Monty Python's Life of Brian"
 msgstr ""
 
-#: ../rednotebook/info.py:693 ../rednotebook/gui/menu.py:248
+#: ../rednotebook/info.py:661 ../rednotebook/gui/menu.py:248
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook 文檔"
 
@@ -292,12 +273,12 @@ msgid "_Edit"
 msgstr "編輯"
 
 #: ../rednotebook/gui/menu.py:121
-msgid "Undo text edits or category entry deletions"
-msgstr "復原文字編輯或類別新增刪除"
+msgid "Undo text or tag edits"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:123
-msgid "Redo text edits or category entry additions"
-msgstr "重複文字編輯或類別新增刪除"
+msgid "Redo text or tag edits"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -347,17 +328,13 @@ msgstr "日期"
 msgid "Text"
 msgstr "文字"
 
-#: ../rednotebook/gui/categories.py:51 ../rednotebook/util/markup.py:102
-msgid "Categories"
-msgstr "類別"
-
 #: ../rednotebook/gui/categories.py:130
 msgid "Empty entries are not allowed"
 msgstr "不允許空白輸入"
 
 #: ../rednotebook/gui/categories.py:147
-msgid "Empty category names are not allowed"
-msgstr "不允許空白類別"
+msgid "Empty tag names are not allowed"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:401
 msgid "Change this text"
@@ -486,138 +463,138 @@ msgid "The directory name will be the new title of the journal"
 msgstr "資料夾名將成為新日記標題"
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
-#: ../rednotebook/gui/main_window.py:488
+#: ../rednotebook/gui/main_window.py:487
 msgid "The default journal has been opened"
 msgstr "以開啟預設日記檔"
 
-#: ../rednotebook/gui/main_window.py:654
-msgid "No text or category entry has been selected."
+#: ../rednotebook/gui/main_window.py:653
+msgid "No text or tag has been selected."
 msgstr ""
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:659
+#: ../rednotebook/gui/main_window.py:658
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: ../rednotebook/gui/main_window.py:662
+#: ../rednotebook/gui/main_window.py:661
 msgid "Bold"
 msgstr "粗體字"
 
-#: ../rednotebook/gui/main_window.py:663
+#: ../rednotebook/gui/main_window.py:662
 msgid "Italic"
 msgstr "斜體"
 
-#: ../rednotebook/gui/main_window.py:664
+#: ../rednotebook/gui/main_window.py:663
 msgid "Underline"
 msgstr "底線"
 
-#: ../rednotebook/gui/main_window.py:665
+#: ../rednotebook/gui/main_window.py:664
 msgid "Strikethrough"
 msgstr "刪除線"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:681 ../rednotebook/gui/exports.py:390
+#: ../rednotebook/gui/main_window.py:680 ../rednotebook/gui/exports.py:390
 msgid "Format"
 msgstr "格式"
 
-#: ../rednotebook/gui/main_window.py:682
-msgid "Format the selected text or category entry"
-msgstr "格式化選取文件檔或類別"
+#: ../rednotebook/gui/main_window.py:681
+msgid "Format the selected text or tag"
+msgstr ""
 
-#: ../rednotebook/gui/main_window.py:731
+#: ../rednotebook/gui/main_window.py:730
 msgid "First Item"
 msgstr "第一項目"
 
-#: ../rednotebook/gui/main_window.py:732
+#: ../rednotebook/gui/main_window.py:731
 msgid "Second Item"
 msgstr "第二項目"
 
-#: ../rednotebook/gui/main_window.py:733
+#: ../rednotebook/gui/main_window.py:732
 msgid "Indented Item"
 msgstr "縮寫項目"
 
-#: ../rednotebook/gui/main_window.py:734
+#: ../rednotebook/gui/main_window.py:733
 msgid "Two blank lines close the list"
 msgstr "在清單處加入二空行"
 
-#: ../rednotebook/gui/main_window.py:738
+#: ../rednotebook/gui/main_window.py:737
 msgid "Title text"
 msgstr "標題文字"
 
-#: ../rednotebook/gui/main_window.py:762
+#: ../rednotebook/gui/main_window.py:761
 msgid "Picture"
 msgstr "圖片"
 
-#: ../rednotebook/gui/main_window.py:763
+#: ../rednotebook/gui/main_window.py:762
 msgid "Insert an image from the harddisk"
 msgstr "由硬碟中插入圖片"
 
-#: ../rednotebook/gui/main_window.py:765
+#: ../rednotebook/gui/main_window.py:764
 msgid "File"
 msgstr "檔案"
 
-#: ../rednotebook/gui/main_window.py:766
+#: ../rednotebook/gui/main_window.py:765
 msgid "Insert a link to a file"
 msgstr "在檔案中插入連結"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:769
+#: ../rednotebook/gui/main_window.py:768
 msgid "_Link"
 msgstr "連結(_L)"
 
-#: ../rednotebook/gui/main_window.py:770
+#: ../rednotebook/gui/main_window.py:769
 msgid "Insert a link to a website"
 msgstr "插入網站連結"
 
-#: ../rednotebook/gui/main_window.py:772
+#: ../rednotebook/gui/main_window.py:771
 msgid "Bullet List"
 msgstr "項目符號清單"
 
-#: ../rednotebook/gui/main_window.py:774
+#: ../rednotebook/gui/main_window.py:773
 msgid "Numbered List"
 msgstr "項目編號清單"
 
-#: ../rednotebook/gui/main_window.py:776
+#: ../rednotebook/gui/main_window.py:775
 msgid "Title"
 msgstr "標題"
 
-#: ../rednotebook/gui/main_window.py:778
+#: ../rednotebook/gui/main_window.py:777
 msgid "Line"
 msgstr "行"
 
-#: ../rednotebook/gui/main_window.py:779
+#: ../rednotebook/gui/main_window.py:778
 msgid "Insert a separator line"
 msgstr "插入分隔行"
 
-#: ../rednotebook/gui/main_window.py:781
+#: ../rednotebook/gui/main_window.py:780
 msgid "Table"
 msgstr "表格"
 
-#: ../rednotebook/gui/main_window.py:783
+#: ../rednotebook/gui/main_window.py:782
 msgid "Date/Time"
 msgstr "日期/時間"
 
-#: ../rednotebook/gui/main_window.py:784
+#: ../rednotebook/gui/main_window.py:783
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "插入現在時間/日期(可在選項中編輯格式)"
 
-#: ../rednotebook/gui/main_window.py:786
+#: ../rednotebook/gui/main_window.py:785
 msgid "Line Break"
 msgstr "斷行"
 
-#: ../rednotebook/gui/main_window.py:787
+#: ../rednotebook/gui/main_window.py:786
 msgid "Insert a manual line break"
 msgstr "插入手動斷行"
 
-#: ../rednotebook/gui/main_window.py:810
+#: ../rednotebook/gui/main_window.py:809
 msgid "Insert"
 msgstr "插入"
 
-#: ../rednotebook/gui/main_window.py:814
+#: ../rednotebook/gui/main_window.py:813
 msgid "Insert images, files, links and other content"
 msgstr "插入 圖片,檔案,連結與其他資料"
 
-#: ../rednotebook/gui/main_window.py:897
+#: ../rednotebook/gui/main_window.py:896
 msgid "No link location has been entered"
 msgstr "輸入錯誤連結"
 
@@ -667,24 +644,24 @@ msgid "Export texts"
 msgstr "輸出文字"
 
 #: ../rednotebook/gui/exports.py:130
-msgid "Export all categories"
-msgstr "輸出所有類別"
+msgid "Export all tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:131
-msgid "Do not export categories"
-msgstr "不輸出類別"
+msgid "Do not export tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:133
-msgid "Export only the selected categories"
-msgstr "輸出選取類別"
+msgid "Export only the selected tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:144
-msgid "Available Categories"
-msgstr "可用類別"
+msgid "Available tags"
+msgstr ""
 
-#: ../rednotebook/gui/exports.py:152
-msgid "Selected Categories"
-msgstr "已選取類別"
+#: ../rednotebook/gui/exports.py:152 ../rednotebook/gui/exports.py:398
+msgid "Selected tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Select"
@@ -695,9 +672,8 @@ msgid "Deselect"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:262
-msgid ""
-"If export text is not selected, you have to select at least one category."
-msgstr "如未選取輸出文字,您必須至少選取一個類別"
+msgid "If export text is not selected, you have to select at least one tag."
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
@@ -752,10 +728,6 @@ msgstr "結束日期"
 #: ../rednotebook/gui/exports.py:397
 msgid "Export text"
 msgstr "輸出文字"
-
-#: ../rednotebook/gui/exports.py:398
-msgid "Selected categories"
-msgstr "已選取類別"
 
 #: ../rednotebook/gui/exports.py:399
 msgid "Export path"
@@ -1006,16 +978,6 @@ msgid "Nothing to save"
 msgstr "無儲存事項"
 
 #: ../rednotebook/journal.py:397
-msgid "The selected folder is not empty."
-msgstr "選取資料夾非空資料夾"
-
-#: ../rednotebook/journal.py:398
-msgid ""
-"To prevent you from overwriting data, the folder content has been imported "
-"into the new journal."
-msgstr "未避免覆寫資料,檔案夾內容已輸入到新的日記中"
-
-#: ../rednotebook/journal.py:401
 msgid "The selected folder is empty. A new journal has been created."
 msgstr "已選取空資料夾.已新增日記檔案"
 
