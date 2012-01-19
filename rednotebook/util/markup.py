@@ -19,7 +19,6 @@
 
 from __future__ import with_statement
 
-import os
 import logging
 import re
 import sys
@@ -34,7 +33,6 @@ if __name__ == '__main__':
                     format='%(levelname)-8s %(message)s',)
 
 from rednotebook.external import txt2tags
-from rednotebook.util import filesystem
 
 
 # Linebreaks are only allowed at line ends

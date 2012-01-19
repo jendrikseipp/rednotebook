@@ -20,7 +20,6 @@
 from __future__ import division
 
 import datetime
-import logging
 
 TEXT_RESULT_LENGTH = 42
 

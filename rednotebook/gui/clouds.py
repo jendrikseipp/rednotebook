@@ -50,7 +50,7 @@ CLOUD_CSS = """\
 def get_regex(word):
     try:
         return re.compile(word + '$', re.I)
-    except Exception, e:
+    except Exception:
         logging.warning('"%s" is not a valid regular expression' % word)
         return re.compile('^$')
 

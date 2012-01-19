@@ -89,8 +89,6 @@ rtm = _('Remember the milk')
 dishes = _('Wash the dishes')
 check_mail = _('Check mail')
 monty_python_grail = _('Monty Python and the Holy Grail')
-### Translators: Infinitive, not imperative
-visit_paris = _('Visit Paris')
 team_meeting = _('Team meeting')
 
 

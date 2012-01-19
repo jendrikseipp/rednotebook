@@ -323,19 +323,7 @@ class PathChooserPage(AssistantPage):
 
 
     def on_path_changed(self, widget):
-        # TODO: Try to make this smarter
         return
-
-        correct = False
-        path = self.chooser.get_filename()
-        if path is None:
-            correct = False
-        elif self.path_type == 'DIR':
-            correct = os.path.isdir(path)
-        elif self.path_type == 'FILE':
-            correct = os.path.isfile(path)
-        elif self.path_type == 'NEWFILE':
-            correct = os.path.isfile(path)
 
 
 
