@@ -132,7 +132,7 @@ save1 = _('Everything you enter will be saved automatically at regular intervals
 save2 = _('To avoid data loss you should backup your journal regularly.')
 save3 = _('"Backup" in the "Journal" menu saves all your entered data in a zip file.')
 save4 = _('In the "Journal" menu you also find the "Export" button.')
-save5 = _('Click on "Export" and export your diary to Plain Text, HTML or Latex.')
+save5 = _('Click on "Export" and export your diary to Plain Text, PDF, HTML or Latex.')
 save_par = ' '.join([save1, save2, save3, save4, save5])
 
 error1 = _('If you encounter any errors, please drop me a note so I can fix them.')
@@ -305,10 +305,10 @@ On the left you find the search box. Double-clicking on a day in the search
 results lets you jump to it.
 
 == Clouds ==
-Clicking on the "Clouds" tab on the left lets you view the most often used words in your journal.
 If a word appears in the cloud that you don't want to see there, just right-click
 and select to hide it.
 Alternatively you can open the Preferences dialog and add the word to the cloud blacklist.
+Short words with less than 5 letters can be white-listed there as well.
 
 == Spellcheck ==
 RedNotebook supports spellchecking your entries if you have
