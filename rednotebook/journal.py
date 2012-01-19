@@ -212,8 +212,6 @@ class Journal:
         self.config = user_config
         self.config.save_state()
 
-        #self.warn_if_second_instance()
-
         logging.info('Running in portable mode: %s' % self.dirs.portable)
 
         self.testing = False
@@ -262,28 +260,6 @@ class Journal:
         # Automatically save the content after a period of time
         if not self.testing:
             gobject.timeout_add_seconds(600, self.save_to_disk)
-
-    def warn_if_second_instance(self):
-        '''Show warning when a second instance is started'''
-        running = self.config.read('running', 0)
-        if running:
-            logging.warning('RedNotebook instance already running')
-            text1 = _('RedNotebook appears to be already running.')
-            text2 = _('This can happen if the application is hidden in the '
-                      'system tray or was not shut down correctly.')
-            text3 = _('Starting a second RedNotebook instance can lead to data '
-                      'loss and it might be best to see if there is another '
-                      'instance first.')
-            text4 = _('Do you want to start a new RedNotebook instance nevertheless?')
-            dialog = gtk.MessageDialog(type=gtk.MESSAGE_WARNING,
-                                       buttons=gtk.BUTTONS_YES_NO, message_format=text1)
-            dialog.format_secondary_text('%s %s\n\n%s' % (text2, text3, text4))
-            answer = dialog.run()
-            dialog.hide()
-            if not answer == gtk.RESPONSE_YES:
-                sys.exit()
-        self.config['running'] = 1
-        self.config.save_to_disk()
 
 
     def get_journal_path(self):
