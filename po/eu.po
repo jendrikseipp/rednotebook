@@ -7,318 +7,331 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-18 21:27+0100\n"
-"PO-Revision-Date: 2010-01-20 09:51+0000\n"
-"Last-Translator: Oier Mees <Unknown>\n"
+"POT-Creation-Date: 2012-01-19 12:08+0100\n"
+"PO-Revision-Date: 2012-01-19 15:55+0000\n"
+"Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-19 04:51+0000\n"
-"X-Generator: Launchpad (build 14692)\n"
+"X-Launchpad-Export-Date: 2012-01-20 04:39+0000\n"
+"X-Generator: Launchpad (build 14700)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr ""
+msgstr "Burutazioak"
 
 #: ../rednotebook/info.py:80 ../rednotebook/gui/categories.py:51
-#: ../rednotebook/util/markup.py:102
+#: ../rednotebook/util/markup.py:100
 msgid "Tags"
-msgstr ""
+msgstr "Etiketak"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "Gauza interesgarriak"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Filmak"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Lana"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Denbora librea"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentazioa"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "Egiteke"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Eginda"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "Gogoratu esnea"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Ontziak garbitu"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Begiratu posta"
 
 #: ../rednotebook/info.py:91
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "Monty Python eta Graal Santua"
 
-#. ## Translators: Infinitive, not imperative
-#: ../rednotebook/info.py:93
-msgid "Visit Paris"
-msgstr ""
-
-#: ../rednotebook/info.py:94
+#: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Talde bilera"
 
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:95
 msgid "Hello!"
-msgstr ""
+msgstr "Kaixo!"
 
-#: ../rednotebook/info.py:98
+#: ../rednotebook/info.py:96
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Adibidetarako zenbait testu gehitu da hasten laguntzeko eta nahi izanez gero "
+"ezaba ditzakezu."
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:99
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Adibidetarako testua eta dokumentazio gehiago eskuragarri dago \"Laguntza\" -"
+"> \"Edukiak\" atalean."
 
-#: ../rednotebook/info.py:102
+#: ../rednotebook/info.py:100
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "Interfazea hiru zatitan banatuta dago:"
 
 #. ## Translators: The location "left"
-#: ../rednotebook/info.py:104
+#: ../rednotebook/info.py:102
 msgid "Left"
-msgstr ""
+msgstr "Ezkerra"
 
-#: ../rednotebook/info.py:105
+#: ../rednotebook/info.py:103
 msgid "Navigation and search"
-msgstr ""
+msgstr "Nabigazioa eta bilaketa"
 
 #. ## Translators: The location "center"
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:105
 msgid "Center"
-msgstr ""
+msgstr "Erdia"
 
-#: ../rednotebook/info.py:108
+#: ../rednotebook/info.py:106
 msgid "Text for a day"
-msgstr ""
+msgstr "Egun baten testua"
 
 #. ## Translators: The location "right"
-#: ../rednotebook/info.py:110
+#: ../rednotebook/info.py:108
 msgid "Right"
-msgstr ""
+msgstr "Eskuina"
 
-#: ../rednotebook/info.py:111
+#: ../rednotebook/info.py:109
 msgid "Tags for this day"
-msgstr ""
+msgstr "Egun honen etiketak"
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:114 tmp/main_window.glade.h:24
+#: ../rednotebook/info.py:112 tmp/main_window.glade.h:24
 msgid "Preview"
 msgstr "Aurrebista"
 
-#: ../rednotebook/info.py:115
+#: ../rednotebook/info.py:113
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Bi modu daude RedNotebook-en, __editatu__ modua eta __aurrebista__ modua."
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:117
+#: ../rednotebook/info.py:115
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Sakatu goiko Aurrebista bien arteko aldea ikusteko."
 
-#: ../rednotebook/info.py:120
+#: ../rednotebook/info.py:118
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"Gaur //etxe-abere dendara// joan eta **tigre** bat erosi dut. Ondoren --"
+"parkera-- joan eta ederki pasa dugu frisbiarekin. Segidan \"__Brian-en "
+"bizitza__\" ikusi dugu."
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:130
 msgid "Save and Export"
-msgstr ""
+msgstr "Gorde eta esportatu"
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:131
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"Sartzen duzun guztia automatikoki gordeko da maiztasun erregularrarekin eta "
+"programatik irteten zarenean."
 
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:132
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Datu galerak saihesteko zure egunerokoaren babeskopia bat egin behar zenuke "
+"erregularki."
 
-#: ../rednotebook/info.py:135
+#: ../rednotebook/info.py:133
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"\"Egunerokoa\" menuko \"Babeskopia\"k zure datu guztiak gordetzen ditu zip "
+"fitxategi batean."
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:134
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "\"Egunerokoa\" menuan aurkituko duzu \"Esportatu\" botoia ere."
 
-#: ../rednotebook/info.py:137
+#: ../rednotebook/info.py:135
 msgid ""
-"Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
+"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
+"Klikatu \"Esportatu\" eta esportatu zure egunerokoa testu soil, PDF, HTML "
+"edo Latex formatuetara."
 
-#: ../rednotebook/info.py:140
+#: ../rednotebook/info.py:138
 msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr ""
+msgstr "Errorerik aurkitzen baduzu, mesedez jakinarazi konpon dezadan."
 
-#: ../rednotebook/info.py:141
+#: ../rednotebook/info.py:139
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Edozein iritzi eskertzen da."
 
-#: ../rednotebook/info.py:144
+#: ../rednotebook/info.py:142
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Egun on bat izan dezazula!"
+
+#: ../rednotebook/info.py:166
+msgid "Ate **two** cans of spam"
+msgstr "**Bi** lata spam jan ditut"
+
+#: ../rednotebook/info.py:167
+msgid "Use a cool journal app"
+msgstr "Erabili eguneroko aplikazio bikain bat"
 
 #: ../rednotebook/info.py:168
-msgid "Ate **two** cans of spam"
-msgstr ""
-
-#: ../rednotebook/info.py:169
-msgid "Use a cool journal app"
-msgstr ""
-
-#: ../rednotebook/info.py:170
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "Monty Python-en Brian-en bizitza"
 
-#: ../rednotebook/info.py:661 ../rednotebook/gui/menu.py:248
+#: ../rednotebook/info.py:659 ../rednotebook/gui/menu.py:248
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "RedNotebook dokumentazioa"
 
-#: ../rednotebook/gui/customwidgets.py:378
+#: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
-msgstr ""
+msgstr "Sarrera"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "_Egunerokoa"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "Sortu eguneroko berri bat. Zaharra gorde egingo da"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "Kargatu eguneroko bat. Zaharra gorde egingo da"
 
 #: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"Gorde egunerokoa kokaleku berri batean. Egunerokoaren fitxategi zaharrak ere "
+"gordeko dira."
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr ""
+msgstr "Inportatu"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr ""
+msgstr "Ireki inportatze laguntzailea"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
 msgid "Export"
-msgstr ""
+msgstr "Esportatu"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Ireki esportatze laguntzailea"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111 ../rednotebook/backup.py:61
 msgid "Backup"
-msgstr ""
+msgstr "Egin babeskopia"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "Gorde datu guztiak zip fitxategi batean"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:30
 msgid "Statistics"
-msgstr ""
+msgstr "Estatistikak"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "Erakutsi egunerokoari buruzko zenbait estatistika"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "Itxi RedNotebook. Ez da ataza-barrara bidaliko."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
-msgstr ""
+msgstr "_Editatu"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Desegin testu edo etiketen edizioak"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "Berregin testu edo etiketen edizioak"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr ""
+msgstr "_Laguntza"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr ""
+msgstr "Edukiak"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Ireki RedNotebook-en dokumentazioa"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr ""
+msgstr "Lortu laguntza linean"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Arakatu erantzundako galderak edo egin galdera berri bat"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Itzuli RedNotebook"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
+msgstr "Konektatu Launchpad webgunera RedNotebook itzultzen laguntzeko"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
-msgstr ""
+msgstr "Arazo baten berri eman"
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "Bete arazoari buruzko galdetegi labur bat"
 
 #: ../rednotebook/gui/menu.py:268
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "Mahaigaineko egunerokoa"
 
 #: ../rednotebook/gui/search.py:83
 msgid "Date"
@@ -330,146 +343,147 @@ msgstr "Testua"
 
 #: ../rednotebook/gui/categories.py:130
 msgid "Empty entries are not allowed"
-msgstr ""
+msgstr "Ez da onartzen sarrera hutsik"
 
 #: ../rednotebook/gui/categories.py:147
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Ez da onartzen etiketa-izen hutsik"
 
 #: ../rednotebook/gui/categories.py:401
 msgid "Change this text"
-msgstr ""
+msgstr "Aldatu testu hau"
 
 #: ../rednotebook/gui/categories.py:405
 msgid "Add a new entry"
-msgstr ""
+msgstr "Gehitu sarrera berri bat"
 
 #: ../rednotebook/gui/categories.py:409
 msgid "Delete this entry"
-msgstr ""
+msgstr "Ezabatu sarrera hau"
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "Kargatu RedNotebook abioan"
 
 #: ../rednotebook/gui/options.py:154
 msgid "%A, %x, Day %j"
-msgstr ""
+msgstr "%A, %x, Eguna %j"
 
 #: ../rednotebook/gui/options.py:154
 msgid "Week %W of Year %Y"
-msgstr ""
+msgstr "%Y urteko %W. astea"
 
 #: ../rednotebook/gui/options.py:155
 msgid "Day %j"
-msgstr ""
+msgstr "Eguna %j"
 
 #: ../rednotebook/gui/options.py:160
 msgid "Help"
-msgstr ""
+msgstr "Laguntza"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr ""
+msgstr "Aurrebista:"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Close to system tray"
-msgstr ""
+msgstr "Itxi ataza-barrara"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
+msgstr "Leihoa ixtean RedNotebook ataza-barrara bidaliko da"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "Azpimarratu gaizki idatzitako hitzak"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires gtkspell."
-msgstr ""
+msgstr "gtkspell behar du."
 
 #: ../rednotebook/gui/options.py:301
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr ""
+msgstr "Hau python-gtkspell edo python-gnome2-extras paketeetan aurkitzen da"
 
 #: ../rednotebook/gui/options.py:302
 msgid "Check Spelling"
-msgstr ""
+msgstr "Egiaztatu ortografia"
 
 #: ../rednotebook/gui/options.py:310
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "Egiaztatu abioan bertsio berririk badagoen"
 
 #: ../rednotebook/gui/options.py:317
 msgid "Check now"
-msgstr ""
+msgstr "Egiaztatu orain"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Font Size"
-msgstr ""
+msgstr "Letra-tamaina"
 
 #: ../rednotebook/gui/options.py:323
 msgid "Date/Time format"
-msgstr ""
+msgstr "Data/Ordua formatua"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "Baztertu hitz-lainoetatik"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Do not show those comma separated words in any cloud"
-msgstr ""
+msgstr "Ez erakutsi komaz banatutako hitz hauek hitz-lainoetan"
 
 #: ../rednotebook/gui/options.py:326
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "Baimendu hitz laburrak hitz-lainoetan"
 
 #: ../rednotebook/gui/options.py:327
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
+msgstr "Baimendu 4 letra edo gutxiagoko hitz hauek hitz-lainoetan"
 
 #: ../rednotebook/gui/main_window.py:281
 msgid "Show RedNotebook"
-msgstr "Erakusti RedNotebook"
+msgstr "Erakutsi RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:454
 msgid "Select an empty folder for your new journal"
-msgstr ""
+msgstr "Hautatu karpeta huts bat zure eguneroko berriarentzat"
 
 #: ../rednotebook/gui/main_window.py:455
 msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
+"Egunerokoak direktorio batean gordetzen dira, ez fitxategi bakar batean."
 
 #: ../rednotebook/gui/main_window.py:456
 msgid "The directory name will be the title of the new journal."
-msgstr ""
+msgstr "Direktorioaren izena eguneroko berriaren izenburua izango da."
 
 #: ../rednotebook/gui/main_window.py:460
 msgid "Select an existing journal directory"
-msgstr ""
+msgstr "Hautatu existitzen den eguneroko direktorio bat"
 
 #: ../rednotebook/gui/main_window.py:462
 msgid "The directory should contain your journal's data files"
-msgstr ""
+msgstr "Direktorioak zure egunerokoaren fitxategiak eduki behar lituzke"
 
 #: ../rednotebook/gui/main_window.py:464
 msgid "Select an empty folder for the new location of your journal"
-msgstr ""
+msgstr "Hautatu karpeta huts bat zure egunerokoaren kokaleku berrirako"
 
 #: ../rednotebook/gui/main_window.py:466
 msgid "The directory name will be the new title of the journal"
-msgstr ""
+msgstr "Direktorioaren izena egunerokoaren izenburu berria izango da"
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
 #: ../rednotebook/gui/main_window.py:487
 msgid "The default journal has been opened"
-msgstr ""
+msgstr "Eguneroko lehenetsia ireki da"
 
 #: ../rednotebook/gui/main_window.py:653
 msgid "No text or tag has been selected."
-msgstr ""
+msgstr "Ez da testu edo etiketarik hautatu."
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:658
@@ -486,11 +500,11 @@ msgstr "Etzana"
 
 #: ../rednotebook/gui/main_window.py:663
 msgid "Underline"
-msgstr "Azpimarratu"
+msgstr "Azpimarratua"
 
 #: ../rednotebook/gui/main_window.py:664
 msgid "Strikethrough"
-msgstr ""
+msgstr "Marratua"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/main_window.py:680 ../rednotebook/gui/exports.py:390
@@ -499,27 +513,27 @@ msgstr "Formatua"
 
 #: ../rednotebook/gui/main_window.py:681
 msgid "Format the selected text or tag"
-msgstr ""
+msgstr "Eman formatua hautatutako testu edo etiketari"
 
 #: ../rednotebook/gui/main_window.py:730
 msgid "First Item"
-msgstr ""
+msgstr "Lehen elementua"
 
 #: ../rednotebook/gui/main_window.py:731
 msgid "Second Item"
-msgstr ""
+msgstr "Bigarren elementua"
 
 #: ../rednotebook/gui/main_window.py:732
 msgid "Indented Item"
-msgstr ""
+msgstr "Koskatutako elementua"
 
 #: ../rednotebook/gui/main_window.py:733
 msgid "Two blank lines close the list"
-msgstr ""
+msgstr "Bi lerro zurik ixten dute zerrenda"
 
 #: ../rednotebook/gui/main_window.py:737
 msgid "Title text"
-msgstr ""
+msgstr "Izenburu testua"
 
 #: ../rednotebook/gui/main_window.py:761
 msgid "Picture"
@@ -527,7 +541,7 @@ msgstr "Irudia"
 
 #: ../rednotebook/gui/main_window.py:762
 msgid "Insert an image from the harddisk"
-msgstr ""
+msgstr "Txertatu irudi bat disko gogorretik"
 
 #: ../rednotebook/gui/main_window.py:764
 msgid "File"
@@ -535,24 +549,24 @@ msgstr "Fitxategia"
 
 #: ../rednotebook/gui/main_window.py:765
 msgid "Insert a link to a file"
-msgstr "Sartu esteka bat fitxategira"
+msgstr "Txertatu fitxategi baterako esteka bat"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/main_window.py:768
 msgid "_Link"
-msgstr ""
+msgstr "_Esteka"
 
 #: ../rednotebook/gui/main_window.py:769
 msgid "Insert a link to a website"
-msgstr "Sartu esteka web orri batera"
+msgstr "Txertatu web orri baterako esteka bat"
 
 #: ../rednotebook/gui/main_window.py:771
 msgid "Bullet List"
-msgstr ""
+msgstr "Buleta-zerrenda"
 
 #: ../rednotebook/gui/main_window.py:773
 msgid "Numbered List"
-msgstr ""
+msgstr "Zenbakidun zerrenda"
 
 #: ../rednotebook/gui/main_window.py:775
 msgid "Title"
@@ -564,11 +578,11 @@ msgstr "Lerroa"
 
 #: ../rednotebook/gui/main_window.py:778
 msgid "Insert a separator line"
-msgstr ""
+msgstr "Txertatu lerro bereizle bat"
 
 #: ../rednotebook/gui/main_window.py:780
 msgid "Table"
-msgstr ""
+msgstr "Taula"
 
 #: ../rednotebook/gui/main_window.py:782
 msgid "Date/Time"
@@ -576,7 +590,7 @@ msgstr "Data/Ordua"
 
 #: ../rednotebook/gui/main_window.py:783
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr ""
+msgstr "Txertatu uneko data eta ordua (editatu formatua hobespenetan)"
 
 #: ../rednotebook/gui/main_window.py:785
 msgid "Line Break"
@@ -584,7 +598,7 @@ msgstr "Lerro-jauzia"
 
 #: ../rednotebook/gui/main_window.py:786
 msgid "Insert a manual line break"
-msgstr ""
+msgstr "Txertatu eskuzko lerro-jauzi bat"
 
 #: ../rednotebook/gui/main_window.py:809
 msgid "Insert"
@@ -592,193 +606,198 @@ msgstr "Txertatu"
 
 #: ../rednotebook/gui/main_window.py:813
 msgid "Insert images, files, links and other content"
-msgstr ""
+msgstr "Txertatu irudiak, fitxategiak, estekak eta bestelako edukia"
 
 #: ../rednotebook/gui/main_window.py:896
 msgid "No link location has been entered"
-msgstr ""
+msgstr "Ez da estekaren helbiderik zehaztu"
 
 #: ../rednotebook/gui/clouds.py:134
 msgid "filter, these, comma, separated, words"
-msgstr ""
+msgstr "iragazi, komaz, banatutako, hitz, hauek"
 
 #: ../rednotebook/gui/clouds.py:139
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "mtv, spam, lana"
 
 #: ../rednotebook/gui/clouds.py:225
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Ezkutatu \"%s\" hitz-lainoetatik"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
-msgstr ""
+msgstr "Esportatu egun guztiak"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export currently visible day"
-msgstr ""
+msgstr "Esportatu unean ikusgai dagoen eguna"
 
 #: ../rednotebook/gui/exports.py:55
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "Esportatu hautatutako denbora tarteko egunak"
 
 #: ../rednotebook/gui/exports.py:63
 msgid "From:"
-msgstr ""
+msgstr "Noiztik:"
 
 #: ../rednotebook/gui/exports.py:65
 msgid "To:"
-msgstr ""
+msgstr "Noiz arte:"
 
 #: ../rednotebook/gui/exports.py:126
 msgid "Date format"
-msgstr ""
+msgstr "Dataren formatua"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Utzi hutsik esportatzean datak alde batera uzteko"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
-msgstr ""
+msgstr "Esportatu testuak"
 
 #: ../rednotebook/gui/exports.py:130
 msgid "Export all tags"
-msgstr ""
+msgstr "Esportatu etiketa guztiak"
 
 #: ../rednotebook/gui/exports.py:131
 msgid "Do not export tags"
-msgstr ""
+msgstr "Ez esportatu etiketak"
 
 #: ../rednotebook/gui/exports.py:133
 msgid "Export only the selected tags"
-msgstr ""
+msgstr "Esportatu hautatutako etiketak soilik"
 
 #: ../rednotebook/gui/exports.py:144
 msgid "Available tags"
-msgstr ""
+msgstr "Etiketa eskuragarriak"
 
 #: ../rednotebook/gui/exports.py:152 ../rednotebook/gui/exports.py:398
 msgid "Selected tags"
-msgstr ""
+msgstr "Hautatutako etiketak"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Select"
-msgstr ""
+msgstr "Hautatu"
 
 #: ../rednotebook/gui/exports.py:159
 msgid "Deselect"
-msgstr ""
+msgstr "Desautatu"
 
 #: ../rednotebook/gui/exports.py:262
 msgid "If export text is not selected, you have to select at least one tag."
 msgstr ""
+"Ez badago esportatzeko testurik hautatuta, gutxienez etiketa bat hautatu "
+"behar duzu."
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "Ondorengo ezarpenak hautatu dituzu:"
 
 #: ../rednotebook/gui/exports.py:311
 msgid "Export Assistant"
-msgstr ""
+msgstr "Esportatze laguntzailea"
 
 #: ../rednotebook/gui/exports.py:313
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "Ongietorri esportatze laguntzailera."
 
 #: ../rednotebook/gui/exports.py:314
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
+"Laguntzaile honek zure egunerokoa hainbat formatutara esportatzen lagunduko "
+"dizu."
 
 #: ../rednotebook/gui/exports.py:315
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"Esportatu nahi dituzun egunak eta irteera non gordeko den hauta ditzakezu."
 
 #: ../rednotebook/gui/exports.py:325
 msgid "Select Export Format"
-msgstr ""
+msgstr "Hautatu esportatze formatua"
 
 #: ../rednotebook/gui/exports.py:330
 msgid "Select Date Range"
-msgstr ""
+msgstr "Hautatu data tartea"
 
 #: ../rednotebook/gui/exports.py:335
 msgid "Select Contents"
-msgstr ""
+msgstr "Hautatu edukiak"
 
 #: ../rednotebook/gui/exports.py:341
 msgid "Select Export Path"
-msgstr ""
+msgstr "Hautatu esportatze bidea"
 
 #: ../rednotebook/gui/exports.py:346
 msgid "Summary"
-msgstr ""
+msgstr "Laburpena"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Start date"
-msgstr ""
+msgstr "Hasiera-data"
 
 #: ../rednotebook/gui/exports.py:395
 msgid "End date"
-msgstr ""
+msgstr "Bukaera-data"
 
 #: ../rednotebook/gui/exports.py:397
 msgid "Export text"
-msgstr ""
+msgstr "Esportatze testua"
 
 #: ../rednotebook/gui/exports.py:399
 msgid "Export path"
-msgstr ""
+msgstr "Esportatze bidea"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Yes"
-msgstr ""
+msgstr "Bai"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "No"
-msgstr ""
+msgstr "Ez"
 
 #: ../rednotebook/gui/exports.py:441 ../rednotebook/gui/exports.py:447
 #, python-format
 msgid "Content exported to %s"
-msgstr ""
+msgstr "Edukia hona esportatu da: %s"
 
 #: ../rednotebook/gui/exports.py:534
 msgid "requires pywebkitgtk"
-msgstr ""
+msgstr "pywebkitgtk behar du"
 
-#: ../rednotebook/templates.py:31
+#: ../rednotebook/templates.py:30
 msgid "Monday"
-msgstr ""
+msgstr "Astelehena"
 
-#: ../rednotebook/templates.py:31
+#: ../rednotebook/templates.py:30
 msgid "Tuesday"
-msgstr ""
+msgstr "Asteartea"
 
-#: ../rednotebook/templates.py:31
+#: ../rednotebook/templates.py:30
 msgid "Wednesday"
-msgstr ""
+msgstr "Asteazkena"
+
+#: ../rednotebook/templates.py:30
+msgid "Thursday"
+msgstr "Osteguna"
 
 #: ../rednotebook/templates.py:31
-msgid "Thursday"
-msgstr ""
-
-#: ../rednotebook/templates.py:32
 msgid "Friday"
-msgstr ""
+msgstr "Ostirala"
 
-#: ../rednotebook/templates.py:32
+#: ../rednotebook/templates.py:31
 msgid "Saturday"
-msgstr ""
+msgstr "Larunbata"
 
-#: ../rednotebook/templates.py:32
+#: ../rednotebook/templates.py:31
 msgid "Sunday"
-msgstr ""
+msgstr "Igandea"
 
-#: ../rednotebook/templates.py:104
+#: ../rednotebook/templates.py:103
 msgid ""
 "=== Meeting ===\n"
 "\n"
@@ -802,8 +821,29 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== Bilera ===\n"
+"\n"
+"Helburua, data eta lekua\n"
+"\n"
+"**Aurkeztu:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Gai-zerrenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Eztabaida, erabakiak, esleipenak:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
-#: ../rednotebook/templates.py:128
+#: ../rednotebook/templates.py:127
 msgid ""
 "=== Journey ===\n"
 "**Date:**\n"
@@ -817,8 +857,19 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Bidaia ===\n"
+"**Data:**\n"
+"\n"
+"**Lekua:**\n"
+"\n"
+"**Parte-hartzaileak:**\n"
+"\n"
+"**Bidaia:**\n"
+"Lehenik xxxxx-ra joan ginen, ondoren yyyyy-ra ...\n"
+"\n"
+"**Irudiak:** [Irudien karpeta \"\"/irudien/karpetarako/bidea/\"\"]\n"
 
-#: ../rednotebook/templates.py:142
+#: ../rednotebook/templates.py:141
 msgid ""
 "==================================\n"
 "=== Phone Call ===\n"
@@ -828,8 +879,15 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Telefono deia ===\n"
+"- **Pertsona:**\n"
+"- **Ordua:**\n"
+"- **Gaia:**\n"
+"- **Emaitza eta jarraipena:**\n"
+"==================================\n"
 
-#: ../rednotebook/templates.py:152
+#: ../rednotebook/templates.py:151
 msgid ""
 "=====================================\n"
 "=== Personal ===\n"
@@ -849,174 +907,173 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Pertsonala ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Nola joan zen eguna?**\n"
+"\n"
+"\n"
+"========================\n"
+"**Zer aldatu behar da?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
-#: ../rednotebook/templates.py:210
+#: ../rednotebook/templates.py:209
 msgid "Choose Template Name"
-msgstr ""
+msgstr "Aukeratu txantiloiaren izena"
 
-#: ../rednotebook/templates.py:362 ../rednotebook/templates.py:371
+#: ../rednotebook/templates.py:361 ../rednotebook/templates.py:370
 msgid "This Weekday's Template"
-msgstr ""
+msgstr "Asteko egun honetarako txantiloia"
 
-#: ../rednotebook/templates.py:365
+#: ../rednotebook/templates.py:364
 msgid "Edit Template"
-msgstr ""
+msgstr "Editatu txantiloia"
 
-#: ../rednotebook/templates.py:368
+#: ../rednotebook/templates.py:367
 msgid "Insert Template"
-msgstr ""
+msgstr "Txertatu txantiloia"
 
-#: ../rednotebook/templates.py:374
+#: ../rednotebook/templates.py:373
 msgid "Create New Template"
-msgstr ""
+msgstr "Sortu txantiloi berria"
 
-#: ../rednotebook/templates.py:378
+#: ../rednotebook/templates.py:377
 msgid "Open Template Directory"
-msgstr ""
+msgstr "Ireki txantiloi direktorioa"
 
 #: ../rednotebook/util/utils.py:173
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "<b>%s</b> bertsioa daukazu."
 
 #: ../rednotebook/util/utils.py:174
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "Azken bertsioa <b>%s</b> da."
 
 #: ../rednotebook/util/utils.py:175
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
+msgstr "RedNotebook-en webgunea bisitatu nahi duzu?"
 
 #: ../rednotebook/util/utils.py:182
 msgid "Do not ask again"
-msgstr ""
+msgstr "Ez galdetu berriro"
 
-#: ../rednotebook/util/dates.py:58
+#: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
-msgstr ""
+msgstr "Data formatu okerra"
 
 #: ../rednotebook/util/statistics.py:77 ../rednotebook/util/statistics.py:90
 msgid "Words"
-msgstr ""
+msgstr "Hitzak"
 
 #: ../rednotebook/util/statistics.py:78
 msgid "Distinct Words"
-msgstr ""
+msgstr "Hitz desberdinak"
 
 #: ../rednotebook/util/statistics.py:79
 msgid "Edited Days"
-msgstr ""
+msgstr "Editatutako egunak"
 
 #: ../rednotebook/util/statistics.py:80 ../rednotebook/util/statistics.py:92
 msgid "Letters"
-msgstr ""
+msgstr "Letrak"
 
 #: ../rednotebook/util/statistics.py:81
 msgid "Days between first and last Entry"
-msgstr ""
+msgstr "Lehen eta azken sarreren arteko egunak"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Average number of Words"
-msgstr ""
+msgstr "Batazbesteko hitz kopurua"
 
 #: ../rednotebook/util/statistics.py:83
 msgid "Percentage of edited Days"
-msgstr ""
+msgstr "Editatutako egunen portzentaia"
 
 #: ../rednotebook/util/statistics.py:91
 msgid "Lines"
-msgstr ""
+msgstr "Lerroak"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "Denbora pixkat igaro da azken babeskopia egin zenuenetik."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
+"Datu galera saihesteko zure egunerokoaren babeskopia egin dezakezu zip "
+"fitxategi batean."
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "Egin babeskopia orain"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "Galdetu hurrengo abiarazpenean"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Ez galdetu berriz"
 
-#: ../rednotebook/journal.py:271
-msgid "RedNotebook appears to be already running."
-msgstr ""
-
-#: ../rednotebook/journal.py:272
-msgid ""
-"This can happen if the application is hidden in the system tray or was not "
-"shut down correctly."
-msgstr ""
-
-#: ../rednotebook/journal.py:274
-msgid ""
-"Starting a second RedNotebook instance can lead to data loss and it might be "
-"best to see if there is another instance first."
-msgstr ""
-
-#: ../rednotebook/journal.py:277
-msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr ""
-
-#: ../rednotebook/journal.py:362
+#: ../rednotebook/journal.py:338
 #, python-format
 msgid "The content has been saved to %s"
-msgstr ""
+msgstr "Edukia hona gorde da: %s"
 
-#: ../rednotebook/journal.py:365
+#: ../rednotebook/journal.py:341
 msgid "Nothing to save"
-msgstr ""
+msgstr "Ez dago zer gorderik"
 
-#: ../rednotebook/journal.py:397
+#: ../rednotebook/journal.py:373
 msgid "The selected folder is empty. A new journal has been created."
-msgstr ""
+msgstr "Hautatutako karpeta hutsik dago. Eguneroko berri bat sortu da."
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Orokorra</b>"
 
 #: tmp/main_window.glade.h:3
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr ""
+msgstr "<b>Estekaren helbidea (adibidez, http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
-msgstr ""
+msgstr "<b>Estekaren izena (hautazkoa)</b>"
 
 #: tmp/main_window.glade.h:5
 msgid "<b>Overall</b>"
-msgstr ""
+msgstr "<b>Oro har</b>"
 
 #: tmp/main_window.glade.h:6
 msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgstr "<b>Hautatu kategoria berri bat edo existitzen den bat</b>"
 
 #: tmp/main_window.glade.h:7
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Hautatutako eguna</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b> (optional)"
-msgstr ""
+msgstr "<b>Idatzi sarrera</b> (hautazkoa)"
 
 #: tmp/main_window.glade.h:9
 msgid "Add Tag"
-msgstr ""
+msgstr "Gehitu etiketa"
 
 #: tmp/main_window.glade.h:10
 msgid "Add a tag or a category entry"
-msgstr ""
+msgstr "Gehitu etiketa bat edo sarrera kategoria bat"
 
 #: tmp/main_window.glade.h:11
 msgid "Edit"
@@ -1024,77 +1081,80 @@ msgstr "Editatu"
 
 #: tmp/main_window.glade.h:12
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Gaitu testu edizioa (Ktrl + P)"
 
 #: tmp/main_window.glade.h:13
 msgid "Exit without saving"
-msgstr ""
+msgstr "Irten gorde gabe"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:15
 msgid "General"
-msgstr ""
+msgstr "Orokorra"
 
 #: tmp/main_window.glade.h:16
 msgid "Go to next day (Ctrl+PageDown)"
-msgstr ""
+msgstr "Joan hurrengo egunera (Ktrl+Orri-Behera)"
 
 #: tmp/main_window.glade.h:17
 msgid "Go to previous day (Ctrl+PageUp)"
-msgstr ""
+msgstr "Joan aurreko egunera (Ktrl+Orri-gora)"
 
 #: tmp/main_window.glade.h:18
 msgid "Insert Link"
-msgstr ""
+msgstr "Txertatu esteka"
 
 #: tmp/main_window.glade.h:19
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
+"Txertatu asteko egun honetarako txantiloia. Klikatu eskuineko gezia aukera "
+"gehiagorako"
 
 #: tmp/main_window.glade.h:20
 msgid "Jump to today"
-msgstr ""
+msgstr "Joan gaurko egunera"
 
 #: tmp/main_window.glade.h:21
 msgid "New entry"
-msgstr ""
+msgstr "Sarrera berria"
 
 #: tmp/main_window.glade.h:22
 msgid "Preferences"
-msgstr ""
+msgstr "Hobespenak"
 
 #: tmp/main_window.glade.h:25
 msgid "Select a directory"
-msgstr ""
+msgstr "Hautatu direktorio bat"
 
 #: tmp/main_window.glade.h:26
 msgid "Select a file"
-msgstr ""
+msgstr "Hautatu fitxategi bat"
 
 #: tmp/main_window.glade.h:27
 msgid "Select a picture"
-msgstr ""
+msgstr "Hautatu irudi bat"
 
 #: tmp/main_window.glade.h:28
 msgid "Select backup filename"
-msgstr ""
+msgstr "Hautatu babeskopiaren fitxategi-izena"
 
 #: tmp/main_window.glade.h:29
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr ""
+msgstr "Erakutsi testuaren formatudun aurrebista bat (Ktrl+P)"
 
 #: tmp/main_window.glade.h:31
 msgid "Template"
-msgstr ""
+msgstr "Txantiloia"
 
 #: tmp/main_window.glade.h:32
 msgid "Today"
-msgstr ""
+msgstr "Gaur"
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:34
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Asier Iturralde Sarasola https://launchpad.net/~asier-iturralde\n"
 "  Oier Mees https://launchpad.net/~oier"

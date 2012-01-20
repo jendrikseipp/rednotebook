@@ -1,21 +1,20 @@
 # Dutch translation for rednotebook
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the rednotebook package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 # redmar <redmar@ubuntu-nl.org), 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-18 21:27+0100\n"
-"PO-Revision-Date: 2012-01-01 20:09+0000\n"
-"Last-Translator: Redmar <redmar@ubuntu-nl.org>\n"
+"POT-Creation-Date: 2012-01-19 12:08+0100\n"
+"PO-Revision-Date: 2012-01-19 13:24+0000\n"
+"Last-Translator: Peter Schelleman <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-19 04:52+0000\n"
-"X-Generator: Launchpad (build 14692)\n"
+"X-Launchpad-Export-Date: 2012-01-20 04:39+0000\n"
+"X-Generator: Launchpad (build 14700)\n"
 
 #: ../rednotebook/gui/main_window.py:281
 msgid "Show RedNotebook"
@@ -26,7 +25,7 @@ msgid "Ideas"
 msgstr "Ideeën"
 
 #: ../rednotebook/info.py:80 ../rednotebook/gui/categories.py:51
-#: ../rednotebook/util/markup.py:102
+#: ../rednotebook/util/markup.py:100
 msgid "Tags"
 msgstr "Labels"
 
@@ -74,20 +73,15 @@ msgstr "Mail controleren"
 msgid "Monty Python and the Holy Grail"
 msgstr "Monty Python and the Holy Grail"
 
-#. ## Translators: Infinitive, not imperative
-#: ../rednotebook/info.py:93
-msgid "Visit Paris"
-msgstr ""
-
-#: ../rednotebook/info.py:94
+#: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Teamvergadering"
 
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:95
 msgid "Hello!"
 msgstr "Hallo!"
 
-#: ../rednotebook/info.py:98
+#: ../rednotebook/info.py:96
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -96,62 +90,62 @@ msgstr ""
 "kunt deze tekst elk moment verwijderen."
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:99
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
 "De voorbeeldtekst en andere documentatie is te vinden bij ‘Hulp’ -> ‘Inhoud’."
 
-#: ../rednotebook/info.py:102
+#: ../rednotebook/info.py:100
 msgid "The interface is divided into three parts:"
 msgstr "De interface is in drie delen opgesplitst:"
 
 #. ## Translators: The location "left"
-#: ../rednotebook/info.py:104
+#: ../rednotebook/info.py:102
 msgid "Left"
 msgstr "Links"
 
-#: ../rednotebook/info.py:105
+#: ../rednotebook/info.py:103
 msgid "Navigation and search"
-msgstr ""
+msgstr "Navigatie en zoeken"
 
 #. ## Translators: The location "center"
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:105
 msgid "Center"
 msgstr "Midden"
 
-#: ../rednotebook/info.py:108
+#: ../rednotebook/info.py:106
 msgid "Text for a day"
 msgstr "Tekst voor een dag"
 
 #. ## Translators: The location "right"
-#: ../rednotebook/info.py:110
+#: ../rednotebook/info.py:108
 msgid "Right"
 msgstr "Rechts"
 
-#: ../rednotebook/info.py:111
+#: ../rednotebook/info.py:109
 msgid "Tags for this day"
-msgstr ""
+msgstr "Labels voor deze dag"
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:114 tmp/main_window.glade.h:24
+#: ../rednotebook/info.py:112 tmp/main_window.glade.h:24
 msgid "Preview"
 msgstr "Voorbeeld weergeven"
 
-#: ../rednotebook/info.py:115
+#: ../rednotebook/info.py:113
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr "RedNotebook heeft twee standen: __bewerken__ en __weergave__."
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:117
+#: ../rednotebook/info.py:115
 msgid "Click on Preview above to see the difference."
 msgstr "Klik op ‘Voorbeeld weergeven’ hier boven om het verschil te zien."
 
-#: ../rednotebook/info.py:120
+#: ../rednotebook/info.py:118
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -162,11 +156,11 @@ msgstr ""
 "spelen van frisbee. Daarna keken we de film ‘_Life of Brian_’."
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:130
 msgid "Save and Export"
 msgstr "Opslaan en exporteren"
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:131
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -174,61 +168,59 @@ msgstr ""
 "Alles wat u invoert wordt tussendoor automatisch opgeslagen, ook als u het "
 "programma afsluit."
 
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:132
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "Om gegevensverlies te vermijden kunt u het beste regelmatig een back-up van "
 "uw dagboek maken."
 
-#: ../rednotebook/info.py:135
+#: ../rednotebook/info.py:133
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "‘Back-up’ in het ‘Dagboek’ menu slaat alle ingevoerde gegevens in een zip-"
 "bestand op."
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:134
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "In het ‘Dagboek’ menu vindt u ook de ‘Exporteren’-knop."
 
-#: ../rednotebook/info.py:137
+#: ../rednotebook/info.py:135
 msgid ""
-"Click on \"Export\" and export your diary to Plain Text, HTML or Latex."
+"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
-"Klik op ‘Exporteren’ en exporteer uw dagboek naar gewone tekst, HTML of "
-"Latex."
 
-#: ../rednotebook/info.py:140
+#: ../rednotebook/info.py:138
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
-"Als u fouten tegen komt kunt u deze aan mij doorgeven, zodat ik ze kan "
+"Als u fouten tegenkomt kunt u deze aan mij doorgeven, zodat ik ze kan "
 "oplossen."
 
-#: ../rednotebook/info.py:141
+#: ../rednotebook/info.py:139
 msgid "Any feedback is appreciated."
 msgstr "Alle reacties worden gewaardeerd."
 
-#: ../rednotebook/info.py:144
+#: ../rednotebook/info.py:142
 msgid "Have a nice day!"
 msgstr "Nog een prettige dag!"
 
-#: ../rednotebook/info.py:168
+#: ../rednotebook/info.py:166
 msgid "Ate **two** cans of spam"
 msgstr "**Twee** blikjes vlees gegeten"
 
-#: ../rednotebook/info.py:169
+#: ../rednotebook/info.py:167
 msgid "Use a cool journal app"
 msgstr "Gebruik een fraaie dagboekapplicatie"
 
-#: ../rednotebook/info.py:170
+#: ../rednotebook/info.py:168
 msgid "Monty Python's Life of Brian"
 msgstr "Monty Python's Life of Brian"
 
-#: ../rednotebook/info.py:661 ../rednotebook/gui/menu.py:248
+#: ../rednotebook/info.py:659 ../rednotebook/gui/menu.py:248
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook documentatie"
 
-#: ../rednotebook/gui/customwidgets.py:378
+#: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
 msgstr "Inleiding"
 
@@ -296,11 +288,11 @@ msgstr "Be_werken"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Het bewerken van labels of tekst ongedaan maken"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "De wijzigingen aan labels of tekst terugzetten"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -312,7 +304,7 @@ msgstr "Inhoud"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr "De documentatie RedNotebook openen"
+msgstr "De documentatie van RedNotebook openen"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
@@ -357,7 +349,7 @@ msgstr "Lege categorieën zijn niet toegestaan"
 
 #: ../rednotebook/gui/categories.py:147
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Lege labelnamen zijn niet toegestaan"
 
 #: ../rednotebook/gui/categories.py:401
 msgid "Change this text"
@@ -773,35 +765,35 @@ msgstr "Inhoud is naar %s geëxporteerd"
 msgid "requires pywebkitgtk"
 msgstr "vereist pywebkitgtk"
 
-#: ../rednotebook/templates.py:31
+#: ../rednotebook/templates.py:30
 msgid "Monday"
 msgstr "Maandag"
 
-#: ../rednotebook/templates.py:31
+#: ../rednotebook/templates.py:30
 msgid "Tuesday"
 msgstr "Dinsdag"
 
-#: ../rednotebook/templates.py:31
+#: ../rednotebook/templates.py:30
 msgid "Wednesday"
 msgstr "Woensdag"
 
-#: ../rednotebook/templates.py:31
+#: ../rednotebook/templates.py:30
 msgid "Thursday"
 msgstr "Donderdag"
 
-#: ../rednotebook/templates.py:32
+#: ../rednotebook/templates.py:31
 msgid "Friday"
 msgstr "Vrijdag"
 
-#: ../rednotebook/templates.py:32
+#: ../rednotebook/templates.py:31
 msgid "Saturday"
 msgstr "Zaterdag"
 
-#: ../rednotebook/templates.py:32
+#: ../rednotebook/templates.py:31
 msgid "Sunday"
 msgstr "Zondag"
 
-#: ../rednotebook/templates.py:104
+#: ../rednotebook/templates.py:103
 msgid ""
 "=== Meeting ===\n"
 "\n"
@@ -847,7 +839,7 @@ msgstr ""
 "+\n"
 "==================================\n"
 
-#: ../rednotebook/templates.py:128
+#: ../rednotebook/templates.py:127
 msgid ""
 "=== Journey ===\n"
 "**Date:**\n"
@@ -873,7 +865,7 @@ msgstr ""
 "\n"
 "**Foto's:** [Fotomap \"\"/pad/naar/de/fotos/\"\"]\n"
 
-#: ../rednotebook/templates.py:142
+#: ../rednotebook/templates.py:141
 msgid ""
 "==================================\n"
 "=== Phone Call ===\n"
@@ -891,7 +883,7 @@ msgstr ""
 "- **Uitkomst en vervolg:**\n"
 "==================================\n"
 
-#: ../rednotebook/templates.py:152
+#: ../rednotebook/templates.py:151
 msgid ""
 "=====================================\n"
 "=== Personal ===\n"
@@ -929,27 +921,27 @@ msgstr ""
 "+\n"
 "=====================================\n"
 
-#: ../rednotebook/templates.py:210
+#: ../rednotebook/templates.py:209
 msgid "Choose Template Name"
 msgstr "Kies een naam voor sjabloon"
 
-#: ../rednotebook/templates.py:362 ../rednotebook/templates.py:371
+#: ../rednotebook/templates.py:361 ../rednotebook/templates.py:370
 msgid "This Weekday's Template"
 msgstr "Sjabloon van deze weekdag"
 
-#: ../rednotebook/templates.py:365
+#: ../rednotebook/templates.py:364
 msgid "Edit Template"
 msgstr "Sjabloon bewerken"
 
-#: ../rednotebook/templates.py:368
+#: ../rednotebook/templates.py:367
 msgid "Insert Template"
 msgstr "Sjabloon invoegen"
 
-#: ../rednotebook/templates.py:374
+#: ../rednotebook/templates.py:373
 msgid "Create New Template"
 msgstr "Nieuwe sjabloon aanmaken"
 
-#: ../rednotebook/templates.py:378
+#: ../rednotebook/templates.py:377
 msgid "Open Template Directory"
 msgstr "Sjabloon-map openen"
 
@@ -971,7 +963,7 @@ msgstr "Wilt u de webpagina van RedNotebook bezoeken?"
 msgid "Do not ask again"
 msgstr "Niet opnieuw vragen"
 
-#: ../rednotebook/util/dates.py:58
+#: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
 msgstr "Onjuiste datum-opmaak"
 
@@ -1028,40 +1020,16 @@ msgstr "Bij de volgende starten opnieuw vragen"
 msgid "Never ask again"
 msgstr "Vraag dit nooit meer"
 
-#: ../rednotebook/journal.py:271
-msgid "RedNotebook appears to be already running."
-msgstr "Het lijkt er op dat RedNotebook al actief is."
-
-#: ../rednotebook/journal.py:272
-msgid ""
-"This can happen if the application is hidden in the system tray or was not "
-"shut down correctly."
-msgstr ""
-"Dit kan gebeuren als het programma in de systeembalk actief is of niet juist "
-"is afgesloten."
-
-#: ../rednotebook/journal.py:274
-msgid ""
-"Starting a second RedNotebook instance can lead to data loss and it might be "
-"best to see if there is another instance first."
-msgstr ""
-"Een tweede RedNotebook sessie starten kan tot dataverlies leiden. U kunt "
-"beter eerst kijken of er een andere sessie actief is."
-
-#: ../rednotebook/journal.py:277
-msgid "Do you want to start a new RedNotebook instance nevertheless?"
-msgstr "Wilt u toch een nieuwe RedNotebook-sessie starten?"
-
-#: ../rednotebook/journal.py:362
+#: ../rednotebook/journal.py:338
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "De inhoud is opgeslagen in %s"
 
-#: ../rednotebook/journal.py:365
+#: ../rednotebook/journal.py:341
 msgid "Nothing to save"
 msgstr "Niets om op te slaan"
 
-#: ../rednotebook/journal.py:397
+#: ../rednotebook/journal.py:373
 msgid "The selected folder is empty. A new journal has been created."
 msgstr "De gekozen map is leeg. Er is een nieuw dagboek aangemaakt."
 
@@ -1184,5 +1152,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Fly-Man- https://launchpad.net/~flyman\n"
+"  Peter Schelleman https://launchpad.net/~peterschelleman\n"
 "  Rachid https://launchpad.net/~rachidbm\n"
+"  Redmar https://launchpad.net/~redmar\n"
 "  Sven Heesterman https://launchpad.net/~captain-j"
