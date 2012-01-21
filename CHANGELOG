@@ -14,6 +14,7 @@
 * Make journal saving more than twice as fast by using libyaml.
 * Change Ctrl-PageUp(Down) directions to be more intuitive
 * Update and revise help text
+* Fix: utf-8 special chars not displayed correctly in html export for firefox (LP:910094)
 * Fix: Do not abort if a wrong regex is entered
 * Fix: Correctly highlight all picture formats in edit mode
 * Fix: When the format button is clicked and a tag is selected, format it instead of the editor pane

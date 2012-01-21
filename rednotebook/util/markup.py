@@ -42,6 +42,8 @@ REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
 TABLE_HEAD_BG = '#aaa'
 BLOCKQUOTE_BG = '#ccc'
 
+CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
+
 CSS = """\
 <style type="text/css">
     body {
@@ -173,7 +175,10 @@ def _get_config(type):
         config['toc'] = 0
         config['css-sugar'] = 1
 
-        # Custom css + mathjax
+        # Fix encoding for export opened in firefox
+        config['postproc'].append([r'<head>', '<head>' + CHARSET_UTF8])
+
+        # Custom css
         config['postproc'].append([r'</head>', CSS + '</head>'])
 
         # mathjax
