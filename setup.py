@@ -37,10 +37,16 @@ from os.path import join
 from distutils.core import setup, Extension
 import distutils.command.install_data
 
-
 if sys.platform == 'win32':
     print 'running on win32. Importing py2exe'
     import py2exe
+    
+    # Delete old files to force updating
+    for dir in ['i18n', 'files', 'images']:
+        path = os.path.join('dist', dir)
+        if os.path.exists(path):
+            print 'Removing', path
+            shutil.rmtree(path)
 
     # We want to include some dlls that py2exe excludes
     origIsSystemDLL = py2exe.build_exe.isSystemDLL

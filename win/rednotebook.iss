@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
-AppVerName=RedNotebook 1.1.8
+AppVerName=RedNotebook 1.3
 ; AppPublisher=Jendrik Seipp
 AppPublisherURL=http://rednotebook.sourceforge.net
 AppSupportURL=http://rednotebook.sourceforge.net
@@ -16,7 +16,7 @@ DefaultDirName={pf}\RedNotebook
 DefaultGroupName=RedNotebook
 AllowNoIcons=yes
 OutputDir=userdocs:\My Dropbox\Public
-OutputBaseFilename=rednotebook-1.1.8b1
+OutputBaseFilename=rednotebook-1.3-beta1
 SetupIconFile=rednotebook.ico
 Compression=lzma2
 SolidCompression=yes
@@ -71,22 +71,22 @@ name: "startupicon"; Description: "Run RedNotebook on Startup"; GroupDescription
 [Files]
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "..\dist\*"; Excludes: "*.log,*.a,*.def,*.h,*.lib,*.pc,*.exe,Thumbs.db,*.aff,*.dic"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "..\dist\redNotebook.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\dist\rednotebook.exe"; DestDir: "{app}"; Flags: ignoreversion
 ;Source: "portable.cfg"; DestDir: "{app}\files"; DestName: "default.cfg"; Flags: ignoreversion; Components: portablecfgfile
 
 [Icons]
-Name: "{group}\RedNotebook"; Filename: "{app}\redNotebook.exe";
+Name: "{group}\RedNotebook"; Filename: "{app}\rednotebook.exe";
 ;Components: everything;
 Name: "{group}\{cm:UninstallProgram,RedNotebook}"; Filename: "{uninstallexe}";
 ;Components: everything;
-Name: "{commondesktop}\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: quicklaunchicon
+Name: "{commondesktop}\RedNotebook"; Filename: "{app}\rednotebook.exe"; Tasks: desktopicon
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RedNotebook"; Filename: "{app}\rednotebook.exe"; Tasks: quicklaunchicon
 
 ;Startup
-Name: "{userstartup}\RedNotebook"; Filename: "{app}\redNotebook.exe"; Tasks: startupicon; workingdir: "{app}"
+Name: "{userstartup}\RedNotebook"; Filename: "{app}\rednotebook.exe"; Tasks: startupicon; workingdir: "{app}"
 
 
 [Run]
-Filename: "{app}\redNotebook.exe"; Description: "{cm:LaunchProgram,RedNotebook}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\rednotebook.exe"; Description: "{cm:LaunchProgram,RedNotebook}"; Flags: nowait postinstall skipifsilent
 
 

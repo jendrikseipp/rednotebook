@@ -6,6 +6,6 @@ python setup.py py2exe
 cd dist
 
 REM try the exe
-redNotebook.exe
+rednotebook.exe
 
 pause
