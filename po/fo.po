@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2011-09-30 19:37+0000\n"
+"PO-Revision-Date: 2012-01-20 19:41+0000\n"
 "Last-Translator: Gunleif Joensen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-20 04:39+0000\n"
+"X-Launchpad-Export-Date: 2012-01-21 05:42+0000\n"
 "X-Generator: Launchpad (build 14700)\n"
 
 #: ../rednotebook/info.py:79
@@ -32,19 +32,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Filmir"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Arbeiði"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Frítíð"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Skjalfesting"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
@@ -52,31 +52,31 @@ msgstr ""
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Liðugt"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "Minnst til mjólk"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Vaska upp"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Kanna t-post"
 
 #: ../rednotebook/info.py:91
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "Monty Python and the Holy Grail"
 
 #: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Liðfundur"
 
 #: ../rednotebook/info.py:95
 msgid "Hello!"
-msgstr ""
+msgstr "Halló!"
 
 #: ../rednotebook/info.py:96
 msgid ""
@@ -220,7 +220,7 @@ msgstr "Innleiðing"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "_Dagbók"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
@@ -240,7 +240,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr ""
+msgstr "Flyt inn"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"

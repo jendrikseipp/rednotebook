@@ -2,20 +2,21 @@
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the rednotebook package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
-#
+# Oleg Koptev <koptev.oleg@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-01-19 17:52+0000\n"
-"Last-Translator: MyOtheHedgeFox <Unknown>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"PO-Revision-Date: 2012-01-20 07:27+0000\n"
+"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
+"Language-Team: Russian (gnome-cyr@gnome.org)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-20 04:40+0000\n"
+"X-Launchpad-Export-Date: 2012-01-21 05:42+0000\n"
 "X-Generator: Launchpad (build 14700)\n"
+"Language: cs\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -56,7 +57,7 @@ msgstr "Сделано"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr "Вспомнить про молоко"
+msgstr "Не забыть про молоко"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
@@ -93,7 +94,7 @@ msgid ""
 "\"Contents\"."
 msgstr ""
 "Сами пробные тексты вместе с дополнительной документацией можно найти в "
-"пункте меню \"Помощь\" -> \"Содержание\"."
+"пункте меню «Помощь» -> «Содержание»."
 
 #: ../rednotebook/info.py:100
 msgid "The interface is divided into three parts:"
@@ -143,7 +144,7 @@ msgstr ""
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:115
 msgid "Click on Preview above to see the difference."
-msgstr "Нажмите на кнопку \"Предпросмотр\" вверху, чтобы увидеть разницу."
+msgstr "Нажмите на кнопку «Предпросмотр» вверху, чтобы увидеть разницу."
 
 #: ../rednotebook/info.py:118
 msgid ""
@@ -166,7 +167,7 @@ msgid ""
 "when you exit the program."
 msgstr ""
 "Всё, что вы добавляете в дневник, автоматически сохраняется каждые несколько "
-"минут и -- на всякий случай -- при выходе из программы."
+"минут и — на всякий случай — при выходе из программы."
 
 #: ../rednotebook/info.py:132
 msgid "To avoid data loss you should backup your journal regularly."
@@ -179,11 +180,11 @@ msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "Чтобы сохранить все ваши записи в одном zip-архиве, воспользуйтесь пунктом "
-"\"Резервное копирование\" в меню \"Дневник\"."
+"«Резервное копирование» в меню «Дневник»."
 
 #: ../rednotebook/info.py:134
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "В разделе \"Дневник\" также можно найти пункт \"Экспорт\"."
+msgstr "В разделе «Дневник» также можно найти пункт «Экспорт»."
 
 #: ../rednotebook/info.py:135
 msgid ""
@@ -258,7 +259,7 @@ msgstr "Открыть мастер импорта"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
 msgid "Export"
-msgstr "Экспорт"
+msgstr "Экспортировать"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
@@ -283,7 +284,7 @@ msgstr "Показать статистику по дневнику"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Закрыть RedNotebook. Иконка в трее тоже пропадёт"
+msgstr "Закрыть RedNotebook. Значок в трее тоже пропадёт."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
@@ -394,15 +395,15 @@ msgstr "Пример:"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Close to system tray"
-msgstr "Сворачивать в системный трей"
+msgstr "Сворачивать в трей"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "RedNotebook будет сворачиваться в системный трей при закрытии"
+msgstr "RedNotebook будет сворачиваться в трей при закрытии"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Underline misspelled words"
-msgstr "Подчеркивать неправильно написанные слова"
+msgstr "Подчёркивать неправильно написанные слова"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires gtkspell."
@@ -630,7 +631,7 @@ msgstr "MTV, флуд, спам, куку, Вася, Катя"
 #: ../rednotebook/gui/clouds.py:225
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr "Не показывать \"%s\" в облаке меток"
+msgstr "Не показывать «%s» в облаке меток"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
@@ -703,11 +704,11 @@ msgstr "Вот что вы выбрали:"
 
 #: ../rednotebook/gui/exports.py:311
 msgid "Export Assistant"
-msgstr "Мастер экспорта"
+msgstr "Мастер экспортирования"
 
 #: ../rednotebook/gui/exports.py:313
 msgid "Welcome to the Export Assistant."
-msgstr "Добро пожаловать в Мастер Экспорта."
+msgstr "Добро пожаловать в Мастер экспортирования!"
 
 #: ../rednotebook/gui/exports.py:314
 msgid "This wizard will help you to export your journal to various formats."
@@ -743,11 +744,11 @@ msgstr "Итого"
 
 #: ../rednotebook/gui/exports.py:394
 msgid "Start date"
-msgstr "С..."
+msgstr "С…"
 
 #: ../rednotebook/gui/exports.py:395
 msgid "End date"
-msgstr "По..."
+msgstr "По…"
 
 #: ../rednotebook/gui/exports.py:397
 msgid "Export text"
@@ -870,7 +871,7 @@ msgstr ""
 "**Участники:**\n"
 "\n"
 "**Маршрут:**\n"
-"Сначала мы были в Ааааа, затем направились в Ббббб...\n"
+"Сначала мы были в пункте А, затем направились в пункт Б…\n"
 "\n"
 "**Фотографии:** [Каталог с фото \"\"/путь/к/фотографиям/\"\"]\n"
 
@@ -962,7 +963,7 @@ msgstr "У вас установлена версия <b>%s</b>."
 #: ../rednotebook/util/utils.py:174
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr "Самая новая версия -- <b>%s</b>."
+msgstr "Самая новая версия — <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:175
 msgid "Do you want to visit the RedNotebook homepage?"
@@ -1050,7 +1051,7 @@ msgstr "<b>Общее</b>"
 
 #: tmp/main_window.glade.h:3
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr "<b>Ссылка (скажем, http://example.com)</b>"
+msgstr "<b>Ссылка (например, http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:4
 msgid "<b>Link name (optional)</b>"
@@ -1103,7 +1104,7 @@ msgstr "Следующий день (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:17
 msgid "Go to previous day (Ctrl+PageUp)"
-msgstr "Предыдущимй день (Ctrl+PageUp)"
+msgstr "Предыдущий день (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:18
 msgid "Insert Link"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2011-10-07 11:09+0000\n"
+"PO-Revision-Date: 2012-01-21 02:41+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-20 04:40+0000\n"
+"X-Launchpad-Export-Date: 2012-01-21 05:42+0000\n"
 "X-Generator: Launchpad (build 14700)\n"
 
 #: ../rednotebook/info.py:79
@@ -72,7 +72,7 @@ msgstr "Monty Python dan Holy Grail"
 
 #: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Perjumpaan pasukan"
 
 #: ../rednotebook/info.py:95
 msgid "Hello!"
@@ -106,7 +106,7 @@ msgstr "Kiri"
 
 #: ../rednotebook/info.py:103
 msgid "Navigation and search"
-msgstr ""
+msgstr "Pandu arah dan gelintar"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:105
@@ -124,7 +124,7 @@ msgstr "Kanan"
 
 #: ../rednotebook/info.py:109
 msgid "Tags for this day"
-msgstr ""
+msgstr "Tag untuk hari ini"
 
 #. ## Translators: noun
 #. ## Verb
@@ -188,6 +188,8 @@ msgstr "Dalam menu \"Jurnal\" anda akan jumpa butang \"Eksport\"."
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
+"Klik pada \"Eksport\" dan eksport diari anda ke Teks Biasa, PDF, HTML atau "
+"Latex."
 
 #: ../rednotebook/info.py:138
 msgid "If you encounter any errors, please drop me a note so I can fix them."
@@ -285,11 +287,11 @@ msgstr "_Edit"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Buat asal teks atau sunting tag"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "Buat semula teks atau sunting tag"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -345,7 +347,7 @@ msgstr "Entri kosong tidak dibenarkan"
 
 #: ../rednotebook/gui/categories.py:147
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Nama tag kosong tidak dibenarkan"
 
 #: ../rednotebook/gui/categories.py:401
 msgid "Change this text"
@@ -481,7 +483,7 @@ msgstr "Jurnal default telah dibuka"
 
 #: ../rednotebook/gui/main_window.py:653
 msgid "No text or tag has been selected."
-msgstr ""
+msgstr "Tiada teks atau tag telah dipilih."
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:658
@@ -511,7 +513,7 @@ msgstr "Format"
 
 #: ../rednotebook/gui/main_window.py:681
 msgid "Format the selected text or tag"
-msgstr ""
+msgstr "Format teks atau tag terpilih"
 
 #: ../rednotebook/gui/main_window.py:730
 msgid "First Item"
@@ -657,23 +659,23 @@ msgstr "Eksport teks"
 
 #: ../rednotebook/gui/exports.py:130
 msgid "Export all tags"
-msgstr ""
+msgstr "Eksport semua tag"
 
 #: ../rednotebook/gui/exports.py:131
 msgid "Do not export tags"
-msgstr ""
+msgstr "Jangan eksport tag"
 
 #: ../rednotebook/gui/exports.py:133
 msgid "Export only the selected tags"
-msgstr ""
+msgstr "Hanya eksport tag terpilih"
 
 #: ../rednotebook/gui/exports.py:144
 msgid "Available tags"
-msgstr ""
+msgstr "Tag tersedia"
 
 #: ../rednotebook/gui/exports.py:152 ../rednotebook/gui/exports.py:398
 msgid "Selected tags"
-msgstr ""
+msgstr "Tag terpilih"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Select"
@@ -686,6 +688,8 @@ msgstr "Nyahpilih"
 #: ../rednotebook/gui/exports.py:262
 msgid "If export text is not selected, you have to select at least one tag."
 msgstr ""
+"Jika teks eksport tidak dipilih, anda mesti pilih sekurang-kurangnya satu "
+"tag."
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
@@ -1060,15 +1064,15 @@ msgstr "<b>Hari Pilihan</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b> (optional)"
-msgstr ""
+msgstr "<b>Tulis masukan</b> (pilihan)"
 
 #: tmp/main_window.glade.h:9
 msgid "Add Tag"
-msgstr ""
+msgstr "Tambah Tag"
 
 #: tmp/main_window.glade.h:10
 msgid "Add a tag or a category entry"
-msgstr ""
+msgstr "Tambah tag atau masukan kategori"
 
 #: tmp/main_window.glade.h:11
 msgid "Edit"
@@ -1089,11 +1093,11 @@ msgstr "Umum"
 
 #: tmp/main_window.glade.h:16
 msgid "Go to next day (Ctrl+PageDown)"
-msgstr ""
+msgstr "Pergi ke hari berikutnya (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:17
 msgid "Go to previous day (Ctrl+PageUp)"
-msgstr ""
+msgstr "Pergi ke hari terdahulu (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:18
 msgid "Insert Link"
@@ -1150,4 +1154,5 @@ msgstr "Hari ini"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Hafiz, Muhammad https://launchpad.net/~muhammad-hafiz"
+"  Hafiz, Muhammad https://launchpad.net/~muhammad-hafiz\n"
+"  abuyop https://launchpad.net/~abuyop"
