@@ -2,6 +2,7 @@
 set -e
 
 cd ../
+py.test
 rm -rf dist/
 
 # Force recalculation of files so that none is missed
