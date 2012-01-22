@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-01-19 05:55+0000\n"
-"Last-Translator: TIℳ㋡ <Unknown>\n"
+"PO-Revision-Date: 2012-01-21 11:17+0000\n"
+"Last-Translator: Burak Bayram <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-01-20 04:40+0000\n"
+"X-Launchpad-Export-Date: 2012-01-22 05:31+0000\n"
 "X-Generator: Launchpad (build 14700)\n"
 
 #: ../rednotebook/info.py:79
@@ -60,7 +60,7 @@ msgstr "Milch einkaufen"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr "Abwasch erledigen"
+msgstr "das Geschirr abwaschen"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
@@ -1167,4 +1167,5 @@ msgstr ""
 "  Daniel Winzen https://launchpad.net/~q-d\n"
 "  Mario Blättermann https://launchpad.net/~mario.blaettermann\n"
 "  Matthias Loidolt https://launchpad.net/~kedapperdrake\n"
+"  TIℳ㋡ https://launchpad.net/~tim.h.s\n"
 "  rubinstein https://launchpad.net/~rubinstein"
