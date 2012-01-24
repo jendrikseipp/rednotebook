@@ -4,6 +4,7 @@
 - Move items from TODO to CHANGELOG
 - bzr update
 - Check if program is running correctly
+- bzr commit -m "Version x.y.z"
 - cd dev/
 - ./build-tarball.sh
 - ./upload-file.sh ../rednotebook-x.y.z.tar.gz

@@ -9,6 +9,3 @@ rm -rf dist/
 rm MANIFEST
 
 python setup.py sdist
-
-#Move files
-mv -f dist/rednotebook-*.tar.gz .
