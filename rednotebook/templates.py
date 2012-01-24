@@ -94,10 +94,6 @@ All templates must reside in the directory "%s".
 
 The template button gives you the options to create a new template or to \
 visit the templates directory.
-
-If you come up with templates that could be useful for other people as well, \
-I would appreciate if you sent me your template file, so others can benefit \
-from it.
 '''
 
 meeting = _('''\

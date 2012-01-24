@@ -24,6 +24,7 @@ O Scroll to searched text when a result is clicked
 O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
+O Divide the search results into results for text entries and results for tags?
 
 
 O Use Zeitgeist for automatic category entries
