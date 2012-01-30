@@ -115,7 +115,7 @@ class Config(dict):
             if '=' in key_value_pair:
                 try:
                     # Delete whitespace around =
-                    pair = key_value_pair.split('=')
+                    pair = key_value_pair.partition('=')[::2]
                     key, value = map(unicode.strip, pair)
 
                     # Do not add obsolete keys -> they will not be rewritten
