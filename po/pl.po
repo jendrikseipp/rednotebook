@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-02-05 20:58+0000\n"
+"PO-Revision-Date: 2012-02-06 07:11+0000\n"
 "Last-Translator: Michał Maternik <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-06 04:48+0000\n"
+"X-Launchpad-Export-Date: 2012-02-07 04:54+0000\n"
 "X-Generator: Launchpad (build 14747)\n"
 
 #: ../rednotebook/info.py:79
@@ -652,7 +652,7 @@ msgstr "Format daty"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Pozostaw puste by pominąć daty w eksporcie"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
@@ -689,6 +689,8 @@ msgstr "Usuń zaznaczenie"
 #: ../rednotebook/gui/exports.py:262
 msgid "If export text is not selected, you have to select at least one tag."
 msgstr ""
+"Jeśli nie wybierasz eksportowania tekstu, musisz wybrać przynajmniej jeden "
+"znacznik."
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
