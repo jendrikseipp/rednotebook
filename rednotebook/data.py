@@ -183,16 +183,18 @@ class Day(object):
         return len(self.get_words(with_special_chars=True))
 
 
-    def search(self, text, categories_only=False):
+    def search(self, text, tags_only=False):
+        if tags_only:
+            return str(self), self.search_in_tags(text)
+
         results = []
-        if not categories_only:
-            # Search in date
-            if text in str(self):
-                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-                return results
-            text_result = self.search_in_text(text)
-            if text_result:
-                results.append(text_result)
+        # Search in date
+        if text in str(self):
+            results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+            return results
+        text_result = self.search_in_text(text)
+        if text_result:
+            results.append(text_result)
         results.extend(self.search_in_categories(text))
         return str(self), results
 
@@ -225,6 +227,17 @@ class Day(object):
                                    if text.upper() in entry.upper())
             elif text.upper() in category.upper():
                 results.append(category)
+        return results
+
+    def search_in_tags(self, text):
+        """Only search in tag names not in entries."""
+        results = []
+        for category, content in self.get_category_content_pairs().items():
+            if text.upper() in category.upper():
+                if content:
+                    results.extend(content)
+                else:
+                    results.append(category)
         return results
 
 

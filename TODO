@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.4
 X Include tags consisting of multiple words in the cloud
+X When searching for a tag, do not search in subtags
 X Fix: Correctly parse configuration values containing ='s
 
 1.x
