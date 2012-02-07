@@ -10,6 +10,11 @@
 
 set -e
 
+# Change into RedNotebook directory --------------------------------------------
+
+BASEDIR="$(dirname "$0")"
+cd $BASEDIR
+
 # Install dependencies ---------------------------------------------------------
 
 PKGS_DEB="python-gtk2 python-gtkspell python-yaml python-webkit"

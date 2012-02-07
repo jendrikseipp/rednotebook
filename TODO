@@ -8,8 +8,11 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.4
+X Normal searches search everywhere (text, tags, subtags), if you prepend a # to
+  your search, only tags (and neither text nor subtags) will be searched.
 X Include tags consisting of multiple words in the cloud
 X When searching for a tag, do not search in subtags
+X Always include all tags regardless of their frequency in the cloud
 X Fix: Correctly parse configuration values containing ='s
 
 1.x
@@ -142,7 +145,7 @@ O It would be great to be able to change the category of an item without having 
 O Field or shortcut to enter a date and takes you there.
 O Check if Ctrl-Z still works or make sure we have a buffer for each day.
 O Add numberOfCloudWords config option. A value of 0 means, only tags are displayed.
-
+O Search for a combination of tags
 
 
 
