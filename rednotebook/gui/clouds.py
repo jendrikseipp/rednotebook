@@ -19,6 +19,8 @@
 
 from __future__ import division
 
+from collections import Counter
+import itertools
 import logging
 import re
 import sys
@@ -55,28 +57,21 @@ def get_regex(word):
         return re.compile('^$')
 
 
-def get_cloud_html(word_count_dict, categories, ignores, includes):
-    words = word_count_dict.items()
-
+def get_cloud_html(word_count_dict, categories_counter, ignores, includes):
     # filter short words
-    words = [(word, freq) for (word, freq) in words
-             if len(word) > 4 or word in categories or
-             any(pattern.match(word) for pattern in includes)]
-
-    # filter words in ignore_list
-    words = [(word, freq) for (word, freq) in words
-             if not any(pattern.match(word) for pattern in ignores)]
+    words = [(word, freq) for (word, freq) in word_count_dict.items()
+             if (len(word) > 4 or
+             any(pattern.match(word) for pattern in includes)) and not
+             # filter words in ignore_list
+             any(pattern.match(word) for pattern in ignores)]
 
     def frequency((word, freq)):
-        # We want the categories to be included no matter their frequency
-        if word in categories:
-            return sys.maxint
         return freq
 
     # only take the longest words. If there are less words than n,
     # len(words) words are returned
     words.sort(key=frequency)
-    cloud_words = words[-CLOUD_WORDS:]
+    cloud_words = words[-CLOUD_WORDS:] + categories_counter.items()
 
     if not cloud_words:
         return [], ''
@@ -101,7 +96,7 @@ def get_cloud_html(word_count_dict, categories, ignores, includes):
         font_factor = (count - min_count) / delta_count
         font_size = int(min_font_size + font_factor * font_delta)
 
-        if word in categories:
+        if word in categories_counter:
             word = '<u><b>%s</b></u>' % word
 
         # Add some whitespace to separate words
@@ -160,13 +155,17 @@ class Cloud(HtmlView):
 
         gobject.idle_add(self._update)
 
+    def get_categories_counter(self):
+        return Counter(itertools.chain.from_iterable(
+                [cat.lower() for cat in day.categories] for day in self.journal.days))
+
     def _update(self):
         logging.debug('Update the cloud')
         self.journal.save_old_day()
 
         word_count_dict = self.journal.get_word_count_dict()
         self.cloud_words, html = get_cloud_html(word_count_dict,
-            self.journal.categories, self.regexes_ignore, self.regexes_include)
+            self.get_categories_counter(), self.regexes_ignore, self.regexes_include)
 
         self.load_html(html)
         self.last_hovered_word = None
