@@ -7,6 +7,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.4
+X Include tags consisting of multiple words in the cloud
+X Fix: Correctly parse configuration values containing ='s
+
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables

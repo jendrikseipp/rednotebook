@@ -17,3 +17,5 @@
 - Announce on twitter
 - Send mail to rednotebook and python-announce lists
 - Build and release windows version
+- update debian/changelog
+- request stable recipe build
