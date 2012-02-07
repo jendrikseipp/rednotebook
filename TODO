@@ -141,6 +141,7 @@ O It would be great to be able to change the category of an item without having 
   it and make a new one. Maybe with a rightclick or drag and drop.
 O Field or shortcut to enter a date and takes you there.
 O Check if Ctrl-Z still works or make sure we have a buffer for each day.
+O Add numberOfCloudWords config option. A value of 0 means, only tags are displayed.
 
 
 

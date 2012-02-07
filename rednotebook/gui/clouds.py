@@ -32,7 +32,7 @@ from rednotebook.gui.browser import HtmlView
 from rednotebook.util import unicode
 
 
-CLOUD_WORDS = 50
+CLOUD_WORDS = 30
 
 CLOUD_CSS = """\
 <style type="text/css">
@@ -92,17 +92,20 @@ def get_cloud_html(word_count_dict, categories_counter, ignores, includes):
 
     html_elements = []
 
+    def format_word(word):
+        if word not in categories_counter:
+            return word
+        return '<u><b>%s</b></u>' % word.lstrip(u'#')
+
     for index, (word, count) in enumerate(cloud_words):
         font_factor = (count - min_count) / delta_count
         font_size = int(min_font_size + font_factor * font_delta)
 
-        if word in categories_counter:
-            word = '<u><b>%s</b></u>' % word
 
         # Add some whitespace to separate words
         html_elements.append('<a href="search/%s">'
                              '<span style="font-size:%spx">%s</span></a>&#160;'
-                             % (index, font_size, word))
+                             % (index, font_size, format_word(word)))
 
     html_body = ''.join(['<body>', '\n'.join(html_elements), '\n</body>\n'])
     html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
@@ -172,6 +175,12 @@ class Cloud(HtmlView):
 
         logging.debug('Cloud updated')
 
+    def _get_search_text(self, uri):
+        # uri has the form "something/somewhere/search/search_index"
+        search_index = int(uri.split('/')[-1])
+        search_text, count = self.cloud_words[search_index]
+        return search_text
+
     def on_navigate(self, webview, frame, request):
         """
         Called when user clicks on a cloud word
@@ -187,10 +196,7 @@ class Cloud(HtmlView):
 
         # uri has the form "something/somewhere/search/search_index"
         if 'search' in uri:
-            # search_index is the part after last slash
-            search_index = int(uri.split('/')[-1])
-            search_text, count = self.cloud_words[search_index]
-
+            search_text = self._get_search_text(uri)
             self.journal.frame.search_box.set_active_text(search_text)
 
             # returning True here stops loading the document
@@ -209,9 +215,7 @@ class Cloud(HtmlView):
         to the context menu when the user right-clicks the next time
         """
         if uri:
-            search_index = int(uri.split('/')[-1])
-            search_text, count = self.cloud_words[search_index]
-            self.last_hovered_word = search_text
+            self.last_hovered_word = self._get_search_text(uri)
 
     def on_populate_popup(self, webview, menu):
         """Called when the cloud's popup menu is created."""
