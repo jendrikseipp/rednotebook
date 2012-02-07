@@ -88,7 +88,7 @@ def get_cloud_html(word_count_dict, categories_counter, ignores, includes):
     font_delta = max_font_size - min_font_size
 
     # sort words with unicode sort function
-    cloud_words.sort(key=lambda (word, count): unicode.coll(word))
+    cloud_words.sort(key=lambda (word, count): unicode.coll(word.lstrip(u'#')))
 
     html_elements = []
 
@@ -157,7 +157,7 @@ class Cloud(HtmlView):
 
     def get_categories_counter(self):
         return Counter(itertools.chain.from_iterable(
-                [cat.lower() for cat in day.categories] for day in self.journal.days))
+                ['#' + cat.lower() for cat in day.categories] for day in self.journal.days))
 
     def _update(self):
         logging.debug('Update the cloud')

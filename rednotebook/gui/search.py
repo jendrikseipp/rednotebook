@@ -55,13 +55,16 @@ class SearchComboBox(CustomComboBoxEntry):
         self.search(search_text)
 
     def search(self, search_text):
+        categories_only = search_text.startswith(u'#')
+        search_text = search_text.lstrip('#')
+
         # Tell the webview which text to highlight after the html is loaded
         self.main_window.html_editor.search_text = search_text
 
         # Highlight all occurences in the current day's text
         self.main_window.highlight_text(search_text)
 
-        self.main_window.search_tree_view.update_data(search_text)
+        self.main_window.search_tree_view.update_data(search_text, categories_only)
 
 
 class SearchTreeView(gtk.TreeView):
@@ -106,7 +109,7 @@ class SearchTreeView(gtk.TreeView):
 
         self.connect('cursor_changed', self.on_cursor_changed)
 
-    def update_data(self, search_text=''):
+    def update_data(self, search_text='', categories_only=False):
         self.tree_store.clear()
 
         if not search_text:
@@ -119,7 +122,7 @@ class SearchTreeView(gtk.TreeView):
         # Save the search text for highlighting
         self.searched_text = search_text
 
-        for date_string, entries in self.journal.search(search_text):
+        for date_string, entries in self.journal.search(search_text, categories_only):
             for entry in entries:
                 entry = escape(entry)
                 entry = entry.replace('STARTBOLD', '<b>').replace('ENDBOLD', '</b>')

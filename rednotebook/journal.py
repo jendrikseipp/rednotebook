@@ -511,10 +511,10 @@ class Journal:
         return sorted(entries)
 
 
-    def search(self, text):
+    def search(self, text, categories_only=False):
         results = []
         for day in reversed(self.days):
-            results.append(day.search(text))
+            results.append(day.search(text, categories_only=categories_only))
         return results
 
 

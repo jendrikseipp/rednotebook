@@ -183,15 +183,16 @@ class Day(object):
         return len(self.get_words(with_special_chars=True))
 
 
-    def search(self, text):
+    def search(self, text, categories_only=False):
         results = []
-        # Search in date
-        if text in str(self):
-            results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-            return results
-        text_result = self.search_in_text(text)
-        if text_result:
-            results.append(text_result)
+        if not categories_only:
+            # Search in date
+            if text in str(self):
+                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+                return results
+            text_result = self.search_in_text(text)
+            if text_result:
+                results.append(text_result)
         results.extend(self.search_in_categories(text))
         return str(self), results
 
