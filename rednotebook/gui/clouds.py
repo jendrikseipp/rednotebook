@@ -19,7 +19,7 @@
 
 from __future__ import division
 
-from collections import Counter
+from collections import defaultdict
 import itertools
 import logging
 import re
@@ -159,8 +159,11 @@ class Cloud(HtmlView):
         gobject.idle_add(self._update)
 
     def get_categories_counter(self):
-        return Counter(itertools.chain.from_iterable(
-                ['#' + cat.lower() for cat in day.categories] for day in self.journal.days))
+        counter = defaultdict(int)
+        for day in self.journal.days:
+            for cat in day.categories:
+                counter['#' + cat.lower()] += 1
+        return counter
 
     def _update(self):
         logging.debug('Update the cloud')
