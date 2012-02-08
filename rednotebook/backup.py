@@ -129,5 +129,5 @@ class Archiver(object):
         backup_dialog.hide()
 
         if response == gtk.RESPONSE_OK:
-            path = backup_dialog.get_filename()
+            path = backup_dialog.get_filename().decode('utf-8')
             return path

@@ -318,7 +318,7 @@ class PathChooserPage(AssistantPage):
 
 
     def get_selected_path(self):
-        self.last_path = self.chooser.get_filename()
+        self.last_path = self.chooser.get_filename().decode('utf-8')
         return self.last_path
 
 

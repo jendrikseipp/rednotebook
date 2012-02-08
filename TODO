@@ -14,6 +14,7 @@ X Include tags consisting of multiple words in the cloud
 X When searching for a tag, do not search in subtags
 X Always include all tags regardless of their frequency in the cloud
 X Fix: Correctly parse configuration values containing ='s
+X Fix: Paths returned from file and folder choosers must be converted to unicode
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])

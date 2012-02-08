@@ -336,7 +336,7 @@ class Journal:
 
         if something_saved:
             self.show_message(_('The content has been saved to %s') % self.dirs.data_dir, error=False)
-            logging.info('The content has been saved to %s' % self.dirs.data_dir)
+            logging.info('The content has been saved to %r' % self.dirs.data_dir)
         else:
             self.show_message(_('Nothing to save'), error=False)
 
@@ -358,7 +358,7 @@ class Journal:
         # Password Protection
         #password = self.config.read('password', '')
 
-        logging.info('Opening journal at %s' % data_dir)
+        logging.info('Opening journal at %r' % data_dir)
 
         if not os.path.exists(data_dir):
             logging.warning('The data dir %s does not exist. Select a different dir.'

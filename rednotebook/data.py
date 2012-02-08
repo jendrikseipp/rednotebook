@@ -229,6 +229,7 @@ class Day(object):
                 results.append(category)
         return results
 
+
     def search_in_tags(self, text):
         """Only search in tag names not in entries."""
         results = []

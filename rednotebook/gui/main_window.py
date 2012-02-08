@@ -470,7 +470,7 @@ class MainWindow(object):
         dir_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            dir = dir_chooser.get_current_folder()
+            dir = dir_chooser.get_current_folder().decode('utf-8')
 
             if type == 'saveas':
                 self.journal.dirs.data_dir = dir
@@ -848,8 +848,8 @@ class MainWindow(object):
         picture_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            dirs.last_pic_dir = picture_chooser.get_current_folder()
-            base, ext = os.path.splitext(picture_chooser.get_filename())
+            dirs.last_pic_dir = picture_chooser.get_current_folder().decode('utf-8')
+            base, ext = os.path.splitext(picture_chooser.get_filename().decode('utf-8'))
 
             # On windows firefox accepts absolute filenames only
             # with the file:/// prefix
@@ -866,8 +866,8 @@ class MainWindow(object):
         file_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            dirs.last_file_dir = file_chooser.get_current_folder()
-            filename = file_chooser.get_filename()
+            dirs.last_file_dir = file_chooser.get_current_folder().decode('utf-8')
+            filename = file_chooser.get_filename().decode('utf-8')
             filename = filesystem.get_local_url(filename)
             head, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s
