@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-02-17 07:51+0000\n"
+"PO-Revision-Date: 2012-02-19 17:15+0000\n"
 "Last-Translator: Rikard Edgren <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-18 05:00+0000\n"
-"X-Generator: Launchpad (build 14814)\n"
+"X-Launchpad-Export-Date: 2012-02-20 05:42+0000\n"
+"X-Generator: Launchpad (build 14833)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -64,7 +64,7 @@ msgstr "Disken!"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr "Kontrollera e-post"
+msgstr "Kolla e-post"
 
 #: ../rednotebook/info.py:91
 msgid "Monty Python and the Holy Grail"
@@ -167,17 +167,17 @@ msgstr ""
 
 #: ../rednotebook/info.py:132
 msgid "To avoid data loss you should backup your journal regularly."
-msgstr "Säkerhetskopiera ofta för att slippa dataförluster"
+msgstr "Säkerhetskopiera ofta för att slippa dataförluster."
 
 #: ../rednotebook/info.py:133
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
-"\"Säkerhetskopiera\" i \"Journal\"-menyn sparar allt du skrivit i en zip-fil"
+"\"Säkerhetskopiera\" i \"Journal\"-menyn sparar allt du skrivit i en zip-fil."
 
 #: ../rednotebook/info.py:134
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "I \"Journal\"-menyn hittar du också \"Exportera\""
+msgstr "I \"Journal\"-menyn hittar du också \"Exportera\"."
 
 #: ../rednotebook/info.py:135
 msgid ""
@@ -192,7 +192,7 @@ msgstr "Om du upptäcker några fel så meddela mig så att jag kan fixa dem."
 
 #: ../rednotebook/info.py:139
 msgid "Any feedback is appreciated."
-msgstr "All feedback är välkommen"
+msgstr "All feedback är välkommen."
 
 #: ../rednotebook/info.py:142
 msgid "Have a nice day!"
@@ -208,7 +208,7 @@ msgstr "Använd en cool dagboks-app"
 
 #: ../rednotebook/info.py:168
 msgid "Monty Python's Life of Brian"
-msgstr "Monty Pythons Life och Brian"
+msgstr "Monty Pythons Life of Brian"
 
 #: ../rednotebook/info.py:659 ../rednotebook/gui/menu.py:248
 msgid "RedNotebook Documentation"
@@ -260,7 +260,7 @@ msgstr "Säkerhetskopiera"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr "Spara all data i ett zip arkiv"
+msgstr "Spara all data i ett zip-arkiv"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:30
 msgid "Statistics"
@@ -272,7 +272,8 @@ msgstr "Visa statistik om journalen"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Stäng ned RedNotebook. Den kommer inte att skickas till systemfältet"
+msgstr ""
+"Stäng ned RedNotebook. Den kommer inte att skickas till systemfältet."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
@@ -584,7 +585,7 @@ msgstr "Datum/Tid"
 
 #: ../rednotebook/gui/main_window.py:783
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr "Infoga aktuellt datum och tid (redigera format i Inställningar)"
+msgstr "Infoga aktuellt datum och tid (redigera format i inställningar)"
 
 #: ../rednotebook/gui/main_window.py:785
 msgid "Line Break"
@@ -600,7 +601,7 @@ msgstr "Infoga"
 
 #: ../rednotebook/gui/main_window.py:813
 msgid "Insert images, files, links and other content"
-msgstr "Infoga bilder, filer, länkar och annat innehållI"
+msgstr "Infoga bilder, filer, länkar och annat innehåll"
 
 #: ../rednotebook/gui/main_window.py:896
 msgid "No link location has been entered"
@@ -608,7 +609,7 @@ msgstr "Inget mål för länken har angetts"
 
 #: ../rednotebook/gui/clouds.py:134
 msgid "filter, these, comma, separated, words"
-msgstr "Filtrera, dessa, komma, separerade, ord"
+msgstr "filtrera, dessa, komma, separerade, ord"
 
 #: ../rednotebook/gui/clouds.py:139
 msgid "mtv, spam, work, job, play"
@@ -1026,7 +1027,7 @@ msgstr "Inget att spara"
 
 #: ../rednotebook/journal.py:373
 msgid "The selected folder is empty. A new journal has been created."
-msgstr "Vald mapp är tom. En ny journal har skapats"
+msgstr "Vald mapp är tom. En ny journal har skapats."
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:2
@@ -1055,7 +1056,7 @@ msgstr "<b>Vald dag</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b> (optional)"
-msgstr "<b>Skriv innehåll</b>"
+msgstr "<b>Skriv innehåll</b> (valfritt)"
 
 #: tmp/main_window.glade.h:9
 msgid "Add Tag"
