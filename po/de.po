@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-02-04 11:36+0000\n"
-"Last-Translator: TIℳ㋡ <Unknown>\n"
+"PO-Revision-Date: 2012-02-20 10:18+0000\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-05 04:50+0000\n"
-"X-Generator: Launchpad (build 14738)\n"
+"X-Launchpad-Export-Date: 2012-02-21 05:56+0000\n"
+"X-Generator: Launchpad (build 14838)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -24,7 +24,7 @@ msgstr "Ideen"
 #: ../rednotebook/info.py:80 ../rednotebook/gui/categories.py:51
 #: ../rednotebook/util/markup.py:100
 msgid "Tags"
-msgstr "Metadaten"
+msgstr "Markierungen"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
@@ -72,7 +72,7 @@ msgstr "Monty Python und der Heilige Gral"
 
 #: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Gruppenbesprechung"
 
 #: ../rednotebook/info.py:95
 msgid "Hello!"
@@ -124,7 +124,7 @@ msgstr "Rechts"
 
 #: ../rednotebook/info.py:109
 msgid "Tags for this day"
-msgstr ""
+msgstr "Markierungen für diesen Tag"
 
 #. ## Translators: noun
 #. ## Verb
@@ -289,11 +289,11 @@ msgstr "_Bearbeiten"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Text- oder Markierungsänderung rückgängig machen"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "Text- oder Markierungsänderung wiederherstellen"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -305,11 +305,11 @@ msgstr "Inhalt"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr "Die RedNotebook Dokumentation öffnen"
+msgstr "Die RedNotebook-Dokumentation öffnen"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr "Online Hilfe"
+msgstr "Online-Hilfe"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
@@ -349,7 +349,7 @@ msgstr "Leere Einträge sind nicht erlaubt"
 
 #: ../rednotebook/gui/categories.py:147
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Leere Markierungsbezeichnungen sind nicht erlaubt"
 
 #: ../rednotebook/gui/categories.py:401
 msgid "Change this text"
@@ -489,7 +489,7 @@ msgstr "Das Standard-Journal wurde geöffnet"
 
 #: ../rednotebook/gui/main_window.py:653
 msgid "No text or tag has been selected."
-msgstr ""
+msgstr "Sie haben keinen Text oder keine Markierung ausgewählt."
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:658
@@ -519,7 +519,7 @@ msgstr "Formatierung"
 
 #: ../rednotebook/gui/main_window.py:681
 msgid "Format the selected text or tag"
-msgstr ""
+msgstr "Ausgewählten Text oder Markierung formatieren"
 
 #: ../rednotebook/gui/main_window.py:730
 msgid "First Item"
@@ -667,23 +667,23 @@ msgstr "Texte exportieren"
 
 #: ../rednotebook/gui/exports.py:130
 msgid "Export all tags"
-msgstr ""
+msgstr "Alle Markierungen exportieren"
 
 #: ../rednotebook/gui/exports.py:131
 msgid "Do not export tags"
-msgstr ""
+msgstr "Markierungen nicht exportieren"
 
 #: ../rednotebook/gui/exports.py:133
 msgid "Export only the selected tags"
-msgstr ""
+msgstr "Nur ausgewählte Markierungen exportieren"
 
 #: ../rednotebook/gui/exports.py:144
 msgid "Available tags"
-msgstr ""
+msgstr "Verfügbare Markierungen"
 
 #: ../rednotebook/gui/exports.py:152 ../rednotebook/gui/exports.py:398
 msgid "Selected tags"
-msgstr ""
+msgstr "Ausgewählte Markierungen"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Select"
@@ -696,6 +696,8 @@ msgstr "Abwählen"
 #: ../rednotebook/gui/exports.py:262
 msgid "If export text is not selected, you have to select at least one tag."
 msgstr ""
+"Falls kein Text zum Exportieren gewählt ist, muss mindestens eine Markierung "
+"ausgewählt werden."
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
@@ -1076,11 +1078,11 @@ msgstr "<b>Eingabe</b> (optional)"
 
 #: tmp/main_window.glade.h:9
 msgid "Add Tag"
-msgstr ""
+msgstr "Markierung hinzufügen"
 
 #: tmp/main_window.glade.h:10
 msgid "Add a tag or a category entry"
-msgstr ""
+msgstr "Eine Markierung oder Kategorie hinzufügen"
 
 #: tmp/main_window.glade.h:11
 msgid "Edit"
@@ -1170,7 +1172,11 @@ msgstr ""
 "  Burak Bayram https://launchpad.net/~1burakbayram\n"
 "  Daniel Winzen https://launchpad.net/~q-d\n"
 "  Jan Niggemann https://launchpad.net/~jn-hz6\n"
+"  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Mario Blättermann https://launchpad.net/~mario.blaettermann\n"
 "  Matthias Loidolt https://launchpad.net/~kedapperdrake\n"
+"  Neutrino https://launchpad.net/~nneutrino\n"
 "  TIℳ㋡ https://launchpad.net/~tim.h.s\n"
+"  chrioll https://launchpad.net/~chrioll\n"
+"  günther kühnel https://launchpad.net/~guejo\n"
 "  rubinstein https://launchpad.net/~rubinstein"
