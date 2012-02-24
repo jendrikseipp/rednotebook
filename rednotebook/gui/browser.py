@@ -55,8 +55,10 @@ class Browser(webkit.WebView):
         webkit.WebView.__init__(self)
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
-        self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
-        self.tmp_uri = 'file://' + self.tmp_file.name
+
+        if LOAD_HTML_FROM_FILE:
+            self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
+            self.tmp_uri = 'file://' + self.tmp_file.name
 
         #self.connect('notify::load-status', self._on_load_status_changed)
 
