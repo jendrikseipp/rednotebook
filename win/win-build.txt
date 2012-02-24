@@ -14,8 +14,9 @@
   * Open a terminal window and navigate to PathToRedNotebook\rednotebook
   * Execute "python journal.py"
   * If you don't need a .exe file and no translations you're done.
-  
+
 == Translations ==
+  * Install py2exe [http://www.py2exe.org/]
   * In a terminal window, navigate to your RedNotebook directory
   * Run "python setup.py i18n" to translate the po files to mo files
   * RedNotebook should now be translated
@@ -25,32 +26,32 @@
     * In some environments the Visual Studio dlls are missing so we have
       to provide them
     * Find the files "Microsoft.VC90.CRT.manifest" and "msvcr90.dll" on
-      your system or on the Microsoft homepage (search for Microsoft 
-      Visual C++ 2005 Redistributable Package (x86))and copy them into 
+      your system or on the Microsoft homepage (search for Microsoft
+      Visual C++ 2005 Redistributable Package (x86))and copy them into
       the win directory
-  * Install py2exe [http://www.py2exe.org/]
+  * Make sure py2exe is installed [http://www.py2exe.org/]
   * In the Explorer, go to the win directory and execute build-exe.bat
-  * build-exe.bat runs the RedNotebook exe at the end. If nothing 
-    happens, have a look at 
+  * build-exe.bat runs the RedNotebook exe at the end. If nothing
+    happens, have a look at
     C:\Documents and Settings\username\.rednotebook\rednotebook.log
   * A dist/ directory is created containing the exe, but some GTK files
     are still missing
-  * Copy the directories etc, lib and share from the GTK path 
-    (C:\Python26\Lib\site-packages\gtk-2.16.6) to the newly created dist 
+  * Copy the directories etc, lib and share from the GTK path
+    (C:\Python26\Lib\site-packages\gtk-2.16.6) to the newly created dist
     directory
-  * You may want to remove some themes or dictionaries from the 
+  * You may want to remove some themes or dictionaries from the
     "share" directory to save some space.
   * Now clicking rednotebook.exe should start the application
-    If it doesn't start, you'll hopefully find an error log in 
+    If it doesn't start, you'll hopefully find an error log in
     C:\D&S\User\.rednotebook\rednotebook.log
-  
+
 == Some important adjustments ==
   * To use a nicer theme open the file dist/etc/gtk-2.0/gtkrc in
     an editor and replace its contents with the following three lines:
     gtk-icon-sizes = "gtk-dialog=24,24:gtk-button=16,16:gtk-menu=16,16:gtk-small-toolbar=16,16:gtk-large-toolbar=24,24:gtk-dnd=32,32"
     gtk-toolbar-icon-size = small-toolbar
     gtk-theme-name = "Clearlooks"
-    
+
 == Build the installer ==
   * Install Inno Setup (http://www.jrsoftware.org/isinfo.php)
   * Double-click rednotebook.iss
@@ -58,5 +59,5 @@
   * Click compile
   * Click run to test the installer
   * You find the installer in the output directory
-  
+
 Yay, you made it!
