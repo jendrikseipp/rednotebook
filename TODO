@@ -16,6 +16,15 @@ X Always include all tags regardless of their frequency in the cloud
 X Fix: Correctly parse configuration values containing ='s
 X Fix: Paths returned from file and folder choosers must be converted to unicode
 
+1.5
+O Add formulas
+  X Preview Latex formulas if mathjax is installed (package libjs-mathjax)
+  O Highlight formulas in edit mode
+  O Support Latex export
+  O Load HTML from string when no formulas are used
+  X Write common webview class
+  O Support PDF export
+
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
@@ -34,6 +43,7 @@ O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 O Divide the search results into results for text entries and results for tags?
+O Ensure that shortcuts work under Windows
 
 
 O Use Zeitgeist for automatic category entries
@@ -80,13 +90,6 @@ O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
-
-O Add formulas
-  O Highlight formulas in edit mode
-  O Support Latex export
-  O Load HTML from string when no formulas are used
-  X Write common webview class
-  O Support PDF export
 
 
 2.0
@@ -147,6 +150,12 @@ O Field or shortcut to enter a date and takes you there.
 O Check if Ctrl-Z still works or make sure we have a buffer for each day.
 O Add numberOfCloudWords config option. A value of 0 means, only tags are displayed.
 O Search for a combination of tags
+
+O A small bug with exporting: no matter what format I choose, I always get
+  the last used extension in the file name, so I have to manually change it.
+
+O Use #hash_tag in entries without adding any extra code for it (like twitter),
+  when searching for #hash_tag, we can jump directly to the relevant position in the body.
 
 
 

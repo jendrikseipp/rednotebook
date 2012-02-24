@@ -98,6 +98,10 @@ O Format:
 
     However, the format is more verbose and requires more syntax.
 
+O Left-over files:
+  - %APPDATA%\gtk-2.0\gtkfilechooser.ini: Gone in GTK+3
+  - %USERPROFILE%\.gtk-bookmarks: Still present in GTK+3
+
 
 Ideas:
 
