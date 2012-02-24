@@ -33,11 +33,7 @@ answers_url =       'https://answers.launchpad.net/rednotebook'
 translation_url =   'https://translations.launchpad.net/rednotebook/'
 bug_url =           'https://bugs.launchpad.net/rednotebook/+filebug'
 
-developers =    ['Jendrik Seipp <jendrikseipp@web.de>',
-                '',
-                'Past Contributors:',
-                'Alexandre Cucumel <superkiouk@gmail.com>',
-                ]
+developers =    ['Jendrik Seipp <jendrikseipp@web.de>']
 
 comments = '''\
 RedNotebook is a graphical journal to keep track of notes and
