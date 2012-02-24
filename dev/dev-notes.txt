@@ -101,6 +101,8 @@ O Format:
 O Left-over files:
   - %APPDATA%\gtk-2.0\gtkfilechooser.ini: Gone in GTK+3
   - %USERPROFILE%\.gtk-bookmarks: Still present in GTK+3
+  - WebpageIcons.db can probably be disabled in future webkitgtk versions with
+    webkit_icon_database.set_path(None)
 
 
 Ideas:
