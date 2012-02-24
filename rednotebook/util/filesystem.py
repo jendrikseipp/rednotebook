@@ -277,6 +277,11 @@ def system_call(args):
 def get_local_url(url):
     '''
     Sanitize url, make it absolute and normalize it, then add file://(/) scheme
+    
+    Links and images only work in webkit on windows if the files have 
+    file:/// (3 slashes) in front of the filename.
+    Strangely when clicking a link that has two slashes (file://C:\file.ext),
+    webkit returns the path file://C/file.ext .
     '''
     orig_url = url
     if url.startswith('file:///') and sys.platform == 'win32':
@@ -285,8 +290,6 @@ def get_local_url(url):
         url = url.replace('file://', '')
     url = os.path.normpath(url)
 
-    import urllib
-    url = urllib.unquote(url).decode('utf-8')
     scheme = 'file:///' if sys.platform == 'win32' else 'file://'
     url = scheme + url
     logging.debug('Transformed local URI %s to %s' % (orig_url, url))
@@ -299,6 +302,11 @@ def open_url_in_browser(url):
         webbrowser.open(url)
     except webbrowser.Error:
         logging.exception('Failed to open web browser')
+        
+        
+def unquote_url(url):
+    import urllib
+    return urllib.unquote(url).decode('utf-8')
 
 
 def open_url(url):
@@ -312,13 +320,16 @@ def open_url(url):
     # Try opening the file locally
     if sys.platform == 'win32':
         try:
-            url = get_local_url(url)
+            url = unquote_url(url)
+            if url.startswith(u'file:') or os.path.exists(url):
+                url = get_local_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
             os.startfile(url)
             return
         except OSError:
             logging.exception('Opening %s with "os.startfile" failed' % url)
+            return
 
     elif sys.platform == 'darwin':
         try:
