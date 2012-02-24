@@ -84,16 +84,25 @@ CSS = """\
 </style>
 """ % globals()
 
+mathjax_file = '/usr/share/javascript/mathjax/MathJax.js'
+mathjax_config = '/usr/share/javascript/mathjax/config/TeX-AMS-MML_HTMLorMML.js'
+
 MATHJAX = """\
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$']]}
-});
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+  });
 </script>
 <script type="text/javascript"
-  src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="%s">
 </script>
-"""
+""" % (mathjax_file)
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -182,7 +191,7 @@ def _get_config(type):
         config['postproc'].append([r'</head>', CSS + '</head>'])
 
         # mathjax
-        #config['postproc'].append([r'</body>', MATHJAX + '</body>'])
+        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
 
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '<br />'])
