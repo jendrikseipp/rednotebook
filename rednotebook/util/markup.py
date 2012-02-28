@@ -85,8 +85,12 @@ CSS = """\
 </style>
 """ % globals()
 
+# MathJax
 MATHJAX_FILE = '/usr/share/javascript/mathjax/MathJax.js'
-FORMULAS_SUPPORTED = os.path.isfile(MATHJAX_FILE)
+FORMULAS_SUPPORTED = True
+if not os.path.isfile(MATHJAX_FILE):
+    MATHJAX_FILE = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js'
+logging.info('MathJax location: %s' % MATHJAX_FILE)
 
 MATHJAX = """\
 <script type="text/x-mathjax-config">

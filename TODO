@@ -25,6 +25,7 @@ O Add formulas
   X Write common webview class
   O Support PDF export
   O Support Latex formulas on other distributions and Windows
+  O Add menu item for inserting formulas if mathjax is installed
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
