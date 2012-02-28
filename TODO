@@ -10,6 +10,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.4
 X Normal searches search everywhere (text, tags, subtags), if you prepend a # to
   your search, only tags (and neither text nor subtags) will be searched.
+X Split tags and words in the cloud
 X Include tags consisting of multiple words in the cloud
 X When searching for a tag, do not search in subtags
 X Always include all tags regardless of their frequency in the cloud
