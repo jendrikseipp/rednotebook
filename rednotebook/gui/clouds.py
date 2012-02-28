@@ -20,6 +20,7 @@
 from __future__ import division
 
 from collections import defaultdict
+import locale
 import logging
 import re
 
@@ -27,7 +28,6 @@ import gtk
 import gobject
 
 from rednotebook.gui.browser import HtmlView
-from rednotebook.util import unicode
 
 
 CLOUD_WORDS = 30
@@ -53,62 +53,6 @@ def get_regex(word):
     except Exception:
         logging.warning('"%s" is not a valid regular expression' % word)
         return re.compile('^$')
-
-
-def get_cloud_html(word_count_dict, categories_counter, ignores, includes):
-    # filter short words
-    words = [(word, freq) for (word, freq) in word_count_dict.items()
-             if (len(word) > 4 or
-             any(pattern.match(word) for pattern in includes)) and not
-             # filter words in ignore_list
-             any(pattern.match(word) for pattern in ignores)]
-
-    def frequency((word, freq)):
-        return freq
-
-    # only take the longest words. If there are less words than n,
-    # len(words) words are returned
-    words.sort(key=frequency)
-    cloud_words = words[-CLOUD_WORDS:] + categories_counter.items()
-
-    if not cloud_words:
-        return [], ''
-
-    counts = [freq for (word, freq) in cloud_words]
-    min_count = min(counts)
-    delta_count = max(counts) - min_count
-    if delta_count == 0:
-        delta_count = 1
-
-    min_font_size = 10
-    max_font_size = 50
-
-    font_delta = max_font_size - min_font_size
-
-    # sort words with unicode sort function
-    cloud_words.sort(key=lambda (word, count): unicode.coll(word.lstrip(u'#')))
-
-    html_elements = []
-
-    def format_word(word):
-        if word not in categories_counter:
-            return word
-        return '<u><b>%s</b></u>' % word.lstrip(u'#')
-
-    for index, (word, count) in enumerate(cloud_words):
-        font_factor = (count - min_count) / delta_count
-        font_size = int(min_font_size + font_factor * font_delta)
-
-
-        # Add some whitespace to separate words
-        html_elements.append('<a href="search/%s">'
-                             '<span style="font-size:%spx">%s</span></a>&#160;'
-                             % (index, font_size, format_word(word)))
-
-    html_body = ''.join(['<body>', '\n'.join(html_elements), '\n</body>\n'])
-    html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
-
-    return (cloud_words, html_doc)
 
 
 class Cloud(HtmlView):
@@ -160,26 +104,83 @@ class Cloud(HtmlView):
         counter = defaultdict(int)
         for day in self.journal.days:
             for cat in day.categories:
-                counter['#' + cat.lower()] += 1
+                counter[cat.lower()] += 1
         return counter
 
     def _update(self):
         logging.debug('Update the cloud')
         self.journal.save_old_day()
 
-        word_count_dict = self.journal.get_word_count_dict()
-        self.cloud_words, html = get_cloud_html(word_count_dict,
-            self.get_categories_counter(), self.regexes_ignore, self.regexes_include)
+        def cmp_words((word1, freq1), (word2, freq2)):
+            return locale.strcoll(word1, word2)
 
+        self.link_index = 0
+        word_count_dict = self.journal.get_word_count_dict()
+        self.tags = sorted(self.get_categories_counter().items(), cmp=cmp_words)
+        self.words = self._get_words_for_cloud(word_count_dict,
+                                    self.regexes_ignore, self.regexes_include)
+        self.words.sort(cmp=cmp_words)
+        self.link_dict = self.tags + self.words
+        html = self.get_clouds(self.words, self.tags)
         self.load_html(html)
         self.last_hovered_word = None
-
         logging.debug('Cloud updated')
+
+    def _get_cloud_body(self, cloud_words):
+        counts = [freq for (word, freq) in cloud_words]
+        min_count = min(counts)
+        delta_count = max(counts) - min_count
+        if delta_count == 0:
+            delta_count = 1
+
+        min_font_size = 10
+        max_font_size = 50
+
+        font_delta = max_font_size - min_font_size
+
+        html_elements = []
+
+        for word, count in cloud_words:
+            font_factor = (count - min_count) / delta_count
+            font_size = int(min_font_size + font_factor * font_delta)
+
+            # Add some whitespace to separate words
+            html_elements.append('<a href="search/%s">'
+                                 '<span style="font-size:%spx">%s</span></a>&#160;'
+                                 % (self.link_index, font_size, word))
+            self.link_index += 1
+        return '\n'.join(html_elements)
+
+    def _get_words_for_cloud(self, word_count_dict, ignores, includes):
+        # filter short words
+        words = [(word, freq) for (word, freq) in word_count_dict.items()
+                 if (len(word) > 4 or
+                 any(pattern.match(word) for pattern in includes)) and not
+                 # filter words in ignore_list
+                 any(pattern.match(word) for pattern in ignores)]
+
+        def frequency((word, freq)):
+            return freq
+
+        # only take the longest words. If there are less words than n,
+        # len(words) words are returned
+        words.sort(key=frequency)
+        return words[-CLOUD_WORDS:]
+
+    def get_clouds(self, word_counter, tag_counter):
+        tag_cloud = self._get_cloud_body(tag_counter)
+        word_cloud = self._get_cloud_body(word_counter)
+        html_body = ''.join(['<body>', tag_cloud, '<br />' * 3, word_cloud, '\n</body>\n'])
+        html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
+        return html_doc
 
     def _get_search_text(self, uri):
         # uri has the form "something/somewhere/search/search_index"
         search_index = int(uri.split('/')[-1])
-        search_text, count = self.cloud_words[search_index]
+        search_text, count = self.link_dict[search_index]
+        # Treat tags separately
+        if search_index < len(self.tags):
+            search_text = u'#' + search_text
         return search_text
 
     def on_navigate(self, webview, frame, request):
