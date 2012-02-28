@@ -309,12 +309,10 @@ class PathChooserPage(AssistantPage):
         if os.path.isdir(path):
             self.chooser.set_current_folder(path)
         else:
-            if os.path.exists(path):
-                # Method is for existing files
-                self.chooser.set_filename(path)
-            else:
-                self.chooser.set_current_folder(os.path.dirname(path))
-                self.chooser.set_current_name(os.path.basename(path))
+            dirname, basename = os.path.split(path)
+            filename, old_ext = os.path.splitext(basename)
+            self.chooser.set_current_folder(dirname)
+            self.chooser.set_current_name(filename + '.' + extension)
 
 
     def get_selected_path(self):
