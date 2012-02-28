@@ -20,6 +20,7 @@
 from __future__ import with_statement
 
 import logging
+import os
 import re
 import sys
 
@@ -84,25 +85,29 @@ CSS = """\
 </style>
 """ % globals()
 
-mathjax_file = '/usr/share/javascript/mathjax/MathJax.js'
-mathjax_config = '/usr/share/javascript/mathjax/config/TeX-AMS-MML_HTMLorMML.js'
+MATHJAX_FILE = '/usr/share/javascript/mathjax/MathJax.js'
+FORMULAS_SUPPORTED = os.path.isfile(MATHJAX_FILE)
 
 MATHJAX = """\
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX", "output/HTML-CSS"],
-    tex2jax: {
+  config: ["MMLorHTML.js"],
+  jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
+  tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
       processEscapes: true
     },
+  extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
   });
 </script>
 <script type="text/javascript"
   src="%s">
 </script>
-""" % (mathjax_file)
+""" % (MATHJAX_FILE)
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -229,8 +234,10 @@ def _get_config(type):
         config['postproc'].append([r'includegraphics\{("?)WIDTH(\d+)-', r'includegraphics[width=\2px]{\1'])
 
         # We want the plain latex formulas unescaped
-        config['preproc'].append([r'\$\s*(.+?)\s*\$', r"BEGINFORMULA''\1''ENDFORMULA"])
-        config['postproc'].append([r'BEGINFORMULA(.+)ENDFORMULA', r'$\1$'])
+        config['preproc'].append([r'\$\$\s*(.+?)\s*\$\$', r"BEGINEQUATION''\1''ENDEQUATION"])
+        config['postproc'].append([r'BEGINEQUATION(.+)ENDEQUATION', r'$$\1$$'])
+        config['preproc'].append([r'\$\s*(.+?)\s*\$', r"BEGINMATH''\1''ENDMATH"])
+        config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
     elif type == 'txt':
         # Line breaks

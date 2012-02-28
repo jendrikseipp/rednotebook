@@ -20,10 +20,8 @@
 from __future__ import division
 
 from collections import defaultdict
-import itertools
 import logging
 import re
-import sys
 
 import gtk
 import gobject
