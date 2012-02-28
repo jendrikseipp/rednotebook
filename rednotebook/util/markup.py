@@ -199,10 +199,6 @@ def _get_config(type):
         # Custom css
         config['postproc'].append([r'</head>', CSS + '</head>'])
 
-        # mathjax
-        if FORMULAS_SUPPORTED:
-            config['postproc'].append([r'</body>', MATHJAX + '</body>'])
-
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '<br />'])
 
@@ -267,6 +263,7 @@ def convert(txt, target, headers=None, options=None):
     '''
     Code partly taken from txt2tags tarball
     '''
+    add_mathjax = FORMULAS_SUPPORTED and 'html' in target and '$' in txt
 
     # Here is the marked body text, it must be a list.
     txt = txt.split('\n')
@@ -276,6 +273,10 @@ def convert(txt, target, headers=None, options=None):
         headers = ['', '', '']
 
     config = _get_config(target)
+
+    # MathJax
+    if add_mathjax:
+        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
 
     config['outfile'] = txt2tags.MODULEOUT  # results as list
     config['target'] = target
