@@ -25,13 +25,6 @@ import gtk
 import gobject
 
 
-def get_button_width(button, label):
-    button.set_label(label)
-    while gtk.events_pending():
-        gtk.main_iteration()
-    return button.allocation.width
-
-
 class ActionButton(gtk.Button):
     def __init__(self, text, action):
         gtk.Button.__init__(self, text)
@@ -123,41 +116,6 @@ class CustomListView(gtk.TreeView):
         self.set_search_column(1)
 
 
-class EntryDialog(gtk.MessageDialog):
-    # base this on a message dialog
-    def __init__(self, title, value_name, subtitle=''):
-        gtk.MessageDialog.__init__(self, None,
-                                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-                                gtk.MESSAGE_QUESTION,
-                                gtk.BUTTONS_OK,
-                                None)
-        self.set_markup(title)
-
-        # create the text input field
-        self.entry = gtk.Entry()
-
-        # allow the user to press enter to do ok
-        def response_to_dialog(entry, response):
-            self.response(response)
-        self.entry.connect("activate", response_to_dialog, gtk.RESPONSE_OK)
-
-        # create a horizontal box to pack the entry and a label
-        hbox = gtk.HBox()
-        hbox.pack_start(gtk.Label(value_name), False, 5, 5)
-        hbox.pack_end(self.entry)
-
-        if subtitle:
-            # some secondary text
-            self.format_secondary_markup(subtitle)
-
-        # add it and show it
-        self.vbox.pack_end(hbox, True, True, 0)
-        self.show_all()
-
-    def get_value(self):
-        return self.entry.get_text()
-
-
 class Calendar(gtk.Calendar):
     def __init__(self, week_numbers=False):
         gtk.Calendar.__init__(self)
@@ -177,7 +135,6 @@ class Calendar(gtk.Calendar):
 
         # Select the day after the month and year have been set
         self.select_day(date.day)
-
 
     def get_date(self):
         year, month, day = gtk.Calendar.get_date(self)

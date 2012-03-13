@@ -65,12 +65,6 @@ class Statistics(object):
             return 0
         return round(self.get_number_of_words() / self.get_number_of_entries(), 2)
 
-    def _get_html_row(self, key, value):
-        return ('<tr align="left">'
-                '<td bgcolor="#e7e7e7">&nbsp;&nbsp;' + key + '</td>'
-                '<td bgcolor="#aaaaaa">&nbsp;&nbsp;<b>' + str(value) + '</b></td>'
-                '</tr>')
-
     @property
     def overall_pairs(self):
         return [
@@ -91,16 +85,6 @@ class Statistics(object):
                 [_('Lines'), len(day.text.splitlines())],
                 [_('Letters'), len(day.text)],
                 ]
-
-    def get_stats_html(self):
-        self.journal.save_old_day()
-        page = '<html><body bgcolor="#8e8e95"><table cellspacing="5" border="0" width="400">\n'
-        stats = self.pairs
-        for key, value in stats:
-            page += self._get_html_row(key, value)
-
-        page += '</body></table></html>'
-        return page
 
     def show_dialog(self, dialog):
         self.journal.save_old_day()

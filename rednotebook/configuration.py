@@ -38,25 +38,6 @@ def delete_comment(line):
         return line
 
 
-def get_config(dirs):
-    default_config_file = os.path.join(dirs.files_dir, 'default.cfg')
-    default_config = Config(default_config_file)
-
-    user_config = Config(dirs.config_file)
-
-    config = Config()
-
-    #Add the defaults
-    if default_config:
-        config.update(default_config)
-
-    #Overwrite existing values with user options
-    if user_config:
-        config.update(user_config)
-
-    return config
-
-
 
 class Config(dict):
     def __init__(self, config_file):

@@ -112,6 +112,7 @@ class Cloud(HtmlView):
         self.journal.save_old_day()
 
         def cmp_words((word1, freq1), (word2, freq2)):
+            # TODO: Use key=locale.strxfrm in python3
             return locale.strcoll(word1, word2)
 
         self.link_index = 0
