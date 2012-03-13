@@ -91,12 +91,6 @@ class UndoRedoManager(object):
     def can_redo(self):
         return len(self.redo_stack) > 0
 
-    def delete_actions(self, tag):
-        self.undo_stack = filter(lambda action: not tag in action.tags, self.undo_stack)
-        self.redo_stack = filter(lambda action: not tag in action.tags, self.redo_stack)
-
-        self.update_buttons()
-
     def update_buttons(self):
         self.undo_menu_item.set_sensitive(self.can_undo())
         self.redo_menu_item.set_sensitive(self.can_redo())

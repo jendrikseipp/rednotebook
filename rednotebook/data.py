@@ -272,9 +272,6 @@ class Month(object):
             self.days[day_number] = new_day
             return new_day
 
-    def set_day(self, day_number, day):
-        self.days[day_number] = day
-
     def __str__(self):
         res = 'Month %s %s\n' % (self.year_number, self.month_number)
         for day_number, day in self.days.iteritems():
