@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2011-09-29 14:33+0000\n"
-"Last-Translator: Kenan Dervišević <kenan3008@gmail.com>\n"
+"PO-Revision-Date: 2012-03-16 12:14+0000\n"
+"Last-Translator: Saudin <saudin.dizdarevic@gmail.com>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-03 05:15+0000\n"
-"X-Generator: Launchpad (build 14886)\n"
+"X-Launchpad-Export-Date: 2012-03-17 04:55+0000\n"
+"X-Generator: Launchpad (build 14951)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -1014,7 +1014,7 @@ msgstr "Pitaj pri sljedećem pokretanju"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Ne pitaj više"
 
 #: ../rednotebook/journal.py:338
 #, python-format
