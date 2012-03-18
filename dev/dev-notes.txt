@@ -119,3 +119,12 @@ Implementation notes:
 - PyYAML saves each string as ascii if it only contains ascii chars.
   If there are unicode chars, a unicode object is saved.
 - The Days always turn their text into unicode before returning it.
+
+Tags/Category search:
+- #Magazine -> List of all magazines
+- #Magazine #Linux -> List of all Linux magazines
+- #Magazine Linux -> List of all magazines containing "Linux"
+  or -> List of all days with tag "Magazine" that contain "Linux"
+
+-> Maybe more uniformly: #Magazine Linux Format -> Do everywhere-search for
+   words without # in all days that have the hashtags.

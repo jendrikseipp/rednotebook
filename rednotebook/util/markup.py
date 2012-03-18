@@ -41,7 +41,6 @@ REGEX_LINEBREAK = r'\\\\[\s]*$'
 REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
 
 TABLE_HEAD_BG = '#aaa'
-BLOCKQUOTE_BG = '#ccc'
 
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
 

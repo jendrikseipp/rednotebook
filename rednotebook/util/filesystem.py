@@ -63,7 +63,6 @@ app_dir = get_unicode_path(app_dir)
 image_dir = os.path.join(app_dir, 'images')
 frame_icon_dir = os.path.join(image_dir, 'rednotebook-icon')
 files_dir = os.path.join(app_dir, 'files')
-gui_dir = os.path.join(app_dir, 'gui')
 locale_dir = os.path.join(app_dir, 'i18n')
 
 user_home_dir = get_unicode_path(os.path.expanduser('~'))
@@ -277,8 +276,8 @@ def system_call(args):
 def get_local_url(url):
     '''
     Sanitize url, make it absolute and normalize it, then add file://(/) scheme
-    
-    Links and images only work in webkit on windows if the files have 
+
+    Links and images only work in webkit on windows if the files have
     file:/// (3 slashes) in front of the filename.
     Strangely when clicking a link that has two slashes (file://C:\file.ext),
     webkit returns the path file://C/file.ext .
@@ -302,8 +301,8 @@ def open_url_in_browser(url):
         webbrowser.open(url)
     except webbrowser.Error:
         logging.exception('Failed to open web browser')
-        
-        
+
+
 def unquote_url(url):
     import urllib
     return urllib.unquote(url).decode('utf-8')

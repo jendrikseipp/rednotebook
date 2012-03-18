@@ -330,10 +330,6 @@ class TomboyImporter(Importer):
                             'Library', 'Application Support', 'Tomboy')
     PATHTYPE = 'DIR'
 
-    @classmethod
-    def is_available(cls):
-        return cls._check_modules(['xml.etree'])
-
     def get_days(self, dir):
         '''
         We do not check if there are multiple notes for one day
@@ -371,11 +367,8 @@ def get_importers():
     importers = [cls for name, cls in globals().items()
                 if name.endswith('Importer') and not name == 'Importer']
 
-    importers = filter(lambda importer: importer.is_available(), importers)
-
-    # Instantiate importers
-    importers = map(lambda importer: importer(), importers)
-    return importers
+    # Filter and instantiate importers.
+    return [imp() for imp in importers if imp.is_available()]
 
 
 
