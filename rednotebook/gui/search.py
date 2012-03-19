@@ -38,8 +38,6 @@ class SearchComboBox(CustomComboBoxEntry):
         self.entry.connect('changed', self.on_entry_changed)
         self.entry.connect('activate', self.on_entry_activated)
 
-        self.recent_searches = []
-
     def on_entry_changed(self, entry):
         """Called when the entry changes."""
         self.search(self.get_active_text())
@@ -47,11 +45,7 @@ class SearchComboBox(CustomComboBoxEntry):
     def on_entry_activated(self, entry):
         """Called when the user hits enter."""
         search_text = entry.get_text()
-
-        self.recent_searches.append(search_text)
-        self.recent_searches = self.recent_searches[-20:]
         self.add_entry(search_text)
-
         self.search(search_text)
 
     def search(self, search_text):
