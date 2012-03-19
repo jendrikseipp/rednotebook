@@ -385,8 +385,6 @@ class Journal:
 
         self.stats = Statistics(self)
 
-        self.frame.categories_tree_view.categories = self.categories
-
         if self.is_first_start and data_dir_empty and len(self.days) == 0:
             self.add_instruction_content()
 
@@ -394,6 +392,11 @@ class Journal:
 
         # Reset Search
         self.frame.search_box.clear()
+
+        self.frame.categories_tree_view.categories = self.categories
+        # Add auto-completion for tag search
+        self.frame.search_box.set_entries([u'#%s' % self.normalize_tag(tag)
+                                           for tag in self.categories])
 
         self.title = filesystem.get_journal_title(data_dir)
 
@@ -502,6 +505,10 @@ class Journal:
         return list(sorted(set(itertools.chain.from_iterable(
                                         day.categories for day in self.days)),
                            key=utils.sort_asc))
+
+
+    def normalize_tag(self, tag):
+        return tag.replace(' ', '').lower()
 
 
     def get_entries(self, category):
