@@ -104,7 +104,7 @@ class Cloud(HtmlView):
         counter = defaultdict(int)
         for day in self.journal.days:
             for cat in day.categories:
-                counter[cat.lower()] += 1
+                counter[cat.replace(' ', '').lower()] += 1
         return counter
 
     def _update(self):
