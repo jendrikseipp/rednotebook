@@ -65,11 +65,6 @@ class CustomComboBoxEntry(object):
         for entry in value_list:
             self.add_entry(entry)
 
-        if len(value_list) > 0:
-            self.combo_box.set_active(0)
-            self.set_active_text(value_list[0])
-            self.combo_box.queue_draw()
-
     def get_active_text(self):
         return self.entry.get_text().decode('utf-8')
 
