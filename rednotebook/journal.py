@@ -511,11 +511,23 @@ class Journal:
         return sorted(entries)
 
 
-    def search(self, text, tags_only=False):
+    def search(self, text, tags):
+        days = self.get_days_with_tags(tags)
         results = []
-        for day in reversed(self.days):
-            results.append(day.search(text, tags_only=tags_only))
+        for day in reversed(days):
+            results.append(day.search(text, tags))
         return results
+
+
+    def get_days_with_tags(self, tags):
+        if not tags:
+            return self.days
+        days = []
+        for day in self.days:
+            day_tags = [tag.lower() for tag in day.categories]
+            if all(tag in day_tags for tag in tags):
+                days.append(day)
+        return days
 
 
     def get_word_count_dict(self):

@@ -20,6 +20,8 @@
 from __future__ import division
 
 import datetime
+import itertools
+
 
 TEXT_RESULT_LENGTH = 42
 
@@ -183,9 +185,20 @@ class Day(object):
         return len(self.get_words(with_special_chars=True))
 
 
-    def search(self, text, tags_only=False):
-        if tags_only:
-            return str(self), self.search_in_tags(text)
+    def search(self, text, tags):
+        if not text:
+            results = []
+            for day_tag in self.categories:
+                for tag in tags:
+                    if day_tag.lower() != tag:
+                        continue
+                    entries = self.get_entries(day_tag)
+                    if entries:
+                        results.extend(entries)
+                    else:
+                        results.append(get_text_with_dots(self.text, 0,
+                                       TEXT_RESULT_LENGTH))
+            return str(self), results
 
         results = []
         # Search in date
@@ -227,18 +240,6 @@ class Day(object):
                                    if text.upper() in entry.upper())
             elif text.upper() in category.upper():
                 results.append(category)
-        return results
-
-
-    def search_in_tags(self, text):
-        """Only search in tag names not in entries."""
-        results = []
-        for category, content in self.get_category_content_pairs().items():
-            if text.upper() in category.upper():
-                if content:
-                    results.extend(content)
-                else:
-                    results.append(category)
         return results
 
 

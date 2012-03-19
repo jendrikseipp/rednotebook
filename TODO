@@ -8,11 +8,11 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.4
-X Normal searches search everywhere (text, tags, subtags), if you prepend a # to
-  your search, only tags (and neither text nor subtags) will be searched.
-X Split tags and words in the cloud
-X Include tags consisting of multiple words in the cloud
-X When searching for a tag, do not search in subtags
+X Search: If a search contains a hashtag (e.g. #Work or #Movies), only days
+  with all of those tags will be searched.
+X Split tag and word clouds
+O Remove spaces from multi-word tags in clouds
+O Auto-complete tags in search
 X Always include all tags regardless of their frequency in the cloud
 X Exports: Correctly set the appropriate extension for each export type
 X Fix: Correctly parse configuration values containing ='s
@@ -21,12 +21,12 @@ X Fix: Paths returned from file and folder choosers must be converted to unicode
 1.5
 O Add formulas
   X Preview Latex formulas if mathjax is installed (package libjs-mathjax)
-  O Highlight formulas in edit mode if mathjax is installed
+  O Highlight formulas in edit mode
   X Support Latex export
   X Write common webview class
   O Support PDF export
   O Support Latex formulas on other distributions and Windows
-  O Add menu item for inserting formulas if mathjax is installed
+  O Add menu item for inserting formulas
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
