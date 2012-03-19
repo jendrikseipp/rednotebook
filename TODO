@@ -11,6 +11,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 X Search: If a search contains a hashtag (e.g. #Work or #Movies), only days
   with all of those tags will be searched.
 X Search for combinations of tags (e.g. #magazine #linux)
+X Search: Automatically scroll to found text in edit mode
 X Split tag and word clouds
 X Remove spaces from multi-word tags in during search and in clouds
 X Auto-complete tags in search
@@ -42,7 +43,7 @@ O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
-O Scroll to searched text when a result is clicked
+O Scroll to searched text when a result is clicked in preview mode
 O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
