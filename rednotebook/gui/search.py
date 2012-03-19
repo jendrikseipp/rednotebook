@@ -19,6 +19,7 @@
 
 from xml.sax.saxutils import escape
 
+import gobject
 import gtk
 
 from rednotebook.gui.customwidgets import CustomComboBoxEntry
@@ -61,6 +62,11 @@ class SearchComboBox(CustomComboBoxEntry):
 
         # Highlight all occurences in the current day's text
         self.main_window.highlight_text(search_text)
+
+        # Scroll to query.
+        if search_text:
+            gobject.idle_add(self.main_window.day_text_field.scroll_to_text,
+                             search_text)
 
         self.main_window.search_tree_view.update_data(search_text, tags)
 
@@ -128,12 +134,9 @@ class SearchTreeView(gtk.TreeView):
 
     def on_cursor_changed(self, treeview):
         """Move to the selected day when user clicks on it"""
-        selection = self.get_selection()
-        model, paths = selection.get_selected_rows()
+        model, paths = self.get_selection().get_selected_rows()
         if not paths:
             return
         date_string = self.tree_store[paths[0]][0]
         new_date = dates.get_date_from_date_string(date_string)
         self.journal.change_date(new_date)
-
-        self.main_window.highlight_text(self.searched_text)

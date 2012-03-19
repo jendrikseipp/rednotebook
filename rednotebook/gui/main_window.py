@@ -973,6 +973,11 @@ class DayEditor(Editor):
         self.day = new_day
         self.set_text(self.day.text, undoing=True)
 
+        if self.search_text:
+            # If a search is currently made, scroll to the text and return.
+            gobject.idle_add(self.scroll_to_text, self.search_text)
+            return
+
         if self.day.last_edit_pos is not None:
             x, y, selection = self.day.last_edit_pos
             gobject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)

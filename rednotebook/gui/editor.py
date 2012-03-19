@@ -46,6 +46,7 @@ class Editor(object):
         self.changed_connection = self.day_text_buffer.connect('changed', self.on_text_change)
 
         self.old_text = ''
+        self.search_text = ''
 
         # Some actions should get a break point even if not much text has been
         # changed
@@ -97,8 +98,10 @@ class Editor(object):
         self.on_text_change(self.day_text_buffer, undoing=undoing)
 
     def highlight(self, text):
+        self.search_text = text
         self.day_text_buffer.set_search_text(text)
-        return
+
+    def scroll_to_text(self, text):
         iter_start = self.day_text_buffer.get_start_iter()
 
         # Hack: Ignoring the case is not supported for the search so we search
@@ -107,17 +110,13 @@ class Editor(object):
 
         for search_text in variants:
             iter_tuple = iter_start.forward_search(search_text,
-                                gtk.TEXT_SEARCH_VISIBLE_ONLY
-                                #| gtk.SEARCH_CASE_INSENSITIVE # non-existent
-                                )
+                                                gtk.TEXT_SEARCH_VISIBLE_ONLY)
 
-            # When we find one variant, highlight it, scroll to it and quit
+            # When we find one variant, scroll to it and quit
             if iter_tuple:
-                self.set_selection(*iter_tuple)
-
                 # It is safer to scroll to a mark than an iter
-                mark = self.day_text_buffer.create_mark('highlight', iter_tuple[0], left_gravity=False)
-                #self.day_text_view.scroll_to_iter(iter_tuple[0], 0)
+                mark = self.day_text_buffer.create_mark('highlight_query',
+                                            iter_tuple[0], left_gravity=False)
                 self.day_text_view.scroll_to_mark(mark, 0)
                 self.day_text_buffer.delete_mark(mark)
                 return
