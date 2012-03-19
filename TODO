@@ -10,9 +10,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.4
 X Search: If a search contains a hashtag (e.g. #Work or #Movies), only days
   with all of those tags will be searched.
+X Search for combinations of tags (e.g. #magazine #linux)
 X Split tag and word clouds
 X Remove spaces from multi-word tags in during search and in clouds
-O Auto-complete tags in search
+X Auto-complete tags in search
 X Always include all tags regardless of their frequency in the cloud
 X Exports: Correctly set the appropriate extension for each export type
 X Fix: Correctly parse configuration values containing ='s
@@ -20,12 +21,12 @@ X Fix: Paths returned from file and folder choosers must be converted to unicode
 
 1.5
 O Add formulas
-  X Preview Latex formulas if mathjax is installed (package libjs-mathjax)
+  X Preview Latex formulas
+  X Use local mathjax installation if it is installed (package libjs-mathjax)
   O Highlight formulas in edit mode
   X Support Latex export
   X Write common webview class
   O Support PDF export
-  O Support Latex formulas on other distributions and Windows
   O Add menu item for inserting formulas
 
 1.x
@@ -80,7 +81,6 @@ O Windows: Enable spellcheck
 O Translate help (Restructure first using Sphinx?)
 O Rethink logfile
 O Use argparse instead of optparse (wait for argparse availability, remove IndentedHelpFormatterWithNL)
-O Update search window when an annotation has been added/changed
 O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Make windows installer truly portable (leave no traces in registry)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
@@ -100,9 +100,9 @@ O Copy all files and pictures into data subdirectory (Think about new format fir
 O Password protection or encryption (Think about new format first)
 O Internal links to other days
 O Let user change font, foreground color, highlighting color
-O Filter exports by category, word?
-O Only export days that have category X if category X is selected?
+O Filter exports by tags
 O RTF export
+O Use json instead of yaml
 
 
 
@@ -111,21 +111,16 @@ O RTF export
 
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
 O Automatic insertion of holidays (Search a website for holidays and display them in the category "Holidays")
-O Evolution Integration (evolution zeitgeist addon is being written by zeitgeist devs)
 O Picture slide show in one entry with many images (in preview show nice
   javascript slide show of pics in linked picture directory) (Think about new format first)
 O HTML import?
 O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Ability to make certain entries, eg. birthdays, with frequencies
-O let editor change to edit mode when viewing today's record and to preview mode when viewing any other record
-  https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=140
-O Add additional one-click menu (like the one with Search and Tags Cloud) that contains quick links to other journals
-  (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23&sid=210fbd0a19cc2d2d5baec8c5cafb7c1f&p=582#p583)
 O Plugin system?
 O Think about using desktop-couch?
 O Entries without dates (bookmarks, contact lists)?
-O When the annotate button is selected or if a search is made, the previously selected annotation or search category should be
-  selected.
+O When the annotate button is selected or if a search is made, the previously
+  selected annotation or search category should be selected.
 O Add more shortcuts for insertions
 O Copy/paste annotations between different days
 O Drag and drop annotations on the same day
@@ -136,14 +131,14 @@ O Support for 'inline files': read content from file upon preview of page and
   add the contents of the file inline (which allowes for 'dynamic' content).
 
 O The concepts of insert and format can be unified for most entities this way:
-  If text is selected, formatting occurs (à la present-day format command). This feature can be applied also to headings, lists, file/web links.
-  Otherwise, standard insertion occurs. A few feature are meant exclusively for this purpose (e.g. horizontal separator).
+  If text is selected, formatting occurs (à la present-day format command).
+  This feature can be applied also to headings, lists, file/web links.
+  Otherwise, standard insertion occurs. A few features are meant exclusively
+  for this purpose (e.g. horizontal separator).
 
 O Support %!include macro?
 O Let user change the style of the preview and the clouds
-O Generalize tags to "hierarchical tags"
 
-O Open the exported file after the export?
 O I would like to be able to delete items from my categories list on the left side.
   At the moment if I want to delete multiple items from my todo list, I have to click on one,
   scroll to the right, right click and press delete, scroll back the left, and repeat.
@@ -152,12 +147,9 @@ O It would be great to be able to change the category of an item without having 
 O Field or shortcut to enter a date and takes you there.
 O Check if Ctrl-Z still works or make sure we have a buffer for each day.
 O Add numberOfCloudWords config option. A value of 0 means, only tags are displayed.
-O Search for a combination of tags
 
-O Use #hash_tag in entries without adding any extra code for it (like twitter),
+O Promote usage of #hash_tag in entries without adding any extra code for it (like twitter),
   when searching for #hash_tag, we can jump directly to the relevant position in the body.
-
-O Monitor clipboard and add all copied stuff into RedNotebook in "clip mode"
 
 
 
@@ -205,3 +197,9 @@ O Monitor clipboard and add all copied stuff into RedNotebook in "clip mode"
 - Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
   (This will be overkill for most users and having a data subdirectory for images etc. will suffice)
 - Add per journal configuration? (This makes things more difficult for the user)
+- Open the exported file after the export? (No other program does that)
+- Monitor clipboard and add all copied stuff into RedNotebook in "clip mode" (unintuitive, KISS)
+- Generalize tags to "hierarchical tags" (This is the job of outliners)
+- Add additional one-click menu (like the one with Search and Tags Cloud) that
+  contains quick links to other journals
+  (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23) (KISS)

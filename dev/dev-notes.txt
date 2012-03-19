@@ -14,11 +14,6 @@ O WYSIWYG as an alternative to markup???
 
     http://arstechnica.com/open-source/guides/2009/07/how-to-build-a-desktop-wysiwyg-editor-with-webkit-and-html-5.ars
 
-    roadmap suggestion:
-    wait for pywebkitgtk to stabilize a bit more (new ubuntu version)
-    first add webkit as possible preview backend
-    save all content directly in html to have way more editing options
-
 O Encryption/Password
   - Save in password protected zipfiles (no open source tool to generate those)
     seems to be very easy to hack
@@ -56,18 +51,6 @@ O Encryption/Password
   - Best option seems to be 7z. Encrypt the texts and files in a lzma file and
     password protect it if needed. Use the command line instead of a library.
 
-
-X Automatic insertions
-  - Use code from Zeitgeist
-
-
-X Spell-Checking
-  - Enchant depends on aspell and hunspell on ubuntu
-  - gtkspell depends on enchant
-  - Use either aspell directly or through enchant
-  - enchant is more up-to-date, but harder to use with gtk
-  - gtkspell seems to be the easiest solution (python-gnome2-extras)
-
 X Portable Version:
   Linux users can use the setting too, if all the computers have the RedNotebook
   requirements installed (pygtk, pyyaml)
@@ -79,9 +62,11 @@ O Formulas:
   - MathJax CDN works well for websites
   - CDN needs internet connection
   - HTML needs to be written to a file before it can be loaded if it contains remote js
+    -> It seems this restriction was lifted.
   - PDF export needs some hacking to only print after js has finished
   - Latex export for multiline formulas is difficult (impossible?)
   - Installing MathJax locally might not be an option, because it needs a lot of ressources
+    -> use local installation only if already present
 
 O Format:
   - JSON is faster to decode and encode and we only use strings, ints and dicts

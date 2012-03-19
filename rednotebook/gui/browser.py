@@ -197,6 +197,9 @@ class HtmlView(gtk.ScrolledWindow):
         self.webview.set_zoom_level(zoom)
 
     def highlight(self, string):
+        # Tell the webview which text to highlight after the html is loaded
+        self.search_text = string
+
         # Not possible for all versions of pywebkitgtk
         try:
             # Remove results from last highlighting

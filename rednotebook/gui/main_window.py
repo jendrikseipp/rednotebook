@@ -923,12 +923,7 @@ class MainWindow(object):
         return self.day_text_field.get_text()
 
     def highlight_text(self, search_text):
-        # let the search function highlight found strings in the page
-        #if self.preview_mode:
-            # If we search twice on the same day, the html is not reloaded
-            # so we have to manually highlight
         self.html_editor.highlight(search_text)
-        #else:
         self.day_text_field.highlight(search_text)
 
 

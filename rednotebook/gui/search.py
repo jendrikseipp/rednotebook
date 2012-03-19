@@ -59,9 +59,6 @@ class SearchComboBox(CustomComboBoxEntry):
 
         search_text = ' '.join(queries)
 
-        # Tell the webview which text to highlight after the html is loaded
-        self.main_window.html_editor.search_text = search_text
-
         # Highlight all occurences in the current day's text
         self.main_window.highlight_text(search_text)
 
