@@ -11,7 +11,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 X Search: If a search contains a hashtag (e.g. #Work or #Movies), only days
   with all of those tags will be searched.
 X Split tag and word clouds
-O Remove spaces from multi-word tags in clouds
+O Remove spaces from multi-word tags in during search and in clouds
 O Auto-complete tags in search
 X Always include all tags regardless of their frequency in the cloud
 X Exports: Correctly set the appropriate extension for each export type

@@ -190,7 +190,7 @@ class Day(object):
             results = []
             for day_tag in self.categories:
                 for tag in tags:
-                    if day_tag.lower() != tag:
+                    if day_tag.replace(' ', '').lower() != tag:
                         continue
                     entries = self.get_entries(day_tag)
                     if entries:
