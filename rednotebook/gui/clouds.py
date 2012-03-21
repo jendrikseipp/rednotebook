@@ -131,6 +131,8 @@ class Cloud(HtmlView):
         logging.debug('Cloud updated')
 
     def _get_cloud_body(self, cloud_words):
+        if not cloud_words:
+            return ''
         counts = [freq for (word, freq) in cloud_words]
         min_count = min(counts)
         delta_count = max(counts) - min_count
@@ -174,10 +176,14 @@ class Cloud(HtmlView):
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)
         word_cloud = self._get_cloud_body(word_counter)
-        heading = '<h1>&#160;%s</h1>\n'
-        html_body = ''.join(['<body>\n', heading % _('Tags'), tag_cloud, '\n', '<br />\n' * 3, heading % _('Words'), word_cloud, '\n</body>\n'])
-        html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
-        return html_doc
+        heading = '<h1>&#160;%s</h1>'
+        parts = ['<html><head>', CLOUD_CSS, '</head>', '<body>']
+        if tag_cloud:
+            parts.extend([heading % _('Tags'), tag_cloud, '\n', 
+                          '<br />\n' * 3])
+        parts.extend([heading % _('Words'), word_cloud, '</body>',
+                      '</html>'])
+        return '\n'.join(parts)
 
     def _get_search_text(self, uri):
         # uri has the form "something/somewhere/search/search_index"
