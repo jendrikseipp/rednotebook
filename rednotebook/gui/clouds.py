@@ -43,6 +43,9 @@ CLOUD_CSS = """\
     a:focus { color:black; text-decoration:none; }
     a:hover { color:black; text-decoration:none; }
     a:active { color:black; text-decoration:none; }
+    h1 { border-bottom: 1px solid grey; margin: 0; margin-bottom: 8px;
+         padding: 0; font-size: 15px; line-height: 1; text-align: left;
+         font-weight: normal; }
 </style>
 """
 
@@ -135,7 +138,7 @@ class Cloud(HtmlView):
             delta_count = 1
 
         min_font_size = 10
-        max_font_size = 50
+        max_font_size = 40
 
         font_delta = max_font_size - min_font_size
 
@@ -171,7 +174,8 @@ class Cloud(HtmlView):
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)
         word_cloud = self._get_cloud_body(word_counter)
-        html_body = ''.join(['<body>', tag_cloud, '<br />' * 3, word_cloud, '\n</body>\n'])
+        heading = '<h1>&#160;%s</h1>\n'
+        html_body = ''.join(['<body>\n', heading % _('Tags'), tag_cloud, '\n', '<br />\n' * 3, heading % _('Words'), word_cloud, '\n</body>\n'])
         html_doc = ''.join(['<html><head>', CLOUD_CSS, '</head>', html_body, '</html>'])
         return html_doc
 
