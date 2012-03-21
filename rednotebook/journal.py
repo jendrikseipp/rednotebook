@@ -110,8 +110,13 @@ options, args = parse_options()
 def setup_logging(log_file):
     file_logging_stream = open(log_file, 'w')
 
-    # We want to have the error messages in the logfile
-    sys.stderr = utils.StreamDuplicator(sys.__stderr__, [file_logging_stream])
+    # We want to have the error messages in the logfile. In the frozen 
+    # version we cannot log to sys.stderr because it's broken on 
+    # windows. Stdout is redirected into a blackhole by py2exe.
+    stderr_streams = [file_logging_stream]
+    if not hasattr(sys, 'frozen'):
+        stderr_streams.append(sys.__stderr__)
+    sys.stderr = utils.StreamDuplicator(stderr_streams)
 
     root_logger = logging.getLogger('')
     root_logger.setLevel(logging.DEBUG)

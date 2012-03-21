@@ -181,29 +181,23 @@ def show_html_in_browser(html, filename):
     webbrowser.open(html_file)
 
 
-
 class StreamDuplicator(object):
-    def __init__(self, default, duplicates):
-        if not type(duplicates) == list:
-            duplicates = [duplicates]
-        self.duplicates = duplicates
-        self.default = default
+    def __init__(self, streams):
+        self.streams = streams
 
-    @property
-    def streams(self):
-        return [self.default] + self.duplicates
-
-    def write(self, str):
+    def write(self, buf):
         for stream in self.streams:
-            stream.write(str)
+            stream.write(buf)
+            # If we don't flush here, stderr messages are printed late.
+            stream.flush()
 
     def flush(self):
         for stream in self.streams:
             stream.flush()
 
-    #def close(self):
-    #   for stream in self.streams():
-    #       self.stream.close()
+    def close(self):
+       for stream in self.streams():
+           self.stream.close()
 
 
 
