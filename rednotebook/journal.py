@@ -108,16 +108,6 @@ options, args = parse_options()
 ## ---------------------- Enable logging -------------------------------
 
 def setup_logging(log_file):
-    #logging_levels = {'debug': logging.DEBUG,
-    #               'info': logging.INFO,
-    #               'warning': logging.WARNING,
-    #               'error': logging.ERROR,
-    #               'critical': logging.CRITICAL}
-
-    # File logging
-    if sys.platform == 'win32' and hasattr(sys, "frozen"):
-        utils.redirect_output_to_file(log_file)
-
     file_logging_stream = open(log_file, 'w')
 
     # We want to have the error messages in the logfile

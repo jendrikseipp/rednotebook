@@ -56,29 +56,6 @@ def set_environment_variables(config):
             logging.info('There is no environment variable called %s' % variable)
 
 
-def redirect_output_to_file(logfile_path):
-    """
-    Changes stdout and stderr to a file.
-    Disables both streams if logfile_path is None or cannot be opened.
-
-    This is necessary to suppress the error messages on Windows when closing
-    the application.
-    """
-    assert sys.platform == 'win32'
-
-    if logfile_path is None:
-        logfile = None
-    else:
-        try:
-            logfile = open(logfile_path, 'w')
-        except IOError:
-            logging.info('logfile %s could not be found, disabling output' % logfile_path)
-            logfile = None
-
-    sys.stdout = logfile
-    sys.stderr = logfile
-
-
 def setup_signal_handlers(journal):
     """
     Catch abnormal exits of the program and save content to disk
