@@ -8,81 +8,83 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2011-10-27 13:12+0000\n"
-"Last-Translator: babycntt <Unknown>\n"
+"PO-Revision-Date: 2012-03-20 11:48+0000\n"
+"Last-Translator: Ngô Chin <ndtrung4419@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-03 05:16+0000\n"
-"X-Generator: Launchpad (build 14886)\n"
+"X-Launchpad-Export-Date: 2012-03-21 05:01+0000\n"
+"X-Generator: Launchpad (build 14981)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr ""
+msgstr "Ý tưởng"
 
 #: ../rednotebook/info.py:80 ../rednotebook/gui/categories.py:51
 #: ../rednotebook/util/markup.py:100
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "Những thứ hay ho"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Phim"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Công việc"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Thời gian rảnh"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Tài liệu hướng dẫn"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
-msgstr ""
+msgstr "Việc cần làm"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Hoàn tất"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "Remember the milk"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Rửa bát"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Kiểm tra hòm thư"
 
 #: ../rednotebook/info.py:91
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "Monty Python and the Holy Grail"
 
 #: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Họp nhóm"
 
 #: ../rednotebook/info.py:95
 msgid "Hello!"
-msgstr ""
+msgstr "Xin chào!"
 
 #: ../rednotebook/info.py:96
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
+"Một số đoạn văn bản mẫu đã được thêm vào để giúp bạn làm quen và bạn có thể "
+"xóa chúng nếu bạn muốn."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:99
@@ -90,54 +92,57 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Bạn có thể xem lại văn bản mẫu và nhiều tài liệu hướng dẫn hơn ở mục \"Trợ "
+"giúp\" -> \"Hướng dẫn\""
 
 #: ../rednotebook/info.py:100
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "Giao diện được chia thành ba phần:"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:102
 msgid "Left"
-msgstr ""
+msgstr "Bên trái"
 
 #: ../rednotebook/info.py:103
 msgid "Navigation and search"
-msgstr ""
+msgstr "Tìm kiếm và định hướng"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:105
 msgid "Center"
-msgstr ""
+msgstr "Ở giữa"
 
 #: ../rednotebook/info.py:106
 msgid "Text for a day"
-msgstr ""
+msgstr "Nội dung trong ngày"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:108
 msgid "Right"
-msgstr ""
+msgstr "Bên phải"
 
 #: ../rednotebook/info.py:109
 msgid "Tags for this day"
-msgstr ""
+msgstr "Các tag cho ngày này"
 
 #. ## Translators: noun
 #. ## Verb
 #: ../rednotebook/info.py:112 tmp/main_window.glade.h:24
 msgid "Preview"
-msgstr ""
+msgstr "Xem thử"
 
 #: ../rednotebook/info.py:113
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Có 2 chế độ trong RedNotebook, chế độ __chỉnh sửa__ và chế độ __xem thử__"
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:115
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "Nhấn vào nút Xem thử ở trên để xem sự khác biệt."
 
 #: ../rednotebook/info.py:118
 msgid ""
@@ -145,305 +150,319 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"Hôm nay tôi đến //cửa hàng thú nuôi// và mua một **con hổ**. Sau đó chúng "
+"tôi tôi đến --công viên-- chơi trò ném đĩa. Sau đó chúng tôi xem phim "
+"\"__Life of Brian__\"."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:130
 msgid "Save and Export"
-msgstr ""
+msgstr "Lưu và xuất"
 
 #: ../rednotebook/info.py:131
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"Tất cả những gì bạn gõ vào đều sẽ được lưu tự động theo chu kỳ cố định và "
+"khi bạn thoát chương trình."
 
 #: ../rednotebook/info.py:132
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Để tránh mất mát dữ liệu bạn nên sao lưu sổ ghi chép một cách thường xuyên."
 
 #: ../rednotebook/info.py:133
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
+"Nút \"Sao lưu\" trong menu \"Sổ ghi chép\" nén tất cả dữ liệu của bạn vào "
+"một file zip."
 
 #: ../rednotebook/info.py:134
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr ""
+"Trong menu \"Sổ ghi chép\" bạn còn có thể tìm thấy nút \"Xuất dữ liệu\""
 
 #: ../rednotebook/info.py:135
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
+"Nhấn vào nút \"Xuất dữ liệu\" để xuất nhật ký của bạn ra tập tin văn bản "
+"thuần, PDF, HTML hay Latex."
 
 #: ../rednotebook/info.py:138
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
+"Nếu bạn gặp bất cứ lỗi nào, hãy liên hệ với tôi để tôi có thể sửa chúng."
 
 #: ../rednotebook/info.py:139
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Tất cả đóng góp và nhận xét đều được trân trọng."
 
 #: ../rednotebook/info.py:142
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Chúc bạn vui vẻ!"
 
 #: ../rednotebook/info.py:166
 msgid "Ate **two** cans of spam"
-msgstr ""
+msgstr "Ăn hết **hai** hộp thịt"
 
 #: ../rednotebook/info.py:167
 msgid "Use a cool journal app"
-msgstr ""
+msgstr "Sử dụng một app ghi chép rất tuyệt"
 
 #: ../rednotebook/info.py:168
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "Monty Python's Life of Brian"
 
 #: ../rednotebook/info.py:659 ../rednotebook/gui/menu.py:248
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "Hướng dẫn sử dụng RedNotebook"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
-msgstr ""
+msgstr "Giới thiệu"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "_Sổ ghi chép"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "Tạo một sổ ghi chép mới. Sổ đang mở sẽ được lưu lại."
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "Mở một sổ ghi chép có sẵn. Sổ đang mở sẽ được lưu lại."
 
 #: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
-msgstr ""
+msgstr "Lưu sổ ghi chép tại một vị trí mới. Sổ đang mở cũng sẽ được lưu."
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
 msgid "Import"
-msgstr ""
+msgstr "Nhập"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr ""
+msgstr "Mở trình hướng dẫn nhập"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
 msgid "Export"
-msgstr ""
+msgstr "Xuất"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Mở trình hướng dẫn xuất"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111 ../rednotebook/backup.py:61
 msgid "Backup"
-msgstr ""
+msgstr "Sao lưu"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "Lưu tất cả dữ liệu vào một tập tin zip"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:30
 msgid "Statistics"
-msgstr ""
+msgstr "Thống kê"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
-msgstr ""
+msgstr "Hiện và số liệu thống kê về sổ ghi chép này"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "Tắt RedNotebook. Nó sẽ không hiện trong khay hệ thống."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
-msgstr ""
+msgstr "_Chỉnh sửa"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Hủy thao tác sửa văn bản hay tag"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "Làm lại thao tác sửa văn bản hay tag"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr ""
+msgstr "_Trợ giúp"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr ""
+msgstr "Chi tiết"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Mở tài liệu hướng dẫn RedNotebook"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr ""
+msgstr "Tìm kiếm trợ giúp trên mạng"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Xem các câu hỏi đã được trả lời hoặc đặt câu hỏi mới"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Dịch RedNotebook"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
+msgstr "Kết nối đến trang web Launchpad để giúp dịch RedNotebook"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
-msgstr ""
+msgstr "Báo cáo lỗi"
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "Điền một mẫu hỏi ngắn về vấn đề bạn gặp phải"
 
 #: ../rednotebook/gui/menu.py:268
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "Một ứng dụng ghi chép cá nhân"
 
 #: ../rednotebook/gui/search.py:83
 msgid "Date"
-msgstr ""
+msgstr "Ngày"
 
 #: ../rednotebook/gui/search.py:84
 msgid "Text"
-msgstr ""
+msgstr "Văn bản"
 
 #: ../rednotebook/gui/categories.py:130
 msgid "Empty entries are not allowed"
-msgstr ""
+msgstr "Không cho phép để mục trống"
 
 #: ../rednotebook/gui/categories.py:147
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Không cho phép để trống tên tag"
 
 #: ../rednotebook/gui/categories.py:401
 msgid "Change this text"
-msgstr ""
+msgstr "Thay đổi văn bản này"
 
 #: ../rednotebook/gui/categories.py:405
 msgid "Add a new entry"
-msgstr ""
+msgstr "Thêm mục mới"
 
 #: ../rednotebook/gui/categories.py:409
 msgid "Delete this entry"
-msgstr ""
+msgstr "Xóa mục này"
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "Tải RedNotebook khi khởi động"
 
 #: ../rednotebook/gui/options.py:154
 msgid "%A, %x, Day %j"
-msgstr ""
+msgstr "%A, %x, Ngày thứ %j"
 
 #: ../rednotebook/gui/options.py:154
 msgid "Week %W of Year %Y"
-msgstr ""
+msgstr "Tuần thứ %W trong năm %Y"
 
 #: ../rednotebook/gui/options.py:155
 msgid "Day %j"
-msgstr ""
+msgstr "Ngày thứ %j"
 
 #: ../rednotebook/gui/options.py:160
 msgid "Help"
-msgstr ""
+msgstr "Hướng dẫn"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr ""
+msgstr "Xem thử:"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Close to system tray"
-msgstr ""
+msgstr "Thoát xuống khay hệ thống"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
+msgstr "Đóng cửa sổ sẽ thoát RedNotebook xuống khay hệ thống"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "Gạch chân những từ sai chính tả"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires gtkspell."
-msgstr ""
+msgstr "Yêu cầu phải có gtkspell."
 
 #: ../rednotebook/gui/options.py:301
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr ""
+msgstr "Phần mềm này nằm trong gói python-gtkspell hoặc python-gnome2-extras"
 
 #: ../rednotebook/gui/options.py:302
 msgid "Check Spelling"
-msgstr ""
+msgstr "Kiểm tra chính tả"
 
 #: ../rednotebook/gui/options.py:310
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "Kiểm tra phiên bản mới khi khởi động"
 
 #: ../rednotebook/gui/options.py:317
 msgid "Check now"
-msgstr ""
+msgstr "Kiểm tra ngay bây giờ"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Font Size"
-msgstr ""
+msgstr "Cỡ chữ"
 
 #: ../rednotebook/gui/options.py:323
 msgid "Date/Time format"
-msgstr ""
+msgstr "Định dạng thời gian"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "Bỏ khỏi đám mây từ vựng"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Do not show those comma separated words in any cloud"
 msgstr ""
+"Không hiện những từ phân cách bởi dấu phẩy này trong bất cứ đám mây từ vựng "
+"nào"
 
 #: ../rednotebook/gui/options.py:326
 msgid "Allow small words in clouds"
-msgstr ""
+msgstr "Cho phép hiện từ ngắn trong đám mây từ vựng"
 
 #: ../rednotebook/gui/options.py:327
 msgid "Allow those words with 4 letters or less in the text cloud"
-msgstr ""
+msgstr "Cho phép hiển thị những từ có nhiều nhất 4 ký tự này trong đám mây"
 
 #: ../rednotebook/gui/main_window.py:281
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "Hiển thị RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:454
 msgid "Select an empty folder for your new journal"
-msgstr ""
+msgstr "Hãy chọn một thư mục trống cho sổ ghi chép mới của bạn"
 
 #: ../rednotebook/gui/main_window.py:455
 msgid "Journals are saved in a directory, not in a single file."
-msgstr ""
+msgstr "Sổ ghi chép được lưu trong một thư mục, không phải chỉ một tập tin"
 
 #: ../rednotebook/gui/main_window.py:456
 msgid "The directory name will be the title of the new journal."
-msgstr ""
+msgstr "Tên thư mục cũng sẽ là tên sổ ghi chép"
 
 #: ../rednotebook/gui/main_window.py:460
 msgid "Select an existing journal directory"
-msgstr ""
+msgstr "Hãy chọn một thư mục ghi chép có sẵn"
 
 #: ../rednotebook/gui/main_window.py:462
 msgid "The directory should contain your journal's data files"
@@ -1072,4 +1091,5 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Ngô Chin https://launchpad.net/~ndtrung4419\n"
 "  babycntt https://launchpad.net/~quan0909"
