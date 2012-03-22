@@ -17,6 +17,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+# This is required for setup.py to be able to import this module.
+import __builtin__
+if not hasattr(__builtin__, '_'):
+    def _(string):
+        return string
+
 version =           '1.4.0'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
