@@ -179,10 +179,11 @@ class Cloud(HtmlView):
         heading = '<h1>&#160;%s</h1>'
         parts = ['<html><head>', CLOUD_CSS, '</head>', '<body>']
         if tag_cloud:
-            parts.extend([heading % _('Tags'), tag_cloud, '\n', 
+            parts.extend([heading % _('Tags'), tag_cloud, '\n',
                           '<br />\n' * 3])
-        parts.extend([heading % _('Words'), word_cloud, '</body>',
-                      '</html>'])
+        if word_cloud:
+            parts.extend([heading % _('Words'), word_cloud])
+        parts.append('</body></html>')
         return '\n'.join(parts)
 
     def _get_search_text(self, uri):
