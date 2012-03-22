@@ -97,8 +97,8 @@ MATHJAX = """\
   config: ["MMLorHTML.js"],
   jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
   tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
       processEscapes: true
     },
   extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
