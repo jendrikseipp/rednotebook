@@ -17,14 +17,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import os
-
-# For testing
-import __builtin__
-if not hasattr(__builtin__, '_'):
-    def _(string):
-        return string
-
 version =           '1.4.0'
 author =            'Jendrik Seipp'
 authorMail =        'jendrikseipp@web.de'
@@ -648,32 +640,3 @@ Type=Application
 Categories=Office;
 StartupNotify=true
 '''
-
-def write_documentation(dir):
-    '''
-    Write the documenation as html to a directory
-    Include the original markup as "source.txt"
-    '''
-    from rednotebook.util import filesystem
-    from rednotebook.util import markup
-
-    filesystem.write_file(os.path.join(dir, 'source.txt'), help_text)
-    headers = [_('RedNotebook Documentation'), version, '']
-    options = {'toc': 1,}
-    html = markup.convert(help_text, 'xhtml', headers, options)
-    filesystem.write_file(os.path.join(dir, 'help.html'), html)
-
-if __name__ == '__main__':
-    import sys
-    sys.path.insert(0, os.path.abspath("./../"))
-
-    print completeWelcomeText
-    print '*'*80
-    print help_text
-
-    doc_dir = '../doc'
-    doc_dir = os.path.abspath(doc_dir)
-
-    write_documentation(doc_dir)
-
-    #logging.getLogger('').setLevel(logging.DEBUG)

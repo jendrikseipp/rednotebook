@@ -20,7 +20,6 @@
 from __future__ import division
 
 import datetime
-import itertools
 
 
 TEXT_RESULT_LENGTH = 42

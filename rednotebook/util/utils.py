@@ -19,7 +19,6 @@
 
 from __future__ import with_statement, division
 
-import sys
 import signal
 import os
 import re
