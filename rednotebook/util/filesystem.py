@@ -335,7 +335,7 @@ def open_url(url):
             logging.info('Trying to open %s with "open"' % url)
             system_call(['open', url])
             return
-        except OSError, subprocess.CalledProcessError:
+        except (OSError, subprocess.CalledProcessError):
             logging.exception('Opening %s with "open" failed' % url)
 
     else:
@@ -343,7 +343,7 @@ def open_url(url):
             logging.info( 'Trying to open %s with xdg-open' % url)
             system_call(['xdg-open', url])
             return
-        except OSError, subprocess.CalledProcessError:
+        except (OSError, subprocess.CalledProcessError):
             logging.exception('Opening %s with xdg-open failed' % url)
 
     # If everything failed, try the webbrowser

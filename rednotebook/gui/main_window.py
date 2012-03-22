@@ -116,12 +116,10 @@ class MainWindow(object):
         self.html_editor.hide()
         self.html_editor.set_editable(False)
         self.preview_mode = False
-        self.preview_button = self.builder.get_object('preview_button')
 
         # Let the edit_paned respect its childs size requests
-        edit_paned = self.builder.get_object('edit_pane')
         text_vbox = self.builder.get_object('text_vbox')
-        edit_paned.child_set_property(text_vbox, 'shrink', False)
+        self.edit_pane.child_set_property(text_vbox, 'shrink', False)
 
         self.load_values_from_config()
 
@@ -515,7 +513,7 @@ class MainWindow(object):
         left_div = self.builder.get_object('main_pane').get_position()
         config['leftDividerPosition'] = left_div
 
-        right_div = self.builder.get_object('edit_pane').get_position()
+        right_div = self.edit_pane.get_position()
         config['rightDividerPosition'] = right_div
 
         # Remember if window was maximized in separate method
@@ -561,7 +559,7 @@ class MainWindow(object):
 
         if 'leftDividerPosition' in config:
             self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))
-        self.builder.get_object('edit_pane').set_position(config.read('rightDividerPosition', 500))
+        self.edit_pane.set_position(config.read('rightDividerPosition', 500))
 
         # A font size of -1 applies the standard font size
         main_font_size = config.read('mainFontSize', -1)

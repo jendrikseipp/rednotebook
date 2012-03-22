@@ -77,9 +77,6 @@ class SearchTreeView(gtk.TreeView):
         self.main_window = main_window
         self.journal = self.main_window.journal
 
-        # Normally unneeded, but just to be sure everything works fine
-        self.searched_text = ''
-
         # create a TreeStore with two string columns to use as the model
         self.tree_store = gtk.ListStore(str, str)
 
@@ -122,9 +119,6 @@ class SearchTreeView(gtk.TreeView):
             return
         self.main_window.cloud.hide()
         self.parent.show()
-
-        # Save the search text for highlighting
-        self.searched_text = search_text
 
         for date_string, entries in self.journal.search(search_text, tags):
             for entry in entries:

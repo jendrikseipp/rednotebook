@@ -81,8 +81,7 @@ class Pattern(object):
     subgroups with different formatting
     """
     def __init__(self, pattern, group_tag_pairs, regex=None, flags="",
-                        overlap=False, name='unnamed'):
-        self.overlap = overlap
+                 name='unnamed'):
         self.name = name
 
         # assemble re-flag
@@ -181,7 +180,7 @@ class MarkupBuffer(gtk.TextBuffer):
         if not text:
             self._lang_def.highlight_rule = None
         self._lang_def.highlight_rule = Pattern(r"(%s)" % re.escape(text),
-                [(1, 'highlight')], name='highlight', flags='I', overlap=True)
+                            [(1, 'highlight')], name='highlight', flags='I')
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
 
     def get_slice(self, start, end):

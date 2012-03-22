@@ -172,7 +172,7 @@ class HtmlView(gtk.ScrolledWindow):
 
         #self.webview.connect('populate-popup', self.on_populate_popup)
         self.webview.connect('button-press-event', self.on_button_press)
-        self.nav_signal = self.webview.connect('navigation-requested', self.on_navigate)
+        self.webview.connect('navigation-requested', self.on_navigate)
 
         self.search_text = ''
         self.webview.connect('load-finished', self.on_load_finished)
