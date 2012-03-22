@@ -300,11 +300,17 @@ from inside RedNotebook by opening the menu next to the "Template" button.
 On the left you find the search box. Double-clicking on a day in the search
 results lets you jump to it.
 
-== Clouds ==
+== Clouds ==[clouds]
 If a word appears in the cloud that you don't want to see there, just right-click
 and select to hide it.
 Alternatively you can open the Preferences dialog and add the word to the cloud blacklist.
 Short words with less than 5 letters can be white-listed there as well.
+[Regular expressions http://docs.python.org/library/re.html] are allowed in the
+lists.
+
+You can **hide the word cloud** by adding the regular expression .* to the
+blacklist. This will filter out all words.
+
 
 == Spellcheck ==
 RedNotebook supports spellchecking your entries if you have
