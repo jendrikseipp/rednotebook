@@ -269,7 +269,11 @@ def convert(txt, target, headers=None, options=None):
 
     # Set the three header fields
     if headers is None:
-        headers = ['', '', '']
+        if target == 'tex':
+            # LaTeX requires a title if \maketitle is used
+            headers = ['RedNotebook', '', '']
+        else:
+            headers = ['', '', '']
 
     config = _get_config(target)
 
