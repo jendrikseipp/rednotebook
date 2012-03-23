@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-03-20 11:48+0000\n"
+"PO-Revision-Date: 2012-03-22 13:31+0000\n"
 "Last-Translator: Ngô Chin <ndtrung4419@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-21 05:01+0000\n"
-"X-Generator: Launchpad (build 14981)\n"
+"X-Launchpad-Export-Date: 2012-03-23 04:46+0000\n"
+"X-Generator: Launchpad (build 14996)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -470,160 +470,160 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:464
 msgid "Select an empty folder for the new location of your journal"
-msgstr ""
+msgstr "Hãy chọn môt thư mục trống làm nơi chứa mới cho sổ ghi chép của bạn"
 
 #: ../rednotebook/gui/main_window.py:466
 msgid "The directory name will be the new title of the journal"
-msgstr ""
+msgstr "Tên thư mục sẽ là tên sổ ghi chép"
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
 #: ../rednotebook/gui/main_window.py:487
 msgid "The default journal has been opened"
-msgstr ""
+msgstr "Sổ ghi chép mặc định đã được mở"
 
 #: ../rednotebook/gui/main_window.py:653
 msgid "No text or tag has been selected."
-msgstr ""
+msgstr "Chưa có văn bản hay tag nào được lựa chọn"
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:658
 msgid "Ctrl"
-msgstr ""
+msgstr "Phím Ctrl"
 
 #: ../rednotebook/gui/main_window.py:661
 msgid "Bold"
-msgstr ""
+msgstr "Đậm"
 
 #: ../rednotebook/gui/main_window.py:662
 msgid "Italic"
-msgstr ""
+msgstr "Nghiêng"
 
 #: ../rednotebook/gui/main_window.py:663
 msgid "Underline"
-msgstr ""
+msgstr "Gạch dưới"
 
 #: ../rednotebook/gui/main_window.py:664
 msgid "Strikethrough"
-msgstr ""
+msgstr "Gạch xuyên"
 
 #. ## Translators: noun
 #: ../rednotebook/gui/main_window.py:680 ../rednotebook/gui/exports.py:390
 msgid "Format"
-msgstr ""
+msgstr "Định dạng"
 
 #: ../rednotebook/gui/main_window.py:681
 msgid "Format the selected text or tag"
-msgstr ""
+msgstr "Định dạng văn bản hay tag được chọn"
 
 #: ../rednotebook/gui/main_window.py:730
 msgid "First Item"
-msgstr ""
+msgstr "Mục đầu tiên"
 
 #: ../rednotebook/gui/main_window.py:731
 msgid "Second Item"
-msgstr ""
+msgstr "Mục thứ hai"
 
 #: ../rednotebook/gui/main_window.py:732
 msgid "Indented Item"
-msgstr ""
+msgstr "Mục được lùi vào"
 
 #: ../rednotebook/gui/main_window.py:733
 msgid "Two blank lines close the list"
-msgstr ""
+msgstr "Hai dòng trắng sẽ đóng danh sách"
 
 #: ../rednotebook/gui/main_window.py:737
 msgid "Title text"
-msgstr ""
+msgstr "Tiêu đề"
 
 #: ../rednotebook/gui/main_window.py:761
 msgid "Picture"
-msgstr ""
+msgstr "Hình ảnh"
 
 #: ../rednotebook/gui/main_window.py:762
 msgid "Insert an image from the harddisk"
-msgstr ""
+msgstr "Thêm một hình ảnh từ ổ đĩa"
 
 #: ../rednotebook/gui/main_window.py:764
 msgid "File"
-msgstr ""
+msgstr "Tập tin"
 
 #: ../rednotebook/gui/main_window.py:765
 msgid "Insert a link to a file"
-msgstr ""
+msgstr "Thêm liên kết đến một tập tin"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/main_window.py:768
 msgid "_Link"
-msgstr ""
+msgstr "_Liên kết"
 
 #: ../rednotebook/gui/main_window.py:769
 msgid "Insert a link to a website"
-msgstr ""
+msgstr "Thêm liên kết đến một website"
 
 #: ../rednotebook/gui/main_window.py:771
 msgid "Bullet List"
-msgstr ""
+msgstr "Danh sách gạch đầu dòng"
 
 #: ../rednotebook/gui/main_window.py:773
 msgid "Numbered List"
-msgstr ""
+msgstr "Danh sách đánh số"
 
 #: ../rednotebook/gui/main_window.py:775
 msgid "Title"
-msgstr ""
+msgstr "Tiêu đề"
 
 #: ../rednotebook/gui/main_window.py:777
 msgid "Line"
-msgstr ""
+msgstr "Đường kẻ ngang"
 
 #: ../rednotebook/gui/main_window.py:778
 msgid "Insert a separator line"
-msgstr ""
+msgstr "Thêm một đường phân cách"
 
 #: ../rednotebook/gui/main_window.py:780
 msgid "Table"
-msgstr ""
+msgstr "Bảng"
 
 #: ../rednotebook/gui/main_window.py:782
 msgid "Date/Time"
-msgstr ""
+msgstr "Ngày/Giờ"
 
 #: ../rednotebook/gui/main_window.py:783
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr ""
+msgstr "Thêm ngày giờ hiện tại (chỉnh sửa định dạng trong mục tùy thích)"
 
 #: ../rednotebook/gui/main_window.py:785
 msgid "Line Break"
-msgstr ""
+msgstr "Ngắt dòng"
 
 #: ../rednotebook/gui/main_window.py:786
 msgid "Insert a manual line break"
-msgstr ""
+msgstr "Thêm dấu ngắt dòng thủ công"
 
 #: ../rednotebook/gui/main_window.py:809
 msgid "Insert"
-msgstr ""
+msgstr "Chèn"
 
 #: ../rednotebook/gui/main_window.py:813
 msgid "Insert images, files, links and other content"
-msgstr ""
+msgstr "Thêm ảnh, tập tin và liên kết đến nội dung khác"
 
 #: ../rednotebook/gui/main_window.py:896
 msgid "No link location has been entered"
-msgstr ""
+msgstr "Chưa nhập địa chỉ liên kết"
 
 #: ../rednotebook/gui/clouds.py:134
 msgid "filter, these, comma, separated, words"
-msgstr ""
+msgstr "loại, bỏ, những, chữ, phân, cách, bằng, dấu, phẩy, này"
 
 #: ../rednotebook/gui/clouds.py:139
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "mtv, spam, work, job, play"
 
 #: ../rednotebook/gui/clouds.py:225
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Ẩn \"%s\" khỏi đám mây"
 
 #: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:391
 msgid "Export all days"
@@ -631,59 +631,59 @@ msgstr "Xuất tất cả các ngày"
 
 #: ../rednotebook/gui/exports.py:52
 msgid "Export currently visible day"
-msgstr ""
+msgstr "Xuất ngày hiện đang xem"
 
 #: ../rednotebook/gui/exports.py:55
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "Xuất những ngày trong chuỗi ngày đã chọn"
 
 #: ../rednotebook/gui/exports.py:63
 msgid "From:"
-msgstr ""
+msgstr "Từ:"
 
 #: ../rednotebook/gui/exports.py:65
 msgid "To:"
-msgstr ""
+msgstr "Đến:"
 
 #: ../rednotebook/gui/exports.py:126
 msgid "Date format"
-msgstr ""
+msgstr "Định dạng ngày"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Bỏ trống để không ghi ngày trong văn bản xuất ra"
 
 #: ../rednotebook/gui/exports.py:129
 msgid "Export texts"
-msgstr ""
+msgstr "Xuất văn bản"
 
 #: ../rednotebook/gui/exports.py:130
 msgid "Export all tags"
-msgstr ""
+msgstr "Xuất tất cả tag"
 
 #: ../rednotebook/gui/exports.py:131
 msgid "Do not export tags"
-msgstr ""
+msgstr "Không xuất tag"
 
 #: ../rednotebook/gui/exports.py:133
 msgid "Export only the selected tags"
-msgstr ""
+msgstr "Chỉ xuất những tag này"
 
 #: ../rednotebook/gui/exports.py:144
 msgid "Available tags"
-msgstr ""
+msgstr "Những tag có sẵn"
 
 #: ../rednotebook/gui/exports.py:152 ../rednotebook/gui/exports.py:398
 msgid "Selected tags"
-msgstr ""
+msgstr "Các tag được chọn"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Select"
-msgstr ""
+msgstr "Chọn"
 
 #: ../rednotebook/gui/exports.py:159
 msgid "Deselect"
-msgstr ""
+msgstr "Bỏ chọn"
 
 #: ../rednotebook/gui/exports.py:262
 msgid "If export text is not selected, you have to select at least one tag."
@@ -695,25 +695,28 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:311
 msgid "Export Assistant"
-msgstr ""
+msgstr "Trình hỗ trợ xuất"
 
 #: ../rednotebook/gui/exports.py:313
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "Chào mừng bạn đến với trình hỗ trợ xuất"
 
 #: ../rednotebook/gui/exports.py:314
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
+"Trình hướng dẫn này sẽ giúp bạn xuất sổ ghi chép của mình ra nhiều định dạng "
+"khác nhau."
 
 #: ../rednotebook/gui/exports.py:315
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"Bạn có thể chọn lựa những ngày bạn muốn xuất và nơi lưu trữ bản xuất đó"
 
 #: ../rednotebook/gui/exports.py:325
 msgid "Select Export Format"
-msgstr ""
+msgstr "Hãy lựa chọn định dạng xuất"
 
 #: ../rednotebook/gui/exports.py:330
 msgid "Select Date Range"

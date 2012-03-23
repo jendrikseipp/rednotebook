@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2010-07-26 16:01+0000\n"
-"Last-Translator: extraymond@gmail.com <extraymond@gmail.com>\n"
+"PO-Revision-Date: 2012-03-22 13:30+0000\n"
+"Last-Translator: mail6543210 <Unknown>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-03 05:16+0000\n"
-"X-Generator: Launchpad (build 14886)\n"
+"X-Launchpad-Export-Date: 2012-03-23 04:46+0000\n"
+"X-Generator: Launchpad (build 14996)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -28,7 +28,7 @@ msgstr "標籤"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
-msgstr ""
+msgstr "新鮮事"
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "空閒時間"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
@@ -60,11 +60,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "洗碗"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "檢查郵件"
 
 #: ../rednotebook/info.py:91
 msgid "Monty Python and the Holy Grail"
@@ -82,7 +82,7 @@ msgstr ""
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
-msgstr ""
+msgstr "已經增加一些範例文字來幫助您開始使用，您可以隨意刪除他們。"
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:99
@@ -132,12 +132,12 @@ msgstr "預覽"
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "RedNotebook有兩種模式，__編輯__模式和__預覽__模式"
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:115
 msgid "Click on Preview above to see the difference."
-msgstr ""
+msgstr "按下上方的「預覽」查看差異"
 
 #: ../rednotebook/info.py:118
 msgid ""
@@ -145,6 +145,7 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"今天 我去//寵物店//並 買了 一隻 **老虎**. 然後 我們又到--泳池--公園 玩了一會.我們玩了極限飛盤.之後我們看了\"_大腦生活_\"."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:130
@@ -209,7 +210,7 @@ msgstr "導覽"
 
 #: ../rednotebook/gui/menu.py:92
 msgid "_Journal"
-msgstr ""
+msgstr "日記(J)"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
@@ -293,7 +294,7 @@ msgstr "取得線上幫助"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "瀏覽已回答的問題，或提問一個新問題"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -411,7 +412,7 @@ msgstr "日期/時間 格式"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Exclude from clouds"
-msgstr ""
+msgstr "不包含在雲端系統內"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Do not show those comma separated words in any cloud"
@@ -797,6 +798,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== 會議 ===\n"
+"\n"
+"目的，日期，地點\n"
+"\n"
+"**出席：**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**議程：**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**討論，決定，Assignments：**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:127
 msgid ""
@@ -812,6 +834,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== 日誌===\n"
+"**日期:**\n"
+"\n"
+"**地點:**\n"
+"\n"
+"**參與人員:**\n"
+"\n"
+"**行程:**\n"
+"我們先到xxxxx，然後到yyyyy ...\n"
+"\n"
+"**照片:** [圖片目錄 \"\"/path/to/the/images/\"\"]\n"
 
 #: ../rednotebook/templates.py:141
 msgid ""
@@ -823,6 +856,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== 來電 ===\n"
+"- **來電者:**\n"
+"- **時間:**\n"
+"- **話題:**\n"
+"- **結果和接下來的事項:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:151
 msgid ""
@@ -844,6 +884,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== 個人===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**今天過得如何?**\n"
+"\n"
+"\n"
+"========================\n"
+"**有什麼該改變的?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:209
 msgid "Choose Template Name"
@@ -889,7 +946,7 @@ msgstr "不再詢問"
 
 #: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
-msgstr ""
+msgstr "日期格式不正確"
 
 #: ../rednotebook/util/statistics.py:77 ../rednotebook/util/statistics.py:90
 msgid "Words"
@@ -925,23 +982,23 @@ msgstr "行數"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "離上一次備份已有一段時間"
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
-msgstr ""
+msgstr "您可以備份您的日記為壓縮檔案以避免資料遺失。"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "立即備份"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "下次啟動時詢問"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "不要再詢問"
 
 #: ../rednotebook/journal.py:338
 #, python-format
@@ -999,7 +1056,7 @@ msgstr "編輯"
 
 #: tmp/main_window.glade.h:12
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "開啟文字編輯(Ctrl+P)"
 
 #: tmp/main_window.glade.h:13
 msgid "Exit without saving"
@@ -1073,5 +1130,6 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Chi-Yueh Lin https://launchpad.net/~bancolin\n"
+"  Emerson Hsieh https://launchpad.net/~emerson1234567890\n"
 "  Minoru https://launchpad.net/~minoru\n"
 "  mail6543210 https://launchpad.net/~mail6543210+launchpad"
