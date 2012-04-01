@@ -7,7 +7,7 @@
 - bzr commit -m "Version x.y.z"
 - cd dev/
 - ./build-tarball.sh
-- ./upload-file.sh ../rednotebook-x.y.z.tar.gz
+- ./upload-file.sh ../dist/rednotebook-x.y.z.tar.gz
 - Homepage:
   - Update version number in index.html and downloads.html
   - Write news
@@ -17,5 +17,5 @@
 - Announce on twitter
 - Send mail to rednotebook and python-announce lists
 - Build and release windows version
-- update debian/changelog
+- Add new release in debian/changelog with "dch -v <version>-1"
 - request stable recipe build
