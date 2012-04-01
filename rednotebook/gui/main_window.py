@@ -34,8 +34,8 @@ from rednotebook import templates
 from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook import undo
-from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import categories
+from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
 from rednotebook.gui import search
 from rednotebook.gui.editor import Editor

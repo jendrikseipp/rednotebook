@@ -22,6 +22,7 @@ X Remove spaces from multi-word tags during search and in clouds
 X Auto-complete tags in search
 X Always include all tags regardless of their frequency in the cloud
 X Exports: Correctly set the appropriate extension for each export type
+X Exports: Always add a title for LaTeX exports
 X Fix: Correctly parse configuration values containing ='s
 X Fix: Paths returned from file and folder choosers must be converted to unicode
 X Fix: Correctly redirect error output into the logfile on Windows
