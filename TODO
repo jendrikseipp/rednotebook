@@ -7,26 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.4
-X Search: If a search contains a hashtag (e.g. #Work or #Movies), only days
-  with all of those tags will be searched. This means you can e.g. search for
-  "project-xyz" only in the days tagged with "Work" with the query
-  "#Work project-xyz".
-X Search for combinations of tags (e.g. #magazine #linux)
-X Search: If the query only contains a single hashtag (e.g. #Movies), a list of
-  all subtags (the names of the movies) is shown.
-X Search: Automatically scroll to found text in edit mode
-X Split tag and word clouds
-X Show tag and word cloud only if there are any tags and words respectively
-X Remove spaces from multi-word tags during search and in clouds
-X Auto-complete tags in search
-X Always include all tags regardless of their frequency in the cloud
-X Exports: Correctly set the appropriate extension for each export type
-X Exports: Always add a title for LaTeX exports
-X Fix: Correctly parse configuration values containing ='s
-X Fix: Paths returned from file and folder choosers must be converted to unicode
-X Fix: Correctly redirect error output into the logfile on Windows
-
 1.5
 O Add formulas
   X Preview Latex formulas
