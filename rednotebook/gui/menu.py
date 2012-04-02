@@ -187,7 +187,7 @@ class MainMenuBar(object):
     def on_edit_menu_activate(self, widget):
         """Only set the menu items sensitive if the actions can be performed."""
         edit_mode = not self.main_window.preview_mode
-        for action in ['Cut', 'Copy', 'Paste']:
+        for action in ['Cut', 'Paste']:
             self.main_window.uimanager.get_widget('/MainMenuBar/Edit/%s' % action).set_sensitive(edit_mode)
 
     def on_undo(self, widget):
@@ -196,18 +196,20 @@ class MainMenuBar(object):
     def on_redo(self, widget):
         self.main_window.undo_redo_manager.redo()
 
+    def _get_active_editor_widget(self):
+        if self.main_window.preview_mode:
+            return self.main_window.html_editor.webview
+        else:
+            return self.main_window.day_text_field.day_text_view
+
     def on_copy_menu_item_activate(self, widget):
-        self.main_window.day_text_field.day_text_view.emit('copy_clipboard')
+        self._get_active_editor_widget().emit('copy_clipboard')
 
     def on_paste_menu_item_activate(self, widget):
-        self.main_window.day_text_field.day_text_view.emit('paste_clipboard')
+        self._get_active_editor_widget().emit('paste_clipboard')
 
     def on_cut_menu_item_activate(self, widget):
-#       event = gtk.gdk.Event(gtk.gdk.KEY_PRESS)
-#       event.keyval = ord("X")
-#       event.state = gtk.gdk.CONTROL_MASK
-#       self.main_frame.emit("key_press_event",event)
-        self.main_window.day_text_field.day_text_view.emit('cut_clipboard')
+        self._get_active_editor_widget().emit('cut_clipboard')
 
     def on_fullscreen_menuitem_activate(self, widget):
         self.main_window.toggle_fullscreen()

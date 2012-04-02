@@ -9,7 +9,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.5
 X Suggest last tag when a new tag is added.
-X Grey out cut, copy, paste in preview mode.
+X Grey out cut, and paste menu items in preview mode.
+X Enable copy menu item in preview mode.
 O Add formulas
   X Preview Latex formulas
   X Use local mathjax installation if it is installed (package libjs-mathjax)
@@ -75,7 +76,6 @@ O Possibility to show all entries (Search for "*" or show all entries if no text
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add shortcut to move the cursor into the main text area
 O Make txt2tags faster and fix bugs
-O Color submenu in format menu with additional color picker and color highlighting in edit mode
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
 
@@ -113,37 +113,31 @@ O HTML import?
 O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Ability to make certain entries, eg. birthdays, with frequencies
 O Plugin system?
-O Think about using desktop-couch?
 O Entries without dates (bookmarks, contact lists)?
 O Add more shortcuts for insertions (e.g. horizontal lines)
 O Copy/paste annotations between different days
 O Drag and drop annotations on the same day
 O Improve startup time by showing the window and doing the rest of the initialization
   in an idle loader.
-O Support for 'inline files': read content from file upon preview of page and
-  add the contents of the file inline (which allowes for 'dynamic' content).
 
 O The concepts of insert and format can be unified for most entities this way:
   If text is selected, formatting occurs (à la present-day format command).
   This feature can be applied also to headings, lists, file/web links.
   Otherwise, standard insertion occurs. A few features are meant exclusively
   for this purpose (e.g. horizontal separator).
-
 O Support %!include macro?
-O Let user change the style of the preview and the clouds
 
 O I would like to be able to delete items from my categories list on the left side.
   At the moment if I want to delete multiple items from my todo list, I have to click on one,
   scroll to the right, right click and press delete, scroll back the left, and repeat.
 O It would be great to be able to change the category of an item without having to delete
   it and make a new one. Maybe with a rightclick or drag and drop.
-O Field or shortcut to enter a date and takes you there.
 O Check if Ctrl-Z still works or make sure we have a buffer for each day.
-O Add numberOfCloudWords config option. A value of 0 means, only tags are displayed.
 
 O Promote usage of #hash_tag in entries without adding any extra code for it (like twitter),
   when searching for #hash_tag, we can jump directly to the relevant position in the body.
 O Separate page and textarea instead of textbox for black- and white list?
+O Color submenu in format menu with additional color picker and color highlighting in edit mode
 
 
 
@@ -198,3 +192,6 @@ O Separate page and textarea instead of textbox for black- and white list?
   contains quick links to other journals
   (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=4&t=23) (KISS)
 - Syntaxhighlighting support (pygments) (KISS, can probably be done with javascript)
+- Support for 'inline files': read content from file upon preview of page and
+  add the contents of the file inline (which allows for 'dynamic' content) (KISS)
+- Field or shortcut to enter a date and takes you there (One navigation suffices)
