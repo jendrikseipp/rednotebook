@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.5
 X Suggest last tag when a new tag is added.
+X Grey out cut, copy, paste in preview mode.
 O Add formulas
   X Preview Latex formulas
   X Use local mathjax installation if it is installed (package libjs-mathjax)

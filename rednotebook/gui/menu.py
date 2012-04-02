@@ -185,16 +185,10 @@ class MainMenuBar(object):
         self.main_window.show_dir_chooser('saveas')
 
     def on_edit_menu_activate(self, widget):
-        '''
-        Only set the menu items for undo and redo sensitive if the actions
-        can really be performed
-
-        Probably useless since the buttons are set in undo.py
-        '''
-        can_undo = self.main_window.undo_redo_manager.can_undo()
-        self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo').set_sensitive(can_undo)
-        can_redo = self.main_window.undo_redo_manager.can_redo()
-        self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo').set_sensitive(can_redo)
+        """Only set the menu items sensitive if the actions can be performed."""
+        edit_mode = not self.main_window.preview_mode
+        for action in ['Cut', 'Copy', 'Paste']:
+            self.main_window.uimanager.get_widget('/MainMenuBar/Edit/%s' % action).set_sensitive(edit_mode)
 
     def on_undo(self, widget):
         self.main_window.undo_redo_manager.undo()
