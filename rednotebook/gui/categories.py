@@ -36,6 +36,7 @@ class CategoriesTreeView(object):
 
         # Maintain a list of all entered categories. Initialized by rn.__init__()
         self.categories = []
+        self.last_category = ''
 
         self.statusbar = self.main_window.statusbar
 
@@ -90,6 +91,8 @@ class CategoriesTreeView(object):
 
     def add_category(self, category):
         """Add a new category name and sort all categories."""
+        if category:
+            self.last_category = category
         if category is None or category in self.categories:
             return
         self.categories.append(category)

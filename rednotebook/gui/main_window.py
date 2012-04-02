@@ -1024,6 +1024,9 @@ class NewEntryDialog(object):
         return bool(self.categories_combo_box.get_active_text())
 
     def show_dialog(self, category=''):
+        # Use last used category.
+        category = category or self.categories_tree_view.last_category
+
         # Has to be first, because it may be populated later
         self.new_entry_combo_box.clear()
 
