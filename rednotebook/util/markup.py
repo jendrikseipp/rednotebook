@@ -267,6 +267,12 @@ def convert(txt, target, headers=None, options=None):
     # Here is the marked body text, it must be a list.
     txt = txt.split('\n')
 
+    # Only add MathJax code if there is a formula.
+    if add_mathjax:
+        if all(line.count('$') < 2 for line in txt):
+            add_mathjax = False
+    logging.debug('add_mathjax: %s' % add_mathjax)
+
     # Set the three header fields
     if headers is None:
         if target == 'tex':
