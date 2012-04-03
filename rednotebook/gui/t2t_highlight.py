@@ -85,6 +85,7 @@ class Pattern(object):
         self.name = name
 
         # assemble re-flag
+        # TODO: Is this needed?
         flags += "ML"
         flag = 0
 
@@ -273,7 +274,8 @@ styles = {  'bold':             {'weight': pango.WEIGHT_BOLD},
             'highlight':        {'background': 'yellow'},
             'quote':            {'background': 'gray'},
             'tablehead':        {'background': markup.TABLE_HEAD_BG},
-            'tablerow':         {'background': '#eee'}
+            'tablerow':         {'background': '#eee'},
+            'formula':          {'style': pango.STYLE_ITALIC, 'family': 'serif'}
             }
 def add_header_styles():
     sizes = [
@@ -354,6 +356,9 @@ quote = Pattern(r'^\t+(.*)$', [(1, 'quote')])
 table_head = Pattern(r'^ *(\|\| .*)', [(1, 'tablehead')])
 table_row = Pattern(r'^ *(\| .*)', [(1, 'tablerow')])
 
+# A formula starts with one or two dollar signs and is closed by the same number.
+formula = Pattern(r'(\${1,2})(.+?)(\1)', [(1, 'gray'), (2, 'formula'), (3, 'gray')])
+
 
 patterns = [
         get_pattern('\*', 'bold'),
@@ -374,6 +379,7 @@ patterns = [
         quote,
         table_head,
         table_row,
+        formula,
         ] + title_patterns
 
 

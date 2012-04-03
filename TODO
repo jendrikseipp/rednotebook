@@ -15,11 +15,12 @@ X Only allow hiding words from the cloud, not the tags.
 O Add formulas
   X Preview Latex formulas
   X Use local mathjax installation if it is installed (package libjs-mathjax)
-  O Highlight formulas in edit mode
+  X Highlight formulas in edit mode
   X Support Latex export
   X Write common webview class
   O Support PDF export
   O Add menu item for inserting formulas
+  X Only add MathJax code if there is a formula
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
