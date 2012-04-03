@@ -18,5 +18,6 @@
 - Send mail to rednotebook and python-announce lists
 - Build and release windows version
 - Add new release in debian/changelog with "dch -v <version>-1"
-- request stable recipe build at
-  https://code.launchpad.net/~jendrikseipp/+recipe/rednotebook-stable
+- Go to https://code.launchpad.net/~jendrikseipp/+recipe/rednotebook-stable
+  - Change revision for recipe
+  - Request stable recipe build

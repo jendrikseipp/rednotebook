@@ -229,7 +229,12 @@ class Cloud(HtmlView):
         to the context menu when the user right-clicks the next time
         """
         if uri:
-            self.last_hovered_word = self._get_search_text(uri)
+            hovered_word = self._get_search_text(uri)
+            # We don't want to hide any tags.
+            if hovered_word.startswith(u'#'):
+                self.last_hovered_word = None
+            else:
+                self.last_hovered_word = hovered_word
 
     def on_populate_popup(self, webview, menu):
         """Called when the cloud's popup menu is created."""

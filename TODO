@@ -11,6 +11,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 X Suggest last tag when a new tag is added.
 X Grey out cut, and paste menu items in preview mode.
 X Enable copy menu item in preview mode.
+X Only allow hiding words from the cloud, not the tags.
 O Add formulas
   X Preview Latex formulas
   X Use local mathjax installation if it is installed (package libjs-mathjax)
@@ -29,7 +30,6 @@ X Numbered lists
 X Add quotes by indenting them with a tab
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
   Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
-O Use standard paths on Windows (C:\Docs & Settings\username\My Documents)
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
@@ -98,6 +98,8 @@ O Make windows installer truly portable (leave no traces in registry)
 
 New format:
 O Use json instead of yaml
+O Use standard paths (Win: C:\Docs & Settings\username\My Documents,
+  Linux: ~/.local/share, ~/.config (http://live.gnome.org/Tomboy/Directories))
 
 
 
