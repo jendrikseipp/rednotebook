@@ -18,7 +18,7 @@ O Add formulas
   X Highlight formulas in edit mode
   X Support Latex export
   X Write common webview class
-  O Support PDF export
+  X Support formulas in PDF export
   X Add menu item for inserting formulas
   X Only add MathJax code if there is a formula
 X Fix undo for tags

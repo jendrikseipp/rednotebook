@@ -90,10 +90,12 @@ FORMULAS_SUPPORTED = True
 if not os.path.isfile(MATHJAX_FILE):
     MATHJAX_FILE = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js'
 logging.info('MathJax location: %s' % MATHJAX_FILE)
+MATHJAX_FINISHED = 'MathJax finished'
 
 MATHJAX = """\
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
+  messageStyle: "none",
   config: ["MMLorHTML.js"],
   jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
   tex2jax: {
@@ -110,7 +112,12 @@ MATHJAX = """\
 <script type="text/javascript"
   src="%s">
 </script>
-""" % (MATHJAX_FILE)
+<script>
+  MathJax.Hub.Queue(function () {
+    document.title = "%s";
+  });
+</script>
+""" % (MATHJAX_FILE, MATHJAX_FINISHED)
 
 
 def convert_categories_to_markup(categories, with_category_title=True):

@@ -37,6 +37,7 @@ if __name__ == '__main__':
 
 
 from rednotebook.util import filesystem
+from rednotebook.util import markup
 
 
 try:
@@ -102,25 +103,29 @@ class HtmlPrinter(object):
         self._webview = Browser()
         try:
             self._webview.connect('load-error', self._load_error_cb)
+            self._webview.connect('title-changed', self._title_changed_cb)
+            self._webview.connect('load-finished', self._load_finished_cb)
         except TypeError, err:
             logging.info(err)
         self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
+        self.outfile = None
+
 
     def print_html(self, html, outfile):
-        self._webview.connect('load-finished', self._load_finished_cb, outfile)
+        self.outfile = outfile
+        self.contains_mathjax = 'MathJax' in html
         logging.info('Loading URL...')
         self._webview.load_html(html)
 
         while gtk.events_pending():
             gtk.main_iteration()
 
-    def _load_finished_cb(self, view, frame, outfile):
-        logging.info('Loading done')
+    def _print(self, frame):
         print_op = gtk.PrintOperation()
         print_settings = print_op.get_print_settings() or gtk.PrintSettings()
         print_settings.set_paper_size(self._paper_size)
         print_op.set_print_settings(print_settings)
-        print_op.set_export_filename(os.path.abspath(outfile))
+        print_op.set_export_filename(os.path.abspath(self.outfile))
         logging.info('Exporting PDF...')
         print_op.connect('end-print', self._end_print_cb)
         try:
@@ -129,6 +134,18 @@ class HtmlPrinter(object):
                 gtk.main_iteration()
         except gobject.GError, e:
             logging.error(e.message)
+
+    def _title_changed_cb(self, view, frame, title):
+        logging.info('Title changed: %s' % title)
+        # MathJax changes the title once it has typeset all formulas.
+        if title == markup.MATHJAX_FINISHED:
+            self._print(frame)
+
+    def _load_finished_cb(self, view, frame):
+        logging.info('Loading done')
+        # If there's a formula, it is typeset after the load-finished signal.
+        if not self.contains_mathjax:
+            self._print(frame)
 
     def _load_error_cb(self, view, frame, url, gp):
         logging.error("Error loading %s" % url)
@@ -260,7 +277,7 @@ if __name__ == '__main__':
     logging.getLogger('').setLevel(logging.DEBUG)
     sys.path.insert(0, os.path.abspath("./../../"))
     from rednotebook.util import markup
-    text = 'PDF export works 1 www.heise.de'
+    text = 'PDF export works 1 www.heise.de $\\sum i^2$'
     html = markup.convert(text, 'xhtml')
 
     win = gtk.Window()
