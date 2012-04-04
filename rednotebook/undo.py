@@ -17,7 +17,9 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+from collections import defaultdict
 import logging
+
 
 class Action(object):
     def __init__(self, undo_function, redo_function, tags):
@@ -32,15 +34,25 @@ class UndoRedoManager(object):
 
     def __init__(self, main_window):
         self.main_window = main_window
-        #self.undo_menu_item = self.main_window.builder.get_object('undo_menuitem')
-        #self.redo_menu_item = self.main_window.builder.get_object('redo_menuitem')
 
         self.undo_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo')
         self.redo_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo')
 
-        self.undo_stack = []
-        self.redo_stack = []
+        self.undo_stacks = defaultdict(list)
+        self.redo_stacks = defaultdict(list)
 
+        self.date = None
+
+    @property
+    def undo_stack(self):
+        return self.undo_stacks[self.date]
+
+    @property
+    def redo_stack(self):
+        return self.redo_stacks[self.date]
+
+    def set_date(self, date):
+        self.date = date
         self.update_buttons()
 
     def add_action(self, action):
@@ -94,8 +106,3 @@ class UndoRedoManager(object):
     def update_buttons(self):
         self.undo_menu_item.set_sensitive(self.can_undo())
         self.redo_menu_item.set_sensitive(self.can_redo())
-
-    def clear(self):
-        del self.undo_stack[:]
-        del self.redo_stack[:]
-        self.update_buttons()

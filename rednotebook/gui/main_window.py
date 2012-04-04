@@ -918,7 +918,7 @@ class MainWindow(object):
         if self.zeitgeist_widget:
             self.zeitgeist_widget.set_date(new_date)
 
-        self.undo_redo_manager.clear()
+        self.undo_redo_manager.set_date(new_date)
 
         self.day = day
 

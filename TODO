@@ -8,17 +8,15 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.5
+X Remember possible undo/redo actions for each day separately.
 X Suggest last tag when a new tag is added.
-X Grey out cut, and paste menu items in preview mode.
 X Enable copy menu item in preview mode.
+X Grey out cut and paste menu items in preview mode.
 X Only allow hiding words from the cloud, not the tags.
-O Add formulas
+X Add formulas
   X Preview Latex formulas
-  X Use local mathjax installation if it is installed (package libjs-mathjax)
   X Highlight formulas in edit mode
-  X Support Latex export
-  X Write common webview class
-  X Support formulas in PDF export
+  X Support formulas in all exports
   X Add menu item for inserting formulas
   X Only add MathJax code if there is a formula
 X Fix undo for tags
@@ -136,7 +134,6 @@ O I would like to be able to delete items from my categories list on the left si
   scroll to the right, right click and press delete, scroll back the left, and repeat.
 O It would be great to be able to change the category of an item without having to delete
   it and make a new one. Maybe with a rightclick or drag and drop.
-O Check if Ctrl-Z still works or make sure we have a buffer for each day.
 
 O Promote usage of #hash_tag in entries without adding any extra code for it (like twitter),
   when searching for #hash_tag, we can jump directly to the relevant position in the body.
