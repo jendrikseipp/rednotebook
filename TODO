@@ -10,10 +10,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.5
 X Remember possible undo/redo actions for each day separately.
 X Suggest last tag when a new tag is added.
-X Enable copy menu item in preview mode.
+X Enable copy menu item in preview mode. (LP:834473)
 X Grey out cut and paste menu items in preview mode.
 X Only allow hiding words from the cloud, not the tags.
-X Add formulas
+X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
   X Support formulas in all exports

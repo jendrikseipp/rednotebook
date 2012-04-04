@@ -37,10 +37,11 @@ from os.path import join
 from distutils.core import setup, Extension
 import distutils.command.install_data
 
+
 if sys.platform == 'win32':
     print 'running on win32. Importing py2exe'
     import py2exe
-    
+
     # Delete old files to force updating
     for dir in ['i18n', 'files', 'images']:
         path = os.path.join('dist', dir)
@@ -80,9 +81,7 @@ def build_mo_files():
     if not os.path.exists(i18n_dir):
         os.mkdir(i18n_dir)
 
-    available_langs = os.listdir(po_dir)
-    available_langs = filter(lambda file: file.endswith('.po'), available_langs)
-    available_langs = map(lambda file: file[:-3], available_langs)
+    available_langs = [os.path.splitext(f)[0] for f in os.listdir(po_dir) if f.endswith('.po')]
 
     print 'Languages: ', available_langs
 
@@ -91,8 +90,6 @@ def build_mo_files():
         lang_dir = os.path.join(i18n_dir, lang)
         mo_dir = os.path.join(lang_dir, 'LC_MESSAGES')
         mo_file = os.path.join(mo_dir, 'rednotebook.mo')
-        #cmd = ['msgfmt', '--output-file=%s' % mo_file, po_file]
-        #print 'cmd', cmd
 
         for dir in [lang_dir, mo_dir]:
             if not os.path.exists(dir):
@@ -118,7 +115,7 @@ def get_data_base_dir():
     Hack for Jaunty: Check command line args directly for data-dir
 
     Normally we try to get the data-dir from the appropriate distutils
-    class
+    class.
     This is done by creating an otherwise unused install_data object
     '''
     for arg in sys.argv:
@@ -140,7 +137,6 @@ print 'data_base_dir', data_base_dir
 
 
 ## Code borrowed from wxPython's setup and config files
-## Thanks to Robin Dunn for the suggestion.
 def opj(*args):
     path = os.path.join(*args)
     return os.path.normpath(path)
