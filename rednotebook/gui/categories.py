@@ -228,11 +228,15 @@ class CategoriesTreeView(object):
         pango_markup = markup.convert_to_pango(txt2tags_markup)
         self.tree_store.set_value(iter, 0, pango_markup)
 
-    def find_iter(self, category, entry):
+    def find_iter(self, category, entry=None):
         logging.debug('Looking for iter: "%s", "%s"' % (category, entry))
         category_iter = self._get_category_iter(category)
 
-        if not category_iter:
+        if category_iter:
+            # If we only search the category, return it.
+            if not entry:
+                return category_iter
+        else:
             # If the category was not found, return None
             return None
 
