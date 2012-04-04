@@ -702,14 +702,15 @@ class MainWindow(object):
             %(numlist_ui)s
             <menuitem action="Title"/>
             <menuitem action="Line"/>
-            %(title_ui)s
+            %(table_ui)s
+            <menuitem action="Formula"/>
             <menuitem action="Date"/>
             <menuitem action="LineBreak"/>
         </popup>
         </ui>'''
 
         numlist_ui = '' #'<menuitem action="NumberedList"/>'
-        title_ui = ''# '<menuitem action="Table"/>'
+        table_ui = ''# '<menuitem action="Table"/>'
 
         insert_menu_xml = insert_menu_xml % locals()
 
@@ -742,6 +743,8 @@ class MainWindow(object):
                    '|| Title rows | are always | centered |\n'
                    '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
                    '|  Always use  |  at least  |  one whitespace  |\n')
+
+        formula = '$\\sum_{i=1}^n i = \\frac{n(n+1)}{2}$'
 
         line_break = r'\\'
 
@@ -777,6 +780,8 @@ class MainWindow(object):
                 lambda widget: self.day_text_field.insert(line)),
             ('Table', None, _('Table'), None, None,
                 lambda widget: self.day_text_field.insert(table)),
+            ('Formula', None, _('Latex Formula'), None, None,
+                lambda widget: self.day_text_field.insert(formula)),
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
                 insert_date_time),

@@ -19,8 +19,9 @@ O Add formulas
   X Support Latex export
   X Write common webview class
   O Support PDF export
-  O Add menu item for inserting formulas
+  X Add menu item for inserting formulas
   X Only add MathJax code if there is a formula
+X Fix undo for tags
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
