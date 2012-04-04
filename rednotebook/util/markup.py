@@ -85,10 +85,8 @@ CSS = """\
 """ % globals()
 
 # MathJax
-MATHJAX_FILE = '/usr/share/javascript/mathjax/MathJax.js'
 FORMULAS_SUPPORTED = True
-if not os.path.isfile(MATHJAX_FILE):
-    MATHJAX_FILE = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js'
+MATHJAX_FILE = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js'
 logging.info('MathJax location: %s' % MATHJAX_FILE)
 MATHJAX_FINISHED = 'MathJax finished'
 
