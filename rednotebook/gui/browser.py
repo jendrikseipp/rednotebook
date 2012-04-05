@@ -31,10 +31,6 @@ import gobject
 # Testing
 if __name__ == '__main__':
     sys.path.insert(0, '../../')
-    # Fix for pywebkitgtk 1.1.5
-    #gtk.gdk.threads_init() # only initializes threading in the glib/gobject module
-    gobject.threads_init() # also initializes the gdk threads
-
 
 from rednotebook.util import filesystem
 from rednotebook.util import markup

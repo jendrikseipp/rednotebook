@@ -46,12 +46,10 @@ else:
 base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
 sys.path.insert(0, base_dir)
 
-#from rednotebook.util import filesystem # creates a copy of filesystem module
-#import rednotebook.util.filesystem      # imports the original filesystem module
-from rednotebook.external import elibintl
-
 
 ## ---------------------- Enable i18n -------------------------------
+
+from rednotebook.external import elibintl
 
 # We need to translate 3 different types of strings:
 # * sourcecode strings
@@ -309,8 +307,6 @@ class Journal:
 
 
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
-        #logging.info('Trying to save the journal')
-
         self.save_old_day()
 
         try:

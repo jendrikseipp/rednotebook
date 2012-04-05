@@ -20,6 +20,7 @@ X Insert Latex formulas (LP:851471)
   X Add menu item for inserting formulas
   X Only add MathJax code if there is a formula
 X Fix undo for tags
+X Install .mo files (translations) in the standard directories under Linux
 
 1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
@@ -33,7 +34,7 @@ O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not sa
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
-O Scroll to searched text when a result is clicked in preview mode
+O Scroll to searched text when a result is clicked in preview mode (seems difficult in webkitgtk)
 O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
@@ -69,9 +70,7 @@ O Imports
   O Suggest input encoding, but let user set it afterwards
 
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
-O Consider using apport
 O Translate help (Restructure first using Sphinx?)
-O Install .mo files (translations) in the standard directories (wait for distutils2)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add shortcut to move the cursor into the main text area
@@ -196,3 +195,4 @@ O Color submenu in format menu with additional color picker and color highlighti
 - Support for 'inline files': read content from file upon preview of page and
   add the contents of the file inline (which allows for 'dynamic' content) (KISS)
 - Field or shortcut to enter a date and takes you there (One navigation suffices)
+- Consider using apport (Only supports Linux, difficult setup, might result in too many bugreports)
