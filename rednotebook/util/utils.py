@@ -63,50 +63,30 @@ def setup_signal_handlers(journal):
     SIGKILL cannot be caught
     SIGINT is caught again by KeyboardInterrupt
     """
-
     signals = []
-
-    try:
-        signals.append(signal.SIGHUP)  #Terminal closed, Parent process dead
-    except AttributeError:
-        pass
-    try:
-        signals.append(signal.SIGINT)  #Interrupt from keyboard (CTRL-C)
-    except AttributeError:
-        pass
-    try:
-        signals.append(signal.SIGQUIT) #Quit from keyboard
-    except AttributeError:
-        pass
-    try:
-        signals.append(signal.SIGABRT) #Abort signal from abort(3)
-    except AttributeError:
-        pass
-    try:
-        signals.append(signal.SIGTERM) #Termination signal
-    except AttributeError:
-        pass
-    try:
-        signals.append(signal.SIGTSTP) #Stop typed at tty
-    except AttributeError:
-        pass
-
+    signal_names = [
+            'SIGHUP',  #Terminal closed, Parent process dead
+            'SIGINT',  #Interrupt from keyboard (CTRL-C)
+            'SIGQUIT', #Quit from keyboard
+            'SIGABRT', #Abort signal from abort(3)
+            'SIGTERM', #Termination signal
+            'SIGTSTP', #Stop typed at tty
+        ]
 
     def signal_handler(signum, frame):
         logging.info('Program was abnormally aborted with signal %s' % signum)
         journal.exit()
 
+    for signal_name in signal_names:
+        signal_number = getattr(signal, signal_name, None)
+        if signal_number is not None:
+            try:
+                signal.signal(signal_number, signal_handler)
+                signals.append(signal_number)
+            except RuntimeError:
+                logging.info('Could not connect signal number %d' % signal_number)
 
-    msg = 'Connected Signals: '
-
-    for signal_number in signals:
-        try:
-            msg += str(signal_number) + ' '
-            signal.signal(signal_number, signal_handler)
-        except RuntimeError:
-            msg += '\n_false Signal Number: ' + signal_number
-
-    logging.info(msg)
+    logging.info('Connected Signals: %s' % signals)
 
 
 def get_new_version_number():
