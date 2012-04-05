@@ -23,19 +23,78 @@ This is the install file for RedNotebook.
 
 To install the program, run "python setup.py install"
 To do a (test) installation to a different dir: "python setup.py install --root=test-dir"
-To only compile the translations, run "python setup.py i18n"
+To only compile the translations, run "python setup.py build_trans"
 """
 
 import os
 import sys
 from glob import glob
-import fnmatch
 import shutil
-from subprocess import call
-from os.path import join
 
-from distutils.core import setup, Extension
-import distutils.command.install_data
+from distutils.core import setup
+from distutils import cmd
+from distutils.command.install_data import install_data as _install_data
+from distutils.command.build import build as _build
+
+
+class build_trans(cmd.Command):
+    """
+    Code taken from mussorgsky
+    (https://garage.maemo.org/plugins/ggit/browse.php/?p=mussorgsky;a=blob;f=setup.py;hb=HEAD)
+    """
+    description = 'Compile .po files into .mo files'
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        po_dir = os.path.join(os.path.dirname(os.curdir), 'po')
+        for path, names, filenames in os.walk(po_dir):
+            for f in filenames:
+                if f.endswith('.po'):
+                    lang = os.path.splitext(f)[0]
+                    src = os.path.join(path, f)
+                    dest_path = os.path.join('build', 'locale', lang, 'LC_MESSAGES')
+                    dest = os.path.join(dest_path, 'rednotebook.mo')
+                    if not os.path.exists(dest_path):
+                        os.makedirs(dest_path)
+                    # Recompile only if compiled version is outdated.
+                    if not os.path.exists(dest):
+                        print 'Compiling %s' % src
+                        msgfmt.make(src, dest)
+                    else:
+                        src_mtime = os.stat(src)[8]
+                        dest_mtime = os.stat(dest)[8]
+                        if src_mtime > dest_mtime:
+                            print 'Compiling %s' % src
+                            msgfmt.make(src, dest)
+
+
+class build(_build):
+    sub_commands = _build.sub_commands + [('build_trans', None)]
+
+    def run(self):
+        _build.run(self)
+
+
+class install_data(_install_data):
+    def run(self):
+        for lang in os.listdir('build/locale/'):
+            lang_dir = os.path.join('share', 'locale', lang, 'LC_MESSAGES')
+            lang_file = os.path.join('build', 'locale', lang, 'LC_MESSAGES', 'rednotebook.mo')
+            self.data_files.append( (lang_dir, [lang_file]) )
+        _install_data.run(self)
+
+
+cmdclass = {
+    'build': build,
+    'build_trans': build_trans,
+    'install_data': install_data,
+}
 
 
 if sys.platform == 'win32':
@@ -59,8 +118,6 @@ if sys.platform == 'win32':
     py2exe.build_exe.isSystemDLL = isSystemDLL
 
 
-
-
 baseDir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, baseDir)
 
@@ -68,121 +125,10 @@ from rednotebook import info
 from rednotebook.external import msgfmt
 
 
-# i18n
-i18n_dir = 'rednotebook/i18n/'
-
-def build_mo_files():
-    '''
-    Little script that compiles all available po files into mo files
-    '''
-
-    po_dir = 'po'
-
-    if not os.path.exists(i18n_dir):
-        os.mkdir(i18n_dir)
-
-    available_langs = [os.path.splitext(f)[0] for f in os.listdir(po_dir) if f.endswith('.po')]
-
-    print 'Languages: ', available_langs
-
-    for lang in available_langs:
-        po_file = os.path.join(po_dir, lang+'.po')
-        lang_dir = os.path.join(i18n_dir, lang)
-        mo_dir = os.path.join(lang_dir, 'LC_MESSAGES')
-        mo_file = os.path.join(mo_dir, 'rednotebook.mo')
-
-        for dir in [lang_dir, mo_dir]:
-            if not os.path.exists(dir):
-                os.mkdir(dir)
-
-        #call(cmd)
-        print 'Compiling %s to %s' % (po_file, mo_file)
-        msgfmt.make(po_file, mo_file)
-
-if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
-    build_mo_files()
-    if 'i18n' in sys.argv:
-        sys.exit()
-
-if 'clean' in sys.argv:
-    if os.path.exists(i18n_dir):
-        shutil.rmtree(i18n_dir)
-
-def get_data_base_dir():
-    '''
-    Returns the dir where the data files (pixmaps etc.) are installed
-
-    Hack for Jaunty: Check command line args directly for data-dir
-
-    Normally we try to get the data-dir from the appropriate distutils
-    class.
-    This is done by creating an otherwise unused install_data object
-    '''
-    for arg in sys.argv:
-        if arg.startswith('--install-data'):
-            install_data_text, data_dir = arg.split('=')
-            return data_dir
-
-    class helper_install_data(distutils.command.install_data.install_data):
-        """need to change self.install_dir to the actual library dir"""
-        def get_data_dir(self):
-            install_cmd = self.get_finalized_command('install')
-            data_base_dir = getattr(install_cmd, 'install_data')
-            return data_base_dir
-    from distutils.dist import Distribution
-    return helper_install_data(Distribution()).get_data_dir()
-
-data_base_dir = get_data_base_dir()
-print 'data_base_dir', data_base_dir
-
-
-## Code borrowed from wxPython's setup and config files
-def opj(*args):
-    path = os.path.join(*args)
-    return os.path.normpath(path)
-
-# Specializations of some distutils command classes
-class wx_smart_install_data(distutils.command.install_data.install_data):
-    """need to change self.install_dir to the actual library dir"""
-    def run(self):
-        install_cmd = self.get_finalized_command('install')
-        self.install_dir = getattr(install_cmd, 'install_lib')
-        return distutils.command.install_data.install_data.run(self)
-
-def find_data_files(srcdir, *wildcards, **kw):
-    # get a list of all files under the srcdir matching wildcards,
-    # returned in a format to be used for install_data
-    def walk_helper(arg, dirname, files):
-        if '.svn' in dirname:
-            return
-        names = []
-        lst, wildcards = arg
-        for wc in wildcards:
-            wc_name = opj(dirname, wc)
-            for f in files:
-                filename = opj(dirname, f)
-
-                if fnmatch.fnmatch(filename, wc_name) and not os.path.isdir(filename):
-                    names.append(filename)
-        if names:
-            lst.append( (dirname, names ) )
-
-    file_list = []
-    recursive = kw.get('recursive', True)
-    if recursive:
-        os.path.walk(srcdir, walk_helper, (file_list, wildcards))
-    else:
-        walk_helper((file_list, wildcards),
-                    srcdir,
-                    [os.path.basename(f) for f in glob(opj(srcdir, '*'))])
-    return file_list
-
-
-
 parameters = {  'name'              : 'rednotebook',
                 'version'           : info.version,
                 'description'       : 'Graphical daily journal with calendar, '
-                                        'templates and keyword searching',
+                                      'templates and keyword searching',
                 'long_description'  : info.comments,
                 'author'            : info.author,
                 'author_email'      : info.authorMail,
@@ -192,47 +138,32 @@ parameters = {  'name'              : 'rednotebook',
                 'license'           : "GPL",
                 'keywords'          : "journal, diary",
                 'scripts'           : ['rednotebook/rednotebook'],
-                'packages'          : ['rednotebook', 'rednotebook.util', 'rednotebook.gui',
-                                        'rednotebook.external'],
+                'packages'          : ['rednotebook', 'rednotebook.external',
+                                       'rednotebook.gui', 'rednotebook.util'],
                 'package_data'      : {'rednotebook':
-                                        ['images/*.png', 'images/rednotebook-icon/*.png',
+                                       ['images/*.png', 'images/rednotebook-icon/*.png',
                                         'files/*.css', 'files/*.glade', 'files/*.cfg']},
                 'data_files'        : [],
+                'cmdclass'          : cmdclass,
             }
 
-if not sys.platform == 'win32':
-    ## Borrowed from wxPython too:
-    ## Causes the data_files to be installed into the modules directory.
-    ## Override some of the default distutils command classes with my own.
-    parameters['cmdclass'] = {'install_data': wx_smart_install_data}
-
-if set(['build', 'install', 'bdist', 'py2exe', 'i18n']) & set(sys.argv):
-    ## This is a list of files to install, and where:
-    ## Make sure the MANIFEST.in file points to all the right
-    ## directories too.
-    mo_files = find_data_files('rednotebook/i18n', '*.mo')
-    if sys.platform == 'win32':
-        # We have no "rednotebook" dir on windows (rednotebook/i18n/... -> i18n/...)
-        mo_files = [(dir[12:], file_list) for dir, file_list in mo_files]
-    parameters['data_files'].extend(mo_files)
-
 # Freedesktop parameters
-share_dir = join(get_data_base_dir(), 'share')
-if os.path.exists(share_dir):
+if not sys.platform.startswith('win'):
     parameters['data_files'].extend([
-            (join(share_dir, 'applications'), ['rednotebook.desktop']),
-            (join(share_dir, 'icons/hicolor/48x48/apps'), ['rednotebook.png']),# new freedesktop.org spec
-            (join(share_dir, 'pixmaps'), ['rednotebook.png']),              # for older configurations
-            ])
+        ('share/applications', ['rednotebook.desktop']),
+        ('share/icons/hicolor/48x48/apps', ['rednotebook.png']), # new freedesktop.org spec
+        ('share/pixmaps', ['rednotebook.png']),                  # for older configurations
+    ])
 
-# For the use of py2exe you have to checkout the repository.
-# To create Windows Installers have a look at the file 'win/win-build.txt'
-includes = ('rednotebook.gui, rednotebook.util, cairo, pango, '
-            'pangocairo, atk, gobject, gio, gtk, chardet, zlib, glib, '
-            'gtkspell')
-excludes = ('*.exe')
-dll_excludes = []
+
 if 'py2exe' in sys.argv:
+    # For the use of py2exe you have to checkout the repository.
+    # To create Windows Installers have a look at the file 'win/win-build.txt'
+    includes = ('rednotebook.gui, rednotebook.util, cairo, pango, '
+                'pangocairo, atk, gobject, gio, gtk, chardet, zlib, glib, '
+                'gtkspell')
+    excludes = ('*.exe')
+    dll_excludes = []
     py2exeParameters = {
                     #3 (default) don't bundle,
                     #2: bundle everything but the Python interpreter,
@@ -260,16 +191,14 @@ if 'py2exe' in sys.argv:
     parameters['data_files'].extend([
                                         ('files', ['rednotebook/files/main_window.glade',
                                                    'rednotebook/files/default.cfg']),
-                                    ('images', glob(join('rednotebook', 'images', '*.png'))),
+                                    ('images', glob(os.path.join('rednotebook', 'images', '*.png'))),
                                     ('images/rednotebook-icon',
-                                        glob(join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),
+                                        glob(os.path.join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),
                                     #('.', [r'C:\GTK\libintl-8.dll']),
                                     # Bundle the visual studio files
                                     ("Microsoft.VC90.CRT", ['win/Microsoft.VC90.CRT.manifest', 'win/msvcr90.dll']),
                                     ])
     parameters.update(py2exeParameters)
-#from pprint import pprint
-#pprint(parameters)
-#sys.exit()
-#Additionally use MANIFEST.in for image files
+
+# Additionally use MANIFEST.in for image files
 setup(**parameters)

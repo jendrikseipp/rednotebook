@@ -60,9 +60,7 @@ from rednotebook.external import elibintl
 
 LOCALE_PATH = filesystem.get_utf8_path(filesystem.locale_dir)
 
-# the name of the gettext domain. because we have our translation files
-# not in a global folder this doesn't really matter, setting it to the
-# application name is a good idea tough.
+# the name of the gettext domain.
 GETTEXT_DOMAIN = 'rednotebook'
 
 # Register _() as a global translation function and set up the translation

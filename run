@@ -85,8 +85,5 @@ if test "x$system" = xSUSE -o "x$system" = "xSUSE LINUX" ; then
   fi
 fi
 
-# Translate RedNotebook --------------------------------------------------------
-python setup.py i18n
-
 # Run RedNotebook --------------------------------------------------------------
 python rednotebook/journal.py

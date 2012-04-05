@@ -52,18 +52,19 @@ def get_main_dir():
 #------------------------------------------------------------------------------
 
 
-if not main_is_frozen():
+if main_is_frozen():
+    app_dir = get_main_dir()
+    locale_dir = os.path.join(app_dir, 'i18n')
+else:
     app_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
     app_dir = os.path.normpath(app_dir)
-else:
-    app_dir = get_main_dir()
+    locale_dir = os.path.join(sys.prefix, 'share', 'locale')
 
 app_dir = get_unicode_path(app_dir)
 
 image_dir = os.path.join(app_dir, 'images')
 frame_icon_dir = os.path.join(image_dir, 'rednotebook-icon')
 files_dir = os.path.join(app_dir, 'files')
-locale_dir = os.path.join(app_dir, 'i18n')
 
 user_home_dir = get_unicode_path(os.path.expanduser('~'))
 
