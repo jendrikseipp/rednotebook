@@ -84,12 +84,16 @@ class CustomComboBoxEntry(object):
 
 
 class CustomListView(gtk.TreeView):
-    def __init__(self):
+    def __init__(self, columns):
+        """
+        *columns* must be a list of (header, type) pairs e.g. [('title', str)].
+        """
         gtk.TreeView.__init__(self)
-        # create a TreeStore with two string columns to use as the model
-        self.set_model(gtk.ListStore(str, str))
+        headers, types = zip(*columns)
+        # create a TreeStore with columns to use as the model
+        self.set_model(gtk.ListStore(*types))
 
-        columns = [gtk.TreeViewColumn('1'), gtk.TreeViewColumn('2')]
+        columns = [gtk.TreeViewColumn(header) for header in headers]
 
         # add tvcolumns to tree_view
         for index, column in enumerate(columns):

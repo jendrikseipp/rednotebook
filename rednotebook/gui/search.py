@@ -22,7 +22,7 @@ from xml.sax.saxutils import escape
 import gobject
 import gtk
 
-from rednotebook.gui.customwidgets import CustomComboBoxEntry
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates
 
 
@@ -71,42 +71,12 @@ class SearchComboBox(CustomComboBoxEntry):
         self.main_window.search_tree_view.update_data(search_text, tags)
 
 
-class SearchTreeView(gtk.TreeView):
-    def __init__(self, main_window, *args, **kwargs):
-        gtk.TreeView.__init__(self, *args, **kwargs)
+class SearchTreeView(CustomListView):
+    def __init__(self, main_window):
+        CustomListView.__init__(self, [(_('Date'), str), (_('Text'), str)])
         self.main_window = main_window
         self.journal = self.main_window.journal
-
-        # create a TreeStore with two string columns to use as the model
-        self.tree_store = gtk.ListStore(str, str)
-
-        # create the TreeView using tree_store
-        self.set_model(self.tree_store)
-
-        # create the TreeViewColumns to display the data
-        self.date_column = gtk.TreeViewColumn(_('Date'))
-        self.matching_column = gtk.TreeViewColumn(_('Text'))
-
-        columns = [self.date_column,self.matching_column, ]
-
-        # add tvcolumns to tree_view
-        for index, column in enumerate(columns):
-            self.append_column(column)
-
-            # create a CellRendererText to render the data
-            cell_renderer = gtk.CellRendererText()
-
-            # add the cell to the tvcolumn and allow it to expand
-            column.pack_start(cell_renderer, True)
-
-            # Get markup for column, not text
-            column.set_attributes(cell_renderer, markup=index)
-
-            # Allow sorting on the column
-            column.set_sort_column_id(index)
-
-        # make it searchable
-        self.set_search_column(1)
+        self.tree_store = self.get_model()
 
         self.connect('cursor_changed', self.on_cursor_changed)
 

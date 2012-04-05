@@ -328,8 +328,9 @@ class MainWindow(object):
         self.stats_dialog.set_transient_for(self.main_frame)
         overall_box = self.builder.get_object('overall_box')
         day_box = self.builder.get_object('day_stats_box')
-        overall_list = CustomListView()
-        day_list = CustomListView()
+        columns = [('1', str), ('2', str)]
+        overall_list = CustomListView(columns)
+        day_list = CustomListView(columns)
         overall_box.pack_start(overall_list, True, True)
         day_box.pack_start(day_list, True, True)
         setattr(self.stats_dialog, 'overall_list', overall_list)
