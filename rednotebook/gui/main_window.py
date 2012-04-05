@@ -167,7 +167,6 @@ class MainWindow(object):
         self.template_manager.make_empty_template_files()
         self.setup_template_menu()
 
-        #self.menubar_manager.set_tooltips()
         self.set_tooltips()
 
         # Only add the config variable if zeitgeist is available

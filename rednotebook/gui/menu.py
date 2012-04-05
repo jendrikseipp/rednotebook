@@ -159,17 +159,6 @@ class MainMenuBar(object):
         self.menubar = self.uimanager.get_widget('/MainMenuBar')
         return self.menubar
 
-    def set_tooltips(self):
-        groups = self.uimanager.get_action_groups()
-        for group in groups:
-            actions = group.list_actions()
-            for action in actions:
-                widgets = action.get_proxies()
-                tooltip = action.get_property('tooltip')
-                if tooltip:
-                    for widget in widgets:
-                        widget.set_tooltip_markup(tooltip)
-
     def on_new_journal_button_activate(self, widget):
         self.main_window.show_dir_chooser('new')
 
