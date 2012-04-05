@@ -309,6 +309,15 @@ def unquote_url(url):
     return urllib.unquote(url).decode('utf-8')
 
 
+def _open_url_with_call(url, prog):
+    try:
+        logging.info( 'Trying to open %s with %s' % (url, prog))
+        system_call([prog, url])
+    except (OSError, subprocess.CalledProcessError):
+        logging.exception('Opening %s with %s failed' % (url, prog))
+        # If everything failed, try the webbrowser
+        open_url_in_browser(url)
+
 def open_url(url):
     '''
     Opens a file with the platform's preferred method
@@ -326,29 +335,12 @@ def open_url(url):
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
             os.startfile(url)
-            return
         except OSError:
             logging.exception('Opening %s with "os.startfile" failed' % url)
-            return
-
     elif sys.platform == 'darwin':
-        try:
-            logging.info('Trying to open %s with "open"' % url)
-            system_call(['open', url])
-            return
-        except (OSError, subprocess.CalledProcessError):
-            logging.exception('Opening %s with "open" failed' % url)
-
+        _open_url_with_call(url, 'open')
     else:
-        try:
-            logging.info( 'Trying to open %s with xdg-open' % url)
-            system_call(['xdg-open', url])
-            return
-        except (OSError, subprocess.CalledProcessError):
-            logging.exception('Opening %s with xdg-open failed' % url)
-
-    # If everything failed, try the webbrowser
-    open_url_in_browser(url)
+        _open_url_with_call(url, 'xdg-open')
 
 
 
