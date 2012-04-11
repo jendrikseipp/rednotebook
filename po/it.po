@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-03-17 21:04+0000\n"
+"PO-Revision-Date: 2012-04-10 06:22+0000\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-09 04:57+0000\n"
-"X-Generator: Launchpad (build 15060)\n"
+"X-Launchpad-Export-Date: 2012-04-11 04:39+0000\n"
+"X-Generator: Launchpad (build 15070)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -72,7 +72,7 @@ msgstr "Monty Python e il Santo Graal"
 
 #: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Riunione del team"
 
 #: ../rednotebook/info.py:95
 msgid "Hello!"
@@ -124,7 +124,7 @@ msgstr "Destra"
 
 #: ../rednotebook/info.py:109
 msgid "Tags for this day"
-msgstr ""
+msgstr "Etichette per questa giornata"
 
 #. ## Translators: noun
 #. ## Verb
@@ -1070,7 +1070,7 @@ msgstr "<b>Giorno selezionato</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Write entry</b> (optional)"
-msgstr ""
+msgstr "<b>Scrivi voce</b> (facoltativo)"
 
 #: tmp/main_window.glade.h:9
 msgid "Add Tag"
