@@ -58,16 +58,6 @@ X Portable Version:
   - Provide Option in Setup for running RedNotebook portable. Maybe use file
     that is only installed, when running this mode.
 
-O Formulas:
-  - MathJax CDN works well for websites
-  - CDN needs internet connection
-  - HTML needs to be written to a file before it can be loaded if it contains remote js
-    -> It seems this restriction was lifted.
-  - PDF export needs some hacking to only print after js has finished
-  - Latex export for multiline formulas is difficult (impossible?)
-  - Installing MathJax locally might not be an option, because it needs a lot of ressources
-    -> use local installation only if already present
-
 O Format:
   - JSON is faster to decode and encode and we only use strings, ints and dicts
     anyway.
@@ -104,12 +94,3 @@ Implementation notes:
 - PyYAML saves each string as ascii if it only contains ascii chars.
   If there are unicode chars, a unicode object is saved.
 - The Days always turn their text into unicode before returning it.
-
-Tags/Category search:
-- #Magazine -> List of all magazines
-- #Magazine #Linux -> List of all Linux magazines
-- #Magazine Linux -> List of all magazines containing "Linux"
-  or -> List of all days with tag "Magazine" that contain "Linux"
-
--> Maybe more uniformly: #Magazine Linux Format -> Do everywhere-search for
-   words without # in all days that have the hashtags.
