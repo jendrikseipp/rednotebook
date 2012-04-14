@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-02-20 10:18+0000\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"PO-Revision-Date: 2012-04-13 08:02+0000\n"
+"Last-Translator: chrioll <chrioll@gmail.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-09 04:57+0000\n"
-"X-Generator: Launchpad (build 15060)\n"
+"X-Launchpad-Export-Date: 2012-04-14 04:58+0000\n"
+"X-Generator: Launchpad (build 15070)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -56,7 +56,7 @@ msgstr "Erledigt"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr "Milch einkaufen"
+msgstr "Milch nicht vergessen"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
@@ -434,7 +434,7 @@ msgstr "Datum/Uhrzeit Format"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Exclude from clouds"
-msgstr "Wolken - Schwarze Liste"
+msgstr "Ausschließen von Wolken"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Do not show those comma separated words in any cloud"
@@ -442,7 +442,7 @@ msgstr "Zeige diese durch Komma getrennten Wörter in keiner Wortwolke"
 
 #: ../rednotebook/gui/options.py:326
 msgid "Allow small words in clouds"
-msgstr "Wolken - Weiße Liste"
+msgstr "Erlauben Sie kleine Wörter in Wolken"
 
 #: ../rednotebook/gui/options.py:327
 msgid "Allow those words with 4 letters or less in the text cloud"
