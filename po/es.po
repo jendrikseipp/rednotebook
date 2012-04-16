@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-01-30 06:53+0000\n"
-"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
+"PO-Revision-Date: 2012-04-15 15:22+0000\n"
+"Last-Translator: Felipe Hommen <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-09 04:57+0000\n"
-"X-Generator: Launchpad (build 15060)\n"
+"X-Launchpad-Export-Date: 2012-04-16 04:41+0000\n"
+"X-Generator: Launchpad (build 15099)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -209,7 +209,7 @@ msgstr "Me comí **dos** latas de carne picada"
 
 #: ../rednotebook/info.py:167
 msgid "Use a cool journal app"
-msgstr "Use una atractiva aplicación de diario"
+msgstr "Usar una atractiva aplicación de diario"
 
 #: ../rednotebook/info.py:168
 msgid "Monty Python's Life of Brian"
