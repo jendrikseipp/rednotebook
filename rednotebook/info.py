@@ -41,7 +41,7 @@ format, tag and search your entries.
 '''
 
 license_text = '''\
-Copyright (c) 2009,2010,2011  Jendrik Seipp
+Copyright (c) 2009-2012  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
