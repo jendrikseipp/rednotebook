@@ -126,7 +126,6 @@ def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journa
                 try:
                     # This version produces readable unicode and no python directives
                     yaml.dump(month_content, month_file, Dumper=Dumper, allow_unicode=True)
-                    #yaml.safe_dump(month_content, month_file, allow_unicode=True)
                     month.edited = False
                     logging.debug('Wrote file %s' % month_file_string)
                 except OSError:

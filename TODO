@@ -18,7 +18,6 @@ X Insert Latex formulas (LP:851471)
   X Highlight formulas in edit mode
   X Support formulas in all exports
   X Add menu item for inserting formulas
-  X Only add MathJax code if there is a formula
 X Fix undo for tags
 X Install .mo files (translations) in the standard directories under Linux
 
@@ -83,7 +82,7 @@ O Search and replace (useful for renaming categories and other names)
 O Copy all files and pictures into data subdirectory
 O Password protection or encryption
 O Internal links to other days
-O Let user change font, foreground color
+O Let user change font (see https://github.com/pakesson/rednotebook/commit/88fcfc005b14009a50743123077da22333fd5382)
 O Filter exports by tags
 O RTF export
 
