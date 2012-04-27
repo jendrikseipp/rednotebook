@@ -493,7 +493,7 @@ class Journal:
     def categories(self):
         return list(sorted(set(itertools.chain.from_iterable(
                                         day.categories for day in self.days)),
-                           key=utils.sort_asc))
+                           cmp=locale.strcoll))
 
 
     def normalize_tag(self, tag):
