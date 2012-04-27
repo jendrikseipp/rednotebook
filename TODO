@@ -19,6 +19,7 @@ X Insert Latex formulas (LP:851471)
   X Support formulas in all exports
   X Add menu item for inserting formulas
 X Fix undo for tags
+X Exports: Make tag lists scrollable and sort the available tags alphabetically
 X Install .mo files (translations) in the standard directories under Linux
 
 1.x

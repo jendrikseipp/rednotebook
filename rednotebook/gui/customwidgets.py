@@ -42,8 +42,6 @@ class CustomComboBoxEntry(object):
     def __init__(self, combo_box):
         self.combo_box = combo_box
 
-        #self.liststore = self.combo_box.get_model()
-        #if self.liststore is None:
         self.liststore = gtk.ListStore(gobject.TYPE_STRING)
         self.combo_box.set_model(self.liststore)
         #self.combo_box.set_wrap_width(5)

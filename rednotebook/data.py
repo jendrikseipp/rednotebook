@@ -78,10 +78,7 @@ class Day(object):
 
     # Text
     def _get_text(self):
-        '''
-        Returns the day's text encoded as UTF-8
-        decode means "decode from the standard ascii representation"
-        '''
+        '''Return the day's text as unicode.'''
         if 'text' in self.content:
             return self.content['text'].decode('utf-8')
         else:
@@ -91,19 +88,16 @@ class Day(object):
         self.content['text'] = text
     text = property(_get_text, _set_text)
 
-    def _has_text(self):
+    @property
+    def has_text(self):
         return len(self.text.strip()) > 0
-    has_text = property(_has_text)
 
 
     @property
     def empty(self):
         if len(self.content.keys()) == 0:
             return True
-        elif len(self.content.keys()) == 1 and 'text' in self.content and not self.has_text:
-            return True
-        else:
-            return False
+        return len(self.content.keys()) == 1 and 'text' in self.content and not self.has_text
 
 
     @property
