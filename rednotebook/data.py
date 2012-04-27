@@ -70,6 +70,13 @@ class Day(object):
 
         self.month = month
         self.day_number = day_number
+
+        # Turn all entries of old "Tags" categories into tags without entries.
+        old_tags = day_content.pop('Tags', {})
+        for old_tag in old_tags.keys():
+            day_content[old_tag] = None
+            self.month.edited = True
+
         self.content = day_content
 
         # Remember the last edit and preview position
@@ -250,13 +257,13 @@ class Month(object):
         if month_content == None:
             month_content = {}
 
+        self.edited = False
+
         self.year_number = year_number
         self.month_number = month_number
         self.days = {}
         for day_number, day_content in month_content.iteritems():
             self.days[day_number] = Day(self, day_number, day_content)
-
-        self.edited = False
 
     def get_day(self, day_number):
         if day_number in self.days:

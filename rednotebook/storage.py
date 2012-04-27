@@ -63,7 +63,7 @@ def _load_month_from_disk(path, year_number, month_number):
         logging.error('Error: The file %s could not be read' % path)
     except Exception, err:
         logging.error('An error occured while reading %s:' % path)
-        logging.error('%s' % err)
+        raise
     # If we continued here, the possibly corrupted file would be overwritten
     sys.exit(1)
 
