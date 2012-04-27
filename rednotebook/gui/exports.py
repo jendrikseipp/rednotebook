@@ -142,6 +142,12 @@ class ContentsPage(AssistantPage):
         self.available_categories = self._get_tag_treeview(_('Available tags'))
         self.selected_categories = self._get_tag_treeview(_('Selected tags'))
 
+        left_scroll = gtk.ScrolledWindow()
+        left_scroll.add(self.available_categories)
+
+        right_scroll = gtk.ScrolledWindow()
+        right_scroll.add(self.selected_categories)
+
         self.select_button = gtk.Button(_('Select') + ' >>')
         self.deselect_button = gtk.Button('<< ' + _('Deselect'))
 
@@ -156,9 +162,9 @@ class ContentsPage(AssistantPage):
         vbox.pack_start(centered_vbox, True, False)
 
         hbox = gtk.HBox()
-        hbox.pack_start(self.available_categories)
+        hbox.pack_start(left_scroll)
         hbox.pack_start(vbox, False)
-        hbox.pack_start(self.selected_categories)
+        hbox.pack_start(right_scroll)
         self.pack_start(hbox)
 
         self.error_text = gtk.Label('')
