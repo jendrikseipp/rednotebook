@@ -139,21 +139,8 @@ class ContentsPage(AssistantPage):
         self.pack_start(self.no_categories_button, False)
         self.pack_start(self.sel_categories_button, False)
 
-        self.available_categories = gtk.TreeView()
-
-        column = gtk.TreeViewColumn(_('Available tags'))
-        self.available_categories.append_column(column)
-        cell = gtk.CellRendererText()
-        column.pack_start(cell, True)
-        column.add_attribute(cell, 'text', 0)
-
-        self.selected_categories = gtk.TreeView()
-
-        column = gtk.TreeViewColumn(_('Selected tags'))
-        self.selected_categories.append_column(column)
-        cell = gtk.CellRendererText()
-        column.pack_start(cell, True)
-        column.add_attribute(cell, 'text', 0)
+        self.available_categories = self._get_tag_treeview(_('Available tags'))
+        self.selected_categories = self._get_tag_treeview(_('Selected tags'))
 
         self.select_button = gtk.Button(_('Select') + ' >>')
         self.deselect_button = gtk.Button('<< ' + _('Deselect'))
@@ -185,6 +172,16 @@ class ContentsPage(AssistantPage):
         self.all_categories_button.connect('toggled', self.check_selection)
         self.no_categories_button.connect('toggled', self.check_selection)
         self.sel_categories_button.connect('toggled', self.check_selection)
+
+
+    def _get_tag_treeview(self, name):
+        treeview = gtk.TreeView()
+        column = gtk.TreeViewColumn(name)
+        treeview.append_column(column)
+        cell = gtk.CellRendererText()
+        column.pack_start(cell, True)
+        column.add_attribute(cell, 'text', 0)
+        return treeview
 
 
     def refresh_categories_list(self):
@@ -382,12 +379,11 @@ class ExportAssistant(Assistant):
             # Summary
             self.path = self.page4.get_selected_path()
             self.page5.prepare()
-            format = self.exporter.NAME
             self.export_all_days = self.page2.export_all_days()
             self.is_text_exported = self.page3.is_text_exported()
             self.exported_categories = self.page3.get_categories()
 
-            self.page5.add_setting(_('Format'), format)
+            self.page5.add_setting(_('Format'), self.exporter.NAME)
             self.page5.add_setting(_('Export all days'), self.yes_no(self.export_all_days))
             if not self.export_all_days:
                 start_date, end_date = self.page2.get_date_range()
