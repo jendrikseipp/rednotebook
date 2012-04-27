@@ -703,7 +703,7 @@ class MainWindow(object):
             <menuitem action="Title"/>
             <menuitem action="Line"/>
             %(table_ui)s
-            <menuitem action="Formula"/>
+            %(formula_ui)s
             <menuitem action="Date"/>
             <menuitem action="LineBreak"/>
         </popup>
@@ -711,6 +711,7 @@ class MainWindow(object):
 
         numlist_ui = '' #'<menuitem action="NumberedList"/>'
         table_ui = ''# '<menuitem action="Table"/>'
+        formula_ui = '' #'<menuitem action="Formula"/>'
 
         insert_menu_xml = insert_menu_xml % locals()
 
