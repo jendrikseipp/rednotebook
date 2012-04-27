@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.5
 X Remember possible undo/redo actions for each day separately.
+X Turn all entries of old "Tags" categories into tags without entries at startup.
 X Suggest last tag when a new tag is added.
 X Enable copy menu item in preview mode. (LP:834473)
 X Grey out cut and paste menu items in preview mode.
