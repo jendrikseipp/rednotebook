@@ -34,6 +34,7 @@ if __name__ == '__main__':
 from rednotebook.util import filesystem
 from rednotebook.util import markup
 from rednotebook.util import dates
+from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
                                     RadioButtonPage, PathChooserPage, Assistant
 from rednotebook.gui import browser
@@ -139,8 +140,8 @@ class ContentsPage(AssistantPage):
         self.pack_start(self.no_categories_button, False)
         self.pack_start(self.sel_categories_button, False)
 
-        self.available_categories = self._get_tag_treeview(_('Available tags'))
-        self.selected_categories = self._get_tag_treeview(_('Selected tags'))
+        self.available_categories = customwidgets.CustomListView([(_('Available tags'), str)])
+        self.selected_categories = customwidgets.CustomListView([(_('Selected tags'), str)])
 
         left_scroll = gtk.ScrolledWindow()
         left_scroll.add(self.available_categories)
@@ -180,21 +181,10 @@ class ContentsPage(AssistantPage):
         self.sel_categories_button.connect('toggled', self.check_selection)
 
 
-    def _get_tag_treeview(self, name):
-        treeview = gtk.TreeView()
-        column = gtk.TreeViewColumn(name)
-        treeview.append_column(column)
-        cell = gtk.CellRendererText()
-        column.pack_start(cell, True)
-        column.add_attribute(cell, 'text', 0)
-        return treeview
-
-
     def refresh_categories_list(self):
         model_available = gtk.ListStore(gobject.TYPE_STRING)
         for category in self.journal.categories:
-            new_row = model_available.insert(0)
-            model_available.set(new_row, 0, category)
+            model_available.append([category])
         self.available_categories.set_model(model_available)
 
         model_selected = gtk.ListStore(gobject.TYPE_STRING)
