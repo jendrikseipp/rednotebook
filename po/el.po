@@ -8,23 +8,23 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2010-09-27 12:04+0000\n"
-"Last-Translator: Christos Spyroglou <Unknown>\n"
+"PO-Revision-Date: 2012-05-03 07:45+0000\n"
+"Last-Translator: Marios Zindilis <marios@zindilis.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-09 04:57+0000\n"
-"X-Generator: Launchpad (build 15060)\n"
+"X-Launchpad-Export-Date: 2012-05-04 04:49+0000\n"
+"X-Generator: Launchpad (build 15195)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
-msgstr ""
+msgstr "Ιδέες"
 
 #: ../rednotebook/info.py:80 ../rednotebook/gui/categories.py:51
 #: ../rednotebook/util/markup.py:100
 msgid "Tags"
-msgstr ""
+msgstr "Ετικέτες"
 
 #: ../rednotebook/info.py:81
 msgid "Cool Stuff"
@@ -32,19 +32,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid "Movies"
-msgstr ""
+msgstr "Ταινίες"
 
 #: ../rednotebook/info.py:83
 msgid "Work"
-msgstr ""
+msgstr "Δουλειά"
 
 #: ../rednotebook/info.py:84
 msgid "Free time"
-msgstr ""
+msgstr "Ελεύθερος χρόνος"
 
 #: ../rednotebook/info.py:85
 msgid "Documentation"
-msgstr ""
+msgstr "Τεκμηρίωση"
 
 #: ../rednotebook/info.py:86
 msgid "Todo"
@@ -52,19 +52,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr ""
+msgstr "Έγινε"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
-msgstr ""
+msgstr "Να θυμηθώ να πάρω γάλα"
 
 #: ../rednotebook/info.py:89
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Να πλύνω τα πιάτα"
 
 #: ../rednotebook/info.py:90
 msgid "Check mail"
-msgstr ""
+msgstr "Να διαβάσω την αλληλογραφία μου"
 
 #: ../rednotebook/info.py:91
 msgid "Monty Python and the Holy Grail"
@@ -72,11 +72,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:92
 msgid "Team meeting"
-msgstr ""
+msgstr "Συνάντηση ομάδας"
 
 #: ../rednotebook/info.py:95
 msgid "Hello!"
-msgstr ""
+msgstr "Γεια σας!"
 
 #: ../rednotebook/info.py:96
 msgid ""
@@ -98,7 +98,7 @@ msgstr ""
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:102
 msgid "Left"
-msgstr ""
+msgstr "Αριστερά"
 
 #: ../rednotebook/info.py:103
 msgid "Navigation and search"
@@ -107,16 +107,16 @@ msgstr ""
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:105
 msgid "Center"
-msgstr ""
+msgstr "Κέντρο"
 
 #: ../rednotebook/info.py:106
 msgid "Text for a day"
-msgstr ""
+msgstr "Κείμενο ημέρας"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:108
 msgid "Right"
-msgstr ""
+msgstr "Δεξιά"
 
 #: ../rednotebook/info.py:109
 msgid "Tags for this day"
@@ -145,17 +145,21 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
+"Σήμερα πήγα στο //φαρμακείο// και αγόρασα ένα **σαμπουάν**. Αφού έπλυνα τα --"
+"μαλλιά-- μου συνειδητοποίησα ότι ήταν __χρωμοσαμπουάν__ χρώματος ροζ."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:130
 msgid "Save and Export"
-msgstr ""
+msgstr "Αποθήκευση και εξαγωγή"
 
 #: ../rednotebook/info.py:131
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
+"Οτιδήποτε εισάγετε θα αποθηκευέται αυτόματα ανά τακτά χρονικά διαστήματα και "
+"όταν κλείσετε το πρόγραμμα."
 
 #: ../rednotebook/info.py:132
 msgid "To avoid data loss you should backup your journal regularly."
@@ -1078,4 +1082,6 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Christos Spyroglou https://launchpad.net/~cspyroglou\n"
 "  Fotis Tsamis https://launchpad.net/~phantomas\n"
+"  Marios Zindilis https://launchpad.net/~marios-zindilis\n"
+"  palap https://launchpad.net/~palap\n"
 "  sparus https://launchpad.net/~bitsikas"
