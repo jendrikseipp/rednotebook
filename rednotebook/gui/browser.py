@@ -17,9 +17,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-# For Python 2.5 compatibility.
-from __future__ import with_statement
-
 import sys
 import os
 import logging

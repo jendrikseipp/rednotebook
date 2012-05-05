@@ -14,16 +14,18 @@ X Suggest last tag when a new tag is added.
 X Enable copy menu item in preview mode. (LP:834473)
 X Grey out cut and paste menu items in preview mode.
 X Only allow hiding words from the cloud, not the tags.
+X Fix undo for tags.
+X Exports: Make tag lists scrollable and sort the available tags alphabetically.
+X Install .mo files (translations) in the standard directories under Linux.
+O Update windows libs to gtk 2.24
+O Drop support for Python 2.5. This means that we now support Python 2.6 and 2.7.
+
+1.x
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
   X Support formulas in all exports
   X Add menu item for inserting formulas
-X Fix undo for tags
-X Exports: Make tag lists scrollable and sort the available tags alphabetically
-X Install .mo files (translations) in the standard directories under Linux
-
-1.x
 X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
   X Highlight tables in edit mode
