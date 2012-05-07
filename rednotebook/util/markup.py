@@ -22,8 +22,8 @@ import os
 import re
 import sys
 
-import pango
 import gobject
+import pango
 
 # Testing
 if __name__ == '__main__':

@@ -2,3 +2,4 @@
 po/sourcefiles.txt
 po/tmp
 rednotebook/i18n
+.tox
