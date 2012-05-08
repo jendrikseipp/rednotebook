@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-01-20 19:41+0000\n"
-"Last-Translator: Gunleif Joensen <Unknown>\n"
+"PO-Revision-Date: 2012-05-07 22:41+0000\n"
+"Last-Translator: Angutivik Casper Rúnur Tausen Hansen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-09 04:57+0000\n"
-"X-Generator: Launchpad (build 15060)\n"
+"X-Launchpad-Export-Date: 2012-05-08 04:50+0000\n"
+"X-Generator: Launchpad (build 15204)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -192,7 +192,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:139
 msgid "Any feedback is appreciated."
-msgstr "Einnhvør afturboðan er virrða"
+msgstr "Einhvør afturboðan er virða."
 
 #: ../rednotebook/info.py:142
 msgid "Have a nice day!"
@@ -610,7 +610,7 @@ msgstr "Einki leinkjastað er innskrivað"
 
 #: ../rednotebook/gui/clouds.py:134
 msgid "filter, these, comma, separated, words"
-msgstr ""
+msgstr "síla, hesi, komma, skildu, orð"
 
 #: ../rednotebook/gui/clouds.py:139
 msgid "mtv, spam, work, job, play"
@@ -1089,4 +1089,5 @@ msgstr "Í dag"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Angutivik Casper Rúnur Tausen Hansen https://launchpad.net/~ivikkivi\n"
 "  Gunleif Joensen https://launchpad.net/~gunleif"
