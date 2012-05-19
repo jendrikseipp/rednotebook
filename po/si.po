@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-04-27 19:43+0000\n"
-"Last-Translator: malith <malithmuditha@gmail.com>\n"
+"PO-Revision-Date: 2012-05-19 01:25+0000\n"
+"Last-Translator: පසිඳු කාවින්ද <Unknown>\n"
 "Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-28 04:55+0000\n"
-"X-Generator: Launchpad (build 15149)\n"
+"X-Launchpad-Export-Date: 2012-05-19 05:21+0000\n"
+"X-Generator: Launchpad (build 15259)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -263,7 +263,7 @@ msgstr "සියළු දත්ත සිප් ලෙඛනාගාරයේ
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:30
 msgid "Statistics"
-msgstr "සංඛ්‍යාලේඛන"
+msgstr "සංඛ්‍යා ලේඛන"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Show some statistics about the journal"
@@ -1139,4 +1139,5 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  malith https://launchpad.net/~malithmuditha\n"
-"  චානක මධුෂාන් https://launchpad.net/~chanakalin"
+"  චානක මධුෂාන් https://launchpad.net/~chanakalin\n"
+"  පසිඳු කාවින්ද https://launchpad.net/~pkavinda"
