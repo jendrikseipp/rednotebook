@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-05-19 01:25+0000\n"
+"PO-Revision-Date: 2012-05-19 19:13+0000\n"
 "Last-Translator: පසිඳු කාවින්ද <Unknown>\n"
 "Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-19 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-05-20 04:38+0000\n"
 "X-Generator: Launchpad (build 15259)\n"
 
 #: ../rednotebook/info.py:79
@@ -52,7 +52,7 @@ msgstr "කළයුතු"
 
 #: ../rednotebook/info.py:87
 msgid "Done"
-msgstr "කළා"
+msgstr "අවසන්"
 
 #: ../rednotebook/info.py:88
 msgid "Remember the milk"
@@ -1074,7 +1074,7 @@ msgstr "සුරැකුම් නොකර සංස්කරණය කරන
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:15
 msgid "General"
-msgstr "සාමාන්‍යය"
+msgstr "ප්‍රධාන"
 
 #: tmp/main_window.glade.h:16
 msgid "Go to next day (Ctrl+PageDown)"
