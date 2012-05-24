@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-19 12:08+0100\n"
-"PO-Revision-Date: 2012-05-19 19:13+0000\n"
-"Last-Translator: පසිඳු කාවින්ද <Unknown>\n"
+"PO-Revision-Date: 2012-05-21 07:03+0000\n"
+"Last-Translator: පසිඳු කාවින්ද <info@pk-soft.tk>\n"
 "Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-20 04:38+0000\n"
-"X-Generator: Launchpad (build 15259)\n"
+"X-Launchpad-Export-Date: 2012-05-24 11:10+0000\n"
+"X-Generator: Launchpad (build 15288)\n"
 
 #: ../rednotebook/info.py:79
 msgid "Ideas"
@@ -670,11 +670,11 @@ msgstr "තෝරාගත් ඇමුණුම්"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Select"
-msgstr "තේරීම"
+msgstr "තෝරන්න"
 
 #: ../rednotebook/gui/exports.py:159
 msgid "Deselect"
-msgstr "තේරීම ඉවත් කරන්න"
+msgstr "නොතෝරන්න"
 
 #: ../rednotebook/gui/exports.py:262
 msgid "If export text is not selected, you have to select at least one tag."
