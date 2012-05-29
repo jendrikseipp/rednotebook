@@ -256,7 +256,6 @@ def _get_config(type):
     img_name = r'\S.*\S|\S'
 
     # Apply this prepoc only after the latex image quotes have been added
-    # TODO: Allow whitespace around [ and ]
     config['preproc'].append([r'\[(%s\.(%s))\?(\d+)\]' % (img_name, img_ext), r'[WIDTH\3-\1]'])
 
     return config

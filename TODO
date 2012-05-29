@@ -17,10 +17,13 @@ X Only allow hiding words from the cloud, not the tags.
 X Fix undo for tags.
 X Exports: Make tag lists scrollable and sort the available tags alphabetically.
 X Install .mo files (translations) in the standard directories under Linux.
-O Update windows libs to gtk 2.24
-O Drop support for Python 2.5. This means that we now support Python 2.6 and 2.7.
+X Drop support for Python 2.5. This means that we now support Python 2.6 and 2.7.
+X Windows: Update libraries in installer to gtk+ 2.24 and python 2.7.
+X Windows: Correctly show italics in preview.
 
 1.x
+O Inline #hashtagging
+  O Turn #tags red in edit and preview mode
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
@@ -77,6 +80,7 @@ O Translate help (Restructure first using Sphinx?)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Add shortcut to move the cursor into the main text area
+O Add shortcut for "Go to Today"
 O Make txt2tags faster and fix bugs
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
