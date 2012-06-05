@@ -405,11 +405,12 @@ class ExportAssistant(Assistant):
         logging.debug('Selected Categories for Export: %s' % selected_categories)
         export_text = self.is_text_exported
 
+        # Save selected date format
+        date_format = self.page3.date_format.get_value()
+        self.journal.config['exportDateFormat'] = date_format
+
         markup_strings_for_each_day = []
         for day in export_days:
-            # Save selected date format
-            date_format = self.page3.date_format.get_value()
-            self.journal.config['exportDateFormat'] = date_format
             date_string = dates.format_date(date_format, day.date)
             day_markup = markup.get_markup_for_day(day, with_text=export_text,
                                             categories=selected_categories,
