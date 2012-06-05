@@ -20,6 +20,7 @@ X Install .mo files (translations) in the standard directories under Linux.
 X Drop support for Python 2.5. This means that we now support Python 2.6 and 2.7.
 X Windows: Update libraries in installer to gtk+ 2.24 and python 2.7.
 X Windows: Correctly show italics in preview.
+O Fix: Escape characters in template names
 
 1.x
 O Inline #hashtagging
@@ -29,7 +30,8 @@ X Insert Latex formulas (LP:851471)
   X Highlight formulas in edit mode
   X Support formulas in all exports
   X Add menu item for inserting formulas
-X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
+O Use new markup for images: {/home/user/pic.png?50}
+  X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
   X Highlight tables in edit mode
   O Use art target for text exports (Wait for txt2tags 2.7)
@@ -44,6 +46,8 @@ O Scroll to searched text when a result is clicked in preview mode (seems diffic
 O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
+O Change to edit mode when double-clicked into preview window?
+O Make the right panel an advanced option.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
