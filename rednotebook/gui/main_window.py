@@ -105,6 +105,7 @@ class MainWindow(object):
         self.new_entry_dialog.categories_tree_view = self.categories_tree_view
 
         self.back_one_day_button = self.builder.get_object('back_one_day_button')
+        self.today_button = self.builder.get_object('today_button')
         self.forward_one_day_button = self.builder.get_object('forward_one_day_button')
 
         self.edit_pane = self.builder.get_object('edit_pane')
@@ -220,6 +221,7 @@ class MainWindow(object):
         #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
         shortcuts = [(self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
+                    (self.today_button, 'clicked', '<Ctrl>Home'),                    
                     (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
                     #(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
                     #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),

@@ -35,7 +35,7 @@
                     <child>
                       <object class="GtkToolButton" id="today_button">
                         <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Jump to today</property>
+                        <property name="tooltip_text" translatable="yes">Jump to today (Ctrl+Home)</property>
                         <property name="label" translatable="yes">Today</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-home</property>
