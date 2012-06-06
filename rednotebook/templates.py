@@ -272,62 +272,59 @@ class TemplateManager(object):
         See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
         A popup menu cannot show accelerators (HIG).
         '''
-
         # complete paths
         files = self.get_available_template_files()
+
+        def escape_name(name):
+            """Remove special xml chars for GUI display."""
+            for char in '&<>\'"':
+                name = name.replace(char, '')
+            return name
 
         # 1, 2, 3
         self.titles_to_files = {}
         for file in files:
             root, ext = os.path.splitext(file)
             title = os.path.basename(root)
-            self.titles_to_files[title] = file
+            self.titles_to_files[escape_name(title)] = file
 
         sorted_titles = sorted(self.titles_to_files.keys())
 
         menu_xml = '''\
         <ui>
-        <popup action="TemplateMenu">
-        '''
+        <popup action="TemplateMenu">'''
 
-        insert_menu_xml = '''\
+        insert_menu_xml = '''
             <menu action="InsertMenu">
                 <menuitem action="InsertWeekday"/>
-                <separator name="sep4"/>
-        '''
+                <separator name="sep4"/>'''
         for title in sorted_titles:
-            if title not in map(str, range(1,8)):
-                insert_menu_xml += '''\
-                <menuitem action="Insert%s"/>
-                ''' % title
-        insert_menu_xml += '''\
-            </menu>
-        '''
+            if title not in map(str, range(1, 8)):
+                insert_menu_xml += '''
+                <menuitem action="Insert%s"/>''' % title
+        insert_menu_xml += '''
+            </menu>'''
 
         menu_xml += insert_menu_xml
 
-        menu_xml += '''\
+        menu_xml += '''
             <separator name="sep5"/>
-            <menuitem action="NewTemplate"/>
-        '''
+            <menuitem action="NewTemplate"/>'''
 
-        edit_menu_xml = '''\
+        edit_menu_xml = '''
             <menu action="EditMenu">
                 <menuitem action="EditWeekday"/>
-                <separator name="sep3"/>
-        '''
+                <separator name="sep3"/>'''
         for title in sorted_titles:
             if title not in map(str, range(1,8)):
-                edit_menu_xml += '''\
-                <menuitem action="Edit%s"/>
-                ''' % title
-        edit_menu_xml += '''\
-            </menu>
-        '''
+                edit_menu_xml += '''
+                <menuitem action="Edit%s"/>''' % title
+        edit_menu_xml += '''
+            </menu>'''
 
         menu_xml += edit_menu_xml
 
-        menu_xml +='''\
+        menu_xml +='''
             <menuitem action="OpenTemplateDirectory"/>
         </popup>
         </ui>'''
