@@ -127,11 +127,11 @@ class ContentsPage(AssistantPage):
         self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
         self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
 
-        self.text_button = gtk.CheckButton(label=_('Export texts'))
-        self.all_categories_button = gtk.RadioButton(label=_('Export all tags'))
-        self.no_categories_button = gtk.RadioButton(label=_('Do not export tags'),
+        self.text_button = gtk.CheckButton(label=_('Include text'))
+        self.all_categories_button = gtk.RadioButton(label=_('Include all tags'))
+        self.no_categories_button = gtk.RadioButton(label=_('Do not include tags'),
                                             group=self.all_categories_button)
-        self.sel_categories_button = gtk.RadioButton(label=_('Export only the selected tags'),
+        self.sel_categories_button = gtk.RadioButton(label=_('Include only the selected tags'),
                                             group=self.all_categories_button)
 
         self.pack_start(self.date_format, False)
@@ -231,7 +231,7 @@ class ContentsPage(AssistantPage):
         self.error_text.set_markup('<b>' + text + '</b>')
 
 
-    def is_text_exported(self):
+    def is_text_included(self):
         return self.text_button.get_active()
 
 
@@ -251,8 +251,8 @@ class ContentsPage(AssistantPage):
 
 
     def check_selection(self, *args):
-        if not self.is_text_exported() and not self.get_categories():
-            error = _('If export text is not selected, you have to select at least one tag.')
+        if not self.is_text_included() and not self.get_categories():
+            error = _('If include text is not selected, you have to select at least one tag.')
             self.set_error_text(error)
             correct = False
         else:
@@ -376,7 +376,7 @@ class ExportAssistant(Assistant):
             self.path = self.page4.get_selected_path()
             self.page5.prepare()
             self.export_all_days = self.page2.export_all_days()
-            self.is_text_exported = self.page3.is_text_exported()
+            self.is_text_included = self.page3.is_text_included()
             self.exported_categories = self.page3.get_categories()
 
             self.page5.add_setting(_('Format'), self.exporter.NAME)
@@ -385,8 +385,8 @@ class ExportAssistant(Assistant):
                 start_date, end_date = self.page2.get_date_range()
                 self.page5.add_setting(_('Start date'), start_date)
                 self.page5.add_setting(_('End date'), end_date)
-            is_text_exported = self.yes_no(self.is_text_exported)
-            self.page5.add_setting(_('Export text'), is_text_exported)
+            is_text_included = self.yes_no(self.is_text_included)
+            self.page5.add_setting(_('Include text'), is_text_included)
             self.page5.add_setting(_('Selected tags'), ', '.join(self.exported_categories))
             self.page5.add_setting(_('Export path'), self.path)
 
@@ -402,8 +402,8 @@ class ExportAssistant(Assistant):
             export_days = self.journal.get_days_in_date_range(*self.page2.get_date_range())
 
         selected_categories = self.exported_categories
-        logging.debug('Selected Categories for Export: %s' % selected_categories)
-        export_text = self.is_text_exported
+        logging.debug('Selected Categories for Inclusion: %s' % selected_categories)
+        include_text = self.is_text_included
 
         # Save selected date format
         date_format = self.page3.date_format.get_value()
@@ -412,7 +412,7 @@ class ExportAssistant(Assistant):
         markup_strings_for_each_day = []
         for day in export_days:
             date_string = dates.format_date(date_format, day.date)
-            day_markup = markup.get_markup_for_day(day, with_text=export_text,
+            day_markup = markup.get_markup_for_day(day, with_text=include_text,
                                             categories=selected_categories,
                                             date=date_string)
             markup_strings_for_each_day.append(day_markup)
