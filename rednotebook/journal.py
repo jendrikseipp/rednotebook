@@ -66,6 +66,10 @@ except locale.Error, err:
     # unsupported locale setting
     logging.error('Locale could not be set: "%s"' %  err)
     logging.error('Probably you have to install the appropriate language packs')
+    # Make the _() function available even if gettext is not working.
+    import __builtin__
+    if not hasattr(__builtin__, '_'):
+        __builtin__.__dict__['_'] = lambda s: s
 
 ## ------------------- end Enable i18n -------------------------------
 

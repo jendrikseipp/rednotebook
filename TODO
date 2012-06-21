@@ -22,6 +22,7 @@ X Install .mo files (translations) in the standard directories under Linux.
 X Drop support for Python 2.5. This means that we now support Python 2.6 and 2.7.
 X Windows: Update libraries in installer to gtk+ 2.24 and python 2.7.
 X Windows: Correctly show italics in preview.
+X OSX: Make the _() function available even if gettext is not working.
 
 1.x
 O Inline #hashtagging
