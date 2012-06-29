@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-30 05:22+0000\n"
-"X-Generator: Launchpad (build 15316)\n"
+"X-Launchpad-Export-Date: 2012-06-29 04:40+0000\n"
+"X-Generator: Launchpad (build 15505)\n"
 
 #: ../rednotebook/gui/main_window.py:278
 msgid "Show RedNotebook"
@@ -1094,7 +1094,9 @@ msgstr ""
 "  Peter Schelleman https://launchpad.net/~peterschelleman\n"
 "  Rachid https://launchpad.net/~rachidbm\n"
 "  Redmar https://launchpad.net/~redmar\n"
-"  Sven Heesterman https://launchpad.net/~captain-j"
+"  Sven Heesterman https://launchpad.net/~captain-j\n"
+"  Walco van Loon https://launchpad.net/~wwwalco\n"
+"  d9ping https://launchpad.net/~d9ping"
 
 #: tmp/main_window.glade.h:16
 msgid "New entry"

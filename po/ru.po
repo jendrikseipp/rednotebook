@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-30 05:23+0000\n"
-"X-Generator: Launchpad (build 15316)\n"
+"X-Launchpad-Export-Date: 2012-06-29 04:40+0000\n"
+"X-Generator: Launchpad (build 15505)\n"
 "Language: cs\n"
 
 #: ../rednotebook/info.py:73
@@ -1108,7 +1108,8 @@ msgstr ""
 "  Nick https://launchpad.net/~nick222-yandex\n"
 "  Oleg Koptev https://launchpad.net/~koptev-oleg\n"
 "  Sergey \"Shnatsel\" Davidoff https://launchpad.net/~shnatsel\n"
-"  Sergey Sedov https://launchpad.net/~serg-sedov"
+"  Sergey Sedov https://launchpad.net/~serg-sedov\n"
+"  Victor Yu. Kowalsky https://launchpad.net/~vityokster"
 
 #: tmp/main_window.glade.h:16
 msgid "New entry"

@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-30 05:23+0000\n"
-"X-Generator: Launchpad (build 15316)\n"
+"X-Launchpad-Export-Date: 2012-06-29 04:40+0000\n"
+"X-Generator: Launchpad (build 15505)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -1087,6 +1087,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Nikola B https://launchpad.net/~eniaroyah\n"
 "  Rancher https://launchpad.net/~rancher\n"
+"  Данило Шеган https://launchpad.net/~danilo\n"
 "  Иван Старчевић https://launchpad.net/~ivanstar61"
 
 #: tmp/main_window.glade.h:16
