@@ -15,6 +15,7 @@ X Enable copy menu item in preview mode. (LP:834473)
 X Grey out cut and paste menu items in preview mode.
 X Only allow hiding words from the cloud, not the tags.
 X Add shortcut (Ctrl+Home) for "Go to Today"
+X New tag: When suggesting to use the last tag, leave focus on the tag.
 X Fix undo for tags.
 X Fix: Remove special characters in template names before displaying them.
 X Exports: Make tag lists scrollable and sort the available tags alphabetically.
@@ -50,6 +51,7 @@ O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 O Change to edit mode when double-clicked into preview window?
 O Make the right panel an advanced option.
+O Disable cache for preview (Support previewing externally changed files)
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either

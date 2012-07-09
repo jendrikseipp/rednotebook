@@ -221,7 +221,7 @@ class MainWindow(object):
         #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
         shortcuts = [(self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
-                    (self.today_button, 'clicked', '<Ctrl>Home'),                    
+                    (self.today_button, 'clicked', '<Ctrl>Home'),
                     (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
                     #(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
                     #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
@@ -914,7 +914,7 @@ class MainWindow(object):
         # Converting markup to html takes time, so only do it when necessary
         if self.preview_mode:
             self.html_editor.show_day(day)
-        # Why do we always have to set the text of the day_text_field?
+        # TODO: Why do we always have to set the text of the day_text_field?
         self.day_text_field.show_day(day)
         self.categories_tree_view.set_day_content(day)
 
@@ -1033,7 +1033,7 @@ class NewEntryDialog(object):
 
     def show_dialog(self, category=''):
         # Use last used category.
-        category = category or self.categories_tree_view.last_category
+        last_category = self.categories_tree_view.last_category
 
         # Has to be first, because it may be populated later
         self.new_entry_combo_box.clear()
@@ -1041,8 +1041,7 @@ class NewEntryDialog(object):
         # Show the list of categories
         self.categories_combo_box.set_entries(self.categories_tree_view.categories)
 
-        if category:
-            self.categories_combo_box.set_active_text(category)
+        self.categories_combo_box.set_active_text(category or last_category or '')
 
         if category:
             # We already know the category so let's get the entry
