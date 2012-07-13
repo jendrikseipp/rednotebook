@@ -304,11 +304,11 @@ and select to hide it.
 Alternatively you can open the Preferences dialog and add the word to the cloud blacklist.
 Short words with less than 5 letters can be white-listed there as well.
 [Regular expressions http://docs.python.org/library/re.html] are allowed in the
-lists.
+lists. If you want to hide words with special characters, you can escape them with
+a backslash: 3\\.50\\?
 
 You can **hide the word cloud** by adding the regular expression .* to the
 blacklist. This will filter out all words.
-
 
 == Spellcheck ==
 RedNotebook supports spellchecking your entries if you have

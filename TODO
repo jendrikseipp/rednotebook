@@ -52,6 +52,7 @@ O Fix link highlighting ([this does not work] and
 O Change to edit mode when double-clicked into preview window?
 O Make the right panel an advanced option.
 O Disable cache for preview (Support previewing externally changed files)
+O Use dwolla once it's available in Germany
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
