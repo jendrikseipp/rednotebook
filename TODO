@@ -7,25 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.5
-X Use new logo redesigned by Ciaran.
-X Remember possible undo/redo actions for each day separately.
-X Turn all entries of old "Tags" categories into tags without entries at startup.
-X Suggest last tag when a new tag is added.
-X Enable copy menu item in preview mode. (LP:834473)
-X Grey out cut and paste menu items in preview mode.
-X Only allow hiding words from the cloud, not the tags.
-X Add shortcut (Ctrl+Home) for "Go to Today"
-X New tag: When suggesting to use the last tag, leave focus on the tag.
-X Fix undo for tags.
-X Fix: Remove special characters in template names before displaying them.
-X Exports: Make tag lists scrollable and sort the available tags alphabetically.
-X Install .mo files (translations) in the standard directories under Linux.
-X Drop support for Python 2.5. This means that we now support Python 2.6 and 2.7.
-X Windows: Update libraries in installer to gtk+ 2.24 and python 2.7.
-X Windows: Correctly show italics in preview.
-X OSX: Make the _() function available even if gettext is not working.
-
 1.x
 O Fix: Either apply filter fo tags or change wording in preferences (clouds -> cloud)
 O Inline #hashtagging

@@ -1,5 +1,25 @@
 ==== RedNotebook Changelog ====
 
+== 1.5.0 (12-07-19) ==
+* Use new logo redesigned by Ciaran.
+* Remember possible undo/redo actions for each day separately.
+* Turn all entries of old "Tags" categories into tags without entries at startup.
+* Suggest last tag when a new tag is added.
+* When suggesting to use the last tag, leave focus on the tag.
+* Enable copy menu item in preview mode. (LP:834473)
+* Grey out cut and paste menu items in preview mode.
+* Only allow hiding words from the cloud, not the tags.
+* Add shortcut (Ctrl+Home) for "Go to Today"
+* Fix undo for tags.
+* Fix: Remove special characters in template names before displaying them.
+* Exports: Make tag lists scrollable and sort the available tags alphabetically.
+* Install .mo files (translations) in the standard directories under Linux.
+* Drop support for Python 2.5. This means that we now support Python 2.6 and 2.7.
+* Windows: Update libraries in installer to gtk+ 2.24 and python 2.7.
+* Windows: Correctly show italics in preview.
+* OSX: Make the _() function available even if gettext is not working.
+* Update translations.
+
 == 1.4.0 (12-04-01) ==
 * Search: If a search contains a hashtag (e.g. #Work or #Movies), only days
   with all of those tags will be searched. This means you can e.g. search for
