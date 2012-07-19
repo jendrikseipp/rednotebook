@@ -8,6 +8,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.5
+X Use new logo redesigned by Ciaran.
 X Remember possible undo/redo actions for each day separately.
 X Turn all entries of old "Tags" categories into tags without entries at startup.
 X Suggest last tag when a new tag is added.
@@ -26,6 +27,7 @@ X Windows: Correctly show italics in preview.
 X OSX: Make the _() function available even if gettext is not working.
 
 1.x
+O Fix: Either apply filter fo tags or change wording in preferences (clouds -> cloud)
 O Inline #hashtagging
   O Turn #tags red in edit and preview mode
 X Insert Latex formulas (LP:851471)
@@ -53,6 +55,7 @@ O Change to edit mode when double-clicked into preview window?
 O Make the right panel an advanced option.
 O Disable cache for preview (Support previewing externally changed files)
 O Use dwolla once it's available in Germany
+O Add relative links (by converting $HOME to /user/home/name?)
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either

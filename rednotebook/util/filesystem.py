@@ -221,9 +221,6 @@ def get_relative_path(from_dir, to_dir):
     else:
         return to_dir
 
-def get_icons():
-    return glob(os.path.join(frame_icon_dir, '*.png'))
-
 
 def get_journal_title(dir):
     '''
