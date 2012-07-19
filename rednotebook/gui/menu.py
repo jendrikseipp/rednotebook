@@ -248,7 +248,7 @@ class MainMenuBar(object):
         self.info_dialog.set_transient_for(self.main_window.main_frame)
         self.info_dialog.set_name('RedNotebook')
         self.info_dialog.set_version(info.version)
-        self.info_dialog.set_copyright('Copyright (c) 2008-2011 Jendrik Seipp')
+        self.info_dialog.set_copyright('Copyright (c) 2008-2012 Jendrik Seipp')
         self.info_dialog.set_comments(_('A Desktop Journal'))
         gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
         self.info_dialog.set_website(info.url)
