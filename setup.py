@@ -142,6 +142,7 @@ parameters = {  'name'              : 'rednotebook',
                                        'rednotebook.gui', 'rednotebook.util'],
                 'package_data'      : {'rednotebook':
                                        ['images/*.png', 'images/rednotebook-icon/*.png',
+                                        'images/rednotebook-icon/rednotebook.svg',
                                         'files/*.css', 'files/*.glade', 'files/*.cfg']},
                 'data_files'        : [],
                 'cmdclass'          : cmdclass,
