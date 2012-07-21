@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-10 05:35+0000\n"
-"X-Generator: Launchpad (build 15558)\n"
+"X-Launchpad-Export-Date: 2012-07-21 05:09+0000\n"
+"X-Generator: Launchpad (build 15654)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -1105,7 +1105,7 @@ msgstr ""
 "  NINa https://launchpad.net/~factory\n"
 "  TSr https://launchpad.net/~tsr\n"
 "  doiges https://launchpad.net/~bohopicasso\n"
-"  xc1024 https://launchpad.net/~xc1024\n"
+"  xc1024 https://launchpad.net/~xc1024-deactivatedaccount\n"
 "  Łukasz Wiśniewski https://launchpad.net/~fr-luksus"
 
 #: tmp/main_window.glade.h:16
