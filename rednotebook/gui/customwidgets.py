@@ -60,8 +60,10 @@ class CustomComboBoxEntry(object):
 
     def set_entries(self, value_list):
         self.clear()
+        self.combo_box.set_model(None)
         for entry in value_list:
             self.add_entry(entry)
+        self.combo_box.set_model(self.liststore)
 
     def get_active_text(self):
         return self.entry.get_text().decode('utf-8')
@@ -70,9 +72,11 @@ class CustomComboBoxEntry(object):
         return self.entry.set_text(text)
 
     def clear(self):
+        self.combo_box.set_model(None)
         if self.liststore:
             self.liststore.clear()
         self.set_active_text('')
+        self.combo_box.set_model(self.liststore)
 
     def connect(self, *args, **kargs):
         self.combo_box.connect(*args, **kargs)
