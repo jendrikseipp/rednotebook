@@ -102,9 +102,9 @@ class Day(object):
 
     @property
     def empty(self):
-        if len(self.content.keys()) == 0:
+        if len(self.content) == 0:
             return True
-        return len(self.content.keys()) == 1 and 'text' in self.content and not self.has_text
+        return self.content.keys() == ['text'] and not self.has_text
 
 
     @property
@@ -145,7 +145,7 @@ class Day(object):
 
     @property
     def categories(self):
-        return self.tree.keys()
+        return self.get_category_content_pairs().keys()
 
 
     def get_entries(self, category):
@@ -156,15 +156,14 @@ class Day(object):
         '''
         Returns a dict of (category: content_in_category_as_list) pairs.
         '''
-        original_tree = self.tree.copy()
         pairs = {}
-        #TODO: Rewrite
-        for category, content in original_tree.iteritems():
-            entry_list = []
-            if content is not None:
-                for entry, nonetype in content.iteritems():
-                    entry_list.append(entry)
-            pairs[category] = entry_list
+        for category, content in self.content.iteritems():
+            if category == 'text':
+                continue
+            if content is None:
+                pairs[category] = []
+            else:
+                pairs[category] = [entry for entry, nonetype in content.iteritems()]
         return pairs
 
 
