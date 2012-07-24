@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-05-29 23:13+0200\n"
+"POT-Creation-Date: 2012-07-23 11:28+0200\n"
 "PO-Revision-Date: 2012-03-22 13:31+0000\n"
 "Last-Translator: Ngô Chin <ndtrung4419@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-21 05:09+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 04:54+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -216,7 +216,7 @@ msgstr "Sử dụng một app ghi chép rất tuyệt"
 msgid "Monty Python's Life of Brian"
 msgstr "Monty Python's Life of Brian"
 
-#: ../rednotebook/gui/customwidgets.py:318
+#: ../rednotebook/gui/customwidgets.py:322
 msgid "Introduction"
 msgstr "Giới thiệu"
 
@@ -444,175 +444,175 @@ msgstr "Cho phép hiện từ ngắn trong đám mây từ vựng"
 msgid "Allow those words with 4 letters or less in the text cloud"
 msgstr "Cho phép hiển thị những từ có nhiều nhất 4 ký tự này trong đám mây"
 
-#: ../rednotebook/gui/main_window.py:278
+#: ../rednotebook/gui/main_window.py:282
 msgid "Show RedNotebook"
 msgstr "Hiển thị RedNotebook"
 
-#: ../rednotebook/gui/main_window.py:452
+#: ../rednotebook/gui/main_window.py:456
 msgid "Select an empty folder for your new journal"
 msgstr "Hãy chọn một thư mục trống cho sổ ghi chép mới của bạn"
 
-#: ../rednotebook/gui/main_window.py:453
+#: ../rednotebook/gui/main_window.py:457
 msgid "Journals are saved in a directory, not in a single file."
 msgstr "Sổ ghi chép được lưu trong một thư mục, không phải chỉ một tập tin"
 
-#: ../rednotebook/gui/main_window.py:454
+#: ../rednotebook/gui/main_window.py:458
 msgid "The directory name will be the title of the new journal."
 msgstr "Tên thư mục cũng sẽ là tên sổ ghi chép"
 
-#: ../rednotebook/gui/main_window.py:458
+#: ../rednotebook/gui/main_window.py:462
 msgid "Select an existing journal directory"
 msgstr "Hãy chọn một thư mục ghi chép có sẵn"
 
-#: ../rednotebook/gui/main_window.py:460
+#: ../rednotebook/gui/main_window.py:464
 msgid "The directory should contain your journal's data files"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:462
+#: ../rednotebook/gui/main_window.py:466
 msgid "Select an empty folder for the new location of your journal"
 msgstr "Hãy chọn môt thư mục trống làm nơi chứa mới cho sổ ghi chép của bạn"
 
-#: ../rednotebook/gui/main_window.py:464
+#: ../rednotebook/gui/main_window.py:468
 msgid "The directory name will be the new title of the journal"
 msgstr "Tên thư mục sẽ là tên sổ ghi chép"
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
-#: ../rednotebook/gui/main_window.py:485
+#: ../rednotebook/gui/main_window.py:489
 msgid "The default journal has been opened"
 msgstr "Sổ ghi chép mặc định đã được mở"
 
-#: ../rednotebook/gui/main_window.py:651
+#: ../rednotebook/gui/main_window.py:655
 msgid "No text or tag has been selected."
 msgstr "Chưa có văn bản hay tag nào được lựa chọn"
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:656
+#: ../rednotebook/gui/main_window.py:660
 msgid "Ctrl"
 msgstr "Phím Ctrl"
 
-#: ../rednotebook/gui/main_window.py:659
+#: ../rednotebook/gui/main_window.py:663
 msgid "Bold"
 msgstr "Đậm"
 
-#: ../rednotebook/gui/main_window.py:660
+#: ../rednotebook/gui/main_window.py:664
 msgid "Italic"
 msgstr "Nghiêng"
 
-#: ../rednotebook/gui/main_window.py:661
+#: ../rednotebook/gui/main_window.py:665
 msgid "Underline"
 msgstr "Gạch dưới"
 
-#: ../rednotebook/gui/main_window.py:662
+#: ../rednotebook/gui/main_window.py:666
 msgid "Strikethrough"
 msgstr "Gạch xuyên"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:678 ../rednotebook/gui/exports.py:382
+#: ../rednotebook/gui/main_window.py:682 ../rednotebook/gui/exports.py:382
 msgid "Format"
 msgstr "Định dạng"
 
-#: ../rednotebook/gui/main_window.py:679
+#: ../rednotebook/gui/main_window.py:683
 msgid "Format the selected text or tag"
 msgstr "Định dạng văn bản hay tag được chọn"
 
-#: ../rednotebook/gui/main_window.py:730
+#: ../rednotebook/gui/main_window.py:734
 msgid "First Item"
 msgstr "Mục đầu tiên"
 
-#: ../rednotebook/gui/main_window.py:731
+#: ../rednotebook/gui/main_window.py:735
 msgid "Second Item"
 msgstr "Mục thứ hai"
 
-#: ../rednotebook/gui/main_window.py:732
+#: ../rednotebook/gui/main_window.py:736
 msgid "Indented Item"
 msgstr "Mục được lùi vào"
 
-#: ../rednotebook/gui/main_window.py:733
+#: ../rednotebook/gui/main_window.py:737
 msgid "Two blank lines close the list"
 msgstr "Hai dòng trắng sẽ đóng danh sách"
 
-#: ../rednotebook/gui/main_window.py:737
+#: ../rednotebook/gui/main_window.py:741
 msgid "Title text"
 msgstr "Tiêu đề"
 
-#: ../rednotebook/gui/main_window.py:763
+#: ../rednotebook/gui/main_window.py:767
 msgid "Picture"
 msgstr "Hình ảnh"
 
-#: ../rednotebook/gui/main_window.py:764
+#: ../rednotebook/gui/main_window.py:768
 msgid "Insert an image from the harddisk"
 msgstr "Thêm một hình ảnh từ ổ đĩa"
 
-#: ../rednotebook/gui/main_window.py:766
+#: ../rednotebook/gui/main_window.py:770
 msgid "File"
 msgstr "Tập tin"
 
-#: ../rednotebook/gui/main_window.py:767
+#: ../rednotebook/gui/main_window.py:771
 msgid "Insert a link to a file"
 msgstr "Thêm liên kết đến một tập tin"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:770
+#: ../rednotebook/gui/main_window.py:774
 msgid "_Link"
 msgstr "_Liên kết"
 
-#: ../rednotebook/gui/main_window.py:771
+#: ../rednotebook/gui/main_window.py:775
 msgid "Insert a link to a website"
 msgstr "Thêm liên kết đến một website"
 
-#: ../rednotebook/gui/main_window.py:773
+#: ../rednotebook/gui/main_window.py:777
 msgid "Bullet List"
 msgstr "Danh sách gạch đầu dòng"
 
-#: ../rednotebook/gui/main_window.py:775
+#: ../rednotebook/gui/main_window.py:779
 msgid "Numbered List"
 msgstr "Danh sách đánh số"
 
-#: ../rednotebook/gui/main_window.py:777
+#: ../rednotebook/gui/main_window.py:781
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: ../rednotebook/gui/main_window.py:779
+#: ../rednotebook/gui/main_window.py:783
 msgid "Line"
 msgstr "Đường kẻ ngang"
 
-#: ../rednotebook/gui/main_window.py:780
+#: ../rednotebook/gui/main_window.py:784
 msgid "Insert a separator line"
 msgstr "Thêm một đường phân cách"
 
-#: ../rednotebook/gui/main_window.py:782
+#: ../rednotebook/gui/main_window.py:786
 msgid "Table"
 msgstr "Bảng"
 
-#: ../rednotebook/gui/main_window.py:784
+#: ../rednotebook/gui/main_window.py:788
 msgid "Latex Formula"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:786
+#: ../rednotebook/gui/main_window.py:790
 msgid "Date/Time"
 msgstr "Ngày/Giờ"
 
-#: ../rednotebook/gui/main_window.py:787
+#: ../rednotebook/gui/main_window.py:791
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "Thêm ngày giờ hiện tại (chỉnh sửa định dạng trong mục tùy thích)"
 
-#: ../rednotebook/gui/main_window.py:789
+#: ../rednotebook/gui/main_window.py:793
 msgid "Line Break"
 msgstr "Ngắt dòng"
 
-#: ../rednotebook/gui/main_window.py:790
+#: ../rednotebook/gui/main_window.py:794
 msgid "Insert a manual line break"
 msgstr "Thêm dấu ngắt dòng thủ công"
 
-#: ../rednotebook/gui/main_window.py:813
+#: ../rednotebook/gui/main_window.py:817
 msgid "Insert"
 msgstr "Chèn"
 
-#: ../rednotebook/gui/main_window.py:817
+#: ../rednotebook/gui/main_window.py:821
 msgid "Insert images, files, links and other content"
 msgstr "Thêm ảnh, tập tin và liên kết đến nội dung khác"
 
-#: ../rednotebook/gui/main_window.py:900
+#: ../rednotebook/gui/main_window.py:904
 msgid "No link location has been entered"
 msgstr "Chưa nhập địa chỉ liên kết"
 
@@ -662,21 +662,21 @@ msgstr "Định dạng ngày"
 msgid "Leave blank to omit dates in export"
 msgstr "Bỏ trống để không ghi ngày trong văn bản xuất ra"
 
-#: ../rednotebook/gui/exports.py:130
-msgid "Export texts"
-msgstr "Xuất văn bản"
+#: ../rednotebook/gui/exports.py:130 ../rednotebook/gui/exports.py:389
+msgid "Include text"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:131
-msgid "Export all tags"
-msgstr "Xuất tất cả tag"
+msgid "Include all tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:132
-msgid "Do not export tags"
-msgstr "Không xuất tag"
+msgid "Do not include tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:134
-msgid "Export only the selected tags"
-msgstr "Chỉ xuất những tag này"
+msgid "Include only the selected tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Available tags"
@@ -695,7 +695,7 @@ msgid "Deselect"
 msgstr "Bỏ chọn"
 
 #: ../rednotebook/gui/exports.py:255
-msgid "If export text is not selected, you have to select at least one tag."
+msgid "If include text is not selected, you have to select at least one tag."
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:279
@@ -751,10 +751,6 @@ msgstr ""
 msgid "End date"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:389
-msgid "Export text"
-msgstr ""
-
 #: ../rednotebook/gui/exports.py:391
 msgid "Export path"
 msgstr ""
@@ -767,12 +763,12 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:433 ../rednotebook/gui/exports.py:439
+#: ../rednotebook/gui/exports.py:434 ../rednotebook/gui/exports.py:440
 #, python-format
 msgid "Content exported to %s"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:526
+#: ../rednotebook/gui/exports.py:527
 msgid "requires pywebkitgtk"
 msgstr ""
 
@@ -880,23 +876,23 @@ msgstr ""
 msgid "Choose Template Name"
 msgstr ""
 
-#: ../rednotebook/templates.py:355 ../rednotebook/templates.py:364
+#: ../rednotebook/templates.py:352 ../rednotebook/templates.py:361
 msgid "This Weekday's Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:358
+#: ../rednotebook/templates.py:355
 msgid "Edit Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:361
+#: ../rednotebook/templates.py:358
 msgid "Insert Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:367
+#: ../rednotebook/templates.py:364
 msgid "Create New Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:371
+#: ../rednotebook/templates.py:368
 msgid "Open Template Directory"
 msgstr ""
 
@@ -970,16 +966,16 @@ msgstr ""
 msgid "Never ask again"
 msgstr ""
 
-#: ../rednotebook/journal.py:325
+#: ../rednotebook/journal.py:329
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:328
+#: ../rednotebook/journal.py:332
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:360
+#: ../rednotebook/journal.py:364
 msgid "The selected folder is empty. A new journal has been created."
 msgstr ""
 
@@ -988,7 +984,7 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr ""
 
 #: tmp/main_window.glade.h:2
-msgid "Jump to today"
+msgid "Jump to today (Ctrl+Home)"
 msgstr ""
 
 #: tmp/main_window.glade.h:3

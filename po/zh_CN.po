@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-05-29 23:13+0200\n"
+"POT-Creation-Date: 2012-07-23 11:28+0200\n"
 "PO-Revision-Date: 2012-01-19 12:55+0000\n"
 "Last-Translator: lhquark <Unknown>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-21 05:10+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 04:54+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -201,7 +201,7 @@ msgstr "使用一款超酷的日记程序"
 msgid "Monty Python's Life of Brian"
 msgstr "《万世魔星》"
 
-#: ../rednotebook/gui/customwidgets.py:318
+#: ../rednotebook/gui/customwidgets.py:322
 msgid "Introduction"
 msgstr "介绍"
 
@@ -427,175 +427,175 @@ msgstr "允许云中的短单词"
 msgid "Allow those words with 4 letters or less in the text cloud"
 msgstr "在文本云中允许 4 个字母或更短的单词"
 
-#: ../rednotebook/gui/main_window.py:278
+#: ../rednotebook/gui/main_window.py:282
 msgid "Show RedNotebook"
 msgstr "显示 RedNotebook"
 
-#: ../rednotebook/gui/main_window.py:452
+#: ../rednotebook/gui/main_window.py:456
 msgid "Select an empty folder for your new journal"
 msgstr "请为您的新日志选择一个空文件夹"
 
-#: ../rednotebook/gui/main_window.py:453
+#: ../rednotebook/gui/main_window.py:457
 msgid "Journals are saved in a directory, not in a single file."
 msgstr "所有日志不是保存为单个文件中，而是保存在一个目录里。"
 
-#: ../rednotebook/gui/main_window.py:454
+#: ../rednotebook/gui/main_window.py:458
 msgid "The directory name will be the title of the new journal."
 msgstr "此目录名将作为新日志的标题。"
 
-#: ../rednotebook/gui/main_window.py:458
+#: ../rednotebook/gui/main_window.py:462
 msgid "Select an existing journal directory"
 msgstr "请选择一个现有的日志目录"
 
-#: ../rednotebook/gui/main_window.py:460
+#: ../rednotebook/gui/main_window.py:464
 msgid "The directory should contain your journal's data files"
 msgstr "此目录应包含您日志的数据文件"
 
-#: ../rednotebook/gui/main_window.py:462
+#: ../rednotebook/gui/main_window.py:466
 msgid "Select an empty folder for the new location of your journal"
 msgstr "选择一个空文件夹作为日志的新存放位置"
 
-#: ../rednotebook/gui/main_window.py:464
+#: ../rednotebook/gui/main_window.py:468
 msgid "The directory name will be the new title of the journal"
 msgstr "此目录名将作为新日志的标题。"
 
 #. ## Translators: The default journal is located at $HOME/.rednotebook/data
-#: ../rednotebook/gui/main_window.py:485
+#: ../rednotebook/gui/main_window.py:489
 msgid "The default journal has been opened"
 msgstr "默认的日志己打开"
 
-#: ../rednotebook/gui/main_window.py:651
+#: ../rednotebook/gui/main_window.py:655
 msgid "No text or tag has been selected."
 msgstr "未选定任何文本或标签"
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:656
+#: ../rednotebook/gui/main_window.py:660
 msgid "Ctrl"
 msgstr "Ctrl键"
 
-#: ../rednotebook/gui/main_window.py:659
+#: ../rednotebook/gui/main_window.py:663
 msgid "Bold"
 msgstr "粗体"
 
-#: ../rednotebook/gui/main_window.py:660
+#: ../rednotebook/gui/main_window.py:664
 msgid "Italic"
 msgstr "斜体"
 
-#: ../rednotebook/gui/main_window.py:661
+#: ../rednotebook/gui/main_window.py:665
 msgid "Underline"
 msgstr "下划线"
 
-#: ../rednotebook/gui/main_window.py:662
+#: ../rednotebook/gui/main_window.py:666
 msgid "Strikethrough"
 msgstr "删除线"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:678 ../rednotebook/gui/exports.py:382
+#: ../rednotebook/gui/main_window.py:682 ../rednotebook/gui/exports.py:382
 msgid "Format"
 msgstr "格式"
 
-#: ../rednotebook/gui/main_window.py:679
+#: ../rednotebook/gui/main_window.py:683
 msgid "Format the selected text or tag"
 msgstr "格式化选定的文本或标签"
 
-#: ../rednotebook/gui/main_window.py:730
+#: ../rednotebook/gui/main_window.py:734
 msgid "First Item"
 msgstr "第一项"
 
-#: ../rednotebook/gui/main_window.py:731
+#: ../rednotebook/gui/main_window.py:735
 msgid "Second Item"
 msgstr "第二项"
 
-#: ../rednotebook/gui/main_window.py:732
+#: ../rednotebook/gui/main_window.py:736
 msgid "Indented Item"
 msgstr "缩进的项目"
 
-#: ../rednotebook/gui/main_window.py:733
+#: ../rednotebook/gui/main_window.py:737
 msgid "Two blank lines close the list"
 msgstr "两个空行关闭此列表"
 
-#: ../rednotebook/gui/main_window.py:737
+#: ../rednotebook/gui/main_window.py:741
 msgid "Title text"
 msgstr "标题文本"
 
-#: ../rednotebook/gui/main_window.py:763
+#: ../rednotebook/gui/main_window.py:767
 msgid "Picture"
 msgstr "图片"
 
-#: ../rednotebook/gui/main_window.py:764
+#: ../rednotebook/gui/main_window.py:768
 msgid "Insert an image from the harddisk"
 msgstr "插入一张硬盘中的图片"
 
-#: ../rednotebook/gui/main_window.py:766
+#: ../rednotebook/gui/main_window.py:770
 msgid "File"
 msgstr "文件"
 
-#: ../rednotebook/gui/main_window.py:767
+#: ../rednotebook/gui/main_window.py:771
 msgid "Insert a link to a file"
 msgstr "插入一个文件链接"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:770
+#: ../rednotebook/gui/main_window.py:774
 msgid "_Link"
 msgstr "链接(_L)"
 
-#: ../rednotebook/gui/main_window.py:771
+#: ../rednotebook/gui/main_window.py:775
 msgid "Insert a link to a website"
 msgstr "插入一个网站链接"
 
-#: ../rednotebook/gui/main_window.py:773
+#: ../rednotebook/gui/main_window.py:777
 msgid "Bullet List"
 msgstr "项目符号列表"
 
-#: ../rednotebook/gui/main_window.py:775
+#: ../rednotebook/gui/main_window.py:779
 msgid "Numbered List"
 msgstr "数字编号列表"
 
-#: ../rednotebook/gui/main_window.py:777
+#: ../rednotebook/gui/main_window.py:781
 msgid "Title"
 msgstr "标题"
 
-#: ../rednotebook/gui/main_window.py:779
+#: ../rednotebook/gui/main_window.py:783
 msgid "Line"
 msgstr "直线"
 
-#: ../rednotebook/gui/main_window.py:780
+#: ../rednotebook/gui/main_window.py:784
 msgid "Insert a separator line"
 msgstr "插入一条分隔线"
 
-#: ../rednotebook/gui/main_window.py:782
+#: ../rednotebook/gui/main_window.py:786
 msgid "Table"
 msgstr "表格"
 
-#: ../rednotebook/gui/main_window.py:784
+#: ../rednotebook/gui/main_window.py:788
 msgid "Latex Formula"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:786
+#: ../rednotebook/gui/main_window.py:790
 msgid "Date/Time"
 msgstr "日期/时间"
 
-#: ../rednotebook/gui/main_window.py:787
+#: ../rednotebook/gui/main_window.py:791
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "插入当前日期和时间（在首选项中编辑格式）"
 
-#: ../rednotebook/gui/main_window.py:789
+#: ../rednotebook/gui/main_window.py:793
 msgid "Line Break"
 msgstr "换行符"
 
-#: ../rednotebook/gui/main_window.py:790
+#: ../rednotebook/gui/main_window.py:794
 msgid "Insert a manual line break"
 msgstr "插入手动换行符"
 
-#: ../rednotebook/gui/main_window.py:813
+#: ../rednotebook/gui/main_window.py:817
 msgid "Insert"
 msgstr "插入"
 
-#: ../rednotebook/gui/main_window.py:817
+#: ../rednotebook/gui/main_window.py:821
 msgid "Insert images, files, links and other content"
 msgstr "插入图片、文件、链接等内容"
 
-#: ../rednotebook/gui/main_window.py:900
+#: ../rednotebook/gui/main_window.py:904
 msgid "No link location has been entered"
 msgstr "未输入链接位置"
 
@@ -645,21 +645,21 @@ msgstr "日期格式"
 msgid "Leave blank to omit dates in export"
 msgstr "留空以在导出时省略日期"
 
-#: ../rednotebook/gui/exports.py:130
-msgid "Export texts"
-msgstr "导出文本"
+#: ../rednotebook/gui/exports.py:130 ../rednotebook/gui/exports.py:389
+msgid "Include text"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:131
-msgid "Export all tags"
-msgstr "导出所有标签"
+msgid "Include all tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:132
-msgid "Do not export tags"
-msgstr "不导出标签"
+msgid "Do not include tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:134
-msgid "Export only the selected tags"
-msgstr "只导出选定的标签"
+msgid "Include only the selected tags"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Available tags"
@@ -678,8 +678,8 @@ msgid "Deselect"
 msgstr "取消选择"
 
 #: ../rednotebook/gui/exports.py:255
-msgid "If export text is not selected, you have to select at least one tag."
-msgstr "如果为选择导出文本，您必须选择至少一个标签。"
+msgid "If include text is not selected, you have to select at least one tag."
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
@@ -731,10 +731,6 @@ msgstr "开始日期"
 msgid "End date"
 msgstr "结束日期"
 
-#: ../rednotebook/gui/exports.py:389
-msgid "Export text"
-msgstr "导出文本"
-
 #: ../rednotebook/gui/exports.py:391
 msgid "Export path"
 msgstr "导出路径"
@@ -747,12 +743,12 @@ msgstr "确定"
 msgid "No"
 msgstr "取消"
 
-#: ../rednotebook/gui/exports.py:433 ../rednotebook/gui/exports.py:439
+#: ../rednotebook/gui/exports.py:434 ../rednotebook/gui/exports.py:440
 #, python-format
 msgid "Content exported to %s"
 msgstr "内容已导出到 %s"
 
-#: ../rednotebook/gui/exports.py:526
+#: ../rednotebook/gui/exports.py:527
 msgid "requires pywebkitgtk"
 msgstr "需要 pywebkitgtk"
 
@@ -916,23 +912,23 @@ msgstr ""
 msgid "Choose Template Name"
 msgstr "选择模板名称"
 
-#: ../rednotebook/templates.py:355 ../rednotebook/templates.py:364
+#: ../rednotebook/templates.py:352 ../rednotebook/templates.py:361
 msgid "This Weekday's Template"
 msgstr "此工作日模板"
 
-#: ../rednotebook/templates.py:358
+#: ../rednotebook/templates.py:355
 msgid "Edit Template"
 msgstr "编辑模板"
 
-#: ../rednotebook/templates.py:361
+#: ../rednotebook/templates.py:358
 msgid "Insert Template"
 msgstr "插入模板"
 
-#: ../rednotebook/templates.py:367
+#: ../rednotebook/templates.py:364
 msgid "Create New Template"
 msgstr "创建新模板"
 
-#: ../rednotebook/templates.py:371
+#: ../rednotebook/templates.py:368
 msgid "Open Template Directory"
 msgstr "打开模板目录"
 
@@ -1006,16 +1002,16 @@ msgstr "下次启动时询问"
 msgid "Never ask again"
 msgstr "不再询问"
 
-#: ../rednotebook/journal.py:325
+#: ../rednotebook/journal.py:329
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "内容已保存到 %s"
 
-#: ../rednotebook/journal.py:328
+#: ../rednotebook/journal.py:332
 msgid "Nothing to save"
 msgstr "无需保存"
 
-#: ../rednotebook/journal.py:360
+#: ../rednotebook/journal.py:364
 msgid "The selected folder is empty. A new journal has been created."
 msgstr "所选文件夹为空。已创建新日志。"
 
@@ -1024,8 +1020,8 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "前一天 (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
-msgid "Jump to today"
-msgstr "跳转到今日"
+msgid "Jump to today (Ctrl+Home)"
+msgstr ""
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
