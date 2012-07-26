@@ -5,7 +5,7 @@ O WYSIWYG as an alternative to markup???
     2 options: Save in html or txt2tags format
     HTML Editing: Webkit
     HTML Saving: Webkit
-    HTML2txt2tags: Vim Script (port to python)
+    HTML2txt2tags: Vim Script (port to python), https://sourceforge.net/mailarchive/message.php?msg_id=29588583
     HTML2markdown: python module exists
     HTML2Latex: Use HTML2txt2tags2Latex (write or use twisted lore)
     HTML2PDF: xhtml2pdf, http://code.activestate.com/recipes/532908/ possible, but only for plain text (no formatting)

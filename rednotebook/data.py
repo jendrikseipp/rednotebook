@@ -141,7 +141,8 @@ class Day(object):
 
 
     def get_entries(self, category):
-        return sorted(self.content.get(category, {}).keys())
+        entries = self.content.get(category) or {}
+        return sorted(entries.keys())
 
 
     def get_category_content_pairs(self):
@@ -179,11 +180,10 @@ class Day(object):
     def search(self, text, tags):
         if not text:
             results = []
-            for day_tag in self.categories:
+            for day_tag, entries in self.get_category_content_pairs():
                 for tag in tags:
                     if day_tag.replace(' ', '').lower() != tag:
                         continue
-                    entries = self.get_entries(day_tag)
                     if entries:
                         results.extend(entries)
                     else:
