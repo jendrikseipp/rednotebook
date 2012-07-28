@@ -180,7 +180,7 @@ class Day(object):
     def search(self, text, tags):
         if not text:
             results = []
-            for day_tag, entries in self.get_category_content_pairs():
+            for day_tag, entries in self.get_category_content_pairs().items():
                 for tag in tags:
                     if day_tag.replace(' ', '').lower() != tag:
                         continue
