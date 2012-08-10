@@ -34,7 +34,7 @@ O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 O Change to edit mode when double-clicked into preview window?
-O Make the right panel an advanced option.
+O Make the right panel an advanced option?
 O Disable cache for preview (Support previewing externally changed files)
 O Use dwolla once it's available in Germany
 O Have a look at SimpleNote
