@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-23 11:28+0200\n"
-"PO-Revision-Date: 2012-08-05 19:07+0000\n"
+"PO-Revision-Date: 2012-08-13 17:59+0000\n"
 "Last-Translator: Iori Namekawa <y1t2y2z1@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-08-06 04:58+0000\n"
-"X-Generator: Launchpad (build 15745)\n"
+"X-Launchpad-Export-Date: 2012-08-14 04:46+0000\n"
+"X-Generator: Launchpad (build 15791)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -259,7 +259,7 @@ msgstr "ジャーナルの統計的なデータを表示します。"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "RedNotebook を終了します。トレイには送られません。"
+msgstr "RedNotebook を終了します。システムトレイには送られません。"
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
@@ -421,7 +421,7 @@ msgstr "クラウド内でコンマにより分離された単語を表示しな
 
 #: ../rednotebook/gui/options.py:326
 msgid "Allow small words in clouds"
-msgstr "テキストクラウドに短い単語も表示する。"
+msgstr "クラウドに短い単語も表示する。"
 
 #: ../rednotebook/gui/options.py:327
 msgid "Allow those words with 4 letters or less in the text cloud"
@@ -541,7 +541,7 @@ msgstr "リンク(_L)"
 
 #: ../rednotebook/gui/main_window.py:775
 msgid "Insert a link to a website"
-msgstr "web サイトへのリンクを挿入"
+msgstr "ウェブサイトへのリンクを挿入"
 
 #: ../rednotebook/gui/main_window.py:777
 msgid "Bullet List"
@@ -601,7 +601,7 @@ msgstr "リンクの場所が入力されていません"
 
 #: ../rednotebook/gui/clouds.py:77
 msgid "filter, these, comma, separated, words"
-msgstr "カンマ, によって,  区切られた, これらの単語を, 取り除く"
+msgstr "カンマ, によって, 区切られた, これらの単語を, 取り除く"
 
 #: ../rednotebook/gui/clouds.py:82
 msgid "mtv, spam, work, job, play"
@@ -631,11 +631,11 @@ msgstr "選択された期間のみエクスポートする"
 
 #: ../rednotebook/gui/exports.py:64
 msgid "From:"
-msgstr "From:"
+msgstr "開始日:"
 
 #: ../rednotebook/gui/exports.py:66
 msgid "To:"
-msgstr "To:"
+msgstr "終了日:"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Date format"
@@ -647,7 +647,7 @@ msgstr "空の日付はエクスポートでは除かれます。"
 
 #: ../rednotebook/gui/exports.py:130 ../rednotebook/gui/exports.py:389
 msgid "Include text"
-msgstr "ジャーナルのテキストを含める"
+msgstr "日記のテキストを含める"
 
 #: ../rednotebook/gui/exports.py:131
 msgid "Include all tags"
