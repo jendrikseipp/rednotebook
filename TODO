@@ -38,6 +38,7 @@ O Make the right panel an advanced option?
 O Disable cache for preview (Support previewing externally changed files)
 O Use dwolla once it's available in Germany
 O Have a look at SimpleNote
+O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
 O Add relative links (by converting $HOME to /user/home/name?,
   better: automatically transform 'myfile.txt' to /path/to/journal/myfile.txt)
 
