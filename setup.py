@@ -118,8 +118,7 @@ if sys.platform == 'win32':
     py2exe.build_exe.isSystemDLL = isSystemDLL
 
 
-baseDir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, baseDir)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from rednotebook import info
 from rednotebook.external import msgfmt
@@ -152,10 +151,12 @@ parameters = {  'name'              : 'rednotebook',
 if not sys.platform.startswith('win'):
     parameters['data_files'].extend([
         ('share/applications', ['rednotebook.desktop']),
-        ('share/icons/hicolor/48x48/apps', ['rednotebook.png']), # new freedesktop.org spec
+        # new freedesktop.org spec
+        #('share/icons/hicolor/48x48/apps', ['rednotebook.png']),
         ('share/icons/hicolor/scalable/apps',
          ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
-        ('share/pixmaps', ['rednotebook.png']),                  # for older configurations
+        # for older configurations
+        #('share/pixmaps', ['rednotebook.png']),
     ])
 
 
