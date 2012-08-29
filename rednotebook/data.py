@@ -178,8 +178,8 @@ class Day(object):
 
 
     def search(self, text, tags):
+        results = []
         if not text:
-            results = []
             for day_tag, entries in self.get_category_content_pairs().items():
                 for tag in tags:
                     if day_tag.replace(' ', '').lower() != tag:
@@ -189,17 +189,14 @@ class Day(object):
                     else:
                         results.append(get_text_with_dots(self.text, 0,
                                        TEXT_RESULT_LENGTH))
-            return str(self), results
-
-        results = []
-        # Search in date
-        if text in str(self):
+        elif text in str(self):
+            # Search in date
             results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-            return results
-        text_result = self.search_in_text(text)
-        if text_result:
-            results.append(text_result)
-        results.extend(self.search_in_categories(text))
+        else:
+            text_result = self.search_in_text(text)
+            if text_result:
+                results.append(text_result)
+            results.extend(self.search_in_categories(text))
         return str(self), results
 
 

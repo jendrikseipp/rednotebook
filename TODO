@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.x
 X Detach model from combobox when updating the tags to make inserting a new tag faster.
+X Fix searching for dates.
 O Fix: Either apply filter fo tags or change wording in preferences (clouds -> cloud)
 O Inline #hashtagging
   O Turn #tags red in edit and preview mode
@@ -34,13 +35,12 @@ O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 O Change to edit mode when double-clicked into preview window?
+  Change to edit/preview mode if content is missing/present automatically?
 O Make the right panel an advanced option?
 O Disable cache for preview (Support previewing externally changed files)
-O Use dwolla once it's available in Germany
-O Have a look at SimpleNote
-O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
 O Add relative links (by converting $HOME to /user/home/name?,
   better: automatically transform 'myfile.txt' to /path/to/journal/myfile.txt)
+O Change file permissions so that journal files are only readable by the user
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
@@ -102,6 +102,11 @@ New format:
 O Use json instead of yaml
 O Use standard paths (Win: C:\Docs & Settings\username\My Documents,
   Linux: ~/.local/share, ~/.config (http://live.gnome.org/Tomboy/Directories))
+
+Development:
+O Use dwolla once it's available in Germany
+O Have a look at SimpleNotes
+O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
 
 
 
