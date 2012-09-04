@@ -344,8 +344,6 @@ class MainWindow(object):
 
 
     def change_mode(self, preview):
-        self.journal.save_old_day()
-
         edit_scroll = self.builder.get_object('text_scrolledwindow')
         template_button = self.builder.get_object('template_menu_button')
 
@@ -360,15 +358,12 @@ class MainWindow(object):
         if preview:
             # Enter preview mode
             edit_scroll.hide()
-            self.html_editor.show_day(self.day)
             self.html_editor.show()
 
             edit_button.show()
             preview_button.hide()
         else:
             # Enter edit mode
-            self.day_text_field.show_day(self.day)
-
             edit_scroll.show()
             self.html_editor.hide()
 
@@ -382,9 +377,12 @@ class MainWindow(object):
         self.preview_mode = preview
 
     def on_edit_button_clicked(self, button):
+        # The day's text is already in the editor.
         self.change_mode(preview=False)
 
     def on_preview_button_clicked(self, button):
+        self.journal.save_old_day()
+        self.html_editor.show_day(self.day)
         self.change_mode(preview=True)
 
 
@@ -908,24 +906,31 @@ class MainWindow(object):
         self.categories_tree_view._on_add_entry_clicked(None)
 
     def set_date(self, new_month, new_date, day):
+        self.day = day
         self.categories_tree_view.clear()
 
         self.calendar.set_date(new_date)
         self.calendar.set_month(new_month)
 
-        # Converting markup to html takes time, so only do it when necessary
-        if self.preview_mode:
-            self.html_editor.show_day(day)
-        # TODO: Why do we always have to set the text of the day_text_field?
+        # Regardless of the mode, we always keep the editor updated, to be able
+        # to always save the day.
         self.day_text_field.show_day(day)
+
+        if day.has_text and not self.preview_mode:
+            self.change_mode(preview=True)
+        elif not day.has_text and self.preview_mode:
+            self.change_mode(preview=False)
+
+        if self.preview_mode:
+            # Converting markup to html takes time, so only do it when necessary
+            self.html_editor.show_day(day)
+
         self.categories_tree_view.set_day_content(day)
 
         if self.zeitgeist_widget:
             self.zeitgeist_widget.set_date(new_date)
 
         self.undo_redo_manager.set_date(new_date)
-
-        self.day = day
 
     def get_day_text(self):
         return self.day_text_field.get_text()
@@ -993,7 +998,7 @@ class DayEditor(Editor):
             iters = [self.day_text_buffer.get_iter_at_offset(offset)
                      for offset in selection]
             gobject.idle_add(self.day_text_buffer.select_range, *iters)
-            self.day_text_view.grab_focus()
+            gobject.idle_add(self.day_text_view.grab_focus)
 
 
 class NewEntryDialog(object):

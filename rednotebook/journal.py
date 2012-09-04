@@ -427,7 +427,7 @@ class Journal:
         self.day.content = self.frame.categories_tree_view.get_day_content()
         self.day.text = self.frame.get_day_text()
 
-        content_changed = not (old_content == self.day.content)
+        content_changed = (old_content != self.day.content)
         if content_changed:
             self.month.edited = True
 

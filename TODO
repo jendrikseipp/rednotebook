@@ -8,6 +8,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.x
+X Change to edit/preview mode if text is missing/present automatically.
 X Detach model from combobox when updating the tags to make inserting a new tag faster.
 X Fix searching for dates.
 O Fix: Either apply filter fo tags or change wording in preferences (clouds -> cloud)
@@ -35,7 +36,6 @@ O Automated backups
 O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 O Change to edit mode when double-clicked into preview window?
-  Change to edit/preview mode if content is missing/present automatically?
 O Make the right panel an advanced option?
 O Disable cache for preview (Support previewing externally changed files)
 O Add relative links (by converting $HOME to /user/home/name?,
