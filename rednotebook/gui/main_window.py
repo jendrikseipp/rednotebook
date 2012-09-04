@@ -379,6 +379,9 @@ class MainWindow(object):
     def on_edit_button_clicked(self, button):
         # The day's text is already in the editor.
         self.change_mode(preview=False)
+        # Select (not only highlight) previously selected text by giving focus
+        # to the day editor.
+        gobject.idle_add(self.day_text_field.day_text_view.grab_focus)
 
     def on_preview_button_clicked(self, button):
         self.journal.save_old_day()
