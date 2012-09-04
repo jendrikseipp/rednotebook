@@ -227,13 +227,9 @@ class HtmlView(gtk.ScrolledWindow):
         '''
 
     def on_button_press(self, webview, event):
-        '''
-        We don't want the context menus
-        '''
         # Right mouse click
         if event.button == 3:
-            #self.webview.emit_stop_by_name('button_press_event')
-            # Stop processing that event
+            # We don't want the context menus, so stop processing that event.
             return True
 
     def on_navigate(self, webview, frame, request):

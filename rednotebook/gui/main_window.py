@@ -112,6 +112,7 @@ class MainWindow(object):
         self.edit_pane = self.builder.get_object('edit_pane')
 
         self.html_editor = Preview()
+        self.html_editor.webview.connect('button-press-event', self.on_browser_clicked)
 
         self.text_vbox = self.builder.get_object('text_vbox')
         self.text_vbox.pack_start(self.html_editor)
@@ -343,6 +344,8 @@ class MainWindow(object):
             list.set_headers_visible(False)
 
 
+    # MODE-SWITCHING -----------------------------------------------------------
+
     def change_mode(self, preview):
         edit_scroll = self.builder.get_object('text_scrolledwindow')
         template_button = self.builder.get_object('template_menu_button')
@@ -387,6 +390,15 @@ class MainWindow(object):
         self.journal.save_old_day()
         self.html_editor.show_day(self.day)
         self.change_mode(preview=True)
+
+    def on_browser_clicked(self, webview, event):
+        # Double-click -> Change to edit mode.
+        if event.type == gtk.gdk._2BUTTON_PRESS:
+            self.change_mode(preview=False)
+            # Stop processing that event
+            return True
+
+    # ----------------------------------------------------------- MODE-SWITCHING
 
 
     def setup_search(self):
