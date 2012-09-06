@@ -1,0 +1,2 @@
+debian/rednotebook-crashdb.conf etc/apport/crashdb.conf.d/
+debian/source_rednotebook.py usr/share/apport/package-hooks/
