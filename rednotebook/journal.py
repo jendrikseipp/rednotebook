@@ -510,8 +510,6 @@ class Journal:
 
 
     def search(self, text, tags):
-        if text == 'Error':
-            1 / 0
         days = self.get_days_with_tags(tags)
         results = []
         for day in reversed(days):
