@@ -14,9 +14,12 @@ X Detach model from combobox when updating the tags to make inserting a new tag 
 X Fix searching for dates.
 X Use apport (Only supports Linux, difficult setup, might result in too many bugreports)
 
-O Fix: Either apply filter fo tags or change wording in preferences (clouds -> cloud)
-O Inline #hashtagging
-  O Turn #tags red in edit and preview mode
+X Inline #hashtagging
+  X Turn #tags red in edit mode
+  O Highlight hashtags in preview mode (see e.g. google reader tags)
+  O Show # in tag cloud
+  O Use hashtags in introductory text
+  O Promote hashtags in help
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode

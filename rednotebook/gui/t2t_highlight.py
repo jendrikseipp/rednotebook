@@ -359,6 +359,8 @@ table_row = Pattern(r'^ *(\| .*)', [(1, 'tablerow')])
 # A formula starts with one or two dollar signs and is closed by the same number.
 formula = Pattern(r'(\${1,2})(.+?)(\1)', [(1, 'gray'), (2, 'formula'), (3, 'gray')])
 
+hashtag = Pattern(r'(#\S+)', [(1, 'red')])
+
 
 patterns = [
         get_pattern('\*', 'bold'),
@@ -380,6 +382,7 @@ patterns = [
         table_head,
         table_row,
         formula,
+        hashtag,
         ] + title_patterns
 
 

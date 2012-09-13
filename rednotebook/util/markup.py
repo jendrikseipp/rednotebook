@@ -191,6 +191,13 @@ def _get_config(type):
     # Allow line breaks, r'\\\\' are 2 \ for regexes
     config['preproc'].append([REGEX_LINEBREAK, 'LINEBREAK'])
 
+    # Highlight hashtags.
+    config['preproc'].append([r'(#\S+)', r'{\1|color:red}'])
+
+    # Escape color markup.
+    config['preproc'].append([r'\{(.*?)\|color:(.+?)\}',
+                              r'BEGINCOLOR\1SEP\2ENDCOLOR'])
+
     if type == 'xhtml' or type == 'html':
         config['encoding'] = 'UTF-8'  # document encoding
         config['toc'] = 0
@@ -207,6 +214,10 @@ def _get_config(type):
 
         # Apply image resizing
         config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
+
+        # {{red text|color:red}} -> <span style="color:red">red text</span>
+        config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR',
+                                   r'<span style="color:\2">\1</span>'])
 
     elif type == 'tex':
         config['encoding'] = 'utf8'
@@ -243,6 +254,10 @@ def _get_config(type):
         config['preproc'].append([r'\$\s*(.+?)\s*\$', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
+        # BEGINCOLORred textSEPRedENDCOLOR -> r'\\textcolor{Red}{red text}'
+        config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR',
+                                   r'\\textcolor{\2}{\1}'])
+
     elif type == 'txt':
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '\n'])
@@ -257,6 +272,9 @@ def _get_config(type):
 
     # Apply this prepoc only after the latex image quotes have been added
     config['preproc'].append([r'\[(%s\.(%s))\?(\d+)\]' % (img_name, img_ext), r'[WIDTH\3-\1]'])
+
+    # Disable colors for all other targets.
+    config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR', r'\1'])
 
     return config
 
