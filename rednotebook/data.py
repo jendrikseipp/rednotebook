@@ -24,6 +24,7 @@ import re
 
 
 TEXT_RESULT_LENGTH = 42
+HASHTAG_PATTERN = r'\w+'
 
 
 def get_text_with_dots(text, start, end, found_text=None):
@@ -138,7 +139,7 @@ class Day(object):
     @property
     def hashtags(self):
         # The same tag can occur multiple times.
-        return re.findall(r'#(\S+)', self.text)
+        return re.findall(r'#(%s)' % HASHTAG_PATTERN, self.text)
 
     @property
     def categories(self):

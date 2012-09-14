@@ -33,6 +33,7 @@ if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("./../../"))
     logging.getLogger('').setLevel(logging.DEBUG)
 
+from rednotebook.data import HASHTAG_PATTERN
 from rednotebook.external import txt2tags
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
@@ -359,7 +360,7 @@ table_row = Pattern(r'^ *(\| .*)', [(1, 'tablerow')])
 # A formula starts with one or two dollar signs and is closed by the same number.
 formula = Pattern(r'(\${1,2})(.+?)(\1)', [(1, 'gray'), (2, 'formula'), (3, 'gray')])
 
-hashtag = Pattern(r'(#\S+)', [(1, 'red')])
+hashtag = Pattern(r'(#%s)' % HASHTAG_PATTERN, [(1, 'red')])
 
 
 patterns = [

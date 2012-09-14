@@ -32,6 +32,7 @@ if __name__ == '__main__':
                     format='%(levelname)-8s %(message)s',)
 
 from rednotebook.external import txt2tags
+from rednotebook.data import HASHTAG_PATTERN
 
 
 # Linebreaks are only allowed at line ends
@@ -192,7 +193,7 @@ def _get_config(type):
     config['preproc'].append([REGEX_LINEBREAK, 'LINEBREAK'])
 
     # Highlight hashtags.
-    config['preproc'].append([r'(#\S+)', r'{\1|color:red}'])
+    config['preproc'].append([r'(#%s)' % HASHTAG_PATTERN, r'{\1|color:red}'])
 
     # Escape color markup.
     config['preproc'].append([r'\{(.*?)\|color:(.+?)\}',
