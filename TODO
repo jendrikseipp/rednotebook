@@ -12,6 +12,7 @@ X Change to edit/preview mode if text is missing/present automatically.
 X Change to edit mode when double-clicked into preview.
 X Detach model from combobox when updating the tags to make inserting a new tag faster.
 X Fix searching for dates.
+X Fix inserting and editing templates with unicode names.
 X Use apport (Only supports Linux, difficult setup, might result in too many bugreports)
 
 X Inline #hashtagging

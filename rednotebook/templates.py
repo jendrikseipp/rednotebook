@@ -173,7 +173,7 @@ class TemplateManager(object):
         self.actiongroup = None
 
     def on_insert(self, action):
-        title = action.get_name()
+        title = unicode(action.get_name())
 
         # strip 'Insert'
         title = title[6:]
@@ -188,7 +188,7 @@ class TemplateManager(object):
         '''
         Open the template file in an editor
         '''
-        edit_title = action.get_name()
+        edit_title = unicode(action.get_name())
         title = edit_title[4:]
 
         if title == 'Weekday':
