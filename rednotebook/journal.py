@@ -241,7 +241,12 @@ class Journal:
         self.frame = None
         self.frame = MainWindow(self)
 
-        self.open_journal(self.get_journal_path())
+        journal_path = self.get_journal_path()
+        if not os.path.exists(journal_path):
+            self.show_message(_('The directory %s does not exist.') % journal_path +
+                              ' ' + _('Opening default journal.'), error=True)
+            journal_path = self.dirs.default_data_dir
+        self.open_journal(journal_path)
 
         self.archiver = backup.Archiver(self)
         #self.archiver.check_last_backup_date()
@@ -342,21 +347,15 @@ class Journal:
 
 
     def open_journal(self, data_dir):
+        if not os.path.exists(data_dir):
+            logging.warning('The dir %s does not exist. Select a different dir.'
+                            % data_dir)
+            return
 
         if self.months:
             self.save_to_disk(changing_journal=True)
 
-        # Password Protection
-        #password = self.config.read('password', '')
-
         logging.info('Opening journal at %r' % data_dir)
-
-        if not os.path.exists(data_dir):
-            logging.warning('The data dir %s does not exist. Select a different dir.'
-                        % data_dir)
-
-            self.frame.show_dir_chooser('open', dir_not_found=True)
-            return
 
         data_dir_empty = not os.listdir(data_dir)
 

@@ -459,7 +459,7 @@ class MainWindow(object):
     def on_forward_one_day_button_clicked(self, widget):
         self.journal.go_to_next_day()
 
-    def show_dir_chooser(self, type, dir_not_found=False):
+    def show_dir_chooser(self, type):
         dir_chooser = self.builder.get_object('dir_chooser')
         dir_chooser.set_transient_for(self.main_frame)
         label = self.builder.get_object('dir_chooser_label')
@@ -485,21 +485,18 @@ class MainWindow(object):
         dir_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            dir = dir_chooser.get_current_folder().decode('utf-8')
+            new_dir = dir_chooser.get_current_folder().decode('utf-8')
+            forbidden_dirs = [os.path.expanduser('~'), self.journal.dirs.journal_user_dir]
+            if os.path.abspath(new_dir) in forbidden_dirs:
+                self.journal.show_message(_('You cannot use this directory for your journal:') +
+                                          ' %s' % new_dir, error=True)
+                return
 
             if type == 'saveas':
-                self.journal.dirs.data_dir = dir
+                self.journal.dirs.data_dir = new_dir
                 self.journal.save_to_disk(saveas=True)
+            self.journal.open_journal(new_dir)
 
-            self.journal.open_journal(dir)
-
-        # If the dir was not found previously, we have nothing to open
-        # if the user selects "Abort". So select default dir and show message
-        elif dir_not_found:
-            default_dir = self.journal.dirs.default_data_dir
-            self.journal.open_journal(default_dir)
-            ### Translators: The default journal is located at $HOME/.rednotebook/data
-            self.journal.show_message(_('The default journal has been opened'))
 
     def show_save_error_dialog(self, exit_imminent):
         dialog = self.builder.get_object('save_error_dialog')
