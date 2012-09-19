@@ -15,7 +15,7 @@ X Fix searching for dates.
 X Fix inserting and editing templates with unicode names.
 X Use apport (Only supports Linux, difficult setup, might result in too many bugreports)
 X Do not allow using $HOME as a journal directory.
-O Use better notifications (for errors etc.)
+X Do not let error notifications blink.
 O For Journal->New and Journal->Save-As: Only allow using empty directories.
 
 X Inline #hashtagging

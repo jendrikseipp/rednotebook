@@ -1089,46 +1089,32 @@ class NewEntryDialog(object):
 class Statusbar(object):
     def __init__(self, statusbar):
         self.statusbar = statusbar
-
-        self.context_i_d = self.statusbar.get_context_id('RedNotebook')
-        self.last_message_i_d = None
+        self.context_id = self.statusbar.get_context_id('RedNotebook')
+        self.last_message_id = None
         self.timespan = 7
 
     def remove_message(self):
         if hasattr(self.statusbar, 'remove_message'):
-            self.statusbar.remove_message(self.context_i_d, self.last_message_i_d)
+            self.statusbar.remove_message(self.context_id, self.last_message_id)
         else:
             # Deprecated
-            self.statusbar.remove(self.context_i_d, self.last_message_i_d)
+            self.statusbar.remove(self.context_id, self.last_message_id)
 
     def show_text(self, text, error=False, countdown=True):
-        if self.last_message_i_d is not None:
+        if self.last_message_id is not None:
             self.remove_message()
-        self.last_message_i_d = self.statusbar.push(self.context_i_d, text)
-
-        self.error = error
-
         if error:
-            red = gtk.gdk.color_parse("red")
-            self.statusbar.modify_bg(gtk.STATE_NORMAL, red)
-
+            text = '%s %s' % (_('Error:'), text)
+        self.last_message_id = self.statusbar.push(self.context_id, text)
         if countdown:
-            self.start_countdown(text)
+            self.start_countdown()
 
-    def start_countdown(self, text):
-        self.saved_text = text
+    def start_countdown(self):
         self.time_left = self.timespan
         self.countdown = gobject.timeout_add(1000, self.count_down)
 
     def count_down(self):
         self.time_left -= 1
-
-        if self.error:
-            if self.time_left % 2 == 0:
-                self.show_text('', error=self.error, countdown=False)
-            else:
-                self.show_text(self.saved_text, error=self.error, countdown=False)
-
         if self.time_left <= 0:
             gobject.source_remove(self.countdown)
             self.show_text('', countdown=False)
