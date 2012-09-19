@@ -159,19 +159,35 @@ class MainMenuBar(object):
         self.menubar = self.uimanager.get_widget('/MainMenuBar')
         return self.menubar
 
+    def select_journal(self, action, title, message):
+        new_dir = self.main_window.get_new_journal_dir(title, message)
+        if not new_dir:
+            return
+        if not self.journal.dirs.is_valid_journal_path(new_dir):
+            self.journal.show_message(_('You cannot use this directory for your journal:') +
+                                      ' %s' % new_dir, error=True)
+            return
+        if action == 'saveas':
+            self.journal.dirs.data_dir = new_dir
+            self.journal.save_to_disk(saveas=True)
+        self.journal.open_journal(new_dir)
+
     def on_new_journal_button_activate(self, widget):
-        self.main_window.show_dir_chooser('new')
+        msg = ('%s\n%s' % (_('Journals are saved in a directory, not in a single file.'),
+                           _('The directory name will be the title of the new journal.')))
+        self.select_journal('new', _('Select an empty folder for your new journal'), msg)
 
     def on_open_journal_button_activate(self, widget):
-        self.main_window.show_dir_chooser('open')
+        self.select_journal('open', _('Select an existing journal directory'),
+                            _("The directory should contain your journal's data files"))
 
     def on_save_button_clicked(self, widget):
         self.journal.save_to_disk()
 
     def on_save_as_menu_item_activate(self, widget):
         self.journal.save_to_disk()
-
-        self.main_window.show_dir_chooser('saveas')
+        self.select_journal('saveas', _('Select an empty folder for the new location of your journal'),
+                            _('The directory name will be the new title of the journal'))
 
     def on_edit_menu_activate(self, widget):
         """Only set the menu items sensitive if the actions can be performed."""

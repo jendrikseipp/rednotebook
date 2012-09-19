@@ -93,6 +93,8 @@ class Filenames(dict):
         self.last_pic_dir = self.user_home_dir
         self.last_file_dir = self.user_home_dir
 
+        self.forbidden_dirs = [user_home_dir, self.journal_user_dir]
+
 
     def get_user_dir(self, config):
         custom = config.read('userDir', '')
@@ -111,6 +113,10 @@ class Filenames(dict):
                 user_dir = os.path.join(self.user_home_dir, '.rednotebook')
 
         return user_dir
+
+
+    def is_valid_journal_path(self, path):
+        return os.path.isdir(path) and os.path.abspath(path) not in self.forbidden_dirs
 
 
     def __getattribute__(self, attr):

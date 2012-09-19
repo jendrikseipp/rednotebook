@@ -459,43 +459,22 @@ class MainWindow(object):
     def on_forward_one_day_button_clicked(self, widget):
         self.journal.go_to_next_day()
 
-    def show_dir_chooser(self, type):
+
+    def get_new_journal_dir(self, title, message):
         dir_chooser = self.builder.get_object('dir_chooser')
         dir_chooser.set_transient_for(self.main_frame)
         label = self.builder.get_object('dir_chooser_label')
 
-        if type == 'new':
-            #dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER)
-            dir_chooser.set_title(_('Select an empty folder for your new journal'))
-            msg_part1 = _('Journals are saved in a directory, not in a single file.')
-            msg_part2 = _('The directory name will be the title of the new journal.')
-            label.set_markup('<b>' + msg_part1 + '\n' + msg_part2 + '</b>')
-        elif type == 'open':
-            #dir_chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
-            dir_chooser.set_title(_('Select an existing journal directory'))
-            label.set_markup('<b>' +
-                _("The directory should contain your journal's data files") + '</b>')
-        elif type == 'saveas':
-            dir_chooser.set_title(_('Select an empty folder for the new location of your journal'))
-            label.set_markup('<b>' +
-                _('The directory name will be the new title of the journal') + '</b>')
+        dir_chooser.set_title(title)
+        label.set_markup('<b>' + message + '</b>')
         dir_chooser.set_current_folder(self.journal.dirs.data_dir)
 
         response = dir_chooser.run()
         dir_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            new_dir = dir_chooser.get_current_folder().decode('utf-8')
-            forbidden_dirs = [os.path.expanduser('~'), self.journal.dirs.journal_user_dir]
-            if os.path.abspath(new_dir) in forbidden_dirs:
-                self.journal.show_message(_('You cannot use this directory for your journal:') +
-                                          ' %s' % new_dir, error=True)
-                return
-
-            if type == 'saveas':
-                self.journal.dirs.data_dir = new_dir
-                self.journal.save_to_disk(saveas=True)
-            self.journal.open_journal(new_dir)
+            return dir_chooser.get_current_folder().decode('utf-8')
+        return None
 
 
     def show_save_error_dialog(self, exit_imminent):
@@ -513,12 +492,10 @@ class MainWindow(object):
 
         if answer == gtk.RESPONSE_OK:
             # Let the user select a new directory. Nothing has been saved yet.
-            self.show_dir_chooser('saveas')
+            self.menubar_manager.on_save_as_menu_item_activate(None)
         elif answer == gtk.RESPONSE_CANCEL and exit_imminent:
             self.journal.is_allowed_to_exit = False
-        else: # answer == 10:
-            # Do nothing if user wants to exit without saving
-            pass
+        # Do nothing if user wants to exit without saving
 
 
     def add_values_to_config(self):
@@ -1091,7 +1068,7 @@ class Statusbar(object):
         self.statusbar = statusbar
         self.context_id = self.statusbar.get_context_id('RedNotebook')
         self.last_message_id = None
-        self.timespan = 7
+        self.timespan = 10
 
     def remove_message(self):
         if hasattr(self.statusbar, 'remove_message'):

@@ -17,6 +17,8 @@ X Use apport (Only supports Linux, difficult setup, might result in too many bug
 X Do not allow using $HOME as a journal directory.
 X Do not let error notifications blink.
 O For Journal->New and Journal->Save-As: Only allow using empty directories.
+O For Journal->Open: Only allow using directories with at least one month file.
+O During saving: Delete old backup, move old file to new backup then save new file.
 
 X Inline #hashtagging
   X Turn #tags red in edit mode

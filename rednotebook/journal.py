@@ -242,9 +242,10 @@ class Journal:
         self.frame = MainWindow(self)
 
         journal_path = self.get_journal_path()
-        if not os.path.exists(journal_path):
-            self.show_message(_('The directory %s does not exist.') % journal_path +
-                              ' ' + _('Opening default journal.'), error=True)
+        if not self.dirs.is_valid_journal_path(journal_path):
+            self.show_message(_('You cannot use this directory for your journal:') +
+                              ' %s' % journal_path + ' ' + _('Opening default journal.'),
+                              error=True)
             journal_path = self.dirs.default_data_dir
         self.open_journal(journal_path)
 
@@ -319,11 +320,6 @@ class Journal:
         try:
             filesystem.make_directory(self.dirs.data_dir)
         except OSError:
-            self.frame.show_save_error_dialog(exit_imminent)
-            return True
-
-        if not os.path.exists(self.dirs.data_dir):
-            logging.error('Save path does not exist')
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
