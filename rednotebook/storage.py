@@ -40,6 +40,22 @@ except ImportError:
 from rednotebook.data import Month
 
 
+def get_journal_files(data_dir):
+    # Format: 2010-05.txt
+    date_exp = re.compile(r'(\d{4})-(\d{2})\.txt$')
+
+    for file in sorted(os.listdir(data_dir)):
+        match = date_exp.match(file)
+        if match:
+            year = int(match.group(1))
+            month = int(match.group(2))
+            assert month in range(1, 12 + 1)
+            path = os.path.join(data_dir, file)
+            yield (path, year, month)
+        else:
+            logging.debug('%s is not a valid month filename' % file)
+
+
 def _load_month_from_disk(path, year_number, month_number):
     '''
     Load the month file at path and return a month object
@@ -68,33 +84,16 @@ def _load_month_from_disk(path, year_number, month_number):
 def load_all_months_from_disk(data_dir):
     '''
     Load all months and return a directory mapping year-month values
-    to month objects
+    to month objects.
     '''
-    # Format: 2010-05.txt
-    date_exp = re.compile(r'(\d{4})-(\d{2})\.txt$')
-
     months = {}
 
     logging.debug('Starting to load files in dir "%s"' % data_dir)
-    files = sorted(os.listdir(data_dir))
-    for file in files:
-        match = date_exp.match(file)
-        if match:
-            year_string = match.group(1)
-            month_string = match.group(2)
-            year_month = year_string + '-' + month_string
+    for path, year_number, month_number in get_journal_files(data_dir):
+        month = _load_month_from_disk(path, year_number, month_number)
+        if month:
+            months['%d-%02d' % (year_number, month_number)] = month
 
-            year_number = int(year_string)
-            month_number = int(month_string)
-            assert month_number in range(1, 13)
-
-            path = os.path.join(data_dir, file)
-
-            month = _load_month_from_disk(path, year_number, month_number)
-            if month:
-                months[year_month] = month
-        else:
-            logging.debug('%s is not a valid month filename' % file)
     logging.debug('Finished loading files in dir "%s"' % data_dir)
     return months
 

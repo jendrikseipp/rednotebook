@@ -25,6 +25,7 @@ from rednotebook.util import utils
 from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook.util import markup
+from rednotebook import storage
 #from rednotebook.gui.imports import ImportAssistant
 
 
@@ -159,14 +160,29 @@ class MainMenuBar(object):
         self.menubar = self.uimanager.get_widget('/MainMenuBar')
         return self.menubar
 
-    def select_journal(self, action, title, message):
-        new_dir = self.main_window.get_new_journal_dir(title, message)
+    def check_journal_dir(self, action, new_dir):
         if not new_dir:
-            return
+            return False
+        # Check if dir exists and is no forbidden path (e.g. $HOME dir).
         if not self.journal.dirs.is_valid_journal_path(new_dir):
             self.journal.show_message(_('You cannot use this directory for your journal:') +
                                       ' %s' % new_dir, error=True)
+            return False
+        print 'FILES', storage.get_journal_files(new_dir)
+        if action in ['new', 'saveas'] and os.listdir(new_dir):
+            self.journal.show_message(_('Please select an empty directory.'), error=True)
+            return False
+        elif action in ['open'] and not list(storage.get_journal_files(new_dir)):
+            self.journal.show_message(_('This directory contains no journal files:') +
+                                      ' ' + new_dir, error=True)
+            return False
+        return True
+
+    def select_journal(self, action, title, message):
+        new_dir = self.main_window.get_new_journal_dir(title, message)
+        if not self.check_journal_dir(action, new_dir):
             return
+
         if action == 'saveas':
             self.journal.dirs.data_dir = new_dir
             self.journal.save_to_disk(saveas=True)
