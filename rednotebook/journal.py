@@ -260,8 +260,6 @@ class Journal:
         if not self.testing:
             gobject.timeout_add_seconds(600, self.save_to_disk)
 
-        self.show_message('mymessage', 'MyTitle', error=True)
-
 
     def get_journal_path(self):
         '''
