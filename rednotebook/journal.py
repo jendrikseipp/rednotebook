@@ -260,6 +260,8 @@ class Journal:
         if not self.testing:
             gobject.timeout_add_seconds(600, self.save_to_disk)
 
+        self.show_message('mymessage', 'MyTitle', error=True)
+
 
     def get_journal_path(self):
         '''
@@ -352,13 +354,6 @@ class Journal:
             self.save_to_disk(changing_journal=True)
 
         logging.info('Opening journal at %r' % data_dir)
-
-        data_dir_empty = not os.listdir(data_dir)
-
-        if data_dir_empty:
-            self.show_message(_('The selected folder is empty. A new journal has been created.'),
-                                error=False)
-
         self.dirs.data_dir = data_dir
 
         self.month = None
@@ -371,7 +366,7 @@ class Journal:
 
         self.stats = Statistics(self)
 
-        if self.is_first_start and data_dir_empty and len(self.days) == 0:
+        if self.is_first_start and not os.listdir(data_dir) and len(self.days) == 0:
             self.add_instruction_content()
 
         self.frame.cloud.update(force_update=True)
@@ -482,8 +477,11 @@ class Journal:
         self.change_date(prev_date)
 
 
-    def show_message(self, message_text, error=False, countdown=True):
-        self.frame.statusbar.show_text(message_text, error, countdown)
+    def show_message(self, msg, title=None, error=False):
+        if error and not title:
+            title = _('Error')
+        msg_type = gtk.MESSAGE_ERROR if error else gtk.MESSAGE_INFO
+        self.frame.show_message(title, msg, msg_type)
 
 
     @property

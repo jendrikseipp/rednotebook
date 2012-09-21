@@ -28,6 +28,7 @@ import gobject
 
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
+from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import filesystem
 from rednotebook import templates
@@ -121,8 +122,15 @@ class MainWindow(object):
         self.preview_mode = False
 
         # Let the edit_paned respect its childs size requests
-        text_vbox = self.builder.get_object('text_vbox')
-        self.edit_pane.child_set_property(text_vbox, 'shrink', False)
+        self.edit_pane.child_set_property(self.text_vbox, 'shrink', False)
+
+        # Add InfoBar.
+        if customwidgets.Info:
+            self.infobar = customwidgets.Info()
+            self.text_vbox.pack_start(self.infobar, False, False)
+            self.text_vbox.reorder_child(self.infobar, 1)
+        else:
+            self.infobar = self.statusbar
 
         self.load_values_from_config()
 
@@ -928,6 +936,12 @@ class MainWindow(object):
         self.html_editor.highlight(search_text)
         self.day_text_field.highlight(search_text)
 
+    def show_message(self, title, msg, msg_type):
+        if msg_type == gtk.MESSAGE_ERROR:
+            self.infobar.show_message(title, msg, msg_type)
+        else:
+            self.statusbar.show_message(title, msg, msg_type)
+
 
 class Preview(browser.HtmlView):
     def __init__(self, *args, **kwargs):
@@ -1077,14 +1091,19 @@ class Statusbar(object):
             # Deprecated
             self.statusbar.remove(self.context_id, self.last_message_id)
 
-    def show_text(self, text, error=False, countdown=True):
+    def _show_text(self, text, countdown=True):
         if self.last_message_id is not None:
             self.remove_message()
-        if error:
-            text = '%s %s' % (_('Error:'), text)
         self.last_message_id = self.statusbar.push(self.context_id, text)
         if countdown:
             self.start_countdown()
+
+    def show_message(self, title, msg, msg_type):
+        if title and msg:
+            text = '%s: %s' % (title, msg)
+        else:
+            text = title or msg
+        self._show_text(text)
 
     def start_countdown(self):
         self.time_left = self.timespan
@@ -1094,7 +1113,7 @@ class Statusbar(object):
         self.time_left -= 1
         if self.time_left <= 0:
             gobject.source_remove(self.countdown)
-            self.show_text('', countdown=False)
+            self._show_text('', countdown=False)
         return True
 
 

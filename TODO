@@ -18,6 +18,8 @@ X Do not allow using $HOME as a journal directory.
 X Do not let error notifications blink.
 X For Journal->New and Journal->Save-As: Only allow using empty directories.
 X For Journal->Open: Only allow using directories with at least one month file.
+X Use InfoBars for nicer inline notifications about errors.
+
 O During saving: Delete old backup, move old file to new backup then save new file.
 
 X Inline #hashtagging

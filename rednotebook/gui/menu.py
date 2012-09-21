@@ -163,18 +163,20 @@ class MainMenuBar(object):
     def check_journal_dir(self, action, new_dir):
         if not new_dir:
             return False
+        title = _('Wrong directory')
         # Check if dir exists and is no forbidden path (e.g. $HOME dir).
         if not self.journal.dirs.is_valid_journal_path(new_dir):
             self.journal.show_message(_('You cannot use this directory for your journal:') +
-                                      ' %s' % new_dir, error=True)
+                                      ' %s' % new_dir, title=title, error=True)
             return False
         print 'FILES', storage.get_journal_files(new_dir)
         if action in ['new', 'saveas'] and os.listdir(new_dir):
-            self.journal.show_message(_('Please select an empty directory.'), error=True)
+            self.journal.show_message(_('Please select an empty directory.'),
+                                      title=title, error=True)
             return False
         elif action in ['open'] and not list(storage.get_journal_files(new_dir)):
             self.journal.show_message(_('This directory contains no journal files:') +
-                                      ' ' + new_dir, error=True)
+                                      ' ' + new_dir, title=title, error=True)
             return False
         return True
 

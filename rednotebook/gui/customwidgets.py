@@ -142,6 +142,49 @@ class Calendar(gtk.Calendar):
         return datetime.date(year, month+1, day)
 
 
+# gtk.InfoBar is available in gtk+ >= 2.22
+if hasattr(gtk, 'InfoBar'):
+    class Info(gtk.InfoBar):
+        icons = {gtk.MESSAGE_ERROR: gtk.STOCK_DIALOG_ERROR}
+        def __init__(self, *args, **kwargs):
+            gtk.InfoBar.__init__(self, *args, **kwargs)
+            self.title_label = gtk.Label()
+            self.msg_label = gtk.Label()
+            self.title_label.set_alignment(0., 0.5)
+            self.msg_label.set_alignment(0., 0.5)
+
+            vbox = gtk.VBox(spacing=5)
+            vbox.pack_start(self.title_label, False, False)
+            vbox.pack_start(self.msg_label, False, False)
+
+            self.image = gtk.Image()
+
+            content = self.get_content_area()
+            content.pack_start(self.image, False)
+            content.pack_start(vbox, False)
+
+            self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+            self.connect('close', lambda x: self.hide())
+            self.connect('response', self.on_response)
+
+        def on_response(self, infobar, response_id):
+            if response_id == gtk.RESPONSE_CLOSE:
+                self.hide()
+
+        def show_message(self, title, msg, msg_type):
+            if not title:
+                title = msg
+                msg = ''
+            self.title_label.set_markup('<b>%s</b>' % title)
+            self.msg_label.set_markup(msg)
+            self.set_message_type(msg_type)
+            self.image.set_from_stock(self.icons.get(msg_type, gtk.STOCK_DIALOG_INFO),
+                                      gtk.ICON_SIZE_DIALOG)
+            self.show_all()
+else:
+    Info = None
+
+
 # ------------------------- Assistant Pages ------------------------------------
 
 class AssistantPage(gtk.VBox):
