@@ -86,4 +86,4 @@ if test "x$system" = xSUSE -o "x$system" = "xSUSE LINUX" ; then
 fi
 
 # Run RedNotebook --------------------------------------------------------------
-python rednotebook/journal.py
+python2 rednotebook/journal.py
