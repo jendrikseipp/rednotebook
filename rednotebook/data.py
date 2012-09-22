@@ -26,6 +26,9 @@ import re
 TEXT_RESULT_LENGTH = 42
 HASHTAG_PATTERN = r'\w+'
 
+def escape_tag(tag):
+    return tag.lower().replace(' ', '_')
+
 
 def get_text_with_dots(text, start, end, found_text=None):
     '''
@@ -191,7 +194,7 @@ class Day(object):
         if not text:
             for day_tag, entries in self.get_category_content_pairs().items():
                 for tag in tags:
-                    if day_tag.replace(' ', '').lower() != tag:
+                    if escape_tag(day_tag) != tag:
                         continue
                     if entries:
                         results.extend(entries)

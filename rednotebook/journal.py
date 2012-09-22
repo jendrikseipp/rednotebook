@@ -77,7 +77,7 @@ except locale.Error, err:
 from rednotebook.util import utils
 from rednotebook import info
 from rednotebook import configuration
-
+from rednotebook import data
 
 
 def parse_options():
@@ -513,7 +513,7 @@ class Journal:
             return self.days
         days = []
         for day in self.days:
-            day_tags = [tag.replace(' ', '').lower() for tag in day.categories]
+            day_tags = [data.escape_tag(tag) for tag in day.categories]
             if all(tag in day_tags for tag in tags):
                 days.append(day)
         return days

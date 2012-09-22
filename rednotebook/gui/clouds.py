@@ -28,6 +28,7 @@ import gtk
 import gobject
 
 from rednotebook.gui.browser import HtmlView
+from rednotebook import data
 
 
 CLOUD_WORDS = 30
@@ -107,7 +108,7 @@ class Cloud(HtmlView):
         counter = defaultdict(int)
         for day in self.journal.days:
             for cat in day.categories:
-                counter[cat.replace(' ', '').lower()] += 1
+                counter[u'#%s' % data.escape_tag(cat)] += 1
         return counter
 
     def _update(self):
@@ -190,9 +191,6 @@ class Cloud(HtmlView):
         # uri has the form "something/somewhere/search/search_index"
         search_index = int(uri.split('/')[-1])
         search_text, count = self.link_dict[search_index]
-        # Treat tags separately
-        if search_index < len(self.tags):
-            search_text = u'#' + search_text
         return search_text
 
     def on_navigate(self, webview, frame, request):
