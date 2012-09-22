@@ -884,12 +884,29 @@ class MainWindow(object):
         link_location_entry.set_text('http://')
         link_name_entry.set_text('')
 
+        def link_entered():
+            return bool(link_location_entry.get_text())
+
+        def on_link_changed(widget):
+            # Only make the link submittable, if text has been entered.
+            link_creator.set_response_sensitive(gtk.RESPONSE_OK, link_entered())
+
+        link_location_entry.connect('changed', on_link_changed)
+
+        # Let user finish by hitting ENTER.
+        def respond(widget):
+            if link_entered():
+                link_creator.response(gtk.RESPONSE_OK)
+
+        link_location_entry.connect('activate', respond)
+        link_name_entry.connect('activate', respond)
+
         response = link_creator.run()
         link_creator.hide()
 
         if response == gtk.RESPONSE_OK:
-            link_location = self.builder.get_object('link_location_entry').get_text()
-            link_name = self.builder.get_object('link_name_entry').get_text()
+            link_location = link_location_entry.get_text()
+            link_name = link_name_entry.get_text()
 
             if link_location and link_name:
                 self.day_text_field.insert('[%s ""%s""]' % (link_name, link_location))
@@ -897,7 +914,6 @@ class MainWindow(object):
                 self.day_text_field.insert(link_location)
             else:
                 self.journal.show_message(_('No link location has been entered'), error=True)
-
 
     def on_add_new_entry_button_clicked(self, widget):
         self.categories_tree_view._on_add_entry_clicked(None)
@@ -1023,7 +1039,6 @@ class NewEntryDialog(object):
         self.categories_combo_box.entry.connect('activate', respond)
 
         self.categories_combo_box.connect('changed', self.on_category_changed)
-        self.new_entry_combo_box.connect('changed', self.on_entry_changed)
 
     def on_category_changed(self, widget):
         '''Show old entries in ComboBox when a new category is selected'''
@@ -1031,10 +1046,6 @@ class NewEntryDialog(object):
         old_entries = self.journal.get_entries(category)
         self.new_entry_combo_box.set_entries(old_entries)
 
-        # only make the entry submittable, if text has been entered
-        self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
-
-    def on_entry_changed(self, widget):
         # only make the entry submittable, if text has been entered
         self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
 
