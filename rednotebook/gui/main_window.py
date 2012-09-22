@@ -382,6 +382,8 @@ class MainWindow(object):
             edit_button.hide()
 
         template_button.set_sensitive(not preview)
+        # Disable insert shortcuts in preview mode.
+        self.insert_actiongroup.set_sensitive(not preview)
         self.single_menu_toolbutton.set_sensitive(not preview)
         self.format_toolbutton.set_sensitive(not preview)
 
@@ -614,7 +616,6 @@ class MainWindow(object):
 
         # Create an ActionGroup
         actiongroup = gtk.ActionGroup('FormatActionGroup')
-        #self.actiongroup = actiongroup
 
         def tmpl(word):
             return word + ' (Ctrl+%s)' % word[0]
@@ -721,8 +722,7 @@ class MainWindow(object):
         self.main_frame.add_accel_group(accelgroup)
 
         # Create an ActionGroup
-        actiongroup = gtk.ActionGroup('InsertActionGroup')
-        self.actiongroup = actiongroup
+        self.insert_actiongroup = gtk.ActionGroup('InsertActionGroup')
 
         line = '\n====================\n'
 
@@ -757,7 +757,7 @@ class MainWindow(object):
             return ' (Ctrl+%s)' % letter
 
         # Create actions
-        actiongroup.add_actions([
+        self.insert_actiongroup.add_actions([
             ('Picture', gtk.STOCK_ORIENTATION_PORTRAIT,
                 _('Picture'),
                 None, _('Insert an image from the harddisk'),
@@ -791,7 +791,7 @@ class MainWindow(object):
             ])
 
         # Add the actiongroup to the uimanager
-        uimanager.insert_action_group(actiongroup, 0)
+        uimanager.insert_action_group(self.insert_actiongroup, 0)
 
         # Add a UI description
         uimanager.add_ui_from_string(insert_menu_xml)
