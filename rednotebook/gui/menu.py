@@ -169,7 +169,6 @@ class MainMenuBar(object):
             self.journal.show_message(_('You cannot use this directory for your journal:') +
                                       ' %s' % new_dir, title=title, error=True)
             return False
-        print 'FILES', storage.get_journal_files(new_dir)
         if action in ['new', 'saveas'] and os.listdir(new_dir):
             self.journal.show_message(_('Please select an empty directory.'),
                                       title=title, error=True)

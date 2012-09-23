@@ -243,8 +243,9 @@ class Journal:
 
         journal_path = self.get_journal_path()
         if not self.dirs.is_valid_journal_path(journal_path):
+            logging.error('Invalid directory: %s. Using default journal.' % journal_path)
             self.show_message(_('You cannot use this directory for your journal:') +
-                              ' %s' % journal_path + ' ' + _('Opening default journal.'),
+                              ' %s' % journal_path + '. ' + _('Opening default journal.'),
                               error=True)
             journal_path = self.dirs.default_data_dir
         self.open_journal(journal_path)
