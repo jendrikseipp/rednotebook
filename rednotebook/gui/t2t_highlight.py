@@ -357,8 +357,7 @@ quote = Pattern(r'^\t+(.*)$', [(1, 'quote')])
 table_head = Pattern(r'^ *(\|\| .*)', [(1, 'tablehead')])
 table_row = Pattern(r'^ *(\| .*)', [(1, 'tablerow')])
 
-# A formula starts with one or two dollar signs and is closed by the same number.
-formula = Pattern(r'(\${1,2})(.+?)(\1)', [(1, 'gray'), (2, 'formula'), (3, 'gray')])
+formula = Pattern(r'(\\\(|\\\[|\$\$)(.+?)(\\\)|\\\]|\$\$)', [(1, 'gray'), (2, 'formula'), (3, 'gray')])
 
 hashtag = Pattern(r'(#%s)' % HASHTAG_PATTERN, [(1, 'red')])
 

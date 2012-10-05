@@ -710,7 +710,7 @@ class MainWindow(object):
         </ui>'''
 
         numlist_ui = '' #'<menuitem action="NumberedList"/>'
-        table_ui = ''# '<menuitem action="Table"/>'
+        table_ui = '' # '<menuitem action="Table"/>'
         formula_ui = '' #'<menuitem action="Formula"/>'
 
         insert_menu_xml = insert_menu_xml % locals()
@@ -744,7 +744,7 @@ class MainWindow(object):
                    '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
                    '|  Always use  |  at least  |  one whitespace  |\n')
 
-        formula = '$\\sum_{i=1}^n i = \\frac{n(n+1)}{2}$'
+        formula = '\\(\\sum_{i=1}^n i = \\frac{n(n+1)}{2}\\)'
 
         line_break = r'\\'
 

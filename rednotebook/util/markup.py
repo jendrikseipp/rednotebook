@@ -89,17 +89,17 @@ MATHJAX_FILE = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js'
 logging.info('MathJax location: %s' % MATHJAX_FILE)
 MATHJAX_FINISHED = 'MathJax finished'
 
+# Explicitly setting inlineMath: [ ['\\(','\\)'] ] doesn't work.
+# Using defaults:
+#       displayMath: [ ['$$','$$'], ['\[','\]'] ]
+#       inlineMath:  [['\(','\)']]
 MATHJAX = """\
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
   messageStyle: "none",
   config: ["MMLorHTML.js"],
   jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
-  tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      displayMath: [ ['$$','$$'] ],
-      processEscapes: true
-    },
+  tex2jax: {},
   extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
   TeX: {
     extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
@@ -249,10 +249,12 @@ def _get_config(type):
         # Apply image resizing
         config['postproc'].append([r'includegraphics\{("?)WIDTH(\d+)-', r'includegraphics[width=\2px]{\1'])
 
-        # We want the plain latex formulas unescaped
+        # We want the plain latex formulas unescaped.
+        # Allowed formulas: $$...$$, \[...\], \(...\)
+        config['preproc'].append([r'\\\[\s*(.+?)\s*\\\]', r"BEGINEQUATION''\1''ENDEQUATION"])
         config['preproc'].append([r'\$\$\s*(.+?)\s*\$\$', r"BEGINEQUATION''\1''ENDEQUATION"])
         config['postproc'].append([r'BEGINEQUATION(.+)ENDEQUATION', r'$$\1$$'])
-        config['preproc'].append([r'\$\s*(.+?)\s*\$', r"BEGINMATH''\1''ENDMATH"])
+        config['preproc'].append([r'\\\(\s*(.+?)\s*\\\)', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
         # BEGINCOLORred textSEPRedENDCOLOR -> r'\\textcolor{Red}{red text}'
