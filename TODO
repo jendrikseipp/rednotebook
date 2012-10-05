@@ -56,6 +56,7 @@ O Disable cache for preview (Support previewing externally changed files)
 O Add relative links (by converting $HOME to /user/home/name?,
   better: automatically transform 'myfile.txt' to /path/to/journal/myfile.txt)
 O Change file permissions so that journal files are only readable by the user
+O Add option to insert verbatim text (allow triple {{{ in addition to ```?)
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
@@ -115,8 +116,8 @@ O Windows: Enable spellcheck
 O Make windows installer truly portable (leave no traces in registry)
 
 New format:
-O Use json instead of yaml
-O Use standard paths (Win: C:\Docs & Settings\username\My Documents,
+O Use json instead of yaml (wait till after port to Python3)
+O Use standard paths? (Win: C:\Docs & Settings\username\My Documents,
   Linux: ~/.local/share, ~/.config (http://live.gnome.org/Tomboy/Directories))
 
 Development:
