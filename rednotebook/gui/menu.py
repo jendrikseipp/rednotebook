@@ -103,15 +103,15 @@ class MainMenuBar(object):
                 None, _('Save journal at a new location. The old journal files will also be saved'),
                 self.on_save_as_menu_item_activate),
             ### Translators: Verb
-            ('Import', gtk.STOCK_ADD, _('Import'),
+            ('Import', gtk.STOCK_ADD, _('_Import'),
                 None, _('Open the import assistant'), self.on_import_menu_item_activate),
             ### Translators: Verb
             ('Export', gtk.STOCK_CONVERT, _('Export'),
-                None, _('Open the export assistant'), self.on_export_menu_item_activate),
+                '<Ctrl>e', _('Open the export assistant'), self.on_export_menu_item_activate),
             ### Translators: Verb
-            ('Backup', gtk.STOCK_HARDDISK, _('Backup'),
+            ('Backup', gtk.STOCK_HARDDISK, _('_Backup'),
                 None, _('Save all the data in a zip archive'), self.on_backup_activate),
-            ('Statistics', None, _('Statistics'),
+            ('Statistics', None, _('S_tatistics'),
                 None, _('Show some statistics about the journal'), self.on_statistics_menu_item_activate),
             ('Quit', gtk.STOCK_QUIT, None,
                 None, _('Shutdown RedNotebook. It will not be sent to the tray.'),

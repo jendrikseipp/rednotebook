@@ -448,6 +448,8 @@ same directory.
 | Insert link        | <Ctrl> + L             |
 | Insert date/time   | <Ctrl> + D             |
 | New tag            | <Ctrl> + N             |
+| Export             | <Ctrl> + E             |
+| Fullscreen         | F11                    |
 
 You can find other shortcuts in the menus.
 
