@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-23 11:28+0200\n"
-"PO-Revision-Date: 2012-01-22 11:10+0000\n"
+"PO-Revision-Date: 2012-10-21 17:07+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-09-29 04:57+0000\n"
-"X-Generator: Launchpad (build 16049)\n"
+"X-Launchpad-Export-Date: 2012-10-22 04:40+0000\n"
+"X-Generator: Launchpad (build 16165)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -56,7 +56,7 @@ msgstr "Acabat"
 
 #: ../rednotebook/info.py:82
 msgid "Remember the milk"
-msgstr "Remembrar lo lach"
+msgstr "Se remembrar de la lach"
 
 #: ../rednotebook/info.py:83
 msgid "Wash the dishes"
@@ -72,11 +72,11 @@ msgstr "Sacrat Graal, pels Monty Python"
 
 #: ../rednotebook/info.py:86
 msgid "Team meeting"
-msgstr ""
+msgstr "Acamp d'equipa"
 
 #: ../rednotebook/info.py:89
 msgid "Hello!"
-msgstr "Adiu !"
+msgstr "Bonjorn !"
 
 #: ../rednotebook/info.py:90
 msgid ""
@@ -92,10 +92,12 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Podètz accedir al tèxte d'exemple e a mai de documentacion via lo menut "
+"« Ajuda -> Contengut »."
 
 #: ../rednotebook/info.py:94
 msgid "The interface is divided into three parts:"
-msgstr ""
+msgstr "L'interfàcia es devesida en tres partidas :"
 
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:96
@@ -109,20 +111,20 @@ msgstr "Navigacion e recèrca"
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:99
 msgid "Center"
-msgstr "Centre"
+msgstr "Centrar"
 
 #: ../rednotebook/info.py:100
 msgid "Text for a day"
-msgstr "Tèxt per un jorn"
+msgstr "Tèxte del jorn"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:102
 msgid "Right"
-msgstr "Drecha"
+msgstr "Drech"
 
 #: ../rednotebook/info.py:103
 msgid "Tags for this day"
-msgstr ""
+msgstr "Etiquetas del jorn"
 
 #. ## Translators: noun
 #. ## Verb
@@ -135,6 +137,8 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"I a dos mòdes dins RedNoteBook, lo mòde __edicion__ e lo mòde "
+"__previsualizacion__."
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:109
@@ -187,19 +191,19 @@ msgstr ""
 
 #: ../rednotebook/info.py:136
 msgid "Have a nice day!"
-msgstr "Bonjorn !"
+msgstr "Bona jornada !"
 
 #: ../rednotebook/info.py:160
 msgid "Ate **two** cans of spam"
-msgstr "Manjat  **doas** bóstia de peis"
+msgstr "Manjat  **doas** bóstia de pastís"
 
 #: ../rednotebook/info.py:161
 msgid "Use a cool journal app"
-msgstr "Utilisa un simpatic programa de jornal"
+msgstr "Utilizatz un simpatic programa de jornal"
 
 #: ../rednotebook/info.py:162
 msgid "Monty Python's Life of Brian"
-msgstr ""
+msgstr "La vida de Brian, pels Monty Python"
 
 #: ../rednotebook/gui/customwidgets.py:322
 msgid "Introduction"
@@ -211,16 +215,18 @@ msgstr "_Jornal"
 
 #: ../rednotebook/gui/menu.py:94
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
+msgstr "Crèa un jornal novèl. L'ancian serà salvat"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "Carga un jornal existent. L'ancian serà salvat"
 
 #: ../rednotebook/gui/menu.py:102
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
+"Enregistra lo jornal a un autre endrech. Los ancians fichièrs del jornal "
+"seràn salvats tanben"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:105
@@ -229,7 +235,7 @@ msgstr "Importar"
 
 #: ../rednotebook/gui/menu.py:106
 msgid "Open the import assistant"
-msgstr "Dobrís l'assistent d'impòrt"
+msgstr "Dobrir l'assistent d'importacion"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:108
@@ -238,16 +244,16 @@ msgstr "Exportar"
 
 #: ../rednotebook/gui/menu.py:109
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Dobrir l'assistent d'exportacion"
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:111 ../rednotebook/backup.py:61
 msgid "Backup"
-msgstr "Sosten"
+msgstr "Salvar"
 
 #: ../rednotebook/gui/menu.py:112
 msgid "Save all the data in a zip archive"
-msgstr ""
+msgstr "Enregistrar totas las donadas dins un archiu zip"
 
 #: ../rednotebook/gui/menu.py:113 tmp/main_window.glade.h:31
 msgid "Statistics"
@@ -259,19 +265,19 @@ msgstr "Afichar las estatisticas del jornal"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
+msgstr "Atudar RedNotebook. Serà pas mandat dins la barra dels prètzfaches."
 
 #: ../rednotebook/gui/menu.py:119
 msgid "_Edit"
-msgstr "_Edicion"
+msgstr "_Editar"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Anullar las modificacions de tèxte o de mot clau"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "Refar las modificacions de tèxte o de mots claus"
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
@@ -279,19 +285,19 @@ msgstr "_Ajuda"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr "Contenguts"
+msgstr "Contengut"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Dobrir la documentacion de RedNotebook"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr ""
+msgstr "Obténer d'ajuda en linha"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Percórrer las questions qu'an ja una responsa o ne pausar una novèla"
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
@@ -299,7 +305,7 @@ msgstr "Traduire RedNotebook"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
+msgstr "Se connectar al site Launchpad per ajudar a traduire RedNotebook"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
@@ -307,7 +313,7 @@ msgstr "Senhalar un problèma"
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
-msgstr ""
+msgstr "Emplenar un cort formulari relatiu a vòstre problèma"
 
 #: ../rednotebook/gui/menu.py:232
 msgid "RedNotebook Documentation"
@@ -315,7 +321,7 @@ msgstr "Documentacion de RedNotebook"
 
 #: ../rednotebook/gui/menu.py:252
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "Un jornal de Burèu"
 
 #: ../rednotebook/gui/search.py:76
 msgid "Date"
