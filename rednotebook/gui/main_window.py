@@ -483,7 +483,7 @@ class MainWindow(object):
         dir_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            return dir_chooser.get_current_folder().decode('utf-8')
+            return dir_chooser.get_filename().decode('utf-8')
         return None
 
 
