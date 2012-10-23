@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-23 11:28+0200\n"
-"PO-Revision-Date: 2012-10-21 17:07+0000\n"
+"PO-Revision-Date: 2012-10-22 06:17+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-22 04:40+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"X-Launchpad-Export-Date: 2012-10-23 04:49+0000\n"
+"X-Generator: Launchpad (build 16179)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -333,11 +333,11 @@ msgstr "Tèxte"
 
 #: ../rednotebook/gui/categories.py:133
 msgid "Empty entries are not allowed"
-msgstr ""
+msgstr "Las entradas voidas son pas autorizadas"
 
 #: ../rednotebook/gui/categories.py:150
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Los mots claus vèrges son pas autorizats"
 
 #: ../rednotebook/gui/categories.py:408
 msgid "Change this text"
@@ -345,15 +345,15 @@ msgstr "Cambiar aqueste tèxte"
 
 #: ../rednotebook/gui/categories.py:412
 msgid "Add a new entry"
-msgstr "Apondre una dintrada novèla"
+msgstr "Apondètz una entrada novèla"
 
 #: ../rednotebook/gui/categories.py:416
 msgid "Delete this entry"
-msgstr ""
+msgstr "Suprimir aquesta entrada"
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
-msgstr ""
+msgstr "Cargar RedNotebook a l'aviada"
 
 #: ../rednotebook/gui/options.py:154
 msgid "%A, %x, Day %j"
