@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-23 11:28+0200\n"
-"PO-Revision-Date: 2012-10-22 06:17+0000\n"
+"PO-Revision-Date: 2012-10-23 05:20+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-23 04:49+0000\n"
+"X-Launchpad-Export-Date: 2012-10-24 04:56+0000\n"
 "X-Generator: Launchpad (build 16179)\n"
 
 #: ../rednotebook/info.py:73
@@ -374,19 +374,20 @@ msgstr "Ajuda"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr "Previsualizacion :"
+msgstr "Apercebut :"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Close to system tray"
-msgstr ""
+msgstr "Tampar la barra dels prètzfaches"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Closing the window will send RedNotebook to the tray"
 msgstr ""
+"Tampar la fenèstra mandarà RedNotebook dins la barra dels prètzfaches"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Underline misspelled words"
-msgstr ""
+msgstr "Solinhar los mots mal ortografiats"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires gtkspell."
