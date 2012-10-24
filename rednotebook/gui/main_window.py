@@ -471,11 +471,12 @@ class MainWindow(object):
 
 
     def get_new_journal_dir(self, title, message):
-        dir_chooser = self.builder.get_object('dir_chooser')
+        dir_chooser = gtk.FileChooserDialog(title=title,
+                                            action=gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
+                                            buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN,gtk.RESPONSE_OK))
         dir_chooser.set_transient_for(self.main_frame)
         label = self.builder.get_object('dir_chooser_label')
 
-        dir_chooser.set_title(title)
         label.set_markup('<b>' + message + '</b>')
         dir_chooser.set_current_folder(self.journal.dirs.data_dir)
 
