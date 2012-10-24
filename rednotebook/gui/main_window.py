@@ -471,9 +471,7 @@ class MainWindow(object):
 
 
     def get_new_journal_dir(self, title, message):
-        dir_chooser = gtk.FileChooserDialog(title=title,
-                                            action=gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
-                                            buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN,gtk.RESPONSE_OK))
+        dir_chooser = self.builder.get_object('dir_chooser')
         dir_chooser.set_transient_for(self.main_frame)
         label = self.builder.get_object('dir_chooser_label')
 
@@ -481,10 +479,12 @@ class MainWindow(object):
         dir_chooser.set_current_folder(self.journal.dirs.data_dir)
 
         response = dir_chooser.run()
+        # Retrieve the dir now, because it will be cleared by the call to hide().
+        new_dir = dir_chooser.get_filename().decode('utf-8')
         dir_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            return dir_chooser.get_filename().decode('utf-8')
+            return new_dir
         return None
 
 
