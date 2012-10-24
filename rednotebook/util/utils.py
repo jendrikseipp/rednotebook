@@ -101,7 +101,7 @@ def get_new_version_number():
         new_version = match.group(1)
         logging.info('%s is the latest version' % new_version)
         return new_version
-    except URLError:
+    except IOError:
         return None
 
 
@@ -112,7 +112,7 @@ def check_new_version(journal, current_version, startup=False):
         new_version = StrictVersion(new_version)
     else:
         logging.error('New version info could not be read')
-        new_version = 'unknown'
+        new_version = _('unknown')
 
     current_version = StrictVersion(current_version)
     # Only compare versions if new version could be read
