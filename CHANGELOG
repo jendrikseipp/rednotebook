@@ -1,5 +1,23 @@
 ==== RedNotebook Changelog ====
 
+== 1.6.0 (unreleased) ==
+* Change to edit/preview mode if text is missing/present automatically.
+* Change to edit mode when double-clicked into preview.
+* Detach model from combobox when updating the tags to make inserting a new tag faster.
+* Fix searching for dates.
+* Fix inserting and editing templates with unicode names.
+* Fix opening and creating journals (lp:1068655)
+* Use apport (If a crash occurs on Linux, an automatic bug report is prepared, but not submitted)
+* Do not allow using $HOME as a journal directory.
+* Do not let error notifications blink.
+* For Journal->New and Journal->Save-As: Only allow using empty directories.
+* For Journal->Open: Only allow using directories with at least one month file.
+* Use InfoBars for nicer inline notifications about errors.
+* Enable finishing link dialog with hitting ENTER.
+* Disable insert (Ctrl+V) and cut (Ctrl+X) shortcuts in preview mode.
+* Add more shortcuts in Journal menu: Export (Ctrl+E), Backup and Statistics (Alt+letter).
+* Update translations.
+
 == 1.5.0 (12-07-19) ==
 * Use new logo redesigned by Ciaran.
 * Remember possible undo/redo actions for each day separately.

@@ -7,23 +7,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.x
-X Change to edit/preview mode if text is missing/present automatically.
-X Change to edit mode when double-clicked into preview.
-X Detach model from combobox when updating the tags to make inserting a new tag faster.
-X Fix searching for dates.
-X Fix inserting and editing templates with unicode names.
-X Fix opening and creating journals (lp:1068655)
-X Use apport (Only supports Linux, difficult setup, might result in too many bugreports)
-X Do not allow using $HOME as a journal directory.
-X Do not let error notifications blink.
-X For Journal->New and Journal->Save-As: Only allow using empty directories.
-X For Journal->Open: Only allow using directories with at least one month file.
-X Use InfoBars for nicer inline notifications about errors.
-X Enable finishing link dialog with hitting ENTER.
-X Disable insert shortcuts in preview mode.
-X Add more shortcuts in Journal menu.
 
+1.x
 O During saving: Delete old backup, move old file to new backup then save new file.
 
 X Inline #hashtagging
