@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-24 15:21+0200\n"
-"PO-Revision-Date: 2012-06-07 06:34+0000\n"
-"Last-Translator: Area30 <area30@gmx.de>\n"
+"PO-Revision-Date: 2012-10-26 15:49+0000\n"
+"Last-Translator: schattenhueter <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:36+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-10-27 05:00+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -243,7 +243,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:106
 msgid "_Import"
-msgstr ""
+msgstr "_Importieren"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Open the import assistant"
@@ -261,7 +261,7 @@ msgstr "Den Export-Assistenten öffnen"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "_Datensicherung"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -269,7 +269,7 @@ msgstr "Alle Daten in einem Zip-Archiv sichern"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistiken"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -333,7 +333,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Sie können dieses Verzeichnis nicht für ihr Journal verwenden:"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Please select an empty directory."
@@ -603,7 +603,7 @@ msgstr "Tabelle"
 
 #: ../rednotebook/gui/main_window.py:784
 msgid "Latex Formula"
-msgstr ""
+msgstr "LaTeX-Formel"
 
 #: ../rednotebook/gui/main_window.py:786
 msgid "Date/Time"
@@ -974,7 +974,7 @@ msgstr "Vorlagen-Verzeichnis öffnen"
 
 #: ../rednotebook/util/utils.py:115
 msgid "unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: ../rednotebook/util/utils.py:127
 #, python-format
@@ -1067,7 +1067,7 @@ msgstr "Nichts zu speichern"
 
 #: ../rednotebook/journal.py:481
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
@@ -1135,7 +1135,8 @@ msgstr ""
 "  Tim㋡ https://launchpad.net/~tim.h.s\n"
 "  chrioll https://launchpad.net/~chrioll\n"
 "  günther kühnel https://launchpad.net/~guejo\n"
-"  rubinstein https://launchpad.net/~rubinstein"
+"  rubinstein https://launchpad.net/~rubinstein\n"
+"  schattenhueter https://launchpad.net/~schattenhueter"
 
 #: tmp/main_window.glade.h:16
 msgid "New entry"

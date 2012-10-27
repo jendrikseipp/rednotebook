@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-24 15:21+0200\n"
-"PO-Revision-Date: 2012-01-19 10:53+0000\n"
-"Last-Translator: Muhammet Kara <Unknown>\n"
+"PO-Revision-Date: 2012-10-26 09:33+0000\n"
+"Last-Translator: Ismail DOGAN <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:37+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-10-27 05:00+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:86
 msgid "Team meeting"
-msgstr ""
+msgstr "Takım Toplantısı"
 
 #: ../rednotebook/info.py:89
 msgid "Hello!"
@@ -124,7 +124,7 @@ msgstr "Sağ"
 
 #: ../rednotebook/info.py:103
 msgid "Tags for this day"
-msgstr ""
+msgstr "Bugünün etiketleri"
 
 #. ## Translators: noun
 #. ## Verb
@@ -1043,7 +1043,8 @@ msgstr ""
 "  Emre Ayca https://launchpad.net/~anatolica\n"
 "  Hüseyin Sevgi https://launchpad.net/~hsevgi\n"
 "  Ismail DOGAN https://launchpad.net/~ismail-ismaildogan\n"
-"  Muhammet Kara https://launchpad.net/~muhammet-k"
+"  Muhammet Kara https://launchpad.net/~muhammet-k\n"
+"  Şâkir Aşçı https://launchpad.net/~sakirasci"
 
 #: tmp/main_window.glade.h:16
 msgid "New entry"

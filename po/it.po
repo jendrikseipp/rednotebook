@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-24 15:21+0200\n"
-"PO-Revision-Date: 2012-04-10 06:22+0000\n"
-"Last-Translator: Valter Mura <valtermura@gmail.com>\n"
+"PO-Revision-Date: 2012-10-26 11:09+0000\n"
+"Last-Translator: Claudio Arseni <claudio.arseni@ubuntu.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:37+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-10-27 05:00+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -261,7 +261,7 @@ msgstr "Apre l'assistente di esportazione"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "_Backup"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -269,7 +269,7 @@ msgstr "Salva tutti i dati in un archivio zip"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistiche"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -329,19 +329,19 @@ msgstr "Apre un questionario da compilare riguardo il problema"
 
 #: ../rednotebook/gui/menu.py:166
 msgid "Wrong directory"
-msgstr ""
+msgstr "Directory errata"
 
 #: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Impossibile usare questa directory per il proprio diario:"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "Selezionare una directory vuota."
 
 #: ../rednotebook/gui/menu.py:177
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "Questa directory non contiene file di diario:"
 
 #: ../rednotebook/gui/menu.py:193
 msgid "Journals are saved in a directory, not in a single file."
