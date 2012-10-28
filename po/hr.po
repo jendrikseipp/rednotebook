@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-24 15:21+0200\n"
-"PO-Revision-Date: 2012-08-03 17:59+0000\n"
-"Last-Translator: Ivan Galgoci <igalgoci.home@gmail.com>\n"
+"PO-Revision-Date: 2012-10-27 12:46+0000\n"
+"Last-Translator: freedomrun <freedomrun@yandex.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:37+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-10-28 04:43+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:76
 msgid "Movies"
-msgstr ""
+msgstr "Filmovi"
 
 #: ../rednotebook/info.py:77
 msgid "Work"
@@ -40,11 +40,11 @@ msgstr "Posao"
 
 #: ../rednotebook/info.py:78
 msgid "Free time"
-msgstr ""
+msgstr "Slobodno vrijeme"
 
 #: ../rednotebook/info.py:79
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacija"
 
 #: ../rednotebook/info.py:80
 msgid "Todo"
@@ -60,19 +60,19 @@ msgstr "Ne zaboravi kupiti mlijeko"
 
 #: ../rednotebook/info.py:83
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Operi suđe"
 
 #: ../rednotebook/info.py:84
 msgid "Check mail"
-msgstr ""
+msgstr "Provjeri poštu"
 
 #: ../rednotebook/info.py:85
 msgid "Monty Python and the Holy Grail"
-msgstr ""
+msgstr "Monty Python i Sveti Gral"
 
 #: ../rednotebook/info.py:86
 msgid "Team meeting"
-msgstr ""
+msgstr "Sastanak tima"
 
 #: ../rednotebook/info.py:89
 msgid "Hello!"
@@ -100,29 +100,29 @@ msgstr ""
 #. ## Translators: The location "left"
 #: ../rednotebook/info.py:96
 msgid "Left"
-msgstr ""
+msgstr "Lijevo"
 
 #: ../rednotebook/info.py:97
 msgid "Navigation and search"
-msgstr ""
+msgstr "Navigacija i pretraga"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:99
 msgid "Center"
-msgstr ""
+msgstr "Centar"
 
 #: ../rednotebook/info.py:100
 msgid "Text for a day"
-msgstr ""
+msgstr "Tekst za dan"
 
 #. ## Translators: The location "right"
 #: ../rednotebook/info.py:102
 msgid "Right"
-msgstr ""
+msgstr "Desno"
 
 #: ../rednotebook/info.py:103
 msgid "Tags for this day"
-msgstr ""
+msgstr "Oznake za ovaj dan"
 
 #. ## Translators: noun
 #. ## Verb
@@ -151,7 +151,7 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:124
 msgid "Save and Export"
-msgstr ""
+msgstr "Spremi i Izvozi"
 
 #: ../rednotebook/info.py:125
 msgid ""
@@ -228,7 +228,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:106
 msgid "_Import"
-msgstr ""
+msgstr "_Uvoz"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Open the import assistant"
@@ -246,7 +246,7 @@ msgstr "Otvori asistenta izvoza"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "_Sigurnosna kopija"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -1096,7 +1096,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Dario Marinovic https://launchpad.net/~damarino\n"
 "  Ivan Galgoci https://launchpad.net/~igalgoci\n"
-"  Miro Glavić https://launchpad.net/~klek"
+"  Miro Glavić https://launchpad.net/~klek\n"
+"  freedomrun https://launchpad.net/~freedomrun"
 
 #: tmp/main_window.glade.h:16
 msgid "New entry"

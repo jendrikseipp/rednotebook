@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-24 15:21+0200\n"
-"PO-Revision-Date: 2012-01-19 15:55+0000\n"
+"PO-Revision-Date: 2012-10-27 19:28+0000\n"
 "Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:36+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-10-28 04:43+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -241,7 +241,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:106
 msgid "_Import"
-msgstr ""
+msgstr "_Inportatu"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Open the import assistant"
@@ -259,7 +259,7 @@ msgstr "Ireki esportatze laguntzailea"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "_Egin babeskopia"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -267,7 +267,7 @@ msgstr "Gorde datu guztiak zip fitxategi batean"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "E_statistikak"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -327,19 +327,19 @@ msgstr "Bete arazoari buruzko galdetegi labur bat"
 
 #: ../rednotebook/gui/menu.py:166
 msgid "Wrong directory"
-msgstr ""
+msgstr "Helbide okerra"
 
 #: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Ezin duzu direktorio hau erabili zure egunkarian:"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "Mesedez hautatu direktorio huts bat."
 
 #: ../rednotebook/gui/menu.py:177
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "Direktorio honek ez dauka egunkari-fitxategirik:"
 
 #: ../rednotebook/gui/menu.py:193
 msgid "Journals are saved in a directory, not in a single file."
@@ -474,19 +474,19 @@ msgstr "Data/Ordua formatua"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Exclude from cloud"
-msgstr ""
+msgstr "Hitz-lainotik kanpo utzi"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Do not show these comma separated words in the word cloud"
-msgstr ""
+msgstr "Ez erakutsi komaz banatutako hitz hauek hitz-lainoan"
 
 #: ../rednotebook/gui/options.py:326
 msgid "Include small words in cloud"
-msgstr ""
+msgstr "Sartu hitz laburrak hitz-lainoan"
 
 #: ../rednotebook/gui/options.py:327
 msgid "Allow these words with 4 letters or less"
-msgstr ""
+msgstr "Onartu 4 letra edo gutxiagoko hitz hauek"
 
 #: ../rednotebook/gui/main_window.py:291
 msgid "Show RedNotebook"
@@ -597,7 +597,7 @@ msgstr "Taula"
 
 #: ../rednotebook/gui/main_window.py:784
 msgid "Latex Formula"
-msgstr ""
+msgstr "Latex formula"
 
 #: ../rednotebook/gui/main_window.py:786
 msgid "Date/Time"
@@ -675,19 +675,19 @@ msgstr "Utzi hutsik esportatzean datak alde batera uzteko"
 
 #: ../rednotebook/gui/exports.py:130 ../rednotebook/gui/exports.py:389
 msgid "Include text"
-msgstr ""
+msgstr "Sartu testua"
 
 #: ../rednotebook/gui/exports.py:131
 msgid "Include all tags"
-msgstr ""
+msgstr "Sartu etiketa guztiak"
 
 #: ../rednotebook/gui/exports.py:132
 msgid "Do not include tags"
-msgstr ""
+msgstr "Ez sartu etiketak"
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Include only the selected tags"
-msgstr ""
+msgstr "Sartu hautatutako etiketak soilik"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Available tags"
@@ -708,6 +708,7 @@ msgstr "Desautatu"
 #: ../rednotebook/gui/exports.py:255
 msgid "If include text is not selected, you have to select at least one tag."
 msgstr ""
+"Sartu testua ez badago hautatuta, gutxienez etiketa bat hautatu behar duzu."
 
 #: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
@@ -965,7 +966,7 @@ msgstr "Ireki txantiloi direktorioa"
 
 #: ../rednotebook/util/utils.py:115
 msgid "unknown"
-msgstr ""
+msgstr "ezezaguna"
 
 #: ../rednotebook/util/utils.py:127
 #, python-format
@@ -1045,7 +1046,7 @@ msgstr "Ez galdetu berriz"
 
 #: ../rednotebook/journal.py:248
 msgid "Opening default journal."
-msgstr ""
+msgstr "Egunkari lehenetsia irekitzen."
 
 #: ../rednotebook/journal.py:331
 #, python-format
@@ -1058,7 +1059,7 @@ msgstr "Ez dago zer gorderik"
 
 #: ../rednotebook/journal.py:481
 msgid "Error"
-msgstr ""
+msgstr "Errorea"
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
@@ -1066,7 +1067,7 @@ msgstr "Joan aurreko egunera (Ktrl+Orri-gora)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Ctrl+Home)"
-msgstr ""
+msgstr "Joan gaurko egunera (Ktrl+Hasiera)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
