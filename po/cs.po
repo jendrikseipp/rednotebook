@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-24 15:21+0200\n"
-"PO-Revision-Date: 2011-03-26 15:51+0000\n"
-"Last-Translator: Martin Schayna <Unknown>\n"
+"PO-Revision-Date: 2012-10-28 21:14+0000\n"
+"Last-Translator: Jakub Kočí <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:36+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-10-29 05:01+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -32,39 +32,39 @@ msgstr ""
 
 #: ../rednotebook/info.py:76
 msgid "Movies"
-msgstr ""
+msgstr "Filmy"
 
 #: ../rednotebook/info.py:77
 msgid "Work"
-msgstr ""
+msgstr "Práce"
 
 #: ../rednotebook/info.py:78
 msgid "Free time"
-msgstr ""
+msgstr "Volný čas"
 
 #: ../rednotebook/info.py:79
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentace"
 
 #: ../rednotebook/info.py:80
 msgid "Todo"
-msgstr ""
+msgstr "Úkoly"
 
 #: ../rednotebook/info.py:81
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #: ../rednotebook/info.py:82
 msgid "Remember the milk"
-msgstr ""
+msgstr "Vzpomeň si na mléko"
 
 #: ../rednotebook/info.py:83
 msgid "Wash the dishes"
-msgstr ""
+msgstr "Umýt nádobí"
 
 #: ../rednotebook/info.py:84
 msgid "Check mail"
-msgstr ""
+msgstr "Zkontrolovat poštu"
 
 #: ../rednotebook/info.py:85
 msgid "Monty Python and the Holy Grail"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:86
 msgid "Team meeting"
-msgstr ""
+msgstr "Schůzka týmu"
 
 #: ../rednotebook/info.py:89
 msgid "Hello!"
@@ -105,7 +105,7 @@ msgstr "Levá"
 
 #: ../rednotebook/info.py:97
 msgid "Navigation and search"
-msgstr ""
+msgstr "Navigace a hledání"
 
 #. ## Translators: The location "center"
 #: ../rednotebook/info.py:99
@@ -123,7 +123,7 @@ msgstr "Pravá"
 
 #: ../rednotebook/info.py:103
 msgid "Tags for this day"
-msgstr ""
+msgstr "Značky pro tento den"
 
 #. ## Translators: noun
 #. ## Verb
@@ -135,7 +135,7 @@ msgstr "Náhled"
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
-msgstr ""
+msgstr "RedNootebook má dva módy: __Upravit__ a __Shlédnout__"
 
 #. ## Translators: Preview -> noun
 #: ../rednotebook/info.py:109
@@ -184,6 +184,8 @@ msgstr "V menu \"Deník\" naleznete také tlačítko \"Export\"."
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
+"Stiskni \"Exportovat\" a exportujte svůj diář do formátů: text, PDF, HTML "
+"nebo Latex"
 
 #: ../rednotebook/info.py:132
 msgid "If you encounter any errors, please drop me a note so I can fix them."
@@ -277,11 +279,11 @@ msgstr "Úp_ravy"
 
 #: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Zpět"
 
 #: ../rednotebook/gui/menu.py:124
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "Vpřed"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "_Help"
@@ -385,7 +387,7 @@ msgstr "Prázdné zápisky nejsou povoleny"
 
 #: ../rednotebook/gui/categories.py:150
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Program nepovoluje prázdný název pro značky"
 
 #: ../rednotebook/gui/categories.py:408
 msgid "Change this text"
@@ -487,7 +489,7 @@ msgstr "Ukázat RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:652
 msgid "No text or tag has been selected."
-msgstr ""
+msgstr "Není vybrán text ani značka."
 
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:657
@@ -517,7 +519,7 @@ msgstr "Formát"
 
 #: ../rednotebook/gui/main_window.py:680
 msgid "Format the selected text or tag"
-msgstr ""
+msgstr "Formátovat vybraný text nebo značku"
 
 #: ../rednotebook/gui/main_window.py:730
 msgid "First Item"
@@ -644,11 +646,11 @@ msgstr "Exportovat všechny dny"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently visible day"
-msgstr ""
+msgstr "Exportovat právě viditelný den"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "Exportovat dny ve zvoleném rozsahu"
 
 #: ../rednotebook/gui/exports.py:64
 msgid "From:"
@@ -664,7 +666,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:128
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Ponechejte prázdné pro vynechání dat pro export"
 
 #: ../rednotebook/gui/exports.py:130 ../rednotebook/gui/exports.py:389
 msgid "Include text"
@@ -684,11 +686,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Available tags"
-msgstr ""
+msgstr "Dostupné značky"
 
 #: ../rednotebook/gui/exports.py:144 ../rednotebook/gui/exports.py:390
 msgid "Selected tags"
-msgstr ""
+msgstr "Vybrané značky"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Select"
@@ -923,7 +925,7 @@ msgstr "Příště se již nedotazovat"
 
 #: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
-msgstr ""
+msgstr "Nesprávný formát data"
 
 #: ../rednotebook/util/statistics.py:72
 msgid "Distinct Words"
@@ -955,11 +957,12 @@ msgstr "Řádků"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
+msgstr "Poslední zálohu jste dělali už před nějakou dobou."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
+"Můžete zálohovat váš diář do zip souboru, abyste zabránili ztrátám dat."
 
 #: ../rednotebook/backup.py:61
 msgid "Backup"
@@ -971,11 +974,11 @@ msgstr ""
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "Zeptat se při příštím spuštění"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "Už se znovu nepat"
 
 #: ../rednotebook/journal.py:248
 msgid "Opening default journal."
@@ -1053,6 +1056,7 @@ msgstr ""
 "  Martin Rotter https://launchpad.net/~skunkic\n"
 "  Martin Schayna https://launchpad.net/~mschayna\n"
 "  Roman Horník https://launchpad.net/~roman.hornik\n"
+"  Tadeáš Pařík https://launchpad.net/~pariktadeas\n"
 "  luisah https://launchpad.net/~luisah"
 
 #: tmp/main_window.glade.h:16
