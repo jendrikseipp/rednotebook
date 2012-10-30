@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-24 15:21+0200\n"
-"PO-Revision-Date: 2012-10-28 21:12+0000\n"
+"PO-Revision-Date: 2012-10-29 08:11+0000\n"
 "Last-Translator: Felipe Hommen <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-29 05:01+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
+"X-Launchpad-Export-Date: 2012-10-30 05:38+0000\n"
+"X-Generator: Launchpad (build 16206)\n"
 
 #: ../rednotebook/info.py:73
 msgid "Ideas"
@@ -332,11 +332,11 @@ msgstr "Directorio incorrecto"
 
 #: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "No se puede usar esta carpeta para el diario:"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "Seleccione un directorio vacío."
 
 #: ../rednotebook/gui/menu.py:177
 msgid "This directory contains no journal files:"
@@ -962,7 +962,7 @@ msgstr "Abrir carpeta de plantilla"
 
 #: ../rednotebook/util/utils.py:115
 msgid "unknown"
-msgstr ""
+msgstr "desconocido"
 
 #: ../rednotebook/util/utils.py:127
 #, python-format
