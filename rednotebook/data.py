@@ -32,24 +32,33 @@ def escape_tag(tag):
 
 def get_text_with_dots(text, start, end, found_text=None):
     '''
-    Find the outermost spaces and add dots if needed
+    Find the outermost spaces and innermost newlines around (start, end) and add
+    dots if needed.
     '''
-    bound1 = max(0, start - int(TEXT_RESULT_LENGTH//2))
-    bound2 = start
-    bound3 = end
-    bound4 = min(len(text), end + int(TEXT_RESULT_LENGTH//2))
+    bound1 = max(0, start - int(TEXT_RESULT_LENGTH // 2))
+    bound2 = max(0, start)
+    bound3 = min(end, len(text))
+    bound4 = min(len(text), end + int(TEXT_RESULT_LENGTH // 2))
 
-    if bound1 == 0:
-        start = 0
-    else:
-        start = max(bound1, text.find(' ', bound1, bound2))
+    start_values = [bound1]
+    newline = text.rfind('\n', bound1, bound2)
+    start_values.append(newline)
+    if newline == -1:
+        start_values.append(text.find(' ', bound1, bound2))
+    start = max(start_values)
 
-    if bound4 == len(text):
-        end = len(text)
+    end_values = [bound4]
+    newline = text.find('\n', bound3, bound4)
+    if newline != -1:
+        end_values.append(newline)
     else:
-        end = text.rfind(' ', bound3, bound4)
-        if end == -1:
-            end = bound4
+        space = text.rfind(' ', bound3, bound4)
+        if space != -1:
+            end_values.append(space)
+    end = min(end_values)
+
+    assert bound1 <= start <= bound2
+    assert bound3 <= end <= bound4, (bound3, end, bound4)
 
     res = ''
     if start > 0:
@@ -190,10 +199,17 @@ class Day(object):
 
 
     def search(self, text, tags):
+        """
+        Only days that have all tags are searched.
+        Search in date first, then in the text, then in the tags.
+        Uses case-insensitive search.
+        """
         results = []
         if not text:
             for day_tag, entries in self.get_category_content_pairs().items():
                 for tag in tags:
+                    # We know that all tags are present, but we loop through
+                    # day_tags nonetheless, to escape the day_tags.
                     if escape_tag(day_tag) != tag:
                         continue
                     if entries:
@@ -201,6 +217,7 @@ class Day(object):
                     else:
                         results.append(get_text_with_dots(self.text, 0,
                                        TEXT_RESULT_LENGTH))
+
         elif text in str(self):
             # Search in date
             results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
@@ -213,10 +230,6 @@ class Day(object):
 
 
     def search_in_text(self, search_text):
-        '''
-        Try searching in date first, then in the text, then in the annotations
-        Uses case-insensitive search
-        '''
         occurence = self.text.upper().find(search_text.upper())
 
         # Check if search_text is in text
