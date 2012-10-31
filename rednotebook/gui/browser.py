@@ -182,7 +182,6 @@ class HtmlView(gtk.ScrolledWindow):
 
         #self.webview.connect('populate-popup', self.on_populate_popup)
         self.webview.connect('button-press-event', self.on_button_press)
-        self.webview.connect('navigation-requested', self.on_navigate)
 
         self.search_text = ''
         self.webview.connect('load-finished', self.on_load_finished)
@@ -231,21 +230,6 @@ class HtmlView(gtk.ScrolledWindow):
         if event.button == 3:
             # We don't want the context menus, so stop processing that event.
             return True
-
-    def on_navigate(self, webview, frame, request):
-        '''
-        We want to load files and links externally
-        '''
-        if self.loading_html:
-            # Keep processing
-            return False
-
-        uri = request.get_uri()
-        logging.info('Clicked URI "%s"' % uri)
-        filesystem.open_url(uri)
-
-        # Stop processing that event
-        return True
 
     def on_load_finished(self, webview, frame):
         '''

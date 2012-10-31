@@ -69,6 +69,7 @@ class Cloud(HtmlView):
 
         self.webview.connect("hovering-over-link", self.on_hovering_over_link)
         self.webview.connect('populate-popup', self.on_populate_popup)
+        self.webview.connect('navigation-requested', self.on_navigate)
 
         self.last_hovered_word = None
 

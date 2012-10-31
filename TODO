@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 
 1.7
+X Add relative links: Relative paths [myfile image.jpg] is automatically transformed to /path/to/journal/image.jpg).
 O During saving: Delete old backup, move old file to new backup then save new file.
 X Hide tag panel by default.
 X Adapt introductory and help texts for hashtags.
@@ -37,8 +38,6 @@ O Fix link highlighting ([this does not work] and
   [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 O Make the right panel an advanced option?
 O Disable cache for preview (Support previewing externally changed files)
-O Add relative links (by converting $HOME to /user/home/name?,
-  better: automatically transform 'myfile.txt' to /path/to/journal/myfile.txt)
 O Change file permissions so that journal files are only readable by the user
 O Add option to insert verbatim text (allow triple {{{ in addition to ```?)
 

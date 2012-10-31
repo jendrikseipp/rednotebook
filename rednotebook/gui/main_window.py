@@ -21,6 +21,7 @@ import sys
 import os
 import datetime
 import logging
+import urlparse
 
 import gtk
 import gobject
@@ -114,6 +115,7 @@ class MainWindow(object):
 
         self.html_editor = Preview()
         self.html_editor.webview.connect('button-press-event', self.on_browser_clicked)
+        self.html_editor.webview.connect('navigation-requested', self.on_browser_navigate)
 
         self.text_vbox = self.builder.get_object('text_vbox')
         self.text_vbox.pack_start(self.html_editor)
@@ -468,6 +470,27 @@ class MainWindow(object):
 
     def on_forward_one_day_button_clicked(self, widget):
         self.journal.go_to_next_day()
+
+
+    def on_browser_navigate(self, webview, frame, request):
+        '''
+        We want to load files and links externally
+        '''
+        if self.html_editor.loading_html:
+            # Keep processing
+            return False
+
+        uri = request.get_uri()
+        logging.info('Clicked URI "%s"' % uri)
+        path = urlparse.urlparse(uri).path
+        if not os.path.exists(path):
+            assert path.startswith('/')
+            uri = 'file://%s' % os.path.join(self.journal.dirs.data_dir, path[1:])
+
+        filesystem.open_url(uri)
+
+        # Stop processing that event
+        return True
 
 
     def get_new_journal_dir(self, title, message):
