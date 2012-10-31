@@ -206,6 +206,8 @@ class Day(object):
         """
         results = []
         if not text:
+            # Only add text result once for all tags.
+            add_text_to_results = False
             for day_tag, entries in self.get_category_content_pairs().items():
                 for tag in tags:
                     # We know that all tags are present, but we loop through
@@ -215,8 +217,9 @@ class Day(object):
                     if entries:
                         results.extend(entries)
                     else:
-                        results.append(get_text_with_dots(self.text, 0,
-                                       TEXT_RESULT_LENGTH))
+                        add_text_to_results = True
+            if add_text_to_results:
+                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
 
         elif text in str(self):
             # Search in date
