@@ -1,3 +1,9 @@
+rednotebook (1.6.0-1) precise; urgency=low
+
+  * New release
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 31 Oct 2012 11:40:26 +0100
+
 rednotebook (1.5.0-1) precise; urgency=low
 
   * New upstream release
