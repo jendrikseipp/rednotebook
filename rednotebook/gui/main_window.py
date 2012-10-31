@@ -559,8 +559,7 @@ class MainWindow(object):
                 # Values have not been set or are not valid integers
                 self.main_frame.set_position(gtk.WIN_POS_CENTER)
 
-        if 'leftDividerPosition' in config:
-            self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))
+        self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', 250))
         # By default do not show tags pane.
         self.edit_pane.set_position(config.read('rightDividerPosition', main_frame_width))
 
