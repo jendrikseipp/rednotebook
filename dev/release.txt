@@ -4,10 +4,10 @@
 - Move items from TODO to CHANGELOG
 - bzr update
 - Check if program is running correctly
-- bzr commit -m "Version x.y.z"
 - cd dev/
 - ./build-tarball.sh
 - ./upload-file.sh ../dist/rednotebook-x.y.z.tar.gz
+- bzr commit -m "update CHANGELOG"
 - Homepage:
   - Update version number in index.html and downloads.html
   - Write news
@@ -15,9 +15,11 @@
   - Check if downloads work
 - Announce on freshmeat
 - Announce on twitter
+- Announce on facebook
 - Send mail to rednotebook and python-announce lists
 - Build and release windows version
 - Add new release in debian/changelog with "dch -v <version>-1"
+- bzr commit -m "Version x.y.z"
 - Go to https://code.launchpad.net/~jendrikseipp/+recipe/rednotebook-stable
   - Change revision for recipe
   - Request stable recipe build
