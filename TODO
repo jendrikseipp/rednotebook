@@ -8,13 +8,12 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 
-1.x
+1.7
 O During saving: Delete old backup, move old file to new backup then save new file.
+X Hide tag panel by default.
+X Adapt introductory and help texts for hashtags.
 
-O Inline #hashtagging
-  O Highlight hashtags in preview mode (see e.g. google reader tags)
-  O Use hashtags in introductory text
-  O Promote hashtags in help
+1.x
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode

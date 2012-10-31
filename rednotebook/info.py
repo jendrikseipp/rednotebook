@@ -70,44 +70,30 @@ If the journal-path is omitted the last session's journal will be used.
 At the first program start this defaults to "$HOME/.rednotebook/data".
 ''' % version
 
-ideas = _('Ideas')
 tags = _('Tags')
-cool_stuff = _('Cool Stuff')
-movies = _('Movies')
 work = _('Work')
 free_time = _('Free time')
-documentation = _('Documentation')
 todo = _('Todo')
 done = _('Done')
 rtm = _('Remember the milk')
 dishes = _('Wash the dishes')
-check_mail = _('Check mail')
-monty_python_grail = _('Monty Python and the Holy Grail')
-team_meeting = _('Team meeting')
-
 
 greeting = _('Hello!')
 intro=_('Some example text has been added to help you start and '
 'you can erase it whenever you like.')
 ### Translators: "Help" -> noun
 help_par = _('The example text and more documentation is available under "Help" -> "Contents".')
-overview1 = _('The interface is divided into three parts:')
-### Translators: The location "left"
-overview21 = _('Left')
-overview22 = _('Navigation and search')
-### Translators: The location "center"
-overview31 = _('Center')
-overview32 = _('Text for a day')
-### Translators: The location "right"
-overview41 = _('Right')
-overview42 = _('Tags for this day')
 
 ### Translators: noun
 preview = _('Preview')
 preview1 = _('There are two modes in RedNotebook, the __edit__ mode and the __preview__ mode.')
 ### Translators: Preview -> noun
-preview2 = _('Click on Preview above to see the difference.')
+preview2 = _('Click on Edit above to see the difference.')
 preview_par = ' '.join([preview1, preview2])
+
+tags1 = _('Tagging is easy.')
+tags2 = _('Just use #hashtags like on twitter.')
+tags_par = ' '.join([tags1, tags2])
 
 example_entry = _('Today I went to the //pet shop// and bought a **tiger**. '
 'Then we went to the --pool-- park and had a nice time playing '
@@ -138,15 +124,11 @@ goodbye_par = _('Have a nice day!')
 completeWelcomeText = '''\
 %(greeting)s %(intro)s %(help_par)s
 
-%(overview1)s
-
-- **%(overview21)s**: %(overview22)s
-- **%(overview31)s**: %(overview32)s
-- **%(overview41)s**: %(overview42)s
-
-
 === %(preview)s ===
 %(preview_par)s
+
+=== %(tags)s ===
+%(tags_par)s
 
 === %(save)s ===
 %(save_par)s
@@ -156,29 +138,7 @@ completeWelcomeText = '''\
 %(goodbye_par)s''' % globals()
 
 
-welcome_day = {'text': completeWelcomeText,
-cool_stuff: {_('Ate **two** cans of spam'): None},
-ideas: {_('Use a cool journal app'): None},
-movies: {_("Monty Python's Life of Brian"): None},
-documentation: None,
-}
-
-example_day1 = {
-'text': '''\
-=== %(tags)s ===
-Besides the main text you can add tags to each day. A tag can have subtags as
-well. On the right you find some examples of tags.
-
-As you can see you can add the tag %(movies)s and fill it with the movies
-you watch on the respective days. Similarly you can record the things you do
-at work. If you just want to note that you went to work on a particular day,
-you can omit the "%(team_meeting)s" entry.
-
-Tags can be formatted **bold**, //italic//, etc.''' % globals(),
-movies: {monty_python_grail: None},
-documentation: None,
-work: {team_meeting: None},
-}
+welcome_day = {'text': completeWelcomeText}
 
 multiple_entries_text = '''\
 === Multiple Entries ===
@@ -194,60 +154,20 @@ multiple_entries_example = '''\
 ====================
 
 === %(work)s ===
-Here goes the first entry.
+Here goes the first entry. It is about #work.
 
 ====================
 
 === %(free_time)s ===
-Here comes the entry about the fun stuff.
+Here comes the entry about the #fun_stuff.
 ''' % globals()
 
-example_day2 = {
-'text': multiple_entries_text + multiple_entries_example,
-documentation: None, work: None, free_time: None}
+multiple_entries_day = {'text': multiple_entries_text + multiple_entries_example}
 
-example_day3 = {
-'text': '''\
-=== Todo list ===
-You can also use RedNotebook as a todo list. An advantage is, that you never
-have to explicitly state the date when you added the todo item, you just add it
-on one day and it remains there until you delete it.
-
-Here is how it works:
-- On the right click on "Add Tag"
-- Fill "%(todo)s" and "Remember the milk" in the fields and hit "OK"
-- In the cloud on the left you can now click on "%(todo)s" and see all your todo items
-- This list can be sorted by day or by todo item if you click on "Date" or "Text" in the header
-
-
-- To tick off a todo item you can strike it out by adding "--" around the item.
-- To mark an item as important, add "**" around it.
-
-
-So --%(rtm)s-- becomes struck through and **%(dishes)s** becomes bold.
-
-Once you've finished an item, you could also change its tag name from
-"%(todo)s" to "%(done)s".''' % globals(),
-documentation: None,
-todo: {u'--%s--' % rtm: None,
-       u'**%s**' % dishes: None},
-done: {u'%s' % check_mail: None,},
-}
-
-example_content = [welcome_day, example_day1, example_day2, example_day3]
-
-ann_help_text = example_day1['text'].replace('===', '==')
-todo_help_text = example_day3['text']
-
+example_content = [welcome_day, multiple_entries_day]
 
 help_text = '''
 == Layout ==
-%(overview1)s
-- **%(overview21)s**: %(overview22)s
-- **%(overview31)s**: %(overview32)s
-- **%(overview41)s**: %(overview42)s
-
-
 %(preview1)s
 
 == Text ==
@@ -276,7 +196,20 @@ instead of "-" you can create a **numbered list**.
 
 ```
 
-%(ann_help_text)s
+=== #Hashtags ===
+%(tags_par)s
+
+=== Advanced Tagging ===
+Until #hashtags were introduced, you could only tag a day with the tag panel on
+the right side, that is now hidden by default. Drag the slider to the left to
+see it.
+
+It provides an advanced tagging mechanism, allowing you to add a tags with
+subtags like Movies->James Bond. Apart from the fact that you can't have spaces
+in hashtags you can however achieve a similar effect only with hashtags by
+adding #Movies and #James_Bond to the day's text.
+
+Tags and subtags can be formatted **bold**, //italic//, etc.
 
 == Images, Files and Links ==
 RedNotebook lets you insert images, files and links into your entries.
@@ -472,7 +405,27 @@ partition all RedNotebook data will be encrypted, too.
 == Tips ==
 %(multiple_entries_text)s
 
-%(todo_help_text)s
+=== Todo list ===
+You can also use RedNotebook as a todo list. An advantage is, that you never
+have to explicitly state the date when you added the todo item, you just add it
+on one day and it remains there until you delete it.
+
+Here is how it works:
+- Make sure the tag panel on the right is visible, if not drag the slider to the left.
+- On the right click on "Add Tag"
+- Fill "%(todo)s" and "Remember the milk" in the fields and hit "OK"
+- In the cloud on the left you can now click on "%(todo)s" and see all your todo items
+- This list can be sorted by day or by todo item if you click on "Date" or "Text" in the header
+
+
+- To tick off a todo item you can strike it out by adding "--" around the item.
+- To mark an item as important, add "**" around it.
+
+
+So --%(rtm)s-- becomes struck through and **%(dishes)s** becomes bold.
+
+Once you've finished an item, you could also change its tag name from
+"%(todo)s" to "%(done)s".
 
 === Week Numbers ===
 If you'd like to see the week numbers in the calendar, you can set the

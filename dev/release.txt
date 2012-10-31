@@ -14,8 +14,8 @@
   - ./upload-web.sh
   - Check if downloads work
 - Announce on freshmeat
-- Announce on twitter
 - Announce on facebook
+- (Announce on twitter, (already done by facebook))
 - Send mail to rednotebook and python-announce lists
 - Build and release windows version
 - Add new release in debian/changelog with "dch -v <version>-1"
