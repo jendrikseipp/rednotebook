@@ -51,17 +51,3 @@ def test_images_latex():
     for markup, expected in vals:
         latex = convert(markup, 'tex')
         assert expected in latex
-
-
-def test_formula_latex():
-    vals = [('$abc$', '$abc$'), ('$ abc$', '$abc$'),
-            ('$abc $', '$abc$'), ('$ abc $', '$abc$'),
-            ('$\sum$', '$\sum$'),
-            ('$\sum_{i=1}$', '$\sum_{i=1}$'),
-            ('$\sum_{i=1}^n i = \\frac{n \\cdot (n+1)}{2}$',) * 2,
-            #('$$abc$$', '$$abc$$')
-            ]
-    for formula, expected in vals:
-        latex = convert(formula, 'tex')
-        latex = latex[latex.find('\\clearpage') + 13:latex.find('% LaTeX2e code') - 3]
-        assert expected == latex
