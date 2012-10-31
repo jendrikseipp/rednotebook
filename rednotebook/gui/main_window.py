@@ -561,7 +561,8 @@ class MainWindow(object):
 
         if 'leftDividerPosition' in config:
             self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', -1))
-        self.edit_pane.set_position(config.read('rightDividerPosition', 500))
+        # By default do not show tags pane.
+        self.edit_pane.set_position(config.read('rightDividerPosition', main_frame_width))
 
         # A font size of -1 applies the standard font size
         main_font_size = config.read('mainFontSize', -1)
