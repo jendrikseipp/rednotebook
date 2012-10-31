@@ -1,6 +1,9 @@
 ==== RedNotebook Changelog ====
 
-== 1.6.0 (unreleased) ==
+== 1.6.0 (2012-10-31) ==
+* Inline #hashtagging: Directly add hashtags like #Movies, #my_project in the main text.
+* Highlight #hashtags in red.
+* Include # for tags in tag cloud to be consistent with the hashtags.
 * Change to edit/preview mode if text is missing/present automatically.
 * Change to edit mode when double-clicked into preview.
 * Detach model from combobox when updating the tags to make inserting a new tag faster.

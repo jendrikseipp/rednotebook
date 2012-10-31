@@ -11,10 +11,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.x
 O During saving: Delete old backup, move old file to new backup then save new file.
 
-X Inline #hashtagging
-  X Turn #tags red in edit mode
+O Inline #hashtagging
   O Highlight hashtags in preview mode (see e.g. google reader tags)
-  X Show # in tag cloud
   O Use hashtags in introductory text
   O Promote hashtags in help
 X Insert Latex formulas (LP:851471)
