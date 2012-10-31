@@ -871,6 +871,18 @@ class MainWindow(object):
 
         picture_chooser.add_filter(filter)
 
+        # Add box for inserting image width.
+        box = gtk.HBox()
+        box.set_spacing(2)
+        label = gtk.Label(_('Width (optional):'))
+        width_entry = gtk.Entry(max=6)
+        width_entry.set_width_chars(6)
+        box.pack_start(label, False)
+        box.pack_start(width_entry, False)
+        box.pack_start(gtk.Label(_('pixels')), False)
+        box.show_all()
+        picture_chooser.set_extra_widget(box)
+
         response = picture_chooser.run()
         picture_chooser.hide()
 
@@ -882,7 +894,17 @@ class MainWindow(object):
             # with the file:/// prefix
             base = filesystem.get_local_url(base)
 
-            self.day_text_field.insert('[""%s""%s]' % (base, ext))
+            width_text = ''
+            width = width_entry.get_text().decode('utf-8')
+            if width:
+                try:
+                    width = int(width)
+                except ValueError:
+                    self.journal.show_message(_('Width must be an integer.'), error=True)
+                    return
+                width_text = '?%d' % width
+
+            self.day_text_field.insert('[""%s""%s%s]' % (base, ext, width_text))
 
     def on_insert_file_menu_item_activate(self, widget):
         dirs = self.journal.dirs
