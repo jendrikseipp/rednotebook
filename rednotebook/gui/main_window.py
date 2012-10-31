@@ -1015,10 +1015,13 @@ class DayEditor(Editor):
             x, y, selection = self.day.last_edit_pos
             gobject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
             gobject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
-            iters = [self.day_text_buffer.get_iter_at_offset(offset)
-                     for offset in selection]
-            gobject.idle_add(self.day_text_buffer.select_range, *iters)
-            gobject.idle_add(self.day_text_view.grab_focus)
+            gobject.idle_add(self._restore_selection, selection)
+
+    def _restore_selection(self, selection):
+        iters = [self.day_text_buffer.get_iter_at_offset(offset)
+                 for offset in selection]
+        self.day_text_buffer.select_range(*iters)
+        self.day_text_view.grab_focus()
 
 
 class NewEntryDialog(object):
