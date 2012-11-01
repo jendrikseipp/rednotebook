@@ -196,10 +196,10 @@ instead of "-" you can create a **numbered list**.
 
 ```
 
-=== #Hashtags ===
+== Hashtags ==
 %(tags_par)s
 
-=== Advanced Tagging ===
+== Advanced Tagging ==
 Until #hashtags were introduced, you could only tag a day with the tag panel on
 the right side, that is now hidden by default. Drag the slider to the left to
 see it.
