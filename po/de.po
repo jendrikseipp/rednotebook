@@ -7,78 +7,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-24 15:21+0200\n"
+"POT-Creation-Date: 2012-11-01 01:49+0100\n"
 "PO-Revision-Date: 2012-10-27 21:14+0000\n"
 "Last-Translator: schattenhueter <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-28 04:43+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
+"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 
-#: ../rednotebook/info.py:73
-msgid "Ideas"
-msgstr "Ideen"
-
-#: ../rednotebook/info.py:74 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/gui/clouds.py:183 ../rednotebook/util/markup.py:124
+#: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
 msgid "Tags"
 msgstr "Markierungen"
 
-#: ../rednotebook/info.py:75
-msgid "Cool Stuff"
-msgstr "Cooles Zeug"
-
-#: ../rednotebook/info.py:76
-msgid "Movies"
-msgstr "Filme"
-
-#: ../rednotebook/info.py:77
+#: ../rednotebook/info.py:74
 msgid "Work"
 msgstr "Arbeit"
 
-#: ../rednotebook/info.py:78
+#: ../rednotebook/info.py:75
 msgid "Free time"
 msgstr "Freizeit"
 
-#: ../rednotebook/info.py:79
-msgid "Documentation"
-msgstr "Dokumentation"
-
-#: ../rednotebook/info.py:80
+#: ../rednotebook/info.py:76
 msgid "Todo"
 msgstr "Zu erledigen"
 
-#: ../rednotebook/info.py:81
+#: ../rednotebook/info.py:77
 msgid "Done"
 msgstr "Erledigt"
 
-#: ../rednotebook/info.py:82
+#: ../rednotebook/info.py:78
 msgid "Remember the milk"
 msgstr "Milch nicht vergessen"
 
-#: ../rednotebook/info.py:83
+#: ../rednotebook/info.py:79
 msgid "Wash the dishes"
 msgstr "das Geschirr abwaschen"
 
-#: ../rednotebook/info.py:84
-msgid "Check mail"
-msgstr "E-Mails abrufen"
-
-#: ../rednotebook/info.py:85
-msgid "Monty Python and the Holy Grail"
-msgstr "Monty Python und der Heilige Gral"
-
-#: ../rednotebook/info.py:86
-msgid "Team meeting"
-msgstr "Gruppenbesprechung"
-
-#: ../rednotebook/info.py:89
+#: ../rednotebook/info.py:81
 msgid "Hello!"
 msgstr "Hallo!"
 
-#: ../rednotebook/info.py:90
+#: ../rednotebook/info.py:82
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -87,7 +59,7 @@ msgstr ""
 "gelöscht werden können."
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:93
+#: ../rednotebook/info.py:85
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -95,55 +67,32 @@ msgstr ""
 "Der Beispieltext und mehr Dokumentation ist unter 'Hilfe' -> 'Inhalte' "
 "verfügbar."
 
-#: ../rednotebook/info.py:94
-msgid "The interface is divided into three parts:"
-msgstr "Die Benutzeroberfläche ist in drei Bereiche aufgeteilt:"
-
-#. ## Translators: The location "left"
-#: ../rednotebook/info.py:96
-msgid "Left"
-msgstr "Links"
-
-#: ../rednotebook/info.py:97
-msgid "Navigation and search"
-msgstr "Navigation und Suche"
-
-#. ## Translators: The location "center"
-#: ../rednotebook/info.py:99
-msgid "Center"
-msgstr "Mitte"
-
-#: ../rednotebook/info.py:100
-msgid "Text for a day"
-msgstr "Text für einen Tag"
-
-#. ## Translators: The location "right"
-#: ../rednotebook/info.py:102
-msgid "Right"
-msgstr "Rechts"
-
-#: ../rednotebook/info.py:103
-msgid "Tags for this day"
-msgstr "Markierungen für diesen Tag"
-
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:106 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "Vorschau"
 
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:89
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr "RedNotebook hat zwei  Zustände - __Bearbeiten __ und  __Vorschau __."
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:109
-msgid "Click on Preview above to see the difference."
-msgstr "Klicken Sie oben auf Vorschau, um den Unterschied zu sehen."
+#: ../rednotebook/info.py:91
+msgid "Click on Edit above to see the difference."
+msgstr ""
 
-#: ../rednotebook/info.py:112
+#: ../rednotebook/info.py:94
+msgid "Tagging is easy."
+msgstr ""
+
+#: ../rednotebook/info.py:95
+msgid "Just use #hashtags like on twitter."
+msgstr ""
+
+#: ../rednotebook/info.py:98
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -155,11 +104,11 @@ msgstr ""
 "Brian__\" geguckt."
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:124
+#: ../rednotebook/info.py:110
 msgid "Save and Export"
 msgstr "Speichern und Exportieren"
 
-#: ../rednotebook/info.py:125
+#: ../rednotebook/info.py:111
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -167,54 +116,42 @@ msgstr ""
 "Alles, was Sie eingeben,  wird in regelmäßigen Abständen und auch beim "
 "Verlassen des Programms gesichert."
 
-#: ../rednotebook/info.py:126
+#: ../rednotebook/info.py:112
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "Sie sollten ihr Journal regelmäßig sichern, um Datenverlust zu vermeiden."
 
-#: ../rednotebook/info.py:127
+#: ../rednotebook/info.py:113
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "\"Sichern\" im Menü \"Journal\" speichert alle Eingaben in einer Zip-Datei."
 
-#: ../rednotebook/info.py:128
+#: ../rednotebook/info.py:114
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr ""
 "Im Menü \"Journal\" finden Sie auch die \"Exportieren\" Schaltfläche."
 
-#: ../rednotebook/info.py:129
+#: ../rednotebook/info.py:115
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "Klicken Sie auf \"Export\" und exportieren Sie Ihren Terminkalender ins "
 "einfache Textformat, PDF, HTML oder Latex."
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:118
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "Falls Sie einen Fehler im Programm finden, melden Sie ihn bitte, damit er "
 "behoben werden kann."
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:119
 msgid "Any feedback is appreciated."
 msgstr "Kommentare und Kritik sind sehr willkommen."
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:122
 msgid "Have a nice day!"
 msgstr "Einen schönen Tag noch!"
-
-#: ../rednotebook/info.py:160
-msgid "Ate **two** cans of spam"
-msgstr "**Zwei** Dosen Frühstücksfleisch gegessen"
-
-#: ../rednotebook/info.py:161
-msgid "Use a cool journal app"
-msgstr "Ein cooles Journal-Programm benutzen"
-
-#: ../rednotebook/info.py:162
-msgid "Monty Python's Life of Brian"
-msgstr "Monty Python's Das Leben des Brian"
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
@@ -495,161 +432,173 @@ msgstr "Erlaube kurze Wörter in der Wortwolke"
 msgid "Allow these words with 4 letters or less"
 msgstr "Einbeziehen der hier gelisteten Wörter mit 4 und weniger Zeichen"
 
-#: ../rednotebook/gui/main_window.py:291
+#: ../rednotebook/gui/main_window.py:293
 msgid "Show RedNotebook"
 msgstr "RedNotebook zeigen"
 
-#: ../rednotebook/gui/main_window.py:652
+#: ../rednotebook/gui/main_window.py:675
 msgid "No text or tag has been selected."
 msgstr "Sie haben keinen Text oder keine Markierung ausgewählt."
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:657
+#: ../rednotebook/gui/main_window.py:680
 msgid "Ctrl"
 msgstr "Strg"
 
-#: ../rednotebook/gui/main_window.py:660
+#: ../rednotebook/gui/main_window.py:683
 msgid "Bold"
 msgstr "Fett"
 
-#: ../rednotebook/gui/main_window.py:661
+#: ../rednotebook/gui/main_window.py:684
 msgid "Italic"
 msgstr "Kursiv"
 
-#: ../rednotebook/gui/main_window.py:662
+#: ../rednotebook/gui/main_window.py:685
 msgid "Underline"
 msgstr "Unterstrichen"
 
-#: ../rednotebook/gui/main_window.py:663
+#: ../rednotebook/gui/main_window.py:686
 msgid "Strikethrough"
 msgstr "Durchgestrichen"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:679 ../rednotebook/gui/exports.py:382
+#: ../rednotebook/gui/main_window.py:702 ../rednotebook/gui/exports.py:382
 msgid "Format"
 msgstr "Formatierung"
 
-#: ../rednotebook/gui/main_window.py:680
+#: ../rednotebook/gui/main_window.py:703
 msgid "Format the selected text or tag"
 msgstr "Ausgewählten Text oder Markierung formatieren"
 
-#: ../rednotebook/gui/main_window.py:730
+#: ../rednotebook/gui/main_window.py:753
 msgid "First Item"
 msgstr "Erstes Objekt"
 
-#: ../rednotebook/gui/main_window.py:731
+#: ../rednotebook/gui/main_window.py:754
 msgid "Second Item"
 msgstr "Zweites Objekt"
 
-#: ../rednotebook/gui/main_window.py:732
+#: ../rednotebook/gui/main_window.py:755
 msgid "Indented Item"
 msgstr "Eingerücktes Objekt"
 
-#: ../rednotebook/gui/main_window.py:733
+#: ../rednotebook/gui/main_window.py:756
 msgid "Two blank lines close the list"
 msgstr "Zwei Leerzeilen beenden eine Liste."
 
-#: ../rednotebook/gui/main_window.py:737
+#: ../rednotebook/gui/main_window.py:760
 msgid "Title text"
 msgstr "Titeltext"
 
-#: ../rednotebook/gui/main_window.py:763
+#: ../rednotebook/gui/main_window.py:786
 msgid "Picture"
 msgstr "Bild"
 
-#: ../rednotebook/gui/main_window.py:764
+#: ../rednotebook/gui/main_window.py:787
 msgid "Insert an image from the harddisk"
 msgstr "Ein Bild von der Festplatte einfügen"
 
-#: ../rednotebook/gui/main_window.py:766
+#: ../rednotebook/gui/main_window.py:789
 msgid "File"
 msgstr "Datei"
 
-#: ../rednotebook/gui/main_window.py:767
+#: ../rednotebook/gui/main_window.py:790
 msgid "Insert a link to a file"
 msgstr "Einen Verweis auf eine Datei einfügen"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:770
+#: ../rednotebook/gui/main_window.py:793
 msgid "_Link"
 msgstr "_Link"
 
-#: ../rednotebook/gui/main_window.py:771
+#: ../rednotebook/gui/main_window.py:794
 msgid "Insert a link to a website"
 msgstr "Einen Link zu einer Webseite einfügen"
 
-#: ../rednotebook/gui/main_window.py:773
+#: ../rednotebook/gui/main_window.py:796
 msgid "Bullet List"
 msgstr "Liste"
 
-#: ../rednotebook/gui/main_window.py:775
+#: ../rednotebook/gui/main_window.py:798
 msgid "Numbered List"
 msgstr "Nummerierte Liste"
 
-#: ../rednotebook/gui/main_window.py:777
+#: ../rednotebook/gui/main_window.py:800
 msgid "Title"
 msgstr "Titel"
 
-#: ../rednotebook/gui/main_window.py:779
+#: ../rednotebook/gui/main_window.py:802
 msgid "Line"
 msgstr "Linie"
 
-#: ../rednotebook/gui/main_window.py:780
+#: ../rednotebook/gui/main_window.py:803
 msgid "Insert a separator line"
 msgstr "Eine Trennlinie einfügen"
 
-#: ../rednotebook/gui/main_window.py:782
+#: ../rednotebook/gui/main_window.py:805
 msgid "Table"
 msgstr "Tabelle"
 
-#: ../rednotebook/gui/main_window.py:784
+#: ../rednotebook/gui/main_window.py:807
 msgid "Latex Formula"
 msgstr "LaTeX-Formel"
 
-#: ../rednotebook/gui/main_window.py:786
+#: ../rednotebook/gui/main_window.py:809
 msgid "Date/Time"
 msgstr "Datum/Uhrzeit"
 
-#: ../rednotebook/gui/main_window.py:787
+#: ../rednotebook/gui/main_window.py:810
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 "Das aktuelle Datum und die aktuelle Uhrzeit einfügen (Format auswählbar in "
 "den Einstellungen)"
 
-#: ../rednotebook/gui/main_window.py:789
+#: ../rednotebook/gui/main_window.py:812
 msgid "Line Break"
 msgstr "Zeilenumbruch"
 
-#: ../rednotebook/gui/main_window.py:790
+#: ../rednotebook/gui/main_window.py:813
 msgid "Insert a manual line break"
 msgstr "Einen manuellen Zeilenumbruch einfügen"
 
-#: ../rednotebook/gui/main_window.py:813
+#: ../rednotebook/gui/main_window.py:836
 msgid "Insert"
 msgstr "Einfügen"
 
-#: ../rednotebook/gui/main_window.py:817
+#: ../rednotebook/gui/main_window.py:840
 msgid "Insert images, files, links and other content"
 msgstr "Bilder, Dateien, Links und andere Inhalte einfügen"
 
-#: ../rednotebook/gui/main_window.py:917
+#: ../rednotebook/gui/main_window.py:877
+msgid "Width (optional):"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:882
+msgid "pixels"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:903
+msgid "Width must be an integer."
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:962
 msgid "No link location has been entered"
 msgstr "Es wurde keine Link Adresse angegeben"
 
-#: ../rednotebook/gui/clouds.py:78
+#: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
 msgstr "filtere, diese, mit, kommas, getrennten, wörter"
 
-#: ../rednotebook/gui/clouds.py:83
+#: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, spam, job, juli"
 
-#: ../rednotebook/gui/clouds.py:186 ../rednotebook/util/statistics.py:71
+#: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
 msgstr "Wörter"
 
-#: ../rednotebook/gui/clouds.py:245
+#: ../rednotebook/gui/clouds.py:246
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Zeige \"%s\" nicht in den Wortwolken"
@@ -1138,7 +1087,6 @@ msgstr ""
 "  Tim㋡ https://launchpad.net/~tim.h.s\n"
 "  chrioll https://launchpad.net/~chrioll\n"
 "  günther kühnel https://launchpad.net/~guejo\n"
-"  rubinstein https://launchpad.net/~rubinstein\n"
 "  schattenhueter https://launchpad.net/~schattenhueter"
 
 #: tmp/main_window.glade.h:16
@@ -1210,3 +1158,57 @@ msgstr "<b>Gesamt</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Schließen ohne zu speichern"
+
+#~ msgid "Right"
+#~ msgstr "Rechts"
+
+#~ msgid "Center"
+#~ msgstr "Mitte"
+
+#~ msgid "Left"
+#~ msgstr "Links"
+
+#~ msgid "Text for a day"
+#~ msgstr "Text für einen Tag"
+
+#~ msgid "Ideas"
+#~ msgstr "Ideen"
+
+#~ msgid "The interface is divided into three parts:"
+#~ msgstr "Die Benutzeroberfläche ist in drei Bereiche aufgeteilt:"
+
+#~ msgid "Click on Preview above to see the difference."
+#~ msgstr "Klicken Sie oben auf Vorschau, um den Unterschied zu sehen."
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentation"
+
+#~ msgid "Movies"
+#~ msgstr "Filme"
+
+#~ msgid "Cool Stuff"
+#~ msgstr "Cooles Zeug"
+
+#~ msgid "Monty Python and the Holy Grail"
+#~ msgstr "Monty Python und der Heilige Gral"
+
+#~ msgid "Monty Python's Life of Brian"
+#~ msgstr "Monty Python's Das Leben des Brian"
+
+#~ msgid "Use a cool journal app"
+#~ msgstr "Ein cooles Journal-Programm benutzen"
+
+#~ msgid "Navigation and search"
+#~ msgstr "Navigation und Suche"
+
+#~ msgid "Tags for this day"
+#~ msgstr "Markierungen für diesen Tag"
+
+#~ msgid "Ate **two** cans of spam"
+#~ msgstr "**Zwei** Dosen Frühstücksfleisch gegessen"
+
+#~ msgid "Check mail"
+#~ msgstr "E-Mails abrufen"
+
+#~ msgid "Team meeting"
+#~ msgstr "Gruppenbesprechung"

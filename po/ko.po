@@ -7,139 +7,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-10-24 15:21+0200\n"
+"POT-Creation-Date: 2012-11-01 01:49+0100\n"
 "PO-Revision-Date: 2012-01-19 13:25+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:37+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 
-#: ../rednotebook/info.py:73
-msgid "Ideas"
-msgstr "아이디어"
-
-#: ../rednotebook/info.py:74 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/gui/clouds.py:183 ../rednotebook/util/markup.py:124
+#: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
 msgid "Tags"
 msgstr "태그"
 
-#: ../rednotebook/info.py:75
-msgid "Cool Stuff"
-msgstr ""
-
-#: ../rednotebook/info.py:76
-msgid "Movies"
-msgstr "영화"
-
-#: ../rednotebook/info.py:77
+#: ../rednotebook/info.py:74
 msgid "Work"
 msgstr "업무"
 
-#: ../rednotebook/info.py:78
+#: ../rednotebook/info.py:75
 msgid "Free time"
 msgstr "여가 시간"
 
-#: ../rednotebook/info.py:79
-msgid "Documentation"
-msgstr "문서"
-
-#: ../rednotebook/info.py:80
+#: ../rednotebook/info.py:76
 msgid "Todo"
 msgstr "할 일"
 
-#: ../rednotebook/info.py:81
+#: ../rednotebook/info.py:77
 msgid "Done"
 msgstr "완료"
 
-#: ../rednotebook/info.py:82
+#: ../rednotebook/info.py:78
 msgid "Remember the milk"
 msgstr ""
 
-#: ../rednotebook/info.py:83
+#: ../rednotebook/info.py:79
 msgid "Wash the dishes"
 msgstr "그릇 씻기"
 
-#: ../rednotebook/info.py:84
-msgid "Check mail"
-msgstr "메일 체크하기"
-
-#: ../rednotebook/info.py:85
-msgid "Monty Python and the Holy Grail"
-msgstr ""
-
-#: ../rednotebook/info.py:86
-msgid "Team meeting"
-msgstr "팀 회의"
-
-#: ../rednotebook/info.py:89
+#: ../rednotebook/info.py:81
 msgid "Hello!"
 msgstr "안녕하세요!"
 
-#: ../rednotebook/info.py:90
+#: ../rednotebook/info.py:82
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr "시작을 돕기 위해 예제가 로딩되었으며, 언제든지 지울 수 있습니다."
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:93
+#: ../rednotebook/info.py:85
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr "도움말에서 더 많은 지원을 받을 수 있습니다."
 
-#: ../rednotebook/info.py:94
-msgid "The interface is divided into three parts:"
-msgstr "사용자 환경은 크게 3부분으로 나뉘어져 있습니다."
-
-#. ## Translators: The location "left"
-#: ../rednotebook/info.py:96
-msgid "Left"
-msgstr "왼쪽 사용자 환경"
-
-#: ../rednotebook/info.py:97
-msgid "Navigation and search"
-msgstr "탐색, 찾기"
-
-#. ## Translators: The location "center"
-#: ../rednotebook/info.py:99
-msgid "Center"
-msgstr "가운데 사용자 환경"
-
-#: ../rednotebook/info.py:100
-msgid "Text for a day"
-msgstr "오늘의 말"
-
-#. ## Translators: The location "right"
-#: ../rednotebook/info.py:102
-msgid "Right"
-msgstr "오른쪽 사용자 환경"
-
-#: ../rednotebook/info.py:103
-msgid "Tags for this day"
-msgstr "오늘의 태그"
-
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:106 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "미리 보기"
 
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:89
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr "RedNotebook에는 _편집_ 모드와 _보기_ 모드가 있습니다."
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:109
-msgid "Click on Preview above to see the difference."
-msgstr "미리보기를 클릭해 달라진 점을 확인하세요."
+#: ../rednotebook/info.py:91
+msgid "Click on Edit above to see the difference."
+msgstr ""
 
-#: ../rednotebook/info.py:112
+#: ../rednotebook/info.py:94
+msgid "Tagging is easy."
+msgstr ""
+
+#: ../rednotebook/info.py:95
+msgid "Just use #hashtags like on twitter."
+msgstr ""
+
+#: ../rednotebook/info.py:98
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -149,58 +98,46 @@ msgstr ""
 "놀이를 하면서 즐거운 시간을 보냈다. 그 후 우리는 영화 \"__Life of Brain__\" 룰 봤다."
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:124
+#: ../rednotebook/info.py:110
 msgid "Save and Export"
 msgstr "저장 그리고 변환"
 
-#: ../rednotebook/info.py:125
+#: ../rednotebook/info.py:111
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr "당신이 입력한 모든 내용은 자동 저장됩니다. 또한 프로그램 종료시에도 변환된 내용은 자동저장 됩니다."
 
-#: ../rednotebook/info.py:126
+#: ../rednotebook/info.py:112
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr "데이터의 손실을 막고 싶다면, 주기적으로 일지(저널)을 백업하십시오"
 
-#: ../rednotebook/info.py:127
+#: ../rednotebook/info.py:113
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr "\"일지(저널)\" 메뉴에 있는 \"백업\"버튼을 누르면 입력된 모든 데이터가 압축화일(zip) 형태로 저장됩니다."
 
-#: ../rednotebook/info.py:128
+#: ../rednotebook/info.py:114
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "\"변환(내보내기)\" 버튼 또한  \"일지(저널)\" 메뉴에  있습니다."
 
-#: ../rednotebook/info.py:129
+#: ../rednotebook/info.py:115
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:118
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "만약, RedNotebook 사용중 문제를 발견하게 되면, 문제의 수정을 위해서 프로그램 제작자에게 버그를 리포트 해 주십시오."
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:119
 msgid "Any feedback is appreciated."
 msgstr "모든 피드백에 대해 감사들 드립니다."
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:122
 msgid "Have a nice day!"
 msgstr "좋은 하루를 보내세요!"
-
-#: ../rednotebook/info.py:160
-msgid "Ate **two** cans of spam"
-msgstr ""
-
-#: ../rednotebook/info.py:161
-msgid "Use a cool journal app"
-msgstr "좋은 일정관리 프로그램을 사용합니다"
-
-#: ../rednotebook/info.py:162
-msgid "Monty Python's Life of Brian"
-msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
@@ -472,159 +409,171 @@ msgstr ""
 msgid "Allow these words with 4 letters or less"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:291
+#: ../rednotebook/gui/main_window.py:293
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:652
+#: ../rednotebook/gui/main_window.py:675
 msgid "No text or tag has been selected."
 msgstr ""
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:657
+#: ../rednotebook/gui/main_window.py:680
 msgid "Ctrl"
 msgstr "컨트롤"
 
-#: ../rednotebook/gui/main_window.py:660
+#: ../rednotebook/gui/main_window.py:683
 msgid "Bold"
 msgstr "굵은 글꼴"
 
-#: ../rednotebook/gui/main_window.py:661
+#: ../rednotebook/gui/main_window.py:684
 msgid "Italic"
 msgstr "이텔릭체"
 
-#: ../rednotebook/gui/main_window.py:662
+#: ../rednotebook/gui/main_window.py:685
 msgid "Underline"
 msgstr "밑줄"
 
-#: ../rednotebook/gui/main_window.py:663
+#: ../rednotebook/gui/main_window.py:686
 msgid "Strikethrough"
 msgstr "취소선"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:679 ../rednotebook/gui/exports.py:382
+#: ../rednotebook/gui/main_window.py:702 ../rednotebook/gui/exports.py:382
 msgid "Format"
 msgstr "형식"
 
-#: ../rednotebook/gui/main_window.py:680
+#: ../rednotebook/gui/main_window.py:703
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:730
+#: ../rednotebook/gui/main_window.py:753
 msgid "First Item"
 msgstr "첫번째 항목"
 
-#: ../rednotebook/gui/main_window.py:731
+#: ../rednotebook/gui/main_window.py:754
 msgid "Second Item"
 msgstr "두번째 항목"
 
-#: ../rednotebook/gui/main_window.py:732
+#: ../rednotebook/gui/main_window.py:755
 msgid "Indented Item"
 msgstr "항목 들여쓰기"
 
-#: ../rednotebook/gui/main_window.py:733
+#: ../rednotebook/gui/main_window.py:756
 msgid "Two blank lines close the list"
 msgstr "두개의 빈줄을 입력하면 목록이 닫힙니다"
 
-#: ../rednotebook/gui/main_window.py:737
+#: ../rednotebook/gui/main_window.py:760
 msgid "Title text"
 msgstr "제목 글자"
 
-#: ../rednotebook/gui/main_window.py:763
+#: ../rednotebook/gui/main_window.py:786
 msgid "Picture"
 msgstr "그림 파일"
 
-#: ../rednotebook/gui/main_window.py:764
+#: ../rednotebook/gui/main_window.py:787
 msgid "Insert an image from the harddisk"
 msgstr "하드디스크로부터 이미지화일을 삽입합니다"
 
-#: ../rednotebook/gui/main_window.py:766
+#: ../rednotebook/gui/main_window.py:789
 msgid "File"
 msgstr "파일"
 
-#: ../rednotebook/gui/main_window.py:767
+#: ../rednotebook/gui/main_window.py:790
 msgid "Insert a link to a file"
 msgstr "화일에 링크를 겁니다"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:770
+#: ../rednotebook/gui/main_window.py:793
 msgid "_Link"
 msgstr "링크(_L)"
 
-#: ../rednotebook/gui/main_window.py:771
+#: ../rednotebook/gui/main_window.py:794
 msgid "Insert a link to a website"
 msgstr "웹사이트(페이지)의 링크를 겁니다"
 
-#: ../rednotebook/gui/main_window.py:773
+#: ../rednotebook/gui/main_window.py:796
 msgid "Bullet List"
 msgstr "게시판 형태의 목록"
 
-#: ../rednotebook/gui/main_window.py:775
+#: ../rednotebook/gui/main_window.py:798
 msgid "Numbered List"
 msgstr "번호 목록"
 
-#: ../rednotebook/gui/main_window.py:777
+#: ../rednotebook/gui/main_window.py:800
 msgid "Title"
 msgstr "제목"
 
-#: ../rednotebook/gui/main_window.py:779
+#: ../rednotebook/gui/main_window.py:802
 msgid "Line"
 msgstr "라인"
 
-#: ../rednotebook/gui/main_window.py:780
+#: ../rednotebook/gui/main_window.py:803
 msgid "Insert a separator line"
 msgstr "분리 라인 삽입"
 
-#: ../rednotebook/gui/main_window.py:782
+#: ../rednotebook/gui/main_window.py:805
 msgid "Table"
 msgstr "도표"
 
-#: ../rednotebook/gui/main_window.py:784
+#: ../rednotebook/gui/main_window.py:807
 msgid "Latex Formula"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:786
+#: ../rednotebook/gui/main_window.py:809
 msgid "Date/Time"
 msgstr "날짜/시각"
 
-#: ../rednotebook/gui/main_window.py:787
+#: ../rednotebook/gui/main_window.py:810
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "현재 시간과 날짜를 삽입(환경설정에서 변경가능)"
 
-#: ../rednotebook/gui/main_window.py:789
+#: ../rednotebook/gui/main_window.py:812
 msgid "Line Break"
 msgstr "개행"
 
-#: ../rednotebook/gui/main_window.py:790
+#: ../rednotebook/gui/main_window.py:813
 msgid "Insert a manual line break"
 msgstr "임으로 개행 라인 삽입합니다"
 
-#: ../rednotebook/gui/main_window.py:813
+#: ../rednotebook/gui/main_window.py:836
 msgid "Insert"
 msgstr "삽입"
 
-#: ../rednotebook/gui/main_window.py:817
+#: ../rednotebook/gui/main_window.py:840
 msgid "Insert images, files, links and other content"
 msgstr "이미지, 화일 및 다른 내용물을 삽입합니다"
 
-#: ../rednotebook/gui/main_window.py:917
+#: ../rednotebook/gui/main_window.py:877
+msgid "Width (optional):"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:882
+msgid "pixels"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:903
+msgid "Width must be an integer."
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:962
 msgid "No link location has been entered"
 msgstr "링크가 연결될 주소가 입력되지 않았습니다."
 
-#: ../rednotebook/gui/clouds.py:78
+#: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:83
+#: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr "동영상, 스펨메일, 일관련, 유흥"
 
-#: ../rednotebook/gui/clouds.py:186 ../rednotebook/util/statistics.py:71
+#: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
 msgstr "단어"
 
-#: ../rednotebook/gui/clouds.py:245
+#: ../rednotebook/gui/clouds.py:246
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "(태그)클라우에서 \"%s\"를 숨깁니다"
@@ -1110,3 +1059,45 @@ msgstr ""
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "저장하지 않고 프로그램을 종료합니다"
+
+#~ msgid "Ideas"
+#~ msgstr "아이디어"
+
+#~ msgid "Center"
+#~ msgstr "가운데 사용자 환경"
+
+#~ msgid "Left"
+#~ msgstr "왼쪽 사용자 환경"
+
+#~ msgid "The interface is divided into three parts:"
+#~ msgstr "사용자 환경은 크게 3부분으로 나뉘어져 있습니다."
+
+#~ msgid "Right"
+#~ msgstr "오른쪽 사용자 환경"
+
+#~ msgid "Use a cool journal app"
+#~ msgstr "좋은 일정관리 프로그램을 사용합니다"
+
+#~ msgid "Documentation"
+#~ msgstr "문서"
+
+#~ msgid "Movies"
+#~ msgstr "영화"
+
+#~ msgid "Check mail"
+#~ msgstr "메일 체크하기"
+
+#~ msgid "Team meeting"
+#~ msgstr "팀 회의"
+
+#~ msgid "Text for a day"
+#~ msgstr "오늘의 말"
+
+#~ msgid "Click on Preview above to see the difference."
+#~ msgstr "미리보기를 클릭해 달라진 점을 확인하세요."
+
+#~ msgid "Navigation and search"
+#~ msgstr "탐색, 찾기"
+
+#~ msgid "Tags for this day"
+#~ msgstr "오늘의 태그"

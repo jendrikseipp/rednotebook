@@ -7,139 +7,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-10-24 15:21+0200\n"
+"POT-Creation-Date: 2012-11-01 01:49+0100\n"
 "PO-Revision-Date: 2012-08-22 14:45+0000\n"
 "Last-Translator: Iori Namekawa <y1t2y2z1@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:37+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 
-#: ../rednotebook/info.py:73
-msgid "Ideas"
-msgstr "アイデア"
-
-#: ../rednotebook/info.py:74 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/gui/clouds.py:183 ../rednotebook/util/markup.py:124
+#: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
 msgid "Tags"
 msgstr "タグ"
 
-#: ../rednotebook/info.py:75
-msgid "Cool Stuff"
-msgstr "クールなもの"
-
-#: ../rednotebook/info.py:76
-msgid "Movies"
-msgstr "動画"
-
-#: ../rednotebook/info.py:77
+#: ../rednotebook/info.py:74
 msgid "Work"
 msgstr "仕事"
 
-#: ../rednotebook/info.py:78
+#: ../rednotebook/info.py:75
 msgid "Free time"
 msgstr "余暇"
 
-#: ../rednotebook/info.py:79
-msgid "Documentation"
-msgstr "ドキュメンテーション"
-
-#: ../rednotebook/info.py:80
+#: ../rednotebook/info.py:76
 msgid "Todo"
 msgstr "Todo"
 
-#: ../rednotebook/info.py:81
+#: ../rednotebook/info.py:77
 msgid "Done"
 msgstr "完了"
 
-#: ../rednotebook/info.py:82
+#: ../rednotebook/info.py:78
 msgid "Remember the milk"
 msgstr "Remember the milk"
 
-#: ../rednotebook/info.py:83
+#: ../rednotebook/info.py:79
 msgid "Wash the dishes"
 msgstr "皿洗いをする"
 
-#: ../rednotebook/info.py:84
-msgid "Check mail"
-msgstr "メール確認"
-
-#: ../rednotebook/info.py:85
-msgid "Monty Python and the Holy Grail"
-msgstr "Monty Python and the Holy Grail"
-
-#: ../rednotebook/info.py:86
-msgid "Team meeting"
-msgstr "会議"
-
-#: ../rednotebook/info.py:89
+#: ../rednotebook/info.py:81
 msgid "Hello!"
 msgstr "こんにちは！"
 
-#: ../rednotebook/info.py:90
+#: ../rednotebook/info.py:82
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr "使い方を示すため、いくつかの例文が挿入されています。例文はいつでも消去できます。"
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:93
+#: ../rednotebook/info.py:85
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr "詳しい説明は”ヘルプ”－＞”内容”を参照してください。"
 
-#: ../rednotebook/info.py:94
-msgid "The interface is divided into three parts:"
-msgstr "インターフェイスは、3つの部分に分かれています："
-
-#. ## Translators: The location "left"
-#: ../rednotebook/info.py:96
-msgid "Left"
-msgstr "左"
-
-#: ../rednotebook/info.py:97
-msgid "Navigation and search"
-msgstr "ナビゲーションと検索"
-
-#. ## Translators: The location "center"
-#: ../rednotebook/info.py:99
-msgid "Center"
-msgstr "中央"
-
-#: ../rednotebook/info.py:100
-msgid "Text for a day"
-msgstr "１日の書き込み"
-
-#. ## Translators: The location "right"
-#: ../rednotebook/info.py:102
-msgid "Right"
-msgstr "右"
-
-#: ../rednotebook/info.py:103
-msgid "Tags for this day"
-msgstr "この日付のタグ"
-
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:106 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "プレビュー"
 
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:89
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr "RedNotebookには「編集」と「プレビュー」の２つのモードがあります。"
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:109
-msgid "Click on Preview above to see the difference."
-msgstr "上の「プレビュー」で変更点が確認できます。"
+#: ../rednotebook/info.py:91
+msgid "Click on Edit above to see the difference."
+msgstr ""
 
-#: ../rednotebook/info.py:112
+#: ../rednotebook/info.py:94
+msgid "Tagging is easy."
+msgstr ""
+
+#: ../rednotebook/info.py:95
+msgid "Just use #hashtags like on twitter."
+msgstr ""
+
+#: ../rednotebook/info.py:98
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -149,57 +98,45 @@ msgstr ""
 "公園に行ってフリスビーで遊びました。それから私たちは「ライフ・オブ・ブライアン」っていう映画を見ました。"
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:124
+#: ../rednotebook/info.py:110
 msgid "Save and Export"
 msgstr "保存、エクスポート"
 
-#: ../rednotebook/info.py:125
+#: ../rednotebook/info.py:111
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr "データはプログラム終了時および一定間隔で自動的に保存されます。"
 
-#: ../rednotebook/info.py:126
+#: ../rednotebook/info.py:112
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr "データの損失を避けるため、常にバックアップを作成しましょう。"
 
-#: ../rednotebook/info.py:127
+#: ../rednotebook/info.py:113
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr "\"Journal（ジャーナル）\" メニュー\"Backup（バックアップ）\"はすべてのデータをzipファイルに保存します。"
 
-#: ../rednotebook/info.py:128
+#: ../rednotebook/info.py:114
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "\"Journal（ジャーナル）\" メニューには\"Export（エクスポート）\"ボタンもあります。"
 
-#: ../rednotebook/info.py:129
+#: ../rednotebook/info.py:115
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr "\"Export（エクスポート）\" から日記をテキスト, PDF, HTMLまたは Latexでエクスポートできます。"
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:118
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr "バグ、エラーを見つけたら、ぜひ連絡をください。"
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:119
 msgid "Any feedback is appreciated."
 msgstr "どんなフィードバックでも歓迎します。"
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:122
 msgid "Have a nice day!"
 msgstr "良い一日を！"
-
-#: ../rednotebook/info.py:160
-msgid "Ate **two** cans of spam"
-msgstr "スパム缶を**２つ**食べた。"
-
-#: ../rednotebook/info.py:161
-msgid "Use a cool journal app"
-msgstr "クールなジャーナルアプリを使用する"
-
-#: ../rednotebook/info.py:162
-msgid "Monty Python's Life of Brian"
-msgstr "Monty Python's Life of Brian"
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
@@ -471,159 +408,171 @@ msgstr ""
 msgid "Allow these words with 4 letters or less"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:291
+#: ../rednotebook/gui/main_window.py:293
 msgid "Show RedNotebook"
 msgstr "RedNotebook を表示"
 
-#: ../rednotebook/gui/main_window.py:652
+#: ../rednotebook/gui/main_window.py:675
 msgid "No text or tag has been selected."
 msgstr "テキストまたはタグが選択されていません。"
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:657
+#: ../rednotebook/gui/main_window.py:680
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: ../rednotebook/gui/main_window.py:660
+#: ../rednotebook/gui/main_window.py:683
 msgid "Bold"
 msgstr "太文字"
 
-#: ../rednotebook/gui/main_window.py:661
+#: ../rednotebook/gui/main_window.py:684
 msgid "Italic"
 msgstr "イタリック"
 
-#: ../rednotebook/gui/main_window.py:662
+#: ../rednotebook/gui/main_window.py:685
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: ../rednotebook/gui/main_window.py:663
+#: ../rednotebook/gui/main_window.py:686
 msgid "Strikethrough"
 msgstr "打ち消し"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:679 ../rednotebook/gui/exports.py:382
+#: ../rednotebook/gui/main_window.py:702 ../rednotebook/gui/exports.py:382
 msgid "Format"
 msgstr "書式"
 
-#: ../rednotebook/gui/main_window.py:680
+#: ../rednotebook/gui/main_window.py:703
 msgid "Format the selected text or tag"
 msgstr "選択中のテキストまたはタグのフォーマットを変更する。"
 
-#: ../rednotebook/gui/main_window.py:730
+#: ../rednotebook/gui/main_window.py:753
 msgid "First Item"
 msgstr "最初のアイテム"
 
-#: ../rednotebook/gui/main_window.py:731
+#: ../rednotebook/gui/main_window.py:754
 msgid "Second Item"
 msgstr "二番目のアイテム"
 
-#: ../rednotebook/gui/main_window.py:732
+#: ../rednotebook/gui/main_window.py:755
 msgid "Indented Item"
 msgstr "インデント済みの項目"
 
-#: ../rednotebook/gui/main_window.py:733
+#: ../rednotebook/gui/main_window.py:756
 msgid "Two blank lines close the list"
 msgstr "空行を２行入れて箇条書きを終了します。"
 
-#: ../rednotebook/gui/main_window.py:737
+#: ../rednotebook/gui/main_window.py:760
 msgid "Title text"
 msgstr "タイトルテキスト"
 
-#: ../rednotebook/gui/main_window.py:763
+#: ../rednotebook/gui/main_window.py:786
 msgid "Picture"
 msgstr "画像"
 
-#: ../rednotebook/gui/main_window.py:764
+#: ../rednotebook/gui/main_window.py:787
 msgid "Insert an image from the harddisk"
 msgstr "ハードディスクから画像を挿入"
 
-#: ../rednotebook/gui/main_window.py:766
+#: ../rednotebook/gui/main_window.py:789
 msgid "File"
 msgstr "ファイル"
 
-#: ../rednotebook/gui/main_window.py:767
+#: ../rednotebook/gui/main_window.py:790
 msgid "Insert a link to a file"
 msgstr "ファイルにリンクを挿入"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:770
+#: ../rednotebook/gui/main_window.py:793
 msgid "_Link"
 msgstr "リンク(_L)"
 
-#: ../rednotebook/gui/main_window.py:771
+#: ../rednotebook/gui/main_window.py:794
 msgid "Insert a link to a website"
 msgstr "ウェブサイトへのリンクを挿入"
 
-#: ../rednotebook/gui/main_window.py:773
+#: ../rednotebook/gui/main_window.py:796
 msgid "Bullet List"
 msgstr "箇条書き"
 
-#: ../rednotebook/gui/main_window.py:775
+#: ../rednotebook/gui/main_window.py:798
 msgid "Numbered List"
 msgstr "番号付き箇条書き"
 
-#: ../rednotebook/gui/main_window.py:777
+#: ../rednotebook/gui/main_window.py:800
 msgid "Title"
 msgstr "タイトル"
 
-#: ../rednotebook/gui/main_window.py:779
+#: ../rednotebook/gui/main_window.py:802
 msgid "Line"
 msgstr "線"
 
-#: ../rednotebook/gui/main_window.py:780
+#: ../rednotebook/gui/main_window.py:803
 msgid "Insert a separator line"
 msgstr "区切り線を挿入"
 
-#: ../rednotebook/gui/main_window.py:782
+#: ../rednotebook/gui/main_window.py:805
 msgid "Table"
 msgstr "表"
 
-#: ../rednotebook/gui/main_window.py:784
+#: ../rednotebook/gui/main_window.py:807
 msgid "Latex Formula"
 msgstr "Latexの式"
 
-#: ../rednotebook/gui/main_window.py:786
+#: ../rednotebook/gui/main_window.py:809
 msgid "Date/Time"
 msgstr "日付/時刻"
 
-#: ../rednotebook/gui/main_window.py:787
+#: ../rednotebook/gui/main_window.py:810
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "現在の日付と時間を挿入（プレファレンスから形式を編集できます）"
 
-#: ../rednotebook/gui/main_window.py:789
+#: ../rednotebook/gui/main_window.py:812
 msgid "Line Break"
 msgstr "改行"
 
-#: ../rednotebook/gui/main_window.py:790
+#: ../rednotebook/gui/main_window.py:813
 msgid "Insert a manual line break"
 msgstr "改行を挿入する"
 
-#: ../rednotebook/gui/main_window.py:813
+#: ../rednotebook/gui/main_window.py:836
 msgid "Insert"
 msgstr "挿入"
 
-#: ../rednotebook/gui/main_window.py:817
+#: ../rednotebook/gui/main_window.py:840
 msgid "Insert images, files, links and other content"
 msgstr "画像、ファイル、ウェブサイトのURL等を挿入する"
 
-#: ../rednotebook/gui/main_window.py:917
+#: ../rednotebook/gui/main_window.py:877
+msgid "Width (optional):"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:882
+msgid "pixels"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:903
+msgid "Width must be an integer."
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:962
 msgid "No link location has been entered"
 msgstr "リンクの場所が入力されていません"
 
-#: ../rednotebook/gui/clouds.py:78
+#: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
 msgstr "カンマ, によって, 区切られた, これらの単語を, 取り除く"
 
-#: ../rednotebook/gui/clouds.py:83
+#: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, spam, work, job, play"
 
-#: ../rednotebook/gui/clouds.py:186 ../rednotebook/util/statistics.py:71
+#: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
 msgstr "単語数"
 
-#: ../rednotebook/gui/clouds.py:245
+#: ../rednotebook/gui/clouds.py:246
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "\"%s\" をクラウド非表示にする。"
@@ -1165,3 +1114,57 @@ msgstr "<b>全体</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "保存せずに終了"
+
+#~ msgid "Ideas"
+#~ msgstr "アイデア"
+
+#~ msgid "Center"
+#~ msgstr "中央"
+
+#~ msgid "Right"
+#~ msgstr "右"
+
+#~ msgid "Left"
+#~ msgstr "左"
+
+#~ msgid "The interface is divided into three parts:"
+#~ msgstr "インターフェイスは、3つの部分に分かれています："
+
+#~ msgid "Movies"
+#~ msgstr "動画"
+
+#~ msgid "Text for a day"
+#~ msgstr "１日の書き込み"
+
+#~ msgid "Team meeting"
+#~ msgstr "会議"
+
+#~ msgid "Tags for this day"
+#~ msgstr "この日付のタグ"
+
+#~ msgid "Click on Preview above to see the difference."
+#~ msgstr "上の「プレビュー」で変更点が確認できます。"
+
+#~ msgid "Cool Stuff"
+#~ msgstr "クールなもの"
+
+#~ msgid "Navigation and search"
+#~ msgstr "ナビゲーションと検索"
+
+#~ msgid "Ate **two** cans of spam"
+#~ msgstr "スパム缶を**２つ**食べた。"
+
+#~ msgid "Monty Python's Life of Brian"
+#~ msgstr "Monty Python's Life of Brian"
+
+#~ msgid "Monty Python and the Holy Grail"
+#~ msgstr "Monty Python and the Holy Grail"
+
+#~ msgid "Check mail"
+#~ msgstr "メール確認"
+
+#~ msgid "Documentation"
+#~ msgstr "ドキュメンテーション"
+
+#~ msgid "Use a cool journal app"
+#~ msgstr "クールなジャーナルアプリを使用する"

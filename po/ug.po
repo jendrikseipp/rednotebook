@@ -7,78 +7,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-10-24 15:21+0200\n"
+"POT-Creation-Date: 2012-11-01 01:49+0100\n"
 "PO-Revision-Date: 2011-05-06 05:09+0000\n"
 "Last-Translator: Gheyret T.Kenji <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-25 05:37+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 
-#: ../rednotebook/info.py:73
-msgid "Ideas"
-msgstr "تەكلىپ"
-
-#: ../rednotebook/info.py:74 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/gui/clouds.py:183 ../rednotebook/util/markup.py:124
+#: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
 msgid "Tags"
 msgstr "خەتكۈچلەر"
 
-#: ../rednotebook/info.py:75
-msgid "Cool Stuff"
-msgstr ""
-
-#: ../rednotebook/info.py:76
-msgid "Movies"
-msgstr "كىنولار"
-
-#: ../rednotebook/info.py:77
+#: ../rednotebook/info.py:74
 msgid "Work"
 msgstr "ئىش"
 
-#: ../rednotebook/info.py:78
+#: ../rednotebook/info.py:75
 msgid "Free time"
 msgstr ""
 
-#: ../rednotebook/info.py:79
-msgid "Documentation"
-msgstr "پۈتۈك"
-
-#: ../rednotebook/info.py:80
+#: ../rednotebook/info.py:76
 msgid "Todo"
 msgstr ""
 
-#: ../rednotebook/info.py:81
+#: ../rednotebook/info.py:77
 msgid "Done"
 msgstr "تامام"
 
-#: ../rednotebook/info.py:82
+#: ../rednotebook/info.py:78
 msgid "Remember the milk"
 msgstr ""
 
-#: ../rednotebook/info.py:83
+#: ../rednotebook/info.py:79
 msgid "Wash the dishes"
 msgstr ""
 
-#: ../rednotebook/info.py:84
-msgid "Check mail"
-msgstr ""
-
-#: ../rednotebook/info.py:85
-msgid "Monty Python and the Holy Grail"
-msgstr ""
-
-#: ../rednotebook/info.py:86
-msgid "Team meeting"
-msgstr ""
-
-#: ../rednotebook/info.py:89
+#: ../rednotebook/info.py:81
 msgid "Hello!"
 msgstr "مەرھابا!"
 
-#: ../rednotebook/info.py:90
+#: ../rednotebook/info.py:82
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -87,7 +59,7 @@ msgstr ""
 "خالىغان ۋاقىتتا ئۆچۈرۈۋېتەلەيسىز."
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:93
+#: ../rednotebook/info.py:85
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -95,55 +67,32 @@ msgstr ""
 "مىسال تېكست ۋە تېخىمۇ كۆپ پۈتۈكلەرنى «ياردەم»-›«مەزمۇن» تىزىملىكىدىغان "
 "تاپالايسىز."
 
-#: ../rednotebook/info.py:94
-msgid "The interface is divided into three parts:"
-msgstr "ئارايۈز ئۈچ بۆلەككە بۆلۈنگەن:"
-
-#. ## Translators: The location "left"
-#: ../rednotebook/info.py:96
-msgid "Left"
-msgstr "سول"
-
-#: ../rednotebook/info.py:97
-msgid "Navigation and search"
-msgstr ""
-
-#. ## Translators: The location "center"
-#: ../rednotebook/info.py:99
-msgid "Center"
-msgstr "ئوتتۇرا"
-
-#: ../rednotebook/info.py:100
-msgid "Text for a day"
-msgstr "مەلۇم بىر كۈننىڭ تېكىستى"
-
-#. ## Translators: The location "right"
-#: ../rednotebook/info.py:102
-msgid "Right"
-msgstr "ئوڭ"
-
-#: ../rednotebook/info.py:103
-msgid "Tags for this day"
-msgstr ""
-
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:106 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "ئالدىن كۆزەت"
 
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:89
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
 
 #. ## Translators: Preview -> noun
-#: ../rednotebook/info.py:109
-msgid "Click on Preview above to see the difference."
-msgstr "ئۈستىدىكى ئالدىن كۆزەت چېكىلسە پەرقىنى كۆرسىتىدۇ."
+#: ../rednotebook/info.py:91
+msgid "Click on Edit above to see the difference."
+msgstr ""
 
-#: ../rednotebook/info.py:112
+#: ../rednotebook/info.py:94
+msgid "Tagging is easy."
+msgstr ""
+
+#: ../rednotebook/info.py:95
+msgid "Just use #hashtags like on twitter."
+msgstr ""
+
+#: ../rednotebook/info.py:98
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -154,11 +103,11 @@ msgstr ""
 "كېيىن «__برايىننىڭ ھاياتى__» دېگەن كىنونى كۆردۇق."
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:124
+#: ../rednotebook/info.py:110
 msgid "Save and Export"
 msgstr "ساقلاپ ھەمدە چىقار"
 
-#: ../rednotebook/info.py:125
+#: ../rednotebook/info.py:111
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -167,53 +116,41 @@ msgstr ""
 "ئۆزلۈكىدىن ساقلىنىدۇ، سىز بۇ پىروگراممىدىن چېكىنگەندىمۇ ھەممە سانلىق "
 "مەلۇماتلارنى ئۆزلۈكىدىن ساقلايدۇ."
 
-#: ../rednotebook/info.py:126
+#: ../rednotebook/info.py:112
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "سانلىق مەلۇماتلىرىڭىزنىڭ يوقاپ كېتىشىدىن ساقلىنىش ئۈچۈن كۈندىلىك خاتىرىنى "
 "مەلۇم مۇددەتتە زاپاسلاپ تۇرۇڭ."
 
-#: ../rednotebook/info.py:127
+#: ../rednotebook/info.py:113
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "«كۈندىلىك خاتىرە» ئاستىدىكى «زاپاسلا» تىزىملىكى سىز كىرگۈزگەن ھەممە سانلىق "
 "مەلۇماتلارنى zip پىرىس ھۆججىتى شەكلىدە ساقلايدۇ."
 
-#: ../rednotebook/info.py:128
+#: ../rednotebook/info.py:114
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "«كۈندىلىك خاتىرە» تىزىملىكىدىن «چىقار» تۈگمىسىنى تاپالايسىز."
 
-#: ../rednotebook/info.py:129
+#: ../rednotebook/info.py:115
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:118
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "ئەگەر ھەر قانداق خاتالىققا يولۇقسىڭىز، ماڭا ئۇچۇر قالدۇرۇڭ، مەن ئۇ "
 "خاتالىقلارنى تۈزىتىمەن."
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:119
 msgid "Any feedback is appreciated."
 msgstr "ھەر قانداق قايتما ئىنكاس بولسا تولىمۇ خۇسەن بولىمەن."
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:122
 msgid "Have a nice day!"
 msgstr "خۇشال كۈنلەر سىزگە يار بولسۇن!"
-
-#: ../rednotebook/info.py:160
-msgid "Ate **two** cans of spam"
-msgstr ""
-
-#: ../rednotebook/info.py:161
-msgid "Use a cool journal app"
-msgstr "مودا كۈندىلىك خاتىرە پىروگراممىسى ئىشلىتىڭ"
-
-#: ../rednotebook/info.py:162
-msgid "Monty Python's Life of Brian"
-msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
@@ -491,159 +428,171 @@ msgstr ""
 msgid "Allow these words with 4 letters or less"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:291
+#: ../rednotebook/gui/main_window.py:293
 msgid "Show RedNotebook"
 msgstr "RedNotebook نى كۆرسەت"
 
-#: ../rednotebook/gui/main_window.py:652
+#: ../rednotebook/gui/main_window.py:675
 msgid "No text or tag has been selected."
 msgstr ""
 
 #. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:657
+#: ../rednotebook/gui/main_window.py:680
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: ../rednotebook/gui/main_window.py:660
+#: ../rednotebook/gui/main_window.py:683
 msgid "Bold"
 msgstr "توم"
 
-#: ../rednotebook/gui/main_window.py:661
+#: ../rednotebook/gui/main_window.py:684
 msgid "Italic"
 msgstr "يانتۇ"
 
-#: ../rednotebook/gui/main_window.py:662
+#: ../rednotebook/gui/main_window.py:685
 msgid "Underline"
 msgstr "ئاستى سىزىق"
 
-#: ../rednotebook/gui/main_window.py:663
+#: ../rednotebook/gui/main_window.py:686
 msgid "Strikethrough"
 msgstr "ئۆچۈرۈش سىزىقى"
 
 #. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:679 ../rednotebook/gui/exports.py:382
+#: ../rednotebook/gui/main_window.py:702 ../rednotebook/gui/exports.py:382
 msgid "Format"
 msgstr "فورمات"
 
-#: ../rednotebook/gui/main_window.py:680
+#: ../rednotebook/gui/main_window.py:703
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:730
+#: ../rednotebook/gui/main_window.py:753
 msgid "First Item"
 msgstr "بىرىنچى تۈر"
 
-#: ../rednotebook/gui/main_window.py:731
+#: ../rednotebook/gui/main_window.py:754
 msgid "Second Item"
 msgstr "ئىككىنچى تۈر"
 
-#: ../rednotebook/gui/main_window.py:732
+#: ../rednotebook/gui/main_window.py:755
 msgid "Indented Item"
 msgstr "تارايغان تۈر"
 
-#: ../rednotebook/gui/main_window.py:733
+#: ../rednotebook/gui/main_window.py:756
 msgid "Two blank lines close the list"
 msgstr "ئىككى بوش قۇردا بۇ تىزىمنى ياپ"
 
-#: ../rednotebook/gui/main_window.py:737
+#: ../rednotebook/gui/main_window.py:760
 msgid "Title text"
 msgstr "ماۋزۇ تېكىستى"
 
-#: ../rednotebook/gui/main_window.py:763
+#: ../rednotebook/gui/main_window.py:786
 msgid "Picture"
 msgstr "رەسىم"
 
-#: ../rednotebook/gui/main_window.py:764
+#: ../rednotebook/gui/main_window.py:787
 msgid "Insert an image from the harddisk"
 msgstr "قاتتىق دىسكىدىكى سۈرەتتىن بىرنى قىستۇر"
 
-#: ../rednotebook/gui/main_window.py:766
+#: ../rednotebook/gui/main_window.py:789
 msgid "File"
 msgstr "ھۆججەت"
 
-#: ../rednotebook/gui/main_window.py:767
+#: ../rednotebook/gui/main_window.py:790
 msgid "Insert a link to a file"
 msgstr "ھۆججەت ئۇلانمىسىدىن بىرنى قىستۇر"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:770
+#: ../rednotebook/gui/main_window.py:793
 msgid "_Link"
 msgstr "ئۇلانما(_L)"
 
-#: ../rednotebook/gui/main_window.py:771
+#: ../rednotebook/gui/main_window.py:794
 msgid "Insert a link to a website"
 msgstr "تور بېكەت ئۇلانمىسىدىن بىرنى قىستۇر"
 
-#: ../rednotebook/gui/main_window.py:773
+#: ../rednotebook/gui/main_window.py:796
 msgid "Bullet List"
 msgstr "تۈر بەلگە تىزىمى"
 
-#: ../rednotebook/gui/main_window.py:775
+#: ../rednotebook/gui/main_window.py:798
 msgid "Numbered List"
 msgstr "نومۇرلۇق تىزىم"
 
-#: ../rednotebook/gui/main_window.py:777
+#: ../rednotebook/gui/main_window.py:800
 msgid "Title"
 msgstr "ماۋزۇ"
 
-#: ../rednotebook/gui/main_window.py:779
+#: ../rednotebook/gui/main_window.py:802
 msgid "Line"
 msgstr "سىزىق"
 
-#: ../rednotebook/gui/main_window.py:780
+#: ../rednotebook/gui/main_window.py:803
 msgid "Insert a separator line"
 msgstr "ئايرىش سىزىقىدىن بىرنى قىستۇر"
 
-#: ../rednotebook/gui/main_window.py:782
+#: ../rednotebook/gui/main_window.py:805
 msgid "Table"
 msgstr "جەدۋەل"
 
-#: ../rednotebook/gui/main_window.py:784
+#: ../rednotebook/gui/main_window.py:807
 msgid "Latex Formula"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:786
+#: ../rednotebook/gui/main_window.py:809
 msgid "Date/Time"
 msgstr "چېسلا/ۋاقىت"
 
-#: ../rednotebook/gui/main_window.py:787
+#: ../rednotebook/gui/main_window.py:810
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "نۆۋەتتىكى چېسلا ۋە ۋاقىتنى قىستۇر (مايىللىقتا پىچىمى تەھرىرلىنىدۇ)"
 
-#: ../rednotebook/gui/main_window.py:789
+#: ../rednotebook/gui/main_window.py:812
 msgid "Line Break"
 msgstr "قۇر ئالماشتۇرۇش بەلگىسى"
 
-#: ../rednotebook/gui/main_window.py:790
+#: ../rednotebook/gui/main_window.py:813
 msgid "Insert a manual line break"
 msgstr "قۇر ئالماشتۇرۇش بەلگىسىدىن بىرنى قىستۇر"
 
-#: ../rednotebook/gui/main_window.py:813
+#: ../rednotebook/gui/main_window.py:836
 msgid "Insert"
 msgstr "قىستۇر"
 
-#: ../rednotebook/gui/main_window.py:817
+#: ../rednotebook/gui/main_window.py:840
 msgid "Insert images, files, links and other content"
 msgstr "سۈرەت، ھۆججەت، ئۇلانما ۋە باشقا مەزمۇنلارنى قىستۇر"
 
-#: ../rednotebook/gui/main_window.py:917
+#: ../rednotebook/gui/main_window.py:877
+msgid "Width (optional):"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:882
+msgid "pixels"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:903
+msgid "Width must be an integer."
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:962
 msgid "No link location has been entered"
 msgstr "ئۇلانما ئورنى كىرگۈزۈلمىدى"
 
-#: ../rednotebook/gui/clouds.py:78
+#: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
 msgstr "سۈزگۈچ، بۇلار، پەش، ئايرىلغان، سۆزلەر"
 
-#: ../rednotebook/gui/clouds.py:83
+#: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr "mtv، ئەخلەت خەت، ئىش، خىزمەت، ئويۇن"
 
-#: ../rednotebook/gui/clouds.py:186 ../rednotebook/util/statistics.py:71
+#: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
 msgstr "سۆزلەر"
 
-#: ../rednotebook/gui/clouds.py:245
+#: ../rednotebook/gui/clouds.py:246
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "بۇلۇتتىكى \"%s\" نى يوشۇر"
@@ -1129,3 +1078,33 @@ msgstr "<b>ھەممىسى</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "ساقلىماي چېكىن"
+
+#~ msgid "Center"
+#~ msgstr "ئوتتۇرا"
+
+#~ msgid "Right"
+#~ msgstr "ئوڭ"
+
+#~ msgid "Left"
+#~ msgstr "سول"
+
+#~ msgid "Documentation"
+#~ msgstr "پۈتۈك"
+
+#~ msgid "Movies"
+#~ msgstr "كىنولار"
+
+#~ msgid "The interface is divided into three parts:"
+#~ msgstr "ئارايۈز ئۈچ بۆلەككە بۆلۈنگەن:"
+
+#~ msgid "Text for a day"
+#~ msgstr "مەلۇم بىر كۈننىڭ تېكىستى"
+
+#~ msgid "Click on Preview above to see the difference."
+#~ msgstr "ئۈستىدىكى ئالدىن كۆزەت چېكىلسە پەرقىنى كۆرسىتىدۇ."
+
+#~ msgid "Ideas"
+#~ msgstr "تەكلىپ"
+
+#~ msgid "Use a cool journal app"
+#~ msgstr "مودا كۈندىلىك خاتىرە پىروگراممىسى ئىشلىتىڭ"
