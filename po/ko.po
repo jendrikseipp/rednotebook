@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1059,45 +1059,3 @@ msgstr ""
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "저장하지 않고 프로그램을 종료합니다"
-
-#~ msgid "Ideas"
-#~ msgstr "아이디어"
-
-#~ msgid "Center"
-#~ msgstr "가운데 사용자 환경"
-
-#~ msgid "Left"
-#~ msgstr "왼쪽 사용자 환경"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "사용자 환경은 크게 3부분으로 나뉘어져 있습니다."
-
-#~ msgid "Right"
-#~ msgstr "오른쪽 사용자 환경"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "좋은 일정관리 프로그램을 사용합니다"
-
-#~ msgid "Documentation"
-#~ msgstr "문서"
-
-#~ msgid "Movies"
-#~ msgstr "영화"
-
-#~ msgid "Check mail"
-#~ msgstr "메일 체크하기"
-
-#~ msgid "Team meeting"
-#~ msgstr "팀 회의"
-
-#~ msgid "Text for a day"
-#~ msgstr "오늘의 말"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "미리보기를 클릭해 달라진 점을 확인하세요."
-
-#~ msgid "Navigation and search"
-#~ msgstr "탐색, 찾기"
-
-#~ msgid "Tags for this day"
-#~ msgstr "오늘의 태그"

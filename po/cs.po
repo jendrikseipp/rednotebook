@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1077,45 +1077,3 @@ msgstr "<b>Celkem</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Ukončit bez uložení"
-
-#~ msgid "Left"
-#~ msgstr "Levá"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Rozhraní je rozděleno do tří částí:"
-
-#~ msgid "Center"
-#~ msgstr "Střední"
-
-#~ msgid "Right"
-#~ msgstr "Pravá"
-
-#~ msgid "Text for a day"
-#~ msgstr "Text pro den"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Použijte cool deníkovou aplikaci"
-
-#~ msgid "Ideas"
-#~ msgstr "Myšlenky"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Klikněte na Náhled níže, abyste viděli rozdíl."
-
-#~ msgid "Tags for this day"
-#~ msgstr "Značky pro tento den"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navigace a hledání"
-
-#~ msgid "Team meeting"
-#~ msgstr "Schůzka týmu"
-
-#~ msgid "Check mail"
-#~ msgstr "Zkontrolovat poštu"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentace"
-
-#~ msgid "Movies"
-#~ msgstr "Filmy"

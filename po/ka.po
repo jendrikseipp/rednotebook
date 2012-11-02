@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1130,57 +1130,3 @@ msgstr "<b>ჯამში</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "გასვლა შენახვის გარეშე"
-
-#~ msgid "Ideas"
-#~ msgstr "აზრები"
-
-#~ msgid "Documentation"
-#~ msgstr "დოკუმენტაცია"
-
-#~ msgid "Movies"
-#~ msgstr "ფილმები"
-
-#~ msgid "Check mail"
-#~ msgstr "შევამოწმო ფოსტა"
-
-#~ msgid "Center"
-#~ msgstr "ცენტრში"
-
-#~ msgid "Left"
-#~ msgstr "მარცხნივ"
-
-#~ msgid "Right"
-#~ msgstr "მარჯვნივ"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "პიტონი მონტი და წმიდა გრაალი"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "ბრაიანის ცხოვრება პითონი მონტის მიერ"
-
-#~ msgid "Text for a day"
-#~ msgstr "ჩანაწერი დღისთვის"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "პროგრამის ინტერფეისი გაყოფილია სამ ნაწილად"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "დააჭირეთ ზემოთ მყოფ ღილაკს \"გადახედვა\" რათა დაინახოთ განსხვავება."
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "შევჭამე შპროტის **ორი** ცალი კონსერვი"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "დღიურისთვის გამოვიყენო მაგარი პროგრამა"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "საინტერესო მასალა"
-
-#~ msgid "Tags for this day"
-#~ msgstr "დღის ტეგები"
-
-#~ msgid "Navigation and search"
-#~ msgstr "ნავიგაცია და ძიება"
-
-#~ msgid "Team meeting"
-#~ msgstr "ჯგუფის შეკრება"

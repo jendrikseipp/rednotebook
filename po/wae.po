@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1065,24 +1065,3 @@ msgstr ""
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr ""
-
-#~ msgid "Center"
-#~ msgstr "D'mitti"
-
-#~ msgid "Right"
-#~ msgstr "Rächts"
-
-#~ msgid "Left"
-#~ msgstr "Lings"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "D'benutzer oberflächi isch in dri bereicha üfteilt:"
-
-#~ msgid "Ideas"
-#~ msgstr "Idee"
-
-#~ msgid "Text for a day"
-#~ msgstr "De text fer en tag"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Brüch es cools journal program"

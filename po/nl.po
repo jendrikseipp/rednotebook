@@ -13,7 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/gui/main_window.py:293
@@ -1135,57 +1135,3 @@ msgstr "<b>Algemeen</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Afsluiten zonder op te slaan"
-
-#~ msgid "Text for a day"
-#~ msgstr "Tekst voor een dag"
-
-#~ msgid "Center"
-#~ msgstr "Midden"
-
-#~ msgid "Right"
-#~ msgstr "Rechts"
-
-#~ msgid "Left"
-#~ msgstr "Links"
-
-#~ msgid "Ideas"
-#~ msgstr "Ideeën"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Gebruik een fraaie dagboekapplicatie"
-
-#~ msgid "Check mail"
-#~ msgstr "Mail controleren"
-
-#~ msgid "Documentation"
-#~ msgstr "Documentatie"
-
-#~ msgid "Movies"
-#~ msgstr "Films"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Python and the Holy Grail"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Monty Python's Life of Brian"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Gaaf!"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "De interface is in drie delen opgesplitst:"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Klik op ‘Voorbeeld weergeven’ hier boven om het verschil te zien."
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "**Twee** blikjes vlees gegeten"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navigatie en zoeken"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Labels voor deze dag"
-
-#~ msgid "Team meeting"
-#~ msgstr "Teamvergadering"

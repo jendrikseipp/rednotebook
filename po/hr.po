@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1117,39 +1117,3 @@ msgstr ""
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Izađi bez spremanja"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentacija"
-
-#~ msgid "Movies"
-#~ msgstr "Filmovi"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Python i Sveti Gral"
-
-#~ msgid "Check mail"
-#~ msgstr "Provjeri poštu"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navigacija i pretraga"
-
-#~ msgid "Left"
-#~ msgstr "Lijevo"
-
-#~ msgid "Team meeting"
-#~ msgstr "Sastanak tima"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Oznake za ovaj dan"
-
-#~ msgid "Right"
-#~ msgstr "Desno"
-
-#~ msgid "Text for a day"
-#~ msgstr "Tekst za dan"
-
-#~ msgid "Ideas"
-#~ msgstr "Ideje"
-
-#~ msgid "Center"
-#~ msgstr "Centar"

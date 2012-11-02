@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1116,57 +1116,3 @@ msgstr "<b>Global</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Quitar sens enregistrar"
-
-#~ msgid "Ideas"
-#~ msgstr "Idèas"
-
-#~ msgid "Documentation"
-#~ msgstr "Documentacion"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Daquòs simpatics"
-
-#~ msgid "Movies"
-#~ msgstr "Filmes"
-
-#~ msgid "Left"
-#~ msgstr "Esquèrra"
-
-#~ msgid "Check mail"
-#~ msgstr "Verificar lo corrièr"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Sacrat Graal, pels Monty Python"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Clicatz sus Apercebut (çaisús) per veire la diferéncia."
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navigacion e recèrca"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "L'interfàcia es devesida en tres partidas :"
-
-#~ msgid "Team meeting"
-#~ msgstr "Acamp d'equipa"
-
-#~ msgid "Text for a day"
-#~ msgstr "Tèxte del jorn"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Etiquetas del jorn"
-
-#~ msgid "Center"
-#~ msgstr "Centrar"
-
-#~ msgid "Right"
-#~ msgstr "Drech"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Manjat  **doas** bóstia de pastís"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "La vida de Brian, pels Monty Python"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Utilizatz un simpatic programa de jornal"

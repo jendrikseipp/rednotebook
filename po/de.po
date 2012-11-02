@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1158,57 +1158,3 @@ msgstr "<b>Gesamt</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Schließen ohne zu speichern"
-
-#~ msgid "Right"
-#~ msgstr "Rechts"
-
-#~ msgid "Center"
-#~ msgstr "Mitte"
-
-#~ msgid "Left"
-#~ msgstr "Links"
-
-#~ msgid "Text for a day"
-#~ msgstr "Text für einen Tag"
-
-#~ msgid "Ideas"
-#~ msgstr "Ideen"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Die Benutzeroberfläche ist in drei Bereiche aufgeteilt:"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Klicken Sie oben auf Vorschau, um den Unterschied zu sehen."
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentation"
-
-#~ msgid "Movies"
-#~ msgstr "Filme"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Cooles Zeug"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Python und der Heilige Gral"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Monty Python's Das Leben des Brian"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Ein cooles Journal-Programm benutzen"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navigation und Suche"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Markierungen für diesen Tag"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "**Zwei** Dosen Frühstücksfleisch gegessen"
-
-#~ msgid "Check mail"
-#~ msgstr "E-Mails abrufen"
-
-#~ msgid "Team meeting"
-#~ msgstr "Gruppenbesprechung"

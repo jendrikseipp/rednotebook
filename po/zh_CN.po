@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1119,57 +1119,3 @@ msgstr "<b>全部</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "不保存退出"
-
-#~ msgid "Left"
-#~ msgstr "左侧"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "界面分为三部分："
-
-#~ msgid "Center"
-#~ msgstr "中间"
-
-#~ msgid "Right"
-#~ msgstr "右侧"
-
-#~ msgid "Text for a day"
-#~ msgstr "某一天的内容"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "使用一款超酷的日记程序"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "点击上面的预览查看差异。"
-
-#~ msgid "Ideas"
-#~ msgstr "点子"
-
-#~ msgid "Documentation"
-#~ msgstr "文档"
-
-#~ msgid "Movies"
-#~ msgstr "电影"
-
-#~ msgid "Check mail"
-#~ msgstr "查看邮件"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "很酷的东西"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "《巨蟒与圣杯》"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "吃了 **两** 罐火腿罐头"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "《万世魔星》"
-
-#~ msgid "Tags for this day"
-#~ msgstr "这天的标签"
-
-#~ msgid "Navigation and search"
-#~ msgstr "导航与搜索"
-
-#~ msgid "Team meeting"
-#~ msgstr "团队会议"

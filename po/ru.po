@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 "Language: cs\n"
 
@@ -1148,57 +1148,3 @@ msgstr "<b>Общая статистика</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Выйти без сохранения"
-
-#~ msgid "Left"
-#~ msgstr "Слева"
-
-#~ msgid "Center"
-#~ msgstr "Посередине"
-
-#~ msgid "Right"
-#~ msgstr "Справа"
-
-#~ msgid "Ideas"
-#~ msgstr "Идеи"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Интерфейс программы разделён на три части:"
-
-#~ msgid "Text for a day"
-#~ msgstr "запись для текущего дня"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Поставить себе крутую программу для ведения дневника"
-
-#~ msgid "Check mail"
-#~ msgstr "Проверить почту"
-
-#~ msgid "Movies"
-#~ msgstr "Фильмы"
-
-#~ msgid "Documentation"
-#~ msgstr "Документация"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Монти Пайтон и Святой Грааль"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Классные вещи"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Съел **две** банки консервов"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Житие Брайана по Монти Пайтону"
-
-#~ msgid "Team meeting"
-#~ msgstr "Собрание сотрудников"
-
-#~ msgid "Navigation and search"
-#~ msgstr "календарь, облако меток и окошко поиска"
-
-#~ msgid "Tags for this day"
-#~ msgstr "метки для сегодняшнего дня"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Нажмите на кнопку «Предпросмотр» вверху, чтобы увидеть разницу."

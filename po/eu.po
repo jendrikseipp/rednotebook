@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1134,57 +1134,3 @@ msgstr "<b>Oro har</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Irten gorde gabe"
-
-#~ msgid "Ideas"
-#~ msgstr "Burutazioak"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentazioa"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Gauza interesgarriak"
-
-#~ msgid "Movies"
-#~ msgstr "Filmak"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Python eta Graal Santua"
-
-#~ msgid "Check mail"
-#~ msgstr "Begiratu posta"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Nabigazioa eta bilaketa"
-
-#~ msgid "Left"
-#~ msgstr "Ezkerra"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Interfazea hiru zatitan banatuta dago:"
-
-#~ msgid "Team meeting"
-#~ msgstr "Talde bilera"
-
-#~ msgid "Text for a day"
-#~ msgstr "Egun baten testua"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Sakatu goiko Aurrebista bien arteko aldea ikusteko."
-
-#~ msgid "Center"
-#~ msgstr "Erdia"
-
-#~ msgid "Right"
-#~ msgstr "Eskuina"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "**Bi** lata spam jan ditut"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Erabili eguneroko aplikazio bikain bat"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Monty Python-en Brian-en bizitza"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Egun honen etiketak"

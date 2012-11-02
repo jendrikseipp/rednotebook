@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1129,57 +1129,3 @@ msgstr "<b>Sammanställning</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Stäng utan att spara"
-
-#~ msgid "Ideas"
-#~ msgstr "Idéer"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentation"
-
-#~ msgid "Movies"
-#~ msgstr "Filmer"
-
-#~ msgid "Text for a day"
-#~ msgstr "Text / anteckningar för en dag"
-
-#~ msgid "Center"
-#~ msgstr "I mitten"
-
-#~ msgid "Left"
-#~ msgstr "Till vänster"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Huvudfönstret är delat i tre delar:"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Klicka på Förhandsvisa för att se skillnaden"
-
-#~ msgid "Right"
-#~ msgstr "Till höger"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Använd en cool dagboks-app"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Åt **två** burkar svammel"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Python and the Holy Grail"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Coola saker"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Etiketter för den här dagen"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navigering och sökning"
-
-#~ msgid "Team meeting"
-#~ msgstr "Team-möte"
-
-#~ msgid "Check mail"
-#~ msgstr "Kolla e-post"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Monty Pythons Life of Brian"

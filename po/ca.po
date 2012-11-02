@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1136,48 +1136,3 @@ msgstr "<b>Global</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Surt sense desar"
-
-#~ msgid "Right"
-#~ msgstr "Dreta"
-
-#~ msgid "Left"
-#~ msgstr "Esquerra"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "La interfície està dividida en tres parts:"
-
-#~ msgid "Ideas"
-#~ msgstr "Idees"
-
-#~ msgid "Text for a day"
-#~ msgstr "Text del dia"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Coses interesants"
-
-#~ msgid "Movies"
-#~ msgstr "Pel·lícules"
-
-#~ msgid "Documentation"
-#~ msgstr "Documentació"
-
-#~ msgid "Check mail"
-#~ msgstr "Comprova el correu"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "La vida de Brian dels Monty Python"
-
-#~ msgid "Center"
-#~ msgstr "Centre"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Feu clic a Previsualització i veure la diferència."
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Vaig menjar **dues** llaunes de carn picada"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Utilitzeu una aplicació de diari atractiva"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Els cavallers de la taula quadrada dels Monty Python"

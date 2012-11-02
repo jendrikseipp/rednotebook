@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1138,57 +1138,3 @@ msgstr "<b>Yhteensä</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Poistu tallentamatta"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Käyttöliittymä on jaettu kolmeen osaan:"
-
-#~ msgid "Right"
-#~ msgstr "Oikea"
-
-#~ msgid "Center"
-#~ msgstr "Keskiosa"
-
-#~ msgid "Left"
-#~ msgstr "Vasen"
-
-#~ msgid "Ideas"
-#~ msgstr "Ideat"
-
-#~ msgid "Movies"
-#~ msgstr "Elokuvat"
-
-#~ msgid "Check mail"
-#~ msgstr "Tarkista posti"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Siistit jutut"
-
-#~ msgid "Text for a day"
-#~ msgstr "Päivän teksti"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Söi **kaksi** purkkia nötköttiä"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Pythonin hullu maailma"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Monty Pythonin Brianin Elämä"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentaatio"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Käytä siistiä päiväkirjaohjelmaa"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Napsauta yläpuolella olevaa Esikatsele-painiketta nähdäksesi eron."
-
-#~ msgid "Team meeting"
-#~ msgstr "Ryhmäkokous"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Tämän päivän tunnisteet"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navigointi ja haku"

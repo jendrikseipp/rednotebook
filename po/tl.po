@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1056,18 +1056,3 @@ msgstr ""
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr ""
-
-#~ msgid "Ideas"
-#~ msgstr "Mga Kaisipan"
-
-#~ msgid "Movies"
-#~ msgstr "Mga Pelikula"
-
-#~ msgid "Center"
-#~ msgstr "Gitna"
-
-#~ msgid "Right"
-#~ msgstr "Kanan"
-
-#~ msgid "Left"
-#~ msgstr "Kaliwa"

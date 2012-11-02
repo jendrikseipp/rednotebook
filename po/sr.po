@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1127,57 +1127,3 @@ msgstr "<b>Уопштено</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Изађи без чувања"
-
-#~ msgid "Text for a day"
-#~ msgstr "Текст за дан"
-
-#~ msgid "Center"
-#~ msgstr "Средина"
-
-#~ msgid "Right"
-#~ msgstr "Десно"
-
-#~ msgid "Left"
-#~ msgstr "Лево"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Сучеље је подељено на три дела:"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Кликните на дугме „Преглед“ да видите разлике."
-
-#~ msgid "Ideas"
-#~ msgstr "Идеје"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Користите програм за дневник"
-
-#~ msgid "Documentation"
-#~ msgstr "Документација"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Страва ствари"
-
-#~ msgid "Movies"
-#~ msgstr "Филмови"
-
-#~ msgid "Check mail"
-#~ msgstr "Провери пошту"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Појео сам **две** конзерве непожељних порука"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Монти Пајтон и Свети грал"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Житије Брајаново"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Навигација и претрага"
-
-#~ msgid "Team meeting"
-#~ msgstr "Састанак тима"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Ознаке за овај дан"

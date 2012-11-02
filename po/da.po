@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1136,48 +1136,3 @@ msgstr "<b>Samlet</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Forlad uden at gemme"
-
-#~ msgid "Right"
-#~ msgstr "Højre"
-
-#~ msgid "Left"
-#~ msgstr "Venstre"
-
-#~ msgid "Ideas"
-#~ msgstr "Idéer"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Brugerfladen er opdelt i tre:"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Brug et fedt dagbogsprogram"
-
-#~ msgid "Text for a day"
-#~ msgstr "Tekst til en dag"
-
-#~ msgid "Center"
-#~ msgstr "Centrum"
-
-#~ msgid "Check mail"
-#~ msgstr "Tjek e-mail"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentation"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Fede sager"
-
-#~ msgid "Movies"
-#~ msgstr "Film"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Klik på Forhåndsvisning ovenfor for at se forskellen."
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Spiste **to** dåser spam"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Monty Python's Life of Brian"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Python og de skøre riddere"

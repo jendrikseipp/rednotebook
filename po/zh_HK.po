@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1051,36 +1051,3 @@ msgstr ""
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr ""
-
-#~ msgid "Ideas"
-#~ msgstr "點子"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "潮玩意"
-
-#~ msgid "Documentation"
-#~ msgstr "文件"
-
-#~ msgid "Movies"
-#~ msgstr "影片"
-
-#~ msgid "Check mail"
-#~ msgstr "檢查新電郵"
-
-#~ msgid "Text for a day"
-#~ msgstr "本日文件"
-
-#~ msgid "Center"
-#~ msgstr "中間"
-
-#~ msgid "Left"
-#~ msgstr "左邊"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "本介面分為三個部份"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Click 一下 \"預覽\" 檢視兩種執行模式的差異"
-
-#~ msgid "Right"
-#~ msgstr "右邊"

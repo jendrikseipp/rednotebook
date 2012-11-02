@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-01 01:49+0100\n"
-"PO-Revision-Date: 2012-10-29 22:21+0000\n"
-"Last-Translator: Stanisław Dac <s.dac@yandex.ru>\n"
+"PO-Revision-Date: 2012-11-01 20:21+0000\n"
+"Last-Translator: Michał Maternik <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -86,11 +86,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:94
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Dodawanie znaczników jest proste."
 
 #: ../rednotebook/info.py:95
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Zapisuj #znaczniki tak jak w usłudze Twitter."
 
 #: ../rednotebook/info.py:98
 msgid ""
@@ -266,11 +266,11 @@ msgstr "Wypełnij krótki formularz o problemie"
 
 #: ../rednotebook/gui/menu.py:166
 msgid "Wrong directory"
-msgstr ""
+msgstr "Niepoprawny słownik"
 
 #: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Nie możesz użyć tego katalogu do przechowywania swojego dziennika:"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Please select an empty directory."
@@ -278,7 +278,7 @@ msgstr "Proszę wybierz pusty folder"
 
 #: ../rednotebook/gui/menu.py:177
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "Ten katalog nie zawiera żadnych plików dziennika:"
 
 #: ../rednotebook/gui/menu.py:193
 msgid "Journals are saved in a directory, not in a single file."
@@ -412,19 +412,19 @@ msgstr "Format daty/czasu"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Exclude from cloud"
-msgstr ""
+msgstr "Wyłącz z chmury"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Do not show these comma separated words in the word cloud"
-msgstr ""
+msgstr "Nie pokazuj tych słów (rozdzielonych przecinkami) w chmurze"
 
 #: ../rednotebook/gui/options.py:326
 msgid "Include small words in cloud"
-msgstr ""
+msgstr "Uwzględnij w chmurze krótkie słowa"
 
 #: ../rednotebook/gui/options.py:327
 msgid "Allow these words with 4 letters or less"
-msgstr ""
+msgstr "Dopuść te czteroliterowe (lub krótsze) słowa w chmurze"
 
 #: ../rednotebook/gui/main_window.py:293
 msgid "Show RedNotebook"
@@ -563,15 +563,15 @@ msgstr "Wstaw obrazy, pliki, odnośniki i inną zawartość"
 
 #: ../rednotebook/gui/main_window.py:877
 msgid "Width (optional):"
-msgstr ""
+msgstr "Szerokość (opcjonalna):"
 
 #: ../rednotebook/gui/main_window.py:882
 msgid "pixels"
-msgstr ""
+msgstr "pikseli"
 
 #: ../rednotebook/gui/main_window.py:903
 msgid "Width must be an integer."
-msgstr ""
+msgstr "Szerokość musi być liczbą całkowitą."
 
 #: ../rednotebook/gui/main_window.py:962
 msgid "No link location has been entered"
@@ -997,7 +997,7 @@ msgstr "Nie pytaj nigdy więcej"
 
 #: ../rednotebook/journal.py:248
 msgid "Opening default journal."
-msgstr ""
+msgstr "Otwieranie domyślnego dziennika."
 
 #: ../rednotebook/journal.py:331
 #, python-format
@@ -1145,57 +1145,3 @@ msgstr "<b>W sumie</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Wyjdź bez zapisywania"
-
-#~ msgid "Ideas"
-#~ msgstr "Pomysły"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "Interfejs jest podzielony na trzy części:"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Użyj fajnego programu dziennika"
-
-#~ msgid "Center"
-#~ msgstr "Środkowa"
-
-#~ msgid "Left"
-#~ msgstr "Lewa"
-
-#~ msgid "Text for a day"
-#~ msgstr "Tekst dnia"
-
-#~ msgid "Right"
-#~ msgstr "Prawa"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Kliknij \"Podgląd\" powyżej aby zobaczyć różnicę."
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentacja"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Ciekawe rzeczy"
-
-#~ msgid "Movies"
-#~ msgstr "Filmy"
-
-#~ msgid "Check mail"
-#~ msgstr "Sprawdź pocztę"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Zjadłem **dwie** puszki spamu"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monty Python i święty Grall"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "Życie Briana Monty Python'a"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Nawigacja i wyszukiwanie"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Znaczniki dla tego dnia"
-
-#~ msgid "Team meeting"
-#~ msgstr "Spotkanie zespołu"

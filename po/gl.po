@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:37+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1129,57 +1129,3 @@ msgstr "<b>Global</b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "Saír sen gardar"
-
-#~ msgid "Text for a day"
-#~ msgstr "Texto para un día"
-
-#~ msgid "Center"
-#~ msgstr "Centro"
-
-#~ msgid "Right"
-#~ msgstr "Dereita"
-
-#~ msgid "Left"
-#~ msgstr "Esquerda"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "A interface está dividida en tres partes:"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "Prema en Vista previa na parte superior para ver a diferencia."
-
-#~ msgid "Ideas"
-#~ msgstr "Ideas"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "Use un atractivo aplicativo para o seu diario"
-
-#~ msgid "Check mail"
-#~ msgstr "Comprobar o correo"
-
-#~ msgid "Documentation"
-#~ msgstr "Documentación"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "Cousas interesantes"
-
-#~ msgid "Movies"
-#~ msgstr "Filmes"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "A vida de Brian dos Monty Python"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "Monthy Python e o Cáliz Sagrado"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "Como **dúas** latas de correo lixo"
-
-#~ msgid "Tags for this day"
-#~ msgstr "Etiquetas para este día"
-
-#~ msgid "Navigation and search"
-#~ msgstr "Navegación e busca"
-
-#~ msgid "Team meeting"
-#~ msgstr "Xuntanza co equipo"

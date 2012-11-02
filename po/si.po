@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-01 04:38+0000\n"
+"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -1118,57 +1118,3 @@ msgstr "<b>සියල්ල<b>"
 #: tmp/main_window.glade.h:34
 msgid "Exit without saving"
 msgstr "සුරැකුම් නොකර සංස්කරණය කරන්න"
-
-#~ msgid "Ideas"
-#~ msgstr "අදහස්"
-
-#~ msgid "Documentation"
-#~ msgstr "ලියකියවිලි"
-
-#~ msgid "Cool Stuff"
-#~ msgstr "සුවිසේෂී දේවල්"
-
-#~ msgid "Movies"
-#~ msgstr "චිත්‍රපටි"
-
-#~ msgid "Monty Python and the Holy Grail"
-#~ msgstr "මොන්ටි පයිතන් සහ හෝලි ග්‍රේල්"
-
-#~ msgid "Check mail"
-#~ msgstr "ලිපි පරීක්ෂාකිරීම"
-
-#~ msgid "Navigation and search"
-#~ msgstr "පැදවීම සහ සෙවුම"
-
-#~ msgid "Left"
-#~ msgstr "වම"
-
-#~ msgid "The interface is divided into three parts:"
-#~ msgstr "මෙම අතුරු මුහුණත කොටස් තුනකට බෙදා ඇත."
-
-#~ msgid "Team meeting"
-#~ msgstr "කණ්ඩායම් හමුව"
-
-#~ msgid "Text for a day"
-#~ msgstr "දෛනික පාඨය"
-
-#~ msgid "Tags for this day"
-#~ msgstr "මෙම දවසට අමුණන්න"
-
-#~ msgid "Click on Preview above to see the difference."
-#~ msgstr "වෙනස දැකහැනීම සඳහා පෙරදසුන ඔබන්න"
-
-#~ msgid "Center"
-#~ msgstr "මධ්‍යය"
-
-#~ msgid "Right"
-#~ msgstr "දකුණ"
-
-#~ msgid "Use a cool journal app"
-#~ msgstr "අනර්ඝ දිනපොත් යෙදුමක් භාවිතා කරන්න"
-
-#~ msgid "Ate **two** cans of spam"
-#~ msgstr "ස්පෑම් භාජන දෙකක් අනුභව කරෙමි"
-
-#~ msgid "Monty Python's Life of Brian"
-#~ msgstr "මොන්ටි පයිතන්ගේ ලයිෆ් ඔෆ් බ්‍රේන්"
