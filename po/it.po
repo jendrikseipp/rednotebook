@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-11-01 01:49+0100\n"
+"POT-Creation-Date: 2012-11-02 14:00+0100\n"
 "PO-Revision-Date: 2012-10-31 16:23+0000\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@ubuntu.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
+"X-Launchpad-Export-Date: 2012-11-03 05:05+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -81,7 +81,7 @@ msgstr ""
 "Ci sono due modalità in RedNotebook, la modalità __modifica__ a la modalità "
 "__anteprima__."
 
-#. ## Translators: Preview -> noun
+#. ## Translators: Edit -> noun
 #: ../rednotebook/info.py:91
 msgid "Click on Edit above to see the difference."
 msgstr ""

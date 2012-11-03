@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-11-01 01:49+0100\n"
+"POT-Creation-Date: 2012-11-02 14:00+0100\n"
 "PO-Revision-Date: 2012-10-12 03:56+0000\n"
 "Last-Translator: முரளி <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-02 05:11+0000\n"
+"X-Launchpad-Export-Date: 2012-11-03 05:05+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -81,7 +81,7 @@ msgstr ""
 "ரெட்நோட்புக்கில் இரண்டு செயல் நிலைகள் உள்ளன, __தொகு__ நிலை மற்றும் "
 "__முன்னோட்ட__ நிலை."
 
-#. ## Translators: Preview -> noun
+#. ## Translators: Edit -> noun
 #: ../rednotebook/info.py:91
 msgid "Click on Edit above to see the difference."
 msgstr ""

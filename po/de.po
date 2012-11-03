@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-01 01:49+0100\n"
-"PO-Revision-Date: 2012-10-27 21:14+0000\n"
-"Last-Translator: schattenhueter <Unknown>\n"
+"POT-Creation-Date: 2012-11-02 14:00+0100\n"
+"PO-Revision-Date: 2012-11-02 13:00+0000\n"
+"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-02 05:10+0000\n"
+"X-Launchpad-Export-Date: 2012-11-03 05:05+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -79,7 +79,7 @@ msgid ""
 "mode."
 msgstr "RedNotebook hat zwei  Zustände - __Bearbeiten __ und  __Vorschau __."
 
-#. ## Translators: Preview -> noun
+#. ## Translators: Edit -> noun
 #: ../rednotebook/info.py:91
 msgid "Click on Edit above to see the difference."
 msgstr ""
@@ -575,7 +575,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:882
 msgid "pixels"
-msgstr ""
+msgstr "Pixel"
 
 #: ../rednotebook/gui/main_window.py:903
 msgid "Width must be an integer."
@@ -1085,6 +1085,7 @@ msgstr ""
 "  Matthias Loidolt https://launchpad.net/~kedapperdrake\n"
 "  Neutrino https://launchpad.net/~nneutrino\n"
 "  Tim㋡ https://launchpad.net/~tim.h.s\n"
+"  Tristan Kohl https://launchpad.net/~blobbyjj\n"
 "  chrioll https://launchpad.net/~chrioll\n"
 "  günther kühnel https://launchpad.net/~guejo\n"
 "  schattenhueter https://launchpad.net/~schattenhueter"
