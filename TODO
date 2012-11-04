@@ -10,9 +10,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.7
 X Allow specifying the width when inserting an image.
-X Add relative links: Relative paths [myfile image.jpg] is automatically transformed to /path/to/journal/image.jpg).
+X Add relative links: Relative paths [myfile image.jpg] is automatically transformed to /path/to/journal/image.jpg.
 O During saving: Delete old backup, move old file to new backup then save new file.
-O Use better regex for hashtags.
+X Use smarter regular expression for finding hashtags in the text.
+O Make automatic switching between edit and preview mode optional.
 X Hide tag panel by default.
 X Adapt introductory and help texts for hashtags.
 X Break search results at newlines.

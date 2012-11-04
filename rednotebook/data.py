@@ -24,7 +24,13 @@ import re
 
 
 TEXT_RESULT_LENGTH = 42
-HASHTAG_PATTERN = r'\w+'
+
+ALPHA = r'[^\W\d_]'
+ALPHA_NUMERIC = r'\w'
+HEX = r'[0-9A-F]{6}'
+HASHTAG_TEXT = r'%(ALPHA_NUMERIC)s*%(ALPHA)s+%(ALPHA_NUMERIC)s*' % locals()
+HASHTAG_PATTERN = r'(^|[^%(ALPHA_NUMERIC)s&]+)(#|\uFF03)(?!%(HEX)s)(%(HASHTAG_TEXT)s)' % locals()
+HASHTAG = re.compile(HASHTAG_PATTERN, flags=re.I | re.U)
 
 def escape_tag(tag):
     return tag.lower().replace(' ', '_')
@@ -151,7 +157,7 @@ class Day(object):
     @property
     def hashtags(self):
         # The same tag can occur multiple times.
-        return re.findall(r'#(%s)' % HASHTAG_PATTERN, self.text)
+        return [hashtag for _, _hash, hashtag in HASHTAG.findall(self.text)]
 
     @property
     def categories(self):

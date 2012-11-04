@@ -33,7 +33,7 @@ if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("./../../"))
     logging.getLogger('').setLevel(logging.DEBUG)
 
-from rednotebook.data import HASHTAG_PATTERN
+from rednotebook.data import HASHTAG
 from rednotebook.external import txt2tags
 from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
@@ -347,7 +347,7 @@ named_link = Pattern(r'(\[)(.*?)\s("")(\S.*?\S)(""\])',
 
 # link http://heise.de
 # Use txt2tags link guessing mechanism by setting regex explicitly
-link = Pattern('USEREGEX', [(0, 'link')], regex=bank['link'], name='link')
+link = Pattern('UseRegex', [(0, 'link')], regex=bank['link'], name='link')
 
 # We do not support multiline regexes
 #blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'gray'), (2, 'verbatim'), (3, 'gray')])
@@ -359,7 +359,7 @@ table_row = Pattern(r'^ *(\| .*)', [(1, 'tablerow')])
 
 formula = Pattern(r'(\\\(|\\\[|\$\$)(.+?)(\\\)|\\\]|\$\$)', [(1, 'gray'), (2, 'formula'), (3, 'gray')])
 
-hashtag = Pattern(r'(#%s)' % HASHTAG_PATTERN, [(1, 'red')])
+hashtag = Pattern('UseRegex', [(2, 'red'), (3, 'red')], regex=HASHTAG)
 
 
 patterns = [
