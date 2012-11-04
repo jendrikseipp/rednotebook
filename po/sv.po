@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-02 14:00+0100\n"
-"PO-Revision-Date: 2012-08-10 06:45+0000\n"
+"PO-Revision-Date: 2012-11-03 23:08+0000\n"
 "Last-Translator: Rikard Edgren <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-03 05:05+0000\n"
+"X-Launchpad-Export-Date: 2012-11-04 04:57+0000\n"
 "X-Generator: Launchpad (build 16218)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
@@ -171,7 +171,7 @@ msgstr "Spara journalen på ny plats. Den gamla journalen kommer att sparas"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:106
 msgid "_Import"
-msgstr ""
+msgstr "_Importera"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Open the import assistant"
@@ -189,7 +189,7 @@ msgstr "Öppna exportassistenten"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "Sä_kerhetskopiera"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -197,7 +197,7 @@ msgstr "Spara all data i ett zip-arkiv"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistik"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -259,19 +259,19 @@ msgstr "FYll i ett kort formulär om problemet"
 
 #: ../rednotebook/gui/menu.py:166
 msgid "Wrong directory"
-msgstr ""
+msgstr "Fel katalog"
 
 #: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Du kan inte använda denna katalog för din journal:"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "Välj en tom katalog."
 
 #: ../rednotebook/gui/menu.py:177
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "Denna katalog innehåller inga journal-filer:"
 
 #: ../rednotebook/gui/menu.py:193
 msgid "Journals are saved in a directory, not in a single file."
@@ -406,7 +406,7 @@ msgstr "Datum/tid-format"
 
 #: ../rednotebook/gui/options.py:324
 msgid "Exclude from cloud"
-msgstr ""
+msgstr "Exkludera från moln"
 
 #: ../rednotebook/gui/options.py:325
 msgid "Do not show these comma separated words in the word cloud"
@@ -418,7 +418,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:327
 msgid "Allow these words with 4 letters or less"
-msgstr ""
+msgstr "Tillåt dessa ord med 4 bokstäver eller färre"
 
 #: ../rednotebook/gui/main_window.py:293
 msgid "Show RedNotebook"
@@ -561,7 +561,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:882
 msgid "pixels"
-msgstr ""
+msgstr "pixlar"
 
 #: ../rednotebook/gui/main_window.py:903
 msgid "Width must be an integer."
@@ -908,7 +908,7 @@ msgstr "Öppna mallkatalogen"
 
 #: ../rednotebook/util/utils.py:115
 msgid "unknown"
-msgstr ""
+msgstr "okänt"
 
 #: ../rednotebook/util/utils.py:127
 #, python-format
@@ -1001,7 +1001,7 @@ msgstr "Inget att spara"
 
 #: ../rednotebook/journal.py:481
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
@@ -1057,6 +1057,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Björn Sundberg https://launchpad.net/~sundberg-bjorn\n"
 "  Fredrik Andersson https://launchpad.net/~frittexxx\n"
+"  Håkan Sörensson https://launchpad.net/~hakans\n"
 "  Rikard Edgren https://launchpad.net/~rikard-edgren\n"
 "  Thomas Holmgren https://launchpad.net/~layman"
 
