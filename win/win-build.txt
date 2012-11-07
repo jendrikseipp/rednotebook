@@ -1,11 +1,12 @@
 == Install requirements ==
-(view http://faq.pygtk.org/index.py?req=show&file=faq21.001.htp for more details)
-  * Install Python 2.6 for Microsoft Windows from the Python website [www.python.org].
-  * Download the PyGTK/GTK all-in-one installer and make sure you select
-    the following subpackages: PyGTK, PyGObject, PyGTKSpell, PyWebkitGTK w/o Gstreamer
-    [http://opensourcepack.blogspot.com/2011/01/conservative-all-in-one-pygtk-installer.html]
-  * Install PyYaml from [http://pyyaml.org/wiki/PyYAML]
-  * Install Bzr with TortoiseBzr (https://launchpad.net/bzr/+download)
+  * Install Python 2.7 for Windows from the Python website [www.python.org].
+  * Download the PyGTK/GTK all-in-one installer and install the default subpackages.
+    [http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/]
+  * Use the webkit libs from midori and copy them to the GTK runtime dir.
+  * Install PyYaml for Python 2.7 from [http://pyyaml.org/wiki/PyYAML]
+  * Install Bzr for Python 2.7 with TortoiseBzr (https://launchpad.net/bzr/+download)
+  * Download the chardet package and add the "chardet" directory to C:\Python27\Lib\site-packages
+  * Unpack the gtkspell package from pygtkaio.7z and copy the files to their destinations.
   * Restart the system
 
 == Test RedNotebook ==
@@ -14,12 +15,6 @@
   * Open a terminal window and navigate to PathToRedNotebook\rednotebook
   * Execute "python journal.py"
   * If you don't need a .exe file and no translations you're done.
-
-== Translations ==
-  * Install py2exe [http://www.py2exe.org/]
-  * In a terminal window, navigate to your RedNotebook directory
-  * Run "python setup.py i18n" to translate the po files to mo files
-  * RedNotebook should now be translated
 
 == Build Exe ==
   * Microsoft Visual Studio files:
@@ -37,20 +32,13 @@
   * A dist/ directory is created containing the exe, but some GTK files
     are still missing
   * Copy the directories etc, lib and share from the GTK path
-    (C:\Python26\Lib\site-packages\gtk-2.16.6) to the newly created dist
+    (C:\Python27\Lib\site-packages\gtk-2.0\runtime) to the newly created dist
     directory
   * You may want to remove some themes or dictionaries from the
     "share" directory to save some space.
   * Now clicking rednotebook.exe should start the application
     If it doesn't start, you'll hopefully find an error log in
     C:\D&S\User\.rednotebook\rednotebook.log
-
-== Some important adjustments ==
-  * To use a nicer theme open the file dist/etc/gtk-2.0/gtkrc in
-    an editor and replace its contents with the following three lines:
-    gtk-icon-sizes = "gtk-dialog=24,24:gtk-button=16,16:gtk-menu=16,16:gtk-small-toolbar=16,16:gtk-large-toolbar=24,24:gtk-dnd=32,32"
-    gtk-toolbar-icon-size = small-toolbar
-    gtk-theme-name = "Clearlooks"
 
 == Build the installer ==
   * Install Inno Setup (http://www.jrsoftware.org/isinfo.php)
