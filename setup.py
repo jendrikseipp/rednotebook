@@ -36,6 +36,11 @@ from distutils import cmd
 from distutils.command.install_data import install_data as _install_data
 from distutils.command.build import build as _build
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from rednotebook import info
+from rednotebook.external import msgfmt
+
 
 class build_trans(cmd.Command):
     """
@@ -118,12 +123,6 @@ if sys.platform == 'win32':
     py2exe.build_exe.isSystemDLL = isSystemDLL
 
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-from rednotebook import info
-from rednotebook.external import msgfmt
-
-
 parameters = {  'name'              : 'rednotebook',
                 'version'           : info.version,
                 'description'       : 'Graphical daily journal with calendar, '
@@ -198,6 +197,8 @@ if 'py2exe' in sys.argv:
                                     ('images', glob(os.path.join('rednotebook', 'images', '*.png'))),
                                     ('images/rednotebook-icon',
                                         glob(os.path.join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),
+                                    ('images/rednotebook-icon',
+                                        ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
                                     #('.', [r'C:\GTK\libintl-8.dll']),
                                     # Bundle the visual studio files
                                     ("Microsoft.VC90.CRT", ['win/Microsoft.VC90.CRT.manifest', 'win/msvcr90.dll']),
