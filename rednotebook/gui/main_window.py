@@ -947,6 +947,8 @@ class MainWindow(object):
         link_location_entry.connect('activate', respond)
         link_name_entry.connect('activate', respond)
 
+        link_location_entry.grab_focus()
+
         response = link_creator.run()
         link_creator.hide()
 
