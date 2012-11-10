@@ -1,5 +1,3 @@
-==== RedNotebook Changelog ====
-
 == 1.6.0 (2012-10-31) ==
 * Inline #hashtagging: Directly add hashtags like #Movies, #my_project in the main text.
 * Highlight #hashtags in red.

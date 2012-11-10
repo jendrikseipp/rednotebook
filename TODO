@@ -7,19 +7,18 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-
-1.7
+1.6.1
 X Allow specifying the width when inserting an image.
 X Add relative links: Relative paths [myfile image.jpg] is automatically transformed to /path/to/journal/image.jpg.
-O During saving: Delete old backup, move old file to new backup then save new file.
 X Use smarter regular expression for finding hashtags in the text.
-O Make automatic switching between edit and preview mode optional.
+X Give focus to link box when a the link dialog opens.
 X Hide tag panel by default.
 X Adapt introductory and help texts for hashtags.
 X Break search results at newlines.
 X Fix: When searching for multiple tags, only add a single result for every hit.
 
 1.x
+O During saving: Delete old backup, move old file to new backup then save new file.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
@@ -38,13 +37,9 @@ X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked in preview mode (seems difficult in webkitgtk)
-O Automated backups
-O Fix link highlighting ([this does not work] and
-  [This is a link http://txt2tags.sourceforge.net/] highlights wrong part.)
 O Make the right panel an advanced option?
-O Disable cache for preview (Support previewing externally changed files)
 O Change file permissions so that journal files are only readable by the user
-O Add option to insert verbatim text (allow triple {{{ in addition to ```?)
+O Add option to insert verbatim text.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
@@ -52,16 +47,6 @@ O Enable right-click menu for copying in preview
     - Complicated
   - Only show the menu if there's a selection
     - WebView.has_selection() seems to be broken
-
-
-O Use Zeitgeist for automatic category entries
-  O Make Zeitgeist widget generic, so it can be reused by other projects
-  X Music tracks or albums (Wrote decibel zeitgeist addon, addons for other players available)
-  X Movies
-  X Web History (Firefox addon written by zeitgeist devs)
-  X Documents, Pictures
-  O Mails (Write Thunderbird zeitgeist addon)
-  X Twitter Messages (gwibber zeitgeist addon written by zeitgeist devs)
 
 O Imports
   X RedNotebook Backup zipfile
@@ -81,7 +66,6 @@ O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mon
 O Translate help (Restructure first using Sphinx?)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
-O Add shortcut to move the cursor into the main text area
 O Make txt2tags faster and fix bugs
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
@@ -102,6 +86,7 @@ O Use argparse instead of optparse (remove IndentedHelpFormatterWithNL)
 Windows:
 O Windows: Enable spellcheck
 O Make windows installer truly portable (leave no traces in registry)
+  Probably it's better to distribute a zip archive for this.
 
 New format:
 O Use json instead of yaml (wait till after port to Python3)
@@ -120,7 +105,6 @@ O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
 === Maybe even some of those features will make it into RedNotebook ===
 
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
-O Automatic insertion of holidays (Search a website for holidays and display them in the category "Holidays")
 O Picture slide show in one entry with many images (in preview show nice
   javascript slide show of pics in linked picture directory) (Think about new format first)
 O HTML import?
@@ -129,8 +113,6 @@ O Ability to make certain entries, eg. birthdays, with frequencies
 O Plugin system?
 O Entries without dates (bookmarks, contact lists)?
 O Add more shortcuts for insertions (e.g. horizontal lines)
-O Copy/paste annotations between different days
-O Drag and drop annotations on the same day
 O Improve startup time by showing the window and doing the rest of the initialization
   in an idle loader.
 
@@ -141,16 +123,9 @@ O The concepts of insert and format can be unified for most entities this way:
   for this purpose (e.g. horizontal separator).
 O Support %!include macro?
 
-O I would like to be able to delete items from my categories list on the left side.
-  At the moment if I want to delete multiple items from my todo list, I have to click on one,
-  scroll to the right, right click and press delete, scroll back the left, and repeat.
-O It would be great to be able to change the category of an item without having to delete
-  it and make a new one. Maybe with a rightclick or drag and drop.
-
-O Promote usage of #hash_tag in entries without adding any extra code for it (like twitter),
-  when searching for #hash_tag, we can jump directly to the relevant position in the body.
 O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
+O Make automatic switching between edit and preview mode optional.
 
 
 
@@ -208,3 +183,4 @@ O Color submenu in format menu with additional color picker and color highlighti
 - Support for 'inline files': read content from file upon preview of page and
   add the contents of the file inline (which allows for 'dynamic' content) (KISS)
 - Field or shortcut to enter a date and takes you there (One navigation suffices)
+- Disable cache for preview to support previewing externally changed files (Rarely used, might slowdown app)
