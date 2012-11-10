@@ -85,6 +85,21 @@ O Mobile version:
   - Qt for android (http://thp.io/2011/pyside-android/)
   - Django
 
+O Markdown:
+  - Parsing would need a PEG parser
+  - Allow some common markdown syntax:
+    - Asterisks (*) for lists
+    - Allow triple {{{ and }}} in addition to ``` for code.
+
+O Use Zeitgeist for automatic category entries
+  O Make Zeitgeist widget generic, so it can be reused by other projects
+  X Music tracks or albums (Wrote decibel zeitgeist addon, addons for other players available)
+  X Movies
+  X Web History (Firefox addon written by zeitgeist devs)
+  X Documents, Pictures
+  O Mails (Write Thunderbird zeitgeist addon)
+  X Twitter Messages (gwibber zeitgeist addon written by zeitgeist devs)
+
 
 Ideas:
 
