@@ -1,3 +1,13 @@
+== 1.6.1 (2012-11-11) ==
+* Allow specifying the width when inserting an image.
+* Add relative links: Relative paths [myfile image.jpg] is automatically transformed to /path/to/journal/image.jpg.
+* Use smarter regular expression for finding hashtags in the text.
+* Give focus to link box when the link dialog opens.
+* Hide tag panel by default.
+* Adapt introductory and help texts for hashtags.
+* Break search results at newlines.
+* Fix: When searching for multiple tags, only add a single result for every hit.
+
 == 1.6.0 (2012-10-31) ==
 * Inline #hashtagging: Directly add hashtags like #Movies, #my_project in the main text.
 * Highlight #hashtags in red.
