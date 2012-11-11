@@ -8,10 +8,10 @@ def test_hashtags():
     assert day.hashtags == []
     day.text = '#tag'
     assert day.hashtags == ['tag']
-    day.text = 'abc#tag'
+    day.text = 'abc #tag'
     assert day.hashtags == ['tag']
-    day.text = 'abc#tag_with_longer_name'
+    day.text = 'abc #tag_with_longer_name'
     assert day.hashtags == ['tag_with_longer_name']
-    day.text = 'abc#tag def'
+    day.text = 'abc #tag def'
     assert day.hashtags == ['tag']
 
