@@ -7,6 +7,9 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.6.2
+X Use PNG image in about dialog (SVG support is broken in Windows version).
+
 1.x
 O During saving: Delete old backup, move old file to new backup then save new file.
 X Insert Latex formulas (LP:851471)
