@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-02 14:00+0100\n"
-"PO-Revision-Date: 2012-10-26 09:25+0000\n"
+"PO-Revision-Date: 2012-11-13 10:46+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-08 04:49+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Launchpad-Export-Date: 2012-11-14 04:42+0000\n"
+"X-Generator: Launchpad (build 16251)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
@@ -79,15 +79,15 @@ msgstr "ישנם שני מצבים ב־RedNotebook, מצב __עריכה__ ומצ
 #. ## Translators: Edit -> noun
 #: ../rednotebook/info.py:91
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "יש ללחוץ על עריכה להלן כדי לצפות בשינוי."
 
 #: ../rednotebook/info.py:94
 msgid "Tagging is easy."
-msgstr ""
+msgstr "תיוג זה קלי קלות."
 
 #: ../rednotebook/info.py:95
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "ניתן להשתמש ב#תגית כמו בטוויטר."
 
 #: ../rednotebook/info.py:98
 msgid ""
@@ -547,15 +547,15 @@ msgstr "הוספת תמונות, קבצים וקישורים לתוכן שונה
 
 #: ../rednotebook/gui/main_window.py:877
 msgid "Width (optional):"
-msgstr ""
+msgstr "רוחב (רשות):"
 
 #: ../rednotebook/gui/main_window.py:882
 msgid "pixels"
-msgstr ""
+msgstr "פיקסלים"
 
 #: ../rednotebook/gui/main_window.py:903
 msgid "Width must be an integer."
-msgstr ""
+msgstr "הרוחב חייב להיות מספר שלם וחיובי."
 
 #: ../rednotebook/gui/main_window.py:962
 msgid "No link location has been entered"
