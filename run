@@ -8,7 +8,7 @@
 # Copyright (C) 2008, Red Hat, Inc.
 #
 
-set -e
+#set -e  # Cannot be set, because the check for python may fail and we want to continue.
 
 # Change into RedNotebook directory --------------------------------------------
 
@@ -85,5 +85,19 @@ if test "x$system" = xSUSE -o "x$system" = "xSUSE LINUX" ; then
   fi
 fi
 
-# Run RedNotebook --------------------------------------------------------------
-python2 rednotebook/journal.py
+# Run RedNotebook with the newest python2 version available --------------------
+
+for PYTHON in python2.7 python2.6; do
+    echo Checking for $PYTHON
+    # Returns 0 if command is found.
+    command -v $PYTHON >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo Running $PYTHON
+        $PYTHON -V
+        $PYTHON rednotebook/journal.py "$@"
+        exit 0
+    fi
+done
+
+echo Error: No python interpreter found.
+exit 1

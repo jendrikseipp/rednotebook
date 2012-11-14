@@ -8,6 +8,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.6.2
+X Since debian doesn't have a python2 symlink, try to run python2.7 and python2.6 in the run script.
 X Use PNG image in about dialog (SVG support is broken in Windows version).
 
 1.x
