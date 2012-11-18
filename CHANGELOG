@@ -1,3 +1,8 @@
+== 1.6.2 (2012-11-18) ==
+* Add option for automatically switching between edit and preview mode to preferences.
+* Since debian doesn't have a python2 symlink, try to run python2.7 and python2.6 in the run script.
+* Use PNG image in about dialog (SVG support is broken in Windows version).
+
 == 1.6.1 (2012-11-11) ==
 * Allow specifying the width when inserting an image.
 * Add relative links: Relative paths [myfile image.jpg] is automatically transformed to /path/to/journal/image.jpg.
