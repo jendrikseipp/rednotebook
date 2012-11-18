@@ -977,10 +977,12 @@ class MainWindow(object):
         # to always save the day.
         self.day_text_field.show_day(day)
 
-        if day.has_text and not self.preview_mode:
-            self.change_mode(preview=True)
-        elif not day.has_text and self.preview_mode:
-            self.change_mode(preview=False)
+        # Only switch mode automatically if set in preferences.
+        if self.journal.config.get('autoSwitchMode', 1):
+            if day.has_text and not self.preview_mode:
+                self.change_mode(preview=True)
+            elif not day.has_text and self.preview_mode:
+                self.change_mode(preview=False)
 
         if self.preview_mode:
             # Converting markup to html takes time, so only do it when necessary

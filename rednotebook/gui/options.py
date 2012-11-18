@@ -53,15 +53,15 @@ class Option(gtk.HBox):
 
 
 class TickOption(Option):
-    def __init__(self, text, name, default_value=None, tooltip=''):
+    def __init__(self, text, name, value=None, default_value=0, tooltip=''):
         Option.__init__(self, '', name, tooltip=tooltip)
 
         self.check_button = gtk.CheckButton(text)
 
-        if default_value is None:
-            self.check_button.set_active(Option.config.read(name, 0) == 1)
+        if value is None:
+            self.check_button.set_active(Option.config.read(name, default_value) == 1)
         else:
-            self.check_button.set_active(default_value)
+            self.check_button.set_active(value)
 
         self.pack_start(self.check_button, False)
 
@@ -82,7 +82,7 @@ class AutostartOption(TickOption):
         self.autostart_file = os.path.join(autostart_dir, 'rednotebook.desktop')
         autostart_file_exists = os.path.exists(self.autostart_file)
         TickOption.__init__(self, _('Load RedNotebook at startup'), None,
-                        default_value=autostart_file_exists)
+                            value=autostart_file_exists)
 
     def get_value(self):
         return self.check_button.get_active()
@@ -305,9 +305,13 @@ class OptionsManager(object):
             self.options.append(spell_check_option)
         spell_check_option.set_sensitive(able_to_spell_check)
 
-        # Check for new version
+        # Automatic switching between preview and edit mode.
+        self.options.append(TickOption(_('Switch between edit and preview mode automatically'),
+                                       'autoSwitchMode', default_value=1))
 
+        # Check for new version
         check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')
+
         def check_version_action(widget):
             utils.check_new_version(self.main_window.journal, info.version)
             # Apply changes from dialog to options window
