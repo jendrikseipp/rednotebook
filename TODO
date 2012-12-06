@@ -7,7 +7,12 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.6.3
+X Fix: Don't interpret URLs with non-empty paths as local links.
+
 1.x
+O Place subtags behind hashtags inside the text itself: I met #Joana and we had some cofee talking about old times# then i went to #work.
+O Make hashtags smaller in the cloud.
 O During saving: Delete old backup, move old file to new backup then save new file.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas

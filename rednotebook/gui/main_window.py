@@ -483,9 +483,14 @@ class MainWindow(object):
         uri = request.get_uri()
         logging.info('Clicked URI "%s"' % uri)
         path = urlparse.urlparse(uri).path
-        if not os.path.exists(path):
-            assert path.startswith('/')
-            uri = 'file://%s' % os.path.join(self.journal.dirs.data_dir, path[1:])
+
+        # Check if relative file exists and convert if it does.
+        if not uri.startswith('http'):
+            assert path.startswith('/'), path
+            relpath = os.path.join(self.journal.dirs.data_dir, path[1:])
+            assert os.path.isabs(relpath), relpath
+            if os.path.exists(relpath):
+                uri = 'file://%s' % relpath
 
         filesystem.open_url(uri)
 
