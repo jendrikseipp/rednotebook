@@ -1,3 +1,6 @@
+== 1.6.3 (2012-12-06) ==
+* Fix: Don't interpret URLs with non-empty paths as local links.
+
 == 1.6.2 (2012-11-18) ==
 * Add option for automatically switching between edit and preview mode to preferences.
 * Since debian doesn't have a python2 symlink, try to run python2.7 and python2.6 in the run script.
