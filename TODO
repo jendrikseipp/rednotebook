@@ -7,6 +7,9 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.6.4
+X Never include previous RedNotebook backups in new backups.
+
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some cofee talking about old times# then i went to #work.
 O Make hashtags smaller in the cloud.
