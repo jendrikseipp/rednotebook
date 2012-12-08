@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-02 14:00+0100\n"
-"PO-Revision-Date: 2012-10-27 12:46+0000\n"
+"PO-Revision-Date: 2012-12-07 07:25+0000\n"
 "Last-Translator: freedomrun <freedomrun@yandex.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-11-22 05:09+0000\n"
-"X-Generator: Launchpad (build 16293)\n"
+"X-Launchpad-Export-Date: 2012-12-08 05:11+0000\n"
+"X-Generator: Launchpad (build 16341)\n"
 
 #: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:77
 msgid "Done"
-msgstr ""
+msgstr "Obavljeno"
 
 #: ../rednotebook/info.py:78
 msgid "Remember the milk"
@@ -48,7 +48,7 @@ msgstr "Operi suđe"
 
 #: ../rednotebook/info.py:81
 msgid "Hello!"
-msgstr ""
+msgstr "Zdravo!"
 
 #: ../rednotebook/info.py:82
 msgid ""
@@ -113,6 +113,8 @@ msgstr ""
 #: ../rednotebook/info.py:112
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
+"Kako bi izbjegli gubitak podataka trebali biste redovito izrađivati "
+"sigurnostne kopije vašeg dnevnika."
 
 #: ../rednotebook/info.py:113
 msgid ""
@@ -121,12 +123,14 @@ msgstr ""
 
 #: ../rednotebook/info.py:114
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
+msgstr "U izborniku \"Dnevnik\" također ćete naći \"Izvoz\" gumb."
 
 #: ../rednotebook/info.py:115
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
+"Kliknite \"Izvoz\" i izvozite vaš dnevnik u Običan Tekst, PDF, HTML ili "
+"Latex."
 
 #: ../rednotebook/info.py:118
 msgid "If you encounter any errors, please drop me a note so I can fix them."
@@ -134,11 +138,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:119
 msgid "Any feedback is appreciated."
-msgstr ""
+msgstr "Bilo kakav oblik povratne informacije je dobrodošao."
 
 #: ../rednotebook/info.py:122
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Želim vam ugodan dan!"
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
@@ -219,11 +223,11 @@ msgstr "_Pomoć"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Contents"
-msgstr ""
+msgstr "Sadržaji"
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Open the RedNotebook documentation"
-msgstr ""
+msgstr "Otvori dokumentaciju RedNotebooka"
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Get Help Online"
@@ -231,19 +235,21 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Pretraži odgovorena pitanja ili postavi novo"
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Prevedi RedNotebook"
 
 #: ../rednotebook/gui/menu.py:144
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
+"Priključite se na Launchpad web stranicu kako biste pomogli prevesti "
+"RedNotebook"
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Report a Problem"
-msgstr ""
+msgstr "Prijavite Problem"
 
 #: ../rednotebook/gui/menu.py:147
 msgid "Fill out a short form about the problem"
@@ -295,7 +301,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:265
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "RedNotebook Dokumentacija"
 
 #: ../rednotebook/gui/menu.py:285
 msgid "A Desktop Journal"
@@ -315,7 +321,7 @@ msgstr "Prazni unosi nisu dozvoljeni"
 
 #: ../rednotebook/gui/categories.py:150
 msgid "Empty tag names are not allowed"
-msgstr ""
+msgstr "Imena s praznom oznakom nisu dozvoljena"
 
 #: ../rednotebook/gui/categories.py:408
 msgid "Change this text"
@@ -381,7 +387,7 @@ msgstr "Provjeri pravopis"
 
 #: ../rednotebook/gui/options.py:310
 msgid "Check for new version at startup"
-msgstr "Provjeri prilikom starta da li je dostupna nova verzija"
+msgstr "Za novu verziju provjeri prilikom pokretanja"
 
 #: ../rednotebook/gui/options.py:317
 msgid "Check now"
@@ -389,7 +395,7 @@ msgstr "Provjeri sada"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Font Size"
-msgstr "Veličina Pisma"
+msgstr "Veličina slova"
 
 #: ../rednotebook/gui/options.py:323
 msgid "Date/Time format"
@@ -422,19 +428,19 @@ msgstr ""
 #. ## Translators: The Control (Ctrl) key
 #: ../rednotebook/gui/main_window.py:680
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../rednotebook/gui/main_window.py:683
 msgid "Bold"
-msgstr ""
+msgstr "Podebljano"
 
 #: ../rednotebook/gui/main_window.py:684
 msgid "Italic"
-msgstr ""
+msgstr "Nakošeno"
 
 #: ../rednotebook/gui/main_window.py:685
 msgid "Underline"
-msgstr ""
+msgstr "Podcrtano"
 
 #: ../rednotebook/gui/main_window.py:686
 msgid "Strikethrough"
