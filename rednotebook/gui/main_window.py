@@ -688,7 +688,7 @@ class MainWindow(object):
         actions = [ ('Bold', gtk.STOCK_BOLD, _('Bold') + shortcut('B'), '<Control>B', None, apply_format),
                     ('Italic', gtk.STOCK_ITALIC, _('Italic') + shortcut('I'), '<Control>I', None, apply_format),
                     ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'), '<Control>U', None, apply_format),
-                    ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough'), None, None, apply_format)]
+                    ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'), '<Control>K', None, apply_format)]
 
         actiongroup.add_actions(actions)
 

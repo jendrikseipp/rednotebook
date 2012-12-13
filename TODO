@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.6.4
 X Never include previous RedNotebook backups in new backups.
+X Add strikethrough shortcut Ctrl+K.
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some cofee talking about old times# then i went to #work.
