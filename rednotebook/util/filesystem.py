@@ -28,6 +28,7 @@ import webbrowser
 from glob import glob
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or 'UTF-8'
+REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
 
 
 def get_unicode_path(path):

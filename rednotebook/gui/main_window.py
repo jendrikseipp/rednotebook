@@ -485,7 +485,7 @@ class MainWindow(object):
         path = urlparse.urlparse(uri).path
 
         # Check if relative file exists and convert if it does.
-        if not uri.startswith('http'):
+        if not any(uri.startswith(proto) for proto in filesystem.REMOTE_PROTOCOLS):
             assert path.startswith('/'), path
             relpath = os.path.join(self.journal.dirs.data_dir, path[1:])
             assert os.path.isabs(relpath), relpath

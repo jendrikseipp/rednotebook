@@ -1924,8 +1924,9 @@ def getRegexes():
     # Recomended order: scheme://user:pass@domain/path?query=foo#anchor
     # Also works      : scheme://user:pass@domain/path#anchor?query=foo
     # TODO form: !'():
+    ## JS: Add support for irc protocol.
     urlskel = {
-        'proto' : r'(https?|ftp|news|telnet|gopher|wais)://',
+        'proto' : r'(https?|ftp|news|telnet|gopher|wais|irc[6s]?)://',
         'guess' : r'(www[23]?|ftp)\.',         # w/out proto, try to guess
         'login' : r'A-Za-z0-9_.-',             # for ftp://login@domain.com
         'pass'  : r'[^ @]*',                   # for ftp://login:pass@dom.com
