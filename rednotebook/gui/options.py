@@ -307,7 +307,7 @@ class OptionsManager(object):
 
         # Automatic switching between preview and edit mode.
         self.options.append(TickOption(_('Switch between edit and preview mode automatically'),
-                                       'autoSwitchMode', default_value=1))
+                                       'autoSwitchMode', default_value=0))
 
         # Check for new version
         check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')

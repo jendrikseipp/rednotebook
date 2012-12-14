@@ -10,9 +10,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.6.4
 X Never include previous RedNotebook backups in new backups.
 X Add strikethrough shortcut Ctrl+K.
+X By default don't switch between edit and preview mode automatically.
 
 1.x
-O Place subtags behind hashtags inside the text itself: I met #Joana and we had some cofee talking about old times# then i went to #work.
+O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
 O Make hashtags smaller in the cloud.
 O During saving: Delete old backup, move old file to new backup then save new file.
 X Insert Latex formulas (LP:851471)
