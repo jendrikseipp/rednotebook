@@ -97,6 +97,13 @@ class Editor(object):
         self.day_text_buffer.handler_unblock(self.changed_connection)
         self.on_text_change(self.day_text_buffer, undoing=undoing)
 
+    def replace_selection(self, text):
+        self.force_adding_undo_point = True
+
+        self.day_text_buffer.delete_selection(interactive=False,
+                                              default_editable=True)
+        self.day_text_buffer.insert_at_cursor(text)
+
     def highlight(self, text):
         self.search_text = text
         self.day_text_buffer.set_search_text(text)
@@ -126,7 +133,7 @@ class Editor(object):
         if bounds:
             return self.get_text(*bounds)
         else:
-            return None
+            return ''
 
     def get_text_around_selected_text(self, length):
         bounds = self.get_selection_bounds()

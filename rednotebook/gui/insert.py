@@ -98,11 +98,6 @@ class InsertMenu(object):
 
         line_break = r'\\'
 
-        def insert_date_time(widget):
-            format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
-            date_string = dates.format_date(format_string)
-            self.main_window.day_text_field.insert(date_string)
-
         def tmpl(letter):
             return ' (Ctrl+%s)' % letter
 
@@ -134,7 +129,7 @@ class InsertMenu(object):
                 lambda widget: self.main_window.day_text_field.insert(formula)),
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
-                insert_date_time),
+                self.on_insert_date_time),
             ('LineBreak', None, _('Line Break'), None,
                 _('Insert a manual line break'),
                 lambda widget: self.main_window.day_text_field.insert(line_break)),
@@ -253,8 +248,10 @@ class InsertMenu(object):
         link_location_entry = self.main_window.builder.get_object('link_location_entry')
         link_name_entry = self.main_window.builder.get_object('link_name_entry')
 
+        text = self.main_window.day_text_field.get_selected_text()
+
         link_location_entry.set_text('http://')
-        link_name_entry.set_text('')
+        link_name_entry.set_text(text)
 
         def link_entered():
             return bool(link_location_entry.get_text())
@@ -283,8 +280,13 @@ class InsertMenu(object):
             link_name = link_name_entry.get_text()
 
             if link_location and link_name:
-                self.main_window.day_text_field.insert('[%s ""%s""]' % (link_name, link_location))
+                self.main_window.day_text_field.replace_selection('[%s ""%s""]' % (link_name, link_location))
             elif link_location:
-                self.main_window.day_text_field.insert(link_location)
+                self.main_window.day_text_field.replace_selection(link_location)
             else:
                 self.main_window.journal.show_message(_('No link location has been entered'), error=True)
+
+    def on_insert_date_time(self, widget):
+        format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
+        date_string = dates.format_date(format_string)
+        self.main_window.day_text_field.insert(date_string)
