@@ -7,9 +7,11 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.6.5
+X Change file permissions so that journal files are only readable by the user.
+
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
-O Make hashtags smaller in the cloud.
 O During saving: Delete old backup, move old file to new backup then save new file.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
@@ -29,7 +31,6 @@ O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked in preview mode (seems difficult in webkitgtk)
 O Make the right panel an advanced option?
-O Change file permissions so that journal files are only readable by the user
 O Add option to insert verbatim text.
 
 O Enable right-click menu for copying in preview
