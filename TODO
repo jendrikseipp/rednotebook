@@ -11,6 +11,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 X Use selected text as link name when a new link is inserted.
 X When an image or file is inserted, use selected text as the name of the link.
 X Change file permissions so that journal files are only readable by the user.
+X Format selected text as header in the insert menu. 
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.

@@ -83,9 +83,6 @@ class InsertMenu(object):
         bullet_list = '\n- %s\n- %s\n  - %s (%s)\n\n\n' % (item1, item2, item3, close)
         numbered_list = bullet_list.replace('-', '+')
 
-        title_text = _('Title text')
-        title = '\n=== %s ===\n' % title_text
-
         table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
                    '| 1               | more than 1     | Align left   |\n'
                    '|     more than 1 |               1 |   Align right |\n'
@@ -119,7 +116,7 @@ class InsertMenu(object):
             ('NumberedList', None, _('Numbered List'), None, None,
                 lambda widget: self.main_window.day_text_field.insert(numbered_list)),
             ('Title', None, _('Title'), None, None,
-                lambda widget: self.main_window.day_text_field.insert(title)),
+                self.get_insert_handler(self.on_insert_title)),
             ('Line', None, _('Line'), None,
                 _('Insert a separator line'),
                 lambda widget: self.main_window.day_text_field.insert(line)),
@@ -162,6 +159,13 @@ class InsertMenu(object):
         edit_toolbar = self.main_window.builder.get_object('edit_toolbar')
         edit_toolbar.insert(self.main_window.single_menu_toolbutton, -1)
         self.main_window.single_menu_toolbutton.show()
+
+    def get_insert_handler(self, func):
+        def insert_handler(widget):
+            sel_text = self.main_window.day_text_field.get_selected_text()
+            replacement = func(sel_text)
+            self.main_window.day_text_field.replace_selection(replacement)
+        return insert_handler
 
     def show_insert_menu(self, button):
         '''
@@ -291,6 +295,9 @@ class InsertMenu(object):
                 self.main_window.day_text_field.replace_selection(link_location)
             else:
                 self.main_window.journal.show_message(_('No link location has been entered'), error=True)
+
+    def on_insert_title(self, sel_text):
+        return '\n=== %s ===\n' % (sel_text or _('Header'))
 
     def on_insert_date_time(self, widget):
         format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
