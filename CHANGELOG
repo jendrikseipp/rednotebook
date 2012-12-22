@@ -1,3 +1,9 @@
+== 1.6.4 (2012-12-22) ==
+* Never include previous RedNotebook backups in new backups.
+* Add strikethrough shortcut Ctrl+K.
+* By default don't switch between edit and preview mode automatically.
+* Add experimental support for irc protocol.
+
 == 1.6.3 (2012-12-06) ==
 * Fix: Don't interpret URLs with non-empty paths as local links.
 
