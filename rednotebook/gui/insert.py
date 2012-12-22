@@ -100,17 +100,16 @@ class InsertMenu(object):
 
         # Create actions
         self.main_window.insert_actiongroup.add_actions([
-            ('Picture', gtk.STOCK_ORIENTATION_PORTRAIT,
-                _('Picture'),
+            ('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'),
                 None, _('Insert an image from the harddisk'),
-                self.on_insert_pic),
+                self.get_insert_handler(self.on_insert_pic)),
             ('File', gtk.STOCK_FILE, _('File'), None,
                 _('Insert a link to a file'),
-                self.on_insert_file),
+                self.get_insert_handler(self.on_insert_file)),
             ### Translators: Noun
             ('Link', gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L',
                 _('Insert a link to a website'),
-                self.on_insert_link),
+                self.get_insert_handler(self.on_insert_link)),
             ('BulletList', None, _('Bullet List'), None, None,
                 lambda widget: self.main_window.day_text_field.insert(bullet_list)),
             ('NumberedList', None, _('Numbered List'), None, None,
@@ -119,9 +118,9 @@ class InsertMenu(object):
                 self.get_insert_handler(self.on_insert_title)),
             ('Line', None, _('Line'), None,
                 _('Insert a separator line'),
-                lambda widget: self.main_window.day_text_field.insert(line)),
+                self.get_insert_handler(lambda sel_text: line)),
             ('Table', None, _('Table'), None, None,
-                lambda widget: self.main_window.day_text_field.insert(table)),
+                self.get_insert_handler(lambda sel_text: table)),
             ('Formula', None, _('Latex Formula'), None, None,
                 lambda widget: self.main_window.day_text_field.insert(formula)),
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
@@ -129,7 +128,7 @@ class InsertMenu(object):
                 self.on_insert_date_time),
             ('LineBreak', None, _('Line Break'), None,
                 _('Insert a manual line break'),
-                lambda widget: self.main_window.day_text_field.insert(line_break)),
+                self.get_insert_handler(lambda sel_text: line_break)),
             ])
 
         # Add the actiongroup to the uimanager
@@ -163,8 +162,9 @@ class InsertMenu(object):
     def get_insert_handler(self, func):
         def insert_handler(widget):
             sel_text = self.main_window.day_text_field.get_selected_text()
-            replacement = func(sel_text)
-            self.main_window.day_text_field.replace_selection(replacement)
+            repl = func(sel_text)
+            if repl is not None:
+                self.main_window.day_text_field.replace_selection(repl)
         return insert_handler
 
     def show_insert_menu(self, button):
@@ -178,7 +178,7 @@ class InsertMenu(object):
         self.main_window.single_menu_toolbutton.get_menu().popup(parent_menu_shell=None,
                             parent_menu_item=None, func=None, button=0, activate_time=0, data=None)
 
-    def on_insert_pic(self, widget):
+    def on_insert_pic(self, sel_text):
         dirs = self.main_window.journal.dirs
         picture_chooser = self.main_window.builder.get_object('picture_chooser')
         picture_chooser.set_current_folder(dirs.last_pic_dir)
@@ -229,13 +229,11 @@ class InsertMenu(object):
                     return
                 width_text = '?%d' % width
 
-            sel_text = self.main_window.day_text_field.get_selected_text()
             if sel_text:
                 sel_text = ' ' + sel_text
-            self.main_window.day_text_field.replace_selection('[%s""%s""%s%s]' %
-                                                (sel_text, base, ext, width_text))
+            return '[%s""%s""%s%s]' % (sel_text, base, ext, width_text)
 
-    def on_insert_file(self, widget):
+    def on_insert_file(self, sel_text):
         dirs = self.main_window.journal.dirs
         file_chooser = self.main_window.builder.get_object('file_chooser')
         file_chooser.set_current_folder(dirs.last_file_dir)
@@ -250,18 +248,15 @@ class InsertMenu(object):
             sel_text = self.main_window.day_text_field.get_selected_text()
             head, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s
-            self.main_window.day_text_field.replace_selection('[%s ""%s""]' %
-                                        (sel_text or tail, filename))
+            return '[%s ""%s""]' % (sel_text or tail, filename)
 
-    def on_insert_link(self, widget):
+    def on_insert_link(self, sel_text):
         link_creator = self.main_window.builder.get_object('link_creator')
         link_location_entry = self.main_window.builder.get_object('link_location_entry')
         link_name_entry = self.main_window.builder.get_object('link_name_entry')
 
-        text = self.main_window.day_text_field.get_selected_text()
-
         link_location_entry.set_text('http://')
-        link_name_entry.set_text(text)
+        link_name_entry.set_text(sel_text)
 
         def link_entered():
             return bool(link_location_entry.get_text())
@@ -290,9 +285,9 @@ class InsertMenu(object):
             link_name = link_name_entry.get_text()
 
             if link_location and link_name:
-                self.main_window.day_text_field.replace_selection('[%s ""%s""]' % (link_name, link_location))
+                return '[%s ""%s""]' % (link_name, link_location)
             elif link_location:
-                self.main_window.day_text_field.replace_selection(link_location)
+                return link_location
             else:
                 self.main_window.journal.show_message(_('No link location has been entered'), error=True)
 
@@ -302,4 +297,4 @@ class InsertMenu(object):
     def on_insert_date_time(self, widget):
         format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
         date_string = dates.format_date(format_string)
-        self.main_window.day_text_field.insert(date_string)
+        self.main_window.day_text_field.replace_selection(date_string)
