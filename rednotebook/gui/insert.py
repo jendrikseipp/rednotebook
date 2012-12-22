@@ -88,8 +88,6 @@ class InsertMenu(object):
                    '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
                    '|  Always use  |  at least  |  one whitespace  |\n')
 
-        formula = '\\(\\sum_{i=1}^n i = \\frac{n(n+1)}{2}\\)'
-
         line_break = r'\\'
 
         def tmpl(letter):
@@ -119,7 +117,7 @@ class InsertMenu(object):
             ('Table', None, _('Table'), None, None,
                 self.get_insert_handler(lambda sel_text: table)),
             ('Formula', None, _('Latex Formula'), None, None,
-                lambda widget: self.main_window.day_text_field.insert(formula)),
+                self.get_insert_handler(self.on_insert_formula)),
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
                 self.get_insert_handler(self.on_insert_date_time)),
@@ -300,6 +298,11 @@ class InsertMenu(object):
 
     def on_insert_title(self, sel_text):
         return '\n=== %s ===\n' % (sel_text or _('Header'))
+
+    def on_insert_formula(self, sel_text):
+        if sel_text:
+            return '\\(%s\\)' % sel_text
+        return '\\(\\sum_{i=1}^n i = \\frac{n(n+1)}{2}\\)'
 
     def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
