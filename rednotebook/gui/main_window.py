@@ -562,7 +562,7 @@ class MainWindow(object):
     def load_values_from_config(self):
         config = self.journal.config
         main_frame_width = config.read('mainFrameWidth', 1024)
-        main_frame_height = config.read('mainFrameHeight', 768)
+        main_frame_height = config.read('mainFrameHeight', 700)
 
         screen_width = gtk.gdk.screen_width()
         screen_height = gtk.gdk.screen_height()
