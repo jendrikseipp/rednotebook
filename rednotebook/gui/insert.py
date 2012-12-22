@@ -52,6 +52,10 @@ def get_image(name):
 class InsertMenu(object):
     def __init__(self, main_window):
         self.main_window = main_window
+
+        self.bullet_list = ('\n- %s\n- %s\n  - %s (%s)\n\n\n' %
+                (_('First Item'), _('Second Item'),
+                 _('Indented Item'), _('Two blank lines close the list')))
         
     def setup(self):
         '''
@@ -75,13 +79,6 @@ class InsertMenu(object):
         self.main_window.insert_actiongroup = gtk.ActionGroup('InsertActionGroup')
 
         line = '\n====================\n'
-
-        item1 = _('First Item')
-        item2 = _('Second Item')
-        item3 = _('Indented Item')
-        close = _('Two blank lines close the list')
-        bullet_list = '\n- %s\n- %s\n  - %s (%s)\n\n\n' % (item1, item2, item3, close)
-        numbered_list = bullet_list.replace('-', '+')
 
         table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
                    '| 1               | more than 1     | Align left   |\n'
@@ -111,9 +108,9 @@ class InsertMenu(object):
                 _('Insert a link to a website'),
                 self.get_insert_handler(self.on_insert_link)),
             ('BulletList', None, _('Bullet List'), None, None,
-                lambda widget: self.main_window.day_text_field.insert(bullet_list)),
+                self.get_insert_handler(self.on_insert_bullet_list)),
             ('NumberedList', None, _('Numbered List'), None, None,
-                lambda widget: self.main_window.day_text_field.insert(numbered_list)),
+                self.get_insert_handler(self.on_insert_numbered_list)),
             ('Title', None, _('Title'), None, None,
                 self.get_insert_handler(self.on_insert_title)),
             ('Line', None, _('Line'), None,
@@ -125,7 +122,7 @@ class InsertMenu(object):
                 lambda widget: self.main_window.day_text_field.insert(formula)),
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
-                self.on_insert_date_time),
+                self.get_insert_handler(self.on_insert_date_time)),
             ('LineBreak', None, _('Line Break'), None,
                 _('Insert a manual line break'),
                 self.get_insert_handler(lambda sel_text: line_break)),
@@ -291,10 +288,19 @@ class InsertMenu(object):
             else:
                 self.main_window.journal.show_message(_('No link location has been entered'), error=True)
 
+    def on_insert_bullet_list(self, sel_text):
+        if sel_text:
+            return '\n'.join('- %s' % row for row in sel_text.splitlines())
+        return self.bullet_list
+
+    def on_insert_numbered_list(self, sel_text):
+        if sel_text:
+            return '\n'.join('+ %s' % row for row in sel_text.splitlines())
+        return self.bullet_list.replace('-', '+')
+
     def on_insert_title(self, sel_text):
         return '\n=== %s ===\n' % (sel_text or _('Header'))
 
-    def on_insert_date_time(self, widget):
+    def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
-        date_string = dates.format_date(format_string)
-        self.main_window.day_text_field.replace_selection(date_string)
+        return dates.format_date(format_string)
