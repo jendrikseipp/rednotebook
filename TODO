@@ -11,6 +11,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 X Never include previous RedNotebook backups in new backups.
 X Add strikethrough shortcut Ctrl+K.
 X By default don't switch between edit and preview mode automatically.
+X Add experimental support for irc protocol.
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
@@ -22,7 +23,6 @@ X Insert Latex formulas (LP:851471)
   X Support formulas in all exports
   X Add menu item for inserting formulas
 O Use new markup for images: {/home/user/pic.png?50}
-  X Resize an image by adding ?width to the filename (e.g. [""file:///home/user/pic"".png?50])
 X Tables
   X Highlight tables in edit mode
   O Use art target for text exports (Wait for txt2tags 2.7)
