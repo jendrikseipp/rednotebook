@@ -212,7 +212,7 @@ class InsertMenu(object):
             base, ext = os.path.splitext(picture_chooser.get_filename().decode('utf-8'))
 
             # On windows firefox accepts absolute filenames only
-            # with the file:/// prefix
+            # with the file:// prefix
             base = filesystem.get_local_url(base)
 
             width_text = ''
@@ -225,7 +225,11 @@ class InsertMenu(object):
                     return
                 width_text = '?%d' % width
 
-            self.main_window.day_text_field.insert('[""%s""%s%s]' % (base, ext, width_text))
+            sel_text = self.main_window.day_text_field.get_selected_text()
+            if sel_text:
+                sel_text = ' ' + sel_text
+            self.main_window.day_text_field.replace_selection('[%s""%s""%s%s]' %
+                                                (sel_text, base, ext, width_text))
 
     def on_insert_file(self, widget):
         dirs = self.main_window.journal.dirs
@@ -239,9 +243,11 @@ class InsertMenu(object):
             dirs.last_file_dir = file_chooser.get_current_folder().decode('utf-8')
             filename = file_chooser.get_filename().decode('utf-8')
             filename = filesystem.get_local_url(filename)
+            sel_text = self.main_window.day_text_field.get_selected_text()
             head, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s
-            self.main_window.day_text_field.insert('[%s ""%s""]' % (tail, filename))
+            self.main_window.day_text_field.replace_selection('[%s ""%s""]' %
+                                        (sel_text or tail, filename))
 
     def on_insert_link(self, widget):
         link_creator = self.main_window.builder.get_object('link_creator')
