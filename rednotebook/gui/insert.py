@@ -158,8 +158,12 @@ class InsertMenu(object):
         def insert_handler(widget):
             sel_text = self.main_window.day_text_field.get_selected_text()
             repl = func(sel_text)
-            if repl is not None:
+            if isinstance(repl, basestring):
                 self.main_window.day_text_field.replace_selection(repl)
+            elif isinstance(repl, tuple):
+                self.main_window.day_text_field.replace_selection_and_highlight(*repl)
+            else:
+                assert repl is None, repl
         return insert_handler
 
     def show_insert_menu(self, button):
@@ -297,7 +301,7 @@ class InsertMenu(object):
         return self.bullet_list.replace('-', '+')
 
     def on_insert_title(self, sel_text):
-        return '\n=== %s ===\n' % (sel_text or _('Header'))
+        return '\n=== ', sel_text or _('Header'), ' ===\n'
 
     def on_insert_formula(self, sel_text):
         if sel_text:

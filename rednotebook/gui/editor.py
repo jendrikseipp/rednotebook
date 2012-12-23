@@ -104,6 +104,20 @@ class Editor(object):
                                               default_editable=True)
         self.day_text_buffer.insert_at_cursor(text)
 
+    def replace_selection_and_highlight(self, p1, p2, p3):
+        """
+        Insert all three parts and highlight the middle part.
+        """
+        self.replace_selection(p1 + p2 + p3)
+        # Get the mark at the end of the insertion.
+        insert_mark = self.day_text_buffer.get_insert()
+        insert_iter = self.day_text_buffer.get_iter_at_mark(insert_mark)
+        start = insert_iter.copy()
+        end = insert_iter.copy()
+        start.backward_chars(len(p3) + len(p2))
+        end.backward_chars(len(p3))
+        self.day_text_buffer.select_range(start, end)
+
     def highlight(self, text):
         self.search_text = text
         self.day_text_buffer.set_search_text(text)
@@ -143,16 +157,7 @@ class Editor(object):
         end1 = bounds[1]
         end2 = bounds[1].copy()
         end2.forward_chars(length)
-        return (self.get_text(start1, start2), self.get_text(end1, end2))
-
-    def set_selection(self, iter1, iter2):
-        '''
-        Sort the two iters and select the text between them
-        '''
-        sort_by_position = lambda iter: iter.get_offset()
-        iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
-        assert iter1.get_offset() <= iter2.get_offset()
-        self.day_text_buffer.select_range(iter1, iter2)
+        return (self.get_text(start1, start2), self.get_text(end1, end2))        
 
     def get_selection_bounds(self):
         '''
@@ -173,46 +178,14 @@ class Editor(object):
         assert iter1.get_offset() <= iter2.get_offset()
         return (iter1, iter2)
 
-    def apply_format(self, format, markup):
+    def apply_format(self, markup):
         text_around_selection = self.get_text_around_selected_text(2)
         # Apply formatting only once if a format button is clicked multiple times
         if text_around_selection == (unicode(markup), unicode(markup)):
             return
 
-        selected_text = self.get_selected_text()
-
-        # If no text has been selected add example text and select it
-        if not selected_text:
-            selected_text = ' '  #'%s text' % format
-            self.insert(selected_text)
-
-            # Set the selection to the new text
-
-            # get_insert() returns the position of the cursor (after 2nd markup)
-            insert_mark = self.day_text_buffer.get_insert()
-            insert_iter = self.day_text_buffer.get_iter_at_mark(insert_mark)
-            markup_start_iter = insert_iter.copy()
-            markup_end_iter = insert_iter.copy()
-            markup_start_iter.backward_chars(len(selected_text))
-            markup_end_iter.backward_chars(0)
-            self.set_selection(markup_start_iter, markup_end_iter)
-
-        # Check that there is a selection
-        assert self.day_text_buffer.get_selection_bounds()
-
-        # Add the markup around the selected text
-        insert_bound = self.day_text_buffer.get_insert()
-        selection_bound = self.day_text_buffer.get_selection_bound()
-        self.insert(markup, insert_bound)
-        self.insert(markup, selection_bound)
-
-        # Set the selection to the formatted text
-        iter1, iter2 = self.get_selection_bounds()
-        selection_start_iter = iter2.copy()
-        selection_end_iter = iter2.copy()
-        selection_start_iter.backward_chars(len(selected_text) + len(markup))
-        selection_end_iter.backward_chars(len(markup))
-        self.set_selection(selection_start_iter, selection_end_iter)
+        text = self.get_selected_text() or ' '
+        self.replace_selection_and_highlight(markup, text, markup)
 
     def set_font_size(self, size):
         if size <= 0:

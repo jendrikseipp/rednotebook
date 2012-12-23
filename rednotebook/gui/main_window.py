@@ -677,7 +677,7 @@ class MainWindow(object):
                 text = '%s%s%s' % (markup, text, markup)
                 self.categories_tree_view.set_iter_value(iter, text)
             elif focus == self.day_text_field.day_text_view:
-                self.day_text_field.apply_format(format, markup)
+                self.day_text_field.apply_format(markup)
             else:
                 self.journal.show_message(_('No text or tag has been selected.'),
                                           error=True)
