@@ -93,6 +93,7 @@ MATHJAX_FINISHED = 'MathJax finished'
 # Using defaults:
 #       displayMath: [ ['$$','$$'], ['\[','\]'] ]
 #       inlineMath:  [['\(','\)']]
+MATHJAX_DELIMITERS = ['$$', '\\(', '\\)', r'\\[', '\\]']
 MATHJAX = """\
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -286,16 +287,13 @@ def convert(txt, target, headers=None, options=None):
     '''
     Code partly taken from txt2tags tarball
     '''
-    add_mathjax = FORMULAS_SUPPORTED and 'html' in target and '$' in txt
+    # Only add MathJax code if there is a formula.
+    add_mathjax = (FORMULAS_SUPPORTED and 'html' in target and
+                   any(x in txt for x in MATHJAX_DELIMITERS))
+    logging.debug('add_mathjax: %s' % add_mathjax)
 
     # Here is the marked body text, it must be a list.
     txt = txt.split('\n')
-
-    # Only add MathJax code if there is a formula.
-    if add_mathjax:
-        if all(line.count('$') < 2 for line in txt):
-            add_mathjax = False
-    logging.debug('add_mathjax: %s' % add_mathjax)
 
     # Set the three header fields
     if headers is None:
