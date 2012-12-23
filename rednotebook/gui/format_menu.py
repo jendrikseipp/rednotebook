@@ -1,0 +1,125 @@
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------
+# Copyright (c) 2012  Jendrik Seipp
+#
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# -----------------------------------------------------------------------
+
+import os
+
+import gtk
+
+from rednotebook.util import filesystem
+
+
+XML = '''\
+<ui>
+<popup action="FormatMenu">
+    <menuitem action="Bold"/>
+    <menuitem action="Italic"/>
+    <menuitem action="Underline"/>
+    <menuitem action="Strikethrough"/>
+</popup>
+</ui>'''
+
+
+class FormatMenu(object):
+    def __init__(self, main_window):
+        self.main_window = main_window
+        self.setup()
+
+    def setup(self):
+        '''
+        See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
+        A popup menu cannot show accelerators (HIG).
+        '''
+
+        uimanager = self.main_window.uimanager
+
+        # Create an ActionGroup
+        actiongroup = gtk.ActionGroup('FormatActionGroup')
+
+        def tmpl(word):
+            return word + ' (Ctrl+%s)' % word[0]
+
+        def apply_format(action, format='bold'):
+            format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__',
+                                'strikethrough': '--'}
+            if type(action) == gtk.Action:
+                format = action.get_name().lower()
+
+            markup = format_to_markup[format]
+
+            focus = self.main_window.main_frame.get_focus()
+            iter = self.main_window.categories_tree_view.get_selected_node()
+
+            if isinstance(focus, gtk.Entry):
+                entry = focus
+                pos = entry.get_position()
+                # bounds can be an empty tuple
+                bounds = entry.get_selection_bounds() or (pos, pos)
+                selected_text = entry.get_chars(*bounds).decode('utf-8')
+                entry.delete_text(*bounds)
+                entry.insert_text('%s%s%s' % (markup, selected_text, markup), bounds[0])
+                # Set cursor after the end of the formatted text
+                entry.set_position(bounds[0] + len(markup) + len(selected_text))
+            elif focus == self.main_window.categories_tree_view.tree_view and iter:
+                text = self.main_window.categories_tree_view.get_iter_value(iter)
+                text = '%s%s%s' % (markup, text, markup)
+                self.main_window.categories_tree_view.set_iter_value(iter, text)
+            elif focus == self.main_window.day_text_field.day_text_view:
+                self.main_window.day_text_field.apply_format(markup)
+            else:
+                self.main_window.journal.show_message(_('No text or tag has been selected.'),
+                                          error=True)
+
+        def shortcut(char):
+            ### Translators: The Control (Ctrl) key
+            return ' (%s+%s)' % (_('Ctrl'), char)
+
+        # Create actions
+        actions = [
+            ('Bold', gtk.STOCK_BOLD, _('Bold') + shortcut('B'),
+             '<Control>B', None, apply_format),
+            ('Italic', gtk.STOCK_ITALIC, _('Italic') + shortcut('I'),
+             '<Control>I', None, apply_format),
+            ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'),
+             '<Control>U', None, apply_format),
+            ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
+             '<Control>K', None, apply_format)]
+
+        actiongroup.add_actions(actions)
+
+        # Add the actiongroup to the uimanager
+        uimanager.insert_action_group(actiongroup, 0)
+
+        # Add a UI description
+        uimanager.add_ui_from_string(XML)
+
+        # Create a Menu
+        menu = uimanager.get_widget('/FormatMenu')
+
+        #single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
+        self.main_window.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
+        ### Translators: noun
+        self.main_window.format_toolbutton.set_label(_('Format'))
+        tip = _('Format the selected text or tag')
+        self.main_window.format_toolbutton.set_tooltip_text(tip)
+        self.main_window.format_toolbutton.set_menu(menu)
+        bold_func = apply_format#lambda widget: self.main_window.day_text_field.apply_format('bold')
+        self.main_window.format_toolbutton.connect('clicked', bold_func)
+        edit_toolbar = self.main_window.builder.get_object('edit_toolbar')
+        edit_toolbar.insert(self.main_window.format_toolbutton, -1)
+        self.main_window.format_toolbutton.show()

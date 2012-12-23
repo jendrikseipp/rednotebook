@@ -42,7 +42,8 @@ from rednotebook.gui import browser
 from rednotebook.gui import search
 from rednotebook.gui.editor import Editor
 from rednotebook.gui.clouds import Cloud
-from rednotebook.gui import insert
+from rednotebook.gui import insert_menu
+from rednotebook.gui import format_menu
 
 test_zeitgeist = False
 if test_zeitgeist:
@@ -146,9 +147,8 @@ class MainWindow(object):
 
         self.setup_clouds()
         self.setup_search()
-        insert_menu = insert.InsertMenu(self)
-        insert_menu.setup()
-        self.setup_format_menu()
+        insert_menu.InsertMenu(self)
+        format_menu.FormatMenu(self)
 
         # Create an event->method dictionary and connect it to the widgets
         dic = {
@@ -625,96 +625,6 @@ class MainWindow(object):
     def on_template_button_clicked(self, widget):
         text = self.template_manager.get_weekday_text()
         self.day_text_field.insert(text)
-
-
-    def setup_format_menu(self):
-        '''
-        See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
-        A popup menu cannot show accelerators (HIG).
-        '''
-
-        format_menu_xml = '''
-        <ui>
-        <popup action="FormatMenu">
-            <menuitem action="Bold"/>
-            <menuitem action="Italic"/>
-            <menuitem action="Underline"/>
-            <menuitem action="Strikethrough"/>
-        </popup>
-        </ui>'''
-
-        uimanager = self.uimanager
-
-        # Create an ActionGroup
-        actiongroup = gtk.ActionGroup('FormatActionGroup')
-
-        def tmpl(word):
-            return word + ' (Ctrl+%s)' % word[0]
-
-        def apply_format(action, format='bold'):
-            format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__',
-                                'strikethrough': '--'}
-            if type(action) == gtk.Action:
-                format = action.get_name().lower()
-
-            markup = format_to_markup[format]
-
-            focus = self.main_frame.get_focus()
-            iter = self.categories_tree_view.get_selected_node()
-
-            if isinstance(focus, gtk.Entry):
-                entry = focus
-                pos = entry.get_position()
-                # bounds can be an empty tuple
-                bounds = entry.get_selection_bounds() or (pos, pos)
-                selected_text = entry.get_chars(*bounds).decode('utf-8')
-                entry.delete_text(*bounds)
-                entry.insert_text('%s%s%s' % (markup, selected_text, markup), bounds[0])
-                # Set cursor after the end of the formatted text
-                entry.set_position(bounds[0] + len(markup) + len(selected_text))
-            elif focus == self.categories_tree_view.tree_view and iter:
-                text = self.categories_tree_view.get_iter_value(iter)
-                text = '%s%s%s' % (markup, text, markup)
-                self.categories_tree_view.set_iter_value(iter, text)
-            elif focus == self.day_text_field.day_text_view:
-                self.day_text_field.apply_format(markup)
-            else:
-                self.journal.show_message(_('No text or tag has been selected.'),
-                                          error=True)
-
-        def shortcut(char):
-            ### Translators: The Control (Ctrl) key
-            return ' (%s+%s)' % (_('Ctrl'), char)
-
-        # Create actions
-        actions = [ ('Bold', gtk.STOCK_BOLD, _('Bold') + shortcut('B'), '<Control>B', None, apply_format),
-                    ('Italic', gtk.STOCK_ITALIC, _('Italic') + shortcut('I'), '<Control>I', None, apply_format),
-                    ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'), '<Control>U', None, apply_format),
-                    ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'), '<Control>K', None, apply_format)]
-
-        actiongroup.add_actions(actions)
-
-        # Add the actiongroup to the uimanager
-        uimanager.insert_action_group(actiongroup, 0)
-
-        # Add a UI description
-        uimanager.add_ui_from_string(format_menu_xml)
-
-        # Create a Menu
-        menu = uimanager.get_widget('/FormatMenu')
-
-        #single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
-        self.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
-        ### Translators: noun
-        self.format_toolbutton.set_label(_('Format'))
-        tip = _('Format the selected text or tag')
-        self.format_toolbutton.set_tooltip_text(tip)
-        self.format_toolbutton.set_menu(menu)
-        bold_func = apply_format#lambda widget: self.day_text_field.apply_format('bold')
-        self.format_toolbutton.connect('clicked', bold_func)
-        edit_toolbar = self.builder.get_object('edit_toolbar')
-        edit_toolbar.insert(self.format_toolbutton, -1)
-        self.format_toolbutton.show()
 
     def on_add_new_entry_button_clicked(self, widget):
         self.categories_tree_view._on_add_entry_clicked(None)
