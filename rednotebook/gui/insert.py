@@ -304,9 +304,8 @@ class InsertMenu(object):
         return '\n=== ', sel_text or _('Header'), ' ===\n'
 
     def on_insert_formula(self, sel_text):
-        if sel_text:
-            return '\\(%s\\)' % sel_text
-        return '\\(\\sum_{i=1}^n i = \\frac{n(n+1)}{2}\\)'
+        formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'
+        return '\\(', formula, '\\)'
 
     def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
