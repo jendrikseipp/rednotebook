@@ -48,6 +48,11 @@ CSS = """\
     body {
         font-family: Ubuntu, Helvetica, Arial, sans-serif;
     }
+    <!-- Don't split last line between pages.
+         This fix is only supported by Opera -->
+    p {
+        page-break-inside: avoid;
+    }
     blockquote {
         margin: 1em 2em;
         border-left: 2px solid #999;
