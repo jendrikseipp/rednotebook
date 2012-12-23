@@ -31,6 +31,7 @@ XML = '''\
     <menuitem action="Italic"/>
     <menuitem action="Underline"/>
     <menuitem action="Strikethrough"/>
+    <menuitem action="Clear"/>
 </popup>
 </ui>'''
 
@@ -98,7 +99,9 @@ class FormatMenu(object):
             ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'),
              '<Control>U', None, apply_format),
             ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
-             '<Control>K', None, apply_format)]
+             '<Control>K', None, apply_format),
+            ('Clear', gtk.STOCK_CLEAR, _('Clear') + shortcut('R'),
+             '<Control>R', None, self.on_clear_format)]
 
         actiongroup.add_actions(actions)
 
@@ -118,8 +121,15 @@ class FormatMenu(object):
         tip = _('Format the selected text or tag')
         self.main_window.format_toolbutton.set_tooltip_text(tip)
         self.main_window.format_toolbutton.set_menu(menu)
-        bold_func = apply_format#lambda widget: self.main_window.day_text_field.apply_format('bold')
+        bold_func = apply_format
         self.main_window.format_toolbutton.connect('clicked', bold_func)
         edit_toolbar = self.main_window.builder.get_object('edit_toolbar')
         edit_toolbar.insert(self.main_window.format_toolbutton, -1)
         self.main_window.format_toolbutton.show()
+
+    def on_clear_format(self, action):
+        editor = self.main_window.day_text_field
+        sel_text = editor.get_selected_text()
+        for markup in ['**', '__', '//', '--', '=== ', ' ===']:
+            sel_text = sel_text.replace(markup, '')
+        editor.replace_selection(sel_text)
