@@ -24,16 +24,26 @@ import gtk
 from rednotebook.util import filesystem
 
 
-XML = '''\
-<ui>
-<popup action="FormatMenu">
+MENUITEMS_XML = '''\
     <menuitem action="Bold"/>
     <menuitem action="Italic"/>
     <menuitem action="Underline"/>
     <menuitem action="Strikethrough"/>
     <menuitem action="Clear"/>
+'''
+
+TOOLBAR_XML = '''\
+<ui>
+<popup action="FormatMenu">
+%s
 </popup>
-</ui>'''
+</ui>''' % MENUITEMS_XML
+
+MENUBAR_XML = '''\
+<menu action="FormatMenuBar">
+%s
+</menu>
+''' % MENUITEMS_XML
 
 
 class FormatMenu(object):
@@ -100,8 +110,11 @@ class FormatMenu(object):
              '<Control>U', None, apply_format),
             ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
              '<Control>K', None, apply_format),
+            ### Translators: Clear format
             ('Clear', gtk.STOCK_CLEAR, _('Clear') + shortcut('R'),
-             '<Control>R', None, self.on_clear_format)]
+             '<Control>R', None, self.on_clear_format),
+            ('FormatMenuBar', None, _('_Format')),
+             ]
 
         actiongroup.add_actions(actions)
 
@@ -109,7 +122,7 @@ class FormatMenu(object):
         uimanager.insert_action_group(actiongroup, 0)
 
         # Add a UI description
-        uimanager.add_ui_from_string(XML)
+        uimanager.add_ui_from_string(TOOLBAR_XML)
 
         # Create a Menu
         menu = uimanager.get_widget('/FormatMenu')

@@ -24,22 +24,30 @@ import gtk
 from rednotebook.util import filesystem
 
 
-XML = '''\
-<ui>
-<popup action="InsertMenu">
+MENUITEMS_XML = '''\
     <menuitem action="Picture"/>
     <menuitem action="File"/>
     <menuitem action="Link"/>
     <menuitem action="BulletList"/>
-    %(numlist_ui)s
     <menuitem action="Title"/>
     <menuitem action="Line"/>
-    %(table_ui)s
-    %(formula_ui)s
     <menuitem action="Date"/>
     <menuitem action="LineBreak"/>
+'''
+
+TOOLBAR_XML = '''\
+<ui>
+<popup action="InsertMenu">
+%s
 </popup>
-</ui>'''
+</ui>
+''' % MENUITEMS_XML
+
+MENUBAR_XML = '''\
+<menu action="InsertMenuBar">
+%s
+</menu>
+''' % MENUITEMS_XML
 
 
 def get_image(name):
@@ -64,13 +72,6 @@ class InsertMenu(object):
         See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
         A popup menu cannot show accelerators (HIG).
         '''
-
-        numlist_ui = '' #'<menuitem action="NumberedList"/>'
-        table_ui = '' # '<menuitem action="Table"/>'
-        formula_ui = '' #'<menuitem action="Formula"/>'
-
-        insert_menu_xml = XML % locals()
-
         uimanager = self.main_window.uimanager
 
         # Add the accelerator group to the toplevel window
@@ -109,30 +110,31 @@ class InsertMenu(object):
                 self.get_insert_handler(self.on_insert_link)),
             ('BulletList', None, _('Bullet List'), None, None,
                 self.get_insert_handler(self.on_insert_bullet_list)),
-            ('NumberedList', None, _('Numbered List'), None, None,
-                self.get_insert_handler(self.on_insert_numbered_list)),
+            #('NumberedList', None, _('Numbered List'), None, None,
+            #    self.get_insert_handler(self.on_insert_numbered_list)),
             ('Title', None, _('Title'), None, None,
                 self.get_insert_handler(self.on_insert_title)),
             ('Line', None, _('Line'), None,
                 _('Insert a separator line'),
                 self.get_insert_handler(lambda sel_text: line)),
-            ('Table', None, _('Table'), None, None,
-                self.get_insert_handler(lambda sel_text: table)),
-            ('Formula', None, _('Latex Formula'), None, None,
-                self.get_insert_handler(self.on_insert_formula)),
+            #('Table', None, _('Table'), None, None,
+            #    self.get_insert_handler(lambda sel_text: table)),
+            #('Formula', None, _('Latex Formula'), None, None,
+            #    self.get_insert_handler(self.on_insert_formula)),
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
                 self.get_insert_handler(self.on_insert_date_time)),
             ('LineBreak', None, _('Line Break'), None,
                 _('Insert a manual line break'),
                 self.get_insert_handler(lambda sel_text: line_break)),
+            ('InsertMenuBar', None, _('_Insert')),
             ])
 
         # Add the actiongroup to the uimanager
         uimanager.insert_action_group(self.main_window.insert_actiongroup, 0)
 
         # Add a UI description
-        uimanager.add_ui_from_string(insert_menu_xml)
+        uimanager.add_ui_from_string(TOOLBAR_XML)
 
         # Create a Menu
         menu = uimanager.get_widget('/InsertMenu')

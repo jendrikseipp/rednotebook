@@ -27,64 +27,64 @@ from rednotebook.util import filesystem
 from rednotebook.util import markup
 from rednotebook import storage
 #from rednotebook.gui.imports import ImportAssistant
+from rednotebook.gui import insert_menu
+from rednotebook.gui import format_menu
+
+
+MENUBAR_XML = '''\
+<ui>
+<menubar name="MainMenuBar">
+    <menu action="Journal">
+        <menuitem action="New"/>
+        <menuitem action="Open"/>
+        <separator/>
+        <menuitem action="Save"/>
+        <menuitem action="SaveAs"/>
+        <separator/>
+        <!--<menuitem action="Import"/>-->
+        <menuitem action="Export"/>
+        <menuitem action="Backup"/>
+        <menuitem action="Statistics"/>
+        <separator/>
+        <menuitem action="Quit"/>
+    </menu>
+    <menu action="Edit">
+        <menuitem action="Undo"/>
+        <menuitem action="Redo"/>
+        <separator/>
+        <menuitem action="Cut"/>
+        <menuitem action="Copy"/>
+        <menuitem action="Paste"/>
+        <separator/>
+        <menuitem action="Fullscreen"/>
+        <separator/>
+        <menuitem action="Find"/>
+        <separator/>
+        <menuitem action="Options"/>
+    </menu>
+    %s
+    %s
+    <menu action="HelpMenu">
+        <menuitem action="Help"/>
+        <separator/>
+        <menuitem action="OnlineHelp"/>
+        <menuitem action="Translate"/>
+        <menuitem action="ReportBug"/>
+        <separator/>
+        <menuitem action="Info"/>
+    </menu>
+</menubar>
+</ui>''' % (insert_menu.MENUBAR_XML, format_menu.MENUBAR_XML)
 
 
 class MainMenuBar(object):
-
     def __init__(self, main_window, *args, **kwargs):
         self.main_window = main_window
         self.uimanager = main_window.uimanager
         self.journal = self.main_window.journal
-        self.menubar = None
+        self.setup()
 
-    def get_menu_bar(self):
-
-        if self.menubar:
-            return self.menubar
-
-        menu_xml = '''
-        <ui>
-        <menubar name="MainMenuBar">
-            <menu action="Journal">
-                <menuitem action="New"/>
-                <menuitem action="Open"/>
-                <separator/>
-                <menuitem action="Save"/>
-                <menuitem action="SaveAs"/>
-                <separator/>
-                <!--<menuitem action="Import"/>-->
-                <menuitem action="Export"/>
-                <menuitem action="Backup"/>
-                <menuitem action="Statistics"/>
-                <separator/>
-                <menuitem action="Quit"/>
-            </menu>
-            <menu action="Edit">
-                <menuitem action="Undo"/>
-                <menuitem action="Redo"/>
-                <separator/>
-                <menuitem action="Cut"/>
-                <menuitem action="Copy"/>
-                <menuitem action="Paste"/>
-                <separator/>
-                <menuitem action="Fullscreen"/>
-                <separator/>
-                <menuitem action="Find"/>
-                <separator/>
-                <menuitem action="Options"/>
-            </menu>
-            <menu action="HelpMenu">
-                <menuitem action="Help"/>
-                <separator/>
-                <menuitem action="OnlineHelp"/>
-                <menuitem action="Translate"/>
-                <menuitem action="ReportBug"/>
-                <separator/>
-                <menuitem action="Info"/>
-            </menu>
-        </menubar>
-        </ui>'''
-
+    def get_actiongroup(self):
         # Create an ActionGroup
         actiongroup = gtk.ActionGroup('MainMenuActionGroup')
 
@@ -134,7 +134,6 @@ class MainMenuBar(object):
                 None, None, self.on_find_menuitem_activate),
             ('Options', gtk.STOCK_PREFERENCES, None,
                 '<Ctrl><Alt>p', None, self.on_options_menuitem_activate),
-
             ('HelpMenu', None, _('_Help')),
             ('Help', gtk.STOCK_HELP, _('Contents'),
                 '<Ctrl>h', _('Open the RedNotebook documentation'), self.on_help_menu_item_activate),
@@ -149,16 +148,17 @@ class MainMenuBar(object):
             ('Info', gtk.STOCK_ABOUT, None,
                 None, None, self.on_info_activate),
             ])
+        return actiongroup
 
+    def setup(self):
         # Add the actiongroup to the uimanager
-        self.uimanager.insert_action_group(actiongroup, 0)
+        self.uimanager.insert_action_group(self.get_actiongroup(), 0)
 
         # Add a UI description
-        self.uimanager.add_ui_from_string(menu_xml)
+        self.uimanager.add_ui_from_string(MENUBAR_XML)
 
-        # Create a Menu
-        self.menubar = self.uimanager.get_widget('/MainMenuBar')
-        return self.menubar
+    def get_menu_bar(self):
+        return self.uimanager.get_widget('/MainMenuBar')
 
     def check_journal_dir(self, action, new_dir):
         if not new_dir:

@@ -84,6 +84,10 @@ class MainWindow(object):
 
         self.uimanager = gtk.UIManager()
 
+        # Before fetching the menubar, add all menus and actiongroups.
+        # Setup the toolbar items first to avoid warnings for missing actions.
+        insert_menu.InsertMenu(self)
+        format_menu.FormatMenu(self)
         self.menubar_manager = MainMenuBar(self)
         self.menubar = self.menubar_manager.get_menu_bar()
         main_vbox = self.builder.get_object('vbox3')
@@ -91,7 +95,6 @@ class MainWindow(object):
         main_vbox.reorder_child(self.menubar, 0)
 
         self.undo_redo_manager = undo.UndoRedoManager(self)
-
 
         self.calendar = Calendar(self.journal, self.builder.get_object('calendar'))
         self.day_text_field = DayEditor(self.builder.get_object('day_text_view'),
@@ -147,8 +150,6 @@ class MainWindow(object):
 
         self.setup_clouds()
         self.setup_search()
-        insert_menu.InsertMenu(self)
-        format_menu.FormatMenu(self)
 
         # Create an event->method dictionary and connect it to the widgets
         dic = {
