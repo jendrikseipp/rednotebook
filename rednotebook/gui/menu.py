@@ -103,8 +103,8 @@ class MainMenuBar(object):
                 None, _('Save journal at a new location. The old journal files will also be saved'),
                 self.on_save_as_menu_item_activate),
             ### Translators: Verb
-            ('Import', gtk.STOCK_ADD, _('_Import'),
-                None, _('Open the import assistant'), self.on_import_menu_item_activate),
+            #('Import', gtk.STOCK_ADD, _('_Import'),
+            #    None, _('Open the import assistant'), self.on_import_menu_item_activate),
             ### Translators: Verb
             ('Export', gtk.STOCK_CONVERT, _('Export'),
                 '<Ctrl>e', _('Open the export assistant'), self.on_export_menu_item_activate),
