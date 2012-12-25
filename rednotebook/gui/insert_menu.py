@@ -22,6 +22,7 @@ import os
 import gtk
 
 from rednotebook.util import filesystem
+from rednotebook.util import dates 
 
 
 MENUITEMS_XML = '''\
@@ -83,13 +84,13 @@ class InsertMenu(object):
 
         line = '\n====================\n'
 
-        table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
-                   '| 1               | more than 1     | Align left   |\n'
-                   '|     more than 1 |               1 |   Align right |\n'
-                   '|   more than 1   |   more than 1   |   Center   |\n'
-                   '|| Title rows | are always | centered |\n'
-                   '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
-                   '|  Always use  |  at least  |  one whitespace  |\n')
+        #table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
+        #           '| 1               | more than 1     | Align left   |\n'
+        #           '|     more than 1 |               1 |   Align right |\n'
+        #           '|   more than 1   |   more than 1   |   Center   |\n'
+        #           '|| Title rows | are always | centered |\n'
+        #           '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
+        #           '|  Always use  |  at least  |  one whitespace  |\n')
 
         line_break = r'\\'
 
