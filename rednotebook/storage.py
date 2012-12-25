@@ -35,6 +35,7 @@ except ImportError:
 try:
     from yaml import CLoader as Loader
     from yaml import CSafeDumper as Dumper
+    assert Loader and Dumper  # silence pyflakes
 except ImportError:
     from yaml import Loader, Dumper
     logging.info('Using pyyaml for loading and dumping')
@@ -76,7 +77,7 @@ def _load_month_from_disk(path, year_number, month_number):
     except IOError:
         #If that fails, there is nothing to load, so just display an error message
         logging.error('Error: The file %s could not be read' % path)
-    except Exception, err:
+    except Exception:
         logging.error('An error occured while reading %s:' % path)
         raise
     # If we continued here, the possibly corrupted file would be overwritten

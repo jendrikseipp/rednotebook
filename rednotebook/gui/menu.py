@@ -248,9 +248,9 @@ class MainMenuBar(object):
     def on_backup_activate(self, widget):
         self.journal.archiver.backup()
 
-    def on_import_menu_item_activate(self, widget):
-        assistant = ImportAssistant(self.journal)
-        assistant.run()
+    #def on_import_menu_item_activate(self, widget):
+    #    assistant = ImportAssistant(self.journal)
+    #    assistant.run()
 
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()

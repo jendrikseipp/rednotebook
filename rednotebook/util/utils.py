@@ -20,7 +20,7 @@
 import signal
 import os
 import re
-from urllib2 import urlopen, URLError
+from urllib2 import urlopen
 import webbrowser
 import logging
 from optparse import IndentedHelpFormatter

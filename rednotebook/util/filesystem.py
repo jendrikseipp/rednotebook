@@ -25,7 +25,6 @@ import subprocess
 import logging
 import codecs
 import webbrowser
-from glob import glob
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or 'UTF-8'
 REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
@@ -144,6 +143,7 @@ def read_file(filename):
 
     try:
         import chardet
+        assert chardet  # silence pyflakes
     except ImportError:
         logging.info("chardet not found. 'utf-8' encoding will be assumed")
         chardet = None

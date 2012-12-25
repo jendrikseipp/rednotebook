@@ -37,6 +37,7 @@ logging.basicConfig(level=logging.INFO,
 # Allow importing from rednotebook package
 if hasattr(sys, "frozen"):
     from rednotebook.util import filesystem
+    assert filesystem  # silence pyflakes
 else:
     from util import filesystem
 
