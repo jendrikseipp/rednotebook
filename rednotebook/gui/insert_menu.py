@@ -94,7 +94,7 @@ class InsertMenu(object):
         line_break = r'\\'
 
         def tmpl(letter):
-            return ' (Ctrl+%s)' % letter
+            return ''  # return ' (Ctrl+%s)' % letter
 
         # Create actions
         self.main_window.insert_actiongroup.add_actions([

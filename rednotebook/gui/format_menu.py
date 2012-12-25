@@ -98,7 +98,7 @@ class FormatMenu(object):
 
         def shortcut(char):
             ### Translators: The Control (Ctrl) key
-            return ' (%s+%s)' % (_('Ctrl'), char)
+            return ''  # return ' (%s+%s)' % (_('Ctrl'), char)
 
         # Create actions
         actions = [
