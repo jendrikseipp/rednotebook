@@ -8,15 +8,16 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.6.5
-X Add toolbar item for clearing the text format.
+X Add menu item for clearing the text format.
 X Add toolbar menus "Insert" and "Format" to main menu for better accessibility and HUD integration.
 x Only show keyboard shortcuts in main menu, not in toolbar menus.
 X Use selected text as link name when a new link is inserted.
 X When an image or file is inserted, use selected text as the name of the link.
-X Change file permissions so that journal files are only readable by the user.
-X Format selected text as header in the insert menu.
+X Format selected text as header when a header is inserted.
 X Convert selected text to a list when a list is inserted.
 X Select title after it has been inserted to allow for easy editing.
+X Change file permissions so that journal files are only readable by the user.
+X Windows: Restore slider positions after opening RedNotebook from the tray.
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
@@ -34,6 +35,9 @@ X Numbered lists
 X Add quotes by indenting them with a tab
 O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
   Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
+  Design: Toolbar menu contains template1, template2, ..., create-new.
+  When user clicks on a template we show it in the edit window with buttons
+  save+insert, save, abort.
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.

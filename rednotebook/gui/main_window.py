@@ -271,9 +271,7 @@ class MainWindow(object):
         if self.main_frame.get_property('visible'):
             self.hide()
         else:
-            self.main_frame.show()
-            if self.position:
-                self.main_frame.move(*self.position)
+            self.show()
 
     def on_tray_popup_menu(self, status_icon, button, activate_time):
         '''
@@ -294,7 +292,7 @@ class MainWindow(object):
         # Create actions
         actiongroup.add_actions([
             ('Show', gtk.STOCK_MEDIA_PLAY, _('Show RedNotebook'),
-                None, None, lambda widget: self.main_frame.show()),
+                None, None, lambda widget: self.show()),
             ('Quit', gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
             ])
 
@@ -310,17 +308,20 @@ class MainWindow(object):
         menu.popup(None, None, gtk.status_icon_position_menu,
                 button, activate_time, status_icon)
 
+    def show(self):
+        self.main_frame.show()
+        self.load_values_from_config()
+
     def hide(self):
-        self.position = self.main_frame.get_position()
+        self.add_values_to_config()
+        self.journal.save_to_disk()
         self.main_frame.hide()
-        self.journal.save_to_disk(exit_imminent=False)
 
     def on_main_frame_delete_event(self, widget, event):
         '''
         Exit if not close_to_tray
         '''
         logging.debug('Main frame destroyed')
-        #self.save_to_disk(exit_imminent=False)
 
         if self.journal.config.read('closeToTray', 0):
             self.hide()
@@ -335,7 +336,6 @@ class MainWindow(object):
         '''
         User selected quit from the menu -> exit unconditionally
         '''
-        #self.on_main_frame_destroy(None)
         self.journal.exit()
 
     # -------------------------------------------------------- TRAY-ICON / CLOSE

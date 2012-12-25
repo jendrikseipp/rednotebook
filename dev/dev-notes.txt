@@ -115,7 +115,3 @@ Implementation notes:
 - PyYAML saves each string as ascii if it only contains ascii chars.
   If there are unicode chars, a unicode object is saved.
 - The Days always turn their text into unicode before returning it.
-
-Insert/Change: Picture, File, Link, Bullet List, Title 
-
-Insert: Line, Date, Linebreak
