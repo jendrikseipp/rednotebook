@@ -76,8 +76,12 @@ class MainWindow(object):
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
-        icon = gtk.gdk.pixbuf_new_from_file(os.path.join(filesystem.frame_icon_dir,
-                                                         'rednotebook.svg'))
+        try:
+            icon = gtk.gdk.pixbuf_new_from_file(os.path.join(filesystem.frame_icon_dir,
+                                                             'rednotebook.svg'))
+        except gobject.GError:
+            icon = gtk.gdk.pixbuf_new_from_file(os.path.join(filesystem.frame_icon_dir,
+                                                             'rn-192.png'))
         self.main_frame.set_icon(icon)
 
         self.is_fullscreen = False
