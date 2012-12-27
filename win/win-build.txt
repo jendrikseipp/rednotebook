@@ -3,6 +3,7 @@
   * Download the PyGTK/GTK all-in-one installer and install the default subpackages.
     [http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/]
   * Use the webkit libs from midori and copy them to the GTK runtime dir.
+  * Unpack pygtkaio.7z/PYWEBKITGTK/Python27/gtk-2.0/webkit to C:\Python27\Lib\site-packages\webkit.
   * Install PyYaml for Python 2.7 from [http://pyyaml.org/wiki/PyYAML]
   * Install Bzr for Python 2.7 with TortoiseBzr (https://launchpad.net/bzr/+download)
   * Download the chardet package and add the "chardet" directory to C:\Python27\Lib\site-packages
@@ -14,7 +15,7 @@
   * Select "Bazaar Checkout or Branch" and branch the repo "lp:rednotebook"
   * Open a terminal window and navigate to PathToRedNotebook\rednotebook
   * Execute "python journal.py"
-  * If you don't need a .exe file and no translations you're done.
+  * If you don't need an .exe file and no translations you're done.
 
 == Build Exe ==
   * Microsoft Visual Studio files:
