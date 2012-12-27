@@ -34,7 +34,7 @@ def get_unicode_path(path):
     return unicode(path, ENCODING)
 
 def get_utf8_path(path):
-    return path.encode(ENCODING)
+    return path.encode('UTF-8')
 
 
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
@@ -52,13 +52,15 @@ def get_main_dir():
 
 if main_is_frozen():
     app_dir = get_main_dir()
-    locale_dir = os.path.join(app_dir, 'share', 'locale')
 else:
     app_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
     app_dir = os.path.normpath(app_dir)
-    locale_dir = os.path.join(sys.prefix, 'share', 'locale')
-
 app_dir = get_unicode_path(app_dir)
+
+if sys.platform.startswith('win'):
+    locale_dir = os.path.join(app_dir, 'share', 'locale')
+else:
+    locale_dir = os.path.join(sys.prefix, 'share', 'locale')
 
 image_dir = os.path.join(app_dir, 'images')
 frame_icon_dir = os.path.join(image_dir, 'rednotebook-icon')
