@@ -7,19 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.6.5
-X Add menu item for clearing the text format.
-X Add toolbar menus "Insert" and "Format" to main menu for better accessibility and HUD integration.
-x Only show keyboard shortcuts in main menu, not in toolbar menus.
-X Use selected text as link name when a new link is inserted.
-X When an image or file is inserted, use selected text as the name of the link.
-X Format selected text as header when a header is inserted.
-X Convert selected text to a list when a list is inserted.
-x Select title after it has been inserted to allow for easy editing.
-X Change file permissions so that journal files are only readable by the user.
-X Windows: Restore slider positions after opening RedNotebook from the tray.
-X Windows: Support non-ascii installation paths.
-
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
 O During saving: Delete old backup, move old file to new backup then save new file.

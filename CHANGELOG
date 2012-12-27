@@ -1,3 +1,16 @@
+== 1.6.5 (2012-12-27) ==
+* Add menu item for clearing the text format.
+* Add toolbar menus "Insert" and "Format" to main menu for better accessibility and HUD integration.
+* Only show keyboard shortcuts in main menu, not in toolbar menus.
+* Use selected text as link name when a new link is inserted.
+* When an image or file is inserted, use selected text as the name of the link.
+* Format selected text as header when a header is inserted.
+* Convert selected text to a list when a list is inserted.
+* Select title after it has been inserted to allow for easy editing.
+* Change file permissions so that journal files are only readable by the user.
+* Windows: Restore slider positions after opening RedNotebook from the tray.
+* Windows: Support non-ascii installation paths.
+
 == 1.6.4 (2012-12-22) ==
 * Never include previous RedNotebook backups in new backups.
 * Add strikethrough shortcut Ctrl+K.
