@@ -393,6 +393,7 @@ class MainWindow(object):
         template_button.set_sensitive(not preview)
         # Disable insert shortcuts in preview mode.
         self.insert_actiongroup.set_sensitive(not preview)
+        self.format_actiongroup.set_sensitive(not preview)
         self.single_menu_toolbutton.set_sensitive(not preview)
         self.format_toolbutton.set_sensitive(not preview)
 

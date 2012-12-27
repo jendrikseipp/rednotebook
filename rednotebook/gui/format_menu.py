@@ -135,6 +135,7 @@ class FormatMenu(object):
         edit_toolbar = self.main_window.builder.get_object('edit_toolbar')
         edit_toolbar.insert(self.main_window.format_toolbutton, -1)
         self.main_window.format_toolbutton.show()
+        self.main_window.format_actiongroup = actiongroup
 
     def on_clear_format(self, action):
         editor = self.main_window.day_text_field
