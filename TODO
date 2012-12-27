@@ -15,7 +15,7 @@ X Use selected text as link name when a new link is inserted.
 X When an image or file is inserted, use selected text as the name of the link.
 X Format selected text as header when a header is inserted.
 X Convert selected text to a list when a list is inserted.
-X Select title after it has been inserted to allow for easy editing.
+x Select title after it has been inserted to allow for easy editing.
 X Change file permissions so that journal files are only readable by the user.
 X Windows: Restore slider positions after opening RedNotebook from the tray.
 X Windows: Support non-ascii installation paths.
