@@ -218,7 +218,8 @@ above the main text field. The text will be inserted at the current
 cursor position.
 
 With the insert button you cannot insert **links to directories** on your computer.
-Those can be inserted manually however (``""[Home ""file:///home/""]""``).
+Those can be inserted manually however (``[Home ""file:///home/""]``
+becomes [Home ""file:///home/""]).
 
 == %(templates)s ==
 %(temp_par)s
