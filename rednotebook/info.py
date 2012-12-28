@@ -332,6 +332,14 @@ portable mode.
 To **activate portable mode**, change into the files/ directory and in the
 default.cfg file set portable=1.
 
+== Network drive ==
+Unfortunately, you cannot add links to files on network shares directly
+with the file selection dialog
+([Bug on launchpad ""https://bugs.launchpad.net/ubuntu/+source/gtk+2.0/+bug/304345""]).
+However, it is possible to enter links directly, for example
+``[U: ""file:///U:/""]`` to reference the mapped drive letter
+[U ""file:///U:/""].
+
 == Convert Latex output to PDF ==
 
 In recent RedNotebook versions you can export your journal directly to PDF,
