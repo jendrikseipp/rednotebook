@@ -3,6 +3,7 @@
 # We cannot "set -e", because we need to check grep's exit code.
 set -u
 
+cd "$(dirname "$0")"
 cd ../
 
 # Run tests
