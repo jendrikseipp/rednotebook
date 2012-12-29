@@ -293,5 +293,3 @@ class MainMenuBar(object):
         self.info_dialog.set_license(info.license_text)
         self.info_dialog.run()
         self.info_dialog.hide()
-
-

@@ -158,7 +158,11 @@ class Editor(object):
         end1 = bounds[1]
         end2 = bounds[1].copy()
         end2.forward_chars(length)
-        return (self.get_text(start1, start2), self.get_text(end1, end2))        
+        return (self.get_text(start1, start2), self.get_text(end1, end2))
+
+    @staticmethod
+    def sort_iters(*iters):
+        return sorted(iters, key=lambda iter: iter.get_offset())
 
     def get_selection_bounds(self):
         '''
@@ -169,15 +173,21 @@ class Editor(object):
         '''
         mark1 = self.day_text_buffer.get_insert()
         mark2 = self.day_text_buffer.get_selection_bound()
-
         iter1 = self.day_text_buffer.get_iter_at_mark(mark1)
         iter2 = self.day_text_buffer.get_iter_at_mark(mark2)
+        return self.sort_iters(iter1, iter2)
 
-        sort_by_position = lambda iter: iter.get_offset()
-        iter1, iter2 = sorted([iter1, iter2], key=sort_by_position)
-
-        assert iter1.get_offset() <= iter2.get_offset()
-        return (iter1, iter2)
+    def get_text_parts(self):
+        """
+        Return text before the selection, the selected text itself and
+        the text after the selection.
+        """
+        start = self.day_text_buffer.get_start_iter()
+        end = self.day_text_buffer.get_end_iter()
+        sel_start, sel_end = self.get_selection_bounds()
+        return (self.get_text(start, sel_start),
+                self.get_text(sel_start, sel_end),
+                self.get_text(sel_end, end))
 
     def apply_format(self, markup):
         text_around_selection = self.get_text_around_selected_text(2)

@@ -167,37 +167,95 @@ class TemplateManager(object):
     def __init__(self, main_window):
         self.main_window = main_window
 
+        self.main_window.template_bar.save_insert_button.connect('clicked', self.on_save_insert)
+        self.main_window.template_bar.save_button.connect('clicked', self.on_save)
+        self.main_window.template_bar.close_button.connect('clicked', self.on_close)
+
         self.dirs = main_window.journal.dirs
 
         self.merge_id = None
         self.actiongroup = None
+        self.tmp_title = None
+        self.tmp_parts = None
 
-    def on_insert(self, action):
-        title = unicode(action.get_name())
+    def set_template_menu_sensitive(self, sensitive):
+        if self.tmp_title:
+            sensitive = False
+        self.actiongroup.set_sensitive(sensitive)
+        self.main_window.template_menu_button.set_sensitive(sensitive)
 
-        # strip 'Insert'
-        title = title[6:]
+    def _set_widgets_sensitive(self, sensitive):
+        self.main_window.calendar.calendar.set_sensitive(sensitive)
+        journal_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Journal')
+        for child in journal_menu_item.get_submenu().get_children():
+            if isinstance(child, gtk.MenuItem):
+                action = child.get_action()
+                if action:
+                    action.set_sensitive(sensitive)
+        self.set_template_menu_sensitive(sensitive)
+        for widget in [
+                self.main_window.back_one_day_button,
+                self.main_window.today_button,
+                self.main_window.forward_one_day_button,
+                self.main_window.search_tree_view,
+                self.main_window.search_box.entry,
+                self.main_window.cloud,
+                self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Find').get_action(),
+                ]:
+            widget.set_sensitive(sensitive)
 
+    def enter_template_mode(self, title, parts):
+        # Save the templates title and the day's text.
+        self.tmp_title = title
+        self.tmp_parts = parts
+        self.main_window.template_bar.show()
         if title == 'Weekday':
             text = self.get_weekday_text()
         else:
             text = self.get_text(title)
-        self.main_window.day_text_field.insert(text)
+        self.main_window.undo_redo_manager.set_stack(title)
+        self.main_window.day_text_field.set_text(text, undoing=True)
+        self._set_widgets_sensitive(False)
 
-    def on_edit(self, action):
-        '''
-        Open the template file in an editor
-        '''
-        edit_title = unicode(action.get_name())
-        title = edit_title[4:]
+    def exit_template_mode(self):
+        self.tmp_title = None
+        self.tmp_parts = None
+        self.main_window.template_bar.hide()
+        if self.main_window.preview_mode:
+            self.main_window.change_mode(preview=False)
+        self.main_window.day_text_field.day_text_view.grab_focus()
+        self._set_widgets_sensitive(True)
 
-        if title == 'Weekday':
-            date = self.main_window.journal.date
-            week_day_number = date.weekday() + 1
-            title = str(week_day_number)
+    def _reset_undo_stack(self):
+        self.main_window.undo_redo_manager.set_stack(self.main_window.day.date)
 
-        filename = self.titles_to_files.get(title)
-        filesystem.open_url(filename)
+    def on_insert(self, action):
+        # Convert to unicode and strip 'Insert'.
+        title = unicode(action.get_name())[6:]
+        parts = self.main_window.day_text_field.get_text_parts()
+        self.enter_template_mode(title, parts)
+
+    def on_save_insert(self, button):
+        template = self.main_window.day_text_field.get_text()
+        p1, p2, p3 = self.tmp_parts
+        self._reset_undo_stack()
+        # Force addition of an undo item.
+        self.main_window.day_text_field.set_text(p1 + p2 + p3, undoing=True)
+        self.main_window.day_text_field.set_text(p1 + template + p3)
+        self.exit_template_mode()
+
+    def on_save(self, button):
+        template = self.main_window.day_text_field.get_text()
+        filename = self.titles_to_files.get(self.tmp_title)
+        assert filename is not None
+        filesystem.write_file(filename, template)
+
+    def on_close(self, button):
+        template = self.main_window.day_text_field.get_text()
+        p1, p2, p3 = self.tmp_parts
+        self._reset_undo_stack()
+        self.main_window.day_text_field.set_text(p1 + p2 + p3, undoing=True)
+        self.exit_template_mode()
 
     def on_new_template(self, action):
         dialog = gtk.Dialog(_('Choose Template Name'))
@@ -295,34 +353,18 @@ class TemplateManager(object):
         <popup action="TemplateMenu">'''
 
         insert_menu_xml = '''
-            <menu action="InsertMenu">
                 <menuitem action="InsertWeekday"/>
                 <separator name="sep4"/>'''
         for title in sorted_titles:
             if title not in map(str, range(1, 8)):
                 insert_menu_xml += '''
                 <menuitem action="Insert%s"/>''' % title
-        insert_menu_xml += '''
-            </menu>'''
 
         menu_xml += insert_menu_xml
 
         menu_xml += '''
             <separator name="sep5"/>
             <menuitem action="NewTemplate"/>'''
-
-        edit_menu_xml = '''
-            <menu action="EditMenu">
-                <menuitem action="EditWeekday"/>
-                <separator name="sep3"/>'''
-        for title in sorted_titles:
-            if title not in map(str, range(1,8)):
-                edit_menu_xml += '''
-                <menuitem action="Edit%s"/>''' % title
-        edit_menu_xml += '''
-            </menu>'''
-
-        menu_xml += edit_menu_xml
 
         menu_xml +='''
             <menuitem action="OpenTemplateDirectory"/>
@@ -342,35 +384,23 @@ class TemplateManager(object):
 
         for title in sorted_titles:
             insert_action = ('Insert' + title, None, title, None, None,
-                    lambda widget: self.on_insert(widget))
+                             self.on_insert)
             actions.append(insert_action)
-            edit_action = ('Edit' + title, None, title, None, None,
-                    lambda widget: self.on_edit(widget))
-            actions.append(edit_action)
 
         actions.append(('InsertWeekday', gtk.STOCK_HOME,
                         _("This Weekday's Template"), None, None,
-                        lambda widget: self.on_insert(widget)))
-
-        actions.append(('EditMenu', gtk.STOCK_EDIT, _('Edit Template'), None,
-                        None, None))
-
-        actions.append(('InsertMenu', gtk.STOCK_ADD, _('Insert Template'), None,
-                        None, None))
-
-        actions.append(('EditWeekday', gtk.STOCK_HOME, _("This Weekday's Template"),
-                    None, None, lambda widget: self.on_edit(widget)))
+                        self.on_insert))
 
         actions.append(('NewTemplate', gtk.STOCK_NEW, _('Create New Template'),
-                    None, None, lambda widget: self.on_new_template(widget)))
+                        None, None, lambda widget: self.on_new_template(widget)))
 
         actions.append(('OpenTemplateDirectory', gtk.STOCK_DIRECTORY,
-                    _('Open Template Directory'), None, None,
-                    lambda widget: self.on_open_template_dir()))
+                        _('Open Template Directory'), None, None,
+                        lambda widget: self.on_open_template_dir()))
 
         self.actiongroup.add_actions(actions)
 
-        # Remove the lasts ui description
+        # Remove the previous ui descriptions
         if self.merge_id:
             uimanager.remove_ui(self.merge_id)
 

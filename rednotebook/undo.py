@@ -41,18 +41,19 @@ class UndoRedoManager(object):
         self.undo_stacks = defaultdict(list)
         self.redo_stacks = defaultdict(list)
 
-        self.date = None
+        # Unique identifier for undo stacks. Can be a date or a template name.
+        self.current_stack = None
 
     @property
     def undo_stack(self):
-        return self.undo_stacks[self.date]
+        return self.undo_stacks[self.current_stack]
 
     @property
     def redo_stack(self):
-        return self.redo_stacks[self.date]
+        return self.redo_stacks[self.current_stack]
 
-    def set_date(self, date):
-        self.date = date
+    def set_stack(self, stack):
+        self.current_stack = stack
         self.update_buttons()
 
     def add_action(self, action):

@@ -365,3 +365,19 @@ class Assistant(gtk.Assistant):
         self.set_page_title(page, _('Introduction'))
         self.set_page_type(page, gtk.ASSISTANT_PAGE_INTRO)
         self.set_page_complete(page, True)
+
+
+class TemplateBar(gtk.HBox):
+    def __init__(self):
+        gtk.HBox.__init__(self)
+        self.set_spacing(2)
+        label = gtk.Label('<b>%s</b>:' % _('Template'))
+        label.set_use_markup(True)
+        self.pack_start(label, False, False)
+        self.save_insert_button = gtk.Button(_('Save and insert'))
+        self.pack_start(self.save_insert_button, False, False)
+        self.save_button = gtk.Button(stock=gtk.STOCK_SAVE)
+        self.pack_start(self.save_button, False, False)
+        self.close_button = gtk.Button(stock=gtk.STOCK_CLOSE)
+        self.pack_start(self.close_button, False, False)
+        self.show_all()

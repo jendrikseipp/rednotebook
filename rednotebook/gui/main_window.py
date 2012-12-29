@@ -143,6 +143,12 @@ class MainWindow(object):
         else:
             self.infobar = self.statusbar
 
+        # Add TemplateBar.
+        self.template_bar = customwidgets.TemplateBar()
+        self.text_vbox.pack_start(self.template_bar, False, False)
+        self.text_vbox.reorder_child(self.template_bar, 1)
+        self.template_bar.hide()
+
         self.load_values_from_config()
 
         if not self.journal.start_minimized:
@@ -390,7 +396,7 @@ class MainWindow(object):
             preview_button.show()
             edit_button.hide()
 
-        template_button.set_sensitive(not preview)
+        self.template_manager.set_template_menu_sensitive(not preview)
         # Disable insert shortcuts in preview mode.
         self.insert_actiongroup.set_sensitive(not preview)
         self.format_actiongroup.set_sensitive(not preview)
@@ -662,7 +668,7 @@ class MainWindow(object):
         if self.zeitgeist_widget:
             self.zeitgeist_widget.set_date(new_date)
 
-        self.undo_redo_manager.set_date(new_date)
+        self.undo_redo_manager.set_stack(new_date)
 
     def get_day_text(self):
         return self.day_text_field.get_text()
