@@ -35,8 +35,8 @@ class UndoRedoManager(object):
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.undo_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo')
-        self.redo_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo')
+        self.undo_action = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo').get_action()
+        self.redo_action = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo').get_action()
 
         self.undo_stacks = defaultdict(list)
         self.redo_stacks = defaultdict(list)
@@ -73,10 +73,7 @@ class UndoRedoManager(object):
         self.update_buttons()
 
     def undo(self, *args):
-        if not self.can_undo():
-            logging.info('There is nothing to undo')
-            return
-
+        assert self.can_undo()
         logging.debug('Undo')
 
         action = self.undo_stack.pop()
@@ -86,10 +83,7 @@ class UndoRedoManager(object):
         self.update_buttons()
 
     def redo(self, *args):
-        if not self.can_redo():
-            logging.info('There is nothing to redo')
-            return
-
+        assert self.can_redo()
         logging.debug('Redo')
 
         action = self.redo_stack.pop()
@@ -105,5 +99,5 @@ class UndoRedoManager(object):
         return len(self.redo_stack) > 0
 
     def update_buttons(self):
-        self.undo_menu_item.set_sensitive(self.can_undo())
-        self.redo_menu_item.set_sensitive(self.can_redo())
+        self.undo_action.set_sensitive(self.can_undo())
+        self.redo_action.set_sensitive(self.can_redo())
