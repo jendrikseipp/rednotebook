@@ -1,3 +1,11 @@
+#! /bin/bash
+#
+# Needs intltool package.
+
+set -e
+set -u
+
+cd "$(dirname "$0")"
 cd ../po
 
 # Get strings from glade file into helper file
