@@ -7,559 +7,100 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-11-02 14:00+0100\n"
+"POT-Creation-Date: 2012-12-30 02:40+0100\n"
 "PO-Revision-Date: 2012-11-13 10:46+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-21 04:52+0000\n"
+"X-Launchpad-Export-Date: 2012-12-30 05:21+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
-#: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
-msgid "Tags"
-msgstr "תגיות"
+#: ../rednotebook/backup.py:55
+msgid "It has been a while since you made your last backup."
+msgstr "עבר זמן מה מאז ביצעת את הגיבוי האחרון שלך."
 
-#: ../rednotebook/info.py:74
-msgid "Work"
-msgstr "עבודה"
+#: ../rednotebook/backup.py:56
+msgid "You can backup your journal to a zip file to avoid data loss."
+msgstr "באפשרותך לגבות את היומן שלך לקובץ zip כדי להימנע מאבדן מידע."
 
-#: ../rednotebook/info.py:75
-msgid "Free time"
-msgstr "זמן פנאי"
+#: ../rednotebook/backup.py:61
+msgid "Backup"
+msgstr "גיבוי"
 
-#: ../rednotebook/info.py:76
-msgid "Todo"
-msgstr "מטלות"
+#: ../rednotebook/backup.py:63
+msgid "Backup now"
+msgstr "גיבוי כעת"
 
-#: ../rednotebook/info.py:77
-msgid "Done"
-msgstr "בוצע"
+#: ../rednotebook/backup.py:64
+msgid "Ask at next start"
+msgstr "הצגת השאלה בהפעלה הבאה"
 
-#: ../rednotebook/info.py:78
-msgid "Remember the milk"
-msgstr "Remember the milk"
+#: ../rednotebook/backup.py:65
+msgid "Never ask again"
+msgstr "לא לשאול שוב"
 
-#: ../rednotebook/info.py:79
-msgid "Wash the dishes"
-msgstr "לשטוף כלים"
+#: ../rednotebook/gui/main_window.py:300
+msgid "Show RedNotebook"
+msgstr "הצגת RedNotebook"
 
-#: ../rednotebook/info.py:81
-msgid "Hello!"
-msgstr "שלום!"
+#: ../rednotebook/gui/main_window.py:624
+#: ../rednotebook/gui/customwidgets.py:374
+msgid "Template"
+msgstr "תבנית"
 
-#: ../rednotebook/info.py:82
+#: ../rednotebook/gui/main_window.py:626
 msgid ""
-"Some example text has been added to help you start and you can erase it "
-"whenever you like."
+"Insert this weekday's template. Click the arrow on the right for more options"
+msgstr "הוספת התבנית ליום זה בשבוע. יש ללחוץ על החץ שמימין לאפשרויות נוספות"
+
+#: ../rednotebook/gui/format_menu.py:94
+msgid "No text or tag has been selected."
+msgstr "לא נבחרו טקסט או תגית."
+
+#: ../rednotebook/gui/format_menu.py:103
+msgid "Bold"
+msgstr "מודגש"
+
+#: ../rednotebook/gui/format_menu.py:105
+msgid "Italic"
+msgstr "נטוי"
+
+#: ../rednotebook/gui/format_menu.py:107
+msgid "Underline"
+msgstr "קו תחתי"
+
+#: ../rednotebook/gui/format_menu.py:109
+msgid "Strikethrough"
+msgstr "קו חוצה"
+
+#. ## Translators: Clear format
+#: ../rednotebook/gui/format_menu.py:112
+msgid "Clear"
 msgstr ""
-"טקסט הדגמה נוסף לכאן כדי לסייע לך להתחיל, ניתן למחוק אותו בכל עת שהיא."
 
-#. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:85
-msgid ""
-"The example text and more documentation is available under \"Help\" -> "
-"\"Contents\"."
-msgstr "טקסט ההדגמה ותיעוד נוסף זמינים תחת \"עזרה\" -> \"תכנים\"."
-
-#. ## Translators: noun
-#. ## Verb
-#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
-msgid "Preview"
-msgstr "תצוגה מקדימה"
-
-#: ../rednotebook/info.py:89
-msgid ""
-"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
-"mode."
-msgstr "ישנם שני מצבים ב־RedNotebook, מצב __עריכה__ ומצב __תצוגה מקדימה__."
-
-#. ## Translators: Edit -> noun
-#: ../rednotebook/info.py:91
-msgid "Click on Edit above to see the difference."
-msgstr "יש ללחוץ על עריכה להלן כדי לצפות בשינוי."
-
-#: ../rednotebook/info.py:94
-msgid "Tagging is easy."
-msgstr "תיוג זה קלי קלות."
-
-#: ../rednotebook/info.py:95
-msgid "Just use #hashtags like on twitter."
-msgstr "ניתן להשתמש ב#תגית כמו בטוויטר."
-
-#: ../rednotebook/info.py:98
-msgid ""
-"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
-"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
-"watched \"__Life of Brian__\"."
+#. ## Translators: Noun
+#: ../rednotebook/gui/format_menu.py:115
+msgid "_Format"
 msgstr ""
-"היום הלכתי ל//חנות חיות המחמד// וקניתי **נמר**. לאחר מכן הלכנו לפארק שב--"
-"בריכה-- ונהננו ממשחק פריזבי אולטימטיבי. לאחר מכן צפינו בסדרה \"__הבורר__\"."
 
-#. ## Translators: both are verbs
-#: ../rednotebook/info.py:110
-msgid "Save and Export"
-msgstr "שמירה וייצוא"
+#. ## Translators: Noun
+#: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
+msgid "Format"
+msgstr "עיצוב"
 
-#: ../rednotebook/info.py:111
-msgid ""
-"Everything you enter will be saved automatically at regular intervals and "
-"when you exit the program."
-msgstr "כל דבר שיוזן ישמר אוטומטית בהפרשי זמן קבועים ובעת היציאה מהתוכנה."
-
-#: ../rednotebook/info.py:112
-msgid "To avoid data loss you should backup your journal regularly."
-msgstr "כדי למנוע אובדן נתונים עליך לגבות את היומן באופן קבוע."
-
-#: ../rednotebook/info.py:113
-msgid ""
-"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
-msgstr "ה„גיבוי“ בתפריט „יומן“  שומר את כל הנתונים שהוזנו בקובץ zip."
-
-#: ../rednotebook/info.py:114
-msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "בתפריט „יומן“ ניתן גם למצוא את לחצן ה„יצוא“."
-
-#: ../rednotebook/info.py:115
-msgid ""
-"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
-msgstr ""
-"יש ללחוץ על „יצוא“ כדי לייצא את היומן שלך לטקסט פשוט, PDF, HTML או Latex."
-
-#: ../rednotebook/info.py:118
-msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr "אם יופיעו תקלות, אנא שלחו לי הודעה (באנגלית) כדי שאוכל לתקן אותן."
-
-#: ../rednotebook/info.py:119
-msgid "Any feedback is appreciated."
-msgstr "כל משוב יתקבל בברכה."
-
-#: ../rednotebook/info.py:122
-msgid "Have a nice day!"
-msgstr "שיהיה לך יום טוב!"
+#: ../rednotebook/gui/format_menu.py:132
+msgid "Format the selected text or tag"
+msgstr "עיצוב הטקסט או התגית הנבחרים"
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
 msgstr "הקדמה"
 
-#: ../rednotebook/gui/menu.py:93
-msgid "_Journal"
-msgstr "יו_מן"
-
-#: ../rednotebook/gui/menu.py:95
-msgid "Create a new journal. The old one will be saved"
-msgstr "ניתן ליצור יומן חדש. הישן יישמר"
-
-#: ../rednotebook/gui/menu.py:98
-msgid "Load an existing journal. The old journal will be saved"
-msgstr "טעינת יומן קיים. הישן יישמר"
-
-#: ../rednotebook/gui/menu.py:103
-msgid ""
-"Save journal at a new location. The old journal files will also be saved"
-msgstr "ניתן לשמור את היומן למיקום חדש. היומן הישן יישמר גם כן"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:106
-msgid "_Import"
-msgstr "י_בוא"
-
-#: ../rednotebook/gui/menu.py:107
-msgid "Open the import assistant"
-msgstr "פתיחת מסייע הייבוא"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:109
-msgid "Export"
-msgstr "ייצוא"
-
-#: ../rednotebook/gui/menu.py:110
-msgid "Open the export assistant"
-msgstr "פתיחת מסייע הייצוא"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:112
-msgid "_Backup"
-msgstr "_גיבוי"
-
-#: ../rednotebook/gui/menu.py:113
-msgid "Save all the data in a zip archive"
-msgstr "שמירת כל הנתונים בארכיון zip"
-
-#: ../rednotebook/gui/menu.py:114
-msgid "S_tatistics"
-msgstr "_סטטיסטיקה"
-
-#: ../rednotebook/gui/menu.py:115
-msgid "Show some statistics about the journal"
-msgstr "הצגת נתונים סטטיסטיים על היומן"
-
-#: ../rednotebook/gui/menu.py:117
-msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "כיבוי RedNotebook. התוכנה לא תשלח אל אזור הדיווחים"
-
-#: ../rednotebook/gui/menu.py:120
-msgid "_Edit"
-msgstr "ע_ריכה"
-
-#: ../rednotebook/gui/menu.py:122
-msgid "Undo text or tag edits"
-msgstr "ביטול עריכת טקסט או תגית"
-
-#: ../rednotebook/gui/menu.py:124
-msgid "Redo text or tag edits"
-msgstr "ביצוע חוזר של עריכת טקסט או תגית"
-
-#: ../rednotebook/gui/menu.py:138
-msgid "_Help"
-msgstr "ע_זרה"
-
-#: ../rednotebook/gui/menu.py:139
-msgid "Contents"
-msgstr "תכנים"
-
-#: ../rednotebook/gui/menu.py:140
-msgid "Open the RedNotebook documentation"
-msgstr "פתיחת התיעוד של RedNotebook"
-
-#: ../rednotebook/gui/menu.py:141
-msgid "Get Help Online"
-msgstr "קבלת עזרה מקוונת"
-
-#: ../rednotebook/gui/menu.py:142
-msgid "Browse answered questions or ask a new one"
-msgstr "עיון בין השאלות שנשאלו או לשאול שאלה חדשה"
-
-#: ../rednotebook/gui/menu.py:143
-msgid "Translate RedNotebook"
-msgstr "תרגום RedNotebook"
-
-#: ../rednotebook/gui/menu.py:144
-msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "ניתן להתחבר אל מערכת לאנצ'פד כדי לסייע בתרגום RedNotebook"
-
-#: ../rednotebook/gui/menu.py:146
-msgid "Report a Problem"
-msgstr "דיווח על תקלה"
-
-#: ../rednotebook/gui/menu.py:147
-msgid "Fill out a short form about the problem"
-msgstr "יש למלא טופס קצר אודות התקלה"
-
-#: ../rednotebook/gui/menu.py:166
-msgid "Wrong directory"
-msgstr "תיקייה שגויה"
-
-#: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
-msgid "You cannot use this directory for your journal:"
-msgstr "לא ניתן להשתמש בתיקייה זו עבור היומן שלך:"
-
-#: ../rednotebook/gui/menu.py:173
-msgid "Please select an empty directory."
-msgstr "נא לבחור בתיקייה ריקה."
-
-#: ../rednotebook/gui/menu.py:177
-msgid "This directory contains no journal files:"
-msgstr "תיקייה זו אינה מכילה קובצי יומן כלל:"
-
-#: ../rednotebook/gui/menu.py:193
-msgid "Journals are saved in a directory, not in a single file."
-msgstr "יומנים נשמרים בתיקיה, לא בקובץ יחיד."
-
-#: ../rednotebook/gui/menu.py:194
-msgid "The directory name will be the title of the new journal."
-msgstr "שם התיקייה תהיה כותרת היומן החדש."
-
-#: ../rednotebook/gui/menu.py:195
-msgid "Select an empty folder for your new journal"
-msgstr "יש לבחור בתיקייה ריקה עבור היומן החדש שלך"
-
-#: ../rednotebook/gui/menu.py:198
-msgid "Select an existing journal directory"
-msgstr "יש לבחור בתיקיית יומן קיימת"
-
-#: ../rednotebook/gui/menu.py:199
-msgid "The directory should contain your journal's data files"
-msgstr "התיקייה תכיל את קובצי המידע של היומן"
-
-#: ../rednotebook/gui/menu.py:206
-msgid "Select an empty folder for the new location of your journal"
-msgstr "בחירת תיקייה ריקה עבור המיקום החדש של היומן שלך"
-
-#: ../rednotebook/gui/menu.py:207
-msgid "The directory name will be the new title of the journal"
-msgstr "שם התיקייה תהיה הכותרת החדשה של היומן"
-
-#: ../rednotebook/gui/menu.py:265
-msgid "RedNotebook Documentation"
-msgstr "תיעוד RedNotebook"
-
-#: ../rednotebook/gui/menu.py:285
-msgid "A Desktop Journal"
-msgstr "יומן לשולחן העבודה"
-
-#: ../rednotebook/gui/search.py:76
-msgid "Date"
-msgstr "תאריך"
-
-#: ../rednotebook/gui/search.py:76
-msgid "Text"
-msgstr "טקסט"
-
-#: ../rednotebook/gui/categories.py:133
-msgid "Empty entries are not allowed"
-msgstr "אסור להשאיר רשומות ריקות"
-
-#: ../rednotebook/gui/categories.py:150
-msgid "Empty tag names are not allowed"
-msgstr "לא ניתן להשתמש בשמות תגיות ריקים"
-
-#: ../rednotebook/gui/categories.py:408
-msgid "Change this text"
-msgstr "שינוי טקסט זה"
-
-#: ../rednotebook/gui/categories.py:412
-msgid "Add a new entry"
-msgstr "הוספת רשומה חדשה"
-
-#: ../rednotebook/gui/categories.py:416
-msgid "Delete this entry"
-msgstr "מחיקת רשומה זו"
-
-#: ../rednotebook/gui/options.py:84
-msgid "Load RedNotebook at startup"
-msgstr "טעינת RedNotebook עם ההפעלה"
-
-#: ../rednotebook/gui/options.py:154
-msgid "%A, %x, Day %j"
-msgstr "%A, %x, יום %j"
-
-#: ../rednotebook/gui/options.py:154
-msgid "Week %W of Year %Y"
-msgstr "שבוע %W בשנת %Y"
-
-#: ../rednotebook/gui/options.py:155
-msgid "Day %j"
-msgstr "יום %j"
-
-#: ../rednotebook/gui/options.py:160
-msgid "Help"
-msgstr "עזרה"
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/options.py:181
-msgid "Preview:"
-msgstr "תצוגה מקדימה:"
-
-#: ../rednotebook/gui/options.py:295
-msgid "Close to system tray"
-msgstr "סגירה לאזור הדיווחים"
-
-#: ../rednotebook/gui/options.py:296
-msgid "Closing the window will send RedNotebook to the tray"
-msgstr "סגירת חלון זה ושליחת RedNotebook לאזור הדיווחים"
-
-#: ../rednotebook/gui/options.py:299
-msgid "Underline misspelled words"
-msgstr "מתיחת קו תחת מילים שגויות"
-
-#: ../rednotebook/gui/options.py:300
-msgid "Requires gtkspell."
-msgstr "דורש את gtkspell."
-
-#: ../rednotebook/gui/options.py:301
-msgid ""
-"This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr "תכונה זו כלולה בחבילה python-gtkspell או ב־python-gnome2-extras"
-
-#: ../rednotebook/gui/options.py:302
-msgid "Check Spelling"
-msgstr "בדיקת איות"
-
-#: ../rednotebook/gui/options.py:310
-msgid "Check for new version at startup"
-msgstr "בדיקה אחר גרסה חדשה עם ההפעלה"
-
-#: ../rednotebook/gui/options.py:317
-msgid "Check now"
-msgstr "בדיקה כעת"
-
-#: ../rednotebook/gui/options.py:322
-msgid "Font Size"
-msgstr "גודל הגופן"
-
-#: ../rednotebook/gui/options.py:323
-msgid "Date/Time format"
-msgstr "מבנה תאריך/שעה"
-
-#: ../rednotebook/gui/options.py:324
-msgid "Exclude from cloud"
-msgstr "הפרדה מהענן"
-
-#: ../rednotebook/gui/options.py:325
-msgid "Do not show these comma separated words in the word cloud"
-msgstr "אין להציג מילים אלה, המופרדות בפסיקים, בענן המילים"
-
-#: ../rednotebook/gui/options.py:326
-msgid "Include small words in cloud"
-msgstr "הכללת מילים קטנות בענן"
-
-#: ../rednotebook/gui/options.py:327
-msgid "Allow these words with 4 letters or less"
-msgstr "יש לאשר מילים אלה בעלות 4 תווים ומטה"
-
-#: ../rednotebook/gui/main_window.py:293
-msgid "Show RedNotebook"
-msgstr "הצגת RedNotebook"
-
-#: ../rednotebook/gui/main_window.py:675
-msgid "No text or tag has been selected."
-msgstr "לא נבחרו טקסט או תגית."
-
-#. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:680
-msgid "Ctrl"
-msgstr "Ctrl"
-
-#: ../rednotebook/gui/main_window.py:683
-msgid "Bold"
-msgstr "מודגש"
-
-#: ../rednotebook/gui/main_window.py:684
-msgid "Italic"
-msgstr "נטוי"
-
-#: ../rednotebook/gui/main_window.py:685
-msgid "Underline"
-msgstr "קו תחתי"
-
-#: ../rednotebook/gui/main_window.py:686
-msgid "Strikethrough"
-msgstr "קו חוצה"
-
-#. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:702 ../rednotebook/gui/exports.py:382
-msgid "Format"
-msgstr "עיצוב"
-
-#: ../rednotebook/gui/main_window.py:703
-msgid "Format the selected text or tag"
-msgstr "עיצוב הטקסט או התגית הנבחרים"
-
-#: ../rednotebook/gui/main_window.py:753
-msgid "First Item"
-msgstr "הפריט הראשון"
-
-#: ../rednotebook/gui/main_window.py:754
-msgid "Second Item"
-msgstr "הפריט השני"
-
-#: ../rednotebook/gui/main_window.py:755
-msgid "Indented Item"
-msgstr "פריט מוזח"
-
-#: ../rednotebook/gui/main_window.py:756
-msgid "Two blank lines close the list"
-msgstr "שתי שורות ריקות לסגירת הרשימה"
-
-#: ../rednotebook/gui/main_window.py:760
-msgid "Title text"
-msgstr "טקסט הכותרת"
-
-#: ../rednotebook/gui/main_window.py:786
-msgid "Picture"
-msgstr "תמונה"
-
-#: ../rednotebook/gui/main_window.py:787
-msgid "Insert an image from the harddisk"
-msgstr "הוספת תמונה מהכונן הקשיח"
-
-#: ../rednotebook/gui/main_window.py:789
-msgid "File"
-msgstr "קובץ"
-
-#: ../rednotebook/gui/main_window.py:790
-msgid "Insert a link to a file"
-msgstr "הוספת קישור לקובץ"
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:793
-msgid "_Link"
-msgstr "_קישור"
-
-#: ../rednotebook/gui/main_window.py:794
-msgid "Insert a link to a website"
-msgstr "הוספת קישור לאתר"
-
-#: ../rednotebook/gui/main_window.py:796
-msgid "Bullet List"
-msgstr "רשימת תבליטים"
-
-#: ../rednotebook/gui/main_window.py:798
-msgid "Numbered List"
-msgstr "רשימה ממוספרת"
-
-#: ../rednotebook/gui/main_window.py:800
-msgid "Title"
-msgstr "כותרת"
-
-#: ../rednotebook/gui/main_window.py:802
-msgid "Line"
-msgstr "שורה"
-
-#: ../rednotebook/gui/main_window.py:803
-msgid "Insert a separator line"
-msgstr "הוספת שורת הפרדה"
-
-#: ../rednotebook/gui/main_window.py:805
-msgid "Table"
-msgstr "טבלה"
-
-#: ../rednotebook/gui/main_window.py:807
-msgid "Latex Formula"
-msgstr "נוסחת לאטך"
-
-#: ../rednotebook/gui/main_window.py:809
-msgid "Date/Time"
-msgstr "תאריך/שעה"
-
-#: ../rednotebook/gui/main_window.py:810
-msgid "Insert the current date and time (edit format in preferences)"
-msgstr "הוספת התאריך והשעה הנוכחיים (ניתן לערוך את המבנה בהעדפות)"
-
-#: ../rednotebook/gui/main_window.py:812
-msgid "Line Break"
-msgstr "מעבר שורה"
-
-#: ../rednotebook/gui/main_window.py:813
-msgid "Insert a manual line break"
-msgstr "הוספת מעבר שורה ידני"
-
-#: ../rednotebook/gui/main_window.py:836
-msgid "Insert"
-msgstr "הוספה"
-
-#: ../rednotebook/gui/main_window.py:840
-msgid "Insert images, files, links and other content"
-msgstr "הוספת תמונות, קבצים וקישורים לתוכן שונה"
-
-#: ../rednotebook/gui/main_window.py:877
-msgid "Width (optional):"
-msgstr "רוחב (רשות):"
-
-#: ../rednotebook/gui/main_window.py:882
-msgid "pixels"
-msgstr "פיקסלים"
-
-#: ../rednotebook/gui/main_window.py:903
-msgid "Width must be an integer."
-msgstr "הרוחב חייב להיות מספר שלם וחיובי."
-
-#: ../rednotebook/gui/main_window.py:962
-msgid "No link location has been entered"
-msgstr "לא הוזן מיקום לקישור"
+#: ../rednotebook/gui/customwidgets.py:377
+msgid "Save and insert"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -568,6 +109,11 @@ msgstr "סינון, מילים, אלו, המופרדות, בפסיקים"
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr "חדשות, זבל, עבודה, מטלה, משחק"
+
+#: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/info.py:73 ../rednotebook/util/markup.py:129
+msgid "Tags"
+msgstr "תגיות"
 
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
@@ -713,6 +259,505 @@ msgstr "התוכן ייוצא אל %s"
 #: ../rednotebook/gui/exports.py:527
 msgid "requires pywebkitgtk"
 msgstr "נדרש pywebkitgtk"
+
+#: ../rednotebook/gui/menu.py:93
+msgid "_Journal"
+msgstr "יו_מן"
+
+#: ../rednotebook/gui/menu.py:95
+msgid "Create a new journal. The old one will be saved"
+msgstr "ניתן ליצור יומן חדש. הישן יישמר"
+
+#: ../rednotebook/gui/menu.py:98
+msgid "Load an existing journal. The old journal will be saved"
+msgstr "טעינת יומן קיים. הישן יישמר"
+
+#: ../rednotebook/gui/menu.py:103
+msgid ""
+"Save journal at a new location. The old journal files will also be saved"
+msgstr "ניתן לשמור את היומן למיקום חדש. היומן הישן יישמר גם כן"
+
+#. ## Translators: Verb
+#. ('Import', gtk.STOCK_ADD, _('_Import'),
+#. None, _('Open the import assistant'), self.on_import_menu_item_activate),
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:109
+msgid "Export"
+msgstr "ייצוא"
+
+#: ../rednotebook/gui/menu.py:110
+msgid "Open the export assistant"
+msgstr "פתיחת מסייע הייצוא"
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:112
+msgid "_Backup"
+msgstr "_גיבוי"
+
+#: ../rednotebook/gui/menu.py:113
+msgid "Save all the data in a zip archive"
+msgstr "שמירת כל הנתונים בארכיון zip"
+
+#: ../rednotebook/gui/menu.py:114
+msgid "S_tatistics"
+msgstr "_סטטיסטיקה"
+
+#: ../rednotebook/gui/menu.py:115
+msgid "Show some statistics about the journal"
+msgstr "הצגת נתונים סטטיסטיים על היומן"
+
+#: ../rednotebook/gui/menu.py:117
+msgid "Shutdown RedNotebook. It will not be sent to the tray."
+msgstr "כיבוי RedNotebook. התוכנה לא תשלח אל אזור הדיווחים"
+
+#: ../rednotebook/gui/menu.py:120
+msgid "_Edit"
+msgstr "ע_ריכה"
+
+#: ../rednotebook/gui/menu.py:122
+msgid "Undo text or tag edits"
+msgstr "ביטול עריכת טקסט או תגית"
+
+#: ../rednotebook/gui/menu.py:124
+msgid "Redo text or tag edits"
+msgstr "ביצוע חוזר של עריכת טקסט או תגית"
+
+#: ../rednotebook/gui/menu.py:137
+msgid "_Help"
+msgstr "ע_זרה"
+
+#: ../rednotebook/gui/menu.py:138
+msgid "Contents"
+msgstr "תכנים"
+
+#: ../rednotebook/gui/menu.py:139
+msgid "Open the RedNotebook documentation"
+msgstr "פתיחת התיעוד של RedNotebook"
+
+#: ../rednotebook/gui/menu.py:140
+msgid "Get Help Online"
+msgstr "קבלת עזרה מקוונת"
+
+#: ../rednotebook/gui/menu.py:141
+msgid "Browse answered questions or ask a new one"
+msgstr "עיון בין השאלות שנשאלו או לשאול שאלה חדשה"
+
+#: ../rednotebook/gui/menu.py:142
+msgid "Translate RedNotebook"
+msgstr "תרגום RedNotebook"
+
+#: ../rednotebook/gui/menu.py:143
+msgid "Connect to the Launchpad website to help translate RedNotebook"
+msgstr "ניתן להתחבר אל מערכת לאנצ'פד כדי לסייע בתרגום RedNotebook"
+
+#: ../rednotebook/gui/menu.py:145
+msgid "Report a Problem"
+msgstr "דיווח על תקלה"
+
+#: ../rednotebook/gui/menu.py:146
+msgid "Fill out a short form about the problem"
+msgstr "יש למלא טופס קצר אודות התקלה"
+
+#: ../rednotebook/gui/menu.py:166
+msgid "Wrong directory"
+msgstr "תיקייה שגויה"
+
+#: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:248
+msgid "You cannot use this directory for your journal:"
+msgstr "לא ניתן להשתמש בתיקייה זו עבור היומן שלך:"
+
+#: ../rednotebook/gui/menu.py:173
+msgid "Please select an empty directory."
+msgstr "נא לבחור בתיקייה ריקה."
+
+#: ../rednotebook/gui/menu.py:177
+msgid "This directory contains no journal files:"
+msgstr "תיקייה זו אינה מכילה קובצי יומן כלל:"
+
+#: ../rednotebook/gui/menu.py:193
+msgid "Journals are saved in a directory, not in a single file."
+msgstr "יומנים נשמרים בתיקיה, לא בקובץ יחיד."
+
+#: ../rednotebook/gui/menu.py:194
+msgid "The directory name will be the title of the new journal."
+msgstr "שם התיקייה תהיה כותרת היומן החדש."
+
+#: ../rednotebook/gui/menu.py:195
+msgid "Select an empty folder for your new journal"
+msgstr "יש לבחור בתיקייה ריקה עבור היומן החדש שלך"
+
+#: ../rednotebook/gui/menu.py:198
+msgid "Select an existing journal directory"
+msgstr "יש לבחור בתיקיית יומן קיימת"
+
+#: ../rednotebook/gui/menu.py:199
+msgid "The directory should contain your journal's data files"
+msgstr "התיקייה תכיל את קובצי המידע של היומן"
+
+#: ../rednotebook/gui/menu.py:206
+msgid "Select an empty folder for the new location of your journal"
+msgstr "בחירת תיקייה ריקה עבור המיקום החדש של היומן שלך"
+
+#: ../rednotebook/gui/menu.py:207
+msgid "The directory name will be the new title of the journal"
+msgstr "שם התיקייה תהיה הכותרת החדשה של היומן"
+
+#: ../rednotebook/gui/menu.py:265
+msgid "RedNotebook Documentation"
+msgstr "תיעוד RedNotebook"
+
+#: ../rednotebook/gui/menu.py:285
+msgid "A Desktop Journal"
+msgstr "יומן לשולחן העבודה"
+
+#: ../rednotebook/gui/options.py:84
+msgid "Load RedNotebook at startup"
+msgstr "טעינת RedNotebook עם ההפעלה"
+
+#: ../rednotebook/gui/options.py:154
+msgid "%A, %x, Day %j"
+msgstr "%A, %x, יום %j"
+
+#: ../rednotebook/gui/options.py:154
+msgid "Week %W of Year %Y"
+msgstr "שבוע %W בשנת %Y"
+
+#: ../rednotebook/gui/options.py:155
+msgid "Day %j"
+msgstr "יום %j"
+
+#: ../rednotebook/gui/options.py:160
+msgid "Help"
+msgstr "עזרה"
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/options.py:181
+msgid "Preview:"
+msgstr "תצוגה מקדימה:"
+
+#: ../rednotebook/gui/options.py:295
+msgid "Close to system tray"
+msgstr "סגירה לאזור הדיווחים"
+
+#: ../rednotebook/gui/options.py:296
+msgid "Closing the window will send RedNotebook to the tray"
+msgstr "סגירת חלון זה ושליחת RedNotebook לאזור הדיווחים"
+
+#: ../rednotebook/gui/options.py:299
+msgid "Underline misspelled words"
+msgstr "מתיחת קו תחת מילים שגויות"
+
+#: ../rednotebook/gui/options.py:300
+msgid "Requires gtkspell."
+msgstr "דורש את gtkspell."
+
+#: ../rednotebook/gui/options.py:301
+msgid ""
+"This is included in the python-gtkspell or python-gnome2-extras package"
+msgstr "תכונה זו כלולה בחבילה python-gtkspell או ב־python-gnome2-extras"
+
+#: ../rednotebook/gui/options.py:302
+msgid "Check Spelling"
+msgstr "בדיקת איות"
+
+#: ../rednotebook/gui/options.py:309
+msgid "Switch between edit and preview mode automatically"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:313
+msgid "Check for new version at startup"
+msgstr "בדיקה אחר גרסה חדשה עם ההפעלה"
+
+#: ../rednotebook/gui/options.py:321
+msgid "Check now"
+msgstr "בדיקה כעת"
+
+#: ../rednotebook/gui/options.py:326
+msgid "Font Size"
+msgstr "גודל הגופן"
+
+#: ../rednotebook/gui/options.py:327
+msgid "Date/Time format"
+msgstr "מבנה תאריך/שעה"
+
+#: ../rednotebook/gui/options.py:328
+msgid "Exclude from cloud"
+msgstr "הפרדה מהענן"
+
+#: ../rednotebook/gui/options.py:329
+msgid "Do not show these comma separated words in the word cloud"
+msgstr "אין להציג מילים אלה, המופרדות בפסיקים, בענן המילים"
+
+#: ../rednotebook/gui/options.py:330
+msgid "Include small words in cloud"
+msgstr "הכללת מילים קטנות בענן"
+
+#: ../rednotebook/gui/options.py:331
+msgid "Allow these words with 4 letters or less"
+msgstr "יש לאשר מילים אלה בעלות 4 תווים ומטה"
+
+#: ../rednotebook/gui/search.py:76
+msgid "Date"
+msgstr "תאריך"
+
+#: ../rednotebook/gui/search.py:76
+msgid "Text"
+msgstr "טקסט"
+
+#: ../rednotebook/gui/insert_menu.py:67
+msgid "First Item"
+msgstr "הפריט הראשון"
+
+#: ../rednotebook/gui/insert_menu.py:67
+msgid "Second Item"
+msgstr "הפריט השני"
+
+#: ../rednotebook/gui/insert_menu.py:68
+msgid "Indented Item"
+msgstr "פריט מוזח"
+
+#: ../rednotebook/gui/insert_menu.py:68
+msgid "Two blank lines close the list"
+msgstr "שתי שורות ריקות לסגירת הרשימה"
+
+#: ../rednotebook/gui/insert_menu.py:103
+msgid "Picture"
+msgstr "תמונה"
+
+#: ../rednotebook/gui/insert_menu.py:104
+msgid "Insert an image from the harddisk"
+msgstr "הוספת תמונה מהכונן הקשיח"
+
+#: ../rednotebook/gui/insert_menu.py:106
+msgid "File"
+msgstr "קובץ"
+
+#: ../rednotebook/gui/insert_menu.py:107
+msgid "Insert a link to a file"
+msgstr "הוספת קישור לקובץ"
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/insert_menu.py:110
+msgid "_Link"
+msgstr "_קישור"
+
+#: ../rednotebook/gui/insert_menu.py:111
+msgid "Insert a link to a website"
+msgstr "הוספת קישור לאתר"
+
+#: ../rednotebook/gui/insert_menu.py:113
+msgid "Bullet List"
+msgstr "רשימת תבליטים"
+
+#: ../rednotebook/gui/insert_menu.py:117 ../rednotebook/gui/insert_menu.py:294
+msgid "Title"
+msgstr "כותרת"
+
+#: ../rednotebook/gui/insert_menu.py:119
+msgid "Line"
+msgstr "שורה"
+
+#: ../rednotebook/gui/insert_menu.py:120
+msgid "Insert a separator line"
+msgstr "הוספת שורת הפרדה"
+
+#: ../rednotebook/gui/insert_menu.py:126
+msgid "Date/Time"
+msgstr "תאריך/שעה"
+
+#: ../rednotebook/gui/insert_menu.py:127
+msgid "Insert the current date and time (edit format in preferences)"
+msgstr "הוספת התאריך והשעה הנוכחיים (ניתן לערוך את המבנה בהעדפות)"
+
+#: ../rednotebook/gui/insert_menu.py:129
+msgid "Line Break"
+msgstr "מעבר שורה"
+
+#: ../rednotebook/gui/insert_menu.py:130
+msgid "Insert a manual line break"
+msgstr "הוספת מעבר שורה ידני"
+
+#: ../rednotebook/gui/insert_menu.py:132
+msgid "_Insert"
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:154
+msgid "Insert"
+msgstr "הוספה"
+
+#: ../rednotebook/gui/insert_menu.py:155
+msgid "Insert images, files, links and other content"
+msgstr "הוספת תמונות, קבצים וקישורים לתוכן שונה"
+
+#: ../rednotebook/gui/insert_menu.py:191
+msgid "Width (optional):"
+msgstr "רוחב (רשות):"
+
+#: ../rednotebook/gui/insert_menu.py:196
+msgid "pixels"
+msgstr "פיקסלים"
+
+#: ../rednotebook/gui/insert_menu.py:217
+msgid "Width must be an integer."
+msgstr "הרוחב חייב להיות מספר שלם וחיובי."
+
+#: ../rednotebook/gui/insert_menu.py:281
+msgid "No link location has been entered"
+msgstr "לא הוזן מיקום לקישור"
+
+#: ../rednotebook/gui/categories.py:133
+msgid "Empty entries are not allowed"
+msgstr "אסור להשאיר רשומות ריקות"
+
+#: ../rednotebook/gui/categories.py:150
+msgid "Empty tag names are not allowed"
+msgstr "לא ניתן להשתמש בשמות תגיות ריקים"
+
+#: ../rednotebook/gui/categories.py:408
+msgid "Change this text"
+msgstr "שינוי טקסט זה"
+
+#: ../rednotebook/gui/categories.py:412
+msgid "Add a new entry"
+msgstr "הוספת רשומה חדשה"
+
+#: ../rednotebook/gui/categories.py:416
+msgid "Delete this entry"
+msgstr "מחיקת רשומה זו"
+
+#: ../rednotebook/journal.py:249
+msgid "Opening default journal."
+msgstr "יומן בררת המחדל נפתח."
+
+#: ../rednotebook/journal.py:332
+#, python-format
+msgid "The content has been saved to %s"
+msgstr "התוכן נשמר אל %s"
+
+#: ../rednotebook/journal.py:335
+msgid "Nothing to save"
+msgstr "אין מה לשמור"
+
+#: ../rednotebook/journal.py:482
+msgid "Error"
+msgstr "שגיאה"
+
+#: ../rednotebook/info.py:74
+msgid "Work"
+msgstr "עבודה"
+
+#: ../rednotebook/info.py:75
+msgid "Free time"
+msgstr "זמן פנאי"
+
+#: ../rednotebook/info.py:76
+msgid "Todo"
+msgstr "מטלות"
+
+#: ../rednotebook/info.py:77
+msgid "Done"
+msgstr "בוצע"
+
+#: ../rednotebook/info.py:78
+msgid "Remember the milk"
+msgstr "Remember the milk"
+
+#: ../rednotebook/info.py:79
+msgid "Wash the dishes"
+msgstr "לשטוף כלים"
+
+#: ../rednotebook/info.py:81
+msgid "Hello!"
+msgstr "שלום!"
+
+#: ../rednotebook/info.py:82
+msgid ""
+"Some example text has been added to help you start and you can erase it "
+"whenever you like."
+msgstr ""
+"טקסט הדגמה נוסף לכאן כדי לסייע לך להתחיל, ניתן למחוק אותו בכל עת שהיא."
+
+#. ## Translators: "Help" -> noun
+#: ../rednotebook/info.py:85
+msgid ""
+"The example text and more documentation is available under \"Help\" -> "
+"\"Contents\"."
+msgstr "טקסט ההדגמה ותיעוד נוסף זמינים תחת \"עזרה\" -> \"תכנים\"."
+
+#. ## Translators: noun
+#. ## Verb
+#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+#: ../rednotebook/info.py:89
+msgid ""
+"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
+"mode."
+msgstr "ישנם שני מצבים ב־RedNotebook, מצב __עריכה__ ומצב __תצוגה מקדימה__."
+
+#: ../rednotebook/info.py:90
+msgid "Click on Edit above to see the difference."
+msgstr "יש ללחוץ על עריכה להלן כדי לצפות בשינוי."
+
+#: ../rednotebook/info.py:93
+msgid "Tagging is easy."
+msgstr "תיוג זה קלי קלות."
+
+#: ../rednotebook/info.py:94
+msgid "Just use #hashtags like on twitter."
+msgstr "ניתן להשתמש ב#תגית כמו בטוויטר."
+
+#: ../rednotebook/info.py:97
+msgid ""
+"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
+"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
+"watched \"__Life of Brian__\"."
+msgstr ""
+"היום הלכתי ל//חנות חיות המחמד// וקניתי **נמר**. לאחר מכן הלכנו לפארק שב--"
+"בריכה-- ונהננו ממשחק פריזבי אולטימטיבי. לאחר מכן צפינו בסדרה \"__הבורר__\"."
+
+#. ## Translators: both are verbs
+#: ../rednotebook/info.py:109
+msgid "Save and Export"
+msgstr "שמירה וייצוא"
+
+#: ../rednotebook/info.py:110
+msgid ""
+"Everything you enter will be saved automatically at regular intervals and "
+"when you exit the program."
+msgstr "כל דבר שיוזן ישמר אוטומטית בהפרשי זמן קבועים ובעת היציאה מהתוכנה."
+
+#: ../rednotebook/info.py:111
+msgid "To avoid data loss you should backup your journal regularly."
+msgstr "כדי למנוע אובדן נתונים עליך לגבות את היומן באופן קבוע."
+
+#: ../rednotebook/info.py:112
+msgid ""
+"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
+msgstr "ה„גיבוי“ בתפריט „יומן“  שומר את כל הנתונים שהוזנו בקובץ zip."
+
+#: ../rednotebook/info.py:113
+msgid "In the \"Journal\" menu you also find the \"Export\" button."
+msgstr "בתפריט „יומן“ ניתן גם למצוא את לחצן ה„יצוא“."
+
+#: ../rednotebook/info.py:114
+msgid ""
+"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
+msgstr ""
+"יש ללחוץ על „יצוא“ כדי לייצא את היומן שלך לטקסט פשוט, PDF, HTML או Latex."
+
+#: ../rednotebook/info.py:117
+msgid "If you encounter any errors, please drop me a note so I can fix them."
+msgstr "אם יופיעו תקלות, אנא שלחו לי הודעה (באנגלית) כדי שאוכל לתקן אותן."
+
+#: ../rednotebook/info.py:118
+msgid "Any feedback is appreciated."
+msgstr "כל משוב יתקבל בברכה."
+
+#: ../rednotebook/info.py:121
+msgid "Have a nice day!"
+msgstr "שיהיה לך יום טוב!"
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
@@ -870,51 +915,17 @@ msgstr ""
 "+\n"
 "=====================================\n"
 
-#: ../rednotebook/templates.py:203
+#: ../rednotebook/templates.py:261
 msgid "Choose Template Name"
 msgstr "בחירת שם התבנית"
 
-#: ../rednotebook/templates.py:352 ../rednotebook/templates.py:361
+#: ../rednotebook/templates.py:394
 msgid "This Weekday's Template"
 msgstr "תבנית של יום זה בשבוע"
 
-#: ../rednotebook/templates.py:355
-msgid "Edit Template"
-msgstr "עריכת תבנית"
-
-#: ../rednotebook/templates.py:358
-msgid "Insert Template"
-msgstr "הוספת תבנית"
-
-#: ../rednotebook/templates.py:364
+#: ../rednotebook/templates.py:397
 msgid "Create New Template"
 msgstr "יצירת תבנית חדשה"
-
-#: ../rednotebook/templates.py:368
-msgid "Open Template Directory"
-msgstr "פתיחת תיקיית התבניות"
-
-#: ../rednotebook/util/utils.py:115
-msgid "unknown"
-msgstr "לא ידוע"
-
-#: ../rednotebook/util/utils.py:127
-#, python-format
-msgid "You have version <b>%s</b>."
-msgstr "ברשותך הגרסה <b>%s</b>."
-
-#: ../rednotebook/util/utils.py:128
-#, python-format
-msgid "The latest version is <b>%s</b>."
-msgstr "הגרסה העדכנית ביותר היא <b>%s</b>."
-
-#: ../rednotebook/util/utils.py:129
-msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "האם ברצונך לבקר באתר הבית של RedNotebook?"
-
-#: ../rednotebook/util/utils.py:136
-msgid "Do not ask again"
-msgstr "לא לשאול שוב"
 
 #: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
@@ -948,46 +959,27 @@ msgstr "אחוז ימי העריכה"
 msgid "Lines"
 msgstr "שורות"
 
-#: ../rednotebook/backup.py:55
-msgid "It has been a while since you made your last backup."
-msgstr "עבר זמן מה מאז ביצעת את הגיבוי האחרון שלך."
+#: ../rednotebook/util/utils.py:115
+msgid "unknown"
+msgstr "לא ידוע"
 
-#: ../rednotebook/backup.py:56
-msgid "You can backup your journal to a zip file to avoid data loss."
-msgstr "באפשרותך לגבות את היומן שלך לקובץ zip כדי להימנע מאבדן מידע."
-
-#: ../rednotebook/backup.py:61
-msgid "Backup"
-msgstr "גיבוי"
-
-#: ../rednotebook/backup.py:63
-msgid "Backup now"
-msgstr "גיבוי כעת"
-
-#: ../rednotebook/backup.py:64
-msgid "Ask at next start"
-msgstr "הצגת השאלה בהפעלה הבאה"
-
-#: ../rednotebook/backup.py:65
-msgid "Never ask again"
-msgstr "לא לשאול שוב"
-
-#: ../rednotebook/journal.py:248
-msgid "Opening default journal."
-msgstr "יומן בררת המחדל נפתח."
-
-#: ../rednotebook/journal.py:331
+#: ../rednotebook/util/utils.py:127
 #, python-format
-msgid "The content has been saved to %s"
-msgstr "התוכן נשמר אל %s"
+msgid "You have version <b>%s</b>."
+msgstr "ברשותך הגרסה <b>%s</b>."
 
-#: ../rednotebook/journal.py:334
-msgid "Nothing to save"
-msgstr "אין מה לשמור"
+#: ../rednotebook/util/utils.py:128
+#, python-format
+msgid "The latest version is <b>%s</b>."
+msgstr "הגרסה העדכנית ביותר היא <b>%s</b>."
 
-#: ../rednotebook/journal.py:481
-msgid "Error"
-msgstr "שגיאה"
+#: ../rednotebook/util/utils.py:129
+msgid "Do you want to visit the RedNotebook homepage?"
+msgstr "האם ברצונך לבקר באתר הבית של RedNotebook?"
+
+#: ../rednotebook/util/utils.py:136
+msgid "Do not ask again"
+msgstr "לא לשאול שוב"
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
@@ -1018,96 +1010,117 @@ msgid "Edit"
 msgstr "עריכה"
 
 #: tmp/main_window.glade.h:10
-msgid ""
-"Insert this weekday's template. Click the arrow on the right for more options"
-msgstr "הוספת התבנית ליום זה בשבוע. יש ללחוץ על החץ שמימין לאפשרויות נוספות"
-
-#: tmp/main_window.glade.h:11
-msgid "Template"
-msgstr "תבנית"
-
-#: tmp/main_window.glade.h:12
 msgid "Add a tag or a category entry"
 msgstr "הוספת רשומת תגית או קטגוריה"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:11
 msgid "Add Tag"
 msgstr "הוספת תגית"
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:13
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Ddorda https://launchpad.net/~ddorda\n"
 "  Yaron https://launchpad.net/~sh-yaron"
 
-#: tmp/main_window.glade.h:16
+#: tmp/main_window.glade.h:14
 msgid "New entry"
 msgstr "רשומה חדשה"
 
-#: tmp/main_window.glade.h:17
+#: tmp/main_window.glade.h:15
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>בחירת קטגוריה חדשה או קיימת</b>"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:16
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>כתיבת רשומה</b> (רשות)"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:17
 msgid "Select backup filename"
 msgstr "בחירת שם לקובץ הגיבוי"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:18
 msgid "Select a picture"
 msgstr "בחירת תמונה"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:19
 msgid "Select a file"
 msgstr "בחירת קובץ"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:20
 msgid "Insert Link"
 msgstr "הוספת קישור"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:21
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgstr "<b>מיקום הקישורn (לדוגמה http://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:22
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>שם הקישור (לא מחייב)</b>"
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:23
 msgid "Select a directory"
 msgstr "בחירת תיקייה"
 
-#: tmp/main_window.glade.h:26
+#: tmp/main_window.glade.h:24
 msgid "Preferences"
 msgstr "העדפות"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
 msgstr "<b>כללי</b>"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:28
 msgid "General"
 msgstr "כללי"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:29
 msgid "Statistics"
 msgstr "סטטיסטיקה"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:30
 msgid "<b>Selected Day</b>"
 msgstr "<b>היום הנבחר</b>"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:31
 msgid "<b>Overall</b>"
 msgstr "<b>סך הכל</b>"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "יציאה ללא שמירה"
+
+#~ msgid "Title text"
+#~ msgstr "טקסט הכותרת"
+
+#~ msgid "Open Template Directory"
+#~ msgstr "פתיחת תיקיית התבניות"
+
+#~ msgid "Edit Template"
+#~ msgstr "עריכת תבנית"
+
+#~ msgid "Insert Template"
+#~ msgstr "הוספת תבנית"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Open the import assistant"
+#~ msgstr "פתיחת מסייע הייבוא"
+
+#~ msgid "Numbered List"
+#~ msgstr "רשימה ממוספרת"
+
+#~ msgid "Table"
+#~ msgstr "טבלה"
+
+#~ msgid "_Import"
+#~ msgstr "י_בוא"
+
+#~ msgid "Latex Formula"
+#~ msgstr "נוסחת לאטך"

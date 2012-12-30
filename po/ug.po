@@ -7,577 +7,102 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-11-02 14:00+0100\n"
+"POT-Creation-Date: 2012-12-30 02:40+0100\n"
 "PO-Revision-Date: 2011-05-06 05:09+0000\n"
 "Last-Translator: Gheyret T.Kenji <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-21 04:53+0000\n"
+"X-Launchpad-Export-Date: 2012-12-30 05:21+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
-#: ../rednotebook/info.py:73 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/gui/clouds.py:184 ../rednotebook/util/markup.py:124
-msgid "Tags"
-msgstr "خەتكۈچلەر"
-
-#: ../rednotebook/info.py:74
-msgid "Work"
-msgstr "ئىش"
-
-#: ../rednotebook/info.py:75
-msgid "Free time"
+#: ../rednotebook/backup.py:55
+msgid "It has been a while since you made your last backup."
 msgstr ""
 
-#: ../rednotebook/info.py:76
-msgid "Todo"
+#: ../rednotebook/backup.py:56
+msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
 
-#: ../rednotebook/info.py:77
-msgid "Done"
-msgstr "تامام"
+#: ../rednotebook/backup.py:61
+msgid "Backup"
+msgstr "زاپاسلا"
 
-#: ../rednotebook/info.py:78
-msgid "Remember the milk"
+#: ../rednotebook/backup.py:63
+msgid "Backup now"
 msgstr ""
 
-#: ../rednotebook/info.py:79
-msgid "Wash the dishes"
+#: ../rednotebook/backup.py:64
+msgid "Ask at next start"
 msgstr ""
 
-#: ../rednotebook/info.py:81
-msgid "Hello!"
-msgstr "مەرھابا!"
+#: ../rednotebook/backup.py:65
+msgid "Never ask again"
+msgstr ""
 
-#: ../rednotebook/info.py:82
+#: ../rednotebook/gui/main_window.py:300
+msgid "Show RedNotebook"
+msgstr "RedNotebook نى كۆرسەت"
+
+#: ../rednotebook/gui/main_window.py:624
+#: ../rednotebook/gui/customwidgets.py:374
+msgid "Template"
+msgstr "قېلىپ"
+
+#: ../rednotebook/gui/main_window.py:626
 msgid ""
-"Some example text has been added to help you start and you can erase it "
-"whenever you like."
+"Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"پىروگرامما سىزنىڭ ئىشلىتىشىڭىز ئۈچۈن بەزى مىسال تېكىستلىرىنى قوشقان، سىز "
-"خالىغان ۋاقىتتا ئۆچۈرۈۋېتەلەيسىز."
+"بۇ خىزمەت كۈنلىرىنىڭ قېلىپىنى قىستۇرىدۇ. ئوڭ تەرەپتىكى يا ئوق چېكىلسە تېخىمۇ "
+"كۆپ تاللانما كۆرۈنىدۇ"
 
-#. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:85
-msgid ""
-"The example text and more documentation is available under \"Help\" -> "
-"\"Contents\"."
-msgstr ""
-"مىسال تېكست ۋە تېخىمۇ كۆپ پۈتۈكلەرنى «ياردەم»-›«مەزمۇن» تىزىملىكىدىغان "
-"تاپالايسىز."
-
-#. ## Translators: noun
-#. ## Verb
-#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
-msgid "Preview"
-msgstr "ئالدىن كۆزەت"
-
-#: ../rednotebook/info.py:89
-msgid ""
-"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
-"mode."
+#: ../rednotebook/gui/format_menu.py:94
+msgid "No text or tag has been selected."
 msgstr ""
 
-#. ## Translators: Edit -> noun
-#: ../rednotebook/info.py:91
-msgid "Click on Edit above to see the difference."
+#: ../rednotebook/gui/format_menu.py:103
+msgid "Bold"
+msgstr "توم"
+
+#: ../rednotebook/gui/format_menu.py:105
+msgid "Italic"
+msgstr "يانتۇ"
+
+#: ../rednotebook/gui/format_menu.py:107
+msgid "Underline"
+msgstr "ئاستى سىزىق"
+
+#: ../rednotebook/gui/format_menu.py:109
+msgid "Strikethrough"
+msgstr "ئۆچۈرۈش سىزىقى"
+
+#. ## Translators: Clear format
+#: ../rednotebook/gui/format_menu.py:112
+msgid "Clear"
 msgstr ""
 
-#: ../rednotebook/info.py:94
-msgid "Tagging is easy."
+#. ## Translators: Noun
+#: ../rednotebook/gui/format_menu.py:115
+msgid "_Format"
 msgstr ""
 
-#: ../rednotebook/info.py:95
-msgid "Just use #hashtags like on twitter."
+#. ## Translators: Noun
+#: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
+msgid "Format"
+msgstr "فورمات"
+
+#: ../rednotebook/gui/format_menu.py:132
+msgid "Format the selected text or tag"
 msgstr ""
-
-#: ../rednotebook/info.py:98
-msgid ""
-"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
-"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
-"watched \"__Life of Brian__\"."
-msgstr ""
-"بۈگۈن مەن //ئەرمەك ھايۋان دۇكىنى// غا بېرىپ **يولۋاس** تىن بىرنى سېتىۋالدىم "
-"ئاندىن بىز --سۇ ئۈزۈش كۆلى-- باغچىغا بېرىپ ئۇچار تەخسە ئوينىدۇق. ئۇنىڭدىن "
-"كېيىن «__برايىننىڭ ھاياتى__» دېگەن كىنونى كۆردۇق."
-
-#. ## Translators: both are verbs
-#: ../rednotebook/info.py:110
-msgid "Save and Export"
-msgstr "ساقلاپ ھەمدە چىقار"
-
-#: ../rednotebook/info.py:111
-msgid ""
-"Everything you enter will be saved automatically at regular intervals and "
-"when you exit the program."
-msgstr ""
-"سىز كىرگۈزگەن ھەر قانداق سانلىق مەلۇمات مەلۇم ۋاقىت ئارىلىقى ئىچىدە "
-"ئۆزلۈكىدىن ساقلىنىدۇ، سىز بۇ پىروگراممىدىن چېكىنگەندىمۇ ھەممە سانلىق "
-"مەلۇماتلارنى ئۆزلۈكىدىن ساقلايدۇ."
-
-#: ../rednotebook/info.py:112
-msgid "To avoid data loss you should backup your journal regularly."
-msgstr ""
-"سانلىق مەلۇماتلىرىڭىزنىڭ يوقاپ كېتىشىدىن ساقلىنىش ئۈچۈن كۈندىلىك خاتىرىنى "
-"مەلۇم مۇددەتتە زاپاسلاپ تۇرۇڭ."
-
-#: ../rednotebook/info.py:113
-msgid ""
-"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
-msgstr ""
-"«كۈندىلىك خاتىرە» ئاستىدىكى «زاپاسلا» تىزىملىكى سىز كىرگۈزگەن ھەممە سانلىق "
-"مەلۇماتلارنى zip پىرىس ھۆججىتى شەكلىدە ساقلايدۇ."
-
-#: ../rednotebook/info.py:114
-msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "«كۈندىلىك خاتىرە» تىزىملىكىدىن «چىقار» تۈگمىسىنى تاپالايسىز."
-
-#: ../rednotebook/info.py:115
-msgid ""
-"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
-msgstr ""
-
-#: ../rednotebook/info.py:118
-msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr ""
-"ئەگەر ھەر قانداق خاتالىققا يولۇقسىڭىز، ماڭا ئۇچۇر قالدۇرۇڭ، مەن ئۇ "
-"خاتالىقلارنى تۈزىتىمەن."
-
-#: ../rednotebook/info.py:119
-msgid "Any feedback is appreciated."
-msgstr "ھەر قانداق قايتما ئىنكاس بولسا تولىمۇ خۇسەن بولىمەن."
-
-#: ../rednotebook/info.py:122
-msgid "Have a nice day!"
-msgstr "خۇشال كۈنلەر سىزگە يار بولسۇن!"
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
 msgstr "تونۇشتۇرۇش"
 
-#: ../rednotebook/gui/menu.py:93
-msgid "_Journal"
-msgstr "كۈندىلىك خاتىرە(_J)"
-
-#: ../rednotebook/gui/menu.py:95
-msgid "Create a new journal. The old one will be saved"
-msgstr "يېڭى كۈندىلىك خاتىرەدىن بىرنى قۇرىدۇ. كونىسى ساقلىنىدۇ"
-
-#: ../rednotebook/gui/menu.py:98
-msgid "Load an existing journal. The old journal will be saved"
-msgstr "مەۋجۇد كۈندىلىك خاتىرەنى يۈكلەيدۇ. كونىسى ساقلىنىدۇ"
-
-#: ../rednotebook/gui/menu.py:103
-msgid ""
-"Save journal at a new location. The old journal files will also be saved"
+#: ../rednotebook/gui/customwidgets.py:377
+msgid "Save and insert"
 msgstr ""
-"كۈندىلىك خاتىرەنى يېڭى ئورۇنغا ساقلايدۇ. كونا كۈندىلىك خاتىرە ھۆججەتلىرىمۇ "
-"ساقلىنىدۇ"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:106
-msgid "_Import"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:107
-msgid "Open the import assistant"
-msgstr "ئەكىرىش ياردەمچىسىنى ئاچ"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:109
-msgid "Export"
-msgstr "چىقار"
-
-#: ../rednotebook/gui/menu.py:110
-msgid "Open the export assistant"
-msgstr "چىقىرىش ياردەمچىسىنى ئاچ"
-
-#. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:112
-msgid "_Backup"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:113
-msgid "Save all the data in a zip archive"
-msgstr "ھەممە سانلىق مەلۇماتنى بىر zip ھۆججىتىگە ساقلايدۇ"
-
-#: ../rednotebook/gui/menu.py:114
-msgid "S_tatistics"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:115
-msgid "Show some statistics about the journal"
-msgstr "بۇ كۈندىلىك خاتىرىنىڭ ستاتىستىكا سانلىق مەلۇماتىنى كۆرسىتىدۇ"
-
-#: ../rednotebook/gui/menu.py:117
-msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "RedNotebook نى تاقايدۇ. پەغەزگە قوندۇرمايدۇ."
-
-#: ../rednotebook/gui/menu.py:120
-msgid "_Edit"
-msgstr "تەھرىر(_E)"
-
-#: ../rednotebook/gui/menu.py:122
-msgid "Undo text or tag edits"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:124
-msgid "Redo text or tag edits"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:138
-msgid "_Help"
-msgstr "ياردەم(_H)"
-
-#: ../rednotebook/gui/menu.py:139
-msgid "Contents"
-msgstr "مەزمۇنلار"
-
-#: ../rednotebook/gui/menu.py:140
-msgid "Open the RedNotebook documentation"
-msgstr "RedNotebook پۈتۈكىنى ئاچ"
-
-#: ../rednotebook/gui/menu.py:141
-msgid "Get Help Online"
-msgstr "توردىكى ياردەمگە ئېرىش"
-
-#: ../rednotebook/gui/menu.py:142
-msgid "Browse answered questions or ask a new one"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:143
-msgid "Translate RedNotebook"
-msgstr "RedNotebook نى تەرجىمە قىلىش"
-
-#: ../rednotebook/gui/menu.py:144
-msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
-"Launchpad تورىغا باغلىنىپ بۇ يۇمشاق دېتالنى تەرجىمە قىلىشقا ياردەملىشىڭ"
-
-#: ../rednotebook/gui/menu.py:146
-msgid "Report a Problem"
-msgstr "مەسىلە مەلۇم قىل"
-
-#: ../rednotebook/gui/menu.py:147
-msgid "Fill out a short form about the problem"
-msgstr "قسىقا بولغان مەسىلە جەدۋىلىدىن بىرنى تولدۇرۇڭ"
-
-#: ../rednotebook/gui/menu.py:166
-msgid "Wrong directory"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:247
-msgid "You cannot use this directory for your journal:"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:173
-msgid "Please select an empty directory."
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:177
-msgid "This directory contains no journal files:"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:193
-msgid "Journals are saved in a directory, not in a single file."
-msgstr ""
-"ھەممە كۈندىلىك خاتىرە يەككە ھۆججەتكە ساقلانماستىن بىر مۇندەرىجىگە ساقلىنىدۇ."
-
-#: ../rednotebook/gui/menu.py:194
-msgid "The directory name will be the title of the new journal."
-msgstr "بۇ مۇندەرىجە يېڭى كۈندىلىك خاتىرىنىڭ ماۋزۇسى قىلىنىدۇ."
-
-#: ../rednotebook/gui/menu.py:195
-msgid "Select an empty folder for your new journal"
-msgstr "يېڭى كۈندىلىك خاتىرىڭىز ئۈچۈن بوش قىسقۇچتىن بىرنى تاللاڭ"
-
-#: ../rednotebook/gui/menu.py:198
-msgid "Select an existing journal directory"
-msgstr "كۈندىلىك خاتىرىگە مەۋجۇد مۇندەرىجىدىن بىرنى تاللاڭ"
-
-#: ../rednotebook/gui/menu.py:199
-msgid "The directory should contain your journal's data files"
-msgstr ""
-"بۇ مۇندەرىجە كۈندىلىك خاتىرە سانلىق مەلۇماتلىرىڭىزنى ئۆز ئىچىگە ئالىدۇ"
-
-#: ../rednotebook/gui/menu.py:206
-msgid "Select an empty folder for the new location of your journal"
-msgstr ""
-"كۈندىلىك خاتىرىڭىزنى ساقلايدىغان يېڭى ئورۇندىن بوش قىسقۇچتىن بىرنى تاللاڭ"
-
-#: ../rednotebook/gui/menu.py:207
-msgid "The directory name will be the new title of the journal"
-msgstr "بۇ مۇندەرىجە ئاتى كۈندىلىك خاتىرىنىڭ يېڭى ماۋزۇسى قىلىنىدۇ."
-
-#: ../rednotebook/gui/menu.py:265
-msgid "RedNotebook Documentation"
-msgstr "RedNotebook پۈتۈكى"
-
-#: ../rednotebook/gui/menu.py:285
-msgid "A Desktop Journal"
-msgstr "ئۈستەلئۈستى كۈندىلىك خاتىرە"
-
-#: ../rednotebook/gui/search.py:76
-msgid "Date"
-msgstr "چېسلا"
-
-#: ../rednotebook/gui/search.py:76
-msgid "Text"
-msgstr "تېكىست"
-
-#: ../rednotebook/gui/categories.py:133
-msgid "Empty entries are not allowed"
-msgstr "بوش تۈرلەرگە يول قويۇلمايدۇ"
-
-#: ../rednotebook/gui/categories.py:150
-msgid "Empty tag names are not allowed"
-msgstr ""
-
-#: ../rednotebook/gui/categories.py:408
-msgid "Change this text"
-msgstr "بۇ تېكستنى ئۆزگەرتىڭ"
-
-#: ../rednotebook/gui/categories.py:412
-msgid "Add a new entry"
-msgstr "يېڭى تۈردىن بىرنى قوش"
-
-#: ../rednotebook/gui/categories.py:416
-msgid "Delete this entry"
-msgstr "بۇ تۈرنى ئۆچۈر"
-
-#: ../rednotebook/gui/options.py:84
-msgid "Load RedNotebook at startup"
-msgstr "قوزغالغاندا RedNotebook نى يۈكلە"
-
-#: ../rednotebook/gui/options.py:154
-msgid "%A, %x, Day %j"
-msgstr "%A، %x، %j-كۈنى"
-
-#: ../rednotebook/gui/options.py:154
-msgid "Week %W of Year %Y"
-msgstr "%Y-يىلىنىڭ %W- ھەپتىسى"
-
-#: ../rednotebook/gui/options.py:155
-msgid "Day %j"
-msgstr "%j-كۈنى"
-
-#: ../rednotebook/gui/options.py:160
-msgid "Help"
-msgstr "ياردەم"
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/options.py:181
-msgid "Preview:"
-msgstr "ئالدىن كۆزەت:"
-
-#: ../rednotebook/gui/options.py:295
-msgid "Close to system tray"
-msgstr "يېپىپ سىستېما پەغەزگە كىچىكلەت"
-
-#: ../rednotebook/gui/options.py:296
-msgid "Closing the window will send RedNotebook to the tray"
-msgstr "كۆزنەكنى يېپىپ RedNotebook نى پەغەزگە يوشۇرىدۇ"
-
-#: ../rednotebook/gui/options.py:299
-msgid "Underline misspelled words"
-msgstr "ئىملاسى خاتا سۆزگە ئاستى سىزىق سىز"
-
-#: ../rednotebook/gui/options.py:300
-msgid "Requires gtkspell."
-msgstr "gtkspell زۆرۈر."
-
-#: ../rednotebook/gui/options.py:301
-msgid ""
-"This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr "بۇ python-gtkspell ياكى python-gnome2-extras بوغچىسىنىڭ ئىچىدە"
-
-#: ../rednotebook/gui/options.py:302
-msgid "Check Spelling"
-msgstr "ئىملا تەكشۈرۈش"
-
-#: ../rednotebook/gui/options.py:310
-msgid "Check for new version at startup"
-msgstr "قوزغالغاندا يېڭى نەشرىنى تەكشۈر"
-
-#: ../rednotebook/gui/options.py:317
-msgid "Check now"
-msgstr "ھازىر تەكشۈر"
-
-#: ../rednotebook/gui/options.py:322
-msgid "Font Size"
-msgstr "خەت چوڭلۇقى"
-
-#: ../rednotebook/gui/options.py:323
-msgid "Date/Time format"
-msgstr "چېسلا/ۋاقىت پىچىمى"
-
-#: ../rednotebook/gui/options.py:324
-msgid "Exclude from cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:325
-msgid "Do not show these comma separated words in the word cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:326
-msgid "Include small words in cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:327
-msgid "Allow these words with 4 letters or less"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:293
-msgid "Show RedNotebook"
-msgstr "RedNotebook نى كۆرسەت"
-
-#: ../rednotebook/gui/main_window.py:675
-msgid "No text or tag has been selected."
-msgstr ""
-
-#. ## Translators: The Control (Ctrl) key
-#: ../rednotebook/gui/main_window.py:680
-msgid "Ctrl"
-msgstr "Ctrl"
-
-#: ../rednotebook/gui/main_window.py:683
-msgid "Bold"
-msgstr "توم"
-
-#: ../rednotebook/gui/main_window.py:684
-msgid "Italic"
-msgstr "يانتۇ"
-
-#: ../rednotebook/gui/main_window.py:685
-msgid "Underline"
-msgstr "ئاستى سىزىق"
-
-#: ../rednotebook/gui/main_window.py:686
-msgid "Strikethrough"
-msgstr "ئۆچۈرۈش سىزىقى"
-
-#. ## Translators: noun
-#: ../rednotebook/gui/main_window.py:702 ../rednotebook/gui/exports.py:382
-msgid "Format"
-msgstr "فورمات"
-
-#: ../rednotebook/gui/main_window.py:703
-msgid "Format the selected text or tag"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:753
-msgid "First Item"
-msgstr "بىرىنچى تۈر"
-
-#: ../rednotebook/gui/main_window.py:754
-msgid "Second Item"
-msgstr "ئىككىنچى تۈر"
-
-#: ../rednotebook/gui/main_window.py:755
-msgid "Indented Item"
-msgstr "تارايغان تۈر"
-
-#: ../rednotebook/gui/main_window.py:756
-msgid "Two blank lines close the list"
-msgstr "ئىككى بوش قۇردا بۇ تىزىمنى ياپ"
-
-#: ../rednotebook/gui/main_window.py:760
-msgid "Title text"
-msgstr "ماۋزۇ تېكىستى"
-
-#: ../rednotebook/gui/main_window.py:786
-msgid "Picture"
-msgstr "رەسىم"
-
-#: ../rednotebook/gui/main_window.py:787
-msgid "Insert an image from the harddisk"
-msgstr "قاتتىق دىسكىدىكى سۈرەتتىن بىرنى قىستۇر"
-
-#: ../rednotebook/gui/main_window.py:789
-msgid "File"
-msgstr "ھۆججەت"
-
-#: ../rednotebook/gui/main_window.py:790
-msgid "Insert a link to a file"
-msgstr "ھۆججەت ئۇلانمىسىدىن بىرنى قىستۇر"
-
-#. ## Translators: Noun
-#: ../rednotebook/gui/main_window.py:793
-msgid "_Link"
-msgstr "ئۇلانما(_L)"
-
-#: ../rednotebook/gui/main_window.py:794
-msgid "Insert a link to a website"
-msgstr "تور بېكەت ئۇلانمىسىدىن بىرنى قىستۇر"
-
-#: ../rednotebook/gui/main_window.py:796
-msgid "Bullet List"
-msgstr "تۈر بەلگە تىزىمى"
-
-#: ../rednotebook/gui/main_window.py:798
-msgid "Numbered List"
-msgstr "نومۇرلۇق تىزىم"
-
-#: ../rednotebook/gui/main_window.py:800
-msgid "Title"
-msgstr "ماۋزۇ"
-
-#: ../rednotebook/gui/main_window.py:802
-msgid "Line"
-msgstr "سىزىق"
-
-#: ../rednotebook/gui/main_window.py:803
-msgid "Insert a separator line"
-msgstr "ئايرىش سىزىقىدىن بىرنى قىستۇر"
-
-#: ../rednotebook/gui/main_window.py:805
-msgid "Table"
-msgstr "جەدۋەل"
-
-#: ../rednotebook/gui/main_window.py:807
-msgid "Latex Formula"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:809
-msgid "Date/Time"
-msgstr "چېسلا/ۋاقىت"
-
-#: ../rednotebook/gui/main_window.py:810
-msgid "Insert the current date and time (edit format in preferences)"
-msgstr "نۆۋەتتىكى چېسلا ۋە ۋاقىتنى قىستۇر (مايىللىقتا پىچىمى تەھرىرلىنىدۇ)"
-
-#: ../rednotebook/gui/main_window.py:812
-msgid "Line Break"
-msgstr "قۇر ئالماشتۇرۇش بەلگىسى"
-
-#: ../rednotebook/gui/main_window.py:813
-msgid "Insert a manual line break"
-msgstr "قۇر ئالماشتۇرۇش بەلگىسىدىن بىرنى قىستۇر"
-
-#: ../rednotebook/gui/main_window.py:836
-msgid "Insert"
-msgstr "قىستۇر"
-
-#: ../rednotebook/gui/main_window.py:840
-msgid "Insert images, files, links and other content"
-msgstr "سۈرەت، ھۆججەت، ئۇلانما ۋە باشقا مەزمۇنلارنى قىستۇر"
-
-#: ../rednotebook/gui/main_window.py:877
-msgid "Width (optional):"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:882
-msgid "pixels"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:903
-msgid "Width must be an integer."
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:962
-msgid "No link location has been entered"
-msgstr "ئۇلانما ئورنى كىرگۈزۈلمىدى"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -586,6 +111,11 @@ msgstr "سۈزگۈچ، بۇلار، پەش، ئايرىلغان، سۆزلەر"
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr "mtv، ئەخلەت خەت، ئىش، خىزمەت، ئويۇن"
+
+#: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/info.py:73 ../rednotebook/util/markup.py:129
+msgid "Tags"
+msgstr "خەتكۈچلەر"
 
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
@@ -735,6 +265,523 @@ msgstr "مەزمۇن %s غا چىقىرىلدى"
 msgid "requires pywebkitgtk"
 msgstr "pywebkitgtk زۆرۈر"
 
+#: ../rednotebook/gui/menu.py:93
+msgid "_Journal"
+msgstr "كۈندىلىك خاتىرە(_J)"
+
+#: ../rednotebook/gui/menu.py:95
+msgid "Create a new journal. The old one will be saved"
+msgstr "يېڭى كۈندىلىك خاتىرەدىن بىرنى قۇرىدۇ. كونىسى ساقلىنىدۇ"
+
+#: ../rednotebook/gui/menu.py:98
+msgid "Load an existing journal. The old journal will be saved"
+msgstr "مەۋجۇد كۈندىلىك خاتىرەنى يۈكلەيدۇ. كونىسى ساقلىنىدۇ"
+
+#: ../rednotebook/gui/menu.py:103
+msgid ""
+"Save journal at a new location. The old journal files will also be saved"
+msgstr ""
+"كۈندىلىك خاتىرەنى يېڭى ئورۇنغا ساقلايدۇ. كونا كۈندىلىك خاتىرە ھۆججەتلىرىمۇ "
+"ساقلىنىدۇ"
+
+#. ## Translators: Verb
+#. ('Import', gtk.STOCK_ADD, _('_Import'),
+#. None, _('Open the import assistant'), self.on_import_menu_item_activate),
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:109
+msgid "Export"
+msgstr "چىقار"
+
+#: ../rednotebook/gui/menu.py:110
+msgid "Open the export assistant"
+msgstr "چىقىرىش ياردەمچىسىنى ئاچ"
+
+#. ## Translators: Verb
+#: ../rednotebook/gui/menu.py:112
+msgid "_Backup"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:113
+msgid "Save all the data in a zip archive"
+msgstr "ھەممە سانلىق مەلۇماتنى بىر zip ھۆججىتىگە ساقلايدۇ"
+
+#: ../rednotebook/gui/menu.py:114
+msgid "S_tatistics"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:115
+msgid "Show some statistics about the journal"
+msgstr "بۇ كۈندىلىك خاتىرىنىڭ ستاتىستىكا سانلىق مەلۇماتىنى كۆرسىتىدۇ"
+
+#: ../rednotebook/gui/menu.py:117
+msgid "Shutdown RedNotebook. It will not be sent to the tray."
+msgstr "RedNotebook نى تاقايدۇ. پەغەزگە قوندۇرمايدۇ."
+
+#: ../rednotebook/gui/menu.py:120
+msgid "_Edit"
+msgstr "تەھرىر(_E)"
+
+#: ../rednotebook/gui/menu.py:122
+msgid "Undo text or tag edits"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:124
+msgid "Redo text or tag edits"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:137
+msgid "_Help"
+msgstr "ياردەم(_H)"
+
+#: ../rednotebook/gui/menu.py:138
+msgid "Contents"
+msgstr "مەزمۇنلار"
+
+#: ../rednotebook/gui/menu.py:139
+msgid "Open the RedNotebook documentation"
+msgstr "RedNotebook پۈتۈكىنى ئاچ"
+
+#: ../rednotebook/gui/menu.py:140
+msgid "Get Help Online"
+msgstr "توردىكى ياردەمگە ئېرىش"
+
+#: ../rednotebook/gui/menu.py:141
+msgid "Browse answered questions or ask a new one"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:142
+msgid "Translate RedNotebook"
+msgstr "RedNotebook نى تەرجىمە قىلىش"
+
+#: ../rednotebook/gui/menu.py:143
+msgid "Connect to the Launchpad website to help translate RedNotebook"
+msgstr ""
+"Launchpad تورىغا باغلىنىپ بۇ يۇمشاق دېتالنى تەرجىمە قىلىشقا ياردەملىشىڭ"
+
+#: ../rednotebook/gui/menu.py:145
+msgid "Report a Problem"
+msgstr "مەسىلە مەلۇم قىل"
+
+#: ../rednotebook/gui/menu.py:146
+msgid "Fill out a short form about the problem"
+msgstr "قسىقا بولغان مەسىلە جەدۋىلىدىن بىرنى تولدۇرۇڭ"
+
+#: ../rednotebook/gui/menu.py:166
+msgid "Wrong directory"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:248
+msgid "You cannot use this directory for your journal:"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:173
+msgid "Please select an empty directory."
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:177
+msgid "This directory contains no journal files:"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:193
+msgid "Journals are saved in a directory, not in a single file."
+msgstr ""
+"ھەممە كۈندىلىك خاتىرە يەككە ھۆججەتكە ساقلانماستىن بىر مۇندەرىجىگە ساقلىنىدۇ."
+
+#: ../rednotebook/gui/menu.py:194
+msgid "The directory name will be the title of the new journal."
+msgstr "بۇ مۇندەرىجە يېڭى كۈندىلىك خاتىرىنىڭ ماۋزۇسى قىلىنىدۇ."
+
+#: ../rednotebook/gui/menu.py:195
+msgid "Select an empty folder for your new journal"
+msgstr "يېڭى كۈندىلىك خاتىرىڭىز ئۈچۈن بوش قىسقۇچتىن بىرنى تاللاڭ"
+
+#: ../rednotebook/gui/menu.py:198
+msgid "Select an existing journal directory"
+msgstr "كۈندىلىك خاتىرىگە مەۋجۇد مۇندەرىجىدىن بىرنى تاللاڭ"
+
+#: ../rednotebook/gui/menu.py:199
+msgid "The directory should contain your journal's data files"
+msgstr ""
+"بۇ مۇندەرىجە كۈندىلىك خاتىرە سانلىق مەلۇماتلىرىڭىزنى ئۆز ئىچىگە ئالىدۇ"
+
+#: ../rednotebook/gui/menu.py:206
+msgid "Select an empty folder for the new location of your journal"
+msgstr ""
+"كۈندىلىك خاتىرىڭىزنى ساقلايدىغان يېڭى ئورۇندىن بوش قىسقۇچتىن بىرنى تاللاڭ"
+
+#: ../rednotebook/gui/menu.py:207
+msgid "The directory name will be the new title of the journal"
+msgstr "بۇ مۇندەرىجە ئاتى كۈندىلىك خاتىرىنىڭ يېڭى ماۋزۇسى قىلىنىدۇ."
+
+#: ../rednotebook/gui/menu.py:265
+msgid "RedNotebook Documentation"
+msgstr "RedNotebook پۈتۈكى"
+
+#: ../rednotebook/gui/menu.py:285
+msgid "A Desktop Journal"
+msgstr "ئۈستەلئۈستى كۈندىلىك خاتىرە"
+
+#: ../rednotebook/gui/options.py:84
+msgid "Load RedNotebook at startup"
+msgstr "قوزغالغاندا RedNotebook نى يۈكلە"
+
+#: ../rednotebook/gui/options.py:154
+msgid "%A, %x, Day %j"
+msgstr "%A، %x، %j-كۈنى"
+
+#: ../rednotebook/gui/options.py:154
+msgid "Week %W of Year %Y"
+msgstr "%Y-يىلىنىڭ %W- ھەپتىسى"
+
+#: ../rednotebook/gui/options.py:155
+msgid "Day %j"
+msgstr "%j-كۈنى"
+
+#: ../rednotebook/gui/options.py:160
+msgid "Help"
+msgstr "ياردەم"
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/options.py:181
+msgid "Preview:"
+msgstr "ئالدىن كۆزەت:"
+
+#: ../rednotebook/gui/options.py:295
+msgid "Close to system tray"
+msgstr "يېپىپ سىستېما پەغەزگە كىچىكلەت"
+
+#: ../rednotebook/gui/options.py:296
+msgid "Closing the window will send RedNotebook to the tray"
+msgstr "كۆزنەكنى يېپىپ RedNotebook نى پەغەزگە يوشۇرىدۇ"
+
+#: ../rednotebook/gui/options.py:299
+msgid "Underline misspelled words"
+msgstr "ئىملاسى خاتا سۆزگە ئاستى سىزىق سىز"
+
+#: ../rednotebook/gui/options.py:300
+msgid "Requires gtkspell."
+msgstr "gtkspell زۆرۈر."
+
+#: ../rednotebook/gui/options.py:301
+msgid ""
+"This is included in the python-gtkspell or python-gnome2-extras package"
+msgstr "بۇ python-gtkspell ياكى python-gnome2-extras بوغچىسىنىڭ ئىچىدە"
+
+#: ../rednotebook/gui/options.py:302
+msgid "Check Spelling"
+msgstr "ئىملا تەكشۈرۈش"
+
+#: ../rednotebook/gui/options.py:309
+msgid "Switch between edit and preview mode automatically"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:313
+msgid "Check for new version at startup"
+msgstr "قوزغالغاندا يېڭى نەشرىنى تەكشۈر"
+
+#: ../rednotebook/gui/options.py:321
+msgid "Check now"
+msgstr "ھازىر تەكشۈر"
+
+#: ../rednotebook/gui/options.py:326
+msgid "Font Size"
+msgstr "خەت چوڭلۇقى"
+
+#: ../rednotebook/gui/options.py:327
+msgid "Date/Time format"
+msgstr "چېسلا/ۋاقىت پىچىمى"
+
+#: ../rednotebook/gui/options.py:328
+msgid "Exclude from cloud"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:329
+msgid "Do not show these comma separated words in the word cloud"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:330
+msgid "Include small words in cloud"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:331
+msgid "Allow these words with 4 letters or less"
+msgstr ""
+
+#: ../rednotebook/gui/search.py:76
+msgid "Date"
+msgstr "چېسلا"
+
+#: ../rednotebook/gui/search.py:76
+msgid "Text"
+msgstr "تېكىست"
+
+#: ../rednotebook/gui/insert_menu.py:67
+msgid "First Item"
+msgstr "بىرىنچى تۈر"
+
+#: ../rednotebook/gui/insert_menu.py:67
+msgid "Second Item"
+msgstr "ئىككىنچى تۈر"
+
+#: ../rednotebook/gui/insert_menu.py:68
+msgid "Indented Item"
+msgstr "تارايغان تۈر"
+
+#: ../rednotebook/gui/insert_menu.py:68
+msgid "Two blank lines close the list"
+msgstr "ئىككى بوش قۇردا بۇ تىزىمنى ياپ"
+
+#: ../rednotebook/gui/insert_menu.py:103
+msgid "Picture"
+msgstr "رەسىم"
+
+#: ../rednotebook/gui/insert_menu.py:104
+msgid "Insert an image from the harddisk"
+msgstr "قاتتىق دىسكىدىكى سۈرەتتىن بىرنى قىستۇر"
+
+#: ../rednotebook/gui/insert_menu.py:106
+msgid "File"
+msgstr "ھۆججەت"
+
+#: ../rednotebook/gui/insert_menu.py:107
+msgid "Insert a link to a file"
+msgstr "ھۆججەت ئۇلانمىسىدىن بىرنى قىستۇر"
+
+#. ## Translators: Noun
+#: ../rednotebook/gui/insert_menu.py:110
+msgid "_Link"
+msgstr "ئۇلانما(_L)"
+
+#: ../rednotebook/gui/insert_menu.py:111
+msgid "Insert a link to a website"
+msgstr "تور بېكەت ئۇلانمىسىدىن بىرنى قىستۇر"
+
+#: ../rednotebook/gui/insert_menu.py:113
+msgid "Bullet List"
+msgstr "تۈر بەلگە تىزىمى"
+
+#: ../rednotebook/gui/insert_menu.py:117 ../rednotebook/gui/insert_menu.py:294
+msgid "Title"
+msgstr "ماۋزۇ"
+
+#: ../rednotebook/gui/insert_menu.py:119
+msgid "Line"
+msgstr "سىزىق"
+
+#: ../rednotebook/gui/insert_menu.py:120
+msgid "Insert a separator line"
+msgstr "ئايرىش سىزىقىدىن بىرنى قىستۇر"
+
+#: ../rednotebook/gui/insert_menu.py:126
+msgid "Date/Time"
+msgstr "چېسلا/ۋاقىت"
+
+#: ../rednotebook/gui/insert_menu.py:127
+msgid "Insert the current date and time (edit format in preferences)"
+msgstr "نۆۋەتتىكى چېسلا ۋە ۋاقىتنى قىستۇر (مايىللىقتا پىچىمى تەھرىرلىنىدۇ)"
+
+#: ../rednotebook/gui/insert_menu.py:129
+msgid "Line Break"
+msgstr "قۇر ئالماشتۇرۇش بەلگىسى"
+
+#: ../rednotebook/gui/insert_menu.py:130
+msgid "Insert a manual line break"
+msgstr "قۇر ئالماشتۇرۇش بەلگىسىدىن بىرنى قىستۇر"
+
+#: ../rednotebook/gui/insert_menu.py:132
+msgid "_Insert"
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:154
+msgid "Insert"
+msgstr "قىستۇر"
+
+#: ../rednotebook/gui/insert_menu.py:155
+msgid "Insert images, files, links and other content"
+msgstr "سۈرەت، ھۆججەت، ئۇلانما ۋە باشقا مەزمۇنلارنى قىستۇر"
+
+#: ../rednotebook/gui/insert_menu.py:191
+msgid "Width (optional):"
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:196
+msgid "pixels"
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:217
+msgid "Width must be an integer."
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:281
+msgid "No link location has been entered"
+msgstr "ئۇلانما ئورنى كىرگۈزۈلمىدى"
+
+#: ../rednotebook/gui/categories.py:133
+msgid "Empty entries are not allowed"
+msgstr "بوش تۈرلەرگە يول قويۇلمايدۇ"
+
+#: ../rednotebook/gui/categories.py:150
+msgid "Empty tag names are not allowed"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:408
+msgid "Change this text"
+msgstr "بۇ تېكستنى ئۆزگەرتىڭ"
+
+#: ../rednotebook/gui/categories.py:412
+msgid "Add a new entry"
+msgstr "يېڭى تۈردىن بىرنى قوش"
+
+#: ../rednotebook/gui/categories.py:416
+msgid "Delete this entry"
+msgstr "بۇ تۈرنى ئۆچۈر"
+
+#: ../rednotebook/journal.py:249
+msgid "Opening default journal."
+msgstr ""
+
+#: ../rednotebook/journal.py:332
+#, python-format
+msgid "The content has been saved to %s"
+msgstr "مەزمۇن %s غا ساقلاندى"
+
+#: ../rednotebook/journal.py:335
+msgid "Nothing to save"
+msgstr "ھېچنېمە ساقلانمىدى"
+
+#: ../rednotebook/journal.py:482
+msgid "Error"
+msgstr ""
+
+#: ../rednotebook/info.py:74
+msgid "Work"
+msgstr "ئىش"
+
+#: ../rednotebook/info.py:75
+msgid "Free time"
+msgstr ""
+
+#: ../rednotebook/info.py:76
+msgid "Todo"
+msgstr ""
+
+#: ../rednotebook/info.py:77
+msgid "Done"
+msgstr "تامام"
+
+#: ../rednotebook/info.py:78
+msgid "Remember the milk"
+msgstr ""
+
+#: ../rednotebook/info.py:79
+msgid "Wash the dishes"
+msgstr ""
+
+#: ../rednotebook/info.py:81
+msgid "Hello!"
+msgstr "مەرھابا!"
+
+#: ../rednotebook/info.py:82
+msgid ""
+"Some example text has been added to help you start and you can erase it "
+"whenever you like."
+msgstr ""
+"پىروگرامما سىزنىڭ ئىشلىتىشىڭىز ئۈچۈن بەزى مىسال تېكىستلىرىنى قوشقان، سىز "
+"خالىغان ۋاقىتتا ئۆچۈرۈۋېتەلەيسىز."
+
+#. ## Translators: "Help" -> noun
+#: ../rednotebook/info.py:85
+msgid ""
+"The example text and more documentation is available under \"Help\" -> "
+"\"Contents\"."
+msgstr ""
+"مىسال تېكست ۋە تېخىمۇ كۆپ پۈتۈكلەرنى «ياردەم»-›«مەزمۇن» تىزىملىكىدىغان "
+"تاپالايسىز."
+
+#. ## Translators: noun
+#. ## Verb
+#: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
+msgid "Preview"
+msgstr "ئالدىن كۆزەت"
+
+#: ../rednotebook/info.py:89
+msgid ""
+"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
+"mode."
+msgstr ""
+
+#: ../rednotebook/info.py:90
+msgid "Click on Edit above to see the difference."
+msgstr ""
+
+#: ../rednotebook/info.py:93
+msgid "Tagging is easy."
+msgstr ""
+
+#: ../rednotebook/info.py:94
+msgid "Just use #hashtags like on twitter."
+msgstr ""
+
+#: ../rednotebook/info.py:97
+msgid ""
+"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
+"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
+"watched \"__Life of Brian__\"."
+msgstr ""
+"بۈگۈن مەن //ئەرمەك ھايۋان دۇكىنى// غا بېرىپ **يولۋاس** تىن بىرنى سېتىۋالدىم "
+"ئاندىن بىز --سۇ ئۈزۈش كۆلى-- باغچىغا بېرىپ ئۇچار تەخسە ئوينىدۇق. ئۇنىڭدىن "
+"كېيىن «__برايىننىڭ ھاياتى__» دېگەن كىنونى كۆردۇق."
+
+#. ## Translators: both are verbs
+#: ../rednotebook/info.py:109
+msgid "Save and Export"
+msgstr "ساقلاپ ھەمدە چىقار"
+
+#: ../rednotebook/info.py:110
+msgid ""
+"Everything you enter will be saved automatically at regular intervals and "
+"when you exit the program."
+msgstr ""
+"سىز كىرگۈزگەن ھەر قانداق سانلىق مەلۇمات مەلۇم ۋاقىت ئارىلىقى ئىچىدە "
+"ئۆزلۈكىدىن ساقلىنىدۇ، سىز بۇ پىروگراممىدىن چېكىنگەندىمۇ ھەممە سانلىق "
+"مەلۇماتلارنى ئۆزلۈكىدىن ساقلايدۇ."
+
+#: ../rednotebook/info.py:111
+msgid "To avoid data loss you should backup your journal regularly."
+msgstr ""
+"سانلىق مەلۇماتلىرىڭىزنىڭ يوقاپ كېتىشىدىن ساقلىنىش ئۈچۈن كۈندىلىك خاتىرىنى "
+"مەلۇم مۇددەتتە زاپاسلاپ تۇرۇڭ."
+
+#: ../rednotebook/info.py:112
+msgid ""
+"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
+msgstr ""
+"«كۈندىلىك خاتىرە» ئاستىدىكى «زاپاسلا» تىزىملىكى سىز كىرگۈزگەن ھەممە سانلىق "
+"مەلۇماتلارنى zip پىرىس ھۆججىتى شەكلىدە ساقلايدۇ."
+
+#: ../rednotebook/info.py:113
+msgid "In the \"Journal\" menu you also find the \"Export\" button."
+msgstr "«كۈندىلىك خاتىرە» تىزىملىكىدىن «چىقار» تۈگمىسىنى تاپالايسىز."
+
+#: ../rednotebook/info.py:114
+msgid ""
+"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
+msgstr ""
+
+#: ../rednotebook/info.py:117
+msgid "If you encounter any errors, please drop me a note so I can fix them."
+msgstr ""
+"ئەگەر ھەر قانداق خاتالىققا يولۇقسىڭىز، ماڭا ئۇچۇر قالدۇرۇڭ، مەن ئۇ "
+"خاتالىقلارنى تۈزىتىمەن."
+
+#: ../rednotebook/info.py:118
+msgid "Any feedback is appreciated."
+msgstr "ھەر قانداق قايتما ئىنكاس بولسا تولىمۇ خۇسەن بولىمەن."
+
+#: ../rednotebook/info.py:121
+msgid "Have a nice day!"
+msgstr "خۇشال كۈنلەر سىزگە يار بولسۇن!"
+
 #: ../rednotebook/templates.py:28
 msgid "Monday"
 msgstr ""
@@ -835,51 +882,17 @@ msgid ""
 "=====================================\n"
 msgstr ""
 
-#: ../rednotebook/templates.py:203
+#: ../rednotebook/templates.py:261
 msgid "Choose Template Name"
 msgstr "قېلىپ ئاتىنى تاللاڭ"
 
-#: ../rednotebook/templates.py:352 ../rednotebook/templates.py:361
+#: ../rednotebook/templates.py:394
 msgid "This Weekday's Template"
 msgstr "بۇ خىزمەت كۈنلىرى قېلىپى"
 
-#: ../rednotebook/templates.py:355
-msgid "Edit Template"
-msgstr "قېلىپ تەھرىر"
-
-#: ../rednotebook/templates.py:358
-msgid "Insert Template"
-msgstr "قېلىپ قىستۇر"
-
-#: ../rednotebook/templates.py:364
+#: ../rednotebook/templates.py:397
 msgid "Create New Template"
 msgstr "يېڭى قېلىپ قۇر"
-
-#: ../rednotebook/templates.py:368
-msgid "Open Template Directory"
-msgstr "قېلىپ مۇندەرىجىسىنى ئاچ"
-
-#: ../rednotebook/util/utils.py:115
-msgid "unknown"
-msgstr ""
-
-#: ../rednotebook/util/utils.py:127
-#, python-format
-msgid "You have version <b>%s</b>."
-msgstr "سىز ئورناتقان نەشرى <b>%s</b>."
-
-#: ../rednotebook/util/utils.py:128
-#, python-format
-msgid "The latest version is <b>%s</b>."
-msgstr "ئەڭ يېڭى نەشرى <b>%s</b>."
-
-#: ../rednotebook/util/utils.py:129
-msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "RedNotebook باش بېتىنى زىيارەت قىلامسىز؟"
-
-#: ../rednotebook/util/utils.py:136
-msgid "Do not ask again"
-msgstr "قايتا سورىما"
 
 #: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
@@ -913,46 +926,27 @@ msgstr "تەھرىرلەنگەن كۈنلەرنىڭ پىرسەنتى"
 msgid "Lines"
 msgstr "قۇر سانى"
 
-#: ../rednotebook/backup.py:55
-msgid "It has been a while since you made your last backup."
+#: ../rednotebook/util/utils.py:115
+msgid "unknown"
 msgstr ""
 
-#: ../rednotebook/backup.py:56
-msgid "You can backup your journal to a zip file to avoid data loss."
-msgstr ""
-
-#: ../rednotebook/backup.py:61
-msgid "Backup"
-msgstr "زاپاسلا"
-
-#: ../rednotebook/backup.py:63
-msgid "Backup now"
-msgstr ""
-
-#: ../rednotebook/backup.py:64
-msgid "Ask at next start"
-msgstr ""
-
-#: ../rednotebook/backup.py:65
-msgid "Never ask again"
-msgstr ""
-
-#: ../rednotebook/journal.py:248
-msgid "Opening default journal."
-msgstr ""
-
-#: ../rednotebook/journal.py:331
+#: ../rednotebook/util/utils.py:127
 #, python-format
-msgid "The content has been saved to %s"
-msgstr "مەزمۇن %s غا ساقلاندى"
+msgid "You have version <b>%s</b>."
+msgstr "سىز ئورناتقان نەشرى <b>%s</b>."
 
-#: ../rednotebook/journal.py:334
-msgid "Nothing to save"
-msgstr "ھېچنېمە ساقلانمىدى"
+#: ../rednotebook/util/utils.py:128
+#, python-format
+msgid "The latest version is <b>%s</b>."
+msgstr "ئەڭ يېڭى نەشرى <b>%s</b>."
 
-#: ../rednotebook/journal.py:481
-msgid "Error"
-msgstr ""
+#: ../rednotebook/util/utils.py:129
+msgid "Do you want to visit the RedNotebook homepage?"
+msgstr "RedNotebook باش بېتىنى زىيارەت قىلامسىز؟"
+
+#: ../rednotebook/util/utils.py:136
+msgid "Do not ask again"
+msgstr "قايتا سورىما"
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
@@ -983,98 +977,111 @@ msgid "Edit"
 msgstr "تەھرىر"
 
 #: tmp/main_window.glade.h:10
-msgid ""
-"Insert this weekday's template. Click the arrow on the right for more options"
-msgstr ""
-"بۇ خىزمەت كۈنلىرىنىڭ قېلىپىنى قىستۇرىدۇ. ئوڭ تەرەپتىكى يا ئوق چېكىلسە تېخىمۇ "
-"كۆپ تاللانما كۆرۈنىدۇ"
-
-#: tmp/main_window.glade.h:11
-msgid "Template"
-msgstr "قېلىپ"
-
-#: tmp/main_window.glade.h:12
 msgid "Add a tag or a category entry"
 msgstr ""
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:11
 msgid "Add Tag"
 msgstr ""
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:13
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Gheyret T.Kenji https://launchpad.net/~gheyretkenji\n"
 "  Sahran https://launchpad.net/~sahran"
 
-#: tmp/main_window.glade.h:16
+#: tmp/main_window.glade.h:14
 msgid "New entry"
 msgstr "يېڭى تۈر"
 
-#: tmp/main_window.glade.h:17
+#: tmp/main_window.glade.h:15
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b> مەۋجۇد ياكى يېڭى كاتېگورىيەنى تاللاڭ</b>"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:16
 msgid "<b>Write entry</b> (optional)"
 msgstr ""
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:17
 msgid "Select backup filename"
 msgstr "زاپاس ھۆججەت ئاتىنى تاللاڭ"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:18
 msgid "Select a picture"
 msgstr "رەسىمدىن بىرنى تاللاڭ"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:19
 msgid "Select a file"
 msgstr "ھۆججەتتىن بىرنى تاللاڭ"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:20
 msgid "Insert Link"
 msgstr "ئۇلانما قىستۇر"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:21
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgstr "<b>ئورنى(مەسىلەن، http://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:22
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>ئۇلانما ئاتى (تاللاشچان)</b>"
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:23
 msgid "Select a directory"
 msgstr "مۇندەرىجىدىن بىرنى تاللاڭ"
 
-#: tmp/main_window.glade.h:26
+#: tmp/main_window.glade.h:24
 msgid "Preferences"
 msgstr "مايىللىق"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
 msgstr "<b>ئادەتتىكى</b>"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:28
 msgid "General"
 msgstr "ئادەتتىكى"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:29
 msgid "Statistics"
 msgstr "ستاتىستىكا"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:30
 msgid "<b>Selected Day</b>"
 msgstr "<b>تاللانغان كۈن</b>"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:31
 msgid "<b>Overall</b>"
 msgstr "<b>ھەممىسى</b>"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "ساقلىماي چېكىن"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Numbered List"
+#~ msgstr "نومۇرلۇق تىزىم"
+
+#~ msgid "Table"
+#~ msgstr "جەدۋەل"
+
+#~ msgid "Open the import assistant"
+#~ msgstr "ئەكىرىش ياردەمچىسىنى ئاچ"
+
+#~ msgid "Title text"
+#~ msgstr "ماۋزۇ تېكىستى"
+
+#~ msgid "Edit Template"
+#~ msgstr "قېلىپ تەھرىر"
+
+#~ msgid "Insert Template"
+#~ msgstr "قېلىپ قىستۇر"
+
+#~ msgid "Open Template Directory"
+#~ msgstr "قېلىپ مۇندەرىجىسىنى ئاچ"
