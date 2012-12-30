@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 00:54+0100\n"
+"POT-Creation-Date: 2012-12-30 02:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,54 +41,61 @@ msgstr ""
 msgid "Never ask again"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:304
+#: ../rednotebook/gui/main_window.py:300
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/format_menu.py:92
+#: ../rednotebook/gui/main_window.py:624
+#: ../rednotebook/gui/customwidgets.py:374
+msgid "Template"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:626
+msgid ""
+"Insert this weekday's template. Click the arrow on the right for more options"
+msgstr ""
+
+#: ../rednotebook/gui/format_menu.py:94
 msgid "No text or tag has been selected."
 msgstr ""
 
-#: ../rednotebook/gui/format_menu.py:101
+#: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
 msgstr ""
 
-#: ../rednotebook/gui/format_menu.py:103
+#: ../rednotebook/gui/format_menu.py:105
 msgid "Italic"
 msgstr ""
 
-#: ../rednotebook/gui/format_menu.py:105
+#: ../rednotebook/gui/format_menu.py:107
 msgid "Underline"
 msgstr ""
 
-#: ../rednotebook/gui/format_menu.py:107
+#: ../rednotebook/gui/format_menu.py:109
 msgid "Strikethrough"
 msgstr ""
 
 #. ## Translators: Clear format
-#: ../rednotebook/gui/format_menu.py:110
+#: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
 msgstr ""
 
-#: ../rednotebook/gui/format_menu.py:112
+#. ## Translators: Noun
+#: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
 msgstr ""
 
-#. ## Translators: noun
-#: ../rednotebook/gui/format_menu.py:129 ../rednotebook/gui/exports.py:382
+#. ## Translators: Noun
+#: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
 msgid "Format"
 msgstr ""
 
-#: ../rednotebook/gui/format_menu.py:130
+#: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
-msgstr ""
-
-#: ../rednotebook/gui/customwidgets.py:374 tmp/main_window.glade.h:11
-msgid "Template"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:377
@@ -496,109 +503,105 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:66
+#: ../rednotebook/gui/insert_menu.py:67
 msgid "First Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:66
+#: ../rednotebook/gui/insert_menu.py:67
 msgid "Second Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:67
+#: ../rednotebook/gui/insert_menu.py:68
 msgid "Indented Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:67
+#: ../rednotebook/gui/insert_menu.py:68
 msgid "Two blank lines close the list"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:102
+#: ../rednotebook/gui/insert_menu.py:103
 msgid "Picture"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:103
+#: ../rednotebook/gui/insert_menu.py:104
 msgid "Insert an image from the harddisk"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:105
+#: ../rednotebook/gui/insert_menu.py:106
 msgid "File"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:106
+#: ../rednotebook/gui/insert_menu.py:107
 msgid "Insert a link to a file"
 msgstr ""
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/insert_menu.py:109
+#: ../rednotebook/gui/insert_menu.py:110
 msgid "_Link"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:110
+#: ../rednotebook/gui/insert_menu.py:111
 msgid "Insert a link to a website"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:112
+#: ../rednotebook/gui/insert_menu.py:113
 msgid "Bullet List"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:116
+#: ../rednotebook/gui/insert_menu.py:117 ../rednotebook/gui/insert_menu.py:294
 msgid "Title"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:118
+#: ../rednotebook/gui/insert_menu.py:119
 msgid "Line"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:119
+#: ../rednotebook/gui/insert_menu.py:120
 msgid "Insert a separator line"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:125
+#: ../rednotebook/gui/insert_menu.py:126
 msgid "Date/Time"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:126
+#: ../rednotebook/gui/insert_menu.py:127
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:128
+#: ../rednotebook/gui/insert_menu.py:129
 msgid "Line Break"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:129
+#: ../rednotebook/gui/insert_menu.py:130
 msgid "Insert a manual line break"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:131
+#: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:153
+#: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:157
+#: ../rednotebook/gui/insert_menu.py:155
 msgid "Insert images, files, links and other content"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:206
+#: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:211
+#: ../rednotebook/gui/insert_menu.py:196
 msgid "pixels"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:232
+#: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:296
+#: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
-msgstr ""
-
-#: ../rednotebook/gui/insert_menu.py:309
-msgid "Header"
 msgstr ""
 
 #: ../rednotebook/gui/categories.py:133
@@ -691,20 +694,19 @@ msgid ""
 "mode."
 msgstr ""
 
-#. ## Translators: Edit -> noun
-#: ../rednotebook/info.py:91
+#: ../rednotebook/info.py:90
 msgid "Click on Edit above to see the difference."
 msgstr ""
 
-#: ../rednotebook/info.py:94
+#: ../rednotebook/info.py:93
 msgid "Tagging is easy."
 msgstr ""
 
-#: ../rednotebook/info.py:95
+#: ../rednotebook/info.py:94
 msgid "Just use #hashtags like on twitter."
 msgstr ""
 
-#: ../rednotebook/info.py:98
+#: ../rednotebook/info.py:97
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -712,43 +714,43 @@ msgid ""
 msgstr ""
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:110
+#: ../rednotebook/info.py:109
 msgid "Save and Export"
 msgstr ""
 
-#: ../rednotebook/info.py:111
+#: ../rednotebook/info.py:110
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
 
-#: ../rednotebook/info.py:112
+#: ../rednotebook/info.py:111
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 
-#: ../rednotebook/info.py:113
+#: ../rednotebook/info.py:112
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 
-#: ../rednotebook/info.py:114
+#: ../rednotebook/info.py:113
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr ""
 
-#: ../rednotebook/info.py:115
+#: ../rednotebook/info.py:114
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 
-#: ../rednotebook/info.py:118
+#: ../rednotebook/info.py:117
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 
-#: ../rednotebook/info.py:119
+#: ../rednotebook/info.py:118
 msgid "Any feedback is appreciated."
 msgstr ""
 
-#: ../rednotebook/info.py:122
+#: ../rednotebook/info.py:121
 msgid "Have a nice day!"
 msgstr ""
 
@@ -856,16 +858,12 @@ msgstr ""
 msgid "Choose Template Name"
 msgstr ""
 
-#: ../rednotebook/templates.py:391
+#: ../rednotebook/templates.py:394
 msgid "This Weekday's Template"
 msgstr ""
 
-#: ../rednotebook/templates.py:394
+#: ../rednotebook/templates.py:397
 msgid "Create New Template"
-msgstr ""
-
-#: ../rednotebook/templates.py:398
-msgid "Open Template Directory"
 msgstr ""
 
 #: ../rednotebook/util/dates.py:57
@@ -951,89 +949,84 @@ msgid "Edit"
 msgstr ""
 
 #: tmp/main_window.glade.h:10
-msgid ""
-"Insert this weekday's template. Click the arrow on the right for more options"
-msgstr ""
-
-#: tmp/main_window.glade.h:12
 msgid "Add a tag or a category entry"
 msgstr ""
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:11
 msgid "Add Tag"
 msgstr ""
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:13
 msgid "translator-credits"
 msgstr ""
 
-#: tmp/main_window.glade.h:16
+#: tmp/main_window.glade.h:14
 msgid "New entry"
 msgstr ""
 
-#: tmp/main_window.glade.h:17
+#: tmp/main_window.glade.h:15
 msgid "<b>Select existing or new Category</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:16
 msgid "<b>Write entry</b> (optional)"
 msgstr ""
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:17
 msgid "Select backup filename"
 msgstr ""
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:18
 msgid "Select a picture"
 msgstr ""
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:19
 msgid "Select a file"
 msgstr ""
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:20
 msgid "Insert Link"
 msgstr ""
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:21
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:22
 msgid "<b>Link name (optional)</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:23
 msgid "Select a directory"
 msgstr ""
 
-#: tmp/main_window.glade.h:26
+#: tmp/main_window.glade.h:24
 msgid "Preferences"
 msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
 msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:28
 msgid "General"
 msgstr ""
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:29
 msgid "Statistics"
 msgstr ""
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:30
 msgid "<b>Selected Day</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:31
 msgid "<b>Overall</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr ""
