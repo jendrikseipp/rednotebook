@@ -21,8 +21,9 @@ import os
 
 import gtk
 
+from rednotebook.gui import customwidgets
 from rednotebook.util import filesystem
-from rednotebook.util import dates 
+from rednotebook.util import dates
 
 
 MENUITEMS_XML = '''\
@@ -67,7 +68,7 @@ class InsertMenu(object):
                  _('Indented Item'), _('Two blank lines close the list')))
 
         self.setup()
-        
+
     def setup(self):
         '''
         See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
@@ -149,15 +150,10 @@ class InsertMenu(object):
             if menu_item:
                 menu_item.set_image(get_image(filename + '.png'))
 
-        self.main_window.single_menu_toolbutton = gtk.MenuToolButton(gtk.STOCK_ADD)
-        self.main_window.single_menu_toolbutton.set_label(_('Insert'))
-
-        self.main_window.single_menu_toolbutton.set_menu(menu)
-        self.main_window.single_menu_toolbutton.connect('clicked', self.show_insert_menu)
-        self.main_window.single_menu_toolbutton.set_tooltip_text(_('Insert images, files, links and other content'))
-        edit_toolbar = self.main_window.builder.get_object('edit_toolbar')
-        edit_toolbar.insert(self.main_window.single_menu_toolbutton, -1)
-        self.main_window.single_menu_toolbutton.show()
+        self.main_window.insert_button = customwidgets.ToolbarMenuButton(gtk.STOCK_ADD, menu)
+        self.main_window.insert_button.set_label(_('Insert'))
+        self.main_window.insert_button.set_tooltip_text(_('Insert images, files, links and other content'))
+        self.main_window.builder.get_object('edit_toolbar').insert(self.main_window.insert_button, -1)
 
     def get_insert_handler(self, func):
         def insert_handler(widget):
@@ -170,17 +166,6 @@ class InsertMenu(object):
             else:
                 assert repl is None, repl
         return insert_handler
-
-    def show_insert_menu(self, button):
-        '''
-        Show the insert menu, when the Insert Button is clicked.
-
-        A little hack for button and activate_time is needed as the "clicked" does
-        not have an associated event parameter. Otherwise we would use event.button
-        and event.time
-        '''
-        self.main_window.single_menu_toolbutton.get_menu().popup(parent_menu_shell=None,
-                            parent_menu_item=None, func=None, button=0, activate_time=0, data=None)
 
     def on_insert_pic(self, sel_text):
         dirs = self.main_window.journal.dirs

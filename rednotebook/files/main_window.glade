@@ -144,20 +144,6 @@
                                 <property name="homogeneous">True</property>
                               </packing>
                             </child>
-                            <child>
-                              <object class="GtkMenuToolButton" id="template_menu_button">
-                                <property name="visible">True</property>
-                                <property name="tooltip_text" translatable="yes">Insert this weekday's template. Click the arrow on the right for more options</property>
-                                <property name="label" translatable="yes">Template</property>
-                                <property name="stock_id">gtk-paste</property>
-                                <signal name="clicked" handler="on_template_menu_clicked"/>
-                                <signal name="show_menu" handler="on_template_menu_show_menu"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="homogeneous">True</property>
-                              </packing>
-                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>

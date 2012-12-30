@@ -175,10 +175,6 @@ class MainWindow(object):
 
             'on_add_new_entry_button_clicked': self.on_add_new_entry_button_clicked,
 
-            'on_template_button_clicked': self.on_template_button_clicked,
-            'on_template_menu_show_menu': self.on_template_menu_show_menu,
-            'on_template_menu_clicked': self.on_template_menu_clicked,
-
             'on_main_frame_delete_event': self.on_main_frame_delete_event,
 
             # connect_signals can only be called once, it seems
@@ -371,7 +367,7 @@ class MainWindow(object):
 
     def change_mode(self, preview):
         edit_scroll = self.builder.get_object('text_scrolledwindow')
-        template_button = self.builder.get_object('template_menu_button')
+        template_button = self.builder.get_object('template_button')
 
         edit_button = self.builder.get_object('edit_button')
         preview_button = self.builder.get_object('preview_button')
@@ -400,8 +396,8 @@ class MainWindow(object):
         # Disable insert shortcuts in preview mode.
         self.insert_actiongroup.set_sensitive(not preview)
         self.format_actiongroup.set_sensitive(not preview)
-        self.single_menu_toolbutton.set_sensitive(not preview)
-        self.format_toolbutton.set_sensitive(not preview)
+        self.insert_button.set_sensitive(not preview)
+        self.format_button.set_sensitive(not preview)
 
         self.preview_mode = preview
 
@@ -619,15 +615,16 @@ class MainWindow(object):
         self.day_text_field.set_font_size(main_font_size)
         self.html_editor.set_font_size(main_font_size)
 
-
     def setup_template_menu(self):
-        self.template_menu_button = self.builder.get_object('template_menu_button')
-        self.template_menu_button.set_menu(gtk.Menu())
-        self.template_menu_button.set_menu(self.template_manager.get_menu())
-
+        self.template_button = customwidgets.ToolbarMenuButton(gtk.STOCK_PASTE,
+                                        self.template_manager.get_menu())
+        self.template_button.set_label(_('Template'))
+        self.template_button.set_tooltip_text(_("Insert this weekday's template. "
+                        "Click the arrow on the right for more options"))
+        edit_toolbar = self.builder.get_object('edit_toolbar').insert(self.template_button, 2)
 
     def on_template_menu_show_menu(self, widget):
-        self.template_menu_button.set_menu(self.template_manager.get_menu())
+        self.template_button.set_menu(self.template_manager.get_menu())
 
     def on_template_menu_clicked(self, widget):
         text = self.template_manager.get_weekday_text()

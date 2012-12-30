@@ -182,7 +182,7 @@ class TemplateManager(object):
         if self.tmp_title:
             sensitive = False
         self.actiongroup.set_sensitive(sensitive)
-        self.main_window.template_menu_button.set_sensitive(sensitive)
+        self.main_window.template_button.set_sensitive(sensitive)
 
     def _set_widgets_sensitive(self, sensitive):
         self.main_window.calendar.calendar.set_sensitive(sensitive)

@@ -381,3 +381,22 @@ class TemplateBar(gtk.HBox):
         self.close_button = gtk.Button(stock=gtk.STOCK_CLOSE)
         self.pack_start(self.close_button, False, False)
         self.show_all()
+
+
+class ToolbarMenuButton(gtk.MenuToolButton):
+    def __init__(self, stock_id, menu):
+        gtk.MenuToolButton.__init__(self, stock_id)
+        self.set_menu(menu)
+        self.connect('clicked', self.show_menu)
+        self.show()
+
+    def show_menu(self, button):
+        """
+        Show the menu when the button is clicked.
+
+        A little hack for button and activate_time is needed as the "clicked" does
+        not have an associated event parameter. Otherwise we would use event.button
+        and event.time
+        """
+        self.get_menu().popup(parent_menu_shell=None, parent_menu_item=None,
+                              func=None, button=0, activate_time=0, data=None)

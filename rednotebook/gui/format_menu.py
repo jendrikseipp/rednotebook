@@ -19,6 +19,8 @@
 
 import gtk
 
+from rednotebook.gui import customwidgets
+
 
 MENUITEMS_XML = '''\
     <menuitem action="Bold"/>
@@ -123,18 +125,12 @@ class FormatMenu(object):
         # Create a Menu
         menu = uimanager.get_widget('/FormatMenu')
 
-        #single_menu_toolbutton = SingleMenuToolButton(menu, 'Insert ')
-        self.main_window.format_toolbutton = gtk.MenuToolButton(gtk.STOCK_BOLD)
+        self.main_window.format_button = customwidgets.ToolbarMenuButton(gtk.STOCK_BOLD, menu)
         ### Translators: noun
-        self.main_window.format_toolbutton.set_label(_('Format'))
+        self.main_window.format_button.set_label(_('Format'))
         tip = _('Format the selected text or tag')
-        self.main_window.format_toolbutton.set_tooltip_text(tip)
-        self.main_window.format_toolbutton.set_menu(menu)
-        bold_func = apply_format
-        self.main_window.format_toolbutton.connect('clicked', bold_func)
-        edit_toolbar = self.main_window.builder.get_object('edit_toolbar')
-        edit_toolbar.insert(self.main_window.format_toolbutton, -1)
-        self.main_window.format_toolbutton.show()
+        self.main_window.format_button.set_tooltip_text(tip)
+        self.main_window.builder.get_object('edit_toolbar').insert(self.main_window.format_button, -1)
         self.main_window.format_actiongroup = actiongroup
 
     def on_clear_format(self, action):
