@@ -262,8 +262,20 @@ class TemplateManager(object):
         dialog.set_transient_for(self.main_window.main_frame)
         dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
         dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        dialog.set_response_sensitive(gtk.RESPONSE_OK, False)
+
+        # Let user finish by hitting ENTER.
+        def respond(widget):
+            dialog.response(gtk.RESPONSE_OK)
+
+        def on_text_changed(entry):
+            dialog.set_response_sensitive(gtk.RESPONSE_OK,
+                                          bool(entry.get_text().decode('UTF-8')))
 
         entry = gtk.Entry()
+        entry.connect('activate', respond)
+        # Only allow closing dialog when text is entered.
+        entry.connect('changed', on_text_changed)
         entry.set_size_request(300, -1)
         dialog.get_content_area().pack_start(entry)
         dialog.show_all()
@@ -364,10 +376,7 @@ class TemplateManager(object):
 
         menu_xml += '''
             <separator name="sep5"/>
-            <menuitem action="NewTemplate"/>'''
-
-        menu_xml +='''
-            <menuitem action="OpenTemplateDirectory"/>
+            <menuitem action="NewTemplate"/>
         </popup>
         </ui>'''
 
@@ -392,11 +401,7 @@ class TemplateManager(object):
                         self.on_insert))
 
         actions.append(('NewTemplate', gtk.STOCK_NEW, _('Create New Template'),
-                        None, None, lambda widget: self.on_new_template(widget)))
-
-        actions.append(('OpenTemplateDirectory', gtk.STOCK_DIRECTORY,
-                        _('Open Template Directory'), None, None,
-                        lambda widget: self.on_open_template_dir()))
+                        None, None, self.on_new_template))
 
         self.actiongroup.add_actions(actions)
 

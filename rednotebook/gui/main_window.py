@@ -616,9 +616,13 @@ class MainWindow(object):
         self.html_editor.set_font_size(main_font_size)
 
     def setup_template_menu(self):
+        def update_menu(button):
+            self.template_button.set_menu(self.template_manager.get_menu())
+
         self.template_button = customwidgets.ToolbarMenuButton(gtk.STOCK_PASTE,
                                         self.template_manager.get_menu())
         self.template_button.set_label(_('Template'))
+        self.template_button.connect('show-menu', update_menu)
         self.template_button.set_tooltip_text(_("Insert this weekday's template. "
                         "Click the arrow on the right for more options"))
         edit_toolbar = self.builder.get_object('edit_toolbar').insert(self.template_button, 2)

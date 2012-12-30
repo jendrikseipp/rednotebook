@@ -8,8 +8,9 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.6.6
-X Edit templates in RedNotebook directly.
+X Edit templates in RedNotebook directly. Preview and use the Insert and Format toolbar menus before inserting a template.
 X Let all toolbar menus always open the menu before performing an action.
+x Do not allow choosing an empty name for templates.
 x Add info about network drives to help text.
 x Fix help text about links to local directories.
 
