@@ -291,7 +291,7 @@ class InsertMenu(object):
         return self.bullet_list.replace('-', '+')
 
     def on_insert_title(self, sel_text):
-        return '\n=== ', sel_text or _('Header'), ' ===\n'
+        return '\n=== ', sel_text or _('Title'), ' ===\n'
 
     def on_insert_formula(self, sel_text):
         formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'

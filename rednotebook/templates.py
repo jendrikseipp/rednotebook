@@ -33,8 +33,7 @@ example_text = '''\
 === This is an example template ===
 
 It has been created to show you what can be put into a template. \
-To edit it, click the arrow right of "Template" \
-and select the template under "Edit Template".
+You can edit and save it with the buttons above.
 
 Templates can contain any formatting or content that is also \
 allowed in normal entries.
@@ -78,7 +77,8 @@ etc.
 
 **Macros**:
 
-When a template is inserted, every occurence of "$date$" is converted to \
+When a template is inserted, every occurence of "date" surrounded by \
+dollar signs is converted to \
 the current date. You can set the date format in the preferences.
 
 There is even more markup that you can put into your templates. Have a look at
@@ -283,34 +283,25 @@ class TemplateManager(object):
         dialog.hide()
 
         if response == gtk.RESPONSE_OK:
-            title = entry.get_text()
-            if not title.lower().endswith('.txt'):
-                title += '.txt'
-            filename = os.path.join(self.dirs.template_dir, title)
-
-            filesystem.make_file(filename, example_text)
-
-            filesystem.open_url(filename)
-
-    def on_open_template_dir(self):
-        filesystem.open_url(self.dirs.template_dir)
+            title = entry.get_text().decode('UTF-8')
+            parts = self.main_window.day_text_field.get_text_parts()
+            path = self.get_template_file(title)
+            self._register_template(title, path)
+            filesystem.make_file(path, example_text)
+            self.enter_template_mode(title, parts)
 
     def get_template_file(self, basename):
         return os.path.join(self.dirs.template_dir, str(basename) + '.txt')
 
     def get_text(self, title):
         filename = self.titles_to_files.get(title, None)
-        if not filename:
-            return ''
+        assert filename
 
         text = filesystem.read_file(filename)
 
         # An Error occured
         if not text:
-            text = ('This template contains no text or has unreadable content. To edit it, '
-                    'click the arrow right of "Template" '
-                    'and select the template under "Edit Template".')
-
+            text = ('This template file contains no text or has unreadable content.')
         # convert every "$date$" to the current date
         config = self.main_window.journal.config
         format_string = config.read('dateTimeString', '%A, %x %X')
@@ -337,6 +328,15 @@ class TemplateManager(object):
         files = filter(lambda file: not file.endswith('~'), files)
         return files
 
+    def _escape_template_name(self, name):
+        """Remove special xml chars for GUI display."""
+        for char in '&<>\'"':
+            name = name.replace(char, '')
+        return name
+
+    def _register_template(self, name, path):
+        self.titles_to_files[self._escape_template_name(name)] = path
+
     def get_menu(self):
         '''
         See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
@@ -345,18 +345,12 @@ class TemplateManager(object):
         # complete paths
         files = self.get_available_template_files()
 
-        def escape_name(name):
-            """Remove special xml chars for GUI display."""
-            for char in '&<>\'"':
-                name = name.replace(char, '')
-            return name
-
         # 1, 2, 3
         self.titles_to_files = {}
         for file in files:
             root, ext = os.path.splitext(file)
             title = os.path.basename(root)
-            self.titles_to_files[escape_name(title)] = file
+            self._register_template(title, file)
 
         sorted_titles = sorted(self.titles_to_files.keys())
 

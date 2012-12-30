@@ -87,7 +87,6 @@ help_par = _('The example text and more documentation is available under "Help" 
 ### Translators: noun
 preview = _('Preview')
 preview1 = _('There are two modes in RedNotebook, the __edit__ mode and the __preview__ mode.')
-### Translators: Edit -> noun
 preview2 = _('Click on Edit above to see the difference.')
 preview_par = ' '.join([preview1, preview2])
 

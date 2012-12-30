@@ -111,6 +111,7 @@ class FormatMenu(object):
             ### Translators: Clear format
             ('Clear', gtk.STOCK_CLEAR, _('Clear') + shortcut('R'),
              '<Control>R', None, self.on_clear_format),
+            ### Translators: Noun
             ('FormatMenuBar', None, _('_Format')),
              ]
 
@@ -126,7 +127,7 @@ class FormatMenu(object):
         menu = uimanager.get_widget('/FormatMenu')
 
         self.main_window.format_button = customwidgets.ToolbarMenuButton(gtk.STOCK_BOLD, menu)
-        ### Translators: noun
+        ### Translators: Noun
         self.main_window.format_button.set_label(_('Format'))
         tip = _('Format the selected text or tag')
         self.main_window.format_button.set_tooltip_text(tip)
