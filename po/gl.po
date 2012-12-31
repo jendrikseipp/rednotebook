@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-10-26 14:16+0000\n"
+"PO-Revision-Date: 2012-12-30 11:25+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:20+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:41+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -82,12 +82,12 @@ msgstr "Riscado"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Limpar"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Formato"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
@@ -104,7 +104,7 @@ msgstr "Introdución"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
-msgstr ""
+msgstr "Gardar e inserir"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -470,7 +470,7 @@ msgstr "Verificar a ortografía"
 
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Cambiar entre o modo de edición e vista previa automática"
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
@@ -587,7 +587,7 @@ msgstr "Inserir unha quebra de liña manual"
 
 #: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
-msgstr ""
+msgstr "_Inserir"
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
@@ -599,15 +599,15 @@ msgstr "Inserir imaxes, ficheiros, ligazóns e outro contido"
 
 #: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
-msgstr ""
+msgstr "Largo (opcional):"
 
 #: ../rednotebook/gui/insert_menu.py:196
 msgid "pixels"
-msgstr ""
+msgstr "píxeles"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
-msgstr ""
+msgstr "O largo debe ser un enteiro."
 
 #: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
@@ -710,15 +710,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:90
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Prema en Editar para ver a diferenza."
 
 #: ../rednotebook/info.py:93
 msgid "Tagging is easy."
-msgstr ""
+msgstr "O etiquetado é doado."
 
 #: ../rednotebook/info.py:94
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Só ten que usar #hashtags como no twitter."
 
 #: ../rednotebook/info.py:97
 msgid ""
@@ -1112,33 +1112,3 @@ msgstr "<b>Global</b>"
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "Saír sen gardar"
-
-#~ msgid "Open the import assistant"
-#~ msgstr "Abrir o asistente de importación"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Title text"
-#~ msgstr "Texto do título"
-
-#~ msgid "Numbered List"
-#~ msgstr "Lista numerada"
-
-#~ msgid "Table"
-#~ msgstr "Táboa"
-
-#~ msgid "Open Template Directory"
-#~ msgstr "Abrir cartafol de modelo"
-
-#~ msgid "Edit Template"
-#~ msgstr "Editar modelo"
-
-#~ msgid "Insert Template"
-#~ msgstr "Inserir modelo"
-
-#~ msgid "_Import"
-#~ msgstr "_Importar"
-
-#~ msgid "Latex Formula"
-#~ msgstr "Fórmula en Latex"

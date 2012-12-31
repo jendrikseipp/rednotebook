@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:41+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -1042,27 +1042,3 @@ msgstr ""
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "저장하지 않고 프로그램을 종료합니다"
-
-#~ msgid "Ctrl"
-#~ msgstr "컨트롤"
-
-#~ msgid "Title text"
-#~ msgstr "제목 글자"
-
-#~ msgid "Edit Template"
-#~ msgstr "서식 편집"
-
-#~ msgid "Open the import assistant"
-#~ msgstr "불러오기 도우미를 실행합니다"
-
-#~ msgid "Numbered List"
-#~ msgstr "번호 목록"
-
-#~ msgid "Table"
-#~ msgstr "도표"
-
-#~ msgid "Open Template Directory"
-#~ msgstr "서식이 있는 디렉토리를 엽니다"
-
-#~ msgid "Insert Template"
-#~ msgstr "서식 삽입"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2011-05-06 05:09+0000\n"
+"PO-Revision-Date: 2012-12-30 10:44+0000\n"
 "Last-Translator: Gheyret T.Kenji <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -31,15 +31,15 @@ msgstr "زاپاسلا"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "ھازىرلا زاپاسلا"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
-msgstr ""
+msgstr "كېيىنكى قېتىم قوغالغاندا سورا"
 
 #: ../rednotebook/backup.py:65
 msgid "Never ask again"
-msgstr ""
+msgstr "قايتا سورىما"
 
 #: ../rednotebook/gui/main_window.py:300
 msgid "Show RedNotebook"
@@ -80,12 +80,12 @@ msgstr "ئۆچۈرۈش سىزىقى"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "تازىلا"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "پىچىمى(_F)"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
@@ -94,7 +94,7 @@ msgstr "فورمات"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
-msgstr ""
+msgstr "تاللانغان تېكىست ياكى خەتكۈچنىڭ پىچىمى"
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
@@ -102,7 +102,7 @@ msgstr "تونۇشتۇرۇش"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
-msgstr ""
+msgstr "ساقلا ۋە قىستۇر"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -149,7 +149,7 @@ msgstr "نىشان:"
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Date format"
-msgstr ""
+msgstr "چېسلا پىچىمى"
 
 #: ../rednotebook/gui/exports.py:128
 msgid "Leave blank to omit dates in export"
@@ -185,7 +185,7 @@ msgstr "تاللا"
 
 #: ../rednotebook/gui/exports.py:153
 msgid "Deselect"
-msgstr ""
+msgstr "تاللىما"
 
 #: ../rednotebook/gui/exports.py:255
 msgid "If include text is not selected, you have to select at least one tag."
@@ -299,7 +299,7 @@ msgstr "چىقىرىش ياردەمچىسىنى ئاچ"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "زاپاسلا(_B)"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -307,7 +307,7 @@ msgstr "ھەممە سانلىق مەلۇماتنى بىر zip ھۆججىتىگە
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "ستاتىستىكا(_T)"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -368,7 +368,7 @@ msgstr "قسىقا بولغان مەسىلە جەدۋىلىدىن بىرنى ت�
 
 #: ../rednotebook/gui/menu.py:166
 msgid "Wrong directory"
-msgstr ""
+msgstr "خاتا مۇندەرىجە"
 
 #: ../rednotebook/gui/menu.py:169 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
@@ -376,7 +376,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "قۇرۇق مۇندەرىجە تاللاڭ."
 
 #: ../rednotebook/gui/menu.py:177
 msgid "This directory contains no journal files:"
@@ -590,7 +590,7 @@ msgstr "قۇر ئالماشتۇرۇش بەلگىسىدىن بىرنى قىستۇ
 
 #: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
-msgstr ""
+msgstr "قىستۇر(_I)"
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
@@ -602,15 +602,15 @@ msgstr "سۈرەت، ھۆججەت، ئۇلانما ۋە باشقا مەزمۇن�
 
 #: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
-msgstr ""
+msgstr "كەڭلىك(ئىختىيار)"
 
 #: ../rednotebook/gui/insert_menu.py:196
 msgid "pixels"
-msgstr ""
+msgstr "پىكسېللار"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
-msgstr ""
+msgstr "كەڭلىك چوقۇم پۈتۈن سان بولسۇن."
 
 #: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
@@ -651,7 +651,7 @@ msgstr "ھېچنېمە ساقلانمىدى"
 
 #: ../rednotebook/journal.py:482
 msgid "Error"
-msgstr ""
+msgstr "خاتالىق"
 
 #: ../rednotebook/info.py:74
 msgid "Work"
@@ -784,31 +784,31 @@ msgstr "خۇشال كۈنلەر سىزگە يار بولسۇن!"
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
-msgstr ""
+msgstr "دۈشەنبە"
 
 #: ../rednotebook/templates.py:28
 msgid "Tuesday"
-msgstr ""
+msgstr "سەيشەنبە"
 
 #: ../rednotebook/templates.py:28
 msgid "Wednesday"
-msgstr ""
+msgstr "چارشەنبە"
 
 #: ../rednotebook/templates.py:28
 msgid "Thursday"
-msgstr ""
+msgstr "پەيشەنبە"
 
 #: ../rednotebook/templates.py:29
 msgid "Friday"
-msgstr ""
+msgstr "جۈمە"
 
 #: ../rednotebook/templates.py:29
 msgid "Saturday"
-msgstr ""
+msgstr "شەنبە"
 
 #: ../rednotebook/templates.py:29
 msgid "Sunday"
-msgstr ""
+msgstr "يەكشەنبە"
 
 #: ../rednotebook/templates.py:97
 msgid ""
@@ -896,7 +896,7 @@ msgstr "يېڭى قېلىپ قۇر"
 
 #: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
-msgstr ""
+msgstr "چېسلا پىچىمى خاتا"
 
 #: ../rednotebook/util/statistics.py:72
 msgid "Distinct Words"
@@ -928,7 +928,7 @@ msgstr "قۇر سانى"
 
 #: ../rednotebook/util/utils.py:115
 msgid "unknown"
-msgstr ""
+msgstr "نامەلۇم"
 
 #: ../rednotebook/util/utils.py:127
 #, python-format
@@ -1061,27 +1061,3 @@ msgstr "<b>ھەممىسى</b>"
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "ساقلىماي چېكىن"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Numbered List"
-#~ msgstr "نومۇرلۇق تىزىم"
-
-#~ msgid "Table"
-#~ msgstr "جەدۋەل"
-
-#~ msgid "Open the import assistant"
-#~ msgstr "ئەكىرىش ياردەمچىسىنى ئاچ"
-
-#~ msgid "Title text"
-#~ msgstr "ماۋزۇ تېكىستى"
-
-#~ msgid "Edit Template"
-#~ msgstr "قېلىپ تەھرىر"
-
-#~ msgid "Insert Template"
-#~ msgstr "قېلىپ قىستۇر"
-
-#~ msgid "Open Template Directory"
-#~ msgstr "قېلىپ مۇندەرىجىسىنى ئاچ"

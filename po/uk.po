@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -1050,27 +1050,3 @@ msgstr "<b>Всього</b>"
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "Вийти без збереження"
-
-#~ msgid "Title text"
-#~ msgstr "Текст заголовку"
-
-#~ msgid "Edit Template"
-#~ msgstr "Правка шаблону"
-
-#~ msgid "Open Template Directory"
-#~ msgstr "Відкрити папку шаблонів"
-
-#~ msgid "Insert Template"
-#~ msgstr "Вставити шаблон"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Open the import assistant"
-#~ msgstr "Відкрити помічника імпорту"
-
-#~ msgid "Numbered List"
-#~ msgstr "Нумерований список"
-
-#~ msgid "Table"
-#~ msgstr "Таблиця"

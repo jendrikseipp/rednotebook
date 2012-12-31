@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-10-31 16:23+0000\n"
+"PO-Revision-Date: 2012-12-30 11:02+0000\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:41+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -87,7 +87,7 @@ msgstr ""
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Formato"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
@@ -474,7 +474,7 @@ msgstr "Controllare ortografia"
 
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Cambiare automaticamente la modalità tra modifica e anterpima"
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
@@ -593,7 +593,7 @@ msgstr "Inserisce un'interruzione di riga manuale"
 
 #: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
-msgstr ""
+msgstr "I_nserisci"
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
@@ -605,15 +605,15 @@ msgstr "Inserisce immagini, file, collegamenti e altri contenuti"
 
 #: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
-msgstr ""
+msgstr "Larghezza (opzionale):"
 
 #: ../rednotebook/gui/insert_menu.py:196
 msgid "pixels"
-msgstr ""
+msgstr "pixel"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
-msgstr ""
+msgstr "La larghezza deve essere rappresentata da un numero intero"
 
 #: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
@@ -1130,33 +1130,3 @@ msgstr "<b>Complessive</b>"
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "Esce senza salvare"
-
-#~ msgid "Title text"
-#~ msgstr "Titolo"
-
-#~ msgid "Edit Template"
-#~ msgstr "Modifica modello"
-
-#~ msgid "Insert Template"
-#~ msgstr "Inserisci modello"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Open the import assistant"
-#~ msgstr "Apre l'assistente di importazione"
-
-#~ msgid "Numbered List"
-#~ msgstr "Elenco numerato"
-
-#~ msgid "Table"
-#~ msgstr "Tabella"
-
-#~ msgid "Open Template Directory"
-#~ msgstr "Apri directory dei modelli"
-
-#~ msgid "Latex Formula"
-#~ msgstr "Formula Latex"
-
-#~ msgid "_Import"
-#~ msgstr "_Importa"

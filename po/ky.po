@@ -1,20 +1,20 @@
-# Turkish translation for rednotebook
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Kirghiz translation for rednotebook
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the rednotebook package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-10-26 09:33+0000\n"
-"Last-Translator: Ismail DOGAN <Unknown>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"PO-Revision-Date: 2012-12-30 07:45+0000\n"
+"Last-Translator: Chynggyz Jumaliev <translatorky@lavabit.com>\n"
+"Language-Team: Kirghiz <ky@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:41+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -27,11 +27,11 @@ msgstr ""
 
 #: ../rednotebook/backup.py:61
 msgid "Backup"
-msgstr "Yedekle"
+msgstr "Резервдик көчүрүү"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr "Şimdi yedekle"
+msgstr ""
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
@@ -43,12 +43,12 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:300
 msgid "Show RedNotebook"
-msgstr "RedNotebook'u göster"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:624
 #: ../rednotebook/gui/customwidgets.py:374
 msgid "Template"
-msgstr "Şablon"
+msgstr ""
 
 #: ../rednotebook/gui/main_window.py:626
 msgid ""
@@ -61,19 +61,19 @@ msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
-msgstr "Kalın"
+msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:105
 msgid "Italic"
-msgstr "İtalik"
+msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:107
 msgid "Underline"
-msgstr "Altı çizili"
+msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:109
 msgid "Strikethrough"
-msgstr "Üstü çizili"
+msgstr ""
 
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
@@ -88,7 +88,7 @@ msgstr ""
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
 msgid "Format"
-msgstr "Biçim"
+msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
-msgstr "Giriş"
+msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
@@ -104,54 +104,54 @@ msgstr ""
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
-msgstr "virgülle, ayrılmış, bu, kelimeleri, filtrele"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
-msgstr "mtv, boş, yap, iş, oyna"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:73 ../rednotebook/util/markup.py:129
 msgid "Tags"
-msgstr "Etiketler"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
-msgstr "Kelimeler"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:246
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr "\"%s\"i bulutlardan sakla"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:383
 msgid "Export all days"
-msgstr "Tüm günleri dışa aktar"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently visible day"
-msgstr "Şu anda görünen günü dışa aktar"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export days in the selected time range"
-msgstr "Seçilen zaman aralığındaki günleri dışa aktar"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:64
 msgid "From:"
-msgstr "Başlangıç:"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:66
 msgid "To:"
-msgstr "Bitiş:"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:127
 msgid "Date format"
-msgstr "Tarih biçimi"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:128
 msgid "Leave blank to omit dates in export"
-msgstr "Dışa aktarmada tarihleri yok saymak için boş bırakın"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:130 ../rednotebook/gui/exports.py:389
 msgid "Include text"
@@ -179,11 +179,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Select"
-msgstr "Seç"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:153
 msgid "Deselect"
-msgstr "Seçimi Kaldır"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:255
 msgid "If include text is not selected, you have to select at least one tag."
@@ -191,20 +191,19 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
-msgstr "Şu ayarları seçtiniz:"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:304
 msgid "Export Assistant"
-msgstr "Dışa Aktarma Yardımcısı"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:306
 msgid "Welcome to the Export Assistant."
-msgstr "Dışa Aktarma Yardımcısına Hoş Geldiniz"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:307
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
-"Bu sihirbaz, günlüğünüzü çeşitli biçimlerde dışa aktarmanıza yardım edecek."
 
 #: ../rednotebook/gui/exports.py:308
 msgid ""
@@ -214,70 +213,69 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:318
 msgid "Select Export Format"
-msgstr "Dışa Aktarma Biçimini Seçin"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:323
 msgid "Select Date Range"
-msgstr "Tarih Aralığını Seç"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:328
 msgid "Select Contents"
-msgstr "İçerikleri Seç"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:334
 msgid "Select Export Path"
-msgstr "Dışa Aktarma Yolunu Seçin"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:339
 msgid "Summary"
-msgstr "Özet"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:386
 msgid "Start date"
-msgstr "Başlangıç tarihi"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:387
 msgid "End date"
-msgstr "Bitiş tarihi"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:391
 msgid "Export path"
-msgstr "Dışa aktarma yolu"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:395
 msgid "Yes"
-msgstr "Evet"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:395
 msgid "No"
-msgstr "Hayır"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:434 ../rednotebook/gui/exports.py:440
 #, python-format
 msgid "Content exported to %s"
-msgstr "İçerik %s'e aktarıldı"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:527
 msgid "requires pywebkitgtk"
-msgstr "pywebkitgtk gerektiriyor"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:93
 msgid "_Journal"
-msgstr "_Günlük"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:95
 msgid "Create a new journal. The old one will be saved"
-msgstr "Yeni bir günlük oluşturun. Eskisi kaydedilecektir"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "Varolan bir günlüğü yükle. Eski günlük kaydedilecektir"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:103
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
-"Günlüğü yeni bir konumda kaydedin. Eski günlük dosyaları da kaydedilecektir."
 
 #. ## Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
@@ -285,11 +283,11 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:109
 msgid "Export"
-msgstr "Dışa Aktar"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:110
 msgid "Open the export assistant"
-msgstr "Dışa aktarma yardımcısını aç"
+msgstr ""
 
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
@@ -298,7 +296,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
-msgstr "Tüm verileri bir zip dosyasına kaydet"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
@@ -306,15 +304,15 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
-msgstr "Günlük ile ilgili bazı istatistikleri göster"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:117
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "RedNoteBook'u Kapat. Sistem tepsisine gönderilmeyecek."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:120
 msgid "_Edit"
-msgstr "_Düzenle"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
@@ -326,40 +324,39 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:137
 msgid "_Help"
-msgstr "_Yardım"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Contents"
-msgstr "İçindekiler"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Open the RedNotebook documentation"
-msgstr "RedNotebook dokümentasyonunu açın"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:140
 msgid "Get Help Online"
-msgstr "Çevrimiçi Yardım Al"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:141
 msgid "Browse answered questions or ask a new one"
-msgstr "Cevaplanmış sorulara gözatın ya da yeni bir soru sorun"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:142
 msgid "Translate RedNotebook"
-msgstr "RedNotebook'un çevirisini yap"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:143
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
-"RedNotebook çevirisine yardım etmek için Launchpad web sitesine bağlanın"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Report a Problem"
-msgstr "Hata Bildir"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:146
 msgid "Fill out a short form about the problem"
-msgstr "Sorun ile ilgili kısa bir form doldurun"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:166
 msgid "Wrong directory"
@@ -379,89 +376,89 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:193
 msgid "Journals are saved in a directory, not in a single file."
-msgstr "Günlükler tek bir dosyada değil, bir dizin içinde kaydedilmektedir."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:194
 msgid "The directory name will be the title of the new journal."
-msgstr "Yeni günlüğün başlığı, klasörün ismi olarak ayarlanacak."
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:195
 msgid "Select an empty folder for your new journal"
-msgstr "Yeni günlüğünüz için bir klasör seçin"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:198
 msgid "Select an existing journal directory"
-msgstr "Önceden varolan bir günlük dizini seçin"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:199
 msgid "The directory should contain your journal's data files"
-msgstr "Dizin, günlüğünüzün veri dosyalarını içermelidir"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:206
 msgid "Select an empty folder for the new location of your journal"
-msgstr "Günlüğünüzün yeni yeri için boş bir klasör seçin"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:207
 msgid "The directory name will be the new title of the journal"
-msgstr "Dizin ismi günlüğünüzün yeni başlığı olacaktır"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:265
 msgid "RedNotebook Documentation"
-msgstr "RedNotebook Dokümentasyonu"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:285
 msgid "A Desktop Journal"
-msgstr "Masaüstü Günlüğü"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
-msgstr "RedNotebook'u açılışta başlat"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:154
 msgid "%A, %x, Day %j"
-msgstr "%A, %x, Gün %j"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:154
 msgid "Week %W of Year %Y"
-msgstr "%Y Yılının %W Haftası"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:155
 msgid "Day %j"
-msgstr "Gün %j"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:160
 msgid "Help"
-msgstr "Yardım"
+msgstr ""
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:181
 msgid "Preview:"
-msgstr "Önizleme:"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:295
 msgid "Close to system tray"
-msgstr "Sistem tepsisine kapat"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:296
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Pencere kapanırken RedNotebook sistem tepsisine taşınacak."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:299
 msgid "Underline misspelled words"
-msgstr "Yanlış telaffuz edilen sözcüklerin altını çiz"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:300
 msgid "Requires gtkspell."
-msgstr "gtkspell gerektirir."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:301
 msgid ""
 "This is included in the python-gtkspell or python-gnome2-extras package"
-msgstr "the python-gtkspell or python-gnome2-extras paketleri içeriyor."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:302
 msgid "Check Spelling"
-msgstr "Yazım Denetimi Yap"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
@@ -469,19 +466,19 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
-msgstr "Balangıçta güncellemeleri kontrol et"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:321
 msgid "Check now"
-msgstr "Şimdi kontrol et"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:326
 msgid "Font Size"
-msgstr "Yazıtipi Boyutu"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:327
 msgid "Date/Time format"
-msgstr "Tarih/Saat biçemi"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:328
 msgid "Exclude from cloud"
@@ -501,82 +498,80 @@ msgstr ""
 
 #: ../rednotebook/gui/search.py:76
 msgid "Date"
-msgstr "Tarih"
+msgstr ""
 
 #: ../rednotebook/gui/search.py:76
 msgid "Text"
-msgstr "Metin"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:67
 msgid "First Item"
-msgstr "Birinci Madde"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:67
 msgid "Second Item"
-msgstr "İkinci Madde"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "Indented Item"
-msgstr "Girintili Madde"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "Two blank lines close the list"
-msgstr "İki boş satır, listeyi kapatır"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:103
 msgid "Picture"
-msgstr "Resim"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:104
 msgid "Insert an image from the harddisk"
-msgstr "Sabit diskten bir resim ekleyin"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:106
 msgid "File"
-msgstr "Dosya"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:107
 msgid "Insert a link to a file"
-msgstr "Bir dosyaya bağlantı ekleyin"
+msgstr ""
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/insert_menu.py:110
 msgid "_Link"
-msgstr "_Bağlantı"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:111
 msgid "Insert a link to a website"
-msgstr "Bir internet sitesine bağlantı ekleyin"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:113
 msgid "Bullet List"
-msgstr "Madde Listesi"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:117 ../rednotebook/gui/insert_menu.py:294
 msgid "Title"
-msgstr "Başlık"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:119
 msgid "Line"
-msgstr "Satır"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:120
 msgid "Insert a separator line"
-msgstr "Bir ayırıcı çizgi ekleyin"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:126
 msgid "Date/Time"
-msgstr "Tarih/Saat"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:127
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
-"Şu anki tarih ve saati ekleyin (biçemini tercihler menüsünden "
-"düzenleyebilirsiniz)"
 
 #: ../rednotebook/gui/insert_menu.py:129
 msgid "Line Break"
-msgstr "Satır Sonu"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "Insert a manual line break"
@@ -588,11 +583,11 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
-msgstr "Ekle"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:155
 msgid "Insert images, files, links and other content"
-msgstr "Resim, dosya, bağlantı veya diğer içerikleri ekleyin"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
@@ -608,11 +603,11 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
-msgstr "Hiçbir bağlantı yeri eklenmedi"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:133
 msgid "Empty entries are not allowed"
-msgstr "Boş girdilere izin verilmez"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:150
 msgid "Empty tag names are not allowed"
@@ -620,15 +615,15 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:408
 msgid "Change this text"
-msgstr "Bu metni değiştir"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:412
 msgid "Add a new entry"
-msgstr "Yeni girdi ekle"
+msgstr ""
 
 #: ../rednotebook/gui/categories.py:416
 msgid "Delete this entry"
-msgstr "Bu girdiyi sil"
+msgstr ""
 
 #: ../rednotebook/journal.py:249
 msgid "Opening default journal."
@@ -641,7 +636,7 @@ msgstr ""
 
 #: ../rednotebook/journal.py:335
 msgid "Nothing to save"
-msgstr "Kaydedilecek bir şey yok"
+msgstr ""
 
 #: ../rednotebook/journal.py:482
 msgid "Error"
@@ -649,39 +644,37 @@ msgstr ""
 
 #: ../rednotebook/info.py:74
 msgid "Work"
-msgstr "İş"
+msgstr ""
 
 #: ../rednotebook/info.py:75
 msgid "Free time"
-msgstr "Boş zaman"
+msgstr ""
 
 #: ../rednotebook/info.py:76
 msgid "Todo"
-msgstr "Yapılacak"
+msgstr ""
 
 #: ../rednotebook/info.py:77
 msgid "Done"
-msgstr "Yapıldı"
+msgstr ""
 
 #: ../rednotebook/info.py:78
 msgid "Remember the milk"
-msgstr "Sütü hatırla"
+msgstr ""
 
 #: ../rednotebook/info.py:79
 msgid "Wash the dishes"
-msgstr "Bulaşıkları yıka"
+msgstr ""
 
 #: ../rednotebook/info.py:81
 msgid "Hello!"
-msgstr "Merhaba!"
+msgstr ""
 
 #: ../rednotebook/info.py:82
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
-"Başlamana yardımcı olmak amacıyla bazı örnek yazılar eklendi, bu yazıları "
-"istediğin zaman silebilirsin."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:85
@@ -689,14 +682,12 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
-"Örnek yazı ve daha fazla belge \"Yardım\" -> \"İçerikler\" kısmında "
-"mevcuttur."
 
 #. ## Translators: noun
 #. ## Verb
 #: ../rednotebook/info.py:88 tmp/main_window.glade.h:7
 msgid "Preview"
-msgstr "Önizleme"
+msgstr ""
 
 #: ../rednotebook/info.py:89
 msgid ""
@@ -726,7 +717,7 @@ msgstr ""
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:109
 msgid "Save and Export"
-msgstr "Kaydet ve Dışa Aktar"
+msgstr ""
 
 #: ../rednotebook/info.py:110
 msgid ""
@@ -762,35 +753,35 @@ msgstr ""
 
 #: ../rednotebook/info.py:121
 msgid "Have a nice day!"
-msgstr "İyi günler!"
+msgstr ""
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
-msgstr "Pazartesi"
+msgstr ""
 
 #: ../rednotebook/templates.py:28
 msgid "Tuesday"
-msgstr "Salı"
+msgstr ""
 
 #: ../rednotebook/templates.py:28
 msgid "Wednesday"
-msgstr "Çarşamba"
+msgstr ""
 
 #: ../rednotebook/templates.py:28
 msgid "Thursday"
-msgstr "Perşembe"
+msgstr ""
 
 #: ../rednotebook/templates.py:29
 msgid "Friday"
-msgstr "Cuma"
+msgstr ""
 
 #: ../rednotebook/templates.py:29
 msgid "Saturday"
-msgstr "Cumartesi"
+msgstr ""
 
 #: ../rednotebook/templates.py:29
 msgid "Sunday"
-msgstr "Pazar"
+msgstr ""
 
 #: ../rednotebook/templates.py:97
 msgid ""
@@ -866,19 +857,19 @@ msgstr ""
 
 #: ../rednotebook/templates.py:261
 msgid "Choose Template Name"
-msgstr "Şablon Adı Seç"
+msgstr ""
 
 #: ../rednotebook/templates.py:394
 msgid "This Weekday's Template"
-msgstr "Bu Hafta İçinin Şablonu"
+msgstr ""
 
 #: ../rednotebook/templates.py:397
 msgid "Create New Template"
-msgstr "Yeni Şablon Oluştur"
+msgstr ""
 
 #: ../rednotebook/util/dates.py:57
 msgid "Incorrect date format"
-msgstr "Yanlış tarih biçimi"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:72
 msgid "Distinct Words"
@@ -886,27 +877,27 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:73
 msgid "Edited Days"
-msgstr "Düzenlenen Günler"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:74 ../rednotebook/util/statistics.py:86
 msgid "Letters"
-msgstr "Harfler"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:75
 msgid "Days between first and last Entry"
-msgstr "İlk ve son Girdi arasındaki günler"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:76
 msgid "Average number of Words"
-msgstr "Ortalama kelime sayısı"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:77
 msgid "Percentage of edited Days"
-msgstr "Düzenlenen Günlerin yüzdesi"
+msgstr ""
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Lines"
-msgstr "Satırlar"
+msgstr ""
 
 #: ../rednotebook/util/utils.py:115
 msgid "unknown"
@@ -915,20 +906,20 @@ msgstr ""
 #: ../rednotebook/util/utils.py:127
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr "Sizde ki sürüm <b>%s</b>."
+msgstr ""
 
 #: ../rednotebook/util/utils.py:128
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr "Son sürüm <b>%s</b>."
+msgstr ""
 
 #: ../rednotebook/util/utils.py:129
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "RedNotebook anasayfasını ziyaret etmek ister misin?"
+msgstr ""
 
 #: ../rednotebook/util/utils.py:136
 msgid "Do not ask again"
-msgstr "Bir daha sorma"
+msgstr ""
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
@@ -940,7 +931,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
-msgstr "Bugün"
+msgstr ""
 
 #: tmp/main_window.glade.h:4
 msgid "Go to next day (Ctrl+PageDown)"
@@ -952,11 +943,11 @@ msgstr ""
 
 #: tmp/main_window.glade.h:8
 msgid "Enable text editing (Ctrl+P)"
-msgstr "Metin düzenlemeyi etkinleştir (Ctrl+P)"
+msgstr ""
 
 #: tmp/main_window.glade.h:9
 msgid "Edit"
-msgstr "Düzenle"
+msgstr ""
 
 #: tmp/main_window.glade.h:10
 msgid "Add a tag or a category entry"
@@ -971,20 +962,15 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Angel Spy https://launchpad.net/~dilara.ekinci\n"
-"  Emre Ayca https://launchpad.net/~anatolica\n"
-"  Ferhat TUNÇTAN https://launchpad.net/~ferhattnctn66\n"
-"  Hüseyin Sevgi https://launchpad.net/~hsevgi\n"
-"  Ismail DOGAN https://launchpad.net/~ismail-ismaildogan\n"
-"  Muhammet Kara https://launchpad.net/~muhammet-k"
+"  Chynggyz Jumaliev https://launchpad.net/~blacktext"
 
 #: tmp/main_window.glade.h:14
 msgid "New entry"
-msgstr "Yeni girdi"
+msgstr ""
 
 #: tmp/main_window.glade.h:15
 msgid "<b>Select existing or new Category</b>"
-msgstr "<b>Varolan veya yeni Kategori seç</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:16
 msgid "<b>Write entry</b> (optional)"
@@ -996,19 +982,19 @@ msgstr ""
 
 #: tmp/main_window.glade.h:18
 msgid "Select a picture"
-msgstr "Resim seç"
+msgstr ""
 
 #: tmp/main_window.glade.h:19
 msgid "Select a file"
-msgstr "Dosya seç"
+msgstr ""
 
 #: tmp/main_window.glade.h:20
 msgid "Insert Link"
-msgstr "Bağlantı Ekle"
+msgstr ""
 
 #: tmp/main_window.glade.h:21
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr "<b>Bağlantı konumu (ör. http://rednotebook.sf.net)</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:22
 msgid "<b>Link name (optional)</b>"
@@ -1016,29 +1002,29 @@ msgstr ""
 
 #: tmp/main_window.glade.h:23
 msgid "Select a directory"
-msgstr "Dizin seç"
+msgstr ""
 
 #: tmp/main_window.glade.h:24
 msgid "Preferences"
-msgstr "Tercihler"
+msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
-msgstr "<b>Genel</b>"
+msgstr ""
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:28
 msgid "General"
-msgstr "Genel"
+msgstr ""
 
 #: tmp/main_window.glade.h:29
 msgid "Statistics"
-msgstr "İstatistikler"
+msgstr ""
 
 #: tmp/main_window.glade.h:30
 msgid "<b>Selected Day</b>"
-msgstr "<b>Seçilen Gün</b>"
+msgstr ""
 
 #: tmp/main_window.glade.h:31
 msgid "<b>Overall</b>"
@@ -1046,4 +1032,4 @@ msgstr ""
 
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
-msgstr "Kaydetmeden çık"
+msgstr ""

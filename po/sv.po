@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -1113,33 +1113,3 @@ msgstr "<b>Sammanställning</b>"
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "Stäng utan att spara"
-
-#~ msgid "Title text"
-#~ msgstr "Rubriktext"
-
-#~ msgid "Edit Template"
-#~ msgstr "Redigera mall"
-
-#~ msgid "Insert Template"
-#~ msgstr "Infoga mall"
-
-#~ msgid "Open Template Directory"
-#~ msgstr "Öppna mallkatalogen"
-
-#~ msgid "Open the import assistant"
-#~ msgstr "Öppna importassistenten"
-
-#~ msgid "Numbered List"
-#~ msgstr "Numrerad lista"
-
-#~ msgid "Table"
-#~ msgstr "Tabell"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Latex Formula"
-#~ msgstr "Latex-formel"
-
-#~ msgid "_Import"
-#~ msgstr "_Importera"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-12-30 01:38+0000\n"
-"Last-Translator: Tristan Kohl <blobbyjj@ymail.com>\n"
+"PO-Revision-Date: 2012-12-30 11:50+0000\n"
+"Last-Translator: Daniel Winzen <d@winzen4.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:20+0000\n"
+"X-Launchpad-Export-Date: 2012-12-31 04:41+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -104,7 +104,7 @@ msgstr "Einführung"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
-msgstr ""
+msgstr "Speichern und einfügen"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -480,7 +480,7 @@ msgstr "Rechtschreibung prüfen"
 
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Automatisch zwischen Bearbeiten- und Ansichtmodus umschalten"
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
@@ -600,7 +600,7 @@ msgstr "Einen manuellen Zeilenumbruch einfügen"
 
 #: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
-msgstr ""
+msgstr "_Einfügen"
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
@@ -722,7 +722,7 @@ msgstr "RedNotebook hat zwei  Zustände - __Bearbeiten__ und  __Vorschau__."
 
 #: ../rednotebook/info.py:90
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Klicken Sie oben auf \"Bearbeiten\", um den Unterschied zu sehen."
 
 #: ../rednotebook/info.py:93
 msgid "Tagging is easy."
@@ -1144,33 +1144,3 @@ msgstr "<b>Gesamt</b>"
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "Schließen ohne zu speichern"
-
-#~ msgid "Title text"
-#~ msgstr "Titeltext"
-
-#~ msgid "Edit Template"
-#~ msgstr "Vorlage bearbeiten"
-
-#~ msgid "Insert Template"
-#~ msgstr "Vorlage einfügen"
-
-#~ msgid "Ctrl"
-#~ msgstr "Strg"
-
-#~ msgid "Table"
-#~ msgstr "Tabelle"
-
-#~ msgid "Numbered List"
-#~ msgstr "Nummerierte Liste"
-
-#~ msgid "Open the import assistant"
-#~ msgstr "Den Import-Assistenten öffnen"
-
-#~ msgid "Open Template Directory"
-#~ msgstr "Vorlagen-Verzeichnis öffnen"
-
-#~ msgid "_Import"
-#~ msgstr "_Importieren"
-
-#~ msgid "Latex Formula"
-#~ msgstr "LaTeX-Formel"
