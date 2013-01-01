@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-11-01 20:21+0000\n"
-"Last-Translator: Michał Maternik <Unknown>\n"
+"PO-Revision-Date: 2012-12-31 17:51+0000\n"
+"Last-Translator: Jerzy Spendel <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
+"X-Launchpad-Export-Date: 2013-01-01 04:47+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: ../rednotebook/backup.py:55
@@ -82,12 +82,12 @@ msgstr "Przekreślenie"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Wyczyść"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Sformatuj"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
@@ -104,7 +104,7 @@ msgstr "Wprowadzenie"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
-msgstr ""
+msgstr "Zapisz i wstaw"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -473,7 +473,7 @@ msgstr "Sprawdź pisownię"
 
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Zmieniaj pomiędzy trybem edycji i podglądu automatycznie"
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
@@ -590,7 +590,7 @@ msgstr "Wstaw ręcznie znak nowego wiersza"
 
 #: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
-msgstr ""
+msgstr "_Wstaw"
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
@@ -712,7 +712,7 @@ msgstr "Są dwa tryby RedNotebooka, tryb edycji i tryb podglądu."
 
 #: ../rednotebook/info.py:90
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Kliknij edytuj, aby zobaczyć róznicę"
 
 #: ../rednotebook/info.py:93
 msgid "Tagging is easy."
@@ -1051,6 +1051,7 @@ msgstr ""
 "  Ariel Zacharko https://launchpad.net/~arielooo\n"
 "  Dariusz Jakoniuk https://launchpad.net/~darcio53\n"
 "  Jarosław Ogrodnik https://launchpad.net/~goz\n"
+"  Jerzy Spendel https://launchpad.net/~yuri20\n"
 "  Michał Maternik https://launchpad.net/~michal-maternik\n"
 "  NINa https://launchpad.net/~factory\n"
 "  Stanisław Dac https://launchpad.net/~s-dac\n"
