@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-10-28 20:28+0000\n"
-"Last-Translator: Alexey Ivanov <alexey.ivanes@gmail.com>\n"
+"PO-Revision-Date: 2013-01-02 19:43+0000\n"
+"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
 "Language-Team: Russian (gnome-cyr@gnome.org)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-03 04:49+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 "Language: cs\n"
 
 #: ../rednotebook/backup.py:55
@@ -83,12 +83,12 @@ msgstr "Зачёркнутый"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Очистить"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Формат"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
@@ -474,6 +474,7 @@ msgstr "Проверка орфографии"
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
 msgstr ""
+"Автоматически переключаться между режимом редактирования и предпросмотром"
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
@@ -603,15 +604,15 @@ msgstr "Вставить изображения, файлы, ссылки и д�
 
 #: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
-msgstr ""
+msgstr "Ширина (необязательно):"
 
 #: ../rednotebook/gui/insert_menu.py:196
 msgid "pixels"
-msgstr ""
+msgstr "пикселов"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
-msgstr ""
+msgstr "Значение ширины должно быть целым числом."
 
 #: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
@@ -652,7 +653,7 @@ msgstr "Нечего сохранять"
 
 #: ../rednotebook/journal.py:482
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #: ../rednotebook/info.py:74
 msgid "Work"
@@ -719,11 +720,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:93
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Создавать метки легко."
 
 #: ../rednotebook/info.py:94
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Просто используйте #метки, как в Twitter."
 
 #: ../rednotebook/info.py:97
 msgid ""
