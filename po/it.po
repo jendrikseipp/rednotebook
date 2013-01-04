@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-12-30 11:02+0000\n"
+"PO-Revision-Date: 2013-01-03 14:51+0000\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-31 04:41+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-04 04:48+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -82,7 +82,7 @@ msgstr "Barrato"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Pulisci"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
@@ -104,7 +104,7 @@ msgstr "Introduzione"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
-msgstr ""
+msgstr "Salva e inserisci"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -717,15 +717,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:90
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Fare clic su «Modifica» per vedere la differenza."
 
 #: ../rednotebook/info.py:93
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Semplice uso delle etichette."
 
 #: ../rednotebook/info.py:94
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Basta usare gli #hastag come su Twitter."
 
 #: ../rednotebook/info.py:97
 msgid ""
