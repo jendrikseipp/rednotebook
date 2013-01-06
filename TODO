@@ -22,17 +22,11 @@ X Insert Latex formulas (LP:851471)
   X Highlight formulas in edit mode
   X Support formulas in all exports
   X Add menu item for inserting formulas
-O Use new markup for images: {/home/user/pic.png?50}
 X Tables
   X Highlight tables in edit mode
   O Use art target for text exports (Wait for txt2tags 2.7)
 X Numbered lists
 X Add quotes by indenting them with a tab
-O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
-  Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
-  Design: Toolbar menu contains template1, template2, ..., create-new.
-  When user clicks on a template we show it in the edit window with buttons
-  save+insert, save, abort.
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
@@ -183,3 +177,4 @@ O Make automatic switching between edit and preview mode optional.
   add the contents of the file inline (which allows for 'dynamic' content) (KISS)
 - Field or shortcut to enter a date and takes you there (One navigation suffices)
 - Disable cache for preview to support previewing externally changed files (Rarely used, might slowdown app)
+- Use new markup for images: {/home/user/pic.png?50} (Too disruptive)
