@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-10-28 22:13+0000\n"
+"PO-Revision-Date: 2013-01-06 04:38+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-31 04:41+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-06 04:55+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -80,12 +80,12 @@ msgstr "Strikethrough"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Kosongkan"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Format"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
@@ -102,7 +102,7 @@ msgstr "Pengenalan"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
-msgstr ""
+msgstr "Simpan dan sisip"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -470,7 +470,7 @@ msgstr "Semak Ejaan"
 
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Tukar diantara mod sunting dan pratonton secara automatik"
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
@@ -588,7 +588,7 @@ msgstr "Masuk hentian baris manual"
 
 #: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
-msgstr ""
+msgstr "Sis_ip"
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
@@ -600,15 +600,15 @@ msgstr "Masuk imej, fail, pautan dan kandungan lain"
 
 #: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
-msgstr ""
+msgstr "Lebar (pilihan):"
 
 #: ../rednotebook/gui/insert_menu.py:196
 msgid "pixels"
-msgstr ""
+msgstr "piksel"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
-msgstr ""
+msgstr "Lebar mestilah integer."
 
 #: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
@@ -711,11 +711,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:90
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Klik pada Sunting diatas untuk melihat perbezaan."
 
 #: ../rednotebook/info.py:93
 msgid "Tagging is easy."
-msgstr ""
+msgstr "pengetagan adalah mudah."
 
 #: ../rednotebook/info.py:94
 msgid "Just use #hashtags like on twitter."
