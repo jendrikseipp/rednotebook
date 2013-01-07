@@ -270,8 +270,6 @@ class MainWindow(object):
         self.tray_icon.connect('activate', self.on_tray_icon_activated)
         self.tray_icon.connect('popup-menu', self.on_tray_popup_menu)
 
-        self.position = None
-
     def on_tray_icon_activated(self, tray_icon):
         if self.main_frame.get_property('visible'):
             self.hide()
@@ -613,18 +611,6 @@ class MainWindow(object):
         self.template_button.set_tooltip_text(_("Insert this weekday's template. "
                         "Click the arrow on the right for more options"))
         self.builder.get_object('edit_toolbar').insert(self.template_button, 2)
-
-    def on_template_menu_show_menu(self, widget):
-        self.template_button.set_menu(self.template_manager.get_menu())
-
-    def on_template_menu_clicked(self, widget):
-        text = self.template_manager.get_weekday_text()
-        #self.day_text_field.insert_template(text)
-        self.day_text_field.insert(text)
-
-    def on_template_button_clicked(self, widget):
-        text = self.template_manager.get_weekday_text()
-        self.day_text_field.insert(text)
 
     def on_add_new_entry_button_clicked(self, widget):
         self.categories_tree_view._on_add_entry_clicked(None)

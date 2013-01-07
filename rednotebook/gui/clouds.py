@@ -116,7 +116,7 @@ class Cloud(HtmlView):
         logging.debug('Update the cloud')
         self.journal.save_old_day()
 
-        def cmp_words((word1, freq1), (word2, freq2)):
+        def cmp_words((word1, _freq1), (word2, _freq2)):
             # TODO: Use key=locale.strxfrm in python3
             return locale.strcoll(word1, word2)
 

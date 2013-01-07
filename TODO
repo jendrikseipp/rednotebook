@@ -66,8 +66,8 @@ O Search and replace (useful for renaming categories and other names)
 
 
 2.0
-O Copy all files and pictures into data subdirectory
-O Password protection or encryption
+O Copy files and pictures into data subdirectory
+O Encryption
 O Internal links to other days
 O Let user change font (see https://github.com/pakesson/rednotebook/commit/88fcfc005b14009a50743123077da22333fd5382)
 O Filter exports by tags
@@ -101,7 +101,6 @@ O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
 O Picture slide show in one entry with many images (in preview show nice
   javascript slide show of pics in linked picture directory) (Think about new format first)
-O HTML import?
 O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Ability to make certain entries, eg. birthdays, with frequencies
 O Plugin system?
@@ -110,16 +109,10 @@ O Add more shortcuts for insertions (e.g. horizontal lines)
 O Improve startup time by showing the window and doing the rest of the initialization
   in an idle loader.
 
-O The concepts of insert and format can be unified for most entities this way:
-  If text is selected, formatting occurs (à la present-day format command).
-  This feature can be applied also to headings, lists, file/web links.
-  Otherwise, standard insertion occurs. A few features are meant exclusively
-  for this purpose (e.g. horizontal separator).
 O Support %!include macro?
 
 O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
-O Make automatic switching between edit and preview mode optional.
 
 
 
