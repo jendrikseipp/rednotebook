@@ -18,6 +18,7 @@
 # -----------------------------------------------------------------------
 
 import logging
+import os
 import re
 import sys
 
@@ -32,11 +33,21 @@ if __name__ == '__main__':
 
 from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
+from rednotebook.util import filesystem
 
 
 # Linebreaks are only allowed at line ends
 REGEX_LINEBREAK = r'\\\\[\s]*$'
 REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
+
+# pic [""/home/user/Desktop/RedNotebook pic"".png]
+PIC_NAME = r'\S.*?\S|\S'
+PIC_EXT = r'(?:png|jpe?g|gif|eps|bmp)'
+REGEX_PIC = re.compile(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (PIC_NAME, PIC_EXT), flags=re.I)
+
+# named local link [my file.txt ""file:///home/user/my file.txt""]
+# named link in web [heise ""http://heise.de""]
+REGEX_NAMED_LINK = re.compile(r'(\[)(.*?)(\s"")(\S.*?\S)(""\])', flags=re.I | re.L)
 
 TABLE_HEAD_BG = '#aaa'
 
@@ -287,7 +298,41 @@ def _get_config(type):
     return config
 
 
-def convert(txt, target, headers=None, options=None):
+def _convert_paths(txt, data_dir):
+    def _convert_uri(uri):
+        path = uri[len('file://'):] if uri.startswith('file://') else uri
+        # Check if relative file exists and convert it if it does.
+        if (not any(uri.startswith(proto) for proto in filesystem.REMOTE_PROTOCOLS) and
+                not os.path.isabs(path)):
+            path = os.path.join(data_dir, path)
+            assert os.path.isabs(path), path
+            if os.path.exists(path):
+                uri = 'file://%s' % path
+        return uri
+
+    def _convert_pic_path(match):
+        uri = _convert_uri(match.group(2) + match.group(4))
+        # Reassemble picture markup.
+        name, ext = os.path.splitext(uri)
+        parts = [match.group(1), name, match.group(3), ext]
+        if match.group(5) is not None:
+            parts.append(match.group(5))
+        parts.append(match.group(6))
+        return ''.join(parts)
+
+    def _convert_file_path(match):
+        uri = _convert_uri(match.group(4))
+        # Reassemble link markup
+        parts = [match.group(i) for i in range(1, 6)]
+        parts[3] = uri
+        return ''.join(parts)
+
+    txt = REGEX_PIC.sub(_convert_pic_path, txt)
+    txt = REGEX_NAMED_LINK.sub(_convert_file_path, txt)
+    return txt
+
+
+def convert(txt, target, data_dir, headers=None, options=None):
     '''
     Code partly taken from txt2tags tarball
     '''
@@ -296,7 +341,10 @@ def convert(txt, target, headers=None, options=None):
                    any(x in txt for x in MATHJAX_DELIMITERS))
     logging.debug('add_mathjax: %s' % add_mathjax)
 
-    # Here is the marked body text, it must be a list.
+    # Turn relative paths into absolute paths.
+    txt = _convert_paths(txt, data_dir)
+
+    # The body text must be a list.
     txt = txt.split('\n')
 
     # Set the three header fields
@@ -329,12 +377,10 @@ def convert(txt, target, headers=None, options=None):
         full_doc  = headers + toc + body + footer
         finished  = txt2tags.finish_him(full_doc, config)
         result = '\n'.join(finished)
-
     # Txt2tags error, show the messsage to the user
     except txt2tags.error, msg:
         logging.error(msg)
         result = msg
-
     # Unknown error, show the traceback to the user
     except:
         result = txt2tags.getUnknownErrorMessage()
@@ -433,5 +479,5 @@ def convert_from_pango(pango_markup):
 if __name__ == '__main__':
     from rednotebook.util.utils import show_html_in_browser
     markup = 'Aha\n\tThis is a quote. It looks very nice. Even with many lines'
-    html = convert(markup, 'xhtml')
+    html = convert(markup, 'xhtml', '/tmp')
     show_html_in_browser(html, '/tmp/test.html')

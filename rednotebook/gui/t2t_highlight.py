@@ -81,33 +81,29 @@ class Pattern(object):
     A pattern object allows a regex-pattern to have
     subgroups with different formatting
     """
-    def __init__(self, pattern, group_tag_pairs, regex=None, flags="",
+    def __init__(self, pattern_or_regex, group_tag_pairs, flags="",
                  name='unnamed'):
         self.name = name
-
-        # assemble re-flag
-        # TODO: Is this needed?
-        flags += "ML"
-        flag = 0
-
-        for char in flags:
-            if char == 'M': flag |= re.M
-            if char == 'L': flag |= re.L
-            if char == 'S': flag |= re.S
-            if char == 'I': flag |= re.I
-            if char == 'U': flag |= re.U
-            if char == 'X': flag |= re.X
-
-        if regex:
-            self._regexp = regex
-        else:
-            # compile re
-            try:
-                self._regexp = re.compile(pattern, flag)
-            except re.error, e:
-                raise Exception("Invalid regexp \"%s\": %s" % (pattern, e))
-
         self.group_tag_pairs = group_tag_pairs
+
+        if isinstance(pattern_or_regex, basestring):
+            # assemble re-flag
+            # TODO: Is this needed?
+            flags += "ML"
+            flag = 0
+
+            for char in flags:
+                if char == 'M': flag |= re.M
+                if char == 'L': flag |= re.L
+                if char == 'S': flag |= re.S
+                if char == 'I': flag |= re.I
+                if char == 'U': flag |= re.U
+                if char == 'X': flag |= re.X
+
+            self._regexp = re.compile(pattern_or_regex, flag)
+        else:
+            assert not flags, flags
+            self._regexp = pattern_or_regex
 
     def __call__(self, txt, start, end):
         m = self._regexp.search(txt)
@@ -331,23 +327,17 @@ for level in range(1, 6):
 linebreak = Pattern(r'(%s)' % markup.REGEX_LINEBREAK, [(1, 'gray')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
-# \w = [a-zA-Z0-9_]
-# Added ":-" for "file://5-5.jpg"
-# filename = One char or two chars with possibly whitespace in the middle
-#filename = r'\S[\w\s_,.+%$#@!?+~/-:-\(\)]*\S|\S'
-filename = r'\S.*?\S|\S'
-ext = r'(png|jpe?g|gif|eps|bmp)'
-pic = Pattern(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (filename, ext),
+pic = Pattern(markup.REGEX_PIC.pattern,
         [(1, 'gray'), (2, 'green'), (3, 'gray'), (4, 'green'), (5, 'gray'), (6, 'gray')], flags='I')
 
-# named link on hdd [my file.txt ""file:///home/user/my file.txt""]
+# named local link [my file.txt ""file:///home/user/my file.txt""]
 # named link in web [heise ""http://heise.de""]
-named_link = Pattern(r'(\[)(.*?)\s("")(\S.*?\S)(""\])',
-        [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')], flags='LI')
+named_link = Pattern(markup.REGEX_NAMED_LINK,
+        [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')])
 
 # link http://heise.de
 # Use txt2tags link guessing mechanism by setting regex explicitly
-link = Pattern('UseRegex', [(0, 'link')], regex=bank['link'], name='link')
+link = Pattern(bank['link'], [(0, 'link')], name='link')
 
 # We do not support multiline regexes
 #blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'gray'), (2, 'verbatim'), (3, 'gray')])
@@ -359,7 +349,7 @@ table_row = Pattern(r'^ *(\| .*)', [(1, 'tablerow')])
 
 formula = Pattern(r'(\\\(|\\\[|\$\$)(.+?)(\\\)|\\\]|\$\$)', [(1, 'gray'), (2, 'formula'), (3, 'gray')])
 
-hashtag = Pattern('UseRegex', [(2, 'red'), (3, 'red')], regex=HASHTAG)
+hashtag = Pattern(HASHTAG, [(2, 'red'), (3, 'red')])
 
 
 patterns = [
@@ -455,7 +445,7 @@ www.heise.de, andy@web.de
 
     def change_text(widget):
         html = markup.convert(widget.get_text(widget.get_start_iter(),
-                              widget.get_end_iter()), 'xhtml')
+                              widget.get_end_iter()), 'xhtml', '/tmp')
 
         html_editor.load_html(html)
         html_editor.highlight(search_text)

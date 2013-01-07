@@ -1,7 +1,11 @@
 import re
 
 from rednotebook.util.markup import convert_to_pango, convert_from_pango, \
-                                    convert
+                                    convert, _convert_paths
+
+def touch(path):
+    with open(path, 'w') as f:
+        pass
 
 
 def test_pango():
@@ -37,7 +41,7 @@ def test_images():
                                         'alt=""/>'),
            ]
     for markup, expected in vals:
-        html = convert(markup, 'xhtml')
+        html = convert(markup, 'xhtml', '/tmp')
         location = re.search(r'(<img.*?>)', html).group(1)
         assert location == expected
 
@@ -49,5 +53,25 @@ def test_images_latex():
             ('[""file:///image"".jpg]', '\includegraphics{"/image".jpg}'),
            ]
     for markup, expected in vals:
-        latex = convert(markup, 'tex')
+        latex = convert(markup, 'tex', '/tmp')
         assert expected in latex
+
+def test_path_conversion():
+    for path in ['/tmp/rel.jpg', '/tmp/rel.pdf']:
+        touch(path)
+
+    rel_paths = [('[""file://rel"".jpg]', '[""file:///tmp/rel"".jpg]'),
+                 ('[""rel"".jpg]', '[""file:///tmp/rel"".jpg]'),
+                 ('[rel.pdf ""file://rel.pdf""]', '[rel.pdf ""file:///tmp/rel.pdf""]'),
+                 ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""file:///tmp/rel.pdf""]')]
+
+    abs_paths = ['[""file:///abs"".jpg]', '[""/tmp/aha 1"".jpg]',
+                 '[abs.pdf ""file:///abs.pdf""]', '[abs.pdf ""/tmp/abs.pdf""]',
+                 'www.google.com', 'www.google.com/page.php'
+                ]
+
+    for old, new in rel_paths:
+        assert new == _convert_paths(old, '/tmp')
+
+    for path in abs_paths:
+        assert path == _convert_paths(path, '/tmp')

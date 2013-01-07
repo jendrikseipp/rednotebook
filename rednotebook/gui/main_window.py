@@ -21,7 +21,6 @@ import sys
 import os
 import datetime
 import logging
-import urlparse
 
 import gtk
 import gobject
@@ -122,7 +121,7 @@ class MainWindow(object):
 
         self.edit_pane = self.builder.get_object('edit_pane')
 
-        self.html_editor = Preview()
+        self.html_editor = Preview(self.journal)
         self.html_editor.webview.connect('button-press-event', self.on_browser_clicked)
         self.html_editor.webview.connect('navigation-requested', self.on_browser_navigate)
 
@@ -492,16 +491,6 @@ class MainWindow(object):
 
         uri = request.get_uri()
         logging.info('Clicked URI "%s"' % uri)
-        path = urlparse.urlparse(uri).path
-
-        # Check if relative file exists and convert if it does.
-        if not any(uri.startswith(proto) for proto in filesystem.REMOTE_PROTOCOLS):
-            assert path.startswith('/'), path
-            relpath = os.path.join(self.journal.dirs.data_dir, path[1:])
-            assert os.path.isabs(relpath), relpath
-            if os.path.exists(relpath):
-                uri = 'file://%s' % relpath
-
         filesystem.open_url(uri)
 
         # Stop processing that event
@@ -686,8 +675,9 @@ class MainWindow(object):
 
 
 class Preview(browser.HtmlView):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, journal, *args, **kwargs):
         browser.HtmlView.__init__(self, *args, **kwargs)
+        self.journal = journal
         self.day = None
 
     def show_day(self, new_day):
@@ -698,7 +688,7 @@ class Preview(browser.HtmlView):
 
         # Show new day
         self.day = new_day
-        html = markup.convert(self.day.text, 'xhtml')
+        html = markup.convert(self.day.text, 'xhtml', self.journal.dirs.data_dir)
         self.load_html(html)
 
         if self.day.last_preview_pos is not None:

@@ -250,7 +250,7 @@ if __name__ == '__main__':
     logging.getLogger('').setLevel(logging.DEBUG)
     sys.path.insert(0, os.path.abspath("./../../"))
     text = 'PDF export works 1 www.heise.de $\\sum i^2$'
-    html = markup.convert(text, 'xhtml')
+    html = markup.convert(text, 'xhtml', '/tmp')
 
     win = gtk.Window()
     win.connect("destroy", lambda w: gtk.main_quit())

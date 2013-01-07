@@ -419,7 +419,8 @@ class ExportAssistant(Assistant):
 
         markup_string = ''.join(markup_strings_for_each_day)
 
-        return markup.convert(markup_string, format, options={'toc': 0})
+        return markup.convert(markup_string, format, self.journal.dirs.data_dir,
+                              options={'toc': 0})
 
     def export(self):
         format = self.exporter.FORMAT
