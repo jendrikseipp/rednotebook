@@ -12,6 +12,7 @@ X Edit templates in RedNotebook directly. Preview and use the Insert and Format 
 X Support relative image links like [""my_pic"".jpg].
 X Let all toolbar menus always open the menu before performing an action.
 x Do not allow choosing an empty name for templates.
+x Do not parse #include as a hashtag.
 x Add info about network drives to help text.
 x Fix help text about links to local directories.
 

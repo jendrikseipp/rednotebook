@@ -28,8 +28,9 @@ TEXT_RESULT_LENGTH = 42
 ALPHA = r'[^\W\d_]'
 ALPHA_NUMERIC = r'\w'
 HEX = r'[0-9A-F]{6}'
+HASHTAG_EXCLUDES = r'%(HEX)s|include' % locals()
 HASHTAG_TEXT = r'%(ALPHA_NUMERIC)s*%(ALPHA)s+%(ALPHA_NUMERIC)s*' % locals()
-HASHTAG_PATTERN = r'(^|[^%(ALPHA_NUMERIC)s&]+)(#|\uFF03)(?!%(HEX)s)(%(HASHTAG_TEXT)s)' % locals()
+HASHTAG_PATTERN = r'(^|[^%(ALPHA_NUMERIC)s&]+)(#|\uFF03)(?!%(HASHTAG_EXCLUDES)s)(%(HASHTAG_TEXT)s)' % locals()
 HASHTAG = re.compile(HASHTAG_PATTERN, flags=re.I | re.U)
 
 def escape_tag(tag):
