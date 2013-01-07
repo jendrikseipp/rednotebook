@@ -366,8 +366,6 @@ class MainWindow(object):
 
     def change_mode(self, preview):
         edit_scroll = self.builder.get_object('text_scrolledwindow')
-        template_button = self.builder.get_object('template_button')
-
         edit_button = self.builder.get_object('edit_button')
         preview_button = self.builder.get_object('preview_button')
 
@@ -614,7 +612,7 @@ class MainWindow(object):
         self.template_button.connect('show-menu', update_menu)
         self.template_button.set_tooltip_text(_("Insert this weekday's template. "
                         "Click the arrow on the right for more options"))
-        edit_toolbar = self.builder.get_object('edit_toolbar').insert(self.template_button, 2)
+        self.builder.get_object('edit_toolbar').insert(self.template_button, 2)
 
     def on_template_menu_show_menu(self, widget):
         self.template_button.set_menu(self.template_manager.get_menu())
