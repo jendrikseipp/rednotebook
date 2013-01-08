@@ -21,7 +21,6 @@ import sys
 import os
 import datetime
 import logging
-import urlparse
 
 import gtk
 import gobject
@@ -122,7 +121,7 @@ class MainWindow(object):
 
         self.edit_pane = self.builder.get_object('edit_pane')
 
-        self.html_editor = Preview()
+        self.html_editor = Preview(self.journal)
         self.html_editor.webview.connect('button-press-event', self.on_browser_clicked)
         self.html_editor.webview.connect('navigation-requested', self.on_browser_navigate)
 
@@ -271,8 +270,6 @@ class MainWindow(object):
         self.tray_icon.connect('activate', self.on_tray_icon_activated)
         self.tray_icon.connect('popup-menu', self.on_tray_popup_menu)
 
-        self.position = None
-
     def on_tray_icon_activated(self, tray_icon):
         if self.main_frame.get_property('visible'):
             self.hide()
@@ -367,8 +364,6 @@ class MainWindow(object):
 
     def change_mode(self, preview):
         edit_scroll = self.builder.get_object('text_scrolledwindow')
-        template_button = self.builder.get_object('template_button')
-
         edit_button = self.builder.get_object('edit_button')
         preview_button = self.builder.get_object('preview_button')
 
@@ -492,16 +487,6 @@ class MainWindow(object):
 
         uri = request.get_uri()
         logging.info('Clicked URI "%s"' % uri)
-        path = urlparse.urlparse(uri).path
-
-        # Check if relative file exists and convert if it does.
-        if not any(uri.startswith(proto) for proto in filesystem.REMOTE_PROTOCOLS):
-            assert path.startswith('/'), path
-            relpath = os.path.join(self.journal.dirs.data_dir, path[1:])
-            assert os.path.isabs(relpath), relpath
-            if os.path.exists(relpath):
-                uri = 'file://%s' % relpath
-
         filesystem.open_url(uri)
 
         # Stop processing that event
@@ -625,19 +610,7 @@ class MainWindow(object):
         self.template_button.connect('show-menu', update_menu)
         self.template_button.set_tooltip_text(_("Insert this weekday's template. "
                         "Click the arrow on the right for more options"))
-        edit_toolbar = self.builder.get_object('edit_toolbar').insert(self.template_button, 2)
-
-    def on_template_menu_show_menu(self, widget):
-        self.template_button.set_menu(self.template_manager.get_menu())
-
-    def on_template_menu_clicked(self, widget):
-        text = self.template_manager.get_weekday_text()
-        #self.day_text_field.insert_template(text)
-        self.day_text_field.insert(text)
-
-    def on_template_button_clicked(self, widget):
-        text = self.template_manager.get_weekday_text()
-        self.day_text_field.insert(text)
+        self.builder.get_object('edit_toolbar').insert(self.template_button, 2)
 
     def on_add_new_entry_button_clicked(self, widget):
         self.categories_tree_view._on_add_entry_clicked(None)
@@ -686,8 +659,9 @@ class MainWindow(object):
 
 
 class Preview(browser.HtmlView):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, journal, *args, **kwargs):
         browser.HtmlView.__init__(self, *args, **kwargs)
+        self.journal = journal
         self.day = None
 
     def show_day(self, new_day):
@@ -698,7 +672,7 @@ class Preview(browser.HtmlView):
 
         # Show new day
         self.day = new_day
-        html = markup.convert(self.day.text, 'xhtml')
+        html = markup.convert(self.day.text, 'xhtml', self.journal.dirs.data_dir)
         self.load_html(html)
 
         if self.day.last_preview_pos is not None:

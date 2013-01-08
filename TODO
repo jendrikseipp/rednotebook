@@ -9,8 +9,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.6.6
 X Edit templates in RedNotebook directly. Preview and use the Insert and Format toolbar menus before inserting a template.
+X Support relative image links like [""my_pic"".jpg].
 X Let all toolbar menus always open the menu before performing an action.
 x Do not allow choosing an empty name for templates.
+x Do not parse #include as a hashtag.
 x Add info about network drives to help text.
 x Fix help text about links to local directories.
 
@@ -22,17 +24,11 @@ X Insert Latex formulas (LP:851471)
   X Highlight formulas in edit mode
   X Support formulas in all exports
   X Add menu item for inserting formulas
-O Use new markup for images: {/home/user/pic.png?50}
 X Tables
   X Highlight tables in edit mode
   O Use art target for text exports (Wait for txt2tags 2.7)
 X Numbered lists
 X Add quotes by indenting them with a tab
-O Edit templates inside of RedNotebook. On Windows wordpad and notepad do not save to utf-8.
-  Do the editing in the normal edit window and not in an extra frame, because it's cooler and easier.
-  Design: Toolbar menu contains template1, template2, ..., create-new.
-  When user clicks on a template we show it in the edit window with buttons
-  save+insert, save, abort.
 X Show warning if last backup dates to more than one month before
 O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
@@ -71,8 +67,8 @@ O Search and replace (useful for renaming categories and other names)
 
 
 2.0
-O Copy all files and pictures into data subdirectory
-O Password protection or encryption
+O Copy files and pictures into data subdirectory
+O Encryption
 O Internal links to other days
 O Let user change font (see https://github.com/pakesson/rednotebook/commit/88fcfc005b14009a50743123077da22333fd5382)
 O Filter exports by tags
@@ -106,7 +102,6 @@ O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
 O Picture slide show in one entry with many images (in preview show nice
   javascript slide show of pics in linked picture directory) (Think about new format first)
-O HTML import?
 O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Ability to make certain entries, eg. birthdays, with frequencies
 O Plugin system?
@@ -115,16 +110,10 @@ O Add more shortcuts for insertions (e.g. horizontal lines)
 O Improve startup time by showing the window and doing the rest of the initialization
   in an idle loader.
 
-O The concepts of insert and format can be unified for most entities this way:
-  If text is selected, formatting occurs (à la present-day format command).
-  This feature can be applied also to headings, lists, file/web links.
-  Otherwise, standard insertion occurs. A few features are meant exclusively
-  for this purpose (e.g. horizontal separator).
 O Support %!include macro?
 
 O Separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
-O Make automatic switching between edit and preview mode optional.
 
 
 
@@ -183,3 +172,4 @@ O Make automatic switching between edit and preview mode optional.
   add the contents of the file inline (which allows for 'dynamic' content) (KISS)
 - Field or shortcut to enter a date and takes you there (One navigation suffices)
 - Disable cache for preview to support previewing externally changed files (Rarely used, might slowdown app)
+- Use new markup for images: {/home/user/pic.png?50} (Too disruptive)

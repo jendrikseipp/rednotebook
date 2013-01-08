@@ -242,13 +242,8 @@ class PlainTextImporter(Importer):
     PATHTYPE = 'DIR'
 
     # Allow 2010-05-08[.txt] with different or no separators
-    sep = r'[:\._\-]?' # The separators :._-
+    sep = r'[:\._\-]?'  # The separators :._-
     date_exp = re.compile(r'(\d{4})%s(\d{2})%s(\d{2})(?:\.txt)?' % (sep, sep))
-    ref_date = datetime.date(2010, 5, 8)
-    for test in ['2010-05-08', '2010.05-08', '2010:05_08.TxT', '20100508.TXT']:
-        match = date_exp.match(test)
-        date = datetime.date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
-        assert date == ref_date
 
     def get_days(self, dir):
         for file in self._get_files(dir):
@@ -413,12 +408,3 @@ if __name__ == '__main__':
 #print dir(plaintext_module)
 #p = getattr(plaintext_module, 'aha')
 #p = plaintext_module.PlainTextImporter()
-
-
-
-
-
-
-
-
-
