@@ -215,6 +215,8 @@ class TemplateManager(object):
             text = self.get_text(title)
         self.main_window.undo_redo_manager.set_stack(title)
         self.main_window.day_text_field.set_text(text, undoing=True)
+        light_yellow = gtk.gdk.Color(1., 1., 190 / 255., 0)
+        self.main_window.day_text_field.day_text_view.modify_base(gtk.STATE_NORMAL, light_yellow)
         self._set_widgets_sensitive(False)
 
     def exit_template_mode(self):
@@ -224,6 +226,8 @@ class TemplateManager(object):
         if self.main_window.preview_mode:
             self.main_window.change_mode(preview=False)
         self.main_window.day_text_field.day_text_view.grab_focus()
+        self.main_window.day_text_field.day_text_view.modify_base(gtk.STATE_NORMAL,
+                                                                  gtk.gdk.color_parse('white'))
         self._set_widgets_sensitive(True)
 
     def _reset_undo_stack(self):
