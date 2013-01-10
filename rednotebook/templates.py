@@ -178,6 +178,9 @@ class TemplateManager(object):
         self.tmp_title = None
         self.tmp_parts = None
 
+        style = self.main_window.day_text_field.day_text_view.get_style()
+        self.default_base_color = style.base[gtk.STATE_NORMAL]
+
     def set_template_menu_sensitive(self, sensitive):
         if self.tmp_title:
             sensitive = False
@@ -227,7 +230,7 @@ class TemplateManager(object):
             self.main_window.change_mode(preview=False)
         self.main_window.day_text_field.day_text_view.grab_focus()
         self.main_window.day_text_field.day_text_view.modify_base(gtk.STATE_NORMAL,
-                                                                  gtk.gdk.color_parse('white'))
+                                                                  self.default_base_color)
         self._set_widgets_sensitive(True)
 
     def _reset_undo_stack(self):
