@@ -89,6 +89,9 @@ class CategoriesTreeView(object):
         self.cell.props.wrap_width = 200
         self.tree_view.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
 
+    def _show_error_msg(self, text):
+        self.main_window.journal.show_message(text, error=True)
+
     def add_category(self, category):
         """Add a new category name and sort all categories."""
         if category:
@@ -127,10 +130,10 @@ class CategoriesTreeView(object):
         new_text is txt2tags markup
         """
         if new_text == 'text' and self.node_on_top_level(path):
-            self.statusbar.show_text('"text" is a reserved keyword', error=True)
+            self._show_error_msg('"text" is a reserved keyword')
             return
         if len(new_text) < 1:
-            self.statusbar.show_text(_('Empty entries are not allowed'), error=True)
+            self._show_error_msg(_('Empty entries are not allowed'))
             return
 
         liststore[path][0] = markup.convert_to_pango(new_text)
@@ -144,11 +147,9 @@ class CategoriesTreeView(object):
 
     def check_category(self, category):
         if category == 'text':
-            self.statusbar.show_text('"text" is a reserved keyword', error=True)
+            self._show_error_msg('"text" is a reserved keyword')
             return False
-        if len(category) < 1:
-            self.statusbar.show_text(_('Empty tag names are not allowed'), error=True)
-            return False
+        assert category
         return True
 
     def add_element(self, parent, element_content):

@@ -15,6 +15,7 @@ x Do not allow choosing an empty name for templates.
 x Do not parse #include as a hashtag.
 x Add info about network drives to help text.
 x Fix help text about links to local directories.
+x Fix: Let categories pane use new infobar notifications (LP:1098625).
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
