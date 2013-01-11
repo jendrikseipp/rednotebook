@@ -82,8 +82,12 @@ O Left-over files:
 O Mobile version:
   - Kivy (No calendar widget, but probably simple next/prev day navigation is better anyway)
     - Has ReST renderer (txt2tags->ReST->Rendering)
+    - Vite vite project for business widgets
   - Qt for android (http://thp.io/2011/pyside-android/)
   - Django
+  - jQuery Mobile
+  - Sencha Touch
+  - Phonegap
 
 O Markdown:
   - Parsing would need a PEG parser
