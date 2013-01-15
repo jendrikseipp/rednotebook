@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-12-07 07:25+0000\n"
+"PO-Revision-Date: 2013-01-14 07:23+0000\n"
 "Last-Translator: freedomrun <freedomrun@yandex.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-15 04:48+0000\n"
+"X-Generator: Launchpad (build 16420)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -59,7 +59,7 @@ msgstr "Umetni predložak za danas. Klikni na strelicu desno za više opcija"
 
 #: ../rednotebook/gui/format_menu.py:94
 msgid "No text or tag has been selected."
-msgstr ""
+msgstr "Nije odabran tekst niti oznaka."
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
@@ -75,7 +75,7 @@ msgstr "Podcrtano"
 
 #: ../rednotebook/gui/format_menu.py:109
 msgid "Strikethrough"
-msgstr ""
+msgstr "Precrtano"
 
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
@@ -94,7 +94,7 @@ msgstr "Format"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
-msgstr ""
+msgstr "Oblikuj označeni tekst ili oznaku"
 
 #: ../rednotebook/gui/customwidgets.py:365
 msgid "Introduction"
@@ -386,7 +386,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:194
 msgid "The directory name will be the title of the new journal."
-msgstr ""
+msgstr "Ime direktorija će biti i naslov novog dnevnika."
 
 #: ../rednotebook/gui/menu.py:195
 msgid "Select an empty folder for your new journal"
@@ -394,19 +394,19 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:198
 msgid "Select an existing journal directory"
-msgstr ""
+msgstr "Odaberi postojeći direktorij s dnevnikom"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "The directory should contain your journal's data files"
-msgstr ""
+msgstr "Direktorij treba sadržavati datoteke s podacima vašeg dnevnika"
 
 #: ../rednotebook/gui/menu.py:206
 msgid "Select an empty folder for the new location of your journal"
-msgstr ""
+msgstr "Odaberite prazan direktorij za novu lokaciju vašeg dnevnika"
 
 #: ../rednotebook/gui/menu.py:207
 msgid "The directory name will be the new title of the journal"
-msgstr ""
+msgstr "Ime direktorija će biti i naslov dnevnika"
 
 #: ../rednotebook/gui/menu.py:265
 msgid "RedNotebook Documentation"
