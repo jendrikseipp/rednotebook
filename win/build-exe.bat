@@ -1,11 +1,8 @@
-REM Change into main directory
-cd ../
+python build-translations.py
 
-python setup.py py2exe
+python remove-build-dirs.py
+python C:\pyinstaller\pyinstaller.py rednotebook.spec
 
-cd dist
-
-REM try the exe
-rednotebook.exe
+dist\rednotebook.exe
 
 pause

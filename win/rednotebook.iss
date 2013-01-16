@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
-AppVerName=RedNotebook 1.6.5
+AppVerName=RedNotebook 1.6.6
 ; AppPublisher=Jendrik Seipp
 AppPublisherURL=http://rednotebook.sourceforge.net
 AppSupportURL=http://rednotebook.sourceforge.net
@@ -16,7 +16,7 @@ DefaultDirName={pf}\RedNotebook
 DefaultGroupName=RedNotebook
 AllowNoIcons=yes
 OutputDir=C:\Users\Jendrik\Dropbox\Public
-OutputBaseFilename=rednotebook-1.6.5-beta2
+OutputBaseFilename=rednotebook-1.6.6-beta1
 SetupIconFile=rednotebook.ico
 Compression=lzma2
 SolidCompression=yes
@@ -70,8 +70,7 @@ name: "startupicon"; Description: "Run RedNotebook on Startup"; GroupDescription
 
 [Files]
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "..\dist\*"; Excludes: "*.log,*.a,*.def,*.h,*.lib,*.pc,*.exe,Thumbs.db,*.aff,*.dic"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "..\dist\rednotebook.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "dist\*"; Excludes: "*.log,*.a,*.def,*.h,*.lib,*.pc,Thumbs.db,*.aff,*.dic"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ;Source: "portable.cfg"; DestDir: "{app}\files"; DestName: "default.cfg"; Flags: ignoreversion; Components: portablecfgfile
 
 [Icons]

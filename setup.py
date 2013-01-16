@@ -42,6 +42,29 @@ from rednotebook import info
 from rednotebook.external import msgfmt
 
 
+def build_translation_files(po_dir, locale_dir):
+    assert os.path.isdir(po_dir), po_dir
+    for path, names, filenames in os.walk(po_dir):
+        for f in filenames:
+            if f.endswith('.po'):
+                lang = os.path.splitext(f)[0]
+                src = os.path.join(path, f)
+                dest = os.path.join(locale_dir, lang, 'LC_MESSAGES', 'rednotebook.mo')
+                dest_dir = os.path.dirname(dest)
+                if not os.path.exists(dest_dir):
+                    os.makedirs(dest_dir)
+                # Recompile only if compiled version is outdated.
+                if not os.path.exists(dest):
+                    print 'Compiling %s' % src
+                    msgfmt.make(src, dest)
+                else:
+                    src_mtime = os.stat(src)[8]
+                    dest_mtime = os.stat(dest)[8]
+                    if src_mtime > dest_mtime:
+                        print 'Compiling %s' % src
+                        msgfmt.make(src, dest)
+
+
 class build_trans(cmd.Command):
     """
     Code taken from mussorgsky
@@ -58,25 +81,8 @@ class build_trans(cmd.Command):
 
     def run(self):
         po_dir = os.path.join(os.path.dirname(os.curdir), 'po')
-        for path, names, filenames in os.walk(po_dir):
-            for f in filenames:
-                if f.endswith('.po'):
-                    lang = os.path.splitext(f)[0]
-                    src = os.path.join(path, f)
-                    dest_path = os.path.join('build', 'locale', lang, 'LC_MESSAGES')
-                    dest = os.path.join(dest_path, 'rednotebook.mo')
-                    if not os.path.exists(dest_path):
-                        os.makedirs(dest_path)
-                    # Recompile only if compiled version is outdated.
-                    if not os.path.exists(dest):
-                        print 'Compiling %s' % src
-                        msgfmt.make(src, dest)
-                    else:
-                        src_mtime = os.stat(src)[8]
-                        dest_mtime = os.stat(dest)[8]
-                        if src_mtime > dest_mtime:
-                            print 'Compiling %s' % src
-                            msgfmt.make(src, dest)
+        dest_path = os.path.join('build', 'locale')
+        build_translation_files(po_dir, dest_path)
 
 
 class build(_build):
@@ -205,5 +211,6 @@ if 'py2exe' in sys.argv:
                                     ])
     parameters.update(py2exeParameters)
 
-# Additionally use MANIFEST.in for image files
-setup(**parameters)
+if __name__ == '__main__':
+    # Additionally use MANIFEST.in for image files
+    setup(**parameters)
