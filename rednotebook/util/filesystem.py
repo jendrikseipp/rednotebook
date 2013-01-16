@@ -43,18 +43,11 @@ def main_is_frozen():
         hasattr(sys, "importers") # old py2exe
         or imp.is_frozen("__main__")) # tools/freeze
 
-def get_main_dir():
-    if main_is_frozen():
-        return os.path.dirname(sys.executable)
-    return os.path.dirname(sys.argv[0])
-#------------------------------------------------------------------------------
-
 
 if main_is_frozen():
-    app_dir = get_main_dir()
+    app_dir = sys._MEIPASS  # os.path.dirname(sys.executable)
 else:
-    app_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../'))
-    app_dir = os.path.normpath(app_dir)
+    app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 app_dir = get_unicode_path(app_dir)
 
 if sys.platform.startswith('win'):
