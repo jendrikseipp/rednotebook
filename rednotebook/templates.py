@@ -243,6 +243,7 @@ class TemplateManager(object):
         self.enter_template_mode(title, parts)
 
     def on_save_insert(self, button):
+        self.on_save(None)
         template = self.main_window.day_text_field.get_text()
         p1, p2, p3 = self.tmp_parts
         self._reset_undo_stack()
