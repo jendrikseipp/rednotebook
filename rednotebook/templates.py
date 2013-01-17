@@ -29,6 +29,18 @@ WEEKDAYS = (_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
             _('Friday'), _('Saturday'), _('Sunday'))
 
 
+MENU_XML = '''\
+<ui>
+<popup action="TemplateMenu">
+    <menuitem action="EditWeekday"/>
+    <separator name="sep4"/>
+    %s
+    <separator name="sep5"/>
+    <menuitem action="NewTemplate"/>
+</popup>
+</ui>'''
+
+
 example_text = '''\
 === This is an example template ===
 
@@ -77,8 +89,7 @@ etc.
 
 **Macros**:
 
-When a template is inserted, every occurence of "date" surrounded by \
-dollar signs is converted to \
+When a template is inserted, every occurence of $date$ is converted to \
 the current date. You can set the date format in the preferences.
 
 There is even more markup that you can put into your templates. Have a look at
@@ -212,10 +223,7 @@ class TemplateManager(object):
         self.tmp_title = title
         self.tmp_parts = parts
         self.main_window.template_bar.show()
-        if title == 'Weekday':
-            text = self.get_weekday_text()
-        else:
-            text = self.get_text(title)
+        text = self.get_text(title)
         self.main_window.undo_redo_manager.set_stack(title)
         self.main_window.day_text_field.set_text(text, undoing=True)
         light_yellow = gtk.gdk.Color(1., 1., 190 / 255., 0)
@@ -236,15 +244,22 @@ class TemplateManager(object):
     def _reset_undo_stack(self):
         self.main_window.undo_redo_manager.set_stack(self.main_window.day.date)
 
-    def on_insert(self, action):
-        # Convert to unicode and strip 'Insert'.
-        title = unicode(action.get_name())[6:]
+    def edit(self, title):
         parts = self.main_window.day_text_field.get_text_parts()
         self.enter_template_mode(title, parts)
+
+    def _replace_macros(self, text):
+        # convert every "$date$" to the current date
+        config = self.main_window.journal.config
+        format_string = config.read('dateTimeString', '%A, %x %X')
+        date_string = dates.format_date(format_string)
+        text = text.replace(u'$date$', date_string)
+        return text
 
     def on_save_insert(self, button):
         self.on_save(None)
         template = self.main_window.day_text_field.get_text()
+        template = self._replace_macros(template)
         p1, p2, p3 = self.tmp_parts
         self._reset_undo_stack()
         # Force addition of an undo item.
@@ -254,9 +269,7 @@ class TemplateManager(object):
 
     def on_save(self, button):
         template = self.main_window.day_text_field.get_text()
-        filename = self.titles_to_files.get(self.tmp_title)
-        assert filename is not None
-        filesystem.write_file(filename, template)
+        filesystem.write_file(self.get_path(self.tmp_title), template)
 
     def on_close(self, button):
         self._reset_undo_stack()
@@ -291,48 +304,31 @@ class TemplateManager(object):
         if response == gtk.RESPONSE_OK:
             title = entry.get_text().decode('UTF-8')
             parts = self.main_window.day_text_field.get_text_parts()
-            path = self.get_template_file(title)
-            self._register_template(title, path)
+            path = self.get_path(title)
             filesystem.make_file(path, example_text)
             self.enter_template_mode(title, parts)
 
-    def get_template_file(self, basename):
-        return os.path.join(self.dirs.template_dir, str(basename) + '.txt')
+    def _get_weekday_number(self):
+        return self.main_window.journal.date.weekday() + 1
+
+    def get_path(self, title):
+        if title == 'Weekday':
+            title = str(self._get_weekday_number())
+        return os.path.join(self.dirs.template_dir, title + '.txt')
 
     def get_text(self, title):
-        filename = self.titles_to_files.get(title, None)
-        assert filename
-
-        text = filesystem.read_file(filename)
+        text = filesystem.read_file(self.get_path(title))
 
         # An Error occured
         if not text:
-            text = ('This template file contains no text or has unreadable content.')
-        # convert every "$date$" to the current date
-        config = self.main_window.journal.config
-        format_string = config.read('dateTimeString', '%A, %x %X')
-        date_string = dates.format_date(format_string)
-
-        template_text = text.replace(u'$date$', date_string)
-        return template_text
-
-    def get_weekday_text(self, date=None):
-        if date is None:
-            date = self.main_window.journal.date
-        week_day_number = date.weekday() + 1
-        return self.get_text(str(week_day_number))
+            text = _('This template file contains no text or has unreadable content.')
+        return text
 
     def get_available_template_files(self):
-        dir = self.dirs.template_dir
-        files = os.listdir(dir)
-        files = map(lambda basename: os.path.join(dir, basename), files)
-
-        # No directories allowed
-        files = filter(lambda file:os.path.isfile(file), files)
-
-        # No tempfiles
-        files = filter(lambda file: not file.endswith('~'), files)
-        return files
+        path = self.dirs.template_dir
+        files = [os.path.join(path, f) for f in os.listdir(path)]
+        # Remove dirs and temporary files.
+        return [f for f in files if os.path.isfile(f) and not f.endswith('~')]
 
     def _escape_template_name(self, name):
         """Remove special xml chars for GUI display."""
@@ -340,45 +336,23 @@ class TemplateManager(object):
             name = name.replace(char, '')
         return name
 
-    def _register_template(self, name, path):
-        self.titles_to_files[self._escape_template_name(name)] = path
-
     def get_menu(self):
         '''
         See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
         A popup menu cannot show accelerators (HIG).
         '''
-        # complete paths
         files = self.get_available_template_files()
 
-        # 1, 2, 3
-        self.titles_to_files = {}
+        titles = []
         for file in files:
             root, ext = os.path.splitext(file)
             title = os.path.basename(root)
-            self._register_template(title, file)
+            titles.append(title)
 
-        sorted_titles = sorted(self.titles_to_files.keys())
-
-        menu_xml = '''\
-        <ui>
-        <popup action="TemplateMenu">'''
-
-        insert_menu_xml = '''
-                <menuitem action="InsertWeekday"/>
-                <separator name="sep4"/>'''
-        for title in sorted_titles:
-            if title not in map(str, range(1, 8)):
-                insert_menu_xml += '''
-                <menuitem action="Insert%s"/>''' % title
-
-        menu_xml += insert_menu_xml
-
-        menu_xml += '''
-            <separator name="sep5"/>
-            <menuitem action="NewTemplate"/>
-        </popup>
-        </ui>'''
+        actions_xml = ''.join('<menuitem action="Edit%s"/>' %
+                              self._escape_template_name(title)
+                              for title in sorted(titles)
+                              if title not in map(str, range(1, 8)))
 
         uimanager = self.main_window.uimanager
 
@@ -391,14 +365,19 @@ class TemplateManager(object):
         # Create actions
         actions = []
 
-        for title in sorted_titles:
-            insert_action = ('Insert' + title, None, title, None, None,
-                             self.on_insert)
-            actions.append(insert_action)
+        for title in sorted(titles):
+            # Define inline to force early binding.
+            def get_edit_function(title):
+                return lambda button: self.edit(title)
 
-        actions.append(('InsertWeekday', gtk.STOCK_HOME,
+            edit_action = ('Edit' + self._escape_template_name(title),
+                           None, title, None, None,
+                           get_edit_function(title))
+            actions.append(edit_action)
+
+        actions.append(('EditWeekday', gtk.STOCK_HOME,
                         _("This Weekday's Template"), None, None,
-                        self.on_insert))
+                        lambda button: self.edit('Weekday')))
 
         actions.append(('NewTemplate', gtk.STOCK_NEW, _('Create New Template'),
                         None, None, self.on_new_template))
@@ -410,7 +389,7 @@ class TemplateManager(object):
             uimanager.remove_ui(self.merge_id)
 
         # Add a UI description
-        self.merge_id = uimanager.add_ui_from_string(menu_xml)
+        self.merge_id = uimanager.add_ui_from_string(MENU_XML % actions_xml)
 
         # Add the actiongroup to the uimanager
         uimanager.insert_action_group(self.actiongroup, 0)
@@ -425,20 +404,20 @@ class TemplateManager(object):
         files = []
         for day_number in range(1, 8):
             weekday = WEEKDAYS[day_number - 1]
-            files.append((self.get_template_file(day_number),
+            files.append((self.get_path(str(day_number)),
                           example_text.replace('template ===',
                                                'template for %s ===' % weekday)))
 
         help_text %= (self.dirs.template_dir)
 
-        files.append((self.get_template_file('Help'), help_text))
+        files.append((self.get_path('Help'), help_text))
 
         # Only add the example templates the first time and just restore
         # the day templates everytime
         if self.main_window.journal.is_first_start:
-            files.append((self.get_template_file('Meeting'), meeting))
-            files.append((self.get_template_file('Journey'), journey))
-            files.append((self.get_template_file('Call'), call))
-            files.append((self.get_template_file('Personal'), personal))
+            files.append((self.get_path('Meeting'), meeting))
+            files.append((self.get_path('Journey'), journey))
+            files.append((self.get_path('Call'), call))
+            files.append((self.get_path('Personal'), personal))
 
         filesystem.make_files(files)
