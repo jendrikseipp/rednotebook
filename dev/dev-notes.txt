@@ -87,7 +87,12 @@ O Mobile version:
   - Django
   - jQuery Mobile
   - Sencha Touch
-  - Phonegap
+  - HTML5 + CSS3 + JS
+    - Phonegap (Access low-level features)
+    - Dojo Mobile (Native themes) vs. jQuery Mobile (Non-native theme)
+      --> jQuery Mobile seems to be more qidely adopted and easier.
+    - Modernizr for detecting browser support
+    - Supports all mobile platforms and is even compatible with the Windows Store
 
 O Markdown:
   - Parsing would need a PEG parser
