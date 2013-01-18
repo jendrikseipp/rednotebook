@@ -93,8 +93,6 @@ class InsertMenu(object):
         #           '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
         #           '|  Always use  |  at least  |  one whitespace  |\n')
 
-        line_break = r'\\'
-
         def tmpl(letter):
             return ''  # return ' (Ctrl+%s)' % letter
 
@@ -126,9 +124,9 @@ class InsertMenu(object):
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
                 self.get_insert_handler(self.on_insert_date_time)),
-            ('LineBreak', None, _('Line Break'), None,
+            ('LineBreak', None, _('Line Break'), '<Ctrl>Return',
                 _('Insert a manual line break'),
-                self.get_insert_handler(lambda sel_text: line_break)),
+                self.get_insert_handler(lambda sel_text: '\\\\\n')),
             ('InsertMenuBar', None, _('_Insert')),
             ])
 

@@ -10,6 +10,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.6.6
 X Edit templates in RedNotebook directly. Preview and use the Insert and Format toolbar menus before inserting a template.
 X Support relative image links like [""my_pic"".jpg].
+X Add Ctrl+Return shortcut for adding manual linebreaks.
 X Let all toolbar menus always open the menu before performing an action.
 x Do not allow choosing an empty name for templates.
 x Do not parse #include as a hashtag.
