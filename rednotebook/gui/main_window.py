@@ -44,10 +44,6 @@ from rednotebook.gui.clouds import Cloud
 from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
 
-test_zeitgeist = False
-if test_zeitgeist:
-    from rednotebook.gui import journalgeist
-
 
 class MainWindow(object):
     '''
@@ -189,27 +185,7 @@ class MainWindow(object):
         self.setup_template_menu()
 
         self.set_tooltips()
-
-        # Only add the config variable if zeitgeist is available
-        use_zeitgeist = (test_zeitgeist and journalgeist.zeitgeist and
-                        self.journal.config.read('useZeitgeist', 0))
-        self.zeitgeist_widget = None
-        #use_zeitgeist = True
-        logging.info('Using zeitgeist: %s' % use_zeitgeist)
-
-        if use_zeitgeist:
-            self.setup_zeitgeist_view()
-
         self.setup_tray_icon()
-
-
-    def setup_zeitgeist_view(self):
-        '''Zeigeist integration'''
-        #from rednotebook.gui.journalgeist import JournalZeitgeistWidget
-        self.zeitgeist_widget = journalgeist.ZeitgeistWidget()
-        annotations_pane = self.builder.get_object('annotations_pane')
-        annotations_pane.add2(self.zeitgeist_widget)
-
 
     def set_tooltips(self):
         '''
@@ -638,10 +614,6 @@ class MainWindow(object):
             self.html_editor.show_day(day)
 
         self.categories_tree_view.set_day_content(day)
-
-        if self.zeitgeist_widget:
-            self.zeitgeist_widget.set_date(new_date)
-
         self.undo_redo_manager.set_stack(new_date)
 
     def get_day_text(self):
