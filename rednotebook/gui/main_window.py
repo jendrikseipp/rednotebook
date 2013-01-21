@@ -241,7 +241,7 @@ class MainWindow(object):
         #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
         shortcuts = [(self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
-                    (self.today_button, 'clicked', '<Ctrl>Home'),
+                    (self.today_button, 'clicked', '<Alt>Home'),
                     (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
                     #(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
                     #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),

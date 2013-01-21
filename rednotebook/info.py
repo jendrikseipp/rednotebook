@@ -385,7 +385,7 @@ same directory.
 | Find               | <Ctrl> + F             |
 | Go back one day    | <Ctrl> + PageUp        |
 | Go forward one day | <Ctrl> + PageDown      |
-| Go to today        | <Ctrl> + Home (Pos1)   |
+| Go to today        | <Alt> + Home (Pos1)    |
 | Insert link        | <Ctrl> + L             |
 | Insert date/time   | <Ctrl> + D             |
 | New tag            | <Ctrl> + N             |
