@@ -1,3 +1,15 @@
+== 1.6.6 (2013-01-21) ==
+* Edit templates in RedNotebook directly. Preview and use the Insert and Format toolbar menus before inserting a template.
+* Support relative image links like [""my_pic"".jpg].
+* Add Ctrl+Return shortcut for adding manual linebreaks.
+* Let all toolbar menus always open the menu before performing an action.
+* Change Go-To-Today shortcut to Alt+Home (Ctrl+Home moves cursor to the start of the text).
+* Do not allow choosing an empty name for templates.
+* Do not parse #include as a hashtag.
+* Add info about network drives to help text.
+* Fix help text about links to local directories.
+* Fix: Let categories pane use new infobar notifications (LP:1098625).
+
 == 1.6.5 (2012-12-27) ==
 * Add menu item for clearing the text format.
 * Add toolbar menus "Insert" and "Format" to main menu for better accessibility and HUD integration.

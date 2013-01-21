@@ -7,18 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.6.6
-X Edit templates in RedNotebook directly. Preview and use the Insert and Format toolbar menus before inserting a template.
-X Support relative image links like [""my_pic"".jpg].
-X Add Ctrl+Return shortcut for adding manual linebreaks.
-X Let all toolbar menus always open the menu before performing an action.
-X Change Go-To-Today shortcut to Alt+Home (Ctrl+Home moves cursor to the start of the text).
-x Do not allow choosing an empty name for templates.
-x Do not parse #include as a hashtag.
-x Add info about network drives to help text.
-x Fix help text about links to local directories.
-x Fix: Let categories pane use new infobar notifications (LP:1098625).
-
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
 O During saving: Delete old backup, move old file to new backup then save new file.
