@@ -1,3 +1,5 @@
+Note: These instructions are outdated.
+
 == Install requirements ==
   * Install Python 2.7 for Windows from the Python website [www.python.org].
   * Download the PyGTK/GTK all-in-one installer and install the default subpackages.
@@ -18,23 +20,10 @@
   * If you don't need an .exe file and no translations you're done.
 
 == Build Exe ==
-  * Microsoft Visual Studio files:
-    * In some environments the Visual Studio dlls are missing so we have
-      to provide them
-    * Find the files "Microsoft.VC90.CRT.manifest" and "msvcr90.dll" on
-      your system or on the Microsoft homepage (search for Microsoft
-      Visual C++ 2005 Redistributable Package (x86))and copy them into
-      the win directory
-  * Make sure py2exe is installed [http://www.py2exe.org/]
   * In the Explorer, go to the win directory and execute build-exe.bat
   * build-exe.bat runs the RedNotebook exe at the end. If nothing
     happens, have a look at
     C:\Documents and Settings\username\.rednotebook\rednotebook.log
-  * A dist/ directory is created containing the exe, but some GTK files
-    are still missing
-  * Copy the directories etc, lib and share from the GTK path
-    (C:\Python27\Lib\site-packages\gtk-2.0\runtime) to the newly created dist
-    directory
   * You may want to remove some themes or dictionaries from the
     "share" directory to save some space.
   * Now clicking rednotebook.exe should start the application

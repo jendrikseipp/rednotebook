@@ -108,27 +108,6 @@ cmdclass = {
 }
 
 
-if sys.platform == 'win32':
-    print 'running on win32. Importing py2exe'
-    import py2exe
-
-    # Delete old files to force updating
-    for dir in ['i18n', 'files', 'images']:
-        path = os.path.join('dist', dir)
-        if os.path.exists(path):
-            print 'Removing', path
-            shutil.rmtree(path)
-
-    # We want to include some dlls that py2exe excludes
-    origIsSystemDLL = py2exe.build_exe.isSystemDLL
-    dlls = ("libxml2-2.dll", "libtasn1-3.dll", 'libgtkspell-0.dll')
-    def isSystemDLL(pathname):
-            if os.path.basename(pathname).lower() in dlls:
-                    return 0
-            return origIsSystemDLL(pathname)
-    py2exe.build_exe.isSystemDLL = isSystemDLL
-
-
 parameters = {  'name'              : 'rednotebook',
                 'version'           : info.version,
                 'description'       : 'Graphical daily journal with calendar, '
@@ -148,68 +127,12 @@ parameters = {  'name'              : 'rednotebook',
                                        ['images/*.png', 'images/rednotebook-icon/*.png',
                                         'images/rednotebook-icon/rednotebook.svg',
                                         'files/*.css', 'files/*.glade', 'files/*.cfg']},
-                'data_files'        : [],
+                'data_files'        : [('share/applications', ['rednotebook.desktop']),
+                                       ('share/icons/hicolor/scalable/apps',
+                                        ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
+                                      ],
                 'cmdclass'          : cmdclass,
             }
-
-# Freedesktop parameters
-if not sys.platform.startswith('win'):
-    parameters['data_files'].extend([
-        ('share/applications', ['rednotebook.desktop']),
-        # new freedesktop.org spec
-        #('share/icons/hicolor/48x48/apps', ['rednotebook.png']),
-        ('share/icons/hicolor/scalable/apps',
-         ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
-        # for older configurations
-        #('share/pixmaps', ['rednotebook.png']),
-    ])
-
-
-if 'py2exe' in sys.argv:
-    # For the use of py2exe you have to checkout the repository.
-    # To create Windows Installers have a look at the file 'win/win-build.txt'
-    includes = ('rednotebook.gui, rednotebook.util, cairo, pango, '
-                'pangocairo, atk, gobject, gio, gtk, chardet, zlib, glib, '
-                'gtkspell')
-    excludes = ('*.exe')
-    dll_excludes = []
-    py2exeParameters = {
-                    #3 (default) don't bundle,
-                    #2: bundle everything but the Python interpreter,
-                    #1: bundle everything, including the Python interpreter
-                    #It seems that only option 3 works with PyGTK
-                    'options' : {'py2exe': {'bundle_files': 3,
-                                            'includes': includes,
-                                            'excludes': excludes,
-                                            'dll_excludes': dll_excludes,
-                                            'packages':'encodings',
-                                            #'skip_archive': 1,
-                                            'compressed': False,
-                                            }
-                                },
-                    #include library in exe
-                    'zipfile' : None,
-
-                    #windows for gui, console for cli
-                    'windows' : [{
-                                    'script': 'rednotebook/rednotebook',
-                                    'icon_resources': [(0, 'win/rednotebook.ico')],
-                                }],
-                    }
-
-    parameters['data_files'].extend([
-                                        ('files', ['rednotebook/files/main_window.glade',
-                                                   'rednotebook/files/default.cfg']),
-                                    ('images', glob(os.path.join('rednotebook', 'images', '*.png'))),
-                                    ('images/rednotebook-icon',
-                                        glob(os.path.join('rednotebook', 'images', 'rednotebook-icon', '*.png'))),
-                                    ('images/rednotebook-icon',
-                                        ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
-                                    #('.', [r'C:\GTK\libintl-8.dll']),
-                                    # Bundle the visual studio files
-                                    ("Microsoft.VC90.CRT", ['win/Microsoft.VC90.CRT.manifest', 'win/msvcr90.dll']),
-                                    ])
-    parameters.update(py2exeParameters)
 
 if __name__ == '__main__':
     # Additionally use MANIFEST.in for image files
