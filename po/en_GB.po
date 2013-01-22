@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-30 02:40+0100\n"
-"PO-Revision-Date: 2012-10-28 17:56+0000\n"
-"Last-Translator: Andi Chandler <Unknown>\n"
+"PO-Revision-Date: 2013-01-22 00:22+0000\n"
+"Last-Translator: Jared Norris <jrnorris@gmail.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-31 04:42+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-22 04:48+0000\n"
+"X-Generator: Launchpad (build 16430)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -79,12 +79,12 @@ msgstr "Strikethrough"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Clear"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Format"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:382
@@ -101,7 +101,7 @@ msgstr "Introduction"
 
 #: ../rednotebook/gui/customwidgets.py:377
 msgid "Save and insert"
-msgstr ""
+msgstr "Save and insert"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -468,7 +468,7 @@ msgstr "Check Spelling"
 
 #: ../rednotebook/gui/options.py:309
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Switch between edit and preview mode automatically"
 
 #: ../rednotebook/gui/options.py:313
 msgid "Check for new version at startup"
@@ -585,7 +585,7 @@ msgstr "Insert a manual line break"
 
 #: ../rednotebook/gui/insert_menu.py:132
 msgid "_Insert"
-msgstr ""
+msgstr "_Insert"
 
 #: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert"
@@ -597,15 +597,15 @@ msgstr "Insert images, files, links and other content"
 
 #: ../rednotebook/gui/insert_menu.py:191
 msgid "Width (optional):"
-msgstr ""
+msgstr "Width (optional):"
 
 #: ../rednotebook/gui/insert_menu.py:196
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
-msgstr ""
+msgstr "Width must be an integer."
 
 #: ../rednotebook/gui/insert_menu.py:281
 msgid "No link location has been entered"
@@ -709,15 +709,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:90
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Click on Edit above to see the difference."
 
 #: ../rednotebook/info.py:93
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Tagging is easy."
 
 #: ../rednotebook/info.py:94
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Just use #hashtags like on twitter."
 
 #: ../rednotebook/info.py:97
 msgid ""
