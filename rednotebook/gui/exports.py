@@ -49,6 +49,9 @@ class DatePage(AssistantPage):
         self.journal = journal
 
         self.all_days_button = gtk.RadioButton(label=_('Export all days'))
+        self.selected_text_button = gtk.RadioButton(
+                                    label=_('Export currently selected text'),
+                                    group=self.all_days_button)
         self.one_day_button = gtk.RadioButton(
                                     label=_('Export currently visible day'),
                                     group=self.all_days_button)
@@ -58,6 +61,7 @@ class DatePage(AssistantPage):
 
         self.pack_start(self.all_days_button, False)
         self.pack_start(self.one_day_button, False)
+        self.pack_start(self.selected_text_button, False)
         self.pack_start(self.sel_days_button, False)
 
         label1 = gtk.Label()
@@ -99,6 +103,10 @@ class DatePage(AssistantPage):
 
     def export_all_days(self):
         return self.all_days_button.get_active()
+
+
+    def export_selected_text(self):
+        return self.selected_text_button.get_active()
 
 
     def get_date_range(self):
@@ -344,7 +352,8 @@ class ExportAssistant(Assistant):
         self.path = None
 
 
-    def run(self):
+    def run(self,selected_text):
+        self.selected_text = selected_text
         self.page2.refresh_dates()
         self.page3.refresh_categories_list()
         self.show_all()
@@ -376,12 +385,14 @@ class ExportAssistant(Assistant):
             self.path = self.page4.get_selected_path()
             self.page5.prepare()
             self.export_all_days = self.page2.export_all_days()
+            self.export_selected_text = self.page2.export_selected_text()
             self.is_text_included = self.page3.is_text_included()
             self.exported_categories = self.page3.get_categories()
 
             self.page5.add_setting(_('Format'), self.exporter.NAME)
             self.page5.add_setting(_('Export all days'), self.yes_no(self.export_all_days))
             if not self.export_all_days:
+                self.page5.add_setting(_('Export selected text'), self.yes_no(self.export_selected_text))
                 start_date, end_date = self.page2.get_date_range()
                 self.page5.add_setting(_('Start date'), start_date)
                 self.page5.add_setting(_('End date'), end_date)
@@ -396,28 +407,31 @@ class ExportAssistant(Assistant):
 
 
     def get_export_string(self, format):
-        if self.export_all_days:
-            export_days = self.journal.days
+        if self.export_selected_text and self.selected_text:
+            markup_string = self.selected_text
         else:
-            export_days = self.journal.get_days_in_date_range(*self.page2.get_date_range())
+            if self.export_all_days:
+                export_days = self.journal.days
+            else:
+                export_days = self.journal.get_days_in_date_range(*self.page2.get_date_range())
 
-        selected_categories = self.exported_categories
-        logging.debug('Selected Categories for Inclusion: %s' % selected_categories)
-        include_text = self.is_text_included
+            selected_categories = self.exported_categories
+            logging.debug('Selected Categories for Inclusion: %s' % selected_categories)
+            include_text = self.is_text_included
 
-        # Save selected date format
-        date_format = self.page3.date_format.get_value()
-        self.journal.config['exportDateFormat'] = date_format
+            # Save selected date format
+            date_format = self.page3.date_format.get_value()
+            self.journal.config['exportDateFormat'] = date_format
 
-        markup_strings_for_each_day = []
-        for day in export_days:
-            date_string = dates.format_date(date_format, day.date)
-            day_markup = markup.get_markup_for_day(day, with_text=include_text,
-                                            categories=selected_categories,
-                                            date=date_string)
-            markup_strings_for_each_day.append(day_markup)
+            markup_strings_for_each_day = []
+            for day in export_days:
+                date_string = dates.format_date(date_format, day.date)
+                day_markup = markup.get_markup_for_day(day, with_text=include_text,
+                                                categories=selected_categories,
+                                                date=date_string)
+                markup_strings_for_each_day.append(day_markup)
 
-        markup_string = ''.join(markup_strings_for_each_day)
+            markup_string = ''.join(markup_strings_for_each_day)
 
         return markup.convert(markup_string, format, self.journal.dirs.data_dir,
                               options={'toc': 0})
