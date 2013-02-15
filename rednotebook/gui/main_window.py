@@ -479,11 +479,14 @@ class MainWindow(object):
 
         response = dir_chooser.run()
         # Retrieve the dir now, because it will be cleared by the call to hide().
-        new_dir = dir_chooser.get_filename().decode('utf-8')
+        new_dir = dir_chooser.get_filename()
         dir_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            return new_dir
+            if new_dir is None:
+                self.journal.show_message(_('No directory selected.'), error=True)
+                return None
+            return new_dir.decode('utf-8')
         return None
 
 
@@ -592,6 +595,10 @@ class MainWindow(object):
         self.categories_tree_view._on_add_entry_clicked(None)
 
     def set_date(self, new_month, new_date, day):
+        """
+        Notes: When switching days in edit mode almost all processing
+        time is used for highlighting the markup (searching regexes).
+        """
         self.day = day
         self.categories_tree_view.clear()
 
