@@ -3510,8 +3510,8 @@ class BlockMaster:
     def holdadd(self, line):
         if self.block().endswith('list'): line = [line]
         self.HLD[-1].append(line)
-        Debug('HOLD add: %s'%repr(line), 4)
-        Debug('FULL HOLD: %s'%self.HLD, 4)
+        #Debug('HOLD add: %s'%repr(line), 4)
+        #Debug('FULL HOLD: %s'%self.HLD, 4)
 
     def holdaddsub(self, line):
         self.HLD[-1][-1].append(line)
