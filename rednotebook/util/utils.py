@@ -20,6 +20,7 @@
 import signal
 import os
 import re
+import httplib
 from urllib2 import urlopen
 import webbrowser
 import logging
@@ -101,7 +102,7 @@ def get_new_version_number():
         new_version = match.group(1)
         logging.info('%s is the latest version' % new_version)
         return new_version
-    except IOError:
+    except (IOError, httplib.HTTPException):
         return None
 
 
