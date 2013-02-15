@@ -350,6 +350,13 @@ class ExportAssistant(Assistant):
 
         self.exporter = None
         self.path = None
+        self.set_forward_page_func(self.pageforward)
+
+    def pageforward(self,page):
+        if page == 2 and self.page2.export_selected_text():
+            return 4
+        else:
+            return page+1
 
 
     def run(self,selected_text):
@@ -394,10 +401,17 @@ class ExportAssistant(Assistant):
             if not self.export_all_days:
                 self.page5.add_setting(_('Export selected text'), self.yes_no(self.export_selected_text))
                 start_date, end_date = self.page2.get_date_range()
-                self.page5.add_setting(_('Start date'), start_date)
-                self.page5.add_setting(_('End date'), end_date)
-            is_text_included = self.yes_no(self.is_text_included)
-            self.page5.add_setting(_('Include text'), is_text_included)
+                if start_date == end_date:
+                    self.page5.add_setting(_('Date'), start_date)
+                else:
+                    self.page5.add_setting(_('Start date'), start_date)
+                    self.page5.add_setting(_('End date'), end_date)                  
+            if self.export_selected_text:
+                self.is_text_included = True
+                self.exported_categories = []
+            else:
+                is_text_included = self.yes_no(self.is_text_included)
+                self.page5.add_setting(_('Include text'), is_text_included)
             self.page5.add_setting(_('Selected tags'), ', '.join(self.exported_categories))
             self.page5.add_setting(_('Export path'), self.path)
 
