@@ -85,6 +85,8 @@ O Mobile version:
     - Vite vite project for business widgets
   - Qt for android (http://thp.io/2011/pyside-android/)
   - Django
+  - Google App Engine
+  - Heroku
   - jQuery Mobile
   - Sencha Touch
   - HTML5 + CSS3 + JS
@@ -99,6 +101,7 @@ O Markdown:
   - Allow some common markdown syntax:
     - Asterisks (*) for lists
     - Allow triple {{{ and }}} in addition to ``` for code.
+  - docutils could be extended for t2t
 
 O Use Zeitgeist for automatic category entries
   O Make Zeitgeist widget generic, so it can be reused by other projects
