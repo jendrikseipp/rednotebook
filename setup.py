@@ -108,31 +108,33 @@ cmdclass = {
 }
 
 
-parameters = {  'name'              : 'rednotebook',
-                'version'           : info.version,
-                'description'       : 'Graphical daily journal with calendar, '
-                                      'templates and keyword searching',
-                'long_description'  : info.comments,
-                'author'            : info.author,
-                'author_email'      : info.authorMail,
-                'maintainer'        : info.author,
-                'maintainer_email'  : info.authorMail,
-                'url'               : info.url,
-                'license'           : "GPL",
-                'keywords'          : "journal, diary",
-                'scripts'           : ['rednotebook/rednotebook'],
-                'packages'          : ['rednotebook', 'rednotebook.external',
-                                       'rednotebook.gui', 'rednotebook.util'],
-                'package_data'      : {'rednotebook':
-                                       ['images/*.png', 'images/rednotebook-icon/*.png',
-                                        'images/rednotebook-icon/rednotebook.svg',
-                                        'files/*.css', 'files/*.glade', 'files/*.cfg']},
-                'data_files'        : [('share/applications', ['rednotebook.desktop']),
-                                       ('share/icons/hicolor/scalable/apps',
-                                        ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
-                                      ],
-                'cmdclass'          : cmdclass,
-            }
+parameters = {
+    'name'              : 'rednotebook',
+    'version'           : info.version,
+    'description'       : 'Graphical daily journal with calendar, '
+                          'templates and keyword searching',
+    'long_description'  : info.comments,
+    'author'            : info.author,
+    'author_email'      : info.authorMail,
+    'maintainer'        : info.author,
+    'maintainer_email'  : info.authorMail,
+    'url'               : info.url,
+    'license'           : "GPL",
+    'keywords'          : "journal, diary",
+    'scripts'           : ['rednotebook/rednotebook'],
+    'packages'          : ['rednotebook', 'rednotebook.external',
+                           'rednotebook.gui', 'rednotebook.util'],
+    'package_data'      : {'rednotebook':
+                           ['images/*.png', 'images/rednotebook-icon/*.png',
+                            'images/rednotebook-icon/rednotebook.svg',
+                            'files/*.css', 'files/*.glade', 'files/*.cfg']},
+    'data_files'        : [('share/applications',
+                            ['rednotebook.desktop']),
+                           ('share/icons/hicolor/scalable/apps',
+                            ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
+                          ],
+    'cmdclass'          : cmdclass,
+}
 
 if __name__ == '__main__':
     # Additionally use MANIFEST.in for image files
