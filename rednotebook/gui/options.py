@@ -295,16 +295,6 @@ class OptionsManager(object):
             self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
                 tooltip=_('Closing the window will send RedNotebook to the tray')))
 
-        able_to_spell_check = self.main_window.day_text_field.can_spell_check()
-        tooltip = (_('Underline misspelled words') if able_to_spell_check else
-                _('Requires gtkspell.') + ' ' +
-                _('This is included in the python-gtkspell or python-gnome2-extras package'))
-        spell_check_option = TickOption(_('Check Spelling'), 'spellcheck',
-                tooltip=tooltip)
-        if not sys.platform == 'win32':
-            self.options.append(spell_check_option)
-        spell_check_option.set_sensitive(able_to_spell_check)
-
         # Automatic switching between preview and edit mode.
         self.options.append(TickOption(_('Switch between edit and preview mode automatically'),
                                        'autoSwitchMode', default_value=0))
@@ -342,9 +332,6 @@ class OptionsManager(object):
             # Apply some options
             self.main_window.cloud.update_lists()
             self.main_window.cloud.update(force_update=True)
-
-            spell_check_enabled = self.config.read('spellcheck', 0)
-            self.main_window.day_text_field.enable_spell_check(spell_check_enabled)
 
             visible = (self.config.read('closeToTray', 0) == 1)
             self.main_window.tray_icon.set_visible(visible)
