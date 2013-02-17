@@ -135,18 +135,18 @@ class ContentsPage(AssistantPage):
         self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
         self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
 
-        self.text_button = gtk.CheckButton(label=_('Include text'))
-        self.all_categories_button = gtk.RadioButton(label=_('Include all tags'))
-        self.no_categories_button = gtk.RadioButton(label=_('Do not include tags'),
-                                            group=self.all_categories_button)
-        self.sel_categories_button = gtk.RadioButton(label=_('Include only the selected tags'),
-                                            group=self.all_categories_button)
+        self.text_only_button = gtk.RadioButton(label=_('Include text only'))
+        self.text_and_tags_button = gtk.RadioButton(label=_('Include text and tags'),
+                                                    group=self.text_only_button)
+        self.tags_only_button = gtk.RadioButton(label=_('Include tags only'),
+                                                group=self.text_only_button)
+        self.filter_tags_button = gtk.CheckButton(label=_('Filter by tags'))        
 
         self.pack_start(self.date_format, False)
-        self.pack_start(self.text_button, False)
-        self.pack_start(self.all_categories_button, False)
-        self.pack_start(self.no_categories_button, False)
-        self.pack_start(self.sel_categories_button, False)
+        self.pack_start(self.text_only_button, False)
+        self.pack_start(self.text_and_tags_button, False)
+        self.pack_start(self.tags_only_button, False)
+        self.pack_start(self.filter_tags_button, False)
 
         self.available_categories = customwidgets.CustomListView([(_('Available tags'), str)])
         self.selected_categories = customwidgets.CustomListView([(_('Selected tags'), str)])
@@ -181,12 +181,8 @@ class ContentsPage(AssistantPage):
 
         self.pack_end(self.error_text, False, False)
 
-        self.text_button.set_active(True)
-
-        self.text_button.connect('toggled', self.check_selection)
-        self.all_categories_button.connect('toggled', self.check_selection)
-        self.no_categories_button.connect('toggled', self.check_selection)
-        self.sel_categories_button.connect('toggled', self.check_selection)
+        self.text_and_tags_button.set_active(True)
+        self.filter_tags_button.connect('toggled', self.check_selection)
 
 
     def refresh_categories_list(self):
@@ -240,14 +236,17 @@ class ContentsPage(AssistantPage):
 
 
     def is_text_included(self):
-        return self.text_button.get_active()
+        return self.text_only_button.get_active() or self.text_and_tags_button.get_active()
 
+    def is_tags_included(self):
+        return self.tags_only_button.get_active() or self.text_and_tags_button.get_active()
 
+    def is_filtered(self):
+        return self.filter_tags_button.get_active()
+    
     def get_categories(self):
-        if self.all_categories_button.get_active():
+        if not self.filter_tags_button.get_active():
             return self.journal.categories
-        elif self.no_categories_button.get_active():
-            return []
         else:
             selected_categories = []
             model_selected = self.selected_categories.get_model()
@@ -267,7 +266,7 @@ class ContentsPage(AssistantPage):
             self.set_error_text('')
             correct = True
 
-        select = self.sel_categories_button.get_active()
+        select = self.filter_tags_button.get_active()
         self.available_categories.set_sensitive(select)
         self.selected_categories.set_sensitive(select)
         self.select_button.set_sensitive(select)
@@ -383,7 +382,12 @@ class ExportAssistant(Assistant):
             self.exporter = self.page1.get_selected_object()
         elif page == self.page3:
             # Categories
-            pass
+            start_date, end_date = self.page2.get_date_range()
+            if not self.page2.export_all_days() and start_date == end_date:
+                self.page3.filter_tags_button.set_active(False)
+                self.page3.filter_tags_button.set_sensitive(False)
+            else:
+                self.page3.filter_tags_button.set_sensitive(True)
         elif page == self.page4:
             # Path
             self.page4.prepare(self.exporter)
@@ -394,6 +398,8 @@ class ExportAssistant(Assistant):
             self.export_all_days = self.page2.export_all_days()
             self.export_selected_text = self.page2.export_selected_text()
             self.is_text_included = self.page3.is_text_included()
+            self.is_tags_included = self.page3.is_tags_included()
+            self.is_filtered = self.page3.is_filtered()
             self.exported_categories = self.page3.get_categories()
 
             self.page5.add_setting(_('Format'), self.exporter.NAME)
@@ -412,7 +418,10 @@ class ExportAssistant(Assistant):
             else:
                 is_text_included = self.yes_no(self.is_text_included)
                 self.page5.add_setting(_('Include text'), is_text_included)
-            self.page5.add_setting(_('Selected tags'), ', '.join(self.exported_categories))
+                is_tags_included = self.yes_no(self.is_tags_included)
+                self.page5.add_setting(_('Include tags'), is_tags_included)
+            if self.is_filtered:
+                self.page5.add_setting(_('Filtered tags'), ', '.join(self.exported_categories))
             self.page5.add_setting(_('Export path'), self.path)
 
 
@@ -432,6 +441,7 @@ class ExportAssistant(Assistant):
             selected_categories = self.exported_categories
             logging.debug('Selected Categories for Inclusion: %s' % selected_categories)
             include_text = self.is_text_included
+            include_tags = self.is_tags_included
 
             # Save selected date format
             date_format = self.page3.date_format.get_value()
@@ -439,11 +449,20 @@ class ExportAssistant(Assistant):
 
             markup_strings_for_each_day = []
             for day in export_days:
-                date_string = dates.format_date(date_format, day.date)
-                day_markup = markup.get_markup_for_day(day, with_text=include_text,
-                                                categories=selected_categories,
-                                                date=date_string)
-                markup_strings_for_each_day.append(day_markup)
+                include_day = True
+                if self.is_filtered:
+                    include_day = False
+                    catagory_pairs = day.get_category_content_pairs()
+                    for category in selected_categories:
+                        if catagory_pairs.has_key(category):
+                            include_day = True
+                if include_day:
+                    date_string = dates.format_date(date_format, day.date)
+                    day_markup = markup.get_markup_for_day(day, with_text=include_text,
+                                                           with_tags = include_tags,
+                                                           categories=selected_categories,
+                                                           date=date_string)
+                    markup_strings_for_each_day.append(day_markup)
 
             markup_string = ''.join(markup_strings_for_each_day)
 

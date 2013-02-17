@@ -106,7 +106,6 @@ class MainWindow(object):
                 for action in actiongroup.list_actions():
                     if action.get_name() == 'CheckSpelling':
                         action.set_sensitive(can_spell_check)
-                        print int(spell_check_enabled)
                         action.set_active(int(spell_check_enabled))
         self.day_text_field.enable_spell_check(spell_check_enabled)
 
