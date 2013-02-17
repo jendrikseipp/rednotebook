@@ -259,7 +259,7 @@ class Editor(object):
 
     def is_spell_check_enabled(self):
         """Returns True if spell check is enabled"""
-        return self._spell_checker != None
+        return self._spell_checker is not None
 
     #===========================================================
 
@@ -280,7 +280,7 @@ class Editor(object):
 
         uris = selection.data.strip('\r\n\x00')
         logging.debug('URIs: "%s"' % uris)
-        uris = uris.split() # we may have more than one file dropped
+        uris = uris.split()  # we may have more than one file dropped
         uris = map(lambda uri: uri.strip(), uris)
         for uri in uris:
             uri = urllib.url2pathname(uri)

@@ -113,7 +113,7 @@ class FormatMenu(object):
              '<Control>R', None, self.on_clear_format),
             ### Translators: Noun
             ('FormatMenuBar', None, _('_Format')),
-             ]
+        ]
 
         actiongroup.add_actions(actions)
 

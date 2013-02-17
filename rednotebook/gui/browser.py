@@ -84,13 +84,13 @@ class HtmlPrinter(object):
     "A non-interactive tool for converting any given website to PDF"
     (http://github.com/eeejay/interwibble/)
     """
-    PAPER_SIZES = {'a3'     : gtk.PAPER_NAME_A3,
-                   'a4'     : gtk.PAPER_NAME_A4,
-                   'a5'     : gtk.PAPER_NAME_A5,
-                   'b5'     : gtk.PAPER_NAME_B5,
-                   'executive' : gtk.PAPER_NAME_EXECUTIVE,
-                   'legal'   : gtk.PAPER_NAME_LEGAL,
-                   'letter' : gtk.PAPER_NAME_LETTER}
+    PAPER_SIZES = {'a3': gtk.PAPER_NAME_A3,
+                   'a4': gtk.PAPER_NAME_A4,
+                   'a5': gtk.PAPER_NAME_A5,
+                   'b5': gtk.PAPER_NAME_B5,
+                   'executive': gtk.PAPER_NAME_EXECUTIVE,
+                   'legal': gtk.PAPER_NAME_LEGAL,
+                   'letter': gtk.PAPER_NAME_LETTER}
 
     def __init__(self, paper='a4'):
         self._webview = Browser()
@@ -254,7 +254,7 @@ if __name__ == '__main__':
 
     win = gtk.Window()
     win.connect("destroy", lambda w: gtk.main_quit())
-    win.set_default_size(600,400)
+    win.set_default_size(600, 400)
 
     vbox = gtk.VBox()
 

@@ -313,13 +313,13 @@ class OptionsManager(object):
         self.options.append(check_version_option)
 
         self.options.extend([
-                FontSizeOption(_('Font Size'), 'mainFontSize'),
-                DateFormatOption(_('Date/Time format'), 'dateTimeString'),
-                CsvTextOption(_('Exclude from cloud'), 'cloudIgnoreList',
-                                tooltip=_('Do not show these comma separated words in the word cloud')),
-                CsvTextOption(_('Include small words in cloud'), 'cloudIncludeList',
-                                tooltip=_('Allow these words with 4 letters or less')),
-                ])
+            FontSizeOption(_('Font Size'), 'mainFontSize'),
+            DateFormatOption(_('Date/Time format'), 'dateTimeString'),
+            CsvTextOption(_('Exclude from cloud'), 'cloudIgnoreList',
+                          tooltip=_('Do not show these comma separated words in the word cloud')),
+            CsvTextOption(_('Include small words in cloud'), 'cloudIncludeList',
+                          tooltip=_('Allow these words with 4 letters or less')),
+        ])
 
 
         self.add_all_options()
@@ -355,4 +355,3 @@ class OptionsManager(object):
             else:
                 # We don't save the autostart setting in the config file
                 option.set()
-

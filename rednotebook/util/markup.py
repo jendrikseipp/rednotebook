@@ -168,7 +168,7 @@ def get_markup_for_day(day, with_text=True, categories=None, date=None):
 
     if categories:
         categories = [word.lower() for word in categories]
-        export_categories = dict((x,y) for (x, y) in category_content_pairs.items()
+        export_categories = dict((x, y) for (x, y) in category_content_pairs.items()
                                  if x.lower() in categories)
     elif categories is None:
         # No restrictions
@@ -369,13 +369,13 @@ def convert(txt, target, data_dir, headers=None, options=None):
 
     # Let's do the conversion
     try:
-        headers   = txt2tags.doHeader(headers, config)
+        headers = txt2tags.doHeader(headers, config)
         body, toc = txt2tags.convert(txt, config)
-        footer  = txt2tags.doFooter(config)
+        footer = txt2tags.doFooter(config)
         toc = txt2tags.toc_tagger(toc, config)
         toc = txt2tags.toc_formatter(toc, config)
-        full_doc  = headers + toc + body + footer
-        finished  = txt2tags.finish_him(full_doc, config)
+        full_doc = headers + toc + body + footer
+        finished = txt2tags.finish_him(full_doc, config)
         result = '\n'.join(finished)
     # Txt2tags error, show the messsage to the user
     except txt2tags.error, msg:
@@ -421,8 +421,8 @@ def convert_to_pango(txt, headers=None, options=None):
     # Let's do the conversion
     try:
         body, toc = txt2tags.convert(txt, config)
-        full_doc  = body
-        finished  = txt2tags.finish_him(full_doc, config)
+        full_doc = body
+        finished = txt2tags.finish_him(full_doc, config)
         result = ''.join(finished)
 
     # Txt2tags error, show the messsage to the user
@@ -460,14 +460,15 @@ def convert_to_pango(txt, headers=None, options=None):
 
 def convert_from_pango(pango_markup):
     original_txt = pango_markup
-    replacements = dict((('<b>', '**'), ('</b>', '**'),
-                        ('<i>', '//'), ('</i>', '//'),
-                        ('<s>', '--'), ('</s>', '--'),
-                        ('<u>', '__'), ('</u>', '__'),
-                        ('&amp;', '&'),
-                        ('&lt;', '<'), ('&gt;', '>'),
-                        ('\n', r'\\'),
-                        ))
+    replacements = dict((
+        ('<b>', '**'), ('</b>', '**'),
+        ('<i>', '//'), ('</i>', '//'),
+        ('<s>', '--'), ('</s>', '--'),
+        ('<u>', '__'), ('</u>', '__'),
+        ('&amp;', '&'),
+        ('&lt;', '<'), ('&gt;', '>'),
+        ('\n', r'\\'),
+    ))
     for orig, repl in replacements.items():
         pango_markup = pango_markup.replace(orig, repl)
 

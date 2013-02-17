@@ -36,7 +36,7 @@ from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
-                                    RadioButtonPage, PathChooserPage, Assistant
+    RadioButtonPage, PathChooserPage, Assistant
 from rednotebook.gui import browser
 from rednotebook.gui import options
 
@@ -50,14 +50,14 @@ class DatePage(AssistantPage):
 
         self.all_days_button = gtk.RadioButton(label=_('Export all days'))
         self.selected_text_button = gtk.RadioButton(
-                                    label=_('Export currently selected text'),
-                                    group=self.all_days_button)
+            label=_('Export currently selected text'),
+            group=self.all_days_button)
         self.one_day_button = gtk.RadioButton(
-                                    label=_('Export currently visible day'),
-                                    group=self.all_days_button)
+            label=_('Export currently visible day'),
+            group=self.all_days_button)
         self.sel_days_button = gtk.RadioButton(
-                    label=_('Export days in the selected time range'),
-                    group=self.all_days_button)
+            label=_('Export days in the selected time range'),
+            group=self.all_days_button)
 
         self.pack_start(self.all_days_button, False)
         self.pack_start(self.one_day_button, False)
@@ -203,7 +203,7 @@ class ContentsPage(AssistantPage):
         selection = self.available_categories.get_selection()
         nb_selected, selected_iter = selection.get_selected()
 
-        if selected_iter != None :
+        if selected_iter is not None:
             model_available = self.available_categories.get_model()
             model_selected = self.selected_categories.get_model()
 
@@ -221,7 +221,7 @@ class ContentsPage(AssistantPage):
         selection = self.selected_categories.get_selection()
         nb_selected, selected_iter = selection.get_selected()
 
-        if selected_iter != None :
+        if selected_iter is not None:
             model_available = self.available_categories.get_model()
             model_selected = self.selected_categories.get_model()
 
@@ -352,19 +352,17 @@ class ExportAssistant(Assistant):
         self.path = None
         self.set_forward_page_func(self.pageforward)
 
-    def pageforward(self,page):
+    def pageforward(self, page):
         if page == 2 and self.page2.export_selected_text():
             return 4
         else:
-            return page+1
+            return page + 1
 
-
-    def run(self,selected_text):
+    def run(self, selected_text):
         self.selected_text = selected_text
         self.page2.refresh_dates()
         self.page3.refresh_categories_list()
         self.show_all()
-
 
     def _on_close(self, assistant):
         '''
@@ -372,7 +370,6 @@ class ExportAssistant(Assistant):
         '''
         self.hide()
         self.export()
-
 
     def _on_prepare(self, assistant, page):
         '''
@@ -413,10 +410,8 @@ class ExportAssistant(Assistant):
             self.page5.add_setting(_('Selected tags'), ', '.join(self.exported_categories))
             self.page5.add_setting(_('Export path'), self.path)
 
-
     def yes_no(self, value):
         return _('Yes') if value else _('No')
-
 
     def get_export_string(self, format):
         if self.export_selected_text and self.selected_text:
@@ -509,14 +504,8 @@ class Exporter(object):
 
     @property
     def DEFAULTPATH(self):
-        return os.path.join(os.path.expanduser('~'), 'RedNotebook-Export_%s.%s' %
-                                (datetime.date.today(), self.EXTENSION))
-
-
-
-
-
-
+        return os.path.join(os.path.expanduser('~'),
+            'RedNotebook-Export_%s.%s' % (datetime.date.today(), self.EXTENSION))
 
 
 class PlainTextExporter(Exporter):
@@ -551,7 +540,7 @@ class PdfExporter(Exporter):
         if self.is_available():
             return ''
         else:
-            return '(' + _('requires pywebkitgtk') +')'
+            return '(' + _('requires pywebkitgtk') + ')'
 
     @classmethod
     def is_available(cls):
@@ -579,4 +568,3 @@ if __name__ == '__main__':
     assistant.set_position(gtk.WIN_POS_CENTER)
     assistant.run()
     gtk.main()
-

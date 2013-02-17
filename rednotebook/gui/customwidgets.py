@@ -132,20 +132,21 @@ class Calendar(gtk.Calendar):
         self.select_day(1)
 
         # PyGTK calendars show months in range [0,11]
-        self.select_month(date.month-1, date.year)
+        self.select_month(date.month - 1, date.year)
 
         # Select the day after the month and year have been set
         self.select_day(date.day)
 
     def get_date(self):
         year, month, day = gtk.Calendar.get_date(self)
-        return datetime.date(year, month+1, day)
+        return datetime.date(year, month + 1, day)
 
 
 # gtk.InfoBar is available in gtk+ >= 2.22
 if hasattr(gtk, 'InfoBar'):
     class Info(gtk.InfoBar):
         icons = {gtk.MESSAGE_ERROR: gtk.STOCK_DIALOG_ERROR}
+
         def __init__(self, *args, **kwargs):
             gtk.InfoBar.__init__(self, *args, **kwargs)
             self.title_label = gtk.Label()
@@ -247,7 +248,7 @@ class RadioButtonPage(AssistantPage):
         if tooltip:
             description = gtk.Label()
             description.set_alignment(0.0, 0.5)
-            description.set_markup(' '*5 + tooltip)
+            description.set_markup(' ' * 5 + tooltip)
             description.set_sensitive(sensitive)
             self.pack_start(description, False, False)
 

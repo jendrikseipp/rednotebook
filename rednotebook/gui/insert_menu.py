@@ -128,7 +128,7 @@ class InsertMenu(object):
                 _('Insert a manual line break'),
                 self.get_insert_handler(lambda sel_text: '\\\\\n')),
             ('InsertMenuBar', None, _('_Insert')),
-            ])
+        ])
 
         # Add the actiongroup to the uimanager
         uimanager.insert_action_group(self.main_window.insert_actiongroup, 0)
@@ -142,7 +142,7 @@ class InsertMenu(object):
         image_items = 'Picture Link BulletList Title Line Date LineBreak Table'.split()
 
         for item in image_items:
-            menu_item = uimanager.get_widget('/InsertMenu/'+ item)
+            menu_item = uimanager.get_widget('/InsertMenu/' + item)
             filename = item.lower()
             # We may have disabled menu items
             if menu_item:

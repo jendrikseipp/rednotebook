@@ -93,12 +93,8 @@ class Pattern(object):
             flag = 0
 
             for char in flags:
-                if char == 'M': flag |= re.M
-                if char == 'L': flag |= re.L
-                if char == 'S': flag |= re.S
-                if char == 'I': flag |= re.I
-                if char == 'U': flag |= re.U
-                if char == 'X': flag |= re.X
+                assert char in 'MLSIUX'
+                flag |= getattr(re, char)
 
             self._regexp = re.compile(pattern_or_regex, flag)
         else:
@@ -107,7 +103,8 @@ class Pattern(object):
 
     def __call__(self, txt, start, end):
         m = self._regexp.search(txt)
-        if not m: return None
+        if not m:
+            return None
 
         tags = TagGroup()
 
@@ -116,8 +113,10 @@ class Pattern(object):
             if not group_matched:
                 continue
             mstart, mend = m.start(group), m.end(group)
-            s = start.copy(); s.forward_chars(mstart)
-            e = start.copy(); e.forward_chars(mend)
+            s = start.copy()
+            s.forward_chars(mstart)
+            e = start.copy()
+            e.forward_chars(mend)
             tag = Tag(s, e, tag_name, self.name)
             tags.append(tag)
 
@@ -252,41 +251,40 @@ class MarkupBuffer(gtk.TextBuffer):
 # additional style definitions:
 # the update_syntax() method of CodeBuffer allows you to define new and modify
 # already defined styles. Think of it like CSS.
-styles = {  'bold':             {'weight': pango.WEIGHT_BOLD},
-            'italic':           {   # Just to be sure we leave this in
-                                    'style': pango.STYLE_ITALIC,
-                                    # The font:Italic is actually needed
-                                    #'font': 'Italic',
-                                    },
-            'underline':        {'underline': pango.UNDERLINE_SINGLE},
-            'strikethrough':    {'strikethrough': True},
-            'gray':             {'foreground': 'gray'},
-            'red':              {'foreground': 'red'},
-            'green':            {'foreground': 'darkgreen'},
-            'raw':              {'font': 'Oblique'},
-            'verbatim':         {'font': 'monospace'},
-            'tagged':           {},
-            'link':             {'foreground': 'blue',
-                                'underline': pango.UNDERLINE_SINGLE,},
-            'highlight':        {'background': 'yellow'},
-            'quote':            {'background': 'gray'},
-            'tablehead':        {'background': markup.TABLE_HEAD_BG},
-            'tablerow':         {'background': '#eee'},
-            'formula':          {'style': pango.STYLE_ITALIC, 'family': 'serif'}
-            }
+styles = {
+    'bold':             {'weight': pango.WEIGHT_BOLD},
+    'italic':           {'style': pango.STYLE_ITALIC},
+    'underline':        {'underline': pango.UNDERLINE_SINGLE},
+    'strikethrough':    {'strikethrough': True},
+    'gray':             {'foreground': 'gray'},
+    'red':              {'foreground': 'red'},
+    'green':            {'foreground': 'darkgreen'},
+    'raw':              {'font': 'Oblique'},
+    'verbatim':         {'font': 'monospace'},
+    'tagged':           {},
+    'link':             {'foreground': 'blue',
+                         'underline': pango.UNDERLINE_SINGLE},
+    'highlight':        {'background': 'yellow'},
+    'quote':            {'background': 'gray'},
+    'tablehead':        {'background': markup.TABLE_HEAD_BG},
+    'tablerow':         {'background': '#eee'},
+    'formula':          {'style': pango.STYLE_ITALIC, 'family': 'serif'}
+}
+
 def add_header_styles():
     sizes = [
-            pango.SCALE_XX_LARGE,
-            pango.SCALE_X_LARGE,
-            pango.SCALE_LARGE,
-            pango.SCALE_MEDIUM,
-            pango.SCALE_SMALL,
-            ]
+        pango.SCALE_XX_LARGE,
+        pango.SCALE_X_LARGE,
+        pango.SCALE_LARGE,
+        pango.SCALE_MEDIUM,
+        pango.SCALE_SMALL,
+    ]
     for level, size in enumerate(sizes):
         style = {'weight': pango.WEIGHT_ULTRABOLD,
                 'scale': size}
-        name = 'title%s' % (level+1)
+        name = 'title%s' % (level + 1)
         styles[name] = style
+
 add_header_styles()
 
 # Syntax definition
@@ -306,8 +304,8 @@ def get_pattern(char, style):
     return Pattern(regex, group_style_pairs, name=style)
 
 
-list    = Pattern(r"^ *(\-) [^ ].*$", [(1, 'red'), (1, 'bold')], name='list')
-numlist = Pattern(r"^ *(\+) [^ ].*$", [(1, 'red'), (1, 'bold')], name='numlist')
+bullet_list = Pattern(r"^ *(\-) [^ ].*$", [(1, 'red'), (1, 'bold')], name='list')
+number_list = Pattern(r"^ *(\+) [^ ].*$", [(1, 'red'), (1, 'bold')], name='numlist')
 
 comment = Pattern(r'^(\%.*)$', [(1, 'gray')])
 
@@ -317,12 +315,12 @@ title_patterns = []
 title_style = [(1, 'gray'), (3, 'gray'), (4, 'gray')]
 titskel = r'^ *(%s)(%s)(\1)(\[[\w-]*\])?\s*$'
 for level in range(1, 6):
-    title_pattern    = titskel % ('[=]{%s}'%(level),'[^=]|[^=].*[^=]')
-    numtitle_pattern = titskel % ('[+]{%s}'%(level),'[^+]|[^+].*[^+]')
+    normal_title_pattern = titskel % ('[=]{%s}' % (level), '[^=]|[^=].*[^=]')
+    number_title_pattern = titskel % ('[+]{%s}' % (level), '[^+]|[^+].*[^+]')
     style_name = 'title%s' % level
-    title = Pattern(title_pattern, title_style + [(2, style_name)])
-    numtitle = Pattern(numtitle_pattern, title_style + [(2, style_name)])
-    title_patterns += [title, numtitle]
+    normal_title = Pattern(normal_title_pattern, title_style + [(2, style_name)])
+    number_title = Pattern(number_title_pattern, title_style + [(2, style_name)])
+    title_patterns += [normal_title, number_title]
 
 linebreak = Pattern(r'(%s)' % markup.REGEX_LINEBREAK, [(1, 'gray')])
 
@@ -353,27 +351,27 @@ hashtag = Pattern(HASHTAG, [(2, 'red'), (3, 'red')])
 
 
 patterns = [
-        get_pattern('\*', 'bold'),
-        get_pattern('_', 'underline'),
-        get_pattern('/', 'italic'),
-        get_pattern('-', 'strikethrough'),
-        list,
-        numlist,
-        comment,
-        line,
-        get_pattern('"', 'raw'),
-        get_pattern('`', 'verbatim'),
-        get_pattern("'", 'tagged'),
-        linebreak,
-        pic,
-        named_link,
-        link,
-        quote,
-        table_head,
-        table_row,
-        formula,
-        hashtag,
-        ] + title_patterns
+    get_pattern('\*', 'bold'),
+    get_pattern('_', 'underline'),
+    get_pattern('/', 'italic'),
+    get_pattern('-', 'strikethrough'),
+    bullet_list,
+    number_list,
+    comment,
+    line,
+    get_pattern('"', 'raw'),
+    get_pattern('`', 'verbatim'),
+    get_pattern("'", 'tagged'),
+    linebreak,
+    pic,
+    named_link,
+    link,
+    quote,
+    table_head,
+    table_row,
+    formula,
+    hashtag,
+] + title_patterns
 
 
 def get_highlight_buffer():
@@ -458,7 +456,7 @@ www.heise.de, andy@web.de
     win.add(vbox)
     scr.add(gtk.TextView(buff))
 
-    win.set_default_size(900,1000)
+    win.set_default_size(900, 1000)
     win.set_position(gtk.WIN_POS_CENTER)
     win.show_all()
     win.connect("destroy", lambda w: gtk.main_quit())
