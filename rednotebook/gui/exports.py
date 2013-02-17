@@ -393,7 +393,7 @@ class ExportAssistant(Assistant):
             self.page5.prepare()
             self.export_all_days = self.page2.export_all_days()
             self.export_selected_text = self.page2.export_selected_text()
-            self.is_text_included = self.page3.is_text_included()
+            is_text_included = self.page3.is_text_included() or self.export_selected_text
             self.exported_categories = self.page3.get_categories()
 
             self.page5.add_setting(_('Format'), self.exporter.NAME)
@@ -405,13 +405,11 @@ class ExportAssistant(Assistant):
                     self.page5.add_setting(_('Export selected text only'), self.yes_no(self.export_selected_text))
                 else:
                     self.page5.add_setting(_('Start date'), start_date)
-                    self.page5.add_setting(_('End date'), end_date)                  
+                    self.page5.add_setting(_('End date'), end_date)
             if self.export_selected_text:
-                self.is_text_included = True
                 self.exported_categories = []
             else:
-                is_text_included = self.yes_no(self.is_text_included)
-                self.page5.add_setting(_('Include text'), is_text_included)
+                self.page5.add_setting(_('Include text'), self.yes_no(is_text_included))
             self.page5.add_setting(_('Selected tags'), ', '.join(self.exported_categories))
             self.page5.add_setting(_('Export path'), self.path)
 
@@ -431,7 +429,6 @@ class ExportAssistant(Assistant):
 
             selected_categories = self.exported_categories
             logging.debug('Selected Categories for Inclusion: %s' % selected_categories)
-            include_text = self.is_text_included
 
             # Save selected date format
             date_format = self.page3.date_format.get_value()
@@ -440,9 +437,10 @@ class ExportAssistant(Assistant):
             markup_strings_for_each_day = []
             for day in export_days:
                 date_string = dates.format_date(date_format, day.date)
-                day_markup = markup.get_markup_for_day(day, with_text=include_text,
-                                                categories=selected_categories,
-                                                date=date_string)
+                day_markup = markup.get_markup_for_day(day,
+                        with_text=self.page3.is_text_included(),
+                        categories=selected_categories,
+                        date=date_string)
                 markup_strings_for_each_day.append(day_markup)
 
             markup_string = ''.join(markup_strings_for_each_day)
