@@ -14,6 +14,8 @@ if [ $NOTHING_FOUND == 0 ]; then
     echo Pyflake found errors.
     exit 1
 fi
+PEP8_OPTS="--ignore=E128,E302,E303 --max-line-length=120"
+pep8 $PEP8_OPTS --exclude=*external* rednotebook
 
 rm -rf dist/
 
