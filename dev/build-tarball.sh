@@ -14,8 +14,18 @@ if [ $NOTHING_FOUND == 0 ]; then
     echo Pyflake found errors.
     exit 1
 fi
-PEP8_OPTS="--ignore=E128,E302,E303 --max-line-length=120"
+
+# Check for PEP8 errors:
+# E302: expected 2 blank lines, found 1
+# E303: too many blank lines
+# E241: multiple spaces after ':' (for t2t_highlight.py)
+# E128: continuation line under-indented for visual indent
+PEP8_OPTS="--ignore=E302,E303,E241,E128 --max-line-length=120"
 pep8 $PEP8_OPTS --exclude=*external* rednotebook
+if [ $? == 1 ]; then
+    echo PEP8 errors detected.
+    exit 1
+fi
 
 rm -rf dist/
 
