@@ -83,7 +83,7 @@ def get_text_with_dots(text, start, end, found_text=None):
 
 
 class Day(object):
-    def __init__(self, month, day_number, day_content = None):
+    def __init__(self, month, day_number, day_content=None):
         if day_content is None:
             day_content = {'text': u''}
 
@@ -110,7 +110,7 @@ class Day(object):
         if 'text' in self.content:
             return self.content['text'].decode('utf-8')
         else:
-           return ''
+            return ''
 
     def _set_text(self, text):
         self.content['text'] = text
@@ -248,7 +248,8 @@ class Day(object):
 
         found_text = self.text[occurence:occurence + len(search_text)]
         result_text = get_text_with_dots(self.text, occurence,
-                                    occurence + len(search_text), found_text)
+                                         occurence + len(search_text),
+                                         found_text)
         return result_text
 
 
@@ -276,8 +277,8 @@ class Day(object):
 
 
 class Month(object):
-    def __init__(self, year_number, month_number, month_content = None):
-        if month_content == None:
+    def __init__(self, year_number, month_number, month_content=None):
+        if month_content is None:
             month_content = {}
 
         self.edited = False
@@ -310,11 +311,11 @@ class Month(object):
         return True
 
     def same_month(date1, date2):
-        if date1 == None or date2 == None:
+        if date1 is None or date2 is None:
             return False
         return date1.month == date2.month and date1.year == date2.year
     same_month = staticmethod(same_month)
 
     def __cmp__(self, other):
         return cmp((self.year_number, self.month_number),
-                    (other.year_number, other.month_number))
+                   (other.year_number, other.month_number))

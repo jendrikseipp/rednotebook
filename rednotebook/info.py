@@ -82,8 +82,8 @@ rtm = _('Remember the milk')
 dishes = _('Wash the dishes')
 
 greeting = _('Hello!')
-intro=_('Some example text has been added to help you start and '
-'you can erase it whenever you like.')
+intro = _('Some example text has been added to help you start and '
+          'you can erase it whenever you like.')
 ### Translators: "Help" -> noun
 help_par = _('The example text and more documentation is available under "Help" -> "Contents".')
 

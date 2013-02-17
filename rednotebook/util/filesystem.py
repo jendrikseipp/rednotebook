@@ -39,9 +39,9 @@ def get_utf8_path(path):
 
 #from http://www.py2exe.org/index.cgi/HowToDetermineIfRunningFromExe
 def main_is_frozen():
-    return (hasattr(sys, "frozen") or # new py2exe
-        hasattr(sys, "importers") # old py2exe
-        or imp.is_frozen("__main__")) # tools/freeze
+    return (hasattr(sys, "frozen") or  # new py2exe
+        hasattr(sys, "importers")  # old py2exe
+        or imp.is_frozen("__main__"))  # tools/freeze
 
 
 if main_is_frozen():
@@ -115,12 +115,13 @@ class Filenames(dict):
 
 
     def __getattribute__(self, attr):
-        user_paths = dict((('template_dir', 'templates'),
-                        ('temp_dir', 'tmp'),
-                        ('default_data_dir', 'data'),
-                        ('config_file', 'configuration.cfg'),
-                        ('log_file', 'rednotebook.log'),
-                        ))
+        user_paths = dict((
+            ('template_dir', 'templates'),
+            ('temp_dir', 'tmp'),
+            ('default_data_dir', 'data'),
+            ('config_file', 'configuration.cfg'),
+            ('log_file', 'rednotebook.log'),
+        ))
 
         if attr in user_paths:
             return os.path.join(self.journal_user_dir, user_paths.get(attr))
@@ -243,12 +244,12 @@ def get_platform_info():
     import yaml
 
     functions = [platform.machine, platform.platform, platform.processor,
-                platform.python_version, platform.release, platform.system,]
+                 platform.python_version, platform.release, platform.system]
     names_values = [(func.__name__, func()) for func in functions]
 
     lib_values = [('GTK version', gtk, 'gtk_version'),
-                    ('PyGTK version', gtk, 'pygtk_version'),
-                    ('Yaml version', yaml, '__version__'),]
+                  ('PyGTK version', gtk, 'pygtk_version'),
+                  ('Yaml version', yaml, '__version__')]
 
     for name, object, value in lib_values:
         try:
@@ -306,7 +307,7 @@ def unquote_url(url):
 
 def _open_url_with_call(url, prog):
     try:
-        logging.info( 'Trying to open %s with %s' % (url, prog))
+        logging.info('Trying to open %s with %s' % (url, prog))
         system_call([prog, url])
     except (OSError, subprocess.CalledProcessError):
         logging.exception('Opening %s with %s failed' % (url, prog))

@@ -133,11 +133,11 @@ class MainMenuBar(object):
                 'F11', None, self.on_fullscreen_menuitem_activate),
             ('Find', gtk.STOCK_FIND, None,
                 None, None, self.on_find_menuitem_activate),
-            ])
+        ])
         actiongroup.add_toggle_actions([
             ('CheckSpelling', gtk.STOCK_SPELL_CHECK, None,
                 'F7', _('Underline misspelled words'), self.on_checkspelling_menuitem_toggled),
-            ])
+        ])
         actiongroup.add_actions([
             ('Options', gtk.STOCK_PREFERENCES, None,
                 '<Ctrl><Alt>p', None, self.on_options_menuitem_activate),
@@ -154,7 +154,7 @@ class MainMenuBar(object):
                 self.on_report_bug),
             ('Info', gtk.STOCK_ABOUT, None,
                 None, None, self.on_info_activate),
-            ])
+        ])
         return actiongroup
 
     def setup(self):
@@ -301,8 +301,8 @@ class MainMenuBar(object):
         self.info_dialog.set_website_label(info.url)
         self.info_dialog.set_authors(info.developers)
         # TODO: Use svg again once it's fixed under Windows.
-        self.info_dialog.set_logo(gtk.gdk.pixbuf_new_from_file(
-                os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rn-192.png')))
+        img_path = os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rn-192.png')
+        self.info_dialog.set_logo(gtk.gdk.pixbuf_new_from_file(img_path))
         self.info_dialog.set_license(info.license_text)
         self.info_dialog.run()
         self.info_dialog.hide()

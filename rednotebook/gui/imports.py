@@ -68,9 +68,10 @@ class SummaryPage(AssistantPage):
 
 
     def prepare(self, type, path):
-        parts = [   _('Import type:') + ' <b>' + type + '</b>\n',
-                    _('Path:') + ' <b>' + path + '</b>\n\n',
-                    _('The following contents will be imported:')]
+        parts = [
+            _('Import type:') + ' <b>' + type + '</b>\n',
+            _('Path:') + ' <b>' + path + '</b>\n\n',
+            _('The following contents will be imported:')]
         self.set_header(''.join(parts))
         self.clear()
 
@@ -377,7 +378,7 @@ if __name__ == '__main__':
     assistant.run()
     gtk.main()
 
-    a = ImportDay(2010,5,7)
+    a = ImportDay(2010, 5, 7)
     a.text = 'a_text'
     a.add_category_entry('c1', 'e1')
     a.add_category_entry('c2', 'e2')
@@ -385,7 +386,7 @@ if __name__ == '__main__':
 
     print a.content
 
-    b = ImportDay(2010,5,7)
+    b = ImportDay(2010, 5, 7)
     b.text = 'b_text'
     b.add_category_entry('c1', 'e1')
     b.add_category_entry('c2', 'e3')
@@ -398,8 +399,8 @@ if __name__ == '__main__':
     assert a_tree == a.content
 
     assert a.text == 'a_text\n\nb_text'
-    assert a.tree == {'c1': {'e1': None}, 'c2': {'e2': None, 'e3':None},
-            'c4': {'e5': None}, 'c3': {'e4': None},}, a.tree
+    assert a.tree == {'c1': {'e1': None}, 'c2': {'e2': None, 'e3': None},
+            'c4': {'e5': None}, 'c3': {'e4': None}}, a.tree
 
     print 'ALL TESTS SUCCEEDED'
 

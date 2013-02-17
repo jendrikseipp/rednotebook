@@ -131,5 +131,10 @@ def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journa
                     frame.show_save_error_dialog(exit_imminent)
                 except IOError:
                     frame.show_save_error_dialog(exit_imminent)
-            os.chmod(month_file_string, stat.S_IRUSR | stat.S_IWUSR)
+            try:
+                # Make file readable and writable only by the owner.
+                os.chmod(month_file_string, stat.S_IRUSR | stat.S_IWUSR)
+            except OSError:
+                pass
+
     return something_saved

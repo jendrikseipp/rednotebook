@@ -79,7 +79,7 @@ class CategoriesTreeView(object):
 
         # Enable a context menu
         self.context_menu = self._get_context_menu()
-        self.context_menu.attach_to_widget(self.tree_view, lambda x,y:None)
+        self.context_menu.attach_to_widget(self.tree_view, lambda x, y: None)
 
         self.tree_view.connect('button-press-event', self.on_button_press_event)
         self.tree_view.connect('key-press-event', self.on_key_press_event)
@@ -163,7 +163,7 @@ class CategoriesTreeView(object):
             if key is not None:
                 key_pango = markup.convert_to_pango(key)
             new_child = self.tree_store.append(parent, [key_pango])
-            if not value == None:
+            if not value is None:
                 self.add_element(new_child, value)
 
     def set_day_content(self, day):
@@ -370,7 +370,7 @@ class CategoriesTreeView(object):
         """
         #Get the path at the specific mouse position
         path = widget.get_path_at_pos(int(event.x), int(event.y))
-        if (path == None):
+        if (path is None):
             """If we didn't get a path then we don't want anything
             to be selected."""
             selection = widget.get_selection()
@@ -405,19 +405,13 @@ class CategoriesTreeView(object):
 
         # Create actions
         actiongroup.add_actions([
-            ('ChangeEntry', gtk.STOCK_EDIT,
-                _('Change this text'),
-                None, None, self._on_change_entry_clicked
-            ),
-            ('AddEntry', gtk.STOCK_NEW,
-                _('Add a new entry'),
-                None, None, self._on_add_entry_clicked
-            ),
-            ('Delete', gtk.STOCK_DELETE,
-                _('Delete this entry'),
-                None, None, self._on_delete_entry_clicked
-            ),
-            ])
+            ('ChangeEntry', gtk.STOCK_EDIT, _('Change this text'),
+             None, None, self._on_change_entry_clicked),
+            ('AddEntry', gtk.STOCK_NEW, _('Add a new entry'),
+             None, None, self._on_add_entry_clicked),
+            ('Delete', gtk.STOCK_DELETE, _('Delete this entry'),
+             None, None, self._on_delete_entry_clicked),
+        ])
 
         # Add the actiongroup to the uimanager
         uimanager.insert_action_group(actiongroup, 0)
@@ -479,7 +473,7 @@ class CategoriesTreeView(object):
         while iter and store.iter_is_valid(iter):
             store.row_changed(store.get_path(iter), iter)
             iter = store.iter_next(iter)
-        treeview.set_size_request(0,-1)
+        treeview.set_size_request(0, -1)
 
         ## The heights may have changed
         column.queue_resize()

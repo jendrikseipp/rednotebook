@@ -214,8 +214,7 @@ class TemplateManager(object):
                 self.main_window.search_tree_view,
                 self.main_window.search_box.entry,
                 self.main_window.cloud,
-                self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Find').get_action(),
-                ]:
+                self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Find').get_action()]:
             widget.set_sensitive(sensitive)
 
     def enter_template_mode(self, title, parts):

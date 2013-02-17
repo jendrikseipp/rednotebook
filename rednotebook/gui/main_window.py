@@ -63,8 +63,8 @@ class MainWindow(object):
         except gobject.GError, err:
             logging.error('An error occured while loading the GUI: %s' % err)
             logging.error('RedNotebook requires at least gtk+ 2.14. '
-                            'If you cannot update gtk, you might want to try an '
-                            'older version of RedNotebook.')
+                          'If you cannot update gtk, you might want to try an '
+                          'older version of RedNotebook.')
             sys.exit(1)
 
 
@@ -99,15 +99,14 @@ class MainWindow(object):
         self.day_text_field = DayEditor(self.builder.get_object('day_text_view'),
                                         self.undo_redo_manager)
         self.day_text_field.day_text_view.grab_focus()
-        spell_check_enabled = self.journal.config.read('spellcheck', 0)
+        spell_check_enabled = bool(self.journal.config.read('spellcheck', 0))
         can_spell_check = self.day_text_field.can_spell_check()
         for actiongroup in self.menubar_manager.uimanager.get_action_groups():
             if actiongroup.get_name() == 'MainMenuActionGroup':
                 for action in actiongroup.list_actions():
                     if action.get_name() == 'CheckSpelling':
                         action.set_sensitive(can_spell_check)
-                        print int(spell_check_enabled)
-                        action.set_active(int(spell_check_enabled))
+                        action.set_active(spell_check_enabled)
         self.day_text_field.enable_spell_check(spell_check_enabled)
 
         self.statusbar = Statusbar(self.builder.get_object('statusbar'))
@@ -115,7 +114,7 @@ class MainWindow(object):
         self.new_entry_dialog = NewEntryDialog(self)
 
         self.categories_tree_view = categories.CategoriesTreeView(
-                        self.builder.get_object('categories_tree_view'), self)
+            self.builder.get_object('categories_tree_view'), self)
 
         self.new_entry_dialog.categories_tree_view = self.categories_tree_view
 
@@ -182,7 +181,7 @@ class MainWindow(object):
 
             # connect_signals can only be called once, it seems
             # Otherwise RuntimeWarnings are raised: RuntimeWarning: missing handler '...'
-             }
+        }
         self.builder.connect_signals(dic)
 
         self.set_shortcuts()
@@ -215,7 +214,7 @@ class MainWindow(object):
         '''
         This method actually is not responsible for the Ctrl-C etc. actions
         '''
-        self.accel_group = self.builder.get_object('accelgroup1')#gtk.AccelGroup()
+        self.accel_group = self.builder.get_object('accelgroup1')  # gtk.AccelGroup()
         #self.accel_group = gtk.AccelGroup()
         self.main_frame.add_accel_group(self.accel_group)
         #self.main_frame.add_accel_group()
@@ -224,18 +223,19 @@ class MainWindow(object):
         #   self.day_text_field.day_text_view.add_accelerator(signal, self.accel_group,
         #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
-        shortcuts = [(self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
-                    (self.today_button, 'clicked', '<Alt>Home'),
-                    (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
-                    #(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
-                    #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
-                    #(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
-                    ]
+        shortcuts = [
+            (self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
+            (self.today_button, 'clicked', '<Alt>Home'),
+            (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
+            #(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
+            #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
+            #(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
+        ]
 
         for button, signal, shortcut in shortcuts:
             (keyval, mod) = gtk.accelerator_parse(shortcut)
             button.add_accelerator(signal, self.accel_group,
-                                keyval, mod, gtk.ACCEL_VISIBLE)
+                                   keyval, mod, gtk.ACCEL_VISIBLE)
 
 
     # TRAY-ICON / CLOSE --------------------------------------------------------
@@ -281,7 +281,7 @@ class MainWindow(object):
             ('Show', gtk.STOCK_MEDIA_PLAY, _('Show RedNotebook'),
                 None, None, lambda widget: self.show()),
             ('Quit', gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
-            ])
+        ])
 
         # Add the actiongroup to the uimanager
         self.uimanager.insert_action_group(actiongroup, 0)
@@ -408,8 +408,8 @@ class MainWindow(object):
         scroll = gtk.ScrolledWindow()
         scroll.add(self.search_tree_view)
         self.builder.get_object('search_container').pack_start(scroll)
-        self.search_box = search.SearchComboBox(self.builder.get_object(
-                                                        'search_box'), self)
+        self.search_box = search.SearchComboBox(
+            self.builder.get_object('search_box'), self)
 
     def setup_clouds(self):
         self.cloud = Cloud(self.journal)
@@ -848,7 +848,7 @@ class Calendar(object):
         self.calendar.select_day(1)
 
         # PyGTK calendars show months in range [0,11]
-        self.calendar.select_month(date.month-1, date.year)
+        self.calendar.select_month(date.month - 1, date.year)
 
         # Select the day after the month and year have been set
         self.calendar.select_day(date.day)
@@ -858,7 +858,7 @@ class Calendar(object):
 
     def get_date(self):
         year, month, day = self.calendar.get_date()
-        return datetime.date(year, month+1, day)
+        return datetime.date(year, month + 1, day)
 
     def set_day_edited(self, day_number, edited):
         '''

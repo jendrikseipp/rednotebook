@@ -65,7 +65,7 @@ try:
     elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
 except locale.Error, err:
     # unsupported locale setting
-    logging.error('Locale could not be set: "%s"' %  err)
+    logging.error('Locale could not be set: "%s"' % err)
     logging.error('Probably you have to install the appropriate language packs')
     # Make the _() function available even if gettext is not working.
     import __builtin__
@@ -176,8 +176,8 @@ try:
     # only gtk.gdk.threads_init(): pdf export works, but gui hangs afterwards
     # only gobject.threads_init(): pdf export works, gui works
     # both: pdf export works, gui hangs afterwards
-    gobject.threads_init() # only initializes threading in the glib/gobject module
-    #gtk.gdk.threads_init() # also initializes the gdk threads
+    gobject.threads_init()  # only initializes threading in the glib/gobject module
+    #gtk.gdk.threads_init()  # also initializes the gdk threads
 except (ImportError, AssertionError), e:
     logging.error(e)
     logging.error('gtk not found. Please install PyGTK (python-gtk2)')
@@ -487,8 +487,7 @@ class Journal:
     @property
     def categories(self):
         return list(sorted(set(itertools.chain.from_iterable(
-                                        day.categories for day in self.days)),
-                           cmp=locale.strcoll))
+            day.categories for day in self.days)), cmp=locale.strcoll))
 
 
     def normalize_tag(self, tag):
@@ -608,4 +607,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

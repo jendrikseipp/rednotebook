@@ -117,13 +117,16 @@ def check_new_version(journal, current_version, startup=False):
 
     current_version = StrictVersion(current_version)
     # Only compare versions if new version could be read
-    newer_version_available = ((new_version > current_version)
-                    if isinstance(new_version, StrictVersion) else True)
+    newer_version_available = True
+    if isinstance(new_version, StrictVersion):
+        newer_version_available = new_version > current_version
     logging.info('A newer version is available: %s' % newer_version_available)
 
     if newer_version_available or not startup:
         dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL,
-            type=gtk.MESSAGE_INFO, buttons=gtk.BUTTONS_YES_NO, message_format=None)
+                                   type=gtk.MESSAGE_INFO,
+                                   buttons=gtk.BUTTONS_YES_NO,
+                                   message_format=None)
         dialog.set_transient_for(journal.frame.main_frame)
         primary_text = (_('You have version <b>%s</b>.') % current_version + ' ' +
                         _('The latest version is <b>%s</b>.') % new_version)

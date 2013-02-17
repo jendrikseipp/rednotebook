@@ -36,7 +36,7 @@ from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
-                                    RadioButtonPage, PathChooserPage, Assistant
+    RadioButtonPage, PathChooserPage, Assistant
 from rednotebook.gui import browser
 from rednotebook.gui import options
 
@@ -50,14 +50,14 @@ class DatePage(AssistantPage):
 
         self.all_days_button = gtk.RadioButton(label=_('Export all days'))
         self.selected_text_button = gtk.RadioButton(
-                                    label=_('Export currently selected text'),
-                                    group=self.all_days_button)
+            label=_('Export currently selected text'),
+            group=self.all_days_button)
         self.one_day_button = gtk.RadioButton(
-                                    label=_('Export currently visible day'),
-                                    group=self.all_days_button)
+            label=_('Export currently visible day'),
+            group=self.all_days_button)
         self.sel_days_button = gtk.RadioButton(
-                    label=_('Export days in the selected time range'),
-                    group=self.all_days_button)
+            label=_('Export days in the selected time range'),
+            group=self.all_days_button)
 
         self.pack_start(self.all_days_button, False)
         self.pack_start(self.one_day_button, False)
@@ -203,7 +203,7 @@ class ContentsPage(AssistantPage):
         selection = self.available_categories.get_selection()
         nb_selected, selected_iter = selection.get_selected()
 
-        if selected_iter != None :
+        if selected_iter is not None:
             model_available = self.available_categories.get_model()
             model_selected = self.selected_categories.get_model()
 
@@ -221,7 +221,7 @@ class ContentsPage(AssistantPage):
         selection = self.selected_categories.get_selection()
         nb_selected, selected_iter = selection.get_selected()
 
-        if selected_iter != None :
+        if selected_iter is not None:
             model_available = self.available_categories.get_model()
             model_selected = self.selected_categories.get_model()
 
@@ -352,19 +352,17 @@ class ExportAssistant(Assistant):
         self.path = None
         self.set_forward_page_func(self.pageforward)
 
-    def pageforward(self,page):
+    def pageforward(self, page):
         if page == 2 and self.page2.export_selected_text():
             return 4
         else:
-            return page+1
+            return page + 1
 
-
-    def run(self,selected_text):
+    def run(self, selected_text):
         self.selected_text = selected_text
         self.page2.refresh_dates()
         self.page3.refresh_categories_list()
         self.show_all()
-
 
     def _on_close(self, assistant):
         '''
@@ -372,7 +370,6 @@ class ExportAssistant(Assistant):
         '''
         self.hide()
         self.export()
-
 
     def _on_prepare(self, assistant, page):
         '''
@@ -393,7 +390,7 @@ class ExportAssistant(Assistant):
             self.page5.prepare()
             self.export_all_days = self.page2.export_all_days()
             self.export_selected_text = self.page2.export_selected_text()
-            self.is_text_included = self.page3.is_text_included()
+            is_text_included = self.page3.is_text_included() or self.export_selected_text
             self.exported_categories = self.page3.get_categories()
 
             self.page5.add_setting(_('Format'), self.exporter.NAME)
@@ -405,20 +402,16 @@ class ExportAssistant(Assistant):
                     self.page5.add_setting(_('Export selected text only'), self.yes_no(self.export_selected_text))
                 else:
                     self.page5.add_setting(_('Start date'), start_date)
-                    self.page5.add_setting(_('End date'), end_date)                  
+                    self.page5.add_setting(_('End date'), end_date)
             if self.export_selected_text:
-                self.is_text_included = True
                 self.exported_categories = []
             else:
-                is_text_included = self.yes_no(self.is_text_included)
-                self.page5.add_setting(_('Include text'), is_text_included)
+                self.page5.add_setting(_('Include text'), self.yes_no(is_text_included))
             self.page5.add_setting(_('Selected tags'), ', '.join(self.exported_categories))
             self.page5.add_setting(_('Export path'), self.path)
 
-
     def yes_no(self, value):
         return _('Yes') if value else _('No')
-
 
     def get_export_string(self, format):
         if self.export_selected_text and self.selected_text:
@@ -431,7 +424,6 @@ class ExportAssistant(Assistant):
 
             selected_categories = self.exported_categories
             logging.debug('Selected Categories for Inclusion: %s' % selected_categories)
-            include_text = self.is_text_included
 
             # Save selected date format
             date_format = self.page3.date_format.get_value()
@@ -440,9 +432,10 @@ class ExportAssistant(Assistant):
             markup_strings_for_each_day = []
             for day in export_days:
                 date_string = dates.format_date(date_format, day.date)
-                day_markup = markup.get_markup_for_day(day, with_text=include_text,
-                                                categories=selected_categories,
-                                                date=date_string)
+                day_markup = markup.get_markup_for_day(day,
+                        with_text=self.page3.is_text_included(),
+                        categories=selected_categories,
+                        date=date_string)
                 markup_strings_for_each_day.append(day_markup)
 
             markup_string = ''.join(markup_strings_for_each_day)
@@ -511,14 +504,8 @@ class Exporter(object):
 
     @property
     def DEFAULTPATH(self):
-        return os.path.join(os.path.expanduser('~'), 'RedNotebook-Export_%s.%s' %
-                                (datetime.date.today(), self.EXTENSION))
-
-
-
-
-
-
+        return os.path.join(os.path.expanduser('~'),
+            'RedNotebook-Export_%s.%s' % (datetime.date.today(), self.EXTENSION))
 
 
 class PlainTextExporter(Exporter):
@@ -553,7 +540,7 @@ class PdfExporter(Exporter):
         if self.is_available():
             return ''
         else:
-            return '(' + _('requires pywebkitgtk') +')'
+            return '(' + _('requires pywebkitgtk') + ')'
 
     @classmethod
     def is_available(cls):
@@ -581,4 +568,3 @@ if __name__ == '__main__':
     assistant.set_position(gtk.WIN_POS_CENTER)
     assistant.run()
     gtk.main()
-
