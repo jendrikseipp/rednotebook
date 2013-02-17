@@ -23,15 +23,15 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-version =           '1.6.7'
-author =            'Jendrik Seipp'
-authorMail =        'jendrikseipp@web.de'
-url =               'http://rednotebook.sourceforge.net'
-answers_url =       'https://answers.launchpad.net/rednotebook'
-translation_url =   'https://translations.launchpad.net/rednotebook/'
-bug_url =           'https://bugs.launchpad.net/rednotebook/+filebug'
+version = '1.6.7'
+author = 'Jendrik Seipp'
+authorMail = 'jendrikseipp@web.de'
+url = 'http://rednotebook.sourceforge.net'
+answers_url = 'https://answers.launchpad.net/rednotebook'
+translation_url = 'https://translations.launchpad.net/rednotebook/'
+bug_url = 'https://bugs.launchpad.net/rednotebook/+filebug'
 
-developers =    ['Jendrik Seipp <jendrikseipp@web.de>']
+developers = ['Jendrik Seipp <jendrikseipp@web.de>']
 
 comments = '''\
 RedNotebook is a graphical journal to keep track of notes and

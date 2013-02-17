@@ -64,13 +64,13 @@ def setup_signal_handlers(journal):
     """
     signals = []
     signal_names = [
-            'SIGHUP',  #Terminal closed, Parent process dead
-            'SIGINT',  #Interrupt from keyboard (CTRL-C)
-            'SIGQUIT', #Quit from keyboard
-            'SIGABRT', #Abort signal from abort(3)
-            'SIGTERM', #Termination signal
-            'SIGTSTP', #Stop typed at tty
-        ]
+        'SIGHUP',   # Terminal closed, Parent process dead
+        'SIGINT',   # Interrupt from keyboard (CTRL-C)
+        'SIGQUIT',  # Quit from keyboard
+        'SIGABRT',  # Abort signal from abort(3)
+        'SIGTERM',  # Termination signal
+        'SIGTSTP',  # Stop typed at tty
+    ]
 
     def signal_handler(signum, frame):
         logging.info('Program was abnormally aborted with signal %s' % signum)
@@ -174,8 +174,8 @@ class StreamDuplicator(object):
             stream.flush()
 
     def close(self):
-       for stream in self.streams():
-           self.stream.close()
+        for stream in self.streams():
+            self.stream.close()
 
 
 
@@ -187,9 +187,10 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
     This class preserves newlines in the optparse help
     """
     def format_description(self, description):
-        if not description: return ""
+        if not description:
+            return ""
         desc_width = self.width - self.current_indent
-        indent = " "*self.current_indent
+        indent = " " * self.current_indent
         # the above is still the same
         bits = description.split('\n')
         formatted_bits = [
@@ -222,7 +223,7 @@ class IndentedHelpFormatterWithNL(IndentedHelpFormatter):
         if len(opts) > opt_width:
             opts = "%*s%s\n" % (self.current_indent, "", opts)
             indent_first = self.help_position
-        else: # start help on same line as opts
+        else:  # start help on same line as opts
             opts = "%*s%-*s " % (self.current_indent, "", opt_width, opts)
             indent_first = 0
         result.append(opts)
