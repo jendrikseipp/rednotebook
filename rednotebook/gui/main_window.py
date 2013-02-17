@@ -100,6 +100,14 @@ class MainWindow(object):
                                         self.undo_redo_manager)
         self.day_text_field.day_text_view.grab_focus()
         spell_check_enabled = self.journal.config.read('spellcheck', 0)
+        can_spell_check = self.day_text_field.can_spell_check()
+        for actiongroup in self.menubar_manager.uimanager.get_action_groups():
+            if actiongroup.get_name() == 'MainMenuActionGroup':
+                for action in actiongroup.list_actions():
+                    if action.get_name() == 'CheckSpelling':
+                        action.set_sensitive(can_spell_check)
+                        print int(spell_check_enabled)
+                        action.set_active(int(spell_check_enabled))
         self.day_text_field.enable_spell_check(spell_check_enabled)
 
         self.statusbar = Statusbar(self.builder.get_object('statusbar'))

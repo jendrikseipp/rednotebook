@@ -60,6 +60,7 @@ MENUBAR_XML = '''\
         <separator/>
         <menuitem action="Find"/>
         <separator/>
+        <menuitem action = "CheckSpelling"/>
         <menuitem action="Options"/>
     </menu>
     %s
@@ -132,6 +133,12 @@ class MainMenuBar(object):
                 'F11', None, self.on_fullscreen_menuitem_activate),
             ('Find', gtk.STOCK_FIND, None,
                 None, None, self.on_find_menuitem_activate),
+            ])
+        actiongroup.add_toggle_actions([
+            ('CheckSpelling', gtk.STOCK_SPELL_CHECK, None,
+                'F7', _('Underline misspelled words'), self.on_checkspelling_menuitem_toggled),
+            ])
+        actiongroup.add_actions([
             ('Options', gtk.STOCK_PREFERENCES, None,
                 '<Ctrl><Alt>p', None, self.on_options_menuitem_activate),
             ('HelpMenu', None, _('_Help')),
@@ -241,6 +248,10 @@ class MainMenuBar(object):
         Change to search page and put the cursor into the search box
         '''
         self.main_window.search_box.entry.grab_focus()
+
+    def on_checkspelling_menuitem_toggled(self, widget):
+        self.main_window.day_text_field.enable_spell_check(widget.get_active())
+        self.journal.config['spellcheck'] = int(widget.get_active())
 
     def on_options_menuitem_activate(self, widget):
         self.main_window.options_manager.on_options_dialog()
