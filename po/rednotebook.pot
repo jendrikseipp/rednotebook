@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 19:27+0100\n"
+"POT-Creation-Date: 2013-02-18 19:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,15 +162,15 @@ msgid "Leave blank to omit dates in export"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:138
-msgid "Include text and tags"
+msgid "Export text and tags"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:139
-msgid "Include text only"
+msgid "Export text only"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:141
-msgid "Include tags only"
+msgid "Export tags only"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:143

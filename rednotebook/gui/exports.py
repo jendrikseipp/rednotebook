@@ -135,10 +135,10 @@ class ContentsPage(AssistantPage):
         self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
         self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
 
-        self.text_and_tags_button = gtk.RadioButton(label=_('Include text and tags'))
-        self.text_only_button = gtk.RadioButton(label=_('Include text only'),
+        self.text_and_tags_button = gtk.RadioButton(label=_('Export text and tags'))
+        self.text_only_button = gtk.RadioButton(label=_('Export text only'),
                                                 group=self.text_and_tags_button)
-        self.tags_only_button = gtk.RadioButton(label=_('Include tags only'),
+        self.tags_only_button = gtk.RadioButton(label=_('Export tags only'),
                                                 group=self.text_and_tags_button)
         self.filter_tags_button = gtk.CheckButton(label=_('Filter days by tags'))
 
