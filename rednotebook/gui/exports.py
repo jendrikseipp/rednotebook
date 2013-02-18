@@ -442,7 +442,7 @@ class ExportAssistant(Assistant):
                 if include_day:
                     date_string = dates.format_date(date_format, day.date)
                     day_markup = markup.get_markup_for_day(day, with_text=self.page3.is_text_included(),
-                                                           with_tags = self.page3.is_tags_included(),
+                                                           with_tags=self.page3.is_tags_included(),
                                                            categories=selected_categories,
                                                            date=date_string)
                     markup_strings_for_each_day.append(day_markup)
