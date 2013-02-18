@@ -8,6 +8,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.6.7
+X Allow filtering exported days by tags (Alistair Marshall).
 X Add option to export only the currently selected text (Alistair Marshall).
 X Move spellcheck option from preferences to edit menu and add F7 shortcut (Alistair Marshall).
 X Show warning if no directory is selected before clicking the "Open" button when choosing a journal directory.

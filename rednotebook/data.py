@@ -158,7 +158,7 @@ class Day(object):
     @property
     def hashtags(self):
         # The same tag can occur multiple times.
-        return [hashtag for _, _hash, hashtag in HASHTAG.findall(self.text)]
+        return [hashtag.lower() for _, _hash, hashtag in HASHTAG.findall(self.text)]
 
     @property
     def categories(self):
