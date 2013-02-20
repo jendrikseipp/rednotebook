@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2012-12-30 03:03+0000\n"
+"PO-Revision-Date: 2013-02-19 14:34+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -49,7 +49,7 @@ msgstr "Mostrar RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "No hay ningún directorio seleccionado."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -139,7 +139,7 @@ msgstr "Exportar todos los días"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Exportar el texto seleccionado actualmente"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -167,19 +167,19 @@ msgstr "Dejar en blanco para omitir fechas en la exportación"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Exportar el texto y las etiquetas"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Solo exportar el texto"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Solo exportar las etiquetas"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Filtrar los días por etiquetas"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -199,7 +199,7 @@ msgstr "Anular la selección"
 
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "Al filtrar por etiquetas, debe seleccionar al menos una etiqueta."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -249,7 +249,7 @@ msgstr "Fecha"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Solo exportar el texto seleccionado"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -265,11 +265,11 @@ msgstr "Incluir texto"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Incluir etiquetas"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Filtrado por etiquetas"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -290,7 +290,7 @@ msgstr "Contenido exportado a %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Texto sin formato"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -587,11 +587,11 @@ msgstr "Insertar un separador de línea"
 
 #: ../rednotebook/gui/insert_menu.py:124
 msgid "Date/Time"
-msgstr "Fecha/Hora"
+msgstr "Fecha/hora"
 
 #: ../rednotebook/gui/insert_menu.py:125
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr "Insertar la fecha y hora actual (edita el formato en preferencias)"
+msgstr "Insertar la fecha y hora actual (edite el formato en preferencias)"
 
 #: ../rednotebook/gui/insert_menu.py:127
 msgid "Line Break"
@@ -953,6 +953,7 @@ msgstr "Elegir nombre de la plantilla"
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
 msgstr ""
+"Este archivo de plantilla no contiene texto o su contenido no es legible."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1022,7 +1023,7 @@ msgstr "Ir al día anterior (Ctrl+RePág)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Ir a hoy (Alt+Inicio)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1138,7 +1139,7 @@ msgstr "Estadísticas"
 
 #: tmp/main_window.glade.h:30
 msgid "<b>Selected Day</b>"
-msgstr "<b>Dia seleccionado</b>"
+msgstr "<b>Día seleccionado</b>"
 
 #: tmp/main_window.glade.h:31
 msgid "<b>Overall</b>"

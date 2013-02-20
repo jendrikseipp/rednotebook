@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2012-12-30 10:46+0000\n"
-"Last-Translator: gabriell nascimento <gabriellhrn@gmail.com>\n"
+"PO-Revision-Date: 2013-02-19 13:55+0000\n"
+"Last-Translator: Rafael Neri <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -49,7 +49,7 @@ msgstr "Mostar o RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Nenhuma pasta selecionada."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -138,7 +138,7 @@ msgstr "Exportar todos os dias"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Exportar o texto atualmente selecionado"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -166,19 +166,19 @@ msgstr "Deixe em branco para omitir as datas na exportação"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Exportar texto e etiquetas"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Exportar apenas texto"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Exportar apenas etiquetas"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Filtrar dias por etiquetas"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -199,6 +199,7 @@ msgstr "Desmarcar"
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
+"Ao filtrar por etiquetas, você tem que selecionar pelo menos uma etiqueta."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -249,7 +250,7 @@ msgstr "Data"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Exportar apenas o texto selecionado"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -265,11 +266,11 @@ msgstr "Incluir texto"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Incluir etiquetas"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Filtrar por etiquetas"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -290,7 +291,7 @@ msgstr "Conteúdo exportado para %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Texto sem formatação"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -954,6 +955,7 @@ msgstr "Escolha o nome para o modelo"
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
 msgstr ""
+"Este arquivo de modelo não contém texto algum ou seu conteúdo é ilegível."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1023,7 +1025,7 @@ msgstr "Ir para o dia anterior (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Ir para hoje (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"

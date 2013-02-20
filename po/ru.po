@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2013-01-02 19:43+0000\n"
-"Last-Translator: Oleg Koptev <koptev.oleg@gmail.com>\n"
+"PO-Revision-Date: 2013-02-19 13:49+0000\n"
+"Last-Translator: MyOtheHedgeFox <Unknown>\n"
 "Language-Team: Russian (gnome-cyr@gnome.org)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 "Language: cs\n"
 
@@ -34,7 +34,7 @@ msgstr "Резервное копирование"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr "Сделать резервную копию"
+msgstr "Создать резервную копию"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
@@ -50,7 +50,7 @@ msgstr "Показать RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Папка не выбрана."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -109,7 +109,7 @@ msgstr "Введение"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Save and insert"
-msgstr ""
+msgstr "Сохранить и вставить"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -140,7 +140,7 @@ msgstr "Экспортировать все дни"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Экспортировать выделенный текст"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -168,19 +168,19 @@ msgstr "Оставьте поле пустым, если даты для вас 
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Экспортировать текст и метки"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Экспортировать только текст"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Экспортировать только метки"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Фильтровать дни по меткам"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -200,7 +200,7 @@ msgstr "Отменить выбор"
 
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "Вы должны выбрать хотя бы одну метку для фильтрации!"
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -224,7 +224,7 @@ msgstr ""
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
-msgstr "Выберите, какие дни нужно сохранить, и укажите папку для экспорта."
+msgstr "Выберите, какие дни нужно сохранить, и укажите каталог для экспорта."
 
 #: ../rednotebook/gui/exports.py:320
 msgid "Select Export Format"
@@ -252,7 +252,7 @@ msgstr "Дата"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Экспортировать только выделенный текст"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -264,15 +264,15 @@ msgstr "По…"
 
 #: ../rednotebook/gui/exports.py:408
 msgid "Include text"
-msgstr ""
+msgstr "Включить текст в результат экспорта"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Включить метки в результат экспорта"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Отфильтрованное по меткам"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -293,7 +293,7 @@ msgstr "Содержимое записано в %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Текст без форматирования"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -333,7 +333,7 @@ msgstr "Открыть мастер экспорта"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:113
 msgid "_Backup"
-msgstr "_Сделать резервную копию"
+msgstr "_Создать резервную копию"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save all the data in a zip archive"
@@ -349,7 +349,7 @@ msgstr "Показать статистику по дневнику"
 
 #: ../rednotebook/gui/menu.py:118
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Закрыть RedNotebook. Значок в трее тоже пропадёт."
+msgstr "Закрыть RedNotebook. Значок в трее тоже пропадёт"
 
 #: ../rednotebook/gui/menu.py:121
 msgid "_Edit"
@@ -419,35 +419,36 @@ msgstr "Выберите пустой каталог."
 
 #: ../rednotebook/gui/menu.py:184
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "В этом каталоге нет файлов дневника:"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "Journals are saved in a directory, not in a single file."
-msgstr "Каждый дневник сохраняется не в отдельном файле, а в папке."
+msgstr ""
+"Каждый дневник сохраняется не в отдельном файле, а в отдельном каталоге."
 
 #: ../rednotebook/gui/menu.py:201
 msgid "The directory name will be the title of the new journal."
-msgstr "Имя папки станет названием для нового дневника."
+msgstr "Имя каталога станет названием для нового дневника."
 
 #: ../rednotebook/gui/menu.py:202
 msgid "Select an empty folder for your new journal"
-msgstr "Выберите новую папку для вашего нового дневника"
+msgstr "Выберите новый каталог для вашего нового дневника"
 
 #: ../rednotebook/gui/menu.py:205
 msgid "Select an existing journal directory"
-msgstr "Выберите папку существующего журнала"
+msgstr "Выберите каталог существующего журнала"
 
 #: ../rednotebook/gui/menu.py:206
 msgid "The directory should contain your journal's data files"
-msgstr "В выбранной папке должны лежать файлы вашего дневника"
+msgstr "В выбранном каталоге должны лежать файлы вашего дневника"
 
 #: ../rednotebook/gui/menu.py:213
 msgid "Select an empty folder for the new location of your journal"
-msgstr "Выберите пустую папку для вашего нового журнала"
+msgstr "Выберите пустой каталог для вашего нового журнала"
 
 #: ../rednotebook/gui/menu.py:214
 msgid "The directory name will be the new title of the journal"
-msgstr "Имя папки станет новым названием дневника"
+msgstr "Имя каталога станет новым названием дневника"
 
 #: ../rednotebook/gui/menu.py:279
 msgid "RedNotebook Documentation"
@@ -517,15 +518,15 @@ msgstr "Исключить из облака"
 
 #: ../rednotebook/gui/options.py:319
 msgid "Do not show these comma separated words in the word cloud"
-msgstr "Не показывать эти, разделённые запятыми, слова в облаке"
+msgstr "Не показывать эти разделённые запятыми слова в облаке"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Include small words in cloud"
-msgstr "Показывать короткие слова в облаке"
+msgstr "Показывать в облаке короткие слова"
 
 #: ../rednotebook/gui/options.py:321
 msgid "Allow these words with 4 letters or less"
-msgstr ""
+msgstr "Показывать эти слова короче 5 букв"
 
 #: ../rednotebook/gui/search.py:76
 msgid "Text"
@@ -603,11 +604,12 @@ msgstr "Перенос строки"
 
 #: ../rednotebook/gui/insert_menu.py:128
 msgid "Insert a manual line break"
-msgstr "Вставить принудительный перенос строки"
+msgstr ""
+"Вставить принудительный перенос строки (виден в предпросмотре и при экспорте)"
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "_Вставить"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -623,7 +625,7 @@ msgstr "Ширина (необязательно):"
 
 #: ../rednotebook/gui/insert_menu.py:194
 msgid "pixels"
-msgstr "пикселов"
+msgstr "пикселей"
 
 #: ../rednotebook/gui/insert_menu.py:215
 msgid "Width must be an integer."
@@ -651,7 +653,7 @@ msgstr "Удалить эту метку"
 
 #: ../rednotebook/journal.py:249
 msgid "Opening default journal."
-msgstr ""
+msgstr "Открыт журнал по умолчанию."
 
 #: ../rednotebook/journal.py:332
 #, python-format
@@ -723,11 +725,11 @@ msgid ""
 "mode."
 msgstr ""
 "В RedNotebook есть два режима работы с записями: режим __редактирования__ и "
-"режим __просмотра__."
+"режим __предпросмотра__."
 
 #: ../rednotebook/info.py:93
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Нажмите на кнопку «Правка» в верху окна, чтобы увидеть разницу."
 
 #: ../rednotebook/info.py:96
 msgid "Tagging is easy."
@@ -961,11 +963,11 @@ msgstr "Выберите имя для шаблона"
 
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
-msgstr ""
+msgstr "Выбранный файл шаблона пуст или не может быть прочтён."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
-msgstr "Шаблон для этого дня недели"
+msgstr "Шаблон для сегодняшнего дня недели"
 
 #: ../rednotebook/templates.py:381
 msgid "Create New Template"
@@ -1005,7 +1007,7 @@ msgstr "Кол-во строк"
 
 #: ../rednotebook/util/utils.py:116
 msgid "unknown"
-msgstr ""
+msgstr "неизвестно"
 
 #: ../rednotebook/util/utils.py:131
 #, python-format
@@ -1031,7 +1033,7 @@ msgstr "Предыдущий день (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Перейти к сегодняшнему дню (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1047,7 +1049,7 @@ msgstr "Показать форматированное отображение �
 
 #: tmp/main_window.glade.h:8
 msgid "Enable text editing (Ctrl+P)"
-msgstr "В режим редактирования (Ctrl+P)"
+msgstr "Перейти в режим редактирования (Ctrl+P)"
 
 #: tmp/main_window.glade.h:9
 msgid "Edit"
@@ -1073,7 +1075,6 @@ msgstr ""
 "  MyOtheHedgeFox https://launchpad.net/~a-ztech\n"
 "  Nick https://launchpad.net/~nick222-yandex\n"
 "  Oleg Koptev https://launchpad.net/~koptev-oleg\n"
-"  Roman Mindlin https://launchpad.net/~mindline\n"
 "  Sergey \"Shnatsel\" Davidoff https://launchpad.net/~shnatsel\n"
 "  Sergey Sedov https://launchpad.net/~serg-sedov\n"
 "  Victor Yu. Kowalsky https://launchpad.net/~vityokster\n"
@@ -1126,7 +1127,7 @@ msgstr "Параметры"
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
-msgstr "<b>Общее</b>"
+msgstr "<b>Общие</b>"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:28

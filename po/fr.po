@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2012-01-22 17:27+0000\n"
-"Last-Translator: Nicolas Delvaux <Unknown>\n"
+"PO-Revision-Date: 2013-02-19 20:46+0000\n"
+"Last-Translator: Pierre Tocquin <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -49,7 +49,7 @@ msgstr "Afficher RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Aucun répertoire sélectionné."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -91,7 +91,7 @@ msgstr ""
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Format"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
@@ -108,7 +108,7 @@ msgstr "Introduction"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Save and insert"
-msgstr ""
+msgstr "Enregistrer et insérer"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -167,19 +167,19 @@ msgstr "Laissez vide pour omettre les dates dans l'exportation"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Exporter le texte et les étiquettes"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Exporter uniquement le texte"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Exporter uniquement les étiquettes"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Filtrer les jours par étiquette"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -200,6 +200,7 @@ msgstr "Désélectionner"
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
+"Pour filtrer par étiquette, vous devez sélectionner au moins une étiquette"
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -264,7 +265,7 @@ msgstr "Date de fin"
 
 #: ../rednotebook/gui/exports.py:408
 msgid "Include text"
-msgstr ""
+msgstr "Inclure le texte"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
@@ -341,7 +342,7 @@ msgstr "Enregistrer toutes les données dans une archive zip"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "S_tatistics"
-msgstr ""
+msgstr "_Statistiques"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Show some statistics about the journal"
@@ -407,7 +408,7 @@ msgstr "Remplir un court formulaire relatif à votre problème"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Wrong directory"
-msgstr ""
+msgstr "Mauvais répertoire"
 
 #: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
@@ -415,7 +416,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:180
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "Veuillez sélectionner un répertoire vide."
 
 #: ../rednotebook/gui/menu.py:184
 msgid "This directory contains no journal files:"
@@ -514,7 +515,7 @@ msgstr "Format de Date et d'Heure"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Exclude from cloud"
-msgstr ""
+msgstr "Exclure du nuage"
 
 #: ../rednotebook/gui/options.py:319
 msgid "Do not show these comma separated words in the word cloud"
@@ -526,7 +527,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:321
 msgid "Allow these words with 4 letters or less"
-msgstr ""
+msgstr "Autoriser ces mots de 4 lettres ou moins"
 
 #: ../rednotebook/gui/search.py:76
 msgid "Text"
@@ -608,7 +609,7 @@ msgstr "Insérer un retour à la ligne manuel"
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "_Insérer"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -624,11 +625,11 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:194
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #: ../rednotebook/gui/insert_menu.py:215
 msgid "Width must be an integer."
-msgstr ""
+msgstr "La largeur doit être un nombre entier."
 
 #: ../rednotebook/gui/insert_menu.py:279
 msgid "No link location has been entered"
@@ -665,7 +666,7 @@ msgstr "Rien à sauvegarder"
 
 #: ../rednotebook/journal.py:482
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: ../rednotebook/info.py:77
 msgid "Work"
@@ -1007,7 +1008,7 @@ msgstr "Lignes"
 
 #: ../rednotebook/util/utils.py:116
 msgid "unknown"
-msgstr ""
+msgstr "inconnu"
 
 #: ../rednotebook/util/utils.py:131
 #, python-format
@@ -1078,7 +1079,6 @@ msgstr ""
 "  Guillaume Royer https://launchpad.net/~guilro\n"
 "  Hélion du Mas des Bourboux https://launchpad.net/~helion331990\n"
 "  Jean-Luc Aufranc https://launchpad.net/~jean-luc-aufranc\n"
-"  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Léo POUGHON https://launchpad.net/~leo-poughon\n"
 "  Moussouni Mehdi https://launchpad.net/~mmoussouni47\n"
 "  Nicolas DERIVE https://launchpad.net/~kalon33\n"
@@ -1088,6 +1088,7 @@ msgstr ""
 "  Quentin Pagès https://launchpad.net/~kwentin\n"
 "  Rodolphe BOUCHIER https://launchpad.net/~ldnpub\n"
 "  Stanislas Michalak https://launchpad.net/~stanislas-michalak\n"
+"  Sylvie Gallet https://launchpad.net/~sylvie-gallet\n"
 "  Thibault Févry https://launchpad.net/~thibaultfevry\n"
 "  Xavier Havez https://launchpad.net/~haxa\n"
 "  fbn69 https://launchpad.net/~fbn69\n"

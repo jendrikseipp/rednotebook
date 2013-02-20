@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2012-12-30 14:05+0000\n"
+"PO-Revision-Date: 2013-02-19 14:31+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -49,7 +49,7 @@ msgstr "Näytä RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Kansiota ei ole valittu."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -86,12 +86,12 @@ msgstr "Yliviivattu"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Tyhjennä"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "M_uoto"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
@@ -139,7 +139,7 @@ msgstr "Vie kaikki päivät"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Vie valittuna oleva teksti"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -167,15 +167,15 @@ msgstr "Jätä vientipäivämäärä tyhjäksi"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Vie teksti ja tunnisteet"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Vie vain teksti"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Vie vain tunnisteet"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
@@ -250,7 +250,7 @@ msgstr "Päiväys"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Vie vain valittu teksti"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -262,11 +262,11 @@ msgstr "Päättymispäivä"
 
 #: ../rednotebook/gui/exports.py:408
 msgid "Include text"
-msgstr ""
+msgstr "Sisällytä teksti"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Sisällytä tunnisteet"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
@@ -291,7 +291,7 @@ msgstr "Sisältö viety kohteeseen %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Muotoilematon teksti"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -602,7 +602,7 @@ msgstr "Lisää rivinvaihto käsin"
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "L_isää"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -1024,7 +1024,7 @@ msgstr "Siirry edelliseen päivään (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Siirry kuluvaan päivään (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"

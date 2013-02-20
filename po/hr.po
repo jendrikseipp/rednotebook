@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2013-01-14 07:23+0000\n"
+"PO-Revision-Date: 2013-02-19 11:49+0000\n"
 "Last-Translator: freedomrun <freedomrun@yandex.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -89,7 +89,7 @@ msgstr ""
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Format"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
@@ -106,7 +106,7 @@ msgstr "Uvod"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Save and insert"
-msgstr ""
+msgstr "Spremi i ubaci"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -157,7 +157,7 @@ msgstr "Za:"
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Date format"
-msgstr ""
+msgstr "Oblik datuma"
 
 #: ../rednotebook/gui/exports.py:136
 msgid "Leave blank to omit dates in export"
@@ -181,11 +181,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
-msgstr ""
+msgstr "Dostupne oznake"
 
 #: ../rednotebook/gui/exports.py:153
 msgid "Selected tags"
-msgstr ""
+msgstr "Označene oznake"
 
 #: ../rednotebook/gui/exports.py:161
 msgid "Select"
@@ -260,11 +260,11 @@ msgstr "Završni datum"
 
 #: ../rednotebook/gui/exports.py:408
 msgid "Include text"
-msgstr ""
+msgstr "Uvrsti tekst"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Uvrsti oznake"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
@@ -289,7 +289,7 @@ msgstr "Sadržaj je izvezen u %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Običan Tekst"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -336,7 +336,7 @@ msgstr "Spremi sve podatke u zip arhivu"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistike"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Show some statistics about the journal"
@@ -479,7 +479,7 @@ msgstr "Pregled:"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Close to system tray"
-msgstr ""
+msgstr "Zatvori u sistemsku traku"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Closing the window will send RedNotebook to the tray"
@@ -539,7 +539,7 @@ msgstr "Uvučena Stavka"
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "Two blank lines close the list"
-msgstr ""
+msgstr "Dva prazna reda zatvaraju listu"
 
 #: ../rednotebook/gui/insert_menu.py:101
 msgid "Picture"
@@ -547,7 +547,7 @@ msgstr "Slika"
 
 #: ../rednotebook/gui/insert_menu.py:102
 msgid "Insert an image from the harddisk"
-msgstr ""
+msgstr "Umetni sliku s tvrdog diska"
 
 #: ../rednotebook/gui/insert_menu.py:104
 msgid "File"
@@ -596,11 +596,11 @@ msgstr "Prijelom Retka"
 
 #: ../rednotebook/gui/insert_menu.py:128
 msgid "Insert a manual line break"
-msgstr ""
+msgstr "Unesi ručni prijelom retka"
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "_Ubaci"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -657,7 +657,7 @@ msgstr "Nema ništa za spremiti"
 
 #: ../rednotebook/journal.py:482
 msgid "Error"
-msgstr ""
+msgstr "Greška"
 
 #: ../rednotebook/info.py:77
 msgid "Work"
@@ -669,7 +669,7 @@ msgstr "Slobodno vrijeme"
 
 #: ../rednotebook/info.py:79
 msgid "Todo"
-msgstr ""
+msgstr "Za obaviti"
 
 #: ../rednotebook/info.py:80
 msgid "Done"
@@ -720,7 +720,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:96
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Označavanje je lako."
 
 #: ../rednotebook/info.py:97
 msgid "Just use #hashtags like on twitter."
@@ -790,7 +790,7 @@ msgstr "Utorak"
 
 #: ../rednotebook/templates.py:28
 msgid "Wednesday"
-msgstr ""
+msgstr "Srijeda"
 
 #: ../rednotebook/templates.py:28
 msgid "Thursday"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2012-12-31 17:51+0000\n"
-"Last-Translator: Jerzy Spendel <Unknown>\n"
+"PO-Revision-Date: 2013-02-19 20:18+0000\n"
+"Last-Translator: Isamu715 <isamu715@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -49,7 +49,7 @@ msgstr "Pokaż RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Nie wybrano katalogu."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -65,7 +65,7 @@ msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:94
 msgid "No text or tag has been selected."
-msgstr "Żaden fragment tekstu ani znacznik nie został wybrany"
+msgstr "Żaden tekst ani etykieta nie została wybrana."
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
@@ -91,16 +91,16 @@ msgstr "Wyczyść"
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr "_Sformatuj"
+msgstr "_Format"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
 msgid "Format"
-msgstr "Formatuj"
+msgstr "Format"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
-msgstr "Zmień format wybranego tekstu lub znacznika"
+msgstr "Zmień format wybranego tekstu lub etykiety"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
@@ -112,7 +112,7 @@ msgstr "Zapisz i wstaw"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
-msgstr "filtruj, te oddzielone, przecinkami, słowa"
+msgstr "filtruj, te, oddzielone, przecinkami, słowa"
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
@@ -121,7 +121,7 @@ msgstr "mtv, spam, praca, robota, grać"
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:76 ../rednotebook/util/markup.py:140
 msgid "Tags"
-msgstr "Tagi"
+msgstr "Etykiety"
 
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
@@ -139,7 +139,7 @@ msgstr "Eksportuj wszystkie dni"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Eksportuj zaznaczony tekst"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -151,7 +151,7 @@ msgstr "Eksportuj dni z wybranego zakresu dat"
 
 #: ../rednotebook/gui/exports.py:68
 msgid "From:"
-msgstr "Od:"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:70
 msgid "To:"
@@ -167,31 +167,31 @@ msgstr "Pozostaw puste by pominąć daty w eksporcie"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Eksportuj tekst i etykiety"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Eksportuj tylko tekst"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Eksportuj tylko etykiety"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Filtruj dni za pomocą etykiet"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
-msgstr "Dostępne znaczniki"
+msgstr "Dostępne etykiety"
 
 #: ../rednotebook/gui/exports.py:153
 msgid "Selected tags"
-msgstr "Wybrane znaczniki"
+msgstr "Wybrane etykiety"
 
 #: ../rednotebook/gui/exports.py:161
 msgid "Select"
-msgstr "Zaznacz"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:162
 msgid "Deselect"
@@ -199,7 +199,7 @@ msgstr "Usuń zaznaczenie"
 
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "Aby filtrować za pomocą etykiet musisz wybrać conajmniej jedną."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -252,7 +252,7 @@ msgstr "Data"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Eksportuj tylko zaznaczony tekst"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -268,11 +268,11 @@ msgstr "Załącz tekst"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Dołącz etykiety"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Filtrowane za pomocą etykiet"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -293,7 +293,7 @@ msgstr "Zawartość eksportowana do %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Czysty tekst"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -324,7 +324,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:110
 msgid "Export"
-msgstr "Eksportuj"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:111
 msgid "Open the export assistant"
@@ -357,11 +357,11 @@ msgstr "_Edycja"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Undo text or tag edits"
-msgstr "Wycofaj zmiany tekstu lub znaczników"
+msgstr "Cofnij zmiany tekstu lub etykiet"
 
 #: ../rednotebook/gui/menu.py:125
 msgid "Redo text or tag edits"
-msgstr "Przywróć zmianę tekstu lub znaczników"
+msgstr "Przywróć zmianę tekstu lub etykiet"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Underline misspelled words"
@@ -957,6 +957,7 @@ msgstr "Wybierz nazwę szablonu"
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
 msgstr ""
+"Ten plik szablonu nie zawiera tekstu lub jego zawartości nie da się odczytać."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1026,7 +1027,7 @@ msgstr "Przejdź do poprzedniego dnia (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Przejdź do dnia dzisiejszego (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1064,10 +1065,11 @@ msgstr ""
 "  Aleksandra https://launchpad.net/~ola31alo\n"
 "  Ariel Zacharko https://launchpad.net/~arielooo\n"
 "  Dariusz Jakoniuk https://launchpad.net/~darcio53\n"
+"  Isamu715 https://launchpad.net/~isamu715\n"
 "  Jarosław Ogrodnik https://launchpad.net/~goz\n"
 "  Jerzy Spendel https://launchpad.net/~yuri20\n"
 "  Michał Maternik https://launchpad.net/~michal-maternik\n"
-"  NINa https://launchpad.net/~factory\n"
+"  Mike08 https://launchpad.net/~micou8\n"
 "  Stanisław Dac https://launchpad.net/~s-dac\n"
 "  TSr https://launchpad.net/~tsr\n"
 "  doiges https://launchpad.net/~bohopicasso\n"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2012-12-30 03:33+0000\n"
-"Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
+"PO-Revision-Date: 2013-02-19 13:49+0000\n"
+"Last-Translator: Xandru <xandru@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:57+0000\n"
+"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -24,7 +24,7 @@ msgstr "Yá pasó un tiempu dende que ficisti la cabera copia de seguridá."
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
-"Pues facer copies de seguridá del diariu nún archivu .zip pa prevenir perdes "
+"Pues facer copies de seguridá del diariu nun archivu .zip pa prevenir perdes "
 "de datos."
 
 #: ../rednotebook/backup.py:61
@@ -49,7 +49,7 @@ msgstr "Amosar RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Nun se seleicionó dengún direutoriu."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -65,7 +65,7 @@ msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:94
 msgid "No text or tag has been selected."
-msgstr "Nun s'esbilló testu o etiquetes."
+msgstr "Nun se seleicionó testu o etiquetes."
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
@@ -100,7 +100,7 @@ msgstr "Formatu"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
-msgstr "Dar formatu al testu esbilláu o a la etiqueta"
+msgstr "Dar formatu al testu seleicionáu o a la etiqueta"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
@@ -116,7 +116,7 @@ msgstr "peñerar, estes, pallabres, separtaes, per, comes"
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
-msgstr "mtv, spam, tayu"
+msgstr "mtv, spam, trabayu, xera, xuegu"
 
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:76 ../rednotebook/util/markup.py:140
@@ -139,7 +139,7 @@ msgstr "Esportar tolos díes"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Esportar el testu seleicionáu agora"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -163,23 +163,23 @@ msgstr "Formatu de data"
 
 #: ../rednotebook/gui/exports.py:136
 msgid "Leave blank to omit dates in export"
-msgstr "Dexar en blanco para saltase les feches na esportación"
+msgstr "Dexar en blanco pa saltase les feches na esportación"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Esportar testu y etiquetes"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Esportar namái'l testu"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Esportar namái les etiquetes"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Peñerar díes per etiqueta"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -187,7 +187,7 @@ msgstr "Etiquetes disponibles"
 
 #: ../rednotebook/gui/exports.py:153
 msgid "Selected tags"
-msgstr "Etiquetes esbillaes"
+msgstr "Etiquetes seleicionaes"
 
 #: ../rednotebook/gui/exports.py:161
 msgid "Select"
@@ -195,11 +195,11 @@ msgstr "Seleicionar"
 
 #: ../rednotebook/gui/exports.py:162
 msgid "Deselect"
-msgstr "Desescoyer"
+msgstr "Deseleicionar"
 
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "Al peñerar per etiqueta, hai qu'esbillar, polo menos, una etiqueta."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -215,13 +215,13 @@ msgstr "Afáyate nel Asistente d'Esportación"
 
 #: ../rednotebook/gui/exports.py:309
 msgid "This wizard will help you to export your journal to various formats."
-msgstr "Esti asistente ayuda a esportar el diariu a dellos formatos."
+msgstr "Esti asistente va ayudate esportar el diariu a dellos formatos."
 
 #: ../rednotebook/gui/exports.py:310
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
-msgstr "Pues esbillar los díes que quies esportar y ónde lo guardar."
+msgstr "Pues seleicionar los díes que quies esportar y ónde lo guardar."
 
 #: ../rednotebook/gui/exports.py:320
 msgid "Select Export Format"
@@ -249,7 +249,7 @@ msgstr "Data"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Esportar namái'l testu seleicionáu"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -261,15 +261,15 @@ msgstr "Data final"
 
 #: ../rednotebook/gui/exports.py:408
 msgid "Include text"
-msgstr "Incluir testu"
+msgstr "Incluyir testu"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Incluyir etiquetes"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Peñerar per etiquetes"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -290,7 +290,7 @@ msgstr "Conteníu esportáu a %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Testu planu"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -312,7 +312,7 @@ msgstr "Cargar un diariu esistente. L'antiguu va guardase."
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
-"Guardar diariu nún nuevu allugamientu. L'antiguu diariu va guardase tamién."
+"Guardar diariu nun allugamientu nuevu. L'antiguu diariu va guardase tamién."
 
 #. ## Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
@@ -329,7 +329,7 @@ msgstr "Abrir l'asistente d'esportación"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:113
 msgid "_Backup"
-msgstr "_Respaldu"
+msgstr "Copia de _seguridá"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save all the data in a zip archive"
@@ -409,7 +409,7 @@ msgstr "Nun pues usar esti direutoriu pa la copia de seguridá:"
 
 #: ../rednotebook/gui/menu.py:180
 msgid "Please select an empty directory."
-msgstr "Escueyi un direutoriu baleru."
+msgstr "Seleiciona un direutoriu baleru."
 
 #: ../rednotebook/gui/menu.py:184
 msgid "This directory contains no journal files:"
@@ -421,11 +421,11 @@ msgstr "Los diarios guárdense nuna carpeta, non nun ficheru."
 
 #: ../rednotebook/gui/menu.py:201
 msgid "The directory name will be the title of the new journal."
-msgstr "El nome de la carpeta va ser el títulu del nuevu diariu."
+msgstr "El nome de la carpeta va ser el títulu del diariu nuevu."
 
 #: ../rednotebook/gui/menu.py:202
 msgid "Select an empty folder for your new journal"
-msgstr "Seleiciona una carpeta erma pal nuevu diariu"
+msgstr "Seleiciona una carpeta balera pal nuevu diariu"
 
 #: ../rednotebook/gui/menu.py:205
 msgid "Select an existing journal directory"
@@ -437,11 +437,11 @@ msgstr "La carpeta tien de contener los ficheros del to diariu"
 
 #: ../rednotebook/gui/menu.py:213
 msgid "Select an empty folder for the new location of your journal"
-msgstr "Seleiciona una carpeta erma pa la nueva llocalización del diariu"
+msgstr "Seleiciona una carpeta balera pa la nueva llocalización del diariu"
 
 #: ../rednotebook/gui/menu.py:214
 msgid "The directory name will be the new title of the journal"
-msgstr "El nome de la carpeta va ser el nuevu títulu del diariu"
+msgstr "El nome de la carpeta va ser el títulu del diariu nuevu"
 
 #: ../rednotebook/gui/menu.py:279
 msgid "RedNotebook Documentation"
@@ -453,7 +453,7 @@ msgstr "Un Diariu d'Escritoriu"
 
 #: ../rednotebook/gui/options.py:84
 msgid "Load RedNotebook at startup"
-msgstr "Cargar RedNotebook al aniciar"
+msgstr "Cargar RedNotebook al aniciu"
 
 #: ../rednotebook/gui/options.py:154
 msgid "%A, %x, Day %j"
@@ -482,7 +482,7 @@ msgstr "Zarrar a la bandexa del sistema"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Zarrar la ventana unviará a RedNotebook a la bandexa"
+msgstr "Al zarrar la ventana RedNotebook va dir a la bandexa"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Switch between edit and preview mode automatically"
@@ -498,7 +498,7 @@ msgstr "Comprobar agora"
 
 #: ../rednotebook/gui/options.py:316
 msgid "Font Size"
-msgstr "Tamañu de Fonte"
+msgstr "Tamañu de la Fonte"
 
 #: ../rednotebook/gui/options.py:317
 msgid "Date/Time format"
@@ -514,7 +514,7 @@ msgstr "Nun amosar estes pallabres separaes por comes na ñube de pallabres"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Include small words in cloud"
-msgstr "Incluir pallabres curties na ñube"
+msgstr "Incluyir pallabres curties na ñube"
 
 #: ../rednotebook/gui/options.py:321
 msgid "Allow these words with 4 letters or less"
@@ -559,7 +559,7 @@ msgstr "Inxertar un enllaz a un ficheru"
 #. ## Translators: Noun
 #: ../rednotebook/gui/insert_menu.py:108
 msgid "_Link"
-msgstr "_Enllaz"
+msgstr "En_llaz"
 
 #: ../rednotebook/gui/insert_menu.py:109
 msgid "Insert a link to a website"
@@ -947,6 +947,7 @@ msgstr "Escoyer nome de la plantía"
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
 msgstr ""
+"Esti ficheru de plantía nun contién testu o tien conteníu non lleíble."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1016,7 +1017,7 @@ msgstr "Dir al día anterior (Ctrl+RePáx)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Saltar a güei (Alt+Aniciu)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1024,11 +1025,11 @@ msgstr "Güei"
 
 #: tmp/main_window.glade.h:4
 msgid "Go to next day (Ctrl+PageDown)"
-msgstr "Dir al siguiente día (Ctrl+AvPáx)"
+msgstr "Dir al día siguiente (Ctrl+AvPáx)"
 
 #: tmp/main_window.glade.h:5
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr "Amosar vista previa de testu con formatu (Ctrl+P)"
+msgstr "Amosar una vista previa del testu con formatu (Ctrl+P)"
 
 #: tmp/main_window.glade.h:8
 msgid "Enable text editing (Ctrl+P)"
