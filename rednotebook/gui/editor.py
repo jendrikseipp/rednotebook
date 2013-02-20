@@ -34,6 +34,7 @@ except ImportError:
 
 from rednotebook.gui import t2t_highlight
 from rednotebook import undo
+from rednotebook.util import filesystem
 
 
 class Editor(object):
@@ -249,9 +250,17 @@ class Editor(object):
             if self._spell_checker is None:
                 try:
                     self._spell_checker = gtkspell.Spell(self.day_text_view)
-                except gobject.GError, err:
+                except gobject.GError as err:
                     logging.error('Spell checking could not be enabled: "%s"' % err)
                     self._spell_checker = None
+                if self._spell_checker:
+                    try:
+                        self._spell_checker.set_language(filesystem.LANGUAGE)
+                    except RuntimeError as err:
+                        logging.error('Spellchecking could not be enabled for %s: %s' % 
+                                      (filesystem.LANGUAGE, err))
+                        logging.error('Consult built-in help for instructions '
+                                      'on how to add custom dictionaries.')
         else:
             if self._spell_checker is not None:
                 self._spell_checker.detach()

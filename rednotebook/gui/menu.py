@@ -60,7 +60,7 @@ MENUBAR_XML = '''\
         <separator/>
         <menuitem action="Find"/>
         <separator/>
-        <menuitem action = "CheckSpelling"/>
+        <menuitem action="CheckSpelling"/>
         <menuitem action="Options"/>
     </menu>
     %s

@@ -160,6 +160,8 @@ setup_logging(dirs.log_file)
 
 ## ------------------ end Enable logging -------------------------------
 
+logging.info('System encoding: %s' % filesystem.ENCODING)
+logging.info('Language code: %s' % filesystem.LANGUAGE)
 
 try:
     import pygtk

@@ -27,7 +27,10 @@ import codecs
 import webbrowser
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or 'UTF-8'
+LANGUAGE = locale.getdefaultlocale()[0]
 REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
+
+IS_WIN = sys.platform.startswith('win')
 
 
 def get_unicode_path(path):
@@ -50,7 +53,7 @@ else:
     app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 app_dir = get_unicode_path(app_dir)
 
-if sys.platform.startswith('win'):
+if IS_WIN:
     locale_dir = os.path.join(app_dir, 'share', 'locale')
 else:
     locale_dir = os.path.join(sys.prefix, 'share', 'locale')
@@ -286,7 +289,7 @@ def get_local_url(url):
         url = url.replace('file://', '')
     url = os.path.normpath(url)
 
-    scheme = 'file:///' if sys.platform == 'win32' else 'file://'
+    scheme = 'file:///' if IS_WIN else 'file://'
     url = scheme + url
     logging.debug('Transformed local URI %s to %s' % (orig_url, url))
     return url
@@ -323,7 +326,7 @@ def open_url(url):
         return
 
     # Try opening the file locally
-    if sys.platform == 'win32':
+    if IS_WIN:
         try:
             url = unquote_url(url)
             if url.startswith(u'file:') or os.path.exists(url):

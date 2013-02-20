@@ -247,13 +247,23 @@ You can **hide the word cloud** by adding the regular expression .* to the
 blacklist. This will filter out all words.
 
 == Spellcheck ==
-RedNotebook supports spellchecking your entries if you have
-python-gtkspell installed (Only available on Linux).
-To highlight all misspelled words in your entries, select the corresponding option in
-the preferences window.
+RedNotebook supports spellchecking your entries. On Linux this feature 
+needs the package python-gtkspell. The feature can turned on and off by 
+toggling the item under the "Edit" menu.
 
 Since gtkspell 2.0.15, you can select the spellchecking language by right-clicking on the
 main text area (in edit mode) and choosing it from the submenu "Languages".
+
+=== Adding custom dictionaries under Windows ===
+We use the dictionaries available from the 
+[​openoffice extension download site http://extensions.services.openoffice.org/dictionaries]. 
+You need to download the appropriate language extension file(s) 
+(files are openoffice extensions *.oxt, which are just zip files that 
+contain additional data). Once you have downloaded a dictionary extension 
+file, you can rename it so it has a .zip extension and then extract the 
+*.dic and *.aff files in it to <RedNotebook Dir>\\share\\enchant\\myspell\\.
+If RedNotebook is running, it will need to be restarted for new dictionaries 
+to be recognized.
 
 == Options ==
 Make sure you check out the customizable options in the Preferences dialog. You can

@@ -99,14 +99,14 @@ class MainWindow(object):
         self.day_text_field = DayEditor(self.builder.get_object('day_text_view'),
                                         self.undo_redo_manager)
         self.day_text_field.day_text_view.grab_focus()
-        spell_check_enabled = bool(self.journal.config.read('spellcheck', 0))
         can_spell_check = self.day_text_field.can_spell_check()
+        spell_check_enabled = bool(self.journal.config.read('spellcheck', 0))
         for actiongroup in self.menubar_manager.uimanager.get_action_groups():
             if actiongroup.get_name() == 'MainMenuActionGroup':
                 for action in actiongroup.list_actions():
                     if action.get_name() == 'CheckSpelling':
                         action.set_sensitive(can_spell_check)
-                        action.set_active(spell_check_enabled)
+                        action.set_active(spell_check_enabled and can_spell_check)
         self.day_text_field.enable_spell_check(spell_check_enabled)
 
         self.statusbar = Statusbar(self.builder.get_object('statusbar'))
