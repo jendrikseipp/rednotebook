@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2013-01-03 18:54+0000\n"
-"Last-Translator: lhquark <Unknown>\n"
+"PO-Revision-Date: 2013-02-20 10:53+0000\n"
+"Last-Translator: Wang Dianjin <Unknown>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-21 05:22+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -47,7 +47,7 @@ msgstr "显示 RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "没有选中目录。"
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -135,7 +135,7 @@ msgstr "导出所有日期"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "导出当前选中的文本"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -163,19 +163,19 @@ msgstr "留空以在导出时省略日期"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "导出文本和标签"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "仅导出文本"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "仅导出标签"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "使用标签过滤日期"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -195,7 +195,7 @@ msgstr "取消选择"
 
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "当使用标签过滤时，您必须至少选中一个标签。"
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -245,7 +245,7 @@ msgstr "日期"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "仅导出选中文本"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -261,11 +261,11 @@ msgstr "包括文本"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "包含标签"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "已使用标签过滤"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -286,7 +286,7 @@ msgstr "内容已导出到 %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "纯文本"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -930,7 +930,7 @@ msgstr "选择模板名称"
 
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
-msgstr ""
+msgstr "该模板文件不包含文本或内容不可读。"
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1000,7 +1000,7 @@ msgstr "前一天 (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "跳到今天(Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1043,7 +1043,6 @@ msgstr ""
 "  Phil https://launchpad.net/~yalongbay\n"
 "  Wang Dianjin https://launchpad.net/~tuhaihe\n"
 "  Wylmer Wang https://launchpad.net/~wantinghard\n"
-"  Young King https://launchpad.net/~youngking\n"
 "  lhquark https://launchpad.net/~lhquark\n"
 "  snowwhite https://launchpad.net/~yuxin6147\n"
 "  youda.yu https://launchpad.net/~ch-yyd"

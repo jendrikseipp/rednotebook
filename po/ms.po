@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2013-01-06 04:38+0000\n"
+"PO-Revision-Date: 2013-02-20 13:42+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
+"X-Launchpad-Export-Date: 2013-02-21 05:22+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: ../rednotebook/backup.py:55
@@ -48,7 +48,7 @@ msgstr "Tunjuk RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Tiada direktori dipilih"
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -137,7 +137,7 @@ msgstr "Eksport semua hari"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Eksport teks terpilih buat masa ini"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -165,19 +165,19 @@ msgstr "Tinggalkan ruang kosong untuk jangan masukkan dalam eksport"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Eskport teks dan tag"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Eskport teks sahaja"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Eskport tag sahaja"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Tapis hari berdasarkan tag"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -198,6 +198,7 @@ msgstr "Nyahpilih"
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
+"Bila menapis mengikut tag, anda perlu pilih sekurang-kurangnya satu tag."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -250,7 +251,7 @@ msgstr "Tarikh"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Eskport teks terpilih sahaja"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -266,11 +267,11 @@ msgstr "Sertakan teks"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Sertakan tag"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Ditapis berdasarkan tag"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -291,7 +292,7 @@ msgstr "Kandungan dieksport ke %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Teks Biasa"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -727,7 +728,7 @@ msgstr "pengetagan adalah mudah."
 
 #: ../rednotebook/info.py:97
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Hanya guna tanda cincangan # seperti pada twitter."
 
 #: ../rednotebook/info.py:100
 msgid ""
@@ -953,6 +954,8 @@ msgstr "Pilih Nama Templat"
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
 msgstr ""
+"Fail templat ini tidak mengandungi teks atau mempunyai kandungan boleh "
+"dibaca."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1022,7 +1025,7 @@ msgstr "Pergi ke hari terdahulu (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Lompat ke hari ini (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
