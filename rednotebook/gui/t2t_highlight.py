@@ -23,11 +23,13 @@ PyGTKCodeBuffer by Hannes Matuschek (http://code.google.com/p/pygtkcodebuffer/).
 """
 
 import gtk
-import sys
-import os.path
 import pango
+
+import collections
 import logging
+import os
 import re
+import sys
 
 if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("./../../"))
@@ -39,16 +41,7 @@ from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
 
 
-class Tag(object):
-    def __init__(self, start, end, tagname, rule):
-        self.start = start
-        self.end = end
-        self.name = tagname
-        self.rule = rule
-
-    def list(self):
-        return [self.start, self.end, self.name]
-
+Tag = collections.namedtuple('Tag', ['start', 'end', 'name', 'rule'])
 
 class TagGroup(list):
     @property
@@ -59,21 +52,11 @@ class TagGroup(list):
     def max_end(self):
         return max([tag.end for tag in self], key=lambda i: i.get_offset()).copy()
 
-    def sort(self):
-        key = lambda tag: (tag.start.get_offset(), -tag.end.get_offset(), tag.name)
-        list.sort(self, key=key)
-
     @property
     def rule(self):
         if len(self) == 0:
             return 'NO ITEM'
         return self[0].rule
-
-    def list(self):
-        return map(lambda g: g.list(), self)
-
-    #def __cmp__(self, other):
-    #    return cmp((self.min_start, other.min_start))
 
 
 class Pattern(object):
@@ -147,28 +130,21 @@ class MarkupDefinition(object):
                 tags = rule(subtext, tags.max_end, end)
 
         tag_groups.sort(key=lambda g: (g.min_start.get_offset(), -g.max_end.get_offset()))
-
         return tag_groups
 
 
 class MarkupBuffer(gtk.TextBuffer):
+    OVERLAPS = ['bold', 'italic', 'underline', 'strikethrough',
+                'highlight', 'list', 'numlist']
+
     def __init__(self, table=None, lang=None, styles={}):
         gtk.TextBuffer.__init__(self, table)
-
-        # update styles with user-defined
+        self._lang_def = lang
         self.styles = styles
 
         # create tags
         for name, props in self.styles.items():
-            style = {}
-            style.update(props)
-            self.create_tag(name, **style)
-
-        # store lang-definition
-        self._lang_def = lang
-
-        self.overlaps = ['bold', 'italic', 'underline', 'strikethrough',
-                         'highlight', 'list', 'numlist']
+            self.create_tag(name, **props)
 
         self.connect_after("insert-text", self._on_insert_text)
         self.connect_after("delete-range", self._on_delete_range)
@@ -182,49 +158,36 @@ class MarkupBuffer(gtk.TextBuffer):
 
     def get_slice(self, start, end):
         """
-        We have to search for the regexes in utf-8 text
+        We have to search for the regexes in utf-8 text.
         """
-        slice_text = gtk.TextBuffer.get_slice(self, start, end)
-        slice_text = slice_text.decode('utf-8')
-        return slice_text
+        return gtk.TextBuffer.get_slice(self, start, end).decode('utf-8')
 
     def _on_insert_text(self, buf, it, text, length):
         end = it.copy()
         start = it.copy()
         start.backward_chars(length)
-
         self.update_syntax(start, end)
 
     def _on_delete_range(self, buf, start, end):
-        start = start.copy()
-
         self.update_syntax(start, start)
 
     def remove_all_syntax_tags(self, start, end):
         """
-        Do not remove the gtkspell highlighting
+        Do not remove the gtkspell highlighting.
         """
         for style in self.styles:
             self.remove_tag_by_name(style, start, end)
 
     def apply_tags(self, tags):
-        for mstart, mend, tagname in tags.list():
+        for mstart, mend, tagname, rule in tags:
             # apply tag
             self.apply_tag_by_name(tagname, mstart, mend)
 
     def update_syntax(self, start, end):
-        """Use two categories of rules: one-line and multiline
-
-        Before running multiline rules: Check if e.g. - is present in changed
-        string.
-        """
         # Just update from the start of the first edited line
         # to the end of the last edited line, because we can
-        # guarantee that there's no multiline rule
-        start_line_number = start.get_line()
-        start_line_iter = self.get_iter_at_line(start_line_number)
-        start = start_line_iter
-
+        # guarantee that there's no multiline rule.
+        start = self.get_iter_at_line(start.get_line())
         end.forward_to_line_end()
 
         # remove all tags from start to end
@@ -233,7 +196,6 @@ class MarkupBuffer(gtk.TextBuffer):
         tag_groups = self._lang_def(self, start, end)
 
         min_start = start.copy()
-
         for tags in tag_groups:
             if tags.rule == 'highlight':
                 self.apply_tags(tags)
@@ -242,15 +204,12 @@ class MarkupBuffer(gtk.TextBuffer):
                 # min_start is left or equal to tags.min_start
                 self.apply_tags(tags)
 
-                if tags.rule in self.overlaps:
+                if tags.rule in self.OVERLAPS:
                     min_start = tags.min_start
                 else:
                     min_start = tags.max_end
 
 
-# additional style definitions:
-# the update_syntax() method of CodeBuffer allows you to define new and modify
-# already defined styles. Think of it like CSS.
 styles = {
     'bold':             {'weight': pango.WEIGHT_BOLD},
     'italic':           {'style': pango.STYLE_ITALIC},

@@ -112,6 +112,11 @@ O Use Zeitgeist for automatic category entries
   O Mails (Write Thunderbird zeitgeist addon)
   X Twitter Messages (gwibber zeitgeist addon written by zeitgeist devs)
 
+O Windows Store:
+  - Annual cost 37 Euro (personal) or 75 Euro (company)
+  - Company account needed for desktop apps
+  - Certification is required also for desktop apps
+
 
 Ideas:
 
