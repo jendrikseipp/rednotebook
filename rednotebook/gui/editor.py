@@ -257,7 +257,7 @@ class Editor(object):
                     try:
                         self._spell_checker.set_language(filesystem.LANGUAGE)
                     except RuntimeError as err:
-                        logging.error('Spellchecking could not be enabled for %s: %s' % 
+                        logging.error('Spellchecking could not be enabled for %s: %s' %
                                       (filesystem.LANGUAGE, err))
                         logging.error('Consult built-in help for instructions '
                                       'on how to add custom dictionaries.')

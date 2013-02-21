@@ -1,7 +1,10 @@
+import os
 import re
+import tempfile
 
 from rednotebook.util.markup import convert_to_pango, convert_from_pango, \
                                     convert, _convert_paths
+from rednotebook.util import filesystem
 
 def touch(path):
     with open(path, 'w') as f:
@@ -57,13 +60,15 @@ def test_images_latex():
         assert expected in latex
 
 def test_path_conversion():
-    for path in ['/tmp/rel.jpg', '/tmp/rel.pdf']:
+    tmpdir = tempfile.gettempdir()
+    for path in [os.path.join(tmpdir, f) for f in ('rel.jpg', 'rel.pdf')]:
         touch(path)
+    tmpdir_uri = 'file://' + tmpdir
 
-    rel_paths = [('[""file://rel"".jpg]', '[""file:///tmp/rel"".jpg]'),
-                 ('[""rel"".jpg]', '[""file:///tmp/rel"".jpg]'),
-                 ('[rel.pdf ""file://rel.pdf""]', '[rel.pdf ""file:///tmp/rel.pdf""]'),
-                 ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""file:///tmp/rel.pdf""]')]
+    rel_paths = [('[""file://rel"".jpg]', '[""%s/rel"".jpg]' % tmpdir_uri),
+                 ('[""rel"".jpg]', '[""%s/rel"".jpg]' % tmpdir_uri),
+                 ('[rel.pdf ""file://rel.pdf""]', '[rel.pdf ""%s/rel.pdf""]' % tmpdir_uri),
+                 ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""%s/rel.pdf""]' % tmpdir_uri)]
 
     abs_paths = ['[""file:///abs"".jpg]', '[""/tmp/aha 1"".jpg]',
                  '[abs.pdf ""file:///abs.pdf""]', '[abs.pdf ""/tmp/abs.pdf""]',
@@ -71,7 +76,7 @@ def test_path_conversion():
                 ]
 
     for old, new in rel_paths:
-        assert new == _convert_paths(old, '/tmp')
+        assert new == _convert_paths(old, tmpdir)
 
     for path in abs_paths:
-        assert path == _convert_paths(path, '/tmp')
+        assert path == _convert_paths(path, tmpdir)

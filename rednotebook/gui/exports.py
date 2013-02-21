@@ -561,8 +561,6 @@ class PdfExporter(Exporter):
 def get_exporters():
     exporters = [PlainTextExporter, HtmlExporter, LatexExporter, PdfExporter]
 
-    #exporters = filter(lambda exporter: exporter.is_available(), exporters)
-
     # Instantiate importers
     exporters = map(lambda exporter: exporter(), exporters)
     return exporters
