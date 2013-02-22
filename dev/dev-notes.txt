@@ -117,6 +117,10 @@ O Windows Store:
   - Company account needed for desktop apps
   - Certification is required also for desktop apps
 
+O Syntax highlighting:
+  - highlight.js via http://cdnjs.com/ or http://softwaremaniacs.org/soft/highlight/en/download/
+  - Alternatives: prettify.js, SyntaxHighlighter
+
 
 Ideas:
 

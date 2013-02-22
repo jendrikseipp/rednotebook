@@ -526,6 +526,8 @@ class Journal:
         '''
         Returns a dictionary mapping the words to their number of appearance
         '''
+        # TODO: Use collections.Counter in Python2.7
+        # TODO: Check if concatenating all text and using a regex is faster.
         word_dict = defaultdict(int)
         for day in self.days:
             words = day.get_words()
