@@ -250,6 +250,8 @@ class Cloud(HtmlView):
             ignore_menu_item.connect('activate', self.on_ignore_menu_activate, self.last_hovered_word)
 
     def on_ignore_menu_activate(self, menu_item, selected_word):
+        # Escape backslash
+        selected_word = selected_word.replace('\\', '\\\\')
         logging.info('"%s" will be hidden from clouds' % selected_word)
         self.ignore_list.append(selected_word)
         self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
