@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2013-02-19 20:46+0000\n"
-"Last-Translator: Pierre Tocquin <Unknown>\n"
+"PO-Revision-Date: 2013-02-21 12:30+0000\n"
+"Last-Translator: lann <lann@worldonline.fr>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-20 04:52+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-02-22 05:20+0000\n"
+"X-Generator: Launchpad (build 16506)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -86,7 +86,7 @@ msgstr "Barrer"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Effacer"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
@@ -334,7 +334,7 @@ msgstr "Ouvrir l'assistant d'exportation"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:113
 msgid "_Backup"
-msgstr ""
+msgstr "_Sauvegarder"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save all the data in a zip archive"
