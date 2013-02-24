@@ -24,9 +24,12 @@ import time
 import itertools
 import logging
 import locale
-from optparse import OptionParser
 from collections import defaultdict
 
+try:
+    import argparse
+except ImportError:
+    from rednotebook.external import argparse
 
 # Use basic stdout logging before we can initialize logging correctly
 logging.basicConfig(level=logging.INFO,
@@ -81,28 +84,21 @@ from rednotebook import configuration
 from rednotebook import data
 
 
-def parse_options():
-    parser = OptionParser(usage="usage: %prog [options] [journal-path]",
-                          description=info.command_line_help,
-                          version="RedNotebook %s" % info.version,
-                          formatter=utils.IndentedHelpFormatterWithNL(),
-                          )
+def parse_arguments():
+    parser = argparse.ArgumentParser(
+        description=info.comments,
+        formatter_class=argparse.RawTextHelpFormatter,)
+    parser.add_argument('--version', action='version',
+                        version='RedNotebook %s' % info.version)
+    parser.add_argument('-d', '--debug', dest='debug', action='store_true',
+                        help='output debugging messages')
+    parser.add_argument('-m', '--minimized', dest='minimized', action='store_true',
+                        help='start mimimized to system tray')
+    parser.add_argument('journal', nargs='?', help=info.command_line_help)
+    args = parser.parse_args()
+    return args
 
-    parser.add_option('-d', '--debug', dest='debug', default=False,
-                      action='store_true', help='Output debugging messages'
-                      ' (default: False)')
-
-    parser.add_option('-m', '--minimized', dest='minimized', default=False,
-                      action='store_true', help='Start mimimized to system tray'
-                      ' (default: False)')
-
-    options, args = parser.parse_args()
-
-    return options, args
-
-options, args = parse_options()
-
-
+args = parse_arguments()
 
 ## ---------------------- Enable logging -------------------------------
 
@@ -135,7 +131,7 @@ def setup_logging(log_file):
     root_logger.addHandler(filelog)
 
     level = logging.INFO
-    if options.debug:
+    if args.debug:
         level = logging.DEBUG
 
     # define a Handler which writes INFO messages or higher to sys.stdout
@@ -211,13 +207,13 @@ class Journal:
         logging.info('Running in portable mode: %s' % self.dirs.portable)
 
         self.testing = False
-        if options.debug:
+        if args.debug:
             self.testing = True
             logging.debug('Debug Mode is on')
 
         # Allow starting minimized to tray
         # When we start minimized we have to set the tray icon visible
-        self.start_minimized = options.minimized
+        self.start_minimized = args.minimized
         if self.start_minimized:
             self.config['closeToTray'] = 1
 
@@ -270,7 +266,7 @@ class Journal:
         Retrieve the path from optional args or return standard value if args
         not present
         '''
-        if not args:
+        if not args.journal:
             data_dir = self.config.read('dataDir', self.dirs.data_dir)
             if not os.path.isabs(data_dir):
                 data_dir = os.path.join(self.dirs.app_dir, data_dir)
@@ -281,7 +277,7 @@ class Journal:
         # or an absolute path /home/username/myjournal
         # Try to find the journal under the standard location or at the given
         # absolute or relative location
-        path_arg = args[0]
+        path_arg = args.journal
 
         logging.debug('Trying to find journal "%s"' % path_arg)
 
@@ -293,10 +289,10 @@ class Journal:
                     return path
                 else:
                     logging.warning('To open a journal you must specify a '
-                                'directory, not a file.')
+                                    'directory, not a file.')
 
-        logging.error('The path "%s" is no valid journal directory. '
-                    'Execute "rednotebook -h" for instructions' % path_arg)
+        logging.error('The path "%s" is not a valid journal directory. '
+                      'Execute "rednotebook -h" for instructions' % path_arg)
         sys.exit(1)
 
 

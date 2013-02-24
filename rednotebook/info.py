@@ -38,7 +38,7 @@ developers = ['Jendrik Seipp <jendrikseipp@web.de>',
 
 comments = '''\
 RedNotebook is a graphical journal to keep track of notes and
-thoughts. It includes a calendar navigation, customizable
+thoughts. It includes calendar navigation, customizable
 templates, export functionality and word clouds. You can also
 format, tag and search your entries.
 '''
@@ -62,16 +62,16 @@ with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 '''
 
 command_line_help = '''\
-RedNotebook %s
-
-The optional journal-path can be one of the following:
+(optional) Specify the directory storing the journal data.
+The journal argument can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)
  - A relative path (e.g. ../dir/myjournal)
  - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
 
-If the journal-path is omitted the last session's journal will be used.
-At the first program start this defaults to "$HOME/.rednotebook/data".
-''' % version
+If the journal argument is omitted then the last session's journal
+path will be used. At the first program start, this defaults to
+"$HOME/.rednotebook/data"
+'''
 
 tags = _('Tags')
 work = _('Work')
