@@ -28,6 +28,7 @@ from collections import defaultdict
 
 try:
     import argparse
+    assert argparse  # silence pyflakes
 except ImportError:
     from rednotebook.external import argparse
 

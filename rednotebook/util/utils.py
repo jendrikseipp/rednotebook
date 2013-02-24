@@ -24,8 +24,6 @@ import httplib
 from urllib2 import urlopen
 import webbrowser
 import logging
-from optparse import IndentedHelpFormatter
-import textwrap
 from distutils.version import StrictVersion
 
 import gtk
