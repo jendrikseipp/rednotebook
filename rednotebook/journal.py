@@ -26,11 +26,6 @@ import logging
 import locale
 from collections import defaultdict
 
-try:
-    import argparse
-    assert argparse  # silence pyflakes
-except ImportError:
-    from rednotebook.external import argparse
 
 # Use basic stdout logging before we can initialize logging correctly
 logging.basicConfig(level=logging.INFO,
@@ -85,21 +80,7 @@ from rednotebook import configuration
 from rednotebook import data
 
 
-def parse_arguments():
-    parser = argparse.ArgumentParser(
-        description=info.comments,
-        formatter_class=argparse.RawTextHelpFormatter,)
-    parser.add_argument('--version', action='version',
-                        version='RedNotebook %s' % info.version)
-    parser.add_argument('-d', '--debug', dest='debug', action='store_true',
-                        help='output debugging messages')
-    parser.add_argument('-m', '--minimized', dest='minimized', action='store_true',
-                        help='start mimimized to system tray')
-    parser.add_argument('journal', nargs='?', help=info.command_line_help)
-    args = parser.parse_args()
-    return args
-
-args = parse_arguments()
+args = info.get_commandline_parser().parse_args()
 
 ## ---------------------- Enable logging -------------------------------
 

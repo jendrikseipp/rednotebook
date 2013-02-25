@@ -23,6 +23,13 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
+try:
+    import argparse
+    assert argparse  # silence pyflakes
+except ImportError:
+    from rednotebook.external import argparse
+
+
 version = '1.6.7'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
@@ -61,7 +68,7 @@ with RedNotebook; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '''
 
-command_line_help = '''\
+journal_path_help = '''\
 (optional) Specify the directory storing the journal data.
 The journal argument can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)
@@ -70,8 +77,22 @@ The journal argument can be one of the following:
 
 If the journal argument is omitted then the last session's journal
 path will be used. At the first program start, this defaults to
-"$HOME/.rednotebook/data"
+"$HOME/.rednotebook/data".
 '''
+
+def get_commandline_parser():
+    parser = argparse.ArgumentParser(
+        description=comments,
+        formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('--version', action='version',
+                        version='RedNotebook %s' % version)
+    parser.add_argument('-d', '--debug', dest='debug', action='store_true',
+                        help='output debugging messages')
+    parser.add_argument('-m', '--minimized', dest='minimized', action='store_true',
+                        help='start mimimized to system tray')
+    parser.add_argument('journal', nargs='?', help=journal_path_help)
+    return parser
+
 
 tags = _('Tags')
 work = _('Work')
@@ -167,6 +188,8 @@ Here comes the entry about the #fun_stuff.
 multiple_entries_day = {'text': multiple_entries_text + multiple_entries_example}
 
 example_content = [welcome_day, multiple_entries_day]
+
+commandline_help = get_commandline_parser().format_help()
 
 help_text = '''
 == Layout ==
@@ -542,25 +565,7 @@ resulting list chronologically by pressing the "Date" button.
 
 == Command line options ==
 ```
-Usage: rednotebook [options] [journal-path]
-
-RedNotebook %(version)s
-
-The optional journal-path can be one of the following:
- - An absolute path (e.g. /home/username/myjournal)
- - A relative path (e.g. ../dir/myjournal)
- - The name of a directory under $HOME/.rednotebook/ (e.g. myjournal)
-
-If the journal-path is omitted the last session's journal will be used.
-At the first program start this defaults to "$HOME/.rednotebook/data".
-
-
-Options:
-  -h, --help        show this help message and exit
-
-  -d, --debug       Output debugging messages (default: False)
-
-  -m, --minimized   Start mimimized to system tray (default: False)
+%(commandline_help)s
 ```
 
 == Data Format ==
