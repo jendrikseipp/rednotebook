@@ -91,7 +91,7 @@ def setup_logging(log_file):
     # version we cannot log to sys.stderr because it's broken on
     # windows. Stdout is redirected into a blackhole by py2exe.
     stderr_streams = [file_logging_stream]
-    if not hasattr(sys, 'frozen'):
+    if not filesystem.main_is_frozen():
         stderr_streams.append(sys.__stderr__)
     sys.stderr = utils.StreamDuplicator(stderr_streams)
 
