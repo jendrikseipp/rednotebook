@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2012-10-28 21:14+0000\n"
-"Last-Translator: Jakub Kočí <Unknown>\n"
+"PO-Revision-Date: 2013-02-25 22:17+0000\n"
+"Last-Translator: Jan Helebrant <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-19 04:58+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-02-26 05:09+0000\n"
+"X-Generator: Launchpad (build 16506)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -32,7 +32,7 @@ msgstr "Záloha"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "Zálohovat"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
@@ -107,7 +107,7 @@ msgstr "Úvod"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Save and insert"
-msgstr ""
+msgstr "Uložit a vložit"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -158,7 +158,7 @@ msgstr "Do:"
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Date format"
-msgstr ""
+msgstr "Formát data"
 
 #: ../rednotebook/gui/exports.py:136
 msgid "Leave blank to omit dates in export"
@@ -194,7 +194,7 @@ msgstr "Vybrat"
 
 #: ../rednotebook/gui/exports.py:162
 msgid "Deselect"
-msgstr ""
+msgstr "Zrušit výběr"
 
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
@@ -262,7 +262,7 @@ msgstr "Koncové datum"
 
 #: ../rednotebook/gui/exports.py:408
 msgid "Include text"
-msgstr ""
+msgstr "Zahrnout text"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
@@ -329,7 +329,7 @@ msgstr "Otevřít průvodce exportem"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:113
 msgid "_Backup"
-msgstr ""
+msgstr "_Zálohovat"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save all the data in a zip archive"
@@ -337,7 +337,7 @@ msgstr "Uložit všechna data do archivu zip"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistiky"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Show some statistics about the journal"
@@ -381,7 +381,7 @@ msgstr "Získat nápovědu online"
 
 #: ../rednotebook/gui/menu.py:148
 msgid "Browse answered questions or ask a new one"
-msgstr ""
+msgstr "Procházet zodpovězené dotazy nebo položit nový dotaz"
 
 #: ../rednotebook/gui/menu.py:149
 msgid "Translate RedNotebook"
@@ -401,19 +401,19 @@ msgstr "Vyplňte krátký formulář s popisem problému"
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Wrong directory"
-msgstr ""
+msgstr "Chybný adresář"
 
 #: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Nemůžete použít tento adresář pro váš žurnál:"
 
 #: ../rednotebook/gui/menu.py:180
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "Zvolte prosím prázdý adresář."
 
 #: ../rednotebook/gui/menu.py:184
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "Tento adresář neobsahuje soubory žurnálu:"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "Journals are saved in a directory, not in a single file."
@@ -486,7 +486,7 @@ msgstr "Zavření okna pošle RedNotebook do oznamovací oblasti"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Automaticky přepínat mezi režimem náhledu a editace"
 
 #: ../rednotebook/gui/options.py:303
 msgid "Check for new version at startup"
@@ -611,15 +611,15 @@ msgstr "Vložit obrázky, soubory, odkazy a další obsah"
 
 #: ../rednotebook/gui/insert_menu.py:189
 msgid "Width (optional):"
-msgstr ""
+msgstr "Šířka (volitelné)"
 
 #: ../rednotebook/gui/insert_menu.py:194
 msgid "pixels"
-msgstr ""
+msgstr "pixelů"
 
 #: ../rednotebook/gui/insert_menu.py:215
 msgid "Width must be an integer."
-msgstr ""
+msgstr "Šířka musí být celé číslo."
 
 #: ../rednotebook/gui/insert_menu.py:279
 msgid "No link location has been entered"
@@ -643,7 +643,7 @@ msgstr "Smazat tuto položku"
 
 #: ../rednotebook/journal.py:249
 msgid "Opening default journal."
-msgstr ""
+msgstr "Otvírání výchozího žurnálu."
 
 #: ../rednotebook/journal.py:332
 #, python-format
@@ -656,7 +656,7 @@ msgstr "Nic k uložení"
 
 #: ../rednotebook/journal.py:482
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: ../rednotebook/info.py:77
 msgid "Work"
@@ -720,7 +720,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:96
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Štítkování je jednoduché"
 
 #: ../rednotebook/info.py:97
 msgid "Just use #hashtags like on twitter."
@@ -787,31 +787,31 @@ msgstr "Mějte se hezky!"
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
-msgstr ""
+msgstr "pondělí"
 
 #: ../rednotebook/templates.py:28
 msgid "Tuesday"
-msgstr ""
+msgstr "úterý"
 
 #: ../rednotebook/templates.py:28
 msgid "Wednesday"
-msgstr ""
+msgstr "středa"
 
 #: ../rednotebook/templates.py:28
 msgid "Thursday"
-msgstr ""
+msgstr "čtvrtek"
 
 #: ../rednotebook/templates.py:29
 msgid "Friday"
-msgstr ""
+msgstr "pátek"
 
 #: ../rednotebook/templates.py:29
 msgid "Saturday"
-msgstr ""
+msgstr "sobota"
 
 #: ../rednotebook/templates.py:29
 msgid "Sunday"
-msgstr ""
+msgstr "neděle"
 
 #: ../rednotebook/templates.py:108
 msgid ""
@@ -837,6 +837,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== Schůzka ===\n"
+"\n"
+"Účel, datum a místo\n"
+"\n"
+"**Přítomni:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Diskuze, Rozhodnutí, Úkoly:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:132
 msgid ""
@@ -852,6 +873,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Cesta ===\n"
+"**Datum:**\n"
+"\n"
+"**Místo:**\n"
+"\n"
+"**Účastníci:**\n"
+"\n"
+"**Výlet:**\n"
+"Nejdříve jsme jeli do xxxxx a potom do yyyyy ...\n"
+"\n"
+"**Obrázky:** [Složka s obrázky \"\"/path/to/the/images/\"\"]\n"
 
 #: ../rednotebook/templates.py:146
 msgid ""
@@ -863,6 +895,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Telefonní hovor ===\n"
+"- **Osoba:**\n"
+"- **Čas:**\n"
+"- **Téma:**\n"
+"- **Výstup a navazující činnost:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:156
 msgid ""
@@ -884,6 +923,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Osobní ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Jaký byl den?**\n"
+"\n"
+"\n"
+"========================\n"
+"**Co by se mělo změnit?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:279
 msgid "Choose Template Name"
@@ -935,7 +991,7 @@ msgstr "Řádků"
 
 #: ../rednotebook/util/utils.py:116
 msgid "unknown"
-msgstr ""
+msgstr "neznámý"
 
 #: ../rednotebook/util/utils.py:131
 #, python-format
@@ -957,7 +1013,7 @@ msgstr "Příště se již nedotazovat"
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
-msgstr ""
+msgstr "Přejít na předchozí den (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
@@ -969,7 +1025,7 @@ msgstr "Dnes"
 
 #: tmp/main_window.glade.h:4
 msgid "Go to next day (Ctrl+PageDown)"
-msgstr ""
+msgstr "Přejít na další den (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:5
 msgid "Show a formatted preview of the text (Ctrl+P)"
@@ -985,11 +1041,11 @@ msgstr "Úpravy"
 
 #: tmp/main_window.glade.h:10
 msgid "Add a tag or a category entry"
-msgstr ""
+msgstr "Přidat štítek nebo kategorii"
 
 #: tmp/main_window.glade.h:11
 msgid "Add Tag"
-msgstr ""
+msgstr "Přidat štítek"
 
 #. ## TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:13
@@ -1017,7 +1073,7 @@ msgstr "<b>Vybrat stávající nebo novou kategorii</b>"
 
 #: tmp/main_window.glade.h:16
 msgid "<b>Write entry</b> (optional)"
-msgstr ""
+msgstr "<b>Napište vstup</b> (volitelné)"
 
 #: tmp/main_window.glade.h:17
 msgid "Select backup filename"
