@@ -383,8 +383,12 @@ def convert(txt, target, data_dir, headers=None, options=None):
         result = msg
     # Unknown error, show the traceback to the user
     except:
-        result = txt2tags.getUnknownErrorMessage()
-        logging.error(result)
+        result = ('<b>Error</b>: This day contains invalid '
+            '<a href="http://txt2tags.org/markup.html">txt2tags markup</a>. '
+            'You can help us fix this by submitting a bugreport in the '
+            '<a href="https://code.google.com/p/txt2tags/issues/list">'
+            'txt2tags bugtracker</a>. Please append the day\'s text to the issue.')
+        logging.error('Invalid markup:\n%s' % txt2tags.getUnknownErrorMessage())
     return result
 
 

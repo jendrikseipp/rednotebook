@@ -12,6 +12,7 @@ X Allow filtering exported days by tags (Alistair Marshall).
 X Add option to export only the currently selected text (Alistair Marshall).
 X Move spellcheck option from preferences to edit menu and add F7 shortcut (Alistair Marshall).
 X Enable spellchecking on Windows.
+X Better error message for invalid markup.
 x Show warning if no directory is selected before clicking the "Open" button when choosing a journal directory.
 x Gracefully handle BadStatusLines when checking for new versions.
 x Do not try to set file permissions on Windows where they are unavailable.
