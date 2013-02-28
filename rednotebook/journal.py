@@ -28,7 +28,7 @@ from collections import defaultdict
 
 
 # Use basic stdout logging before we can initialize logging correctly
-logging.basicConfig(level=logging.INFO,
+logging.basicConfig(level=logging.DEBUG,
                     format='%(levelname)-8s %(message)s',
                     stream=sys.stdout)
 
@@ -87,13 +87,16 @@ args = info.get_commandline_parser().parse_args()
 def setup_logging(log_file):
     file_logging_stream = open(log_file, 'w')
 
-    # We want to have the error messages in the logfile. In the frozen
-    # version we cannot log to sys.stderr because it's broken on
-    # windows. Stdout is redirected into a blackhole by py2exe.
+    # We want to have all stdout and stderr messages in the logfile.
+    # In the frozen version we cannot log to sys.stderr because it's
+    # broken on windows. Stdout doesn't work either it seems.
     stderr_streams = [file_logging_stream]
+    stdout_streams = [file_logging_stream]
     if not filesystem.main_is_frozen():
         stderr_streams.append(sys.__stderr__)
+        stdout_streams.append(sys.__stdout__)
     sys.stderr = utils.StreamDuplicator(stderr_streams)
+    sys.stdout = utils.StreamDuplicator(stdout_streams)
 
     root_logger = logging.getLogger('')
     root_logger.setLevel(logging.DEBUG)
@@ -103,30 +106,17 @@ def setup_logging(log_file):
     for handler in root_logger.handlers:
         root_logger.removeHandler(handler)
 
-    # define a Handler which writes DEBUG messages or higher to the logfile
-    filelog = logging.StreamHandler(file_logging_stream)
-    filelog.setLevel(logging.DEBUG)
-    filelog_formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
-    # tell the handler to use this format
-    filelog.setFormatter(filelog_formatter)
-    # add the handler to the root logger
-    root_logger.addHandler(filelog)
-
-    level = logging.INFO
-    if args.debug:
-        level = logging.DEBUG
-
-    # define a Handler which writes INFO messages or higher to sys.stdout
+    # define a Handler which writes messages to sys.stdout
     console = logging.StreamHandler(sys.stdout)
-    console.setLevel(level)
+    console.setLevel(logging.DEBUG)
     # set a format which is simpler for console use
-    formatter = logging.Formatter('%(levelname)-8s %(message)s')
+    formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
     # tell the handler to use this format
     console.setFormatter(formatter)
     # add the handler to the root logger
     root_logger.addHandler(console)
 
-    logging.debug('sys.stdout logging level: %s' % level)
+    logging.debug('Debug message')
     logging.info('Writing log to file "%s"' % log_file)
 
 

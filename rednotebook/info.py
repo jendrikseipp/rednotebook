@@ -86,8 +86,6 @@ def get_commandline_parser():
         formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version',
                         version='RedNotebook %s' % version)
-    parser.add_argument('-d', '--debug', dest='debug', action='store_true',
-                        help='output debugging messages')
     parser.add_argument('-m', '--minimized', dest='minimized', action='store_true',
                         help='start mimimized to system tray')
     parser.add_argument('journal', nargs='?', help=journal_path_help)
