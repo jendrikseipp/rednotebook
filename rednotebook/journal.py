@@ -178,11 +178,6 @@ class Journal:
 
         logging.info('Running in portable mode: %s' % self.dirs.portable)
 
-        self.testing = False
-        if args.debug:
-            self.testing = True
-            logging.debug('Debug Mode is on')
-
         # Allow starting minimized to tray
         # When we start minimized we have to set the tray icon visible
         self.start_minimized = args.minimized
@@ -229,8 +224,7 @@ class Journal:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
-        if not self.testing:
-            gobject.timeout_add_seconds(600, self.save_to_disk)
+        gobject.timeout_add_seconds(600, self.save_to_disk)
 
 
     def get_journal_path(self):
