@@ -7,7 +7,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.6.7
+1.7.0
 X Allow filtering exported days by tags (Alistair Marshall).
 X Add option to export only the currently selected text (Alistair Marshall).
 X Move spellcheck option from preferences to edit menu and add F7 shortcut (Alistair Marshall).
@@ -79,11 +79,7 @@ O Filter exports by tags
 O RTF export
 
 
-Python 2.7:
-O Use argparse instead of optparse (remove IndentedHelpFormatterWithNL)
-
 Windows:
-O Windows: Enable spellcheck
 O Make windows installer truly portable (leave no traces in registry)
   Probably it's better to distribute a zip archive for this.
 
