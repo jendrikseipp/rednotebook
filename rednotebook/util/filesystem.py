@@ -18,7 +18,6 @@
 # -----------------------------------------------------------------------
 
 import os
-import imp
 import sys
 import locale
 import subprocess
