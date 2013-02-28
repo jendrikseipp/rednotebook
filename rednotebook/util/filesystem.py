@@ -280,7 +280,7 @@ def get_local_url(url):
     webkit returns the path file://C/file.ext .
     '''
     orig_url = url
-    if url.startswith('file:///') and sys.platform == 'win32':
+    if url.startswith('file:///') and IS_WIN:
         url = url.replace('file:///', '')
     if url.startswith('file://'):
         url = url.replace('file://', '')

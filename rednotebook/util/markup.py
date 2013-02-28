@@ -307,7 +307,7 @@ def _convert_paths(txt, data_dir):
             path = os.path.join(data_dir, path)
             assert os.path.isabs(path), path
             if os.path.exists(path):
-                uri = 'file://%s' % path
+                uri = filesystem.get_local_url(path)
         return uri
 
     def _convert_pic_path(match):
