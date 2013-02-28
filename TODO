@@ -7,19 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.7.0
-X Allow filtering exported days by tags (Alistair Marshall).
-X Add option to export only the currently selected text (Alistair Marshall).
-X Move spellcheck option from preferences to edit menu and add F7 shortcut (Alistair Marshall).
-X Enable spellchecking on Windows. See help for adding custom dictionaries.
-X Better error message for invalid markup.
-x Show warning if no directory is selected before clicking the "Open" button when choosing a journal directory.
-x Gracefully handle BadStatusLines when checking for new versions.
-x Do not try to set file permissions on Windows where they are unavailable.
-x Fix hide-from-cloud for words containing backslashes (LP:1131412).
-x Fix relative file links on Windows.
-x Code: Switch from optparse to argparse (Alistair Marshall).
-
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
 O During saving: Delete old backup, move old file to new backup then save new file.

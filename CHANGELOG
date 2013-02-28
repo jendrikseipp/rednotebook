@@ -1,3 +1,16 @@
+== 1.7.0 (2013-02-28) ==
+* Allow filtering exported days by tags (Alistair Marshall).
+* Add option to export only the currently selected text (Alistair Marshall).
+* Move spellcheck option from preferences to edit menu and add F7 shortcut (Alistair Marshall).
+* Enable spellchecking on Windows. See help for adding custom dictionaries.
+* Better error message for invalid markup.
+* Show warning if no directory is selected before clicking the "Open" button when choosing a journal directory.
+* Gracefully handle BadStatusLines when checking for new versions.
+* Do not try to set file permissions on Windows where they are unavailable.
+* Fix hide-from-cloud for words containing backslashes (LP:1131412).
+* Fix relative file links on Windows.
+* Code: Switch from optparse to argparse (Alistair Marshall).
+
 == 1.6.6 (2013-01-21) ==
 * Edit templates in RedNotebook directly. Preview and use the Insert and Format toolbar menus before inserting a template.
 * Support relative image links like [""my_pic"".jpg].
