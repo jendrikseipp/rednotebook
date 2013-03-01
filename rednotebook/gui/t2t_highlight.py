@@ -169,7 +169,8 @@ class MarkupBuffer(gtk.TextBuffer):
         self.update_syntax(start, end)
 
     def _on_delete_range(self, buf, start, end):
-        self.update_syntax(start, start)
+        # Copy the iters here to keep them valid for spellchecking's replacements.
+        self.update_syntax(start.copy(), start.copy())
 
     def remove_all_syntax_tags(self, start, end):
         """
