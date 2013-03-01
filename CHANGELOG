@@ -1,3 +1,6 @@
+== 1.7.1 (2013-03-01) ==
+* Fix: Insert spellchecking correction in the correct position (LP:1137925).
+
 == 1.7.0 (2013-02-28) ==
 * Allow filtering exported days by tags (Alistair Marshall).
 * Add option to export only the currently selected text (Alistair Marshall).
