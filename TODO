@@ -26,6 +26,7 @@ O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked in preview mode (seems difficult in webkitgtk)
 O Make the right panel an advanced option?
 O Add option to insert verbatim text.
+O Try wine for building windows version.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
