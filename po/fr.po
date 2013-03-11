@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-18 19:40+0100\n"
-"PO-Revision-Date: 2013-02-21 12:30+0000\n"
-"Last-Translator: lann <lann@worldonline.fr>\n"
+"PO-Revision-Date: 2013-03-10 10:50+0000\n"
+"Last-Translator: Sylvie Gallet <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-03-07 04:57+0000\n"
-"X-Generator: Launchpad (build 16514)\n"
+"X-Launchpad-Export-Date: 2013-03-11 04:56+0000\n"
+"X-Generator: Launchpad (build 16523)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -60,8 +60,8 @@ msgstr "Modèle"
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Insère le modèle du jour de la semaine. Cliquer sur les flèches sur la "
-"droite pour plus d'options"
+"Insère le modèle du jour de la semaine. Cliquez sur la flèche de droite pour "
+"plus d'options"
 
 #: ../rednotebook/gui/format_menu.py:94
 msgid "No text or tag has been selected."
@@ -96,11 +96,11 @@ msgstr "_Format"
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
 msgid "Format"
-msgstr "Formatage"
+msgstr "Format"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
-msgstr "Formater le texte ou l'étiquette sélectionnée"
+msgstr "Formater le texte ou l'étiquette sélectionné"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
@@ -139,7 +139,7 @@ msgstr "Exporter l'ensemble des jours"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Exporter le texte sélectionné"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -253,7 +253,7 @@ msgstr "Date"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Exporter uniquement le texte sélectionné"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -269,11 +269,11 @@ msgstr "Inclure le texte"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Inclure les étiquettes"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Flitrer par étiquettes"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -294,7 +294,7 @@ msgstr "Contenu exporté vers %s"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Texte brut"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -359,11 +359,11 @@ msgstr "_Édition"
 
 #: ../rednotebook/gui/menu.py:123
 msgid "Undo text or tag edits"
-msgstr "Annuler les modifications de texte ou de mot clé"
+msgstr "Annuler les modifications de texte ou d'étiquette"
 
 #: ../rednotebook/gui/menu.py:125
 msgid "Redo text or tag edits"
-msgstr "Refaire les modifications de texte ou de mots clés"
+msgstr "Refaire les modifications de texte ou d'étiquette"
 
 #: ../rednotebook/gui/menu.py:139
 msgid "Underline misspelled words"
@@ -412,7 +412,7 @@ msgstr "Mauvais répertoire"
 
 #: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Vous ne pouvez pas utiliser ce répertoire pour votre journal :"
 
 #: ../rednotebook/gui/menu.py:180
 msgid "Please select an empty directory."
@@ -420,7 +420,7 @@ msgstr "Veuillez sélectionner un répertoire vide."
 
 #: ../rednotebook/gui/menu.py:184
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "Ce répertoire ne contient pas de fichiers relatifs à un journal :"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "Journals are saved in a directory, not in a single file."
@@ -496,6 +496,7 @@ msgstr "Fermer la fenêtre enverra RedNotebook dans la barre des tâches"
 #: ../rednotebook/gui/options.py:299
 msgid "Switch between edit and preview mode automatically"
 msgstr ""
+"Alterner automatiquement entre les modes d'édition et de prévisualisation"
 
 #: ../rednotebook/gui/options.py:303
 msgid "Check for new version at startup"
@@ -520,10 +521,11 @@ msgstr "Exclure du nuage"
 #: ../rednotebook/gui/options.py:319
 msgid "Do not show these comma separated words in the word cloud"
 msgstr ""
+"Ne pas montrer ces mots (séparés par des virgules) dans le nuage de mots"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Include small words in cloud"
-msgstr ""
+msgstr "Inclure les petits mots dans le nuage"
 
 #: ../rednotebook/gui/options.py:321
 msgid "Allow these words with 4 letters or less"
@@ -621,7 +623,7 @@ msgstr "Insérer des images, fichiers, liens ou autres contenus"
 
 #: ../rednotebook/gui/insert_menu.py:189
 msgid "Width (optional):"
-msgstr ""
+msgstr "Largeur (optionnel) :"
 
 #: ../rednotebook/gui/insert_menu.py:194
 msgid "pixels"
@@ -653,7 +655,7 @@ msgstr "Supprimer cette entrée"
 
 #: ../rednotebook/journal.py:249
 msgid "Opening default journal."
-msgstr ""
+msgstr "Ouverture du journal par défaut."
 
 #: ../rednotebook/journal.py:332
 #, python-format
@@ -729,15 +731,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:93
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Cliquer sur Éditer ci-dessus pour voir la différence."
 
 #: ../rednotebook/info.py:96
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Étiqueter est facile."
 
 #: ../rednotebook/info.py:97
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Utilisez simplement #motdièse, comme sur twitter."
 
 #: ../rednotebook/info.py:100
 msgid ""
@@ -964,7 +966,7 @@ msgstr "Choisissez un nom de modèle"
 
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
-msgstr ""
+msgstr "Ce modèle ne contient pas de texte ou a un contenu illisible."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1034,7 +1036,7 @@ msgstr "Aller au jour précédent (Ctrl + PagePrécédente)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Aller à aujourd'hui (Alt+Début)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
