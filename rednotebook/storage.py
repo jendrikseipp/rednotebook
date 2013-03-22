@@ -33,7 +33,7 @@ except ImportError:
 
 # The presence of the yaml module has been checked
 try:
-    from yaml import CSafeLoader as Loader
+    from yaml import CLoader as Loader
     from yaml import CSafeDumper as Dumper
     assert Loader and Dumper  # silence pyflakes
 except ImportError:
