@@ -161,29 +161,25 @@ completeWelcomeText = '''\
 
 welcome_day = {'text': completeWelcomeText}
 
-multiple_entries_text = '''\
-=== Multiple Entries ===
-You can add multiple entries to one day in two ways:
-- Use two different journals (one named "%(work)s", the other "%(free_time)s")
-- Separate your two entries by different titles (===%(work)s===, ===%(free_time)s===)
-- Use a horizontal separator line (20 “=”s)
+multiple_entries_text = _('''\
+=== Multiple entries ===
+You can add multiple entries to a single day by \
+using different journals (one named "Work", the other "Family"), \
+separating your entries with different titles (=== Work ===, === Family ===) \
+and using horizontal separator lines (20 “=”s).''')
 
-
-''' % globals()
-
-multiple_entries_example = '''\
-====================
-
-=== %(work)s ===
+multiple_entries_example = _('''\
+=== Work ===
 Here goes the first entry. It is about #work.
 
 ====================
 
-=== %(free_time)s ===
-Here comes the entry about the #fun_stuff.
-''' % globals()
+=== Family ===
+Here comes the entry about my #family.''')
 
-multiple_entries_day = {'text': multiple_entries_text + multiple_entries_example}
+multiple_entries_day = {'text': multiple_entries_text + '\n\n' +
+                                20 * '=' + '\n\n' +
+                                multiple_entries_example}
 
 example_content = [welcome_day, multiple_entries_day]
 
@@ -222,7 +218,7 @@ instead of "-" you can create a **numbered list**.
 == Hashtags ==
 %(tags_par)s
 
-== Advanced Tagging ==
+== Advanced tagging ==
 Until #hashtags were introduced, you could only tag a day with the tag panel on
 the right side, that is now hidden by default. Drag the slider to the left to
 see it.
@@ -339,7 +335,7 @@ Obviously you have to be connected to the internet to use that feature. Be sure 
 data regularly if you plan to save your content remotely. There are always more pitfalls when
 an internet connection is involved.
 
-=== Dual Boot ===
+=== Dual boot ===
 Using RedNotebook from multiple operating systems on the same computer is
 also possible. Save your Journal with "Journal->Save As" in a directory
 all systems can access. Then on the other systems you can open the
@@ -413,7 +409,7 @@ open the .tex file with Texniccenter and select "Build Output" from the
 "Output" menu. The program will then create the beautifully looking PDF in the
 same directory.
 
-== Keyboard Shortcuts ==
+== Keyboard shortcuts ==
 ||   Action          |   Shortcut             |
 | Preview (On/Off)   | <Ctrl> + P             |
 | Find               | <Ctrl> + F             |
@@ -469,7 +465,7 @@ So --%(rtm)s-- becomes struck through and **%(dishes)s** becomes bold.
 Once you've finished an item, you could also change its tag name from
 "%(todo)s" to "%(done)s".
 
-=== Week Numbers ===
+=== Week numbers ===
 If you'd like to see the week numbers in the calendar, you can set the
 value of weekNumbers to 1 in the configuration file. This file
 normally resides at $HOME/.rednotebook/configuration.cfg
@@ -556,7 +552,7 @@ Formatting commands inside two pairs of "" are not interpreted (""**not bold**""
 Comments can be inserted after percent signs (**%%**). They will not be shown in the
 preview and the exports. The %% has to be the first character on the line.
 
-=== List of all Entries ===
+=== List of all entries ===
 To get a list of all entries, just search for " " (the space character).
 This character is most likely included in all entries. You can sort the
 resulting list chronologically by pressing the "Date" button.
@@ -566,7 +562,7 @@ resulting list chronologically by pressing the "Date" button.
 %(commandline_help)s
 ```
 
-== Data Format ==
+== Data format ==
 In this paragraph I will explain shortly what the RedNotebook files
 consist of. Firstly it is important to understand that the content
 is saved in a directory with many files, not just one file.
