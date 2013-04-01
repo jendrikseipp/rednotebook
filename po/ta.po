@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-02-18 19:40+0100\n"
+"POT-Creation-Date: 2013-03-31 23:00+0200\n"
 "PO-Revision-Date: 2012-10-12 03:56+0000\n"
 "Last-Translator: முரளி <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-03-07 04:58+0000\n"
-"X-Generator: Launchpad (build 16514)\n"
+"X-Launchpad-Export-Date: 2013-04-01 05:08+0000\n"
+"X-Generator: Launchpad (build 16546)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -119,7 +119,7 @@ msgid "mtv, spam, work, job, play"
 msgstr "எம்டிவி ,இச்பேம் ,வேலை,பணி,விளையாட்டு"
 
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/info.py:76 ../rednotebook/util/markup.py:140
+#: ../rednotebook/info.py:95 ../rednotebook/util/markup.py:140
 msgid "Tags"
 msgstr "குறியீடுகள்"
 
@@ -409,7 +409,7 @@ msgstr "சிக்கலைப் பற்றிய ஒரு சிறு �
 msgid "Wrong directory"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:248
+#: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:213
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
@@ -649,52 +649,52 @@ msgstr "புதிய உள்ளீட்டை சேர்"
 msgid "Delete this entry"
 msgstr "இந்த உள்ளீட்டை நீக்கு"
 
-#: ../rednotebook/journal.py:249
+#: ../rednotebook/journal.py:214
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:332
+#: ../rednotebook/journal.py:296
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "உள்ளடக்கமானது %s இற்கு சேமிக்கப்பட்டது."
 
-#: ../rednotebook/journal.py:335
+#: ../rednotebook/journal.py:299
 msgid "Nothing to save"
 msgstr "சேமிக்க ஒன்றுமில்லை"
 
-#: ../rednotebook/journal.py:482
+#: ../rednotebook/journal.py:446
 msgid "Error"
 msgstr ""
 
-#: ../rednotebook/info.py:77
+#: ../rednotebook/info.py:96
 msgid "Work"
 msgstr "பணி"
 
-#: ../rednotebook/info.py:78
+#: ../rednotebook/info.py:97
 msgid "Free time"
 msgstr "ஓய்வு நேரம்"
 
-#: ../rednotebook/info.py:79
+#: ../rednotebook/info.py:98
 msgid "Todo"
 msgstr "செய்ய வேண்டியவை"
 
-#: ../rednotebook/info.py:80
+#: ../rednotebook/info.py:99
 msgid "Done"
 msgstr "முடிந்தது"
 
-#: ../rednotebook/info.py:81
+#: ../rednotebook/info.py:100
 msgid "Remember the milk"
 msgstr "பால் ஞாபகமிருக்கட்டும்"
 
-#: ../rednotebook/info.py:82
+#: ../rednotebook/info.py:101
 msgid "Wash the dishes"
 msgstr "தட்டுக்களை கழுவு"
 
-#: ../rednotebook/info.py:84
+#: ../rednotebook/info.py:103
 msgid "Hello!"
 msgstr "வணக்கம்!"
 
-#: ../rednotebook/info.py:85
+#: ../rednotebook/info.py:104
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -703,7 +703,7 @@ msgstr ""
 "ஆனாலும், அவற்றை விரும்பிய போது, நீங்கள் அழிக்கலாம்."
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:88
+#: ../rednotebook/info.py:107
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -713,11 +713,11 @@ msgstr ""
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:91 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:110 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "முன்னோட்டம்"
 
-#: ../rednotebook/info.py:92
+#: ../rednotebook/info.py:111
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
@@ -725,19 +725,19 @@ msgstr ""
 "ரெட்நோட்புக்கில் இரண்டு செயல் நிலைகள் உள்ளன, __தொகு__ நிலை மற்றும் "
 "__முன்னோட்ட__ நிலை."
 
-#: ../rednotebook/info.py:93
+#: ../rednotebook/info.py:112
 msgid "Click on Edit above to see the difference."
 msgstr ""
 
-#: ../rednotebook/info.py:96
+#: ../rednotebook/info.py:115
 msgid "Tagging is easy."
 msgstr ""
 
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:116
 msgid "Just use #hashtags like on twitter."
 msgstr ""
 
-#: ../rednotebook/info.py:100
+#: ../rednotebook/info.py:119
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -748,11 +748,11 @@ msgstr ""
 "கழித்தோம். அதற்குப் பிறகு நாங்கள் \"__லைப் ஆப் பிரைன்__\" பார்த்தோம்."
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:112
+#: ../rednotebook/info.py:131
 msgid "Save and Export"
 msgstr "சேமித்து தரவேற்று"
 
-#: ../rednotebook/info.py:113
+#: ../rednotebook/info.py:132
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -760,43 +760,63 @@ msgstr ""
 "நீங்கள் உள்ளிடும் அனைத்தும் தானாகவே முறையான இடைவெளிகளிலும், "
 "பயன்பாட்டிலிருந்து நீங்கள் வெளியேறும் போதும் சேமிக்கப்படும்."
 
-#: ../rednotebook/info.py:114
+#: ../rednotebook/info.py:133
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "தகவல் இழப்பை தவிர்க்க தாங்கள் உங்கள் நாட்குறிப்புகளை முறையாக காப்புப்படி "
 "எடுக்க வேண்டும்."
 
-#: ../rednotebook/info.py:115
+#: ../rednotebook/info.py:134
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "\"சஞ்சிகை\" பட்டியில் உள்ள \"காப்புப் படி\" உங்கள் எல்லா உள்ளீட்டு தகவலையும் "
 "ஒரு குறுக்க கோப்பில் சேமிக்கிறது."
 
-#: ../rednotebook/info.py:116
+#: ../rednotebook/info.py:135
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "\"சஞ்சிகை\" பட்டியில் \"ஏற்றுமதி\" விசையையும் காணலாம்"
 
-#: ../rednotebook/info.py:117
+#: ../rednotebook/info.py:136
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "\"ஏற்றுமதி\" யை சொடுக்கி உங்கள் நாட்குறிப்பை உரை கோப்பு, பி.டி.எப், இணைய "
 "கோப்பு (HTML) அல்லது லேடக்சு கோப்பாக ஏற்றுமதி செய்யவும்."
 
-#: ../rednotebook/info.py:120
+#: ../rednotebook/info.py:139
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "தாங்கள் ஏதேனும் பிழைகளை எதிர்கொண்டால், அவற்றை சரி செய்ய, தயவு செய்து "
 "எனக்கொரு குறிப்பை விட்டுச் செல்லவும்."
 
-#: ../rednotebook/info.py:121
+#: ../rednotebook/info.py:140
 msgid "Any feedback is appreciated."
 msgstr "எந்த வகையான பின்னூட்டமும் வரவேற்கப்படுகிறது."
 
-#: ../rednotebook/info.py:124
+#: ../rednotebook/info.py:143
 msgid "Have a nice day!"
 msgstr "உங்களது நாள் இனிதாகட்டும்!"
+
+#: ../rednotebook/info.py:164
+msgid ""
+"=== Multiple entries ===\n"
+"You can add multiple entries to a single day by using different journals "
+"(one named \"Work\", the other \"Family\"), separating your entries with "
+"different titles (=== Work ===, === Family ===) and using horizontal "
+"separator lines (20 “=”s)."
+msgstr ""
+
+#: ../rednotebook/info.py:171
+msgid ""
+"=== Work ===\n"
+"Here goes the first entry. It is about #work.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Family ===\n"
+"Here comes the entry about my #family."
+msgstr ""
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
@@ -1002,25 +1022,25 @@ msgstr "தொகுக்கப்பட்ட நாட்களின் வ�
 msgid "Lines"
 msgstr "வரிகள்"
 
-#: ../rednotebook/util/utils.py:116
+#: ../rednotebook/util/utils.py:114
 msgid "unknown"
 msgstr ""
 
-#: ../rednotebook/util/utils.py:131
+#: ../rednotebook/util/utils.py:129
 #, python-format
 msgid "You have version <b>%s</b>."
 msgstr "நீங்கள் கொண்டுள்ள பதிப்பு <b>%s</b>."
 
-#: ../rednotebook/util/utils.py:132
+#: ../rednotebook/util/utils.py:130
 #, python-format
 msgid "The latest version is <b>%s</b>."
 msgstr "கடைசி பதிப்பு <b>%s</b> ஆகும்."
 
-#: ../rednotebook/util/utils.py:133
+#: ../rednotebook/util/utils.py:131
 msgid "Do you want to visit the RedNotebook homepage?"
 msgstr "ரெட்நோட்புக்கின் இல்லப்பக்கத்தை பார்க்க விரும்புகிறீரா?"
 
-#: ../rednotebook/util/utils.py:140
+#: ../rednotebook/util/utils.py:138
 msgid "Do not ask again"
 msgstr "மீண்டும் கேட்கைதே"
 
