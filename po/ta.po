@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-03-31 23:00+0200\n"
-"PO-Revision-Date: 2012-10-12 03:56+0000\n"
+"PO-Revision-Date: 2013-04-11 03:50+0000\n"
 "Last-Translator: முரளி <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-04-01 05:08+0000\n"
-"X-Generator: Launchpad (build 16546)\n"
+"X-Launchpad-Export-Date: 2013-04-11 05:10+0000\n"
+"X-Generator: Launchpad (build 16550)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -49,7 +49,7 @@ msgstr "ரெட்நோட்புக்கை காட்டு"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "எந்த அடைவும் தேர்ந்தெடுக்கப்படவில்லை."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -86,12 +86,12 @@ msgstr "நடு-கோடு"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "துடை"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "வடிவமை (_F)"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
@@ -108,7 +108,7 @@ msgstr "அறிமுகம்"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Save and insert"
-msgstr ""
+msgstr "சேமித்து நுழை"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -139,7 +139,7 @@ msgstr "அனைத்து நாட்களையும் ஏற்று"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "தற்போது தேர்ந்தெடுக்கப்பட்ட உரையை ஏற்றுமதிசெய்"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -167,19 +167,19 @@ msgstr "ஏற்றுமதியின் பொழுது நாட்க�
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "உரையையும் ஒட்டுக்களையும் ஏற்றுமதிசெய்"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "உரையை மட்டும் ஏற்றுமதிசெய்"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "ஒட்டுக்களை மட்டும் ஏற்றுமதிசெய்"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "நாட்களை ஒட்டுக்களால் வடிகட்டு"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -200,6 +200,7 @@ msgstr "தெரிவகற்றுக"
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
+"ஒட்டுக்களால் வடிக்கும் போது ஒரு ஒட்டையாவது தாங்கள் தேர்ந்தெடுக்க வேண்டும்."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -252,7 +253,7 @@ msgstr "திகதி"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட உரையை மட்டும் ஏற்றுமதிசெய்"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -268,11 +269,11 @@ msgstr "உரையை உள்ளடக்குக"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "ஒட்டுக்களை உள்ளடக்கு"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "ஒட்டுகளால் வடிக்கப்பட்டது"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -293,7 +294,7 @@ msgstr "உள்ளடக்கம் %s இற்கு ஏற்றப்ப�
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "வெற்று உரை"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -335,7 +336,7 @@ msgstr "ஏற்றுமதி உதவியாளரை திறக்க�
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:113
 msgid "_Backup"
-msgstr ""
+msgstr "காப்பு (_B)"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save all the data in a zip archive"
@@ -343,7 +344,7 @@ msgstr "எல்லா தகவலையும் ஒரு குறுக்
 
 #: ../rednotebook/gui/menu.py:115
 msgid "S_tatistics"
-msgstr ""
+msgstr "புள்ளிவிவரம் (_t)"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Show some statistics about the journal"
@@ -407,19 +408,19 @@ msgstr "சிக்கலைப் பற்றிய ஒரு சிறு �
 
 #: ../rednotebook/gui/menu.py:173
 msgid "Wrong directory"
-msgstr ""
+msgstr "தவறான அடைவு"
 
 #: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:213
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "உங்கள் சஞ்சிகைக்கு தாங்கள் இந்த அடைவை பயன்படுத்த முடியாது:"
 
 #: ../rednotebook/gui/menu.py:180
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "தயவு செய்து ஒரு வெற்று அடைவை தேர்ந்தெடுக்கவும்."
 
 #: ../rednotebook/gui/menu.py:184
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "இந்த அடைவு எந்த சஞ்சிகை கோப்பையும் கொண்டில்லை:"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "Journals are saved in a directory, not in a single file."
@@ -520,11 +521,11 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:320
 msgid "Include small words in cloud"
-msgstr ""
+msgstr "சிறு சொற்களை மேகத்தில் உள்ளடக்கு"
 
 #: ../rednotebook/gui/options.py:321
 msgid "Allow these words with 4 letters or less"
-msgstr ""
+msgstr "4 அல்லது அதற்கு குறைவான எழுத்துக்களை கொண்ட இந்த சொற்களுக்கு இசைவளி"
 
 #: ../rednotebook/gui/search.py:76
 msgid "Text"
@@ -607,7 +608,7 @@ msgstr "கைமுறையாக ஒரு வரிமுறிவை நு
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "நுழை (_I)"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -619,15 +620,15 @@ msgstr "படங்கள், கோப்புகள், சுட்டி�
 
 #: ../rednotebook/gui/insert_menu.py:189
 msgid "Width (optional):"
-msgstr ""
+msgstr "அகலம் (கட்டாயமில்லை):"
 
 #: ../rednotebook/gui/insert_menu.py:194
 msgid "pixels"
-msgstr ""
+msgstr "படத்துணுக்குகள்"
 
 #: ../rednotebook/gui/insert_menu.py:215
 msgid "Width must be an integer."
-msgstr ""
+msgstr "அகலம் ஒரு முழு எண்ணாக இருக்க வேண்டும்."
 
 #: ../rednotebook/gui/insert_menu.py:279
 msgid "No link location has been entered"
@@ -664,7 +665,7 @@ msgstr "சேமிக்க ஒன்றுமில்லை"
 
 #: ../rednotebook/journal.py:446
 msgid "Error"
-msgstr ""
+msgstr "பிழை"
 
 #: ../rednotebook/info.py:96
 msgid "Work"
@@ -1024,7 +1025,7 @@ msgstr "வரிகள்"
 
 #: ../rednotebook/util/utils.py:114
 msgid "unknown"
-msgstr ""
+msgstr "தெரியாதது"
 
 #: ../rednotebook/util/utils.py:129
 #, python-format
