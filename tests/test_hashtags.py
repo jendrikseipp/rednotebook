@@ -31,6 +31,10 @@ def test_hashtags():
             (u'test #hashtag école', ['hashtag']),
             ('hex #11ff22', []),
             ('<font color="#40e0d0">', []),
+            ('test &#hashtag', []),
+            ('test ##hashtag', []),
+            ('test #!/usr/bin/env', []),
+            ('#include', []),
     ]
     for text, tags in vals:
         print repr(text)
