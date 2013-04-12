@@ -252,6 +252,9 @@ On the left you find the search box. Double-clicking on a day in the search
 results lets you jump to it.
 
 == Clouds ==[clouds]
+The 42 most frequently used words will appear in the word cloud on the left. Its
+contents are only refreshed after a program restart and when the journal is saved.
+
 If a word appears in the cloud that you don't want to see there, just right-click
 and select to hide it.
 Alternatively you can open the Preferences dialog and add the word to the cloud blacklist.
