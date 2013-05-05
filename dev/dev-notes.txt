@@ -59,10 +59,10 @@ X Portable Version:
     that is only installed, when running this mode.
 
 O Format:
-  - JSON is faster to decode and encode and we only use strings, ints and dicts
+  - JSON is faster to decode and encode and we only use strings and dicts
     anyway.
 
-    The results for de-/encoding a typical example are:
+    The results for de-/encoding a typical example are on an HDD:
     * json_print      1.09020709991
     * pickle_print    0.710677146912
     * yaml_print      4.67402696609 -> we already get 2x fast
@@ -70,6 +70,17 @@ O Format:
     * json_read       0.253901958466
     * pickle_read     0.15873003006
     * yaml_read       1.24900007248 -> json 5x as fast
+    * cyaml_read      ?
+
+    SSD:
+    * json_print      1.16
+    * cjson_print     0.16
+    * ujson_print     0.13
+    * cyaml_print     0.87
+    * json_read       0.18
+    * cjson_read      0.10
+    * ujson_read      0.06
+    * cyaml_read      0.69
 
     However, the format is more verbose and requires more syntax.
 
