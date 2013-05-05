@@ -285,16 +285,19 @@ class Journal:
 
         try:
             filesystem.make_directory(self.dirs.data_dir)
-        except OSError:
+        except (OSError, IOError):
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
         something_saved = storage.save_months_to_disk(self.months,
-            self.dirs.data_dir, self.frame, exit_imminent, changing_journal, saveas)
+            self.dirs.data_dir, self.frame, exit_imminent, saveas)
 
         if something_saved:
             self.show_message(_('The content has been saved to %s') % self.dirs.data_dir, error=False)
             logging.info('The content has been saved to %r' % self.dirs.data_dir)
+        elif something_saved is None:
+            # Don't display this as an error, because we already show a dialog.
+            self.show_message(_('The journal could not be saved'), error=False)
         else:
             self.show_message(_('Nothing to save'), error=False)
 

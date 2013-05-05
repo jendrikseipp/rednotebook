@@ -209,7 +209,10 @@ class MainMenuBar(object):
         self.journal.save_to_disk()
 
     def on_save_as_menu_item_activate(self, widget):
-        self.journal.save_to_disk()
+        # widget is None when we call this method after the journal could not be
+        # saved. Then another try won't succeed either.
+        if widget is not None:
+            self.journal.save_to_disk()
         self.select_journal('saveas', _('Select an empty folder for the new location of your journal'),
                             _('The directory name will be the new title of the journal'))
 

@@ -312,12 +312,12 @@ class MainWindow(object):
 
         if self.journal.config.read('closeToTray', 0):
             self.hide()
-
-            # the default handler is _not_ to be called,
-            # and therefore the window will not be destroyed.
-            return True
         else:
             self.journal.exit()
+
+        # We never call the default handler. Otherwise, the window would be
+        # destroyed, but we might no actually want to exit.
+        return True
 
     def on_quit_activate(self, widget):
         '''
@@ -512,6 +512,8 @@ class MainWindow(object):
         dialog.hide()
 
         if answer == gtk.RESPONSE_OK:
+            # Even if the user aborts the Save-As dialog, we don't want to exit.
+            self.journal.is_allowed_to_exit = False
             # Let the user select a new directory. Nothing has been saved yet.
             self.menubar_manager.on_save_as_menu_item_activate(None)
         elif answer == gtk.RESPONSE_CANCEL and exit_imminent:

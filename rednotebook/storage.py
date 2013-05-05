@@ -101,7 +101,7 @@ def load_all_months_from_disk(data_dir):
     return months
 
 
-def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journal=False, saveas=False):
+def save_months_to_disk(months, dir, frame, exit_imminent=False, saveas=False):
     '''
     Do the actual saving and return if something has been saved
     '''
@@ -127,10 +127,9 @@ def save_months_to_disk(months, dir, frame, exit_imminent=False, changing_journa
                     yaml.dump(month_content, month_file, Dumper=Dumper, allow_unicode=True)
                     month.edited = False
                     logging.debug('Wrote file %s' % month_file_string)
-                except OSError:
+                except (OSError, IOError):
                     frame.show_save_error_dialog(exit_imminent)
-                except IOError:
-                    frame.show_save_error_dialog(exit_imminent)
+                    return None
             try:
                 # Make file readable and writable only by the owner.
                 os.chmod(month_file_string, stat.S_IRUSR | stat.S_IWUSR)
