@@ -1,3 +1,12 @@
+rednotebook (1.7.2-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Show error if saving fails due to a directory not being created.
+  * Ignore hashtags starting with more than one #.
+  * Fix: Allow inserting files and pictures from the "recently used" section (lp:1195759).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 28 Jun 2013 18:47:37 +0200
+
 rednotebook (1.7.1-1) UNRELEASED; urgency=low
 
   * New upstream release
