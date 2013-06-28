@@ -7,11 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.7.2
-X Show error if saving fails due to a directory not being created.
-x Ignore hashtags starting with more than one #.
-X Fix: Allow inserting files and pictures from the "recently used" section (lp:1195759).
-
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion

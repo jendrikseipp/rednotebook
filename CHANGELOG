@@ -1,3 +1,8 @@
+== 1.7.2 (2013-06-28) ==
+* Show error if saving fails due to a directory not being created.
+* Ignore hashtags starting with more than one #.
+* Fix: Allow inserting files and pictures from the "recently used" section (lp:1195759).
+
 == 1.7.1 (2013-03-01) ==
 * Fix: Insert spellchecking correction in the correct position (LP:1137925).
 
