@@ -477,6 +477,7 @@
     <property name="title" translatable="yes">Select a picture</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
+    <property name="modal">True</property>
     <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox12">
@@ -539,6 +540,7 @@
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
     <property name="do_overwrite_confirmation">True</property>
+    <property name="modal">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox14">
         <property name="visible">True</property>
@@ -730,6 +732,7 @@
     <property name="type_hint">dialog</property>
     <property name="action">select-folder</property>
     <property name="local_only">False</property>
+    <property name="modal">True</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox17">
         <property name="visible">True</property>
