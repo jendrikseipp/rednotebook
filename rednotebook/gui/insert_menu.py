@@ -199,7 +199,10 @@ class InsertMenu(object):
         picture_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            dirs.last_pic_dir = picture_chooser.get_current_folder().decode('utf-8')
+            folder = picture_chooser.get_current_folder()
+            # Folder is None if the file was chosen from the "recently used" section.
+            if folder:
+                dirs.last_file_dir = folder.decode('utf-8')
             base, ext = os.path.splitext(picture_chooser.get_filename().decode('utf-8'))
 
             # On windows firefox accepts absolute filenames only
@@ -229,7 +232,10 @@ class InsertMenu(object):
         file_chooser.hide()
 
         if response == gtk.RESPONSE_OK:
-            dirs.last_file_dir = file_chooser.get_current_folder().decode('utf-8')
+            folder = file_chooser.get_current_folder()
+            # Folder is None if the file was chosen from the "recently used" section.
+            if folder:
+                dirs.last_file_dir = folder.decode('utf-8')
             filename = file_chooser.get_filename().decode('utf-8')
             filename = filesystem.get_local_url(filename)
             sel_text = self.main_window.day_text_field.get_selected_text()
