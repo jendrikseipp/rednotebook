@@ -177,9 +177,8 @@ Here goes the first entry. It is about #work.
 === Family ===
 Here comes the entry about my #family.''')
 
-multiple_entries_day = {'text': multiple_entries_text + '\n\n' +
-                                20 * '=' + '\n\n' +
-                                multiple_entries_example}
+multiple_entries_day = {
+    'text': multiple_entries_text + '\n\n' + 20 * '=' + '\n\n' + multiple_entries_example}
 
 example_content = [welcome_day, multiple_entries_day]
 
