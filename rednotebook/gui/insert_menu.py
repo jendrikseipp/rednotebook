@@ -205,7 +205,7 @@ class InsertMenu(object):
             folder = picture_chooser.get_current_folder()
             # Folder is None if the file was chosen from the "recently used" section.
             if folder:
-                dirs.last_file_dir = folder.decode('utf-8')
+                dirs.last_pic_dir = folder.decode('utf-8')
 
             # get requested width of image
             width_text = ''
