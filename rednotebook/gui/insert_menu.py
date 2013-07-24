@@ -170,6 +170,9 @@ class InsertMenu(object):
         picture_chooser = self.main_window.builder.get_object('picture_chooser')
         picture_chooser.set_current_folder(dirs.last_pic_dir)
 
+        # if no text is selected, we can support inserting multiple images
+        picture_chooser.set_select_multiple(not sel_text)
+
         filter = gtk.FileFilter()
         filter.set_name("Images")
         filter.add_mime_type("image/png")
@@ -203,12 +206,8 @@ class InsertMenu(object):
             # Folder is None if the file was chosen from the "recently used" section.
             if folder:
                 dirs.last_file_dir = folder.decode('utf-8')
-            base, ext = os.path.splitext(picture_chooser.get_filename().decode('utf-8'))
 
-            # On windows firefox accepts absolute filenames only
-            # with the file:// prefix
-            base = filesystem.get_local_url(base)
-
+            # get requested width of image
             width_text = ''
             width = width_entry.get_text().decode('utf-8')
             if width:
@@ -221,7 +220,23 @@ class InsertMenu(object):
 
             if sel_text:
                 sel_text = ' ' + sel_text
-            return '[%s""%s""%s%s]' % (sel_text, base, ext, width_text)
+
+            # iterate through all selected images
+            output = ""
+            for filename in picture_chooser.get_filenames():
+                base, ext = os.path.splitext(filename.decode('utf-8'))
+
+                # On windows firefox accepts absolute filenames only
+                # with the file:// prefix
+                base = filesystem.get_local_url(base)
+
+                # for multiple images, put subsequent ones on a new line
+                if output:
+                    output = output + "\n"
+
+                output = output + '[%s""%s""%s%s]' % (sel_text, base, ext, width_text)
+
+            return output
 
     def on_insert_file(self, sel_text):
         dirs = self.main_window.journal.dirs
