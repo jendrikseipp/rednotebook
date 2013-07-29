@@ -7,6 +7,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.7.3
+X Support inserting multiple pictures in one step.
+X Fix setting last image directory for insert dialog.
+
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
