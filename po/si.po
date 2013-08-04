@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-03-31 23:00+0200\n"
-"PO-Revision-Date: 2013-05-08 12:15+0000\n"
+"PO-Revision-Date: 2013-08-03 15:13+0000\n"
 "Last-Translator: Prabath Swarna <prab4th@gmail.com>\n"
 "Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-06 05:54+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-08-04 05:19+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -47,7 +47,7 @@ msgstr "රෙඩ්දිනපොත නපෙන්වන්න"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "ඩිරෙක්ටරියක් තෝරා ගෙන නැත"
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -87,7 +87,7 @@ msgstr "හිස් කරන්න"
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "සංයුතිය (_F)"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
@@ -104,7 +104,7 @@ msgstr "හැඳින්වීම"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Save and insert"
-msgstr ""
+msgstr "සුරැක ඇතුල් කරන්න"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -257,7 +257,7 @@ msgstr "අවසන්වන දිනය"
 
 #: ../rednotebook/gui/exports.py:408
 msgid "Include text"
-msgstr ""
+msgstr "අකුරු ඇතුල් කරන්න"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
@@ -610,7 +610,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:194
 msgid "pixels"
-msgstr ""
+msgstr "පික්සෙල"
 
 #: ../rednotebook/gui/insert_menu.py:215
 msgid "Width must be an integer."
