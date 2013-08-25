@@ -56,7 +56,7 @@ CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-
 CSS = """\
 <style type="text/css">
     body {
-        font-family: Ubuntu, Helvetica, Arial, sans-serif;
+        font-family: Ubuntu, DejaVu Sans, Helvetica, Arial, sans-serif;
     }
     <!-- Don't split last line between pages.
          This fix is only supported by Opera -->

@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.7.3
 X Support inserting multiple pictures in one step.
+X Add DejaVu Sans as font fallback for clouds and preview.
 X Fix setting last image directory for insert dialog.
 
 1.x
