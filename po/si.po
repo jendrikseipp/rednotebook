@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-03-31 23:00+0200\n"
-"PO-Revision-Date: 2013-08-03 15:13+0000\n"
+"PO-Revision-Date: 2013-09-02 11:29+0000\n"
 "Last-Translator: Prabath Swarna <prab4th@gmail.com>\n"
 "Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-09-02 05:13+0000\n"
-"X-Generator: Launchpad (build 16750)\n"
+"X-Launchpad-Export-Date: 2013-09-03 05:50+0000\n"
+"X-Generator: Launchpad (build 16753)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -135,7 +135,7 @@ msgstr "සියලු දවස් නිර්යාත කරන්න"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "තෝරා ගත් අකුරු අපනයනය කරන්න"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -163,15 +163,15 @@ msgstr "නිර්යාත දිනය සඳහා හිස් ඉඩක�
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "තෝරා ගත් අකුරු හා ටැග් අපනයනය කරන්න"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "තෝරා ගත් අකුරු පමණක් අපනයනය කරන්න"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "තෝරා ගත් ටැග් පමණක් අපනයනය කරන්න"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
@@ -245,7 +245,7 @@ msgstr "දවස"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "තෝරා ගත් අකුරු පමණක් අපනයනය කරන්න"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -332,7 +332,7 @@ msgstr "සියළු දත්ත සිප් ලෙඛනාගාරයේ
 
 #: ../rednotebook/gui/menu.py:115
 msgid "S_tatistics"
-msgstr ""
+msgstr "සංඛ්‍යන්ක (_t)"
 
 #: ../rednotebook/gui/menu.py:116
 msgid "Show some statistics about the journal"
@@ -594,7 +594,7 @@ msgstr "මැනුවල් පේළි කැඩීමක් ඇතුලත
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "_ඇතුළු කරන්න"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -606,7 +606,7 @@ msgstr "ඉමේජස්, ගොනු,සම්බන්ධක සහ වෙ�
 
 #: ../rednotebook/gui/insert_menu.py:189
 msgid "Width (optional):"
-msgstr ""
+msgstr "පළල (optional)"
 
 #: ../rednotebook/gui/insert_menu.py:194
 msgid "pixels"
@@ -651,7 +651,7 @@ msgstr "සුරැකීමට කිසිවක් නැත"
 
 #: ../rednotebook/journal.py:446
 msgid "Error"
-msgstr ""
+msgstr "දෝෂයක්"
 
 #: ../rednotebook/info.py:96
 msgid "Work"
@@ -714,11 +714,11 @@ msgstr ""
 
 #: ../rednotebook/info.py:115
 msgid "Tagging is easy."
-msgstr ""
+msgstr "ටැග් කිරීම පහසුයි"
 
 #: ../rednotebook/info.py:116
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "ට්විටර් වගේ නිකන් #hashtags පාවිච්චි කරන්න"
 
 #: ../rednotebook/info.py:119
 msgid ""
@@ -1002,7 +1002,7 @@ msgstr "පේළි"
 
 #: ../rednotebook/util/utils.py:114
 msgid "unknown"
-msgstr ""
+msgstr "නාඳුනන"
 
 #: ../rednotebook/util/utils.py:129
 #, python-format
@@ -1028,7 +1028,7 @@ msgstr "පෙර දිනයට යන්න (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "අද දිනයට යනු (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
