@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-03-31 23:00+0200\n"
-"PO-Revision-Date: 2013-03-24 15:02+0000\n"
-"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
+"PO-Revision-Date: 2013-09-24 19:26+0000\n"
+"Last-Translator: schattenhueter <Unknown>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-09-02 05:12+0000\n"
-"X-Generator: Launchpad (build 16750)\n"
+"X-Launchpad-Export-Date: 2013-09-25 05:29+0000\n"
+"X-Generator: Launchpad (build 16771)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -49,7 +49,7 @@ msgstr "RedNotebook zeigen"
 
 #: ../rednotebook/gui/main_window.py:495
 msgid "No directory selected."
-msgstr ""
+msgstr "Kein Ordner ausgewählt."
 
 #: ../rednotebook/gui/main_window.py:596
 #: ../rednotebook/gui/customwidgets.py:375
@@ -139,7 +139,7 @@ msgstr "Alle Tage exportieren"
 
 #: ../rednotebook/gui/exports.py:53
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Den derzeitig selektierten Text exportieren"
 
 #: ../rednotebook/gui/exports.py:56
 msgid "Export currently visible day"
@@ -167,19 +167,19 @@ msgstr "Leerlassen um das Datum wegzulassen"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text and tags"
-msgstr ""
+msgstr "Texte und Markierungen exportieren"
 
 #: ../rednotebook/gui/exports.py:139
 msgid "Export text only"
-msgstr ""
+msgstr "Nur Texte exportieren"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Export tags only"
-msgstr ""
+msgstr "Nur Markierungen exportieren"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Filtern von Tagen an Hand von Markierungen"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -200,6 +200,8 @@ msgstr "Abwählen"
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
+"Beim Filtern von Tagen an Hand von Markierungen muss mindestens eine "
+"Markierung selektiert werden."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -253,7 +255,7 @@ msgstr "Datum"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Nur den ausgewählten Text exportieren"
 
 #: ../rednotebook/gui/exports.py:403
 msgid "Start date"
@@ -269,11 +271,11 @@ msgstr "Texte exportieren"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include tags"
-msgstr ""
+msgstr "Markierungen einbeziehen"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Gefiltert an Hand von Markierungen"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -294,7 +296,7 @@ msgstr "Der Inhalt wurde nach %s exportiert"
 
 #: ../rednotebook/gui/exports.py:521
 msgid "Plain Text"
-msgstr ""
+msgstr "Einfacher Text"
 
 #: ../rednotebook/gui/exports.py:552
 msgid "requires pywebkitgtk"
@@ -810,6 +812,12 @@ msgid ""
 "different titles (=== Work ===, === Family ===) and using horizontal "
 "separator lines (20 “=”s)."
 msgstr ""
+"=== Mehrere Einträge ===\n"
+"Du kannst mehrere Eintrage einem einzelnen Tag hinzufügen, indem du "
+"verschiedene Journale verwendest (das eine \"Arbeit\", das andere "
+"\"Familie\" genannt) und deine Einträge mit verschiedenen Titeln (=== Arbeit "
+"===, === Familie ===) von einander trennst und eine horizontalen Trennlinie "
+"(20 \"=\"s) nutzt."
 
 #: ../rednotebook/info.py:171
 msgid ""
@@ -821,6 +829,13 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
+"=== Arbeit ===\n"
+"Hier erscheint der erste Eintrag. Er ist über die #Arbeit.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Familie ===\n"
+"Hier erscheint der erste Eintrag über meine #Familie."
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
@@ -984,7 +999,7 @@ msgstr "Benenne die Vorlage"
 
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
-msgstr ""
+msgstr "Diese Vorlage enthält keinen Text, oder ihr Inhalt ist nicht lesbar."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1054,7 +1069,7 @@ msgstr "Gehe zum vorherigen Tag (Strg+BildAuf)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Zum heutigen Tag springen (Alt+Pos1)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
