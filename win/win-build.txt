@@ -1,21 +1,18 @@
-Note: These instructions are outdated.
+Note: These instructions have not been tested. Please provide feedback.
 
 == Install requirements ==
   * Install Python 2.7 for Windows from the Python website [www.python.org].
-  * Download the PyGTK/GTK all-in-one installer and install the default subpackages.
-    [http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/]
-  * Use the webkit libs from midori and copy them to the GTK runtime dir.
-  * Unpack pygtkaio.7z/PYWEBKITGTK/Python27/gtk-2.0/webkit to C:\Python27\Lib\site-packages\webkit.
+  * Download and install the latest RedNotebook installer for Windows.
+  * Add the directory containing rednotebook.exe to your PATH.
   * Install PyYaml for Python 2.7 from [http://pyyaml.org/wiki/PyYAML]
   * Install Bzr for Python 2.7 with TortoiseBzr (https://launchpad.net/bzr/+download)
   * Download the chardet package and add the "chardet" directory to C:\Python27\Lib\site-packages
-  * Unpack the gtkspell package from pygtkaio.7z and copy the files to their destinations.
   * Restart the system
 
 == Test RedNotebook ==
   * Open the Explorer and right-click to branch a local copy of RedNotebook
   * Select "Bazaar Checkout or Branch" and branch the repo "lp:rednotebook"
-  * Open a terminal window and navigate to PathToRedNotebook\rednotebook
+  * Open a terminal window (cmd.exe) and navigate to PathToRedNotebook\rednotebook
   * Execute "python journal.py"
   * If you don't need an .exe file and no translations you're done.
 
@@ -24,8 +21,6 @@ Note: These instructions are outdated.
   * build-exe.bat runs the RedNotebook exe at the end. If nothing
     happens, have a look at
     C:\Documents and Settings\username\.rednotebook\rednotebook.log
-  * You may want to remove some themes or dictionaries from the
-    "share" directory to save some space.
   * Now clicking rednotebook.exe should start the application
     If it doesn't start, you'll hopefully find an error log in
     C:\D&S\User\.rednotebook\rednotebook.log
