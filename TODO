@@ -35,6 +35,7 @@ O Add option to insert verbatim text.
 O Try wine for building windows version.
 O Auto-merge: When saving a file, check if its changedate is newer than the time
   when we opened the file and merge the contents if it is.
+O Allow using ESC to exit full-screen mode.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
