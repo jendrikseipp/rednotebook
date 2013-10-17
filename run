@@ -19,7 +19,7 @@ cd $BASEDIR
 
 PKGS_DEB="python-gtk2 python-gtkspell python-yaml python-webkit"
 PKGS_FEDORA="pygtk2 gnome-python2-extras PyYAML pywebkitgtk"
-PKGS_OPENSUSE="python-gtk python-yaml python-webkit"
+PKGS_OPENSUSE="python-gtk python-yaml python-webkitgtk"
 
 release_file=
 
