@@ -6,6 +6,9 @@ Note: These instructions have not been tested. Please provide feedback.
   * Add the directory containing rednotebook.exe to your PATH.
   * Install PyYaml for Python 2.7 from [http://pyyaml.org/wiki/PyYAML]
   * Install Bzr for Python 2.7 with TortoiseBzr (https://launchpad.net/bzr/+download)
+  * Download the compiled webkitgtk bindings from
+    https://dl.dropboxusercontent.com/u/4780737/pywebkitgtk.zip and add the
+    contained "webkit" dir to C:\Python27\Lib\site-packages
   * Download the chardet package and add the "chardet" directory to C:\Python27\Lib\site-packages
   * Restart the system
 
