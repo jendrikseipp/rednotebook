@@ -349,11 +349,7 @@ class Journal:
         self.title = filesystem.get_journal_title(data_dir)
 
         # Set frame title
-        if self.title == 'data':
-            frame_title = 'RedNotebook'
-        else:
-            frame_title = 'RedNotebook - ' + self.title
-        self.frame.main_frame.set_title(frame_title)
+        self.set_frame_title()
 
         # Save the folder for next start
         if not self.dirs.portable:
@@ -362,6 +358,12 @@ class Journal:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config['dataDir'] = rel_data_dir
 
+    def set_frame_title(self):
+        if self.title == 'data':
+            frame_title = 'RedNotebook'
+        else:
+            frame_title = 'RedNotebook - ' + self.title
+        self.frame.main_frame.set_title(frame_title + " - " + dates.format_date("%x", self.date) )
 
     def get_month(self, date):
         '''
@@ -400,6 +402,8 @@ class Journal:
             #self.month.visited = True
 
         self.frame.set_date(self.month, self.date, self.day)
+
+        self.set_frame_title()
 
 
     def merge_days(self, days):
