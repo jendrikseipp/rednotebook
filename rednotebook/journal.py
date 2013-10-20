@@ -201,7 +201,7 @@ class Journal:
 
         utils.set_environment_variables(self.config)
 
-        self.actual_date = datetime.date.today()
+        self.actual_date = self.get_start_date()
 
         # Let components check if the MainWindow has been created
         self.frame = None
@@ -261,6 +261,19 @@ class Journal:
                       'Execute "rednotebook -h" for instructions' % path_arg)
         sys.exit(1)
 
+    def get_start_date(self):
+        '''
+        Retrieve the date from optional args or otherwise return 'today'
+        '''
+        if args.start_date:
+            try:
+                date = dates.get_date_from_date_string (args.start_date)
+            except:
+                logging.error('Can not understand the date: %s' % args.start_date)
+                date = datetime.date.today()
+            return date
+
+        return datetime.date.today()
 
     def exit(self):
         self.frame.add_values_to_config()

@@ -88,6 +88,8 @@ def get_commandline_parser():
                         version='RedNotebook %s' % version)
     parser.add_argument('-m', '--minimized', dest='minimized', action='store_true',
                         help='start mimimized to system tray')
+    parser.add_argument('-s', '--start_date', dest='start_date',
+                        help='start on the specified date (format YYYY-MM-DD only)')
     parser.add_argument('journal', nargs='?', help=journal_path_help)
     return parser
 
