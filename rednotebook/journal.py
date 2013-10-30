@@ -201,7 +201,7 @@ class Journal:
 
         utils.set_environment_variables(self.config)
 
-        self.actual_date = datetime.date.today()
+        self.actual_date = self.get_start_date()
 
         # Let components check if the MainWindow has been created
         self.frame = None
@@ -261,6 +261,18 @@ class Journal:
                       'Execute "rednotebook -h" for instructions' % path_arg)
         sys.exit(1)
 
+    def get_start_date(self):
+        '''
+        Retrieve the date from optional args or otherwise return 'today'
+        '''
+        if not args.start_date:
+            return datetime.date.today()
+
+        try:
+            return dates.get_date_from_date_string(args.start_date)
+        except ValueError:
+            logging.error('Invalid date: %s (required format: YYYY-MM-DD).' % args.start_date)
+            sys.exit(2)
 
     def exit(self):
         self.frame.add_values_to_config()
@@ -349,11 +361,7 @@ class Journal:
         self.title = filesystem.get_journal_title(data_dir)
 
         # Set frame title
-        if self.title == 'data':
-            frame_title = 'RedNotebook'
-        else:
-            frame_title = 'RedNotebook - ' + self.title
-        self.frame.main_frame.set_title(frame_title)
+        self.set_frame_title()
 
         # Save the folder for next start
         if not self.dirs.portable:
@@ -362,6 +370,12 @@ class Journal:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config['dataDir'] = rel_data_dir
 
+    def set_frame_title(self):
+        parts = ['RedNotebook']
+        if self.title != 'data':
+            parts.append(self.title)
+        parts.append(dates.format_date('%x', self.date))
+        self.frame.main_frame.set_title(' - '.join(parts))
 
     def get_month(self, date):
         '''
@@ -400,6 +414,8 @@ class Journal:
             #self.month.visited = True
 
         self.frame.set_date(self.month, self.date, self.day)
+
+        self.set_frame_title()
 
 
     def merge_days(self, days):

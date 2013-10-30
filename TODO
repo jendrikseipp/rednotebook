@@ -8,6 +8,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.7.3
+X Jump to a specific date on startup with "--date 2013-10-31" on the commandline (Rob Norris).
+X Display current date in the title bar (Rob Norris).
 X Support inserting multiple pictures in one step.
 X Add DejaVu Sans as font fallback for clouds and preview.
 X Fix setting last image directory for insert dialog.
@@ -102,7 +104,6 @@ O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
 O Picture slide show in one entry with many images (in preview show nice
   javascript slide show of pics in linked picture directory) (Think about new format first)
-O Include startup date patch? (LP:655381, https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=121)
 O Ability to make certain entries, eg. birthdays, with frequencies
 O Plugin system?
 O Entries without dates (bookmarks, contact lists)?

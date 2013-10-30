@@ -29,9 +29,8 @@ def get_year_and_month_from_date(date):
     return year_and_month
 
 def get_date_from_date_string(date_string):
-    date_array = date_string.split('-')
-    year, month, day = map(int, date_array)
-    return datetime.date(year, month, day)
+    date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
+    return datetime.date(date.year, date.month, date.day)
 
 # Number of days per month (except for February in leap years)
 month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
