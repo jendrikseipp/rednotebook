@@ -36,6 +36,9 @@ O Try wine for building windows version.
 O Auto-merge: When saving a file, check if its changedate is newer than the time
   when we opened the file and merge the contents if it is.
 O Allow using ESC to exit full-screen mode.
+O Setup repo at bitbucket.
+O Mirror repo on github (either automatically (http://www.metallapan.se/bitsynchub/)
+  or on releases (http://hgtip.com/tips/advanced/2009-11-09-create-a-git-mirror/))
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
