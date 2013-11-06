@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-03-31 23:00+0200\n"
-"PO-Revision-Date: 2013-04-11 03:50+0000\n"
+"PO-Revision-Date: 2013-11-05 20:11+0000\n"
 "Last-Translator: முரளி <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-10-25 05:42+0000\n"
-"X-Generator: Launchpad (build 16810)\n"
+"X-Launchpad-Export-Date: 2013-11-06 05:28+0000\n"
+"X-Generator: Launchpad (build 16820)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -493,7 +493,7 @@ msgstr "இந்தச்சாளரத்தை மூடினால் ர�
 
 #: ../rednotebook/gui/options.py:299
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "திருத்த நிலைக்கும் முன்பார்வை நிலைக்கும் இடையே தானாக மாறவும்"
 
 #: ../rednotebook/gui/options.py:303
 msgid "Check for new version at startup"
@@ -513,11 +513,12 @@ msgstr "நாள்/நேரம் படிவமை"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Exclude from cloud"
-msgstr ""
+msgstr "மேகங்களிலிருந்து விலக்கு"
 
 #: ../rednotebook/gui/options.py:319
 msgid "Do not show these comma separated words in the word cloud"
 msgstr ""
+"சொல் மேகங்களில் அரைப்புள்ளியால் பிரிக்கப்பட்ட இச்சொற்களை காட்ட வேண்டாம்"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Include small words in cloud"
@@ -652,7 +653,7 @@ msgstr "இந்த உள்ளீட்டை நீக்கு"
 
 #: ../rednotebook/journal.py:214
 msgid "Opening default journal."
-msgstr ""
+msgstr "இயல்பு நாட்குறிப்பேடு திறக்கப்படுகிறது"
 
 #: ../rednotebook/journal.py:296
 #, python-format
@@ -728,15 +729,15 @@ msgstr ""
 
 #: ../rednotebook/info.py:112
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "வேறுபாட்டை பார்க்க மேலே திருத்து என்ற விசையை சொடுக்கவும்"
 
 #: ../rednotebook/info.py:115
 msgid "Tagging is easy."
-msgstr ""
+msgstr "குறியீடு இடுவது எளிது"
 
 #: ../rednotebook/info.py:116
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "டிவிட்டரில் உள்ளது போல #குறியீடுகளை பயன்படுத்துங்கள்"
 
 #: ../rednotebook/info.py:119
 msgid ""
