@@ -1,3 +1,15 @@
+rednotebook (1.7.3-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Jump to a specific date on startup with "--date 2013-10-31" on the commandline (Rob Norris).
+  * Display current date in the title bar (Rob Norris).
+  * Support inserting multiple pictures in one step.
+  * Add DejaVu Sans as font fallback for clouds and preview.
+  * Fix setting last image directory for insert dialog.
+  * Only allow exporting selected text if we are in edit mode (lp:1221792).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 10 Nov 2013 16:48:06 +0100
+
 rednotebook (1.7.2-1) UNRELEASED; urgency=low
 
   * New upstream release
