@@ -41,7 +41,6 @@ from rednotebook.gui import browser
 from rednotebook.gui import options
 
 
-
 class DatePage(AssistantPage):
     def __init__(self, journal, *args, **kwargs):
         AssistantPage.__init__(self, *args, **kwargs)
@@ -50,7 +49,6 @@ class DatePage(AssistantPage):
 
         self.all_days_button = gtk.RadioButton(label=_('Export all days'))
         self.selected_text_button = gtk.RadioButton(
-            label=_('Export currently selected text'),
             group=self.all_days_button)
         self.one_day_button = gtk.RadioButton(
             label=_('Export currently visible day'),
@@ -89,36 +87,43 @@ class DatePage(AssistantPage):
         self.all_days_button.set_active(True)
         self._set_select_days(False)
 
-
     def _on_select_days_toggled(self, button):
         select = self.sel_days_button.get_active()
         self._set_select_days(select)
-
 
     def _set_select_days(self, sensitive):
         self.calendar1.set_sensitive(sensitive)
         self.calendar2.set_sensitive(sensitive)
         self.select_days = sensitive
 
-
     def export_all_days(self):
         return self.all_days_button.get_active()
 
-
     def export_selected_text(self):
         return self.selected_text_button.get_active()
-
 
     def get_date_range(self):
         if self.select_days:
             return (self.calendar1.get_date(), self.calendar2.get_date())
         return (self.journal.day.date,) * 2
 
-
     def refresh_dates(self):
         self.calendar1.set_date(datetime.date.today())
         self.calendar2.set_date(datetime.date.today())
 
+    def prepare(self):
+        selected_text_label = _('Export currently selected text')
+        self.selected_text = self.journal.frame.day_text_field.get_selected_text()
+        enable_selected_text_button = bool(self.selected_text and not self.journal.frame.preview_mode)
+        self.selected_text_button.set_sensitive(enable_selected_text_button)
+        if enable_selected_text_button:
+            self.selected_text_button.set_label(selected_text_label)
+        else:
+            self.selected_text_button.set_label(selected_text_label + ' ' +
+                _('(Only available when text is selected in edit mode)'))
+            if self.selected_text_button.get_active():
+                self.selected_text_button.set_active(False)
+                self.all_days_button.set_active(True)
 
 
 class ContentsPage(AssistantPage):
@@ -352,8 +357,7 @@ class ExportAssistant(Assistant):
         else:
             return page + 1
 
-    def run(self, selected_text):
-        self.selected_text = selected_text
+    def run(self):
         self.page2.refresh_dates()
         self.page3.refresh_categories_list()
         self.show_all()
@@ -372,6 +376,7 @@ class ExportAssistant(Assistant):
         if page == self.page2:
             # Date Range
             self.exporter = self.page1.get_selected_object()
+            self.page2.prepare()
         elif page == self.page3:
             # Categories
             start_date, end_date = self.page2.get_date_range()
@@ -415,8 +420,8 @@ class ExportAssistant(Assistant):
         return _('Yes') if value else _('No')
 
     def get_export_string(self, format):
-        if self.export_selected_text and self.selected_text:
-            markup_string = self.selected_text
+        if self.export_selected_text and self.page2.selected_text:
+            markup_string = self.page2.selected_text
         else:
             if self.export_all_days:
                 export_days = self.journal.days

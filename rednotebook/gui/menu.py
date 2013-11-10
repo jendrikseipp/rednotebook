@@ -268,8 +268,7 @@ class MainMenuBar(object):
 
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()
-        selected_text = self.main_window.day_text_field.get_selected_text()
-        self.main_window.export_assistant.run(selected_text)
+        self.main_window.export_assistant.run()
 
     def on_statistics_menu_item_activate(self, widget):
         self.journal.stats.show_dialog(self.main_window.stats_dialog)

@@ -13,6 +13,7 @@ X Display current date in the title bar (Rob Norris).
 X Support inserting multiple pictures in one step.
 X Add DejaVu Sans as font fallback for clouds and preview.
 X Fix setting last image directory for insert dialog.
+X Only allow exporting selected text if we are in edit mode (lp:1221792).
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
