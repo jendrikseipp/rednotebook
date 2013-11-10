@@ -305,6 +305,7 @@ class SummaryPage(AssistantPage):
 class ExportAssistant(Assistant):
     def __init__(self, *args, **kwargs):
         Assistant.__init__(self, *args, **kwargs)
+        self.set_modal(True)
 
         self.exporters = get_exporters()
 
