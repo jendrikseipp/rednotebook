@@ -37,6 +37,9 @@ from rednotebook import undo
 from rednotebook.util import filesystem
 
 
+DEFAULT_FONT = gtk.settings_get_default().get_property('gtk-font-name')
+
+
 class Editor(object):
     def __init__(self, day_text_view, undo_redo_manager):
         self.day_text_view = day_text_view
@@ -66,8 +69,7 @@ class Editor(object):
         # So we forbid that behaviour, by setting a minimum width
         self.day_text_view.set_size_request(1, -1)
 
-        font_name = gtk.settings_get_default().get_property('gtk-font-name')
-        self.font = pango.FontDescription(font_name)
+        self.font = pango.FontDescription(DEFAULT_FONT)
         self.default_size = self.font.get_size() / pango.SCALE
         logging.debug('Default font: %s' % self.font.to_string())
         logging.debug('Default size: %s' % self.default_size)
@@ -204,6 +206,10 @@ class Editor(object):
             size = self.default_size
         self.font.set_size(size * pango.SCALE)
         self.day_text_view.modify_font(self.font)
+
+    def set_font(self, font_name):
+        font = pango.FontDescription(font_name)
+        self.day_text_view.modify_font(font)
 
     def hide(self):
         self.day_text_view.hide()

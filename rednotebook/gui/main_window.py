@@ -24,6 +24,7 @@ import logging
 
 import gtk
 import gobject
+import pango
 
 
 from rednotebook.gui.menu import MainMenuBar
@@ -40,6 +41,7 @@ from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
 from rednotebook.gui import search
 from rednotebook.gui.editor import Editor
+from rednotebook.gui import editor
 from rednotebook.gui.clouds import Cloud
 from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
@@ -576,9 +578,9 @@ class MainWindow(object):
         self.edit_pane.set_position(config.read('rightDividerPosition', main_frame_width))
 
         # A font size of -1 applies the standard font size
-        main_font_size = config.read('mainFontSize', -1)
+        self.set_font_size(config.read('mainFontSize', -1))
 
-        self.set_font_size(main_font_size)
+        self.set_font(config.read('mainFont', editor.DEFAULT_FONT))
 
     def set_font_size(self, main_font_size):
         # -1 sets the default font size on Linux
@@ -588,6 +590,10 @@ class MainWindow(object):
 
         self.day_text_field.set_font_size(main_font_size)
         self.html_editor.set_font_size(main_font_size)
+
+    def set_font(self, font_name):
+        self.day_text_field.set_font(font_name)
+        self.html_editor.set_font_size(pango.FontDescription(font_name).get_size() / pango.SCALE)
 
     def setup_template_menu(self):
         def update_menu(button):

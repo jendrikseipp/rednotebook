@@ -26,6 +26,7 @@ import gtk
 
 from rednotebook.gui.customwidgets import UrlButton, CustomComboBoxEntry
 from rednotebook.gui.customwidgets import ActionButton
+from rednotebook.gui import editor
 from rednotebook.util import filesystem, utils, dates
 from rednotebook import info
 
@@ -218,6 +219,55 @@ class FontSizeOption(ComboBoxOption):
             return -1
 
 
+class FontOption(Option):
+    def __init__(self, text, name):
+        Option.__init__(self, text, name, '')
+
+        self.dialog = None
+
+        self.font_name = Option.config.read(name, editor.DEFAULT_FONT)
+
+        self.label = gtk.Label()
+        self.label.set_text(self.font_name)
+
+        self.button = gtk.Button(_('Choose font ...'))
+        self.button.connect('clicked', self.on_button_clicked)
+
+        self.pack_start(self.button, False)
+        self.pack_start(self.label, False)
+
+    def on_button_clicked(self, widget):
+        if not self.dialog:
+            self.dialog = gtk.FontSelectionDialog(_('Choose font'))
+
+            self.dialog.set_font_name(self.font_name)
+            self.dialog.set_modal(True)
+            self.dialog.set_transient_for(Option.main_window.options_manager.dialog.dialog)
+            self.dialog.connect("destroy", self.dialog_destroyed)
+            self.dialog.ok_button.connect(
+                "clicked", self.font_selection_ok)
+            self.dialog.cancel_button.connect_object(
+                "clicked", lambda window: window.destroy(), self.dialog)
+
+        if not (self.dialog.flags() & gtk.VISIBLE):
+            self.dialog.show()
+        else:
+            self.dialog.destroy()
+            self.dialog = None
+
+    def dialog_destroyed(self, widget):
+        self.dialog = None
+
+    def font_selection_ok(self, widget):
+        self.font_name = self.dialog.get_font_name()
+        self.label.set_text(self.font_name)
+        Option.main_window.set_font(self.font_name)
+        self.dialog.destroy()
+
+    def get_value(self):
+        return self.font_name
+
+
 #class SpinOption(LabelAndWidgetOption):
 #   def __init__(self, text, name):
 #
@@ -314,6 +364,7 @@ class OptionsManager(object):
 
         self.options.extend([
             FontSizeOption(_('Font Size'), 'mainFontSize'),
+            FontOption(_('Font'), 'mainFont'),
             DateFormatOption(_('Date/Time format'), 'dateTimeString'),
             CsvTextOption(_('Exclude from cloud'), 'cloudIgnoreList',
                           tooltip=_('Do not show these comma separated words in the word cloud')),
@@ -338,6 +389,7 @@ class OptionsManager(object):
         else:
             # Reset some options
             self.main_window.set_font_size(self.config.read('mainFontSize', -1))
+            self.main_window.set_font(self.config.read('mainFont', editor.DEFAULT_FONT))
 
         self.dialog.hide()
 

@@ -7,6 +7,9 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.7.4
+X Add font selection for edit mode (Philip Akesson).
+
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
@@ -69,7 +72,6 @@ O Search and replace (useful for renaming categories and other names)
 O Copy files and pictures into data subdirectory
 O Encryption
 O Internal links to other days
-O Let user change font (see https://github.com/pakesson/rednotebook/commit/88fcfc005b14009a50743123077da22333fd5382)
 O Filter exports by tags
 O RTF export
 
