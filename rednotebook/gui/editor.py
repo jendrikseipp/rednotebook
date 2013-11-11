@@ -201,12 +201,6 @@ class Editor(object):
         text = self.get_selected_text() or ' '
         self.replace_selection_and_highlight(markup, text, markup)
 
-    def set_font_size(self, size):
-        if size <= 0:
-            size = self.default_size
-        self.font.set_size(size * pango.SCALE)
-        self.day_text_view.modify_font(self.font)
-
     def set_font(self, font_name):
         font = pango.FontDescription(font_name)
         self.day_text_view.modify_font(font)

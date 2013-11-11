@@ -45,7 +45,7 @@ class Config(dict):
 
         self.obsolete_keys = [u'useGTKMozembed', u'useWebkit',
                               u'LD_LIBRARY_PATH', u'MOZILLA_FIVE_HOME',
-                              u'cloudTabActive']
+                              u'cloudTabActive', u'mainFontSize']
 
         # Allow changing the value of portable only in default.cfg
         self.suppressed_keys = ['portable', 'user_dir']

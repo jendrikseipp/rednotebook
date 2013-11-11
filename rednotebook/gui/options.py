@@ -183,42 +183,6 @@ class DateFormatOption(ComboBoxOption):
         self.preview.set_text(label_text)
 
 
-class FontSizeOption(ComboBoxOption):
-    def __init__(self, text, name):
-        sizes = range(6, 15) + range(16, 29, 2) + [32, 36, 40, 48, 56, 64, 72]
-        sizes = ['default'] + map(str, sizes)
-
-        ComboBoxOption.__init__(self, text, name, sizes)
-
-        # Set default size if not present
-        size = Option.config.read(name, -1)
-
-        if size == -1:
-            self.combo.set_active_text('default')
-        else:
-            self.combo.set_active_text(str(size))
-
-        self.combo.set_editable(False)
-        self.combo.combo_box.set_wrap_width(3)
-
-        self.combo.connect('changed', self.on_combo_changed)
-
-    def on_combo_changed(self, widget):
-        '''Live update'''
-        size = self.get_string_value()
-        Option.main_window.set_font_size(size)
-
-    def get_string_value(self):
-        '''We use 0 and 1 internally for size options'''
-        size = self.combo.get_active_text()
-        if size == 'default':
-            return -1
-        try:
-            return int(size)
-        except ValueError:
-            return -1
-
-
 class FontOption(Option):
     def __init__(self, text, name):
         Option.__init__(self, text, name, '')
@@ -363,7 +327,6 @@ class OptionsManager(object):
         self.options.append(check_version_option)
 
         self.options.extend([
-            FontSizeOption(_('Font Size'), 'mainFontSize'),
             FontOption(_('Font'), 'mainFont'),
             DateFormatOption(_('Date/Time format'), 'dateTimeString'),
             CsvTextOption(_('Exclude from cloud'), 'cloudIgnoreList',
@@ -388,7 +351,6 @@ class OptionsManager(object):
             self.main_window.tray_icon.set_visible(visible)
         else:
             # Reset some options
-            self.main_window.set_font_size(self.config.read('mainFontSize', -1))
             self.main_window.set_font(self.config.read('mainFont', editor.DEFAULT_FONT))
 
         self.dialog.hide()

@@ -577,19 +577,7 @@ class MainWindow(object):
         # By default do not show tags pane.
         self.edit_pane.set_position(config.read('rightDividerPosition', main_frame_width))
 
-        # A font size of -1 applies the standard font size
-        self.set_font_size(config.read('mainFontSize', -1))
-
         self.set_font(config.read('mainFont', editor.DEFAULT_FONT))
-
-    def set_font_size(self, main_font_size):
-        # -1 sets the default font size on Linux
-        # -1 does not work on windows, 0 means invisible
-        if sys.platform == 'win32' and main_font_size <= 0:
-            main_font_size = 10
-
-        self.day_text_field.set_font_size(main_font_size)
-        self.html_editor.set_font_size(main_font_size)
 
     def set_font(self, font_name):
         self.day_text_field.set_font(font_name)
