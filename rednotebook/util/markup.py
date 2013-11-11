@@ -193,7 +193,7 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
     return ''
 
 
-def _get_config(type):
+def _get_config(target):
 
     config = {}
 
@@ -215,7 +215,7 @@ def _get_config(type):
     config['preproc'].append([r'\{(.*?)\|color:(.+?)\}',
                               r'BEGINCOLOR\1SEP\2ENDCOLOR'])
 
-    if type == 'xhtml' or type == 'html':
+    if target in ['xhtml', 'html']:
         config['encoding'] = 'UTF-8'  # document encoding
         config['toc'] = 0
         config['css-sugar'] = 1
@@ -236,7 +236,7 @@ def _get_config(type):
         config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR',
                                    r'<span style="color:\2">\1</span>'])
 
-    elif type == 'tex':
+    elif target == 'tex':
         config['encoding'] = 'utf8'
         config['preproc'].append(['€', 'Euro'])
 
@@ -277,7 +277,7 @@ def _get_config(type):
         config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR',
                                    r'\\textcolor{\2}{\1}'])
 
-    elif type == 'txt':
+    elif target == 'txt':
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '\n'])
 
