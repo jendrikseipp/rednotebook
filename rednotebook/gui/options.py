@@ -54,13 +54,13 @@ class Option(gtk.HBox):
 
 
 class TickOption(Option):
-    def __init__(self, text, name, value=None, default_value=0, tooltip=''):
+    def __init__(self, text, name, value=None, default=0, tooltip=''):
         Option.__init__(self, '', name, tooltip=tooltip)
 
         self.check_button = gtk.CheckButton(text)
 
         if value is None:
-            self.check_button.set_active(Option.config.read(name, default_value) == 1)
+            self.check_button.set_active(Option.config.read(name, default) == 1)
         else:
             self.check_button.set_active(value)
 
@@ -102,11 +102,11 @@ class AutostartOption(TickOption):
 
 
 class TextOption(Option):
-    def __init__(self, text, option_name, **kwargs):
+    def __init__(self, text, option_name, default='', **kwargs):
         Option.__init__(self, text, option_name, **kwargs)
 
         # directly read the string, not the list
-        value = Option.config.read(option_name, '')
+        value = Option.config.read(option_name, default)
 
         # Ensure that we have a string here
         value = unicode(value)
@@ -272,7 +272,7 @@ class OptionsManager(object):
 
         # Automatic switching between preview and edit mode.
         self.options.append(TickOption(_('Switch between edit and preview mode automatically'),
-                                       'autoSwitchMode', default_value=0))
+                                       'autoSwitchMode', default=0))
 
         # Check for new version
         check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')
@@ -290,7 +290,8 @@ class OptionsManager(object):
         self.options.extend([
             FontOption(_('Edit font:'), 'mainFont'),
             TextOption(_('Preview font:'), 'previewFont',
-                          tooltip=_('Comma-separated font names')),
+                       default='Ubuntu, sans-serif',
+                       tooltip=_('Comma-separated font names')),
             DateFormatOption(_('Date/Time format'), 'dateTimeString'),
             TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
                           tooltip=_('Do not show these comma separated words in the word cloud')),
