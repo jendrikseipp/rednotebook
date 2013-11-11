@@ -101,16 +101,6 @@ class AutostartOption(TickOption):
                 os.remove(self.autostart_file)
 
 
-#class TextOption(Option):
-#   def __init__(self, text, name):
-#       self.entry = gtk.Entry(30)
-#       self.entry.set_text(Option.config.read(name, ''))
-#
-#       Option.__init__(self, text, name, self.entry)
-#
-#   def get_value(self):
-#       return self.entry.get_text()
-
 class CsvTextOption(Option):
     def __init__(self, text, option_name, **kwargs):
         Option.__init__(self, text, option_name, **kwargs)
@@ -128,13 +118,6 @@ class CsvTextOption(Option):
 
     def get_value(self):
         return self.entry.get_text().decode('utf-8')
-
-
-#class TextAndButtonOption(TextOption):
-#   def __init__(self, text, name, button):
-#       TextOption.__init__(self, text, name)
-
-#       self.widget.pack_end(button, False, False)
 
 
 class ComboBoxOption(Option):
@@ -230,28 +213,6 @@ class FontOption(Option):
 
     def get_value(self):
         return self.font_name
-
-
-#class SpinOption(LabelAndWidgetOption):
-#   def __init__(self, text, name):
-#
-#       adj = gtk.Adjustment(10.0, 6.0, 72.0, 1.0, 10.0, 0.0)
-#       self.spin = gtk.SpinButton(adj)#, climb_rate=1.0)
-#       self.spin.set_numeric(True)
-#       self.spin.set_range(6,72)
-#       self.spin.set_sensitive(True)
-#       value = Option.config.read(name, -1)
-#       if value >= 0:
-#           self.spin.set_value(value)
-#
-#       LabelAndWidgetOption.__init__(self, text, name, self.spin)
-#
-#   def get_value(self):
-#       return self.spin.get_value()
-#
-#   def get_string_value(self):
-#       value = int(self.get_value())
-#       return value
 
 
 class OptionsDialog(object):
