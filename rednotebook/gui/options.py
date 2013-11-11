@@ -180,8 +180,8 @@ class FontOption(Option):
         self.button = gtk.Button(_('Choose font ...'))
         self.button.connect('clicked', self.on_button_clicked)
 
-        self.pack_start(self.button, False)
         self.pack_start(self.label, False)
+        self.pack_start(self.button, False)
 
     def on_button_clicked(self, widget):
         if not self.dialog:
@@ -288,7 +288,7 @@ class OptionsManager(object):
         self.options.append(check_version_option)
 
         self.options.extend([
-            FontOption(_('Font'), 'mainFont'),
+            FontOption(_('Font:'), 'mainFont'),
             DateFormatOption(_('Date/Time format'), 'dateTimeString'),
             CsvTextOption(_('Exclude from cloud'), 'cloudIgnoreList',
                           tooltip=_('Do not show these comma separated words in the word cloud')),
