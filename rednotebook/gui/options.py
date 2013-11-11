@@ -101,18 +101,18 @@ class AutostartOption(TickOption):
                 os.remove(self.autostart_file)
 
 
-class CsvTextOption(Option):
+class TextOption(Option):
     def __init__(self, text, option_name, **kwargs):
         Option.__init__(self, text, option_name, **kwargs)
 
         # directly read the string, not the list
-        values_string = Option.config.read(option_name, '')
+        value = Option.config.read(option_name, '')
 
         # Ensure that we have a string here
-        values_string = unicode(values_string)
+        value = unicode(value)
 
         self.entry = gtk.Entry()
-        self.entry.set_text(values_string)
+        self.entry.set_text(value)
 
         self.pack_start(self.entry, True)
 
@@ -288,11 +288,13 @@ class OptionsManager(object):
         self.options.append(check_version_option)
 
         self.options.extend([
-            FontOption(_('Font:'), 'mainFont'),
+            FontOption(_('Edit font:'), 'mainFont'),
+            TextOption(_('Preview font:'), 'previewFont',
+                          tooltip=_('Comma-separated font names')),
             DateFormatOption(_('Date/Time format'), 'dateTimeString'),
-            CsvTextOption(_('Exclude from cloud'), 'cloudIgnoreList',
+            TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
                           tooltip=_('Do not show these comma separated words in the word cloud')),
-            CsvTextOption(_('Include small words in cloud'), 'cloudIncludeList',
+            TextOption(_('Include small words in cloud'), 'cloudIncludeList',
                           tooltip=_('Allow these words with 4 letters or less')),
         ])
 
