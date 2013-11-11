@@ -75,6 +75,7 @@ except locale.Error, err:
 
 
 from rednotebook.util import utils
+from rednotebook.util import markup
 from rednotebook import info
 from rednotebook import configuration
 from rednotebook import data
@@ -291,6 +292,10 @@ class Journal:
             logging.shutdown()
             gtk.main_quit()
 
+    def convert(self, text, target, headers=None, options=None):
+        options = options or {}
+        options['font'] = self.config.read('previewFont', 'Ubuntu, sans-serif')
+        return markup.convert(text, target, self.dirs.data_dir, headers=headers, options=options)
 
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
         self.save_old_day()

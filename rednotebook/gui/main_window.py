@@ -33,7 +33,6 @@ from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import filesystem
 from rednotebook import templates
-from rednotebook.util import markup
 from rednotebook.util import dates
 from rednotebook import undo
 from rednotebook.gui import categories
@@ -655,7 +654,7 @@ class Preview(browser.HtmlView):
 
         # Show new day
         self.day = new_day
-        html = markup.convert(self.day.text, 'xhtml', self.journal.dirs.data_dir)
+        html = self.journal.convert(self.day.text, 'xhtml')
         self.load_html(html)
 
         if self.day.last_preview_pos is not None:

@@ -56,7 +56,7 @@ CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-
 CSS = """\
 <style type="text/css">
     body {
-        font-family: Ubuntu, DejaVu Sans, Helvetica, Arial, sans-serif;
+        font-family: %(font)s;
     }
     <!-- Don't split last line between pages.
          This fix is only supported by Opera -->
@@ -88,7 +88,7 @@ CSS = """\
         text-align: left;
         padding-top: 5px;
         padding-bottom: 4px;
-        background-color: %(TABLE_HEAD_BG)s;
+        background-color: %(table_head_bg)s;
         color: #ffffff;
     }
     hr.heavy {
@@ -96,7 +96,7 @@ CSS = """\
         background-color: black;
     }
 </style>
-""" % globals()
+"""
 
 # MathJax
 FORMULAS_SUPPORTED = True
@@ -193,12 +193,15 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
     return ''
 
 
-def _get_config(target):
+def _get_config(target, options):
 
     config = {}
 
     # Set the configuration on the 'config' dict.
     config = txt2tags.ConfigMaster()._get_defaults()
+
+    config['outfile'] = txt2tags.MODULEOUT  # results as list
+    config['target'] = target
 
     # The Pre (and Post) processing config is a list of lists:
     # [ [this, that], [foo, bar], [patt, replace] ]
@@ -222,9 +225,6 @@ def _get_config(target):
 
         # Fix encoding for export opened in firefox
         config['postproc'].append([r'<head>', '<head>' + CHARSET_UTF8])
-
-        # Custom css
-        config['postproc'].append([r'</head>', CSS + '</head>'])
 
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '<br />'])
@@ -295,6 +295,18 @@ def _get_config(target):
     # Disable colors for all other targets.
     config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR', r'\1'])
 
+    # MathJax
+    if options.pop('add_mathjax'):
+        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
+
+    # Custom css
+    fonts = options.pop('font', 'sans-serif')
+    if 'html' in target:
+        css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
+        config['postproc'].append([r'</head>', css + '</head>'])
+
+    config.update(options)
+
     return config
 
 
@@ -336,10 +348,14 @@ def convert(txt, target, data_dir, headers=None, options=None):
     '''
     Code partly taken from txt2tags tarball
     '''
+    options = options or {}
+
     # Only add MathJax code if there is a formula.
-    add_mathjax = (FORMULAS_SUPPORTED and 'html' in target and
-                   any(x in txt for x in MATHJAX_DELIMITERS))
-    logging.debug('add_mathjax: %s' % add_mathjax)
+    options['add_mathjax'] = (
+        FORMULAS_SUPPORTED and
+        'html' in target and
+        any(x in txt for x in MATHJAX_DELIMITERS))
+    logging.debug('Add mathjax code: %s' % options['add_mathjax'])
 
     # Turn relative paths into absolute paths.
     txt = _convert_paths(txt, data_dir)
@@ -355,17 +371,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
         else:
             headers = ['', '', '']
 
-    config = _get_config(target)
-
-    # MathJax
-    if add_mathjax:
-        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
-
-    config['outfile'] = txt2tags.MODULEOUT  # results as list
-    config['target'] = target
-
-    if options is not None:
-        config.update(options)
+    config = _get_config(target, options)
 
     # Let's do the conversion
     try:

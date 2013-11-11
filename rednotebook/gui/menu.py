@@ -24,7 +24,6 @@ import gtk
 from rednotebook.util import utils
 from rednotebook import info
 from rednotebook.util import filesystem
-from rednotebook.util import markup
 from rednotebook import storage
 #from rednotebook.gui.imports import ImportAssistant
 from rednotebook.gui import insert_menu
@@ -276,8 +275,7 @@ class MainMenuBar(object):
     def on_help_menu_item_activate(self, widget):
         temp_dir = self.journal.dirs.temp_dir
         filesystem.write_file(os.path.join(temp_dir, 'source.txt'), info.help_text)
-        html = markup.convert(info.help_text, 'xhtml',
-                              self.journal.dirs.data_dir,
+        html = self.journal.convert(info.help_text, 'xhtml',
                               headers=[_('RedNotebook Documentation'), info.version, ''],
                               options={'toc': 1})
         utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
