@@ -1,26 +1,28 @@
 # -*- mode: python -*-
-basedir = 'C:\\Users\\Jendrik\\RedNotebook'
+drive_c = '/home/jendrik/projects/RedNotebook/wine-test/drive_c'
+basedir = os.path.join(drive_c, 'RedNotebook')
 rndir = os.path.join(basedir, 'rednotebook')
 gtkdir = os.path.join(basedir, 'dist')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
+dlldir = os.path.join(drive_c, 'RedNotebook', 'dist')  # Effect unclear.
 
 def Dir(path):
     assert os.path.isdir(path), path
     return Tree(path, prefix=os.path.basename(path))
 
 a = Analysis([os.path.join(rndir, 'journal.py')],
-             pathex=['C:\\pyinstaller', basedir],
+             pathex=[basedir, dlldir],
              hiddenimports=[],
              hookspath=None)
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=1,
-          name=os.path.join('build\\pyi.win32\\rednotebook', 'rednotebook.exe'),
-          debug=False,
+          name='rednotebook.exe',
+          debug=True,
           strip=None,
           upx=True,
-          console=False,
+          console=True,
           icon=icon)
 coll = COLLECT(exe,
                a.binaries,
@@ -31,8 +33,6 @@ coll = COLLECT(exe,
                Dir(os.path.join(gtkdir, 'etc')),
                Dir(os.path.join(gtkdir, 'lib')),
                Dir(os.path.join(gtkdir, 'share')),
-               [('librsvg-2-2.dll', os.path.join(gtkdir, 'librsvg-2-2.dll'), 'DATA')],
-               [('libcroco-0.6-3.dll', os.path.join(gtkdir, 'libcroco-0.6-3.dll'), 'DATA')],
                strip=None,
                upx=True,
                name='dist')
