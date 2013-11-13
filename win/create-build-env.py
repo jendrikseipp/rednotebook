@@ -20,8 +20,6 @@ INSTALLERS = [
     ('http://downloads.sourceforge.net/project/pywin32/pywin32/Build%20218/pywin32-218.win32-py2.7.exe?'
         'r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fpywin32%2Ffiles%2Fpywin32%2FBuild%2520218%2F&ts=1384187777&use_mirror=heanet',
      'pywin32-build218.exe'),
-    ('http://downloads.sourceforge.net/project/gnuwin32/libintl/0.14.4/libintl-0.14.4.exe?r=http%3A%2F%2Fgnuwin32.sourceforge.net%2Fpackages%2Flibintl.htm&ts=1384276927&use_mirror=heanet',
-     'libintl-0.14.4.exe'),
     ('http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/pygtk-all-in-one-2.24.2.win32-py2.7.msi',
      'pygtk-all-in-one-2.24.2.win32-py2.7.msi'),
     ('http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe',
