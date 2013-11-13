@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-03-31 23:00+0200\n"
-"PO-Revision-Date: 2013-02-19 14:31+0000\n"
+"PO-Revision-Date: 2013-11-12 20:22+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-10-25 05:41+0000\n"
-"X-Generator: Launchpad (build 16810)\n"
+"X-Launchpad-Export-Date: 2013-11-13 05:26+0000\n"
+"X-Generator: Launchpad (build 16820)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -179,7 +179,7 @@ msgstr "Vie vain tunnisteet"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Suodata päivät tunnisteiden perusteella"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Available tags"
@@ -200,6 +200,7 @@ msgstr "Poista valinta"
 #: ../rednotebook/gui/exports.py:257
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
+"Valitse vähintään yksi tunniste, kun suodatat tunnisteiden perusteella."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -270,7 +271,7 @@ msgstr "Sisällytä tunnisteet"
 
 #: ../rednotebook/gui/exports.py:411
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Tunnisteiden perusteella suodatettu"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Export path"
@@ -517,7 +518,7 @@ msgstr "Älä näytä näitä pilkuin eroteltuja sanoja sanapilvessä"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Include small words in cloud"
-msgstr ""
+msgstr "Sisällytä pienet sanat pilveen"
 
 #: ../rednotebook/gui/options.py:321
 msgid "Allow these words with 4 letters or less"
@@ -908,9 +909,9 @@ msgstr ""
 "**Osallistujat:**\n"
 "\n"
 "**Reissu:**\n"
-"Ensin menimme xxxxx, sitten tulimme yyyyy ...\n"
+"Ensin menimme xxxxx, sitten saavuimme paikkaan yyyyy...\n"
 "\n"
-"**Kuvat:** [Image folder \"\"/path/to/the/images/\"\"]\n"
+"**Kuvat:** [Kuvakansio \"\"/polku/jossa/kuvat/sijaitsevat/\"\"]\n"
 
 #: ../rednotebook/templates.py:146
 msgid ""
@@ -926,7 +927,7 @@ msgstr ""
 "=== Puhelu ===\n"
 "- **Henkilö:**\n"
 "- **Aika:**\n"
-"- **Aihw:**\n"
+"- **Aihe:**\n"
 "- **Lopputulos ja seuranta:**\n"
 "==================================\n"
 
@@ -975,6 +976,8 @@ msgstr "Valitse mallipohjan nimi"
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
 msgstr ""
+"Tämä mallipohjatiedosto ei sisällä tekstiä tai vaihtoehtoisesti sen sisältö "
+"ei ole luettavissa."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
