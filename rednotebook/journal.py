@@ -278,8 +278,6 @@ class Journal:
     def exit(self):
         self.frame.add_values_to_config()
 
-        self.config['running'] = 0
-
         # Make it possible to stop the program from exiting
         # e.g. if the journal could not be saved
         self.is_allowed_to_exit = True
