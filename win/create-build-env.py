@@ -1,5 +1,18 @@
 #! /usr/bin/env python
 
+"""
+README:
+
+PyGTK All-In-One Installer: Select to install "PyRsvg" and "Language
+Tools".
+
+InnoSetup: Do not create a folder in the start menu. Otherwise wine
+1.6 will show you a winemenubuilder.exe error which can be ignored
+however.
+
+For the other installers the default values are fine.
+"""
+
 import argparse
 import logging
 import os
@@ -34,7 +47,9 @@ INSTALLERS = [
     ('http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/pygtk-all-in-one-2.24.2.win32-py2.7.msi',
      'pygtk-all-in-one-2.24.2.win32-py2.7.msi'),
     ('http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe',
-     'PyYAML-3.10.win32-py2.7.exe')
+     'PyYAML-3.10.win32-py2.7.exe'),
+    ('http://files.jrsoftware.org/is/5/isetup-5.5.4-unicode.exe',
+     'isetup-5.5.4-unicode.exe'),
 ]
 
 TARBALLS = [

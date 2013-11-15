@@ -25,9 +25,10 @@ DRIVE_C = os.path.join(WINE_DIR, 'drive_c')
 WINE_TARBALL = os.path.abspath(args.wine_tarball)
 assert os.path.exists(WINE_TARBALL), WINE_TARBALL
 WINE_RN_DIR = os.path.join(DRIVE_C, 'rednotebook')
+WINE_RN_WIN_DIR = os.path.join(WINE_RN_DIR, 'win')
 PYINSTALLER = os.path.join(DRIVE_C, 'PyInstaller-2.1', 'pyinstaller.py')
 SPEC = os.path.join(BASE_DIR, 'win', 'rednotebook.spec')
-WINE_SPEC = os.path.join(WINE_RN_DIR, 'win', 'rednotebook.spec')
+WINE_SPEC = os.path.join(WINE_RN_WIN_DIR, 'rednotebook.spec')
 WINE_BUILD = os.path.join(DRIVE_C, 'build')
 WINE_DIST = os.path.join(DRIVE_C, 'dist')
 LOCALE_DIR = os.path.join(WINE_DIST, 'share', 'locale')
@@ -50,4 +51,13 @@ run(['wine', WINE_PYTHON, PYINSTALLER, '--workpath', WINE_BUILD,
      '--distpath', DRIVE_C, WINE_SPEC])  # will be built at ...DRIVE_C/dist
 run(['./build-translations.py', LOCALE_DIR], cwd=DIR)
 
-run(['wine', WINE_RN_EXE])
+#run(['wine', WINE_RN_EXE])
+
+# Build installer.
+sys.path.insert(0, WINE_RN_DIR)
+from rednotebook import info
+ISCC = os.path.join(DRIVE_C, 'Program Files (x86)', 'Inno Setup 5', 'ISCC.exe')
+WINE_ISS_SCRIPT = os.path.join(WINE_RN_WIN_DIR, 'rednotebook.iss')
+shutil.copy2(os.path.join(BASE_DIR, 'win', 'rednotebook.iss'), WINE_ISS_SCRIPT)
+VERSION_PARAM = '/dREDNOTEBOOK_VERSION=%s' % info.version
+run(['wine', ISCC, VERSION_PARAM, 'rednotebook.iss'], cwd=WINE_RN_WIN_DIR)
