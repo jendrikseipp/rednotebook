@@ -24,8 +24,6 @@ WINE_DIR = args.build_dir
 DRIVE_C = os.path.join(WINE_DIR, 'drive_c')
 WINE_TARBALL = args.wine_tarball
 assert os.path.exists(WINE_TARBALL), WINE_TARBALL
-DLL_DIR = os.path.expanduser('~/tmp/rndist') # TODO: Change.
-WINE_BIN_DIR = os.path.join(DRIVE_C, 'bin')
 WINE_RN_DIR = os.path.join(DRIVE_C, 'rednotebook')
 PYINSTALLER = os.path.join(DRIVE_C, 'PyInstaller-2.1', 'pyinstaller.py')
 SPEC = os.path.join(BASE_DIR, 'win', 'rednotebook.spec')
@@ -43,9 +41,6 @@ if os.path.exists(WINE_DIR):
 os.environ['WINEPREFIX'] = WINE_DIR
 os.mkdir(WINE_DIR)
 run(['tar', '-xzf', WINE_TARBALL, '--directory', WINE_DIR])
-
-print 'Copy dll dir'
-shutil.copytree(DLL_DIR, WINE_BIN_DIR, ignore=shutil.ignore_patterns('locale'))
 
 run(['bzr', 'co', '--lightweight', BASE_DIR, WINE_RN_DIR])
 

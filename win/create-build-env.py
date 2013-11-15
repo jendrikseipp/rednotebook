@@ -1,18 +1,29 @@
 #! /usr/bin/env python
 
+import argparse
 import logging
 import os
 import shutil
+import tempfile
 
 from utils import run, fetch, install, ensure_path, extract
 
 logging.basicConfig(level=logging.INFO)
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('dest_wine_tarball')
+    parser.add_argument('--keep-tmp-dir', action='store_true')
+    return parser.parse_args()
+
+args = parse_args()
+
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
-WINE_DIR = os.path.join(BASE_DIR, 'wine-tmp')
+WINE_DIR = tempfile.mkdtemp(suffix='-wine')
 DRIVE_C = os.path.join(WINE_DIR, 'drive_c')
-WINE_TARBALL = os.path.expanduser('~/projects/RedNotebook/wine.tar.gz')
+SITE_PACKAGES = os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')
+WINE_TARBALL = os.path.abspath(args.dest_wine_tarball)
 INSTALLERS_DIR = os.path.join(DIR, 'installers')
 
 INSTALLERS = [
@@ -29,12 +40,16 @@ INSTALLERS = [
 TARBALLS = [
     ('https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-2.1.tar.gz',
      'pyinstaller-2.1.tar.gz', DRIVE_C),
+    ('https://dl.dropboxusercontent.com/u/4780737/gtk-runtime-1.7.3.tar.gz',
+     'gtk-runtime-1.7.3.tar.gz', DRIVE_C),
     ('https://dl.dropboxusercontent.com/u/4780737/pywebkitgtk.zip',
-     'pywebkitgtk.zip', os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')),
-    # TODO: Add chardet.
+     'pywebkitgtk.zip', SITE_PACKAGES),
+    # TODO: Add chardet once we really use it and put it at the correct location.
+    #('https://pypi.python.org/packages/source/c/chardet/chardet-2.1.1.tar.gz',
+    # 'chardet-2.1.1.tar.gz', SITE_PACKAGES),
 ]
 
-#shutil.rmtree(WINE_DIR, ignore_errors=True)
+logging.info('Temporary wine dir: %s' % WINE_DIR)
 os.environ['WINEPREFIX'] = WINE_DIR
 ensure_path(WINE_DIR)
 ensure_path(DRIVE_C)
@@ -42,7 +57,7 @@ ensure_path(DRIVE_C)
 for url, filename in INSTALLERS:
     path = os.path.join(INSTALLERS_DIR, filename)
     fetch(url, path)
-    #install(path, dest=DRIVE_C)
+    install(path, dest=DRIVE_C)
 
 for url, filename, dest in TARBALLS:
     path = os.path.join(INSTALLERS_DIR, filename)
@@ -50,4 +65,5 @@ for url, filename, dest in TARBALLS:
     extract(path, dest)
 
 run(['tar', '-czvf', WINE_TARBALL, '--directory', WINE_DIR, '.'])
-#shutil.rmtree(WINE_DIR, ignore_errors=False)
+if not args.keep_tmp_dir:
+    shutil.rmtree(WINE_DIR, ignore_errors=False)
