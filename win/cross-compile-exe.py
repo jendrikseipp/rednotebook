@@ -20,9 +20,9 @@ args = parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
-WINE_DIR = args.build_dir
+WINE_DIR = os.path.abspath(args.build_dir)
 DRIVE_C = os.path.join(WINE_DIR, 'drive_c')
-WINE_TARBALL = args.wine_tarball
+WINE_TARBALL = os.path.abspath(args.wine_tarball)
 assert os.path.exists(WINE_TARBALL), WINE_TARBALL
 WINE_RN_DIR = os.path.join(DRIVE_C, 'rednotebook')
 PYINSTALLER = os.path.join(DRIVE_C, 'PyInstaller-2.1', 'pyinstaller.py')
@@ -30,6 +30,7 @@ SPEC = os.path.join(BASE_DIR, 'win', 'rednotebook.spec')
 WINE_SPEC = os.path.join(WINE_RN_DIR, 'win', 'rednotebook.spec')
 WINE_BUILD = os.path.join(DRIVE_C, 'build')
 WINE_DIST = os.path.join(DRIVE_C, 'dist')
+LOCALE_DIR = os.path.join(WINE_DIST, 'share', 'locale')
 WINE_RN_EXE = os.path.join(WINE_DIST, 'rednotebook.exe')
 WINE_PYTHON = os.path.join(DRIVE_C, 'Python27', 'python.exe')
 
@@ -43,9 +44,10 @@ os.mkdir(WINE_DIR)
 run(['tar', '-xzf', WINE_TARBALL, '--directory', WINE_DIR])
 
 run(['bzr', 'co', '--lightweight', BASE_DIR, WINE_RN_DIR])
-
 shutil.copy2(SPEC, WINE_SPEC)
+
 run(['wine', WINE_PYTHON, PYINSTALLER, '--workpath', WINE_BUILD,
      '--distpath', DRIVE_C, WINE_SPEC])  # will be built at ...DRIVE_C/dist
+run(['./build-translations.py', LOCALE_DIR], cwd=DIR)
 
 run(['wine', WINE_RN_EXE])
