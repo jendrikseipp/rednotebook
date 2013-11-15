@@ -1,16 +1,24 @@
 #! /usr/bin/env python
 
+import argparse
 import os
 import sys
 
-basedir = 'C:\\Users\\Jendrik\\RedNotebook'
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('locale_dir')
+    return parser.parse_args()
+
+args = parse_args()
+
+basedir = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', '..'))
 sys.path.insert(0, basedir)
 
 from rednotebook.external import msgfmt
 import setup
 
 po_dir = os.path.join(basedir, 'po')
-dest_path = os.path.join(basedir, 'dist', 'share', 'locale')
+locale_dir = os.path.abspath(args.locale_dir)
 print 'Building translations'
-print po_dir, '-->', dest_path
-setup.build_translation_files(po_dir, dest_path)
+print po_dir, '-->', locale_dir
+setup.build_translation_files(po_dir, locale_dir)
