@@ -41,7 +41,9 @@ if args.beta:
     version += '-r%s' % get_rev()
 run(['./build-installer.py', BUILD_ENV, version], cwd=DIR)
 INSTALLER = os.path.join(DRIVE_C, 'rednotebook-%s.exe' % version)
-run(['./test-installer.py', INSTALLER], cwd=DIR)
-#run(['./upload-file.sh', INSTALLER], cwd=os.path.join(BASE_DIR, 'dev'))
+if not args.beta:
+    run(['./test-installer.py', INSTALLER], cwd=DIR)
+destdir = 'beta' if args.beta else ''
+run(['./upload-file.py', INSTALLER, '--destdir', destdir], cwd=os.path.join(BASE_DIR, 'dev'))
 
-#run(['7z', 'a', 'rednotebook-%s.7z' % info.version, 'dist'], cwd=DRIVE_C)
+#run(['7z', 'a', 'rednotebook-%s.7z' % version, 'dist'], cwd=DRIVE_C)
