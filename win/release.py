@@ -14,7 +14,7 @@ def parse_args():
 args = parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-BASE_DIR = os.path.basename(DIR)
+BASE_DIR = os.path.dirname(DIR)
 BUILD_ENV_TARBALL = os.path.join(DIR, 'build-env.tar.gz')
 BUILD_ENV = os.path.join(DIR, 'build-env')
 DRIVE_C = os.path.join(BUILD_ENV, 'drive_c')
