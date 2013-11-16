@@ -10,6 +10,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.7.4
 X Add font selection for edit mode (Philip Akesson).
 X Change preview font in preferences.
+X Write scripts to cross-compile RedNotebook Windows exe and installer on Linux.
+O Release nightly windows versions (maybe only zips?)
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
