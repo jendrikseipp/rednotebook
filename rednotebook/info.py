@@ -30,7 +30,7 @@ except ImportError:
     from rednotebook.external import argparse
 
 
-version = '1.7.4'
+version = '1.8.0'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
