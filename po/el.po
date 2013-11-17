@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-03-31 23:00+0200\n"
+"POT-Creation-Date: 2013-11-16 21:33+0100\n"
 "PO-Revision-Date: 2012-12-30 22:42+0000\n"
 "Last-Translator: palap <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-10-25 05:41+0000\n"
-"X-Generator: Launchpad (build 16810)\n"
+"X-Launchpad-Export-Date: 2013-11-17 05:22+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -44,20 +44,20 @@ msgstr "Ρωτήσε στην επόμενη εκκίνηση"
 msgid "Never ask again"
 msgstr "Να μην ερωτηθώ ξανά"
 
-#: ../rednotebook/gui/main_window.py:281
+#: ../rednotebook/gui/main_window.py:282
 msgid "Show RedNotebook"
 msgstr "Εμφάνιση του RedNotebook"
 
-#: ../rednotebook/gui/main_window.py:495
+#: ../rednotebook/gui/main_window.py:496
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:596
+#: ../rednotebook/gui/main_window.py:591
 #: ../rednotebook/gui/customwidgets.py:375
 msgid "Template"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:598
+#: ../rednotebook/gui/main_window.py:593
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -93,7 +93,7 @@ msgid "_Format"
 msgstr ""
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:395
+#: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:401
 msgid "Format"
 msgstr "Μορφοποίηση"
 
@@ -118,7 +118,7 @@ msgid "mtv, spam, work, job, play"
 msgstr ""
 
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/info.py:95 ../rednotebook/util/markup.py:140
+#: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:140
 msgid "Tags"
 msgstr "Ετικέτες"
 
@@ -132,91 +132,95 @@ msgstr "Λέξεις"
 msgid "Hide \"%s\" from clouds"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:51 ../rednotebook/gui/exports.py:396
+#: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:402
 msgid "Export all days"
 msgstr "Εξαγωγή όλων των ημερών"
 
-#: ../rednotebook/gui/exports.py:53
-msgid "Export currently selected text"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:56
+#: ../rednotebook/gui/exports.py:54
 msgid "Export currently visible day"
 msgstr "Εξαγωγή της τρέχουσας εμφανιζόμενης ημέρας"
 
-#: ../rednotebook/gui/exports.py:59
+#: ../rednotebook/gui/exports.py:57
 msgid "Export days in the selected time range"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:68
+#: ../rednotebook/gui/exports.py:66
 msgid "From:"
 msgstr "Από:"
 
-#: ../rednotebook/gui/exports.py:70
+#: ../rednotebook/gui/exports.py:68
 msgid "To:"
 msgstr "Πρός:"
 
-#: ../rednotebook/gui/exports.py:135
+#: ../rednotebook/gui/exports.py:115
+msgid "Export currently selected text"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:123
+msgid "(Only available when text is selected in edit mode)"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:140
 msgid "Date format"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:136
+#: ../rednotebook/gui/exports.py:141
 msgid "Leave blank to omit dates in export"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:138
+#: ../rednotebook/gui/exports.py:143
 msgid "Export text and tags"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:139
+#: ../rednotebook/gui/exports.py:144
 msgid "Export text only"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:141
+#: ../rednotebook/gui/exports.py:146
 msgid "Export tags only"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:143
+#: ../rednotebook/gui/exports.py:148
 msgid "Filter days by tags"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:152
+#: ../rednotebook/gui/exports.py:157
 msgid "Available tags"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:153
+#: ../rednotebook/gui/exports.py:158
 msgid "Selected tags"
 msgstr "Επιλεγμένες ετικέτες"
 
-#: ../rednotebook/gui/exports.py:161
+#: ../rednotebook/gui/exports.py:166
 msgid "Select"
 msgstr "Επιλογή"
 
-#: ../rednotebook/gui/exports.py:162
+#: ../rednotebook/gui/exports.py:167
 msgid "Deselect"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:257
+#: ../rednotebook/gui/exports.py:262
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:281
+#: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
 msgstr "Έχετε επιλέξει τις παρακάτω ρυθμίσεις:"
 
-#: ../rednotebook/gui/exports.py:306
+#: ../rednotebook/gui/exports.py:312
 msgid "Export Assistant"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:308
+#: ../rednotebook/gui/exports.py:314
 msgid "Welcome to the Export Assistant."
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:309
+#: ../rednotebook/gui/exports.py:315
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:310
+#: ../rednotebook/gui/exports.py:316
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
@@ -224,92 +228,92 @@ msgstr ""
 "Μπορείτε να επιλέξετε τις ημέρες που επιθυμείτε να εξάγετε και που θα "
 "αποθηκευτεί το αρχείο."
 
-#: ../rednotebook/gui/exports.py:320
+#: ../rednotebook/gui/exports.py:326
 msgid "Select Export Format"
 msgstr "Επιλογή μορφοποίησης αρχείου εξαγωγής"
 
-#: ../rednotebook/gui/exports.py:325
+#: ../rednotebook/gui/exports.py:331
 msgid "Select Date Range"
 msgstr "Επιλογή χρονικού διαστήματος"
 
-#: ../rednotebook/gui/exports.py:330
+#: ../rednotebook/gui/exports.py:336
 msgid "Select Contents"
 msgstr "Επιλογή περιεχομένων"
 
-#: ../rednotebook/gui/exports.py:336
+#: ../rednotebook/gui/exports.py:342
 msgid "Select Export Path"
 msgstr "Επιλογή διαδρομή εξαγωγής"
 
-#: ../rednotebook/gui/exports.py:341
+#: ../rednotebook/gui/exports.py:347
 msgid "Summary"
 msgstr "Σύνοψη"
 
-#: ../rednotebook/gui/exports.py:400 ../rednotebook/gui/search.py:76
+#: ../rednotebook/gui/exports.py:406 ../rednotebook/gui/search.py:76
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: ../rednotebook/gui/exports.py:401
+#: ../rednotebook/gui/exports.py:407
 msgid "Export selected text only"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:403
+#: ../rednotebook/gui/exports.py:409
 msgid "Start date"
 msgstr "Ημερομηνία έναρξης"
 
-#: ../rednotebook/gui/exports.py:404
+#: ../rednotebook/gui/exports.py:410
 msgid "End date"
 msgstr "Ημερομηνία λήξης"
 
-#: ../rednotebook/gui/exports.py:408
+#: ../rednotebook/gui/exports.py:414
 msgid "Include text"
 msgstr "Συμπεριλάβετε κείμενο"
 
-#: ../rednotebook/gui/exports.py:409
+#: ../rednotebook/gui/exports.py:415
 msgid "Include tags"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:411
+#: ../rednotebook/gui/exports.py:417
 msgid "Filtered by tags"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:412
+#: ../rednotebook/gui/exports.py:418
 msgid "Export path"
 msgstr "Διαδρομή εξαγωγής"
 
-#: ../rednotebook/gui/exports.py:415
+#: ../rednotebook/gui/exports.py:421
 msgid "Yes"
 msgstr "Ναι"
 
-#: ../rednotebook/gui/exports.py:415
+#: ../rednotebook/gui/exports.py:421
 msgid "No"
 msgstr "Όχι"
 
-#: ../rednotebook/gui/exports.py:465 ../rednotebook/gui/exports.py:471
+#: ../rednotebook/gui/exports.py:470 ../rednotebook/gui/exports.py:476
 #, python-format
 msgid "Content exported to %s"
 msgstr "Το περιεχόμενο έχει εξαχθεί στο %s"
 
-#: ../rednotebook/gui/exports.py:521
+#: ../rednotebook/gui/exports.py:526
 msgid "Plain Text"
 msgstr ""
 
-#: ../rednotebook/gui/exports.py:552
+#: ../rednotebook/gui/exports.py:557
 msgid "requires pywebkitgtk"
 msgstr "απαιτείτε η ύπαρξη του pywebkitgtk"
 
-#: ../rednotebook/gui/menu.py:94
+#: ../rednotebook/gui/menu.py:93
 msgid "_Journal"
 msgstr "_Ημερολόγιο"
 
-#: ../rednotebook/gui/menu.py:96
+#: ../rednotebook/gui/menu.py:95
 msgid "Create a new journal. The old one will be saved"
 msgstr "Δημιουργήστε ένα νέο ημερολόγιο. Το παλιό θα αποθηκευτεί"
 
-#: ../rednotebook/gui/menu.py:99
+#: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:104
+#: ../rednotebook/gui/menu.py:103
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
@@ -318,132 +322,132 @@ msgstr ""
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
 #. None, _('Open the import assistant'), self.on_import_menu_item_activate),
 #. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:110
+#: ../rednotebook/gui/menu.py:109
 msgid "Export"
 msgstr "Εξαγωγή"
 
-#: ../rednotebook/gui/menu.py:111
+#: ../rednotebook/gui/menu.py:110
 msgid "Open the export assistant"
 msgstr ""
 
 #. ## Translators: Verb
-#: ../rednotebook/gui/menu.py:113
+#: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:114
+#: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
 msgstr "Αποθήκευση όλα των δδομένων σε συμπιεσμένο αρχείο zip"
 
-#: ../rednotebook/gui/menu.py:115
+#: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:116
+#: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
 msgstr "Εμφάνιση μερικών στατιστικών για το ημερολόγιο"
 
-#: ../rednotebook/gui/menu.py:118
+#: ../rednotebook/gui/menu.py:117
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
 msgstr "Τερματισμός RedNotebook. Δε θα σταλεί στη μπάρα."
 
-#: ../rednotebook/gui/menu.py:121
+#: ../rednotebook/gui/menu.py:120
 msgid "_Edit"
 msgstr "_Επεξεργασία"
 
-#: ../rednotebook/gui/menu.py:123
+#: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:125
+#: ../rednotebook/gui/menu.py:124
 msgid "Redo text or tag edits"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:139
+#: ../rednotebook/gui/menu.py:138
 msgid "Underline misspelled words"
 msgstr "Υπογράμμιση ανορθόγραφων λέξεων"
 
-#: ../rednotebook/gui/menu.py:144
+#: ../rednotebook/gui/menu.py:143
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../rednotebook/gui/menu.py:145
+#: ../rednotebook/gui/menu.py:144
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
-#: ../rednotebook/gui/menu.py:146
+#: ../rednotebook/gui/menu.py:145
 msgid "Open the RedNotebook documentation"
 msgstr "Άνοιγμα της τεκμηρίωσις του RedNotebook"
 
-#: ../rednotebook/gui/menu.py:147
+#: ../rednotebook/gui/menu.py:146
 msgid "Get Help Online"
 msgstr "Λήψη βοήθειας στο διαδίκτυο"
 
-#: ../rednotebook/gui/menu.py:148
+#: ../rednotebook/gui/menu.py:147
 msgid "Browse answered questions or ask a new one"
 msgstr "Περιήγηση σε ερωτήσεις που έουν απαντηθεί ή ρωτήστε μία νέα"
 
-#: ../rednotebook/gui/menu.py:149
+#: ../rednotebook/gui/menu.py:148
 msgid "Translate RedNotebook"
 msgstr "Μετάφρασε το RedNotebook"
 
-#: ../rednotebook/gui/menu.py:150
+#: ../rednotebook/gui/menu.py:149
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
 "Συνδέση με τη σελίδα Launchpad για να βοηθήσεις στη μετάφραση του RedNotebook"
 
-#: ../rednotebook/gui/menu.py:152
+#: ../rednotebook/gui/menu.py:151
 msgid "Report a Problem"
 msgstr "Αναφορά προβλήματος"
 
-#: ../rednotebook/gui/menu.py:153
+#: ../rednotebook/gui/menu.py:152
 msgid "Fill out a short form about the problem"
 msgstr ""
 "Συμπλήρωση μιας μικρής φόρμας σχετικά με το πρόβλημα που παρουσιάστηκε"
 
-#: ../rednotebook/gui/menu.py:173
+#: ../rednotebook/gui/menu.py:172
 msgid "Wrong directory"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:213
+#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:214
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:180
+#: ../rednotebook/gui/menu.py:179
 msgid "Please select an empty directory."
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:184
+#: ../rednotebook/gui/menu.py:183
 msgid "This directory contains no journal files:"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:200
+#: ../rednotebook/gui/menu.py:199
 msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
 "Τα ημερολόγια αποθηκεύονται σε έναν κατάλογο, όχι σε ξεχωριστό αρχείο."
 
-#: ../rednotebook/gui/menu.py:201
+#: ../rednotebook/gui/menu.py:200
 msgid "The directory name will be the title of the new journal."
 msgstr ""
 "Το όνομα του καταλόγου θα είναι ίδιο με τον τίτλο του νέου ημερολογίου."
 
-#: ../rednotebook/gui/menu.py:202
+#: ../rednotebook/gui/menu.py:201
 msgid "Select an empty folder for your new journal"
 msgstr "Επιλέξτε έναν άδειο φάκελο για το νέο σας ημερολόγιο"
 
-#: ../rednotebook/gui/menu.py:205
+#: ../rednotebook/gui/menu.py:204
 msgid "Select an existing journal directory"
 msgstr "Επιλέξτε έναν υπάρχοντα κατάλογο ημερολογίου"
 
-#: ../rednotebook/gui/menu.py:206
+#: ../rednotebook/gui/menu.py:205
 msgid "The directory should contain your journal's data files"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:213
+#: ../rednotebook/gui/menu.py:215
 msgid "Select an empty folder for the new location of your journal"
 msgstr "Επιλέξτε έναν κενό φάκελο για τη νέα τοποθεσία του ημερολογίου σας"
 
-#: ../rednotebook/gui/menu.py:214
+#: ../rednotebook/gui/menu.py:216
 msgid "The directory name will be the new title of the journal"
 msgstr "Το όνομα του φακέλου θα είναι ο νέος τίτλος του ημερολογίου"
 
@@ -455,74 +459,90 @@ msgstr "Τεκμιρίωση του RedNotebook"
 msgid "A Desktop Journal"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:84
+#: ../rednotebook/gui/options.py:85
 msgid "Load RedNotebook at startup"
 msgstr "Εκκίνηση του RedNotebook κατά την εκκίνηση του υπολογιστή"
 
-#: ../rednotebook/gui/options.py:154
+#: ../rednotebook/gui/options.py:138
 msgid "%A, %x, Day %j"
 msgstr "%A, %x, Ημέρα %j"
 
-#: ../rednotebook/gui/options.py:154
+#: ../rednotebook/gui/options.py:138
 msgid "Week %W of Year %Y"
 msgstr "Εβδομάδα %W του χρόνου %Y"
 
-#: ../rednotebook/gui/options.py:155
+#: ../rednotebook/gui/options.py:139
 msgid "Day %j"
 msgstr "Ημέρα %j"
 
-#: ../rednotebook/gui/options.py:160
+#: ../rednotebook/gui/options.py:144
 msgid "Help"
 msgstr "Βοήθεια"
 
 #. ## Translators: Noun
-#: ../rednotebook/gui/options.py:181
+#: ../rednotebook/gui/options.py:165
 msgid "Preview:"
 msgstr "Προεπισκόπηση:"
 
-#: ../rednotebook/gui/options.py:295
+#: ../rednotebook/gui/options.py:180
+msgid "Choose font ..."
+msgstr ""
+
+#: ../rednotebook/gui/options.py:188
+msgid "Choose font"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
 msgstr "Κλείσιμο στη μπάρα συστήματος"
 
-#: ../rednotebook/gui/options.py:296
+#: ../rednotebook/gui/options.py:271
 msgid "Closing the window will send RedNotebook to the tray"
 msgstr ""
 "Κλείνοντας το παράθυρο το RedNotebook θα συνεχίσει να λειτουργεί στη μπάρα "
 "συστήματος"
 
-#: ../rednotebook/gui/options.py:299
+#: ../rednotebook/gui/options.py:274
 msgid "Switch between edit and preview mode automatically"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:303
+#: ../rednotebook/gui/options.py:278
 msgid "Check for new version at startup"
 msgstr "Έλεγχος για νέα έκδοση κατά την εκκίνηση"
 
-#: ../rednotebook/gui/options.py:311
+#: ../rednotebook/gui/options.py:286
 msgid "Check now"
 msgstr "Έλεγχος τώρα"
 
-#: ../rednotebook/gui/options.py:316
-msgid "Font Size"
-msgstr "Μέγεθος γραμματοσειράς"
+#: ../rednotebook/gui/options.py:291
+msgid "Edit font:"
+msgstr ""
 
-#: ../rednotebook/gui/options.py:317
+#: ../rednotebook/gui/options.py:292
+msgid "Preview font:"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:294
+msgid "Comma-separated font names"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:295
 msgid "Date/Time format"
 msgstr "Μορφή Ημερομηνίας/Ώρας"
 
-#: ../rednotebook/gui/options.py:318
+#: ../rednotebook/gui/options.py:296
 msgid "Exclude from cloud"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:319
+#: ../rednotebook/gui/options.py:297
 msgid "Do not show these comma separated words in the word cloud"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:320
+#: ../rednotebook/gui/options.py:298
 msgid "Include small words in cloud"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:321
+#: ../rednotebook/gui/options.py:299
 msgid "Allow these words with 4 letters or less"
 msgstr ""
 
@@ -575,7 +595,7 @@ msgstr "Εισάγετε έναν σύνδεσμο για μια ιστοσελ�
 msgid "Bullet List"
 msgstr "Λίστα με κουκκίδες"
 
-#: ../rednotebook/gui/insert_menu.py:115 ../rednotebook/gui/insert_menu.py:292
+#: ../rednotebook/gui/insert_menu.py:115 ../rednotebook/gui/insert_menu.py:309
 msgid "Title"
 msgstr "Τίτλος"
 
@@ -617,19 +637,19 @@ msgstr "Εισαγωγή"
 msgid "Insert images, files, links and other content"
 msgstr "Εισαγωγή εικόνων, αρχείων, συνδέσμων και άλλου περιεχομένου"
 
-#: ../rednotebook/gui/insert_menu.py:189
+#: ../rednotebook/gui/insert_menu.py:192
 msgid "Width (optional):"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:194
+#: ../rednotebook/gui/insert_menu.py:197
 msgid "pixels"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:215
+#: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:279
+#: ../rednotebook/gui/insert_menu.py:296
 msgid "No link location has been entered"
 msgstr ""
 
@@ -649,59 +669,63 @@ msgstr "Προσθήκη νέας καταχώρισης"
 msgid "Delete this entry"
 msgstr ""
 
-#: ../rednotebook/journal.py:214
+#: ../rednotebook/journal.py:215
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:296
+#: ../rednotebook/journal.py:311
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "Το περιεχόμενο έχει αποθηκευθεί κατά %s"
 
-#: ../rednotebook/journal.py:299
+#: ../rednotebook/journal.py:315
+msgid "The journal could not be saved"
+msgstr ""
+
+#: ../rednotebook/journal.py:317
 msgid "Nothing to save"
 msgstr "Δεν υπάρχει τίποτα προς αποθήκευση"
 
-#: ../rednotebook/journal.py:446
+#: ../rednotebook/journal.py:468
 msgid "Error"
 msgstr ""
 
-#: ../rednotebook/info.py:96
+#: ../rednotebook/info.py:98
 msgid "Work"
 msgstr "Δουλειά"
 
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:99
 msgid "Free time"
 msgstr "Ελεύθερος χρόνος"
 
-#: ../rednotebook/info.py:98
+#: ../rednotebook/info.py:100
 msgid "Todo"
 msgstr ""
 
-#: ../rednotebook/info.py:99
+#: ../rednotebook/info.py:101
 msgid "Done"
 msgstr "Έγινε"
 
-#: ../rednotebook/info.py:100
+#: ../rednotebook/info.py:102
 msgid "Remember the milk"
 msgstr "Να θυμηθώ να πάρω γάλα"
 
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:103
 msgid "Wash the dishes"
 msgstr "Να πλύνω τα πιάτα"
 
-#: ../rednotebook/info.py:103
+#: ../rednotebook/info.py:105
 msgid "Hello!"
 msgstr "Γεια σας!"
 
-#: ../rednotebook/info.py:104
+#: ../rednotebook/info.py:106
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
 
 #. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:107
+#: ../rednotebook/info.py:109
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -709,29 +733,29 @@ msgstr ""
 
 #. ## Translators: noun
 #. ## Verb
-#: ../rednotebook/info.py:110 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:112 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "Προεπισκόπηση"
 
-#: ../rednotebook/info.py:111
+#: ../rednotebook/info.py:113
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
 
-#: ../rednotebook/info.py:112
+#: ../rednotebook/info.py:114
 msgid "Click on Edit above to see the difference."
 msgstr ""
 
-#: ../rednotebook/info.py:115
+#: ../rednotebook/info.py:117
 msgid "Tagging is easy."
 msgstr ""
 
-#: ../rednotebook/info.py:116
+#: ../rednotebook/info.py:118
 msgid "Just use #hashtags like on twitter."
 msgstr ""
 
-#: ../rednotebook/info.py:119
+#: ../rednotebook/info.py:121
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -741,11 +765,11 @@ msgstr ""
 "μαλλιά-- μου συνειδητοποίησα ότι ήταν __χρωμοσαμπουάν__ χρώματος ροζ."
 
 #. ## Translators: both are verbs
-#: ../rednotebook/info.py:131
+#: ../rednotebook/info.py:133
 msgid "Save and Export"
 msgstr "Αποθήκευση και εξαγωγή"
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:134
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -753,41 +777,41 @@ msgstr ""
 "Οτιδήποτε εισάγετε θα αποθηκευέται αυτόματα ανά τακτά χρονικά διαστήματα και "
 "όταν κλείσετε το πρόγραμμα."
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:135
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "Προς αποφυγή απώλειας των δεδομένων θα πρέπει να κρατάτε αντίγραφο ασφαλείας "
 "του ημερολογίου"
 
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:136
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "«Αντίγραφο ασφαλείας» στο μενού «Ημερολόγιο» αποθηκεύει όλα τα δεδομένα σε "
 "συμπιεσμένο αρχείο zip."
 
-#: ../rednotebook/info.py:135
+#: ../rednotebook/info.py:137
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "Στο μενού «Ημερολόγιο» θα βρείτε επίσης την επιλογή «Εξαγωγή»."
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:138
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 
-#: ../rednotebook/info.py:139
+#: ../rednotebook/info.py:141
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 
-#: ../rednotebook/info.py:140
+#: ../rednotebook/info.py:142
 msgid "Any feedback is appreciated."
 msgstr ""
 
-#: ../rednotebook/info.py:143
+#: ../rednotebook/info.py:145
 msgid "Have a nice day!"
 msgstr "Καλή σας μέρα!"
 
-#: ../rednotebook/info.py:164
+#: ../rednotebook/info.py:166
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by using different journals "
@@ -796,7 +820,7 @@ msgid ""
 "separator lines (20 “=”s)."
 msgstr ""
 
-#: ../rednotebook/info.py:171
+#: ../rednotebook/info.py:173
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -923,7 +947,7 @@ msgstr ""
 msgid "Create New Template"
 msgstr ""
 
-#: ../rednotebook/util/dates.py:57
+#: ../rednotebook/util/dates.py:56
 msgid "Incorrect date format"
 msgstr ""
 
