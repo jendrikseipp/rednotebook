@@ -25,21 +25,14 @@ def run(*args, **kwargs):
     if retcode != 0:
         sys.exit('Command failed.')
 
-def install(path, dest=None):
-    cmd = ['wine']
+def install(path, use_wine):
+    cmd = []
+    if use_wine:
+        cmd.append('wine')
     if path.lower().endswith('.exe'):
-        cmd.extend([path, '/S'])
+        cmd.extend([path])
     elif path.lower().endswith('.msi'):
         cmd.extend(['msiexec', '/i', path])
     else:
         sys.exit('Don\'t know how to install {0}'.format(path))
     run(cmd)
-
-def extract(archive, dest):
-    if archive.endswith('gz'):
-        run(['tar', '-xzvf', archive, '--directory', dest])
-    elif archive.endswith('.zip'):
-        run(['unzip', archive, '-d', dest])
-    else:
-        sys.exit('Don\'t know how to extract {0}'.format(archive))
-

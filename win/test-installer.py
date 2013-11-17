@@ -3,7 +3,6 @@
 import argparse
 import logging
 import os
-import shutil
 import tempfile
 
 from utils import run

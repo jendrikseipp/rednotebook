@@ -9,7 +9,7 @@ drive_c = os.path.abspath(os.path.join(specdir, '..', '..'))
 pyinstaller_dir = os.path.join(drive_c, 'PyInstaller-2.1')
 basedir = os.path.join(drive_c, 'rednotebook')
 srcdir = os.path.join(basedir, 'rednotebook')
-bindir = os.path.join(drive_c, 'bin')
+bindir = os.path.join(drive_c, 'gtkbin')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 for path in [drive_c, pyinstaller_dir, basedir, srcdir, bindir, icon]:

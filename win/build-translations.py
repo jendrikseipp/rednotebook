@@ -14,7 +14,6 @@ args = parse_args()
 basedir = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', '..'))
 sys.path.insert(0, basedir)
 
-from rednotebook.external import msgfmt
 import setup
 
 po_dir = os.path.join(basedir, 'po')

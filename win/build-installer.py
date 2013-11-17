@@ -3,8 +3,6 @@
 import argparse
 import logging
 import os
-import shutil
-import sys
 
 from utils import run
 

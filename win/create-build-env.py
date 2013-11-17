@@ -1,51 +1,55 @@
 #! /usr/bin/env python
 
-"""
-README:
+HELP = """\
+PyGTK All-In-One Installer: Install "PyRsvg" and "Language Tools".
 
-PyGTK All-In-One Installer: Select to install "PyRsvg" and "Language
-Tools".
-
-InnoSetup: Do not create a folder in the start menu. Otherwise wine
-1.6 will show you a winemenubuilder.exe error which can be ignored
-however.
+InnoSetup: To avoid winemenubuilder.exe errors do *not* create a
+start menu folder and do *not* associate the .iss extension with
+InnoSetup.
 
 For the other installers the default values are fine.
-
-Important: After extracting the gtk-runtime archive, add the contained
-"bin" directory to the system PATH.
 """
 
 import argparse
 import logging
 import os
 import shutil
+import sys
 import tempfile
 
-from utils import run, fetch, install, ensure_path, extract
+from utils import run, fetch, install
 
 logging.basicConfig(level=logging.INFO)
 
+IS_WIN = sys.platform.startswith('win')
+IS_LINUX = not IS_WIN  # OSX currently not supported.
+
 def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('dest_wine_tarball')
-    parser.add_argument('--keep-tmp-dir', action='store_true')
+    parser = argparse.ArgumentParser(description=HELP)
+    if IS_LINUX:
+        parser.add_argument('dest_tarball')
+        parser.add_argument('--keep-tmp-dir', action='store_true')
     return parser.parse_args()
 
 args = parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-BASE_DIR = os.path.dirname(DIR)
-WINE_DIR = tempfile.mkdtemp(suffix='-wine')
-DRIVE_C = os.path.join(WINE_DIR, 'drive_c')
-SITE_PACKAGES = os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')
-WINE_TARBALL = os.path.abspath(args.dest_wine_tarball)
 INSTALLERS_DIR = os.path.join(DIR, 'installers')
+if IS_LINUX:
+    WINE_DIR = tempfile.mkdtemp(suffix='-wine')
+    logging.info('Temporary wine dir: %s' % WINE_DIR)
+    os.environ['WINEPREFIX'] = WINE_DIR
+DRIVE_C = r'C:\\'
+SITE_PACKAGES = os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')
+SEVEN_ZIP = os.path.join(DRIVE_C, 'Program Files', '7-Zip', '7z.exe')
+
 
 INSTALLERS = [
-    ('http://python.org/ftp/python/2.7.6/python-2.7.6.msi', 'python-2.7.6.msi'),
-    ('http://downloads.sourceforge.net/project/pywin32/pywin32/Build%20218/pywin32-218.win32-py2.7.exe?'
-        'r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fpywin32%2Ffiles%2Fpywin32%2FBuild%2520218%2F&ts=1384187777&use_mirror=heanet',
+    ('http://downloads.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.exe?r=&ts=1384687929&use_mirror=netcologne',
+     '7z920.exe'),
+    ('http://python.org/ftp/python/2.7.6/python-2.7.6.msi',
+     'python-2.7.6.msi'),
+    ('http://downloads.sourceforge.net/project/pywin32/pywin32/Build%20218/pywin32-218.win32-py2.7.exe?r=&ts=1384687967&use_mirror=garr',
      'pywin32-build218.exe'),
     ('http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/pygtk-all-in-one-2.24.2.win32-py2.7.msi',
      'pygtk-all-in-one-2.24.2.win32-py2.7.msi'),
@@ -56,10 +60,10 @@ INSTALLERS = [
 ]
 
 TARBALLS = [
-    ('https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-2.1.tar.gz',
-     'pyinstaller-2.1.tar.gz', DRIVE_C),
-    ('https://dl.dropboxusercontent.com/u/4780737/gtk-runtime-1.7.3.tar.gz',
-     'gtk-runtime-1.7.3.tar.gz', DRIVE_C),
+    ('https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-2.1.zip',
+     'PyInstaller-2.1.zip', DRIVE_C),
+    ('https://dl.dropboxusercontent.com/u/4780737/gtkbin-1.7.3.zip',
+     'gtkbin-1.7.3.zip', DRIVE_C),
     ('https://dl.dropboxusercontent.com/u/4780737/pywebkitgtk.zip',
      'pywebkitgtk.zip', SITE_PACKAGES),
     # TODO: Add chardet once we really use it and put it at the correct location.
@@ -67,21 +71,25 @@ TARBALLS = [
     # 'chardet-2.1.1.tar.gz', SITE_PACKAGES),
 ]
 
-logging.info('Temporary wine dir: %s' % WINE_DIR)
-os.environ['WINEPREFIX'] = WINE_DIR
-ensure_path(WINE_DIR)
-ensure_path(DRIVE_C)
+print HELP
 
 for url, filename in INSTALLERS:
     path = os.path.join(INSTALLERS_DIR, filename)
     fetch(url, path)
-    install(path, dest=DRIVE_C)
+    install(path, use_wine=IS_LINUX)
 
 for url, filename, dest in TARBALLS:
     path = os.path.join(INSTALLERS_DIR, filename)
     fetch(url, path)
-    extract(path, dest)
+    cmd = ['wine'] if IS_LINUX else []
+    assert path.endswith('.zip'), path
+    cmd.extend([SEVEN_ZIP, 'x', '-o' + dest, path])
+    run(cmd)
 
-run(['tar', '-czvf', WINE_TARBALL, '--directory', WINE_DIR, '.'])
-if not args.keep_tmp_dir:
-    shutil.rmtree(WINE_DIR, ignore_errors=False)
+if IS_LINUX:
+    run(['tar', '-czvf', os.path.abspath(args.dest_tarball), '--directory', WINE_DIR, '.'])
+    if not args.keep_tmp_dir:
+        shutil.rmtree(WINE_DIR, ignore_errors=False)
+else:
+    logging.info('Make sure to add the directory %s to the system PATH.' %
+        os.path.join(DRIVE_C, 'bin'))
