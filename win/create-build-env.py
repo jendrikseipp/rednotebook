@@ -11,6 +11,9 @@ InnoSetup: Do not create a folder in the start menu. Otherwise wine
 however.
 
 For the other installers the default values are fine.
+
+Important: After extracting the gtk-runtime archive, add the contained
+"bin" directory to the system PATH.
 """
 
 import argparse
