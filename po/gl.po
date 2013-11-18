@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-16 20:51+0000\n"
+"PO-Revision-Date: 2013-11-17 08:35+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-17 05:22+0000\n"
+"X-Launchpad-Export-Date: 2013-11-18 05:25+0000\n"
 "X-Generator: Launchpad (build 16831)\n"
 
 #: ../rednotebook/backup.py:55
@@ -418,7 +418,7 @@ msgstr "Escolla un directorio baleiro"
 
 #: ../rednotebook/gui/menu.py:183
 msgid "This directory contains no journal files:"
-msgstr "Este directoio non conten ficheiros do diário:"
+msgstr "Este directorio non conten ficheiros do diário:"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Journals are saved in a directory, not in a single file."
@@ -779,8 +779,8 @@ msgstr ""
 #: ../rednotebook/info.py:135
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
-"Para evitar a pérdida de datos debe facer regularmente unha copia de "
-"seguranza do seu diario."
+"Para evitar a perda de datos debe facer regularmente unha copia de seguranza "
+"do seu diario."
 
 #: ../rednotebook/info.py:136
 msgid ""
@@ -791,7 +791,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:137
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "No el menú «Diario» tamén pode atopar o botón «Exportar»"
+msgstr "No menú «Diario» tamén pode atopar o botón «Exportar»"
 
 #: ../rednotebook/info.py:138
 msgid ""

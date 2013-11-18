@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-02-19 13:49+0000\n"
-"Last-Translator: Xandru <xandru@softastur.org>\n"
+"PO-Revision-Date: 2013-11-17 12:47+0000\n"
+"Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-17 05:22+0000\n"
+"X-Launchpad-Export-Date: 2013-11-18 05:25+0000\n"
 "X-Generator: Launchpad (build 16831)\n"
 
 #: ../rednotebook/backup.py:55
@@ -159,7 +159,7 @@ msgstr "Esportar el testu seleicionáu agora"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(Disponible namái cuando'l testu ta seleicionáu en mou d'edición)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -482,11 +482,11 @@ msgstr "Vista previa:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr ""
+msgstr "Escoyer fonte..."
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Escoyer fonte"
 
 #: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
@@ -510,15 +510,15 @@ msgstr "Comprobar agora"
 
 #: ../rednotebook/gui/options.py:291
 msgid "Edit font:"
-msgstr ""
+msgstr "Fonte pa edición:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Preview font:"
-msgstr ""
+msgstr "Fonte pa vista previa:"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Comma-separated font names"
-msgstr ""
+msgstr "Nomes de fontes separaos por comes"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Date/Time format"
@@ -672,7 +672,7 @@ msgstr "El conteníu guardóse en %s"
 
 #: ../rednotebook/journal.py:315
 msgid "The journal could not be saved"
-msgstr ""
+msgstr "Nun pudo guardase'l diariu"
 
 #: ../rednotebook/journal.py:317
 msgid "Nothing to save"
@@ -816,6 +816,11 @@ msgid ""
 "different titles (=== Work ===, === Family ===) and using horizontal "
 "separator lines (20 “=”s)."
 msgstr ""
+"=== Entraes múltiples ===\n"
+"Pue amestar entraes múltiples a un solu día usando diferentes diarios (unu "
+"llamáu \"Trabayu\", otru \"Familia\"), separando les entraes con títulos "
+"diferentes (=== Trabayu ===, === Familia ===) y usando llinies separadores "
+"horizontales (20 “=”s)."
 
 #: ../rednotebook/info.py:173
 msgid ""
@@ -827,6 +832,13 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
+"=== Trabayu ===\n"
+"Equí vien la primera entrada. Tien que ver col #trabayu.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Familia ===\n"
+"Equí vien la entrada sobro la mio #familia."
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
