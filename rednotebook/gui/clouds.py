@@ -36,7 +36,7 @@ CLOUD_WORDS = 30
 CLOUD_CSS = """\
 <style type="text/css">
     body {
-        font-family: Ubuntu, sans-serif;
+        font-family: %(font)s;
         text-align: center;
     }
     a:link { color:black; text-decoration:none; }
@@ -178,8 +178,9 @@ class Cloud(HtmlView):
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)
         word_cloud = self._get_cloud_body(word_counter)
+        font = self.journal.config.read('previewFont', 'Ubuntu, sans-serif')
         heading = '<h1>&#160;%s</h1>'
-        parts = ['<html><head>', CLOUD_CSS, '</head>', '<body>']
+        parts = ['<html><head>', CLOUD_CSS % locals(), '</head>', '<body>']
         if tag_cloud:
             parts.extend([heading % _('Tags'), tag_cloud, '\n',
                           '<br />\n' * 3])

@@ -9,7 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.8.0
 X Add font selection for edit mode (Philip Akesson).
-X Change preview font in preferences.
+X Change preview and cloud font in preferences.
 X Write scripts to cross-compile RedNotebook Windows exe and installer on Linux.
 
 1.x
