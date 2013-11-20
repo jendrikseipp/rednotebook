@@ -181,8 +181,10 @@ class Journal:
 
         # Allow starting minimized to tray
         # When we start minimized we have to set the tray icon visible
-        self.start_minimized = args.minimized
-        if self.start_minimized:
+        self.start_minimized = filesystem.HAS_TRAY and args.minimized
+        if not filesystem.HAS_TRAY:
+            self.config['closeToTray'] = 0
+        elif self.start_minimized:
             self.config['closeToTray'] = 1
 
         self.month = None

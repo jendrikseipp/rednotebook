@@ -266,7 +266,7 @@ class OptionsManager(object):
         # If this option is activated on a system without a systray, the
         # application keeps on running in the background after it has been
         # closed. The option can still be activated in the configuration file.
-        if sys.platform.startswith('win'):
+        if filesystem.HAS_TRAY:
             self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
                 tooltip=_('Closing the window will send RedNotebook to the tray')))
 

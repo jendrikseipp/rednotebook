@@ -30,6 +30,7 @@ LANGUAGE = locale.getdefaultlocale()[0]
 REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
 
 IS_WIN = sys.platform.startswith('win')
+HAS_TRAY = IS_WIN  # A smarter detection is needed here ;)
 
 
 def get_unicode_path(path):

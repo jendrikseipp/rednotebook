@@ -29,6 +29,8 @@ try:
 except ImportError:
     from rednotebook.external import argparse
 
+from rednotebook.util import filesystem
+
 
 version = '1.8.0'
 author = 'Jendrik Seipp'
@@ -86,8 +88,9 @@ def get_commandline_parser():
         formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version',
                         version='RedNotebook %s' % version)
-    parser.add_argument('-m', '--minimized', dest='minimized', action='store_true',
-                        help='start mimimized to system tray')
+    if filesystem.HAS_TRAY:
+        parser.add_argument('-m', '--minimized', dest='minimized', action='store_true',
+                            help='start mimimized to system tray')
     parser.add_argument('--date', dest='start_date',
                         help='load specified date (format YYYY-MM-DD only)')
     parser.add_argument('journal', nargs='?', help=journal_path_help)
