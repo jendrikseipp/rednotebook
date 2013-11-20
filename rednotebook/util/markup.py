@@ -101,7 +101,6 @@ CSS = """\
 # MathJax
 FORMULAS_SUPPORTED = True
 MATHJAX_FILE = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js'
-logging.info('MathJax location: %s' % MATHJAX_FILE)
 MATHJAX_FINISHED = 'MathJax finished'
 
 # Explicitly setting inlineMath: [ ['\\(','\\)'] ] doesn't work.
