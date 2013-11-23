@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2012-10-29 03:46+0000\n"
-"Last-Translator: Sigit Irmawan <Unknown>\n"
+"PO-Revision-Date: 2013-11-22 09:35+0000\n"
+"Last-Translator: Hertatijanto Hartono <dvertx@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-17 05:23+0000\n"
+"X-Launchpad-Export-Date: 2013-11-23 06:06+0000\n"
 "X-Generator: Launchpad (build 16831)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr "Pelaksanaan backup terakhir kali sudah cukup lama."
+msgstr "Sudah cukup lama sejak pembuatan backup terakhir."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
@@ -29,7 +29,7 @@ msgstr ""
 
 #: ../rednotebook/backup.py:61
 msgid "Backup"
-msgstr "Cadangan"
+msgstr "Backup"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
@@ -49,12 +49,12 @@ msgstr "Tampilkan RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:496
 msgid "No directory selected."
-msgstr ""
+msgstr "Tak ada direktori terpilih"
 
 #: ../rednotebook/gui/main_window.py:591
 #: ../rednotebook/gui/customwidgets.py:375
 msgid "Template"
-msgstr "Kerangka"
+msgstr "Template"
 
 #: ../rednotebook/gui/main_window.py:593
 msgid ""
@@ -1108,6 +1108,7 @@ msgstr ""
 "  Ivan S. https://launchpad.net/~freeazy\n"
 "  Lisa Santika Onggrid https://launchpad.net/~lisasantikaonggrid\n"
 "  Sigit Irmawan https://launchpad.net/~manja0911\n"
+"  Trisno Pamuji https://launchpad.net/~tri.snowman\n"
 "  Waluyo Adi Siswanto https://launchpad.net/~was-wlk"
 
 #: tmp/main_window.glade.h:14
