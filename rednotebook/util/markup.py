@@ -49,6 +49,9 @@ REGEX_PIC = re.compile(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (PIC_NAME, PIC_EXT)
 # named link in web [heise ""http://heise.de""]
 REGEX_NAMED_LINK = re.compile(r'(\[)(.*?)(\s"")(\S.*?\S)(""\])', flags=re.I | re.L)
 
+ESCAPE_COLOR = r'XBEGINCOLORX\1XSEPARATORX\2XENDCOLORX'
+COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
+
 TABLE_HEAD_BG = '#aaa'
 
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
@@ -214,8 +217,7 @@ def _get_config(target, options):
     config['preproc'].append([HASHTAG.pattern, r'\1{\2\3|color:red}'])
 
     # Escape color markup.
-    config['preproc'].append([r'\{(.*?)\|color:(.+?)\}',
-                              r'BEGINCOLOR\1SEP\2ENDCOLOR'])
+    config['preproc'].append([r'\{(.*?)\|color:(.+?)\}', ESCAPE_COLOR])
 
     if target in ['xhtml', 'html']:
         config['encoding'] = 'UTF-8'  # document encoding
@@ -232,8 +234,7 @@ def _get_config(target, options):
         config['postproc'].append([r'src=\"WIDTH(\d+)-', r'width="\1" src="'])
 
         # {{red text|color:red}} -> <span style="color:red">red text</span>
-        config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR',
-                                   r'<span style="color:\2">\1</span>'])
+        config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
     elif target == 'tex':
         config['encoding'] = 'utf8'
@@ -272,9 +273,7 @@ def _get_config(target, options):
         config['preproc'].append([r'\\\(\s*(.+?)\s*\\\)', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
-        # BEGINCOLORred textSEPRedENDCOLOR -> r'\\textcolor{Red}{red text}'
-        config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR',
-                                   r'\\textcolor{\2}{\1}'])
+        config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
     elif target == 'txt':
         # Line breaks
@@ -292,7 +291,7 @@ def _get_config(target, options):
     config['preproc'].append([r'\[(%s\.(%s))\?(\d+)\]' % (img_name, img_ext), r'[WIDTH\3-\1]'])
 
     # Disable colors for all other targets.
-    config['postproc'].append([r'BEGINCOLOR(.*?)SEP(.*?)ENDCOLOR', r'\1'])
+    config['postproc'].append([COLOR_ESCAPED, r'\1'])
 
     # MathJax
     if options.pop('add_mathjax'):
