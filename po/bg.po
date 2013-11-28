@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2011-10-01 17:39+0000\n"
-"Last-Translator: Svetoslav Stefanov <svetlisashkov@yahoo.com>\n"
+"PO-Revision-Date: 2013-11-27 23:15+0000\n"
+"Last-Translator: Plamen Mitev <NetSpeed@mail.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-17 05:22+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2013-11-28 05:37+0000\n"
+"X-Generator: Launchpad (build 16847)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -82,7 +82,7 @@ msgstr ""
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Изчисти"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
