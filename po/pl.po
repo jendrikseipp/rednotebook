@@ -8,23 +8,23 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-17 11:04+0000\n"
-"Last-Translator: Jerzy Spendel <Unknown>\n"
+"PO-Revision-Date: 2013-12-04 08:45+0000\n"
+"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-18 05:25+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2013-12-05 05:31+0000\n"
+"X-Generator: Launchpad (build 16863)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr "Minęło już troche czasu od kiedy wykonałeś ostatnią kopię zapasową."
+msgstr "Minęło już trochę czasu od kiedy wykonałeś ostatnią kopię zapasową."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
-"Aby zapobiec utracie danych możesz stworzyć kopię zapasową dziennika w "
+"Aby zapobiec utracie danych możesz utworzyć kopię zapasową dziennika w "
 "archiwum zip."
 
 #: ../rednotebook/backup.py:61
@@ -33,7 +33,7 @@ msgstr "Kopia zapasowa"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr "Stwórz kopię zapasową"
+msgstr "Utwórz kopię zapasową"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
@@ -60,12 +60,12 @@ msgstr "Szablon"
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Wstaw szablon dnia zwyczajnego. Kliknij strzałkę po prawej, aby "
-"uzyskać więcej opcji"
+"Wstaw szablon dnia tygodnia. Kliknij strzałkę po prawej, aby uzyskać więcej "
+"opcji"
 
 #: ../rednotebook/gui/format_menu.py:94
 msgid "No text or tag has been selected."
-msgstr "Żaden tekst ani etykieta nie została wybrana."
+msgstr "Żaden tekst ani znacznik nie zostały wybrane."
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
@@ -86,7 +86,7 @@ msgstr "Przekreślenie"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr "Usuń znaczniki"
+msgstr "Wyczyść"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
@@ -100,7 +100,7 @@ msgstr "Typ pliku"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
-msgstr "Zmień format wybranego tekstu lub etykiety"
+msgstr "Zmień format wybranego tekstu lub znacznika"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
@@ -121,7 +121,7 @@ msgstr "mtv, spam, praca, robota, grać"
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:140
 msgid "Tags"
-msgstr "Tagi"
+msgstr "Znaczniki"
 
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
@@ -159,7 +159,7 @@ msgstr "Eksportuj zaznaczony tekst"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr "(Dostępne tylko w trybie edycji)"
+msgstr "(Dostępne tylko, gdy zaznaczony tekst znajduje się w trybie edycji)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -171,7 +171,7 @@ msgstr "Pozostaw puste by pominąć daty w eksporcie"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Export text and tags"
-msgstr "Eksportuj tekst i tagi"
+msgstr "Eksportuj tekst i znaczniki"
 
 #: ../rednotebook/gui/exports.py:144
 msgid "Export text only"
@@ -179,19 +179,19 @@ msgstr "Eksportuj tylko tekst"
 
 #: ../rednotebook/gui/exports.py:146
 msgid "Export tags only"
-msgstr "Eksportuj tylko tagi"
+msgstr "Eksportuj tylko znaczniki"
 
 #: ../rednotebook/gui/exports.py:148
 msgid "Filter days by tags"
-msgstr "Filtruj dni za pomocą tagów"
+msgstr "Filtruj dni za pomocą znaczników"
 
 #: ../rednotebook/gui/exports.py:157
 msgid "Available tags"
-msgstr "Dostępne tagi"
+msgstr "Dostępne znaczniki"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Selected tags"
-msgstr "Wybrane etykiety"
+msgstr "Wybrane znaczniki"
 
 #: ../rednotebook/gui/exports.py:166
 msgid "Select"
@@ -203,24 +203,25 @@ msgstr "Odznacz"
 
 #: ../rednotebook/gui/exports.py:262
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr "Aby filtrować za pomocą tagów musisz wybrać co najmniej jeden tag."
+msgstr ""
+"Aby filtrować za pomocą znaczników musisz wybrać co najmniej jeden znacznik."
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
-msgstr "Zaznaczyłeś poniższe ustawienia:"
+msgstr "Wybrałeś następujące ustawienia:"
 
 #: ../rednotebook/gui/exports.py:312
 msgid "Export Assistant"
-msgstr "Asystent eksportu"
+msgstr "Asystent eksportowania"
 
 #: ../rednotebook/gui/exports.py:314
 msgid "Welcome to the Export Assistant."
-msgstr "Witaj w Asystencie Eksportowania"
+msgstr "Witaj w Asystencie eksportowania."
 
 #: ../rednotebook/gui/exports.py:315
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
-"Ten asystent pomoże ci wyeksportować twój dziennik do różnych formatów."
+"Ten asystent pomoże Ci wyeksportować swój dziennik do różnych formatów."
 
 #: ../rednotebook/gui/exports.py:316
 msgid ""
@@ -272,11 +273,11 @@ msgstr "Załącz tekst"
 
 #: ../rednotebook/gui/exports.py:415
 msgid "Include tags"
-msgstr "Dołącz etykiety"
+msgstr "Dołącz znaczniki"
 
 #: ../rednotebook/gui/exports.py:417
 msgid "Filtered by tags"
-msgstr "Filtrowane za pomocą etykiet"
+msgstr "Filtrowane za pomocą znaczników"
 
 #: ../rednotebook/gui/exports.py:418
 msgid "Export path"
@@ -309,18 +310,18 @@ msgstr "_Dziennik"
 
 #: ../rednotebook/gui/menu.py:95
 msgid "Create a new journal. The old one will be saved"
-msgstr "Utwórz nowy dziennik. Stary dziennik zostanie zapisany"
+msgstr "Utwórz nowy dziennik. Stary dziennik zostanie zapisany."
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "Prowadź istniejący dziennik. Stary zostanie zapisany."
+msgstr "Wczytaj istniejący dziennik. Stary zostanie zapisany."
 
 #: ../rednotebook/gui/menu.py:103
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
 "Zapisz dziennik w nowej lokalizacji. Pliki starego dziennika również będą "
-"zapisane"
+"zapisane."
 
 #. ## Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
@@ -361,11 +362,11 @@ msgstr "_Edycja"
 
 #: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
-msgstr "Cofnij zmiany tekstu lub etykiet"
+msgstr "Cofnij zmiany tekstu lub znacznika"
 
 #: ../rednotebook/gui/menu.py:124
 msgid "Redo text or tag edits"
-msgstr "Przywróć zmianę tekstu lub etykiet"
+msgstr "Przywróć zmianę tekstu lub znacznika"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Underline misspelled words"
@@ -418,7 +419,7 @@ msgstr "Nie możesz użyć tego katalogu do przechowywania swojego dziennika:"
 
 #: ../rednotebook/gui/menu.py:179
 msgid "Please select an empty directory."
-msgstr "Proszę wybierz pusty folder"
+msgstr "Proszę wybrać pusty katalog."
 
 #: ../rednotebook/gui/menu.py:183
 msgid "This directory contains no journal files:"
@@ -426,11 +427,11 @@ msgstr "Ten katalog nie zawiera żadnych plików dziennika:"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Journals are saved in a directory, not in a single file."
-msgstr "Dzienniki są zapisywane w katalogu, a nie w pojedyńczym pliku."
+msgstr "Dzienniki są zapisywane w katalogu, a nie w pojedynczym pliku."
 
 #: ../rednotebook/gui/menu.py:200
 msgid "The directory name will be the title of the new journal."
-msgstr "Nazwa katalogu będzie tytułem nowego dziennika"
+msgstr "Nazwa katalogu będzie tytułem nowego dziennika."
 
 #: ../rednotebook/gui/menu.py:201
 msgid "Select an empty folder for your new journal"
@@ -487,11 +488,11 @@ msgstr "Podgląd:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr "Wybierz czcionke ..."
+msgstr "Wybierz czcionkę..."
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr "Wybierz czcionke"
+msgstr "Wybierz czcionkę"
 
 #: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
@@ -503,7 +504,7 @@ msgstr "Zamknięcie okna wyśle program RedNotebook do obszaru powiadamiania"
 
 #: ../rednotebook/gui/options.py:274
 msgid "Switch between edit and preview mode automatically"
-msgstr "Zmieniaj pomiędzy trybem edycji i podglądu automatycznie"
+msgstr "Przełączaj automatycznie pomiędzy trybem edycji i podglądu"
 
 #: ../rednotebook/gui/options.py:278
 msgid "Check for new version at startup"
@@ -677,7 +678,7 @@ msgstr "Zawartość zapisano do %s"
 
 #: ../rednotebook/journal.py:315
 msgid "The journal could not be saved"
-msgstr "Dziennik nie mógł być zapisany"
+msgstr "Dziennik nie mógł zostać zapisany"
 
 #: ../rednotebook/journal.py:317
 msgid "Nothing to save"
@@ -720,8 +721,8 @@ msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
-"Przykładowy tekst został dodany aby pomóc CI zacząć, możesz go usunąć kiedy "
-"zechcesz."
+"Przykładowy tekst został dodany, aby pomóc Ci zacząć - możesz go usunąć, "
+"kiedy tylko zechcesz."
 
 #. ## Translators: "Help" -> noun
 #: ../rednotebook/info.py:109
@@ -746,7 +747,7 @@ msgstr "Są dwa tryby RedNotebooka, tryb edycji i tryb podglądu."
 
 #: ../rednotebook/info.py:114
 msgid "Click on Edit above to see the difference."
-msgstr "Kliknij edytuj, aby zobaczyć róznicę"
+msgstr "Kliknij powyżej Edycję, aby zobaczyć różnicę."
 
 #: ../rednotebook/info.py:117
 msgid "Tagging is easy."
@@ -754,7 +755,7 @@ msgstr "Dodawanie znaczników jest proste."
 
 #: ../rednotebook/info.py:118
 msgid "Just use #hashtags like on twitter."
-msgstr "Zapisuj #znaczniki tak jak w usłudze Twitter."
+msgstr "Zapisuj #znaczniki tak, jak w usłudze Twitter."
 
 #: ../rednotebook/info.py:121
 msgid ""
@@ -763,8 +764,8 @@ msgid ""
 "watched \"__Life of Brian__\"."
 msgstr ""
 "Dziś poszedłem do //sklepu zoologicznego// i kupiłem **tygrysa**. Potem "
-"poszliśmy --na basen-- do parku i miło spędziłem czas grając w ringo. Po "
-"powrocie oglądaliśmy \"__Życie Briana__\"."
+"poszliśmy do --parku wodnego-- i miło spędziłem czas grając w ringo. Po "
+"powrocie oglądaliśmy \"__Żywot Briana__\"."
 
 #. ## Translators: both are verbs
 #: ../rednotebook/info.py:133
@@ -800,18 +801,18 @@ msgstr "W menu \"Dziennik\" znajdziesz również przycisk ''Eksportuj''."
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
-"Naciśnij \"Eksportuj\" by zapisać swój dziennik w pliku tekstowym, PDF, HTML "
-"lub Latex"
+"Naciśnij \"Eksportuj\", aby zapisać swój dziennik w pliku tekstowym, PDF, "
+"HTML lub Latex."
 
 #: ../rednotebook/info.py:141
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
-"Jeśli napotkaliście jakieś błędy, proszę podeślijcie mi notkę, wtedy mógłbym "
-"je naprawić."
+"Jeśli napotkałeś jakieś błędy, proszę prześlijcie mi notkę, bym mógł je "
+"naprawić."
 
 #: ../rednotebook/info.py:142
 msgid "Any feedback is appreciated."
-msgstr "Każdy rodzaj wsparcia jest mile widziany."
+msgstr "Każda informacja zwrotna jest mile widziana."
 
 #: ../rednotebook/info.py:145
 msgid "Have a nice day!"
@@ -826,10 +827,10 @@ msgid ""
 "separator lines (20 “=”s)."
 msgstr ""
 "=== Wielokrotne wpisy ===\n"
-"Możesz dodać wiele wpisów w pojedynczym dniu poprzez używanie różnych "
-"dzienników (jeden może się nazywać \"Praca\", a inny \"Rodzina\"). "
+"Możesz dodać wiele wpisów w pojedynczym dniu poprzez używanie różnych "
+"dzienników (jeden może się nazywać \"Praca\", a inny \"Rodzina\"), "
 "odróżniając swoje wpisy różnymi tytułami (===Praca===, ===Rodzina===) oraz "
-"poprzez poziomych oddzielników (np. 20 znaków \"=\")."
+"poprzez poziome rozdzielniki (np. 20 znaków \"=\")."
 
 #: ../rednotebook/info.py:173
 msgid ""
@@ -842,12 +843,12 @@ msgid ""
 "Here comes the entry about my #family."
 msgstr ""
 "=== Praca ===\n"
-"Tutaj przyjdzie pierwszy wpis. Jest o #praca.\n"
+"Tutaj będzie pierwszy wpis. Jest on o #praca.\n"
 "\n"
 "====================\n"
 "\n"
 "=== Rodzina ===\n"
-"Tutaj przyjdzie wpis o mojej #rodzinie."
+"Tutaj będzie wpis o mojej #rodzina."
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
@@ -903,7 +904,7 @@ msgid ""
 msgstr ""
 "=== Spotkanie ===\n"
 "\n"
-"Cel, Data, Miejsce\n"
+"Cel, data, miejsce\n"
 "\n"
 "**Obecni:**\n"
 "+\n"
@@ -911,13 +912,13 @@ msgstr ""
 "+\n"
 "\n"
 "\n"
-"**Agenda:**\n"
+"**Porządek:**\n"
 "+\n"
 "+\n"
 "+\n"
 "\n"
 "\n"
-"**Dyskusja, Decyzje, Zobowiązania:**\n"
+"**Dyskusja, decyzje, zobowiązania:**\n"
 "+\n"
 "+\n"
 "+\n"
@@ -945,10 +946,10 @@ msgstr ""
 "**Uczestnicy:**\n"
 "\n"
 "**Wycieczka:**\n"
-"Pewnego razu wybraliśmy się do xxx. Kiedy dotarliśmy do yyy stało się zzz "
-"...\n"
+"Pewnego razu wybraliśmy się do xxx. Kiedy dotarliśmy do yyy stało się "
+"zzz...\n"
 "\n"
-"**Zdjęcia:** [Folder ze zdjęciami \"\"/ścieżka/do/tych/zdjęć/\"\"]\n"
+"**Zdjęcia:** [Katalog ze zdjęciami \"\"/ścieżka/do/tych/zdjęć/\"\"]\n"
 
 #: ../rednotebook/templates.py:146
 msgid ""
@@ -1125,6 +1126,7 @@ msgstr ""
 "  Jerzy Spendel https://launchpad.net/~yuri20\n"
 "  Michał Maternik https://launchpad.net/~michal-maternik\n"
 "  Michał Rzepiński https://launchpad.net/~micou8\n"
+"  Piotr Strębski https://launchpad.net/~strebski\n"
 "  Stanisław Dac https://launchpad.net/~s-dac\n"
 "  Szymon Nieznański https://launchpad.net/~isamu715\n"
 "  TSr https://launchpad.net/~tsr\n"
