@@ -32,7 +32,7 @@ except ImportError:
 from rednotebook.util import filesystem
 
 
-version = '1.8.0'
+version = '1.8.0+'
 author = 'Jendrik Seipp'
 authorMail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
