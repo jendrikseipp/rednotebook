@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-29 08:32+0000\n"
+"PO-Revision-Date: 2013-12-11 20:09+0000\n"
 "Last-Translator: Andrej Znidarsic <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-30 05:05+0000\n"
-"X-Generator: Launchpad (build 16856)\n"
+"X-Launchpad-Export-Date: 2013-12-12 05:16+0000\n"
+"X-Generator: Launchpad (build 16869)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -191,85 +191,86 @@ msgstr "Razpoložljive oznake"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Selected tags"
-msgstr ""
+msgstr "Izbrane oznake"
 
 #: ../rednotebook/gui/exports.py:166
 msgid "Select"
-msgstr ""
+msgstr "Izberi"
 
 #: ../rednotebook/gui/exports.py:167
 msgid "Deselect"
-msgstr ""
+msgstr "Odstrani izbiro"
 
 #: ../rednotebook/gui/exports.py:262
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "Ko filtirate po oznakah, mora biti izbrana vsaj ena oznaka."
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
-msgstr ""
+msgstr "Izbrali ste naslednje nastavitve:"
 
 #: ../rednotebook/gui/exports.py:312
 msgid "Export Assistant"
-msgstr ""
+msgstr "Pomočnik za izvoz"
 
 #: ../rednotebook/gui/exports.py:314
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "Dobrodošli v pomočniku za izvoz."
 
 #: ../rednotebook/gui/exports.py:315
 msgid "This wizard will help you to export your journal to various formats."
-msgstr ""
+msgstr "Ta čarovnik vam bo pomagal pri izvozu dnevnika v različne vrste."
 
 #: ../rednotebook/gui/exports.py:316
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
+"Izberete lahko dneve, ki jih želite izvoziti in kam naj bo shranjen izpis."
 
 #: ../rednotebook/gui/exports.py:326
 msgid "Select Export Format"
-msgstr ""
+msgstr "Izberite vrsto izvoza"
 
 #: ../rednotebook/gui/exports.py:331
 msgid "Select Date Range"
-msgstr ""
+msgstr "Izbor datumskega obsega"
 
 #: ../rednotebook/gui/exports.py:336
 msgid "Select Contents"
-msgstr ""
+msgstr "Izbor vsebine"
 
 #: ../rednotebook/gui/exports.py:342
 msgid "Select Export Path"
-msgstr ""
+msgstr "Izbor poti za izvoz"
 
 #: ../rednotebook/gui/exports.py:347
 msgid "Summary"
-msgstr ""
+msgstr "Povzetek"
 
 #: ../rednotebook/gui/exports.py:406 ../rednotebook/gui/search.py:76
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: ../rednotebook/gui/exports.py:407
 msgid "Export selected text only"
-msgstr ""
+msgstr "Izvozi le izbrano besedilo"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Start date"
-msgstr ""
+msgstr "Začetni datum"
 
 #: ../rednotebook/gui/exports.py:410
 msgid "End date"
-msgstr ""
+msgstr "Končni datum"
 
 #: ../rednotebook/gui/exports.py:414
 msgid "Include text"
-msgstr ""
+msgstr "Vključi besedilo"
 
 #: ../rednotebook/gui/exports.py:415
 msgid "Include tags"
-msgstr ""
+msgstr "Vključi oznake"
 
 #: ../rednotebook/gui/exports.py:417
 msgid "Filtered by tags"
