@@ -9,9 +9,6 @@ include README
 include README.Packagers
 include AUTHORS
 include LICENSE
-include MANIFEST.in
 include run
 include rednotebook.desktop
 include rednotebook.png
-include win/*.manifest
-include win/*.dll
