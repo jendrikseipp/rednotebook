@@ -87,7 +87,10 @@ for url, filename, dest in TARBALLS:
     run(cmd)
 
 if IS_LINUX:
-    run(['tar', '-czvf', os.path.abspath(args.dest_tarball), '--directory', WINE_DIR, '.'])
+    dest_tarball = os.path.abspath(args.dest_tarball)
+    if not os.path.exists(os.path.dirname(dest_tarball)):
+        os.makedirs(os.path.dirname(dest_tarball))
+    run(['tar', '-czvf', dest_tarball, '--directory', WINE_DIR, '.'])
     if not args.keep_tmp_dir:
         shutil.rmtree(WINE_DIR, ignore_errors=False)
 else:

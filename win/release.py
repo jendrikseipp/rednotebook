@@ -8,6 +8,8 @@ from utils import run
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument('build_tarball')
+    parser.add_argument('build_dir')
     parser.add_argument('--beta', action='store_true')
     return parser.parse_args()
 
@@ -15,8 +17,8 @@ args = parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
-BUILD_ENV_TARBALL = os.path.join(DIR, 'build-env.tar.gz')
-BUILD_ENV = os.path.join(DIR, 'build-env')
+BUILD_ENV_TARBALL = os.path.abspath(args.build_tarball)
+BUILD_ENV = os.path.abspath(args.build_dir)
 DRIVE_C = os.path.join(BUILD_ENV, 'drive_c')
 RN_DIR = os.path.join(DRIVE_C, 'rednotebook')
 
