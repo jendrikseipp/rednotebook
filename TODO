@@ -7,13 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.8.0
-X Add font selection for edit mode (Philip Akesson).
-X Allow changing preview and cloud font in preferences.
-X Only allow opening RedNotebook minimized on Windows since other systems may lack a system tray.
-x Fix: Display tags starting with "SEP" in preview (lp:1255582).
-x Write scripts to cross-compile RedNotebook Windows exe and installer on Linux.
-
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion

@@ -1,3 +1,10 @@
+== 1.8.0 (2013-12-12) ==
+* Add font selection for edit mode (Philip Akesson).
+* Allow changing preview and cloud font in preferences.
+* Only allow opening RedNotebook minimized on Windows since other systems may lack a system tray.
+* Fix: Display tags starting with "SEP" in preview (lp:1255582).
+* Write scripts to cross-compile RedNotebook Windows exe and installer on Linux.
+
 == 1.7.3 (2013-11-10) ==
 * Jump to a specific date on startup with "--date 2013-10-31" on the commandline (Rob Norris).
 * Display current date in the title bar (Rob Norris).
