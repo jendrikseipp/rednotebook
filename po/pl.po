@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-12-04 08:45+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
+"PO-Revision-Date: 2013-12-16 23:28+0000\n"
+"Last-Translator: Szymon Nieznański <s.nez@openmailbox.org>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-05 05:31+0000\n"
-"X-Generator: Launchpad (build 16863)\n"
+"X-Launchpad-Export-Date: 2013-12-17 05:41+0000\n"
+"X-Generator: Launchpad (build 16869)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -96,7 +96,7 @@ msgstr "_Format"
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:401
 msgid "Format"
-msgstr "Typ pliku"
+msgstr "Format"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
