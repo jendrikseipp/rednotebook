@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-16 20:56+0000\n"
-"Last-Translator: Jan Helebrant <Unknown>\n"
+"PO-Revision-Date: 2014-01-12 13:23+0000\n"
+"Last-Translator: Tadeáš Pařík <tadeas.parik@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-17 05:22+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-01-13 05:34+0000\n"
+"X-Generator: Launchpad (build 16890)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -158,7 +158,7 @@ msgstr "Exportovat označený text"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(Dostupné pouze při vyběru textu v editačním režimu)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -817,6 +817,11 @@ msgid ""
 "different titles (=== Work ===, === Family ===) and using horizontal "
 "separator lines (20 “=”s)."
 msgstr ""
+"=== Vícerá zadání ===\n"
+"Můžete vložit více položek do jednoho dne za použití odlišných deníků (jeden "
+"pojmenován \"Práce\", další \"Rodina\"), vstupy budou odděleny odlišnými "
+"názvy (=== Práce ===, === Rodina ===) a horizontálními oddělovači řádek (20 "
+"“=”s)."
 
 #: ../rednotebook/info.py:173
 msgid ""
@@ -828,6 +833,13 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
+"=== Práce ===\n"
+"Zde bude první položka. O #práci.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Rodina ===\n"
+"Zde bude první položka. O #rodině."
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
@@ -991,7 +1003,7 @@ msgstr "Zvolte si název šablony"
 
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
-msgstr ""
+msgstr "Tato šablona neobsahuje text nebo obsah není dostupný."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1061,7 +1073,7 @@ msgstr "Přejít na předchozí den (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Skočit na dnešek (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1101,7 +1113,7 @@ msgstr ""
 "  Jan Helebrant https://launchpad.net/~jhelebrant\n"
 "  Konki https://launchpad.net/~pavel-konkol\n"
 "  Kuvaly [LCT] https://launchpad.net/~kuvaly\n"
-"  Martin Rotter https://launchpad.net/~skunkic\n"
+"  Martin Rotter https://launchpad.net/~skunkic-deactivatedaccount\n"
 "  Martin Schayna https://launchpad.net/~mschayna\n"
 "  Milan Horák https://launchpad.net/~sinyaweo\n"
 "  Roman Horník https://launchpad.net/~roman.hornik\n"
