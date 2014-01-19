@@ -255,6 +255,8 @@ from inside RedNotebook by opening the menu next to the "Template" button.
 On the left you find the search box. Double-clicking on a day in the search
 results lets you jump to it.
 
+You can search for text or dates (e.g. 2014, 2014-01, 2014-01-19).
+
 == Clouds ==[clouds]
 The 42 most frequently used words will appear in the word cloud on the left. Its
 contents are only refreshed after a program restart and when the journal is saved.
@@ -560,8 +562,7 @@ Comments can be inserted after percent signs (**%%**). They will not be shown in
 preview and the exports. The %% has to be the first character on the line.
 
 === List of all entries ===
-To get a list of all entries, just search for " " (the space character).
-This character is most likely included in all entries. You can sort the
+To get a list of your entries search for "-". You can sort the
 resulting list chronologically by pressing the "Date" button.
 
 == Command line options ==
