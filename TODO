@@ -7,6 +7,9 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.8.1
+O Restore minimize-to-tray.
+
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
@@ -34,6 +37,8 @@ O Allow using ESC to exit full-screen mode.
 O Setup repo at bitbucket.
 O Mirror repo on github (either automatically (http://www.metallapan.se/bitsynchub/)
   or on releases (http://hgtip.com/tips/advanced/2009-11-09-create-a-git-mirror/))
+O When clicking on a hashtag in the tag cloud scroll to tag and highlight it.
+O Hierarchical hashtags: #dream/recurring/houses and let user "zoom in" in tag cloud.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
