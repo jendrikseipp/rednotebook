@@ -25,12 +25,10 @@ import gtk
 import gobject
 import pango
 
-# Try to import gtkspell
-gtkspell = None
 try:
     import gtkspell
 except ImportError:
-    pass
+    gtkspell = None
 
 from rednotebook.gui import t2t_highlight
 from rednotebook import undo
