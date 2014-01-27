@@ -1,0 +1,21 @@
+How to generate your own RedNotebook bundle
+===========================================
+(many thanks to Joshua Parsley for documenting this)
+
+- Download and install WineBottler from http://winebottler.kronenberg.org
+- Download the latest RedNotebook installer from http://rednotebook.sf.net
+- Open WineBottler and click on the "Advanced" button at the top.
+  (documentation: http://winebottler.kronenberg.org/documentation -> Do Your Own)
+- Click "select File..." and choose the RedNotebook installer.
+- Check "Bundle" to include Wine binaries so the bundle becomes portable
+  and Wine doesn't have to be installed.
+- Click "Install".
+- Choose the location where you want to save the bundle.
+- Follow the install prompts just as you would in Windows
+  (always clicking "Next" is fine).
+- Open the .app file.
+
+Note: I would recommend saving the data files somewhere in the OSX
+      filesystem rather than the default (within the Wine system).
+      This makes the files easier to find from within OSX and it shouldn't
+      change functionality.
