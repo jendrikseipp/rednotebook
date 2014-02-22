@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2014-01-03 12:49+0000\n"
+"PO-Revision-Date: 2014-02-22 05:32+0000\n"
 "Last-Translator: ub <xenolith0bytetestcomgreen@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-01-27 05:17+0000\n"
-"X-Generator: Launchpad (build 16914)\n"
+"X-Launchpad-Export-Date: 2014-02-22 06:51+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -155,7 +155,7 @@ msgstr "選択したテキストをエクスポートする"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(編集モードでテキストが選択された時のみ有効)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -513,7 +513,7 @@ msgstr "プレビューのフォント:"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Comma-separated font names"
-msgstr ""
+msgstr "カンマで区切ったフォント名"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Date/Time format"
