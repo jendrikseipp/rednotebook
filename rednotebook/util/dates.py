@@ -36,7 +36,7 @@ def get_date_from_date_string(date_string):
 month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 def isleap(year):
-    """Return 1 for leap years, 0 for non-leap years."""
+    """Return True for leap years, False for non-leap years."""
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 def get_number_of_days(year, month):
@@ -56,7 +56,11 @@ def format_date(format_string, date=None):
         date_string = _('Incorrect date format')
     # Turn date into unicode string
     locale_name, locale_encoding = locale.getlocale()
-    # locale_encoding may be None may if the value cannot be determined
+    # locale_encoding is None if the value cannot be determined
     locale_encoding = locale_encoding or 'UTF-8'
-    date_string = date_string.decode(locale_encoding, 'replace')
+    try:
+        date_string = date_string.decode(locale_encoding, 'replace')
+    except LookupError:
+        # Encoding was not found.
+        date_string = date_string.decode('UTF-8', 'replace')
     return date_string
