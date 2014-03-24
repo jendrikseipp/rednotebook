@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-05 20:11+0000\n"
-"Last-Translator: முரளி <Unknown>\n"
+"PO-Revision-Date: 2014-03-23 11:10+0000\n"
+"Last-Translator: SyedKhaleel Jageer <jskcse4@gmail.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-03-12 05:00+0000\n"
-"X-Generator: Launchpad (build 16963)\n"
+"X-Launchpad-Export-Date: 2014-03-24 05:55+0000\n"
+"X-Generator: Launchpad (build 16967)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -159,7 +159,7 @@ msgstr "தற்போது தேர்ந்தெடுக்கப்ப�
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(உரை திருத்த முறையில் தேர்ந்தெடுக்கும் போது மட்டுமே கிடைக்கும்)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -489,11 +489,11 @@ msgstr "முன்பார்வை:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr ""
+msgstr "எழுத்துருவை தேர்ந்தெடுக்கவும் ..."
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "எழுத்துருவை தேர்ந்தெடுக்கவும்"
 
 #: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
@@ -517,15 +517,15 @@ msgstr "இப்போது பார்"
 
 #: ../rednotebook/gui/options.py:291
 msgid "Edit font:"
-msgstr ""
+msgstr "எழுத்துருவை திருத்து:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Preview font:"
-msgstr ""
+msgstr "எழுத்துரு முன்னோட்டம்:"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Comma-separated font names"
-msgstr ""
+msgstr "கமா பிரிக்கப்பட்ட எழுத்துரு பெயர்கள்"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Date/Time format"
@@ -682,7 +682,7 @@ msgstr "உள்ளடக்கமானது %s இற்கு சேமி�
 
 #: ../rednotebook/journal.py:315
 msgid "The journal could not be saved"
-msgstr ""
+msgstr "பத்திரிகையை சேமிக்க முடியவில்லை"
 
 #: ../rednotebook/journal.py:317
 msgid "Nothing to save"
@@ -832,6 +832,12 @@ msgid ""
 "different titles (=== Work ===, === Family ===) and using horizontal "
 "separator lines (20 “=”s)."
 msgstr ""
+"=== பல உள்ளீடுகள் ===\n"
+"நீங்கள் வெவ்வேறு பத்திரிக்கைகள் மூலம் ஒரே நாளில் பல உள்ளீடுகளை சேர்க்க "
+"முடியும் (\"வேலை\" என்ற பெயரில் ஒன்று, \"குடும்பம்\" என்ற பெயரில் "
+"மற்றொன்று), உங்கள் உள்ளீடுகளை பல்வேறு தலைப்புகளில் (=== வேலை ===, === "
+"குடும்பம் ===) மற்றும் கிடைமட்ட பிரிப்பான் வரிகளை(20 \"=\"s) பயன்படுத்தி "
+"பிரிக்கலாம்."
 
 #: ../rednotebook/info.py:173
 msgid ""
@@ -843,6 +849,13 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
+"=== வேலை ===\n"
+"இங்கே முதல் நுழைவு செல்கிறது. இது #வேலை பற்றியது.\n"
+"\n"
+"====================\n"
+"\n"
+"=== குடும்பம் ===\n"
+"இங்கே என் #குடும்பம் பற்றி நுழைவு வருகிறது."
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
@@ -1007,6 +1020,8 @@ msgstr "வார்ப்புருவின் பெயரை தேர்�
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
 msgstr ""
+"இந்த டெம்ப்ளேட் கோப்பு எந்த உரையையும் கொண்டிருக்கவில்லை அல்லது "
+"படிக்கமுடியாததாக உள்ளடக்கம் உள்ளது."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1076,7 +1091,7 @@ msgstr "முந்தைய நாளுக்குச் செல்லவ�
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "இன்றைக்கு தாவி செல்லவும் (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1113,6 +1128,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Balaji பாலாஜி https://launchpad.net/~balajijagadesh\n"
 "  Ramesh https://launchpad.net/~rame20002007\n"
+"  SyedKhaleel Jageer https://launchpad.net/~jskcse4\n"
 "  Tharique Azeez https://launchpad.net/~tharique\n"
 "  vijayaraj Mani https://launchpad.net/~vijayaraj83\n"
 "  முரளி https://launchpad.net/~vmmlog"
