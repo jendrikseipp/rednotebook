@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2014-03-23 11:10+0000\n"
-"Last-Translator: SyedKhaleel Jageer <jskcse4@gmail.com>\n"
+"PO-Revision-Date: 2014-04-25 16:46+0000\n"
+"Last-Translator: முரளி <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-03-24 05:55+0000\n"
-"X-Generator: Launchpad (build 16967)\n"
+"X-Launchpad-Export-Date: 2014-04-26 06:47+0000\n"
+"X-Generator: Launchpad (build 16985)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr "நீங்களி கடைசியாக காப்புப்படி எடுத்து நீண்ட காலம் ஆகிவிட்டது"
+msgstr "நீங்கள் கடைசியாக காப்புப்படி எடுத்து நீண்ட காலம் ஆகிவிட்டது."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
