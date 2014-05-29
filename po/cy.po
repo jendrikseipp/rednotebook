@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2010-12-08 01:33+0000\n"
-"Last-Translator: Cymrobalch <Unknown>\n"
+"PO-Revision-Date: 2014-05-28 22:21+0000\n"
+"Last-Translator: Alan Hughes <Unknown>\n"
 "Language-Team: Welsh <cy@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-03-12 05:00+0000\n"
-"X-Generator: Launchpad (build 16963)\n"
+"X-Launchpad-Export-Date: 2014-05-29 05:26+0000\n"
+"X-Generator: Launchpad (build 17017)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -43,7 +43,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:282
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "Dangos RedNoteBook"
 
 #: ../rednotebook/gui/main_window.py:496
 msgid "No directory selected."
@@ -65,7 +65,7 @@ msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
-msgstr ""
+msgstr "glew"
 
 #: ../rednotebook/gui/format_menu.py:105
 msgid "Italic"
@@ -82,7 +82,7 @@ msgstr ""
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Clirio"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
@@ -122,7 +122,7 @@ msgstr ""
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
-msgstr ""
+msgstr "Geiriau"
 
 #: ../rednotebook/gui/clouds.py:246
 #, python-format
@@ -159,7 +159,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
-msgstr ""
+msgstr "Fformat dyddiad"
 
 #: ../rednotebook/gui/exports.py:141
 msgid "Leave blank to omit dates in export"
@@ -1025,6 +1025,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Alan Hughes https://launchpad.net/~alan-m-hughes\n"
 "  Cymrobalch https://launchpad.net/~cymrobalch-deactivatedaccount"
 
 #: tmp/main_window.glade.h:14
