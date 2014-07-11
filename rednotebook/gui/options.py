@@ -287,6 +287,7 @@ class OptionsManager(object):
         self.options.append(check_version_option)
 
         self.options.extend([
+            # Use separate fonts since the preview often doesn't support the edit font.
             FontOption(_('Edit font:'), 'mainFont'),
             TextOption(_('Preview font:'), 'previewFont',
                        default='Ubuntu, sans-serif',
