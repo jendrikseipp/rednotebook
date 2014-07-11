@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-09-24 19:26+0000\n"
-"Last-Translator: Michael Entrup <Unknown>\n"
+"PO-Revision-Date: 2014-07-10 23:07+0000\n"
+"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-03-12 04:59+0000\n"
-"X-Generator: Launchpad (build 16963)\n"
+"X-Launchpad-Export-Date: 2014-07-11 05:40+0000\n"
+"X-Generator: Launchpad (build 17111)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -159,7 +159,7 @@ msgstr "Den derzeitig selektierten Text exportieren"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(Nur verfügbar, wenn Text im Bearbeiten-Modus markiert ist)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -492,11 +492,11 @@ msgstr "Vorschau:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr ""
+msgstr "Schriftart wählen ..."
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Schriftart auswählen"
 
 #: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
@@ -522,15 +522,15 @@ msgstr "Jetzt überprüfen"
 
 #: ../rednotebook/gui/options.py:291
 msgid "Edit font:"
-msgstr ""
+msgstr "Schriftart im Bearbeiten-Modus:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Preview font:"
-msgstr ""
+msgstr "Schriftart der Vorschau:"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Comma-separated font names"
-msgstr ""
+msgstr "Mit Komma getrennte Schriftnamen"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Date/Time format"
@@ -687,7 +687,7 @@ msgstr "Das Journal wurde unter %s gespeichert"
 
 #: ../rednotebook/journal.py:315
 msgid "The journal could not be saved"
-msgstr ""
+msgstr "Speichern fehlgeschlagen"
 
 #: ../rednotebook/journal.py:317
 msgid "Nothing to save"
@@ -1148,6 +1148,7 @@ msgstr ""
 "  Tim https://launchpad.net/~tim+h\n"
 "  Tim㋡ https://launchpad.net/~tim.h.s\n"
 "  Tristan Kohl https://launchpad.net/~blobbyjj\n"
+"  Wuzzy https://launchpad.net/~wuzzy\n"
 "  amalius17 https://launchpad.net/~j-bailey\n"
 "  chrioll https://launchpad.net/~chrioll\n"
 "  günther kühnel https://launchpad.net/~guejo\n"
