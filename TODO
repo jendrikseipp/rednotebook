@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.8.1
 O Restore minimize-to-tray.
+X Fix date formatting for invalid locale encodings.
 X Add necessary library files for spell-checking on Windows.
 
 1.x
