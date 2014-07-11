@@ -11,6 +11,7 @@ def parse_args():
     parser.add_argument('build_tarball')
     parser.add_argument('build_dir')
     parser.add_argument('--beta', action='store_true')
+    parser.add_argument('--upload', action='store_true')
     return parser.parse_args()
 
 args = parse_args()
@@ -46,6 +47,7 @@ INSTALLER = os.path.join(DRIVE_C, 'rednotebook-%s.exe' % version)
 if not args.beta:
     run(['./test-installer.py', INSTALLER], cwd=DIR)
 destdir = 'beta' if args.beta else ''
-run(['./upload-file.py', INSTALLER, '--destdir', destdir], cwd=os.path.join(BASE_DIR, 'dev'))
+if args.upload:
+    run(['./upload-file.py', INSTALLER, '--destdir', destdir], cwd=os.path.join(BASE_DIR, 'dev'))
 
 #run(['7z', 'a', 'rednotebook-%s.7z' % version, 'dist'], cwd=DRIVE_C)
