@@ -71,6 +71,9 @@ TARBALLS = [
     # 'chardet-2.1.1.tar.gz', SITE_PACKAGES),
 ]
 
+FILES = [('https://dl.dropboxusercontent.com/u/4780737/gtkspell.pyd',
+          os.path.join(SITE_PACKAGES, 'gtkspell.pyd'))]
+
 print HELP
 
 for url, filename in INSTALLERS:
@@ -85,6 +88,9 @@ for url, filename, dest in TARBALLS:
     assert path.endswith('.zip'), path
     cmd.extend([SEVEN_ZIP, 'x', '-o' + dest, path])
     run(cmd)
+
+for url, dest in INSTALLERS:
+    fetch(url, dest)
 
 if IS_LINUX:
     dest_tarball = os.path.abspath(args.dest_tarball)
