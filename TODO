@@ -8,10 +8,12 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.8.1
-X Do not show new version dialog if latest version cannot be determined. (lp:1324126)
-O Restore minimize-to-tray.
+X Do not show new version dialog if latest version cannot be determined (lp:1324126).
 X Fix date formatting for invalid locale encodings.
-X Add necessary library files for spell-checking on Windows.
+X Add necessary library files for spell-checking on Windows (lp:1331876).
+
+1.8.2
+O Restore minimize-to-tray.
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
