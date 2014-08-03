@@ -3,9 +3,8 @@
 HELP = """\
 PyGTK All-In-One Installer: Install "PyRsvg" and "Language Tools".
 
-InnoSetup: To avoid winemenubuilder.exe errors do *not* create a
-start menu folder and do *not* associate the .iss extension with
-InnoSetup.
+InnoSetup: Do *not* create a start menu folder and do *not* associate
+the .iss extension with InnoSetup. *Do* install the preprocessor.
 
 For the other installers the default values are fine.
 """
@@ -16,6 +15,7 @@ import os
 import shutil
 import sys
 import tempfile
+import time
 
 from utils import run, fetch, install
 
@@ -35,13 +35,16 @@ args = parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 INSTALLERS_DIR = os.path.join(DIR, 'installers')
+DRIVE_C = r'C:\\'
+SITE_PACKAGES = os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')
+SEVEN_ZIP = os.path.join(DRIVE_C, 'Program Files (x86)', '7-Zip', '7z.exe')
 if IS_LINUX:
     WINE_DIR = tempfile.mkdtemp(suffix='-wine')
     logging.info('Temporary wine dir: %s' % WINE_DIR)
     os.environ['WINEPREFIX'] = WINE_DIR
-DRIVE_C = r'C:\\'
-SITE_PACKAGES = os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')
-SEVEN_ZIP = os.path.join(DRIVE_C, 'Program Files', '7-Zip', '7z.exe')
+    DRIVE_C_REAL = os.path.join(WINE_DIR, 'drive_c')
+else:
+    DRIVE_C_REAL = DRIVE_C
 
 
 INSTALLERS = [
@@ -72,7 +75,8 @@ TARBALLS = [
 ]
 
 FILES = [('https://dl.dropboxusercontent.com/u/4780737/gtkspell.pyd',
-          os.path.join(SITE_PACKAGES, 'gtkspell.pyd'))]
+          os.path.join(DRIVE_C_REAL, 'Python27', 'Lib', 'site-packages', 'gtkspell.pyd'))
+]
 
 print HELP
 
@@ -89,10 +93,11 @@ for url, filename, dest in TARBALLS:
     cmd.extend([SEVEN_ZIP, 'x', '-o' + dest, path])
     run(cmd)
 
-for url, dest in INSTALLERS:
+for url, dest in FILES:
     fetch(url, dest)
 
 if IS_LINUX:
+    time.sleep(10)  # Without this tar complains about changing files.
     dest_tarball = os.path.abspath(args.dest_tarball)
     if not os.path.exists(os.path.dirname(dest_tarball)):
         os.makedirs(os.path.dirname(dest_tarball))
