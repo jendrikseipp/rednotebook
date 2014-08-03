@@ -887,7 +887,7 @@ class Calendar(object):
         '''
         cal_year, cal_month, cal_day = self.calendar.get_date()
         cal_month += 1
-        if not day_number in range(1, dates.get_number_of_days(cal_year, cal_month) + 1):
+        if day_number not in range(1, dates.get_number_of_days(cal_year, cal_month) + 1):
             logging.debug('Non-existent date in calendar: %s.%s.%s' %
                         (day_number, cal_month, cal_year))
             return False

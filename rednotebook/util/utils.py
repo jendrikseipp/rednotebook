@@ -40,7 +40,7 @@ def set_environment_variables(config):
     variables = {}
 
     for variable, value in variables.iteritems():
-        if not variable in os.environ:
+        if variable not in os.environ:
             # Only add environment variable if it does not exist yet
             os.environ[variable] = config.read(variable, default=value)
             logging.info('%s set to %s' % (variable, value))

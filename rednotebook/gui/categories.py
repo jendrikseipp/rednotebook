@@ -163,7 +163,7 @@ class CategoriesTreeView(object):
             if key is not None:
                 key_pango = markup.convert_to_pango(key)
             new_child = self.tree_store.append(parent, [key_pango])
-            if not value is None:
+            if value is not None:
                 self.add_element(new_child, value)
 
     def set_day_content(self, day):

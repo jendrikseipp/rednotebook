@@ -390,7 +390,7 @@ class Journal:
         year_and_month = dates.get_year_and_month_from_date(date)
 
         # Selected month has not been loaded or created yet
-        if not year_and_month in self.months:
+        if year_and_month not in self.months:
             self.months[year_and_month] = Month(date.year, date.month)
 
         return self.months[year_and_month]
