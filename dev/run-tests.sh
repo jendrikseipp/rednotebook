@@ -20,7 +20,8 @@ fi
 # E303: too many blank lines
 # E241: multiple spaces after ':' (for t2t_highlight.py)
 # E128: continuation line under-indented for visual indent
-PEP8_OPTS="--ignore=E302,E303,E241,E128 --max-line-length=120"
+# E265: block comment should start with '# '
+PEP8_OPTS="--ignore=E302,E303,E241,E128,E265 --max-line-length=120"
 pep8 $PEP8_OPTS --exclude=*external* rednotebook
 if [ $? == 1 ]; then
     echo PEP8 errors detected.
