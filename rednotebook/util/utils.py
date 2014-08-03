@@ -98,6 +98,7 @@ def get_new_version_number():
         if not match:
             return None
         new_version = match.group(1)
+        new_version = StrictVersion(new_version)
         logging.info('%s is the latest version' % new_version)
         return new_version
     except (IOError, httplib.HTTPException):
@@ -105,20 +106,18 @@ def get_new_version_number():
 
 
 def check_new_version(journal, current_version, startup=False):
+    current_version = StrictVersion(current_version)
     new_version = get_new_version_number()
 
-    if new_version:
-        new_version = StrictVersion(new_version)
+    if new_version is not None:
+        newer_version_available = new_version > current_version
     else:
         logging.error('New version info could not be read')
         new_version = _('unknown')
+        newer_version_available = None
 
-    current_version = StrictVersion(current_version)
-    # Only compare versions if new version could be read
-    newer_version_available = True
-    if isinstance(new_version, StrictVersion):
-        newer_version_available = new_version > current_version
-    logging.info('A newer version is available: %s' % newer_version_available)
+    logging.info('Current version: %s, latest version: %s, newer: %s' %
+                 (current_version, new_version, newer_version_available))
 
     if newer_version_available or not startup:
         dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL,
