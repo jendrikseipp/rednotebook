@@ -1,3 +1,8 @@
+== 1.8.1 (2014-08-03) ==
+* Do not show new version dialog if latest version cannot be determined (lp:1324126).
+* Fix date formatting for invalid locale encodings.
+* Add necessary library files for spell-checking on Windows (lp:1331876).
+
 == 1.8.0 (2013-12-12) ==
 * Add font selection for edit mode (Philip Akesson).
 * Allow changing preview and cloud font in preferences.
