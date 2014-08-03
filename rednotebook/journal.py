@@ -117,7 +117,6 @@ def setup_logging(log_file):
     # add the handler to the root logger
     root_logger.addHandler(console)
 
-    logging.debug('Debug message')
     logging.info('Writing log to file "%s"' % log_file)
 
 
