@@ -1,3 +1,12 @@
+rednotebook (1.8.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Do not show new version dialog if latest version cannot be determined (lp:1324126).
+  * Fix date formatting for invalid locale encodings.
+  * Add necessary library files for spell-checking on Windows (lp:1331876).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 03 Aug 2014 22:15:43 +0200
+
 rednotebook (1.8.0-1) UNRELEASED; urgency=low
 
   * New upstream release
