@@ -85,6 +85,11 @@ class Cloud(HtmlView):
         self.include_list = config.read_list('cloudIncludeList', default_include_list)
         self.include_list = [word.lower() for word in self.include_list]
         logging.info('Cloud include list: %s' % self.include_list)
+        
+        default_tags_ignore_list = _('test, me')
+        self.tags_ignore_list = config.read_list('tagsIgnoreList', default_tags_ignore_list)
+        self.tags_ignore_list = [word.lower() for word in self.tags_ignore_list]
+        logging.info('Tag ignore list: %s' % self.tags_ignore_list)
 
         self.update_regexes()
 
@@ -92,6 +97,7 @@ class Cloud(HtmlView):
         logging.debug('Start compiling regexes')
         self.regexes_ignore = [get_regex(word) for word in self.ignore_list]
         self.regexes_include = [get_regex(word) for word in self.include_list]
+        self.regexes_tags_ignore = [get_regex('#' + word) for word in self.tags_ignore_list]
         logging.debug('Finished')
 
     def update(self, force_update=False):
@@ -122,7 +128,9 @@ class Cloud(HtmlView):
 
         self.link_index = 0
         word_count_dict = self.journal.get_word_count_dict()
-        self.tags = sorted(self.get_categories_counter().items(), cmp=cmp_words)
+        tags_count_dict = self.get_categories_counter().items()
+        self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_tags_ignore)
+        self.tags.sort(cmp=cmp_words)
         self.words = self._get_words_for_cloud(word_count_dict,
                                     self.regexes_ignore, self.regexes_include)
         self.words.sort(cmp=cmp_words)
@@ -174,6 +182,12 @@ class Cloud(HtmlView):
         # len(words) words are returned
         words.sort(key=frequency)
         return words[-CLOUD_WORDS:]
+    
+    def _get_tags_for_cloud(self, tag_count_dict, ignores):
+        tags = [(tag, freq) for (tag, freq) in tag_count_dict
+                 if not any(pattern.match(tag) for pattern in ignores)]
+        
+        return tags
 
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)

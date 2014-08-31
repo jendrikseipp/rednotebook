@@ -297,6 +297,8 @@ class OptionsManager(object):
                        tooltip=_('Do not show these comma separated words in the word cloud')),
             TextOption(_('Include small words in cloud'), 'cloudIncludeList',
                        tooltip=_('Allow these words with 4 letters or less')),
+            TextOption(_('Exclude tags from cloud'), 'tagsIgnoreList',
+                       tooltip=_('Do not show these comma separated tags in the tag cloud')),
         ])
 
 

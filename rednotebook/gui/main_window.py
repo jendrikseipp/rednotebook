@@ -540,6 +540,7 @@ class MainWindow(object):
         # so we use it to sort the list ;)
         config.write_list('cloudIgnoreList', sorted(self.cloud.ignore_list))
         config.write_list('cloudIncludeList', sorted(self.cloud.include_list))
+        config.write_list('tagsIgnoreList', sorted(self.cloud.tags_ignore_list))
 
 
     def load_values_from_config(self):
