@@ -25,15 +25,9 @@ from rednotebook.util import filesystem
 
 
 def delete_comment(line):
-    '''
-    delete comment, do not alter the line,
-    if no comment sign is found
-    '''
-    comment_pos = line.find('#')
-    if comment_pos >= 0:
-        return line[:comment_pos]
-    else:
-        return line
+    if line.startswith('#'):
+        return u''
+    return line
 
 
 
@@ -79,14 +73,11 @@ class Config(dict):
 
         lines = content.split('\n')
 
-        # delete comments
-        key_value_pairs = map(lambda line: delete_comment(line), lines)
-
-        #delete whitespace
-        key_value_pairs = map(unicode.strip, key_value_pairs)
+        # Delete comments and whitespace.
+        key_value_pairs = [delete_comment(line.strip()) for line in lines]
 
         #delete empty lines
-        key_value_pairs = filter(bool, key_value_pairs)
+        key_value_pairs = [line for line in lines if line]
 
         dictionary = {}
 
