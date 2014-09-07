@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-22 09:35+0000\n"
+"PO-Revision-Date: 2014-09-01 23:21+0000\n"
 "Last-Translator: Hertatijanto Hartono <dvertx@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-11 05:43+0000\n"
-"X-Generator: Launchpad (build 17156)\n"
+"X-Launchpad-Export-Date: 2014-09-02 06:34+0000\n"
+"X-Generator: Launchpad (build 17192)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -60,12 +60,12 @@ msgstr "Template"
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Sisipkan kerangka mingguan. Klik tanda panah yang terlihat pada sisi kanan "
+"Sisipkan template mingguan. Klik tanda panah yang terlihat di sisi kanan "
 "untuk pilihan tambahan"
 
 #: ../rednotebook/gui/format_menu.py:94
 msgid "No text or tag has been selected."
-msgstr "Tidak ada teks atau catatan yang terpilih."
+msgstr "Tidak ada teks atau label yang terpilih."
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
@@ -86,12 +86,12 @@ msgstr "Coret tengah huruf"
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Clear"
-msgstr ""
+msgstr "Hapus"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Format"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:401
@@ -100,7 +100,7 @@ msgstr "Format"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
-msgstr "Format teks atau catatan terpilih"
+msgstr "Format teks atau label terpilih"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Introduction"
@@ -108,7 +108,7 @@ msgstr "Pengantar"
 
 #: ../rednotebook/gui/customwidgets.py:378
 msgid "Save and insert"
-msgstr ""
+msgstr "Simpan dan sisipkan"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words"
@@ -121,7 +121,7 @@ msgstr "mtv, spam, bekerja, pekerjaan, main"
 #: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:140
 msgid "Tags"
-msgstr "Tanda"
+msgstr "Label"
 
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
@@ -155,11 +155,11 @@ msgstr "Ke:"
 
 #: ../rednotebook/gui/exports.py:115
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Ekspor teks yang terpilih"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(Hanya tersedia saat teks terpilih dalam mode edit)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -171,27 +171,27 @@ msgstr "Biarkan kosong untuk mengabaikan tanggal pada ekspor"
 
 #: ../rednotebook/gui/exports.py:143
 msgid "Export text and tags"
-msgstr ""
+msgstr "Ekspor teks dan label"
 
 #: ../rednotebook/gui/exports.py:144
 msgid "Export text only"
-msgstr ""
+msgstr "Ekspor teks saja"
 
 #: ../rednotebook/gui/exports.py:146
 msgid "Export tags only"
-msgstr ""
+msgstr "Ekspor label saja"
 
 #: ../rednotebook/gui/exports.py:148
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Saring hari berdasarkan label"
 
 #: ../rednotebook/gui/exports.py:157
 msgid "Available tags"
-msgstr "Catatan yang tersedia"
+msgstr "Label yang tersedia"
 
 #: ../rednotebook/gui/exports.py:158
 msgid "Selected tags"
-msgstr "Catatan terpilih"
+msgstr "Label terpilih"
 
 #: ../rednotebook/gui/exports.py:166
 msgid "Select"
@@ -203,7 +203,7 @@ msgstr "Batal pilih"
 
 #: ../rednotebook/gui/exports.py:262
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "Ketika menyaring dengan label, pilih setidaknya satu label"
 
 #: ../rednotebook/gui/exports.py:286
 msgid "You have selected the following settings:"
@@ -255,7 +255,7 @@ msgstr "Tanggal"
 
 #: ../rednotebook/gui/exports.py:407
 msgid "Export selected text only"
-msgstr ""
+msgstr "Ekspor teks terpilih saja"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Start date"
@@ -267,15 +267,15 @@ msgstr "Tanggal akhir"
 
 #: ../rednotebook/gui/exports.py:414
 msgid "Include text"
-msgstr ""
+msgstr "Ikutkan teks"
 
 #: ../rednotebook/gui/exports.py:415
 msgid "Include tags"
-msgstr ""
+msgstr "Ikutkan label"
 
 #: ../rednotebook/gui/exports.py:417
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Disaring berdasarkan label"
 
 #: ../rednotebook/gui/exports.py:418
 msgid "Export path"
@@ -296,7 +296,7 @@ msgstr "Isi telah di ekspor ke %s"
 
 #: ../rednotebook/gui/exports.py:526
 msgid "Plain Text"
-msgstr ""
+msgstr "Teks Polos"
 
 #: ../rednotebook/gui/exports.py:557
 msgid "requires pywebkitgtk"
@@ -308,11 +308,11 @@ msgstr "_Jurnal"
 
 #: ../rednotebook/gui/menu.py:95
 msgid "Create a new journal. The old one will be saved"
-msgstr "Buat jurnal baru. Jurnal lama akan disimpan."
+msgstr "Buat jurnal baru. Jurnal lama akan disimpan"
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "Muat jurnal yang ada. Jurnal lama akan disimpan."
+msgstr "Muat jurnal yang ada. Jurnal lama akan disimpan"
 
 #: ../rednotebook/gui/menu.py:103
 msgid ""
@@ -335,7 +335,7 @@ msgstr "Buka asisten ekspor"
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "_Backup"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -343,7 +343,7 @@ msgstr "Simpan semua data dalam arsip zip"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistik"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -359,11 +359,11 @@ msgstr "_Edit"
 
 #: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
-msgstr "Gagalkan perubahan teks atau catatan"
+msgstr "Gagalkan perubahan teks atau label"
 
 #: ../rednotebook/gui/menu.py:124
 msgid "Redo text or tag edits"
-msgstr "Ulangi perubahan teks atau catatan"
+msgstr "Ulangi perubahan teks atau label"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Underline misspelled words"
@@ -375,7 +375,7 @@ msgstr "_Bantuan"
 
 #: ../rednotebook/gui/menu.py:144
 msgid "Contents"
-msgstr "Kandungan"
+msgstr "Isi"
 
 #: ../rednotebook/gui/menu.py:145
 msgid "Open the RedNotebook documentation"
@@ -396,7 +396,7 @@ msgstr "Terjemahkan RedNotebook"
 #: ../rednotebook/gui/menu.py:149
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
-"Menghubungkan halaman web Launchpad untuk bantuan menterjemahkan RedNotebook"
+"Hubungkan ke laman web Launchpad untuk membantu menterjemahkan RedNotebook"
 
 #: ../rednotebook/gui/menu.py:151
 msgid "Report a Problem"
@@ -404,23 +404,23 @@ msgstr "Laporkan Masalah"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Fill out a short form about the problem"
-msgstr "Isi borang ringkas tentang masalah yang ditemukan"
+msgstr "Isi form ringkas tentang masalah yang ditemukan"
 
 #: ../rednotebook/gui/menu.py:172
 msgid "Wrong directory"
-msgstr ""
+msgstr "Salah direktori"
 
 #: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:214
 msgid "You cannot use this directory for your journal:"
-msgstr ""
+msgstr "Direktori ini tidak dapat digunakan untuk menyimpan jurnal:"
 
 #: ../rednotebook/gui/menu.py:179
 msgid "Please select an empty directory."
-msgstr ""
+msgstr "Pilih direktori kosong."
 
 #: ../rednotebook/gui/menu.py:183
 msgid "This directory contains no journal files:"
-msgstr ""
+msgstr "Tidak ada data jurnal di direktori ini:"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Journals are saved in a directory, not in a single file."
@@ -445,7 +445,7 @@ msgstr "Direktori ini akan berisi berkas data jurnal anda"
 
 #: ../rednotebook/gui/menu.py:215
 msgid "Select an empty folder for the new location of your journal"
-msgstr "Pilih sirektori kosong untuk lokasi baru jurnal anda"
+msgstr "Pilih direktori kosong untuk lokasi baru jurnal anda"
 
 #: ../rednotebook/gui/menu.py:216
 msgid "The directory name will be the new title of the journal"
@@ -482,15 +482,15 @@ msgstr "Bantuan"
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:165
 msgid "Preview:"
-msgstr "Pratilik:"
+msgstr "Pratinjau:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr ""
+msgstr "Pilih font ..."
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Pilih font"
 
 #: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
@@ -498,11 +498,11 @@ msgstr "Minimisasi ke trey"
 
 #: ../rednotebook/gui/options.py:271
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Meutup jendela akan mengirim RedNotebook ke trey"
+msgstr "Menutup jendela akan mengirim RedNotebook ke trey"
 
 #: ../rednotebook/gui/options.py:274
 msgid "Switch between edit and preview mode automatically"
-msgstr ""
+msgstr "Pindah secara otomatis antara mode edit dan pratinjau"
 
 #: ../rednotebook/gui/options.py:278
 msgid "Check for new version at startup"
@@ -514,15 +514,15 @@ msgstr "Periksa sekarang"
 
 #: ../rednotebook/gui/options.py:291
 msgid "Edit font:"
-msgstr ""
+msgstr "Font untuk menyunting:"
 
 #: ../rednotebook/gui/options.py:292
 msgid "Preview font:"
-msgstr ""
+msgstr "Font untuk pratinjau:"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Comma-separated font names"
-msgstr ""
+msgstr "Nama beberapa font diselingi koma"
 
 #: ../rednotebook/gui/options.py:295
 msgid "Date/Time format"
@@ -530,19 +530,19 @@ msgstr "Format Tanggal/Waktu"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Exclude from cloud"
-msgstr ""
+msgstr "Tidak termasuk dalam awan"
 
 #: ../rednotebook/gui/options.py:297
 msgid "Do not show these comma separated words in the word cloud"
-msgstr ""
+msgstr "Jangan tunjukkan kata-kata yang terpisah koma ini dari awan kata"
 
 #: ../rednotebook/gui/options.py:298
 msgid "Include small words in cloud"
-msgstr ""
+msgstr "Ikutkan kata-kata kecil dalam awan"
 
 #: ../rednotebook/gui/options.py:299
 msgid "Allow these words with 4 letters or less"
-msgstr ""
+msgstr "Izinkan kata yang terdiri dari 4 huruf atau kurang"
 
 #: ../rednotebook/gui/search.py:76
 msgid "Text"
@@ -623,7 +623,7 @@ msgstr "Sisipkan pemutus baris secara manual"
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "S_isipkan"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -635,15 +635,15 @@ msgstr "Sisipkan gambar, berkas, tautan dan obyek lainnya"
 
 #: ../rednotebook/gui/insert_menu.py:192
 msgid "Width (optional):"
-msgstr ""
+msgstr "Lebar (opsional):"
 
 #: ../rednotebook/gui/insert_menu.py:197
 msgid "pixels"
-msgstr ""
+msgstr "pixel"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
-msgstr ""
+msgstr "Lebar harus merupakan angka bulat."
 
 #: ../rednotebook/gui/insert_menu.py:296
 msgid "No link location has been entered"
@@ -667,7 +667,7 @@ msgstr "Hapus isian ini"
 
 #: ../rednotebook/journal.py:215
 msgid "Opening default journal."
-msgstr ""
+msgstr "Membuka jurnal standar."
 
 #: ../rednotebook/journal.py:311
 #, python-format
@@ -676,7 +676,7 @@ msgstr "Isi telah dismpan ke %s"
 
 #: ../rednotebook/journal.py:315
 msgid "The journal could not be saved"
-msgstr ""
+msgstr "Jurnal tidak dapat disimpan"
 
 #: ../rednotebook/journal.py:317
 msgid "Nothing to save"
@@ -684,7 +684,7 @@ msgstr "Tak ada yang perlu disimpan"
 
 #: ../rednotebook/journal.py:468
 msgid "Error"
-msgstr ""
+msgstr "Kesalahan"
 
 #: ../rednotebook/info.py:98
 msgid "Work"
@@ -744,15 +744,15 @@ msgstr "Ada dua modus pada RedNotebook, modus __edit__ dan __pratilik__."
 
 #: ../rednotebook/info.py:114
 msgid "Click on Edit above to see the difference."
-msgstr ""
+msgstr "Klik Edit untuk melihat perbedaan."
 
 #: ../rednotebook/info.py:117
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Memberi label itu mudah."
 
 #: ../rednotebook/info.py:118
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Gunakan #tandapagar seperti di Twitter."
 
 #: ../rednotebook/info.py:121
 msgid ""
@@ -823,6 +823,12 @@ msgid ""
 "different titles (=== Work ===, === Family ===) and using horizontal "
 "separator lines (20 “=”s)."
 msgstr ""
+"=== Entri Jamak ===\n"
+"Kamu bisa menambahkan lebih dari satu entri tiap hari dengan menggunakan "
+"jurnal yang berbeda (misal satu dinamakan \"Pekerjaan\", lainnya "
+"\"Keluarga\"), memisahkan entri tersebut dengan judul yang berbeda (=== "
+"Pekerjaan ===, === Keluarga ===), dan menggunakan pemisah horizontal (20 "
+"huruf \"=\")"
 
 #: ../rednotebook/info.py:173
 msgid ""
@@ -834,6 +840,13 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
+"=== Pekerjaan ===\n"
+"Inilah entri pertama. Isinya tentang #pekerjaan.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Keluarga ===\n"
+"Ini entri mengenai #keluarga."
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
@@ -997,7 +1010,7 @@ msgstr "Pilih Nama Kerangka"
 
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
-msgstr ""
+msgstr "File template ini tidak berisi teks atau isinya tidak terbaca."
 
 #: ../rednotebook/templates.py:378
 msgid "This Weekday's Template"
@@ -1041,7 +1054,7 @@ msgstr "Baris"
 
 #: ../rednotebook/util/utils.py:114
 msgid "unknown"
-msgstr ""
+msgstr "tak dikenal"
 
 #: ../rednotebook/util/utils.py:129
 #, python-format
@@ -1067,7 +1080,7 @@ msgstr "Pindah ke hari sebelumnya (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Lompat ke hari ini (Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
