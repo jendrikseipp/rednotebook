@@ -76,7 +76,7 @@ class Cloud(HtmlView):
     def update_lists(self):
         config = self.journal.config
 
-        default_ignore_list = _('filter, these, comma, separated, words')
+        default_ignore_list = _('#filter, these, comma, separated, words, and, #tags')
         self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
         self.ignore_list = [word.lower() for word in self.ignore_list]
         logging.info('Cloud ignore list: %s' % self.ignore_list)
@@ -85,11 +85,6 @@ class Cloud(HtmlView):
         self.include_list = config.read_list('cloudIncludeList', default_include_list)
         self.include_list = [word.lower() for word in self.include_list]
         logging.info('Cloud include list: %s' % self.include_list)
-        
-        default_tags_ignore_list = _('test, me')
-        self.tags_ignore_list = config.read_list('tagsIgnoreList', default_tags_ignore_list)
-        self.tags_ignore_list = [word.lower() for word in self.tags_ignore_list]
-        logging.info('Tag ignore list: %s' % self.tags_ignore_list)
 
         self.update_regexes()
 
@@ -97,7 +92,6 @@ class Cloud(HtmlView):
         logging.debug('Start compiling regexes')
         self.regexes_ignore = [get_regex(word) for word in self.ignore_list]
         self.regexes_include = [get_regex(word) for word in self.include_list]
-        self.regexes_tags_ignore = [get_regex('#' + word) for word in self.tags_ignore_list]
         logging.debug('Finished')
 
     def update(self, force_update=False):
@@ -129,7 +123,7 @@ class Cloud(HtmlView):
         self.link_index = 0
         word_count_dict = self.journal.get_word_count_dict()
         tags_count_dict = self.get_categories_counter().items()
-        self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_tags_ignore)
+        self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
         self.tags.sort(cmp=cmp_words)
         self.words = self._get_words_for_cloud(word_count_dict,
                                     self.regexes_ignore, self.regexes_include)
@@ -184,6 +178,7 @@ class Cloud(HtmlView):
         return words[-CLOUD_WORDS:]
     
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
+        print (tag_count_dict, ignores)
         tags = [(tag, freq) for (tag, freq) in tag_count_dict
                  if not any(pattern.match(tag) for pattern in ignores)]
         

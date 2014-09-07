@@ -294,11 +294,9 @@ class OptionsManager(object):
                        tooltip=_('Comma-separated font names')),
             DateFormatOption(_('Date/Time format'), 'dateTimeString'),
             TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
-                       tooltip=_('Do not show these comma separated words in the word cloud')),
+                       tooltip=_('Do not show these comma separated words and #tags in the clouds')),
             TextOption(_('Include small words in cloud'), 'cloudIncludeList',
                        tooltip=_('Allow these words with 4 letters or less')),
-            TextOption(_('Exclude tags from cloud'), 'tagsIgnoreList',
-                       tooltip=_('Do not show these comma separated tags in the tag cloud')),
         ])
 
 
