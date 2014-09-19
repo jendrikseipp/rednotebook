@@ -76,7 +76,7 @@ class Cloud(HtmlView):
     def update_lists(self):
         config = self.journal.config
 
-        default_ignore_list = _('#filter, these, comma, separated, words, and, #tags')
+        default_ignore_list = _('filter, these, comma, separated, words, and, #tags')
         self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
         self.ignore_list = [word.lower() for word in self.ignore_list]
         logging.info('Cloud ignore list: %s' % self.ignore_list)
@@ -178,11 +178,8 @@ class Cloud(HtmlView):
         return words[-CLOUD_WORDS:]
     
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
-        print (tag_count_dict, ignores)
-        tags = [(tag, freq) for (tag, freq) in tag_count_dict
+        return [(tag, freq) for (tag, freq) in tag_count_dict
                  if not any(pattern.match(tag) for pattern in ignores)]
-        
-        return tags
 
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)
