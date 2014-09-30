@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-17 00:18+0000\n"
+"PO-Revision-Date: 2014-09-29 08:19+0000\n"
 "Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-11 06:40+0000\n"
+"X-Launchpad-Export-Date: 2014-09-30 06:31+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../rednotebook/backup.py:55
@@ -488,7 +488,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Elija el tipo de letra"
 
 #: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
