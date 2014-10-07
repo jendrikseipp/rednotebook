@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2013-11-17 00:33+0000\n"
+"PO-Revision-Date: 2014-10-06 12:05+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-11 06:39+0000\n"
+"X-Launchpad-Export-Date: 2014-10-07 05:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../rednotebook/backup.py:55
@@ -159,7 +159,7 @@ msgstr "Vie valittuna oleva teksti"
 
 #: ../rednotebook/gui/exports.py:123
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(Käytettävissä vain, kun tekstiä on valittu muokkaustilassa)"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Date format"
@@ -1095,7 +1095,7 @@ msgstr "Muokkaa"
 
 #: tmp/main_window.glade.h:10
 msgid "Add a tag or a category entry"
-msgstr ""
+msgstr "Lisää tunniste tai luokkamerkintä"
 
 #: tmp/main_window.glade.h:11
 msgid "Add Tag"
