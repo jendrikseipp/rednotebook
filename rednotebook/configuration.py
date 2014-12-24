@@ -64,29 +64,26 @@ class Config(dict):
 
 
     def _read_file(self, file):
-
-        key_value_pairs = []
-
         content = filesystem.read_file(file)
         if not content:
             return {}
 
-        lines = content.split('\n')
+        lines = content.splitlines()
 
         # Delete comments and whitespace.
-        key_value_pairs = [delete_comment(line.strip()) for line in lines]
+        lines = [delete_comment(line.strip()) for line in lines]
 
         #delete empty lines
-        key_value_pairs = [line for line in lines if line]
+        lines = [line for line in lines if line]
 
         dictionary = {}
 
         #read keys and values
-        for key_value_pair in key_value_pairs:
-            if '=' in key_value_pair:
+        for line in lines:
+            if '=' in line:
                 try:
                     # Delete whitespace around =
-                    pair = key_value_pair.partition('=')[::2]
+                    pair = line.partition('=')[::2]
                     key, value = map(unicode.strip, pair)
 
                     # Do not add obsolete keys -> they will not be rewritten
