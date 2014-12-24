@@ -128,18 +128,17 @@ class Config(dict):
         if not self.changed():
             return
 
-        content = ''
+        lines = []
         for key, value in sorted(self.iteritems()):
             if key not in self.suppressed_keys:
-                content += ('%s=%s\n' % (key, value))
+                lines.append('%s=%s' % (key, value))
 
         try:
             filesystem.make_directory(os.path.dirname(self.filename))
-            filesystem.write_file(self.filename, content)
+            filesystem.write_file(self.filename, '\n'.join(lines))
         except IOError:
             logging.error('Configuration could not be saved. Please check '
                           'your permissions')
-            return
-
-        logging.info('Configuration has been saved to %s' % self.filename)
-        self.save_state()
+        else:
+            logging.info('Configuration has been saved to %s' % self.filename)
+            self.save_state()
