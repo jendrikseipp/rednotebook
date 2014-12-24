@@ -65,13 +65,9 @@ class Config(dict):
 
     def _read_file(self, filename):
         content = filesystem.read_file(filename)
-        if not content:
-            return {}
-
-        lines = content.splitlines()
 
         # Delete comments and whitespace.
-        lines = [delete_comment(line.strip()) for line in lines]
+        lines = [delete_comment(line.strip()) for line in content.splitlines()]
 
         dictionary = {}
 
@@ -96,15 +92,14 @@ class Config(dict):
 
     def read(self, key, default):
         if key in self:
-            return self.get(key)
-        else:
-            self[key] = default
-            return default
+            return self[key]
+        self[key] = default
+        return default
 
 
     def read_list(self, key, default):
         '''
-        Reads the string corresponding to key and converts it to a list
+        Read the string corresponding to key and convert it to a list.
 
         alpha,beta gamma;delta -> ['alpha', 'beta', 'gamma', 'delta']
 
@@ -112,23 +107,13 @@ class Config(dict):
         '''
         string = self.read(key, default)
         string = unicode(string)
-        if not string:
-            return []
 
-        # Try to convert the string to a list
         separators = [',', ';']
         for separator in separators:
             string = string.replace(separator, ' ')
 
-        list = string.split()
-
-        # Remove whitespace
-        list = map(unicode.strip, list)
-
-        # Remove empty items
-        list = filter(bool, list)
-
-        return list
+        strings = [s.strip() for s in string.split()]
+        return [s for s in strings if s]
 
 
     def write_list(self, key, list):
