@@ -32,7 +32,6 @@ O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked in preview mode (seems difficult in webkitgtk)
 O Make the right panel an advanced option?
 O Add option to insert verbatim text.
-O Try wine for building windows version.
 O Auto-merge: When saving a file, check if its changedate is newer than the time
   when we opened the file and merge the contents if it is.
 O Allow using ESC to exit full-screen mode.
@@ -44,6 +43,8 @@ O Hierarchical hashtags: #dream/recurring/houses and let user "zoom in" in tag c
 O Exports: add option to insert a page break between days. Use hr for HTML exports.
 O macro system that takes predefined text like {weather} and turns it
   into other text for the preview, e.g. an HTML snippet that displays that day's weather symbol.
+O Remove tag pane. Make sure that inline tags allow subtags first and that these are displayed when searching for the tag.
+  Allow formatting subtags.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
