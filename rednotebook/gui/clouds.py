@@ -128,7 +128,7 @@ class Cloud(HtmlView):
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
-                word_count_dict, self.regexes_ignore, self.regexes_include)
+            word_count_dict, self.regexes_ignore, self.regexes_include)
         self.words.sort(cmp=cmp_words)
 
         self.link_dict = self.tags + self.words
