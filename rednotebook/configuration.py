@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
-# Copyright (c) 2009  Jendrik Seipp
+# Copyright (c) 2009, 2014  Jendrik Seipp
 #
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -47,20 +47,10 @@ class Config(dict):
 
         self.update(self._read_file(self.filename))
 
-        self.set_default_values()
-
 
     def save_state(self):
         ''' Save a copy of the dir to check for changes later '''
         self.old_config = self.copy()
-
-
-    def set_default_values(self):
-        '''
-        Sets some default values that are not automatically set so that
-        they appear in the config file
-        '''
-        #self.read('export_date_format', '%A, %x')
 
 
     def _read_file(self, filename):
