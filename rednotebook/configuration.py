@@ -35,7 +35,7 @@ class Config(dict):
     def __init__(self, config_file):
         dict.__init__(self)
 
-        self.file = config_file
+        self.filename = config_file
 
         self.obsolete_keys = [
             u'useGTKMozembed', u'useWebkit', u'LD_LIBRARY_PATH',
@@ -45,7 +45,7 @@ class Config(dict):
         # Allow changing the value of portable only in default.cfg
         self.suppressed_keys = ['portable', 'user_dir']
 
-        self.update(self._read_file(self.file))
+        self.update(self._read_file(self.filename))
 
         self.set_default_values()
 
@@ -63,8 +63,8 @@ class Config(dict):
         #self.read('export_date_format', '%A, %x')
 
 
-    def _read_file(self, file):
-        content = filesystem.read_file(file)
+    def _read_file(self, filename):
+        content = filesystem.read_file(filename)
         if not content:
             return {}
 
@@ -73,33 +73,24 @@ class Config(dict):
         # Delete comments and whitespace.
         lines = [delete_comment(line.strip()) for line in lines]
 
-        #delete empty lines
-        lines = [line for line in lines if line]
-
         dictionary = {}
 
-        #read keys and values
         for line in lines:
-            if '=' in line:
-                try:
-                    # Delete whitespace around =
-                    pair = line.partition('=')[::2]
-                    key, value = map(unicode.strip, pair)
+            if '=' not in line:
+                continue
+            pair = line.partition('=')[::2]
+            key, value = [s.strip() for s in pair]
+            # Skip obsolete keys to prevent rewriting them to disk.
+            if key in self.obsolete_keys:
+                continue
 
-                    # Do not add obsolete keys -> they will not be rewritten
-                    # to disk
-                    if key in self.obsolete_keys:
-                        continue
+            try:
+                value = int(value)
+            except ValueError:
+                pass
 
-                    try:
-                        #Save value as int if possible
-                        dictionary[key] = int(value)
-                    except ValueError:
-                        dictionary[key] = value
+            dictionary[key] = value
 
-                except Exception:
-                    msg = 'The line "%s" in the config file contains errors'
-                    logging.error(msg % key_value_pair)
         return dictionary
 
 
@@ -158,12 +149,12 @@ class Config(dict):
                 content += ('%s=%s\n' % (key, value))
 
         try:
-            filesystem.make_directory(os.path.dirname(self.file))
-            filesystem.write_file(self.file, content)
+            filesystem.make_directory(os.path.dirname(self.filename))
+            filesystem.write_file(self.filename, content)
         except IOError:
             logging.error('Configuration could not be saved. Please check '
                           'your permissions')
             return
 
-        logging.info('Configuration has been saved to %s' % self.file)
+        logging.info('Configuration has been saved to %s' % self.filename)
         self.save_state()
