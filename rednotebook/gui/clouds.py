@@ -76,7 +76,7 @@ class Cloud(HtmlView):
     def update_lists(self):
         config = self.journal.config
 
-        default_ignore_list = _('filter, these, comma, separated, words')
+        default_ignore_list = _('filter, these, comma, separated, words, and, #tags')
         self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
         self.ignore_list = [word.lower() for word in self.ignore_list]
         logging.info('Cloud ignore list: %s' % self.ignore_list)
@@ -121,11 +121,16 @@ class Cloud(HtmlView):
             return locale.strcoll(word1, word2)
 
         self.link_index = 0
+
+        tags_count_dict = self.get_categories_counter().items()
+        self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
+        self.tags.sort(cmp=cmp_words)
+
         word_count_dict = self.journal.get_word_count_dict()
-        self.tags = sorted(self.get_categories_counter().items(), cmp=cmp_words)
-        self.words = self._get_words_for_cloud(word_count_dict,
-                                    self.regexes_ignore, self.regexes_include)
+        self.words = self._get_words_for_cloud(
+                word_count_dict, self.regexes_ignore, self.regexes_include)
         self.words.sort(cmp=cmp_words)
+
         self.link_dict = self.tags + self.words
         html = self.get_clouds(self.words, self.tags)
         self.load_html(html)
@@ -158,6 +163,10 @@ class Cloud(HtmlView):
                                  % (self.link_index, font_size, word))
             self.link_index += 1
         return '\n'.join(html_elements)
+
+    def _get_tags_for_cloud(self, tag_count_dict, ignores):
+        return [(tag, freq) for (tag, freq) in tag_count_dict
+                if not any(pattern.match(tag) for pattern in ignores)]
 
     def _get_words_for_cloud(self, word_count_dict, ignores, includes):
         # filter short words
