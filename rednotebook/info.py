@@ -34,13 +34,13 @@ from rednotebook.util import filesystem
 
 version = '1.8.1'
 author = 'Jendrik Seipp'
-authorMail = 'jendrikseipp@web.de'
+author_mail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'
 answers_url = 'https://answers.launchpad.net/rednotebook'
 translation_url = 'https://translations.launchpad.net/rednotebook/'
 bug_url = 'https://bugs.launchpad.net/rednotebook/+filebug'
 
-developers = ['Jendrik Seipp <jendrikseipp@web.de>',
+developers = ['%(author)s <%(author_mail)s>' % locals(),
               '',
               'Contributors:',
               'Alistair Marshall <thatscottishengineer@gmail.com>']
@@ -98,8 +98,6 @@ def get_commandline_parser():
 
 
 tags = _('Tags')
-work = _('Work')
-free_time = _('Free time')
 todo = _('Todo')
 done = _('Done')
 rtm = _('Remember the milk')

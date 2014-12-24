@@ -70,12 +70,6 @@ class Browser(webkit.WebView):
             self.load_html_from_file(html)
         else:
             self.load_html_string(html, 'file:///')
-            #self.load_string(html, content_mimetype='text/html',
-            #                 content_encoding='UTF-8', base_uri='file:///')
-
-    def get_html(self):
-        self.execute_script("document.title=document.document_element.innerHTML;")
-        return self.get_main_frame().get_title()
 
 
 class HtmlPrinter(object):

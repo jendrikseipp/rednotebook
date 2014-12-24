@@ -88,9 +88,7 @@ class Day(object):
             day_content = {'text': u''}
 
         self.date = datetime.date(month.year_number, month.month_number, day_number)
-
         self.month = month
-        self.day_number = day_number
 
         # Turn all entries of old "Tags" categories into tags without entries.
         old_tags = day_content.pop('Tags', {})

@@ -108,7 +108,7 @@ class ImportAssistant(Assistant):
 
         texts = [_('This Assistant lets you import notes from other applications.'),
                 _('You can check the results on the last page before any change is made.')]
-        self.page0 = self._add_intro_page('\n'.join(texts))
+        self._add_intro_page('\n'.join(texts))
 
         self.page1 = self._get_page1()
         self.append_page(self.page1)

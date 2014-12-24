@@ -264,10 +264,6 @@ class Editor(object):
                 self._spell_checker.detach()
                 self._spell_checker = None
 
-    def is_spell_check_enabled(self):
-        """Returns True if spell check is enabled"""
-        return self._spell_checker is not None
-
     #===========================================================
 
     #def on_drop(self, widget, drag_context, x, y, timestamp):
