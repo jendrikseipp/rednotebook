@@ -17,20 +17,21 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import os
-import sys
-import locale
-import subprocess
-import logging
 import codecs
+import locale
+import logging
+import os
+import platform
+import subprocess
+import sys
 import webbrowser
+
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or 'UTF-8'
 LANGUAGE = locale.getdefaultlocale()[0]
 REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
 
 IS_WIN = sys.platform.startswith('win')
-HAS_TRAY = IS_WIN  # A smarter detection is needed here ;)
 
 
 def get_unicode_path(path):
@@ -38,6 +39,9 @@ def get_unicode_path(path):
 
 def get_utf8_path(path):
     return path.encode('UTF-8')
+
+def has_system_tray():
+    return IS_WIN  # A smarter detection is needed here ;)
 
 
 def main_is_frozen():
