@@ -178,14 +178,6 @@ class Journal:
 
         logging.info('Running in portable mode: %s' % self.dirs.portable)
 
-        # Allow starting minimized to tray
-        # When we start minimized we have to set the tray icon visible
-        self.start_minimized = filesystem.HAS_TRAY and args.minimized
-        if not filesystem.HAS_TRAY:
-            self.config['closeToTray'] = 0
-        elif self.start_minimized:
-            self.config['closeToTray'] = 1
-
         self.month = None
         self.date = None
         self.months = {}

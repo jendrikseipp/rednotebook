@@ -154,8 +154,7 @@ class MainWindow(object):
 
         self.load_values_from_config()
 
-        if not self.journal.start_minimized:
-            self.main_frame.show()
+        self.main_frame.show()
 
         self.options_manager = OptionsManager(self)
         self.export_assistant = ExportAssistant(self.journal)

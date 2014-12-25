@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.8.2
 X Add #tags to cloud ignore list to remove them from the tag cloud (thanks Przemysław Buczkowski).
+X Remove option to start RedNotebook minimized.
 O Show warning for dates before 1900 (not supported by Python's datetime module).
 O Restore minimize-to-tray.
 X Only allow comment signs (#) at the beginning of a line in the config file.
