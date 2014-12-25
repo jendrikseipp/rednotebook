@@ -442,11 +442,9 @@ class MainWindow(object):
     def toggle_fullscreen(self):
         if self.is_fullscreen:
             self.main_frame.unfullscreen()
-            self.menubar.show()
             self.is_fullscreen = False
         else:
             self.main_frame.fullscreen()
-            self.menubar.hide()
             self.is_fullscreen = True
 
     def on_back_one_day_button_clicked(self, widget):
