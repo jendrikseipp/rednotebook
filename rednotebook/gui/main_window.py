@@ -17,15 +17,14 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import sys
-import os
 import datetime
 import logging
+import os
+import sys
 
-import gtk
 import gobject
+import gtk
 import pango
-
 
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
@@ -870,9 +869,6 @@ class Calendar(object):
             self.calendar.unmark_day(day_number)
 
     def set_month(self, month):
-        #month_days = dates.get_number_of_days(month.year_number, month.month_number)
-        #for day_number in range(1, month_days + 1):
-        #   self.set_day_edited(day_number, False)
         self.calendar.clear_marks()
         for day_number, day in month.days.items():
             self.set_day_edited(day_number, not day.empty)
