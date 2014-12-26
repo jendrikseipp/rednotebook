@@ -222,6 +222,8 @@ class MainWindow(object):
         #   self.day_text_field.day_text_view.add_accelerator(signal, self.accel_group,
         #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
+        self.main_frame.connect('key-press-event', self._on_key_press_event)
+
         shortcuts = [
             (self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
             (self.today_button, 'clicked', '<Alt>Home'),
@@ -230,11 +232,15 @@ class MainWindow(object):
             #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
             #(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
         ]
-
         for button, signal, shortcut in shortcuts:
             (keyval, mod) = gtk.accelerator_parse(shortcut)
             button.add_accelerator(signal, self.accel_group,
                                    keyval, mod, gtk.ACCEL_VISIBLE)
+
+    def _on_key_press_event(self, widget, event):
+        # Exit fullscreen mode with ESC.
+        if event.keyval == gtk.keysyms.Escape and self.is_fullscreen:
+            self.toggle_fullscreen()
 
 
     # TRAY-ICON / CLOSE --------------------------------------------------------
