@@ -297,8 +297,12 @@ class Journal:
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
-        something_saved = storage.save_months_to_disk(self.months,
-            self.dirs.data_dir, self.frame, exit_imminent, saveas)
+        try:
+            something_saved = storage.save_months_to_disk(
+                self.months, self.dirs.data_dir, exit_imminent, saveas)
+        except (IOError, OSError):
+            self.frame.show_save_error_dialog(exit_imminent)
+            something_saved = None
 
         if something_saved:
             self.show_message(_('The content has been saved to %s') % self.dirs.data_dir, error=False)
