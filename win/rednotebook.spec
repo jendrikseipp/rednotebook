@@ -12,6 +12,8 @@ srcdir = os.path.join(basedir, 'rednotebook')
 bindir = os.path.join(drive_c, 'gtkbin')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
+MISSED_DLLS = ['librsvg-2-2.dll']
+
 for path in [drive_c, pyinstaller_dir, basedir, srcdir, bindir, icon]:
     assert os.path.exists(path), path
 
@@ -26,6 +28,8 @@ a = Analysis([os.path.join(srcdir, 'journal.py')],
              pathex=[pyinstaller_dir, basedir],
              hiddenimports=[],
              hookspath=None)
+a.binaries += [(dll, os.path.join(bindir, dll), 'BINARY')
+               for dll in MISSED_DLLS]
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
           a.scripts,
