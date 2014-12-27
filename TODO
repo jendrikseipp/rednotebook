@@ -7,8 +7,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.10
+X Show warning for dates before 1900 (not supported by Python's datetime module).
+
 1.x
-O Show warning for dates before 1900 (not supported by Python's datetime module).
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
 O During saving: Delete old backup, move old file to new backup then save new file.

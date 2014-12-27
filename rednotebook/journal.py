@@ -437,6 +437,11 @@ class Journal:
 
 
     def change_date(self, new_date):
+        if new_date < datetime.date(1900, 1, 1):
+            self.show_message('Only dates after 1900 are supported.',
+                              title='Too Early', error=True)
+            return
+
         if new_date == self.date:
             return
 
