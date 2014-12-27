@@ -1,3 +1,11 @@
+== 1.9.0 (2014-12-27) ==
+* Add #tags to cloud ignore list to remove them from the tag cloud (thanks Przemysław Buczkowski).
+* Remove option to start RedNotebook minimized.
+* Do not remove menu bar in fullscreen mode (lp:1400356).
+* Allow exiting fullscreen mode with ESC key.
+* Only allow comment signs (#) at the beginning of a line in the config file.
+* Fix reading configuration files.
+
 == 1.8.1 (2014-08-03) ==
 * Do not show new version dialog if latest version cannot be determined (lp:1324126).
 * Fix date formatting for invalid locale encodings.
