@@ -46,6 +46,7 @@ class Config(dict):
         self.suppressed_keys = ['portable', 'user_dir']
 
         self.update(self._read_file(self.filename))
+        self.save_state()
 
 
     def save_state(self):
