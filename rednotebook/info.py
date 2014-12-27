@@ -29,8 +29,6 @@ try:
 except ImportError:
     from rednotebook.external import argparse
 
-from rednotebook.util import filesystem
-
 
 version = '1.8.1'
 author = 'Jendrik Seipp'
