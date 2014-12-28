@@ -12,7 +12,7 @@ srcdir = os.path.join(basedir, 'rednotebook')
 bindir = os.path.join(drive_c, 'gtkbin')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
-MISSED_DLLS = ['librsvg-2-2.dll']
+MISSED_DLLS = ['iconv.dll', 'libcroco-0.6-3.dll', 'librsvg-2-2.dll']
 
 for path in [drive_c, pyinstaller_dir, basedir, srcdir, bindir, icon]:
     assert os.path.exists(path), path
