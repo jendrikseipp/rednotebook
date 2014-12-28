@@ -22,10 +22,8 @@ fi
 # E128: continuation line under-indented for visual indent
 # E265: block comment should start with '# '
 PEP8_OPTS="--ignore=E302,E303,E241,E128,E265 --max-line-length=120"
-pep8 $PEP8_OPTS --exclude=*external* rednotebook
-if [ $? == 1 ]; then
-    echo PEP8 errors detected.
-    exit 1
-fi
+pep8 $PEP8_OPTS --exclude=*external* rednotebook || exit 1
 
-./dev/find-dead-code
+./dev/find-dead-code || exit 1
+
+echo "All tests passed"
