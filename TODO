@@ -11,9 +11,13 @@ speed up the implementation if you tell me that you'd like its addition ;)
 X Show warning for dates before 1900 (not supported by Python's datetime module).
 
 1.x
+O When overwriting 2014-12.txt:
+    write new content to 2014-12.new.txt
+    cp 2014-12.txt 2014-12.old.txt
+    mv 2014-12.new.txt 2014-12.txt
+    rm 2014-12.old.txt ?
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
-O During saving: Delete old backup, move old file to new backup then save new file.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
@@ -32,7 +36,6 @@ O Make the right panel an advanced option?
 O Add option to insert verbatim text.
 O Auto-merge: When saving a file, check if its changedate is newer than the time
   when we opened the file and merge the contents if it is.
-O Allow using ESC to exit full-screen mode.
 O Setup repo at bitbucket.
 O Mirror repo on github (either automatically (http://www.metallapan.se/bitsynchub/)
   or on releases (http://hgtip.com/tips/advanced/2009-11-09-create-a-git-mirror/))
