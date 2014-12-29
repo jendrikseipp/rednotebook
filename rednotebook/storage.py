@@ -21,6 +21,7 @@ import codecs
 import logging
 import os
 import re
+import shutil
 import stat
 import sys
 
@@ -41,6 +42,10 @@ except ImportError:
     logging.info('Using pyyaml for loading and dumping')
 
 from rednotebook.data import Month
+
+
+def format_year_and_month(year, month):
+    return '%04d-%02d' % (year, month)
 
 
 def get_journal_files(data_dir):
@@ -95,25 +100,46 @@ def load_all_months_from_disk(data_dir):
     for path, year_number, month_number in get_journal_files(data_dir):
         month = _load_month_from_disk(path, year_number, month_number)
         if month:
-            months['%d-%02d' % (year_number, month_number)] = month
+            months[format_year_and_month(year_number, month_number)] = month
 
     logging.debug('Finished loading files in dir "%s"' % data_dir)
     return months
 
 
-def _save_month_to_disk(month, filename):
+def _save_month_to_disk(month, journal_dir):
+    """
+    When overwriting 2014-12.txt:
+        write new content to 2014-12.new.txt
+        cp 2014-12.txt 2014-12.old.txt
+        mv 2014-12.new.txt 2014-12.txt
+        rm 2014-12.old.txt
+    """
     content = {}
     for day_number, day in month.days.iteritems():
         if not day.empty:
             content[day_number] = day.content
 
+    def get_filename(infix):
+        year_and_month = format_year_and_month(month.year_number, month.month_number)
+        return os.path.join(journal_dir, '%s%s.txt' % (year_and_month, infix))
+
+    old = get_filename('.old')
+    new = get_filename('.new')
+    filename = get_filename('')
+
     # Do not save empty month files.
     if not content and not os.path.exists(filename):
         return False
 
-    with codecs.open(filename, 'wb', encoding='utf-8') as month_file:
+    with codecs.open(new, 'wb', encoding='utf-8') as f:
         # Write readable unicode and no Python directives.
-        yaml.dump(content, month_file, Dumper=Dumper, allow_unicode=True)
+        yaml.dump(content, f, Dumper=Dumper, allow_unicode=True)
+
+    if os.path.exists(filename):
+        shutil.copy2(filename, old)
+    shutil.move(new, filename)
+    if os.path.exists(old):
+        os.remove(old)
 
     try:
         # Make file readable and writable only by the owner.
@@ -134,7 +160,6 @@ def save_months_to_disk(months, journal_dir, exit_imminent=False, saveas=False):
     for year_and_month, month in months.items():
         # We always need to save everything when we are "saving as".
         if month.edited or saveas:
-            filename = os.path.join(journal_dir, year_and_month + '.txt')
-            something_saved |= _save_month_to_disk(month, filename)
+            something_saved |= _save_month_to_disk(month, journal_dir)
 
     return something_saved
