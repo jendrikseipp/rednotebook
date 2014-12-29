@@ -200,7 +200,8 @@ class Editor(object):
             'italic': (u'//', u'//'),
             'monospace': (u'``', u'``'),
             'underline': (u'__', u'__'),
-            'strikethrough': (u'--', u'--')
+            'strikethrough': (u'--', u'--'),
+            'title': (u'\n=== ', u' ===\n')
         }
         left_markup, right_markup = format_to_markups[format]
         if format == 'monospace' and '\n' in selection:
