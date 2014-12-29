@@ -468,14 +468,16 @@ class Journal:
     def show_message(self, msg, title=None, error=False):
         if error and not title:
             title = _('Error')
+
         if error:
             msg_type = gtk.MESSAGE_ERROR
             log_level = logging.ERROR
         else:
             msg_type = gtk.MESSAGE_INFO
             log_level = logging.INFO
+
         self.frame.show_message(title, msg, msg_type)
-        logging.log(log_level, '%s. %s' % (title, msg))
+        logging.log(log_level, '%s. %s' % (title, msg) if title else msg)
 
 
     @property
