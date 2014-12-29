@@ -10,7 +10,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 1.10
 X Write data to temporary files first to prevent corrupted month files.
 X Show warning for dates before 1900 (not supported by Python's datetime module).
-X Add format button for monospace font.
+X Add format button for monospace font. Automatically add the correct format for code blocks.
 
 1.x
 O Search icon for monospace fonts.
