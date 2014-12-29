@@ -211,13 +211,13 @@ class Editor(object):
     def apply_format(self, format):
         selection = self.get_selected_text()
         left_markup, right_markup = self._get_markups(format, self.get_selected_text())
-        text_left_of_selection = self.get_text_left_of_selection(len(left_markup))
-        text_right_of_selection = self.get_text_right_of_selection(len(right_markup))
 
-        # Apply formatting only once if a format button is clicked multiple times.
-        if text_left_of_selection == left_markup:
+        # Apply formatting only once.
+        if (self.get_text_left_of_selection(len(left_markup)) == left_markup or
+                selection.startswith(left_markup)):
             left_markup = ''
-        if text_right_of_selection == right_markup:
+        if (self.get_text_right_of_selection(len(right_markup)) == right_markup or
+                selection.endswith(right_markup)):
             right_markup = ''
 
         # Don't add unneeded newlines.
