@@ -47,8 +47,8 @@ MENUBAR_XML = '''\
 
 class FormatMenu(object):
     FORMAT_TO_MARKUP = {
-        'bold': '**', 'italic': '//', 'monospace': '``',
-        'underline': '__', 'strikethrough': '--'}
+        'bold': u'**', 'italic': u'//', 'monospace': u'``',
+        'underline': u'__', 'strikethrough': u'--'}
 
     def __init__(self, main_window):
         self.main_window = main_window
@@ -92,10 +92,10 @@ class FormatMenu(object):
                 text = '%s%s%s' % (markup, text, markup)
                 self.main_window.categories_tree_view.set_iter_value(iter, text)
             elif focus == self.main_window.day_text_field.day_text_view:
-                self.main_window.day_text_field.apply_format(markup)
+                self.main_window.day_text_field.apply_format(format)
             else:
-                self.main_window.journal.show_message(_('No text or tag has been selected.'),
-                                          error=True)
+                self.main_window.journal.show_message(
+                    _('No text or tag has been selected.'), error=True)
 
         def shortcut(char):
             ### Translators: The Control (Ctrl) key

@@ -151,15 +151,19 @@ class Editor(object):
         else:
             return ''
 
-    def get_text_around_selected_text(self, length):
+    def get_text_left_of_selection(self, length):
         bounds = self.get_selection_bounds()
-        start1 = bounds[0].copy()
-        start1.backward_chars(length)
-        start2 = bounds[0]
-        end1 = bounds[1]
-        end2 = bounds[1].copy()
-        end2.forward_chars(length)
-        return (self.get_text(start1, start2), self.get_text(end1, end2))
+        start = bounds[0].copy()
+        start.backward_chars(length)
+        end = bounds[0]
+        return self.get_text(start, end)
+
+    def get_text_right_of_selection(self, length):
+        bounds = self.get_selection_bounds()
+        start = bounds[1]
+        end = bounds[1].copy()
+        end.forward_chars(length)
+        return self.get_text(start, end)
 
     @staticmethod
     def sort_iters(*iters):
@@ -190,14 +194,40 @@ class Editor(object):
                 self.get_text(sel_start, sel_end),
                 self.get_text(sel_end, end))
 
-    def apply_format(self, markup):
-        text_around_selection = self.get_text_around_selected_text(2)
-        # Apply formatting only once if a format button is clicked multiple times
-        if text_around_selection == (unicode(markup), unicode(markup)):
-            return
+    def _get_markups(self, format, selection):
+        format_to_markups = {
+            'bold': (u'**', u'**'),
+            'italic': (u'//', u'//'),
+            'monospace': (u'``', u'``'),
+            'underline': (u'__', u'__'),
+            'strikethrough': (u'--', u'--')
+        }
+        left_markup, right_markup = format_to_markups[format]
+        if format == 'monospace' and '\n' in selection:
+            left_markup = u'\n```\n'
+            right_markup = u'\n```\n'
+        return left_markup, right_markup
 
-        text = self.get_selected_text() or ' '
-        self.replace_selection_and_highlight(markup, text, markup)
+    def apply_format(self, format):
+        selection = self.get_selected_text()
+        left_markup, right_markup = self._get_markups(format, self.get_selected_text())
+        text_left_of_selection = self.get_text_left_of_selection(len(left_markup))
+        text_right_of_selection = self.get_text_right_of_selection(len(right_markup))
+
+        # Apply formatting only once if a format button is clicked multiple times.
+        if text_left_of_selection == left_markup:
+            left_markup = ''
+        if text_right_of_selection == right_markup:
+            right_markup = ''
+
+        # Don't add unneeded newlines.
+        if left_markup.startswith('\n') and self.get_text_left_of_selection(1) == '\n':
+            left_markup = left_markup[1:]
+        if right_markup.endswith('\n') and self.get_text_right_of_selection(1) == '\n':
+            right_markup = right_markup[:-1]
+
+        text = selection or ' '
+        self.replace_selection_and_highlight(left_markup, text, right_markup)
 
     def set_font(self, font_name):
         font = pango.FontDescription(font_name)
