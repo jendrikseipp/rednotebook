@@ -108,8 +108,7 @@ class FormatMenu(object):
              '<Control>U', None, apply_format),
             ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
              '<Control>K', None, apply_format),
-            ### Translators: Clear format
-            ('Clear', gtk.STOCK_CLEAR, _('Clear') + shortcut('R'),
+            ('Clear', gtk.STOCK_CLEAR, _('Clear format') + shortcut('R'),
              '<Control>R', None, self.on_clear_format),
             ### Translators: Noun
             ('FormatMenuBar', None, _('_Format')),
