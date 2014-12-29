@@ -221,9 +221,9 @@ class Editor(object):
             right_markup = ''
 
         # Don't add unneeded newlines.
-        if left_markup.startswith('\n') and self.get_text_left_of_selection(1) == '\n':
+        if left_markup.startswith('\n') and self.get_text_left_of_selection(1) in ['\n', '']:
             left_markup = left_markup[1:]
-        if right_markup.endswith('\n') and self.get_text_right_of_selection(1) == '\n':
+        if right_markup.endswith('\n') and self.get_text_right_of_selection(1) in ['\n', '']:
             right_markup = right_markup[:-1]
 
         text = selection or ' '
