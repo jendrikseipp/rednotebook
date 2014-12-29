@@ -101,36 +101,40 @@ def load_all_months_from_disk(data_dir):
     return months
 
 
-def save_months_to_disk(months, dir, exit_imminent=False, saveas=False):
+def _save_month_to_disk(month, filename):
+    content = {}
+    for day_number, day in month.days.iteritems():
+        if not day.empty:
+            content[day_number] = day.content
+
+    # Do not save empty month files.
+    if not content and not os.path.exists(filename):
+        return False
+
+    with codecs.open(filename, 'wb', encoding='utf-8') as month_file:
+        # Write readable unicode and no Python directives.
+        yaml.dump(content, month_file, Dumper=Dumper, allow_unicode=True)
+
+    try:
+        # Make file readable and writable only by the owner.
+        os.chmod(filename, stat.S_IRUSR | stat.S_IWUSR)
+    except OSError:
+        pass
+
+    month.edited = False
+    logging.debug('Wrote file %s' % filename)
+    return True
+
+
+def save_months_to_disk(months, journal_dir, exit_imminent=False, saveas=False):
     '''
-    Do the actual saving and return if something has been saved
+    Update the journal on disk and return if something had to be written.
     '''
     something_saved = False
     for year_and_month, month in months.items():
-        # We always need to save everything when we are "saving as"
+        # We always need to save everything when we are "saving as".
         if month.edited or saveas:
-            something_saved = True
-            month_file_string = os.path.join(dir, year_and_month + '.txt')
-            month_content = {}
-            for day_number, day in month.days.iteritems():
-                # do not add empty days
-                if not day.empty:
-                    month_content[day_number] = day.content
-
-            # Do not save empty month files
-            if not month_content and not os.path.exists(month_file_string):
-                continue
-
-            with codecs.open(month_file_string, 'wb', encoding='utf-8') as month_file:
-                # This version produces readable unicode and no python directives
-                yaml.dump(month_content, month_file, Dumper=Dumper, allow_unicode=True)
-                month.edited = False
-                logging.debug('Wrote file %s' % month_file_string)
-
-            try:
-                # Make file readable and writable only by the owner.
-                os.chmod(month_file_string, stat.S_IRUSR | stat.S_IWUSR)
-            except OSError:
-                pass
+            filename = os.path.join(journal_dir, year_and_month + '.txt')
+            something_saved |= _save_month_to_disk(month, filename)
 
     return something_saved
