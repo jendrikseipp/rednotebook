@@ -25,6 +25,7 @@ from rednotebook.gui import customwidgets
 MENUITEMS_XML = '''\
     <menuitem action="Bold"/>
     <menuitem action="Italic"/>
+    <menuitem action="Monospace"/>
     <menuitem action="Underline"/>
     <menuitem action="Strikethrough"/>
     <menuitem action="Clear"/>
@@ -45,6 +46,10 @@ MENUBAR_XML = '''\
 
 
 class FormatMenu(object):
+    FORMAT_TO_MARKUP = {
+        'bold': u'**', 'italic': u'//', 'monospace': u'``',
+        'underline': u'__', 'strikethrough': u'--'}
+
     def __init__(self, main_window):
         self.main_window = main_window
         self.setup()
@@ -64,12 +69,10 @@ class FormatMenu(object):
             return word + ' (Ctrl+%s)' % word[0]
 
         def apply_format(action, format='bold'):
-            format_to_markup = {'bold': '**', 'italic': '//', 'underline': '__',
-                                'strikethrough': '--'}
             if type(action) == gtk.Action:
                 format = action.get_name().lower()
 
-            markup = format_to_markup[format]
+            markup = self.FORMAT_TO_MARKUP[format]
 
             focus = self.main_window.main_frame.get_focus()
             iter = self.main_window.categories_tree_view.get_selected_node()
@@ -89,10 +92,10 @@ class FormatMenu(object):
                 text = '%s%s%s' % (markup, text, markup)
                 self.main_window.categories_tree_view.set_iter_value(iter, text)
             elif focus == self.main_window.day_text_field.day_text_view:
-                self.main_window.day_text_field.apply_format(markup)
+                self.main_window.day_text_field.apply_format(format)
             else:
-                self.main_window.journal.show_message(_('No text or tag has been selected.'),
-                                          error=True)
+                self.main_window.journal.show_message(
+                    _('No text or tag has been selected.'), error=True)
 
         def shortcut(char):
             ### Translators: The Control (Ctrl) key
@@ -104,12 +107,13 @@ class FormatMenu(object):
              '<Control>B', None, apply_format),
             ('Italic', gtk.STOCK_ITALIC, _('Italic') + shortcut('I'),
              '<Control>I', None, apply_format),
+            ('Monospace', None, _('Monospace') + shortcut('M'),
+             '<Control>M', None, apply_format),
             ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'),
              '<Control>U', None, apply_format),
             ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
              '<Control>K', None, apply_format),
-            ### Translators: Clear format
-            ('Clear', gtk.STOCK_CLEAR, _('Clear') + shortcut('R'),
+            ('Clear', gtk.STOCK_CLEAR, _('Clear format') + shortcut('R'),
              '<Control>R', None, self.on_clear_format),
             ### Translators: Noun
             ('FormatMenuBar', None, _('_Format')),
@@ -137,6 +141,6 @@ class FormatMenu(object):
     def on_clear_format(self, action):
         editor = self.main_window.day_text_field
         sel_text = editor.get_selected_text()
-        for markup in ['**', '__', '//', '--', '=== ', ' ===']:
+        for markup in self.FORMAT_TO_MARKUP.values() + ['=== ', ' ===']:
             sel_text = sel_text.replace(markup, '')
         editor.replace_selection(sel_text)

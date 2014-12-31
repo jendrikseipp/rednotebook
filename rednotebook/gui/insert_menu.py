@@ -112,8 +112,7 @@ class InsertMenu(object):
                 self.get_insert_handler(self.on_insert_bullet_list)),
             #('NumberedList', None, _('Numbered List'), None, None,
             #    self.get_insert_handler(self.on_insert_numbered_list)),
-            ('Title', None, _('Title'), None, None,
-                self.get_insert_handler(self.on_insert_title)),
+            ('Title', None, _('Title'), None, None, self.on_insert_title),
             ('Line', None, _('Line'), None,
                 _('Insert a separator line'),
                 self.get_insert_handler(lambda sel_text: line)),
@@ -305,8 +304,10 @@ class InsertMenu(object):
     #        return '\n'.join('+ %s' % row for row in sel_text.splitlines())
     #    return self.bullet_list.replace('-', '+')
 
-    def on_insert_title(self, sel_text):
-        return '\n=== ', sel_text or _('Title'), ' ===\n'
+    def on_insert_title(self, *args):
+        editor = self.main_window.day_text_field
+        sel_text = editor.get_selected_text()
+        editor.apply_format('title')
 
     #def on_insert_formula(self, sel_text):
     #    formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'

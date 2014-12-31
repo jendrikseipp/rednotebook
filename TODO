@@ -8,14 +8,13 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.10
+X Write data to temporary files first to prevent corrupted month files.
+X Add format button for monospace font. Automatically add the correct format for code blocks.
 X Show warning for dates before 1900 (not supported by Python's datetime module).
+x Don't add unneeded newlines around titles and code.
 
 1.x
-O When overwriting 2014-12.txt:
-    write new content to 2014-12.new.txt
-    cp 2014-12.txt 2014-12.old.txt
-    mv 2014-12.new.txt 2014-12.txt
-    rm 2014-12.old.txt ?
+O Search icon for monospace fonts.
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
 X Insert Latex formulas (LP:851471)
@@ -33,19 +32,19 @@ O Make default css prettier
 O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked in preview mode (seems difficult in webkitgtk)
 O Make the right panel an advanced option?
-O Add option to insert verbatim text.
 O Auto-merge: When saving a file, check if its changedate is newer than the time
   when we opened the file and merge the contents if it is.
 O Setup repo at bitbucket.
 O Mirror repo on github (either automatically (http://www.metallapan.se/bitsynchub/)
   or on releases (http://hgtip.com/tips/advanced/2009-11-09-create-a-git-mirror/))
-O When clicking on a hashtag in the tag cloud scroll to tag and highlight it.
+O When clicking on a hashtag in the tag cloud scroll to tag and highlight it (seems difficult with webkitgtk)
 O Hierarchical hashtags: #dream/recurring/houses and let user "zoom in" in tag cloud.
+  Maybe better: Use multiple tags and allow iteratively filtering them in tag cloud.
 O Exports: add option to insert a page break between days. Use hr for HTML exports.
 O macro system that takes predefined text like {weather} and turns it
   into other text for the preview, e.g. an HTML snippet that displays that day's weather symbol.
 O Remove tag pane. Make sure that inline tags allow subtags first and that these are displayed when searching for the tag.
-  Allow formatting subtags.
+  Allow formatting subtags (--groceries--).
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
