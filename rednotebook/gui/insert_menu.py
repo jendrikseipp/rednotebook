@@ -305,9 +305,7 @@ class InsertMenu(object):
     #    return self.bullet_list.replace('-', '+')
 
     def on_insert_title(self, *args):
-        editor = self.main_window.day_text_field
-        sel_text = editor.get_selected_text()
-        editor.apply_format('title')
+        self.main_window.day_text_field.apply_format('title')
 
     #def on_insert_formula(self, sel_text):
     #    formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'
