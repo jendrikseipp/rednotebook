@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-11 06:40+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2015-01-01 05:41+0000\n"
+"X-Generator: Launchpad (build 17286)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -1095,6 +1095,7 @@ msgstr ""
 "  Algimantas Margevičius https://launchpad.net/~gymka\n"
 "  Anielius https://launchpad.net/~tsu\n"
 "  Gintautas Miliauskas https://launchpad.net/~gintas\n"
+"  Moo https://launchpad.net/~mooo\n"
 "  keturidu https://launchpad.net/~keturidu"
 
 #: tmp/main_window.glade.h:14
