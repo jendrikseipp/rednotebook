@@ -14,7 +14,6 @@ X Show warning for dates before 1900 (not supported by Python's datetime module)
 x Don't add unneeded newlines around titles and code.
 
 1.x
-O Search icon for monospace fonts.
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
 X Insert Latex formulas (LP:851471)
@@ -45,6 +44,7 @@ O macro system that takes predefined text like {weather} and turns it
   into other text for the preview, e.g. an HTML snippet that displays that day's weather symbol.
 O Remove tag pane. Make sure that inline tags allow subtags first and that these are displayed when searching for the tag.
   Allow formatting subtags (--groceries--).
+O Add testimonials to homepage.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
@@ -67,7 +67,7 @@ O Imports
 
   O Suggest input encoding, but let user set it afterwards
 
-O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space)
+O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space, white text on black bg)
 O Translate help (Restructure first using Sphinx?)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
 O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
