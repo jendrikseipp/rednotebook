@@ -18,7 +18,6 @@
 # -----------------------------------------------------------------------
 
 from collections import defaultdict
-import logging
 
 
 class Action(object):
@@ -29,8 +28,8 @@ class Action(object):
 
 
 class UndoRedoManager(object):
-    size = 100
-    buffer = 20
+    SIZE = 100
+    BUFFER = 20
 
     def __init__(self, main_window):
         self.main_window = main_window
@@ -46,10 +45,12 @@ class UndoRedoManager(object):
 
     @property
     def undo_stack(self):
+        assert self.current_stack is not None
         return self.undo_stacks[self.current_stack]
 
     @property
     def redo_stack(self):
+        assert self.current_stack is not None
         return self.redo_stacks[self.current_stack]
 
     def set_stack(self, stack):
@@ -57,24 +58,19 @@ class UndoRedoManager(object):
         self.update_buttons()
 
     def add_action(self, action):
-        '''
-        Arguments are functions that encode what there is to to to redo and undo
-        the action
-        '''
         self.undo_stack.append(action)
 
-        # Delete some items, if the undo stack grows too big
-        if len(self.undo_stack) > self.size + self.buffer:
-            del self.undo_stack[:self.buffer]
+        # Delete some items, if the undo stack grows too big.
+        if len(self.undo_stack) > self.SIZE + self.BUFFER:
+            del self.undo_stack[:self.BUFFER]
 
-        # When a new action has been made, forget all redos
+        # When a new action has been made, forget all redos.
         del self.redo_stack[:]
 
         self.update_buttons()
 
     def undo(self, *args):
         assert self.can_undo()
-        logging.debug('Undo')
 
         action = self.undo_stack.pop()
         action.undo_function()
@@ -84,7 +80,6 @@ class UndoRedoManager(object):
 
     def redo(self, *args):
         assert self.can_redo()
-        logging.debug('Redo')
 
         action = self.redo_stack.pop()
         action.redo_function()
@@ -93,10 +88,10 @@ class UndoRedoManager(object):
         self.update_buttons()
 
     def can_undo(self):
-        return len(self.undo_stack) > 0
+        return bool(self.undo_stack)
 
     def can_redo(self):
-        return len(self.redo_stack) > 0
+        return bool(self.redo_stack)
 
     def update_buttons(self):
         self.undo_action.set_sensitive(self.can_undo())
