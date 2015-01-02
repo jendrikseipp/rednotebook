@@ -51,8 +51,7 @@ class Editor(object):
         self.old_text = ''
         self.search_text = ''
 
-        # Some actions should get a break point even if not much text has been
-        # changed
+        # Some actions should get an undo point even if for small changes.
         self.force_adding_undo_point = False
 
         # spell checker
@@ -99,11 +98,14 @@ class Editor(object):
         self.day_text_buffer.handler_unblock(self.changed_connection)
         self.on_text_change(self.day_text_buffer, undoing=undoing)
 
+        self.force_adding_undo_point = False
+
     def replace_selection(self, text):
         self.force_adding_undo_point = True
         self.day_text_buffer.delete_selection(interactive=False,
                                               default_editable=True)
         self.day_text_buffer.insert_at_cursor(text)
+        self.force_adding_undo_point = False
 
     def replace_selection_and_highlight(self, p1, p2, p3):
         """
@@ -262,7 +264,6 @@ class Editor(object):
 
         if much_text_changed or self.force_adding_undo_point:
             self.add_undo_point()
-            self.force_adding_undo_point = False
 
     #===========================================================
     # Spell checking.
