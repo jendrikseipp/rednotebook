@@ -281,7 +281,7 @@ class CategoriesTreeView(object):
         if not undoing:
             undo_func = lambda: self.delete_node(self.find_iter(category, entry), undoing=True)
             redo_func = lambda: self.add_entry(category, entry, undoing=True)
-            action = undo.Action(undo_func, redo_func, 'categories_tree_view')
+            action = undo.Action(undo_func, redo_func)
             self.undo_redo_manager.add_action(action)
 
         self.tree_view.expand_all()
@@ -334,7 +334,7 @@ class CategoriesTreeView(object):
                     delete_iter = self.find_iter(category, entry)
                     self.delete_node(delete_iter, undoing=True)
 
-            action = undo.Action(undo_func, redo_func, 'categories_tree_view')
+            action = undo.Action(undo_func, redo_func)
             self.undo_redo_manager.add_action(action)
 
         # Update cloud

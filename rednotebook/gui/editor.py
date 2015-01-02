@@ -257,7 +257,7 @@ class Editor(object):
             def redo_func():
                 self.set_text(new_text, undoing=True)
 
-            action = undo.Action(undo_func, redo_func, 'day_text_field')
+            action = undo.Action(undo_func, redo_func)
             self.undo_redo_manager.add_action(action)
 
             self.old_text = new_text
