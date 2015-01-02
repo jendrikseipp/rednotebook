@@ -253,7 +253,9 @@ class MainMenuBar(object):
 
     def on_checkspelling_menuitem_toggled(self, widget):
         self.main_window.day_text_field.enable_spell_check(widget.get_active())
-        self.journal.config['spellcheck'] = int(widget.get_active())
+        enabled = self.main_window.day_text_field.is_spell_check_enabled()
+        widget.set_active(enabled)
+        self.journal.config['spellcheck'] = int(enabled)
 
     def on_options_menuitem_activate(self, widget):
         self.main_window.options_manager.on_options_dialog()

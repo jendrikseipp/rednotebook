@@ -14,6 +14,7 @@ X Show warning for dates before 1900 (not supported by Python's datetime module)
 x Don't add unneeded newlines around titles and code.
 
 1.x
+O Fix undo/redo.
 O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
 X Insert Latex formulas (LP:851471)
