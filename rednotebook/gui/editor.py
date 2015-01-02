@@ -237,30 +237,29 @@ class Editor(object):
     def hide(self):
         self.day_text_view.hide()
 
+    def add_undo_point(self):
+        new_text = self.get_text()
+        old_text = self.old_text[:]
+
+        def undo_func():
+            self.set_text(old_text, undoing=True)
+
+        def redo_func():
+            self.set_text(new_text, undoing=True)
+
+        self.undo_redo_manager.add_action(undo.Action(undo_func, redo_func))
+        self.old_text = new_text
+
     def on_text_change(self, textbuffer, undoing=False):
-        # Do not record changes while undoing or redoing
+        # Do not record changes while undoing or redoing.
         if undoing:
             self.old_text = self.get_text()
             return
 
-        new_text = self.get_text()
-        old_text = self.old_text[:]
-
-        #Determine whether to add a save point
-        much_text_changed = abs(len(new_text) - len(old_text)) >= 5
+        much_text_changed = abs(len(self.get_text()) - len(self.old_text)) >= 5
 
         if much_text_changed or self.force_adding_undo_point:
-
-            def undo_func():
-                self.set_text(old_text, undoing=True)
-
-            def redo_func():
-                self.set_text(new_text, undoing=True)
-
-            action = undo.Action(undo_func, redo_func)
-            self.undo_redo_manager.add_action(action)
-
-            self.old_text = new_text
+            self.add_undo_point()
             self.force_adding_undo_point = False
 
     #===========================================================
