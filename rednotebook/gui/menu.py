@@ -222,6 +222,9 @@ class MainMenuBar(object):
             self.main_window.uimanager.get_widget('/MainMenuBar/Edit/%s' % action).set_sensitive(edit_mode)
 
     def on_undo(self, widget):
+        editor = self.main_window.day_text_field
+        if editor.last_undo_point_is_dirty():
+            editor.add_undo_point()
         self.main_window.undo_redo_manager.undo()
 
     def on_redo(self, widget):
