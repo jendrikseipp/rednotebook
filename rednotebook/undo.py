@@ -21,10 +21,9 @@ from collections import defaultdict
 
 
 class Action(object):
-    def __init__(self, undo_function, redo_function, tags):
+    def __init__(self, undo_function, redo_function):
         self.undo_function = undo_function
         self.redo_function = redo_function
-        self.tags = tags
 
 
 class UndoRedoManager(object):

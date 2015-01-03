@@ -51,8 +51,7 @@ class Editor(object):
         self.old_text = ''
         self.search_text = ''
 
-        # Some actions should get a break point even if not much text has been
-        # changed
+        # Some actions should get an undo point even if for small changes.
         self.force_adding_undo_point = False
 
         # spell checker
@@ -99,12 +98,14 @@ class Editor(object):
         self.day_text_buffer.handler_unblock(self.changed_connection)
         self.on_text_change(self.day_text_buffer, undoing=undoing)
 
+        self.force_adding_undo_point = False
+
     def replace_selection(self, text):
         self.force_adding_undo_point = True
-
         self.day_text_buffer.delete_selection(interactive=False,
                                               default_editable=True)
         self.day_text_buffer.insert_at_cursor(text)
+        self.force_adding_undo_point = False
 
     def replace_selection_and_highlight(self, p1, p2, p3):
         """
@@ -237,63 +238,75 @@ class Editor(object):
     def hide(self):
         self.day_text_view.hide()
 
+    def add_undo_point(self):
+        new_text = self.get_text()
+        old_text = self.old_text[:]
+
+        def undo_func():
+            self.set_text(old_text, undoing=True)
+
+        def redo_func():
+            self.set_text(new_text, undoing=True)
+
+        self.undo_redo_manager.add_action(undo.Action(undo_func, redo_func))
+        self.old_text = new_text
+
+    def last_undo_point_is_dirty(self):
+        return self.get_text() != self.old_text
+
     def on_text_change(self, textbuffer, undoing=False):
-        # Do not record changes while undoing or redoing
+        # Do not record changes while undoing or redoing.
         if undoing:
             self.old_text = self.get_text()
             return
 
-        new_text = self.get_text()
-        old_text = self.old_text[:]
-
-        #Determine whether to add a save point
-        much_text_changed = abs(len(new_text) - len(old_text)) >= 5
+        much_text_changed = abs(len(self.get_text()) - len(self.old_text)) >= 5
 
         if much_text_changed or self.force_adding_undo_point:
-
-            def undo_func():
-                self.set_text(old_text, undoing=True)
-
-            def redo_func():
-                self.set_text(new_text, undoing=True)
-
-            action = undo.Action(undo_func, redo_func, 'day_text_field')
-            self.undo_redo_manager.add_action(action)
-
-            self.old_text = new_text
-            self.force_adding_undo_point = False
+            self.add_undo_point()
 
     #===========================================================
-    # Spell check code taken from KeepNote project
+    # Spell checking.
 
     def can_spell_check(self):
-        """Returns True if spelling is available"""
+        """Return True if spell checking is available."""
         return gtkspell is not None
 
-    def enable_spell_check(self, enabled=True):
-        """Enables/disables spell check"""
+    def is_spell_check_enabled(self):
+        return self._spell_checker is not None
+
+    def _enable_spell_check(self):
+        assert self.can_spell_check()
+        assert self._spell_checker is None
+        try:
+            self._spell_checker = gtkspell.Spell(self.day_text_view)
+        except gobject.GError as err:
+            logging.error('Spell checking could not be enabled: %s' % err)
+            self._spell_checker = None
+
+    def _use_system_language_for_spell_check(self):
+        try:
+            self._spell_checker.set_language(filesystem.LANGUAGE)
+        except RuntimeError as err:
+            logging.error('Spellchecking could not be enabled for %s: %s. '
+                          'Consult built-in help for instructions '
+                          'on how to add custom dictionaries.' %
+                          (filesystem.LANGUAGE, err))
+
+    def _disable_spell_check(self):
+        self._spell_checker.detach()
+        self._spell_checker = None
+
+    def enable_spell_check(self, enable=True):
+        """Enable/disable spell check."""
         if not self.can_spell_check():
             return
 
-        if enabled:
-            if self._spell_checker is None:
-                try:
-                    self._spell_checker = gtkspell.Spell(self.day_text_view)
-                except gobject.GError as err:
-                    logging.error('Spell checking could not be enabled: "%s"' % err)
-                    self._spell_checker = None
-                if self._spell_checker:
-                    try:
-                        self._spell_checker.set_language(filesystem.LANGUAGE)
-                    except RuntimeError as err:
-                        logging.error('Spellchecking could not be enabled for %s: %s' %
-                                      (filesystem.LANGUAGE, err))
-                        logging.error('Consult built-in help for instructions '
-                                      'on how to add custom dictionaries.')
-        else:
-            if self._spell_checker is not None:
-                self._spell_checker.detach()
-                self._spell_checker = None
+        if enable and self._spell_checker is None:
+            self._enable_spell_check()
+            self._use_system_language_for_spell_check()
+        elif not enable and self._spell_checker is not None:
+            self._disable_spell_check()
 
     #===========================================================
 

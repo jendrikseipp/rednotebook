@@ -222,6 +222,9 @@ class MainMenuBar(object):
             self.main_window.uimanager.get_widget('/MainMenuBar/Edit/%s' % action).set_sensitive(edit_mode)
 
     def on_undo(self, widget):
+        editor = self.main_window.day_text_field
+        if editor.last_undo_point_is_dirty():
+            editor.add_undo_point()
         self.main_window.undo_redo_manager.undo()
 
     def on_redo(self, widget):
@@ -253,7 +256,9 @@ class MainMenuBar(object):
 
     def on_checkspelling_menuitem_toggled(self, widget):
         self.main_window.day_text_field.enable_spell_check(widget.get_active())
-        self.journal.config['spellcheck'] = int(widget.get_active())
+        enabled = self.main_window.day_text_field.is_spell_check_enabled()
+        widget.set_active(enabled)
+        self.journal.config['spellcheck'] = int(enabled)
 
     def on_options_menuitem_activate(self, widget):
         self.main_window.options_manager.on_options_dialog()
