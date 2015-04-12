@@ -45,7 +45,7 @@ class SearchComboBox(CustomComboBoxEntry):
 
     def on_entry_activated(self, entry):
         """Called when the user hits enter."""
-        search_text = entry.get_text()
+        search_text = self.get_active_text()
         self.add_entry(search_text)
         self.search(search_text)
 
