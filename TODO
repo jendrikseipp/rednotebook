@@ -15,7 +15,7 @@ X Fix undo/redo.
 x Don't add unneeded newlines around titles and code.
 
 1.x
-O Place subtags behind hashtags inside the text itself: I met #Joana and we had some coffee talking about old times# then i went to #work.
+O Place subtags behind hashtags inside the text itself: I met #Sarah and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
@@ -75,6 +75,8 @@ O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Make txt2tags faster and fix bugs
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
+O Add per-journal configuration?
+  O Per-journal fonts and size
 
 
 2.0
@@ -166,7 +168,6 @@ O Color submenu in format menu with additional color picker and color highlighti
 - Move the "update application" command into the help menu (central place for the checking is better)
 - Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
   (This will be overkill for most users and having a data subdirectory for images etc. will suffice)
-- Add per journal configuration? (This makes things more difficult for the user)
 - Open the exported file after the export? (No other program does that)
 - Monitor clipboard and add all copied stuff into RedNotebook in "clip mode" (unintuitive, KISS)
 - Generalize tags to "hierarchical tags" (This is the job of outliners)
