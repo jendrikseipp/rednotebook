@@ -8,10 +8,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 === Roadmap ===
 
 1.11
-X Fix searching (with enter) for text with non-ASCII characters.
-X Fix filtering exports by tags containing non-ASCII characters.
+X Fix searching (with enter) for text with non-ASCII characters (lp:1430697).
+X Fix filtering exports by tags containing non-ASCII characters (lp:1267263).
 X When undoing a formatting action, only remove formatting, not the text (lp:1326606).
-X Don't remove whitespace from old-style tags in autocomplete box.
+X Don't remove whitespace from old-style tags in autocomplete box (lp:1414603).
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Sarah and we had some coffee talking about old times# then i went to #work.
