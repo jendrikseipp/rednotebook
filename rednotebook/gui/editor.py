@@ -51,9 +51,6 @@ class Editor(object):
         self.old_text = ''
         self.search_text = ''
 
-        # Some actions should get an undo point even if for small changes.
-        self.force_adding_undo_point = False
-
         # spell checker
         self._spell_checker = None
         self.enable_spell_check(False)
@@ -80,8 +77,6 @@ class Editor(object):
         return self.day_text_buffer.get_text(iter_start, iter_end).decode('utf-8')
 
     def insert(self, text, iter=None, overwrite=False, undoing=False):
-        self.force_adding_undo_point = True
-
         self.day_text_buffer.handler_block(self.changed_connection)
 
         if overwrite:
@@ -97,8 +92,6 @@ class Editor(object):
 
         self.day_text_buffer.handler_unblock(self.changed_connection)
         self.on_text_change(self.day_text_buffer, undoing=undoing)
-
-        self.force_adding_undo_point = False
 
     def replace_selection(self, text):
         self.add_undo_point()
@@ -267,7 +260,7 @@ class Editor(object):
 
         much_text_changed = abs(len(self.get_text()) - len(self.old_text)) >= 5
 
-        if much_text_changed or self.force_adding_undo_point:
+        if much_text_changed:
             self.add_undo_point()
 
     #===========================================================
