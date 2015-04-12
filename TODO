@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 1.11
 X Fix searching (with enter) for text with non-ASCII characters.
+X Fix filtering exports by tags containing non-ASCII characters.
 X Don't remove whitespace from old-style tags in autocomplete box.
 
 1.x

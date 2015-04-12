@@ -253,7 +253,7 @@ class ContentsPage(AssistantPage):
             model_selected = self.selected_categories.get_model()
 
             for row in model_selected:
-                selected_categories.append(row[0])
+                selected_categories.append(row[0].decode('utf-8'))
 
             return selected_categories
 
