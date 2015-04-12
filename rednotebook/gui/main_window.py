@@ -360,7 +360,6 @@ class MainWindow(object):
         size_group.add_widget(edit_button)
         size_group.add_widget(preview_button)
 
-        # Do not forget to update the text in editor and preview respectively
         if preview:
             # Enter preview mode
             edit_scroll.hide()
@@ -377,7 +376,6 @@ class MainWindow(object):
             edit_button.hide()
 
         self.template_manager.set_template_menu_sensitive(not preview)
-        # Disable insert shortcuts in preview mode.
         self.insert_actiongroup.set_sensitive(not preview)
         self.format_actiongroup.set_sensitive(not preview)
         self.insert_button.set_sensitive(not preview)
