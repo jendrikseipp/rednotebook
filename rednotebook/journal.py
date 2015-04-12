@@ -411,7 +411,6 @@ class Journal:
 
         if not Month.same_month(new_date, old_date) or self.month is None:
             self.month = self.get_month(self.date)
-            #self.month.visited = True
 
         self.frame.set_date(self.month, self.date, self.day)
 
