@@ -132,6 +132,12 @@ O Syntax highlighting:
   - highlight.js via http://cdnjs.com/ or http://softwaremaniacs.org/soft/highlight/en/download/
   - Alternatives: prettify.js, SyntaxHighlighter
 
+O Porting strategy
+  1. txt2tags for Python 3
+  2. Remove tag panel and other cruft
+  3. PyGObject (2. makes this easier)
+  4. Python 3 (needs 1. and 3.)
+
 
 Ideas:
 
