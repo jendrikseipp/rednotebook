@@ -49,11 +49,11 @@ class CustomComboBoxEntry(object):
         self.entry = self.combo_box.get_child()
 
         # Autocompletion
-        self.entry_completion = gtk.EntryCompletion()
-        self.entry_completion.set_model(self.liststore)
-        self.entry_completion.set_minimum_key_length(1)
-        self.entry_completion.set_text_column(0)
-        self.entry.set_completion(self.entry_completion)
+        entry_completion = gtk.EntryCompletion()
+        entry_completion.set_model(self.liststore)
+        entry_completion.set_minimum_key_length(1)
+        entry_completion.set_text_column(0)
+        self.entry.set_completion(entry_completion)
 
     def add_entry(self, entry):
         self.liststore.append([entry])
