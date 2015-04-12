@@ -101,11 +101,13 @@ class Editor(object):
         self.force_adding_undo_point = False
 
     def replace_selection(self, text):
-        self.force_adding_undo_point = True
+        self.add_undo_point()
+        self.day_text_buffer.handler_block(self.changed_connection)
         self.day_text_buffer.delete_selection(interactive=False,
                                               default_editable=True)
         self.day_text_buffer.insert_at_cursor(text)
-        self.force_adding_undo_point = False
+        self.day_text_buffer.handler_unblock(self.changed_connection)
+        self.add_undo_point()
 
     def replace_selection_and_highlight(self, p1, p2, p3):
         """
@@ -238,7 +240,13 @@ class Editor(object):
     def hide(self):
         self.day_text_view.hide()
 
+    def last_undo_point_is_dirty(self):
+        return self.get_text() != self.old_text
+
     def add_undo_point(self):
+        if not self.last_undo_point_is_dirty():
+            return
+
         new_text = self.get_text()
         old_text = self.old_text[:]
 
@@ -250,9 +258,6 @@ class Editor(object):
 
         self.undo_redo_manager.add_action(undo.Action(undo_func, redo_func))
         self.old_text = new_text
-
-    def last_undo_point_is_dirty(self):
-        return self.get_text() != self.old_text
 
     def on_text_change(self, textbuffer, undoing=False):
         # Do not record changes while undoing or redoing.
