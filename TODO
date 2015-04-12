@@ -7,6 +7,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+1.11
+X Fix searching (with enter) for text with non-ASCII characters.
+X Don't remove whitespace from old-style tags in autocomplete box.
+
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Sarah and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion

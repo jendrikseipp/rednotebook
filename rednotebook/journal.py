@@ -487,7 +487,7 @@ class Journal:
 
 
     def normalize_tag(self, tag):
-        return tag.replace(' ', '').lower()
+        return tag.replace(' ', '_').lower()
 
 
     def get_entries(self, category):
