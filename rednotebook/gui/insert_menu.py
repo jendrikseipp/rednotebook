@@ -262,7 +262,7 @@ class InsertMenu(object):
         link_name_entry.set_text(sel_text)
 
         def link_entered():
-            return bool(link_location_entry.get_text())
+            return bool(link_location_entry.get_text().decode('utf-8'))
 
         def on_link_changed(widget):
             # Only make the link submittable, if text has been entered.
@@ -284,8 +284,8 @@ class InsertMenu(object):
         link_creator.hide()
 
         if response == gtk.RESPONSE_OK:
-            link_location = link_location_entry.get_text()
-            link_name = link_name_entry.get_text()
+            link_location = link_location_entry.get_text().decode('utf-8')
+            link_name = link_name_entry.get_text().decode('utf-8')
 
             if link_location and link_name:
                 return '[%s ""%s""]' % (link_name, link_location)
