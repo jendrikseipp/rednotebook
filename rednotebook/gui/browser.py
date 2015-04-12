@@ -54,11 +54,6 @@ class Browser(webkit.WebView):
             self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
             self.tmp_uri = 'file://' + self.tmp_file.name
 
-        #self.connect('notify::load-status', self._on_load_status_changed)
-
-    #def _on_load_status_changed(self, *args):
-    #    print 'LOAD STATUS CHANGED', self.get_property('load-status')
-
     def load_html_from_file(self, html):
         self.tmp_file.truncate(0)
         self.tmp_file.write(html)
