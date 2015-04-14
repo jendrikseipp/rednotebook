@@ -273,15 +273,6 @@ class Editor(object):
     def is_spell_check_enabled(self):
         return self._spell_checker is not None
 
-    def _enable_spell_check(self):
-        assert self.can_spell_check()
-        assert self._spell_checker is None
-        try:
-            self._spell_checker = gtkspell.Spell(self.day_text_view)
-        except gobject.GError as err:
-            logging.error('Spell checking could not be enabled: %s' % err)
-            self._spell_checker = None
-
     def _use_system_language_for_spell_check(self):
         try:
             self._spell_checker.set_language(filesystem.LANGUAGE)
@@ -290,6 +281,17 @@ class Editor(object):
                           'Consult built-in help for instructions '
                           'on how to add custom dictionaries.' %
                           (filesystem.LANGUAGE, err))
+
+    def _enable_spell_check(self):
+        assert self.can_spell_check()
+        assert self._spell_checker is None
+        try:
+            self._spell_checker = gtkspell.Spell(self.day_text_view)
+        except gobject.GError as err:
+            logging.error('Spell checking could not be enabled: %s' % err)
+            self._spell_checker = None
+        else:
+            self._use_system_language_for_spell_check()
 
     def _disable_spell_check(self):
         self._spell_checker.detach()
@@ -302,7 +304,6 @@ class Editor(object):
 
         if enable and self._spell_checker is None:
             self._enable_spell_check()
-            self._use_system_language_for_spell_check()
         elif not enable and self._spell_checker is not None:
             self._disable_spell_check()
 
