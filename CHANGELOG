@@ -1,3 +1,11 @@
+== 1.10.1 (2015-04-14) ==
+* When undoing a formatting action, only remove formatting, not the text (lp:1326606).
+* Fix searching with enter for text with non-ASCII characters (lp:1430697).
+* Fix filtering exports by tags containing non-ASCII characters (lp:1267263).
+* Don't remove whitespace from old-style tags in autocomplete box (lp:1414603).
+* Don't try to change spellchecking language if spellchecker is not set up (lp:1443818).
+* Don't try to access files with wrong encoding (lp:1443818).
+
 == 1.10 (2015-04-12) ==
 * Write data to temporary files first to prevent corrupted month files.
 * Add format button for monospace font. Automatically add the correct format for code blocks.
