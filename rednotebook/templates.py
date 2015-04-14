@@ -325,9 +325,7 @@ class TemplateManager(object):
 
     def get_available_template_files(self):
         path = self.dirs.template_dir
-        files = [os.path.join(path, f) for f in os.listdir(path)]
-        # Remove dirs and temporary files.
-        return [f for f in files if os.path.isfile(f) and not f.endswith('~')]
+        return [os.path.join(path, f) for f in os.listdir(path) if f.endswith('.txt')]
 
     def _escape_template_name(self, name):
         """Remove special xml chars for GUI display."""

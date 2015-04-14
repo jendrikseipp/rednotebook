@@ -13,6 +13,7 @@ X Fix filtering exports by tags containing non-ASCII characters (lp:1267263).
 X When undoing a formatting action, only remove formatting, not the text (lp:1326606).
 X Don't remove whitespace from old-style tags in autocomplete box (lp:1414603).
 X Don't try to change spellchecking language if spellchecker is not set up (lp:1443818).
+x Don't try to access files with wrong encoding (lp:1443818).
 
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Sarah and we had some coffee talking about old times# then i went to #work.
