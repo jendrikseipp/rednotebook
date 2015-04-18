@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-11-16 21:33+0100\n"
-"PO-Revision-Date: 2011-03-31 09:17+0000\n"
-"Last-Translator: Michael Moroni <michael.moroni@openmailbox.org>\n"
+"PO-Revision-Date: 2015-04-18 03:46+0000\n"
+"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-09 05:39+0000\n"
-"X-Generator: Launchpad (build 17298)\n"
+"X-Launchpad-Export-Date: 2015-04-18 05:11+0000\n"
+"X-Generator: Launchpad (build 17430)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -52,7 +52,7 @@ msgstr ""
 #: ../rednotebook/gui/main_window.py:591
 #: ../rednotebook/gui/customwidgets.py:375
 msgid "Template"
-msgstr ""
+msgstr "Ŝablono"
 
 #: ../rednotebook/gui/main_window.py:593
 msgid ""
@@ -65,19 +65,19 @@ msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:103
 msgid "Bold"
-msgstr ""
+msgstr "Grase"
 
 #: ../rednotebook/gui/format_menu.py:105
 msgid "Italic"
-msgstr ""
+msgstr "Kursive"
 
 #: ../rednotebook/gui/format_menu.py:107
 msgid "Underline"
-msgstr ""
+msgstr "Substrekite"
 
 #: ../rednotebook/gui/format_menu.py:109
 msgid "Strikethrough"
-msgstr ""
+msgstr "Trastrekite"
 
 #. ## Translators: Clear format
 #: ../rednotebook/gui/format_menu.py:112
@@ -87,12 +87,12 @@ msgstr ""
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:115
 msgid "_Format"
-msgstr ""
+msgstr "_Formato"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:401
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #: ../rednotebook/gui/format_menu.py:132
 msgid "Format the selected text or tag"
@@ -122,7 +122,7 @@ msgstr "Markoj"
 #: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
-msgstr ""
+msgstr "Vortoj"
 
 #: ../rednotebook/gui/clouds.py:246
 #, python-format
@@ -143,11 +143,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:66
 msgid "From:"
-msgstr ""
+msgstr "De:"
 
 #: ../rednotebook/gui/exports.py:68
 msgid "To:"
-msgstr ""
+msgstr "Al:"
 
 #: ../rednotebook/gui/exports.py:115
 msgid "Export currently selected text"
@@ -277,11 +277,11 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:421
 msgid "Yes"
-msgstr ""
+msgstr "Jes"
 
 #: ../rednotebook/gui/exports.py:421
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: ../rednotebook/gui/exports.py:470 ../rednotebook/gui/exports.py:476
 #, python-format
@@ -319,7 +319,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:109
 msgid "Export"
-msgstr ""
+msgstr "Eksporti"
 
 #: ../rednotebook/gui/menu.py:110
 msgid "Open the export assistant"
@@ -328,7 +328,7 @@ msgstr ""
 #. ## Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "_Sekurkopii"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:120
 msgid "_Edit"
-msgstr ""
+msgstr "_Redakti"
 
 #: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
@@ -464,24 +464,24 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:139
 msgid "Day %j"
-msgstr ""
+msgstr "Tago %j"
 
 #: ../rednotebook/gui/options.py:144
 msgid "Help"
-msgstr ""
+msgstr "Helpo"
 
 #. ## Translators: Noun
 #: ../rednotebook/gui/options.py:165
 msgid "Preview:"
-msgstr ""
+msgstr "Antaŭrigardo:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr ""
+msgstr "Elekti tiparo…"
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Elekti tiparon"
 
 #: ../rednotebook/gui/options.py:270
 msgid "Close to system tray"
@@ -537,7 +537,7 @@ msgstr ""
 
 #: ../rednotebook/gui/search.py:76
 msgid "Text"
-msgstr ""
+msgstr "Teksto"
 
 #: ../rednotebook/gui/insert_menu.py:67
 msgid "First Item"
@@ -557,7 +557,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:101
 msgid "Picture"
-msgstr ""
+msgstr "Bildo"
 
 #: ../rednotebook/gui/insert_menu.py:102
 msgid "Insert an image from the harddisk"
@@ -565,7 +565,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:104
 msgid "File"
-msgstr ""
+msgstr "Dosiero"
 
 #: ../rednotebook/gui/insert_menu.py:105
 msgid "Insert a link to a file"
@@ -574,7 +574,7 @@ msgstr ""
 #. ## Translators: Noun
 #: ../rednotebook/gui/insert_menu.py:108
 msgid "_Link"
-msgstr ""
+msgstr "_Ligilo"
 
 #: ../rednotebook/gui/insert_menu.py:109
 msgid "Insert a link to a website"
@@ -586,11 +586,11 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:115 ../rednotebook/gui/insert_menu.py:309
 msgid "Title"
-msgstr ""
+msgstr "Titolo"
 
 #: ../rednotebook/gui/insert_menu.py:117
 msgid "Line"
-msgstr ""
+msgstr "Linio"
 
 #: ../rednotebook/gui/insert_menu.py:118
 msgid "Insert a separator line"
@@ -630,7 +630,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:197
 msgid "pixels"
-msgstr ""
+msgstr "bilderoj"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
@@ -650,11 +650,11 @@ msgstr ""
 
 #: ../rednotebook/gui/categories.py:410
 msgid "Add a new entry"
-msgstr ""
+msgstr "Aldoni novan elementon"
 
 #: ../rednotebook/gui/categories.py:412
 msgid "Delete this entry"
-msgstr ""
+msgstr "Forigi tiun eron"
 
 #: ../rednotebook/journal.py:215
 msgid "Opening default journal."
@@ -675,7 +675,7 @@ msgstr ""
 
 #: ../rednotebook/journal.py:468
 msgid "Error"
-msgstr ""
+msgstr "Eraro"
 
 #: ../rednotebook/info.py:98
 msgid "Work"
@@ -812,31 +812,31 @@ msgstr ""
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
-msgstr ""
+msgstr "lundo"
 
 #: ../rednotebook/templates.py:28
 msgid "Tuesday"
-msgstr ""
+msgstr "mardo"
 
 #: ../rednotebook/templates.py:28
 msgid "Wednesday"
-msgstr ""
+msgstr "merkredo"
 
 #: ../rednotebook/templates.py:28
 msgid "Thursday"
-msgstr ""
+msgstr "ĵaŭdo"
 
 #: ../rednotebook/templates.py:29
 msgid "Friday"
-msgstr ""
+msgstr "vendredo"
 
 #: ../rednotebook/templates.py:29
 msgid "Saturday"
-msgstr ""
+msgstr "sabato"
 
 #: ../rednotebook/templates.py:29
 msgid "Sunday"
-msgstr ""
+msgstr "dimanĉo"
 
 #: ../rednotebook/templates.py:108
 msgid ""
@@ -924,7 +924,7 @@ msgstr ""
 
 #: ../rednotebook/templates.py:381
 msgid "Create New Template"
-msgstr ""
+msgstr "Krei novan ŝablonon"
 
 #: ../rednotebook/util/dates.py:56
 msgid "Incorrect date format"
@@ -940,7 +940,7 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:74 ../rednotebook/util/statistics.py:86
 msgid "Letters"
-msgstr ""
+msgstr "Literoj"
 
 #: ../rednotebook/util/statistics.py:75
 msgid "Days between first and last Entry"
@@ -956,11 +956,11 @@ msgstr ""
 
 #: ../rednotebook/util/statistics.py:85
 msgid "Lines"
-msgstr ""
+msgstr "Linioj"
 
 #: ../rednotebook/util/utils.py:114
 msgid "unknown"
-msgstr ""
+msgstr "nekonata"
 
 #: ../rednotebook/util/utils.py:129
 #, python-format
@@ -990,7 +990,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
-msgstr ""
+msgstr "Hodiaŭ"
 
 #: tmp/main_window.glade.h:4
 msgid "Go to next day (Ctrl+PageDown)"
@@ -1021,6 +1021,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Adolfo Jayme https://launchpad.net/~fitojb\n"
 "  Michael Moroni https://launchpad.net/~airon90"
 
 #: tmp/main_window.glade.h:14
@@ -1045,7 +1046,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:19
 msgid "Select a file"
-msgstr ""
+msgstr "Elektu dosieron"
 
 #: tmp/main_window.glade.h:20
 msgid "Insert Link"
@@ -1065,21 +1066,21 @@ msgstr ""
 
 #: tmp/main_window.glade.h:24
 msgid "Preferences"
-msgstr ""
+msgstr "Preferoj"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Ĝenerale</b>"
 
 #. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:28
 msgid "General"
-msgstr ""
+msgstr "Ĝenerale"
 
 #: tmp/main_window.glade.h:29
 msgid "Statistics"
-msgstr ""
+msgstr "Statistikoj"
 
 #: tmp/main_window.glade.h:30
 msgid "<b>Selected Day</b>"
