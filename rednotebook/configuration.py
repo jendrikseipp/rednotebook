@@ -54,18 +54,19 @@ class Config(dict):
         'rightDividerPosition': None,
     }
 
+    obsolete_keys = set([
+        u'useGTKMozembed', u'useWebkit', u'LD_LIBRARY_PATH',
+        u'MOZILLA_FIVE_HOME', u'cloudTabActive', u'mainFontSize',
+        u'running'
+    ])
+
+    # Allow changing the value of portable only in default.cfg.
+    suppressed_keys = set(['portable', 'user_dir'])
+
     def __init__(self, config_file):
         dict.__init__(self)
 
         self.filename = config_file
-
-        self.obsolete_keys = [
-            u'useGTKMozembed', u'useWebkit', u'LD_LIBRARY_PATH',
-            u'MOZILLA_FIVE_HOME', u'cloudTabActive', u'mainFontSize',
-            u'running']
-
-        # Allow changing the value of portable only in default.cfg
-        self.suppressed_keys = ['portable', 'user_dir']
 
         self.update(self._read_file(self.filename))
         self.save_state()
