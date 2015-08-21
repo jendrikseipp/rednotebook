@@ -1,10 +1,27 @@
 ===== Short Instructions =====
 
+=== Linux ===
+
 Install all dependencies, translate the application and run RedNotebook
 without installation:
 
 $ ./run
 
+=== Windows ===
+
+Install Python 2.7 (32-bit version), clone the repo, change into the
+"win" directory, run
+
+C:\Users\you\rednotebook\win> python create-build-env.py
+
+and follow the instruction to add ``C:\gtkbin`` to your path. Now
+change back into the rednotebook directory and run
+
+C:\Users\you\rednotebook> python rednotebook/journal.py
+
+Be sure to run using the **32-bit version** of Python! (Or else install
+the 64-bit versions of the various dependencies required for the
+project.)
 
 
 ===== Detailed Instructions =====
