@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
-# Copyright (c) 2009, 2014  Jendrik Seipp
+# Copyright (c) 2009, 2014, 2015  Jendrik Seipp
 #
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,9 +20,8 @@
 import os
 import logging
 
-from rednotebook.util import filesystem
 from rednotebook.gui import editor
-
+from rednotebook.util import filesystem
 
 
 def delete_comment(line):
@@ -31,12 +30,11 @@ def delete_comment(line):
     return line
 
 
-
 class Config(dict):
-    # mingliu and MS Mincho required for correct display of Asian fonts
-    # in preview mode on Windows
     defaults = {
         'mainFont': editor.DEFAULT_FONT,
+        # mingliu and MS Mincho are required for displaying Asian fonts
+        # in preview mode on Windows.
         'previewFont': 'Ubuntu, mingliu, MS Mincho, sans-serif',
         'closeToTray': 0,
         'checkForNewVersion': 0,
@@ -71,11 +69,9 @@ class Config(dict):
         self.update(self._read_file(self.filename))
         self.save_state()
 
-
     def save_state(self):
         ''' Save a copy of the dir to check for changes later '''
         self.old_config = self.copy()
-
 
     def _read_file(self, filename):
         content = filesystem.read_file(filename)
@@ -103,12 +99,17 @@ class Config(dict):
 
         return dictionary
 
-
     def read(self, key, default=None):
+        '''
+        Get the stored value for the given key.
+
+        If *default* is omitted, there must be a default for *key* in
+        Config.defaults. If *default* is given and there is no value
+        stored for *key*, set the stored value to *default*.
+        '''
         if default is None:
             default = self.defaults[key]
         return self.setdefault(key, default)
-
 
     def read_list(self, key, default):
         '''
@@ -128,14 +129,11 @@ class Config(dict):
         strings = [s.strip() for s in string.split()]
         return [s for s in strings if s]
 
-
     def write_list(self, key, list):
         self[key] = ', '.join(list)
 
-
     def changed(self):
         return not (self == self.old_config)
-
 
     def save_to_disk(self):
         if not self.changed():
