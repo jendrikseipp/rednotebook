@@ -51,7 +51,8 @@ class Config(dict):
         'mainFrameX': None,
         'mainFrameY': None,
         'leftDividerPosition': 250,
-        'rightDividerPosition': None # should be set with a default
+        # Use value large enough to move divider to the far right.
+        'rightDividerPosition': 10**9,
     }
 
     def __init__(self, config_file):
