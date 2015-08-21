@@ -187,7 +187,7 @@ class Cloud(HtmlView):
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)
         word_cloud = self._get_cloud_body(word_counter)
-        font = self.journal.config.read('previewFont', 'Ubuntu, sans-serif')
+        font = self.journal.config.read('previewFont')
         heading = '<h1>&#160;%s</h1>'
         parts = ['<html><head>', CLOUD_CSS % locals(), '</head>', '<body>']
         if tag_cloud:

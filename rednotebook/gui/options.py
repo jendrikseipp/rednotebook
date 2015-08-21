@@ -28,6 +28,7 @@ from rednotebook.gui.customwidgets import ActionButton
 from rednotebook.gui import editor
 from rednotebook.util import filesystem, utils, dates
 from rednotebook import info
+from rednotebook.configuration import Config
 
 
 class Option(gtk.HBox):
@@ -290,7 +291,7 @@ class OptionsManager(object):
             # Use separate fonts since the preview often doesn't support the edit font.
             FontOption(_('Edit font:'), 'mainFont'),
             TextOption(_('Preview font:'), 'previewFont',
-                       default='Ubuntu, sans-serif',
+                       default=Config.defaults['previewFont'],
                        tooltip=_('Comma-separated font names')),
             DateFormatOption(_('Date/Time format'), 'dateTimeString'),
             TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
@@ -311,11 +312,11 @@ class OptionsManager(object):
             self.main_window.cloud.update_lists()
             self.main_window.cloud.update(force_update=True)
 
-            visible = (self.config.read('closeToTray', 0) == 1)
+            visible = (self.config.read('closeToTray') == 1)
             self.main_window.tray_icon.set_visible(visible)
         else:
             # Reset some options
-            self.main_window.set_font(self.config.read('mainFont', editor.DEFAULT_FONT))
+            self.main_window.set_font(self.config.read('mainFont'))
 
         self.dialog.hide()
 

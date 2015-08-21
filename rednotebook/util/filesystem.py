@@ -78,7 +78,7 @@ class Filenames(dict):
                 self[key] = value
                 setattr(self, key, value)
 
-        self.portable = bool(config.read('portable', 0))
+        self.portable = bool(config.read('portable'))
 
         self.journal_user_dir = self.get_user_dir(config)
 
@@ -96,7 +96,7 @@ class Filenames(dict):
 
 
     def get_user_dir(self, config):
-        custom = config.read('userDir', '')
+        custom = config.read('userDir')
 
         if custom:
             # If a custom user dir has been set,

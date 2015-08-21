@@ -21,6 +21,7 @@ import os
 import logging
 
 from rednotebook.util import filesystem
+from rednotebook.gui import editor
 
 
 
@@ -32,6 +33,27 @@ def delete_comment(line):
 
 
 class Config(dict):
+    # mingliu and MS Mincho required for correct display of Asian fonts
+    # in preview mode on Windows
+    defaults = {
+        'mainFont': editor.DEFAULT_FONT,
+        'previewFont': 'Ubuntu, mingliu, MS Mincho, sans-serif',
+        'closeToTray': 0,
+        'checkForNewVersion': 0,
+        'weekNumbers': 0,
+        'portable': 0,
+        'userDir': '',
+        'firstStart': 1,
+        'spellcheck': 0,
+        'mainFrameWidth': 1024,
+        'mainFrameHeight': 700,
+        'mainFrameMaximized': 0,
+        'mainFrameX': None,
+        'mainFrameY': None,
+        'leftDividerPosition': 250,
+        'rightDividerPosition': None # should be set with a default
+    }
+
     def __init__(self, config_file):
         dict.__init__(self)
 
@@ -81,11 +103,11 @@ class Config(dict):
         return dictionary
 
 
-    def read(self, key, default):
+    def read(self, key, custom_default=None):
         if key in self:
             return self[key]
-        self[key] = default
-        return default
+        self[key] = custom_default or Config.defaults[key]
+        return self[key]
 
 
     def read_list(self, key, default):

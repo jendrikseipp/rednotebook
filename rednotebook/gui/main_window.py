@@ -100,7 +100,7 @@ class MainWindow(object):
                                         self.undo_redo_manager)
         self.day_text_field.day_text_view.grab_focus()
         can_spell_check = self.day_text_field.can_spell_check()
-        spell_check_enabled = bool(self.journal.config.read('spellcheck', 0))
+        spell_check_enabled = bool(self.journal.config.read('spellcheck'))
         for actiongroup in self.menubar_manager.uimanager.get_action_groups():
             if actiongroup.get_name() == 'MainMenuActionGroup':
                 for action in actiongroup.list_actions():
@@ -247,7 +247,7 @@ class MainWindow(object):
 
     def setup_tray_icon(self):
         self.tray_icon = gtk.StatusIcon()
-        visible = (self.journal.config.read('closeToTray', 0) == 1)
+        visible = (self.journal.config.read('closeToTray') == 1)
         self.tray_icon.set_visible(visible)
         logging.debug('Tray icon visible: %s' % visible)
 
@@ -315,7 +315,7 @@ class MainWindow(object):
         '''
         logging.debug('Main frame destroyed')
 
-        if self.journal.config.read('closeToTray', 0):
+        if self.journal.config.read('closeToTray'):
             self.hide()
         else:
             self.journal.exit()
@@ -544,8 +544,8 @@ class MainWindow(object):
 
     def load_values_from_config(self):
         config = self.journal.config
-        main_frame_width = config.read('mainFrameWidth', 1024)
-        main_frame_height = config.read('mainFrameHeight', 700)
+        main_frame_width = config.read('mainFrameWidth')
+        main_frame_height = config.read('mainFrameHeight')
 
         screen_width = gtk.gdk.screen_width()
         screen_height = gtk.gdk.screen_height()
@@ -555,12 +555,12 @@ class MainWindow(object):
 
         self.main_frame.resize(main_frame_width, main_frame_height)
 
-        if config.read('mainFrameMaximized', 0):
+        if config.read('mainFrameMaximized'):
             self.main_frame.maximize()
         else:
             # If window is not maximized, restore last position
-            x = config.read('mainFrameX', None)
-            y = config.read('mainFrameY', None)
+            x = config.read('mainFrameX')
+            y = config.read('mainFrameY')
             try:
                 x, y = int(x), int(y)
                 # Set to 0 if value is below 0
@@ -572,11 +572,11 @@ class MainWindow(object):
                 # Values have not been set or are not valid integers
                 self.main_frame.set_position(gtk.WIN_POS_CENTER)
 
-        self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition', 250))
+        self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition'))
         # By default do not show tags pane.
         self.edit_pane.set_position(config.read('rightDividerPosition', main_frame_width))
 
-        self.set_font(config.read('mainFont', editor.DEFAULT_FONT))
+        self.set_font(config.read('mainFont'))
 
     def set_font(self, font_name):
         self.day_text_field.set_font(font_name)
@@ -818,7 +818,7 @@ class Calendar(object):
         self.journal = journal
         self.calendar = calendar
 
-        week_numbers = self.journal.config.read('weekNumbers', 0)
+        week_numbers = self.journal.config.read('weekNumbers')
         if week_numbers:
             calendar.set_property('show-week-numbers', True)
 

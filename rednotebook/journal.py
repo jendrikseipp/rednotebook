@@ -186,7 +186,7 @@ class Journal:
         self.title = ''
 
         # show instructions at first start
-        self.is_first_start = self.config.read('firstStart', 1)
+        self.is_first_start = self.config.read('firstStart')
         self.config['firstStart'] = 0
         logging.info('First Start: %s' % bool(self.is_first_start))
 
@@ -214,7 +214,7 @@ class Journal:
         #self.archiver.check_last_backup_date()
 
         # Check for a new version
-        if self.config.read('checkForNewVersion', 0) == 1:
+        if self.config.read('checkForNewVersion') == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
@@ -285,7 +285,7 @@ class Journal:
 
     def convert(self, text, target, headers=None, options=None):
         options = options or {}
-        options['font'] = self.config.read('previewFont', 'Ubuntu, sans-serif')
+        options['font'] = self.config.read('previewFont')
         return markup.convert(text, target, self.dirs.data_dir, headers=headers, options=options)
 
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
