@@ -138,6 +138,22 @@ O Porting strategy
   3. PyGObject (2. makes this easier)
   4. Python 3 (needs 1. and 3.)
 
+O Move to github
+  O Update website
+  O Announce on mailing lists
+  O Code:
+    O Mark launchpad branch as abandoned.
+  O Issues:
+    O Use github-issue-importer once it is "fixed".
+  O Translations: Stick with launchpad for now.
+    O Import translations into git repo.
+  O Answers: Propose to use stackoverflow for questions? Definitely keep launchpad answers for now.
+    (https://groups.google.com/forum/#!topic/google-collections-users/m8FnCcmtC88)
+  O PPAs:
+    X Build daily from github-mirror
+    O Mark rednotebook stable PPA as inactive. Ubuntu will get new stable versions from Debian.
+  X Mailing list: Stick with launchpad mailing lists for now (maybe use google groups later).
+
 
 Ideas:
 
