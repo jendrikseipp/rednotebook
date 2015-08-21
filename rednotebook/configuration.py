@@ -104,11 +104,10 @@ class Config(dict):
         return dictionary
 
 
-    def read(self, key, custom_default=None):
-        if key in self:
-            return self[key]
-        self[key] = custom_default or Config.defaults[key]
-        return self[key]
+    def read(self, key, default=None):
+        if default is None:
+            default = self.defaults[key]
+        return self.setdefault(key, default)
 
 
     def read_list(self, key, default):
