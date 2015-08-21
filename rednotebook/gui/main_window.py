@@ -39,7 +39,6 @@ from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
 from rednotebook.gui import search
 from rednotebook.gui.editor import Editor
-from rednotebook.gui import editor
 from rednotebook.gui.clouds import Cloud
 from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
