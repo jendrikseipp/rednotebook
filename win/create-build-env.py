@@ -35,7 +35,7 @@ args = parse_args()
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 INSTALLERS_DIR = os.path.join(DIR, 'installers')
-DRIVE_C = r'C:\\'
+DRIVE_C = 'C:\\'
 SITE_PACKAGES = os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')
 SEVEN_ZIP = os.path.join(DRIVE_C, 'Program Files (x86)', '7-Zip', '7z.exe')
 if IS_LINUX:
@@ -106,4 +106,4 @@ if IS_LINUX:
         shutil.rmtree(WINE_DIR, ignore_errors=False)
 else:
     logging.info('Make sure to add the directory %s to the system PATH.' %
-        os.path.join(DRIVE_C, 'bin'))
+        os.path.join(DRIVE_C, 'gtkbin'))
