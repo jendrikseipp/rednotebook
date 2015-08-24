@@ -6,6 +6,7 @@ import os
 import shutil
 import sys
 
+import utils
 from utils import run
 
 logging.basicConfig(level=logging.INFO)
@@ -44,7 +45,10 @@ os.environ['WINEPREFIX'] = WINE_DIR
 os.mkdir(WINE_DIR)
 run(['tar', '-xzf', WINE_TARBALL, '--directory', WINE_DIR])
 
-run(['bzr', 'co', '--lightweight', BASE_DIR, WINE_RN_DIR])
+archive = '/tmp/rednotebook-archive.tar'
+run(['git', 'archive', 'HEAD', '-o', archive], cwd=BASE_DIR)
+utils.ensure_path(WINE_RN_DIR)
+run(['tar', '-xf', archive], cwd=WINE_RN_DIR)
 shutil.copy2(SPEC, WINE_SPEC)
 
 run(['wine', WINE_PYTHON, PYINSTALLER, '--workpath', WINE_BUILD,

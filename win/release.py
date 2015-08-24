@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import subprocess
 import sys
 
 from utils import run
@@ -33,11 +34,7 @@ sys.path.insert(0, RN_DIR)
 from rednotebook import info
 
 def get_rev():
-    revfile = os.path.join(RN_DIR, 'rednotebook', 'rev.py')
-    with open(revfile, 'w') as f:
-        run(['bzr', 'version-info', '--format', 'python'], stdout=f, cwd=RN_DIR)
-    from rednotebook import rev
-    return rev.version_info['revno']
+    return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=BASE_DIR)
 
 version = info.version
 if args.beta:
