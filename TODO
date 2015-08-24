@@ -7,11 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-1.10.2
-X Fix Chinese fonts in preview mode on Windows by using the fonts mingliu and MS Mincho (thanks Amos Ng).
-X Fix instructions for running RedNotebook on Windows (thanks Amos Ng).
-X Move repository from launchpad to github.
-
 1.x
 O Place subtags behind hashtags inside the text itself: I met #Sarah and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion

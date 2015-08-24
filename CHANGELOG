@@ -1,3 +1,8 @@
+== 1.10.2 (2015-08-24) ==
+* Fix Chinese fonts in preview mode on Windows by using the fonts mingliu and MS Mincho (thanks Amos Ng).
+* Fix instructions for running RedNotebook on Windows (thanks Amos Ng).
+* Move repository from launchpad to github.
+
 == 1.10.1 (2015-04-14) ==
 * When undoing a formatting action, only remove formatting, not the text (lp:1326606).
 * Fix searching with enter for text with non-ASCII characters (lp:1430697).
