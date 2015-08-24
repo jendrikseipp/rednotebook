@@ -6,7 +6,7 @@ set -u
 cd "$(dirname "$0")"
 cd ../
 
-py.test-2.7 tests
+py.test-2.7 tests || exit 1
 
 pyflakes rednotebook | grep -v "undefined name '_'" | grep -v "rednotebook/external/"
 NOTHING_FOUND=$?
