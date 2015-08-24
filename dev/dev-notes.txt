@@ -139,10 +139,10 @@ O Porting strategy
   4. Python 3 (needs 1. and 3.)
 
 O Move to github
-  O Update website
+  X Update website
   O Announce on mailing lists
-  O Code:
-    O Mark launchpad branch as abandoned.
+  X Code:
+    X Mark launchpad branch as abandoned.
   O Issues:
     O Use github-issue-importer once it is "fixed".
   O Translations: Stick with launchpad for now.
