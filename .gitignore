@@ -1,1 +1,3 @@
 *.py[cod]
+MANIFEST
+dist/
