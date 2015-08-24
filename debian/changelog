@@ -1,3 +1,12 @@
+rednotebook (1.10.2-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix Chinese fonts in preview mode on Windows by using the fonts mingliu and MS Mincho (thanks Amos Ng).
+  * Fix instructions for running RedNotebook on Windows (thanks Amos Ng).
+  * Move repository from launchpad to github.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 24 Aug 2015 13:26:22 +0200
+
 rednotebook (1.10.1-1) UNRELEASED; urgency=low
 
   * New upstream release
