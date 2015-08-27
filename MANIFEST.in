@@ -5,7 +5,7 @@ include rednotebook/images/rednotebook-icon/*.png
 include rednotebook/files/*.glade
 include rednotebook/files/*.cfg
 include CHANGELOG
-include README
+include README.md
 include README.Packagers
 include AUTHORS
 include LICENSE
