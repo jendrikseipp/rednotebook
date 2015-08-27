@@ -1,30 +1,30 @@
-===== Short Instructions =====
+# Short Instructions
 
-=== Linux ===
+## Linux
 
 Install all dependencies, translate the application and run RedNotebook
 without installation:
 
-$ ./run
+    $ ./run
 
-=== Windows ===
+## Windows
 
 Install Python 2.7 (32-bit version), clone the repo, change into the
-"win" directory, run
+`win` directory, run
 
-C:\Users\you\rednotebook\win> python create-build-env.py
+    C:\Users\you\rednotebook\win> python create-build-env.py
 
 and follow the instruction to add ``C:\gtkbin`` to your path. Now
 change back into the rednotebook directory and run
 
-C:\Users\you\rednotebook> python rednotebook/journal.py
+    C:\Users\you\rednotebook> python rednotebook/journal.py
 
 Be sure to run using the **32-bit version** of Python! (Or else install
 the 64-bit versions of the various dependencies required for the
 project.)
 
 
-===== Detailed Instructions =====
+# Detailed Instructions
 
 There are many packages available for different distributions, so you might
 want to check the Downloads page first.
@@ -35,7 +35,7 @@ but of course sometimes you want to try out the bleeding edge, hot new stuff.
 If you don't want to mess with your distribution's package system, you might
 want to just run the program, without installing it by using the command above.
 
-==== REQUIREMENTS ====
+## REQUIREMENTS
   - Python (2.6/2.7) (www.python.org)
   - PyYaml (>=3.05) (www.pyyaml.org)
   - PyGTK (>=2.16) (www.pygtk.org)
@@ -45,18 +45,18 @@ want to just run the program, without installing it by using the command above.
     - python-chardet (http://chardet.feedparser.org)
       Better recognition of file encodings
 
-==== INSTALLATION ====
+# INSTALLATION
 Please pay attention: Installing is very easy, uninstalling however can only be
 done by removing the installed files manually.
 
-$ sudo python setup.py install --record installed-files
+    $ sudo python setup.py install --record installed-files
 
 (installs into path-to-python/site-packages/ and saves a list of installed
 files in "installed-files" to make an uninstallation easier)
 
 
 
-===== THANKS =====
+# THANKS
 
 - The authors of the programs listed under 'requirements'. Remember that without
   them, RedNotebook would not be possible.
@@ -75,7 +75,7 @@ files in "installed-files" to make an uninstallation easier)
 
 
 
-===== NOTES =====
+# NOTES
 
 RedNotebook is published either under the terms of the GPL version 2 or any
 later version of the license. It includes the elib.intl module
