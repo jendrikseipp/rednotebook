@@ -296,8 +296,9 @@ class MainWindow(object):
         # Create a Menu
         menu = self.uimanager.get_widget('/TrayMenu')
 
-        menu.popup(None, None, gtk.status_icon_position_menu,
-                button, activate_time, status_icon)
+        menu.popup(
+            None, None, gtk.status_icon_position_menu, button,
+            activate_time, status_icon)
 
     def show(self):
         self.main_frame.show()
@@ -585,12 +586,13 @@ class MainWindow(object):
         def update_menu(button):
             self.template_button.set_menu(self.template_manager.get_menu())
 
-        self.template_button = customwidgets.ToolbarMenuButton(gtk.STOCK_PASTE,
-                                        self.template_manager.get_menu())
+        self.template_button = customwidgets.ToolbarMenuButton(
+            gtk.STOCK_PASTE, self.template_manager.get_menu())
         self.template_button.set_label(_('Template'))
         self.template_button.connect('show-menu', update_menu)
-        self.template_button.set_tooltip_text(_("Insert this weekday's template. "
-                        "Click the arrow on the right for more options"))
+        self.template_button.set_tooltip_text(_(
+            "Insert this weekday's template. "
+            "Click the arrow on the right for more options"))
         self.builder.get_object('edit_toolbar').insert(self.template_button, 2)
 
     def on_add_new_entry_button_clicked(self, widget):
@@ -884,7 +886,8 @@ class Calendar(object):
         cal_year, cal_month, cal_day = self.calendar.get_date()
         cal_month += 1
         if day_number not in range(1, dates.get_number_of_days(cal_year, cal_month) + 1):
-            logging.debug('Non-existent date in calendar: %s.%s.%s' %
-                        (day_number, cal_month, cal_year))
+            logging.debug(
+                'Non-existent date in calendar: %s.%s.%s' %
+                (day_number, cal_month, cal_year))
             return False
         return True

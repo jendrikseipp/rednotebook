@@ -106,8 +106,9 @@ class ImportAssistant(Assistant):
 
         self.set_title(_('Import Assistant'))
 
-        texts = [_('This Assistant lets you import notes from other applications.'),
-                _('You can check the results on the last page before any change is made.')]
+        texts = [
+            _('This Assistant lets you import notes from other applications.'),
+            _('You can check the results on the last page before any change is made.')]
         self._add_intro_page('\n'.join(texts))
 
         self.page1 = self._get_page1()
@@ -316,14 +317,15 @@ class TomboyImporter(Importer):
     NAME = _('Tomboy Notes')
     DESCRIPTION = _('Import your Tomboy notes')
     PATHTEXT = _('Select the directory containing your tomboy notes')
-    DEFAULTPATH = (os.getenv('XDG_DATA_HOME') or
+    DEFAULTPATH = (
+        os.getenv('XDG_DATA_HOME') or
         os.path.join(os.path.expanduser('~'), '.local', 'share', 'tomboy'))
     if sys.platform == 'win32':
         appdata = os.getenv('APPDATA')
         DEFAULTPATH = os.path.join(appdata, 'Tomboy', 'notes')
     elif sys.platform == 'darwin':
-        DEFAULTPATH = os.path.join(os.path.expanduser('~'),
-                            'Library', 'Application Support', 'Tomboy')
+        DEFAULTPATH = os.path.join(
+            os.path.expanduser('~'), 'Library', 'Application Support', 'Tomboy')
     PATHTYPE = 'DIR'
 
     def get_days(self, dir):
@@ -360,8 +362,9 @@ class TomboyImporter(Importer):
 
 
 def get_importers():
-    importers = [cls for name, cls in globals().items()
-                if name.endswith('Importer') and not name == 'Importer']
+    importers = [
+        cls for name, cls in globals().items()
+        if name.endswith('Importer') and not name == 'Importer']
 
     # Filter and instantiate importers.
     return [imp() for imp in importers if imp.is_available()]
@@ -399,8 +402,11 @@ if __name__ == '__main__':
     assert a_tree == a.content
 
     assert a.text == 'a_text\n\nb_text'
-    assert a.tree == {'c1': {'e1': None}, 'c2': {'e2': None, 'e3': None},
-            'c4': {'e5': None}, 'c3': {'e4': None}}, a.tree
+    assert a.tree == {
+        'c1': {'e1': None},
+        'c2': {'e2': None, 'e3': None},
+        'c4': {'e5': None},
+        'c3': {'e4': None}}, a.tree
 
     print 'ALL TESTS SUCCEEDED'
 

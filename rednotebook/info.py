@@ -114,9 +114,10 @@ tags1 = _('Tagging is easy.')
 tags2 = _('Just use #hashtags like on twitter.')
 tags_par = ' '.join([tags1, tags2])
 
-example_entry = _('Today I went to the //pet shop// and bought a **tiger**. '
-'Then we went to the --pool-- park and had a nice time playing '
-'ultimate frisbee. Afterwards we watched "__Life of Brian__".')
+example_entry = _(
+    'Today I went to the //pet shop// and bought a **tiger**. '
+    'Then we went to the --pool-- park and had a nice time playing '
+    'ultimate frisbee. Afterwards we watched "__Life of Brian__".')
 
 templates = ('Templates')
 temp1 = ('RedNotebook supports templates.')

@@ -63,9 +63,10 @@ class InsertMenu(object):
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.bullet_list = ('\n- %s\n- %s\n  - %s (%s)\n\n\n' %
-                (_('First Item'), _('Second Item'),
-                 _('Indented Item'), _('Two blank lines close the list')))
+        self.bullet_list = (
+            '\n- %s\n- %s\n  - %s (%s)\n\n\n' % (
+                _('First Item'), _('Second Item'), _('Indented Item'),
+                _('Two blank lines close the list')))
 
         self.setup()
 

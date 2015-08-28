@@ -119,7 +119,8 @@ class DatePage(AssistantPage):
         if enable_selected_text_button:
             self.selected_text_button.set_label(selected_text_label)
         else:
-            self.selected_text_button.set_label(selected_text_label + ' ' +
+            self.selected_text_button.set_label(
+                selected_text_label + ' ' +
                 _('(Only available when text is selected in edit mode)'))
             if self.selected_text_button.get_active():
                 self.selected_text_button.set_active(False)
@@ -311,9 +312,10 @@ class ExportAssistant(Assistant):
 
         self.set_title(_('Export Assistant'))
 
-        texts = [_('Welcome to the Export Assistant.'),
-                _('This wizard will help you to export your journal to various formats.'),
-                _('You can select the days you want to export and where the output will be saved.')]
+        texts = [
+            _('Welcome to the Export Assistant.'),
+            _('This wizard will help you to export your journal to various formats.'),
+            _('You can select the days you want to export and where the output will be saved.')]
         text = '\n'.join(texts)
         self._add_intro_page(text)
 
@@ -492,7 +494,8 @@ class Exporter(object):
             try:
                 __import__(module)
             except ImportError:
-                logging.info('"%s" could not be imported. '
+                logging.info(
+                    '"%s" could not be imported. '
                     'You will not be able to import %s' % (module, cls.NAME))
                 # Importer cannot be used
                 return False
@@ -518,7 +521,8 @@ class Exporter(object):
 
     @property
     def DEFAULTPATH(self):
-        return os.path.join(os.path.expanduser('~'),
+        return os.path.join(
+            os.path.expanduser('~'),
             'RedNotebook-Export_%s.%s' % (datetime.date.today(), self.EXTENSION))
 
 

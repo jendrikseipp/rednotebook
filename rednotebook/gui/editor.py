@@ -128,14 +128,14 @@ class Editor(object):
         variants = set([text, text.capitalize(), text.lower(), text.upper()])
 
         for search_text in variants:
-            iter_tuple = iter_start.forward_search(search_text,
-                                                gtk.TEXT_SEARCH_VISIBLE_ONLY)
+            iter_tuple = iter_start.forward_search(
+                search_text, gtk.TEXT_SEARCH_VISIBLE_ONLY)
 
             # When we find one variant, scroll to it and quit
             if iter_tuple:
                 # It is safer to scroll to a mark than an iter
-                mark = self.day_text_buffer.create_mark('highlight_query',
-                                            iter_tuple[0], left_gravity=False)
+                mark = self.day_text_buffer.create_mark(
+                    'highlight_query', iter_tuple[0], left_gravity=False)
                 self.day_text_view.scroll_to_mark(mark, 0)
                 self.day_text_buffer.delete_mark(mark)
                 return

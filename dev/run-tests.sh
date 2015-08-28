@@ -18,10 +18,8 @@ fi
 # Check for PEP8 errors:
 # E302: expected 2 blank lines, found 1
 # E303: too many blank lines
-# E241: multiple spaces after ':' (for t2t_highlight.py)
-# E128: continuation line under-indented for visual indent
 # E265: block comment should start with '# '
-PEP8_OPTS="--ignore=E302,E303,E241,E128,E265 --max-line-length=120"
+PEP8_OPTS="--ignore=E302,E303,E265 --max-line-length=120"
 pep8 $PEP8_OPTS --exclude=*external* rednotebook || exit 1
 
 ./dev/find-dead-code || exit 1

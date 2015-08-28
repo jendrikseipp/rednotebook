@@ -267,7 +267,8 @@ class OptionsManager(object):
         # application keeps on running in the background after it has been
         # closed. The option can still be activated in the configuration file.
         if filesystem.has_system_tray():
-            self.options.append(TickOption(_('Close to system tray'), 'closeToTray',
+            self.options.append(TickOption(
+                _('Close to system tray'), 'closeToTray',
                 tooltip=_('Closing the window will send RedNotebook to the tray')))
 
         # Automatic switching between preview and edit mode.

@@ -152,8 +152,9 @@ class MarkupBuffer(gtk.TextBuffer):
     def set_search_text(self, text):
         if not text:
             self._lang_def.highlight_rule = None
-        self._lang_def.highlight_rule = Pattern(r"(%s)" % re.escape(text),
-                            [(1, 'highlight')], name='highlight', flags='I')
+        self._lang_def.highlight_rule = Pattern(
+            r"(%s)" % re.escape(text),
+            [(1, 'highlight')], name='highlight', flags='I')
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
 
     def get_slice(self, start, end):
@@ -212,23 +213,24 @@ class MarkupBuffer(gtk.TextBuffer):
 
 
 styles = {
-    'bold':             {'weight': pango.WEIGHT_BOLD},
-    'italic':           {'style': pango.STYLE_ITALIC},
-    'underline':        {'underline': pango.UNDERLINE_SINGLE},
-    'strikethrough':    {'strikethrough': True},
-    'gray':             {'foreground': 'gray'},
-    'red':              {'foreground': 'red'},
-    'green':            {'foreground': 'darkgreen'},
-    'raw':              {'font': 'Oblique'},
-    'verbatim':         {'font': 'monospace'},
-    'tagged':           {},
-    'link':             {'foreground': 'blue',
-                         'underline': pango.UNDERLINE_SINGLE},
-    'highlight':        {'background': 'yellow'},
-    'quote':            {'background': 'gray'},
-    'tablehead':        {'background': markup.TABLE_HEAD_BG},
-    'tablerow':         {'background': '#eee'},
-    'formula':          {'style': pango.STYLE_ITALIC, 'family': 'serif'}
+    'bold': {'weight': pango.WEIGHT_BOLD},
+    'italic': {'style': pango.STYLE_ITALIC},
+    'underline': {'underline': pango.UNDERLINE_SINGLE},
+    'strikethrough': {'strikethrough': True},
+    'gray': {'foreground': 'gray'},
+    'red': {'foreground': 'red'},
+    'green': {'foreground': 'darkgreen'},
+    'raw': {'font': 'Oblique'},
+    'verbatim': {'font': 'monospace'},
+    'tagged': {},
+    'link': {
+        'foreground': 'blue',
+        'underline': pango.UNDERLINE_SINGLE},
+    'highlight': {'background': 'yellow'},
+    'quote': {'background': 'gray'},
+    'tablehead': {'background': markup.TABLE_HEAD_BG},
+    'tablerow': {'background': '#eee'},
+    'formula': {'style': pango.STYLE_ITALIC, 'family': 'serif'}
 }
 
 def add_header_styles():
@@ -240,8 +242,9 @@ def add_header_styles():
         pango.SCALE_SMALL,
     ]
     for level, size in enumerate(sizes):
-        style = {'weight': pango.WEIGHT_ULTRABOLD,
-                'scale': size}
+        style = {
+            'weight': pango.WEIGHT_ULTRABOLD,
+            'scale': size}
         name = 'title%s' % (level + 1)
         styles[name] = style
 
@@ -285,13 +288,15 @@ for level in range(1, 6):
 linebreak = Pattern(r'(%s)' % markup.REGEX_LINEBREAK, [(1, 'gray')])
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
-pic = Pattern(markup.REGEX_PIC.pattern,
-        [(1, 'gray'), (2, 'green'), (3, 'gray'), (4, 'green'), (5, 'gray'), (6, 'gray')], flags='I')
+pic = Pattern(
+    markup.REGEX_PIC.pattern,
+    [(1, 'gray'), (2, 'green'), (3, 'gray'), (4, 'green'), (5, 'gray'), (6, 'gray')], flags='I')
 
 # named local link [my file.txt ""file:///home/user/my file.txt""]
 # named link in web [heise ""http://heise.de""]
-named_link = Pattern(markup.REGEX_NAMED_LINK,
-        [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')])
+named_link = Pattern(
+    markup.REGEX_NAMED_LINK,
+    [(1, 'gray'), (2, 'link'), (3, 'gray'), (4, 'gray'), (5, 'gray')])
 
 # link http://heise.de
 # Use txt2tags link guessing mechanism by setting regex explicitly

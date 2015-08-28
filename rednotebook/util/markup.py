@@ -28,8 +28,8 @@ import pango
 # Testing
 if __name__ == '__main__':
     sys.path.insert(0, '../../')
-    logging.basicConfig(level=logging.DEBUG,
-                    format='%(levelname)-8s %(message)s',)
+    logging.basicConfig(
+        level=logging.DEBUG, format='%(levelname)-8s %(message)s',)
 
 from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
@@ -181,8 +181,8 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
 
 
     if export_categories:
-        export_string += '\n\n\n' + convert_categories_to_markup(export_categories,
-                                                            with_category_title=with_text)
+        export_string += '\n\n\n' + convert_categories_to_markup(
+            export_categories, with_category_title=with_text)
     elif with_text:
         export_string += '\n\n'
 
@@ -387,7 +387,8 @@ def convert(txt, target, data_dir, headers=None, options=None):
         result = msg
     # Unknown error, show the traceback to the user
     except:
-        result = ('<b>Error</b>: This day contains invalid '
+        result = (
+            '<b>Error</b>: This day contains invalid '
             '<a href="http://txt2tags.org/markup.html">txt2tags markup</a>. '
             'You can help us fix this by submitting a bugreport in the '
             '<a href="https://code.google.com/p/txt2tags/issues/list">'
