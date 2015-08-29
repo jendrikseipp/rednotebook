@@ -173,7 +173,6 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
         # "Export no categories" selected
         export_categories = []
 
-
     if export_categories:
         export_string += '\n\n\n' + convert_categories_to_markup(
             export_categories, with_category_title=with_text)

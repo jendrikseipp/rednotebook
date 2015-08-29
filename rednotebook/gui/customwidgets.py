@@ -213,7 +213,6 @@ class AssistantPage(gtk.VBox):
         self.header.set_markup(text)
 
 
-
 class IntroductionPage(AssistantPage):
     def __init__(self, text, *args, **kwargs):
         AssistantPage.__init__(self, *args, **kwargs)
@@ -223,13 +222,11 @@ class IntroductionPage(AssistantPage):
         self.pack_start(label)
 
 
-
 class RadioButtonPage(AssistantPage):
     def __init__(self, *args, **kwargs):
         AssistantPage.__init__(self, *args, **kwargs)
 
         self.buttons = []
-
 
     def add_radio_option(self, object, label, tooltip=''):
         sensitive = object.is_available()
@@ -250,12 +247,10 @@ class RadioButtonPage(AssistantPage):
             description.set_sensitive(sensitive)
             self.pack_start(description, False, False)
 
-
     def get_selected_object(self):
         for button in self.buttons:
             if button.get_active():
                 return button.object
-
 
 
 class PathChooserPage(AssistantPage):
@@ -271,11 +266,9 @@ class PathChooserPage(AssistantPage):
 
         self.pack_start(self.chooser)
 
-
     def _remove_filters(self):
         for filter in self.chooser.list_filters():
             self.chooser.remove_filter(filter)
-
 
     def prepare(self, porter):
         self._remove_filters()
@@ -314,15 +307,12 @@ class PathChooserPage(AssistantPage):
             self.chooser.set_current_folder(dirname)
             self.chooser.set_current_name(filename + '.' + extension)
 
-
     def get_selected_path(self):
         self.last_path = self.chooser.get_filename().decode('utf-8')
         return self.last_path
 
-
     def on_path_changed(self, widget):
         return
-
 
 
 class Assistant(gtk.Assistant):

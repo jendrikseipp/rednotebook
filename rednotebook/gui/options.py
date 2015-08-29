@@ -301,7 +301,6 @@ class OptionsManager(object):
                        tooltip=_('Allow these words with 4 letters or less')),
         ])
 
-
         self.add_all_options()
 
         response = self.dialog.run()

@@ -66,7 +66,6 @@ class MainWindow(object):
                           'older version of RedNotebook.')
             sys.exit(1)
 
-
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
@@ -232,7 +231,6 @@ class MainWindow(object):
         if event.keyval == gtk.keysyms.Escape and self.is_fullscreen:
             self.toggle_fullscreen()
 
-
     # TRAY-ICON / CLOSE --------------------------------------------------------
 
     def setup_tray_icon(self):
@@ -323,7 +321,6 @@ class MainWindow(object):
 
     # -------------------------------------------------------- TRAY-ICON / CLOSE
 
-
     def setup_stats_dialog(self):
         self.stats_dialog = self.builder.get_object('stats_dialog')
         self.stats_dialog.set_transient_for(self.main_frame)
@@ -338,7 +335,6 @@ class MainWindow(object):
         setattr(self.stats_dialog, 'day_list', day_list)
         for list in [overall_list, day_list]:
             list.set_headers_visible(False)
-
 
     # MODE-SWITCHING -----------------------------------------------------------
 
@@ -395,7 +391,6 @@ class MainWindow(object):
 
     # ----------------------------------------------------------- MODE-SWITCHING
 
-
     def setup_search(self):
         self.search_tree_view = search.SearchTreeView(self)
         self.search_tree_view.show()
@@ -449,7 +444,6 @@ class MainWindow(object):
     def on_forward_one_day_button_clicked(self, widget):
         self.journal.go_to_next_day()
 
-
     def on_browser_navigate(self, webview, frame, request):
         '''
         We want to load files and links externally
@@ -464,7 +458,6 @@ class MainWindow(object):
 
         # Stop processing that event
         return True
-
 
     def get_new_journal_dir(self, title, message):
         dir_chooser = self.builder.get_object('dir_chooser')
@@ -485,7 +478,6 @@ class MainWindow(object):
                 return None
             return new_dir.decode('utf-8')
         return None
-
 
     def show_save_error_dialog(self, exit_imminent):
         dialog = self.builder.get_object('save_error_dialog')
@@ -509,7 +501,6 @@ class MainWindow(object):
             self.journal.is_allowed_to_exit = False
         # Do nothing if user wants to exit without saving
 
-
     def add_values_to_config(self):
         config = self.journal.config
 
@@ -528,7 +519,6 @@ class MainWindow(object):
         # so we use it to sort the list ;)
         config.write_list('cloudIgnoreList', sorted(self.cloud.ignore_list))
         config.write_list('cloudIncludeList', sorted(self.cloud.include_list))
-
 
     def load_values_from_config(self):
         config = self.journal.config

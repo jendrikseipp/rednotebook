@@ -2,6 +2,7 @@ import datetime
 
 from rednotebook.gui import imports
 
+
 def test_plaintext_date_regex():
     ref_date = datetime.date(2010, 5, 8)
     for test in ['2010-05-08', '2010.05-08', '2010:05_08.TxT', '20100508.TXT']:

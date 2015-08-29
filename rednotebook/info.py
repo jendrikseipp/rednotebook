@@ -80,6 +80,7 @@ path will be used. At the first program start, this defaults to
 "$HOME/.rednotebook/data".
 '''
 
+
 def get_commandline_parser():
     parser = argparse.ArgumentParser(
         description=comments,

@@ -37,8 +37,10 @@ IS_WIN = sys.platform.startswith('win')
 def get_unicode_path(path):
     return unicode(path, ENCODING)
 
+
 def get_utf8_path(path):
     return path.encode('UTF-8')
+
 
 def has_system_tray():
     return IS_WIN  # A smarter detection is needed here ;)
@@ -94,7 +96,6 @@ class Filenames(dict):
 
         self.forbidden_dirs = [user_home_dir, self.journal_user_dir]
 
-
     def get_user_dir(self, config):
         custom = config.read('userDir')
 
@@ -113,10 +114,8 @@ class Filenames(dict):
 
         return user_dir
 
-
     def is_valid_journal_path(self, path):
         return os.path.isdir(path) and os.path.abspath(path) not in self.forbidden_dirs
-
 
     def __getattribute__(self, attr):
         user_paths = dict((
@@ -131,7 +130,6 @@ class Filenames(dict):
             return os.path.join(self.journal_user_dir, user_paths.get(attr))
 
         return dict.__getattribute__(self, attr)
-
 
 
 def read_file(filename):
@@ -191,22 +189,27 @@ def make_directory(dir):
     if not os.path.isdir(dir):
         os.makedirs(dir)
 
+
 def make_directories(dirs):
     for dir in dirs:
         make_directory(dir)
+
 
 def make_file(file, content=''):
     if not os.path.isfile(file):
         write_file(file, content)
 
+
 def make_files(file_content_pairs):
     for file, content in file_content_pairs:
         make_file(file, content)
+
 
 def make_file_with_dir(file, content):
     dir = os.path.dirname(file)
     make_directory(dir)
     make_file(file, content)
+
 
 def get_relative_path(from_dir, to_dir):
     '''
@@ -317,6 +320,7 @@ def _open_url_with_call(url, prog):
         # If everything failed, try the webbrowser
         open_url_in_browser(url)
 
+
 def open_url(url):
     '''
     Opens a file with the platform's preferred method
@@ -340,7 +344,6 @@ def open_url(url):
         _open_url_with_call(url, 'open')
     else:
         _open_url_with_call(url, 'xdg-open')
-
 
 
 if __name__ == '__main__':

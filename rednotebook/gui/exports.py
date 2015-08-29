@@ -502,7 +502,6 @@ class Exporter(object):
         '''
         return True
 
-
     def export(self):
         '''
         This function has to be implemented by all subclasses

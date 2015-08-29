@@ -23,10 +23,12 @@ import datetime
 
 one_day = datetime.timedelta(days=1)
 
+
 def get_year_and_month_from_date(date):
     year_and_month = date.strftime('%Y-%m')
     assert len(year_and_month) == 7
     return year_and_month
+
 
 def get_date_from_date_string(date_string):
     date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
@@ -35,9 +37,11 @@ def get_date_from_date_string(date_string):
 # Number of days per month (except for February in leap years)
 month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
+
 def isleap(year):
     """Return True for leap years, False for non-leap years."""
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
 
 def get_number_of_days(year, month):
     '''
@@ -45,6 +49,7 @@ def get_number_of_days(year, month):
     '''
     days = month_days[month] + (month == 2 and isleap(year))
     return days
+
 
 def format_date(format_string, date=None):
     if date is None:

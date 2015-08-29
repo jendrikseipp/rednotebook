@@ -35,6 +35,7 @@ HASHTAG_PATTERN = (
     '(%(HASHTAG_TEXT)s)' % locals())
 HASHTAG = re.compile(HASHTAG_PATTERN, flags=re.I | re.U)
 
+
 def escape_tag(tag):
     return tag.lower().replace(' ', '_')
 
@@ -120,20 +121,17 @@ class Day(object):
     def has_text(self):
         return len(self.text.strip()) > 0
 
-
     @property
     def empty(self):
         if len(self.content) == 0:
             return True
         return self.content.keys() == ['text'] and not self.has_text
 
-
     def add_category_entry(self, category, entry):
         if category in self.content:
             self.content[category][entry] = None
         else:
             self.content[category] = {entry: None}
-
 
     def merge(self, same_day):
         assert self.date == same_day.date
@@ -164,11 +162,9 @@ class Day(object):
     def categories(self):
         return self.get_category_content_pairs().keys()
 
-
     def get_entries(self, category):
         entries = self.content.get(category) or {}
         return sorted(entries.keys())
-
 
     def get_category_content_pairs(self):
         '''
@@ -187,7 +183,6 @@ class Day(object):
             pairs[tag] = []
         return pairs
 
-
     def get_words(self, with_special_chars=False):
         all_text = self.text
         for category, content in self.get_category_content_pairs().items():
@@ -200,10 +195,8 @@ class Day(object):
         words = [w.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]\\') for w in words]
         return [word for word in words if word]
 
-
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))
-
 
     def search(self, text, tags):
         """
@@ -238,7 +231,6 @@ class Day(object):
             results.extend(self.search_in_categories(text))
         return str(self), results
 
-
     def search_in_text(self, search_text):
         occurence = self.text.upper().find(search_text.upper())
 
@@ -251,7 +243,6 @@ class Day(object):
                                          occurence + len(search_text),
                                          found_text)
         return result_text
-
 
     def search_in_categories(self, text):
         results = []
@@ -266,14 +257,11 @@ class Day(object):
                 results.append(category)
         return results
 
-
     def __str__(self):
         return self.date.strftime('%Y-%m-%d')
 
-
     def __cmp__(self, other):
         return cmp(self.date, other.date)
-
 
 
 class Month(object):

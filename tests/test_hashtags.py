@@ -4,6 +4,7 @@ import re
 
 from rednotebook.data import HASHTAG_PATTERN
 
+
 def test_hashtags():
     vals = [
         ('test #hashtag', ['hashtag']),

@@ -88,7 +88,6 @@ class HtmlPrinter(object):
         self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
         self.outfile = None
 
-
     def print_html(self, html, outfile):
         self.outfile = outfile
         self.contains_mathjax = 'MathJax' in html

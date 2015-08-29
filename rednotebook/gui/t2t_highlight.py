@@ -35,6 +35,7 @@ from rednotebook.util import markup
 
 Tag = collections.namedtuple('Tag', ['start', 'end', 'name', 'rule'])
 
+
 class TagGroup(list):
     @property
     def min_start(self):
@@ -225,6 +226,7 @@ styles = {
     'formula': {'style': pango.STYLE_ITALIC, 'family': 'serif'}
 }
 
+
 def add_header_styles():
     sizes = [
         pango.SCALE_XX_LARGE,
@@ -245,6 +247,7 @@ add_header_styles()
 # Syntax definition
 
 bank = txt2tags.getRegexes()
+
 
 def get_pattern(char, style):
     # original strikethrough in txt2tags: r'--([^\s](|.*?[^\s])-*)--'
