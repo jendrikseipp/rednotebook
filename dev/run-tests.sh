@@ -8,7 +8,7 @@ cd ../
 
 py.test-2.7 tests || exit 1
 
-pyflakes rednotebook | grep -v "undefined name '_'" | grep -v "rednotebook/external/"
+pyflakes rednotebook tests | grep -v "undefined name '_'" | grep -v "rednotebook/external/"
 NOTHING_FOUND=$?
 if [ $NOTHING_FOUND == 0 ]; then
     echo Pyflake found errors.

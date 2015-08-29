@@ -1,7 +1,3 @@
-import re
-
-import pytest
-
 from rednotebook.data import Day, Month
 
 

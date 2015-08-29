@@ -4,11 +4,12 @@ import tempfile
 
 from rednotebook.util.markup import convert_to_pango, convert_from_pango, \
     convert, _convert_paths
-from rednotebook.util import filesystem
+
 
 def touch(path):
     with open(path, 'w') as f:
-        pass
+        # Silence pyflakes.
+        assert(f)
 
 
 def test_pango():
@@ -61,6 +62,7 @@ def test_images_latex():
     for markup, expected in vals:
         latex = convert(markup, 'tex', '/tmp')
         assert expected in latex
+
 
 def test_path_conversion():
     tmpdir = tempfile.gettempdir()
