@@ -23,10 +23,6 @@ def test_compare():
     assert(day > lesser_day)
     assert(day >= lesser_day)
 
-    with pytest.raises(AttributeError) as excinfo:
-        assert(day == True)
-    assert excinfo.value.message == "'bool' object has no attribute 'date'"
-
 
 def test_to_string():
     year_number = 2000
@@ -52,4 +48,3 @@ def test_hashtags():
     assert day.hashtags == ['tag_with_longer_name']
     day.text = 'abc #tag def'
     assert day.hashtags == ['tag']
-
