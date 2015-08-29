@@ -38,7 +38,7 @@ from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
 from rednotebook.gui import search
-from rednotebook.gui.editor import Editor
+from rednotebook.gui import editor
 from rednotebook.gui.clouds import Cloud
 from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
@@ -554,7 +554,7 @@ class MainWindow(object):
         # By default do not show tags pane.
         self.edit_pane.set_position(config.read('rightDividerPosition', main_frame_width))
 
-        self.set_font(config.read('mainFont'))
+        self.set_font(config.read('mainFont', editor.DEFAULT_FONT))
 
     def set_font(self, font_name):
         self.day_text_field.set_font(font_name)
@@ -642,9 +642,9 @@ class Preview(browser.HtmlView):
             gobject.idle_add(self.get_vscrollbar().set_value, y)
 
 
-class DayEditor(Editor):
+class DayEditor(editor.Editor):
     def __init__(self, *args, **kwargs):
-        Editor.__init__(self, *args, **kwargs)
+        editor.Editor.__init__(self, *args, **kwargs)
         self.day = None
         self.scrolled_win = self.day_text_view.get_parent()
 

@@ -20,7 +20,6 @@
 import os
 import logging
 
-from rednotebook.gui import editor
 from rednotebook.util import filesystem
 
 
@@ -32,7 +31,6 @@ def delete_comment(line):
 
 class Config(dict):
     defaults = {
-        'mainFont': editor.DEFAULT_FONT,
         # mingliu and MS Mincho are required for displaying Asian fonts
         # in preview mode on Windows.
         'previewFont': 'Ubuntu, mingliu, MS Mincho, sans-serif',

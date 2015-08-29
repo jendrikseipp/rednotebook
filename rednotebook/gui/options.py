@@ -316,7 +316,7 @@ class OptionsManager(object):
             self.main_window.tray_icon.set_visible(visible)
         else:
             # Reset some options
-            self.main_window.set_font(self.config.read('mainFont'))
+            self.main_window.set_font(self.config.read('mainFont', editor.DEFAULT_FONT))
 
         self.dialog.hide()
 
