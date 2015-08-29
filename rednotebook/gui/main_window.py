@@ -212,14 +212,8 @@ class MainWindow(object):
         '''
         This method actually is not responsible for the Ctrl-C etc. actions
         '''
-        self.accel_group = self.builder.get_object('accelgroup1')  # gtk.AccelGroup()
-        #self.accel_group = gtk.AccelGroup()
+        self.accel_group = self.builder.get_object('accelgroup1')
         self.main_frame.add_accel_group(self.accel_group)
-        #self.main_frame.add_accel_group()
-        #for key, signal in [('C', 'copy_clipboard'), ('V', 'paste_clipboard'),
-        #                   ('X', 'cut_clipboard')]:
-        #   self.day_text_field.day_text_view.add_accelerator(signal, self.accel_group,
-        #                   ord(key), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 
         self.main_frame.connect('key-press-event', self._on_key_press_event)
 
@@ -227,9 +221,6 @@ class MainWindow(object):
             (self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
             (self.today_button, 'clicked', '<Alt>Home'),
             (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
-            #(self.builder.get_object('undo_menuitem'), 'activate', '<Ctrl>z'),
-            #(self.builder.get_object('redo_menuitem'), 'activate', '<Ctrl>y'),
-            #(self.builder.get_object('options_menuitem'), 'activate', '<Ctrl><Alt>p'),
         ]
         for button, signal, shortcut in shortcuts:
             (keyval, mod) = gtk.accelerator_parse(shortcut)
@@ -439,9 +430,6 @@ class MainWindow(object):
         if event.changed_mask & gtk.gdk.WINDOW_STATE_MAXIMIZED:
             maximized = bool(event.new_window_state & gtk.gdk.WINDOW_STATE_MAXIMIZED)
             self.journal.config['mainFrameMaximized'] = int(maximized)
-
-        # Does not work correctly -> Track fullscreen state in program
-        #self.is_fullscreen = bool(state and gtk.gdk.WINDOW_STATE_FULLSCREEN)
 
     def toggle_fullscreen(self):
         if self.is_fullscreen:

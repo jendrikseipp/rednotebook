@@ -25,10 +25,6 @@ import tempfile
 import gtk
 import gobject
 
-# Testing
-if __name__ == '__main__':
-    sys.path.insert(0, '../../')
-
 from rednotebook.util import markup
 
 
@@ -169,7 +165,6 @@ class HtmlView(gtk.ScrolledWindow):
         self.webview = Browser()
         self.add(self.webview)
 
-        #self.webview.connect('populate-popup', self.on_populate_popup)
         self.webview.connect('button-press-event', self.on_button_press)
 
         self.search_text = ''
@@ -209,11 +204,6 @@ class HtmlView(gtk.ScrolledWindow):
         except AttributeError, err:
             logging.info(err)
 
-    def on_populate_popup(self, webview, menu):
-        '''
-        Unused
-        '''
-
     def on_button_press(self, webview, event):
         # Right mouse click
         if event.button == 3:
@@ -233,41 +223,3 @@ class HtmlView(gtk.ScrolledWindow):
             self.highlight(self.search_text)
         else:
             self.webview.set_highlight_text_matches(False)
-
-
-if __name__ == '__main__':
-    logging.getLogger('').setLevel(logging.DEBUG)
-    sys.path.insert(0, os.path.abspath("./../../"))
-    text = 'PDF export works 1 www.heise.de $\\sum i^2$'
-    html = markup.convert(text, 'xhtml', '/tmp')
-
-    win = gtk.Window()
-    win.connect("destroy", lambda w: gtk.main_quit())
-    win.set_default_size(600, 400)
-
-    vbox = gtk.VBox()
-
-    def test_export():
-        pdf_file = '/tmp/export-test.pdf'
-        print_pdf(html, pdf_file)
-        #os.system("evince " + pdf_file)
-
-    button = gtk.Button("Export")
-    button.connect('clicked', lambda button: test_export())
-    vbox.pack_start(button, False, False)
-
-    html_view = HtmlView()
-
-    def high(view, frame):
-        html_view.highlight("work")
-    html_view.webview.connect('load-finished', high)
-
-    html_view.load_html(html)
-
-    html_view.set_editable(True)
-    vbox.pack_start(html_view)
-
-    win.add(vbox)
-    win.show_all()
-
-    gtk.main()

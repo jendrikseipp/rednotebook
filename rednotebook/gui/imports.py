@@ -17,25 +17,14 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import sys
-import os
 import datetime
 import logging
+import os
 import re
+import sys
 
-import gtk
 import gobject
-
-# For testing
-import __builtin__
-if not hasattr(__builtin__, '_'):
-    __builtin__._ = lambda x: x
-
-if __name__ == '__main__':
-    sys.path.insert(0, os.path.abspath("./../../"))
-    logging.basicConfig(level=logging.DEBUG)
-
-
+import gtk
 
 from rednotebook.data import Day, Month
 from rednotebook.util import filesystem
@@ -44,6 +33,7 @@ from rednotebook.util import markup
 from rednotebook.gui.customwidgets import AssistantPage, RadioButtonPage, \
     PathChooserPage, Assistant
 
+
 class ImportDay(Day):
     '''
     text is set and retrieved with the property "text"
@@ -51,7 +41,6 @@ class ImportDay(Day):
     def __init__(self, year, month, day):
         import_month = Month(year, month)
         Day.__init__(self, import_month, day)
-
 
 
 class SummaryPage(AssistantPage):
@@ -66,7 +55,6 @@ class SummaryPage(AssistantPage):
         scrolled_window.add(self.board)
         self.pack_start(scrolled_window)
 
-
     def prepare(self, type, path):
         parts = [
             _('Import type:') + ' <b>' + type + '</b>\n',
@@ -74,7 +62,6 @@ class SummaryPage(AssistantPage):
             _('The following contents will be imported:')]
         self.set_header(''.join(parts))
         self.clear()
-
 
     def add_day(self, day):
         day_text = '====== %s ======\n%s\n\n' % (day.date, day.text)
@@ -86,16 +73,13 @@ class SummaryPage(AssistantPage):
         while gtk.events_pending():
             gtk.main_iteration()
 
-
     def clear(self):
         self.board.get_buffer().set_text('')
-
 
     def _append(self, text):
         buffer = self.board.get_buffer()
         end_iter = buffer.get_end_iter()
         buffer.insert(end_iter, text)
-
 
 
 class ImportAssistant(Assistant):
@@ -129,10 +113,8 @@ class ImportAssistant(Assistant):
         self.path = None
         self.days = []
 
-
     def run(self):
         self.show_all()
-
 
     def _on_close(self, assistant):
         '''
@@ -144,7 +126,6 @@ class ImportAssistant(Assistant):
         # We want to see the new contents of the currently loaded day
         # so reload current day
         self.journal.load_day(self.journal.date)
-
 
     def _on_prepare(self, assistant, page):
         '''
@@ -162,14 +143,12 @@ class ImportAssistant(Assistant):
             # We want the page to be shown first and the days added then
             gobject.idle_add(self.add_days)
 
-
     def add_days(self):
         self.days = []
         for day in self.importer.get_days(self.path):
             self.page3.add_day(day)
             self.days.append(day)
         self.set_page_complete(self.page3, True)
-
 
     def _get_page1(self):
         page = RadioButtonPage()
@@ -178,8 +157,6 @@ class ImportAssistant(Assistant):
             desc = importer.DESCRIPTION
             page.add_radio_option(importer, name, desc)
         return page
-
-
 
 
 class Importer(object):
@@ -212,14 +189,12 @@ class Importer(object):
         '''
         return True
 
-
     def get_days(self):
         '''
         This function has to be implemented by all subclasses
 
         It should *yield* ImportDay objects
         '''
-
 
     def _get_files(self, dir):
         '''
@@ -232,9 +207,6 @@ class Importer(object):
         files = os.listdir(dir)
         files.sort()
         return files
-
-
-
 
 
 class PlainTextImporter(Importer):
@@ -368,50 +340,3 @@ def get_importers():
 
     # Filter and instantiate importers.
     return [imp() for imp in importers if imp.is_available()]
-
-
-
-if __name__ == '__main__':
-    '''
-    Run some tests
-    '''
-
-    assistant = ImportAssistant(None)
-    assistant.set_position(gtk.WIN_POS_CENTER)
-    assistant.run()
-    gtk.main()
-
-    a = ImportDay(2010, 5, 7)
-    a.text = 'a_text'
-    a.add_category_entry('c1', 'e1')
-    a.add_category_entry('c2', 'e2')
-    a.add_category_entry('c4', 'e5')
-
-    print a.content
-
-    b = ImportDay(2010, 5, 7)
-    b.text = 'b_text'
-    b.add_category_entry('c1', 'e1')
-    b.add_category_entry('c2', 'e3')
-    b.add_category_entry('c3', 'e4')
-
-    a.merge(b)
-    a_tree = a.content.copy()
-
-    a.merge(b)
-    assert a_tree == a.content
-
-    assert a.text == 'a_text\n\nb_text'
-    assert a.tree == {
-        'c1': {'e1': None},
-        'c2': {'e2': None, 'e3': None},
-        'c4': {'e5': None},
-        'c3': {'e4': None}}, a.tree
-
-    print 'ALL TESTS SUCCEEDED'
-
-
-#plaintext_module = __import__('plaintext')
-#print dir(plaintext_module)
-#p = getattr(plaintext_module, 'aha')
-#p = plaintext_module.PlainTextImporter()

@@ -22,22 +22,14 @@ This module takes the ideas and some code from the highlighting module
 PyGTKCodeBuffer by Hannes Matuschek (http://code.google.com/p/pygtkcodebuffer/).
 """
 
+import collections
+import re
+
 import gtk
 import pango
 
-import collections
-import logging
-import os
-import re
-import sys
-
-if __name__ == '__main__':
-    sys.path.insert(0, os.path.abspath("./../../"))
-    logging.getLogger('').setLevel(logging.DEBUG)
-
 from rednotebook.data import HASHTAG
 from rednotebook.external import txt2tags
-from rednotebook.gui.browser import HtmlView
 from rednotebook.util import markup
 
 
@@ -302,8 +294,8 @@ named_link = Pattern(
 # Use txt2tags link guessing mechanism by setting regex explicitly
 link = Pattern(bank['link'], [(0, 'link')], name='link')
 
-# We do not support multiline regexes
-#blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'gray'), (2, 'verbatim'), (3, 'gray')])
+# TODO: Support multiline regexes.
+# blockverbatim = Pattern(r'^(```)\s*$\n(.*)$\n(```)\s*$', [(1, 'gray'), (2, 'verbatim'), (3, 'gray')])
 
 quote = Pattern(r'^\t+(.*)$', [(1, 'quote')])
 
@@ -347,85 +339,3 @@ def get_highlight_buffer():
     buff = MarkupBuffer(lang=lang, styles=styles)
 
     return buff
-
-# Testing
-if __name__ == '__main__':
-
-    txt = """aha**aha**
-
-**a//b//c** //a**b**c// __a**b**c__ __a//b//c__
-
-text [link 1 ""http://en.wikipedia.org/wiki/Personal_wiki#Free_software""] another text
-[link2 ""http://digitaldump.wordpress.com/projects/rednotebook/""] end
-
-pic [""/home/user/Desktop/RedNotebook pic"".png] pic [""/home/user/Desktop/RedNotebook pic"".png]
-== Main==[oho]
-= Header1 =
-== Header2 ==
-=== Header3 ===
-==== Header4 ====
-===== Header5 =====
-+++++ d +++++
-++++ c ++++
-+++ a +++
-++ b ++
- **bold**, //italic//,/italic/__underlined__, --strikethrough--
-
-[""/home/user/Desktop/RedNotebook pic"".png]
-
-[hs error.log ""file:///home/user/hs error.log""]
-```
-[heise ""http://heise.de""]
-```
-www.heise.de, andy@web.de
-
-''$a^2$''  ""über oblique""  ``code mit python``
-
-====================
-
-% list-support
-- a simple list item
-- an other
-
-
-+ An ordered list
-+ other item
-
-
-"""
-    #txt = '- an other'
-
-    search_text = 'aha'
-
-    buff = get_highlight_buffer()
-
-    buff.set_search_text(search_text)
-
-    win = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    scr = gtk.ScrolledWindow()
-
-    html_editor = HtmlView()
-
-    def change_text(widget):
-        html = markup.convert(widget.get_text(widget.get_start_iter(),
-                              widget.get_end_iter()), 'xhtml', '/tmp')
-
-        html_editor.load_html(html)
-        html_editor.highlight(search_text)
-
-    buff.connect('changed', change_text)
-
-    vbox = gtk.VBox()
-    vbox.pack_start(scr)
-    vbox.pack_start(html_editor)
-    win.add(vbox)
-    scr.add(gtk.TextView(buff))
-
-    win.set_default_size(900, 1000)
-    win.set_position(gtk.WIN_POS_CENTER)
-    win.show_all()
-    win.connect("destroy", lambda w: gtk.main_quit())
-
-    buff.set_text(txt)
-
-    gtk.main()

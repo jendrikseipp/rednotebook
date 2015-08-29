@@ -86,13 +86,13 @@ class InsertMenu(object):
 
         line = '\n====================\n'
 
-        #table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
-        #           '| 1               | more than 1     | Align left   |\n'
-        #           '|     more than 1 |               1 |   Align right |\n'
-        #           '|   more than 1   |   more than 1   |   Center   |\n'
-        #           '|| Title rows | are always | centered |\n'
-        #           '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
-        #           '|  Always use  |  at least  |  one whitespace  |\n')
+        # table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
+        #            '| 1               | more than 1     | Align left   |\n'
+        #            '|     more than 1 |               1 |   Align right |\n'
+        #            '|   more than 1   |   more than 1   |   Center   |\n'
+        #            '|| Title rows | are always | centered |\n'
+        #            '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
+        #            '|  Always use  |  at least  |  one whitespace  |\n')
 
         def tmpl(letter):
             return ''  # return ' (Ctrl+%s)' % letter
@@ -111,16 +111,16 @@ class InsertMenu(object):
                 self.get_insert_handler(self.on_insert_link)),
             ('BulletList', None, _('Bullet List'), None, None,
                 self.get_insert_handler(self.on_insert_bullet_list)),
-            #('NumberedList', None, _('Numbered List'), None, None,
-            #    self.get_insert_handler(self.on_insert_numbered_list)),
+            # ('NumberedList', None, _('Numbered List'), None, None,
+            #     self.get_insert_handler(self.on_insert_numbered_list)),
             ('Title', None, _('Title'), None, None, self.on_insert_title),
             ('Line', None, _('Line'), None,
                 _('Insert a separator line'),
                 self.get_insert_handler(lambda sel_text: line)),
-            #('Table', None, _('Table'), None, None,
-            #    self.get_insert_handler(lambda sel_text: table)),
-            #('Formula', None, _('Latex Formula'), None, None,
-            #    self.get_insert_handler(self.on_insert_formula)),
+            # ('Table', None, _('Table'), None, None,
+            #     self.get_insert_handler(lambda sel_text: table)),
+            # ('Formula', None, _('Latex Formula'), None, None,
+            #     self.get_insert_handler(self.on_insert_formula)),
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
                 self.get_insert_handler(self.on_insert_date_time)),
@@ -300,17 +300,17 @@ class InsertMenu(object):
             return '\n'.join('- %s' % row for row in sel_text.splitlines())
         return self.bullet_list
 
-    #def on_insert_numbered_list(self, sel_text):
-    #    if sel_text:
-    #        return '\n'.join('+ %s' % row for row in sel_text.splitlines())
-    #    return self.bullet_list.replace('-', '+')
+    # def on_insert_numbered_list(self, sel_text):
+    #     if sel_text:
+    #         return '\n'.join('+ %s' % row for row in sel_text.splitlines())
+    #     return self.bullet_list.replace('-', '+')
 
     def on_insert_title(self, *args):
         self.main_window.day_text_field.apply_format('title')
 
-    #def on_insert_formula(self, sel_text):
-    #    formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'
-    #    return '\\(', formula, '\\)'
+    # def on_insert_formula(self, sel_text):
+    #     formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'
+    #     return '\\(', formula, '\\)'
 
     def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')

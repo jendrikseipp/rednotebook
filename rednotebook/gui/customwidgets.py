@@ -17,12 +17,13 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import logging
 import datetime
+import logging
 import os
+import webbrowser
 
-import gtk
 import gobject
+import gtk
 
 
 class ActionButton(gtk.Button):
@@ -33,9 +34,7 @@ class ActionButton(gtk.Button):
 
 class UrlButton(ActionButton):
     def __init__(self, text, url):
-        import webbrowser
-        action = lambda x: webbrowser.open(url)
-        ActionButton.__init__(self, text, action)
+        ActionButton.__init__(self, text, lambda _: webbrowser.open(url))
 
 
 class CustomComboBoxEntry(object):
@@ -44,7 +43,6 @@ class CustomComboBoxEntry(object):
 
         self.liststore = gtk.ListStore(gobject.TYPE_STRING)
         self.combo_box.set_model(self.liststore)
-        #self.combo_box.set_wrap_width(5)
         self.combo_box.set_text_column(0)
         self.entry = self.combo_box.get_child()
 

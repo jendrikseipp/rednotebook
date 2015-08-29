@@ -56,7 +56,6 @@ class Editor(object):
         self.enable_spell_check(False)
 
         # Enable drag&drop
-        #self.day_text_view.connect('drag-drop', self.on_drop) # unneeded
         self.day_text_view.connect('drag-data-received', self.on_drag_data_received)
 
         # Sometimes making the editor window very small causes the program to freeze
@@ -263,7 +262,7 @@ class Editor(object):
         if much_text_changed:
             self.add_undo_point()
 
-    #===========================================================
+    # ===========================================================
     # Spell checking.
 
     def can_spell_check(self):
@@ -307,12 +306,7 @@ class Editor(object):
         elif not enable and self._spell_checker is not None:
             self._disable_spell_check()
 
-    #===========================================================
-
-    #def on_drop(self, widget, drag_context, x, y, timestamp):
-        #logging.info('Drop occured')
-        #self.day_text_view.emit_stop_by_name('drag-drop')
-        #return True
+    # ===========================================================
 
     def on_drag_data_received(self, widget, drag_context, x, y, selection, info, timestamp):
         # We do not want the default behaviour

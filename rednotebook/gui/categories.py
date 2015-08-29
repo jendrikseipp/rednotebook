@@ -68,7 +68,6 @@ class CategoriesTreeView(object):
 
         """ set the cell "text" attribute to column 0 - retrieve text
             from that column in tree_store"""
-        #self.tvcolumn.add_attribute(self.cell, 'text', 0)
         self.tvcolumn.add_attribute(self.cell, 'markup', 0)
 
         # make it searchable
@@ -156,10 +155,9 @@ class CategoriesTreeView(object):
         """
         Recursive Method for adding the content
         """
-        # We want to order the entries ascendingly
-        ascending = lambda (key, value): key.lower()
-
-        for key, value in sorted(element_content.iteritems(), key=ascending):
+        for key, value in sorted(
+                element_content.iteritems(),
+                key=lambda (key, value): key.lower()):
             if key is not None:
                 key_pango = markup.convert_to_pango(key)
             new_child = self.tree_store.append(parent, [key_pango])
@@ -279,8 +277,12 @@ class CategoriesTreeView(object):
             self.tree_store.append(category_iter, [entry_pango])
 
         if not undoing:
-            undo_func = lambda: self.delete_node(self.find_iter(category, entry), undoing=True)
-            redo_func = lambda: self.add_entry(category, entry, undoing=True)
+            def undo_func():
+                self.delete_node(self.find_iter(category, entry), undoing=True)
+
+            def redo_func():
+                self.add_entry(category, entry, undoing=True)
+
             action = undo.Action(undo_func, redo_func)
             self.undo_redo_manager.add_action(action)
 
@@ -368,7 +370,7 @@ class CategoriesTreeView(object):
         @param widget - gtk.TreeView - The Tree View
         @param event - gtk.gdk.event - Event information
         """
-        #Get the path at the specific mouse position
+        # Get the path at the specific mouse position.
         path = widget.get_path_at_pos(int(event.x), int(event.y))
         if (path is None):
             """If we didn't get a path then we don't want anything
@@ -385,7 +387,7 @@ class CategoriesTreeView(object):
         delete_entry_item.set_sensitive(something_selected)
 
         if (event.button == 3):
-            #This is a right-click
+            # This is a right-click.
             self.context_menu.popup(None, None, None, event.button, event.time)
 
     def _get_context_menu(self):
@@ -462,8 +464,8 @@ class CategoriesTreeView(object):
         new_width = allocation.width - sum(c.get_width() for c in other_columns)
         new_width -= treeview.style_get_property("horizontal-separator") * 2
 
-        ## Customize for treeview with expanders
-        ## The behaviour can only be fitted to one depth -> take the second one
+        # Customize for treeview with expanders.
+        # The behaviour can only be fitted to one depth -> take the second one.
         new_width -= treeview.style_get_property('expander-size') * 3
 
         if cell.props.wrap_width == new_width or new_width <= 0:
@@ -476,5 +478,5 @@ class CategoriesTreeView(object):
             iter = store.iter_next(iter)
         treeview.set_size_request(0, -1)
 
-        ## The heights may have changed
+        # The heights may have changed.
         column.queue_resize()

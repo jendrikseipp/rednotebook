@@ -17,19 +17,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import sys
-import os
-import logging
 import datetime
+import logging
+import os
 
-import gtk
 import gobject
-
-if __name__ == '__main__':
-    sys.path.insert(0, os.path.abspath("./../../"))
-    logging.basicConfig(level=logging.DEBUG)
-    from rednotebook.journal import Journal
-
+import gtk
 
 from rednotebook.util import filesystem
 from rednotebook.util import markup
@@ -276,7 +269,6 @@ class ContentsPage(AssistantPage):
         self.assistant.set_page_complete(self.assistant.page3, correct)
 
 
-
 class SummaryPage(AssistantPage):
     def __init__(self, *args, **kwargs):
         AssistantPage.__init__(self, *args, **kwargs)
@@ -300,7 +292,6 @@ class SummaryPage(AssistantPage):
         for setting in self.settings:
             self.remove(setting)
         self.settings = []
-
 
 
 class ExportAssistant(Assistant):
@@ -471,12 +462,10 @@ class ExportAssistant(Assistant):
         filesystem.write_file(self.path, export_string)
         self.journal.show_message(_('Content exported to %s') % self.path)
 
-
     def export_pdf(self):
         logging.info('Exporting to PDF')
         browser.print_pdf(self.get_export_string('xhtml'), self.path)
         self.journal.show_message(_('Content exported to %s') % self.path)
-
 
 
 class Exporter(object):
@@ -528,28 +517,24 @@ class Exporter(object):
 
 class PlainTextExporter(Exporter):
     NAME = _('Plain Text')
-    #DESCRIPTION = 'Export journal to a plain textfile'
     EXTENSION = 'txt'
     FORMAT = 'txt'
 
 
 class HtmlExporter(Exporter):
     NAME = 'HTML'
-    #DESCRIPTION = 'Export journal to HTML'
     EXTENSION = 'html'
     FORMAT = 'xhtml'
 
 
 class LatexExporter(Exporter):
     NAME = 'Latex'
-    #DESCRIPTION = 'Create a tex file'
     EXTENSION = 'tex'
     FORMAT = 'tex'
 
 
 class PdfExporter(Exporter):
     NAME = 'PDF'
-    #DESCRIPTION = 'Create a PDF file'
     EXTENSION = 'pdf'
     FORMAT = 'pdf'
 
@@ -565,22 +550,9 @@ class PdfExporter(Exporter):
         return browser.can_print_pdf()
 
 
-
-
 def get_exporters():
     exporters = [PlainTextExporter, HtmlExporter, LatexExporter, PdfExporter]
 
     # Instantiate importers
     exporters = map(lambda exporter: exporter(), exporters)
     return exporters
-
-
-
-if __name__ == '__main__':
-    '''
-    Run some tests
-    '''
-    assistant = ExportAssistant(Journal())
-    assistant.set_position(gtk.WIN_POS_CENTER)
-    assistant.run()
-    gtk.main()

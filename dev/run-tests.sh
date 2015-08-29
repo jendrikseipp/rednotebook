@@ -18,8 +18,10 @@ fi
 # Check for PEP8 errors:
 # E302: expected 2 blank lines, found 1
 # E303: too many blank lines
-PEP8_OPTS="--ignore=E302,E303 --max-line-length=120"
-pep8 $PEP8_OPTS --exclude=*external* rednotebook || exit 1
+# E402: module level import not at top of file
+PEP8_OPTS="--max-line-length=120"
+pep8 $PEP8_OPTS --ignore=E302,E303 --exclude=external,journal.py rednotebook || exit 1
+pep8 $PEP8_OPTS --ignore=E302,E303,E402 rednotebook/journal.py || exit 1
 
 ./dev/find-dead-code || exit 1
 

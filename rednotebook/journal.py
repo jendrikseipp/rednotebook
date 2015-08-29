@@ -17,26 +17,24 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import sys
-import datetime
-import os
-import time
-import itertools
-import logging
-import locale
 from collections import defaultdict
+import datetime
+import itertools
+import locale
+import logging
+import os
+import sys
+import time
 
 
-# Use basic stdout logging before we can initialize logging correctly
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(levelname)-8s %(message)s',
-                    stream=sys.stdout)
+# Use basic stdout logging before we can initialize logging correctly.
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(levelname)-8s %(message)s',
+    stream=sys.stdout)
 
-
-# Allow importing from rednotebook package
 if hasattr(sys, "frozen"):
     from rednotebook.util import filesystem
-    assert filesystem  # silence pyflakes
 else:
     from util import filesystem
 
@@ -153,7 +151,6 @@ except (ImportError, AssertionError), e:
     sys.exit(1)
 
 
-# This version of import is needed for win32 to work
 from rednotebook.util import dates
 from rednotebook import backup
 

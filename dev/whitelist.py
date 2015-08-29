@@ -1,5 +1,10 @@
+import __builtin__
+
 import os.path
 import sys
+
+if not hasattr(__builtin__, '_'):
+    __builtin__._ = lambda x: x
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
@@ -16,6 +21,7 @@ cell = gtk.CellRendererText()
 cell.props.wrap_mode
 
 from rednotebook.gui import imports
+imports.ImportAssistant
 imports.PlainTextImporter
 imports.RedNotebookBackupImporter
 imports.TomboyImporter

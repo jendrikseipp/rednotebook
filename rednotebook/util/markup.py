@@ -25,12 +25,6 @@ import sys
 import gobject
 import pango
 
-# Testing
-if __name__ == '__main__':
-    sys.path.insert(0, '../../')
-    logging.basicConfig(
-        level=logging.DEBUG, format='%(levelname)-8s %(message)s',)
-
 from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
 from rednotebook.util import filesystem
@@ -250,7 +244,6 @@ def _get_config(target, options):
 
         # For images we have to omit the file:// prefix
         config['postproc'].append([r'includegraphics\{(.*)"%s' % scheme, r'includegraphics{"\1'])
-        #config['postproc'].append([r'includegraphics\{"file://', r'includegraphics{"'])
 
         # Special handling for LOCAL file links (Omit scheme, add run:)
         # \htmladdnormallink{file.txt}{file:///home/user/file.txt}
@@ -484,10 +477,3 @@ def convert_from_pango(pango_markup):
     logging.log(5, 'Converted "%s" pango to "%s" txt2tags' %
                 (repr(original_txt), repr(pango_markup)))
     return pango_markup
-
-
-if __name__ == '__main__':
-    from rednotebook.util.utils import show_html_in_browser
-    markup = 'Aha\n\tThis is a quote. It looks very nice. Even with many lines'
-    html = convert(markup, 'xhtml', '/tmp')
-    show_html_in_browser(html, '/tmp/test.html')
