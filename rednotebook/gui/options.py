@@ -161,7 +161,7 @@ class DateFormatOption(ComboBoxOption):
     def on_format_changed(self, widget):
         format_string = self.get_value()
         date_string = dates.format_date(format_string)
-        ### Translators: Noun
+        # Translators: Noun
         label_text = u'%s %s' % (_('Preview:'), date_string)
         self.preview.set_text(label_text)
 

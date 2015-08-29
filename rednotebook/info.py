@@ -101,10 +101,10 @@ dishes = _('Wash the dishes')
 greeting = _('Hello!')
 intro = _('Some example text has been added to help you start and '
           'you can erase it whenever you like.')
-### Translators: "Help" -> noun
+# Translators: "Help" -> noun
 help_par = _('The example text and more documentation is available under "Help" -> "Contents".')
 
-### Translators: noun
+# Translators: noun
 preview = _('Preview')
 preview1 = _('There are two modes in RedNotebook, the __edit__ mode and the __preview__ mode.')
 preview2 = _('Click on Edit above to see the difference.')
@@ -126,7 +126,7 @@ temp3 = ('''You can have one template for every day
 of the week and unlimited arbitrarily named templates.''')
 temp_par = ' '.join([temp1, temp2, temp3])
 
-### Translators: both are verbs
+# Translators: both are verbs
 save = _('Save and Export')
 save1 = _('Everything you enter will be saved automatically at regular intervals and when you exit the program.')
 save2 = _('To avoid data loss you should backup your journal regularly.')

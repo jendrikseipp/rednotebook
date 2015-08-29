@@ -14,9 +14,9 @@ intltool-extract --local --type=gettext/glade ../rednotebook/files/main_window.g
 # Remove gtk-ok and gtk-cancel lines
 sed -i '/"gtk-/d' tmp/main_window.glade.h
 
-# Replace "/* abc */" with "### abc"
+# Replace "/* abc */" with "# Translators: abc"
 # The first character after the s is the separation character (!)
-sed -i 's!/\*!###!g' tmp/main_window.glade.h
+sed -i 's!/\*!# Translators:!g' tmp/main_window.glade.h
 sed -i 's!\*/!!g' tmp/main_window.glade.h
 
 # Get strings from both glade helper file and the python files
@@ -28,7 +28,7 @@ xgettext    --output=rednotebook.pot \
             --language=Python \
             --keyword=_ \
             --keyword=N_ \
-            --add-comments=\#\# \
+            --add-comments=\ Translators \
             --from-code=utf-8 \
             --files-from=sourcefiles.txt \
             tmp/main_window.glade.h

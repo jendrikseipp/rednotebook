@@ -71,7 +71,7 @@ def _load_month_from_disk(path, year_number, month_number):
     If an error occurs, return None
     '''
     try:
-        # Try to read the contents of the file
+        # Try to read the contents of the file.
         with codecs.open(path, 'rb', encoding='utf-8') as month_file:
             logging.debug('Loading file "%s"' % path)
             month_contents = yaml.load(month_file, Loader=Loader)
@@ -80,12 +80,12 @@ def _load_month_from_disk(path, year_number, month_number):
     except yaml.YAMLError, exc:
         logging.error('Error in file %s:\n%s' % (path, exc))
     except IOError:
-        #If that fails, there is nothing to load, so just display an error message
+        # If that fails, there is nothing to load, so just display an error message.
         logging.error('Error: The file %s could not be read' % path)
     except Exception:
         logging.error('An error occured while reading %s:' % path)
         raise
-    # If we continued here, the possibly corrupted file would be overwritten
+    # If we continued here, the possibly corrupted file would be overwritten.
     sys.exit(1)
 
 

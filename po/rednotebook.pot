@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-29 13:21+0200\n"
+"POT-Creation-Date: 2015-08-29 14:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,12 +87,12 @@ msgstr ""
 msgid "Clear format"
 msgstr ""
 
-#. ## Translators: Noun
+#. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
 msgid "_Format"
 msgstr ""
 
-#. ## Translators: Noun
+#. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:403
 msgid "Format"
 msgstr ""
@@ -316,10 +316,10 @@ msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
 
-#. ## Translators: Verb
+#. Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
 #. None, _('Open the import assistant'), self.on_import_menu_item_activate),
-#. ## Translators: Verb
+#. Translators: Verb
 #: ../rednotebook/gui/menu.py:109
 msgid "Export"
 msgstr ""
@@ -328,7 +328,7 @@ msgstr ""
 msgid "Open the export assistant"
 msgstr ""
 
-#. ## Translators: Verb
+#. Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
 msgstr ""
@@ -405,7 +405,7 @@ msgstr ""
 msgid "Wrong directory"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:207
+#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:206
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
@@ -473,7 +473,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#. ## Translators: Noun
+#. Translators: Noun
 #: ../rednotebook/gui/options.py:165
 msgid "Preview:"
 msgstr ""
@@ -574,7 +574,7 @@ msgstr ""
 msgid "Insert a link to a file"
 msgstr ""
 
-#. ## Translators: Noun
+#. Translators: Noun
 #: ../rednotebook/gui/insert_menu.py:109
 msgid "_Link"
 msgstr ""
@@ -659,7 +659,7 @@ msgstr ""
 msgid "Delete this entry"
 msgstr ""
 
-#: ../rednotebook/journal.py:208
+#: ../rednotebook/journal.py:207
 msgid "Opening default journal."
 msgstr ""
 
@@ -706,15 +706,15 @@ msgid ""
 "whenever you like."
 msgstr ""
 
-#. ## Translators: "Help" -> noun
+#. Translators: "Help" -> noun
 #: ../rednotebook/info.py:105
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
 
-#. ## Translators: noun
-#. ## Verb
+#. Translators: noun
+#. Translators: Verb
 #: ../rednotebook/info.py:108 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr ""
@@ -744,7 +744,7 @@ msgid ""
 "watched \"__Life of Brian__\"."
 msgstr ""
 
-#. ## Translators: both are verbs
+#. Translators: both are verbs
 #: ../rednotebook/info.py:130
 msgid "Save and Export"
 msgstr ""
@@ -1011,7 +1011,7 @@ msgstr ""
 msgid "Add Tag"
 msgstr ""
 
-#. ## TRANSLATORS: Replace this string with your names, one name per line.
+#. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:13
 msgid "translator-credits"
 msgstr ""
@@ -1060,12 +1060,12 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
+#. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
 msgstr ""
 
-#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
+#. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:28
 msgid "General"
 msgstr ""

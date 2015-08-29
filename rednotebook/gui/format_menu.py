@@ -98,7 +98,7 @@ class FormatMenu(object):
                     _('No text or tag has been selected.'), error=True)
 
         def shortcut(char):
-            ### Translators: The Control (Ctrl) key
+            # Translators: The Control (Ctrl) key
             return ''  # return ' (%s+%s)' % (_('Ctrl'), char)
 
         # Create actions
@@ -115,7 +115,7 @@ class FormatMenu(object):
              '<Control>K', None, apply_format),
             ('Clear', gtk.STOCK_CLEAR, _('Clear format') + shortcut('R'),
              '<Control>R', None, self.on_clear_format),
-            ### Translators: Noun
+            # Translators: Noun
             ('FormatMenuBar', None, _('_Format')),
         ]
 
@@ -131,7 +131,7 @@ class FormatMenu(object):
         menu = uimanager.get_widget('/FormatMenu')
 
         self.main_window.format_button = customwidgets.ToolbarMenuButton(gtk.STOCK_BOLD, menu)
-        ### Translators: Noun
+        # Translators: Noun
         self.main_window.format_button.set_label(_('Format'))
         tip = _('Format the selected text or tag')
         self.main_window.format_button.set_tooltip_text(tip)

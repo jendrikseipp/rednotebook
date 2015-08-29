@@ -105,7 +105,7 @@ class InsertMenu(object):
             ('File', gtk.STOCK_FILE, _('File'), None,
                 _('Insert a link to a file'),
                 self.get_insert_handler(self.on_insert_file)),
-            ### Translators: Noun
+            # Translators: Noun
             ('Link', gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L',
                 _('Insert a link to a website'),
                 self.get_insert_handler(self.on_insert_link)),

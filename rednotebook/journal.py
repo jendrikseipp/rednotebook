@@ -45,7 +45,7 @@ base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
 sys.path.insert(0, base_dir)
 
 
-## ---------------------- Enable i18n -------------------------------
+# ---------------------- Enable i18n -------------------------------
 
 from rednotebook.external import elibintl
 
@@ -71,7 +71,7 @@ except locale.Error, err:
     if not hasattr(__builtin__, '_'):
         __builtin__.__dict__['_'] = lambda s: s
 
-## ------------------- end Enable i18n -------------------------------
+# ------------------- end Enable i18n -------------------------------
 
 
 from rednotebook.util import utils
@@ -83,7 +83,7 @@ from rednotebook import data
 
 args = info.get_commandline_parser().parse_args()
 
-## ---------------------- Enable logging -------------------------------
+# ---------------------- Enable logging -------------------------------
 
 def setup_logging(log_file):
     file_logging_stream = open(log_file, 'w')
@@ -126,7 +126,7 @@ default_config = configuration.Config(default_config_file)
 dirs = filesystem.Filenames(default_config)
 setup_logging(dirs.log_file)
 
-## ------------------ end Enable logging -------------------------------
+# ------------------ end Enable logging -------------------------------
 
 logging.info('System encoding: %s' % filesystem.ENCODING)
 logging.info('Language code: %s' % filesystem.LANGUAGE)
@@ -147,7 +147,6 @@ try:
     # only gobject.threads_init(): pdf export works, gui works
     # both: pdf export works, gui hangs afterwards
     gobject.threads_init()  # only initializes threading in the glib/gobject module
-    #gtk.gdk.threads_init()  # also initializes the gdk threads
 except (ImportError, AssertionError), e:
     logging.error(e)
     logging.error('gtk not found. Please install PyGTK (python-gtk2)')
@@ -211,7 +210,8 @@ class Journal:
         self.open_journal(journal_path)
 
         self.archiver = backup.Archiver(self)
-        #self.archiver.check_last_backup_date()
+        # TODO: Enable backup check.
+        # self.archiver.check_last_backup_date()
 
         # Check for a new version
         if self.config.read('checkForNewVersion') == 1:
@@ -597,8 +597,6 @@ def main():
         logging.debug('Trying to enter the gtk main loop')
         gtk.main()
     except KeyboardInterrupt:
-        # 'Interrupt'
-        #journal.save_to_disk()
         sys.exit()
 
 
