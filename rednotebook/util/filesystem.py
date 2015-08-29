@@ -344,11 +344,3 @@ def open_url(url):
         _open_url_with_call(url, 'open')
     else:
         _open_url_with_call(url, 'xdg-open')
-
-
-if __name__ == '__main__':
-    dirs = ['/home/my journal', '/my journal/', r'C:\\Dok u E\journal',
-            '/home/name/journal', '/']
-    for dir in dirs:
-        title = get_journal_title(dir)
-        print '%s -> %s' % (dir, title)
