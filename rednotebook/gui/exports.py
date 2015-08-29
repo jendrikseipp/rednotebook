@@ -397,7 +397,9 @@ class ExportAssistant(Assistant):
                 start_date, end_date = self.page2.get_date_range()
                 if start_date == end_date:
                     self.page5.add_setting(_('Date'), start_date)
-                    self.page5.add_setting(_('Export selected text only'), self.yes_no(self.export_selected_text))
+                    self.page5.add_setting(
+                        _('Export selected text only'),
+                        self.yes_no(self.export_selected_text))
                 else:
                     self.page5.add_setting(_('Start date'), start_date)
                     self.page5.add_setting(_('End date'), end_date)

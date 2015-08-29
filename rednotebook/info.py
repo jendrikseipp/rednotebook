@@ -128,7 +128,9 @@ temp_par = ' '.join([temp1, temp2, temp3])
 
 # Translators: both are verbs
 save = _('Save and Export')
-save1 = _('Everything you enter will be saved automatically at regular intervals and when you exit the program.')
+save1 = _(
+    'Everything you enter will be saved automatically at regular '
+    'intervals and when you exit the program.')
 save2 = _('To avoid data loss you should backup your journal regularly.')
 save3 = _('"Backup" in the "Journal" menu saves all your entered data in a zip file.')
 save4 = _('In the "Journal" menu you also find the "Export" button.')
