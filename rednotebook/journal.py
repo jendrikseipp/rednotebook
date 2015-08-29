@@ -83,6 +83,7 @@ args = info.get_commandline_parser().parse_args()
 
 # ---------------------- Enable logging -------------------------------
 
+
 def setup_logging(log_file):
     file_logging_stream = open(log_file, 'w')
 
@@ -217,7 +218,6 @@ class Journal:
         # Automatically save the content after a period of time
         gobject.timeout_add_seconds(600, self.save_to_disk)
 
-
     def get_journal_path(self):
         '''
         Retrieve the path from optional args or return standard value if args
@@ -319,7 +319,6 @@ class Journal:
         # tell gobject to keep saving the content in regular intervals
         return True
 
-
     def open_journal(self, data_dir):
         if not os.path.exists(data_dir):
             logging.warning('The dir %s does not exist. Select a different dir.'
@@ -388,7 +387,6 @@ class Journal:
 
         return self.months[year_and_month]
 
-
     def save_old_day(self):
         '''Order is important'''
         old_content = self.day.content
@@ -401,7 +399,6 @@ class Journal:
 
         self.frame.calendar.set_day_edited(self.date.day, not self.day.empty)
 
-
     def load_day(self, new_date):
         old_date = self.date
         self.date = new_date
@@ -412,7 +409,6 @@ class Journal:
         self.frame.set_date(self.month, self.date, self.day)
 
         self.set_frame_title()
-
 
     def merge_days(self, days):
         '''
@@ -426,11 +422,9 @@ class Journal:
             old_day.merge(new_day)
             month.edited = True
 
-
     @property
     def day(self):
         return self.month.get_day(self.date.day)
-
 
     def change_date(self, new_date):
         if new_date < datetime.date(1900, 1, 1):
@@ -444,7 +438,6 @@ class Journal:
         self.save_old_day()
         self.load_day(new_date)
 
-
     def go_to_next_day(self):
         next_date = self.date + dates.one_day
         following_edited_days = self.get_days_in_date_range(start_date=next_date)
@@ -452,14 +445,12 @@ class Journal:
             next_date = following_edited_days[0].date
         self.change_date(next_date)
 
-
     def go_to_prev_day(self):
         prev_date = self.date - dates.one_day
         previous_edited_days = self.get_days_in_date_range(end_date=prev_date)
         if previous_edited_days:
             prev_date = previous_edited_days[-1].date
         self.change_date(prev_date)
-
 
     def show_message(self, msg, title=None, error=False):
         if error and not title:
@@ -475,16 +466,13 @@ class Journal:
         self.frame.show_message(title, msg, msg_type)
         logging.log(log_level, '%s. %s' % (title, msg) if title else msg)
 
-
     @property
     def categories(self):
         return list(sorted(set(itertools.chain.from_iterable(
             day.categories for day in self.days)), cmp=locale.strcoll))
 
-
     def normalize_tag(self, tag):
         return tag.replace(' ', '_').lower()
-
 
     def get_entries(self, category):
         entries = set()
@@ -492,14 +480,12 @@ class Journal:
             entries |= set(day.get_entries(category))
         return sorted(entries)
 
-
     def search(self, text, tags):
         days = self.get_days_with_tags(tags)
         results = []
         for day in reversed(days):
             results.append(day.search(text, tags))
         return results
-
 
     def get_days_with_tags(self, tags):
         if not tags:
@@ -510,7 +496,6 @@ class Journal:
             if all(tag in day_tags for tag in tags):
                 days.append(day)
         return days
-
 
     def get_word_count_dict(self):
         '''
@@ -524,7 +509,6 @@ class Journal:
             for word in words:
                 word_dict[word.lower()] += 1
         return word_dict
-
 
     @property
     def days(self):
@@ -547,7 +531,6 @@ class Journal:
         days = sorted(days, key=lambda day: day.date)
         return days
 
-
     def get_days_in_date_range(self, start_date=None, end_date=None):
         if not start_date:
             start_date = datetime.date.min
@@ -567,7 +550,6 @@ class Journal:
                 break
         return days_in_date_range
 
-
     def add_instruction_content(self):
         self.change_date(datetime.date.today())
         current_date = self.date
@@ -580,7 +562,6 @@ class Journal:
             self.go_to_next_day()
 
         self.change_date(current_date)
-
 
 
 def main():
