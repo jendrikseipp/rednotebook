@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-11-16 21:33+0100\n"
+"POT-Creation-Date: 2015-08-29 14:06+0200\n"
 "PO-Revision-Date: 2013-11-17 07:46+0000\n"
 "Last-Translator: freedomrun <Unknown>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-09 05:39+0000\n"
-"X-Generator: Launchpad (build 17298)\n"
+"X-Launchpad-Export-Date: 2015-09-17 05:15+0000\n"
+"X-Generator: Launchpad (build 17737)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -43,7 +43,7 @@ msgstr "Pitaj prilikom sljedećeg pokretanja"
 msgid "Never ask again"
 msgstr "Više ne pitaj"
 
-#: ../rednotebook/gui/main_window.py:282
+#: ../rednotebook/gui/main_window.py:285
 msgid "Show RedNotebook"
 msgstr "Prikaži RedNotebook"
 
@@ -56,47 +56,50 @@ msgstr "Nema odabrane mape."
 msgid "Template"
 msgstr "Predložak"
 
-#: ../rednotebook/gui/main_window.py:593
+#: ../rednotebook/gui/main_window.py:594
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr "Umetni predložak za danas. Klikni na strelicu desno za više opcija"
 
-#: ../rednotebook/gui/format_menu.py:94
+#: ../rednotebook/gui/format_menu.py:98
 msgid "No text or tag has been selected."
 msgstr "Nije odabran tekst niti oznaka."
 
-#: ../rednotebook/gui/format_menu.py:103
+#: ../rednotebook/gui/format_menu.py:106
 msgid "Bold"
 msgstr "Podebljano"
 
-#: ../rednotebook/gui/format_menu.py:105
+#: ../rednotebook/gui/format_menu.py:108
 msgid "Italic"
 msgstr "Nakošeno"
 
-#: ../rednotebook/gui/format_menu.py:107
+#: ../rednotebook/gui/format_menu.py:110
+msgid "Monospace"
+msgstr ""
+
+#: ../rednotebook/gui/format_menu.py:112
 msgid "Underline"
 msgstr "Podcrtano"
 
-#: ../rednotebook/gui/format_menu.py:109
+#: ../rednotebook/gui/format_menu.py:114
 msgid "Strikethrough"
 msgstr "Precrtano"
 
-#. ## Translators: Clear format
-#: ../rednotebook/gui/format_menu.py:112
-msgid "Clear"
-msgstr "Očisti"
+#: ../rednotebook/gui/format_menu.py:116
+msgid "Clear format"
+msgstr ""
 
-#. ## Translators: Noun
-#: ../rednotebook/gui/format_menu.py:115
+#. Translators: Noun
+#: ../rednotebook/gui/format_menu.py:119
 msgid "_Format"
 msgstr "_Format"
 
-#. ## Translators: Noun
-#: ../rednotebook/gui/format_menu.py:131 ../rednotebook/gui/exports.py:401
+#. Translators: Noun
+#: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:403
 msgid "Format"
 msgstr "Format"
 
-#: ../rednotebook/gui/format_menu.py:132
+#: ../rednotebook/gui/format_menu.py:136
 msgid "Format the selected text or tag"
 msgstr "Oblikuj označeni tekst ili oznaku"
 
@@ -109,29 +112,29 @@ msgid "Save and insert"
 msgstr "Spremi i ubaci"
 
 #: ../rednotebook/gui/clouds.py:79
-msgid "filter, these, comma, separated, words"
-msgstr "filtriraj, ove, riječi, odvojene, zarezom"
+msgid "filter, these, comma, separated, words, and, #tags"
+msgstr ""
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, spam, work, job, play"
 
-#: ../rednotebook/gui/clouds.py:184 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:140
+#: ../rednotebook/gui/clouds.py:194 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/info.py:95 ../rednotebook/util/markup.py:142
 msgid "Tags"
 msgstr "Oznake"
 
-#: ../rednotebook/gui/clouds.py:187 ../rednotebook/util/statistics.py:71
+#: ../rednotebook/gui/clouds.py:197 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
 msgstr "Riječi"
 
-#: ../rednotebook/gui/clouds.py:246
+#: ../rednotebook/gui/clouds.py:256
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Ukloni \"%s\" iz oblaka"
 
-#: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:402
+#: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:404
 msgid "Export all days"
 msgstr "Izvezi sve dane"
 
@@ -155,148 +158,148 @@ msgstr "Za:"
 msgid "Export currently selected text"
 msgstr "Izvezi trenutno odabrani tekst"
 
-#: ../rednotebook/gui/exports.py:123
+#: ../rednotebook/gui/exports.py:124
 msgid "(Only available when text is selected in edit mode)"
 msgstr "(Dostupno samo kada je tekst odabran u načinu za uređivanje)"
 
-#: ../rednotebook/gui/exports.py:140
+#: ../rednotebook/gui/exports.py:141
 msgid "Date format"
 msgstr "Oblik datuma"
 
-#: ../rednotebook/gui/exports.py:141
+#: ../rednotebook/gui/exports.py:142
 msgid "Leave blank to omit dates in export"
 msgstr "Ostavi prazno da izuzmeš datume u izvozu"
 
-#: ../rednotebook/gui/exports.py:143
+#: ../rednotebook/gui/exports.py:144
 msgid "Export text and tags"
 msgstr "Izvezi tekst i oznake"
 
-#: ../rednotebook/gui/exports.py:144
+#: ../rednotebook/gui/exports.py:145
 msgid "Export text only"
 msgstr "Izvezi samo tekst"
 
-#: ../rednotebook/gui/exports.py:146
+#: ../rednotebook/gui/exports.py:147
 msgid "Export tags only"
 msgstr "Izvezi samo oznake"
 
-#: ../rednotebook/gui/exports.py:148
+#: ../rednotebook/gui/exports.py:149
 msgid "Filter days by tags"
 msgstr "Filtriraj dane po oznakama"
 
-#: ../rednotebook/gui/exports.py:157
+#: ../rednotebook/gui/exports.py:158
 msgid "Available tags"
 msgstr "Dostupne oznake"
 
-#: ../rednotebook/gui/exports.py:158
+#: ../rednotebook/gui/exports.py:159
 msgid "Selected tags"
 msgstr "Označene oznake"
 
-#: ../rednotebook/gui/exports.py:166
+#: ../rednotebook/gui/exports.py:167
 msgid "Select"
 msgstr "Odaberi"
 
-#: ../rednotebook/gui/exports.py:167
+#: ../rednotebook/gui/exports.py:168
 msgid "Deselect"
 msgstr "Poništi odabrano"
 
-#: ../rednotebook/gui/exports.py:262
+#: ../rednotebook/gui/exports.py:263
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
 "Kod filtriranja po oznakama najmanje jedna oznaka mora biti označena."
 
-#: ../rednotebook/gui/exports.py:286
+#: ../rednotebook/gui/exports.py:287
 msgid "You have selected the following settings:"
 msgstr "Odabrali ste slijedeće postavke:"
 
-#: ../rednotebook/gui/exports.py:312
+#: ../rednotebook/gui/exports.py:313
 msgid "Export Assistant"
 msgstr "Izvozni Asistent"
 
-#: ../rednotebook/gui/exports.py:314
+#: ../rednotebook/gui/exports.py:316
 msgid "Welcome to the Export Assistant."
 msgstr "Dobro došli u Pomoćnika za izvoz"
 
-#: ../rednotebook/gui/exports.py:315
+#: ../rednotebook/gui/exports.py:317
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
 "Ovaj čarobnjak će vam pomoći da izvezete vaš dnevnik u različite formate."
 
-#: ../rednotebook/gui/exports.py:316
+#: ../rednotebook/gui/exports.py:318
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr "Možete odabrati dane koje želite izvesti i lokaciju spremanja."
 
-#: ../rednotebook/gui/exports.py:326
+#: ../rednotebook/gui/exports.py:328
 msgid "Select Export Format"
 msgstr "Odaberite format izvoza"
 
-#: ../rednotebook/gui/exports.py:331
+#: ../rednotebook/gui/exports.py:333
 msgid "Select Date Range"
 msgstr "Odaberite raspon datuma"
 
-#: ../rednotebook/gui/exports.py:336
+#: ../rednotebook/gui/exports.py:338
 msgid "Select Contents"
 msgstr "Odaberite sadržaj"
 
-#: ../rednotebook/gui/exports.py:342
+#: ../rednotebook/gui/exports.py:344
 msgid "Select Export Path"
 msgstr "Odaberite stazu izvoza"
 
-#: ../rednotebook/gui/exports.py:347
+#: ../rednotebook/gui/exports.py:349
 msgid "Summary"
 msgstr "Sažetak"
 
-#: ../rednotebook/gui/exports.py:406 ../rednotebook/gui/search.py:76
+#: ../rednotebook/gui/exports.py:408 ../rednotebook/gui/search.py:76
 msgid "Date"
 msgstr "Datum"
 
-#: ../rednotebook/gui/exports.py:407
+#: ../rednotebook/gui/exports.py:409
 msgid "Export selected text only"
 msgstr "Izvezi samo odabran tekst"
 
-#: ../rednotebook/gui/exports.py:409
+#: ../rednotebook/gui/exports.py:411
 msgid "Start date"
 msgstr "Početni datum"
 
-#: ../rednotebook/gui/exports.py:410
+#: ../rednotebook/gui/exports.py:412
 msgid "End date"
 msgstr "Završni datum"
 
-#: ../rednotebook/gui/exports.py:414
+#: ../rednotebook/gui/exports.py:416
 msgid "Include text"
 msgstr "Uvrsti tekst"
 
-#: ../rednotebook/gui/exports.py:415
+#: ../rednotebook/gui/exports.py:417
 msgid "Include tags"
 msgstr "Uvrsti oznake"
 
-#: ../rednotebook/gui/exports.py:417
+#: ../rednotebook/gui/exports.py:419
 msgid "Filtered by tags"
 msgstr "Filtriraj po oznakama"
 
-#: ../rednotebook/gui/exports.py:418
+#: ../rednotebook/gui/exports.py:420
 msgid "Export path"
 msgstr "Staza izvoza"
 
-#: ../rednotebook/gui/exports.py:421
+#: ../rednotebook/gui/exports.py:423
 msgid "Yes"
 msgstr "Da"
 
-#: ../rednotebook/gui/exports.py:421
+#: ../rednotebook/gui/exports.py:423
 msgid "No"
 msgstr "Ne"
 
-#: ../rednotebook/gui/exports.py:470 ../rednotebook/gui/exports.py:476
+#: ../rednotebook/gui/exports.py:472 ../rednotebook/gui/exports.py:478
 #, python-format
 msgid "Content exported to %s"
 msgstr "Sadržaj je izvezen u %s"
 
-#: ../rednotebook/gui/exports.py:526
+#: ../rednotebook/gui/exports.py:530
 msgid "Plain Text"
 msgstr "Običan Tekst"
 
-#: ../rednotebook/gui/exports.py:557
+#: ../rednotebook/gui/exports.py:561
 msgid "requires pywebkitgtk"
 msgstr "potreban je pywebkitgtk"
 
@@ -318,10 +321,10 @@ msgid ""
 msgstr ""
 "Spremi dnevnik na novu lokaciju. Stari dnevnici će također piti spremljeni"
 
-#. ## Translators: Verb
+#. Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
 #. None, _('Open the import assistant'), self.on_import_menu_item_activate),
-#. ## Translators: Verb
+#. Translators: Verb
 #: ../rednotebook/gui/menu.py:109
 msgid "Export"
 msgstr "Izvoz"
@@ -330,7 +333,7 @@ msgstr "Izvoz"
 msgid "Open the export assistant"
 msgstr "Otvori asistenta izvoza"
 
-#. ## Translators: Verb
+#. Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
 msgstr "_Sigurnosna kopija"
@@ -409,7 +412,7 @@ msgstr "Ispuni kratak obrazac s opisom problema"
 msgid "Wrong directory"
 msgstr "Kriva mapa."
 
-#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:214
+#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:206
 msgid "You cannot use this directory for your journal:"
 msgstr "Ne možete koristiti ovu mapu za vaš dnevnik:"
 
@@ -449,11 +452,11 @@ msgstr "Odaberite prazan direktorij za novu lokaciju vašeg dnevnika"
 msgid "The directory name will be the new title of the journal"
 msgstr "Ime direktorija će biti i naslov dnevnika"
 
-#: ../rednotebook/gui/menu.py:279
+#: ../rednotebook/gui/menu.py:284
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook Dokumentacija"
 
-#: ../rednotebook/gui/menu.py:298
+#: ../rednotebook/gui/menu.py:303
 msgid "A Desktop Journal"
 msgstr "Računalni dnevnik"
 
@@ -477,7 +480,7 @@ msgstr "Dan %j"
 msgid "Help"
 msgstr "Pomoć"
 
-#. ## Translators: Noun
+#. Translators: Noun
 #: ../rednotebook/gui/options.py:165
 msgid "Preview:"
 msgstr "Pregled:"
@@ -490,55 +493,55 @@ msgstr "Odaberite font ..."
 msgid "Choose font"
 msgstr "Odaberite font"
 
-#: ../rednotebook/gui/options.py:270
+#: ../rednotebook/gui/options.py:271
 msgid "Close to system tray"
 msgstr "Zatvori u sistemsku traku"
 
-#: ../rednotebook/gui/options.py:271
+#: ../rednotebook/gui/options.py:272
 msgid "Closing the window will send RedNotebook to the tray"
 msgstr "Zatvaranje prozora će smjestiti RedNotebook u sistemsku traku"
 
-#: ../rednotebook/gui/options.py:274
+#: ../rednotebook/gui/options.py:275
 msgid "Switch between edit and preview mode automatically"
 msgstr "Automatski prelazi između pregleda i uređivanja"
 
-#: ../rednotebook/gui/options.py:278
+#: ../rednotebook/gui/options.py:279
 msgid "Check for new version at startup"
 msgstr "Za novu verziju provjeri prilikom pokretanja"
 
-#: ../rednotebook/gui/options.py:286
+#: ../rednotebook/gui/options.py:287
 msgid "Check now"
 msgstr "Provjeri sada"
 
-#: ../rednotebook/gui/options.py:291
+#: ../rednotebook/gui/options.py:293
 msgid "Edit font:"
 msgstr "Uredite font:"
 
-#: ../rednotebook/gui/options.py:292
+#: ../rednotebook/gui/options.py:294
 msgid "Preview font:"
 msgstr "Prikaz fonta:"
 
-#: ../rednotebook/gui/options.py:294
+#: ../rednotebook/gui/options.py:296
 msgid "Comma-separated font names"
 msgstr "Imena fontova razdvojenih zarezom"
 
-#: ../rednotebook/gui/options.py:295
+#: ../rednotebook/gui/options.py:297
 msgid "Date/Time format"
 msgstr "Datum/Vrijeme format"
 
-#: ../rednotebook/gui/options.py:296
+#: ../rednotebook/gui/options.py:298
 msgid "Exclude from cloud"
 msgstr "Izuzmi s oblaka"
 
-#: ../rednotebook/gui/options.py:297
-msgid "Do not show these comma separated words in the word cloud"
-msgstr "Riječi odvojene točkama nemoj prikazivati u oblaku"
+#: ../rednotebook/gui/options.py:299
+msgid "Do not show these comma separated words and #tags in the clouds"
+msgstr ""
 
-#: ../rednotebook/gui/options.py:298
+#: ../rednotebook/gui/options.py:300
 msgid "Include small words in cloud"
 msgstr "Uključi male riješi u oblak"
 
-#: ../rednotebook/gui/options.py:299
+#: ../rednotebook/gui/options.py:301
 msgid "Allow these words with 4 letters or less"
 msgstr "Dozvoli ove riječi s 4 slova ili manje"
 
@@ -546,11 +549,11 @@ msgstr "Dozvoli ove riječi s 4 slova ili manje"
 msgid "Text"
 msgstr "Tekst"
 
-#: ../rednotebook/gui/insert_menu.py:67
+#: ../rednotebook/gui/insert_menu.py:68
 msgid "First Item"
 msgstr "Prva Stavka"
 
-#: ../rednotebook/gui/insert_menu.py:67
+#: ../rednotebook/gui/insert_menu.py:68
 msgid "Second Item"
 msgstr "Druga Stavka"
 
@@ -558,40 +561,40 @@ msgstr "Druga Stavka"
 msgid "Indented Item"
 msgstr "Uvučena Stavka"
 
-#: ../rednotebook/gui/insert_menu.py:68
+#: ../rednotebook/gui/insert_menu.py:69
 msgid "Two blank lines close the list"
 msgstr "Dva prazna reda zatvaraju listu"
 
-#: ../rednotebook/gui/insert_menu.py:101
+#: ../rednotebook/gui/insert_menu.py:102
 msgid "Picture"
 msgstr "Slika"
 
-#: ../rednotebook/gui/insert_menu.py:102
+#: ../rednotebook/gui/insert_menu.py:103
 msgid "Insert an image from the harddisk"
 msgstr "Umetni sliku s tvrdog diska"
 
-#: ../rednotebook/gui/insert_menu.py:104
+#: ../rednotebook/gui/insert_menu.py:105
 msgid "File"
 msgstr "Datoteka"
 
-#: ../rednotebook/gui/insert_menu.py:105
+#: ../rednotebook/gui/insert_menu.py:106
 msgid "Insert a link to a file"
 msgstr "Umetni vezu u datoteku"
 
-#. ## Translators: Noun
-#: ../rednotebook/gui/insert_menu.py:108
+#. Translators: Noun
+#: ../rednotebook/gui/insert_menu.py:109
 msgid "_Link"
 msgstr "_Veza"
 
-#: ../rednotebook/gui/insert_menu.py:109
+#: ../rednotebook/gui/insert_menu.py:110
 msgid "Insert a link to a website"
 msgstr "Umetni vezu u web stranicu"
 
-#: ../rednotebook/gui/insert_menu.py:111
+#: ../rednotebook/gui/insert_menu.py:112
 msgid "Bullet List"
 msgstr "Lista s točkama"
 
-#: ../rednotebook/gui/insert_menu.py:115 ../rednotebook/gui/insert_menu.py:309
+#: ../rednotebook/gui/insert_menu.py:116
 msgid "Title"
 msgstr "Naslov"
 
@@ -663,56 +666,48 @@ msgstr "Dodaj novu stavku"
 msgid "Delete this entry"
 msgstr "Obriši stavku"
 
-#: ../rednotebook/journal.py:215
+#: ../rednotebook/journal.py:207
 msgid "Opening default journal."
 msgstr "Otvaram zadani dnevnik."
 
-#: ../rednotebook/journal.py:311
+#: ../rednotebook/journal.py:308
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "Sadržaj je spremljen u %s"
 
-#: ../rednotebook/journal.py:315
+#: ../rednotebook/journal.py:312
 msgid "The journal could not be saved"
 msgstr "Dnevnik nije mogao biti sačuvan"
 
-#: ../rednotebook/journal.py:317
+#: ../rednotebook/journal.py:314
 msgid "Nothing to save"
 msgstr "Nema ništa za spremiti"
 
-#: ../rednotebook/journal.py:468
+#: ../rednotebook/journal.py:469
 msgid "Error"
 msgstr "Greška"
 
-#: ../rednotebook/info.py:98
-msgid "Work"
-msgstr "Posao"
-
-#: ../rednotebook/info.py:99
-msgid "Free time"
-msgstr "Slobodno vrijeme"
-
-#: ../rednotebook/info.py:100
+#: ../rednotebook/info.py:96
 msgid "Todo"
 msgstr "Za obaviti"
 
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:97
 msgid "Done"
 msgstr "Obavljeno"
 
-#: ../rednotebook/info.py:102
+#: ../rednotebook/info.py:98
 msgid "Remember the milk"
 msgstr "Ne zaboravi kupiti mlijeko"
 
-#: ../rednotebook/info.py:103
+#: ../rednotebook/info.py:99
 msgid "Wash the dishes"
 msgstr "Operi suđe"
 
-#: ../rednotebook/info.py:105
+#: ../rednotebook/info.py:101
 msgid "Hello!"
 msgstr "Zdravo!"
 
-#: ../rednotebook/info.py:106
+#: ../rednotebook/info.py:102
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -720,8 +715,8 @@ msgstr ""
 "Kako bi vam pomogli započeti dodali smo primjer teksta. Možete ga obrisati "
 "kad poželite."
 
-#. ## Translators: "Help" -> noun
-#: ../rednotebook/info.py:109
+#. Translators: "Help" -> noun
+#: ../rednotebook/info.py:105
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -729,32 +724,32 @@ msgstr ""
 "Primjer teksta i dodatna dokumentacija dostupni su u izborniku \"Pomoć\" -> "
 "\"Sadržaj\"."
 
-#. ## Translators: noun
-#. ## Verb
-#: ../rednotebook/info.py:112 tmp/main_window.glade.h:7
+#. Translators: noun
+#. Translators: Verb
+#: ../rednotebook/info.py:108 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "Pregled"
 
-#: ../rednotebook/info.py:113
+#: ../rednotebook/info.py:109
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
 "Dva su načina u RedNotebooku: the __edit__ mode i the __preview__ mode."
 
-#: ../rednotebook/info.py:114
+#: ../rednotebook/info.py:110
 msgid "Click on Edit above to see the difference."
 msgstr "Odaberite Uredi da vidite razliku."
 
-#: ../rednotebook/info.py:117
+#: ../rednotebook/info.py:113
 msgid "Tagging is easy."
 msgstr "Označavanje je lako."
 
-#: ../rednotebook/info.py:118
+#: ../rednotebook/info.py:114
 msgid "Just use #hashtags like on twitter."
 msgstr "Koristite #hashtag kao na twitter-u."
 
-#: ../rednotebook/info.py:121
+#: ../rednotebook/info.py:118
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -764,12 +759,12 @@ msgstr ""
 "smo otišli na --bazene-- i proveli ugodno vrijeme igrajući Ultimate frizbi. "
 "Nakon toga pogledali smo  \"__Brianov život__\"."
 
-#. ## Translators: both are verbs
-#: ../rednotebook/info.py:133
+#. Translators: both are verbs
+#: ../rednotebook/info.py:130
 msgid "Save and Export"
 msgstr "Spremi i Izvozi"
 
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:131
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -777,45 +772,45 @@ msgstr ""
 "Sve što unesete će automatski biti snimljeno u redovnim vremenskim razmacima "
 "te po izlasku iz programa."
 
-#: ../rednotebook/info.py:135
+#: ../rednotebook/info.py:132
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "Kako bi izbjegli gubitak podataka trebali biste redovito izrađivati "
 "sigurnostne kopije vašeg dnevnika."
 
-#: ../rednotebook/info.py:136
+#: ../rednotebook/info.py:133
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "\"Sigurnosna kopija\" u izborniku \"Dnevnik\" sprema sve unesene podatke u "
 "zip datoteku."
 
-#: ../rednotebook/info.py:137
+#: ../rednotebook/info.py:134
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "U izborniku \"Dnevnik\" također ćete naći \"Izvoz\" gumb."
 
-#: ../rednotebook/info.py:138
+#: ../rednotebook/info.py:135
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "Kliknite \"Izvoz\" i izvozite vaš dnevnik u Običan Tekst, PDF, HTML ili "
 "Latex."
 
-#: ../rednotebook/info.py:141
+#: ../rednotebook/info.py:138
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "Ako naiđete na bilo kakvu grešku, molim vas javite kako bi je mogao "
 "ispraviti."
 
-#: ../rednotebook/info.py:142
+#: ../rednotebook/info.py:139
 msgid "Any feedback is appreciated."
 msgstr "Bilo kakav oblik povratne informacije je dobrodošao."
 
-#: ../rednotebook/info.py:145
+#: ../rednotebook/info.py:142
 msgid "Have a nice day!"
 msgstr "Želim vam ugodan dan!"
 
-#: ../rednotebook/info.py:166
+#: ../rednotebook/info.py:163
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by using different journals "
@@ -829,7 +824,7 @@ msgstr ""
 "naslovima  (=== Posao ===, ==== Obitelj ===) i koristeći horizontalne linije "
 "(20 \"=\"s)"
 
-#: ../rednotebook/info.py:173
+#: ../rednotebook/info.py:170
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -1010,11 +1005,11 @@ msgstr "Izaberi ime predloška"
 msgid "This template file contains no text or has unreadable content."
 msgstr "Odabrani predložak ne sadrži tekst ili nije valjan."
 
-#: ../rednotebook/templates.py:378
+#: ../rednotebook/templates.py:376
 msgid "This Weekday's Template"
 msgstr "Predložak za ovaj tjedan"
 
-#: ../rednotebook/templates.py:381
+#: ../rednotebook/templates.py:379
 msgid "Create New Template"
 msgstr "Stvori novi predložak"
 
@@ -1050,25 +1045,25 @@ msgstr "Postotak uređivanih dana"
 msgid "Lines"
 msgstr "Retci"
 
-#: ../rednotebook/util/utils.py:114
+#: ../rednotebook/util/utils.py:116
 msgid "unknown"
 msgstr "nepoznat"
 
-#: ../rednotebook/util/utils.py:129
+#: ../rednotebook/util/utils.py:128
 #, python-format
 msgid "You have version <b>%s</b>."
 msgstr "Vi imate verziju <b>%s</b>."
 
-#: ../rednotebook/util/utils.py:130
+#: ../rednotebook/util/utils.py:129
 #, python-format
 msgid "The latest version is <b>%s</b>."
 msgstr "Najnovija verzija je <b>%s</b>."
 
-#: ../rednotebook/util/utils.py:131
+#: ../rednotebook/util/utils.py:130
 msgid "Do you want to visit the RedNotebook homepage?"
 msgstr "Želite li posjetiti RedNotebook web stranicu?"
 
-#: ../rednotebook/util/utils.py:138
+#: ../rednotebook/util/utils.py:137
 msgid "Do not ask again"
 msgstr "Ne pitaj ponovno"
 
@@ -1108,7 +1103,7 @@ msgstr "Dodaj oznaku ili unos u kategoriju"
 msgid "Add Tag"
 msgstr "Dodaj oznaku"
 
-#. ## TRANSLATORS: Replace this string with your names, one name per line.
+#. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:13
 msgid "translator-credits"
 msgstr ""
@@ -1163,12 +1158,12 @@ msgstr "Odaberi direktorij"
 msgid "Preferences"
 msgstr "Postavke"
 
-#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
+#. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:26
 msgid "<b>General</b>"
 msgstr "<b>Općenito</b>"
 
-#. ## Refers to the part of the options dialog where the user can select the "General/Overall" Settings
+#. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:28
 msgid "General"
 msgstr "Općenito"
