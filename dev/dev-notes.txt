@@ -140,18 +140,18 @@ O Porting strategy
 
 O Move to github
   X Update website
-  O Announce on mailing lists
+  X Announce on mailing lists
   X Code:
     X Mark launchpad branch as abandoned.
   O Issues:
     O Use github-issue-importer once it is "fixed".
-  O Translations: Stick with launchpad for now.
-    O Import translations into git repo.
+  X Translations: Stick with launchpad for now.
+    X Import translations from lp:~jendrikseipp/rednotebook/translations into git repo.
   O Answers: Propose to use stackoverflow for questions? Definitely keep launchpad answers for now.
     (https://groups.google.com/forum/#!topic/google-collections-users/m8FnCcmtC88)
-  O PPAs:
+  X PPAs:
     X Build daily from github-mirror
-    O Mark rednotebook stable PPA as inactive. Ubuntu will get new stable versions from Debian.
+    X Build stable from github-stable
   X Mailing list: Stick with launchpad mailing lists for now (maybe use google groups later).
 
 
