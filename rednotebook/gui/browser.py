@@ -26,13 +26,12 @@ import gtk
 
 from rednotebook.util import markup
 
-
 try:
     import webkit
 except ImportError as err:
-    logging.error('Webkit was not found. It can be found in a package '
-                  'with the name python-webkit or pywebkitgtk.\n'
-                  '%s' % err)
+    logging.error(
+        'Webkit was not found. It can be found in a package with the '
+        'name python-webkit or pywebkitgtk: %s' % err)
     sys.exit(1)
 
 
