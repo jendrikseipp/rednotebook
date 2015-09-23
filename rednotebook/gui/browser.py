@@ -20,7 +20,6 @@
 import sys
 import os
 import logging
-import tempfile
 
 import gtk
 import gobject
@@ -37,30 +36,14 @@ except ImportError as err:
     sys.exit(1)
 
 
-LOAD_HTML_FROM_FILE = False
-
-
 class Browser(webkit.WebView):
     def __init__(self):
         webkit.WebView.__init__(self)
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
 
-        if LOAD_HTML_FROM_FILE:
-            self.tmp_file = tempfile.NamedTemporaryFile(suffix='.html', prefix='rn-tmp', delete=False)
-            self.tmp_uri = 'file://' + self.tmp_file.name
-
-    def load_html_from_file(self, html):
-        self.tmp_file.truncate(0)
-        self.tmp_file.write(html)
-        self.tmp_file.flush()
-        self.load_uri(self.tmp_uri)
-
     def load_html(self, html):
-        if LOAD_HTML_FROM_FILE:
-            self.load_html_from_file(html)
-        else:
-            self.load_html_string(html, 'file:///')
+        self.load_html_string(html, 'file:///')
 
 
 class HtmlPrinter(object):
