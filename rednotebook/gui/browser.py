@@ -164,9 +164,10 @@ class HtmlView(gtk.ScrolledWindow):
         self.webview = Browser()
         self.add(self.webview)
 
-        self.webview.connect('button-press-event', self.on_button_press)
-
         self.search_text = ''
+        self.loading_html = False
+
+        self.webview.connect('button-press-event', self.on_button_press)
         self.webview.connect('load-finished', self.on_load_finished)
 
         self.show_all()
