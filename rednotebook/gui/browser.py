@@ -17,12 +17,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import sys
-import os
 import logging
+import os
+import sys
 
-import gtk
 import gobject
+import gtk
 
 from rednotebook.util import markup
 
