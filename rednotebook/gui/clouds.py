@@ -120,8 +120,6 @@ class Cloud(HtmlView):
             # TODO: Use key=locale.strxfrm in python3
             return locale.strcoll(word1, word2)
 
-        self.link_index = 0
-
         tags_count_dict = self.get_categories_counter().items()
         self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
         self.tags.sort(cmp=cmp_words)
@@ -152,16 +150,15 @@ class Cloud(HtmlView):
         font_delta = max_font_size - min_font_size
 
         html_elements = []
-
-        for word, count in cloud_words:
+        for index, (word, count) in enumerate(cloud_words):
             font_factor = (count - min_count) / delta_count
             font_size = int(min_font_size + font_factor * font_delta)
 
             # Add some whitespace to separate words
-            html_elements.append('<a href="search/%s">'
-                                 '<span style="font-size:%spx">%s</span></a>&#160;'
-                                 % (self.link_index, font_size, word))
-            self.link_index += 1
+            html_elements.append(
+                '<a href="search/%(index)d">'
+                '<span style="font-size:%(font_size)spx">%(word)s</span>'
+                '</a>&#160;' % locals())
         return '\n'.join(html_elements)
 
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
