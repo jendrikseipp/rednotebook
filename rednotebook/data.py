@@ -42,8 +42,8 @@ def escape_tag(tag):
 
 def get_text_with_dots(text, start, end, found_text=None):
     '''
-    Find the outermost spaces and innermost newlines around (start, end) and add
-    dots if needed.
+    Find the outermost spaces and innermost newlines around
+    (start, end) and add dots if needed.
     '''
     bound1 = max(0, start - int(TEXT_RESULT_LENGTH // 2))
     bound2 = max(0, start)
@@ -87,11 +87,11 @@ def get_text_with_dots(text, start, end, found_text=None):
 
 class Day(object):
     def __init__(self, month, day_number, day_content=None):
-        if day_content is None:
-            day_content = {'text': u''}
+        day_content = day_content or {'text': u''}
+        assert 'text' in day_content, day_content
 
-        self.date = datetime.date(month.year_number, month.month_number, day_number)
         self.month = month
+        self.date = datetime.date(month.year_number, month.month_number, day_number)
 
         # Turn all entries of old "Tags" categories into tags without entries.
         old_tags = day_content.pop('Tags', {})
@@ -105,13 +105,9 @@ class Day(object):
         self.last_edit_pos = None
         self.last_preview_pos = None
 
-    # Text
     def _get_text(self):
         '''Return the day's text as unicode.'''
-        if 'text' in self.content:
-            return self.content['text'].decode('utf-8')
-        else:
-            return ''
+        return self.content['text'].decode('utf-8')
 
     def _set_text(self, text):
         self.content['text'] = text
@@ -119,12 +115,11 @@ class Day(object):
 
     @property
     def has_text(self):
-        return len(self.text.strip()) > 0
+        # TODO: Don't strip.
+        return bool(self.text.strip())
 
     @property
     def empty(self):
-        if len(self.content) == 0:
-            return True
         return self.content.keys() == ['text'] and not self.has_text
 
     def add_category_entry(self, category, entry):
@@ -163,8 +158,7 @@ class Day(object):
         return self.get_category_content_pairs().keys()
 
     def get_entries(self, category):
-        entries = self.content.get(category) or {}
-        return sorted(entries.keys())
+        return sorted(self.content.get(category, {}).keys())
 
     def get_category_content_pairs(self):
         '''
@@ -184,6 +178,7 @@ class Day(object):
         return pairs
 
     def get_words(self, with_special_chars=False):
+        # TODO: Use str.join().
         all_text = self.text
         for category, content in self.get_category_content_pairs().items():
             all_text += ' ' + ' '.join([category] + content)
@@ -192,6 +187,7 @@ class Day(object):
         if with_special_chars:
             return words
 
+        # TODO: Use string.punctuation.
         words = [w.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]\\') for w in words]
         return [word for word in words if word]
 
@@ -200,7 +196,7 @@ class Day(object):
 
     def search(self, text, tags):
         """
-        Only days that have all tags are searched.
+        This method is only called for days that have all given tags.
         Search in date first, then in the text, then in the tags.
         Uses case-insensitive search.
         """
@@ -220,9 +216,8 @@ class Day(object):
                         add_text_to_results = True
             if add_text_to_results:
                 results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-
         elif text in str(self):
-            # Search in date
+            # Date contains searched text.
             results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         else:
             text_result = self.search_in_text(text)
@@ -239,9 +234,8 @@ class Day(object):
             return None
 
         found_text = self.text[occurence:occurence + len(search_text)]
-        result_text = get_text_with_dots(self.text, occurence,
-                                         occurence + len(search_text),
-                                         found_text)
+        result_text = get_text_with_dots(
+            self.text, occurence, occurence + len(search_text), found_text)
         return result_text
 
     def search_in_categories(self, text):
@@ -251,8 +245,9 @@ class Day(object):
                 if text.upper() in category.upper():
                     results.extend(content)
                 else:
-                    results.extend(entry for entry in content
-                                   if text.upper() in entry.upper())
+                    results.extend(
+                        entry for entry in content
+                        if text.upper() in entry.upper())
             elif text.upper() in category.upper():
                 results.append(category)
         return results
