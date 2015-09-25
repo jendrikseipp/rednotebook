@@ -187,8 +187,8 @@ class Day(object):
         if with_special_chars:
             return words
 
-        # TODO: Use string.punctuation.
-        words = [w.strip(u'.|-!"/()=?*+~#_:;,<>^°´`{}[]\\') for w in words]
+        # Strip all ASCII punctuation except for $, %, @ and '.
+        words = [w.strip(u'.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
         return [word for word in words if word]
 
     def get_number_of_words(self):
