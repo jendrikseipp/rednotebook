@@ -69,3 +69,9 @@ def format_date(format_string, date=None):
         # Encoding was not found.
         date_string = date_string.decode('UTF-8', 'replace')
     return date_string
+
+
+def same_month(date1, date2):
+    return (
+        date1 is not None and date2 is not None and
+        date1.month == date2.month and date1.year == date2.year)

@@ -291,12 +291,6 @@ class Month(object):
     def empty(self):
         return all(day.empty for day in self.days.values())
 
-    @staticmethod
-    def same_month(date1, date2):
-        return (
-            date1 is not None and date2 is not None and
-            date1.month == date2.month and date1.year == date2.year)
-
     def __cmp__(self, other):
         return cmp((self.year_number, self.month_number),
                    (other.year_number, other.month_number))

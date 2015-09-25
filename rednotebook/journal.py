@@ -403,7 +403,7 @@ class Journal:
         old_date = self.date
         self.date = new_date
 
-        if not Month.same_month(new_date, old_date) or self.month is None:
+        if not dates.same_month(new_date, old_date) or self.month is None:
             self.month = self.get_month(self.date)
 
         self.frame.set_date(self.month, self.date, self.day)
