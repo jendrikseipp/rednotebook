@@ -266,43 +266,36 @@ class Day(object):
 
 class Month(object):
     def __init__(self, year_number, month_number, month_content=None):
-        if month_content is None:
-            month_content = {}
-
-        self.edited = False
-
         self.year_number = year_number
         self.month_number = month_number
+
+        month_content = month_content or {}
         self.days = {}
         for day_number, day_content in month_content.iteritems():
             self.days[day_number] = Day(self, day_number, day_content)
 
+        self.edited = False
+
     def get_day(self, day_number):
-        if day_number in self.days:
-            return self.days[day_number]
-        else:
-            new_day = Day(self, day_number)
-            self.days[day_number] = new_day
-            return new_day
+        if day_number not in self.days:
+            self.days[day_number] = Day(self, day_number)
+        return self.days[day_number]
 
     def __str__(self):
-        res = 'Month %s %s\n' % (self.year_number, self.month_number)
+        lines = ['Month %s %s' % (self.year_number, self.month_number)]
         for day_number, day in self.days.iteritems():
-            res += '%s: %s\n' % (day_number, day.text)
-        return res
+            lines.append('%s: %s' % (day_number, day.text))
+        return '\n'.join(lines)
 
     @property
     def empty(self):
-        for day in self.days.values():
-            if not day.empty:
-                return False
-        return True
+        return all(day.empty for day in self.days.values())
 
+    @staticmethod
     def same_month(date1, date2):
-        if date1 is None or date2 is None:
-            return False
-        return date1.month == date2.month and date1.year == date2.year
-    same_month = staticmethod(same_month)
+        return (
+            date1 is not None and date2 is not None and
+            date1.month == date2.month and date1.year == date2.year)
 
     def __cmp__(self, other):
         return cmp((self.year_number, self.month_number),
