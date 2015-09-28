@@ -416,19 +416,30 @@ open the .tex file with Texniccenter and select "Build Output" from the
 same directory.
 
 == Keyboard shortcuts ==
-||   Action          |   Shortcut             |
-| Preview (On/Off)   | <Ctrl> + P             |
-| Find               | <Ctrl> + F             |
-| Go back one day    | <Ctrl> + PageUp        |
-| Go forward one day | <Ctrl> + PageDown      |
-| Go to today        | <Alt> + Home (Pos1)    |
-| Insert link        | <Ctrl> + L             |
-| Insert date/time   | <Ctrl> + D             |
-| New tag            | <Ctrl> + N             |
-| Export             | <Ctrl> + E             |
-| Fullscreen         | F11                    |
 
-You can find other shortcuts in the menus.
+|| General              |                        |
+| Show help             | <Ctrl> + H             |
+| Find                  | <Ctrl> + F             |
+| Export                | <Ctrl> + E             |
+| Spellcheck            | F7                     |
+| Fullscreen            | F11                    |
+| New tag               | <Ctrl> + N             |
+|| Navigation           |                        |
+| Go back one day       | <Ctrl> + PageUp        |
+| Go forward one day    | <Ctrl> + PageDown      |
+| Go to today           | <Alt> + Home (Pos1)    |
+|| Insert               |                        |
+| Insert link           | <Ctrl> + L             |
+| Insert date/time      | <Ctrl> + D             |
+|| Format               |                        |
+| Bold                  | <Ctrl> + B             |
+| Italic                | <Ctrl> + I             |
+| Monospace             | <Ctrl> + M             |
+| Underline             | <Ctrl> + I             |
+| Strikethrough         | <Ctrl> + K             |
+| Remove format         | <Ctrl> + R             |
+
+You can find more shortcuts in the menus in the main menu bar.
 
 == Encryption ==
 You can use e.g. [TrueCrypt http://www.truecrypt.org] to encrypt your
