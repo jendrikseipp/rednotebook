@@ -442,20 +442,17 @@ same directory.
 You can find more shortcuts in the menus in the main menu bar.
 
 == Encryption ==
-You can use e.g. [TrueCrypt http://www.truecrypt.org] to encrypt your
-journal. Nick Bair has written a nice tutorial about
-[encrypting RedNotebook files
-""http://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=14""]
-on Windows. The procedure for other operating systems should be similar.
-The general idea is to create and mount an encrypted folder with
-TrueCrypt and put your journal files in there.
 
-In recent Linux distributions is has become pretty easy to encrypt
-your entire home partition. I would recommend that to anyone who
-wishes to protect her/his diary and all other personal files.
-This method is especially useful for laptop users, because their
-computers are more likely to be stolen. If you encrypt your home
-partition all RedNotebook data will be encrypted, too.
+You can use e.g. [TrueCrypt http://www.truecrypt.org] to encrypt your
+journal. The general idea is to create and mount an encrypted folder
+with TrueCrypt and put your journal files in there.
+
+In many Linux distributions it has become pretty easy to encrypt your
+entire home partition. I would recommend to do that to anyone who
+wishes to protect her/his diary and all other personal files. This
+method is especially useful for laptop users, because their computers
+are more likely to be stolen. If you encrypt your home partition all
+RedNotebook data will be encrypted, too.
 
 == Tips ==
 %(multiple_entries_text)s
