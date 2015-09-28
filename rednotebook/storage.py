@@ -36,7 +36,6 @@ except ImportError:
 try:
     from yaml import CLoader as Loader
     from yaml import CSafeDumper as Dumper
-    assert Loader and Dumper  # silence pyflakes
 except ImportError:
     from yaml import Loader, Dumper
     logging.info('Using pyyaml for loading and dumping')

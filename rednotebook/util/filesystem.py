@@ -133,15 +133,14 @@ class Filenames(dict):
 
 
 def read_file(filename):
-    '''Tries to read a given file
+    """Try to read a given file.
 
-    Returns None if an error is encountered
-    '''
+    Return None if an error is encountered.
+    """
     encodings = ['utf-8']
 
     try:
         import chardet
-        assert chardet  # silence pyflakes
     except ImportError:
         logging.info("chardet not found. 'utf-8' encoding will be assumed")
         chardet = None
