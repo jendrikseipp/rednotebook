@@ -32,3 +32,6 @@ xgettext    --output=rednotebook.pot \
             --from-code=utf-8 \
             --files-from=sourcefiles.txt \
             tmp/main_window.glade.h
+
+rm sourcefiles.txt
+rm -rf tmp/
