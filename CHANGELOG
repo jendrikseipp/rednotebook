@@ -1,3 +1,6 @@
+== 1.10.3 (2015-10-15) ==
+* Make #hashtags regular expression faster (up to 1000x).
+
 == 1.10.2 (2015-08-24) ==
 * Fix Chinese fonts in preview mode on Windows by using the fonts mingliu and MS Mincho (thanks Amos Ng).
 * Fix instructions for running RedNotebook on Windows (thanks Amos Ng).
