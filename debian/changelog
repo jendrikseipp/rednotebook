@@ -1,3 +1,10 @@
+rednotebook (1.10.3-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Make #hashtags regular expression faster (up to 1000x).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 15 Oct 2015 19:12:09 +0200
+
 rednotebook (1.10.2-1) UNRELEASED; urgency=low
 
   * New upstream release
