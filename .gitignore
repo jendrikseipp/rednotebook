@@ -1,3 +1,5 @@
 *.py[cod]
 MANIFEST
 dist/
+.cache/
+.tox/
