@@ -1,3 +1,10 @@
+rednotebook (1.10.4-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix right-clicking cloud words to hide them.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 19 Oct 2015 10:17:15 +0200
+
 rednotebook (1.10.3-1) UNRELEASED; urgency=low
 
   * New upstream release
