@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-29 14:06+0200\n"
+"POT-Creation-Date: 2015-10-15 23:25+0200\n"
 "PO-Revision-Date: 2013-11-19 01:49+0000\n"
 "Last-Translator: Tony Pratschke <irish.translator@gmail.com>\n"
 "Language-Team: Irish <ga@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-09-17 05:15+0000\n"
-"X-Generator: Launchpad (build 17737)\n"
+"X-Launchpad-Export-Date: 2015-10-17 05:12+0000\n"
+"X-Generator: Launchpad (build 17812)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -43,20 +43,20 @@ msgstr "Fiafraigh ag an gcéad tosú eile"
 msgid "Never ask again"
 msgstr "Ná fiafraigh aríṡ"
 
-#: ../rednotebook/gui/main_window.py:285
+#: ../rednotebook/gui/main_window.py:274
 msgid "Show RedNotebook"
 msgstr "Taispeáin RedNoteBook"
 
-#: ../rednotebook/gui/main_window.py:496
+#: ../rednotebook/gui/main_window.py:477
 msgid "No directory selected."
 msgstr "Níor roghnaíodh aon chomhadlann"
 
-#: ../rednotebook/gui/main_window.py:591
-#: ../rednotebook/gui/customwidgets.py:375
+#: ../rednotebook/gui/main_window.py:569
+#: ../rednotebook/gui/customwidgets.py:363
 msgid "Template"
 msgstr "Teimpléad"
 
-#: ../rednotebook/gui/main_window.py:594
+#: ../rednotebook/gui/main_window.py:572
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -97,7 +97,7 @@ msgid "_Format"
 msgstr "_Formáid"
 
 #. Translators: Noun
-#: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:403
+#: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:394
 msgid "Format"
 msgstr "Formáid"
 
@@ -105,11 +105,11 @@ msgstr "Formáid"
 msgid "Format the selected text or tag"
 msgstr "Formáidigh an téacs/an clib roghnaithe"
 
-#: ../rednotebook/gui/customwidgets.py:366
+#: ../rednotebook/gui/customwidgets.py:354
 msgid "Introduction"
 msgstr "Intreoir"
 
-#: ../rednotebook/gui/customwidgets.py:378
+#: ../rednotebook/gui/customwidgets.py:366
 msgid "Save and insert"
 msgstr "Cuir i dtaisce agus cuir isteach é"
 
@@ -121,112 +121,112 @@ msgstr ""
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, turscar, obair, beart oibre, imirt"
 
-#: ../rednotebook/gui/clouds.py:194 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/info.py:95 ../rednotebook/util/markup.py:142
+#: ../rednotebook/gui/clouds.py:191 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:136
 msgid "Tags"
 msgstr "Clibeanna"
 
-#: ../rednotebook/gui/clouds.py:197 ../rednotebook/util/statistics.py:71
+#: ../rednotebook/gui/clouds.py:194 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
 msgstr "Focail"
 
-#: ../rednotebook/gui/clouds.py:256
+#: ../rednotebook/gui/clouds.py:253
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Cuir \"%s\" i dtaisce ó néalríomhaireacht"
 
-#: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:404
+#: ../rednotebook/gui/exports.py:43 ../rednotebook/gui/exports.py:395
 msgid "Export all days"
 msgstr "Easportail gach lá"
 
-#: ../rednotebook/gui/exports.py:54
+#: ../rednotebook/gui/exports.py:47
 msgid "Export currently visible day"
 msgstr "Easportáil an lá atá le feiceáil anois"
 
-#: ../rednotebook/gui/exports.py:57
+#: ../rednotebook/gui/exports.py:50
 msgid "Export days in the selected time range"
 msgstr "Easportáil na laethanta sa réimse ama roghnaithe"
 
-#: ../rednotebook/gui/exports.py:66
+#: ../rednotebook/gui/exports.py:59
 msgid "From:"
 msgstr "Ó:"
 
-#: ../rednotebook/gui/exports.py:68
+#: ../rednotebook/gui/exports.py:61
 msgid "To:"
 msgstr "Go:"
 
-#: ../rednotebook/gui/exports.py:115
+#: ../rednotebook/gui/exports.py:108
 msgid "Export currently selected text"
 msgstr "Easportáil an téacs atá roghnaithe anois"
 
-#: ../rednotebook/gui/exports.py:124
+#: ../rednotebook/gui/exports.py:117
 msgid "(Only available when text is selected in edit mode)"
 msgstr "(Ar fáil ach amháin leis an téacs roghnaithe sa mhodh eagair"
 
-#: ../rednotebook/gui/exports.py:141
+#: ../rednotebook/gui/exports.py:134
 msgid "Date format"
 msgstr "Formáid an dáta"
 
-#: ../rednotebook/gui/exports.py:142
+#: ../rednotebook/gui/exports.py:135
 msgid "Leave blank to omit dates in export"
 msgstr "Fág bán é chun dátaí a fhágáil amach san easportáil"
 
-#: ../rednotebook/gui/exports.py:144
+#: ../rednotebook/gui/exports.py:137
 msgid "Export text and tags"
 msgstr "Easportáil téacs agus clibeanna"
 
-#: ../rednotebook/gui/exports.py:145
+#: ../rednotebook/gui/exports.py:138
 msgid "Export text only"
 msgstr "Easportáil téacs amháin"
 
-#: ../rednotebook/gui/exports.py:147
+#: ../rednotebook/gui/exports.py:140
 msgid "Export tags only"
 msgstr "Easportáil clibeanna amháin"
 
-#: ../rednotebook/gui/exports.py:149
+#: ../rednotebook/gui/exports.py:142
 msgid "Filter days by tags"
 msgstr "Scagtar laethanta de réir chlibe"
 
-#: ../rednotebook/gui/exports.py:158
+#: ../rednotebook/gui/exports.py:151
 msgid "Available tags"
 msgstr "Clibeanna ar fáil"
 
-#: ../rednotebook/gui/exports.py:159
+#: ../rednotebook/gui/exports.py:152
 msgid "Selected tags"
 msgstr "Clibeanna roghnaithe"
 
-#: ../rednotebook/gui/exports.py:167
+#: ../rednotebook/gui/exports.py:160
 msgid "Select"
 msgstr "Roghnaigh"
 
-#: ../rednotebook/gui/exports.py:168
+#: ../rednotebook/gui/exports.py:161
 msgid "Deselect"
 msgstr "Díroghnaigh"
 
-#: ../rednotebook/gui/exports.py:263
+#: ../rednotebook/gui/exports.py:256
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
 "Nuair a scagtar de réir chlibe, ní foláir clib amháin a roghnú ar a laghad."
 
-#: ../rednotebook/gui/exports.py:287
+#: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
 msgstr "Tá na socruithe a leanas roghnaithe agat:"
 
-#: ../rednotebook/gui/exports.py:313
+#: ../rednotebook/gui/exports.py:304
 msgid "Export Assistant"
 msgstr "Cuntóir Easportála"
 
-#: ../rednotebook/gui/exports.py:316
+#: ../rednotebook/gui/exports.py:307
 msgid "Welcome to the Export Assistant."
 msgstr "Fáilte chuig an Cuntóir Easportála"
 
-#: ../rednotebook/gui/exports.py:317
+#: ../rednotebook/gui/exports.py:308
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
 "Cabhróidh an draoi seo leat do dhialann a easportáil chuig formáidí éagsúla."
 
-#: ../rednotebook/gui/exports.py:318
+#: ../rednotebook/gui/exports.py:309
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
@@ -234,76 +234,76 @@ msgstr ""
 "D'fhéadfá na laethanta le heasportáil a roghnú maraon leis an áit le hiad a "
 "chur i dtaisce"
 
-#: ../rednotebook/gui/exports.py:328
+#: ../rednotebook/gui/exports.py:319
 msgid "Select Export Format"
 msgstr "Roghnaigh Formáid Easportála"
 
-#: ../rednotebook/gui/exports.py:333
+#: ../rednotebook/gui/exports.py:324
 msgid "Select Date Range"
 msgstr "Roghnaigh Raon Dáta"
 
-#: ../rednotebook/gui/exports.py:338
+#: ../rednotebook/gui/exports.py:329
 msgid "Select Contents"
 msgstr "Roghnaigh a mbeidh ann"
 
-#: ../rednotebook/gui/exports.py:344
+#: ../rednotebook/gui/exports.py:335
 msgid "Select Export Path"
 msgstr "Roghnaigh Conair Easportála"
 
-#: ../rednotebook/gui/exports.py:349
+#: ../rednotebook/gui/exports.py:340
 msgid "Summary"
 msgstr "Achoimre"
 
-#: ../rednotebook/gui/exports.py:408 ../rednotebook/gui/search.py:76
+#: ../rednotebook/gui/exports.py:399 ../rednotebook/gui/search.py:76
 msgid "Date"
 msgstr "Dáta"
 
-#: ../rednotebook/gui/exports.py:409
+#: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
 msgstr "Easportáil téacs roghnaithe amháin"
 
-#: ../rednotebook/gui/exports.py:411
+#: ../rednotebook/gui/exports.py:404
 msgid "Start date"
 msgstr "Dáta tosaithe"
 
-#: ../rednotebook/gui/exports.py:412
+#: ../rednotebook/gui/exports.py:405
 msgid "End date"
 msgstr "Dáta deiridh"
 
-#: ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/exports.py:409
 msgid "Include text"
 msgstr "Cuir téacs san áireamh"
 
-#: ../rednotebook/gui/exports.py:417
+#: ../rednotebook/gui/exports.py:410
 msgid "Include tags"
 msgstr "Cuir clibeanna san áireamh"
 
-#: ../rednotebook/gui/exports.py:419
+#: ../rednotebook/gui/exports.py:412
 msgid "Filtered by tags"
 msgstr "Scagtha de réir clibeanna"
 
-#: ../rednotebook/gui/exports.py:420
+#: ../rednotebook/gui/exports.py:413
 msgid "Export path"
 msgstr "Conair easportála"
 
-#: ../rednotebook/gui/exports.py:423
+#: ../rednotebook/gui/exports.py:416
 msgid "Yes"
 msgstr "Is ea"
 
-#: ../rednotebook/gui/exports.py:423
+#: ../rednotebook/gui/exports.py:416
 msgid "No"
 msgstr "Ní hea"
 
-#: ../rednotebook/gui/exports.py:472 ../rednotebook/gui/exports.py:478
+#: ../rednotebook/gui/exports.py:465 ../rednotebook/gui/exports.py:470
 #, python-format
 msgid "Content exported to %s"
 msgstr "A raibh ann easportáilte chuig %s"
 
-#: ../rednotebook/gui/exports.py:530
+#: ../rednotebook/gui/exports.py:520
 msgid "Plain Text"
 msgstr "Gnáth-théacs"
 
-#: ../rednotebook/gui/exports.py:561
+#: ../rednotebook/gui/exports.py:547
 msgid "requires pywebkitgtk"
 msgstr "pywebkitgtk de dhíth"
 
@@ -416,7 +416,7 @@ msgstr "Comhlántar foirm gearr faoin fhadhb"
 msgid "Wrong directory"
 msgstr "An chomhadlann mícheart"
 
-#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:206
+#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:204
 msgid "You cannot use this directory for your journal:"
 msgstr "Ní féidir leat an chomhadlann seo a úsáid le haghaidh do dhialann"
 
@@ -655,64 +655,64 @@ msgstr "Ní foláir don leithead a bheith ina shlánuimhir"
 msgid "No link location has been entered"
 msgstr "Níor cuireadh aon suíomh naisc isteach"
 
-#: ../rednotebook/gui/categories.py:136
+#: ../rednotebook/gui/categories.py:135
 msgid "Empty entries are not allowed"
 msgstr "Ní ceadaítear iontralacha bána"
 
-#: ../rednotebook/gui/categories.py:408
+#: ../rednotebook/gui/categories.py:410
 msgid "Change this text"
 msgstr "Athraigh an téacs seo"
 
-#: ../rednotebook/gui/categories.py:410
+#: ../rednotebook/gui/categories.py:412
 msgid "Add a new entry"
 msgstr "Cuir iontráil nua leis"
 
-#: ../rednotebook/gui/categories.py:412
+#: ../rednotebook/gui/categories.py:414
 msgid "Delete this entry"
 msgstr "Scrios an iontráil seo"
 
-#: ../rednotebook/journal.py:207
+#: ../rednotebook/journal.py:205
 msgid "Opening default journal."
 msgstr "Dialann réamhshocraithe á oscailt"
 
-#: ../rednotebook/journal.py:308
+#: ../rednotebook/journal.py:305
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "Cuireadh a bhí ann i dtaisce i %s"
 
-#: ../rednotebook/journal.py:312
+#: ../rednotebook/journal.py:309
 msgid "The journal could not be saved"
 msgstr "Níor éirigh leis an dialann a chur i dtaisce"
 
-#: ../rednotebook/journal.py:314
+#: ../rednotebook/journal.py:311
 msgid "Nothing to save"
 msgstr "Tada le cur i dtaisce"
 
-#: ../rednotebook/journal.py:469
+#: ../rednotebook/journal.py:457
 msgid "Error"
 msgstr "Dearmad"
 
-#: ../rednotebook/info.py:96
+#: ../rednotebook/info.py:98
 msgid "Todo"
 msgstr "Le déanamh"
 
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:99
 msgid "Done"
 msgstr "Déanta"
 
-#: ../rednotebook/info.py:98
+#: ../rednotebook/info.py:100
 msgid "Remember the milk"
 msgstr "Ná déan dearmad ar an mbainne"
 
-#: ../rednotebook/info.py:99
+#: ../rednotebook/info.py:101
 msgid "Wash the dishes"
 msgstr "Nigh na miasa"
 
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:103
 msgid "Hello!"
 msgstr "Haló"
 
-#: ../rednotebook/info.py:102
+#: ../rednotebook/info.py:104
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -720,8 +720,7 @@ msgstr ""
 "Cuireadh isteach roinnt téacs mar shampla chun cabhair a thabhairt duit "
 "tosú, ach d'fhéadfá é a scrios nuair is mian leat"
 
-#. Translators: "Help" -> noun
-#: ../rednotebook/info.py:105
+#: ../rednotebook/info.py:108
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -731,30 +730,30 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/info.py:108 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:112 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "Réamhamharc"
 
-#: ../rednotebook/info.py:109
+#: ../rednotebook/info.py:114
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
 "Tá dhá mhodh i RedNotebook, an _modh_eagair agus an_modh_réamhamhairc."
 
-#: ../rednotebook/info.py:110
+#: ../rednotebook/info.py:116
 msgid "Click on Edit above to see the difference."
 msgstr "Gliogáil ar Eagar thuas agus féach an difríocht."
 
-#: ../rednotebook/info.py:113
+#: ../rednotebook/info.py:119
 msgid "Tagging is easy."
 msgstr "Is éasca é clibeáil"
 
-#: ../rednotebook/info.py:114
+#: ../rednotebook/info.py:120
 msgid "Just use #hashtags like on twitter."
 msgstr "Bain úsáid as #haischlibeanna díreach mar ar Twitter"
 
-#: ../rednotebook/info.py:118
+#: ../rednotebook/info.py:124
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -766,11 +765,11 @@ msgstr ""
 "\"__Life of Brian__\"."
 
 #. Translators: both are verbs
-#: ../rednotebook/info.py:130
+#: ../rednotebook/info.py:136
 msgid "Save and Export"
 msgstr "Cuir i dtaisce agus Easportáil"
 
-#: ../rednotebook/info.py:131
+#: ../rednotebook/info.py:138
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -778,45 +777,45 @@ msgstr ""
 "Déanfar gach rud a chuireann tú isteach a chur i dtaisce go huathoibríoch go "
 "tráthrialta agus arís nuair a fhágann tú an ríomhchlár."
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:140
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "Ba chóir duit cóip chúltaca a dhéanamh ar do dhialann go rialta chun "
 "caillteanas sonraí a sheachaint."
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:141
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "Déanann  \"Cúltacaigh\" sa roghchlár \"Dialann\" na sonraí go léir a chuir "
 "tú isteach a chur i dtaisce i gcomhad zip."
 
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:142
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "Tá an cnaipe \" Easportáil\" sa ríomhchlár \"Dialann\" chomh maith."
 
-#: ../rednotebook/info.py:135
+#: ../rednotebook/info.py:143
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "Gliogáil ar \"Easportail\" agus déan do dhialann a easportáil chuig "
 "Gnáththéacs, PDF, HTML, nó Latex."
 
-#: ../rednotebook/info.py:138
+#: ../rednotebook/info.py:146
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "Má thagann tú ar aon dearmad, cuir nóta chugamsa le do thoil, ionas gur "
 "féidir liom é a dheisiú."
 
-#: ../rednotebook/info.py:139
+#: ../rednotebook/info.py:147
 msgid "Any feedback is appreciated."
 msgstr "Beidh fáilte roimh aon aiseolas."
 
-#: ../rednotebook/info.py:142
+#: ../rednotebook/info.py:150
 msgid "Have a nice day!"
 msgstr "Bain taitneamh as an lá"
 
-#: ../rednotebook/info.py:163
+#: ../rednotebook/info.py:171
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by using different journals "
@@ -830,7 +829,7 @@ msgstr ""
 "agus na hiontralacha scartha óna chéile le teidil éagsúla (===Obair===, "
 "===Teaghlach===) agus línte deighilte cothromanacha a úsáid (20\"=\"s)."
 
-#: ../rednotebook/info.py:170
+#: ../rednotebook/info.py:178
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -1019,7 +1018,7 @@ msgstr "Teimpléad an lae inniu"
 msgid "Create New Template"
 msgstr "Cruthaigh Teimpléad Nua"
 
-#: ../rednotebook/util/dates.py:56
+#: ../rednotebook/util/dates.py:61
 msgid "Incorrect date format"
 msgstr "Formáid dáta mícheart"
 

@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-08-29 14:06+0200\n"
+"POT-Creation-Date: 2015-10-15 23:25+0200\n"
 "PO-Revision-Date: 2013-11-17 06:59+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-09-17 05:15+0000\n"
-"X-Generator: Launchpad (build 17737)\n"
+"X-Launchpad-Export-Date: 2015-10-17 05:12+0000\n"
+"X-Generator: Launchpad (build 17812)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -41,20 +41,20 @@ msgstr "הצגת השאלה בהפעלה הבאה"
 msgid "Never ask again"
 msgstr "לא לשאול שוב"
 
-#: ../rednotebook/gui/main_window.py:285
+#: ../rednotebook/gui/main_window.py:274
 msgid "Show RedNotebook"
 msgstr "הצגת RedNotebook"
 
-#: ../rednotebook/gui/main_window.py:496
+#: ../rednotebook/gui/main_window.py:477
 msgid "No directory selected."
 msgstr "לא נבחרה תיקייה."
 
-#: ../rednotebook/gui/main_window.py:591
-#: ../rednotebook/gui/customwidgets.py:375
+#: ../rednotebook/gui/main_window.py:569
+#: ../rednotebook/gui/customwidgets.py:363
 msgid "Template"
 msgstr "תבנית"
 
-#: ../rednotebook/gui/main_window.py:594
+#: ../rednotebook/gui/main_window.py:572
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr "הוספת התבנית ליום זה בשבוע. יש ללחוץ על החץ שמימין לאפשרויות נוספות"
@@ -93,7 +93,7 @@ msgid "_Format"
 msgstr "_עיצוב"
 
 #. Translators: Noun
-#: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:403
+#: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:394
 msgid "Format"
 msgstr "עיצוב"
 
@@ -101,11 +101,11 @@ msgstr "עיצוב"
 msgid "Format the selected text or tag"
 msgstr "עיצוב הטקסט או התגית הנבחרים"
 
-#: ../rednotebook/gui/customwidgets.py:366
+#: ../rednotebook/gui/customwidgets.py:354
 msgid "Introduction"
 msgstr "הקדמה"
 
-#: ../rednotebook/gui/customwidgets.py:378
+#: ../rednotebook/gui/customwidgets.py:366
 msgid "Save and insert"
 msgstr "שמירה והוספה"
 
@@ -117,185 +117,185 @@ msgstr ""
 msgid "mtv, spam, work, job, play"
 msgstr "חדשות, זבל, עבודה, מטלה, משחק"
 
-#: ../rednotebook/gui/clouds.py:194 ../rednotebook/gui/categories.py:52
-#: ../rednotebook/info.py:95 ../rednotebook/util/markup.py:142
+#: ../rednotebook/gui/clouds.py:191 ../rednotebook/gui/categories.py:52
+#: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:136
 msgid "Tags"
 msgstr "תגיות"
 
-#: ../rednotebook/gui/clouds.py:197 ../rednotebook/util/statistics.py:71
+#: ../rednotebook/gui/clouds.py:194 ../rednotebook/util/statistics.py:71
 #: ../rednotebook/util/statistics.py:84
 msgid "Words"
 msgstr "מילים"
 
-#: ../rednotebook/gui/clouds.py:256
+#: ../rednotebook/gui/clouds.py:253
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "הסתרת \"%s\" מעננים"
 
-#: ../rednotebook/gui/exports.py:50 ../rednotebook/gui/exports.py:404
+#: ../rednotebook/gui/exports.py:43 ../rednotebook/gui/exports.py:395
 msgid "Export all days"
 msgstr "ייצוא כל הימים"
 
-#: ../rednotebook/gui/exports.py:54
+#: ../rednotebook/gui/exports.py:47
 msgid "Export currently visible day"
 msgstr "ייצוא היום המופיע בתצוגה"
 
-#: ../rednotebook/gui/exports.py:57
+#: ../rednotebook/gui/exports.py:50
 msgid "Export days in the selected time range"
 msgstr "ייצוא הימים בטווח הימים הנבחר"
 
-#: ../rednotebook/gui/exports.py:66
+#: ../rednotebook/gui/exports.py:59
 msgid "From:"
 msgstr "מ־:"
 
-#: ../rednotebook/gui/exports.py:68
+#: ../rednotebook/gui/exports.py:61
 msgid "To:"
 msgstr "עד:"
 
-#: ../rednotebook/gui/exports.py:115
+#: ../rednotebook/gui/exports.py:108
 msgid "Export currently selected text"
 msgstr "יצוא הטקסט שנבחר כעת"
 
-#: ../rednotebook/gui/exports.py:124
+#: ../rednotebook/gui/exports.py:117
 msgid "(Only available when text is selected in edit mode)"
 msgstr "(זמין רק כאשר נבחר טקסט במצב עריכה)"
 
-#: ../rednotebook/gui/exports.py:141
+#: ../rednotebook/gui/exports.py:134
 msgid "Date format"
 msgstr "מבנה התאריך"
 
-#: ../rednotebook/gui/exports.py:142
+#: ../rednotebook/gui/exports.py:135
 msgid "Leave blank to omit dates in export"
 msgstr "יש להשאיר ריק כדי להשמיט תאריכים בייצוא"
 
-#: ../rednotebook/gui/exports.py:144
+#: ../rednotebook/gui/exports.py:137
 msgid "Export text and tags"
 msgstr "יצוא טקסט ותגיות"
 
-#: ../rednotebook/gui/exports.py:145
+#: ../rednotebook/gui/exports.py:138
 msgid "Export text only"
 msgstr "יצוא טקסט בלבד"
 
-#: ../rednotebook/gui/exports.py:147
+#: ../rednotebook/gui/exports.py:140
 msgid "Export tags only"
 msgstr "יצוא תגיות בלבד"
 
-#: ../rednotebook/gui/exports.py:149
+#: ../rednotebook/gui/exports.py:142
 msgid "Filter days by tags"
 msgstr "סינון ימים לפי תגיות"
 
-#: ../rednotebook/gui/exports.py:158
+#: ../rednotebook/gui/exports.py:151
 msgid "Available tags"
 msgstr "התגיות הזמינות"
 
-#: ../rednotebook/gui/exports.py:159
+#: ../rednotebook/gui/exports.py:152
 msgid "Selected tags"
 msgstr "התגיות הנבחרות"
 
-#: ../rednotebook/gui/exports.py:167
+#: ../rednotebook/gui/exports.py:160
 msgid "Select"
 msgstr "בחירה"
 
-#: ../rednotebook/gui/exports.py:168
+#: ../rednotebook/gui/exports.py:161
 msgid "Deselect"
 msgstr "ביטול בחירה"
 
-#: ../rednotebook/gui/exports.py:263
+#: ../rednotebook/gui/exports.py:256
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr "בעת סינון לפי תגיות יש לבחור תגית אחת לפחות."
 
-#: ../rednotebook/gui/exports.py:287
+#: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
 msgstr "ההגדרות הבאות נבחרו:"
 
-#: ../rednotebook/gui/exports.py:313
+#: ../rednotebook/gui/exports.py:304
 msgid "Export Assistant"
 msgstr "מסייע הייצוא"
 
-#: ../rednotebook/gui/exports.py:316
+#: ../rednotebook/gui/exports.py:307
 msgid "Welcome to the Export Assistant."
 msgstr "ברוך בואך למסייע הייצוא."
 
-#: ../rednotebook/gui/exports.py:317
+#: ../rednotebook/gui/exports.py:308
 msgid "This wizard will help you to export your journal to various formats."
 msgstr "אשף זה יסייע לך בייצוא היומן שלך למגוון תבניות קבצים."
 
-#: ../rednotebook/gui/exports.py:318
+#: ../rednotebook/gui/exports.py:309
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr "ניתן לבחור את הימים שברצונך לייצא ולהיכן יישמר הפלט."
 
-#: ../rednotebook/gui/exports.py:328
+#: ../rednotebook/gui/exports.py:319
 msgid "Select Export Format"
 msgstr "בחירת המבנה לייצוא"
 
-#: ../rednotebook/gui/exports.py:333
+#: ../rednotebook/gui/exports.py:324
 msgid "Select Date Range"
 msgstr "בחירת טווח תאריכים"
 
-#: ../rednotebook/gui/exports.py:338
+#: ../rednotebook/gui/exports.py:329
 msgid "Select Contents"
 msgstr "בחירת תכנים"
 
-#: ../rednotebook/gui/exports.py:344
+#: ../rednotebook/gui/exports.py:335
 msgid "Select Export Path"
 msgstr "בחירת נתיב לייצוא"
 
-#: ../rednotebook/gui/exports.py:349
+#: ../rednotebook/gui/exports.py:340
 msgid "Summary"
 msgstr "תקציר"
 
-#: ../rednotebook/gui/exports.py:408 ../rednotebook/gui/search.py:76
+#: ../rednotebook/gui/exports.py:399 ../rednotebook/gui/search.py:76
 msgid "Date"
 msgstr "תאריך"
 
-#: ../rednotebook/gui/exports.py:409
+#: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
 msgstr "יצוא הטקסט הנבחר בלבד."
 
-#: ../rednotebook/gui/exports.py:411
+#: ../rednotebook/gui/exports.py:404
 msgid "Start date"
 msgstr "תאריך ההתחלה"
 
-#: ../rednotebook/gui/exports.py:412
+#: ../rednotebook/gui/exports.py:405
 msgid "End date"
 msgstr "תאריך הסיום"
 
-#: ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/exports.py:409
 msgid "Include text"
 msgstr "הכללת טקסט"
 
-#: ../rednotebook/gui/exports.py:417
+#: ../rednotebook/gui/exports.py:410
 msgid "Include tags"
 msgstr "לכלול תגיות"
 
-#: ../rednotebook/gui/exports.py:419
+#: ../rednotebook/gui/exports.py:412
 msgid "Filtered by tags"
 msgstr "מסונן לפי תגיות"
 
-#: ../rednotebook/gui/exports.py:420
+#: ../rednotebook/gui/exports.py:413
 msgid "Export path"
 msgstr "נתיב הייצוא"
 
-#: ../rednotebook/gui/exports.py:423
+#: ../rednotebook/gui/exports.py:416
 msgid "Yes"
 msgstr "כן"
 
-#: ../rednotebook/gui/exports.py:423
+#: ../rednotebook/gui/exports.py:416
 msgid "No"
 msgstr "לא"
 
-#: ../rednotebook/gui/exports.py:472 ../rednotebook/gui/exports.py:478
+#: ../rednotebook/gui/exports.py:465 ../rednotebook/gui/exports.py:470
 #, python-format
 msgid "Content exported to %s"
 msgstr "התוכן ייוצא אל %s"
 
-#: ../rednotebook/gui/exports.py:530
+#: ../rednotebook/gui/exports.py:520
 msgid "Plain Text"
 msgstr "טקסט פשוט"
 
-#: ../rednotebook/gui/exports.py:561
+#: ../rednotebook/gui/exports.py:547
 msgid "requires pywebkitgtk"
 msgstr "נדרש pywebkitgtk"
 
@@ -405,7 +405,7 @@ msgstr "יש למלא טופס קצר אודות התקלה"
 msgid "Wrong directory"
 msgstr "תיקייה שגויה"
 
-#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:206
+#: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:204
 msgid "You cannot use this directory for your journal:"
 msgstr "לא ניתן להשתמש בתיקייה זו עבור היומן שלך:"
 
@@ -643,72 +643,71 @@ msgstr "הרוחב חייב להיות מספר שלם וחיובי."
 msgid "No link location has been entered"
 msgstr "לא הוזן מיקום לקישור"
 
-#: ../rednotebook/gui/categories.py:136
+#: ../rednotebook/gui/categories.py:135
 msgid "Empty entries are not allowed"
 msgstr "אסור להשאיר רשומות ריקות"
 
-#: ../rednotebook/gui/categories.py:408
+#: ../rednotebook/gui/categories.py:410
 msgid "Change this text"
 msgstr "שינוי טקסט זה"
 
-#: ../rednotebook/gui/categories.py:410
+#: ../rednotebook/gui/categories.py:412
 msgid "Add a new entry"
 msgstr "הוספת רשומה חדשה"
 
-#: ../rednotebook/gui/categories.py:412
+#: ../rednotebook/gui/categories.py:414
 msgid "Delete this entry"
 msgstr "מחיקת רשומה זו"
 
-#: ../rednotebook/journal.py:207
+#: ../rednotebook/journal.py:205
 msgid "Opening default journal."
 msgstr "יומן בררת המחדל נפתח."
 
-#: ../rednotebook/journal.py:308
+#: ../rednotebook/journal.py:305
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "התוכן נשמר אל %s"
 
-#: ../rednotebook/journal.py:312
+#: ../rednotebook/journal.py:309
 msgid "The journal could not be saved"
 msgstr "לא ניתן לשמור את היומן"
 
-#: ../rednotebook/journal.py:314
+#: ../rednotebook/journal.py:311
 msgid "Nothing to save"
 msgstr "אין מה לשמור"
 
-#: ../rednotebook/journal.py:469
+#: ../rednotebook/journal.py:457
 msgid "Error"
 msgstr "שגיאה"
 
-#: ../rednotebook/info.py:96
+#: ../rednotebook/info.py:98
 msgid "Todo"
 msgstr "מטלות"
 
-#: ../rednotebook/info.py:97
+#: ../rednotebook/info.py:99
 msgid "Done"
 msgstr "בוצע"
 
-#: ../rednotebook/info.py:98
+#: ../rednotebook/info.py:100
 msgid "Remember the milk"
 msgstr "Remember the milk"
 
-#: ../rednotebook/info.py:99
+#: ../rednotebook/info.py:101
 msgid "Wash the dishes"
 msgstr "לשטוף כלים"
 
-#: ../rednotebook/info.py:101
+#: ../rednotebook/info.py:103
 msgid "Hello!"
 msgstr "שלום!"
 
-#: ../rednotebook/info.py:102
+#: ../rednotebook/info.py:104
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
 "טקסט הדגמה נוסף לכאן כדי לסייע לך להתחיל, ניתן למחוק אותו בכל עת שהיא."
 
-#. Translators: "Help" -> noun
-#: ../rednotebook/info.py:105
+#: ../rednotebook/info.py:108
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -716,29 +715,29 @@ msgstr "טקסט ההדגמה ותיעוד נוסף זמינים תחת \"עזר
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/info.py:108 tmp/main_window.glade.h:7
+#: ../rednotebook/info.py:112 tmp/main_window.glade.h:7
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: ../rednotebook/info.py:109
+#: ../rednotebook/info.py:114
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr "ישנם שני מצבים ב־RedNotebook, מצב __עריכה__ ומצב __תצוגה מקדימה__."
 
-#: ../rednotebook/info.py:110
+#: ../rednotebook/info.py:116
 msgid "Click on Edit above to see the difference."
 msgstr "יש ללחוץ על עריכה להלן כדי לצפות בשינוי."
 
-#: ../rednotebook/info.py:113
+#: ../rednotebook/info.py:119
 msgid "Tagging is easy."
 msgstr "תיוג זה קלי קלות."
 
-#: ../rednotebook/info.py:114
+#: ../rednotebook/info.py:120
 msgid "Just use #hashtags like on twitter."
 msgstr "ניתן להשתמש ב#תגית כמו בטוויטר."
 
-#: ../rednotebook/info.py:118
+#: ../rednotebook/info.py:124
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -748,48 +747,48 @@ msgstr ""
 "בריכה-- ונהננו ממשחק פריזבי אולטימטיבי. לאחר מכן צפינו בסדרה \"__הבורר__\"."
 
 #. Translators: both are verbs
-#: ../rednotebook/info.py:130
+#: ../rednotebook/info.py:136
 msgid "Save and Export"
 msgstr "שמירה וייצוא"
 
-#: ../rednotebook/info.py:131
+#: ../rednotebook/info.py:138
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr "כל דבר שיוזן ישמר אוטומטית בהפרשי זמן קבועים ובעת היציאה מהתוכנה."
 
-#: ../rednotebook/info.py:132
+#: ../rednotebook/info.py:140
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr "כדי למנוע אובדן נתונים עליך לגבות את היומן באופן קבוע."
 
-#: ../rednotebook/info.py:133
+#: ../rednotebook/info.py:141
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr "ה„גיבוי“ בתפריט „יומן“  שומר את כל הנתונים שהוזנו בקובץ zip."
 
-#: ../rednotebook/info.py:134
+#: ../rednotebook/info.py:142
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "בתפריט „יומן“ ניתן גם למצוא את לחצן ה„יצוא“."
 
-#: ../rednotebook/info.py:135
+#: ../rednotebook/info.py:143
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "יש ללחוץ על „יצוא“ כדי לייצא את היומן שלך לטקסט פשוט, PDF, HTML או Latex."
 
-#: ../rednotebook/info.py:138
+#: ../rednotebook/info.py:146
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr "אם יופיעו תקלות, אנא שלחו לי הודעה (באנגלית) כדי שאוכל לתקן אותן."
 
-#: ../rednotebook/info.py:139
+#: ../rednotebook/info.py:147
 msgid "Any feedback is appreciated."
 msgstr "כל משוב יתקבל בברכה."
 
-#: ../rednotebook/info.py:142
+#: ../rednotebook/info.py:150
 msgid "Have a nice day!"
 msgstr "שיהיה לך יום טוב!"
 
-#: ../rednotebook/info.py:163
+#: ../rednotebook/info.py:171
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by using different journals "
@@ -802,7 +801,7 @@ msgstr ""
 "„עבודה“, השני בשם „משפחה“), תוך הפרדת הרשומות שלך באמצעות כותרות שונות  (=== "
 "עבודה ===, === משפחה ===) ושימוש בקווי הפרדה אופקיים (20 פעמים „=“)."
 
-#: ../rednotebook/info.py:170
+#: ../rednotebook/info.py:178
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -992,7 +991,7 @@ msgstr "תבנית של יום זה בשבוע"
 msgid "Create New Template"
 msgstr "יצירת תבנית חדשה"
 
-#: ../rednotebook/util/dates.py:56
+#: ../rednotebook/util/dates.py:61
 msgid "Incorrect date format"
 msgstr "מבנה התאריך שגוי"
 
