@@ -89,12 +89,12 @@ msgstr "Perbrauktas"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Clear format"
-msgstr ""
+msgstr "Išvalyti formatą"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
 msgid "_Format"
-msgstr ""
+msgstr "_Formatas"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:394
@@ -337,7 +337,7 @@ msgstr "Atverti eksportavimo asistentą"
 #. Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr ""
+msgstr "_Atkūrimas"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -514,11 +514,11 @@ msgstr "Tikrinti dabar"
 
 #: ../rednotebook/gui/options.py:293
 msgid "Edit font:"
-msgstr ""
+msgstr "Taisos šriftas"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Preview font:"
-msgstr ""
+msgstr "Peržiūros šriftas"
 
 #: ../rednotebook/gui/options.py:296
 msgid "Comma-separated font names"
@@ -684,7 +684,7 @@ msgstr "Nėra ko išsaugoti"
 
 #: ../rednotebook/journal.py:457
 msgid "Error"
-msgstr ""
+msgstr "Klaida"
 
 #: ../rednotebook/info.py:98
 msgid "Todo"
@@ -1079,7 +1079,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:11
 msgid "Add Tag"
-msgstr ""
+msgstr "Pridėti žymę"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: tmp/main_window.glade.h:13
