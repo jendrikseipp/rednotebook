@@ -155,12 +155,13 @@ class InsertMenu(object):
 
     def get_insert_handler(self, func):
         def insert_handler(widget):
-            sel_text = self.main_window.day_text_field.get_selected_text()
+            editor = self.main_window.day_text_field
+            sel_text = editor.get_selected_text()
             repl = func(sel_text)
             if isinstance(repl, basestring):
-                self.main_window.day_text_field.replace_selection(repl)
+                editor.replace_selection(repl)
             elif isinstance(repl, tuple):
-                self.main_window.day_text_field.replace_selection_and_highlight(*repl)
+                editor.replace_selection_and_highlight(*repl)
             else:
                 assert repl is None, repl
         return insert_handler
@@ -261,6 +262,7 @@ class InsertMenu(object):
 
         link_location_entry.set_text('http://')
         link_name_entry.set_text(sel_text)
+        self.main_window.day_text_field.replace_selection('')
 
         def link_entered():
             return bool(link_location_entry.get_text().decode('utf-8'))
