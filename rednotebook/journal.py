@@ -208,8 +208,7 @@ class Journal:
         self.open_journal(journal_path)
 
         self.archiver = backup.Archiver(self)
-        # TODO: Enable backup check.
-        # self.archiver.check_last_backup_date()
+        gobject.idle_add(self.archiver.check_last_backup_date)
 
         # Check for a new version
         if self.config.read('checkForNewVersion') == 1:

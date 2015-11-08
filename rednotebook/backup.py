@@ -34,7 +34,7 @@ NEVER_ASK_AGAIN = 300
 
 def write_archive(archive_file_name, files, base_dir='', arc_base_dir=''):
     """
-    use base_dir for relative filenames, in case you don't
+    Use base_dir for relative filenames, in case you don't
     want your archive to contain '/home/...'
     """
     archive = zipfile.ZipFile(archive_file_name, "w")
@@ -51,18 +51,20 @@ class Archiver(object):
         if not self._backup_necessary():
             return
 
-        logging.warning('Last backup is older than %s days.' % MAX_BACKUP_AGE)
+        logging.warning('Last backup is older than %d days.' % MAX_BACKUP_AGE)
         text1 = _('It has been a while since you made your last backup.')
         text2 = _('You can backup your journal to a zip file to avoid data loss.')
-        dialog = gtk.MessageDialog(parent=self.journal.frame.main_frame,
-                                   type=gtk.MESSAGE_QUESTION,
-                                   flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-                                   message_format=text1)
+        dialog = gtk.MessageDialog(
+            parent=self.journal.frame.main_frame,
+            type=gtk.MESSAGE_QUESTION,
+            flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+            message_format=text1)
         dialog.set_title(_('Backup'))
         dialog.format_secondary_text(text2)
-        dialog.add_buttons(_('Backup now'), BACKUP_NOW,
-                           _('Ask at next start'), ASK_NEXT_TIME,
-                           _('Never ask again'), NEVER_ASK_AGAIN)
+        dialog.add_buttons(
+            _('Backup now'), BACKUP_NOW,
+            _('Ask at next start'), ASK_NEXT_TIME,
+            _('Never ask again'), NEVER_ASK_AGAIN)
 
         answer = dialog.run()
         dialog.hide()
@@ -75,7 +77,7 @@ class Archiver(object):
 
     def backup(self):
         backup_file = self._get_backup_file()
-        # Abort if user did not select a path
+        # Abort if user did not select a path.
         if not backup_file:
             return
 
@@ -100,10 +102,10 @@ class Archiver(object):
             last_backup_date = datetime.datetime.strptime(date_string, DATE_FORMAT)
         except ValueError, err:
             logging.error('Last backup date could not be read: %s' % err)
-            last_backup_date = now
-        # We don't need to take the absolute value here, because dates in the
-        # future will yield a negative days value.
-        return (now - last_backup_date).days > MAX_BACKUP_AGE
+            return True
+        last_backup_age = (now - last_backup_date).days
+        logging.info('Last backup was made %d days ago' % last_backup_age)
+        return last_backup_age > MAX_BACKUP_AGE
 
     def _get_backup_file(self):
         if self.journal.title == 'data':
@@ -112,8 +114,8 @@ class Archiver(object):
             name = '-' + self.journal.title
 
         proposed_filename = 'RedNotebook-Backup%s-%s.zip' % (name, datetime.date.today())
-        proposed_directory = self.journal.config.read('lastBackupDir',
-                                                      os.path.expanduser('~'))
+        proposed_directory = self.journal.config.read(
+            'lastBackupDir', os.path.expanduser('~'))
 
         backup_dialog = self.journal.frame.builder.get_object('backup_dialog')
         backup_dialog.set_transient_for(self.journal.frame.main_frame)
