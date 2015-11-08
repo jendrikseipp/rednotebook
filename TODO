@@ -17,7 +17,6 @@ X Insert Latex formulas (LP:851471)
   X Add menu item for inserting formulas
 X Tables
   X Highlight tables in edit mode
-  O Use art target for text exports (Wait for txt2tags 2.7)
 X Numbered lists
 X Add quotes by indenting them with a tab
 X Show warning if last backup dates to more than one month before
@@ -27,7 +26,6 @@ O Scroll to searched text when a result is clicked in preview mode (seems diffic
 O Make the right panel an advanced option?
 O Auto-merge: When saving a file, check if its changedate is newer than the time
   when we opened the file and merge the contents if it is.
-O Setup repo at github (we prefer mercurial, but github has the users and already 14 rednotebook repos).
 O When clicking on a hashtag in the tag cloud scroll to tag and highlight it (seems difficult with webkitgtk)
 O Hierarchical hashtags: #dream/recurring/houses and let user "zoom in" in tag cloud.
   Maybe better: Use multiple tags and allow iteratively filtering them in tag cloud.
