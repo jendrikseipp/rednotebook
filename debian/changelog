@@ -1,3 +1,11 @@
+rednotebook (1.11-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Remind users to make new backup if last backup is older than a month.
+  * When inserting a link for a selected text passage, replace text passage.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 08 Nov 2015 10:32:30 +0100
+
 rednotebook (1.10.4-1) UNRELEASED; urgency=low
 
   * New upstream release
