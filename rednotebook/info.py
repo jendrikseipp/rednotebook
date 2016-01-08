@@ -44,14 +44,14 @@ developers = [
     'Alistair Marshall <thatscottishengineer@gmail.com>']
 
 comments = '''\
-RedNotebook is a graphical journal to keep track of notes and
-thoughts. It includes calendar navigation, customizable
-templates, export functionality and word clouds. You can also
-format, tag and search your entries.
+RedNotebook is a modern desktop journal. It lets you format, tag and
+search your entries. You can also add pictures, links and customizable
+templates, spell check your notes, and export to plain text, HTML,
+Latex or PDF.
 '''
 
 license_text = '''\
-Copyright (c) 2009-2015  Jendrik Seipp
+Copyright (c) 2009-2016  Jendrik Seipp
 
 RedNotebook is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
