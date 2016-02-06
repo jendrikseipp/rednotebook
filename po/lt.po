@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2012-03-23 06:53+0000\n"
+"PO-Revision-Date: 2016-02-07 00:09+0200\n"
 "Last-Translator: Algimantas Margevičius <algimantas@margevicius.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2015-10-17 05:13+0000\n"
-"X-Generator: Launchpad (build 17812)\n"
+"X-Generator: Poedit 1.7.5\n"
+"Language: lt\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -49,7 +50,7 @@ msgstr "Rodyti RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:477
 msgid "No directory selected."
-msgstr ""
+msgstr "Nepasirinktas joks katalogas."
 
 #: ../rednotebook/gui/main_window.py:569
 #: ../rednotebook/gui/customwidgets.py:363
@@ -111,7 +112,7 @@ msgstr "Įvadas"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Save and insert"
-msgstr ""
+msgstr "Išsaugoti ir įterpti"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words, and, #tags"
@@ -178,23 +179,23 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text only"
-msgstr ""
+msgstr "Eksportuoti tik tekstą"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Export tags only"
-msgstr ""
+msgstr "Eksportuoti tik gaires"
 
 #: ../rednotebook/gui/exports.py:142
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Filtruoti dienas pagal gaires"
 
 #: ../rednotebook/gui/exports.py:151
 msgid "Available tags"
-msgstr ""
+msgstr "Esamos gairės"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Selected tags"
-msgstr ""
+msgstr "Pasirinktos gairės"
 
 #: ../rednotebook/gui/exports.py:160
 msgid "Select"
@@ -228,8 +229,7 @@ msgstr "Šis vedlys padės jums eksportuoti jūsų žurnalus įvairiais formatai
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
-msgstr ""
-"Galite pasirinkti dienas kurias eksportuosite, bei kur bus išsaugota."
+msgstr "Galite pasirinkti dienas kurias eksportuosite, bei kur bus išsaugota."
 
 #: ../rednotebook/gui/exports.py:319
 msgid "Select Export Format"
@@ -269,15 +269,15 @@ msgstr "Pabaigos data"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include text"
-msgstr ""
+msgstr "Įtraukti tekstą"
 
 #: ../rednotebook/gui/exports.py:410
 msgid "Include tags"
-msgstr ""
+msgstr "Įtraukti gaires"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Filtruojama pagal gaires"
 
 #: ../rednotebook/gui/exports.py:413
 msgid "Export path"
@@ -298,7 +298,7 @@ msgstr "Turinys eksportuotas į %s"
 
 #: ../rednotebook/gui/exports.py:520
 msgid "Plain Text"
-msgstr ""
+msgstr "Paprastas tekstas"
 
 #: ../rednotebook/gui/exports.py:547
 msgid "requires pywebkitgtk"
@@ -345,7 +345,7 @@ msgstr "Įrašyti visus duomenis į zip archyvą"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistika"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -409,7 +409,7 @@ msgstr "Užpildykite trumpą formą apie problemą"
 
 #: ../rednotebook/gui/menu.py:172
 msgid "Wrong directory"
-msgstr ""
+msgstr "Blogas katalogas"
 
 #: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:204
 msgid "You cannot use this directory for your journal:"
@@ -486,11 +486,11 @@ msgstr "Peržiūra:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr ""
+msgstr "Pasirinkti šriftą..."
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Pasirinkti šriftą"
 
 #: ../rednotebook/gui/options.py:271
 msgid "Close to system tray"
@@ -623,7 +623,7 @@ msgstr "Įterpti rankinį eilutės lūžį"
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "_Įterpti"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -639,7 +639,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:197
 msgid "pixels"
-msgstr ""
+msgstr "pikseliai"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."
@@ -779,8 +779,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:142
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
-"„Dienoraščio“ meniu Jūs taip pat galite rasti  „Eksportuoti“ mygtuką."
+msgstr "„Dienoraščio“ meniu Jūs taip pat galite rasti  „Eksportuoti“ mygtuką."
 
 #: ../rednotebook/info.py:143
 msgid ""
@@ -1025,7 +1024,7 @@ msgstr "Eilutės"
 
 #: ../rednotebook/util/utils.py:116
 msgid "unknown"
-msgstr ""
+msgstr "nežinomas"
 
 #: ../rednotebook/util/utils.py:128
 #, python-format
