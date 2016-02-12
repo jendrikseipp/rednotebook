@@ -1116,6 +1116,8 @@ msgstr ""
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Muhammet Kara https://launchpad.net/~muhammet-k\n"
 "  Tarık Demirci https://launchpad.net/~tarikdemirci"
+"GitHub Contributions:\n"
+"  Nuri Uzunoğlu https://github.com/nuriu\n"
 
 #: tmp/main_window.glade.h:14
 msgid "New entry"
