@@ -1,5 +1,7 @@
 *.py[cod]
 MANIFEST
+build/
 dist/
+po/*.mo
 .cache/
 .tox/
