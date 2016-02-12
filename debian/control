@@ -10,7 +10,7 @@ Package: rednotebook
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-yaml (>=3.05), python-gtk2 (>=2.16), python-gobject (>= 2.14.2), python-webkit
 Recommends: python-gtkspell, python-chardet
-Description: Daily journal with calendar, templates and keyword searching
- RedNotebook is a graphical diary and journal to keep track of notes and
- thoughts throughout the day. It includes a calendar navigation, customisable
- templates for each day, and a keyword search and cloud.
+Description: RedNotebook is a modern desktop journal. It lets you
+ format, tag and search your entries. You can also add pictures, links
+ and customizable templates, spell check your notes, and export to
+ plain text, HTML, Latex or PDF.

@@ -7,7 +7,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-O Place subtags behind hashtags inside the text itself: I met #Sarah and we had some coffee talking about old times# then i went to #work.
+O Place subtags behind hashtags inside the text itself:
+  I met #Sarah and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
@@ -41,11 +42,17 @@ O When searching for a tag, show text near tag in search results
 O Allow searching for hashtags and show subhashtags in the search results
 O Make sure that RedNotebook contents are saved under Windows when system is shutdown.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
+O When searching for a tag, show text around tag, not beginning of day's text.
 
 Tag pane hiding:
-O tag pane width relative to right window edge, if you resize the pane to 0 width it effectively disappears. If you resize the overall window the pane then stays hidden.
-O a button on the tool bar to show/hide it on demand, returns to the previous width relative to the right hand window edge
-O a preferences option to disable the pane, but I think the two points above in combination are a better solution to the brute force method of just killing the feature (but I'd take that too!)
+O tag pane width relative to right window edge, if you resize the pane
+  to 0 width it effectively disappears. If you resize the overall window
+  the pane then stays hidden.
+O a button on the tool bar to show/hide it on demand, returns to the
+  previous width relative to the right hand window edge
+O a preferences option to disable the pane, but I think the two points
+  above in combination are a better solution to the brute force method
+  of just killing the feature (but I'd take that too!)
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
