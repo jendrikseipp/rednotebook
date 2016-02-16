@@ -158,7 +158,7 @@ class Day(object):
         return self.get_category_content_pairs().keys()
 
     def get_entries(self, category):
-        return sorted(self.content.get(category, {}).keys())
+        return sorted((self.content.get(category) or {}).keys())
 
     def get_category_content_pairs(self):
         '''
