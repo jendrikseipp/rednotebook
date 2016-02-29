@@ -193,7 +193,7 @@ class MainWindow(object):
 
         # Enable/disable the "tags" pane on the right
         self.annotations_pane = self.builder.get_object('annotations_pane')
-        if self.journal.config.read('enable_annotations_pane') == 1:
+        if self.journal.config.read('showTagsPane') == 1:
             self.annotations_pane.show()
         else:
             self.annotations_pane.hide()

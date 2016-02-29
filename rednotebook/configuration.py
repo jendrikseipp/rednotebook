@@ -36,7 +36,7 @@ class Config(dict):
         'previewFont': 'Ubuntu, mingliu, MS Mincho, sans-serif',
         'closeToTray': 0,
         'checkForNewVersion': 0,
-        'enable_annotations_pane': 1,
+        'showTagsPane': 1,
         'weekNumbers': 0,
         'portable': 0,
         'userDir': '',
