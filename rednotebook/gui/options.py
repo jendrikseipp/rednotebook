@@ -278,6 +278,9 @@ class OptionsManager(object):
         # Check for new version
         check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')
 
+        # Enable/Disable right-hand pane
+        self.options.append(TickOption(_('Show right-side tags pane'),'showTagsPane'))
+
         def check_version_action(widget):
             utils.check_new_version(self.main_window.journal, info.version)
             # Apply changes from dialog to options window
@@ -314,6 +317,13 @@ class OptionsManager(object):
 
             visible = (self.config.read('closeToTray') == 1)
             self.main_window.tray_icon.set_visible(visible)
+
+            # Enable/disable the "tags" pane on the right
+            if self.config.read('showTagsPane') == 1:
+                self.main_window.annotations_pane.show()
+            else:
+                self.main_window.annotations_pane.hide()
+
         else:
             # Reset some options
             self.main_window.set_font(self.config.read('mainFont', editor.DEFAULT_FONT))
