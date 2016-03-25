@@ -135,9 +135,11 @@ def _save_month_to_disk(month, journal_dir):
         yaml.dump(content, f, Dumper=Dumper, allow_unicode=True)
 
     if os.path.exists(filename):
-        if os.path.getmtime(filename)!=month.mtime:
-            conflict = get_filename('.CONFLICT_BACKUP'+str(os.path.getmtime(filename)))
-            logging.debug('Last edit time of %s conflicts with edit time at file load\n --> Backing up to %s' % (filename, conflict))
+        mtime = os.path.getmtime(filename)
+        if mtime != month.mtime:
+            conflict = get_filename('.CONFLICT_BACKUP' + str(mtime))
+            logging.debug('Last edit time of %s conflicts with edit time at file load\n'
+                          '--> Backing up to %s' % (filename, conflict))
             shutil.copy2(filename, conflict)
         shutil.copy2(filename, old)
     shutil.move(new, filename)
@@ -152,7 +154,7 @@ def _save_month_to_disk(month, journal_dir):
 
     month.edited = False
     month.mtime = os.path.getmtime(filename)
-    logging.debug('Wrote file %s' % filename)
+    logging.info('Wrote file %s' % filename)
     return True
 
 
