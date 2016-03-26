@@ -74,7 +74,7 @@ def _load_month_from_disk(path, year_number, month_number):
         with codecs.open(path, 'rb', encoding='utf-8') as month_file:
             logging.debug('Loading file "%s"' % path)
             month_contents = yaml.load(month_file, Loader=Loader)
-            month = Month(year_number, month_number, month_contents)
+            month = Month(year_number, month_number, month_contents, os.path.getmtime(path))
             return month
     except yaml.YAMLError, exc:
         logging.error('Error in file %s:\n%s' % (path, exc))
@@ -135,6 +135,12 @@ def _save_month_to_disk(month, journal_dir):
         yaml.dump(content, f, Dumper=Dumper, allow_unicode=True)
 
     if os.path.exists(filename):
+        mtime = os.path.getmtime(filename)
+        if mtime != month.mtime:
+            conflict = get_filename('.CONFLICT_BACKUP' + str(mtime))
+            logging.debug('Last edit time of %s conflicts with edit time at file load\n'
+                          '--> Backing up to %s' % (filename, conflict))
+            shutil.copy2(filename, conflict)
         shutil.copy2(filename, old)
     shutil.move(new, filename)
     if os.path.exists(old):
@@ -147,7 +153,8 @@ def _save_month_to_disk(month, journal_dir):
         pass
 
     month.edited = False
-    logging.debug('Wrote file %s' % filename)
+    month.mtime = os.path.getmtime(filename)
+    logging.info('Wrote file %s' % filename)
     return True
 
 

@@ -260,7 +260,7 @@ class Day(object):
 
 
 class Month(object):
-    def __init__(self, year_number, month_number, month_content=None):
+    def __init__(self, year_number, month_number, month_content=None, mtime=0):
         self.year_number = year_number
         self.month_number = month_number
 
@@ -270,6 +270,7 @@ class Month(object):
             self.days[day_number] = Day(self, day_number, day_content)
 
         self.edited = False
+        self.mtime = mtime
 
     def get_day(self, day_number):
         if day_number not in self.days:
