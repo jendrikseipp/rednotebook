@@ -1,15 +1,18 @@
 [![Build Status](https://travis-ci.org/jendrikseipp/rednotebook.svg?branch=master)](https://travis-ci.org/jendrikseipp/rednotebook)
 
-# Short Instructions
+RedNotebook is a modern desktop journal. It lets you format, tag and
+search your entries. You can also add pictures, links and customizable
+templates, spell check your notes, and export to plain text, HTML,
+Latex or PDF.
 
-## Linux
+# Run RedNotebook under Linux
 
 Install all dependencies, translate the application and run RedNotebook
 without installation:
 
     $ ./run
 
-## Windows
+# Run RedNotebook under Windows
 
 Install Python 2.7 (32-bit version), clone the repo, change into the
 `win` directory, run
@@ -26,7 +29,7 @@ the 64-bit versions of the various dependencies required for the
 project.)
 
 
-# Detailed Instructions
+# Detailed instructions
 
 There are many packages available for different distributions, so you might
 want to check the Downloads page first.
@@ -37,7 +40,7 @@ but of course sometimes you want to try out the bleeding edge, hot new stuff.
 If you don't want to mess with your distribution's package system, you might
 want to just run the program, without installing it by using the command above.
 
-## REQUIREMENTS
+## Requirements
   - Python (2.6/2.7) (www.python.org)
   - PyYaml (>=3.05) (www.pyyaml.org)
   - PyGTK (>=2.16) (www.pygtk.org)
@@ -47,7 +50,7 @@ want to just run the program, without installing it by using the command above.
     - python-chardet (http://chardet.feedparser.org)
       Better recognition of file encodings
 
-# INSTALLATION
+# Installation
 Please pay attention: Installing is very easy, uninstalling however can only be
 done by removing the installed files manually.
 
@@ -57,8 +60,7 @@ done by removing the installed files manually.
 files in "installed-files" to make an uninstallation easier)
 
 
-
-# THANKS
+# Thanks
 
 - The authors of the programs listed under 'requirements'. Remember that without
   them, RedNotebook would not be possible.
@@ -76,8 +78,7 @@ files in "installed-files" to make an uninstallation easier)
   documents to PDF (http://github.com/eeejay/interwibble/).
 
 
-
-# NOTES
+# License notes
 
 RedNotebook is published either under the terms of the GPL version 2 or any
 later version of the license. It includes the elib.intl module
