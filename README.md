@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jendrikseipp/rednotebook.svg?branch=master)](https://travis-ci.org/jendrikseipp/rednotebook)
+
 # Short Instructions
 
 ## Linux
