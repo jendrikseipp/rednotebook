@@ -5,8 +5,6 @@ set -euo pipefail
 cd "$(dirname "$0")"
 cd ../
 
-tox
-
 set +eo pipefail
 pyflakes rednotebook tests | grep -v "undefined name '_'" | grep -v "rednotebook/external/"
 retval=$?
