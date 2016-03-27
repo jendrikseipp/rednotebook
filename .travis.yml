@@ -1,7 +1,7 @@
 language: python
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -qq python-gtk
+  - sudo apt-get install -qq python-yaml python-gtk2 python-gobject python-webkit python-gtkspell python-chardet
 virtualenv:
   system_site_packages: true
 env:
