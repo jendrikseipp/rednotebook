@@ -279,7 +279,7 @@ class OptionsManager(object):
         check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')
 
         # Enable/Disable right-hand pane
-        self.options.append(TickOption(_('Show right-side tags pane'),'showTagsPane'))
+        self.options.append(TickOption(_('Show right-side tags pane'), 'showTagsPane'))
 
         def check_version_action(widget):
             utils.check_new_version(self.main_window.journal, info.version)

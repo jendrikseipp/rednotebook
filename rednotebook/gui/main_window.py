@@ -198,7 +198,6 @@ class MainWindow(object):
         else:
             self.annotations_pane.hide()
 
-
     def set_tooltips(self):
         '''
         Little work-around:
