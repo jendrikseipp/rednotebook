@@ -5,7 +5,6 @@ before_install:
 virtualenv:
   system_site_packages: true
 env:
-  - TOXENV=py26
   - TOXENV=py27
 install:
   - pip install tox
