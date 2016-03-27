@@ -43,6 +43,7 @@ O Allow searching for hashtags and show subhashtags in the search results
 O Make sure that RedNotebook contents are saved under Windows when system is shutdown.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
 O When searching for a tag, show text around tag, not beginning of day's text.
+O Search: Wrap or overlay search results to make more text visible.
 
 Tag pane hiding:
 O tag pane width relative to right window edge, if you resize the pane
