@@ -9,5 +9,4 @@ env:
 install:
   - pip install tox
 script:
-  - bash dev/run-tests.sh
   - tox
