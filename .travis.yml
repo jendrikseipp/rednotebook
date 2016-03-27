@@ -1,8 +1,13 @@
 language: python
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -qq python-gtk
+virtualenv:
+  system_site_packages: true
 env:
-    - TOXENV=py26
-    - TOXENV=py27
+  - TOXENV=py26
+  - TOXENV=py27
 install:
-    - pip install tox
+  - pip install tox
 script:
-    - tox
+  - tox
