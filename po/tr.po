@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-12 10:40+0200\n"
-"PO-Revision-Date: 2016-02-12 11:03+0200\n"
-"Last-Translator: Nuri Uzunoğlu <crimeemperor@gmail.com>\n"
+"POT-Creation-Date: 2015-10-15 23:25+0200\n"
+"PO-Revision-Date: 2016-02-13 01:32+0000\n"
+"Last-Translator: Nuri <crimeemperor@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-02 05:09+0000\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Launchpad-Export-Date: 2016-02-14 05:44+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
+"Language: tr\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -776,7 +776,8 @@ msgstr ""
 
 #: ../rednotebook/info.py:140
 msgid "To avoid data loss you should backup your journal regularly."
-msgstr "Veri kaybını önlemek için günlüğünüzü düzenli olarak yedeklemelisiniz."
+msgstr ""
+"Veri kaybını önlemek için günlüğünüzü düzenli olarak yedeklemelisiniz."
 
 #: ../rednotebook/info.py:141
 msgid ""
@@ -793,14 +794,14 @@ msgstr "\"Günlük\" menüsünde \"Dışarı Aktar\" seçenğini bulacaksınız.
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
-"Günlüğünüzü Metin, PDF, HTML veya Latex olarak kaydetmek için \"Dışarı Aktar"
-"\" seçeneğine tıklayın."
+"Günlüğünüzü Metin, PDF, HTML veya Latex olarak kaydetmek için \"Dışarı "
+"Aktar\" seçeneğine tıklayın."
 
 #: ../rednotebook/info.py:146
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
-"Herhangi bir hata ile karşılaşırsanız, bana bir not yazın böylece bu sorun(u)"
-"(ları) çözebilirim."
+"Herhangi bir hata ile karşılaşırsanız, bana bir not yazın böylece bu "
+"sorun(u)(ları) çözebilirim."
 
 #: ../rednotebook/info.py:147
 msgid "Any feedback is appreciated."
@@ -1115,9 +1116,8 @@ msgstr ""
 "  Ismail DOGAN https://launchpad.net/~ismail-ismaildogan\n"
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Muhammet Kara https://launchpad.net/~muhammet-k\n"
+"  Nuri https://launchpad.net/~crimeemperor\n"
 "  Tarık Demirci https://launchpad.net/~tarikdemirci"
-"GitHub Contributions:\n"
-"  Nuri Uzunoğlu https://github.com/nuriu\n"
 
 #: tmp/main_window.glade.h:14
 msgid "New entry"

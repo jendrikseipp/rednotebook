@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2015-11-01 21:12+0000\n"
-"Last-Translator: Koncz László <koncz.l@upcmail.hu>\n"
-"Language-Team: Hungarian"
+"PO-Revision-Date: 2015-12-10 14:27+0000\n"
+"Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
+"Language-Team: HungarianMIME-Version: 1.0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-02 05:08+0000\n"
-"X-Generator: Launchpad (build 17838)\n"
+"X-Launchpad-Export-Date: 2015-12-11 05:12+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -24,8 +24,7 @@ msgstr "Az utolsó biztonsági mentés elavult"
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
-"Az adatvesztés elkerülése végett a naplót zip-fájlként el lehet"
-"menteni."
+"Az adatvesztés elkerülése végett a naplót zip-fájlként el lehetmenteni."
 
 #: ../rednotebook/backup.py:61
 msgid "Backup"
@@ -58,10 +57,8 @@ msgstr "Sablon"
 
 #: ../rednotebook/gui/main_window.py:572
 msgid ""
-"Insert this weekday's template. "
+"Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Beszúrja a sablont e naphoz. Kattintson a bal nyílra, ha "
-"további opciókat akar."
 
 #: ../rednotebook/gui/format_menu.py:98
 msgid "No text or tag has been selected."
@@ -166,7 +163,7 @@ msgstr "(Csak akkor elérhető, ha  szöveg szerkesztés-módban megjelölt)"
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Date format"
-msgstr "Dátumsformátum"
+msgstr "Dátumformátum"
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Leave blank to omit dates in export"
@@ -207,8 +204,8 @@ msgstr "Kiválasztás megszüntetése"
 #: ../rednotebook/gui/exports.py:256
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
-"A címkék alapján történő napok szűrésénél legalább egy "
-"címkét ki kell választani."
+"A címkék alapján történő napok szűrésénél legalább egy címkét ki kell "
+"választani."
 
 #: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
@@ -225,16 +222,15 @@ msgstr "Üdvözöljük az export-varázslóban"
 #: ../rednotebook/gui/exports.py:308
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
-"E párbeszéd segít a napló különböző formátumban történő "
-"exportálásában."
+"E párbeszéd segít a napló különböző formátumban történő exportálásában."
 
 #: ../rednotebook/gui/exports.py:309
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
-"Kiválaszthat napokat exporthoz és megadhatja, hogy melyik mappába "
-"kell elmenteni."
+"Kiválaszthat napokat exporthoz és megadhatja, hogy melyik mappába kell "
+"elmenteni."
 
 #: ../rednotebook/gui/exports.py:319
 msgid "Select Export Format"
@@ -315,8 +311,7 @@ msgstr "Napló"
 
 #: ../rednotebook/gui/menu.py:95
 msgid "Create a new journal. The old one will be saved"
-msgstr ""
-"Új napló készítése. A jelneleg megnyitott naplót menti a program."
+msgstr "Új napló készítése. A jelneleg megnyitott naplót menti a program."
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
@@ -326,8 +321,8 @@ msgstr "Meglévő napló betöltése. A megnyitott napló mentésre kerül."
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
-"E napló mentése más helyre és megnyitása onnan. A régi "
-"naplót mégegyszer elmenti a program a régi mentéshelyre."
+"E napló mentése más helyre és megnyitása onnan. A régi naplót mégegyszer "
+"elmenti a program a régi mentéshelyre."
 
 #. Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
@@ -360,7 +355,9 @@ msgstr "Naplóra vonatkozó statisztikai kiértékelések megjelenítése"
 
 #: ../rednotebook/gui/menu.py:117
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Kilépés a RedNotebook-ból (a tálcán történő minden további megbjelenítés nélkül)"
+msgstr ""
+"Kilépés a RedNotebook-ból (a tálcán történő minden további megbjelenítés "
+"nélkül)"
 
 #: ../rednotebook/gui/menu.py:120
 msgid "_Edit"
@@ -432,9 +429,7 @@ msgstr "E mappa nem tartalmaz naplófájlokat:"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Journals are saved in a directory, not in a single file."
-msgstr ""
-"A naplókat mappába menti a program, nem egyenkénti "
-"fájlba."
+msgstr "A naplókat mappába menti a program, nem egyenkénti fájlba."
 
 #: ../rednotebook/gui/menu.py:200
 msgid "The directory name will be the title of the new journal."
@@ -507,9 +502,7 @@ msgstr "Kicsinyítés a tálcára"
 
 #: ../rednotebook/gui/options.py:272
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
-"Ha az ablak bezárul, a RedNotebook továbbra is  "
-"a tálcán lesz."
+msgstr "Ha az ablak bezárul, a RedNotebook továbbra is  a tálcán lesz."
 
 #: ../rednotebook/gui/options.py:275
 msgid "Switch between edit and preview mode automatically"
@@ -553,7 +546,9 @@ msgstr "Rövid szavak engedélyezése a szófelhőben"
 
 #: ../rednotebook/gui/options.py:301
 msgid "Allow these words with 4 letters or less"
-msgstr "Az itt kilistázott szavak tartalmazzák a 4 és kevesebb karaktert tartalmazókat is"
+msgstr ""
+"Az itt kilistázott szavak tartalmazzák a 4 és kevesebb karaktert "
+"tartalmazókat is"
 
 #: ../rednotebook/gui/search.py:76
 msgid "Text"
@@ -623,8 +618,8 @@ msgstr "Dátum/Idő"
 #: ../rednotebook/gui/insert_menu.py:125
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
-"A jelenlegi dátum és idő beszúrása (A formátum kiválasztható "
-"a beállítgásokban)"
+"A jelenlegi dátum és idő beszúrása (A formátum kiválasztható a "
+"beállítgásokban)"
 
 #: ../rednotebook/gui/insert_menu.py:127
 msgid "Line Break"
@@ -724,15 +719,14 @@ msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
-"Néhány példát hozzáadtunk indítás-segítségként, amelyet azonban "
-"bármikor törölhet."
+"Néhány példát hozzáadtunk indítás-segítségként, amelyet azonban bármikor "
+"törölhet."
 
 #: ../rednotebook/info.py:108
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
-msgstr ""
-"A példaszöveg és a dokumentáció elérhető itt: 'Súgó' -> 'Tartalmak'"
+msgstr "A példaszöveg és a dokumentáció elérhető itt: 'Súgó' -> 'Tartalmak'"
 
 #. Translators: noun
 #. Translators: Verb
@@ -744,7 +738,8 @@ msgstr "Előnézet"
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
-msgstr "A RedNotebook-nak két állapota van - __Szerkesztés__ és  __Előnézet__."
+msgstr ""
+"A RedNotebook-nak két állapota van - __Szerkesztés__ és  __Előnézet__."
 
 #: ../rednotebook/info.py:116
 msgid "Click on Edit above to see the difference."
@@ -764,9 +759,9 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
-"Ma az //Állatkereskedésbe// mentem és egy **Tigrist** "
-"vettem. Utána --uszodába-- mentrünk a parkban és "
-"frizbit játszottunk. Ezt követően megnéztük \"__Brian életét__\""
+"Ma az //Állatkereskedésbe// mentem és egy **Tigrist** vettem. Utána --"
+"uszodába-- mentrünk a parkban és frizbit játszottunk. Ezt követően megnéztük "
+"\"__Brian életét__\""
 
 #. Translators: both are verbs
 #: ../rednotebook/info.py:136
@@ -778,38 +773,36 @@ msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Mindent, amit beír, rendszeres időközönként és a programból  "
-"kilépéskor mentésre kerül."
+"Mindent, amit beír, rendszeres időközönként és a programból  kilépéskor "
+"mentésre kerül."
 
 #: ../rednotebook/info.py:140
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
-"Végezzen rendszeresen biztonsági mentést a naplóról, hogy elkerülje az adatvesztést."
+"Végezzen rendszeresen biztonsági mentést a naplóról, hogy elkerülje az "
+"adatvesztést."
 
 #: ../rednotebook/info.py:141
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
-"Az „Adatmentés“ bejegyzés a „Napló“ menüpont alatt Zip-fájlba "
-"menti a bejegyzéseket."
+"Az „Adatmentés“ bejegyzés a „Napló“ menüpont alatt Zip-fájlba menti a "
+"bejegyzéseket."
 
 #: ../rednotebook/info.py:142
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
-"A \"Napló\" menüben található az \"Exportálás\" kapcsoló is."
+msgstr "A \"Napló\" menüben található az \"Exportálás\" kapcsoló is."
 
 #: ../rednotebook/info.py:143
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
-"Kattintson az \"Export\"-ra és exportálja az előjegyzési naptárt "
-"egyszerű szövegformátumban, PDF-ben, HTML-ben vagy Latex-ben."
+"Kattintson az \"Export\"-ra és exportálja az előjegyzési naptárt egyszerű "
+"szövegformátumban, PDF-ben, HTML-ben vagy Latex-ben."
 
 #: ../rednotebook/info.py:146
 msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr ""
-"Ha hibát talál a programban, jelentse azt, hogy "
-"kijavíthassuk."
+msgstr "Ha hibát talál a programban, jelentse azt, hogy kijavíthassuk."
 
 #: ../rednotebook/info.py:147
 msgid "Any feedback is appreciated."
@@ -828,11 +821,10 @@ msgid ""
 "separator lines (20 “=”s)."
 msgstr ""
 "=== Több bejegyzés ===\n"
-"Több bejegyzést is hozzáadhat adott napon, mialatt "
-"különböző naplókat használ (az egyik neve \"Munka\", a másiké "
-"\"Család\") és a különböző című bejegyzéseit (=== Munka "
-"===, === Család ===) egymástól elválasztja és vízszintes választóvonalakat "
-"(20 \"=\"s) használ."
+"Több bejegyzést is hozzáadhat adott napon, mialatt különböző naplókat "
+"használ (az egyik neve \"Munka\", a másiké \"Család\") és a különböző című "
+"bejegyzéseit (=== Munka ===, === Család ===) egymástól elválasztja és "
+"vízszintes választóvonalakat (20 \"=\"s) használ."
 
 #: ../rednotebook/info.py:178
 msgid ""
@@ -1014,7 +1006,8 @@ msgstr "Sablon megnevezése"
 
 #: ../rednotebook/templates.py:323
 msgid "This template file contains no text or has unreadable content."
-msgstr "Ez a sablon nem tartalmaz szöveget, vagy annak tartalma nem olvasható."
+msgstr ""
+"Ez a sablon nem tartalmaz szöveget, vagy annak tartalma nem olvasható."
 
 #: ../rednotebook/templates.py:376
 msgid "This Weekday's Template"
@@ -1121,12 +1114,12 @@ msgstr ""
 "Jendrik Seipp\n"
 "\n"
 "Launchpad Contributions:\n"
-"Launchpad Contributions:\n"
 "  Gergely Szarka https://launchpad.net/~gszarka\n"
+"  Laszlo Koncz https://launchpad.net/~koncz-l\n"
 "  Muszela Balázs https://launchpad.net/~bazsi86-deactivatedaccount\n"
+"  Richard Somlói https://launchpad.net/~ricsipontaz\n"
 "  SanskritFritz https://launchpad.net/~sanskritfritz+launchpad\n"
 "  Zoltán Krasznecz https://launchpad.net/~krasznecz-zoltan"
-"  Koncz László koncz.l@upcmail.hu"
 
 #: tmp/main_window.glade.h:14
 msgid "New entry"
