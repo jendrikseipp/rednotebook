@@ -87,7 +87,7 @@ fi
 
 # Run RedNotebook with the newest python2 version available --------------------
 
-for PYTHON in python2.7 python2.6; do
+for PYTHON in python2.7; do
     echo Checking for $PYTHON
     # Returns 0 if command is found.
     command -v $PYTHON >/dev/null 2>&1
