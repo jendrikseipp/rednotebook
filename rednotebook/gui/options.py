@@ -54,17 +54,20 @@ class Option(gtk.HBox):
 
 
 class TickOption(Option):
-    def __init__(self, text, name, value=None, default=0, tooltip=''):
+    def __init__(self, text, name, value=None, tooltip=''):
         Option.__init__(self, '', name, tooltip=tooltip)
 
         self.check_button = gtk.CheckButton(text)
-
         if value is None:
-            self.check_button.set_active(Option.config.read(name, default) == 1)
+            self.check_button.set_active(Option.config.read(name) == 1)
         else:
             self.check_button.set_active(value)
-
+        self.check_button.connect('clicked', self.on_check_button_clicked)
         self.pack_start(self.check_button, False)
+
+    def on_check_button_clicked(self, widget):
+        pass
+        # TODO: Apply corresponding actions.
 
     def get_value(self):
         return self.check_button.get_active()
@@ -78,12 +81,11 @@ class TickOption(Option):
 
 class AutostartOption(TickOption):
     def __init__(self):
-        home_dir = os.path.expanduser('~')
-        autostart_dir = os.path.join(home_dir, '.config/autostart/')
-        self.autostart_file = os.path.join(autostart_dir, 'rednotebook.desktop')
+        self.autostart_file = os.path.expanduser(
+            '~.config/autostart/rednotebook.desktop')
         autostart_file_exists = os.path.exists(self.autostart_file)
-        TickOption.__init__(self, _('Load RedNotebook at startup'), None,
-                            value=autostart_file_exists)
+        TickOption.__init__(
+            self, _('Load RedNotebook at startup'), None, value=autostart_file_exists)
 
     def get_value(self):
         return self.check_button.get_active()
@@ -268,18 +270,24 @@ class OptionsManager(object):
         # closed. The option can still be activated in the configuration file.
         if filesystem.has_system_tray():
             self.options.append(TickOption(
-                _('Close to system tray'), 'closeToTray',
+                _('Close to system tray'),
+                'closeToTray',
                 tooltip=_('Closing the window will send RedNotebook to the tray')))
 
         # Automatic switching between preview and edit mode.
-        self.options.append(TickOption(_('Switch between edit and preview mode automatically'),
-                                       'autoSwitchMode', default=0))
+        self.options.append(TickOption(
+            _('Switch between edit and preview mode automatically'),
+            'autoSwitchMode'))
 
         # Check for new version
-        check_version_option = TickOption(_('Check for new version at startup'), 'checkForNewVersion')
+        check_version_option = TickOption(
+            _('Check for new version at startup'),
+            'checkForNewVersion')
 
         # Enable/Disable right-hand pane
-        self.options.append(TickOption(_('Show right-side tags pane'), 'showTagsPane'))
+        self.options.append(TickOption(
+            _('Show right-side tags pane'),
+            'showTagsPane'))
 
         def check_version_action(widget):
             utils.check_new_version(self.main_window.journal, info.version)
