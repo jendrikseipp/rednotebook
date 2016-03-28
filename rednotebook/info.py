@@ -17,13 +17,13 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import argparse
+
 # This is required for setup.py to be able to import this module.
 import __builtin__
 if not hasattr(__builtin__, '_'):
     def _(string):
         return string
-
-import argparse
 
 
 version = '1.11'
