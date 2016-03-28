@@ -213,22 +213,16 @@ def make_file_with_dir(file, content):
 def get_relative_path(from_dir, to_dir):
     '''
     Try getting the relative path from from_dir to to_dir
-    The relpath method is only available in python >= 2.6
-    if we run python <= 2.5, return the absolute path to to_dir
     '''
-    if getattr(os.path, 'relpath', None):
-        # If the data is saved on two different windows partitions,
-        # return absolute path to to_dir
-        drive1, tail = os.path.splitdrive(from_dir)
-        drive2, tail = os.path.splitdrive(to_dir)
-
-        # drive1 and drive2 are always empty strings on Unix
-        if not drive1.upper() == drive2.upper():
-            return to_dir
-
-        return os.path.relpath(to_dir, from_dir)
-    else:
+    # If the data is saved on two different windows partitions,
+    # return absolute path to to_dir.
+    # drive1 and drive2 are always empty strings on Unix.
+    drive1, _ = os.path.splitdrive(from_dir)
+    drive2, _ = os.path.splitdrive(to_dir)
+    if drive1.upper() != drive2.upper():
         return to_dir
+
+    return os.path.relpath(to_dir, from_dir)
 
 
 def get_journal_title(dir):

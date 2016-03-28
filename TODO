@@ -7,6 +7,8 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+X Remove support for Python 2.6.
+
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.
   Maybe it's better to use #Movies:Oblivion
@@ -79,7 +81,6 @@ O Imports
 O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space, white text on black bg)
 O Translate help (Restructure first using Sphinx?)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
-O Upgrade txt2tags from 2.6b to 2.7 (Do not update to 2.6 to save some work)
 O Make txt2tags faster and fix bugs
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
