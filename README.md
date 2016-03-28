@@ -41,10 +41,10 @@ If you don't want to mess with your distribution's package system, you might
 want to just run the program, without installing it by using the command above.
 
 ## Requirements
-  - Python (2.6/2.7) (www.python.org)
-  - PyYaml (>=3.05) (www.pyyaml.org)
-  - PyGTK (>=2.16) (www.pygtk.org)
-  - pywebkitgtk (>=1.1.5) (http://code.google.com/p/pywebkitgtk/)
+  - Python 2.7 (3.x not supported)
+  - PyYaml (>=3.05)
+  - PyGTK (>=2.16)
+  - pywebkitgtk (>=1.1.5)
 
   - Optionally:
     - python-chardet (http://chardet.feedparser.org)
