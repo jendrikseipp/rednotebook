@@ -1,3 +1,12 @@
+rednotebook (1.12-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Add option to hide right-hand tags pane (thanks Ron Brown, Jr.).
+  * Never overwrite externally changed month files (thanks Felix Zörgiebel).
+  * Remove support for Python 2.6.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 28 Mar 2016 20:56:33 +0200
+
 rednotebook (1.11-1) UNRELEASED; urgency=low
 
   * New upstream release
