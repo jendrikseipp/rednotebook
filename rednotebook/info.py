@@ -23,10 +23,7 @@ if not hasattr(__builtin__, '_'):
     def _(string):
         return string
 
-try:
-    import argparse
-except ImportError:
-    from rednotebook.external import argparse
+import argparse
 
 
 version = '1.11'
