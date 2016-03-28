@@ -26,7 +26,7 @@ if not hasattr(__builtin__, '_'):
         return string
 
 
-version = '1.11'
+version = '1.12'
 author = 'Jendrik Seipp'
 author_mail = 'jendrikseipp@web.de'
 url = 'http://rednotebook.sourceforge.net'

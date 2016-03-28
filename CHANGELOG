@@ -1,3 +1,8 @@
+== 1.12 (2016-03-28) ==
+* Add option to hide right-hand tags pane (thanks Ron Brown, Jr.).
+* Never overwrite externally changed month files (thanks Felix Zörgiebel).
+* Remove support for Python 2.6.
+
 == 1.11 (2015-11-08) ==
 * Remind users to make new backup if last backup is older than a month.
 * When inserting a link for a selected text passage, replace text passage.
