@@ -38,7 +38,7 @@ developers = [
     '%(author)s <%(author_mail)s>' % locals(),
     '',
     'Contributors:',
-    'Alistair Marshall <thatscottishengineer@gmail.com>']
+    'https://github.com/jendrikseipp/rednotebook/graphs/contributors']
 
 comments = '''\
 RedNotebook is a modern desktop journal. It lets you format, tag and
@@ -696,7 +696,7 @@ desktop_file = '''\
 Version=1.0
 Name=RedNotebook
 GenericName=Journal
-Comment=Daily journal with calendar, templates and keyword searching
+Comment=Daily journal with calendar, templates and keyword search
 Exec=rednotebook
 Icon=rednotebook
 Terminal=false
