@@ -472,7 +472,7 @@ class MainWindow(object):
         label = self.builder.get_object('dir_chooser_label')
 
         label.set_markup('<b>' + message + '</b>')
-        dir_chooser.set_current_folder(self.journal.dirs.data_dir)
+        dir_chooser.set_current_folder(os.path.dirname(self.journal.dirs.data_dir))
 
         response = dir_chooser.run()
         # Retrieve the dir now, because it will be cleared by the call to hide().
