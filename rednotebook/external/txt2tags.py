@@ -1925,10 +1925,11 @@ def getRegexes():
     # Also works      : scheme://user:pass@domain/path#anchor?query=foo
     # TODO form: !'():
     ## JS: Add support for irc protocol.
+    ## JS: Allow ampersands in e-mail addresses.
     urlskel = {
         'proto' : r'(https?|ftp|news|telnet|gopher|wais|irc[6s]?)://',
         'guess' : r'(www[23]?|ftp)\.',         # w/out proto, try to guess
-        'login' : r'A-Za-z0-9_.-',             # for ftp://login@domain.com
+        'login' : r'A-Za-z0-9_.\-&',           # for ftp://login@domain.com
         'pass'  : r'[^ @]*',                   # for ftp://login:pass@dom.com
         'chars' : r'A-Za-z0-9%._/~:,=$@&+-',   # %20(space), :80(port), D&D
         'anchor': r'A-Za-z0-9%._-',            # %nn(encoded)
