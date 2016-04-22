@@ -7,6 +7,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
+X When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
 
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.
