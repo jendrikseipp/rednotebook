@@ -295,13 +295,12 @@ the blacklist. This will filter out all words.
 
 == Spellcheck ==
 
-RedNotebook supports spellchecking your entries. On Linux this feature
-needs the package ``python-gtkspell``. The feature can be turned on and
-off by toggling the item under the "Edit" menu.
+RedNotebook supports spellchecking your entries. On Ubuntu this feature
+needs the package ``python-gtkspellcheck``. Spellchecking can be turned
+on and off by toggling the item under the "Edit" menu.
 
-Since gtkspell 2.0.15, you can select the spellchecking language by
-right-clicking on the main text area (in edit mode) and choosing it
-from the submenu "Languages".
+You can select the spellchecking language by right-clicking on the main
+text area (in edit mode) and choosing it from the submenu "Languages".
 
 === Adding custom dictionaries under Windows ===
 

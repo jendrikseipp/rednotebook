@@ -9,6 +9,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 X When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
 X Allow ampersands in e-mail addresses (lp:1570476, thanks pdofak)
+X python-gtkspell has been renamed to python-gtkspellcheck. Update docs and debian/control accordingly.
 
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.
