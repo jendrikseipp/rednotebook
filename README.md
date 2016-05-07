@@ -7,7 +7,7 @@ Latex or PDF.
 
 # Run under Linux
 
-    $ ./run
+    $ sudo ./run
 
 Installs all dependencies, translates the application and runs
 RedNotebook without installation.
