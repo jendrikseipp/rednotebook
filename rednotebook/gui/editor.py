@@ -28,7 +28,8 @@ import pango
 try:
     import gtkspell
 except ImportError:
-    logging.warning('pygtkspellcheck is missing so spell checking is disabled.')
+    logging.warning(
+        'For spell checking, please install pygtkspellcheck (python-gtkspellcheck).')
     gtkspell = None
 
 from rednotebook.gui import t2t_highlight

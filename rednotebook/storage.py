@@ -29,7 +29,7 @@ import sys
 try:
     import yaml
 except ImportError:
-    logging.error('PyYAML not found. Please install python-yaml or PyYAML')
+    logging.error('PyYAML not found. Please install it (python-yaml).')
     sys.exit(1)
 
 # The presence of the yaml module has been checked
