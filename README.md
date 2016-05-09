@@ -7,7 +7,7 @@ Latex or PDF.
 
 # Run under Linux (without installation)
 
-    $ ./run
+    $ sudo ./run
 
 # Run under Windows
 
