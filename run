@@ -2,14 +2,14 @@
 #
 # Little helper script that runs RedNotebook without installing it.
 #
+# Note: No need to translate strings locally, since they won't be
+# picked up anyway.
+#
 
 set -euo pipefail
 
-# Change into RedNotebook directory
+# Change into RedNotebook directory.
+cd "$(dirname "$0")"
 
-BASEDIR="$(dirname "$0")"
-cd $BASEDIR
-
-# Run RedNotebook
-
+# Run RedNotebook.
 python2.7 rednotebook/journal.py "$@"
