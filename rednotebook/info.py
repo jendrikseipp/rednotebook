@@ -296,9 +296,9 @@ the blacklist. This will filter out all words.
 == Spellcheck ==
 
 RedNotebook supports spellchecking your entries. This feature needs the
-pygtkspellcheck library (``python-gtkspellcheck`` on Ubuntu).
-Spellchecking can be turned on and off by toggling the menu item in the
-"Edit" menu.
+pygtkspellcheck library (``python-gtkspellcheck`` on Ubuntu,
+``gnome-python2-gtkspell`` on Fedora). Spellchecking can be turned on
+and off by toggling the menu item in the "Edit" menu.
 
 You can select the spellchecking language by right-clicking on the main
 text area (in edit mode) and choosing it from the submenu "Languages".
