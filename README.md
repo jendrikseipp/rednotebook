@@ -5,12 +5,9 @@ search your entries. You can also add pictures, links and customizable
 templates, spell check your notes, and export to plain text, HTML,
 Latex or PDF.
 
-# Run under Linux
+# Run under Linux (without installation)
 
     $ ./run
-
-Installs all dependencies, translates the application and runs
-RedNotebook without installation.
 
 # Run under Windows
 
