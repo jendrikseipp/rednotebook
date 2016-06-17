@@ -1,3 +1,8 @@
+== 1.13 (2016-06-17) ==
+* When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
+* Allow ampersands in e-mail addresses (lp:1570476, thanks pdofak).
+* python-gtkspell has been renamed to python-gtkspellcheck. Update docs and debian/control accordingly.
+
 == 1.12 (2016-03-28) ==
 * Add option to hide right-hand tags pane (thanks Ron Brown, Jr.).
 * Never overwrite externally changed month files (thanks Felix Zörgiebel).
