@@ -1,18 +1,16 @@
 #! /usr/bin/env python
 
 import argparse
-import logging
 import os
 from subprocess import call
-import sys
 
-logging.basicConfig(level=logging.INFO)
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('src')
     parser.add_argument('--destdir', default='')
     return parser.parse_args()
+
 
 args = parse_args()
 
