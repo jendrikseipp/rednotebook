@@ -10,7 +10,7 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.
-  Maybe it's better to use #Movies:Oblivion
+  Maybe it's better to use #Movies:Oblivion and end the subtag at the end of the line.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
