@@ -5,6 +5,15 @@ search your entries. You can also add pictures, links and customizable
 templates, spell check your notes, and export to plain text, HTML,
 Latex or PDF.
 
+# Requirements
+  - Python 2.7 (3.x not supported)
+  - PyYaml (>=3.05)
+  - PyGTK (>=2.16)
+  - pywebkitgtk (>=1.1.5)
+
+  - Optional:
+    - pygtkspellcheck
+
 # Run under Linux (without installation)
 
     $ ./run
@@ -16,8 +25,8 @@ run
 
     C:\path\to\rednotebook\win> python create-build-env.py
 
-and follow the instruction to add `C:\gtkbin` to your path. Now change
-back into the rednotebook directory and run
+and add `C:\gtkbin` to your path. Now change back into the rednotebook
+directory and run
 
     C:\path\to\rednotebook> python rednotebook/journal.py
 
@@ -25,37 +34,32 @@ Be sure to use the **32-bit version** of Python! (Or install the 64-bit
 versions of the various dependencies required for the project.)
 
 
-# Installation
+# Install
 
-It is recommended to install RedNotebook with your package manager.
-Follow the steps below only if your distribution has no RedNotebook
-package or you want to use a newer RedNotebook version.
+It is recommended to install RedNotebook with your package manager or
+to download the Windows installer. Follow the steps below only if your
+distribution has no RedNotebook package or you want to use a newer
+RedNotebook version.
 
-In order not to mess up your package system, you might want to run
-RedNotebook without installing it. If so, use the `run` script.
+Install RedNotebook in the global `site-packages` directory and make
+`rednotebook` command available globally:
 
-## Requirements
-  - Python 2.7 (3.x not supported)
-  - PyYaml (>=3.05)
-  - PyGTK (>=2.16)
-  - pywebkitgtk (>=1.1.5)
+    sudo apt-get install python-pip
+    # Change into RedNotebook directory.
+    sudo pip install .
 
-  - Optionally:
-    - python-chardet (http://chardet.feedparser.org)
-      Better recognition of file encodings
+Install RedNotebook locally under
+`~/.local/lib/python2.7/site-packages/` and create
+`~/.local/bin/rednotebook` executable:
 
-Please note: Installing is very easy, uninstalling however can only be
-done by removing the installed files manually. It is therefore
-recommended to save the list of installed files. Install RedNotebook
-into your global `site-packages` directory:
-
-    $ sudo python setup.py install --record installed-files
+    sudo apt-get install python-pip
+    # Change into RedNotebook directory.
+    pip install --user .
 
 
 # Thanks to
 
-- The authors of the programs listed under 'Requirements'. Remember that
-  without them, RedNotebook would not be possible.
+- The authors of the programs listed under 'Requirements'.
 - Everaldo Coelho (www.everaldo.com) for the original icon
   (easymoblog.png) and Ciaran for the excellent redesign.
 - The txt2tags team (http://txt2tags.net) for their super cool markup tool.
