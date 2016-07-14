@@ -93,19 +93,19 @@ class HtmlPrinter(object):
         except gobject.GError, e:
             logging.error(e.message)
 
-    def _title_changed_cb(self, view, frame, title):
+    def _title_changed_cb(self, _view, frame, title):
         logging.info('Title changed: %s' % title)
         # MathJax changes the title once it has typeset all formulas.
         if title == markup.MATHJAX_FINISHED:
             self._print(frame)
 
-    def _load_finished_cb(self, view, frame):
+    def _load_finished_cb(self, _view, frame):
         logging.info('Loading done')
         # If there's a formula, it is typeset after the load-finished signal.
         if not self.contains_mathjax:
             self._print(frame)
 
-    def _load_error_cb(self, view, frame, url, gp):
+    def _load_error_cb(self, _view, frame, url, _gp):
         logging.error("Error loading %s" % url)
 
     def _end_print_cb(self, *args):

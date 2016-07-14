@@ -252,7 +252,7 @@ class Editor(object):
         self.undo_redo_manager.add_action(undo.Action(undo_func, redo_func))
         self.old_text = new_text
 
-    def on_text_change(self, textbuffer, undoing=False):
+    def on_text_change(self, _buffer, undoing=False):
         # Do not record changes while undoing or redoing.
         if undoing:
             self.old_text = self.get_text()

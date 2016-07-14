@@ -810,7 +810,7 @@ class Calendar(object):
 
         self.date_listener = self.calendar.connect('day-selected', self.on_day_selected)
 
-    def on_day_selected(self, cal):
+    def on_day_selected(self, _cal):
         self.journal.change_date(self.get_date())
 
     def set_date(self, date):
