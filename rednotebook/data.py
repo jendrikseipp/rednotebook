@@ -94,7 +94,8 @@ class Day(object):
         self.date = datetime.date(month.year_number, month.month_number, day_number)
 
         # Turn all entries of old "Tags" categories into tags without entries.
-        old_tags = day_content.pop('Tags', {})
+        # Apparently, "Tags" may map to None, so explicitly convert to dict.
+        old_tags = day_content.pop('Tags', None) or {}
         for old_tag in old_tags.keys():
             day_content[old_tag] = None
             self.month.edited = True
