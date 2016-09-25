@@ -6,7 +6,10 @@
   <name>RedNotebook</name>
   <summary>Graphical Diary and Journal</summary>
   <description>
-    <p>RedNotebook is a graphical journal to keep track of notes and thoughts. It includes a calendar navigation, customizable templates, export functionality and word clouds. You can also format, tag and search your entries.</p>
+    <p>RedNotebook is a modern desktop journal. It lets you format, tag
+    and search your entries. You can also add pictures, links and
+    customizable templates, spell check your notes, and export to plain
+    text, HTML, Latex or PDF.</p>
   </description>
   <url type="homepage">http://rednotebook.sourceforge.net/</url>
   <screenshots>
