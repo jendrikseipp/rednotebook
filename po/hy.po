@@ -8,30 +8,32 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2016-08-10 18:47+0400\n"
-"Last-Translator: Seda Stamboltsyan <sedastam@mail.com>\n"
+"PO-Revision-Date: 2016-08-14 04:28+0000\n"
+"Last-Translator: Serj Safarian <serjsafarian@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-09 22:20+0000\n"
-"X-Generator: Poedit 1.8.7.1\n"
-"MIME-Version: 1.0\n"
+"X-Launchpad-Export-Date: 2016-08-15 05:20+0000\n"
+"X-Generator: Launchpad (build 18169)\n"
 "Language: hy\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr "Վաղուց պահեստային օրինակ չի ստեղծվել"
+msgstr "Վաղուց պահեստային պատճեն չի ստեղծվել։"
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
-msgstr "Կարող ես օրագիրդ պահպանել որպես zip նիշք՝ տվյալներդ չկորցնելու համար։"
+msgstr ""
+"Կարող եք պահպանել Ձեր օրագիրը որպես zip նիշք՝ տվյալները չկորցնելու համար։"
 
 #: ../rednotebook/backup.py:61
 msgid "Backup"
-msgstr "Պահեստային օրինակ"
+msgstr "պահեստային պատճեն"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr "Ստեղծել պահեստային օրինակ հիմա"
+msgstr "Ստեղծել պահեստային պատճեն"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
@@ -47,7 +49,7 @@ msgstr "Ցույց տալ RedNotebook-ը"
 
 #: ../rednotebook/gui/main_window.py:477
 msgid "No directory selected."
-msgstr "Որևէ պանակ չի ընտրվել"
+msgstr "Որևէ պանակ չի ընտրվել։"
 
 #: ../rednotebook/gui/main_window.py:569
 #: ../rednotebook/gui/customwidgets.py:363
@@ -58,8 +60,8 @@ msgstr "Ձևանմուշ"
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
-"Ներմուծել շաբաթվա այս օրվա ձևանմուշը։ Սեղմել աջ կողմի սլաքը՝ հավելյալ "
-"նախընտրանքների համար։"
+"Զետեղել շաբաթվա այս օրվա ձևանմուշը։ Սեղմել աջ կողմի սլաքը՝ այլ "
+"նախընտրանքների համար"
 
 #: ../rednotebook/gui/format_menu.py:98
 msgid "No text or tag has been selected."
@@ -87,21 +89,21 @@ msgstr "Ջնջագծված"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Clear format"
-msgstr "Վերացնել ձևավորումը"
+msgstr "Մաքրել ձեւաչափը"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
 msgid "_Format"
-msgstr "_Ձևավորում"
+msgstr "_Ձեւաչափ"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:394
 msgid "Format"
-msgstr "Ձևավորում"
+msgstr "Ձևաչափ"
 
 #: ../rednotebook/gui/format_menu.py:136
 msgid "Format the selected text or tag"
-msgstr "Ձևավորել ընտրված տեքստը կամ պիտակը"
+msgstr "Ձևաչափել ընտրված տեքստը կամ պիտակը"
 
 #: ../rednotebook/gui/customwidgets.py:354
 msgid "Introduction"
@@ -109,15 +111,15 @@ msgstr "Ներածություն"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Save and insert"
-msgstr "Պահպանել և ներմուծել"
+msgstr "Պահպանել և զետեղել"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words, and, #tags"
-msgstr "զտել, սրանք, ստորակետ, զատված, բառեր, և, #պիտակներ"
+msgstr "զտիչ, սրանք, ստորակետ, զատված, բառեր, և, #պիտակներ"
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
-msgstr "mtv, spam, գործ, խաղ"
+msgstr "mtv, փոսաղբ, գործ, աշխատանք, խաղ"
 
 #: ../rednotebook/gui/clouds.py:191 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:136
@@ -132,7 +134,7 @@ msgstr "Բառեր"
 #: ../rednotebook/gui/clouds.py:253
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr "Թաքցնել \"%s\"-ը ամպերից"
+msgstr "Թաքցնել «%s»-ն ամպերից"
 
 #: ../rednotebook/gui/exports.py:43 ../rednotebook/gui/exports.py:395
 msgid "Export all days"
@@ -148,11 +150,11 @@ msgstr "Արտահանել ընտրված ժամանակահատվածի օրե�
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
-msgstr "Սկիզբ"
+msgstr "Սկսած՝"
 
 #: ../rednotebook/gui/exports.py:61
 msgid "To:"
-msgstr "Վերջ"
+msgstr "Մինչ՝"
 
 #: ../rednotebook/gui/exports.py:108
 msgid "Export currently selected text"
@@ -164,15 +166,15 @@ msgstr "(Գործում է միայն, երբ տեքստն ընտրված է խ�
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Date format"
-msgstr "Ամիս-ամսաթվի ձևաչափ"
+msgstr "Ամսաթվի ձևաչափ"
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Leave blank to omit dates in export"
-msgstr "Դատարկ թողնել՝ արտահանելիս ամիս-ամսաթվերը չներառելու համար"
+msgstr "Դատարկ թողնել՝ արտահանելիս ամսաթվերը չներառելու համա"
 
 #: ../rednotebook/gui/exports.py:137
 msgid "Export text and tags"
-msgstr "Արտահանել տեքստն ու պիտակները"
+msgstr "Արտահանել տեքստը և պիտակները"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text only"
@@ -204,11 +206,11 @@ msgstr "Ընտրությունը չեղարկել"
 
 #: ../rednotebook/gui/exports.py:256
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr "Ըստ պիտակների զտելիս պետք է ընտրել առնվազն մեկ պիտակ"
+msgstr "Ըստ պիտակների զտելիս պետք է ընտրել առնվազն մեկ պիտակ։"
 
 #: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
-msgstr "Ընտրել ես հետևյալ կարգավորումները."
+msgstr "Ընտրել եք հետևյալ կարգավորումները."
 
 #: ../rednotebook/gui/exports.py:304
 msgid "Export Assistant"
@@ -220,15 +222,14 @@ msgstr "Բարի գալուստ արտահանման ուղեցույց։"
 
 #: ../rednotebook/gui/exports.py:308
 msgid "This wizard will help you to export your journal to various formats."
-msgstr "Այս ուղեցույցը կօգնի օրագիրդ արտահանել տարբեր ձևաչափերով։"
+msgstr "Այս ուղեցույցը կօգնի արտահանել Ձեր օրագիրը տարբեր ձևաչափերով։"
 
 #: ../rednotebook/gui/exports.py:309
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
-"Կարող ես ընտրել արտահանման ենթակա օրերը և այն պանակը, որտեղ պիտի արդյունքը "
-"պահպանվի։"
+"Ըատրեք, թե որ օրերը պետք է արտահանել և պանակը՝ դրանք պահպանելու համար։"
 
 #: ../rednotebook/gui/exports.py:319
 msgid "Select Export Format"
@@ -252,7 +253,7 @@ msgstr "Ամփոփում"
 
 #: ../rednotebook/gui/exports.py:399 ../rednotebook/gui/search.py:76
 msgid "Date"
-msgstr "Ամիս-ամսաթիվ"
+msgstr "Ամսաթիվ"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
@@ -260,11 +261,11 @@ msgstr "Արտահանել միայն ընտրված տեքստը"
 
 #: ../rednotebook/gui/exports.py:404
 msgid "Start date"
-msgstr "Ժամանակամիջոցի սկիզբ"
+msgstr "Սկսման ամսաթիվը"
 
 #: ../rednotebook/gui/exports.py:405
 msgid "End date"
-msgstr "Ժամանակամիջոցի ավարտ"
+msgstr "Ավարտման ամսաթիվը"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include text"
@@ -309,16 +310,17 @@ msgstr "_Օրագիր"
 
 #: ../rednotebook/gui/menu.py:95
 msgid "Create a new journal. The old one will be saved"
-msgstr "Ստեղծել նոր օրագիր։ Հինը կպահպանվի։"
+msgstr "Ստեղծել նոր օրագիր։ Հինը կպահպանվի"
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "Բեռնել առկա օրագիր։ Հինը կպահպանվի։"
+msgstr "Բեռնել առկա օրագիրը։ Հինը կպահպանվի"
 
 #: ../rednotebook/gui/menu.py:103
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
-msgstr "Օրագիրը պահպանել նոր պանակում։ Հին օրագրի նիշքերը նույնպես կպահպանվեն։"
+msgstr ""
+"Օրագիրը պահպանել նոր պանակում։ Հին օրագրի նիշքերը նույնպես կպահպանվեն"
 
 #. Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
@@ -326,7 +328,7 @@ msgstr "Օրագիրը պահպանել նոր պանակում։ Հին օրա�
 #. Translators: Verb
 #: ../rednotebook/gui/menu.py:109
 msgid "Export"
-msgstr "Արտահանում"
+msgstr "Արտահանել"
 
 #: ../rednotebook/gui/menu.py:110
 msgid "Open the export assistant"
@@ -335,7 +337,7 @@ msgstr "Բացել արտահանման ուղեցույցը"
 #. Translators: Verb
 #: ../rednotebook/gui/menu.py:112
 msgid "_Backup"
-msgstr "_Պահեստային օրինակ"
+msgstr "_Ստեղծել պահեստային պատճեն"
 
 #: ../rednotebook/gui/menu.py:113
 msgid "Save all the data in a zip archive"
@@ -359,11 +361,11 @@ msgstr "_Խմբագրում"
 
 #: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
-msgstr "Չեղարկել տեքստի կամ պիտակի խմբագրումը"
+msgstr "Ետարկել տեքստի կամ պիտակի խմբագրումը"
 
 #: ../rednotebook/gui/menu.py:124
 msgid "Redo text or tag edits"
-msgstr "Կրկնել տեքստի կամ պիտակի խմբագրումը"
+msgstr "Վերարկել տեքստի կամ պիտակի խմբագրումը"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Underline misspelled words"
@@ -395,7 +397,7 @@ msgstr "Թարգմանել RedNotebook-ը"
 
 #: ../rednotebook/gui/menu.py:149
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Գնալ Launchpad կայք՝ ծրագիրը թարգմանելու համար "
+msgstr "Գնալ Launchpad կայք՝ RedNotebook-ը թարգմանելու համար"
 
 #: ../rednotebook/gui/menu.py:151
 msgid "Report a Problem"
@@ -411,11 +413,11 @@ msgstr "Սխալ պանակ"
 
 #: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:204
 msgid "You cannot use this directory for your journal:"
-msgstr "Չես կարող օրագրիդ համար գործածել այս պանակը՝"
+msgstr "Դուք չեք կարող օրագրի համար գործածել այս պանակը՝"
 
 #: ../rednotebook/gui/menu.py:179
 msgid "Please select an empty directory."
-msgstr "Ընտրիր դատարկ պանակ։"
+msgstr "Ընտրեք դատարկ պանակ։"
 
 #: ../rednotebook/gui/menu.py:183
 msgid "This directory contains no journal files:"
@@ -423,7 +425,7 @@ msgstr "Այս պանակն օրագրի նիշքեր չունի."
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Journals are saved in a directory, not in a single file."
-msgstr "Օրագրերը պահպանվում են պանակում, ո՛չ մեկ նիշքում"
+msgstr "Օրագրերը պահպանվում են պանակում, այլ ոչ թե առանձին նիշքում։"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "The directory name will be the title of the new journal."
@@ -431,23 +433,23 @@ msgstr "Պանակի անունը նոր օրագրի անունն է լինել
 
 #: ../rednotebook/gui/menu.py:201
 msgid "Select an empty folder for your new journal"
-msgstr "Նոր օրագրի համար ընտրիր դատարկ պանակ"
+msgstr "Նոր օրագրի համար ընտրեք դատարկ պանակ"
 
 #: ../rednotebook/gui/menu.py:204
 msgid "Select an existing journal directory"
-msgstr "Ընտրիր օրագրի առկա պանակ"
+msgstr "Ընտրեք օրագրի առկա պանակ"
 
 #: ../rednotebook/gui/menu.py:205
 msgid "The directory should contain your journal's data files"
-msgstr "Պանակը պիտի պարունակի օրագրիդ տվյալների նիշքերը"
+msgstr "Պանակը պիտի պարունակի Ձեր օրագրի տվյալների նիշքերը"
 
 #: ../rednotebook/gui/menu.py:215
 msgid "Select an empty folder for the new location of your journal"
-msgstr "Օրագրիդ նոր տեղադրության համար ընտրիր դատարկ պանակ"
+msgstr "Ձեր օրագրի նոր տեղադրության համար ընտրեք դատարկ պանակ"
 
 #: ../rednotebook/gui/menu.py:216
 msgid "The directory name will be the new title of the journal"
-msgstr "Պանակի անունը օրագրի նոր անունն է լինելու"
+msgstr "Պանակի անունն օրագրի նոր անունն է լինելու"
 
 #: ../rednotebook/gui/menu.py:284
 msgid "RedNotebook Documentation"
@@ -467,7 +469,7 @@ msgstr "%A, %x, Օր %j"
 
 #: ../rednotebook/gui/options.py:138
 msgid "Week %W of Year %Y"
-msgstr "%W շաբաթ %Y տարվա"
+msgstr "%Y տարվա %W շաբաթ"
 
 #: ../rednotebook/gui/options.py:139
 msgid "Day %j"
@@ -480,11 +482,11 @@ msgstr "Օգնություն"
 #. Translators: Noun
 #: ../rednotebook/gui/options.py:165
 msgid "Preview:"
-msgstr "Նախադիտում"
+msgstr "Նախադիտում՝"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr "Ընտրել տառատեսակ..."
+msgstr "Ընտրել տառատեսակ …"
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
@@ -500,7 +502,7 @@ msgstr "Պատուհանը փակելը կուղարկի RedNotebook-ը դարա
 
 #: ../rednotebook/gui/options.py:275
 msgid "Switch between edit and preview mode automatically"
-msgstr "Խմբագրման և նախադիտման ցուցադրաձևերը փոխել ինքնաշխատ կերպով"
+msgstr "Խմբագրման և նախադիտման ցուցադրաձևերը փոխել ինքնաբար"
 
 #: ../rednotebook/gui/options.py:279
 msgid "Check for new version at startup"
@@ -512,11 +514,11 @@ msgstr "Ստուգել հիմա"
 
 #: ../rednotebook/gui/options.py:293
 msgid "Edit font:"
-msgstr "Խմբագրել տառատեսակը"
+msgstr "Խմբագրել տառատեսակը՝"
 
 #: ../rednotebook/gui/options.py:294
 msgid "Preview font:"
-msgstr "Տառատեսակի նախադիտում"
+msgstr "Տառատեսակի նախադիտում."
 
 #: ../rednotebook/gui/options.py:296
 msgid "Comma-separated font names"
@@ -524,7 +526,7 @@ msgstr "Ստորակետով զատված տառատեսակներ"
 
 #: ../rednotebook/gui/options.py:297
 msgid "Date/Time format"
-msgstr "Ամիս-ամսաթվի/ժամի ձևաչափ"
+msgstr "Ամսաթվի/ժամի ձևաչափ"
 
 #: ../rednotebook/gui/options.py:298
 msgid "Exclude from cloud"
@@ -548,15 +550,15 @@ msgstr "Տեքստ"
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "First Item"
-msgstr "Առաջին միավորը"
+msgstr "Առաջին տարրը"
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "Second Item"
-msgstr "Երկրորդ միավորը"
+msgstr "Երկրորդ տարրը"
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "Indented Item"
-msgstr "Ներքաշված տողագլխով միավոր"
+msgstr "Ներքաշված տողագլխով տարր"
 
 #: ../rednotebook/gui/insert_menu.py:69
 msgid "Two blank lines close the list"
@@ -609,7 +611,8 @@ msgstr "Ամիս-ամսաթիվ/ժամ"
 
 #: ../rednotebook/gui/insert_menu.py:125
 msgid "Insert the current date and time (edit format in preferences)"
-msgstr "Դնել ընթացիկ ամիս-ամսաթիվն ու ժամը (ձևաչափը խմբագրել նախընտրանքներում)"
+msgstr ""
+"Դնել ընթացիկ ամիս-ամսաթիվն ու ժամը (ձևաչափը խմբագրել նախընտրանքներում)"
 
 #: ../rednotebook/gui/insert_menu.py:127
 msgid "Line Break"
@@ -709,8 +712,8 @@ msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
-"Հետևյալ տեքստը բերված է իբրև օրինակ՝ օգնության համար. այն կարող եսջնջել, "
-"երբ ցանկանաս։"
+"Հետևյալ տեքստը բերված է իբրև օրինակ՝ օգնության համար. այն կարող եսջնջել, երբ "
+"ցանկանաս։"
 
 #: ../rednotebook/info.py:108
 msgid ""
@@ -944,6 +947,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Հեռախոսազանգ ===\n"
+"- **Անձ՝**\n"
+"- **Ժամանակ՝**\n"
+"- **Թեմա՝**\n"
+"- **Արդյունք և հետագա անելիք՝**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:156
 msgid ""
@@ -965,6 +975,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Անձնական ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Ինչպիսին էր օրը**\n"
+"\n"
+"\n"
+"========================\n"
+"**Ինչ է պետք փոխել**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:279
 msgid "Choose Template Name"
@@ -1079,6 +1106,7 @@ msgstr "Ավելացնել պիտակ"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Seda https://launchpad.net/~sedastam\n"
 "  Serj Safarian https://launchpad.net/~safarian"
 
 #: tmp/main_window.glade.h:14
