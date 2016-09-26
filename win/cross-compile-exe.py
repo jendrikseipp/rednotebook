@@ -21,6 +21,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('build_dir')
     parser.add_argument('dist_dir')
+    parser.add_argument('--test', action='store_true')
     return parser.parse_args()
 
 args = parse_args()
@@ -61,4 +62,5 @@ run(['wine', WINE_PYTHON, '-m', 'PyInstaller.main', '--workpath', WINE_BUILD,
      '--distpath', DRIVE_C, SPEC])  # will be built at ...DRIVE_C/dist
 run(['./build-translations.py', LOCALE_DIR], cwd=DIR)
 
-#run(['wine', WINE_RN_EXE])
+if args.test:
+    run(['wine', WINE_RN_EXE])
