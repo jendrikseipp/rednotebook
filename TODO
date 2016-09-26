@@ -7,8 +7,6 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-X Use new pygtkspellcheck API (lp:1592727).
-X Fix conversion from old single "Tags" category to new tags format.
 
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.

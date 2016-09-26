@@ -1,3 +1,7 @@
+== 1.14 (2016-09-26) ==
+* Use new pygtkspellcheck API (lp:1592727).
+* Fix conversion from old single "Tags" category to new tags format.
+
 == 1.13 (2016-06-17) ==
 * When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
 * Allow ampersands in e-mail addresses (lp:1570476, thanks pdofak).
