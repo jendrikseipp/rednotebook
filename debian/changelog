@@ -1,3 +1,11 @@
+rednotebook (1.14-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Use new pygtkspellcheck API (lp:1592727).
+  * Fix conversion from old single "Tags" category to new tags format.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 26 Sep 2016 15:27:46 +0200
+
 rednotebook (1.13-1) UNRELEASED; urgency=low
 
   * New upstream release
