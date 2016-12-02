@@ -82,7 +82,7 @@ class TickOption(Option):
 class AutostartOption(TickOption):
     def __init__(self):
         self.autostart_file = os.path.expanduser(
-            '~.config/autostart/rednotebook.desktop')
+            '~/.config/autostart/rednotebook.desktop')
         autostart_file_exists = os.path.exists(self.autostart_file)
         TickOption.__init__(
             self, _('Load RedNotebook at startup'), None, value=autostart_file_exists)
