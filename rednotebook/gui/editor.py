@@ -24,16 +24,16 @@ import logging
 import gtk
 import pango
 
-try:
-    import gtkspellcheck
-except ImportError:
-    logging.warning(
-        'For spell checking, please install pygtkspellcheck (python-gtkspellcheck).')
-    gtkspellcheck = None
-
 from rednotebook.gui import t2t_highlight
 from rednotebook import undo
 from rednotebook.util import filesystem
+
+try:
+    from rednotebook.external import spellcheck
+except ImportError:
+    logging.warning(
+        'For spell checking, please install enchant (python-enchant).')
+    spellcheck = None
 
 
 DEFAULT_FONT = gtk.settings_get_default().get_property('gtk-font-name')
@@ -268,10 +268,10 @@ class Editor(object):
 
     def can_spell_check(self):
         """Return True if spell checking is available."""
-        return gtkspellcheck is not None
+        return spellcheck is not None
 
     def is_spell_check_enabled(self):
-        return self._spell_checker and self._spell_checker.enabled
+        return bool(self._spell_checker and self._spell_checker.enabled)
 
     def _enable_spell_check(self):
         assert self.can_spell_check()
@@ -279,10 +279,11 @@ class Editor(object):
             self._spell_checker.enable()
         else:
             try:
-                self._spell_checker = gtkspellcheck.SpellChecker(
+                self._spell_checker = spellcheck.SpellChecker(
                     self.day_text_view, filesystem.LANGUAGE)
-            # TODO: Find out which exceptions can be thrown here. Seems to
-            #       depend on the library version.
+            except spellcheck.NoDictionariesFound:
+                logging.warning('No spell checking dictionaries found.')
+                self._spell_checker = None
             except Exception as err:
                 logging.error(
                     'Spell checking could not be enabled. %s: %s' %
