@@ -1,3 +1,12 @@
+rednotebook (1.15-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Bundle pygtkspellcheck 4.0.5 since earlier versions contain a bug (lp:1615629).
+  * Fix toggling autostart (lp:1628497).
+  * Set system tray icon name (lp:1660129).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sat, 11 Feb 2017 16:13:49 +0100
+
 rednotebook (1.14-1) UNRELEASED; urgency=low
 
   * New upstream release
