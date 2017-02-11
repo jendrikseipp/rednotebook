@@ -1,3 +1,8 @@
+== 1.15 (2017-02-11) ==
+* Bundle pygtkspellcheck 4.0.5 since earlier versions contain a bug (lp:1615629).
+* Fix toggling autostart (lp:1628497).
+* Set system tray icon name (lp:1660129).
+
 == 1.14 (2016-09-26) ==
 * Use new pygtkspellcheck API (lp:1592727).
 * Fix conversion from old single "Tags" category to new tags format.
