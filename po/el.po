@@ -19,8 +19,7 @@ msgstr ""
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr ""
-"Έχει καιρός από τότε έχετε κάνει το τελευταίο αντίγραφο ασφαλείας σας."
+msgstr "Έχει περάσει καιρός από τότε έχετε κάνει το τελευταίο αντίγραφο ασφαλείας σας."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
@@ -34,7 +33,7 @@ msgstr "Αντίγραφο Ασφαλείας"
 
 #: ../rednotebook/backup.py:63
 msgid "Backup now"
-msgstr ""
+msgstr "Κάντε backup τώρα"
 
 #: ../rednotebook/backup.py:64
 msgid "Ask at next start"
@@ -50,17 +49,17 @@ msgstr "Εμφάνιση του RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:477
 msgid "No directory selected."
-msgstr ""
+msgstr "Επιλέξτε φάκελο"
 
 #: ../rednotebook/gui/main_window.py:569
 #: ../rednotebook/gui/customwidgets.py:363
 msgid "Template"
-msgstr ""
+msgstr "Πρότυπο"
 
 #: ../rednotebook/gui/main_window.py:572
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
-msgstr ""
+msgstr "Εισαγωγή του προτύπου αυτής της ημέρας. Πατήστε στο βέλος δεξιά για περισσότερες επιλογές"
 
 #: ../rednotebook/gui/format_menu.py:98
 msgid "No text or tag has been selected."
@@ -88,7 +87,7 @@ msgstr "Διακριτή διαγραφή"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Clear format"
-msgstr ""
+msgstr "Απαλοιφή μορφοποίησης"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
@@ -110,11 +109,11 @@ msgstr "Εισαγωγή"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Save and insert"
-msgstr ""
+msgstr "Αποθήκευση και εισαγωγή"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words, and, #tags"
-msgstr ""
+msgstr "φιλτράρετε, αυτές, τις, λέξεις, που, χωρίζονται, με, κόμμα, και, #ετικέτες"
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
@@ -133,7 +132,7 @@ msgstr "Λέξεις"
 #: ../rednotebook/gui/clouds.py:253
 #, python-format
 msgid "Hide \"%s\" from clouds"
-msgstr ""
+msgstr "Απόκρυψη \"%s\" από τα σύννεφα"
 
 #: ../rednotebook/gui/exports.py:43 ../rednotebook/gui/exports.py:395
 msgid "Export all days"
@@ -145,7 +144,7 @@ msgstr "Εξαγωγή της τρέχουσας εμφανιζόμενης ημ
 
 #: ../rednotebook/gui/exports.py:50
 msgid "Export days in the selected time range"
-msgstr ""
+msgstr "Εξαγωγή ημερών εντός του επιλεγμένου διαστήματος"
 
 #: ../rednotebook/gui/exports.py:59
 msgid "From:"
@@ -157,39 +156,39 @@ msgstr "Πρός:"
 
 #: ../rednotebook/gui/exports.py:108
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Εξαγωγή του τρέχοντος επιλεγμένου κειμένου"
 
 #: ../rednotebook/gui/exports.py:117
 msgid "(Only available when text is selected in edit mode)"
-msgstr ""
+msgstr "(Διαθέσιμο μόνο όταν το κείμενο έχει επιλεγεί σε κατάσταση επεξεργασίας"
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Date format"
-msgstr ""
+msgstr "Μορφοποίηση Ημερομηνίας"
 
 #: ../rednotebook/gui/exports.py:135
 msgid "Leave blank to omit dates in export"
-msgstr ""
+msgstr "Αφήστε κενό για να παραλείψετε τις ημερομηνίες κατά την εξαγωγή"
 
 #: ../rednotebook/gui/exports.py:137
 msgid "Export text and tags"
-msgstr ""
+msgstr "Εξαγωγή κειμένου και ετικετών"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text only"
-msgstr ""
+msgstr "Εξαγωγή μόνο κειμένου"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Export tags only"
-msgstr ""
+msgstr "Εξαγωγή μόνο ετικετών"
 
 #: ../rednotebook/gui/exports.py:142
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Φιλτράρισμα ημερών κατά ετικέτες"
 
 #: ../rednotebook/gui/exports.py:151
 msgid "Available tags"
-msgstr ""
+msgstr "Διαθέσιμες ετικέτες"
 
 #: ../rednotebook/gui/exports.py:152
 msgid "Selected tags"
@@ -201,11 +200,11 @@ msgstr "Επιλογή"
 
 #: ../rednotebook/gui/exports.py:161
 msgid "Deselect"
-msgstr ""
+msgstr "Αποεπιλογή"
 
 #: ../rednotebook/gui/exports.py:256
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr ""
+msgstr "Όταν φιλτράρετε κατά ετικέτες, πρέπει να επιλέξετε τουλάχιστον μία ετικέτα"
 
 #: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
@@ -213,15 +212,15 @@ msgstr "Έχετε επιλέξει τις παρακάτω ρυθμίσεις:"
 
 #: ../rednotebook/gui/exports.py:304
 msgid "Export Assistant"
-msgstr ""
+msgstr "Βοηθός Εξαγωγής"
 
 #: ../rednotebook/gui/exports.py:307
 msgid "Welcome to the Export Assistant."
-msgstr ""
+msgstr "Καλωσήρθατε στον Βοηθό Εξαγωγής"
 
 #: ../rednotebook/gui/exports.py:308
 msgid "This wizard will help you to export your journal to various formats."
-msgstr ""
+msgstr "Αυτός ο βοηθός θα σας βοηθήσει να εξαγάγετε το ημερολόγιό σας σε διάφορους τύπους αρχείων."
 
 #: ../rednotebook/gui/exports.py:309
 msgid ""
@@ -257,7 +256,7 @@ msgstr "Ημερομηνία"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Εξαγωγή μόνο του επιλεγμένου κειμένου"
 
 #: ../rednotebook/gui/exports.py:404
 msgid "Start date"
@@ -273,11 +272,11 @@ msgstr "Συμπεριλάβετε κείμενο"
 
 #: ../rednotebook/gui/exports.py:410
 msgid "Include tags"
-msgstr ""
+msgstr "Συμπεριλάβετε τις ετικέτες"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Φιλτράρισμα κατά ετικέτες"
 
 #: ../rednotebook/gui/exports.py:413
 msgid "Export path"
@@ -298,11 +297,11 @@ msgstr "Το περιεχόμενο έχει εξαχθεί στο %s"
 
 #: ../rednotebook/gui/exports.py:520
 msgid "Plain Text"
-msgstr ""
+msgstr "Κείμενο χωρίς μορφοποίηση"
 
 #: ../rednotebook/gui/exports.py:547
 msgid "requires pywebkitgtk"
-msgstr "απαιτείτε η ύπαρξη του pywebkitgtk"
+msgstr "απαιτείται η ύπαρξη του pywebkitgtk"
 
 #: ../rednotebook/gui/menu.py:93
 msgid "_Journal"
@@ -314,7 +313,7 @@ msgstr "Δημιουργήστε ένα νέο ημερολόγιο. Το παλ
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
-msgstr ""
+msgstr "Φορτώστε ένα ήδη υπάρχον ημερολόγιο. Το παλιό ημερολόγιο θα αποθηκευτεί"
 
 #: ../rednotebook/gui/menu.py:103
 msgid ""
