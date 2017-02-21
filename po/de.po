@@ -89,7 +89,7 @@ msgstr "Durchgestrichen"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Clear format"
-msgstr ""
+msgstr "Formatierung entfernen"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
