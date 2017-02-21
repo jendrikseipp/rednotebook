@@ -22,4 +22,6 @@ pep8 $PEP8_OPTS --ignore=E402 rednotebook/journal.py
 
 ./dev/find-dead-code.sh
 
+python setup.py build_trans
+
 echo "All tests passed"
