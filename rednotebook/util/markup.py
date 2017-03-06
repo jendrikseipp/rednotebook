@@ -269,6 +269,11 @@ def _get_config(target, options):
         config['preproc'].append([r'\\\(\s*(.+?)\s*\\\)', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
+        # Fix utf8 quotations - „, “ and ” cause problems compiling the latex document
+        config['postproc'].append([u'„', '"'])
+        config['postproc'].append([u'”', '"'])
+        config['postproc'].append([u'“', '"'])
+
         # enabling index
         config['style'].append('makeidx')
         config['postproc'].append([r'BEGININDEX(.+?)ENDINDEX', r'\\index{\1}'])
