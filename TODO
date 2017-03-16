@@ -7,13 +7,10 @@ speed up the implementation if you tell me that you'd like its addition ;)
 
 === Roadmap ===
 
-X When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
-X Allow ampersands in e-mail addresses (lp:1570476, thanks pdofak)
-X python-gtkspell has been renamed to python-gtkspellcheck. Update docs and debian/control accordingly.
 
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.
-  Maybe it's better to use #Movies:Oblivion
+  Maybe it's better to use #Movies:Oblivion and end the subtag at the end of the line.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
@@ -48,6 +45,8 @@ O Make sure that RedNotebook contents are saved under Windows when system is shu
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
 O When searching for a tag, show text around tag, not beginning of day's text.
 O Search: Wrap or overlay search results to make more text visible.
+O Make help file available online to let search engines index it.
+O Disable automatic switch between edit and preview mode by default.
 
 Tag pane hiding:
 O tag pane width relative to right window edge, if you resize the pane
@@ -80,7 +79,7 @@ O Imports
 
   O Suggest input encoding, but let user set it afterwards
 
-O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space, white text on black bg)
+O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space, white text on black bg, margins)
 O Translate help (Restructure first using Sphinx?)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
 O Make txt2tags faster and fix bugs

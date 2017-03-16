@@ -94,7 +94,7 @@ class InsertMenu(object):
         #            '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
         #            '|  Always use  |  at least  |  one whitespace  |\n')
 
-        def tmpl(letter):
+        def tmpl(_letter):
             return ''  # return ' (Ctrl+%s)' % letter
 
         # Create actions

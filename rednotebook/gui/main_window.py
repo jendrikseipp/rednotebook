@@ -242,6 +242,11 @@ class MainWindow(object):
 
     def setup_tray_icon(self):
         self.tray_icon = gtk.StatusIcon()
+        try:
+            # Available in PyGTK >= 2.22
+            self.tray_icon.set_name('RedNotebook')
+        except AttributeError:
+            pass
         visible = (self.journal.config.read('closeToTray') == 1)
         self.tray_icon.set_visible(visible)
         logging.debug('Tray icon visible: %s' % visible)
@@ -810,7 +815,7 @@ class Calendar(object):
 
         self.date_listener = self.calendar.connect('day-selected', self.on_day_selected)
 
-    def on_day_selected(self, cal):
+    def on_day_selected(self, _cal):
         self.journal.change_date(self.get_date())
 
     def set_date(self, date):

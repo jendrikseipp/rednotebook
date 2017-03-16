@@ -1,3 +1,17 @@
+== 1.15 (2017-02-11) ==
+* Bundle pygtkspellcheck 4.0.5 since earlier versions contain a bug (lp:1615629).
+* Fix toggling autostart (lp:1628497).
+* Set system tray icon name (lp:1660129).
+
+== 1.14 (2016-09-26) ==
+* Use new pygtkspellcheck API (lp:1592727).
+* Fix conversion from old single "Tags" category to new tags format.
+
+== 1.13 (2016-06-17) ==
+* When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
+* Allow ampersands in e-mail addresses (lp:1570476, thanks pdofak).
+* python-gtkspell has been renamed to python-gtkspellcheck. Update docs and debian/control accordingly.
+
 == 1.12 (2016-03-28) ==
 * Add option to hide right-hand tags pane (thanks Ron Brown, Jr.).
 * Never overwrite externally changed month files (thanks Felix Zörgiebel).

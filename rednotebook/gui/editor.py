@@ -22,17 +22,18 @@ import urllib
 import logging
 
 import gtk
-import gobject
 import pango
-
-try:
-    import gtkspell
-except ImportError:
-    gtkspell = None
 
 from rednotebook.gui import t2t_highlight
 from rednotebook import undo
 from rednotebook.util import filesystem
+
+try:
+    from rednotebook.external import spellcheck
+except ImportError:
+    logging.warning(
+        'For spell checking, please install enchant (python-enchant).')
+    spellcheck = None
 
 
 DEFAULT_FONT = gtk.settings_get_default().get_property('gtk-font-name')
@@ -251,7 +252,7 @@ class Editor(object):
         self.undo_redo_manager.add_action(undo.Action(undo_func, redo_func))
         self.old_text = new_text
 
-    def on_text_change(self, textbuffer, undoing=False):
+    def on_text_change(self, _buffer, undoing=False):
         # Do not record changes while undoing or redoing.
         if undoing:
             self.old_text = self.get_text()
@@ -267,43 +268,40 @@ class Editor(object):
 
     def can_spell_check(self):
         """Return True if spell checking is available."""
-        return gtkspell is not None
+        return spellcheck is not None
 
     def is_spell_check_enabled(self):
-        return self._spell_checker is not None
-
-    def _use_system_language_for_spell_check(self):
-        try:
-            self._spell_checker.set_language(filesystem.LANGUAGE)
-        except RuntimeError as err:
-            logging.error('Spellchecking could not be enabled for %s: %s. '
-                          'Consult built-in help for instructions '
-                          'on how to add custom dictionaries.' %
-                          (filesystem.LANGUAGE, err))
+        return bool(self._spell_checker and self._spell_checker.enabled)
 
     def _enable_spell_check(self):
         assert self.can_spell_check()
-        assert self._spell_checker is None
-        try:
-            self._spell_checker = gtkspell.Spell(self.day_text_view)
-        except gobject.GError as err:
-            logging.error('Spell checking could not be enabled: %s' % err)
-            self._spell_checker = None
+        if self._spell_checker:
+            self._spell_checker.enable()
         else:
-            self._use_system_language_for_spell_check()
+            try:
+                self._spell_checker = spellcheck.SpellChecker(
+                    self.day_text_view, filesystem.LANGUAGE)
+            except spellcheck.NoDictionariesFound:
+                logging.warning('No spell checking dictionaries found.')
+                self._spell_checker = None
+            except Exception as err:
+                logging.error(
+                    'Spell checking could not be enabled. %s: %s' %
+                    (type(err).__name__, err))
+                self._spell_checker = None
 
     def _disable_spell_check(self):
-        self._spell_checker.detach()
-        self._spell_checker = None
+        if self._spell_checker:
+            self._spell_checker.disable()
 
     def enable_spell_check(self, enable=True):
         """Enable/disable spell check."""
         if not self.can_spell_check():
             return
 
-        if enable and self._spell_checker is None:
+        if enable:
             self._enable_spell_check()
-        elif not enable and self._spell_checker is not None:
+        else:
             self._disable_spell_check()
 
     # ===========================================================

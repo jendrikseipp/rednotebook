@@ -135,7 +135,7 @@ try:
     if not sys.platform == 'win32':
         pygtk.require("2.0")
 except ImportError:
-    logging.error('pygtk not found. Please install PyGTK (python-gtk2)')
+    logging.error('PyGTK not found. Please install it (python-gtk2).')
     sys.exit(1)
 
 try:

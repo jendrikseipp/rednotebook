@@ -1,3 +1,29 @@
+rednotebook (1.15-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Bundle pygtkspellcheck 4.0.5 since earlier versions contain a bug (lp:1615629).
+  * Fix toggling autostart (lp:1628497).
+  * Set system tray icon name (lp:1660129).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sat, 11 Feb 2017 16:13:49 +0100
+
+rednotebook (1.14-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Use new pygtkspellcheck API (lp:1592727).
+  * Fix conversion from old single "Tags" category to new tags format.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 26 Sep 2016 15:27:46 +0200
+
+rednotebook (1.13-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
+  * Allow ampersands in e-mail addresses (lp:1570476, thanks pdofak).
+  * python-gtkspell has been renamed to python-gtkspellcheck. Update docs and debian/control accordingly.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 17 Jun 2016 19:16:29 +0100
+
 rednotebook (1.12-1) UNRELEASED; urgency=low
 
   * New upstream release

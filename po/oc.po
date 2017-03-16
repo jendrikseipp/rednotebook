@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2015-11-01 21:13+0000\n"
+"PO-Revision-Date: 2016-04-25 14:58+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-02 05:08+0000\n"
-"X-Generator: Launchpad (build 17838)\n"
+"X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
+"X-Generator: Launchpad (build 18169)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -47,7 +47,7 @@ msgstr "Afichar RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:477
 msgid "No directory selected."
-msgstr ""
+msgstr "Cap de dorsièr pas seleccionat."
 
 #: ../rednotebook/gui/main_window.py:569
 #: ../rednotebook/gui/customwidgets.py:363
@@ -73,7 +73,7 @@ msgstr "Italica"
 
 #: ../rednotebook/gui/format_menu.py:110
 msgid "Monospace"
-msgstr ""
+msgstr "Monospace"
 
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Underline"
@@ -90,7 +90,7 @@ msgstr ""
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
 msgid "_Format"
-msgstr ""
+msgstr "_Format"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:394
@@ -107,7 +107,7 @@ msgstr "Introduccion"
 
 #: ../rednotebook/gui/customwidgets.py:366
 msgid "Save and insert"
-msgstr ""
+msgstr "Enregistrar e inserir"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words, and, #tags"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "tf1, nòta, viste, job, jòc"
 
 #: ../rednotebook/gui/clouds.py:191 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:136
@@ -138,7 +138,7 @@ msgstr "Exportar la totalitat dels jorns"
 
 #: ../rednotebook/gui/exports.py:47
 msgid "Export currently visible day"
-msgstr ""
+msgstr "Exportar lo jorn actualament visible"
 
 #: ../rednotebook/gui/exports.py:50
 msgid "Export days in the selected time range"
@@ -154,7 +154,7 @@ msgstr "A :"
 
 #: ../rednotebook/gui/exports.py:108
 msgid "Export currently selected text"
-msgstr ""
+msgstr "Exportar lo tèxte seleccionat"
 
 #: ../rednotebook/gui/exports.py:117
 msgid "(Only available when text is selected in edit mode)"
@@ -170,19 +170,19 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:137
 msgid "Export text and tags"
-msgstr ""
+msgstr "Exportar lo tèxte e las etiquetas"
 
 #: ../rednotebook/gui/exports.py:138
 msgid "Export text only"
-msgstr ""
+msgstr "Exportar unicament lo tèxte"
 
 #: ../rednotebook/gui/exports.py:140
 msgid "Export tags only"
-msgstr ""
+msgstr "Exportar unicament las etiquetas"
 
 #: ../rednotebook/gui/exports.py:142
 msgid "Filter days by tags"
-msgstr ""
+msgstr "Filtrar los jorns per etiqueta"
 
 #: ../rednotebook/gui/exports.py:151
 msgid "Available tags"
@@ -252,7 +252,7 @@ msgstr "Data"
 
 #: ../rednotebook/gui/exports.py:401
 msgid "Export selected text only"
-msgstr ""
+msgstr "Exportar unicament lo tèxte seleccionat"
 
 #: ../rednotebook/gui/exports.py:404
 msgid "Start date"
@@ -264,15 +264,15 @@ msgstr "Data de fin"
 
 #: ../rednotebook/gui/exports.py:409
 msgid "Include text"
-msgstr ""
+msgstr "Inclure lo tèxte"
 
 #: ../rednotebook/gui/exports.py:410
 msgid "Include tags"
-msgstr ""
+msgstr "Inclure las etiquetas"
 
 #: ../rednotebook/gui/exports.py:412
 msgid "Filtered by tags"
-msgstr ""
+msgstr "Flitrar per etiquetas"
 
 #: ../rednotebook/gui/exports.py:413
 msgid "Export path"
@@ -293,7 +293,7 @@ msgstr "Contengut exportat cap a %s"
 
 #: ../rednotebook/gui/exports.py:520
 msgid "Plain Text"
-msgstr ""
+msgstr "Tèxte brut"
 
 #: ../rednotebook/gui/exports.py:547
 msgid "requires pywebkitgtk"
@@ -405,7 +405,7 @@ msgstr "Emplenar un cort formulari relatiu a vòstre problèma"
 
 #: ../rednotebook/gui/menu.py:172
 msgid "Wrong directory"
-msgstr ""
+msgstr "Marrit repertòri"
 
 #: ../rednotebook/gui/menu.py:175 ../rednotebook/journal.py:204
 msgid "You cannot use this directory for your journal:"
@@ -486,7 +486,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Causissètz la poliça"
 
 #: ../rednotebook/gui/options.py:271
 msgid "Close to system tray"
@@ -620,7 +620,7 @@ msgstr "Inserir un retorn a la linha manual"
 
 #: ../rednotebook/gui/insert_menu.py:130
 msgid "_Insert"
-msgstr ""
+msgstr "_Insercion"
 
 #: ../rednotebook/gui/insert_menu.py:152
 msgid "Insert"
@@ -636,7 +636,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:197
 msgid "pixels"
-msgstr ""
+msgstr "pixèls"
 
 #: ../rednotebook/gui/insert_menu.py:217
 msgid "Width must be an integer."

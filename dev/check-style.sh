@@ -20,6 +20,8 @@ PEP8_OPTS="--max-line-length=110"
 pep8 $PEP8_OPTS --exclude=external,journal.py rednotebook tests
 pep8 $PEP8_OPTS --ignore=E402 rednotebook/journal.py
 
-./dev/find-dead-code
+./dev/find-dead-code.sh
+
+python setup.py build_trans
 
 echo "All tests passed"

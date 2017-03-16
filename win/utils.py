@@ -1,5 +1,6 @@
 import logging
 import os
+import shutil
 import sys
 import subprocess
 import urllib
@@ -8,6 +9,17 @@ import urllib
 def ensure_path(path):
     if not os.path.exists(path):
         os.mkdir(path)
+
+def confirm_overwrite(dir):
+    if os.path.exists(dir):
+        answer = raw_input(
+            'The directory {} exists. Overwrite it? (Y/n): '.format(dir)).strip()
+        if answer and answer.lower() != 'y':
+            sys.exit('Aborting')
+        shutil.rmtree(dir)
+
+def fast_copytree(src_dir, dest_dir):
+    subprocess.check_call(['cp', '-r', src_dir, dest_dir])
 
 def fetch(url, path):
     dirname = os.path.dirname(path)
