@@ -1,12 +1,11 @@
 TODO / Roadmap:
 
-If you have any suggestions or comments, feel free to contact me on the mailing
-list or directly per mail. Even if a feature is listed here already it might
-speed up the implementation if you tell me that you'd like its addition ;)
+If you have any suggestions or comments, feel free to contact me on the
+mailing list or directly per mail. Before starting to work on a feature,
+please check back with me briefly about its status.
 
 
 === Roadmap ===
-
 
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.
@@ -20,43 +19,32 @@ X Tables
   X Highlight tables in edit mode
 X Numbered lists
 X Add quotes by indenting them with a tab
-X Show warning if last backup dates to more than one month before
 O Make default css prettier
-O Think about supporting %include, %preprocess, etc.
 O Scroll to searched text when a result is clicked in preview mode (seems difficult in webkitgtk)
-O Make the right panel an advanced option?
-O Auto-merge: When saving a file, check if its changedate is newer than the time
-  when we opened the file and merge the contents if it is.
 O When clicking on a hashtag in the tag cloud scroll to tag and highlight it (seems difficult with webkitgtk)
-O Hierarchical hashtags: #dream/recurring/houses and let user "zoom in" in tag cloud.
-  Maybe better: Use multiple tags and allow iteratively filtering them in tag cloud.
-O Exports: add option to insert a page break between days. Use hr for HTML exports.
-O macro system that takes predefined text like {weather} and turns it
+O Allow filtering days that contain multiple given tags, allow iteratively clicking more tags.
+O Exports: add option to insert a page break between days. Use hr for
+  HTML exports. This seems to be difficult for PDFs.
+O Macro system that takes predefined text like {weather} and turns it
   into other text for the preview, e.g. an HTML snippet that displays that day's weather symbol.
-O Remove tag pane. Make sure that inline tags allow subtags first and that these are displayed when searching for the tag.
-  Allow formatting subtags (--groceries--).
-O Add testimonials to homepage.
-O Make font options more uniform (not free-form vs. browse button)
-O Live preview of selected font in editor pane
-O Export the entries of search results
-O When searching for a tag, show text near tag in search results
+O Live preview of selected font in editor pane.
+O Allow exporting the entries of a search result.
+O When searching for a tag, show text near tag in search results.
 O Allow searching for hashtags and show subhashtags in the search results
-O Make sure that RedNotebook contents are saved under Windows when system is shutdown.
+O Make sure that RedNotebook contents are saved under Windows when system is shut down.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
 O When searching for a tag, show text around tag, not beginning of day's text.
 O Search: Wrap or overlay search results to make more text visible.
-O Make help file available online to let search engines index it.
 O Disable automatic switch between edit and preview mode by default.
+O Copy files and pictures into data subdirectory
+O Internal links to other days
 
-Tag pane hiding:
-O tag pane width relative to right window edge, if you resize the pane
-  to 0 width it effectively disappears. If you resize the overall window
-  the pane then stays hidden.
-O a button on the tool bar to show/hide it on demand, returns to the
-  previous width relative to the right hand window edge
-O a preferences option to disable the pane, but I think the two points
-  above in combination are a better solution to the brute force method
-  of just killing the feature (but I'd take that too!)
+Right-side tags panel:
+  O Make the right panel an advanced option?
+  O Remove tag panel.
+    O Make sure that inline tags allow subtags and that these are
+      displayed when searching for the tag.
+    O Allow formatting subtags (--groceries--).
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
@@ -65,72 +53,44 @@ O Enable right-click menu for copying in preview
   - Only show the menu if there's a selection
     - WebView.has_selection() seems to be broken
 
+O Non-code:
+  O Add testimonials to homepage.
+  O Make help file available online to let search engines index it.
+  O Update screenshots on homepage.
+
 O Imports
   X RedNotebook Backup zipfile
   X RedNotebook data directory
   X Plain text files
-  O ics (used by Google Calendar)
-  O Almanah
-  O Lifeograph
-  O Evernote
-  O Wordpress?
-  O Treepad?
-  X Tomboy
+  X Tomboy (remove again?)
+  O It's probably best to supply scripts for converting other sources like Evernote, Wordpress, ics (used by Google Calendar).
 
-  O Suggest input encoding, but let user set it afterwards
-
-O Custom-style Journals? (Allow custom css files for preview rendering, e.g. Mono-space, white text on black bg, margins)
+O Custom-style journals? (Allow custom css files for preview rendering, e.g. mono-space, white text on black bg, margins)
 O Translate help (Restructure first using Sphinx?)
 O Possibility to show all entries (Search for "*" or show all entries if no text has been entered)
-O Make txt2tags faster and fix bugs
 O Search and replace (useful for renaming categories and other names)
   (Add replace functionality after search has been entered)
 O Add per-journal configuration?
   O Per-journal fonts and size
-
-
-2.0
-O Copy files and pictures into data subdirectory
-O Encryption
-O Internal links to other days
-O Filter exports by tags
-O RTF export
-
 
 Windows:
 O Make windows installer truly portable (leave no traces in registry)
   Probably it's better to distribute a zip archive for this.
 
 New format:
-O Use json instead of yaml (wait till after port to Python3)
+O Use json instead of yaml (wait till after port to Python 3)?
 O Use standard paths? (Win: C:\Docs & Settings\username\My Documents,
   Linux: ~/.local/share, ~/.config (http://live.gnome.org/Tomboy/Directories))
 
-Development:
-O Use dwolla once it's available in Germany
-O Have a look at SimpleNotes
-O Try using dogtail for UI tests (https://fedorahosted.org/dogtail/)
-O Release nightly windows versions (maybe only zips?)
 
 
-
-
-
-=== Maybe even some of those features will make it into RedNotebook ===
+=== Maybe even some of these features will make it into RedNotebook ===
 
 O Automatic insertion of photo links for current day (use zeitgeist or tracker to search hard-disk for photos)
-O Picture slide show in one entry with many images (in preview show nice
-  javascript slide show of pics in linked picture directory) (Think about new format first)
-O Ability to make certain entries, eg. birthdays, with frequencies
 O Plugin system?
-O Entries without dates (bookmarks, contact lists)?
-O Add more shortcuts for insertions (e.g. horizontal lines)
-O Improve startup time by showing the window and doing the rest of the initialization
-  in an idle loader.
-
-O Support %!include macro?
-
-O Separate page and textarea instead of textbox for black- and white list?
+O Improve startup time by showing the window and doing the rest of the
+  initialization afterwards.
+O Preferenes window: use separate page and textarea instead of textbox for black- and white list?
 O Color submenu in format menu with additional color picker and color highlighting in edit mode
 
 
@@ -190,3 +150,5 @@ O Color submenu in format menu with additional color picker and color highlighti
 - Field or shortcut to enter a date and takes you there (One navigation suffices)
 - Disable cache for preview to support previewing externally changed files (Rarely used, might slowdown app)
 - Use new markup for images: {/home/user/pic.png?50} (Too disruptive)
+- Support %!include, %!preprocess, etc. (very txt2tags specific)
+- Encryption (there are dedicated tools for encrypting files)
