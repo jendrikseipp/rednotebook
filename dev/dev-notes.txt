@@ -114,6 +114,7 @@ O Markdown:
     - Allow triple {{{ and }}} in addition to ``` for code.
   - docutils could be extended for t2t
   - extendable Python markdown parser with lexer and renderer: https://github.com/lepture/mistune
+  - another alternative would be to wrap cmark (wrapper in "wrappers" dir): https://github.com/jgm/cmark
 
 O Use Zeitgeist for automatic category entries
   O Make Zeitgeist widget generic, so it can be reused by other projects
