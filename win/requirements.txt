@@ -1,6 +1,5 @@
 pefile==2016.3.28
 pyenchant==1.6.8
-pygtkspellcheck==4.0.4
 pyinstaller==2.1
 pypiwin32==219
 PyYAML==3.10
