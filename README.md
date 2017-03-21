@@ -10,9 +10,7 @@ Latex or PDF.
   - PyYaml (>=3.05)
   - PyGTK (>=2.16)
   - pywebkitgtk (>=1.1.5)
-
-  - Optional:
-    - pygtkspellcheck
+  - python-enchant (optional, needed for spell checking)
 
 # Run under Linux (without installation)
 
