@@ -41,11 +41,6 @@ LOCALE_DIR = os.path.join(WINE_DIST, 'share', 'locale')
 WINE_RN_EXE = os.path.join(WINE_DIST, 'rednotebook.exe')
 WINE_PYTHON = os.path.join(DRIVE_C, 'Python27', 'python.exe')
 
-# TODO: Remove temporary workaround once pygtkspellcheck supports PyInstaller.
-shutil.copy2(
-    os.path.expanduser('~/projects/pygtkspellcheck/src/pylocales/locales.py'),
-    os.path.join(BUILD_DIR, 'drive_c', 'Python27', 'Lib', 'site-packages', 'pylocales'))
-
 utils.confirm_overwrite(DIST_DIR)
 os.environ['WINEPREFIX'] = DIST_DIR
 utils.ensure_path(os.path.dirname(DIST_DIR))
