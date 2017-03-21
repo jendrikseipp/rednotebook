@@ -89,9 +89,6 @@ for url, filename, dest in TARBALLS:
 for url, dest in FILES:
     fetch(url, dest)
 
-# TODO: Remove once pygtkspellcheck lists its dependencies.
-run(PYTHON + ['-m', 'pip', 'install', 'pyenchant==1.6.8'])
-
 run(PYTHON + ['-m', 'pip', 'install', '-r', REQUIREMENTS])
 
 if IS_WIN:
