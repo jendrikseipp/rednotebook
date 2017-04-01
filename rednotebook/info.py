@@ -352,9 +352,11 @@ cloud service like Dropbox or save your journal to your own server.
 
 === Dropbox ===
 
-If you are registered for [Dropbox http://www.dropbox.com], you can
-just save your journal in a subfolder of the respective synchronized
-folder in your home directory.
+If you have a [Dropbox https://www.dropbox.com] account, you can just
+save your journal in a subdirectory of the Dropbox folder in your home
+directory. Alternatives to Dropbox, which give you complete control over
+your where your data is stored, include
+[Syncthing https://syncthing.net].
 
 === Directly save to remote FTP or SSH server ===
 
@@ -369,10 +371,10 @@ server for your journal.
 
 === External sync with remote server ===
 
-If you have your own server, you might want to try [Conduit
-http://www.conduit-project.org] or [Unison
-http://www.cis.upenn.edu/~bcpierce/unison]. To sync or backup your
-journal you have to sync your journal folder (default is
+If you have your own server, you might want to try
+[Conduit http://www.conduit-project.org] or
+[Unison http://www.cis.upenn.edu/~bcpierce/unison]. To sync or backup
+your journal you have to sync your journal folder (default is
 "$HOME/.rednotebook/data/") with a folder on your server.
 
 Obviously you have to be connected to the internet to use that feature.
