@@ -60,7 +60,7 @@ from rednotebook.external import elibintl
 # * gtkbuilder strings
 # * gtk stock names
 
-LOCALE_PATH = filesystem.get_utf8_path(filesystem.locale_dir)
+LOCALE_PATH = filesystem.locale_dir
 
 # the name of the gettext domain.
 GETTEXT_DOMAIN = 'rednotebook'
@@ -148,7 +148,7 @@ try:
     GObject.threads_init()  # only initializes threading in the glib/gobject module
 except (ImportError, AssertionError) as e:
     logging.error(e)
-    logging.error('gtk not found. Please install PyGTK (python-gtk2)')
+    logging.error('GTK+ not found. Please install it (gir1.2-gtk-3.0).')
     sys.exit(1)
 
 
