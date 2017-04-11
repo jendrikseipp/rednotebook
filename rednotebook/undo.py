@@ -33,8 +33,8 @@ class UndoRedoManager(object):
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.undo_action = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo').get_action()
-        self.redo_action = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo').get_action()
+        self.undo_widget = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo')
+        self.redo_widget = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo')
 
         self.undo_stacks = defaultdict(list)
         self.redo_stacks = defaultdict(list)
@@ -93,5 +93,5 @@ class UndoRedoManager(object):
         return bool(self.redo_stack)
 
     def update_buttons(self):
-        self.undo_action.set_sensitive(self.can_undo())
-        self.redo_action.set_sensitive(self.can_redo())
+        self.undo_widget.set_sensitive(self.can_undo())
+        self.redo_widget.set_sensitive(self.can_redo())

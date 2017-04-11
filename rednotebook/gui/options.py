@@ -33,7 +33,7 @@ from rednotebook.configuration import Config
 
 class Option(Gtk.HBox):
     def __init__(self, text, option_name, tooltip=''):
-        GObject.GObject.__init__(self)
+        Gtk.HBox.__init__(self)
 
         self.text = text
         self.option_name = option_name
@@ -41,7 +41,7 @@ class Option(Gtk.HBox):
         self.set_spacing(5)
 
         self.label = Gtk.Label(label=self.text)
-        self.pack_start(self.label, False, False)
+        self.pack_start(self.label, False, False, 0)
 
         if tooltip:
             self.set_tooltip_text(tooltip)
@@ -63,7 +63,7 @@ class TickOption(Option):
         else:
             self.check_button.set_active(value)
         self.check_button.connect('clicked', self.on_check_button_clicked)
-        self.pack_start(self.check_button, False)
+        self.pack_start(self.check_button, False, False, 0)
 
     def on_check_button_clicked(self, widget):
         pass
@@ -126,10 +126,10 @@ class ComboBoxOption(Option):
     def __init__(self, text, name, entries):
         Option.__init__(self, text, name)
 
-        self.combo = CustomComboBoxEntry(Gtk.ComboBoxEntry())
+        self.combo = CustomComboBoxEntry(Gtk.ComboBox.new_with_entry())
         self.combo.set_entries(entries)
 
-        self.pack_start(self.combo.combo_box, False)
+        self.pack_start(self.combo.combo_box, False, False, 0)
 
     def get_value(self):
         return self.combo.get_active_text()
@@ -146,9 +146,9 @@ class DateFormatOption(ComboBoxOption):
         date_format_help_button = UrlButton(_('Help'), date_url)
 
         self.preview = Gtk.Label()
-        self.pack_start(self.preview, False)
+        self.pack_start(self.preview, False, False, 0)
 
-        self.pack_end(date_format_help_button, False)
+        self.pack_end(date_format_help_button, False, False, 0)
 
         # Set default format if not present
         format = Option.config.read(name, '%A, %x %X')

@@ -189,8 +189,8 @@ class TemplateManager(object):
         self.tmp_title = None
         self.tmp_parts = None
 
-        style = self.main_window.day_text_field.day_text_view.get_style()
-        self.default_base_color = style.base[Gtk.StateType.NORMAL]
+        textview = self.main_window.day_text_field.day_text_view
+        self.default_base_color = textview.get_style_context().get_background_color(Gtk.StateFlags.NORMAL)
 
     def set_template_menu_sensitive(self, sensitive):
         if self.tmp_title:

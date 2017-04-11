@@ -67,9 +67,9 @@ class Cloud(HtmlView):
 
         self.update_lists()
 
-        self.webview.connect("hovering-over-link", self.on_hovering_over_link)
-        self.webview.connect('populate-popup', self.on_populate_popup)
-        self.webview.connect('navigation-requested', self.on_navigate)
+        # TODO: self.webview.connect('hovering-over-link', self.on_hovering_over_link)
+        # TODO: self.webview.connect('populate-popup', self.on_populate_popup)
+        self.webview.connect('decide-policy', self.on_decide_policy)
 
         self.last_hovered_word = None
 
@@ -205,26 +205,27 @@ class Cloud(HtmlView):
         search_text, count = self.link_dict[search_index]
         return search_text
 
-    def on_navigate(self, webview, frame, request):
+    def on_decide_policy(self, webview, decision, decision_type):
         """
-        Called when user clicks on a cloud word
+        Called (among others) when user clicks on a cloud word.
         """
         if self.loading_html:
             # Keep processing
             return False
 
-        uri = request.get_uri()
-        logging.info('Clicked URI "%s"' % uri)
+        if decision_type == Webkit2.PolicyDecisionType.NAVIGATION_ACTION:
+            uri = decision.get_navigation_action().get_request().get_uri()
+            logging.info('Clicked URI "%s"' % uri)
 
-        self.journal.save_old_day()
+            self.journal.save_old_day()
 
-        # uri has the form "something/somewhere/search/search_index"
-        if 'search' in uri:
-            search_text = self._get_search_text(uri)
-            self.journal.frame.search_box.set_active_text(search_text)
+            # uri has the form "something/somewhere/search/search_index"
+            if 'search' in uri:
+                search_text = self._get_search_text(uri)
+                self.journal.frame.search_box.set_active_text(search_text)
 
-            # returning True here stops loading the document
-            return True
+                # returning True here stops loading the document
+                return True
 
     def on_button_press(self, webview, event):
         """

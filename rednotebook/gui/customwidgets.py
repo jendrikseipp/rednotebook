@@ -28,7 +28,7 @@ from gi.repository import Gtk
 
 class ActionButton(Gtk.Button):
     def __init__(self, text, action):
-        GObject.GObject.__init__(self, text)
+        Gtk.Button.__init__(self, text)
         self.connect('clicked', action)
 
 
@@ -40,10 +40,11 @@ class UrlButton(ActionButton):
 class CustomComboBoxEntry(object):
     def __init__(self, combo_box):
         self.combo_box = combo_box
+        print combo_box, combo_box.get_child()
 
         self.liststore = Gtk.ListStore(GObject.TYPE_STRING)
         self.combo_box.set_model(self.liststore)
-        self.combo_box.set_text_column(0)
+        self.combo_box.set_entry_text_column(0)
         self.entry = self.combo_box.get_child()
 
         # Autocompletion
@@ -140,48 +141,44 @@ class Calendar(Gtk.Calendar):
         return datetime.date(year, month + 1, day)
 
 
-# Gtk.InfoBar is available in gtk+ >= 2.22
-if hasattr(gtk, 'InfoBar'):
-    class Info(Gtk.InfoBar):
-        icons = {Gtk.MessageType.ERROR: Gtk.STOCK_DIALOG_ERROR}
+class Info(Gtk.InfoBar):
+    icons = {Gtk.MessageType.ERROR: Gtk.STOCK_DIALOG_ERROR}
 
-        def __init__(self, *args, **kwargs):
-            GObject.GObject.__init__(self, *args, **kwargs)
-            self.title_label = Gtk.Label()
-            self.msg_label = Gtk.Label()
-            self.title_label.set_alignment(0., 0.5)
-            self.msg_label.set_alignment(0., 0.5)
+    def __init__(self, *args, **kwargs):
+        GObject.GObject.__init__(self, *args, **kwargs)
+        self.title_label = Gtk.Label()
+        self.msg_label = Gtk.Label()
+        self.title_label.set_alignment(0., 0.5)
+        self.msg_label.set_alignment(0., 0.5)
 
-            vbox = Gtk.VBox(spacing=5)
-            vbox.pack_start(self.title_label, False, False)
-            vbox.pack_start(self.msg_label, False, False)
+        vbox = Gtk.VBox(spacing=5)
+        vbox.pack_start(self.title_label, False, False, 0)
+        vbox.pack_start(self.msg_label, False, False, 0)
 
-            self.image = Gtk.Image()
+        self.image = Gtk.Image()
 
-            content = self.get_content_area()
-            content.pack_start(self.image, False)
-            content.pack_start(vbox, False)
+        content = self.get_content_area()
+        content.pack_start(self.image, False, False, 0)
+        content.pack_start(vbox, False, False, 0)
 
-            self.add_button(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
-            self.connect('close', lambda x: self.hide())
-            self.connect('response', self.on_response)
+        self.add_button(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
+        self.connect('close', lambda x: self.hide())
+        self.connect('response', self.on_response)
 
-        def on_response(self, infobar, response_id):
-            if response_id == Gtk.ResponseType.CLOSE:
-                self.hide()
+    def on_response(self, infobar, response_id):
+        if response_id == Gtk.ResponseType.CLOSE:
+            self.hide()
 
-        def show_message(self, title, msg, msg_type):
-            if not title:
-                title = msg
-                msg = ''
-            self.title_label.set_markup('<b>%s</b>' % title)
-            self.msg_label.set_markup(msg)
-            self.set_message_type(msg_type)
-            self.image.set_from_stock(self.icons.get(msg_type, Gtk.STOCK_DIALOG_INFO),
-                                      Gtk.IconSize.DIALOG)
-            self.show_all()
-else:
-    Info = None
+    def show_message(self, title, msg, msg_type):
+        if not title:
+            title = msg
+            msg = ''
+        self.title_label.set_markup('<b>%s</b>' % title)
+        self.msg_label.set_markup(msg)
+        self.set_message_type(msg_type)
+        self.image.set_from_stock(self.icons.get(msg_type, Gtk.STOCK_DIALOG_INFO),
+                                  Gtk.IconSize.DIALOG)
+        self.show_all()
 
 
 # ------------------------- Assistant Pages ------------------------------------
@@ -237,7 +234,7 @@ class RadioButtonPage(AssistantPage):
         button.set_label(label)
         button.object = object
         button.set_sensitive(sensitive)
-        self.pack_start(button, False, False)
+        self.pack_start(button, False, False, 0)
         self.buttons.append(button)
 
         if tooltip:
@@ -362,19 +359,19 @@ class TemplateBar(Gtk.HBox):
         self.set_spacing(2)
         label = Gtk.Label(label='<b>%s</b>:' % _('Template'))
         label.set_use_markup(True)
-        self.pack_start(label, False, False)
+        self.pack_start(label, False, False, 0)
         self.save_insert_button = Gtk.Button(_('Save and insert'))
-        self.pack_start(self.save_insert_button, False, False)
+        self.pack_start(self.save_insert_button, False, False, 0)
         self.save_button = Gtk.Button(stock=Gtk.STOCK_SAVE)
-        self.pack_start(self.save_button, False, False)
+        self.pack_start(self.save_button, False, False, 0)
         self.close_button = Gtk.Button(stock=Gtk.STOCK_CLOSE)
-        self.pack_start(self.close_button, False, False)
+        self.pack_start(self.close_button, False, False, 0)
         self.show_all()
 
 
 class ToolbarMenuButton(Gtk.MenuToolButton):
     def __init__(self, stock_id, menu):
-        GObject.GObject.__init__(self, stock_id)
+        Gtk.MenuToolButton.__init__(self, stock_id)
         self.set_menu(menu)
         self.connect('clicked', self.show_menu)
         self.show()

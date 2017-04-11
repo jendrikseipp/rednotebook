@@ -22,6 +22,8 @@ import logging
 import os
 import sys
 
+from gi.repository import Gdk
+from gi.repository import GdkPixbuf
 from gi.repository import GObject
 from gi.repository import Gtk
 from gi.repository import Pango
@@ -57,24 +59,13 @@ class MainWindow(object):
         self.gladefile = os.path.join(filesystem.files_dir, 'main_window.glade')
         self.builder = Gtk.Builder()
         self.builder.set_translation_domain('rednotebook')
-        try:
-            self.builder.add_from_file(self.gladefile)
-        except GObject.GError, err:
-            logging.error('An error occured while loading the GUI: %s' % err)
-            logging.error('RedNotebook requires at least gtk+ 2.14. '
-                          'If you cannot update gtk, you might want to try an '
-                          'older version of RedNotebook.')
-            sys.exit(1)
+        self.builder.add_from_file(self.gladefile)
 
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
-        try:
-            icon = GdkPixbuf.Pixbuf.new_from_file(os.path.join(filesystem.frame_icon_dir,
-                                                             'rednotebook.svg'))
-        except GObject.GError:
-            icon = GdkPixbuf.Pixbuf.new_from_file(os.path.join(filesystem.frame_icon_dir,
-                                                             'rn-192.png'))
+        icon = GdkPixbuf.Pixbuf.new_from_file(
+            os.path.join(filesystem.frame_icon_dir, 'rednotebook.svg'))
         self.main_frame.set_icon(icon)
 
         self.is_fullscreen = False
@@ -88,7 +79,7 @@ class MainWindow(object):
         self.menubar_manager = MainMenuBar(self)
         self.menubar = self.menubar_manager.get_menu_bar()
         main_vbox = self.builder.get_object('vbox3')
-        main_vbox.pack_start(self.menubar, False)
+        main_vbox.pack_start(self.menubar, False, False, 0)
         main_vbox.reorder_child(self.menubar, 0)
 
         self.undo_redo_manager = undo.UndoRedoManager(self)
@@ -124,7 +115,7 @@ class MainWindow(object):
 
         self.html_editor = Preview(self.journal)
         self.html_editor.webview.connect('button-press-event', self.on_browser_clicked)
-        self.html_editor.webview.connect('navigation-requested', self.on_browser_navigate)
+        self.html_editor.webview.connect('decide-policy', self.on_browser_decide_policy)
 
         self.text_vbox = self.builder.get_object('text_vbox')
         self.text_vbox.pack_start(self.html_editor, True, True, 0)
@@ -138,14 +129,14 @@ class MainWindow(object):
         # Add InfoBar.
         if customwidgets.Info:
             self.infobar = customwidgets.Info()
-            self.text_vbox.pack_start(self.infobar, False, False)
+            self.text_vbox.pack_start(self.infobar, False, False, 0)
             self.text_vbox.reorder_child(self.infobar, 1)
         else:
             self.infobar = self.statusbar
 
         # Add TemplateBar.
         self.template_bar = customwidgets.TemplateBar()
-        self.text_vbox.pack_start(self.template_bar, False, False)
+        self.text_vbox.pack_start(self.template_bar, False, False, 0)
         self.text_vbox.reorder_child(self.template_bar, 1)
         self.template_bar.hide()
 
@@ -242,16 +233,12 @@ class MainWindow(object):
 
     def setup_tray_icon(self):
         self.tray_icon = Gtk.StatusIcon()
-        try:
-            # Available in PyGTK >= 2.22
-            self.tray_icon.set_name('RedNotebook')
-        except AttributeError:
-            pass
+        self.tray_icon.set_name('RedNotebook')
         visible = (self.journal.config.read('closeToTray') == 1)
         self.tray_icon.set_visible(visible)
         logging.debug('Tray icon visible: %s' % visible)
 
-        self.tray_icon.set_tooltip('RedNotebook')
+        self.tray_icon.set_tooltip_text('RedNotebook')
         # TODO: Try using the svg here as well.
         icon_file = os.path.join(self.journal.dirs.frame_icon_dir, 'rn-32.png')
         self.tray_icon.set_from_file(icon_file)
@@ -341,8 +328,8 @@ class MainWindow(object):
         columns = [('1', str), ('2', str)]
         overall_list = CustomListView(columns)
         day_list = CustomListView(columns)
-        overall_box.pack_start(overall_list, True, True)
-        day_box.pack_start(day_list, True, True)
+        overall_box.pack_start(overall_list, True, True, 0)
+        day_box.pack_start(day_list, True, True, 0)
         setattr(self.stats_dialog, 'overall_list', overall_list)
         setattr(self.stats_dialog, 'day_list', day_list)
         for list in [overall_list, day_list]:
@@ -456,20 +443,21 @@ class MainWindow(object):
     def on_forward_one_day_button_clicked(self, widget):
         self.journal.go_to_next_day()
 
-    def on_browser_navigate(self, webview, frame, request):
+    def on_browser_decide_policy(self, webview, decision, decision_type):
         '''
-        We want to load files and links externally
+        We want to load files and links externally.
         '''
         if self.html_editor.loading_html:
             # Keep processing
             return False
 
-        uri = request.get_uri()
-        logging.info('Clicked URI "%s"' % uri)
-        filesystem.open_url(uri)
+        if decision_type == Webkit2.PolicyDecisionType.NAVIGATION_ACTION:
+            uri = decision.get_navigation_action().get_request().get_uri()
+            logging.info('Clicked URI "%s"' % uri)
+            filesystem.open_url(uri)
 
-        # Stop processing that event
-        return True
+            # Stop processing that event
+            return True
 
     def get_new_journal_dir(self, title, message):
         dir_chooser = self.builder.get_object('dir_chooser')

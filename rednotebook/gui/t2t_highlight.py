@@ -131,7 +131,8 @@ class MarkupBuffer(Gtk.TextBuffer):
                 'highlight', 'list', 'numlist']
 
     def __init__(self, table=None, lang=None, styles={}):
-        GObject.GObject.__init__(self, table)
+        Gtk.TextBuffer.__init__(self)
+        self.props.tag_table = table
         self._lang_def = lang
         self.styles = styles
 
@@ -228,18 +229,11 @@ styles = {
 
 
 def add_header_styles():
-    sizes = [
-        Pango.SCALE_XX_LARGE,
-        Pango.SCALE_X_LARGE,
-        Pango.SCALE_LARGE,
-        Pango.SCALE_MEDIUM,
-        Pango.SCALE_SMALL,
-    ]
-    for level, size in enumerate(sizes):
+    for level in range(1, 6):
         style = {
             'weight': Pango.Weight.ULTRABOLD,
-            'scale': size}
-        name = 'title%s' % (level + 1)
+            'scale': 1.2 ** (6 - level)}
+        name = 'title%s' % (level)
         styles[name] = style
 
 add_header_styles()

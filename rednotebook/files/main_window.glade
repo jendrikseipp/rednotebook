@@ -1,416 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
 <interface>
-  <!-- interface-requires gtk+ 2.12 -->
-  <!-- interface-naming-policy project-wide -->
-  <object class="GtkWindow" id="main_frame">
-    <signal name="configure_event" handler="on_main_frame_configure_event"/>
-    <signal name="delete_event" handler="on_main_frame_delete_event"/>
-    <signal name="window_state_event" handler="on_main_frame_window_state_event"/>
-    <child>
-      <object class="GtkVBox" id="vbox3">
-        <property name="visible">True</property>
-        <child>
-          <object class="GtkHPaned" id="main_pane">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <child>
-              <object class="GtkVBox" id="vbox4">
-                <property name="visible">True</property>
-                <child>
-                  <object class="GtkToolbar" id="toolbar3">
-                    <property name="visible">True</property>
-                    <property name="toolbar_style">both</property>
-                    <child>
-                      <object class="GtkToolButton" id="back_one_day_button">
-                        <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Go to previous day (Ctrl+PageUp)</property>
-                        <property name="stock_id">gtk-go-back</property>
-                        <signal name="clicked" handler="on_back_one_day_button_clicked"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToolButton" id="today_button">
-                        <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Jump to today (Alt+Home)</property>
-                        <property name="label" translatable="yes">Today</property>
-                        <property name="use_underline">True</property>
-                        <property name="stock_id">gtk-home</property>
-                        <signal name="clicked" handler="on_today_button_clicked"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToolButton" id="forward_one_day_button">
-                        <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Go to next day (Ctrl+PageDown)</property>
-                        <property name="stock_id">gtk-go-forward</property>
-                        <signal name="clicked" handler="on_forward_one_day_button_clicked"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCalendar" id="calendar">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkVBox" id="search_container">
-                    <property name="visible">True</property>
-                    <property name="spacing">1</property>
-                    <child>
-                      <object class="GtkComboBoxEntry" id="search_box">
-                        <property name="visible">True</property>
-                        <child>
-                          <object class="GtkCellRendererText" id="cellrenderertext2"/>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="resize">False</property>
-                <property name="shrink">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="day_box">
-                <property name="visible">True</property>
-                <child>
-                  <object class="GtkHPaned" id="edit_pane">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="position">550</property>
-                    <child>
-                      <object class="GtkVBox" id="text_vbox">
-                        <property name="visible">True</property>
-                        <child>
-                          <object class="GtkToolbar" id="edit_toolbar">
-                            <property name="visible">True</property>
-                            <property name="toolbar_style">both</property>
-                            <child>
-                              <object class="GtkToolButton" id="preview_button">
-                                <property name="visible">True</property>
-                                <property name="tooltip_text" translatable="yes">Show a formatted preview of the text (Ctrl+P)</property>
-                                <property name="label" translatable="yes" comments="Verb">Preview</property>
-                                <property name="stock_id">gtk-media-play</property>
-                                <accelerator key="P" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                                <signal name="clicked" handler="on_preview_button_clicked"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="homogeneous">True</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkToolButton" id="edit_button">
-                                <property name="tooltip_text" translatable="yes">Enable text editing (Ctrl+P)</property>
-                                <property name="label" translatable="yes">Edit</property>
-                                <property name="use_underline">True</property>
-                                <property name="stock_id">gtk-edit</property>
-                                <accelerator key="p" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                                <signal name="clicked" handler="on_edit_button_clicked"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="homogeneous">True</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScrolledWindow" id="text_scrolledwindow">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hscrollbar_policy">automatic</property>
-                            <property name="vscrollbar_policy">automatic</property>
-                            <property name="shadow_type">in</property>
-                            <child>
-                              <object class="GtkTextView" id="day_text_view">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="wrap_mode">word</property>
-                                <property name="left_margin">5</property>
-                                <property name="right_margin">5</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="resize">False</property>
-                        <property name="shrink">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkVPaned" id="annotations_pane">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <child>
-                          <object class="GtkVBox" id="right_vbox">
-                            <property name="visible">True</property>
-                            <child>
-                              <object class="GtkToolbar" id="toolbar1">
-                                <property name="visible">True</property>
-                                <property name="toolbar_style">both</property>
-                                <child>
-                                  <object class="GtkToolButton" id="add_new_entry_button">
-                                    <property name="visible">True</property>
-                                    <property name="tooltip_text" translatable="yes">Add a tag or a category entry</property>
-                                    <property name="label" translatable="yes">Add Tag</property>
-                                    <property name="use_underline">True</property>
-                                    <property name="stock_id">gtk-edit</property>
-                                    <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                                    <signal name="clicked" handler="on_add_new_entry_button_clicked"/>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="homogeneous">True</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkScrolledWindow" id="scrolledwindow3">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="hscrollbar_policy">automatic</property>
-                                <property name="vscrollbar_policy">automatic</property>
-                                <child>
-                                  <object class="GtkViewport" id="viewport2">
-                                    <property name="visible">True</property>
-                                    <property name="resize_mode">queue</property>
-                                    <child>
-                                      <object class="GtkTreeView" id="categories_tree_view">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="resize">True</property>
-                            <property name="shrink">True</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="resize">True</property>
-                        <property name="shrink">True</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="resize">True</property>
-                <property name="shrink">True</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkStatusbar" id="statusbar">
-            <property name="visible">True</property>
-            <property name="spacing">2</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkAboutDialog" id="about_dialog">
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="type_hint">normal</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
+    <property name="logo_icon_name">image-missing</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
         <child>
           <placeholder/>
         </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
       </object>
     </child>
   </object>
-  <object class="GtkDialog" id="new_entry_dialog">
-    <property name="width_request">400</property>
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes">New entry</property>
-    <property name="modal">True</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="type_hint">dialog</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox3">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child>
-          <object class="GtkVBox" id="vbox5">
-            <property name="visible">True</property>
-            <property name="spacing">12</property>
-            <child>
-              <object class="GtkLabel" id="label2">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">&lt;b&gt;Select existing or new Category&lt;/b&gt;</property>
-                <property name="use_markup">True</property>
-              </object>
-              <packing>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxEntry" id="categories_combo_box">
-                <property name="visible">True</property>
-                <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext4"/>
-                </child>
-              </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label5">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">&lt;b&gt;Write entry&lt;/b&gt; (optional)</property>
-                <property name="use_markup">True</property>
-              </object>
-              <packing>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxEntry" id="entry_combo_box">
-                <property name="visible">True</property>
-                <child>
-                  <object class="GtkCellRendererText" id="cellrenderertext5"/>
-                </child>
-              </object>
-              <packing>
-                <property name="position">3</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area3">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="button3">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="new_entry_dialog_o_k_button">
-                <property name="label">gtk-ok</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="0">button3</action-widget>
-      <action-widget response="-5">new_entry_dialog_o_k_button</action-widget>
-    </action-widgets>
-  </object>
+  <object class="GtkAccelGroup" id="accelgroup1"/>
   <object class="GtkFileChooserDialog" id="backup_dialog">
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select backup filename</property>
     <property name="window_position">center-on-parent</property>
@@ -418,15 +42,14 @@
     <property name="action">save</property>
     <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox4">
+      <object class="GtkBox" id="dialog-vbox4">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area4">
+          <object class="GtkButtonBox" id="dialog-action_area4">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button4">
@@ -461,9 +84,13 @@
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>
@@ -472,284 +99,24 @@
       <action-widget response="-5">button1</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkFileChooserDialog" id="picture_chooser">
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes">Select a picture</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="type_hint">dialog</property>
-    <property name="modal">True</property>
-    <property name="do_overwrite_confirmation">True</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox12">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area12">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="button10">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="button12">
-                <property name="label">gtk-open</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="-6">button10</action-widget>
-      <action-widget response="-5">button12</action-widget>
-    </action-widgets>
-  </object>
-  <object class="GtkFileChooserDialog" id="file_chooser">
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes">Select a file</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="type_hint">dialog</property>
-    <property name="do_overwrite_confirmation">True</property>
-    <property name="modal">True</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox14">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area14">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="button13">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="button14">
-                <property name="label">gtk-open</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="-6">button13</action-widget>
-      <action-widget response="-5">button14</action-widget>
-    </action-widgets>
-  </object>
-  <object class="GtkDialog" id="link_creator">
-    <property name="width_request">400</property>
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes">Insert Link</property>
-    <property name="modal">True</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="type_hint">dialog</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox16">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child>
-          <object class="GtkVBox" id="vbox11">
-            <property name="visible">True</property>
-            <property name="spacing">15</property>
-            <child>
-              <object class="GtkFrame" id="frame3">
-                <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkAlignment" id="alignment8">
-                    <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <object class="GtkEntry" id="link_location_entry">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label4">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Link location (e.g. http://rednotebook.sf.net)&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkFrame" id="frame4">
-                <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkAlignment" id="alignment9">
-                    <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <object class="GtkEntry" id="link_name_entry">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label14">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Link name (optional)&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area16">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="button15">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="new_entry_dialog_o_k_button1">
-                <property name="label">gtk-ok</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="0">button15</action-widget>
-      <action-widget response="-5">new_entry_dialog_o_k_button1</action-widget>
-    </action-widgets>
-  </object>
   <object class="GtkFileChooserDialog" id="dir_chooser">
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select a directory</property>
+    <property name="modal">True</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
     <property name="action">select-folder</property>
     <property name="local_only">False</property>
-    <property name="modal">True</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox17">
+      <object class="GtkBox" id="dialog-vbox17">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="spacing">2</property>
-        <child>
-          <object class="GtkLabel" id="dir_chooser_label">
-            <property name="visible">True</property>
-            <property name="use_markup">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area17">
+          <object class="GtkButtonBox" id="dialog-action_area17">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button16">
@@ -784,8 +151,21 @@
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="dir_chooser_label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="use_markup">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
@@ -795,73 +175,683 @@
       <action-widget response="-5">button17</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkDialog" id="options_dialog">
+  <object class="GtkFileChooserDialog" id="file_chooser">
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">Preferences</property>
+    <property name="title" translatable="yes">Select a file</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <property name="do_overwrite_confirmation">True</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox14">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area14">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button13">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button14">
+                <property name="label">gtk-open</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="-6">button13</action-widget>
+      <action-widget response="-5">button14</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkDialog" id="link_creator">
+    <property name="width_request">400</property>
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Insert Link</property>
+    <property name="modal">True</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox18">
+      <object class="GtkBox" id="dialog-vbox16">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="spacing">2</property>
-        <child>
-          <object class="GtkNotebook" id="notebook1">
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area16">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tab_pos">left</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
             <child>
-              <object class="GtkFrame" id="frame5">
+              <object class="GtkButton" id="button15">
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="new_entry_dialog_o_k_button1">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkVBox" id="vbox11">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="spacing">15</property>
+            <child>
+              <object class="GtkFrame" id="frame3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">none</property>
                 <child>
-                  <object class="GtkAlignment" id="alignment10">
+                  <object class="GtkAlignment" id="alignment8">
                     <property name="visible">True</property>
-                    <property name="top_padding">10</property>
+                    <property name="can_focus">False</property>
                     <property name="left_padding">12</property>
                     <child>
-                      <object class="GtkVBox" id="general_vbox">
+                      <object class="GtkEntry" id="link_location_entry">
                         <property name="visible">True</property>
-                        <property name="spacing">5</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
+                        <property name="can_focus">True</property>
                       </object>
                     </child>
                   </object>
                 </child>
                 <child type="label">
-                  <object class="GtkLabel" id="label20">
+                  <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">&lt;b&gt;General&lt;/b&gt;</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Link location (e.g. http://rednotebook.sf.net)&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
               </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
             </child>
-            <child type="tab">
-              <object class="GtkLabel" id="label17">
+            <child>
+              <object class="GtkFrame" id="frame4">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">General</property>
+                <property name="can_focus">False</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">none</property>
+                <child>
+                  <object class="GtkAlignment" id="alignment9">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <object class="GtkEntry" id="link_name_entry">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel" id="label14">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Link name (optional)&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
               </object>
               <packing>
-                <property name="tab_fill">False</property>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
         </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area18">
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">button15</action-widget>
+      <action-widget response="-5">new_entry_dialog_o_k_button1</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkWindow" id="main_frame">
+    <property name="can_focus">False</property>
+    <signal name="configure-event" handler="on_main_frame_configure_event" swapped="no"/>
+    <signal name="delete-event" handler="on_main_frame_delete_event" swapped="no"/>
+    <signal name="window-state-event" handler="on_main_frame_window_state_event" swapped="no"/>
+    <child>
+      <object class="GtkVBox" id="vbox3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkHPaned" id="main_pane">
             <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkVBox" id="vbox4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkToolbar" id="toolbar3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="toolbar_style">both</property>
+                    <child>
+                      <object class="GtkToolButton" id="back_one_day_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Go to previous day (Ctrl+PageUp)</property>
+                        <property name="stock_id">gtk-go-back</property>
+                        <signal name="clicked" handler="on_back_one_day_button_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkToolButton" id="today_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Jump to today (Alt+Home)</property>
+                        <property name="label" translatable="yes">Today</property>
+                        <property name="use_underline">True</property>
+                        <property name="stock_id">gtk-home</property>
+                        <signal name="clicked" handler="on_today_button_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkToolButton" id="forward_one_day_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Go to next day (Ctrl+PageDown)</property>
+                        <property name="stock_id">gtk-go-forward</property>
+                        <signal name="clicked" handler="on_forward_one_day_button_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCalendar" id="calendar">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkVBox" id="search_container">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">1</property>
+                    <child>
+                      <object class="GtkComboBox" id="search_box">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="has_entry">True</property>
+                        <child>
+                          <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                        </child>
+                        <child internal-child="entry">
+                          <object class="GtkEntry" id="combobox-entry">
+                            <property name="can_focus">False</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="resize">False</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="day_box">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkHPaned" id="edit_pane">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="position">550</property>
+                    <child>
+                      <object class="GtkVBox" id="text_vbox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <object class="GtkToolbar" id="edit_toolbar">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="toolbar_style">both</property>
+                            <child>
+                              <object class="GtkToolButton" id="preview_button">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="tooltip_text" translatable="yes">Show a formatted preview of the text (Ctrl+P)</property>
+                                <property name="label" translatable="yes" comments="Verb">Preview</property>
+                                <property name="stock_id">gtk-media-play</property>
+                                <signal name="clicked" handler="on_preview_button_clicked" swapped="no"/>
+                                <accelerator key="P" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="homogeneous">True</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkToolButton" id="edit_button">
+                                <property name="can_focus">False</property>
+                                <property name="tooltip_text" translatable="yes">Enable text editing (Ctrl+P)</property>
+                                <property name="label" translatable="yes">Edit</property>
+                                <property name="use_underline">True</property>
+                                <property name="stock_id">gtk-edit</property>
+                                <signal name="clicked" handler="on_edit_button_clicked" swapped="no"/>
+                                <accelerator key="p" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="homogeneous">True</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkScrolledWindow" id="text_scrolledwindow">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="shadow_type">in</property>
+                            <child>
+                              <object class="GtkTextView" id="day_text_view">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="wrap_mode">word</property>
+                                <property name="left_margin">5</property>
+                                <property name="right_margin">5</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="resize">False</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkVPaned" id="annotations_pane">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <child>
+                          <object class="GtkVBox" id="right_vbox">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <child>
+                              <object class="GtkToolbar" id="toolbar1">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="toolbar_style">both</property>
+                                <child>
+                                  <object class="GtkToolButton" id="add_new_entry_button">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="tooltip_text" translatable="yes">Add a tag or a category entry</property>
+                                    <property name="label" translatable="yes">Add Tag</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="stock_id">gtk-edit</property>
+                                    <signal name="clicked" handler="on_add_new_entry_button_clicked" swapped="no"/>
+                                    <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="homogeneous">True</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scrolledwindow3">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <child>
+                                  <object class="GtkViewport" id="viewport2">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="resize_mode">queue</property>
+                                    <child>
+                                      <object class="GtkTreeView" id="categories_tree_view">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <child internal-child="selection">
+                                          <object class="GtkTreeSelection" id="treeview-selection1"/>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="resize">True</property>
+                            <property name="shrink">True</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="resize">True</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="resize">True</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStatusbar" id="statusbar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="spacing">2</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkDialog" id="new_entry_dialog">
+    <property name="width_request">400</property>
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">New entry</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area3">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button3">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="new_entry_dialog_o_k_button">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkVBox" id="vbox5">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="label2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">&lt;b&gt;Select existing or new Category&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBox" id="categories_combo_box">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="has_entry">True</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cellrenderertext4"/>
+                </child>
+                <child internal-child="entry">
+                  <object class="GtkEntry" id="combobox-entry1">
+                    <property name="can_focus">False</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label5">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">&lt;b&gt;Write entry&lt;/b&gt; (optional)</property>
+                <property name="use_markup">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBox" id="entry_combo_box">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="has_entry">True</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cellrenderertext5"/>
+                </child>
+                <child internal-child="entry">
+                  <object class="GtkEntry" id="combobox-entry2">
+                    <property name="can_focus">False</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">button3</action-widget>
+      <action-widget response="-5">new_entry_dialog_o_k_button</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkDialog" id="options_dialog">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Preferences</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox18">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area18">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
               <placeholder/>
@@ -897,8 +887,71 @@
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkNotebook" id="notebook1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="tab_pos">left</property>
+            <child>
+              <object class="GtkFrame" id="frame5">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">none</property>
+                <child>
+                  <object class="GtkAlignment" id="alignment10">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="top_padding">10</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <object class="GtkVBox" id="general_vbox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel" id="label20">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">&lt;b&gt;General&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label17">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes" comments="Refers to the part of the options dialog where the user can select the &quot;General/Overall&quot; Settings">General</property>
+              </object>
+              <packing>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
@@ -908,88 +961,136 @@
       <action-widget response="-5">button18</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkDialog" id="stats_dialog">
+  <object class="GtkFileChooserDialog" id="picture_chooser">
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">Statistics</property>
+    <property name="title" translatable="yes">Select a picture</property>
+    <property name="modal">True</property>
     <property name="window_position">center-on-parent</property>
     <property name="type_hint">dialog</property>
+    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox20">
+      <object class="GtkBox" id="dialog-vbox12">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="spacing">2</property>
-        <child>
-          <object class="GtkVBox" id="vbox1">
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area12">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
             <child>
-              <object class="GtkFrame" id="frame6">
+              <object class="GtkButton" id="button10">
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkAlignment" id="alignment11">
-                    <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <object class="GtkVBox" id="day_stats_box">
-                        <property name="visible">True</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label18">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Selected Day&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
                 <property name="position">0</property>
               </packing>
             </child>
             <child>
-              <object class="GtkFrame" id="frame7">
+              <object class="GtkButton" id="button12">
+                <property name="label">gtk-open</property>
                 <property name="visible">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkAlignment" id="alignment12">
-                    <property name="visible">True</property>
-                    <property name="left_padding">12</property>
-                    <child>
-                      <object class="GtkVBox" id="overall_box">
-                        <property name="visible">True</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label19">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Overall&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
                 <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
           </packing>
         </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="-6">button10</action-widget>
+      <action-widget response="-5">button12</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkMessageDialog" id="save_error_dialog">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="message_type">error</property>
+    <property name="buttons">ok-cancel</property>
+    <property name="text">The Journal could not be saved</property>
+    <property name="secondary_text">You might want to check your permissions on the filesystem or your internet connection for ssh and ftp saving. Do you want to select a new location for the journal?</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox90">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area20">
+          <object class="GtkButtonBox" id="dialog-action_area90">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="exit_without_save_button">
+                <property name="label" translatable="yes">Exit without saving</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="10">exit_without_save_button</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkDialog" id="stats_dialog">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Statistics</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox20">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area20">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
               <placeholder/>
@@ -1014,60 +1115,100 @@
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkVBox" id="vbox1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkFrame" id="frame6">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">none</property>
+                <child>
+                  <object class="GtkAlignment" id="alignment11">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <object class="GtkVBox" id="day_stats_box">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel" id="label18">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Selected Day&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame" id="frame7">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">none</property>
+                <child>
+                  <object class="GtkAlignment" id="alignment12">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <object class="GtkVBox" id="overall_box">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel" id="label19">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Overall&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
     </child>
     <action-widgets>
       <action-widget response="-5">button21</action-widget>
-    </action-widgets>
-  </object>
-  <object class="GtkAccelGroup" id="accelgroup1"/>
-  <object class="GtkMessageDialog" id="save_error_dialog">
-    <property name="border_width">5</property>
-    <property name="type_hint">normal</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="message_type">error</property>
-    <property name="buttons">ok-cancel</property>
-    <property name="text">The Journal could not be saved</property>
-    <property name="secondary_text">You might want to check your permissions on the filesystem or your internet connection for ssh and ftp saving. Do you want to select a new location for the journal?</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox90">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area90">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="exit_without_save_button">
-                <property name="label" translatable="yes">Exit without saving</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="10">exit_without_save_button</action-widget>
     </action-widgets>
   </object>
 </interface>

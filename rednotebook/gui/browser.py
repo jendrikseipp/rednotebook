@@ -21,22 +21,24 @@ import logging
 import os
 import sys
 
+import gi
 from gi.repository import GObject
 from gi.repository import Gtk
 
 from rednotebook.util import markup
 
 try:
-    from gi.repository import WebKit
+    gi.require_version('WebKit2', '4.0')
+    from gi.repository import WebKit2
 except ImportError as err:
     logging.error(
-        'pywebkitgtk not found. Please install it (python-webkit): %s' % err)
+        'WebKit2Gtk+ not found. Please install it (gir1.2-webkit2-4.0): %s' % err)
     sys.exit(1)
 
 
-class Browser(webkit.WebView):
+class Browser(WebKit2.WebView):
     def __init__(self):
-        webkit.WebView.__init__(self)
+        WebKit2.WebView.__init__(self)
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
 
@@ -119,23 +121,7 @@ except TypeError, err:
     logging.info('UrlPrinter could not be created: "%s"' % err)
 
 
-def can_print_pdf():
-    if not printer:
-        return False
-
-    frame = printer._webview.get_main_frame()
-
-    can_print_full = hasattr(frame, 'print_full')
-
-    if not can_print_full:
-        msg = 'For direct PDF export, please install pywebkitgtk version 1.1.5 or later.'
-        logging.info(msg)
-
-    return can_print_full
-
-
 def print_pdf(html, filename):
-    assert can_print_pdf()
     printer.print_html(html, filename)
 
 
@@ -149,7 +135,7 @@ class HtmlView(Gtk.ScrolledWindow):
         self.loading_html = False
 
         self.webview.connect('button-press-event', self.on_button_press)
-        self.webview.connect('load-finished', self.on_load_finished)
+        self.webview.connect('load-changed', self.on_load_changed)
 
         self.show_all()
 
@@ -191,7 +177,7 @@ class HtmlView(Gtk.ScrolledWindow):
             # We don't want the context menus, so stop processing that event.
             return True
 
-    def on_load_finished(self, webview, frame):
+    def on_load_changed(self, webview, event):
         '''
         We use this method to highlight searched text.
         Whenever new searched text is entered it is saved in the HtmlView
@@ -200,7 +186,8 @@ class HtmlView(Gtk.ScrolledWindow):
         Trying to highlight text while the page is still being loaded
         does not work.
         '''
-        if self.search_text:
-            self.highlight(self.search_text)
-        else:
-            self.webview.set_highlight_text_matches(False)
+        if event == WebKit2.LoadEvent.FINISHED:
+            if self.search_text:
+                self.highlight(self.search_text)
+            else:
+                self.webview.set_highlight_text_matches(False)

@@ -33,6 +33,13 @@ logging.basicConfig(
     format='%(levelname)-8s %(message)s',
     stream=sys.stdout)
 
+try:
+    import gi
+    gi.require_version("Gtk", "3.0")
+except ImportError:
+    logging.error('pygobject not found. Please install it (python3-gi).')
+    sys.exit(1)
+
 if hasattr(sys, "frozen"):
     from rednotebook.util import filesystem
 else:
@@ -129,13 +136,6 @@ setup_logging(dirs.log_file)
 
 logging.info('System encoding: %s' % filesystem.ENCODING)
 logging.info('Language code: %s' % filesystem.LANGUAGE)
-
-try:
-    import gi
-    gi.require_version("Gtk", "3.0")
-except ImportError:
-    logging.error('pygobject not found. Please install it (python3-gi).')
-    sys.exit(1)
 
 try:
     from gi.repository import Gtk

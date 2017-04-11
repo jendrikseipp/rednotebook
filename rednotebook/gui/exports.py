@@ -50,10 +50,10 @@ class DatePage(AssistantPage):
             label=_('Export days in the selected time range'),
             group=self.all_days_button)
 
-        self.pack_start(self.all_days_button, False)
-        self.pack_start(self.one_day_button, False)
-        self.pack_start(self.selected_text_button, False)
-        self.pack_start(self.sel_days_button, False)
+        self.pack_start(self.all_days_button, False, False, 0)
+        self.pack_start(self.one_day_button, False, False, 0)
+        self.pack_start(self.selected_text_button, False, False, 0)
+        self.pack_start(self.sel_days_button, False, False, 0)
 
         label1 = Gtk.Label()
         label1.set_markup('<b>' + _('From:') + '</b>')
@@ -65,9 +65,9 @@ class DatePage(AssistantPage):
 
         vbox1 = Gtk.VBox()
         vbox2 = Gtk.VBox()
-        vbox1.pack_start(label1, False)
+        vbox1.pack_start(label1, False, False, 0)
         vbox1.pack_start(self.calendar1, True, True, 0)
-        vbox2.pack_start(label2, False)
+        vbox2.pack_start(label2, False, False, 0)
         vbox2.pack_start(self.calendar2, True, True, 0)
 
         hbox = Gtk.HBox()
@@ -141,12 +141,12 @@ class ContentsPage(AssistantPage):
                                                 group=self.text_and_tags_button)
         self.filter_tags_button = Gtk.CheckButton(label=_('Filter days by tags'))
 
-        self.pack_start(self.date_format, False)
-        self.pack_start(self.text_and_tags_button, False)
-        self.pack_start(self.text_only_button, False)
-        self.pack_start(self.tags_only_button, False)
-        self.pack_start(Gtk.HSeparator(, True, True, 0), False)
-        self.pack_start(self.filter_tags_button, False)
+        self.pack_start(self.date_format, False, False, 0)
+        self.pack_start(self.text_and_tags_button, False, False, 0)
+        self.pack_start(self.text_only_button, False, False, 0)
+        self.pack_start(self.tags_only_button, False, False, 0)
+        self.pack_start(Gtk.HSeparator(), False, False, 0)
+        self.pack_start(self.filter_tags_button, False, False, 0)
 
         self.available_categories = customwidgets.CustomListView([(_('Available tags'), str)])
         self.selected_categories = customwidgets.CustomListView([(_('Selected tags'), str)])
@@ -164,22 +164,22 @@ class ContentsPage(AssistantPage):
         self.deselect_button.connect('clicked', self.on_deselect_category)
 
         centered_vbox = Gtk.VBox()
-        centered_vbox.pack_start(self.select_button, True, False)
-        centered_vbox.pack_start(self.deselect_button, True, False)
+        centered_vbox.pack_start(self.select_button, True, False, 0)
+        centered_vbox.pack_start(self.deselect_button, True, False, 0)
 
         vbox = Gtk.VBox()
-        vbox.pack_start(centered_vbox, True, False)
+        vbox.pack_start(centered_vbox, True, False, 0)
 
         hbox = Gtk.HBox()
         hbox.pack_start(left_scroll, True, True, 0)
-        hbox.pack_start(vbox, False)
+        hbox.pack_start(vbox, False, False, 0)
         hbox.pack_start(right_scroll, True, True, 0)
         self.pack_start(hbox, True, True, 0)
 
         self.error_text = Gtk.Label(label='')
         self.error_text.set_alignment(0.0, 0.5)
 
-        self.pack_end(self.error_text, False, False)
+        self.pack_end(self.error_text, False, False, 0)
 
         self.text_and_tags_button.set_active(True)
         self.filter_tags_button.connect('toggled', self.check_selection)
@@ -545,10 +545,6 @@ class PdfExporter(Exporter):
             return ''
         else:
             return '(' + _('requires pywebkitgtk') + ')'
-
-    @classmethod
-    def is_available(cls):
-        return browser.can_print_pdf()
 
 
 def get_exporters():

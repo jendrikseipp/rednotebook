@@ -239,22 +239,22 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
+    from gi.repository import GObject
     from gi.repository import Gtk
     import yaml
 
-    functions = [platform.machine, platform.platform, platform.processor,
-                 platform.python_version, platform.release, platform.system]
+    functions = [
+        platform.machine, platform.platform, platform.processor,
+        platform.python_version, platform.release, platform.system
+    ]
     names_values = [(func.__name__, func()) for func in functions]
 
-    lib_values = [('GTK version', gtk, 'gtk_version'),
-                  ('PyGTK version', gtk, 'pygtk_version'),
-                  ('Yaml version', yaml, '__version__')]
-
-    for name, object, value in lib_values:
-        try:
-            names_values.append((name, getattr(object, value)))
-        except AttributeError:
-            logging.info('%s could not be determined' % name)
+    names_values.extend([
+        ('GTK', (Gtk.get_major_version(), Gtk.get_minor_version(), Gtk.get_micro_version())),
+        ('Glib', GObject.glib_version),
+        ('PyGObject', GObject.pygobject_version),
+        ('YAML', yaml.__version__),
+        ])
 
     vals = ['%s: %s' % (name, val) for name, val in names_values]
     return 'System info: ' + ', '.join(vals)
