@@ -131,21 +131,20 @@ logging.info('System encoding: %s' % filesystem.ENCODING)
 logging.info('Language code: %s' % filesystem.LANGUAGE)
 
 try:
-    import pygtk
-    if not sys.platform == 'win32':
-        pygtk.require("2.0")
+    import gi
+    gi.require_version("Gtk", "3.0")
 except ImportError:
-    logging.error('PyGTK not found. Please install it (python-gtk2).')
+    logging.error('pygobject not found. Please install it (python3-gi).')
     sys.exit(1)
 
 try:
-    import gtk
-    import gobject
+    from gi.repository import Gtk
+    from gi.repository import GObject
     # Some notes on threads_init:
-    # only gtk.gdk.threads_init(): pdf export works, but gui hangs afterwards
-    # only gobject.threads_init(): pdf export works, gui works
+    # only Gdk.threads_init(): pdf export works, but gui hangs afterwards
+    # only GObject.threads_init(): pdf export works, gui works
     # both: pdf export works, gui hangs afterwards
-    gobject.threads_init()  # only initializes threading in the glib/gobject module
+    GObject.threads_init()  # only initializes threading in the glib/gobject module
 except (ImportError, AssertionError), e:
     logging.error(e)
     logging.error('gtk not found. Please install PyGTK (python-gtk2)')
@@ -208,14 +207,14 @@ class Journal:
         self.open_journal(journal_path)
 
         self.archiver = backup.Archiver(self)
-        gobject.idle_add(self.archiver.check_last_backup_date)
+        GObject.idle_add(self.archiver.check_last_backup_date)
 
         # Check for a new version
         if self.config.read('checkForNewVersion') == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
-        gobject.timeout_add_seconds(600, self.save_to_disk)
+        GObject.timeout_add_seconds(600, self.save_to_disk)
 
     def get_journal_path(self):
         '''
@@ -277,7 +276,7 @@ class Journal:
             # Informs the logging system to perform an orderly shutdown by
             # flushing and closing all handlers.
             logging.shutdown()
-            gtk.main_quit()
+            Gtk.main_quit()
 
     def convert(self, text, target, headers=None, options=None):
         options = options or {}
@@ -456,10 +455,10 @@ class Journal:
             title = _('Error')
 
         if error:
-            msg_type = gtk.MESSAGE_ERROR
+            msg_type = Gtk.MessageType.ERROR
             log_level = logging.ERROR
         else:
-            msg_type = gtk.MESSAGE_INFO
+            msg_type = Gtk.MessageType.INFO
             log_level = logging.INFO
 
         self.frame.show_message(title, msg, msg_type)
@@ -572,7 +571,7 @@ def main():
 
     try:
         logging.debug('Trying to enter the gtk main loop')
-        gtk.main()
+        Gtk.main()
     except KeyboardInterrupt:
         sys.exit()
 

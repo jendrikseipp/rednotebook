@@ -19,7 +19,7 @@
 
 import os
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook.util import filesystem
 from rednotebook.util import dates
@@ -190,7 +190,7 @@ class TemplateManager(object):
         self.tmp_parts = None
 
         style = self.main_window.day_text_field.day_text_view.get_style()
-        self.default_base_color = style.base[gtk.STATE_NORMAL]
+        self.default_base_color = style.base[Gtk.StateType.NORMAL]
 
     def set_template_menu_sensitive(self, sensitive):
         if self.tmp_title:
@@ -202,7 +202,7 @@ class TemplateManager(object):
         self.main_window.calendar.calendar.set_sensitive(sensitive)
         journal_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Journal')
         for child in journal_menu_item.get_submenu().get_children():
-            if isinstance(child, gtk.MenuItem):
+            if isinstance(child, Gtk.MenuItem):
                 action = child.get_action()
                 if action:
                     action.set_sensitive(sensitive)
@@ -225,8 +225,8 @@ class TemplateManager(object):
         text = self.get_text(title)
         self.main_window.undo_redo_manager.set_stack(title)
         self.main_window.day_text_field.set_text(text, undoing=True)
-        light_yellow = gtk.gdk.Color(1., 1., 190 / 255., 0)
-        self.main_window.day_text_field.day_text_view.modify_base(gtk.STATE_NORMAL, light_yellow)
+        light_yellow = Gdk.Color(1., 1., 190 / 255., 0)
+        self.main_window.day_text_field.day_text_view.modify_base(Gtk.StateType.NORMAL, light_yellow)
         self._set_widgets_sensitive(False)
 
     def exit_template_mode(self):
@@ -236,7 +236,7 @@ class TemplateManager(object):
         if self.main_window.preview_mode:
             self.main_window.change_mode(preview=False)
         self.main_window.day_text_field.day_text_view.grab_focus()
-        self.main_window.day_text_field.day_text_view.modify_base(gtk.STATE_NORMAL,
+        self.main_window.day_text_field.day_text_view.modify_base(Gtk.StateType.NORMAL,
                                                                   self.default_base_color)
         self._set_widgets_sensitive(True)
 
@@ -276,31 +276,31 @@ class TemplateManager(object):
         self.exit_template_mode()
 
     def on_new_template(self, action):
-        dialog = gtk.Dialog(_('Choose Template Name'))
+        dialog = Gtk.Dialog(_('Choose Template Name'))
         dialog.set_transient_for(self.main_window.main_frame)
-        dialog.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
-        dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
-        dialog.set_response_sensitive(gtk.RESPONSE_OK, False)
+        dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+        dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.set_response_sensitive(Gtk.ResponseType.OK, False)
 
         # Let user finish by hitting ENTER.
         def respond(widget):
-            dialog.response(gtk.RESPONSE_OK)
+            dialog.response(Gtk.ResponseType.OK)
 
         def on_text_changed(entry):
-            dialog.set_response_sensitive(gtk.RESPONSE_OK,
+            dialog.set_response_sensitive(Gtk.ResponseType.OK,
                                           bool(entry.get_text().decode('UTF-8')))
 
-        entry = gtk.Entry()
+        entry = Gtk.Entry()
         entry.connect('activate', respond)
         # Only allow closing dialog when text is entered.
         entry.connect('changed', on_text_changed)
         entry.set_size_request(300, -1)
-        dialog.get_content_area().pack_start(entry)
+        dialog.get_content_area().pack_start(entry, True, True, 0)
         dialog.show_all()
         response = dialog.run()
         dialog.hide()
 
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             title = entry.get_text().decode('UTF-8')
             parts = self.main_window.day_text_field.get_text_parts()
             path = self.get_path(title)
@@ -335,7 +335,7 @@ class TemplateManager(object):
 
     def get_menu(self):
         '''
-        See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
+        See http://www.pyGtk.org/pygtk2tutorial/sec-UIManager.html for help
         A popup menu cannot show accelerators (HIG).
         '''
         files = self.get_available_template_files()
@@ -357,7 +357,7 @@ class TemplateManager(object):
             uimanager.remove_action_group(self.actiongroup)
 
         # Create an ActionGroup
-        self.actiongroup = gtk.ActionGroup('TemplateActionGroup')
+        self.actiongroup = Gtk.ActionGroup('TemplateActionGroup')
 
         # Create actions
         actions = []
@@ -372,11 +372,11 @@ class TemplateManager(object):
                            get_edit_function(title))
             actions.append(edit_action)
 
-        actions.append(('EditWeekday', gtk.STOCK_HOME,
+        actions.append(('EditWeekday', Gtk.STOCK_HOME,
                         _("This Weekday's Template"), None, None,
                         lambda button: self.edit('Weekday')))
 
-        actions.append(('NewTemplate', gtk.STOCK_NEW, _('Create New Template'),
+        actions.append(('NewTemplate', Gtk.STOCK_NEW, _('Create New Template'),
                         None, None, self.on_new_template))
 
         self.actiongroup.add_actions(actions)

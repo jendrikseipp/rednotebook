@@ -25,8 +25,8 @@ PyGTKCodeBuffer by Hannes Matuschek (http://code.google.com/p/pygtkcodebuffer/).
 import collections
 import re
 
-import gtk
-import pango
+from gi.repository import Gtk
+from gi.repository import Pango
 
 from rednotebook.data import HASHTAG
 from rednotebook.external import txt2tags
@@ -126,12 +126,12 @@ class MarkupDefinition(object):
         return tag_groups
 
 
-class MarkupBuffer(gtk.TextBuffer):
+class MarkupBuffer(Gtk.TextBuffer):
     OVERLAPS = ['bold', 'italic', 'underline', 'strikethrough',
                 'highlight', 'list', 'numlist']
 
     def __init__(self, table=None, lang=None, styles={}):
-        gtk.TextBuffer.__init__(self, table)
+        GObject.GObject.__init__(self, table)
         self._lang_def = lang
         self.styles = styles
 
@@ -154,7 +154,7 @@ class MarkupBuffer(gtk.TextBuffer):
         """
         We have to search for the regexes in utf-8 text.
         """
-        return gtk.TextBuffer.get_slice(self, start, end).decode('utf-8')
+        return Gtk.TextBuffer.get_slice(self, start, end).decode('utf-8')
 
     def _on_insert_text(self, buf, it, text, length):
         end = it.copy()
@@ -206,9 +206,9 @@ class MarkupBuffer(gtk.TextBuffer):
 
 
 styles = {
-    'bold': {'weight': pango.WEIGHT_BOLD},
-    'italic': {'style': pango.STYLE_ITALIC},
-    'underline': {'underline': pango.UNDERLINE_SINGLE},
+    'bold': {'weight': Pango.Weight.BOLD},
+    'italic': {'style': Pango.Style.ITALIC},
+    'underline': {'underline': Pango.Underline.SINGLE},
     'strikethrough': {'strikethrough': True},
     'gray': {'foreground': 'gray'},
     'red': {'foreground': 'red'},
@@ -218,26 +218,26 @@ styles = {
     'tagged': {},
     'link': {
         'foreground': 'blue',
-        'underline': pango.UNDERLINE_SINGLE},
+        'underline': Pango.Underline.SINGLE},
     'highlight': {'background': 'yellow'},
     'quote': {'background': 'gray'},
     'tablehead': {'background': markup.TABLE_HEAD_BG},
     'tablerow': {'background': '#eee'},
-    'formula': {'style': pango.STYLE_ITALIC, 'family': 'serif'}
+    'formula': {'style': Pango.Style.ITALIC, 'family': 'serif'}
 }
 
 
 def add_header_styles():
     sizes = [
-        pango.SCALE_XX_LARGE,
-        pango.SCALE_X_LARGE,
-        pango.SCALE_LARGE,
-        pango.SCALE_MEDIUM,
-        pango.SCALE_SMALL,
+        Pango.SCALE_XX_LARGE,
+        Pango.SCALE_X_LARGE,
+        Pango.SCALE_LARGE,
+        Pango.SCALE_MEDIUM,
+        Pango.SCALE_SMALL,
     ]
     for level, size in enumerate(sizes):
         style = {
-            'weight': pango.WEIGHT_ULTRABOLD,
+            'weight': Pango.Weight.ULTRABOLD,
             'scale': size}
         name = 'title%s' % (level + 1)
         styles[name] = style

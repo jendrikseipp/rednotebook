@@ -19,7 +19,7 @@
 
 import os
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook.gui import customwidgets
 from rednotebook.util import filesystem
@@ -53,7 +53,7 @@ MENUBAR_XML = '''\
 
 
 def get_image(name):
-    image = gtk.Image()
+    image = Gtk.Image()
     file_name = os.path.join(filesystem.image_dir, name)
     image.set_from_file(file_name)
     return image
@@ -72,7 +72,7 @@ class InsertMenu(object):
 
     def setup(self):
         '''
-        See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
+        See http://www.pyGtk.org/pygtk2tutorial/sec-UIManager.html for help
         A popup menu cannot show accelerators (HIG).
         '''
         uimanager = self.main_window.uimanager
@@ -82,7 +82,7 @@ class InsertMenu(object):
         self.main_window.main_frame.add_accel_group(accelgroup)
 
         # Create an ActionGroup
-        self.main_window.insert_actiongroup = gtk.ActionGroup('InsertActionGroup')
+        self.main_window.insert_actiongroup = Gtk.ActionGroup('InsertActionGroup')
 
         line = '\n====================\n'
 
@@ -99,14 +99,14 @@ class InsertMenu(object):
 
         # Create actions
         self.main_window.insert_actiongroup.add_actions([
-            ('Picture', gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'),
+            ('Picture', Gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'),
                 None, _('Insert an image from the harddisk'),
                 self.get_insert_handler(self.on_insert_pic)),
-            ('File', gtk.STOCK_FILE, _('File'), None,
+            ('File', Gtk.STOCK_FILE, _('File'), None,
                 _('Insert a link to a file'),
                 self.get_insert_handler(self.on_insert_file)),
             # Translators: Noun
-            ('Link', gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L',
+            ('Link', Gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L',
                 _('Insert a link to a website'),
                 self.get_insert_handler(self.on_insert_link)),
             ('BulletList', None, _('Bullet List'), None, None,
@@ -148,7 +148,7 @@ class InsertMenu(object):
             if menu_item:
                 menu_item.set_image(get_image(filename + '.png'))
 
-        self.main_window.insert_button = customwidgets.ToolbarMenuButton(gtk.STOCK_ADD, menu)
+        self.main_window.insert_button = customwidgets.ToolbarMenuButton(Gtk.STOCK_ADD, menu)
         self.main_window.insert_button.set_label(_('Insert'))
         self.main_window.insert_button.set_tooltip_text(_('Insert images, files, links and other content'))
         self.main_window.builder.get_object('edit_toolbar').insert(self.main_window.insert_button, -1)
@@ -174,7 +174,7 @@ class InsertMenu(object):
         # if no text is selected, we can support inserting multiple images
         picture_chooser.set_select_multiple(not sel_text)
 
-        filter = gtk.FileFilter()
+        filter = Gtk.FileFilter()
         filter.set_name("Images")
         filter.add_mime_type("image/png")
         filter.add_mime_type("image/jpeg")
@@ -188,21 +188,21 @@ class InsertMenu(object):
         picture_chooser.add_filter(filter)
 
         # Add box for inserting image width.
-        box = gtk.HBox()
+        box = Gtk.HBox()
         box.set_spacing(2)
-        label = gtk.Label(_('Width (optional):'))
-        width_entry = gtk.Entry(max=6)
+        label = Gtk.Label(label=_('Width (optional):'))
+        width_entry = Gtk.Entry(max=6)
         width_entry.set_width_chars(6)
         box.pack_start(label, False)
         box.pack_start(width_entry, False)
-        box.pack_start(gtk.Label(_('pixels')), False)
+        box.pack_start(Gtk.Label(_('pixels', True, True, 0)), False)
         box.show_all()
         picture_chooser.set_extra_widget(box)
 
         response = picture_chooser.run()
         picture_chooser.hide()
 
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             folder = picture_chooser.get_current_folder()
             # Folder is None if the file was chosen from the "recently used" section.
             if folder:
@@ -243,7 +243,7 @@ class InsertMenu(object):
         response = file_chooser.run()
         file_chooser.hide()
 
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             folder = file_chooser.get_current_folder()
             # Folder is None if the file was chosen from the "recently used" section.
             if folder:
@@ -269,14 +269,14 @@ class InsertMenu(object):
 
         def on_link_changed(widget):
             # Only make the link submittable, if text has been entered.
-            link_creator.set_response_sensitive(gtk.RESPONSE_OK, link_entered())
+            link_creator.set_response_sensitive(Gtk.ResponseType.OK, link_entered())
 
         link_location_entry.connect('changed', on_link_changed)
 
         # Let user finish by hitting ENTER.
         def respond(widget):
             if link_entered():
-                link_creator.response(gtk.RESPONSE_OK)
+                link_creator.response(Gtk.ResponseType.OK)
 
         link_location_entry.connect('activate', respond)
         link_name_entry.connect('activate', respond)
@@ -286,7 +286,7 @@ class InsertMenu(object):
         response = link_creator.run()
         link_creator.hide()
 
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             link_location = link_location_entry.get_text().decode('utf-8')
             link_name = link_name_entry.get_text().decode('utf-8')
 

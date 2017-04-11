@@ -22,8 +22,8 @@ import os
 import re
 import sys
 
-import gobject
-import pango
+from gi.repository import GObject
+from gi.repository import Pango
 
 from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
@@ -449,11 +449,11 @@ def convert_to_pango(txt, headers=None, options=None):
     result = re.sub(REGEX_HTML_LINK, replace_links, result)
 
     try:
-        attr_list, plain, accel = pango.parse_markup(result)
+        attr_list, plain, accel = Pango.parse_markup(result)
 
         # result is valid pango markup, return the markup
         return result
-    except gobject.GError:
+    except GObject.GError:
         # There are unknown tags in the markup, return the original text
         logging.debug('There are unknown tags in the markup: %s' % result)
         return original_txt

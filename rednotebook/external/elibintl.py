@@ -29,7 +29,7 @@ Microsoft Windows systems:
    as the installation language) provided by MUI packs,
  - makes sure internationalized C libraries which internally invoke gettext() or
    dcgettext() can properly locate their message catalogs. This fixes a known
-   limitation in gettext's Windows support when using eg. gtk.builder or gtk.glade.
+   limitation in gettext's Windows support when using eg. Gtk.builder or Gtk.glade.
 
 See http://www.gnu.org/software/gettext/FAQ.html#windows_setenv for more
 information.

@@ -21,7 +21,7 @@ import os
 import logging
 import platform
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook.gui.customwidgets import UrlButton, CustomComboBoxEntry
 from rednotebook.gui.customwidgets import ActionButton
@@ -31,16 +31,16 @@ from rednotebook import info
 from rednotebook.configuration import Config
 
 
-class Option(gtk.HBox):
+class Option(Gtk.HBox):
     def __init__(self, text, option_name, tooltip=''):
-        gtk.HBox.__init__(self)
+        GObject.GObject.__init__(self)
 
         self.text = text
         self.option_name = option_name
 
         self.set_spacing(5)
 
-        self.label = gtk.Label(self.text)
+        self.label = Gtk.Label(label=self.text)
         self.pack_start(self.label, False, False)
 
         if tooltip:
@@ -57,7 +57,7 @@ class TickOption(Option):
     def __init__(self, text, name, value=None, tooltip=''):
         Option.__init__(self, '', name, tooltip=tooltip)
 
-        self.check_button = gtk.CheckButton(text)
+        self.check_button = Gtk.CheckButton(text)
         if value is None:
             self.check_button.set_active(Option.config.read(name) == 1)
         else:
@@ -113,7 +113,7 @@ class TextOption(Option):
         # Ensure that we have a string here
         value = unicode(value)
 
-        self.entry = gtk.Entry()
+        self.entry = Gtk.Entry()
         self.entry.set_text(value)
 
         self.pack_start(self.entry, True)
@@ -126,7 +126,7 @@ class ComboBoxOption(Option):
     def __init__(self, text, name, entries):
         Option.__init__(self, text, name)
 
-        self.combo = CustomComboBoxEntry(gtk.ComboBoxEntry())
+        self.combo = CustomComboBoxEntry(Gtk.ComboBoxEntry())
         self.combo.set_entries(entries)
 
         self.pack_start(self.combo.combo_box, False)
@@ -145,7 +145,7 @@ class DateFormatOption(ComboBoxOption):
         date_url = 'http://docs.python.org/library/time.html#time.strftime'
         date_format_help_button = UrlButton(_('Help'), date_url)
 
-        self.preview = gtk.Label()
+        self.preview = Gtk.Label()
         self.pack_start(self.preview, False)
 
         self.pack_end(date_format_help_button, False)
@@ -176,10 +176,10 @@ class FontOption(Option):
 
         self.font_name = Option.config.read(name, editor.DEFAULT_FONT)
 
-        self.label = gtk.Label()
+        self.label = Gtk.Label()
         self.label.set_text(self.font_name)
 
-        self.button = gtk.Button(_('Choose font ...'))
+        self.button = Gtk.Button(_('Choose font ...'))
         self.button.connect('clicked', self.on_button_clicked)
 
         self.pack_start(self.label, False)
@@ -187,7 +187,7 @@ class FontOption(Option):
 
     def on_button_clicked(self, widget):
         if not self.dialog:
-            self.dialog = gtk.FontSelectionDialog(_('Choose font'))
+            self.dialog = Gtk.FontSelectionDialog(_('Choose font'))
 
             self.dialog.set_font_name(self.font_name)
             self.dialog.set_modal(True)
@@ -198,7 +198,7 @@ class FontOption(Option):
             self.dialog.cancel_button.connect_object(
                 "clicked", lambda window: window.destroy(), self.dialog)
 
-        if not (self.dialog.flags() & gtk.VISIBLE):
+        if not (self.dialog.flags() & Gtk.VISIBLE):
             self.dialog.show()
         else:
             self.dialog.destroy()
@@ -316,7 +316,7 @@ class OptionsManager(object):
 
         response = self.dialog.run()
 
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             self.save_options()
 
             # Apply some options

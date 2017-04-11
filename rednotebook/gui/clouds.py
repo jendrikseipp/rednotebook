@@ -24,8 +24,8 @@ import locale
 import logging
 import re
 
-import gtk
-import gobject
+from gi.repository import Gtk
+from gi.repository import GObject
 
 from rednotebook.gui.browser import HtmlView
 from rednotebook import data
@@ -103,7 +103,7 @@ class Cloud(HtmlView):
         if not force_update:
             return
 
-        gobject.idle_add(self._update)
+        GObject.idle_add(self._update)
 
     def get_categories_counter(self):
         counter = defaultdict(int)
@@ -255,7 +255,7 @@ class Cloud(HtmlView):
 
         if self.last_hovered_word:
             label = _('Hide "%s" from clouds') % self.last_hovered_word
-            ignore_menu_item = gtk.MenuItem(label)
+            ignore_menu_item = Gtk.MenuItem(label)
             ignore_menu_item.show()
             menu.prepend(ignore_menu_item)
             ignore_menu_item.connect('activate', self.on_ignore_menu_activate, self.last_hovered_word)

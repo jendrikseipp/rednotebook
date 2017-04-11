@@ -23,8 +23,8 @@ import os
 import re
 import sys
 
-import gobject
-import gtk
+from gi.repository import GObject
+from gi.repository import Gtk
 
 from rednotebook.data import Day, Month
 from rednotebook.util import filesystem
@@ -47,13 +47,13 @@ class SummaryPage(AssistantPage):
     def __init__(self, *args, **kwargs):
         AssistantPage.__init__(self, *args, **kwargs)
 
-        scrolled_window = gtk.ScrolledWindow()
-        self.board = gtk.TextView()
+        scrolled_window = Gtk.ScrolledWindow()
+        self.board = Gtk.TextView()
         self.board.set_editable(False)
         self.board.set_cursor_visible(False)
-        self.board.set_wrap_mode(gtk.WRAP_WORD)
+        self.board.set_wrap_mode(Gtk.WrapMode.WORD)
         scrolled_window.add(self.board)
-        self.pack_start(scrolled_window)
+        self.pack_start(scrolled_window, True, True, 0)
 
     def prepare(self, type, path):
         parts = [
@@ -70,8 +70,8 @@ class SummaryPage(AssistantPage):
             day_text += markup.convert_categories_to_markup(categories, False)
         self._append(day_text)
         # Wait for the text to be drawn
-        while gtk.events_pending():
-            gtk.main_iteration()
+        while Gtk.events_pending():
+            Gtk.main_iteration()
 
     def clear(self):
         self.board.get_buffer().set_text('')
@@ -107,7 +107,7 @@ class ImportAssistant(Assistant):
         self.page3 = SummaryPage()
         self.append_page(self.page3)
         self.set_page_title(self.page3, _('Summary') + ' (3/3)')
-        self.set_page_type(self.page3, gtk.ASSISTANT_PAGE_CONFIRM)
+        self.set_page_type(self.page3, Gtk.AssistantPageType.CONFIRM)
 
         self.importer = None
         self.path = None
@@ -141,7 +141,7 @@ class ImportAssistant(Assistant):
             self.page3.prepare(self.importer.NAME, self.path)
 
             # We want the page to be shown first and the days added then
-            gobject.idle_add(self.add_days)
+            GObject.idle_add(self.add_days)
 
     def add_days(self):
         self.days = []

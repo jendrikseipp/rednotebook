@@ -26,7 +26,7 @@ import webbrowser
 import logging
 from distutils.version import StrictVersion
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook import info
 import filesystem
@@ -120,9 +120,9 @@ def check_new_version(journal, current_version, startup=False):
                  (current_version, new_version, newer_version_available))
 
     if newer_version_available or not startup:
-        dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL,
-                                   type=gtk.MESSAGE_INFO,
-                                   buttons=gtk.BUTTONS_YES_NO,
+        dialog = Gtk.MessageDialog(parent=None, flags=Gtk.DialogFlags.MODAL,
+                                   type=Gtk.MessageType.INFO,
+                                   buttons=Gtk.ButtonsType.YES_NO,
                                    message_format=None)
         dialog.set_transient_for(journal.frame.main_frame)
         primary_text = (_('You have version <b>%s</b>.') % current_version + ' ' +
@@ -135,16 +135,16 @@ def check_new_version(journal, current_version, startup=False):
         if startup:
             # Add button on the left side
             dialog.add_button(_('Do not ask again'), 30)
-            settings = gtk.settings_get_default()
+            settings = Gtk.Settings.get_default()
             settings.set_property('gtk-alternative-button-order', True)
 
-            dialog.set_alternative_button_order([30, gtk.RESPONSE_NO,
-                                                 gtk.RESPONSE_YES])
+            dialog.set_alternative_button_order([30, Gtk.ResponseType.NO,
+                                                 Gtk.ResponseType.YES])
 
         response = dialog.run()
         dialog.hide()
 
-        if response == gtk.RESPONSE_YES:
+        if response == Gtk.ResponseType.YES:
             webbrowser.open(info.url)
         elif response == 30:
             logging.info('Checks for new versions disabled')

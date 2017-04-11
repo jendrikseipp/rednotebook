@@ -21,8 +21,8 @@ import os
 import urllib
 import logging
 
-import gtk
-import pango
+from gi.repository import Gtk
+from gi.repository import Pango
 
 from rednotebook.gui import t2t_highlight
 from rednotebook import undo
@@ -36,7 +36,7 @@ except ImportError:
     spellcheck = None
 
 
-DEFAULT_FONT = gtk.settings_get_default().get_property('gtk-font-name')
+DEFAULT_FONT = Gtk.Settings.get_default().get_property('gtk-font-name')
 
 
 class Editor(object):
@@ -63,8 +63,8 @@ class Editor(object):
         # So we forbid that behaviour, by setting a minimum width
         self.day_text_view.set_size_request(1, -1)
 
-        self.font = pango.FontDescription(DEFAULT_FONT)
-        self.default_size = self.font.get_size() / pango.SCALE
+        self.font = Pango.FontDescription(DEFAULT_FONT)
+        self.default_size = self.font.get_size() / Pango.SCALE
         logging.debug('Default font: %s' % self.font.to_string())
         logging.debug('Default size: %s' % self.default_size)
 
@@ -86,7 +86,7 @@ class Editor(object):
         if iter is None:
             self.day_text_buffer.insert_at_cursor(text)
         else:
-            if type(iter) == gtk.TextMark:
+            if type(iter) == Gtk.TextMark:
                 iter = self.day_text_buffer.get_iter_at_mark(iter)
             self.day_text_buffer.insert(iter, text)
 
@@ -129,7 +129,7 @@ class Editor(object):
 
         for search_text in variants:
             iter_tuple = iter_start.forward_search(
-                search_text, gtk.TEXT_SEARCH_VISIBLE_ONLY)
+                search_text, Gtk.TextSearchFlags.VISIBLE_ONLY)
 
             # When we find one variant, scroll to it and quit
             if iter_tuple:
@@ -227,7 +227,7 @@ class Editor(object):
         self.replace_selection_and_highlight(left_markup, text, right_markup)
 
     def set_font(self, font_name):
-        font = pango.FontDescription(font_name)
+        font = Pango.FontDescription(font_name)
         self.day_text_view.modify_font(font)
 
     def hide(self):

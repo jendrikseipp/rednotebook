@@ -22,9 +22,9 @@ import logging
 import os
 import sys
 
-import gobject
-import gtk
-import pango
+from gi.repository import GObject
+from gi.repository import Gtk
+from gi.repository import Pango
 
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
@@ -55,11 +55,11 @@ class MainWindow(object):
 
         # Set the Glade file
         self.gladefile = os.path.join(filesystem.files_dir, 'main_window.glade')
-        self.builder = gtk.Builder()
+        self.builder = Gtk.Builder()
         self.builder.set_translation_domain('rednotebook')
         try:
             self.builder.add_from_file(self.gladefile)
-        except gobject.GError, err:
+        except GObject.GError, err:
             logging.error('An error occured while loading the GUI: %s' % err)
             logging.error('RedNotebook requires at least gtk+ 2.14. '
                           'If you cannot update gtk, you might want to try an '
@@ -70,16 +70,16 @@ class MainWindow(object):
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
         try:
-            icon = gtk.gdk.pixbuf_new_from_file(os.path.join(filesystem.frame_icon_dir,
+            icon = GdkPixbuf.Pixbuf.new_from_file(os.path.join(filesystem.frame_icon_dir,
                                                              'rednotebook.svg'))
-        except gobject.GError:
-            icon = gtk.gdk.pixbuf_new_from_file(os.path.join(filesystem.frame_icon_dir,
+        except GObject.GError:
+            icon = GdkPixbuf.Pixbuf.new_from_file(os.path.join(filesystem.frame_icon_dir,
                                                              'rn-192.png'))
         self.main_frame.set_icon(icon)
 
         self.is_fullscreen = False
 
-        self.uimanager = gtk.UIManager()
+        self.uimanager = Gtk.UIManager()
 
         # Before fetching the menubar, add all menus and actiongroups.
         # Setup the toolbar items first to avoid warnings for missing actions.
@@ -127,7 +127,7 @@ class MainWindow(object):
         self.html_editor.webview.connect('navigation-requested', self.on_browser_navigate)
 
         self.text_vbox = self.builder.get_object('text_vbox')
-        self.text_vbox.pack_start(self.html_editor)
+        self.text_vbox.pack_start(self.html_editor, True, True, 0)
         self.html_editor.hide()
         self.html_editor.set_editable(False)
         self.preview_mode = False
@@ -229,19 +229,19 @@ class MainWindow(object):
             (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
         ]
         for button, signal, shortcut in shortcuts:
-            (keyval, mod) = gtk.accelerator_parse(shortcut)
+            (keyval, mod) = Gtk.accelerator_parse(shortcut)
             button.add_accelerator(signal, self.accel_group,
-                                   keyval, mod, gtk.ACCEL_VISIBLE)
+                                   keyval, mod, Gtk.AccelFlags.VISIBLE)
 
     def _on_key_press_event(self, widget, event):
         # Exit fullscreen mode with ESC.
-        if event.keyval == gtk.keysyms.Escape and self.is_fullscreen:
+        if event.keyval == Gdk.KEY_Escape and self.is_fullscreen:
             self.toggle_fullscreen()
 
     # TRAY-ICON / CLOSE --------------------------------------------------------
 
     def setup_tray_icon(self):
-        self.tray_icon = gtk.StatusIcon()
+        self.tray_icon = Gtk.StatusIcon()
         try:
             # Available in PyGTK >= 2.22
             self.tray_icon.set_name('RedNotebook')
@@ -279,13 +279,13 @@ class MainWindow(object):
         </ui>'''
 
         # Create an ActionGroup
-        actiongroup = gtk.ActionGroup('TrayActionGroup')
+        actiongroup = Gtk.ActionGroup('TrayActionGroup')
 
         # Create actions
         actiongroup.add_actions([
-            ('Show', gtk.STOCK_MEDIA_PLAY, _('Show RedNotebook'),
+            ('Show', Gtk.STOCK_MEDIA_PLAY, _('Show RedNotebook'),
                 None, None, lambda widget: self.show()),
-            ('Quit', gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
+            ('Quit', Gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
         ])
 
         # Add the actiongroup to the uimanager
@@ -298,7 +298,7 @@ class MainWindow(object):
         menu = self.uimanager.get_widget('/TrayMenu')
 
         menu.popup(
-            None, None, gtk.status_icon_position_menu, button,
+            None, None, Gtk.status_icon_position_menu, button,
             activate_time, status_icon)
 
     def show(self):
@@ -355,7 +355,7 @@ class MainWindow(object):
         edit_button = self.builder.get_object('edit_button')
         preview_button = self.builder.get_object('preview_button')
 
-        size_group = gtk.SizeGroup(gtk.SIZE_GROUP_HORIZONTAL)
+        size_group = Gtk.SizeGroup(Gtk.SizeGroupMode.HORIZONTAL)
         size_group.add_widget(edit_button)
         size_group.add_widget(preview_button)
 
@@ -387,7 +387,7 @@ class MainWindow(object):
         self.change_mode(preview=False)
         # Select (not only highlight) previously selected text by giving focus
         # to the day editor.
-        gobject.idle_add(self.day_text_field.day_text_view.grab_focus)
+        GObject.idle_add(self.day_text_field.day_text_view.grab_focus)
 
     def on_preview_button_clicked(self, button):
         self.journal.save_old_day()
@@ -396,7 +396,7 @@ class MainWindow(object):
 
     def on_browser_clicked(self, webview, event):
         # Double-click -> Change to edit mode.
-        if event.type == gtk.gdk._2BUTTON_PRESS:
+        if event.type == Gdk._2BUTTON_PRESS:
             self.change_mode(preview=False)
             # Stop processing that event
             return True
@@ -406,15 +406,15 @@ class MainWindow(object):
     def setup_search(self):
         self.search_tree_view = search.SearchTreeView(self)
         self.search_tree_view.show()
-        scroll = gtk.ScrolledWindow()
+        scroll = Gtk.ScrolledWindow()
         scroll.add(self.search_tree_view)
-        self.builder.get_object('search_container').pack_start(scroll)
+        self.builder.get_object('search_container').pack_start(scroll, True, True, 0)
         self.search_box = search.SearchComboBox(
             self.builder.get_object('search_box'), self)
 
     def setup_clouds(self):
         self.cloud = Cloud(self.journal)
-        self.builder.get_object('search_container').pack_start(self.cloud)
+        self.builder.get_object('search_container').pack_start(self.cloud, True, True, 0)
 
     def on_main_frame_configure_event(self, widget, event):
         '''
@@ -434,8 +434,8 @@ class MainWindow(object):
         minimized, maximized, made sticky, made not sticky, shaded or
         unshaded.
         '''
-        if event.changed_mask & gtk.gdk.WINDOW_STATE_MAXIMIZED:
-            maximized = bool(event.new_window_state & gtk.gdk.WINDOW_STATE_MAXIMIZED)
+        if event.changed_mask & Gdk.WindowState.MAXIMIZED:
+            maximized = bool(event.new_window_state & Gdk.WindowState.MAXIMIZED)
             self.journal.config['mainFrameMaximized'] = int(maximized)
 
     def toggle_fullscreen(self):
@@ -484,7 +484,7 @@ class MainWindow(object):
         new_dir = dir_chooser.get_filename()
         dir_chooser.hide()
 
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             if new_dir is None:
                 self.journal.show_message(_('No directory selected.'), error=True)
                 return None
@@ -504,12 +504,12 @@ class MainWindow(object):
         answer = dialog.run()
         dialog.hide()
 
-        if answer == gtk.RESPONSE_OK:
+        if answer == Gtk.ResponseType.OK:
             # Even if the user aborts the Save-As dialog, we don't want to exit.
             self.journal.is_allowed_to_exit = False
             # Let the user select a new directory. Nothing has been saved yet.
             self.menubar_manager.on_save_as_menu_item_activate(None)
-        elif answer == gtk.RESPONSE_CANCEL and exit_imminent:
+        elif answer == Gtk.ResponseType.CANCEL and exit_imminent:
             self.journal.is_allowed_to_exit = False
         # Do nothing if user wants to exit without saving
 
@@ -537,8 +537,8 @@ class MainWindow(object):
         main_frame_width = config.read('mainFrameWidth')
         main_frame_height = config.read('mainFrameHeight')
 
-        screen_width = gtk.gdk.screen_width()
-        screen_height = gtk.gdk.screen_height()
+        screen_width = Gdk.Screen.width()
+        screen_height = Gdk.Screen.height()
 
         main_frame_width = min(main_frame_width, screen_width)
         main_frame_height = min(main_frame_height, screen_height)
@@ -557,10 +557,10 @@ class MainWindow(object):
                 if 0 <= x <= screen_width and 0 <= y <= screen_height:
                     self.main_frame.move(x, y)
                 else:
-                    self.main_frame.set_position(gtk.WIN_POS_CENTER)
+                    self.main_frame.set_position(Gtk.WindowPosition.CENTER)
             except (ValueError, TypeError):
                 # Values have not been set or are not valid integers
-                self.main_frame.set_position(gtk.WIN_POS_CENTER)
+                self.main_frame.set_position(Gtk.WindowPosition.CENTER)
 
         self.builder.get_object('main_pane').set_position(config.read('leftDividerPosition'))
         # By default do not show tags pane.
@@ -570,14 +570,14 @@ class MainWindow(object):
 
     def set_font(self, font_name):
         self.day_text_field.set_font(font_name)
-        self.html_editor.set_font_size(pango.FontDescription(font_name).get_size() / pango.SCALE)
+        self.html_editor.set_font_size(Pango.FontDescription(font_name).get_size() / Pango.SCALE)
 
     def setup_template_menu(self):
         def update_menu(button):
             self.template_button.set_menu(self.template_manager.get_menu())
 
         self.template_button = customwidgets.ToolbarMenuButton(
-            gtk.STOCK_PASTE, self.template_manager.get_menu())
+            Gtk.STOCK_PASTE, self.template_manager.get_menu())
         self.template_button.set_label(_('Template'))
         self.template_button.connect('show-menu', update_menu)
         self.template_button.set_tooltip_text(_(
@@ -625,7 +625,7 @@ class MainWindow(object):
         self.day_text_field.highlight(search_text)
 
     def show_message(self, title, msg, msg_type):
-        if msg_type == gtk.MESSAGE_ERROR:
+        if msg_type == Gtk.MessageType.ERROR:
             self.infobar.show_message(title, msg, msg_type)
         else:
             self.statusbar.show_message(title, msg, msg_type)
@@ -650,8 +650,8 @@ class Preview(browser.HtmlView):
 
         if self.day.last_preview_pos is not None:
             x, y = self.day.last_preview_pos
-            gobject.idle_add(self.get_hscrollbar().set_value, x)
-            gobject.idle_add(self.get_vscrollbar().set_value, y)
+            GObject.idle_add(self.get_hscrollbar().set_value, x)
+            GObject.idle_add(self.get_vscrollbar().set_value, y)
 
 
 class DayEditor(editor.Editor):
@@ -680,14 +680,14 @@ class DayEditor(editor.Editor):
 
         if self.search_text:
             # If a search is currently made, scroll to the text and return.
-            gobject.idle_add(self.scroll_to_text, self.search_text)
+            GObject.idle_add(self.scroll_to_text, self.search_text)
             return
 
         if self.day.last_edit_pos is not None:
             x, y, selection = self.day.last_edit_pos
-            gobject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
-            gobject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
-            gobject.idle_add(self._restore_selection, selection)
+            GObject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
+            GObject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
+            GObject.idle_add(self._restore_selection, selection)
 
     def _restore_selection(self, selection):
         iters = [self.day_text_buffer.get_iter_at_offset(offset)
@@ -710,7 +710,7 @@ class NewEntryDialog(object):
         # Let the user finish a new category entry by hitting ENTER
         def respond(widget):
             if self._text_entered():
-                self.dialog.response(gtk.RESPONSE_OK)
+                self.dialog.response(Gtk.ResponseType.OK)
         self.new_entry_combo_box.entry.connect('activate', respond)
         self.categories_combo_box.entry.connect('activate', respond)
 
@@ -723,7 +723,7 @@ class NewEntryDialog(object):
         self.new_entry_combo_box.set_entries(old_entries)
 
         # only make the entry submittable, if text has been entered
-        self.dialog.set_response_sensitive(gtk.RESPONSE_OK, self._text_entered())
+        self.dialog.set_response_sensitive(Gtk.ResponseType.OK, self._text_entered())
 
     def _text_entered(self):
         return bool(self.categories_combo_box.get_active_text())
@@ -749,7 +749,7 @@ class NewEntryDialog(object):
         response = self.dialog.run()
         self.dialog.hide()
 
-        if not response == gtk.RESPONSE_OK:
+        if not response == Gtk.ResponseType.OK:
             return
 
         category_name = self.categories_combo_box.get_active_text()
@@ -794,12 +794,12 @@ class Statusbar(object):
 
     def start_countdown(self):
         self.time_left = self.timespan
-        self.countdown = gobject.timeout_add(1000, self.count_down)
+        self.countdown = GObject.timeout_add(1000, self.count_down)
 
     def count_down(self):
         self.time_left -= 1
         if self.time_left <= 0:
-            gobject.source_remove(self.countdown)
+            GObject.source_remove(self.countdown)
             self._show_text('', countdown=False)
         return True
 

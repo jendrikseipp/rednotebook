@@ -16,8 +16,8 @@ sys.stderr
 from rednotebook.backup import Archiver
 Archiver.check_last_backup_date
 
-import gtk
-cell = gtk.CellRendererText()
+from gi.repository import Gtk
+cell = Gtk.CellRendererText()
 cell.props.wrap_mode
 
 from rednotebook.gui import imports

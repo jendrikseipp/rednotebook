@@ -21,13 +21,13 @@ import logging
 import os
 import sys
 
-import gobject
-import gtk
+from gi.repository import GObject
+from gi.repository import Gtk
 
 from rednotebook.util import markup
 
 try:
-    import webkit
+    from gi.repository import WebKit
 except ImportError as err:
     logging.error(
         'pywebkitgtk not found. Please install it (python-webkit): %s' % err)
@@ -50,13 +50,13 @@ class HtmlPrinter(object):
     "A non-interactive tool for converting any given website to PDF"
     (http://github.com/eeejay/interwibble/)
     """
-    PAPER_SIZES = {'a3': gtk.PAPER_NAME_A3,
-                   'a4': gtk.PAPER_NAME_A4,
-                   'a5': gtk.PAPER_NAME_A5,
-                   'b5': gtk.PAPER_NAME_B5,
-                   'executive': gtk.PAPER_NAME_EXECUTIVE,
-                   'legal': gtk.PAPER_NAME_LEGAL,
-                   'letter': gtk.PAPER_NAME_LETTER}
+    PAPER_SIZES = {'a3': Gtk.PAPER_NAME_A3,
+                   'a4': Gtk.PAPER_NAME_A4,
+                   'a5': Gtk.PAPER_NAME_A5,
+                   'b5': Gtk.PAPER_NAME_B5,
+                   'executive': Gtk.PAPER_NAME_EXECUTIVE,
+                   'legal': Gtk.PAPER_NAME_LEGAL,
+                   'letter': Gtk.PAPER_NAME_LETTER}
 
     def __init__(self, paper='a4'):
         self._webview = Browser()
@@ -66,7 +66,7 @@ class HtmlPrinter(object):
             self._webview.connect('load-finished', self._load_finished_cb)
         except TypeError, err:
             logging.info(err)
-        self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
+        self._paper_size = Gtk.PaperSize(self.PAPER_SIZES[paper])
         self.outfile = None
 
     def print_html(self, html, outfile):
@@ -75,22 +75,22 @@ class HtmlPrinter(object):
         logging.info('Loading URL...')
         self._webview.load_html(html)
 
-        while gtk.events_pending():
-            gtk.main_iteration()
+        while Gtk.events_pending():
+            Gtk.main_iteration()
 
     def _print(self, frame):
-        print_op = gtk.PrintOperation()
-        print_settings = print_op.get_print_settings() or gtk.PrintSettings()
+        print_op = Gtk.PrintOperation()
+        print_settings = print_op.get_print_settings() or Gtk.PrintSettings()
         print_settings.set_paper_size(self._paper_size)
         print_op.set_print_settings(print_settings)
         print_op.set_export_filename(os.path.abspath(self.outfile))
         logging.info('Exporting PDF...')
         print_op.connect('end-print', self._end_print_cb)
         try:
-            frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
-            while gtk.events_pending():
-                gtk.main_iteration()
-        except gobject.GError, e:
+            frame.print_full(print_op, Gtk.PRINT_OPERATION_ACTION_EXPORT)
+            while Gtk.events_pending():
+                Gtk.main_iteration()
+        except GObject.GError, e:
             logging.error(e.message)
 
     def _title_changed_cb(self, _view, frame, title):
@@ -139,9 +139,9 @@ def print_pdf(html, filename):
     printer.print_html(html, filename)
 
 
-class HtmlView(gtk.ScrolledWindow):
+class HtmlView(Gtk.ScrolledWindow):
     def __init__(self, *args, **kargs):
-        gtk.ScrolledWindow.__init__(self, *args, **kargs)
+        GObject.GObject.__init__(self, *args, **kargs)
         self.webview = Browser()
         self.add(self.webview)
 

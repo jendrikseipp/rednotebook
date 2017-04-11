@@ -239,7 +239,7 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
-    import gtk
+    from gi.repository import Gtk
     import yaml
 
     functions = [platform.machine, platform.platform, platform.processor,

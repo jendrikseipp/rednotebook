@@ -17,7 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook.gui import customwidgets
 
@@ -55,21 +55,16 @@ class FormatMenu(object):
         self.setup()
 
     def setup(self):
-        '''
-        See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
-        A popup menu cannot show accelerators (HIG).
-        '''
-
         uimanager = self.main_window.uimanager
 
         # Create an ActionGroup
-        actiongroup = gtk.ActionGroup('FormatActionGroup')
+        actiongroup = Gtk.ActionGroup('FormatActionGroup')
 
         def tmpl(word):
             return word + ' (Ctrl+%s)' % word[0]
 
         def apply_format(action, format='bold'):
-            if type(action) == gtk.Action:
+            if type(action) == Gtk.Action:
                 format = action.get_name().lower()
 
             markup = self.FORMAT_TO_MARKUP[format]
@@ -77,7 +72,7 @@ class FormatMenu(object):
             focus = self.main_window.main_frame.get_focus()
             iter = self.main_window.categories_tree_view.get_selected_node()
 
-            if isinstance(focus, gtk.Entry):
+            if isinstance(focus, Gtk.Entry):
                 entry = focus
                 pos = entry.get_position()
                 # bounds can be an empty tuple
@@ -103,17 +98,17 @@ class FormatMenu(object):
 
         # Create actions
         actions = [
-            ('Bold', gtk.STOCK_BOLD, _('Bold') + shortcut('B'),
+            ('Bold', Gtk.STOCK_BOLD, _('Bold') + shortcut('B'),
              '<Control>B', None, apply_format),
-            ('Italic', gtk.STOCK_ITALIC, _('Italic') + shortcut('I'),
+            ('Italic', Gtk.STOCK_ITALIC, _('Italic') + shortcut('I'),
              '<Control>I', None, apply_format),
             ('Monospace', None, _('Monospace') + shortcut('M'),
              '<Control>M', None, apply_format),
-            ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'),
+            ('Underline', Gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'),
              '<Control>U', None, apply_format),
-            ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
+            ('Strikethrough', Gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
              '<Control>K', None, apply_format),
-            ('Clear', gtk.STOCK_CLEAR, _('Clear format') + shortcut('R'),
+            ('Clear', Gtk.STOCK_CLEAR, _('Clear format') + shortcut('R'),
              '<Control>R', None, self.on_clear_format),
             # Translators: Noun
             ('FormatMenuBar', None, _('_Format')),
@@ -130,7 +125,7 @@ class FormatMenu(object):
         # Create a Menu
         menu = uimanager.get_widget('/FormatMenu')
 
-        self.main_window.format_button = customwidgets.ToolbarMenuButton(gtk.STOCK_BOLD, menu)
+        self.main_window.format_button = customwidgets.ToolbarMenuButton(Gtk.STOCK_BOLD, menu)
         # Translators: Noun
         self.main_window.format_button.set_label(_('Format'))
         tip = _('Format the selected text or tag')

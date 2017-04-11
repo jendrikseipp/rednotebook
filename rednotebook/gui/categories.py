@@ -19,8 +19,8 @@
 
 import logging
 
-import gtk
-import pango
+from gi.repository import Gtk
+from gi.repository import Pango
 
 from rednotebook.util import markup
 from rednotebook.util import utils
@@ -41,14 +41,14 @@ class CategoriesTreeView(object):
         self.statusbar = self.main_window.statusbar
 
         # create a TreeStore with one string column to use as the model
-        self.tree_store = gtk.TreeStore(str)
+        self.tree_store = Gtk.TreeStore(str)
 
         # create the TreeView using tree_store
         self.tree_view.set_model(self.tree_store)
 
         # create the TreeViewColumn to display the data
-        self.tvcolumn = gtk.TreeViewColumn()
-        label = gtk.Label()
+        self.tvcolumn = Gtk.TreeViewColumn()
+        label = Gtk.Label()
         label.set_markup('<b>' + _('Tags') + '</b>')
         label.show()
         self.tvcolumn.set_widget(label)
@@ -57,7 +57,7 @@ class CategoriesTreeView(object):
         self.tree_view.append_column(self.tvcolumn)
 
         # create a CellRendererText to render the data
-        self.cell = gtk.CellRendererText()
+        self.cell = Gtk.CellRendererText()
 
         self.cell.set_property('editable', True)
         self.cell.connect('edited', self.edited_cb, self.tree_store)
@@ -84,7 +84,7 @@ class CategoriesTreeView(object):
         self.tree_view.connect('key-press-event', self.on_key_press_event)
 
         # Wrap lines
-        self.cell.props.wrap_mode = pango.WRAP_WORD
+        self.cell.props.wrap_mode = Pango.WrapMode.WORD
         self.cell.props.wrap_width = 200
         self.tree_view.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
 
@@ -101,7 +101,7 @@ class CategoriesTreeView(object):
         self.categories.sort(key=utils.sort_asc)
 
     def node_on_top_level(self, iter):
-        if not type(iter) == gtk.TreeIter:
+        if not type(iter) == Gtk.TreeIter:
             # iter is a path -> convert to iter
             iter = self.tree_store.get_iter(iter)
         assert self.tree_store.iter_is_valid(iter)
@@ -350,12 +350,12 @@ class CategoriesTreeView(object):
 
     def on_key_press_event(self, widget, event):
         """
-        @param widget - gtk.TreeView - The Tree View
-        @param event - gtk.gdk.event - Event information
+        @param widget - Gtk.TreeView - The Tree View
+        @param event - Gdk.event - Event information
 
         Delete an annotation node when user hits "Delete"
         """
-        keyname = gtk.gdk.keyval_name(event.keyval)
+        keyname = Gdk.keyval_name(event.keyval)
         logging.info('Pressed key: %s' % keyname)
 
         if keyname == 'Delete':
@@ -367,8 +367,8 @@ class CategoriesTreeView(object):
 
     def on_button_press_event(self, widget, event):
         """
-        @param widget - gtk.TreeView - The Tree View
-        @param event - gtk.gdk.event - Event information
+        @param widget - Gtk.TreeView - The Tree View
+        @param event - Gdk.event - Event information
         """
         # Get the path at the specific mouse position.
         path = widget.get_path_at_pos(int(event.x), int(event.y))
@@ -403,15 +403,15 @@ class CategoriesTreeView(object):
         uimanager = self.main_window.uimanager
 
         # Create an ActionGroup
-        actiongroup = gtk.ActionGroup('ContextMenuActionGroup')
+        actiongroup = Gtk.ActionGroup('ContextMenuActionGroup')
 
         # Create actions
         actiongroup.add_actions([
-            ('ChangeEntry', gtk.STOCK_EDIT, _('Change this text'),
+            ('ChangeEntry', Gtk.STOCK_EDIT, _('Change this text'),
              None, None, self._on_change_entry_clicked),
-            ('AddEntry', gtk.STOCK_NEW, _('Add a new entry'),
+            ('AddEntry', Gtk.STOCK_NEW, _('Add a new entry'),
              None, None, self._on_add_entry_clicked),
-            ('Delete', gtk.STOCK_DELETE, _('Delete this entry'),
+            ('Delete', Gtk.STOCK_DELETE, _('Delete this entry'),
              None, None, self._on_delete_entry_clicked),
         ])
 
