@@ -77,7 +77,7 @@ class FormatMenu(object):
                 pos = entry.get_position()
                 # bounds can be an empty tuple
                 bounds = entry.get_selection_bounds() or (pos, pos)
-                selected_text = entry.get_chars(*bounds).decode('utf-8')
+                selected_text = entry.get_chars(*bounds)
                 entry.delete_text(*bounds)
                 entry.insert_text('%s%s%s' % (markup, selected_text, markup), bounds[0])
                 # Set cursor after the end of the formatted text

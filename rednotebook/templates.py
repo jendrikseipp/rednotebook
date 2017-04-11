@@ -287,8 +287,7 @@ class TemplateManager(object):
             dialog.response(Gtk.ResponseType.OK)
 
         def on_text_changed(entry):
-            dialog.set_response_sensitive(Gtk.ResponseType.OK,
-                                          bool(entry.get_text().decode('UTF-8')))
+            dialog.set_response_sensitive(Gtk.ResponseType.OK, bool(entry.get_text()))
 
         entry = Gtk.Entry()
         entry.connect('activate', respond)
@@ -301,7 +300,7 @@ class TemplateManager(object):
         dialog.hide()
 
         if response == Gtk.ResponseType.OK:
-            title = entry.get_text().decode('UTF-8')
+            title = entry.get_text()
             parts = self.main_window.day_text_field.get_text_parts()
             path = self.get_path(title)
             filesystem.make_file(path, example_text)

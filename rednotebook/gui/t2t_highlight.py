@@ -155,7 +155,7 @@ class MarkupBuffer(Gtk.TextBuffer):
         """
         We have to search for the regexes in utf-8 text.
         """
-        return Gtk.TextBuffer.get_slice(self, start, end).decode('utf-8')
+        return Gtk.TextBuffer.get_slice(self, start, end)
 
     def _on_insert_text(self, buf, it, text, length):
         end = it.copy()

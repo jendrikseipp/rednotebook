@@ -213,7 +213,7 @@ class CategoriesTreeView(object):
         self.tvcolumn.clear_attributes(self.cell)
         self.tvcolumn.add_attribute(self.cell, 'text', 0)
 
-        pango_markup = self.tree_store.get_value(iter, 0).decode('utf-8')
+        pango_markup = self.tree_store.get_value(iter, 0)
 
         # Reset the renderer to use markup
         self.tvcolumn.clear_attributes(self.cell)

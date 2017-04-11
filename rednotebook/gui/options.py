@@ -120,7 +120,7 @@ class TextOption(Option):
         self.pack_start(self.entry, True)
 
     def get_value(self):
-        return self.entry.get_text().decode('utf-8')
+        return self.entry.get_text()
 
 
 class ComboBoxOption(Option):

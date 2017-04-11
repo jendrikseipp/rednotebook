@@ -119,7 +119,7 @@ class Cloud(HtmlView):
 
         tags_count_dict = list(self.get_categories_counter().items())
         self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
-        self.tags.sort(cmp=cmp_words)
+        self.tags.sort(key=locale.strxfrm)
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(

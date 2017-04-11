@@ -206,11 +206,11 @@ class InsertMenu(object):
             folder = picture_chooser.get_current_folder()
             # Folder is None if the file was chosen from the "recently used" section.
             if folder:
-                dirs.last_pic_dir = folder.decode('utf-8')
+                dirs.last_pic_dir = folder
 
             # get requested width of image
             width_text = ''
-            width = width_entry.get_text().decode('utf-8')
+            width = width_entry.get_text()
             if width:
                 try:
                     width = int(width)
@@ -225,7 +225,7 @@ class InsertMenu(object):
             # iterate through all selected images
             lines = []
             for filename in picture_chooser.get_filenames():
-                base, ext = os.path.splitext(filename.decode('utf-8'))
+                base, ext = os.path.splitext(filename)
 
                 # On windows firefox accepts absolute filenames only
                 # with the file:// prefix
@@ -247,8 +247,8 @@ class InsertMenu(object):
             folder = file_chooser.get_current_folder()
             # Folder is None if the file was chosen from the "recently used" section.
             if folder:
-                dirs.last_file_dir = folder.decode('utf-8')
-            filename = file_chooser.get_filename().decode('utf-8')
+                dirs.last_file_dir = folder
+            filename = file_chooser.get_filename()
             filename = filesystem.get_local_url(filename)
             sel_text = self.main_window.day_text_field.get_selected_text()
             head, tail = os.path.split(filename)
@@ -265,7 +265,7 @@ class InsertMenu(object):
         self.main_window.day_text_field.replace_selection('')
 
         def link_entered():
-            return bool(link_location_entry.get_text().decode('utf-8'))
+            return bool(link_location_entry.get_text())
 
         def on_link_changed(widget):
             # Only make the link submittable, if text has been entered.
@@ -287,8 +287,8 @@ class InsertMenu(object):
         link_creator.hide()
 
         if response == Gtk.ResponseType.OK:
-            link_location = link_location_entry.get_text().decode('utf-8')
-            link_name = link_name_entry.get_text().decode('utf-8')
+            link_location = link_location_entry.get_text()
+            link_name = link_name_entry.get_text()
 
             if link_location and link_name:
                 return '[%s ""%s""]' % (link_name, link_location)

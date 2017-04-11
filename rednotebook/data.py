@@ -106,7 +106,7 @@ class Day(object):
 
     def _get_text(self):
         '''Return the day's text as unicode.'''
-        return self.content['text'].decode('utf-8')
+        return self.content['text']
 
     def _set_text(self, text):
         self.content['text'] = text

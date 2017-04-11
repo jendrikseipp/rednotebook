@@ -476,7 +476,7 @@ class MainWindow(object):
             if new_dir is None:
                 self.journal.show_message(_('No directory selected.'), error=True)
                 return None
-            return new_dir.decode('utf-8')
+            return new_dir
         return None
 
     def show_save_error_dialog(self, exit_imminent):

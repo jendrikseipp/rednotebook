@@ -64,7 +64,7 @@ class CustomComboBoxEntry(object):
         self.combo_box.set_model(self.liststore)
 
     def get_active_text(self):
-        return self.entry.get_text().decode('utf-8')
+        return self.entry.get_text()
 
     def set_active_text(self, text):
         return self.entry.set_text(text)
@@ -304,7 +304,7 @@ class PathChooserPage(AssistantPage):
             self.chooser.set_current_name(filename + '.' + extension)
 
     def get_selected_path(self):
-        self.last_path = self.chooser.get_filename().decode('utf-8')
+        self.last_path = self.chooser.get_filename()
         return self.last_path
 
     def on_path_changed(self, widget):

@@ -34,10 +34,6 @@ REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
 IS_WIN = sys.platform.startswith('win')
 
 
-def get_utf8_path(path):
-    return path.encode('UTF-8')
-
-
 def has_system_tray():
     return IS_WIN  # A smarter detection is needed here ;)
 
@@ -296,7 +292,7 @@ def open_url_in_browser(url):
 
 def unquote_url(url):
     import urllib.parse
-    return urllib.parse.unquote(url).decode('utf-8')
+    return urllib.parse.unquote(url)
 
 
 def _open_url_with_call(url, prog):
