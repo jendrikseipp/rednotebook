@@ -47,8 +47,8 @@ MENUBAR_XML = '''\
 
 class FormatMenu(object):
     FORMAT_TO_MARKUP = {
-        'bold': u'**', 'italic': u'//', 'monospace': u'``',
-        'underline': u'__', 'strikethrough': u'--'}
+        'bold': '**', 'italic': '//', 'monospace': '``',
+        'underline': '__', 'strikethrough': '--'}
 
     def __init__(self, main_window):
         self.main_window = main_window
@@ -136,6 +136,6 @@ class FormatMenu(object):
     def on_clear_format(self, action):
         editor = self.main_window.day_text_field
         sel_text = editor.get_selected_text()
-        for markup in self.FORMAT_TO_MARKUP.values() + ['=== ', ' ===']:
+        for markup in list(self.FORMAT_TO_MARKUP.values()) + ['=== ', ' ===']:
             sel_text = sel_text.replace(markup, '')
         editor.replace_selection(sel_text)

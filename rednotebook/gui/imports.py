@@ -172,7 +172,7 @@ class Importer(object):
         for module in modules:
             try:
                 __import__(module)
-            except ImportError, err:
+            except ImportError as err:
                 logging.info('"%s" could not be imported: %s\nYou will not be '
                              'able to import %s' % (module, err, cls.NAME))
                 # Importer cannot be used
@@ -313,7 +313,7 @@ class TomboyImporter(Importer):
         date_format = '%Y-%m-%d'
 
         files = self._get_files(dir)
-        files = filter(lambda file: file.endswith('.note'), files)
+        files = [file for file in files if file.endswith('.note')]
 
         for file in files:
             path = os.path.join(dir, file)

@@ -53,8 +53,8 @@ class SearchComboBox(CustomComboBoxEntry):
         tags = []
         queries = []
         for part in search_text.split():
-            if part.startswith(u'#'):
-                tags.append(part.lstrip(u'#').lower())
+            if part.startswith('#'):
+                tags.append(part.lstrip('#').lower())
             else:
                 queries.append(part)
 

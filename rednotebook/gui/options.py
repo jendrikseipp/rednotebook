@@ -49,8 +49,9 @@ class Option(Gtk.HBox):
     def get_value(self):
         raise NotImplementedError
 
+    # TODO: Call get_value() directly.
     def get_string_value(self):
-        return unicode(self.get_value())
+        return self.get_value()
 
 
 class TickOption(Option):
@@ -111,7 +112,7 @@ class TextOption(Option):
         value = Option.config.read(option_name, default)
 
         # Ensure that we have a string here
-        value = unicode(value)
+        value = str(value)
 
         self.entry = Gtk.Entry()
         self.entry.set_text(value)
@@ -152,7 +153,7 @@ class DateFormatOption(ComboBoxOption):
 
         # Set default format if not present
         format = Option.config.read(name, '%A, %x %X')
-        format = unicode(format)
+        format = str(format)
         self.combo.set_active_text(format)
 
         self.combo.connect('changed', self.on_format_changed)
@@ -164,7 +165,7 @@ class DateFormatOption(ComboBoxOption):
         format_string = self.get_value()
         date_string = dates.format_date(format_string)
         # Translators: Noun
-        label_text = u'%s %s' % (_('Preview:'), date_string)
+        label_text = '%s %s' % (_('Preview:'), date_string)
         self.preview.set_text(label_text)
 
 

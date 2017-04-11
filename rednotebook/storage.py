@@ -76,7 +76,7 @@ def _load_month_from_disk(path, year_number, month_number):
             month_contents = yaml.load(month_file, Loader=Loader)
             month = Month(year_number, month_number, month_contents, os.path.getmtime(path))
             return month
-    except yaml.YAMLError, exc:
+    except yaml.YAMLError as exc:
         logging.error('Error in file %s:\n%s' % (path, exc))
     except IOError:
         # If that fails, there is nothing to load, so just display an error message.
@@ -114,7 +114,7 @@ def _save_month_to_disk(month, journal_dir):
         rm 2014-12.old.txt
     """
     content = {}
-    for day_number, day in month.days.iteritems():
+    for day_number, day in month.days.items():
         if not day.empty:
             content[day_number] = day.content
 

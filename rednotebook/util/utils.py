@@ -20,8 +20,8 @@
 import signal
 import os
 import re
-import httplib
-from urllib2 import urlopen
+import http.client
+from urllib.request import urlopen
 import webbrowser
 import logging
 from distutils.version import StrictVersion
@@ -29,7 +29,7 @@ from distutils.version import StrictVersion
 from gi.repository import Gtk
 
 from rednotebook import info
-import filesystem
+from rednotebook.util import filesystem
 
 
 def sort_asc(string):
@@ -39,13 +39,13 @@ def sort_asc(string):
 def set_environment_variables(config):
     variables = {}
 
-    for variable, value in variables.iteritems():
+    for variable, value in variables.items():
         if variable not in os.environ:
             # Only add environment variable if it does not exist yet
             os.environ[variable] = config.read(variable, default=value)
             logging.info('%s set to %s' % (variable, value))
 
-    for variable in variables.keys():
+    for variable in variables:
         if variable in os.environ:
             logging.info('The environment variable %s has value %s' % (variable, os.environ.get(variable)))
         else:
@@ -101,7 +101,7 @@ def get_new_version_number():
         new_version = StrictVersion(new_version)
         logging.info('%s is the latest version' % new_version)
         return new_version
-    except (IOError, httplib.HTTPException):
+    except (IOError, http.client.HTTPException):
         return None
 
 

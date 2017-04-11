@@ -66,7 +66,7 @@ class HtmlPrinter(object):
             self._webview.connect('load-error', self._load_error_cb)
             self._webview.connect('title-changed', self._title_changed_cb)
             self._webview.connect('load-finished', self._load_finished_cb)
-        except TypeError, err:
+        except TypeError as err:
             logging.info(err)
         self._paper_size = Gtk.PaperSize(self.PAPER_SIZES[paper])
         self.outfile = None
@@ -92,7 +92,7 @@ class HtmlPrinter(object):
             frame.print_full(print_op, Gtk.PRINT_OPERATION_ACTION_EXPORT)
             while Gtk.events_pending():
                 Gtk.main_iteration()
-        except GObject.GError, e:
+        except GObject.GError as e:
             logging.error(e.message)
 
     def _title_changed_cb(self, _view, frame, title):
@@ -116,7 +116,7 @@ class HtmlPrinter(object):
 
 try:
     printer = HtmlPrinter()
-except TypeError, err:
+except TypeError as err:
     printer = None
     logging.info('UrlPrinter could not be created: "%s"' % err)
 
@@ -168,7 +168,7 @@ class HtmlView(Gtk.ScrolledWindow):
             # Mark all occurences of "string", case-insensitive, no limit
             self.webview.mark_text_matches(string, False, 0)
             self.webview.set_highlight_text_matches(True)
-        except AttributeError, err:
+        except AttributeError as err:
             logging.info(err)
 
     def on_button_press(self, webview, event):

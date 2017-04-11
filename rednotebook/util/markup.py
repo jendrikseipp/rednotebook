@@ -137,7 +137,7 @@ def convert_categories_to_markup(categories, with_category_title=True):
     else:
         markup = ''
 
-    for category, entry_list in categories.iteritems():
+    for category, entry_list in categories.items():
         markup += '- ' + category + '\n'
         for entry in entry_list:
             markup += '  - ' + entry + '\n'
@@ -374,7 +374,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
         finished = txt2tags.finish_him(full_doc, config)
         result = '\n'.join(finished)
     # Txt2tags error, show the messsage to the user
-    except txt2tags.error, msg:
+    except txt2tags.error as msg:
         logging.error(msg)
         result = msg
     # Unknown error, show the traceback to the user
@@ -427,7 +427,7 @@ def convert_to_pango(txt, headers=None, options=None):
         result = ''.join(finished)
 
     # Txt2tags error, show the messsage to the user
-    except txt2tags.error, msg:
+    except txt2tags.error as msg:
         logging.error(msg)
         result = msg
 

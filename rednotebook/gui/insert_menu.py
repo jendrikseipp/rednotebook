@@ -158,7 +158,7 @@ class InsertMenu(object):
             editor = self.main_window.day_text_field
             sel_text = editor.get_selected_text()
             repl = func(sel_text)
-            if isinstance(repl, basestring):
+            if isinstance(repl, str):
                 editor.replace_selection(repl)
             elif isinstance(repl, tuple):
                 editor.replace_selection_and_highlight(*repl)

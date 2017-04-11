@@ -40,7 +40,6 @@ class UrlButton(ActionButton):
 class CustomComboBoxEntry(object):
     def __init__(self, combo_box):
         self.combo_box = combo_box
-        print combo_box, combo_box.get_child()
 
         self.liststore = Gtk.ListStore(GObject.TYPE_STRING)
         self.combo_box.set_model(self.liststore)
@@ -90,7 +89,7 @@ class CustomListView(Gtk.TreeView):
         *columns* must be a list of (header, type) pairs e.g. [('title', str)].
         """
         GObject.GObject.__init__(self)
-        headers, types = zip(*columns)
+        headers, types = list(zip(*columns))
         # create a TreeStore with columns to use as the model
         self.set_model(Gtk.ListStore(*types))
 

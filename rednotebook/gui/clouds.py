@@ -17,8 +17,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from __future__ import division
-
 from collections import defaultdict
 import locale
 import logging
@@ -109,28 +107,24 @@ class Cloud(HtmlView):
         counter = defaultdict(int)
         for day in self.journal.days:
             for cat in day.categories:
-                counter[u'#%s' % data.escape_tag(cat)] += 1
+                counter['#%s' % data.escape_tag(cat)] += 1
         return counter
 
     def _update(self):
         logging.debug('Update the cloud')
         self.journal.save_old_day()
 
-        def cmp_words((word1, _freq1), (word2, _freq2)):
-            # TODO: Use key=locale.strxfrm in python3
-            return locale.strcoll(word1, word2)
-
         # TODO: Avoid using an instance variable here.
         self.link_index = 0
 
-        tags_count_dict = self.get_categories_counter().items()
+        tags_count_dict = list(self.get_categories_counter().items())
         self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
         self.tags.sort(cmp=cmp_words)
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
             word_count_dict, self.regexes_ignore, self.regexes_include)
-        self.words.sort(cmp=cmp_words)
+        self.words.sort(key=locale.strxfrm)
 
         self.link_dict = self.tags + self.words
         html = self.get_clouds(self.words, self.tags)
@@ -177,7 +171,8 @@ class Cloud(HtmlView):
                  # filter words in ignore_list
                  any(pattern.match(word) for pattern in ignores)]
 
-        def frequency((word, freq)):
+        def frequency(word_and_freq):
+            (word, freq) = word_and_freq
             return freq
 
         # only take the longest words. If there are less words than n,
@@ -242,7 +237,7 @@ class Cloud(HtmlView):
         if uri:
             hovered_word = self._get_search_text(uri)
             # We don't want to hide any tags.
-            if hovered_word.startswith(u'#'):
+            if hovered_word.startswith('#'):
                 self.last_hovered_word = None
             else:
                 self.last_hovered_word = hovered_word

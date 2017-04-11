@@ -550,6 +550,5 @@ class PdfExporter(Exporter):
 def get_exporters():
     exporters = [PlainTextExporter, HtmlExporter, LatexExporter, PdfExporter]
 
-    # Instantiate importers
-    exporters = map(lambda exporter: exporter(), exporters)
-    return exporters
+    # Instantiate exporters
+    return [exporter() for exporter in exporters]

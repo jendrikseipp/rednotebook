@@ -20,8 +20,8 @@
 import argparse
 
 # This is required for setup.py to be able to import this module.
-import __builtin__
-if not hasattr(__builtin__, '_'):
+import builtins
+if not hasattr(builtins, '_'):
     def _(string):
         return string
 

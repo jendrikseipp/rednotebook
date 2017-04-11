@@ -35,10 +35,11 @@ logging.basicConfig(
 
 try:
     import gi
-    gi.require_version("Gtk", "3.0")
 except ImportError:
     logging.error('pygobject not found. Please install it (python3-gi).')
     sys.exit(1)
+
+gi.require_version("Gtk", "3.0")
 
 if hasattr(sys, "frozen"):
     from rednotebook.util import filesystem
@@ -67,14 +68,14 @@ GETTEXT_DOMAIN = 'rednotebook'
 # Register _() as a global translation function and set up the translation
 try:
     elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
-except locale.Error, err:
+except locale.Error as err:
     # unsupported locale setting
     logging.error('Locale could not be set: "%s"' % err)
     logging.error('Probably you have to install the appropriate language packs')
     # Make the _() function available even if gettext is not working.
-    import __builtin__
-    if not hasattr(__builtin__, '_'):
-        __builtin__.__dict__['_'] = lambda s: s
+    import builtins
+    if not hasattr(builtins, '_'):
+        builtins.__dict__['_'] = lambda s: s
 
 # ------------------- end Enable i18n -------------------------------
 
@@ -145,7 +146,7 @@ try:
     # only GObject.threads_init(): pdf export works, gui works
     # both: pdf export works, gui hangs afterwards
     GObject.threads_init()  # only initializes threading in the glib/gobject module
-except (ImportError, AssertionError), e:
+except (ImportError, AssertionError) as e:
     logging.error(e)
     logging.error('gtk not found. Please install PyGTK (python-gtk2)')
     sys.exit(1)
@@ -349,7 +350,7 @@ class Journal:
 
         self.frame.categories_tree_view.categories = self.categories
         # Add auto-completion for tag search
-        self.frame.search_box.set_entries([u'#%s' % self.normalize_tag(tag)
+        self.frame.search_box.set_entries(['#%s' % self.normalize_tag(tag)
                                            for tag in self.categories])
 
         self.title = filesystem.get_journal_title(data_dir)
@@ -519,10 +520,8 @@ class Journal:
 
         days = []
         for month in self.months.values():
-            days_in_month = month.days.values()
-
-            # Filter out days without content
-            days_in_month = [day for day in days_in_month if not day.empty]
+            # Filter out days without content.
+            days_in_month = [day for day in month.days.values() if not day.empty]
             days.extend(days_in_month)
 
         # Sort days

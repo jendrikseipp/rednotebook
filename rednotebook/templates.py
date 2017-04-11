@@ -252,7 +252,7 @@ class TemplateManager(object):
         config = self.main_window.journal.config
         format_string = config.read('dateTimeString', '%A, %x %X')
         date_string = dates.format_date(format_string)
-        text = text.replace(u'$date$', date_string)
+        text = text.replace('$date$', date_string)
         return text
 
     def on_save_insert(self, button):
@@ -349,7 +349,7 @@ class TemplateManager(object):
         actions_xml = ''.join('<menuitem action="Edit%s"/>' %
                               self._escape_template_name(title)
                               for title in sorted(titles)
-                              if title not in map(str, range(1, 8)))
+                              if title not in '1234567')
 
         uimanager = self.main_window.uimanager
 

@@ -18,7 +18,7 @@
 # -----------------------------------------------------------------------
 
 import os
-import urllib
+import urllib.request
 import logging
 
 from gi.repository import Gtk
@@ -192,17 +192,17 @@ class Editor(object):
 
     def _get_markups(self, format, selection):
         format_to_markups = {
-            'bold': (u'**', u'**'),
-            'italic': (u'//', u'//'),
-            'monospace': (u'``', u'``'),
-            'underline': (u'__', u'__'),
-            'strikethrough': (u'--', u'--'),
-            'title': (u'\n=== ', u' ===\n')
+            'bold': ('**', '**'),
+            'italic': ('//', '//'),
+            'monospace': ('``', '``'),
+            'underline': ('__', '__'),
+            'strikethrough': ('--', '--'),
+            'title': ('\n=== ', ' ===\n')
         }
         left_markup, right_markup = format_to_markups[format]
         if format == 'monospace' and '\n' in selection:
-            left_markup = u'\n```\n'
-            right_markup = u'\n```\n'
+            left_markup = '\n```\n'
+            right_markup = '\n```\n'
         return left_markup, right_markup
 
     def apply_format(self, format):
@@ -319,9 +319,9 @@ class Editor(object):
         uris = selection.data.strip('\r\n\x00')
         logging.debug('URIs: "%s"' % uris)
         uris = uris.split()  # we may have more than one file dropped
-        uris = map(lambda uri: uri.strip(), uris)
+        uris = [uri.strip() for uri in uris]
         for uri in uris:
-            uri = urllib.url2pathname(uri)
+            uri = urllib.request.url2pathname(uri)
             dirs, filename = os.path.split(uri)
             uri_without_ext, ext = os.path.splitext(uri)
             if is_pic(uri):

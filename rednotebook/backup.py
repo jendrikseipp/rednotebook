@@ -100,7 +100,7 @@ class Archiver(object):
         date_string = self.journal.config.read('lastBackupDate', now.strftime(DATE_FORMAT))
         try:
             last_backup_date = datetime.datetime.strptime(date_string, DATE_FORMAT)
-        except ValueError, err:
+        except ValueError as err:
             logging.error('Last backup date could not be read: %s' % err)
             return True
         last_backup_age = (now - last_backup_date).days

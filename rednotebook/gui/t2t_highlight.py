@@ -62,7 +62,7 @@ class Pattern(object):
         self.name = name
         self.group_tag_pairs = group_tag_pairs
 
-        if isinstance(pattern_or_regex, basestring):
+        if isinstance(pattern_or_regex, str):
             # assemble re-flag
             # TODO: Is this needed?
             flags += "ML"

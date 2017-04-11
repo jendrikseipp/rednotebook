@@ -156,8 +156,8 @@ class CategoriesTreeView(object):
         Recursive Method for adding the content
         """
         for key, value in sorted(
-                element_content.iteritems(),
-                key=lambda (key, value): key.lower()):
+                iter(element_content.items()),
+                key=lambda key_value: key_value[0].lower()):
             if key is not None:
                 key_pango = markup.convert_to_pango(key)
             new_child = self.tree_store.append(parent, [key_pango])
@@ -315,7 +315,7 @@ class CategoriesTreeView(object):
             category = self.get_iter_value(category_iter)
             content = self._get_element_content(category_iter)
             if content:
-                entries = content.keys()
+                entries = list(content.keys())
             else:
                 entries = []
 
