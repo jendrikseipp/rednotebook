@@ -170,7 +170,7 @@ multiple_entries_text = _('''\
 You can add multiple entries to a single day by \
 using different journals (one named "Work", the other "Family"), \
 separating your entries with different titles (=== Work ===, === Family ===) \
-and using horizontal separator lines (20 “=”s).''')
+and using horizontal separator lines (20 "="s).''')
 
 multiple_entries_example = _('''\
 === Work ===
@@ -304,7 +304,7 @@ text area (in edit mode) and choosing it from the submenu "Languages".
 
 === Adding custom dictionaries under Windows ===
 
-We use the dictionaries available from the [​openoffice extension
+We use the dictionaries available from the [openoffice extension
 download site http://extensions.services.openoffice.org/dictionaries].
 You need to download the appropriate language extension file(s) (files
 are openoffice extensions *.oxt, which are just zip files that contain
