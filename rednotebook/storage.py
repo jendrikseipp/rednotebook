@@ -29,10 +29,9 @@ import sys
 try:
     import yaml
 except ImportError:
-    logging.error('PyYAML not found. Please install it (python-yaml).')
+    logging.error('PyYAML not found. Please install it (python3-yaml).')
     sys.exit(1)
 
-# The presence of the yaml module has been checked
 try:
     from yaml import CLoader as Loader
     from yaml import CSafeDumper as Dumper

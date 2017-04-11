@@ -32,7 +32,7 @@ try:
     from rednotebook.external import spellcheck
 except ImportError:
     logging.warning(
-        'For spell checking, please install enchant (python-enchant).')
+        'For spell checking, please install enchant (python3-enchant).')
     spellcheck = None
 
 
@@ -74,7 +74,7 @@ class Editor(object):
     def get_text(self, iter_start=None, iter_end=None):
         iter_start = iter_start or self.day_text_buffer.get_start_iter()
         iter_end = iter_end or self.day_text_buffer.get_end_iter()
-        return self.day_text_buffer.get_text(iter_start, iter_end, True).decode('utf-8')
+        return self.day_text_buffer.get_text(iter_start, iter_end, True)
 
     def insert(self, text, iter=None, overwrite=False, undoing=False):
         self.day_text_buffer.handler_block(self.changed_connection)

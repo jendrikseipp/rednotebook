@@ -470,7 +470,7 @@ def install(domain, localedir):
     use :func:`elib.intl.install_module` to make _() available to your module.
     '''
     _install(domain, localedir, True)
-    gettext.install(domain, localedir, unicode=True)
+    gettext.install(domain, localedir)
 
 def install_module(domain, localedir):
     '''
