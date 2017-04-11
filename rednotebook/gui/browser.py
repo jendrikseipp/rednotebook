@@ -43,7 +43,7 @@ class Browser(WebKit2.WebView):
         webkit_settings.set_property('enable-plugins', False)
 
     def load_html(self, html):
-        self.load_html_string(html, 'file:///')
+        WebKit2.WebView.load_html(self, content=html, base_uri='file:///')
 
 
 class HtmlPrinter(object):
@@ -159,17 +159,8 @@ class HtmlView(Gtk.ScrolledWindow):
     def highlight(self, string):
         # Tell the webview which text to highlight after the html is loaded
         self.search_text = string
-
-        # Not possible for all versions of pywebkitgtk
-        try:
-            # Remove results from last highlighting
-            self.webview.unmark_text_matches()
-
-            # Mark all occurences of "string", case-insensitive, no limit
-            self.webview.mark_text_matches(string, False, 0)
-            self.webview.set_highlight_text_matches(True)
-        except AttributeError as err:
-            logging.info(err)
+        webview.get_find_controller().search(
+            self.search_text, WebKit2.FindOptions.CASE_INSENSITIVE, float("inf"))
 
     def on_button_press(self, webview, event):
         # Right mouse click
@@ -190,4 +181,4 @@ class HtmlView(Gtk.ScrolledWindow):
             if self.search_text:
                 self.highlight(self.search_text)
             else:
-                self.webview.set_highlight_text_matches(False)
+                webview.get_find_controller().search_finish()

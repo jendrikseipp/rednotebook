@@ -27,6 +27,7 @@ from gi.repository import GdkPixbuf
 from gi.repository import GObject
 from gi.repository import Gtk
 from gi.repository import Pango
+from gi.repository import WebKit2
 
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
@@ -451,7 +452,7 @@ class MainWindow(object):
             # Keep processing
             return False
 
-        if decision_type == Webkit2.PolicyDecisionType.NAVIGATION_ACTION:
+        if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
             uri = decision.get_navigation_action().get_request().get_uri()
             logging.info('Clicked URI "%s"' % uri)
             filesystem.open_url(uri)

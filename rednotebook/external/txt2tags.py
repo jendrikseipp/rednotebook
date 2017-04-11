@@ -2851,9 +2851,7 @@ class MaskMaster:
         while True:
 
             # Try to match the line for the three marks
-            # Note: 'z' > 999999
-            #
-            t = r = v = 'z'
+            t = r = v = -1
             try: t = regex['tagged'].search(line).start()
             except: pass
             try: r = regex['raw'].search(line).start()

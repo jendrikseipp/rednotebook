@@ -105,7 +105,7 @@ class MarkupDefinition(object):
         self.highlight_rule = None
 
     def __call__(self, buf, start, end):
-        txt = buf.get_slice(start, end)
+        txt = buf.get_slice(start, end, True)
 
         tag_groups = []
 
@@ -119,7 +119,7 @@ class MarkupDefinition(object):
             tags = rule(txt, start, end)
             while tags:
                 tag_groups.append(tags)
-                subtext = buf.get_slice(tags.max_end, end)
+                subtext = buf.get_slice(tags.max_end, end, True)
                 tags = rule(subtext, tags.max_end, end)
 
         tag_groups.sort(key=lambda g: (g.min_start.get_offset(), -g.max_end.get_offset()))
@@ -150,12 +150,6 @@ class MarkupBuffer(Gtk.TextBuffer):
             r"(%s)" % re.escape(text),
             [(1, 'highlight')], name='highlight', flags='I')
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
-
-    def get_slice(self, start, end):
-        """
-        We have to search for the regexes in utf-8 text.
-        """
-        return Gtk.TextBuffer.get_slice(self, start, end)
 
     def _on_insert_text(self, buf, it, text, length):
         end = it.copy()

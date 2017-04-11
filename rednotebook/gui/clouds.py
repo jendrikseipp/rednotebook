@@ -24,6 +24,7 @@ import re
 
 from gi.repository import Gtk
 from gi.repository import GObject
+from gi.repository import WebKit2
 
 from rednotebook.gui.browser import HtmlView
 from rednotebook import data
@@ -117,14 +118,18 @@ class Cloud(HtmlView):
         # TODO: Avoid using an instance variable here.
         self.link_index = 0
 
+        def get_word(word_and_freq):
+            word, freq = word_and_freq
+            return locale.strxfrm(word)
+
         tags_count_dict = list(self.get_categories_counter().items())
         self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
-        self.tags.sort(key=locale.strxfrm)
+        self.tags.sort(key=get_word)
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
             word_count_dict, self.regexes_ignore, self.regexes_include)
-        self.words.sort(key=locale.strxfrm)
+        self.words.sort(key=get_word)
 
         self.link_dict = self.tags + self.words
         html = self.get_clouds(self.words, self.tags)
@@ -208,7 +213,7 @@ class Cloud(HtmlView):
             # Keep processing
             return False
 
-        if decision_type == Webkit2.PolicyDecisionType.NAVIGATION_ACTION:
+        if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
             uri = decision.get_navigation_action().get_request().get_uri()
             logging.info('Clicked URI "%s"' % uri)
 
