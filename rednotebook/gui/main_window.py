@@ -450,17 +450,15 @@ class MainWindow(object):
         '''
         We want to load files and links externally.
         '''
-        if self.html_editor.loading_html:
-            # Keep processing
-            return False
-
         if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
-            uri = decision.get_navigation_action().get_request().get_uri()
-            logging.info('Clicked URI "%s"' % uri)
-            filesystem.open_url(uri)
+            action = decision.get_navigation_action()
+            if action.is_user_gesture():
+                uri = action.get_request().get_uri()
+                logging.info('Clicked URI "%s"' % uri)
+                filesystem.open_url(uri)
 
-            # Stop processing that event
-            return True
+                # Stop processing that event.
+                return True
 
     def get_new_journal_dir(self, title, message):
         dir_chooser = self.builder.get_object('dir_chooser')

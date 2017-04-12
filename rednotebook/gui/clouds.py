@@ -211,10 +211,6 @@ class Cloud(HtmlView):
         """
         Called (among others) when user clicks on a cloud word.
         """
-        if self.loading_html:
-            # Keep processing
-            return False
-
         if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
             uri = decision.get_navigation_action().get_request().get_uri()
 
