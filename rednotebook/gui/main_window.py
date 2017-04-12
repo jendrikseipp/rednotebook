@@ -693,8 +693,10 @@ class NewEntryDialog(object):
 
         self.main_frame = main_frame
         self.journal = self.main_frame.journal
-        self.categories_combo_box = CustomComboBoxEntry(main_frame.builder.get_object('categories_combo_box'))
-        self.new_entry_combo_box = CustomComboBoxEntry(main_frame.builder.get_object('entry_combo_box'))
+        self.categories_combo_box = CustomComboBoxEntry(
+            main_frame.builder.get_object('categories_combo_box'))
+        self.new_entry_combo_box = CustomComboBoxEntry(
+            main_frame.builder.get_object('entry_combo_box'))
 
         # Let the user finish a new category entry by hitting ENTER
         def respond(widget):
