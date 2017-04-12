@@ -88,7 +88,7 @@ class CustomListView(Gtk.TreeView):
         """
         *columns* must be a list of (header, type) pairs e.g. [('title', str)].
         """
-        GObject.GObject.__init__(self)
+        Gtk.TreeView.__init__(self)
         headers, types = list(zip(*columns))
         # create a TreeStore with columns to use as the model
         self.set_model(Gtk.ListStore(*types))

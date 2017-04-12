@@ -36,6 +36,9 @@ except ImportError as err:
     sys.exit(1)
 
 
+MAX_HITS = 10**6
+
+
 class Browser(WebKit2.WebView):
     def __init__(self):
         WebKit2.WebView.__init__(self)
@@ -138,7 +141,6 @@ class HtmlView(Gtk.ScrolledWindow):
         self.search_text = ''
         self.loading_html = False
 
-        self.webview.connect('button-press-event', self.on_button_press)
         self.webview.connect('load-changed', self.on_load_changed)
 
         self.show_all()
@@ -163,14 +165,8 @@ class HtmlView(Gtk.ScrolledWindow):
     def highlight(self, string):
         # Tell the webview which text to highlight after the html is loaded
         self.search_text = string
-        webview.get_find_controller().search(
-            self.search_text, WebKit2.FindOptions.CASE_INSENSITIVE, float("inf"))
-
-    def on_button_press(self, webview, event):
-        # Right mouse click
-        if event.button == 3:
-            # We don't want the context menus, so stop processing that event.
-            return True
+        self.webview.get_find_controller().search(
+            self.search_text, WebKit2.FindOptions.CASE_INSENSITIVE, MAX_HITS)
 
     def on_load_changed(self, webview, event):
         '''

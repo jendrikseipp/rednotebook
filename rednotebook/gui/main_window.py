@@ -394,9 +394,9 @@ class MainWindow(object):
     def setup_search(self):
         self.search_tree_view = search.SearchTreeView(self)
         self.search_tree_view.show()
-        scroll = Gtk.ScrolledWindow()
-        scroll.add(self.search_tree_view)
-        self.builder.get_object('search_container').pack_start(scroll, True, True, 0)
+        self.search_scroll = Gtk.ScrolledWindow()
+        self.search_scroll.add(self.search_tree_view)
+        self.builder.get_object('search_container').pack_start(self.search_scroll, True, True, 0)
         self.search_box = search.SearchComboBox(
             self.builder.get_object('search_box'), self)
 

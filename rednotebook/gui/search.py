@@ -65,8 +65,9 @@ class SearchComboBox(CustomComboBoxEntry):
 
         # Scroll to query.
         if search_text:
-            GObject.idle_add(self.main_window.day_text_field.scroll_to_text,
-                             search_text)
+            GObject.idle_add(
+                self.main_window.day_text_field.scroll_to_text,
+                search_text)
 
         self.main_window.search_tree_view.update_data(search_text, tags)
 
@@ -85,10 +86,11 @@ class SearchTreeView(CustomListView):
 
         if not tags and not search_text:
             self.main_window.cloud.show()
-            self.parent.hide()
+            self.main_window.search_scroll.hide()
             return
+
         self.main_window.cloud.hide()
-        self.parent.show()
+        self.main_window.search_scroll.show()
 
         for date_string, entries in self.journal.search(search_text, tags):
             for entry in entries:

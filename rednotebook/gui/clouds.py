@@ -158,7 +158,7 @@ class Cloud(HtmlView):
             font_size = int(min_font_size + font_factor * font_delta)
 
             # Add some whitespace to separate words
-            html_elements.append('<a href="search/%s">'
+            html_elements.append('<a href="/#search-%s">'
                                  '<span style="font-size:%spx">%s</span></a>&#160;'
                                  % (self.link_index, font_size, word))
             self.link_index += 1
@@ -200,10 +200,12 @@ class Cloud(HtmlView):
         return '\n'.join(parts)
 
     def _get_search_text(self, uri):
-        # uri has the form "something/somewhere/search/search_index"
-        search_index = int(uri.split('/')[-1])
-        search_text, count = self.link_dict[search_index]
-        return search_text
+        if '/#search-' in uri:
+            search_index = int(uri.split('-')[-1])
+            search_text, count = self.link_dict[search_index]
+            return search_text
+        else:
+            return None
 
     def on_decide_policy(self, webview, decision, decision_type):
         """
@@ -215,15 +217,12 @@ class Cloud(HtmlView):
 
         if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
             uri = decision.get_navigation_action().get_request().get_uri()
-            logging.info('Clicked URI "%s"' % uri)
 
-            self.journal.save_old_day()
-
-            # uri has the form "something/somewhere/search/search_index"
-            if 'search' in uri:
-                search_text = self._get_search_text(uri)
+            search_text = self._get_search_text(uri)
+            if search_text is not None:
+                logging.info('Clicked cloud URI "%s"' % uri)
+                self.journal.save_old_day()
                 self.journal.frame.search_box.set_active_text(search_text)
-
                 # returning True here stops loading the document
                 return True
 
