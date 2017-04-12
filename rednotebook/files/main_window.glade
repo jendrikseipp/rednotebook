@@ -466,29 +466,15 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkVBox" id="search_container">
+                  <object class="GtkBox" id="search_container">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="spacing">1</property>
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkComboBox" id="search_box">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="has_entry">True</property>
-                        <child>
-                          <object class="GtkCellRendererText" id="cellrenderertext2"/>
-                        </child>
-                        <child internal-child="entry">
-                          <object class="GtkEntry" id="combobox-entry">
-                            <property name="can_focus">False</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>

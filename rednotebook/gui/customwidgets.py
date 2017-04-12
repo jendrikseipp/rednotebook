@@ -76,12 +76,6 @@ class CustomComboBoxEntry(object):
         self.set_active_text('')
         self.combo_box.set_model(self.liststore)
 
-    def connect(self, *args, **kargs):
-        self.combo_box.connect(*args, **kargs)
-
-    def set_editable(self, editable):
-        self.entry.set_editable(editable)
-
 
 class CustomListView(Gtk.TreeView):
     def __init__(self, columns):

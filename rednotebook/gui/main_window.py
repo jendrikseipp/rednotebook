@@ -396,13 +396,15 @@ class MainWindow(object):
         self.search_tree_view.show()
         self.search_scroll = Gtk.ScrolledWindow()
         self.search_scroll.add(self.search_tree_view)
-        self.builder.get_object('search_container').pack_start(self.search_scroll, True, True, 0)
-        self.search_box = search.SearchComboBox(
-            self.builder.get_object('search_box'), self)
+        self.search_box = search.SearchComboBox(Gtk.ComboBox.new_with_entry(), self)
+        self.search_box.combo_box.show()
+        search_container = self.builder.get_object('search_container')
+        search_container.pack_start(self.search_box.combo_box, False, False, 0)
+        search_container.pack_start(self.search_scroll, True, True, 0)
 
     def setup_clouds(self):
         self.cloud = Cloud(self.journal)
-        self.builder.get_object('search_container').pack_start(self.cloud, True, True, 0)
+        self.builder.get_object('search_container').pack_end(self.cloud, True, True, 0)
 
     def on_main_frame_configure_event(self, widget, event):
         '''
@@ -703,7 +705,7 @@ class NewEntryDialog(object):
         self.new_entry_combo_box.entry.connect('activate', respond)
         self.categories_combo_box.entry.connect('activate', respond)
 
-        self.categories_combo_box.connect('changed', self.on_category_changed)
+        self.categories_combo_box.combo_box.connect('changed', self.on_category_changed)
 
     def on_category_changed(self, widget):
         '''Show old entries in ComboBox when a new category is selected'''

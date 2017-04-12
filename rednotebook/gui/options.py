@@ -117,7 +117,7 @@ class TextOption(Option):
         self.entry = Gtk.Entry()
         self.entry.set_text(value)
 
-        self.pack_start(self.entry, True)
+        self.pack_start(self.entry, True, True, 0)
 
     def get_value(self):
         return self.entry.get_text()
@@ -156,7 +156,7 @@ class DateFormatOption(ComboBoxOption):
         format = str(format)
         self.combo.set_active_text(format)
 
-        self.combo.connect('changed', self.on_format_changed)
+        self.combo.combo_box.connect('changed', self.on_format_changed)
 
         # Update the preview
         self.on_format_changed(None)
@@ -183,8 +183,8 @@ class FontOption(Option):
         self.button = Gtk.Button(_('Choose font ...'))
         self.button.connect('clicked', self.on_button_clicked)
 
-        self.pack_start(self.label, False)
-        self.pack_start(self.button, False)
+        self.pack_start(self.label, False, False, 0)
+        self.pack_start(self.button, False, False, 0)
 
     def on_button_clicked(self, widget):
         if not self.dialog:
@@ -228,7 +228,7 @@ class OptionsDialog(object):
         return getattr(self.dialog, attr)
 
     def add_option(self, category, option):
-        self.categories[category].pack_start(option, False)
+        self.categories[category].pack_start(option, False, False, 0)
         option.show_all()
 
     def add_category(self, name, vbox):
@@ -297,7 +297,7 @@ class OptionsManager(object):
             check_version_option.check_button.set_active(check)
 
         check_version_button = ActionButton(_('Check now'), check_version_action)
-        check_version_option.pack_start(check_version_button, False, False)
+        check_version_option.pack_start(check_version_button, False, False, 0)
         self.options.append(check_version_option)
 
         self.options.extend([
