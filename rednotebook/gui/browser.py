@@ -18,17 +18,17 @@
 # -----------------------------------------------------------------------
 
 import logging
-import os
+import os.path
 import sys
 
 import gi
 from gi.repository import GObject
 from gi.repository import Gtk
 
+from rednotebook.util import filesystem
 from rednotebook.util import markup
 
 try:
-    gi.require_version('WebKit2', '4.0')
     from gi.repository import WebKit2
 except ImportError as err:
     logging.error(
@@ -47,28 +47,12 @@ class Browser(WebKit2.WebView):
 
 
 class HtmlPrinter(object):
-    """
-    Idea and code-snippets taken from interwibble,
-    "A non-interactive tool for converting any given website to PDF"
-    (http://github.com/eeejay/interwibble/)
-    """
-    PAPER_SIZES = {'a3': Gtk.PAPER_NAME_A3,
-                   'a4': Gtk.PAPER_NAME_A4,
-                   'a5': Gtk.PAPER_NAME_A5,
-                   'b5': Gtk.PAPER_NAME_B5,
-                   'executive': Gtk.PAPER_NAME_EXECUTIVE,
-                   'legal': Gtk.PAPER_NAME_LEGAL,
-                   'letter': Gtk.PAPER_NAME_LETTER}
-
-    def __init__(self, paper='a4'):
+    def __init__(self):
         self._webview = Browser()
-        try:
-            self._webview.connect('load-error', self._load_error_cb)
-            self._webview.connect('title-changed', self._title_changed_cb)
-            self._webview.connect('load-finished', self._load_finished_cb)
-        except TypeError as err:
-            logging.info(err)
-        self._paper_size = Gtk.PaperSize(self.PAPER_SIZES[paper])
+        self._webview.connect('load-failed', self._on_load_failed)
+        self._webview.connect('notify::title', self._on_title_changed)
+        self._webview.connect('load-changed', self._on_load_changed)
+        self._paper_size = Gtk.PaperSize(Gtk.PAPER_NAME_A4)
         self.outfile = None
 
     def print_html(self, html, outfile):
@@ -80,48 +64,65 @@ class HtmlPrinter(object):
         while Gtk.events_pending():
             Gtk.main_iteration()
 
-    def _print(self, frame):
-        print_op = Gtk.PrintOperation()
-        print_settings = print_op.get_print_settings() or Gtk.PrintSettings()
+    def _print(self):
+        """
+        Print HTML document to PDF.
+
+        To print the PDF without a dialog, we need to set the
+        "print-to-file" printer name. While we can set the printer by
+        localized name, this obviously only works if the two
+        translations match, which is brittle. If they don't match,
+        calling `print_op.print_()` exits without an error, but does
+        nothing. We therefore, set the localized printer name as a hint,
+        but don't depend on it. Instead, we display the print dialog and
+        let the user make adjustments.
+
+        """
+        print_settings = Gtk.PrintSettings()
         print_settings.set_paper_size(self._paper_size)
+        print_settings.set_printer(_('Print to File'))
+        print_settings.set(
+            Gtk.PRINT_SETTINGS_OUTPUT_URI,
+            filesystem.get_local_url(os.path.abspath(self.outfile)))
+        print_settings.set(Gtk.PRINT_SETTINGS_OUTPUT_FILE_FORMAT, 'pdf')
+
+        print_op = WebKit2.PrintOperation.new(self._webview)
+        print_op.set_page_setup(Gtk.PageSetup())
         print_op.set_print_settings(print_settings)
-        print_op.set_export_filename(os.path.abspath(self.outfile))
+        print_op.connect('finished', self._on_end_print)
+
         logging.info('Exporting PDF...')
-        print_op.connect('end-print', self._end_print_cb)
         try:
-            frame.print_full(print_op, Gtk.PRINT_OPERATION_ACTION_EXPORT)
+            print_op.run_dialog(None)
             while Gtk.events_pending():
                 Gtk.main_iteration()
         except GObject.GError as e:
             logging.error(e.message)
 
-    def _title_changed_cb(self, _view, frame, title):
-        logging.info('Title changed: %s' % title)
+    def _on_title_changed(self, *args):
+        logging.info('Title changed: %s' % args)
         # MathJax changes the title once it has typeset all formulas.
         if title == markup.MATHJAX_FINISHED:
-            self._print(frame)
+            self._print()
 
-    def _load_finished_cb(self, _view, frame):
-        logging.info('Loading done')
-        # If there's a formula, it is typeset after the load-finished signal.
-        if not self.contains_mathjax:
-            self._print(frame)
+    def _on_load_changed(self, view, event):
+        if event == WebKit2.LoadEvent.FINISHED:
+            logging.info('Loading done')
+            # Formulas are typeset after this signal is emitted.
+            if not self.contains_mathjax:
+                self._print()
 
-    def _load_error_cb(self, _view, frame, url, _gp):
-        logging.error("Error loading %s" % url)
+    def _on_load_failed(self, view, event, uri, error):
+        logging.error("Error loading %s" % uri)
+        # Stop propagating the error.
+        return True
 
-    def _end_print_cb(self, *args):
+    def _on_end_print(self, *args):
         logging.info('Exporting done')
 
 
-try:
-    printer = HtmlPrinter()
-except TypeError as err:
-    printer = None
-    logging.info('UrlPrinter could not be created: "%s"' % err)
-
-
 def print_pdf(html, filename):
+    printer = HtmlPrinter()
     printer.print_html(html, filename)
 
 
