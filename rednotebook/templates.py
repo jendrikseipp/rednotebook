@@ -19,6 +19,7 @@
 
 import os
 
+from gi.repository import Gdk
 from gi.repository import Gtk
 
 from rednotebook.util import filesystem
@@ -189,8 +190,8 @@ class TemplateManager(object):
         self.tmp_title = None
         self.tmp_parts = None
 
-        textview = self.main_window.day_text_field.day_text_view
-        self.default_base_color = textview.get_style_context().get_background_color(Gtk.StateFlags.NORMAL)
+        style = self.main_window.day_text_field.day_text_view.get_style_context()
+        self.default_base_color = style.get_background_color(Gtk.StateFlags.NORMAL)
 
     def set_template_menu_sensitive(self, sensitive):
         if self.tmp_title:
@@ -203,9 +204,7 @@ class TemplateManager(object):
         journal_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Journal')
         for child in journal_menu_item.get_submenu().get_children():
             if isinstance(child, Gtk.MenuItem):
-                action = child.get_action()
-                if action:
-                    action.set_sensitive(sensitive)
+                child.set_sensitive(sensitive)
         self.set_template_menu_sensitive(sensitive)
         for widget in [
                 self.main_window.back_one_day_button,
@@ -214,7 +213,7 @@ class TemplateManager(object):
                 self.main_window.search_tree_view,
                 self.main_window.search_box.entry,
                 self.main_window.cloud,
-                self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Find').get_action()]:
+                self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Find')]:
             widget.set_sensitive(sensitive)
 
     def enter_template_mode(self, title, parts):
@@ -225,8 +224,9 @@ class TemplateManager(object):
         text = self.get_text(title)
         self.main_window.undo_redo_manager.set_stack(title)
         self.main_window.day_text_field.set_text(text, undoing=True)
-        light_yellow = Gdk.Color(1., 1., 190 / 255., 0)
-        self.main_window.day_text_field.day_text_view.modify_base(Gtk.StateType.NORMAL, light_yellow)
+        light_yellow = Gdk.RGBA(1., 1., 190 / 255., 1.)
+        self.main_window.day_text_field.day_text_view.override_background_color(
+            Gtk.StateType.NORMAL, light_yellow)
         self._set_widgets_sensitive(False)
 
     def exit_template_mode(self):
@@ -236,8 +236,8 @@ class TemplateManager(object):
         if self.main_window.preview_mode:
             self.main_window.change_mode(preview=False)
         self.main_window.day_text_field.day_text_view.grab_focus()
-        self.main_window.day_text_field.day_text_view.modify_base(Gtk.StateType.NORMAL,
-                                                                  self.default_base_color)
+        self.main_window.day_text_field.day_text_view.override_background_color(
+            Gtk.StateType.NORMAL, self.default_base_color)
         self._set_widgets_sensitive(True)
 
     def _reset_undo_stack(self):
