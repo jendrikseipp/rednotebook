@@ -45,8 +45,13 @@ class Browser(WebKit2.WebView):
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
 
+        # Allow handlers to check whether a content-change triggered the signal.
+        self.loading_html = False
+
     def load_html(self, html):
+        self.loading_html = True
         WebKit2.WebView.load_html(self, content=html, base_uri='file:///')
+        self.loading_html = False
 
 
 class HtmlPrinter(object):
@@ -134,21 +139,16 @@ def print_pdf(html, filename):
 
 class HtmlView(Gtk.ScrolledWindow):
     def __init__(self, *args, **kargs):
-        GObject.GObject.__init__(self, *args, **kargs)
+        Gtk.ScrolledWindow.__init__(self, *args, **kargs)
         self.webview = Browser()
         self.add(self.webview)
 
         self.search_text = ''
-        self.loading_html = False
-
         self.webview.connect('load-changed', self.on_load_changed)
-
         self.show_all()
 
     def load_html(self, html):
-        self.loading_html = True
         self.webview.load_html(html)
-        self.loading_html = False
 
     def set_editable(self, editable):
         self.webview.set_editable(editable)

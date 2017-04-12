@@ -450,8 +450,7 @@ class MainWindow(object):
         '''
         We want to load files and links externally.
         '''
-        if self.html_editor.loading_html:
-            # Keep processing
+        if webview.loading_html:
             return False
 
         if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
@@ -459,7 +458,7 @@ class MainWindow(object):
             logging.info('Clicked URI "%s"' % uri)
             filesystem.open_url(uri)
 
-            # Stop processing that event
+            # Stop processing that event.
             return True
 
     def get_new_journal_dir(self, title, message):
