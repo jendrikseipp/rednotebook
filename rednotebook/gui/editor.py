@@ -136,7 +136,7 @@ class Editor(object):
                 # It is safer to scroll to a mark than an iter
                 mark = self.day_text_buffer.create_mark(
                     'highlight_query', iter_tuple[0], left_gravity=False)
-                self.day_text_view.scroll_to_mark(mark, 0)
+                self.day_text_view.scroll_to_mark(mark, 0, False, 0, 0)
                 self.day_text_buffer.delete_mark(mark)
                 return
 
