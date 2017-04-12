@@ -285,7 +285,7 @@ class SummaryPage(AssistantPage):
         label.set_markup('<b>%s:</b> %s' % (setting, value))
         label.set_alignment(0.0, 0.5)
         label.show()
-        self.pack_start(label, False)
+        self.pack_start(label, False, False, 0)
         self.settings.append(label)
 
     def clear(self):

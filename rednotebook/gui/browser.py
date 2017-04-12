@@ -69,13 +69,16 @@ class HtmlPrinter(object):
         Print HTML document to PDF.
 
         To print the PDF without a dialog, we need to set the
-        "print-to-file" printer name. While we can set the printer by
+        "Print to File" printer name. While we can set the printer by
         localized name, this obviously only works if the two
         translations match, which is brittle. If they don't match,
         calling `print_op.print_()` exits without an error, but does
         nothing. We therefore, set the localized printer name as a hint,
         but don't depend on it. Instead, we display the print dialog and
         let the user make adjustments.
+
+        see gtk/modules/printbackends/file/gtkprintbackendfile.c shows
+        that the non-translated printer name is "Print to File".
 
         """
         print_settings = Gtk.PrintSettings()

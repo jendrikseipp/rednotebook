@@ -196,9 +196,9 @@ class AssistantPage(Gtk.VBox):
         self.header = Gtk.Label()
         self.header.set_markup('Unset')
         self.header.set_alignment(0.0, 0.5)
-        self.pack_start(self.header, False, False)
+        self.pack_start(self.header, False, False, 0)
         self.separator = Gtk.HSeparator()
-        self.pack_start(self.separator, False, False)
+        self.pack_start(self.separator, False, False, 0)
         self.reorder_child(self.header, 0)
         self.reorder_child(self.separator, 1)
         self.show_all()
@@ -241,7 +241,7 @@ class RadioButtonPage(AssistantPage):
             description.set_alignment(0.0, 0.5)
             description.set_markup(' ' * 5 + tooltip)
             description.set_sensitive(sensitive)
-            self.pack_start(description, False, False)
+            self.pack_start(description, False, False, 0)
 
     def get_selected_object(self):
         for button in self.buttons:

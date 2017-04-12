@@ -131,8 +131,7 @@ class MarkupBuffer(Gtk.TextBuffer):
                 'highlight', 'list', 'numlist']
 
     def __init__(self, table=None, lang=None, styles={}):
-        Gtk.TextBuffer.__init__(self)
-        self.props.tag_table = table
+        Gtk.TextBuffer.__init__(self, tag_table=table)
         self._lang_def = lang
         self.styles = styles
 
