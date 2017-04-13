@@ -194,12 +194,12 @@ class FontOption(Option):
             self.dialog.set_modal(True)
             self.dialog.set_transient_for(Option.main_window.options_manager.dialog.dialog)
             self.dialog.connect("destroy", self.dialog_destroyed)
-            self.dialog.ok_button.connect(
+            self.dialog.get_ok_button().connect(
                 "clicked", self.font_selection_ok)
-            self.dialog.cancel_button.connect_object(
+            self.dialog.get_cancel_button().connect_object(
                 "clicked", lambda window: window.destroy(), self.dialog)
 
-        if not (self.dialog.flags() & Gtk.VISIBLE):
+        if not self.dialog.get_visible():
             self.dialog.show()
         else:
             self.dialog.destroy()
