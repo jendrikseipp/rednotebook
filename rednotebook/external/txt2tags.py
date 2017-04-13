@@ -2849,18 +2849,23 @@ class MaskMaster:
         # If none is found (else), we get out of the loop.
         #
         while True:
+            try:
+                t = regex['tagged'].search(line).start()
+            except:
+                t = -1
 
-            # Try to match the line for the three marks
-            t = r = v = -1
-            try: t = regex['tagged'].search(line).start()
-            except: pass
-            try: r = regex['raw'].search(line).start()
-            except: pass
-            try: v = regex['fontMono'].search(line).start()
-            except: pass
+            try:
+                r = regex['raw'].search(line).start()
+            except:
+                r = -1
+
+            try:
+                v = regex['fontMono'].search(line).start()
+            except:
+                v = -1
 
             # Protect tagged text
-            if t >= 0 and t < r and t < v:
+            if t >= 0 and (r == -1 or t < r) and (v == -1 or t < v):
                 txt = regex['tagged'].search(line).group(1)
                 ## Jendrik
                 if TARGET == 'tex':
@@ -2869,7 +2874,7 @@ class MaskMaster:
                 line = regex['tagged'].sub(self.taggedmask,line,1)
 
             # Protect raw text
-            elif r >= 0 and r < t and r < v:
+            elif r >= 0 and (t == -1 or r < t) and (v == -1 or r < v):
                 txt = regex['raw'].search(line).group(1)
                 txt = doEscape(TARGET,txt)
                 ## Jendrik
@@ -2880,7 +2885,7 @@ class MaskMaster:
                 line = regex['raw'].sub(self.rawmask,line,1)
 
             # Protect verbatim text
-            elif v >= 0 and v < t and v < r:
+            elif v >= 0 and (t == -1 or v < t) and (r == -1 or v < r):
                 txt = regex['fontMono'].search(line).group(1)
                 txt = doEscape(TARGET,txt)
                 self.monobank.append(txt)
