@@ -449,7 +449,7 @@ def convert_to_pango(txt, headers=None, options=None):
     result = re.sub(REGEX_HTML_LINK, replace_links, result)
 
     try:
-        attr_list, plain, accel = Pango.parse_markup(result)
+        success, attr_list, plain, accel = Pango.parse_markup(result, -1, "0")
 
         # result is valid pango markup, return the markup
         return result

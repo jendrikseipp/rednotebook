@@ -388,7 +388,7 @@ class CategoriesTreeView(object):
 
         if (event.button == 3):
             # This is a right-click.
-            self.context_menu.popup(None, None, None, event.button, event.time)
+            self.context_menu.popup(None, None, None, None, event.button, event.time)
 
     def _get_context_menu(self):
         context_menu_xml = """
@@ -429,7 +429,8 @@ class CategoriesTreeView(object):
         iter = self.get_selected_node()
         self.tree_view.set_cursor(
             self.tree_store.get_path(iter),
-            focus_column=self.tvcolumn, start_editing=True)
+            self.tvcolumn,
+            True)
 
     def _on_add_entry_clicked(self, action):
         iter = self.get_selected_node()
