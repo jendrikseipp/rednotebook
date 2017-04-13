@@ -457,7 +457,7 @@ class MainWindow(object):
                 logging.info('Clicked URI "%s"' % uri)
                 filesystem.open_url(uri)
 
-                # Stop processing that event.
+                # Stop processing this event.
                 return True
 
     def get_new_journal_dir(self, title, message):

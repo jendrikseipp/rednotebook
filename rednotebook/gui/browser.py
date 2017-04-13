@@ -45,8 +45,13 @@ class Browser(WebKit2.WebView):
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
 
+        # Allow handlers to check whether a content-change triggered the signal.
+        self.loading_html = False
+
     def load_html(self, html):
+        self.loading_html = True
         WebKit2.WebView.load_html(self, content=html, base_uri='file:///')
+        self.loading_html = False
 
 
 class HtmlPrinter(object):
