@@ -384,9 +384,9 @@ class MainWindow(object):
 
     def on_browser_clicked(self, webview, event):
         # Double-click -> Change to edit mode.
-        if event.type == Gdk._2BUTTON_PRESS:
+        if event.type == Gdk.EventType._2BUTTON_PRESS:
             self.change_mode(preview=False)
-            # Stop processing that event
+            # Stop processing this event.
             return True
 
     # ----------------------------------------------------------- MODE-SWITCHING
