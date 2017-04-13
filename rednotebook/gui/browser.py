@@ -45,13 +45,8 @@ class Browser(WebKit2.WebView):
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
 
-        # Allow handlers to check whether a content-change triggered the signal.
-        self.loading_html = False
-
     def load_html(self, html):
-        self.loading_html = True
         WebKit2.WebView.load_html(self, content=html, base_uri='file:///')
-        self.loading_html = False
 
 
 class HtmlPrinter(object):
@@ -116,14 +111,14 @@ class HtmlPrinter(object):
         if title == markup.MATHJAX_FINISHED:
             self._print()
 
-    def _on_load_changed(self, view, event):
+    def _on_load_changed(self, _view, event):
         if event == WebKit2.LoadEvent.FINISHED:
             logging.info('Loading done')
             # Formulas are typeset after this signal is emitted.
             if not self.contains_mathjax:
                 self._print()
 
-    def _on_load_failed(self, view, event, uri, error):
+    def _on_load_failed(self, _view, event, uri, error):
         logging.error("Error loading %s" % uri)
         # Stop propagating the error.
         return True
