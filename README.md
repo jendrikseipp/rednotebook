@@ -58,19 +58,14 @@ Install RedNotebook locally under
 # Thanks to
 
 - The authors of the programs listed under 'Requirements'.
-- Everaldo Coelho (www.everaldo.com) for the original icon
-  (easymoblog.png) and Ciaran for the excellent redesign.
-- The txt2tags team (http://txt2tags.net) for their super cool markup tool.
-- The people behind the Tango Icon Project and the creators of the Human
-  Theme. Their work can be downloaded from http://tango.freedesktop.org/.
+- Ciaran for creating the RedNotebook icon.
+- The txt2tags team (http://txt2tags.net) for their markup conversion tool.
 - Ahmet Öztürk and Lifeograph for his markup highlighting idea
 - Hannes Matuschek: The code for markup highlighting uses a specialized
   version of his pygtkcodebuffer module
   (http://code.google.com/p/pygtkcodebuffer/).
 - Dieter Verfaillie for his elib.intl module
   (https://github.com/dieterv/elib.intl)
-- Eitan Isaacson: RedNotebook took his idea and some code for converting
-  HTML documents to PDF (http://github.com/eeejay/interwibble/).
 
 
 # License notes

@@ -19,6 +19,7 @@
 import os
 import webbrowser
 
+from gi.repository import GdkPixbuf
 from gi.repository import Gtk
 
 from rednotebook.util import utils
@@ -297,17 +298,18 @@ class MainMenuBar(object):
     def on_info_activate(self, widget):
         self.info_dialog = self.main_window.builder.get_object('about_dialog')
         self.info_dialog.set_transient_for(self.main_window.main_frame)
-        self.info_dialog.set_name('RedNotebook')
+        self.info_dialog.set_program_name(info.program_name)
         self.info_dialog.set_version(info.version)
-        self.info_dialog.set_copyright('Copyright (c) 2008-2012 Jendrik Seipp')
-        self.info_dialog.set_comments(_('A Desktop Journal'))
-        Gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
+        self.info_dialog.set_copyright(info.copyright_)
+        self.info_dialog.set_comments(info.tagline)
         self.info_dialog.set_website(info.url)
         self.info_dialog.set_website_label(info.url)
+        self.info_dialog.set_artists(info.artists)
         self.info_dialog.set_authors(info.developers)
-        # TODO: Use svg again once it's fixed under Windows.
-        img_path = os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rn-192.png')
+        self.info_dialog.add_credit_section(_('Contributors:'), [info.contributors_url])
+        self.info_dialog.set_translator_credits(_("translator-credits"))
+        img_path = os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rednotebook.svg')
         self.info_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(img_path))
-        self.info_dialog.set_license(info.license_text)
+        self.info_dialog.set_license_type(Gtk.License.GPL_2_0)
         self.info_dialog.run()
         self.info_dialog.hide()
