@@ -343,7 +343,7 @@ msgstr "Αποθήκευση όλα των δδομένων σε συμπιεσ�
 
 #: ../rednotebook/gui/menu.py:114
 msgid "S_tatistics"
-msgstr ""
+msgstr "Σ_τατιστικά"
 
 #: ../rednotebook/gui/menu.py:115
 msgid "Show some statistics about the journal"
@@ -662,7 +662,7 @@ msgstr "Αλλαγή αυτού του κειμένου"
 
 #: ../rednotebook/gui/categories.py:412
 msgid "Add a new entry"
-msgstr "Προσθήκη νέας καταχώρισης"
+msgstr "Προσθήκη νέας καταχώρησης"
 
 #: ../rednotebook/gui/categories.py:414
 msgid "Delete this entry"
@@ -769,7 +769,7 @@ msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Οτιδήποτε εισάγετε θα αποθηκευέται αυτόματα ανά τακτά χρονικά διαστήματα και "
+"Οτιδήποτε εισάγετε θα αποθηκεύεται αυτόματα ανά τακτά χρονικά διαστήματα και "
 "όταν κλείσετε το πρόγραμμα."
 
 #: ../rednotebook/info.py:140
@@ -793,6 +793,7 @@ msgstr "Στο μενού «Ημερολόγιο» θα βρείτε επίση�
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
+"Κάντε κλικ στο μενού «Εξαγωγή» και εξαγάγετε το ημερολόγιό σας σε Απλό Κείμενο, PDF, HTML ή Latex."
 
 #: ../rednotebook/info.py:146
 msgid "If you encounter any errors, please drop me a note so I can fix them."
@@ -830,6 +831,13 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
+"=== Δουλειά ===\n"
+"Εδώ μπαίνει η πρώτη καταχώρηση. Αφορά τη #δουλειά.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Οικογένεια ===\n"
+"Εδώ μπαίνει η καταχώρηση σχετικά με τη δικιά μου #οικογένεια."
 
 #: ../rednotebook/templates.py:28
 msgid "Monday"
