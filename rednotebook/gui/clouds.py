@@ -67,7 +67,7 @@ class Cloud(HtmlView):
         self.update_lists()
 
         # TODO: self.webview.connect('hovering-over-link', self.on_hovering_over_link)
-        # TODO: self.webview.connect('populate-popup', self.on_populate_popup)
+        self.webview.connect('context-menu', self._on_context_menu)
         self.webview.connect('decide-policy', self.on_decide_policy)
 
         self.last_hovered_word = None
@@ -242,22 +242,24 @@ class Cloud(HtmlView):
             else:
                 self.last_hovered_word = hovered_word
 
-    def on_populate_popup(self, webview, menu):
+    def _on_context_menu(self, _view, _menu, event, hit_test_result):
         """Called when the cloud's popup menu is created."""
-        # remove normal menu items
-        children = menu.get_children()
-        for child in children:
-            menu.remove(child)
+        tag = hit_test_result.get_link_label()
 
-        if self.last_hovered_word:
-            label = _('Hide "%s" from clouds') % self.last_hovered_word
-            ignore_menu_item = Gtk.MenuItem(label)
-            ignore_menu_item.show()
+        if tag is not None:
+            ignore_menu_item = Gtk.MenuItem(_('Hide "%s" from clouds') % tag)
+            ignore_menu_item.connect('activate', self.on_ignore_menu_activate, tag)
+            menu = Gtk.Menu()
             menu.prepend(ignore_menu_item)
-            ignore_menu_item.connect('activate', self.on_ignore_menu_activate, self.last_hovered_word)
+            menu.show_all()
+            menu.popup(None, None, None, None, event.button.type, event.time)
 
-    def on_ignore_menu_activate(self, menu_item, selected_word):
+        # Don't show normal menu.
+        return False
+
+    def on_ignore_menu_activate(self, menu_item, tag):
         # Escape backslash
+        print("Tag", tag)
         selected_word = selected_word.replace('\\', '\\\\')
         logging.info('"%s" will be hidden from clouds' % selected_word)
         self.ignore_list.append(selected_word)
