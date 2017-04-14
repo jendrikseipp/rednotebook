@@ -61,16 +61,11 @@ def get_regex(word):
 class Cloud(HtmlView):
     def __init__(self, journal):
         HtmlView.__init__(self)
-
         self.journal = journal
-
         self.update_lists()
 
-        # TODO: self.webview.connect('hovering-over-link', self.on_hovering_over_link)
         self.webview.connect('context-menu', self._on_context_menu)
         self.webview.connect('decide-policy', self.on_decide_policy)
-
-        self.last_hovered_word = None
 
     def update_lists(self):
         config = self.journal.config
@@ -134,7 +129,6 @@ class Cloud(HtmlView):
         self.link_dict = self.tags + self.words
         html = self.get_clouds(self.words, self.tags)
         self.load_html(html)
-        self.last_hovered_word = None
         logging.debug('Cloud updated')
 
     def _get_cloud_body(self, cloud_words):
@@ -221,26 +215,6 @@ class Cloud(HtmlView):
                 self.journal.frame.search_box.set_active_text(search_text)
                 # returning True here stops loading the document
                 return True
-
-    def on_button_press(self, webview, event):
-        """
-        Here we want the context menus
-        """
-        # keep processing
-        return False
-
-    def on_hovering_over_link(self, webview, title, uri):
-        """
-        We want to save the last hovered link to be able to add it
-        to the context menu when the user right-clicks the next time
-        """
-        if uri:
-            hovered_word = self._get_search_text(uri)
-            # We don't want to hide any tags.
-            if hovered_word.startswith('#'):
-                self.last_hovered_word = None
-            else:
-                self.last_hovered_word = hovered_word
 
     def _on_context_menu(self, _view, menu, _event, hit_test_result):
         """Called when the cloud's popup menu is created."""
