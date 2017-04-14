@@ -242,27 +242,22 @@ class Cloud(HtmlView):
             else:
                 self.last_hovered_word = hovered_word
 
-    def _on_context_menu(self, _view, _menu, event, hit_test_result):
+    def _on_context_menu(self, _view, menu, _event, hit_test_result):
         """Called when the cloud's popup menu is created."""
+        menu.remove_all()
+
         tag = hit_test_result.get_link_label()
 
         if tag is not None:
-            ignore_menu_item = Gtk.MenuItem(_('Hide "%s" from clouds') % tag)
-            ignore_menu_item.connect('activate', self.on_ignore_menu_activate, tag)
-            menu = Gtk.Menu()
-            menu.prepend(ignore_menu_item)
-            menu.show_all()
-            menu.popup(None, None, None, None, event.button.type, event.time)
+            action = Gtk.Action.new('hide', _('Hide "%s" from clouds') % tag, None, None)
+            action.connect('activate', self.on_ignore_menu_activate, tag)
+            ignore_menu_item = WebKit2.ContextMenuItem.new(action)
+            menu.append(ignore_menu_item)
 
-        # Don't show normal menu.
-        return False
-
-    def on_ignore_menu_activate(self, menu_item, tag):
-        # Escape backslash
-        print("Tag", tag)
-        selected_word = selected_word.replace('\\', '\\\\')
-        logging.info('"%s" will be hidden from clouds' % selected_word)
-        self.ignore_list.append(selected_word)
+    def on_ignore_menu_activate(self, menu_item, word):
+        word = re.escape(word)
+        logging.info('"{}" will be hidden from clouds'.format(word))
+        self.ignore_list.append(word)
         self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
-        self.regexes_ignore.append(get_regex(selected_word))
+        self.regexes_ignore.append(get_regex(word))
         self.update(force_update=True)
