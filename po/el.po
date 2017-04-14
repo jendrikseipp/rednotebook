@@ -92,7 +92,7 @@ msgstr "Απαλοιφή μορφοποίησης"
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
 msgid "_Format"
-msgstr ""
+msgstr "_Μορφοποίηση"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:135 ../rednotebook/gui/exports.py:394
@@ -117,7 +117,7 @@ msgstr "φιλτράρετε, αυτές, τις, λέξεις, που, χωρί
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
-msgstr ""
+msgstr "ερτ, σπαμ, δουλειά, εργασία, παιχνίδι"
 
 #: ../rednotebook/gui/clouds.py:191 ../rednotebook/gui/categories.py:52
 #: ../rednotebook/info.py:97 ../rednotebook/util/markup.py:136
@@ -330,7 +330,7 @@ msgstr "Εξαγωγή"
 
 #: ../rednotebook/gui/menu.py:110
 msgid "Open the export assistant"
-msgstr ""
+msgstr "Άνοιγμα του βοηθού εξαγωγής"
 
 #. Translators: Verb
 #: ../rednotebook/gui/menu.py:112
@@ -359,11 +359,11 @@ msgstr "_Επεξεργασία"
 
 #: ../rednotebook/gui/menu.py:122
 msgid "Undo text or tag edits"
-msgstr ""
+msgstr "Αναίρεση επεξεργασίας κειμένου ή ετικετών"
 
 #: ../rednotebook/gui/menu.py:124
 msgid "Redo text or tag edits"
-msgstr ""
+msgstr "Επαναφορά επεξεργασίας κειμένου ή ετικετών"
 
 #: ../rednotebook/gui/menu.py:138
 msgid "Underline misspelled words"
@@ -485,11 +485,11 @@ msgstr "Προεπισκόπηση:"
 
 #: ../rednotebook/gui/options.py:180
 msgid "Choose font ..."
-msgstr ""
+msgstr "Επιλογή γραμματοσειράς ..."
 
 #: ../rednotebook/gui/options.py:188
 msgid "Choose font"
-msgstr ""
+msgstr "Επιλογή γραμματοσειράς"
 
 #: ../rednotebook/gui/options.py:271
 msgid "Close to system tray"
@@ -721,6 +721,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
+"Το ενδεικτικό κείμενο και περισσότερες οδηγίες χρήσης είναι διαθέσιμα στην ενότητα \"Βοήθεια\" -> "
+"\"Contents\"."
 
 #. Translators: noun
 #. Translators: Verb
@@ -733,6 +735,8 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Υπάρχουν δύο τρόποι λειτουργίας στο RedNotebook, η λειτουργία __επεξεργασία__ και η λειτουργία __προεπισκόπηση__ "
+"mode."
 
 #: ../rednotebook/info.py:116
 msgid "Click on Edit above to see the difference."
@@ -792,7 +796,7 @@ msgstr ""
 
 #: ../rednotebook/info.py:146
 msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr ""
+msgstr "Εάν αντιμετωπίσετε οποιοδήποτε σφάλμα, παρακαλώ ενημερώστε με ώστε να το φτιάξω."
 
 #: ../rednotebook/info.py:147
 msgid "Any feedback is appreciated."
@@ -810,6 +814,11 @@ msgid ""
 "different titles (=== Work ===, === Family ===) and using horizontal "
 "separator lines (20 “=”s)."
 msgstr ""
+"=== Πολλαπλές καταχωρήσεις ===\n"
+"Μπορείτε να προσθέσετε πολλαπλές καταχωρήσες σε μία μόνο μέρα με τη χρήση διαφορετικών ημερολογίων "
+"(ένα ονόματι \"Δουλειά\", το άλλο \"Οικογένεια\"), διαχωρίζοντας τις καταχωρήσεις με "
+"διαφορετικούς τίτλους (=== Δουλειά ===, === Οικογένεια ===) και χρησιμοποιώντας οριζόντιες "
+"διαχωριστικές γραμμές (20 “=”s)."
 
 #: ../rednotebook/info.py:178
 msgid ""
@@ -874,6 +883,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
+"=== Συνάντηση ===\n"
+"\n"
+"Σκοπός, ημερομηνία και μέρος\n"
+"\n"
+"**Παρόν:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Ατζέντα:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Συζήτηση, Αποφάσεις, Ανατεθιμένες Εργασίες:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:132
 msgid ""
@@ -889,6 +919,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Ταξίδι ===\n"
+"**Ημερομηνία:**\n"
+"\n"
+"**Τοποθεσία:**\n"
+"\n"
+"**Συμμετέχοντες:**\n"
+"\n"
+"**Το ταξίδι:**\n"
+"Αρχικά πήγαμε στο xxxxx μετά στο yyyyy ...\n"
+"\n"
+"**Εικόνες:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 
 #: ../rednotebook/templates.py:146
 msgid ""
@@ -900,6 +941,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Τηλεφώνημα ===\n"
+"- **Άτομο:**\n"
+"- **Ώρα:**\n"
+"- **Θέμα:**\n"
+"- **Αποτέλεσμα και Απάντηση:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:156
 msgid ""
@@ -921,6 +969,23 @@ msgid ""
 "+\n"
 "=====================================\n"
 msgstr ""
+"=====================================\n"
+"=== Προσωπικά ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**Πώς ήταν η Μέρα;**\n"
+"\n"
+"\n"
+"========================\n"
+"**Τι πρέπει να αλλάξει;**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
 
 #: ../rednotebook/templates.py:279
 msgid "Choose Template Name"
@@ -977,12 +1042,12 @@ msgstr "άγνωστο"
 #: ../rednotebook/util/utils.py:128
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "Έχετε την έκδοση <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:129
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "Η τελευταία έκδοση είναι <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:130
 msgid "Do you want to visit the RedNotebook homepage?"
@@ -994,11 +1059,11 @@ msgstr "Να μην ερωτηθώ ξανά"
 
 #: tmp/main_window.glade.h:1
 msgid "Go to previous day (Ctrl+PageUp)"
-msgstr ""
+msgstr "Μετάβαση στη προηγούμενη μέρα (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:2
 msgid "Jump to today (Alt+Home)"
-msgstr ""
+msgstr "Μετάβαση στο σήμερα(Alt+Home)"
 
 #: tmp/main_window.glade.h:3
 msgid "Today"
@@ -1006,15 +1071,15 @@ msgstr "Σήμερα"
 
 #: tmp/main_window.glade.h:4
 msgid "Go to next day (Ctrl+PageDown)"
-msgstr ""
+msgstr "Μετάβαση στην επόμενη μέρα (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:5
 msgid "Show a formatted preview of the text (Ctrl+P)"
-msgstr ""
+msgstr "Εμφάνιση μιας μορφοποιημένης προεσπικόπησης του κειμένου (Ctrl+P)"
 
 #: tmp/main_window.glade.h:8
 msgid "Enable text editing (Ctrl+P)"
-msgstr ""
+msgstr "Ενεργοποίηση επεξεργασίας κειμένου (Ctrl+P)"
 
 #: tmp/main_window.glade.h:9
 msgid "Edit"
@@ -1049,15 +1114,15 @@ msgstr "Νέα καταχώρηση"
 
 #: tmp/main_window.glade.h:15
 msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgstr "<b>Επιλογή υπάρχουσας ή νέας Κατηγορίας</b>"
 
 #: tmp/main_window.glade.h:16
 msgid "<b>Write entry</b> (optional)"
-msgstr ""
+msgstr "<b>Γράψτε καταχώρηση</b> (προαιρετικό)"
 
 #: tmp/main_window.glade.h:17
 msgid "Select backup filename"
-msgstr ""
+msgstr "Επιλογή ονόματος αρχείου ως αντίγραφο ασφαλείας"
 
 #: tmp/main_window.glade.h:18
 msgid "Select a picture"
@@ -1073,11 +1138,11 @@ msgstr "Εισαγωγή συνδέσμου"
 
 #: tmp/main_window.glade.h:21
 msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr ""
+msgstr "<b>Τοποθεσία συνδέσμου (π.χ. http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:22
 msgid "<b>Link name (optional)</b>"
-msgstr ""
+msgstr "<b>Όνομα συνδέσμου (προαιρετικό)</b>"
 
 #: tmp/main_window.glade.h:23
 msgid "Select a directory"
@@ -1103,11 +1168,11 @@ msgstr "Στατιστικά"
 
 #: tmp/main_window.glade.h:30
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Επιλεγμένη Μέρα</b>"
 
 #: tmp/main_window.glade.h:31
 msgid "<b>Overall</b>"
-msgstr ""
+msgstr "<b>Όλα μαζί</b>"
 
 #: tmp/main_window.glade.h:32
 msgid "Exit without saving"
