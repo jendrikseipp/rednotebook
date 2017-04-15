@@ -16,4 +16,4 @@ override_dh_auto_install:
 		$(CURDIR)/debian/rednotebook/usr/share/rednotebook/run.py
 
 %:
-	dh $@ --with python2
+	dh $@ --with python3
