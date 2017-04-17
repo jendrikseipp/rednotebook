@@ -568,7 +568,7 @@ class MainWindow(object):
         self.template_button = customwidgets.ToolbarMenuButton(
             Gtk.STOCK_PASTE, self.template_manager.get_menu())
         self.template_button.set_label(_('Template'))
-        self.template_button.connect('show-menu', update_menu)
+        # TODO: self.template_button.connect('show-menu', update_menu)
         self.template_button.set_tooltip_text(_(
             "Insert this weekday's template. "
             "Click the arrow on the right for more options"))

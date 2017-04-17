@@ -362,12 +362,16 @@ class TemplateBar(Gtk.HBox):
         self.show_all()
 
 
-class ToolbarMenuButton(Gtk.MenuToolButton):
+class ToolbarMenuButton(Gtk.ToolItem):
     def __init__(self, stock_id, menu):
-        Gtk.MenuToolButton.__init__(self, stock_id)
-        self.set_menu(menu)
-        self.connect('clicked', self.show_menu)
-        self.show()
+        Gtk.ToolItem.__init__(self)
+        self._button = Gtk.MenuButton()
+        self._button.set_popup(menu)
+        self.add(self._button)
+        self.show_all()
+
+    def set_label(self, label):
+        self._button.set_label(label)
 
     def show_menu(self, button):
         """
