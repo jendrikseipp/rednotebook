@@ -126,43 +126,16 @@ class Filenames(dict):
 def read_file(filename):
     """Try to read a given file.
 
-    Return None if an error is encountered.
+    Return empty string if an error is encountered.
     """
-    encodings = ['utf-8']
-
     try:
-        import chardet
-    except ImportError:
-        logging.info("chardet not found. 'utf-8' encoding will be assumed")
-        chardet = None
-
-    if False and chardet:
-        with open(filename, 'rb') as file:
-            content = file.read()
-        guess = chardet.detect(content)
-        logging.info('Chardet guesses %s for %s' % (guess, filename))
-        encoding = guess.get('encoding')
-
-        # chardet makes errors here sometimes
-        if encoding in ['MacCyrillic', 'ISO-8859-7']:
-            encoding = 'ISO-8859-2'
-
-        if encoding:
-            encodings.insert(0, encoding)
-
-    # Only check the first encoding
-    for encoding in encodings[:1]:
-        try:
-            # codecs.open returns a file object that can write unicode objects
-            # and whose read() method also returns unicode objects
-            # Internally we want to have unicode only
-            with codecs.open(filename, 'rb', encoding=encoding, errors='replace') as file:
-                data = file.read()
-                return data
-        except ValueError as err:
-            logging.info(err)
-        except Exception as e:
-            logging.error(e)
+        with codecs.open(filename, 'rb', encoding='utf-8', errors='replace') as file:
+            data = file.read()
+            return data
+    except ValueError as err:
+        logging.info(err)
+    except Exception as err:
+        logging.error(err)
     return ''
 
 
