@@ -49,10 +49,6 @@ class Option(Gtk.HBox):
     def get_value(self):
         raise NotImplementedError
 
-    # TODO: Call get_value() directly.
-    def get_string_value(self):
-        return self.get_value()
-
 
 class TickOption(Option):
     def __init__(self, text, name, value=None, tooltip=''):
@@ -71,13 +67,10 @@ class TickOption(Option):
         # TODO: Apply corresponding actions.
 
     def get_value(self):
-        return self.check_button.get_active()
-
-    def get_string_value(self):
-        '''
+        """
         We use 0 and 1 internally for bool options
-        '''
-        return int(self.get_value())
+        """
+        return int(self.check_button.get_active())
 
 
 class AutostartOption(TickOption):
@@ -346,7 +339,7 @@ class OptionsManager(object):
     def save_options(self):
         logging.debug('Saving Options')
         for option in self.options:
-            value = option.get_string_value()
+            value = option.get_value()
             if option.option_name is not None:
                 logging.debug('Setting %s = %s' % (option.option_name, repr(value)))
                 self.config[option.option_name] = value
