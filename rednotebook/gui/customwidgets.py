@@ -365,21 +365,24 @@ class TemplateBar(Gtk.HBox):
 class ToolbarMenuButton(Gtk.ToolItem):
     def __init__(self, stock_id, menu):
         Gtk.ToolItem.__init__(self)
-        self._button = Gtk.MenuButton()
-        self._button.set_popup(menu)
-        self.add(self._button)
+
+        button = Gtk.Button.new_from_icon_name(stock_id, Gtk.IconSize.LARGE_TOOLBAR)
+        button.set_relief(Gtk.ReliefStyle.NONE)
+
+        self._label = Gtk.Label()
+
+        box = Gtk.VBox()
+        box.pack_start(button, False, False, 0)
+        box.pack_start(self._label, False, False, 0)
+        box.show_all()
+
+        menu_button = Gtk.MenuButton()
+        menu_button.set_image(box)
+        menu_button.set_popup(menu)
+        menu_button.set_relief(Gtk.ReliefStyle.NONE)
+
+        self.add(menu_button)
         self.show_all()
 
     def set_label(self, label):
-        self._button.set_label(label)
-
-    def show_menu(self, button):
-        """
-        Show the menu when the button is clicked.
-
-        A little hack for button and activate_time is needed as the "clicked" does
-        not have an associated event parameter. Otherwise we would use event.button
-        and event.time
-        """
-        self.get_menu().popup(parent_menu_shell=None, parent_menu_item=None,
-                              func=None, button=0, activate_time=0, data=None)
+        self._label.set_text(label)
