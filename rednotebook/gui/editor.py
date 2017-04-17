@@ -316,11 +316,11 @@ class Editor(object):
             head, ext = os.path.splitext(uri)
             return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp'.split()
 
-        uris = selection.data.strip('\r\n\x00')
-        logging.debug('URIs: "%s"' % uris)
-        uris = uris.split()  # we may have more than one file dropped
-        uris = [uri.strip() for uri in uris]
+        uris = selection.get_text().split()
+        logging.debug('Text: {}'.format(selection.get_text()))
+        logging.debug('URIs: {}'.format(uris))
         for uri in uris:
+            uri = uri.strip()
             uri = urllib.request.url2pathname(uri)
             dirs, filename = os.path.split(uri)
             uri_without_ext, ext = os.path.splitext(uri)
