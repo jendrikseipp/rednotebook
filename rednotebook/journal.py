@@ -498,11 +498,9 @@ class Journal:
         return days
 
     def get_word_count_dict(self):
-        '''
-        Returns a dictionary mapping the words to their number of appearance
-        '''
-        # TODO: Use collections.Counter in Python2.7
-        # TODO: Check if concatenating all text and using a regex is faster.
+        """
+        Return a dictionary mapping the words to their number of appearance.
+        """
         word_dict = defaultdict(int)
         for day in self.days:
             words = day.get_words()

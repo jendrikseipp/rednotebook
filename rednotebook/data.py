@@ -114,7 +114,6 @@ class Day(object):
 
     @property
     def has_text(self):
-        # TODO: Don't strip.
         return bool(self.text.strip())
 
     @property
@@ -177,12 +176,12 @@ class Day(object):
         return pairs
 
     def get_words(self, with_special_chars=False):
-        # TODO: Use str.join().
-        all_text = self.text
-        for category, content in self.get_category_content_pairs().items():
-            all_text += ' ' + ' '.join([category] + content)
+        categories_text = ' '.join(' '.join([category] + content)
+            for category, content in self.get_category_content_pairs().items())
 
+        all_text = self.text + ' ' + categories_text
         words = all_text.split()
+
         if with_special_chars:
             return words
 
