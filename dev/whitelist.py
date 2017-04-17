@@ -26,5 +26,3 @@ imports.PlainTextImporter
 imports.RedNotebookBackupImporter
 imports.TomboyImporter
 imports.Importer._check_modules
-
-__builtins__._
