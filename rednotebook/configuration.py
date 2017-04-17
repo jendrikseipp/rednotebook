@@ -119,7 +119,7 @@ class Config(dict):
 
         default should be of the form 'alpha,beta gamma;delta'
         '''
-        string = self.read(key, default)
+        string = str(self.read(key, default))
 
         separators = [',', ';']
         for separator in separators:

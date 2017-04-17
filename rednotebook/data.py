@@ -176,7 +176,8 @@ class Day(object):
         return pairs
 
     def get_words(self, with_special_chars=False):
-        categories_text = ' '.join(' '.join([category] + content)
+        categories_text = ' '.join(
+            ' '.join([category] + content)
             for category, content in self.get_category_content_pairs().items())
 
         all_text = self.text + ' ' + categories_text
@@ -253,9 +254,6 @@ class Day(object):
     def __str__(self):
         return self.date.strftime('%Y-%m-%d')
 
-    def __cmp__(self, other):
-        return cmp(self.date, other.date)
-
 
 class Month(object):
     def __init__(self, year_number, month_number, month_content=None, mtime=0):
@@ -284,7 +282,3 @@ class Month(object):
     @property
     def empty(self):
         return all(day.empty for day in self.days.values())
-
-    def __cmp__(self, other):
-        return cmp((self.year_number, self.month_number),
-                   (other.year_number, other.month_number))

@@ -1,10 +1,10 @@
-import __builtin__
+import builtins
 
 import os.path
 import sys
 
-if not hasattr(__builtin__, '_'):
-    __builtin__._ = lambda x: x
+if not hasattr(builtins, '_'):
+    builtins._ = lambda x: x
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)

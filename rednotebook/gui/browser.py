@@ -21,7 +21,6 @@ import logging
 import os.path
 import sys
 
-import gi
 from gi.repository import GObject
 from gi.repository import Gtk
 
@@ -105,7 +104,7 @@ class HtmlPrinter(object):
         except GObject.GError as e:
             logging.error(e.message)
 
-    def _on_title_changed(self, *args):
+    def _on_title_changed(self, title, *args):
         logging.info('Title changed: %s' % args)
         # MathJax changes the title once it has typeset all formulas.
         if title == markup.MATHJAX_FINISHED:

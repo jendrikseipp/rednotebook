@@ -1,25 +1,6 @@
 from rednotebook.data import Day, Month
 
 
-def test_compare():
-    year_number = 2000
-    month_number = 10
-    day_number = 15
-    month = Month(year_number, month_number)
-    day = Day(month, day_number)
-
-    eq_day = Day(month, day_number)
-    assert(day == eq_day)
-
-    greater_day = Day(month, day_number + 1)
-    assert(day < greater_day)
-    assert(day <= greater_day)
-
-    lesser_day = Day(month, day_number - 1)
-    assert(day > lesser_day)
-    assert(day >= lesser_day)
-
-
 def test_to_string():
     year_number = 2000
     month_number = 10

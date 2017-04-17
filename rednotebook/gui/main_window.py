@@ -20,7 +20,6 @@
 import datetime
 import logging
 import os
-import sys
 
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
