@@ -376,13 +376,19 @@ class ToolbarMenuButton(Gtk.ToolItem):
         box.pack_start(self._label, False, False, 0)
         box.show_all()
 
-        menu_button = Gtk.MenuButton()
-        menu_button.set_image(box)
-        menu_button.set_popup(menu)
-        menu_button.set_relief(Gtk.ReliefStyle.NONE)
+        self._menu_button = Gtk.MenuButton()
+        self._menu_button.set_image(box)
+        self._menu_button.set_popup(menu)
+        self._menu_button.set_relief(Gtk.ReliefStyle.NONE)
 
-        self.add(menu_button)
+        self.add(self._menu_button)
         self.show_all()
 
     def set_label(self, label):
         self._label.set_text(label)
+
+    def connect(self, *args):
+        return self._menu_button.connect(*args)
+
+    def set_menu(self, menu):
+        self._menu_button.set_popup(menu)
