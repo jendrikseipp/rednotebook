@@ -349,28 +349,14 @@ class CategoriesTreeView(object):
             self.delete_node(selected_iter)
             return
 
-    def on_key_press_event(self, widget, event):
-        """
-        @param widget - Gtk.TreeView - The Tree View
-        @param event - Gdk.event - Event information
-
-        Delete an annotation node when user hits "Delete"
-        """
+    def on_key_press_event(self, _view, event):
         keyname = Gdk.keyval_name(event.keyval)
-        logging.info('Pressed key: %s' % keyname)
-
         if keyname == 'Delete':
             self._on_delete_entry_clicked(None)
-        elif keyname == 'Menu':
-            # Does not work
-            logging.info('Context Menu does not work')
-            self.context_menu.popup(None, None, None, 0, event.time)
+        elif keyname == 'F2':
+            self._on_change_entry_clicked(None)
 
     def on_button_press_event(self, widget, event):
-        """
-        @param widget - Gtk.TreeView - The Tree View
-        @param event - Gdk.event - Event information
-        """
         # Get the path at the specific mouse position.
         path = widget.get_path_at_pos(int(event.x), int(event.y))
         if (path is None):
