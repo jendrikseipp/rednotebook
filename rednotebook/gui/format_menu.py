@@ -60,37 +60,16 @@ class FormatMenu(object):
         # Create an ActionGroup
         actiongroup = Gtk.ActionGroup('FormatActionGroup')
 
-        def tmpl(word):
-            return word + ' (Ctrl+%s)' % word[0]
-
-        def apply_format(action, format='bold'):
-            if type(action) == Gtk.Action:
-                format = action.get_name().lower()
-
-            markup = self.FORMAT_TO_MARKUP[format]
-
-            focus = self.main_window.main_frame.get_focus()
-            iter = self.main_window.categories_tree_view.get_selected_node()
-
-            if isinstance(focus, Gtk.Entry):
-                entry = focus
-                pos = entry.get_position()
-                # bounds can be an empty tuple
-                bounds = entry.get_selection_bounds() or (pos, pos)
-                selected_text = entry.get_chars(*bounds)
-                entry.delete_text(*bounds)
-                entry.insert_text('%s%s%s' % (markup, selected_text, markup), bounds[0])
-                # Set cursor after the end of the formatted text
-                entry.set_position(bounds[0] + len(markup) + len(selected_text))
-            elif focus == self.main_window.categories_tree_view.tree_view and iter:
-                text = self.main_window.categories_tree_view.get_iter_value(iter)
+        def apply_format(action):
+            format_ = action.get_name().lower()
+            iter_ = self.main_window.categories_tree_view.get_selected_node()
+            if iter_:
+                markup = self.FORMAT_TO_MARKUP[format_]
+                text = self.main_window.categories_tree_view.get_iter_value(iter_)
                 text = '%s%s%s' % (markup, text, markup)
-                self.main_window.categories_tree_view.set_iter_value(iter, text)
-            elif focus == self.main_window.day_text_field.day_text_view:
-                self.main_window.day_text_field.apply_format(format)
+                self.main_window.categories_tree_view.set_iter_value(iter_, text)
             else:
-                self.main_window.journal.show_message(
-                    _('No text or tag has been selected.'), error=True)
+                self.main_window.day_text_field.apply_format(format_)
 
         def shortcut(char):
             # Translators: The Control (Ctrl) key
