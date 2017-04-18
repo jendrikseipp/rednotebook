@@ -132,8 +132,8 @@ class Calendar(Gtk.Calendar):
 class Info(Gtk.InfoBar):
     icons = {Gtk.MessageType.ERROR: Gtk.STOCK_DIALOG_ERROR}
 
-    def __init__(self, *args, **kwargs):
-        GObject.GObject.__init__(self, *args, **kwargs)
+    def __init__(self):
+        Gtk.InfoBar.__init__(self)
         self.title_label = Gtk.Label()
         self.msg_label = Gtk.Label()
         self.title_label.set_alignment(0., 0.5)

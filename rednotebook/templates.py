@@ -19,7 +19,6 @@
 
 import os
 
-from gi.repository import Gdk
 from gi.repository import Gtk
 
 from rednotebook.util import filesystem
@@ -175,6 +174,32 @@ personal = _('''\
 ''')
 
 
+class TemplateInfo(Gtk.InfoBar):
+    def __init__(self):
+        Gtk.InfoBar.__init__(self)
+        self.set_message_type(Gtk.MessageType.INFO)
+
+        title_label = Gtk.Label()
+        title_label.set_markup('<b>{}</b>'.format(_('Template mode')))
+        title_label.set_alignment(0., 0.5)
+
+        msg_label = Gtk.Label()
+        msg_label.set_markup(_('You are currently editing a template.'))
+        msg_label.set_alignment(0., 0.5)
+
+        vbox = Gtk.VBox(spacing=5)
+        vbox.pack_start(title_label, False, False, 0)
+        vbox.pack_start(msg_label, False, False, 0)
+
+        image = Gtk.Image.new_from_stock(Gtk.STOCK_DIALOG_INFO, Gtk.IconSize.DIALOG)
+
+        content = self.get_content_area()
+        content.pack_start(image, False, False, 0)
+        content.pack_start(vbox, False, False, 0)
+
+        self.show_all()
+
+
 class TemplateManager(object):
     def __init__(self, main_window):
         self.main_window = main_window
@@ -190,8 +215,10 @@ class TemplateManager(object):
         self.tmp_title = None
         self.tmp_parts = None
 
-        style = self.main_window.day_text_field.day_text_view.get_style_context()
-        self.default_base_color = style.get_background_color(Gtk.StateFlags.NORMAL)
+        self._template_mode_info_bar = TemplateInfo()
+        self._template_mode_info_bar.hide()
+        self.main_window.text_vbox.pack_start(self._template_mode_info_bar, False, False, 0)
+        self.main_window.text_vbox.reorder_child(self._template_mode_info_bar, 1)
 
     def set_template_menu_sensitive(self, sensitive):
         if self.tmp_title:
@@ -224,9 +251,7 @@ class TemplateManager(object):
         text = self.get_text(title)
         self.main_window.undo_redo_manager.set_stack(title)
         self.main_window.day_text_field.set_text(text, undoing=True)
-        light_yellow = Gdk.RGBA(1., 1., 190 / 255., 1.)
-        self.main_window.day_text_field.day_text_view.override_background_color(
-            Gtk.StateType.NORMAL, light_yellow)
+        self._template_mode_info_bar.show()
         self._set_widgets_sensitive(False)
 
     def exit_template_mode(self):
@@ -236,8 +261,7 @@ class TemplateManager(object):
         if self.main_window.preview_mode:
             self.main_window.change_mode(preview=False)
         self.main_window.day_text_field.day_text_view.grab_focus()
-        self.main_window.day_text_field.day_text_view.override_background_color(
-            Gtk.StateType.NORMAL, self.default_base_color)
+        self._template_mode_info_bar.hide()
         self._set_widgets_sensitive(True)
 
     def _reset_undo_stack(self):
