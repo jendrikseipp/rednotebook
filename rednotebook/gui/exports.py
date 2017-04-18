@@ -60,8 +60,9 @@ class DatePage(AssistantPage):
         label2 = Gtk.Label()
         label2.set_markup('<b>' + _('To:') + '</b>')
 
-        self.calendar1 = Calendar()
-        self.calendar2 = Calendar()
+        show_week_numbers = self.journal.config.read('weekNumbers')
+        self.calendar1 = Calendar(week_numbers=show_week_numbers)
+        self.calendar2 = Calendar(week_numbers=show_week_numbers)
 
         vbox1 = Gtk.VBox()
         vbox2 = Gtk.VBox()

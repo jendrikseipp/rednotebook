@@ -46,7 +46,7 @@ from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
 
 
-class MainWindow(object):
+class MainWindow():
     '''
     Class that holds the reference to the main glade file and handles
     all actions
@@ -84,7 +84,7 @@ class MainWindow(object):
 
         self.undo_redo_manager = undo.UndoRedoManager(self)
 
-        self.calendar = Calendar(self.journal, self.builder.get_object('calendar'))
+        self.calendar = MainCalendar(self.journal, self.builder.get_object('calendar'))
         self.day_text_field = DayEditor(self.builder.get_object('day_text_view'),
                                         self.undo_redo_manager)
         self.day_text_field.day_text_view.grab_focus()
@@ -686,7 +686,7 @@ class DayEditor(editor.Editor):
         self.day_text_view.grab_focus()
 
 
-class NewEntryDialog(object):
+class NewEntryDialog():
     def __init__(self, main_frame):
         dialog = main_frame.builder.get_object('new_entry_dialog')
         self.dialog = dialog
@@ -756,7 +756,7 @@ class NewEntryDialog(object):
         self.main_frame.cloud.update()
 
 
-class Statusbar(object):
+class Statusbar():
     def __init__(self, statusbar):
         self.statusbar = statusbar
         self.context_id = self.statusbar.get_context_id('RedNotebook')
@@ -796,13 +796,12 @@ class Statusbar(object):
         return True
 
 
-class Calendar(object):
+class MainCalendar():
     def __init__(self, journal, calendar):
         self.journal = journal
         self.calendar = calendar
 
-        week_numbers = self.journal.config.read('weekNumbers')
-        if week_numbers:
+        if self.journal.config.read('weekNumbers'):
             calendar.set_property('show-week-numbers', True)
 
         self.date_listener = self.calendar.connect('day-selected', self.on_day_selected)
@@ -811,27 +810,22 @@ class Calendar(object):
         self.journal.change_date(self.get_date())
 
     def set_date(self, date):
-        '''
-        A date check makes no sense here since it is normal that a new month is
-        set here that will contain the day
-        '''
-        # Probably useless
         if date == self.get_date():
             return
 
-        # We do not want to listen to this programmatic date change
+        # We do not want to listen to programmatic date changes.
         self.calendar.handler_block(self.date_listener)
 
-        # We need to set the day temporarily to a day that is present in all months
+        # We need to set the day temporarily to a day that is present in all months.
         self.calendar.select_day(1)
 
-        # PyGTK calendars show months in range [0,11]
+        # GTK shows months in range [0,11].
         self.calendar.select_month(date.month - 1, date.year)
 
-        # Select the day after the month and year have been set
+        # Select the day after the month and year have been set.
         self.calendar.select_day(date.day)
 
-        # We want to listen to manual date changes
+        # We want to listen to manual date changes.
         self.calendar.handler_unblock(self.date_listener)
 
     def get_date(self):

@@ -111,19 +111,14 @@ class CustomListView(Gtk.TreeView):
 
 class Calendar(Gtk.Calendar):
     def __init__(self, week_numbers=False):
-        GObject.GObject.__init__(self)
-        if week_numbers:
-            self.set_property('show-week-numbers', True)
+        Gtk.Calendar.__init__(self)
+        self.set_property('show-week-numbers', week_numbers)
 
     def set_date(self, date):
-        '''
-        A date check makes no sense here since it is normal that a new month is
-        set here that will contain the day
-        '''
-        # We need to set the day temporarily to a day that is present in all months
+        # Set the day temporarily to a day that is present in all months.
         self.select_day(1)
 
-        # PyGTK calendars show months in range [0,11]
+        # Gtk.Calendar show months in range [0,11].
         self.select_month(date.month - 1, date.year)
 
         # Select the day after the month and year have been set
