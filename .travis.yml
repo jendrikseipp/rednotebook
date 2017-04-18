@@ -15,7 +15,7 @@ script:
 - docker exec app pip3 install -U pip tox
 # see https://github.com/travis-ci/travis-ci/issues/6652
 - docker exec app git clone --depth=50 --branch="${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}" "https://github.com/${TRAVIS_REPO_SLUG}.git" "/home/${TRAVIS_REPO_SLUG}"
-- docker exec app bash "cd /home/${TRAVIS_REPO_SLUG} && tox"
+- docker exec app tox -c "/home/${TRAVIS_REPO_SLUG}"
 
 after_script:
 - docker rm -f app
