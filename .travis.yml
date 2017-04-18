@@ -10,6 +10,7 @@ before_install:
 - docker ps -a
 
 script:
+- docker ps -a
 - docker exec app apt-get update
 - docker exec app pwd
 - docker exec app find .
