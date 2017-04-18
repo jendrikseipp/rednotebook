@@ -191,8 +191,6 @@ class Journal:
         logging.info('RedNotebook version: %s' % info.version)
         logging.info(filesystem.get_platform_info())
 
-        utils.set_environment_variables(self.config)
-
         self.actual_date = self.get_start_date()
 
         # Let components check if the MainWindow has been created

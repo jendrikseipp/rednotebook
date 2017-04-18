@@ -35,7 +35,7 @@ copyright_ = 'Copyright (c) 2008-2017 Jendrik Seipp'
 url = 'http://rednotebook.sourceforge.net'
 answers_url = 'https://answers.launchpad.net/rednotebook'
 translation_url = 'https://translations.launchpad.net/rednotebook/'
-bug_url = 'https://bugs.launchpad.net/rednotebook/+filebug'
+bug_url = 'https://github.com/jendrikseipp/rednotebook/issues'
 contributors_url = 'https://github.com/jendrikseipp/rednotebook/graphs/contributors'
 
 developers = ['%(author)s <%(author_mail)s>' % locals()]

@@ -18,7 +18,7 @@
 # -----------------------------------------------------------------------
 
 import signal
-import os
+import os.path
 import re
 import http.client
 from urllib.request import urlopen
@@ -34,22 +34,6 @@ from rednotebook.util import filesystem
 
 def sort_asc(string):
     return str(string).lower()
-
-
-def set_environment_variables(config):
-    variables = {}
-
-    for variable, value in variables.items():
-        if variable not in os.environ:
-            # Only add environment variable if it does not exist yet
-            os.environ[variable] = config.read(variable, default=value)
-            logging.info('%s set to %s' % (variable, value))
-
-    for variable in variables:
-        if variable in os.environ:
-            logging.info('The environment variable %s has value %s' % (variable, os.environ.get(variable)))
-        else:
-            logging.info('There is no environment variable called %s' % variable)
 
 
 def setup_signal_handlers(journal):
