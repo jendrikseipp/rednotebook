@@ -120,10 +120,12 @@ def check_new_version(journal, current_version, startup=False):
                  (current_version, new_version, newer_version_available))
 
     if newer_version_available or not startup:
-        dialog = Gtk.MessageDialog(parent=None, flags=Gtk.DialogFlags.MODAL,
-                                   type=Gtk.MessageType.INFO,
-                                   buttons=Gtk.ButtonsType.YES_NO,
-                                   message_format=None)
+        dialog = Gtk.MessageDialog(
+            parent=None,
+            flags=Gtk.DialogFlags.MODAL,
+            type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.YES_NO,
+            message_format=None)
         dialog.set_transient_for(journal.frame.main_frame)
         primary_text = (_('You have version <b>%s</b>.') % current_version + ' ' +
                         _('The latest version is <b>%s</b>.') % new_version)
@@ -132,21 +134,16 @@ def check_new_version(journal, current_version, startup=False):
         dialog.format_secondary_text(secondary_text)
 
         # Let user disable checks
+        response_not_again = 30
         if startup:
-            # Add button on the left side
-            dialog.add_button(_('Do not ask again'), 30)
-            settings = Gtk.Settings.get_default()
-            settings.set_property('gtk-alternative-button-order', True)
-
-            dialog.set_alternative_button_order([30, Gtk.ResponseType.NO,
-                                                 Gtk.ResponseType.YES])
+            dialog.add_button(_('Do not ask again'), response_not_again)
 
         response = dialog.run()
         dialog.hide()
 
         if response == Gtk.ResponseType.YES:
             webbrowser.open(info.url)
-        elif response == 30:
+        elif response == response_not_again:
             logging.info('Checks for new versions disabled')
             journal.config['checkForNewVersion'] = 0
 
