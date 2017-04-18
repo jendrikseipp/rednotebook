@@ -16,7 +16,12 @@ script:
 # see https://github.com/travis-ci/travis-ci/issues/6652
 - docker exec app echo ${TRAVIS_REPO_SLUG}
 - docker exec app echo ${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
+- docker exec app cd /home
+- docker exec app pwd
 - docker exec app git clone --depth=50 --branch="${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}" "https://github.com/${TRAVIS_REPO_SLUG}.git" "${TRAVIS_REPO_SLUG}"
+- docker exec app cd "${TRAVIS_REPO_SLUG}"
+- docker exec app pwd
+- docker exec app tox
 
 after_script:
 - docker rm -f app
