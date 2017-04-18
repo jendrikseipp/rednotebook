@@ -124,7 +124,6 @@ MATHJAX = """\
 <script>
   MathJax.Hub.Queue(function () {
     document.title = "%s";
-    document.title = "RedNotebook";
   });
 </script>
 """ % (MATHJAX_FILE, MATHJAX_FINISHED)

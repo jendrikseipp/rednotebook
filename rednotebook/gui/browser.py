@@ -104,8 +104,9 @@ class HtmlPrinter(object):
         except GObject.GError as e:
             logging.error(e.message)
 
-    def _on_title_changed(self, title, *args):
-        logging.info('Title changed: %s' % args)
+    def _on_title_changed(self, view, _gparamstring):
+        title = view.get_title()
+        logging.info('Title changed: {}'.format(title))
         # MathJax changes the title once it has typeset all formulas.
         if title == markup.MATHJAX_FINISHED:
             self._print()
