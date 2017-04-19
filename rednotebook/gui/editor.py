@@ -225,6 +225,7 @@ class Editor:
 
         text = selection or ' '
         self.replace_selection_and_highlight(left_markup, text, right_markup)
+        self.day_text_view.grab_focus()
 
     def set_font(self, font_name):
         font = Pango.FontDescription(font_name)
