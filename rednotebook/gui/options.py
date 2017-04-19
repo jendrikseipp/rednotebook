@@ -192,11 +192,7 @@ class FontOption(Option):
             self.dialog.get_cancel_button().connect_object(
                 "clicked", lambda window: window.destroy(), self.dialog)
 
-        if not self.dialog.get_visible():
-            self.dialog.show()
-        else:
-            self.dialog.destroy()
-            self.dialog = None
+        self.dialog.show()
 
     def dialog_destroyed(self, widget):
         self.dialog = None
