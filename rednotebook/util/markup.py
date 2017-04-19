@@ -123,7 +123,9 @@ MATHJAX = """\
 </script>
 <script>
   MathJax.Hub.Queue(function () {
+    var title = document.title;
     document.title = "%s";
+    document.title = title;
   });
 </script>
 """ % (MATHJAX_FILE, MATHJAX_FINISHED)

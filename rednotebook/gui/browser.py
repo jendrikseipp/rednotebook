@@ -60,7 +60,7 @@ class HtmlPrinter:
     def print_html(self, html, outfile):
         self.outfile = outfile
         self.contains_mathjax = 'MathJax' in html
-        logging.info('Loading URL...')
+        logging.info('Loading HTML...')
         self._webview.load_html(html)
 
         while Gtk.events_pending():
