@@ -2,7 +2,8 @@ Source: rednotebook
 Section: text
 Priority: optional
 Maintainer: Jendrik Seipp <jendrikseipp@gmail.com>
-Build-Depends-Indep: python3, debhelper (>= 7), dh-python
+Build-Depends: debhelper (>= 9)
+Build-Depends-Indep: python3, dh-python
 Standards-Version: 3.9.6
 Homepage: http://rednotebook.sourceforge.net/
 Vcs-Git: git://github.com/jendrikseipp/rednotebook.git
