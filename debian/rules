@@ -4,6 +4,9 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
 override_dh_auto_install:
 	# install into a private directory
 	python setup.py install --root=$(CURDIR)/debian/rednotebook \
@@ -15,5 +18,5 @@ override_dh_auto_install:
 	mv $(CURDIR)/debian/rednotebook/usr/bin/rednotebook \
 		$(CURDIR)/debian/rednotebook/usr/share/rednotebook/run.py
 
-%:
-	dh $@ --with python3 --buildsystem=pybuild
+override_dh_auto_test:
+	echo "Skipping tests"
