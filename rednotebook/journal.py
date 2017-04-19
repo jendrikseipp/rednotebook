@@ -43,13 +43,15 @@ gi.require_version("Gtk", "3.0")
 gi.require_version("WebKit2", "4.0")
 
 if hasattr(sys, "frozen"):
-    from rednotebook.util import filesystem
+    base_dir = sys._MEIPASS
 else:
-    from util import filesystem
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(app_dir)
 
-# Add base directory to sys.path
-base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
+print('Adding {} to sys.path'.format(base_dir))
 sys.path.insert(0, base_dir)
+
+from rednotebook.util import filesystem
 
 
 # ---------------------- Enable i18n -------------------------------
