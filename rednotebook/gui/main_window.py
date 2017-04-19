@@ -33,6 +33,7 @@ from rednotebook.gui.options import OptionsManager
 from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import filesystem
+from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import dates
 from rednotebook import undo
@@ -363,6 +364,8 @@ class MainWindow:
         self.format_actiongroup.set_sensitive(not preview)
         self.insert_button.set_sensitive(not preview)
         self.format_button.set_sensitive(not preview)
+        for action in ['Cut', 'Paste']:
+            self.uimanager.get_widget('/MainMenuBar/Edit/%s' % action).set_sensitive(not preview)
 
         self.preview_mode = preview
 
@@ -743,7 +746,7 @@ class NewEntryDialog:
 class Statusbar:
     def __init__(self, statusbar):
         self.statusbar = statusbar
-        self.context_id = self.statusbar.get_context_id('RedNotebook')
+        self.context_id = self.statusbar.get_context_id(info.program_name)
         self.last_message_id = None
         self.timespan = 10
 

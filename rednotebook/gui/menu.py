@@ -118,7 +118,7 @@ class MainMenuBar:
                 None, _('Shutdown RedNotebook. It will not be sent to the tray.'),
                 self.main_window.on_quit_activate),
 
-            ('Edit', None, _('_Edit'), None, None, self.on_edit_menu_activate),
+            ('Edit', None, _('_Edit')),
             ('Undo', Gtk.STOCK_UNDO, None,
                 '<Ctrl>z', _('Undo text or tag edits'), self.on_undo),
             ('Redo', Gtk.STOCK_REDO, None,
@@ -215,12 +215,6 @@ class MainMenuBar:
             self.journal.save_to_disk()
         self.select_journal('saveas', _('Select an empty folder for the new location of your journal'),
                             _('The directory name will be the new title of the journal'))
-
-    def on_edit_menu_activate(self, widget):
-        """Only set the menu items sensitive if the actions can be performed."""
-        edit_mode = not self.main_window.preview_mode
-        for action in ['Cut', 'Paste']:
-            self.main_window.uimanager.get_widget('/MainMenuBar/Edit/%s' % action).set_sensitive(edit_mode)
 
     def on_undo(self, widget):
         editor = self.main_window.day_text_field
