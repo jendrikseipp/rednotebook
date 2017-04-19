@@ -9,7 +9,7 @@
 
 override_dh_auto_install:
 	# install into a private directory
-	python setup.py install --root=$(CURDIR)/debian/rednotebook \
+	python3 setup.py install --root=$(CURDIR)/debian/rednotebook \
 		--install-lib=/usr/share/rednotebook \
 		--install-scripts=/usr/bin \
 		--install-data=/usr
