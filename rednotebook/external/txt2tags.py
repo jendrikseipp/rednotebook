@@ -5107,8 +5107,8 @@ def convert(bodylines, config, firstlinenr=1):
           regex['deflist'].search(line):
 
             listindent = BLOCK.prop('indent')
-            listids = ''.join('\\' + x for x in LISTNAMES.keys())
-            m = re.match('^( *)([%s]) '%listids, line)
+            listids = ''.join(LISTNAMES.keys())
+            m = re.match('^( *)([%s]) ' % re.escape(listids), line)
             listitemindent = m.group(1)
             listtype = m.group(2)
             listname = LISTNAMES[listtype]
