@@ -159,7 +159,7 @@ class ImportAssistant(Assistant):
         return page
 
 
-class Importer(object):
+class Importer:
     NAME = 'What do we import?'
     DESCRIPTION = 'Short description of what we import'
     PATHTEXT = _('Select the directory containing the sources to import')

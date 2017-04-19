@@ -83,7 +83,7 @@ def get_text_with_dots(text, start, end, found_text=None):
     return res
 
 
-class Day(object):
+class Day:
     def __init__(self, month, day_number, day_content=None):
         day_content = day_content or {'text': ''}
         assert 'text' in day_content, day_content
@@ -255,7 +255,7 @@ class Day(object):
         return self.date.strftime('%Y-%m-%d')
 
 
-class Month(object):
+class Month:
     def __init__(self, year_number, month_number, month_content=None, mtime=0):
         self.year_number = year_number
         self.month_number = month_number

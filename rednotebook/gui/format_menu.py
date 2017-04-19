@@ -45,7 +45,7 @@ MENUBAR_XML = '''\
 ''' % MENUITEMS_XML
 
 
-class FormatMenu(object):
+class FormatMenu:
     FORMAT_TO_MARKUP = {
         'bold': '**', 'italic': '//', 'monospace': '``',
         'underline': '__', 'strikethrough': '--'}

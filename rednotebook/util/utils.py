@@ -140,7 +140,7 @@ def show_html_in_browser(html, filename):
     webbrowser.open(html_file)
 
 
-class StreamDuplicator(object):
+class StreamDuplicator:
     def __init__(self, streams):
         self.streams = streams
 

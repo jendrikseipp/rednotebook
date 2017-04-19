@@ -28,7 +28,7 @@ from rednotebook.util import utils
 from rednotebook import undo
 
 
-class CategoriesTreeView(object):
+class CategoriesTreeView:
     def __init__(self, tree_view, main_window):
         self.tree_view = tree_view
 

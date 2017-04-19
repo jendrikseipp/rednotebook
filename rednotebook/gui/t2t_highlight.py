@@ -52,7 +52,7 @@ class TagGroup(list):
         return self[0].rule
 
 
-class Pattern(object):
+class Pattern:
     """
     A pattern object allows a regex-pattern to have
     subgroups with different formatting
@@ -99,7 +99,7 @@ class Pattern(object):
         return tags
 
 
-class MarkupDefinition(object):
+class MarkupDefinition:
     def __init__(self, rules):
         self.rules = rules
         self.highlight_rule = None

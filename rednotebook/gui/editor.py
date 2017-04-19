@@ -39,7 +39,7 @@ except ImportError:
 DEFAULT_FONT = Gtk.Settings.get_default().get_property('gtk-font-name')
 
 
-class Editor(object):
+class Editor:
     def __init__(self, day_text_view, undo_redo_manager):
         self.day_text_view = day_text_view
         self.day_text_buffer = t2t_highlight.get_highlight_buffer()

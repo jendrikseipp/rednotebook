@@ -46,7 +46,7 @@ from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
 
 
-class MainWindow():
+class MainWindow:
     '''
     Class that holds the reference to the main glade file and handles
     all actions
@@ -686,7 +686,7 @@ class DayEditor(editor.Editor):
         self.day_text_view.grab_focus()
 
 
-class NewEntryDialog():
+class NewEntryDialog:
     def __init__(self, main_frame):
         dialog = main_frame.builder.get_object('new_entry_dialog')
         self.dialog = dialog
@@ -756,7 +756,7 @@ class NewEntryDialog():
         self.main_frame.cloud.update()
 
 
-class Statusbar():
+class Statusbar:
     def __init__(self, statusbar):
         self.statusbar = statusbar
         self.context_id = self.statusbar.get_context_id('RedNotebook')
@@ -796,7 +796,7 @@ class Statusbar():
         return True
 
 
-class MainCalendar():
+class MainCalendar:
     def __init__(self, journal, calendar):
         self.journal = journal
         self.calendar = calendar

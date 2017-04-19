@@ -589,7 +589,7 @@ done):
 To install rednotebook use ``sudo apt-get install rednotebook``.
 
 ```
-class Robot(object):
+class Robot:
     def greet(self):
         print 'Hello World'
 

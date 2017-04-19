@@ -78,7 +78,7 @@ MENUBAR_XML = '''\
 </ui>''' % (insert_menu.MENUBAR_XML, format_menu.MENUBAR_XML)
 
 
-class MainMenuBar(object):
+class MainMenuBar:
     def __init__(self, main_window, *args, **kwargs):
         self.main_window = main_window
         self.uimanager = main_window.uimanager

@@ -211,7 +211,7 @@ class FontOption(Option):
         return self.font_name
 
 
-class OptionsDialog(object):
+class OptionsDialog:
     def __init__(self, dialog):
         self.dialog = dialog
         self.categories = {}
@@ -233,7 +233,7 @@ class OptionsDialog(object):
                 vbox.remove(option)
 
 
-class OptionsManager(object):
+class OptionsManager:
     def __init__(self, main_window):
         self.main_window = main_window
         self.builder = main_window.builder

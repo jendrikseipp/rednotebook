@@ -18,7 +18,7 @@
 # -----------------------------------------------------------------------
 
 
-class Statistics(object):
+class Statistics:
     def __init__(self, journal):
         self.journal = journal
 

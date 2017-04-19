@@ -48,7 +48,7 @@ class Browser(WebKit2.WebView):
         WebKit2.WebView.load_html(self, content=html, base_uri='file:///')
 
 
-class HtmlPrinter(object):
+class HtmlPrinter:
     def __init__(self):
         self._webview = Browser()
         self._webview.connect('load-failed', self._on_load_failed)

@@ -59,7 +59,7 @@ def get_image(name):
     return image
 
 
-class InsertMenu(object):
+class InsertMenu:
     def __init__(self, main_window):
         self.main_window = main_window
 

@@ -37,7 +37,7 @@ class UrlButton(ActionButton):
         ActionButton.__init__(self, text, lambda _: webbrowser.open(url))
 
 
-class CustomComboBoxEntry(object):
+class CustomComboBoxEntry:
     def __init__(self, combo_box):
         self.combo_box = combo_box
 

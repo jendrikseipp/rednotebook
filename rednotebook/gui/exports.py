@@ -471,7 +471,7 @@ class ExportAssistant(Assistant):
         self.journal.show_message(_('Content exported to %s') % self.path)
 
 
-class Exporter(object):
+class Exporter:
     NAME = 'Which format do we use?'
     # Short description of how we export
     DESCRIPTION = ''

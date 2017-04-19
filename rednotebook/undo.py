@@ -20,13 +20,13 @@
 from collections import defaultdict
 
 
-class Action():
+class Action:
     def __init__(self, undo_function, redo_function):
         self.undo_function = undo_function
         self.redo_function = redo_function
 
 
-class UndoRedoManager():
+class UndoRedoManager:
     SIZE = 100
     BUFFER = 20
 

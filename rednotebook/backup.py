@@ -43,7 +43,7 @@ def write_archive(archive_file_name, files, base_dir='', arc_base_dir=''):
     archive.close()
 
 
-class Archiver(object):
+class Archiver:
     def __init__(self, journal):
         self.journal = journal
 
