@@ -102,7 +102,6 @@ class Day:
 
         # Remember the last edit and preview position
         self.last_edit_pos = None
-        self.last_preview_pos = None
 
     def _get_text(self):
         '''Return the day's text as unicode.'''

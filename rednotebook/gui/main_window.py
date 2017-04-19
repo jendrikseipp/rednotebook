@@ -114,8 +114,8 @@ class MainWindow:
         self.edit_pane = self.builder.get_object('edit_pane')
 
         self.html_editor = Preview(self.journal)
-        self.html_editor.webview.connect('button-press-event', self.on_browser_clicked)
-        self.html_editor.webview.connect('decide-policy', self.on_browser_decide_policy)
+        self.html_editor.connect('button-press-event', self.on_browser_clicked)
+        self.html_editor.connect('decide-policy', self.on_browser_decide_policy)
 
         self.text_vbox = self.builder.get_object('text_vbox')
         self.text_vbox.pack_start(self.html_editor, True, True, 0)
@@ -127,12 +127,9 @@ class MainWindow:
         self.edit_pane.child_set_property(self.text_vbox, 'shrink', False)
 
         # Add InfoBar.
-        if customwidgets.Info:
-            self.infobar = customwidgets.Info()
-            self.text_vbox.pack_start(self.infobar, False, False, 0)
-            self.text_vbox.reorder_child(self.infobar, 1)
-        else:
-            self.infobar = self.statusbar
+        self.infobar = customwidgets.Info()
+        self.text_vbox.pack_start(self.infobar, False, False, 0)
+        self.text_vbox.reorder_child(self.infobar, 1)
 
         # Add TemplateBar.
         self.template_bar = customwidgets.TemplateBar()
@@ -625,23 +622,10 @@ class Preview(browser.HtmlView):
     def __init__(self, journal, *args, **kwargs):
         browser.HtmlView.__init__(self, *args, **kwargs)
         self.journal = journal
-        self.day = None
 
     def show_day(self, new_day):
-        # Save the position in the preview pane for the old day
-        if self.day:
-            self.day.last_preview_pos = (self.get_hscrollbar().get_value(),
-                                         self.get_vscrollbar().get_value())
-
-        # Show new day
-        self.day = new_day
-        html = self.journal.convert(self.day.text, 'xhtml')
+        html = self.journal.convert(new_day.text, 'xhtml')
         self.load_html(html)
-
-        if self.day.last_preview_pos is not None:
-            x, y = self.day.last_preview_pos
-            GObject.idle_add(self.get_hscrollbar().set_value, x)
-            GObject.idle_add(self.get_vscrollbar().set_value, y)
 
 
 class DayEditor(editor.Editor):

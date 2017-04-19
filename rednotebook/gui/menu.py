@@ -232,7 +232,7 @@ class MainMenuBar:
 
     def _get_active_editor_widget(self):
         if self.main_window.preview_mode:
-            return self.main_window.html_editor.webview
+            return self.main_window.html_editor
         else:
             return self.main_window.day_text_field.day_text_view
 

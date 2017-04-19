@@ -64,8 +64,8 @@ class Cloud(HtmlView):
         self.journal = journal
         self.update_lists()
 
-        self.webview.connect('context-menu', self._on_context_menu)
-        self.webview.connect('decide-policy', self.on_decide_policy)
+        self.connect('context-menu', self._on_context_menu)
+        self.connect('decide-policy', self.on_decide_policy)
 
     def update_lists(self):
         config = self.journal.config

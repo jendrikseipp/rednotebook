@@ -132,35 +132,26 @@ def print_pdf(html, filename):
     printer.print_html(html, filename)
 
 
-class HtmlView(Gtk.ScrolledWindow):
-    def __init__(self, *args, **kargs):
-        Gtk.ScrolledWindow.__init__(self, *args, **kargs)
-        self.webview = Browser()
-        self.add(self.webview)
-
+class HtmlView(Browser):
+    def __init__(self):
+        Browser.__init__(self)
         self.search_text = ''
-        self.webview.connect('load-changed', self.on_load_changed)
+        self.connect('load-changed', self.on_load_changed)
         self.show_all()
-
-    def load_html(self, html):
-        self.webview.load_html(html)
-
-    def set_editable(self, editable):
-        self.webview.set_editable(editable)
 
     def set_font_size(self, size):
         if size <= 0:
             zoom = 1.0
         else:
             zoom = size / 10.0
-        # It seems webkit shows text a little bit bigger
+        # It seems webkit shows text a little bit bigger.
         zoom *= 0.90
-        self.webview.set_zoom_level(zoom)
+        self.set_zoom_level(zoom)
 
-    def highlight(self, string):
+    def highlight(self, search_text):
         # Tell the webview which text to highlight after the html is loaded
-        self.search_text = string
-        self.webview.get_find_controller().search(
+        self.search_text = search_text
+        self.get_find_controller().search(
             self.search_text, WebKit2.FindOptions.CASE_INSENSITIVE, MAX_HITS)
 
     def on_load_changed(self, webview, event):
