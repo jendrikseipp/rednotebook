@@ -248,7 +248,7 @@ class Journal:
 
         logging.error('The path "%s" is not a valid journal directory. '
                       'Execute "rednotebook -h" for instructions' % path_arg)
-        sys.exit(1)
+        sys.exit(2)
 
     def get_start_date(self):
         '''
