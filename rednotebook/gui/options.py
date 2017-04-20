@@ -21,7 +21,7 @@ import os
 import logging
 import platform
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook.gui.customwidgets import UrlButton, CustomComboBoxEntry
 from rednotebook.gui.customwidgets import ActionButton
@@ -31,17 +31,17 @@ from rednotebook import info
 from rednotebook.configuration import Config
 
 
-class Option(gtk.HBox):
+class Option(Gtk.HBox):
     def __init__(self, text, option_name, tooltip=''):
-        gtk.HBox.__init__(self)
+        Gtk.HBox.__init__(self)
 
         self.text = text
         self.option_name = option_name
 
         self.set_spacing(5)
 
-        self.label = gtk.Label(self.text)
-        self.pack_start(self.label, False, False)
+        self.label = Gtk.Label(label=self.text)
+        self.pack_start(self.label, False, False, 0)
 
         if tooltip:
             self.set_tooltip_text(tooltip)
@@ -49,34 +49,28 @@ class Option(gtk.HBox):
     def get_value(self):
         raise NotImplementedError
 
-    def get_string_value(self):
-        return unicode(self.get_value())
-
 
 class TickOption(Option):
     def __init__(self, text, name, value=None, tooltip=''):
         Option.__init__(self, '', name, tooltip=tooltip)
 
-        self.check_button = gtk.CheckButton(text)
+        self.check_button = Gtk.CheckButton(text)
         if value is None:
             self.check_button.set_active(Option.config.read(name) == 1)
         else:
             self.check_button.set_active(value)
         self.check_button.connect('clicked', self.on_check_button_clicked)
-        self.pack_start(self.check_button, False)
+        self.pack_start(self.check_button, False, False, 0)
 
     def on_check_button_clicked(self, widget):
         pass
         # TODO: Apply corresponding actions.
 
     def get_value(self):
-        return self.check_button.get_active()
-
-    def get_string_value(self):
-        '''
+        """
         We use 0 and 1 internally for bool options
-        '''
-        return int(self.get_value())
+        """
+        return int(self.check_button.get_active())
 
 
 class AutostartOption(TickOption):
@@ -111,25 +105,25 @@ class TextOption(Option):
         value = Option.config.read(option_name, default)
 
         # Ensure that we have a string here
-        value = unicode(value)
+        value = str(value)
 
-        self.entry = gtk.Entry()
+        self.entry = Gtk.Entry()
         self.entry.set_text(value)
 
-        self.pack_start(self.entry, True)
+        self.pack_start(self.entry, True, True, 0)
 
     def get_value(self):
-        return self.entry.get_text().decode('utf-8')
+        return self.entry.get_text()
 
 
 class ComboBoxOption(Option):
     def __init__(self, text, name, entries):
         Option.__init__(self, text, name)
 
-        self.combo = CustomComboBoxEntry(gtk.ComboBoxEntry())
+        self.combo = CustomComboBoxEntry(Gtk.ComboBox.new_with_entry())
         self.combo.set_entries(entries)
 
-        self.pack_start(self.combo.combo_box, False)
+        self.pack_start(self.combo.combo_box, False, False, 0)
 
     def get_value(self):
         return self.combo.get_active_text()
@@ -145,17 +139,17 @@ class DateFormatOption(ComboBoxOption):
         date_url = 'http://docs.python.org/library/time.html#time.strftime'
         date_format_help_button = UrlButton(_('Help'), date_url)
 
-        self.preview = gtk.Label()
-        self.pack_start(self.preview, False)
+        self.preview = Gtk.Label()
+        self.pack_start(self.preview, False, False, 0)
 
-        self.pack_end(date_format_help_button, False)
+        self.pack_end(date_format_help_button, False, False, 0)
 
         # Set default format if not present
         format = Option.config.read(name, '%A, %x %X')
-        format = unicode(format)
+        format = str(format)
         self.combo.set_active_text(format)
 
-        self.combo.connect('changed', self.on_format_changed)
+        self.combo.combo_box.connect('changed', self.on_format_changed)
 
         # Update the preview
         self.on_format_changed(None)
@@ -164,7 +158,7 @@ class DateFormatOption(ComboBoxOption):
         format_string = self.get_value()
         date_string = dates.format_date(format_string)
         # Translators: Noun
-        label_text = u'%s %s' % (_('Preview:'), date_string)
+        label_text = '%s %s' % (_('Preview:'), date_string)
         self.preview.set_text(label_text)
 
 
@@ -176,33 +170,29 @@ class FontOption(Option):
 
         self.font_name = Option.config.read(name, editor.DEFAULT_FONT)
 
-        self.label = gtk.Label()
+        self.label = Gtk.Label()
         self.label.set_text(self.font_name)
 
-        self.button = gtk.Button(_('Choose font ...'))
+        self.button = Gtk.Button(_('Choose font ...'))
         self.button.connect('clicked', self.on_button_clicked)
 
-        self.pack_start(self.label, False)
-        self.pack_start(self.button, False)
+        self.pack_start(self.label, False, False, 0)
+        self.pack_start(self.button, False, False, 0)
 
     def on_button_clicked(self, widget):
         if not self.dialog:
-            self.dialog = gtk.FontSelectionDialog(_('Choose font'))
+            self.dialog = Gtk.FontSelectionDialog(_('Choose font'))
 
             self.dialog.set_font_name(self.font_name)
             self.dialog.set_modal(True)
             self.dialog.set_transient_for(Option.main_window.options_manager.dialog.dialog)
             self.dialog.connect("destroy", self.dialog_destroyed)
-            self.dialog.ok_button.connect(
+            self.dialog.get_ok_button().connect(
                 "clicked", self.font_selection_ok)
-            self.dialog.cancel_button.connect_object(
+            self.dialog.get_cancel_button().connect_object(
                 "clicked", lambda window: window.destroy(), self.dialog)
 
-        if not (self.dialog.flags() & gtk.VISIBLE):
-            self.dialog.show()
-        else:
-            self.dialog.destroy()
-            self.dialog = None
+        self.dialog.show()
 
     def dialog_destroyed(self, widget):
         self.dialog = None
@@ -217,7 +207,7 @@ class FontOption(Option):
         return self.font_name
 
 
-class OptionsDialog(object):
+class OptionsDialog:
     def __init__(self, dialog):
         self.dialog = dialog
         self.categories = {}
@@ -227,7 +217,7 @@ class OptionsDialog(object):
         return getattr(self.dialog, attr)
 
     def add_option(self, category, option):
-        self.categories[category].pack_start(option, False)
+        self.categories[category].pack_start(option, False, False, 0)
         option.show_all()
 
     def add_category(self, name, vbox):
@@ -239,7 +229,7 @@ class OptionsDialog(object):
                 vbox.remove(option)
 
 
-class OptionsManager(object):
+class OptionsManager:
     def __init__(self, main_window):
         self.main_window = main_window
         self.builder = main_window.builder
@@ -296,7 +286,7 @@ class OptionsManager(object):
             check_version_option.check_button.set_active(check)
 
         check_version_button = ActionButton(_('Check now'), check_version_action)
-        check_version_option.pack_start(check_version_button, False, False)
+        check_version_option.pack_start(check_version_button, False, False, 0)
         self.options.append(check_version_option)
 
         self.options.extend([
@@ -316,7 +306,7 @@ class OptionsManager(object):
 
         response = self.dialog.run()
 
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             self.save_options()
 
             # Apply some options
@@ -345,7 +335,7 @@ class OptionsManager(object):
     def save_options(self):
         logging.debug('Saving Options')
         for option in self.options:
-            value = option.get_string_value()
+            value = option.get_value()
             if option.option_name is not None:
                 logging.debug('Setting %s = %s' % (option.option_name, repr(value)))
                 self.config[option.option_name] = value

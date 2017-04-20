@@ -17,15 +17,14 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from __future__ import division
-
 from collections import defaultdict
 import locale
 import logging
 import re
 
-import gtk
-import gobject
+from gi.repository import Gtk
+from gi.repository import GObject
+from gi.repository import WebKit2
 
 from rednotebook.gui.browser import HtmlView
 from rednotebook import data
@@ -62,16 +61,11 @@ def get_regex(word):
 class Cloud(HtmlView):
     def __init__(self, journal):
         HtmlView.__init__(self)
-
         self.journal = journal
-
         self.update_lists()
 
-        self.webview.connect("hovering-over-link", self.on_hovering_over_link)
-        self.webview.connect('populate-popup', self.on_populate_popup)
-        self.webview.connect('navigation-requested', self.on_navigate)
-
-        self.last_hovered_word = None
+        self.connect('context-menu', self._on_context_menu)
+        self.connect('decide-policy', self.on_decide_policy)
 
     def update_lists(self):
         config = self.journal.config
@@ -103,39 +97,38 @@ class Cloud(HtmlView):
         if not force_update:
             return
 
-        gobject.idle_add(self._update)
+        GObject.idle_add(self._update)
 
     def get_categories_counter(self):
         counter = defaultdict(int)
         for day in self.journal.days:
             for cat in day.categories:
-                counter[u'#%s' % data.escape_tag(cat)] += 1
+                counter['#%s' % data.escape_tag(cat)] += 1
         return counter
 
     def _update(self):
         logging.debug('Update the cloud')
         self.journal.save_old_day()
 
-        def cmp_words((word1, _freq1), (word2, _freq2)):
-            # TODO: Use key=locale.strxfrm in python3
-            return locale.strcoll(word1, word2)
-
         # TODO: Avoid using an instance variable here.
         self.link_index = 0
 
-        tags_count_dict = self.get_categories_counter().items()
+        def get_word(word_and_freq):
+            word, freq = word_and_freq
+            return locale.strxfrm(word)
+
+        tags_count_dict = list(self.get_categories_counter().items())
         self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
-        self.tags.sort(cmp=cmp_words)
+        self.tags.sort(key=get_word)
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
             word_count_dict, self.regexes_ignore, self.regexes_include)
-        self.words.sort(cmp=cmp_words)
+        self.words.sort(key=get_word)
 
         self.link_dict = self.tags + self.words
         html = self.get_clouds(self.words, self.tags)
         self.load_html(html)
-        self.last_hovered_word = None
         logging.debug('Cloud updated')
 
     def _get_cloud_body(self, cloud_words):
@@ -159,7 +152,7 @@ class Cloud(HtmlView):
             font_size = int(min_font_size + font_factor * font_delta)
 
             # Add some whitespace to separate words
-            html_elements.append('<a href="search/%s">'
+            html_elements.append('<a href="/#search-%s">'
                                  '<span style="font-size:%spx">%s</span></a>&#160;'
                                  % (self.link_index, font_size, word))
             self.link_index += 1
@@ -177,7 +170,8 @@ class Cloud(HtmlView):
                  # filter words in ignore_list
                  any(pattern.match(word) for pattern in ignores)]
 
-        def frequency((word, freq)):
+        def frequency(word_and_freq):
+            (word, freq) = word_and_freq
             return freq
 
         # only take the longest words. If there are less words than n,
@@ -200,71 +194,44 @@ class Cloud(HtmlView):
         return '\n'.join(parts)
 
     def _get_search_text(self, uri):
-        # uri has the form "something/somewhere/search/search_index"
-        search_index = int(uri.split('/')[-1])
-        search_text, count = self.link_dict[search_index]
-        return search_text
+        if '/#search-' in uri:
+            search_index = int(uri.split('-')[-1])
+            search_text, count = self.link_dict[search_index]
+            return search_text
+        else:
+            return None
 
-    def on_navigate(self, webview, frame, request):
+    def on_decide_policy(self, webview, decision, decision_type):
         """
-        Called when user clicks on a cloud word
+        Called (among others) when user clicks on a cloud word.
         """
-        if self.loading_html:
-            # Keep processing
-            return False
+        if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
+            uri = decision.get_navigation_action().get_request().get_uri()
 
-        uri = request.get_uri()
-        logging.info('Clicked URI "%s"' % uri)
-
-        self.journal.save_old_day()
-
-        # uri has the form "something/somewhere/search/search_index"
-        if 'search' in uri:
             search_text = self._get_search_text(uri)
-            self.journal.frame.search_box.set_active_text(search_text)
+            if search_text is not None:
+                logging.info('Clicked cloud URI "%s"' % uri)
+                self.journal.save_old_day()
+                self.journal.frame.search_box.set_active_text(search_text)
+                # returning True here stops loading the document
+                return True
 
-            # returning True here stops loading the document
-            return True
-
-    def on_button_press(self, webview, event):
-        """
-        Here we want the context menus
-        """
-        # keep processing
-        return False
-
-    def on_hovering_over_link(self, webview, title, uri):
-        """
-        We want to save the last hovered link to be able to add it
-        to the context menu when the user right-clicks the next time
-        """
-        if uri:
-            hovered_word = self._get_search_text(uri)
-            # We don't want to hide any tags.
-            if hovered_word.startswith(u'#'):
-                self.last_hovered_word = None
-            else:
-                self.last_hovered_word = hovered_word
-
-    def on_populate_popup(self, webview, menu):
+    def _on_context_menu(self, _view, menu, _event, hit_test_result):
         """Called when the cloud's popup menu is created."""
-        # remove normal menu items
-        children = menu.get_children()
-        for child in children:
-            menu.remove(child)
+        menu.remove_all()
 
-        if self.last_hovered_word:
-            label = _('Hide "%s" from clouds') % self.last_hovered_word
-            ignore_menu_item = gtk.MenuItem(label)
-            ignore_menu_item.show()
-            menu.prepend(ignore_menu_item)
-            ignore_menu_item.connect('activate', self.on_ignore_menu_activate, self.last_hovered_word)
+        tag = hit_test_result.get_link_label()
 
-    def on_ignore_menu_activate(self, menu_item, selected_word):
-        # Escape backslash
-        selected_word = selected_word.replace('\\', '\\\\')
-        logging.info('"%s" will be hidden from clouds' % selected_word)
-        self.ignore_list.append(selected_word)
+        if tag is not None:
+            action = Gtk.Action.new('hide', _('Hide "%s" from clouds') % tag, None, None)
+            action.connect('activate', self.on_ignore_menu_activate, tag)
+            ignore_menu_item = WebKit2.ContextMenuItem.new(action)
+            menu.append(ignore_menu_item)
+
+    def on_ignore_menu_activate(self, menu_item, word):
+        word = re.escape(word)
+        logging.info('"{}" will be hidden from clouds'.format(word))
+        self.ignore_list.append(word)
         self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
-        self.regexes_ignore.append(get_regex(selected_word))
+        self.regexes_ignore.append(get_regex(word))
         self.update(force_update=True)

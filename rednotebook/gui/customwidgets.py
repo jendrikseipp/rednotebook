@@ -22,13 +22,13 @@ import logging
 import os
 import webbrowser
 
-import gobject
-import gtk
+from gi.repository import GObject
+from gi.repository import Gtk
 
 
-class ActionButton(gtk.Button):
+class ActionButton(Gtk.Button):
     def __init__(self, text, action):
-        gtk.Button.__init__(self, text)
+        Gtk.Button.__init__(self, text)
         self.connect('clicked', action)
 
 
@@ -37,17 +37,17 @@ class UrlButton(ActionButton):
         ActionButton.__init__(self, text, lambda _: webbrowser.open(url))
 
 
-class CustomComboBoxEntry(object):
+class CustomComboBoxEntry:
     def __init__(self, combo_box):
         self.combo_box = combo_box
 
-        self.liststore = gtk.ListStore(gobject.TYPE_STRING)
+        self.liststore = Gtk.ListStore(GObject.TYPE_STRING)
         self.combo_box.set_model(self.liststore)
-        self.combo_box.set_text_column(0)
+        self.combo_box.set_entry_text_column(0)
         self.entry = self.combo_box.get_child()
 
         # Autocompletion
-        entry_completion = gtk.EntryCompletion()
+        entry_completion = Gtk.EntryCompletion()
         entry_completion.set_model(self.liststore)
         entry_completion.set_minimum_key_length(1)
         entry_completion.set_text_column(0)
@@ -64,7 +64,7 @@ class CustomComboBoxEntry(object):
         self.combo_box.set_model(self.liststore)
 
     def get_active_text(self):
-        return self.entry.get_text().decode('utf-8')
+        return self.entry.get_text()
 
     def set_active_text(self, text):
         return self.entry.set_text(text)
@@ -76,31 +76,25 @@ class CustomComboBoxEntry(object):
         self.set_active_text('')
         self.combo_box.set_model(self.liststore)
 
-    def connect(self, *args, **kargs):
-        self.combo_box.connect(*args, **kargs)
 
-    def set_editable(self, editable):
-        self.entry.set_editable(editable)
-
-
-class CustomListView(gtk.TreeView):
+class CustomListView(Gtk.TreeView):
     def __init__(self, columns):
         """
         *columns* must be a list of (header, type) pairs e.g. [('title', str)].
         """
-        gtk.TreeView.__init__(self)
-        headers, types = zip(*columns)
+        Gtk.TreeView.__init__(self)
+        headers, types = list(zip(*columns))
         # create a TreeStore with columns to use as the model
-        self.set_model(gtk.ListStore(*types))
+        self.set_model(Gtk.ListStore(*types))
 
-        columns = [gtk.TreeViewColumn(header) for header in headers]
+        columns = [Gtk.TreeViewColumn(header) for header in headers]
 
         # add tvcolumns to tree_view
         for index, column in enumerate(columns):
             self.append_column(column)
 
             # create a CellRendererText to render the data
-            cell_renderer = gtk.CellRendererText()
+            cell_renderer = Gtk.CellRendererText()
 
             # add the cell to the tvcolumn and allow it to expand
             column.pack_start(cell_renderer, True)
@@ -115,80 +109,71 @@ class CustomListView(gtk.TreeView):
         self.set_search_column(1)
 
 
-class Calendar(gtk.Calendar):
+class Calendar(Gtk.Calendar):
     def __init__(self, week_numbers=False):
-        gtk.Calendar.__init__(self)
-        if week_numbers:
-            self.set_property('show-week-numbers', True)
+        Gtk.Calendar.__init__(self)
+        self.set_property('show-week-numbers', week_numbers)
 
     def set_date(self, date):
-        '''
-        A date check makes no sense here since it is normal that a new month is
-        set here that will contain the day
-        '''
-        # We need to set the day temporarily to a day that is present in all months
+        # Set the day temporarily to a day that is present in all months.
         self.select_day(1)
 
-        # PyGTK calendars show months in range [0,11]
+        # Gtk.Calendar show months in range [0,11].
         self.select_month(date.month - 1, date.year)
 
         # Select the day after the month and year have been set
         self.select_day(date.day)
 
     def get_date(self):
-        year, month, day = gtk.Calendar.get_date(self)
+        year, month, day = Gtk.Calendar.get_date(self)
         return datetime.date(year, month + 1, day)
 
 
-# gtk.InfoBar is available in gtk+ >= 2.22
-if hasattr(gtk, 'InfoBar'):
-    class Info(gtk.InfoBar):
-        icons = {gtk.MESSAGE_ERROR: gtk.STOCK_DIALOG_ERROR}
+class Info(Gtk.InfoBar):
+    icons = {Gtk.MessageType.ERROR: Gtk.STOCK_DIALOG_ERROR}
 
-        def __init__(self, *args, **kwargs):
-            gtk.InfoBar.__init__(self, *args, **kwargs)
-            self.title_label = gtk.Label()
-            self.msg_label = gtk.Label()
-            self.title_label.set_alignment(0., 0.5)
-            self.msg_label.set_alignment(0., 0.5)
+    def __init__(self):
+        Gtk.InfoBar.__init__(self)
+        self.title_label = Gtk.Label()
+        self.msg_label = Gtk.Label()
+        self.title_label.set_alignment(0., 0.5)
+        self.msg_label.set_alignment(0., 0.5)
 
-            vbox = gtk.VBox(spacing=5)
-            vbox.pack_start(self.title_label, False, False)
-            vbox.pack_start(self.msg_label, False, False)
+        vbox = Gtk.VBox(spacing=5)
+        vbox.pack_start(self.title_label, False, False, 0)
+        vbox.pack_start(self.msg_label, False, False, 0)
 
-            self.image = gtk.Image()
+        self.image = Gtk.Image()
 
-            content = self.get_content_area()
-            content.pack_start(self.image, False)
-            content.pack_start(vbox, False)
+        content = self.get_content_area()
+        content.pack_start(self.image, False, False, 0)
+        content.pack_start(vbox, False, False, 0)
 
-            self.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
-            self.connect('close', lambda x: self.hide())
-            self.connect('response', self.on_response)
+        self.add_button(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
+        self.connect('close', lambda x: self.hide())
+        self.connect('response', self.on_response)
 
-        def on_response(self, infobar, response_id):
-            if response_id == gtk.RESPONSE_CLOSE:
-                self.hide()
+    def on_response(self, infobar, response_id):
+        if response_id == Gtk.ResponseType.CLOSE:
+            self.hide()
 
-        def show_message(self, title, msg, msg_type):
-            if not title:
-                title = msg
-                msg = ''
-            self.title_label.set_markup('<b>%s</b>' % title)
-            self.msg_label.set_markup(msg)
-            self.set_message_type(msg_type)
-            self.image.set_from_stock(self.icons.get(msg_type, gtk.STOCK_DIALOG_INFO),
-                                      gtk.ICON_SIZE_DIALOG)
-            self.show_all()
-else:
-    Info = None
+    def show_message(self, title, msg, msg_type):
+        if not title:
+            title = msg
+            msg = ''
+        self.title_label.set_markup('<b>%s</b>' % title)
+        self.msg_label.set_markup(msg)
+        self.set_message_type(msg_type)
+        self.image.set_from_stock(self.icons.get(msg_type, Gtk.STOCK_DIALOG_INFO),
+                                  Gtk.IconSize.DIALOG)
+        self.show_all()
 
 
 # ------------------------- Assistant Pages ------------------------------------
 
-class AssistantPage(gtk.VBox):
+class AssistantPage(Gtk.VBox):
     def __init__(self, *args, **kwargs):
-        gtk.VBox.__init__(self, *args, **kwargs)
+        GObject.GObject.__init__(self, *args, **kwargs)
 
         self.set_spacing(5)
         self.set_border_width(10)
@@ -197,12 +182,12 @@ class AssistantPage(gtk.VBox):
         self.show_all()
 
     def _add_header(self):
-        self.header = gtk.Label()
+        self.header = Gtk.Label()
         self.header.set_markup('Unset')
         self.header.set_alignment(0.0, 0.5)
-        self.pack_start(self.header, False, False)
-        self.separator = gtk.HSeparator()
-        self.pack_start(self.separator, False, False)
+        self.pack_start(self.header, False, False, 0)
+        self.separator = Gtk.HSeparator()
+        self.pack_start(self.separator, False, False, 0)
         self.reorder_child(self.header, 0)
         self.reorder_child(self.separator, 1)
         self.show_all()
@@ -217,9 +202,9 @@ class IntroductionPage(AssistantPage):
     def __init__(self, text, *args, **kwargs):
         AssistantPage.__init__(self, *args, **kwargs)
 
-        label = gtk.Label(text)
+        label = Gtk.Label(label=text)
 
-        self.pack_start(label)
+        self.pack_start(label, True, True, 0)
 
 
 class RadioButtonPage(AssistantPage):
@@ -232,20 +217,20 @@ class RadioButtonPage(AssistantPage):
         sensitive = object.is_available()
 
         group = self.buttons[0] if self.buttons else None
-        button = gtk.RadioButton(group=group)
+        button = Gtk.RadioButton(group=group)
         button.set_tooltip_markup(tooltip)
         button.set_label(label)
         button.object = object
         button.set_sensitive(sensitive)
-        self.pack_start(button, False, False)
+        self.pack_start(button, False, False, 0)
         self.buttons.append(button)
 
         if tooltip:
-            description = gtk.Label()
+            description = Gtk.Label()
             description.set_alignment(0.0, 0.5)
             description.set_markup(' ' * 5 + tooltip)
             description.set_sensitive(sensitive)
-            self.pack_start(description, False, False)
+            self.pack_start(description, False, False, 0)
 
     def get_selected_object(self):
         for button in self.buttons:
@@ -261,10 +246,10 @@ class PathChooserPage(AssistantPage):
 
         self.last_path = None
 
-        self.chooser = gtk.FileChooserWidget()
+        self.chooser = Gtk.FileChooserWidget()
         self.chooser.connect('selection-changed', self.on_path_changed)
 
-        self.pack_start(self.chooser)
+        self.pack_start(self.chooser, True, True, 0)
 
     def _remove_filters(self):
         for filter in self.chooser.list_filters():
@@ -282,16 +267,16 @@ class PathChooserPage(AssistantPage):
             self.set_header(helptext)
 
         if self.path_type == 'DIR':
-            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
+            self.chooser.set_action(Gtk.FileChooserAction.SELECT_FOLDER)
         elif self.path_type == 'FILE':
-            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_OPEN)
+            self.chooser.set_action(Gtk.FileChooserAction.OPEN)
         elif self.path_type == 'NEWFILE':
-            self.chooser.set_action(gtk.FILE_CHOOSER_ACTION_SAVE)
+            self.chooser.set_action(Gtk.FileChooserAction.SAVE)
         else:
             logging.error('Wrong path_type "%s"' % self.path_type)
 
         if self.path_type in ['FILE', 'NEWFILE'] and extension:
-            filter = gtk.FileFilter()
+            filter = Gtk.FileFilter()
             filter.set_name(extension)
             filter.add_pattern('*.' + extension)
             self.chooser.add_filter(filter)
@@ -308,16 +293,16 @@ class PathChooserPage(AssistantPage):
             self.chooser.set_current_name(filename + '.' + extension)
 
     def get_selected_path(self):
-        self.last_path = self.chooser.get_filename().decode('utf-8')
+        self.last_path = self.chooser.get_filename()
         return self.last_path
 
     def on_path_changed(self, widget):
         return
 
 
-class Assistant(gtk.Assistant):
+class Assistant(Gtk.Assistant):
     def __init__(self, journal, *args, **kwargs):
-        gtk.Assistant.__init__(self, *args, **kwargs)
+        GObject.GObject.__init__(self, *args, **kwargs)
 
         self.journal = journal
 
@@ -352,40 +337,53 @@ class Assistant(gtk.Assistant):
         page = IntroductionPage(text)
         self.append_page(page)
         self.set_page_title(page, _('Introduction'))
-        self.set_page_type(page, gtk.ASSISTANT_PAGE_INTRO)
+        self.set_page_type(page, Gtk.AssistantPageType.INTRO)
         self.set_page_complete(page, True)
 
 
-class TemplateBar(gtk.HBox):
+class TemplateBar(Gtk.HBox):
     def __init__(self):
-        gtk.HBox.__init__(self)
+        GObject.GObject.__init__(self)
         self.set_spacing(2)
-        label = gtk.Label('<b>%s</b>:' % _('Template'))
+        label = Gtk.Label(label='<b>%s</b>:' % _('Template'))
         label.set_use_markup(True)
-        self.pack_start(label, False, False)
-        self.save_insert_button = gtk.Button(_('Save and insert'))
-        self.pack_start(self.save_insert_button, False, False)
-        self.save_button = gtk.Button(stock=gtk.STOCK_SAVE)
-        self.pack_start(self.save_button, False, False)
-        self.close_button = gtk.Button(stock=gtk.STOCK_CLOSE)
-        self.pack_start(self.close_button, False, False)
+        self.pack_start(label, False, False, 0)
+        self.save_insert_button = Gtk.Button(_('Save and insert'))
+        self.pack_start(self.save_insert_button, False, False, 0)
+        self.save_button = Gtk.Button(stock=Gtk.STOCK_SAVE)
+        self.pack_start(self.save_button, False, False, 0)
+        self.close_button = Gtk.Button(stock=Gtk.STOCK_CLOSE)
+        self.pack_start(self.close_button, False, False, 0)
         self.show_all()
 
 
-class ToolbarMenuButton(gtk.MenuToolButton):
+class ToolbarMenuButton(Gtk.ToolItem):
     def __init__(self, stock_id, menu):
-        gtk.MenuToolButton.__init__(self, stock_id)
-        self.set_menu(menu)
-        self.connect('clicked', self.show_menu)
-        self.show()
+        Gtk.ToolItem.__init__(self)
 
-    def show_menu(self, button):
-        """
-        Show the menu when the button is clicked.
+        button = Gtk.Button.new_from_icon_name(stock_id, Gtk.IconSize.LARGE_TOOLBAR)
+        button.set_relief(Gtk.ReliefStyle.NONE)
 
-        A little hack for button and activate_time is needed as the "clicked" does
-        not have an associated event parameter. Otherwise we would use event.button
-        and event.time
-        """
-        self.get_menu().popup(parent_menu_shell=None, parent_menu_item=None,
-                              func=None, button=0, activate_time=0, data=None)
+        self._label = Gtk.Label()
+
+        box = Gtk.VBox()
+        box.pack_start(button, False, False, 0)
+        box.pack_start(self._label, False, False, 0)
+        box.show_all()
+
+        self._menu_button = Gtk.MenuButton()
+        self._menu_button.set_image(box)
+        self._menu_button.set_popup(menu)
+        self._menu_button.set_relief(Gtk.ReliefStyle.NONE)
+
+        self.add(self._menu_button)
+        self.show_all()
+
+    def set_label(self, label):
+        self._label.set_text(label)
+
+    def connect(self, *args):
+        return self._menu_button.connect(*args)
+
+    def set_menu(self, menu):
+        self._menu_button.set_popup(menu)

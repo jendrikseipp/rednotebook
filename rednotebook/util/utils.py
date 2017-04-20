@@ -18,38 +18,22 @@
 # -----------------------------------------------------------------------
 
 import signal
-import os
+import os.path
 import re
-import httplib
-from urllib2 import urlopen
+import http.client
+from urllib.request import urlopen
 import webbrowser
 import logging
 from distutils.version import StrictVersion
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook import info
-import filesystem
+from rednotebook.util import filesystem
 
 
 def sort_asc(string):
     return str(string).lower()
-
-
-def set_environment_variables(config):
-    variables = {}
-
-    for variable, value in variables.iteritems():
-        if variable not in os.environ:
-            # Only add environment variable if it does not exist yet
-            os.environ[variable] = config.read(variable, default=value)
-            logging.info('%s set to %s' % (variable, value))
-
-    for variable in variables.keys():
-        if variable in os.environ:
-            logging.info('The environment variable %s has value %s' % (variable, os.environ.get(variable)))
-        else:
-            logging.info('There is no environment variable called %s' % variable)
 
 
 def setup_signal_handlers(journal):
@@ -93,7 +77,7 @@ def get_new_version_number():
     version_pattern = re.compile(r'<span id="download-version">(.+)</span>')
 
     try:
-        project_xml = urlopen('http://rednotebook.sourceforge.net/index.html').read()
+        project_xml = urlopen('http://rednotebook.sourceforge.net/').read().decode('utf-8')
         match = version_pattern.search(project_xml)
         if not match:
             return None
@@ -101,7 +85,7 @@ def get_new_version_number():
         new_version = StrictVersion(new_version)
         logging.info('%s is the latest version' % new_version)
         return new_version
-    except (IOError, httplib.HTTPException):
+    except (IOError, http.client.HTTPException):
         return None
 
 
@@ -120,10 +104,12 @@ def check_new_version(journal, current_version, startup=False):
                  (current_version, new_version, newer_version_available))
 
     if newer_version_available or not startup:
-        dialog = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL,
-                                   type=gtk.MESSAGE_INFO,
-                                   buttons=gtk.BUTTONS_YES_NO,
-                                   message_format=None)
+        dialog = Gtk.MessageDialog(
+            parent=None,
+            flags=Gtk.DialogFlags.MODAL,
+            type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.YES_NO,
+            message_format=None)
         dialog.set_transient_for(journal.frame.main_frame)
         primary_text = (_('You have version <b>%s</b>.') % current_version + ' ' +
                         _('The latest version is <b>%s</b>.') % new_version)
@@ -132,21 +118,16 @@ def check_new_version(journal, current_version, startup=False):
         dialog.format_secondary_text(secondary_text)
 
         # Let user disable checks
+        response_not_again = 30
         if startup:
-            # Add button on the left side
-            dialog.add_button(_('Do not ask again'), 30)
-            settings = gtk.settings_get_default()
-            settings.set_property('gtk-alternative-button-order', True)
-
-            dialog.set_alternative_button_order([30, gtk.RESPONSE_NO,
-                                                 gtk.RESPONSE_YES])
+            dialog.add_button(_('Do not ask again'), response_not_again)
 
         response = dialog.run()
         dialog.hide()
 
-        if response == gtk.RESPONSE_YES:
+        if response == Gtk.ResponseType.YES:
             webbrowser.open(info.url)
-        elif response == 30:
+        elif response == response_not_again:
             logging.info('Checks for new versions disabled')
             journal.config['checkForNewVersion'] = 0
 
@@ -159,7 +140,7 @@ def show_html_in_browser(html, filename):
     webbrowser.open(html_file)
 
 
-class StreamDuplicator(object):
+class StreamDuplicator:
     def __init__(self, streams):
         self.streams = streams
 

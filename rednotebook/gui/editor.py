@@ -18,11 +18,11 @@
 # -----------------------------------------------------------------------
 
 import os
-import urllib
+import urllib.request
 import logging
 
-import gtk
-import pango
+from gi.repository import Gtk
+from gi.repository import Pango
 
 from rednotebook.gui import t2t_highlight
 from rednotebook import undo
@@ -32,14 +32,14 @@ try:
     from rednotebook.external import spellcheck
 except ImportError:
     logging.warning(
-        'For spell checking, please install enchant (python-enchant).')
+        'For spell checking, please install enchant (python3-enchant).')
     spellcheck = None
 
 
-DEFAULT_FONT = gtk.settings_get_default().get_property('gtk-font-name')
+DEFAULT_FONT = Gtk.Settings.get_default().get_property('gtk-font-name')
 
 
-class Editor(object):
+class Editor:
     def __init__(self, day_text_view, undo_redo_manager):
         self.day_text_view = day_text_view
         self.day_text_buffer = t2t_highlight.get_highlight_buffer()
@@ -63,8 +63,8 @@ class Editor(object):
         # So we forbid that behaviour, by setting a minimum width
         self.day_text_view.set_size_request(1, -1)
 
-        self.font = pango.FontDescription(DEFAULT_FONT)
-        self.default_size = self.font.get_size() / pango.SCALE
+        self.font = Pango.FontDescription(DEFAULT_FONT)
+        self.default_size = self.font.get_size() / Pango.SCALE
         logging.debug('Default font: %s' % self.font.to_string())
         logging.debug('Default size: %s' % self.default_size)
 
@@ -74,7 +74,7 @@ class Editor(object):
     def get_text(self, iter_start=None, iter_end=None):
         iter_start = iter_start or self.day_text_buffer.get_start_iter()
         iter_end = iter_end or self.day_text_buffer.get_end_iter()
-        return self.day_text_buffer.get_text(iter_start, iter_end).decode('utf-8')
+        return self.day_text_buffer.get_text(iter_start, iter_end, True)
 
     def insert(self, text, iter=None, overwrite=False, undoing=False):
         self.day_text_buffer.handler_block(self.changed_connection)
@@ -86,7 +86,7 @@ class Editor(object):
         if iter is None:
             self.day_text_buffer.insert_at_cursor(text)
         else:
-            if type(iter) == gtk.TextMark:
+            if type(iter) == Gtk.TextMark:
                 iter = self.day_text_buffer.get_iter_at_mark(iter)
             self.day_text_buffer.insert(iter, text)
 
@@ -129,14 +129,14 @@ class Editor(object):
 
         for search_text in variants:
             iter_tuple = iter_start.forward_search(
-                search_text, gtk.TEXT_SEARCH_VISIBLE_ONLY)
+                search_text, Gtk.TextSearchFlags.VISIBLE_ONLY)
 
             # When we find one variant, scroll to it and quit
             if iter_tuple:
                 # It is safer to scroll to a mark than an iter
                 mark = self.day_text_buffer.create_mark(
                     'highlight_query', iter_tuple[0], left_gravity=False)
-                self.day_text_view.scroll_to_mark(mark, 0)
+                self.day_text_view.scroll_to_mark(mark, 0, False, 0, 0)
                 self.day_text_buffer.delete_mark(mark)
                 return
 
@@ -192,17 +192,17 @@ class Editor(object):
 
     def _get_markups(self, format, selection):
         format_to_markups = {
-            'bold': (u'**', u'**'),
-            'italic': (u'//', u'//'),
-            'monospace': (u'``', u'``'),
-            'underline': (u'__', u'__'),
-            'strikethrough': (u'--', u'--'),
-            'title': (u'\n=== ', u' ===\n')
+            'bold': ('**', '**'),
+            'italic': ('//', '//'),
+            'monospace': ('``', '``'),
+            'underline': ('__', '__'),
+            'strikethrough': ('--', '--'),
+            'title': ('\n=== ', ' ===\n')
         }
         left_markup, right_markup = format_to_markups[format]
         if format == 'monospace' and '\n' in selection:
-            left_markup = u'\n```\n'
-            right_markup = u'\n```\n'
+            left_markup = '\n```\n'
+            right_markup = '\n```\n'
         return left_markup, right_markup
 
     def apply_format(self, format):
@@ -225,9 +225,10 @@ class Editor(object):
 
         text = selection or ' '
         self.replace_selection_and_highlight(left_markup, text, right_markup)
+        self.day_text_view.grab_focus()
 
     def set_font(self, font_name):
-        font = pango.FontDescription(font_name)
+        font = Pango.FontDescription(font_name)
         self.day_text_view.modify_font(font)
 
     def hide(self):
@@ -316,12 +317,12 @@ class Editor(object):
             head, ext = os.path.splitext(uri)
             return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp'.split()
 
-        uris = selection.data.strip('\r\n\x00')
-        logging.debug('URIs: "%s"' % uris)
-        uris = uris.split()  # we may have more than one file dropped
-        uris = map(lambda uri: uri.strip(), uris)
+        uris = selection.get_text().split()
+        logging.debug('Text: {}'.format(selection.get_text()))
+        logging.debug('URIs: {}'.format(uris))
         for uri in uris:
-            uri = urllib.url2pathname(uri)
+            uri = uri.strip()
+            uri = urllib.request.url2pathname(uri)
             dirs, filename = os.path.split(uri)
             uri_without_ext, ext = os.path.splitext(uri)
             if is_pic(uri):

@@ -26,10 +26,10 @@ To do a (test) installation to a different dir: "python setup.py install --root=
 To only compile the translations, run "python setup.py build_trans"
 """
 
-import os
-import sys
 from glob import glob
+import os
 import shutil
+import sys
 
 from distutils.core import setup
 from distutils import cmd
@@ -55,13 +55,13 @@ def build_translation_files(po_dir, locale_dir):
                     os.makedirs(dest_dir)
                 # Recompile only if compiled version is outdated.
                 if not os.path.exists(dest):
-                    print 'Compiling %s' % src
+                    print('Compiling %s' % src)
                     msgfmt.make(src, dest)
                 else:
                     src_mtime = os.stat(src)[8]
                     dest_mtime = os.stat(dest)[8]
                     if src_mtime > dest_mtime:
-                        print 'Compiling %s' % src
+                        print('Compiling %s' % src)
                         msgfmt.make(src, dest)
 
 

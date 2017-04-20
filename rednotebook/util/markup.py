@@ -22,8 +22,8 @@ import os
 import re
 import sys
 
-import gobject
-import pango
+from gi.repository import GObject
+from gi.repository import Pango
 
 from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
@@ -123,8 +123,9 @@ MATHJAX = """\
 </script>
 <script>
   MathJax.Hub.Queue(function () {
+    var title = document.title;
     document.title = "%s";
-    document.title = "RedNotebook";
+    document.title = title;
   });
 </script>
 """ % (MATHJAX_FILE, MATHJAX_FINISHED)
@@ -137,7 +138,7 @@ def convert_categories_to_markup(categories, with_category_title=True):
     else:
         markup = ''
 
-    for category, entry_list in categories.iteritems():
+    for category, entry_list in categories.items():
         markup += '- ' + category + '\n'
         for entry in entry_list:
             markup += '  - ' + entry + '\n'
@@ -389,7 +390,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
         finished = txt2tags.finish_him(full_doc, config)
         result = '\n'.join(finished)
     # Txt2tags error, show the messsage to the user
-    except txt2tags.error, msg:
+    except txt2tags.error as msg:
         logging.error(msg)
         result = msg
     # Unknown error, show the traceback to the user
@@ -442,7 +443,7 @@ def convert_to_pango(txt, headers=None, options=None):
         result = ''.join(finished)
 
     # Txt2tags error, show the messsage to the user
-    except txt2tags.error, msg:
+    except txt2tags.error as msg:
         logging.error(msg)
         result = msg
 
@@ -464,11 +465,11 @@ def convert_to_pango(txt, headers=None, options=None):
     result = re.sub(REGEX_HTML_LINK, replace_links, result)
 
     try:
-        attr_list, plain, accel = pango.parse_markup(result)
+        success, attr_list, plain, accel = Pango.parse_markup(result, -1, "0")
 
         # result is valid pango markup, return the markup
         return result
-    except gobject.GError:
+    except GObject.GError:
         # There are unknown tags in the markup, return the original text
         logging.debug('There are unknown tags in the markup: %s' % result)
         return original_txt

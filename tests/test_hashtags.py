@@ -39,7 +39,7 @@ def test_hashtags():
         ('#include', []),
     ]
     for text, tags in vals:
-        print repr(text)
+        print(repr(text))
         results = re.findall(HASHTAG_PATTERN, text, flags=re.I | re.U)
         results = [hashtag for _, _hash, hashtag in results]
         assert results == tags

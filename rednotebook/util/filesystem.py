@@ -34,14 +34,6 @@ REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
 IS_WIN = sys.platform.startswith('win')
 
 
-def get_unicode_path(path):
-    return unicode(path, ENCODING)
-
-
-def get_utf8_path(path):
-    return path.encode('UTF-8')
-
-
 def has_system_tray():
     return IS_WIN  # A smarter detection is needed here ;)
 
@@ -54,7 +46,6 @@ if main_is_frozen():
     app_dir = sys._MEIPASS  # os.path.dirname(sys.executable)
 else:
     app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-app_dir = get_unicode_path(app_dir)
 
 if IS_WIN:
     locale_dir = os.path.join(app_dir, 'share', 'locale')
@@ -65,7 +56,7 @@ image_dir = os.path.join(app_dir, 'images')
 frame_icon_dir = os.path.join(image_dir, 'rednotebook-icon')
 files_dir = os.path.join(app_dir, 'files')
 
-user_home_dir = get_unicode_path(os.path.expanduser('~'))
+user_home_dir = os.path.expanduser('~')
 
 
 class Filenames(dict):
@@ -75,7 +66,7 @@ class Filenames(dict):
     def __init__(self, config):
         for key, value in globals().items():
             # Exclude "get_main_dir()"
-            if key.lower().endswith('dir') and isinstance(value, basestring):
+            if key.lower().endswith('dir') and isinstance(value, str):
                 value = os.path.abspath(value)
                 self[key] = value
                 setattr(self, key, value)
@@ -135,43 +126,16 @@ class Filenames(dict):
 def read_file(filename):
     """Try to read a given file.
 
-    Return None if an error is encountered.
+    Return empty string if an error is encountered.
     """
-    encodings = ['utf-8']
-
     try:
-        import chardet
-    except ImportError:
-        logging.info("chardet not found. 'utf-8' encoding will be assumed")
-        chardet = None
-
-    if False and chardet:
-        with open(filename, 'rb') as file:
-            content = file.read()
-        guess = chardet.detect(content)
-        logging.info('Chardet guesses %s for %s' % (guess, filename))
-        encoding = guess.get('encoding')
-
-        # chardet makes errors here sometimes
-        if encoding in ['MacCyrillic', 'ISO-8859-7']:
-            encoding = 'ISO-8859-2'
-
-        if encoding:
-            encodings.insert(0, encoding)
-
-    # Only check the first encoding
-    for encoding in encodings[:1]:
-        try:
-            # codecs.open returns a file object that can write unicode objects
-            # and whose read() method also returns unicode objects
-            # Internally we want to have unicode only
-            with codecs.open(filename, 'rb', encoding=encoding, errors='replace') as file:
-                data = file.read()
-                return data
-        except ValueError, err:
-            logging.info(err)
-        except Exception, e:
-            logging.error(e)
+        with codecs.open(filename, 'rb', encoding='utf-8', errors='replace') as file:
+            data = file.read()
+            return data
+    except ValueError as err:
+        logging.info(err)
+    except Exception as err:
+        logging.error(err)
     return ''
 
 
@@ -180,7 +144,7 @@ def write_file(filename, content):
     try:
         with codecs.open(filename, 'wb', errors='replace', encoding='utf-8') as file:
             file.write(content)
-    except IOError, e:
+    except IOError as e:
         logging.error('Error while writing to "%s": %s' % (filename, e))
 
 
@@ -239,22 +203,22 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
-    import gtk
+    from gi.repository import GObject
+    from gi.repository import Gtk
     import yaml
 
-    functions = [platform.machine, platform.platform, platform.processor,
-                 platform.python_version, platform.release, platform.system]
+    functions = [
+        platform.machine, platform.platform, platform.processor,
+        platform.python_version, platform.release, platform.system
+    ]
     names_values = [(func.__name__, func()) for func in functions]
 
-    lib_values = [('GTK version', gtk, 'gtk_version'),
-                  ('PyGTK version', gtk, 'pygtk_version'),
-                  ('Yaml version', yaml, '__version__')]
-
-    for name, object, value in lib_values:
-        try:
-            names_values.append((name, getattr(object, value)))
-        except AttributeError:
-            logging.info('%s could not be determined' % name)
+    names_values.extend([
+        ('GTK', (Gtk.get_major_version(), Gtk.get_minor_version(), Gtk.get_micro_version())),
+        ('Glib', GObject.glib_version),
+        ('PyGObject', GObject.pygobject_version),
+        ('YAML', yaml.__version__),
+        ])
 
     vals = ['%s: %s' % (name, val) for name, val in names_values]
     return 'System info: ' + ', '.join(vals)
@@ -300,8 +264,8 @@ def open_url_in_browser(url):
 
 
 def unquote_url(url):
-    import urllib
-    return urllib.unquote(url).decode('utf-8')
+    import urllib.parse
+    return urllib.parse.unquote(url)
 
 
 def _open_url_with_call(url, prog):
@@ -326,7 +290,7 @@ def open_url(url):
     if IS_WIN:
         try:
             url = unquote_url(url)
-            if url.startswith(u'file:') or os.path.exists(url):
+            if url.startswith('file:') or os.path.exists(url):
                 url = get_local_url(url)
             logging.info('Trying to open %s with "os.startfile"' % url)
             # os.startfile is only available on windows
