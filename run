@@ -12,4 +12,4 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 # Run RedNotebook.
-python2.7 rednotebook/journal.py "$@"
+python3 rednotebook/journal.py "$@"

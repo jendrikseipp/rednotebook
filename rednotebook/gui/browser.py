@@ -18,180 +18,143 @@
 # -----------------------------------------------------------------------
 
 import logging
-import os
+import os.path
 import sys
 
-import gobject
-import gtk
+from gi.repository import GObject
+from gi.repository import Gtk
 
+from rednotebook.util import filesystem
 from rednotebook.util import markup
 
 try:
-    import webkit
+    from gi.repository import WebKit2
 except ImportError as err:
     logging.error(
-        'pywebkitgtk not found. Please install it (python-webkit): %s' % err)
+        'WebKit2Gtk+ not found. Please install it (gir1.2-webkit2-4.0): %s' % err)
     sys.exit(1)
 
 
-class Browser(webkit.WebView):
+MAX_HITS = 10**6
+
+
+class Browser(WebKit2.WebView):
     def __init__(self):
-        webkit.WebView.__init__(self)
+        WebKit2.WebView.__init__(self)
         webkit_settings = self.get_settings()
         webkit_settings.set_property('enable-plugins', False)
 
     def load_html(self, html):
-        self.load_html_string(html, 'file:///')
+        WebKit2.WebView.load_html(self, content=html, base_uri='file:///')
 
 
-class HtmlPrinter(object):
-    """
-    Idea and code-snippets taken from interwibble,
-    "A non-interactive tool for converting any given website to PDF"
-    (http://github.com/eeejay/interwibble/)
-    """
-    PAPER_SIZES = {'a3': gtk.PAPER_NAME_A3,
-                   'a4': gtk.PAPER_NAME_A4,
-                   'a5': gtk.PAPER_NAME_A5,
-                   'b5': gtk.PAPER_NAME_B5,
-                   'executive': gtk.PAPER_NAME_EXECUTIVE,
-                   'legal': gtk.PAPER_NAME_LEGAL,
-                   'letter': gtk.PAPER_NAME_LETTER}
-
-    def __init__(self, paper='a4'):
+class HtmlPrinter:
+    def __init__(self):
         self._webview = Browser()
-        try:
-            self._webview.connect('load-error', self._load_error_cb)
-            self._webview.connect('title-changed', self._title_changed_cb)
-            self._webview.connect('load-finished', self._load_finished_cb)
-        except TypeError, err:
-            logging.info(err)
-        self._paper_size = gtk.PaperSize(self.PAPER_SIZES[paper])
+        self._webview.connect('load-failed', self._on_load_failed)
+        self._webview.connect('notify::title', self._on_title_changed)
+        self._webview.connect('load-changed', self._on_load_changed)
+        self._paper_size = Gtk.PaperSize(Gtk.PAPER_NAME_A4)
         self.outfile = None
 
     def print_html(self, html, outfile):
         self.outfile = outfile
         self.contains_mathjax = 'MathJax' in html
-        logging.info('Loading URL...')
+        logging.info('Loading HTML...')
         self._webview.load_html(html)
 
-        while gtk.events_pending():
-            gtk.main_iteration()
+        while Gtk.events_pending():
+            Gtk.main_iteration()
 
-    def _print(self, frame):
-        print_op = gtk.PrintOperation()
-        print_settings = print_op.get_print_settings() or gtk.PrintSettings()
+    def _print(self):
+        """
+        Print HTML document to PDF.
+
+        To print the PDF without a dialog, we need to set the
+        "Print to File" printer name. While we can set the printer by
+        localized name, this obviously only works if the two
+        translations match, which is brittle. If they don't match,
+        calling `print_op.print_()` exits without an error, but does
+        nothing. We therefore, set the localized printer name as a hint,
+        but don't depend on it. Instead, we display the print dialog and
+        let the user make adjustments.
+
+        see gtk/modules/printbackends/file/gtkprintbackendfile.c shows
+        that the non-translated printer name is "Print to File".
+
+        """
+        print_settings = Gtk.PrintSettings()
         print_settings.set_paper_size(self._paper_size)
+        print_settings.set_printer(_('Print to File'))
+        print_settings.set(
+            Gtk.PRINT_SETTINGS_OUTPUT_URI,
+            filesystem.get_local_url(os.path.abspath(self.outfile)))
+        print_settings.set(Gtk.PRINT_SETTINGS_OUTPUT_FILE_FORMAT, 'pdf')
+
+        print_op = WebKit2.PrintOperation.new(self._webview)
+        print_op.set_page_setup(Gtk.PageSetup())
         print_op.set_print_settings(print_settings)
-        print_op.set_export_filename(os.path.abspath(self.outfile))
+        print_op.connect('finished', self._on_end_print)
+
         logging.info('Exporting PDF...')
-        print_op.connect('end-print', self._end_print_cb)
         try:
-            frame.print_full(print_op, gtk.PRINT_OPERATION_ACTION_EXPORT)
-            while gtk.events_pending():
-                gtk.main_iteration()
-        except gobject.GError, e:
+            print_op.run_dialog(None)
+            while Gtk.events_pending():
+                Gtk.main_iteration()
+        except GObject.GError as e:
             logging.error(e.message)
 
-    def _title_changed_cb(self, _view, frame, title):
-        logging.info('Title changed: %s' % title)
+    def _on_title_changed(self, view, _gparamstring):
+        title = view.get_title()
+        logging.info('Title changed: {}'.format(title))
         # MathJax changes the title once it has typeset all formulas.
         if title == markup.MATHJAX_FINISHED:
-            self._print(frame)
+            self._print()
 
-    def _load_finished_cb(self, _view, frame):
-        logging.info('Loading done')
-        # If there's a formula, it is typeset after the load-finished signal.
-        if not self.contains_mathjax:
-            self._print(frame)
+    def _on_load_changed(self, _view, event):
+        if event == WebKit2.LoadEvent.FINISHED:
+            logging.info('Loading done')
+            # Formulas are typeset after this signal is emitted.
+            if not self.contains_mathjax:
+                self._print()
 
-    def _load_error_cb(self, _view, frame, url, _gp):
-        logging.error("Error loading %s" % url)
+    def _on_load_failed(self, _view, event, uri, error):
+        logging.error("Error loading %s" % uri)
+        # Stop propagating the error.
+        return True
 
-    def _end_print_cb(self, *args):
+    def _on_end_print(self, *args):
         logging.info('Exporting done')
 
 
-try:
-    printer = HtmlPrinter()
-except TypeError, err:
-    printer = None
-    logging.info('UrlPrinter could not be created: "%s"' % err)
-
-
-def can_print_pdf():
-    if not printer:
-        return False
-
-    frame = printer._webview.get_main_frame()
-
-    can_print_full = hasattr(frame, 'print_full')
-
-    if not can_print_full:
-        msg = 'For direct PDF export, please install pywebkitgtk version 1.1.5 or later.'
-        logging.info(msg)
-
-    return can_print_full
-
-
 def print_pdf(html, filename):
-    assert can_print_pdf()
+    printer = HtmlPrinter()
     printer.print_html(html, filename)
 
 
-class HtmlView(gtk.ScrolledWindow):
-    def __init__(self, *args, **kargs):
-        gtk.ScrolledWindow.__init__(self, *args, **kargs)
-        self.webview = Browser()
-        self.add(self.webview)
-
+class HtmlView(Browser):
+    def __init__(self):
+        Browser.__init__(self)
         self.search_text = ''
-        self.loading_html = False
-
-        self.webview.connect('button-press-event', self.on_button_press)
-        self.webview.connect('load-finished', self.on_load_finished)
-
+        self.connect('load-changed', self.on_load_changed)
         self.show_all()
-
-    def load_html(self, html):
-        self.loading_html = True
-        self.webview.load_html(html)
-        self.loading_html = False
-
-    def set_editable(self, editable):
-        self.webview.set_editable(editable)
 
     def set_font_size(self, size):
         if size <= 0:
             zoom = 1.0
         else:
             zoom = size / 10.0
-        # It seems webkit shows text a little bit bigger
+        # It seems webkit shows text a little bit bigger.
         zoom *= 0.90
-        self.webview.set_zoom_level(zoom)
+        self.set_zoom_level(zoom)
 
-    def highlight(self, string):
+    def highlight(self, search_text):
         # Tell the webview which text to highlight after the html is loaded
-        self.search_text = string
+        self.search_text = search_text
+        self.get_find_controller().search(
+            self.search_text, WebKit2.FindOptions.CASE_INSENSITIVE, MAX_HITS)
 
-        # Not possible for all versions of pywebkitgtk
-        try:
-            # Remove results from last highlighting
-            self.webview.unmark_text_matches()
-
-            # Mark all occurences of "string", case-insensitive, no limit
-            self.webview.mark_text_matches(string, False, 0)
-            self.webview.set_highlight_text_matches(True)
-        except AttributeError, err:
-            logging.info(err)
-
-    def on_button_press(self, webview, event):
-        # Right mouse click
-        if event.button == 3:
-            # We don't want the context menus, so stop processing that event.
-            return True
-
-    def on_load_finished(self, webview, frame):
+    def on_load_changed(self, webview, event):
         '''
         We use this method to highlight searched text.
         Whenever new searched text is entered it is saved in the HtmlView
@@ -200,7 +163,8 @@ class HtmlView(gtk.ScrolledWindow):
         Trying to highlight text while the page is still being loaded
         does not work.
         '''
-        if self.search_text:
-            self.highlight(self.search_text)
-        else:
-            self.webview.set_highlight_text_matches(False)
+        if event == WebKit2.LoadEvent.FINISHED:
+            if self.search_text:
+                self.highlight(self.search_text)
+            else:
+                webview.get_find_controller().search_finish()

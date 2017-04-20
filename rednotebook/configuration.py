@@ -25,7 +25,7 @@ from rednotebook.util import filesystem
 
 def delete_comment(line):
     if line.startswith('#'):
-        return u''
+        return ''
     return line
 
 
@@ -53,9 +53,9 @@ class Config(dict):
     }
 
     obsolete_keys = set([
-        u'useGTKMozembed', u'useWebkit', u'LD_LIBRARY_PATH',
-        u'MOZILLA_FIVE_HOME', u'cloudTabActive', u'mainFontSize',
-        u'running'
+        'useGTKMozembed', 'useWebkit', 'LD_LIBRARY_PATH',
+        'MOZILLA_FIVE_HOME', 'cloudTabActive', 'mainFontSize',
+        'running'
     ])
 
     # Allow changing the value of portable only in default.cfg.
@@ -119,8 +119,7 @@ class Config(dict):
 
         default should be of the form 'alpha,beta gamma;delta'
         '''
-        string = self.read(key, default)
-        string = unicode(string)
+        string = str(self.read(key, default))
 
         separators = [',', ';']
         for separator in separators:
@@ -140,7 +139,7 @@ class Config(dict):
             return
 
         lines = []
-        for key, value in sorted(self.iteritems()):
+        for key, value in sorted(self.items()):
             if key not in self.suppressed_keys:
                 lines.append('%s=%s' % (key, value))
 

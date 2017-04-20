@@ -25,8 +25,8 @@ PyGTKCodeBuffer by Hannes Matuschek (http://code.google.com/p/pygtkcodebuffer/).
 import collections
 import re
 
-import gtk
-import pango
+from gi.repository import Gtk
+from gi.repository import Pango
 
 from rednotebook.data import HASHTAG
 from rednotebook.external import txt2tags
@@ -52,7 +52,7 @@ class TagGroup(list):
         return self[0].rule
 
 
-class Pattern(object):
+class Pattern:
     """
     A pattern object allows a regex-pattern to have
     subgroups with different formatting
@@ -62,7 +62,7 @@ class Pattern(object):
         self.name = name
         self.group_tag_pairs = group_tag_pairs
 
-        if isinstance(pattern_or_regex, basestring):
+        if isinstance(pattern_or_regex, str):
             # assemble re-flag
             # TODO: Is this needed?
             flags += "ML"
@@ -99,13 +99,13 @@ class Pattern(object):
         return tags
 
 
-class MarkupDefinition(object):
+class MarkupDefinition:
     def __init__(self, rules):
         self.rules = rules
         self.highlight_rule = None
 
     def __call__(self, buf, start, end):
-        txt = buf.get_slice(start, end)
+        txt = buf.get_slice(start, end, True)
 
         tag_groups = []
 
@@ -119,19 +119,19 @@ class MarkupDefinition(object):
             tags = rule(txt, start, end)
             while tags:
                 tag_groups.append(tags)
-                subtext = buf.get_slice(tags.max_end, end)
+                subtext = buf.get_slice(tags.max_end, end, True)
                 tags = rule(subtext, tags.max_end, end)
 
         tag_groups.sort(key=lambda g: (g.min_start.get_offset(), -g.max_end.get_offset()))
         return tag_groups
 
 
-class MarkupBuffer(gtk.TextBuffer):
+class MarkupBuffer(Gtk.TextBuffer):
     OVERLAPS = ['bold', 'italic', 'underline', 'strikethrough',
                 'highlight', 'list', 'numlist']
 
     def __init__(self, table=None, lang=None, styles={}):
-        gtk.TextBuffer.__init__(self, table)
+        Gtk.TextBuffer.__init__(self, tag_table=table)
         self._lang_def = lang
         self.styles = styles
 
@@ -149,12 +149,6 @@ class MarkupBuffer(gtk.TextBuffer):
             r"(%s)" % re.escape(text),
             [(1, 'highlight')], name='highlight', flags='I')
         self.update_syntax(self.get_start_iter(), self.get_end_iter())
-
-    def get_slice(self, start, end):
-        """
-        We have to search for the regexes in utf-8 text.
-        """
-        return gtk.TextBuffer.get_slice(self, start, end).decode('utf-8')
 
     def _on_insert_text(self, buf, it, text, length):
         end = it.copy()
@@ -206,9 +200,9 @@ class MarkupBuffer(gtk.TextBuffer):
 
 
 styles = {
-    'bold': {'weight': pango.WEIGHT_BOLD},
-    'italic': {'style': pango.STYLE_ITALIC},
-    'underline': {'underline': pango.UNDERLINE_SINGLE},
+    'bold': {'weight': Pango.Weight.BOLD},
+    'italic': {'style': Pango.Style.ITALIC},
+    'underline': {'underline': Pango.Underline.SINGLE},
     'strikethrough': {'strikethrough': True},
     'gray': {'foreground': 'gray'},
     'red': {'foreground': 'red'},
@@ -218,28 +212,21 @@ styles = {
     'tagged': {},
     'link': {
         'foreground': 'blue',
-        'underline': pango.UNDERLINE_SINGLE},
+        'underline': Pango.Underline.SINGLE},
     'highlight': {'background': 'yellow'},
     'quote': {'background': 'gray'},
     'tablehead': {'background': markup.TABLE_HEAD_BG},
     'tablerow': {'background': '#eee'},
-    'formula': {'style': pango.STYLE_ITALIC, 'family': 'serif'}
+    'formula': {'style': Pango.Style.ITALIC, 'family': 'serif'}
 }
 
 
 def add_header_styles():
-    sizes = [
-        pango.SCALE_XX_LARGE,
-        pango.SCALE_X_LARGE,
-        pango.SCALE_LARGE,
-        pango.SCALE_MEDIUM,
-        pango.SCALE_SMALL,
-    ]
-    for level, size in enumerate(sizes):
+    for level in range(1, 6):
         style = {
-            'weight': pango.WEIGHT_ULTRABOLD,
-            'scale': size}
-        name = 'title%s' % (level + 1)
+            'weight': Pango.Weight.ULTRABOLD,
+            'scale': 1.2 ** (6 - level)}
+        name = 'title%s' % (level)
         styles[name] = style
 
 add_header_styles()

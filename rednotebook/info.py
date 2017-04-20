@@ -20,49 +20,32 @@
 import argparse
 
 # This is required for setup.py to be able to import this module.
-import __builtin__
-if not hasattr(__builtin__, '_'):
+import builtins
+if not hasattr(builtins, '_'):
     def _(string):
         return string
 
 
+program_name = 'RedNotebook'
+tagline = _('A Desktop Journal')
 version = '1.15'
 author = 'Jendrik Seipp'
-author_mail = 'jendrikseipp@web.de'
+author_mail = 'jendrikseipp@gmail.com'
+copyright_ = 'Copyright (c) 2008-2017 Jendrik Seipp'
 url = 'http://rednotebook.sourceforge.net'
 answers_url = 'https://answers.launchpad.net/rednotebook'
 translation_url = 'https://translations.launchpad.net/rednotebook/'
-bug_url = 'https://bugs.launchpad.net/rednotebook/+filebug'
+bug_url = 'https://github.com/jendrikseipp/rednotebook/issues'
+contributors_url = 'https://github.com/jendrikseipp/rednotebook/graphs/contributors'
 
-developers = [
-    '%(author)s <%(author_mail)s>' % locals(),
-    '',
-    'Contributors:',
-    'https://github.com/jendrikseipp/rednotebook/graphs/contributors']
+developers = ['%(author)s <%(author_mail)s>' % locals()]
+artists = ['Ciaran']
 
 comments = '''\
 RedNotebook is a modern desktop journal. It lets you format, tag and
 search your entries. You can also add pictures, links and customizable
 templates, spell check your notes, and export to plain text, HTML,
 Latex or PDF.
-'''
-
-license_text = '''\
-Copyright (c) 2009-2016  Jendrik Seipp
-
-RedNotebook is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-RedNotebook is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with RedNotebook; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '''
 
 journal_path_help = '''\
@@ -170,7 +153,7 @@ multiple_entries_text = _('''\
 You can add multiple entries to a single day by \
 using different journals (one named "Work", the other "Family"), \
 separating your entries with different titles (=== Work ===, === Family ===) \
-and using horizontal separator lines (20 “=”s).''')
+and using horizontal separator lines (20 "="s).''')
 
 multiple_entries_example = _('''\
 === Work ===
@@ -304,7 +287,7 @@ text area (in edit mode) and choosing it from the submenu "Languages".
 
 === Adding custom dictionaries under Windows ===
 
-We use the dictionaries available from the [​openoffice extension
+We use the dictionaries available from the [openoffice extension
 download site http://extensions.services.openoffice.org/dictionaries].
 You need to download the appropriate language extension file(s) (files
 are openoffice extensions *.oxt, which are just zip files that contain
@@ -606,7 +589,7 @@ done):
 To install rednotebook use ``sudo apt-get install rednotebook``.
 
 ```
-class Robot(object):
+class Robot:
     def greet(self):
         print 'Hello World'
 

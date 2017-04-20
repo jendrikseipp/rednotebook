@@ -33,14 +33,25 @@ logging.basicConfig(
     format='%(levelname)-8s %(message)s',
     stream=sys.stdout)
 
-if hasattr(sys, "frozen"):
-    from rednotebook.util import filesystem
-else:
-    from util import filesystem
+try:
+    import gi
+except ImportError:
+    logging.error('pygobject not found. Please install it (python3-gi).')
+    sys.exit(1)
 
-# Add base directory to sys.path
-base_dir = os.path.abspath(os.path.join(filesystem.app_dir, '../'))
+gi.require_version("Gtk", "3.0")
+gi.require_version("WebKit2", "4.0")
+
+if hasattr(sys, "frozen"):
+    base_dir = sys._MEIPASS
+else:
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(app_dir)
+
+print('Adding {} to sys.path'.format(base_dir))
 sys.path.insert(0, base_dir)
+
+from rednotebook.util import filesystem
 
 
 # ---------------------- Enable i18n -------------------------------
@@ -52,7 +63,7 @@ from rednotebook.external import elibintl
 # * gtkbuilder strings
 # * gtk stock names
 
-LOCALE_PATH = filesystem.get_utf8_path(filesystem.locale_dir)
+LOCALE_PATH = filesystem.locale_dir
 
 # the name of the gettext domain.
 GETTEXT_DOMAIN = 'rednotebook'
@@ -60,14 +71,14 @@ GETTEXT_DOMAIN = 'rednotebook'
 # Register _() as a global translation function and set up the translation
 try:
     elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
-except locale.Error, err:
+except locale.Error as err:
     # unsupported locale setting
     logging.error('Locale could not be set: "%s"' % err)
     logging.error('Probably you have to install the appropriate language packs')
     # Make the _() function available even if gettext is not working.
-    import __builtin__
-    if not hasattr(__builtin__, '_'):
-        __builtin__.__dict__['_'] = lambda s: s
+    import builtins
+    if not hasattr(builtins, '_'):
+        builtins.__dict__['_'] = lambda s: s
 
 # ------------------- end Enable i18n -------------------------------
 
@@ -131,24 +142,16 @@ logging.info('System encoding: %s' % filesystem.ENCODING)
 logging.info('Language code: %s' % filesystem.LANGUAGE)
 
 try:
-    import pygtk
-    if not sys.platform == 'win32':
-        pygtk.require("2.0")
-except ImportError:
-    logging.error('PyGTK not found. Please install it (python-gtk2).')
-    sys.exit(1)
-
-try:
-    import gtk
-    import gobject
+    from gi.repository import Gtk
+    from gi.repository import GObject
     # Some notes on threads_init:
-    # only gtk.gdk.threads_init(): pdf export works, but gui hangs afterwards
-    # only gobject.threads_init(): pdf export works, gui works
+    # only Gdk.threads_init(): pdf export works, but gui hangs afterwards
+    # only GObject.threads_init(): pdf export works, gui works
     # both: pdf export works, gui hangs afterwards
-    gobject.threads_init()  # only initializes threading in the glib/gobject module
-except (ImportError, AssertionError), e:
+    GObject.threads_init()  # only initializes threading in the glib/gobject module
+except (ImportError, AssertionError) as e:
     logging.error(e)
-    logging.error('gtk not found. Please install PyGTK (python-gtk2)')
+    logging.error('GTK+ not found. Please install it (gir1.2-gtk-3.0).')
     sys.exit(1)
 
 
@@ -190,8 +193,6 @@ class Journal:
         logging.info('RedNotebook version: %s' % info.version)
         logging.info(filesystem.get_platform_info())
 
-        utils.set_environment_variables(self.config)
-
         self.actual_date = self.get_start_date()
 
         # Let components check if the MainWindow has been created
@@ -208,14 +209,14 @@ class Journal:
         self.open_journal(journal_path)
 
         self.archiver = backup.Archiver(self)
-        gobject.idle_add(self.archiver.check_last_backup_date)
+        GObject.idle_add(self.archiver.check_last_backup_date)
 
         # Check for a new version
         if self.config.read('checkForNewVersion') == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
-        gobject.timeout_add_seconds(600, self.save_to_disk)
+        GObject.timeout_add_seconds(600, self.save_to_disk)
 
     def get_journal_path(self):
         '''
@@ -249,7 +250,7 @@ class Journal:
 
         logging.error('The path "%s" is not a valid journal directory. '
                       'Execute "rednotebook -h" for instructions' % path_arg)
-        sys.exit(1)
+        sys.exit(2)
 
     def get_start_date(self):
         '''
@@ -277,7 +278,7 @@ class Journal:
             # Informs the logging system to perform an orderly shutdown by
             # flushing and closing all handlers.
             logging.shutdown()
-            gtk.main_quit()
+            Gtk.main_quit()
 
     def convert(self, text, target, headers=None, options=None):
         options = options or {}
@@ -350,7 +351,7 @@ class Journal:
 
         self.frame.categories_tree_view.categories = self.categories
         # Add auto-completion for tag search
-        self.frame.search_box.set_entries([u'#%s' % self.normalize_tag(tag)
+        self.frame.search_box.set_entries(['#%s' % self.normalize_tag(tag)
                                            for tag in self.categories])
 
         self.title = filesystem.get_journal_title(data_dir)
@@ -456,10 +457,10 @@ class Journal:
             title = _('Error')
 
         if error:
-            msg_type = gtk.MESSAGE_ERROR
+            msg_type = Gtk.MessageType.ERROR
             log_level = logging.ERROR
         else:
-            msg_type = gtk.MESSAGE_INFO
+            msg_type = Gtk.MessageType.INFO
             log_level = logging.INFO
 
         self.frame.show_message(title, msg, msg_type)
@@ -468,7 +469,7 @@ class Journal:
     @property
     def categories(self):
         return list(sorted(set(itertools.chain.from_iterable(
-            day.categories for day in self.days)), cmp=locale.strcoll))
+            day.categories for day in self.days)), key=locale.strxfrm))
 
     def normalize_tag(self, tag):
         return tag.replace(' ', '_').lower()
@@ -497,11 +498,9 @@ class Journal:
         return days
 
     def get_word_count_dict(self):
-        '''
-        Returns a dictionary mapping the words to their number of appearance
-        '''
-        # TODO: Use collections.Counter in Python2.7
-        # TODO: Check if concatenating all text and using a regex is faster.
+        """
+        Return a dictionary mapping the words to their number of appearance.
+        """
         word_dict = defaultdict(int)
         for day in self.days:
             words = day.get_words()
@@ -520,10 +519,8 @@ class Journal:
 
         days = []
         for month in self.months.values():
-            days_in_month = month.days.values()
-
-            # Filter out days without content
-            days_in_month = [day for day in days_in_month if not day.empty]
+            # Filter out days without content.
+            days_in_month = [day for day in month.days.values() if not day.empty]
             days.extend(days_in_month)
 
         # Sort days
@@ -572,7 +569,7 @@ def main():
 
     try:
         logging.debug('Trying to enter the gtk main loop')
-        gtk.main()
+        Gtk.main()
     except KeyboardInterrupt:
         sys.exit()
 

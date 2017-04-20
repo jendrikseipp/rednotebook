@@ -17,8 +17,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from __future__ import division
-
 import datetime
 import re
 
@@ -85,9 +83,9 @@ def get_text_with_dots(text, start, end, found_text=None):
     return res
 
 
-class Day(object):
+class Day:
     def __init__(self, month, day_number, day_content=None):
-        day_content = day_content or {'text': u''}
+        day_content = day_content or {'text': ''}
         assert 'text' in day_content, day_content
 
         self.month = month
@@ -96,7 +94,7 @@ class Day(object):
         # Turn all entries of old "Tags" categories into tags without entries.
         # Apparently, "Tags" may map to None, so explicitly convert to dict.
         old_tags = day_content.pop('Tags', None) or {}
-        for old_tag in old_tags.keys():
+        for old_tag in old_tags:
             day_content[old_tag] = None
             self.month.edited = True
 
@@ -104,11 +102,10 @@ class Day(object):
 
         # Remember the last edit and preview position
         self.last_edit_pos = None
-        self.last_preview_pos = None
 
     def _get_text(self):
         '''Return the day's text as unicode.'''
-        return self.content['text'].decode('utf-8')
+        return self.content['text']
 
     def _set_text(self, text):
         self.content['text'] = text
@@ -116,12 +113,11 @@ class Day(object):
 
     @property
     def has_text(self):
-        # TODO: Don't strip.
         return bool(self.text.strip())
 
     @property
     def empty(self):
-        return self.content.keys() == ['text'] and not self.has_text
+        return len(self.content) == 1 and 'text' in self.content and not self.has_text
 
     def add_category_entry(self, category, entry):
         if category in self.content:
@@ -156,7 +152,7 @@ class Day(object):
 
     @property
     def categories(self):
-        return self.get_category_content_pairs().keys()
+        return list(self.get_category_content_pairs().keys())
 
     def get_entries(self, category):
         return sorted((self.content.get(category) or {}).keys())
@@ -166,30 +162,31 @@ class Day(object):
         Returns a dict of (category: content_in_category_as_list) pairs.
         '''
         pairs = {}
-        for category, content in self.content.iteritems():
+        for category, content in self.content.items():
             if category == 'text':
                 continue
             if content is None:
                 pairs[category] = []
             else:
-                pairs[category] = content.keys()
+                pairs[category] = list(content.keys())
         # Include hashtags
         for tag in self.hashtags:
             pairs[tag] = []
         return pairs
 
     def get_words(self, with_special_chars=False):
-        # TODO: Use str.join().
-        all_text = self.text
-        for category, content in self.get_category_content_pairs().items():
-            all_text += ' ' + ' '.join([category] + content)
+        categories_text = ' '.join(
+            ' '.join([category] + content)
+            for category, content in self.get_category_content_pairs().items())
 
+        all_text = self.text + ' ' + categories_text
         words = all_text.split()
+
         if with_special_chars:
             return words
 
         # Strip all ASCII punctuation except for $, %, @ and '.
-        words = [w.strip(u'.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
+        words = [w.strip('.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
         return [word for word in words if word]
 
     def get_number_of_words(self):
@@ -256,18 +253,15 @@ class Day(object):
     def __str__(self):
         return self.date.strftime('%Y-%m-%d')
 
-    def __cmp__(self, other):
-        return cmp(self.date, other.date)
 
-
-class Month(object):
+class Month:
     def __init__(self, year_number, month_number, month_content=None, mtime=0):
         self.year_number = year_number
         self.month_number = month_number
 
         month_content = month_content or {}
         self.days = {}
-        for day_number, day_content in month_content.iteritems():
+        for day_number, day_content in month_content.items():
             self.days[day_number] = Day(self, day_number, day_content)
 
         self.edited = False
@@ -280,14 +274,10 @@ class Month(object):
 
     def __str__(self):
         lines = ['Month %s %s' % (self.year_number, self.month_number)]
-        for day_number, day in self.days.iteritems():
+        for day_number, day in self.days.items():
             lines.append('%s: %s' % (day_number, day.text))
         return '\n'.join(lines)
 
     @property
     def empty(self):
         return all(day.empty for day in self.days.values())
-
-    def __cmp__(self, other):
-        return cmp((self.year_number, self.month_number),
-                   (other.year_number, other.month_number))

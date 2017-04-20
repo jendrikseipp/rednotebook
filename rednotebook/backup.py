@@ -22,7 +22,7 @@ import logging
 import os
 import zipfile
 
-import gtk
+from gi.repository import Gtk
 
 
 DATE_FORMAT = '%Y-%m-%d'
@@ -43,7 +43,7 @@ def write_archive(archive_file_name, files, base_dir='', arc_base_dir=''):
     archive.close()
 
 
-class Archiver(object):
+class Archiver:
     def __init__(self, journal):
         self.journal = journal
 
@@ -54,10 +54,10 @@ class Archiver(object):
         logging.warning('Last backup is older than %d days.' % MAX_BACKUP_AGE)
         text1 = _('It has been a while since you made your last backup.')
         text2 = _('You can backup your journal to a zip file to avoid data loss.')
-        dialog = gtk.MessageDialog(
+        dialog = Gtk.MessageDialog(
             parent=self.journal.frame.main_frame,
-            type=gtk.MESSAGE_QUESTION,
-            flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+            type=Gtk.MessageType.QUESTION,
+            flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
             message_format=text1)
         dialog.set_title(_('Backup'))
         dialog.format_secondary_text(text2)
@@ -100,7 +100,7 @@ class Archiver(object):
         date_string = self.journal.config.read('lastBackupDate', now.strftime(DATE_FORMAT))
         try:
             last_backup_date = datetime.datetime.strptime(date_string, DATE_FORMAT)
-        except ValueError, err:
+        except ValueError as err:
             logging.error('Last backup date could not be read: %s' % err)
             return True
         last_backup_age = (now - last_backup_date).days
@@ -122,7 +122,7 @@ class Archiver(object):
         backup_dialog.set_current_folder(proposed_directory)
         backup_dialog.set_current_name(proposed_filename)
 
-        filter = gtk.FileFilter()
+        filter = Gtk.FileFilter()
         filter.set_name("Zip")
         filter.add_pattern("*.zip")
         backup_dialog.add_filter(filter)
@@ -130,6 +130,6 @@ class Archiver(object):
         response = backup_dialog.run()
         backup_dialog.hide()
 
-        if response == gtk.RESPONSE_OK:
-            path = backup_dialog.get_filename().decode('utf-8')
+        if response == Gtk.ResponseType.OK:
+            path = backup_dialog.get_filename()
             return path

@@ -19,7 +19,8 @@
 import os
 import webbrowser
 
-import gtk
+from gi.repository import GdkPixbuf
+from gi.repository import Gtk
 
 from rednotebook.util import utils
 from rednotebook import info
@@ -77,7 +78,7 @@ MENUBAR_XML = '''\
 </ui>''' % (insert_menu.MENUBAR_XML, format_menu.MENUBAR_XML)
 
 
-class MainMenuBar(object):
+class MainMenuBar:
     def __init__(self, main_window, *args, **kwargs):
         self.main_window = main_window
         self.uimanager = main_window.uimanager
@@ -86,62 +87,62 @@ class MainMenuBar(object):
 
     def get_actiongroup(self):
         # Create an ActionGroup
-        actiongroup = gtk.ActionGroup('MainMenuActionGroup')
+        actiongroup = Gtk.ActionGroup('MainMenuActionGroup')
 
         # Create actions
         actiongroup.add_actions([
             ('Journal', None, _('_Journal')),
-            ('New', gtk.STOCK_NEW, None,
+            ('New', Gtk.STOCK_NEW, None,
                 '', _('Create a new journal. The old one will be saved'),
                 self.on_new_journal_button_activate),
-            ('Open', gtk.STOCK_OPEN, None,
+            ('Open', Gtk.STOCK_OPEN, None,
                 None, _('Load an existing journal. The old journal will be saved'),
                 self.on_open_journal_button_activate),
-            ('Save', gtk.STOCK_SAVE, None,
+            ('Save', Gtk.STOCK_SAVE, None,
                 None, None, self.on_save_button_clicked),
-            ('SaveAs', gtk.STOCK_SAVE_AS, None,
+            ('SaveAs', Gtk.STOCK_SAVE_AS, None,
                 None, _('Save journal at a new location. The old journal files will also be saved'),
                 self.on_save_as_menu_item_activate),
             # Translators: Verb
-            # ('Import', gtk.STOCK_ADD, _('_Import'),
+            # ('Import', Gtk.STOCK_ADD, _('_Import'),
             #    None, _('Open the import assistant'), self.on_import_menu_item_activate),
             # Translators: Verb
-            ('Export', gtk.STOCK_CONVERT, _('Export'),
+            ('Export', Gtk.STOCK_CONVERT, _('Export'),
                 '<Ctrl>e', _('Open the export assistant'), self.on_export_menu_item_activate),
             # Translators: Verb
-            ('Backup', gtk.STOCK_HARDDISK, _('_Backup'),
+            ('Backup', Gtk.STOCK_HARDDISK, _('_Backup'),
                 None, _('Save all the data in a zip archive'), self.on_backup_activate),
             ('Statistics', None, _('S_tatistics'),
                 None, _('Show some statistics about the journal'), self.on_statistics_menu_item_activate),
-            ('Quit', gtk.STOCK_QUIT, None,
+            ('Quit', Gtk.STOCK_QUIT, None,
                 None, _('Shutdown RedNotebook. It will not be sent to the tray.'),
                 self.main_window.on_quit_activate),
 
-            ('Edit', None, _('_Edit'), None, None, self.on_edit_menu_activate),
-            ('Undo', gtk.STOCK_UNDO, None,
+            ('Edit', None, _('_Edit')),
+            ('Undo', Gtk.STOCK_UNDO, None,
                 '<Ctrl>z', _('Undo text or tag edits'), self.on_undo),
-            ('Redo', gtk.STOCK_REDO, None,
+            ('Redo', Gtk.STOCK_REDO, None,
                 '<Ctrl>y', _('Redo text or tag edits'), self.on_redo),
-            ('Cut', gtk.STOCK_CUT, None,
+            ('Cut', Gtk.STOCK_CUT, None,
                 '', None, self.on_cut_menu_item_activate),
-            ('Copy', gtk.STOCK_COPY, None,
+            ('Copy', Gtk.STOCK_COPY, None,
                 '', None, self.on_copy_menu_item_activate),
-            ('Paste', gtk.STOCK_PASTE, None,
+            ('Paste', Gtk.STOCK_PASTE, None,
                 '', None, self.on_paste_menu_item_activate),
-            ('Fullscreen', gtk.STOCK_FULLSCREEN, None,
+            ('Fullscreen', Gtk.STOCK_FULLSCREEN, None,
                 'F11', None, self.on_fullscreen_menuitem_activate),
-            ('Find', gtk.STOCK_FIND, None,
+            ('Find', Gtk.STOCK_FIND, None,
                 None, None, self.on_find_menuitem_activate),
         ])
         actiongroup.add_toggle_actions([
-            ('CheckSpelling', gtk.STOCK_SPELL_CHECK, None,
+            ('CheckSpelling', Gtk.STOCK_SPELL_CHECK, None,
                 'F7', _('Underline misspelled words'), self.on_checkspelling_menuitem_toggled),
         ])
         actiongroup.add_actions([
-            ('Options', gtk.STOCK_PREFERENCES, None,
+            ('Options', Gtk.STOCK_PREFERENCES, None,
                 '<Ctrl><Alt>p', None, self.on_options_menuitem_activate),
             ('HelpMenu', None, _('_Help')),
-            ('Help', gtk.STOCK_HELP, _('Contents'),
+            ('Help', Gtk.STOCK_HELP, _('Contents'),
                 '<Ctrl>h', _('Open the RedNotebook documentation'), self.on_help_menu_item_activate),
             ('OnlineHelp', None, _('Get Help Online'),
                 None, _('Browse answered questions or ask a new one'), self.on_online_help),
@@ -151,7 +152,7 @@ class MainMenuBar(object):
             ('ReportBug', None, _('Report a Problem'),
                 None, _('Fill out a short form about the problem'),
                 self.on_report_bug),
-            ('Info', gtk.STOCK_ABOUT, None,
+            ('Info', Gtk.STOCK_ABOUT, None,
                 None, None, self.on_info_activate),
         ])
         return actiongroup
@@ -215,12 +216,6 @@ class MainMenuBar(object):
         self.select_journal('saveas', _('Select an empty folder for the new location of your journal'),
                             _('The directory name will be the new title of the journal'))
 
-    def on_edit_menu_activate(self, widget):
-        """Only set the menu items sensitive if the actions can be performed."""
-        edit_mode = not self.main_window.preview_mode
-        for action in ['Cut', 'Paste']:
-            self.main_window.uimanager.get_widget('/MainMenuBar/Edit/%s' % action).set_sensitive(edit_mode)
-
     def on_undo(self, widget):
         editor = self.main_window.day_text_field
         editor.add_undo_point()
@@ -231,7 +226,7 @@ class MainMenuBar(object):
 
     def _get_active_editor_widget(self):
         if self.main_window.preview_mode:
-            return self.main_window.html_editor.webview
+            return self.main_window.html_editor
         else:
             return self.main_window.day_text_field.day_text_view
 
@@ -297,17 +292,18 @@ class MainMenuBar(object):
     def on_info_activate(self, widget):
         self.info_dialog = self.main_window.builder.get_object('about_dialog')
         self.info_dialog.set_transient_for(self.main_window.main_frame)
-        self.info_dialog.set_name('RedNotebook')
+        self.info_dialog.set_program_name(info.program_name)
         self.info_dialog.set_version(info.version)
-        self.info_dialog.set_copyright('Copyright (c) 2008-2012 Jendrik Seipp')
-        self.info_dialog.set_comments(_('A Desktop Journal'))
-        gtk.about_dialog_set_url_hook(lambda dialog, url: webbrowser.open(url))
+        self.info_dialog.set_copyright(info.copyright_)
+        self.info_dialog.set_comments(info.tagline)
         self.info_dialog.set_website(info.url)
         self.info_dialog.set_website_label(info.url)
+        self.info_dialog.set_artists(info.artists)
         self.info_dialog.set_authors(info.developers)
-        # TODO: Use svg again once it's fixed under Windows.
-        img_path = os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rn-192.png')
-        self.info_dialog.set_logo(gtk.gdk.pixbuf_new_from_file(img_path))
-        self.info_dialog.set_license(info.license_text)
+        self.info_dialog.add_credit_section(_('Contributors:'), [info.contributors_url])
+        self.info_dialog.set_translator_credits(_("translator-credits"))
+        img_path = os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rednotebook.svg')
+        self.info_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(img_path))
+        self.info_dialog.set_license_type(Gtk.License.GPL_2_0)
         self.info_dialog.run()
         self.info_dialog.hide()

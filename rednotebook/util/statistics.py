@@ -17,10 +17,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from __future__ import division
 
-
-class Statistics(object):
+class Statistics:
     def __init__(self, journal):
         self.journal = journal
 
@@ -92,13 +90,13 @@ class Statistics(object):
 
         day_store = dialog.day_list.get_model()
         day_store.clear()
-        for pair in self.day_pairs:
-            day_store.append(pair)
+        for key, value in self.day_pairs:
+            day_store.append((key, str(value)))
 
         overall_store = dialog.overall_list.get_model()
         overall_store.clear()
-        for pair in self.overall_pairs:
-            overall_store.append(pair)
+        for key, value in self.overall_pairs:
+            overall_store.append((key, str(value)))
 
         dialog.show_all()
         dialog.run()

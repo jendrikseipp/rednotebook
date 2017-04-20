@@ -17,7 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import gtk
+from gi.repository import Gtk
 
 from rednotebook.gui import customwidgets
 
@@ -45,57 +45,31 @@ MENUBAR_XML = '''\
 ''' % MENUITEMS_XML
 
 
-class FormatMenu(object):
+class FormatMenu:
     FORMAT_TO_MARKUP = {
-        'bold': u'**', 'italic': u'//', 'monospace': u'``',
-        'underline': u'__', 'strikethrough': u'--'}
+        'bold': '**', 'italic': '//', 'monospace': '``',
+        'underline': '__', 'strikethrough': '--'}
 
     def __init__(self, main_window):
         self.main_window = main_window
         self.setup()
 
     def setup(self):
-        '''
-        See http://www.pygtk.org/pygtk2tutorial/sec-UIManager.html for help
-        A popup menu cannot show accelerators (HIG).
-        '''
-
         uimanager = self.main_window.uimanager
 
         # Create an ActionGroup
-        actiongroup = gtk.ActionGroup('FormatActionGroup')
+        actiongroup = Gtk.ActionGroup('FormatActionGroup')
 
-        def tmpl(word):
-            return word + ' (Ctrl+%s)' % word[0]
-
-        def apply_format(action, format='bold'):
-            if type(action) == gtk.Action:
-                format = action.get_name().lower()
-
-            markup = self.FORMAT_TO_MARKUP[format]
-
-            focus = self.main_window.main_frame.get_focus()
-            iter = self.main_window.categories_tree_view.get_selected_node()
-
-            if isinstance(focus, gtk.Entry):
-                entry = focus
-                pos = entry.get_position()
-                # bounds can be an empty tuple
-                bounds = entry.get_selection_bounds() or (pos, pos)
-                selected_text = entry.get_chars(*bounds).decode('utf-8')
-                entry.delete_text(*bounds)
-                entry.insert_text('%s%s%s' % (markup, selected_text, markup), bounds[0])
-                # Set cursor after the end of the formatted text
-                entry.set_position(bounds[0] + len(markup) + len(selected_text))
-            elif focus == self.main_window.categories_tree_view.tree_view and iter:
-                text = self.main_window.categories_tree_view.get_iter_value(iter)
+        def apply_format(action):
+            format_ = action.get_name().lower()
+            iter_ = self.main_window.categories_tree_view.get_selected_node()
+            if iter_:
+                markup = self.FORMAT_TO_MARKUP[format_]
+                text = self.main_window.categories_tree_view.get_iter_value(iter_)
                 text = '%s%s%s' % (markup, text, markup)
-                self.main_window.categories_tree_view.set_iter_value(iter, text)
-            elif focus == self.main_window.day_text_field.day_text_view:
-                self.main_window.day_text_field.apply_format(format)
+                self.main_window.categories_tree_view.set_iter_value(iter_, text)
             else:
-                self.main_window.journal.show_message(
-                    _('No text or tag has been selected.'), error=True)
+                self.main_window.day_text_field.apply_format(format_)
 
         def shortcut(char):
             # Translators: The Control (Ctrl) key
@@ -103,17 +77,17 @@ class FormatMenu(object):
 
         # Create actions
         actions = [
-            ('Bold', gtk.STOCK_BOLD, _('Bold') + shortcut('B'),
+            ('Bold', Gtk.STOCK_BOLD, _('Bold') + shortcut('B'),
              '<Control>B', None, apply_format),
-            ('Italic', gtk.STOCK_ITALIC, _('Italic') + shortcut('I'),
+            ('Italic', Gtk.STOCK_ITALIC, _('Italic') + shortcut('I'),
              '<Control>I', None, apply_format),
             ('Monospace', None, _('Monospace') + shortcut('M'),
              '<Control>M', None, apply_format),
-            ('Underline', gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'),
+            ('Underline', Gtk.STOCK_UNDERLINE, _('Underline') + shortcut('U'),
              '<Control>U', None, apply_format),
-            ('Strikethrough', gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
+            ('Strikethrough', Gtk.STOCK_STRIKETHROUGH, _('Strikethrough') + shortcut('K'),
              '<Control>K', None, apply_format),
-            ('Clear', gtk.STOCK_CLEAR, _('Clear format') + shortcut('R'),
+            ('Clear', Gtk.STOCK_CLEAR, _('Clear format') + shortcut('R'),
              '<Control>R', None, self.on_clear_format),
             # Translators: Noun
             ('FormatMenuBar', None, _('_Format')),
@@ -130,7 +104,7 @@ class FormatMenu(object):
         # Create a Menu
         menu = uimanager.get_widget('/FormatMenu')
 
-        self.main_window.format_button = customwidgets.ToolbarMenuButton(gtk.STOCK_BOLD, menu)
+        self.main_window.format_button = customwidgets.ToolbarMenuButton(Gtk.STOCK_BOLD, menu)
         # Translators: Noun
         self.main_window.format_button.set_label(_('Format'))
         tip = _('Format the selected text or tag')
@@ -141,6 +115,6 @@ class FormatMenu(object):
     def on_clear_format(self, action):
         editor = self.main_window.day_text_field
         sel_text = editor.get_selected_text()
-        for markup in self.FORMAT_TO_MARKUP.values() + ['=== ', ' ===']:
+        for markup in list(self.FORMAT_TO_MARKUP.values()) + ['=== ', ' ===']:
             sel_text = sel_text.replace(markup, '')
         editor.replace_selection(sel_text)

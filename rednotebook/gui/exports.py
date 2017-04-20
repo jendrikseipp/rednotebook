@@ -21,8 +21,8 @@ import datetime
 import logging
 import os
 
-import gobject
-import gtk
+from gi.repository import GObject
+from gi.repository import Gtk
 
 from rednotebook.util import filesystem
 from rednotebook.util import markup
@@ -40,40 +40,41 @@ class DatePage(AssistantPage):
 
         self.journal = journal
 
-        self.all_days_button = gtk.RadioButton(label=_('Export all days'))
-        self.selected_text_button = gtk.RadioButton(
+        self.all_days_button = Gtk.RadioButton(label=_('Export all days'))
+        self.selected_text_button = Gtk.RadioButton(
             group=self.all_days_button)
-        self.one_day_button = gtk.RadioButton(
+        self.one_day_button = Gtk.RadioButton(
             label=_('Export currently visible day'),
             group=self.all_days_button)
-        self.sel_days_button = gtk.RadioButton(
+        self.sel_days_button = Gtk.RadioButton(
             label=_('Export days in the selected time range'),
             group=self.all_days_button)
 
-        self.pack_start(self.all_days_button, False)
-        self.pack_start(self.one_day_button, False)
-        self.pack_start(self.selected_text_button, False)
-        self.pack_start(self.sel_days_button, False)
+        self.pack_start(self.all_days_button, False, False, 0)
+        self.pack_start(self.one_day_button, False, False, 0)
+        self.pack_start(self.selected_text_button, False, False, 0)
+        self.pack_start(self.sel_days_button, False, False, 0)
 
-        label1 = gtk.Label()
+        label1 = Gtk.Label()
         label1.set_markup('<b>' + _('From:') + '</b>')
-        label2 = gtk.Label()
+        label2 = Gtk.Label()
         label2.set_markup('<b>' + _('To:') + '</b>')
 
-        self.calendar1 = Calendar()
-        self.calendar2 = Calendar()
+        show_week_numbers = self.journal.config.read('weekNumbers')
+        self.calendar1 = Calendar(week_numbers=show_week_numbers)
+        self.calendar2 = Calendar(week_numbers=show_week_numbers)
 
-        vbox1 = gtk.VBox()
-        vbox2 = gtk.VBox()
-        vbox1.pack_start(label1, False)
-        vbox1.pack_start(self.calendar1)
-        vbox2.pack_start(label2, False)
-        vbox2.pack_start(self.calendar2)
+        vbox1 = Gtk.VBox()
+        vbox2 = Gtk.VBox()
+        vbox1.pack_start(label1, False, False, 0)
+        vbox1.pack_start(self.calendar1, True, True, 0)
+        vbox2.pack_start(label2, False, False, 0)
+        vbox2.pack_start(self.calendar2, True, True, 0)
 
-        hbox = gtk.HBox()
-        hbox.pack_start(vbox1)
-        hbox.pack_start(vbox2)
-        self.pack_start(hbox)
+        hbox = Gtk.HBox()
+        hbox.pack_start(vbox1, True, True, 0)
+        hbox.pack_start(vbox2, True, True, 0)
+        self.pack_start(hbox, True, True, 0)
 
         self.sel_days_button.connect('toggled', self._on_select_days_toggled)
 
@@ -134,63 +135,63 @@ class ContentsPage(AssistantPage):
         self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
         self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
 
-        self.text_and_tags_button = gtk.RadioButton(label=_('Export text and tags'))
-        self.text_only_button = gtk.RadioButton(label=_('Export text only'),
+        self.text_and_tags_button = Gtk.RadioButton(label=_('Export text and tags'))
+        self.text_only_button = Gtk.RadioButton(label=_('Export text only'),
                                                 group=self.text_and_tags_button)
-        self.tags_only_button = gtk.RadioButton(label=_('Export tags only'),
+        self.tags_only_button = Gtk.RadioButton(label=_('Export tags only'),
                                                 group=self.text_and_tags_button)
-        self.filter_tags_button = gtk.CheckButton(label=_('Filter days by tags'))
+        self.filter_tags_button = Gtk.CheckButton(label=_('Filter days by tags'))
 
-        self.pack_start(self.date_format, False)
-        self.pack_start(self.text_and_tags_button, False)
-        self.pack_start(self.text_only_button, False)
-        self.pack_start(self.tags_only_button, False)
-        self.pack_start(gtk.HSeparator(), False)
-        self.pack_start(self.filter_tags_button, False)
+        self.pack_start(self.date_format, False, False, 0)
+        self.pack_start(self.text_and_tags_button, False, False, 0)
+        self.pack_start(self.text_only_button, False, False, 0)
+        self.pack_start(self.tags_only_button, False, False, 0)
+        self.pack_start(Gtk.HSeparator(), False, False, 0)
+        self.pack_start(self.filter_tags_button, False, False, 0)
 
         self.available_categories = customwidgets.CustomListView([(_('Available tags'), str)])
         self.selected_categories = customwidgets.CustomListView([(_('Selected tags'), str)])
 
-        left_scroll = gtk.ScrolledWindow()
+        left_scroll = Gtk.ScrolledWindow()
         left_scroll.add(self.available_categories)
 
-        right_scroll = gtk.ScrolledWindow()
+        right_scroll = Gtk.ScrolledWindow()
         right_scroll.add(self.selected_categories)
 
-        self.select_button = gtk.Button(_('Select') + ' >>')
-        self.deselect_button = gtk.Button('<< ' + _('Deselect'))
+        self.select_button = Gtk.Button(_('Select') + ' >>')
+        self.deselect_button = Gtk.Button('<< ' + _('Deselect'))
 
         self.select_button.connect('clicked', self.on_select_category)
         self.deselect_button.connect('clicked', self.on_deselect_category)
 
-        centered_vbox = gtk.VBox()
-        centered_vbox.pack_start(self.select_button, True, False)
-        centered_vbox.pack_start(self.deselect_button, True, False)
+        centered_vbox = Gtk.VBox()
+        centered_vbox.pack_start(self.select_button, True, False, 0)
+        centered_vbox.pack_start(self.deselect_button, True, False, 0)
 
-        vbox = gtk.VBox()
-        vbox.pack_start(centered_vbox, True, False)
+        vbox = Gtk.VBox()
+        vbox.pack_start(centered_vbox, True, False, 0)
 
-        hbox = gtk.HBox()
-        hbox.pack_start(left_scroll)
-        hbox.pack_start(vbox, False)
-        hbox.pack_start(right_scroll)
-        self.pack_start(hbox)
+        hbox = Gtk.HBox()
+        hbox.pack_start(left_scroll, True, True, 0)
+        hbox.pack_start(vbox, False, False, 0)
+        hbox.pack_start(right_scroll, True, True, 0)
+        self.pack_start(hbox, True, True, 0)
 
-        self.error_text = gtk.Label('')
+        self.error_text = Gtk.Label(label='')
         self.error_text.set_alignment(0.0, 0.5)
 
-        self.pack_end(self.error_text, False, False)
+        self.pack_end(self.error_text, False, False, 0)
 
         self.text_and_tags_button.set_active(True)
         self.filter_tags_button.connect('toggled', self.check_selection)
 
     def refresh_categories_list(self):
-        model_available = gtk.ListStore(gobject.TYPE_STRING)
+        model_available = Gtk.ListStore(GObject.TYPE_STRING)
         for category in self.journal.categories:
             model_available.append([category])
         self.available_categories.set_model(model_available)
 
-        model_selected = gtk.ListStore(gobject.TYPE_STRING)
+        model_selected = Gtk.ListStore(GObject.TYPE_STRING)
         self.selected_categories.set_model(model_selected)
 
     def on_select_category(self, widget):
@@ -247,7 +248,7 @@ class ContentsPage(AssistantPage):
             model_selected = self.selected_categories.get_model()
 
             for row in model_selected:
-                selected_categories.append(row[0].decode('utf-8'))
+                selected_categories.append(row[0])
 
             return selected_categories
 
@@ -281,11 +282,11 @@ class SummaryPage(AssistantPage):
         self.clear()
 
     def add_setting(self, setting, value):
-        label = gtk.Label()
+        label = Gtk.Label()
         label.set_markup('<b>%s:</b> %s' % (setting, value))
         label.set_alignment(0.0, 0.5)
         label.show()
-        self.pack_start(label, False)
+        self.pack_start(label, False, False, 0)
         self.settings.append(label)
 
     def clear(self):
@@ -338,7 +339,7 @@ class ExportAssistant(Assistant):
         self.page5 = SummaryPage()
         self.append_page(self.page5)
         self.set_page_title(self.page5, _('Summary') + ' (5/5)')
-        self.set_page_type(self.page5, gtk.ASSISTANT_PAGE_CONFIRM)
+        self.set_page_type(self.page5, Gtk.AssistantPageType.CONFIRM)
         self.set_page_complete(self.page5, True)
 
         self.exporter = None
@@ -470,7 +471,7 @@ class ExportAssistant(Assistant):
         self.journal.show_message(_('Content exported to %s') % self.path)
 
 
-class Exporter(object):
+class Exporter:
     NAME = 'Which format do we use?'
     # Short description of how we export
     DESCRIPTION = ''
@@ -546,14 +547,9 @@ class PdfExporter(Exporter):
         else:
             return '(' + _('requires pywebkitgtk') + ')'
 
-    @classmethod
-    def is_available(cls):
-        return browser.can_print_pdf()
-
 
 def get_exporters():
     exporters = [PlainTextExporter, HtmlExporter, LatexExporter, PdfExporter]
 
-    # Instantiate importers
-    exporters = map(lambda exporter: exporter(), exporters)
-    return exporters
+    # Instantiate exporters
+    return [exporter() for exporter in exporters]

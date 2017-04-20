@@ -20,21 +20,21 @@
 from collections import defaultdict
 
 
-class Action(object):
+class Action:
     def __init__(self, undo_function, redo_function):
         self.undo_function = undo_function
         self.redo_function = redo_function
 
 
-class UndoRedoManager(object):
+class UndoRedoManager:
     SIZE = 100
     BUFFER = 20
 
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.undo_action = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Undo').get_action()
-        self.redo_action = self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Redo').get_action()
+        self.undo_action = self.main_window.uimanager.get_action('/MainMenuBar/Edit/Undo')
+        self.redo_action = self.main_window.uimanager.get_action('/MainMenuBar/Edit/Redo')
 
         self.undo_stacks = defaultdict(list)
         self.redo_stacks = defaultdict(list)
