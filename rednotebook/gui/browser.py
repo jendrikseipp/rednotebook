@@ -49,33 +49,37 @@ class Browser(WebKit2.WebView):
 
 
 class HtmlPrinter:
+    """
+    Print HTML document to PDF.
+    """
     def __init__(self):
         self._webview = Browser()
+        self._webview.get_settings().set_enable_write_console_messages_to_stdout(True)
+        self._webview.connect('print', self._on_print)
         self._webview.connect('load-failed', self._on_load_failed)
-        self._webview.connect('notify::title', self._on_title_changed)
         self._webview.connect('load-changed', self._on_load_changed)
         self._paper_size = Gtk.PaperSize(Gtk.PAPER_NAME_A4)
         self.outfile = None
 
     def print_html(self, html, outfile):
+        # TODO: Pages with formulas are often not loaded at all.
         self.outfile = outfile
-        self.contains_mathjax = 'MathJax' in html
+        if 'MathJax' in html:
+            print_function = '<script>MathJax.Hub.Queue(function() {window.print();});</script>'
+        else:
+            print_function = '<script>window.onload = function() {window.print();};</script>'
+        html = html.replace(markup.PRINT_FUNCTION, print_function)
         logging.info('Loading HTML...')
         self._webview.load_html(html)
 
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-
-    def _print(self):
+    def _on_print(self, _view, print_op):
         """
-        Print HTML document to PDF.
-
-        To print the PDF without a dialog, we need to set the
+        To print the PDF without a dialog, we would need to set the
         "Print to File" printer name. While we can set the printer by
         localized name, this obviously only works if the two
         translations match, which is brittle. If they don't match,
         calling `print_op.print_()` exits without an error, but does
-        nothing. We therefore, set the localized printer name as a hint,
+        nothing. We therefore set the localized printer name as a hint,
         but don't depend on it. Instead, we display the print dialog and
         let the user make adjustments.
 
@@ -91,32 +95,17 @@ class HtmlPrinter:
             filesystem.get_local_url(os.path.abspath(self.outfile)))
         print_settings.set(Gtk.PRINT_SETTINGS_OUTPUT_FILE_FORMAT, 'pdf')
 
-        print_op = WebKit2.PrintOperation.new(self._webview)
         print_op.set_page_setup(Gtk.PageSetup())
         print_op.set_print_settings(print_settings)
         print_op.connect('finished', self._on_end_print)
 
         logging.info('Exporting PDF...')
-        try:
-            print_op.run_dialog(None)
-            while Gtk.events_pending():
-                Gtk.main_iteration()
-        except GObject.GError as e:
-            logging.error(e.message)
 
-    def _on_title_changed(self, view, _gparamstring):
-        title = view.get_title()
-        logging.info('Title changed: {}'.format(title))
-        # MathJax changes the title once it has typeset all formulas.
-        if title == markup.MATHJAX_FINISHED:
-            self._print()
+        # Show print dialog.
+        return False
 
     def _on_load_changed(self, _view, event):
-        if event == WebKit2.LoadEvent.FINISHED:
-            logging.info('Loading done')
-            # Formulas are typeset after this signal is emitted.
-            if not self.contains_mathjax:
-                self._print()
+        logging.info('Load changed: {}'.format(event))
 
     def _on_load_failed(self, _view, event, uri, error):
         logging.error("Error loading %s" % uri)

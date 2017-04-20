@@ -49,6 +49,7 @@ COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
 TABLE_HEAD_BG = '#aaa'
 
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
+PRINT_FUNCTION = '<script></script>'
 
 CSS = """\
 <style type="text/css">
@@ -107,28 +108,19 @@ MATHJAX_FINISHED = 'MathJax finished'
 MATHJAX_DELIMITERS = ['$$', '\\(', '\\)', r'\\[', '\\]']
 MATHJAX = """\
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  messageStyle: "none",
-  config: ["MMLorHTML.js"],
-  jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
-  tex2jax: {},
-  extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
-  TeX: {
-    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
-  }
-  });
+  MathJax.Hub.Config({{
+    messageStyle: "none",
+    config: ["MMLorHTML.js"],
+    jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
+    tex2jax: {{}},
+    extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
+    TeX: {{
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+    }}
+  }});
 </script>
-<script type="text/javascript"
-  src="%s">
-</script>
-<script>
-  MathJax.Hub.Queue(function () {
-    var title = document.title;
-    document.title = "%s";
-    document.title = title;
-  });
-</script>
-""" % (MATHJAX_FILE, MATHJAX_FINISHED)
+<script type="text/javascript" src="{MATHJAX_FILE}"></script>
+""".format(**locals())
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -289,6 +281,8 @@ def _get_config(target, options):
     # MathJax
     if options.pop('add_mathjax'):
         config['postproc'].append([r'</body>', MATHJAX + '</body>'])
+
+    config['postproc'].append([r'</body>', PRINT_FUNCTION + '</body>'])
 
     # Custom css
     fonts = options.pop('font', 'sans-serif')
