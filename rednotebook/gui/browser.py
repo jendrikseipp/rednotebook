@@ -21,7 +21,6 @@ import logging
 import os.path
 import sys
 
-from gi.repository import GObject
 from gi.repository import Gtk
 
 from rednotebook.util import filesystem
