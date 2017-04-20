@@ -61,7 +61,14 @@ class HtmlPrinter:
         self.outfile = None
 
     def print_html(self, html, outfile):
-        # TODO: Pages with formulas are often not loaded at all.
+        """
+        TODO: Pages with formulas are often not loaded at all. The same
+        HTML works in Epiphany and Chrome so it's hard to say where the
+        error is coming from. We should revisit this when formulas
+        become officially supported. One solution is to recommend
+        exporting to HTML and printing from there.
+
+        """
         self.outfile = outfile
         if 'MathJax' in html:
             print_function = '<script>MathJax.Hub.Queue(function() {window.print();});</script>'
