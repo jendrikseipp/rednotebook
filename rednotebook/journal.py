@@ -144,15 +144,12 @@ logging.info('Language code: %s' % filesystem.LANGUAGE)
 try:
     from gi.repository import Gtk
     from gi.repository import GObject
-    # Some notes on threads_init:
-    # only Gdk.threads_init(): pdf export works, but gui hangs afterwards
-    # only GObject.threads_init(): pdf export works, gui works
-    # both: pdf export works, gui hangs afterwards
-    GObject.threads_init()  # only initializes threading in the glib/gobject module
 except (ImportError, AssertionError) as e:
     logging.error(e)
     logging.error('GTK+ not found. Please install it (gir1.2-gtk-3.0).')
     sys.exit(1)
+
+GObject.threads_init()
 
 
 from rednotebook.util import dates
