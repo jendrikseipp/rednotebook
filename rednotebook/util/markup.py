@@ -98,7 +98,7 @@ CSS = """\
 
 # MathJax
 FORMULAS_SUPPORTED = True
-MATHJAX_FILE = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js'
+MATHJAX_FILE = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'
 
 # Explicitly setting inlineMath: [ ['\\(','\\)'] ] doesn't work.
 # Using defaults:
