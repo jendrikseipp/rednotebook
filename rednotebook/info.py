@@ -431,6 +431,13 @@ http://kile.sourceforge.net]) and do the conversion with it. That way
 you can see the errors right away and get rid of them by editing the
 file.
 
+If you want to use the Latex index you need to run
+
+``makeindex your-rednotebook-export.idx``
+
+after you first built the PDF file. After this you need to build the PDF
+again.
+
 === Windows ===
 
 You can open an exported Latex file with Texniccenter and convert it to
