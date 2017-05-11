@@ -194,12 +194,16 @@ def _get_config(target, options):
     # [ [this, that], [foo, bar], [patt, replace] ]
     config['postproc'] = []
     config['preproc'] = []
+    config['style'] = []
 
     # Allow line breaks, r'\\\\' are 2 \ for regexes
     config['preproc'].append([REGEX_LINEBREAK, 'LINEBREAK'])
 
     # Highlight hashtags.
-    config['preproc'].append([HASHTAG.pattern, r'\1{\2\3|color:red}'])
+    if target == 'tex':
+        config['preproc'].append([HASHTAG.pattern, r'\1{\2\3BEGININDEX\3ENDINDEX|color:red}'])
+    else:
+        config['preproc'].append([HASHTAG.pattern, r'\1{\2\3|color:red}'])
 
     # Escape color markup.
     config['preproc'].append([r'\{(.*?)\|color:(.+?)\}', ESCAPE_COLOR])
@@ -256,6 +260,15 @@ def _get_config(target, options):
         config['postproc'].append([r'BEGINEQUATION(.+)ENDEQUATION', r'$$\1$$'])
         config['preproc'].append([r'\\\(\s*(.+?)\s*\\\)', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
+
+        # Fix utf8 quotations - „, “ and ” cause problems compiling the latex document
+        config['postproc'].extend([[u'„', '"'], [u'”', '"'], [u'“', '"']])
+
+        # Enable index.
+        config['style'].append('makeidx')
+        config['postproc'].append([r'BEGININDEX(.+?)ENDINDEX', r'\\index{\1}'])
+        config['postproc'].append(['begin{document}', 'makeindex\n\\\\begin{document}'])
+        config['postproc'].append(['end{document}', 'printindex\n\n\\\\end{document}'])
 
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
