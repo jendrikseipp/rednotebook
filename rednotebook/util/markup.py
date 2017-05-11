@@ -231,7 +231,7 @@ def _get_config(target, options):
 
         # Latex only allows whitespace and underscores in filenames if
         # the filename is surrounded by "...". This is in turn only possible
-        # if the extension is omitted
+        # if the extension is omitted.
         config['preproc'].append([r'\[""', r'["""'])
         config['preproc'].append([r'""\.', r'""".'])
 
@@ -261,7 +261,7 @@ def _get_config(target, options):
         config['preproc'].append([r'\\\(\s*(.+?)\s*\\\)', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
-        # Fix utf8 quotations - „, “ and ” cause problems compiling the latex document
+        # Fix utf8 quotations - „, “ and ” cause problems compiling the latex document.
         config['postproc'].extend([[u'„', '"'], [u'”', '"'], [u'“', '"']])
 
         # Enable index.

@@ -420,23 +420,21 @@ texlive-latex-base and texlive-latex-recommended. Maybe you also need
 texlive-latex-extra. Those contain the pdflatex program and are
 available in the repositories of most Linux distros.
 
-You can convert the .tex file by typing the following text in a command
-line:
+You can convert the .tex file to PDF by using the following commands:
 
-``pdflatex your-rednotebook-export.tex``
+```
+pdflatex your-rednotebook-export.tex
+makeindex your-rednotebook-export
+pdflatex your-rednotebook-export.tex
+```
+
+If you omit the last two commands, your PDF won't have an index of tags.
 
 If you run into any problems during the conversion, the easiest way to
 solve them is to install a latex editor (e.g. [Kile
 http://kile.sourceforge.net]) and do the conversion with it. That way
 you can see the errors right away and get rid of them by editing the
 file.
-
-If you want to use the Latex index you need to run
-
-``makeindex your-rednotebook-export.idx``
-
-after you first built the PDF file. After this you need to build the PDF
-again.
 
 === Windows ===
 
