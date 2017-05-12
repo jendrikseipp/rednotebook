@@ -357,33 +357,16 @@ class TemplateBar(Gtk.HBox):
         self.show_all()
 
 
-class ToolbarMenuButton(Gtk.ToolItem):
+class ToolbarMenuButton(Gtk.ToolButton):
     def __init__(self, stock_id, menu):
-        Gtk.ToolItem.__init__(self)
-
-        image = Gtk.Image.new_from_icon_name(stock_id, Gtk.IconSize.LARGE_TOOLBAR)
-
-        self._label = Gtk.Label()
-
-        box = Gtk.VBox()
-        box.set_spacing(10)
-        box.pack_start(image, False, False, 0)
-        box.pack_start(self._label, False, False, 0)
-        box.show_all()
-
-        self._menu_button = Gtk.MenuButton()
-        self._menu_button.set_image(box)
-        self._menu_button.set_popup(menu)
-        self._menu_button.set_relief(Gtk.ReliefStyle.NONE)
-
-        self.add(self._menu_button)
+        Gtk.ToolButton.__init__(self)
+        self.set_stock_id(stock_id)
+        self._menu = menu
+        self.connect('clicked', self._on_clicked)
         self.show_all()
 
-    def set_label(self, label):
-        self._label.set_text(label)
-
-    def connect(self, *args):
-        return self._menu_button.connect(*args)
+    def _on_clicked(self, button):
+        self._menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
 
     def set_menu(self, menu):
-        self._menu_button.set_popup(menu)
+        self._menu = menu
