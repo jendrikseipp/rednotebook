@@ -361,13 +361,13 @@ class ToolbarMenuButton(Gtk.ToolItem):
     def __init__(self, stock_id, menu):
         Gtk.ToolItem.__init__(self)
 
-        button = Gtk.Button.new_from_icon_name(stock_id, Gtk.IconSize.LARGE_TOOLBAR)
-        button.set_relief(Gtk.ReliefStyle.NONE)
+        image = Gtk.Image.new_from_icon_name(stock_id, Gtk.IconSize.LARGE_TOOLBAR)
 
         self._label = Gtk.Label()
 
         box = Gtk.VBox()
-        box.pack_start(button, False, False, 0)
+        box.set_spacing(10)
+        box.pack_start(image, False, False, 0)
         box.pack_start(self._label, False, False, 0)
         box.show_all()
 
