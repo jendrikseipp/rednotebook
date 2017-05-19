@@ -7,6 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Port to Python 3 and GTK 3.
 X Add index of tags to LaTeX export (#324, thanks Alex Schickedanz).
 X Use new CDN link for MathJax.
 O Place subtags behind hashtags inside the text itself:
