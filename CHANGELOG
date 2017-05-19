@@ -1,3 +1,8 @@
+== 2.0 (2017-05-19) ==
+* Port to Python 3 and GTK 3.
+* Add index of tags to LaTeX export (#324, thanks Alex Schickedanz).
+* Use new CDN link for MathJax.
+
 == 1.15 (2017-02-11) ==
 * Bundle pygtkspellcheck 4.0.5 since earlier versions contain a bug (lp:1615629).
 * Fix toggling autostart (lp:1628497).
