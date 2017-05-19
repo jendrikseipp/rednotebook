@@ -1,3 +1,12 @@
+rednotebook (2.0-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Port to Python 3 and GTK 3.
+  * Add index of tags to LaTeX export (#324, thanks Alex Schickedanz).
+  * Use new CDN link for MathJax.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 19 May 2017 22:42:54 +0200
+
 rednotebook (1.15-1) UNRELEASED; urgency=low
 
   * New upstream release
