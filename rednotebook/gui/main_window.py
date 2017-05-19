@@ -382,10 +382,13 @@ class MainWindow:
         self.change_mode(preview=True)
 
     def on_browser_clicked(self, webview, event):
-        # Double-click -> Change to edit mode.
         if event.type == Gdk.EventType._2BUTTON_PRESS:
+            # Double-click -> Change to edit mode.
             self.change_mode(preview=False)
             # Stop processing this event.
+            return True
+        elif event.button == 3:
+            # Right-click -> don't show context menu.
             return True
 
     # ----------------------------------------------------------- MODE-SWITCHING
