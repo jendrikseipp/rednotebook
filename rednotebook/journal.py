@@ -35,8 +35,9 @@ logging.basicConfig(
 
 try:
     import gi
-except ImportError:
-    logging.error('pygobject not found. Please install it (python3-gi).')
+except ImportError as err:
+    logging.error(
+        'pygobject could not be imported: "{}". Please install it (python3-gi).'.format(err))
     sys.exit(1)
 
 gi.require_version("Gtk", "3.0")
