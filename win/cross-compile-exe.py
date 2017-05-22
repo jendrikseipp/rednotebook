@@ -39,7 +39,7 @@ WINE_BUILD = os.path.join(DRIVE_C, 'build')
 WINE_DIST = os.path.join(DRIVE_C, 'dist')
 LOCALE_DIR = os.path.join(WINE_DIST, 'share', 'locale')
 WINE_RN_EXE = os.path.join(WINE_DIST, 'rednotebook.exe')
-WINE_PYTHON = os.path.join(DRIVE_C, 'Python27', 'python.exe')
+WINE_PYTHON = os.path.join(DRIVE_C, 'Python34', 'python.exe')
 
 utils.confirm_overwrite(DIST_DIR)
 os.environ['WINEPREFIX'] = DIST_DIR
@@ -53,9 +53,12 @@ run(['git', 'archive', 'HEAD', '-o', archive], cwd=BASE_DIR)
 utils.ensure_path(WINE_RN_DIR)
 run(['tar', '-xf', archive], cwd=WINE_RN_DIR)
 
-run(['wine', WINE_PYTHON, '-m', 'PyInstaller.main', '--workpath', WINE_BUILD,
+os.mkdir(os.path.join(DRIVE_C, 'Python34/share'))
+shutil.copytree(os.path.join(DRIVE_C, 'Python34/Lib/site-packages/gnome/share/gir-1.0/'), os.path.join(DRIVE_C, 'Python34/share/gir-1.0/'))
+
+run(['wine', WINE_PYTHON, '-m', 'PyInstaller', '--workpath', WINE_BUILD,
      '--distpath', DRIVE_C, SPEC])  # will be built at ...DRIVE_C/dist
-run(['./build-translations.py', LOCALE_DIR], cwd=DIR)
+run(['python3', 'build-translations.py', LOCALE_DIR], cwd=DIR)
 
 if args.test:
     run(['wine', WINE_RN_EXE])

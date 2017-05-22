@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
+
 import argparse
 import os
 import sys
@@ -18,6 +20,6 @@ import setup
 
 po_dir = os.path.join(basedir, 'po')
 locale_dir = os.path.abspath(args.locale_dir)
-print 'Building translations'
-print po_dir, '-->', locale_dir
+print('Building translations')
+print(po_dir, '-->', locale_dir)
 setup.build_translation_files(po_dir, locale_dir)

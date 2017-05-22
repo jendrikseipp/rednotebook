@@ -1,7 +1,18 @@
 #! /usr/bin/env python
 
 HELP = """\
-PyGTK All-In-One Installer: Install "PyRsvg" and "Language Tools".
+Installation instructions:
+
+Tested with wine stable 1.6.
+
+For later wine versions installing the suggested gecko and mono packages
+is optional. When asked to install them, you can click "Cancel".
+
+PyGTK All-In-One Installer: Select the following packages on the
+respective pages:
+  1) GSpell, Webkit2GTK (not WebkitGTK), GTK+, Pango
+  2) GtkSpell
+  3) GIR
 
 InnoSetup: Do *not* create a start menu folder and do *not* associate
 the .iss extension with InnoSetup. *Do* install the preprocessor.
@@ -34,35 +45,38 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 INSTALLERS_DIR = os.path.join(DIR, 'installers')
 REQUIREMENTS = os.path.join(DIR, 'requirements.txt')
 DRIVE_C = 'C:\\'
-SITE_PACKAGES = os.path.join(DRIVE_C, 'Python27', 'Lib', 'site-packages')
+PYTHON_DIR = 'Python34'
+SITE_PACKAGES = os.path.join(DRIVE_C, PYTHON_DIR, 'Lib', 'site-packages')
 SEVEN_ZIP = os.path.join(DRIVE_C, 'Program Files (x86)', '7-Zip', '7z.exe')
 if IS_LINUX:
     BUILD_DIR = args.build_dir
     utils.confirm_overwrite(BUILD_DIR)
     os.environ['WINEPREFIX'] = BUILD_DIR
     DRIVE_C_REAL = os.path.join(BUILD_DIR, 'drive_c')
-    PYTHON = ['wine', os.path.join(DRIVE_C_REAL, 'Python27', 'python.exe')]
+    PYTHON = ['wine', os.path.join(DRIVE_C_REAL, PYTHON_DIR, 'python.exe')]
 else:
     DRIVE_C_REAL = DRIVE_C
-    PYTHON = [os.path.join(DRIVE_C,'Python27', 'python.exe')]
+    PYTHON = [os.path.join(DRIVE_C, PYTHON_DIR, 'python.exe')]
 
 
 INSTALLERS = [
-    ('http://downloads.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.exe?r=&ts=1384687929&use_mirror=netcologne',
-     '7z920.exe'),
-    ('https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi',
-     'python-2.7.12.msi'),
-    ('http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/pygtk-all-in-one-2.24.2.win32-py2.7.msi',
-     'pygtk-all-in-one-2.24.2.win32-py2.7.msi'),
+    #('http://downloads.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.exe?r=&ts=1384687929&use_mirror=netcologne',
+    # '7z920.exe'),
+    # Python 3.5 and 3.6 not supported by PyGObject AIO package. Also,
+    # Python 3.5 needs wine-staging >= 2.8 and Python 3.6 fails for wine-staging 2.8.
+    ('https://www.python.org/ftp/python/3.4.4/python-3.4.4.msi',
+     'python-3.4.4.msi'),
+    ('https://downloads.sourceforge.net/project/pygobjectwin32/pygi-aio-3.18.2_rev12-setup_549872deadabb77a91efbc56c50fe15f969e5681.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpygobjectwin32%2Ffiles%2F&ts=1495353417&use_mirror=vorboss',
+     'pygi-aio-3.18.2_rev12-setup_549872deadabb77a91efbc56c50fe15f969e5681.exe'),
     ('http://files.jrsoftware.org/is/5/isetup-5.5.4-unicode.exe',
      'isetup-5.5.4-unicode.exe'),
 ]
 
 TARBALLS = [
-    ('https://dl.dropboxusercontent.com/u/4780737/gtkbin-1.7.3.zip',
-     'gtkbin-1.7.3.zip', DRIVE_C),
-    ('https://dl.dropboxusercontent.com/u/4780737/pywebkitgtk.zip',
-     'pywebkitgtk.zip', SITE_PACKAGES),
+    #('https://dl.dropboxusercontent.com/u/4780737/gtkbin-1.7.3.zip',
+    # 'gtkbin-1.7.3.zip', DRIVE_C),
+    #('https://dl.dropboxusercontent.com/u/4780737/pywebkitgtk.zip',
+    # 'pywebkitgtk.zip', SITE_PACKAGES),
 ]
 
 FILES = [
@@ -72,6 +86,9 @@ FILES = [
 ]
 
 print HELP
+
+# Python >= 3.5 set Windows Version to at least Windows 7.
+# run(['winecfg'])
 
 for url, filename in INSTALLERS:
     path = os.path.join(INSTALLERS_DIR, filename)
