@@ -19,6 +19,7 @@
 
 from collections import defaultdict
 import datetime
+import gettext
 import itertools
 import locale
 import logging
@@ -57,8 +58,6 @@ from rednotebook.util import filesystem
 
 # ---------------------- Enable i18n -------------------------------
 
-from rednotebook.external import elibintl
-
 # We need to translate 3 different types of strings:
 # * sourcecode strings
 # * gtkbuilder strings
@@ -69,17 +68,7 @@ LOCALE_PATH = filesystem.locale_dir
 # the name of the gettext domain.
 GETTEXT_DOMAIN = 'rednotebook'
 
-# Register _() as a global translation function and set up the translation
-try:
-    elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
-except locale.Error as err:
-    # unsupported locale setting
-    logging.error('Locale could not be set: "%s"' % err)
-    logging.error('Probably you have to install the appropriate language packs')
-    # Make the _() function available even if gettext is not working.
-    import builtins
-    if not hasattr(builtins, '_'):
-        builtins.__dict__['_'] = lambda s: s
+gettext.install(GETTEXT_DOMAIN, LOCALE_PATH)
 
 # ------------------- end Enable i18n -------------------------------
 
