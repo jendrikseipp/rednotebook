@@ -65,11 +65,11 @@ class Pattern:
         if isinstance(pattern_or_regex, str):
             # assemble re-flag
             # TODO: Is this needed?
-            flags += "ML"
+            flags += "M"
             flag = 0
 
             for char in flags:
-                assert char in 'MLSIUX'
+                assert char in 'MSIUX'
                 flag |= getattr(re, char)
 
             self._regexp = re.compile(pattern_or_regex, flag)

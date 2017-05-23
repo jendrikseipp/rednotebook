@@ -4367,7 +4367,7 @@ def compile_filters(filters, errmsg='Filter'):
         for i in range(len(filters)):
             patt,repl = filters[i]
             ## JS: Make filters Unicode-aware.
-            try: rgx = re.compile(patt, re.U)
+            try: rgx = re.compile(patt)
             except: Error("%s: '%s'"%(errmsg, patt))
             filters[i] = (rgx,repl)
     return filters
