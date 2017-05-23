@@ -1969,10 +1969,10 @@ def getRegexes():
     bank['linkmark'] = re.compile(
         r'\[(?P<label>%s|[^]]+) (?P<link>%s|%s|%s)\]'%(
             patt_img, retxt_url, patt_email, retxt_url_local),
-        re.L+re.I)
+        re.I)
 
     # Image
-    bank['img'] = re.compile(patt_img, re.L+re.I)
+    bank['img'] = re.compile(patt_img, re.I)
 
     # Special things
     bank['special'] = re.compile(r'^%!\s*')

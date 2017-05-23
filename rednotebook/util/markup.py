@@ -41,7 +41,7 @@ REGEX_PIC = re.compile(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (PIC_NAME, PIC_EXT)
 
 # named local link [my file.txt ""file:///home/user/my file.txt""]
 # named link in web [heise ""http://heise.de""]
-REGEX_NAMED_LINK = re.compile(r'(\[)(.*?)(\s"")(\S.*?\S)(""\])', flags=re.I | re.L)
+REGEX_NAMED_LINK = re.compile(r'(\[)(.*?)(\s"")(\S.*?\S)(""\])', flags=re.I)
 
 ESCAPE_COLOR = r'XBEGINCOLORX\1XSEPARATORX\2XENDCOLORX'
 COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
