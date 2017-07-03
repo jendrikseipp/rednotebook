@@ -3,6 +3,9 @@ import builtins
 import os.path
 import sys
 
+import gi
+gi.require_version('Gtk', '3.0')
+
 if not hasattr(builtins, '_'):
     builtins._ = lambda x: x
 
@@ -10,8 +13,6 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
 
 sys.path.insert(0, BASE_DIR)
-
-sys.stderr
 
 from rednotebook.backup import Archiver
 Archiver.check_last_backup_date
