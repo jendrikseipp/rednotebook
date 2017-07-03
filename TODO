@@ -78,7 +78,7 @@ O Make windows installer truly portable (leave no traces in registry)
   Probably it's better to distribute a zip archive for this.
 
 New format:
-O Use json instead of yaml (wait till after port to Python 3)?
+O Use json instead of yaml?
 O Use standard paths? (Win: C:\Docs & Settings\username\My Documents,
   Linux: ~/.local/share, ~/.config (http://live.gnome.org/Tomboy/Directories))
 
