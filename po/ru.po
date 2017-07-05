@@ -78,7 +78,7 @@ msgstr "Курсив"
 
 #: ../rednotebook/gui/format_menu.py:110
 msgid "Monospace"
-msgstr ""
+msgstr "Моноширинный"
 
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Underline"
@@ -90,7 +90,7 @@ msgstr "Зачёркнутый"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Clear format"
-msgstr ""
+msgstr "Очистить форматирование"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
