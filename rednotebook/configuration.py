@@ -34,7 +34,7 @@ class Config(dict):
         # mingliu and MS Mincho are required for displaying Asian fonts
         # in preview mode on Windows.
         'previewFont': 'Ubuntu, mingliu, MS Mincho, sans-serif',
-        'autoSwitchMode': 1,
+        'autoSwitchMode': 0,
         'closeToTray': 0,
         'checkForNewVersion': 0,
         'showTagsPane': 1,

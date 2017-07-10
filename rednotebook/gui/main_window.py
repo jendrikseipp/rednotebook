@@ -597,7 +597,7 @@ class MainWindow:
         self.day_text_field.show_day(day)
 
         # Only switch mode automatically if set in preferences.
-        if self.journal.config.get('autoSwitchMode', 1):
+        if self.journal.config.read('autoSwitchMode'):
             if day.has_text and not self.preview_mode:
                 self.change_mode(preview=True)
             elif not day.has_text and self.preview_mode:
