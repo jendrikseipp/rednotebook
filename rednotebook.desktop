@@ -1,9 +1,8 @@
 [Desktop Entry]
 Version=1.0
-#Encoding=UTF-­8 #Encoding causes problems
 Name=RedNotebook
 GenericName=Journal
-Comment=Daily journal with calendar, templates and keyword searching 
+Comment=Daily journal with calendar, templates and keyword searching
 Exec=rednotebook
 Icon=rednotebook
 Terminal=false
