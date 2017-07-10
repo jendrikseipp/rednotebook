@@ -282,7 +282,7 @@ class OptionsManager:
         def check_version_action(widget):
             utils.check_new_version(self.main_window.journal, info.version)
             # Apply changes from dialog to options window
-            check = bool(self.journal.config.get('checkForNewVersion'))
+            check = bool(self.journal.config.read('checkForNewVersion'))
             check_version_option.check_button.set_active(check)
 
         check_version_button = ActionButton(_('Check now'), check_version_action)
