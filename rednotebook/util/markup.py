@@ -36,7 +36,7 @@ REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
 
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 PIC_NAME = r'\S.*?\S|\S'
-PIC_EXT = r'(?:png|jpe?g|gif|eps|bmp)'
+PIC_EXT = r'(?:png|jpe?g|gif|eps|bmp|svg)'
 REGEX_PIC = re.compile(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (PIC_NAME, PIC_EXT), flags=re.I)
 
 # named local link [my file.txt ""file:///home/user/my file.txt""]
@@ -281,7 +281,7 @@ def _get_config(target, options):
 
     # Allow resizing images by changing
     # [filename.png?width] to [WIDTHwidth-filename.png]
-    img_ext = r'png|jpe?g|gif|eps|bmp'
+    img_ext = r'png|jpe?g|gif|eps|bmp|svg'
     img_name = r'\S.*\S|\S'
 
     # Apply this prepoc only after the latex image quotes have been added

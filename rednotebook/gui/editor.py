@@ -315,7 +315,7 @@ class Editor:
 
         def is_pic(uri):
             head, ext = os.path.splitext(uri)
-            return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp'.split()
+            return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp svg'.split()
 
         uris = selection.get_text().split()
         logging.debug('Text: {}'.format(selection.get_text()))
