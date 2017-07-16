@@ -540,12 +540,18 @@ class PdfExporter(Exporter):
     EXTENSION = 'pdf'
     FORMAT = 'pdf'
 
+    @classmethod
+    def is_available(cls):
+        return bool(browser.WebKit2)
+
     @property
     def DESCRIPTION(self):
         if self.is_available():
             return ''
+        elif filesystem.IS_WIN:
+            return _('(export to HTML, open in browser and print to PDF file)')
         else:
-            return '(' + _('requires pywebkitgtk') + ')'
+            return _('(requires WebKit2Gtk+ 4.0)')
 
 
 def get_exporters():

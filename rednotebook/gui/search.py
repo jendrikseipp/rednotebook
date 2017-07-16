@@ -73,10 +73,11 @@ class SearchComboBox(CustomComboBoxEntry):
 
 
 class SearchTreeView(CustomListView):
-    def __init__(self, main_window):
+    def __init__(self, main_window, always_show_results):
         CustomListView.__init__(self, [(_('Date'), str), (_('Text'), str)])
         self.main_window = main_window
         self.journal = self.main_window.journal
+        self.always_show_results = always_show_results
         self.tree_store = self.get_model()
 
         self.connect('cursor_changed', self.on_cursor_changed)
@@ -84,7 +85,7 @@ class SearchTreeView(CustomListView):
     def update_data(self, search_text, tags):
         self.tree_store.clear()
 
-        if not tags and not search_text:
+        if not self.always_show_results and not tags and not search_text:
             self.main_window.cloud.show()
             self.main_window.search_scroll.hide()
             return

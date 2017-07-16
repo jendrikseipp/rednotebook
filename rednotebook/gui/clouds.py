@@ -24,9 +24,8 @@ import re
 
 from gi.repository import Gtk
 from gi.repository import GObject
-from gi.repository import WebKit2
 
-from rednotebook.gui.browser import HtmlView
+from rednotebook.gui import browser
 from rednotebook import data
 
 
@@ -58,9 +57,9 @@ def get_regex(word):
         return re.compile('^$')
 
 
-class Cloud(HtmlView):
+class Cloud(browser.HtmlView):
     def __init__(self, journal):
-        HtmlView.__init__(self)
+        super().__init__()
         self.journal = journal
         self.update_lists()
 
@@ -205,7 +204,7 @@ class Cloud(HtmlView):
         """
         Called (among others) when user clicks on a cloud word.
         """
-        if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
+        if decision_type == browser.WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
             uri = decision.get_navigation_action().get_request().get_uri()
 
             search_text = self._get_search_text(uri)
@@ -225,7 +224,7 @@ class Cloud(HtmlView):
         if tag is not None:
             action = Gtk.Action.new('hide', _('Hide "%s" from clouds') % tag, None, None)
             action.connect('activate', self.on_ignore_menu_activate, tag)
-            ignore_menu_item = WebKit2.ContextMenuItem.new(action)
+            ignore_menu_item = browser.WebKit2.ContextMenuItem.new(action)
             menu.append(ignore_menu_item)
 
     def on_ignore_menu_activate(self, menu_item, word):

@@ -20,13 +20,13 @@
 import datetime
 import logging
 import os
+from unittest import mock
 
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 from gi.repository import GObject
 from gi.repository import Gtk
 from gi.repository import Pango
-from gi.repository import WebKit2
 
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
@@ -42,7 +42,6 @@ from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
 from rednotebook.gui import search
 from rednotebook.gui import editor
-from rednotebook.gui.clouds import Cloud
 from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
 
@@ -113,15 +112,29 @@ class MainWindow:
         self.forward_one_day_button = self.builder.get_object('forward_one_day_button')
 
         self.edit_pane = self.builder.get_object('edit_pane')
-
-        self.html_editor = Preview(self.journal)
-        self.html_editor.connect('button-press-event', self.on_browser_clicked)
-        self.html_editor.connect('decide-policy', self.on_browser_decide_policy)
-
         self.text_vbox = self.builder.get_object('text_vbox')
-        self.text_vbox.pack_start(self.html_editor, True, True, 0)
-        self.html_editor.hide()
-        self.html_editor.set_editable(False)
+
+        if browser.WebKit2:
+            class Preview(browser.HtmlView):
+                def __init__(self, journal):
+                    browser.HtmlView.__init__(self)
+                    self.journal = journal
+
+                def show_day(self, new_day):
+                    html = self.journal.convert(new_day.text, 'xhtml')
+                    self.load_html(html)
+
+            self.html_editor = Preview(self.journal)
+            self.html_editor.connect('button-press-event', self.on_browser_clicked)
+            self.html_editor.connect('decide-policy', self.on_browser_decide_policy)
+
+            self.text_vbox.pack_start(self.html_editor, True, True, 0)
+            self.html_editor.hide()
+            self.html_editor.set_editable(False)
+        else:
+            self.html_editor = mock.MagicMock()
+            self.builder.get_object('preview_button').hide()
+
         self.preview_mode = False
 
         # Let the edit_paned respect its childs size requests
@@ -394,9 +407,12 @@ class MainWindow:
     # ----------------------------------------------------------- MODE-SWITCHING
 
     def setup_search(self):
-        self.search_tree_view = search.SearchTreeView(self)
+        always_show_results = not browser.WebKit2
+        self.search_tree_view = search.SearchTreeView(self, always_show_results)
         self.search_tree_view.show()
         self.search_scroll = Gtk.ScrolledWindow()
+        if always_show_results:
+            self.search_scroll.show()
         self.search_scroll.add(self.search_tree_view)
         self.search_box = search.SearchComboBox(Gtk.ComboBox.new_with_entry(), self)
         self.search_box.combo_box.show()
@@ -405,8 +421,12 @@ class MainWindow:
         search_container.pack_start(self.search_scroll, True, True, 0)
 
     def setup_clouds(self):
-        self.cloud = Cloud(self.journal)
-        self.builder.get_object('search_container').pack_end(self.cloud, True, True, 0)
+        if browser.WebKit2:
+            from rednotebook.gui import clouds
+            self.cloud = clouds.Cloud(self.journal)
+            self.builder.get_object('search_container').pack_end(self.cloud, True, True, 0)
+        else:
+            self.cloud = mock.MagicMock()
 
     def on_main_frame_configure_event(self, widget, event):
         '''
@@ -452,7 +472,7 @@ class MainWindow:
         '''
         We want to load files and links externally.
         '''
-        if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
+        if decision_type == browser.WebKit2.PolicyDecisionType.NAVIGATION_ACTION:
             action = decision.get_navigation_action()
             if action.is_user_gesture():
                 uri = action.get_request().get_uri()
@@ -519,11 +539,6 @@ class MainWindow:
 
         # Remember window position
         config['mainFrameX'], config['mainFrameY'] = self.main_frame.get_position()
-
-        # Actually this is unnecessary as the list gets saved when it changes
-        # so we use it to sort the list ;)
-        config.write_list('cloudIgnoreList', sorted(self.cloud.ignore_list))
-        config.write_list('cloudIncludeList', sorted(self.cloud.include_list))
 
     def load_values_from_config(self):
         config = self.journal.config
@@ -622,16 +637,6 @@ class MainWindow:
             self.infobar.show_message(title, msg, msg_type)
         else:
             self.statusbar.show_message(title, msg, msg_type)
-
-
-class Preview(browser.HtmlView):
-    def __init__(self, journal, *args, **kwargs):
-        browser.HtmlView.__init__(self, *args, **kwargs)
-        self.journal = journal
-
-    def show_day(self, new_day):
-        html = self.journal.convert(new_day.text, 'xhtml')
-        self.load_html(html)
 
 
 class DayEditor(editor.Editor):

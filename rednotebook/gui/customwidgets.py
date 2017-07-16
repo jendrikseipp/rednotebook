@@ -228,7 +228,7 @@ class RadioButtonPage(AssistantPage):
         if tooltip:
             description = Gtk.Label()
             description.set_alignment(0.0, 0.5)
-            description.set_markup(' ' * 5 + tooltip)
+            description.set_markup(' ' * 10 + tooltip)
             description.set_sensitive(sensitive)
             self.pack_start(description, False, False, 0)
 
