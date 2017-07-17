@@ -36,6 +36,8 @@ from rednotebook.util import filesystem
 from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import dates
+from rednotebook.util import markup
+from rednotebook.util import utils
 from rednotebook import undo
 from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
@@ -133,7 +135,8 @@ class MainWindow:
             self.html_editor.set_editable(False)
         else:
             self.html_editor = mock.MagicMock()
-            self.builder.get_object('preview_button').hide()
+            preview_button = self.builder.get_object('preview_button')
+            preview_button.set_label(_('Preview in Browser'))
 
         self.preview_mode = False
 
@@ -391,8 +394,19 @@ class MainWindow:
 
     def on_preview_button_clicked(self, button):
         self.journal.save_old_day()
-        self.html_editor.show_day(self.day)
-        self.change_mode(preview=True)
+        if browser.WebKit2:
+            self.html_editor.show_day(self.day)
+            self.change_mode(preview=True)
+        else:
+            date_format = self.journal.config.read('exportDateFormat', '%A, %x')
+            date_string = dates.format_date(date_format, self.day.date)
+            markup_string = markup.get_markup_for_day(self.day)
+            html = self.journal.convert(
+                markup_string, 'xhtml',
+                headers=[date_string + ' - RedNotebook', '', ''],
+                options={'toc': 0})
+            utils.show_html_in_browser(
+                html, os.path.join(self.journal.dirs.temp_dir, 'day.html'))
 
     def on_browser_clicked(self, webview, event):
         if event.type == Gdk.EventType._2BUTTON_PRESS:
@@ -612,7 +626,7 @@ class MainWindow:
         self.day_text_field.show_day(day)
 
         # Only switch mode automatically if set in preferences.
-        if self.journal.config.read('autoSwitchMode'):
+        if self.journal.config.read('autoSwitchMode') and browser.WebKit2:
             if day.has_text and not self.preview_mode:
                 self.change_mode(preview=True)
             elif not day.has_text and self.preview_mode:
