@@ -6,9 +6,5 @@ include rednotebook/files/*.glade
 include rednotebook/files/*.cfg
 include CHANGELOG
 include README.md
-include README.Packagers
-include AUTHORS
 include LICENSE
 include run
-include rednotebook.desktop
-include rednotebook.png

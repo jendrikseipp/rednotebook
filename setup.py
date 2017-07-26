@@ -129,11 +129,11 @@ parameters = {
                             'images/rednotebook-icon/rednotebook.svg',
                             'files/*.css', 'files/*.glade', 'files/*.cfg']},
     'data_files'        : [('share/applications',
-                            ['rednotebook.desktop']),
+                            ['data/com.github.jendrikseipp.rednotebook.desktop']),
                            ('share/icons/hicolor/scalable/apps',
                             ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
                            ('share/appdata',
-                            ['rednotebook.appdata.xml']),
+                            ['data/com.github.jendrikseipp.rednotebook.appdata.xml']),
                           ],
     'cmdclass'          : cmdclass,
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>rednotebook.desktop</id>
+  <id>com.github.jendrikseipp.rednotebook.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>RedNotebook</name>
@@ -11,7 +11,10 @@
     customizable templates, spell check your notes, and export to plain
     text, HTML, Latex or PDF.</p>
   </description>
-  <url type="homepage">http://rednotebook.sourceforge.net/</url>
+  <url type="homepage">http://rednotebook.sourceforge.net</url>
+  <url type="bugtracker">https://github.com/jendrikseipp/rednotebook/issues</url>
+  <url type="help">https://answers.launchpad.net/rednotebook</url>
+  <url type="translate">https://translations.launchpad.net/rednotebook</url>
   <screenshots>
     <screenshot type="default">
       <image>http://rednotebook.sourceforge.net/screenshots/rednotebook-2.0-1.png</image>

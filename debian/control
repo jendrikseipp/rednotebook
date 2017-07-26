@@ -1,16 +1,12 @@
-Source: rednotebook
+Source: com.github.jendrikseipp.rednotebook
+Maintainer: Jendrik Seipp <jendrikseipp@gmail.com>
 Section: text
 Priority: optional
-Maintainer: Jendrik Seipp <jendrikseipp@gmail.com>
-Build-Depends: debhelper (>= 9)
-Build-Depends-Indep: python3, dh-python
 Standards-Version: 3.9.6
-Homepage: http://rednotebook.sourceforge.net/
 Vcs-Git: git://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
-
-Package: rednotebook
-Architecture: all
+Build-Depends: debhelper (>= 9)
+Build-Depends-Indep: python3, dh-python
 Depends: ${python3:Depends},
          ${misc:Depends},
          gir1.2-gdkpixbuf-2.0,
@@ -20,6 +16,9 @@ Depends: ${python3:Depends},
          gir1.2-webkit2-4.0,
          python3-gi,
          python3-yaml
+
+Package: com.github.jendrikseipp.rednotebook-elementary
+Architecture: all
 Recommends: python3-enchant
 Description: RedNotebook is a modern desktop journal. It lets you
  format, tag and search your entries. You can also add pictures, links
