@@ -42,7 +42,6 @@ except ImportError as err:
     sys.exit(1)
 
 gi.require_version("Gtk", "3.0")
-gi.require_version("WebKit2", "4.0")
 
 if hasattr(sys, "frozen"):
     base_dir = sys._MEIPASS
