@@ -17,11 +17,9 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import datetime
 import logging
 import os
 import re
-import sys
 
 from gi.repository import GObject
 from gi.repository import Gtk
@@ -283,54 +281,6 @@ class RedNotebookBackupImporter(RedNotebookImporter):
         logging.info('Remove tempdir')
         shutil.rmtree(tempdir)
         zip_archive.close()
-
-
-class TomboyImporter(Importer):
-    NAME = _('Tomboy Notes')
-    DESCRIPTION = _('Import your Tomboy notes')
-    PATHTEXT = _('Select the directory containing your tomboy notes')
-    DEFAULTPATH = (
-        os.getenv('XDG_DATA_HOME') or
-        os.path.join(os.path.expanduser('~'), '.local', 'share', 'tomboy'))
-    if sys.platform == 'win32':
-        appdata = os.getenv('APPDATA')
-        DEFAULTPATH = os.path.join(appdata, 'Tomboy', 'notes')
-    elif sys.platform == 'darwin':
-        DEFAULTPATH = os.path.join(
-            os.path.expanduser('~'), 'Library', 'Application Support', 'Tomboy')
-    PATHTYPE = 'DIR'
-
-    def get_days(self, dir):
-        '''
-        We do not check if there are multiple notes for one day
-        explicitly as they will just be concatted anyway
-        '''
-        import xml.etree.ElementTree as ET
-
-        xmlns = '{http://beatniksoftware.com/tomboy}'
-
-        # date has format 2010-05-07T12:41:37.1619220+02:00
-        date_format = '%Y-%m-%d'
-
-        files = self._get_files(dir)
-        files = [file for file in files if file.endswith('.note')]
-
-        for file in files:
-            path = os.path.join(dir, file)
-
-            tree = ET.parse(path)
-
-            date_string = tree.findtext(xmlns + 'create-date')
-            short_date_string = date_string.split('T')[0]
-            date = datetime.datetime.strptime(short_date_string, date_format)
-
-            title = tree.findtext(xmlns + 'title')
-
-            text = tree.findtext(xmlns + 'text/' + xmlns + 'note-content')
-
-            day = ImportDay(date.year, date.month, date.day)
-            day.text = '=== %s ===\n%s' % (title, text)
-            yield day
 
 
 def get_importers():

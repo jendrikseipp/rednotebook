@@ -65,7 +65,6 @@ O Imports
   X RedNotebook Backup zipfile
   X RedNotebook data directory
   X Plain text files
-  X Tomboy (remove again?)
   O It's probably best to supply scripts for converting other sources like Evernote, Wordpress, ics (used by Google Calendar).
 
 O Custom-style journals? (Allow custom css files for preview rendering, e.g. mono-space, white text on black bg, margins)
@@ -83,7 +82,7 @@ O Make windows installer truly portable (leave no traces in registry)
 New format:
 O Use json instead of yaml?
 O Use standard paths? (Win: C:\Docs & Settings\username\My Documents,
-  Linux: ~/.local/share, ~/.config (http://live.gnome.org/Tomboy/Directories))
+  Linux: ~/.local/share, ~/.config (https://wiki.gnome.org/Apps/Tomboy/Directories))
 
 
 

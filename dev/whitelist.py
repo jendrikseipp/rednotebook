@@ -20,5 +20,4 @@ from rednotebook.gui import imports
 imports.ImportAssistant
 imports.PlainTextImporter
 imports.RedNotebookBackupImporter
-imports.TomboyImporter
 imports.Importer._check_modules
