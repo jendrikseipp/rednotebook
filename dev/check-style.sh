@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 cd ../
 
 set +eo pipefail
-pyflakes rednotebook tests | grep -v "undefined name '_'" | grep -v "rednotebook/external/"
+python3 -m pyflakes rednotebook tests | grep -v "undefined name '_'" | grep -v "rednotebook/external/"
 retval=$?
 set -eo pipefail
 if [[ $retval == 0 ]]; then
@@ -22,6 +22,6 @@ pep8 $PEP8_OPTS --ignore=E402 rednotebook/journal.py
 
 ./dev/find-dead-code.sh
 
-python setup.py build_trans
+python3 setup.py build_trans
 
 echo "All tests passed"
