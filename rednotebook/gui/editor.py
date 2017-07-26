@@ -314,7 +314,7 @@ class Editor:
         iter = self.day_text_view.get_iter_at_location(x, y)
 
         def is_pic(uri):
-            head, ext = os.path.splitext(uri)
+            _, ext = os.path.splitext(uri)
             return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp svg'.split()
 
         uris = selection.get_text().split()

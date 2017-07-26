@@ -245,7 +245,7 @@ class InsertMenu:
             filename = file_chooser.get_filename()
             filename = filesystem.get_local_url(filename)
             sel_text = self.main_window.day_text_field.get_selected_text()
-            head, tail = os.path.split(filename)
+            _, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s
             return '[%s ""%s""]' % (sel_text or tail, filename)
 

@@ -845,7 +845,7 @@ class MainCalendar:
         in the calendar. This behaviour is necessary since we use the calendar
         both for navigating and showing the current date.
         '''
-        cal_year, cal_month, cal_day = self.calendar.get_date()
+        cal_year, cal_month, _cal_day = self.calendar.get_date()
         cal_month += 1
         if day_number not in range(1, dates.get_number_of_days(cal_year, cal_month) + 1):
             logging.debug(

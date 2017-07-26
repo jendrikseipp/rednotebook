@@ -288,7 +288,7 @@ class PathChooserPage(AssistantPage):
             self.chooser.set_current_folder(path)
         else:
             dirname, basename = os.path.split(path)
-            filename, old_ext = os.path.splitext(basename)
+            filename, _ = os.path.splitext(basename)
             self.chooser.set_current_folder(dirname)
             self.chooser.set_current_name(filename + '.' + extension)
 
