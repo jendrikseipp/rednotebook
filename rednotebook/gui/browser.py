@@ -19,8 +19,6 @@
 
 import logging
 import os.path
-import sys
-from unittest import mock
 
 import gi
 from gi.repository import Gtk
@@ -51,7 +49,6 @@ if WebKit2:
 
         def load_html(self, html):
             WebKit2.WebView.load_html(self, content=html, base_uri='file:///')
-
 
     class HtmlView(Browser):
         def __init__(self):
