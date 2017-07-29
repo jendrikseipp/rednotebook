@@ -1,3 +1,12 @@
+rednotebook (2.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Make webkit optional (but highly recommended). If missing, show preview in external browser.
+  * Support inserting SVG images.
+  * Don't switch between edit and review mode automatically by default.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sat, 29 Jul 2017 11:54:30 +0200
+
 rednotebook (2.0-1) UNRELEASED; urgency=low
 
   * New upstream release
