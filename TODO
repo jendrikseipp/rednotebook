@@ -7,9 +7,6 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Make webkit optional (but highly recommended). If missing, show preview in external browser.
-X Support inserting SVG images.
-X Don't switch between edit and review mode automatically by default.
 O Web: turn screenshots page into testimonials page.
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.

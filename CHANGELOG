@@ -1,3 +1,8 @@
+== 2.1 (2017-07-29) ==
+* Make webkit optional (but highly recommended). If missing, show preview in external browser.
+* Support inserting SVG images.
+* Don't switch between edit and review mode automatically by default.
+
 == 2.0 (2017-05-19) ==
 * Port to Python 3 and GTK 3.
 * Add index of tags to LaTeX export (#324, thanks Alex Schickedanz).
