@@ -39,6 +39,7 @@ O Search: Wrap or overlay search results to make more text visible.
 O Disable automatic switch between edit and preview mode by default.
 O Copy files and pictures into data subdirectory
 O Internal links to other days
+O Add menus to forward and backward buttons to navigate to recently visited days.
 
 Right-side tags panel:
   O Make the right panel an advanced option?
