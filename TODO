@@ -40,6 +40,7 @@ O Disable automatic switch between edit and preview mode by default.
 O Copy files and pictures into data subdirectory
 O Internal links to other days
 O Add menus to forward and backward buttons to navigate to recently visited days.
+O Install appdata metainfo under /usr/share/appdata/com.github.jendrikseipp.rednotebook.appdata.xml, the new default location.
 
 Right-side tags panel:
   O Make the right panel an advanced option?
