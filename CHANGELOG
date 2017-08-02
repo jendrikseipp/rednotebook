@@ -1,3 +1,6 @@
+== 2.1.2 (2017-08-03) ==
+* Fix "Exec" field in .desktop file.
+
 == 2.1.1 (2017-08-02) ==
 * Reset package name to 'rednotebook'.
 
