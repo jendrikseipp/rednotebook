@@ -19,3 +19,8 @@ script:
 
 after_script:
 - docker rm -f app
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
