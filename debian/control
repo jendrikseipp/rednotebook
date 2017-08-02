@@ -1,4 +1,4 @@
-Source: com.github.jendrikseipp.rednotebook
+Source: rednotebook
 Maintainer: Jendrik Seipp <jendrikseipp@gmail.com>
 Section: text
 Priority: optional
@@ -17,7 +17,7 @@ Depends: ${python3:Depends},
          python3-gi,
          python3-yaml
 
-Package: com.github.jendrikseipp.rednotebook
+Package: rednotebook
 Architecture: all
 Recommends: python3-enchant
 Description: RedNotebook is a modern desktop journal. It lets you
