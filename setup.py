@@ -28,7 +28,7 @@ To only compile the translations, run "python setup.py build_trans"
 
 import glob
 import os
-import shutil
+import subprocess
 import sys
 
 from distutils.core import setup
@@ -36,11 +36,12 @@ from distutils import cmd
 from distutils.command.install_data import install_data as _install_data
 from distutils.command.build import build as _build
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, DIR)
 
 from rednotebook import info
-from rednotebook.external import msgfmt
 
+MSGFMT = os.path.join(DIR, 'rednotebook', 'external', 'msgfmt.py')
 
 def build_translation_files(po_dir, locale_dir):
     assert os.path.isdir(po_dir), po_dir
@@ -51,7 +52,7 @@ def build_translation_files(po_dir, locale_dir):
         if not os.path.exists(dest_dir):
             os.makedirs(dest_dir)
         print('Compiling {src} to {dest}'.format(**locals()))
-        msgfmt.make(src, dest)
+        subprocess.check_call([sys.executable, MSGFMT, '--output-file', dest, src])
 
 
 class build_trans(cmd.Command):
