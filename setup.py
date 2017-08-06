@@ -26,7 +26,7 @@ To do a (test) installation to a different dir: "python setup.py install --root=
 To only compile the translations, run "python setup.py build_trans"
 """
 
-from glob import glob
+import glob
 import os
 import shutil
 import sys
@@ -44,25 +44,14 @@ from rednotebook.external import msgfmt
 
 def build_translation_files(po_dir, locale_dir):
     assert os.path.isdir(po_dir), po_dir
-    for path, names, filenames in os.walk(po_dir):
-        for f in filenames:
-            if f.endswith('.po'):
-                lang = os.path.splitext(f)[0]
-                src = os.path.join(path, f)
-                dest = os.path.join(locale_dir, lang, 'LC_MESSAGES', 'rednotebook.mo')
-                dest_dir = os.path.dirname(dest)
-                if not os.path.exists(dest_dir):
-                    os.makedirs(dest_dir)
-                # Recompile only if compiled version is outdated.
-                if not os.path.exists(dest):
-                    print('Compiling %s' % src)
-                    msgfmt.make(src, dest)
-                else:
-                    src_mtime = os.stat(src)[8]
-                    dest_mtime = os.stat(dest)[8]
-                    if src_mtime > dest_mtime:
-                        print('Compiling %s' % src)
-                        msgfmt.make(src, dest)
+    for src in sorted(glob.glob(os.path.join(po_dir, '*.po'))):
+        lang, _ = os.path.splitext(os.path.basename(src))
+        dest = os.path.join(locale_dir, lang, 'LC_MESSAGES', 'rednotebook.mo')
+        dest_dir = os.path.dirname(dest)
+        if not os.path.exists(dest_dir):
+            os.makedirs(dest_dir)
+        print('Compiling {src} to {dest}'.format(**locals()))
+        msgfmt.make(src, dest)
 
 
 class build_trans(cmd.Command):
@@ -97,7 +86,7 @@ class install_data(_install_data):
         for lang in os.listdir('build/locale/'):
             lang_dir = os.path.join('share', 'locale', lang, 'LC_MESSAGES')
             lang_file = os.path.join('build', 'locale', lang, 'LC_MESSAGES', 'rednotebook.mo')
-            self.data_files.append( (lang_dir, [lang_file]) )
+            self.data_files.append((lang_dir, [lang_file]))
         _install_data.run(self)
 
 
