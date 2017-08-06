@@ -1,3 +1,6 @@
+== 2.1.3 (2017-08-06) ==
+* Fix creating translation files.
+
 == 2.1.2 (2017-08-03) ==
 * Fix "Exec" field in .desktop file.
 
