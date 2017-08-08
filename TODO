@@ -36,13 +36,12 @@ O Make sure that RedNotebook contents are saved under Windows when system is shu
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
 O When searching for a tag, show text around tag, not beginning of day's text.
 O Search: Wrap or overlay search results to make more text visible.
-O Disable automatic switch between edit and preview mode by default.
 O Copy files and pictures into data subdirectory
 O Internal links to other days
 O Add menus to forward and backward buttons to navigate to recently visited days.
-O Install appdata metainfo under /usr/share/appdata/com.github.jendrikseipp.rednotebook.appdata.xml, the new default location.
+O hashtag non-alphanumeric characters, e.g. #c++
 
-Right-side tags panel:
+O Right-side tags panel:
   O Make the right panel an advanced option?
   O Remove tag panel.
     O Make sure that inline tags allow subtags and that these are
