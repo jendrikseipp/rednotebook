@@ -1,3 +1,6 @@
+== 2.1.5 (2017-08-09) ==
+* Fix debian/control.
+
 == 2.1.4 (2017-08-08) ==
 * Use old names for appdata and desktop files.
 
