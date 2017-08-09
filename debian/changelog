@@ -1,3 +1,10 @@
+rednotebook (2.1.5-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix debian/control.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 09 Aug 2017 22:43:14 +0200
+
 rednotebook (2.1.4-1) UNRELEASED; urgency=low
 
   * New upstream release
