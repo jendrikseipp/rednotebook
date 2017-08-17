@@ -436,7 +436,8 @@ def _install(domain, localedir, asglobal=False):
     # on windows systems, initialize libintl
     if sys.platform == 'win32' or sys.platform == 'nt':
         from ctypes import cdll
-        libintl = cdll.intl
+        ## JS: Original was "libintl = cdll.intl".
+        libintl = cdll.LoadLibrary("libintl-8.dll")
         libintl.bindtextdomain(domain, localedir)
         libintl.bind_textdomain_codeset(domain, 'UTF-8')
 
