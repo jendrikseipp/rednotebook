@@ -62,12 +62,14 @@ from rednotebook.util import filesystem
 # * gtkbuilder strings
 # * gtk stock names
 
+from rednotebook.external import elibintl
+
 LOCALE_PATH = filesystem.locale_dir
 
-# the name of the gettext domain.
 GETTEXT_DOMAIN = 'rednotebook'
 
-gettext.install(GETTEXT_DOMAIN, LOCALE_PATH)
+# We use elibintl to initialize libintl on Windows.
+elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
 
 # ------------------- end Enable i18n -------------------------------
 
