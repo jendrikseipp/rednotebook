@@ -64,6 +64,8 @@ INSTALLERS = [
     # '7z920.exe'),
     # Python 3.5 and 3.6 not supported by PyGObject AIO package. Also,
     # Python 3.5 needs wine-staging >= 2.8 and Python 3.6 fails for wine-staging 2.8.
+    # Python 3.4.4 is the last version of 3.4 with an installer.
+    # Python 3.4.4 works with wine-staging 2.14.
     ('https://www.python.org/ftp/python/3.4.4/python-3.4.4.msi',
      'python-3.4.4.msi'),
     ('https://downloads.sourceforge.net/project/pygobjectwin32/pygi-aio-3.18.2_rev12-setup_549872deadabb77a91efbc56c50fe15f969e5681.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpygobjectwin32%2Ffiles%2F&ts=1495353417&use_mirror=vorboss',
@@ -73,16 +75,9 @@ INSTALLERS = [
 ]
 
 TARBALLS = [
-    #('https://dl.dropboxusercontent.com/u/4780737/gtkbin-1.7.3.zip',
-    # 'gtkbin-1.7.3.zip', DRIVE_C),
-    #('https://dl.dropboxusercontent.com/u/4780737/pywebkitgtk.zip',
-    # 'pywebkitgtk.zip', SITE_PACKAGES),
 ]
 
 FILES = [
-    # Unneeded. Serves only as an example.
-    #('https://dl.dropboxusercontent.com/u/4780737/gtkspell.pyd',
-    #      os.path.join(DRIVE_C_REAL, 'Python27', 'Lib', 'site-packages', 'gtkspell.pyd'))
 ]
 
 print HELP
