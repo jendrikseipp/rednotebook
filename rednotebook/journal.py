@@ -57,19 +57,31 @@ from rednotebook.util import filesystem
 
 # ---------------------- Enable i18n -------------------------------
 
-# We need to translate 3 different types of strings:
-# * sourcecode strings
-# * gtkbuilder strings
-# * gtk stock names
-
 from rednotebook.external import elibintl
 
 LOCALE_PATH = filesystem.locale_dir
 
 GETTEXT_DOMAIN = 'rednotebook'
 
-# We use elibintl to initialize libintl on Windows.
-elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH)
+"""
+On Windows, translations currently only work with a hack. We need to
+translate
+
+  1) Strings in source code.
+  2) GTK stock items.
+  3) Strings in the Glade file.
+
+1) works fine. For 3) we need a workaround in main_window.py. If we
+initialize libintl with elibintl, the translations for 2) stop working.
+Without the workaround we need to initalize libintl to avoid UTF-8
+encoding errors.
+
+When the problem is fixed upstream, we can pass libintl='libintl-8.dll'
+to elibintl.
+
+"""
+
+elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH, libintl=None)
 
 # ------------------- end Enable i18n -------------------------------
 

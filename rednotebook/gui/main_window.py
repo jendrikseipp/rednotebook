@@ -57,11 +57,21 @@ class MainWindow:
 
         self.journal = journal
 
-        # Set the Glade file
+        # Load Glade file.
+        # TODO: Remove workaround for Windows once it is no longer needed.
         self.gladefile = os.path.join(filesystem.files_dir, 'main_window.glade')
         self.builder = Gtk.Builder()
-        self.builder.set_translation_domain('rednotebook')
-        self.builder.add_from_file(self.gladefile)
+        if filesystem.IS_WIN:
+            import xml.etree.ElementTree as ET
+            tree = ET.parse(self.gladefile)
+            for node in tree.iter():
+                if 'translatable' in node.attrib:
+                    node.text = _(node.text)
+            xml_text = ET.tostring(tree.getroot(), encoding='unicode')
+            self.builder = Gtk.Builder.new_from_string(xml_text, len(xml_text))
+        else:
+            self.builder.set_translation_domain('rednotebook')
+            self.builder.add_from_file(self.gladefile)
 
         # Get the main window and set the icon
         self.main_frame = self.builder.get_object('main_frame')

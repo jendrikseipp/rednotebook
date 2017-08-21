@@ -402,7 +402,7 @@ def _dugettext(domain, message):
     else:
         return t.ugettext(message)
 
-def _install(domain, localedir, asglobal=False):
+def _install(domain, localedir, asglobal=False, libintl='intl'):
     '''
     :param domain: translation domain
     :param localedir: locale directory
@@ -434,10 +434,9 @@ def _install(domain, localedir, asglobal=False):
         gettext.textdomain(domain)
 
     # on windows systems, initialize libintl
-    if sys.platform == 'win32' or sys.platform == 'nt':
+    if libintl and (sys.platform == 'win32' or sys.platform == 'nt'):
         from ctypes import cdll
-        ## JS: Original was "libintl = cdll.intl".
-        libintl = cdll.LoadLibrary("libintl-8.dll")
+        libintl = cdll.LoadLibrary(libintl)
         libintl.bindtextdomain(domain, localedir)
         libintl.bind_textdomain_codeset(domain, 'UTF-8')
 
@@ -446,7 +445,7 @@ def _install(domain, localedir, asglobal=False):
 
         del libintl
 
-def install(domain, localedir):
+def install(domain, localedir, libintl='intl'):
     '''
     :param domain: translation domain
     :param localedir: locale directory
@@ -470,7 +469,7 @@ def install(domain, localedir):
     namespace, localized modules should never install _(). Instead, you should
     use :func:`elib.intl.install_module` to make _() available to your module.
     '''
-    _install(domain, localedir, True)
+    _install(domain, localedir, True, libintl=libintl)
     gettext.install(domain, localedir)
 
 def install_module(domain, localedir):
