@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import argparse
 import os
@@ -11,6 +11,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('build_dir')
     parser.add_argument('dist_dir')
+    parser.add_argument('--version')
     parser.add_argument('--beta', action='store_true')
     parser.add_argument('--upload', action='store_true')
     return parser.parse_args()
@@ -28,15 +29,19 @@ os.environ['WINEPREFIX'] = DIST_DIR
 
 run(['./cross-compile-exe.py', BUILD_DIR, DIST_DIR], cwd=DIR)
 
-sys.path.insert(0, RN_DIR)
-from rednotebook import info
-
 def get_rev():
-    return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=BASE_DIR)
+    return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=BASE_DIR).decode().strip()
 
-version = info.version
+if args.version:
+    version = args.version
+else:
+    sys.path.insert(0, RN_DIR)
+    from rednotebook import info
+    version = info.version
+
 if args.beta:
     version += '-r%s' % get_rev()
+
 run(['./build-installer.py', DIST_DIR, version], cwd=DIR)
 INSTALLER = os.path.join(DRIVE_C, 'rednotebook-%s.exe' % version)
 if not args.beta:
@@ -44,5 +49,3 @@ if not args.beta:
 destdir = 'beta' if args.beta else ''
 if args.upload:
     run(['./upload-file.py', INSTALLER, '--destdir', destdir], cwd=os.path.join(BASE_DIR, 'dev'))
-
-#run(['7z', 'a', 'rednotebook-%s.7z' % version, 'dist'], cwd=DRIVE_C)
