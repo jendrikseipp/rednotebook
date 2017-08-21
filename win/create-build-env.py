@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 HELP = """\
 Installation instructions:
@@ -80,7 +80,7 @@ TARBALLS = [
 FILES = [
 ]
 
-print HELP
+print(HELP)
 
 # Python >= 3.5 set Windows Version to at least Windows 7.
 # run(['winecfg'])

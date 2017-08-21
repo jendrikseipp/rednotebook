@@ -12,7 +12,7 @@ def ensure_path(path):
 
 def confirm_overwrite(dir):
     if os.path.exists(dir):
-        answer = raw_input(
+        answer = input(
             'The directory {} exists. Overwrite it? (Y/n): '.format(dir)).strip()
         if answer and answer.lower() != 'y':
             sys.exit('Aborting')
@@ -36,6 +36,9 @@ def run(*args, **kwargs):
     retcode = subprocess.call(*args, **kwargs)
     if retcode != 0:
         sys.exit('Command failed.')
+
+def get_output(*args, **kwargs):
+    return subprocess.check_output(*args, **kwargs).decode().strip()
 
 def install(path, use_wine):
     cmd = []

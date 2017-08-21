@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 """
 tar -czvf build-tar.gz build-dir:             1:40 min
@@ -43,16 +43,16 @@ WINE_PYTHON = os.path.join(DRIVE_C, 'Python34', 'python.exe')
 utils.confirm_overwrite(DIST_DIR)
 os.environ['WINEPREFIX'] = DIST_DIR
 utils.ensure_path(os.path.dirname(DIST_DIR))
-print 'Start copying {} to {}'.format(BUILD_DIR, DIST_DIR)
+print('Start copying {} to {}'.format(BUILD_DIR, DIST_DIR))
 utils.fast_copytree(BUILD_DIR, DIST_DIR)
-print 'Finished copying'
+print('Finished copying')
 
-def ignore(path, names):
-    return ['installers']
-
+archive = '/tmp/rednotebook-archive.tar'
+stash_name = utils.get_output(['git', 'stash', 'create'], cwd=BASE_DIR)
+print("STASH", stash_name)
+run(['git', 'archive', stash_name, '-o', archive], cwd=BASE_DIR)
 utils.ensure_path(WINE_RN_DIR)
-for dirname in ['rednotebook', 'win']:
-    shutil.copytree(os.path.join(BASE_DIR, dirname), os.path.join(WINE_RN_DIR, dirname), ignore=ignore)
+run(['tar', '-xf', archive], cwd=WINE_RN_DIR)
 
 os.mkdir(os.path.join(DRIVE_C, 'Python34/share'))
 shutil.copytree(os.path.join(DRIVE_C, 'Python34/Lib/site-packages/gnome/share/gir-1.0/'), os.path.join(DRIVE_C, 'Python34/share/gir-1.0/'))

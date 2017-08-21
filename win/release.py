@@ -2,9 +2,9 @@
 
 import argparse
 import os
-import subprocess
 import sys
 
+import utils
 from utils import run
 
 def parse_args():
@@ -30,7 +30,7 @@ os.environ['WINEPREFIX'] = DIST_DIR
 run(['./cross-compile-exe.py', BUILD_DIR, DIST_DIR], cwd=DIR)
 
 def get_rev():
-    return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=BASE_DIR).decode().strip()
+    return utils.get_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=BASE_DIR)
 
 if args.version:
     version = args.version
