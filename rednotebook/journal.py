@@ -77,7 +77,12 @@ Without the workaround we need to initalize libintl to avoid UTF-8
 encoding errors.
 
 When the problem is fixed upstream, we can pass libintl='libintl-8.dll'
-to elibintl.
+to elibintl. See also
+
+https://bugzilla.gnome.org/show_bug.cgi?id=574520
+https://bugzilla.gnome.org/show_bug.cgi?id=753991
+https://github.com/tobias47n9e/pygobject-locale
+https://sourceforge.net/p/pygobjectwin32/tickets/27/
 
 """
 
