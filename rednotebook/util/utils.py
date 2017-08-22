@@ -77,10 +77,11 @@ def get_new_version_number():
     version_pattern = re.compile(r'<span id="download-version">(.+)</span>')
 
     try:
-        project_xml = urlopen('http://rednotebook.sourceforge.net/').read().decode('utf-8')
+        project_xml = urlopen('http://rednotebook.sourceforge.net/').read()
     except (IOError, http.client.HTTPException):
         return None
 
+    project_xml = project_xml.decode('utf-8')
     match = version_pattern.search(project_xml)
     if not match:
         return None
