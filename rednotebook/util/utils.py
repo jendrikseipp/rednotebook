@@ -78,15 +78,16 @@ def get_new_version_number():
 
     try:
         project_xml = urlopen('http://rednotebook.sourceforge.net/').read().decode('utf-8')
-        match = version_pattern.search(project_xml)
-        if not match:
-            return None
-        new_version = match.group(1)
-        new_version = StrictVersion(new_version)
-        logging.info('%s is the latest version' % new_version)
-        return new_version
     except (IOError, http.client.HTTPException):
         return None
+
+    match = version_pattern.search(project_xml)
+    if not match:
+        return None
+    new_version = match.group(1)
+    new_version = StrictVersion(new_version)
+    logging.info('%s is the latest version' % new_version)
+    return new_version
 
 
 def check_new_version(journal, current_version, startup=False):
