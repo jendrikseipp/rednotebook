@@ -31,6 +31,14 @@ def Dir(path):
     assert os.path.isdir(path), path
     return Tree(path, prefix=os.path.basename(path))
 
+def include_dll(name):
+    # Exclude some unused large dlls to save space.
+    return name.endswith('.dll') and name not in set([
+        'libwebkit2gtk-3.0-25.dll', 'libavcodec-57.dll',
+        'libjavascriptcoregtk-3.0-0.dll', 'libavformat-57.dll',
+        'libgstreamer-1.0-0.dll'])
+
+
 a = Analysis([os.path.join(srcdir, 'journal.py')],
              pathex=[basedir],
              hiddenimports=[],
@@ -39,10 +47,10 @@ a = Analysis([os.path.join(srcdir, 'journal.py')],
 # Adding these files in the ctor mangles up the paths.
 a.binaries = ([
     (os.path.join('gi_typelibs', tl), os.path.join(typelibdir, tl), 'BINARY') for tl in os.listdir(typelibdir)] + [
-    (name, os.path.join(bindir, name), 'BINARY') for name in os.listdir(bindir) if name.endswith('.dll')] + [
+    (name, os.path.join(bindir, name), 'BINARY') for name in os.listdir(bindir) if include_dll(name)] + [
     (os.path.basename(path), path, 'BINARY') for path in MISSED_BINARIES] + [
-    (os.path.basename('gi._gi.pyd'), os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi.pyd'), 'BINARY'),
-    (os.path.basename('gi._gi_cairo.pyd'), os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi_cairo.pyd'), 'BINARY'),
+    ('gi._gi.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi.pyd'), 'BINARY'),
+    ('gi._gi_cairo.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi_cairo.pyd'), 'BINARY'),
     ])
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
