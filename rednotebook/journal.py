@@ -19,7 +19,6 @@
 
 from collections import defaultdict
 import datetime
-import gettext
 import itertools
 import locale
 import logging
