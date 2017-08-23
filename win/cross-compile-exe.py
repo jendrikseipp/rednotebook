@@ -49,7 +49,7 @@ print('Finished copying')
 
 archive = '/tmp/rednotebook-archive.tar'
 stash_name = utils.get_output(['git', 'stash', 'create'], cwd=BASE_DIR)
-print("STASH", stash_name)
+stash_name = stash_name or 'HEAD'
 run(['git', 'archive', stash_name, '-o', archive], cwd=BASE_DIR)
 utils.ensure_path(WINE_RN_DIR)
 run(['tar', '-xf', archive], cwd=WINE_RN_DIR)
