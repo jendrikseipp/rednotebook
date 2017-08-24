@@ -8,7 +8,7 @@
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
 AppVerName=RedNotebook {#REDNOTEBOOK_VERSION}
-; AppPublisher=Jendrik Seipp
+AppPublisher=Jendrik Seipp
 AppPublisherURL=http://rednotebook.sourceforge.net
 AppSupportURL=http://rednotebook.sourceforge.net
 AppUpdatesURL=http://rednotebook.sourceforge.net
