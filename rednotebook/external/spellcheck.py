@@ -38,7 +38,7 @@ import sys
 __all__ = ['SpellChecker', 'NoDictionariesFound', 'NoGtkBindingFound']
 
 # logger
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('')  # JS: was '__name__'
 
 class NoDictionariesFound(Exception):
     """
@@ -203,7 +203,7 @@ class SpellChecker(object):
             if self.languages:
                 self._language = self.languages[0][0]
                 logger.warning(('no installed dictionary for language "{}" '
-                                'and english, fallback to first language in'
+                                'and english, fallback to first language in '
                                 'language list ("{}")').format(language,
                                                                 self._language))
             else:
