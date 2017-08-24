@@ -1,7 +1,7 @@
 pefile==2016.3.28
 pyenchant==1.6.8
-pyinstaller==3.2.1
 pypiwin32==219
 PyYAML==3.10
 setuptools==19.2
 six==1.10.0
+https://github.com/pyinstaller/pyinstaller/archive/e05a2cf10955a39c04c51f0b44b4f0c47b0aa6a9.zip
