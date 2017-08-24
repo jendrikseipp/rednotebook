@@ -8,6 +8,7 @@ drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'rednotebook')
 srcdir = os.path.join(basedir, 'rednotebook')
 bindir = os.path.join(site.getsitepackages()[1], 'gnome')
+enchantdir = os.path.join(site.getsitepackages()[1], 'enchant')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 # See also https://github.com/pyinstaller/pyinstaller/issues/1966
@@ -30,9 +31,9 @@ print('PATH:')
 print(os.environ['PATH'])
 
 
-def Dir(path):
+def Dir(path, excludes=None):
     assert os.path.isdir(path), path
-    return Tree(path, prefix=os.path.basename(path))
+    return Tree(path, prefix=os.path.basename(path), excludes=excludes or [])
 
 def include_dll(name):
     # Exclude some unused large dlls to save space.
@@ -61,6 +62,13 @@ a.binaries += ([
     ('gi._gi.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi.pyd'), 'BINARY'),
     ('gi._gi_cairo.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi_cairo.pyd'), 'BINARY'),
     ])
+
+# We need to manually copy the enchant directory, because we want to omit
+# the DLLs and include the Python files. Keeping the DLLs leads to errors,
+# because then there are multiple versions of the same DLL.
+a.binaries = [(dest, source, _) for (dest, source, _) in a.binaries if not dest.startswith('enchant')]
+a.datas = [(dest, source, _) for (dest, source, _) in a.datas if not dest.startswith('enchant')]
+
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
@@ -79,8 +87,9 @@ coll = COLLECT(exe,
                Dir(os.path.join(srcdir, 'files')),
                Dir(os.path.join(srcdir, 'images')),
                Dir(os.path.join(bindir, 'etc')),
-               Dir(os.path.join(bindir, 'lib')),
-               Dir(os.path.join(bindir, 'share')),
+               Dir(os.path.join(bindir, 'lib'), excludes=['girepository-1.0', 'gstreamer-1.0']),
+               Dir(os.path.join(bindir, 'share'), excludes=['gir-1.0', 'gstreamer-1.0', 'gtksourceview-3.0', 'webkitgtk-3.0']),
+               Dir(enchantdir, excludes=['*.dll']),
                strip=False,
                upx=True,
                name='dist')
