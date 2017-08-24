@@ -287,15 +287,12 @@ text area (in edit mode) and choosing it from the submenu "Languages".
 
 === Adding custom dictionaries under Windows ===
 
-We use the dictionaries available from the [openoffice extension
-download site http://extensions.services.openoffice.org/dictionaries].
-You need to download the appropriate language extension file(s) (files
-are openoffice extensions *.oxt, which are just zip files that contain
-additional data). Once you have downloaded a dictionary extension file,
-you can rename it so it has a .zip extension and then extract the *.dic
-and *.aff files in it to <RedNotebook Dir>\\share\\enchant\\myspell\\.
-If RedNotebook is running, you need to restart it for new dictionaries
-to be recognized.
+You can add more aspell dictionary files to the directory <RedNotebook
+Dir>\\lib\\aspell-0.60\\. If RedNotebook is running, you need to restart
+it for new dictionaries to be recognized. You can find aspell
+dictionaries at ftp://ftp.gnu.org/gnu/aspell/dict/0index.html. Please
+read the README files included in the tarballs for information on how to
+compile the necessary files.
 
 
 == Options ==
