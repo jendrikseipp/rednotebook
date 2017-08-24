@@ -75,6 +75,9 @@ INSTALLERS = [
 ]
 
 TARBALLS = [
+    ('https://www.dropbox.com/s/kljn5gsxm1fxa10/aspell-dicts.zip?dl=1',
+     'aspell-dicts.zip',
+     os.path.join(SITE_PACKAGES, 'gnome/lib/aspell-0.60/')),
 ]
 
 FILES = [
