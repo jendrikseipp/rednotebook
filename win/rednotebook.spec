@@ -1,5 +1,8 @@
+# -*- mode: python -*-
 import os
 import site
+
+block_cipher = None
 
 drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'rednotebook')
@@ -41,24 +44,31 @@ def include_dll(name):
 
 a = Analysis([os.path.join(srcdir, 'journal.py')],
              pathex=[basedir],
+             binaries=[],
+             datas=[],
              hiddenimports=[],
-             hookspath=None,
-             binaries=[])
+             hookspath=[],
+             runtime_hooks=[],
+             excludes=[],
+             win_no_prefer_redirects=False,
+             win_private_assemblies=False,
+             cipher=block_cipher)
 # Adding these files in the ctor mangles up the paths.
-a.binaries = ([
+a.binaries += ([
     (os.path.join('gi_typelibs', tl), os.path.join(typelibdir, tl), 'BINARY') for tl in os.listdir(typelibdir)] + [
     (name, os.path.join(bindir, name), 'BINARY') for name in os.listdir(bindir) if include_dll(name)] + [
     (os.path.basename(path), path, 'BINARY') for path in MISSED_BINARIES] + [
     ('gi._gi.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi.pyd'), 'BINARY'),
     ('gi._gi_cairo.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi_cairo.pyd'), 'BINARY'),
     ])
-pyz = PYZ(a.pure)
+pyz = PYZ(a.pure, a.zipped_data,
+             cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          exclude_binaries=1,
+          exclude_binaries=True,
           name='rednotebook.exe',
           debug=False,
-          strip=None,
+          strip=False,
           upx=True,
           console=False,
           icon=icon)
@@ -71,6 +81,6 @@ coll = COLLECT(exe,
                Dir(os.path.join(bindir, 'etc')),
                Dir(os.path.join(bindir, 'lib')),
                Dir(os.path.join(bindir, 'share')),
-               strip=None,
+               strip=False,
                upx=True,
                name='dist')
