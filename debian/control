@@ -4,7 +4,7 @@ Section: text
 Priority: optional
 Standards-Version: 3.9.6
 Homepage: http://rednotebook.sourceforge.net/
-Vcs-Git: git://github.com/jendrikseipp/rednotebook.git
+Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
 Build-Depends: debhelper (>= 9)
 Build-Depends-Indep: python3, dh-python
@@ -21,7 +21,6 @@ Depends: ${python3:Depends},
          python3-gi,
          python3-yaml
 Recommends: python3-enchant
-Description: RedNotebook is a modern desktop journal. It lets you
- format, tag and search your entries. You can also add pictures, links
- and customizable templates, spell check your notes, and export to
- plain text, HTML, Latex or PDF.
+Description: A modern desktop journal. It lets you format, tag and search
+ your entries. You can also add pictures, links and customizable templates,
+ spell check your notes, and export to plain text, HTML, Latex or PDF.
