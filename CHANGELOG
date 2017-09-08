@@ -1,3 +1,9 @@
+== 2.2 (2017-09-08) ==
+* Port RedNotebook 2 to Windows.
+* Windows: uninstall old version before installing new version to remove old files.
+* Windows: use Aspell for spell checking.
+* Update Debian files (@kathenas).
+
 == 2.1.5 (2017-08-09) ==
 * Fix debian/control.
 
