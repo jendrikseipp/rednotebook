@@ -10,6 +10,7 @@ please check back with me briefly about its status.
 X Port RedNotebook 2 to Windows.
 X Windows: uninstall old version before installing new version to remove old files.
 X Windows: use Aspell for spell checking.
+X Update Debian files (@kathenas).
 O Web: turn screenshots page into testimonials page.
 O Place subtags behind hashtags inside the text itself:
   I met #Sarah and we had some coffee talking about old times# then i went to #work.
