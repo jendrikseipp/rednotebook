@@ -1,3 +1,13 @@
+rednotebook (2.2-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Port RedNotebook 2 to Windows.
+  * Windows: uninstall old version before installing new version to remove old files.
+  * Windows: use Aspell for spell checking.
+  * Update Debian files (@kathenas).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 08 Sep 2017 19:52:14 +0200
+
 rednotebook (2.1.5-1) UNRELEASED; urgency=low
 
   * New upstream release
