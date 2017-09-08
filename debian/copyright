@@ -37,12 +37,12 @@ License: LGPL-3+
 
 Files: rednotebook/external/msgfmt.py
 Copyright: Copyright (C) Martin v. Löwis <loewis@informatik.hu-berlin.de>
-License: ?
+License: GPL-3+
 
 Files: rednotebook/external/spellcheck.py
 Copyright: Copyright (C) 2012 Maximilian Köhl <linuxmaxi@googlemail.com>
            Copyright (C) 2012 Carlos Jenkins <carlos@jenkins.co.cr>
-License: GPL 3
+License: GPL-3+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -58,7 +58,7 @@ License: GPL 3
 
 Files: rednotebook/external/txt2tags.py
 Copyright: Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Aurelio Jargas
-License: GPL-2
+License: GPL-2+
     This package is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, version 2.
