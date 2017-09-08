@@ -49,3 +49,4 @@ if not args.beta:
 destdir = 'beta' if args.beta else ''
 if args.upload:
     run(['./upload-file.py', INSTALLER, '--destdir', destdir], cwd=os.path.join(BASE_DIR, 'dev'))
+    assert False, "upload to github"
