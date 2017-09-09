@@ -8,7 +8,7 @@ Latex or PDF.
 
 # Requirements
 
-See `debian/control` for Ubuntu package names.
+See `debian/control` for Debian and derivative package names.
 
   * Python (>= 3.4):        https://www.python.org
   * GTK+ (>= 3.10):         https://www.gtk.org
