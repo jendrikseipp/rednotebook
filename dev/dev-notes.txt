@@ -108,13 +108,12 @@ O Mobile version:
     - Supports all mobile platforms and is even compatible with the Windows Store
 
 O Markdown:
-  - Parsing would need a PEG parser
-  - Allow some common markdown syntax:
-    - Asterisks (*) for lists
-    - Allow triple {{{ and }}} in addition to ``` for code.
-  - docutils could be extended for t2t
   - extendable Python markdown parser with lexer and renderer: https://github.com/lepture/mistune
+    - python3-mistune is available in Ubuntu 16.04
   - another alternative would be to wrap cmark (wrapper in "wrappers" dir): https://github.com/jgm/cmark
+    - cmark is available in Ubuntu 17.04, could maybe backport to RedNotebook PPA
+    - cmark has a LaTeX renderer
+    - seems to be quite stable
 
 O Use Zeitgeist for automatic category entries
   O Make Zeitgeist widget generic, so it can be reused by other projects
@@ -144,7 +143,6 @@ O Move to github
     X Import translations from lp:~jendrikseipp/rednotebook/translations into git repo.
   O Answers:
     Propose to use stackoverflow for questions?
-    Use github issues?
     Definitely keep launchpad answers for now.
     (https://groups.google.com/forum/#!topic/google-collections-users/m8FnCcmtC88)
   X PPAs:
@@ -155,6 +153,9 @@ O Move to github
 Minimum versions:
   package python-webkit is removed in Ubuntu 17.04
   package gir1.2-webkit2-4.0 is introduced in Ubuntu 16.04
+
+O Faster search:
+  Store inverted index of all n-grams (for n=1 to n=length-of-longest-word).
 
 
 Ideas:
