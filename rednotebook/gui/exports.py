@@ -303,18 +303,22 @@ class ExportAssistant(Assistant):
 
         self.set_title(_('Export Assistant'))
 
-        texts = [
-            _('Welcome to the Export Assistant.'),
-            _('This wizard will help you to export your journal to various formats.'),
-            _('You can select the days you want to export and where the output will be saved.')]
-        text = '\n'.join(texts)
-        self._add_intro_page(text)
+        def add_space():
+            self.page1.pack_start(Gtk.Label(''), False, False, 0)
 
         self.page1 = RadioButtonPage()
+        text = '\n'.join([
+            _('Welcome to the Export Assistant.'),
+            _('This wizard will help you to export your journal to various formats.'),
+            _('You can select the days you want to export and where the output will be saved.')])
+        welcome_label = Gtk.Label(text)
+        self.page1.pack_start(welcome_label, False, False, 0)
+        add_space()
         for exporter in self.exporters:
             name = exporter.NAME
             desc = exporter.DESCRIPTION
             self.page1.add_radio_option(exporter, name, desc)
+        add_space()
         pdf_label = Gtk.Label(_('PDF: export to HTML, open in browser and print to PDF file'))
         pdf_label.set_halign(Gtk.Align.START)
         self.page1.pack_start(pdf_label, False, False, 0)
