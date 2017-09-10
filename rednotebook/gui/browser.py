@@ -18,13 +18,10 @@
 # -----------------------------------------------------------------------
 
 import logging
-import os.path
 
 import gi
-from gi.repository import Gtk
 
 from rednotebook.util import filesystem
-from rednotebook.util import markup
 
 try:
     gi.require_version('WebKit2', '4.0')
@@ -86,83 +83,3 @@ if WebKit2:
                     self.highlight(self.search_text)
                 else:
                     webview.get_find_controller().search_finish()
-
-
-class HtmlPrinter:
-    """
-    Print HTML document to PDF.
-    """
-    def __init__(self):
-        self._webview = Browser()
-        self._webview.get_settings().set_enable_write_console_messages_to_stdout(True)
-        self._webview.connect('print', self._on_print)
-        self._webview.connect('load-failed', self._on_load_failed)
-        self._webview.connect('load-changed', self._on_load_changed)
-        self._paper_size = Gtk.PaperSize(Gtk.PAPER_NAME_A4)
-        self.outfile = None
-
-    def print_html(self, html, outfile):
-        """
-        TODO: Pages with formulas are often not loaded at all. The same
-        HTML works in Epiphany and Chrome so it's hard to say where the
-        error is coming from. We should revisit this when formulas
-        become officially supported. One solution is to recommend
-        exporting to HTML and printing from there.
-
-        """
-        self.outfile = outfile
-        if 'MathJax' in html:
-            print_function = '<script>MathJax.Hub.Queue(function() {window.print();});</script>'
-        else:
-            print_function = '<script>window.onload = function() {window.print();};</script>'
-        html = html.replace(markup.PRINT_FUNCTION, print_function)
-        logging.info('Loading HTML...')
-        self._webview.load_html(html)
-
-    def _on_print(self, _view, print_op):
-        """
-        To print the PDF without a dialog, we would need to set the
-        "Print to File" printer name. While we can set the printer by
-        localized name, this obviously only works if the two
-        translations match, which is brittle. If they don't match,
-        calling `print_op.print_()` exits without an error, but does
-        nothing. We therefore set the localized printer name as a hint,
-        but don't depend on it. Instead, we display the print dialog and
-        let the user make adjustments.
-
-        see gtk/modules/printbackends/file/gtkprintbackendfile.c shows
-        that the non-translated printer name is "Print to File".
-
-        """
-        print_settings = Gtk.PrintSettings()
-        print_settings.set_paper_size(self._paper_size)
-        print_settings.set_printer(_('Print to File'))
-        print_settings.set(
-            Gtk.PRINT_SETTINGS_OUTPUT_URI,
-            filesystem.get_local_url(os.path.abspath(self.outfile)))
-        print_settings.set(Gtk.PRINT_SETTINGS_OUTPUT_FILE_FORMAT, 'pdf')
-
-        print_op.set_page_setup(Gtk.PageSetup())
-        print_op.set_print_settings(print_settings)
-        print_op.connect('finished', self._on_end_print)
-
-        logging.info('Exporting PDF...')
-
-        # Show print dialog.
-        return False
-
-    def _on_load_changed(self, _view, event):
-        logging.info('Load changed: {}'.format(event))
-
-    def _on_load_failed(self, _view, event, uri, error):
-        logging.error("Error loading %s" % uri)
-        # Stop propagating the error.
-        return True
-
-    def _on_end_print(self, *args):
-        logging.info('Exporting done')
-
-
-def print_pdf(html, filename):
-    printer = HtmlPrinter()
-    printer.print_html(html, filename)
