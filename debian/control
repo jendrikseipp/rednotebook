@@ -6,7 +6,7 @@ Standards-Version: 4.1.0
 Homepage: http://rednotebook.sourceforge.net/
 Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 10)
 Build-Depends-Indep: python3, dh-python
 
 Package: rednotebook
@@ -21,6 +21,6 @@ Depends: ${python3:Depends},
          python3-gi,
          python3-yaml
 Recommends: python3-enchant
-Description: A modern desktop journal. It lets you format, tag and search
+Description: Modern desktop journal. It lets you format, tag and search
  your entries. You can also add pictures, links and customizable templates,
- spell check your notes, and export to plain text, HTML, Latex or PDF.
+ spell check your notes, and export to plain text, HTML, LaTeX or PDF.
