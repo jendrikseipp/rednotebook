@@ -1,26 +1,12 @@
 rednotebook (2.2-2) unstable; urgency=medium
 
   * Maintainer change.
-  * Initial debian submission of RedNotebook version 2.x.
-  
+  * ITP: Submission of RedNotebook version 2.x. (Closes: #875264)
+
   [ Omar Jair Purata Funes ]
   * Team contribution - debug and packaging.
 
  -- Phil Wyett <philwyett@kathenas.org>  Sat, 09 Sep 2017 23:57:57 +0100
-
-rednotebook (2.2-1.2) unstable; urgency=medium
-
-  * Non-maintainer upload.
-  * Fix lintian pedantic warning - wiki-copyright-format-uri.
-  * Fix license block issues created from above fix.
-
- -- Phil Wyett <philwyett@kathenas.org>  Fri, 08 Sep 2017 22:35:07 +0100
-
-rednotebook (2.2-1.1) unstable; urgency=medium
-
-  * Non-maintainer upload.
-
- -- Phil Wyett <philwyett@kathenas.org>  Fri, 08 Sep 2017 21:42:53 +0100
 
 rednotebook (2.2-1) UNRELEASED; urgency=low
 
