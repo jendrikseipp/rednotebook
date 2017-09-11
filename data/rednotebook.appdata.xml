@@ -6,9 +6,9 @@
   <name>RedNotebook</name>
   <summary>Graphical diary and journal</summary>
   <description>
-    <p>Modern desktop journal. It lets you format, tag
-    and search your entries. You can also add pictures, links and
-    customizable templates, spell check your notes, and export to plain
+    <p>Modern desktop diary and personal journaling tool. It lets you format,
+    tag and search your entries. You can also add pictures, links and
+    customisable templates, spell check your notes, and export to plain
     text, HTML, LaTeX or PDF.</p>
   </description>
   <url type="homepage">http://rednotebook.sourceforge.net</url>
