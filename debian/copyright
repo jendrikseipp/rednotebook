@@ -2,7 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: rednotebook
 
 Files: *
-Copyright: Copyright (C) 2009-2017 Jendrik Seipp <jendrikseipp@gmail.com>
+Copyright: Copyright (C) 2008-2017 Jendrik Seipp <jendrikseipp@gmail.com>
 License: GPL-2+
 
 Files: debian/*
@@ -62,7 +62,7 @@ License: GPL-3+
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-3".
 
 Files: rednotebook/external/txt2tags.py
-Copyright: Copyright 2001-2010 Aurelio Jargas
+Copyright: Copyright (C) 2001-2008 Aurelio Jargas <aurelio@aurelio.net>
 License: GPL-2+
 
 License: GPL-2+
