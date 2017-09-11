@@ -41,6 +41,10 @@ O Copy files and pictures into data subdirectory
 O Internal links to other days
 O Add menus to forward and backward buttons to navigate to recently visited days.
 O hashtag non-alphanumeric characters, e.g. #c++
+O Use Gtk.Application.
+O Don't store regexes in Cloud class.
+O Don't store link_dict, but use names directly in HTML in Cloud class.
+
 
 O Right-side tags panel:
   O Make the right panel an advanced option?
