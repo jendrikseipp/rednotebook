@@ -18,7 +18,7 @@ rednotebook (2.2-1) unstable; urgency=medium
   * Remove debian/menu - Not necessary and causes lintian warning.
   * Remove debian/README.sources - Not needed.
   * Eliminate lintian pedantic warnings that are checked on the upload servers.
-  * Updated debian changelog.
+  * Updated debian changelog - Various fixes.
   * ITP: Submission of RedNotebook version 2.x. (Closes: #875264)
 
  -- Phil Wyett <philwyett@kathenas.org>  Sat, 09 Sep 2017 23:57:57 +0100
