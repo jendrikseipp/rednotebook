@@ -1,22 +1,27 @@
-rednotebook (2.2-2) unstable; urgency=medium
+rednotebook (2.2-1) unstable; urgency=medium
 
-  * Maintainer change.
-  * ITP: Submission of RedNotebook version 2.x. (Closes: #875264)
+  [ Jendrik Seipp ]
+  * New upstream release
+  * Port RedNotebook 2 to Windows.
+  * Windows: uninstall old version before installing new version to remove
+    old files.
+  * Windows: use Aspell for spell checking.
 
   [ Omar Jair Purata Funes ]
   * Team contribution - debug and packaging.
 
+  [ Phil Wyett ]
+  * Maintainer change.
+  * Add patch: appdata_path_and_description.patch
+    - Update appdata install path.
+    - Update description in appdata file to match debian control file.
+  * Remove debian/menu - Not necessary and causes lintian warning.
+  * Remove debian/README.sources - Not needed.
+  * Eliminate lintian pedantic warnings that are checked on the upload servers.
+  * Updated debian changelog.
+  * ITP: Submission of RedNotebook version 2.x. (Closes: #875264)
+
  -- Phil Wyett <philwyett@kathenas.org>  Sat, 09 Sep 2017 23:57:57 +0100
-
-rednotebook (2.2-1) UNRELEASED; urgency=low
-
-  * New upstream release
-  * Port RedNotebook 2 to Windows.
-  * Windows: uninstall old version before installing new version to remove old files.
-  * Windows: use Aspell for spell checking.
-  * Update Debian files (@kathenas).
-
- -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 08 Sep 2017 19:52:14 +0200
 
 rednotebook (2.1.5-1) UNRELEASED; urgency=low
 
