@@ -142,6 +142,16 @@ def show_html_in_browser(html, filename):
     webbrowser.open(html_file)
 
 
+def compute_ngrams(text):
+    ngrams = []
+    words = text.split()
+    for word in words:
+        for i in range(0, len(word) + 1):
+            for j in range(i + 1, len(word) + 1):
+                ngrams.append(word[i:j])
+    return set(ngrams)
+
+
 class StreamDuplicator:
     def __init__(self, streams):
         self.streams = streams
