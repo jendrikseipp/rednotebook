@@ -575,7 +575,12 @@ def main():
         logging.debug('Trying to enter the gtk main loop')
         Gtk.main()
     except KeyboardInterrupt:
-        sys.exit()
+        pass
+
+    try:
+        logging.info("Peak memory: {} KiB".format(filesystem.get_peak_memory_in_kb()))
+    except Warning:
+        pass
 
 
 if __name__ == '__main__':
