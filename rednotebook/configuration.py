@@ -37,7 +37,7 @@ class Config(dict):
         'autoSwitchMode': 0,
         'closeToTray': 0,
         'checkForNewVersion': 0,
-        'showTagsPane': 1,
+        'showTagsPane': 0,
         'weekNumbers': 0,
         'portable': 0,
         'userDir': '',
