@@ -12,9 +12,6 @@ X Remove intro page from export wizard.
 X Print peak memory usage when program exits.
 X Hide tags panel completely by default instead of only minimizing it.
 O Web: turn screenshots page into testimonials page.
-O Place subtags behind hashtags inside the text itself:
-  I met #Sarah and we had some coffee talking about old times# then i went to #work.
-  Maybe it's better to use #Movies:Oblivion and end the subtag at the end of the line.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
@@ -34,7 +31,7 @@ O Macro system that takes predefined text like {weather} and turns it
 O Live preview of selected font in editor pane.
 O Allow exporting the entries of a search result.
 O When searching for a tag, show text near tag in search results.
-O Allow searching for hashtags and show subhashtags in the search results
+
 O Make sure that RedNotebook contents are saved under Windows when system is shut down.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
 O When searching for a tag, show text around tag, not beginning of day's text.
@@ -48,12 +45,14 @@ O Don't store regexes in Cloud class.
 O Don't store link_dict, but use names directly in HTML in Cloud class.
 
 
-O Right-side tags panel:
-  O Make the right panel an advanced option?
-  O Remove tag panel.
-    O Make sure that inline tags allow subtags and that these are
-      displayed when searching for the tag.
-    O Allow formatting subtags (--groceries--).
+O Remove right-side tags panel:
+  O Make sure that hashtags allow subtags (in one form or another) and
+    that these are displayed when searching for the tag.
+    O Allow formatting subtags (--groceries--)?
+  O Place subtags behind hashtags inside the text itself?
+    I met #Sarah and we had some coffee talking about old times# then i went to #work.
+    Maybe it's better to use #Movies:Oblivion and end the subtag at the end of the line.
+  O Allow searching for hashtags and show subhashtags in the search results.
 
 O Enable right-click menu for copying in preview
   We don't want the menu with "Reload", so we can either
@@ -109,7 +108,6 @@ O Color submenu in format menu with additional color picker and color highlighti
 - verbatim / raw ( """/"" - supported, undocumented) (too confusing / poorly behaving)
 - remote pictures (pictures would have to be downloaded and saved in a folder for exports)
 - dataDir Lock (for multiple TRN instances) (unneeded)
-- Tags in text entries (e.g. @film:Batman) (KISS)
 - Copy/Paste category entries (Too complicated)
 - Add --portable command line parameter (The default config file is better)
 - word wrapping while editing category entries (too complicated, would involve writing C code)
