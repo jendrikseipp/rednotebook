@@ -98,16 +98,28 @@ class Day:
             day_content[old_tag] = None
             self.month.edited = True
 
-        self.content = day_content
+        self._content = day_content
 
         # Remember the last edit and preview position
         self.last_edit_pos = None
 
+    def _get_content(self):
+        return self._content
+
+    def _set_content(self, content):
+        old_text = self.text
+        new_text = content['text']
+        content['text'] = old_text
+        self._content = content
+        self.text = new_text
+    content = property(_get_content, _set_content)
+
     def _get_text(self):
-        '''Return the day's text as unicode.'''
+        '''Return the day's text as a unicode string.'''
         return self.content['text']
 
     def _set_text(self, text):
+        assert 'text' in self.content
         self.content['text'] = text
     text = property(_get_text, _set_text)
 
