@@ -15,6 +15,8 @@ rednotebook (2.2-1) unstable; urgency=medium
   * Add patch: appdata_path_and_description.patch
     - Update appdata install path.
     - Update description in appdata file to match debian control file.
+  * Add patch: txt2tags_license_update.patch
+    - Update license text.
   * Remove debian/menu - Not necessary and causes lintian warning.
   * Remove debian/README.sources - Not needed.
   * Eliminate lintian pedantic warnings that are checked on the upload servers.
