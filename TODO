@@ -7,6 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Compress backups.
 X Remove brittle PDF export. Export to HTML and print to PDF with browser instead.
 X Remove intro page from export wizard.
 X Print peak memory usage when program exits.

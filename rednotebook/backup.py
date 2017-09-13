@@ -37,7 +37,7 @@ def write_archive(archive_file_name, files, base_dir='', arc_base_dir=''):
     Use base_dir for relative filenames, in case you don't
     want your archive to contain '/home/...'
     """
-    archive = zipfile.ZipFile(archive_file_name, "w")
+    archive = zipfile.ZipFile(archive_file_name, mode="w", compression=zipfile.ZIP_DEFLATED)
     for file in files:
         archive.write(file, os.path.join(arc_base_dir, file[len(base_dir):]))
     archive.close()
