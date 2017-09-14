@@ -8,6 +8,7 @@ please check back with me briefly about its status.
 === Roadmap ===
 
 X Compress backups.
+X Use newer txt2tags version 2.6 and reapply changes to obtain a GPL-2+ version.
 X Remove brittle PDF export. Export to HTML and print to PDF with browser instead.
 X Remove intro page from export wizard.
 X Print peak memory usage when program exits.
