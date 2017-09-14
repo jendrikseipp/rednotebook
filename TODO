@@ -25,8 +25,6 @@ X Add quotes by indenting them with a tab
 O Make default CSS prettier
 O When clicking on a hashtag in the tag cloud scroll to tag and highlight it
 O Allow filtering days that contain multiple given tags, allow iteratively clicking more tags.
-O Exports: add option to insert a page break between days. Use hr for
-  HTML exports. This seems to be difficult for PDFs.
 O Macro system that takes predefined text like {weather} and turns it
   into other text for the preview, e.g. an HTML snippet that displays that day's weather symbol.
 O Live preview of selected font in editor pane.
