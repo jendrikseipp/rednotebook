@@ -62,7 +62,8 @@ License: GPL-3+
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-3".
 
 Files: rednotebook/external/txt2tags.py
-Copyright: Copyright (C) 2001-2008 Aurelio Jargas <aurelio@aurelio.net>
+Copyright: Copyright (C) 2001-2010 Aurelio Jargas <aurelio@aurelio.net>
+           Copyright (C) 2010-2017 Jendrik Seipp <jendrikseipp@gmail.com>
 License: GPL-2+
 
 License: GPL-2+
