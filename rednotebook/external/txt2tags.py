@@ -4616,17 +4616,16 @@ def compile_filters(filters, errmsg='Filter'):
 def enclose_me(tagname, txt):
     return TAGS.get(tagname+'Open') + txt + TAGS.get(tagname+'Close')
 
-def beautify_me(name, line):
+def beautify_me(name, font, line):
     "where name is: bold, italic, underline or strike"
 
     # Exception: Doesn't parse an horizontal bar as strike
     if name == 'strike' and regex['bar'].search(line): return line
 
-    name  = 'font%s' % name.capitalize()
-    open_ = TAGS['%sOpen'%name]
-    close = TAGS['%sClose'%name]
+    open_  = TAGS['%sOpen' % font]
+    close = TAGS['%sClose' % font]
     txt = r'%s\1%s'%(open_, close)
-    line = regex[name].sub(txt,line)
+    line = regex[font].sub(txt, line)
     return line
 
 def get_tagged_link(label, url):
@@ -4936,9 +4935,11 @@ def parse_images(line):
 
 def add_inline_tags(line):
     # Beautifiers
-    for beauti in ('bold', 'italic', 'underline', 'strike'):
-        if regex['font%s'%beauti.capitalize()].search(line):
-            line = beautify_me(beauti, line)
+    for beauti, font in [
+            ('bold', 'fontBold'), ('italic', 'fontItalic'),
+            ('underline', 'fontUnderline'), ('strike', 'fontStrike')]:
+        if regex[font].search(line):
+            line = beautify_me(beauti, font, line)
 
     line = parse_images(line)
     return line
