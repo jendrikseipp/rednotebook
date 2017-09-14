@@ -176,7 +176,12 @@ class InsertMenu:
 
         filter = Gtk.FileFilter()
         filter.set_name("Images")
-        filter.add_mime_type("image/*")
+        filter.add_mime_type("image/bmp")
+        filter.add_mime_type("image/gif")
+        filter.add_mime_type("image/jpeg")
+        filter.add_mime_type("image/png")
+        # SVG images aren't found by MIME type on Windows.
+        filter.add_pattern("*.svg")
 
         picture_chooser.add_filter(filter)
 
