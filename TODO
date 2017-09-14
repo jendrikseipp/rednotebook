@@ -11,6 +11,7 @@ X Compress backups.
 X Use newer txt2tags version 2.6 and reapply changes to obtain a GPL-2+ version.
 X Remove brittle PDF export. Export to HTML and print to PDF with browser instead.
 X Remove intro page from export wizard.
+X Fix: image files were not found on Windows and Mac OS.
 X Print peak memory usage when program exits.
 X Hide tags panel completely by default instead of only minimizing it.
 O Web: turn screenshots page into testimonials page.
