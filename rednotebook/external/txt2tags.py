@@ -3034,6 +3034,9 @@ class MaskMaster:
             # Protect tagged text
             if t >= 0 and (r == -1 or t < r) and (v == -1 or t < v):
                 txt = regex['tagged'].search(line).group(1)
+                ## JS
+                if TARGET == 'tex':
+                    txt = txt.replace('_', 'vvvUnderscoreInTaggedTextvvv')
                 self.taggedbank.append(txt)
                 line = regex['tagged'].sub(self.taggedmask,line,1)
 
@@ -3041,6 +3044,9 @@ class MaskMaster:
             elif r >= 0 and (t == -1 or r < t) and (v == -1 or r < v):
                 txt = regex['raw'].search(line).group(1)
                 txt = doEscape(TARGET,txt)
+                ## JS
+                if TARGET == 'tex':
+                    txt = txt.replace('_', 'vvvUnderscoreInRawTextvvv')
                 self.rawbank.append(txt)
                 line = regex['raw'].sub(self.rawmask,line,1)
 
@@ -4558,6 +4564,9 @@ def doFinalEscape(target, txt):
     elif target == 'tex' :
         txt = txt.replace('_', r'\_')
         txt = txt.replace('vvvvTexUndervvvv', '_')  # shame!
+        ## JS
+        txt = txt.replace('vvvUnderscoreInRawTextvvv', '_')
+        txt = txt.replace('vvvUnderscoreInTaggedTextvvv', '_')
     return txt
 
 def EscapeCharHandler(action, data):
