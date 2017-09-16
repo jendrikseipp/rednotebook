@@ -3,7 +3,7 @@
 set -e
 
 cd "$(dirname "$0")"
-cd ..
+cd .. || exit
 
 python3 -m pyflakes dev/whitelist.py
 python3 dev/whitelist.py
