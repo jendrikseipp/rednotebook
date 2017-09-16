@@ -5,8 +5,15 @@
 set -e
 set -u
 
+# Check that required 'intltool' is installed.
+if ! [ -x "$(command -v intltool-extract)" ]
+then
+    echo 'intltool not installed. Please install intltool package. Exiting...' >&2
+    exit 1
+fi
+
 cd "$(dirname "$0")"
-cd ../po
+cd ../po || exit
 
 # Get strings from glade file into helper file
 intltool-extract --local --type=gettext/glade ../rednotebook/files/main_window.glade
