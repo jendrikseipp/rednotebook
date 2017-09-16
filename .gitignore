@@ -4,4 +4,12 @@ build/
 dist/
 po/*.mo
 .cache/
+.pc/
+.pybuild/
 .tox/
+debian/rednotebook/
+debian/debhelper-build-stamp
+debian/files
+debian/rednotebook.postinst.debhelper
+debian/rednotebook.prerm.debhelper
+debian/rednotebook.substvars
