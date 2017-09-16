@@ -183,7 +183,9 @@ class InsertMenu:
         # SVG images aren't found by MIME type on Windows.
         filter.add_pattern("*.svg")
 
-        picture_chooser.add_filter(filter)
+        # File filter hides all files on MacOS.
+        if not filesystem.IS_MAC:
+            picture_chooser.add_filter(filter)
 
         # Add box for inserting image width.
         box = Gtk.HBox()

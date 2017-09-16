@@ -32,6 +32,7 @@ LANGUAGE = locale.getdefaultlocale()[0]
 REMOTE_PROTOCOLS = ['http', 'ftp', 'irc']
 
 IS_WIN = sys.platform.startswith('win')
+IS_MAC = (sys.platform == 'darwin')
 
 
 def has_system_tray():
