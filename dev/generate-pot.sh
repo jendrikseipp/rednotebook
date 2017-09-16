@@ -13,7 +13,7 @@ then
 fi
 
 cd "$(dirname "$0")"
-cd ../po || exit
+cd ../po
 
 # Get strings from glade file into helper file
 intltool-extract --local --type=gettext/glade ../rednotebook/files/main_window.glade
