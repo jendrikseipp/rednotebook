@@ -1,3 +1,13 @@
+== 2.3 (2017-09-25) ==
+* Compress backups.
+* Use newer txt2tags version 2.6 and reapply changes to obtain a GPL-2+ version.
+* Remove brittle PDF export. Please export to HTML and print to PDF with browser instead.
+* Remove intro page from export wizard.
+* Fix: image files were not found on Windows and Mac OS.
+* Print peak memory usage on Linux when program exits.
+* Hide tags panel completely by default instead of only minimizing it.
+* Update Debian files (@kathenas).
+
 == 2.2 (2017-09-08) ==
 * Port RedNotebook 2 to Windows.
 * Windows: uninstall old version before installing new version to remove old files.
