@@ -1,3 +1,17 @@
+rednotebook (2.3-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Compress backups.
+  * Use newer txt2tags version 2.6 and reapply changes to obtain a GPL-2+ version.
+  * Remove brittle PDF export. Please export to HTML and print to PDF with browser instead.
+  * Remove intro page from export wizard.
+  * Fix: image files were not found on Windows and Mac OS.
+  * Print peak memory usage on Linux when program exits.
+  * Hide tags panel completely by default instead of only minimizing it.
+  * Update Debian files (@kathenas).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 25 Sep 2017 13:12:21 +0200
+
 rednotebook (2.2-1) unstable; urgency=medium
 
   [ Jendrik Seipp ]
