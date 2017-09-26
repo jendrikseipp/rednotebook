@@ -3,8 +3,6 @@
 HELP = """\
 Installation instructions:
 
-Tested with wine stable 1.6.
-
 For later wine versions installing the suggested gecko and mono packages
 is optional. When asked to install them, you can click "Cancel".
 
@@ -30,12 +28,12 @@ from utils import run, fetch, install
 
 logging.basicConfig(level=logging.INFO)
 
-IS_WIN = sys.platform.startswith('win')
-IS_LINUX = not IS_WIN  # OSX currently not supported.
+IS_WIN = sys.platform in ['win32', 'cygwin']
+USE_WINE = not IS_WIN
 
 def parse_args():
     parser = argparse.ArgumentParser(description=HELP)
-    if IS_LINUX:
+    if USE_WINE:
         parser.add_argument('build_dir')
     return parser.parse_args()
 
@@ -48,7 +46,7 @@ DRIVE_C = 'C:\\'
 PYTHON_DIR = 'Python34'
 SITE_PACKAGES = os.path.join(DRIVE_C, PYTHON_DIR, 'Lib', 'site-packages')
 SEVEN_ZIP = os.path.join(DRIVE_C, 'Program Files (x86)', '7-Zip', '7z.exe')
-if IS_LINUX:
+if USE_WINE:
     BUILD_DIR = args.build_dir
     utils.confirm_overwrite(BUILD_DIR)
     os.environ['WINEPREFIX'] = BUILD_DIR
@@ -85,18 +83,18 @@ FILES = [
 
 print(HELP)
 
-# Python >= 3.5 set Windows Version to at least Windows 7.
+# For Python >= 3.5 set Windows Version to at least Windows 7.
 # run(['winecfg'])
 
 for url, filename in INSTALLERS:
     path = os.path.join(INSTALLERS_DIR, filename)
     fetch(url, path)
-    install(path, use_wine=IS_LINUX)
+    install(path, use_wine=USE_WINE)
 
 for url, filename, dest in TARBALLS:
     path = os.path.join(INSTALLERS_DIR, filename)
     fetch(url, path)
-    cmd = ['wine'] if IS_LINUX else []
+    cmd = ['wine'] if USE_WINE else []
     assert path.endswith('.zip'), path
     cmd.extend([SEVEN_ZIP, 'x', '-o' + dest, path])
     run(cmd)
