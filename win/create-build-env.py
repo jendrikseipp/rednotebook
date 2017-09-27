@@ -28,7 +28,7 @@ from utils import run, fetch, install
 
 logging.basicConfig(level=logging.INFO)
 
-IS_WIN = sys.platform in ['win32', 'cygwin']
+IS_WIN = sys.platform in ['cygwin', 'msys', 'win32']
 USE_WINE = not IS_WIN
 
 def parse_args():
