@@ -107,13 +107,30 @@ O Mobile version:
     - Modernizr for detecting browser support
     - Supports all mobile platforms and is even compatible with the Windows Store
 
-O Markdown:
-  - extendable Python markdown parser with lexer and renderer: https://github.com/lepture/mistune
+O Markdown (https://babelmark.github.io):
+  - mistune (https://github.com/lepture/mistune):
+    - extendable Python markdown parser with lexer and renderer
     - python3-mistune is available in Ubuntu 16.04
-  - another alternative would be to wrap cmark (wrapper in "wrappers" dir): https://github.com/jgm/cmark
+    - uses github-flavored-markdown extensions
+    - seems to be close to CommonMark (with some extensions, https://github.com/lepture/mistune/issues/26)
+    - BSD-3
+    - version 0.7.4 is just one file
+  - cmark (https://github.com/jgm/cmark):
+    - wrapper in "wrappers" dir
     - cmark is available in Ubuntu 17.04, could maybe backport to RedNotebook PPA
     - cmark has a LaTeX renderer
     - seems to be quite stable
+  - python-markdown (https://github.com/Python-Markdown/markdown):
+    - available in Ubuntu repos and seems quite stable
+    - has lots of extensions
+    - could use github-flavored-markdown extensions (https://github.com/Zopieux/py-gfm, BSD-3)
+    - maintainer not interested in supporting CommonMark (https://github.com/Python-Markdown/markdown/issues/338)
+  - CommonMark-py (https://github.com/rtfd/CommonMark-py, BSD-3):
+    - has HTML and rst renderers
+    - no extensions
+
+  - Best options seems to be python-markdown + py-gfm or mistune
+
 
 O Use Zeitgeist for automatic category entries
   O Make Zeitgeist widget generic, so it can be reused by other projects
