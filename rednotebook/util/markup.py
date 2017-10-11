@@ -385,7 +385,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
         logging.error(msg)
         result = msg
     # Unknown error, show the traceback to the user
-    except:
+    except Exception:
         result = (
             '<b>Error</b>: This day contains invalid '
             '<a href="http://txt2tags.org/markup.html">txt2tags markup</a>. '
@@ -439,7 +439,7 @@ def convert_to_pango(txt, headers=None, options=None):
         result = msg
 
     # Unknown error, show the traceback to the user
-    except:
+    except Exception:
         result = txt2tags.getUnknownErrorMessage()
         logging.error(result)
 

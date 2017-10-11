@@ -33,6 +33,7 @@ def get_date_from_date_string(date_string):
     date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
     return datetime.date(date.year, date.month, date.day)
 
+
 # Number of days per month (except for February in leap years)
 month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 

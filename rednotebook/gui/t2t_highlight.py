@@ -229,6 +229,7 @@ def add_header_styles():
         name = 'title%s' % (level)
         styles[name] = style
 
+
 add_header_styles()
 
 # Syntax definition
