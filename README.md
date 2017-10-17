@@ -13,7 +13,7 @@ See `debian/control` for Debian and derivative package names.
   * Python (>= 3.4):        https://www.python.org
   * GTK+ (>= 3.10):         https://www.gtk.org
   * WebKitGTK+ (>= 2.16):   https://webkitgtk.org
-  * PyYAML:                 http://pyyaml.org
+  * PyYAML:                 https://pyyaml.org
 
 Recommended libraries:
 
