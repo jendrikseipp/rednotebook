@@ -294,14 +294,16 @@ class Journal:
 
         try:
             filesystem.make_directory(self.dirs.data_dir)
-        except (OSError, IOError):
+        except (OSError, IOError) as err:
+            logging.error('Creating journal directory failed: {}'.format(err))
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
         try:
             something_saved = storage.save_months_to_disk(
                 self.months, self.dirs.data_dir, exit_imminent, saveas)
-        except (IOError, OSError):
+        except (IOError, OSError) as err:
+            logging.error('Saving month files failed: {}'.format(err))
             self.frame.show_save_error_dialog(exit_imminent)
             something_saved = None
 
