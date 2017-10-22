@@ -1,5 +1,7 @@
 ### Versions
+
 RedNotebook version: 
+
 Operating system and version:
 
 ### Expected behavior
