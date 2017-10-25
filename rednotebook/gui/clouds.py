@@ -212,6 +212,7 @@ class Cloud(browser.HtmlView):
                 logging.info('Clicked cloud URI "%s"' % uri)
                 self.journal.save_old_day()
                 self.journal.frame.search_box.set_active_text(search_text)
+                self.journal.frame.search_box.search(search_text)
                 # returning True here stops loading the document
                 return True
 
