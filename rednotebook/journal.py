@@ -356,7 +356,7 @@ class Journal:
         # We can't use self.days here since it uses self.save_old_day.
         for month in self.months.values():
             for day in month.days.values():
-                self.search_index.add(day.date, day.get_words())
+                self.search_index.add(day.date, day.get_indexed_words())
 
         self.stats = Statistics(self)
 
@@ -405,7 +405,7 @@ class Journal:
 
     def save_old_day(self):
         '''Order is important'''
-        self.search_index.remove(self.day.date, self.day.get_words())
+        self.search_index.remove(self.day.date, self.day.get_indexed_words())
         old_content = self.day.content
         new_content = self.frame.categories_tree_view.get_day_content()
         new_content['text'] = self.frame.get_day_text()
@@ -500,11 +500,7 @@ class Journal:
         return sorted(entries)
 
     def search(self, text, tags):
-        words = text.split()
-
-        # Strip all ASCII punctuation except for $, %, @ and '.
-        words = [w.strip('.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
-        words = [word for word in words if word]
+        words = data.get_indexed_words(text)
 
         if not words:
             return []

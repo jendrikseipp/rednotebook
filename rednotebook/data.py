@@ -38,6 +38,14 @@ def escape_tag(tag):
     return tag.lower().replace(' ', '_')
 
 
+def get_indexed_words(text):
+    words = text.split()
+
+    # Strip all ASCII punctuation except for $, %, @ and '.
+    words = [w.strip('.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
+    return [word for word in words if word]
+
+
 def get_text_with_dots(text, start, end, found_text=None):
     '''
     Find the outermost spaces and innermost newlines around
@@ -201,6 +209,14 @@ class Day:
         # Strip all ASCII punctuation except for $, %, @ and '.
         words = [w.strip('.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
         return [word for word in words if word]
+
+    def get_indexed_words(self):
+        categories_text = ' '.join(
+            ' '.join([category] + content)
+            for category, content in self.get_category_content_pairs().items())
+
+        all_text = self.text + ' ' + categories_text
+        return get_indexed_words(all_text)
 
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))
