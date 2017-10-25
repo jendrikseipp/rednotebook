@@ -353,8 +353,10 @@ class Journal:
         if self.is_first_start and not os.listdir(data_dir) and not self.days:
             self.add_instruction_content()
 
-        for day in self.days:
-            self.search_index.add(day.date, day.get_words())
+        # We can't use self.days here since it uses self.save_old_day.
+        for month in self.months.values():
+            for day in month.days.values():
+                self.search_index.add(day.date, day.get_words())
 
         self.stats = Statistics(self)
 
@@ -397,6 +399,9 @@ class Journal:
             self.months[year_and_month] = Month(date.year, date.month)
 
         return self.months[year_and_month]
+
+    def get_day(self, date):
+        return self.get_month(date).get_day(date.day)
 
     def save_old_day(self):
         '''Order is important'''
@@ -508,10 +513,10 @@ class Journal:
         for word in words[1:]:
             dates &= self.search_index.find(word)
 
-        days = self.get_days_with_tags(tags)
+        #days = self.get_days_with_tags(tags)
         results = []
-        for day in reversed(days):
-            results.append(day.search(text, tags))
+        for date in sorted(dates, reverse=True):
+            results.append(self.get_day(date).search(text, tags))
         return results
 
     def get_days_with_tags(self, tags):
