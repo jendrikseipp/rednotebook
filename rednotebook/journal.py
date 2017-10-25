@@ -364,8 +364,8 @@ class Journal:
 
         self.frame.categories_tree_view.categories = self.categories
         # Add auto-completion for tag search
-        self.frame.search_box.set_entries(['#%s' % self.normalize_tag(tag)
-                                           for tag in self.categories])
+        self.frame.search_box.set_entries(
+            ['#%s' % data.escape_tag(tag) for tag in self.categories])
 
         self.title = filesystem.get_journal_title(data_dir)
 
@@ -410,7 +410,7 @@ class Journal:
         new_content = self.frame.categories_tree_view.get_day_content()
         new_content['text'] = self.frame.get_day_text()
         self.day.content = new_content
-        self.search_index.add(self.day.date, self.day.get_words())
+        self.search_index.add(self.day.date, self.day.get_indexed_words())
 
         content_changed = (old_content != new_content)
         if content_changed:
@@ -490,9 +490,6 @@ class Journal:
         return list(sorted(set(itertools.chain.from_iterable(
             day.categories for day in self.days)), key=locale.strxfrm))
 
-    def normalize_tag(self, tag):
-        return tag.replace(' ', '_').lower()
-
     def get_entries(self, category):
         entries = set()
         for day in self.days:
@@ -501,6 +498,7 @@ class Journal:
 
     def search(self, text, tags):
         words = data.get_indexed_words(text)
+        words.extend('#{}'.format(tag) for tag in tags)
 
         if not words:
             return []
@@ -509,21 +507,10 @@ class Journal:
         for word in words[1:]:
             dates &= self.search_index.find(word)
 
-        #days = self.get_days_with_tags(tags)
         results = []
         for date in sorted(dates, reverse=True):
             results.append(self.get_day(date).search(text, tags))
         return results
-
-    def get_days_with_tags(self, tags):
-        if not tags:
-            return self.days
-        days = []
-        for day in self.days:
-            day_tags = set(data.escape_tag(tag) for tag in day.categories)
-            if all(tag in day_tags for tag in tags):
-                days.append(day)
-        return days
 
     def get_word_count_dict(self):
         """

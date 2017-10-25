@@ -38,11 +38,15 @@ def escape_tag(tag):
     return tag.lower().replace(' ', '_')
 
 
+def convert_category_to_hashtag(category):
+    return '#{}'.format(escape_tag(category))
+
+
 def get_indexed_words(text):
     words = text.split()
 
-    # Strip all ASCII punctuation except for $, %, @ and '.
-    words = [w.strip('.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
+    # Strip all ASCII punctuation except for #, $, %, @ and '.
+    words = [w.strip('.|-!"&/()=?*+~_:;,<>^°`{}[]\\') for w in words]
     return [word for word in words if word]
 
 
@@ -185,8 +189,8 @@ class Day:
         pairs = {}
         for category, content in self.content.items():
             if category == 'text':
-                continue
-            if content is None:
+                pass
+            elif content is None:
                 pairs[category] = []
             else:
                 pairs[category] = list(content.keys())
@@ -211,12 +215,19 @@ class Day:
         return [word for word in words if word]
 
     def get_indexed_words(self):
-        categories_text = ' '.join(
-            ' '.join([category] + content)
-            for category, content in self.get_category_content_pairs().items())
+        words = []
+        for category, content in self.content.items():
+            if category == 'text':
+                pass
+            else:
+                words.append(category)
+                words.append(convert_category_to_hashtag(category))
+                if content:
+                    for entry in content.keys():
+                        words.extend(get_indexed_words(entry))
 
-        all_text = self.text + ' ' + categories_text
-        return get_indexed_words(all_text)
+        words.extend(get_indexed_words(self.text))
+        return words
 
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))
