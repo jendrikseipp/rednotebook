@@ -17,3 +17,5 @@ def test_index():
     assert i._word_to_dates == {"foo": {date1}, "bar": {date1, date2}, "baz": {date2}}
     i.remove(date1, {"foo", "bar"})
     assert i._word_to_dates == {"bar": {date2}, "baz": {date2}}
+    i.clear()
+    assert i._word_to_dates == {}

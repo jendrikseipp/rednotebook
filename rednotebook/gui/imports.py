@@ -229,6 +229,7 @@ class PlainTextImporter(Importer):
 
                 path = os.path.join(dir, file)
                 text = filesystem.read_file(path)
+                raise NotImplementedError("update search index")
                 import_day.text = text
                 yield import_day
 

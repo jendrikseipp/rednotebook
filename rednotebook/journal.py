@@ -164,6 +164,7 @@ from rednotebook import backup
 
 from rednotebook.util.statistics import Statistics
 from rednotebook.gui.main_window import MainWindow
+from rednotebook import index
 from rednotebook import storage
 from rednotebook.data import Month
 
@@ -185,6 +186,8 @@ class Journal:
         self.month = None
         self.date = None
         self.months = {}
+
+        self.search_index = index.Index()
 
         # The dir name is the title
         self.title = ''
@@ -339,21 +342,23 @@ class Journal:
 
         self.month = None
         self.months.clear()
+        self.frame.search_box.clear()
+        self.search_index.clear()
 
         self.months = storage.load_all_months_from_disk(data_dir)
 
         # Nothing to save before first day change
         self.load_day(self.actual_date)
 
-        self.stats = Statistics(self)
-
-        if self.is_first_start and not os.listdir(data_dir) and len(self.days) == 0:
+        if self.is_first_start and not os.listdir(data_dir) and not self.days:
             self.add_instruction_content()
 
-        self.frame.cloud.update(force_update=True)
+        for day in self.days:
+            self.search_index.add(day.date, day.get_words())
 
-        # Reset Search
-        self.frame.search_box.clear()
+        self.stats = Statistics(self)
+
+        self.frame.cloud.update(force_update=True)
 
         self.frame.categories_tree_view.categories = self.categories
         # Add auto-completion for tag search
@@ -395,10 +400,12 @@ class Journal:
 
     def save_old_day(self):
         '''Order is important'''
+        self.search_index.remove(self.day.date, self.day.get_words())
         old_content = self.day.content
         new_content = self.frame.categories_tree_view.get_day_content()
         new_content['text'] = self.frame.get_day_text()
         self.day.content = new_content
+        self.search_index.add(self.day.date, self.day.get_words())
 
         content_changed = (old_content != new_content)
         if content_changed:
@@ -488,6 +495,19 @@ class Journal:
         return sorted(entries)
 
     def search(self, text, tags):
+        words = text.split()
+
+        # Strip all ASCII punctuation except for $, %, @ and '.
+        words = [w.strip('.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
+        words = [word for word in words if word]
+
+        if not words:
+            return []
+
+        dates = self.search_index.find(words[0])
+        for word in words[1:]:
+            dates &= self.search_index.find(word)
+
         days = self.get_days_with_tags(tags)
         results = []
         for day in reversed(days):

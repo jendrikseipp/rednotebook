@@ -29,10 +29,14 @@ class Index:
             self._word_to_dates[word].add(date)
 
     def remove(self, date, words):
-        for word in words:
+        for word in set(words):
             self._word_to_dates[word].remove(date)
             if not self._word_to_dates[word]:
                 del self._word_to_dates[word]
 
     def find(self, word):
-        return self._word_to_dates[word]
+        # Pass a copy to the caller.
+        return set(self._word_to_dates[word])
+
+    def clear(self):
+        self._word_to_dates.clear()
