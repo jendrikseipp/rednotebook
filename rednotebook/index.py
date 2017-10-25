@@ -25,18 +25,18 @@ class Index:
         self._word_to_dates = collections.defaultdict(set)
 
     def add(self, date, words):
-        for word in words:
+        for word in set(word.lower() for word in words):
             self._word_to_dates[word].add(date)
 
     def remove(self, date, words):
-        for word in set(words):
+        for word in set(word.lower() for word in words):
             self._word_to_dates[word].remove(date)
             if not self._word_to_dates[word]:
                 del self._word_to_dates[word]
 
     def find(self, word):
         # Pass a copy to the caller.
-        return set(self._word_to_dates[word])
+        return set(self._word_to_dates[word.lower()])
 
     def clear(self):
         self._word_to_dates.clear()
