@@ -160,8 +160,8 @@ class Day:
             pass
         elif text1 in text2:
             # The other text contains contains self.text
-            raise NotImplementedError("update search index")
             self.text = same_day.text
+            raise NotImplementedError("update search index")
         else:
             self.text += '\n\n' + same_day.text
 
