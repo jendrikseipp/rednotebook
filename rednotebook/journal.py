@@ -509,7 +509,8 @@ class Journal:
 
         results = []
         for date in sorted(dates, reverse=True):
-            results.append(self.get_day(date).search(text, tags))
+            for word in words:
+                results.append(self.get_day(date).search(word, tags))
         return results
 
     def get_word_count_dict(self):
