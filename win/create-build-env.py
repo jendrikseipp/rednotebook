@@ -8,7 +8,7 @@ is optional. When asked to install them, you can click "Cancel".
 
 PyGTK All-In-One Installer: Select the following packages on the
 respective pages:
-  1) GSpell, Webkit2GTK (not WebkitGTK), GTK+, Pango
+  1) GSpell, GTK+, Pango
   2) GtkSpell
   3) GIR
 
