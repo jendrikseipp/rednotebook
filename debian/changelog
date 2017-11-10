@@ -1,6 +1,5 @@
-rednotebook (2.3-1) unstable; urgency=low
+rednotebook (2.3-1) UNRELEASED; urgency=low
 
-  [ Jendrik Seipp ]
   * New upstream release
   * Compress backups.
   * Use newer txt2tags version 2.6 and reapply changes to obtain a GPL-2+ version.
@@ -11,34 +10,17 @@ rednotebook (2.3-1) unstable; urgency=low
   * Hide tags panel completely by default instead of only minimizing it.
   * Update Debian files (@kathenas).
 
- -- Phil Wyett <philwyett@kathenas.org>  Fri, 06 Oct 2017 20:20:27 +0100
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 25 Sep 2017 13:12:21 +0200
 
-rednotebook (2.2-1) unstable; urgency=medium
+rednotebook (2.2-1) UNRELEASED; urgency=low
 
-  [ Jendrik Seipp ]
   * New upstream release
   * Port RedNotebook 2 to Windows.
-  * Windows: uninstall old version before installing new version to remove
-    old files.
+  * Windows: uninstall old version before installing new version to remove old files.
   * Windows: use Aspell for spell checking.
+  * Update Debian files (@kathenas).
 
-  [ Omar Jair Purata Funes ]
-  * Team contribution - debug and packaging.
-
-  [ Phil Wyett ]
-  * Maintainer change.
-  * Add patch: appdata_path_and_description.patch
-    - Update appdata install path.
-    - Update description in appdata file to match debian control file.
-  * Add patch: txt2tags_license_update.patch
-    - Update license text.
-  * Remove debian/menu - Not necessary and causes lintian warning.
-  * Remove debian/README.sources - Not needed.
-  * Eliminate lintian pedantic warnings that are checked on the upload servers.
-  * Updated debian changelog - Various fixes.
-  * ITP: Submission of RedNotebook version 2.x. (Closes: #875264)
-
- -- Phil Wyett <philwyett@kathenas.org>  Sat, 09 Sep 2017 23:57:57 +0100
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 08 Sep 2017 19:52:14 +0200
 
 rednotebook (2.1.5-1) UNRELEASED; urgency=low
 
