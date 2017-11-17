@@ -2,7 +2,7 @@ Source: rednotebook
 Maintainer: Jendrik Seipp <jendrikseipp@gmail.com>
 Section: text
 Priority: optional
-Standards-Version: 4.1.0
+Standards-Version: 4.1.1
 Homepage: http://rednotebook.sourceforge.net/
 Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
