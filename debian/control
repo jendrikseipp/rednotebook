@@ -3,7 +3,7 @@ Maintainer: Jendrik Seipp <jendrikseipp@gmail.com>
 Section: text
 Priority: optional
 Standards-Version: 4.1.1
-Homepage: http://rednotebook.sourceforge.net/
+Homepage: https://rednotebook.sourceforge.io
 Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
 Build-Depends: debhelper (>= 10)

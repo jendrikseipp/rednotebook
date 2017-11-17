@@ -3,7 +3,7 @@ How to generate your own RedNotebook bundle
 (many thanks to Joshua Parsley for documenting this)
 
 - Download and install WineBottler from http://winebottler.kronenberg.org
-- Download the latest RedNotebook installer from http://rednotebook.sf.net
+- Download the latest RedNotebook installer
 - Open WineBottler and click on the "Advanced" button at the top.
   (documentation: http://winebottler.kronenberg.org/documentation -> Do Your Own)
 - Click "select File..." and choose the RedNotebook installer.

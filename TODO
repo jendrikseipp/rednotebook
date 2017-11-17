@@ -7,6 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Web: Switch to HTTPS.
 O Web: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
@@ -25,6 +26,7 @@ O Macro system that takes predefined text like {weather} and turns it
 O Live preview of selected font in editor pane.
 O Allow exporting the entries of a search result.
 O When searching for a tag, show text near tag in search results.
+O Make deleting templates easier.
 
 O Make sure that RedNotebook contents are saved under Windows when system is shut down.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.

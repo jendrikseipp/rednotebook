@@ -325,7 +325,7 @@
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Link location (e.g. http://rednotebook.sf.net)&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Link location (e.g. https://www.google.com)&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>

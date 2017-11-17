@@ -67,7 +67,7 @@ You can link to almost everything:
 
 - **links to files on your computer:** [filename.txt ""/path/to/filename.txt""]
 - **links to directories:** [directory name ""/path/to/directory/""]
-- **links to websites:** [RedNotebook Homepage ""http://rednotebook.sourceforge.net""]
+- **links to websites:** [RedNotebook Homepage ""https://rednotebook.sourceforge.io""]
 
 
 As you see, **bullet lists** are also available. As always you have to add two \

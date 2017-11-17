@@ -11,16 +11,16 @@
     customisable templates, spell check your notes, and export to plain
     text, HTML, LaTeX or PDF.</p>
   </description>
-  <url type="homepage">http://rednotebook.sourceforge.net</url>
+  <url type="homepage">https://rednotebook.sourceforge.io</url>
   <url type="bugtracker">https://github.com/jendrikseipp/rednotebook/issues</url>
   <url type="help">https://answers.launchpad.net/rednotebook</url>
   <url type="translate">https://translations.launchpad.net/rednotebook</url>
   <screenshots>
     <screenshot type="default">
-      <image>http://rednotebook.sourceforge.net/screenshots/rednotebook-2.0-1.png</image>
+      <image>https://rednotebook.sourceforge.io/screenshots/rednotebook-2.0-1.png</image>
     </screenshot>
     <screenshot>
-      <image>http://rednotebook.sourceforge.net/screenshots/rednotebook-2.0-2.png</image>
+      <image>https://rednotebook.sourceforge.io/screenshots/rednotebook-2.0-2.png</image>
     </screenshot>
   </screenshots>
 </component>

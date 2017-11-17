@@ -77,7 +77,7 @@ def get_new_version_number():
     version_pattern = re.compile(r'<span id="download-version">(.+)</span>')
 
     try:
-        project_xml = urlopen('http://rednotebook.sourceforge.net/').read()
+        project_xml = urlopen(info.url).read()
     except (IOError, http.client.HTTPException):
         return None
 
