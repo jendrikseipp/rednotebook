@@ -67,7 +67,7 @@ Install RedNotebook locally under
 
   * The authors of the libraries listed under 'Requirements'.
   * Ciaran for creating the RedNotebook icon.
-  * The txt2tags team (http://txt2tags.org/) for their markup conversion tool.
+  * The txt2tags team (https://txt2tags.org) for their markup conversion tool.
   * Ahmet Öztürk and Lifeograph for his markup highlighting idea
   * Hannes Matuschek: The code for markup highlighting uses a specialized
     version of his pygtkcodebuffer module
