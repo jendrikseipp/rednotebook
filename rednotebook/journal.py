@@ -571,6 +571,7 @@ class Journal:
         for example_day in info.example_content:
             self.day.content = example_day
             self.frame.set_date(self.month, self.date, self.day)
+            self.search_index.add(self.day.date, self.day.get_indexed_words())
             self.go_to_next_day()
 
         self.change_date(current_date)
