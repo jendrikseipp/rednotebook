@@ -7,6 +7,9 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Make search significantly faster.
+X Allow searching for multiple words.
+x Add AppVersion to InnoSetup file.
 X Web: Switch to HTTPS.
 O Web: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
