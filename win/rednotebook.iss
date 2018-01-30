@@ -7,6 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{82A7E9C3-D3F3-4B85-9AC3-D0E011D19E50}
 AppName=RedNotebook
+AppVersion={#REDNOTEBOOK_VERSION}
 AppVerName=RedNotebook {#REDNOTEBOOK_VERSION}
 AppPublisher=Jendrik Seipp
 AppPublisherURL=https://rednotebook.sourceforge.io
