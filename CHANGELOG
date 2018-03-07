@@ -1,3 +1,9 @@
+== 2.4 (2018-03-07) ==
+* Make search significantly faster by indexing all days.
+* Allow searching for multiple words.
+* Add AppVersion to InnoSetup file.
+* Homepage: Switch to HTTPS.
+
 == 2.3 (2017-09-25) ==
 * Compress backups.
 * Use newer txt2tags version 2.6 and reapply changes to obtain a GPL-2+ version.
