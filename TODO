@@ -7,11 +7,11 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Make search significantly faster.
+X Make search significantly faster by indexing all days.
 X Allow searching for multiple words.
 x Add AppVersion to InnoSetup file.
-X Web: Switch to HTTPS.
-O Web: turn screenshots page into testimonials page.
+X Homepage: Switch to HTTPS.
+O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
   X Highlight formulas in edit mode
@@ -45,6 +45,7 @@ O hashtag non-alphanumeric characters, e.g. #c++
 O Use Gtk.Application.
 O Don't store regexes in Cloud class.
 O Don't store link_dict, but use names directly in HTML in Cloud class.
+O Require mimimum width for calendar panel to avoid hiding it by accident.
 
 
 O Remove right-side tags panel:
