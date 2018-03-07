@@ -1,3 +1,13 @@
+rednotebook (2.4-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Make search significantly faster by indexing all days.
+  * Allow searching for multiple words.
+  * Add AppVersion to InnoSetup file.
+  * Homepage: Switch to HTTPS.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 07 Mar 2018 19:20:00 +0100
+
 rednotebook (2.3-1) UNRELEASED; urgency=low
 
   * New upstream release
