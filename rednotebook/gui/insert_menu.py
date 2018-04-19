@@ -262,6 +262,7 @@ class InsertMenu:
 
     def on_insert_link(self, sel_text):
         link_creator = self.main_window.builder.get_object('link_creator')
+        link_creator.set_transient_for(self.main_window.main_frame)
         link_location_entry = self.main_window.builder.get_object('link_location_entry')
         link_name_entry = self.main_window.builder.get_object('link_name_entry')
 
