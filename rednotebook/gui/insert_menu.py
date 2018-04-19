@@ -34,6 +34,7 @@ MENUITEMS_XML = '''\
     <menuitem action="Title"/>
     <menuitem action="Line"/>
     <menuitem action="Date"/>
+    <menuitem action="TimeInterval"/>
     <menuitem action="LineBreak"/>
 '''
 
@@ -124,6 +125,9 @@ class InsertMenu:
             ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
                 self.get_insert_handler(self.on_insert_date_time)),
+            ('TimeInterval', None, _('Time Interval'), '<Ctrl><Alt>D',
+                _('Insert a time interval'),
+                self.get_insert_handler(self.on_insert_time_interval)),
             ('LineBreak', None, _('Line Break'), '<Ctrl>Return',
                 _('Insert a manual line break'),
                 self.get_insert_handler(lambda sel_text: '\\\\\n')),
@@ -318,3 +322,129 @@ class InsertMenu:
     def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
         return dates.format_date(format_string)
+
+    def on_insert_time_interval(self, sel_text):
+        time_interval = self.main_window.builder.get_object('time_interval')
+        time_interval.set_transient_for(self.main_window.main_frame)
+
+        ti_start_hour = customwidgets.CustomComboBoxEntry(
+            self.main_window.builder.get_object('ti_start_hour_combo_box'))
+        ti_start_minute = customwidgets.CustomComboBoxEntry(
+            self.main_window.builder.get_object('ti_start_minute_combo_box'))
+        ti_end_hour = customwidgets.CustomComboBoxEntry(
+            self.main_window.builder.get_object('ti_end_hour_combo_box'))
+        ti_end_minute = customwidgets.CustomComboBoxEntry(
+            self.main_window.builder.get_object('ti_end_minute_combo_box'))
+
+        hours = [format(h, 'd') for h in range(24)]
+        minutes = [format(m, '02d') for m in range(60)]
+
+        ti_start_hour.set_entries(hours)
+        ti_start_minute.set_entries(minutes)
+        ti_end_hour.set_entries(hours)
+        ti_end_minute.set_entries(minutes)
+
+        # Set a default time interval
+        ti_start_hour.set_active_text('8')
+        ti_start_minute.set_active_text('00')
+        ti_end_hour.set_active_text('9')
+        ti_end_minute.set_active_text('00')
+
+        def is_valid_time_interval():
+            start_hour = int(ti_start_hour.get_active_text())
+            start_minute = int(ti_start_minute.get_active_text())
+            end_hour = int(ti_end_hour.get_active_text())
+            end_minute = int(ti_end_minute.get_active_text())
+
+            hour_interval = end_hour - start_hour
+            minute_interval = end_minute - start_minute
+            return hour_interval > 0 or hour_interval == 0 and minute_interval >= 0
+
+        def correct_hour(entry):
+            hour = entry.get_text().zfill(2)
+            if not hour.isdigit() or int(hour) < 0:
+                hour = '0'
+            elif int(hour) > 23:
+                hour = '23'
+
+            entry.set_text(hour)
+            return int(hour)
+
+        def correct_minute(entry):
+            minute = entry.get_text().zfill(2)
+            if not minute.isdigit() or int(minute) < 0:
+                minute = '00'
+            elif int(minute) > 59:
+                minute = '59'
+
+            entry.set_text(minute)
+            return minute
+
+        def on_start_hour_changed(entry, event):
+            # Set correct hour if it is out of range
+            hour = correct_hour(entry)
+            # Set a default interval of one hour
+            if hour < 23:
+                ti_end_hour.set_active_text(str(hour + 1))
+
+        def on_start_minute_changed(entry, event):
+            # Set correct minute if it is out of range
+            minute = correct_minute(entry)
+            # Set a default interval of one hour
+            ti_end_minute.set_active_text(minute)
+
+        def on_end_hour_changed(entry, event):
+            # Set correct hour if it is out of range
+            correct_hour(entry)
+
+        def on_end_minute_changed(entry, event):
+            # Set correct minute if it is out of range
+            correct_minute(entry)
+
+        def on_start_hour_key_pressed(entry, event):
+            # Detect if Tab key is pressed
+            if event.keyval == 65289:
+                ti_start_minute.entry.grab_focus()
+
+        def on_start_minute_key_pressed(entry, event):
+            # Detect if Tab key is pressed
+            if event.keyval == 65289:
+                ti_end_hour.entry.grab_focus()
+
+        def on_end_hour_key_pressed(entry, event):
+            # Detect if Tab key is pressed
+            if event.keyval == 65289:
+                ti_end_minute.entry.grab_focus()
+
+        ti_start_hour.entry.connect('key-press-event', on_start_hour_key_pressed)
+        ti_start_minute.entry.connect('key-press-event', on_start_minute_key_pressed)
+        ti_end_hour.entry.connect('key-press-event', on_end_hour_key_pressed)
+        ti_start_hour.entry.connect('focus-out-event', on_start_hour_changed)
+        ti_start_minute.entry.connect('focus-out-event', on_start_minute_changed)
+        ti_end_hour.entry.connect('focus-out-event', on_end_hour_changed)
+        ti_end_minute.entry.connect('focus-out-event', on_end_minute_changed)
+
+        # Let user finish by hitting ENTER.
+        def respond(widget):
+            correct_minute(ti_end_minute.entry)
+            time_interval.response(Gtk.ResponseType.OK)
+
+        ti_end_minute.entry.connect('activate', respond)
+
+        ti_start_hour.entry.grab_focus()
+
+        response = time_interval.run()
+        time_interval.hide()
+
+        if response == Gtk.ResponseType.OK:
+            start_hour = ti_start_hour.get_active_text()
+            start_minute = ti_start_minute.get_active_text()
+            end_hour = ti_end_hour.get_active_text()
+            end_minute = ti_end_minute.get_active_text()
+
+            if is_valid_time_interval():
+                return '**Start time: %s:%s**\\\\\n\n**End time: %s:%s**' % (
+                    start_hour, start_minute, end_hour, end_minute
+                )
+            else:
+                self.main_window.journal.show_message(_('Time interval was negative'), error=True)
