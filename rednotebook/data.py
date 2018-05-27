@@ -43,10 +43,8 @@ def convert_category_to_hashtag(category):
 
 
 def get_indexed_words(text):
-    words = text.split()
-
     # Strip all ASCII punctuation except for #, $, %, @ and '.
-    words = [w.strip('.|-!"&/()=?*+~_:;,<>^°`{}[]\\') for w in words]
+    words = [w.strip('.|-!"&/()=?*+~_:;,<>^°`{}[]\\') for w in text.split()]
     return [word for word in words if word]
 
 
