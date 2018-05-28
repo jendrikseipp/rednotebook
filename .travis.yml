@@ -7,7 +7,7 @@ services:
 
 before_install:
 # keep container running (https://stackoverflow.com/questions/30209776)
-- docker run -d --name app ubuntu tail -f /dev/null
+- docker run -d --name app ubuntu:xenial tail -f /dev/null
 
 script:
 - docker exec app apt-get update
