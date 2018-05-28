@@ -572,7 +572,7 @@ This feature can be used to insert e.g. Latex formulas:
 
 ```
 \'''
-$$\sum_{i=1}^{n} i =\frac{ncdot (n+1)}{2}$$
+$$\\sum_{i=1}^{n} i =\frac{ncdot (n+1)}{2}$$
 \'''
 ```
 

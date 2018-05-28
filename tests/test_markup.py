@@ -54,10 +54,10 @@ def test_images():
 
 def test_images_latex():
     vals = [
-        ('[""/image"".png?50]', '\includegraphics[width=50px]{"/image".png}'),
-        ('[""/image"".jpg]', '\includegraphics{"/image".jpg}'),
-        ('[""file:///image"".png?10]', '\includegraphics[width=10px]{"/image".png}'),
-        ('[""file:///image"".jpg]', '\includegraphics{"/image".jpg}'),
+        ('[""/image"".png?50]', '\\includegraphics[width=50px]{"/image".png}'),
+        ('[""/image"".jpg]', '\\includegraphics{"/image".jpg}'),
+        ('[""file:///image"".png?10]', '\\includegraphics[width=10px]{"/image".png}'),
+        ('[""file:///image"".jpg]', '\\includegraphics{"/image".jpg}'),
     ]
     for markup, expected in vals:
         latex = convert(markup, 'tex', '/tmp')

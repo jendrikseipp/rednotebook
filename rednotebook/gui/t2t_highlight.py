@@ -299,7 +299,7 @@ hashtag = Pattern(HASHTAG, [(2, 'red'), (3, 'red')])
 
 
 patterns = [
-    get_pattern('\*', 'bold'),
+    get_pattern('\\*', 'bold'),
     get_pattern('_', 'underline'),
     get_pattern('/', 'italic'),
     get_pattern('-', 'strikethrough'),
