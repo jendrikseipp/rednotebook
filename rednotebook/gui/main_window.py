@@ -206,12 +206,9 @@ class MainWindow:
         self.set_tooltips()
         self.setup_tray_icon()
 
-        # Enable/disable the "tags" pane on the right
-        self.annotations_pane = self.builder.get_object('annotations_pane')
-        if self.journal.config.read('showTagsPane') == 1:
-            self.annotations_pane.show()
-        else:
-            self.annotations_pane.hide()
+        # Show/hide the "tags" panel on the right.
+        self.builder.get_object('annotations_pane').set_visible(
+            self.journal.config.read('showTagsPane'))
 
     def set_tooltips(self):
         '''
