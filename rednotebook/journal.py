@@ -497,21 +497,38 @@ class Journal:
         return sorted(entries)
 
     def search(self, text, tags):
-        words = data.get_indexed_words(text)
-        words.extend('#{}'.format(tag) for tag in tags)
-
-        if not words:
-            return []
-
-        dates = self.search_index.find(words[0])
-        for word in words[1:]:
-            dates &= self.search_index.find(word)
-
         results = []
-        for date in sorted(dates, reverse=True):
-            for word in words:
-                results.append(self.get_day(date).search(word, tags))
+        # TODO: Allow using index with a configuration option?
+        use_index = False
+        if use_index:
+            words = data.get_indexed_words(text)
+            words.extend('#{}'.format(tag) for tag in tags)
+
+            if not words:
+                return []
+
+            dates = self.search_index.find(words[0])
+            for word in words[1:]:
+                dates &= self.search_index.find(word)
+
+            for date in sorted(dates, reverse=True):
+                for word in words:
+                    results.append(self.get_day(date).search(word, tags))
+        else:
+            days = self.get_days_with_tags(tags)
+            for day in reversed(days):
+                results.append(day.search(text, tags))
         return results
+
+    def get_days_with_tags(self, tags):
+        if not tags:
+            return self.days
+        days = []
+        for day in self.days:
+            day_tags = set(data.escape_tag(tag) for tag in day.categories)
+            if all(tag in day_tags for tag in tags):
+                days.append(day)
+        return days
 
     def get_word_count_dict(self):
         """
