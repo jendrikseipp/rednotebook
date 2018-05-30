@@ -41,7 +41,11 @@ class SearchComboBox(CustomComboBoxEntry):
 
     def on_entry_changed(self, entry):
         """Called when the entry changes."""
-        self.search(self.get_active_text())
+        search_text = self.get_active_text()
+        if self.journal.config.read('instantSearch'):
+            self.search(search_text)
+        elif not search_text:
+            self.search('')
 
     def on_entry_activated(self, entry):
         """Called when the user hits enter."""
