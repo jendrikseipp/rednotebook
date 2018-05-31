@@ -374,6 +374,8 @@ class MainWindow:
 
             edit_button.show()
             preview_button.hide()
+
+            self.undo_redo_manager.disable_buttons()
         else:
             # Enter edit mode
             edit_scroll.show()
@@ -381,6 +383,8 @@ class MainWindow:
 
             preview_button.show()
             edit_button.hide()
+
+            self.undo_redo_manager.update_buttons()
 
         self.template_manager.set_template_menu_sensitive(not preview)
         self.insert_actiongroup.set_sensitive(not preview)

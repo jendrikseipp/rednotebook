@@ -8,6 +8,7 @@ please check back with me briefly about its status.
 === Roadmap ===
 
 O Homepage: turn screenshots page into testimonials page.
+X Disable undo/redo buttons in preview mode (fixes #103).
 X Remove option to show/hide right-side tags panel from GUI (still present in configuration file).
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas

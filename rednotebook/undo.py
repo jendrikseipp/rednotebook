@@ -95,3 +95,7 @@ class UndoRedoManager:
     def update_buttons(self):
         self.undo_action.set_sensitive(self.can_undo())
         self.redo_action.set_sensitive(self.can_redo())
+
+    def disable_buttons(self):
+        self.undo_action.set_sensitive(False)
+        self.redo_action.set_sensitive(False)
