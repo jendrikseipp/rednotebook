@@ -42,6 +42,7 @@ class Config(dict):
         'portable': 0,
         'userDir': '',
         'firstStart': 1,
+        'instantSearch': 1,
         'spellcheck': 0,
         'mainFrameWidth': 1024,
         'mainFrameHeight': 700,

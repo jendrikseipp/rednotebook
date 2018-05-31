@@ -274,6 +274,8 @@ class OptionsManager:
             _('Check for new version at startup'),
             'checkForNewVersion')
 
+        self.options.append(TickOption(_('Search as you type'), 'instantSearch'))
+
         def check_version_action(widget):
             utils.check_new_version(self.main_window.journal, info.version)
             # Apply changes from dialog to options window
