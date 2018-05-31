@@ -115,7 +115,9 @@ def check_new_version(journal, current_version, startup=False):
         dialog.set_transient_for(journal.frame.main_frame)
         primary_text = (_('You have version <b>%s</b>.') % current_version + ' ' +
                         _('The latest version is <b>%s</b>.') % new_version)
-        secondary_text = _('Do you want to visit the RedNotebook homepage?')
+        secondary_text = (
+            _('If you like the program, please consider making a donation.') + ' ' +
+            _('Do you want to visit the RedNotebook homepage?'))
         dialog.set_markup(primary_text)
         dialog.format_secondary_text(secondary_text)
 
@@ -128,7 +130,7 @@ def check_new_version(journal, current_version, startup=False):
         dialog.hide()
 
         if response == Gtk.ResponseType.YES:
-            webbrowser.open(info.url)
+            webbrowser.open(info.downloads_url)
         elif response == response_not_again:
             logging.info('Checks for new versions disabled')
             journal.config['checkForNewVersion'] = 0
