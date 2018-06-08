@@ -1,3 +1,13 @@
+rednotebook (2.5-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Restore instant search (search as you type).
+  * Add option for disabling instant search to preferences dialog.
+  * Disable undo/redo buttons in preview mode (fixes #103).
+  * Remove option to show/hide right-side tags panel from GUI (still present in configuration file).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 08 Jun 2018 19:34:39 +0200
+
 rednotebook (2.4-1) UNRELEASED; urgency=low
 
   * New upstream release
