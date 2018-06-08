@@ -1,3 +1,9 @@
+== 2.5 (2018-06-08) ==
+* Restore instant search (search as you type).
+* Add option for disabling instant search to preferences dialog.
+* Disable undo/redo buttons in preview mode (fixes #103).
+* Remove option to show/hide right-side tags panel from GUI (still present in configuration file).
+
 == 2.4 (2018-03-07) ==
 * Make search significantly faster by indexing all days.
 * Allow searching for multiple words.
