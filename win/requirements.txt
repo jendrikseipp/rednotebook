@@ -1,6 +1,6 @@
 pefile==2016.3.28
 pyenchant==1.6.8
-pyinstaller==3.3
+pyinstaller==3.3.1
 pypiwin32==219
 PyYAML==3.10
 setuptools==19.2
