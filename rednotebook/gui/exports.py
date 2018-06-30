@@ -127,11 +127,6 @@ class ContentsPage(AssistantPage):
         self.journal = journal
         self.assistant = assistant
 
-        # Make the config available for the date format option
-        options.Option.config = journal.config
-        self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
-        self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
-
         self.text_and_tags_button = Gtk.RadioButton(label=_('Export text and tags'))
         self.text_only_button = Gtk.RadioButton(label=_('Export text only'),
                                                 group=self.text_and_tags_button)
@@ -139,7 +134,6 @@ class ContentsPage(AssistantPage):
                                                 group=self.text_and_tags_button)
         self.filter_tags_button = Gtk.CheckButton(label=_('Filter days by tags'))
 
-        self.pack_start(self.date_format, False, False, 0)
         self.pack_start(self.text_and_tags_button, False, False, 0)
         self.pack_start(self.text_only_button, False, False, 0)
         self.pack_start(self.tags_only_button, False, False, 0)
@@ -432,10 +426,6 @@ class ExportAssistant(Assistant):
             selected_categories = self.exported_categories
             logging.debug('Selected Categories for Inclusion: %s' % selected_categories)
 
-            # Save selected date format
-            date_format = self.page3.date_format.get_value()
-            self.journal.config['exportDateFormat'] = date_format
-
             markup_strings_for_each_day = []
             for day in export_days:
                 include_day = True
@@ -446,6 +436,7 @@ class ExportAssistant(Assistant):
                         if category in catagory_pairs:
                             include_day = True
                 if include_day:
+                    date_format = self.journal.config.read('exportDateFormat')
                     date_string = dates.format_date(date_format, day.date)
                     day_markup = markup.get_markup_for_day(day, with_text=self.page3.is_text_included(),
                                                            with_tags=self.page3.is_tags_included(),

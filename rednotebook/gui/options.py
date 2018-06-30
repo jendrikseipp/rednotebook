@@ -117,8 +117,8 @@ class TextOption(Option):
 
 
 class ComboBoxOption(Option):
-    def __init__(self, text, name, entries):
-        Option.__init__(self, text, name)
+    def __init__(self, text, name, entries, tooltip=''):
+        Option.__init__(self, text, name, tooltip=tooltip)
 
         self.combo = CustomComboBoxEntry(Gtk.ComboBox.new_with_entry())
         self.combo.set_entries(entries)
@@ -130,11 +130,11 @@ class ComboBoxOption(Option):
 
 
 class DateFormatOption(ComboBoxOption):
-    def __init__(self, text, name):
+    def __init__(self, text, name, tooltip):
         date_formats = ['%A, %x %X', _('%A, %x, Day %j'), '%H:%M', _('Week %W of Year %Y'),
                         '%y-%m-%d', _('Day %j'), '%A', '%B']
 
-        ComboBoxOption.__init__(self, text, name, date_formats)
+        ComboBoxOption.__init__(self, text, name, date_formats, tooltip=tooltip)
 
         date_url = 'http://docs.python.org/library/time.html#time.strftime'
         date_format_help_button = UrlButton(_('Help'), date_url)
@@ -292,7 +292,13 @@ class OptionsManager:
             TextOption(_('Preview font:'), 'previewFont',
                        default=Config.defaults['previewFont'],
                        tooltip=_('Comma-separated font names')),
-            DateFormatOption(_('Date/Time format'), 'dateTimeString'),
+            DateFormatOption(
+                _('Date/Time format'), 'dateTimeString',
+                tooltip=_('Used by Date/Time button and $date$ template macro.')),
+            DateFormatOption(
+                _('Date format'), 'exportDateFormat',
+                tooltip=_('Used for dates in titlebar and exports.')
+                ),
             TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
                        tooltip=_('Do not show these comma separated words and #tags in the clouds')),
             TextOption(_('Include small words in cloud'), 'cloudIncludeList',
