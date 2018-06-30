@@ -316,5 +316,5 @@ class InsertMenu:
     #     return '\\(', formula, '\\)'
 
     def on_insert_date_time(self, sel_text):
-        format_string = self.main_window.journal.config.read('dateTimeString', '%A, %x %X')
+        format_string = self.main_window.journal.config.read('dateTimeString')
         return dates.format_date(format_string)

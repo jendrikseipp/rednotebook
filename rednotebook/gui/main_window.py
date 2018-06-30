@@ -409,7 +409,7 @@ class MainWindow:
             self.html_editor.show_day(self.day)
             self.change_mode(preview=True)
         else:
-            date_format = self.journal.config.read('exportDateFormat', '%A, %x')
+            date_format = self.journal.config.read('exportDateFormat')
             date_string = dates.format_date(date_format, self.day.date)
             markup_string = markup.get_markup_for_day(self.day)
             html = self.journal.convert(

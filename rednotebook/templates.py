@@ -274,7 +274,7 @@ class TemplateManager:
     def _replace_macros(self, text):
         # convert every "$date$" to the current date
         config = self.main_window.journal.config
-        format_string = config.read('dateTimeString', '%A, %x %X')
+        format_string = config.read('dateTimeString')
         date_string = dates.format_date(format_string)
         text = text.replace('$date$', date_string)
         return text
