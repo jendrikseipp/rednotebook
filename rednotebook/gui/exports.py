@@ -30,7 +30,6 @@ from rednotebook.util import dates
 from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import Calendar, AssistantPage, \
     RadioButtonPage, PathChooserPage, Assistant
-from rednotebook.gui import options
 
 
 class DatePage(AssistantPage):
