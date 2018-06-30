@@ -383,7 +383,7 @@ class Journal:
         parts = ['RedNotebook']
         if self.title != 'data':
             parts.append(self.title)
-        parts.append(dates.format_date('%x', self.date))
+        parts.append(dates.format_date(self.config.read('exportDateFormat'), self.date))
         self.frame.main_frame.set_title(' - '.join(parts))
 
     def get_month(self, date):
