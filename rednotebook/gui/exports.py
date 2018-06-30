@@ -129,8 +129,6 @@ class ContentsPage(AssistantPage):
 
         # Make the config available for the date format option
         options.Option.config = journal.config
-        # Set default date format string
-        options.Option.config['exportDateFormat'] = '%A, %x'
         self.date_format = options.DateFormatOption(_('Date format'), 'exportDateFormat')
         self.date_format.combo.combo_box.set_tooltip_text(_('Leave blank to omit dates in export'))
 
