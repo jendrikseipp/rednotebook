@@ -696,8 +696,8 @@ class DayEditor(editor.Editor):
             self.recent_buffers.move_to_end(key)
             return self.recent_buffers[key]
 
-        markdown = GtkSource.LanguageManager.get_default().get_language('markdown')
-        buf = self.recent_buffers[key] = GtkSource.Buffer.new_with_language(markdown)
+        t2t = GtkSource.LanguageManager.get_default().get_language('t2t')
+        buf = self.recent_buffers[key] = GtkSource.Buffer.new_with_language(t2t)
         buf.begin_not_undoable_action()
         buf.set_text(day.text)
         buf.end_not_undoable_action()
