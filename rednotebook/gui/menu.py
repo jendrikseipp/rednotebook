@@ -218,11 +218,11 @@ class MainMenuBar:
 
     def on_undo(self, widget):
         editor = self.main_window.day_text_field
-        editor.add_undo_point()
-        self.main_window.undo_redo_manager.undo()
+        editor.day_text_buffer.undo()
 
     def on_redo(self, widget):
-        self.main_window.undo_redo_manager.redo()
+        editor = self.main_window.day_text_field
+        editor.day_text_buffer.redo()
 
     def _get_active_editor_widget(self):
         if self.main_window.preview_mode:

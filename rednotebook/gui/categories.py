@@ -33,7 +33,7 @@ class CategoriesTreeView:
         self.tree_view = tree_view
 
         self.main_window = main_window
-        self.undo_redo_manager = main_window.undo_redo_manager
+        # self.undo_redo_manager = main_window.undo_redo_manager
 
         # Maintain a list of all entered categories. Initialized by rn.__init__()
         self.categories = []
@@ -284,8 +284,8 @@ class CategoriesTreeView:
             def redo_func():
                 self.add_entry(category, entry, undoing=True)
 
-            action = undo.Action(undo_func, redo_func)
-            self.undo_redo_manager.add_action(action)
+            # action = undo.Action(undo_func, redo_func)
+            # self.undo_redo_manager.add_action(action)
 
         self.tree_view.expand_all()
 
@@ -337,8 +337,8 @@ class CategoriesTreeView:
                     delete_iter = self.find_iter(category, entry)
                     self.delete_node(delete_iter, undoing=True)
 
-            action = undo.Action(undo_func, redo_func)
-            self.undo_redo_manager.add_action(action)
+            # action = undo.Action(undo_func, redo_func)
+            # self.undo_redo_manager.add_action(action)
 
         # Update cloud
         self.main_window.cloud.update()
