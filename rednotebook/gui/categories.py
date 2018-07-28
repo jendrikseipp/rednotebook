@@ -25,7 +25,6 @@ from gi.repository import Pango
 
 from rednotebook.util import markup
 from rednotebook.util import utils
-from rednotebook import undo
 
 
 class CategoriesTreeView:

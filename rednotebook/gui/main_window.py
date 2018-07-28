@@ -678,6 +678,7 @@ class MainWindow:
             can_redo = self.day_text_field.day_text_buffer.can_redo()
             self.redo_action.set_sensitive(can_redo)
 
+
 class DayEditor(editor.Editor):
     n_recent_buffers = 10  # How many recent buffers to store
 

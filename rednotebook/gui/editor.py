@@ -22,12 +22,9 @@ import urllib.request
 import logging
 
 from gi.repository import GObject
-from gi.repository import GtkSource
 from gi.repository import Gtk
 from gi.repository import Pango
 
-from rednotebook.gui import t2t_highlight
-from rednotebook import undo
 from rednotebook.util import filesystem
 
 try:
@@ -51,7 +48,6 @@ class Editor(GObject.GObject):
         self.day_text_view = day_text_view
 
         self._connect_undo_signals()
-
 
         self.old_text = ''
         self.search_text = ''
