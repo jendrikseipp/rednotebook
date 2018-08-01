@@ -40,6 +40,8 @@
     <style id="anchor" name="Anchor" map-to="t2t:section"/>
     <style id="italic" name="Italic" map-to="def:doc-comment-element"/>
     <style id="bold" name="Bold" map-to="def:statement"/>
+    <style id="underlined" name="Underlined" map-to="def:underlined"/>
+    <style id="horizontal-rule" name="Horizontal Rule" map-to="def:type"/>
     <style id="verbatim" name="Verbatim" map-to="def:identifier"/>
     <style id="verbatim-block" name="Verbatim Block" map-to="def:identifier"/>
   </styles>
@@ -104,6 +106,42 @@
             <context sub-pattern="2" style-ref="anchor"/>
           </include>
         </context>
+
+        <context id="section-numbered-1">
+          <match>^(\+(?!\+).*(?&lt;!\+)\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-1"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-2">
+          <match>^(\+\+(?!\+).*(?&lt;!\+)\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-2"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-3">
+          <match>^(\+\+\+(?!\+).*(?&lt;!\+)\+\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-3"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-4">
+          <match>^(\+\+\+\+(?!\+).*(?&lt;!\+)\+\+\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-4"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-5">
+          <match>^(\+\+\+\+\+(?!\+).*(?&lt;!\+)\+\+\+\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-5"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
       </include>
     </context>
 
@@ -119,6 +157,17 @@
       <include>
         <context sub-pattern="1" style-ref="bold"/>
       </include>
+    </context>
+
+    <context id="underlined">
+      <match>__(.*?)__</match>
+      <include>
+        <context sub-pattern="1" style-ref="underlined"/>
+      </include>
+    </context>
+
+    <context id="horizontal-rule" style-ref="horizontal-rule">
+      <match>^(\s*)([_=-]{20,})\s*$</match>
     </context>
 
     <context id="verbatim">
@@ -141,6 +190,8 @@
         <context ref="comment"/>
         <context ref="italic"/>
         <context ref="bold"/>
+        <context ref="underlined"/>
+        <context ref="horizontal-rule"/>
         <context ref="verbatim"/>
         <context ref="verbatim-block"/>
       </include>
