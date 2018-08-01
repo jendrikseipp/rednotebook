@@ -227,28 +227,6 @@ class CategoriesTreeView:
         pango_markup = markup.convert_to_pango(txt2tags_markup)
         self.tree_store.set_value(iter, 0, pango_markup)
 
-    def find_iter(self, category, entry=None):
-        logging.debug('Looking for iter: "%s", "%s"' % (category, entry))
-        category_iter = self._get_category_iter(category)
-
-        if category_iter:
-            # If we only search the category, return it.
-            if not entry:
-                return category_iter
-        else:
-            # If the category was not found, return None
-            return None
-
-        for iter_index in range(self.tree_store.iter_n_children(category_iter)):
-            current_entry_iter = self.tree_store.iter_nth_child(category_iter, iter_index)
-            current_entry = self.get_iter_value(current_entry_iter)
-            if str(current_entry) == str(entry):
-                return current_entry_iter
-
-        # If the entry was not found, return None
-        logging.debug('Iter not found: "%s", "%s"' % (category, entry))
-        return None
-
     def _get_category_iter(self, category_name):
         for iter_index in range(self.tree_store.iter_n_children(None)):
             current_category_iter = self.tree_store.iter_nth_child(None, iter_index)
@@ -276,16 +254,6 @@ class CategoriesTreeView:
         if entry_pango:
             self.tree_store.append(category_iter, [entry_pango])
 
-        if not undoing:
-            def undo_func():
-                self.delete_node(self.find_iter(category, entry), undoing=True)
-
-            def redo_func():
-                self.add_entry(category, entry, undoing=True)
-
-            # action = undo.Action(undo_func, redo_func)
-            # self.undo_redo_manager.add_action(action)
-
         self.tree_view.expand_all()
 
     def get_selected_node(self):
@@ -301,43 +269,11 @@ class CategoriesTreeView:
             # The user has changed the text of the node or deleted it
             return
 
-        # Save for undoing ------------------------------------
-
-        # An entry is deleted
-        if not self.node_on_top_level(iter):
-            category_iter = self.tree_store.iter_parent(iter)
-            category = self.get_iter_value(category_iter)
-            entries = [self.get_iter_value(iter)]
-
-        # A category is deleted
-        else:
-            category_iter = iter
-            category = self.get_iter_value(category_iter)
-            content = self._get_element_content(category_iter)
-            if content:
-                entries = list(content.keys())
-            else:
-                entries = []
-
         # Delete ---------------------------------------------
 
         self.tree_store.remove(iter)
 
         # ----------------------------------------------------
-
-        if not undoing:
-
-            def undo_func():
-                for entry in entries:
-                    self.add_entry(category, entry, undoing=True)
-
-            def redo_func():
-                for entry in entries:
-                    delete_iter = self.find_iter(category, entry)
-                    self.delete_node(delete_iter, undoing=True)
-
-            # action = undo.Action(undo_func, redo_func)
-            # self.undo_redo_manager.add_action(action)
 
         # Update cloud
         self.main_window.cloud.update()
