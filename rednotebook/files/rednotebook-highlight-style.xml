@@ -93,7 +93,7 @@
   <style name="def:error"                   background="scarletred2" bold="true"/>
   <style name="def:warning"                 background="plum1"/>
   <style name="def:note"                    background="orange1" bold="true"/>
-  <style name="def:underlined"              italic="true" underline="single"/>
+  <style name="def:underlined"              underline="single"/>
 
   <!-- Heading styles, uncomment to enable -->
   <style name="def:heading0"                scale="5.0"/>
@@ -105,6 +105,11 @@
   <style name="def:heading6"                scale="1.2"/>
 
   <!-- Language specific -->
+  <!-- Markup additions made by Rednotebook -->
+  <style name="def:strikethrough" strikethrough="true"/>
+  <style name="def:bold" bold="true"/>
+  <!-- End markup additions -->
+
   <style name="diff:added-line"             foreground="chameleon3"/>
   <style name="diff:removed-line"           foreground="plum3"/>
   <style name="diff:changed-line"           use-style="def:preprocessor"/>

@@ -38,8 +38,9 @@
     <style id="section-5" name="Section 5" map-to="def:heading5"/>
     <style id="anchor" name="Anchor" map-to="t2t:section"/>
     <style id="italic" name="Italic" map-to="def:doc-comment-element"/>
-    <style id="bold" name="Bold" map-to="def:statement"/>
+    <style id="bold" name="Bold" map-to="def:bold"/>
     <style id="underlined" name="Underlined" map-to="def:underlined"/>
+    <style id="strikethrough" name="Strikethrough" map-to="def:strikethrough"/>
     <style id="horizontal-rule" name="Horizontal Rule" map-to="def:type"/>
     <style id="verbatim" name="Verbatim" map-to="def:identifier"/>
     <style id="verbatim-block" name="Verbatim Block" map-to="def:identifier"/>
@@ -166,6 +167,13 @@
       <match>^(\s*)([_=-]{20,})\s*$</match>
     </context>
 
+    <context id="strikethrough">
+      <match>--([^\s-](|.*?[^\s])-*)--</match>
+      <include>
+        <context sub-pattern="1" style-ref="strikethrough"/>
+      </include>
+    </context>
+
     <context id="verbatim">
       <match>``(.*?)``</match>
       <include>
@@ -186,6 +194,7 @@
         <context ref="italic"/>
         <context ref="bold"/>
         <context ref="underlined"/>
+        <context ref="strikethrough"/>
         <context ref="horizontal-rule"/>
         <context ref="verbatim"/>
         <context ref="verbatim-block"/>
