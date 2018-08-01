@@ -682,6 +682,7 @@ class MainWindow:
 class DayEditor(editor.Editor):
     n_recent_buffers = 10  # How many recent buffers to store
     _t2t_highlighting = None
+    _style_scheme = None
 
     def __init__(self, *args, **kwargs):
         editor.Editor.__init__(self, *args, **kwargs)
@@ -702,6 +703,15 @@ class DayEditor(editor.Editor):
             self._t2t_highlighting = lm.get_language('t2t')
         return self._t2t_highlighting
 
+    def _get_style_scheme(self):
+        if self._style_scheme is None:
+            # Load our customised variant of the Tango scheme
+            sm = GtkSource.StyleSchemeManager.get_default()
+            if filesystem.files_dir not in sm.get_search_path():
+                sm.prepend_search_path(filesystem.files_dir)
+            self._style_scheme = sm.get_scheme('rednotebook')
+        return self._style_scheme
+
     def _get_buffer_for_day(self, day):
         key = day.date
         if key in self.recent_buffers:
@@ -710,6 +720,7 @@ class DayEditor(editor.Editor):
 
         buf = self.recent_buffers[key] = \
             GtkSource.Buffer.new_with_language(self._get_t2t_highlighting())
+        buf.set_style_scheme(self._get_style_scheme())
         buf.begin_not_undoable_action()
         buf.set_text(day.text)
         buf.end_not_undoable_action()

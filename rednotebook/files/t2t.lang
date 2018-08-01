@@ -30,13 +30,12 @@
     <style id="comment" name="Comment" map-to="def:comment"/>
     <style id="option" name="Option"/>
     <style id="option-name" name="Option Name" map-to="def:keyword"/>
-    <style id="header" name="Header"  map-to="def:type"/>
     <style id="section" name="Section" map-to="def:type"/>
-    <style id="section-1" name="Section 1" map-to="t2t:section"/>
-    <style id="section-2" name="Section 2" map-to="t2t:section"/>
-    <style id="section-3" name="Section 3" map-to="t2t:section"/>
-    <style id="section-4" name="Section 4" map-to="t2t:section"/>
-    <style id="section-5" name="Section 5" map-to="t2t:section"/>
+    <style id="section-1" name="Section 1" map-to="def:heading1"/>
+    <style id="section-2" name="Section 2" map-to="def:heading2"/>
+    <style id="section-3" name="Section 3" map-to="def:heading3"/>
+    <style id="section-4" name="Section 4" map-to="def:heading4"/>
+    <style id="section-5" name="Section 5" map-to="def:heading5"/>
     <style id="anchor" name="Anchor" map-to="t2t:section"/>
     <style id="italic" name="Italic" map-to="def:doc-comment-element"/>
     <style id="bold" name="Bold" map-to="def:statement"/>
@@ -47,9 +46,6 @@
   </styles>
 
   <definitions>
-    <context id="header" first-line-only="true" style-ref="header">
-      <match>.+</match>
-    </context>
 
     <context id="options">
       <include>
@@ -184,7 +180,6 @@
 
     <context id="t2t" class="no-spell-check">
       <include>
-        <context ref="header"/>
         <context ref="sections"/>
         <context ref="options"/>
         <context ref="comment"/>
