@@ -49,7 +49,6 @@ class Editor(GObject.GObject):
 
         self._connect_undo_signals()
 
-        self.old_text = ''
         self.search_text = ''
 
         # spell checker

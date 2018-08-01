@@ -668,7 +668,7 @@ class MainWindow:
         else:
             self.statusbar.show_message(title, msg, msg_type)
 
-    def update_undo_redo_buttons(self, gobj=None, force_disable=False):
+    def update_undo_redo_buttons(self, _gobj=None, force_disable=False):
         if force_disable:
             self.undo_action.set_sensitive(False)
             self.redo_action.set_sensitive(False)
@@ -686,7 +686,6 @@ class DayEditor(editor.Editor):
     def __init__(self, *args, **kwargs):
         editor.Editor.__init__(self, *args, **kwargs)
         self.day = None
-        self.scrolled_win = self.day_text_view.get_parent()
         # Store buffers for recently edited days - these preserve undo history
         # and cursor position. Once a buffer drops out of this, it needs to be
         # recreated: at this point, the cursor and undo are lost.
@@ -709,7 +708,6 @@ class DayEditor(editor.Editor):
             self.recent_buffers.move_to_end(key)
             return self.recent_buffers[key]
 
-
         buf = self.recent_buffers[key] = \
             GtkSource.Buffer.new_with_language(self._get_t2t_highlighting())
         buf.begin_not_undoable_action()
@@ -722,19 +720,6 @@ class DayEditor(editor.Editor):
         return buf
 
     def show_day(self, new_day):
-        # Save the position in the edit pane for the old day
-        # if self.day:
-        #     cursor_pos = self.day_text_buffer.get_property('cursor-position')
-        #     # If there is a selection we save it, else we save the cursor position
-        #     selection = self.day_text_buffer.get_selection_bounds()
-        #     if selection:
-        #         selection = [it.get_offset() for it in selection]
-        #     else:
-        #         selection = [cursor_pos, cursor_pos]
-        #     self.day.last_edit_pos = (self.scrolled_win.get_hscrollbar().get_value(),
-        #                               self.scrolled_win.get_vscrollbar().get_value(),
-        #                               selection)
-
         # Show new day
         self.day = new_day
         buf = self._get_buffer_for_day(new_day)
@@ -745,18 +730,6 @@ class DayEditor(editor.Editor):
             # If a search is currently made, scroll to the text and return.
             GObject.idle_add(self.scroll_to_text, self.search_text)
             return
-
-        # if self.day.last_edit_pos is not None:
-        #     x, y, selection = self.day.last_edit_pos
-        #     GObject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
-        #     GObject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
-        #     GObject.idle_add(self._restore_selection, selection)
-
-    def _restore_selection(self, selection):
-        iters = [self.day_text_buffer.get_iter_at_offset(offset)
-                 for offset in selection]
-        self.day_text_buffer.select_range(*iters)
-        self.day_text_view.grab_focus()
 
 
 class NewEntryDialog:
