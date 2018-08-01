@@ -181,6 +181,13 @@
       </include>
     </context>
 
+    <context id="verbatim-line">
+      <match>^``` (.*?)$</match>
+      <include>
+        <context sub-pattern="1" style-ref="verbatim"/>
+      </include>
+    </context>
+
     <context id="verbatim-block" style-ref="verbatim-block" style-inside="true">
       <start>^```$</start>
       <end>^```$</end>
@@ -197,6 +204,7 @@
         <context ref="strikethrough"/>
         <context ref="horizontal-rule"/>
         <context ref="verbatim"/>
+        <context ref="verbatim-line"/>
         <context ref="verbatim-block"/>
       </include>
     </context>
