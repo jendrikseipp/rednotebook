@@ -681,6 +681,7 @@ class MainWindow:
 
 class DayEditor(editor.Editor):
     n_recent_buffers = 10  # How many recent buffers to store
+    _t2t_highlighting = None
 
     def __init__(self, *args, **kwargs):
         editor.Editor.__init__(self, *args, **kwargs)
@@ -691,14 +692,26 @@ class DayEditor(editor.Editor):
         # recreated: at this point, the cursor and undo are lost.
         self.recent_buffers = OrderedDict()
 
+    def _get_t2t_highlighting(self):
+        if self._t2t_highlighting is None:
+            # Load our own copy of t2t syntax highlighting
+            lm = GtkSource.LanguageManager.get_default()
+            search_path = lm.get_search_path()
+            if filesystem.files_dir not in search_path:
+                search_path.insert(0, filesystem.files_dir)
+                lm.set_search_path(search_path)
+            self._t2t_highlighting = lm.get_language('t2t')
+        return self._t2t_highlighting
+
     def _get_buffer_for_day(self, day):
         key = day.date
         if key in self.recent_buffers:
             self.recent_buffers.move_to_end(key)
             return self.recent_buffers[key]
 
-        t2t = GtkSource.LanguageManager.get_default().get_language('t2t')
-        buf = self.recent_buffers[key] = GtkSource.Buffer.new_with_language(t2t)
+
+        buf = self.recent_buffers[key] = \
+            GtkSource.Buffer.new_with_language(self._get_t2t_highlighting())
         buf.begin_not_undoable_action()
         buf.set_text(day.text)
         buf.end_not_undoable_action()
