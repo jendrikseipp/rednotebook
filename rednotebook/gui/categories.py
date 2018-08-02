@@ -32,7 +32,6 @@ class CategoriesTreeView:
         self.tree_view = tree_view
 
         self.main_window = main_window
-        # self.undo_redo_manager = main_window.undo_redo_manager
 
         # Maintain a list of all entered categories. Initialized by rn.__init__()
         self.categories = []
