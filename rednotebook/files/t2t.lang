@@ -44,6 +44,8 @@
     <style id="horizontal-rule" name="Horizontal Rule" map-to="def:type"/>
     <style id="verbatim" name="Verbatim" map-to="def:identifier"/>
     <style id="verbatim-block" name="Verbatim Block" map-to="def:identifier"/>
+    <style id="link-url" name="Link URL" map-to="def:url"/>
+    <style id="link-text" name="Link URL" map-to="def:link-text"/>
   </styles>
 
   <definitions>
@@ -193,6 +195,22 @@
       <end>^```$</end>
     </context>
 
+    <context id="image">
+      <match>\[([\w_,.+%$#@!?+~/-]+\.(png|jpe?g|gif|eps|bmp|svg))\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-url"/>
+      </include>
+    </context>
+
+    <context id="link">
+      <!-- This is a simplified version of the complex patterns that txt2tags really uses -->
+      <match>\[([^]]+) ((https?://|ftp://|news://|telnet://|gopher://|wais://|www[23]?\.|ftp\.)[^]]+)\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-text"/>
+        <context sub-pattern="2" style-ref="link-url"/>
+      </include>
+    </context>
+
     <context id="t2t" class="no-spell-check">
       <include>
         <context ref="sections"/>
@@ -206,6 +224,8 @@
         <context ref="verbatim"/>
         <context ref="verbatim-line"/>
         <context ref="verbatim-block"/>
+        <context ref="image"/>
+        <context ref="link"/>
       </include>
     </context>
   </definitions>

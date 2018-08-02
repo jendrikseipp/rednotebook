@@ -108,6 +108,8 @@
   <!-- Markup additions made by Rednotebook -->
   <style name="def:strikethrough" strikethrough="true"/>
   <style name="def:bold" bold="true"/>
+  <style name="def:url" underline="single" foreground="skyblue1"/>
+  <style name="def:link-text" foreground="skyblue1"/>
   <!-- End markup additions -->
 
   <style name="diff:added-line"             foreground="chameleon3"/>
