@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
- This file is part of GtkSourceView
+ This file came from GtkSourceView, and was modified for RedNotebook.
 
  Copyright (C) 2006-2007 GtkSourceView team
- Author: Michael Monreal <michael.monreal@gmail.com>
+ Copyright (C) 2018 RedNotebook team
+ Author: Michael Monreal <michael.monreal@gmail.com>, Thomas Kluyver
 
  GtkSourceView is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
@@ -23,6 +24,7 @@
 -->
 <style-scheme id="rednotebook" _name="RedNotebook" version="1.0">
   <author>Michael Monreal</author>
+  <author>Thomas Kluyver</author>
   <_description>Color scheme using Tango color palette (adapted for RedNotebook)</_description>
 
   <!-- Tango Palette -->
