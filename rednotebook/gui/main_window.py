@@ -381,7 +381,7 @@ class MainWindow:
             edit_button.show()
             preview_button.hide()
 
-            self.update_undo_redo_buttons(force_disable=True)
+            self.disable_undo_redo_buttons()
         else:
             # Enter edit mode
             edit_scroll.show()
@@ -668,15 +668,20 @@ class MainWindow:
         else:
             self.statusbar.show_message(title, msg, msg_type)
 
-    def update_undo_redo_buttons(self, _gobj=None, force_disable=False):
-        if force_disable:
-            self.undo_action.set_sensitive(False)
-            self.redo_action.set_sensitive(False)
-        else:
-            can_undo = self.day_text_field.day_text_buffer.can_undo()
-            self.undo_action.set_sensitive(can_undo)
-            can_redo = self.day_text_field.day_text_buffer.can_redo()
-            self.redo_action.set_sensitive(can_redo)
+    def disable_undo_redo_buttons(self):
+        self.undo_action.set_sensitive(False)
+        self.redo_action.set_sensitive(False)
+
+    def update_undo_redo_buttons(self, _gobject=None):
+        """Enable/disable undo+redo actions according to the current text buffer
+
+        The _gobject parameter is unused, but it's necessary for the method
+        to be connected to a GObject signal.
+        """
+        can_undo = self.day_text_field.day_text_buffer.can_undo()
+        self.undo_action.set_sensitive(can_undo)
+        can_redo = self.day_text_field.day_text_buffer.can_redo()
+        self.redo_action.set_sensitive(can_redo)
 
 
 class DayEditor(editor.Editor):
