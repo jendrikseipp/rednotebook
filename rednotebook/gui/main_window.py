@@ -725,8 +725,13 @@ class DayEditor(editor.Editor):
         buf.set_text(day.text)
         buf.end_not_undoable_action()
 
-        while len(self.recent_buffers) > self.n_recent_buffers:
+        if len(self.recent_buffers) > self.n_recent_buffers:
             self.recent_buffers.popitem(last=False)
+
+        # Only one buffer is added at a time, so the 'if' above should always
+        # keep us at most n_recent_buffers. If code is added to add to the list
+        # elsewhere, it should check the maximum length as well.
+        assert len(self.recent_buffers) <= self.n_recent_buffers
 
         return buf
 
