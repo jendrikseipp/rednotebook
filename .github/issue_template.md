@@ -1,6 +1,6 @@
 ### Versions
 
-RedNotebook version: 
+RedNotebook version (make sure you have the latest version): 
 
 Operating system and version:
 
