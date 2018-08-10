@@ -17,6 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+from collections import OrderedDict
 import datetime
 import logging
 import os
@@ -26,6 +27,7 @@ from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 from gi.repository import GObject
 from gi.repository import Gtk
+from gi.repository import GtkSource
 from gi.repository import Pango
 
 from rednotebook.gui.menu import MainMenuBar
@@ -38,7 +40,6 @@ from rednotebook import templates
 from rednotebook.util import dates
 from rednotebook.util import markup
 from rednotebook.util import utils
-from rednotebook import undo
 from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
@@ -61,6 +62,9 @@ class MainWindow:
         # TODO: Remove workaround for Windows once it is no longer needed.
         self.gladefile = os.path.join(filesystem.files_dir, 'main_window.glade')
         self.builder = Gtk.Builder()
+        # Register GtkSourceView so builder can use it when loading the file
+        # https://stackoverflow.com/q/10524196/434217
+        GObject.type_register(GtkSource.View)
         if filesystem.IS_WIN:
             import xml.etree.ElementTree as ET
             tree = ET.parse(self.gladefile)
@@ -94,11 +98,13 @@ class MainWindow:
         main_vbox.pack_start(self.menubar, False, False, 0)
         main_vbox.reorder_child(self.menubar, 0)
 
-        self.undo_redo_manager = undo.UndoRedoManager(self)
+        self.undo_action = self.uimanager.get_action('/MainMenuBar/Edit/Undo')
+        self.redo_action = self.uimanager.get_action('/MainMenuBar/Edit/Redo')
 
         self.calendar = MainCalendar(self.journal, self.builder.get_object('calendar'))
-        self.day_text_field = DayEditor(self.builder.get_object('day_text_view'),
-                                        self.undo_redo_manager)
+        self.day_text_field = DayEditor(self.builder.get_object('day_text_view'))
+        self.day_text_field.connect('can-undo-redo-changed', self.update_undo_redo_buttons)
+        self.update_undo_redo_buttons()
         self.day_text_field.day_text_view.grab_focus()
         can_spell_check = self.day_text_field.can_spell_check()
         spell_check_enabled = bool(self.journal.config.read('spellcheck'))
@@ -375,7 +381,7 @@ class MainWindow:
             edit_button.show()
             preview_button.hide()
 
-            self.undo_redo_manager.disable_buttons()
+            self.disable_undo_redo_buttons()
         else:
             # Enter edit mode
             edit_scroll.show()
@@ -384,7 +390,7 @@ class MainWindow:
             preview_button.show()
             edit_button.hide()
 
-            self.undo_redo_manager.update_buttons()
+            self.update_undo_redo_buttons()
 
         self.template_manager.set_template_menu_sensitive(not preview)
         self.insert_actiongroup.set_sensitive(not preview)
@@ -648,7 +654,6 @@ class MainWindow:
             self.html_editor.show_day(day)
 
         self.categories_tree_view.set_day_content(day)
-        self.undo_redo_manager.set_stack(new_date)
 
     def get_day_text(self):
         return self.day_text_field.get_text()
@@ -663,47 +668,89 @@ class MainWindow:
         else:
             self.statusbar.show_message(title, msg, msg_type)
 
+    def disable_undo_redo_buttons(self):
+        self.undo_action.set_sensitive(False)
+        self.redo_action.set_sensitive(False)
+
+    def update_undo_redo_buttons(self, _gobject=None):
+        """Enable/disable undo+redo actions according to the current text buffer
+
+        The _gobject parameter is unused, but it's necessary for the method
+        to be connected to a GObject signal.
+        """
+        can_undo = self.day_text_field.day_text_buffer.can_undo()
+        self.undo_action.set_sensitive(can_undo)
+        can_redo = self.day_text_field.day_text_buffer.can_redo()
+        self.redo_action.set_sensitive(can_redo)
+
 
 class DayEditor(editor.Editor):
+    n_recent_buffers = 10  # How many recent buffers to store
+    _t2t_highlighting = None
+    _style_scheme = None
+
     def __init__(self, *args, **kwargs):
         editor.Editor.__init__(self, *args, **kwargs)
         self.day = None
-        self.scrolled_win = self.day_text_view.get_parent()
+        # Store buffers for recently edited days - these preserve undo history
+        # and cursor position. Once a buffer drops out of this, it needs to be
+        # recreated: at this point, the cursor and undo are lost.
+        self.recent_buffers = OrderedDict()
+
+    def _get_t2t_highlighting(self):
+        if self._t2t_highlighting is None:
+            # Load our own copy of t2t syntax highlighting
+            lm = GtkSource.LanguageManager.get_default()
+            search_path = lm.get_search_path()
+            if filesystem.files_dir not in search_path:
+                search_path.insert(0, filesystem.files_dir)
+                lm.set_search_path(search_path)
+            self._t2t_highlighting = lm.get_language('t2t')
+        return self._t2t_highlighting
+
+    def _get_style_scheme(self):
+        if self._style_scheme is None:
+            # Load our customised variant of the Tango scheme
+            sm = GtkSource.StyleSchemeManager.get_default()
+            if filesystem.files_dir not in sm.get_search_path():
+                sm.prepend_search_path(filesystem.files_dir)
+            self._style_scheme = sm.get_scheme('rednotebook')
+        return self._style_scheme
+
+    def _get_buffer_for_day(self, day):
+        key = day.date
+        if key in self.recent_buffers:
+            self.recent_buffers.move_to_end(key)
+            return self.recent_buffers[key]
+
+        buf = self.recent_buffers[key] = \
+            GtkSource.Buffer.new_with_language(self._get_t2t_highlighting())
+        buf.set_style_scheme(self._get_style_scheme())
+        buf.begin_not_undoable_action()
+        buf.set_text(day.text)
+        buf.end_not_undoable_action()
+
+        if len(self.recent_buffers) > self.n_recent_buffers:
+            self.recent_buffers.popitem(last=False)
+
+        # Only one buffer is added at a time, so the 'if' above should always
+        # keep us at most n_recent_buffers. If code is added to add to the list
+        # elsewhere, it should check the maximum length as well.
+        assert len(self.recent_buffers) <= self.n_recent_buffers
+
+        return buf
 
     def show_day(self, new_day):
-        # Save the position in the edit pane for the old day
-        if self.day:
-            cursor_pos = self.day_text_buffer.get_property('cursor-position')
-            # If there is a selection we save it, else we save the cursor position
-            selection = self.day_text_buffer.get_selection_bounds()
-            if selection:
-                selection = [it.get_offset() for it in selection]
-            else:
-                selection = [cursor_pos, cursor_pos]
-            self.day.last_edit_pos = (self.scrolled_win.get_hscrollbar().get_value(),
-                                      self.scrolled_win.get_vscrollbar().get_value(),
-                                      selection)
-
         # Show new day
         self.day = new_day
-        self.set_text(self.day.text, undoing=True)
+        buf = self._get_buffer_for_day(new_day)
+        self.replace_buffer(buf)
+        self.day_text_view.grab_focus()
 
         if self.search_text:
             # If a search is currently made, scroll to the text and return.
             GObject.idle_add(self.scroll_to_text, self.search_text)
             return
-
-        if self.day.last_edit_pos is not None:
-            x, y, selection = self.day.last_edit_pos
-            GObject.idle_add(self.scrolled_win.get_hscrollbar().set_value, x)
-            GObject.idle_add(self.scrolled_win.get_vscrollbar().set_value, y)
-            GObject.idle_add(self._restore_selection, selection)
-
-    def _restore_selection(self, selection):
-        iters = [self.day_text_buffer.get_iter_at_offset(offset)
-                 for offset in selection]
-        self.day_text_buffer.select_range(*iters)
-        self.day_text_view.grab_focus()
 
 
 class NewEntryDialog:
