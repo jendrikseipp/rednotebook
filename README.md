@@ -12,6 +12,7 @@ See `debian/control` for Debian and derivative package names.
 
   * Python (>= 3.4):        https://www.python.org
   * GTK+ (>= 3.10):         https://www.gtk.org
+  * GtkSourceView:          https://wiki.gnome.org/Projects/GtkSourceView
   * WebKitGTK+ (>= 2.16):   https://webkitgtk.org
   * PyYAML:                 https://pyyaml.org
 
@@ -68,10 +69,6 @@ Install RedNotebook locally under
   * The authors of the libraries listed under 'Requirements'.
   * Ciaran for creating the RedNotebook icon.
   * The txt2tags team (https://txt2tags.org) for their markup conversion tool.
-  * Ahmet Öztürk and Lifeograph for his markup highlighting idea
-  * Hannes Matuschek: The code for markup highlighting uses a specialized
-    version of his pygtkcodebuffer module
-    (http://code.google.com/p/pygtkcodebuffer/).
   * Dieter Verfaillie for his elib.intl module
     (https://github.com/dieterv/elib.intl)
 
