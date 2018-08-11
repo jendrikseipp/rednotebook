@@ -197,7 +197,16 @@
     </context>
 
     <context id="image">
+      <!-- [foo.png] -->
       <match>\[([\w_,.+%$#@!?+~/-]+\.(png|jpe?g|gif|eps|bmp|svg))\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-url"/>
+      </include>
+    </context>
+
+    <context id="image-quoted">
+      <!-- [""/path to/foo"".png] -->
+      <match>\[(""(\S.*?\S|\S)""\.(?:png|jpe?g|gif|eps|bmp|svg)(\?\d+)?)\]</match>
       <include>
         <context sub-pattern="1" style-ref="link-url"/>
       </include>
@@ -206,6 +215,15 @@
     <context id="link">
       <!-- This is a simplified version of the complex patterns that txt2tags really uses -->
       <match>\[([^]]+) ((https?://|ftp://|news://|telnet://|gopher://|wais://|www[23]?\.|ftp\.)[^]]+)\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-text"/>
+        <context sub-pattern="2" style-ref="link-url"/>
+      </include>
+    </context>
+
+    <context id="link-quoted">
+      <!-- [test link ""http://example.com""] -->
+      <match>\[(.*?)\s""(\S.*?\S)""\]</match>
       <include>
         <context sub-pattern="1" style-ref="link-text"/>
         <context sub-pattern="2" style-ref="link-url"/>
@@ -234,7 +252,9 @@
         <context ref="verbatim-line"/>
         <context ref="verbatim-block"/>
         <context ref="image"/>
+        <context ref="image-quoted"/>
         <context ref="link"/>
+        <context ref="link-quoted"/>
         <context ref="bare-url"/>
         <context ref="bare-email"/>
       </include>
