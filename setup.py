@@ -117,7 +117,8 @@ parameters = {
     'package_data'      : {'rednotebook':
                            ['images/*.png', 'images/rednotebook-icon/*.png',
                             'images/rednotebook-icon/rednotebook.svg',
-                            'files/*.css', 'files/*.glade', 'files/*.cfg']},
+                            'files/*.cfg', 'files/*.glade', 'files/*.lang',
+                            'files/*.xml']},
     'data_files'        : [('share/applications',
                             ['data/rednotebook.desktop']),
                            ('share/icons/hicolor/scalable/apps',
