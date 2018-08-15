@@ -723,9 +723,9 @@ class DayEditor(editor.Editor):
             self.recent_buffers.move_to_end(key)
             return self.recent_buffers[key]
 
-        buf = self.recent_buffers[key] = \
-            GtkSource.Buffer.new_with_language(self._get_t2t_highlighting())
+        buf = self.recent_buffers[key] = GtkSource.Buffer.new()
         buf.set_style_scheme(self._get_style_scheme())
+        buf.set_language(self._get_t2t_highlighting())
         buf.begin_not_undoable_action()
         buf.set_text(day.text)
         buf.end_not_undoable_action()
