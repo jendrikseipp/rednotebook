@@ -164,7 +164,6 @@ from rednotebook import backup
 
 from rednotebook.util.statistics import Statistics
 from rednotebook.gui.main_window import MainWindow
-from rednotebook import index
 from rednotebook import storage
 from rednotebook.data import Month
 
@@ -186,8 +185,6 @@ class Journal:
         self.month = None
         self.date = None
         self.months = {}
-
-        self.search_index = index.Index()
 
         # The dir name is the title
         self.title = ''
@@ -343,7 +340,6 @@ class Journal:
         self.month = None
         self.months.clear()
         self.frame.search_box.clear()
-        self.search_index.clear()
 
         self.months = storage.load_all_months_from_disk(data_dir)
 
@@ -352,11 +348,6 @@ class Journal:
 
         if self.is_first_start and not os.listdir(data_dir) and not self.days:
             self.add_instruction_content()
-
-        # We can't use self.days here since it uses self.save_old_day.
-        for month in self.months.values():
-            for day in month.days.values():
-                self.search_index.add(day.date, day.get_indexed_words())
 
         self.stats = Statistics(self)
 
@@ -405,12 +396,10 @@ class Journal:
 
     def save_old_day(self):
         '''Order is important'''
-        self.search_index.remove(self.day.date, self.day.get_indexed_words())
         old_content = self.day.content
         new_content = self.frame.categories_tree_view.get_day_content()
         new_content['text'] = self.frame.get_day_text()
         self.day.content = new_content
-        self.search_index.add(self.day.date, self.day.get_indexed_words())
 
         content_changed = (old_content != new_content)
         if content_changed:
@@ -498,26 +487,8 @@ class Journal:
 
     def search(self, text, tags):
         results = []
-        # TODO: Allow using index with a configuration option?
-        use_index = False
-        if use_index:
-            words = data.get_indexed_words(text)
-            words.extend('#{}'.format(tag) for tag in tags)
-
-            if not words:
-                return []
-
-            dates = self.search_index.find(words[0])
-            for word in words[1:]:
-                dates &= self.search_index.find(word)
-
-            for date in sorted(dates, reverse=True):
-                for word in words:
-                    results.append(self.get_day(date).search(word, tags))
-        else:
-            days = self.get_days_with_tags(tags)
-            for day in reversed(days):
-                results.append(day.search(text, tags))
+        for day in reversed(self.get_days_with_tags(tags)):
+            results.append(day.search(text, tags))
         return results
 
     def get_days_with_tags(self, tags):
@@ -588,7 +559,6 @@ class Journal:
         for example_day in info.example_content:
             self.day.content = example_day
             self.frame.set_date(self.month, self.date, self.day)
-            self.search_index.add(self.day.date, self.day.get_indexed_words())
             self.go_to_next_day()
 
         self.change_date(current_date)

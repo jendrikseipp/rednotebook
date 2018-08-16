@@ -38,16 +38,6 @@ def escape_tag(tag):
     return tag.lower().replace(' ', '_')
 
 
-def convert_category_to_hashtag(category):
-    return '#{}'.format(escape_tag(category))
-
-
-def get_indexed_words(text):
-    # Strip all ASCII punctuation except for #, $, %, @ and '.
-    words = [w.strip('.|-!"&/()=?*+~_:;,<>^°`{}[]\\') for w in text.split()]
-    return [word for word in words if word]
-
-
 def get_text_with_dots(text, start, end, found_text=None):
     '''
     Find the outermost spaces and innermost newlines around
@@ -159,7 +149,6 @@ class Day:
         elif text1 in text2:
             # The other text contains contains self.text
             self.text = same_day.text
-            raise NotImplementedError("update search index")
         else:
             self.text += '\n\n' + same_day.text
 
@@ -211,21 +200,6 @@ class Day:
         # Strip all ASCII punctuation except for $, %, @ and '.
         words = [w.strip('.|-!"&/()=?*+~#_:;,<>^°`{}[]\\') for w in words]
         return [word for word in words if word]
-
-    def get_indexed_words(self):
-        words = []
-        for category, content in self.content.items():
-            if category == 'text':
-                pass
-            else:
-                words.append(category)
-                words.append(convert_category_to_hashtag(category))
-                if content:
-                    for entry in content.keys():
-                        words.extend(get_indexed_words(entry))
-
-        words.extend(get_indexed_words(self.text))
-        return words
 
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))

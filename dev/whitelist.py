@@ -21,6 +21,3 @@ imports.ImportAssistant
 imports.PlainTextImporter
 imports.RedNotebookBackupImporter
 imports.Importer._check_modules
-
-from rednotebook.util import utils
-utils.compute_ngrams
