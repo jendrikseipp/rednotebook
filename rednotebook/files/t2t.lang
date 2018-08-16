@@ -47,7 +47,7 @@
     <style id="verbatim-block" name="Verbatim Block" map-to="def:identifier"/>
     <style id="url" name="Plain URL"/>
     <style id="link-url" name="Link URL"/>
-    <style id="link-text" name="Link Text"/>
+    <style id="link-text" name="Link Text" map-to="t2t:url"/>
     <style id="hashtag" name="Hashtag"/>
   </styles>
 

@@ -111,7 +111,6 @@
   <style name="t2t:strikethrough" strikethrough="true"/>
   <style name="t2t:bold" bold="true"/>
   <style name="t2t:url" underline="single" foreground="skyblue1"/>
-  <style name="t2t:link-text" underline="single" foreground="skyblue1"/>
   <style name="t2t:link-url" foreground="skyblue1"/>
   <style name="t2t:hashtag" foreground="scarletred2"/>
   <!-- End markup additions -->
