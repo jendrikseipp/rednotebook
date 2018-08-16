@@ -145,8 +145,9 @@ def _check_new_version(journal, current_version, startup):
 
 def check_new_version(journal, current_version, startup):
     thread = threading.Thread(
-        target=_check_new_version, args=(journal, current_version, startup))
-    thread.daemon = True
+        target=_check_new_version,
+        args=(journal, current_version, startup),
+        daemon=True)
     thread.start()
 
 
