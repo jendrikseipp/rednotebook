@@ -17,15 +17,18 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import signal
+import http.client
+import logging
 import os.path
 import re
-import http.client
+import signal
+import threading
 from urllib.request import urlopen
 import webbrowser
-import logging
+
 from distutils.version import StrictVersion
 
+from gi.repository import GObject
 from gi.repository import Gtk
 
 from rednotebook import info
@@ -91,7 +94,38 @@ def get_new_version_number():
     return new_version
 
 
-def check_new_version(journal, current_version, startup=False):
+def _show_update_dialog(journal, current_version, new_version, startup):
+    dialog = Gtk.MessageDialog(
+        parent=None,
+        flags=Gtk.DialogFlags.MODAL,
+        type=Gtk.MessageType.INFO,
+        buttons=Gtk.ButtonsType.YES_NO,
+        message_format=None)
+    dialog.set_transient_for(journal.frame.main_frame)
+    primary_text = (_('You have version <b>%s</b>.') % current_version + ' ' +
+                    _('The latest version is <b>%s</b>.') % new_version)
+    secondary_text = (
+        _('If you like the program, please consider making a donation.') + ' ' +
+        _('Do you want to visit the RedNotebook homepage?'))
+    dialog.set_markup(primary_text)
+    dialog.format_secondary_text(secondary_text)
+
+    # Let user disable checks
+    response_not_again = 30
+    if startup:
+        dialog.add_button(_('Do not ask again'), response_not_again)
+
+    response = dialog.run()
+    dialog.hide()
+
+    if response == Gtk.ResponseType.YES:
+        webbrowser.open(info.downloads_url)
+    elif response == response_not_again:
+        logging.info('Checks for new versions disabled')
+        journal.config['checkForNewVersion'] = 0
+
+
+def _check_new_version(journal, current_version, startup):
     current_version = StrictVersion(current_version)
     new_version = get_new_version_number()
 
@@ -106,34 +140,14 @@ def check_new_version(journal, current_version, startup=False):
                  (current_version, new_version, newer_version_available))
 
     if newer_version_available or not startup:
-        dialog = Gtk.MessageDialog(
-            parent=None,
-            flags=Gtk.DialogFlags.MODAL,
-            type=Gtk.MessageType.INFO,
-            buttons=Gtk.ButtonsType.YES_NO,
-            message_format=None)
-        dialog.set_transient_for(journal.frame.main_frame)
-        primary_text = (_('You have version <b>%s</b>.') % current_version + ' ' +
-                        _('The latest version is <b>%s</b>.') % new_version)
-        secondary_text = (
-            _('If you like the program, please consider making a donation.') + ' ' +
-            _('Do you want to visit the RedNotebook homepage?'))
-        dialog.set_markup(primary_text)
-        dialog.format_secondary_text(secondary_text)
+        GObject.idle_add(_show_update_dialog, journal, current_version, new_version, startup)
 
-        # Let user disable checks
-        response_not_again = 30
-        if startup:
-            dialog.add_button(_('Do not ask again'), response_not_again)
 
-        response = dialog.run()
-        dialog.hide()
-
-        if response == Gtk.ResponseType.YES:
-            webbrowser.open(info.downloads_url)
-        elif response == response_not_again:
-            logging.info('Checks for new versions disabled')
-            journal.config['checkForNewVersion'] = 0
+def check_new_version(journal, current_version, startup):
+    thread = threading.Thread(
+        target=_check_new_version, args=(journal, current_version, startup))
+    thread.daemon = True
+    thread.start()
 
 
 def show_html_in_browser(html, filename):

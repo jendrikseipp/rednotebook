@@ -10,6 +10,8 @@ please check back with me briefly about its status.
 X Move date format option to preferences dialog.
 X Use date format option for date in titlebar.
 X Remember selected date format for exports between sessions.
+X Check remote info.py file for latest version number.
+X Check for latest version in separate thread.
 O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
   X Preview Latex formulas
