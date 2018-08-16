@@ -23,6 +23,7 @@ from gi.repository import GdkPixbuf
 from gi.repository import Gtk
 
 from rednotebook.util import utils
+from rednotebook.help import help_text
 from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook import storage
@@ -273,9 +274,9 @@ class MainMenuBar:
 
     def on_help_menu_item_activate(self, widget):
         temp_dir = self.journal.dirs.temp_dir
-        filesystem.write_file(os.path.join(temp_dir, 'source.txt'), info.help_text)
+        filesystem.write_file(os.path.join(temp_dir, 'source.txt'), help_text)
         html = self.journal.convert(
-            info.help_text, 'xhtml',
+            help_text, 'xhtml',
             headers=[_('RedNotebook Documentation'), info.version, ''],
             options={'toc': 1})
         utils.show_html_in_browser(html, os.path.join(temp_dir, 'help.html'))
