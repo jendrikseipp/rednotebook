@@ -74,10 +74,10 @@ def get_new_version_number():
     """
     Reads version number from website and returns None if it cannot be read
     """
-    version_pattern = re.compile(r'<span id="download-version">(.+)</span>')
+    version_pattern = re.compile(r"^version = '(.+)'$", flags=re.M)
 
     try:
-        project_xml = urlopen(info.url).read()
+        project_xml = urlopen(info.version_url).read()
     except (IOError, http.client.HTTPException):
         return None
 

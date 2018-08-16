@@ -37,6 +37,7 @@ downloads_url = 'https://rednotebook.sourceforge.io/downloads.html'
 answers_url = 'https://answers.launchpad.net/rednotebook'
 translation_url = 'https://translations.launchpad.net/rednotebook/'
 bug_url = 'https://github.com/jendrikseipp/rednotebook/issues'
+version_url = 'https://raw.githubusercontent.com/jendrikseipp/rednotebook/master/rednotebook/info.py'
 contributors_url = 'https://github.com/jendrikseipp/rednotebook/graphs/contributors'
 
 developers = ['%(author)s <%(author_mail)s>' % locals()]
