@@ -38,6 +38,7 @@
     <style id="section-4" name="Section 4" map-to="def:heading4"/>
     <style id="section-5" name="Section 5" map-to="def:heading5"/>
     <style id="anchor" name="Anchor" map-to="t2t:section"/>
+    <style id="list-marker" name="List marker" map-to="def:statement"/>
     <style id="italic" name="Italic" map-to="def:doc-comment-element"/>
     <style id="bold" name="Bold"/>
     <style id="underlined" name="Underlined" map-to="def:underlined"/>
@@ -147,6 +148,13 @@
       </include>
     </context>
 
+    <context id="list">
+      <match>^ *(\-|\+) [^ ].*$</match>
+      <include>
+        <context sub-pattern="1" style-ref="list-marker"/>
+      </include>
+    </context>
+
     <context id="italic">
       <match>//([^\s](|.*?[^\s])/*)//</match>
       <include>
@@ -249,6 +257,7 @@
         <context ref="sections"/>
         <context ref="options"/>
         <context ref="comment"/>
+        <context ref="list"/>
         <context ref="italic"/>
         <context ref="bold"/>
         <context ref="underlined"/>
