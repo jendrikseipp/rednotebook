@@ -147,21 +147,21 @@
     </context>
 
     <context id="italic">
-      <match>//(.*?)//</match>
+      <match>//([^\s](|.*?[^\s])/*)//</match>
       <include>
         <context sub-pattern="1" style-ref="italic"/>
       </include>
     </context>
 
     <context id="bold">
-      <match>\*\*(.*?)\*\*</match>
+      <match>\*\*([^\s](|.*?[^\s])\**)\*\*</match>
       <include>
         <context sub-pattern="1" style-ref="bold"/>
       </include>
     </context>
 
     <context id="underlined">
-      <match>__(.*?)__</match>
+      <match>__([^\s](|.*?[^\s])_*)__</match>
       <include>
         <context sub-pattern="1" style-ref="underlined"/>
       </include>
@@ -172,14 +172,14 @@
     </context>
 
     <context id="strikethrough">
-      <match>--([^\s-](|.*?[^\s])-*)--</match>
+      <match>--([^\s](|.*?[^\s])-*)--</match>
       <include>
         <context sub-pattern="1" style-ref="strikethrough"/>
       </include>
     </context>
 
     <context id="verbatim">
-      <match>``(.*?)``</match>
+      <match>``([^\s](|.*?[^\s])`*)``</match>
       <include>
         <context sub-pattern="1" style-ref="verbatim"/>
       </include>
@@ -193,8 +193,8 @@
     </context>
 
     <context id="verbatim-block" style-ref="verbatim-block" style-inside="true">
-      <start>^```$</start>
-      <end>^```$</end>
+      <start>^```\s*$</start>
+      <end>^```\s*$</end>
     </context>
 
     <context id="image">
