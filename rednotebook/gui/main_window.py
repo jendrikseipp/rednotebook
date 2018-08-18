@@ -758,6 +758,7 @@ class DayEditor(editor.Editor):
         if self.search_text:
             # If a search is currently made, scroll to the text and return.
             GObject.idle_add(self.scroll_to_text, self.search_text)
+            GObject.idle_add(self.highlight, self.search_text)
             return
 
     def show_template(self, title, text):
