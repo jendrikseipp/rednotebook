@@ -717,8 +717,12 @@ class DayEditor(editor.Editor):
             self._style_scheme = sm.get_scheme('rednotebook')
         return self._style_scheme
 
-    def _get_buffer_for_day(self, day):
-        key = day.date
+    def _get_buffer(self, key, text):
+        '''Get an editing buffer for a given item
+
+        If key is in our cache of recently used buffers, its buffer is retrieved
+        and text is ignored. Otherwise, a new buffer is constructed with text.
+        '''
         if key in self.recent_buffers:
             self.recent_buffers.move_to_end(key)
             return self.recent_buffers[key]
@@ -727,7 +731,7 @@ class DayEditor(editor.Editor):
         buf.set_style_scheme(self._get_style_scheme())
         buf.set_language(self._get_t2t_highlighting())
         buf.begin_not_undoable_action()
-        buf.set_text(day.text)
+        buf.set_text(text)
         buf.end_not_undoable_action()
 
         if len(self.recent_buffers) > self.n_recent_buffers:
@@ -740,6 +744,9 @@ class DayEditor(editor.Editor):
 
         return buf
 
+    def _get_buffer_for_day(self, day):
+        return self._get_buffer(day.date, day.text)
+
     def show_day(self, new_day):
         # Show new day
         self.day = new_day
@@ -751,6 +758,11 @@ class DayEditor(editor.Editor):
             # If a search is currently made, scroll to the text and return.
             GObject.idle_add(self.scroll_to_text, self.search_text)
             return
+
+    def show_template(self, title, text):
+        buf = self._get_buffer(('template', title), text)
+        self.replace_buffer(buf)
+        self.day_text_view.grab_focus()
 
 
 class NewEntryDialog:
