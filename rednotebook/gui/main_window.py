@@ -730,6 +730,7 @@ class DayEditor(editor.Editor):
         buf = self.recent_buffers[key] = GtkSource.Buffer.new()
         buf.set_style_scheme(self._get_style_scheme())
         buf.set_language(self._get_t2t_highlighting())
+        buf.create_tag('highlighter', background='Yellow')
         buf.begin_not_undoable_action()
         buf.set_text(text)
         buf.end_not_undoable_action()

@@ -126,7 +126,28 @@ class Editor(GObject.GObject):
 
     def highlight(self, text):
         self.search_text = text
-        self.day_text_buffer.set_search_text(text)
+        buf = self.day_text_buffer
+
+        # Clear previous highlighting
+        start = buf.get_start_iter()
+        end = buf.get_end_iter()
+        buf.remove_tag_by_name('highlighter', start, end)
+
+        # Highlight matches
+        if text:
+            for match_start, match_end in self.iter_search_matches(text):
+                buf.apply_tag_by_name('highlighter', match_start, match_end)
+
+    search_flags = Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
+
+    def iter_search_matches(self, text):
+        it = self.day_text_buffer.get_start_iter()
+        while True:
+            match = it.forward_search(text, self.search_flags)
+            if not match:
+                return
+            yield match
+            it = match[1]  # Continue searching from after the match
 
     def scroll_to_text(self, text):
         iter_start = self.day_text_buffer.get_start_iter()
