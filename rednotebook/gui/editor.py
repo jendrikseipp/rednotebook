@@ -150,24 +150,13 @@ class Editor(GObject.GObject):
             it = match[1]  # Continue searching from after the match
 
     def scroll_to_text(self, text):
-        iter_start = self.day_text_buffer.get_start_iter()
-
-        # Hack: Ignoring the case is not supported for the search so we search
-        # for the most common variants, but do not search identical ones
-        variants = set([text, text.capitalize(), text.lower(), text.upper()])
-
-        for search_text in variants:
-            iter_tuple = iter_start.forward_search(
-                search_text, Gtk.TextSearchFlags.VISIBLE_ONLY)
-
-            # When we find one variant, scroll to it and quit
-            if iter_tuple:
-                # It is safer to scroll to a mark than an iter
-                mark = self.day_text_buffer.create_mark(
-                    'highlight_query', iter_tuple[0], left_gravity=False)
-                self.day_text_view.scroll_to_mark(mark, 0, False, 0, 0)
-                self.day_text_buffer.delete_mark(mark)
-                return
+        for match_start, _ in self.iter_search_matches(text):
+            # It is safer to scroll to a mark than an iter
+            mark = self.day_text_buffer.create_mark(
+                'highlight_query', match_start, left_gravity=False)
+            self.day_text_view.scroll_to_mark(mark, 0, False, 0, 0)
+            self.day_text_buffer.delete_mark(mark)
+            return  # Stop after the first match
 
     def get_selected_text(self):
         bounds = self.day_text_buffer.get_selection_bounds()
