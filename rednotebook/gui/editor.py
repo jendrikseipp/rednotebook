@@ -196,18 +196,6 @@ class Editor(GObject.GObject):
         iter2 = self.day_text_buffer.get_iter_at_mark(mark2)
         return self.sort_iters(iter1, iter2)
 
-    def get_text_parts(self):
-        """
-        Return text before the selection, the selected text itself and
-        the text after the selection.
-        """
-        start = self.day_text_buffer.get_start_iter()
-        end = self.day_text_buffer.get_end_iter()
-        sel_start, sel_end = self.get_selection_bounds()
-        return (self.get_text(start, sel_start),
-                self.get_text(sel_start, sel_end),
-                self.get_text(sel_end, end))
-
     def _get_markups(self, format, selection):
         format_to_markups = {
             'bold': ('**', '**'),
