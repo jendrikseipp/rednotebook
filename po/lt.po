@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 18:08+0200\n"
-"PO-Revision-Date: 2018-08-20 23:22+0300\n"
+"POT-Creation-Date: 2018-08-20 23:19+0200\n"
+"PO-Revision-Date: 2018-08-21 00:31+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "Language: lt\n"
@@ -18,20 +18,174 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
 "X-Generator: Poedit 2.1.1\n"
 
-#: ../rednotebook/gui/clouds.py:73
-msgid "filter, these, comma, separated, words, and, #tags"
-msgstr "filtruoti, šiuos, kableliais, atskirtus, žodžius, ir, #žymes"
-
-#: ../rednotebook/gui/clouds.py:78
-msgid "mtv, spam, work, job, play"
-msgstr "pelė, šuo, jėga, beje, kur"
-
-#: ../rednotebook/gui/clouds.py:189 ../rednotebook/gui/categories.py:53
-#: ../rednotebook/info.py:77 ../rednotebook/util/markup.py:128
+#: ../rednotebook/help.py:25 ../rednotebook/gui/clouds.py:188
+#: ../rednotebook/gui/categories.py:53 ../rednotebook/util/markup.py:128
 msgid "Tags"
 msgstr "Žymės"
 
-#: ../rednotebook/gui/clouds.py:192 ../rednotebook/util/statistics.py:69
+#: ../rednotebook/help.py:26
+msgid "Todo"
+msgstr "Užduotys"
+
+#: ../rednotebook/help.py:27
+msgid "Done"
+msgstr "Atlikta"
+
+#: ../rednotebook/help.py:28
+msgid "Remember the milk"
+msgstr "Nepamiršti pieno"
+
+#: ../rednotebook/help.py:29
+msgid "Wash the dishes"
+msgstr "Išplauti indus"
+
+#: ../rednotebook/help.py:31
+msgid "Hello!"
+msgstr "Sveiki!"
+
+#: ../rednotebook/help.py:32
+msgid ""
+"Some example text has been added to help you start and you can erase it "
+"whenever you like."
+msgstr ""
+"Tam, kad jums pradžioje būtų lengviau, čia buvo pridėti kai kurie teksto "
+"pavyzdžiai. Juos galite bet kada ištrinti."
+
+#: ../rednotebook/help.py:36
+msgid ""
+"The example text and more documentation is available under \"Help\" -> "
+"\"Contents\"."
+msgstr ""
+"Teksto pavyzdžiai ir daugiau dokumentacijos yra prieinama meniu „Žinynas“ -> "
+"„Turinys“."
+
+#. Translators: noun
+#. Translators: Verb
+#: ../rednotebook/help.py:40 tmp/main_window.glade.h:15
+msgid "Preview"
+msgstr "Peržiūra"
+
+#: ../rednotebook/help.py:42
+msgid ""
+"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
+"mode."
+msgstr ""
+"RedNotebook programoje yra dvi veiksenos, __taisos__ veiksena ir "
+"__peržiūros__ veiksena."
+
+#: ../rednotebook/help.py:44
+msgid "Click on Edit above to see the difference."
+msgstr "Norėdami pamatyti skirtumą, spustelėkite viršuje ant Taisos."
+
+#: ../rednotebook/help.py:47
+msgid "Tagging is easy."
+msgstr "Žymėti yra lengva."
+
+#: ../rednotebook/help.py:48
+msgid "Just use #hashtags like on twitter."
+msgstr "Tiesiog, naudokite #saitažodžius kaip socialiniame tinkle \"Twitter\"."
+
+#: ../rednotebook/help.py:52
+msgid ""
+"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
+"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
+"watched \"__Life of Brian__\"."
+msgstr ""
+"Šiandien aš nuėjau į //gyvūnų parduotuvę// ir nusipirkau **tigrą**. Tuomet "
+"mes nuėjome į --vandens-- parką ir gerai praleidome laiką, mėtydami plastinę "
+"lėkštę. Vėliau, žiūrėjome \"__Egipto princą__\"."
+
+#. Translators: both are verbs
+#: ../rednotebook/help.py:64
+msgid "Save and Export"
+msgstr "Įrašymas ir eksportavimas"
+
+#: ../rednotebook/help.py:66
+msgid ""
+"Everything you enter will be saved automatically at regular intervals and "
+"when you exit the program."
+msgstr ""
+"Viskas, ką rašote bus automatiškai įrašoma reguliariu intervalu, o taip pat "
+"tada, kai užversite programą."
+
+#: ../rednotebook/help.py:68
+msgid "To avoid data loss you should backup your journal regularly."
+msgstr ""
+"Norėdami išvengti duomenų praradimo, turėtumėte reguliariai daryti savo "
+"žurnalo atsarginę kopiją."
+
+#: ../rednotebook/help.py:69
+msgid ""
+"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
+msgstr ""
+"\"Žurnalo\" meniu esantis punktas \"Daryti atsarginę kopiją\" įrašo visus "
+"jūsų įvestus duomenis į zip failą."
+
+#: ../rednotebook/help.py:70
+msgid "In the \"Journal\" menu you also find the \"Export\" button."
+msgstr "\"Žurnalo\" meniu taip pat rasite mygtuką \"Eksportuoti\"."
+
+#: ../rednotebook/help.py:71
+msgid ""
+"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
+msgstr ""
+"Spustelėkite ant \"Eksportuoti\" ir eksportuokite savo dienoraštį į Grynąjį "
+"tekstą, PDF, HTML ar Latex."
+
+#: ../rednotebook/help.py:74
+msgid "If you encounter any errors, please drop me a note so I can fix them."
+msgstr ""
+"Jeigu susidursite su klaidomis, parašykite man, kad galėčiau jas ištaisyti."
+
+#: ../rednotebook/help.py:75
+msgid "Any feedback is appreciated."
+msgstr "Rašykite bet kokius atsiliepimus."
+
+#: ../rednotebook/help.py:78
+msgid "Have a nice day!"
+msgstr "Geros dienos!"
+
+#: ../rednotebook/help.py:99
+msgid ""
+"=== Multiple entries ===\n"
+"You can add multiple entries to a single day by using different journals "
+"(one named \"Work\", the other \"Family\"), separating your entries with "
+"different titles (=== Work ===, === Family ===) and using horizontal "
+"separator lines (20 \"=\"s)."
+msgstr ""
+"=== Keli įrašai ===\n"
+"Galite į vieną dieną pridėti kelis įrašus, naudodami skirtingus žurnalus "
+"(vieną pavadinimu \"Darbas\", kitą - \"Šeima\"), atskirdami savo įrašus "
+"skirtingais pavadinimais (=== Darbas ===, === Šeima ===) ir naudodami "
+"horizontalias atkyrimo eilutes (20 \"=\" simbolių)."
+
+#: ../rednotebook/help.py:106
+msgid ""
+"=== Work ===\n"
+"Here goes the first entry. It is about #work.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Family ===\n"
+"Here comes the entry about my #family."
+msgstr ""
+"=== Darbas ===\n"
+"Štai yra pirmasis įrašas. Pagrindinė jo tema yra #darbas.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Šeima ===\n"
+"Štai įrašas apie tai, ką veikia mano #šeima."
+
+#: ../rednotebook/gui/clouds.py:72
+msgid "filter, these, comma, separated, words, and, #tags"
+msgstr "filtruoti, šiuos, kableliais, atskirtus, žodžius, ir, #žymes"
+
+#: ../rednotebook/gui/clouds.py:77
+msgid "mtv, spam, work, job, play"
+msgstr "pelė, šuo, jėga, beje, kur"
+
+#: ../rednotebook/gui/clouds.py:191 ../rednotebook/util/statistics.py:69
 #: ../rednotebook/util/statistics.py:82
 msgid "Words"
 msgstr "Žodžiai"
@@ -41,11 +195,11 @@ msgstr "Žodžiai"
 msgid "Hide \"%s\" from clouds"
 msgstr "Nerodyti debesyse „%s“"
 
-#: ../rednotebook/gui/search.py:77 ../rednotebook/gui/exports.py:400
+#: ../rednotebook/gui/search.py:81 ../rednotebook/gui/exports.py:397
 msgid "Date"
 msgstr "Data"
 
-#: ../rednotebook/gui/search.py:77
+#: ../rednotebook/gui/search.py:81
 msgid "Text"
 msgstr "Tekstas"
 
@@ -98,49 +252,57 @@ msgstr "Automatiškai perjungti tarp taisymo ir peržiūros veiksenos"
 msgid "Check for new version at startup"
 msgstr "Paleidimo metu tikrinti ar nėra naujos versijos"
 
-#: ../rednotebook/gui/options.py:279
-msgid "Show right-side tags pane"
-msgstr "Rodyti dešinės pusės žymių polangį"
+#: ../rednotebook/gui/options.py:277
+msgid "Search as you type"
+msgstr "Ieškoti, jums rašant"
 
-#: ../rednotebook/gui/options.py:288
+#: ../rednotebook/gui/options.py:285
 msgid "Check now"
 msgstr "Tikrinti dabar"
 
-#: ../rednotebook/gui/options.py:294
+#: ../rednotebook/gui/options.py:291
 msgid "Edit font:"
 msgstr "Taisos šriftas:"
 
-#: ../rednotebook/gui/options.py:295
+#: ../rednotebook/gui/options.py:292
 msgid "Preview font:"
 msgstr "Peržiūros šriftas:"
 
-#: ../rednotebook/gui/options.py:297
+#: ../rednotebook/gui/options.py:294
 msgid "Comma-separated font names"
 msgstr "Kableliais atskirti šriftų pavadinimai"
 
-#: ../rednotebook/gui/options.py:298
+#: ../rednotebook/gui/options.py:296
 msgid "Date/Time format"
 msgstr "Datos/laiko formatas"
 
+#: ../rednotebook/gui/options.py:297
+msgid "Used by Date/Time button and $date$ template macro."
+msgstr "Naudojama Datos/Laiko mygtuko ir $date$ šablono makrokomandos."
+
 #: ../rednotebook/gui/options.py:299
+msgid "Date format"
+msgstr "Datos formatas"
+
+#: ../rednotebook/gui/options.py:300
+msgid "Used for dates in titlebar and exports."
+msgstr "Naudojama pavadinimo juostų datose ir eksportavimuose."
+
+#: ../rednotebook/gui/options.py:302
 msgid "Exclude from cloud"
 msgstr "Išskirti iš debesies"
 
-#: ../rednotebook/gui/options.py:300
+#: ../rednotebook/gui/options.py:303
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "Nerodyti debesyje šių kableliais atskirtų žodžių ir #žymių"
 
-#: ../rednotebook/gui/options.py:301
+#: ../rednotebook/gui/options.py:304
 msgid "Include small words in cloud"
 msgstr "Įtraukti į debesį trumpus žodžius"
 
-#: ../rednotebook/gui/options.py:302
+#: ../rednotebook/gui/options.py:305
 msgid "Allow these words with 4 letters or less"
 msgstr "Leisti šiuos 4 raidžių ir trumpesnius žodžius"
-
-#: ../rednotebook/gui/browser.py:98
-msgid "Print to File"
-msgstr "Spausdinti į failą"
 
 #: ../rednotebook/gui/format_menu.py:80
 msgid "Bold"
@@ -172,7 +334,7 @@ msgid "_Format"
 msgstr "_Formatas"
 
 #. Translators: Noun
-#: ../rednotebook/gui/format_menu.py:109 ../rednotebook/gui/exports.py:395
+#: ../rednotebook/gui/format_menu.py:109 ../rednotebook/gui/exports.py:392
 msgid "Format"
 msgstr "Formatas"
 
@@ -180,19 +342,19 @@ msgstr "Formatas"
 msgid "Format the selected text or tag"
 msgstr "Formatuoti pažymėtą tekstą ar žymę"
 
-#: ../rednotebook/gui/menu.py:94
+#: ../rednotebook/gui/menu.py:95
 msgid "_Journal"
 msgstr "Ž_urnalas"
 
-#: ../rednotebook/gui/menu.py:96
+#: ../rednotebook/gui/menu.py:97
 msgid "Create a new journal. The old one will be saved"
 msgstr "Sukurti naują žurnalą. Senasis bus įrašytas"
 
-#: ../rednotebook/gui/menu.py:99
+#: ../rednotebook/gui/menu.py:100
 msgid "Load an existing journal. The old journal will be saved"
 msgstr "Įkelti esamą žurnalą.  Senasis bus įrašytas"
 
-#: ../rednotebook/gui/menu.py:104
+#: ../rednotebook/gui/menu.py:105
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
@@ -202,141 +364,141 @@ msgstr ""
 #. ('Import', Gtk.STOCK_ADD, _('_Import'),
 #. None, _('Open the import assistant'), self.on_import_menu_item_activate),
 #. Translators: Verb
-#: ../rednotebook/gui/menu.py:110
+#: ../rednotebook/gui/menu.py:111
 msgid "Export"
 msgstr "Eksportuoti"
 
-#: ../rednotebook/gui/menu.py:111
+#: ../rednotebook/gui/menu.py:112
 msgid "Open the export assistant"
 msgstr "Atverti eksportavimo pagelbiklį"
 
 #. Translators: Verb
-#: ../rednotebook/gui/menu.py:113
+#: ../rednotebook/gui/menu.py:114
 msgid "_Backup"
 msgstr "_Daryti atsarginę kopiją"
 
-#: ../rednotebook/gui/menu.py:114
+#: ../rednotebook/gui/menu.py:115
 msgid "Save all the data in a zip archive"
 msgstr "Įrašyti visus duomenis į zip archyvą"
 
-#: ../rednotebook/gui/menu.py:115
+#: ../rednotebook/gui/menu.py:116
 msgid "S_tatistics"
 msgstr "S_tatistika"
 
-#: ../rednotebook/gui/menu.py:116
+#: ../rednotebook/gui/menu.py:117
 msgid "Show some statistics about the journal"
 msgstr "Rodyti šiek tiek statistikos apie žurnalą"
 
-#: ../rednotebook/gui/menu.py:118
+#: ../rednotebook/gui/menu.py:119
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
 msgstr "Išjungti RedNotebook. Programa nebus suskleista į dėklą."
 
-#: ../rednotebook/gui/menu.py:121
+#: ../rednotebook/gui/menu.py:122
 msgid "_Edit"
 msgstr "_Taisa"
 
-#: ../rednotebook/gui/menu.py:123
+#: ../rednotebook/gui/menu.py:124
 msgid "Undo text or tag edits"
 msgstr "Atšaukti teksto ar žymių taisymus"
 
-#: ../rednotebook/gui/menu.py:125
+#: ../rednotebook/gui/menu.py:126
 msgid "Redo text or tag edits"
 msgstr "Grąžinti teksto ar žymių taisymus"
 
-#: ../rednotebook/gui/menu.py:139
+#: ../rednotebook/gui/menu.py:140
 msgid "Underline misspelled words"
 msgstr "Pabraukti žodžius su rašybos klaidomis"
 
-#: ../rednotebook/gui/menu.py:144
+#: ../rednotebook/gui/menu.py:145
 msgid "_Help"
 msgstr "Ž_inynas"
 
-#: ../rednotebook/gui/menu.py:145
+#: ../rednotebook/gui/menu.py:146
 msgid "Contents"
 msgstr "Turinys"
 
-#: ../rednotebook/gui/menu.py:146
+#: ../rednotebook/gui/menu.py:147
 msgid "Open the RedNotebook documentation"
 msgstr "Atverti RedNotebook dokumentaciją"
 
-#: ../rednotebook/gui/menu.py:147
+#: ../rednotebook/gui/menu.py:148
 msgid "Get Help Online"
 msgstr "Ieškoti pagalbos internete"
 
-#: ../rednotebook/gui/menu.py:148
+#: ../rednotebook/gui/menu.py:149
 msgid "Browse answered questions or ask a new one"
 msgstr "Naršyti atsakytus klausimus arba užduoti savo klausimą"
 
-#: ../rednotebook/gui/menu.py:149
+#: ../rednotebook/gui/menu.py:150
 msgid "Translate RedNotebook"
 msgstr "Versti RedNotebook"
 
-#: ../rednotebook/gui/menu.py:150
+#: ../rednotebook/gui/menu.py:151
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr "Prisijungti prie Launchpad svetainės ir padėti versti RedNotebook"
 
-#: ../rednotebook/gui/menu.py:152
+#: ../rednotebook/gui/menu.py:153
 msgid "Report a Problem"
 msgstr "Pranešti apie klaidą"
 
-#: ../rednotebook/gui/menu.py:153
+#: ../rednotebook/gui/menu.py:154
 msgid "Fill out a short form about the problem"
 msgstr "Užpildyti trumpą formą apie problemą"
 
-#: ../rednotebook/gui/menu.py:173
+#: ../rednotebook/gui/menu.py:174
 msgid "Wrong directory"
 msgstr "Neteisingas katalogas"
 
-#: ../rednotebook/gui/menu.py:176 ../rednotebook/journal.py:192
+#: ../rednotebook/gui/menu.py:177 ../rednotebook/journal.py:209
 msgid "You cannot use this directory for your journal:"
 msgstr "Savo žurnalui negalite naudoti šio katalogo:"
 
-#: ../rednotebook/gui/menu.py:180
+#: ../rednotebook/gui/menu.py:181
 msgid "Please select an empty directory."
 msgstr "Pasirinkite tuščią katalogą."
 
-#: ../rednotebook/gui/menu.py:184
+#: ../rednotebook/gui/menu.py:185
 msgid "This directory contains no journal files:"
 msgstr "Šiame kataloge nėra jokių žurnalo failų:"
 
-#: ../rednotebook/gui/menu.py:200
+#: ../rednotebook/gui/menu.py:201
 msgid "Journals are saved in a directory, not in a single file."
 msgstr "Žurnalai yra įrašomi į katalogą, o ne į vieną failą."
 
-#: ../rednotebook/gui/menu.py:201
+#: ../rednotebook/gui/menu.py:202
 msgid "The directory name will be the title of the new journal."
 msgstr "Katalogo pavadinimas bus naujojo žurnalo pavadinimas."
 
-#: ../rednotebook/gui/menu.py:202
+#: ../rednotebook/gui/menu.py:203
 msgid "Select an empty folder for your new journal"
 msgstr "Pasirinkite savo naujajam žurnalui tuščią katalogą"
 
-#: ../rednotebook/gui/menu.py:205
+#: ../rednotebook/gui/menu.py:206
 msgid "Select an existing journal directory"
 msgstr "Pasirinkite esamo žurnalo katalogą"
 
-#: ../rednotebook/gui/menu.py:206
+#: ../rednotebook/gui/menu.py:207
 msgid "The directory should contain your journal's data files"
 msgstr "Kataloge turėtų būti jūsų žurnalo duomenų failai"
 
-#: ../rednotebook/gui/menu.py:216
+#: ../rednotebook/gui/menu.py:217
 msgid "Select an empty folder for the new location of your journal"
 msgstr "Pasirinkite tuščią aplanką naujai savo žurnalo vietai"
 
-#: ../rednotebook/gui/menu.py:217
+#: ../rednotebook/gui/menu.py:218
 msgid "The directory name will be the new title of the journal"
 msgstr "Katalogo pavadinimas bus naujasis žurnalo pavadinimas"
 
-#: ../rednotebook/gui/menu.py:279
+#: ../rednotebook/gui/menu.py:280
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook dokumentacija"
 
-#: ../rednotebook/gui/menu.py:303
+#: ../rednotebook/gui/menu.py:304
 msgid "Contributors:"
 msgstr "Talkininkai:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:304 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:305 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -369,7 +531,7 @@ msgid "Introduction"
 msgstr "Įvadas"
 
 #: ../rednotebook/gui/customwidgets.py:348
-#: ../rednotebook/gui/main_window.py:574
+#: ../rednotebook/gui/main_window.py:614
 msgid "Template"
 msgstr "Šablonas"
 
@@ -377,15 +539,19 @@ msgstr "Šablonas"
 msgid "Save and insert"
 msgstr "Įrašyti ir įterpti"
 
-#: ../rednotebook/gui/main_window.py:271
+#: ../rednotebook/gui/main_window.py:149
+msgid "Preview in Browser"
+msgstr "Peržiūra naršyklėje"
+
+#: ../rednotebook/gui/main_window.py:294
 msgid "Show RedNotebook"
 msgstr "Rodyti RedNotebook"
 
-#: ../rednotebook/gui/main_window.py:482
+#: ../rednotebook/gui/main_window.py:527
 msgid "No directory selected."
 msgstr "Nepasirinktas joks katalogas."
 
-#: ../rednotebook/gui/main_window.py:577
+#: ../rednotebook/gui/main_window.py:617
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -493,327 +659,165 @@ msgstr "Plotis privalo būti sveikasis skaičius."
 msgid "No link location has been entered"
 msgstr "Neįvesta nuorodos vieta"
 
-#: ../rednotebook/gui/exports.py:43 ../rednotebook/gui/exports.py:396
+#: ../rednotebook/gui/exports.py:41 ../rednotebook/gui/exports.py:393
 msgid "Export all days"
 msgstr "Eksportuoti visas dienas"
 
-#: ../rednotebook/gui/exports.py:47
+#: ../rednotebook/gui/exports.py:45
 msgid "Export currently visible day"
 msgstr "Eksportuoti šiuo metu matomą dieną"
 
-#: ../rednotebook/gui/exports.py:50
+#: ../rednotebook/gui/exports.py:48
 msgid "Export days in the selected time range"
 msgstr "Eksportuoti pasirinkto laikotarpio dienas"
 
-#: ../rednotebook/gui/exports.py:59
+#: ../rednotebook/gui/exports.py:57
 msgid "From:"
 msgstr "Nuo:"
 
-#: ../rednotebook/gui/exports.py:61
+#: ../rednotebook/gui/exports.py:59
 msgid "To:"
 msgstr "Iki:"
 
-#: ../rednotebook/gui/exports.py:109
+#: ../rednotebook/gui/exports.py:107
 msgid "Export currently selected text"
 msgstr "Eksportuoti šiuo metu pažymėtą tekstą"
 
-#: ../rednotebook/gui/exports.py:118
+#: ../rednotebook/gui/exports.py:116
 msgid "(Only available when text is selected in edit mode)"
 msgstr "(Prieinama tik tada, kai tekstas yra pažymėtas taisymo veiksenoje)"
 
-#: ../rednotebook/gui/exports.py:135
-msgid "Date format"
-msgstr "Datos formatas"
-
-#: ../rednotebook/gui/exports.py:136
-msgid "Leave blank to omit dates in export"
-msgstr "Palikite tuščią, jei norite, kad datos nebūtų įtrauktos"
-
-#: ../rednotebook/gui/exports.py:138
+#: ../rednotebook/gui/exports.py:129
 msgid "Export text and tags"
 msgstr "Eksportuoti tekstą ir žymes"
 
-#: ../rednotebook/gui/exports.py:139
+#: ../rednotebook/gui/exports.py:130
 msgid "Export text only"
 msgstr "Eksportuoti tik tekstą"
 
-#: ../rednotebook/gui/exports.py:141
+#: ../rednotebook/gui/exports.py:132
 msgid "Export tags only"
 msgstr "Eksportuoti tik žymes"
 
-#: ../rednotebook/gui/exports.py:143
+#: ../rednotebook/gui/exports.py:134
 msgid "Filter days by tags"
 msgstr "Filtruoti dienas pagal žymes"
 
-#: ../rednotebook/gui/exports.py:152
+#: ../rednotebook/gui/exports.py:142
 msgid "Available tags"
 msgstr "Prieinamos žymės"
 
-#: ../rednotebook/gui/exports.py:153
+#: ../rednotebook/gui/exports.py:143
 msgid "Selected tags"
 msgstr "Pasirinktos žymės"
 
-#: ../rednotebook/gui/exports.py:161
+#: ../rednotebook/gui/exports.py:151
 msgid "Select"
 msgstr "Pasirinkti"
 
-#: ../rednotebook/gui/exports.py:162
+#: ../rednotebook/gui/exports.py:152
 msgid "Deselect"
 msgstr "Panaikinti pasirinkimą"
 
-#: ../rednotebook/gui/exports.py:257
+#: ../rednotebook/gui/exports.py:247
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr "Filtruodami pagal žymes, privalote pasirinkti bent vieną žymę."
 
-#: ../rednotebook/gui/exports.py:280
+#: ../rednotebook/gui/exports.py:270
 msgid "You have selected the following settings:"
 msgstr "Pasirinkote šiuos nustatymus:"
 
-#: ../rednotebook/gui/exports.py:305
+#: ../rednotebook/gui/exports.py:295
 msgid "Export Assistant"
 msgstr "Eksportavimo pagelbiklis"
 
-#: ../rednotebook/gui/exports.py:308
+#: ../rednotebook/gui/exports.py:302
 msgid "Welcome to the Export Assistant."
 msgstr "Sveiki atvykę į eksportavimo pagelbiklį."
 
-#: ../rednotebook/gui/exports.py:309
+#: ../rednotebook/gui/exports.py:303
 msgid "This wizard will help you to export your journal to various formats."
 msgstr "Šis vediklis padės jums eksportuoti savo žurnalą į įvairius formatus."
 
-#: ../rednotebook/gui/exports.py:310
+#: ../rednotebook/gui/exports.py:304
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr ""
 "Galite pasirinkti norimas eksportuoti dienas ir kur bus įrašyta išvestis."
 
-#: ../rednotebook/gui/exports.py:320
+#: ../rednotebook/gui/exports.py:313
+msgid "PDF: export to HTML, open in browser and print to PDF file"
+msgstr "PDF: eksportuoti į HTML, atverti naršyklėje ir spausdinti į PDF failą"
+
+#: ../rednotebook/gui/exports.py:317
 msgid "Select Export Format"
 msgstr "Pasirinkite eksportavimo formatą"
 
-#: ../rednotebook/gui/exports.py:325
+#: ../rednotebook/gui/exports.py:322
 msgid "Select Date Range"
 msgstr "Pasirinkite laikotarpį"
 
-#: ../rednotebook/gui/exports.py:330
+#: ../rednotebook/gui/exports.py:327
 msgid "Select Contents"
 msgstr "Pasirinkite turinį"
 
-#: ../rednotebook/gui/exports.py:336
+#: ../rednotebook/gui/exports.py:333
 msgid "Select Export Path"
 msgstr "Pasirinkite eksportavimo kelią"
 
-#: ../rednotebook/gui/exports.py:341
+#: ../rednotebook/gui/exports.py:338
 msgid "Summary"
 msgstr "Santrauka"
 
-#: ../rednotebook/gui/exports.py:402
+#: ../rednotebook/gui/exports.py:399
 msgid "Export selected text only"
 msgstr "Eksportuoti tik pažymėtą tekstą"
 
-#: ../rednotebook/gui/exports.py:405
+#: ../rednotebook/gui/exports.py:402
 msgid "Start date"
 msgstr "Pradžios data"
 
-#: ../rednotebook/gui/exports.py:406
+#: ../rednotebook/gui/exports.py:403
 msgid "End date"
 msgstr "Pabaigos data"
 
-#: ../rednotebook/gui/exports.py:410
+#: ../rednotebook/gui/exports.py:407
 msgid "Include text"
 msgstr "Įtraukti tekstą"
 
-#: ../rednotebook/gui/exports.py:411
+#: ../rednotebook/gui/exports.py:408
 msgid "Include tags"
 msgstr "Įtraukti žymes"
 
-#: ../rednotebook/gui/exports.py:413
+#: ../rednotebook/gui/exports.py:410
 msgid "Filtered by tags"
 msgstr "Filtruota pagal žymes"
 
-#: ../rednotebook/gui/exports.py:414
+#: ../rednotebook/gui/exports.py:411
 msgid "Export path"
 msgstr "Eksportavimo kelias"
 
-#: ../rednotebook/gui/exports.py:417
+#: ../rednotebook/gui/exports.py:414
 msgid "Yes"
 msgstr "Taip"
 
-#: ../rednotebook/gui/exports.py:417
+#: ../rednotebook/gui/exports.py:414
 msgid "No"
 msgstr "Ne"
 
-#: ../rednotebook/gui/exports.py:466 ../rednotebook/gui/exports.py:471
+#: ../rednotebook/gui/exports.py:454
 #, python-format
 msgid "Content exported to %s"
 msgstr "Turinys eksportuotas į %s"
 
-#: ../rednotebook/gui/exports.py:521
+#: ../rednotebook/gui/exports.py:504
 msgid "Plain Text"
 msgstr "Grynasis tekstas"
-
-#: ../rednotebook/gui/exports.py:548
-msgid "requires pywebkitgtk"
-msgstr "reikalingas „pywebkitgtk“ paketas"
 
 #: ../rednotebook/info.py:30
 msgid "A Desktop Journal"
 msgstr "Darbalaukio žurnalas"
-
-#: ../rednotebook/info.py:78
-msgid "Todo"
-msgstr "Užduotys"
-
-#: ../rednotebook/info.py:79
-msgid "Done"
-msgstr "Atlikta"
-
-#: ../rednotebook/info.py:80
-msgid "Remember the milk"
-msgstr "Nepamiršti pieno"
-
-#: ../rednotebook/info.py:81
-msgid "Wash the dishes"
-msgstr "Išplauti indus"
-
-#: ../rednotebook/info.py:83
-msgid "Hello!"
-msgstr "Sveiki!"
-
-#: ../rednotebook/info.py:84
-msgid ""
-"Some example text has been added to help you start and you can erase it "
-"whenever you like."
-msgstr ""
-"Tam, kad jums pradžioje būtų lengviau, čia buvo pridėti kai kurie teksto "
-"pavyzdžiai. Juos galite bet kada ištrinti."
-
-#: ../rednotebook/info.py:88
-msgid ""
-"The example text and more documentation is available under \"Help\" -> "
-"\"Contents\"."
-msgstr ""
-"Teksto pavyzdžiai ir daugiau dokumentacijos yra prieinama meniu „Žinynas“ -> "
-"„Turinys“."
-
-#. Translators: noun
-#. Translators: Verb
-#: ../rednotebook/info.py:92 tmp/main_window.glade.h:15
-msgid "Preview"
-msgstr "Peržiūra"
-
-#: ../rednotebook/info.py:94
-msgid ""
-"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
-"mode."
-msgstr ""
-"RedNotebook programoje yra dvi veiksenos, __taisos__ veiksena ir "
-"__peržiūros__ veiksena."
-
-#: ../rednotebook/info.py:96
-msgid "Click on Edit above to see the difference."
-msgstr "Norėdami pamatyti skirtumą, spustelėkite viršuje ant Taisos."
-
-#: ../rednotebook/info.py:99
-msgid "Tagging is easy."
-msgstr "Žymėti yra lengva."
-
-#: ../rednotebook/info.py:100
-msgid "Just use #hashtags like on twitter."
-msgstr "Tiesiog, naudokite #saitažodžius kaip socialiniame tinkle \"Twitter\"."
-
-#: ../rednotebook/info.py:104
-msgid ""
-"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
-"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
-"watched \"__Life of Brian__\"."
-msgstr ""
-"Šiandien aš nuėjau į //gyvūnų parduotuvę// ir nusipirkau **tigrą**. Tuomet "
-"mes nuėjome į --vandens-- parką ir gerai praleidome laiką, mėtydami plastinę "
-"lėkštę. Vėliau, žiūrėjome \"__Egipto princą__\"."
-
-#. Translators: both are verbs
-#: ../rednotebook/info.py:116
-msgid "Save and Export"
-msgstr "Įrašymas ir eksportavimas"
-
-#: ../rednotebook/info.py:118
-msgid ""
-"Everything you enter will be saved automatically at regular intervals and "
-"when you exit the program."
-msgstr ""
-"Viskas, ką rašote bus automatiškai įrašoma reguliariu intervalu, o taip pat "
-"tada, kai užversite programą."
-
-#: ../rednotebook/info.py:120
-msgid "To avoid data loss you should backup your journal regularly."
-msgstr ""
-"Norėdami išvengti duomenų praradimo, turėtumėte reguliariai daryti savo "
-"žurnalo atsarginę kopiją."
-
-#: ../rednotebook/info.py:121
-msgid ""
-"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
-msgstr ""
-"\"Žurnalo\" meniu esantis punktas \"Daryti atsarginę kopiją\" įrašo visus "
-"jūsų įvestus duomenis į zip failą."
-
-#: ../rednotebook/info.py:122
-msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr "\"Žurnalo\" meniu taip pat rasite mygtuką \"Eksportuoti\"."
-
-#: ../rednotebook/info.py:123
-msgid ""
-"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
-msgstr ""
-"Spustelėkite ant \"Eksportuoti\" ir eksportuokite savo dienoraštį į Grynąjį "
-"tekstą, PDF, HTML ar Latex."
-
-#: ../rednotebook/info.py:126
-msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr ""
-"Jeigu susidursite su klaidomis, parašykite man, kad galėčiau jas ištaisyti."
-
-#: ../rednotebook/info.py:127
-msgid "Any feedback is appreciated."
-msgstr "Rašykite bet kokius atsiliepimus."
-
-#: ../rednotebook/info.py:130
-msgid "Have a nice day!"
-msgstr "Geros dienos!"
-
-#: ../rednotebook/info.py:151
-msgid ""
-"=== Multiple entries ===\n"
-"You can add multiple entries to a single day by using different journals "
-"(one named \"Work\", the other \"Family\"), separating your entries with "
-"different titles (=== Work ===, === Family ===) and using horizontal "
-"separator lines (20 \"=\"s)."
-msgstr ""
-"=== Keli įrašai ===\n"
-"Galite į vieną dieną pridėti kelis įrašus, naudodami skirtingus žurnalus "
-"(vieną pavadinimu \"Darbas\", kitą - \"Šeima\"), atskirdami savo įrašus "
-"skirtingais pavadinimais (=== Darbas ===, === Šeima ===) ir naudodami "
-"horizontalias atkyrimo eilutes (20 \"=\" simbolių)."
-
-#: ../rednotebook/info.py:158
-msgid ""
-"=== Work ===\n"
-"Here goes the first entry. It is about #work.\n"
-"\n"
-"====================\n"
-"\n"
-"=== Family ===\n"
-"Here comes the entry about my #family."
-msgstr ""
-"=== Darbas ===\n"
-"Štai yra pirmasis įrašas. Pagrindinė jo tema yra #darbas.\n"
-"\n"
-"====================\n"
-"\n"
-"=== Šeima ===\n"
-"Štai įrašas apie tai, ką veikia mano #šeima."
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -1022,52 +1026,57 @@ msgstr "Šios savaitės dienos šablonas"
 msgid "Create New Template"
 msgstr "Sukurti naują šabloną"
 
-#: ../rednotebook/journal.py:193
+#: ../rednotebook/journal.py:210
 msgid "Opening default journal."
 msgstr "Atveriamas numatytasis žurnalas."
 
-#: ../rednotebook/journal.py:292
+#: ../rednotebook/journal.py:311
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "Turinys buvo įrašytas į %s"
 
-#: ../rednotebook/journal.py:296
+#: ../rednotebook/journal.py:315
 msgid "The journal could not be saved"
 msgstr "Nepavyko įrašyti žurnalo"
 
-#: ../rednotebook/journal.py:298
+#: ../rednotebook/journal.py:317
 msgid "Nothing to save"
 msgstr "Nėra ką įrašyti"
 
-#: ../rednotebook/journal.py:444
+#: ../rednotebook/journal.py:465
 msgid "Error"
 msgstr "Klaida"
 
-#: ../rednotebook/util/dates.py:60
+#: ../rednotebook/util/dates.py:61
 msgid "Incorrect date format"
 msgstr "Neteisingas datos formatas"
 
-#: ../rednotebook/util/utils.py:100
-msgid "unknown"
-msgstr "nežinoma"
-
-#: ../rednotebook/util/utils.py:114
+#: ../rednotebook/util/utils.py:105
 #, python-format
 msgid "You have version <b>%s</b>."
 msgstr "Jūs naudojate <b>%s</b> versiją."
 
-#: ../rednotebook/util/utils.py:115
+#: ../rednotebook/util/utils.py:106
 #, python-format
 msgid "The latest version is <b>%s</b>."
 msgstr "Naujausia versija yra <b>%s</b>."
 
-#: ../rednotebook/util/utils.py:116
+#: ../rednotebook/util/utils.py:108
+msgid "If you like the program, please consider making a donation."
+msgstr ""
+"Jeigu jums patinka programa, apsvarstykite galimybę ją paremti finansiškai."
+
+#: ../rednotebook/util/utils.py:109
 msgid "Do you want to visit the RedNotebook homepage?"
 msgstr "Ar norite apsilankyti RedNotebook tinklalapyje?"
 
-#: ../rednotebook/util/utils.py:123
+#: ../rednotebook/util/utils.py:116
 msgid "Do not ask again"
 msgstr "Daugiau nebeklausti"
+
+#: ../rednotebook/util/utils.py:136
+msgid "unknown"
+msgstr "nežinoma"
 
 #: ../rednotebook/util/statistics.py:70
 msgid "Distinct Words"
@@ -1114,8 +1123,8 @@ msgid "Insert Link"
 msgstr "Įterpti nuorodą"
 
 #: tmp/main_window.glade.h:7
-msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
-msgstr "<b>Nuorodos vieta (pvz., http://rednotebook.sf.net)</b>"
+msgid "<b>Link location (e.g. https://www.google.com)</b>"
+msgstr "<b>Nuorodos vieta (pvz., https://www.google.com)</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Link name (optional)</b>"
@@ -1202,6 +1211,21 @@ msgstr "<b>Pasirinkta diena</b>"
 #: tmp/main_window.glade.h:32
 msgid "<b>Overall</b>"
 msgstr "<b>Bendra</b>"
+
+#~ msgid "Show right-side tags pane"
+#~ msgstr "Rodyti dešinės pusės žymių polangį"
+
+#~ msgid "Print to File"
+#~ msgstr "Spausdinti į failą"
+
+#~ msgid "Leave blank to omit dates in export"
+#~ msgstr "Palikite tuščią, jei norite, kad datos nebūtų įtrauktos"
+
+#~ msgid "requires pywebkitgtk"
+#~ msgstr "reikalingas „pywebkitgtk“ paketas"
+
+#~ msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
+#~ msgstr "<b>Nuorodos vieta (pvz., http://rednotebook.sf.net)</b>"
 
 #~ msgid "No text or tag has been selected."
 #~ msgstr "Nepasirinktas joks tekstas ar žymė."
