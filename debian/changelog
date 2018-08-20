@@ -1,3 +1,10 @@
+rednotebook (2.6.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix bug preventing new installations from starting up.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Tue, 21 Aug 2018 00:08:44 +0200
+
 rednotebook (2.6-1) UNRELEASED; urgency=low
 
   * New upstream release
