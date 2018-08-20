@@ -1,3 +1,6 @@
+== 2.6.1 (2018-08-21) ==
+* Fix bug preventing new installations from starting up.
+
 == 2.6 (2018-08-20) ==
 * Move date format option to preferences dialog.
 * Use date format option for date in titlebar.
