@@ -92,6 +92,7 @@ elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH, libintl=None)
 
 from rednotebook.util import utils
 from rednotebook.util import markup
+from rednotebook.help import example_content
 from rednotebook import info
 from rednotebook import configuration
 from rednotebook import data
@@ -556,7 +557,7 @@ class Journal:
 
         logging.info('Adding example content on %s' % current_date)
 
-        for example_day in info.example_content:
+        for example_day in example_content:
             self.day.content = example_day
             self.frame.set_date(self.month, self.date, self.day)
             self.go_to_next_day()
