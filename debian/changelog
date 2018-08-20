@@ -1,3 +1,14 @@
+rednotebook (2.6-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Move date format option to preferences dialog.
+  * Use date format option for date in titlebar.
+  * Remember selected date format for exports between sessions.
+  * Check remote info.py file for latest version number.
+  * Check for latest version in separate thread.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 20 Aug 2018 23:43:10 +0200
+
 rednotebook (2.5-1) UNRELEASED; urgency=low
 
   * New upstream release
