@@ -23,10 +23,6 @@ from rednotebook import info
 commandline_help = info.get_commandline_parser().format_help()
 
 tags = _('Tags')
-todo = _('Todo')
-done = _('Done')
-rtm = _('Remember the milk')
-dishes = _('Wash the dishes')
 
 greeting = _('Hello!')
 intro = _('Some example text has been added to help you start and '
@@ -135,7 +131,7 @@ The main text field is the container for your normal diary entries like this one
 
 As you see, the text can be formatted **bold**, //italic//, --struck
 through-- and __underlined__. As a convenience there is also the
-"Format" button, with which you can format the main text and tags.
+"Format" button.
 
 A blank line starts a new **paragraph**, two backslashes \\\\ result in
 a **newline**.
@@ -157,20 +153,6 @@ instead of "-" you can create a **numbered list**:
 
 == Hashtags ==
 %(tags_par)s
-
-
-== Advanced tagging ==
-
-Until #hashtags were introduced, you could only tag a day with the tag
-panel on the right side, that is now hidden by default. Drag the slider
-to the left to see it.
-
-It provides an advanced tagging mechanism, allowing you to add a tags
-with subtags like Movies->James Bond. Apart from the fact that you
-can't have spaces in hashtags you can however achieve a similar effect
-only with hashtags by adding #Movies and #James_Bond to the day's text.
-
-Tags and subtags can be formatted **bold**, //italic//, etc.
 
 
 == Images, Files and Links ==
@@ -397,7 +379,6 @@ the same directory.
 | Export                | <Ctrl> + E             |
 | Spellcheck            | F7                     |
 | Fullscreen            | F11                    |
-| New tag               | <Ctrl> + N             |
 || Navigation           |                        |
 | Go back one day       | <Ctrl> + PageUp        |
 | Go forward one day    | <Ctrl> + PageDown      |
@@ -432,33 +413,6 @@ RedNotebook data will be encrypted, too.
 
 == Tips ==
 %(multiple_entries_text)s
-
-=== Todo list ===
-
-You can also use RedNotebook as a todo list. An advantage is, that you
-never have to explicitly state the date when you added the todo item,
-you just add it on one day and it remains there until you delete it.
-
-Here is how it works:
-- Make sure the tag panel on the right is visible, if not drag the
-  slider to the left.
-- On the right click on "Add Tag"
-- Fill "%(todo)s" and "Remember the milk" in the fields and hit "OK"
-- In the cloud on the left you can now click on "%(todo)s" and see all
-  your todo items
-- This list can be sorted by day or by todo item if you click on "Date"
-  or "Text" in the header
-
-
-- To tick off a todo item you can strike it out by adding "--" around
-  the item.
-- To mark an item as important, add "**" around it.
-
-
-So --%(rtm)s-- becomes struck through and **%(dishes)s** becomes bold.
-
-Once you've finished an item, you could also change its tag name from
-"%(todo)s" to "%(done)s".
 
 === Week numbers ===
 
@@ -601,8 +555,7 @@ contains a dictionary mapping category entries to the null value.
 In summary the data format is a hierarchy of dictionaries. This way the
 format can be easily extended if the need for that arises.
 
-All textual content can be formatted with [txt2tags
-http://txt2tags.org] markup.
+All textual content can be formatted with http://txt2tags.org markup.
 
 
 == Questions ==
