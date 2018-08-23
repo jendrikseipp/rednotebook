@@ -594,7 +594,6 @@
                                     <property name="use_underline">True</property>
                                     <property name="stock_id">gtk-edit</property>
                                     <signal name="clicked" handler="on_add_new_entry_button_clicked" swapped="no"/>
-                                    <accelerator key="N" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>

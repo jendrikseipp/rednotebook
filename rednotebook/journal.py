@@ -92,6 +92,7 @@ elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH, libintl=None)
 
 from rednotebook.util import utils
 from rednotebook.util import markup
+from rednotebook.help import example_content
 from rednotebook import info
 from rednotebook import configuration
 from rednotebook import data
@@ -319,8 +320,10 @@ class Journal:
         self.config.save_to_disk()
 
         if not (exit_imminent or changing_journal) and something_saved:
-            # Update cloud
+            # Update cloud.
             self.frame.cloud.update(force_update=True)
+            for tag in self.get_escaped_tags():
+                self.frame.search_box.add_entry(tag)
 
         # tell gobject to keep saving the content in regular intervals
         return True
@@ -354,9 +357,7 @@ class Journal:
         self.frame.cloud.update(force_update=True)
 
         self.frame.categories_tree_view.categories = self.categories
-        # Add auto-completion for tag search
-        self.frame.search_box.set_entries(
-            ['#%s' % data.escape_tag(tag) for tag in self.categories])
+        self.frame.search_box.set_entries(self.get_escaped_tags())
 
         self.title = filesystem.get_journal_title(data_dir)
 
@@ -393,6 +394,9 @@ class Journal:
 
     def get_day(self, date):
         return self.get_month(date).get_day(date.day)
+
+    def get_escaped_tags(self):
+        return ['#%s' % data.escape_tag(tag) for tag in self.categories]
 
     def save_old_day(self):
         '''Order is important'''
@@ -556,7 +560,7 @@ class Journal:
 
         logging.info('Adding example content on %s' % current_date)
 
-        for example_day in info.example_content:
+        for example_day in example_content:
             self.day.content = example_day
             self.frame.set_date(self.month, self.date, self.day)
             self.go_to_next_day()

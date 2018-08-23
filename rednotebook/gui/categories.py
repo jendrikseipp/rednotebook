@@ -396,7 +396,7 @@ class CategoriesTreeView:
         actiongroup.add_actions([
             ('ChangeEntry', Gtk.STOCK_EDIT, _('Change this text'),
              None, None, self._on_change_entry_clicked),
-            ('AddEntry', Gtk.STOCK_NEW, _('Add a new entry'),
+            ('AddEntry', None, _('Add a new entry'),
              None, None, self._on_add_entry_clicked),
             ('Delete', Gtk.STOCK_DELETE, _('Delete this entry'),
              None, None, self._on_delete_entry_clicked),
