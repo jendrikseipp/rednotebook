@@ -42,6 +42,7 @@ class CustomComboBoxEntry:
         self.combo_box = combo_box
 
         self.liststore = Gtk.ListStore(GObject.TYPE_STRING)
+        self.entries = set()
         self.combo_box.set_model(self.liststore)
         self.combo_box.set_entry_text_column(0)
         self.entry = self.combo_box.get_child()
@@ -54,11 +55,12 @@ class CustomComboBoxEntry:
         self.entry.set_completion(entry_completion)
 
     def add_entry(self, entry):
-        self.liststore.append([entry])
+        if entry not in self.entries:
+            self.liststore.append([entry])
+            self.entries.add(entry)
 
     def set_entries(self, value_list):
         self.clear()
-        self.combo_box.set_model(None)
         for entry in value_list:
             self.add_entry(entry)
         self.combo_box.set_model(self.liststore)
@@ -71,8 +73,8 @@ class CustomComboBoxEntry:
 
     def clear(self):
         self.combo_box.set_model(None)
-        if self.liststore:
-            self.liststore.clear()
+        self.liststore.clear()
+        self.entries.clear()
         self.set_active_text('')
         self.combo_box.set_model(self.liststore)
 
