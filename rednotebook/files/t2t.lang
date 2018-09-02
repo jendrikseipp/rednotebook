@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ This file came from GtkSourceView, and was modified for RedNotebook.
+
+ Author: Yevgen Muntyan <muntyan@tamu.edu>, Thomas Kluyver
+ Copyright (C) 2008 Yevgen Muntyan <muntyan@tamu.edu>
+ Copyright (C) 2018 RedNotebook team
+
+ GtkSourceView is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+
+ GtkSourceView is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with this library; if not, see <http://www.gnu.org/licenses/>.
+
+-->
+<language id="t2t" name="txt2tags" version="2.0" _section="Markup">
+  <metadata>
+    <property name="globs">*.t2t</property>
+    <property name="line-comment-start">%</property>
+  </metadata>
+
+  <styles>
+    <style id="comment" name="Comment" map-to="def:comment"/>
+    <style id="option" name="Option"/>
+    <style id="option-name" name="Option Name" map-to="def:keyword"/>
+    <style id="section" name="Section" map-to="def:type"/>
+    <style id="section-1" name="Section 1" map-to="def:heading1"/>
+    <style id="section-2" name="Section 2" map-to="def:heading2"/>
+    <style id="section-3" name="Section 3" map-to="def:heading3"/>
+    <style id="section-4" name="Section 4" map-to="def:heading4"/>
+    <style id="section-5" name="Section 5" map-to="def:heading5"/>
+    <style id="anchor" name="Anchor" map-to="t2t:section"/>
+    <style id="list-marker" name="List marker" map-to="def:statement"/>
+    <style id="italic" name="Italic" map-to="def:doc-comment-element"/>
+    <style id="bold" name="Bold"/>
+    <style id="underlined" name="Underlined" map-to="def:underlined"/>
+    <style id="strikethrough" name="Strikethrough"/>
+    <style id="horizontal-rule" name="Horizontal Rule" map-to="def:type"/>
+    <style id="verbatim" name="Verbatim" map-to="def:identifier"/>
+    <style id="verbatim-block" name="Verbatim Block" map-to="def:identifier"/>
+    <style id="url" name="Plain URL"/>
+    <style id="link-url" name="Link URL"/>
+    <style id="link-text" name="Link Text" map-to="t2t:url"/>
+    <style id="hashtag" name="Hashtag"/>
+  </styles>
+
+  <definitions>
+
+    <context id="options">
+      <include>
+        <context id="option" style-ref="option">
+          <match>^(%!\s*(?:[Tt]arget|[Ee]ncoding|[Oo]ptions|[Pp](?:ost|re)proc|[Ii]nclude(?:conf)?|[Ss]tyle|[Gg]uicolors)(?:\(\S+\))?)\s*:.*</match>
+          <include>
+            <context id="option-name" sub-pattern="1" style-ref="option-name"/>
+          </include>
+        </context>
+        <context id="invalid-option" style-ref="def:error">
+          <match>^%!.*</match>
+        </context>
+      </include>
+    </context>
+
+    <context id="comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+      <start>^%</start>
+    </context>
+
+    <context id="sections">
+      <include>
+        <context id="section-1">
+          <match>^(=(?!=).*(?&lt;!=)=)(?!=)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-1"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-2">
+          <match>^(==(?!=).*(?&lt;!=)==)(?!=)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-2"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-3">
+          <match>^(===(?!=).*(?&lt;!=)===)(?!=)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-3"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-4">
+          <match>^(====(?!=).*(?&lt;!=)====)(?!=)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-4"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-5">
+          <match>^(=====(?!=).*(?&lt;!=)=====)(?!=)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-5"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+
+        <context id="section-numbered-1">
+          <match>^(\+(?!\+).*(?&lt;!\+)\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-1"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-2">
+          <match>^(\+\+(?!\+).*(?&lt;!\+)\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-2"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-3">
+          <match>^(\+\+\+(?!\+).*(?&lt;!\+)\+\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-3"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-4">
+          <match>^(\+\+\+\+(?!\+).*(?&lt;!\+)\+\+\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-4"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+        <context id="section-numbered-5">
+          <match>^(\+\+\+\+\+(?!\+).*(?&lt;!\+)\+\+\+\+\+)(?!\+)(\[.*\])?</match>
+          <include>
+            <context sub-pattern="1" style-ref="section-5"/>
+            <context sub-pattern="2" style-ref="anchor"/>
+          </include>
+        </context>
+      </include>
+    </context>
+
+    <context id="list">
+      <match>^ *(\-|\+) [^ ].*$</match>
+      <include>
+        <context sub-pattern="1" style-ref="list-marker"/>
+      </include>
+    </context>
+
+    <context id="italic">
+      <match>//([^\s](|.*?[^\s])/*)//</match>
+      <include>
+        <context sub-pattern="1" style-ref="italic"/>
+      </include>
+    </context>
+
+    <context id="bold">
+      <match>\*\*([^\s](|.*?[^\s])\**)\*\*</match>
+      <include>
+        <context sub-pattern="1" style-ref="bold"/>
+      </include>
+    </context>
+
+    <context id="underlined">
+      <match>__([^\s](|.*?[^\s])_*)__</match>
+      <include>
+        <context sub-pattern="1" style-ref="underlined"/>
+      </include>
+    </context>
+
+    <context id="horizontal-rule" style-ref="horizontal-rule">
+      <match>^(\s*)([_=-]{20,})\s*$</match>
+    </context>
+
+    <context id="strikethrough">
+      <match>--([^\s](|.*?[^\s])-*)--</match>
+      <include>
+        <context sub-pattern="1" style-ref="strikethrough"/>
+      </include>
+    </context>
+
+    <context id="verbatim">
+      <match>``([^\s](|.*?[^\s])`*)``</match>
+      <include>
+        <context sub-pattern="1" style-ref="verbatim"/>
+      </include>
+    </context>
+
+    <context id="verbatim-line">
+      <match>^``` (.*?)$</match>
+      <include>
+        <context sub-pattern="1" style-ref="verbatim"/>
+      </include>
+    </context>
+
+    <context id="verbatim-block" style-ref="verbatim-block" style-inside="true">
+      <start>^```\s*$</start>
+      <end>^```\s*$</end>
+    </context>
+
+    <context id="image">
+      <!-- [foo.png] -->
+      <match>\[([\w_,.+%$#@!?+~/-]+\.(png|jpe?g|gif|eps|bmp|svg))\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-url"/>
+      </include>
+    </context>
+
+    <context id="image-quoted">
+      <!-- [""/path to/foo"".png] -->
+      <match>\[(""(\S.*?\S|\S)""\.(?:png|jpe?g|gif|eps|bmp|svg)(\?\d+)?)\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-url"/>
+      </include>
+    </context>
+
+    <context id="link">
+      <!-- This is a simplified version of the complex patterns that txt2tags really uses -->
+      <match>\[([^]]+) ((https?://|ftp://|news://|telnet://|gopher://|wais://|www[23]?\.|ftp\.)[^]]+)\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-text"/>
+        <context sub-pattern="2" style-ref="link-url"/>
+      </include>
+    </context>
+
+    <context id="link-quoted">
+      <!-- [test link ""http://example.com""] -->
+      <match>\[(.*?)\s""(\S.*?\S)""\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="link-text"/>
+        <context sub-pattern="2" style-ref="link-url"/>
+      </include>
+    </context>
+
+    <context id="bare-url" style-ref="url">
+      <match>\b((https?|ftp|news|telnet|gopher|wais)://|(www[23]?|ftp)\.)[A-Za-z0-9%._/~:,=$@+-]+\b/*(\?[A-Za-z0-9/%&amp;=+:;.,$@*_-]+)?(#[A-Za-z0-9%._-]*)?</match>
+    </context>
+
+    <context id="bare-email" style-ref="url">
+      <match>\b[A-Za-z0-9_.-]+@([A-Za-z0-9_-]+\.)+[A-Za-z]{2,4}\b</match>
+    </context>
+
+    <context id="hashtag" style-ref="hashtag">
+      <match>(^|[^\w&amp;#])(#|＃)(?![0-9A-F]{6}|include)(\w*[^\W\d_]+\w*)</match>
+    </context>
+
+    <context id="t2t" class="no-spell-check">
+      <include>
+        <context ref="sections"/>
+        <context ref="options"/>
+        <context ref="comment"/>
+        <context ref="list"/>
+        <context ref="italic"/>
+        <context ref="bold"/>
+        <context ref="underlined"/>
+        <context ref="strikethrough"/>
+        <context ref="horizontal-rule"/>
+        <context ref="verbatim"/>
+        <context ref="verbatim-line"/>
+        <context ref="verbatim-block"/>
+        <context ref="image"/>
+        <context ref="image-quoted"/>
+        <context ref="link"/>
+        <context ref="link-quoted"/>
+        <context ref="bare-url"/>
+        <context ref="bare-email"/>
+        <context ref="hashtag"/>
+      </include>
+    </context>
+  </definitions>
+</language>

@@ -100,9 +100,6 @@ class Day:
 
         self._content = day_content
 
-        # Remember the last edit and preview position
-        self.last_edit_pos = None
-
     def _get_content(self):
         return self._content
 

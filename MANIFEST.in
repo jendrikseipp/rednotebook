@@ -2,8 +2,10 @@ include po/*.pot
 include po/*.po
 include rednotebook/images/*.png
 include rednotebook/images/rednotebook-icon/*.png
-include rednotebook/files/*.glade
 include rednotebook/files/*.cfg
+include rednotebook/files/*.glade
+include rednotebook/files/*.lang
+include rednotebook/files/*.xml
 include CHANGELOG
 include README.md
 include LICENSE

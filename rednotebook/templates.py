@@ -213,7 +213,7 @@ class TemplateManager:
         self.merge_id = None
         self.actiongroup = None
         self.tmp_title = None
-        self.tmp_parts = None
+        self.selection_to_replace = None
 
         self._template_mode_info_bar = TemplateInfo()
         self._template_mode_info_bar.hide()
@@ -243,20 +243,19 @@ class TemplateManager:
                 self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Find')]:
             widget.set_sensitive(sensitive)
 
-    def enter_template_mode(self, title, parts):
+    def enter_template_mode(self, title, selection):
         # Save the templates title and the day's text.
         self.tmp_title = title
-        self.tmp_parts = parts
+        self.selection_to_replace = selection
         self.main_window.template_bar.show()
         text = self.get_text(title)
-        self.main_window.undo_redo_manager.set_stack(title)
-        self.main_window.day_text_field.set_text(text, undoing=True)
+        self.main_window.day_text_field.show_template(title, text)
         self._template_mode_info_bar.show()
         self._set_widgets_sensitive(False)
 
     def exit_template_mode(self):
         self.tmp_title = None
-        self.tmp_parts = None
+        self.selection_to_replace = None
         self.main_window.template_bar.hide()
         if self.main_window.preview_mode:
             self.main_window.change_mode(preview=False)
@@ -264,12 +263,9 @@ class TemplateManager:
         self._template_mode_info_bar.hide()
         self._set_widgets_sensitive(True)
 
-    def _reset_undo_stack(self):
-        self.main_window.undo_redo_manager.set_stack(self.main_window.day.date)
-
     def edit(self, title):
-        parts = self.main_window.day_text_field.get_text_parts()
-        self.enter_template_mode(title, parts)
+        selection = self.main_window.day_text_field.get_selection_bounds()
+        self.enter_template_mode(title, selection)
 
     def _replace_macros(self, text):
         # convert every "$date$" to the current date
@@ -283,11 +279,14 @@ class TemplateManager:
         self.on_save(None)
         template = self.main_window.day_text_field.get_text()
         template = self._replace_macros(template)
-        p1, p2, p3 = self.tmp_parts
-        self._reset_undo_stack()
-        # Force addition of an undo item.
-        self.main_window.day_text_field.set_text(p1 + p2 + p3, undoing=True)
-        self.main_window.day_text_field.set_text(p1 + template + p3)
+
+        self.main_window.day_text_field.show_day(self.main_window.day)
+        buf = self.main_window.day_text_field.day_text_buffer
+        buf.begin_user_action()
+        buf.select_range(*self.selection_to_replace)
+        buf.delete_selection(interactive=False, default_editable=True)
+        buf.insert_at_cursor(template)
+        buf.end_user_action()
         self.exit_template_mode()
 
     def on_save(self, button):
@@ -295,8 +294,7 @@ class TemplateManager:
         filesystem.write_file(self.get_path(self.tmp_title), template)
 
     def on_close(self, button):
-        self._reset_undo_stack()
-        self.main_window.day_text_field.set_text(''.join(self.tmp_parts), undoing=True)
+        self.main_window.day_text_field.show_day(self.main_window.day)
         self.exit_template_mode()
 
     def on_new_template(self, action):
@@ -325,10 +323,10 @@ class TemplateManager:
 
         if response == Gtk.ResponseType.OK:
             title = entry.get_text()
-            parts = self.main_window.day_text_field.get_text_parts()
+            selection = self.main_window.day_text_field.get_selection_bounds()
             path = self.get_path(title)
             filesystem.make_file(path, example_text)
-            self.enter_template_mode(title, parts)
+            self.enter_template_mode(title, selection)
 
     def _get_weekday_number(self):
         return self.main_window.journal.date.weekday() + 1

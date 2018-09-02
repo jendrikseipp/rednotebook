@@ -21,11 +21,10 @@ import os
 import urllib.request
 import logging
 
+from gi.repository import GObject
 from gi.repository import Gtk
 from gi.repository import Pango
 
-from rednotebook.gui import t2t_highlight
-from rednotebook import undo
 from rednotebook.util import filesystem
 
 try:
@@ -39,17 +38,17 @@ except ImportError:
 DEFAULT_FONT = Gtk.Settings.get_default().get_property('gtk-font-name')
 
 
-class Editor:
-    def __init__(self, day_text_view, undo_redo_manager):
+class Editor(GObject.GObject):
+    __gsignals__ = {
+        'can-undo-redo-changed': (GObject.SIGNAL_RUN_FIRST, None, ()),
+    }
+
+    def __init__(self, day_text_view):
+        super().__init__()
         self.day_text_view = day_text_view
-        self.day_text_buffer = t2t_highlight.get_highlight_buffer()
-        self.day_text_view.set_buffer(self.day_text_buffer)
 
-        self.undo_redo_manager = undo_redo_manager
+        self._connect_undo_signals()
 
-        self.changed_connection = self.day_text_buffer.connect('changed', self.on_text_change)
-
-        self.old_text = ''
         self.search_text = ''
 
         # spell checker
@@ -68,8 +67,26 @@ class Editor:
         logging.debug('Default font: %s' % self.font.to_string())
         logging.debug('Default size: %s' % self.default_size)
 
+    def replace_buffer(self, buffer):
+        self.day_text_view.set_buffer(buffer)
+        self._connect_undo_signals()
+        self._can_undo_redo_changed()
+
+    @property
+    def day_text_buffer(self):
+        return self.day_text_view.get_buffer()
+
+    def _connect_undo_signals(self):
+        undo_mgr = self.day_text_buffer.get_undo_manager()
+        undo_mgr.connect('can-undo-changed', self._can_undo_redo_changed)
+        undo_mgr.connect('can-redo-changed', self._can_undo_redo_changed)
+
     def set_text(self, text, undoing=False):
+        # We typically don't want to be able to undo/redo a replacement of the
+        # whole text, so we mark it as 'not undoable'.
+        self.day_text_buffer.begin_not_undoable_action()
         self.insert(text, overwrite=True, undoing=undoing)
+        self.day_text_buffer.end_not_undoable_action()
 
     def get_text(self, iter_start=None, iter_end=None):
         iter_start = iter_start or self.day_text_buffer.get_start_iter()
@@ -77,8 +94,6 @@ class Editor:
         return self.day_text_buffer.get_text(iter_start, iter_end, True)
 
     def insert(self, text, iter=None, overwrite=False, undoing=False):
-        self.day_text_buffer.handler_block(self.changed_connection)
-
         if overwrite:
             self.day_text_buffer.set_text('')
             iter = self.day_text_buffer.get_start_iter()
@@ -90,17 +105,10 @@ class Editor:
                 iter = self.day_text_buffer.get_iter_at_mark(iter)
             self.day_text_buffer.insert(iter, text)
 
-        self.day_text_buffer.handler_unblock(self.changed_connection)
-        self.on_text_change(self.day_text_buffer, undoing=undoing)
-
     def replace_selection(self, text):
-        self.add_undo_point()
-        self.day_text_buffer.handler_block(self.changed_connection)
         self.day_text_buffer.delete_selection(interactive=False,
                                               default_editable=True)
         self.day_text_buffer.insert_at_cursor(text)
-        self.day_text_buffer.handler_unblock(self.changed_connection)
-        self.add_undo_point()
 
     def replace_selection_and_highlight(self, p1, p2, p3):
         """
@@ -118,27 +126,37 @@ class Editor:
 
     def highlight(self, text):
         self.search_text = text
-        self.day_text_buffer.set_search_text(text)
+        buf = self.day_text_buffer
+
+        # Clear previous highlighting
+        start = buf.get_start_iter()
+        end = buf.get_end_iter()
+        buf.remove_tag_by_name('highlighter', start, end)
+
+        # Highlight matches
+        if text:
+            for match_start, match_end in self.iter_search_matches(text):
+                buf.apply_tag_by_name('highlighter', match_start, match_end)
+
+    search_flags = Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
+
+    def iter_search_matches(self, text):
+        it = self.day_text_buffer.get_start_iter()
+        while True:
+            match = it.forward_search(text, self.search_flags)
+            if not match:
+                return
+            yield match
+            it = match[1]  # Continue searching from after the match
 
     def scroll_to_text(self, text):
-        iter_start = self.day_text_buffer.get_start_iter()
-
-        # Hack: Ignoring the case is not supported for the search so we search
-        # for the most common variants, but do not search identical ones
-        variants = set([text, text.capitalize(), text.lower(), text.upper()])
-
-        for search_text in variants:
-            iter_tuple = iter_start.forward_search(
-                search_text, Gtk.TextSearchFlags.VISIBLE_ONLY)
-
-            # When we find one variant, scroll to it and quit
-            if iter_tuple:
-                # It is safer to scroll to a mark than an iter
-                mark = self.day_text_buffer.create_mark(
-                    'highlight_query', iter_tuple[0], left_gravity=False)
-                self.day_text_view.scroll_to_mark(mark, 0, False, 0, 0)
-                self.day_text_buffer.delete_mark(mark)
-                return
+        for match_start, _ in self.iter_search_matches(text):
+            # It is safer to scroll to a mark than an iter
+            mark = self.day_text_buffer.create_mark(
+                'highlight_query', match_start, left_gravity=False)
+            self.day_text_view.scroll_to_mark(mark, 0, False, 0, 0)
+            self.day_text_buffer.delete_mark(mark)
+            return  # Stop after the first match
 
     def get_selected_text(self):
         bounds = self.day_text_buffer.get_selection_bounds()
@@ -177,18 +195,6 @@ class Editor:
         iter1 = self.day_text_buffer.get_iter_at_mark(mark1)
         iter2 = self.day_text_buffer.get_iter_at_mark(mark2)
         return self.sort_iters(iter1, iter2)
-
-    def get_text_parts(self):
-        """
-        Return text before the selection, the selected text itself and
-        the text after the selection.
-        """
-        start = self.day_text_buffer.get_start_iter()
-        end = self.day_text_buffer.get_end_iter()
-        sel_start, sel_end = self.get_selection_bounds()
-        return (self.get_text(start, sel_start),
-                self.get_text(sel_start, sel_end),
-                self.get_text(sel_end, end))
 
     def _get_markups(self, format, selection):
         format_to_markups = {
@@ -233,36 +239,6 @@ class Editor:
 
     def hide(self):
         self.day_text_view.hide()
-
-    def last_undo_point_is_dirty(self):
-        return self.get_text() != self.old_text
-
-    def add_undo_point(self):
-        if not self.last_undo_point_is_dirty():
-            return
-
-        new_text = self.get_text()
-        old_text = self.old_text[:]
-
-        def undo_func():
-            self.set_text(old_text, undoing=True)
-
-        def redo_func():
-            self.set_text(new_text, undoing=True)
-
-        self.undo_redo_manager.add_action(undo.Action(undo_func, redo_func))
-        self.old_text = new_text
-
-    def on_text_change(self, _buffer, undoing=False):
-        # Do not record changes while undoing or redoing.
-        if undoing:
-            self.old_text = self.get_text()
-            return
-
-        much_text_changed = abs(len(self.get_text()) - len(self.old_text)) >= 5
-
-        if much_text_changed:
-            self.add_undo_point()
 
     # ===========================================================
     # Spell checking.
@@ -334,3 +310,6 @@ class Editor:
         drag_context.finish(True, False, timestamp)
         # No further processing
         return True
+
+    def _can_undo_redo_changed(self, undo_mgr=None):
+        self.emit("can-undo-redo-changed")

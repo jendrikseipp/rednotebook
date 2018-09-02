@@ -9,7 +9,7 @@ is optional. When asked to install them, you can click "Cancel".
 PyGTK All-In-One Installer: Select the following packages on the
 respective pages:
   1) GSpell, GTK+, Pango
-  2) GtkSpell
+  2) GtkSpell, GtkSourceView
   3) GIR
 
 InnoSetup: Do *not* create a start menu folder and do *not* associate
