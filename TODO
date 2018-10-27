@@ -33,6 +33,7 @@ O Check that non-ASCII images work (https://bugs.launchpad.net/bugs/1739701)
 O Check that images work on Windows in LaTeX exports.
 O Move journal title and date before "RedNotebook", i.e., "My Journal - 12/06/2018 - RedNotebook"
 O Auto-completion for hashtags.
+O Lower the minimum time between backups.
 
 O Make sure that RedNotebook contents are saved under Windows when system is shut down.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
