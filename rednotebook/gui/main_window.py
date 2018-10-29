@@ -144,6 +144,9 @@ class MainWindow:
                     html = self.journal.convert(new_day.text, 'xhtml')
                     self.load_html(html)
 
+                def shutdown(self):
+                    pass
+
             self.html_editor = Preview(self.journal)
             self.html_editor.connect('button-press-event', self.on_browser_clicked)
             self.html_editor.connect('decide-policy', self.on_browser_decide_policy)
@@ -352,6 +355,7 @@ class MainWindow:
         if self.journal.config.read('closeToTray'):
             self.hide()
         else:
+            self.html_editor.shutdown()
             self.journal.exit()
 
         # We never call the default handler. Otherwise, the window would be

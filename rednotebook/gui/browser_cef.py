@@ -40,7 +40,6 @@ if cef:
     class RequestHandler:
         def OnBeforeBrowse(self, browser, frame, request, **_):
             """Called when the loading state has changed."""
-            print("REQUEST", browser, request)
             webbrowser.open(request.GetUrl())
             # Cancel request.
             return True
@@ -54,31 +53,29 @@ if cef:
         created. Therefore, we store the initial html and load it when
         the browser is created.
 
-        TODO: Clean shutdown.
-        TODO: Remove debug output.
-
         """
         def __init__(self):
             super().__init__()
-            self.browser = None
-            self.win32_handle = None
-            self.initial_html = ''
+            self._browser = None
+            self._win32_handle = None
+            self._initial_html = ''
 
             sys.excepthook = cef.ExceptHook  # To shutdown CEF processes on error.
             cef.Initialize(settings={"context_menu": {"enabled": False}})
 
             GObject.threads_init()
             GObject.timeout_add(10, self.on_timer)
-            self.on_startup()
-            #self.connect("shutdown", self.on_shutdown)
+
+            self.connect("configure-event", self.on_configure)
+            self.connect("size-allocate", self.on_size_allocate)
+            self.connect("focus-in-event", self.on_focus_in)
+            self.connect("realize", self.on_realize)
 
         def load_html(self, html):
-            print("LOAD")
-            if self.browser:
-                print("HTML")
-                self.browser.GetMainFrame().LoadString(html, "file:///dummy/")
+            if self._browser:
+                self._browser.GetMainFrame().LoadString(html, "file:///dummy/")
             else:
-                self.initial_html = html
+                self._initial_html = html
 
         def set_font_size(self, size):
             pass
@@ -90,72 +87,48 @@ if cef:
             gpointer = ctypes.pythonapi.PyCapsule_GetPointer(
                 self.get_property("window").__gpointer__, None)
             libgdk = ctypes.CDLL("libgdk-3-0.dll")
-            self.win32_handle = libgdk.gdk_win32_window_get_handle(gpointer)
+            handle = libgdk.gdk_win32_window_get_handle(gpointer)
             Gdk.threads_leave()
-            return self.win32_handle
+            return handle
 
         def on_timer(self):
             cef.MessageLoopWork()
             return True
 
-        def on_startup(self, *_):
-            self.connect("configure-event", self.on_configure)
-            self.connect("size-allocate", self.on_size_allocate)
-            self.connect("focus-in-event", self.on_focus_in)
-            self.connect("delete-event", self.on_window_close)
-            self.connect("realize", self.on_activate)
-
-            self.connect("draw", self.on_draw)
-            self.connect("realize", self.on_realize)
-
-        def on_draw(self, *_):
-            print("DRAW")
-
         def on_realize(self, *_):
-            print("REALIZE")
-
-        def on_activate(self, *_):
-            print("ACTIVATE")
             self.embed_browser()
 
         def embed_browser(self):
             window_info = cef.WindowInfo()
-            window_info.SetAsChild(self.get_handle())
-            self.browser = cef.CreateBrowserSync(
+            self._win32_handle = self.get_handle()
+            window_info.SetAsChild(self._win32_handle)
+            self._browser = cef.CreateBrowserSync(
                 window_info,
                 url="file:///dummy/",
             )
-            self.browser.SetClientHandler(RequestHandler())
-            self.load_html(self.initial_html)
-            self.initial_html = None
+            self._browser.SetClientHandler(RequestHandler())
+            self.load_html(self._initial_html)
+            self._initial_html = None
 
         def on_configure(self, *_):
-            print("CONFIGURE")
-            if self.browser:
-                self.browser.NotifyMoveOrResizeStarted()
+            if self._browser:
+                self._browser.NotifyMoveOrResizeStarted()
             return False
 
         def on_size_allocate(self, _, data):
-            print("ALLOCATE")
-            if self.browser:
-                cef.WindowUtils().OnSize(self.win32_handle, 0, 0, 0)
+            if self._browser:
+                cef.WindowUtils().OnSize(self._win32_handle, 0, 0, 0)
 
         def on_focus_in(self, *_):
-            if self.browser:
-                self.browser.SetFocus(True)
+            if self._browser:
+                self._browser.SetFocus(True)
                 return True
             return False
 
-        def on_window_close(self, *_):
-            print("WINDOW CLOSE")
-            if self.browser:
-                self.browser.CloseBrowser(True)
-                self.clear_browser_references()
-
-        def clear_browser_references(self):
-            # Clear browser references that you keep anywhere in your
-            # code. All references must be cleared for CEF to shutdown cleanly.
-            self.browser = None
-
-        def on_shutdown(self, *_):
+        def shutdown(self, *_):
+            if self._browser:
+                self._browser.CloseBrowser(True)
+                # Clear browser references that you keep anywhere in your
+                # code. All references must be cleared for CEF to shutdown cleanly.
+                self._browser = None
             cef.Shutdown()
