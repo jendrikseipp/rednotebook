@@ -21,3 +21,15 @@ imports.ImportAssistant
 imports.PlainTextImporter
 imports.RedNotebookBackupImporter
 imports.Importer._check_modules
+
+# CEF Browser
+class Dummy:
+    pass
+dummy = Dummy()
+dummy.argtypes = None
+dummy.argtypes
+dummy.restype = None
+dummy.restype
+OnBeforeBrowse = None
+OnBeforeBrowse
+sys.excepthook

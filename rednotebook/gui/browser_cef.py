@@ -37,7 +37,7 @@ except ImportError as err:
 
 
 if cef:
-    class RequestHandler:
+    class _RequestHandler:
         def OnBeforeBrowse(self, browser, frame, request, **_):
             """Called when the loading state has changed."""
             webbrowser.open(request.GetUrl())
@@ -96,9 +96,9 @@ if cef:
             return True
 
         def on_realize(self, *_):
-            self.embed_browser()
+            self._embed_browser()
 
-        def embed_browser(self):
+        def _embed_browser(self):
             window_info = cef.WindowInfo()
             self._win32_handle = self.get_handle()
             window_info.SetAsChild(self._win32_handle)
@@ -106,7 +106,7 @@ if cef:
                 window_info,
                 url="file:///dummy/",
             )
-            self._browser.SetClientHandler(RequestHandler())
+            self._browser.SetClientHandler(_RequestHandler())
             self.load_html(self._initial_html)
             self._initial_html = None
 
