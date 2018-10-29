@@ -38,9 +38,12 @@ from rednotebook.util import filesystem
 from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import dates
+from rednotebook.util import markup
+from rednotebook.util import utils
 from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
+from rednotebook.gui import browser_cef
 from rednotebook.gui import search
 from rednotebook.gui import editor
 from rednotebook.gui import insert_menu
@@ -135,6 +138,7 @@ class MainWindow:
                 def __init__(self, journal):
                     browser.HtmlView.__init__(self)
                     self.journal = journal
+                    self.internal = True
 
                 def show_day(self, new_day):
                     html = self.journal.convert(new_day.text, 'xhtml')
@@ -145,13 +149,12 @@ class MainWindow:
             self.html_editor.connect('decide-policy', self.on_browser_decide_policy)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
             self.html_editor.set_editable(False)
-        else:
-            from rednotebook.gui.browser_cef import HtmlView
-
-            class Preview(HtmlView):
+        elif browser_cef.cef:
+            class Preview(browser_cef.HtmlView):
                 def __init__(self, journal):
                     super().__init__()
                     self.journal = journal
+                    self.internal = True
 
                 def show_day(self, new_day):
                     html = self.journal.convert(new_day.text, 'xhtml')
@@ -159,6 +162,11 @@ class MainWindow:
 
             self.html_editor = Preview(self.journal)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
+        else:
+            self.html_editor = mock.MagicMock()
+            self.html_editor.internal = False
+            preview_button = self.builder.get_object('preview_button')
+            preview_button.set_label(_('Preview in Browser'))
 
         self.html_editor.hide()
 
@@ -423,8 +431,19 @@ class MainWindow:
 
     def on_preview_button_clicked(self, button):
         self.journal.save_old_day()
-        self.html_editor.show_day(self.day)
-        self.change_mode(preview=True)
+        if self.html_editor.internal:
+            self.html_editor.show_day(self.day)
+            self.change_mode(preview=True)
+        else:
+            date_format = self.journal.config.read('exportDateFormat')
+            date_string = dates.format_date(date_format, self.day.date)
+            markup_string = markup.get_markup_for_day(self.day)
+            html = self.journal.convert(
+                markup_string, 'xhtml',
+                headers=[date_string + ' - RedNotebook', '', ''],
+                options={'toc': 0})
+            utils.show_html_in_browser(
+                html, os.path.join(self.journal.dirs.temp_dir, 'day.html'))
 
     def on_browser_clicked(self, webview, event):
         if event.type == Gdk.EventType._2BUTTON_PRESS:
@@ -644,7 +663,7 @@ class MainWindow:
         self.day_text_field.show_day(day)
 
         # Only switch mode automatically if set in preferences.
-        if self.journal.config.read('autoSwitchMode'):
+        if self.journal.config.read('autoSwitchMode') and self.html_editor.internal:
             if day.has_text and not self.preview_mode:
                 self.change_mode(preview=True)
             elif not day.has_text and self.preview_mode:
