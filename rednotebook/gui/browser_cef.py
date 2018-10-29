@@ -57,6 +57,7 @@ if cef:
         the browser is created.
 
         TODO: Clean shutdown.
+        TODO: Remove debug output.
 
         """
         def __init__(self):
@@ -65,7 +66,7 @@ if cef:
             self.win32_handle = None
             self.initial_html = ''
 
-            sys.excepthook = cef.ExceptHook  # To shutdown CEF processes on error
+            sys.excepthook = cef.ExceptHook  # To shutdown CEF processes on error.
             cef.Initialize(settings={"context_menu": {"enabled": False}})
 
             GObject.threads_init()
@@ -124,7 +125,7 @@ if cef:
             window_info.SetAsChild(self.get_handle())
             self.browser = cef.CreateBrowserSync(
                 window_info,
-                url="file://C:\\Python34\\test.html",
+                url="file://dummy",
             )
             self.browser.SetClientHandler(RequestHandler())
             self.load_html(self.initial_html)
