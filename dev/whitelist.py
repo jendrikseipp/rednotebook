@@ -23,13 +23,9 @@ imports.RedNotebookBackupImporter
 imports.Importer._check_modules
 
 # CEF Browser
-class Dummy:
-    pass
-dummy = Dummy()
-dummy.argtypes = None
-dummy.argtypes
-dummy.restype = None
-dummy.restype
+from ctypes import _CFuncPtr
+_CFuncPtr.argtypes
+_CFuncPtr.restype
 OnBeforeBrowse = None
 OnBeforeBrowse
 sys.excepthook
