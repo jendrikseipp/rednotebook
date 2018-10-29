@@ -387,6 +387,10 @@ class MainWindow:
             edit_scroll.hide()
             self.html_editor.show()
 
+            # Loading the CEF browser makes the main window inactive, so
+            # we make it active again.
+            self.main_frame.present()
+
             edit_button.show()
             preview_button.hide()
 
