@@ -394,10 +394,6 @@ class MainWindow:
             edit_scroll.hide()
             self.html_editor.show()
 
-            # Loading the CEF browser makes the main window inactive, so
-            # we make it active again.
-            self.main_frame.present()
-
             edit_button.show()
             preview_button.hide()
 
@@ -411,6 +407,10 @@ class MainWindow:
             edit_button.hide()
 
             self.update_undo_redo_buttons()
+
+        # Interacting with the CEF browser makes the main window inactive, so
+        # we make it active again.
+        self.main_frame.present()
 
         self.template_manager.set_template_menu_sensitive(not preview)
         self.insert_actiongroup.set_sensitive(not preview)
