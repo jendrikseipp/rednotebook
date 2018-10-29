@@ -19,7 +19,6 @@
 
 import ctypes
 import logging
-import os
 import sys
 import webbrowser
 
@@ -45,7 +44,6 @@ if cef:
             webbrowser.open(request.GetUrl())
             # Cancel request.
             return True
-
 
     class HtmlView(Gtk.DrawingArea):
         """

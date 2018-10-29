@@ -38,8 +38,6 @@ from rednotebook.util import filesystem
 from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import dates
-from rednotebook.util import markup
-from rednotebook.util import utils
 from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
@@ -149,6 +147,7 @@ class MainWindow:
             self.html_editor.set_editable(False)
         else:
             from rednotebook.gui.browser_cef import HtmlView
+
             class Preview(HtmlView):
                 def __init__(self, journal):
                     super().__init__()
