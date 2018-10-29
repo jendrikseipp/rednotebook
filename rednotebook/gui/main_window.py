@@ -160,6 +160,9 @@ class MainWindow:
                     html = self.journal.convert(new_day.text, 'xhtml')
                     self.load_html(html)
 
+                def highlight(self, text):
+                    pass
+
             self.html_editor = Preview(self.journal)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
         else:

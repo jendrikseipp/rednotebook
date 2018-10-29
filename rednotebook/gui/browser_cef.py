@@ -76,7 +76,7 @@ if cef:
             print("LOAD")
             if self.browser:
                 print("HTML")
-                self.browser.GetMainFrame().LoadString(html, "http://dummy/")
+                self.browser.GetMainFrame().LoadString(html, "file:///dummy/")
             else:
                 self.initial_html = html
 
@@ -123,7 +123,7 @@ if cef:
             window_info.SetAsChild(self.get_handle())
             self.browser = cef.CreateBrowserSync(
                 window_info,
-                url="file://dummy",
+                url="file:///dummy/",
             )
             self.browser.SetClientHandler(RequestHandler())
             self.load_html(self.initial_html)
