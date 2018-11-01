@@ -22,7 +22,7 @@ Depends: ${python3:Depends},
          python3-gi,
          python3-yaml
 Recommends: python3-enchant
-Description: Modern desktop diary and personal journaling tool. It lets you
- format, tag and search your entries. You can also add pictures, links and
- customisable templates, spell check your notes, and export to plain text,
- HTML, LaTeX or PDF.
+Description: Modern desktop diary and personal journaling tool
+ It lets you format, tag and search your entries. You can also add pictures,
+ links and customisable templates, spell check your notes, and export to plain
+ text, HTML, LaTeX or PDF.
