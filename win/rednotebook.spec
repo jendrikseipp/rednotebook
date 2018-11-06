@@ -20,6 +20,7 @@ MISSED_BINARIES = [
         'Python34/DLLs/_ctypes.pyd',
         'Python34/DLLs/_socket.pyd',
         'Python34/DLLs/pyexpat.pyd',
+        'Python34/Lib/site-packages/gnome/gspawn-win32-helper.exe',
     ]
 ]
 
