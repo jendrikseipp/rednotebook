@@ -7,8 +7,9 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Use GtkSourceView for editor to obtain better undo/redo functionality.
+X Use GtkSourceView for editor to obtain better undo/redo functionality (thanks @takluyver).
 X When saving, update the list of tags in the auto-complete list for the search.
+X Fix opening RedNotebook homepage from About dialog (#411).
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
