@@ -1,3 +1,8 @@
+== 2.7 (2018-11-06) ==
+* Use GtkSourceView for editor to obtain better undo/redo functionality (thanks @takluyver).
+* When saving, update the list of tags in the auto-complete list for the search.
+* Fix opening RedNotebook homepage from About dialog (#411).
+
 == 2.6.1 (2018-08-21) ==
 * Fix bug preventing new installations from starting up.
 
