@@ -1,6 +1,6 @@
 ### Versions
 
-RedNotebook version (make sure you have the latest version): 
+RedNotebook version (make sure you have the latest version):
 
 Operating system and version:
 
@@ -11,4 +11,6 @@ Operating system and version:
 ### Steps to reproduce the behavior
 
 ### Log output when reproducing behavior
-($HOME/.rednotebook/rednotebook.log or C:\Users\<username>\.rednotebook.log)
+
+Please paste contents from $HOME/.rednotebook/rednotebook.log,
+where $HOME is usually C:\Users\<username> on Windows.
