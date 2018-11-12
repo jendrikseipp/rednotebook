@@ -1,3 +1,7 @@
+== 2.7.1 (2018-11-13) ==
+* Never let search phrases end up in the main text field (fixes #401).
+* Fix spell checking (fixes #412).
+
 == 2.7 (2018-11-06) ==
 * Use GtkSourceView for editor to obtain better undo/redo functionality (thanks @takluyver).
 * When saving, update the list of tags in the auto-complete list for the search.
