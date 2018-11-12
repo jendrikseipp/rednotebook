@@ -69,6 +69,8 @@ class Editor(GObject.GObject):
 
     def replace_buffer(self, buffer):
         self.day_text_view.set_buffer(buffer)
+        if self._spell_checker:
+            self._spell_checker.buffer_initialize()
         self._connect_undo_signals()
         self._can_undo_redo_changed()
 
