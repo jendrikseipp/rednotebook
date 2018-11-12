@@ -7,6 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Never let search phrases end up in the main text field (fixes #401).
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)

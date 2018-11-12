@@ -75,6 +75,11 @@ class SearchComboBox(CustomComboBoxEntry):
 
         self.main_window.search_tree_view.update_data(search_text, tags)
 
+        # Without the following, showing the search results sometimes lets the
+        # search entry lose focus and search phrases are added to a day's text.
+        if not self.entry.has_focus():
+            self.entry.grab_focus()
+
 
 class SearchTreeView(CustomListView):
     def __init__(self, main_window, always_show_results):
