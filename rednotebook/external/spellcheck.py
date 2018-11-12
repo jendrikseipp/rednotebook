@@ -20,7 +20,8 @@
 RedNotebook bundles its own copy of pygtkspellcheck, because pygtkspellcheck
 versions < 4.0 don't decode UTF-8 from GTK widgets. The earliest Ubuntu version
 with a fixed pygtkspellcheck (4.0.5) is 17.04 (see also
-https://bugs.launchpad.net/rednotebook/+bug/1615629).
+https://bugs.launchpad.net/rednotebook/+bug/1615629). This bug probably only
+affects Python 2, so we may be able to remove our copy of pygtkspellcheck again.
 
 A simple but quite powerful spellchecking library written in pure Python for Gtk
 based on Enchant. It supports PyGObject as well as PyGtk for Python 2 and 3 with
