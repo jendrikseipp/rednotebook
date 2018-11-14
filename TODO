@@ -33,6 +33,8 @@ O Move journal title and date before "RedNotebook", i.e., "My Journal - 12/06/20
 O Auto-completion for hashtags.
 O Lower the minimum time between backups.
 O Add a "Feedback/Suggestions" popup option in Help menu.
+O Fix drag-and-drop on Windows (confirmed that it doesn't work in version 2.6.1).
+O Enable faulthandler.
 
 O Make sure that RedNotebook contents are saved under Windows when system is shut down.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.

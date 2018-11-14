@@ -177,11 +177,16 @@ O Faster search:
 O Better automatic error reports:
   O Include sentry-python in RedNotebook. Let users opt-in for anonymous crash reports.
     (very simple to set up, nice error grouping).
+    O Write custom Sentry Transport class that asks for user confirmation before sending events.
   O Fix apport (only works for Linux).
   O Send report by mail, use default mail app (https://github.com/lobocv/crashreporter,
     https://stackoverflow.com/questions/19779191/python-launch-default-mail-client-on-the-system).
-    Could also hook into sentry and compose mail instead of contacting server. This
-    can probably be done by using a custom Transport subclass.
+
+O Newer libraries for Windows:
+  O Gramps 5.0 for Windows bundles Python 3.6 (https://www.gramps-project.org).
+  O Build GTK manually:
+    - https://github.com/wingtk/gvsbuild,
+    - https://blogs.gnome.org/nacho/2014/08/01/how-to-build-your-gtk-application-on-windows/
 
 
 Ideas:
