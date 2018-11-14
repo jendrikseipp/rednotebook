@@ -8,17 +8,17 @@ Latex or PDF.
 
 # Requirements
 
-See `debian/control` for Debian and derivative package names.
+See `debian/control` for Debian and Ubuntu package names.
 
-  * Python (>= 3.4):        https://www.python.org
-  * GTK+ (>= 3.10):         https://www.gtk.org
-  * GtkSourceView:          https://wiki.gnome.org/Projects/GtkSourceView
-  * WebKitGTK+ (>= 2.16):   https://webkitgtk.org
-  * PyYAML:                 https://pyyaml.org
+  * Python (>= 3.4): https://www.python.org
+  * GTK+ (>= 3.18): https://www.gtk.org
+  * GtkSourceView (>= 3.18): https://wiki.gnome.org/Projects/GtkSourceView
+  * WebKitGTK+ (>= 2.16, unavailable on Windows): https://webkitgtk.org
+  * PyYAML (>= 3.10): https://pyyaml.org
 
 Recommended libraries:
 
-  * PyEnchant               (spell checking)
+  * PyEnchant for spell checking (>= 1.6): https://pypi.org/project/pyenchant/
 
 
 # Run under Linux (without installation)
