@@ -1,3 +1,6 @@
+== 2.8 (2018-11-15) ==
+* Support internal previews on Windows again (#369).
+
 == 2.7.1 (2018-11-13) ==
 * Never let search phrases end up in the main text field (fixes #401).
 * Fix spell checking (fixes #412).

@@ -7,7 +7,6 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Support internal previews on Windows again (#369).
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
