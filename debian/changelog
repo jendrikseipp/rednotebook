@@ -1,3 +1,10 @@
+rednotebook (2.8-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Support internal previews on Windows again (#369).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 15 Nov 2018 10:08:31 +0100
+
 rednotebook (2.7.1-1) UNRELEASED; urgency=low
 
   * New upstream release
