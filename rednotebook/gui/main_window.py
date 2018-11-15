@@ -43,6 +43,7 @@ from rednotebook.util import utils
 from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
+from rednotebook.gui import browser_cef
 from rednotebook.gui import search
 from rednotebook.gui import editor
 from rednotebook.gui import insert_menu
@@ -137,22 +138,43 @@ class MainWindow:
                 def __init__(self, journal):
                     browser.HtmlView.__init__(self)
                     self.journal = journal
+                    self.internal = True
 
                 def show_day(self, new_day):
                     html = self.journal.convert(new_day.text, 'xhtml')
                     self.load_html(html)
 
+                def shutdown(self):
+                    pass
+
             self.html_editor = Preview(self.journal)
             self.html_editor.connect('button-press-event', self.on_browser_clicked)
             self.html_editor.connect('decide-policy', self.on_browser_decide_policy)
-
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
-            self.html_editor.hide()
             self.html_editor.set_editable(False)
+        elif browser_cef.cef:
+            class Preview(browser_cef.HtmlView):
+                def __init__(self, journal):
+                    super().__init__()
+                    self.journal = journal
+                    self.internal = True
+
+                def show_day(self, new_day):
+                    html = self.journal.convert(new_day.text, 'xhtml')
+                    self.load_html(html)
+
+                def highlight(self, text):
+                    pass
+
+            self.html_editor = Preview(self.journal)
+            self.text_vbox.pack_start(self.html_editor, True, True, 0)
         else:
             self.html_editor = mock.MagicMock()
+            self.html_editor.internal = False
             preview_button = self.builder.get_object('preview_button')
             preview_button.set_label(_('Preview in Browser'))
+
+        self.html_editor.hide()
 
         self.preview_mode = False
 
@@ -333,6 +355,7 @@ class MainWindow:
         if self.journal.config.read('closeToTray'):
             self.hide()
         else:
+            self.html_editor.shutdown()
             self.journal.exit()
 
         # We never call the default handler. Otherwise, the window would be
@@ -392,6 +415,10 @@ class MainWindow:
 
             self.update_undo_redo_buttons()
 
+        # Interacting with the CEF browser makes the main window inactive, so
+        # we make it active again.
+        self.main_frame.present()
+
         self.template_manager.set_template_menu_sensitive(not preview)
         self.insert_actiongroup.set_sensitive(not preview)
         self.format_actiongroup.set_sensitive(not preview)
@@ -411,7 +438,7 @@ class MainWindow:
 
     def on_preview_button_clicked(self, button):
         self.journal.save_old_day()
-        if browser.WebKit2:
+        if self.html_editor.internal:
             self.html_editor.show_day(self.day)
             self.change_mode(preview=True)
         else:
@@ -643,7 +670,7 @@ class MainWindow:
         self.day_text_field.show_day(day)
 
         # Only switch mode automatically if set in preferences.
-        if self.journal.config.read('autoSwitchMode') and browser.WebKit2:
+        if self.journal.config.read('autoSwitchMode') and self.html_editor.internal:
             if day.has_text and not self.preview_mode:
                 self.change_mode(preview=True)
             elif not day.has_text and self.preview_mode:

@@ -1,3 +1,4 @@
+cefpython3==66.0
 pefile==2016.3.28
 pyenchant==1.6.8
 pyinstaller==3.3.1

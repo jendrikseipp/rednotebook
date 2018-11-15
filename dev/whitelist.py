@@ -21,3 +21,11 @@ imports.ImportAssistant
 imports.PlainTextImporter
 imports.RedNotebookBackupImporter
 imports.Importer._check_modules
+
+# CEF Browser
+from ctypes import _CFuncPtr
+_CFuncPtr.argtypes
+_CFuncPtr.restype
+OnBeforeBrowse = None
+OnBeforeBrowse
+sys.excepthook
