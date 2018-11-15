@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-03 00:27+0200\n"
+"POT-Creation-Date: 2018-11-15 10:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,11 +148,11 @@ msgstr ""
 msgid "Hide \"%s\" from clouds"
 msgstr ""
 
-#: ../rednotebook/gui/search.py:81 ../rednotebook/gui/exports.py:397
+#: ../rednotebook/gui/search.py:86 ../rednotebook/gui/exports.py:397
 msgid "Date"
 msgstr ""
 
-#: ../rednotebook/gui/search.py:81
+#: ../rednotebook/gui/search.py:86
 msgid "Text"
 msgstr ""
 
@@ -475,7 +475,7 @@ msgid "Introduction"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:350
-#: ../rednotebook/gui/main_window.py:620
+#: ../rednotebook/gui/main_window.py:647
 msgid "Template"
 msgstr ""
 
@@ -483,19 +483,19 @@ msgstr ""
 msgid "Save and insert"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:155
+#: ../rednotebook/gui/main_window.py:175
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:300
+#: ../rednotebook/gui/main_window.py:322
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:533
+#: ../rednotebook/gui/main_window.py:560
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:623
+#: ../rednotebook/gui/main_window.py:650
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
