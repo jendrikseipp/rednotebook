@@ -178,6 +178,7 @@ O Better automatic error reports:
   O Include sentry-python in RedNotebook. Let users opt-in for anonymous crash reports.
     (very simple to set up, nice error grouping).
     O Write custom Sentry Transport class that asks for user confirmation before sending events.
+    O Sentry needs Python 3.5
   O Fix apport (only works for Linux).
   O Send report by mail, use default mail app (https://github.com/lobocv/crashreporter,
     https://stackoverflow.com/questions/19779191/python-launch-default-mail-client-on-the-system).
