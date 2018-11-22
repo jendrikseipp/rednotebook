@@ -329,7 +329,7 @@ class TemplateManager:
             self.enter_template_mode(title, selection)
 
     def _get_weekday_number(self):
-        return self.main_window.journal.date.weekday() + 1
+        return self.main_window.journal.date.isoweekday()
 
     def get_path(self, title):
         if title == 'Weekday':
