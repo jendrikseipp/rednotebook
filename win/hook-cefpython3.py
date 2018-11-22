@@ -130,7 +130,7 @@ def get_cefpython3_datas():
                 or filename in ["License", "subprocess"]:
             logger.info("Include cefpython3 data: %s" % filename)
             ret.append((os.path.join(CEFPYTHON3_DIR, filename),
-                        ""))
+                        "."))
 
     # The .pak files in cefpython3/locales/ directory
     locales_dir = os.path.join(CEFPYTHON3_DIR, "locales")
