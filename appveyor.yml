@@ -1,4 +1,4 @@
-clone_folder: C:\rednotebook\github\rednotebook
+clone_folder: C:\repo
 
 matrix:
   fast_finish: true
@@ -16,8 +16,10 @@ environment:
 
 build_script:
   - "%PYTHON% --version"
+  - echo %cd%
+  - dir
   - set PATH=%PATH%;C:\msys64\usr\bin
-  - IF "%PLATFORM%"=="x86" tar.exe -zcf rednotebook.tar.gz -C /c/rednotebook/ github
+  - IF "%PLATFORM%"=="x86" tar.exe -czvf rednotebook.tar.gz -C /c/repo/ rednotebook
 
 artifacts:
   - path: rednotebook.tar.gz
