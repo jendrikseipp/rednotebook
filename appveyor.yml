@@ -19,7 +19,7 @@ build_script:
   - echo %cd%
   - dir
   - set PATH=%PATH%;C:\msys64\usr\bin
-  - "%PYTHON%" -m pip install -r win/requirements.txt
+  - "%PYTHON% -m pip install -r win/requirements.txt"
   - curl.exe -o gtk.tar.gz https://www.dropbox.com/s/1as726i4rb2zmlg/gvsbuild-vs14-x86.tar.gz?dl=1
   - tar.exe -xzvf gtk.tar.gz
   - cd release
