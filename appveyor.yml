@@ -15,7 +15,7 @@ environment:
       PYTHON: C:\Python36\python.exe
 
 build_script:
-  - "%PYTHON% --version
+  - "%PYTHON% --version"
   - set PATH=%PATH%;C:\msys64\usr\bin
   - IF "%PLATFORM%"=="x86" tar.exe -zcf rednotebook.tar.gz -C /c/rednotebook/ github
 
