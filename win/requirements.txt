@@ -1,8 +1,8 @@
 cefpython3==66.0
-pefile==2016.3.28
-pyenchant==1.6.8
-pyinstaller==3.3.1
-pypiwin32==219
-PyYAML==3.10
-setuptools==19.2
-six==1.10.0
+pefile==2018.8.8
+pyenchant==2.0.0
+pyinstaller==3.4
+pypiwin32==223
+PyYAML==3.13
+setuptools==40.6.2
+six==1.11.0
