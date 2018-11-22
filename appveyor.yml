@@ -19,12 +19,14 @@ build_script:
   - echo %cd%
   - dir
   - set PATH
+  - cd C:\
   - "%PYTHON% -m pip install -r win/requirements.txt"
   - curl -Lo gtk.tar.gz https://www.dropbox.com/s/1as726i4rb2zmlg/gvsbuild-vs14-x86.tar.gz?dl=1
   - tar.exe -xzf gtk.tar.gz
-  - move release C:\gtk
-  - dir C:\gtk
+  - move release gtk
+  - dir gtk
   - set PATH=%PATH%;C:\gtk\bin
+  - "%PYTHON% -m PyInstaller --workpath build --distpath C:\ repo/win/rednotebook.spec"
   - IF "%PLATFORM%"=="x86" tar.exe -czf rednotebook.tar.gz -C /c/repo/ rednotebook
 
 artifacts:
