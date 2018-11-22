@@ -64,6 +64,7 @@ INSTALLERS = [
     # Python 3.5 needs wine-staging >= 2.8 and Python 3.6 fails for wine-staging 2.8.
     # Python 3.4.4 is the last version of 3.4 with an installer.
     # Python 3.4.4 works with wine-staging 2.14.
+    # Windows 7 makes distributing Python >= 3.5 easier (https://pyinstaller.readthedocs.io/en/stable/usage.html#platform-specific-notes-windows)
     ('https://www.python.org/ftp/python/3.4.4/python-3.4.4.msi',
      'python-3.4.4.msi'),
     ('https://downloads.sourceforge.net/project/pygobjectwin32/pygi-aio-3.18.2_rev12-setup_549872deadabb77a91efbc56c50fe15f969e5681.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpygobjectwin32%2Ffiles%2F&ts=1495353417&use_mirror=vorboss',
