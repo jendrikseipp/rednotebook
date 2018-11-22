@@ -19,6 +19,7 @@ build_script:
   - echo %cd%
   - dir
   - set PATH=%PATH%;C:\msys64\usr\bin
+  - %PYTHON% -m pip install -r win/requirements.txt
   - IF "%PLATFORM%"=="x86" tar.exe -czvf rednotebook.tar.gz -C /c/repo/ rednotebook
 
 artifacts:
