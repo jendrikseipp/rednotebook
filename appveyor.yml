@@ -32,7 +32,8 @@ build_script:
   - dir C:\build
   - dir C:\dist
   #- "%PYTHON% build-translations.py C:\dist\share\locale"
-  - tar.exe -czf c/repo/rednotebook.tar.gz -C /c/ dist
+  - tar.exe -czf rednotebook.tar.gz -C /c/ dist
+  - move rednotebook.tar.gz C:\repo
 
 artifacts:
   - path: rednotebook.tar.gz
