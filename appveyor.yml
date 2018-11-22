@@ -26,7 +26,7 @@ build_script:
   - move release C:\gtk
   - dir C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
-  - "%PYTHON% -m PyInstaller --workpath C:\build --distpath C:\ rednotebook.spec"
+  - "%PYTHON% -m PyInstaller --workpath C:/build --distpath C:/ rednotebook.spec"
   #- dir C:\
   #- "%PYTHON% build-translations.py C:\dist\share\locale"
   #- IF "%PLATFORM%"=="x86" tar.exe -czf rednotebook.tar.gz -C /c/repo/ rednotebook
