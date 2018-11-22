@@ -38,7 +38,7 @@ WINE_BUILD = os.path.join(DRIVE_C, 'build')
 WINE_DIST = os.path.join(DRIVE_C, 'dist')
 LOCALE_DIR = os.path.join(WINE_DIST, 'share', 'locale')
 WINE_RN_EXE = os.path.join(WINE_DIST, 'rednotebook.exe')
-WINE_PYTHON = os.path.join(DRIVE_C, 'Python34', 'python.exe')
+WINE_PYTHON = os.path.join(DRIVE_C, utils.PYTHON_DIRNAME, 'python.exe')
 
 utils.confirm_overwrite(DIST_DIR)
 os.environ['WINEPREFIX'] = DIST_DIR

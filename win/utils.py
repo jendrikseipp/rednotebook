@@ -6,6 +6,9 @@ import subprocess
 import urllib.request
 
 
+PYTHON_DIRNAME = 'Python36'
+
+
 def ensure_path(path):
     if not os.path.exists(path):
         os.mkdir(path)
