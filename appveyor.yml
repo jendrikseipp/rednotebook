@@ -35,7 +35,7 @@ build_script:
   - tar.exe -czf rednotebook.tar.gz -C /c/ dist
 
 artifacts:
-  - path: rednotebook.tar.gz
+  - path: C:\rednotebook.tar.gz
 
 cache:
   - '%DOWNLOAD_DIR%'
