@@ -1,0 +1,30 @@
+clone_folder: C:\rednotebook\github\rednotebook
+
+matrix:
+  fast_finish: true
+
+environment:
+  global:
+    DOWNLOAD_DIR: _download_cache
+    APPVEYOR_SAVE_CACHE_ON_ERROR: true
+    PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      VS_VER: "14"
+      PLATFORM: "x86"
+      PYTHON: C:\Python36\python.exe
+
+build_script:
+  - "%PYTHON% --version
+  - set PATH=%PATH%;C:\msys64\usr\bin
+  - IF "%PLATFORM%"=="x86" tar.exe -zcf rednotebook.tar.gz -C /c/rednotebook/ github
+
+artifacts:
+  - path: rednotebook.tar.gz
+
+cache:
+  - '%DOWNLOAD_DIR%'
+
+deploy: off
+
+test: off
