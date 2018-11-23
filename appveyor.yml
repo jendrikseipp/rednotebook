@@ -21,9 +21,9 @@ build_script:
   - set PATH
   - cd win
   - C:\Tools\curl\bin\curl -Lo gtk.tar.gz https://ci.appveyor.com/api/buildjobs/4vo7kgs9qairkyko/artifacts/gvsbuild-vs14-x86.tar.gz
-  - set PATH=%PATH%;C:\msys64\usr\bin
+  #- set PATH=%PATH%;C:\msys64\usr\bin
   - C:\msys64\usr\bin\tar.exe -xzf gtk.tar.gz
-  - set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd
+  #- set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd
   - move release C:\gtk
   - "%PYTHON% -m pip install -U wheel"
   - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.17.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.31.1.dev0-cp36-cp36m-win32.whl"
