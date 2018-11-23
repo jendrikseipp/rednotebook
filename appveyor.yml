@@ -27,6 +27,7 @@ build_script:
   - dir C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
   - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.17.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.28.3-cp36-cp36m-win32.whl"
+  - "%PYTHON% -c \"import os; print(os.getenv('PATH'))\""
   - "%PYTHON% ../rednotebook/journal.py"
   - "%PYTHON% -m PyInstaller --workpath C:/build --distpath C:/ rednotebook.spec"
   #- "%PYTHON% -m PyInstaller ../rednotebook/journal.py"
