@@ -7,7 +7,7 @@ environment:
   global:
     DOWNLOAD_DIR: _download_cache
     APPVEYOR_SAVE_CACHE_ON_ERROR: true
-    PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd
+    PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd;C:\msys64\usr\bin
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       VS_VER: "14"
@@ -31,7 +31,7 @@ build_script:
   - "%PYTHON% -c \"import os; print(os.getenv('PATH'))\""
   - "%PYTHON% -c \"import gi; gi.require_version('Gtk', '3.0'); from gi.repository import Gtk\""
   - "%PYTHON% -m pip install -r requirements.txt"
-  - "%PYTHON% ../rednotebook/journal.py"
+  #- "%PYTHON% ../rednotebook/journal.py"
   - "%PYTHON% -m PyInstaller --workpath C:/build --distpath C:/ rednotebook.spec"
   #- "%PYTHON% -m PyInstaller ../rednotebook/journal.py"
   - dir C:\repo\rednotebook
