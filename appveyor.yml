@@ -21,12 +21,12 @@ build_script:
   - set PATH
   - cd win
   - "%PYTHON% -m pip install -r requirements.txt"
-  - curl -Lo gtk.tar.gz https://ci.appveyor.com/api/buildjobs/5b431yy5h0ifc822/artifacts/gvsbuild-vs14-x86.tar.gz
+  - curl -Lo gtk.tar.gz https://ci.appveyor.com/api/buildjobs/4vo7kgs9qairkyko/artifacts/gvsbuild-vs14-x86.tar.gz
   - tar.exe -xzf gtk.tar.gz
   - move release C:\gtk
   - dir C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
-  - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.17.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.28.3-cp36-cp36m-win32.whl"
+  - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.17.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.31.1.dev0-cp36-cp36m-win32.whl"
   - "%PYTHON% -c \"import os; print(os.getenv('PATH'))\""
   - "%PYTHON% ../rednotebook/journal.py"
   - "%PYTHON% -m PyInstaller --workpath C:/build --distpath C:/ rednotebook.spec"
