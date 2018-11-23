@@ -382,7 +382,7 @@ def _putenv(name, value):
             result = cdll.LoadLibrary(msvcrt)._putenv('%s=%s' % (name, value))
             if result != 0: raise Warning
         except Exception:
-            logger.debug('Failed to set environment variable \'%s\' (\'%s._putenv\')' % (name, msvcrtname))
+            logger.debug('Failed to set environment variable \'%s\' (\'<unknown>._putenv\')' % (name))
         else:
             logger.debug('Set environment variable \'%s\' to \'%s\' (\'%s._putenv\')' % (name, value, msvcrtname))
 
