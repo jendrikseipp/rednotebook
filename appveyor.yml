@@ -34,12 +34,9 @@ build_script:
   - "%PYTHON% -m pip install pyinstaller==3.4"
   - "%PYTHON% -m PyInstaller --debug=all --additional-hooks-dir=. sampleapp.py"
   - dist\sampleapp\sampleapp.exe
+  - "%PYTHON% -m pip install -r requirements.txt"
   - "%PYTHON% -m PyInstaller --debug=all --workpath=C:/build --distpath=C:/ rednotebook.spec"
   - C:\dist\rednotebook.exe
-  - "%PYTHON% -m pip install -r requirements.txt"
-  #- "%PYTHON% ../rednotebook/journal.py"
-  - "%PYTHON% -m PyInstaller --workpath C:/build --distpath C:/ rednotebook.spec"
-  #- "%PYTHON% -m PyInstaller ../rednotebook/journal.py"
   - dir C:\repo\rednotebook
   - dir C:\build
   - dir C:\dist
