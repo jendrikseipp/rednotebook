@@ -16,14 +16,20 @@ environment:
 
 build_script:
   - "%PYTHON% --version"
+  - dir C:\msys64\usr\bin
   - set PATH
   - cd win
 
   # Install GTK stack.
-  - curl -Lo gtk.tar.gz https://ci.appveyor.com/api/buildjobs/esg55wmrhjy696yr/artifacts/gvsbuild-vs14-x86.tar.gz
+  - curl -Lo gtk.tar.gz https://ci.appveyor.com/api/buildjobs/3q41p1y9oc5bs554/artifacts/gvsbuild-vs14-x86.tar.gz
   - tar -xzf gtk.tar.gz
   - move release C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
+
+  # Install myspell dictionaries.
+  - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
+  - tar -xzf dicts.tar.gz
+  - move enchant C:\gtk\share
 
   # Install other dependencies.
   # Install pyenchant without the DLLs. They mess up the build system and lead to
@@ -42,6 +48,7 @@ build_script:
   - "%PYTHON% -m PyInstaller --debug=all --workpath=C:/build --distpath=C:/ rednotebook.spec"
   #- C:\dist\rednotebook.exe
   #- "%PYTHON% build-translations.py C:\dist\share\locale"
+  - xcopy C:\gtk\share\enchant C:\dist\share\enchant /O /X /E /H /K
   - tar -czf rednotebook.tar.gz -C /c/ dist
 
   # Artifacts have to live under "clone_folder".
