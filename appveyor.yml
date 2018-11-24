@@ -25,15 +25,16 @@ build_script:
   - C:\msys64\usr\bin\tar.exe -xzf gtk.tar.gz
   #- set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd
   - move release C:\gtk
+  - "%PYTHON% -m pip install -U pip"
   - "%PYTHON% -m pip install -U wheel"
   - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.17.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.28.3-cp36-cp36m-win32.whl"
   - set PATH=%PATH%;C:\gtk\bin
   - "%PYTHON% -c \"import os; print(os.getenv('PATH'))\""
   - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m pip install pyinstaller==3.4"
-  - "%PYTHON% -m pip PyInstaller --debug=all sampleapp.py"
+  - "%PYTHON% -m PyInstaller --debug=all sampleapp.py"
   - dist\sampleapp\sampleapp.exe
-  - "%PYTHON% -m pip PyInstaller --debug=all ../rednotebook/journal.py"
+  - "%PYTHON% -m PyInstaller --debug=all ../rednotebook/journal.py"
   - dist\journal\journal.exe
   - "%PYTHON% -m pip install -r requirements.txt"
   #- "%PYTHON% ../rednotebook/journal.py"
