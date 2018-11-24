@@ -32,12 +32,15 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(levelname)-8s %(message)s',
     stream=sys.stdout)
+    
+import gi
 
 try:
     import gi
 except ImportError as err:
     logging.error(
         'pygobject could not be imported: "{}". Please install it (python3-gi).'.format(err))
+    raise
     sys.exit(1)
 
 gi.require_version("Gtk", "3.0")

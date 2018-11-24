@@ -4,22 +4,19 @@ import site
 
 block_cipher = None
 
+options = [ ('v', None, 'OPTION'), ('u', None, 'OPTION') ]
+
 drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'repo')
 srcdir = os.path.join(basedir, 'rednotebook')
-bindir = os.path.join(site.getsitepackages()[1], 'gnome')
+bindir = os.path.join(drive_c, 'gtk')
 enchantdir = os.path.join(site.getsitepackages()[1], 'enchant')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
-# See also https://github.com/pyinstaller/pyinstaller/issues/1966
-typelibdir = os.path.join(bindir, 'lib', 'girepository-1.0')
 
 MISSED_BINARIES = [
     #os.path.join(drive_c, path) for path in [
     #    'windows/syswow64/python34.dll',
-    #    'Python34/DLLs/_ctypes.pyd',
-    #    'Python34/DLLs/_socket.pyd',
-    #    'Python34/DLLs/pyexpat.pyd',
     #    'Python34/Lib/site-packages/gnome/gspawn-win32-helper.exe',
     #]
 ]
@@ -47,7 +44,7 @@ a = Analysis([os.path.join(srcdir, 'journal.py')],
              pathex=[basedir],
              binaries=[],
              datas=[],
-             hiddenimports=[],
+             hiddenimports=['gi._gi'],
              hookspath=["."],  # To find "hook-cefpython3.py"
              runtime_hooks=[],
              excludes=[],
@@ -56,11 +53,7 @@ a = Analysis([os.path.join(srcdir, 'journal.py')],
              cipher=block_cipher)
 # Adding these files in the ctor mangles up the paths.
 #a.binaries += ([
-#    (os.path.join('gi_typelibs', tl), os.path.join(typelibdir, tl), 'BINARY') for tl in os.listdir(typelibdir)] + [
 #    (name, os.path.join(bindir, name), 'BINARY') for name in os.listdir(bindir) if include_dll(name)] + [
-#    (os.path.basename(path), path, 'BINARY') for path in MISSED_BINARIES] + [
-#    ('gi._gi.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi.pyd'), 'BINARY'),
-#    ('gi._gi_cairo.pyd', os.path.join(drive_c, 'Python34/Lib/site-packages/gi/_gi_cairo.pyd'), 'BINARY'),
 #    ])
 
 # We need to manually copy the enchant directory, because we want to omit
@@ -73,12 +66,13 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
+          options,
           exclude_binaries=True,
           name='rednotebook.exe',
-          debug=False,
+          debug=True,
           strip=False,
           upx=True,
-          console=False,
+          console=True,
           icon=icon)
 coll = COLLECT(exe,
                a.binaries,
