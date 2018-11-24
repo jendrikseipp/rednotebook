@@ -16,7 +16,6 @@ environment:
 
 build_script:
   - "%PYTHON% --version"
-  - dir C:\msys64\usr\bin
   - set PATH
   - cd win
 
@@ -48,7 +47,7 @@ build_script:
   - "%PYTHON% -m PyInstaller --debug=all --workpath=C:/build --distpath=C:/ rednotebook.spec"
   #- C:\dist\rednotebook.exe
   - "%PYTHON% build-translations.py C:/dist/share/locale"
-  - cp C:\gtk\share\enchant C:\dist\share\enchant
+  - cp -r C:\gtk\share\enchant C:\dist\share\enchant
   - tar -czf rednotebook.tar.gz -C /c/ dist
 
   # Artifacts have to live under "clone_folder".
