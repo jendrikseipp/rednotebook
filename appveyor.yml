@@ -29,21 +29,18 @@ build_script:
   - set PATH=%PATH%;C:\gtk\bin
   - "%PYTHON% -c \"import os; print(os.getenv('PATH'))\""
   - "%PYTHON% sampleapp.py"
-  - "%PYTHON% -m pip install pyinstaller==3.4"
   # Install pyenchant without the DLLs. They mess up the build system and lead to
   # the error "ImportError: DLL load failed: The specified procedure could not be found."
   # when calling "import gi".
-  - "%PYTHON% -m pip install -U https://files.pythonhosted.org/packages/9e/54/04d88a59efa33fefb88133ceb638cdf754319030c28aadc5a379d82140ed/pyenchant-2.0.0.tar.gz"
+  - "%PYTHON% -m pip install -r requirements.txt"
   - "%PYTHON% -m PyInstaller --debug=all --additional-hooks-dir=. sampleapp.py"
   - dist\sampleapp\sampleapp.exe
-  - "%PYTHON% -m pip install -r requirements.txt"
   - "%PYTHON% -m PyInstaller --debug=all --workpath=C:/build --distpath=C:/ rednotebook.spec"
-  - C:\dist\rednotebook.exe
+  #- C:\dist\rednotebook.exe
   - dir C:\repo\rednotebook
   - dir C:\build
   - dir C:\dist
   #- "%PYTHON% build-translations.py C:\dist\share\locale"
-  - set PATH=%PATH%;C:\msys64\usr\bin
   - tar.exe -czf rednotebook.tar.gz -C /c/ dist
   - move rednotebook.tar.gz C:\repo
 
