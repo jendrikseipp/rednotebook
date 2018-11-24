@@ -86,7 +86,7 @@ if cef:
             ctypes.pythonapi.PyCapsule_GetPointer.argtypes = [ctypes.py_object]
             gpointer = ctypes.pythonapi.PyCapsule_GetPointer(
                 self.get_property("window").__gpointer__, None)
-            libgdk = ctypes.CDLL("libgdk-3-0.dll")
+            libgdk = ctypes.CDLL("gdk-3-3.0.dll")
             handle = libgdk.gdk_win32_window_get_handle(gpointer)
             Gdk.threads_leave()
             return handle
