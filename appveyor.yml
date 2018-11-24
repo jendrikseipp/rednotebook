@@ -29,7 +29,7 @@ build_script:
   - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.17.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.28.3-cp36-cp36m-win32.whl"
   - set PATH=%PATH%;C:\gtk\bin
   - "%PYTHON% -c \"import os; print(os.getenv('PATH'))\""
-  - "%PYTHON% sampleapp/sample.py"
+  - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m pip install pyinstaller==3.4"
   - "%PYTHON% -m pip PyInstaller --debug=all sampleapp.py"
   - dist\sampleapp\sampleapp.exe
