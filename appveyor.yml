@@ -47,7 +47,7 @@ build_script:
   # Build installer.
   - "%PYTHON% -m PyInstaller --debug=all --workpath=C:/build --distpath=C:/ rednotebook.spec"
   #- C:\dist\rednotebook.exe
-  - "%PYTHON% build-translations.py C:\dist\share\locale"
+  - "%PYTHON% build-translations.py C:/dist/share/locale"
   - cp C:\gtk\share\enchant C:\dist\share\enchant
   - tar -czf rednotebook.tar.gz -C /c/ dist
 
