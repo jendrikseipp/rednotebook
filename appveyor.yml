@@ -32,7 +32,7 @@ build_script:
   - "%PYTHON% -c \"import os; print(os.getenv('PATH'))\""
   - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m pip install pyinstaller==3.4"
-  - "%PYTHON% -m PyInstaller --debug=all sampleapp.py"
+  - "%PYTHON% -m PyInstaller --debug=all --additional-hooks-dir=. sampleapp.py"
   - dist\sampleapp\sampleapp.exe
   - "%PYTHON% -m PyInstaller --debug=all ../rednotebook/journal.py"
   - dist\journal\journal.exe
