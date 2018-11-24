@@ -15,10 +15,9 @@ icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 
 MISSED_BINARIES = [
-    #os.path.join(drive_c, path) for path in [
-    #    'windows/syswow64/python34.dll',
-    #    'Python34/Lib/site-packages/gnome/gspawn-win32-helper.exe',
-    #]
+    os.path.join(drive_c, path) for path in [
+        'gtk/bin/gspawn-win32-helper.exe',
+    ]
 ]
 
 #for path in [drive_c, basedir, srcdir, bindir, icon] + MISSED_BINARIES:
@@ -52,9 +51,10 @@ a = Analysis([os.path.join(srcdir, 'journal.py')],
              win_private_assemblies=False,
              cipher=block_cipher)
 # Adding these files in the ctor mangles up the paths.
-#a.binaries += ([
-#    (name, os.path.join(bindir, name), 'BINARY') for name in os.listdir(bindir) if include_dll(name)] + [
-#    ])
+a.binaries += (
+    [(os.path.basename(path), path, 'BINARY') for path in MISSED_BINARIES]
+    #[(name, os.path.join(bindir, name), 'BINARY') for name in os.listdir(bindir) if include_dll(name)]
+    )
 
 # We need to manually copy the enchant directory, because we want to omit
 # the DLLs and include the Python files. Keeping the DLLs leads to errors,
