@@ -41,10 +41,11 @@ build_script:
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m PyInstaller --debug=all --additional-hooks-dir=. sampleapp.py"
-  - dist\sampleapp\sampleapp.exe
+  # Use clean PATH to check that everything has been copied correctly.
+  - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem && dist\sampleapp\sampleapp.exe"
 
   # Create executable.
-  - "%PYTHON% -m PyInstaller --debug=all --workpath=C:/build --distpath=C:/ rednotebook.spec"
+  - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec"
   #- C:\dist\rednotebook.exe
   - "%PYTHON% build-translations.py C:/dist/share/locale"
   - cp -r C:\gtk\share\enchant C:\dist\share\enchant
