@@ -13,7 +13,4 @@ print('GtkSource import works')
 
 import enchant
 print(enchant.list_languages())
-dictionary = enchant.request_dict()
-dictionary.check("Tesst")
-dictionary.check("Test")
-print('Pyenchant works')
+print('Enchant import works')
