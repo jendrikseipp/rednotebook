@@ -42,7 +42,7 @@ build_script:
   - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python36/Lib/site-packages/enchant/lib/enchant/
 
   # Remove bundled dictionaries and install custom ones.
-  - rm C:/Python36/Lib/site-packages/enchant/share/enchant
+  - rm -r C:/Python36/Lib/site-packages/enchant/share/enchant
   - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
   - tar -xzf dicts.tar.gz
   - move enchant C:\Python36\Lib\site-packages\enchant\share
