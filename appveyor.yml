@@ -38,7 +38,7 @@ build_script:
   # and put our own DLLs in the places where pyenchant and PyInstaller
   # expect them.
   - dir C:\Python36\Lib\site-packages\enchant
-  - rm C:\Python36\Lib\site-packages\enchant\*.dll
+  - rm C:/Python36/Lib/site-packages/enchant/*.dll
   - rm C:\Python36\Lib\site-packages\enchant\lib\enchant\*.dll
   - cp C:\gtk\bin\libenchant.dll C:\Python36\Lib\site-packages\enchant
   - cp C:\gtk\lib\enchant\libenchant_*.dll C:\Python36\Lib\site-packages\enchant\lib\enchant\
