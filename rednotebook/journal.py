@@ -32,8 +32,6 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(levelname)-8s %(message)s',
     stream=sys.stdout)
-    
-import gi
 
 try:
     import gi
