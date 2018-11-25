@@ -186,10 +186,6 @@ class SpellChecker(object):
                  collapse=True, params={}):
         self._view = view
         self.collapse = collapse
-        self._view.connect('populate-popup',
-                           lambda entry, menu:self._extend_menu(menu))
-        self._view.connect('popup-menu', self._click_move_popup)
-        self._view.connect('button-press-event', self._click_move_button)
         self._prefix = prefix
         self._broker = enchant.Broker()
         for param, value in params.items(): self._broker.set_param(param, value)
@@ -220,6 +216,13 @@ class SpellChecker(object):
                          SpellChecker.FILTER_TEXT : re.compile('|'.join(
                              self._filters[SpellChecker.FILTER_TEXT]),
                                                                re.MULTILINE)}
+        # JS: Connect to signals only after successful initialization.
+        #     Otherwise, functions might be called on uninitialized object.
+        self._view.connect('populate-popup',
+                           lambda entry, menu:self._extend_menu(menu))
+        self._view.connect('popup-menu', self._click_move_popup)
+        self._view.connect('button-press-event', self._click_move_button)
+
         self._enabled = True
         self.buffer_initialize()
 
