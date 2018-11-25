@@ -17,6 +17,7 @@ environment:
 build_script:
   - "%PYTHON% --version"
   - set PATH
+  - dir C:\msys64\usr\bin
   - cd win
 
   # Install GTK stack.
@@ -36,6 +37,7 @@ build_script:
   # Therefore, we install the pyenchant source package (which has no DLLs)
   # and put our own DLLs in the places where pyenchant and PyInstaller
   # expect them.
+  - dir C:\Python36\Lib\site-packages\enchant
   - rm C:\Python36\Lib\site-packages\enchant\*.dll
   - rm C:\Python36\Lib\site-packages\enchant\lib\enchant\*.dll
   - cp C:\gtk\bin\libenchant.dll C:\Python36\Lib\site-packages\enchant
