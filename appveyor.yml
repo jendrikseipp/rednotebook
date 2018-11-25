@@ -51,7 +51,7 @@ build_script:
   - tar -czf rednotebook.tar.gz -C /c/ dist
 
   # Build installer.
-  - ISCC /dREDNOTEBOOK_VERSION=2.9b rednotebook.iss
+  - iscc /Qp /dREDNOTEBOOK_VERSION=2.9b rednotebook.iss
 
   # Artifacts have to live under "clone_folder".
   - move rednotebook.tar.gz C:\repo
