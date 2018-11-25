@@ -12,7 +12,8 @@ from gi.repository import GtkSource
 print('GtkSource import works')
 
 import enchant
-enchant.list_languages()
+print(enchant.list_languages())
 dictionary = enchant.request_dict()
-dictionary.check("Töst")
+dictionary.check("Tesst")
 dictionary.check("Test")
+print('Pyenchant works')
