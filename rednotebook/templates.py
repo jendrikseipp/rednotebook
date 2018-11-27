@@ -332,8 +332,6 @@ class TemplateManager:
         return self.main_window.journal.date.isoweekday()
 
     def get_path(self, title):
-        if title == 'Weekday':
-            title = str(self._get_weekday_number())
         return os.path.join(self.dirs.template_dir, title + '.txt')
 
     def get_text(self, title):
@@ -395,7 +393,7 @@ class TemplateManager:
 
         actions.append(('EditWeekday', Gtk.STOCK_HOME,
                         _("This Weekday's Template"), None, None,
-                        lambda button: self.edit('Weekday')))
+                        lambda button: self.edit(str(self._get_weekday_number()))))
 
         actions.append(('NewTemplate', Gtk.STOCK_NEW, _('Create New Template'),
                         None, None, self.on_new_template))
