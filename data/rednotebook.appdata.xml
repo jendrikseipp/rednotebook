@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>RedNotebook</name>
+  <developer_name>Jendrik Seipp</developer_name>
   <summary>Graphical diary and journal</summary>
   <description>
     <p>Modern desktop diary and personal journaling tool. It lets you format,
@@ -13,6 +14,7 @@
   </description>
   <url type="homepage">https://rednotebook.sourceforge.io</url>
   <url type="bugtracker">https://github.com/jendrikseipp/rednotebook/issues</url>
+  <url type="faq">https://answers.launchpad.net/rednotebook/+faqs</url>
   <url type="help">https://answers.launchpad.net/rednotebook</url>
   <url type="translate">https://translations.launchpad.net/rednotebook</url>
   <screenshots>
