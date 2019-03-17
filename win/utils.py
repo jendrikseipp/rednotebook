@@ -40,15 +40,3 @@ def run(*args, **kwargs):
 
 def get_output(*args, **kwargs):
     return subprocess.check_output(*args, **kwargs).decode().strip()
-
-def install(path, use_wine):
-    cmd = []
-    if use_wine:
-        cmd.append('wine')
-    if path.lower().endswith('.exe'):
-        cmd.extend([path])
-    elif path.lower().endswith('.msi'):
-        cmd.extend(['msiexec', '/i', path])
-    else:
-        sys.exit('Don\'t know how to install {0}'.format(path))
-    run(cmd)
