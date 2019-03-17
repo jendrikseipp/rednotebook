@@ -13,7 +13,7 @@ See `debian/control` for Debian and Ubuntu package names.
   * Python (>= 3.4): https://www.python.org
   * GTK+ (>= 3.18): https://www.gtk.org
   * GtkSourceView (>= 3.18): https://wiki.gnome.org/Projects/GtkSourceView
-  * WebKitGTK+ (>= 2.16, unavailable on Windows): https://webkitgtk.org
+  * WebKitGTK+ (>= 2.16, not needed for Windows): https://webkitgtk.org
   * PyYAML (>= 3.10): https://pyyaml.org
 
 Recommended libraries:
@@ -28,22 +28,14 @@ Recommended libraries:
 
 # Run under Windows
 
-Install Python 3 (32-bit version), change into the `win` directory, run
-
-    C:\path\to\rednotebook\win> python create-build-env.py
-
-and add `C:\gtkbin` to your path. Now change back into the rednotebook
-directory and run
+See [appveyor.yml](appveyor.yml) for setup instructions, then run
 
     C:\path\to\rednotebook> python3 rednotebook/journal.py
-
-Be sure to use the **32-bit version** of Python! (Or install the 64-bit
-versions of the various dependencies required for the project.)
 
 
 # Install
 
-It is recommended to install RedNotebook with your package manager or
+We recommend to install RedNotebook with your package manager or
 to download the Windows installer. Follow the steps below only if your
 distribution has no RedNotebook package or you want to use a newer
 RedNotebook version.
