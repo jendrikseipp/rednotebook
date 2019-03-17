@@ -70,10 +70,20 @@ build_script:
 artifacts:
   - path: rednotebook.tar.gz
   - path: rednotebook.exe
+    name: Windows installer
+
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: "UT6jPkpy8U/qTN+8LF7hPsJ/cHWlt+7a+wO2Ou2iKYImeBxAV4OY6Gt3Y0v5/ZuL"
+  artifact: /rednotebook.exe/
+  draft: false
+  prerelease: false
+  on:
+    branch: master
+    appveyor_repo_tag: true
 
 cache:
   - '%DOWNLOAD_DIR%'
-
-deploy: off
 
 test: off
