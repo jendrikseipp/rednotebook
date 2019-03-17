@@ -17,13 +17,12 @@ environment:
 build_script:
   - "%PYTHON% --version"
   - set PATH
-  - "%PYTHON% -c \"from rednotebook import info; print(info.version)\"" > temp.txt
-  - set /p VERSION=<temp.txt
+  - for /f %%i in ('"%PYTHON% -c \"from rednotebook import info; print(info.version)\""') do set VERSION=%%i
   - echo "Version: %VERSION%"
   - cd win
 
   # Install GTK stack.
-  - curl -Lo gtk.tar.gz https://ci.appveyor.com/api/buildjobs/3q41p1y9oc5bs554/artifacts/gvsbuild-vs14-x86.tar.gz
+  - curl -Lo gtk.tar.gz https://www.dropbox.com/s/1as726i4rb2zmlg/gvsbuild-vs14-x86.tar.gz?dl=1
   - tar -xzf gtk.tar.gz
   - move release C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
