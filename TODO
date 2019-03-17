@@ -7,6 +7,8 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+O Automate deployment to flathub.
+O Remove imports.py.
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
