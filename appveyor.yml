@@ -16,8 +16,10 @@ environment:
 
 build_script:
   - "%PYTHON% --version"
+  # Print PATH variable.
   - set PATH
   - for /f %%i in ('%PYTHON% -c "from rednotebook import info; print(info.version)"') do set VERSION=%%i
+  - set VERSION
   - cd win
 
   # Install GTK stack.
