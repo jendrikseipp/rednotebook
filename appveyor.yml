@@ -17,6 +17,9 @@ environment:
 build_script:
   - "%PYTHON% --version"
   - set PATH
+  - "%PYTHON% -c 'from rednotebook import info; print(info.version)'" > temp.txt
+  - set /p VERSION=<temp.txt
+  - echo "Version: %VERSION%"
   - cd win
 
   # Install GTK stack.
@@ -33,9 +36,8 @@ build_script:
   # Pyenchant wheels bundle DLLs. The bundled DLLs are incompatible to the
   # DLLs we use and lead to the error "ImportError: DLL load failed: The
   # specified procedure could not be found." when calling "import gi".
-  # Therefore, we install the pyenchant source package (which has no DLLs)
-  # and put our own DLLs in the places where pyenchant and PyInstaller
-  # expect them.
+  # Therefore, we remove the bundled DLLs and put our own DLLs in the
+  # places where pyenchant and PyInstaller expect them.
   - rm C:/Python36/Lib/site-packages/enchant/*.dll
   - rm C:/Python36/Lib/site-packages/enchant/lib/enchant/*.dll
   - cp C:/gtk/bin/libenchant.dll C:/Python36/Lib/site-packages/enchant
