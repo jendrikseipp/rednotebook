@@ -64,12 +64,13 @@ build_script:
   - iscc /Qp /dREDNOTEBOOK_VERSION="%VERSION%" rednotebook.iss
 
   # Artifacts have to live under "clone_folder".
-  - move rednotebook.tar.gz C:\repo
-  - move C:\rednotebook.exe C:\repo
+  - move rednotebook.tar.gz C:\repo\rednotebook-"%VERSION%".tar.gz
+  - move C:\rednotebook.exe C:\repo\rednotebook-"%VERSION%".exe
 
 artifacts:
-  - path: rednotebook.tar.gz
-  - path: rednotebook.exe
+  - path: rednotebook-.*.tar.gz
+    name: Standalone Windows executable
+  - path: rednotebook-.*.exe
     name: Windows installer
 
 deploy:
@@ -77,7 +78,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: "UT6jPkpy8U/qTN+8LF7hPsJ/cHWlt+7a+wO2Ou2iKYImeBxAV4OY6Gt3Y0v5/ZuL"
-  artifact: /rednotebook.exe/
+  artifact: /rednotebook-.*\.exe/
   draft: false
   prerelease: false
   on:
