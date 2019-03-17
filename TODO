@@ -7,8 +7,6 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Use Python 3.6 and GTK 3.22 on Windows.
-X Build Windows installer with Appveyor.
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
