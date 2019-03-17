@@ -344,6 +344,7 @@ class Journal:
         self.month = None
         self.months.clear()
         self.frame.search_box.clear()
+        self.frame.day_text_field.clear_buffers()
 
         self.months = storage.load_all_months_from_disk(data_dir)
 

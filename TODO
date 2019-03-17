@@ -7,7 +7,8 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Load the correct template for a given weekday (#416).
+X Load the correct template for a given weekday (fixes #416).
+X Clear text buffers when opening a new journal (fixes #421).
 X Minor bug fixes.
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.

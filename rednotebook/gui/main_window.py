@@ -793,6 +793,9 @@ class DayEditor(editor.Editor):
         self.replace_buffer(buf)
         self.day_text_view.grab_focus()
 
+    def clear_buffers(self):
+        self.recent_buffers.clear()
+
 
 class NewEntryDialog:
     def __init__(self, main_frame):
