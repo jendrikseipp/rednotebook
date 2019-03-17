@@ -17,7 +17,7 @@ environment:
 build_script:
   - "%PYTHON% --version"
   - set PATH
-  - "%PYTHON% -c 'from rednotebook import info; print(info.version)'" > temp.txt
+  - "%PYTHON% -c \"from rednotebook import info; print(info.version)\"" > temp.txt
   - set /p VERSION=<temp.txt
   - echo "Version: %VERSION%"
   - cd win
