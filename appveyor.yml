@@ -66,7 +66,6 @@ build_script:
   # Artifacts have to live under "clone_folder".
   - move rednotebook.tar.gz C:\repo\rednotebook-"%VERSION%".tar.gz
   - move C:\rednotebook.exe C:\repo\rednotebook-"%VERSION%".exe
-  - dir C:\repo\
 
 artifacts:
   - path: rednotebook-*.tar.gz
