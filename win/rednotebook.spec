@@ -43,8 +43,7 @@ a = Analysis([os.path.join(srcdir, 'journal.py')],
 # Adding these files in the ctor mangles up the paths.
 a.binaries += [(os.path.basename(path), path, 'BINARY') for path in MISSED_BINARIES]
 
-pyz = PYZ(a.pure, a.zipped_data,
-             cipher=block_cipher)
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
           options,
