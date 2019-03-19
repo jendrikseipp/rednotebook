@@ -56,7 +56,7 @@ build_script:
   - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem && dist\sampleapp\sampleapp.exe"
 
   # Create debug executable.
-  - "%PYTHON% -m PyInstaller --workpath=C:/build-debug --distpath=C:/dist-debug --console --name rednotebook-debug rednotebook.spec"
+  - "%PYTHON% -m PyInstaller --workpath=C:/build-debug --distpath=C:/ --console --name rednotebook-debug rednotebook.spec"
   - "%PYTHON% build-translations.py C:/dist-debug/dist/share/locale"
   - tar -czf rednotebook-debug.tar.gz -C /c/dist-debug dist
 
