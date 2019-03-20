@@ -61,7 +61,7 @@ build_script:
   #- tar -czf rednotebook-debug.tar.gz -C /c/dist-debug dist
 
   # Create executable.
-  - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ --console rednotebook.spec"
+  - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ --noconsole rednotebook.spec"
   - "%PYTHON% build-translations.py C:/dist/share/locale"
   - tar -czf rednotebook.tar.gz -C /c/ dist
 
