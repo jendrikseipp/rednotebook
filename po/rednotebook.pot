@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-17 23:55+0100\n"
+"POT-Creation-Date: 2019-03-20 15:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,7 +254,7 @@ msgid "Introduction"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:350
-#: ../rednotebook/gui/main_window.py:647
+#: ../rednotebook/gui/main_window.py:649
 msgid "Template"
 msgstr ""
 
@@ -689,19 +689,19 @@ msgstr ""
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:175
+#: ../rednotebook/gui/main_window.py:177
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:322
+#: ../rednotebook/gui/main_window.py:324
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:560
+#: ../rednotebook/gui/main_window.py:562
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:650
+#: ../rednotebook/gui/main_window.py:652
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
