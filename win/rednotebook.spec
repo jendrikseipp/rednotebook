@@ -61,5 +61,6 @@ coll = COLLECT(exe,
                Dir(os.path.join(srcdir, 'files')),
                Dir(os.path.join(srcdir, 'images')),
                strip=False,
+               console=False,
                upx=True,
                name='dist')
