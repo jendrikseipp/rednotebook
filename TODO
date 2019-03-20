@@ -7,6 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Disable internal preview on Windows again since it sometimes crashes the app.
 O Automate deployment to flathub.
 O Remove imports.py.
 O Update Github README file.
