@@ -1,3 +1,6 @@
+== 2.9.1 (2019-03-20) ==
+* Disable internal preview on Windows again since it sometimes crashes the app.
+
 == 2.9 (2019-03-17) ==
 * Use Python 3.6 and GTK 3.22 on Windows.
 * Build Windows installer with Appveyor.
