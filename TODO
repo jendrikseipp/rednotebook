@@ -7,7 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-O Automate deployment to flathub.
+X Automatically push newest version to flathub.
 O Remove imports.py.
 O Update Github README file.
 O Check for latest version during startup by default.
