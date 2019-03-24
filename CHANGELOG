@@ -1,3 +1,6 @@
+== 2.10 (2019-03-24) ==
+* Automatically push newest version to flathub.
+
 == 2.9.1 (2019-03-20) ==
 * Disable internal preview on Windows again since it sometimes crashes the app.
 
