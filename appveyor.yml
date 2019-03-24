@@ -80,7 +80,7 @@ artifacts:
     name: Windows installer
 
 deploy:
-  description: 'Release description'
+  description: ''
   provider: GitHub
   auth_token:
     secure: "UT6jPkpy8U/qTN+8LF7hPsJ/cHWlt+7a+wO2Ou2iKYImeBxAV4OY6Gt3Y0v5/ZuL"
