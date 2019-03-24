@@ -1,3 +1,10 @@
+rednotebook (2.10-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Automatically push newest version to flathub.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 24 Mar 2019 14:22:14 +0100
+
 rednotebook (2.9.1-1) UNRELEASED; urgency=low
 
   * New upstream release
