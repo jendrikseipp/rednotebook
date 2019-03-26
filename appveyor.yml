@@ -25,7 +25,7 @@ build_script:
   # Install Python 3.4 and GTK 3.18 stack.
   - curl -Lo python34.tar.gz https://www.dropbox.com/s/3wu38oluushvqan/python34.tar.gz?dl=1
   - tar -xzf python34.tar.gz
-  - move Python34 C:\
+  - move Python34 C:\Python34
   - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome
 
   # Install other dependencies.
