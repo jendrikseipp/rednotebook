@@ -22,11 +22,11 @@ build_script:
   - set VERSION
   - cd win
 
-  # Install GTK stack.
-  - curl -Lo gtk.tar.gz https://www.dropbox.com/s/1as726i4rb2zmlg/gvsbuild-vs14-x86.tar.gz?dl=1
-  - tar -xzf gtk.tar.gz
-  - move release C:\gtk
-  - set PATH=%PATH%;C:\gtk\bin
+  # Install Python 3.4 and GTK 3.18 stack.
+  - curl -Lo python34.tar.gz https://www.dropbox.com/s/3wu38oluushvqan/python34.tar.gz?dl=1
+  - tar -xzf python34.tar.gz
+  - move Python34 C:\
+  - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome
 
   # Install other dependencies.
   - "%PYTHON% -m pip install -U pip wheel"
