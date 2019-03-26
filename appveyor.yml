@@ -28,10 +28,12 @@ build_script:
   - move Python34 C:\Python34
   - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome
   - set PYTHON=C:\Python34\python.exe
+  - "%PYTHON% --version"
 
   # Install other dependencies.
-  - "%PYTHON% -m pip install -U pip==19.0.3 wheel"
+  - "%PYTHON% -m pip install -U pip==19.0.3 wheel==0.33.1"
   - "%PYTHON% -m pip install -r requirements.txt"
+  - '%PYTHON% -c "help(\"modules\")"'
 
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
