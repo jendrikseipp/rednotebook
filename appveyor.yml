@@ -30,7 +30,7 @@ build_script:
   - set PYTHON=C:\Python344\python.exe
   - "%PYTHON% --version"
   - set PYTHONPATH=C:\Python344\Lib\site-packages;C:\Python344\Lib\site-packages\gnome;C:\Python344\Lib\site-packages\gnome\share\gir-1.0;C:\Python344\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python344\Lib\site-packages\gi
-  - '%PYTHON% -c "help(\"modules\")"'
+  #- '%PYTHON% -c "help(\"modules\")"'
   - dir C:\Python344\Lib\site-packages
   - dir C:\Python344\Lib\site-packages\gi
 
