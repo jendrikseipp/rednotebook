@@ -26,10 +26,10 @@ build_script:
   - curl -Lo python34.tar.gz https://www.dropbox.com/s/3wu38oluushvqan/python34.tar.gz?dl=1
   - tar -xzf python34.tar.gz
   - move Python34 C:\Python34
-  - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome
+  - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome;C:\Python34\Lib\site-packages\gnome\share\gir-1.0;C:\Python34\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python34\Lib\site-packages\gi
   - set PYTHON=C:\Python34\python.exe
   - "%PYTHON% --version"
-  - set PYTHONPATH=C:\Python34\Lib\site-packages;C:\Python34\Lib\site-packages\gnome
+  - set PYTHONPATH=C:\Python34\Lib\site-packages;C:\Python34\Lib\site-packages\gnome;C:\Python34\Lib\site-packages\gnome\share\gir-1.0;C:\Python34\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python34\Lib\site-packages\gi
   - '%PYTHON% -c "help(\"modules\")"'
 
   # Install other dependencies.
