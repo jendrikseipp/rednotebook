@@ -133,8 +133,7 @@ class MainWindow:
         self.edit_pane = self.builder.get_object('edit_pane')
         self.text_vbox = self.builder.get_object('text_vbox')
 
-        # Disable CEF preview until fixed.
-        use_cef = False
+        use_cef = True
         if browser.WebKit2:
             class Preview(browser.HtmlView):
                 def __init__(self, journal):
