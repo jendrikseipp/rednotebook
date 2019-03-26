@@ -29,7 +29,7 @@ build_script:
   - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome
   - set PYTHON=C:\Python34\python.exe
   - "%PYTHON% --version"
-  - set PYTHONPATH
+  #- set PYTHONPATH
   - '%PYTHON% -c "help(\"modules\")"'
 
   # Install other dependencies.
