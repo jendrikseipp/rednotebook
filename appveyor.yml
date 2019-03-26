@@ -30,7 +30,7 @@ build_script:
   - set PYTHON=C:\Python34\python.exe
 
   # Install other dependencies.
-  - "%PYTHON% -m pip install -U pip wheel"
+  - "%PYTHON% -m pip install -U pip==19.0.3 wheel"
   - "%PYTHON% -m pip install -r requirements.txt"
 
   # Sanity check with dummy app.
