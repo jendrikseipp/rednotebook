@@ -29,24 +29,17 @@ build_script:
   - move Python34 C:\Python344
   - mkdir C:\Python344\share
   - cp -r C:\Python344\Lib\site-packages\gnome\share\gir-1.0 C:\Python344\share\gir-1.0
-  - set PATH=%PATH%;C:\Python344\Lib\site-packages\gnome;C:\Python344\Lib\site-packages\gnome\share\gir-1.0;C:\Python344\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python344\Lib\site-packages\gi
+  - set PATH=%PATH%;C:\Python344\Lib\site-packages\gnome
   - set PYTHON=C:\Python344\python.exe
   - "%PYTHON% --version"
-  #- set PYTHONPATH=C:\Python344\Lib\site-packages;C:\Python344\Lib\site-packages\gnome;C:\Python344\Lib\site-packages\gnome\share\gir-1.0;C:\Python344\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python344\Lib\site-packages\gi
-  #- '%PYTHON% -c "help(\"modules\")"'
-  - dir C:\Python344\Lib\site-packages
-  - dir C:\Python344\Lib\site-packages\gi
 
   # Install other dependencies.
   - "%PYTHON% -m pip install -U pip==19.0.3 wheel==0.33.1"
   - "%PYTHON% -m pip install -r requirements.txt"
-  #- '%PYTHON% -c "help(\"modules\")"'
 
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m PyInstaller --debug --additional-hooks-dir=. sampleapp.py"
-  # Use clean PATH to check that everything has been copied correctly.
-  #- cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem && dist\sampleapp\sampleapp.exe"
 
   # Create executable.
   - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec"
