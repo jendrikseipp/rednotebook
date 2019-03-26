@@ -31,7 +31,7 @@ build_script:
   - set PYTHON=C:\Python344\python.exe
   - "%PYTHON% --version"
 
-  # Install other dependencies.
+  # Update some of the dependencies in the tarball.
   - "%PYTHON% -m pip install -U pip==19.0.3 wheel==0.33.1"
   - "%PYTHON% -m pip install -r requirements.txt"
 
