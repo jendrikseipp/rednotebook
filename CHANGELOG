@@ -1,3 +1,6 @@
+== 2.11 (2019-03-26) ==
+* Revert to GTK 3.18 stack on Windows (fixes #429 and #430).
+
 == 2.10 (2019-03-24) ==
 * Automatically push newest version to flathub.
 
