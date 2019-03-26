@@ -10,7 +10,6 @@ options = [] # [('v', None, 'OPTION'), ('u', None, 'OPTION')]
 drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'repo')
 srcdir = os.path.join(basedir, 'rednotebook')
-bindir = os.path.join(drive_c, 'gtk')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 MISSED_BINARIES = [
@@ -19,7 +18,7 @@ MISSED_BINARIES = [
     ]
 ]
 
-for path in [drive_c, basedir, srcdir, bindir, icon] + MISSED_BINARIES:
+for path in [drive_c, basedir, srcdir, icon] + MISSED_BINARIES:
     assert os.path.exists(path), "{} does not exist".format(path)
 
 print('PATH:', os.environ['PATH'])
