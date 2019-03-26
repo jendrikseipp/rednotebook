@@ -25,14 +25,14 @@ build_script:
   # Install Python 3.4 and GTK 3.18 stack.
   - curl -Lo python34.tar.gz https://www.dropbox.com/s/3wu38oluushvqan/python34.tar.gz?dl=1
   - tar -xzf python34.tar.gz
-  - move Python34 C:\Python34
-  - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome;C:\Python34\Lib\site-packages\gnome\share\gir-1.0;C:\Python34\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python34\Lib\site-packages\gi
-  - set PYTHON=C:\Python34\python.exe
+  - move Python34 C:\Python344
+  - set PATH=%PATH%;C:\Python344\Lib\site-packages\gnome;C:\Python344\Lib\site-packages\gnome\share\gir-1.0;C:\Python344\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python344\Lib\site-packages\gi
+  - set PYTHON=C:\Python344\python.exe
   - "%PYTHON% --version"
-  - set PYTHONPATH=C:\Python34\Lib\site-packages;C:\Python34\Lib\site-packages\gnome;C:\Python34\Lib\site-packages\gnome\share\gir-1.0;C:\Python34\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python34\Lib\site-packages\gi
+  - set PYTHONPATH=C:\Python344\Lib\site-packages;C:\Python344\Lib\site-packages\gnome;C:\Python344\Lib\site-packages\gnome\share\gir-1.0;C:\Python344\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python344\Lib\site-packages\gi
   - '%PYTHON% -c "help(\"modules\")"'
-  - dir C:\Python34\Lib\site-packages
-  - dir C:\Python34\Lib\site-packages\gi
+  - dir C:\Python344\Lib\site-packages
+  - dir C:\Python344\Lib\site-packages\gi
 
   # Install other dependencies.
   - "%PYTHON% -m pip install -U pip==19.0.3 wheel==0.33.1"
