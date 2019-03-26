@@ -27,6 +27,8 @@ build_script:
   - tar -xzf python34.tar.gz
   # C:\Python34 already contains a Python installation.
   - move Python34 C:\Python344
+  - mkdir C:\Python344\share
+  - xcopy /s C:\Python344\Lib\site-packages\gnome\share\gir-1.0 C:\Python344\share\gir-1.0
   - set PATH=%PATH%;C:\Python344\Lib\site-packages\gnome;C:\Python344\Lib\site-packages\gnome\share\gir-1.0;C:\Python344\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python344\Lib\site-packages\gi
   - set PYTHON=C:\Python344\python.exe
   - "%PYTHON% --version"
