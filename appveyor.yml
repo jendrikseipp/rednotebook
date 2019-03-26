@@ -27,27 +27,11 @@ build_script:
   - tar -xzf python34.tar.gz
   - move Python34 C:\Python34
   - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome
+  - set PYTHON=C:\Python34\python.exe
 
   # Install other dependencies.
   - "%PYTHON% -m pip install -U pip wheel"
   - "%PYTHON% -m pip install -r requirements.txt"
-  - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.17.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.28.3-cp36-cp36m-win32.whl"
-
-  # Pyenchant wheels bundle DLLs. The bundled DLLs are incompatible to the
-  # DLLs we use and lead to the error "ImportError: DLL load failed: The
-  # specified procedure could not be found." when calling "import gi".
-  # Therefore, we remove the bundled DLLs and put our own DLLs in the
-  # places where pyenchant and PyInstaller expect them.
-  - rm C:/Python36/Lib/site-packages/enchant/*.dll
-  - rm C:/Python36/Lib/site-packages/enchant/lib/enchant/*.dll
-  - cp C:/gtk/bin/libenchant.dll C:/Python36/Lib/site-packages/enchant
-  - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python36/Lib/site-packages/enchant/lib/enchant/
-
-  # Remove bundled dictionaries and install custom ones.
-  - rm -r C:/Python36/Lib/site-packages/enchant/share/enchant
-  - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
-  - tar -xzf dicts.tar.gz
-  - move enchant C:\Python36\Lib\site-packages\enchant\share
 
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
