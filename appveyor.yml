@@ -31,6 +31,8 @@ build_script:
   - "%PYTHON% --version"
   - set PYTHONPATH=C:\Python34\Lib\site-packages;C:\Python34\Lib\site-packages\gnome;C:\Python34\Lib\site-packages\gnome\share\gir-1.0;C:\Python34\Lib\site-packages\gnome\lib\girepository-1.0;C:\Python34\Lib\site-packages\gi
   - '%PYTHON% -c "help(\"modules\")"'
+  - dir C:\Python34\Lib\site-packages
+  - dir C:\Python34\Lib\site-packages\gi
 
   # Install other dependencies.
   - "%PYTHON% -m pip install -U pip==19.0.3 wheel==0.33.1"
