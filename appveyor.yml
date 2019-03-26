@@ -46,7 +46,7 @@ build_script:
   - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m PyInstaller --debug --additional-hooks-dir=. sampleapp.py"
   # Use clean PATH to check that everything has been copied correctly.
-  - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem && dist\sampleapp\sampleapp.exe"
+  #- cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem && dist\sampleapp\sampleapp.exe"
 
   # Create executable.
   - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec"
