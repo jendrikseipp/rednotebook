@@ -1,7 +1,6 @@
 cefpython3==66.0
 pyenchant==2.0.0
 pefile==2018.8.8
-pygobject==3.32.0
 pyinstaller==3.3.1
 pypiwin32==219
 PyYAML==3.13

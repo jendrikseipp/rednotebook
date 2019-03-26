@@ -29,6 +29,8 @@ build_script:
   - set PATH=%PATH%;C:\Python34\Lib\site-packages\gnome
   - set PYTHON=C:\Python34\python.exe
   - "%PYTHON% --version"
+  - set PYTHONPATH
+  - '%PYTHON% -c "help(\"modules\")"'
 
   # Install other dependencies.
   - "%PYTHON% -m pip install -U pip==19.0.3 wheel==0.33.1"
