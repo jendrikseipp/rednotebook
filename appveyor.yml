@@ -32,6 +32,8 @@ build_script:
   - "%PYTHON% --version"
 
   # Update some of the dependencies in the tarball.
+  # PyInstaller 3.3.1 and 3.4 both produce executables flagged by Windows.
+  # pip 19.1 will be the last pip version supporting Python 3.4.
   - "%PYTHON% -m pip install -U pip==19.0.3 wheel==0.33.1"
   - "%PYTHON% -m pip install -r requirements.txt"
 
