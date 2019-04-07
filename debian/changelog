@@ -1,3 +1,10 @@
+rednotebook (2.11.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Always initialize spell checking whenever we switch text buffers (fixes #435).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 07 Apr 2019 13:24:38 +0200
+
 rednotebook (2.11-1) UNRELEASED; urgency=low
 
   * New upstream release
