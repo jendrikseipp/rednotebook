@@ -1,3 +1,6 @@
+== 2.11.1 (2019-04-07) ==
+* Always initialize spell checking whenever we switch text buffers (fixes #435).
+
 == 2.11 (2019-03-26) ==
 * Revert to GTK 3.18 stack on Windows (fixes #429 and #430).
 

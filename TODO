@@ -7,7 +7,6 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Always initialize spell checking whenever we switch text buffers (fixes #435).
 O Remove imports.py.
 O Update Github README file.
 O Check for latest version during startup by default.
