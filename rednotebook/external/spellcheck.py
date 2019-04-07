@@ -260,12 +260,6 @@ class SpellChecker(object):
         have associated a new GtkTextBuffer with the GtkTextView call this
         method.
         """
-        if _pygobject:
-            self._misspelled = gtk.TextTag.new('{}-misspelled'\
-                                               .format(self._prefix))
-        else:
-            self._misspelled = gtk.TextTag('{}-misspelled'.format(self._prefix))
-        self._misspelled.set_property('underline', 4)
         self._buffer = self._view.get_buffer()
         self._buffer.connect('insert-text', self._before_text_insert)
         self._buffer.connect_after('insert-text', self._after_text_insert)
@@ -279,7 +273,18 @@ class SpellChecker(object):
                        'click' : SpellChecker._Mark(self._buffer,
                            '{}-click'.format(self._prefix), start)}
         self._table = self._buffer.get_tag_table()
-        self._table.add(self._misspelled)
+
+        # JS: Don't add "misspelled" tag if it's already present.
+        misspelled_tag_name = '{}-misspelled'.format(self._prefix)
+        self._misspelled = self._table.lookup(misspelled_tag_name)
+        if not self._misspelled:
+            if _pygobject:
+                self._misspelled = gtk.TextTag.new(misspelled_tag_name)
+            else:
+                self._misspelled = gtk.TextTag(misspelled_tag_name)
+            self._misspelled.set_property('underline', 4)
+            self._table.add(self._misspelled)
+
         self.ignored_tags = []
         def tag_added(tag, *args):
             if hasattr(tag, 'spell_check') and not getattr(tag, 'spell_check'):

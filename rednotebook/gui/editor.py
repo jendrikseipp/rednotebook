@@ -70,8 +70,7 @@ class Editor(GObject.GObject):
     def replace_buffer(self, buffer):
         self.day_text_view.set_buffer(buffer)
         # Initialize buffer only if it is new.
-        if self._spell_checker and not buffer.get_tag_table().lookup(
-                'gtkspellchecker-misspelled'):
+        if self._spell_checker:
             self._spell_checker.buffer_initialize()
         self._connect_undo_signals()
         self._can_undo_redo_changed()
