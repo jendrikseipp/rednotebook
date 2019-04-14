@@ -30,7 +30,7 @@ except (ImportError, ValueError) as err:
     WebKit2 = None
     if not filesystem.IS_WIN:
         logging.info(
-            'WebKit2Gtk+ 4.0 (gir1.2-webkit2-4.0) not found. Please install'
+            'WebKit2Gtk 4.0 (gir1.2-webkit2-4.0) not found. Please install'
             ' it if you want in-app previews. Error message: "{}"'.format(err))
 
 

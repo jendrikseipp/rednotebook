@@ -11,9 +11,9 @@ Latex or PDF.
 See `debian/control` for Debian and Ubuntu package names.
 
   * Python (>= 3.4): https://www.python.org
-  * GTK+ (>= 3.18): https://www.gtk.org
+  * GTK (>= 3.18): https://www.gtk.org
   * GtkSourceView (>= 3.18): https://wiki.gnome.org/Projects/GtkSourceView
-  * WebKitGTK+ (>= 2.16, not needed for Windows): https://webkitgtk.org
+  * WebKitGTK (>= 2.16, not needed for Windows): https://webkitgtk.org
   * PyYAML (>= 3.10): https://pyyaml.org
 
 Recommended libraries:

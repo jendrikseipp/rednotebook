@@ -155,7 +155,7 @@ try:
     from gi.repository import GObject
 except (ImportError, AssertionError) as e:
     logging.error(e)
-    logging.error('GTK+ not found. Please install it (gir1.2-gtk-3.0).')
+    logging.error('GTK not found. Please install it (gir1.2-gtk-3.0).')
     sys.exit(1)
 
 GObject.threads_init()

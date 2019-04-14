@@ -147,7 +147,7 @@ O Color submenu in format menu with additional color picker and color highlighti
   preview as well)
 - Image resizing with PIL (The width parameter is more useful)
 - Use attributes for formatting glade strings for easier translation
-  (requires gtk+-2.16 and does not make much sense now that all strings have been translated)
+  (requires GTK 2.16 and does not make much sense now that all strings have been translated)
 - Move the "update application" command into the help menu (central place for the checking is better)
 - Use a custom config.t2t per diary (https://sourceforge.net/apps/phpbb/rednotebook/viewtopic.php?f=3&t=126)
   (This will be overkill for most users and having a data subdirectory for images etc. will suffice)
