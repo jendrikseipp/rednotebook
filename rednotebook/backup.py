@@ -26,7 +26,7 @@ from gi.repository import Gtk
 
 
 DATE_FORMAT = '%Y-%m-%d'
-MAX_BACKUP_AGE = 30
+MAX_BACKUP_AGE = 7
 BACKUP_NOW = 100
 ASK_NEXT_TIME = 200
 NEVER_ASK_AGAIN = 300
