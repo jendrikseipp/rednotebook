@@ -24,6 +24,7 @@ from gi.repository import Gtk
 from rednotebook.gui import customwidgets
 from rednotebook.util import filesystem
 from rednotebook.util import dates
+from rednotebook.util import urls
 
 
 MENUITEMS_XML = '''\
@@ -230,7 +231,7 @@ class InsertMenu:
 
                 # On windows firefox accepts absolute filenames only
                 # with the file:// prefix
-                base = filesystem.get_local_url(base)
+                base = urls.get_local_url(base)
 
                 lines.append('[%s""%s""%s%s]' % (sel_text, base, ext, width_text))
 
@@ -250,7 +251,7 @@ class InsertMenu:
             if folder:
                 dirs.last_file_dir = folder
             filename = file_chooser.get_filename()
-            filename = filesystem.get_local_url(filename)
+            filename = urls.get_local_url(filename)
             sel_text = self.main_window.day_text_field.get_selected_text()
             _, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s

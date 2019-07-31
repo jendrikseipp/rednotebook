@@ -28,6 +28,7 @@ from gi.repository import Pango
 from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
 from rednotebook.util import filesystem
+from rednotebook.util import urls
 
 
 # Linebreaks are only allowed at line ends
@@ -316,7 +317,7 @@ def _convert_paths(txt, data_dir):
             path = os.path.join(data_dir, path)
             assert os.path.isabs(path), path
             if os.path.exists(path):
-                uri = filesystem.get_local_url(path)
+                uri = urls.get_local_url(path)
         return uri
 
     def _convert_pic_path(match):
