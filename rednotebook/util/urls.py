@@ -87,6 +87,5 @@ def is_internal_uri(uri):
 
 def process_internal_uri(journal, uri):
     uri = urllib.parse.urlparse(uri)
-    logging.debug("Parsed internal URI: %s", uri)
     date = get_date_from_date_string(uri.path)
     journal.change_date(date)
