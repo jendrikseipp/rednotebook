@@ -52,6 +52,40 @@ def test_images():
         assert location == expected
 
 
+def test_reference_links_in_xhtml():
+    test_cases = (
+        ('[Named 2019-08-01]', '<a href="notebook:2019-08-01">Named</a>'),
+        ('2019-08-01', '<a href="notebook:2019-08-01">2019-08-01</a>'),
+    )
+
+    for markup, expected_xhtml in test_cases:
+        document = convert(markup, 'xhtml', '/tmp')
+        assert expected_xhtml in document
+
+
+def test_reference_links_in_html():
+    test_cases = (
+        ('[Named 2019-08-01]', '<A HREF="notebook:2019-08-01">Named</A>'),
+        ('2019-08-01', '<A HREF="notebook:2019-08-01">2019-08-01</A>'),
+    )
+
+    for markup, expected_html in test_cases:
+        document = convert(markup, 'html', '/tmp')
+        assert expected_html in document
+
+
+def test_reference_links_in_tex():
+    test_cases = (
+        ('[Named 2019-08-01]', 'Named (2019-08-01)'),
+        ('Today is 2019-08-01 - a wonderful day', 'Today is 2019-08-01 - a wonderful day'),
+    )
+
+    for markup, expected_tex in test_cases:
+        document = convert(markup, 'tex', '/tmp')
+        print(document)
+        assert expected_tex in document
+
+
 def test_images_latex():
     vals = [
         ('[""/image"".png?50]', '\\includegraphics[width=50px]{"/image".png}'),
