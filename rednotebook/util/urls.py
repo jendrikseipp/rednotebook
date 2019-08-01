@@ -2,10 +2,13 @@ import logging
 import os
 import subprocess
 import sys
-import urllib.parse
 import webbrowser
+import urllib.parse
+from rednotebook.util.dates import get_date_from_date_string
 
 from rednotebook.util.filesystem import IS_WIN, system_call
+
+INTERNAL_URI_SCHEMA = 'notebook'
 
 
 def get_local_url(url):
@@ -76,3 +79,14 @@ def open_url(url):
         _open_url_with_call(url, 'open')
     else:
         _open_url_with_call(url, 'xdg-open')
+
+
+def is_internal_uri(uri):
+    return uri.startswith(INTERNAL_URI_SCHEMA)
+
+
+def process_internal_uri(journal, uri):
+    uri = urllib.parse.urlparse(uri)
+    logging.debug("Parsed internal URI: %s", uri)
+    date = get_date_from_date_string(uri.path)
+    journal.change_date(date)

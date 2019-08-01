@@ -538,7 +538,10 @@ class MainWindow:
                 uri = action.get_request().get_uri()
                 logging.info('Clicked URI "%s"' % uri)
 
-                urls.open_url(uri)
+                if urls.is_internal_uri(uri):
+                    urls.process_internal_uri(self.journal, uri)
+                else:
+                    urls.open_url(uri)
 
                 decision.ignore()
 
