@@ -168,6 +168,26 @@ your computer. Those can be inserted manually however (``[Home
 ""file:///home/""]`` becomes [Home ""file:///home/""]).
 
 
+== Entry references ==
+
+You can reference days in your notebook by simply writing date in
+YYYY-MM-DD format. Such date will be rendered as a link which can
+be clicked in the preview mode.
+
+Alternative notation (similar to one used with links) can be used to
+explicitly name your references, for instance:
+
+  ``[Today 2019-02-14] was a good day``
+
+will be shown as:
+
+  [Today 2019-02-14] was a good day
+
+Note: Reference links are valid only in the preview mode,
+if you try to open it in browser, you will likely get ``Unknown protocol``
+error.
+
+
 == %(templates)s ==
 
 %(temp_par)s
