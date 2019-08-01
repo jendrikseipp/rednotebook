@@ -82,10 +82,19 @@ def open_url(url):
 
 
 def is_internal_uri(uri):
+    '''
+    Check if provided URI should be handled by the app internally or
+    passed to external program/system to open.
+    '''
     return uri.startswith(INTERNAL_URI_SCHEMA)
 
 
 def process_internal_uri(journal, uri):
+    '''
+    Change displayed day to one specified in the URI
+
+    TODO: This handler could also be used for hashtag-related, navigation.
+    '''
     uri = urllib.parse.urlparse(uri)
     date = get_date_from_date_string(uri.path)
     journal.change_date(date)

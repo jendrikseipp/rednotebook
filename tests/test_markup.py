@@ -82,7 +82,6 @@ def test_reference_links_in_tex():
 
     for markup, expected_tex in test_cases:
         document = convert(markup, 'tex', '/tmp')
-        print(document)
         assert expected_tex in document
 
 
