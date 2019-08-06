@@ -2,10 +2,10 @@ import logging
 import os
 import subprocess
 import sys
-import webbrowser
 import urllib.parse
-from rednotebook.util.dates import get_date_from_date_string
+import webbrowser
 
+from rednotebook.util.dates import get_date_from_date_string
 from rednotebook.util.filesystem import IS_WIN, system_call
 
 INTERNAL_URI_SCHEMA = 'notebook'
@@ -42,7 +42,6 @@ def open_url_in_browser(url):
 
 
 def unquote_url(url):
-    import urllib.parse
     return urllib.parse.unquote(url)
 
 
