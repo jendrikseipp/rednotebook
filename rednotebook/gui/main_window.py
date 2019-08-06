@@ -39,8 +39,8 @@ from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import dates
 from rednotebook.util import markup
-from rednotebook.util import utils
 from rednotebook.util import urls
+from rednotebook.util import utils
 from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui import browser
