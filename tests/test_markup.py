@@ -54,7 +54,7 @@ def test_images():
 
 def test_reference_links_in_xhtml():
     test_cases = (
-        ('[Named 2019-08-01]', '<a href="notebook:2019-08-01">Named</a>'),
+        ('[Named reference 2019-08-01]', '<a href="notebook:2019-08-01">Named reference</a>'),
         ('2019-08-01', '<a href="notebook:2019-08-01">2019-08-01</a>'),
     )
 
@@ -65,7 +65,7 @@ def test_reference_links_in_xhtml():
 
 def test_reference_links_in_html():
     test_cases = (
-        ('[Named 2019-08-01]', '<A HREF="notebook:2019-08-01">Named</A>'),
+        ('[Named reference 2019-08-01]', '<A HREF="notebook:2019-08-01">Named reference</A>'),
         ('2019-08-01', '<A HREF="notebook:2019-08-01">2019-08-01</A>'),
     )
 
@@ -76,7 +76,7 @@ def test_reference_links_in_html():
 
 def test_reference_links_in_tex():
     test_cases = (
-        ('[Named 2019-08-01]', 'Named (2019-08-01)'),
+        ('[Named reference 2019-08-01]', 'Named reference (2019-08-01)'),
         ('Today is 2019-08-01 - a wonderful day', 'Today is 2019-08-01 - a wonderful day'),
     )
 
