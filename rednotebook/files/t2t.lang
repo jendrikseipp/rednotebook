@@ -50,8 +50,8 @@
     <style id="link-url" name="Link URL"/>
     <style id="link-text" name="Link Text" map-to="t2t:url"/>
     <style id="hashtag" name="Hashtag"/>
-    <style id="entryReference" name="Entry reference"/>
-    <style id="entryReference-text" name="Entry reference display text" map-to="t2t:url"/>
+    <style id="entry-reference" name="Entry reference"/>
+    <style id="entry-reference-text" name="Entry reference display text" map-to="t2t:url"/>
   </styles>
 
   <definitions>
@@ -254,15 +254,15 @@
       <match>(^|[^\w&amp;#])(#|＃)(?![0-9A-F]{6}|include)(\w*[^\W\d_]+\w*)</match>
     </context>
 
-    <context id="entryReference" style-ref="entryReference">
+    <context id="entry-reference" style-ref="entry-reference">
       <match>\d{4}-\d{2}-\d{2}</match>
     </context>
 
-    <context id="named-entryReference">
+    <context id="named-entry-reference">
       <match>\[([^]]+) (\d{4}-\d{2}-\d{2})\]</match>
       <include>
-        <context sub-pattern="1" style-ref="entryReference-text"/>
-        <context sub-pattern="2" style-ref="entryReference"/>
+        <context sub-pattern="1" style-ref="entry-reference-text"/>
+        <context sub-pattern="2" style-ref="entry-reference"/>
       </include>
     </context>
 
