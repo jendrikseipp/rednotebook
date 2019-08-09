@@ -287,8 +287,8 @@
         <context ref="bare-url"/>
         <context ref="bare-email"/>
         <context ref="hashtag"/>
-        <context ref="entryReference"/>
-        <context ref="named-entryReference"/>
+        <context ref="entry-reference"/>
+        <context ref="named-entry-reference"/>
       </include>
     </context>
   </definitions>
