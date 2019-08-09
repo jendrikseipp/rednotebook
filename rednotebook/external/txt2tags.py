@@ -788,8 +788,6 @@ def getTags(config):
             'urlMark'              : '<htmlurl url="\a" name="\a">'        ,
             'email'                : '<htmlurl url="mailto:\a" name="\a">' ,
             'emailMark'            : '<htmlurl url="mailto:\a" name="\a">' ,
-            'entryReference'       : '<htmlurl url="notebook:\a" name="\a">',
-            'entryReferenceMark'   : '<htmlurl url="notebook:\a" name="\a">',
             'img'                  : '<figure><ph vspace=""><img src="\a"></figure>',
             'tableOpen'            : '<table><tabular ca="~C~">'           ,
             'tableClose'           : '</tabular></table>' ,

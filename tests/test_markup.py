@@ -63,17 +63,6 @@ def test_reference_links_in_xhtml():
         assert expected_xhtml in document
 
 
-def test_reference_links_in_html():
-    test_cases = (
-        ('[Named reference 2019-08-01]', '<A HREF="notebook:2019-08-01">Named reference</A>'),
-        ('2019-08-01', '<A HREF="notebook:2019-08-01">2019-08-01</A>'),
-    )
-
-    for markup, expected_html in test_cases:
-        document = convert(markup, 'html', '/tmp')
-        assert expected_html in document
-
-
 def test_reference_links_in_tex():
     test_cases = (
         ('[Named reference 2019-08-01]', 'Named reference (2019-08-01)'),
