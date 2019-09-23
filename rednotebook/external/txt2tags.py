@@ -2193,8 +2193,9 @@ def Savefile(file_path, contents):
         f = open(file_path, 'wb')
     except:
         Error(_("Cannot open file for writing:") + ' ' + file_path)
-    if type(contents) == type([]):
+    if isinstance(contents, list):
         doit = f.writelines
+        contents = [line.encode('utf-8') for line in contents]
     else:
         doit = f.write
     doit(contents)
