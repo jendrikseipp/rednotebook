@@ -3,7 +3,7 @@
 # http://txt2tags.org
 #
 # Copyright 2001-2010 Aurelio Jargas
-# Copyright 2010-2017 Jendrik Seipp
+# Copyright 2010-2019 Jendrik Seipp
 #
 # This file is based on txt2tags version 2.6, but has been modified for
 # RedNotebook. The changes compared to the upstream version are:
@@ -3774,13 +3774,10 @@ class BlockMaster:
     def _get_escaped_hold(self):
         ret = []
         for line in self.hold():
-            linetype = type(line)
-            if linetype == type(''):
-                ret.append(self._last_escapes(line))
-            elif linetype == type([]):
+            if isinstance(line, list):
                 ret.extend(line)
             else:
-                Error("BlockMaster: Unknown HOLD item type: %s" % linetype)
+                ret.append(self._last_escapes(line))
         return ret
 
     def _remove_twoblanks(self, lastitem):
