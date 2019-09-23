@@ -9,7 +9,7 @@
 # RedNotebook. The changes compared to the upstream version are:
 #
 #   * use spaces instead of tabs
-#   * port to Python 3
+#   * support Python 3.6+ in addition to Python 2.7
 #   * don't escape underscores in tagged and raw LaTeX text
 #   * don't use locale-dependent str.capitalize()
 #   * support SVG images
