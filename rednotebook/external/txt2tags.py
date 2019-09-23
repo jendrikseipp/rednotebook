@@ -2190,8 +2190,8 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
 
 def Savefile(file_path, lines):
     try:
-        with open(file_path, 'wb') as f:
-            f.writelines(line.encode('utf-8') for line in lines)
+        with open(file_path, "w") as f:
+            f.writelines(lines)
     except IOError:
         Error(_("Cannot open file for writing:") + ' ' + file_path)
 
