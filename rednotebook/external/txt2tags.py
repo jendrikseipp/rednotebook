@@ -2188,18 +2188,12 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     Message(_("File read (%d lines): %s") % (len(data), file_path), 2)
     return data
 
-def Savefile(file_path, contents):
+def Savefile(file_path, lines):
     try:
-        f = open(file_path, 'wb')
-    except:
+        with open(file_path, 'wb') as f:
+            f.writelines(line.encode('utf-8') for line in lines)
+    except IOError:
         Error(_("Cannot open file for writing:") + ' ' + file_path)
-    if isinstance(contents, list):
-        doit = f.writelines
-        contents = [line.encode('utf-8') for line in contents]
-    else:
-        doit = f.write
-    doit(contents)
-    f.close()
 
 def showdic(dic):
     for k in dic.keys(): print("%15s : %s" % (k,dic[k]))
