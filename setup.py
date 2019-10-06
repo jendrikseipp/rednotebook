@@ -43,6 +43,7 @@ from rednotebook import info
 
 MSGFMT = os.path.join(DIR, 'rednotebook', 'external', 'msgfmt.py')
 
+
 def build_translation_files(po_dir, locale_dir):
     assert os.path.isdir(po_dir), po_dir
     for src in sorted(glob.glob(os.path.join(po_dir, '*.po'))):
@@ -99,34 +100,32 @@ cmdclass = {
 
 
 parameters = {
-    'name'              : 'rednotebook',
-    'version'           : info.version,
-    'description'       : 'Graphical daily journal with calendar, '
-                          'templates and keyword searching',
-    'long_description'  : info.comments,
-    'author'            : info.author,
-    'author_email'      : info.author_mail,
-    'maintainer'        : info.author,
-    'maintainer_email'  : info.author_mail,
-    'url'               : info.url,
-    'license'           : "GPL",
-    'keywords'          : "journal, diary",
-    'scripts'           : ['rednotebook/rednotebook'],
-    'packages'          : ['rednotebook', 'rednotebook.external',
-                           'rednotebook.gui', 'rednotebook.util'],
-    'package_data'      : {'rednotebook':
-                           ['images/*.png', 'images/rednotebook-icon/*.png',
-                            'images/rednotebook-icon/rednotebook.svg',
-                            'files/*.cfg', 'files/*.glade', 'files/*.lang',
-                            'files/*.xml']},
-    'data_files'        : [('share/applications',
-                            ['data/rednotebook.desktop']),
-                           ('share/icons/hicolor/scalable/apps',
-                            ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
-                           ('share/metainfo',
-                            ['data/rednotebook.appdata.xml']),
-                          ],
-    'cmdclass'          : cmdclass,
+    'name': 'rednotebook',
+    'version': info.version,
+    'description': 'Graphical daily journal with calendar, templates and keyword searching',
+    'long_description': info.comments,
+    'author': info.author,
+    'author_email': info.author_mail,
+    'maintainer': info.author,
+    'maintainer_email': info.author_mail,
+    'url': info.url,
+    'license': "GPL",
+    'keywords': "journal, diary",
+    'scripts': ['rednotebook/rednotebook'],
+    'packages': ['rednotebook', 'rednotebook.external',
+                 'rednotebook.gui', 'rednotebook.util'],
+    'package_data': {'rednotebook':
+                     ['images/*.png', 'images/rednotebook-icon/*.png',
+                      'images/rednotebook-icon/rednotebook.svg',
+                      'files/*.cfg', 'files/*.glade', 'files/*.lang',
+                      'files/*.xml']},
+    'data_files': [('share/applications',
+                    ['data/rednotebook.desktop']),
+                   ('share/icons/hicolor/scalable/apps',
+                    ['rednotebook/images/rednotebook-icon/rednotebook.svg']),
+                   ('share/metainfo',
+                    ['data/rednotebook.appdata.xml'])],
+    'cmdclass': cmdclass,
 }
 
 if __name__ == '__main__':
