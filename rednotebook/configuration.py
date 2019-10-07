@@ -51,7 +51,7 @@ class Config(dict):
         'mainFrameMaximized': 0,
         'mainFrameX': None,
         'mainFrameY': None,
-        'leftDividerPosition': 250,
+        'leftDividerPosition': 260,
         'rightDividerPosition': None,
     }
 
