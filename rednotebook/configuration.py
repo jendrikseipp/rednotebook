@@ -55,14 +55,14 @@ class Config(dict):
         'rightDividerPosition': None,
     }
 
-    obsolete_keys = set([
+    obsolete_keys = {
         'useGTKMozembed', 'useWebkit', 'LD_LIBRARY_PATH',
         'MOZILLA_FIVE_HOME', 'cloudTabActive', 'mainFontSize',
         'running'
-    ])
+    }
 
     # Allow changing the value of portable only in default.cfg.
-    suppressed_keys = set(['portable', 'user_dir'])
+    suppressed_keys = {'portable', 'user_dir'}
 
     def __init__(self, config_file):
         dict.__init__(self)

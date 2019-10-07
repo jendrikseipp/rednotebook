@@ -502,7 +502,7 @@ class Journal:
             return self.days
         days = []
         for day in self.days:
-            day_tags = set(data.escape_tag(tag) for tag in day.categories)
+            day_tags = {data.escape_tag(tag) for tag in day.categories}
             if all(tag in day_tags for tag in tags):
                 days.append(day)
         return days

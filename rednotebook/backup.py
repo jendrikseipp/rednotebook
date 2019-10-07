@@ -84,7 +84,7 @@ class Archiver:
         self.journal.save_to_disk()
         data_dir = self.journal.dirs.data_dir
         archive_files = []
-        for root, dirs, files in os.walk(data_dir):
+        for root, _, files in os.walk(data_dir):
             for file in files:
                 if not file.endswith('~') and 'RedNotebook-Backup' not in file:
                     archive_files.append(os.path.join(root, file))
