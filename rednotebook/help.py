@@ -73,7 +73,7 @@ error_par = ' '.join([error1, error2])
 
 goodbye_par = _('Have a nice day!')
 
-completeWelcomeText = '''\
+complete_welcome_text = '''\
 %(greeting)s %(intro)s %(help_par)s
 
 === %(preview)s ===
@@ -90,7 +90,7 @@ completeWelcomeText = '''\
 %(goodbye_par)s''' % globals()
 
 
-welcome_day = {'text': completeWelcomeText}
+welcome_day = {'text': complete_welcome_text}
 
 multiple_entries_text = _('''\
 === Multiple entries ===
