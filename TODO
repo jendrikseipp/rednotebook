@@ -8,6 +8,7 @@ please check back with me briefly about its status.
 === Roadmap ===
 
 X Warn about outdated backups every week by default.
+X Increase default width of left panel to ensure that the calendar is fully visible.
 O Remove imports.py.
 O Update Github README file.
 O Check for latest version during startup by default.
