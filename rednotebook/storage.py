@@ -162,7 +162,7 @@ def save_months_to_disk(months, journal_dir, exit_imminent=False, saveas=False):
     Update the journal on disk and return if something had to be written.
     '''
     something_saved = False
-    for year_and_month, month in months.items():
+    for month in months.values():
         # We always need to save everything when we are "saving as".
         if month.edited or saveas:
             something_saved |= _save_month_to_disk(month, journal_dir)

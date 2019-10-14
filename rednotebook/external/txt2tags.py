@@ -3,13 +3,13 @@
 # http://txt2tags.org
 #
 # Copyright 2001-2010 Aurelio Jargas
-# Copyright 2010-2017 Jendrik Seipp
+# Copyright 2010-2019 Jendrik Seipp
 #
 # This file is based on txt2tags version 2.6, but has been modified for
 # RedNotebook. The changes compared to the upstream version are:
 #
 #   * use spaces instead of tabs
-#   * port to Python 3
+#   * support Python 3.6+ in addition to Python 2.7
 #   * don't escape underscores in tagged and raw LaTeX text
 #   * don't use locale-dependent str.capitalize()
 #   * support SVG images
@@ -2196,17 +2196,12 @@ def Readfile(file_path, remove_linebreaks=0, ignore_error=0):
     Message(_("File read (%d lines): %s") % (len(data), file_path), 2)
     return data
 
-def Savefile(file_path, contents):
+def Savefile(file_path, lines):
     try:
-        f = open(file_path, 'wb')
-    except:
+        with open(file_path, "w") as f:
+            f.writelines(lines)
+    except IOError:
         Error(_("Cannot open file for writing:") + ' ' + file_path)
-    if type(contents) == type([]):
-        doit = f.writelines
-    else:
-        doit = f.write
-    doit(contents)
-    f.close()
 
 def showdic(dic):
     for k in dic.keys(): print("%15s : %s" % (k,dic[k]))
@@ -3787,13 +3782,10 @@ class BlockMaster:
     def _get_escaped_hold(self):
         ret = []
         for line in self.hold():
-            linetype = type(line)
-            if linetype == type(''):
-                ret.append(self._last_escapes(line))
-            elif linetype == type([]):
+            if isinstance(line, list):
                 ret.extend(line)
             else:
-                Error("BlockMaster: Unknown HOLD item type: %s" % linetype)
+                ret.append(self._last_escapes(line))
         return ret
 
     def _remove_twoblanks(self, lastitem):

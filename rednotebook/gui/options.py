@@ -224,7 +224,7 @@ class OptionsDialog:
         self.categories[name] = vbox
 
     def clear(self):
-        for category, vbox in self.categories.items():
+        for vbox in self.categories.values():
             for option in vbox.get_children():
                 vbox.remove(option)
 

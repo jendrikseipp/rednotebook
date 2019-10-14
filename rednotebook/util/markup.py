@@ -157,8 +157,9 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
 
     if with_tags and categories:
         categories = [word.lower() for word in categories]
-        export_categories = dict((x, y) for (x, y) in category_content_pairs.items()
-                                 if x.lower() in categories)
+        export_categories = {
+            x: y for (x, y) in category_content_pairs.items()
+            if x.lower() in categories}
     elif with_tags and categories is None:
         # No restrictions
         export_categories = category_content_pairs
@@ -468,15 +469,15 @@ def convert_to_pango(txt, headers=None, options=None):
 
 def convert_from_pango(pango_markup):
     original_txt = pango_markup
-    replacements = dict((
-        ('<b>', '**'), ('</b>', '**'),
-        ('<i>', '//'), ('</i>', '//'),
-        ('<s>', '--'), ('</s>', '--'),
-        ('<u>', '__'), ('</u>', '__'),
-        ('&amp;', '&'),
-        ('&lt;', '<'), ('&gt;', '>'),
-        ('\n', r'\\'),
-    ))
+    replacements = {
+        '<b>': '**', '</b>': '**',
+        '<i>': '//', '</i>': '//',
+        '<s>': '--', '</s>': '--',
+        '<u>': '__', '</u>': '__',
+        '&amp;': '&',
+        '&lt;': '<', '&gt;': '>',
+        '\n': r'\\',
+    }
     for orig, repl in replacements.items():
         pango_markup = pango_markup.replace(orig, repl)
 

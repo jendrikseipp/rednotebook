@@ -382,8 +382,8 @@ class MainWindow:
         day_list = CustomListView(columns)
         overall_box.pack_start(overall_list, True, True, 0)
         day_box.pack_start(day_list, True, True, 0)
-        setattr(self.stats_dialog, 'overall_list', overall_list)
-        setattr(self.stats_dialog, 'day_list', day_list)
+        self.stats_dialog.overall_list = overall_list
+        self.stats_dialog.day_list = day_list
         for list in [overall_list, day_list]:
             list.set_headers_visible(False)
 

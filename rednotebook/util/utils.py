@@ -174,5 +174,5 @@ class StreamDuplicator:
             stream.flush()
 
     def close(self):
-        for stream in self.streams():
-            self.stream.close()
+        for stream in self.streams:
+            stream.close()

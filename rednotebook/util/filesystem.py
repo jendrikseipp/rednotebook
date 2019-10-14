@@ -108,13 +108,13 @@ class Filenames(dict):
         return os.path.isdir(path) and os.path.abspath(path) not in self.forbidden_dirs
 
     def __getattribute__(self, attr):
-        user_paths = dict((
-            ('template_dir', 'templates'),
-            ('temp_dir', 'tmp'),
-            ('default_data_dir', 'data'),
-            ('config_file', 'configuration.cfg'),
-            ('log_file', 'rednotebook.log'),
-        ))
+        user_paths = {
+            'template_dir': 'templates',
+            'temp_dir': 'tmp',
+            'default_data_dir': 'data',
+            'config_file': 'configuration.cfg',
+            'log_file': 'rednotebook.log',
+        }
 
         if attr in user_paths:
             return os.path.join(self.journal_user_dir, user_paths.get(attr))

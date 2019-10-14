@@ -1,10 +1,10 @@
 #! /bin/bash
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")"
 cd ..
 
-python3 -m pyflakes dev/whitelist.py
+python3 -m flake8 --extend-ignore=E402 dev/whitelist.py
 python3 dev/whitelist.py
 python3 -m vulture --exclude=external rednotebook dev/whitelist.py
