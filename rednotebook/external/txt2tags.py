@@ -610,7 +610,6 @@ def getTags(config):
     bar1                bar2
     url                 urlMark
     email               emailMark
-    entryReference      entryReferenceMark
     img                 imgAlignLeft  imgAlignRight  imgAlignCenter
                        _imgAlignLeft _imgAlignRight _imgAlignCenter
 
@@ -715,8 +714,6 @@ def getTags(config):
             'urlMark'              : '<A HREF="\a">\a</A>'        ,
             'email'                : '<A HREF="mailto:\a">\a</A>' ,
             'emailMark'            : '<A HREF="mailto:\a">\a</A>' ,
-            'entryReference'       : '<A HREF="notebook:\a">\a</A>',
-            'entryReferenceMark'   : '<A HREF="notebook:\a">\a</A>',
             'img'                  : '<IMG~A~ SRC="\a" BORDER="0" ALT="">',
             '_imgAlignLeft'        : ' ALIGN="left"'  ,
             '_imgAlignCenter'      : ' ALIGN="middle"',
@@ -918,8 +915,6 @@ def getTags(config):
             'urlMark'              : '\\htmladdnormallink{\a}{\a}',
             'email'                : '\\htmladdnormallink{\a}{mailto:\a}',
             'emailMark'            : '\\htmladdnormallink{\a}{mailto:\a}',
-            'entryReference'       : '\a',
-            'entryReferenceMark'   : '\a (\a)',
             'img'                  : '\\includegraphics{\a}',
             'tableOpen'            : '\\begin{center}\\begin{tabular}{|~C~|}',
             'tableClose'           : '\\end{tabular}\\end{center}',
@@ -2054,13 +2049,10 @@ def getRegexes():
     ### And now the real regexes
     #
 
-    bank['email'] = re.compile(patt_email, re.I)
+    bank['email'] = re.compile(patt_email,re.I)
 
-    patt_entry_reference = r'(?P<date>\d{4}-\d{2}-\d{2})'
-    bank['entryReference'] = re.compile(patt_entry_reference, re.I)
-
-    # email | url | entryReference
-    bank['link'] = re.compile(r'%s|%s|%s' % (retxt_url, patt_email, patt_entry_reference), re.I)
+    # email | url
+    bank['link'] = re.compile(r'%s|%s'%(retxt_url,patt_email), re.I)
 
     # \[ label | imagetag    url | email | filename \]
     bank['linkmark'] = re.compile(
@@ -4646,10 +4638,8 @@ def get_tagged_link(label, url):
     # Set link type
     if regex['email'].match(url):
         linktype = 'email'
-    elif regex['entryReference'].match(url):
-        linktype = 'entryReference'
     else:
-        linktype = 'url'
+        linktype = 'url';
 
     # Escape specials from TEXT parts
     label = doEscape(target,label)
