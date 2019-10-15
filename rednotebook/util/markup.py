@@ -228,11 +228,14 @@ def _get_config(target, options):
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
         # Named entry references
-        # TODO: comment why we doing so
+        # txt2tag will generate links to the named entry references (e.g. "[Some text 2019-10-15]").
+        # Here we just need to add our internal URI schema.
         config['postproc'].append([r'<a href="(?P<date>\d{4}-\d{2}-\d{2})">',
                                    r'<a href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>">'])
 
         # Simple (date-only) entry references
+        # For simple notation (e.g. "2019-10-15") we need to generate full link code being careful not to override
+        # already existing named links. Here we look for dates NOT preceded by our internal URI schema.
         config['postproc'].append([r'(?<!' + urls.INTERNAL_URI_SCHEMA + r':)(?P<date>\d{4}-\d{2}-\d{2})',
                                    r'<a href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>">\g<date></a>'])
 
@@ -282,6 +285,10 @@ def _get_config(target, options):
         config['postproc'].append(['end{document}', 'printindex\n\n\\\\end{document}'])
 
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
+
+        # Links to entry references are not supported in TeX export - we remove them here.
+        config['postproc'].append([r'\\htmladdnormallink{(?P<name>.+)}{(?P<date>\d{4}-\d{2}-\d{2})}',
+                                   r'\g<name> (\g<date>)'])
 
     elif target == 'txt':
         # Line breaks
