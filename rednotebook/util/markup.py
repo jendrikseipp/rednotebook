@@ -227,6 +227,15 @@ def _get_config(target, options):
         # {{red text|color:red}} -> <span style="color:red">red text</span>
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
+        # Named entry references
+        # TODO: comment why we doing so
+        config['postproc'].append([r'<a href="(?P<date>\d{4}-\d{2}-\d{2})">',
+                                   r'<a href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>">'])
+
+        # Simple (date-only) entry references
+        config['postproc'].append([r'(?<!' + urls.INTERNAL_URI_SCHEMA + r':)(?P<date>\d{4}-\d{2}-\d{2})',
+                                   r'<a href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>">\g<date></a>'])
+
     elif target == 'tex':
         config['encoding'] = 'utf8'
         config['preproc'].append(['€', 'Euro'])
