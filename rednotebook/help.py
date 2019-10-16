@@ -182,10 +182,6 @@ will be shown as
 
   [Today 2019-02-14] was a good day
 
-Note: Reference links are valid only in preview mode. If you try to
-open it in a browser, you will likely get an ``Unknown protocol``
-error.
-
 
 == %(templates)s ==
 
