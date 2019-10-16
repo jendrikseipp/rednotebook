@@ -55,7 +55,7 @@ def test_images():
 def test_reference_links_in_xhtml():
     test_cases = (
         ('[Named reference 2019-08-01]', '<a href="notebook:2019-08-01">Named reference</a>'),
-        ('Date 2019-08-01 in the sentence', 'Date <a href="notebook:2019-08-01">2019-08-01</a> in the sentence'),
+        ('An inline 2019-08-01 date', 'An inline <a href="notebook:2019-08-01">2019-08-01</a> date'),
     )
 
     for markup, expected_xhtml in test_cases:
