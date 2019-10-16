@@ -113,6 +113,7 @@
   <style name="t2t:url" underline="single" foreground="skyblue1"/>
   <style name="t2t:link-url" foreground="skyblue1"/>
   <style name="t2t:hashtag" foreground="scarletred2"/>
+  <style name="t2t:entry-reference" foreground="skyblue1"/>
   <!-- End markup additions -->
 
   <style name="diff:added-line"             foreground="chameleon3"/>
