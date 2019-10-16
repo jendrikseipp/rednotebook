@@ -230,12 +230,14 @@ def _get_config(target, options):
         # Named entry references
         # txt2tag will generate links to the named entry references (e.g. "[Some text 2019-10-15]").
         # Here we just need to add our internal URI schema.
-        config['postproc'].append([r'<a href="(?P<date>\d{4}-\d{2}-\d{2})">',
-                                   r'<a href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>">'])
+        config['postproc'].append([r'href="(?P<date>\d{4}-\d{2}-\d{2})"',
+                                   r'href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>"'])
 
         # Simple (date-only) entry references
         # For simple notation (e.g. "2019-10-15") we need to generate full link code being careful not to override
         # already existing named links. Here we look for dates NOT preceded by our internal URI schema.
+        # NOTE: When an entry reference name contains a date, this rule may occasionally generate nested links,
+        # e.g: "<a...><a...>...</a></a>", but this should not affect the user.
         config['postproc'].append([r'(?<!' + urls.INTERNAL_URI_SCHEMA + r':)(?P<date>\d{4}-\d{2}-\d{2})',
                                    r'<a href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>">\g<date></a>'])
 
