@@ -171,16 +171,16 @@ your computer. Those can be inserted manually however (``[Home
 == Entry references ==
 
 You can reference days in your journal by simply writing the date in
-YYYY-MM-DD format. Such a date will be rendered as a link which can
-be clicked in preview mode.
+YYYY-MM-DD format. A date like 2019-02-14 will be rendered as a clickable 
+link in preview mode.
 
-Alternatively, you can name your references, for instance:
+Alternatively, you can name your references. For example,
 
-  ``[Today 2019-02-14] was a good day``
+  ``[Today 2019-02-14] was a good day.``
 
 will be shown as
 
-  [Today 2019-02-14] was a good day
+  [Today 2019-02-14] was a good day.
 
 
 == %(templates)s ==
