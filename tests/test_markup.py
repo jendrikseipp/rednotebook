@@ -23,7 +23,7 @@ def touch(path):
     (r'http://site/s.php?q&c', 'http://site/s.php?q&amp;c'),
     (r'http://site/s.php?q&amp;c', 'http://site/s.php?q&amp;c'),
 ])
-def test_pango(t2t_markup,expected):
+def test_pango(t2t_markup, expected):
     pango = convert_to_pango(t2t_markup)
     assert pango == expected
     # Ampersand escaping is only needed in sourcecode, so we do not try to
