@@ -294,8 +294,8 @@ def _get_config(target, options):
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
         # Links to entry references are not supported in TeX export - we rewrite them here.
-        config['postproc'].append([r'\\htmladdnormallink{(?P<name>.+)}{(?P<date>\d{4}-\d{2}-\d{2})}',
-                                   r'\g<name> (\g<date>)'])
+        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]',
+                                  r'\g<name> (\g<date>)'])
 
     elif target == 'txt':
         # Line breaks
