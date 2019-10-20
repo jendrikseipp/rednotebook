@@ -233,18 +233,16 @@ def _get_config(target, options):
             config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
                                       r'\g<name> (\g<date>)'])
         else:
-            # txt2tag will generate links to the named entry references (e.g. "[Some text 2019-10-15]").
-            # Here we just need to add our internal URI schema.
-            config['postproc'].append([r'href="(?P<date>\d{4}-\d{2}-\d{2})"',
-                                       r'href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>"'])
+            # txt2tag will generate links to the named entry references because share common bracket notation
+            # used by the URIs. Here we just need to add our internal schema to make it a proper URI.
+            config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
+                                      r'[\g<name> ' + urls.INTERNAL_URI_SCHEMA + r':\g<date>]'])
 
-            # For simple notation (e.g. "2019-10-15") we need to generate full link code being careful
-            # not to override already existing named links.
-            # Here we look for dates NOT preceded by our internal URI schema.
-            # NOTE: When an entry reference name contains a date, this rule may generate
-            # nested links, e.g: "<a...><a...>...</a></a>", but this should not affect the user.
-            config['postproc'].append([r'(?<!' + urls.INTERNAL_URI_SCHEMA + r':)(?P<date>\d{4}-\d{2}-\d{2})',
-                                       r'<a href="' + urls.INTERNAL_URI_SCHEMA + r':\g<date>">\g<date></a>'])
+            # Stand alone dates are converted into named references where the date itself is being
+            # used as a name. For example:
+            # "Today is 2019-10-20" will be converted into "Today is [2019-10-20 notebook:2019-10-20]"
+            config['preproc'].append([r'(?<!:|\[)(?P<date>\d{4}-\d{2}-\d{2})',
+                                      r'[\g<date> ' + urls.INTERNAL_URI_SCHEMA + r':\g<date>]'])
 
     elif target == 'tex':
         config['encoding'] = 'utf8'

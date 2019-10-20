@@ -255,11 +255,11 @@
     </context>
 
     <context id="entry-reference" style-ref="entry-reference">
-      <match>\d{4}-\d{2}-\d{2}</match>
+      <match>(([^:\[])|^)\d{4}-\d{2}-\d{2}</match>
     </context>
 
     <context id="named-entry-reference">
-      <match>\[([^]]+) (\d{4}-\d{2}-\d{2})\]</match>
+      <match>\[(.+)\s+(\d{4}-\d{2}-\d{2})\s*\]</match>
       <include>
         <context sub-pattern="1" style-ref="entry-reference-text"/>
         <context sub-pattern="2" style-ref="entry-reference"/>
