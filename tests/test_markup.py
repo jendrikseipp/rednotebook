@@ -3,7 +3,7 @@ import re
 import pytest
 
 from rednotebook.util.markup import convert_to_pango, convert_from_pango, \
-    convert, _convert_paths
+    convert, _convert_paths, get_markup_for_day
 
 
 def touch(path):
@@ -61,6 +61,15 @@ def test_reference_links_in_xhtml(markup, expected_xhtml, tmp_path):
     assert expected_xhtml in document
 
 
+@pytest.mark.parametrize("markup,expected_xhtml", [
+    ('Simple [named reference 2019-08-01]', 'Simple <a href="#2019-08-01">named reference</a>'),
+    ('An inline 2019-08-01 date', 'An inline <a href="#2019-08-01">2019-08-01</a> date'),
+])
+def test_reference_links_are_present_in_html_export(markup, expected_xhtml, tmp_path):
+    document = convert(markup, 'xhtml', tmp_path, options={'export_to_file': True})
+    assert expected_xhtml in document
+
+
 @pytest.mark.parametrize("markup,expected_tex", [
     ('This is a [named reference 2019-08-01]', 'This is a named reference (2019-08-01)'),
     ('Today is 2019-08-01 - a wonderful day', 'Today is 2019-08-01 - a wonderful day'),
@@ -105,3 +114,15 @@ def test_absolute_path_conversion(tmp_path):
 
     for path in abs_paths:
         assert path == _convert_paths(path, tmp_path)
+
+
+def test_html_export_contains_day_fragment_reference_element(tmp_path):
+    from rednotebook.data import Day, Month
+    from datetime import date
+    date = date(2019, 10, 21)
+    day = Day(Month(date.year, date.month), date.day)
+
+    txt2tag_markup = get_markup_for_day(day, date=date.strftime("%d-%m-%Y"))
+    html_document = convert(txt2tag_markup, 'xhtml', tmp_path, options={'export_to_file': True})
+
+    assert (r'id="%s"' % date.strftime("%Y-%m-%d")) in html_document
