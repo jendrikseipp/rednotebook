@@ -2,13 +2,13 @@ import logging
 import os
 import subprocess
 import sys
+import re
 import urllib.parse
 import webbrowser
 
-from rednotebook.util.dates import get_date_from_date_string
 from rednotebook.util.filesystem import IS_WIN, system_call
 
-INTERNAL_URI_SCHEMA = 'notebook'
+ENTRY_REFERENCE_URI_PATTERN = re.compile(r'^file:///#(?P<date>\d{4}-\d{2}-\d{2})$')
 
 
 def get_local_url(url):
@@ -80,20 +80,8 @@ def open_url(url):
         _open_url_with_call(url, 'xdg-open')
 
 
-def is_internal_uri(uri):
+def is_entry_reference_uri(uri):
     '''
-    Check if provided URI should be handled by the app internally or
-    passed to external program/system to open.
+    Check if provided URI was generated from an entry reference.
     '''
-    return uri.startswith(INTERNAL_URI_SCHEMA)
-
-
-def process_internal_uri(journal, uri):
-    '''
-    Change displayed day to one specified in the URI
-
-    TODO: This handler could also be used for hashtag-related, navigation.
-    '''
-    uri = urllib.parse.urlparse(uri)
-    date = get_date_from_date_string(uri.path)
-    journal.change_date(date)
+    return ENTRY_REFERENCE_URI_PATTERN.match(uri)

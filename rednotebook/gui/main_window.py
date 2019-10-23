@@ -21,6 +21,7 @@ from collections import OrderedDict
 import datetime
 import logging
 import os
+import urllib.parse
 from unittest import mock
 
 from gi.repository import Gdk
@@ -538,8 +539,8 @@ class MainWindow:
                 uri = action.get_request().get_uri()
                 logging.info('Clicked URI "%s"' % uri)
 
-                if urls.is_internal_uri(uri):
-                    urls.process_internal_uri(self.journal, uri)
+                if urls.is_entry_reference_uri(uri):
+                    self.navigate_to_referenced_entry(uri)
                 else:
                     urls.open_url(uri)
 
@@ -547,6 +548,11 @@ class MainWindow:
 
         # Stop processing this event.
         return True
+
+    def navigate_to_referenced_entry(self, entry_reference_uri):
+        entry_reference_uri = urllib.parse.urlparse(entry_reference_uri)
+        date = dates.get_date_from_date_string(entry_reference_uri.fragment)
+        self.journal.change_date(date)
 
     def get_new_journal_dir(self, title, message):
         dir_chooser = self.builder.get_object('dir_chooser')
