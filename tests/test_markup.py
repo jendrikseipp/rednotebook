@@ -1,4 +1,5 @@
 import re
+
 import pytest
 
 from rednotebook.util.markup import convert_to_pango, convert_from_pango, \

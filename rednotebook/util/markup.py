@@ -233,8 +233,8 @@ def _get_config(target, options):
             config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
                                       r'\g<name> (\g<date>)'])
         else:
-            # txt2tag will generate links to the named entry references because share common bracket notation
-            # used by the URIs. Here we just need to add our internal schema to make it a proper URI.
+            # txt2tags will generate links to the named entry references because they share common bracket
+            # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
             config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
                                       r'[\g<name> ' + urls.INTERNAL_URI_SCHEMA + r':\g<date>]'])
 
