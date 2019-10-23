@@ -7,6 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Allow linking between days with dates like 2019-02-14 and [named links 2019-02-14] (Paweł Żukowski).
 X Warn about outdated backups every week by default.
 X Increase default width of left panel to ensure that the calendar is fully visible.
 O Remove imports.py.
@@ -53,6 +54,7 @@ O Use Gtk.Application.
 O Don't store regexes in Cloud class.
 O Don't store link_dict, but use names directly in HTML in Cloud class.
 O Require mimimum width for calendar panel to avoid hiding it by accident.
+O Check that the Euro symbol can be used on Windows.
 
 
 O Remove right-side tags panel:
