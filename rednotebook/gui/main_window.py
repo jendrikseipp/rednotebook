@@ -21,6 +21,7 @@ from collections import OrderedDict
 import datetime
 import logging
 import os
+import urllib.parse
 from unittest import mock
 
 from gi.repository import Gdk
@@ -39,6 +40,7 @@ from rednotebook import info
 from rednotebook import templates
 from rednotebook.util import dates
 from rednotebook.util import markup
+from rednotebook.util import urls
 from rednotebook.util import utils
 from rednotebook.gui import categories
 from rednotebook.gui.exports import ExportAssistant
@@ -536,12 +538,21 @@ class MainWindow:
             if action.is_user_gesture():
                 uri = action.get_request().get_uri()
                 logging.info('Clicked URI "%s"' % uri)
-                filesystem.open_url(uri)
+
+                if urls.is_entry_reference_uri(uri):
+                    self.navigate_to_referenced_entry(uri)
+                else:
+                    urls.open_url(uri)
 
                 decision.ignore()
 
         # Stop processing this event.
         return True
+
+    def navigate_to_referenced_entry(self, entry_reference_uri):
+        entry_reference_uri = urllib.parse.urlparse(entry_reference_uri)
+        date = dates.get_date_from_date_string(entry_reference_uri.fragment)
+        self.journal.change_date(date)
 
     def get_new_journal_dir(self, title, message):
         dir_chooser = self.builder.get_object('dir_chooser')

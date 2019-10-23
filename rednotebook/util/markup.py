@@ -28,6 +28,7 @@ from gi.repository import Pango
 from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
 from rednotebook.util import filesystem
+from rednotebook.util import urls
 
 
 # Linebreaks are only allowed at line ends
@@ -182,8 +183,7 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
 
 
 def _get_config(target, options):
-
-    config = {}
+    is_exporting_to_file = options.get('export_to_file', False)
 
     # Set the configuration on the 'config' dict.
     config = txt2tags.ConfigMaster()._get_defaults()
@@ -225,6 +225,24 @@ def _get_config(target, options):
 
         # {{red text|color:red}} -> <span style="color:red">red text</span>
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
+
+        # Entry references
+        if is_exporting_to_file:
+            # When exporting we need to remove entry reference links because
+            # they are only valid within our app.
+            config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
+                                      r'\g<name> (\g<date>)'])
+        else:
+            # txt2tags will generate links to the named entry references because they share common bracket
+            # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
+            config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
+                                      r'[\g<name> #\g<date>]'])
+
+            # Stand alone dates are converted into named references where the date itself is being
+            # used as a name. For example:
+            # "Today is 2019-10-20" will be converted into "Today is [2019-10-20 notebook:2019-10-20]"
+            config['preproc'].append([r'(?<!#|\[|_)(?P<date>\d{4}-\d{2}-\d{2})',
+                                      r'[\g<date> #\g<date>]'])
 
     elif target == 'tex':
         config['encoding'] = 'utf8'
@@ -273,6 +291,10 @@ def _get_config(target, options):
 
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
+        # Links to entry references are not supported in TeX export - we rewrite them here.
+        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]',
+                                  r'\g<name> (\g<date>)'])
+
     elif target == 'txt':
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '\n'])
@@ -317,7 +339,7 @@ def _convert_paths(txt, data_dir):
             path = os.path.join(data_dir, path)
             assert os.path.isabs(path), path
             if os.path.exists(path):
-                uri = filesystem.get_local_url(path)
+                uri = urls.get_local_url(path)
         return uri
 
     def _convert_pic_path(match):

@@ -168,6 +168,21 @@ your computer. Those can be inserted manually however (``[Home
 ""file:///home/""]`` becomes [Home ""file:///home/""]).
 
 
+== Entry references ==
+
+You can reference days in your journal by simply writing the date in
+YYYY-MM-DD format. A date like 2019-02-14 will be rendered as a clickable
+link in preview mode.
+
+Alternatively, you can name your references. For example,
+
+  ``[Today 2019-02-14] was a good day.``
+
+will be shown as
+
+  [Today 2019-02-14] was a good day.
+
+
 == %(templates)s ==
 
 %(temp_par)s
