@@ -96,10 +96,10 @@ def test_relative_path_conversion(tmp_path):
     tmp_path_uri = 'file://' + str(tmp_path)
 
     rel_paths = [
-        ('[""file://rel"".jpg]', '[""%s/rel"".jpg]' % tmp_path_uri),
-        ('[""rel"".jpg]', '[""%s/rel"".jpg]' % tmp_path_uri),
-        ('[rel.pdf ""file://rel.pdf""]', '[rel.pdf ""%s/rel.pdf""]' % tmp_path_uri),
-        ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""%s/rel.pdf""]' % tmp_path_uri)
+        ('[""file://rel"".jpg]', '[""{}/rel"".jpg]'.format(tmp_path_uri)),
+        ('[""rel"".jpg]', '[""{}/rel"".jpg]'.format(tmp_path_uri)),
+        ('[rel.pdf ""file://rel.pdf""]', '[rel.pdf ""{}/rel.pdf""]'.format(tmp_path_uri)),
+        ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""{}/rel.pdf""]'.format(tmp_path_uri))
     ]
 
     for markup, expected in rel_paths:
@@ -108,8 +108,8 @@ def test_relative_path_conversion(tmp_path):
 
 def test_absolute_path_conversion(tmp_path):
     abs_paths = [
-        '[""file:///abs"".jpg]', '[""%s/aha 1"".jpg]' % tmp_path,
-        '[abs.pdf ""file:///abs.pdf""]', '[abs.pdf ""%s/abs.pdf""]' % tmp_path,
+        '[""file:///abs"".jpg]', '[""{}/aha 1"".jpg]'.format(tmp_path),
+        '[abs.pdf ""file:///abs.pdf""]', '[abs.pdf ""{}/abs.pdf""]'.format(tmp_path),
         'www.google.com', 'www.google.com/page.php']
 
     for path in abs_paths:
@@ -118,11 +118,11 @@ def test_absolute_path_conversion(tmp_path):
 
 def test_html_export_contains_day_fragment_reference_element(tmp_path):
     from rednotebook.data import Day, Month
-    from datetime import date
-    date = date(2019, 10, 21)
+    import datetime
+    date = datetime.date(2019, 10, 21)
     day = Day(Month(date.year, date.month), date.day)
 
     txt2tag_markup = get_markup_for_day(day, date=date.strftime("%d-%m-%Y"))
     html_document = convert(txt2tag_markup, 'xhtml', tmp_path, options={'export_to_file': True})
 
-    assert (r'id="%s"' % date.strftime("%Y-%m-%d")) in html_document
+    assert r'id="{:%Y-%m-%d}"'.format(date) in html_document
