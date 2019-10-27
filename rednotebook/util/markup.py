@@ -295,11 +295,15 @@ def _get_config(target, options):
 
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
+        config['preproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2}) ', r''])
+
         # Links to entry references are not supported in TeX export - we rewrite them here.
         config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]',
                                   r'\g<name> (\g<date>)'])
 
     elif target == 'txt':
+        config['preproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2}) ', r''])
+
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '\n'])
 
