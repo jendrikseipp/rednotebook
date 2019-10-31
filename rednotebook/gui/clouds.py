@@ -112,18 +112,12 @@ class Cloud(browser.HtmlView):
         # TODO: Avoid using an instance variable here.
         self.link_index = 0
 
-        def get_word(word_and_freq):
-            word, freq = word_and_freq
-            return locale.strxfrm(word)
-
         tags_count_dict = list(self.get_categories_counter().items())
         self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
-        self.tags.sort(key=get_word)
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
             word_count_dict, self.regexes_ignore, self.regexes_include)
-        self.words.sort(key=get_word)
 
         self.link_dict = self.tags + self.words
         html = self.get_clouds(self.words, self.tags)
@@ -157,9 +151,17 @@ class Cloud(browser.HtmlView):
             self.link_index += 1
         return '\n'.join(html_elements)
 
+    @staticmethod
+    def _get_collated_word(word_and_freq):
+        word, freq = word_and_freq
+        return locale.strxfrm(word)
+
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
-        return [(tag, freq) for (tag, freq) in tag_count_dict
-                if not any(pattern.match(tag) for pattern in ignores)]
+        tags_and_frequencies = [(tag, freq) for (tag, freq) in tag_count_dict
+                                if not any(pattern.match(tag) for pattern in ignores)]
+        tags_and_frequencies.sort(key=self._get_collated_word)
+        tag_display_limit = self.journal.config.read('tagDisplayLimit')
+        return tags_and_frequencies[-tag_display_limit:]
 
     def _get_words_for_cloud(self, word_count_dict, ignores, includes):
         # filter short words
@@ -176,7 +178,9 @@ class Cloud(browser.HtmlView):
         # only take the longest words. If there are less words than n,
         # len(words) words are returned
         words.sort(key=frequency)
-        return words[-CLOUD_WORDS:]
+        words = words[-CLOUD_WORDS:]
+        words.sort(key=self._get_collated_word)
+        return words
 
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)
