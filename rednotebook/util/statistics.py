@@ -88,6 +88,8 @@ class Statistics:
         self.journal.save_old_day()
         self.days = self.journal.days
 
+        dialog.show_all()
+
         day_store = dialog.day_list.get_model()
         day_store.clear()
         for key, value in self.day_pairs:
@@ -98,6 +100,5 @@ class Statistics:
         for key, value in self.overall_pairs:
             overall_store.append((key, str(value)))
 
-        dialog.show_all()
         dialog.run()
         dialog.hide()
