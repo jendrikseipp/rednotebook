@@ -1,4 +1,4 @@
-import re
+import sys
 
 import pytest
 
@@ -31,63 +31,6 @@ def test_pango(t2t_markup, expected):
     # preserve the encoding
     if '&amp;' not in t2t_markup:
         assert convert_from_pango(pango) == t2t_markup
-
-
-@pytest.mark.parametrize("markup,expected", [
-    ('[""/image"".png?50]',
-     '<img align="middle" width="50" src="/image.png" border="0" alt=""/>'),
-    ('[""/image"".jpg]',
-     '<img align="middle" src="/image.jpg" border="0" alt=""/>'),
-    ('[""file:///image"".png?10]',
-     '<img align="middle" width="10" src="file:///image.png" border="0" alt=""/>'),
-    ('[""file:///image"".jpg]', '<img align="middle" '
-                                'src="file:///image.jpg" border="0" '
-                                'alt=""/>'),
-])
-def test_images(markup, expected, tmp_path):
-    html = convert(markup, 'xhtml', tmp_path)
-    location = re.search(r'(<img.*?>)', html).group(1)
-    assert location == expected
-
-
-@pytest.mark.parametrize("markup,expected_xhtml", [
-    ('Simple [named reference 2019-08-01]', 'Simple <a href="#2019-08-01">named reference</a>'),
-    ('An inline 2019-08-01 date', 'An inline <a href="#2019-08-01">2019-08-01</a> date'),
-    ('2019-10-20 is first', '<a href="#2019-10-20">2019-10-20</a> is first'),
-    ('(2019-10-20)', '(<a href="#2019-10-20">2019-10-20</a>)')
-])
-def test_reference_links_in_xhtml(markup, expected_xhtml, tmp_path):
-    document = convert(markup, 'xhtml', tmp_path)
-    assert expected_xhtml in document
-
-
-@pytest.mark.parametrize("markup,expected_xhtml", [
-    ('Simple [named reference 2019-08-01]', 'Simple <a href="#2019-08-01">named reference</a>'),
-    ('An inline 2019-08-01 date', 'An inline <a href="#2019-08-01">2019-08-01</a> date'),
-])
-def test_reference_links_are_present_in_html_export(markup, expected_xhtml, tmp_path):
-    document = convert(markup, 'xhtml', tmp_path, options={'export_to_file': True})
-    assert expected_xhtml in document
-
-
-@pytest.mark.parametrize("markup,expected_tex", [
-    ('This is a [named reference 2019-08-01]', 'This is a named reference (2019-08-01)'),
-    ('Today is 2019-08-01 - a wonderful day', 'Today is 2019-08-01 - a wonderful day'),
-])
-def test_reference_links_in_tex(markup, expected_tex, tmp_path):
-    document = convert(markup, 'tex', tmp_path)
-    assert expected_tex in document
-
-
-@pytest.mark.parametrize("markup,expected", [
-    ('[""/image"".png?50]', '\\includegraphics[width=50px]{"/image".png}'),
-    ('[""/image"".jpg]', '\\includegraphics{"/image".jpg}'),
-    ('[""file:///image"".png?10]', '\\includegraphics[width=10px]{"/image".png}'),
-    ('[""file:///image"".jpg]', '\\includegraphics{"/image".jpg}'),
-])
-def test_images_latex(markup, expected, tmp_path):
-    latex = convert(markup, 'tex', tmp_path)
-    assert expected in latex
 
 
 def test_relative_path_conversion(tmp_path):
@@ -126,3 +69,278 @@ def test_html_export_contains_day_fragment_reference_element(tmp_path):
     html_document = convert(txt2tag_markup, 'xhtml', tmp_path, options={'export_to_file': True})
 
     assert r'id="{:%Y-%m-%d}"'.format(date) in html_document
+
+
+class TestGetXHtmlExportConfig:
+    @staticmethod
+    @pytest.fixture
+    def process(tmp_path):
+        def process(markup):
+            html_document = convert(markup, 'xhtml', tmp_path, options={'export_to_file': True})
+            return html_document.split('\n')
+        return process
+
+    def test_encoding(self, process):
+        document = process("Content")
+        assert '      encoding="UTF-8"' in document
+
+    def test_firefox_encoding_bug(self, process):
+        document = process("Content")
+        assert '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' in document
+
+    def test_toc(self, process):
+        document = process("Content")
+        assert '<div class="toc">' not in document
+
+    def test_css_sugar(self, process):
+        document = process("Content")
+        assert '<div class="body" id="body">' in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('content \\\\ ', 'content <br />'),
+        ('content\\\\', 'content<br />'),
+        ('content\\\\ ', 'content<br />'),
+    ])
+    def test_line_break_escaping(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('#TAG', r'<span style="color:red">#TAG</span>'),
+        ('Numeric #3tag', r'Numeric <span style="color:red">#3tag</span>'),
+        ('Just #34 numbers', r'Just #34 numbers'),
+    ])
+    def test_hashtags(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('{Sky|color:blue}', r'<span style="color:blue">Sky</span>'),
+        ('{Red|color:#FF0000} firetruck', r'<span style="color:#FF0000">Red</span> firetruck'),
+    ])
+    def test_colors(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('[""/image"".png?50]',
+         '<img align="middle" width="50" src="/image.png" border="0" alt=""/>'),
+        ('[""/image"".jpg?50]',
+         '<img align="middle" width="50" src="/image.jpg" border="0" alt=""/>'),
+        ('[""/image"".jpeg?50]',
+         '<img align="middle" width="50" src="/image.jpeg" border="0" alt=""/>'),
+        ('[""/image"".gif?50]',
+         '<img align="middle" width="50" src="/image.gif" border="0" alt=""/>'),
+        ('[""/image"".eps?50]',
+         '<img align="middle" width="50" src="/image.eps" border="0" alt=""/>'),
+        ('[""/image"".bmp?50]',
+         '<img align="middle" width="50" src="/image.bmp" border="0" alt=""/>'),
+        ('[""/image"".svg?50]',
+         '<img align="middle" width="50" src="/image.svg" border="0" alt=""/>'),
+    ])
+    def test_images_resize_allowed_extensions(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('[""/image"".png?50]',
+         '<img align="middle" width="50" src="/image.png" border="0" alt=""/>'),
+        ('[""/image"".jpg]',
+         '<img align="middle" src="/image.jpg" border="0" alt=""/>'),
+        ('[""file:///image"".png?10]',
+         '<img align="middle" width="10" src="file:///image.png" border="0" alt=""/>'),
+        ('[""file:///image"".jpg]', '<img align="middle" '
+                                    'src="file:///image.jpg" border="0" '
+                                    'alt=""/>'),
+    ])
+    def test_images_width_resize(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('Simple [named reference 2019-08-01]', 'Simple <a href="#2019-08-01">named reference</a>'),
+        ('An inline 2019-08-01 date', 'An inline <a href="#2019-08-01">2019-08-01</a> date'),
+        ('2019-10-20 is first', '<a href="#2019-10-20">2019-10-20</a> is first'),
+        ('(2019-10-20)', '(<a href="#2019-10-20">2019-10-20</a>)')
+    ])
+    def test_entry_reference_links(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    def test_mathjax(self, process):
+        document = process('$$x^3$$')
+        assert r'<script type="text/x-mathjax-config">' in document
+
+
+class TestGetTexExportConfig:
+    @staticmethod
+    @pytest.fixture
+    def process(tmp_path):
+        def process(markup):
+            html_document = convert(markup, 'tex', tmp_path, options={'export_to_file': True})
+            return html_document.split('\n')
+        return process
+
+    def test_encoding(self, process):
+        document = process("Content")
+        assert r'\usepackage[utf8]{inputenc}  % char encoding' in document
+
+    def test_euro_replacement(self, process):
+        document = process("€")
+        assert 'Euro' in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        (r'[""file/path"".png]', r'\includegraphics{"file/path".png}'),
+    ])
+    def test_path_escape(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.skipif(sys.platform != "win32", reason="Windows-specific")
+    def test_image_scheme_fix_win32(self, process):
+        document = process('[""file:///image"".png]')
+        assert r'\includegraphics{"image".png}' in document
+
+    @pytest.mark.skipif(sys.platform == "win32", reason="POSIX-specific")
+    def test_image_scheme_fix_posix(self, process):
+        document = process('[""file://image"".png]')
+        assert r'\includegraphics{"image".png}' in document
+
+    @pytest.mark.skipif(sys.platform != "win32", reason="Windows-specific")
+    def test_file_scheme_fix_win32(self, process):
+        document = process('[file.txt file:///path/to/text/file.txt]')
+        assert r'\htmladdnormallink{file.txt}{run:path/to/text/file.txt}' in document
+
+    @pytest.mark.skipif(sys.platform == "win32", reason="POSIX-specific")
+    def test_file_scheme_fix_posix(self, process):
+        document = process('[file.txt file://path/to/text/file.txt]')
+        assert r'\htmladdnormallink{file.txt}{run:path/to/text/file.txt}' in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('content \\\\ ', 'content \\\\'),
+        ('content\\\\', 'content\\\\'),
+        ('content\\\\ ', 'content\\\\'),
+    ])
+    def test_line_break_escaping(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('#TAG', r'\textcolor{red}{\#TAG\index{TAG}}'),
+        ('Numeric #3tag', r'Numeric \textcolor{red}{\#3tag\index{3tag}}'),
+        ('Just #34 numbers', r'Just \#34 numbers'),
+        ('#include <iostream>', r'\#include $<$iostream$>$'),
+        # TODO: ('#define FOO BAR', r'\#define FOO BAR'),
+        ('Blue: #0000FF', r'Blue: \#0000FF'),
+    ])
+    def test_hashtags(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('[""image"".png?50]', '\\includegraphics[width=50px]{"image".png}'),
+        ('[""image"".jpg]', '\\includegraphics{"image".jpg}'),
+    ])
+    def test_images_width_resize(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        (r'\[f(x) = x^2\]', '$$f(x) = x^2$$'),
+        (r'$$f(x) = x^2$$', '$$f(x) = x^2$$'),
+    ])
+    def test_latex_equation_escape_display_mode(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        (r'\(f(x) = x^2\)', '$f(x) = x^2$'),
+    ])
+    def test_latex_equation_escape_inline_mode(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        (r'„content”', '"content"'),
+        (r'”content“', '"content"'),
+    ])
+    def test_quotation_mark_replacement(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('{Sky|color:blue}', r'\textcolor{blue}{Sky}'),
+        ('{Red|color:#FF0000} firetruck', r'\textcolor{\#FF0000}{Red} firetruck'),
+    ])
+    def test_colors(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    def test_index_generation(self, process):
+        document = process("content")
+        assert r'\usepackage{makeidx}  % user defined' in document
+        assert r'\makeindex' in document
+        assert r'\printindex' in document
+
+    def test_tags_are_collected_for_index_generation(self, process):
+        document = process("#tag")
+        assert r'\index{tag}' in "".join(document)
+
+    def test_date_anchor_removal(self, process):
+        document = process("DATE_ANCHOR_PLACEHOLDER_2019-10-30 ")
+        assert r'DATE_ANCHOR_PLACEHOLDER_2019-10-30 ' not in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('This is a [named reference 2019-08-01]', 'This is a named reference (2019-08-01)'),
+        ('Today is 2019-08-01 - a wonderful day', 'Today is 2019-08-01 - a wonderful day'),
+    ])
+    def test_entry_reference_links(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+
+class TestGetPlainTextExportConfig:
+    @staticmethod
+    @pytest.fixture
+    def process(tmp_path):
+        def process(markup):
+            html_document = convert(markup, 'txt', tmp_path, options={'export_to_file': True})
+            return html_document.split('\n')
+        return process
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('content \\\\ ', 'content '),
+        ('content\\\\', 'content'),
+        ('content\\\\ ', 'content'),
+    ])
+    def test_line_break_escaping(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('{Sky|color:blue}', r'Sky'),
+        ('{Red|color:#FF0000} firetruck', r'Red firetruck'),
+    ])
+    def test_colors(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('[image.png?50]', '[image.png?50]'),
+        ('[image.jpg]', '[image.jpg]'),
+    ])
+    def test_images_width_resize(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document
+
+    def test_date_anchor_removal(self, process):
+        document = process("DATE_ANCHOR_PLACEHOLDER_2019-10-30 ")
+        assert r'DATE_ANCHOR_PLACEHOLDER_2019-10-30 ' not in document
+
+    @pytest.mark.parametrize("markup,expected", [
+        ('This is a [named reference 2019-08-01]', 'This is a named reference (2019-08-01)'),
+        ('Today is 2019-08-01 - a wonderful day', 'Today is 2019-08-01 - a wonderful day'),
+    ])
+    def test_entry_reference_links(self, markup, expected, process):
+        document = process(markup)
+        assert expected in document

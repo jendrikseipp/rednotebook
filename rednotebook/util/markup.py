@@ -187,8 +187,6 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
 
 
 def _get_config(target, options):
-    is_exporting_to_file = options.get('export_to_file', False)
-
     # Set the configuration on the 'config' dict.
     config = txt2tags.ConfigMaster()._get_defaults()
 
@@ -231,11 +229,10 @@ def _get_config(target, options):
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
         # Entry references
-        if is_exporting_to_file:
-            # `get_markup_for_day` will generate placeholders which we need to override in order to create
-            # anchor targets for entry reference links to point to.
-            config['postproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2})',
-                                      r'<span id="\g<date>"></span>'])
+        # `get_markup_for_day` will generate placeholders which we need to override in order to create
+        # anchor targets for entry reference links to point to.
+        config['postproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2})',
+                                  r'<span id="\g<date>"></span>'])
 
         # txt2tags will generate links to the named entry references because they share common bracket
         # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
@@ -325,11 +322,11 @@ def _get_config(target, options):
     if options.pop('add_mathjax'):
         config['postproc'].append([r'</body>', MATHJAX + '</body>'])
 
-    config['postproc'].append([r'</body>', PRINT_FUNCTION + '</body>'])
+    config['postproc'].append([r'</body>', PRINT_FUNCTION + '</body>'])  # TODO: remove
 
     # Custom css
     fonts = options.pop('font', 'sans-serif')
-    if 'html' in target:
+    if 'html' in target:  # TODO: it seems that 'html' target is never used
         css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
         config['postproc'].append([r'</head>', css + '</head>'])
 
