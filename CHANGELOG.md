@@ -1,65 +1,65 @@
-== 2.12 (2019-11-02) ==
-* Allow linking between days with dates like 2019-02-14 and [named links 2019-02-14] (#176, #444, Paweł Żukowski).
+# 2.12 (2019-11-02)
+* Allow linking between days with dates like 2019-02-14 and `[named links 2019-02-14]` (#176, #444, Paweł Żukowski).
 * Allow opening statistics dialog multiple times in one session (#370, #457, Paweł Żukowski).
 * Warn about outdated backups every week by default.
 * Increase default width of left panel to ensure that the calendar is fully visible (#376).
 
-== 2.11.1 (2019-04-07) ==
+# 2.11.1 (2019-04-07)
 * Always initialize spell checking whenever we switch text buffers (fixes #435).
 
-== 2.11 (2019-03-26) ==
+# 2.11 (2019-03-26)
 * Revert to GTK 3.18 stack on Windows (fixes #429 and #430).
 
-== 2.10 (2019-03-24) ==
+# 2.10 (2019-03-24)
 * Automatically push newest version to flathub.
 
-== 2.9.1 (2019-03-20) ==
+# 2.9.1 (2019-03-20)
 * Disable internal preview on Windows again since it sometimes crashes the app.
 
-== 2.9 (2019-03-17) ==
+# 2.9 (2019-03-17)
 * Use Python 3.6 and GTK 3.22 on Windows.
 * Build Windows installer with Appveyor.
 
-== 2.8.1 (2019-03-17) ==
+# 2.8.1 (2019-03-17)
 * Load the correct template for a given weekday (fixes #416).
 * Clear text buffers when opening a new journal (fixes #421).
 * Minor bug fixes.
 
-== 2.8 (2018-11-15) ==
+# 2.8 (2018-11-15)
 * Support internal previews on Windows again (#369).
 
-== 2.7.1 (2018-11-13) ==
+# 2.7.1 (2018-11-13)
 * Never let search phrases end up in the main text field (fixes #401).
 * Fix spell checking (fixes #412).
 
-== 2.7 (2018-11-06) ==
+# 2.7 (2018-11-06)
 * Use GtkSourceView for editor to obtain better undo/redo functionality (thanks @takluyver).
 * When saving, update the list of tags in the auto-complete list for the search.
 * Fix opening RedNotebook homepage from About dialog (#411).
 
-== 2.6.1 (2018-08-21) ==
+# 2.6.1 (2018-08-21)
 * Fix bug preventing new installations from starting up.
 
-== 2.6 (2018-08-20) ==
+# 2.6 (2018-08-20)
 * Move date format option to preferences dialog.
 * Use date format option for date in titlebar.
 * Remember selected date format for exports between sessions.
 * Check remote info.py file for latest version number.
 * Check for latest version in separate thread.
 
-== 2.5 (2018-06-08) ==
+# 2.5 (2018-06-08)
 * Restore instant search (search as you type).
 * Add option for disabling instant search to preferences dialog.
 * Disable undo/redo buttons in preview mode (fixes #103).
 * Remove option to show/hide right-side tags panel from GUI (still present in configuration file).
 
-== 2.4 (2018-03-07) ==
+# 2.4 (2018-03-07)
 * Make search significantly faster by indexing all days.
 * Allow searching for multiple words.
 * Add AppVersion to InnoSetup file.
 * Homepage: Switch to HTTPS.
 
-== 2.3 (2017-09-25) ==
+# 2.3 (2017-09-25)
 * Compress backups.
 * Use newer txt2tags version 2.6 and reapply changes to obtain a GPL-2+ version.
 * Remove brittle PDF export. Please export to HTML and print to PDF with browser instead.
@@ -69,72 +69,72 @@
 * Hide tags panel completely by default instead of only minimizing it.
 * Update Debian files (@kathenas).
 
-== 2.2 (2017-09-08) ==
+# 2.2 (2017-09-08)
 * Port RedNotebook 2 to Windows.
 * Windows: uninstall old version before installing new version to remove old files.
 * Windows: use Aspell for spell checking.
 * Update Debian files (@kathenas).
 
-== 2.1.5 (2017-08-09) ==
+# 2.1.5 (2017-08-09)
 * Fix debian/control.
 
-== 2.1.4 (2017-08-08) ==
+# 2.1.4 (2017-08-08)
 * Use old names for appdata and desktop files.
 
-== 2.1.3 (2017-08-06) ==
+# 2.1.3 (2017-08-06)
 * Fix creating translation files.
 
-== 2.1.2 (2017-08-03) ==
+# 2.1.2 (2017-08-03)
 * Fix "Exec" field in .desktop file.
 
-== 2.1.1 (2017-08-02) ==
+# 2.1.1 (2017-08-02)
 * Reset package name to 'rednotebook'.
 
-== 2.1 (2017-07-29) ==
+# 2.1 (2017-07-29)
 * Make webkit optional (but highly recommended). If missing, show preview in external browser.
 * Support inserting SVG images.
 * Don't switch between edit and review mode automatically by default.
 
-== 2.0 (2017-05-19) ==
+# 2.0 (2017-05-19)
 * Port to Python 3 and GTK 3.
 * Add index of tags to LaTeX export (#324, thanks Alex Schickedanz).
 * Use new CDN link for MathJax.
 
-== 1.15 (2017-02-11) ==
+# 1.15 (2017-02-11)
 * Bundle pygtkspellcheck 4.0.5 since earlier versions contain a bug (lp:1615629).
 * Fix toggling autostart (lp:1628497).
 * Set system tray icon name (lp:1660129).
 
-== 1.14 (2016-09-26) ==
+# 1.14 (2016-09-26)
 * Use new pygtkspellcheck API (lp:1592727).
 * Fix conversion from old single "Tags" category to new tags format.
 
-== 1.13 (2016-06-17) ==
+# 1.13 (2016-06-17)
 * When selecting a journal directory, show all journal directories by default (thanks Paul Jackson).
 * Allow ampersands in e-mail addresses (lp:1570476, thanks pdofak).
 * python-gtkspell has been renamed to python-gtkspellcheck. Update docs and debian/control accordingly.
 
-== 1.12 (2016-03-28) ==
+# 1.12 (2016-03-28)
 * Add option to hide right-hand tags pane (thanks Ron Brown, Jr.).
 * Never overwrite externally changed month files (thanks Felix Zörgiebel).
 * Remove support for Python 2.6.
 
-== 1.11 (2015-11-08) ==
+# 1.11 (2015-11-08)
 * Remind users to make new backup if last backup is older than a month.
 * When inserting a link for a selected text passage, replace text passage.
 
-== 1.10.4 (2015-10-19) ==
+# 1.10.4 (2015-10-19)
 * Fix right-clicking cloud words to hide them.
 
-== 1.10.3 (2015-10-15) ==
+# 1.10.3 (2015-10-15)
 * Make #hashtags regular expression faster (up to 1000x).
 
-== 1.10.2 (2015-08-24) ==
+# 1.10.2 (2015-08-24)
 * Fix Chinese fonts in preview mode on Windows by using the fonts mingliu and MS Mincho (thanks Amos Ng).
 * Fix instructions for running RedNotebook on Windows (thanks Amos Ng).
 * Move repository from launchpad to github.
 
-== 1.10.1 (2015-04-14) ==
+# 1.10.1 (2015-04-14)
 * When undoing a formatting action, only remove formatting, not the text (lp:1326606).
 * Fix searching with enter for text with non-ASCII characters (lp:1430697).
 * Fix filtering exports by tags containing non-ASCII characters (lp:1267263).
@@ -142,14 +142,14 @@
 * Don't try to change spellchecking language if spellchecker is not set up (lp:1443818).
 * Don't try to access files with wrong encoding (lp:1443818).
 
-== 1.10 (2015-04-12) ==
+# 1.10 (2015-04-12)
 * Write data to temporary files first to prevent corrupted month files.
 * Add format button for monospace font. Automatically add the correct format for code blocks.
 * Show warning for dates before 1900 (not supported by Python's datetime module).
 * Fix undo/redo.
 * Don't add unneeded newlines around titles and code.
 
-== 1.9.0 (2014-12-27) ==
+# 1.9.0 (2014-12-27)
 * Add #tags to cloud ignore list to remove them from the tag cloud (thanks Przemysław Buczkowski).
 * Remove option to start RedNotebook minimized.
 * Do not remove menu bar in fullscreen mode (lp:1400356).
@@ -157,19 +157,19 @@
 * Only allow comment signs (#) at the beginning of a line in the config file.
 * Fix reading configuration files.
 
-== 1.8.1 (2014-08-03) ==
+# 1.8.1 (2014-08-03)
 * Do not show new version dialog if latest version cannot be determined (lp:1324126).
 * Fix date formatting for invalid locale encodings.
 * Add necessary library files for spell-checking on Windows (lp:1331876).
 
-== 1.8.0 (2013-12-12) ==
+# 1.8.0 (2013-12-12)
 * Add font selection for edit mode (Philip Akesson).
 * Allow changing preview and cloud font in preferences.
 * Only allow opening RedNotebook minimized on Windows since other systems may lack a system tray.
 * Fix: Display tags starting with "SEP" in preview (lp:1255582).
 * Write scripts to cross-compile RedNotebook Windows exe and installer on Linux.
 
-== 1.7.3 (2013-11-10) ==
+# 1.7.3 (2013-11-10)
 * Jump to a specific date on startup with "--date 2013-10-31" on the commandline (Rob Norris).
 * Display current date in the title bar (Rob Norris).
 * Support inserting multiple pictures in one step.
@@ -177,15 +177,15 @@
 * Fix setting last image directory for insert dialog.
 * Only allow exporting selected text if we are in edit mode (lp:1221792).
 
-== 1.7.2 (2013-06-28) ==
+# 1.7.2 (2013-06-28)
 * Show error if saving fails due to a directory not being created.
 * Ignore hashtags starting with more than one #.
 * Fix: Allow inserting files and pictures from the "recently used" section (lp:1195759).
 
-== 1.7.1 (2013-03-01) ==
+# 1.7.1 (2013-03-01)
 * Fix: Insert spellchecking correction in the correct position (LP:1137925).
 
-== 1.7.0 (2013-02-28) ==
+# 1.7.0 (2013-02-28)
 * Allow filtering exported days by tags (Alistair Marshall).
 * Add option to export only the currently selected text (Alistair Marshall).
 * Move spellcheck option from preferences to edit menu and add F7 shortcut (Alistair Marshall).
@@ -198,7 +198,7 @@
 * Fix relative file links on Windows.
 * Code: Switch from optparse to argparse (Alistair Marshall).
 
-== 1.6.6 (2013-01-21) ==
+# 1.6.6 (2013-01-21)
 * Edit templates in RedNotebook directly. Preview and use the Insert and Format toolbar menus before inserting a template.
 * Support relative image links like [""my_pic"".jpg].
 * Add Ctrl+Return shortcut for adding manual linebreaks.
@@ -210,7 +210,7 @@
 * Fix help text about links to local directories.
 * Fix: Let categories pane use new infobar notifications (LP:1098625).
 
-== 1.6.5 (2012-12-27) ==
+# 1.6.5 (2012-12-27)
 * Add menu item for clearing the text format.
 * Add toolbar menus "Insert" and "Format" to main menu for better accessibility and HUD integration.
 * Only show keyboard shortcuts in main menu, not in toolbar menus.
@@ -223,21 +223,21 @@
 * Windows: Restore slider positions after opening RedNotebook from the tray.
 * Windows: Support non-ascii installation paths.
 
-== 1.6.4 (2012-12-22) ==
+# 1.6.4 (2012-12-22)
 * Never include previous RedNotebook backups in new backups.
 * Add strikethrough shortcut Ctrl+K.
 * By default don't switch between edit and preview mode automatically.
 * Add experimental support for irc protocol.
 
-== 1.6.3 (2012-12-06) ==
+# 1.6.3 (2012-12-06)
 * Fix: Don't interpret URLs with non-empty paths as local links.
 
-== 1.6.2 (2012-11-18) ==
+# 1.6.2 (2012-11-18)
 * Add option for automatically switching between edit and preview mode to preferences.
 * Since debian doesn't have a python2 symlink, try to run python2.7 and python2.6 in the run script.
 * Use PNG image in about dialog (SVG support is broken in Windows version).
 
-== 1.6.1 (2012-11-11) ==
+# 1.6.1 (2012-11-11)
 * Allow specifying the width when inserting an image.
 * Add relative links: Relative paths [myfile image.jpg] is automatically transformed to /path/to/journal/image.jpg.
 * Use smarter regular expression for finding hashtags in the text.
@@ -247,7 +247,7 @@
 * Break search results at newlines.
 * Fix: When searching for multiple tags, only add a single result for every hit.
 
-== 1.6.0 (2012-10-31) ==
+# 1.6.0 (2012-10-31)
 * Inline #hashtagging: Directly add hashtags like #Movies, #my_project in the main text.
 * Highlight #hashtags in red.
 * Include # for tags in tag cloud to be consistent with the hashtags.
@@ -268,7 +268,7 @@
 * Add more shortcuts in Journal menu: Export (Ctrl+E), Backup and Statistics (Alt+letter).
 * Update translations.
 
-== 1.5.0 (12-07-19) ==
+# 1.5.0 (12-07-19)
 * Use new logo redesigned by Ciaran.
 * Remember possible undo/redo actions for each day separately.
 * Turn all entries of old "Tags" categories into tags without entries at startup.
@@ -288,7 +288,7 @@
 * OSX: Make the _() function available even if gettext is not working.
 * Update translations.
 
-== 1.4.0 (12-04-01) ==
+# 1.4.0 (12-04-01)
 * Search: If a search contains a hashtag (e.g. #Work or #Movies), only days
   with all of those tags will be searched. This means you can e.g. search for
   "project-xyz" only in the days tagged with "Work" with the query
@@ -308,7 +308,7 @@
 * Fix: Paths returned from file and folder choosers must be converted to unicode
 * Fix: Correctly redirect error output into the logfile on Windows
 
-== 1.3.0 (12-01-24) ==
+# 1.3.0 (12-01-24)
 * Let tags be categories without entries. This greatly simplifies and in fact
   unifies tags and categories.
 * Unify clouds and search -> Show the search bar above the clouds
@@ -332,7 +332,7 @@
 * Do not warn if second instance is suspected (too many false-positives)
 * Updated translations
 
-== 1.2.0 (11-10-05) ==
+# 1.2.0 (11-10-05)
 * Let the "Back" and "Forward" button jump over empty days
 * Allow wildcards (*,.,?) in cloud black/white lists ("altr." hides altro, altra, etc.)
 * Add "Export currently visible day" option in export assistant
@@ -368,11 +368,11 @@
   * Remove unnecessary imports
 * Updated translations
 
-== 1.1.8 (11-08-08) ==
+# 1.1.8 (11-08-08)
 * Fix: Abort startup if yaml file cannot be read to avoid losing data
 * Updated translations
 
-== 1.1.7 (11-07-13) ==
+# 1.1.7 (11-07-13)
 * Fix: Chinese characters are not correctly rendered in preview (LP:731273)
 * Fix: Screen position not correctly remembered when opened from system tray (LP:804792)
 * Fix: Date is not inserted if default encoding can not be determined
@@ -381,11 +381,11 @@
 * Code: Use smarter internationalization code from elib.intl
 * Updated translations
 
-== 1.1.6 (11-05-11) ==
+# 1.1.6 (11-05-11)
 * Fix date encoding (LP:775269)
 * Some translations updated
 
-== 1.1.5 (11-05-03) ==
+# 1.1.5 (11-05-03)
 * Remove "RedNotebook" title in exports
 * Make templates translatable
 * Fix: Inserted dates always shows the time 00:00h (LP:744624)
@@ -409,7 +409,7 @@
 * Cleanup GUI glade file
 * Many translations updated
 
-=== 1.1.3 (11-03-02) ===
+# 1.1.3 (11-03-02)
 * Remember window position from last session
 * Restore window position when returning from tray
 * Let the sub-windows be displayed relative to the main screen
@@ -423,7 +423,7 @@
 * Windows: Fix opening linked files with umlauts or other special characters
 * Code: Make pywebkitgtk an explicit requirement
 
-=== 1.1.2 (10-12-26) ===
+# 1.1.2 (10-12-26)
 * Add fullscreen mode (F11)
 * Highlight all found occurences of the searched word (LP:614353)
 * Highlight mixed markups (**__Bold underline__**)
@@ -444,7 +444,7 @@
 * Internal: Replace tabs by whitespace in source code
 * Many translations updated
 
-=== 1.1.1 (10-08-21) ===
+# 1.1.1 (10-08-21)
 * Let user delete category with 'DELETE' key (LP:608717)
 * Sort categories alphabetically (LP:612859)
 * Fix: After clicking "Change the text" on an annotation, directly edit it (LP:612861)
@@ -461,7 +461,7 @@
   * Norwegian Bokmal
 * Many translations updated
 
-=== 1.1.0 (10-08-03) ===
+# 1.1.0 (10-08-03)
 * When searching for text, search in dates too (Search for 2010-05 displays all entries of May 2010)
 * Improve checking for new version (Show version numbers)
 * Save last selected tab (Search/Clouds) (LP:590483)
@@ -483,7 +483,7 @@
   * Chinese (Traditional)
 * Many translations updated
 
-=== 1.0.0 (10-06-23) ===
+# 1.0.0 (10-06-23)
 * Describe how to add latex math formulas and custom html tags in help
 * Fix crash on windows when data and program live on different drives in portable mode (LP:581646)
 * Fix display of italic text in edit mode
@@ -491,7 +491,7 @@
 * New Translations:
   * Faroese
 
-=== 0.9.5 (10-05-11) ===
+# 0.9.5 (10-05-11)
 * Show week numbers in calendar (edit weekNumbers in config file)
 * Sort items in configuration.cfg
 * Automatically put cursor into search field, when search tab is opened
@@ -501,7 +501,7 @@
 * Get rid of Statusbar deprecation message
 * New recommended dependency: python-chardet
 
-=== 0.9.4 (10-04-29) ===
+# 0.9.4 (10-04-29)
 * Allow dragging of files and pictures into RedNotebook (Linux only)
 * Save data dir relative to application dir in portable mode
 * Remember if window was maximized
@@ -523,7 +523,7 @@
   * Brazilian Portuguese
 * Many translations updated
 
-=== 0.9.3 (10-02-23) ===
+# 0.9.3 (10-02-23)
 * Add graphical option to select webkit for previews
 * If available use webkit for clouds
 * Add context menu to the webkit clouds for hiding words
@@ -536,7 +536,7 @@
 * Many translations updated
 
 
-=== 0.9.2 (10-01-21) ===
+# 0.9.2 (10-01-21)
 * Use webkit for direct PDF export
 * Remove pdflatex (texlive) package suggestion
 * Improve menu layout
@@ -559,7 +559,7 @@
   * Dutch
   * Chinese (Simplified)
 
-=== 0.9.1 (09-12-27) ===
+# 0.9.1 (09-12-27)
 * Make markup highlighting much faster
 * Allow using webkit for previews (In the config file, set useWebkit to 1)
 * Make pywebkitgtk (python-webkit) an optional, but highly recommended dependency
@@ -567,7 +567,7 @@
 * Add comments for translators
 * Make help available online
 
-=== 0.9.0 (09-12-17) ===
+# 0.9.0 (09-12-17)
 * Markup Highlighting (a little WYSIWYG/RTF)
 * New translations:
   * Indonesian
@@ -577,7 +577,7 @@
 * Updated translations:
   * All (Yay, thanks!)
 
-=== 0.8.9 (09-10-04) ===
+# 0.8.9 (09-10-04)
 * Save your journal to a remote server (SSH, FTP and WebDAV support)
 * Do not load backup files in data directory
 * Fix "Save As"
@@ -585,7 +585,7 @@
   * Dutch
   * Polish
 
-=== 0.8.8 (09-10-23) ===
+# 0.8.8 (09-10-23)
 * Internationalization:
  * RedNotebook is now available in:
    * German
@@ -606,7 +606,7 @@
 * Add "Start minimized to tray" command line parameter
 * Add cloud words white list for short words
 
-=== 0.8.7 (2009-09-27) ===
+# 0.8.7 (2009-09-27)
 * Only save content and config when they have been changed
 * Make the UI easier to understand
   * provide more tooltips
@@ -616,10 +616,10 @@
   * cleanup template help
 * Fix "Insert this Weekday's Template"
 
-=== 0.8.6.1 (2009-09-04) ===
+# 0.8.6.1 (2009-09-04)
 * Fix duplicate naming bug (LP:424550)
 
-=== 0.8.6 (2009-09-04) ===
+# 0.8.6 (2009-09-04)
 * Added an optional tray icon
   (Closing the window sends RedNotebook to the system tray)
 * The menubar has been rewritten to support gtk+ 2.14
@@ -627,7 +627,7 @@
 * Fix calendar issue (again)
 * Fix crash on Hardy
 
-=== 0.8.5 (2009-08-29) ===
+# 0.8.5 (2009-08-29)
 * Spell Checking (not for Windows)
   (Requires gtkspell for python. This is included in the python-gnome2-extras package)
 * When a template is inserted, every occurence of "$date$" is converted to the current date
@@ -641,7 +641,7 @@
 * Fix: Allow underscores and whitespace in filenames for latex (LP:414588)
 * Fix: Reset min gtk version to 2.14
 
-=== 0.8.4 (2009-08-13) ===
+# 0.8.4 (2009-08-13)
 * Add Undu and Redo for Categories
   (Hit Ctrl-Z to restore a deleted category entry)
 * Hide cloud words with simple right-click
@@ -660,7 +660,7 @@
 * Switch from libglade to GtkBuilder (the python-glade dep can be dropped)
 * Fix undo and redo for main text
 
-=== 0.8.3 (2009-08-07) ===
+# 0.8.3 (2009-08-07)
 * New statistics dialog with daily word count. Shows number of words, lines, and chars
 * Fill some days of the journal with solutions of common question at first startup
 * Add option to restore that example content. It will be placed after the last edited day
@@ -674,7 +674,7 @@
 * Use glib.timeout_add_seconds for automatic saving for less energy consumption on laptops
 * Highlight searched words in preview too
 
-=== 0.8.2 (2009-07-28) ===
+# 0.8.2 (2009-07-28)
 * Blacklist for clouds in GUI
 * Let the search function highlight found words
 * Fix line breaks for exports
@@ -683,18 +683,18 @@
 * Fix size for insert icon by using a stock icon
 * Do not use small toolbar icon sizes (LP:405991)
 
-=== 0.8.1 (2009-07-24) ===
+# 0.8.1 (2009-07-24)
 * make font size configurable (under preferences)
 * Add line breaks (under insert menu)
 * Add a whitespace char between adjacent lines
 * Fix: Win Version should use smaller insert-image icon (16x16)
 
-=== 0.8.0 (2009-07-22) ===
+# 0.8.0 (2009-07-22)
 * Graphical preferences dialog (Under "Edit" menu)
 * Make date/time format configurable in the preferences dialog
 * Fix unicode bugs
 
-=== 0.7.6 (2009-07-15) ===
+# 0.7.6 (2009-07-15)
 * Undu and redo for the main text
 * Use libyaml for faster loading and dumping of files (Big journals now open ~10 times faster)
 * Speed improvements for navigation between days
@@ -705,37 +705,37 @@
 * Use new svn version of txt2tags
 * Fix URL and file link insertion
 
-=== 0.7.5 (2009-06-30) ===
+# 0.7.5 (2009-06-30)
 * Buttons for bold, italic, underlined text
 * Fixed hardy bug: yaml 3.05 does not have __version__ attribute
 * Removed shebangs from python modules (Closes LP:393602)
 
-=== 0.7.4 (2009-06-25) ===
+# 0.7.4 (2009-06-25)
 * Create ~/.rednotebook dir before logging is initialized (Closes LP:392235)
 * Set native theme for windows version
 
-=== 0.7.3 (2009-06-21) ===
+# 0.7.3 (2009-06-21)
 * Only save months that have been visited for a faster exit
 * Improve logging
 * Automatically create a logfile for debugging
 * Fix: Check if directory exists before opening it
 
-=== 0.7.2 (2009-05-25) ===
+# 0.7.2 (2009-05-25)
 * Choose a folder for journal (Save-As)
 * Have more than one journal (New Journal)
 * Open existing journals (Open Journal)
 
-=== 0.7.1 (2009-05-21) ===
+# 0.7.1 (2009-05-21)
 * Open and create template files from within RedNotebook
 * Live update of template list
 * Fix opening files for Win
 
-=== 0.7.0 (2009-05-19) ===
+# 0.7.0 (2009-05-19)
 * Arbitrarily named templates
 * Enable copy/paste in categories edit box
 * Live update of clouds after categories have been edited
 
-=== 0.6.9 (2009-05-05) ===
+# 0.6.9 (2009-05-05)
 * Reenable stricken text
 * Select individual categories to export
 * Export only text, or only categories, or both
@@ -749,27 +749,27 @@
   * Delete mozembed.py module (originally taken from listen-project)
 * Delete markup cruft
 
-=== 0.6.8 (2009-05-03) ===
+# 0.6.8 (2009-05-03)
 * Drop GTKMozembed dependency
   * Add keepnote modules
   * remove numbered lists
 * Minor Bugfixes
 
-=== 0.6.7 (2009-04-21) ===
+# 0.6.7 (2009-04-21)
 * Make deb package Python 2.6 compatible
 * Add yaml-parser error handling
 * Fix inserting file links containing whitespace
 
-=== 0.6.6 (2009-04-07) ===
+# 0.6.6 (2009-04-07)
 * Fix: A modified category and tag name is not modified in the category drop
   down list until you reload the application.
 * Fix: Cloud words should have the same color as text words (LP:353738)
 
-=== 0.6.5 (2009-04-01) ===
+# 0.6.5 (2009-04-01)
 * Ignore list for clouds (Mark word(s) in cloud, right-click and select "Hide")
 * Keyboard shortcuts for inserting pictures, files, links and the date
 
-=== 0.6.4 (2009-03-29) ===
+# 0.6.4 (2009-03-29)
 * Easier Tagging (Added tag button)
 * New-Entry-Dialog: Show previous tags in drop-down menu when "Tags" is selected as category
 * New-Entry-Dialog: Only make a new entry submittable, if text has been entered
@@ -777,27 +777,27 @@
 * Check xulrunner paths at startup
 * Made Windows installer
 
-=== 0.6.3 (2009-03-21) ===
+# 0.6.3 (2009-03-21)
 * Add an option to insert the current time and date
 * Save divider positions and frame size
 * Add new statistics
 * Disable GTKMozembed automatically if RedNotebook crashes
 
-=== 0.6.2 (2009-03-17) ===
+# 0.6.2 (2009-03-17)
 * Content is automatically saved every ten minutes
 * Fix Debian/Jaunty Bug (LP:340101)
 
-=== 0.6.1 (2009-03-03) ===
+# 0.6.1 (2009-03-03)
 * New types to insert: Bullet List, Numbered List, Title, Line
 
-=== 0.6.0 (2009-02-25) ===
+# 0.6.0 (2009-02-25)
 * Allow linking of files
 * Allow embedding images
 * Links and mail addresses are recognized automatically
 * Adding named links to websites is now possible
 * Better documentation
 
-=== 0.5.6 (2009-02-23) ===
+# 0.5.6 (2009-02-23)
 * Disable automatic update checking
 * Add "Check for new version" menu entry
 * Add config file and tips for packagers
@@ -805,51 +805,51 @@
 * Add copyright notice to source files
 * Add LICENSE file
 
-=== 0.5.5 (2009-02-12) ===
+# 0.5.5 (2009-02-12)
 * Make GTKMozembed optional
 * Use preview in browser if GTKMozembed not installed
 * Add browser navigation buttons to preview
 * Remove gtkhtml2 dependency
 * Add name of day to title in preview and export
 
-=== 0.5.4 (2009-02-02) ===
+# 0.5.4 (2009-02-02)
 * RedNotebook now checks for new version when it is started
 * The configuration is saved in a file when the program exits
 * The Fedora gtkmozembed bug has been fixed (LP:320492)
 
-=== 0.5.3 (2009-01-30) ===
+# 0.5.3 (2009-01-30)
 * Word, tag and category clouds
 * Catch abnormal aborts and save content to disk
 
-=== 0.5.2 (2009-01-27) ===
+# 0.5.2 (2009-01-27)
 * The Export Wizard is back again (Thanks Alexandre)
 * It is now possible to search for text, categories and tags
 
-=== 0.5.1 (2009-01-21) ===
+# 0.5.1 (2009-01-21)
 * Days can be tagged
 * Formatting text is possible
 * Bugfixes
 
-=== 0.5.0 (2009-01-19) ===
+# 0.5.0 (2009-01-19)
 * The GUI has been ported to PyGTK
 * Almost all of the features have been adapted to the new interface
 * A Preview Tab for a day's content was added
 
-=== 0.4.1 (2009-01-15) ===
+# 0.4.1 (2009-01-15)
 * Do not export empty days (Fixes Bug #314385)
 * Fix search for single digit months (Fixes Bug #312988)
 
-=== 0.4.0 (2008-12-18) ===
+# 0.4.0 (2008-12-18)
 * Export Functionality added: Text, HTML, Latex
 * Use of Configuration Files
 
-=== 0.3.0 (2008-11-29) ===
+# 0.3.0 (2008-11-29)
 * Template entries for each weekday
 * Undo & Redo
   * Ubuntu Main Menu Entry
 * Improved Documentation
 
-=== 0.2.0 (2008-11-07) ===
+# 0.2.0 (2008-11-07)
 * Word Cloud
 * Frame Icons in Multiple Resolutions
 * After adding new category, directly add new entry
@@ -857,7 +857,7 @@
 * Case-insensitive search
 * Statistics: Number of words, entries
 
-=== 0.1.0 (2008-09-23) ===
+# 0.1.0 (2008-09-23)
 * Initial Release
 * Available Features
   * Enter Day Content
