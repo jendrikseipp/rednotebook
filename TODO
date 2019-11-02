@@ -7,10 +7,6 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Allow linking between days with dates like 2019-02-14 and [named links 2019-02-14] (#176, #444, Paweł Żukowski).
-X Allow opening statistics dialog multiple times in one session (#370, #457, Paweł Żukowski).
-X Warn about outdated backups every week by default.
-X Increase default width of left panel to ensure that the calendar is fully visible (#376).
 O Remove imports.py.
 O Update Github README file.
 O Check for latest version during startup by default.

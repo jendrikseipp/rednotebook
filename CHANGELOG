@@ -1,3 +1,9 @@
+== 2.12 (2019-11-02) ==
+* Allow linking between days with dates like 2019-02-14 and [named links 2019-02-14] (#176, #444, Paweł Żukowski).
+* Allow opening statistics dialog multiple times in one session (#370, #457, Paweł Żukowski).
+* Warn about outdated backups every week by default.
+* Increase default width of left panel to ensure that the calendar is fully visible (#376).
+
 == 2.11.1 (2019-04-07) ==
 * Always initialize spell checking whenever we switch text buffers (fixes #435).
 
