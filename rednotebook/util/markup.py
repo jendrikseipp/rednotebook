@@ -241,8 +241,8 @@ def _get_config(target, options):
             # Stand alone dates are converted into named references where the date itself is being
             # used as a name. For example:
             # "Today is 2019-10-20" will be converted into "Today is [2019-10-20 notebook:2019-10-20]"
-            config['preproc'].append([r'(?<!#|\[|_)(?P<date>\d{4}-\d{2}-\d{2})',
-                                      r'[\g<date> #\g<date>]'])
+            config['preproc'].append([r'(^| )(?P<date>\d{4}-\d{2}-\d{2})',
+                                      r' [\g<date> #\g<date>]'])
 
     elif target == 'tex':
         config['encoding'] = 'utf8'
