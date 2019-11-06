@@ -156,12 +156,19 @@ class Cloud(browser.HtmlView):
         word, freq = word_and_freq
         return locale.strxfrm(word)
 
+    @staticmethod
+    def _frequency(word_and_freq):
+        word, freq = word_and_freq
+        return freq
+
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
         tags_and_frequencies = [(tag, freq) for (tag, freq) in tag_count_dict
                                 if not any(pattern.match(tag) for pattern in ignores)]
-        tags_and_frequencies.sort(key=self._get_collated_word)
+
+        # Sort by the frequency of occurrence
+        tags_and_frequencies.sort(key=self._frequency, reverse=True)
         tag_display_limit = self.journal.config.read('tagDisplayLimit')
-        return tags_and_frequencies[-tag_display_limit:]
+        return tags_and_frequencies[:tag_display_limit]
 
     def _get_words_for_cloud(self, word_count_dict, ignores, includes):
         # filter short words
@@ -171,13 +178,9 @@ class Cloud(browser.HtmlView):
                  # filter words in ignore_list
                  any(pattern.match(word) for pattern in ignores)]
 
-        def frequency(word_and_freq):
-            (word, freq) = word_and_freq
-            return freq
-
         # only take the longest words. If there are less words than n,
         # len(words) words are returned
-        words.sort(key=frequency)
+        words.sort(key=self._frequency)
         words = words[-CLOUD_WORDS:]
         words.sort(key=self._get_collated_word)
         return words
