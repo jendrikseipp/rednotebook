@@ -254,8 +254,11 @@
       <match>(^|[^\w&amp;#])(#|＃)(?![0-9A-F]{6}|include)(\w*[^\W\d_]+\w*)</match>
     </context>
 
-    <context id="entry-reference" style-ref="entry-reference">
-      <match>(([^#\[])|^)\d{4}-\d{2}-\d{2}</match>
+    <context id="entry-reference">
+      <match>\[\s*(\d{4}-\d{2}-\d{2})\s*\]</match>
+      <include>
+        <context sub-pattern="1" style-ref="entry-reference"/>
+      </include>
     </context>
 
     <context id="named-entry-reference">
