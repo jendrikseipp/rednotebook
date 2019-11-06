@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-07 13:24+0200\n"
+"POT-Creation-Date: 2019-11-02 09:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: ../rednotebook/util/markup.py:128 ../rednotebook/gui/categories.py:51
+#: ../rednotebook/util/markup.py:129 ../rednotebook/gui/categories.py:51
 #: ../rednotebook/gui/clouds.py:188 ../rednotebook/help.py:25
 msgid "Tags"
 msgstr ""
@@ -254,7 +254,7 @@ msgid "Introduction"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:350
-#: ../rednotebook/gui/main_window.py:648
+#: ../rednotebook/gui/main_window.py:659
 msgid "Template"
 msgstr ""
 
@@ -555,104 +555,104 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:68
+#: ../rednotebook/gui/insert_menu.py:69
 msgid "First Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:68
+#: ../rednotebook/gui/insert_menu.py:69
 msgid "Second Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:68
+#: ../rednotebook/gui/insert_menu.py:69
 msgid "Indented Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:69
+#: ../rednotebook/gui/insert_menu.py:70
 msgid "Two blank lines close the list"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:102
+#: ../rednotebook/gui/insert_menu.py:103
 msgid "Picture"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:103
+#: ../rednotebook/gui/insert_menu.py:104
 msgid "Insert an image from the harddisk"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:105
+#: ../rednotebook/gui/insert_menu.py:106
 msgid "File"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:106
+#: ../rednotebook/gui/insert_menu.py:107
 msgid "Insert a link to a file"
 msgstr ""
 
 #. Translators: Noun
-#: ../rednotebook/gui/insert_menu.py:109
+#: ../rednotebook/gui/insert_menu.py:110
 msgid "_Link"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:110
+#: ../rednotebook/gui/insert_menu.py:111
 msgid "Insert a link to a website"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:112
+#: ../rednotebook/gui/insert_menu.py:113
 msgid "Bullet List"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:116
+#: ../rednotebook/gui/insert_menu.py:117
 msgid "Title"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:117
+#: ../rednotebook/gui/insert_menu.py:118
 msgid "Line"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:118
+#: ../rednotebook/gui/insert_menu.py:119
 msgid "Insert a separator line"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:124
+#: ../rednotebook/gui/insert_menu.py:125
 msgid "Date/Time"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:125
+#: ../rednotebook/gui/insert_menu.py:126
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:127
+#: ../rednotebook/gui/insert_menu.py:128
 msgid "Line Break"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:128
+#: ../rednotebook/gui/insert_menu.py:129
 msgid "Insert a manual line break"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:130
+#: ../rednotebook/gui/insert_menu.py:131
 msgid "_Insert"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:152
+#: ../rednotebook/gui/insert_menu.py:153
 msgid "Insert"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:153
+#: ../rednotebook/gui/insert_menu.py:154
 msgid "Insert images, files, links and other content"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:193
+#: ../rednotebook/gui/insert_menu.py:194
 msgid "Width (optional):"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:199
+#: ../rednotebook/gui/insert_menu.py:200
 msgid "pixels"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:219
+#: ../rednotebook/gui/insert_menu.py:220
 msgid "Width must be an integer."
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:299
+#: ../rednotebook/gui/insert_menu.py:300
 msgid "No link location has been entered"
 msgstr ""
 
@@ -689,19 +689,19 @@ msgstr ""
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:176
+#: ../rednotebook/gui/main_window.py:178
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:323
+#: ../rednotebook/gui/main_window.py:325
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:561
+#: ../rednotebook/gui/main_window.py:572
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:651
+#: ../rednotebook/gui/main_window.py:662
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
