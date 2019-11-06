@@ -152,41 +152,37 @@ class Cloud(browser.HtmlView):
         return '\n'.join(html_elements)
 
     @staticmethod
-    def _get_collated_word(word_and_freq):
-        word, freq = word_and_freq
-        return locale.strxfrm(word)
-
-    @staticmethod
-    def _frequency(word_and_freq):
-        word, freq = word_and_freq
-        return freq
-
-    def _get_tags_for_cloud(self, tag_count_dict, ignores):
-        tag_display_limit = self.journal.config.read('cloudMaxTags')
-        if tag_display_limit == 0:
+    def select_most_frequent_words(words_and_frequencies, count):
+        if count == 0:
             return []
 
+        def get_collated_word(word_and_freq):
+            word, freq = word_and_freq
+            return locale.strxfrm(word)
+
+        def get_frequency(word_and_freq):
+            word, freq = word_and_freq
+            return freq
+
+        words_and_frequencies.sort(key=get_frequency, reverse=True)
+        words_and_frequencies = words_and_frequencies[:count]
+        words_and_frequencies.sort(key=get_collated_word)
+        return words_and_frequencies
+
+    def _get_tags_for_cloud(self, tag_count_dict, ignores):
         tags_and_frequencies = [(tag, freq) for (tag, freq) in tag_count_dict
                                 if not any(pattern.match(tag) for pattern in ignores)]
 
-        # Sort by the frequency of occurrence
-        tags_and_frequencies.sort(key=self._frequency, reverse=True)
-        return tags_and_frequencies[:tag_display_limit]
+        tag_display_limit = self.journal.config.read('cloudMaxTags')
+        return self.select_most_frequent_words(tags_and_frequencies, tag_display_limit)
 
     def _get_words_for_cloud(self, word_count_dict, ignores, includes):
-        # filter short words
-        words = [(word, freq) for (word, freq) in word_count_dict.items()
-                 if (len(word) > 4 or
-                 any(pattern.match(word) for pattern in includes)) and not
-                 # filter words in ignore_list
-                 any(pattern.match(word) for pattern in ignores)]
-
-        # only take the longest words. If there are less words than n,
-        # len(words) words are returned
-        words.sort(key=self._frequency)
-        words = words[-CLOUD_WORDS:]
-        words.sort(key=self._get_collated_word)
-        return words
+        words_and_frequencies = [(word, freq) for (word, freq) in word_count_dict.items()
+                                 if (len(word) > 4 or
+                                     any(pattern.match(word) for pattern in includes)) and not
+                                 # filter words in ignore_list
+                                 any(pattern.match(word) for pattern in ignores)]
+        return self.select_most_frequent_words(words_and_frequencies, CLOUD_WORDS)
 
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)

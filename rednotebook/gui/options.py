@@ -117,7 +117,7 @@ class TextOption(Option):
 
 
 class IntegerOption(Option):
-    def __init__(self, text, option_name, default=0, min_value=0, max_value=100, increment=1, **kwargs):
+    def __init__(self, text, option_name, default=0, min_value=0, max_value=1000, increment=1, **kwargs):
         Option.__init__(self, text, option_name, **kwargs)
 
         value = Option.config.read(option_name, default)

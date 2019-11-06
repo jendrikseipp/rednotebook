@@ -216,8 +216,7 @@ lists. If you want to hide words with special characters, you can
 escape them with a backslash: 3\\.50\\?
 
 You can limit the number of displayed words by tweaking the 'Tags in cloud'
-configuration option. If this option is set to 0, all words will be
-displayed.
+configuration option. If this option is set to 0, no tags are displayed.
 
 You can **hide the word cloud** by adding the regular expression .* to
 the blacklist. This will filter out all words.
