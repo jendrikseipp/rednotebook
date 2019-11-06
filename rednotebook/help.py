@@ -215,7 +215,7 @@ expressions http://docs.python.org/library/re.html] are allowed in the
 lists. If you want to hide words with special characters, you can
 escape them with a backslash: 3\\.50\\?
 
-You can limit number of displayed words by tweaking 'Tag display limit'
+You can limit the number of displayed words by tweaking the 'Tags in cloud'
 configuration option. If this option is set to 0, all words will be
 displayed.
 
