@@ -162,12 +162,15 @@ class Cloud(browser.HtmlView):
         return freq
 
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
+        tag_display_limit = self.journal.config.read('tagDisplayLimit')
+        if tag_display_limit == 0:
+            return []
+
         tags_and_frequencies = [(tag, freq) for (tag, freq) in tag_count_dict
                                 if not any(pattern.match(tag) for pattern in ignores)]
 
         # Sort by the frequency of occurrence
         tags_and_frequencies.sort(key=self._frequency, reverse=True)
-        tag_display_limit = self.journal.config.read('tagDisplayLimit')
         return tags_and_frequencies[:tag_display_limit]
 
     def _get_words_for_cloud(self, word_count_dict, ignores, includes):
