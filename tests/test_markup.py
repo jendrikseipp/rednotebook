@@ -53,8 +53,7 @@ def test_images(markup, expected, tmp_path):
 @pytest.mark.parametrize("markup,expected_xhtml", [
     ('Simple [named reference 2019-08-01]', 'Simple <a href="#2019-08-01">named reference</a>'),
     ('An inline [2019-08-01] date', 'An inline <a href="#2019-08-01">2019-08-01</a> date'),
-    ('[2019-10-20] is first', '<a href="#2019-10-20">2019-10-20</a> is first'),
-    ('Spaces [ 2019-10-20  ] are fine too', 'Spaces <a href="#2019-10-20">2019-10-20</a> are fine too')
+    ('[2019-10-20] is first', '<a href="#2019-10-20">2019-10-20</a> is first')
 ])
 def test_reference_links_in_xhtml(markup, expected_xhtml, tmp_path):
     document = convert(markup, 'xhtml', tmp_path)

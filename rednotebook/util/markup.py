@@ -241,7 +241,7 @@ def _get_config(target, options):
             # Convert bracketed dates into named references where the date itself is being used as a name.
             # For example:
             # "Today is [2019-10-20]" will be converted into "Today is [2019-10-20 #2019-10-20]"
-            config['preproc'].append([r'\[\s*(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
+            config['preproc'].append([r'\[(?P<date>\d{4}-\d{2}-\d{2})\]',
                                       r'[\g<date> #\g<date>]'])
 
     elif target == 'tex':
