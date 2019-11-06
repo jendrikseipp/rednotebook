@@ -162,7 +162,7 @@ class Cloud(browser.HtmlView):
         return freq
 
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
-        tag_display_limit = self.journal.config.read('tagDisplayLimit')
+        tag_display_limit = self.journal.config.read('cloudMaxTags')
         if tag_display_limit == 0:
             return []
 

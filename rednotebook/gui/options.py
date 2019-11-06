@@ -318,7 +318,7 @@ class OptionsManager:
                 _('Date format'), 'exportDateFormat',
                 tooltip=_('Used for dates in titlebar and exports.')
                 ),
-            IntegerOption(_('Tag display limit'), 'tagDisplayLimit',
+            IntegerOption(_('Tags in cloud'), 'cloudMaxTags',
                           tooltip=_('Maximum number of tags displayed in the cloud')),
             TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
                        tooltip=_('Do not show these comma separated words and #tags in the clouds')),

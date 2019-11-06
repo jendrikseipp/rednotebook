@@ -53,7 +53,7 @@ class Config(dict):
         'mainFrameY': None,
         'leftDividerPosition': 260,
         'rightDividerPosition': None,
-        'tagDisplayLimit': 1000,
+        'cloudMaxTags': 1000,
     }
 
     obsolete_keys = {
