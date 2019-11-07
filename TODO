@@ -7,8 +7,9 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Change unnamed date references from 2019-11-06 to [2019-11-06] (#458, #460, Paweł Żukowski)
-X Add option for controlling number of displayed tags (#456, Paweł Żukowski)
+X Change unnamed date references from 2019-11-06 to [2019-11-06] (#458, #460, Paweł Żukowski).
+X Add option for controlling number of displayed tags (#456, Paweł Żukowski).
+x Fix setting maximum number of displayed tags (#461).
 O Remove imports.py.
 O Update Github README file.
 O Check for latest version during startup by default.

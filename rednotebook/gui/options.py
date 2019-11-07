@@ -120,12 +120,13 @@ class IntegerOption(Option):
     def __init__(self, text, option_name, default=0, min_value=0, max_value=1000, increment=1, **kwargs):
         Option.__init__(self, text, option_name, **kwargs)
 
-        value = Option.config.read(option_name, default)
+        value = Option.config.read(option_name, default=default)
         value = int(value)
 
         self.spin_button = Gtk.SpinButton()
         adjustment = Gtk.Adjustment(value, min_value, max_value, increment, 10, 0)
         self.spin_button.set_adjustment(adjustment)
+        self.spin_button.set_value(value)
         self.spin_button.set_numeric(True)
         self.spin_button.set_update_policy(Gtk.SpinButtonUpdatePolicy.IF_VALID)
 
