@@ -1,3 +1,8 @@
+# 2.13 (2019-11-07)
+* Change unnamed date references from 2019-11-06 to [2019-11-06] (#458, #460, Paweł Żukowski).
+* Add option for controlling number of displayed tags (#456, Paweł Żukowski).
+* Fix setting maximum number of displayed tags (#461).
+
 # 2.12 (2019-11-02)
 * Allow linking between days with dates like 2019-02-14 and `[named links 2019-02-14]` (#176, #444, Paweł Żukowski).
 * Allow opening statistics dialog multiple times in one session (#370, #457, Paweł Żukowski).
