@@ -159,9 +159,9 @@ class TestGetXHtmlExportConfig:
 
     @pytest.mark.parametrize("markup,expected", [
         ('Simple [named reference 2019-08-01]', 'Simple <a href="#2019-08-01">named reference</a>'),
-        ('An inline 2019-08-01 date', 'An inline <a href="#2019-08-01">2019-08-01</a> date'),
-        ('2019-10-20 is first', '<a href="#2019-10-20">2019-10-20</a> is first'),
-        ('(2019-10-20)', '(<a href="#2019-10-20">2019-10-20</a>)')
+        ('An inline [2019-08-01] date', 'An inline <a href="#2019-08-01">2019-08-01</a> date'),
+        ('[2019-10-20] is first', '<a href="#2019-10-20">2019-10-20</a> is first'),
+
     ])
     def test_entry_reference_links(self, markup, expected, process):
         document = process(markup)

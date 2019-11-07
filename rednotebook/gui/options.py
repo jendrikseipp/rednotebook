@@ -116,6 +116,26 @@ class TextOption(Option):
         return self.entry.get_text()
 
 
+class IntegerOption(Option):
+    def __init__(self, text, option_name, default=0, min_value=0, max_value=1000, increment=1, **kwargs):
+        Option.__init__(self, text, option_name, **kwargs)
+
+        value = Option.config.read(option_name, default=default)
+        value = int(value)
+
+        self.spin_button = Gtk.SpinButton()
+        adjustment = Gtk.Adjustment(value, min_value, max_value, increment, 10, 0)
+        self.spin_button.set_adjustment(adjustment)
+        self.spin_button.set_value(value)
+        self.spin_button.set_numeric(True)
+        self.spin_button.set_update_policy(Gtk.SpinButtonUpdatePolicy.IF_VALID)
+
+        self.pack_start(self.spin_button, True, True, 0)
+
+    def get_value(self):
+        return self.spin_button.get_value_as_int()
+
+
 class ComboBoxOption(Option):
     def __init__(self, text, name, entries, tooltip=''):
         Option.__init__(self, text, name, tooltip=tooltip)
@@ -299,6 +319,8 @@ class OptionsManager:
                 _('Date format'), 'exportDateFormat',
                 tooltip=_('Used for dates in titlebar and exports.')
                 ),
+            IntegerOption(_('Tags in cloud'), 'cloudMaxTags',
+                          tooltip=_('Maximum number of tags displayed in the cloud')),
             TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
                        tooltip=_('Do not show these comma separated words and #tags in the clouds')),
             TextOption(_('Include small words in cloud'), 'cloudIncludeList',

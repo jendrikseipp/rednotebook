@@ -171,7 +171,7 @@ your computer. Those can be inserted manually however (``[Home
 == Entry references ==
 
 You can reference days in your journal by simply writing the date in
-YYYY-MM-DD format. A date like 2019-02-14 will be rendered as a clickable
+[YYYY-MM-DD] format. A date like [2019-02-14] will be rendered as a clickable
 link in preview mode.
 
 Alternatively, you can name your references. For example,
@@ -214,6 +214,9 @@ with less than five letters can be white-listed there as well. [Regular
 expressions http://docs.python.org/library/re.html] are allowed in the
 lists. If you want to hide words with special characters, you can
 escape them with a backslash: 3\\.50\\?
+
+You can limit the number of displayed words by tweaking the 'Tags in cloud'
+configuration option. If this option is set to 0, no tags are displayed.
 
 You can **hide the word cloud** by adding the regular expression .* to
 the blacklist. This will filter out all words.
