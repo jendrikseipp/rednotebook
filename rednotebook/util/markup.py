@@ -227,8 +227,6 @@ def _get_config(target, options):
         # {{red text|color:red}} -> <span style="color:red">red text</span>
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
-
-
         # Custom css
         fonts = options.pop('font', 'sans-serif')
         css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
