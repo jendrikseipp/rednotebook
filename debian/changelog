@@ -1,3 +1,12 @@
+rednotebook (2.13-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Change unnamed date references from 2019-11-06 to [2019-11-06] (#458, #460, Paweł Żukowski).
+  * Add option for controlling number of displayed tags (#456, Paweł Żukowski).
+  * Fix setting maximum number of displayed tags (#461).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 07 Nov 2019 12:05:17 +0100
+
 rednotebook (2.12-1) UNRELEASED; urgency=low
 
   * New upstream release
