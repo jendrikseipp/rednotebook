@@ -50,7 +50,6 @@ COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
 TABLE_HEAD_BG = '#aaa'
 
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
-PRINT_FUNCTION = '<script></script>'
 
 CSS = """\
 <style type="text/css">
@@ -246,6 +245,15 @@ def _get_config(target, options):
         config['preproc'].append([r'\[(?P<date>\d{4}-\d{2}-\d{2})\]',
                                   r'[\g<date> #\g<date>]'])
 
+        # Custom css
+        fonts = options.pop('font', 'sans-serif')
+        css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
+        config['postproc'].append([r'</head>', css + '</head>'])
+
+        # MathJax
+        if options.pop('add_mathjax'):
+            config['postproc'].append([r'</body>', MATHJAX + '</body>'])
+
     elif target == 'tex':
         config['encoding'] = 'utf8'
         config['preproc'].append(['€', 'Euro'])
@@ -279,6 +287,7 @@ def _get_config(target, options):
         config['preproc'].append([r'\\\[\s*(.+?)\s*\\\]', r"BEGINEQUATION''\1''ENDEQUATION"])
         config['preproc'].append([r'\$\$\s*(.+?)\s*\$\$', r"BEGINEQUATION''\1''ENDEQUATION"])
         config['postproc'].append([r'BEGINEQUATION(.+)ENDEQUATION', r'$$\1$$'])
+
         config['preproc'].append([r'\\\(\s*(.+?)\s*\\\)', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
@@ -293,6 +302,7 @@ def _get_config(target, options):
 
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
+        # Remove day anchor placeholders
         config['preproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2}) ', r''])
 
         # Links to entry references are not supported in TeX export - we rewrite them here.
@@ -300,6 +310,7 @@ def _get_config(target, options):
                                   r'\g<name> (\g<date>)'])
 
     elif target == 'txt':
+        # Remove day anchor placeholders
         config['preproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2}) ', r''])
 
         # Line breaks
@@ -318,18 +329,6 @@ def _get_config(target, options):
 
     # Disable colors for all other targets.
     config['postproc'].append([COLOR_ESCAPED, r'\1'])
-
-    # MathJax
-    if options.pop('add_mathjax'):
-        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
-
-    config['postproc'].append([r'</body>', PRINT_FUNCTION + '</body>'])  # TODO: remove
-
-    # Custom css
-    fonts = options.pop('font', 'sans-serif')
-    if 'html' in target:  # TODO: it seems that 'html' target is never used
-        css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
-        config['postproc'].append([r'</head>', css + '</head>'])
 
     config.update(options)
 
