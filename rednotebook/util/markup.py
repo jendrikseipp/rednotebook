@@ -227,23 +227,7 @@ def _get_config(target, options):
         # {{red text|color:red}} -> <span style="color:red">red text</span>
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
-        # Entry references
 
-        # `get_markup_for_day` will generate placeholders which we need to override in order to create
-        # anchor targets for entry reference links to point to.
-        config['postproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2})',
-                                  r'<span id="\g<date>"></span>'])
-
-        # txt2tags will generate links to the named entry references because they share common bracket
-        # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
-        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
-                                  r'[\g<name> #\g<date>]'])
-
-        # Convert bracketed dates into named references where the date itself is being used as a name.
-        # For example:
-        # "Today is [2019-10-20]" will be converted into "Today is [2019-10-20 #2019-10-20]"
-        config['preproc'].append([r'\[(?P<date>\d{4}-\d{2}-\d{2})\]',
-                                  r'[\g<date> #\g<date>]'])
 
         # Custom css
         fonts = options.pop('font', 'sans-serif')
@@ -302,22 +286,37 @@ def _get_config(target, options):
 
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
-        # Remove day anchor placeholders
-        config['preproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2}) ', r''])
-
-        # Links to entry references are not supported in TeX export - we rewrite them here.
-        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]',
-                                  r'\g<name> (\g<date>)'])
-
     elif target == 'txt':
-        # Remove day anchor placeholders
-        config['preproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2}) ', r''])
-
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '\n'])
 
         # Apply image resizing ([WIDTH400-file:///pathtoimage.jpg])
         config['postproc'].append([r'\[WIDTH(\d+)-(.+)\]', r'[\2?\1]'])
+
+    # Entry references
+    if target in ['xhtml', 'html']:
+        # `get_markup_for_day` will generate placeholders which we need to override in order to create
+        # anchor targets for entry reference links to point to.
+        config['postproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2})',
+                                   r'<span id="\g<date>"></span>'])
+
+        # txt2tags will generate links to the named entry references because they share common bracket
+        # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
+        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
+                                  r'[\g<name> #\g<date>]'])
+
+        # Convert bracketed dates into named references where the date itself is being used as a name.
+        # For example:
+        # "Today is [2019-10-20]" will be converted into "Today is [2019-10-20 #2019-10-20]"
+        config['preproc'].append([r'\[(?P<date>\d{4}-\d{2}-\d{2})\]',
+                                  r'[\g<date> #\g<date>]'])
+    else:
+        # Remove day anchor placeholders
+        config['preproc'].append([r'DATE_ANCHOR_PLACEHOLDER_(?P<date>\d{4}-\d{2}-\d{2}) ', r''])
+
+        # Links to entry references are not supported for targets other than (X)HTML
+        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]',
+                                  r'\g<name> (\g<date>)'])
 
     # Allow resizing images by changing
     # [filename.png?width] to [WIDTHwidth-filename.png]
