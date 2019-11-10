@@ -147,9 +147,9 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
     if date:
         # Following anchor placeholder will be used as a target for every entry reference
         # mentioning this entry's date. In postprocessing it will be replaced by relevant HTML tag.
-        date_anchor = 'DATE_ANCHOR_PLACEHOLDER_%s' % day.date.strftime('%Y-%m-%d')
+        date_anchor = 'DATE_ANCHOR_PLACEHOLDER_{:%Y-%m-%d}'.format(day.date)
 
-        export_string += '= %s %s =\n\n' % (date_anchor, date)
+        export_string += '= {anchor} {date} =\n\n'.format(anchor=date_anchor, date=date)
 
     # Add text
     if with_text:
