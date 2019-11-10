@@ -64,7 +64,7 @@ class TestGetXHtmlExportConfig:
     @pytest.fixture
     def process(tmp_path):
         def process(markup):
-            html_document = convert(markup, 'xhtml', tmp_path, options={'export_to_file': True})
+            html_document = convert(markup, 'xhtml', tmp_path)
             return html_document.split('\n')
         return process
 
@@ -176,7 +176,7 @@ class TestGetTexExportConfig:
     @pytest.fixture
     def process(tmp_path):
         def process(markup):
-            html_document = convert(markup, 'tex', tmp_path, options={'export_to_file': True})
+            html_document = convert(markup, 'tex', tmp_path)
             return html_document.split('\n')
         return process
 
@@ -299,7 +299,7 @@ class TestGetPlainTextExportConfig:
     @pytest.fixture
     def process(tmp_path):
         def process(markup):
-            html_document = convert(markup, 'txt', tmp_path, options={'export_to_file': True})
+            html_document = convert(markup, 'txt', tmp_path)
             return html_document.split('\n')
         return process
 
