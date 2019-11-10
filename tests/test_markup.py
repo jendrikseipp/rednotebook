@@ -1,7 +1,9 @@
+import datetime
 import sys
 
 import pytest
 
+from rednotebook.data import Day, Month
 from rednotebook.util.markup import convert_to_pango, convert_from_pango, \
     convert, _convert_paths, get_markup_for_day
 
@@ -156,8 +158,6 @@ class TestGetXHtmlExportConfig:
         assert expected in document
 
     def test_day_fragment_anchor_element(self, process):
-        from rednotebook.data import Day, Month
-        import datetime
         date = datetime.date(2019, 10, 21)
         day = Day(Month(date.year, date.month), date.day)
 
