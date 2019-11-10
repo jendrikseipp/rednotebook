@@ -470,7 +470,7 @@ class Journal:
     def go_to_random_day(self):
         edited_days = self.get_days_in_date_range()
         if edited_days:
-            random_date = edited_days[random.randint(0, len(edited_days))].date
+            random_date = edited_days[random.randint(0, len(edited_days) - 1)].date
         else:
             random_date = self.date
         self.change_date(random_date)
