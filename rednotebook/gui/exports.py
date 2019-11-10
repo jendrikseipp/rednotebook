@@ -413,7 +413,7 @@ class ExportAssistant(Assistant):
     def yes_no(self, value):
         return _('Yes') if value else _('No')
 
-    def get_export_string(self, format):
+    def get_export_string(self, target):
         if self.export_selected_text and self.page2.selected_text:
             markup_string = self.page2.selected_text
         else:
@@ -437,7 +437,9 @@ class ExportAssistant(Assistant):
                 if include_day:
                     date_format = self.journal.config.read('exportDateFormat')
                     date_string = dates.format_date(date_format, day.date)
-                    day_markup = markup.get_markup_for_day(day, with_text=self.page3.is_text_included(),
+                    day_markup = markup.get_markup_for_day(day,
+                                                           target,
+                                                           with_text=self.page3.is_text_included(),
                                                            with_tags=self.page3.is_tags_included(),
                                                            categories=selected_categories,
                                                            date=date_string)
@@ -445,7 +447,7 @@ class ExportAssistant(Assistant):
 
             markup_string = ''.join(markup_strings_for_each_day)
 
-        return self.journal.convert(markup_string, format, options={'toc': 0, 'export_to_file': True})
+        return self.journal.convert(markup_string, target, options={'toc': 0})
 
     def export(self):
         format = self.exporter.FORMAT

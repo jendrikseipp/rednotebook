@@ -50,7 +50,6 @@ COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
 TABLE_HEAD_BG = '#aaa'
 
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
-PRINT_FUNCTION = '<script></script>'
 
 CSS = """\
 <style type="text/css">
@@ -138,7 +137,7 @@ def convert_categories_to_markup(categories, with_category_title=True):
     return markup
 
 
-def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, date=None):
+def get_markup_for_day(day, target, with_text=True, with_tags=True, categories=None, date=None):
     '''
     Used for exporting days
     '''
@@ -146,7 +145,12 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
 
     # Add date if it is not None and not the empty string
     if date:
-        export_string += '= %s =\n\n' % date
+        if target in ['xhtml', 'html']:
+            # Following anchor will be used as a target for every entry reference mentioning
+            # this entry's date.
+            export_string += '\'\'<span id="{:%Y-%m-%d}"></span>\'\'\n'.format(day.date)
+
+        export_string += '= {} =\n\n'.format(date)
 
     # Add text
     if with_text:
@@ -183,8 +187,6 @@ def get_markup_for_day(day, with_text=True, with_tags=True, categories=None, dat
 
 
 def _get_config(target, options):
-    is_exporting_to_file = options.get('export_to_file', False)
-
     # Set the configuration on the 'config' dict.
     config = txt2tags.ConfigMaster()._get_defaults()
 
@@ -226,23 +228,14 @@ def _get_config(target, options):
         # {{red text|color:red}} -> <span style="color:red">red text</span>
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
-        # Entry references
-        if is_exporting_to_file:
-            # When exporting we need to remove entry reference links because
-            # they are only valid within our app.
-            config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
-                                      r'\g<name> (\g<date>)'])
-        else:
-            # txt2tags will generate links to the named entry references because they share common bracket
-            # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
-            config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
-                                      r'[\g<name> #\g<date>]'])
+        # Custom css
+        fonts = options.pop('font', 'sans-serif')
+        css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
+        config['postproc'].append([r'</head>', css + '</head>'])
 
-            # Convert bracketed dates into named references where the date itself is being used as a name.
-            # For example:
-            # "Today is [2019-10-20]" will be converted into "Today is [2019-10-20 #2019-10-20]"
-            config['preproc'].append([r'\[(?P<date>\d{4}-\d{2}-\d{2})\]',
-                                      r'[\g<date> #\g<date>]'])
+        # MathJax
+        if options.pop('add_mathjax'):
+            config['postproc'].append([r'</body>', MATHJAX + '</body>'])
 
     elif target == 'tex':
         config['encoding'] = 'utf8'
@@ -277,6 +270,7 @@ def _get_config(target, options):
         config['preproc'].append([r'\\\[\s*(.+?)\s*\\\]', r"BEGINEQUATION''\1''ENDEQUATION"])
         config['preproc'].append([r'\$\$\s*(.+?)\s*\$\$', r"BEGINEQUATION''\1''ENDEQUATION"])
         config['postproc'].append([r'BEGINEQUATION(.+)ENDEQUATION', r'$$\1$$'])
+
         config['preproc'].append([r'\\\(\s*(.+?)\s*\\\)', r"BEGINMATH''\1''ENDMATH"])
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
@@ -291,16 +285,29 @@ def _get_config(target, options):
 
         config['postproc'].append([COLOR_ESCAPED, r'\\textcolor{\2}{\1}'])
 
-        # Links to entry references are not supported in TeX export - we rewrite them here.
-        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]',
-                                  r'\g<name> (\g<date>)'])
-
     elif target == 'txt':
         # Line breaks
         config['postproc'].append([r'LINEBREAK', '\n'])
 
         # Apply image resizing ([WIDTH400-file:///pathtoimage.jpg])
         config['postproc'].append([r'\[WIDTH(\d+)-(.+)\]', r'[\2?\1]'])
+
+    # Entry references
+    if target in ['xhtml', 'html']:
+        # txt2tags will generate links to the named entry references because they share common bracket
+        # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
+        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]',
+                                  r'[\g<name> #\g<date>]'])
+
+        # Convert bracketed dates into named references where the date itself is being used as a name.
+        # For example:
+        # "Today is [2019-10-20]" will be converted into "Today is [2019-10-20 #2019-10-20]"
+        config['preproc'].append([r'\[(?P<date>\d{4}-\d{2}-\d{2})\]',
+                                  r'[\g<date> #\g<date>]'])
+    else:
+        # Links to entry references are not supported for targets other than (X)HTML
+        config['preproc'].append([r'\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]',
+                                  r'\g<name> (\g<date>)'])
 
     # Allow resizing images by changing
     # [filename.png?width] to [WIDTHwidth-filename.png]
@@ -312,18 +319,6 @@ def _get_config(target, options):
 
     # Disable colors for all other targets.
     config['postproc'].append([COLOR_ESCAPED, r'\1'])
-
-    # MathJax
-    if options.pop('add_mathjax'):
-        config['postproc'].append([r'</body>', MATHJAX + '</body>'])
-
-    config['postproc'].append([r'</body>', PRINT_FUNCTION + '</body>'])
-
-    # Custom css
-    fonts = options.pop('font', 'sans-serif')
-    if 'html' in target:
-        css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
-        config['postproc'].append([r'</head>', css + '</head>'])
 
     config.update(options)
 
