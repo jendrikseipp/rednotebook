@@ -401,6 +401,7 @@ the same directory.
 | Go back one day       | <Ctrl> + PageUp        |
 | Go forward one day    | <Ctrl> + PageDown      |
 | Go to today           | <Alt> + Home (Pos1)    |
+| Go to random day      | <Alt> + R              |
 || Insert               |                        |
 | Insert link           | <Ctrl> + L             |
 | Insert date/time      | <Ctrl> + D             |

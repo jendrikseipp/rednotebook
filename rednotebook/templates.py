@@ -237,6 +237,7 @@ class TemplateManager:
                 self.main_window.back_one_day_button,
                 self.main_window.today_button,
                 self.main_window.forward_one_day_button,
+                self.main_window.random_day_button,
                 self.main_window.search_tree_view,
                 self.main_window.search_box.entry,
                 self.main_window.cloud,

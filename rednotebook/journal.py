@@ -25,6 +25,7 @@ import logging
 import os
 import sys
 import time
+import random
 
 
 # Use basic stdout logging before we can initialize logging correctly.
@@ -465,6 +466,14 @@ class Journal:
         if previous_edited_days:
             prev_date = previous_edited_days[-1].date
         self.change_date(prev_date)
+
+    def go_to_random_day(self):
+        edited_days = self.get_days_in_date_range()
+        if edited_days:
+            random_date = edited_days[random.randint(0, len(edited_days))].date
+        else:
+            random_date = self.date
+        self.change_date(random_date)
 
     def show_message(self, msg, title=None, error=False):
         if error and not title:

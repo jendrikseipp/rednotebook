@@ -131,6 +131,7 @@ class MainWindow:
         self.back_one_day_button = self.builder.get_object('back_one_day_button')
         self.today_button = self.builder.get_object('today_button')
         self.forward_one_day_button = self.builder.get_object('forward_one_day_button')
+        self.random_day_button = self.builder.get_object('random_day_button')
 
         self.edit_pane = self.builder.get_object('edit_pane')
         self.text_vbox = self.builder.get_object('text_vbox')
@@ -211,6 +212,7 @@ class MainWindow:
             'on_back_one_day_button_clicked': self.on_back_one_day_button_clicked,
             'on_today_button_clicked': self.on_today_button_clicked,
             'on_forward_one_day_button_clicked': self.on_forward_one_day_button_clicked,
+            'on_random_day_button_clicked': self.on_random_day_button_clicked,
 
             'on_preview_button_clicked': self.on_preview_button_clicked,
             'on_edit_button_clicked': self.on_edit_button_clicked,
@@ -270,6 +272,7 @@ class MainWindow:
             (self.back_one_day_button, 'clicked', '<Ctrl>Page_Up'),
             (self.today_button, 'clicked', '<Alt>Home'),
             (self.forward_one_day_button, 'clicked', '<Ctrl>Page_Down'),
+            (self.random_day_button, 'clicked', '<Alt>R')
         ]
         for button, signal, shortcut in shortcuts:
             (keyval, mod) = Gtk.accelerator_parse(shortcut)
@@ -528,6 +531,9 @@ class MainWindow:
 
     def on_forward_one_day_button_clicked(self, widget):
         self.journal.go_to_next_day()
+
+    def on_random_day_button_clicked(self, widget):
+        self.journal.go_to_random_day()
 
     def on_browser_decide_policy(self, webview, decision, decision_type):
         '''
