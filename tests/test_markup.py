@@ -59,18 +59,6 @@ def test_absolute_path_conversion(tmp_path):
         assert path == _convert_paths(path, tmp_path)
 
 
-def test_html_export_contains_day_fragment_reference_element(tmp_path):
-    from rednotebook.data import Day, Month
-    import datetime
-    date = datetime.date(2019, 10, 21)
-    day = Day(Month(date.year, date.month), date.day)
-
-    txt2tag_markup = get_markup_for_day(day, date=date.strftime("%d-%m-%Y"))
-    html_document = convert(txt2tag_markup, 'xhtml', tmp_path, options={'export_to_file': True})
-
-    assert r'id="{:%Y-%m-%d}"'.format(date) in html_document
-
-
 class TestGetXHtmlExportConfig:
     @staticmethod
     @pytest.fixture
@@ -166,6 +154,17 @@ class TestGetXHtmlExportConfig:
     def test_entry_reference_links(self, markup, expected, process):
         document = process(markup)
         assert expected in document
+
+    def test_day_fragment_anchor_element(self, process):
+        from rednotebook.data import Day, Month
+        import datetime
+        date = datetime.date(2019, 10, 21)
+        day = Day(Month(date.year, date.month), date.day)
+
+        markup = get_markup_for_day(day, 'xhtml', date=date.strftime("%d-%m-%Y"))
+        document = process(markup)
+
+        assert r'<span id="{:%Y-%m-%d}"></span>'.format(date) in document
 
     def test_mathjax(self, process):
         document = process('$$x^3$$')
@@ -286,10 +285,6 @@ class TestGetTexExportConfig:
         document = process("#tag")
         assert r'\index{tag}' in "".join(document)
 
-    def test_date_anchor_removal(self, process):
-        document = process("DATE_ANCHOR_PLACEHOLDER_2019-10-30 ")
-        assert r'DATE_ANCHOR_PLACEHOLDER_2019-10-30 ' not in document
-
     @pytest.mark.parametrize("markup,expected", [
         ('This is a [named reference 2019-08-01]', 'This is a named reference (2019-08-01)'),
         ('Today is 2019-08-01 - a wonderful day', 'Today is 2019-08-01 - a wonderful day'),
@@ -332,10 +327,6 @@ class TestGetPlainTextExportConfig:
     def test_images_width_resize(self, markup, expected, process):
         document = process(markup)
         assert expected in document
-
-    def test_date_anchor_removal(self, process):
-        document = process("DATE_ANCHOR_PLACEHOLDER_2019-10-30 ")
-        assert r'DATE_ANCHOR_PLACEHOLDER_2019-10-30 ' not in document
 
     @pytest.mark.parametrize("markup,expected", [
         ('This is a [named reference 2019-08-01]', 'This is a named reference (2019-08-01)'),
