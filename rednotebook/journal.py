@@ -482,8 +482,8 @@ class Journal:
 
     @property
     def categories(self):
-        return list(sorted(set(itertools.chain.from_iterable(
-            day.categories for day in self.days)), key=locale.strxfrm))
+        return sorted(set(itertools.chain.from_iterable(
+            day.categories for day in self.days)), key=locale.strxfrm)
 
     def get_entries(self, category):
         entries = set()
