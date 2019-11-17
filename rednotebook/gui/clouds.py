@@ -37,11 +37,7 @@ CLOUD_CSS = """\
         font-family: %(font)s;
         text-align: center;
     }
-    a:link { color:black; text-decoration:none; }
-    a:visited { color:black; text-decoration:none; }
-    a:focus { color:black; text-decoration:none; }
-    a:hover { color:black; text-decoration:none; }
-    a:active { color:black; text-decoration:none; }
+    a { color:black; text-decoration:none; }
     h1 { border-bottom: 1px solid grey; margin: 0; margin-bottom: 8px;
          padding: 0; font-size: 15px; line-height: 1; text-align: left;
          font-weight: normal; }
