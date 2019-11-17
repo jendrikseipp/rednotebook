@@ -38,6 +38,9 @@ CLOUD_CSS = """\
         text-align: center;
     }
     a { color:black; text-decoration:none; }
+    @media (prefers-color-scheme: dark) {
+        a { color:white; }
+    }
     h1 { border-bottom: 1px solid grey; margin: 0; margin-bottom: 8px;
          padding: 0; font-size: 15px; line-height: 1; text-align: left;
          font-weight: normal; }
