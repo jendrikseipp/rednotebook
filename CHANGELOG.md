@@ -1,3 +1,7 @@
+# 2.14 (2019-11-17)
+* Support entry reference links in exported HTML (#452, Paweł Żukowski).
+* Add support for dark themes to cloud panel (#438).
+
 # 2.13 (2019-11-07)
 * Change unnamed date references from 2019-11-06 to [2019-11-06] (#458, #460, Paweł Żukowski).
 * Add option for controlling number of displayed tags (#456, Paweł Żukowski).

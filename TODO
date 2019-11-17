@@ -7,8 +7,6 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-X Support entry reference links in exported HTML (#452, Paweł Żukowski).
-X Add support for dark themes to cloud panel (#438).
 O Remove imports.py.
 O Update Github README file.
 O Check for latest version during startup by default.
