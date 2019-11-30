@@ -27,7 +27,6 @@ from rednotebook.help import help_text
 from rednotebook import info
 from rednotebook.util import filesystem
 from rednotebook import storage
-# from rednotebook.gui.imports import ImportAssistant
 from rednotebook.gui import insert_menu
 from rednotebook.gui import format_menu
 
@@ -42,7 +41,6 @@ MENUBAR_XML = '''\
         <menuitem action="Save"/>
         <menuitem action="SaveAs"/>
         <separator/>
-        <!--<menuitem action="Import"/>-->
         <menuitem action="Export"/>
         <menuitem action="Backup"/>
         <menuitem action="Statistics"/>
@@ -104,9 +102,6 @@ class MainMenuBar:
             ('SaveAs', Gtk.STOCK_SAVE_AS, None,
                 None, _('Save journal at a new location. The old journal files will also be saved'),
                 self.on_save_as_menu_item_activate),
-            # Translators: Verb
-            # ('Import', Gtk.STOCK_ADD, _('_Import'),
-            #    None, _('Open the import assistant'), self.on_import_menu_item_activate),
             # Translators: Verb
             ('Export', Gtk.STOCK_CONVERT, _('Export'),
                 '<Ctrl>e', _('Open the export assistant'), self.on_export_menu_item_activate),
@@ -260,10 +255,6 @@ class MainMenuBar:
 
     def on_backup_activate(self, widget):
         self.journal.archiver.backup()
-
-    # def on_import_menu_item_activate(self, widget):
-    #     assistant = ImportAssistant(self.journal)
-    #     assistant.run()
 
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()

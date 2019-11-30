@@ -200,15 +200,6 @@ class AssistantPage(Gtk.VBox):
         self.header.set_markup(text)
 
 
-class IntroductionPage(AssistantPage):
-    def __init__(self, text, *args, **kwargs):
-        AssistantPage.__init__(self, *args, **kwargs)
-
-        label = Gtk.Label(label=text)
-
-        self.pack_start(label, True, True, 0)
-
-
 class RadioButtonPage(AssistantPage):
     def __init__(self, *args, **kwargs):
         AssistantPage.__init__(self, *args, **kwargs)
@@ -334,13 +325,6 @@ class Assistant(Gtk.Assistant):
         '''
         Called when a new page should be prepared, before it is shown
         '''
-
-    def _add_intro_page(self, text):
-        page = IntroductionPage(text)
-        self.append_page(page)
-        self.set_page_title(page, _('Introduction'))
-        self.set_page_type(page, Gtk.AssistantPageType.INTRO)
-        self.set_page_complete(page, True)
 
 
 class TemplateBar(Gtk.HBox):

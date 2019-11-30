@@ -424,18 +424,6 @@ class Journal:
 
         self.set_frame_title()
 
-    def merge_days(self, days):
-        '''
-        Method used by importers
-        '''
-        self.save_old_day()
-        for new_day in days:
-            date = new_day.date
-            month = self.get_month(date)
-            old_day = month.get_day(date.day)
-            old_day.merge(new_day)
-            month.edited = True
-
     @property
     def day(self):
         return self.month.get_day(self.date.day)

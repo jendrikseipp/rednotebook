@@ -16,12 +16,6 @@ from gi.repository import Gtk
 cell = Gtk.CellRendererText()
 cell.props.wrap_mode
 
-from rednotebook.gui import imports
-imports.ImportAssistant
-imports.PlainTextImporter
-imports.RedNotebookBackupImporter
-imports.Importer._check_modules
-
 # CEF Browser
 from ctypes import _CFuncPtr
 _CFuncPtr.argtypes

@@ -7,7 +7,6 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
-O Remove imports.py.
 O Update Github README file.
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
@@ -74,12 +73,6 @@ O Non-code:
   O Add testimonials to homepage.
   O Make help file available online to let search engines index it.
   O Update screenshots on homepage.
-
-O Imports
-  X RedNotebook Backup zipfile
-  X RedNotebook data directory
-  X Plain text files
-  O It's probably best to supply scripts for converting other sources like Evernote, Wordpress, ics (used by Google Calendar).
 
 O Custom-style journals? (Allow custom css files for preview rendering, e.g. mono-space, white text on black bg, margins)
 O Translate help (Restructure first using Sphinx?)

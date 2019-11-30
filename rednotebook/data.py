@@ -128,32 +128,6 @@ class Day:
     def empty(self):
         return len(self.content) == 1 and 'text' in self.content and not self.has_text
 
-    def add_category_entry(self, category, entry):
-        if category in self.content:
-            self.content[category][entry] = None
-        else:
-            self.content[category] = {entry: None}
-
-    def merge(self, same_day):
-        assert self.date == same_day.date
-
-        # Merge texts
-        text1 = self.text.strip()
-        text2 = same_day.text.strip()
-        if text2 in text1:
-            # self.text contains the other text
-            pass
-        elif text1 in text2:
-            # The other text contains contains self.text
-            self.text = same_day.text
-        else:
-            self.text += '\n\n' + same_day.text
-
-        # Merge categories
-        for category, entries in same_day.get_category_content_pairs().items():
-            for entry in entries:
-                self.add_category_entry(category, entry)
-
     @property
     def hashtags(self):
         # The same tag can occur multiple times.

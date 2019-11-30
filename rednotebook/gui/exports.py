@@ -466,20 +466,7 @@ class Exporter:
     EXTENSION = None
 
     @classmethod
-    def _check_modules(cls, modules):
-        for module in modules:
-            try:
-                __import__(module)
-            except ImportError:
-                logging.info(
-                    '"%s" could not be imported. '
-                    'You will not be able to import %s' % (module, cls.NAME))
-                # Importer cannot be used
-                return False
-        return True
-
-    @classmethod
-    def is_available(cls):
+    def is_available(_cls):
         '''
         This function should be implemented by the subclasses that may
         not be available
