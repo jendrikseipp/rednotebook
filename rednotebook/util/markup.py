@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009  Jendrik Seipp
 #
@@ -275,7 +274,7 @@ def _get_config(target, options):
         config['postproc'].append([r'BEGINMATH(.+)ENDMATH', r'$\1$'])
 
         # Fix utf8 quotations - „, “ and ” cause problems compiling the latex document.
-        config['postproc'].extend([[u'„', '"'], [u'”', '"'], [u'“', '"']])
+        config['postproc'].extend([['„', '"'], ['”', '"'], ['“', '"']])
 
         # Enable index.
         config['style'].append('makeidx')

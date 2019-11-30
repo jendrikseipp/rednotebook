@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009  Jendrik Seipp
 #
@@ -143,7 +142,7 @@ def write_file(filename, content):
     try:
         with codecs.open(filename, 'wb', errors='replace', encoding='utf-8') as file:
             file.write(content)
-    except IOError as e:
+    except OSError as e:
         logging.error('Error while writing to "{}": {}'.format(filename, e))
 
 
@@ -240,6 +239,6 @@ def get_peak_memory_in_kb():
                 parts = line.split()
                 if parts[0] == "VmPeak:":
                     return int(parts[1])
-    except IOError:
+    except OSError:
         pass
     raise Warning("warning: could not determine peak memory")

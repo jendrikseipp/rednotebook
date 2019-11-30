@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009, 2014, 2015  Jendrik Seipp
 #
@@ -150,7 +149,7 @@ class Config(dict):
         try:
             filesystem.make_directory(os.path.dirname(self.filename))
             filesystem.write_file(self.filename, '\n'.join(lines))
-        except IOError:
+        except OSError:
             logging.error('Configuration could not be saved. Please check '
                           'your permissions')
         else:

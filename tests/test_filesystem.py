@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from rednotebook.util.filesystem import get_journal_title
 
 
@@ -8,7 +6,7 @@ def test_journal_title():
         ('/home/my journal', 'my journal'),
         ('/my journal/', 'my journal'),
         ('/home/name/Journal', 'Journal'),
-        (u'/home/name/jörnal', u'jörnal'),
+        ('/home/name/jörnal', 'jörnal'),
         ('/', '/'),
     ]
     for path, title in dirs:

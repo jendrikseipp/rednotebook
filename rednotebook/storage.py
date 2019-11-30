@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009  Jendrik Seipp
 #
@@ -77,7 +76,7 @@ def _load_month_from_disk(path, year_number, month_number):
             return month
     except yaml.YAMLError as exc:
         logging.error('Error in file {}:\n{}'.format(path, exc))
-    except IOError:
+    except OSError:
         # If that fails, there is nothing to load, so just display an error message.
         logging.error('Error: The file %s could not be read' % path)
     except Exception:

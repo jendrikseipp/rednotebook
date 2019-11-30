@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------
 # Copyright (c) 2009  Jendrik Seipp
 #
@@ -81,7 +80,7 @@ def get_new_version_number():
 
     try:
         project_xml = urlopen(info.version_url).read()
-    except (IOError, http.client.HTTPException):
+    except (OSError, http.client.HTTPException):
         return None
 
     project_xml = project_xml.decode('utf-8')
