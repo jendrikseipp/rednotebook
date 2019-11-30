@@ -29,7 +29,7 @@ def get_local_url(url):
 
     scheme = 'file:///' if IS_WIN else 'file://'
     url = scheme + url
-    logging.debug('Transformed local URI %s to %s' % (orig_url, url))
+    logging.debug('Transformed local URI {} to {}'.format(orig_url, url))
     return url
 
 
@@ -47,10 +47,10 @@ def unquote_url(url):
 
 def _open_url_with_call(url, prog):
     try:
-        logging.info('Trying to open %s with %s' % (url, prog))
+        logging.info('Trying to open {} with {}'.format(url, prog))
         system_call([prog, url])
     except (OSError, subprocess.CalledProcessError):
-        logging.exception('Opening %s with %s failed' % (url, prog))
+        logging.exception('Opening {} with {} failed'.format(url, prog))
         # If everything failed, try the webbrowser
         open_url_in_browser(url)
 

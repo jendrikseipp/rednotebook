@@ -62,7 +62,7 @@ class SummaryPage(AssistantPage):
         self.clear()
 
     def add_day(self, day):
-        day_text = '====== %s ======\n%s\n\n' % (day.date, day.text)
+        day_text = '====== {} ======\n{}\n\n'.format(day.date, day.text)
         categories = day.get_category_content_pairs()
         if categories:
             day_text += markup.convert_categories_to_markup(categories, False)

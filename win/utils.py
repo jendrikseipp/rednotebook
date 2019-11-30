@@ -26,14 +26,14 @@ def fetch(url, path):
     if not os.path.exists(dirname):
         os.mkdir(dirname)
     if not os.path.exists(path):
-        logging.info('Fetch {0} to {1}'.format(url, path))
+        logging.info('Fetch {} to {}'.format(url, path))
         with urllib.request.urlopen(url) as response, open(path, 'wb') as out_file:
             shutil.copyfileobj(response, out_file)
     if not os.path.exists(path):
         sys.exit('Download unsuccessful.')
 
 def run(*args, **kwargs):
-    logging.info('Run command: {0} ({1})'.format(args, kwargs))
+    logging.info('Run command: {} ({})'.format(args, kwargs))
     retcode = subprocess.call(*args, **kwargs)
     if retcode != 0:
         sys.exit('Command failed.')

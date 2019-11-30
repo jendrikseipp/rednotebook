@@ -198,8 +198,8 @@ class MainMenuBar:
         self.journal.open_journal(new_dir)
 
     def on_new_journal_button_activate(self, widget):
-        msg = ('%s\n%s' % (_('Journals are saved in a directory, not in a single file.'),
-                           _('The directory name will be the title of the new journal.')))
+        msg = ('{}\n{}'.format(_('Journals are saved in a directory, not in a single file.'),
+                               _('The directory name will be the title of the new journal.')))
         self.select_journal('new', _('Select an empty folder for your new journal'), msg)
 
     def on_open_journal_button_activate(self, widget):

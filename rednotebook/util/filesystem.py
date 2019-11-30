@@ -144,7 +144,7 @@ def write_file(filename, content):
         with codecs.open(filename, 'wb', errors='replace', encoding='utf-8') as file:
             file.write(content)
     except IOError as e:
-        logging.error('Error while writing to "%s": %s' % (filename, e))
+        logging.error('Error while writing to "{}": {}'.format(filename, e))
 
 
 def make_directory(dir):
@@ -219,7 +219,7 @@ def get_platform_info():
         ('YAML', yaml.__version__),
         ])
 
-    vals = ['%s: %s' % (name, val) for name, val in names_values]
+    vals = ['{}: {}'.format(name, val) for name, val in names_values]
     return 'System info: ' + ', '.join(vals)
 
 

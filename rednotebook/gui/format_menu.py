@@ -66,7 +66,7 @@ class FormatMenu:
             if iter_:
                 markup = self.FORMAT_TO_MARKUP[format_]
                 text = self.main_window.categories_tree_view.get_iter_value(iter_)
-                text = '%s%s%s' % (markup, text, markup)
+                text = '{}{}{}'.format(markup, text, markup)
                 self.main_window.categories_tree_view.set_iter_value(iter_, text)
             else:
                 self.main_window.day_text_field.apply_format(format_)

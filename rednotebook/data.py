@@ -282,9 +282,9 @@ class Month:
         return self.days[day_number]
 
     def __str__(self):
-        lines = ['Month %s %s' % (self.year_number, self.month_number)]
+        lines = ['Month {} {}'.format(self.year_number, self.month_number)]
         for day_number, day in self.days.items():
-            lines.append('%s: %s' % (day_number, day.text))
+            lines.append('{}: {}'.format(day_number, day.text))
         return '\n'.join(lines)
 
     @property

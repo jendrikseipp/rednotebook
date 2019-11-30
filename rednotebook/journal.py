@@ -478,7 +478,7 @@ class Journal:
             log_level = logging.INFO
 
         self.frame.show_message(title, msg, msg_type)
-        logging.log(log_level, '%s. %s' % (title, msg) if title else msg)
+        logging.log(log_level, '{}. {}'.format(title, msg) if title else msg)
 
     @property
     def categories(self):

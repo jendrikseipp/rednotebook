@@ -273,7 +273,7 @@ class SummaryPage(AssistantPage):
 
     def add_setting(self, setting, value):
         label = Gtk.Label()
-        label.set_markup('<b>%s:</b> %s' % (setting, value))
+        label.set_markup('<b>{}:</b> {}'.format(setting, value))
         label.set_alignment(0.0, 0.5)
         label.show()
         self.pack_start(label, False, False, 0)
@@ -499,7 +499,7 @@ class Exporter:
     def DEFAULTPATH(self):
         return os.path.join(
             os.path.expanduser('~'),
-            'RedNotebook-Export_%s.%s' % (datetime.date.today(), self.EXTENSION))
+            'RedNotebook-Export_{}.{}'.format(datetime.date.today(), self.EXTENSION))
 
 
 class PlainTextExporter(Exporter):

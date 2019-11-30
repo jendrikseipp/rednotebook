@@ -113,7 +113,7 @@ class Archiver:
         else:
             name = '-' + self.journal.title
 
-        proposed_filename = 'RedNotebook-Backup%s-%s.zip' % (name, datetime.date.today())
+        proposed_filename = 'RedNotebook-Backup{}-{}.zip'.format(name, datetime.date.today())
         proposed_directory = self.journal.config.read(
             'lastBackupDir', os.path.expanduser('~'))
 

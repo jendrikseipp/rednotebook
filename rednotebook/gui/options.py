@@ -178,7 +178,7 @@ class DateFormatOption(ComboBoxOption):
         format_string = self.get_value()
         date_string = dates.format_date(format_string)
         # Translators: Noun
-        label_text = '%s %s' % (_('Preview:'), date_string)
+        label_text = '{} {}'.format(_('Preview:'), date_string)
         self.preview.set_text(label_text)
 
 
@@ -355,7 +355,7 @@ class OptionsManager:
         for option in self.options:
             value = option.get_value()
             if option.option_name is not None:
-                logging.debug('Setting %s = %s' % (option.option_name, repr(value)))
+                logging.debug('Setting {} = {}'.format(option.option_name, repr(value)))
                 self.config[option.option_name] = value
             else:
                 # We don't save the autostart setting in the config file

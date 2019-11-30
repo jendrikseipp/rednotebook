@@ -305,10 +305,10 @@ class Editor(GObject.GObject):
             dirs, filename = os.path.split(uri)
             uri_without_ext, ext = os.path.splitext(uri)
             if is_pic(uri):
-                self.insert('[""%s""%s]\n' % (uri_without_ext, ext), iter)
+                self.insert('[""{}""{}]\n'.format(uri_without_ext, ext), iter)
             else:
                 # It is always safer to add the "file://" protocol and the ""s
-                self.insert('[%s ""%s""]\n' % (filename, uri), iter)
+                self.insert('[{} ""{}""]\n'.format(filename, uri), iter)
 
         drag_context.finish(True, False, timestamp)
         # No further processing

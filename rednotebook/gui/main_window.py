@@ -898,7 +898,7 @@ class Statusbar:
 
     def show_message(self, title, msg, msg_type):
         if title and msg:
-            text = '%s: %s' % (title, msg)
+            text = '{}: {}'.format(title, msg)
         else:
             text = title or msg
         self._show_text(text)

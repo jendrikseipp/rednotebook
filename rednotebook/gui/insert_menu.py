@@ -65,7 +65,7 @@ class InsertMenu:
         self.main_window = main_window
 
         self.bullet_list = (
-            '\n- %s\n- %s\n  - %s (%s)\n\n\n' % (
+            '\n- {}\n- {}\n  - {} ({})\n\n\n'.format(
                 _('First Item'), _('Second Item'), _('Indented Item'),
                 _('Two blank lines close the list')))
 
@@ -233,7 +233,7 @@ class InsertMenu:
                 # with the file:// prefix
                 base = urls.get_local_url(base)
 
-                lines.append('[%s""%s""%s%s]' % (sel_text, base, ext, width_text))
+                lines.append('[{}""{}""{}{}]'.format(sel_text, base, ext, width_text))
 
             return '\n'.join(lines)
 
@@ -255,7 +255,7 @@ class InsertMenu:
             sel_text = self.main_window.day_text_field.get_selected_text()
             _, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s
-            return '[%s ""%s""]' % (sel_text or tail, filename)
+            return '[{} ""{}""]'.format(sel_text or tail, filename)
 
     def on_insert_link(self, sel_text):
         link_creator = self.main_window.builder.get_object('link_creator')
@@ -293,7 +293,7 @@ class InsertMenu:
             link_name = link_name_entry.get_text()
 
             if link_location and link_name:
-                return '[%s ""%s""]' % (link_name, link_location)
+                return '[{} ""{}""]'.format(link_name, link_location)
             elif link_location:
                 return link_location
             else:

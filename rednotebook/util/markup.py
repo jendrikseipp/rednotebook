@@ -38,7 +38,7 @@ REGEX_HTML_LINK = r'<a.*?>(.*?)</a>'
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 PIC_NAME = r'\S.*?\S|\S'
 PIC_EXT = r'(?:png|jpe?g|gif|eps|bmp|svg)'
-REGEX_PIC = re.compile(r'(\["")(%s)("")(\.%s)(\?\d+)?(\])' % (PIC_NAME, PIC_EXT), flags=re.I)
+REGEX_PIC = re.compile(r'(\["")({})("")(\.{})(\?\d+)?(\])'.format(PIC_NAME, PIC_EXT), flags=re.I)
 
 # named local link [my file.txt ""file:///home/user/my file.txt""]
 # named link in web [heise ""http://heise.de""]
@@ -315,7 +315,7 @@ def _get_config(target, options):
     img_name = r'\S.*\S|\S'
 
     # Apply this prepoc only after the latex image quotes have been added
-    config['preproc'].append([r'\[(%s\.(%s))\?(\d+)\]' % (img_name, img_ext), r'[WIDTH\3-\1]'])
+    config['preproc'].append([r'\[({}\.({}))\?(\d+)\]'.format(img_name, img_ext), r'[WIDTH\3-\1]'])
 
     # Disable colors for all other targets.
     config['postproc'].append([COLOR_ESCAPED, r'\1'])
