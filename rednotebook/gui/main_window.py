@@ -303,7 +303,7 @@ class MainWindow:
         else:
             self.show()
 
-    def on_tray_popup_menu(self, status_icon, button, activate_time):
+    def on_tray_popup_menu(self, _status_icon, button, activate_time):
         '''
         Called when the user right-clicks the tray icon
         '''
@@ -335,9 +335,7 @@ class MainWindow:
         # Create a Menu
         menu = self.uimanager.get_widget('/TrayMenu')
 
-        menu.popup(
-            None, None, Gtk.status_icon_position_menu, button,
-            activate_time, status_icon)
+        menu.popup(None, None, None, None, button, activate_time)
 
     def show(self):
         self.main_frame.show()
