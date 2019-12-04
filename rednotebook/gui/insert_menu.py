@@ -17,6 +17,7 @@
 # -----------------------------------------------------------------------
 
 import os
+from functools import partial
 
 from gi.repository import Gtk
 
@@ -31,7 +32,20 @@ MENUITEMS_XML = '''\
     <menuitem action="File"/>
     <menuitem action="Link"/>
     <menuitem action="BulletList"/>
-    <menuitem action="Title"/>
+    <menu action="TitleMenu">
+        <menuitem action="Title1"/>
+        <menuitem action="Title2"/>
+        <menuitem action="Title3"/>
+        <menuitem action="Title4"/>
+        <menuitem action="Title5"/>
+    </menu>
+    <menu action="NumberedTitleMenu">
+        <menuitem action="NumberedTitle1"/>
+        <menuitem action="NumberedTitle2"/>
+        <menuitem action="NumberedTitle3"/>
+        <menuitem action="NumberedTitle4"/>
+        <menuitem action="NumberedTitle5"/>
+    </menu>
     <menuitem action="Line"/>
     <menuitem action="Date"/>
     <menuitem action="LineBreak"/>
@@ -113,7 +127,8 @@ class InsertMenu:
                 self.get_insert_handler(self.on_insert_bullet_list)),
             # ('NumberedList', None, _('Numbered List'), None, None,
             #     self.get_insert_handler(self.on_insert_numbered_list)),
-            ('Title', None, _('Title'), None, None, self.on_insert_title),
+            ('TitleMenu', None, _('Title')),
+            ('NumberedTitleMenu', None, _('Numbered title')),
             ('Line', None, _('Line'), None,
                 _('Insert a separator line'),
                 self.get_insert_handler(lambda sel_text: line)),
@@ -129,6 +144,27 @@ class InsertMenu:
                 self.get_insert_handler(lambda sel_text: '\\\\\n')),
             ('InsertMenuBar', None, _('_Insert')),
         ])
+
+        actions = []
+        for level in range(1, 6):
+            action_label = '{} {}'.format(_('Level'), level)
+            actions.append((
+                'Title{}'.format(level),
+                None,
+                action_label,
+                '<Control>{}'.format(level),
+                None,
+                partial(self.on_insert_title, level=level)
+            ))
+            actions.append((
+                'NumberedTitle{}'.format(level),
+                None,
+                action_label,
+                '<Control><Alt>{}'.format(level),
+                None,
+                partial(self.on_insert_numbered_title, level=level)
+            ))
+        self.main_window.insert_actiongroup.add_actions(actions)
 
         # Add the actiongroup to the uimanager
         uimanager.insert_action_group(self.main_window.insert_actiongroup, 0)
@@ -308,8 +344,11 @@ class InsertMenu:
     #         return '\n'.join('+ %s' % row for row in sel_text.splitlines())
     #     return self.bullet_list.replace('-', '+')
 
-    def on_insert_title(self, *args):
-        self.main_window.day_text_field.apply_format('title')
+    def on_insert_title(self, *args, level):
+        self.main_window.day_text_field.apply_format('title{}'.format(level))
+
+    def on_insert_numbered_title(self, *args, level):
+        self.main_window.day_text_field.apply_format('numberedtitle{}'.format(level))
 
     # def on_insert_formula(self, sel_text):
     #     formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'
