@@ -38,6 +38,7 @@ O Fix drag-and-drop on Windows (confirmed that it doesn't work in version 2.6.1)
 O Enable faulthandler.
 O Enable tags panel if tags are present by default.
 O Check for updates at startup by default.
+O Add option for opening the last edited day on startup.
 
 O Make sure that RedNotebook contents are saved under Windows when system is shut down.
 O Make sure there is no race condition between automatic and manual saving that could cause data corruption.
