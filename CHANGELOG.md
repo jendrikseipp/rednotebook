@@ -1,3 +1,6 @@
+# 2.15 (2019-12-04)
+* Fix tray icon on Windows (#394).
+
 # 2.14 (2019-11-17)
 * Support entry reference links in exported HTML (#452, Paweł Żukowski).
 * Add support for dark themes to cloud panel (#438).
