@@ -466,13 +466,13 @@ desired code:
 === Titles ===
 
 You can insert titles into your post by adding "="s around your title
-text. = My Title = is the biggest heading, ====== My Title ====== is
+text. = My Title = is the biggest heading, ===== My Title ===== is
 the smallest heading. A title line can only contain the title, nothing
 else.
 
 Numbered titles can be created by using "+" instead of "=". ""+ My
-Title +"" produces a title like "1.", ++++++ My Title ++++++ produces a
-title like 0.0.0.0.0.1
+Title +"" produces a title like "1.", +++++ My Title +++++ produces a
+title like 0.0.0.0.1
 
 === Insert HTML or Latex code ===
 

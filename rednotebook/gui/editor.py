@@ -204,8 +204,7 @@ class Editor(GObject.GObject):
             'italic': ('//', '//'),
             'monospace': ('``', '``'),
             'underline': ('__', '__'),
-            'strikethrough': ('--', '--'),
-            'title': ('\n=== ', ' ===\n')
+            'strikethrough': ('--', '--')
         }
 
         for level in range(1, 6):

@@ -16,8 +16,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import functools
 import os
-from functools import partial
 
 from gi.repository import Gtk
 
@@ -100,19 +100,8 @@ class InsertMenu:
 
         line = '\n====================\n'
 
-        # table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
-        #            '| 1               | more than 1     | Align left   |\n'
-        #            '|     more than 1 |               1 |   Align right |\n'
-        #            '|   more than 1   |   more than 1   |   Center   |\n'
-        #            '|| Title rows | are always | centered |\n'
-        #            '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
-        #            '|  Always use  |  at least  |  one whitespace  |\n')
-
-        def tmpl(_letter):
-            return ''  # return ' (Ctrl+%s)' % letter
-
         # Create actions
-        self.main_window.insert_actiongroup.add_actions([
+        actions = [
             ('Picture', Gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'),
                 None, _('Insert an image from the harddisk'),
                 self.get_insert_handler(self.on_insert_pic)),
@@ -120,32 +109,26 @@ class InsertMenu:
                 _('Insert a link to a file'),
                 self.get_insert_handler(self.on_insert_file)),
             # Translators: Noun
-            ('Link', Gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L',
+            ('Link', Gtk.STOCK_JUMP_TO, _('_Link'), '<Control>L',
                 _('Insert a link to a website'),
                 self.get_insert_handler(self.on_insert_link)),
             ('BulletList', None, _('Bullet List'), None, None,
                 self.get_insert_handler(self.on_insert_bullet_list)),
-            # ('NumberedList', None, _('Numbered List'), None, None,
-            #     self.get_insert_handler(self.on_insert_numbered_list)),
             ('TitleMenu', None, _('Title')),
             ('NumberedTitleMenu', None, _('Numbered title')),
             ('Line', None, _('Line'), None,
                 _('Insert a separator line'),
                 self.get_insert_handler(lambda sel_text: line)),
-            # ('Table', None, _('Table'), None, None,
-            #     self.get_insert_handler(lambda sel_text: table)),
-            # ('Formula', None, _('Latex Formula'), None, None,
-            #     self.get_insert_handler(self.on_insert_formula)),
-            ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
+            ('Date', None, _('Date/Time'), '<Ctrl>D',
                 _('Insert the current date and time (edit format in preferences)'),
                 self.get_insert_handler(self.on_insert_date_time)),
             ('LineBreak', None, _('Line Break'), '<Ctrl>Return',
                 _('Insert a manual line break'),
                 self.get_insert_handler(lambda sel_text: '\\\\\n')),
             ('InsertMenuBar', None, _('_Insert')),
-        ])
+        ]
 
-        actions = []
+        # Create (numbered)title submenu actions
         for level in range(1, 6):
             action_label = '{} {}'.format(_('Level'), level)
             actions.append((
@@ -154,7 +137,7 @@ class InsertMenu:
                 action_label,
                 '<Control>{}'.format(level),
                 None,
-                partial(self.on_insert_title, level=level)
+                functools.partial(self.on_insert_title, level=level)
             ))
             actions.append((
                 'NumberedTitle{}'.format(level),
@@ -162,8 +145,9 @@ class InsertMenu:
                 action_label,
                 '<Control><Alt>{}'.format(level),
                 None,
-                partial(self.on_insert_numbered_title, level=level)
+                functools.partial(self.on_insert_numbered_title, level=level)
             ))
+
         self.main_window.insert_actiongroup.add_actions(actions)
 
         # Add the actiongroup to the uimanager
@@ -210,18 +194,18 @@ class InsertMenu:
         # if no text is selected, we can support inserting multiple images
         picture_chooser.set_select_multiple(not sel_text)
 
-        filter = Gtk.FileFilter()
-        filter.set_name("Images")
-        filter.add_mime_type("image/bmp")
-        filter.add_mime_type("image/gif")
-        filter.add_mime_type("image/jpeg")
-        filter.add_mime_type("image/png")
+        file_filter = Gtk.FileFilter()
+        file_filter.set_name("Images")
+        file_filter.add_mime_type("image/bmp")
+        file_filter.add_mime_type("image/gif")
+        file_filter.add_mime_type("image/jpeg")
+        file_filter.add_mime_type("image/png")
         # SVG images aren't found by MIME type on Windows.
-        filter.add_pattern("*.svg")
+        file_filter.add_pattern("*.svg")
 
         # File filter hides all files on MacOS.
         if not filesystem.IS_MAC:
-            picture_chooser.add_filter(filter)
+            picture_chooser.add_filter(file_filter)
 
         # Add box for inserting image width.
         box = Gtk.HBox()
@@ -339,20 +323,11 @@ class InsertMenu:
             return '\n'.join('- %s' % row for row in sel_text.splitlines())
         return self.bullet_list
 
-    # def on_insert_numbered_list(self, sel_text):
-    #     if sel_text:
-    #         return '\n'.join('+ %s' % row for row in sel_text.splitlines())
-    #     return self.bullet_list.replace('-', '+')
-
     def on_insert_title(self, *args, level):
         self.main_window.day_text_field.apply_format('title{}'.format(level))
 
     def on_insert_numbered_title(self, *args, level):
         self.main_window.day_text_field.apply_format('numberedtitle{}'.format(level))
-
-    # def on_insert_formula(self, sel_text):
-    #     formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'
-    #     return '\\(', formula, '\\)'
 
     def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString')
