@@ -73,6 +73,21 @@ def get_image(name):
     return image
 
 
+def insert_handler(callback_method):
+    @functools.wraps(callback_method)
+    def insert_handler_wrapper(self, widget, *args, **kwargs):
+        editor = self.main_window.day_text_field
+        sel_text = editor.get_selected_text()
+        repl = callback_method(self, sel_text, *args, **kwargs)
+        if isinstance(repl, str):
+            editor.replace_selection(repl)
+        elif isinstance(repl, tuple):
+            editor.replace_selection_and_highlight(*repl)
+        else:
+            assert repl is None, repl
+    return insert_handler_wrapper
+
+
 class InsertMenu:
     def __init__(self, main_window):
         self.main_window = main_window
@@ -98,33 +113,26 @@ class InsertMenu:
         # Create an ActionGroup
         self.main_window.insert_actiongroup = Gtk.ActionGroup('InsertActionGroup')
 
-        line = '\n====================\n'
-
         # Create actions
         actions = [
-            ('Picture', Gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'),
-                None, _('Insert an image from the harddisk'),
-                self.get_insert_handler(self.on_insert_pic)),
-            ('File', Gtk.STOCK_FILE, _('File'), None,
-                _('Insert a link to a file'),
-                self.get_insert_handler(self.on_insert_file)),
+            ('Picture', Gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'), None,
+             _('Insert an image from the harddisk'), self.on_insert_pic),
+            ('File', Gtk.STOCK_FILE, _('File'), None, _('Insert a link to a file'),
+             self.on_insert_file),
             # Translators: Noun
-            ('Link', Gtk.STOCK_JUMP_TO, _('_Link'), '<Control>L',
-                _('Insert a link to a website'),
-                self.get_insert_handler(self.on_insert_link)),
+            ('Link', Gtk.STOCK_JUMP_TO, _('_Link'), '<Control>L', _('Insert a link to a website'),
+             self.on_insert_link),
             ('BulletList', None, _('Bullet List'), None, None,
-                self.get_insert_handler(self.on_insert_bullet_list)),
+             self.on_insert_bullet_list),
             ('TitleMenu', None, _('Title')),
             ('NumberedTitleMenu', None, _('Numbered title')),
-            ('Line', None, _('Line'), None,
-                _('Insert a separator line'),
-                self.get_insert_handler(lambda sel_text: line)),
+            ('Line', None, _('Line'), None, _('Insert a separator line'),
+             self.on_insert_line),
             ('Date', None, _('Date/Time'), '<Ctrl>D',
-                _('Insert the current date and time (edit format in preferences)'),
-                self.get_insert_handler(self.on_insert_date_time)),
-            ('LineBreak', None, _('Line Break'), '<Ctrl>Return',
-                _('Insert a manual line break'),
-                self.get_insert_handler(lambda sel_text: '\\\\\n')),
+             _('Insert the current date and time (edit format in preferences)'),
+             self.on_insert_date_time),
+            ('LineBreak', None, _('Line Break'), '<Ctrl>Return', _('Insert a manual line break'),
+             self.on_insert_line_break),
             ('InsertMenuBar', None, _('_Insert')),
         ]
 
@@ -173,19 +181,7 @@ class InsertMenu:
         self.main_window.insert_button.set_tooltip_text(_('Insert images, files, links and other content'))
         self.main_window.builder.get_object('edit_toolbar').insert(self.main_window.insert_button, -1)
 
-    def get_insert_handler(self, func):
-        def insert_handler(widget):
-            editor = self.main_window.day_text_field
-            sel_text = editor.get_selected_text()
-            repl = func(sel_text)
-            if isinstance(repl, str):
-                editor.replace_selection(repl)
-            elif isinstance(repl, tuple):
-                editor.replace_selection_and_highlight(*repl)
-            else:
-                assert repl is None, repl
-        return insert_handler
-
+    @insert_handler
     def on_insert_pic(self, sel_text):
         dirs = self.main_window.journal.dirs
         picture_chooser = self.main_window.builder.get_object('picture_chooser')
@@ -256,6 +252,7 @@ class InsertMenu:
 
             return '\n'.join(lines)
 
+    @insert_handler
     def on_insert_file(self, sel_text):
         dirs = self.main_window.journal.dirs
         file_chooser = self.main_window.builder.get_object('file_chooser')
@@ -276,6 +273,7 @@ class InsertMenu:
             # It is always safer to add the "file://" protocol and the ""s
             return '[{} ""{}""]'.format(sel_text or tail, filename)
 
+    @insert_handler
     def on_insert_link(self, sel_text):
         link_creator = self.main_window.builder.get_object('link_creator')
         link_location_entry = self.main_window.builder.get_object('link_location_entry')
@@ -318,17 +316,31 @@ class InsertMenu:
             else:
                 self.main_window.journal.show_message(_('No link location has been entered'), error=True)
 
+    @insert_handler
     def on_insert_bullet_list(self, sel_text):
         if sel_text:
             return '\n'.join('- %s' % row for row in sel_text.splitlines())
         return self.bullet_list
 
-    def on_insert_title(self, *args, level):
-        self.main_window.day_text_field.apply_format('title{}'.format(level))
+    @insert_handler
+    def on_insert_title(self, sel_text, level):
+        markup = '=' * level
+        return ' '.join((markup, sel_text, markup))
 
-    def on_insert_numbered_title(self, *args, level):
-        self.main_window.day_text_field.apply_format('numberedtitle{}'.format(level))
+    @insert_handler
+    def on_insert_numbered_title(self, sel_text, level):
+        markup = '+' * level
+        return ' '.join((markup, sel_text, markup))
 
+    @insert_handler
+    def on_insert_line(self, sel_text):
+        return '\n====================\n'
+
+    @insert_handler
     def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString')
         return dates.format_date(format_string)
+
+    @insert_handler
+    def on_insert_line_break(self, sel_text):
+        return '\\\\\n'

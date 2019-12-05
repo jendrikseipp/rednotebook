@@ -207,10 +207,6 @@ class Editor(GObject.GObject):
             'strikethrough': ('--', '--')
         }
 
-        for level in range(1, 6):
-            format_to_markups['title{}'.format(level)] = ('=' * level, ) * 2
-            format_to_markups['numberedtitle{}'.format(level)] = ('+' * level, ) * 2
-
         left_markup, right_markup = format_to_markups[format]
         if format == 'monospace' and '\n' in selection:
             left_markup = '\n```\n'
