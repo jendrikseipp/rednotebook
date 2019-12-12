@@ -7,6 +7,7 @@ please check back with me briefly about its status.
 
 === Roadmap ===
 
+X Add menu items for adding titles (#464, Paweł Żukowski).
 O Update Github README file.
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
@@ -161,3 +162,4 @@ O Color submenu in format menu with additional color picker and color highlighti
 - Use new markup for images: {/home/user/pic.png?50} (Too disruptive)
 - Support %!include, %!preprocess, etc. (very txt2tags specific)
 - Encryption (there are dedicated tools for encrypting files)
+- Highlight the current day in the calendar (#466, Gtk.Calendar supports only one hightlight style)
