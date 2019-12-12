@@ -39,13 +39,6 @@ MENUITEMS_XML = '''\
         <menuitem action="Title4"/>
         <menuitem action="Title5"/>
     </menu>
-    <menu action="NumberedTitleMenu">
-        <menuitem action="NumberedTitle1"/>
-        <menuitem action="NumberedTitle2"/>
-        <menuitem action="NumberedTitle3"/>
-        <menuitem action="NumberedTitle4"/>
-        <menuitem action="NumberedTitle5"/>
-    </menu>
     <menuitem action="Line"/>
     <menuitem action="Date"/>
     <menuitem action="LineBreak"/>
@@ -125,7 +118,6 @@ class InsertMenu:
             ('BulletList', None, _('Bullet List'), None, None,
              self.on_insert_bullet_list),
             ('TitleMenu', None, _('Title')),
-            ('NumberedTitleMenu', None, _('Numbered title')),
             ('Line', None, _('Line'), None, _('Insert a separator line'),
              self.on_insert_line),
             ('Date', None, _('Date/Time'), '<Ctrl>D',
@@ -136,7 +128,7 @@ class InsertMenu:
             ('InsertMenuBar', None, _('_Insert')),
         ]
 
-        # Create (numbered)title submenu actions
+        # Create title submenu actions
         for level in range(1, 6):
             action_label = '{} {}'.format(_('Level'), level)
             actions.append((
@@ -146,14 +138,6 @@ class InsertMenu:
                 '<Control>{}'.format(level),
                 None,
                 functools.partial(self.on_insert_title, level=level)
-            ))
-            actions.append((
-                'NumberedTitle{}'.format(level),
-                None,
-                action_label,
-                '<Control><Alt>{}'.format(level),
-                None,
-                functools.partial(self.on_insert_numbered_title, level=level)
             ))
 
         self.main_window.insert_actiongroup.add_actions(actions)
@@ -325,11 +309,6 @@ class InsertMenu:
     @insert_handler
     def on_insert_title(self, sel_text, level):
         markup = '=' * level
-        return ' '.join((markup, sel_text, markup))
-
-    @insert_handler
-    def on_insert_numbered_title(self, sel_text, level):
-        markup = '+' * level
         return ' '.join((markup, sel_text, markup))
 
     @insert_handler
