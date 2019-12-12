@@ -16,6 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import functools
 import os
 
 from gi.repository import Gtk
@@ -31,7 +32,13 @@ MENUITEMS_XML = '''\
     <menuitem action="File"/>
     <menuitem action="Link"/>
     <menuitem action="BulletList"/>
-    <menuitem action="Title"/>
+    <menu action="TitleMenu">
+        <menuitem action="Title1"/>
+        <menuitem action="Title2"/>
+        <menuitem action="Title3"/>
+        <menuitem action="Title4"/>
+        <menuitem action="Title5"/>
+    </menu>
     <menuitem action="Line"/>
     <menuitem action="Date"/>
     <menuitem action="LineBreak"/>
@@ -59,6 +66,21 @@ def get_image(name):
     return image
 
 
+def insert_handler(callback_method):
+    @functools.wraps(callback_method)
+    def insert_handler_wrapper(self, widget, *args, **kwargs):
+        editor = self.main_window.day_text_field
+        sel_text = editor.get_selected_text()
+        repl = callback_method(self, sel_text, *args, **kwargs)
+        if isinstance(repl, str):
+            editor.replace_selection(repl)
+        elif isinstance(repl, tuple):
+            editor.replace_selection_and_highlight(*repl)
+        else:
+            assert repl is None, repl
+    return insert_handler_wrapper
+
+
 class InsertMenu:
     def __init__(self, main_window):
         self.main_window = main_window
@@ -84,51 +106,41 @@ class InsertMenu:
         # Create an ActionGroup
         self.main_window.insert_actiongroup = Gtk.ActionGroup('InsertActionGroup')
 
-        line = '\n====================\n'
-
-        # table = ('\n|| Whitespace Left | Whitespace Right | Resulting Alignment |\n'
-        #            '| 1               | more than 1     | Align left   |\n'
-        #            '|     more than 1 |               1 |   Align right |\n'
-        #            '|   more than 1   |   more than 1   |   Center   |\n'
-        #            '|| Title rows | are always | centered |\n'
-        #            '|  Use two vertical  |  lines on the left  |  for title rows  |\n'
-        #            '|  Always use  |  at least  |  one whitespace  |\n')
-
-        def tmpl(_letter):
-            return ''  # return ' (Ctrl+%s)' % letter
-
         # Create actions
-        self.main_window.insert_actiongroup.add_actions([
-            ('Picture', Gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'),
-                None, _('Insert an image from the harddisk'),
-                self.get_insert_handler(self.on_insert_pic)),
-            ('File', Gtk.STOCK_FILE, _('File'), None,
-                _('Insert a link to a file'),
-                self.get_insert_handler(self.on_insert_file)),
+        actions = [
+            ('Picture', Gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'), None,
+             _('Insert an image from the harddisk'), self.on_insert_pic),
+            ('File', Gtk.STOCK_FILE, _('File'), None, _('Insert a link to a file'),
+             self.on_insert_file),
             # Translators: Noun
-            ('Link', Gtk.STOCK_JUMP_TO, _('_Link') + tmpl('L'), '<Control>L',
-                _('Insert a link to a website'),
-                self.get_insert_handler(self.on_insert_link)),
+            ('Link', Gtk.STOCK_JUMP_TO, _('_Link'), '<Control>L', _('Insert a link to a website'),
+             self.on_insert_link),
             ('BulletList', None, _('Bullet List'), None, None,
-                self.get_insert_handler(self.on_insert_bullet_list)),
-            # ('NumberedList', None, _('Numbered List'), None, None,
-            #     self.get_insert_handler(self.on_insert_numbered_list)),
-            ('Title', None, _('Title'), None, None, self.on_insert_title),
-            ('Line', None, _('Line'), None,
-                _('Insert a separator line'),
-                self.get_insert_handler(lambda sel_text: line)),
-            # ('Table', None, _('Table'), None, None,
-            #     self.get_insert_handler(lambda sel_text: table)),
-            # ('Formula', None, _('Latex Formula'), None, None,
-            #     self.get_insert_handler(self.on_insert_formula)),
-            ('Date', None, _('Date/Time') + tmpl('D'), '<Ctrl>D',
-                _('Insert the current date and time (edit format in preferences)'),
-                self.get_insert_handler(self.on_insert_date_time)),
-            ('LineBreak', None, _('Line Break'), '<Ctrl>Return',
-                _('Insert a manual line break'),
-                self.get_insert_handler(lambda sel_text: '\\\\\n')),
+             self.on_insert_bullet_list),
+            ('TitleMenu', None, _('Title')),
+            ('Line', None, _('Line'), None, _('Insert a separator line'),
+             self.on_insert_line),
+            ('Date', None, _('Date/Time'), '<Ctrl>D',
+             _('Insert the current date and time (edit format in preferences)'),
+             self.on_insert_date_time),
+            ('LineBreak', None, _('Line Break'), '<Ctrl>Return', _('Insert a manual line break'),
+             self.on_insert_line_break),
             ('InsertMenuBar', None, _('_Insert')),
-        ])
+        ]
+
+        # Create title submenu actions
+        for level in range(1, 6):
+            action_label = '{} {}'.format(_('Level'), level)
+            actions.append((
+                'Title{}'.format(level),
+                None,
+                action_label,
+                '<Control>{}'.format(level),
+                None,
+                functools.partial(self.on_insert_title, level=level)
+            ))
+
+        self.main_window.insert_actiongroup.add_actions(actions)
 
         # Add the actiongroup to the uimanager
         uimanager.insert_action_group(self.main_window.insert_actiongroup, 0)
@@ -153,19 +165,7 @@ class InsertMenu:
         self.main_window.insert_button.set_tooltip_text(_('Insert images, files, links and other content'))
         self.main_window.builder.get_object('edit_toolbar').insert(self.main_window.insert_button, -1)
 
-    def get_insert_handler(self, func):
-        def insert_handler(widget):
-            editor = self.main_window.day_text_field
-            sel_text = editor.get_selected_text()
-            repl = func(sel_text)
-            if isinstance(repl, str):
-                editor.replace_selection(repl)
-            elif isinstance(repl, tuple):
-                editor.replace_selection_and_highlight(*repl)
-            else:
-                assert repl is None, repl
-        return insert_handler
-
+    @insert_handler
     def on_insert_pic(self, sel_text):
         dirs = self.main_window.journal.dirs
         picture_chooser = self.main_window.builder.get_object('picture_chooser')
@@ -174,18 +174,18 @@ class InsertMenu:
         # if no text is selected, we can support inserting multiple images
         picture_chooser.set_select_multiple(not sel_text)
 
-        filter = Gtk.FileFilter()
-        filter.set_name("Images")
-        filter.add_mime_type("image/bmp")
-        filter.add_mime_type("image/gif")
-        filter.add_mime_type("image/jpeg")
-        filter.add_mime_type("image/png")
+        file_filter = Gtk.FileFilter()
+        file_filter.set_name("Images")
+        file_filter.add_mime_type("image/bmp")
+        file_filter.add_mime_type("image/gif")
+        file_filter.add_mime_type("image/jpeg")
+        file_filter.add_mime_type("image/png")
         # SVG images aren't found by MIME type on Windows.
-        filter.add_pattern("*.svg")
+        file_filter.add_pattern("*.svg")
 
         # File filter hides all files on MacOS.
         if not filesystem.IS_MAC:
-            picture_chooser.add_filter(filter)
+            picture_chooser.add_filter(file_filter)
 
         # Add box for inserting image width.
         box = Gtk.HBox()
@@ -236,6 +236,7 @@ class InsertMenu:
 
             return '\n'.join(lines)
 
+    @insert_handler
     def on_insert_file(self, sel_text):
         dirs = self.main_window.journal.dirs
         file_chooser = self.main_window.builder.get_object('file_chooser')
@@ -256,6 +257,7 @@ class InsertMenu:
             # It is always safer to add the "file://" protocol and the ""s
             return '[{} ""{}""]'.format(sel_text or tail, filename)
 
+    @insert_handler
     def on_insert_link(self, sel_text):
         link_creator = self.main_window.builder.get_object('link_creator')
         link_location_entry = self.main_window.builder.get_object('link_location_entry')
@@ -298,23 +300,26 @@ class InsertMenu:
             else:
                 self.main_window.journal.show_message(_('No link location has been entered'), error=True)
 
+    @insert_handler
     def on_insert_bullet_list(self, sel_text):
         if sel_text:
             return '\n'.join('- %s' % row for row in sel_text.splitlines())
         return self.bullet_list
 
-    # def on_insert_numbered_list(self, sel_text):
-    #     if sel_text:
-    #         return '\n'.join('+ %s' % row for row in sel_text.splitlines())
-    #     return self.bullet_list.replace('-', '+')
+    @insert_handler
+    def on_insert_title(self, sel_text, level):
+        markup = '=' * level
+        return ' '.join((markup, sel_text, markup))
 
-    def on_insert_title(self, *args):
-        self.main_window.day_text_field.apply_format('title')
+    @insert_handler
+    def on_insert_line(self, sel_text):
+        return '\n====================\n'
 
-    # def on_insert_formula(self, sel_text):
-    #     formula = sel_text or '\\sum_{i=1}^n i = \\frac{n(n+1)}{2}'
-    #     return '\\(', formula, '\\)'
-
+    @insert_handler
     def on_insert_date_time(self, sel_text):
         format_string = self.main_window.journal.config.read('dateTimeString')
         return dates.format_date(format_string)
+
+    @insert_handler
+    def on_insert_line_break(self, sel_text):
+        return '\\\\\n'

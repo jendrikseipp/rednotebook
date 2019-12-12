@@ -204,9 +204,9 @@ class Editor(GObject.GObject):
             'italic': ('//', '//'),
             'monospace': ('``', '``'),
             'underline': ('__', '__'),
-            'strikethrough': ('--', '--'),
-            'title': ('\n=== ', ' ===\n')
+            'strikethrough': ('--', '--')
         }
+
         left_markup, right_markup = format_to_markups[format]
         if format == 'monospace' and '\n' in selection:
             left_markup = '\n```\n'
