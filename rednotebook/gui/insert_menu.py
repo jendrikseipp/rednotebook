@@ -67,6 +67,16 @@ def get_image(name):
 
 
 def insert_handler(callback_method):
+    """
+    Allows easy creation of text insertion/substitution hooks.
+
+    If wrapped method returns a single string - it will replace selected text and place editor
+    cursor at the end of it.
+
+    Wrapped method may also return triple in (prefix, selected_text, postfix) format.
+    In such case, selected text will be replaced by "{prefix}{selected_text}{postfix}" string with
+    selected_text highlighted in the editor.
+    """
     @functools.wraps(callback_method)
     def insert_handler_wrapper(self, widget, *args, **kwargs):
         editor = self.main_window.day_text_field
@@ -309,7 +319,7 @@ class InsertMenu:
     @insert_handler
     def on_insert_title(self, sel_text, level):
         markup = '=' * level
-        return ' '.join((markup, sel_text, markup))
+        return markup, sel_text, markup
 
     @insert_handler
     def on_insert_line(self, sel_text):
