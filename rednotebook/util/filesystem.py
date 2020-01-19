@@ -257,6 +257,22 @@ def safecopy(src, dst, change_permissions=True):
     return dst
 
 
+def copytree(src, dst, change_permissions=True):
+    '''Copy directory and make it only writable and readable by user.'''
+    shutil.copytree(src, dst)
+
+    if change_permissions:
+        try:
+            # Make files and folders only writable and readable by user
+            for root, dirs, filenames in os.walk(dst):
+                os.chmod(root, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR)
+                for filename in filenames:
+                    os.chmod(os.path.join(root, filename),
+                             stat.S_IRUSR | stat.S_IWUSR)
+        except OSError:
+            pass
+
+
 def get_relative_path(from_dir, to_dir):
     '''
     Try getting the relative path from from_dir to to_dir

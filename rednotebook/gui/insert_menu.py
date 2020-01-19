@@ -254,11 +254,7 @@ class InsertMenu:
                 if copy:
                     filename = self.main_window.journal.add_file(filename)
                     if filename is None:
-                        # TODO: add translations
-                        #self.main_window.journal.show_message(
-                        #    'Could not copy image to journal directory.',
-                        #    error=True)
-
+                        # TODO: manage error
                         return
 
                 base, ext = os.path.splitext(filename)
@@ -303,6 +299,9 @@ class InsertMenu:
             # If required, copy the file and get the relative path
             if copy:
                 filename = self.main_window.journal.add_file(filename)
+                if filename is None:
+                    # TODO: manage error
+                    return
             # Else, get the sanitized absolute path
             else:
                 filename = urls.get_local_url(filename)

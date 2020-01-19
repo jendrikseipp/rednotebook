@@ -187,8 +187,17 @@ class MainMenuBar:
             return
 
         if action == 'saveas':
+            # TODO: read directory name from self.dirs
+            old_media_dir = os.path.join(self.journal.dirs.data_dir, 'media')
+
             self.journal.dirs.data_dir = new_dir
             self.journal.save_to_disk(saveas=True)
+
+            # TODO: read from self.dirs
+            new_media_dir = os.path.join(self.journal.dirs.data_dir, 'media')
+
+            filesystem.copytree(old_media_dir, new_media_dir)
+
         self.journal.open_journal(new_dir)
 
     def on_new_journal_button_activate(self, widget):
