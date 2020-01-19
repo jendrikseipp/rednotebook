@@ -556,6 +556,56 @@ class Journal:
 
         self.change_date(current_date)
 
+    def add_file(self, src):
+        '''
+        Copy file to journal directory.
+
+        The file is copied to the directory:
+            <journal_path>/media/<year>_<month>
+
+        If a different file with the same name is found in the destination
+        directory, the copy filename is modified to avoid overwritting.
+        See util.filesystem.safecopy() function for details.
+
+        The destination path of the copied relative to the journal
+        directory file is returned.
+        If there is a problem while copying the file, a None vale is
+        returned.
+        '''
+        # TODO: read media folder path from dirs
+        media_dir = os.path.join(self.dirs.data_dir, 'media')
+        try:
+            filesystem.make_directory(media_dir)
+        except OSError as err:
+            logging.error(
+                'Creating journal media directory failed: {}'.format(err))
+            return
+
+        # Create month directory
+        monthmedia_dirname = storage.format_year_and_month(
+            self.date.year, self.date.month)
+        monthmedia_dir = os.path.join(media_dir, monthmedia_dirname)
+        try:
+            filesystem.make_directory(monthmedia_dir)
+        except OSError as err:
+            logging.error('Creating month media directory failed: {}'.format(err))
+            return
+
+        # Copy file to previous dir
+        dst = os.path.join(
+            monthmedia_dir, os.path.basename(src))
+        try:
+            dst = filesystem.safecopy(src, dst)
+        except OSError as err:
+            logging.error(
+                'Copying file to journal directory failed: {}'.format(err))
+            return
+
+        dst_rel = filesystem.get_relative_path(
+            self.dirs.data_dir, dst)
+
+        return dst_rel
+
 
 def main():
     start_time = time.time()
