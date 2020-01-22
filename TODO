@@ -8,6 +8,7 @@ please check back with me briefly about its status.
 === Roadmap ===
 
 X Add menu items for adding titles (#464, Paweł Żukowski).
+X Upgrade msgfmt.py to version 1.2 (#470).
 O Update Github README file.
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
