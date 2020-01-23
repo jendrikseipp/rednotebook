@@ -272,8 +272,8 @@
 * Detach model from combobox when updating the tags to make inserting a new tag faster.
 * Fix searching for dates.
 * Fix inserting and editing templates with unicode names.
-* Fix opening and creating journals (lp:1068655)
-* Use apport (If a crash occurs on Linux, an automatic bug report is prepared, but not submitted)
+* Fix opening and creating journals (lp:1068655).
+* Use apport (If a crash occurs on Linux, an automatic bug report is prepared, but not submitted).
 * Do not allow using $HOME as a journal directory.
 * Do not let error notifications blink.
 * For Journal->New and Journal->Save-As: Only allow using empty directories.
@@ -290,7 +290,7 @@
 * Turn all entries of old "Tags" categories into tags without entries at startup.
 * Suggest last tag when a new tag is added.
 * When suggesting to use the last tag, leave focus on the tag.
-* Enable copy menu item in preview mode. (LP:834473)
+* Enable copy menu item in preview mode (LP:834473).
 * Grey out cut and paste menu items in preview mode.
 * Only allow hiding words from the cloud, not the tags.
 * Add shortcut (Ctrl+Home) for "Go to Today"
