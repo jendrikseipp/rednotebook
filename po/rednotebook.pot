@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-04 09:20+0100\n"
+"POT-Creation-Date: 2020-01-23 12:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -556,104 +556,108 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:68
+#: ../rednotebook/gui/insert_menu.py:100
 msgid "First Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:68
+#: ../rednotebook/gui/insert_menu.py:100
 msgid "Second Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:68
+#: ../rednotebook/gui/insert_menu.py:100
 msgid "Indented Item"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:69
+#: ../rednotebook/gui/insert_menu.py:101
 msgid "Two blank lines close the list"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:102
+#: ../rednotebook/gui/insert_menu.py:121
 msgid "Picture"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:103
+#: ../rednotebook/gui/insert_menu.py:122
 msgid "Insert an image from the harddisk"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:105
+#: ../rednotebook/gui/insert_menu.py:123
 msgid "File"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:106
+#: ../rednotebook/gui/insert_menu.py:123
 msgid "Insert a link to a file"
 msgstr ""
 
 #. Translators: Noun
-#: ../rednotebook/gui/insert_menu.py:109
+#: ../rednotebook/gui/insert_menu.py:126
 msgid "_Link"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:110
+#: ../rednotebook/gui/insert_menu.py:126
 msgid "Insert a link to a website"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:112
+#: ../rednotebook/gui/insert_menu.py:128
 msgid "Bullet List"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:116
+#: ../rednotebook/gui/insert_menu.py:130
 msgid "Title"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:117
+#: ../rednotebook/gui/insert_menu.py:131
 msgid "Line"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:118
+#: ../rednotebook/gui/insert_menu.py:131
 msgid "Insert a separator line"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:124
+#: ../rednotebook/gui/insert_menu.py:133
 msgid "Date/Time"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:125
+#: ../rednotebook/gui/insert_menu.py:134
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:127
+#: ../rednotebook/gui/insert_menu.py:136
 msgid "Line Break"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:128
+#: ../rednotebook/gui/insert_menu.py:136
 msgid "Insert a manual line break"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:130
+#: ../rednotebook/gui/insert_menu.py:138
 msgid "_Insert"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:152
+#: ../rednotebook/gui/insert_menu.py:143
+msgid "Level"
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:174
 msgid "Insert"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:153
+#: ../rednotebook/gui/insert_menu.py:175
 msgid "Insert images, files, links and other content"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:193
+#: ../rednotebook/gui/insert_menu.py:203
 msgid "Width (optional):"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:199
+#: ../rednotebook/gui/insert_menu.py:209
 msgid "pixels"
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:219
+#: ../rednotebook/gui/insert_menu.py:229
 msgid "Width must be an integer."
 msgstr ""
 
-#: ../rednotebook/gui/insert_menu.py:299
+#: ../rednotebook/gui/insert_menu.py:311
 msgid "No link location has been entered"
 msgstr ""
 
