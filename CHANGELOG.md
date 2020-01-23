@@ -1,3 +1,7 @@
+# 2.16 (2020-01-23)
+* Add menu items for adding titles (#464, Paweł Żukowski).
+* Upgrade msgfmt.py to version 1.2 (#470).
+
 # 2.15 (2019-12-04)
 * Fix tray icon on Windows (#394).
 
