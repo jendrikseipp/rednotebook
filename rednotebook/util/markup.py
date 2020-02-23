@@ -52,6 +52,21 @@ CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-
 
 CSS = """\
 <style type="text/css">
+    :root {
+        color-scheme: light dark;
+        --darkcolor: rgb(37,42,44);
+        --lightcolor: rgb(250, 250, 250);
+        --dark-link-color: rgb(0, 188, 212);
+        --light-link-color: rgb(0, 0, 238);
+    }
+    a { color: var(--light-link-color); }
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: var(--darkcolor);
+            color: var(--lightcolor);
+        }
+        a { color: var(--dark-link-color); }
+    }
     body {
         font-family: %(font)s;
     }

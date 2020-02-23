@@ -32,13 +32,22 @@ CLOUD_WORDS = 30
 
 CLOUD_CSS = """\
 <style type="text/css">
+    :root {
+        color-scheme: light dark;
+        --darkcolor: rgb(37,42,44);
+        --lightcolor: rgb(250, 250, 250);
+    }
     body {
         font-family: %(font)s;
         text-align: center;
     }
-    a { color:black; text-decoration:none; }
+    a { color: var(--darkcolor); text-decoration: none; }
     @media (prefers-color-scheme: dark) {
-        a { color:white; }
+        body {
+            background: var(--darkcolor);
+            color: var(--lightcolor);
+        }
+        a { color: var(--lightcolor); }
     }
     h1 { border-bottom: 1px solid grey; margin: 0; margin-bottom: 8px;
          padding: 0; font-size: 15px; line-height: 1; text-align: left;

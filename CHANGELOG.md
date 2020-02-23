@@ -1,3 +1,6 @@
+# 2.17 (2020-02-23)
+* Fix HTML colors for dark themes (#474).
+
 # 2.16 (2020-01-23)
 * Add menu items for adding titles (#464, Paweł Żukowski).
 * Upgrade msgfmt.py to version 1.2 (#470).
