@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-23 12:47+0100\n"
+"POT-Creation-Date: 2020-02-23 18:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,13 +43,13 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: ../rednotebook/util/markup.py:127 ../rednotebook/gui/categories.py:50
-#: ../rednotebook/gui/clouds.py:192 ../rednotebook/help.py:24
+#: ../rednotebook/util/markup.py:142 ../rednotebook/gui/categories.py:50
+#: ../rednotebook/gui/clouds.py:201 ../rednotebook/help.py:24
 msgid "Tags"
 msgstr ""
 
 #: ../rednotebook/util/statistics.py:68 ../rednotebook/util/statistics.py:81
-#: ../rednotebook/gui/clouds.py:195
+#: ../rednotebook/gui/clouds.py:204
 msgid "Words"
 msgstr ""
 
@@ -387,15 +387,15 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:70
+#: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words, and, #tags"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:75
+#: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:230
+#: ../rednotebook/gui/clouds.py:239
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr ""
