@@ -347,16 +347,6 @@ class Journal:
 
         self.months = storage.load_all_months_from_disk(data_dir)
 
-        # Create the media folder if it does not exist
-        # TODO: read media folder path from dirs
-        media_dir = os.path.join(self.dirs.data_dir, 'media')
-        try:
-            filesystem.make_directory(media_dir)
-        except OSError as err:
-            logging.error(
-                'Creating journal media directory failed: {}'.format(err))
-            return
-
         # Nothing to save before first day change
         self.load_day(self.actual_date)
 
