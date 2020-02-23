@@ -1,3 +1,10 @@
+rednotebook (2.17-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix HTML colors for dark themes (#474).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 23 Feb 2020 18:30:10 +0100
+
 rednotebook (2.16-1) UNRELEASED; urgency=low
 
   * New upstream release
