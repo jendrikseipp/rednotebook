@@ -1,3 +1,6 @@
+# next (unreleased)
+* Use GitHub actions for continuous integration testing.
+
 # 2.18 (2020-02-29)
 * Use background and foreground colors from GTK theme for HTML preview.
 
