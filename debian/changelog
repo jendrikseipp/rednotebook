@@ -1,3 +1,10 @@
+rednotebook (2.18-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Use background and foreground colors from GTK theme for HTML preview.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sat, 29 Feb 2020 20:48:35 +0100
+
 rednotebook (2.17-1) UNRELEASED; urgency=low
 
   * New upstream release
