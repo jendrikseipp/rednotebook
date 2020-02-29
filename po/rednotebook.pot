@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 18:29+0100\n"
+"POT-Creation-Date: 2020-02-29 20:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,13 +43,13 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: ../rednotebook/util/markup.py:142 ../rednotebook/gui/categories.py:50
-#: ../rednotebook/gui/clouds.py:201 ../rednotebook/help.py:24
+#: ../rednotebook/util/markup.py:143 ../rednotebook/gui/categories.py:50
+#: ../rednotebook/gui/clouds.py:204 ../rednotebook/help.py:24
 msgid "Tags"
 msgstr ""
 
 #: ../rednotebook/util/statistics.py:68 ../rednotebook/util/statistics.py:81
-#: ../rednotebook/gui/clouds.py:204
+#: ../rednotebook/gui/clouds.py:207
 msgid "Words"
 msgstr ""
 
@@ -250,7 +250,7 @@ msgid "Plain Text"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:333
-#: ../rednotebook/gui/main_window.py:656
+#: ../rednotebook/gui/main_window.py:665
 msgid "Template"
 msgstr ""
 
@@ -387,15 +387,15 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:79
+#: ../rednotebook/gui/clouds.py:75
 msgid "filter, these, comma, separated, words, and, #tags"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:84
+#: ../rednotebook/gui/clouds.py:80
 msgid "mtv, spam, work, job, play"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:239
+#: ../rednotebook/gui/clouds.py:242
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr ""
@@ -694,19 +694,19 @@ msgstr ""
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:177
+#: ../rednotebook/gui/main_window.py:186
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:324
+#: ../rednotebook/gui/main_window.py:333
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:569
+#: ../rednotebook/gui/main_window.py:578
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:659
+#: ../rednotebook/gui/main_window.py:668
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
