@@ -1,3 +1,6 @@
+# 2.18 (2020-02-29)
+* Use background and foreground colors from GTK theme for HTML preview.
+
 # 2.17 (2020-02-23)
 * Fix HTML colors for dark themes (#474).
 
