@@ -26,6 +26,7 @@ from gi.repository import GObject
 
 from rednotebook.gui import browser
 from rednotebook import data
+from rednotebook.util import markup
 
 
 CLOUD_WORDS = 30
@@ -34,21 +35,16 @@ CLOUD_CSS = """\
 <style type="text/css">
     :root {
         color-scheme: light dark;
-        --darkcolor: rgb(37,42,44);
-        --lightcolor: rgb(250, 250, 250);
+        --fgcolor: %(fgcolor)s;
+        --bgcolor: %(bgcolor)s;
     }
     body {
         font-family: %(font)s;
         text-align: center;
+        background: var(--bgcolor);
+        color: var(--fgcolor);
     }
-    a { color: var(--darkcolor); text-decoration: none; }
-    @media (prefers-color-scheme: dark) {
-        body {
-            background: var(--darkcolor);
-            color: var(--lightcolor);
-        }
-        a { color: var(--lightcolor); }
-    }
+    a { color: var(--fgcolor); text-decoration: none; }
     h1 { border-bottom: 1px solid grey; margin: 0; margin-bottom: 8px;
          padding: 0; font-size: 15px; line-height: 1; text-align: left;
          font-weight: normal; }
@@ -196,7 +192,14 @@ class Cloud(browser.HtmlView):
         word_cloud = self._get_cloud_body(word_counter)
         font = self.journal.config.read('previewFont')
         heading = '<h1>&#160;%s</h1>'
-        parts = ['<html><head>', CLOUD_CSS % locals(), '</head>', '<body>']
+        parts = [
+            '<html><head>',
+            CLOUD_CSS % {
+                "font": font,
+                "bgcolor": markup.BACKGROUND_COLOR,
+                "fgcolor": markup.FOREGROUND_COLOR},
+            '</head>',
+            '<body>']
         if tag_cloud:
             parts.extend([heading % _('Tags'), tag_cloud, '\n',
                           '<br />\n' * 3])

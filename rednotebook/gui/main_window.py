@@ -118,6 +118,15 @@ class MainWindow:
                         action.set_active(spell_check_enabled and can_spell_check)
         self.day_text_field.enable_spell_check(spell_check_enabled)
 
+        # Retrieve background color of text widget for HTML widget. The
+        # get_background_color() method is deprecated, but I couldn't find
+        # a different way for retrieving the color.
+        style = self.day_text_field.day_text_view.get_style_context()
+        markup.BACKGROUND_COLOR = style.get_background_color(Gtk.StateFlags.NORMAL).to_string()
+        markup.FOREGROUND_COLOR = style.get_color(Gtk.StateFlags.NORMAL).to_string()
+        logging.debug("Background color: {}".format(markup.BACKGROUND_COLOR))
+        logging.debug("Foreground color: {}".format(markup.FOREGROUND_COLOR))
+
         self.statusbar = Statusbar(self.builder.get_object('statusbar'))
 
         self.new_entry_dialog = NewEntryDialog(self)

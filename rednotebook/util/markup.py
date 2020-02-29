@@ -46,29 +46,30 @@ REGEX_NAMED_LINK = re.compile(r'(\[)(.*?)(\s"")(\S.*?\S)(""\])', flags=re.I)
 ESCAPE_COLOR = r'XBEGINCOLORX\1XSEPARATORX\2XENDCOLORX'
 COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
 
-TABLE_HEAD_BG = '#aaa'
-
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
+
+# These are default values only. The real colors of the text widget are set
+# when the app has loaded. We use these values for the HTML widget in dark mode.
+BACKGROUND_COLOR = "rgb(255, 255, 255)"
+FOREGROUND_COLOR = "rgb(0, 0, 0)"
 
 CSS = """\
 <style type="text/css">
     :root {
         color-scheme: light dark;
-        --darkcolor: rgb(37,42,44);
-        --lightcolor: rgb(250, 250, 250);
+        --fgcolor: %(fgcolor)s;
+        --bgcolor: %(bgcolor)s;
         --dark-link-color: rgb(0, 188, 212);
         --light-link-color: rgb(0, 0, 238);
     }
     a { color: var(--light-link-color); }
-    @media (prefers-color-scheme: dark) {
-        body {
-            background: var(--darkcolor);
-            color: var(--lightcolor);
-        }
-        a { color: var(--dark-link-color); }
-    }
     body {
         font-family: %(font)s;
+        background: var(--bgcolor);
+        color: var(--fgcolor);
+    }
+    @media (prefers-color-scheme: dark) {
+        a { color: var(--dark-link-color); }
     }
     <!-- Don't split last line between pages.
          This fix is only supported by Opera -->
@@ -100,7 +101,7 @@ CSS = """\
         text-align: left;
         padding-top: 5px;
         padding-bottom: 4px;
-        background-color: %(table_head_bg)s;
+        background-color: #aaa;
         color: #ffffff;
     }
     hr.heavy {
@@ -243,8 +244,8 @@ def _get_config(target, options):
         config['postproc'].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
         # Custom css
-        fonts = options.pop('font', 'sans-serif')
-        css = CSS % {'font': fonts, 'table_head_bg': TABLE_HEAD_BG}
+        font = options.pop('font', 'sans-serif')
+        css = CSS % {"font": font, "bgcolor": BACKGROUND_COLOR, "fgcolor": FOREGROUND_COLOR}
         config['postproc'].append([r'</head>', css + '</head>'])
 
         # MathJax
