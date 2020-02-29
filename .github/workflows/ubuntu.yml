@@ -36,7 +36,6 @@ jobs:
         python -m pip install --upgrade pip tox
 
     - name: Check style
-      if: matrix.python-version == '3.6'
       run: |
         tox -e style
 
