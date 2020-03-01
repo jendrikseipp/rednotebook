@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/jendrikseipp/rednotebook.svg?branch=master)](https://travis-ci.org/jendrikseipp/rednotebook)
-
 RedNotebook is a modern desktop journal. It lets you format, tag and
 search your entries. You can also add pictures, links and customizable
 templates, spell check your notes, and export to plain text, HTML,
