@@ -1,4 +1,5 @@
 # next (unreleased)
+* Use PNG version instead of SVG for RedNotebook icons to avoid problems on macOS.
 * Use GitHub actions for continuous integration testing.
 
 # 2.18 (2020-02-29)

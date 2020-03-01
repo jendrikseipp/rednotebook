@@ -293,7 +293,7 @@ class MainMenuBar:
         self.info_dialog.set_authors(info.developers)
         self.info_dialog.add_credit_section(_('Contributors:'), [info.contributors_url])
         self.info_dialog.set_translator_credits(_("translator-credits"))
-        img_path = os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rednotebook.svg')
+        img_path = os.path.join(filesystem.image_dir, 'rednotebook-icon', 'rn-128.png')
         self.info_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(img_path))
         self.info_dialog.set_license_type(Gtk.License.GPL_2_0)
         self.info_dialog.run()

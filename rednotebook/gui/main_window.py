@@ -83,7 +83,7 @@ class MainWindow:
         self.main_frame = self.builder.get_object('main_frame')
         self.main_frame.set_title('RedNotebook')
         icon = GdkPixbuf.Pixbuf.new_from_file(
-            os.path.join(filesystem.frame_icon_dir, 'rednotebook.svg'))
+            os.path.join(filesystem.frame_icon_dir, 'rn-128.png'))
         self.main_frame.set_icon(icon)
 
         self.is_fullscreen = False
@@ -299,7 +299,6 @@ class MainWindow:
         logging.debug('Tray icon visible: %s' % visible)
 
         self.tray_icon.set_tooltip_text('RedNotebook')
-        # TODO: Try using the svg here as well.
         icon_file = os.path.join(self.journal.dirs.frame_icon_dir, 'rn-32.png')
         self.tray_icon.set_from_file(icon_file)
 
