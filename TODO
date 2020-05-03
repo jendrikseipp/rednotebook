@@ -9,6 +9,7 @@ please check back with me briefly about its status.
 
 O Format source code with black.
 O Update Github README file.
+O Make sure we use libyaml and not yaml on Windows.
 O Check for latest version during startup by default.
 O Homepage: turn screenshots page into testimonials page.
 X Insert Latex formulas (LP:851471)
