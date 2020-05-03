@@ -72,6 +72,22 @@ def setup_signal_handlers(journal):
     logging.info('Connected Signals: %s' % signals)
 
 
+def get_gtk_colors():
+    """Retrieve colors of the currect GTK theme.
+
+    The get_background_color() method is deprecated, but I couldn't find
+    a different way for retrieving the color.
+    """
+    tv = Gtk.TextView()
+    tv.show()
+    style = tv.get_style_context()
+    bg_color = style.get_background_color(Gtk.StateFlags.NORMAL).to_string()
+    fg_color = style.get_color(Gtk.StateFlags.NORMAL).to_string()
+    logging.debug("Background color: {}".format(bg_color))
+    logging.debug("Foreground color: {}".format(fg_color))
+    return bg_color, fg_color
+
+
 def get_new_version_number():
     """
     Reads version number from website and returns None if it cannot be read

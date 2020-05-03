@@ -1,4 +1,5 @@
 # next (unreleased)
+* Reload GTK theme colors when saving the journal (#485).
 * Use PNG version instead of SVG for RedNotebook icons to avoid problems on macOS.
 * Use GitHub actions for continuous integration testing.
 

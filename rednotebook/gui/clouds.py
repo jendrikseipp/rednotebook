@@ -27,6 +27,7 @@ from gi.repository import GObject
 from rednotebook.gui import browser
 from rednotebook import data
 from rednotebook.util import markup
+from rednotebook.util import utils
 
 
 CLOUD_WORDS = 30
@@ -192,12 +193,13 @@ class Cloud(browser.HtmlView):
         word_cloud = self._get_cloud_body(word_counter)
         font = self.journal.config.read('previewFont')
         heading = '<h1>&#160;%s</h1>'
+        bg_color, fg_color = utils.get_gtk_colors()
         parts = [
             '<html><head>',
             CLOUD_CSS % {
                 "font": font,
-                "bgcolor": markup.BACKGROUND_COLOR,
-                "fgcolor": markup.FOREGROUND_COLOR},
+                "bgcolor": bg_color,
+                "fgcolor": fg_color},
             '</head>',
             '<body>']
         if tag_cloud:

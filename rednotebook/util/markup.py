@@ -28,6 +28,7 @@ from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
 from rednotebook.util import filesystem
 from rednotebook.util import urls
+from rednotebook.util import utils
 
 
 # Linebreaks are only allowed at line ends
@@ -47,11 +48,6 @@ ESCAPE_COLOR = r'XBEGINCOLORX\1XSEPARATORX\2XENDCOLORX'
 COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
 
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
-
-# These are default values only. The real colors of the text widget are set
-# when the app has loaded. We use these values for the HTML widget in dark mode.
-BACKGROUND_COLOR = "rgb(255, 255, 255)"
-FOREGROUND_COLOR = "rgb(0, 0, 0)"
 
 CSS = """\
 <style type="text/css">
@@ -245,7 +241,8 @@ def _get_config(target, options):
 
         # Custom css
         font = options.pop('font', 'sans-serif')
-        css = CSS % {"font": font, "bgcolor": BACKGROUND_COLOR, "fgcolor": FOREGROUND_COLOR}
+        bg_color, fg_color = utils.get_gtk_colors()
+        css = CSS % {"font": font, "bgcolor": bg_color, "fgcolor": fg_color}
         config['postproc'].append([r'</head>', css + '</head>'])
 
         # MathJax
