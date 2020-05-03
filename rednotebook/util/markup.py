@@ -48,11 +48,6 @@ COLOR_ESCAPED = r'XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX'
 
 CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
 
-# These are default values only. The real colors of the text widget are set
-# when the app has loaded. We use these values for the HTML widget in dark mode.
-BACKGROUND_COLOR = "rgb(255, 255, 255)"
-FOREGROUND_COLOR = "rgb(0, 0, 0)"
-
 CSS = """\
 <style type="text/css">
     :root {
@@ -245,7 +240,11 @@ def _get_config(target, options):
 
         # Custom css
         font = options.pop('font', 'sans-serif')
-        css = CSS % {"font": font, "bgcolor": BACKGROUND_COLOR, "fgcolor": FOREGROUND_COLOR}
+        css = CSS % {
+            "font": font,
+            "bgcolor": options.get("bgcolor", "white"),
+            "fgcolor": options.get("fgcolor", "black"),
+        }
         config['postproc'].append([r'</head>', css + '</head>'])
 
         # MathJax
