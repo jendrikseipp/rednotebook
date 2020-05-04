@@ -1,4 +1,4 @@
-# next (unreleased)
+# 2.19 (2020-05-04)
 * Reload GTK theme colors when saving the journal (#485).
 * Don't use dark mode for exported HTML files (#486).
 * Use PNG version instead of SVG for RedNotebook icons to avoid problems on macOS.
