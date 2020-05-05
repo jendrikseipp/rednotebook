@@ -143,7 +143,7 @@ class MainWindow:
                     self.internal = True
 
                 def show_day(self, new_day):
-                    html = self.journal.convert(new_day.text, 'xhtml')
+                    html = self.journal.convert(new_day.text, 'xhtml', use_gtk_theme=True)
                     self.load_html(html)
 
                 def shutdown(self):
@@ -162,7 +162,7 @@ class MainWindow:
                     self.internal = True
 
                 def show_day(self, new_day):
-                    html = self.journal.convert(new_day.text, 'xhtml')
+                    html = self.journal.convert(new_day.text, 'xhtml', use_gtk_theme=True)
                     self.load_html(html)
 
                 def highlight(self, text):

@@ -1,3 +1,13 @@
+rednotebook (2.19-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Reload GTK theme colors when saving the journal (#485).
+  * Don't use dark mode for exported HTML files (#486).
+  * Use PNG version instead of SVG for RedNotebook icons to avoid problems on macOS.
+  * Use GitHub actions for continuous integration testing.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 04 May 2020 11:33:31 +0200
+
 rednotebook (2.18-1) UNRELEASED; urgency=low
 
   * New upstream release

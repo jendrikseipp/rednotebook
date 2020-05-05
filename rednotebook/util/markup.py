@@ -28,7 +28,6 @@ from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
 from rednotebook.util import filesystem
 from rednotebook.util import urls
-from rednotebook.util import utils
 
 
 # Linebreaks are only allowed at line ends
@@ -241,8 +240,11 @@ def _get_config(target, options):
 
         # Custom css
         font = options.pop('font', 'sans-serif')
-        bg_color, fg_color = utils.get_gtk_colors()
-        css = CSS % {"font": font, "bgcolor": bg_color, "fgcolor": fg_color}
+        css = CSS % {
+            "font": font,
+            "bgcolor": options.get("bgcolor", "white"),
+            "fgcolor": options.get("fgcolor", "black"),
+        }
         config['postproc'].append([r'</head>', css + '</head>'])
 
         # MathJax

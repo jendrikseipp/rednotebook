@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-29 20:46+0100\n"
+"POT-Creation-Date: 2020-05-04 11:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../rednotebook/util/utils.py:104
+#: ../rednotebook/util/utils.py:118
 #, python-format
 msgid "You have version <b>%s</b>."
 msgstr ""
 
-#: ../rednotebook/util/utils.py:105
+#: ../rednotebook/util/utils.py:119
 #, python-format
 msgid "The latest version is <b>%s</b>."
 msgstr ""
 
-#: ../rednotebook/util/utils.py:107
+#: ../rednotebook/util/utils.py:121
 msgid "If you like the program, please consider making a donation."
 msgstr ""
 
-#: ../rednotebook/util/utils.py:108
+#: ../rednotebook/util/utils.py:122
 msgid "Do you want to visit the RedNotebook homepage?"
 msgstr ""
 
-#: ../rednotebook/util/utils.py:115
+#: ../rednotebook/util/utils.py:129
 msgid "Do not ask again"
 msgstr ""
 
-#: ../rednotebook/util/utils.py:135
+#: ../rednotebook/util/utils.py:149
 msgid "unknown"
 msgstr ""
 
-#: ../rednotebook/util/markup.py:143 ../rednotebook/gui/categories.py:50
-#: ../rednotebook/gui/clouds.py:204 ../rednotebook/help.py:24
+#: ../rednotebook/util/markup.py:138 ../rednotebook/gui/categories.py:50
+#: ../rednotebook/gui/clouds.py:202 ../rednotebook/help.py:24
 msgid "Tags"
 msgstr ""
 
 #: ../rednotebook/util/statistics.py:68 ../rednotebook/util/statistics.py:81
-#: ../rednotebook/gui/clouds.py:207
+#: ../rednotebook/gui/clouds.py:205
 msgid "Words"
 msgstr ""
 
@@ -250,7 +250,7 @@ msgid "Plain Text"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:333
-#: ../rednotebook/gui/main_window.py:665
+#: ../rednotebook/gui/main_window.py:655
 msgid "Template"
 msgstr ""
 
@@ -395,7 +395,7 @@ msgstr ""
 msgid "mtv, spam, work, job, play"
 msgstr ""
 
-#: ../rednotebook/gui/clouds.py:242
+#: ../rednotebook/gui/clouds.py:240
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr ""
@@ -694,19 +694,19 @@ msgstr ""
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:186
+#: ../rednotebook/gui/main_window.py:177
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:333
+#: ../rednotebook/gui/main_window.py:323
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:578
+#: ../rednotebook/gui/main_window.py:568
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:668
+#: ../rednotebook/gui/main_window.py:658
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -839,20 +839,20 @@ msgstr ""
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:312
+#: ../rednotebook/journal.py:316
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:316
+#: ../rednotebook/journal.py:320
 msgid "The journal could not be saved"
 msgstr ""
 
-#: ../rednotebook/journal.py:318
+#: ../rednotebook/journal.py:322
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:458
+#: ../rednotebook/journal.py:462
 msgid "Error"
 msgstr ""
 
