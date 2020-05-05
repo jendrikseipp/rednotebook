@@ -428,6 +428,32 @@ are more likely to be stolen. If you encrypt your home partition all
 RedNotebook data will be encrypted, too.
 
 
+== Appearance on Windows ==
+
+You can use a GTK3 compatible theme to change the appearance of your
+RedNotebook installation. Once you find a GTK3 compatible theme, copy
+the theme into ``<RedNotebook Dir>\\share\\themes``, e.g.,
+``C:\\Program Files (x86)\\RedNotebook\\share\\themes`` and then edit
+``C:\\Program Files (x86)\\RedNotebook\\etc\\gtk-3.0\\settings.ini`` to
+comment out the current theme setting and add your own.
+
+For example, for using the [FlatStudio https://www.gnome-look.org/p/1013733/]
+theme, download the ``*.tar.gz``
+file and extract it. Out of the four themes -- FlatStudio,
+FlatStudioDark, FlatStudioLight, FlatStudioGray -- pick one of the
+folders (e.g., FlatStudioDark) and copy it into
+``<RedNotebook Dir>\\share\\themes``. Then edit
+``etc\\gtk-3.0\\settings.ini`` so it looks similar to this:
+
+```
+[Settings]
+# gtk-theme-name=win32
+gtk-theme-name=FlatStudioDark
+```
+
+Finally, relaunch RedNotebook.
+
+
 == Tips ==
 %(multiple_entries_text)s
 
@@ -573,32 +599,6 @@ In summary the data format is a hierarchy of dictionaries. This way the
 format can be easily extended if the need for that arises.
 
 All textual content can be formatted with http://txt2tags.org markup.
-
-
-== Appearance on Windows ==
-
-You can use a GTK3 compatible theme to change the appearance of your
-RedNotebook installation. Once you find a GTK3 compatible theme, copy
-the theme into ``<RedNotebook Dir>\\share\\themes``, e.g.,
-``C:\\Program Files (x86)\\RedNotebook\\share\\themes`` and then edit
-``C:\\Program Files (x86)\\RedNotebook\\etc\\gtk-3.0\\settings.ini`` to
-comment out the current theme setting and add your own.
-
-For example, for using the [FlatStudio https://www.gnome-look.org/p/1013733/]
-theme, download the ``*.tar.gz``
-file and extract it. Out of the four themes -- FlatStudio,
-FlatStudioDark, FlatStudioLight, FlatStudioGray -- pick one of the
-folders (e.g., FlatStudioDark) and copy it into
-``<RedNotebook Dir>\\share\\themes``. Then edit
-``etc\\gtk-3.0\\settings.ini`` so it looks similar to this:
-
-```
-[Settings]
-# gtk-theme-name=win32
-gtk-theme-name=FlatStudioDark
-```
-
-Finally, relaunch RedNotebook.
 
 
 == Questions ==
