@@ -575,6 +575,29 @@ format can be easily extended if the need for that arises.
 All textual content can be formatted with http://txt2tags.org markup.
 
 
+== Appearance/Theme ==
+
+=== Windows ===
+You can use a gtk3 compatible theme to change the appearance of your 
+RedNotebook installation. 
+Once you find a gtk3 compatible theme,
+copy the theme into <RedNotebook Dir>\\share\\themes
+e.g.: C:\\Program Files (x86)\\RedNotebook\\share\\themes and then edit 
+C:\\Program Files (x86)\\RedNotebook\\etc\\gtk-3.0\\settings.ini to comment
+out it's current setting and add your own.
+For example, for using [FlatStudio https://www.gnome-look.org/p/1013733/] theme,
+ download (tar.gz) and expand it. Out of the four themes -
+FlatStudio, FlatStudioDark, FlatStudioLight, FlatStudioGray, pick one of
+the folders (e.g. FlatStudioDark) and copy it to <RedNotebook Dir>\\share\\themes
+ folder. Then edit etc\\gtk-3.0\\settings.ini so it looks similar to this:
+```
+[Settings]
+#gtk-theme-name=win32
+gtk-theme-name=FlatStudioDark
+```
+Relaunch RedNotebook.
+
+
 == Questions ==
 
 If you have any questions or comments, feel free to post them on the
