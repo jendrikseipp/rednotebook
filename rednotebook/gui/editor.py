@@ -289,7 +289,7 @@ class Editor(GObject.GObject):
         # We do not want the default behaviour
         self.day_text_view.emit_stop_by_name('drag-data-received')
 
-        iter = self.day_text_view.get_iter_at_location(x, y)
+        iter = self.day_text_view.get_iter_at_location(x, y)[1]
 
         def is_pic(uri):
             _, ext = os.path.splitext(uri)
