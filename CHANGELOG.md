@@ -1,4 +1,5 @@
 # next
+* Fix drag and drop (#492, @dgcampea).
 * Document how to change the theme on Windows (#487, Ankur A. Sharma).
 
 # 2.19 (2020-05-04)
