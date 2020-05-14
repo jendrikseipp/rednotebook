@@ -25,8 +25,8 @@ PYINSTALLER_MIN_VERSION = "3.2.1"
 # > from PyInstaller.utils.hooks import get_package_paths
 # > get_package_paths("cefpython3")
 CEFPYTHON3_DIR = os.path.join(
-    os.path.dirname(sys.executable),
-    'Lib', 'site-packages', 'cefpython3')
+    os.path.dirname(sys.executable), "Lib", "site-packages", "cefpython3"
+)
 
 if platform.system() == "Windows":
     CYTHON_MODULE_EXT = ".pyd"
@@ -40,8 +40,9 @@ logger = logging.getLogger(__name__)
 # Functions
 def check_platforms():
     if platform.system() != "Windows":
-        raise SystemExit("Error: Currently only Windows platform is "
-                         " supported, see Issue #135.")
+        raise SystemExit(
+            "Error: Currently only Windows platform is " " supported, see Issue #135."
+        )
 
 
 def check_pyinstaller_version():
@@ -53,22 +54,23 @@ def check_pyinstaller_version():
     version = PyInstaller.__version__
     match = re.search(r"^\d+\.\d+", version)
     if not (match.group(0) >= PYINSTALLER_MIN_VERSION):
-        raise SystemExit("Error: pyinstaller %s or higher is required"
-                         % PYINSTALLER_MIN_VERSION)
+        raise SystemExit(
+            "Error: pyinstaller %s or higher is required" % PYINSTALLER_MIN_VERSION
+        )
 
 
 def check_cefpython3_version():
     if not is_module_satisfies("cefpython3 >= %s" % CEFPYTHON_MIN_VERSION):
-        raise SystemExit("Error: cefpython3 %s or higher is required"
-                         % CEFPYTHON_MIN_VERSION)
+        raise SystemExit(
+            "Error: cefpython3 %s or higher is required" % CEFPYTHON_MIN_VERSION
+        )
 
 
 def get_cefpython_modules():
     """Get all cefpython Cython modules in the cefpython3 package.
     It returns a list of names without file extension. Eg.
     'cefpython_py27'. """
-    pyds = glob.glob(os.path.join(CEFPYTHON3_DIR,
-                                  "cefpython_py*" + CYTHON_MODULE_EXT))
+    pyds = glob.glob(os.path.join(CEFPYTHON3_DIR, "cefpython_py*" + CYTHON_MODULE_EXT))
     assert len(pyds) > 1, "Missing cefpython3 Cython modules"
     modules = []
     for path in pyds:
@@ -125,21 +127,26 @@ def get_cefpython3_datas():
         if filename[:-4] in get_cefpython_modules():
             continue
         # CEF binaries and datas
-        if filename[-4:] in [".exe", ".dll", ".so", ".pak", ".dat", ".bin",
-                             ".txt"]\
-                or filename in ["License", "subprocess"]:
+        if filename[-4:] in [
+            ".exe",
+            ".dll",
+            ".so",
+            ".pak",
+            ".dat",
+            ".bin",
+            ".txt",
+        ] or filename in ["License", "subprocess"]:
             logger.info("Include cefpython3 data: %s" % filename)
-            ret.append((os.path.join(CEFPYTHON3_DIR, filename),
-                        "."))
+            ret.append((os.path.join(CEFPYTHON3_DIR, filename), "."))
 
     # The .pak files in cefpython3/locales/ directory
     locales_dir = os.path.join(CEFPYTHON3_DIR, "locales")
     assert os.path.exists(locales_dir), "locales/ dir not found in cefpython3"
     for filename in os.listdir(locales_dir):
-        logger.info("Include cefpython3 data: %s/%s" % (
-            os.path.basename(locales_dir), filename))
-        ret.append((os.path.join(locales_dir, filename),
-                    "locales"))
+        logger.info(
+            "Include cefpython3 data: %s/%s" % (os.path.basename(locales_dir), filename)
+        )
+        ret.append((os.path.join(locales_dir, filename), "locales"))
     return ret
 
 
@@ -180,9 +187,7 @@ hiddenimports = [
     "weakref",
 ]
 if sys.version_info.major == 2:
-    hiddenimports += [
-        "urlparse",
-    ]
+    hiddenimports += ["urlparse"]
 
 # Excluded modules
 excludedimports = get_excluded_cefpython_modules()

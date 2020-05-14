@@ -31,11 +31,13 @@ except ImportError as err:
     cef = None
     if filesystem.IS_WIN:
         logging.info(
-            'CEF Python not found. Disabling clouds and'
-            ' in-app previews. Error message: "{}"'.format(err))
+            "CEF Python not found. Disabling clouds and"
+            ' in-app previews. Error message: "{}"'.format(err)
+        )
 
 
 if cef:
+
     class _RequestHandler:
         def OnBeforeBrowse(self, browser, frame, request, **_):
             """Called when the loading state has changed."""
@@ -53,11 +55,12 @@ if cef:
         the browser is created.
 
         """
+
         def __init__(self):
             super().__init__()
             self._browser = None
             self._win32_handle = None
-            self._initial_html = ''
+            self._initial_html = ""
 
             sys.excepthook = cef.ExceptHook  # To shutdown CEF processes on error.
             cef.Initialize(settings={"context_menu": {"enabled": False}})
@@ -84,7 +87,8 @@ if cef:
             ctypes.pythonapi.PyCapsule_GetPointer.restype = ctypes.c_void_p
             ctypes.pythonapi.PyCapsule_GetPointer.argtypes = [ctypes.py_object]
             gpointer = ctypes.pythonapi.PyCapsule_GetPointer(
-                self.get_property("window").__gpointer__, None)
+                self.get_property("window").__gpointer__, None
+            )
             # The GTK 3.22 stack needs "gdk-3-3.0.dll".
             libgdk = ctypes.CDLL("libgdk-3-0.dll")
             handle = libgdk.gdk_win32_window_get_handle(gpointer)
@@ -102,10 +106,7 @@ if cef:
             window_info = cef.WindowInfo()
             self._win32_handle = self.get_handle()
             window_info.SetAsChild(self._win32_handle)
-            self._browser = cef.CreateBrowserSync(
-                window_info,
-                url="file:///dummy/",
-            )
+            self._browser = cef.CreateBrowserSync(window_info, url="file:///dummy/")
             self._browser.SetClientHandler(_RequestHandler())
             self.load_html(self._initial_html)
             self._initial_html = None

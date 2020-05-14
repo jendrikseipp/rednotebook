@@ -22,44 +22,45 @@ import re
 
 TEXT_RESULT_LENGTH = 42
 
-ALPHA = r'[^\W\d_]'
-ALPHA_NUMERIC = r'\w'
-HEX = r'[0-9A-F]{6}'
-HASHTAG_EXCLUDES = r'%(HEX)s|include' % locals()
-HASHTAG_TEXT = r'%(ALPHA_NUMERIC)s*%(ALPHA)s+%(ALPHA_NUMERIC)s*' % locals()
+ALPHA = r"[^\W\d_]"
+ALPHA_NUMERIC = r"\w"
+HEX = r"[0-9A-F]{6}"
+HASHTAG_EXCLUDES = r"%(HEX)s|include" % locals()
+HASHTAG_TEXT = r"%(ALPHA_NUMERIC)s*%(ALPHA)s+%(ALPHA_NUMERIC)s*" % locals()
 HASHTAG_PATTERN = (
-    r'(^|[^%(ALPHA_NUMERIC)s&#])(#|\uFF03)(?!%(HASHTAG_EXCLUDES)s)'
-    '(%(HASHTAG_TEXT)s)' % locals())
+    r"(^|[^%(ALPHA_NUMERIC)s&#])(#|\uFF03)(?!%(HASHTAG_EXCLUDES)s)"
+    "(%(HASHTAG_TEXT)s)" % locals()
+)
 HASHTAG = re.compile(HASHTAG_PATTERN, flags=re.I)
 
 
 def escape_tag(tag):
-    return tag.lower().replace(' ', '_')
+    return tag.lower().replace(" ", "_")
 
 
 def get_text_with_dots(text, start, end, found_text=None):
-    '''
+    """
     Find the outermost spaces and innermost newlines around
     (start, end) and add dots if needed.
-    '''
+    """
     bound1 = max(0, start - int(TEXT_RESULT_LENGTH // 2))
     bound2 = max(0, start)
     bound3 = min(end, len(text))
     bound4 = min(len(text), end + int(TEXT_RESULT_LENGTH // 2))
 
     start_values = [bound1]
-    newline = text.rfind('\n', bound1, bound2)
+    newline = text.rfind("\n", bound1, bound2)
     start_values.append(newline)
     if newline == -1:
-        start_values.append(text.find(' ', bound1, bound2))
+        start_values.append(text.find(" ", bound1, bound2))
     start = max(start_values)
 
     end_values = [bound4]
-    newline = text.find('\n', bound3, bound4)
+    newline = text.find("\n", bound3, bound4)
     if newline != -1:
         end_values.append(newline)
     else:
-        space = text.rfind(' ', bound3, bound4)
+        space = text.rfind(" ", bound3, bound4)
         if space != -1:
             end_values.append(space)
     end = min(end_values)
@@ -67,32 +68,32 @@ def get_text_with_dots(text, start, end, found_text=None):
     assert bound1 <= start <= bound2
     assert bound3 <= end <= bound4, (bound3, end, bound4)
 
-    res = ''
+    res = ""
     if start > 0:
-        res += '... '
+        res += "... "
     res += text[start:end]
     if end < len(text):
-        res += ' ...'
+        res += " ..."
 
-    res = res.replace('\n', ' ')
+    res = res.replace("\n", " ")
     if found_text:
         # Make the searched_text bold
-        res = res.replace(found_text, 'STARTBOLD%sENDBOLD' % found_text)
+        res = res.replace(found_text, "STARTBOLD%sENDBOLD" % found_text)
 
     return res
 
 
 class Day:
     def __init__(self, month, day_number, day_content=None):
-        day_content = day_content or {'text': ''}
-        assert 'text' in day_content, day_content
+        day_content = day_content or {"text": ""}
+        assert "text" in day_content, day_content
 
         self.month = month
         self.date = datetime.date(month.year_number, month.month_number, day_number)
 
         # Turn all entries of old "Tags" categories into tags without entries.
         # Apparently, "Tags" may map to None, so explicitly convert to dict.
-        old_tags = day_content.pop('Tags', None) or {}
+        old_tags = day_content.pop("Tags", None) or {}
         for old_tag in old_tags:
             day_content[old_tag] = None
             self.month.edited = True
@@ -104,19 +105,21 @@ class Day:
 
     def _set_content(self, content):
         old_text = self.text
-        new_text = content['text']
-        content['text'] = old_text
+        new_text = content["text"]
+        content["text"] = old_text
         self._content = content
         self.text = new_text
+
     content = property(_get_content, _set_content)
 
     def _get_text(self):
-        '''Return the day's text as a unicode string.'''
-        return self.content['text']
+        """Return the day's text as a unicode string."""
+        return self.content["text"]
 
     def _set_text(self, text):
-        assert 'text' in self.content
-        self.content['text'] = text
+        assert "text" in self.content
+        self.content["text"] = text
+
     text = property(_get_text, _set_text)
 
     @property
@@ -125,7 +128,7 @@ class Day:
 
     @property
     def empty(self):
-        return len(self.content) == 1 and 'text' in self.content and not self.has_text
+        return len(self.content) == 1 and "text" in self.content and not self.has_text
 
     @property
     def hashtags(self):
@@ -140,12 +143,12 @@ class Day:
         return sorted((self.content.get(category) or {}).keys())
 
     def get_category_content_pairs(self):
-        '''
+        """
         Returns a dict of (category: content_in_category_as_list) pairs.
-        '''
+        """
         pairs = {}
         for category, content in self.content.items():
-            if category == 'text':
+            if category == "text":
                 pass
             elif content is None:
                 pairs[category] = []
@@ -157,11 +160,12 @@ class Day:
         return pairs
 
     def get_words(self, with_special_chars=False):
-        categories_text = ' '.join(
-            ' '.join([category] + content)
-            for category, content in self.get_category_content_pairs().items())
+        categories_text = " ".join(
+            " ".join([category] + content)
+            for category, content in self.get_category_content_pairs().items()
+        )
 
-        all_text = self.text + ' ' + categories_text
+        all_text = self.text + " " + categories_text
         words = all_text.split()
 
         if with_special_chars:
@@ -213,9 +217,10 @@ class Day:
         if occurence < 0:
             return None
 
-        found_text = self.text[occurence:occurence + len(search_text)]
+        found_text = self.text[occurence : occurence + len(search_text)]
         result_text = get_text_with_dots(
-            self.text, occurence, occurence + len(search_text), found_text)
+            self.text, occurence, occurence + len(search_text), found_text
+        )
         return result_text
 
     def search_in_categories(self, text):
@@ -226,14 +231,14 @@ class Day:
                     results.extend(content)
                 else:
                     results.extend(
-                        entry for entry in content
-                        if text.upper() in entry.upper())
+                        entry for entry in content if text.upper() in entry.upper()
+                    )
             elif text.upper() in category.upper():
                 results.append(category)
         return results
 
     def __str__(self):
-        return self.date.strftime('%Y-%m-%d')
+        return self.date.strftime("%Y-%m-%d")
 
 
 class Month:
@@ -255,10 +260,10 @@ class Month:
         return self.days[day_number]
 
     def __str__(self):
-        lines = ['Month {} {}'.format(self.year_number, self.month_number)]
+        lines = ["Month {} {}".format(self.year_number, self.month_number)]
         for day_number, day in self.days.items():
-            lines.append('{}: {}'.format(day_number, day.text))
-        return '\n'.join(lines)
+            lines.append("{}: {}".format(day_number, day.text))
+        return "\n".join(lines)
 
     @property
     def empty(self):

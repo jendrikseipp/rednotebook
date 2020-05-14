@@ -23,13 +23,13 @@ one_day = datetime.timedelta(days=1)
 
 
 def get_year_and_month_from_date(date):
-    year_and_month = date.strftime('%Y-%m')
+    year_and_month = date.strftime("%Y-%m")
     assert len(year_and_month) == 7
     return year_and_month
 
 
 def get_date_from_date_string(date_string):
-    date = datetime.datetime.strptime(date_string, '%Y-%m-%d')
+    date = datetime.datetime.strptime(date_string, "%Y-%m-%d")
     return datetime.date(date.year, date.month, date.day)
 
 
@@ -43,9 +43,9 @@ def isleap(year):
 
 
 def get_number_of_days(year, month):
-    '''
+    """
     Return the number of days in a given month of a given year
-    '''
+    """
     days = month_days[month] + (month == 2 and isleap(year))
     return days
 
@@ -57,11 +57,14 @@ def format_date(format_string, date=None):
         date_string = date.strftime(format_string)
     except ValueError:
         # This happens if the format string ends with "%"
-        date_string = _('Incorrect date format')
+        date_string = _("Incorrect date format")
     return date_string
 
 
 def same_month(date1, date2):
     return (
-        date1 is not None and date2 is not None and
-        date1.month == date2.month and date1.year == date2.year)
+        date1 is not None
+        and date2 is not None
+        and date1.month == date2.month
+        and date1.year == date2.year
+    )

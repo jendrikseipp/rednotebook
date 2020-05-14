@@ -31,7 +31,7 @@ from rednotebook.configuration import Config
 
 
 class Option(Gtk.HBox):
-    def __init__(self, text, option_name, tooltip=''):
+    def __init__(self, text, option_name, tooltip=""):
         Gtk.HBox.__init__(self)
 
         self.text = text
@@ -50,15 +50,15 @@ class Option(Gtk.HBox):
 
 
 class TickOption(Option):
-    def __init__(self, text, name, value=None, tooltip=''):
-        Option.__init__(self, '', name, tooltip=tooltip)
+    def __init__(self, text, name, value=None, tooltip=""):
+        Option.__init__(self, "", name, tooltip=tooltip)
 
         self.check_button = Gtk.CheckButton(text)
         if value is None:
             self.check_button.set_active(Option.config.read(name) == 1)
         else:
             self.check_button.set_active(value)
-        self.check_button.connect('clicked', self.on_check_button_clicked)
+        self.check_button.connect("clicked", self.on_check_button_clicked)
         self.pack_start(self.check_button, False, False, 0)
 
     def on_check_button_clicked(self, widget):
@@ -75,16 +75,18 @@ class TickOption(Option):
 class AutostartOption(TickOption):
     def __init__(self):
         self.autostart_file = os.path.expanduser(
-            '~/.config/autostart/rednotebook.desktop')
+            "~/.config/autostart/rednotebook.desktop"
+        )
         autostart_file_exists = os.path.exists(self.autostart_file)
         TickOption.__init__(
-            self, _('Load RedNotebook at startup'), None, value=autostart_file_exists)
+            self, _("Load RedNotebook at startup"), None, value=autostart_file_exists
+        )
 
     def get_value(self):
         return self.check_button.get_active()
 
     def set(self):
-        '''Apply the current setting'''
+        """Apply the current setting"""
         selected = self.get_value()
 
         if selected:
@@ -97,7 +99,7 @@ class AutostartOption(TickOption):
 
 
 class TextOption(Option):
-    def __init__(self, text, option_name, default='', **kwargs):
+    def __init__(self, text, option_name, default="", **kwargs):
         Option.__init__(self, text, option_name, **kwargs)
 
         # directly read the string, not the list
@@ -116,7 +118,16 @@ class TextOption(Option):
 
 
 class IntegerOption(Option):
-    def __init__(self, text, option_name, default=0, min_value=0, max_value=1000, increment=1, **kwargs):
+    def __init__(
+        self,
+        text,
+        option_name,
+        default=0,
+        min_value=0,
+        max_value=1000,
+        increment=1,
+        **kwargs
+    ):
         Option.__init__(self, text, option_name, **kwargs)
 
         value = Option.config.read(option_name, default=default)
@@ -136,7 +147,7 @@ class IntegerOption(Option):
 
 
 class ComboBoxOption(Option):
-    def __init__(self, text, name, entries, tooltip=''):
+    def __init__(self, text, name, entries, tooltip=""):
         Option.__init__(self, text, name, tooltip=tooltip)
 
         self.combo = CustomComboBoxEntry(Gtk.ComboBox.new_with_entry())
@@ -150,13 +161,21 @@ class ComboBoxOption(Option):
 
 class DateFormatOption(ComboBoxOption):
     def __init__(self, text, name, tooltip):
-        date_formats = ['%A, %x %X', _('%A, %x, Day %j'), '%H:%M', _('Week %W of Year %Y'),
-                        '%y-%m-%d', _('Day %j'), '%A', '%B']
+        date_formats = [
+            "%A, %x %X",
+            _("%A, %x, Day %j"),
+            "%H:%M",
+            _("Week %W of Year %Y"),
+            "%y-%m-%d",
+            _("Day %j"),
+            "%A",
+            "%B",
+        ]
 
         ComboBoxOption.__init__(self, text, name, date_formats, tooltip=tooltip)
 
-        date_url = 'http://docs.python.org/library/time.html#time.strftime'
-        date_format_help_button = UrlButton(_('Help'), date_url)
+        date_url = "http://docs.python.org/library/time.html#time.strftime"
+        date_format_help_button = UrlButton(_("Help"), date_url)
 
         self.preview = Gtk.Label()
         self.pack_start(self.preview, False, False, 0)
@@ -164,11 +183,11 @@ class DateFormatOption(ComboBoxOption):
         self.pack_end(date_format_help_button, False, False, 0)
 
         # Set default format if not present
-        format = Option.config.read(name, '%A, %x %X')
+        format = Option.config.read(name, "%A, %x %X")
         format = str(format)
         self.combo.set_active_text(format)
 
-        self.combo.combo_box.connect('changed', self.on_format_changed)
+        self.combo.combo_box.connect("changed", self.on_format_changed)
 
         # Update the preview
         self.on_format_changed(None)
@@ -177,13 +196,13 @@ class DateFormatOption(ComboBoxOption):
         format_string = self.get_value()
         date_string = dates.format_date(format_string)
         # Translators: Noun
-        label_text = '{} {}'.format(_('Preview:'), date_string)
+        label_text = "{} {}".format(_("Preview:"), date_string)
         self.preview.set_text(label_text)
 
 
 class FontOption(Option):
     def __init__(self, text, name):
-        Option.__init__(self, text, name, '')
+        Option.__init__(self, text, name, "")
 
         self.dialog = None
 
@@ -192,24 +211,26 @@ class FontOption(Option):
         self.label = Gtk.Label()
         self.label.set_text(self.font_name)
 
-        self.button = Gtk.Button(_('Choose font ...'))
-        self.button.connect('clicked', self.on_button_clicked)
+        self.button = Gtk.Button(_("Choose font ..."))
+        self.button.connect("clicked", self.on_button_clicked)
 
         self.pack_start(self.label, False, False, 0)
         self.pack_start(self.button, False, False, 0)
 
     def on_button_clicked(self, widget):
         if not self.dialog:
-            self.dialog = Gtk.FontSelectionDialog(_('Choose font'))
+            self.dialog = Gtk.FontSelectionDialog(_("Choose font"))
 
             self.dialog.set_font_name(self.font_name)
             self.dialog.set_modal(True)
-            self.dialog.set_transient_for(Option.main_window.options_manager.dialog.dialog)
+            self.dialog.set_transient_for(
+                Option.main_window.options_manager.dialog.dialog
+            )
             self.dialog.connect("destroy", self.dialog_destroyed)
-            self.dialog.get_ok_button().connect(
-                "clicked", self.font_selection_ok)
+            self.dialog.get_ok_button().connect("clicked", self.font_selection_ok)
             self.dialog.get_cancel_button().connect_object(
-                "clicked", lambda window: window.destroy(), self.dialog)
+                "clicked", lambda window: window.destroy(), self.dialog
+            )
 
         self.dialog.show()
 
@@ -232,7 +253,7 @@ class OptionsDialog:
         self.categories = {}
 
     def __getattr__(self, attr):
-        '''Wrap the dialog'''
+        """Wrap the dialog"""
         return getattr(self.dialog, attr)
 
     def add_option(self, category, option):
@@ -255,10 +276,10 @@ class OptionsManager:
         self.journal = main_window.journal
         self.config = self.journal.config
 
-        self.dialog = OptionsDialog(self.builder.get_object('options_dialog'))
+        self.dialog = OptionsDialog(self.builder.get_object("options_dialog"))
         self.dialog.set_transient_for(self.main_window.main_frame)
         self.dialog.set_default_size(600, 300)
-        self.dialog.add_category('general', self.builder.get_object('general_vbox'))
+        self.dialog.add_category("general", self.builder.get_object("general_vbox"))
 
     def on_options_dialog(self):
         self.dialog.clear()
@@ -269,8 +290,8 @@ class OptionsManager:
 
         self.options = []
 
-        if platform.system() == 'Linux' and os.path.exists('/usr/bin/rednotebook'):
-            logging.debug('Running on Linux. Is installed. Adding autostart option')
+        if platform.system() == "Linux" and os.path.exists("/usr/bin/rednotebook"):
+            logging.debug("Running on Linux. Is installed. Adding autostart option")
             self.options.insert(0, AutostartOption())
 
         # Most modern Linux distributions do not have a systray anymore.
@@ -278,53 +299,80 @@ class OptionsManager:
         # application keeps on running in the background after it has been
         # closed. The option can still be activated in the configuration file.
         if filesystem.has_system_tray():
-            self.options.append(TickOption(
-                _('Close to system tray'),
-                'closeToTray',
-                tooltip=_('Closing the window will send RedNotebook to the tray')))
+            self.options.append(
+                TickOption(
+                    _("Close to system tray"),
+                    "closeToTray",
+                    tooltip=_("Closing the window will send RedNotebook to the tray"),
+                )
+            )
 
         # Automatic switching between preview and edit mode.
-        self.options.append(TickOption(
-            _('Switch between edit and preview mode automatically'),
-            'autoSwitchMode'))
+        self.options.append(
+            TickOption(
+                _("Switch between edit and preview mode automatically"),
+                "autoSwitchMode",
+            )
+        )
 
         # Check for new version
         check_version_option = TickOption(
-            _('Check for new version at startup'),
-            'checkForNewVersion')
+            _("Check for new version at startup"), "checkForNewVersion"
+        )
 
-        self.options.append(TickOption(_('Search as you type'), 'instantSearch'))
+        self.options.append(TickOption(_("Search as you type"), "instantSearch"))
 
         def check_version_action(widget):
-            utils.check_new_version(self.main_window.journal, info.version, startup=False)
+            utils.check_new_version(
+                self.main_window.journal, info.version, startup=False
+            )
             # Apply changes from dialog to options window
-            check = bool(self.journal.config.read('checkForNewVersion'))
+            check = bool(self.journal.config.read("checkForNewVersion"))
             check_version_option.check_button.set_active(check)
 
-        check_version_button = ActionButton(_('Check now'), check_version_action)
+        check_version_button = ActionButton(_("Check now"), check_version_action)
         check_version_option.pack_start(check_version_button, False, False, 0)
         self.options.append(check_version_option)
 
-        self.options.extend([
-            # Use separate fonts since the preview often doesn't support the edit font.
-            FontOption(_('Edit font:'), 'mainFont'),
-            TextOption(_('Preview font:'), 'previewFont',
-                       default=Config.defaults['previewFont'],
-                       tooltip=_('Comma-separated font names')),
-            DateFormatOption(
-                _('Date/Time format'), 'dateTimeString',
-                tooltip=_('Used by Date/Time button and $date$ template macro.')),
-            DateFormatOption(
-                _('Date format'), 'exportDateFormat',
-                tooltip=_('Used for dates in titlebar and exports.')
+        self.options.extend(
+            [
+                # Use separate fonts since the preview often doesn't support the edit font.
+                FontOption(_("Edit font:"), "mainFont"),
+                TextOption(
+                    _("Preview font:"),
+                    "previewFont",
+                    default=Config.defaults["previewFont"],
+                    tooltip=_("Comma-separated font names"),
                 ),
-            IntegerOption(_('Tags in cloud'), 'cloudMaxTags',
-                          tooltip=_('Maximum number of tags displayed in the cloud')),
-            TextOption(_('Exclude from cloud'), 'cloudIgnoreList',
-                       tooltip=_('Do not show these comma separated words and #tags in the clouds')),
-            TextOption(_('Include small words in cloud'), 'cloudIncludeList',
-                       tooltip=_('Allow these words with 4 letters or less')),
-        ])
+                DateFormatOption(
+                    _("Date/Time format"),
+                    "dateTimeString",
+                    tooltip=_("Used by Date/Time button and $date$ template macro."),
+                ),
+                DateFormatOption(
+                    _("Date format"),
+                    "exportDateFormat",
+                    tooltip=_("Used for dates in titlebar and exports."),
+                ),
+                IntegerOption(
+                    _("Tags in cloud"),
+                    "cloudMaxTags",
+                    tooltip=_("Maximum number of tags displayed in the cloud"),
+                ),
+                TextOption(
+                    _("Exclude from cloud"),
+                    "cloudIgnoreList",
+                    tooltip=_(
+                        "Do not show these comma separated words and #tags in the clouds"
+                    ),
+                ),
+                TextOption(
+                    _("Include small words in cloud"),
+                    "cloudIncludeList",
+                    tooltip=_("Allow these words with 4 letters or less"),
+                ),
+            ]
+        )
 
         self.add_all_options()
 
@@ -337,24 +385,24 @@ class OptionsManager:
             self.main_window.cloud.update_lists()
             self.main_window.cloud.update(force_update=True)
 
-            visible = (self.config.read('closeToTray') == 1)
+            visible = self.config.read("closeToTray") == 1
             self.main_window.tray_icon.set_visible(visible)
         else:
             # Reset some options
-            self.main_window.set_font(self.config.read('mainFont', editor.DEFAULT_FONT))
+            self.main_window.set_font(self.config.read("mainFont", editor.DEFAULT_FONT))
 
         self.dialog.hide()
 
     def add_all_options(self):
         for option in self.options:
-            self.dialog.add_option('general', option)
+            self.dialog.add_option("general", option)
 
     def save_options(self):
-        logging.debug('Saving Options')
+        logging.debug("Saving Options")
         for option in self.options:
             value = option.get_value()
             if option.option_name is not None:
-                logging.debug('Setting {} = {}'.format(option.option_name, repr(value)))
+                logging.debug("Setting {} = {}".format(option.option_name, repr(value)))
                 self.config[option.option_name] = value
             else:
                 # We don't save the autostart setting in the config file

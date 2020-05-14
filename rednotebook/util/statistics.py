@@ -37,7 +37,7 @@ class Statistics:
         return number_of_chars
 
     def get_number_of_usage_days(self):
-        '''Returns the timespan between the first and last entry'''
+        """Returns the timespan between the first and last entry"""
         sorted_days = self.days
         if len(sorted_days) <= 1:
             return len(sorted_days)
@@ -55,7 +55,7 @@ class Statistics:
         if total == 0:
             return 0
         percent = round(100 * edited / total, 2)
-        return '%s%%' % percent
+        return "%s%%" % percent
 
     def get_average_number_of_words(self):
         if self.get_number_of_entries() == 0:
@@ -65,22 +65,22 @@ class Statistics:
     @property
     def overall_pairs(self):
         return [
-            [_('Words'), self.get_number_of_words()],
-            [_('Distinct Words'), self.get_number_of_distinct_words()],
-            [_('Edited Days'), self.get_number_of_entries()],
-            [_('Letters'), self.get_number_of_chars()],
-            [_('Days between first and last Entry'), self.get_number_of_usage_days()],
-            [_('Average number of Words'), self.get_average_number_of_words()],
-            [_('Percentage of edited Days'), self.get_edit_percentage()],
+            [_("Words"), self.get_number_of_words()],
+            [_("Distinct Words"), self.get_number_of_distinct_words()],
+            [_("Edited Days"), self.get_number_of_entries()],
+            [_("Letters"), self.get_number_of_chars()],
+            [_("Days between first and last Entry"), self.get_number_of_usage_days()],
+            [_("Average number of Words"), self.get_average_number_of_words()],
+            [_("Percentage of edited Days"), self.get_edit_percentage()],
         ]
 
     @property
     def day_pairs(self):
         day = self.journal.day
         return [
-            [_('Words'), day.get_number_of_words()],
-            [_('Lines'), len(day.text.splitlines())],
-            [_('Letters'), len(day.text)],
+            [_("Words"), day.get_number_of_words()],
+            [_("Lines"), len(day.text.splitlines())],
+            [_("Letters"), len(day.text)],
         ]
 
     def show_dialog(self, dialog):

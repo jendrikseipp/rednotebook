@@ -20,36 +20,38 @@ import argparse
 
 # This is required for setup.py to be able to import this module.
 import builtins
-if not hasattr(builtins, '_'):
+
+if not hasattr(builtins, "_"):
+
     def _(string):
         return string
 
 
-program_name = 'RedNotebook'
-tagline = _('A Desktop Journal')
-version = '2.19'
-author = 'Jendrik Seipp'
-author_mail = 'jendrikseipp@gmail.com'
-copyright_ = 'Copyright (c) 2008-2019 Jendrik Seipp'
-url = 'https://rednotebook.app'
-downloads_url = 'https://rednotebook.app/downloads.html'
-answers_url = 'https://answers.launchpad.net/rednotebook'
-translation_url = 'https://translations.launchpad.net/rednotebook/'
-bug_url = 'https://github.com/jendrikseipp/rednotebook/issues'
-version_url = 'https://raw.githubusercontent.com/jendrikseipp/rednotebook/master/rednotebook/info.py'
-contributors_url = 'https://github.com/jendrikseipp/rednotebook/graphs/contributors'
+program_name = "RedNotebook"
+tagline = _("A Desktop Journal")
+version = "2.19"
+author = "Jendrik Seipp"
+author_mail = "jendrikseipp@gmail.com"
+copyright_ = "Copyright (c) 2008-2019 Jendrik Seipp"
+url = "https://rednotebook.app"
+downloads_url = "https://rednotebook.app/downloads.html"
+answers_url = "https://answers.launchpad.net/rednotebook"
+translation_url = "https://translations.launchpad.net/rednotebook/"
+bug_url = "https://github.com/jendrikseipp/rednotebook/issues"
+version_url = "https://raw.githubusercontent.com/jendrikseipp/rednotebook/master/rednotebook/info.py"
+contributors_url = "https://github.com/jendrikseipp/rednotebook/graphs/contributors"
 
-developers = ['%(author)s <%(author_mail)s>' % locals()]
-artists = ['Ciaran']
+developers = ["%(author)s <%(author_mail)s>" % locals()]
+artists = ["Ciaran"]
 
-comments = '''\
+comments = """\
 RedNotebook is a modern desktop journal. It lets you format, tag and
 search your entries. You can also add pictures, links and customizable
 templates, spell check your notes, and export to plain text, HTML,
 Latex or PDF.
-'''
+"""
 
-journal_path_help = '''\
+journal_path_help = """\
 (optional) Specify the directory storing the journal data.
 The journal argument can be one of the following:
  - An absolute path (e.g. /home/username/myjournal)
@@ -59,23 +61,24 @@ The journal argument can be one of the following:
 If the journal argument is omitted then the last session's journal
 path will be used. At the first program start, this defaults to
 "$HOME/.rednotebook/data".
-'''
+"""
 
 
 def get_commandline_parser():
     parser = argparse.ArgumentParser(
-        description=comments,
-        formatter_class=argparse.RawTextHelpFormatter)
+        description=comments, formatter_class=argparse.RawTextHelpFormatter
+    )
     parser.add_argument(
-        '--version', action='version', version='RedNotebook %s' % version)
+        "--version", action="version", version="RedNotebook %s" % version
+    )
     parser.add_argument(
-        '--date', dest='start_date',
-        help='load specified date (format: YYYY-MM-DD)')
-    parser.add_argument('journal', nargs='?', help=journal_path_help)
+        "--date", dest="start_date", help="load specified date (format: YYYY-MM-DD)"
+    )
+    parser.add_argument("journal", nargs="?", help=journal_path_help)
     return parser
 
 
-desktop_file = '''\
+desktop_file = """\
 [Desktop Entry]
 Version=1.0
 Name=RedNotebook
@@ -87,4 +90,4 @@ Terminal=false
 Type=Application
 Categories=Office;
 StartupNotify=true
-'''
+"""

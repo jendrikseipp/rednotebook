@@ -54,10 +54,10 @@ CLOUD_CSS = """\
 
 def get_regex(word):
     try:
-        return re.compile(word + '$', re.I)
+        return re.compile(word + "$", re.I)
     except Exception:
         logging.warning('"%s" is not a valid regular expression' % word)
-        return re.compile('^$')
+        return re.compile("^$")
 
 
 class Cloud(browser.HtmlView):
@@ -66,29 +66,29 @@ class Cloud(browser.HtmlView):
         self.journal = journal
         self.update_lists()
 
-        self.connect('context-menu', self._on_context_menu)
-        self.connect('decide-policy', self.on_decide_policy)
+        self.connect("context-menu", self._on_context_menu)
+        self.connect("decide-policy", self.on_decide_policy)
 
     def update_lists(self):
         config = self.journal.config
 
-        default_ignore_list = _('filter, these, comma, separated, words, and, #tags')
-        self.ignore_list = config.read_list('cloudIgnoreList', default_ignore_list)
+        default_ignore_list = _("filter, these, comma, separated, words, and, #tags")
+        self.ignore_list = config.read_list("cloudIgnoreList", default_ignore_list)
         self.ignore_list = [word.lower() for word in self.ignore_list]
-        logging.info('Cloud ignore list: %s' % self.ignore_list)
+        logging.info("Cloud ignore list: %s" % self.ignore_list)
 
-        default_include_list = _('mtv, spam, work, job, play')
-        self.include_list = config.read_list('cloudIncludeList', default_include_list)
+        default_include_list = _("mtv, spam, work, job, play")
+        self.include_list = config.read_list("cloudIncludeList", default_include_list)
         self.include_list = [word.lower() for word in self.include_list]
-        logging.info('Cloud include list: %s' % self.include_list)
+        logging.info("Cloud include list: %s" % self.include_list)
 
         self.update_regexes()
 
     def update_regexes(self):
-        logging.debug('Start compiling regexes')
+        logging.debug("Start compiling regexes")
         self.regexes_ignore = [get_regex(word) for word in self.ignore_list]
         self.regexes_include = [get_regex(word) for word in self.include_list]
-        logging.debug('Finished')
+        logging.debug("Finished")
 
     def update(self, force_update=False):
         """Public method that calls the private "_update"."""
@@ -105,11 +105,11 @@ class Cloud(browser.HtmlView):
         counter = defaultdict(int)
         for day in self.journal.days:
             for cat in day.categories:
-                counter['#%s' % data.escape_tag(cat)] += 1
+                counter["#%s" % data.escape_tag(cat)] += 1
         return counter
 
     def _update(self):
-        logging.debug('Update the cloud')
+        logging.debug("Update the cloud")
         self.journal.save_old_day()
 
         # TODO: Avoid using an instance variable here.
@@ -120,16 +120,17 @@ class Cloud(browser.HtmlView):
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
-            word_count_dict, self.regexes_ignore, self.regexes_include)
+            word_count_dict, self.regexes_ignore, self.regexes_include
+        )
 
         self.link_dict = self.tags + self.words
         html = self.get_clouds(self.words, self.tags)
         self.load_html(html)
-        logging.debug('Cloud updated')
+        logging.debug("Cloud updated")
 
     def _get_cloud_body(self, cloud_words):
         if not cloud_words:
-            return ''
+            return ""
         counts = [freq for (word, freq) in cloud_words]
         min_count = min(counts)
         delta_count = max(counts) - min_count
@@ -148,11 +149,13 @@ class Cloud(browser.HtmlView):
             font_size = int(min_font_size + font_factor * font_delta)
 
             # Add some whitespace to separate words
-            html_elements.append('<a href="/#search-%s">'
-                                 '<span style="font-size:%spx">%s</span></a>&#160;'
-                                 % (self.link_index, font_size, word))
+            html_elements.append(
+                '<a href="/#search-%s">'
+                '<span style="font-size:%spx">%s</span></a>&#160;'
+                % (self.link_index, font_size, word)
+            )
             self.link_index += 1
-        return '\n'.join(html_elements)
+        return "\n".join(html_elements)
 
     @staticmethod
     def select_most_frequent_words(words_and_frequencies, count):
@@ -173,42 +176,50 @@ class Cloud(browser.HtmlView):
         return words_and_frequencies
 
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
-        tags_and_frequencies = [(tag, freq) for (tag, freq) in tag_count_dict
-                                if not any(pattern.match(tag) for pattern in ignores)]
+        tags_and_frequencies = [
+            (tag, freq)
+            for (tag, freq) in tag_count_dict
+            if not any(pattern.match(tag) for pattern in ignores)
+        ]
 
-        tag_display_limit = self.journal.config.read('cloudMaxTags')
+        tag_display_limit = self.journal.config.read("cloudMaxTags")
         return self.select_most_frequent_words(tags_and_frequencies, tag_display_limit)
 
     def _get_words_for_cloud(self, word_count_dict, ignores, includes):
-        words_and_frequencies = [(word, freq) for (word, freq) in word_count_dict.items()
-                                 if (len(word) > 4 or
-                                     any(pattern.match(word) for pattern in includes)) and not
-                                 # filter words in ignore_list
-                                 any(pattern.match(word) for pattern in ignores)]
+        words_and_frequencies = [
+            (word, freq)
+            for (word, freq) in word_count_dict.items()
+            if (len(word) > 4 or any(pattern.match(word) for pattern in includes))
+            and not
+            # filter words in ignore_list
+            any(pattern.match(word) for pattern in ignores)
+        ]
         return self.select_most_frequent_words(words_and_frequencies, CLOUD_WORDS)
 
     def get_clouds(self, word_counter, tag_counter):
         tag_cloud = self._get_cloud_body(tag_counter)
         word_cloud = self._get_cloud_body(word_counter)
-        font = self.journal.config.read('previewFont')
-        heading = '<h1>&#160;%s</h1>'
-        bgcolor, fgcolor = utils.get_gtk_colors(self.journal.frame.day_text_field.day_text_view)
+        font = self.journal.config.read("previewFont")
+        heading = "<h1>&#160;%s</h1>"
+        bgcolor, fgcolor = utils.get_gtk_colors(
+            self.journal.frame.day_text_field.day_text_view
+        )
         parts = [
-            '<html><head>',
+            "<html><head>",
             CLOUD_CSS % {"font": font, "bgcolor": bgcolor, "fgcolor": fgcolor},
-            '</head>',
-            '<body>']
+            "</head>",
+            "<body>",
+        ]
         if tag_cloud:
-            parts.extend([heading % _('Tags'), tag_cloud, '\n',
-                          '<br />\n' * 3])
+            parts.extend([heading % _("Tags"), tag_cloud, "\n", "<br />\n" * 3])
         if word_cloud:
-            parts.extend([heading % _('Words'), word_cloud])
-        parts.append('</body></html>')
-        return '\n'.join(parts)
+            parts.extend([heading % _("Words"), word_cloud])
+        parts.append("</body></html>")
+        return "\n".join(parts)
 
     def _get_search_text(self, uri):
-        if '/#search-' in uri:
-            search_index = int(uri.split('-')[-1])
+        if "/#search-" in uri:
+            search_index = int(uri.split("-")[-1])
             search_text, count = self.link_dict[search_index]
             return search_text
         else:
@@ -237,8 +248,10 @@ class Cloud(browser.HtmlView):
         tag = hit_test_result.get_link_label()
 
         if tag is not None:
-            action = Gtk.Action.new('hide', _('Hide "%s" from clouds') % tag, None, None)
-            action.connect('activate', self.on_ignore_menu_activate, tag)
+            action = Gtk.Action.new(
+                "hide", _('Hide "%s" from clouds') % tag, None, None
+            )
+            action.connect("activate", self.on_ignore_menu_activate, tag)
             ignore_menu_item = browser.WebKit2.ContextMenuItem.new(action)
             menu.append(ignore_menu_item)
 
@@ -246,6 +259,6 @@ class Cloud(browser.HtmlView):
         word = re.escape(word)
         logging.info('"{}" will be hidden from clouds'.format(word))
         self.ignore_list.append(word)
-        self.journal.config.write_list('cloudIgnoreList', self.ignore_list)
+        self.journal.config.write_list("cloudIgnoreList", self.ignore_list)
         self.regexes_ignore.append(get_regex(word))
         self.update(force_update=True)
