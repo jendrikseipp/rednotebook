@@ -49,11 +49,14 @@ class Archiver:
         self.journal = journal
 
     def check_last_backup_date(self):
-        if not self._backup_necessary():
+        last_backup_age = self._last_backup_age()
+        if last_backup_age <= MAX_BACKUP_AGE:
             return
 
         logging.warning("Last backup is older than %d days." % MAX_BACKUP_AGE)
-        text1 = _("It has been a while since you made your last backup.")
+        text1 = _(
+            "It has been %d days since you made your last backup." % last_backup_age
+        )
         text2 = _("You can backup your journal to a zip file to avoid data loss.")
         dialog = Gtk.MessageDialog(
             parent=self.journal.frame.main_frame,
@@ -105,7 +108,7 @@ class Archiver:
         )
         self.journal.config["lastBackupDir"] = os.path.dirname(backup_file)
 
-    def _backup_necessary(self):
+    def _last_backup_age(self):
         now = datetime.datetime.now()
         date_string = self.journal.config.read(
             "lastBackupDate", now.strftime(DATE_FORMAT)
@@ -117,7 +120,7 @@ class Archiver:
             return True
         last_backup_age = (now - last_backup_date).days
         logging.info("Last backup was made %d days ago" % last_backup_age)
-        return last_backup_age > MAX_BACKUP_AGE
+        return last_backup_age
 
     def _get_backup_file(self):
         if self.journal.title == "data":
