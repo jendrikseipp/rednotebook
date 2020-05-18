@@ -18,12 +18,9 @@
 
 import logging
 
-from gi.repository import Gdk
-from gi.repository import Gtk
-from gi.repository import Pango
+from gi.repository import Gdk, Gtk, Pango
 
-from rednotebook.util import markup
-from rednotebook.util import utils
+from rednotebook.util import markup, utils
 
 
 class CategoriesTreeView:

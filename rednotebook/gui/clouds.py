@@ -21,11 +21,10 @@ import locale
 import logging
 import re
 
-from gi.repository import Gtk
-from gi.repository import GObject
+from gi.repository import GObject, Gtk
 
-from rednotebook.gui import browser
 from rednotebook import data
+from rednotebook.gui import browser
 from rednotebook.util import utils
 
 

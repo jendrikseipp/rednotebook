@@ -20,8 +20,7 @@ import os
 
 from gi.repository import Gtk
 
-from rednotebook.util import filesystem
-from rednotebook.util import dates
+from rednotebook.util import dates, filesystem
 
 
 WEEKDAYS = (

@@ -21,13 +21,11 @@ import os
 import re
 import sys
 
-from gi.repository import GObject
-from gi.repository import Pango
+from gi.repository import GObject, Pango
 
-from rednotebook.external import txt2tags
 from rednotebook.data import HASHTAG
-from rednotebook.util import filesystem
-from rednotebook.util import urls
+from rednotebook.external import txt2tags
+from rednotebook.util import filesystem, urls
 
 
 # Linebreaks are only allowed at line ends

@@ -25,20 +25,20 @@ To do a (test) installation to a different dir: "python setup.py install --root=
 To only compile the translations, run "python setup.py build_trans"
 """
 
+from distutils import cmd
+from distutils.command.build import build as _build
+from distutils.command.install_data import install_data as _install_data
+from distutils.core import setup
 import glob
 import os
 import subprocess
 import sys
 
-from distutils.core import setup
-from distutils import cmd
-from distutils.command.install_data import install_data as _install_data
-from distutils.command.build import build as _build
-
 DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, DIR)
 
 from rednotebook import info
+
 
 MSGFMT = os.path.join(DIR, "rednotebook", "external", "msgfmt.py")
 

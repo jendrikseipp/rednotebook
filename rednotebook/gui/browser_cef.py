@@ -21,9 +21,10 @@ import logging
 import sys
 import webbrowser
 
-from gi.repository import Gtk, GObject, Gdk
+from gi.repository import Gdk, GObject, Gtk
 
 from rednotebook.util import filesystem
+
 
 try:
     from cefpython3 import cefpython as cef

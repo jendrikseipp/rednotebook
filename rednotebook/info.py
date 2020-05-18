@@ -17,9 +17,8 @@
 # -----------------------------------------------------------------------
 
 import argparse
-
-# This is required for setup.py to be able to import this module.
 import builtins
+
 
 if not hasattr(builtins, "_"):
 

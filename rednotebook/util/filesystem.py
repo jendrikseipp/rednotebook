@@ -24,6 +24,7 @@ import platform
 import subprocess
 import sys
 
+
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
 LANGUAGE = locale.getdefaultlocale()[0]
 REMOTE_PROTOCOLS = ["http", "ftp", "irc"]

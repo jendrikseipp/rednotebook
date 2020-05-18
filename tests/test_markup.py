@@ -5,10 +5,10 @@ import pytest
 
 from rednotebook.data import Day, Month
 from rednotebook.util.markup import (
-    convert_to_pango,
-    convert_from_pango,
-    convert,
     _convert_paths,
+    convert,
+    convert_from_pango,
+    convert_to_pango,
     get_markup_for_day,
 )
 

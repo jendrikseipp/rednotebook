@@ -22,9 +22,7 @@ import os
 from gi.repository import Gtk
 
 from rednotebook.gui import customwidgets
-from rednotebook.util import filesystem
-from rednotebook.util import dates
-from rednotebook.util import urls
+from rednotebook.util import dates, filesystem, urls
 
 
 MENUITEMS_XML = """\

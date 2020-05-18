@@ -21,8 +21,7 @@ import logging
 import os
 import webbrowser
 
-from gi.repository import GObject
-from gi.repository import Gtk
+from gi.repository import GObject, Gtk
 
 
 class ActionButton(Gtk.Button):

@@ -16,18 +16,17 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import os
 import logging
+import os
 import platform
 
 from gi.repository import Gtk
 
-from rednotebook.gui.customwidgets import UrlButton, CustomComboBoxEntry
-from rednotebook.gui.customwidgets import ActionButton
-from rednotebook.gui import editor
-from rednotebook.util import filesystem, utils, dates
 from rednotebook import info
 from rednotebook.configuration import Config
+from rednotebook.gui import editor
+from rednotebook.gui.customwidgets import ActionButton, CustomComboBoxEntry, UrlButton
+from rednotebook.util import dates, filesystem, utils
 
 
 class Option(Gtk.HBox):

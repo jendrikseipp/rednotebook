@@ -18,16 +18,12 @@
 import os
 import webbrowser
 
-from gi.repository import GdkPixbuf
-from gi.repository import Gtk
+from gi.repository import GdkPixbuf, Gtk
 
-from rednotebook.util import utils
+from rednotebook import info, storage
+from rednotebook.gui import format_menu, insert_menu
 from rednotebook.help import help_text
-from rednotebook import info
-from rednotebook.util import filesystem
-from rednotebook import storage
-from rednotebook.gui import insert_menu
-from rednotebook.gui import format_menu
+from rednotebook.util import filesystem, utils
 
 
 MENUBAR_XML = """\

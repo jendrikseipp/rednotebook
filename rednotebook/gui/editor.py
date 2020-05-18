@@ -16,15 +16,14 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import logging
 import os
 import urllib.request
-import logging
 
-from gi.repository import GObject
-from gi.repository import Gtk
-from gi.repository import Pango
+from gi.repository import GObject, Gtk, Pango
 
 from rednotebook.util import filesystem
+
 
 try:
     from rednotebook.external import spellcheck

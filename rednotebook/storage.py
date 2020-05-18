@@ -24,6 +24,8 @@ import shutil
 import stat
 import sys
 
+from rednotebook.data import Month
+
 
 try:
     import yaml
@@ -38,8 +40,6 @@ except ImportError:
     from yaml import Loader, Dumper
 
     logging.info("Using pyyaml for loading and dumping")
-
-from rednotebook.data import Month
 
 
 def format_year_and_month(year, month):

@@ -20,35 +20,27 @@ from collections import OrderedDict
 import datetime
 import logging
 import os
-import urllib.parse
 from unittest import mock
+import urllib.parse
 
-from gi.repository import Gdk
-from gi.repository import GdkPixbuf
-from gi.repository import GObject
-from gi.repository import Gtk
-from gi.repository import GtkSource
-from gi.repository import Pango
+from gi.repository import Gdk, GdkPixbuf, GObject, Gtk, GtkSource, Pango
 
+from rednotebook import info, templates
+from rednotebook.gui import (
+    browser,
+    browser_cef,
+    categories,
+    customwidgets,
+    editor,
+    format_menu,
+    insert_menu,
+    search,
+)
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
+from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
-from rednotebook.gui import customwidgets
-from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
-from rednotebook.util import filesystem
-from rednotebook import info
-from rednotebook import templates
-from rednotebook.util import dates
-from rednotebook.util import markup
-from rednotebook.util import urls
-from rednotebook.util import utils
-from rednotebook.gui import categories
-from rednotebook.gui.exports import ExportAssistant
-from rednotebook.gui import browser
-from rednotebook.gui import browser_cef
-from rednotebook.gui import search
-from rednotebook.gui import editor
-from rednotebook.gui import insert_menu
-from rednotebook.gui import format_menu
+from rednotebook.util import dates, filesystem, markup, urls, utils
 
 
 class MainWindow:

@@ -1,12 +1,13 @@
 import logging
 import os
+import re
 import subprocess
 import sys
-import re
 import urllib.parse
 import webbrowser
 
 from rednotebook.util.filesystem import IS_WIN, system_call
+
 
 ENTRY_REFERENCE_URI_PATTERN = re.compile(r"^file:///#(?P<date>\d{4}-\d{2}-\d{2})$")
 

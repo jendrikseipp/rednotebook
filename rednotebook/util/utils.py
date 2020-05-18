@@ -16,6 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+from distutils.version import StrictVersion
 import http.client
 import logging
 import os.path
@@ -25,10 +26,7 @@ import threading
 from urllib.request import urlopen
 import webbrowser
 
-from distutils.version import StrictVersion
-
-from gi.repository import GObject
-from gi.repository import Gtk
+from gi.repository import GObject, Gtk
 
 from rednotebook import info
 from rednotebook.util import filesystem

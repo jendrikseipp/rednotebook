@@ -20,20 +20,17 @@ import datetime
 import logging
 import os
 
-from gi.repository import GObject
-from gi.repository import Gtk
+from gi.repository import GObject, Gtk
 
-from rednotebook.util import filesystem
-from rednotebook.util import markup
-from rednotebook.util import dates
 from rednotebook.gui import customwidgets
 from rednotebook.gui.customwidgets import (
-    Calendar,
-    AssistantPage,
-    RadioButtonPage,
-    PathChooserPage,
     Assistant,
+    AssistantPage,
+    Calendar,
+    PathChooserPage,
+    RadioButtonPage,
 )
+from rednotebook.util import dates, filesystem, markup
 
 
 class DatePage(AssistantPage):
