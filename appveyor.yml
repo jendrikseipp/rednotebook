@@ -1,5 +1,8 @@
 clone_folder: C:\repo
 
+# Do not build feature branch with open pull requests
+skip_branch_with_pr: true
+
 matrix:
   fast_finish: true
 
