@@ -5,8 +5,10 @@ import os.path
 
 block_cipher = None
 
+debug = True
+
 # v: log imports, u: unbuffered output
-options = [] # [('v', None, 'OPTION'), ('u', None, 'OPTION')]
+options = [('v', None, 'OPTION'), ('u', None, 'OPTION')] if debug else []
 
 drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'repo')
@@ -49,11 +51,11 @@ exe = EXE(pyz,
           options,
           exclude_binaries=True,
           name='rednotebook.exe',
-          debug=False,
+          debug=debug,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=False,
+          console=debug,
           icon=icon)
 coll = COLLECT(exe,
                a.binaries,
