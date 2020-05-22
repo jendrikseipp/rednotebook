@@ -23,7 +23,7 @@ build_script:
   - cd win
 
   # Install GTK stack.
-  - curl -Lo gtk.tar.gz https://www.dropbox.com/s/1as726i4rb2zmlg/gvsbuild-vs14-x86.tar.gz?dl=1
+  - curl -Lo gtk.tar.gz https://www.dropbox.com/s/upr70sydhc6duut/gvsbuild-vs14-x86-2020-05.tar.gz?dl=1
   - tar -xzf gtk.tar.gz
   - move release C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
@@ -31,7 +31,7 @@ build_script:
   # Install other dependencies.
   - "%PYTHON% -m pip install -U pip wheel"
   - "%PYTHON% -m pip install -r requirements.txt"
-  - "%PYTHON% -m pip install C:/gtk/python/pycairo-*-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-*-cp36-cp36m-win32.whl"
+  - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.19.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.36.0-cp36-cp36m-win32.whl"
 
   # Pyenchant wheels bundle DLLs. The bundled DLLs are incompatible to the
   # DLLs we use and lead to the error "ImportError: DLL load failed: The
