@@ -7,7 +7,7 @@ environment:
   global:
     DOWNLOAD_DIR: _download_cache
     APPVEYOR_SAVE_CACHE_ON_ERROR: true
-    PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd;C:\Tools\curl\bin;C:\msys64\usr\bin;C:\Program Files (x86)\Inno Setup 5
+    PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd;C:\Tools\curl\bin;C:\msys64\usr\bin;C:\Program Files\7-zip;C:\Program Files (x86)\Inno Setup 5
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       VS_VER: "14"
@@ -15,8 +15,6 @@ environment:
       PYTHON: C:\Python36\python.exe
 
 build_script:
-  - dir C:\Tools
-  - dir "C:\Program Files\7-zip"
   - "%PYTHON% --version"
   # Print PATH variable.
   - set PATH
