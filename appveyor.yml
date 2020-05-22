@@ -59,17 +59,21 @@ build_script:
   - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec"
   - "%PYTHON% build-translations.py C:/dist/share/locale"
   - tar -czf rednotebook.tar.gz -C /c/ dist
+  - 7z a rednotebook.zip C:\dist
 
   # Build installer.
   - iscc /Qp /dREDNOTEBOOK_VERSION="%VERSION%" rednotebook.iss
 
   # Artifacts have to live under "clone_folder".
   - move rednotebook.tar.gz C:\repo\rednotebook-"%VERSION%".tar.gz
+  - move rednotebook.zip C:\repo\rednotebook-"%VERSION%".zip
   - move C:\rednotebook.exe C:\repo\rednotebook-"%VERSION%".exe
 
 artifacts:
   - path: rednotebook-*.tar.gz
-    name: Standalone Windows executable
+    name: Standalone Windows executable (tarball)
+  - path: rednotebook-*.zip
+    name: Standalone Windows executable (zipfile)
   - path: rednotebook-*.exe
     name: Windows installer
 
