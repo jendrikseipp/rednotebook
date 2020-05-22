@@ -26,7 +26,7 @@ build_script:
   - cd win
 
   # Set up GTK stack.
-  - curl -Lo gtk.tar.gz https://www.dropbox.com/s/2v9izos7hcdnqod/gvsbuild-vs14-x86-2020-05-adwaita.tar.gz?dl=1
+  - curl -Lo gtk.tar.gz https://www.dropbox.com/s/94013wl3qud8rr5/gvsbuild-vs14-x86-2020-05-adwaita.tar.gz?dl=1
   - tar -xzf gtk.tar.gz
   - move release C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
