@@ -35,6 +35,8 @@ build_script:
   - "%PYTHON% -m pip install -U pip wheel"
   - "%PYTHON% -m pip install -r requirements.txt"
   - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.19.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.36.0-cp36-cp36m-win32.whl"
+  - "%PYTHON% -m pip freeze"
+  - "%PYTHON% -m pip list --outdated"
 
   # Pyenchant wheels bundle DLLs. The bundled DLLs are incompatible to the
   # DLLs we use and lead to the error "ImportError: DLL load failed: The
