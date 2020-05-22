@@ -132,8 +132,8 @@ class MainWindow:
         self.edit_pane = self.builder.get_object("edit_pane")
         self.text_vbox = self.builder.get_object("text_vbox")
 
-        use_cef = True
-        if browser.WebKit2:
+        use_internal_preview = self.journal.config.read("useInternalPreview", 1)
+        if use_internal_preview and browser.WebKit2:
 
             class Preview(browser.HtmlView):
                 def __init__(self, journal):
@@ -155,7 +155,7 @@ class MainWindow:
             self.html_editor.connect("decide-policy", self.on_browser_decide_policy)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
             self.html_editor.set_editable(False)
-        elif browser_cef.cef and use_cef:
+        elif use_internal_preview and browser_cef.cef:
 
             class Preview(browser_cef.HtmlView):
                 def __init__(self, journal):
@@ -454,7 +454,7 @@ class MainWindow:
         else:
             date_format = self.journal.config.read("exportDateFormat")
             date_string = dates.format_date(date_format, self.day.date)
-            markup_string = markup.get_markup_for_day(self.day)
+            markup_string = markup.get_markup_for_day(self.day, "xhtml")
             html = self.journal.convert(
                 markup_string,
                 "xhtml",
