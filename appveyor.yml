@@ -46,15 +46,15 @@ build_script:
   # (see also https://pyenchant.github.io/pyenchant/install.html).
   #- rm C:/Python36/Lib/site-packages/enchant/*.dll
   #- rm C:/Python36/Lib/site-packages/enchant/lib/enchant/*.dll
-  - cp C:/gtk/bin/libenchant.dll C:/Python36/Lib/site-packages/enchant
-  - mkdir C:\Python36\Lib\site-packages\enchant\lib\enchant\
-  - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python36/Lib/site-packages/enchant/lib/enchant/
+  #- cp C:/gtk/bin/libenchant.dll C:/Python36/Lib/site-packages/enchant
+  #- mkdir C:\Python36\Lib\site-packages\enchant\lib\enchant\
+  #- cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python36/Lib/site-packages/enchant/lib/enchant/
 
   # Remove bundled dictionaries and install custom ones.
-  - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
-  - tar -xzf dicts.tar.gz
-  - mkdir C:\Python36\Lib\site-packages\enchant\share
-  - move enchant C:\Python36\Lib\site-packages\enchant\share
+  #- curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
+  #- tar -xzf dicts.tar.gz
+  #- mkdir C:\Python36\Lib\site-packages\enchant\share
+  #- move enchant C:\Python36\Lib\site-packages\enchant\share
 
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
