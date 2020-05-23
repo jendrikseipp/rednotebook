@@ -7,9 +7,6 @@ block_cipher = None
 
 debug = True
 
-# v: log imports, u: unbuffered output
-options = [('v', None, 'OPTION'), ('u', None, 'OPTION')] if debug else []
-
 drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'repo')
 srcdir = os.path.join(basedir, 'rednotebook')
@@ -48,10 +45,9 @@ a.binaries += [(os.path.basename(path), path, 'BINARY') for path in MISSED_BINAR
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          options,
           exclude_binaries=True,
           name='rednotebook.exe',
-          debug=debug,
+          debug="all" if debug else None,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
