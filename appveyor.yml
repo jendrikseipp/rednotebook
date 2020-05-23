@@ -47,6 +47,7 @@ build_script:
   #- rm C:/Python36/Lib/site-packages/enchant/*.dll
   #- rm C:/Python36/Lib/site-packages/enchant/lib/enchant/*.dll
   - cp C:/gtk/bin/libenchant.dll C:/Python36/Lib/site-packages/enchant
+  - mkdir -p C:/Python36/Lib/site-packages/enchant/lib/enchant/
   - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python36/Lib/site-packages/enchant/lib/enchant/
 
   # Remove bundled dictionaries and install custom ones.
