@@ -1,4 +1,4 @@
-cefpython3==66.0
+#cefpython3==66.0
 pyenchant==2.0.0
 pefile==2018.8.8
 PyInstaller==3.6
