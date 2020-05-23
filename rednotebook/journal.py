@@ -113,7 +113,7 @@ def setup_logging(log_file):
     # broken on windows. Stdout doesn't work either it seems.
     stderr_streams = [file_logging_stream]
     stdout_streams = [file_logging_stream]
-    if not filesystem.main_is_frozen():
+    if True or not filesystem.main_is_frozen():
         stderr_streams.append(sys.__stderr__)
         stdout_streams.append(sys.__stdout__)
     sys.stderr = utils.StreamDuplicator(stderr_streams)
