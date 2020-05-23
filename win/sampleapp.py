@@ -17,4 +17,5 @@ print("GtkSource import works")
 import enchant
 
 print(enchant.list_languages())
+print(enchant.list_dicts())
 print("Enchant import works")

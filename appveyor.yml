@@ -43,7 +43,8 @@ build_script:
   # specified procedure could not be found." when calling "import gi".
   # Therefore, we remove the bundled DLLs and put our own DLLs in the
   # places where pyenchant and PyInstaller expect them
-  # (see also https://pyenchant.github.io/pyenchant/install.html).
+  # (see also https://pyenchant.github.io/pyenchant/install.html)
+  - set PYENCHANT_VERBOSE_FIND=foobar
   #- rm C:/Python36/Lib/site-packages/enchant/*.dll
   #- rm C:/Python36/Lib/site-packages/enchant/lib/enchant/*.dll
   #- cp C:/gtk/bin/libenchant.dll C:/Python36/Lib/site-packages/enchant
