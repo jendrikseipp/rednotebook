@@ -144,7 +144,9 @@ def get_cefpython3_datas():
     assert os.path.exists(locales_dir), "locales/ dir not found in cefpython3"
     for filename in os.listdir(locales_dir):
         logger.info(
-            "Include cefpython3 data: %s/%s" % (os.path.basename(locales_dir), filename)
+            "Include cefpython3 data: {}/{}".format(
+                os.path.basename(locales_dir), filename
+            )
         )
         ret.append((os.path.join(locales_dir, filename), "locales"))
     return ret

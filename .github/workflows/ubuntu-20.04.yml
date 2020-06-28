@@ -1,4 +1,4 @@
-name: Ubuntu
+name: Ubuntu-20.04
 
 # see https://github.community/t5/GitHub-Actions/How-to-trigger-an-action-on-push-or-pull-request-but-not-both/m-p/35805
 on:
@@ -12,11 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
@@ -31,11 +27,6 @@ jobs:
       run: |
         sudo apt-get -y update
         sudo apt-get -y install -qq gir1.2-gdkpixbuf-2.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-pango-1.0 gir1.2-webkit2-4.0 python3 python3-enchant python3-gi python3-yaml tox
-
-    - name: Check style
-      if: matrix.os == 'ubuntu-18.04'
-      run: |
-        tox -e style
 
     - name: Run tests
       run: |
