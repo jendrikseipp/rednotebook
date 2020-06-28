@@ -1,4 +1,4 @@
-name: Ubuntu
+name: Ubuntu-20.04
 
 # see https://github.community/t5/GitHub-Actions/How-to-trigger-an-action-on-push-or-pull-request-but-not-both/m-p/35805
 on:
