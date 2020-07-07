@@ -37,7 +37,7 @@ try:
     from yaml import CLoader as Loader
     from yaml import CSafeDumper as Dumper
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Dumper, Loader
 
     logging.info("Using pyyaml for loading and dumping")
 

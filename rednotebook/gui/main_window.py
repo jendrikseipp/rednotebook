@@ -61,7 +61,7 @@ class MainWindow:
         # https://stackoverflow.com/q/10524196/434217
         GObject.type_register(GtkSource.View)
         if filesystem.IS_WIN:
-            import xml.etree.ElementTree as ET
+            from xml.etree import ElementTree as ET
 
             tree = ET.parse(self.gladefile)
             for node in tree.iter():
