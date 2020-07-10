@@ -5,7 +5,7 @@ set -exuo pipefail
 cd "$(dirname "$0")"
 cd ../
 
-black --check .
+black --check --diff .
 
 # E203: whitespace before ':' (not compliant with PEP 8)
 # E402: module level import not at top of file
