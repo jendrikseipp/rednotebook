@@ -37,7 +37,7 @@ from rednotebook.gui import (
     search,
 )
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
-from rednotebook.gui.exports import ExportAssistant
+from rednotebook.gui.exports import ExportAssistant, HtmlExporter
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
 from rednotebook.util import dates, filesystem, markup, urls, utils
@@ -454,7 +454,7 @@ class MainWindow:
         else:
             date_format = self.journal.config.read("exportDateFormat")
             date_string = dates.format_date(date_format, self.day.date)
-            markup_string = markup.get_markup_for_day(self.day)
+            markup_string = markup.get_markup_for_day(self.day, HtmlExporter)
             html = self.journal.convert(
                 markup_string,
                 "xhtml",
