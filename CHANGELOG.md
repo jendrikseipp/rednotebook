@@ -2,6 +2,7 @@
 * Fix drag and drop (#492, @dgcampea).
 * Document how to change the theme on Windows (#487, Ankur A. Sharma).
 * Allow symlinking to `./run` script (#509).
+* Fix external previews (Eric Chazan).
 
 # 2.19 (2020-05-04)
 * Reload GTK theme colors when saving the journal (#485).
