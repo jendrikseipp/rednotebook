@@ -1,3 +1,13 @@
+rednotebook (2.20-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix drag and drop (#492, @dgcampea).
+  * Fix external previews (Eric Chazan).
+  * Document how to change the theme on Windows (#487, Ankur A. Sharma).
+  * Allow symlinking to `./run` script (#509).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 03 Aug 2020 01:12:55 +0200
+
 rednotebook (2.19-1) UNRELEASED; urgency=low
 
   * New upstream release
