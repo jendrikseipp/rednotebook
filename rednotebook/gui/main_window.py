@@ -454,7 +454,7 @@ class MainWindow:
         else:
             date_format = self.journal.config.read("exportDateFormat")
             date_string = dates.format_date(date_format, self.day.date)
-            markup_string = markup.get_markup_for_day(self.day)
+            markup_string = markup.get_markup_for_day(self.day, "xhtml")
             html = self.journal.convert(
                 markup_string,
                 "xhtml",
