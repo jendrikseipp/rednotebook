@@ -1,3 +1,6 @@
+# unreleased
+* Update MathJax to version 3 (#515, @dgcampea).
+
 # 2.20 (2020-08-03)
 * Fix drag and drop (#492, @dgcampea).
 * Fix external previews (Eric Chazan).
