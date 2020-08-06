@@ -234,7 +234,7 @@ class TestGetXHtmlExportConfig:
 
     def test_mathjax(self, process):
         document = process("$$x^3$$")
-        assert r'<script type="text/x-mathjax-config">' in document
+        assert r"<!--MathJax included-->" in document
 
 
 class TestGetTexExportConfig:
