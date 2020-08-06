@@ -108,7 +108,7 @@ CSS = """\
 
 # MathJax
 FORMULAS_SUPPORTED = True
-MATHJAX_FILE = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"
+MATHJAX_FILE = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
 
 # Explicitly setting inlineMath: [ ['\\(','\\)'] ] doesn't work.
 # Using defaults:
@@ -116,18 +116,7 @@ MATHJAX_FILE = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"
 #       inlineMath:  [['\(','\)']]
 MATHJAX_DELIMITERS = ["$$", "\\(", "\\)", r"\\[", "\\]"]
 MATHJAX = """\
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({{
-    messageStyle: "none",
-    config: ["MMLorHTML.js"],
-    jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
-    tex2jax: {{}},
-    extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
-    TeX: {{
-      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
-    }}
-  }});
-</script>
+<!--MathJax included-->
 <script type="text/javascript" src="{MATHJAX_FILE}"></script>
 """.format(
     **locals()
