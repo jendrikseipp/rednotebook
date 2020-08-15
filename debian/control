@@ -6,7 +6,7 @@ Standards-Version: 4.5.0
 Homepage: https://rednotebook.app
 Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
-Build-Depends: debhelper (>= 10)
+Build-Depends: debhelper-compat (= 12)
 Build-Depends-Indep: python3, dh-python
 
 Package: rednotebook
