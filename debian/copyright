@@ -1,5 +1,9 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: rednotebook
+Files-Excluded: debian
+
+Comment: The following files and folders were removed because
+ debian: Remove upstream debian folder
 
 Files: *
 Copyright: Copyright (C) 2008-2020 Jendrik Seipp <jendrikseipp@gmail.com>
