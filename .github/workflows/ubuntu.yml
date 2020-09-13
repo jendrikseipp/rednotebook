@@ -8,6 +8,10 @@ on:
   pull_request:
     branches:
     - master
+  schedule:
+    # Run workflow every morning (* needs quotes).
+    - cron: '0 4 * * *'
+
 
 jobs:
   build:
