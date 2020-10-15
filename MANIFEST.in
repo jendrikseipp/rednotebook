@@ -1,3 +1,7 @@
+include *.md
+include LICENSE
+include pyproject.toml
+include run
 include po/*.pot
 include po/*.po
 include rednotebook/images/*.png
@@ -6,6 +10,3 @@ include rednotebook/files/*.cfg
 include rednotebook/files/*.glade
 include rednotebook/files/*.lang
 include rednotebook/files/*.xml
-include *.md
-include LICENSE
-include run
