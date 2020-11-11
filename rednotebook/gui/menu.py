@@ -57,8 +57,8 @@ MENUBAR_XML = """\
         <menuitem action="CheckSpelling"/>
         <menuitem action="Options"/>
     </menu>
-    %s
-    %s
+    {}
+    {}
     <menu action="HelpMenu">
         <menuitem action="Help"/>
         <separator/>
@@ -69,9 +69,8 @@ MENUBAR_XML = """\
         <menuitem action="Info"/>
     </menu>
 </menubar>
-</ui>""" % (
-    insert_menu.MENUBAR_XML,
-    format_menu.MENUBAR_XML,
+</ui>""".format(
+    insert_menu.MENUBAR_XML, format_menu.MENUBAR_XML,
 )
 
 

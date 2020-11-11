@@ -173,6 +173,9 @@ class MainWindow:
                     pass
 
             self.html_editor = Preview(self.journal)
+            self.html_editor.connect(
+                "on-url-clicked", lambda _, url: self.navigate_to_uri(url)
+            )
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
         else:
             self.html_editor = mock.MagicMock()
@@ -550,17 +553,18 @@ class MainWindow:
             action = decision.get_navigation_action()
             if action.is_user_gesture():
                 uri = action.get_request().get_uri()
-                logging.info('Clicked URI "%s"' % uri)
-
-                if urls.is_entry_reference_uri(uri):
-                    self.navigate_to_referenced_entry(uri)
-                else:
-                    urls.open_url(uri)
-
+                self.navigate_to_uri(uri)
                 decision.ignore()
 
         # Stop processing this event.
         return True
+
+    def navigate_to_uri(self, uri):
+        logging.info('Navigating to URI "%s"' % uri)
+        if urls.is_entry_reference_uri(uri):
+            self.navigate_to_referenced_entry(uri)
+        else:
+            urls.open_url(uri)
 
     def navigate_to_referenced_entry(self, entry_reference_uri):
         entry_reference_uri = urllib.parse.urlparse(entry_reference_uri)

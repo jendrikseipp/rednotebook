@@ -19,7 +19,6 @@
 import ctypes
 import logging
 import sys
-import webbrowser
 
 from gi.repository import Gdk, GObject, Gtk
 
@@ -39,14 +38,9 @@ except ImportError as err:
 
 if cef:
 
-    class _RequestHandler:
-        def OnBeforeBrowse(self, browser, frame, request, **_):
-            """Called when the loading state has changed."""
-            webbrowser.open(request.GetUrl())
-            # Cancel request.
-            return True
-
     class HtmlView(Gtk.DrawingArea):
+        NOTEBOOK_URL = "file:///"
+
         """
         Loading HTML strings only works if we pass the `url` parameter to
         CreateBrowserSync.
@@ -76,7 +70,7 @@ if cef:
 
         def load_html(self, html):
             if self._browser:
-                self._browser.GetMainFrame().LoadString(html, "file:///dummy/")
+                self._browser.GetMainFrame().LoadString(html, self.NOTEBOOK_URL)
             else:
                 self._initial_html = html
 
@@ -107,10 +101,29 @@ if cef:
             window_info = cef.WindowInfo()
             self._win32_handle = self.get_handle()
             window_info.SetAsChild(self._win32_handle)
-            self._browser = cef.CreateBrowserSync(window_info, url="file:///dummy/")
-            self._browser.SetClientHandler(_RequestHandler())
+            self._browser = cef.CreateBrowserSync(window_info, url=self.NOTEBOOK_URL)
+            self._browser.SetClientCallback("OnBeforeBrowse", self.on_before_browse)
+            self._browser.SetClientCallback("OnAddressChange", self.on_address_change)
             self.load_html(self._initial_html)
             self._initial_html = None
+
+        @GObject.Signal(name="on-url-clicked", arg_types=(str,))
+        def url_clicked_signal(self, url):
+            logging.debug("Emitting on-url-clicked signal: %s", url)
+
+        def on_before_browse(self, browser, frame, request, **_):
+            url = request.GetUrl()
+            if url == self.NOTEBOOK_URL + "/":
+                # On first invocation the url points to dummy NOTEBOOK_URL.
+                # There is no reason to emit signal for it.
+                return False
+            self.url_clicked_signal.emit(url)
+            return True
+
+        def on_address_change(self, browser, frame, url):
+            if url == self.NOTEBOOK_URL:
+                return
+            self.url_clicked_signal.emit(url)
 
         def on_configure(self, *_):
             if self._browser:
