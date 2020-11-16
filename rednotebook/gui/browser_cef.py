@@ -113,6 +113,8 @@ if cef:
 
         def on_before_browse(self, browser, frame, request, **_):
             url = request.GetUrl()
+            # For some reason GetUrl() appends slash to the returned URL so we need to compensate for it:
+            # (https://bugs.chromium.org/p/chromium/issues/detail?id=339054 might be the cause)
             if url == self.NOTEBOOK_URL + "/":
                 # On first invocation the url points to dummy NOTEBOOK_URL.
                 # There is no reason to emit signal for it.
