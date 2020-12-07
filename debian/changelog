@@ -1,3 +1,11 @@
+rednotebook (2.21-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Update MathJax to version 3 (#515, @dgcampea).
+  * Fix date references in CEF-based HtmlView (#544, Paweł Żukowski).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 07 Dec 2020 09:45:53 +0100
+
 rednotebook (2.20-1) UNRELEASED; urgency=low
 
   * New upstream release
