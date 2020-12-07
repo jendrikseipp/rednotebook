@@ -1,4 +1,4 @@
-# unreleased
+# 2.21 (2020-12-07)
 * Update MathJax to version 3 (#515, @dgcampea).
 * Fix date references in CEF-based HtmlView (#544, Paweł Żukowski).
 

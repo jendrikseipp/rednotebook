@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-03 01:12+0200\n"
+"POT-Creation-Date: 2020-12-07 09:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: ../rednotebook/util/markup.py:140 ../rednotebook/gui/categories.py:47
+#: ../rednotebook/util/markup.py:129 ../rednotebook/gui/categories.py:47
 #: ../rednotebook/gui/clouds.py:213 ../rednotebook/help.py:24
 msgid "Tags"
 msgstr ""
@@ -250,7 +250,7 @@ msgid "Plain Text"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:334
-#: ../rednotebook/gui/main_window.py:679
+#: ../rednotebook/gui/main_window.py:683
 msgid "Template"
 msgstr ""
 
@@ -400,157 +400,157 @@ msgstr ""
 msgid "Hide \"%s\" from clouds"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:92
+#: ../rednotebook/gui/menu.py:91
 msgid "_Journal"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:98
+#: ../rednotebook/gui/menu.py:97
 msgid "Create a new journal. The old one will be saved"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:106
+#: ../rednotebook/gui/menu.py:105
 msgid "Load an existing journal. The old journal will be saved"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:116
+#: ../rednotebook/gui/menu.py:115
 msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:124
+#: ../rednotebook/gui/menu.py:123
 msgid "Export"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:126
+#: ../rednotebook/gui/menu.py:125
 msgid "Open the export assistant"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:133
+#: ../rednotebook/gui/menu.py:132
 msgid "_Backup"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:135
+#: ../rednotebook/gui/menu.py:134
 msgid "Save all the data in a zip archive"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:141
+#: ../rednotebook/gui/menu.py:140
 msgid "S_tatistics"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:143
+#: ../rednotebook/gui/menu.py:142
 msgid "Show some statistics about the journal"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:151
+#: ../rednotebook/gui/menu.py:150
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:154
+#: ../rednotebook/gui/menu.py:153
 msgid "_Edit"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:160
+#: ../rednotebook/gui/menu.py:159
 msgid "Undo text or tag edits"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:168
+#: ../rednotebook/gui/menu.py:167
 msgid "Redo text or tag edits"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:213
+#: ../rednotebook/gui/menu.py:212
 msgid "Underline misspelled words"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:228
+#: ../rednotebook/gui/menu.py:227
 msgid "_Help"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:232
+#: ../rednotebook/gui/menu.py:231
 msgid "Contents"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:234
+#: ../rednotebook/gui/menu.py:233
 msgid "Open the RedNotebook documentation"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:240
+#: ../rednotebook/gui/menu.py:239
 msgid "Get Help Online"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:242
+#: ../rednotebook/gui/menu.py:241
 msgid "Browse answered questions or ask a new one"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:248
+#: ../rednotebook/gui/menu.py:247
 msgid "Translate RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:250
+#: ../rednotebook/gui/menu.py:249
 msgid "Connect to the Launchpad website to help translate RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:256
+#: ../rednotebook/gui/menu.py:255
 msgid "Report a Problem"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:258
+#: ../rednotebook/gui/menu.py:257
 msgid "Fill out a short form about the problem"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:279
+#: ../rednotebook/gui/menu.py:278
 msgid "Wrong directory"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:283 ../rednotebook/journal.py:215
+#: ../rednotebook/gui/menu.py:282 ../rednotebook/journal.py:215
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:290
+#: ../rednotebook/gui/menu.py:289
 msgid "Please select an empty directory."
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:295
+#: ../rednotebook/gui/menu.py:294
 msgid "This directory contains no journal files:"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:314
+#: ../rednotebook/gui/menu.py:313
 msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:315
+#: ../rednotebook/gui/menu.py:314
 msgid "The directory name will be the title of the new journal."
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:318
+#: ../rednotebook/gui/menu.py:317
 msgid "Select an empty folder for your new journal"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:324
+#: ../rednotebook/gui/menu.py:323
 msgid "Select an existing journal directory"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:325
+#: ../rednotebook/gui/menu.py:324
 msgid "The directory should contain your journal's data files"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:338
+#: ../rednotebook/gui/menu.py:337
 msgid "Select an empty folder for the new location of your journal"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:339
+#: ../rednotebook/gui/menu.py:338
 msgid "The directory name will be the new title of the journal"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:399
+#: ../rednotebook/gui/menu.py:398
 msgid "RedNotebook Documentation"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:424
+#: ../rednotebook/gui/menu.py:423
 msgid "Contributors:"
 msgstr ""
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:425 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:424 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
 
@@ -691,19 +691,19 @@ msgstr ""
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:181
+#: ../rednotebook/gui/main_window.py:184
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:328
+#: ../rednotebook/gui/main_window.py:331
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:585
+#: ../rednotebook/gui/main_window.py:589
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:683
+#: ../rednotebook/gui/main_window.py:687
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
