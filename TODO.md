@@ -12,12 +12,12 @@ please check back with me briefly about its status.
 - [ ] Make default CSS prettier (see private email exchange).
 - [ ] Allow searching for days that contain **multiple** words or tags.
 - [ ] Check that non-ASCII image filenames work (https://bugs.launchpad.net/bugs/1739701).
-- [ ] Add a "Feedback" popup option in Help menu that links to https://github.com/jendrikseipp/rednotebook/discussions.
+- [ ] Add a "Give Feedback" option in Help menu that links to https://github.com/jendrikseipp/rednotebook/discussions.
 - [ ] Search and replace (useful for renaming tags and other names).
       Show "replace" text field after search text has been entered.
 - [ ] Add simple way to show all entries: allow searching for whitespace (i.e., don't strip whitespace from search string).
 - [ ] Copy files and pictures into data subdirectory (#163, #469).
-- [ ] Require mimimum width for calendar panel to avoid hiding it by accident.
+- [ ] Require minimum width for calendar panel to avoid hiding it by accident.
 
 - [ ] Data safety:
   - [ ] Only overwrite old month file if new month file can be parsed correctly.
