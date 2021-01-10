@@ -65,6 +65,7 @@ MENUBAR_XML = """\
         <menuitem action="OnlineHelp"/>
         <menuitem action="Translate"/>
         <menuitem action="ReportBug"/>
+        <menuitem action="GiveFeedback"/>
         <separator/>
         <menuitem action="Info"/>
     </menu>
@@ -257,6 +258,14 @@ class MainMenuBar:
                     _("Fill out a short form about the problem"),
                     self.on_report_bug,
                 ),
+                (
+                    "GiveFeedback",
+                    None,
+                    _("Give Feedback"),
+                    None,
+                    _("Fill out a short form and help us know how we can improve RedNotebook for you"),
+                    self.on_give_feedback,
+                ),
                 ("Info", Gtk.STOCK_ABOUT, None, None, None, self.on_info_activate),
             ]
         )
@@ -408,6 +417,9 @@ class MainMenuBar:
 
     def on_report_bug(self, widget):
         webbrowser.open(info.bug_url)
+
+    def on_give_feedback(self, widget):
+        webbrowser.open(info.discussion_url)
 
     def on_info_activate(self, widget):
         self.info_dialog = self.main_window.builder.get_object("about_dialog")
