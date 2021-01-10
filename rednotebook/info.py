@@ -39,6 +39,7 @@ translation_url = "https://translations.launchpad.net/rednotebook/"
 bug_url = "https://github.com/jendrikseipp/rednotebook/issues"
 version_url = "https://raw.githubusercontent.com/jendrikseipp/rednotebook/master/rednotebook/info.py"
 contributors_url = "https://github.com/jendrikseipp/rednotebook/graphs/contributors"
+discussion_url = "https://github.com/jendrikseipp/rednotebook/discussions"
 
 developers = ["%(author)s <%(author_mail)s>" % locals()]
 artists = ["Ciaran"]
