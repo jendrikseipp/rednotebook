@@ -9,5 +9,12 @@ other open source license approved by the Open Source Initiative."
 ```
 -->
 
-Summary of the changes in this pull request:
+## Summary of the changes in this pull request
+
 * TODO
+
+## Pull request checklist
+<!--- Go over the following points, and put an `x` into all boxes that apply. -->
+
+- [ ] I have added an entry in `CHANGELOG.md` including my name and issue and/or pull request number.
+- [ ] If applicable: I have removed the corresponding entry in `TODO.md`.
