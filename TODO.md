@@ -7,12 +7,11 @@ please check back with me briefly about its status.
 
 ## Important features
 
-- [ ] Check for latest version during startup by default.
+- [ ] Update GTK stack for Windows: use MinGW and Python >= 3.6.
 - [ ] Use separate file for storing CSS to allow users to override styles more easily.
 - [ ] Make default CSS prettier (see private email exchange).
 - [ ] Allow searching for days that contain **multiple** words or tags.
 - [ ] Check that non-ASCII image filenames work (https://bugs.launchpad.net/bugs/1739701).
-- [ ] Add a "Give Feedback" option in Help menu that links to https://github.com/jendrikseipp/rednotebook/discussions.
 - [ ] Search and replace (useful for renaming tags and other names).
       Show "replace" text field after search text has been entered.
 - [ ] Add simple way to show all entries: allow searching for whitespace (i.e., don't strip whitespace from search string).
