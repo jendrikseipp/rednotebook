@@ -1,4 +1,4 @@
-name: Ubuntu
+name: Run Tests
 
 # see https://github.community/t5/GitHub-Actions/How-to-trigger-an-action-on-push-or-pull-request-but-not-both/m-p/35805
 on:
@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+        os: [macos-10.15, macos-11.0, ubuntu-18.04, ubuntu-20.04]
 
     steps:
     - uses: actions/checkout@v2
@@ -31,10 +31,22 @@ jobs:
         python3 --version
         python3 -c "import multiprocessing as m; print('CPUs:', m.cpu_count())"
 
-    - name: Install dependencies
+    - name: Install dependencies (Ubuntu)
+      if: startsWith(matrix.os, 'ubuntu')
       run: |
         sudo apt-get -y update
         sudo apt-get -y install -qq gir1.2-gdkpixbuf-2.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-pango-1.0 gir1.2-webkit2-4.0 python3 python3-enchant python3-gi python3-yaml tox
+
+    - name: Install dependencies (macOS)
+      if: startsWith(matrix.os, 'macos')
+      run: |
+        brew install gtk
+        brew install pygobject3 glib libffi cairo gtksourceview3
+        brew install atk librsvg
+        brew install gsettings-desktop-schemas adwaita-icon-theme
+        brew install enchant
+        pip3 install tox
+        pip3 install .
 
     - name: Check style
       if: matrix.os == 'ubuntu-18.04'
