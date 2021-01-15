@@ -1,5 +1,6 @@
 # Unreleased
 * Add a "Give Feedback" button (#551, Rahul Jha).
+* Start testing code on macOS (#552, Rahul Jha).
 
 # 2.21 (2020-12-07)
 * Update MathJax to version 3 (#515, @dgcampea).
