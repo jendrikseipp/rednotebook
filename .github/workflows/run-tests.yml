@@ -1,4 +1,4 @@
-name: Run Tests
+name: CI
 
 # see https://github.community/t5/GitHub-Actions/How-to-trigger-an-action-on-push-or-pull-request-but-not-both/m-p/35805
 on:
@@ -14,7 +14,7 @@ on:
 
 
 jobs:
-  build:
+  run-tests:
 
     runs-on: ${{ matrix.os }}
 
@@ -40,13 +40,8 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        brew install gtk
-        brew install pygobject3 glib libffi cairo gtksourceview3
-        brew install atk librsvg
-        brew install gsettings-desktop-schemas adwaita-icon-theme
-        brew install enchant
+        brew install gtk pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
         pip3 install tox
-        pip3 install .
 
     - name: Check style
       if: matrix.os == 'ubuntu-18.04'
