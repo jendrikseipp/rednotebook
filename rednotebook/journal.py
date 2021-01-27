@@ -596,8 +596,7 @@ class Journal:
         If there is a problem while copying the file, a None vale is
         returned.
         '''
-        # TODO: read media folder path from dirs
-        media_dir = os.path.join(self.dirs.data_dir, 'media')
+        media_dir = self.dirs.media_dir
         try:
             filesystem.make_directory(media_dir)
         except OSError as err:

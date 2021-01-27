@@ -108,6 +108,10 @@ class Filenames(dict):
 
         return user_dir
 
+    @property
+    def media_dir(self):
+       return os.path.join(self.data_dir, 'media') 
+
     def is_valid_journal_path(self, path):
         return os.path.isdir(path) and os.path.abspath(path) not in self.forbidden_dirs
 

@@ -313,14 +313,12 @@ class MainMenuBar:
             return
 
         if action == 'saveas':
-            # TODO: read directory name from self.dirs
-            old_media_dir = os.path.join(self.journal.dirs.data_dir, 'media')
+            old_media_dir = os.path.join(self.journal.dirs.media_dir)
 
             self.journal.dirs.data_dir = new_dir
             self.journal.save_to_disk(saveas=True)
 
-            # TODO: read from self.dirs
-            new_media_dir = os.path.join(self.journal.dirs.data_dir, 'media')
+            new_media_dir = os.path.join(self.journal.dirs.media_dir)
 
             filesystem.copytree(old_media_dir, new_media_dir)
 
