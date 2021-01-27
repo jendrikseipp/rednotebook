@@ -611,10 +611,10 @@ class Journal:
         try:
             filesystem.make_directory(monthmedia_dir)
         except OSError as err:
-            logging.error('Creating month media directory failed: {}'.format(err))
+            logging.error('Creating media directory for month failed: {}'.format(err))
             return
 
-        # Copy file to previous dir
+        # Copy file to created dir
         dst = os.path.join(
             monthmedia_dir, os.path.basename(src))
         try:

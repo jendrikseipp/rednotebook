@@ -318,7 +318,7 @@ class InsertMenu:
 
                 base, ext = os.path.splitext(filename)
 
-                # If not copied to the journal dir, get file absolute path
+                # If the file is not to be copied, get file absolute path
                 # On windows firefox accepts absolute filenames only
                 # with the file:// prefix
                 if not copy:
