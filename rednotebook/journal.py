@@ -591,10 +591,6 @@ class Journal:
         The file is copied to the directory:
             <journal_path>/media/<year>_<month>
 
-        If a different file with the same name is found in the destination
-        directory, the copy filename is modified to avoid overwritting.
-        See util.filesystem.safecopy() function for details.
-
         The destination path of the copied relative to the journal
         directory file is returned.
         If there is a problem while copying the file, a None vale is
@@ -623,7 +619,7 @@ class Journal:
         dst = os.path.join(
             monthmedia_dir, os.path.basename(src))
         try:
-            dst = filesystem.safecopy(src, dst)
+            dst = filesystem.copy(src, dst)
         except OSError as err:
             logging.error(
                 'Copying file to journal directory failed: {}'.format(err))

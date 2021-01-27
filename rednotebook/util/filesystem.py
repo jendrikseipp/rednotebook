@@ -24,7 +24,6 @@ import platform
 import subprocess
 import sys
 import shutil
-import filecmp
 import stat
 
 
@@ -178,77 +177,11 @@ def make_file_with_dir(file, content):
     make_file(file, content)
 
 
-def _safecopy_filename_generator(filename, marker='-'):
-    '''Returns a generator that yields filenames with a counter.
-
-    This counter is placed before the file extension, and incremented with
-    every iteration.
-
-    For example:
-
-        f1 = increment_filename('myimage.jpeg')
-        f1.next() # myimage.jpeg
-        f1.next() # myimage-2.jpeg
-        f1.next() # myimage-3.jpeg
-
-    Adapted from: http://alexwlchan.net/2015/06/safer-file-copying/
-
-    '''
-    # First we split the filename into the base and the extension
-    base, fileext = os.path.splitext(filename)
-
-    # The counter is just an integer, so we can increment it indefinitely.
-    value = 0
-    while True:
-        if value == 0:
-            value += 1
-            yield filename
-        value += 1
-        yield '{}{}{}{}'.format(base, marker, value, fileext)
-
-
-def safecopy(src, dst, change_permissions=True):
-    '''Copy a file from path src to path dst without overwriting.
-
-    If a file already exists at dst, it will not be overwritten. Instead:
-
-     * If it is the same as the source file, nothing will be done.
-     * If it is different to the source file, a new unused name for the
-       copy will be picked.
-
-    Returns the path to the copied file.
-
-    Adapted from: http://alexwlchan.net/2015/06/safer-file-copying/
-
-    '''
-    if not os.path.exists(src):
-        raise ValueError('Source file does not exist: {}'.format(src))
-
-    # Start the filename generator
-    dst_gen = _safecopy_filename_generator(dst)
-
-    # Iterate over different destination filenames until it works
-    copied = False
-    while not copied:
-        # Generate next destination filename
-        dst = next(dst_gen)
-
-        # Check if there is a file at the destination location
-        if os.path.exists(dst):
-
-            # If the namesake is the same as the source file, then we
-            # don't need to do anything else.
-            if filecmp.cmp(src, dst):
-                copied = True
-
-        else:
-            # If there is no file at the destination, attempt to write
-            # to it.
-            shutil.copy(src, dst)
-            copied = True
-
-            logging.debug(
-                'Copied file from {} to {}.'.format(src, dst))
+def copy(src, dst, change_permissions=True):
+    '''Copy file and make it only writable and readable by user.'''
+    shutil.copy(src, dst)
+    logging.debug(
+        'Copied file from {} to {}.'.format(src, dst))
 
     # Make file only readable and writable by user
     if change_permissions:
