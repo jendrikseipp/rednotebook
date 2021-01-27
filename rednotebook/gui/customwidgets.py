@@ -21,14 +21,13 @@ import logging
 import os
 import webbrowser
 
-from gi.repository import GObject
-from gi.repository import Gtk
+from gi.repository import GObject, Gtk
 
 
 class ActionButton(Gtk.Button):
     def __init__(self, text, action):
         Gtk.Button.__init__(self, text)
-        self.connect('clicked', action)
+        self.connect("clicked", action)
 
 
 class UrlButton(ActionButton):
@@ -74,7 +73,7 @@ class CustomComboBoxEntry:
         self.combo_box.set_model(None)
         self.liststore.clear()
         self.entries.clear()
-        self.set_active_text('')
+        self.set_active_text("")
         self.combo_box.set_model(self.liststore)
 
 
@@ -113,7 +112,7 @@ class CustomListView(Gtk.TreeView):
 class Calendar(Gtk.Calendar):
     def __init__(self, week_numbers=False):
         Gtk.Calendar.__init__(self)
-        self.set_property('show-week-numbers', week_numbers)
+        self.set_property("show-week-numbers", week_numbers)
 
     def set_date(self, date):
         # Set the day temporarily to a day that is present in all months.
@@ -137,8 +136,8 @@ class Info(Gtk.InfoBar):
         Gtk.InfoBar.__init__(self)
         self.title_label = Gtk.Label()
         self.msg_label = Gtk.Label()
-        self.title_label.set_alignment(0., 0.5)
-        self.msg_label.set_alignment(0., 0.5)
+        self.title_label.set_alignment(0.0, 0.5)
+        self.msg_label.set_alignment(0.0, 0.5)
 
         vbox = Gtk.VBox(spacing=5)
         vbox.pack_start(self.title_label, False, False, 0)
@@ -151,8 +150,8 @@ class Info(Gtk.InfoBar):
         content.pack_start(vbox, False, False, 0)
 
         self.add_button(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
-        self.connect('close', lambda x: self.hide())
-        self.connect('response', self.on_response)
+        self.connect("close", lambda x: self.hide())
+        self.connect("response", self.on_response)
 
     def on_response(self, infobar, response_id):
         if response_id == Gtk.ResponseType.CLOSE:
@@ -161,16 +160,18 @@ class Info(Gtk.InfoBar):
     def show_message(self, title, msg, msg_type):
         if not title:
             title = msg
-            msg = ''
-        self.title_label.set_markup('<b>%s</b>' % title)
+            msg = ""
+        self.title_label.set_markup("<b>%s</b>" % title)
         self.msg_label.set_markup(msg)
         self.set_message_type(msg_type)
-        self.image.set_from_stock(self.icons.get(msg_type, Gtk.STOCK_DIALOG_INFO),
-                                  Gtk.IconSize.DIALOG)
+        self.image.set_from_stock(
+            self.icons.get(msg_type, Gtk.STOCK_DIALOG_INFO), Gtk.IconSize.DIALOG
+        )
         self.show_all()
 
 
 # ------------------------- Assistant Pages ------------------------------------
+
 
 class AssistantPage(Gtk.VBox):
     def __init__(self, *args, **kwargs):
@@ -184,7 +185,7 @@ class AssistantPage(Gtk.VBox):
 
     def _add_header(self):
         self.header = Gtk.Label()
-        self.header.set_markup('Unset')
+        self.header.set_markup("Unset")
         self.header.set_alignment(0.0, 0.5)
         self.pack_start(self.header, False, False, 0)
         self.separator = Gtk.HSeparator()
@@ -205,7 +206,7 @@ class RadioButtonPage(AssistantPage):
 
         self.buttons = []
 
-    def add_radio_option(self, object, label, tooltip=''):
+    def add_radio_option(self, object, label, tooltip=""):
         sensitive = object.is_available()
 
         group = self.buttons[0] if self.buttons else None
@@ -220,7 +221,7 @@ class RadioButtonPage(AssistantPage):
         if tooltip:
             description = Gtk.Label()
             description.set_alignment(0.0, 0.5)
-            description.set_markup(' ' * 10 + tooltip)
+            description.set_markup(" " * 10 + tooltip)
             description.set_sensitive(sensitive)
             self.pack_start(description, False, False, 0)
 
@@ -239,7 +240,7 @@ class PathChooserPage(AssistantPage):
         self.last_path = None
 
         self.chooser = Gtk.FileChooserWidget()
-        self.chooser.connect('selection-changed', self.on_path_changed)
+        self.chooser.connect("selection-changed", self.on_path_changed)
 
         self.pack_start(self.chooser, True, True, 0)
 
@@ -258,19 +259,19 @@ class PathChooserPage(AssistantPage):
         if helptext:
             self.set_header(helptext)
 
-        if self.path_type == 'DIR':
+        if self.path_type == "DIR":
             self.chooser.set_action(Gtk.FileChooserAction.SELECT_FOLDER)
-        elif self.path_type == 'FILE':
+        elif self.path_type == "FILE":
             self.chooser.set_action(Gtk.FileChooserAction.OPEN)
-        elif self.path_type == 'NEWFILE':
+        elif self.path_type == "NEWFILE":
             self.chooser.set_action(Gtk.FileChooserAction.SAVE)
         else:
             logging.error('Wrong path_type "%s"' % self.path_type)
 
-        if self.path_type in ['FILE', 'NEWFILE'] and extension:
+        if self.path_type in ["FILE", "NEWFILE"] and extension:
             filter = Gtk.FileFilter()
             filter.set_name(extension)
-            filter.add_pattern('*.' + extension)
+            filter.add_pattern("*." + extension)
             self.chooser.add_filter(filter)
 
         if self.last_path and os.path.exists(self.last_path):
@@ -282,7 +283,7 @@ class PathChooserPage(AssistantPage):
             dirname, basename = os.path.split(path)
             filename, _ = os.path.splitext(basename)
             self.chooser.set_current_folder(dirname)
-            self.chooser.set_current_name(filename + '.' + extension)
+            self.chooser.set_current_name(filename + "." + extension)
 
     def get_selected_path(self):
         self.last_path = self.chooser.get_filename()
@@ -300,40 +301,40 @@ class Assistant(Gtk.Assistant):
 
         self.set_size_request(1000, 500)
 
-        self.connect('cancel', self._on_cancel)
-        self.connect('close', self._on_close)
-        self.connect('prepare', self._on_prepare)
+        self.connect("cancel", self._on_cancel)
+        self.connect("close", self._on_close)
+        self.connect("prepare", self._on_prepare)
 
     def run(self):
-        '''
+        """
         Show assistant
-        '''
+        """
 
     def _on_cancel(self, assistant):
-        '''
+        """
         Cancelled -> Hide assistant
-        '''
+        """
         self.hide()
 
     def _on_close(self, assistant):
-        '''
+        """
         Do the action
-        '''
+        """
 
     def _on_prepare(self, assistant, page):
-        '''
+        """
         Called when a new page should be prepared, before it is shown
-        '''
+        """
 
 
 class TemplateBar(Gtk.HBox):
     def __init__(self):
         GObject.GObject.__init__(self)
         self.set_spacing(2)
-        label = Gtk.Label(label='<b>%s</b>:' % _('Template'))
+        label = Gtk.Label(label="<b>%s</b>:" % _("Template"))
         label.set_use_markup(True)
         self.pack_start(label, False, False, 0)
-        self.save_insert_button = Gtk.Button(_('Save and insert'))
+        self.save_insert_button = Gtk.Button(_("Save and insert"))
         self.pack_start(self.save_insert_button, False, False, 0)
         self.save_button = Gtk.Button(stock=Gtk.STOCK_SAVE)
         self.pack_start(self.save_button, False, False, 0)
@@ -347,7 +348,7 @@ class ToolbarMenuButton(Gtk.ToolButton):
         Gtk.ToolButton.__init__(self)
         self.set_stock_id(stock_id)
         self._menu = menu
-        self.connect('clicked', self._on_clicked)
+        self.connect("clicked", self._on_clicked)
         self.show_all()
 
     def _on_clicked(self, button):

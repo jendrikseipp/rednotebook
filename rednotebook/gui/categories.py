@@ -18,12 +18,9 @@
 
 import logging
 
-from gi.repository import Gdk
-from gi.repository import Gtk
-from gi.repository import Pango
+from gi.repository import Gdk, Gtk, Pango
 
-from rednotebook.util import markup
-from rednotebook.util import utils
+from rednotebook.util import markup, utils
 
 
 class CategoriesTreeView:
@@ -34,7 +31,7 @@ class CategoriesTreeView:
 
         # Maintain a list of all entered categories. Initialized by rn.__init__()
         self.categories = []
-        self.last_category = ''
+        self.last_category = ""
 
         self.statusbar = self.main_window.statusbar
 
@@ -47,7 +44,7 @@ class CategoriesTreeView:
         # create the TreeViewColumn to display the data
         self.tvcolumn = Gtk.TreeViewColumn()
         label = Gtk.Label()
-        label.set_markup('<b>' + _('Tags') + '</b>')
+        label.set_markup("<b>" + _("Tags") + "</b>")
         label.show()
         self.tvcolumn.set_widget(label)
 
@@ -57,16 +54,16 @@ class CategoriesTreeView:
         # create a CellRendererText to render the data
         self.cell = Gtk.CellRendererText()
 
-        self.cell.set_property('editable', True)
-        self.cell.connect('edited', self.edited_cb, self.tree_store)
-        self.cell.connect('editing-started', self.on_editing_started)
+        self.cell.set_property("editable", True)
+        self.cell.connect("edited", self.edited_cb, self.tree_store)
+        self.cell.connect("editing-started", self.on_editing_started)
 
         # add the cell to the tvcolumn and allow it to expand
         self.tvcolumn.pack_start(self.cell, True)
 
         """ set the cell "text" attribute to column 0 - retrieve text
             from that column in tree_store"""
-        self.tvcolumn.add_attribute(self.cell, 'markup', 0)
+        self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
         # make it searchable
         self.tree_view.set_search_column(0)
@@ -78,13 +75,15 @@ class CategoriesTreeView:
         self.context_menu = self._get_context_menu()
         self.context_menu.attach_to_widget(self.tree_view, lambda x, y: None)
 
-        self.tree_view.connect('button-press-event', self.on_button_press_event)
-        self.tree_view.connect('key-press-event', self.on_key_press_event)
+        self.tree_view.connect("button-press-event", self.on_button_press_event)
+        self.tree_view.connect("key-press-event", self.on_key_press_event)
 
         # Wrap lines
         self.cell.props.wrap_mode = Pango.WrapMode.WORD
         self.cell.props.wrap_width = 200
-        self.tree_view.connect_after("size-allocate", self.on_size_allocate, self.tvcolumn, self.cell)
+        self.tree_view.connect_after(
+            "size-allocate", self.on_size_allocate, self.tvcolumn, self.cell
+        )
 
     def _show_error_msg(self, text):
         self.main_window.journal.show_message(text, error=True)
@@ -108,14 +107,14 @@ class CategoriesTreeView:
     def on_editing_started(self, cell, editable, path):
         # Let the renderer use text not markup temporarily
         self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, 'text', 0)
+        self.tvcolumn.add_attribute(self.cell, "text", 0)
 
         # Fetch the markup
         pango_markup = self.tree_store[path][0]
 
         # Tell the renderer NOT to use markup
         self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, 'markup', 0)
+        self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
         # We want to show txt2tags markup and not pango markup
         editable.set_text(markup.convert_from_pango(pango_markup))
@@ -126,11 +125,11 @@ class CategoriesTreeView:
 
         new_text is txt2tags markup
         """
-        if new_text == 'text' and self.node_on_top_level(path):
+        if new_text == "text" and self.node_on_top_level(path):
             self._show_error_msg('"text" is a reserved keyword')
             return
         if len(new_text) < 1:
-            self._show_error_msg(_('Empty entries are not allowed'))
+            self._show_error_msg(_("Empty entries are not allowed"))
             return
 
         liststore[path][0] = markup.convert_to_pango(new_text)
@@ -143,7 +142,7 @@ class CategoriesTreeView:
         self.main_window.cloud.update()
 
     def check_category(self, category):
-        if category == 'text':
+        if category == "text":
             self._show_error_msg('"text" is a reserved keyword')
             return False
         assert category
@@ -154,8 +153,8 @@ class CategoriesTreeView:
         Recursive Method for adding the content
         """
         for key, value in sorted(
-                iter(element_content.items()),
-                key=lambda key_value: key_value[0].lower()):
+            iter(element_content.items()), key=lambda key_value: key_value[0].lower()
+        ):
             if key is not None:
                 key_pango = markup.convert_to_pango(key)
             new_child = self.tree_store.append(parent, [key_pango])
@@ -168,7 +167,7 @@ class CategoriesTreeView:
 
         for key in sorted_keys:
             value = day.content[key]
-            if not key == 'text':
+            if not key == "text":
                 self.add_element(None, {key: value})
         self.tree_view.expand_all()
 
@@ -209,13 +208,13 @@ class CategoriesTreeView:
     def get_iter_value(self, iter):
         # Let the renderer use text not markup temporarily
         self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, 'text', 0)
+        self.tvcolumn.add_attribute(self.cell, "text", 0)
 
         pango_markup = self.tree_store.get_value(iter, 0)
 
         # Reset the renderer to use markup
         self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, 'markup', 0)
+        self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
         # We want to have txt2tags markup and not pango markup
         text = markup.convert_from_pango(pango_markup)
@@ -284,29 +283,29 @@ class CategoriesTreeView:
 
     def on_key_press_event(self, _view, event):
         keyname = Gdk.keyval_name(event.keyval)
-        if keyname == 'Delete':
+        if keyname == "Delete":
             self._on_delete_entry_clicked(None)
-        elif keyname == 'F2':
+        elif keyname == "F2":
             self._on_change_entry_clicked(None)
 
     def on_button_press_event(self, widget, event):
         # Get the path at the specific mouse position.
         path = widget.get_path_at_pos(int(event.x), int(event.y))
-        if (path is None):
+        if path is None:
             """If we didn't get a path then we don't want anything
             to be selected."""
             selection = widget.get_selection()
             selection.unselect_all()
 
         # Do not show change and delete options, if nothing is selected
-        something_selected = (path is not None)
+        something_selected = path is not None
         uimanager = self.main_window.uimanager
-        change_entry_item = uimanager.get_widget('/ContextMenu/ChangeEntry')
+        change_entry_item = uimanager.get_widget("/ContextMenu/ChangeEntry")
         change_entry_item.set_sensitive(something_selected)
-        delete_entry_item = uimanager.get_widget('/ContextMenu/Delete')
+        delete_entry_item = uimanager.get_widget("/ContextMenu/Delete")
         delete_entry_item.set_sensitive(something_selected)
 
-        if (event.button == 3):
+        if event.button == 3:
             # This is a right-click.
             self.context_menu.popup(None, None, None, None, event.button, event.time)
 
@@ -323,17 +322,37 @@ class CategoriesTreeView:
         uimanager = self.main_window.uimanager
 
         # Create an ActionGroup
-        actiongroup = Gtk.ActionGroup('ContextMenuActionGroup')
+        actiongroup = Gtk.ActionGroup("ContextMenuActionGroup")
 
         # Create actions
-        actiongroup.add_actions([
-            ('ChangeEntry', Gtk.STOCK_EDIT, _('Change this text'),
-             None, None, self._on_change_entry_clicked),
-            ('AddEntry', None, _('Add a new entry'),
-             None, None, self._on_add_entry_clicked),
-            ('Delete', Gtk.STOCK_DELETE, _('Delete this entry'),
-             None, None, self._on_delete_entry_clicked),
-        ])
+        actiongroup.add_actions(
+            [
+                (
+                    "ChangeEntry",
+                    Gtk.STOCK_EDIT,
+                    _("Change this text"),
+                    None,
+                    None,
+                    self._on_change_entry_clicked,
+                ),
+                (
+                    "AddEntry",
+                    None,
+                    _("Add a new entry"),
+                    None,
+                    None,
+                    self._on_add_entry_clicked,
+                ),
+                (
+                    "Delete",
+                    Gtk.STOCK_DELETE,
+                    _("Delete this entry"),
+                    None,
+                    None,
+                    self._on_delete_entry_clicked,
+                ),
+            ]
+        )
 
         # Add the actiongroup to the uimanager
         uimanager.insert_action_group(actiongroup, 0)
@@ -342,15 +361,12 @@ class CategoriesTreeView:
         uimanager.add_ui_from_string(context_menu_xml)
 
         # Create a Menu
-        menu = uimanager.get_widget('/ContextMenu')
+        menu = uimanager.get_widget("/ContextMenu")
         return menu
 
     def _on_change_entry_clicked(self, action):
         iter = self.get_selected_node()
-        self.tree_view.set_cursor(
-            self.tree_store.get_path(iter),
-            self.tvcolumn,
-            True)
+        self.tree_view.set_cursor(self.tree_store.get_path(iter), self.tvcolumn, True)
 
     def _on_add_entry_clicked(self, action):
         iter = self.get_selected_node()
@@ -387,7 +403,7 @@ class CategoriesTreeView:
 
         # Customize for treeview with expanders.
         # The behaviour can only be fitted to one depth -> take the second one.
-        new_width -= treeview.style_get_property('expander-size') * 3
+        new_width -= treeview.style_get_property("expander-size") * 3
 
         if cell.props.wrap_width == new_width or new_width <= 0:
             return

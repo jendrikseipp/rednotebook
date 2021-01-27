@@ -28,19 +28,21 @@ import time
 
 # Use basic stdout logging before we can initialize logging correctly.
 logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(levelname)-8s %(message)s',
-    stream=sys.stdout)
+    level=logging.DEBUG, format="%(levelname)-8s %(message)s", stream=sys.stdout
+)
 
 try:
     import gi
 except ImportError as err:
     logging.error(
-        'pygobject could not be imported: "{}". Please install it (python3-gi).'.format(err))
+        'pygobject could not be imported: "{}". Please install it (python3-gi).'.format(
+            err
+        )
+    )
     sys.exit(1)
 
 gi.require_version("Gtk", "3.0")
-gi.require_version('GtkSource', '3.0')
+gi.require_version("GtkSource", "3.0")
 
 if hasattr(sys, "frozen"):
     base_dir = sys._MEIPASS
@@ -48,7 +50,7 @@ else:
     app_dir = os.path.dirname(os.path.abspath(__file__))
     base_dir = os.path.dirname(app_dir)
 
-print('Adding {} to sys.path'.format(base_dir))
+print("Adding {} to sys.path".format(base_dir))
 sys.path.insert(0, base_dir)
 
 from rednotebook.util import filesystem
@@ -60,7 +62,7 @@ from rednotebook.external import elibintl
 
 LOCALE_PATH = filesystem.locale_dir
 
-GETTEXT_DOMAIN = 'rednotebook'
+GETTEXT_DOMAIN = "rednotebook"
 
 """
 On Windows, translations currently only work with a hack. We need to
@@ -104,7 +106,7 @@ args = info.get_commandline_parser().parse_args()
 
 
 def setup_logging(log_file):
-    file_logging_stream = open(log_file, 'w')
+    file_logging_stream = open(log_file, "w")
 
     # We want to have all stdout and stderr messages in the logfile.
     # In the frozen version we cannot log to sys.stderr because it's
@@ -117,7 +119,7 @@ def setup_logging(log_file):
     sys.stderr = utils.StreamDuplicator(stderr_streams)
     sys.stdout = utils.StreamDuplicator(stdout_streams)
 
-    root_logger = logging.getLogger('')
+    root_logger = logging.getLogger("")
     root_logger.setLevel(logging.DEBUG)
 
     # Python adds a default handler if some log is generated before here
@@ -129,7 +131,7 @@ def setup_logging(log_file):
     console = logging.StreamHandler(sys.stdout)
     console.setLevel(logging.DEBUG)
     # set a format which is simpler for console use
-    formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
+    formatter = logging.Formatter("%(asctime)s %(levelname)-8s %(message)s")
     # tell the handler to use this format
     console.setFormatter(formatter)
     # add the handler to the root logger
@@ -138,7 +140,7 @@ def setup_logging(log_file):
     logging.info('Writing log to file "%s"' % log_file)
 
 
-default_config_file = os.path.join(filesystem.app_dir, 'files', 'default.cfg')
+default_config_file = os.path.join(filesystem.app_dir, "files", "default.cfg")
 default_config = configuration.Config(default_config_file)
 
 dirs = filesystem.Filenames(default_config)
@@ -146,15 +148,15 @@ setup_logging(dirs.log_file)
 
 # ------------------ end Enable logging -------------------------------
 
-logging.info('System encoding: %s' % filesystem.ENCODING)
-logging.info('Language code: %s' % filesystem.LANGUAGE)
+logging.info("System encoding: %s" % filesystem.ENCODING)
+logging.info("Language code: %s" % filesystem.LANGUAGE)
 
 try:
     from gi.repository import Gtk
     from gi.repository import GObject
 except (ImportError, AssertionError) as e:
     logging.error(e)
-    logging.error('GTK not found. Please install it (gir1.2-gtk-3.0).')
+    logging.error("GTK not found. Please install it (gir1.2-gtk-3.0).")
     sys.exit(1)
 
 GObject.threads_init()
@@ -181,21 +183,21 @@ class Journal:
         self.config = user_config
         self.config.save_state()
 
-        logging.info('Running in portable mode: %s' % self.dirs.portable)
+        logging.info("Running in portable mode: %s" % self.dirs.portable)
 
         self.month = None
         self.date = None
         self.months = {}
 
         # The dir name is the title
-        self.title = ''
+        self.title = ""
 
         # show instructions at first start
-        self.is_first_start = self.config.read('firstStart')
-        self.config['firstStart'] = 0
-        logging.info('First Start: %s' % bool(self.is_first_start))
+        self.is_first_start = self.config.read("firstStart")
+        self.config["firstStart"] = 0
+        logging.info("First Start: %s" % bool(self.is_first_start))
 
-        logging.info('RedNotebook version: %s' % info.version)
+        logging.info("RedNotebook version: %s" % info.version)
         logging.info(filesystem.get_platform_info())
 
         self.actual_date = self.get_start_date()
@@ -206,10 +208,16 @@ class Journal:
 
         journal_path = self.get_journal_path()
         if not self.dirs.is_valid_journal_path(journal_path):
-            logging.error('Invalid directory: %s. Using default journal.' % journal_path)
-            self.show_message(_('You cannot use this directory for your journal:') +
-                              ' %s' % journal_path + '. ' + _('Opening default journal.'),
-                              error=True)
+            logging.error(
+                "Invalid directory: %s. Using default journal." % journal_path
+            )
+            self.show_message(
+                _("You cannot use this directory for your journal:")
+                + " %s" % journal_path
+                + ". "
+                + _("Opening default journal."),
+                error=True,
+            )
             journal_path = self.dirs.default_data_dir
         self.open_journal(journal_path)
 
@@ -217,19 +225,19 @@ class Journal:
         GObject.idle_add(self.archiver.check_last_backup_date)
 
         # Check for a new version
-        if self.config.read('checkForNewVersion') == 1:
+        if self.config.read("checkForNewVersion") == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
         GObject.timeout_add_seconds(600, self.save_to_disk)
 
     def get_journal_path(self):
-        '''
+        """
         Retrieve the path from optional args or return standard value if args
         not present
-        '''
+        """
         if not args.journal:
-            data_dir = self.config.read('dataDir', self.dirs.data_dir)
+            data_dir = self.config.read("dataDir", self.dirs.data_dir)
             if not os.path.isabs(data_dir):
                 data_dir = os.path.join(self.dirs.app_dir, data_dir)
                 data_dir = os.path.normpath(data_dir)
@@ -250,24 +258,29 @@ class Journal:
                 if os.path.isdir(path):
                     return path
                 else:
-                    logging.warning('To open a journal you must specify a '
-                                    'directory, not a file.')
+                    logging.warning(
+                        "To open a journal you must specify a " "directory, not a file."
+                    )
 
-        logging.error('The path "%s" is not a valid journal directory. '
-                      'Execute "rednotebook -h" for instructions' % path_arg)
+        logging.error(
+            'The path "%s" is not a valid journal directory. '
+            'Execute "rednotebook -h" for instructions' % path_arg
+        )
         sys.exit(2)
 
     def get_start_date(self):
-        '''
+        """
         Retrieve the date from optional args or otherwise return 'today'
-        '''
+        """
         if not args.start_date:
             return datetime.date.today()
 
         try:
             return dates.get_date_from_date_string(args.start_date)
         except ValueError:
-            logging.error('Invalid date: %s (required format: YYYY-MM-DD).' % args.start_date)
+            logging.error(
+                "Invalid date: %s (required format: YYYY-MM-DD)." % args.start_date
+            )
             sys.exit(2)
 
     def exit(self):
@@ -279,16 +292,24 @@ class Journal:
         self.save_to_disk(exit_imminent=True)
 
         if self.is_allowed_to_exit:
-            logging.info('Goodbye!')
+            logging.info("Goodbye!")
             # Informs the logging system to perform an orderly shutdown by
             # flushing and closing all handlers.
             logging.shutdown()
             Gtk.main_quit()
 
-    def convert(self, text, target, headers=None, options=None):
+    def convert(self, text, target, headers=None, options=None, use_gtk_theme=False):
         options = options or {}
-        options['font'] = self.config.read('previewFont')
-        return markup.convert(text, target, self.dirs.data_dir, headers=headers, options=options)
+        options["font"] = self.config.read("previewFont")
+        if use_gtk_theme:
+            bgcolor, fgcolor = utils.get_gtk_colors(
+                self.frame.day_text_field.day_text_view
+            )
+            options["bgcolor"] = bgcolor
+            options["fgcolor"] = fgcolor
+        return markup.convert(
+            text, target, self.dirs.data_dir, headers=headers, options=options
+        )
 
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
         self.save_old_day()
@@ -296,26 +317,29 @@ class Journal:
         try:
             filesystem.make_directory(self.dirs.data_dir)
         except OSError as err:
-            logging.error('Creating journal directory failed: {}'.format(err))
+            logging.error("Creating journal directory failed: {}".format(err))
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
         try:
             something_saved = storage.save_months_to_disk(
-                self.months, self.dirs.data_dir, exit_imminent, saveas)
+                self.months, self.dirs.data_dir, exit_imminent, saveas
+            )
         except OSError as err:
-            logging.error('Saving month files failed: {}'.format(err))
+            logging.error("Saving month files failed: {}".format(err))
             self.frame.show_save_error_dialog(exit_imminent)
             something_saved = None
 
         if something_saved:
-            self.show_message(_('The content has been saved to %s') % self.dirs.data_dir, error=False)
-            logging.info('The content has been saved to %r' % self.dirs.data_dir)
+            self.show_message(
+                _("The content has been saved to %s") % self.dirs.data_dir, error=False
+            )
+            logging.info("The content has been saved to %r" % self.dirs.data_dir)
         elif something_saved is None:
             # Don't display this as an error, because we already show a dialog.
-            self.show_message(_('The journal could not be saved'), error=False)
+            self.show_message(_("The journal could not be saved"), error=False)
         else:
-            self.show_message(_('Nothing to save'), error=False)
+            self.show_message(_("Nothing to save"), error=False)
 
         self.config.save_to_disk()
 
@@ -330,14 +354,15 @@ class Journal:
 
     def open_journal(self, data_dir):
         if not os.path.exists(data_dir):
-            logging.warning('The dir %s does not exist. Select a different dir.'
-                            % data_dir)
+            logging.warning(
+                "The dir %s does not exist. Select a different dir." % data_dir
+            )
             return
 
         if self.months:
             self.save_to_disk(changing_journal=True)
 
-        logging.info('Opening journal at %r' % data_dir)
+        logging.info("Opening journal at %r" % data_dir)
         self.dirs.data_dir = data_dir
 
         self.month = None
@@ -367,23 +392,23 @@ class Journal:
 
         # Save the folder for next start
         if not self.dirs.portable:
-            self.config['dataDir'] = data_dir
+            self.config["dataDir"] = data_dir
         else:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
-            self.config['dataDir'] = rel_data_dir
+            self.config["dataDir"] = rel_data_dir
 
     def set_frame_title(self):
-        parts = ['RedNotebook']
-        if self.title != 'data':
+        parts = ["RedNotebook"]
+        if self.title != "data":
             parts.append(self.title)
-        parts.append(dates.format_date(self.config.read('exportDateFormat'), self.date))
-        self.frame.main_frame.set_title(' - '.join(parts))
+        parts.append(dates.format_date(self.config.read("exportDateFormat"), self.date))
+        self.frame.main_frame.set_title(" - ".join(parts))
 
     def get_month(self, date):
-        '''
+        """
         Returns the corresponding month if it has previously been visited,
         otherwise a new month is created and returned
-        '''
+        """
 
         year_and_month = dates.get_year_and_month_from_date(date)
 
@@ -397,16 +422,16 @@ class Journal:
         return self.get_month(date).get_day(date.day)
 
     def get_escaped_tags(self):
-        return ['#%s' % data.escape_tag(tag) for tag in self.categories]
+        return ["#%s" % data.escape_tag(tag) for tag in self.categories]
 
     def save_old_day(self):
-        '''Order is important'''
+        """Order is important"""
         old_content = self.day.content
         new_content = self.frame.categories_tree_view.get_day_content()
-        new_content['text'] = self.frame.get_day_text()
+        new_content["text"] = self.frame.get_day_text()
         self.day.content = new_content
 
-        content_changed = (old_content != new_content)
+        content_changed = old_content != new_content
         if content_changed:
             self.month.edited = True
 
@@ -429,8 +454,9 @@ class Journal:
 
     def change_date(self, new_date):
         if new_date < datetime.date(1900, 1, 1):
-            self.show_message('Only dates after 1900 are supported.',
-                              title='Too Early', error=True)
+            self.show_message(
+                "Only dates after 1900 are supported.", title="Too Early", error=True
+            )
             return
 
         if new_date == self.date:
@@ -455,7 +481,7 @@ class Journal:
 
     def show_message(self, msg, title=None, error=False):
         if error and not title:
-            title = _('Error')
+            title = _("Error")
 
         if error:
             msg_type = Gtk.MessageType.ERROR
@@ -465,12 +491,14 @@ class Journal:
             log_level = logging.INFO
 
         self.frame.show_message(title, msg, msg_type)
-        logging.log(log_level, '{}. {}'.format(title, msg) if title else msg)
+        logging.log(log_level, "{}. {}".format(title, msg) if title else msg)
 
     @property
     def categories(self):
-        return sorted(set(itertools.chain.from_iterable(
-            day.categories for day in self.days)), key=locale.strxfrm)
+        return sorted(
+            set(itertools.chain.from_iterable(day.categories for day in self.days)),
+            key=locale.strxfrm,
+        )
 
     def get_entries(self, category):
         entries = set()
@@ -507,9 +535,9 @@ class Journal:
 
     @property
     def days(self):
-        '''
+        """
         Returns all edited days ordered by their date
-        '''
+        """
         # The day being edited counts too
         if self.frame:
             self.save_old_day()
@@ -547,7 +575,7 @@ class Journal:
         self.change_date(datetime.date.today())
         current_date = self.date
 
-        logging.info('Adding example content on %s' % current_date)
+        logging.info("Adding example content on %s" % current_date)
 
         for example_day in example_content:
             self.day.content = example_day
@@ -612,10 +640,10 @@ def main():
     journal = Journal()
     utils.setup_signal_handlers(journal)
     end_time = time.time()
-    logging.debug('Start took %s seconds' % (end_time - start_time))
+    logging.debug("Start took %s seconds" % (end_time - start_time))
 
     try:
-        logging.debug('Trying to enter the gtk main loop')
+        logging.debug("Trying to enter the gtk main loop")
         Gtk.main()
     except KeyboardInterrupt:
         pass
@@ -626,5 +654,5 @@ def main():
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

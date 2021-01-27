@@ -16,31 +16,27 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import logging
 import os
 import urllib.request
-import logging
 
-from gi.repository import GObject
-from gi.repository import Gtk
-from gi.repository import Pango
+from gi.repository import GObject, Gtk, Pango
 
 from rednotebook.util import filesystem
+
 
 try:
     from rednotebook.external import spellcheck
 except ImportError:
-    logging.warning(
-        'For spell checking, please install enchant (python3-enchant).')
+    logging.warning("For spell checking, please install enchant (python3-enchant).")
     spellcheck = None
 
 
-DEFAULT_FONT = Gtk.Settings.get_default().get_property('gtk-font-name')
+DEFAULT_FONT = Gtk.Settings.get_default().get_property("gtk-font-name")
 
 
 class Editor(GObject.GObject):
-    __gsignals__ = {
-        'can-undo-redo-changed': (GObject.SIGNAL_RUN_FIRST, None, ()),
-    }
+    __gsignals__ = {"can-undo-redo-changed": (GObject.SIGNAL_RUN_FIRST, None, ())}
 
     def __init__(self, day_text_view):
         super().__init__()
@@ -48,14 +44,14 @@ class Editor(GObject.GObject):
 
         self._connect_undo_signals()
 
-        self.search_text = ''
+        self.search_text = ""
 
         # spell checker
         self._spell_checker = None
         self.enable_spell_check(False)
 
         # Enable drag&drop
-        self.day_text_view.connect('drag-data-received', self.on_drag_data_received)
+        self.day_text_view.connect("drag-data-received", self.on_drag_data_received)
 
         # Sometimes making the editor window very small causes the program to freeze
         # So we forbid that behaviour, by setting a minimum width
@@ -63,8 +59,8 @@ class Editor(GObject.GObject):
 
         self.font = Pango.FontDescription(DEFAULT_FONT)
         self.default_size = self.font.get_size() / Pango.SCALE
-        logging.debug('Default font: %s' % self.font.to_string())
-        logging.debug('Default size: %s' % self.default_size)
+        logging.debug("Default font: %s" % self.font.to_string())
+        logging.debug("Default size: %s" % self.default_size)
 
     def replace_buffer(self, buffer):
         self.day_text_view.set_buffer(buffer)
@@ -80,8 +76,8 @@ class Editor(GObject.GObject):
 
     def _connect_undo_signals(self):
         undo_mgr = self.day_text_buffer.get_undo_manager()
-        undo_mgr.connect('can-undo-changed', self._can_undo_redo_changed)
-        undo_mgr.connect('can-redo-changed', self._can_undo_redo_changed)
+        undo_mgr.connect("can-undo-changed", self._can_undo_redo_changed)
+        undo_mgr.connect("can-redo-changed", self._can_undo_redo_changed)
 
     def set_text(self, text, undoing=False):
         # We typically don't want to be able to undo/redo a replacement of the
@@ -97,7 +93,7 @@ class Editor(GObject.GObject):
 
     def insert(self, text, iter=None, overwrite=False, undoing=False):
         if overwrite:
-            self.day_text_buffer.set_text('')
+            self.day_text_buffer.set_text("")
             iter = self.day_text_buffer.get_start_iter()
 
         if iter is None:
@@ -108,8 +104,7 @@ class Editor(GObject.GObject):
             self.day_text_buffer.insert(iter, text)
 
     def replace_selection(self, text):
-        self.day_text_buffer.delete_selection(interactive=False,
-                                              default_editable=True)
+        self.day_text_buffer.delete_selection(interactive=False, default_editable=True)
         self.day_text_buffer.insert_at_cursor(text)
 
     def replace_selection_and_highlight(self, p1, p2, p3):
@@ -133,14 +128,16 @@ class Editor(GObject.GObject):
         # Clear previous highlighting
         start = buf.get_start_iter()
         end = buf.get_end_iter()
-        buf.remove_tag_by_name('highlighter', start, end)
+        buf.remove_tag_by_name("highlighter", start, end)
 
         # Highlight matches
         if text:
             for match_start, match_end in self.iter_search_matches(text):
-                buf.apply_tag_by_name('highlighter', match_start, match_end)
+                buf.apply_tag_by_name("highlighter", match_start, match_end)
 
-    search_flags = Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
+    search_flags = (
+        Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
+    )
 
     def iter_search_matches(self, text):
         it = self.day_text_buffer.get_start_iter()
@@ -155,7 +152,8 @@ class Editor(GObject.GObject):
         for match_start, _ in self.iter_search_matches(text):
             # It is safer to scroll to a mark than an iter
             mark = self.day_text_buffer.create_mark(
-                'highlight_query', match_start, left_gravity=False)
+                "highlight_query", match_start, left_gravity=False
+            )
             self.day_text_view.scroll_to_mark(mark, 0, False, 0, 0)
             self.day_text_buffer.delete_mark(mark)
             return  # Stop after the first match
@@ -165,7 +163,7 @@ class Editor(GObject.GObject):
         if bounds:
             return self.get_text(*bounds)
         else:
-            return ''
+            return ""
 
     def get_text_left_of_selection(self, length):
         bounds = self.get_selection_bounds()
@@ -186,12 +184,12 @@ class Editor(GObject.GObject):
         return sorted(iters, key=lambda iter: iter.get_offset())
 
     def get_selection_bounds(self):
-        '''
+        """
         Return sorted iters
 
         Do not mix this method up with the textbuffer's method of the same name
         That method returns an empty tuple, if there is no selection
-        '''
+        """
         mark1 = self.day_text_buffer.get_insert()
         mark2 = self.day_text_buffer.get_selection_bound()
         iter1 = self.day_text_buffer.get_iter_at_mark(mark1)
@@ -200,17 +198,17 @@ class Editor(GObject.GObject):
 
     def _get_markups(self, format, selection):
         format_to_markups = {
-            'bold': ('**', '**'),
-            'italic': ('//', '//'),
-            'monospace': ('``', '``'),
-            'underline': ('__', '__'),
-            'strikethrough': ('--', '--')
+            "bold": ("**", "**"),
+            "italic": ("//", "//"),
+            "monospace": ("``", "``"),
+            "underline": ("__", "__"),
+            "strikethrough": ("--", "--"),
         }
 
         left_markup, right_markup = format_to_markups[format]
-        if format == 'monospace' and '\n' in selection:
-            left_markup = '\n```\n'
-            right_markup = '\n```\n'
+        if format == "monospace" and "\n" in selection:
+            left_markup = "\n```\n"
+            right_markup = "\n```\n"
         return left_markup, right_markup
 
     def apply_format(self, format):
@@ -218,20 +216,28 @@ class Editor(GObject.GObject):
         left_markup, right_markup = self._get_markups(format, self.get_selected_text())
 
         # Apply formatting only once.
-        if (self.get_text_left_of_selection(len(left_markup)) == left_markup or
-                selection.startswith(left_markup)):
-            left_markup = ''
-        if (self.get_text_right_of_selection(len(right_markup)) == right_markup or
-                selection.endswith(right_markup)):
-            right_markup = ''
+        if self.get_text_left_of_selection(
+            len(left_markup)
+        ) == left_markup or selection.startswith(left_markup):
+            left_markup = ""
+        if self.get_text_right_of_selection(
+            len(right_markup)
+        ) == right_markup or selection.endswith(right_markup):
+            right_markup = ""
 
         # Don't add unneeded newlines.
-        if left_markup.startswith('\n') and self.get_text_left_of_selection(1) in ['\n', '']:
+        if left_markup.startswith("\n") and self.get_text_left_of_selection(1) in [
+            "\n",
+            "",
+        ]:
             left_markup = left_markup[1:]
-        if right_markup.endswith('\n') and self.get_text_right_of_selection(1) in ['\n', '']:
+        if right_markup.endswith("\n") and self.get_text_right_of_selection(1) in [
+            "\n",
+            "",
+        ]:
             right_markup = right_markup[:-1]
 
-        text = selection or ' '
+        text = selection or " "
         self.replace_selection_and_highlight(left_markup, text, right_markup)
         self.day_text_view.grab_focus()
 
@@ -259,14 +265,16 @@ class Editor(GObject.GObject):
         else:
             try:
                 self._spell_checker = spellcheck.SpellChecker(
-                    self.day_text_view, filesystem.LANGUAGE)
+                    self.day_text_view, filesystem.LANGUAGE
+                )
             except spellcheck.NoDictionariesFound:
-                logging.warning('No spell checking dictionaries found.')
+                logging.warning("No spell checking dictionaries found.")
                 self._spell_checker = None
             except Exception as err:
                 logging.error(
-                    'Spell checking could not be enabled. %s: %s' %
-                    (type(err).__name__, err))
+                    "Spell checking could not be enabled. %s: %s"
+                    % (type(err).__name__, err)
+                )
                 self._spell_checker = None
 
     def _disable_spell_check(self):
@@ -285,19 +293,21 @@ class Editor(GObject.GObject):
 
     # ===========================================================
 
-    def on_drag_data_received(self, widget, drag_context, x, y, selection, info, timestamp):
+    def on_drag_data_received(
+        self, widget, drag_context, x, y, selection, info, timestamp
+    ):
         # We do not want the default behaviour
-        self.day_text_view.emit_stop_by_name('drag-data-received')
+        self.day_text_view.emit_stop_by_name("drag-data-received")
 
-        iter = self.day_text_view.get_iter_at_location(x, y)
+        iter = self.day_text_view.get_iter_at_location(x, y)[1]
 
         def is_pic(uri):
             _, ext = os.path.splitext(uri)
-            return ext.lower().strip('.') in 'png jpeg jpg gif eps bmp svg'.split()
+            return ext.lower().strip(".") in "png jpeg jpg gif eps bmp svg".split()
 
         uris = selection.get_text().split()
-        logging.debug('Text: {}'.format(selection.get_text()))
-        logging.debug('URIs: {}'.format(uris))
+        logging.debug("Text: {}".format(selection.get_text()))
+        logging.debug("URIs: {}".format(uris))
         for uri in uris:
             uri = uri.strip()
             uri = urllib.request.url2pathname(uri)

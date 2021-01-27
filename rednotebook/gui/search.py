@@ -18,8 +18,7 @@
 
 from xml.sax.saxutils import escape
 
-from gi.repository import GObject
-from gi.repository import Gtk
+from gi.repository import GObject, Gtk
 
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates
@@ -33,18 +32,18 @@ class SearchComboBox(CustomComboBoxEntry):
         self.journal = main_window.journal
 
         self.entry.set_icon_from_stock(1, Gtk.STOCK_CLEAR)
-        self.entry.connect('icon-press', lambda *args: self.set_active_text(''))
+        self.entry.connect("icon-press", lambda *args: self.set_active_text(""))
 
-        self.entry.connect('changed', self.on_entry_changed)
-        self.entry.connect('activate', self.on_entry_activated)
+        self.entry.connect("changed", self.on_entry_changed)
+        self.entry.connect("activate", self.on_entry_activated)
 
     def on_entry_changed(self, entry):
         """Called when the entry changes."""
         search_text = self.get_active_text()
-        if self.journal.config.read('instantSearch'):
+        if self.journal.config.read("instantSearch"):
             self.search(search_text)
         elif not search_text:
-            self.search('')
+            self.search("")
 
     def on_entry_activated(self, entry):
         """Called when the user hits enter."""
@@ -56,12 +55,12 @@ class SearchComboBox(CustomComboBoxEntry):
         tags = []
         queries = []
         for part in search_text.split():
-            if part.startswith('#'):
-                tags.append(part.lstrip('#').lower())
+            if part.startswith("#"):
+                tags.append(part.lstrip("#").lower())
             else:
                 queries.append(part)
 
-        search_text = ' '.join(queries)
+        search_text = " ".join(queries)
 
         # Highlight all occurences in the current day's text
         self.main_window.highlight_text(search_text)
@@ -69,8 +68,8 @@ class SearchComboBox(CustomComboBoxEntry):
         # Scroll to query.
         if search_text:
             GObject.idle_add(
-                self.main_window.day_text_field.scroll_to_text,
-                search_text)
+                self.main_window.day_text_field.scroll_to_text, search_text
+            )
 
         self.main_window.search_tree_view.update_data(search_text, tags)
 
@@ -82,13 +81,13 @@ class SearchComboBox(CustomComboBoxEntry):
 
 class SearchTreeView(CustomListView):
     def __init__(self, main_window, always_show_results):
-        CustomListView.__init__(self, [(_('Date'), str), (_('Text'), str)])
+        CustomListView.__init__(self, [(_("Date"), str), (_("Text"), str)])
         self.main_window = main_window
         self.journal = self.main_window.journal
         self.always_show_results = always_show_results
         self.tree_store = self.get_model()
 
-        self.connect('cursor_changed', self.on_cursor_changed)
+        self.connect("cursor_changed", self.on_cursor_changed)
 
     def update_data(self, search_text, tags):
         self.tree_store.clear()
@@ -104,7 +103,7 @@ class SearchTreeView(CustomListView):
         for date_string, entries in self.journal.search(search_text, tags):
             for entry in entries:
                 entry = escape(entry)
-                entry = entry.replace('STARTBOLD', '<b>').replace('ENDBOLD', '</b>')
+                entry = entry.replace("STARTBOLD", "<b>").replace("ENDBOLD", "</b>")
                 self.tree_store.append([date_string, entry])
 
     def on_cursor_changed(self, treeview):

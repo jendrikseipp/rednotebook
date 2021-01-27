@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 #
 # Little helper script that runs RedNotebook without installing it.
 #
@@ -9,7 +9,12 @@
 set -euo pipefail
 
 # Change into RedNotebook directory.
-cd "$(dirname "$0")"
+if command -v realpath &> /dev/null; then
+    # If realpath command exists, use it to follow symlinks.
+    cd "$(dirname "$(realpath "$0")")"
+else
+    cd "$(dirname "$0")"
+fi
 
 # Run RedNotebook.
 python3 rednotebook/journal.py "$@"

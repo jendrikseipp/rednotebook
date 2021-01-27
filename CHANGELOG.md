@@ -1,3 +1,33 @@
+# Unreleased
+* Add a "Give Feedback" button (#551, Rahul Jha).
+* Test code on macOS (#552, Rahul Jha).
+
+# 2.21 (2020-12-07)
+* Update MathJax to version 3 (#515, @dgcampea).
+* Fix date references in CEF-based HtmlView (#544, Paweł Żukowski).
+
+# 2.20 (2020-08-03)
+* Fix drag and drop (#492, @dgcampea).
+* Fix external previews (Eric Chazan).
+* Document how to change the theme on Windows (#487, Ankur A. Sharma).
+* Allow symlinking to `./run` script (#509).
+
+# 2.19 (2020-05-04)
+* Reload GTK theme colors when saving the journal (#485).
+* Don't use dark mode for exported HTML files (#486).
+* Use PNG version instead of SVG for RedNotebook icons to avoid problems on macOS.
+* Use GitHub actions for continuous integration testing.
+
+# 2.18 (2020-02-29)
+* Use background and foreground colors from GTK theme for HTML preview.
+
+# 2.17 (2020-02-23)
+* Fix HTML colors for dark themes (#474).
+
+# 2.16 (2020-01-23)
+* Add menu items for adding titles (#464, Paweł Żukowski).
+* Upgrade msgfmt.py to version 1.2 (#470).
+
 # 2.15 (2019-12-04)
 * Fix tray icon on Windows (#394).
 
@@ -268,8 +298,8 @@
 * Detach model from combobox when updating the tags to make inserting a new tag faster.
 * Fix searching for dates.
 * Fix inserting and editing templates with unicode names.
-* Fix opening and creating journals (lp:1068655)
-* Use apport (If a crash occurs on Linux, an automatic bug report is prepared, but not submitted)
+* Fix opening and creating journals (lp:1068655).
+* Use apport (If a crash occurs on Linux, an automatic bug report is prepared, but not submitted).
 * Do not allow using $HOME as a journal directory.
 * Do not let error notifications blink.
 * For Journal->New and Journal->Save-As: Only allow using empty directories.
@@ -286,7 +316,7 @@
 * Turn all entries of old "Tags" categories into tags without entries at startup.
 * Suggest last tag when a new tag is added.
 * When suggesting to use the last tag, leave focus on the tag.
-* Enable copy menu item in preview mode. (LP:834473)
+* Enable copy menu item in preview mode (LP:834473).
 * Grey out cut and paste menu items in preview mode.
 * Only allow hiding words from the cloud, not the tags.
 * Add shortcut (Ctrl+Home) for "Go to Today"

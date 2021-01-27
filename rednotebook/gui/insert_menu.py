@@ -22,12 +22,10 @@ import os
 from gi.repository import Gtk
 
 from rednotebook.gui import customwidgets
-from rednotebook.util import filesystem
-from rednotebook.util import dates
-from rednotebook.util import urls
+from rednotebook.util import dates, filesystem, urls
 
 
-MENUITEMS_XML = '''\
+MENUITEMS_XML = """\
     <menuitem action="Picture"/>
     <menuitem action="File"/>
     <menuitem action="Link"/>
@@ -42,21 +40,27 @@ MENUITEMS_XML = '''\
     <menuitem action="Line"/>
     <menuitem action="Date"/>
     <menuitem action="LineBreak"/>
-'''
+"""
 
-TOOLBAR_XML = '''\
+TOOLBAR_XML = (
+    """\
 <ui>
 <popup action="InsertMenu">
 %s
 </popup>
 </ui>
-''' % MENUITEMS_XML
+"""
+    % MENUITEMS_XML
+)
 
-MENUBAR_XML = '''\
+MENUBAR_XML = (
+    """\
 <menu action="InsertMenuBar">
 %s
 </menu>
-''' % MENUITEMS_XML
+"""
+    % MENUITEMS_XML
+)
 
 
 def get_image(name):
@@ -77,6 +81,7 @@ def insert_handler(callback_method):
     replace the selected text by "{prefix}{selected_text}{postfix}" and
     highlight selected_text in the editor.
     """
+
     @functools.wraps(callback_method)
     def insert_handler_wrapper(self, widget, *args, **kwargs):
         editor = self.main_window.day_text_field
@@ -88,6 +93,7 @@ def insert_handler(callback_method):
             editor.replace_selection_and_highlight(*repl)
         else:
             assert repl is None, repl
+
     return insert_handler_wrapper
 
 
@@ -95,18 +101,20 @@ class InsertMenu:
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.bullet_list = (
-            '\n- {}\n- {}\n  - {} ({})\n\n\n'.format(
-                _('First Item'), _('Second Item'), _('Indented Item'),
-                _('Two blank lines close the list')))
+        self.bullet_list = "\n- {}\n- {}\n  - {} ({})\n\n\n".format(
+            _("First Item"),
+            _("Second Item"),
+            _("Indented Item"),
+            _("Two blank lines close the list"),
+        )
 
         self.setup()
 
     def setup(self):
-        '''
+        """
         See http://www.pyGtk.org/pygtk2tutorial/sec-UIManager.html for help
         A popup menu cannot show accelerators (HIG).
-        '''
+        """
         uimanager = self.main_window.uimanager
 
         # Add the accelerator group to the toplevel window
@@ -114,41 +122,84 @@ class InsertMenu:
         self.main_window.main_frame.add_accel_group(accelgroup)
 
         # Create an ActionGroup
-        self.main_window.insert_actiongroup = Gtk.ActionGroup('InsertActionGroup')
+        self.main_window.insert_actiongroup = Gtk.ActionGroup("InsertActionGroup")
 
         # Create actions
         actions = [
-            ('Picture', Gtk.STOCK_ORIENTATION_PORTRAIT, _('Picture'), None,
-             _('Insert an image from the harddisk'), self.on_insert_pic),
-            ('File', Gtk.STOCK_FILE, _('File'), None, _('Insert a link to a file'),
-             self.on_insert_file),
+            (
+                "Picture",
+                Gtk.STOCK_ORIENTATION_PORTRAIT,
+                _("Picture"),
+                None,
+                _("Insert an image from the harddisk"),
+                self.on_insert_pic,
+            ),
+            (
+                "File",
+                Gtk.STOCK_FILE,
+                _("File"),
+                None,
+                _("Insert a link to a file"),
+                self.on_insert_file,
+            ),
             # Translators: Noun
-            ('Link', Gtk.STOCK_JUMP_TO, _('_Link'), '<Control>L', _('Insert a link to a website'),
-             self.on_insert_link),
-            ('BulletList', None, _('Bullet List'), None, None,
-             self.on_insert_bullet_list),
-            ('TitleMenu', None, _('Title')),
-            ('Line', None, _('Line'), None, _('Insert a separator line'),
-             self.on_insert_line),
-            ('Date', None, _('Date/Time'), '<Ctrl>D',
-             _('Insert the current date and time (edit format in preferences)'),
-             self.on_insert_date_time),
-            ('LineBreak', None, _('Line Break'), '<Ctrl>Return', _('Insert a manual line break'),
-             self.on_insert_line_break),
-            ('InsertMenuBar', None, _('_Insert')),
+            (
+                "Link",
+                Gtk.STOCK_JUMP_TO,
+                _("_Link"),
+                "<Control>L",
+                _("Insert a link to a website"),
+                self.on_insert_link,
+            ),
+            (
+                "BulletList",
+                None,
+                _("Bullet List"),
+                None,
+                None,
+                self.on_insert_bullet_list,
+            ),
+            ("TitleMenu", None, _("Title")),
+            (
+                "Line",
+                None,
+                _("Line"),
+                None,
+                _("Insert a separator line"),
+                self.on_insert_line,
+            ),
+            (
+                "Date",
+                None,
+                _("Date/Time"),
+                "<Ctrl>D",
+                _("Insert the current date and time (edit format in preferences)"),
+                self.on_insert_date_time,
+            ),
+            (
+                "LineBreak",
+                None,
+                _("Line Break"),
+                "<Ctrl>Return",
+                _("Insert a manual line break"),
+                self.on_insert_line_break,
+            ),
+            ("InsertMenuBar", None, _("_Insert")),
         ]
 
         # Create title submenu actions
         for level in range(1, 6):
-            action_label = '{} {}'.format(_('Level'), level)
-            actions.append((
-                'Title{}'.format(level),
-                None,
-                action_label,
-                '<Control>{}'.format(level),
-                None,
-                functools.partial(self.on_insert_title, level=level)
-            ))
+            action_label = "{} {}".format(_("Level"), level)
+            actions.append(
+                (
+                    "Title{}".format(level),
+                    None,
+                    action_label,
+                    "<Control>{}".format(level),
+                    None,
+                    functools.partial(self.on_insert_title, level=level),
+                )
+            )
 
         self.main_window.insert_actiongroup.add_actions(actions)
 
@@ -159,26 +210,32 @@ class InsertMenu:
         uimanager.add_ui_from_string(TOOLBAR_XML)
 
         # Create a Menu
-        menu = uimanager.get_widget('/InsertMenu')
+        menu = uimanager.get_widget("/InsertMenu")
 
-        image_items = 'Picture Link BulletList Title Line Date LineBreak Table'.split()
+        image_items = "Picture Link BulletList Title Line Date LineBreak Table".split()
 
         for item in image_items:
-            menu_item = uimanager.get_widget('/InsertMenu/' + item)
+            menu_item = uimanager.get_widget("/InsertMenu/" + item)
             filename = item.lower()
             # We may have disabled menu items
             if menu_item:
-                menu_item.set_image(get_image(filename + '.png'))
+                menu_item.set_image(get_image(filename + ".png"))
 
-        self.main_window.insert_button = customwidgets.ToolbarMenuButton(Gtk.STOCK_ADD, menu)
-        self.main_window.insert_button.set_label(_('Insert'))
-        self.main_window.insert_button.set_tooltip_text(_('Insert images, files, links and other content'))
-        self.main_window.builder.get_object('edit_toolbar').insert(self.main_window.insert_button, -1)
+        self.main_window.insert_button = customwidgets.ToolbarMenuButton(
+            Gtk.STOCK_ADD, menu
+        )
+        self.main_window.insert_button.set_label(_("Insert"))
+        self.main_window.insert_button.set_tooltip_text(
+            _("Insert images, files, links and other content")
+        )
+        self.main_window.builder.get_object("edit_toolbar").insert(
+            self.main_window.insert_button, -1
+        )
 
     @insert_handler
     def on_insert_pic(self, sel_text):
         dirs = self.main_window.journal.dirs
-        picture_chooser = self.main_window.builder.get_object('picture_chooser')
+        picture_chooser = self.main_window.builder.get_object("picture_chooser")
         picture_chooser.set_current_folder(dirs.last_pic_dir)
 
         # if no text is selected, we can support inserting multiple images
@@ -205,7 +262,7 @@ class InsertMenu:
         # Add box for inserting image width.
         box = Gtk.HBox()
         box.set_spacing(2)
-        label = Gtk.Label(label=_('Width (optional):'))
+        label = Gtk.Label(label=_("Width (optional):"))
         width_entry = Gtk.Entry()
         width_entry.set_max_length(6)
         width_entry.set_width_chars(6)
@@ -231,18 +288,20 @@ class InsertMenu:
                 dirs.last_pic_dir = folder
 
             # get requested width of image
-            width_text = ''
+            width_text = ""
             width = width_entry.get_text()
             if width:
                 try:
                     width = int(width)
                 except ValueError:
-                    self.main_window.journal.show_message(_('Width must be an integer.'), error=True)
+                    self.main_window.journal.show_message(
+                        _("Width must be an integer."), error=True
+                    )
                     return
-                width_text = '?%d' % width
+                width_text = "?%d" % width
 
             if sel_text:
-                sel_text += ' '
+                sel_text += " "
 
             # Check if the image is to be copied
             copy = copy_checkbutton.get_active()
@@ -267,12 +326,12 @@ class InsertMenu:
 
                 lines.append('[{}""{}""{}{}]'.format(sel_text, base, ext, width_text))
 
-            return '\n'.join(lines)
+            return "\n".join(lines)
 
     @insert_handler
     def on_insert_file(self, sel_text):
         dirs = self.main_window.journal.dirs
-        file_chooser = self.main_window.builder.get_object('file_chooser')
+        file_chooser = self.main_window.builder.get_object("file_chooser")
         file_chooser.set_current_folder(dirs.last_file_dir)
 
         # Add box for copying the file to the journal folder
@@ -313,13 +372,13 @@ class InsertMenu:
 
     @insert_handler
     def on_insert_link(self, sel_text):
-        link_creator = self.main_window.builder.get_object('link_creator')
-        link_location_entry = self.main_window.builder.get_object('link_location_entry')
-        link_name_entry = self.main_window.builder.get_object('link_name_entry')
+        link_creator = self.main_window.builder.get_object("link_creator")
+        link_location_entry = self.main_window.builder.get_object("link_location_entry")
+        link_name_entry = self.main_window.builder.get_object("link_name_entry")
 
-        link_location_entry.set_text('http://')
+        link_location_entry.set_text("http://")
         link_name_entry.set_text(sel_text)
-        self.main_window.day_text_field.replace_selection('')
+        self.main_window.day_text_field.replace_selection("")
 
         def link_entered():
             return bool(link_location_entry.get_text())
@@ -328,15 +387,15 @@ class InsertMenu:
             # Only make the link submittable, if text has been entered.
             link_creator.set_response_sensitive(Gtk.ResponseType.OK, link_entered())
 
-        link_location_entry.connect('changed', on_link_changed)
+        link_location_entry.connect("changed", on_link_changed)
 
         # Let user finish by hitting ENTER.
         def respond(widget):
             if link_entered():
                 link_creator.response(Gtk.ResponseType.OK)
 
-        link_location_entry.connect('activate', respond)
-        link_name_entry.connect('activate', respond)
+        link_location_entry.connect("activate", respond)
+        link_name_entry.connect("activate", respond)
 
         link_location_entry.grab_focus()
 
@@ -352,28 +411,30 @@ class InsertMenu:
             elif link_location:
                 return link_location
             else:
-                self.main_window.journal.show_message(_('No link location has been entered'), error=True)
+                self.main_window.journal.show_message(
+                    _("No link location has been entered"), error=True
+                )
 
     @insert_handler
     def on_insert_bullet_list(self, sel_text):
         if sel_text:
-            return '\n'.join('- %s' % row for row in sel_text.splitlines())
+            return "\n".join("- %s" % row for row in sel_text.splitlines())
         return self.bullet_list
 
     @insert_handler
     def on_insert_title(self, sel_text, level):
-        markup = '=' * level
+        markup = "=" * level
         return markup + " ", sel_text, " " + markup
 
     @insert_handler
     def on_insert_line(self, sel_text):
-        return '\n====================\n'
+        return "\n====================\n"
 
     @insert_handler
     def on_insert_date_time(self, sel_text):
-        format_string = self.main_window.journal.config.read('dateTimeString')
+        format_string = self.main_window.journal.config.read("dateTimeString")
         return dates.format_date(format_string)
 
     @insert_handler
     def on_insert_line_break(self, sel_text):
-        return '\\\\\n'
+        return "\\\\\n"

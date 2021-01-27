@@ -24,30 +24,31 @@ import shutil
 import stat
 import sys
 
+from rednotebook.data import Month
+
 
 try:
     import yaml
 except ImportError:
-    logging.error('PyYAML not found. Please install it (python3-yaml).')
+    logging.error("PyYAML not found. Please install it (python3-yaml).")
     sys.exit(1)
 
 try:
     from yaml import CLoader as Loader
     from yaml import CSafeDumper as Dumper
 except ImportError:
-    from yaml import Loader, Dumper
-    logging.info('Using pyyaml for loading and dumping')
+    from yaml import Dumper, Loader
 
-from rednotebook.data import Month
+    logging.info("Using pyyaml for loading and dumping")
 
 
 def format_year_and_month(year, month):
-    return '%04d-%02d' % (year, month)
+    return "%04d-%02d" % (year, month)
 
 
 def get_journal_files(data_dir):
     # Format: 2010-05.txt
-    date_exp = re.compile(r'(\d{4})-(\d{2})\.txt$')
+    date_exp = re.compile(r"(\d{4})-(\d{2})\.txt$")
 
     for file in sorted(os.listdir(data_dir)):
         match = date_exp.match(file)
@@ -63,35 +64,37 @@ def get_journal_files(data_dir):
 
 
 def _load_month_from_disk(path, year_number, month_number):
-    '''
+    """
     Load the month file at path and return a month object
 
     If an error occurs, return None
-    '''
+    """
     try:
         # Try to read the contents of the file.
-        with codecs.open(path, 'rb', encoding='utf-8') as month_file:
+        with codecs.open(path, "rb", encoding="utf-8") as month_file:
             logging.debug('Loading file "%s"' % path)
             month_contents = yaml.load(month_file, Loader=Loader)
-            month = Month(year_number, month_number, month_contents, os.path.getmtime(path))
+            month = Month(
+                year_number, month_number, month_contents, os.path.getmtime(path)
+            )
             return month
     except yaml.YAMLError as exc:
-        logging.error('Error in file {}:\n{}'.format(path, exc))
+        logging.error("Error in file {}:\n{}".format(path, exc))
     except OSError:
         # If that fails, there is nothing to load, so just display an error message.
-        logging.error('Error: The file %s could not be read' % path)
+        logging.error("Error: The file %s could not be read" % path)
     except Exception:
-        logging.error('An error occured while reading %s:' % path)
+        logging.error("An error occured while reading %s:" % path)
         raise
     # If we continued here, the possibly corrupted file would be overwritten.
     sys.exit(1)
 
 
 def load_all_months_from_disk(data_dir):
-    '''
+    """
     Load all months and return a directory mapping year-month values
     to month objects.
-    '''
+    """
     months = {}
 
     logging.debug('Starting to load files in dir "%s"' % data_dir)
@@ -119,26 +122,28 @@ def _save_month_to_disk(month, journal_dir):
 
     def get_filename(infix):
         year_and_month = format_year_and_month(month.year_number, month.month_number)
-        return os.path.join(journal_dir, '{}{}.txt'.format(year_and_month, infix))
+        return os.path.join(journal_dir, "{}{}.txt".format(year_and_month, infix))
 
-    old = get_filename('.old')
-    new = get_filename('.new')
-    filename = get_filename('')
+    old = get_filename(".old")
+    new = get_filename(".new")
+    filename = get_filename("")
 
     # Do not save empty month files.
     if not content and not os.path.exists(filename):
         return False
 
-    with codecs.open(new, 'wb', encoding='utf-8') as f:
+    with codecs.open(new, "wb", encoding="utf-8") as f:
         # Write readable unicode and no Python directives.
         yaml.dump(content, f, Dumper=Dumper, allow_unicode=True)
 
     if os.path.exists(filename):
         mtime = os.path.getmtime(filename)
         if mtime != month.mtime:
-            conflict = get_filename('.CONFLICT_BACKUP' + str(mtime))
-            logging.debug('Last edit time of %s conflicts with edit time at file load\n'
-                          '--> Backing up to %s' % (filename, conflict))
+            conflict = get_filename(".CONFLICT_BACKUP" + str(mtime))
+            logging.debug(
+                "Last edit time of %s conflicts with edit time at file load\n"
+                "--> Backing up to %s" % (filename, conflict)
+            )
             shutil.copy2(filename, conflict)
         shutil.copy2(filename, old)
     shutil.move(new, filename)
@@ -153,14 +158,14 @@ def _save_month_to_disk(month, journal_dir):
 
     month.edited = False
     month.mtime = os.path.getmtime(filename)
-    logging.info('Wrote file %s' % filename)
+    logging.info("Wrote file %s" % filename)
     return True
 
 
 def save_months_to_disk(months, journal_dir, exit_imminent=False, saveas=False):
-    '''
+    """
     Update the journal on disk and return if something had to be written.
-    '''
+    """
     something_saved = False
     for month in months.values():
         # We always need to save everything when we are "saving as".

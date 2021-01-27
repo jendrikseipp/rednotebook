@@ -20,15 +20,21 @@ import os
 
 from gi.repository import Gtk
 
-from rednotebook.util import filesystem
-from rednotebook.util import dates
+from rednotebook.util import dates, filesystem
 
 
-WEEKDAYS = (_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
-            _('Friday'), _('Saturday'), _('Sunday'))
+WEEKDAYS = (
+    _("Monday"),
+    _("Tuesday"),
+    _("Wednesday"),
+    _("Thursday"),
+    _("Friday"),
+    _("Saturday"),
+    _("Sunday"),
+)
 
 
-MENU_XML = '''\
+MENU_XML = """\
 <ui>
 <popup action="TemplateMenu">
     <menuitem action="EditWeekday"/>
@@ -37,10 +43,10 @@ MENU_XML = '''\
     <separator name="sep5"/>
     <menuitem action="NewTemplate"/>
 </popup>
-</ui>'''
+</ui>"""
 
 
-example_text = '''\
+example_text = """\
 === This is an example template ===
 
 It has been created to show you what can be put into a template. \
@@ -66,7 +72,7 @@ You can link to almost everything:
 
 - **links to files on your computer:** [filename.txt ""/path/to/filename.txt""]
 - **links to directories:** [directory name ""/path/to/directory/""]
-- **links to websites:** [RedNotebook Homepage ""https://rednotebook.sourceforge.io""]
+- **links to websites:** [RedNotebook Homepage ""https://rednotebook.app""]
 
 
 As you see, **bullet lists** are also available. As always you have to add two \
@@ -93,18 +99,19 @@ the current date. You can set the date format in the preferences.
 
 There is even more markup that you can put into your templates. Have a look at
 the inline help (Ctrl+H) for information.
-'''
+"""
 
-help_text = '''\
+help_text = """\
 Besides templates for weekdays you can also have arbitrary named templates.
 For example you might want to have a template for "Meeting" or "Journey".
 All templates must reside in the directory "%s".
 
 The template button gives you the options to create a new template or to \
 visit the templates directory.
-'''
+"""
 
-meeting = _('''\
+meeting = _(
+    """\
 === Meeting ===
 
 Purpose, date, and place
@@ -126,9 +133,11 @@ Purpose, date, and place
 +
 +
 ==================================
-''')
+"""
+)
 
-journey = _('''\
+journey = _(
+    """\
 === Journey ===
 **Date:**
 
@@ -140,9 +149,11 @@ journey = _('''\
 First we went to xxxxx then we got to yyyyy ...
 
 **Pictures:** [Image folder ""/path/to/the/images/""]
-''')
+"""
+)
 
-call = _('''\
+call = _(
+    """\
 ==================================
 === Phone Call ===
 - **Person:**
@@ -150,9 +161,11 @@ call = _('''\
 - **Topic:**
 - **Outcome and Follow up:**
 ==================================
-''')
+"""
+)
 
-personal = _('''\
+personal = _(
+    """\
 =====================================
 === Personal ===
 
@@ -170,7 +183,8 @@ personal = _('''\
 +
 +
 =====================================
-''')
+"""
+)
 
 
 class TemplateInfo(Gtk.InfoBar):
@@ -179,12 +193,12 @@ class TemplateInfo(Gtk.InfoBar):
         self.set_message_type(Gtk.MessageType.INFO)
 
         title_label = Gtk.Label()
-        title_label.set_markup('<b>{}</b>'.format(_('Template mode')))
-        title_label.set_alignment(0., 0.5)
+        title_label.set_markup("<b>{}</b>".format(_("Template mode")))
+        title_label.set_alignment(0.0, 0.5)
 
         msg_label = Gtk.Label()
-        msg_label.set_markup(_('You are currently editing a template.'))
-        msg_label.set_alignment(0., 0.5)
+        msg_label.set_markup(_("You are currently editing a template."))
+        msg_label.set_alignment(0.0, 0.5)
 
         vbox = Gtk.VBox(spacing=5)
         vbox.pack_start(title_label, False, False, 0)
@@ -203,9 +217,11 @@ class TemplateManager:
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.main_window.template_bar.save_insert_button.connect('clicked', self.on_save_insert)
-        self.main_window.template_bar.save_button.connect('clicked', self.on_save)
-        self.main_window.template_bar.close_button.connect('clicked', self.on_close)
+        self.main_window.template_bar.save_insert_button.connect(
+            "clicked", self.on_save_insert
+        )
+        self.main_window.template_bar.save_button.connect("clicked", self.on_save)
+        self.main_window.template_bar.close_button.connect("clicked", self.on_close)
 
         self.dirs = main_window.journal.dirs
 
@@ -216,7 +232,9 @@ class TemplateManager:
 
         self._template_mode_info_bar = TemplateInfo()
         self._template_mode_info_bar.hide()
-        self.main_window.text_vbox.pack_start(self._template_mode_info_bar, False, False, 0)
+        self.main_window.text_vbox.pack_start(
+            self._template_mode_info_bar, False, False, 0
+        )
         self.main_window.text_vbox.reorder_child(self._template_mode_info_bar, 1)
 
     def set_template_menu_sensitive(self, sensitive):
@@ -227,19 +245,22 @@ class TemplateManager:
 
     def _set_widgets_sensitive(self, sensitive):
         self.main_window.calendar.calendar.set_sensitive(sensitive)
-        journal_menu_item = self.main_window.uimanager.get_widget('/MainMenuBar/Journal')
+        journal_menu_item = self.main_window.uimanager.get_widget(
+            "/MainMenuBar/Journal"
+        )
         for child in journal_menu_item.get_submenu().get_children():
             if isinstance(child, Gtk.MenuItem):
                 child.set_sensitive(sensitive)
         self.set_template_menu_sensitive(sensitive)
         for widget in [
-                self.main_window.back_one_day_button,
-                self.main_window.today_button,
-                self.main_window.forward_one_day_button,
-                self.main_window.search_tree_view,
-                self.main_window.search_box.entry,
-                self.main_window.cloud,
-                self.main_window.uimanager.get_widget('/MainMenuBar/Edit/Find')]:
+            self.main_window.back_one_day_button,
+            self.main_window.today_button,
+            self.main_window.forward_one_day_button,
+            self.main_window.search_tree_view,
+            self.main_window.search_box.entry,
+            self.main_window.cloud,
+            self.main_window.uimanager.get_widget("/MainMenuBar/Edit/Find"),
+        ]:
             widget.set_sensitive(sensitive)
 
     def enter_template_mode(self, title, selection):
@@ -269,9 +290,9 @@ class TemplateManager:
     def _replace_macros(self, text):
         # convert every "$date$" to the current date
         config = self.main_window.journal.config
-        format_string = config.read('dateTimeString')
+        format_string = config.read("dateTimeString")
         date_string = dates.format_date(format_string)
-        text = text.replace('$date$', date_string)
+        text = text.replace("$date$", date_string)
         return text
 
     def on_save_insert(self, button):
@@ -297,7 +318,7 @@ class TemplateManager:
         self.exit_template_mode()
 
     def on_new_template(self, action):
-        dialog = Gtk.Dialog(_('Choose Template Name'))
+        dialog = Gtk.Dialog(_("Choose Template Name"))
         dialog.set_transient_for(self.main_window.main_frame)
         dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
         dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
@@ -311,9 +332,9 @@ class TemplateManager:
             dialog.set_response_sensitive(Gtk.ResponseType.OK, bool(entry.get_text()))
 
         entry = Gtk.Entry()
-        entry.connect('activate', respond)
+        entry.connect("activate", respond)
         # Only allow closing dialog when text is entered.
-        entry.connect('changed', on_text_changed)
+        entry.connect("changed", on_text_changed)
         entry.set_size_request(300, -1)
         dialog.get_content_area().pack_start(entry, True, True, 0)
         dialog.show_all()
@@ -331,31 +352,31 @@ class TemplateManager:
         return self.main_window.journal.date.isoweekday()
 
     def get_path(self, title):
-        return os.path.join(self.dirs.template_dir, title + '.txt')
+        return os.path.join(self.dirs.template_dir, title + ".txt")
 
     def get_text(self, title):
         text = filesystem.read_file(self.get_path(title))
 
         # An Error occured
         if not text:
-            text = _('This template file contains no text or has unreadable content.')
+            text = _("This template file contains no text or has unreadable content.")
         return text
 
     def get_available_template_files(self):
         path = self.dirs.template_dir
-        return [os.path.join(path, f) for f in os.listdir(path) if f.endswith('.txt')]
+        return [os.path.join(path, f) for f in os.listdir(path) if f.endswith(".txt")]
 
     def _escape_template_name(self, name):
         """Remove special xml chars for GUI display."""
-        for char in '&<>\'"':
-            name = name.replace(char, '')
+        for char in "&<>'\"":
+            name = name.replace(char, "")
         return name
 
     def get_menu(self):
-        '''
+        """
         See http://www.pyGtk.org/pygtk2tutorial/sec-UIManager.html for help
         A popup menu cannot show accelerators (HIG).
-        '''
+        """
         files = self.get_available_template_files()
 
         titles = []
@@ -364,10 +385,11 @@ class TemplateManager:
             title = os.path.basename(root)
             titles.append(title)
 
-        actions_xml = ''.join('<menuitem action="Edit%s"/>' %
-                              self._escape_template_name(title)
-                              for title in sorted(titles)
-                              if title not in '1234567')
+        actions_xml = "".join(
+            '<menuitem action="Edit%s"/>' % self._escape_template_name(title)
+            for title in sorted(titles)
+            if title not in "1234567"
+        )
 
         uimanager = self.main_window.uimanager
 
@@ -375,7 +397,7 @@ class TemplateManager:
             uimanager.remove_action_group(self.actiongroup)
 
         # Create an ActionGroup
-        self.actiongroup = Gtk.ActionGroup('TemplateActionGroup')
+        self.actiongroup = Gtk.ActionGroup("TemplateActionGroup")
 
         # Create actions
         actions = []
@@ -385,17 +407,37 @@ class TemplateManager:
             def get_edit_function(title):
                 return lambda button: self.edit(title)
 
-            edit_action = ('Edit' + self._escape_template_name(title),
-                           None, title, None, None,
-                           get_edit_function(title))
+            edit_action = (
+                "Edit" + self._escape_template_name(title),
+                None,
+                title,
+                None,
+                None,
+                get_edit_function(title),
+            )
             actions.append(edit_action)
 
-        actions.append(('EditWeekday', Gtk.STOCK_HOME,
-                        _("This Weekday's Template"), None, None,
-                        lambda button: self.edit(str(self._get_weekday_number()))))
+        actions.append(
+            (
+                "EditWeekday",
+                Gtk.STOCK_HOME,
+                _("This Weekday's Template"),
+                None,
+                None,
+                lambda button: self.edit(str(self._get_weekday_number())),
+            )
+        )
 
-        actions.append(('NewTemplate', Gtk.STOCK_NEW, _('Create New Template'),
-                        None, None, self.on_new_template))
+        actions.append(
+            (
+                "NewTemplate",
+                Gtk.STOCK_NEW,
+                _("Create New Template"),
+                None,
+                None,
+                self.on_new_template,
+            )
+        )
 
         self.actiongroup.add_actions(actions)
 
@@ -410,7 +452,7 @@ class TemplateManager:
         uimanager.insert_action_group(self.actiongroup, 0)
 
         # Create a Menu
-        menu = uimanager.get_widget('/TemplateMenu')
+        menu = uimanager.get_widget("/TemplateMenu")
         return menu
 
     def make_empty_template_files(self):
@@ -419,20 +461,25 @@ class TemplateManager:
         files = []
         for day_number in range(1, 8):
             weekday = WEEKDAYS[day_number - 1]
-            files.append((self.get_path(str(day_number)),
-                          example_text.replace('template ===',
-                                               'template for %s ===' % weekday)))
+            files.append(
+                (
+                    self.get_path(str(day_number)),
+                    example_text.replace(
+                        "template ===", "template for %s ===" % weekday
+                    ),
+                )
+            )
 
-        help_text %= (self.dirs.template_dir)
+        help_text %= self.dirs.template_dir
 
-        files.append((self.get_path('Help'), help_text))
+        files.append((self.get_path("Help"), help_text))
 
         # Only add the example templates the first time and just restore
         # the day templates everytime
         if self.main_window.journal.is_first_start:
-            files.append((self.get_path('Meeting'), meeting))
-            files.append((self.get_path('Journey'), journey))
-            files.append((self.get_path('Call'), call))
-            files.append((self.get_path('Personal'), personal))
+            files.append((self.get_path("Meeting"), meeting))
+            files.append((self.get_path("Journey"), journey))
+            files.append((self.get_path("Call"), call))
+            files.append((self.get_path("Personal"), personal))
 
         filesystem.make_files(files)

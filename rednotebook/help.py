@@ -21,58 +21,64 @@ from rednotebook import info
 
 commandline_help = info.get_commandline_parser().format_help()
 
-tags = _('Tags')
+tags = _("Tags")
 
-greeting = _('Hello!')
-intro = _('Some example text has been added to help you start and '
-          'you can erase it whenever you like.')
+greeting = _("Hello!")
+intro = _(
+    "Some example text has been added to help you start and "
+    "you can erase it whenever you like."
+)
 # Translators: "Help" -> noun
 help_par = _(
-    'The example text and more documentation is available under '
-    '"Help" -> "Contents".')
+    "The example text and more documentation is available under "
+    '"Help" -> "Contents".'
+)
 
 # Translators: noun
-preview = _('Preview')
+preview = _("Preview")
 preview1 = _(
-    'There are two modes in RedNotebook, the __edit__ mode and the '
-    '__preview__ mode.')
-preview2 = _('Click on Edit above to see the difference.')
-preview_par = ' '.join([preview1, preview2])
+    "There are two modes in RedNotebook, the __edit__ mode and the " "__preview__ mode."
+)
+preview2 = _("Click on Edit above to see the difference.")
+preview_par = " ".join([preview1, preview2])
 
-tags1 = _('Tagging is easy.')
-tags2 = _('Just use #hashtags like on twitter.')
-tags_par = ' '.join([tags1, tags2])
+tags1 = _("Tagging is easy.")
+tags2 = _("Just use #hashtags like on twitter.")
+tags_par = " ".join([tags1, tags2])
 
 example_entry = _(
-    'Today I went to the //pet shop// and bought a **tiger**. '
-    'Then we went to the --pool-- park and had a nice time playing '
-    'ultimate frisbee. Afterwards we watched "__Life of Brian__".')
+    "Today I went to the //pet shop// and bought a **tiger**. "
+    "Then we went to the --pool-- park and had a nice time playing "
+    'ultimate frisbee. Afterwards we watched "__Life of Brian__".'
+)
 
-templates = ('Templates')
-temp1 = ('RedNotebook supports templates.')
-temp2 = ('Click on the arrow next to the "Template" button to see some options.')
-temp3 = ('''You can have one template for every day
-of the week and unlimited arbitrarily named templates.''')
-temp_par = ' '.join([temp1, temp2, temp3])
+templates = "Templates"
+temp1 = "RedNotebook supports templates."
+temp2 = 'Click on the arrow next to the "Template" button to see some options.'
+temp3 = """You can have one template for every day
+of the week and unlimited arbitrarily named templates."""
+temp_par = " ".join([temp1, temp2, temp3])
 
 # Translators: both are verbs
-save = _('Save and Export')
+save = _("Save and Export")
 save1 = _(
-    'Everything you enter will be saved automatically at regular '
-    'intervals and when you exit the program.')
-save2 = _('To avoid data loss you should backup your journal regularly.')
+    "Everything you enter will be saved automatically at regular "
+    "intervals and when you exit the program."
+)
+save2 = _("To avoid data loss you should backup your journal regularly.")
 save3 = _('"Backup" in the "Journal" menu saves all your entered data in a zip file.')
 save4 = _('In the "Journal" menu you also find the "Export" button.')
 save5 = _('Click on "Export" and export your diary to Plain Text, PDF, HTML or Latex.')
-save_par = ' '.join([save1, save2, save3, save4, save5])
+save_par = " ".join([save1, save2, save3, save4, save5])
 
-error1 = _('If you encounter any errors, please drop me a note so I can fix them.')
-error2 = _('Any feedback is appreciated.')
-error_par = ' '.join([error1, error2])
+error1 = _("If you encounter any errors, please drop me a note so I can fix them.")
+error2 = _("Any feedback is appreciated.")
+error_par = " ".join([error1, error2])
 
-goodbye_par = _('Have a nice day!')
+goodbye_par = _("Have a nice day!")
 
-complete_welcome_text = '''\
+complete_welcome_text = (
+    """\
 %(greeting)s %(intro)s %(help_par)s
 
 === %(preview)s ===
@@ -86,36 +92,45 @@ complete_welcome_text = '''\
 
 %(error_par)s
 
-%(goodbye_par)s''' % globals()
+%(goodbye_par)s"""
+    % globals()
+)
 
 
-welcome_day = {'text': complete_welcome_text}
+welcome_day = {"text": complete_welcome_text}
 
-multiple_entries_text = _('''\
+multiple_entries_text = _(
+    """\
 === Multiple entries ===
 You can add multiple entries to a single day by \
 using different journals (one named "Work", the other "Family"), \
 separating your entries with different titles (=== Work ===, === Family ===) \
-and using horizontal separator lines (20 "="s).''')
+and using horizontal separator lines (20 "="s)."""
+)
 
-multiple_entries_example = _('''\
+multiple_entries_example = _(
+    """\
 === Work ===
 Here goes the first entry. It is about #work.
 
 ====================
 
 === Family ===
-Here comes the entry about my #family.''')
+Here comes the entry about my #family."""
+)
 
 multiple_entries_day = {
-    'text':
-        multiple_entries_text + '\n\n' +
-        20 * '=' + '\n\n' +
-        multiple_entries_example}
+    "text": multiple_entries_text
+    + "\n\n"
+    + 20 * "="
+    + "\n\n"
+    + multiple_entries_example
+}
 
 example_content = [welcome_day, multiple_entries_day]
 
-help_text = '''
+help_text = (
+    """
 == Layout ==
 %(preview1)s
 
@@ -266,7 +281,7 @@ called ``python-webkit``).
 Make sure to type all links with the full path including the protocol:
 
 - http://www.wikipedia.org or http://wikipedia.org
-  (--wikipedia.org--, --"""www.wikipedia.org"""--)
+  (--wikipedia.org--, --\"""www.wikipedia.org\"""--)
 - file:///home/sam/myfile.txt (--/home/sam/myfile.txt--)
 
 
@@ -428,6 +443,32 @@ are more likely to be stolen. If you encrypt your home partition all
 RedNotebook data will be encrypted, too.
 
 
+== Appearance on Windows ==
+
+You can use a GTK3 compatible theme to change the appearance of your
+RedNotebook installation. Once you find a GTK3 compatible theme, copy
+the theme into ``<RedNotebook Dir>\\share\\themes``, e.g.,
+``C:\\Program Files (x86)\\RedNotebook\\share\\themes`` and then edit
+``C:\\Program Files (x86)\\RedNotebook\\etc\\gtk-3.0\\settings.ini`` to
+comment out the current theme setting and add your own.
+
+For example, for using the [FlatStudio https://www.gnome-look.org/p/1013733/]
+theme, download the ``*.tar.gz``
+file and extract it. Out of the four themes -- FlatStudio,
+FlatStudioDark, FlatStudioLight, FlatStudioGray -- pick one of the
+folders (e.g., FlatStudioDark) and copy it into
+``<RedNotebook Dir>\\share\\themes``. Then edit
+``etc\\gtk-3.0\\settings.ini`` so it looks similar to this:
+
+```
+[Settings]
+# gtk-theme-name=win32
+gtk-theme-name=FlatStudioDark
+```
+
+Finally, relaunch RedNotebook.
+
+
 == Tips ==
 %(multiple_entries_text)s
 
@@ -488,9 +529,9 @@ the single quotes on their own line.
 This feature can be used to insert e.g. Latex formulas:
 
 ```
-\'''
+'''
 $$\\sum_{i=1}^{n} i =\frac{ncdot (n+1)}{2}$$
-\'''
+'''
 ```
 
 will produce a nice looking formula in the Latex export.
@@ -591,4 +632,6 @@ Bug reports should go [here https://bugs.launchpad.net/rednotebook],
 but if you don't know how to use that site, a simple mail is equally
 fine.
 
-''' % globals()
+"""
+    % globals()
+)
