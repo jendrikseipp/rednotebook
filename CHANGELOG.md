@@ -4,6 +4,7 @@
 # 2.22 (2021-04-25)
 * Add a "Give Feedback" button (#551, Rahul Jha).
 * Test code on macOS (#552, Rahul Jha).
+* Support searching for multiple words (#558, Rahul Jha).
 
 # 2.21 (2020-12-07)
 * Update MathJax to version 3 (#515, @dgcampea).
