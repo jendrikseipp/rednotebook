@@ -516,10 +516,10 @@ class Journal:
             entries |= set(day.get_entries(category))
         return sorted(entries)
 
-    def search(self, text, tags):
+    def search(self, queries, tags):
         results = []
         for day in reversed(self.get_days_with_tags(tags)):
-            results.append(day.search(text, tags))
+            results.append(day.search(queries, tags))
         return results
 
     def get_days_with_tags(self, tags):

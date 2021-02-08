@@ -65,12 +65,13 @@ if WebKit2:
             zoom *= 0.90
             self.set_zoom_level(zoom)
 
-        def highlight(self, search_text):
+        def highlight(self, search_queries):
             # Tell the webview which text to highlight after the html is loaded
-            self.search_text = search_text
-            self.get_find_controller().search(
-                self.search_text, WebKit2.FindOptions.CASE_INSENSITIVE, MAX_HITS
-            )
+            self.search_queries = search_queries
+            for query in search_queries:
+                self.get_find_controller().search(
+                    query, WebKit2.FindOptions.CASE_INSENSITIVE, MAX_HITS
+                )
 
         def on_load_changed(self, webview, event):
             """
@@ -82,7 +83,7 @@ if WebKit2:
             does not work.
             """
             if event == WebKit2.LoadEvent.FINISHED:
-                if self.search_text:
-                    self.highlight(self.search_text)
+                if self.search_queries:
+                    self.highlight(self.search_queries)
                 else:
                     webview.get_find_controller().search_finish()

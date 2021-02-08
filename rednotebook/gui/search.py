@@ -60,18 +60,21 @@ class SearchComboBox(CustomComboBoxEntry):
             else:
                 queries.append(part)
 
-        search_text = " ".join(queries)
-
-        # Highlight all occurences in the current day's text
-        self.main_window.highlight_text(search_text)
+        # Highlight all occurrences in the current day's text
+        self.main_window.highlight_text(queries)
 
         # Scroll to query.
-        if search_text:
-            GObject.idle_add(
-                self.main_window.day_text_field.scroll_to_text, search_text
-            )
+        if queries:
+            # TODO: Decide where to scroll to?
+            # To scroll to the first match, we'd need to search for the first
+            # occurrence of each query, and scroll to the first one. But I am
+            # not sure if that is ideal performance-wise.
+            # Would it make sense to inspect the data returned by
+            # `self.journal.search` -- which will have information on what
+            # query matched fist, and it's index?
+            pass
 
-        self.main_window.search_tree_view.update_data(search_text, tags)
+        self.main_window.search_tree_view.update_data(queries, tags)
 
         # Without the following, showing the search results sometimes lets the
         # search entry lose focus and search phrases are added to a day's text.
@@ -89,10 +92,10 @@ class SearchTreeView(CustomListView):
 
         self.connect("cursor_changed", self.on_cursor_changed)
 
-    def update_data(self, search_text, tags):
+    def update_data(self, queries, tags):
         self.tree_store.clear()
 
-        if not self.always_show_results and not tags and not search_text:
+        if not self.always_show_results and not tags and not queries:
             self.main_window.cloud.show()
             self.main_window.search_scroll.hide()
             return
@@ -100,7 +103,7 @@ class SearchTreeView(CustomListView):
         self.main_window.cloud.hide()
         self.main_window.search_scroll.show()
 
-        for date_string, entries in self.journal.search(search_text, tags):
+        for date_string, entries in self.journal.search(queries, tags):
             for entry in entries:
                 entry = escape(entry)
                 entry = entry.replace("STARTBOLD", "<b>").replace("ENDBOLD", "</b>")

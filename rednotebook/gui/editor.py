@@ -121,8 +121,8 @@ class Editor(GObject.GObject):
         end.backward_chars(len(p3))
         self.day_text_buffer.select_range(start, end)
 
-    def highlight(self, text):
-        self.search_text = text
+    def highlight(self, queries):
+        self.search_queries = queries
         buf = self.day_text_buffer
 
         # Clear previous highlighting
@@ -131,8 +131,8 @@ class Editor(GObject.GObject):
         buf.remove_tag_by_name("highlighter", start, end)
 
         # Highlight matches
-        if text:
-            for match_start, match_end in self.iter_search_matches(text):
+        for query in enumerate(queries):
+            for match_start, match_end in self.iter_search_matches(query):
                 buf.apply_tag_by_name("highlighter", match_start, match_end)
 
     search_flags = (

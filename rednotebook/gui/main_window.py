@@ -169,7 +169,7 @@ class MainWindow:
                     )
                     self.load_html(html)
 
-                def highlight(self, text):
+                def highlight(self, queries):
                     pass
 
             self.html_editor = Preview(self.journal)
@@ -724,9 +724,9 @@ class MainWindow:
     def get_day_text(self):
         return self.day_text_field.get_text()
 
-    def highlight_text(self, search_text):
-        self.html_editor.highlight(search_text)
-        self.day_text_field.highlight(search_text)
+    def highlight_text(self, search_queries):
+        self.html_editor.highlight(search_queries)
+        self.day_text_field.highlight(search_queries)
 
     def show_message(self, title, msg, msg_type):
         if msg_type == Gtk.MessageType.ERROR:

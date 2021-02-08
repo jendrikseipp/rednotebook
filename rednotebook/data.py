@@ -178,14 +178,14 @@ class Day:
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))
 
-    def search(self, text, tags):
+    def search(self, queries, tags):
         """
         This method is only called for days that have all given tags.
         Search in date first, then in the text, then in the tags.
         Uses case-insensitive search.
         """
         results = []
-        if not text:
+        if not queries:
             # Only add text result once for all tags.
             add_text_to_results = False
             for day_tag, entries in self.get_category_content_pairs().items():
@@ -200,41 +200,46 @@ class Day:
                         add_text_to_results = True
             if add_text_to_results:
                 results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-        elif text in str(self):
-            # Date contains searched text.
+        elif any(text in str(self) for text in queries):
+            # Any of the query matches with the date.
             results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         else:
-            text_result = self.search_in_text(text)
+            text_result = self.search_in_text(queries)
             if text_result:
                 results.append(text_result)
-            results.extend(self.search_in_categories(text))
+            results.extend(self.search_in_categories(queries))
         return str(self), results
 
-    def search_in_text(self, search_text):
-        occurence = self.text.upper().find(search_text.upper())
+    def search_in_text(self, queries):
+        """All queries should be present in the text"""
+        matches = {}
+        for query in queries:
+            occurrence = self.text.upper().find(query.upper())
+            if occurrence < 0:
+                return
+            matches[query] = occurrence
 
-        # Check if search_text is in text
-        if occurence < 0:
-            return None
+        first_query = min(matches, key=matches.get)
+        first_occurrence = matches[first_query]
 
-        found_text = self.text[occurence : occurence + len(search_text)]
-        result_text = get_text_with_dots(
-            self.text, occurence, occurence + len(search_text), found_text
+        found_text = self.text[first_occurrence : first_occurrence + len(first_query)]
+        return get_text_with_dots(
+            self.text, first_occurrence, first_occurrence + len(first_query), found_text
         )
-        return result_text
 
-    def search_in_categories(self, text):
+    def search_in_categories(self, queries):
         results = []
-        for category, content in self.get_category_content_pairs().items():
-            if content:
-                if text.upper() in category.upper():
-                    results.extend(content)
-                else:
-                    results.extend(
-                        entry for entry in content if text.upper() in entry.upper()
-                    )
-            elif text.upper() in category.upper():
-                results.append(category)
+        for query in queries:
+            for category, content in self.get_category_content_pairs().items():
+                if content:
+                    if query.upper() in category.upper():
+                        results.extend(content)
+                    else:
+                        results.extend(
+                            entry for entry in content if query.upper() in entry.upper()
+                        )
+                elif query.upper() in category.upper():
+                    results.append(category)
         return results
 
     def __str__(self):
