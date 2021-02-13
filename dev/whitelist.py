@@ -6,6 +6,12 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 
+
+class Dummy:
+    def __getattr__(self, _):
+        pass
+
+
 gettext.install("dummy")
 
 DIR = os.path.dirname(os.path.abspath(__file__))
@@ -18,11 +24,16 @@ from gi.repository import Gtk
 cell = Gtk.CellRendererText()
 cell.props.wrap_mode
 
+Dummy()._get_content
+Dummy()._set_content
+Dummy()._get_text
+Dummy()._set_text
+Dummy().insert_handler_wrapper
+
 # CEF Browser
 from ctypes import _CFuncPtr
 
 _CFuncPtr.argtypes
 _CFuncPtr.restype
-OnBeforeBrowse = None
-OnBeforeBrowse
+Dummy().OnBeforeBrowse
 sys.excepthook

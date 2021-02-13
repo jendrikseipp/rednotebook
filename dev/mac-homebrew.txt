@@ -1,0 +1,28 @@
+Installing RedNotebook from source on macOS
+===========================================
+
+(many thanks to Peter Green for documenting this at
+https://gist.github.com/pmgreen/a1bf2c7015cb2a70d73e5e66bb84885e)
+
+Of the three mac installation methods listed on the Rednotebook downloads page, these got the closest:
+https://jarrousse.org/installing-rednotebook-from-source-on-mac-os-x/
+
+Here's a summary of modified steps ...
+
+$ git clone https://github.com/jendrikseipp/rednotebook
+$ brew install gtk # <= using brew to install gtk worked
+$ brew install pygobject3 glib libffi cairo gtksourceview3
+$ brew install atk librsvg # <= don't install gdk-pixbuf at this step
+$ brew install gsettings-desktop-schemas adwaita-icon-theme
+$ brew install enchant
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+$ cd ~/path/to/rednotebook
+$ pip3 install --user .
+
+In Automator (run as bash shell script) ...
+
+export PATH=/usr/local/bin:$PATH
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+/Users/me/path/rednotebook

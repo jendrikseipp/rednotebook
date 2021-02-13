@@ -69,7 +69,7 @@ def check_cefpython3_version():
 def get_cefpython_modules():
     """Get all cefpython Cython modules in the cefpython3 package.
     It returns a list of names without file extension. Eg.
-    'cefpython_py27'. """
+    'cefpython_py27'."""
     pyds = glob.glob(os.path.join(CEFPYTHON3_DIR, "cefpython_py*" + CYTHON_MODULE_EXT))
     assert len(pyds) > 1, "Missing cefpython3 Cython modules"
     modules = []
@@ -82,10 +82,10 @@ def get_cefpython_modules():
 
 def get_excluded_cefpython_modules():
     """CEF Python package includes Cython modules for various Python
-       versions. When using Python 2.7 pyinstaller should not
-       bundle modules for eg. Python 3.6, otherwise it will
-       cause to include Python 3 dll dependencies. Returns a list
-       of fully qualified names eg. 'cefpython3.cefpython_py27'."""
+    versions. When using Python 2.7 pyinstaller should not
+    bundle modules for eg. Python 3.6, otherwise it will
+    cause to include Python 3 dll dependencies. Returns a list
+    of fully qualified names eg. 'cefpython3.cefpython_py27'."""
     pyver = "".join(map(str, sys.version_info[:2]))
     pyver_string = "py%s" % pyver
     modules = get_cefpython_modules()
@@ -144,7 +144,9 @@ def get_cefpython3_datas():
     assert os.path.exists(locales_dir), "locales/ dir not found in cefpython3"
     for filename in os.listdir(locales_dir):
         logger.info(
-            "Include cefpython3 data: %s/%s" % (os.path.basename(locales_dir), filename)
+            "Include cefpython3 data: {}/{}".format(
+                os.path.basename(locales_dir), filename
+            )
         )
         ret.append((os.path.join(locales_dir, filename), "locales"))
     return ret

@@ -136,6 +136,19 @@ parameters = {
         ("share/metainfo", ["data/rednotebook.appdata.xml"]),
     ],
     "cmdclass": cmdclass,
+    "extras_require": {
+        "dev_style": [
+            "black==19.10b0",
+            "flake8",
+            "flake8-2020",
+            "flake8-bugbear",
+            "flake8-comprehensions",
+            "flake8-executable",
+            "isort>=5.0,<5.1",
+            "pyupgrade==2.6.2",
+            "vulture==1.6",
+        ],
+    },
 }
 
 if __name__ == "__main__":

@@ -1,15 +1,30 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: rednotebook
+Files-Excluded: debian
+Comment: The following files and folders were removed because
+ debian: Remove upstream debian folder
 
 Files: *
-Copyright: Copyright (C) 2008-2017 Jendrik Seipp <jendrikseipp@gmail.com>
+Copyright: Copyright (C) 2008-2020 Jendrik Seipp <jendrikseipp@gmail.com>
 License: GPL-2+
 
 Files: debian/*
 Copyright: Copyright (C) 2008, 2009 Jonathan Wiltshire <debian@jwiltshire.org.uk>
-           Copyright (C) 2010-2017 Jendrik Seipp <jendrikseipp@gmail.com>
-           Copyright (C) 2017 Phil Wyett <philwyett@kathenas.org>
+           Copyright (C) 2008-2020 Jendrik Seipp <jendrikseipp@gmail.com>
+           Copyright (C) 2017-2020 Phil Wyett <philip.wyett@kathenas.org>
 License: GPL-2+
+
+Files: data/rednotebook.appdata.xml
+Copyright: Copyright (C) 2008-2020 Jendrik Seipp <jendrikseipp@gmail.com>
+License: CC0-1.0
+
+License: CC0-1.0
+ To the extent possible under law, the author(s) have dedicated all copyright
+ and related and neighboring rights to this software to the public domain
+ worldwide. This software is distributed without any warranty.
+ .
+ The full text of the CC0 1.0 Universal license is available on Debian systems
+ in /usr/share/common-licenses/CC0-1.0
 
 Files: po/*.po
 Copyright: Copyright (C) 2009 Rosetta Contributors and Canonical Ltd.
@@ -59,7 +74,7 @@ License: GPL-3+
 
 Files: rednotebook/external/txt2tags.py
 Copyright: Copyright (C) 2001-2010 Aurelio Jargas <aurelio@aurelio.net>
-           Copyright (C) 2010-2017 Jendrik Seipp <jendrikseipp@gmail.com>
+           Copyright (C) 2008-2020 Jendrik Seipp <jendrikseipp@gmail.com>
 License: GPL-2+
 
 License: GPL-2+

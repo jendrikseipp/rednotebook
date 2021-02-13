@@ -39,7 +39,7 @@ try:
 
     logging.info("Using LibYAML")
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Dumper, Loader
 
     logging.info("Using PyYAML")
 
