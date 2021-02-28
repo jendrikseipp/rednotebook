@@ -18,7 +18,7 @@
 
 from xml.sax.saxutils import escape
 
-from gi.repository import GObject, Gtk
+from gi.repository import Gtk
 
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates
@@ -65,14 +65,7 @@ class SearchComboBox(CustomComboBoxEntry):
 
         # Scroll to query.
         if queries:
-            # TODO: Decide where to scroll to?
-            # To scroll to the first match, we'd need to search for the first
-            # occurrence of each query, and scroll to the first one. But I am
-            # not sure if that is ideal performance-wise.
-            # Would it make sense to inspect the data returned by
-            # `self.journal.search` -- which will have information on what
-            # query matched fist, and it's index?
-            pass
+            self.main_window.day_text_field.scroll_to_text(tags + queries)
 
         self.main_window.search_tree_view.update_data(queries, tags)
 

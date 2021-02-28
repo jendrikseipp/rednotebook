@@ -814,6 +814,18 @@ class DayEditor(editor.Editor):
     def _get_buffer_for_day(self, day):
         return self._get_buffer(day.date, day.text)
 
+    def scroll_to_text(self, queries):
+        """
+        Finds the first non-date word in queries, and passes it on to
+        `Editor.scroll_to_text`.
+        """
+        for word in queries:
+            # If word matches date, it probably is not present in the text.
+            if word in str(self.day):
+                pass
+            else:
+                super().scroll_to_text(word)
+
     def show_day(self, new_day):
         # Show new day
         self.day = new_day
@@ -821,10 +833,10 @@ class DayEditor(editor.Editor):
         self.replace_buffer(buf)
         self.day_text_view.grab_focus()
 
-        if self.search_text:
+        if self.search_queries:
             # If a search is currently made, scroll to the text and return.
-            GObject.idle_add(self.scroll_to_text, self.search_text)
-            GObject.idle_add(self.highlight, self.search_text)
+            GObject.idle_add(self.scroll_to_text, self.search_queries)
+            GObject.idle_add(self.highlight, self.search_queries)
             return
 
     def show_template(self, title, text):

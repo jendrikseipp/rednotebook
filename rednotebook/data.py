@@ -207,9 +207,7 @@ class Day:
                     # We don't want to show search results from the text matching
                     # this date.
                     queries.remove(word)
-                    results.append(
-                        get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH)
-                    )
+                    results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
             text_result = self.search_in_text(queries)
             if text_result:
                 results.append(text_result)

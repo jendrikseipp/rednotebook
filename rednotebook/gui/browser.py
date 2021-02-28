@@ -52,7 +52,7 @@ if WebKit2:
     class HtmlView(Browser):
         def __init__(self):
             Browser.__init__(self)
-            self.search_text = ""
+            self.search_queries = []
             self.connect("load-changed", self.on_load_changed)
             self.show_all()
 
