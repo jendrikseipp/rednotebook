@@ -131,7 +131,7 @@ class Editor(GObject.GObject):
         buf.remove_tag_by_name("highlighter", start, end)
 
         # Highlight matches
-        for query in enumerate(queries):
+        for query in queries:
             for match_start, match_end in self.iter_search_matches(query):
                 buf.apply_tag_by_name("highlighter", match_start, match_end)
 

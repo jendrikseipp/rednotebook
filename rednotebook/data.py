@@ -200,10 +200,16 @@ class Day:
                         add_text_to_results = True
             if add_text_to_results:
                 results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-        elif any(text in str(self) for text in queries):
-            # Any of the query matches with the date.
-            results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         else:
+            for word in queries:
+                # Any of the query matches with the date.
+                if word in str(self):
+                    # We don't want to show search results from the text matching
+                    # this date.
+                    queries.remove(word)
+                    results.append(
+                        get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH)
+                    )
             text_result = self.search_in_text(queries)
             if text_result:
                 results.append(text_result)
