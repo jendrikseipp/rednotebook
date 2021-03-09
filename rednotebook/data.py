@@ -208,6 +208,9 @@ class Day:
                     # this date.
                     words.remove(word)
                     results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+            # if all the words matched agains the date, return
+            if not words:
+                return str(self), words
             text_result = self.search_in_text(words)
             if text_result:
                 results.append(text_result)
