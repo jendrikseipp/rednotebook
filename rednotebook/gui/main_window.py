@@ -169,7 +169,7 @@ class MainWindow:
                     )
                     self.load_html(html)
 
-                def highlight(self, queries):
+                def highlight(self, words):
                     pass
 
             self.html_editor = Preview(self.journal)
@@ -724,9 +724,9 @@ class MainWindow:
     def get_day_text(self):
         return self.day_text_field.get_text()
 
-    def highlight_text(self, search_queries):
-        self.html_editor.highlight(search_queries)
-        self.day_text_field.highlight(search_queries)
+    def highlight_text(self, search_words):
+        self.html_editor.highlight(search_words)
+        self.day_text_field.highlight(search_words)
 
     def show_message(self, title, msg, msg_type):
         if msg_type == Gtk.MessageType.ERROR:
@@ -814,12 +814,12 @@ class DayEditor(editor.Editor):
     def _get_buffer_for_day(self, day):
         return self._get_buffer(day.date, day.text)
 
-    def scroll_to_text(self, queries):
+    def scroll_to_text(self, words):
         """
-        Finds the first non-date word in queries, and passes it on to
+        Finds the first non-date word in words, and passes it on to
         `Editor.scroll_to_text`.
         """
-        for word in queries:
+        for word in words:
             # If word matches date, it probably is not present in the text.
             if word in str(self.day):
                 pass
@@ -833,10 +833,10 @@ class DayEditor(editor.Editor):
         self.replace_buffer(buf)
         self.day_text_view.grab_focus()
 
-        if self.search_queries:
+        if self.search_words:
             # If a search is currently made, scroll to the text and return.
-            GObject.idle_add(self.scroll_to_text, self.search_queries)
-            GObject.idle_add(self.highlight, self.search_queries)
+            GObject.idle_add(self.scroll_to_text, self.search_words)
+            GObject.idle_add(self.highlight, self.search_words)
             return
 
     def show_template(self, title, text):

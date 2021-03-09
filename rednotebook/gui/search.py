@@ -52,22 +52,21 @@ class SearchComboBox(CustomComboBoxEntry):
         self.search(search_text)
 
     def search(self, search_text):
-        tags = []
-        queries = []
+        tags, words = [], []
         for part in search_text.split():
             if part.startswith("#"):
                 tags.append(part.lstrip("#").lower())
             else:
-                queries.append(part)
+                words.append(part)
 
         # Highlight all occurrences in the current day's text
-        self.main_window.highlight_text(queries)
+        self.main_window.highlight_text(words)
 
         # Scroll to query.
-        if queries:
-            self.main_window.day_text_field.scroll_to_text(tags + queries)
+        if words:
+            self.main_window.day_text_field.scroll_to_text(tags + words)
 
-        self.main_window.search_tree_view.update_data(queries, tags)
+        self.main_window.search_tree_view.update_data(words, tags)
 
         # Without the following, showing the search results sometimes lets the
         # search entry lose focus and search phrases are added to a day's text.
@@ -85,10 +84,10 @@ class SearchTreeView(CustomListView):
 
         self.connect("cursor_changed", self.on_cursor_changed)
 
-    def update_data(self, queries, tags):
+    def update_data(self, words, tags):
         self.tree_store.clear()
 
-        if not self.always_show_results and not tags and not queries:
+        if not self.always_show_results and not tags and not words:
             self.main_window.cloud.show()
             self.main_window.search_scroll.hide()
             return
@@ -96,7 +95,7 @@ class SearchTreeView(CustomListView):
         self.main_window.cloud.hide()
         self.main_window.search_scroll.show()
 
-        for date_string, entries in self.journal.search(queries, tags):
+        for date_string, entries in self.journal.search(words, tags):
             for entry in entries:
                 entry = escape(entry)
                 entry = entry.replace("STARTBOLD", "<b>").replace("ENDBOLD", "</b>")
