@@ -1,6 +1,7 @@
 # Unreleased
 * Add a "Give Feedback" button (#551, Rahul Jha).
 * Test code on macOS (#552, Rahul Jha).
+* added feature to auto-indent text in editor (#561, Allen Benter)
 
 # 2.21 (2020-12-07)
 * Update MathJax to version 3 (#515, @dgcampea).
