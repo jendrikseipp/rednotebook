@@ -41,8 +41,18 @@ except ImportError as err:
     )
     sys.exit(1)
 
-gi.require_version("Gtk", "3.0")
-gi.require_version("GtkSource", "3.0")
+try:
+    gi.require_version("Gtk", "3.0")
+except ValueError as err:
+    logging.error(err)
+    sys.exit("Please install GTK (gir1.2-gtk-3.0).")
+
+try:
+    gi.require_version("GtkSource", "3.0")
+except ValueError as err:
+    logging.error(err)
+    sys.exit("Please install GtkSource (gir1.2-gtksource-3.0).")
+
 
 if hasattr(sys, "frozen"):
     base_dir = sys._MEIPASS
