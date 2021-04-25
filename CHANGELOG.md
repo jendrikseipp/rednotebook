@@ -1,4 +1,4 @@
-# Unreleased
+# 2.22 (2021-04-25)
 * Add a "Give Feedback" button (#551, Rahul Jha).
 * Test code on macOS (#552, Rahul Jha).
 
