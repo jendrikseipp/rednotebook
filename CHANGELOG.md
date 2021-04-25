@@ -1,4 +1,4 @@
-# 2.23 (unreleased)
+# next (unreleased)
 * No changes so far.
 
 # 2.22 (2021-04-25)
