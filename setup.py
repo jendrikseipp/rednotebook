@@ -138,14 +138,14 @@ parameters = {
     "cmdclass": cmdclass,
     "extras_require": {
         "dev_style": [
-            "black==19.10b0",
+            "black==20.8b1",
             "flake8",
             "flake8-2020",
             "flake8-bugbear",
             "flake8-comprehensions",
             "flake8-executable",
             "isort>=5.0,<5.1",
-            "pyupgrade==2.6.2",
+            "pyupgrade==2.13.0",
             "vulture==1.6",
         ],
     },
