@@ -26,6 +26,28 @@ sys.path.append('/usr/share/rednotebook')
 # not (at least in Debian) installed in the default python path
 import rednotebook.storage  # pylint: disable=wrong-import-position, unused-import
 
+
+def list_missing_entries(mindate, maxdate, months, existing_entries):
+    """ list missing entries """
+
+    for i_day in range(int((maxdate - mindate).days)):
+        dateobj = mindate + datetime.timedelta(i_day)
+        monthstr = dateobj.strftime('%Y-%m')
+        daynum = int(dateobj.strftime('%d'))
+        month = None
+        day = None
+        if monthstr in months:
+            month = months[monthstr]
+        elif monthstr in existing_entries:
+            month = existing_entries[monthstr]
+        else:
+            print(f"Missing entries for {dateobj.strftime('%B %Y')}")
+            continue
+        day = month.get_day(daynum)
+        if day.empty:
+            print(f"Missing entry for {dateobj.strftime('%d %B %Y')}")
+
+
 def main():
     """ parse commandline arguments & process text """
 
@@ -139,24 +161,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-def list_missing_entries(mindate, maxdate, months, existing_entries):
-    """ list missing entries """
-
-    for i_day in range(int((maxdate - mindate).days)):
-        dateobj = mindate + datetime.timedelta(i_day)
-        monthstr = dateobj.strftime('%Y-%m')
-        daynum = int(dateobj.strftime('%d'))
-        month = None
-        day = None
-        if monthstr in months:
-            month = months[monthstr]
-        elif monthstr in existing_entries:
-            month = existing_entries[monthstr]
-        else:
-            print(f"Missing entries for {dateobj.strftime('%B %Y')}")
-            continue
-        day = month.get_day(daynum)
-        if day.empty:
-            print(f"Missing entry for {dateobj.strftime('%d %B %Y')}")
