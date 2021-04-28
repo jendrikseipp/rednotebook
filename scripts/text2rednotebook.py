@@ -30,12 +30,17 @@ def main():
     """ parse commandline arguments & process text """
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-n', '--dry-run', action='store_true')
-    parser.add_argument('--echo-entries', action='store_true')
-    parser.add_argument('--existing', choices=['overwrite', 'append', 'skip', 'error'],
-                        default='error')
-    parser.add_argument('--no-list-missing-entries', action='store_true')
-    parser.add_argument('infile')
+    parser.add_argument('-n', '--dry-run', action='store_true',
+                        help="Parse the text and check the dates without writing to rednotebook.")
+    parser.add_argument('--echo-entries', action='store_true',
+                        help="Echo the parsed entries to the terminal.")
+    parser.add_argument(
+        '--existing', choices=['overwrite', 'append', 'skip', 'error'], default='error',
+        help="Define the behaviour if rednotebook already has an entry for the date.")
+    parser.add_argument('--no-list-missing-entries', action='store_true',
+                        help="Don't list the dates with missing entries.")
+    parser.add_argument('infile',
+                        help="Input file, either plain text, markdown, or odt.")
     args = parser.parse_args()
     if args.infile.endswith('.odt'):
         textdoc = load(args.infile)
