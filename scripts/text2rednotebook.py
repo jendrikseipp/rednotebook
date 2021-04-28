@@ -1,5 +1,17 @@
 """
 Mass import diary/journal entries from markdown/plain text/odt into rednotebook
+
+Dates, currently in the format "Dayoftheweek, day-number month-name year" are
+used to split the text into days and the appropriate rednotebook entries are
+appended or overwritten as required. If an entry already exists, it can be
+optionally skipped or an error produced.
+
+Any text before the first date is ignored.
+
+The day-name/day-number combination is checked for consistency.
+
+A list of days with missing entries is also printed by default. This can be
+deactivated.
 """
 
 import argparse
