@@ -2,9 +2,9 @@
 Mass import diary/journal entries from Markdown, plain text, and ODT into RedNotebook.
 
 You will probably need to adapt the script to your needs before it works for your
-existing old journal entries. The script is meant as a starting point, not as an 
-off-the-shelf solution. In any case, please back up your RedNotebook journal 
-before importing old entries. 
+existing old journal entries. The script is meant as a starting point, not as an
+off-the-shelf solution. In any case, please back up your RedNotebook journal
+before importing old entries.
 
 Dates, currently in the format "Dayoftheweek, day-number month-name year" are
 used to split the text into days and the appropriate rednotebook entries are
