@@ -23,9 +23,12 @@ import argparse
 import sys
 import re
 import datetime
-from odf import text
-from odf.opendocument import load
-sys.path.append('/usr/share/rednotebook')
+import os
+
+for inst in ['/usr/share/rednotebook', '../rednotebook']:
+    if os.path.isdir(inst):
+        sys.path.append(inst)
+        break
 
 # must import rednotebook after munging path in order to find it, as it is
 # not (at least in Debian) installed in the default python path
@@ -70,9 +73,15 @@ def main():
                         help="Input file, either plain text, markdown, or odt.")
     args = parser.parse_args()
     if args.infile.endswith('.odt'):
-        textdoc = load(args.infile)
-        alltext = [str(para) for para in textdoc.getElementsByType(text.P)]
-        alltext = "\n\n".join(alltext)
+        try:
+            from odf import text  # pylint: disable=import-outside-toplevel
+            from odf.opendocument import load  # pylint: disable=import-outside-toplevel
+            textdoc = load(args.infile)
+            alltext = [str(para) for para in textdoc.getElementsByType(text.P)]
+            alltext = "\n\n".join(alltext)
+        except ImportError:
+            print("Please install 'python3-odf' in order to import entries from an .odt file")
+            sys.exit()
     else:
         with open(args.infile) as fin:
             alltext = fin.read()
