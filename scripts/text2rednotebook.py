@@ -69,9 +69,19 @@ def main():
         help="Define the behaviour if rednotebook already has an entry for the date.")
     parser.add_argument('--no-list-missing-entries', action='store_true',
                         help="Don't list the dates with missing entries.")
+    parser.add_argument('--data-dir', help="Path to RedNotebook journal.")
     parser.add_argument('infile',
                         help="Input file, either plain text, markdown, or odt.")
     args = parser.parse_args()
+
+    # have to import *after* munging argv as rednotebook does its own argv parsing
+    if not args.data_dir:
+        sys.argv = [sys.argv[0]]
+        import rednotebook.journal  # pylint: disable=import-outside-toplevel, redefined-outer-name
+        journal = rednotebook.journal.Journal()
+        args.data_dir = journal.get_journal_path()
+    print(f"Reading journal from {args.data_dir}.")
+
     if args.infile.endswith('.odt'):
         try:
             from odf import text  # pylint: disable=import-outside-toplevel
@@ -99,12 +109,7 @@ def main():
             print(f"Ignoring leading text: {days[0]}")
         i += 1
 
-    # have to import *after* munging argv as rednotebook does its own argv parsing
-    sys.argv = [sys.argv[0]]
-    import rednotebook.journal  # pylint: disable=import-outside-toplevel, redefined-outer-name
-    journal = rednotebook.journal.Journal()
-    data_dir = journal.get_journal_path()
-    existing_entries = rednotebook.storage.load_all_months_from_disk(data_dir)
+    existing_entries = rednotebook.storage.load_all_months_from_disk(args.data_dir)
     months = {}
     mindate, maxdate = None, None
     while i < len(days):
@@ -170,7 +175,7 @@ def main():
         list_missing_entries(mindate, maxdate, months, existing_entries)
 
     if not args.dry_run:
-        rednotebook.storage.save_months_to_disk(months, data_dir, True, True)
+        rednotebook.storage.save_months_to_disk(months, args.data_dir, True, True)
 
 
 if __name__ == "__main__":
