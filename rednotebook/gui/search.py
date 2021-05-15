@@ -59,12 +59,12 @@ class SearchComboBox(CustomComboBoxEntry):
             else:
                 words.append(part)
 
-        # Highlight all occurrences in the current day's text
+        # Highlight all occurrences in the current day's text.
         self.main_window.highlight_text(words)
 
         # Scroll to query.
         if words:
-            self.main_window.day_text_field.scroll_to_text(tags + words)
+            self.main_window.day_text_field.scroll_to_non_date_text(tags + words)
 
         self.main_window.search_tree_view.update_data(words, tags)
 

@@ -814,9 +814,9 @@ class DayEditor(editor.Editor):
     def _get_buffer_for_day(self, day):
         return self._get_buffer(day.date, day.text)
 
-    def scroll_to_text(self, words):
+    def scroll_to_non_date_text(self, words):
         """
-        Finds the first non-date word in words, and passes it on to
+        Find the first non-date word in words, and pass it on to
         `Editor.scroll_to_text`.
         """
         for word in words:
@@ -835,7 +835,7 @@ class DayEditor(editor.Editor):
 
         if self.search_words:
             # If a search is currently made, scroll to the text and return.
-            GObject.idle_add(self.scroll_to_text, self.search_words)
+            GObject.idle_add(self.scroll_to_non_date_text, self.search_words)
             GObject.idle_add(self.highlight, self.search_words)
             return
 

@@ -18,6 +18,7 @@
 
 import datetime
 import re
+import sys
 
 
 TEXT_RESULT_LENGTH = 42
@@ -201,38 +202,36 @@ class Day:
             if add_text_to_results:
                 results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         else:
-            for word in words:
-                # Any of the word matches with the date.
-                if word in str(self):
-                    # We don't want to show search results from the text matching
-                    # this date.
-                    words.remove(word)
-                    results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-            # if all the words matched agains the date, return
-            if not words:
-                return str(self), words
-            text_result = self.search_in_text(words)
+            non_date_words = [word for word in words if word not in str(self)]
+            words_contain_date = len(non_date_words) != len(words)
+            if words_contain_date:
+                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+            # If all the words matched agains the date, return.
+            if not non_date_words:
+                return str(self), results
+
+            text_result = self.search_in_text(non_date_words)
             if text_result:
                 results.append(text_result)
-            results.extend(self.search_in_categories(words))
+            results.extend(self.search_in_categories(non_date_words))
         return str(self), results
 
     def search_in_text(self, words):
-        """All words should be present in the text"""
-        matches = {}
+        """
+        If all words are in the text, return a suitable text substring.
+        Otherwise, return None.
+        """
+        match_word, smallest_index = None, sys.maxsize
         for word in words:
-            index = self.text.upper().find(word.upper())
+            index = self.text.lower().find(word.lower())
             if index < 0:
                 return
-            matches[word] = index
+            if index < smallest_index:
+                match_word, smallest_index = word, index
 
-        # Of all the matching words, find the one which appears first
-        match_word = min(matches, key=matches.get)
-        first_occurrence = matches[match_word]
-
-        found_text = self.text[first_occurrence : first_occurrence + len(match_word)]
+        found_text = self.text[smallest_index : smallest_index + len(match_word)]
         return get_text_with_dots(
-            self.text, first_occurrence, first_occurrence + len(match_word), found_text
+            self.text, smallest_index, smallest_index + len(match_word), found_text
         )
 
     def search_in_categories(self, words):
