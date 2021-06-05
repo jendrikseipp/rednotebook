@@ -52,7 +52,7 @@ if WebKit2:
     class HtmlView(Browser):
         def __init__(self):
             Browser.__init__(self)
-            self.search_words = []
+            self.search_text = ""
             self.connect("load-changed", self.on_load_changed)
             self.show_all()
 
@@ -65,13 +65,14 @@ if WebKit2:
             zoom *= 0.90
             self.set_zoom_level(zoom)
 
-        def highlight(self, search_words):
+        def highlight(self, search_text):
             # Tell the webview which text to highlight after the html is loaded
-            self.search_words = search_words
-            for word in search_words:
-                self.get_find_controller().search(
-                    word, WebKit2.FindOptions.CASE_INSENSITIVE, MAX_HITS
-                )
+            self.search_text = search_text
+            self.get_find_controller().search(
+                self.search_text,
+                WebKit2.FindOptions.CASE_INSENSITIVE | WebKit2.FindOptions.WRAP_AROUND,
+                MAX_HITS,
+            )
 
         def on_load_changed(self, webview, event):
             """
@@ -83,7 +84,7 @@ if WebKit2:
             does not work.
             """
             if event == WebKit2.LoadEvent.FINISHED:
-                if self.search_words:
-                    self.highlight(self.search_words)
+                if self.search_text:
+                    self.highlight(self.search_text)
                 else:
                     webview.get_find_controller().search_finish()

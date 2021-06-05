@@ -169,7 +169,7 @@ class MainWindow:
                     )
                     self.load_html(html)
 
-                def highlight(self, words):
+                def highlight(self, text):
                     pass
 
             self.html_editor = Preview(self.journal)
@@ -725,8 +725,14 @@ class MainWindow:
         return self.day_text_field.get_text()
 
     def highlight_text(self, search_words):
-        self.html_editor.highlight(search_words)
         self.day_text_field.highlight(search_words)
+
+        # The HTML view can only highlight one match, so we search for a match ourselves
+        # and highlight the last match, since it's what the user is currently typing.
+        day_text = self.day_text_field.get_text()
+        matches = [word for word in search_words if word.lower() in day_text.lower()]
+        highlighted_word = matches[-1] if matches else ""
+        self.html_editor.highlight(highlighted_word)
 
     def show_message(self, title, msg, msg_type):
         if msg_type == Gtk.MessageType.ERROR:
