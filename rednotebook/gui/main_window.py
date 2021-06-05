@@ -730,9 +730,14 @@ class MainWindow:
         # The HTML view can only highlight one match, so we search for a match ourselves
         # and highlight the last match, since it's what the user is currently typing.
         day_text = self.day_text_field.get_text()
-        matches = [word for word in search_words if word.lower() in day_text.lower()]
-        highlighted_word = matches[-1] if matches else ""
-        self.html_editor.highlight(highlighted_word)
+
+        def get_last_match():
+            for word in reversed(search_words):
+                if word.lower() in day_text.lower():
+                    return word
+            return ""
+
+        self.html_editor.highlight(get_last_match())
 
     def show_message(self, title, msg, msg_type):
         if msg_type == Gtk.MessageType.ERROR:
