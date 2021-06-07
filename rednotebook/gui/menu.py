@@ -16,6 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 import os
+import platform
 import webbrowser
 
 from gi.repository import GdkPixbuf, Gtk
@@ -408,7 +409,18 @@ class MainMenuBar:
             headers=[_("RedNotebook Documentation"), info.version, ""],
             options={"toc": 1},
         )
-        utils.show_html_in_browser(html, os.path.join(temp_dir, "help.html"))
+
+        # workaround: for flatpak, temp_dir is located at /tmp which is not visible outside sandbox
+        #   but XDG_CACHE_HOME is.
+        if platform.system() == "Linux":
+            cache_dir = os.getenv(
+                "XDG_CACHE_HOME", os.path.join(os.path.expanduser("~"), ".cache")
+            )
+            help_file = os.path.join(cache_dir, "help.html")
+        else:
+            help_file = os.path.join(temp_dir, "help.html")
+
+        utils.show_html_in_browser(html, help_file)
 
     def on_online_help(self, widget):
         webbrowser.open(info.answers_url)
