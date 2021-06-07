@@ -23,6 +23,7 @@ import os
 import platform
 import subprocess
 import sys
+import tempfile
 
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
@@ -78,9 +79,9 @@ class Filenames(dict):
         self.data_dir = self.default_data_dir
 
         # Assert that all dirs and files are in place so that logging can take start
-        make_directories(
-            [self.journal_user_dir, self.data_dir, self.template_dir, self.temp_dir]
-        )
+        make_directories([self.journal_user_dir, self.data_dir, self.template_dir])
+        self.temp_dir = tempfile.mkdtemp(prefix="rednotebook-")
+
         make_files([(self.config_file, ""), (self.log_file, "")])
 
         self.last_pic_dir = self.user_home_dir
@@ -125,7 +126,6 @@ class Filenames(dict):
     def __getattribute__(self, attr):
         user_paths = {
             "template_dir": "templates",
-            "temp_dir": "tmp",
             "default_data_dir": "data",
             "config_file": "configuration.cfg",
             "log_file": "rednotebook.log",
