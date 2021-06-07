@@ -102,7 +102,20 @@ class Filenames(dict):
             if self.portable:
                 user_dir = os.path.join(self.app_dir, "user")
             else:
+                # preserve backward compat: if ~/.rednotebook exists keep using it
                 user_dir = os.path.join(self.user_home_dir, ".rednotebook")
+                if os.path.exists(user_dir):
+                    pass
+                elif "XDG_CONFIG_HOME" in os.environ:
+                    user_dir = os.path.join(
+                        os.environ["XDG_CONFIG_HOME"], "rednotebook"
+                    )
+                elif "APPDATA" in os.environ and platform.system() == "Windows":
+                    user_dir = os.path.join(os.environ["APPDATA"], "rednotebook")
+                else:
+                    user_dir = os.path.join(
+                        self.user_home_dir, ".config", "rednotebook"
+                    )
 
         return user_dir
 
