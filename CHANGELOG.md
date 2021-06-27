@@ -1,5 +1,5 @@
 # next (unreleased)
-* No changes so far.
+* Fix python crash on start (#583, Max Krummenacher).
 
 # 2.22 (2021-04-25)
 * Add a "Give Feedback" button (#551, Rahul Jha).
