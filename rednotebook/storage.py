@@ -145,6 +145,8 @@ def _save_month_to_disk(month, journal_dir):
             )
             shutil.copy2(filename, conflict)
         shutil.copy2(filename, old)
+    if os.path.exists(filename):
+        os.remove(filename)
     shutil.move(new, filename)
     if os.path.exists(old):
         os.remove(old)
