@@ -1,6 +1,6 @@
 # next (unreleased)
 * Fix Python crash on start (#583, Max Krummenacher).
-* Work-around to prevent save failures on network and cloud drives (#583, Robert Little)
+* Work-around to prevent save failures on network and cloud drives (#593, Robert Little)
 
 # 2.22 (2021-04-25)
 * Add a "Give Feedback" button (#551, Rahul Jha).
