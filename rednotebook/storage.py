@@ -145,6 +145,7 @@ def _save_month_to_disk(month, journal_dir):
             )
             shutil.copy2(filename, conflict)
         shutil.copy2(filename, old)
+    # Prevent save failures on network and cloud drives.
     if os.path.exists(filename):
         os.remove(filename)
     shutil.move(new, filename)
