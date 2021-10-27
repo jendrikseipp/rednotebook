@@ -23,6 +23,7 @@ import os
 import platform
 import subprocess
 import sys
+import tempfile
 
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
@@ -78,10 +79,11 @@ class Filenames(dict):
         self.data_dir = self.default_data_dir
 
         # Assert that all dirs and files are in place so that logging can take start
-        make_directories(
-            [self.journal_user_dir, self.data_dir, self.template_dir, self.temp_dir]
-        )
-        make_files([(self.config_file, ""), (self.log_file, "")])
+        make_directories([self.journal_user_dir, self.data_dir, self.template_dir])
+        self.temp_dir = tempfile.mkdtemp(prefix="rednotebook-")
+
+        make_file(self.config_file)
+        make_file_with_dir(self.log_file, "")
 
         self.last_pic_dir = self.user_home_dir
         self.last_file_dir = self.user_home_dir
@@ -102,7 +104,20 @@ class Filenames(dict):
             if self.portable:
                 user_dir = os.path.join(self.app_dir, "user")
             else:
+                # preserve backward compat: if ~/.rednotebook exists keep using it
                 user_dir = os.path.join(self.user_home_dir, ".rednotebook")
+                if os.path.exists(user_dir):
+                    pass
+                elif "XDG_CONFIG_HOME" in os.environ:
+                    user_dir = os.path.join(
+                        os.environ["XDG_CONFIG_HOME"], "rednotebook"
+                    )
+                elif "APPDATA" in os.environ and platform.system() == "Windows":
+                    user_dir = os.path.join(os.environ["APPDATA"], "rednotebook")
+                else:
+                    user_dir = os.path.join(
+                        self.user_home_dir, ".config", "rednotebook"
+                    )
 
         return user_dir
 
@@ -112,13 +127,25 @@ class Filenames(dict):
     def __getattribute__(self, attr):
         user_paths = {
             "template_dir": "templates",
-            "temp_dir": "tmp",
             "default_data_dir": "data",
             "config_file": "configuration.cfg",
             "log_file": "rednotebook.log",
         }
 
         if attr in user_paths:
+            if attr == "log_file":
+                if platform.system() == "Windows":
+                    # do not apply XDG spec for Windows
+                    logpath = self.journal_user_dir
+                elif "XDG_STATE_HOME" in os.environ:
+                    logpath = os.path.join(os.environ["XDG_STATE_HOME"], "rednotebook")
+                else:
+                    logpath = os.path.join(
+                        self.user_home_dir, ".local", "state", "rednotebook"
+                    )
+
+                return os.path.join(logpath, user_paths.get("log_file"))
+
             return os.path.join(self.journal_user_dir, user_paths.get(attr))
 
         return dict.__getattribute__(self, attr)
