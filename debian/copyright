@@ -15,7 +15,7 @@ Copyright: Copyright (C) 2008, 2009 Jonathan Wiltshire <debian@jwiltshire.org.uk
            Copyright (C) 2017-2020 Phil Wyett <philip.wyett@kathenas.org>
 License: GPL-2+
 
-Files: data/rednotebook.appdata.xml
+Files: data/app.rednotebook.rednotebook.appdata.xml
 Copyright: Copyright (C) 2008-2020 Jendrik Seipp <jendrikseipp@gmail.com>
 License: CC0-1.0
 
