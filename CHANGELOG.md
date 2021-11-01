@@ -1,6 +1,7 @@
 # next (unreleased)
 * Fix Python crash on start (#583, Max Krummenacher).
 * Prevent save failures on network and cloud drives (#593, Robert Little).
+* Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
 
 # 2.22 (2021-04-25)
 * Add a "Give Feedback" button (#551, Rahul Jha).
