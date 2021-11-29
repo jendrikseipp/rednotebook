@@ -39,8 +39,6 @@ except ImportError as err:
 if cef:
 
     class HtmlView(Gtk.DrawingArea):
-        NOTEBOOK_URL = "file:///"
-
         """
         Loading HTML strings only works if we pass the `url` parameter to
         CreateBrowserSync.
@@ -50,6 +48,8 @@ if cef:
         the browser is created.
 
         """
+
+        NOTEBOOK_URL = "file:///"
 
         def __init__(self):
             super().__init__()

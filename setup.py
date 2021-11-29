@@ -139,11 +139,11 @@ parameters = {
     "extras_require": {
         "dev_style": [
             "black==20.8b1",
-            "flake8",
-            "flake8-2020",
-            "flake8-bugbear",
-            "flake8-comprehensions",
-            "flake8-executable",
+            "flake8==4.0.1",
+            "flake8-2020==1.6.0",
+            "flake8-bugbear==21.11.28",
+            "flake8-comprehensions==3.7.0",
+            "flake8-executable==2.1.1",
             "isort>=5.0,<5.1",
             "pyupgrade==2.13.0",
             "vulture==1.6",

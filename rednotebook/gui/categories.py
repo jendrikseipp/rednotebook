@@ -61,8 +61,8 @@ class CategoriesTreeView:
         # add the cell to the tvcolumn and allow it to expand
         self.tvcolumn.pack_start(self.cell, True)
 
-        """ set the cell "text" attribute to column 0 - retrieve text
-            from that column in tree_store"""
+        # set the cell "text" attribute to column 0 - retrieve text
+        # from that column in tree_store
         self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
         # make it searchable
