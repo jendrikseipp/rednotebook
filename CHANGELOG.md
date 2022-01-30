@@ -1,5 +1,6 @@
 # next (unreleased)
 * Fix Python crash on program start (#583, Max Krummenacher).
+* Check that a newly written month file is valid before deleting the old month file.
 * Prevent save failures on network and cloud drives (#593, Robert Little).
 * Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
 * Add script for importing entries (#571, Cary Gravel).

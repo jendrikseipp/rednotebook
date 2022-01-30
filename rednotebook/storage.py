@@ -106,18 +106,26 @@ def load_all_months_from_disk(data_dir):
     return months
 
 
-def _save_month_to_disk(month, journal_dir):
-    """
-    When overwriting 2014-12.txt:
-        write new content to 2014-12.new.txt
-        cp 2014-12.txt 2014-12.old.txt
-        mv 2014-12.new.txt 2014-12.txt
-        rm 2014-12.old.txt
-    """
+def _get_dict(month):
     content = {}
     for day_number, day in month.days.items():
         if not day.empty:
             content[day_number] = day.content
+    return content
+
+
+def _save_month_to_disk(month, journal_dir):
+    """
+    Return whether data was written to disk.
+
+    When overwriting 2014-12.txt:
+        write new content to 2014-12.new.txt
+        check that new file is valid month file
+        cp 2014-12.txt 2014-12.old.txt
+        mv 2014-12.new.txt 2014-12.txt
+        rm 2014-12.old.txt
+    """
+    content = _get_dict(month)
 
     def get_filename(infix):
         year_and_month = format_year_and_month(month.year_number, month.month_number)
@@ -134,6 +142,11 @@ def _save_month_to_disk(month, journal_dir):
     with codecs.open(new, "wb", encoding="utf-8") as f:
         # Write readable unicode and no Python directives.
         yaml.dump(content, f, Dumper=Dumper, allow_unicode=True)
+
+    # Check that month file was written to disk successfully.
+    written_month = _load_month_from_disk(new, month.year_number, month.month_number)
+    if _get_dict(written_month) != content:
+        raise OSError("writing month file to disk failed")
 
     if os.path.exists(filename):
         mtime = os.path.getmtime(filename)
