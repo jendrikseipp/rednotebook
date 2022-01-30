@@ -32,6 +32,8 @@ REMOTE_PROTOCOLS = ["http", "ftp", "irc"]
 IS_WIN = sys.platform.startswith("win")
 IS_MAC = sys.platform == "darwin"
 
+LOCAL_FILE_PEFIX = "file:///" if IS_WIN else "file://"
+
 
 def has_system_tray():
     return IS_WIN  # A smarter detection is needed here ;)

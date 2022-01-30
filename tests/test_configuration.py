@@ -4,7 +4,7 @@ from rednotebook import configuration
 
 
 def test_io():
-    with tempfile.NamedTemporaryFile() as f:
+    with tempfile.NamedTemporaryFile(delete=False) as f:
         c1 = configuration.Config(f.name)
         c1["a"] = 1
         c1.write_list("b", ["foo", "bär"])
@@ -15,7 +15,7 @@ def test_io():
 
 
 def test_changed():
-    with tempfile.NamedTemporaryFile() as f:
+    with tempfile.NamedTemporaryFile(delete=False) as f:
         c = configuration.Config(f.name)
         assert not c.changed()
         c["a"] = 1
