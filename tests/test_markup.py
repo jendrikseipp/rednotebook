@@ -45,7 +45,7 @@ def test_relative_path_conversion(tmp_path):
     tmp_path_uri = filesystem.LOCAL_FILE_PEFIX + str(tmp_path) + os.sep + "rel"
 
     rel_paths = [
-        ('[""file://rel"".jpg]', '[""{}"".jpg]'.format(tmp_path_uri, os.sep)),
+        ('[""file://rel"".jpg]', '[""{}"".jpg]'.format(tmp_path_uri)),
         ('[""rel"".jpg]', '[""{}"".jpg]'.format(tmp_path_uri)),
         (
             '[rel.pdf ""file://rel.pdf""]',
