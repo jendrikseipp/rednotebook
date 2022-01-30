@@ -37,6 +37,7 @@ def test_pango(t2t_markup, expected):
         assert convert_from_pango(pango) == t2t_markup
 
 
+@pytest.mark.skipif(sys.platform == "win32", reason="needs fixing for Windows")
 def test_relative_path_conversion(tmp_path):
     for path in [tmp_path / f for f in ("rel.jpg", "rel.pdf")]:
         path.write_text("")  # Create empty file.

@@ -21,6 +21,10 @@ import os
 import re
 import sys
 
+import gi
+
+gi.require_version("Pango", "1.0")
+
 from gi.repository import GObject, Pango
 
 from rednotebook.data import HASHTAG
