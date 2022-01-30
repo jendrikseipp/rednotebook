@@ -1,4 +1,5 @@
 import datetime
+import os
 import sys
 
 import pytest
@@ -41,16 +42,16 @@ def test_pango(t2t_markup, expected):
 def test_relative_path_conversion(tmp_path):
     for path in [tmp_path / f for f in ("rel.jpg", "rel.pdf")]:
         path.write_text("")  # Create empty file.
-    tmp_path_uri = filesystem.LOCAL_FILE_PEFIX + str(tmp_path)
+    tmp_path_uri = filesystem.LOCAL_FILE_PEFIX + str(tmp_path) + os.sep + "rel"
 
     rel_paths = [
-        ('[""file://rel"".jpg]', '[""{}/rel"".jpg]'.format(tmp_path_uri)),
-        ('[""rel"".jpg]', '[""{}/rel"".jpg]'.format(tmp_path_uri)),
+        ('[""file://rel"".jpg]', '[""{}"".jpg]'.format(tmp_path_uri, os.sep)),
+        ('[""rel"".jpg]', '[""{}"".jpg]'.format(tmp_path_uri)),
         (
             '[rel.pdf ""file://rel.pdf""]',
-            '[rel.pdf ""{}/rel.pdf""]'.format(tmp_path_uri),
+            '[rel.pdf ""{}.pdf""]'.format(tmp_path_uri),
         ),
-        ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""{}/rel.pdf""]'.format(tmp_path_uri)),
+        ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""{}.pdf""]'.format(tmp_path_uri)),
     ]
 
     for markup, expected in rel_paths:
