@@ -13,12 +13,6 @@ from rednotebook.util.markup import (
 )
 
 
-def touch(path):
-    with open(path, "w") as f:
-        # Silence pyflakes.
-        assert f
-
-
 @pytest.mark.parametrize(
     "t2t_markup,expected",
     [
@@ -45,7 +39,7 @@ def test_pango(t2t_markup, expected):
 
 def test_relative_path_conversion(tmp_path):
     for path in [tmp_path / f for f in ("rel.jpg", "rel.pdf")]:
-        touch(path)
+        path.write_text("")  # Create empty file.
     tmp_path_uri = "file://" + str(tmp_path)
 
     rel_paths = [
