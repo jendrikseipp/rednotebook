@@ -261,7 +261,7 @@ def _get_config(target, options):
         config["preproc"].append([r'\[""', r'["""'])
         config["preproc"].append([r'""\.', r'""".'])
 
-        scheme = "file:///" if sys.platform == "win32" else "file://"
+        scheme = filesystem.LOCAL_FILE_PEFIX
 
         # For images we have to omit the file:// prefix
         config["postproc"].append(

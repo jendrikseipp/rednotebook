@@ -4,6 +4,7 @@ import sys
 import pytest
 
 from rednotebook.data import Day, Month
+from rednotebook.util import filesystem
 from rednotebook.util.markup import (
     _convert_paths,
     convert,
@@ -40,7 +41,7 @@ def test_pango(t2t_markup, expected):
 def test_relative_path_conversion(tmp_path):
     for path in [tmp_path / f for f in ("rel.jpg", "rel.pdf")]:
         path.write_text("")  # Create empty file.
-    tmp_path_uri = "file://" + str(tmp_path)
+    tmp_path_uri = filesystem.LOCAL_FILE_PEFIX + str(tmp_path)
 
     rel_paths = [
         ('[""file://rel"".jpg]', '[""{}/rel"".jpg]'.format(tmp_path_uri)),
