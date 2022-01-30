@@ -22,6 +22,7 @@ import re
 
 import gi
 
+
 gi.require_version("Pango", "1.0")
 
 from gi.repository import GObject, Pango
