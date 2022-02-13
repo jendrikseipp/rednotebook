@@ -146,6 +146,10 @@ def _save_month_to_disk(month, journal_dir):
     # Check that month file was written to disk successfully.
     written_month = _load_month_from_disk(new, month.year_number, month.month_number)
     if _get_dict(written_month) != content:
+        try:
+            os.remove(new)
+        except OSError:
+            pass
         raise OSError("writing month file to disk failed")
 
     if os.path.exists(filename):
