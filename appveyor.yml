@@ -68,7 +68,7 @@ deploy:
   description: ''
   provider: GitHub
   auth_token:
-    secure: "UT6jPkpy8U/qTN+8LF7hPsJ/cHWlt+7a+wO2Ou2iKYImeBxAV4OY6Gt3Y0v5/ZuL"
+    secure: "p5SL/whtBmrrK+4Aqxng6+5+GNdq7uzwJDBnC7mz7U3ailXjz6LglDXf1+2sR6lN"
   artifact: /rednotebook-.*\.exe/
   draft: false
   prerelease: false
