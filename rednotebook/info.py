@@ -28,7 +28,7 @@ if not hasattr(builtins, "_"):
 
 program_name = "RedNotebook"
 tagline = _("A Desktop Journal")
-version = "2.22"
+version = "2.23"
 author = "Jendrik Seipp"
 author_mail = "jendrikseipp@gmail.com"
 copyright_ = "Copyright (c) 2008-2021 Jendrik Seipp"
