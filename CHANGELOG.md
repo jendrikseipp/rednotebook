@@ -1,4 +1,7 @@
-# 2.23 (2022-02-13)
+# 2.24 (2022-02-21)
+* Revert to plain naming scheme for data files since reverse DNS naming causes problems (#611, Phil Wyett).
+
+* # 2.23 (2022-02-13)
 * Check that a newly written month file is valid before deleting the old month file.
 * Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
 * Fix Python crash on program start (#583, Max Krummenacher).
