@@ -128,12 +128,12 @@ parameters = {
         ]
     },
     "data_files": [
-        ("share/applications", ["data/app.rednotebook.rednotebook.desktop"]),
+        ("share/applications", ["data/rednotebook.desktop"]),
         (
             "share/icons/hicolor/scalable/apps",
             ["rednotebook/images/rednotebook-icon/rednotebook.svg"],
         ),
-        ("share/metainfo", ["data/app.rednotebook.rednotebook.appdata.xml"]),
+        ("share/metainfo", ["data/rednotebook.appdata.xml"]),
     ],
     "cmdclass": cmdclass,
     "extras_require": {
