@@ -1,5 +1,5 @@
 # next (unreleased)
-* Added a dockerfile (#614 Eric Chazan)
+* Add a dockerfile (#614, Eric Chazan).
 
 # 2.24 (2022-02-21)
 * Revert to plain naming scheme for data files since reverse DNS naming causes problems (#611, Phil Wyett).
