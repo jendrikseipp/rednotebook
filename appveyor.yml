@@ -38,6 +38,9 @@ build_script:
   - "%PYTHON% -m pip freeze"
   - "%PYTHON% -m pip list --outdated"
 
+  # Patch GtkSourceView hook by replacing "3.0" with "4".
+  - sed -i 's/3\.0/4/g' C:/Python39-x64/Lib/site-packages/pyinstaller/hooks/hook-gi.repository.GtkSource.py
+
   # Pyenchant wheels bundle DLLs. The bundled DLLs are incompatible to the
   # DLLs we use and lead to the error "ImportError: DLL load failed: The
   # specified procedure could not be found." when calling "import gi".
