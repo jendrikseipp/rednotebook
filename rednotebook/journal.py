@@ -42,7 +42,7 @@ except ImportError as err:
     sys.exit(1)
 
 gi.require_version("Gtk", "3.0")
-gi.require_version("GtkSource", "3.0")
+gi.require_version("GtkSource", "4")
 
 if hasattr(sys, "frozen"):
     base_dir = sys._MEIPASS
