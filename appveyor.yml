@@ -10,8 +10,8 @@ environment:
     PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd;C:\Tools\curl\bin;C:\msys64\usr\bin;C:\Program Files\7-zip;C:\Program Files (x86)\Inno Setup 5
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      VS_VER: "14"
-      PLATFORM: "x64"
+      VS_VER: 14
+      PLATFORM: x64
       PYTHON: C:\Python39\python.exe
 
 build_script:
@@ -30,11 +30,11 @@ build_script:
   - set PATH=%PATH%;C:\gtk\bin
 
   # Install other dependencies.
-  - "%PYTHON% -m pip --no-warn-script-location install -U pip setuptools wheel"
+  - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools wheel"
   # Install separately because --no-binary options disables using wheels (leading to problems for Cython).
-  - "%PYTHON% -m pip --no-warn-script-location install -U --no-binary :all: pyenchant==3.2.2"
-  - "%PYTHON% -m pip --no-warn-script-location install -r requirements.txt"
-  - "%PYTHON% -m pip --no-warn-script-location install C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl"
+  - "%PYTHON% -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2"
+  - "%PYTHON% -m pip install --no-warn-script-location -r requirements.txt"
+  - "%PYTHON% -m pip install --no-warn-script-location C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl"
   - "%PYTHON% -m pip freeze"
   - "%PYTHON% -m pip list --outdated"
 
