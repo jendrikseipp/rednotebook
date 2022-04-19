@@ -1,13 +1,13 @@
 repos:
   - repo: https://github.com/psf/black
-    rev: stable
+    rev: 22.3.0
     hooks:
       - id: black
         language_version: python3
         exclude: rednotebook/external/.*\.py
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.6.2
+    rev: v2.32.0
     hooks:
       - id: pyupgrade
         exclude: rednotebook/external/.*\.py

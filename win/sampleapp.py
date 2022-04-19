@@ -9,7 +9,7 @@ from gi.repository import GObject
 
 print("GObject import works")
 
-gi.require_version("GtkSource", "3.0")
+gi.require_version("GtkSource", "4")
 from gi.repository import GtkSource
 
 print("GtkSource import works")

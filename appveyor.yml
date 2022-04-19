@@ -12,29 +12,27 @@ environment:
     APPVEYOR_SAVE_CACHE_ON_ERROR: true
     PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd;C:\Tools\curl\bin;C:\msys64\usr\bin;C:\Program Files\7-zip;C:\Program Files (x86)\Inno Setup 5
   matrix:
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       VS_VER: "14"
-      PLATFORM: "x86"
-      PYTHON: C:\Python36\python.exe
+      PLATFORM: "x64"
+      PYTHON: C:\Python39\python.exe
 
 build_script:
   - "%PYTHON% --version"
-  # Print PATH variable.
-  - set PATH
+  - set PATH  # Print PATH variable.
   - for /f %%i in ('%PYTHON% -c "from rednotebook import info; print(info.version)"') do set VERSION=%%i
   - set VERSION
   - cd win
 
-  # Set up GTK stack.
-  - curl -Lo gtk.tar.gz https://www.dropbox.com/s/94013wl3qud8rr5/gvsbuild-vs14-x86-2020-05-adwaita.tar.gz?dl=1
-  - tar -xzf gtk.tar.gz
-  - move release C:\gtk
+  # Set up GTK stack compiled with gvsbuild.
+  - curl -Lo gtk-bundle.zip https://www.dropbox.com/s/lo0p8c96cljcc1c/gtk-bundle.zip?dl=1
+  - unzip gtk-bundle.zip -d C:/gtk
   - set PATH=%PATH%;C:\gtk\bin
 
   # Install other dependencies.
-  - "%PYTHON% -m pip install -U pip wheel"
+  - "%PYTHON% -m pip install -U pip setuptools wheel"
   - "%PYTHON% -m pip install -r requirements.txt"
-  - "%PYTHON% -m pip install C:/gtk/python/pycairo-1.19.1-cp36-cp36m-win32.whl C:/gtk/python/PyGObject-3.36.0-cp36-cp36m-win32.whl"
+  - "%PYTHON% -m pip install C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl"
   - "%PYTHON% -m pip freeze"
   - "%PYTHON% -m pip list --outdated"
 
@@ -49,17 +47,17 @@ build_script:
   # things around and making them work proved difficult. We might want to
   # try again once we need to support newer enchant versions.
   - set PYENCHANT_VERBOSE_FIND=foobar
-  - rm C:/Python36/Lib/site-packages/enchant/*.dll
-  - rm C:/Python36/Lib/site-packages/enchant/lib/enchant/*.dll
-  - cp C:/gtk/bin/libenchant.dll C:/Python36/Lib/site-packages/enchant
-  #- mkdir C:\Python36\Lib\site-packages\enchant\lib\enchant\
-  - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python36/Lib/site-packages/enchant/lib/enchant/
+  #- rm C:/Python39/Lib/site-packages/enchant/*.dll
+  #- rm C:/Python39/Lib/site-packages/enchant/lib/enchant/*.dll
+  - cp C:/gtk/bin/libenchant.dll C:/Python39/Lib/site-packages/enchant/
+  #- mkdir C:\Python39\Lib\site-packages\enchant\lib\enchant\
+  - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python39/Lib/site-packages/enchant/lib/enchant/
 
   # Remove bundled dictionaries and install custom ones.
   - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
   - tar -xzf dicts.tar.gz
-  #- mkdir C:\Python36\Lib\site-packages\enchant\share
-  #- move enchant C:\Python36\Lib\site-packages\enchant\share
+  #- mkdir C:\Python39\Lib\site-packages\enchant\share
+  #- move enchant C:\Python39\Lib\site-packages\enchant\share
 
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
