@@ -31,7 +31,7 @@ class SearchComboBox(CustomComboBoxEntry):
         self.main_window = main_window
         self.journal = main_window.journal
 
-        self.entry.set_icon_from_stock(1, Gtk.STOCK_CLEAR)
+        self.entry.set_icon_from_icon_name(1, "edit-clear-symbolic")
         self.entry.connect("icon-press", lambda *args: self.set_active_text(""))
 
         self.entry.connect("changed", self.on_entry_changed)
