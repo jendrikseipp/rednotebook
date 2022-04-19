@@ -59,9 +59,9 @@ build_script:
   - tar -xzf dicts.tar.gz
   - move enchant C:\gtk\share
 
-  # Sanity check with dummy app.
+  # Sanity check with dummy app. Pyinstaller misses libenchant.dll, so we manually add it to ".".
   - "%PYTHON% sampleapp.py"
-  - "%PYTHON% -m PyInstaller --debug=all --additional-hooks-dir=. sampleapp.py"
+  - "%PYTHON% -m PyInstaller --debug=all --additional-hooks-dir=. --add-data libenchant.dll;. sampleapp.py"
   - echo Exit Code A is %errorlevel%
   # Use clean PATH to check that everything has been copied correctly.
   - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem && dist\sampleapp\sampleapp.exe"
