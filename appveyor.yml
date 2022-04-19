@@ -49,17 +49,15 @@ build_script:
   # things around and making them work proved difficult. We might want to
   # try again once we need to support newer enchant versions.
   - set PYENCHANT_VERBOSE_FIND=foobar
-  #- rm C:/Python39-x64/Lib/site-packages/enchant/*.dll
-  #- rm C:/Python39-x64/Lib/site-packages/enchant/lib/enchant/*.dll
   - cp C:/gtk/bin/libenchant.dll C:/Python39-x64/Lib/site-packages/enchant/
+  # TODO: needed?
   #- mkdir C:\Python39-x64\Lib\site-packages\enchant\lib\enchant\
-  - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python39-x64/Lib/site-packages/enchant/lib/enchant/
+  #- cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python39-x64/Lib/site-packages/enchant/lib/enchant/
 
   # Remove bundled dictionaries and install custom ones.
   - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
   - tar -xzf dicts.tar.gz
-  #- mkdir C:\Python39-x64\Lib\site-packages\enchant\share
-  #- move enchant C:\Python39-x64\Lib\site-packages\enchant\share
+  - move enchant C:\gtk\share
 
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
