@@ -21,6 +21,8 @@ build_script:
   - set VERSION
   - cd win
 
+  - '%PYTHON% -c "import platform; print(platform.architecture())"'
+
   # Set up GTK stack compiled with gvsbuild.
   - curl -Lo gtk-bundle.zip https://www.dropbox.com/s/lo0p8c96cljcc1c/gtk-bundle.zip?dl=1
   - 7z x gtk-bundle.zip -oC:\gtk
@@ -28,10 +30,11 @@ build_script:
   - set PATH=%PATH%;C:\gtk\bin
 
   # Install other dependencies.
-  - "%PYTHON% -m pip install -U pip setuptools wheel"
-  - "%PYTHON% -m pip install -U --no-binary :all: pyenchant==3.2.2"
-  - "%PYTHON% -m pip install -r requirements.txt"
-  - "%PYTHON% -m pip install C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl"
+  - "%PYTHON% -m pip --no-warn-script-location install -U pip setuptools wheel"
+  # Install separately because --no-binary options disables using wheels (leading to problems for Cython).
+  - "%PYTHON% -m pip --no-warn-script-location install -U --no-binary :all: pyenchant==3.2.2"
+  - "%PYTHON% -m pip --no-warn-script-location install -r requirements.txt"
+  - "%PYTHON% -m pip --no-warn-script-location install C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl"
   - "%PYTHON% -m pip freeze"
   - "%PYTHON% -m pip list --outdated"
 
