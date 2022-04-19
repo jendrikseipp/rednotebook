@@ -204,7 +204,7 @@ class TemplateInfo(Gtk.InfoBar):
         vbox.pack_start(title_label, False, False, 0)
         vbox.pack_start(msg_label, False, False, 0)
 
-        image = Gtk.Image.new_from_stock(Gtk.STOCK_DIALOG_INFO, Gtk.IconSize.DIALOG)
+        image = Gtk.Image.new_from_icon_name("edit-paste", Gtk.IconSize.DIALOG)
 
         content = self.get_content_area()
         content.pack_start(image, False, False, 0)
