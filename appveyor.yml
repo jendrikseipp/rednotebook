@@ -48,11 +48,8 @@ build_script:
   # package and put our own DLLs in the
   # places where pyenchant and PyInstaller expect them
   # (see also https://pyenchant.github.io/pyenchant/install.html)
-  # We currently pin pyenchant to version 2.0 since later versions moved
-  # things around and making them work proved difficult. We might want to
-  # try again once we need to support newer enchant versions.
   - set PYENCHANT_VERBOSE_FIND=foobar
-  - cp C:/gtk/bin/libenchant.dll C:/Python39-x64/Lib/site-packages/enchant/
+  #- cp C:/gtk/bin/libenchant.dll C:/Python39-x64/Lib/site-packages/enchant/
   # TODO: needed?
   #- mkdir C:\Python39-x64\Lib\site-packages\enchant\lib\enchant\
   #- cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python39-x64/Lib/site-packages/enchant/lib/enchant/
