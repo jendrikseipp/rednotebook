@@ -24,6 +24,7 @@ build_script:
   # Set up GTK stack compiled with gvsbuild.
   - curl -Lo gtk-bundle.zip https://www.dropbox.com/s/lo0p8c96cljcc1c/gtk-bundle.zip?dl=1
   - 7z x gtk-bundle.zip -oC:\gtk
+  - dir C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
 
   # Install other dependencies.
