@@ -14,7 +14,6 @@ icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 MISSED_BINARIES = [
     os.path.join(drive_c, path) for path in [
-        'gtk/bin/gspawn-win32-helper.exe',
     ]
 ]
 
@@ -28,37 +27,50 @@ def Dir(path, excludes=None):
     assert os.path.isdir(path), path
     return Tree(path, prefix=os.path.basename(path), excludes=excludes or [])
 
-a = Analysis([os.path.join(srcdir, 'journal.py')],
-             pathex=[basedir],
-             binaries=[],
-             datas=[],
-             hiddenimports=[],
-             hookspath=["."],  # To find custom hooks.
-             runtime_hooks=[],
-             excludes=[],
-             win_no_prefer_redirects=False,
-             win_private_assemblies=False,
-             cipher=block_cipher)
+a = Analysis(
+    [os.path.join(srcdir, 'journal.py')],
+    pathex=[basedir],
+    binaries=[],
+    datas=[],
+    hiddenimports=[],
+    hookspath=["."],  # To find custom hooks.
+    runtime_hooks=[],
+    excludes=[],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+    noarchive=False,
+)
 # Adding these files in the ctor mangles up the paths.
 a.binaries += [(os.path.basename(path), path, 'BINARY') for path in MISSED_BINARIES]
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
-exe = EXE(pyz,
-          a.scripts,
-          exclude_binaries=True,
-          name='rednotebook.exe',
-          debug="all" if debug else None,
-          bootloader_ignore_signals=False,
-          strip=False,
-          upx=True,
-          console=debug,
-          icon=icon)
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               Dir(os.path.join(srcdir, 'files')),
-               Dir(os.path.join(srcdir, 'images')),
-               strip=False,
-               upx=True,
-               name='dist')
+exe = EXE(
+    pyz,
+    a.scripts,
+    exclude_binaries=True,
+    name='rednotebook.exe',
+    debug=debug,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console=debug,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+    icon=icon,
+)
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    Dir(os.path.join(srcdir, 'files')),
+    Dir(os.path.join(srcdir, 'images')),
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='dist',
+)
