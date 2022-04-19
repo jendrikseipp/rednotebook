@@ -12,7 +12,7 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       VS_VER: 14
       PLATFORM: x64
-      PYTHON: C:\Python39\python.exe
+      PYTHON: C:\Python39-x64\python.exe
 
 build_script:
   - "%PYTHON% --version"
@@ -49,17 +49,17 @@ build_script:
   # things around and making them work proved difficult. We might want to
   # try again once we need to support newer enchant versions.
   - set PYENCHANT_VERBOSE_FIND=foobar
-  #- rm C:/Python39/Lib/site-packages/enchant/*.dll
-  #- rm C:/Python39/Lib/site-packages/enchant/lib/enchant/*.dll
-  - cp C:/gtk/bin/libenchant.dll C:/Python39/Lib/site-packages/enchant/
-  #- mkdir C:\Python39\Lib\site-packages\enchant\lib\enchant\
-  - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python39/Lib/site-packages/enchant/lib/enchant/
+  #- rm C:/Python39-x64/Lib/site-packages/enchant/*.dll
+  #- rm C:/Python39-x64/Lib/site-packages/enchant/lib/enchant/*.dll
+  - cp C:/gtk/bin/libenchant.dll C:/Python39-x64/Lib/site-packages/enchant/
+  #- mkdir C:\Python39-x64\Lib\site-packages\enchant\lib\enchant\
+  - cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python39-x64/Lib/site-packages/enchant/lib/enchant/
 
   # Remove bundled dictionaries and install custom ones.
   - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
   - tar -xzf dicts.tar.gz
-  #- mkdir C:\Python39\Lib\site-packages\enchant\share
-  #- move enchant C:\Python39\Lib\site-packages\enchant\share
+  #- mkdir C:\Python39-x64\Lib\site-packages\enchant\share
+  #- move enchant C:\Python39-x64\Lib\site-packages\enchant\share
 
   # Sanity check with dummy app.
   - "%PYTHON% sampleapp.py"
