@@ -53,7 +53,7 @@ Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
 Name: "slovenian"; MessagesFile: "compiler:Languages\Slovenian.isl"
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "turkish"; MessagesFile: "compiler:Languages\Turkish.isl"
-Name: "ukranian"; MessagesFile: "compiler:Languages\Ukranian.isl"
+Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 
 ;[Types]
 ;Name: "normal"; Description: "Standard installation"
