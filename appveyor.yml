@@ -30,7 +30,7 @@ build_script:
   # Set up GTK stack compiled with gvsbuild.
   - curl -Lo gtk-bundle.zip https://www.dropbox.com/s/lo0p8c96cljcc1c/gtk-bundle.zip?dl=1
   - 7z x gtk-bundle.zip -oC:\gtk
-  - dir C:\gtk
+  - ls C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
 
   # Install other dependencies.
@@ -38,7 +38,6 @@ build_script:
   # Install separately because --no-binary options disables using wheels (leading to problems for Cython).
   - "%PYTHON% -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2"
   - "%PYTHON% -m pip install --no-warn-script-location -r requirements.txt"
-  - "%PYTHON% -m pip install --no-warn-script-location C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl"
   - "%PYTHON% -m pip freeze"
   - "%PYTHON% -m pip list --outdated"
 
