@@ -20,7 +20,7 @@ build_script:
   - set PATH
   - "%PYTHON% --version"
   - '%PYTHON% -c "import platform; print(platform.architecture())"'
-  - ls "C:\Program Files (x86)\Inno Setup 6\Languages\"
+  - ls "C:\Program Files (x86)\Inno Setup 6\Languages"
 
   # Set RedNotebook VERSION variable.
   - for /f %%i in ('%PYTHON% -c "from rednotebook import info; print(info.version)"') do set VERSION=%%i
