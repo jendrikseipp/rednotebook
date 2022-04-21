@@ -7,7 +7,7 @@ environment:
   global:
     DOWNLOAD_DIR: _download_cache
     APPVEYOR_SAVE_CACHE_ON_ERROR: true
-    PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd;C:\Tools\curl\bin;C:\msys64\usr\bin;C:\Program Files\7-zip;C:\Program Files (x86)\Inno Setup 5
+    PATH: C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Git\cmd;C:\Tools\curl\bin;C:\msys64\usr\bin;C:\Program Files\7-zip;C:\Program Files (x86)\Inno Setup 6
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       VS_VER: 14
@@ -15,16 +15,17 @@ environment:
       PYTHON: C:\Python39-x64\python.exe
 
 build_script:
+  # Show environment info.
   - set APPVEYOR_BUILD_WORKER_IMAGE
-  - ls "C:\Program Files (x86)\Inno Setup 6"
-  - ls "C:\Program Files (x86)\Inno Setup 5"
+  - set PATH
   - "%PYTHON% --version"
-  - set PATH  # Print PATH variable.
+  - '%PYTHON% -c "import platform; print(platform.architecture())"'
+
+  # Set RedNotebook VERSION variable.
   - for /f %%i in ('%PYTHON% -c "from rednotebook import info; print(info.version)"') do set VERSION=%%i
   - set VERSION
-  - cd win
 
-  - '%PYTHON% -c "import platform; print(platform.architecture())"'
+  - cd win
 
   # Set up GTK stack compiled with gvsbuild.
   - curl -Lo gtk-bundle.zip https://www.dropbox.com/s/lo0p8c96cljcc1c/gtk-bundle.zip?dl=1
