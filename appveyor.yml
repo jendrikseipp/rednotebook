@@ -20,7 +20,6 @@ build_script:
   - set PATH
   - "%PYTHON% --version"
   - '%PYTHON% -c "import platform; print(platform.architecture())"'
-  - ls "C:\Program Files (x86)\Inno Setup 6\Languages"
 
   # Set RedNotebook VERSION variable.
   - for /f %%i in ('%PYTHON% -c "from rednotebook import info; print(info.version)"') do set VERSION=%%i
@@ -46,18 +45,13 @@ build_script:
   # Patch GtkSourceView hook by replacing "3.0" with "4".
   - sed -i 's/3\.0/4/g' C:/Python39-x64/Lib/site-packages/pyinstaller/hooks/hook-gi.repository.GtkSource.py
 
-  # Pyenchant wheels bundle DLLs. The bundled DLLs are incompatible to the
-  # DLLs we use and lead to the error "ImportError: DLL load failed: The
-  # specified procedure could not be found." when calling "import gi".
-  # Therefore, we use the --no-binary option when installing the pyenchant
-  # package and put our own DLLs in the
-  # places where pyenchant and PyInstaller expect them
-  # (see also https://pyenchant.github.io/pyenchant/install.html)
+  # Pyenchant wheels bundle DLLs. The bundled DLLs are incompatible to the DLLs
+  # we use and lead to the error "ImportError: DLL load failed: The specified
+  # procedure could not be found." when calling "import gi". Therefore, we use
+  # the --no-binary option when installing the pyenchant package and use our own
+  # libenchant.dll file (see also
+  # https://pyenchant.github.io/pyenchant/install.html)
   - set PYENCHANT_VERBOSE_FIND=foobar
-  #- cp C:/gtk/bin/libenchant.dll C:/Python39-x64/Lib/site-packages/enchant/
-  # TODO: needed?
-  #- mkdir C:\Python39-x64\Lib\site-packages\enchant\lib\enchant\
-  #- cp C:/gtk/lib/enchant/libenchant_*.dll C:/Python39-x64/Lib/site-packages/enchant/lib/enchant/
 
   # Remove bundled dictionaries and install custom ones.
   - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
@@ -68,8 +62,7 @@ build_script:
   - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m PyInstaller --additional-hooks-dir=. --add-data C:/gtk/bin/libenchant.dll;. sampleapp.py"
   - ls dist\sampleapp
-  - ls C:\repo\win\dist\sampleapp
-  # Use clean PATH to check that everything has been copied correctly.
+  # Use clean PATH to check that everything has been copied correctly. The last semicolon ensures that the path doesn't end with a space.
   - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\repo\win\dist\sampleapp; && dist\sampleapp\sampleapp.exe"
 
   # Create executable.

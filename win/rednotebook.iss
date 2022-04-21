@@ -52,7 +52,7 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
 Name: "slovenian"; MessagesFile: "compiler:Languages\Slovenian.isl"
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "turkish"; MessagesFile: "compiler:Languages\Turskish.isl"
+Name: "turkish"; MessagesFile: "compiler:Languages\Turkish.isl"
 Name: "ukranian"; MessagesFile: "compiler:Languages\Ukranian.isl"
 
 ;[Types]
