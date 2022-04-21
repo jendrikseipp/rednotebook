@@ -9,11 +9,13 @@ debug = True
 
 drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'repo')
+gtkbindir = os.path.join(drive_c, 'gtk', 'bin')
 srcdir = os.path.join(basedir, 'rednotebook')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 MISSED_BINARIES = [
-    os.path.join(drive_c, path) for path in [
+    os.path.join(gtkbindir, path) for path in [
+        "libenchant.dll",
     ]
 ]
 
