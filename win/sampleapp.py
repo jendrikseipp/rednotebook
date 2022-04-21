@@ -14,6 +14,28 @@ from gi.repository import GtkSource
 
 print("GtkSource import works")
 
+import os
+
+
+def find_library(name):
+    # See MSDN for the REAL search order.
+    for directory in os.environ["PATH"].split(os.pathsep):
+        fname = os.path.join(directory, name)
+        print("DIR", directory)
+        print("FNAME1", fname, os.path.isfile(fname))
+        if os.path.isfile(fname):
+            return fname
+        if fname.lower().endswith(".dll"):
+            continue
+        fname = fname + ".dll"
+        print("FNAME2", fname, os.path.isfile(fname))
+        if os.path.isfile(fname):
+            return fname
+    return None
+
+
+find_library("libenchant")
+
 import enchant
 
 print(enchant.list_languages())
