@@ -19,6 +19,7 @@ import os
 
 def find_library(name):
     # See MSDN for the REAL search order.
+    print("PATH", os.environ["PATH"])
     for directory in os.environ["PATH"].split(os.pathsep):
         fname = os.path.join(directory, name)
         print("DIR", directory)
