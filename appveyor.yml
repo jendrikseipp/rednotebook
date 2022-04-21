@@ -15,6 +15,8 @@ environment:
       PYTHON: C:\Python39-x64\python.exe
 
 build_script:
+  - ls "C:\Program Files (x86)\Inno Setup 5"
+  - ls "C:\Program Files (x86)\Inno Setup 6"
   - "%PYTHON% --version"
   - set PATH  # Print PATH variable.
   - for /f %%i in ('%PYTHON% -c "from rednotebook import info; print(info.version)"') do set VERSION=%%i
