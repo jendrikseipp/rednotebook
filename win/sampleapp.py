@@ -14,22 +14,22 @@ from gi.repository import GtkSource
 
 print("GtkSource import works")
 
-import os
 
-
+# Copied from ctypes module.
 def find_library(name):
-    # See MSDN for the REAL search order.
-    print("PATH", os.environ["PATH"])
+    import os
+
+    print("PATH: ", os.environ["PATH"])
     for directory in os.environ["PATH"].split(os.pathsep):
         fname = os.path.join(directory, name)
-        print("DIR", directory)
-        print("FNAME1", fname, os.path.isfile(fname))
+        print("Check directory", directory)
+        print("Check filename", fname, os.path.isfile(fname))
         if os.path.isfile(fname):
             return fname
         if fname.lower().endswith(".dll"):
             continue
         fname = fname + ".dll"
-        print("FNAME2", fname, os.path.isfile(fname))
+        print("Check filename", fname, os.path.isfile(fname))
         if os.path.isfile(fname):
             return fname
     return None
@@ -39,6 +39,6 @@ find_library("libenchant")
 
 import enchant
 
-print(enchant.list_languages())
-print(enchant.list_dicts())
+print("Languages:", enchant.list_languages())
+print("Dictionaries:", enchant.list_dicts())
 print("Enchant import works")
