@@ -385,7 +385,7 @@
       <action-widget response="-5">new_entry_dialog_o_k_button1</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkWindow" id="main_frame">
+  <object class="GtkApplicationWindow" id="main_frame">
     <property name="can_focus">False</property>
     <signal name="configure-event" handler="on_main_frame_configure_event" swapped="no"/>
     <signal name="delete-event" handler="on_main_frame_delete_event" swapped="no"/>

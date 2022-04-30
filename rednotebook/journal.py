@@ -163,13 +163,13 @@ logging.info("Language code: %s" % filesystem.LANGUAGE)
 
 try:
     from gi.repository import Gtk
+    from gi.repository import Gio
+    from gi.repository import GLib
     from gi.repository import GObject
 except (ImportError, AssertionError) as e:
     logging.error(e)
     logging.error("GTK not found. Please install it (gir1.2-gtk-3.0).")
     sys.exit(1)
-
-GObject.threads_init()
 
 
 from rednotebook.util import dates
@@ -181,8 +181,18 @@ from rednotebook import storage
 from rednotebook.data import Month
 
 
-class Journal:
-    def __init__(self):
+class Journal(Gtk.Application):
+    def __init__(self, *args, **kwargs):
+        super().__init__(
+            *args,
+            application_id="app.rednotebook",
+            flags=Gio.ApplicationFlags.FLAGS_NONE,
+            **kwargs
+        )
+
+    def do_startup(self):
+        Gtk.Application.do_startup(self)
+
         self.dirs = dirs
 
         user_config = configuration.Config(self.dirs.config_file)
@@ -232,14 +242,17 @@ class Journal:
         self.open_journal(journal_path)
 
         self.archiver = backup.Archiver(self)
-        GObject.idle_add(self.archiver.check_last_backup_date)
+        GLib.idle_add(self.archiver.check_last_backup_date)
 
         # Check for a new version
         if self.config.read("checkForNewVersion") == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
-        GObject.timeout_add_seconds(600, self.save_to_disk)
+        GLib.timeout_add_seconds(600, self.save_to_disk)
+
+    def do_activate(self):
+        self.frame.main_frame.present()
 
     def get_journal_path(self):
         """
@@ -599,14 +612,12 @@ def main():
     start_time = time.time()
     journal = Journal()
     utils.setup_signal_handlers(journal)
+    journal.run(sys.argv)
     end_time = time.time()
     logging.debug("Start took %s seconds" % (end_time - start_time))
 
-    try:
-        logging.debug("Trying to enter the gtk main loop")
-        Gtk.main()
-    except KeyboardInterrupt:
-        pass
+    # For some reason our Gtk.Application doesn't start the GTK main loop.
+    Gtk.main()
 
     try:
         logging.info("Peak memory: {} KiB".format(filesystem.get_peak_memory_in_kb()))
