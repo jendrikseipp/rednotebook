@@ -1,6 +1,22 @@
 # Unreleased
-* Add a "Give Feedback" button (#551, Rahul Jha).
+* Upgrade GTK stack on Windows.
 * Use GtkSourceView 4.
+
+# 2.24 (2022-02-21)
+* Revert to plain naming scheme for data files since reverse DNS naming causes problems (#611, Phil Wyett).
+
+* # 2.23 (2022-02-13)
+* Check that a newly written month file is valid before deleting the old month file.
+* Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
+* Fix Python crash on program start (#583, Max Krummenacher).
+* Prevent save failures on network and cloud drives (#593, Robert Little).
+* Add script for importing entries (#571, Cary Gravel).
+* Revamp packaging for Debian (#599, #600, Phil Wyett).
+* Fix continuous integration tests.
+
+# 2.22 (2021-04-25)
+* Add a "Give Feedback" button (#551, Rahul Jha).
+* Test code on macOS (#552, Rahul Jha).
 
 # 2.21 (2020-12-07)
 * Update MathJax to version 3 (#515, @dgcampea).

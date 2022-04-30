@@ -6,7 +6,7 @@ import sys
 import urllib.parse
 import webbrowser
 
-from rednotebook.util.filesystem import IS_WIN, system_call
+from rednotebook.util.filesystem import IS_WIN, LOCAL_FILE_PEFIX, system_call
 
 
 ENTRY_REFERENCE_URI_PATTERN = re.compile(r"^file:///#(?P<date>\d{4}-\d{2}-\d{2})$")
@@ -28,8 +28,7 @@ def get_local_url(url):
         url = url.replace("file://", "")
     url = os.path.normpath(url)
 
-    scheme = "file:///" if IS_WIN else "file://"
-    url = scheme + url
+    url = LOCAL_FILE_PEFIX + url
     logging.debug("Transformed local URI {} to {}".format(orig_url, url))
     return url
 

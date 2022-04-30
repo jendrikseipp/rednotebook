@@ -19,4 +19,5 @@ srcname = os.path.basename(src)
 dest = os.path.join(
     "/home/frs/project/r/re/rednotebook/", args.destdir.lstrip("/"), srcname
 )
+print("Enter sourceforge password")
 call(["scp", src, "jseipp,rednotebook@frs.sourceforge.net:%s" % dest])

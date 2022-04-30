@@ -19,7 +19,6 @@ please check back with me briefly about its status.
 - [ ] Require minimum width for calendar panel to avoid hiding it by accident.
 
 - [ ] Data safety:
-  - [ ] Only overwrite old month file if new month file can be parsed correctly.
   - [ ] Make sure that RedNotebook contents are saved under Windows when system is shut down.
   - [ ] Make sure there is no race condition between automatic and manual saving that could cause data corruption.
 

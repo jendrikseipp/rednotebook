@@ -19,7 +19,11 @@
 import logging
 import os
 import re
-import sys
+
+import gi
+
+
+gi.require_version("Pango", "1.0")
 
 from gi.repository import GObject, Pango
 
@@ -257,7 +261,7 @@ def _get_config(target, options):
         config["preproc"].append([r'\[""', r'["""'])
         config["preproc"].append([r'""\.', r'""".'])
 
-        scheme = "file:///" if sys.platform == "win32" else "file://"
+        scheme = filesystem.LOCAL_FILE_PEFIX
 
         # For images we have to omit the file:// prefix
         config["postproc"].append(
@@ -356,6 +360,8 @@ def _get_config(target, options):
 
 
 def _convert_paths(txt, data_dir):
+    data_dir = str(data_dir)
+
     def _convert_uri(uri):
         path = uri[len("file://") :] if uri.startswith("file://") else uri
         # Check if relative file exists and convert it if it does.
@@ -394,6 +400,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
     """
     Code partly taken from txt2tags tarball
     """
+    data_dir = str(data_dir)
     options = options or {}
 
     # Only add MathJax code if there is a formula.

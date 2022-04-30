@@ -25,6 +25,7 @@ import urllib.parse
 
 from gi.repository import Gdk, GdkPixbuf, GObject, Gtk, GtkSource, Pango
 
+from rednotebook.gui.options import OptionsManager
 from rednotebook import info, templates
 from rednotebook.gui import (
     browser,
@@ -39,7 +40,6 @@ from rednotebook.gui import (
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui.menu import MainMenuBar
-from rednotebook.gui.options import OptionsManager
 from rednotebook.util import dates, filesystem, markup, urls, utils
 
 

@@ -71,7 +71,8 @@ MENUBAR_XML = """\
     </menu>
 </menubar>
 </ui>""".format(
-    insert_menu.MENUBAR_XML, format_menu.MENUBAR_XML,
+    insert_menu.MENUBAR_XML,
+    format_menu.MENUBAR_XML,
 )
 
 

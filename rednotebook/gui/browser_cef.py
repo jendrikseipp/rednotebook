@@ -48,8 +48,6 @@ def _make_html_view_class():
         return None
 
     class HtmlView(Gtk.DrawingArea):
-        NOTEBOOK_URL = "file:///"
-
         """
         Loading HTML strings only works if we pass the `url` parameter to
         CreateBrowserSync.
@@ -59,6 +57,8 @@ def _make_html_view_class():
         the browser is created.
 
         """
+
+        NOTEBOOK_URL = "file:///"
 
         def __init__(self):
             super().__init__()

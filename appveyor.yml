@@ -25,8 +25,6 @@ build_script:
   - for /f %%i in ('%PYTHON% -c "from rednotebook import info; print(info.version)"') do set VERSION=%%i
   - set VERSION
 
-  - cd win
-
   # Set up GTK stack compiled with gvsbuild.
   - curl -Lo gtk-bundle.zip https://www.dropbox.com/s/lo0p8c96cljcc1c/gtk-bundle.zip?dl=1
   - 7z x gtk-bundle.zip -oC:\gtk
@@ -37,7 +35,7 @@ build_script:
   - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools wheel"
   # Install separately because --no-binary options disables using wheels (leading to problems for Cython).
   - "%PYTHON% -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2"
-  - "%PYTHON% -m pip install --no-warn-script-location -r requirements.txt"
+  - "%PYTHON% -m pip install --no-warn-script-location -r win/requirements.txt"
   - "%PYTHON% -m pip freeze"
   - "%PYTHON% -m pip list --outdated"
 
@@ -56,6 +54,11 @@ build_script:
   - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
   - tar -xzf dicts.tar.gz
   - move enchant C:\gtk\share
+
+  # Run tests.
+  - "%PYTHON% -m tox -e py"
+
+  - cd win
 
   # Sanity check with dummy app. Pyinstaller misses libenchant.dll, so we manually add it to ".".
   - "%PYTHON% sampleapp.py"
@@ -91,7 +94,7 @@ deploy:
   description: ''
   provider: GitHub
   auth_token:
-    secure: "UT6jPkpy8U/qTN+8LF7hPsJ/cHWlt+7a+wO2Ou2iKYImeBxAV4OY6Gt3Y0v5/ZuL"
+    secure: "p5SL/whtBmrrK+4Aqxng6+5+GNdq7uzwJDBnC7mz7U3ailXjz6LglDXf1+2sR6lN"
   artifact: /rednotebook-.*\.exe/
   draft: false
   prerelease: false

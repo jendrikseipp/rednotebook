@@ -127,15 +127,19 @@ def get_cefpython3_datas():
         if filename[:-4] in get_cefpython_modules():
             continue
         # CEF binaries and datas
-        if filename[-4:] in [
-            ".exe",
-            ".dll",
-            ".so",
-            ".pak",
-            ".dat",
-            ".bin",
-            ".txt",
-        ] or filename in ["License", "subprocess"]:
+        if (
+            filename[-4:]
+            in [
+                ".exe",
+                ".dll",
+                ".so",
+                ".pak",
+                ".dat",
+                ".bin",
+                ".txt",
+            ]
+            or filename in ["License", "subprocess"]
+        ):
             logger.info("Include cefpython3 data: %s" % filename)
             ret.append((os.path.join(CEFPYTHON3_DIR, filename), "."))
 

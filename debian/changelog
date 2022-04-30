@@ -1,3 +1,31 @@
+rednotebook (2.24-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Revert to plain naming scheme for data files since reverse DNS naming causes problems (#611, Phil Wyett).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 21 Feb 2022 19:10:25 +0100
+
+rednotebook (2.23-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Check that a newly written month file is valid before deleting the old month file.
+  * Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
+  * Fix Python crash on program start (#583, Max Krummenacher).
+  * Prevent save failures on network and cloud drives (#593, Robert Little).
+  * Add script for importing entries (#571, Cary Gravel).
+  * Revamp packaging for Debian (#599, #600, Phil Wyett).
+  * Fix continuous integration tests.
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 13 Feb 2022 17:28:52 +0100
+
+rednotebook (2.22-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Add a "Give Feedback" button (#551, Rahul Jha).
+  * Test code on macOS (#552, Rahul Jha).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 25 Apr 2021 17:08:13 +0200
+
 rednotebook (2.21-1) UNRELEASED; urgency=low
 
   * New upstream release
