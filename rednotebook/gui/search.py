@@ -18,7 +18,7 @@
 
 from xml.sax.saxutils import escape
 
-from gi.repository import GObject, Gtk
+from gi.repository import GObject
 
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates

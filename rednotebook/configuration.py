@@ -77,7 +77,7 @@ class Config(dict):
         self.save_state()
 
     def save_state(self):
-        """ Save a copy of the dir to check for changes later """
+        """Save a copy of the dir to check for changes later"""
         self.old_config = self.copy()
 
     def _read_file(self, filename):

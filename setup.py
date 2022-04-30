@@ -138,7 +138,7 @@ parameters = {
     "cmdclass": cmdclass,
     "extras_require": {
         "dev_style": [
-            "black==20.8b1",
+            "black==22.3.0",
             "flake8==4.0.1",
             "flake8-2020==1.6.0",
             "flake8-bugbear==21.11.28",
