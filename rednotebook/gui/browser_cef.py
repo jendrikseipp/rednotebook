@@ -94,6 +94,7 @@ def _make_html_view_class():
                 self.get_property("window").__gpointer__, None
             )
             libgdk = ctypes.CDLL("gdk-3-vs17.dll")
+            libgdk.gdk_win32_window_get_handle.argtypes = [ctypes.c_void_p]
             handle = libgdk.gdk_win32_window_get_handle(gpointer)
             Gdk.threads_leave()
             return handle
