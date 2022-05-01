@@ -16,7 +16,7 @@ See [debian/control](debian/control) for Debian and Ubuntu package names.
 
   * Python (3.6+): https://www.python.org
   * GTK (3.18+): https://www.gtk.org
-  * GtkSourceView (4.0+): https://wiki.gnome.org/Projects/GtkSourceView
+  * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
   * PyYAML (3.10+): https://pyyaml.org
   * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
 

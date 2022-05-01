@@ -50,8 +50,12 @@ except ValueError as err:
 try:
     gi.require_version("GtkSource", "4")
 except ValueError as err:
-    logging.error(err)
-    sys.exit("Please install GtkSource (gir1.2-gtksource-4).")
+    try:
+        gi.require_version("GtkSource", "3.0")
+    except ValueError as err:
+        sys.exit(
+            "Please install GtkSource (gir1.2-gtksource-3.0 or gir1.2-gtksource-4)."
+        )
 
 
 if hasattr(sys, "frozen"):

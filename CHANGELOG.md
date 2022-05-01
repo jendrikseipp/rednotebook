@@ -1,6 +1,6 @@
 # Unreleased
 * Upgrade GTK stack on Windows.
-* Use GtkSourceView 4.
+* Add support for GtkSourceView 4.
 
 # 2.24 (2022-02-21)
 * Revert to plain naming scheme for data files since reverse DNS naming causes problems (#611, Phil Wyett).
