@@ -128,7 +128,7 @@ class InsertMenu:
         actions = [
             (
                 "Picture",
-                Gtk.STOCK_ORIENTATION_PORTRAIT,
+                None,
                 _("Picture"),
                 None,
                 _("Insert an image from the harddisk"),
@@ -136,7 +136,7 @@ class InsertMenu:
             ),
             (
                 "File",
-                Gtk.STOCK_FILE,
+                None,
                 _("File"),
                 None,
                 _("Insert a link to a file"),
@@ -145,7 +145,7 @@ class InsertMenu:
             # Translators: Noun
             (
                 "Link",
-                Gtk.STOCK_JUMP_TO,
+                None,
                 _("_Link"),
                 "<Control>L",
                 _("Insert a link to a website"),
@@ -222,7 +222,7 @@ class InsertMenu:
                 menu_item.set_image(get_image(filename + ".png"))
 
         self.main_window.insert_button = customwidgets.ToolbarMenuButton(
-            Gtk.STOCK_ADD, menu
+            "list-add", menu
         )
         self.main_window.insert_button.set_label(_("Insert"))
         self.main_window.insert_button.set_tooltip_text(

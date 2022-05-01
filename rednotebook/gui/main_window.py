@@ -328,13 +328,13 @@ class MainWindow:
             [
                 (
                     "Show",
-                    Gtk.STOCK_MEDIA_PLAY,
+                    None,
                     _("Show RedNotebook"),
                     None,
                     None,
                     lambda widget: self.show(),
                 ),
-                ("Quit", Gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
+                ("Quit", None, None, None, None, self.on_quit_activate),
             ]
         )
 

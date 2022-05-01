@@ -88,7 +88,7 @@ class FormatMenu:
         actions = [
             (
                 "Bold",
-                Gtk.STOCK_BOLD,
+                None,
                 _("Bold") + shortcut("B"),
                 "<Control>B",
                 None,
@@ -96,7 +96,7 @@ class FormatMenu:
             ),
             (
                 "Italic",
-                Gtk.STOCK_ITALIC,
+                None,
                 _("Italic") + shortcut("I"),
                 "<Control>I",
                 None,
@@ -112,7 +112,7 @@ class FormatMenu:
             ),
             (
                 "Underline",
-                Gtk.STOCK_UNDERLINE,
+                None,
                 _("Underline") + shortcut("U"),
                 "<Control>U",
                 None,
@@ -120,7 +120,7 @@ class FormatMenu:
             ),
             (
                 "Strikethrough",
-                Gtk.STOCK_STRIKETHROUGH,
+                None,
                 _("Strikethrough") + shortcut("K"),
                 "<Control>K",
                 None,
@@ -128,7 +128,7 @@ class FormatMenu:
             ),
             (
                 "Clear",
-                Gtk.STOCK_CLEAR,
+                None,
                 _("Clear format") + shortcut("R"),
                 "<Control>R",
                 None,
@@ -150,7 +150,7 @@ class FormatMenu:
         menu = uimanager.get_widget("/FormatMenu")
 
         self.main_window.format_button = customwidgets.ToolbarMenuButton(
-            Gtk.STOCK_BOLD, menu
+            "format-text-bold", menu
         )
         # Translators: Noun
         self.main_window.format_button.set_label(_("Format"))

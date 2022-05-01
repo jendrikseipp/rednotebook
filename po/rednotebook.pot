@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-21 19:06+0100\n"
+"POT-Creation-Date: 2022-05-01 10:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:38 tmp/main_window.glade.h:15
+#: ../rednotebook/help.py:38 tmp/main_window.glade.h:17
 msgid "Preview"
 msgstr ""
 
@@ -218,28 +218,28 @@ msgstr ""
 msgid "Never ask again"
 msgstr ""
 
-#: ../rednotebook/journal.py:225 ../rednotebook/gui/menu.py:292
+#: ../rednotebook/journal.py:235 ../rednotebook/gui/menu.py:292
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
-#: ../rednotebook/journal.py:228
+#: ../rednotebook/journal.py:238
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:345
+#: ../rednotebook/journal.py:358
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:350
+#: ../rednotebook/journal.py:363
 msgid "The journal could not be saved"
 msgstr ""
 
-#: ../rednotebook/journal.py:352
+#: ../rednotebook/journal.py:365
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:494
+#: ../rednotebook/journal.py:507
 msgid "Error"
 msgstr ""
 
@@ -704,13 +704,21 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: ../rednotebook/gui/customwidgets.py:334
-#: ../rednotebook/gui/main_window.py:683
+#: ../rednotebook/gui/customwidgets.py:336
+#: ../rednotebook/gui/main_window.py:684
 msgid "Template"
 msgstr ""
 
-#: ../rednotebook/gui/customwidgets.py:337
+#: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
+msgstr ""
+
+#: ../rednotebook/gui/customwidgets.py:341
+msgid "Save"
+msgstr ""
+
+#: ../rednotebook/gui/customwidgets.py:343
+msgid "Close"
 msgstr ""
 
 #: ../rednotebook/gui/options.py:81
@@ -822,19 +830,19 @@ msgstr ""
 msgid "Allow these words with 4 letters or less"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:184
+#: ../rednotebook/gui/main_window.py:185
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:331
+#: ../rednotebook/gui/main_window.py:332
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:589
+#: ../rednotebook/gui/main_window.py:590
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:687
+#: ../rednotebook/gui/main_window.py:688
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -1027,79 +1035,87 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr ""
 
 #: tmp/main_window.glade.h:10
-msgid "Jump to today (Alt+Home)"
+msgid "Back"
 msgstr ""
 
 #: tmp/main_window.glade.h:11
-msgid "Today"
+msgid "Jump to today (Alt+Home)"
 msgstr ""
 
 #: tmp/main_window.glade.h:12
-msgid "Go to next day (Ctrl+PageDown)"
+msgid "Today"
 msgstr ""
 
 #: tmp/main_window.glade.h:13
+msgid "Go to next day (Ctrl+PageDown)"
+msgstr ""
+
+#: tmp/main_window.glade.h:14
+msgid "Forward"
+msgstr ""
+
+#: tmp/main_window.glade.h:15
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr ""
 
-#: tmp/main_window.glade.h:16
+#: tmp/main_window.glade.h:18
 msgid "Enable text editing (Ctrl+P)"
 msgstr ""
 
-#: tmp/main_window.glade.h:17
+#: tmp/main_window.glade.h:19
 msgid "Edit"
 msgstr ""
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:20
 msgid "Add a tag or a category entry"
 msgstr ""
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:21
 msgid "Add Tag"
 msgstr ""
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:22
 msgid "New entry"
 msgstr ""
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:23
 msgid "<b>Select existing or new Category</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:24
 msgid "<b>Write entry</b> (optional)"
 msgstr ""
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:25
 msgid "Preferences"
 msgstr ""
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:27
 msgid "<b>General</b>"
 msgstr ""
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:29
 msgid "General"
 msgstr ""
 
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:30
 msgid "Select a picture"
 msgstr ""
 
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:31
 msgid "Exit without saving"
 msgstr ""
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:32
 msgid "Statistics"
 msgstr ""
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:33
 msgid "<b>Selected Day</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:34
 msgid "<b>Overall</b>"
 msgstr ""

@@ -151,7 +151,7 @@ class Info(Gtk.InfoBar):
         content.pack_start(self.image, False, False, 0)
         content.pack_start(vbox, False, False, 0)
 
-        self.add_button(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
+        self.add_button("_Close", Gtk.ResponseType.CLOSE)
         self.connect("close", lambda x: self.hide())
         self.connect("response", self.on_response)
 
@@ -336,11 +336,11 @@ class TemplateBar(Gtk.HBox):
         label = Gtk.Label(label="<b>%s</b>:" % _("Template"))
         label.set_use_markup(True)
         self.pack_start(label, False, False, 0)
-        self.save_insert_button = Gtk.Button(_("Save and insert"))
+        self.save_insert_button = Gtk.Button.new_with_label(_("Save and insert"))
         self.pack_start(self.save_insert_button, False, False, 0)
-        self.save_button = Gtk.Button(stock=Gtk.STOCK_SAVE)
+        self.save_button = Gtk.Button.new_with_label(_("Save"))
         self.pack_start(self.save_button, False, False, 0)
-        self.close_button = Gtk.Button(stock=Gtk.STOCK_CLOSE)
+        self.close_button = Gtk.Button.new_with_label(_("Close"))
         self.pack_start(self.close_button, False, False, 0)
         self.show_all()
 
