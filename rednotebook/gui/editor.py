@@ -32,7 +32,11 @@ except ImportError:
     spellcheck = None
 
 
-DEFAULT_FONT = Gtk.Settings.get_default().get_property("gtk-font-name")
+try:
+    DEFAULT_FONT = Gtk.Settings.get_default().get_property("gtk-font-name")
+except AttributeError:
+    # Gtk.Settings.get_default() returns None on the CI systems without a screen.
+    DEFAULT_FONT = "Ubuntu 10"
 
 
 class Editor(GObject.GObject):
