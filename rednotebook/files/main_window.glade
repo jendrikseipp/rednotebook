@@ -35,6 +35,7 @@
   </object>
   <object class="GtkAccelGroup" id="accelgroup1"/>
   <object class="GtkFileChooserDialog" id="backup_dialog">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select backup filename</property>
@@ -101,6 +102,7 @@
     </action-widgets>
   </object>
   <object class="GtkFileChooserDialog" id="dir_chooser">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select a directory</property>
@@ -177,6 +179,7 @@
     </action-widgets>
   </object>
   <object class="GtkFileChooserDialog" id="file_chooser">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select a file</property>
@@ -953,6 +956,7 @@
     </action-widgets>
   </object>
   <object class="GtkFileChooserDialog" id="picture_chooser">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select a picture</property>
