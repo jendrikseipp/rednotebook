@@ -41,7 +41,6 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        brew update
         brew install gtk pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
         pip3 install enchant pyyaml tox
 
