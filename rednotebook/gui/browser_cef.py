@@ -93,7 +93,7 @@ def _make_html_view_class():
             gpointer = ctypes.pythonapi.PyCapsule_GetPointer(
                 self.get_property("window").__gpointer__, None
             )
-            libgdk = ctypes.CDLL("gdk-3-vs14.dll")
+            libgdk = ctypes.CDLL("gdk-3-vs17.dll")
             handle = libgdk.gdk_win32_window_get_handle(gpointer)
             Gdk.threads_leave()
             return handle
