@@ -19,6 +19,11 @@ BASE_DIR = os.path.dirname(DIR)
 
 sys.path.insert(0, BASE_DIR)
 
+from journal import Journal
+
+Journal.do_activate
+Journal.do_startup
+
 from gi.repository import Gtk
 
 cell = Gtk.CellRendererText()
