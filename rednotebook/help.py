@@ -103,9 +103,7 @@ multiple_entries_text = _(
     """\
 === Multiple entries ===
 You can add multiple entries to a single day by \
-using different journals (one named "Work", the other "Family"), \
-separating your entries with different titles (=== Work ===, === Family ===) \
-and using horizontal separator lines (20 "="s)."""
+separating your entries with different titles (=== Work ===, === Family ===)."""
 )
 
 multiple_entries_example = _(
