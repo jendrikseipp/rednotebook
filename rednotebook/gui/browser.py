@@ -69,7 +69,9 @@ if WebKit2:
             # Tell the webview which text to highlight after the html is loaded
             self.search_text = search_text
             self.get_find_controller().search(
-                self.search_text, WebKit2.FindOptions.CASE_INSENSITIVE, MAX_HITS
+                self.search_text,
+                WebKit2.FindOptions.CASE_INSENSITIVE | WebKit2.FindOptions.WRAP_AROUND,
+                MAX_HITS,
             )
 
         def on_load_changed(self, webview, event):

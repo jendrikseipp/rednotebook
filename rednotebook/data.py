@@ -18,6 +18,7 @@
 
 import datetime
 import re
+import sys
 
 
 TEXT_RESULT_LENGTH = 42
@@ -178,14 +179,14 @@ class Day:
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))
 
-    def search(self, text, tags):
+    def search(self, words, tags):
         """
         This method is only called for days that have all given tags.
         Search in date first, then in the text, then in the tags.
         Uses case-insensitive search.
         """
         results = []
-        if not text:
+        if not words:
             # Only add text result once for all tags.
             add_text_to_results = False
             for day_tag, entries in self.get_category_content_pairs().items():
@@ -200,41 +201,52 @@ class Day:
                         add_text_to_results = True
             if add_text_to_results:
                 results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
-        elif text in str(self):
-            # Date contains searched text.
-            results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         else:
-            text_result = self.search_in_text(text)
+            non_date_words = [word for word in words if word not in str(self)]
+            words_contain_date = len(non_date_words) != len(words)
+            if words_contain_date:
+                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+            # If all the words matched agains the date, return.
+            if not non_date_words:
+                return str(self), results
+
+            text_result = self.search_in_text(non_date_words)
             if text_result:
                 results.append(text_result)
-            results.extend(self.search_in_categories(text))
+            results.extend(self.search_in_categories(non_date_words))
         return str(self), results
 
-    def search_in_text(self, search_text):
-        occurence = self.text.upper().find(search_text.upper())
+    def search_in_text(self, words):
+        """
+        If all words are in the text, return a suitable text substring.
+        Otherwise, return None.
+        """
+        match_word, smallest_index = None, sys.maxsize
+        for word in words:
+            index = self.text.lower().find(word.lower())
+            if index < 0:
+                return
+            if index < smallest_index:
+                match_word, smallest_index = word, index
 
-        # Check if search_text is in text
-        if occurence < 0:
-            return None
-
-        found_text = self.text[occurence : occurence + len(search_text)]
-        result_text = get_text_with_dots(
-            self.text, occurence, occurence + len(search_text), found_text
+        found_text = self.text[smallest_index : smallest_index + len(match_word)]
+        return get_text_with_dots(
+            self.text, smallest_index, smallest_index + len(match_word), found_text
         )
-        return result_text
 
-    def search_in_categories(self, text):
+    def search_in_categories(self, words):
         results = []
-        for category, content in self.get_category_content_pairs().items():
-            if content:
-                if text.upper() in category.upper():
-                    results.extend(content)
-                else:
-                    results.extend(
-                        entry for entry in content if text.upper() in entry.upper()
-                    )
-            elif text.upper() in category.upper():
-                results.append(category)
+        for word in words:
+            for category, content in self.get_category_content_pairs().items():
+                if content:
+                    if word.upper() in category.upper():
+                        results.extend(content)
+                    else:
+                        results.extend(
+                            entry for entry in content if word.upper() in entry.upper()
+                        )
+                elif word.upper() in category.upper():
+                    results.append(category)
         return results
 
     def __str__(self):

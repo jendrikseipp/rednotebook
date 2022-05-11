@@ -44,7 +44,7 @@ class Editor(GObject.GObject):
 
         self._connect_undo_signals()
 
-        self.search_text = ""
+        self.search_words = []
 
         # spell checker
         self._spell_checker = None
@@ -121,8 +121,8 @@ class Editor(GObject.GObject):
         end.backward_chars(len(p3))
         self.day_text_buffer.select_range(start, end)
 
-    def highlight(self, text):
-        self.search_text = text
+    def highlight(self, words):
+        self.search_words = words
         buf = self.day_text_buffer
 
         # Clear previous highlighting
@@ -131,8 +131,8 @@ class Editor(GObject.GObject):
         buf.remove_tag_by_name("highlighter", start, end)
 
         # Highlight matches
-        if text:
-            for match_start, match_end in self.iter_search_matches(text):
+        for word in words:
+            for match_start, match_end in self.iter_search_matches(word):
                 buf.apply_tag_by_name("highlighter", match_start, match_end)
 
     search_flags = (

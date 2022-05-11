@@ -724,9 +724,20 @@ class MainWindow:
     def get_day_text(self):
         return self.day_text_field.get_text()
 
-    def highlight_text(self, search_text):
-        self.html_editor.highlight(search_text)
-        self.day_text_field.highlight(search_text)
+    def highlight_text(self, search_words):
+        self.day_text_field.highlight(search_words)
+
+        # The HTML view can only highlight one match, so we search for a match ourselves
+        # and highlight the last match, since it's what the user is currently typing.
+        day_text = self.day_text_field.get_text()
+
+        def get_last_match():
+            for word in reversed(search_words):
+                if word.lower() in day_text.lower():
+                    return word
+            return ""
+
+        self.html_editor.highlight(get_last_match())
 
     def show_message(self, title, msg, msg_type):
         if msg_type == Gtk.MessageType.ERROR:
@@ -814,6 +825,18 @@ class DayEditor(editor.Editor):
     def _get_buffer_for_day(self, day):
         return self._get_buffer(day.date, day.text)
 
+    def scroll_to_non_date_text(self, words):
+        """
+        Find the first non-date word in words, and pass it on to
+        `Editor.scroll_to_text`.
+        """
+        for word in words:
+            # If word matches date, it probably is not present in the text.
+            if word in str(self.day):
+                pass
+            else:
+                super().scroll_to_text(word)
+
     def show_day(self, new_day):
         # Show new day
         self.day = new_day
@@ -821,10 +844,10 @@ class DayEditor(editor.Editor):
         self.replace_buffer(buf)
         self.day_text_view.grab_focus()
 
-        if self.search_text:
+        if self.search_words:
             # If a search is currently made, scroll to the text and return.
-            GObject.idle_add(self.scroll_to_text, self.search_text)
-            GObject.idle_add(self.highlight, self.search_text)
+            GObject.idle_add(self.scroll_to_non_date_text, self.search_words)
+            GObject.idle_add(self.highlight, self.search_words)
             return
 
     def show_template(self, title, text):
