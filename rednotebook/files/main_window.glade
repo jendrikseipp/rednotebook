@@ -35,6 +35,7 @@
   </object>
   <object class="GtkAccelGroup" id="accelgroup1"/>
   <object class="GtkFileChooserDialog" id="backup_dialog">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select backup filename</property>
@@ -101,6 +102,7 @@
     </action-widgets>
   </object>
   <object class="GtkFileChooserDialog" id="dir_chooser">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select a directory</property>
@@ -177,6 +179,7 @@
     </action-widgets>
   </object>
   <object class="GtkFileChooserDialog" id="file_chooser">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select a file</property>
@@ -412,7 +415,9 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Go to previous day (Ctrl+PageUp)</property>
-                        <property name="stock_id">gtk-go-back</property>
+                        <property name="label" translatable="yes">Back</property>
+                        <property name="use_underline">True</property>
+                        <property name="icon_name">go-previous</property>
                         <signal name="clicked" handler="on_back_one_day_button_clicked" swapped="no"/>
                       </object>
                       <packing>
@@ -427,7 +432,7 @@
                         <property name="tooltip_text" translatable="yes">Jump to today (Alt+Home)</property>
                         <property name="label" translatable="yes">Today</property>
                         <property name="use_underline">True</property>
-                        <property name="stock_id">gtk-home</property>
+                        <property name="icon_name">go-home</property>
                         <signal name="clicked" handler="on_today_button_clicked" swapped="no"/>
                       </object>
                       <packing>
@@ -440,7 +445,9 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Go to next day (Ctrl+PageDown)</property>
-                        <property name="stock_id">gtk-go-forward</property>
+                        <property name="label" translatable="yes">Forward</property>
+                        <property name="use_underline">True</property>
+                        <property name="icon_name">go-next</property>
                         <signal name="clicked" handler="on_forward_one_day_button_clicked" swapped="no"/>
                       </object>
                       <packing>
@@ -515,7 +522,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Show a formatted preview of the text (Ctrl+P)</property>
                                 <property name="label" translatable="yes" comments="Verb">Preview</property>
-                                <property name="stock_id">gtk-media-play</property>
+                                <property name="icon_name">media-playback-start</property>
                                 <signal name="clicked" handler="on_preview_button_clicked" swapped="no"/>
                                 <accelerator key="P" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                               </object>
@@ -530,7 +537,7 @@
                                 <property name="tooltip_text" translatable="yes">Enable text editing (Ctrl+P)</property>
                                 <property name="label" translatable="yes">Edit</property>
                                 <property name="use_underline">True</property>
-                                <property name="stock_id">gtk-edit</property>
+                                <property name="icon_name">document-edit</property>
                                 <signal name="clicked" handler="on_edit_button_clicked" swapped="no"/>
                                 <accelerator key="p" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                               </object>
@@ -593,7 +600,7 @@
                                     <property name="tooltip_text" translatable="yes">Add a tag or a category entry</property>
                                     <property name="label" translatable="yes">Add Tag</property>
                                     <property name="use_underline">True</property>
-                                    <property name="stock_id">gtk-edit</property>
+                                    <property name="icon_name">document-edit</property>
                                     <signal name="clicked" handler="on_add_new_entry_button_clicked" swapped="no"/>
                                   </object>
                                   <packing>
@@ -949,6 +956,7 @@
     </action-widgets>
   </object>
   <object class="GtkFileChooserDialog" id="picture_chooser">
+    <property name="use_header_bar">0</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Select a picture</property>

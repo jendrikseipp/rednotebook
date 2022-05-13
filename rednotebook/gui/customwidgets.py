@@ -130,7 +130,9 @@ class Calendar(Gtk.Calendar):
 
 
 class Info(Gtk.InfoBar):
-    icons = {Gtk.MessageType.ERROR: Gtk.STOCK_DIALOG_ERROR}
+    icons = {
+        Gtk.MessageType.ERROR: "dialog-error",
+    }
 
     def __init__(self):
         Gtk.InfoBar.__init__(self)
@@ -149,7 +151,7 @@ class Info(Gtk.InfoBar):
         content.pack_start(self.image, False, False, 0)
         content.pack_start(vbox, False, False, 0)
 
-        self.add_button(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
+        self.add_button("_Close", Gtk.ResponseType.CLOSE)
         self.connect("close", lambda x: self.hide())
         self.connect("response", self.on_response)
 
@@ -164,8 +166,8 @@ class Info(Gtk.InfoBar):
         self.title_label.set_markup("<b>%s</b>" % title)
         self.msg_label.set_markup(msg)
         self.set_message_type(msg_type)
-        self.image.set_from_stock(
-            self.icons.get(msg_type, Gtk.STOCK_DIALOG_INFO), Gtk.IconSize.DIALOG
+        self.image.set_from_icon_name(
+            self.icons.get(msg_type, "dialog-information"), Gtk.IconSize.DIALOG
         )
         self.show_all()
 
@@ -334,19 +336,19 @@ class TemplateBar(Gtk.HBox):
         label = Gtk.Label(label="<b>%s</b>:" % _("Template"))
         label.set_use_markup(True)
         self.pack_start(label, False, False, 0)
-        self.save_insert_button = Gtk.Button(_("Save and insert"))
+        self.save_insert_button = Gtk.Button.new_with_label(_("Save and insert"))
         self.pack_start(self.save_insert_button, False, False, 0)
-        self.save_button = Gtk.Button(stock=Gtk.STOCK_SAVE)
+        self.save_button = Gtk.Button.new_with_label(_("Save"))
         self.pack_start(self.save_button, False, False, 0)
-        self.close_button = Gtk.Button(stock=Gtk.STOCK_CLOSE)
+        self.close_button = Gtk.Button.new_with_label(_("Close"))
         self.pack_start(self.close_button, False, False, 0)
         self.show_all()
 
 
 class ToolbarMenuButton(Gtk.ToolButton):
-    def __init__(self, stock_id, menu):
+    def __init__(self, icon_name, menu):
         Gtk.ToolButton.__init__(self)
-        self.set_stock_id(stock_id)
+        self.set_icon_name(icon_name)
         self._menu = menu
         self.connect("clicked", self._on_clicked)
         self.show_all()

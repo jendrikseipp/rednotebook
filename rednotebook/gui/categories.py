@@ -329,7 +329,7 @@ class CategoriesTreeView:
             [
                 (
                     "ChangeEntry",
-                    Gtk.STOCK_EDIT,
+                    None,
                     _("Change this text"),
                     None,
                     None,
@@ -345,7 +345,7 @@ class CategoriesTreeView:
                 ),
                 (
                     "Delete",
-                    Gtk.STOCK_DELETE,
+                    None,
                     _("Delete this entry"),
                     None,
                     None,
