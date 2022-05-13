@@ -163,13 +163,11 @@ logging.info("Language code: %s" % filesystem.LANGUAGE)
 
 try:
     from gi.repository import Gtk
-    from gi.repository import GObject
+    from gi.repository import GLib
 except (ImportError, AssertionError) as e:
     logging.error(e)
     logging.error("GTK not found. Please install it (gir1.2-gtk-3.0).")
     sys.exit(1)
-
-GObject.threads_init()
 
 
 from rednotebook.util import dates
@@ -232,14 +230,14 @@ class Journal:
         self.open_journal(journal_path)
 
         self.archiver = backup.Archiver(self)
-        GObject.idle_add(self.archiver.check_last_backup_date)
+        GLib.idle_add(self.archiver.check_last_backup_date)
 
         # Check for a new version
         if self.config.read("checkForNewVersion") == 1:
             utils.check_new_version(self, info.version, startup=True)
 
         # Automatically save the content after a period of time
-        GObject.timeout_add_seconds(600, self.save_to_disk)
+        GLib.timeout_add_seconds(600, self.save_to_disk)
 
     def get_journal_path(self):
         """

@@ -36,7 +36,7 @@ import rednotebook.storage  # pylint: disable=wrong-import-position, unused-impo
 
 
 def list_missing_entries(mindate, maxdate, months, existing_entries):
-    """ list missing entries """
+    """list missing entries"""
 
     for i_day in range(int((maxdate - mindate).days)):
         dateobj = mindate + datetime.timedelta(i_day)
@@ -57,7 +57,7 @@ def list_missing_entries(mindate, maxdate, months, existing_entries):
 
 
 def main():
-    """ parse commandline arguments & process text """
+    """parse commandline arguments & process text"""
 
     parser = argparse.ArgumentParser()
     parser.add_argument(

@@ -204,7 +204,7 @@ class TemplateInfo(Gtk.InfoBar):
         vbox.pack_start(title_label, False, False, 0)
         vbox.pack_start(msg_label, False, False, 0)
 
-        image = Gtk.Image.new_from_stock(Gtk.STOCK_DIALOG_INFO, Gtk.IconSize.DIALOG)
+        image = Gtk.Image.new_from_icon_name("edit-paste", Gtk.IconSize.DIALOG)
 
         content = self.get_content_area()
         content.pack_start(image, False, False, 0)
@@ -320,8 +320,8 @@ class TemplateManager:
     def on_new_template(self, action):
         dialog = Gtk.Dialog(_("Choose Template Name"))
         dialog.set_transient_for(self.main_window.main_frame)
-        dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
-        dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.add_button("_Cancel", Gtk.ResponseType.CANCEL)
+        dialog.add_button("_OK", Gtk.ResponseType.OK)
         dialog.set_response_sensitive(Gtk.ResponseType.OK, False)
 
         # Let user finish by hitting ENTER.
@@ -420,7 +420,7 @@ class TemplateManager:
         actions.append(
             (
                 "EditWeekday",
-                Gtk.STOCK_HOME,
+                None,
                 _("This Weekday's Template"),
                 None,
                 None,
@@ -431,7 +431,7 @@ class TemplateManager:
         actions.append(
             (
                 "NewTemplate",
-                Gtk.STOCK_NEW,
+                None,
                 _("Create New Template"),
                 None,
                 None,

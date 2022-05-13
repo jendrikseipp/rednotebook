@@ -327,13 +327,13 @@ class MainWindow:
             [
                 (
                     "Show",
-                    Gtk.STOCK_MEDIA_PLAY,
+                    None,
                     _("Show RedNotebook"),
                     None,
                     None,
                     lambda widget: self.show(),
                 ),
-                ("Quit", Gtk.STOCK_QUIT, None, None, None, self.on_quit_activate),
+                ("Quit", None, None, None, None, self.on_quit_activate),
             ]
         )
 
@@ -678,7 +678,7 @@ class MainWindow:
             self.template_button.set_menu(self.template_manager.get_menu())
 
         self.template_button = customwidgets.ToolbarMenuButton(
-            Gtk.STOCK_PASTE, self.template_manager.get_menu()
+            "edit-paste", self.template_manager.get_menu()
         )
         self.template_button.set_label(_("Template"))
         self.template_button.connect("clicked", update_menu)
