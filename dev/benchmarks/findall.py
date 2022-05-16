@@ -11,7 +11,7 @@ sys.path.insert(0, REPO)
 
 N = 2500
 TEXTS = ["aa " * N, "\\\\ " * N, "\\  " * N, "== " * N, "$$ " * N, "$= " * N]
-ITERATIONS = 10 ** 0
+ITERATIONS = 10**0
 
 for text in TEXTS:
     timer = timeit.Timer(
