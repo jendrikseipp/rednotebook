@@ -1,3 +1,11 @@
+rednotebook (2.25-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Use icon names instead of GTK stock icons to support newer GTK versions (Jendrik Seipp).
+  * Handle several GTK deprecation warnings (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 16 May 2022 12:35:39 +0200
+
 rednotebook (2.24-1) UNRELEASED; urgency=low
 
   * New upstream release
