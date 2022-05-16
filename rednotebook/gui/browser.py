@@ -35,7 +35,7 @@ except (ImportError, ValueError) as err:
         )
 
 
-MAX_HITS = 10 ** 6
+MAX_HITS = 10**6
 
 
 if WebKit2:

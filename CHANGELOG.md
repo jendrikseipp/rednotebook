@@ -1,3 +1,7 @@
+# 2.25 (2022-05-16)
+* Use icon names instead of GTK stock icons to support newer GTK versions (Jendrik Seipp).
+* Handle several GTK deprecation warnings (Jendrik Seipp).
+
 # 2.24 (2022-02-21)
 * Revert to plain naming scheme for data files since reverse DNS naming causes problems (#611, Phil Wyett).
 
