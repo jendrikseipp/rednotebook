@@ -155,9 +155,10 @@ class MainWindow:
             self.html_editor.connect("decide-policy", self.on_browser_decide_policy)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
             self.html_editor.set_editable(False)
-        elif use_internal_preview and browser_cef.cef:
+        elif use_internal_preview and browser_cef.get_html_view_class():
+            HtmlView = browser_cef.get_html_view_class()
 
-            class Preview(browser_cef.HtmlView):
+            class Preview(HtmlView):
                 def __init__(self, journal):
                     super().__init__()
                     self.journal = journal

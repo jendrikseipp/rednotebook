@@ -25,18 +25,27 @@ from gi.repository import Gdk, GObject, Gtk
 from rednotebook.util import filesystem
 
 
-try:
-    from cefpython3 import cefpython as cef
-except ImportError as err:
-    cef = None
-    if filesystem.IS_WIN:
+_cls = None
+
+
+def get_html_view_class():
+    global _cls
+    if not filesystem.IS_WIN:
+        return None
+    if not _cls:
+        _cls = _make_html_view_class()
+    return _cls
+
+
+def _make_html_view_class():
+    try:
+        from cefpython3 import cefpython as cef
+    except ImportError as err:
         logging.info(
             "CEF Python not found. Disabling clouds and"
             ' in-app previews. Error message: "{}"'.format(err)
         )
-
-
-if cef:
+        return None
 
     class HtmlView(Gtk.DrawingArea):
         """
@@ -149,3 +158,5 @@ if cef:
                 # code. All references must be cleared for CEF to shutdown cleanly.
                 self._browser = None
             cef.Shutdown()
+
+    return HtmlView
