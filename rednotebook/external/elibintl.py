@@ -428,7 +428,11 @@ def _install(domain, localedir, asglobal=False, libintl='intl'):
 
     # initialize Python's gettext interface
     gettext.bindtextdomain(domain, localedir)
-    gettext.bind_textdomain_codeset(domain, 'UTF-8')
+    # Function has been removed in Python 3.10. TODO: Check if the function can simply be omitted.
+    try:
+        gettext.bind_textdomain_codeset(domain, 'UTF-8')
+    except AttributeError:
+        pass
 
     if asglobal:
         gettext.textdomain(domain)

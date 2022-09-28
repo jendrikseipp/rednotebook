@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-16 12:33+0200\n"
+"POT-Creation-Date: 2022-09-28 07:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -703,7 +703,7 @@ msgid "Text"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:336
-#: ../rednotebook/gui/main_window.py:683
+#: ../rednotebook/gui/main_window.py:684
 msgid "Template"
 msgstr ""
 
@@ -828,19 +828,19 @@ msgstr ""
 msgid "Allow these words with 4 letters or less"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:184
+#: ../rednotebook/gui/main_window.py:185
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:331
+#: ../rednotebook/gui/main_window.py:332
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:589
+#: ../rednotebook/gui/main_window.py:590
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:687
+#: ../rednotebook/gui/main_window.py:688
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""

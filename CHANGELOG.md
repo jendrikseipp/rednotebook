@@ -1,3 +1,8 @@
+# 2.26 (2022-09-28)
+* Fix issue #632 by skipping obsolete Python function (Jendrik Seipp).
+* Fix: only try to load CEF Python on Windows (Jendrik Seipp).
+* Update Turkish translation (sabriunal).
+
 # 2.25 (2022-05-16)
 * Use icon names instead of GTK stock icons to support newer GTK versions (Jendrik Seipp).
 * Handle several GTK deprecation warnings (Jendrik Seipp).
