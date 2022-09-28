@@ -1,3 +1,12 @@
+rednotebook (2.26-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix issue #632 by skipping obsolete Python function (Jendrik Seipp).
+  * Fix: only try to load CEF Python on Windows (Jendrik Seipp).
+  * Update Turkish translation (sabriunal).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 28 Sep 2022 07:37:40 +0200
+
 rednotebook (2.25-1) UNRELEASED; urgency=low
 
   * New upstream release
