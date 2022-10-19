@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 10:17+0200\n"
+"POT-Creation-Date: 2022-09-28 07:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,13 +113,11 @@ msgstr ""
 #: ../rednotebook/help.py:103
 msgid ""
 "=== Multiple entries ===\n"
-"You can add multiple entries to a single day by using different journals "
-"(one named \"Work\", the other \"Family\"), separating your entries with "
-"different titles (=== Work ===, === Family ===) and using horizontal "
-"separator lines (20 \"=\"s)."
+"You can add multiple entries to a single day by separating your entries with "
+"different titles (=== Work ===, === Family ===)."
 msgstr ""
 
-#: ../rednotebook/help.py:112
+#: ../rednotebook/help.py:110
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -218,28 +216,28 @@ msgstr ""
 msgid "Never ask again"
 msgstr ""
 
-#: ../rednotebook/journal.py:235 ../rednotebook/gui/menu.py:292
+#: ../rednotebook/journal.py:223 ../rednotebook/gui/menu.py:292
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
-#: ../rednotebook/journal.py:238
+#: ../rednotebook/journal.py:226
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:358
+#: ../rednotebook/journal.py:343
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:363
+#: ../rednotebook/journal.py:348
 msgid "The journal could not be saved"
 msgstr ""
 
-#: ../rednotebook/journal.py:365
+#: ../rednotebook/journal.py:350
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:507
+#: ../rednotebook/journal.py:492
 msgid "Error"
 msgstr ""
 

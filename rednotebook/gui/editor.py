@@ -309,7 +309,7 @@ class Editor(GObject.GObject):
             _, ext = os.path.splitext(uri)
             return ext.lower().strip(".") in "png jpeg jpg gif eps bmp svg".split()
 
-        uris = selection.get_text().split()
+        uris = (selection.get_text() or "").split()
         logging.debug("Text: {}".format(selection.get_text()))
         logging.debug("URIs: {}".format(uris))
         for uri in uris:
