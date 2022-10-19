@@ -164,8 +164,8 @@ logging.info("Language code: %s" % filesystem.LANGUAGE)
 try:
     import enchant
 
-    logging.info(f"Spell checking languages: {enchant.list_languages()}")
-    logging.info(f"Spell checking dictionaries: {enchant.list_dicts()}")
+    logging.info("Spell checking languages: {}".format(enchant.list_languages()))
+    logging.info("Spell checking dictionaries: {}".format(enchant.list_dicts()))
 except ImportError:
     pass
 
