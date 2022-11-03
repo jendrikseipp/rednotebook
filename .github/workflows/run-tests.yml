@@ -51,4 +51,5 @@ jobs:
 
     - name: Run tests
       run: |
+        python3 -c "import gi; print(999)"
         python3 -m tox -e py
