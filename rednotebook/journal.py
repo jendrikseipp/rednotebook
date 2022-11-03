@@ -162,6 +162,14 @@ logging.info("System encoding: %s" % filesystem.ENCODING)
 logging.info("Language code: %s" % filesystem.LANGUAGE)
 
 try:
+    import enchant
+
+    logging.info("Spell checking languages: {}".format(enchant.list_languages()))
+    logging.info("Spell checking dictionaries: {}".format(enchant.list_dicts()))
+except ImportError:
+    pass
+
+try:
     from gi.repository import Gtk
     from gi.repository import GLib
 except (ImportError, AssertionError) as e:

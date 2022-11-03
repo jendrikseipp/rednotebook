@@ -36,10 +36,12 @@ except ImportError:
 try:
     from yaml import CLoader as Loader
     from yaml import CSafeDumper as Dumper
+
+    logging.info("Using LibYAML")
 except ImportError:
     from yaml import Dumper, Loader
 
-    logging.info("Using pyyaml for loading and dumping")
+    logging.info("Using PyYAML")
 
 
 def format_year_and_month(year, month):
