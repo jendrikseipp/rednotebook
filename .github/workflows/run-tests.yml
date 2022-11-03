@@ -41,8 +41,8 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        brew install gtk glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
-        python3 -m pip install pyenchant pygobject pyyaml tox
+        brew install gtk+3 pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
+        python3 -m pip install pyenchant pyyaml tox
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
