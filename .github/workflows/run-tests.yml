@@ -25,10 +25,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-
     - name: Show environment
       run: |
         python --version
@@ -45,8 +41,8 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        brew install gtk pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
-        python3 -m pip install pyenchant pyyaml tox
+        brew install gtk glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
+        python3 -m pip install pyenchant pygobject pyyaml tox
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
