@@ -20,7 +20,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-11, macos-12, ubuntu-20.04, ubuntu-22.04]
+        # macOS runners use Python 3.11, but PyGObject on macOS is only available for Python 3.9 and 3.10.
+        os: [ubuntu-20.04, ubuntu-22.04] # [macos-11, macos-12]
 
     steps:
     - uses: actions/checkout@v3
@@ -51,5 +52,5 @@ jobs:
 
     - name: Run tests
       run: |
-        python3 -c "import gi; print(999)"
+        python3 -c "import gi"
         python3 -m tox -e py
