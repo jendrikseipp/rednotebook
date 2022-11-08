@@ -51,4 +51,8 @@ jobs:
 
     - name: Run tests
       run: |
+        echo $PATH
+        env
+        which python3
+        which pip3
         tox -e py
