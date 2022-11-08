@@ -41,7 +41,7 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        brew install gtk pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant python3
+        brew install gtk pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
         pip3 install pyenchant pyyaml tox
 
     - name: Check style
@@ -51,6 +51,4 @@ jobs:
 
     - name: Run tests
       run: |
-        which python3
-        which pip3
         tox -e py
