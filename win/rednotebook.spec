@@ -13,7 +13,7 @@ srcdir = os.path.join(basedir, 'rednotebook')
 icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 MISSED_BINARIES = [
-    os.path.join(gtkdir, path) for path in [
+    (os.path.join(gtkdir, src), destdir) for src, destdir in [
         ("bin/gdbus.exe", "."),
         ("bin/libenchant.dll", "."),
         ("lib/enchant/libenchant_myspell.dll", "lib/enchant/"),
@@ -45,7 +45,7 @@ a = Analysis(
     noarchive=False,
 )
 # Adding these files in the ctor mangles up the paths.
-a.binaries += [(dest, src, 'BINARY') for src, dest in MISSED_BINARIES]
+a.binaries += [(destdir, src, 'BINARY') for src, destdir in MISSED_BINARIES]
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
