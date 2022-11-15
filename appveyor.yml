@@ -64,16 +64,14 @@ build_script:
   # Sanity check with dummy app. PyInstaller misses Enchant DLLs, so we manually add them.
   - "%PYTHON% sampleapp.py"
   - "%PYTHON% -m PyInstaller --additional-hooks-dir=. --add-data C:/gtk/bin/libenchant.dll;. --add-data C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/ sampleapp.py"
+  - cp -r C:\gtk\share\enchant dist\sampleapp\share\enchant
   - ls dist\sampleapp
   - ls dist\sampleapp\lib\enchant
   - ls dist\sampleapp\share
   - ls dist\sampleapp\share\enchant\
   - ls dist\sampleapp\share\enchant\myspell
-  - cd dist\sampleapp
   # Use clean PATH to check that everything has been copied correctly. The last semicolon ensures that the path doesn't end with a space.
-  - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\repo\win\dist\sampleapp; && sampleapp.exe"
-  - cd ../../
-  - pwd
+  - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\repo\win\dist\sampleapp; && dist\sampleapp\sampleapp.exe"
 
   # Create executable.
   - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec"
