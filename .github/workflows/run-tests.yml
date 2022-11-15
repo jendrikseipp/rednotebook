@@ -20,10 +20,11 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-11, macos-12, ubuntu-20.04, ubuntu-22.04]
+        # macOS runners use Python 3.11, but PyGObject on macOS is only available for Python 3.9 and 3.10.
+        os: [ubuntu-20.04, ubuntu-22.04] # [macos-11, macos-12]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Show environment
       run: |
@@ -41,14 +42,15 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        brew install gtk pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
-        pip3 install pyenchant pyyaml tox
+        brew install gtk+3 pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
+        python3 -m pip install pyenchant pyyaml tox
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
       run: |
-        tox -e style
+        python3 -m tox -e style
 
     - name: Run tests
       run: |
-        tox -e py
+        python3 -c "import gi"
+        python3 -m tox -e py

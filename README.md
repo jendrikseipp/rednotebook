@@ -21,7 +21,6 @@ Latex or PDF.
 Recommended libraries:
 
   * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/
-  * CEF Python (0.66.1+): https://github.com/cztomczak/cefpython (only on Windows)
 
 ## Run from source
 
