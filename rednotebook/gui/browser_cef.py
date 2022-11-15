@@ -29,6 +29,9 @@ _cls = None
 
 
 def get_html_view_class():
+    cef_disabled = True
+    if cef_disabled:
+        return None
     global _cls
     if not filesystem.IS_WIN:
         return None
