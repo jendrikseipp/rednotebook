@@ -202,6 +202,8 @@ class Journal(Gtk.Application):
             flags=Gio.ApplicationFlags.FLAGS_NONE,
             **kwargs
         )
+        # Let components check if the MainWindow has been created.
+        self.frame = None
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -235,9 +237,7 @@ class Journal(Gtk.Application):
 
         self.actual_date = self.get_start_date()
 
-        # Let components check if the MainWindow has been created
-        self.frame = None
-        self.frame = MainWindow(self)
+        self.do_activate()
 
         journal_path = self.get_journal_path()
         if not self.dirs.is_valid_journal_path(journal_path):
@@ -265,6 +265,8 @@ class Journal(Gtk.Application):
         GLib.timeout_add_seconds(600, self.save_to_disk)
 
     def do_activate(self):
+        if not self.frame:
+            self.frame = MainWindow(self)
         self.frame.main_frame.present()
 
     def get_journal_path(self):
@@ -332,7 +334,7 @@ class Journal(Gtk.Application):
             # Informs the logging system to perform an orderly shutdown by
             # flushing and closing all handlers.
             logging.shutdown()
-            Gtk.main_quit()
+            self.quit()
 
     def convert(self, text, target, headers=None, options=None, use_gtk_theme=False):
         options = options or {}
@@ -622,15 +624,9 @@ class Journal(Gtk.Application):
 
 
 def main():
-    start_time = time.time()
     journal = Journal()
     utils.setup_signal_handlers(journal)
     journal.run(sys.argv)
-    end_time = time.time()
-    logging.debug("Start took %s seconds" % (end_time - start_time))
-
-    # For some reason our Gtk.Application doesn't start the GTK main loop.
-    Gtk.main()
 
     try:
         logging.info("Peak memory: {} KiB".format(filesystem.get_peak_memory_in_kb()))
