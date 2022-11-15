@@ -67,7 +67,13 @@ def _make_html_view_class():
             self._initial_html = ""
 
             sys.excepthook = cef.ExceptHook  # To shutdown CEF processes on error.
-            cef.Initialize(settings={"context_menu": {"enabled": False}})
+            settings = {
+                "context_menu": {"enabled": False},
+                # "debug": True,
+                # "log_severity": cef.LOGSEVERITY_INFO,
+                # "log_file": "debug.log",
+            }
+            cef.Initialize(settings=settings)
 
             GObject.threads_init()
             GObject.timeout_add(10, self.on_timer)
