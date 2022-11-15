@@ -33,7 +33,7 @@ def Dir(path, excludes=None):
 a = Analysis(
     [os.path.join(srcdir, 'journal.py')],
     pathex=[basedir],
-    binaries=[],
+    binaries=MISSED_BINARIES,
     datas=[],
     hiddenimports=[],
     hookspath=["."],  # To find custom hooks.
@@ -44,9 +44,6 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
-# Adding these files in the ctor mangles up the paths.
-a.binaries += [(destdir, src, 'BINARY') for src, destdir in MISSED_BINARIES]
-
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
