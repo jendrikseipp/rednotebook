@@ -1,5 +1,6 @@
 # Unreleased
 * Upgrade to GTK 3.24 on Windows (Jendrik Seipp).
+* Use external preview on Windows since embedding the preview is impossible with newer GTK versions (Jendrik Seipp).
 * Use GtkApplication class (Jendrik Seipp).
 * Add support for GtkSourceView 4 (Jendrik Seipp).
 * Raise minimum Python version to 3.6 (Jendrik Seipp).
