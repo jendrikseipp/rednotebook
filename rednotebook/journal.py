@@ -23,7 +23,6 @@ import locale
 import logging
 import os
 import sys
-import time
 
 
 # Use basic stdout logging before we can initialize logging correctly.
