@@ -4,7 +4,6 @@ import os
 import os.path
 
 block_cipher = None
-
 debug = True
 
 drive_c = DISTPATH
@@ -15,9 +14,9 @@ icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 MISSED_BINARIES = [
     os.path.join(gtkdir, path) for path in [
-        "bin/libenchant.dll",
-        "lib/enchant/libenchant_ispell.dll",
-        "lib/enchant/libenchant_myspell.dll",
+        ("bin/libenchant.dll", "libenchant.dll"),
+        ("lib/enchant/libenchant_ispell.dll", "lib/enchant/libenchant_ispell.dll"),
+        ("lib/enchant/libenchant_myspell.dll", "lib/enchant/libenchant_myspell.dll"),
     ]
 ]
 
@@ -46,7 +45,7 @@ a = Analysis(
     noarchive=False,
 )
 # Adding these files in the ctor mangles up the paths.
-a.binaries += [(os.path.basename(path), path, 'BINARY') for path in MISSED_BINARIES]
+a.binaries += [(dest, src, 'BINARY') for src, dest in MISSED_BINARIES]
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
