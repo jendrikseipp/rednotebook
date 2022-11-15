@@ -68,7 +68,7 @@ build_script:
   - ls dist\sampleapp\lib\enchant
   - cd dist\sampleapp
   # Use clean PATH to check that everything has been copied correctly. The last semicolon ensures that the path doesn't end with a space.
-  - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;. && sampleapp.exe"
+  - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;.; && sampleapp.exe"
   - cd ../../
   - pwd
 
