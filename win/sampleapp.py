@@ -24,7 +24,7 @@ print("GtkSource import works")
 def find_library(name):
     import os
 
-    print("PATH: ", os.environ["PATH"])
+    print("PATH:", os.environ["PATH"])
     for directory in os.environ["PATH"].split(os.pathsep):
         fname = os.path.join(directory, name)
         print("Check directory", directory)
