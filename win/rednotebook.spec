@@ -14,6 +14,7 @@ icon = os.path.join(basedir, 'win', 'rednotebook.ico')
 
 MISSED_BINARIES = [
     os.path.join(gtkdir, path) for path in [
+        ("bin/gdbus.exe", "."),
         ("bin/libenchant.dll", "."),
         ("lib/enchant/libenchant_myspell.dll", "lib/enchant/"),
     ]
