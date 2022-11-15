@@ -33,7 +33,7 @@ build_script:
 
   # Install other dependencies.
   - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools tox wheel"
-  # Install separately because --no-binary options disables using wheels (leading to problems for Cython).
+  # Install separately because --no-binary option disables using wheels (leading to problems for Cython).
   - "%PYTHON% -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2"
   - "%PYTHON% -m pip install --no-warn-script-location -r win/requirements.txt"
   - "%PYTHON% -m pip freeze"
@@ -47,10 +47,11 @@ build_script:
   # procedure could not be found." when calling "import gi". Therefore, we use
   # the --no-binary option when installing the pyenchant package and use our own
   # libenchant.dll file (see also
-  # https://pyenchant.github.io/pyenchant/install.html)
+  # https://pyenchant.github.io/pyenchant/install.html).
+  # Enable debug logging for Pyenchant.
   - set PYENCHANT_VERBOSE_FIND=foobar
 
-  # Remove bundled dictionaries and install custom ones.
+  # Install dictionaries.
   - curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
   - tar -xzf dicts.tar.gz
   - move enchant C:\gtk\share

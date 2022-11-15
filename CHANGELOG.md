@@ -1,6 +1,9 @@
 # Unreleased
-* Upgrade GTK stack on Windows.
-* Add support for GtkSourceView 4.
+* Upgrade to GTK 3.24 on Windows (Jendrik Seipp).
+* Use GtkApplication class (Jendrik Seipp).
+* Add support for GtkSourceView 4 (Jendrik Seipp).
+* Raise minimum Python version to 3.6 (Jendrik Seipp).
+* Add more languages to Windows installer (Jendrik Seipp).
 
 # 2.26 (2022-09-28)
 * Fix issue #632 by skipping obsolete Python function (Jendrik Seipp).
