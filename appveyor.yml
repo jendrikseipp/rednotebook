@@ -63,7 +63,7 @@ build_script:
 
   # Sanity check with dummy app. Pyinstaller misses libenchant.dll, so we manually add it to ".".
   - "%PYTHON% sampleapp.py"
-  - "%PYTHON% -m PyInstaller --additional-hooks-dir=. --add-data C:/gtk/bin/libenchant.dll;. sampleapp.py"
+  - "%PYTHON% -m PyInstaller --additional-hooks-dir=. --add-data C:/gtk/bin/libenchant.dll;. --add-data C:/gtk/lib/enchant/libenchant_ispell.dll;. --add-data C:/gtk/lib/enchant/libenchant_myspell.dll;. sampleapp.py"
   - ls dist\sampleapp
   # Use clean PATH to check that everything has been copied correctly. The last semicolon ensures that the path doesn't end with a space.
   - cmd /C "set PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\repo\win\dist\sampleapp; && dist\sampleapp\sampleapp.exe"
