@@ -20,7 +20,7 @@ MISSED_BINARIES = [
     ]
 ]
 
-for path in [drive_c, basedir, srcdir, icon] + MISSED_BINARIES:
+for path in [drive_c, basedir, srcdir, icon] + [src for src, _ in MISSED_BINARIES]:
     assert os.path.exists(path), "{} does not exist".format(path)
 
 print('PATH:', os.environ['PATH'])
