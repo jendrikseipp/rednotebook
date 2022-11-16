@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2015-11-08 23:07+0000\n"
-"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
+"PO-Revision-Date: 2022-09-30 16:00+0000\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2022-10-01 06:31+0000\n"
+"X-Generator: Launchpad (build 51d7c86a263563fbd9e884ec9127596444825394)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -75,7 +75,7 @@ msgstr "Nakošeno"
 
 #: ../rednotebook/gui/format_menu.py:110
 msgid "Monospace"
-msgstr ""
+msgstr "Monospace"
 
 #: ../rednotebook/gui/format_menu.py:112
 msgid "Underline"
@@ -297,7 +297,7 @@ msgstr "Sadržaj je izvezen u %s"
 
 #: ../rednotebook/gui/exports.py:520
 msgid "Plain Text"
-msgstr "Običan Tekst"
+msgstr "Običan tekst"
 
 #: ../rednotebook/gui/exports.py:547
 msgid "requires pywebkitgtk"
@@ -1112,7 +1112,8 @@ msgstr ""
 "  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
 "  Miro Glavić https://launchpad.net/~klek\n"
 "  Ted Teddy https://launchpad.net/~teddx\n"
-"  freedomrun https://launchpad.net/~freedomrun"
+"  freedomrun https://launchpad.net/~freedomrun\n"
+"  gogo https://launchpad.net/~trebelnik-stefina"
 
 #: tmp/main_window.glade.h:14
 msgid "New entry"
