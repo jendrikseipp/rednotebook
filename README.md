@@ -12,15 +12,15 @@ Latex or PDF.
 
 ## Requirements
 
-  * Python (>= 3.4): https://www.python.org
-  * GTK (>= 3.18): https://www.gtk.org
-  * GtkSourceView (>= 3.18): https://wiki.gnome.org/Projects/GtkSourceView
-  * WebKitGTK (>= 2.16, not needed for Windows): https://webkitgtk.org
-  * PyYAML (>= 3.10): https://pyyaml.org
+  * Python (3.6+): https://www.python.org
+  * GTK (3.18+): https://www.gtk.org
+  * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
+  * PyYAML (3.10+): https://pyyaml.org
+  * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
 
 Recommended libraries:
 
-  * PyEnchant for spell checking (>= 1.6): https://pypi.org/project/pyenchant/
+  * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/
 
 ## Run from source
 
