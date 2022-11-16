@@ -1,3 +1,15 @@
+rednotebook (2.27-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Upgrade to GTK 3.24 on Windows (Jendrik Seipp).
+  * Use external preview on Windows since embedding the preview is impossible with newer GTK versions (Jendrik Seipp).
+  * Use GtkApplication class and only allow running one RedNotebook instance at a time (Jendrik Seipp).
+  * Add support for GtkSourceView 4 (Jendrik Seipp).
+  * Raise minimum Python version to 3.6 (Jendrik Seipp).
+  * Add more languages to Windows installer (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 16 Nov 2022 22:21:30 +0100
+
 rednotebook (2.26-1) UNRELEASED; urgency=low
 
   * New upstream release
