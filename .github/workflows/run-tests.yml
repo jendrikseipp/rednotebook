@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-11, macos-12, ubuntu-20.04, ubuntu-22.04]
+        os: [macos-11] #, macos-12, ubuntu-20.04, ubuntu-22.04]
 
     steps:
     - uses: actions/checkout@v3
@@ -30,6 +30,12 @@ jobs:
         python --version
         python3 --version
         python3 -c "import multiprocessing as m; print('CPUs:', m.cpu_count())"
+        which python3
+        brew install python@3.11
+        which python3
+        which python3.11
+        python3 --version
+        python3.11 --version
 
     - name: Install dependencies (Ubuntu)
       if: startsWith(matrix.os, 'ubuntu')
