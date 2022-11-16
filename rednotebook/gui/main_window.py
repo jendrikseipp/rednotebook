@@ -50,7 +50,6 @@ class MainWindow:
     """
 
     def __init__(self, journal):
-
         self.journal = journal
 
         # Load Glade file.
@@ -73,8 +72,8 @@ class MainWindow:
             self.builder.set_translation_domain("rednotebook")
             self.builder.add_from_file(self.gladefile)
 
-        # Get the main window and set the icon
         self.main_frame = self.builder.get_object("main_frame")
+        self.main_frame.set_application(journal)
         self.main_frame.set_title("RedNotebook")
         icon = GdkPixbuf.Pixbuf.new_from_file(
             os.path.join(filesystem.frame_icon_dir, "rn-128.png")
