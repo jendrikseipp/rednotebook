@@ -4,7 +4,7 @@ import os
 import os.path
 
 block_cipher = None
-debug = True
+debug = False
 
 drive_c = DISTPATH
 basedir = os.path.join(drive_c, 'repo')
