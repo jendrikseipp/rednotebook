@@ -1,4 +1,4 @@
-# Unreleased
+# 2.27 (2022-11-16)
 * Upgrade to GTK 3.24 on Windows (Jendrik Seipp).
 * Use external preview on Windows since embedding the preview is impossible with newer GTK versions (Jendrik Seipp).
 * Use GtkApplication class and only allow running one RedNotebook instance at a time (Jendrik Seipp).
