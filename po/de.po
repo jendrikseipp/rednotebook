@@ -8,14 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2017-07-07 16:11+0000\n"
-"Last-Translator: Hans-Peter Brügger <hampa@hpbyte.ch>\n"
-"Language-Team: German\n"
+"PO-Revision-Date: 2022-11-19 05:32+0000\n"
+"Last-Translator: Jendrik Seipp <jendrikseipp@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Launchpad-Export-Date: 2017-07-08 05:26+0000\n"
-"X-Generator: Launchpad (build 18419)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -65,7 +68,7 @@ msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:98
 msgid "No text or tag has been selected."
-msgstr "Sie haben keinen Text oder keine Markierung ausgewählt."
+msgstr "Sie haben keinen Text und keine Markierung ausgewählt."
 
 #: ../rednotebook/gui/format_menu.py:106
 msgid "Bold"
