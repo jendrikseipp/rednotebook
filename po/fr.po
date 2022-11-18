@@ -8,14 +8,17 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2016-03-11 20:37+0000\n"
-"Last-Translator: Bryan Mokros <bryanm.pro@gmail.com>\n"
-"Language-Team: French <fr@li.org>\n"
+"PO-Revision-Date: 2022-11-19 05:32+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
@@ -89,7 +92,7 @@ msgstr "Barrer"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Clear format"
-msgstr ""
+msgstr "Effacer le format"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:119
@@ -115,7 +118,7 @@ msgstr "Enregistrer et insérer"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "filter, these, comma, separated, words, and, #tags"
-msgstr ""
+msgstr "filtrer, ces, mots, séparés par des, virgules, et, #étiquettes"
 
 #: ../rednotebook/gui/clouds.py:84
 msgid "mtv, spam, work, job, play"
@@ -208,7 +211,7 @@ msgstr "Désélectionner"
 #: ../rednotebook/gui/exports.py:256
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr ""
-"Pour filtrer par étiquette, vous devez sélectionner au moins une étiquette"
+"Pour filtrer par étiquette, vous devez sélectionner au moins une étiquette."
 
 #: ../rednotebook/gui/exports.py:279
 msgid "You have selected the following settings:"
@@ -408,7 +411,7 @@ msgstr "Se connecter au site Launchpad pour aider à traduire RedNotebook"
 
 #: ../rednotebook/gui/menu.py:151
 msgid "Report a Problem"
-msgstr "Signaler un problème."
+msgstr "Signaler un problème"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Fill out a short form about the problem"
@@ -536,7 +539,7 @@ msgstr "Noms de polices de caractères séparés par des virgules"
 
 #: ../rednotebook/gui/options.py:297
 msgid "Date/Time format"
-msgstr "Format de Date et d'Heure"
+msgstr "Format de date et d'heure"
 
 #: ../rednotebook/gui/options.py:298
 msgid "Exclude from cloud"
@@ -545,6 +548,8 @@ msgstr "Exclure du nuage"
 #: ../rednotebook/gui/options.py:299
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr ""
+"Ne pas afficher ces mots séparés par des virgules et ces #étiquettes dans "
+"les nuages"
 
 #: ../rednotebook/gui/options.py:300
 msgid "Include small words in cloud"
@@ -560,15 +565,15 @@ msgstr "Texte"
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "First Item"
-msgstr "Premier Élément"
+msgstr "Premier élément"
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "Second Item"
-msgstr "Deuxième Élément"
+msgstr "Deuxième élément"
 
 #: ../rednotebook/gui/insert_menu.py:68
 msgid "Indented Item"
-msgstr "Élément Indenté"
+msgstr "Élément indenté"
 
 #: ../rednotebook/gui/insert_menu.py:69
 msgid "Two blank lines close the list"
@@ -1121,7 +1126,7 @@ msgstr "Ajouter une étiquette"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Baptiste Fontaine https://launchpad.net/~bfontaine\n"
+" Baptiste Fontaine https://launchpad.net/~bfontaine\n"
 "  Bryan Mokros https://launchpad.net/~bryanm-pro\n"
 "  Célestin Taramarcaz https://launchpad.net/~celestin\n"
 "  Daniel Kessler https://launchpad.net/~hornord\n"
