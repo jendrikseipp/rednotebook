@@ -1,3 +1,10 @@
+rednotebook (2.27.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix application ID for Flatpak (#650, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 18 Nov 2022 14:51:19 +0100
+
 rednotebook (2.27-1) UNRELEASED; urgency=low
 
   * New upstream release
