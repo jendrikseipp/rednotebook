@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
 "PO-Revision-Date: 2022-11-19 05:32+0000\n"
-"Last-Translator: Jendrik Seipp <jendrikseipp@gmail.com>\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/de/>\n"
 "Language: de\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../rednotebook/backup.py:55
 msgid "It has been a while since you made your last backup."
-msgstr "Die letzte Datensicherung ist veraltet"
+msgstr "Die letzte Datensicherung ist veraltet."
 
 #: ../rednotebook/backup.py:56
 msgid "You can backup your journal to a zip file to avoid data loss."
@@ -64,7 +64,7 @@ msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
 "Füge die Vorlage für diesen Wochentag ein. Klicke den rechten Pfeil an, wenn "
-"Du weitere Optionen möchtest."
+"Du weitere Optionen möchtest"
 
 #: ../rednotebook/gui/format_menu.py:98
 msgid "No text or tag has been selected."
@@ -253,7 +253,7 @@ msgstr "Inhalte auswählen"
 
 #: ../rednotebook/gui/exports.py:335
 msgid "Select Export Path"
-msgstr "Export-Verzeichnis  auswählen"
+msgstr "Export-Verzeichnis auswählen"
 
 #: ../rednotebook/gui/exports.py:340
 msgid "Summary"
@@ -319,7 +319,7 @@ msgstr "_Journal"
 #: ../rednotebook/gui/menu.py:95
 msgid "Create a new journal. The old one will be saved"
 msgstr ""
-"Ein neues Journal erstellen. Das derzeit geöffnete Journal wird gespeichert."
+"Ein neues Journal erstellen. Das derzeit geöffnete Journal wird gespeichert"
 
 #: ../rednotebook/gui/menu.py:98
 msgid "Load an existing journal. The old journal will be saved"
@@ -330,7 +330,7 @@ msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
 "Speichere dieses Journal an einem anderen Ort und öffne es von dort. Das "
-"alte Journal wird zusätzlich noch einmal am alten Speicherort gesichert."
+"alte Journal wird zusätzlich noch einmal am alten Speicherort gesichert"
 
 #. Translators: Verb
 #. ('Import', gtk.STOCK_ADD, _('_Import'),
@@ -363,7 +363,7 @@ msgstr "Statistische Auswertungen zum Journal zeigen"
 
 #: ../rednotebook/gui/menu.py:117
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "RedNotebook beenden (ohne weitere Anzeige im Benachrichtigungsfeld)"
+msgstr "RedNotebook beenden (ohne weitere Anzeige im Benachrichtigungsfeld)."
 
 #: ../rednotebook/gui/menu.py:120
 msgid "_Edit"
@@ -407,7 +407,7 @@ msgstr "RedNotebook übersetzen"
 
 #: ../rednotebook/gui/menu.py:149
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Auf Launchpad helfen, RedNotebook zu übersetzen."
+msgstr "Auf Launchpad helfen, RedNotebook zu übersetzen"
 
 #: ../rednotebook/gui/menu.py:151
 msgid "Report a Problem"
@@ -415,7 +415,7 @@ msgstr "Einen Fehler melden"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Fill out a short form about the problem"
-msgstr "Machen Sie bitte einige Angaben über das Problem."
+msgstr "Machen Sie bitte einige Angaben über das Problem"
 
 #: ../rednotebook/gui/menu.py:172
 msgid "Wrong directory"
@@ -441,7 +441,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:200
 msgid "The directory name will be the title of the new journal."
-msgstr "Der Verzeichnisname wird als Name für das Journal benutzt werden"
+msgstr "Der Verzeichnisname wird als Name für das Journal benutzt werden."
 
 #: ../rednotebook/gui/menu.py:201
 msgid "Select an empty folder for your new journal"
@@ -453,7 +453,7 @@ msgstr "Wähle ein existierendes Journal-Verzeichnis"
 
 #: ../rednotebook/gui/menu.py:205
 msgid "The directory should contain your journal's data files"
-msgstr "Das Verzeichnis sollte die Dateien des Journals enthalten."
+msgstr "Das Verzeichnis sollte die Dateien des Journals enthalten"
 
 #: ../rednotebook/gui/menu.py:215
 msgid "Select an empty folder for the new location of your journal"
@@ -512,7 +512,7 @@ msgstr "in den Systembereich minimieren"
 msgid "Closing the window will send RedNotebook to the tray"
 msgstr ""
 "Wenn das Fenster geschlossen wird, finden Sie RedNotebook weiterhin im "
-"Infobereich."
+"Infobereich"
 
 #: ../rednotebook/gui/options.py:275
 msgid "Switch between edit and preview mode automatically"
@@ -577,7 +577,7 @@ msgstr "Eingerücktes Objekt"
 
 #: ../rednotebook/gui/insert_menu.py:69
 msgid "Two blank lines close the list"
-msgstr "Zwei Leerzeilen beenden eine Liste."
+msgstr "Zwei Leerzeilen beenden eine Liste"
 
 #: ../rednotebook/gui/insert_menu.py:102
 msgid "Picture"
@@ -749,7 +749,7 @@ msgstr "Vorschau"
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
-msgstr "RedNotebook hat zwei  Zustände - __Bearbeiten__ und  __Vorschau__."
+msgstr "RedNotebook hat zwei Zustände - __Bearbeiten__ und __Vorschau__."
 
 #: ../rednotebook/info.py:116
 msgid "Click on Edit above to see the difference."
@@ -784,7 +784,7 @@ msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr ""
-"Alles, was Sie eingeben,  wird in regelmäßigen Abständen und auch beim "
+"Alles, was Sie eingeben, wird in regelmäßigen Abständen und auch beim "
 "Verlassen des Programms gesichert."
 
 #: ../rednotebook/info.py:140
