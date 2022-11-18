@@ -1,3 +1,6 @@
+# 2.27.1 (2022-11-18)
+* Fix application ID for Flatpak (#650, Jendrik Seipp).
+
 # 2.27 (2022-11-16)
 * Upgrade to GTK 3.24 on Windows (Jendrik Seipp).
 * Use external preview on Windows since embedding the preview is impossible with newer GTK versions (Jendrik Seipp).
