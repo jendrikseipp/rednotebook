@@ -13,7 +13,7 @@ python3 -m flake8 --exclude=external --extend-ignore=E203,E402 --max-line-length
 
 isort --check-only rednotebook/ tests/
 
-python3 -m pyupgrade --py3-plus `find rednotebook tests -name "*.py" -not -path "*external*"`
+python3 -m pyupgrade --py36-plus `find rednotebook tests -name "*.py" -not -path "*external*"`
 
 python3 -m vulture --exclude=external rednotebook dev/whitelist.py
 

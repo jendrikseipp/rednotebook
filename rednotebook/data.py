@@ -260,9 +260,9 @@ class Month:
         return self.days[day_number]
 
     def __str__(self):
-        lines = ["Month {} {}".format(self.year_number, self.month_number)]
+        lines = [f"Month {self.year_number} {self.month_number}"]
         for day_number, day in self.days.items():
-            lines.append("{}: {}".format(day_number, day.text))
+            lines.append(f"{day_number}: {day.text}")
         return "\n".join(lines)
 
     @property
