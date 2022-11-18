@@ -197,7 +197,7 @@ class Journal(Gtk.Application):
     def __init__(self, *args, **kwargs):
         super().__init__(
             *args,
-            application_id="app.rednotebook",
+            application_id="app.rednotebook.RedNotebook",
             flags=Gio.ApplicationFlags.FLAGS_NONE,
             **kwargs
         )
