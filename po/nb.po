@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-15 23:25+0200\n"
-"PO-Revision-Date: 2022-11-19 05:32+0000\n"
+"PO-Revision-Date: 2022-11-19 11:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "rednotebook/desktop-app/nb_NO/>\n"
@@ -411,9 +411,8 @@ msgid "Translate RedNotebook"
 msgstr "Oversett RedNotebook"
 
 #: ../rednotebook/gui/menu.py:149
-#, fuzzy
 msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Gå til til Weblate-siden for å bistå oversettelsen av RedNotebook"
+msgstr "Gå til Weblate-siden for å bistå oversettelsen av RedNotebook"
 
 #: ../rednotebook/gui/menu.py:151
 msgid "Report a Problem"
