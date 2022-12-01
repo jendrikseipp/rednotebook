@@ -256,7 +256,7 @@ class Cloud(browser.HtmlView):
 
     def on_ignore_menu_activate(self, menu_item, word):
         word = re.escape(word)
-        logging.info('"{}" will be hidden from clouds'.format(word))
+        logging.info(f'"{word}" will be hidden from clouds')
         self.ignore_list.append(word)
         self.journal.config.write_list("cloudIgnoreList", self.ignore_list)
         self.regexes_ignore.append(get_regex(word))

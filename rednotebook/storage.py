@@ -80,7 +80,7 @@ def _load_month_from_disk(path, year_number, month_number):
             )
             return month
     except yaml.YAMLError as exc:
-        logging.error("Error in file {}:\n{}".format(path, exc))
+        logging.error(f"Error in file {path}:\n{exc}")
     except OSError:
         # If that fails, there is nothing to load, so just display an error message.
         logging.error("Error: The file %s could not be read" % path)
@@ -131,7 +131,7 @@ def _save_month_to_disk(month, journal_dir):
 
     def get_filename(infix):
         year_and_month = format_year_and_month(month.year_number, month.month_number)
-        return os.path.join(journal_dir, "{}{}.txt".format(year_and_month, infix))
+        return os.path.join(journal_dir, f"{year_and_month}{infix}.txt")
 
     old = get_filename(".old")
     new = get_filename(".new")

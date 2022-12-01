@@ -39,9 +39,7 @@ REGEX_HTML_LINK = r"<a.*?>(.*?)</a>"
 # pic [""/home/user/Desktop/RedNotebook pic"".png]
 PIC_NAME = r"\S.*?\S|\S"
 PIC_EXT = r"(?:png|jpe?g|gif|eps|bmp|svg)"
-REGEX_PIC = re.compile(
-    r'(\["")({})("")(\.{})(\?\d+)?(\])'.format(PIC_NAME, PIC_EXT), flags=re.I
-)
+REGEX_PIC = re.compile(rf'(\["")({PIC_NAME})("")(\.{PIC_EXT})(\?\d+)?(\])', flags=re.I)
 
 # named local link [my file.txt ""file:///home/user/my file.txt""]
 # named link in web [heise ""http://heise.de""]
@@ -119,12 +117,10 @@ MATHJAX_FILE = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
 #       displayMath: [ ['$$','$$'], ['\[','\]'] ]
 #       inlineMath:  [['\(','\)']]
 MATHJAX_DELIMITERS = ["$$", "\\(", "\\)", r"\\[", "\\]"]
-MATHJAX = """\
+MATHJAX = f"""\
 <!--MathJax included-->
 <script type="text/javascript" src="{MATHJAX_FILE}"></script>
-""".format(
-    **locals()
-)
+"""
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -155,9 +151,9 @@ def get_markup_for_day(
         if target in ["xhtml", "html"]:
             # Following anchor will be used as a target for every entry reference mentioning
             # this entry's date.
-            export_string += "''<span id=\"{:%Y-%m-%d}\"></span>''\n".format(day.date)
+            export_string += f"''<span id=\"{day.date:%Y-%m-%d}\"></span>''\n"
 
-        export_string += "= {} =\n\n".format(date)
+        export_string += f"= {date} =\n\n"
 
     # Add text
     if with_text:
@@ -348,7 +344,7 @@ def _get_config(target, options):
 
     # Apply this prepoc only after the latex image quotes have been added
     config["preproc"].append(
-        [r"\[({}\.({}))\?(\d+)\]".format(img_name, img_ext), r"[WIDTH\3-\1]"]
+        [rf"\[({img_name}\.({img_ext}))\?(\d+)\]", r"[WIDTH\3-\1]"]
     )
 
     # Disable colors for all other targets.

@@ -1,3 +1,7 @@
+# 2.27.2 (2022-12-01)
+* Fix passing command line arguments (Jendrik Seipp).
+* Update translation files (Jendrik Seipp).
+
 # 2.27.1 (2022-11-18)
 * Fix application ID for Flatpak (#650, Jendrik Seipp).
 

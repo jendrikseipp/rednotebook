@@ -39,9 +39,9 @@ Start RedNotebook:
 
   * The authors of the libraries listed under 'Requirements'.
   * Ciaran for creating the RedNotebook icon.
-  * The txt2tags team (https://txt2tags.org) for their markup conversion tool.
-  * Dieter Verfaillie for his elib.intl module
-    (https://github.com/dieterv/elib.intl)
+  * The [txt2tags](https://txt2tags.org) team for their markup conversion tool.
+  * Dieter Verfaillie for his [elib.intl](https://github.com/dieterv/elib.intl) module.
+  * The Weblate team for hosting [translations for RedNotebook](https://hosted.weblate.org/engage/rednotebook/).
 
 
 ## License notes

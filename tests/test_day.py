@@ -8,7 +8,7 @@ def test_to_string():
     month = Month(year_number, month_number)
     day = Day(month, day_number)
 
-    str_version = "{}-{}-{:02d}".format(year_number, month_number, day_number)
+    str_version = f"{year_number}-{month_number}-{day_number:02d}"
     assert str(day) == str_version
 
 

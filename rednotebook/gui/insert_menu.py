@@ -192,10 +192,10 @@ class InsertMenu:
             action_label = "{} {}".format(_("Level"), level)
             actions.append(
                 (
-                    "Title{}".format(level),
+                    f"Title{level}",
                     None,
                     action_label,
-                    "<Control>{}".format(level),
+                    f"<Control>{level}",
                     None,
                     functools.partial(self.on_insert_title, level=level),
                 )
@@ -301,7 +301,7 @@ class InsertMenu:
                 # with the file:// prefix
                 base = urls.get_local_url(base)
 
-                lines.append('[{}""{}""{}{}]'.format(sel_text, base, ext, width_text))
+                lines.append(f'[{sel_text}""{base}""{ext}{width_text}]')
 
             return "\n".join(lines)
 
@@ -324,7 +324,7 @@ class InsertMenu:
             sel_text = self.main_window.day_text_field.get_selected_text()
             _, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s
-            return '[{} ""{}""]'.format(sel_text or tail, filename)
+            return f'[{sel_text or tail} ""{filename}""]'
 
     @insert_handler
     def on_insert_link(self, sel_text):
@@ -363,7 +363,7 @@ class InsertMenu:
             link_name = link_name_entry.get_text()
 
             if link_location and link_name:
-                return '[{} ""{}""]'.format(link_name, link_location)
+                return f'[{link_name} ""{link_location}""]'
             elif link_location:
                 return link_location
             else:

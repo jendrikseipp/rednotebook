@@ -148,7 +148,7 @@ class Config(dict):
         lines = []
         for key, value in sorted(self.items()):
             if key not in self.suppressed_keys:
-                lines.append("{}={}".format(key, value))
+                lines.append(f"{key}={value}")
 
         try:
             filesystem.make_directory(os.path.dirname(self.filename))

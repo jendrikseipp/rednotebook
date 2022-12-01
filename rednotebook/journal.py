@@ -65,7 +65,7 @@ else:
     app_dir = os.path.dirname(os.path.abspath(__file__))
     base_dir = os.path.dirname(app_dir)
 
-print("Adding {} to sys.path".format(base_dir))
+print(f"Adding {base_dir} to sys.path")
 sys.path.insert(0, base_dir)
 
 from rednotebook.util import filesystem
@@ -169,8 +169,8 @@ logging.info("Language code: %s" % filesystem.LANGUAGE)
 try:
     import enchant
 
-    logging.info("Spell checking languages: {}".format(enchant.list_languages()))
-    logging.info("Spell checking dictionaries: {}".format(enchant.list_dicts()))
+    logging.info(f"Spell checking languages: {enchant.list_languages()}")
+    logging.info(f"Spell checking dictionaries: {enchant.list_dicts()}")
 except ImportError:
     pass
 
@@ -198,7 +198,7 @@ class Journal(Gtk.Application):
         super().__init__(
             *args,
             application_id="app.rednotebook.RedNotebook",
-            flags=Gio.ApplicationFlags.FLAGS_NONE,
+            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
             **kwargs
         )
         # Let components check if the MainWindow has been created.
@@ -267,6 +267,11 @@ class Journal(Gtk.Application):
         if not self.frame:
             self.frame = MainWindow(self)
         self.frame.main_frame.present()
+
+    def do_command_line(self, _command_line):
+        # Arguments are parsed elsewhere, so we only show the window here.
+        self.activate()
+        return 0  # Must return a number.
 
     def get_journal_path(self):
         """
@@ -354,7 +359,7 @@ class Journal(Gtk.Application):
         try:
             filesystem.make_directory(self.dirs.data_dir)
         except OSError as err:
-            logging.error("Creating journal directory failed: {}".format(err))
+            logging.error(f"Creating journal directory failed: {err}")
             self.frame.show_save_error_dialog(exit_imminent)
             return True
 
@@ -363,7 +368,7 @@ class Journal(Gtk.Application):
                 self.months, self.dirs.data_dir, exit_imminent, saveas
             )
         except OSError as err:
-            logging.error("Saving month files failed: {}".format(err))
+            logging.error(f"Saving month files failed: {err}")
             self.frame.show_save_error_dialog(exit_imminent)
             something_saved = None
 
@@ -528,7 +533,7 @@ class Journal(Gtk.Application):
             log_level = logging.INFO
 
         self.frame.show_message(title, msg, msg_type)
-        logging.log(log_level, "{}. {}".format(title, msg) if title else msg)
+        logging.log(log_level, f"{title}. {msg}" if title else msg)
 
     @property
     def categories(self):
@@ -628,7 +633,7 @@ def main():
     journal.run(sys.argv)
 
     try:
-        logging.info("Peak memory: {} KiB".format(filesystem.get_peak_memory_in_kb()))
+        logging.info(f"Peak memory: {filesystem.get_peak_memory_in_kb()} KiB")
     except Warning:
         pass
 

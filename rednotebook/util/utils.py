@@ -79,8 +79,8 @@ def get_gtk_colors(widget):
     style = widget.get_style_context()
     bg_color = style.get_background_color(Gtk.StateFlags.NORMAL).to_string()
     fg_color = style.get_color(Gtk.StateFlags.NORMAL).to_string()
-    logging.debug("Background color: {}".format(bg_color))
-    logging.debug("Foreground color: {}".format(fg_color))
+    logging.debug(f"Background color: {bg_color}")
+    logging.debug(f"Foreground color: {fg_color}")
     return bg_color, fg_color
 
 
