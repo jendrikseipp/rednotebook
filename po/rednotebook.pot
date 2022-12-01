@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-18 14:50+0100\n"
+"POT-Creation-Date: 2022-12-01 22:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:133
+#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:129
 #: ../rednotebook/gui/categories.py:47 ../rednotebook/gui/clouds.py:213
 msgid "Tags"
 msgstr ""
@@ -224,20 +224,20 @@ msgstr ""
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:372
+#: ../rednotebook/journal.py:377
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:377
+#: ../rednotebook/journal.py:382
 msgid "The journal could not be saved"
 msgstr ""
 
-#: ../rednotebook/journal.py:379
+#: ../rednotebook/journal.py:384
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:521
+#: ../rednotebook/journal.py:526
 msgid "Error"
 msgstr ""
 
