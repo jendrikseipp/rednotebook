@@ -1,3 +1,11 @@
+rednotebook (2.27.2-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix passing command line arguments (Jendrik Seipp).
+  * Update translation files (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 01 Dec 2022 22:47:53 +0100
+
 rednotebook (2.27.1-1) UNRELEASED; urgency=low
 
   * New upstream release
