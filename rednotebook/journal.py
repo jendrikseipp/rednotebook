@@ -198,7 +198,7 @@ class Journal(Gtk.Application):
         super().__init__(
             *args,
             application_id="app.rednotebook.RedNotebook",
-            flags=Gio.ApplicationFlags.FLAGS_NONE,
+            flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
             **kwargs
         )
         # Let components check if the MainWindow has been created.
@@ -267,6 +267,11 @@ class Journal(Gtk.Application):
         if not self.frame:
             self.frame = MainWindow(self)
         self.frame.main_frame.present()
+
+    def do_command_line(self, _command_line):
+        # Arguments are parsed elsewhere, so we only show the window here.
+        self.activate()
+        return 0  # Must return a number.
 
     def get_journal_path(self):
         """
