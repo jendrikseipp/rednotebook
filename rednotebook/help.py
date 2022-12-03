@@ -19,6 +19,7 @@
 from rednotebook import info
 
 
+bug_url = info.bug_url
 commandline_help = info.get_commandline_parser().format_help()
 
 tags = _("Tags")
@@ -350,17 +351,6 @@ To **activate portable mode**, change into the files/ directory and in
 the default.cfg file set portable=1.
 
 
-== Network drive ==
-
-Unfortunately, you cannot add links to files on network shares directly
-with the file selection dialog (this is due to a bug in GTK 2, it is
-fixed in GTK 3, but RedNotebook still uses GTK 2 [bug on launchpad
-""https://bugs.launchpad.net/ubuntu/+source/gtk+2.0/+bug/304345""]).
-However, it is possible to enter links directly, for example ``[U:
-""file:///U:/""]`` to reference the mapped drive letter [U
-""file:///U:/""].
-
-
 == Convert Latex output to PDF ==
 
 In recent RedNotebook versions you can export your journal directly to
@@ -626,7 +616,7 @@ There is no software without bugs, so if you encounter one please drop
 me a note. This way RedNotebook can get better, not only for you, but
 for all users.
 
-Bug reports should go [here https://bugs.launchpad.net/rednotebook],
+Bug reports should go [here %(bug_url)s],
 but if you don't know how to use that site, a simple mail is equally
 fine.
 
