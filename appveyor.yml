@@ -1,9 +1,5 @@
 clone_folder: C:\repo
 
-branches:
-  except:
-    - web
-
 matrix:
   fast_finish: true
 
