@@ -53,11 +53,13 @@ example_entry = _(
     'ultimate frisbee. Afterwards we watched "__Life of Brian__".'
 )
 
-templates = "Templates"
-temp1 = "RedNotebook supports templates."
-temp2 = 'Click on the arrow next to the "Template" button to see some options.'
-temp3 = """You can have one template for every day
+templates = _("Templates")
+temp1 = _("RedNotebook supports templates.")
+temp2 = _('Click on the arrow next to the "Template" button to see some options.')
+temp3 = _(
+    """You can have one template for every day
 of the week and unlimited arbitrarily named templates."""
+)
 temp_par = " ".join([temp1, temp2, temp3])
 
 # Translators: both are verbs

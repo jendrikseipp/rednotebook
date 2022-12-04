@@ -44,12 +44,14 @@ discussion_url = "https://github.com/jendrikseipp/rednotebook/discussions"
 developers = ["%(author)s <%(author_mail)s>" % locals()]
 artists = ["Ciaran"]
 
-comments = """\
+comments = _(
+    """\
 RedNotebook is a modern desktop journal. It lets you format, tag and
 search your entries. You can also add pictures, links and customizable
-templates, spell check your notes, and export to plain text, HTML,
-Latex or PDF.
+templates, spell check your notes, and export to plain text, HTML or
+Latex.
 """
+)
 
 journal_path_help = """\
 (optional) Specify the directory storing the journal data.
