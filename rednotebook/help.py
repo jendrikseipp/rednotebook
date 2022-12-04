@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------
-# Copyright (c) 2009-2018  Jendrik Seipp
+# Copyright (c) 2009-2022  Jendrik Seipp
 #
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,15 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+import builtins
+
 from rednotebook import info
+
+
+if not hasattr(builtins, "_"):
+
+    def _(string):
+        return string
 
 
 bug_url = info.bug_url
@@ -60,7 +68,7 @@ temp3 = _(
     """You can have one template for every day
 of the week and unlimited arbitrarily named templates."""
 )
-temp_par = " ".join([temp1, temp2, temp3])
+temp_par = "\n".join([temp1, temp2, temp3])
 
 # Translators: both are verbs
 save = _("Save and Export")
@@ -72,11 +80,11 @@ save2 = _("To avoid data loss you should backup your journal regularly.")
 save3 = _('"Backup" in the "Journal" menu saves all your entered data in a zip file.')
 save4 = _('In the "Journal" menu you also find the "Export" button.')
 save5 = _('Click on "Export" and export your diary to Plain Text, PDF, HTML or Latex.')
-save_par = " ".join([save1, save2, save3, save4, save5])
+save_par = "\n".join([save1, save2, save3, save4, save5])
 
 error1 = _("If you encounter any errors, please drop me a note so I can fix them.")
 error2 = _("Any feedback is appreciated.")
-error_par = " ".join([error1, error2])
+error_par = "\n".join([error1, error2])
 
 goodbye_par = _("Have a nice day!")
 
@@ -265,12 +273,15 @@ menu.
 
 == Save ==
 
-%(save1)s %(save2)s %(save3)s
+%(save1)s
+%(save2)s
+%(save3)s
 
 
 == Export ==
 
-%(save4)s %(save5)s
+%(save4)s
+%(save5)s
 
 Since version 0.9.2 you can also directly export your journal to PDF.
 If the option does not show up in the export assistant, you need to
