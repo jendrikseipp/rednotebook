@@ -32,7 +32,7 @@ build_script:
   - set PATH=%PATH%;C:\gtk\bin
 
   # Install other dependencies.
-  - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools tox==4.0.2 wheel"
+  - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools tox==3.27.1 wheel"
   # Install separately because --no-binary option disables using wheels (leading to problems for Cython).
   - "%PYTHON% -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2"
   - "%PYTHON% -m pip install --no-warn-script-location -r win/requirements.txt"
