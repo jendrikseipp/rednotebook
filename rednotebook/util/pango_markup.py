@@ -49,7 +49,7 @@ def convert_to_pango(txt, headers=None, options=None):
         finished = txt2tags.finish_him(full_doc, config)
         result = "".join(finished)
 
-    # Txt2tags error, show the messsage to the user
+    # Txt2tags error, show the message to the user
     except txt2tags.error as msg:
         logging.error(msg)
         result = msg

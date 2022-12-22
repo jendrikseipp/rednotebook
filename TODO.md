@@ -134,4 +134,4 @@ After deciding whether to switch to Markdown or not:
 - Use new markup for images: {/home/user/pic.png?50} (Too disruptive)
 - Support %!include, %!preprocess, etc. (very txt2tags specific)
 - Encryption (there are dedicated tools for encrypting files)
-- Highlight the current day in the calendar (#466, Gtk.Calendar supports only one hightlight style)
+- Highlight the current day in the calendar (#466, Gtk.Calendar supports only one highlight style)

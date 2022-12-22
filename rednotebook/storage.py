@@ -85,7 +85,7 @@ def _load_month_from_disk(path, year_number, month_number):
         # If that fails, there is nothing to load, so just display an error message.
         logging.error("Error: The file %s could not be read" % path)
     except Exception:
-        logging.error("An error occured while reading %s:" % path)
+        logging.error("An error occurred while reading %s:" % path)
         raise
     # If we continued here, the possibly corrupted file would be overwritten.
     sys.exit(1)

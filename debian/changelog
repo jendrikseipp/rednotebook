@@ -53,7 +53,7 @@ rednotebook (2.23-1) UNRELEASED; urgency=low
 
   * New upstream release
   * Check that a newly written month file is valid before deleting the old month file.
-  * Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
+  * Rename "autostart" file. Please re-enable autostart option in preferences if you want RedNotebook to run on system startup.
   * Fix Python crash on program start (#583, Max Krummenacher).
   * Prevent save failures on network and cloud drives (#593, Robert Little).
   * Add script for importing entries (#571, Cary Gravel).

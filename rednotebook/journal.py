@@ -89,7 +89,7 @@ translate
 
 1) works fine. For 3) we need a workaround in main_window.py. If we
 initialize libintl with elibintl, the translations for 2) stop working.
-Without the workaround we need to initalize libintl to avoid UTF-8
+Without the workaround we need to initialize libintl to avoid UTF-8
 encoding errors.
 
 When the problem is fixed upstream, we can pass libintl='libintl-8.dll'

@@ -62,7 +62,7 @@ class SearchComboBox(CustomComboBoxEntry):
 
         search_text = " ".join(queries)
 
-        # Highlight all occurences in the current day's text
+        # Highlight all occurrences in the current day's text
         self.main_window.highlight_text(search_text)
 
         # Scroll to query.
