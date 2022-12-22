@@ -94,7 +94,7 @@ etc.
 
 **Macros**:
 
-When a template is inserted, every occurence of $date$ is converted to \
+When a template is inserted, every occurrence of $date$ is converted to \
 the current date. You can set the date format in the preferences.
 
 There is even more markup that you can put into your templates. Have a look at
@@ -357,7 +357,7 @@ class TemplateManager:
     def get_text(self, title):
         text = filesystem.read_file(self.get_path(title))
 
-        # An Error occured
+        # An Error occurred
         if not text:
             text = _("This template file contains no text or has unreadable content.")
         return text
@@ -475,7 +475,7 @@ class TemplateManager:
         files.append((self.get_path("Help"), help_text))
 
         # Only add the example templates the first time and just restore
-        # the day templates everytime
+        # the day templates every time
         if self.main_window.journal.is_first_start:
             files.append((self.get_path("Meeting"), meeting))
             files.append((self.get_path("Journey"), journey))

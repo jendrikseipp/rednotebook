@@ -465,9 +465,9 @@ class ExportAssistant(Assistant):
                 include_day = True
                 if self.is_filtered:
                     include_day = False
-                    catagory_pairs = day.get_category_content_pairs()
+                    category_pairs = day.get_category_content_pairs()
                     for category in selected_categories:
-                        if category in catagory_pairs:
+                        if category in category_pairs:
                             include_day = True
                 if include_day:
                     date_format = self.journal.config.read("exportDateFormat")

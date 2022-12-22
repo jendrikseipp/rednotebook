@@ -426,7 +426,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
         full_doc = headers + toc + body + footer
         finished = txt2tags.finish_him(full_doc, config)
         result = "\n".join(finished)
-    # Txt2tags error, show the messsage to the user
+    # Txt2tags error, show the message to the user
     except txt2tags.error as msg:
         logging.error(msg)
         result = msg
