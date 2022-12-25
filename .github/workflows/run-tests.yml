@@ -4,10 +4,10 @@ name: CI
 on:
   push:
     branches:
-    - master
+    - disable
   pull_request:
     branches:
-    - master
+    - disable
   schedule:
     # Run workflow every morning (* needs quotes).
     - cron: '0 4 * * *'

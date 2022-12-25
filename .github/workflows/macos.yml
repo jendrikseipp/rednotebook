@@ -1,0 +1,50 @@
+name: macOS
+
+on: [push, pull_request]
+env:
+  python_version: '3.11'
+
+jobs:
+  macos:
+    runs-on: macos-11
+    permissions:
+      contents: write
+    timeout-minutes: 45
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    outputs:
+      artifact: ${{ steps.create.outputs.artifact }}
+    env:
+      LDFLAGS: -L/usr/local/opt/python@${python_version}/lib
+      PKG_CONFIG_PATH: /usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/python@${python_version}/lib/pkgconfig:${PKG_CONFIG_PATH:-}
+    steps:
+      - uses: actions/checkout@v3.2.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install macOS Dependencies
+        run: |
+          brew install gtk+3 gtksourceview4 gtk-mac-integration
+          brew install gobject-introspection graphviz create-dmg upx
+          # brew install gtk+3 pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
+          # python3 -m pip install pyenchant pyyaml tox==3.27.1
+        shell: bash
+      - name: Set up Python
+        uses: actions/setup-python@v4.4.0
+        with:
+          python-version: ${{ env.python_version }}
+      - name: Show environment
+        run: |
+          python --version
+          python3 --version
+          python3 -c "import multiprocessing as m; print('CPUs:', m.cpu_count())"
+          which python3
+          brew install python@3.11
+          which python3
+          which python3.11
+          python3 --version
+          python3.11 --version
+      - name: Run tests
+        run: |
+          python3 -c "import gi"
+          python3 -m tox -e py
+        shell: bash
+
