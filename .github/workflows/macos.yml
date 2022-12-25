@@ -22,9 +22,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install macOS Dependencies
         run: |
-          brew install gtk+3 gtksourceview4 gtk-mac-integration
-          brew install gobject-introspection graphviz create-dmg upx
-          brew install pygobject3 glib libffi cairo atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
+          brew install adwaita-icon-theme cairo enchant glib gtk+3 gtksourceview4 gtk-mac-integration librsvg pygobject3
           python3 -m pip install pyenchant pyyaml tox==3.27.1
         shell: bash
       - name: Set up Python
