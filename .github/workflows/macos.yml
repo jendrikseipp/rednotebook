@@ -56,15 +56,19 @@ jobs:
           ls build
           ls dist
         shell: bash
-      #- uses: actions/upload-artifact@v3
-      #  with:
-      #    name: rednotebook-appdir
-      #    path: dist/rednotebook
-      #- uses: actions/upload-artifact@v3
-      #  with:
-      #    name: rednotebook-app
-      #    path: dist/rednotebook.app
       - name: Build DMG file
         run: |
           create-dmg rednotebook.dmg dist/rednotebook.app
         shell: bash
+      #- uses: actions/upload-artifact@v3
+      #  with:
+      #    name: rednotebook-appdir
+      #    path: dist/rednotebook
+      - uses: actions/upload-artifact@v3
+        with:
+          name: rednotebook-app
+          path: dist/rednotebook.app
+      - uses: actions/upload-artifact@v3
+        with:
+          name: rednotebook-dmg
+          path: rednotebook.dmg
