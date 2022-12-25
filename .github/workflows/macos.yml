@@ -47,7 +47,7 @@ jobs:
         run: |
           python3 -c "import gi"
           #python3 -m tox -e py
-          python3 -m pyinstaller \
+          python3 -m PyInstaller \
             --name "rednotebook" \
             --windowed \
             --add-data ./rednotebook/files:files/ \
