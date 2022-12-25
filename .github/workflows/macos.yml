@@ -22,8 +22,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install macOS Dependencies
         run: |
-          # brew install adwaita-icon-theme cairo enchant glib gtk+3 gtksourceview4 gtk-mac-integration librsvg pygobject3
+          # brew install adwaita-icon-theme cairo enchant glib librsvg
           brew install enchant gtk+3 gtksourceview4 gtk-mac-integration gobject-introspection
+          # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
           python3 -m pip install pyenchant pyyaml tox==3.27.1 pygobject
           python3 -m pip freeze
         shell: bash
