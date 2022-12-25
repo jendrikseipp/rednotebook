@@ -24,8 +24,8 @@ jobs:
         run: |
           brew install gtk+3 gtksourceview4 gtk-mac-integration
           brew install gobject-introspection graphviz create-dmg upx
-          # brew install gtk+3 pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
-          # python3 -m pip install pyenchant pyyaml tox==3.27.1
+          brew install pygobject3 glib libffi cairo atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
+          python3 -m pip install pyenchant pyyaml tox==3.27.1
         shell: bash
       - name: Set up Python
         uses: actions/setup-python@v4.4.0
