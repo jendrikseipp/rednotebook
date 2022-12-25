@@ -23,7 +23,7 @@ jobs:
       - name: Install macOS Dependencies
         run: |
           # brew install adwaita-icon-theme cairo enchant glib librsvg
-          brew install enchant gtk+3 gtksourceview4 gtk-mac-integration gobject-introspection
+          brew install enchant gtk+3 gtksourceview4 gtk-mac-integration gobject-introspection upx
           # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
           python3 -m pip install pyenchant pyyaml tox==3.27.1 pygobject pyinstaller
           python3 -m pip freeze
@@ -53,5 +53,7 @@ jobs:
             --add-data ./rednotebook/files:files/ \
             --add-data ./rednotebook/images:images/ \
             ./rednotebook/journal.py
+          ls build
+          ls dist
         shell: bash
 
