@@ -41,6 +41,7 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
+        # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
         brew install gtk+3 gobject-introspection glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
         python3 -m pip install pyenchant pygobject pyyaml tox==3.27.1
 
