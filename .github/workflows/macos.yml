@@ -23,8 +23,9 @@ jobs:
       - name: Install macOS Dependencies
         run: |
           # brew install adwaita-icon-theme cairo enchant glib gtk+3 gtksourceview4 gtk-mac-integration librsvg pygobject3
-          brew install gtk+3 gtksourceview4 gtk-mac-integration pygobject3
+          brew install enchant gtk+3 gtksourceview4 gtk-mac-integration gobject-introspection
           python3 -m pip install pyenchant pyyaml tox==3.27.1 pygobject
+          python3 -m pip freeze
         shell: bash
       - name: Set up Python
         uses: actions/setup-python@v4.4.0
