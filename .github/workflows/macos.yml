@@ -56,4 +56,7 @@ jobs:
           ls build
           ls dist
         shell: bash
-
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist-dir
+          path: dist
