@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 07:36+0200\n"
-"PO-Revision-Date: 2022-09-28 18:05+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2022-12-01 22:16+0100\n"
+"PO-Revision-Date: 2016-02-13 01:32+0000\n"
+"Last-Translator: Nuri <crimeemperor@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Launchpad (build 18169)\n"
 
-#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:133
+#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:129
 #: ../rednotebook/gui/categories.py:47 ../rednotebook/gui/clouds.py:213
 msgid "Tags"
 msgstr "Etiketler"
@@ -128,14 +128,22 @@ msgid "Have a nice day!"
 msgstr "İyi günler!"
 
 #: ../rednotebook/help.py:103
+#, fuzzy
+#| msgid ""
+#| "=== Multiple entries ===\n"
+#| "You can add multiple entries to a single day by using different journals "
+#| "(one named \"Work\", the other \"Family\"), separating your entries with "
+#| "different titles (=== Work ===, === Family ===) and using horizontal "
+#| "separator lines (20 “=”s)."
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by separating your entries with "
 "different titles (=== Work ===, === Family ===)."
 msgstr ""
 "=== Çoklu girdi ===\n"
-"Girdilerinizi farklı başlıklara ayırarak (=== İş ===, === Aile ===) tek güne "
-"birden fazla girdi ekleyebilirsiniz."
+"\"İş\" ve \"Aile\" gibi farklı günlükleri kullanarak (girdilerinizi === İş "
+"===, === Aile === başlıklarıyla ayırarak ve yatay ayraçlar kullanarak) bir "
+"güne birden fazla girdi ekleyebilirsiniz."
 
 #: ../rednotebook/help.py:110
 msgid ""
@@ -204,7 +212,7 @@ msgstr "Son sürüm <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:123
 msgid "If you like the program, please consider making a donation."
-msgstr "Programı beğendiyseniz, lütfen bağış yapmayı düşünün."
+msgstr ""
 
 #: ../rednotebook/util/utils.py:125
 msgid "Do you want to visit the RedNotebook homepage?"
@@ -219,9 +227,10 @@ msgid "unknown"
 msgstr "bilinmeyen"
 
 #: ../rednotebook/backup.py:58
-#, python-format
+#, fuzzy, python-format
+#| msgid "It has been a while since you made your last backup."
 msgid "It has been %d days since you made your last backup."
-msgstr "Son yedeklemenizin üzerinden %d gün geçti."
+msgstr "Son yedeklemenizin üzerinden uzun zaman geçti."
 
 #: ../rednotebook/backup.py:60
 msgid "You can backup your journal to a zip file to avoid data loss."
@@ -243,28 +252,28 @@ msgstr "Sonraki başlangıçta sor"
 msgid "Never ask again"
 msgstr "Bir daha sorma"
 
-#: ../rednotebook/journal.py:223 ../rednotebook/gui/menu.py:292
+#: ../rednotebook/journal.py:247 ../rednotebook/gui/menu.py:292
 msgid "You cannot use this directory for your journal:"
 msgstr "Günlüğünüz için bu dizini kullanamazsınız:"
 
-#: ../rednotebook/journal.py:226
+#: ../rednotebook/journal.py:250
 msgid "Opening default journal."
 msgstr "Varsayılan günlük açılıyor."
 
-#: ../rednotebook/journal.py:343
+#: ../rednotebook/journal.py:377
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "İçerik şuraya kaydedildi: %s"
 
-#: ../rednotebook/journal.py:348
+#: ../rednotebook/journal.py:382
 msgid "The journal could not be saved"
 msgstr "Günlük kaydedilemedi"
 
-#: ../rednotebook/journal.py:350
+#: ../rednotebook/journal.py:384
 msgid "Nothing to save"
 msgstr "Kaydedilecek bir şey yok"
 
-#: ../rednotebook/journal.py:492
+#: ../rednotebook/journal.py:526
 msgid "Error"
 msgstr "Hata"
 
@@ -425,12 +434,14 @@ msgstr ""
 "=====================================\n"
 
 #: ../rednotebook/templates.py:196
+#, fuzzy
+#| msgid "Template"
 msgid "Template mode"
-msgstr "Şablon kipi"
+msgstr "Şablon"
 
 #: ../rednotebook/templates.py:200
 msgid "You are currently editing a template."
-msgstr "Şu anda bir şablonu düzenliyorsunuz."
+msgstr ""
 
 #: ../rednotebook/templates.py:321
 msgid "Choose Template Name"
@@ -603,11 +614,11 @@ msgstr "Sorun ile ilgili kısa bir form doldurun"
 
 #: ../rednotebook/gui/menu.py:265
 msgid "Give Feedback"
-msgstr "Geri Bildirim"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:267
 msgid "How can we improve RedNotebook?"
-msgstr "RedNotebook'u nasıl iyileştirebiliriz?"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:288
 msgid "Wrong directory"
@@ -655,7 +666,7 @@ msgstr "RedNotebook Dokümentasyonu"
 
 #: ../rednotebook/gui/menu.py:436
 msgid "Contributors:"
-msgstr "Katkıda Bulunanlar:"
+msgstr ""
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
@@ -765,7 +776,7 @@ msgstr "_İçeri Aktar"
 
 #: ../rednotebook/gui/insert_menu.py:192
 msgid "Level"
-msgstr "Düzey"
+msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:227
 msgid "Insert"
@@ -800,7 +811,7 @@ msgid "Text"
 msgstr "Metin"
 
 #: ../rednotebook/gui/customwidgets.py:336
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:683
 msgid "Template"
 msgstr "Şablon"
 
@@ -810,11 +821,11 @@ msgstr "Kaydet ve içeri aktar"
 
 #: ../rednotebook/gui/customwidgets.py:341
 msgid "Save"
-msgstr "Kaydet"
+msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:343
 msgid "Close"
-msgstr "Kapat"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -867,7 +878,7 @@ msgstr "Balangıçta güncellemeleri kontrol et"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Search as you type"
-msgstr "Yazarken ara"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:332
 msgid "Check now"
@@ -891,7 +902,7 @@ msgstr "Tarih/Saat biçemi"
 
 #: ../rednotebook/gui/options.py:349
 msgid "Used by Date/Time button and $date$ template macro."
-msgstr "Tarih/Saat düğmesi ve $date$ şablon makrosu tarafından kullanılır."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:352
 msgid "Date format"
@@ -899,15 +910,15 @@ msgstr "Tarih biçimi"
 
 #: ../rednotebook/gui/options.py:354
 msgid "Used for dates in titlebar and exports."
-msgstr "Başlık çubuğundaki ve dışa aktarmadaki tarihler için kullanılır."
+msgstr ""
 
 #: ../rednotebook/gui/options.py:357
 msgid "Tags in cloud"
-msgstr "Buluttaki etiketler"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:359
 msgid "Maximum number of tags displayed in the cloud"
-msgstr "Bulutta görüntülenen azami etiket sayısı"
+msgstr ""
 
 #: ../rednotebook/gui/options.py:362
 msgid "Exclude from cloud"
@@ -925,19 +936,19 @@ msgstr "Buluta küçük kelimeler ekleyin"
 msgid "Allow these words with 4 letters or less"
 msgstr "4 harf veya daha azını içeren kelimelere izin ver"
 
-#: ../rednotebook/gui/main_window.py:185
+#: ../rednotebook/gui/main_window.py:184
 msgid "Preview in Browser"
-msgstr "Tarayıcıda Önizleme"
+msgstr ""
 
-#: ../rednotebook/gui/main_window.py:332
+#: ../rednotebook/gui/main_window.py:331
 msgid "Show RedNotebook"
 msgstr "RedNotebook'u göster"
 
-#: ../rednotebook/gui/main_window.py:590
+#: ../rednotebook/gui/main_window.py:589
 msgid "No directory selected."
 msgstr "Dizin seçilmedi."
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:687
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -1035,7 +1046,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:336
 msgid "PDF: export to HTML, open in browser and print to PDF file"
-msgstr "PDF: HTML'ye aktarın, tarayıcıda açın ve PDF dosyasına yazdırın"
+msgstr ""
 
 #: ../rednotebook/gui/exports.py:341
 msgid "Select Export Format"
@@ -1123,8 +1134,10 @@ msgid "Insert Link"
 msgstr "Bağlantı Ekle"
 
 #: tmp/main_window.glade.h:7
+#, fuzzy
+#| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
-msgstr "<b>Bağlantı konumu (ör. https://www.google.com)</b>"
+msgstr "<b>Bağlantı konumu (ör. http://rednotebook.sf.net)</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Link name (optional)</b>"
@@ -1135,8 +1148,10 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Önceki güne git (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:10
+#, fuzzy
+#| msgid "Backup"
 msgid "Back"
-msgstr "Geri"
+msgstr "Yedekle"
 
 #: tmp/main_window.glade.h:11
 msgid "Jump to today (Alt+Home)"
@@ -1152,7 +1167,7 @@ msgstr "Sonraki güne git (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:14
 msgid "Forward"
-msgstr "İleri"
+msgstr ""
 
 #: tmp/main_window.glade.h:15
 msgid "Show a formatted preview of the text (Ctrl+P)"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 07:36+0200\n"
+"POT-Creation-Date: 2022-12-01 22:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:133
+#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:129
 #: ../rednotebook/gui/categories.py:47 ../rednotebook/gui/clouds.py:213
 msgid "Tags"
 msgstr ""
@@ -216,28 +216,28 @@ msgstr ""
 msgid "Never ask again"
 msgstr ""
 
-#: ../rednotebook/journal.py:223 ../rednotebook/gui/menu.py:292
+#: ../rednotebook/journal.py:247 ../rednotebook/gui/menu.py:292
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
-#: ../rednotebook/journal.py:226
+#: ../rednotebook/journal.py:250
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:343
+#: ../rednotebook/journal.py:377
 #, python-format
 msgid "The content has been saved to %s"
 msgstr ""
 
-#: ../rednotebook/journal.py:348
+#: ../rednotebook/journal.py:382
 msgid "The journal could not be saved"
 msgstr ""
 
-#: ../rednotebook/journal.py:350
+#: ../rednotebook/journal.py:384
 msgid "Nothing to save"
 msgstr ""
 
-#: ../rednotebook/journal.py:492
+#: ../rednotebook/journal.py:526
 msgid "Error"
 msgstr ""
 
@@ -703,7 +703,7 @@ msgid "Text"
 msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:336
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:683
 msgid "Template"
 msgstr ""
 
@@ -828,19 +828,19 @@ msgstr ""
 msgid "Allow these words with 4 letters or less"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:185
+#: ../rednotebook/gui/main_window.py:184
 msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:332
+#: ../rednotebook/gui/main_window.py:331
 msgid "Show RedNotebook"
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:590
+#: ../rednotebook/gui/main_window.py:589
 msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:687
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""

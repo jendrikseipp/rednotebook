@@ -1,3 +1,30 @@
+rednotebook (2.27.2-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix passing command line arguments (Jendrik Seipp).
+  * Update translation files (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 01 Dec 2022 22:47:53 +0100
+
+rednotebook (2.27.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix application ID for Flatpak (#650, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 18 Nov 2022 14:51:19 +0100
+
+rednotebook (2.27-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Upgrade to GTK 3.24 on Windows (Jendrik Seipp).
+  * Use external preview on Windows since embedding the preview is impossible with newer GTK versions (Jendrik Seipp).
+  * Use GtkApplication class and only allow running one RedNotebook instance at a time (Jendrik Seipp).
+  * Add support for GtkSourceView 4 (Jendrik Seipp).
+  * Raise minimum Python version to 3.6 (Jendrik Seipp).
+  * Add more languages to Windows installer (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 16 Nov 2022 22:21:30 +0100
+
 rednotebook (2.26-1) UNRELEASED; urgency=low
 
   * New upstream release
@@ -26,7 +53,7 @@ rednotebook (2.23-1) UNRELEASED; urgency=low
 
   * New upstream release
   * Check that a newly written month file is valid before deleting the old month file.
-  * Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
+  * Rename "autostart" file. Please re-enable autostart option in preferences if you want RedNotebook to run on system startup.
   * Fix Python crash on program start (#583, Max Krummenacher).
   * Prevent save failures on network and cloud drives (#593, Robert Little).
   * Add script for importing entries (#571, Cary Gravel).

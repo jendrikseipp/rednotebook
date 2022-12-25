@@ -6,13 +6,8 @@ import pytest
 
 from rednotebook.data import Day, Month
 from rednotebook.util import filesystem
-from rednotebook.util.markup import (
-    _convert_paths,
-    convert,
-    convert_from_pango,
-    convert_to_pango,
-    get_markup_for_day,
-)
+from rednotebook.util.markup import _convert_paths, convert, get_markup_for_day
+from rednotebook.util.pango_markup import convert_from_pango, convert_to_pango
 
 
 @pytest.mark.parametrize(
@@ -45,13 +40,13 @@ def test_relative_path_conversion(tmp_path):
     tmp_path_uri = filesystem.LOCAL_FILE_PEFIX + str(tmp_path) + os.sep + "rel"
 
     rel_paths = [
-        ('[""file://rel"".jpg]', '[""{}"".jpg]'.format(tmp_path_uri)),
-        ('[""rel"".jpg]', '[""{}"".jpg]'.format(tmp_path_uri)),
+        ('[""file://rel"".jpg]', f'[""{tmp_path_uri}"".jpg]'),
+        ('[""rel"".jpg]', f'[""{tmp_path_uri}"".jpg]'),
         (
             '[rel.pdf ""file://rel.pdf""]',
-            '[rel.pdf ""{}.pdf""]'.format(tmp_path_uri),
+            f'[rel.pdf ""{tmp_path_uri}.pdf""]',
         ),
-        ('[rel.pdf ""rel.pdf""]', '[rel.pdf ""{}.pdf""]'.format(tmp_path_uri)),
+        ('[rel.pdf ""rel.pdf""]', f'[rel.pdf ""{tmp_path_uri}.pdf""]'),
     ]
 
     for markup, expected in rel_paths:
@@ -61,9 +56,9 @@ def test_relative_path_conversion(tmp_path):
 def test_absolute_path_conversion(tmp_path):
     abs_paths = [
         '[""file:///abs"".jpg]',
-        '[""{}/aha 1"".jpg]'.format(tmp_path),
+        f'[""{tmp_path}/aha 1"".jpg]',
         '[abs.pdf ""file:///abs.pdf""]',
-        '[abs.pdf ""{}/abs.pdf""]'.format(tmp_path),
+        f'[abs.pdf ""{tmp_path}/abs.pdf""]',
         "www.google.com",
         "www.google.com/page.php",
     ]
@@ -226,7 +221,7 @@ class TestGetXHtmlExportConfig:
         markup = get_markup_for_day(day, "xhtml", date=date.strftime("%d-%m-%Y"))
         document = process(markup)
 
-        assert r'<span id="{:%Y-%m-%d}"></span>'.format(date) in document
+        assert rf'<span id="{date:%Y-%m-%d}"></span>' in document
 
     def test_mathjax(self, process):
         document = process("$$x^3$$")

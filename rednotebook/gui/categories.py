@@ -20,7 +20,8 @@ import logging
 
 from gi.repository import Gdk, Gtk, Pango
 
-from rednotebook.util import markup, utils
+from rednotebook.util import utils
+from rednotebook.util.pango_markup import convert_from_pango, convert_to_pango
 
 
 class CategoriesTreeView:
@@ -117,7 +118,7 @@ class CategoriesTreeView:
         self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
         # We want to show txt2tags markup and not pango markup
-        editable.set_text(markup.convert_from_pango(pango_markup))
+        editable.set_text(convert_from_pango(pango_markup))
 
     def edited_cb(self, cell, path, new_text, liststore):
         """
@@ -132,7 +133,7 @@ class CategoriesTreeView:
             self._show_error_msg(_("Empty entries are not allowed"))
             return
 
-        liststore[path][0] = markup.convert_to_pango(new_text)
+        liststore[path][0] = convert_to_pango(new_text)
 
         # Category name changed
         if self.node_on_top_level(path):
@@ -156,7 +157,7 @@ class CategoriesTreeView:
             iter(element_content.items()), key=lambda key_value: key_value[0].lower()
         ):
             if key is not None:
-                key_pango = markup.convert_to_pango(key)
+                key_pango = convert_to_pango(key)
             new_child = self.tree_store.append(parent, [key_pango])
             if value is not None:
                 self.add_element(new_child, value)
@@ -217,11 +218,11 @@ class CategoriesTreeView:
         self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
         # We want to have txt2tags markup and not pango markup
-        text = markup.convert_from_pango(pango_markup)
+        text = convert_from_pango(pango_markup)
         return text
 
     def set_iter_value(self, iter, txt2tags_markup):
-        pango_markup = markup.convert_to_pango(txt2tags_markup)
+        pango_markup = convert_to_pango(txt2tags_markup)
         self.tree_store.set_value(iter, 0, pango_markup)
 
     def _get_category_iter(self, category_name):
@@ -240,8 +241,8 @@ class CategoriesTreeView:
 
         category_iter = self._get_category_iter(category)
 
-        entry_pango = markup.convert_to_pango(entry)
-        category_pango = markup.convert_to_pango(category)
+        entry_pango = convert_to_pango(entry)
+        category_pango = convert_to_pango(category)
 
         # If category exists add entry to existing category, else add new category
         if category_iter is None:

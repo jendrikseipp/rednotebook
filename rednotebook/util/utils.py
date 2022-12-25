@@ -71,7 +71,7 @@ def setup_signal_handlers(journal):
 
 
 def get_gtk_colors(widget):
-    """Retrieve colors of the currect GTK theme for the given widget.
+    """Retrieve colors of the current GTK theme for the given widget.
 
     The get_background_color() method is deprecated, but I couldn't find
     a different way for retrieving the color.
@@ -79,8 +79,8 @@ def get_gtk_colors(widget):
     style = widget.get_style_context()
     bg_color = style.get_background_color(Gtk.StateFlags.NORMAL).to_string()
     fg_color = style.get_color(Gtk.StateFlags.NORMAL).to_string()
-    logging.debug("Background color: {}".format(bg_color))
-    logging.debug("Foreground color: {}".format(fg_color))
+    logging.debug(f"Background color: {bg_color}")
+    logging.debug(f"Foreground color: {fg_color}")
     return bg_color, fg_color
 
 

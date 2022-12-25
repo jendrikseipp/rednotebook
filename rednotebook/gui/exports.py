@@ -288,7 +288,7 @@ class SummaryPage(AssistantPage):
 
     def add_setting(self, setting, value):
         label = Gtk.Label()
-        label.set_markup("<b>{}:</b> {}".format(setting, value))
+        label.set_markup(f"<b>{setting}:</b> {value}")
         label.set_alignment(0.0, 0.5)
         label.show()
         self.pack_start(label, False, False, 0)
@@ -465,9 +465,9 @@ class ExportAssistant(Assistant):
                 include_day = True
                 if self.is_filtered:
                     include_day = False
-                    catagory_pairs = day.get_category_content_pairs()
+                    category_pairs = day.get_category_content_pairs()
                     for category in selected_categories:
-                        if category in catagory_pairs:
+                        if category in category_pairs:
                             include_day = True
                 if include_day:
                     date_format = self.journal.config.read("exportDateFormat")
@@ -523,7 +523,7 @@ class Exporter:
     def DEFAULTPATH(self):
         return os.path.join(
             os.path.expanduser("~"),
-            "RedNotebook-Export_{}.{}".format(datetime.date.today(), self.EXTENSION),
+            f"RedNotebook-Export_{datetime.date.today()}.{self.EXTENSION}",
         )
 
 

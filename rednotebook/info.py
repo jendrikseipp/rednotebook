@@ -28,14 +28,14 @@ if not hasattr(builtins, "_"):
 
 program_name = "RedNotebook"
 tagline = _("A Desktop Journal")
-version = "2.26"
+version = "2.27.2"
 author = "Jendrik Seipp"
 author_mail = "jendrikseipp@gmail.com"
 copyright_ = "Copyright (c) 2008-2022 Jendrik Seipp"
 url = "https://rednotebook.app"
 downloads_url = "https://rednotebook.app/downloads.html"
-answers_url = "https://answers.launchpad.net/rednotebook"
-translation_url = "https://translations.launchpad.net/rednotebook/"
+donation_url = "https://rednotebook.app/downloads.html"
+translation_url = "https://hosted.weblate.org/engage/rednotebook/"
 bug_url = "https://github.com/jendrikseipp/rednotebook/issues"
 version_url = "https://raw.githubusercontent.com/jendrikseipp/rednotebook/master/rednotebook/info.py"
 contributors_url = "https://github.com/jendrikseipp/rednotebook/graphs/contributors"
@@ -44,12 +44,14 @@ discussion_url = "https://github.com/jendrikseipp/rednotebook/discussions"
 developers = ["%(author)s <%(author_mail)s>" % locals()]
 artists = ["Ciaran"]
 
-comments = """\
+comments = _(
+    """\
 RedNotebook is a modern desktop journal. It lets you format, tag and
 search your entries. You can also add pictures, links and customizable
-templates, spell check your notes, and export to plain text, HTML,
-Latex or PDF.
+templates, spell check your notes, and export to plain text, HTML or
+Latex.
 """
+)
 
 journal_path_help = """\
 (optional) Specify the directory storing the journal data.

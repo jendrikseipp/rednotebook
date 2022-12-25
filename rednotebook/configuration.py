@@ -92,7 +92,7 @@ class Config(dict):
             if "=" not in line:
                 continue
             pair = line.partition("=")[::2]
-            key, value = [s.strip() for s in pair]
+            key, value = (s.strip() for s in pair)
             # Skip obsolete keys to prevent rewriting them to disk.
             if key in self.obsolete_keys:
                 continue
@@ -148,7 +148,7 @@ class Config(dict):
         lines = []
         for key, value in sorted(self.items()):
             if key not in self.suppressed_keys:
-                lines.append("{}={}".format(key, value))
+                lines.append(f"{key}={value}")
 
         try:
             filesystem.make_directory(os.path.dirname(self.filename))

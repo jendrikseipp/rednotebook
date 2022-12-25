@@ -12,15 +12,15 @@ Latex or PDF.
 
 ## Requirements
 
-  * Python (>= 3.4): https://www.python.org
-  * GTK (>= 3.18): https://www.gtk.org
-  * GtkSourceView (>= 3.18): https://wiki.gnome.org/Projects/GtkSourceView
-  * WebKitGTK (>= 2.16, not needed for Windows): https://webkitgtk.org
-  * PyYAML (>= 3.10): https://pyyaml.org
+  * Python (3.6+): https://www.python.org
+  * GTK (3.18+): https://www.gtk.org
+  * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
+  * PyYAML (3.10+): https://pyyaml.org
+  * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
 
 Recommended libraries:
 
-  * PyEnchant for spell checking (>= 1.6): https://pypi.org/project/pyenchant/
+  * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/
 
 ## Run from source
 
@@ -39,9 +39,9 @@ Start RedNotebook:
 
   * The authors of the libraries listed under 'Requirements'.
   * Ciaran for creating the RedNotebook icon.
-  * The txt2tags team (https://txt2tags.org) for their markup conversion tool.
-  * Dieter Verfaillie for his elib.intl module
-    (https://github.com/dieterv/elib.intl)
+  * The [txt2tags](https://txt2tags.org) team for their markup conversion tool.
+  * Dieter Verfaillie for his [elib.intl](https://github.com/dieterv/elib.intl) module.
+  * The Weblate team for hosting [translations for RedNotebook](https://hosted.weblate.org/engage/rednotebook/).
 
 
 ## License notes

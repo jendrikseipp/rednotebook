@@ -211,15 +211,15 @@ class Day:
         return str(self), results
 
     def search_in_text(self, search_text):
-        occurence = self.text.upper().find(search_text.upper())
+        occurrence = self.text.upper().find(search_text.upper())
 
         # Check if search_text is in text
-        if occurence < 0:
+        if occurrence < 0:
             return None
 
-        found_text = self.text[occurence : occurence + len(search_text)]
+        found_text = self.text[occurrence : occurrence + len(search_text)]
         result_text = get_text_with_dots(
-            self.text, occurence, occurence + len(search_text), found_text
+            self.text, occurrence, occurrence + len(search_text), found_text
         )
         return result_text
 
@@ -260,9 +260,9 @@ class Month:
         return self.days[day_number]
 
     def __str__(self):
-        lines = ["Month {} {}".format(self.year_number, self.month_number)]
+        lines = [f"Month {self.year_number} {self.month_number}"]
         for day_number, day in self.days.items():
-            lines.append("{}: {}".format(day_number, day.text))
+            lines.append(f"{day_number}: {day.text}")
         return "\n".join(lines)
 
     @property

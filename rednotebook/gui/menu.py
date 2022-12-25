@@ -62,10 +62,10 @@ MENUBAR_XML = """\
     <menu action="HelpMenu">
         <menuitem action="Help"/>
         <separator/>
-        <menuitem action="OnlineHelp"/>
+        <menuitem action="GiveFeedback"/>
+        <menuitem action="Donate"/>
         <menuitem action="Translate"/>
         <menuitem action="ReportBug"/>
-        <menuitem action="GiveFeedback"/>
         <separator/>
         <menuitem action="Info"/>
     </menu>
@@ -236,19 +236,19 @@ class MainMenuBar:
                     self.on_help_menu_item_activate,
                 ),
                 (
-                    "OnlineHelp",
+                    "Donate",
                     None,
-                    _("Get Help Online"),
+                    _("Donate"),
                     None,
-                    _("Browse answered questions or ask a new one"),
-                    self.on_online_help,
+                    _("Support RedNotebook with a donation"),
+                    self.on_donate,
                 ),
                 (
                     "Translate",
                     None,
                     _("Translate RedNotebook"),
                     None,
-                    _("Connect to the Launchpad website to help translate RedNotebook"),
+                    _("Help translate RedNotebook to your language"),
                     self.on_translate,
                 ),
                 (
@@ -410,8 +410,8 @@ class MainMenuBar:
         )
         utils.show_html_in_browser(html, os.path.join(temp_dir, "help.html"))
 
-    def on_online_help(self, widget):
-        webbrowser.open(info.answers_url)
+    def on_donate(self, widget):
+        webbrowser.open(info.donation_url)
 
     def on_translate(self, widget):
         webbrowser.open(info.translation_url)
