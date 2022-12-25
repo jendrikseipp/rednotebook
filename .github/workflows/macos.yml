@@ -25,7 +25,7 @@ jobs:
           # brew install adwaita-icon-theme cairo enchant glib librsvg
           brew install enchant gtk+3 gtksourceview4 gtk-mac-integration gobject-introspection
           # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
-          python3 -m pip install pyenchant pyyaml tox==3.27.1 pygobject
+          python3 -m pip install pyenchant pyyaml tox==3.27.1 pygobject pyinstaller
           python3 -m pip freeze
         shell: bash
       - name: Set up Python
@@ -46,6 +46,12 @@ jobs:
       - name: Run tests
         run: |
           python3 -c "import gi"
-          python3 -m tox -e py
+          #python3 -m tox -e py
+          python3 -m pyinstaller \
+            --name "rednotebook" \
+            --windowed \
+            --add-data ./rednotebook/files:files/ \
+            --add-data ./rednotebook/images:images/ \
+            ./rednotebook/journal.py
         shell: bash
 
