@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-01 22:16+0100\n"
+"POT-Creation-Date: 2022-12-28 23:30+0100\n"
 "PO-Revision-Date: 2018-10-17 13:40+0000\n"
 "Last-Translator: Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
@@ -19,16 +19,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2018-10-18 05:33+0000\n"
 "X-Generator: Launchpad (build 18790)\n"
 
-#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:129
-#: ../rednotebook/gui/categories.py:47 ../rednotebook/gui/clouds.py:213
+#: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
+#: ../rednotebook/gui/categories.py:48 ../rednotebook/gui/clouds.py:213
 msgid "Tags"
 msgstr "タグ"
 
-#: ../rednotebook/help.py:26
+#: ../rednotebook/help.py:35
 msgid "Hello!"
 msgstr "こんにちは！"
 
-#: ../rednotebook/help.py:28
+#: ../rednotebook/help.py:37
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -36,7 +36,7 @@ msgstr ""
 "使い方を示すため、いくつかの例文が挿入されています。例文はいつでも消去できま"
 "す。"
 
-#: ../rednotebook/help.py:33
+#: ../rednotebook/help.py:42
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -44,29 +44,29 @@ msgstr "詳しい説明は”ヘルプ”->”目次”を参照してくださ�
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:38 tmp/main_window.glade.h:17
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
 msgid "Preview"
 msgstr "プレビュー"
 
-#: ../rednotebook/help.py:40
+#: ../rednotebook/help.py:49
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr "RedNotebook には「編集」と「プレビュー」の2つのモードがあります。"
 
-#: ../rednotebook/help.py:42
+#: ../rednotebook/help.py:51
 msgid "Click on Edit above to see the difference."
 msgstr "編集をクリックするとその違いがわかります。"
 
-#: ../rednotebook/help.py:45
+#: ../rednotebook/help.py:54
 msgid "Tagging is easy."
 msgstr "タグは簡単。"
 
-#: ../rednotebook/help.py:46
+#: ../rednotebook/help.py:55
 msgid "Just use #hashtags like on twitter."
 msgstr "ツイッターの #hashtag のように。"
 
-#: ../rednotebook/help.py:50
+#: ../rednotebook/help.py:59
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -76,52 +76,72 @@ msgstr ""
 "ル--公園に行ってフリスビーで遊びました。それから私たちは「ライフ・オブ・ブラ"
 "イアン」っていう映画を見ました。"
 
+#: ../rednotebook/help.py:64
+#, fuzzy
+#| msgid "Template"
+msgid "Templates"
+msgstr "テンプレート"
+
+#: ../rednotebook/help.py:65
+msgid "RedNotebook supports templates."
+msgstr ""
+
+#: ../rednotebook/help.py:66
+msgid "Click on the arrow next to the \"Template\" button to see some options."
+msgstr ""
+
+#: ../rednotebook/help.py:68
+msgid ""
+"You can have one template for every day\n"
+"of the week and unlimited arbitrarily named templates."
+msgstr ""
+
 #. Translators: both are verbs
-#: ../rednotebook/help.py:63
+#: ../rednotebook/help.py:74
 msgid "Save and Export"
 msgstr "保存とエクスポート"
 
-#: ../rednotebook/help.py:65
+#: ../rednotebook/help.py:76
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
 msgstr "データはプログラム終了時および一定間隔で自動的に保存されます。"
 
-#: ../rednotebook/help.py:68
+#: ../rednotebook/help.py:79
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr "データの損失を避けるため、常にバックアップを作成しましょう。"
 
-#: ../rednotebook/help.py:69
+#: ../rednotebook/help.py:80
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "メニューバーの \"日記\" -> \"バックアップ\" から全てのデータを zip ファイルに"
 "保存できます。"
 
-#: ../rednotebook/help.py:70
+#: ../rednotebook/help.py:81
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "\"日記\" メニューからは \"エクスポート\" もできます。"
 
-#: ../rednotebook/help.py:71
+#: ../rednotebook/help.py:82
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "\"エクスポート\" から日記をプレーンテキスト、PDF、HTML、Latex でエクスポート"
 "できます。"
 
-#: ../rednotebook/help.py:74
+#: ../rednotebook/help.py:85
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr "バグ、エラーを見つけたら、ぜひ連絡をください。"
 
-#: ../rednotebook/help.py:75
+#: ../rednotebook/help.py:86
 msgid "Any feedback is appreciated."
 msgstr "どんなフィードバックでも歓迎します。"
 
-#: ../rednotebook/help.py:78
+#: ../rednotebook/help.py:89
 msgid "Have a nice day!"
 msgstr "良い一日を！"
 
-#: ../rednotebook/help.py:103
+#: ../rednotebook/help.py:114
 #, fuzzy
 #| msgid ""
 #| "=== Multiple entries ===\n"
@@ -139,7 +159,7 @@ msgstr ""
 "\", もうひとつは \"Family\")  エントリーに異なるタイトル(=== Work ===,  )を使"
 "います。そして水平線(20個の\"=”)を入れます。"
 
-#: ../rednotebook/help.py:110
+#: ../rednotebook/help.py:121
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -194,29 +214,29 @@ msgstr "日記を付けた日の割合"
 msgid "Lines"
 msgstr "行"
 
-#: ../rednotebook/util/utils.py:118
+#: ../rednotebook/util/utils.py:116
 #, python-format
 msgid "You have version <b>%s</b>."
 msgstr "現在のバージョンは <b>%s</b> です。"
 
-#: ../rednotebook/util/utils.py:120
+#: ../rednotebook/util/utils.py:118
 #, python-format
 msgid "The latest version is <b>%s</b>."
 msgstr "最新バージョンは <b>%s</b> です。"
 
-#: ../rednotebook/util/utils.py:123
+#: ../rednotebook/util/utils.py:121
 msgid "If you like the program, please consider making a donation."
 msgstr ""
 
-#: ../rednotebook/util/utils.py:125
+#: ../rednotebook/util/utils.py:123
 msgid "Do you want to visit the RedNotebook homepage?"
 msgstr "RedNotebook のホームページを訪問しますか?"
 
-#: ../rednotebook/util/utils.py:133
+#: ../rednotebook/util/utils.py:131
 msgid "Do not ask again"
 msgstr "次回から確認しない"
 
-#: ../rednotebook/util/utils.py:153
+#: ../rednotebook/util/utils.py:160
 msgid "unknown"
 msgstr "不明"
 
@@ -453,19 +473,19 @@ msgstr "今日の曜日用テンプレート"
 msgid "Create New Template"
 msgstr "新しいテンプレートを作成"
 
-#: ../rednotebook/gui/categories.py:132
+#: ../rednotebook/gui/categories.py:133
 msgid "Empty entries are not allowed"
 msgstr "空のエントリーは許可されません"
 
-#: ../rednotebook/gui/categories.py:333
+#: ../rednotebook/gui/categories.py:334
 msgid "Change this text"
 msgstr "このテキストを変更する"
 
-#: ../rednotebook/gui/categories.py:341
+#: ../rednotebook/gui/categories.py:342
 msgid "Add a new entry"
 msgstr "新しいエントリーの追加"
 
-#: ../rednotebook/gui/categories.py:349
+#: ../rednotebook/gui/categories.py:350
 msgid "Delete this entry"
 msgstr "このエントリーを削除する"
 
@@ -581,20 +601,24 @@ msgid "Open the RedNotebook documentation"
 msgstr "RedNotebook ドキュメントを開く"
 
 #: ../rednotebook/gui/menu.py:241
-msgid "Get Help Online"
-msgstr "オンラインヘルプを見る"
+msgid "Donate"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:243
-msgid "Browse answered questions or ask a new one"
-msgstr "回答済みの質問の参照や新しい質問の投稿を行う"
+#, fuzzy
+#| msgid "Open the RedNotebook documentation"
+msgid "Support RedNotebook with a donation"
+msgstr "RedNotebook ドキュメントを開く"
 
 #: ../rednotebook/gui/menu.py:249
 msgid "Translate RedNotebook"
 msgstr "RedNotebook を翻訳"
 
 #: ../rednotebook/gui/menu.py:251
-msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Launchpad にアクセスして RedNotebook の翻訳を手伝う"
+#, fuzzy
+#| msgid "Translate RedNotebook"
+msgid "Help translate RedNotebook to your language"
+msgstr "RedNotebook を翻訳"
 
 #: ../rednotebook/gui/menu.py:257
 msgid "Report a Problem"
@@ -1104,6 +1128,14 @@ msgstr "プレーンテキスト"
 msgid "A Desktop Journal"
 msgstr "デスクトップジャーナル (日記)"
 
+#: ../rednotebook/info.py:48
+msgid ""
+"RedNotebook is a modern desktop journal. It lets you format, tag and\n"
+"search your entries. You can also add pictures, links and customizable\n"
+"templates, spell check your notes, and export to plain text, HTML or\n"
+"Latex.\n"
+msgstr ""
+
 #: tmp/main_window.glade.h:3
 msgid "Select backup filename"
 msgstr "バックアップのファイル名を選択"
@@ -1221,6 +1253,15 @@ msgstr "<b>選択された日付</b>"
 #: tmp/main_window.glade.h:34
 msgid "<b>Overall</b>"
 msgstr "<b>全体</b>"
+
+#~ msgid "Get Help Online"
+#~ msgstr "オンラインヘルプを見る"
+
+#~ msgid "Browse answered questions or ask a new one"
+#~ msgstr "回答済みの質問の参照や新しい質問の投稿を行う"
+
+#~ msgid "Connect to the Launchpad website to help translate RedNotebook"
+#~ msgstr "Launchpad にアクセスして RedNotebook の翻訳を手伝う"
 
 #~ msgid "No text or tag has been selected."
 #~ msgstr "テキストまたはタグが選択されていません。"

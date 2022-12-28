@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-01 22:16+0100\n"
+"POT-Creation-Date: 2022-12-28 23:30+0100\n"
 "PO-Revision-Date: 2015-11-01 21:12+0000\n"
 "Last-Translator: Tony Pratschke <irish.translator@gmail.com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -18,16 +18,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
-#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:129
-#: ../rednotebook/gui/categories.py:47 ../rednotebook/gui/clouds.py:213
+#: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
+#: ../rednotebook/gui/categories.py:48 ../rednotebook/gui/clouds.py:213
 msgid "Tags"
 msgstr "Clibeanna"
 
-#: ../rednotebook/help.py:26
+#: ../rednotebook/help.py:35
 msgid "Hello!"
 msgstr "Haló"
 
-#: ../rednotebook/help.py:28
+#: ../rednotebook/help.py:37
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -35,7 +35,7 @@ msgstr ""
 "Cuireadh isteach roinnt téacs mar shampla chun cabhair a thabhairt duit "
 "tosú, ach d'fhéadfá é a scrios nuair is mian leat"
 
-#: ../rednotebook/help.py:33
+#: ../rednotebook/help.py:42
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -45,29 +45,29 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:38 tmp/main_window.glade.h:17
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
 msgid "Preview"
 msgstr "Réamhamharc"
 
-#: ../rednotebook/help.py:40
+#: ../rednotebook/help.py:49
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr "Tá dhá mhodh i RedNotebook, an _modh_eagair agus an_modh_réamhamhairc."
 
-#: ../rednotebook/help.py:42
+#: ../rednotebook/help.py:51
 msgid "Click on Edit above to see the difference."
 msgstr "Gliogáil ar Eagar thuas agus féach an difríocht."
 
-#: ../rednotebook/help.py:45
+#: ../rednotebook/help.py:54
 msgid "Tagging is easy."
 msgstr "Is éasca é clibeáil"
 
-#: ../rednotebook/help.py:46
+#: ../rednotebook/help.py:55
 msgid "Just use #hashtags like on twitter."
 msgstr "Bain úsáid as #haischlibeanna díreach mar ar Twitter"
 
-#: ../rednotebook/help.py:50
+#: ../rednotebook/help.py:59
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -78,12 +78,32 @@ msgstr ""
 "taitneamh as frisbee marfach a imirt. Ina dhiaidh sin, bhíomar ag amharc ar "
 "\"__Life of Brian__\"."
 
+#: ../rednotebook/help.py:64
+#, fuzzy
+#| msgid "Template"
+msgid "Templates"
+msgstr "Teimpléad"
+
+#: ../rednotebook/help.py:65
+msgid "RedNotebook supports templates."
+msgstr ""
+
+#: ../rednotebook/help.py:66
+msgid "Click on the arrow next to the \"Template\" button to see some options."
+msgstr ""
+
+#: ../rednotebook/help.py:68
+msgid ""
+"You can have one template for every day\n"
+"of the week and unlimited arbitrarily named templates."
+msgstr ""
+
 #. Translators: both are verbs
-#: ../rednotebook/help.py:63
+#: ../rednotebook/help.py:74
 msgid "Save and Export"
 msgstr "Cuir i dtaisce agus Easportáil"
 
-#: ../rednotebook/help.py:65
+#: ../rednotebook/help.py:76
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -91,45 +111,45 @@ msgstr ""
 "Déanfar gach rud a chuireann tú isteach a chur i dtaisce go huathoibríoch go "
 "tráthrialta agus arís nuair a fhágann tú an ríomhchlár."
 
-#: ../rednotebook/help.py:68
+#: ../rednotebook/help.py:79
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "Ba chóir duit cóip chúltaca a dhéanamh ar do dhialann go rialta chun "
 "caillteanas sonraí a sheachaint."
 
-#: ../rednotebook/help.py:69
+#: ../rednotebook/help.py:80
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "Déanann  \"Cúltacaigh\" sa roghchlár \"Dialann\" na sonraí go léir a chuir "
 "tú isteach a chur i dtaisce i gcomhad zip."
 
-#: ../rednotebook/help.py:70
+#: ../rednotebook/help.py:81
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "Tá an cnaipe \" Easportáil\" sa ríomhchlár \"Dialann\" chomh maith."
 
-#: ../rednotebook/help.py:71
+#: ../rednotebook/help.py:82
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "Gliogáil ar \"Easportail\" agus déan do dhialann a easportáil chuig "
 "Gnáththéacs, PDF, HTML, nó Latex."
 
-#: ../rednotebook/help.py:74
+#: ../rednotebook/help.py:85
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "Má thagann tú ar aon dearmad, cuir nóta chugamsa le do thoil, ionas gur "
 "féidir liom é a dheisiú."
 
-#: ../rednotebook/help.py:75
+#: ../rednotebook/help.py:86
 msgid "Any feedback is appreciated."
 msgstr "Beidh fáilte roimh aon aiseolas."
 
-#: ../rednotebook/help.py:78
+#: ../rednotebook/help.py:89
 msgid "Have a nice day!"
 msgstr "Bain taitneamh as an lá"
 
-#: ../rednotebook/help.py:103
+#: ../rednotebook/help.py:114
 #, fuzzy
 #| msgid ""
 #| "=== Multiple entries ===\n"
@@ -148,7 +168,7 @@ msgstr ""
 "agus na hiontralacha scartha óna chéile le teidil éagsúla (===Obair===, "
 "===Teaghlach===) agus línte deighilte cothromanacha a úsáid (20\"=\"s)."
 
-#: ../rednotebook/help.py:110
+#: ../rednotebook/help.py:121
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -203,29 +223,29 @@ msgstr "Céatadán na laethanta curtha in eagar"
 msgid "Lines"
 msgstr "Línte"
 
-#: ../rednotebook/util/utils.py:118
+#: ../rednotebook/util/utils.py:116
 #, python-format
 msgid "You have version <b>%s</b>."
 msgstr "Is é <b>%s</b> an leagan atá agat."
 
-#: ../rednotebook/util/utils.py:120
+#: ../rednotebook/util/utils.py:118
 #, python-format
 msgid "The latest version is <b>%s</b>."
 msgstr "Is é <b>%s</b> an leagan is déanaí."
 
-#: ../rednotebook/util/utils.py:123
+#: ../rednotebook/util/utils.py:121
 msgid "If you like the program, please consider making a donation."
 msgstr ""
 
-#: ../rednotebook/util/utils.py:125
+#: ../rednotebook/util/utils.py:123
 msgid "Do you want to visit the RedNotebook homepage?"
 msgstr "Ar mhian leat cuairt a thabhairt ar leathanach baile RedNotebook?"
 
-#: ../rednotebook/util/utils.py:133
+#: ../rednotebook/util/utils.py:131
 msgid "Do not ask again"
 msgstr "Ná fiafraigh arís"
 
-#: ../rednotebook/util/utils.py:153
+#: ../rednotebook/util/utils.py:160
 msgid "unknown"
 msgstr "neamhaithnid"
 
@@ -463,19 +483,19 @@ msgstr "Teimpléad an lae inniu"
 msgid "Create New Template"
 msgstr "Cruthaigh Teimpléad Nua"
 
-#: ../rednotebook/gui/categories.py:132
+#: ../rednotebook/gui/categories.py:133
 msgid "Empty entries are not allowed"
 msgstr "Ní ceadaítear iontralacha bána"
 
-#: ../rednotebook/gui/categories.py:333
+#: ../rednotebook/gui/categories.py:334
 msgid "Change this text"
 msgstr "Athraigh an téacs seo"
 
-#: ../rednotebook/gui/categories.py:341
+#: ../rednotebook/gui/categories.py:342
 msgid "Add a new entry"
 msgstr "Cuir iontráil nua leis"
 
-#: ../rednotebook/gui/categories.py:349
+#: ../rednotebook/gui/categories.py:350
 msgid "Delete this entry"
 msgstr "Scrios an iontráil seo"
 
@@ -593,21 +613,24 @@ msgid "Open the RedNotebook documentation"
 msgstr "Oscail doiciméadúchán RedNotebook"
 
 #: ../rednotebook/gui/menu.py:241
-msgid "Get Help Online"
-msgstr "Faigh cabhair ar líne"
+msgid "Donate"
+msgstr ""
 
 #: ../rednotebook/gui/menu.py:243
-msgid "Browse answered questions or ask a new one"
-msgstr "Déan innilt ar cheisteanna freagraithe nó cuir ceist nua"
+#, fuzzy
+#| msgid "Open the RedNotebook documentation"
+msgid "Support RedNotebook with a donation"
+msgstr "Oscail doiciméadúchán RedNotebook"
 
 #: ../rednotebook/gui/menu.py:249
 msgid "Translate RedNotebook"
 msgstr "Aistrigh RedNotebook"
 
 #: ../rednotebook/gui/menu.py:251
-msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr ""
-"Déan nasc le suíomh gréasáin Launchpad le dul i mbun RedNotebook a haistriú"
+#, fuzzy
+#| msgid "Translate RedNotebook"
+msgid "Help translate RedNotebook to your language"
+msgstr "Aistrigh RedNotebook"
 
 #: ../rednotebook/gui/menu.py:257
 msgid "Report a Problem"
@@ -1114,6 +1137,14 @@ msgstr "Gnáth-théacs"
 msgid "A Desktop Journal"
 msgstr "Dialann Deisce"
 
+#: ../rednotebook/info.py:48
+msgid ""
+"RedNotebook is a modern desktop journal. It lets you format, tag and\n"
+"search your entries. You can also add pictures, links and customizable\n"
+"templates, spell check your notes, and export to plain text, HTML or\n"
+"Latex.\n"
+msgstr ""
+
 #: tmp/main_window.glade.h:3
 msgid "Select backup filename"
 msgstr "Roghnaigh ainm comhaid cúltacaithe"
@@ -1231,6 +1262,17 @@ msgstr "<b>Lá roghnaithe</b>"
 #: tmp/main_window.glade.h:34
 msgid "<b>Overall</b>"
 msgstr "<b>Iomlán</b>"
+
+#~ msgid "Get Help Online"
+#~ msgstr "Faigh cabhair ar líne"
+
+#~ msgid "Browse answered questions or ask a new one"
+#~ msgstr "Déan innilt ar cheisteanna freagraithe nó cuir ceist nua"
+
+#~ msgid "Connect to the Launchpad website to help translate RedNotebook"
+#~ msgstr ""
+#~ "Déan nasc le suíomh gréasáin Launchpad le dul i mbun RedNotebook a "
+#~ "haistriú"
 
 #~ msgid "No text or tag has been selected."
 #~ msgstr "Níor roghnaíodh aon téacs ná chlib."
