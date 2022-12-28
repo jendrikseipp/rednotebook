@@ -95,7 +95,7 @@ parameters = {
             "flake8-bugbear==21.11.28",
             "flake8-comprehensions==3.7.0",
             "flake8-executable==2.1.1",
-            "isort==5.11.4",
+            "isort==5.10.1",
             "pyupgrade==2.32.0",
             "vulture==1.6",
         ],
