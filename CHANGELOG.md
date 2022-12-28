@@ -1,4 +1,7 @@
-# 2.27.2 (2022-12-01)
+# 2.28 (unreleased)
+* Remove code that uses the deprecated distutils module (Jendrik Seipp, #655, #656).
+
+* # 2.27.2 (2022-12-01)
 * Fix passing command line arguments (Jendrik Seipp).
 * Update translation files (Jendrik Seipp).
 
