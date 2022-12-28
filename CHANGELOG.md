@@ -1,5 +1,5 @@
-# 2.28 (unreleased)
-* Remove code that uses the deprecated distutils module (Jendrik Seipp, #655, #656).
+# 2.28 (2022-12-28)
+* Remove code that uses the deprecated `distutils` module (Jendrik Seipp, #655, #656).
 * Fix checking for newer versions (Jendrik Seipp).
 * Gracefully handle unsupported locale settings (Jendrik Seipp, #613).
 
