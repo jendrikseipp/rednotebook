@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-28 23:30+0100\n"
+"POT-Creation-Date: 2022-12-28 23:45+0100\n"
 "PO-Revision-Date: 2022-11-19 05:32+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/rednotebook/"
@@ -22,16 +22,14 @@ msgstr ""
 
 #: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
 #: ../rednotebook/gui/categories.py:48 ../rednotebook/gui/clouds.py:213
-#: ../rednotebook/help.py:24 ../rednotebook/util/markup.py:129
-#: ../rednotebook/gui/categories.py:47
 msgid "Tags"
 msgstr "Étiquettes"
 
-#: ../rednotebook/help.py:35 ../rednotebook/help.py:26
+#: ../rednotebook/help.py:35
 msgid "Hello!"
 msgstr "Bonjour !"
 
-#: ../rednotebook/help.py:37 ../rednotebook/help.py:28
+#: ../rednotebook/help.py:37
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
@@ -39,7 +37,7 @@ msgstr ""
 "Un texte d'exemple a été ajouté pour vous aider à débuter ; vous pouvez "
 "l'effacer à tout moment."
 
-#: ../rednotebook/help.py:42 ../rednotebook/help.py:33
+#: ../rednotebook/help.py:42
 msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
@@ -50,11 +48,10 @@ msgstr ""
 #. Translators: noun
 #. Translators: Verb
 #: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
-#: ../rednotebook/help.py:38
 msgid "Preview"
 msgstr "Aperçu"
 
-#: ../rednotebook/help.py:49 ../rednotebook/help.py:40
+#: ../rednotebook/help.py:49
 msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
@@ -62,19 +59,19 @@ msgstr ""
 "Il y a deux modes dans RedNoteBook, le mode __édition__ et le mode "
 "__prévisualisation__."
 
-#: ../rednotebook/help.py:51 ../rednotebook/help.py:42
+#: ../rednotebook/help.py:51
 msgid "Click on Edit above to see the difference."
 msgstr "Cliquer sur Éditer ci-dessus pour voir la différence."
 
-#: ../rednotebook/help.py:54 ../rednotebook/help.py:45
+#: ../rednotebook/help.py:54
 msgid "Tagging is easy."
 msgstr "Étiqueter est facile."
 
-#: ../rednotebook/help.py:55 ../rednotebook/help.py:46
+#: ../rednotebook/help.py:55
 msgid "Just use #hashtags like on twitter."
 msgstr "Utilisez simplement #motdièse, comme sur twitter."
 
-#: ../rednotebook/help.py:59 ../rednotebook/help.py:50
+#: ../rednotebook/help.py:59
 msgid ""
 "Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
@@ -105,11 +102,11 @@ msgid ""
 msgstr ""
 
 #. Translators: both are verbs
-#: ../rednotebook/help.py:74 ../rednotebook/help.py:63
+#: ../rednotebook/help.py:74
 msgid "Save and Export"
 msgstr "Sauvegarder et Exporter"
 
-#: ../rednotebook/help.py:76 ../rednotebook/help.py:65
+#: ../rednotebook/help.py:76
 msgid ""
 "Everything you enter will be saved automatically at regular intervals and "
 "when you exit the program."
@@ -117,45 +114,45 @@ msgstr ""
 "Tout ce que vous écrivez sera automatiquement enregistré à intervalles "
 "réguliers, et aussi quand vous quitterez le programme."
 
-#: ../rednotebook/help.py:79 ../rednotebook/help.py:68
+#: ../rednotebook/help.py:79
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "Pour éviter toute perte de données, vous devriez sauvegarder votre journal "
 "régulièrement."
 
-#: ../rednotebook/help.py:80 ../rednotebook/help.py:69
+#: ../rednotebook/help.py:80
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
 "« Sauvegarder » dans le menu « Journal » enregistre toutes vos données "
 "entrées dans un fichier zip."
 
-#: ../rednotebook/help.py:81 ../rednotebook/help.py:70
+#: ../rednotebook/help.py:81
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
 msgstr "Dans le menu « Journal » vous trouverez aussi le bouton « Exporter »."
 
-#: ../rednotebook/help.py:82 ../rednotebook/help.py:71
+#: ../rednotebook/help.py:82
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
 "Cliquez sur « Exporter » pour exporter votre journal dans un fichier texte, "
 "PDF, HTML ou LaTeX."
 
-#: ../rednotebook/help.py:85 ../rednotebook/help.py:74
+#: ../rednotebook/help.py:85
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
 "Si vous rencontrez des erreurs, merci de me les signaler pour que je puisse "
 "les corriger."
 
-#: ../rednotebook/help.py:86 ../rednotebook/help.py:75
+#: ../rednotebook/help.py:86
 msgid "Any feedback is appreciated."
 msgstr "Tout retour d'utilisation est apprécié."
 
-#: ../rednotebook/help.py:89 ../rednotebook/help.py:78
+#: ../rednotebook/help.py:89
 msgid "Have a nice day!"
 msgstr "Bonne journée !"
 
-#: ../rednotebook/help.py:103
+#: ../rednotebook/help.py:114
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by separating your entries with "
@@ -165,7 +162,7 @@ msgstr ""
 "Vous pouvez ajouter plusieurs entrées sur un seul jour en séparant vos "
 "entrées avec divers titres (=== Travail ===, === Famille ===)."
 
-#: ../rednotebook/help.py:121 ../rednotebook/help.py:110
+#: ../rednotebook/help.py:121
 msgid ""
 "=== Work ===\n"
 "Here goes the first entry. It is about #work.\n"
@@ -220,29 +217,29 @@ msgstr "Pourcentage de jours édités"
 msgid "Lines"
 msgstr "Lignes"
 
-#: ../rednotebook/util/utils.py:116 ../rednotebook/util/utils.py:118
+#: ../rednotebook/util/utils.py:116
 #, python-format
 msgid "You have version <b>%s</b>."
 msgstr "Vous utilisez la version <b>%s</b>."
 
-#: ../rednotebook/util/utils.py:118 ../rednotebook/util/utils.py:120
+#: ../rednotebook/util/utils.py:118
 #, python-format
 msgid "The latest version is <b>%s</b>."
 msgstr "La dernière version est <b>%s</b>."
 
-#: ../rednotebook/util/utils.py:123
+#: ../rednotebook/util/utils.py:121
 msgid "If you like the program, please consider making a donation."
 msgstr "Si vous appréciez ce programme, envisagez de faire un don."
 
-#: ../rednotebook/util/utils.py:123 ../rednotebook/util/utils.py:125
+#: ../rednotebook/util/utils.py:123
 msgid "Do you want to visit the RedNotebook homepage?"
 msgstr "Voulez-vous visiter le site web de RedNoteBook ?"
 
-#: ../rednotebook/util/utils.py:131 ../rednotebook/util/utils.py:133
+#: ../rednotebook/util/utils.py:131
 msgid "Do not ask again"
 msgstr "Ne plus demander"
 
-#: ../rednotebook/util/utils.py:160 ../rednotebook/util/utils.py:153
+#: ../rednotebook/util/utils.py:160
 msgid "unknown"
 msgstr "inconnu"
 
@@ -480,19 +477,19 @@ msgstr "Le modèle du jour de cette semaine"
 msgid "Create New Template"
 msgstr "Créer un nouveau modèle"
 
-#: ../rednotebook/gui/categories.py:133 ../rednotebook/gui/categories.py:132
+#: ../rednotebook/gui/categories.py:133
 msgid "Empty entries are not allowed"
 msgstr "Les entrées vides ne sont pas autorisées"
 
-#: ../rednotebook/gui/categories.py:334 ../rednotebook/gui/categories.py:333
+#: ../rednotebook/gui/categories.py:334
 msgid "Change this text"
 msgstr "Changer ce texte"
 
-#: ../rednotebook/gui/categories.py:342 ../rednotebook/gui/categories.py:341
+#: ../rednotebook/gui/categories.py:342
 msgid "Add a new entry"
 msgstr "Ajouter une nouvelle entrée"
 
-#: ../rednotebook/gui/categories.py:350 ../rednotebook/gui/categories.py:349
+#: ../rednotebook/gui/categories.py:350
 msgid "Delete this entry"
 msgstr "Supprimer cette entrée"
 
@@ -1292,17 +1289,15 @@ msgstr "<b>Jour sélectionné</b>"
 msgid "<b>Overall</b>"
 msgstr "<b>Global</b>"
 
-#: ../rednotebook/gui/menu.py:241
-msgid "Get Help Online"
-msgstr "Obtenir de l'aide en-ligne"
+#~ msgid "Get Help Online"
+#~ msgstr "Obtenir de l'aide en-ligne"
 
-#: ../rednotebook/gui/menu.py:243
-msgid "Browse answered questions or ask a new one"
-msgstr "Parcourir les question ayant déjà une réponse ou posez en une nouvelle"
+#~ msgid "Browse answered questions or ask a new one"
+#~ msgstr ""
+#~ "Parcourir les question ayant déjà une réponse ou posez en une nouvelle"
 
-#: ../rednotebook/gui/menu.py:251
-msgid "Connect to the Launchpad website to help translate RedNotebook"
-msgstr "Se connecter au site Launchpad pour aider à traduire RedNotebook"
+#~ msgid "Connect to the Launchpad website to help translate RedNotebook"
+#~ msgstr "Se connecter au site Launchpad pour aider à traduire RedNotebook"
 
 #~ msgid "No text or tag has been selected."
 #~ msgstr "Aucun texte ou mot clé n'a été sélectionné."
