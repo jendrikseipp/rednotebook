@@ -1,4 +1,5 @@
 include *.md
+include dev/build_translations.py
 include LICENSE
 include pyproject.toml
 include run

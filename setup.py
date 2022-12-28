@@ -33,13 +33,13 @@ sys.path.insert(0, str(REPO))
 
 from rednotebook import info
 
-from dev.build_translations import build_translation_files
+from dev import build_translations
 
 
 def get_translation_files():
     po_dir = REPO / "po"
     locale_dir = REPO / "build" / "locale"
-    build_translation_files(po_dir, locale_dir)
+    build_translations.build_translation_files(po_dir, locale_dir)
     data_files = []
     for lang_dir in Path("build/locale/").iterdir():
         lang_file = lang_dir / "LC_MESSAGES" / "rednotebook.mo"

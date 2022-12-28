@@ -37,3 +37,7 @@ def main():
     print("Building translations")
     print(po_dir, "-->", locale_dir)
     build_translation_files(po_dir, locale_dir)
+
+
+if __name__ == "__main__":
+    main()
