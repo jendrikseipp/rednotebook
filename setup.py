@@ -23,45 +23,28 @@ To install RedNotebook, run "python setup.py install".
 To do a (test) installation to a different dir, use "python setup.py install --root=test-dir" instead.
 """
 
-from glob import glob
-import os
-import os.path
-import subprocess
+from pathlib import Path
 import sys
 
 from setuptools import setup
 
-REPO = os.path.dirname(os.path.abspath(__file__))
-MSGFMT = os.path.join(REPO, "rednotebook", "external", "msgfmt.py")
-
-sys.path.insert(0, REPO)
+REPO = Path(__file__).resolve().parent
+sys.path.insert(0, str(REPO))
 
 from rednotebook import info
 
-
-def _build_translation_files():
-    po_dir = os.path.join(REPO, "po")
-    locale_dir = os.path.join(REPO, "build", "locale")
-    assert os.path.isdir(po_dir), po_dir
-    for src in sorted(glob(os.path.join(po_dir, "*.po"))):
-        lang, _ = os.path.splitext(os.path.basename(src))
-        dest = os.path.join(locale_dir, lang, "LC_MESSAGES", "rednotebook.mo")
-        dest_dir = os.path.dirname(dest)
-        if not os.path.exists(dest_dir):
-            os.makedirs(dest_dir)
-        print(f"Compiling {src} to {dest}")
-        subprocess.check_call([sys.executable, MSGFMT, "--output-file", dest, src])
+from dev.build_translations import build_translation_files
 
 
 def get_translation_files():
-    _build_translation_files()
+    po_dir = REPO / "po"
+    locale_dir = REPO / "build" / "locale"
+    build_translation_files(po_dir, locale_dir)
     data_files = []
-    for lang in os.listdir("build/locale/"):
-        lang_dir = os.path.join("share", "locale", lang, "LC_MESSAGES")
-        lang_file = os.path.join(
-            "build", "locale", lang, "LC_MESSAGES", "rednotebook.mo"
-        )
-        data_files.append((lang_dir, [lang_file]))
+    for lang_dir in Path("build/locale/").iterdir():
+        lang_file = lang_dir / "LC_MESSAGES" / "rednotebook.mo"
+        dest_dir = Path("share") / "locale" / lang_dir.name / "LC_MESSAGES"
+        data_files.append((str(dest_dir), [str(lang_file)]))
     return data_files
 
 
