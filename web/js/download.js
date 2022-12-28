@@ -10,7 +10,7 @@ function detect_os (ua_fragment, output_os)
     }
 }
 
-detect_os ("Intel Mac OS X", "OSX");
+detect_os ("Mac", "OSX");
 detect_os ("Win", "Win");
 detect_os ("openSUSE", "Linux");
 detect_os ("SUSE", "Linux");
