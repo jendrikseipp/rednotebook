@@ -16,6 +16,7 @@ Latex or PDF.
   * GTK (3.18+): https://www.gtk.org
   * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
   * PyYAML (3.10+): https://pyyaml.org
+  * Setuptools (60.0+): https://pypi.org/project/setuptools
   * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
 
 Recommended libraries:

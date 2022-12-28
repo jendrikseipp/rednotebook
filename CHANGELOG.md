@@ -1,3 +1,6 @@
+# 2.28.1 (2022-12-28)
+* Require `setuptools` for Debian package (Jendrik Seipp).
+
 # 2.28 (2022-12-28)
 * Remove code that uses the deprecated `distutils` module (Jendrik Seipp, #655, #656).
 * Fix checking for newer versions (Jendrik Seipp).
