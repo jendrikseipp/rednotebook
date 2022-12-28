@@ -199,7 +199,7 @@ class Journal(Gtk.Application):
             *args,
             application_id="app.rednotebook.RedNotebook",
             flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
-            **kwargs
+            **kwargs,
         )
         # Let components check if the MainWindow has been created.
         self.frame = None

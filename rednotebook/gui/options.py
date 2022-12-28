@@ -125,7 +125,7 @@ class IntegerOption(Option):
         min_value=0,
         max_value=1000,
         increment=1,
-        **kwargs
+        **kwargs,
     ):
         Option.__init__(self, text, option_name, **kwargs)
 
