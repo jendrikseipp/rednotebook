@@ -413,7 +413,10 @@ def _install(domain, localedir, asglobal=False, libintl='intl'):
     '''
     # prep locale system
     if asglobal:
-        locale.setlocale(locale.LC_ALL, '')
+        try:
+            locale.setlocale(locale.LC_ALL, '')
+        except locale.Error as err:
+            logger.warning(f"Failed to set user-preferred locale settings: {err}")
 
         # on windows systems, set the LANGUAGE environment variable
         if sys.platform == 'win32' or sys.platform == 'nt':
