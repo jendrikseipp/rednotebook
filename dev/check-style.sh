@@ -17,6 +17,6 @@ python3 -m pyupgrade --py36-plus `find rednotebook tests -name "*.py" -not -path
 
 python3 -m vulture --exclude=external rednotebook dev/whitelist.py
 
-python3 setup.py build_trans
+python3 dev/build_translations.py test-translations
 
 echo "All tests passed"
