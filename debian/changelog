@@ -1,3 +1,12 @@
+rednotebook (2.28-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Remove code that uses the deprecated `distutils` module (Jendrik Seipp, #655, #656).
+  * Fix checking for newer versions (Jendrik Seipp).
+  * Gracefully handle unsupported locale settings (Jendrik Seipp, #613).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 28 Dec 2022 23:29:49 +0100
+
 rednotebook (2.27.2-1) UNRELEASED; urgency=low
 
   * New upstream release
@@ -53,7 +62,7 @@ rednotebook (2.23-1) UNRELEASED; urgency=low
 
   * New upstream release
   * Check that a newly written month file is valid before deleting the old month file.
-  * Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
+  * Rename "autostart" file. Please re-enable autostart option in preferences if you want RedNotebook to run on system startup.
   * Fix Python crash on program start (#583, Max Krummenacher).
   * Prevent save failures on network and cloud drives (#593, Robert Little).
   * Add script for importing entries (#571, Cary Gravel).

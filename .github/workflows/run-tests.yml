@@ -20,8 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        # macOS runners use Python 3.11, but PyGObject on macOS is only available for Python 3.9 and 3.10.
-        os: [ubuntu-20.04, ubuntu-22.04] # [macos-11, macos-12]
+        os: [macos-11, macos-12, ubuntu-20.04, ubuntu-22.04]
 
     steps:
     - uses: actions/checkout@v3
@@ -37,13 +36,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get -y install -qq gir1.2-gdkpixbuf-2.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-gtksource-4 gir1.2-pango-1.0 gir1.2-webkit2-4.0 python3 python3-enchant python3-gi python3-yaml
-        python3 -m pip install tox
+        python3 -m pip install tox==3.27.1
 
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        brew install gtk+3 pygobject3 glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
-        python3 -m pip install pyenchant pyyaml tox
+        # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
+        brew install gtk+3 gobject-introspection glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
+        python3 -m pip install pyenchant pygobject pyyaml tox==3.27.1
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'

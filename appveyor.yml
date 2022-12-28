@@ -32,7 +32,7 @@ build_script:
   - set PATH=%PATH%;C:\gtk\bin
 
   # Install other dependencies.
-  - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools tox wheel"
+  - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools tox==3.27.1 wheel"
   # Install separately because --no-binary option disables using wheels (leading to problems for Cython).
   - "%PYTHON% -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2"
   - "%PYTHON% -m pip install --no-warn-script-location -r win/requirements.txt"
@@ -75,7 +75,7 @@ build_script:
 
   # Create executable.
   - "%PYTHON% -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec"
-  - "%PYTHON% build-translations.py C:/dist/share/locale"
+  - "%PYTHON% ../dev/build_translations.py C:/dist/share/locale"
   - cp -r C:\gtk\share\enchant C:\dist\share\enchant
   - tar -czf rednotebook.tar.gz -C C:\ dist
   - 7z a rednotebook.zip C:\dist

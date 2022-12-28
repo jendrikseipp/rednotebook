@@ -1,4 +1,9 @@
-# 2.27.2 (2022-12-01)
+# 2.28 (2022-12-28)
+* Remove code that uses the deprecated `distutils` module (Jendrik Seipp, #655, #656).
+* Fix checking for newer versions (Jendrik Seipp).
+* Gracefully handle unsupported locale settings (Jendrik Seipp, #613).
+
+* # 2.27.2 (2022-12-01)
 * Fix passing command line arguments (Jendrik Seipp).
 * Update translation files (Jendrik Seipp).
 
@@ -27,7 +32,7 @@
 
 # 2.23 (2022-02-13)
 * Check that a newly written month file is valid before deleting the old month file.
-* Rename "autostart" file. Please reenable autostart option in preferences if you want RedNotebook to run on system startup.
+* Rename "autostart" file. Please re-enable autostart option in preferences if you want RedNotebook to run on system startup.
 * Fix Python crash on program start (#583, Max Krummenacher).
 * Prevent save failures on network and cloud drives (#593, Robert Little).
 * Add script for importing entries (#571, Cary Gravel).
@@ -503,7 +508,7 @@
 
 # 1.1.2 (10-12-26)
 * Add fullscreen mode (F11)
-* Highlight all found occurences of the searched word (LP:614353)
+* Highlight all found occurrences of the searched word (LP:614353)
 * Highlight mixed markups (**__Bold underline__**)
 * Highlight structured headers (=Part=, ==Subpart==, ===Section===, ====Subsection====, =====Subsubsection=====)
 * Document structured headers
@@ -708,7 +713,7 @@
 # 0.8.5 (2009-08-29)
 * Spell Checking (not for Windows)
   (Requires gtkspell for python. This is included in the python-gnome2-extras package)
-* When a template is inserted, every occurence of "$date$" is converted to the current date
+* When a template is inserted, every occurrence of "$date$" is converted to the current date
   (Set date format in preferences)
 * Open a specified journal from the command line
   (execute "rednotebook -h" for instructions)
@@ -814,7 +819,7 @@
 * Live update of clouds after categories have been edited
 
 # 0.6.9 (2009-05-05)
-* Reenable stricken text
+* Re-enable stricken text
 * Select individual categories to export
 * Export only text, or only categories, or both
 * Handle local file opening

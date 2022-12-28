@@ -6,13 +6,8 @@ import pytest
 
 from rednotebook.data import Day, Month
 from rednotebook.util import filesystem
-from rednotebook.util.markup import (
-    _convert_paths,
-    convert,
-    convert_from_pango,
-    convert_to_pango,
-    get_markup_for_day,
-)
+from rednotebook.util.markup import _convert_paths, convert, get_markup_for_day
+from rednotebook.util.pango_markup import convert_from_pango, convert_to_pango
 
 
 @pytest.mark.parametrize(

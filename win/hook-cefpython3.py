@@ -113,11 +113,11 @@ def get_cefpython3_datas():
     CEF binaries or to look for its dependencies. CEF binaries
     does not have any external dependencies like MSVCR or similar.
     The .pak .dat and .bin files cannot be marked as BINARIES
-    as pyinstaller would fail to find binary depdendencies on
+    as pyinstaller would fail to find binary dependencies on
     these files.
     One exception is subprocess (subprocess.exe on Windows) executable
     file, which is passed to pyinstaller as BINARIES in order to collect
-    its dependecies.
+    its dependencies.
     DATAS are in format: tuple(full_path, dest_subdir).
     """
     ret = list()
