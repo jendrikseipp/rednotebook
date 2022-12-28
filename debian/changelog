@@ -1,3 +1,12 @@
+rednotebook (2.28-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Remove code that uses the deprecated `distutils` module (Jendrik Seipp, #655, #656).
+  * Fix checking for newer versions (Jendrik Seipp).
+  * Gracefully handle unsupported locale settings (Jendrik Seipp, #613).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Wed, 28 Dec 2022 23:29:49 +0100
+
 rednotebook (2.27.2-1) UNRELEASED; urgency=low
 
   * New upstream release
