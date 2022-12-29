@@ -477,8 +477,13 @@ application on Windows.
 
 Alternative 2: set GTK_THEME=FlatStudioDark in the
 [application shortcut ""https://stackoverflow.com/a/34769146/1176315""] as follows:
-``C:\\Windows\\System32\\cmd.exe /c "SET GTK_THEME=FlatStudioDark&& START /D ^"C:\\Program Files (x86)\\RedNotebook^" rednotebook.exe"``
-and set application to ``Run: Minimized`` (in application shortcut properties).
+
+```
+C:\\Windows\\System32\\cmd.exe /c "SET GTK_THEME=FlatStudioDark&& ^
+START /D ^"C:\\Program Files (x86)\\RedNotebook^" rednotebook.exe"
+```
+
+Then set application to ``Run: Minimized`` (in application shortcut properties).
 This also overrides the theme set in ``settings.ini``. This won't affect any other
 app but it does change the shortcut icon to a cmd icon, as expected.
 
