@@ -1,3 +1,6 @@
+# 2.29 (unreleased)
+* Document alternatives for changing the GTK theme on Windows (Ankur A Sharma, #494).
+
 # 2.28.1 (2022-12-28)
 * Require `setuptools` for Debian package (Jendrik Seipp).
 

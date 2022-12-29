@@ -470,6 +470,20 @@ gtk-theme-name=FlatStudioDark
 Finally, relaunch RedNotebook.
 
 
+Alternative 1: set GTK_THEME=FlatStudioDark in user environment variables.
+This overrides the theme set in ``settings.ini`` and persists even after
+reinstalling RedNotebook. However, this might change the theme of every GTK
+application on Windows.
+
+Alternative 2: set GTK_THEME=FlatStudioDark in the
+[application shortcut ""https://stackoverflow.com/a/34769146/1176315""] as follows:
+``C:\\Windows\\System32\\cmd.exe /c "SET GTK_THEME=FlatStudioDark&& START /D ^"C:\\Program Files (x86)\\RedNotebook^" rednotebook.exe"``
+and set application to ``Run: Minimized`` (in application shortcut properties).
+This also overrides the theme set in ``settings.ini``. This won't affect any other
+app but it does change the shortcut icon to a cmd icon, as expected.
+
+
+
 == Tips ==
 %(multiple_entries_text)s
 
