@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-28 23:30+0100\n"
-"PO-Revision-Date: 2022-11-19 05:32+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2022-12-29 16:11+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/it/>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
 
 #: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
@@ -82,14 +82,12 @@ msgstr ""
 "giocando a frisbee. Dopo abbiamo guardato \"__La via di Brian__\"."
 
 #: ../rednotebook/help.py:64
-#, fuzzy
-#| msgid "Template"
 msgid "Templates"
-msgstr "Modello"
+msgstr "Modelli"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
-msgstr ""
+msgstr "RedNotebook supporta i modelli."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
