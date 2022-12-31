@@ -1,3 +1,11 @@
+rednotebook (2.29-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Document alternatives for changing the GTK theme on Windows (Ankur A Sharma, #494).
+  * Fix en_GB translations (Jendrik Seipp, #659).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sat, 31 Dec 2022 12:56:47 +0100
+
 rednotebook (2.28.1-1) UNRELEASED; urgency=low
 
   * New upstream release
