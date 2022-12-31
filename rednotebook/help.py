@@ -470,6 +470,25 @@ gtk-theme-name=FlatStudioDark
 Finally, relaunch RedNotebook.
 
 
+Alternative 1: set GTK_THEME=FlatStudioDark in user environment variables.
+This overrides the theme set in ``settings.ini`` and persists even after
+reinstalling RedNotebook. However, this might change the theme of every GTK
+application on Windows.
+
+Alternative 2: set GTK_THEME=FlatStudioDark in the
+[application shortcut ""https://stackoverflow.com/a/34769146/1176315""] as follows:
+
+```
+C:\\Windows\\System32\\cmd.exe /c "SET GTK_THEME=FlatStudioDark&& ^
+START /D ^"C:\\Program Files (x86)\\RedNotebook^" rednotebook.exe"
+```
+
+Then set application to ``Run: Minimized`` (in application shortcut properties).
+This also overrides the theme set in ``settings.ini``. This won't affect any other
+app but it does change the shortcut icon to a cmd icon, as expected.
+
+
+
 == Tips ==
 %(multiple_entries_text)s
 
@@ -481,28 +500,27 @@ resides at $HOME/.rednotebook/configuration.cfg.
 
 === Language ===
 
-If you want to change RedNotebook's language, setting the environment
-variable LANG (Linux) or LANGUAGE (Windows) to a different language
-code should be sufficient. Language codes have e.g. the format "de_DE"
-or "de_DE.UTF-8" (German). To set the language to English you can also
-set the code to "C". Before you change the language make sure you have
-the required language packs installed. Otherwise an error will be
-shown.
+To change the language on **Linux**, use the environment
+variables LANGUAGE, LC_CTYPE and/or LC_TIME:
 
-On **Linux**, start a terminal and call ``LANG=de_DE.utf8``. Then in the
-same terminal, run ``rednotebook``. The language change will be gone
-however once you close the terminal.
+- LANGUAGE sets the language for the interface (i.e., text on buttons, menus, etc.).
+- LC_CTYPE sets the language for the spell checker.
+- LC_TIME sets the language for the date strings (weekday names, month names, etc.).
 
-On **Windows**, set or create a LANGUAGE environment variable with the
-desired code:
+
+The environment variable LC_ALL sets both LC_CTYPE and LC_TIME simultaneously.
+For example, to have a German interface, start a terminal and call
+``LANGUAGE=de_DE.utf8 rednotebook``.
+
+On **Windows**, set or create the LANGUAGE environment variable with the
+desired language code (e.g., de, de_DE or de_DE.UTF-8):
 
 + Right-click My Computer and click Properties.
 + In the System Properties window, click on the Advanced tab
   (Windows XP) or go to Advanced System Settings (Windows 7).
 + In the Advanced section, click the Environment Variables button.
-+ Click the New button and insert LANGUAGE at the top and e.g. de or
-  de_DE or de_DE.UTF-8 (use your [language code
-  ""http://en.wikipedia.org/wiki/ISO_639-1""]).
++ Click the New button and insert LANGUAGE at the top and your
+  [language code ""http://en.wikipedia.org/wiki/ISO_639-1""] at the bottom.
 
 
 === Titles ===
