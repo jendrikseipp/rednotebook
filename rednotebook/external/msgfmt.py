@@ -58,6 +58,8 @@ def add(ctxt, id, str, fuzzy):
 def generate():
     "Return the generated output."
     global MESSAGES
+    # JS: Clear dict before handling next language.
+    MESSAGES.clear()
     # the keys are sorted in the .mo file
     keys = sorted(MESSAGES.keys())
     offsets = []
