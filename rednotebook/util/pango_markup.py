@@ -1,3 +1,6 @@
+from rednotebook.util.markup import REGEX_HTML_LINK, REGEX_LINEBREAK
+from rednotebook.external import txt2tags
+from gi.repository import GObject, Pango
 import logging
 import re
 
@@ -5,11 +8,6 @@ import gi
 
 
 gi.require_version("Pango", "1.0")
-
-from gi.repository import GObject, Pango
-
-from rednotebook.external import txt2tags
-from rednotebook.util.markup import REGEX_HTML_LINK, REGEX_LINEBREAK
 
 
 def convert_to_pango(txt, headers=None, options=None):
@@ -64,8 +62,7 @@ def convert_to_pango(txt, headers=None, options=None):
 
     logging.log(
         5,
-        'Converted "%s" text to "%s" txt2tags markup'
-        % (repr(original_txt), repr(result)),
+        f'Converted "{repr(original_txt)}" text to "{repr(result)}" txt2tags markup',
     )
 
     # Remove unknown tags (<a>)
@@ -81,7 +78,7 @@ def convert_to_pango(txt, headers=None, options=None):
         return result
     except GObject.GError:
         # There are unknown tags in the markup, return the original text
-        logging.debug("There are unknown tags in the markup: %s" % result)
+        logging.debug(f"There are unknown tags in the markup: {result}")
         return original_txt
 
 
@@ -106,7 +103,6 @@ def convert_from_pango(pango_markup):
 
     logging.log(
         5,
-        'Converted "%s" pango to "%s" txt2tags'
-        % (repr(original_txt), repr(pango_markup)),
+        f'Converted "{repr(original_txt)}" pango to "{repr(pango_markup)}" txt2tags',
     )
     return pango_markup

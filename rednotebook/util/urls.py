@@ -9,7 +9,8 @@ import webbrowser
 from rednotebook.util.filesystem import IS_WIN, LOCAL_FILE_PEFIX, system_call
 
 
-ENTRY_REFERENCE_URI_PATTERN = re.compile(r"^file:///#(?P<date>\d{4}-\d{2}-\d{2})$")
+ENTRY_REFERENCE_URI_PATTERN = re.compile(
+    r"^file:///#(?P<date>\d{4}-\d{2}-\d{2})$")
 
 
 def get_local_url(url):
@@ -35,7 +36,7 @@ def get_local_url(url):
 
 def open_url_in_browser(url):
     try:
-        logging.info("Trying to open %s with webbrowser" % url)
+        logging.info(f"Trying to open {url} with webbrowser")
         webbrowser.open(url)
     except webbrowser.Error:
         logging.exception("Failed to open web browser")
@@ -69,11 +70,11 @@ def open_url(url):
             url = unquote_url(url)
             if url.startswith("file:") or os.path.exists(url):
                 url = get_local_url(url)
-            logging.info('Trying to open %s with "os.startfile"' % url)
+            logging.info(f'Trying to open {url} with "os.startfile"')
             # os.startfile is only available on windows
             os.startfile(url)
         except OSError:
-            logging.exception('Opening %s with "os.startfile" failed' % url)
+            logging.exception(f'Opening {url} with "os.startfile" failed')
     elif sys.platform == "darwin":
         _open_url_with_call(url, "open")
     else:

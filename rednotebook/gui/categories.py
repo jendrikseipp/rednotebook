@@ -76,7 +76,8 @@ class CategoriesTreeView:
         self.context_menu = self._get_context_menu()
         self.context_menu.attach_to_widget(self.tree_view, lambda x, y: None)
 
-        self.tree_view.connect("button-press-event", self.on_button_press_event)
+        self.tree_view.connect("button-press-event",
+                               self.on_button_press_event)
         self.tree_view.connect("key-press-event", self.on_key_press_event)
 
         # Wrap lines
@@ -99,7 +100,7 @@ class CategoriesTreeView:
         self.categories.sort(key=utils.sort_asc)
 
     def node_on_top_level(self, iter):
-        if not type(iter) == Gtk.TreeIter:
+        if type(iter) != Gtk.TreeIter:
             # iter is a path -> convert to iter
             iter = self.tree_store.get_iter(iter)
         assert self.tree_store.iter_is_valid(iter)
@@ -167,32 +168,26 @@ class CategoriesTreeView:
         sorted_keys = sorted(day.content.keys(), key=lambda x: x.lower())
 
         for key in sorted_keys:
-            value = day.content[key]
-            if not key == "text":
+            if key != "text":
+                value = day.content[key]
                 self.add_element(None, {key: value})
         self.tree_view.expand_all()
 
     def get_day_content(self):
-        if self.empty():
-            return {}
-
-        content = self._get_element_content(None)
-
-        return content
+        return {} if self.empty() else self._get_element_content(None)
 
     def _get_element_content(self, element):
         model = self.tree_store
         if self.tree_store.iter_n_children(element) == 0:
             return None
-        else:
-            content = {}
+        content = {}
 
-            for i in range(model.iter_n_children(element)):
-                child = model.iter_nth_child(element, i)
-                txt2tags_markup = self.get_iter_value(child)
-                content[txt2tags_markup] = self._get_element_content(child)
+        for i in range(model.iter_n_children(element)):
+            child = model.iter_nth_child(element, i)
+            txt2tags_markup = self.get_iter_value(child)
+            content[txt2tags_markup] = self._get_element_content(child)
 
-            return content
+        return content
 
     def empty(self, category_iter=None):
         """
@@ -217,9 +212,7 @@ class CategoriesTreeView:
         self.tvcolumn.clear_attributes(self.cell)
         self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
-        # We want to have txt2tags markup and not pango markup
-        text = convert_from_pango(pango_markup)
-        return text
+        return convert_from_pango(pango_markup)
 
     def set_iter_value(self, iter, txt2tags_markup):
         pango_markup = convert_to_pango(txt2tags_markup)
@@ -227,13 +220,14 @@ class CategoriesTreeView:
 
     def _get_category_iter(self, category_name):
         for iter_index in range(self.tree_store.iter_n_children(None)):
-            current_category_iter = self.tree_store.iter_nth_child(None, iter_index)
+            current_category_iter = self.tree_store.iter_nth_child(
+                None, iter_index)
             current_category_name = self.get_iter_value(current_category_iter)
             if str(current_category_name).lower() == str(category_name).lower():
                 return current_category_iter
 
         # If the category was not found, return None
-        logging.debug('Category not found: "%s"' % category_name)
+        logging.debug(f'Category not found: "{category_name}"')
         return None
 
     def add_entry(self, category, entry, undoing=False):
@@ -277,8 +271,7 @@ class CategoriesTreeView:
         self.main_window.cloud.update()
 
     def delete_selected_node(self):
-        selected_iter = self.get_selected_node()
-        if selected_iter:
+        if selected_iter := self.get_selected_node():
             self.delete_node(selected_iter)
             return
 
@@ -308,7 +301,8 @@ class CategoriesTreeView:
 
         if event.button == 3:
             # This is a right-click.
-            self.context_menu.popup(None, None, None, None, event.button, event.time)
+            self.context_menu.popup(
+                None, None, None, None, event.button, event.time)
 
     def _get_context_menu(self):
         context_menu_xml = """
@@ -361,13 +355,12 @@ class CategoriesTreeView:
         # Add a UI description
         uimanager.add_ui_from_string(context_menu_xml)
 
-        # Create a Menu
-        menu = uimanager.get_widget("/ContextMenu")
-        return menu
+        return uimanager.get_widget("/ContextMenu")
 
     def _on_change_entry_clicked(self, action):
         iter = self.get_selected_node()
-        self.tree_view.set_cursor(self.tree_store.get_path(iter), self.tvcolumn, True)
+        self.tree_view.set_cursor(
+            self.tree_store.get_path(iter), self.tvcolumn, True)
 
     def _on_add_entry_clicked(self, action):
         iter = self.get_selected_node()
@@ -399,7 +392,8 @@ class CategoriesTreeView:
         Allows dynamic line wrapping in a treeview
         """
         other_columns = (c for c in treeview.get_columns() if c != column)
-        new_width = allocation.width - sum(c.get_width() for c in other_columns)
+        new_width = allocation.width - \
+            sum(c.get_width() for c in other_columns)
         new_width -= treeview.style_get_property("horizontal-separator") * 2
 
         # Customize for treeview with expanders.

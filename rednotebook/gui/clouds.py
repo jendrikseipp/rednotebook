@@ -53,9 +53,9 @@ CLOUD_CSS = """\
 
 def get_regex(word):
     try:
-        return re.compile(word + "$", re.I)
+        return re.compile(f"{word}$", re.I)
     except Exception:
-        logging.warning('"%s" is not a valid regular expression' % word)
+        logging.warning(f'"{word}" is not a valid regular expression')
         return re.compile("^$")
 
 
@@ -71,13 +71,16 @@ class Cloud(browser.HtmlView):
     def update_lists(self):
         config = self.journal.config
 
-        default_ignore_list = _("filter, these, comma, separated, words, and, #tags")
-        self.ignore_list = config.read_list("cloudIgnoreList", default_ignore_list)
+        default_ignore_list = _(
+            "filter, these, comma, separated, words, and, #tags")
+        self.ignore_list = config.read_list(
+            "cloudIgnoreList", default_ignore_list)
         self.ignore_list = [word.lower() for word in self.ignore_list]
         logging.info("Cloud ignore list: %s" % self.ignore_list)
 
         default_include_list = _("mtv, spam, work, job, play")
-        self.include_list = config.read_list("cloudIncludeList", default_include_list)
+        self.include_list = config.read_list(
+            "cloudIncludeList", default_include_list)
         self.include_list = [word.lower() for word in self.include_list]
         logging.info("Cloud include list: %s" % self.include_list)
 
@@ -104,7 +107,7 @@ class Cloud(browser.HtmlView):
         counter = defaultdict(int)
         for day in self.journal.days:
             for cat in day.categories:
-                counter["#%s" % data.escape_tag(cat)] += 1
+                counter[f"#{data.escape_tag(cat)}"] += 1
         return counter
 
     def _update(self):
@@ -115,7 +118,8 @@ class Cloud(browser.HtmlView):
         self.link_index = 0
 
         tags_count_dict = list(self.get_categories_counter().items())
-        self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
+        self.tags = self._get_tags_for_cloud(
+            tags_count_dict, self.regexes_ignore)
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
@@ -137,21 +141,16 @@ class Cloud(browser.HtmlView):
             delta_count = 1
 
         min_font_size = 10
-        max_font_size = 40
-
-        font_delta = max_font_size - min_font_size
-
         html_elements = []
 
+        font_delta = 40 - min_font_size
         for word, count in cloud_words:
             font_factor = (count - min_count) / delta_count
             font_size = int(min_font_size + font_factor * font_delta)
 
             # Add some whitespace to separate words
             html_elements.append(
-                '<a href="/#search-%s">'
-                '<span style="font-size:%spx">%s</span></a>&#160;'
-                % (self.link_index, font_size, word)
+                f'<a href="/#search-{self.link_index}"><span style="font-size:{font_size}px">{word}</span></a>&#160;'
             )
             self.link_index += 1
         return "\n".join(html_elements)
@@ -210,7 +209,8 @@ class Cloud(browser.HtmlView):
             "<body>",
         ]
         if tag_cloud:
-            parts.extend([heading % _("Tags"), tag_cloud, "\n", "<br />\n" * 3])
+            parts.extend(
+                [heading % _("Tags"), tag_cloud, "\n", "<br />\n" * 3])
         if word_cloud:
             parts.extend([heading % _("Words"), word_cloud])
         parts.append("</body></html>")
@@ -233,7 +233,7 @@ class Cloud(browser.HtmlView):
 
             search_text = self._get_search_text(uri)
             if search_text is not None:
-                logging.info('Clicked cloud URI "%s"' % uri)
+                logging.info(f'Clicked cloud URI "{uri}"')
                 self.journal.save_old_day()
                 self.journal.frame.search_box.set_active_text(search_text)
                 self.journal.frame.search_box.search(search_text)

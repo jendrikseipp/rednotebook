@@ -78,7 +78,7 @@ def get_text_with_dots(text, start, end, found_text=None):
     res = res.replace("\n", " ")
     if found_text:
         # Make the searched_text bold
-        res = res.replace(found_text, "STARTBOLD%sENDBOLD" % found_text)
+        res = res.replace(found_text, f"STARTBOLD{found_text}ENDBOLD")
 
     return res
 
@@ -89,7 +89,8 @@ class Day:
         assert "text" in day_content, day_content
 
         self.month = month
-        self.date = datetime.date(month.year_number, month.month_number, day_number)
+        self.date = datetime.date(
+            month.year_number, month.month_number, day_number)
 
         # Turn all entries of old "Tags" categories into tags without entries.
         # Apparently, "Tags" may map to None, so explicitly convert to dict.
@@ -165,7 +166,7 @@ class Day:
             for category, content in self.get_category_content_pairs().items()
         )
 
-        all_text = self.text + " " + categories_text
+        all_text = f"{self.text} {categories_text}"
         words = all_text.split()
 
         if with_special_chars:
@@ -199,13 +200,14 @@ class Day:
                     else:
                         add_text_to_results = True
             if add_text_to_results:
-                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+                results.append(get_text_with_dots(
+                    self.text, 0, TEXT_RESULT_LENGTH))
         elif text in str(self):
             # Date contains searched text.
-            results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+            results.append(get_text_with_dots(
+                self.text, 0, TEXT_RESULT_LENGTH))
         else:
-            text_result = self.search_in_text(text)
-            if text_result:
+            if text_result := self.search_in_text(text):
                 results.append(text_result)
             results.extend(self.search_in_categories(text))
         return str(self), results
@@ -217,11 +219,10 @@ class Day:
         if occurrence < 0:
             return None
 
-        found_text = self.text[occurrence : occurrence + len(search_text)]
-        result_text = get_text_with_dots(
+        found_text = self.text[occurrence: occurrence + len(search_text)]
+        return get_text_with_dots(
             self.text, occurrence, occurrence + len(search_text), found_text
         )
-        return result_text
 
     def search_in_categories(self, text):
         results = []
@@ -261,8 +262,9 @@ class Month:
 
     def __str__(self):
         lines = [f"Month {self.year_number} {self.month_number}"]
-        for day_number, day in self.days.items():
-            lines.append(f"{day_number}: {day.text}")
+        lines.extend(
+            f"{day_number}: {day.text}" for day_number, day in self.days.items()
+        )
         return "\n".join(lines)
 
     @property

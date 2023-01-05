@@ -19,7 +19,10 @@ A list of days with missing entries is also printed by default. This can be
 deactivated.
 """
 
+
+import rednotebook.storage  # pylint: disable=wrong-import-position, unused-import
 import argparse
+import pathlib
 import sys
 import re
 import datetime
@@ -32,7 +35,6 @@ for inst in ["/usr/share/rednotebook", "../rednotebook"]:
 
 # must import rednotebook after munging path in order to find it, as it is
 # not (at least in Debian) installed in the default python path
-import rednotebook.storage  # pylint: disable=wrong-import-position, unused-import
 
 
 def list_missing_entries(mindate, maxdate, months, existing_entries):
@@ -111,12 +113,10 @@ def main():
             )
             sys.exit()
     else:
-        with open(args.infile) as fin:
-            alltext = fin.read()
-
+        alltext = pathlib.Path(args.infile).read_text()
     # remove non-printable characters
     control_chars = "".join(map(chr, range(0x7F, 0xA0)))
-    control_char_re = re.compile("[%s]" % re.escape(control_chars))
+    control_char_re = re.compile(f"[{re.escape(control_chars)}]")
     alltext = control_char_re.sub("", alltext)
 
     days = re.split(
@@ -129,7 +129,8 @@ def main():
             print(f"Ignoring leading text: {days[0]}")
         i += 1
 
-    existing_entries = rednotebook.storage.load_all_months_from_disk(args.data_dir)
+    existing_entries = rednotebook.storage.load_all_months_from_disk(
+        args.data_dir)
     months = {}
     mindate, maxdate = None, None
     while i < len(days):
@@ -143,7 +144,7 @@ def main():
         # strptime seems to be rather lax about parsing day/date combinations,
         # so check manually
         weekday = re.search(r"(\w+day)", days[i])
-        weekday = weekday.group(0)
+        weekday = weekday[0]
         if dateobj.strftime("%A") != weekday:
             raise ValueError(
                 f"'{days[i]}' is not a valid date. {dateobj.strftime('%d %B %Y')} "
@@ -178,7 +179,8 @@ def main():
             continue
 
         # remove blank headers
-        days[i + 1] = re.sub(r"^\s*[#]+\s*$", "", days[i + 1], flags=re.MULTILINE)
+        days[i + 1] = re.sub(r"^\s*[#]+\s*$", "",
+                             days[i + 1], flags=re.MULTILINE)
 
         # remove leading blank lines
         days[i + 1] = re.sub(r"^\s*\n", "", days[i + 1])
@@ -198,7 +200,8 @@ def main():
         list_missing_entries(mindate, maxdate, months, existing_entries)
 
     if not args.dry_run:
-        rednotebook.storage.save_months_to_disk(months, args.data_dir, True, True)
+        rednotebook.storage.save_months_to_disk(
+            months, args.data_dir, True, True)
 
 
 if __name__ == "__main__":

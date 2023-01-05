@@ -131,14 +131,16 @@ class ContentsPage(AssistantPage):
         self.journal = journal
         self.assistant = assistant
 
-        self.text_and_tags_button = Gtk.RadioButton(label=_("Export text and tags"))
+        self.text_and_tags_button = Gtk.RadioButton(
+            label=_("Export text and tags"))
         self.text_only_button = Gtk.RadioButton(
             label=_("Export text only"), group=self.text_and_tags_button
         )
         self.tags_only_button = Gtk.RadioButton(
             label=_("Export tags only"), group=self.text_and_tags_button
         )
-        self.filter_tags_button = Gtk.CheckButton(label=_("Filter days by tags"))
+        self.filter_tags_button = Gtk.CheckButton(
+            label=_("Filter days by tags"))
 
         self.pack_start(self.text_and_tags_button, False, False, 0)
         self.pack_start(self.text_only_button, False, False, 0)
@@ -230,7 +232,7 @@ class ContentsPage(AssistantPage):
         self.check_selection()
 
     def set_error_text(self, text):
-        self.error_text.set_markup("<b>" + text + "</b>")
+        self.error_text.set_markup(f"<b>{text}</b>")
 
     def is_text_included(self):
         return (
@@ -248,18 +250,15 @@ class ContentsPage(AssistantPage):
     def get_categories(self):
         if not self.filter_tags_button.get_active():
             return self.journal.categories
-        else:
-            selected_categories = []
-            model_selected = self.selected_categories.get_model()
+        model_selected = self.selected_categories.get_model()
 
-            for row in model_selected:
-                selected_categories.append(row[0])
-
-            return selected_categories
+        selected_categories = [row[0] for row in model_selected]
+        return selected_categories
 
     def check_selection(self, *args):
         if self.is_filtered() and not self.get_categories():
-            error = _("When filtering by tags, you have to select at least one tag.")
+            error = _(
+                "When filtering by tags, you have to select at least one tag.")
             self.set_error_text(error)
             correct = False
         else:
@@ -368,10 +367,7 @@ class ExportAssistant(Assistant):
         self.set_forward_page_func(self.pageforward)
 
     def pageforward(self, page):
-        if page == 2 and self.page2.export_selected_text():
-            return 4
-        else:
-            return page + 1
+        return 4 if page == 2 and self.page2.export_selected_text() else page + 1
 
     def run(self):
         self.page2.refresh_dates()
@@ -432,10 +428,12 @@ class ExportAssistant(Assistant):
                 self.exported_categories = []
             else:
                 self.page5.add_setting(
-                    _("Include text"), self.yes_no(self.page3.is_text_included())
+                    _("Include text"), self.yes_no(
+                        self.page3.is_text_included())
                 )
                 self.page5.add_setting(
-                    _("Include tags"), self.yes_no(self.page3.is_tags_included())
+                    _("Include tags"), self.yes_no(
+                        self.page3.is_tags_included())
                 )
             if self.is_filtered:
                 self.page5.add_setting(
@@ -458,17 +456,18 @@ class ExportAssistant(Assistant):
                 )
 
             selected_categories = self.exported_categories
-            logging.debug("Selected Categories for Inclusion: %s" % selected_categories)
+            logging.debug(
+                f"Selected Categories for Inclusion: {selected_categories}")
 
             markup_strings_for_each_day = []
             for day in export_days:
                 include_day = True
                 if self.is_filtered:
-                    include_day = False
                     category_pairs = day.get_category_content_pairs()
-                    for category in selected_categories:
-                        if category in category_pairs:
-                            include_day = True
+                    include_day = any(
+                        category in category_pairs
+                        for category in selected_categories
+                    )
                 if include_day:
                     date_format = self.journal.config.read("exportDateFormat")
                     date_string = dates.format_date(date_format, day.date)

@@ -4,14 +4,13 @@ If you have any suggestions or comments, feel free to contact me on the
 mailing list or directly per mail. Before starting to work on a feature,
 please check back with me briefly about its status.
 
-
 ## Important features
 
 - [ ] Update GTK stack for Windows: use MinGW and Python >= 3.6.
 - [ ] Use separate file for storing CSS to allow users to override styles more easily.
 - [ ] Make default CSS prettier (see private email exchange).
 - [ ] Allow searching for days that contain **multiple** words or tags.
-- [ ] Check that non-ASCII image filenames work (https://bugs.launchpad.net/bugs/1739701).
+- [ ] Check that non-ASCII image filenames work (<https://bugs.launchpad.net/bugs/1739701>).
 - [ ] Search and replace (useful for renaming tags and other names).
       Show "replace" text field after search text has been entered.
 - [ ] Add simple way to show all entries: allow searching for whitespace (i.e., don't strip whitespace from search string).
@@ -28,7 +27,6 @@ please check back with me briefly about its status.
   - [ ] Check that images work on Windows in LaTeX exports.
   - [ ] Fix drag-and-drop on Windows (confirmed that it doesn't work in version 2.6.1). Might be fixed by now.
 
-
 ### Remove right-side tags panel (disabled by default)
 
 - [ ] When searching for a hashtag (see #498):
@@ -38,7 +36,6 @@ please check back with me briefly about its status.
 - [ ] Optional: enable right-side tags panel by default, if journal has right-side tags.
 - [ ] Transform existing right-side tags foo:bar to "#foo bar" when loading a journal.
 - [ ] Remove code for right-side tags panel.
-
 
 ## Optional features
 
@@ -58,13 +55,11 @@ please check back with me briefly about its status.
   - create our own menu: complicated
   - only show the menu if there's a selection: WebView.has_selection() seems to be broken
 
-
 ## Implementation changes
 
-- [ ] Enable faulthandler module (https://docs.python.org/3/library/faulthandler.html, added in Python 3.3).
+- [ ] Enable faulthandler module (<https://docs.python.org/3/library/faulthandler.html>, added in Python 3.3).
 - [ ] Don't store regexes in Cloud class.
 - [ ] Clouds: don't store link_dict, but use names directly in HTML in Cloud class.
-
 
 ## Deferred features
 
@@ -79,7 +74,6 @@ After deciding whether to switch to Markdown or not:
   - [X] Highlight tables in edit mode
 - [X] Numbered lists
 - [X] Add quotes by indenting them with a tab
-
 
 ## Unwanted features
 

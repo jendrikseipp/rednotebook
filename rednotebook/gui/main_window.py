@@ -54,7 +54,8 @@ class MainWindow:
 
         # Load Glade file.
         # TODO: Remove workaround for Windows once it is no longer needed.
-        self.gladefile = os.path.join(filesystem.files_dir, "main_window.glade")
+        self.gladefile = os.path.join(
+            filesystem.files_dir, "main_window.glade")
         self.builder = Gtk.Builder()
         # Register GtkSourceView so builder can use it when loading the file
         # https://stackoverflow.com/q/10524196/434217
@@ -97,8 +98,10 @@ class MainWindow:
         self.undo_action = self.uimanager.get_action("/MainMenuBar/Edit/Undo")
         self.redo_action = self.uimanager.get_action("/MainMenuBar/Edit/Redo")
 
-        self.calendar = MainCalendar(self.journal, self.builder.get_object("calendar"))
-        self.day_text_field = DayEditor(self.builder.get_object("day_text_view"))
+        self.calendar = MainCalendar(
+            self.journal, self.builder.get_object("calendar"))
+        self.day_text_field = DayEditor(
+            self.builder.get_object("day_text_view"))
         self.day_text_field.connect(
             "can-undo-redo-changed", self.update_undo_redo_buttons
         )
@@ -111,7 +114,8 @@ class MainWindow:
                 for action in actiongroup.list_actions():
                     if action.get_name() == "CheckSpelling":
                         action.set_sensitive(can_spell_check)
-                        action.set_active(spell_check_enabled and can_spell_check)
+                        action.set_active(
+                            spell_check_enabled and can_spell_check)
         self.day_text_field.enable_spell_check(spell_check_enabled)
 
         self.statusbar = Statusbar(self.builder.get_object("statusbar"))
@@ -124,14 +128,17 @@ class MainWindow:
 
         self.new_entry_dialog.categories_tree_view = self.categories_tree_view
 
-        self.back_one_day_button = self.builder.get_object("back_one_day_button")
+        self.back_one_day_button = self.builder.get_object(
+            "back_one_day_button")
         self.today_button = self.builder.get_object("today_button")
-        self.forward_one_day_button = self.builder.get_object("forward_one_day_button")
+        self.forward_one_day_button = self.builder.get_object(
+            "forward_one_day_button")
 
         self.edit_pane = self.builder.get_object("edit_pane")
         self.text_vbox = self.builder.get_object("text_vbox")
 
-        use_internal_preview = self.journal.config.read("useInternalPreview", 1)
+        use_internal_preview = self.journal.config.read(
+            "useInternalPreview", 1)
         if use_internal_preview and browser.WebKit2:
 
             class Preview(browser.HtmlView):
@@ -150,8 +157,10 @@ class MainWindow:
                     pass
 
             self.html_editor = Preview(self.journal)
-            self.html_editor.connect("button-press-event", self.on_browser_clicked)
-            self.html_editor.connect("decide-policy", self.on_browser_decide_policy)
+            self.html_editor.connect(
+                "button-press-event", self.on_browser_clicked)
+            self.html_editor.connect(
+                "decide-policy", self.on_browser_decide_policy)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
             self.html_editor.set_editable(False)
         elif use_internal_preview and browser_cef.get_html_view_class():
@@ -254,8 +263,7 @@ class MainWindow:
             actions = group.list_actions()
             for action in actions:
                 widgets = action.get_proxies()
-                tooltip = action.get_property("tooltip")
-                if tooltip:
+                if tooltip := action.get_property("tooltip"):
                     for widget in widgets:
                         widget.set_tooltip_markup(tooltip)
 
@@ -291,7 +299,7 @@ class MainWindow:
         self.tray_icon.set_name("RedNotebook")
         visible = self.journal.config.read("closeToTray") == 1
         self.tray_icon.set_visible(visible)
-        logging.debug("Tray icon visible: %s" % visible)
+        logging.debug(f"Tray icon visible: {visible}")
 
         self.tray_icon.set_tooltip_text("RedNotebook")
         icon_file = os.path.join(self.journal.dirs.frame_icon_dir, "rn-32.png")
@@ -436,7 +444,7 @@ class MainWindow:
         self.insert_button.set_sensitive(not preview)
         self.format_button.set_sensitive(not preview)
         for action in ["Cut", "Paste"]:
-            self.uimanager.get_widget("/MainMenuBar/Edit/%s" % action).set_sensitive(
+            self.uimanager.get_widget(f"/MainMenuBar/Edit/{action}").set_sensitive(
                 not preview
             )
 
@@ -461,7 +469,7 @@ class MainWindow:
             html = self.journal.convert(
                 markup_string,
                 "xhtml",
-                headers=[date_string + " - RedNotebook", "", ""],
+                headers=[f"{date_string} - RedNotebook", "", ""],
                 options={"toc": 0},
             )
             utils.show_html_in_browser(
@@ -482,13 +490,15 @@ class MainWindow:
 
     def setup_search(self):
         always_show_results = not browser.WebKit2
-        self.search_tree_view = search.SearchTreeView(self, always_show_results)
+        self.search_tree_view = search.SearchTreeView(
+            self, always_show_results)
         self.search_tree_view.show()
         self.search_scroll = Gtk.ScrolledWindow()
         if always_show_results:
             self.search_scroll.show()
         self.search_scroll.add(self.search_tree_view)
-        self.search_box = search.SearchComboBox(Gtk.ComboBox.new_with_entry(), self)
+        self.search_box = search.SearchComboBox(
+            Gtk.ComboBox.new_with_entry(), self)
         self.search_box.combo_box.show()
         search_container = self.builder.get_object("search_container")
         search_container.pack_start(self.search_box.combo_box, False, False, 0)
@@ -524,7 +534,8 @@ class MainWindow:
         unshaded.
         """
         if event.changed_mask & Gdk.WindowState.MAXIMIZED:
-            maximized = bool(event.new_window_state & Gdk.WindowState.MAXIMIZED)
+            maximized = bool(event.new_window_state &
+                             Gdk.WindowState.MAXIMIZED)
             self.journal.config["mainFrameMaximized"] = int(maximized)
 
     def toggle_fullscreen(self):
@@ -560,7 +571,7 @@ class MainWindow:
         return True
 
     def navigate_to_uri(self, uri):
-        logging.info('Navigating to URI "%s"' % uri)
+        logging.info(f'Navigating to URI "{uri}"')
         if urls.is_entry_reference_uri(uri):
             self.navigate_to_referenced_entry(uri)
         else:
@@ -576,8 +587,9 @@ class MainWindow:
         dir_chooser.set_transient_for(self.main_frame)
         label = self.builder.get_object("dir_chooser_label")
 
-        label.set_markup("<b>" + message + "</b>")
-        dir_chooser.set_current_folder(os.path.dirname(self.journal.dirs.data_dir))
+        label.set_markup(f"<b>{message}</b>")
+        dir_chooser.set_current_folder(
+            os.path.dirname(self.journal.dirs.data_dir))
 
         response = dir_chooser.run()
         # Retrieve the dir now, because it will be cleared by the call to hide().
@@ -586,7 +598,8 @@ class MainWindow:
 
         if response == Gtk.ResponseType.OK:
             if new_dir is None:
-                self.journal.show_message(_("No directory selected."), error=True)
+                self.journal.show_message(
+                    _("No directory selected."), error=True)
                 return None
             return new_dir
         return None
@@ -595,7 +608,8 @@ class MainWindow:
         dialog = self.builder.get_object("save_error_dialog")
         dialog.set_transient_for(self.main_frame)
 
-        exit_without_save_button = self.builder.get_object("exit_without_save_button")
+        exit_without_save_button = self.builder.get_object(
+            "exit_without_save_button")
         if exit_imminent:
             exit_without_save_button.show()
         else:
@@ -859,7 +873,8 @@ class NewEntryDialog:
         self.new_entry_combo_box.entry.connect("activate", respond)
         self.categories_combo_box.entry.connect("activate", respond)
 
-        self.categories_combo_box.combo_box.connect("changed", self.on_category_changed)
+        self.categories_combo_box.combo_box.connect(
+            "changed", self.on_category_changed)
 
     def on_category_changed(self, widget):
         """Show old entries in ComboBox when a new category is selected"""
@@ -868,7 +883,8 @@ class NewEntryDialog:
         self.new_entry_combo_box.set_entries(old_entries)
 
         # only make the entry submittable, if text has been entered
-        self.dialog.set_response_sensitive(Gtk.ResponseType.OK, self._text_entered())
+        self.dialog.set_response_sensitive(
+            Gtk.ResponseType.OK, self._text_entered())
 
     def _text_entered(self):
         return bool(self.categories_combo_box.get_active_text())
@@ -881,9 +897,11 @@ class NewEntryDialog:
         self.new_entry_combo_box.clear()
 
         # Show the list of categories
-        self.categories_combo_box.set_entries(self.categories_tree_view.categories)
+        self.categories_combo_box.set_entries(
+            self.categories_tree_view.categories)
 
-        self.categories_combo_box.set_active_text(category or last_category or "")
+        self.categories_combo_box.set_active_text(
+            category or last_category or "")
 
         if category:
             # We already know the category so let's get the entry
@@ -894,7 +912,7 @@ class NewEntryDialog:
         response = self.dialog.run()
         self.dialog.hide()
 
-        if not response == Gtk.ResponseType.OK:
+        if response != Gtk.ResponseType.OK:
             return
 
         category_name = self.categories_combo_box.get_active_text()
@@ -927,10 +945,7 @@ class Statusbar:
             self.start_countdown()
 
     def show_message(self, title, msg, msg_type):
-        if title and msg:
-            text = f"{title}: {msg}"
-        else:
-            text = title or msg
+        text = f"{title}: {msg}" if title and msg else title or msg
         self._show_text(text)
 
     def start_countdown(self):
@@ -953,7 +968,8 @@ class MainCalendar:
         if self.journal.config.read("weekNumbers"):
             calendar.set_property("show-week-numbers", True)
 
-        self.date_listener = self.calendar.connect("day-selected", self.on_day_selected)
+        self.date_listener = self.calendar.connect(
+            "day-selected", self.on_day_selected)
 
     def on_day_selected(self, _cal):
         self.journal.change_date(self.get_date())
@@ -1014,8 +1030,7 @@ class MainCalendar:
             1, dates.get_number_of_days(cal_year, cal_month) + 1
         ):
             logging.debug(
-                "Non-existent date in calendar: %s.%s.%s"
-                % (day_number, cal_month, cal_year)
+                f"Non-existent date in calendar: {day_number}.{cal_month}.{cal_year}"
             )
             return False
         return True

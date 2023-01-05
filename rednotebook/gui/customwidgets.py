@@ -163,7 +163,7 @@ class Info(Gtk.InfoBar):
         if not title:
             title = msg
             msg = ""
-        self.title_label.set_markup("<b>%s</b>" % title)
+        self.title_label.set_markup(f"<b>{title}</b>")
         self.msg_label.set_markup(msg)
         self.set_message_type(msg_type)
         self.image.set_from_icon_name(
@@ -256,9 +256,7 @@ class PathChooserPage(AssistantPage):
         self.path_type = porter.PATHTYPE.upper()
         path = porter.DEFAULTPATH
         extension = porter.EXTENSION
-        helptext = porter.PATHTEXT
-
-        if helptext:
+        if helptext := porter.PATHTEXT:
             self.set_header(helptext)
 
         if self.path_type == "DIR":
@@ -268,12 +266,12 @@ class PathChooserPage(AssistantPage):
         elif self.path_type == "NEWFILE":
             self.chooser.set_action(Gtk.FileChooserAction.SAVE)
         else:
-            logging.error('Wrong path_type "%s"' % self.path_type)
+            logging.error(f'Wrong path_type "{self.path_type}"')
 
         if self.path_type in ["FILE", "NEWFILE"] and extension:
             filter = Gtk.FileFilter()
             filter.set_name(extension)
-            filter.add_pattern("*." + extension)
+            filter.add_pattern(f"*.{extension}")
             self.chooser.add_filter(filter)
 
         if self.last_path and os.path.exists(self.last_path):
@@ -285,7 +283,7 @@ class PathChooserPage(AssistantPage):
             dirname, basename = os.path.split(path)
             filename, _ = os.path.splitext(basename)
             self.chooser.set_current_folder(dirname)
-            self.chooser.set_current_name(filename + "." + extension)
+            self.chooser.set_current_name(f"{filename}.{extension}")
 
     def get_selected_path(self):
         self.last_path = self.chooser.get_filename()
@@ -333,10 +331,11 @@ class TemplateBar(Gtk.HBox):
     def __init__(self):
         GObject.GObject.__init__(self)
         self.set_spacing(2)
-        label = Gtk.Label(label="<b>%s</b>:" % _("Template"))
+        label = Gtk.Label(label=f'<b>{_("Template")}</b>:')
         label.set_use_markup(True)
         self.pack_start(label, False, False, 0)
-        self.save_insert_button = Gtk.Button.new_with_label(_("Save and insert"))
+        self.save_insert_button = Gtk.Button.new_with_label(
+            _("Save and insert"))
         self.pack_start(self.save_insert_button, False, False, 0)
         self.save_button = Gtk.Button.new_with_label(_("Save"))
         self.pack_start(self.save_button, False, False, 0)
@@ -354,7 +353,8 @@ class ToolbarMenuButton(Gtk.ToolButton):
         self.show_all()
 
     def _on_clicked(self, button):
-        self._menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
+        self._menu.popup(None, None, None, None, 0,
+                         Gtk.get_current_event_time())
 
     def set_menu(self, menu):
         self._menu = menu
