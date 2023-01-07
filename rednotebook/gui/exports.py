@@ -131,16 +131,14 @@ class ContentsPage(AssistantPage):
         self.journal = journal
         self.assistant = assistant
 
-        self.text_and_tags_button = Gtk.RadioButton(
-            label=_("Export text and tags"))
+        self.text_and_tags_button = Gtk.RadioButton(label=_("Export text and tags"))
         self.text_only_button = Gtk.RadioButton(
             label=_("Export text only"), group=self.text_and_tags_button
         )
         self.tags_only_button = Gtk.RadioButton(
             label=_("Export tags only"), group=self.text_and_tags_button
         )
-        self.filter_tags_button = Gtk.CheckButton(
-            label=_("Filter days by tags"))
+        self.filter_tags_button = Gtk.CheckButton(label=_("Filter days by tags"))
 
         self.pack_start(self.text_and_tags_button, False, False, 0)
         self.pack_start(self.text_only_button, False, False, 0)
@@ -257,8 +255,7 @@ class ContentsPage(AssistantPage):
 
     def check_selection(self, *args):
         if self.is_filtered() and not self.get_categories():
-            error = _(
-                "When filtering by tags, you have to select at least one tag.")
+            error = _("When filtering by tags, you have to select at least one tag.")
             self.set_error_text(error)
             correct = False
         else:
@@ -428,12 +425,10 @@ class ExportAssistant(Assistant):
                 self.exported_categories = []
             else:
                 self.page5.add_setting(
-                    _("Include text"), self.yes_no(
-                        self.page3.is_text_included())
+                    _("Include text"), self.yes_no(self.page3.is_text_included())
                 )
                 self.page5.add_setting(
-                    _("Include tags"), self.yes_no(
-                        self.page3.is_tags_included())
+                    _("Include tags"), self.yes_no(self.page3.is_tags_included())
                 )
             if self.is_filtered:
                 self.page5.add_setting(
@@ -456,8 +451,7 @@ class ExportAssistant(Assistant):
                 )
 
             selected_categories = self.exported_categories
-            logging.debug(
-                f"Selected Categories for Inclusion: {selected_categories}")
+            logging.debug(f"Selected Categories for Inclusion: {selected_categories}")
 
             markup_strings_for_each_day = []
             for day in export_days:
@@ -465,8 +459,7 @@ class ExportAssistant(Assistant):
                 if self.is_filtered:
                     category_pairs = day.get_category_content_pairs()
                     include_day = any(
-                        category in category_pairs
-                        for category in selected_categories
+                        category in category_pairs for category in selected_categories
                     )
                 if include_day:
                     date_format = self.journal.config.read("exportDateFormat")

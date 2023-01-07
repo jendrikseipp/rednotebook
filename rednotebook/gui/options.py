@@ -88,8 +88,7 @@ class AutostartOption(TickOption):
         """Apply the current setting"""
         if selected := self.get_value():
             # Add autostart file if it is not present
-            filesystem.make_file_with_dir(
-                self.autostart_file, info.desktop_file)
+            filesystem.make_file_with_dir(self.autostart_file, info.desktop_file)
         elif os.path.exists(self.autostart_file):
             os.remove(self.autostart_file)
 
@@ -130,8 +129,7 @@ class IntegerOption(Option):
         value = int(value)
 
         self.spin_button = Gtk.SpinButton()
-        adjustment = Gtk.Adjustment(
-            value, min_value, max_value, increment, 10, 0)
+        adjustment = Gtk.Adjustment(value, min_value, max_value, increment, 10, 0)
         self.spin_button.set_adjustment(adjustment)
         self.spin_button.set_value(value)
         self.spin_button.set_numeric(True)
@@ -169,8 +167,7 @@ class DateFormatOption(ComboBoxOption):
             "%B",
         ]
 
-        ComboBoxOption.__init__(
-            self, text, name, date_formats, tooltip=tooltip)
+        ComboBoxOption.__init__(self, text, name, date_formats, tooltip=tooltip)
 
         date_url = "http://docs.python.org/library/time.html#time.strftime"
         date_format_help_button = UrlButton(_("Help"), date_url)
@@ -277,8 +274,7 @@ class OptionsManager:
         self.dialog = OptionsDialog(self.builder.get_object("options_dialog"))
         self.dialog.set_transient_for(self.main_window.main_frame)
         self.dialog.set_default_size(600, 300)
-        self.dialog.add_category(
-            "general", self.builder.get_object("general_vbox"))
+        self.dialog.add_category("general", self.builder.get_object("general_vbox"))
 
     def on_options_dialog(self):
         self.dialog.clear()
@@ -290,8 +286,7 @@ class OptionsManager:
         self.options = []
 
         if platform.system() == "Linux" and os.path.exists("/usr/bin/rednotebook"):
-            logging.debug(
-                "Running on Linux. Is installed. Adding autostart option")
+            logging.debug("Running on Linux. Is installed. Adding autostart option")
             self.options.insert(0, AutostartOption())
 
         # Most modern Linux distributions do not have a systray anymore.
@@ -303,8 +298,7 @@ class OptionsManager:
                 TickOption(
                     _("Close to system tray"),
                     "closeToTray",
-                    tooltip=_(
-                        "Closing the window will send RedNotebook to the tray"),
+                    tooltip=_("Closing the window will send RedNotebook to the tray"),
                 )
             )
 
@@ -321,8 +315,7 @@ class OptionsManager:
             _("Check for new version at startup"), "checkForNewVersion"
         )
 
-        self.options.append(TickOption(
-            _("Search as you type"), "instantSearch"))
+        self.options.append(TickOption(_("Search as you type"), "instantSearch"))
 
         def check_version_action(widget):
             utils.check_new_version(
@@ -332,8 +325,7 @@ class OptionsManager:
             check = bool(self.journal.config.read("checkForNewVersion"))
             check_version_option.check_button.set_active(check)
 
-        check_version_button = ActionButton(
-            _("Check now"), check_version_action)
+        check_version_button = ActionButton(_("Check now"), check_version_action)
         check_version_option.pack_start(check_version_button, False, False, 0)
         self.options.append(check_version_option)
 
@@ -350,8 +342,7 @@ class OptionsManager:
                 DateFormatOption(
                     _("Date/Time format"),
                     "dateTimeString",
-                    tooltip=_(
-                        "Used by Date/Time button and $date$ template macro."),
+                    tooltip=_("Used by Date/Time button and $date$ template macro."),
                 ),
                 DateFormatOption(
                     _("Date format"),
@@ -393,8 +384,7 @@ class OptionsManager:
             self.main_window.tray_icon.set_visible(visible)
         else:
             # Reset some options
-            self.main_window.set_font(self.config.read(
-                "mainFont", editor.DEFAULT_FONT))
+            self.main_window.set_font(self.config.read("mainFont", editor.DEFAULT_FONT))
 
         self.dialog.hide()
 

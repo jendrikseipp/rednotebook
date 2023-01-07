@@ -1,6 +1,3 @@
-from rednotebook.util.markup import REGEX_HTML_LINK, REGEX_LINEBREAK
-from rednotebook.external import txt2tags
-from gi.repository import GObject, Pango
 import logging
 import re
 
@@ -8,6 +5,11 @@ import gi
 
 
 gi.require_version("Pango", "1.0")
+
+from gi.repository import GObject, Pango
+
+from rednotebook.util.markup import REGEX_HTML_LINK, REGEX_LINEBREAK
+from rednotebook.external import txt2tags
 
 
 def convert_to_pango(txt, headers=None, options=None):

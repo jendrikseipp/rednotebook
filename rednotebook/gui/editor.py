@@ -28,8 +28,7 @@ from rednotebook.util import filesystem
 try:
     from rednotebook.external import spellcheck
 except ImportError:
-    logging.warning(
-        "For spell checking, please install enchant (python3-enchant).")
+    logging.warning("For spell checking, please install enchant (python3-enchant).")
     spellcheck = None
 
 
@@ -41,8 +40,7 @@ except AttributeError:
 
 
 class Editor(GObject.GObject):
-    __gsignals__ = {
-        "can-undo-redo-changed": (GObject.SIGNAL_RUN_FIRST, None, ())}
+    __gsignals__ = {"can-undo-redo-changed": (GObject.SIGNAL_RUN_FIRST, None, ())}
 
     def __init__(self, day_text_view):
         super().__init__()
@@ -57,8 +55,7 @@ class Editor(GObject.GObject):
         self.enable_spell_check(False)
 
         # Enable drag&drop
-        self.day_text_view.connect(
-            "drag-data-received", self.on_drag_data_received)
+        self.day_text_view.connect("drag-data-received", self.on_drag_data_received)
 
         # Sometimes making the editor window very small causes the program to freeze
         # So we forbid that behaviour, by setting a minimum width
@@ -111,8 +108,7 @@ class Editor(GObject.GObject):
             self.day_text_buffer.insert(iter, text)
 
     def replace_selection(self, text):
-        self.day_text_buffer.delete_selection(
-            interactive=False, default_editable=True)
+        self.day_text_buffer.delete_selection(interactive=False, default_editable=True)
         self.day_text_buffer.insert_at_cursor(text)
 
     def replace_selection_and_highlight(self, p1, p2, p3):
@@ -220,8 +216,7 @@ class Editor(GObject.GObject):
 
     def apply_format(self, format):
         selection = self.get_selected_text()
-        left_markup, right_markup = self._get_markups(
-            format, self.get_selected_text())
+        left_markup, right_markup = self._get_markups(format, self.get_selected_text())
 
         # Apply formatting only once.
         if self.get_text_left_of_selection(

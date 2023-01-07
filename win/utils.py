@@ -13,8 +13,7 @@ def ensure_path(path):
 
 def confirm_overwrite(dir):
     if os.path.exists(dir):
-        answer = input(
-            f"The directory {dir} exists. Overwrite it? (Y/n): ").strip()
+        answer = input(f"The directory {dir} exists. Overwrite it? (Y/n): ").strip()
         if answer and answer.lower() != "y":
             sys.exit("Aborting")
         shutil.rmtree(dir)

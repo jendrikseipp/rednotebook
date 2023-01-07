@@ -287,8 +287,7 @@ class Journal(Gtk.Application):
 
         logging.debug('Trying to find journal "%s"' % path_arg)
 
-        paths_to_check = [path_arg, os.path.join(
-            self.dirs.journal_user_dir, path_arg)]
+        paths_to_check = [path_arg, os.path.join(self.dirs.journal_user_dir, path_arg)]
 
         for path in paths_to_check:
             if os.path.exists(path):
@@ -371,8 +370,7 @@ class Journal(Gtk.Application):
             self.show_message(
                 _("The content has been saved to %s") % self.dirs.data_dir, error=False
             )
-            logging.info("The content has been saved to %r" %
-                         self.dirs.data_dir)
+            logging.info("The content has been saved to %r" % self.dirs.data_dir)
         elif something_saved is None:
             # Don't display this as an error, because we already show a dialog.
             self.show_message(_("The journal could not be saved"), error=False)
@@ -432,16 +430,14 @@ class Journal(Gtk.Application):
         if not self.dirs.portable:
             self.config["dataDir"] = data_dir
         else:
-            rel_data_dir = filesystem.get_relative_path(
-                self.dirs.app_dir, data_dir)
+            rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config["dataDir"] = rel_data_dir
 
     def set_frame_title(self):
         parts = ["RedNotebook"]
         if self.title != "data":
             parts.append(self.title)
-        parts.append(dates.format_date(
-            self.config.read("exportDateFormat"), self.date))
+        parts.append(dates.format_date(self.config.read("exportDateFormat"), self.date))
         self.frame.main_frame.set_title(" - ".join(parts))
 
     def get_month(self, date):
@@ -507,8 +503,7 @@ class Journal(Gtk.Application):
 
     def go_to_next_day(self):
         next_date = self.date + dates.one_day
-        following_edited_days = self.get_days_in_date_range(
-            start_date=next_date)
+        following_edited_days = self.get_days_in_date_range(start_date=next_date)
         if following_edited_days:
             next_date = following_edited_days[0].date
         self.change_date(next_date)
@@ -537,8 +532,7 @@ class Journal(Gtk.Application):
     @property
     def categories(self):
         return sorted(
-            set(itertools.chain.from_iterable(
-                day.categories for day in self.days)),
+            set(itertools.chain.from_iterable(day.categories for day in self.days)),
             key=locale.strxfrm,
         )
 
@@ -587,8 +581,7 @@ class Journal(Gtk.Application):
         days = []
         for month in self.months.values():
             # Filter out days without content.
-            days_in_month = [
-                day for day in month.days.values() if not day.empty]
+            days_in_month = [day for day in month.days.values() if not day.empty]
             days.extend(days_in_month)
 
         # Sort days

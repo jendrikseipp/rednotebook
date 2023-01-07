@@ -54,7 +54,7 @@ def setup_signal_handlers(journal):
     ]
 
     def signal_handler(signum, frame):
-        logging.info("Program was abnormally aborted with signal %s" % signum)
+        logging.info(f"Program was abnormally aborted with signal {signum}")
         journal.exit()
 
     for signal_name in signal_names:
@@ -66,7 +66,7 @@ def setup_signal_handlers(journal):
             except RuntimeError:
                 logging.info("Could not connect signal number %d" % signal_number)
 
-    logging.info("Connected Signals: %s" % signals)
+    logging.info(f"Connected Signals: {signals}")
 
 
 def get_gtk_colors(widget):
@@ -98,7 +98,7 @@ def get_new_version_number():
     match = version_pattern.search(project_xml)
     if not match:
         return None
-    new_version = match.group(1)
+    new_version = match[1]
     logging.info(f"Latest version: {new_version}")
     return new_version
 
@@ -161,8 +161,7 @@ def _check_new_version(journal, current_version, startup):
         newer_version_available = None
 
     logging.info(
-        "Current version: %s, latest version: %s, newer: %s"
-        % (current_version, new_version, newer_version_available)
+        f"Current version: {current_version}, latest version: {new_version}, newer: {newer_version_available}"
     )
 
     if newer_version_available or not startup:
@@ -182,7 +181,7 @@ def show_html_in_browser(html, filename):
     filesystem.write_file(filename, html)
 
     html_file = os.path.abspath(filename)
-    html_file = "file://" + html_file
+    html_file = f"file://{html_file}"
     webbrowser.open(html_file)
 
 

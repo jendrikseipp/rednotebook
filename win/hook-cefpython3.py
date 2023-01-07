@@ -73,9 +73,7 @@ def get_cefpython_modules():
     """Get all cefpython Cython modules in the cefpython3 package.
     It returns a list of names without file extension. Eg.
     'cefpython_py27'."""
-    pyds = glob.glob(
-        os.path.join(CEFPYTHON3_DIR, f"cefpython_py*{CYTHON_MODULE_EXT}")
-    )
+    pyds = glob.glob(os.path.join(CEFPYTHON3_DIR, f"cefpython_py*{CYTHON_MODULE_EXT}"))
     assert len(pyds) > 1, "Missing cefpython3 Cython modules"
     modules = []
     for path in pyds:
@@ -173,8 +171,7 @@ def get_cefpython3_datas():
     elif is_win or is_linux:
         # The .pak files in cefpython3/locales/ directory
         locales_dir = os.path.join(CEFPYTHON3_DIR, "locales")
-        assert os.path.exists(
-            locales_dir), "locales/ dir not found in cefpython3"
+        assert os.path.exists(locales_dir), "locales/ dir not found in cefpython3"
         for filename in os.listdir(locales_dir):
             logger.info(
                 "Include cefpython3 data: {}/{}".format(

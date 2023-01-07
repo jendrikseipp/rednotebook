@@ -71,16 +71,13 @@ class Cloud(browser.HtmlView):
     def update_lists(self):
         config = self.journal.config
 
-        default_ignore_list = _(
-            "filter, these, comma, separated, words, and, #tags")
-        self.ignore_list = config.read_list(
-            "cloudIgnoreList", default_ignore_list)
+        default_ignore_list = _("filter, these, comma, separated, words, and, #tags")
+        self.ignore_list = config.read_list("cloudIgnoreList", default_ignore_list)
         self.ignore_list = [word.lower() for word in self.ignore_list]
         logging.info("Cloud ignore list: %s" % self.ignore_list)
 
         default_include_list = _("mtv, spam, work, job, play")
-        self.include_list = config.read_list(
-            "cloudIncludeList", default_include_list)
+        self.include_list = config.read_list("cloudIncludeList", default_include_list)
         self.include_list = [word.lower() for word in self.include_list]
         logging.info("Cloud include list: %s" % self.include_list)
 
@@ -118,8 +115,7 @@ class Cloud(browser.HtmlView):
         self.link_index = 0
 
         tags_count_dict = list(self.get_categories_counter().items())
-        self.tags = self._get_tags_for_cloud(
-            tags_count_dict, self.regexes_ignore)
+        self.tags = self._get_tags_for_cloud(tags_count_dict, self.regexes_ignore)
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
@@ -209,8 +205,7 @@ class Cloud(browser.HtmlView):
             "<body>",
         ]
         if tag_cloud:
-            parts.extend(
-                [heading % _("Tags"), tag_cloud, "\n", "<br />\n" * 3])
+            parts.extend([heading % _("Tags"), tag_cloud, "\n", "<br />\n" * 3])
         if word_cloud:
             parts.extend([heading % _("Words"), word_cloud])
         parts.append("</body></html>")

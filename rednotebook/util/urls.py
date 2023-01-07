@@ -9,8 +9,7 @@ import webbrowser
 from rednotebook.util.filesystem import IS_WIN, LOCAL_FILE_PEFIX, system_call
 
 
-ENTRY_REFERENCE_URI_PATTERN = re.compile(
-    r"^file:///#(?P<date>\d{4}-\d{2}-\d{2})$")
+ENTRY_REFERENCE_URI_PATTERN = re.compile(r"^file:///#(?P<date>\d{4}-\d{2}-\d{2})$")
 
 
 def get_local_url(url):

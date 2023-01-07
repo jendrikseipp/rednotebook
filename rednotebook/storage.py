@@ -130,8 +130,7 @@ def _save_month_to_disk(month, journal_dir):
     content = _get_dict(month)
 
     def get_filename(infix):
-        year_and_month = format_year_and_month(
-            month.year_number, month.month_number)
+        year_and_month = format_year_and_month(month.year_number, month.month_number)
         return os.path.join(journal_dir, f"{year_and_month}{infix}.txt")
 
     old = get_filename(".old")
@@ -147,8 +146,7 @@ def _save_month_to_disk(month, journal_dir):
         yaml.dump(content, f, Dumper=Dumper, allow_unicode=True)
 
     # Check that month file was written to disk successfully.
-    written_month = _load_month_from_disk(
-        new, month.year_number, month.month_number)
+    written_month = _load_month_from_disk(new, month.year_number, month.month_number)
     if _get_dict(written_month) != content:
         try:
             os.remove(new)

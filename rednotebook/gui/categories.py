@@ -76,8 +76,7 @@ class CategoriesTreeView:
         self.context_menu = self._get_context_menu()
         self.context_menu.attach_to_widget(self.tree_view, lambda x, y: None)
 
-        self.tree_view.connect("button-press-event",
-                               self.on_button_press_event)
+        self.tree_view.connect("button-press-event", self.on_button_press_event)
         self.tree_view.connect("key-press-event", self.on_key_press_event)
 
         # Wrap lines
@@ -220,8 +219,7 @@ class CategoriesTreeView:
 
     def _get_category_iter(self, category_name):
         for iter_index in range(self.tree_store.iter_n_children(None)):
-            current_category_iter = self.tree_store.iter_nth_child(
-                None, iter_index)
+            current_category_iter = self.tree_store.iter_nth_child(None, iter_index)
             current_category_name = self.get_iter_value(current_category_iter)
             if str(current_category_name).lower() == str(category_name).lower():
                 return current_category_iter
@@ -301,8 +299,7 @@ class CategoriesTreeView:
 
         if event.button == 3:
             # This is a right-click.
-            self.context_menu.popup(
-                None, None, None, None, event.button, event.time)
+            self.context_menu.popup(None, None, None, None, event.button, event.time)
 
     def _get_context_menu(self):
         context_menu_xml = """
@@ -359,8 +356,7 @@ class CategoriesTreeView:
 
     def _on_change_entry_clicked(self, action):
         iter = self.get_selected_node()
-        self.tree_view.set_cursor(
-            self.tree_store.get_path(iter), self.tvcolumn, True)
+        self.tree_view.set_cursor(self.tree_store.get_path(iter), self.tvcolumn, True)
 
     def _on_add_entry_clicked(self, action):
         iter = self.get_selected_node()
@@ -392,8 +388,7 @@ class CategoriesTreeView:
         Allows dynamic line wrapping in a treeview
         """
         other_columns = (c for c in treeview.get_columns() if c != column)
-        new_width = allocation.width - \
-            sum(c.get_width() for c in other_columns)
+        new_width = allocation.width - sum(c.get_width() for c in other_columns)
         new_width -= treeview.style_get_property("horizontal-separator") * 2
 
         # Customize for treeview with expanders.

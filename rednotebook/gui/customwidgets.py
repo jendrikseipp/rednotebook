@@ -334,8 +334,7 @@ class TemplateBar(Gtk.HBox):
         label = Gtk.Label(label=f'<b>{_("Template")}</b>:')
         label.set_use_markup(True)
         self.pack_start(label, False, False, 0)
-        self.save_insert_button = Gtk.Button.new_with_label(
-            _("Save and insert"))
+        self.save_insert_button = Gtk.Button.new_with_label(_("Save and insert"))
         self.pack_start(self.save_insert_button, False, False, 0)
         self.save_button = Gtk.Button.new_with_label(_("Save"))
         self.pack_start(self.save_button, False, False, 0)
@@ -353,8 +352,7 @@ class ToolbarMenuButton(Gtk.ToolButton):
         self.show_all()
 
     def _on_clicked(self, button):
-        self._menu.popup(None, None, None, None, 0,
-                         Gtk.get_current_event_time())
+        self._menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
 
     def set_menu(self, menu):
         self._menu = menu

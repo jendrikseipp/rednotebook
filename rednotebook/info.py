@@ -70,9 +70,7 @@ def get_commandline_parser():
     parser = argparse.ArgumentParser(
         description=comments, formatter_class=argparse.RawTextHelpFormatter
     )
-    parser.add_argument(
-        "--version", action="version", version=f"RedNotebook {version}"
-    )
+    parser.add_argument("--version", action="version", version=f"RedNotebook {version}")
     parser.add_argument(
         "--date", dest="start_date", help="load specified date (format: YYYY-MM-DD)"
     )

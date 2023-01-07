@@ -63,8 +63,7 @@ class Statistics:
             [_("Distinct Words"), self.get_number_of_distinct_words()],
             [_("Edited Days"), self.get_number_of_entries()],
             [_("Letters"), self.get_number_of_chars()],
-            [_("Days between first and last Entry"),
-             self.get_number_of_usage_days()],
+            [_("Days between first and last Entry"), self.get_number_of_usage_days()],
             [_("Average number of Words"), self.get_average_number_of_words()],
             [_("Percentage of edited Days"), self.get_edit_percentage()],
         ]

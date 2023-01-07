@@ -89,8 +89,7 @@ class Day:
         assert "text" in day_content, day_content
 
         self.month = month
-        self.date = datetime.date(
-            month.year_number, month.month_number, day_number)
+        self.date = datetime.date(month.year_number, month.month_number, day_number)
 
         # Turn all entries of old "Tags" categories into tags without entries.
         # Apparently, "Tags" may map to None, so explicitly convert to dict.
@@ -200,12 +199,10 @@ class Day:
                     else:
                         add_text_to_results = True
             if add_text_to_results:
-                results.append(get_text_with_dots(
-                    self.text, 0, TEXT_RESULT_LENGTH))
+                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         elif text in str(self):
             # Date contains searched text.
-            results.append(get_text_with_dots(
-                self.text, 0, TEXT_RESULT_LENGTH))
+            results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         else:
             if text_result := self.search_in_text(text):
                 results.append(text_result)
@@ -219,7 +216,7 @@ class Day:
         if occurrence < 0:
             return None
 
-        found_text = self.text[occurrence: occurrence + len(search_text)]
+        found_text = self.text[occurrence : occurrence + len(search_text)]
         return get_text_with_dots(
             self.text, occurrence, occurrence + len(search_text), found_text
         )

@@ -129,8 +129,7 @@ def main():
             print(f"Ignoring leading text: {days[0]}")
         i += 1
 
-    existing_entries = rednotebook.storage.load_all_months_from_disk(
-        args.data_dir)
+    existing_entries = rednotebook.storage.load_all_months_from_disk(args.data_dir)
     months = {}
     mindate, maxdate = None, None
     while i < len(days):
@@ -179,8 +178,7 @@ def main():
             continue
 
         # remove blank headers
-        days[i + 1] = re.sub(r"^\s*[#]+\s*$", "",
-                             days[i + 1], flags=re.MULTILINE)
+        days[i + 1] = re.sub(r"^\s*[#]+\s*$", "", days[i + 1], flags=re.MULTILINE)
 
         # remove leading blank lines
         days[i + 1] = re.sub(r"^\s*\n", "", days[i + 1])
@@ -200,8 +198,7 @@ def main():
         list_missing_entries(mindate, maxdate, months, existing_entries)
 
     if not args.dry_run:
-        rednotebook.storage.save_months_to_disk(
-            months, args.data_dir, True, True)
+        rednotebook.storage.save_months_to_disk(months, args.data_dir, True, True)
 
 
 if __name__ == "__main__":
