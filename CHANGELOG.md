@@ -1,3 +1,6 @@
+# 2.29.1 
+* Remove bundled msgfmt.py module and use msgfmt binary from gettext suite instead. This fixes translations on Windows (Jendrik Seipp).
+
 # 2.29 (2022-12-31)
 * Document alternatives for changing the GTK theme on Windows (Ankur A Sharma, #494).
 * Fix en_GB translations (Jendrik Seipp, #659).
