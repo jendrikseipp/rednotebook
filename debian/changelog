@@ -1,3 +1,10 @@
+rednotebook (2.29.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Remove bundled msgfmt.py module and use msgfmt binary from gettext suite instead. This fixes most of the translations on Windows (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 12 Jan 2023 11:20:30 +0100
+
 rednotebook (2.29-1) UNRELEASED; urgency=low
 
   * New upstream release
