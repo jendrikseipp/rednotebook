@@ -5,6 +5,8 @@ set -exuo pipefail
 cd "$(dirname "$0")"
 cd ../
 
+git switch master
+
 # Merge translations before updating po/pot files to avoid merge conflicts.
 # The workflow is based on https://github.com/WeblateOrg/weblate/issues/1847#issuecomment-415715912
 # Ignore returncode if no changes need to be merged.
