@@ -1,0 +1,23 @@
+name: Build Debian package
+
+on: [push, pull_request]
+
+jobs:
+  build-deb-package:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: build
+      uses: dawidd6/action-debian-package@v1.4.4
+      with:
+        # Optional, relative to workspace directory
+        source_directory: debian
+        # Optional, relative to workspace directory
+        artifacts_directory: output
+        # Optional, value from `debian/changelog` is used if not defined
+        os_distribution: bionic
+        # Optional, target architecture, defaults to amd64
+        cpu_architecture: amd64
