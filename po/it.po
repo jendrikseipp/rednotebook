@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-28 23:30+0100\n"
-"PO-Revision-Date: 2022-12-31 11:57+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2023-01-11 23:21+0000\n"
+"Last-Translator: Tk Desimon <tkdesimon@meta.ua>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/it/>\n"
 "Language: it\n"
@@ -56,7 +56,7 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
-"Ci sono due modalità in RedNotebook, la modalità __modifica__ a la modalità "
+"Ci sono due modalità in RedNotebook, la modalità __modifica__ e la modalità "
 "__anteprima__."
 
 #: ../rednotebook/help.py:51
@@ -78,8 +78,8 @@ msgid ""
 "watched \"__Life of Brian__\"."
 msgstr ""
 "Oggi sono stato al //negozio di animali// e ho comprato una **tigre**. "
-"Dopodiché siamo stati al --parco-- e abbiamo passato dei bei momenti "
-"giocando a frisbee. Dopo abbiamo guardato \"__La via di Brian__\"."
+"Dopodiché siamo stati all' --acquapark-- e abbiamo passato dei bei momenti "
+"giocando a frisbee. Dopo abbiamo guardato \"__La vita di Brian__\"."
 
 #: ../rednotebook/help.py:64
 msgid "Templates"
@@ -114,7 +114,7 @@ msgid ""
 "when you exit the program."
 msgstr ""
 "Tutto quello che verrà inserito verrà salvato automaticamente ad intervalli "
-"regolari e all'uscita del programma."
+"regolari ed all'uscita dal programma."
 
 #: ../rednotebook/help.py:79
 msgid "To avoid data loss you should backup your journal regularly."
@@ -141,8 +141,8 @@ msgstr ""
 #: ../rednotebook/help.py:85
 msgid "If you encounter any errors, please drop me a note so I can fix them."
 msgstr ""
-"Se si ricontrano errori, inviare una email allo sviluppatore per consentire "
-"di correggerli."
+"Se si riscontrano errori, inviare una email allo sviluppatore per "
+"consentirgli di correggerli."
 
 #: ../rednotebook/help.py:86
 msgid "Any feedback is appreciated."
@@ -211,7 +211,7 @@ msgstr "Numero medio di parole"
 
 #: ../rednotebook/util/statistics.py:74
 msgid "Percentage of edited Days"
-msgstr "Percentuale dei giorni modificati"
+msgstr "Percentuale di giorni modificati"
 
 #: ../rednotebook/util/statistics.py:82
 msgid "Lines"
@@ -233,7 +233,7 @@ msgstr "Se ti piace il programma, considera di fare una donazione."
 
 #: ../rednotebook/util/utils.py:123
 msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "Visitare il sito web di RedNotebook?"
+msgstr "Vuoi visitare il sito web di RedNotebook?"
 
 #: ../rednotebook/util/utils.py:131
 msgid "Do not ask again"
@@ -246,21 +246,21 @@ msgstr "sconosciuta"
 #: ../rednotebook/backup.py:58
 #, python-format
 msgid "It has been %d days since you made your last backup."
-msgstr "Sono passati %d giorni dall'ultimo backup."
+msgstr "Sono passati %d giorni dall'ultimo salvataggio."
 
 #: ../rednotebook/backup.py:60
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
-"È possibile eseguire il backup del proprio diario in un file zip per evitare "
-"la perdita dei dati."
+"È possibile eseguire il salvataggio del proprio diario in un file zip per "
+"evitare la perdita dei dati."
 
 #: ../rednotebook/backup.py:67
 msgid "Backup"
-msgstr "Backup"
+msgstr "Salvataggio"
 
 #: ../rednotebook/backup.py:70
 msgid "Backup now"
-msgstr "Esegui ora il backup"
+msgstr "Esegui ora il salvataggio"
 
 #: ../rednotebook/backup.py:72
 msgid "Ask at next start"
@@ -363,7 +363,7 @@ msgstr ""
 "+\n"
 "\n"
 "\n"
-"**Discussioni, decisioni e azioni intraprese:**\n"
+"**Discussioni, decisioni, compiti:**\n"
 "+\n"
 "+\n"
 "+\n"
@@ -383,14 +383,14 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
-"=== Escursione ===\n"
+"=== Viaggio ===\n"
 "**Data:**\n"
 "\n"
 "**Località:**\n"
 "\n"
-"**Participanti:**\n"
+"**Partecipanti:**\n"
 "\n"
-"**Viaggio:**\n"
+"**Il viaggio:**\n"
 "Inizialmente siamo stati a XXXXX dopodiché siamo andati in YYYYYY...\n"
 "\n"
 "**Foto:** [Cartella immagini \"\"/percorso/alle/immagini/\"\"]\n"
@@ -558,7 +558,7 @@ msgstr "Apre l'assistente di esportazione"
 
 #: ../rednotebook/gui/menu.py:134
 msgid "_Backup"
-msgstr "_Backup"
+msgstr "_Salvataggio"
 
 #: ../rednotebook/gui/menu.py:136
 msgid "Save all the data in a zip archive"
@@ -574,7 +574,7 @@ msgstr "Mostra alcune statistiche sul diario"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Spegni RedNotebook. Non verrà inviato nell'area di notifica."
+msgstr "Chiudi RedNotebook. Non verrà inviato nell'area di notifica."
 
 #: ../rednotebook/gui/menu.py:155
 msgid "_Edit"
@@ -594,11 +594,11 @@ msgstr "Sottolinea le parole errate"
 
 #: ../rednotebook/gui/menu.py:229
 msgid "_Help"
-msgstr "A_iuto"
+msgstr "_Aiuto"
 
 #: ../rednotebook/gui/menu.py:233
 msgid "Contents"
-msgstr "Documentazione"
+msgstr "Contenuti"
 
 #: ../rednotebook/gui/menu.py:235
 msgid "Open the RedNotebook documentation"
@@ -626,7 +626,7 @@ msgstr "Segnala un problema"
 
 #: ../rednotebook/gui/menu.py:259
 msgid "Fill out a short form about the problem"
-msgstr "Apre un questionario da compilare riguardo il problema"
+msgstr "Compila un breve modulo riguardo il problema"
 
 #: ../rednotebook/gui/menu.py:265
 msgid "Give Feedback"
@@ -689,22 +689,22 @@ msgstr "Contributori:"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Alessandro Ranaldi https://launchpad.net/~ciaolo\n"
-"  Claudio Arseni https://launchpad.net/~claudio.arseni\n"
-"  Fabio Bologna https://launchpad.net/~fabio-fabioon\n"
-"  Fabrizio Narni https://launchpad.net/~shiba89\n"
-"  Gilberto https://launchpad.net/~jb-gilberto\n"
-"  Giorgio Croci Candiani https://launchpad.net/~g-crocic\n"
-"  Paolo Sammicheli https://launchpad.net/~xdatap1\n"
-"  Valter Mura https://launchpad.net/~valtermura-gmail\n"
-"  Vittorio De Santis https://launchpad.net/~alecto1\n"
-"  momphucker https://launchpad.net/~momphucker\n"
-"  tommaso gardumi https://launchpad.net/~tommaso-gardumi\n"
-"  Albano Battistella https://launchpad.net/~albano-battistella"
+" Alessandro Ranaldi https://launchpad.net/~ciaolo\n"
+" Claudio Arseni https://launchpad.net/~claudio.arseni\n"
+" Fabio Bologna https://launchpad.net/~fabio-fabioon\n"
+" Fabrizio Narni https://launchpad.net/~shiba89\n"
+" Gilberto https://launchpad.net/~jb-gilberto\n"
+" Giorgio Croci Candiani https://launchpad.net/~g-crocic\n"
+" Paolo Sammicheli https://launchpad.net/~xdatap1\n"
+" Valter Mura https://launchpad.net/~valtermura-gmail\n"
+" Vittorio De Santis https://launchpad.net/~alecto1\n"
+" momphucker https://launchpad.net/~momphucker\n"
+" tommaso gardumi https://launchpad.net/~tommaso-gardumi\n"
+" Albano Battistella https://launchpad.net/~albano-battistella"
 
 #: ../rednotebook/gui/clouds.py:74
 msgid "filter, these, comma, separated, words, and, #tags"
-msgstr "filtra, queste, parole, separate da virgole, e, #etichette"
+msgstr "filtra, queste, parole, separate, da, virgole, e, #etichette"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "mtv, spam, work, job, play"
@@ -725,7 +725,7 @@ msgstr "Secondo elemento"
 
 #: ../rednotebook/gui/insert_menu.py:107
 msgid "Indented Item"
-msgstr "Elemento indentato"
+msgstr "Elemento rientrato"
 
 #: ../rednotebook/gui/insert_menu.py:108
 msgid "Two blank lines close the list"
@@ -749,7 +749,7 @@ msgstr "Inserisce un collegamento a un file"
 
 #: ../rednotebook/gui/insert_menu.py:149
 msgid "_Link"
-msgstr "Co_llegamento"
+msgstr "_Collegamento"
 
 #: ../rednotebook/gui/insert_menu.py:151
 msgid "Insert a link to a website"
@@ -790,7 +790,7 @@ msgstr "Inserisce un'interruzione di riga manuale"
 
 #: ../rednotebook/gui/insert_menu.py:187
 msgid "_Insert"
-msgstr "I_nserisci"
+msgstr "_Inserisci"
 
 #: ../rednotebook/gui/insert_menu.py:192
 msgid "Level"
@@ -851,15 +851,15 @@ msgstr "Caricare RedNotebook all'avvio"
 
 #: ../rednotebook/gui/options.py:165
 msgid "%A, %x, Day %j"
-msgstr "%A, %x, %jº giorno"
+msgstr "%A, %x, Giorno %j"
 
 #: ../rednotebook/gui/options.py:167
 msgid "Week %W of Year %Y"
-msgstr "%Wª settimana dell'anno %Y"
+msgstr "Settimana %W dell'anno %Y"
 
 #: ../rednotebook/gui/options.py:169
 msgid "Day %j"
-msgstr "%jº giorno"
+msgstr "Giorno %j"
 
 #: ../rednotebook/gui/options.py:177
 msgid "Help"
@@ -872,7 +872,7 @@ msgstr "Anteprima:"
 
 #: ../rednotebook/gui/options.py:213
 msgid "Choose font ..."
-msgstr "Scegli carattere..."
+msgstr "Scegli carattere ..."
 
 #: ../rednotebook/gui/options.py:221
 msgid "Choose font"
@@ -880,15 +880,15 @@ msgstr "Scelta carattere"
 
 #: ../rednotebook/gui/options.py:303
 msgid "Close to system tray"
-msgstr "Mostrare un'icona nell'area di notifica"
+msgstr "Chiudi nell'area di notifica"
 
 #: ../rednotebook/gui/options.py:305
 msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Chiudendo la finestra RedNotebook sarà collocato nell'area di notifica"
+msgstr "Chiudendo la finestra, RedNotebook sarà collocato nell'area di notifica"
 
 #: ../rednotebook/gui/options.py:312
 msgid "Switch between edit and preview mode automatically"
-msgstr "Cambiare automaticamente la modalità tra modifica e anterpima"
+msgstr "Cambiare automaticamente la modalità tra modifica e anteprima"
 
 #: ../rednotebook/gui/options.py:319
 msgid "Check for new version at startup"
@@ -944,8 +944,7 @@ msgstr "Escludi dal cloud"
 
 #: ../rednotebook/gui/options.py:365
 msgid "Do not show these comma separated words and #tags in the clouds"
-msgstr ""
-"Non mostrare queste parole separate da virgole e #etichette nelle nuvole"
+msgstr "Non mostrare queste parole separate da virgole e #etichette nel cloud"
 
 #: ../rednotebook/gui/options.py:369
 msgid "Include small words in cloud"
@@ -1148,13 +1147,13 @@ msgstr ""
 "e\n"
 "cercare le tue voci. È inoltre possibile aggiungere immagini, collegamenti e "
 "modelli\n"
-"personalizzabili, il controllo ortografico delle note ed esportazione in "
+"personalizzabili, controllare ortograficamente le note ed esportarle in "
 "testo normale, HTML o\n"
 "Latex.\n"
 
 #: tmp/main_window.glade.h:3
 msgid "Select backup filename"
-msgstr "Seleziona il nome del file di backup"
+msgstr "Seleziona il nome del file di salvataggio"
 
 #: tmp/main_window.glade.h:4
 msgid "Select a directory"
@@ -1226,7 +1225,7 @@ msgstr "Nuova voce"
 
 #: tmp/main_window.glade.h:23
 msgid "<b>Select existing or new Category</b>"
-msgstr "<b>Selezionare una categoria esistente o crearne una nuova</b>"
+msgstr "<b>Selezionare una categoria esistente o creane una nuova</b>"
 
 #: tmp/main_window.glade.h:24
 msgid "<b>Write entry</b> (optional)"
