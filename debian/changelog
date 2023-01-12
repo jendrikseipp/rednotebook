@@ -1,3 +1,11 @@
+rednotebook (2.29.2-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
+  * Add continuous integration check to ensure that the basic Debian package builds correctly (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 13 Jan 2023 00:12:29 +0100
+
 rednotebook (2.29.1-1) UNRELEASED; urgency=low
 
   * New upstream release
