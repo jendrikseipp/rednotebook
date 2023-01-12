@@ -1,5 +1,6 @@
-# 2.29.2
-* Fix Debian packaging problem: only build translation files when needed (Jendrik Seipp).
+# 2.29.2 (2023-01-13)
+* Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
+* Add continuous integration check to ensure that the basic Debian package builds correctly (Jendrik Seipp).
 
 # 2.29.1 (2023-01-12)
 * Remove bundled msgfmt.py module and use msgfmt binary from gettext suite instead. This fixes most of the translations on Windows (Jendrik Seipp).
