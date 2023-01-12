@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------
-# Copyright (c) 2009-2022  Jendrik Seipp
+# Copyright (c) 2009-2023  Jendrik Seipp
 #
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,14 +19,14 @@
 """
 This is the installation script for RedNotebook.
 
-To install RedNotebook, run "python setup.py install".
-To do a (test) installation to a different dir, use "python setup.py install --root=test-dir" instead.
+To install RedNotebook, run "pip install ." (note the dot).
 """
 
 from pathlib import Path
 import sys
 
 from setuptools import setup
+from setuptools.command.build_py import build_py as _build_py
 
 REPO = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO))
@@ -44,8 +44,16 @@ def get_translation_files():
     for lang_dir in Path("build/locale/").iterdir():
         lang_file = lang_dir / "LC_MESSAGES" / "rednotebook.mo"
         dest_dir = Path("share") / "locale" / lang_dir.name / "LC_MESSAGES"
-        data_files.append((str(dest_dir), [str(lang_file)]))
+        data_files.append(
+            ("rednotebook", str(lang_file.parent), str(dest_dir), [lang_file.name])
+        )
     return data_files
+
+
+class build_py(_build_py):
+    def run(self):
+        self.data_files += get_translation_files()
+        _build_py.run(self)
 
 
 parameters = {
@@ -60,6 +68,7 @@ parameters = {
     "url": info.url,
     "license": "GPL",
     "keywords": "journal, diary",
+    "cmdclass": {"build_py": build_py},
     "scripts": ["rednotebook/rednotebook"],
     "packages": [
         "rednotebook",
@@ -85,8 +94,7 @@ parameters = {
             ["rednotebook/images/rednotebook-icon/rednotebook.svg"],
         ),
         ("share/metainfo", ["data/rednotebook.appdata.xml"]),
-    ]
-    + get_translation_files(),
+    ],
     "extras_require": {
         "dev_style": [
             "black==22.3.0",
