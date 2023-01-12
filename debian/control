@@ -8,6 +8,7 @@ Homepage: https://rednotebook.app
 Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
 Build-Depends: debhelper-compat (= 13),
+               gettext,
                python3,
                python3-setuptools,
                dh-python
