@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-28 23:30+0100\n"
-"PO-Revision-Date: 2019-11-07 19:16+0000\n"
-"Last-Translator: Jiri Grönroos <Unknown>\n"
-"Language-Team: Finnish <fi@li.org>\n"
+"PO-Revision-Date: 2023-01-08 10:50+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Launchpad-Export-Date: 2019-11-08 05:48+0000\n"
-"X-Generator: Launchpad (build 469f241f4e73cc0bdffa4e30654052a2af068e06)\n"
 
 #: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
 #: ../rednotebook/gui/categories.py:48 ../rednotebook/gui/clouds.py:213
@@ -80,24 +82,26 @@ msgstr ""
 "Jälkikäteen katsoimme elokuvan nimeltä \"__Brianin elämä__\"."
 
 #: ../rednotebook/help.py:64
-#, fuzzy
-#| msgid "Template"
 msgid "Templates"
-msgstr "Mallipohja"
+msgstr "Mallipohjat"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
-msgstr ""
+msgstr "RedNotebook tukee mallipohjia."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
 msgstr ""
+"Napsauta \"Mallipohja\"-painikkeen vieressä olevaa nuolta nähdäksesi "
+"vaihtoehtoja."
 
 #: ../rednotebook/help.py:68
 msgid ""
 "You can have one template for every day\n"
 "of the week and unlimited arbitrarily named templates."
 msgstr ""
+"Sinulla voi olla yksi mallipohja viikon jokaiselle\n"
+"päivälle ja rajoittamaton määrä vapaasti nimettyjä mallipohjia."
 
 #. Translators: both are verbs
 #: ../rednotebook/help.py:74
@@ -217,7 +221,7 @@ msgstr "Viimeisin versio on <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:121
 msgid "If you like the program, please consider making a donation."
-msgstr ""
+msgstr "Jos pidät ohjelmasta, harkitse lahjoitusta."
 
 #: ../rednotebook/util/utils.py:123
 msgid "Do you want to visit the RedNotebook homepage?"
@@ -232,10 +236,9 @@ msgid "unknown"
 msgstr "tuntematon"
 
 #: ../rednotebook/backup.py:58
-#, fuzzy, python-format
-#| msgid "It has been a while since you made your last backup."
+#, python-format
 msgid "It has been %d days since you made your last backup."
-msgstr "Viimeisimmästä varmuuskopiosta on kulunut jo aikaa."
+msgstr "Viimeisimmästä varmuuskopiosta on yli %d päivää."
 
 #: ../rednotebook/backup.py:60
 msgid "You can backup your journal to a zip file to avoid data loss."
@@ -440,14 +443,12 @@ msgstr ""
 "=====================================\n"
 
 #: ../rednotebook/templates.py:196
-#, fuzzy
-#| msgid "Template"
 msgid "Template mode"
-msgstr "Mallipohja"
+msgstr "Mallipohjatila"
 
 #: ../rednotebook/templates.py:200
 msgid "You are currently editing a template."
-msgstr ""
+msgstr "Muokkaat mallipohjaa."
 
 #: ../rednotebook/templates.py:321
 msgid "Choose Template Name"
@@ -598,23 +599,19 @@ msgstr "Avaa RedNotebook-dokumentaatio"
 
 #: ../rednotebook/gui/menu.py:241
 msgid "Donate"
-msgstr ""
+msgstr "Lahjoita"
 
 #: ../rednotebook/gui/menu.py:243
-#, fuzzy
-#| msgid "Open the RedNotebook documentation"
 msgid "Support RedNotebook with a donation"
-msgstr "Avaa RedNotebook-dokumentaatio"
+msgstr "Tue RedNotebookia lahjoituksella"
 
 #: ../rednotebook/gui/menu.py:249
 msgid "Translate RedNotebook"
 msgstr "Käännä RedNotebook"
 
 #: ../rednotebook/gui/menu.py:251
-#, fuzzy
-#| msgid "Translate RedNotebook"
 msgid "Help translate RedNotebook to your language"
-msgstr "Käännä RedNotebook"
+msgstr "Käännä RedNotebook kielellesi"
 
 #: ../rednotebook/gui/menu.py:257
 msgid "Report a Problem"
@@ -626,11 +623,11 @@ msgstr "Täytä lyhyt lomake ongelmasta"
 
 #: ../rednotebook/gui/menu.py:265
 msgid "Give Feedback"
-msgstr ""
+msgstr "Anna palautetta"
 
 #: ../rednotebook/gui/menu.py:267
 msgid "How can we improve RedNotebook?"
-msgstr ""
+msgstr "Miten voimme parantaa RedNotebookia?"
 
 #: ../rednotebook/gui/menu.py:288
 msgid "Wrong directory"
@@ -678,7 +675,7 @@ msgstr "RedNotebook-dokumentaatio"
 
 #: ../rednotebook/gui/menu.py:436
 msgid "Contributors:"
-msgstr ""
+msgstr "Avustajat:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
@@ -785,7 +782,7 @@ msgstr "L_isää"
 
 #: ../rednotebook/gui/insert_menu.py:192
 msgid "Level"
-msgstr ""
+msgstr "Taso"
 
 #: ../rednotebook/gui/insert_menu.py:227
 msgid "Insert"
@@ -826,15 +823,15 @@ msgstr "Mallipohja"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
-msgstr ""
+msgstr "Tallenna ja syötä"
 
 #: ../rednotebook/gui/customwidgets.py:341
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 #: ../rednotebook/gui/customwidgets.py:343
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -887,7 +884,7 @@ msgstr "Tarkista käynnistäessä uudemman version saatavuus"
 
 #: ../rednotebook/gui/options.py:322
 msgid "Search as you type"
-msgstr ""
+msgstr "Etsi kirjoittaessa"
 
 #: ../rednotebook/gui/options.py:332
 msgid "Check now"
@@ -923,11 +920,11 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:357
 msgid "Tags in cloud"
-msgstr ""
+msgstr "Tunnisteet pilvessä"
 
 #: ../rednotebook/gui/options.py:359
 msgid "Maximum number of tags displayed in the cloud"
-msgstr ""
+msgstr "Pilvessä näytettävien tunnisteiden enimmäismäärä"
 
 #: ../rednotebook/gui/options.py:362
 msgid "Exclude from cloud"
@@ -935,7 +932,7 @@ msgstr "Ohita pilvessä"
 
 #: ../rednotebook/gui/options.py:365
 msgid "Do not show these comma separated words and #tags in the clouds"
-msgstr ""
+msgstr "Älä näytä seuraavia pilkuin erotettuja sanoja ja #tunnisteita pilvessä"
 
 #: ../rednotebook/gui/options.py:369
 msgid "Include small words in cloud"
@@ -947,7 +944,7 @@ msgstr "Salli nämä neljä tai vähemmän merkkejä sisältävät sanat"
 
 #: ../rednotebook/gui/main_window.py:184
 msgid "Preview in Browser"
-msgstr ""
+msgstr "Esikatsele selaimessa"
 
 #: ../rednotebook/gui/main_window.py:331
 msgid "Show RedNotebook"
@@ -1054,7 +1051,7 @@ msgstr "Voit valita päivät, jotka haluat viedä ja minne tuotos tallennetaan."
 
 #: ../rednotebook/gui/exports.py:336
 msgid "PDF: export to HTML, open in browser and print to PDF file"
-msgstr ""
+msgstr "PDF: vie HTML-muotoon, avaa selain ja tulosta PDF-tiedostoksi"
 
 #: ../rednotebook/gui/exports.py:341
 msgid "Select Export Format"
@@ -1150,10 +1147,8 @@ msgid "Insert Link"
 msgstr "Lisää linkki"
 
 #: tmp/main_window.glade.h:7
-#, fuzzy
-#| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
-msgstr "<b>Linkin sijainti (esim. http://rednotebook.sf.net)</b>"
+msgstr "<b>Linkin sijainti (esim. https://www.google.com)</b>"
 
 #: tmp/main_window.glade.h:8
 msgid "<b>Link name (optional)</b>"
@@ -1164,10 +1159,8 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Siirry edelliseen päivään (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:10
-#, fuzzy
-#| msgid "Backup"
 msgid "Back"
-msgstr "Varmuuskopioi"
+msgstr "Edellinen"
 
 #: tmp/main_window.glade.h:11
 msgid "Jump to today (Alt+Home)"
@@ -1183,7 +1176,7 @@ msgstr "Siirry seuraavaan päivään (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:14
 msgid "Forward"
-msgstr ""
+msgstr "Seuraava"
 
 #: tmp/main_window.glade.h:15
 msgid "Show a formatted preview of the text (Ctrl+P)"

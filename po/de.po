@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-28 23:45+0100\n"
-"PO-Revision-Date: 2022-11-19 05:32+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2023-01-02 13:51+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Launchpad-Export-Date: 2017-07-08 05:26+0000\n"
 
 #: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
@@ -81,23 +81,26 @@ msgstr ""
 "\" geguckt."
 
 #: ../rednotebook/help.py:64
-#, fuzzy
 msgid "Templates"
-msgstr "Vorlage"
+msgstr "Vorlagen"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
-msgstr ""
+msgstr "RedNotebook unterstützt Vorlagen."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
 msgstr ""
+"Klicken Sie auf den Pfeil neben der Schaltfläche „Vorlage“, um einige "
+"Optionen anzuzeigen."
 
 #: ../rednotebook/help.py:68
 msgid ""
 "You can have one template for every day\n"
 "of the week and unlimited arbitrarily named templates."
 msgstr ""
+"Sie können eine Vorlage für jeden Tag der Woche und\n"
+"unbegrenzt viele Vorlagen mit beliebigen Namen haben."
 
 #. Translators: both are verbs
 #: ../rednotebook/help.py:74
@@ -609,21 +612,19 @@ msgstr "Die RedNotebook-Dokumentation öffnen"
 
 #: ../rednotebook/gui/menu.py:241
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 #: ../rednotebook/gui/menu.py:243
-#, fuzzy
 msgid "Support RedNotebook with a donation"
-msgstr "Die RedNotebook-Dokumentation öffnen"
+msgstr "Unterstützen Sie RedNotebook mit einer Spende"
 
 #: ../rednotebook/gui/menu.py:249
 msgid "Translate RedNotebook"
 msgstr "RedNotebook übersetzen"
 
 #: ../rednotebook/gui/menu.py:251
-#, fuzzy
 msgid "Help translate RedNotebook to your language"
-msgstr "RedNotebook übersetzen"
+msgstr "Helfen Sie, RedNotebook in Ihre Sprache zu übersetzen"
 
 #: ../rednotebook/gui/menu.py:257
 msgid "Report a Problem"
@@ -1172,6 +1173,11 @@ msgid ""
 "templates, spell check your notes, and export to plain text, HTML or\n"
 "Latex.\n"
 msgstr ""
+"RedNotebook ist ein modernes Desktop-Tagebuch. Sie können damit\n"
+"Ihre Einträge formatieren, verschlagworten und Ihre Einträge durchsuchen.\n"
+"Sie können auch Bilder, Links und anpassbare Vorlagen hinzufügen,\n"
+"Ihre Notizen auf Rechtschreibfehler überprüfen und als einfachen Text,\n"
+"HTML oder Latex exportieren.\n"
 
 #: tmp/main_window.glade.h:3
 msgid "Select backup filename"

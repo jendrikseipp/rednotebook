@@ -8,15 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-28 23:45+0100\n"
-"PO-Revision-Date: 2022-09-30 16:00+0000\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
-"Language-Team: Croatian <hr@li.org>\n"
+"PO-Revision-Date: 2023-01-04 23:49+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Launchpad-Export-Date: 2022-10-01 06:31+0000\n"
-"X-Generator: Launchpad (build 51d7c86a263563fbd9e884ec9127596444825394)\n"
 
 #: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
 #: ../rednotebook/gui/categories.py:48 ../rednotebook/gui/clouds.py:213
@@ -79,23 +82,24 @@ msgstr ""
 "pogledali film „__Brianov život__”."
 
 #: ../rednotebook/help.py:64
-#, fuzzy
 msgid "Templates"
-msgstr "Predložak"
+msgstr "Predlošci"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
-msgstr ""
+msgstr "RedNotebook podržava predloške."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
-msgstr ""
+msgstr "Pritisni strelicu pokraj gumba „Predložak” za prikaz nekih opcij."
 
 #: ../rednotebook/help.py:68
 msgid ""
 "You can have one template for every day\n"
 "of the week and unlimited arbitrarily named templates."
 msgstr ""
+"Možeš imati jedan predložak za svaki dan tjedna i\n"
+"neograničen broj proizvoljno imenovanih predložaka."
 
 #. Translators: both are verbs
 #: ../rednotebook/help.py:74
@@ -599,21 +603,19 @@ msgstr "Otvori RedNotebook dokumentaciju"
 
 #: ../rednotebook/gui/menu.py:241
 msgid "Donate"
-msgstr ""
+msgstr "Doniraj"
 
 #: ../rednotebook/gui/menu.py:243
-#, fuzzy
 msgid "Support RedNotebook with a donation"
-msgstr "Otvori dokumentaciju RedNotebooka"
+msgstr "Podrži RedNotebook donacijom"
 
 #: ../rednotebook/gui/menu.py:249
 msgid "Translate RedNotebook"
 msgstr "Prevedi RedNotebook"
 
 #: ../rednotebook/gui/menu.py:251
-#, fuzzy
 msgid "Help translate RedNotebook to your language"
-msgstr "Prevedi RedNotebook"
+msgstr "Pomogni prevesti RedNotebook"
 
 #: ../rednotebook/gui/menu.py:257
 msgid "Report a Problem"
@@ -1129,6 +1131,12 @@ msgid ""
 "templates, spell check your notes, and export to plain text, HTML or\n"
 "Latex.\n"
 msgstr ""
+"RedNotebook je moderan dnevnik. Omogućuje formatiranje, označavanje i\n"
+"pretraživanje tvojih unosa. Također možeš dodati slike, poveznice i "
+"prilagodljive\n"
+"predloške, provjeriti pravopis tvojih bilješki i izvesti u neformatiran "
+"tekst, HTML\n"
+"ili Lateks.\n"
 
 #: tmp/main_window.glade.h:3
 msgid "Select backup filename"
