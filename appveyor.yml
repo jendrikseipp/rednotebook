@@ -31,6 +31,12 @@ build_script:
   - ls C:\gtk
   - set PATH=%PATH%;C:\gtk\bin
 
+  # Somehow the msgfmt binary (used for building translations) is already available.
+  # If it ever disappears, use the following steps to install it (untested).
+  # - curl -Lo gettext.zip https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.21-v1.16/gettext0.21-iconv1.16-shared-64.zip
+  # - 7z x gettext.zip -oC:\gettext
+  # - set PATH=%PATH%;C:\gettext\bin
+
   # Install other dependencies.
   - "%PYTHON% -m pip install --no-warn-script-location -U pip setuptools tox==3.27.1 wheel"
   # Install separately because --no-binary option disables using wheels (leading to problems for Cython).

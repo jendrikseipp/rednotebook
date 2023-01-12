@@ -2,14 +2,10 @@
 
 import argparse
 from pathlib import Path
-import sys
+import subprocess
 
 
 REPO = Path(__file__).resolve().parents[1]
-
-sys.path.insert(0, str(REPO))
-
-from rednotebook.external import msgfmt
 
 
 def _parse_args():
@@ -27,7 +23,7 @@ def build_translation_files(po_dir: Path, locale_dir: Path):
         if not dest_dir.exists():
             dest_dir.mkdir(parents=True, exist_ok=True)
         print(f"Compiling {src} to {dest}")
-        msgfmt.make(str(src), str(dest))
+        subprocess.check_call(["msgfmt", "--output-file", dest, src])
 
 
 def main():
