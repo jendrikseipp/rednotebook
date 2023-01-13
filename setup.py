@@ -36,20 +36,6 @@ from rednotebook import info
 from dev import build_translations
 
 
-def get_translation_files():
-    po_dir = REPO / "po"
-    locale_dir = REPO / "build" / "locale"
-    build_translations.build_translation_files(po_dir, locale_dir)
-    data_files = []
-    for lang_dir in Path("build/locale/").iterdir():
-        lang_file = lang_dir / "LC_MESSAGES" / "rednotebook.mo"
-        dest_dir = Path("share") / "locale" / lang_dir.name / "LC_MESSAGES"
-        data_files.append(
-            ("rednotebook", str(lang_file.parent), str(dest_dir), [lang_file.name])
-        )
-    return data_files
-
-
 class build_py(_build_py):
     def run(self):
         po_dir = REPO / "po"
