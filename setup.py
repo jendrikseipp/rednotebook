@@ -52,7 +52,9 @@ def get_translation_files():
 
 class build_py(_build_py):
     def run(self):
-        self.data_files += get_translation_files()
+        po_dir = REPO / "po"
+        locale_dir = Path(self.build_lib) / "rednotebook" / "locale"
+        build_translations.build_translation_files(po_dir, locale_dir)
         _build_py.run(self)
 
 
@@ -85,6 +87,7 @@ parameters = {
             "files/*.glade",
             "files/*.lang",
             "files/*.xml",
+            "locale/*/LC_MESSAGES/rednotebook.mo",
         ]
     },
     "data_files": [

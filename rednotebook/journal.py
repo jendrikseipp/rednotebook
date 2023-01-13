@@ -24,6 +24,7 @@ import logging
 import os
 import sys
 
+import pkg_resources
 
 # Use basic stdout logging before we can initialize logging correctly.
 logging.basicConfig(
@@ -75,7 +76,7 @@ from rednotebook.util import filesystem
 
 from rednotebook.external import elibintl
 
-LOCALE_PATH = filesystem.locale_dir
+LOCALE_PATH = pkg_resources.resource_filename("rednotebook", "locale")
 
 GETTEXT_DOMAIN = "rednotebook"
 
