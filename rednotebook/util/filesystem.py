@@ -49,7 +49,7 @@ if main_is_frozen():
 else:
     app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-if IS_WIN:
+if IS_WIN or IS_MAC:
     locale_dir = os.path.join(app_dir, "share", "locale")
 else:
     try:

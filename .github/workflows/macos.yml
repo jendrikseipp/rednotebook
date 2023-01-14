@@ -41,11 +41,13 @@ jobs:
           python3 -c "import gi"
       - name: Build app
         run: |
+          python3 dev/build_translations.py share/locale
           python3 -m PyInstaller \
             --name "rednotebook" \
             --windowed \
             --add-data ./rednotebook/files:files/ \
             --add-data ./rednotebook/images:images/ \
+            --add-data ./share/locale:share/locale/ \
             ./rednotebook/journal.py
         shell: bash
       - name: Build DMG file
