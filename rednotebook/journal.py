@@ -75,8 +75,12 @@ from rednotebook.util import filesystem
 
 from rednotebook.external import elibintl
 
-with importlib.resources.path("rednotebook", "locale") as locale_path:
-    LOCALE_PATH = locale_path
+try:
+    with importlib.resources.path("rednotebook", "locale") as locale_path:
+        LOCALE_PATH = locale_path
+except FileNotFoundError:
+    print("Not using translations since the RedNotebook package is not installed.")
+    LOCALE_PATH = None
 
 GETTEXT_DOMAIN = "rednotebook"
 
