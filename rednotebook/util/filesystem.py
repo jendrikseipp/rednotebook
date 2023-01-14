@@ -56,7 +56,6 @@ else:
         with importlib.resources.path("rednotebook", "locale") as locale_path:
             locale_dir = locale_path
     except FileNotFoundError:
-        print("Not using translations since the RedNotebook package is not installed.")
         locale_dir = None
 
 image_dir = os.path.join(app_dir, "images")
