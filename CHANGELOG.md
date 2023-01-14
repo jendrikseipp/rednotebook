@@ -1,3 +1,6 @@
+# 2.30 (unreleased)
+* Packaging: install .mo translation files as part of the Python package instead of globally (#666, Jendrik Seipp).
+
 # 2.29.2 (2023-01-13)
 * Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
 * Add continuous integration check to ensure that the basic Debian package builds correctly (Jendrik Seipp).
