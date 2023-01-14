@@ -75,7 +75,8 @@ from rednotebook.util import filesystem
 
 from rednotebook.external import elibintl
 
-LOCALE_PATH = importlib.resources.path("rednotebook", "locale")
+with importlib.resources.path("rednotebook", "locale") as locale_path:
+    LOCALE_PATH = locale_path
 
 GETTEXT_DOMAIN = "rednotebook"
 
