@@ -17,6 +17,7 @@
 # -----------------------------------------------------------------------
 
 import codecs
+import importlib.resources
 import locale
 import logging
 import os
@@ -47,6 +48,16 @@ if main_is_frozen():
     app_dir = sys._MEIPASS  # os.path.dirname(sys.executable)
 else:
     app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+if IS_WIN:
+    locale_dir = os.path.join(app_dir, "share", "locale")
+else:
+    try:
+        with importlib.resources.path("rednotebook", "locale") as locale_path:
+            locale_dir = locale_path
+    except FileNotFoundError:
+        print("Not using translations since the RedNotebook package is not installed.")
+        locale_dir = None
 
 image_dir = os.path.join(app_dir, "images")
 frame_icon_dir = os.path.join(image_dir, "rednotebook-icon")

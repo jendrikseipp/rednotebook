@@ -18,12 +18,12 @@
 
 from collections import defaultdict
 import datetime
-import importlib.resources
 import itertools
 import locale
 import logging
 import os
 import sys
+
 
 # Use basic stdout logging before we can initialize logging correctly.
 logging.basicConfig(
@@ -75,12 +75,7 @@ from rednotebook.util import filesystem
 
 from rednotebook.external import elibintl
 
-try:
-    with importlib.resources.path("rednotebook", "locale") as locale_path:
-        LOCALE_PATH = locale_path
-except FileNotFoundError:
-    print("Not using translations since the RedNotebook package is not installed.")
-    LOCALE_PATH = None
+LOCALE_PATH = filesystem.locale_dir
 
 GETTEXT_DOMAIN = "rednotebook"
 
