@@ -27,6 +27,7 @@ import sys
 
 from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
+from setuptools._distutils.command.install_data import install_data as _install_data
 
 REPO = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO))
@@ -36,12 +37,34 @@ from rednotebook import info
 from dev import build_translations
 
 
+TMP_LOCALE_DIR = REPO / "build" / "locale"
+
+
 class build_py(_build_py):
     def run(self):
-        po_dir = REPO / "po"
-        locale_dir = Path(self.build_lib) / "rednotebook" / "locale"
-        build_translations.build_translation_files(po_dir, locale_dir)
+        build_translations.build_translation_files(REPO / "po", TMP_LOCALE_DIR)
         _build_py.run(self)
+
+
+"""
+We use the deprecated _install_data class since it provides the easiest way to
+install data files outside of a Python package. This feature is needed for the
+translation files, which must reside in <sys.prefix>/share/locale for the Glade
+file to pick them up.
+
+An alternative would be to build the translation files with a separate command,
+but that would require changing all package scripts for all distributions.
+"""
+
+
+class install_data(_install_data):
+    def run(self):
+        for lang_dir in TMP_LOCALE_DIR.iterdir():
+            lang = lang_dir.name
+            lang_file = TMP_LOCALE_DIR / lang / "LC_MESSAGES" / "rednotebook.mo"
+            dest_dir = Path("share", "locale", lang, "LC_MESSAGES")
+            self.data_files.append((str(dest_dir), [str(lang_file)]))
+        _install_data.run(self)
 
 
 parameters = {
@@ -56,7 +79,7 @@ parameters = {
     "url": info.url,
     "license": "GPL",
     "keywords": "journal, diary",
-    "cmdclass": {"build_py": build_py},
+    "cmdclass": {"build_py": build_py, "install_data": install_data},
     "scripts": ["rednotebook/rednotebook"],
     "packages": [
         "rednotebook",
@@ -73,7 +96,6 @@ parameters = {
             "files/*.glade",
             "files/*.lang",
             "files/*.xml",
-            "locale/*/LC_MESSAGES/rednotebook.mo",
         ]
     },
     "data_files": [

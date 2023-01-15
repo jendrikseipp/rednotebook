@@ -24,8 +24,6 @@ import platform
 import subprocess
 import sys
 
-import pkg_resources
-
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
 LANGUAGE = locale.getdefaultlocale()[0]
@@ -50,10 +48,10 @@ if main_is_frozen():
 else:
     app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-if IS_WIN or IS_MAC:
+if main_is_frozen():
     locale_dir = os.path.join(app_dir, "share", "locale")
 else:
-    locale_dir = pkg_resources.resource_filename("rednotebook", "locale")
+    locale_dir = os.path.join(sys.prefix, "share", "locale")
 
 image_dir = os.path.join(app_dir, "images")
 frame_icon_dir = os.path.join(image_dir, "rednotebook-icon")

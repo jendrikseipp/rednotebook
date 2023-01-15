@@ -1,6 +1,5 @@
 # 2.29.3 (unreleased)
-* Packaging: install .mo translation files as part of the Python package instead of globally (#666, Jendrik Seipp).
-* Packaging: add runtime dependency on setuptools package (#666, Jendrik Seipp).
+* Packaging: install translation files under <prefix>/share/locale again (#666, Jendrik Seipp).
 
 # 2.29.2 (2023-01-13)
 * Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
