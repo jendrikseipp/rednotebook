@@ -20,10 +20,11 @@ import codecs
 import locale
 import logging
 import os
-import pkg_resources
 import platform
 import subprocess
 import sys
+
+import pkg_resources
 
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
