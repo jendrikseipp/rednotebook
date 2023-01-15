@@ -76,6 +76,7 @@ from rednotebook.util import filesystem
 from rednotebook.external import elibintl
 
 LOCALE_PATH = filesystem.locale_dir
+logging.info(f"Locale path: {LOCALE_PATH}")
 
 GETTEXT_DOMAIN = "rednotebook"
 

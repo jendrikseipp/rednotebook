@@ -48,7 +48,7 @@ if main_is_frozen():
 else:
     app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-if IS_WIN:
+if main_is_frozen():
     locale_dir = os.path.join(app_dir, "share", "locale")
 else:
     locale_dir = os.path.join(sys.prefix, "share", "locale")

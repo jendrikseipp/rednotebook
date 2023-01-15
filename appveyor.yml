@@ -63,7 +63,8 @@ build_script:
   - move enchant C:\gtk\share
 
   # Run tests.
-  - "%PYTHON% -m tox -e py"
+  - set SETUPTOOLS_USE_DISTUTILS=stdlib
+  - "%PYTHON% -m tox -v -e py"
 
   - cd win
 

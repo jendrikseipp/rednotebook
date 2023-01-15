@@ -1,3 +1,6 @@
+# 2.29.3 (unreleased)
+* Packaging: install translation files under <prefix>/share/locale again (#666, Jendrik Seipp).
+
 # 2.29.2 (2023-01-13)
 * Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
 * Add continuous integration check to ensure that the basic Debian package builds correctly (Jendrik Seipp).
