@@ -64,7 +64,7 @@ build_script:
 
   # Run tests.
   - set SETUPTOOLS_USE_DISTUTILS=stdlib
-  - "%PYTHON% -m tox -e py"
+  - "%PYTHON% -m tox -v -e py"
 
   - cd win
 
