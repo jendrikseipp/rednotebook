@@ -46,7 +46,7 @@ jobs:
 
     - name: Install common dependencies
       run: |
-        python3 -m pip install tox==3.27.1
+        python3 -m pip install setuptools==59.6.0 tox==3.27.1
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
