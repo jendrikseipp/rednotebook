@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools==59.6.0"]
 build-backend = "setuptools.build_meta"
 
 # NOTE: you have to use single-quoted strings in TOML for regular expressions.
