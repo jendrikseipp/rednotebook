@@ -17,10 +17,10 @@
 # -----------------------------------------------------------------------
 
 import codecs
-import importlib.resources
 import locale
 import logging
 import os
+import pkg_resources
 import platform
 import subprocess
 import sys
@@ -52,11 +52,7 @@ else:
 if IS_WIN or IS_MAC:
     locale_dir = os.path.join(app_dir, "share", "locale")
 else:
-    try:
-        with importlib.resources.path("rednotebook", "locale") as locale_path:
-            locale_dir = locale_path
-    except FileNotFoundError:
-        locale_dir = None
+    locale_dir = pkg_resources.resource_filename("rednotebook", "locale")
 
 image_dir = os.path.join(app_dir, "images")
 frame_icon_dir = os.path.join(image_dir, "rednotebook-icon")

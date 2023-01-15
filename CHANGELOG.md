@@ -1,5 +1,6 @@
-# 2.30 (unreleased)
+# 2.29.3 (unreleased)
 * Packaging: install .mo translation files as part of the Python package instead of globally (#666, Jendrik Seipp).
+* Packaging: add runtime dependency on setuptools package.
 
 # 2.29.2 (2023-01-13)
 * Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
