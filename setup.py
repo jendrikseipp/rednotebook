@@ -27,7 +27,16 @@ import sys
 
 from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
-from setuptools._distutils.command.install_data import install_data as _install_data
+
+# Python 3.12+ doesn't ship the distutils package anymore, but setuptools vendors it.
+try:
+    from setuptools._distutils.command.install_data import install_data as _install_data
+
+    print("Using distutils from setuptools")
+except ImportError:
+    from distutils.command.install_data import install_data as _install_data
+
+    print("Using distutils from stdlib")
 
 REPO = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO))
