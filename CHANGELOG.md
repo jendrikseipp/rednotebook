@@ -1,3 +1,7 @@
+# 2.29.3 (2023-01-16)
+* Make all menu items translatable (Jendrik Seipp).
+* Packaging: install translation files under <prefix>/share/locale again (#666, Jendrik Seipp).
+
 # 2.29.2 (2023-01-13)
 * Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
 * Add continuous integration check to ensure that the basic Debian package builds correctly (Jendrik Seipp).
@@ -17,7 +21,7 @@
 * Fix checking for newer versions (Jendrik Seipp).
 * Gracefully handle unsupported locale settings (Jendrik Seipp, #613).
 
-* # 2.27.2 (2022-12-01)
+# 2.27.2 (2022-12-01)
 * Fix passing command line arguments (Jendrik Seipp).
 * Update translation files (Jendrik Seipp).
 

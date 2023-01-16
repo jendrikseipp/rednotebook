@@ -36,21 +36,25 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get -y install -qq gettext gir1.2-gdkpixbuf-2.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-gtksource-4 gir1.2-pango-1.0 gir1.2-webkit2-4.0 python3 python3-enchant python3-gi python3-yaml
-        python3 -m pip install tox==3.27.1
 
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
         # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
         brew install gettext gtk+3 gobject-introspection glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
-        python3 -m pip install pyenchant pygobject pyyaml tox==3.27.1
+        python3 -m pip install pyenchant pygobject pyyaml
+
+    - name: Install common dependencies
+      run: |
+        python3 -m pip install setuptools==59.6.0 tox==3.27.1
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
       run: |
-        python3 -m tox -e style
+        python3 -m tox -v -e style
 
     - name: Run tests
       run: |
         python3 -c "import gi"
-        python3 -m tox -e py
+        python3 -m tox -v -e py
+        python3 -m pip install .

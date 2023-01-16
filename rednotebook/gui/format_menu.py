@@ -129,7 +129,7 @@ class FormatMenu:
             (
                 "Clear",
                 None,
-                _("Clear format") + shortcut("R"),
+                _("Clear Format") + shortcut("R"),
                 "<Control>R",
                 None,
                 self.on_clear_format,

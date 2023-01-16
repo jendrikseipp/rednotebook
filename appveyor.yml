@@ -63,7 +63,7 @@ build_script:
   - move enchant C:\gtk\share
 
   # Run tests.
-  - "%PYTHON% -m tox -e py"
+  - "%PYTHON% -m tox -v -e py"
 
   - cd win
 
