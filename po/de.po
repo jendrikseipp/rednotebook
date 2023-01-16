@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-13 00:27+0100\n"
-"PO-Revision-Date: 2023-01-02 13:51+0000\n"
+"PO-Revision-Date: 2023-01-14 14:48+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/de/>\n"
@@ -171,8 +171,6 @@ msgid "Strikethrough"
 msgstr "Durchgestrichen"
 
 #: ../rednotebook/gui/format_menu.py:132
-#, fuzzy
-#| msgid "Clear format"
 msgid "Clear Format"
 msgstr "Formatierung löschen"
 
@@ -347,7 +345,7 @@ msgstr "_Journal"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "New"
-msgstr ""
+msgstr "Neu"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
@@ -356,17 +354,15 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:105
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
 msgstr "Lade ein vorhandenes Journal. Das geöffnete Journal wird gespeichert"
 
 #: ../rednotebook/gui/menu.py:114
-#, fuzzy
-#| msgid "Save"
 msgid "Save As"
-msgstr "Speichern"
+msgstr "Speichern als"
 
 #: ../rednotebook/gui/menu.py:117
 msgid ""
@@ -401,7 +397,7 @@ msgstr "Statistische Auswertungen zum Journal zeigen"
 
 #: ../rednotebook/gui/menu.py:150
 msgid "Quit"
-msgstr ""
+msgstr "Beenden"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -413,7 +409,7 @@ msgstr "_Bearbeiten"
 
 #: ../rednotebook/gui/menu.py:159
 msgid "Undo"
-msgstr ""
+msgstr "Rückgängig"
 
 #: ../rednotebook/gui/menu.py:161
 msgid "Undo text or tag edits"
@@ -421,7 +417,7 @@ msgstr "Text- oder Markierungsänderung rückgängig machen"
 
 #: ../rednotebook/gui/menu.py:167
 msgid "Redo"
-msgstr ""
+msgstr "Wiederherstellen"
 
 #: ../rednotebook/gui/menu.py:169
 msgid "Redo text or tag edits"
@@ -429,27 +425,27 @@ msgstr "Text- oder Markierungsänderung wiederherstellen"
 
 #: ../rednotebook/gui/menu.py:172
 msgid "Cut"
-msgstr ""
+msgstr "Ausschneiden"
 
 #: ../rednotebook/gui/menu.py:176
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #: ../rednotebook/gui/menu.py:184
 msgid "Paste"
-msgstr ""
+msgstr "Einfügen"
 
 #: ../rednotebook/gui/menu.py:192
 msgid "Fullscreen"
-msgstr ""
+msgstr "Vollbild"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "Find"
-msgstr ""
+msgstr "Suchen"
 
 #: ../rednotebook/gui/menu.py:212
 msgid "Spell Check"
-msgstr ""
+msgstr "Rechtschreibprüfung"
 
 #: ../rednotebook/gui/menu.py:214
 msgid "Underline misspelled words"
@@ -505,7 +501,7 @@ msgstr "Wie können wir RedNotebook verbessern?"
 
 #: ../rednotebook/gui/menu.py:270
 msgid "About"
-msgstr ""
+msgstr "Über"
 
 #: ../rednotebook/gui/menu.py:288
 msgid "Wrong directory"
