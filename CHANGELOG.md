@@ -1,4 +1,5 @@
 # 2.29.3 (2023-01-16)
+* Make all menu items translatable (Jendrik Seipp).
 * Packaging: install translation files under <prefix>/share/locale again (#666, Jendrik Seipp).
 
 # 2.29.2 (2023-01-13)

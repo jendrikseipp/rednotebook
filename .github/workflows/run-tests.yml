@@ -51,10 +51,10 @@ jobs:
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
       run: |
-        SETUPTOOLS_USE_DISTUTILS=stdlib python3 -m tox -v -e style
+        python3 -m tox -v -e style
 
     - name: Run tests
       run: |
         python3 -c "import gi"
-        SETUPTOOLS_USE_DISTUTILS=stdlib python3 -m tox -v -e py
+        python3 -m tox -v -e py
         python3 -m pip install .
