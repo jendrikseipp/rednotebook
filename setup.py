@@ -23,20 +23,12 @@ To install RedNotebook, run "pip install ." (note the dot).
 """
 
 from pathlib import Path
+import shutil
 import sys
 
 from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
-
-# Python 3.12+ doesn't ship the distutils package anymore, but setuptools vendors it.
-try:
-    from setuptools._distutils.command.install_data import install_data as _install_data
-
-    print("Using distutils from setuptools")
-except ImportError:
-    from distutils.command.install_data import install_data as _install_data
-
-    print("Using distutils from stdlib")
+from setuptools.command.install import install as _install
 
 REPO = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO))
@@ -56,8 +48,8 @@ class build_py(_build_py):
 
 
 """
-We use the deprecated _install_data class since it provides the easiest way to
-install data files outside of a Python package. This feature is needed for the
+We use the deprecated install class since it provides the easiest way to install
+data files outside of a Python package. This feature is needed for the
 translation files, which must reside in <sys.prefix>/share/locale for the Glade
 file to pick them up.
 
@@ -66,14 +58,17 @@ but that would require changing all package scripts for all distributions.
 """
 
 
-class install_data(_install_data):
+class install(_install):
     def run(self):
+        _install.run(self)
         for lang_dir in TMP_LOCALE_DIR.iterdir():
             lang = lang_dir.name
             lang_file = TMP_LOCALE_DIR / lang / "LC_MESSAGES" / "rednotebook.mo"
-            dest_dir = Path("share", "locale", lang, "LC_MESSAGES")
-            self.data_files.append((str(dest_dir), [str(lang_file)]))
-        _install_data.run(self)
+            dest_dir = (
+                Path(self.install_data) / "share" / "locale" / lang / "LC_MESSAGES"
+            )
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(lang_file, dest_dir / "rednotebook.mo")
 
 
 parameters = {
@@ -88,7 +83,7 @@ parameters = {
     "url": info.url,
     "license": "GPL",
     "keywords": "journal, diary",
-    "cmdclass": {"build_py": build_py, "install_data": install_data},
+    "cmdclass": {"build_py": build_py, "install": install},
     "scripts": ["rednotebook/rednotebook"],
     "packages": [
         "rednotebook",
