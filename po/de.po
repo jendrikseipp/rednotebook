@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-13 00:27+0100\n"
+"POT-Creation-Date: 2023-01-17 23:04+0100\n"
 "PO-Revision-Date: 2023-01-14 14:48+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
@@ -451,7 +451,7 @@ msgstr "Rechtschreibprüfung"
 msgid "Underline misspelled words"
 msgstr "Hebe die falsch geschriebenen Wörter hervor"
 
-#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:25
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:26
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -507,7 +507,7 @@ msgstr "Über"
 msgid "Wrong directory"
 msgstr "Falsches Verzeichnis"
 
-#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:247
+#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
 msgstr "Sie können dieses Verzeichnis nicht für ihr Journal verwenden:"
 
@@ -870,7 +870,7 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:18
 msgid "Preview"
 msgstr "Vorschau"
 
@@ -1007,24 +1007,24 @@ msgstr ""
 "=== Familie ===\n"
 "Hier erscheint der erste Eintrag über meine #Familie."
 
-#: ../rednotebook/journal.py:250
+#: ../rednotebook/journal.py:251
 msgid "Opening default journal."
 msgstr "Das Journal im Standardverzeichnis wird geöffnet."
 
-#: ../rednotebook/journal.py:377
+#: ../rednotebook/journal.py:378
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "Das Journal wurde unter %s gespeichert"
 
-#: ../rednotebook/journal.py:382
+#: ../rednotebook/journal.py:383
 msgid "The journal could not be saved"
 msgstr "Speichern fehlgeschlagen"
 
-#: ../rednotebook/journal.py:384
+#: ../rednotebook/journal.py:385
 msgid "Nothing to save"
 msgstr "Nichts zu speichern"
 
-#: ../rednotebook/journal.py:526
+#: ../rednotebook/journal.py:527
 msgid "Error"
 msgstr "Fehler"
 
@@ -1240,108 +1240,112 @@ msgid "Select backup filename"
 msgstr "Wähle einen Dateinamen für die Sicherung"
 
 #: tmp/main_window.glade.h:4
+msgid "_Cancel"
+msgstr ""
+
+#: tmp/main_window.glade.h:5
 msgid "Select a directory"
 msgstr "Wähle ein Verzeichnis"
 
-#: tmp/main_window.glade.h:5
+#: tmp/main_window.glade.h:6
 msgid "Select a file"
 msgstr "Wähle eine Datei"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:7
 msgid "Insert Link"
 msgstr "Link einfügen"
 
-#: tmp/main_window.glade.h:7
+#: tmp/main_window.glade.h:8
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>Linkadresse (e.g. https://www.google.com)</b>"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:9
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>Link-Bezeichnung (optional)</b>"
 
-#: tmp/main_window.glade.h:9
+#: tmp/main_window.glade.h:10
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Gehe zum vorherigen Tag (Strg+BildAuf)"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:11
 msgid "Back"
 msgstr "Zurück"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:12
 msgid "Jump to today (Alt+Home)"
 msgstr "Zum heutigen Tag springen (Alt+Pos1)"
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:13
 msgid "Today"
 msgstr "Heute"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:14
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "Gehe zum nächsten Tag (Strg+BildAb)"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:15
 msgid "Forward"
 msgstr "Vorwärts"
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:16
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "Zeigt eine formatierte Vorschau des Textes (Strg+P)"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:19
 msgid "Enable text editing (Ctrl+P)"
 msgstr "Textbearbeitung aktivieren (Ctrl+P)"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:20
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:21
 msgid "Add a tag or a category entry"
 msgstr "Eine Markierung oder Kategorie hinzufügen"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:22
 msgid "Add Tag"
 msgstr "Markierung hinzufügen"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:23
 msgid "New entry"
 msgstr "Neuer Eintrag"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:24
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>Wähle eine vorhandene oder eine neue Kategorie</b>"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:25
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>Eingabe</b> (optional)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:28
 msgid "<b>General</b>"
 msgstr "<b>Allgemein</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:30
 msgid "General"
 msgstr "Allgemein"
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:31
 msgid "Select a picture"
 msgstr "Wähle ein Bild"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "Schließen ohne zu speichern"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:33
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:34
 msgid "<b>Selected Day</b>"
 msgstr "<b>Gewählter Tag</b>"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:35
 msgid "<b>Overall</b>"
 msgstr "<b>Gesamt</b>"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-13 00:27+0100\n"
+"POT-Creation-Date: 2023-01-17 23:04+0100\n"
 "PO-Revision-Date: 2015-11-01 21:12+0000\n"
 "Last-Translator: Giorgi Maghlakelidze <acidlabz@gmail.com>\n"
 "Language-Team: Georgian <ka@li.org>\n"
@@ -437,7 +437,7 @@ msgstr ""
 msgid "Underline misspelled words"
 msgstr "უმართებულოდ დაწერილი სიტყვებისთვის ხაზის გასმა"
 
-#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:25
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:26
 msgid "Preferences"
 msgstr "გამართვა"
 
@@ -497,7 +497,7 @@ msgstr ""
 msgid "Wrong directory"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:247
+#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
 msgstr ""
 
@@ -826,7 +826,7 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:18
 msgid "Preview"
 msgstr "გადახედვა"
 
@@ -947,24 +947,24 @@ msgid ""
 "Here comes the entry about my #family."
 msgstr ""
 
-#: ../rednotebook/journal.py:250
+#: ../rednotebook/journal.py:251
 msgid "Opening default journal."
 msgstr ""
 
-#: ../rednotebook/journal.py:377
+#: ../rednotebook/journal.py:378
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "შიგთავსი შენახული იქნა საქაღალდეში %s"
 
-#: ../rednotebook/journal.py:382
+#: ../rednotebook/journal.py:383
 msgid "The journal could not be saved"
 msgstr ""
 
-#: ../rednotebook/journal.py:384
+#: ../rednotebook/journal.py:385
 msgid "Nothing to save"
 msgstr "შესანახი არაფერია"
 
-#: ../rednotebook/journal.py:526
+#: ../rednotebook/journal.py:527
 msgid "Error"
 msgstr ""
 
@@ -1183,112 +1183,116 @@ msgid "Select backup filename"
 msgstr "მიუთითეთ სამარქაფო ასლის დასახელება"
 
 #: tmp/main_window.glade.h:4
+msgid "_Cancel"
+msgstr ""
+
+#: tmp/main_window.glade.h:5
 msgid "Select a directory"
 msgstr "აირჩიეთ საქაღალდე"
 
-#: tmp/main_window.glade.h:5
+#: tmp/main_window.glade.h:6
 msgid "Select a file"
 msgstr "აირჩიეთ ფაილი"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:7
 msgid "Insert Link"
 msgstr "ბმულის ჩასმა"
 
-#: tmp/main_window.glade.h:7
+#: tmp/main_window.glade.h:8
 #, fuzzy
 #| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>ვებ-მისამართი (მაგ. http://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:9
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>ბმულის სახელწოდება (არჩევითი)</b>"
 
-#: tmp/main_window.glade.h:9
+#: tmp/main_window.glade.h:10
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "წინა დღეზე გადასვლა (Ctrl+PageUp)"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:11
 #, fuzzy
 #| msgid "Backup"
 msgid "Back"
 msgstr "სამარქაფო ასლი"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:12
 msgid "Jump to today (Alt+Home)"
 msgstr ""
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:13
 msgid "Today"
 msgstr "დღეს"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:14
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "შემდეგ დღეზე გადასვლა (Ctrl+PageDown)"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:15
 msgid "Forward"
 msgstr ""
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:16
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "ტექსტის გაფორმებული სახით ჩვენება (Ctrl+P)"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:19
 msgid "Enable text editing (Ctrl+P)"
 msgstr "ტექსტის დამუშავების ნებადართვა (Ctrl+P)"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:20
 msgid "Edit"
 msgstr "დამუშავება"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:21
 msgid "Add a tag or a category entry"
 msgstr "ტეგის ან კატეგორიის ჩანაწერის დამატება"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:22
 msgid "Add Tag"
 msgstr "ტეგის დამატება"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:23
 msgid "New entry"
 msgstr "ახალი ჩანაწერი"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:24
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>აირჩიეთ კატეგორია</b>"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:25
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>ჩანაწერის დამატება</b> (არჩევითი)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:28
 msgid "<b>General</b>"
 msgstr "<b>ზოგადი</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:30
 msgid "General"
 msgstr "ძირითადი"
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:31
 msgid "Select a picture"
 msgstr "აირჩიეთ სურათი"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "გასვლა შენახვის გარეშე"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:33
 msgid "Statistics"
 msgstr "სტატისტიკა"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:34
 msgid "<b>Selected Day</b>"
 msgstr "<b>არჩეული დღე</b>"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:35
 msgid "<b>Overall</b>"
 msgstr "<b>ჯამში</b>"
 

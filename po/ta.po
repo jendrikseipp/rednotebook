@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-13 00:27+0100\n"
+"POT-Creation-Date: 2023-01-17 23:04+0100\n"
 "PO-Revision-Date: 2015-11-08 23:01+0000\n"
 "Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
 "Language-Team: Tamil <ta@li.org>\n"
@@ -436,7 +436,7 @@ msgstr ""
 msgid "Underline misspelled words"
 msgstr "தவறாக உச்சரிக்கப்பட்ட வார்த்தைகளை அடிக்கோடிடவும்"
 
-#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:25
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:26
 msgid "Preferences"
 msgstr "முன்னுரிமைகள்"
 
@@ -496,7 +496,7 @@ msgstr ""
 msgid "Wrong directory"
 msgstr "தவறான அடைவு"
 
-#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:247
+#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
 msgstr "உங்கள் சஞ்சிகைக்கு தாங்கள் இந்த அடைவை பயன்படுத்த முடியாது:"
 
@@ -833,7 +833,7 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:18
 msgid "Preview"
 msgstr "முன்னோட்டம்"
 
@@ -973,24 +973,24 @@ msgstr ""
 "=== குடும்பம் ===\n"
 "இங்கே என் #குடும்பம் பற்றி நுழைவு வருகிறது."
 
-#: ../rednotebook/journal.py:250
+#: ../rednotebook/journal.py:251
 msgid "Opening default journal."
 msgstr "இயல்பு நாட்குறிப்பேடு திறக்கப்படுகிறது"
 
-#: ../rednotebook/journal.py:377
+#: ../rednotebook/journal.py:378
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "உள்ளடக்கமானது %s இற்கு சேமிக்கப்பட்டது."
 
-#: ../rednotebook/journal.py:382
+#: ../rednotebook/journal.py:383
 msgid "The journal could not be saved"
 msgstr "பத்திரிகையை சேமிக்க முடியவில்லை"
 
-#: ../rednotebook/journal.py:384
+#: ../rednotebook/journal.py:385
 msgid "Nothing to save"
 msgstr "சேமிக்க ஒன்றுமில்லை"
 
-#: ../rednotebook/journal.py:526
+#: ../rednotebook/journal.py:527
 msgid "Error"
 msgstr "பிழை"
 
@@ -1210,112 +1210,116 @@ msgid "Select backup filename"
 msgstr "காப்புப்படி கோபபின் பெயரை தேர்ந்தெடுக்கவும்"
 
 #: tmp/main_window.glade.h:4
+msgid "_Cancel"
+msgstr ""
+
+#: tmp/main_window.glade.h:5
 msgid "Select a directory"
 msgstr "ஓர் அடைவை தேர்ந்தெடு"
 
-#: tmp/main_window.glade.h:5
+#: tmp/main_window.glade.h:6
 msgid "Select a file"
 msgstr "கோப்பை தேர்வு செய்யவும்"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:7
 msgid "Insert Link"
 msgstr "இணைப்பை நுழைக்கவும்"
 
-#: tmp/main_window.glade.h:7
+#: tmp/main_window.glade.h:8
 #, fuzzy
 #| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>சுட்டி இடம் (எ.க. http://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:9
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>சுட்டியின் பெயர் (கட்டாயமில்லை)</b>"
 
-#: tmp/main_window.glade.h:9
+#: tmp/main_window.glade.h:10
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "முந்தைய நாளுக்குச் செல்லவும் (Ctrl + PageUp)"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:11
 #, fuzzy
 #| msgid "Backup"
 msgid "Back"
 msgstr "காப்பு"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:12
 msgid "Jump to today (Alt+Home)"
 msgstr "இன்றைக்கு தாவி செல்லவும் (Alt+Home)"
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:13
 msgid "Today"
 msgstr "இன்று"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:14
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "அடுத்த நாளுக்குச் செல்லவும் (Ctrl+PageDown)"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:15
 msgid "Forward"
 msgstr ""
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:16
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "உரையின் சீராக்கப்பட்ட முன்னோட்டத்தை காண்பிக்க (Ctrl+P)"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:19
 msgid "Enable text editing (Ctrl+P)"
 msgstr "உரை தொகுப்பை செயல்படுத்துக"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:20
 msgid "Edit"
 msgstr "திருத்து"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:21
 msgid "Add a tag or a category entry"
 msgstr "குறியீடு அல்லது வகையை உள்ளிடுக"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:22
 msgid "Add Tag"
 msgstr "குறியீட்டைச் சேர்"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:23
 msgid "New entry"
 msgstr "புதிய உள்ளீடு"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:24
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>உள்ள அல்லது புதிய வகையை தேர்ந்தெடுக்க</b>"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:25
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>உள்ளீட்டை எழுதுக</b> (கட்டாயமல்ல)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:28
 msgid "<b>General</b>"
 msgstr "<b>பொதுவான</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:30
 msgid "General"
 msgstr "பொதுவான"
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:31
 msgid "Select a picture"
 msgstr "ஒரு படத்தை தேர்ந்தெடுக்கவும்"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "சேமிக்காமல் வெளியேறவும்"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:33
 msgid "Statistics"
 msgstr "புள்ளிவிவரம்"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:34
 msgid "<b>Selected Day</b>"
 msgstr "<b>தேர்ந்தெடுக்கப்பட்ட நாள்</b>"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:35
 msgid "<b>Overall</b>"
 msgstr "<b>மொத்தத்தில்</b>"
 
