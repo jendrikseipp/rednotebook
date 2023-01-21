@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-17 23:04+0100\n"
+"POT-Creation-Date: 2023-01-21 12:45+0100\n"
 "PO-Revision-Date: 2015-11-08 23:06+0000\n"
 "Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
@@ -337,7 +337,7 @@ msgstr ""
 msgid "Create a new journal. The old one will be saved"
 msgstr "创建一个新的日志。旧的将被保存"
 
-#: ../rednotebook/gui/menu.py:105
+#: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
 msgstr ""
 
@@ -434,7 +434,7 @@ msgstr ""
 msgid "Underline misspelled words"
 msgstr "给拼错的单词添加下划线"
 
-#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:26
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:29
 msgid "Preferences"
 msgstr "首选项"
 
@@ -830,7 +830,7 @@ msgstr "示例文本和更多的文档可以在“帮助”->“内容”菜单�
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:18
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:21
 msgid "Preview"
 msgstr "预览"
 
@@ -1180,112 +1180,124 @@ msgid "_Cancel"
 msgstr ""
 
 #: tmp/main_window.glade.h:5
+msgid "_Save"
+msgstr ""
+
+#: tmp/main_window.glade.h:6
 msgid "Select a directory"
 msgstr "选择一个目录"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:7
+msgid "_OK"
+msgstr ""
+
+#: tmp/main_window.glade.h:8
 msgid "Select a file"
 msgstr "选择一个文件"
 
-#: tmp/main_window.glade.h:7
+#: tmp/main_window.glade.h:10
 msgid "Insert Link"
 msgstr "插入链接"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:11
 #, fuzzy
 #| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>链接目标(例如 http://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:9
+#: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>链接名(可选)</b>"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:13
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "前一天 (Ctrl+PageUp)"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:14
 #, fuzzy
 #| msgid "Backup"
 msgid "Back"
 msgstr "备份"
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
 msgstr "跳到今天(Alt+Home)"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:16
 msgid "Today"
 msgstr "今日"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:17
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "后一天 (Ctrl+PageDown)"
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:18
 msgid "Forward"
 msgstr ""
 
-#: tmp/main_window.glade.h:16
+#: tmp/main_window.glade.h:19
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "显示文本格式的预览(Ctrl+P)"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:22
 msgid "Enable text editing (Ctrl+P)"
 msgstr "允许编辑文本(Ctrl+P)"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:23
 msgid "Edit"
 msgstr "编辑"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:24
 msgid "Add a tag or a category entry"
 msgstr "添加标签或类别"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:25
 msgid "Add Tag"
 msgstr "添加标签"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:26
 msgid "New entry"
 msgstr "新条目"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:27
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>选择现有的或新的类别</b>"
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:28
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>填写条目</b> (可选)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:31
 msgid "<b>General</b>"
 msgstr "<b>常规</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:33
 msgid "General"
 msgstr "常规"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:34
 msgid "Select a picture"
 msgstr "选择一张图片"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:35
+msgid "_Open"
+msgstr ""
+
+#: tmp/main_window.glade.h:36
 msgid "Exit without saving"
 msgstr "不保存退出"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:37
 msgid "Statistics"
 msgstr "统计"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:38
 msgid "<b>Selected Day</b>"
 msgstr "<b>已选的日期y</b>"
 
-#: tmp/main_window.glade.h:35
+#: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"
 msgstr "<b>全部</b>"
 

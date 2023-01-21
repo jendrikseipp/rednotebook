@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-17 23:04+0100\n"
+"POT-Creation-Date: 2023-01-21 12:45+0100\n"
 "PO-Revision-Date: 2022-11-19 11:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -349,7 +349,7 @@ msgstr ""
 msgid "Create a new journal. The old one will be saved"
 msgstr "Lag en ny dagbok. Den gamle dagboken vil bli lagret."
 
-#: ../rednotebook/gui/menu.py:105
+#: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
 msgstr ""
 
@@ -452,7 +452,7 @@ msgstr ""
 msgid "Underline misspelled words"
 msgstr "Understrek feilstavede ord"
 
-#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:26
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:29
 msgid "Preferences"
 msgstr "Brukervalg"
 
@@ -858,7 +858,7 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:18
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:21
 msgid "Preview"
 msgstr "Forhåndsvisning"
 
@@ -1236,114 +1236,128 @@ msgstr ""
 
 #: tmp/main_window.glade.h:5
 #, fuzzy
+#| msgid "Save"
+msgid "_Save"
+msgstr "Lagre"
+
+#: tmp/main_window.glade.h:6
+#, fuzzy
 msgid "Select a directory"
 msgstr "Velg en mappe"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:7
+msgid "_OK"
+msgstr ""
+
+#: tmp/main_window.glade.h:8
 msgid "Select a file"
 msgstr "Velg en fil"
 
-#: tmp/main_window.glade.h:7
+#: tmp/main_window.glade.h:10
 msgid "Insert Link"
 msgstr "Sett inn lenke"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:11
 #, fuzzy
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>Lenke-adresse (f.eks. https://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:9
+#: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>Lenkenavn (valgfritt)</b>"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:13
 #, fuzzy
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Gå til forrige dag (Ctrl+PageUp)"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:14
 #, fuzzy
 msgid "Back"
 msgstr "Sikkerhetskopi"
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
 msgstr "Hopp til dagens dato (Alt+Home)"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:16
 msgid "Today"
 msgstr "I dag"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:17
 #, fuzzy
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "Gå til neste dag (Ctrl+PgDn)"
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:18
 #, fuzzy
 msgid "Forward"
 msgstr "Videre"
 
-#: tmp/main_window.glade.h:16
+#: tmp/main_window.glade.h:19
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "Vis formatert forhåndsvisning av teksten (Ctrl+P)"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:22
 msgid "Enable text editing (Ctrl+P)"
 msgstr "Skru på tekstredigering (Ctrl+P)"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:23
 msgid "Edit"
 msgstr "Endre"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:24
 msgid "Add a tag or a category entry"
 msgstr "Legg til en etikett eller en kategorioppføring"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:25
 msgid "Add Tag"
 msgstr "Legg til etikett"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:26
 msgid "New entry"
 msgstr "Ny oppføring"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:27
 #, fuzzy
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>Velg eksisterende eller ny kategori</b>"
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:28
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>Skriv oppføring</b> (valgfritt)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:31
 msgid "<b>General</b>"
 msgstr "<b>Generelt</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:33
 msgid "General"
 msgstr "Generelt"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:34
 msgid "Select a picture"
 msgstr "Velg et bilde"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:35
+msgid "_Open"
+msgstr ""
+
+#: tmp/main_window.glade.h:36
 msgid "Exit without saving"
 msgstr "Lukk uten å lagre"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:37
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:38
 msgid "<b>Selected Day</b>"
 msgstr "<b>Valgt dag</b>"
 
-#: tmp/main_window.glade.h:35
+#: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"
 msgstr "<b>Samlet</b>"
 
