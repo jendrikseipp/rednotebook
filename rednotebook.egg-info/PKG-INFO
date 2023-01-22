@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: rednotebook
+Version: 2.29
+Summary: Graphical daily journal with calendar, templates and keyword searching
+Home-page: https://rednotebook.app
+Author: Jendrik Seipp
+Author-email: jendrikseipp@gmail.com
+Maintainer: Jendrik Seipp
+Maintainer-email: jendrikseipp@gmail.com
+License: GPL
+Keywords: journal,diary
+Provides-Extra: dev_style
+License-File: LICENSE
+
+RedNotebook is a modern desktop journal. It lets you format, tag and
+search your entries. You can also add pictures, links and customizable
+templates, spell check your notes, and export to plain text, HTML or
+Latex.

@@ -1,11 +1,13 @@
+import enchant
+from gi.repository import GtkSource
+from gi.repository import GObject
+from gi.repository import Gtk
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
 
 print("Gtk import works")
 
-from gi.repository import GObject
 
 print("GObject import works")
 
@@ -15,7 +17,6 @@ try:
 except ValueError:
     gi.require_version("GtkSource", "3.0")
     print("Using GtkSourceView 3.0")
-from gi.repository import GtkSource
 
 print("GtkSource import works")
 
@@ -33,7 +34,7 @@ def find_library(name):
             return fname
         if fname.lower().endswith(".dll"):
             continue
-        fname = fname + ".dll"
+        fname = f"{fname}.dll"
         print("Check filename", fname, os.path.isfile(fname))
         if os.path.isfile(fname):
             return fname
@@ -42,7 +43,6 @@ def find_library(name):
 
 find_library("libenchant")
 
-import enchant
 
 print("Languages:", enchant.list_languages())
 print("Dictionaries:", enchant.list_dicts())

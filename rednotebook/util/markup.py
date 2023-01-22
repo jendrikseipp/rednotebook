@@ -118,15 +118,11 @@ MATHJAX = f"""\
 
 def convert_categories_to_markup(categories, with_category_title=True):
     # Only add Category title if the text is displayed
-    if with_category_title:
-        markup = "== %s ==\n" % _("Tags")
-    else:
-        markup = ""
-
+    markup = "== %s ==\n" % _("Tags") if with_category_title else ""
     for category, entry_list in categories.items():
-        markup += "- " + category + "\n"
+        markup += f"- {category}" + "\n"
         for entry in entry_list:
-            markup += "  - " + entry + "\n"
+            markup += f"  - {entry}" + "\n"
     markup += "\n\n"
     return markup
 
@@ -216,7 +212,7 @@ def _get_config(target, options):
         config["css-sugar"] = 1
 
         # Fix encoding for export opened in firefox
-        config["postproc"].append([r"<head>", "<head>" + CHARSET_UTF8])
+        config["postproc"].append([r"<head>", f"<head>{CHARSET_UTF8}"])
 
         # Line breaks
         config["postproc"].append([r"LINEBREAK", "<br />"])
@@ -234,11 +230,11 @@ def _get_config(target, options):
             "bgcolor": options.get("bgcolor", "white"),
             "fgcolor": options.get("fgcolor", "black"),
         }
-        config["postproc"].append([r"</head>", css + "</head>"])
+        config["postproc"].append([r"</head>", f"{css}</head>"])
 
         # MathJax
         if options.pop("add_mathjax"):
-            config["postproc"].append([r"</body>", MATHJAX + "</body>"])
+            config["postproc"].append([r"</body>", f"{MATHJAX}</body>"])
 
     elif target == "tex":
         config["encoding"] = "utf8"
@@ -398,7 +394,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
         and "html" in target
         and any(x in txt for x in MATHJAX_DELIMITERS)
     )
-    logging.debug("Add mathjax code: %s" % options["add_mathjax"])
+    logging.debug(f'Add mathjax code: {options["add_mathjax"]}')
 
     # Turn relative paths into absolute paths.
     txt = _convert_paths(txt, data_dir)
@@ -408,12 +404,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
 
     # Set the three header fields
     if headers is None:
-        if target == "tex":
-            # LaTeX requires a title if \maketitle is used
-            headers = ["RedNotebook", "", ""]
-        else:
-            headers = ["", "", ""]
-
+        headers = ["RedNotebook", "", ""] if target == "tex" else ["", "", ""]
     config = _get_config(target, options)
 
     # Let's do the conversion

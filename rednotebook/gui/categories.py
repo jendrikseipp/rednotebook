@@ -99,7 +99,7 @@ class CategoriesTreeView:
         self.categories.sort(key=utils.sort_asc)
 
     def node_on_top_level(self, iter):
-        if not type(iter) == Gtk.TreeIter:
+        if type(iter) != Gtk.TreeIter:
             # iter is a path -> convert to iter
             iter = self.tree_store.get_iter(iter)
         assert self.tree_store.iter_is_valid(iter)
@@ -167,32 +167,26 @@ class CategoriesTreeView:
         sorted_keys = sorted(day.content.keys(), key=lambda x: x.lower())
 
         for key in sorted_keys:
-            value = day.content[key]
-            if not key == "text":
+            if key != "text":
+                value = day.content[key]
                 self.add_element(None, {key: value})
         self.tree_view.expand_all()
 
     def get_day_content(self):
-        if self.empty():
-            return {}
-
-        content = self._get_element_content(None)
-
-        return content
+        return {} if self.empty() else self._get_element_content(None)
 
     def _get_element_content(self, element):
         model = self.tree_store
         if self.tree_store.iter_n_children(element) == 0:
             return None
-        else:
-            content = {}
+        content = {}
 
-            for i in range(model.iter_n_children(element)):
-                child = model.iter_nth_child(element, i)
-                txt2tags_markup = self.get_iter_value(child)
-                content[txt2tags_markup] = self._get_element_content(child)
+        for i in range(model.iter_n_children(element)):
+            child = model.iter_nth_child(element, i)
+            txt2tags_markup = self.get_iter_value(child)
+            content[txt2tags_markup] = self._get_element_content(child)
 
-            return content
+        return content
 
     def empty(self, category_iter=None):
         """
@@ -217,9 +211,7 @@ class CategoriesTreeView:
         self.tvcolumn.clear_attributes(self.cell)
         self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
-        # We want to have txt2tags markup and not pango markup
-        text = convert_from_pango(pango_markup)
-        return text
+        return convert_from_pango(pango_markup)
 
     def set_iter_value(self, iter, txt2tags_markup):
         pango_markup = convert_to_pango(txt2tags_markup)
@@ -233,7 +225,7 @@ class CategoriesTreeView:
                 return current_category_iter
 
         # If the category was not found, return None
-        logging.debug('Category not found: "%s"' % category_name)
+        logging.debug(f'Category not found: "{category_name}"')
         return None
 
     def add_entry(self, category, entry, undoing=False):
@@ -277,8 +269,7 @@ class CategoriesTreeView:
         self.main_window.cloud.update()
 
     def delete_selected_node(self):
-        selected_iter = self.get_selected_node()
-        if selected_iter:
+        if selected_iter := self.get_selected_node():
             self.delete_node(selected_iter)
             return
 
@@ -361,9 +352,7 @@ class CategoriesTreeView:
         # Add a UI description
         uimanager.add_ui_from_string(context_menu_xml)
 
-        # Create a Menu
-        menu = uimanager.get_widget("/ContextMenu")
-        return menu
+        return uimanager.get_widget("/ContextMenu")
 
     def _on_change_entry_clicked(self, action):
         iter = self.get_selected_node()

@@ -16,6 +16,20 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
+from rednotebook.data import Month
+from rednotebook import storage
+from rednotebook.gui.main_window import MainWindow
+from rednotebook.util.statistics import Statistics
+from rednotebook import backup
+from rednotebook.util import dates
+from rednotebook import data
+from rednotebook import configuration
+from rednotebook import info
+from rednotebook.help import example_content
+from rednotebook.util import markup
+from rednotebook.util import utils
+from rednotebook.external import elibintl
+from rednotebook.util import filesystem
 from collections import defaultdict
 import datetime
 import itertools
@@ -68,12 +82,9 @@ else:
 print(f"Adding {base_dir} to sys.path")
 sys.path.insert(0, base_dir)
 
-from rednotebook.util import filesystem
-
 
 # ---------------------- Enable i18n -------------------------------
 
-from rednotebook.external import elibintl
 
 LOCALE_PATH = filesystem.locale_dir
 logging.info(f"Locale path: {LOCALE_PATH}")
@@ -106,14 +117,6 @@ https://sourceforge.net/p/pygobjectwin32/tickets/27/
 elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH, libintl=None)
 
 # ------------------- end Enable i18n -------------------------------
-
-
-from rednotebook.util import utils
-from rednotebook.util import markup
-from rednotebook.help import example_content
-from rednotebook import info
-from rednotebook import configuration
-from rednotebook import data
 
 
 args = info.get_commandline_parser().parse_args()
@@ -183,15 +186,6 @@ except (ImportError, AssertionError) as e:
     logging.error(e)
     logging.error("GTK not found. Please install it (gir1.2-gtk-3.0).")
     sys.exit(1)
-
-
-from rednotebook.util import dates
-from rednotebook import backup
-
-from rednotebook.util.statistics import Statistics
-from rednotebook.gui.main_window import MainWindow
-from rednotebook import storage
-from rednotebook.data import Month
 
 
 class Journal(Gtk.Application):

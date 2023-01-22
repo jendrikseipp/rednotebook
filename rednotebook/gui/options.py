@@ -86,15 +86,11 @@ class AutostartOption(TickOption):
 
     def set(self):
         """Apply the current setting"""
-        selected = self.get_value()
-
-        if selected:
+        if selected := self.get_value():
             # Add autostart file if it is not present
             filesystem.make_file_with_dir(self.autostart_file, info.desktop_file)
-        else:
-            # Remove autostart file
-            if os.path.exists(self.autostart_file):
-                os.remove(self.autostart_file)
+        elif os.path.exists(self.autostart_file):
+            os.remove(self.autostart_file)
 
 
 class TextOption(Option):
@@ -195,7 +191,7 @@ class DateFormatOption(ComboBoxOption):
         format_string = self.get_value()
         date_string = dates.format_date(format_string)
         # Translators: Noun
-        label_text = "{} {}".format(_("Preview:"), date_string)
+        label_text = f'{_("Preview:")} {date_string}'
         self.preview.set_text(label_text)
 
 

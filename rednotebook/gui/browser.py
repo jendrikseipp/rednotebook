@@ -30,8 +30,7 @@ except (ImportError, ValueError) as err:
     WebKit2 = None
     if not filesystem.IS_WIN:
         logging.info(
-            "WebKit2Gtk 4.0 (gir1.2-webkit2-4.0) not found. Please install"
-            ' it if you want in-app previews. Error message: "{}"'.format(err)
+            f'WebKit2Gtk 4.0 (gir1.2-webkit2-4.0) not found. Please install it if you want in-app previews. Error message: "{err}"'
         )
 
 
@@ -57,10 +56,7 @@ if WebKit2:
             self.show_all()
 
         def set_font_size(self, size):
-            if size <= 0:
-                zoom = 1.0
-            else:
-                zoom = size / 10.0
+            zoom = 1.0 if size <= 0 else size / 10.0
             # It seems webkit shows text a little bit bigger.
             zoom *= 0.90
             self.set_zoom_level(zoom)

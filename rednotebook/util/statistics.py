@@ -22,19 +22,13 @@ class Statistics:
         self.journal = journal
 
     def get_number_of_words(self):
-        number_of_words = 0
-        for day in self.days:
-            number_of_words += day.get_number_of_words()
-        return number_of_words
+        return sum(day.get_number_of_words() for day in self.days)
 
     def get_number_of_distinct_words(self):
         return len(self.journal.get_word_count_dict())
 
     def get_number_of_chars(self):
-        number_of_chars = 0
-        for day in self.days:
-            number_of_chars += len(day.text)
-        return number_of_chars
+        return sum(len(day.text) for day in self.days)
 
     def get_number_of_usage_days(self):
         """Returns the timespan between the first and last entry"""
