@@ -57,6 +57,7 @@ please check back with me briefly about its status.
   Since we don't want the default menu with "Reload", we can either
   - create our own menu: complicated
   - only show the menu if there's a selection: WebView.has_selection() seems to be broken
+- [ ] Translate templates.
 
 
 ## Implementation changes
