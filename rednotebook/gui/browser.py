@@ -24,14 +24,21 @@ from rednotebook.util import filesystem
 
 
 try:
-    gi.require_version("WebKit2", "4.0")
+    gi.require_version("WebKit2", "4.1")
+except ValueError as err:
+    logging.warning(
+        f"WebKit2 4.1 not found. Trying to use arbitrary version. "
+        f"Error message: '{err}'"
+    )
+
+try:
     from gi.repository import WebKit2
-except (ImportError, ValueError) as err:
+except ImportError as err:
     WebKit2 = None
     if not filesystem.IS_WIN:
         logging.info(
-            "WebKit2Gtk 4.0 (gir1.2-webkit2-4.0) not found. Please install"
-            ' it if you want in-app previews. Error message: "{}"'.format(err)
+            f"WebKit2Gtk (gir1.2-webkit2-4.1) not found. Please install"
+            f' it if you want in-app previews. Error message: "{err}"'
         )
 
 
