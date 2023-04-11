@@ -1,3 +1,10 @@
+rednotebook (2.29.4-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Accept arbitrary WebKit2 version. Use 4.1 if available (#681, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Tue, 11 Apr 2023 12:40:03 +0200
+
 rednotebook (2.29.3-1) UNRELEASED; urgency=low
 
   * New upstream release
