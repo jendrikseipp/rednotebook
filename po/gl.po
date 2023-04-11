@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-13 00:27+0100\n"
+"POT-Creation-Date: 2023-01-21 12:45+0100\n"
 "PO-Revision-Date: 2018-09-05 21:43+0000\n"
 "Last-Translator: Xosé <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Create a new journal. The old one will be saved"
 msgstr "Crear un novo diario. O antigo vai seren gardado"
 
-#: ../rednotebook/gui/menu.py:105
+#: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
 msgstr ""
 
@@ -438,7 +438,7 @@ msgstr ""
 msgid "Underline misspelled words"
 msgstr "Subliñar palabras con faltas de ortografía"
 
-#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:25
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:29
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Wrong directory"
 msgstr "Directorio incorrecto"
 
-#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:247
+#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
 msgstr "Vostede non pode empregar este directorio para o seu diário:"
 
@@ -831,7 +831,7 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:21
 msgid "Preview"
 msgstr "Vista previa"
 
@@ -969,24 +969,24 @@ msgstr ""
 "=== Familia ===\n"
 "Aquí ven a entrada sobre a miña #familia."
 
-#: ../rednotebook/journal.py:250
+#: ../rednotebook/journal.py:251
 msgid "Opening default journal."
 msgstr "Abrindo o diario predeterminado."
 
-#: ../rednotebook/journal.py:377
+#: ../rednotebook/journal.py:378
 #, python-format
 msgid "The content has been saved to %s"
 msgstr "O contido foi gardado en %s"
 
-#: ../rednotebook/journal.py:382
+#: ../rednotebook/journal.py:383
 msgid "The journal could not be saved"
 msgstr "Non foi posíbel gardar o diario"
 
-#: ../rednotebook/journal.py:384
+#: ../rednotebook/journal.py:385
 msgid "Nothing to save"
 msgstr "Nada que gardar"
 
-#: ../rednotebook/journal.py:526
+#: ../rednotebook/journal.py:527
 msgid "Error"
 msgstr "Produciuse un erro"
 
@@ -1206,112 +1206,128 @@ msgid "Select backup filename"
 msgstr "Seleccione un nome de ficheiro para a copia de seguranza"
 
 #: tmp/main_window.glade.h:4
+msgid "_Cancel"
+msgstr ""
+
+#: tmp/main_window.glade.h:5
+msgid "_Save"
+msgstr ""
+
+#: tmp/main_window.glade.h:6
 msgid "Select a directory"
 msgstr "Seleccione un directorio"
 
-#: tmp/main_window.glade.h:5
+#: tmp/main_window.glade.h:7
+msgid "_OK"
+msgstr ""
+
+#: tmp/main_window.glade.h:8
 msgid "Select a file"
 msgstr "Seleccione un ficheiro"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:10
 msgid "Insert Link"
 msgstr "Inserir unha ligazón"
 
-#: tmp/main_window.glade.h:7
+#: tmp/main_window.glade.h:11
 #, fuzzy
 #| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>Enderezo da ligazón (p.ex. http://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>Nome da ligazón (opcional)</b>"
 
-#: tmp/main_window.glade.h:9
+#: tmp/main_window.glade.h:13
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Ir ao dia anterior (Ctrl+RePáx)"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:14
 #, fuzzy
 #| msgid "Backup"
 msgid "Back"
 msgstr "Copia de seguranza"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
 msgstr "Ir ao día de hoxe (Alt+Inicio)"
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:16
 msgid "Today"
 msgstr "Hoxe"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:17
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "Ir ao día seguinte (Ctrl+AvPáx)"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:18
 msgid "Forward"
 msgstr ""
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:19
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "Mostrar a vista previa de texto con formato (Ctrl+P)"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:22
 msgid "Enable text editing (Ctrl+P)"
 msgstr "Activar a edición de texto (Ctrl+P)"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:23
 msgid "Edit"
 msgstr "Editar:"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:24
 msgid "Add a tag or a category entry"
 msgstr "Engadir unha etiqueta ou unha categoría"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:25
 msgid "Add Tag"
 msgstr "Engadir unha etiqueta"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:26
 msgid "New entry"
 msgstr "Nova entrada"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:27
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>Seleccione unha categoría nova ou existente</b>"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:28
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>Escribir</b> (opcional)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:31
 msgid "<b>General</b>"
 msgstr "<b>Xeral</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:33
 msgid "General"
 msgstr "Xeral"
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:34
 msgid "Select a picture"
 msgstr "Seleccione unha imaxe"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:35
+msgid "_Open"
+msgstr ""
+
+#: tmp/main_window.glade.h:36
 msgid "Exit without saving"
 msgstr "Saír sen gardar"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:37
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:38
 msgid "<b>Selected Day</b>"
 msgstr "<b>Seleccione un día</b>"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"
 msgstr "<b>Global</b>"
 

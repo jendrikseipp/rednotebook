@@ -1,3 +1,6 @@
+# 2.29.4 (2023-04-11)
+* Accept arbitrary WebKit2 version. Use 4.1 if available (#681, Jendrik Seipp).
+
 # 2.29.3 (2023-01-16)
 * Make all menu items translatable (Jendrik Seipp).
 * Packaging: install translation files under <prefix>/share/locale again (#666, Jendrik Seipp).
