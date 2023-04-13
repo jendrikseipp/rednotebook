@@ -1,3 +1,6 @@
+# 2.29.5 (2023-04-13)
+* Fix: Don't try to print WebKit2 version on Windows (#686, Jendrik Seipp).
+
 # 2.29.4 (2023-04-11)
 * Accept arbitrary WebKit2 version. Use 4.1 if available (#681, Jendrik Seipp).
 
