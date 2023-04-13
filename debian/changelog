@@ -1,3 +1,10 @@
+rednotebook (2.29.5-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix: Don't try to print WebKit2 version on Windows (#686, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 13 Apr 2023 10:00:25 +0200
+
 rednotebook (2.29.4-1) UNRELEASED; urgency=low
 
   * New upstream release
