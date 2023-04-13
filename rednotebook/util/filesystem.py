@@ -243,7 +243,7 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
-    from gi.repository import GObject, Gtk, WebKit2
+    from gi.repository import GObject, Gtk
     import yaml
 
     functions = [
@@ -269,6 +269,10 @@ def get_platform_info():
             ("Glib", GObject.glib_version),
             ("PyGObject", GObject.pygobject_version),
             ("YAML", yaml.__version__),
+        ]
+    )
+    if WebKit2:
+        names_values.append(
             (
                 "WebKit2",
                 (
@@ -276,9 +280,8 @@ def get_platform_info():
                     WebKit2.get_minor_version(),
                     WebKit2.get_micro_version(),
                 ),
-            ),
-        ]
-    )
+            )
+        )
 
     vals = [f"{name}: {val}" for name, val in names_values]
     return "System info: " + ", ".join(vals)
