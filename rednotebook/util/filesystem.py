@@ -37,6 +37,15 @@ IS_MAC = sys.platform == "darwin"
 LOCAL_FILE_PEFIX = "file:///" if IS_WIN else "file://"
 
 
+gi.require_version("GIRepository", "2.0")
+from gi.repository import GIRepository
+
+repo = GIRepository.Repository.get_default()
+logging.info(
+    f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}"
+)
+
+
 try:
     gi.require_version("WebKit2", "4.1")
 except ValueError as err:
@@ -47,7 +56,12 @@ except ValueError as err:
 
 try:
     from gi.repository import WebKit2
+
+    logging.info(
+        f"Loaded version of the WebKit2 namespace: {repo.get_version('WebKit2')}"
+    )
 except ImportError as err:
+    logging.info(f"Failed to load the WebKit2 namespace")
     WebKit2 = None
     if not IS_WIN:
         logging.info(
