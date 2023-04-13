@@ -24,6 +24,8 @@ import platform
 import subprocess
 import sys
 
+import gi
+
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
 LANGUAGE = locale.getdefaultlocale()[0]
@@ -33,6 +35,27 @@ IS_WIN = sys.platform.startswith("win")
 IS_MAC = sys.platform == "darwin"
 
 LOCAL_FILE_PEFIX = "file:///" if IS_WIN else "file://"
+
+
+try:
+    gi.require_version("WebKit2", "4.1")
+except ValueError as err:
+    logging.warning(
+        f"WebKit2 4.1 not found. Trying to use arbitrary version. "
+        f"Error message: '{err}'"
+    )
+
+try:
+    from gi.repository import WebKit2
+except ImportError as err:
+    WebKit2 = None
+    if not IS_WIN:
+        logging.info(
+            f"WebKit2Gtk not found. Please install"
+            f" it if you want in-app previews."
+            f" On Debian/Ubuntu you need the gir1.2-webkit2-4.1 package."
+            f' Error message: "{err}"'
+        )
 
 
 def has_system_tray():
