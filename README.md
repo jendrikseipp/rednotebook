@@ -12,16 +12,20 @@ Latex or PDF.
 
 ## Requirements
 
-  * Python (3.6+): https://www.python.org
+Needed for running RedNotebook:
+
   * GTK (3.18+): https://www.gtk.org
   * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
+  * Python (3.6+): https://www.python.org
   * PyYAML (3.10+): https://pyyaml.org
-  * Setuptools (60.0+): https://pypi.org/project/setuptools
   * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
+  * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/ (optional)
 
-Recommended libraries:
+Needed for installing RedNotebook:
 
-  * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/
+  * GNU gettext: https://www.gnu.org/software/gettext
+  * Setuptools (60.0+): https://pypi.org/project/setuptools
+
 
 ## Run from source
 

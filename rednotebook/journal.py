@@ -87,6 +87,7 @@ sys.path.insert(0, base_dir)
 
 
 LOCALE_PATH = filesystem.locale_dir
+logging.info(f"Locale path: {LOCALE_PATH}")
 
 GETTEXT_DOMAIN = "rednotebook"
 

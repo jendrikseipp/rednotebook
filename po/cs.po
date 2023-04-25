@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-28 23:30+0100\n"
+"POT-Creation-Date: 2023-01-21 12:45+0100\n"
 "PO-Revision-Date: 2015-11-01 21:12+0000\n"
 "Last-Translator: Tadeáš Pařík <tadeas.parik@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -18,10 +18,803 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
-#: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
-#: ../rednotebook/gui/categories.py:48 ../rednotebook/gui/clouds.py:213
+#: ../rednotebook/info.py:30
+msgid "A Desktop Journal"
+msgstr "Deník pro desktop"
+
+#: ../rednotebook/info.py:48
+msgid ""
+"RedNotebook is a modern desktop journal. It lets you format, tag and\n"
+"search your entries. You can also add pictures, links and customizable\n"
+"templates, spell check your notes, and export to plain text, HTML or\n"
+"Latex.\n"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:81
+msgid "Load RedNotebook at startup"
+msgstr "Spustit RedNotebook při startu"
+
+#: ../rednotebook/gui/options.py:165
+msgid "%A, %x, Day %j"
+msgstr "%A, %x, Den %j."
+
+#: ../rednotebook/gui/options.py:167
+msgid "Week %W of Year %Y"
+msgstr "Týden %W. v roce %Y"
+
+#: ../rednotebook/gui/options.py:169
+msgid "Day %j"
+msgstr "Den %j."
+
+#: ../rednotebook/gui/options.py:177
+msgid "Help"
+msgstr "Nápověda"
+
+#. Translators: Noun
+#: ../rednotebook/gui/options.py:198
+msgid "Preview:"
+msgstr "Náhled:"
+
+#: ../rednotebook/gui/options.py:213
+msgid "Choose font ..."
+msgstr "Vybrat písmo ..."
+
+#: ../rednotebook/gui/options.py:221
+msgid "Choose font"
+msgstr "Vybrat písmo"
+
+#: ../rednotebook/gui/options.py:303
+msgid "Close to system tray"
+msgstr "Zavřít do oznamovací oblasti"
+
+#: ../rednotebook/gui/options.py:305
+msgid "Closing the window will send RedNotebook to the tray"
+msgstr "Zavření okna pošle RedNotebook do oznamovací oblasti"
+
+#: ../rednotebook/gui/options.py:312
+msgid "Switch between edit and preview mode automatically"
+msgstr "Automaticky přepínat mezi režimem náhledu a editace"
+
+#: ../rednotebook/gui/options.py:319
+msgid "Check for new version at startup"
+msgstr "Při startu se poohlédnout po nové verzi"
+
+#: ../rednotebook/gui/options.py:322
+msgid "Search as you type"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:332
+msgid "Check now"
+msgstr "Zkontrolovat nyní"
+
+#: ../rednotebook/gui/options.py:339
+msgid "Edit font:"
+msgstr "Upravit písmo:"
+
+#: ../rednotebook/gui/options.py:341
+msgid "Preview font:"
+msgstr "Náhled písma:"
+
+#: ../rednotebook/gui/options.py:344
+msgid "Comma-separated font names"
+msgstr "Názvy písem oddělené čárkou"
+
+#: ../rednotebook/gui/options.py:347
+msgid "Date/Time format"
+msgstr "Formát datumu/času"
+
+#: ../rednotebook/gui/options.py:349
+msgid "Used by Date/Time button and $date$ template macro."
+msgstr ""
+
+#: ../rednotebook/gui/options.py:352
+msgid "Date format"
+msgstr "Formát data"
+
+#: ../rednotebook/gui/options.py:354
+msgid "Used for dates in titlebar and exports."
+msgstr ""
+
+#: ../rednotebook/gui/options.py:357
+msgid "Tags in cloud"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:359
+msgid "Maximum number of tags displayed in the cloud"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:362
+msgid "Exclude from cloud"
+msgstr "Vyloučit z cloudu"
+
+#: ../rednotebook/gui/options.py:365
+msgid "Do not show these comma separated words and #tags in the clouds"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:369
+msgid "Include small words in cloud"
+msgstr "Zahrnout malá slova do oblaku slov"
+
+#: ../rednotebook/gui/options.py:371
+msgid "Allow these words with 4 letters or less"
+msgstr "Povolit tato slova se 4 a méně písmeny"
+
+#: ../rednotebook/gui/format_menu.py:92
+msgid "Bold"
+msgstr "Tučné"
+
+#: ../rednotebook/gui/format_menu.py:100
+msgid "Italic"
+msgstr "Kurzíva"
+
+#: ../rednotebook/gui/format_menu.py:108
+msgid "Monospace"
+msgstr ""
+
+#: ../rednotebook/gui/format_menu.py:116
+msgid "Underline"
+msgstr "Podtržené"
+
+#: ../rednotebook/gui/format_menu.py:124
+msgid "Strikethrough"
+msgstr "Přeškrtnuté"
+
+#: ../rednotebook/gui/format_menu.py:132
+#, fuzzy
+#| msgid "Format"
+msgid "Clear Format"
+msgstr "Formát"
+
+#. Translators: Noun
+#: ../rednotebook/gui/format_menu.py:138
+msgid "_Format"
+msgstr "_Formát"
+
+#. Translators: Noun
+#: ../rednotebook/gui/format_menu.py:156 ../rednotebook/gui/exports.py:416
+msgid "Format"
+msgstr "Formát"
+
+#: ../rednotebook/gui/format_menu.py:157
+msgid "Format the selected text or tag"
+msgstr "Formátovat vybraný text nebo značku"
+
+#: ../rednotebook/gui/main_window.py:184
+msgid "Preview in Browser"
+msgstr ""
+
+#: ../rednotebook/gui/main_window.py:331
+msgid "Show RedNotebook"
+msgstr "Ukázat RedNotebook"
+
+#: ../rednotebook/gui/main_window.py:589
+msgid "No directory selected."
+msgstr "Není vybrán žádný adresář"
+
+#: ../rednotebook/gui/main_window.py:683
+#: ../rednotebook/gui/customwidgets.py:336
+msgid "Template"
+msgstr "Šablona"
+
+#: ../rednotebook/gui/main_window.py:687
+msgid ""
+"Insert this weekday's template. Click the arrow on the right for more options"
+msgstr ""
+"Vložit šablohu pro pracovní týden. Více možností získáte kliknutím na šipku "
+"vpravo."
+
+#: ../rednotebook/gui/insert_menu.py:105
+msgid "First Item"
+msgstr "První položka"
+
+#: ../rednotebook/gui/insert_menu.py:106
+msgid "Second Item"
+msgstr "Druhá položka"
+
+#: ../rednotebook/gui/insert_menu.py:107
+msgid "Indented Item"
+msgstr "Vnořená položka"
+
+#: ../rednotebook/gui/insert_menu.py:108
+msgid "Two blank lines close the list"
+msgstr "Seznam ukončete dvojím odřádkováním"
+
+#: ../rednotebook/gui/insert_menu.py:132
+msgid "Picture"
+msgstr "Obrázek"
+
+#: ../rednotebook/gui/insert_menu.py:134
+msgid "Insert an image from the harddisk"
+msgstr "Vložit obrázek"
+
+#: ../rednotebook/gui/insert_menu.py:140
+msgid "File"
+msgstr "Soubor"
+
+#: ../rednotebook/gui/insert_menu.py:142
+msgid "Insert a link to a file"
+msgstr "Vložit odkaz na soubor"
+
+#: ../rednotebook/gui/insert_menu.py:149
+msgid "_Link"
+msgstr "_Odkaz"
+
+#: ../rednotebook/gui/insert_menu.py:151
+msgid "Insert a link to a website"
+msgstr "Vložit odkaz na webovou stránku"
+
+#: ../rednotebook/gui/insert_menu.py:157
+msgid "Bullet List"
+msgstr "Odrážky"
+
+#: ../rednotebook/gui/insert_menu.py:162
+msgid "Title"
+msgstr "Nadpis"
+
+#: ../rednotebook/gui/insert_menu.py:166
+msgid "Line"
+msgstr "Čára"
+
+#: ../rednotebook/gui/insert_menu.py:168
+msgid "Insert a separator line"
+msgstr "Vložit oddělovací čáru"
+
+#: ../rednotebook/gui/insert_menu.py:174
+msgid "Date/Time"
+msgstr "Datum/čas"
+
+#: ../rednotebook/gui/insert_menu.py:176
+msgid "Insert the current date and time (edit format in preferences)"
+msgstr "Vložit aktuální datum a čas (formát zvolte v nastavení)"
+
+#: ../rednotebook/gui/insert_menu.py:182
+msgid "Line Break"
+msgstr "Zalomení řádku"
+
+#: ../rednotebook/gui/insert_menu.py:184
+msgid "Insert a manual line break"
+msgstr "Ruční zalomení řádku"
+
+#: ../rednotebook/gui/insert_menu.py:187
+msgid "_Insert"
+msgstr "_Vložit"
+
+#: ../rednotebook/gui/insert_menu.py:192
+msgid "Level"
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:227
+msgid "Insert"
+msgstr "Vložit"
+
+#: ../rednotebook/gui/insert_menu.py:229
+msgid "Insert images, files, links and other content"
+msgstr "Vložit obrázky, soubory, odkazy a další obsah"
+
+#: ../rednotebook/gui/insert_menu.py:260
+msgid "Width (optional):"
+msgstr "Šířka (volitelné)"
+
+#: ../rednotebook/gui/insert_menu.py:266
+msgid "pixels"
+msgstr "pixelů"
+
+#: ../rednotebook/gui/insert_menu.py:287
+msgid "Width must be an integer."
+msgstr "Šířka musí být celé číslo."
+
+#: ../rednotebook/gui/insert_menu.py:371
+msgid "No link location has been entered"
+msgstr "Nebyl vložen žádný odkaz na umístění"
+
+#: ../rednotebook/gui/search.py:84 ../rednotebook/gui/exports.py:423
+msgid "Date"
+msgstr "Datum"
+
+#: ../rednotebook/gui/search.py:84
+msgid "Text"
+msgstr "Text"
+
+#: ../rednotebook/gui/customwidgets.py:339
+msgid "Save and insert"
+msgstr "Uložit a vložit"
+
+#: ../rednotebook/gui/customwidgets.py:341 ../rednotebook/gui/menu.py:110
+msgid "Save"
+msgstr ""
+
+#: ../rednotebook/gui/customwidgets.py:343
+msgid "Close"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:93
+msgid "_Journal"
+msgstr "_Žurnál"
+
+#: ../rednotebook/gui/menu.py:97
+msgid "New"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:99
+msgid "Create a new journal. The old one will be saved"
+msgstr "Vytvořit nový deník. Stávající bude uložen"
+
+#: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
+msgid "Open"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:107
+msgid "Load an existing journal. The old journal will be saved"
+msgstr "Nahrát existující deník. Stávající bude uložen"
+
+#: ../rednotebook/gui/menu.py:114
+msgid "Save As"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:117
+msgid ""
+"Save journal at a new location. The old journal files will also be saved"
+msgstr "Uložit deník na nové místo. Staré soubory deníku budou také uloženy."
+
+#: ../rednotebook/gui/menu.py:125
+msgid "Export"
+msgstr "Export"
+
+#: ../rednotebook/gui/menu.py:127
+msgid "Open the export assistant"
+msgstr "Otevřít průvodce exportem"
+
+#: ../rednotebook/gui/menu.py:134
+msgid "_Backup"
+msgstr "_Zálohovat"
+
+#: ../rednotebook/gui/menu.py:136
+msgid "Save all the data in a zip archive"
+msgstr "Uložit všechna data do archivu zip"
+
+#: ../rednotebook/gui/menu.py:142
+msgid "S_tatistics"
+msgstr "S_tatistiky"
+
+#: ../rednotebook/gui/menu.py:144
+msgid "Show some statistics about the journal"
+msgstr "Ukázat statistiky týkající se deníku"
+
+#: ../rednotebook/gui/menu.py:150
+msgid "Quit"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:152
+msgid "Shutdown RedNotebook. It will not be sent to the tray."
+msgstr "Ukončit RedNotebook. Nezůstane ani v oznamovací oblasti."
+
+#: ../rednotebook/gui/menu.py:155
+msgid "_Edit"
+msgstr "Úp_ravy"
+
+#: ../rednotebook/gui/menu.py:159
+msgid "Undo"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:161
+msgid "Undo text or tag edits"
+msgstr "Zpět"
+
+#: ../rednotebook/gui/menu.py:167
+msgid "Redo"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:169
+msgid "Redo text or tag edits"
+msgstr "Vpřed"
+
+#: ../rednotebook/gui/menu.py:172
+msgid "Cut"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:176
+msgid "Copy"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:184
+msgid "Paste"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:192
+msgid "Fullscreen"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:200
+msgid "Find"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:212
+msgid "Spell Check"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:214
+msgid "Underline misspelled words"
+msgstr "Podtrhávat slova s překlepy"
+
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:29
+msgid "Preferences"
+msgstr "Nastavení"
+
+#: ../rednotebook/gui/menu.py:229
+msgid "_Help"
+msgstr "_Nápověda"
+
+#: ../rednotebook/gui/menu.py:233
+msgid "Contents"
+msgstr "Obsah"
+
+#: ../rednotebook/gui/menu.py:235
+msgid "Open the RedNotebook documentation"
+msgstr "Otevřít dokumentaci RedNotebook"
+
+#: ../rednotebook/gui/menu.py:241
+msgid "Donate"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:243
+#, fuzzy
+#| msgid "Open the RedNotebook documentation"
+msgid "Support RedNotebook with a donation"
+msgstr "Otevřít dokumentaci RedNotebook"
+
+#: ../rednotebook/gui/menu.py:249
+msgid "Translate RedNotebook"
+msgstr "Přeložit RedNotebook"
+
+#: ../rednotebook/gui/menu.py:251
+#, fuzzy
+#| msgid "Translate RedNotebook"
+msgid "Help translate RedNotebook to your language"
+msgstr "Přeložit RedNotebook"
+
+#: ../rednotebook/gui/menu.py:257
+msgid "Report a Problem"
+msgstr "Nahlásit problém"
+
+#: ../rednotebook/gui/menu.py:259
+msgid "Fill out a short form about the problem"
+msgstr "Vyplňte krátký formulář s popisem problému"
+
+#: ../rednotebook/gui/menu.py:265
+msgid "Give Feedback"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:267
+msgid "How can we improve RedNotebook?"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:270
+msgid "About"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:288
+msgid "Wrong directory"
+msgstr "Chybný adresář"
+
+#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:248
+msgid "You cannot use this directory for your journal:"
+msgstr "Nemůžete použít tento adresář pro váš žurnál:"
+
+#: ../rednotebook/gui/menu.py:299
+msgid "Please select an empty directory."
+msgstr "Zvolte prosím prázdý adresář."
+
+#: ../rednotebook/gui/menu.py:304
+msgid "This directory contains no journal files:"
+msgstr "Tento adresář neobsahuje soubory žurnálu:"
+
+#: ../rednotebook/gui/menu.py:323
+msgid "Journals are saved in a directory, not in a single file."
+msgstr "Deníkové záznamy nejsou uloženy v jednom souboru, ale v adresáři."
+
+#: ../rednotebook/gui/menu.py:324
+msgid "The directory name will be the title of the new journal."
+msgstr "Název adresáře bude použit k pojmenování nového deníku."
+
+#: ../rednotebook/gui/menu.py:327
+msgid "Select an empty folder for your new journal"
+msgstr "Vyberte prázdnou složku na váš nový deník"
+
+#: ../rednotebook/gui/menu.py:333
+msgid "Select an existing journal directory"
+msgstr "Vyberte existující složku s deníkem"
+
+#: ../rednotebook/gui/menu.py:334
+msgid "The directory should contain your journal's data files"
+msgstr "Adresář by měl obsahovat soubory s deníkovými záznamy"
+
+#: ../rednotebook/gui/menu.py:347
+msgid "Select an empty folder for the new location of your journal"
+msgstr "Vyberte prázdný adresář pro nové umístění vašeho deníku"
+
+#: ../rednotebook/gui/menu.py:348
+msgid "The directory name will be the new title of the journal"
+msgstr "Podle názvu adresáře bude přejmenován také deník"
+
+#: ../rednotebook/gui/menu.py:408
+msgid "RedNotebook Documentation"
+msgstr "Dokumentace k aplikaci RedNotebook"
+
+#: ../rednotebook/gui/menu.py:436
+msgid "Contributors:"
+msgstr ""
+
+#. Translators: TRANSLATORS: Replace this string with your names, one name per line.
+#: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  6n64 https://launchpad.net/~6n64\n"
+"  Jakub Kočí https://launchpad.net/~ainstain500\n"
+"  Jan Helebrant https://launchpad.net/~jhelebrant\n"
+"  Konki https://launchpad.net/~pavel-konkol\n"
+"  Kuvaly [LCT] https://launchpad.net/~kuvaly\n"
+"  Martin Rotter https://launchpad.net/~skunkic-deactivatedaccount\n"
+"  Martin Schayna https://launchpad.net/~mschayna\n"
+"  Milan Horák https://launchpad.net/~sinyaweo\n"
+"  Roman Horník https://launchpad.net/~roman.hornik\n"
+"  Tadeáš Pařík https://launchpad.net/~pariktadeas\n"
+"  fri https://launchpad.net/~pavelfric\n"
+"  luisah https://launchpad.net/~luisah"
+
+#: ../rednotebook/gui/clouds.py:74
+msgid "filter, these, comma, separated, words, and, #tags"
+msgstr ""
+
+#: ../rednotebook/gui/clouds.py:79
+msgid "mtv, spam, work, job, play"
+msgstr "mtv, spam, práce, zaměstnání, hrátky"
+
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/util/markup.py:122 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Štítky"
+
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:68
+#: ../rednotebook/util/statistics.py:81
+msgid "Words"
+msgstr "Slov"
+
+#: ../rednotebook/gui/clouds.py:251
+#, python-format
+msgid "Hide \"%s\" from clouds"
+msgstr "Skrýt \"%s\" z obláčků"
+
+#: ../rednotebook/gui/exports.py:42 ../rednotebook/gui/exports.py:418
+msgid "Export all days"
+msgstr "Exportovat všechny dny"
+
+#: ../rednotebook/gui/exports.py:45
+msgid "Export currently visible day"
+msgstr "Exportovat právě viditelný den"
+
+#: ../rednotebook/gui/exports.py:48
+msgid "Export days in the selected time range"
+msgstr "Exportovat dny ve zvoleném rozsahu"
+
+#: ../rednotebook/gui/exports.py:58
+msgid "From:"
+msgstr "Od:"
+
+#: ../rednotebook/gui/exports.py:60
+msgid "To:"
+msgstr "Do:"
+
+#: ../rednotebook/gui/exports.py:108
+msgid "Export currently selected text"
+msgstr "Exportovat označený text"
+
+#: ../rednotebook/gui/exports.py:120
+msgid "(Only available when text is selected in edit mode)"
+msgstr "(Dostupné pouze při vyběru textu v editačním režimu)"
+
+#: ../rednotebook/gui/exports.py:134
+msgid "Export text and tags"
+msgstr "Exportovat text a štítky"
+
+#: ../rednotebook/gui/exports.py:136
+msgid "Export text only"
+msgstr "Exportovat pouze text"
+
+#: ../rednotebook/gui/exports.py:139
+msgid "Export tags only"
+msgstr "Exportovat pouze štítky"
+
+#: ../rednotebook/gui/exports.py:141
+msgid "Filter days by tags"
+msgstr "Filtrovat dny podle štítků"
+
+#: ../rednotebook/gui/exports.py:150
+msgid "Available tags"
+msgstr "Dostupné značky"
+
+#: ../rednotebook/gui/exports.py:153
+msgid "Selected tags"
+msgstr "Vybrané značky"
+
+#: ../rednotebook/gui/exports.py:162
+msgid "Select"
+msgstr "Vybrat"
+
+#: ../rednotebook/gui/exports.py:163
+msgid "Deselect"
+msgstr "Zrušit výběr"
+
+#: ../rednotebook/gui/exports.py:262
+msgid "When filtering by tags, you have to select at least one tag."
+msgstr "Pro filtrování podle štítků musíte vybrat aspoň jeden štítek."
+
+#: ../rednotebook/gui/exports.py:285
+msgid "You have selected the following settings:"
+msgstr "Máte zvoleno následující nastavení"
+
+#: ../rednotebook/gui/exports.py:310
+msgid "Export Assistant"
+msgstr "Průvodce exportem"
+
+#: ../rednotebook/gui/exports.py:318
+msgid "Welcome to the Export Assistant."
+msgstr "Vítejte v průvodci pro export"
+
+#: ../rednotebook/gui/exports.py:320
+msgid "This wizard will help you to export your journal to various formats."
+msgstr "Tneto průvodce Vám pomůže exportovat žurnál do mnoha formátů."
+
+#: ../rednotebook/gui/exports.py:323
+msgid ""
+"You can select the days you want to export and where the output will be "
+"saved."
+msgstr ""
+"Můžete zvolit, které dny mají být exportovány a kam chcete uložit výsledný "
+"soubor."
+
+#: ../rednotebook/gui/exports.py:336
+msgid "PDF: export to HTML, open in browser and print to PDF file"
+msgstr ""
+
+#: ../rednotebook/gui/exports.py:341
+msgid "Select Export Format"
+msgstr "Zvolit formát exportovaného souboru."
+
+#: ../rednotebook/gui/exports.py:346
+msgid "Select Date Range"
+msgstr "Zvolit rozsah datumů"
+
+#: ../rednotebook/gui/exports.py:351
+msgid "Select Contents"
+msgstr "Zvolit obsah"
+
+#: ../rednotebook/gui/exports.py:357
+msgid "Select Export Path"
+msgstr "Zvolit cestu k výslednému souboru"
+
+#: ../rednotebook/gui/exports.py:362
+msgid "Summary"
+msgstr "Souhrn"
+
+#: ../rednotebook/gui/exports.py:425
+msgid "Export selected text only"
+msgstr "Exportovat pouze označený text"
+
+#: ../rednotebook/gui/exports.py:429
+msgid "Start date"
+msgstr "Počáteční datum"
+
+#: ../rednotebook/gui/exports.py:430
+msgid "End date"
+msgstr "Koncové datum"
+
+#: ../rednotebook/gui/exports.py:435
+msgid "Include text"
+msgstr "Zahrnout text"
+
+#: ../rednotebook/gui/exports.py:438
+msgid "Include tags"
+msgstr "Zahrnout štítky"
+
+#: ../rednotebook/gui/exports.py:442
+msgid "Filtered by tags"
+msgstr "Filtrováno podle štítků"
+
+#: ../rednotebook/gui/exports.py:444
+msgid "Export path"
+msgstr "Cesta exportovaného souboru"
+
+#: ../rednotebook/gui/exports.py:447
+msgid "Yes"
+msgstr "Ano"
+
+#: ../rednotebook/gui/exports.py:447
+msgid "No"
+msgstr "Ne"
+
+#: ../rednotebook/gui/exports.py:493
+#, python-format
+msgid "Content exported to %s"
+msgstr "Obsah byl exportován do %s"
+
+#: ../rednotebook/gui/exports.py:531
+msgid "Plain Text"
+msgstr "Prostý text"
+
+#: ../rednotebook/gui/categories.py:133
+msgid "Empty entries are not allowed"
+msgstr "Prázdné zápisky nejsou povoleny"
+
+#: ../rednotebook/gui/categories.py:334
+msgid "Change this text"
+msgstr "Změnit tento text"
+
+#: ../rednotebook/gui/categories.py:342
+msgid "Add a new entry"
+msgstr "Vložit nový zápisek"
+
+#: ../rednotebook/gui/categories.py:350
+msgid "Delete this entry"
+msgstr "Smazat tuto položku"
+
+#: ../rednotebook/util/dates.py:60
+msgid "Incorrect date format"
+msgstr "Nesprávný formát data"
+
+#: ../rednotebook/util/utils.py:116
+#, python-format
+msgid "You have version <b>%s</b>."
+msgstr "Máte verzi <b>%s</b>."
+
+#: ../rednotebook/util/utils.py:118
+#, python-format
+msgid "The latest version is <b>%s</b>."
+msgstr "Nejnovější verze je <b>%s</b>."
+
+#: ../rednotebook/util/utils.py:121
+msgid "If you like the program, please consider making a donation."
+msgstr ""
+
+#: ../rednotebook/util/utils.py:123
+msgid "Do you want to visit the RedNotebook homepage?"
+msgstr "Chcete navštívit domovskou stránku programu RedNotebook?"
+
+#: ../rednotebook/util/utils.py:131
+msgid "Do not ask again"
+msgstr "Příště se již nedotazovat"
+
+#: ../rednotebook/util/utils.py:160
+msgid "unknown"
+msgstr "neznámý"
+
+#: ../rednotebook/util/statistics.py:69
+msgid "Distinct Words"
+msgstr "Unikátních slov"
+
+#: ../rednotebook/util/statistics.py:70
+msgid "Edited Days"
+msgstr "Dnů se záznamem"
+
+#: ../rednotebook/util/statistics.py:71 ../rednotebook/util/statistics.py:83
+msgid "Letters"
+msgstr "Znaků"
+
+#: ../rednotebook/util/statistics.py:72
+msgid "Days between first and last Entry"
+msgstr "Dnů mezi prvním a posledním zápiskem"
+
+#: ../rednotebook/util/statistics.py:73
+msgid "Average number of Words"
+msgstr "Průměrný počet slov"
+
+#: ../rednotebook/util/statistics.py:74
+msgid "Percentage of edited Days"
+msgstr "Procento dnů se zápiskem"
+
+#: ../rednotebook/util/statistics.py:82
+msgid "Lines"
+msgstr "Řádků"
 
 #: ../rednotebook/help.py:35
 msgid "Hello!"
@@ -44,7 +837,7 @@ msgstr ""
 
 #. Translators: noun
 #. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:21
 msgid "Preview"
 msgstr "Náhled"
 
@@ -182,68 +975,26 @@ msgstr ""
 "=== Rodina ===\n"
 "Zde bude první položka. O #rodině."
 
-#: ../rednotebook/util/dates.py:60
-msgid "Incorrect date format"
-msgstr "Nesprávný formát data"
+#: ../rednotebook/journal.py:251
+msgid "Opening default journal."
+msgstr "Otvírání výchozího žurnálu."
 
-#: ../rednotebook/util/statistics.py:68 ../rednotebook/util/statistics.py:81
-#: ../rednotebook/gui/clouds.py:215
-msgid "Words"
-msgstr "Slov"
-
-#: ../rednotebook/util/statistics.py:69
-msgid "Distinct Words"
-msgstr "Unikátních slov"
-
-#: ../rednotebook/util/statistics.py:70
-msgid "Edited Days"
-msgstr "Dnů se záznamem"
-
-#: ../rednotebook/util/statistics.py:71 ../rednotebook/util/statistics.py:83
-msgid "Letters"
-msgstr "Znaků"
-
-#: ../rednotebook/util/statistics.py:72
-msgid "Days between first and last Entry"
-msgstr "Dnů mezi prvním a posledním zápiskem"
-
-#: ../rednotebook/util/statistics.py:73
-msgid "Average number of Words"
-msgstr "Průměrný počet slov"
-
-#: ../rednotebook/util/statistics.py:74
-msgid "Percentage of edited Days"
-msgstr "Procento dnů se zápiskem"
-
-#: ../rednotebook/util/statistics.py:82
-msgid "Lines"
-msgstr "Řádků"
-
-#: ../rednotebook/util/utils.py:116
+#: ../rednotebook/journal.py:378
 #, python-format
-msgid "You have version <b>%s</b>."
-msgstr "Máte verzi <b>%s</b>."
+msgid "The content has been saved to %s"
+msgstr "Obsah byl uložen v %s"
 
-#: ../rednotebook/util/utils.py:118
-#, python-format
-msgid "The latest version is <b>%s</b>."
-msgstr "Nejnovější verze je <b>%s</b>."
+#: ../rednotebook/journal.py:383
+msgid "The journal could not be saved"
+msgstr "Deník nemohl být uložen"
 
-#: ../rednotebook/util/utils.py:121
-msgid "If you like the program, please consider making a donation."
-msgstr ""
+#: ../rednotebook/journal.py:385
+msgid "Nothing to save"
+msgstr "Nic k uložení"
 
-#: ../rednotebook/util/utils.py:123
-msgid "Do you want to visit the RedNotebook homepage?"
-msgstr "Chcete navštívit domovskou stránku programu RedNotebook?"
-
-#: ../rednotebook/util/utils.py:131
-msgid "Do not ask again"
-msgstr "Příště se již nedotazovat"
-
-#: ../rednotebook/util/utils.py:160
-msgid "unknown"
-msgstr "neznámý"
+#: ../rednotebook/journal.py:527
+msgid "Error"
+msgstr "Chyba"
 
 #: ../rednotebook/backup.py:58
 #, fuzzy, python-format
@@ -271,31 +1022,6 @@ msgstr "Zeptat se při příštím spuštění"
 #: ../rednotebook/backup.py:74
 msgid "Never ask again"
 msgstr "Už se znovu nepat"
-
-#: ../rednotebook/journal.py:247 ../rednotebook/gui/menu.py:292
-msgid "You cannot use this directory for your journal:"
-msgstr "Nemůžete použít tento adresář pro váš žurnál:"
-
-#: ../rednotebook/journal.py:250
-msgid "Opening default journal."
-msgstr "Otvírání výchozího žurnálu."
-
-#: ../rednotebook/journal.py:377
-#, python-format
-msgid "The content has been saved to %s"
-msgstr "Obsah byl uložen v %s"
-
-#: ../rednotebook/journal.py:382
-msgid "The journal could not be saved"
-msgstr "Deník nemohl být uložen"
-
-#: ../rednotebook/journal.py:384
-msgid "Nothing to save"
-msgstr "Nic k uložení"
-
-#: ../rednotebook/journal.py:526
-msgid "Error"
-msgstr "Chyba"
 
 #: ../rednotebook/templates.py:27
 msgid "Monday"
@@ -479,789 +1205,133 @@ msgstr "Šablona pro pracovní dny"
 msgid "Create New Template"
 msgstr "Vytvořit novou šablonu"
 
-#: ../rednotebook/gui/categories.py:133
-msgid "Empty entries are not allowed"
-msgstr "Prázdné zápisky nejsou povoleny"
-
-#: ../rednotebook/gui/categories.py:334
-msgid "Change this text"
-msgstr "Změnit tento text"
-
-#: ../rednotebook/gui/categories.py:342
-msgid "Add a new entry"
-msgstr "Vložit nový zápisek"
-
-#: ../rednotebook/gui/categories.py:350
-msgid "Delete this entry"
-msgstr "Smazat tuto položku"
-
-#: ../rednotebook/gui/format_menu.py:92
-msgid "Bold"
-msgstr "Tučné"
-
-#: ../rednotebook/gui/format_menu.py:100
-msgid "Italic"
-msgstr "Kurzíva"
-
-#: ../rednotebook/gui/format_menu.py:108
-msgid "Monospace"
-msgstr ""
-
-#: ../rednotebook/gui/format_menu.py:116
-msgid "Underline"
-msgstr "Podtržené"
-
-#: ../rednotebook/gui/format_menu.py:124
-msgid "Strikethrough"
-msgstr "Přeškrtnuté"
-
-#: ../rednotebook/gui/format_menu.py:132
-msgid "Clear format"
-msgstr ""
-
-#. Translators: Noun
-#: ../rednotebook/gui/format_menu.py:138
-msgid "_Format"
-msgstr "_Formát"
-
-#. Translators: Noun
-#: ../rednotebook/gui/format_menu.py:156 ../rednotebook/gui/exports.py:416
-msgid "Format"
-msgstr "Formát"
-
-#: ../rednotebook/gui/format_menu.py:157
-msgid "Format the selected text or tag"
-msgstr "Formátovat vybraný text nebo značku"
-
-#: ../rednotebook/gui/menu.py:93
-msgid "_Journal"
-msgstr "_Žurnál"
-
-#: ../rednotebook/gui/menu.py:99
-msgid "Create a new journal. The old one will be saved"
-msgstr "Vytvořit nový deník. Stávající bude uložen"
-
-#: ../rednotebook/gui/menu.py:107
-msgid "Load an existing journal. The old journal will be saved"
-msgstr "Nahrát existující deník. Stávající bude uložen"
-
-#: ../rednotebook/gui/menu.py:117
-msgid ""
-"Save journal at a new location. The old journal files will also be saved"
-msgstr "Uložit deník na nové místo. Staré soubory deníku budou také uloženy."
-
-#: ../rednotebook/gui/menu.py:125
-msgid "Export"
-msgstr "Export"
-
-#: ../rednotebook/gui/menu.py:127
-msgid "Open the export assistant"
-msgstr "Otevřít průvodce exportem"
-
-#: ../rednotebook/gui/menu.py:134
-msgid "_Backup"
-msgstr "_Zálohovat"
-
-#: ../rednotebook/gui/menu.py:136
-msgid "Save all the data in a zip archive"
-msgstr "Uložit všechna data do archivu zip"
-
-#: ../rednotebook/gui/menu.py:142
-msgid "S_tatistics"
-msgstr "S_tatistiky"
-
-#: ../rednotebook/gui/menu.py:144
-msgid "Show some statistics about the journal"
-msgstr "Ukázat statistiky týkající se deníku"
-
-#: ../rednotebook/gui/menu.py:152
-msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Ukončit RedNotebook. Nezůstane ani v oznamovací oblasti."
-
-#: ../rednotebook/gui/menu.py:155
-msgid "_Edit"
-msgstr "Úp_ravy"
-
-#: ../rednotebook/gui/menu.py:161
-msgid "Undo text or tag edits"
-msgstr "Zpět"
-
-#: ../rednotebook/gui/menu.py:169
-msgid "Redo text or tag edits"
-msgstr "Vpřed"
-
-#: ../rednotebook/gui/menu.py:214
-msgid "Underline misspelled words"
-msgstr "Podtrhávat slova s překlepy"
-
-#: ../rednotebook/gui/menu.py:229
-msgid "_Help"
-msgstr "_Nápověda"
-
-#: ../rednotebook/gui/menu.py:233
-msgid "Contents"
-msgstr "Obsah"
-
-#: ../rednotebook/gui/menu.py:235
-msgid "Open the RedNotebook documentation"
-msgstr "Otevřít dokumentaci RedNotebook"
-
-#: ../rednotebook/gui/menu.py:241
-msgid "Donate"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:243
-#, fuzzy
-#| msgid "Open the RedNotebook documentation"
-msgid "Support RedNotebook with a donation"
-msgstr "Otevřít dokumentaci RedNotebook"
-
-#: ../rednotebook/gui/menu.py:249
-msgid "Translate RedNotebook"
-msgstr "Přeložit RedNotebook"
-
-#: ../rednotebook/gui/menu.py:251
-#, fuzzy
-#| msgid "Translate RedNotebook"
-msgid "Help translate RedNotebook to your language"
-msgstr "Přeložit RedNotebook"
-
-#: ../rednotebook/gui/menu.py:257
-msgid "Report a Problem"
-msgstr "Nahlásit problém"
-
-#: ../rednotebook/gui/menu.py:259
-msgid "Fill out a short form about the problem"
-msgstr "Vyplňte krátký formulář s popisem problému"
-
-#: ../rednotebook/gui/menu.py:265
-msgid "Give Feedback"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:267
-msgid "How can we improve RedNotebook?"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:288
-msgid "Wrong directory"
-msgstr "Chybný adresář"
-
-#: ../rednotebook/gui/menu.py:299
-msgid "Please select an empty directory."
-msgstr "Zvolte prosím prázdý adresář."
-
-#: ../rednotebook/gui/menu.py:304
-msgid "This directory contains no journal files:"
-msgstr "Tento adresář neobsahuje soubory žurnálu:"
-
-#: ../rednotebook/gui/menu.py:323
-msgid "Journals are saved in a directory, not in a single file."
-msgstr "Deníkové záznamy nejsou uloženy v jednom souboru, ale v adresáři."
-
-#: ../rednotebook/gui/menu.py:324
-msgid "The directory name will be the title of the new journal."
-msgstr "Název adresáře bude použit k pojmenování nového deníku."
-
-#: ../rednotebook/gui/menu.py:327
-msgid "Select an empty folder for your new journal"
-msgstr "Vyberte prázdnou složku na váš nový deník"
-
-#: ../rednotebook/gui/menu.py:333
-msgid "Select an existing journal directory"
-msgstr "Vyberte existující složku s deníkem"
-
-#: ../rednotebook/gui/menu.py:334
-msgid "The directory should contain your journal's data files"
-msgstr "Adresář by měl obsahovat soubory s deníkovými záznamy"
-
-#: ../rednotebook/gui/menu.py:347
-msgid "Select an empty folder for the new location of your journal"
-msgstr "Vyberte prázdný adresář pro nové umístění vašeho deníku"
-
-#: ../rednotebook/gui/menu.py:348
-msgid "The directory name will be the new title of the journal"
-msgstr "Podle názvu adresáře bude přejmenován také deník"
-
-#: ../rednotebook/gui/menu.py:408
-msgid "RedNotebook Documentation"
-msgstr "Dokumentace k aplikaci RedNotebook"
-
-#: ../rednotebook/gui/menu.py:436
-msgid "Contributors:"
-msgstr ""
-
-#. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  6n64 https://launchpad.net/~6n64\n"
-"  Jakub Kočí https://launchpad.net/~ainstain500\n"
-"  Jan Helebrant https://launchpad.net/~jhelebrant\n"
-"  Konki https://launchpad.net/~pavel-konkol\n"
-"  Kuvaly [LCT] https://launchpad.net/~kuvaly\n"
-"  Martin Rotter https://launchpad.net/~skunkic-deactivatedaccount\n"
-"  Martin Schayna https://launchpad.net/~mschayna\n"
-"  Milan Horák https://launchpad.net/~sinyaweo\n"
-"  Roman Horník https://launchpad.net/~roman.hornik\n"
-"  Tadeáš Pařík https://launchpad.net/~pariktadeas\n"
-"  fri https://launchpad.net/~pavelfric\n"
-"  luisah https://launchpad.net/~luisah"
-
-#: ../rednotebook/gui/clouds.py:74
-msgid "filter, these, comma, separated, words, and, #tags"
-msgstr ""
-
-#: ../rednotebook/gui/clouds.py:79
-msgid "mtv, spam, work, job, play"
-msgstr "mtv, spam, práce, zaměstnání, hrátky"
-
-#: ../rednotebook/gui/clouds.py:251
-#, python-format
-msgid "Hide \"%s\" from clouds"
-msgstr "Skrýt \"%s\" z obláčků"
-
-#: ../rednotebook/gui/insert_menu.py:105
-msgid "First Item"
-msgstr "První položka"
-
-#: ../rednotebook/gui/insert_menu.py:106
-msgid "Second Item"
-msgstr "Druhá položka"
-
-#: ../rednotebook/gui/insert_menu.py:107
-msgid "Indented Item"
-msgstr "Vnořená položka"
-
-#: ../rednotebook/gui/insert_menu.py:108
-msgid "Two blank lines close the list"
-msgstr "Seznam ukončete dvojím odřádkováním"
-
-#: ../rednotebook/gui/insert_menu.py:132
-msgid "Picture"
-msgstr "Obrázek"
-
-#: ../rednotebook/gui/insert_menu.py:134
-msgid "Insert an image from the harddisk"
-msgstr "Vložit obrázek"
-
-#: ../rednotebook/gui/insert_menu.py:140
-msgid "File"
-msgstr "Soubor"
-
-#: ../rednotebook/gui/insert_menu.py:142
-msgid "Insert a link to a file"
-msgstr "Vložit odkaz na soubor"
-
-#: ../rednotebook/gui/insert_menu.py:149
-msgid "_Link"
-msgstr "_Odkaz"
-
-#: ../rednotebook/gui/insert_menu.py:151
-msgid "Insert a link to a website"
-msgstr "Vložit odkaz na webovou stránku"
-
-#: ../rednotebook/gui/insert_menu.py:157
-msgid "Bullet List"
-msgstr "Odrážky"
-
-#: ../rednotebook/gui/insert_menu.py:162
-msgid "Title"
-msgstr "Nadpis"
-
-#: ../rednotebook/gui/insert_menu.py:166
-msgid "Line"
-msgstr "Čára"
-
-#: ../rednotebook/gui/insert_menu.py:168
-msgid "Insert a separator line"
-msgstr "Vložit oddělovací čáru"
-
-#: ../rednotebook/gui/insert_menu.py:174
-msgid "Date/Time"
-msgstr "Datum/čas"
-
-#: ../rednotebook/gui/insert_menu.py:176
-msgid "Insert the current date and time (edit format in preferences)"
-msgstr "Vložit aktuální datum a čas (formát zvolte v nastavení)"
-
-#: ../rednotebook/gui/insert_menu.py:182
-msgid "Line Break"
-msgstr "Zalomení řádku"
-
-#: ../rednotebook/gui/insert_menu.py:184
-msgid "Insert a manual line break"
-msgstr "Ruční zalomení řádku"
-
-#: ../rednotebook/gui/insert_menu.py:187
-msgid "_Insert"
-msgstr "_Vložit"
-
-#: ../rednotebook/gui/insert_menu.py:192
-msgid "Level"
-msgstr ""
-
-#: ../rednotebook/gui/insert_menu.py:227
-msgid "Insert"
-msgstr "Vložit"
-
-#: ../rednotebook/gui/insert_menu.py:229
-msgid "Insert images, files, links and other content"
-msgstr "Vložit obrázky, soubory, odkazy a další obsah"
-
-#: ../rednotebook/gui/insert_menu.py:260
-msgid "Width (optional):"
-msgstr "Šířka (volitelné)"
-
-#: ../rednotebook/gui/insert_menu.py:266
-msgid "pixels"
-msgstr "pixelů"
-
-#: ../rednotebook/gui/insert_menu.py:287
-msgid "Width must be an integer."
-msgstr "Šířka musí být celé číslo."
-
-#: ../rednotebook/gui/insert_menu.py:371
-msgid "No link location has been entered"
-msgstr "Nebyl vložen žádný odkaz na umístění"
-
-#: ../rednotebook/gui/search.py:84 ../rednotebook/gui/exports.py:423
-msgid "Date"
-msgstr "Datum"
-
-#: ../rednotebook/gui/search.py:84
-msgid "Text"
-msgstr "Text"
-
-#: ../rednotebook/gui/customwidgets.py:336
-#: ../rednotebook/gui/main_window.py:683
-msgid "Template"
-msgstr "Šablona"
-
-#: ../rednotebook/gui/customwidgets.py:339
-msgid "Save and insert"
-msgstr "Uložit a vložit"
-
-#: ../rednotebook/gui/customwidgets.py:341
-msgid "Save"
-msgstr ""
-
-#: ../rednotebook/gui/customwidgets.py:343
-msgid "Close"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:81
-msgid "Load RedNotebook at startup"
-msgstr "Spustit RedNotebook při startu"
-
-#: ../rednotebook/gui/options.py:165
-msgid "%A, %x, Day %j"
-msgstr "%A, %x, Den %j."
-
-#: ../rednotebook/gui/options.py:167
-msgid "Week %W of Year %Y"
-msgstr "Týden %W. v roce %Y"
-
-#: ../rednotebook/gui/options.py:169
-msgid "Day %j"
-msgstr "Den %j."
-
-#: ../rednotebook/gui/options.py:177
-msgid "Help"
-msgstr "Nápověda"
-
-#. Translators: Noun
-#: ../rednotebook/gui/options.py:198
-msgid "Preview:"
-msgstr "Náhled:"
-
-#: ../rednotebook/gui/options.py:213
-msgid "Choose font ..."
-msgstr "Vybrat písmo ..."
-
-#: ../rednotebook/gui/options.py:221
-msgid "Choose font"
-msgstr "Vybrat písmo"
-
-#: ../rednotebook/gui/options.py:303
-msgid "Close to system tray"
-msgstr "Zavřít do oznamovací oblasti"
-
-#: ../rednotebook/gui/options.py:305
-msgid "Closing the window will send RedNotebook to the tray"
-msgstr "Zavření okna pošle RedNotebook do oznamovací oblasti"
-
-#: ../rednotebook/gui/options.py:312
-msgid "Switch between edit and preview mode automatically"
-msgstr "Automaticky přepínat mezi režimem náhledu a editace"
-
-#: ../rednotebook/gui/options.py:319
-msgid "Check for new version at startup"
-msgstr "Při startu se poohlédnout po nové verzi"
-
-#: ../rednotebook/gui/options.py:322
-msgid "Search as you type"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:332
-msgid "Check now"
-msgstr "Zkontrolovat nyní"
-
-#: ../rednotebook/gui/options.py:339
-msgid "Edit font:"
-msgstr "Upravit písmo:"
-
-#: ../rednotebook/gui/options.py:341
-msgid "Preview font:"
-msgstr "Náhled písma:"
-
-#: ../rednotebook/gui/options.py:344
-msgid "Comma-separated font names"
-msgstr "Názvy písem oddělené čárkou"
-
-#: ../rednotebook/gui/options.py:347
-msgid "Date/Time format"
-msgstr "Formát datumu/času"
-
-#: ../rednotebook/gui/options.py:349
-msgid "Used by Date/Time button and $date$ template macro."
-msgstr ""
-
-#: ../rednotebook/gui/options.py:352
-msgid "Date format"
-msgstr "Formát data"
-
-#: ../rednotebook/gui/options.py:354
-msgid "Used for dates in titlebar and exports."
-msgstr ""
-
-#: ../rednotebook/gui/options.py:357
-msgid "Tags in cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:359
-msgid "Maximum number of tags displayed in the cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:362
-msgid "Exclude from cloud"
-msgstr "Vyloučit z cloudu"
-
-#: ../rednotebook/gui/options.py:365
-msgid "Do not show these comma separated words and #tags in the clouds"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:369
-msgid "Include small words in cloud"
-msgstr "Zahrnout malá slova do oblaku slov"
-
-#: ../rednotebook/gui/options.py:371
-msgid "Allow these words with 4 letters or less"
-msgstr "Povolit tato slova se 4 a méně písmeny"
-
-#: ../rednotebook/gui/main_window.py:184
-msgid "Preview in Browser"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:331
-msgid "Show RedNotebook"
-msgstr "Ukázat RedNotebook"
-
-#: ../rednotebook/gui/main_window.py:589
-msgid "No directory selected."
-msgstr "Není vybrán žádný adresář"
-
-#: ../rednotebook/gui/main_window.py:687
-msgid ""
-"Insert this weekday's template. Click the arrow on the right for more options"
-msgstr ""
-"Vložit šablohu pro pracovní týden. Více možností získáte kliknutím na šipku "
-"vpravo."
-
-#: ../rednotebook/gui/exports.py:42 ../rednotebook/gui/exports.py:418
-msgid "Export all days"
-msgstr "Exportovat všechny dny"
-
-#: ../rednotebook/gui/exports.py:45
-msgid "Export currently visible day"
-msgstr "Exportovat právě viditelný den"
-
-#: ../rednotebook/gui/exports.py:48
-msgid "Export days in the selected time range"
-msgstr "Exportovat dny ve zvoleném rozsahu"
-
-#: ../rednotebook/gui/exports.py:58
-msgid "From:"
-msgstr "Od:"
-
-#: ../rednotebook/gui/exports.py:60
-msgid "To:"
-msgstr "Do:"
-
-#: ../rednotebook/gui/exports.py:108
-msgid "Export currently selected text"
-msgstr "Exportovat označený text"
-
-#: ../rednotebook/gui/exports.py:120
-msgid "(Only available when text is selected in edit mode)"
-msgstr "(Dostupné pouze při vyběru textu v editačním režimu)"
-
-#: ../rednotebook/gui/exports.py:134
-msgid "Export text and tags"
-msgstr "Exportovat text a štítky"
-
-#: ../rednotebook/gui/exports.py:136
-msgid "Export text only"
-msgstr "Exportovat pouze text"
-
-#: ../rednotebook/gui/exports.py:139
-msgid "Export tags only"
-msgstr "Exportovat pouze štítky"
-
-#: ../rednotebook/gui/exports.py:141
-msgid "Filter days by tags"
-msgstr "Filtrovat dny podle štítků"
-
-#: ../rednotebook/gui/exports.py:150
-msgid "Available tags"
-msgstr "Dostupné značky"
-
-#: ../rednotebook/gui/exports.py:153
-msgid "Selected tags"
-msgstr "Vybrané značky"
-
-#: ../rednotebook/gui/exports.py:162
-msgid "Select"
-msgstr "Vybrat"
-
-#: ../rednotebook/gui/exports.py:163
-msgid "Deselect"
-msgstr "Zrušit výběr"
-
-#: ../rednotebook/gui/exports.py:262
-msgid "When filtering by tags, you have to select at least one tag."
-msgstr "Pro filtrování podle štítků musíte vybrat aspoň jeden štítek."
-
-#: ../rednotebook/gui/exports.py:285
-msgid "You have selected the following settings:"
-msgstr "Máte zvoleno následující nastavení"
-
-#: ../rednotebook/gui/exports.py:310
-msgid "Export Assistant"
-msgstr "Průvodce exportem"
-
-#: ../rednotebook/gui/exports.py:318
-msgid "Welcome to the Export Assistant."
-msgstr "Vítejte v průvodci pro export"
-
-#: ../rednotebook/gui/exports.py:320
-msgid "This wizard will help you to export your journal to various formats."
-msgstr "Tneto průvodce Vám pomůže exportovat žurnál do mnoha formátů."
-
-#: ../rednotebook/gui/exports.py:323
-msgid ""
-"You can select the days you want to export and where the output will be "
-"saved."
-msgstr ""
-"Můžete zvolit, které dny mají být exportovány a kam chcete uložit výsledný "
-"soubor."
-
-#: ../rednotebook/gui/exports.py:336
-msgid "PDF: export to HTML, open in browser and print to PDF file"
-msgstr ""
-
-#: ../rednotebook/gui/exports.py:341
-msgid "Select Export Format"
-msgstr "Zvolit formát exportovaného souboru."
-
-#: ../rednotebook/gui/exports.py:346
-msgid "Select Date Range"
-msgstr "Zvolit rozsah datumů"
-
-#: ../rednotebook/gui/exports.py:351
-msgid "Select Contents"
-msgstr "Zvolit obsah"
-
-#: ../rednotebook/gui/exports.py:357
-msgid "Select Export Path"
-msgstr "Zvolit cestu k výslednému souboru"
-
-#: ../rednotebook/gui/exports.py:362
-msgid "Summary"
-msgstr "Souhrn"
-
-#: ../rednotebook/gui/exports.py:425
-msgid "Export selected text only"
-msgstr "Exportovat pouze označený text"
-
-#: ../rednotebook/gui/exports.py:429
-msgid "Start date"
-msgstr "Počáteční datum"
-
-#: ../rednotebook/gui/exports.py:430
-msgid "End date"
-msgstr "Koncové datum"
-
-#: ../rednotebook/gui/exports.py:435
-msgid "Include text"
-msgstr "Zahrnout text"
-
-#: ../rednotebook/gui/exports.py:438
-msgid "Include tags"
-msgstr "Zahrnout štítky"
-
-#: ../rednotebook/gui/exports.py:442
-msgid "Filtered by tags"
-msgstr "Filtrováno podle štítků"
-
-#: ../rednotebook/gui/exports.py:444
-msgid "Export path"
-msgstr "Cesta exportovaného souboru"
-
-#: ../rednotebook/gui/exports.py:447
-msgid "Yes"
-msgstr "Ano"
-
-#: ../rednotebook/gui/exports.py:447
-msgid "No"
-msgstr "Ne"
-
-#: ../rednotebook/gui/exports.py:493
-#, python-format
-msgid "Content exported to %s"
-msgstr "Obsah byl exportován do %s"
-
-#: ../rednotebook/gui/exports.py:531
-msgid "Plain Text"
-msgstr "Prostý text"
-
-#: ../rednotebook/info.py:30
-msgid "A Desktop Journal"
-msgstr "Deník pro desktop"
-
-#: ../rednotebook/info.py:48
-msgid ""
-"RedNotebook is a modern desktop journal. It lets you format, tag and\n"
-"search your entries. You can also add pictures, links and customizable\n"
-"templates, spell check your notes, and export to plain text, HTML or\n"
-"Latex.\n"
-msgstr ""
-
 #: tmp/main_window.glade.h:3
 msgid "Select backup filename"
 msgstr "Napište jméno záložního souboru"
 
 #: tmp/main_window.glade.h:4
+msgid "_Cancel"
+msgstr ""
+
+#: tmp/main_window.glade.h:5
+msgid "_Save"
+msgstr ""
+
+#: tmp/main_window.glade.h:6
 msgid "Select a directory"
 msgstr "Vyberte adresář"
 
-#: tmp/main_window.glade.h:5
+#: tmp/main_window.glade.h:7
+msgid "_OK"
+msgstr ""
+
+#: tmp/main_window.glade.h:8
 msgid "Select a file"
 msgstr "Vyberte soubor"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:10
 msgid "Insert Link"
 msgstr "Vložit odkaz"
 
-#: tmp/main_window.glade.h:7
+#: tmp/main_window.glade.h:11
 #, fuzzy
 #| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>Odkaz na umístění (např. http://rednotebook.sf.net)</b>"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>Název odkazu (nepovinné)</b>"
 
-#: tmp/main_window.glade.h:9
+#: tmp/main_window.glade.h:13
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Přejít na předchozí den (Ctrl+PageUp)"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:14
 #, fuzzy
 #| msgid "Backup"
 msgid "Back"
 msgstr "Záloha"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
 msgstr "Skočit na dnešek (Alt+Home)"
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:16
 msgid "Today"
 msgstr "Dnes"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:17
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "Přejít na další den (Ctrl+PageDown)"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:18
 msgid "Forward"
 msgstr ""
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:19
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "Ukázat zformátovaný nahled textu (Ctrl+P)"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:22
 msgid "Enable text editing (Ctrl+P)"
 msgstr "Zapnout úpravu textu (Ctrl+P)"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:23
 msgid "Edit"
 msgstr "Úpravy"
 
-#: tmp/main_window.glade.h:20
+#: tmp/main_window.glade.h:24
 msgid "Add a tag or a category entry"
 msgstr "Přidat štítek nebo kategorii"
 
-#: tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:25
 msgid "Add Tag"
 msgstr "Přidat štítek"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:26
 msgid "New entry"
 msgstr "Nový záznam"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:27
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>Vybrat stávající nebo novou kategorii</b>"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:28
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>Napište vstup</b> (volitelné)"
 
-#: tmp/main_window.glade.h:25
-msgid "Preferences"
-msgstr "Nastavení"
-
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:31
 msgid "<b>General</b>"
 msgstr "<b>Obecné</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:33
 msgid "General"
 msgstr "Obecné"
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:34
 msgid "Select a picture"
 msgstr "Vyberte obrázek"
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:35
+msgid "_Open"
+msgstr ""
+
+#: tmp/main_window.glade.h:36
 msgid "Exit without saving"
 msgstr "Ukončit bez uložení"
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:37
 msgid "Statistics"
 msgstr "Statistika"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:38
 msgid "<b>Selected Day</b>"
 msgstr "<b>Vybrat den</b>"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"
 msgstr "<b>Celkem</b>"
 

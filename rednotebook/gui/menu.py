@@ -93,25 +93,25 @@ class MainMenuBar:
                 ("Journal", None, _("_Journal")),
                 (
                     "New",
-                    Gtk.STOCK_NEW,
                     None,
+                    _("New"),
                     "",
                     _("Create a new journal. The old one will be saved"),
                     self.on_new_journal_button_activate,
                 ),
                 (
                     "Open",
-                    Gtk.STOCK_OPEN,
                     None,
+                    _("Open"),
                     None,
                     _("Load an existing journal. The old journal will be saved"),
                     self.on_open_journal_button_activate,
                 ),
-                ("Save", Gtk.STOCK_SAVE, None, None, None, self.on_save_button_clicked),
+                ("Save", None, _("Save"), None, None, self.on_save_button_clicked),
                 (
                     "SaveAs",
-                    Gtk.STOCK_SAVE_AS,
                     None,
+                    _("Save As"),
                     None,
                     _(
                         "Save journal at a new location. The old journal files will also be saved"
@@ -121,7 +121,7 @@ class MainMenuBar:
                 # Translators: Verb
                 (
                     "Export",
-                    Gtk.STOCK_CONVERT,
+                    None,
                     _("Export"),
                     "<Ctrl>e",
                     _("Open the export assistant"),
@@ -130,7 +130,7 @@ class MainMenuBar:
                 # Translators: Verb
                 (
                     "Backup",
-                    Gtk.STOCK_HARDDISK,
+                    None,
                     _("_Backup"),
                     None,
                     _("Save all the data in a zip archive"),
@@ -146,8 +146,8 @@ class MainMenuBar:
                 ),
                 (
                     "Quit",
-                    Gtk.STOCK_QUIT,
                     None,
+                    _("Quit"),
                     None,
                     _("Shutdown RedNotebook. It will not be sent to the tray."),
                     self.main_window.on_quit_activate,
@@ -155,49 +155,49 @@ class MainMenuBar:
                 ("Edit", None, _("_Edit")),
                 (
                     "Undo",
-                    Gtk.STOCK_UNDO,
                     None,
+                    _("Undo"),
                     "<Ctrl>z",
                     _("Undo text or tag edits"),
                     self.on_undo,
                 ),
                 (
                     "Redo",
-                    Gtk.STOCK_REDO,
                     None,
+                    _("Redo"),
                     "<Ctrl>y",
                     _("Redo text or tag edits"),
                     self.on_redo,
                 ),
-                ("Cut", Gtk.STOCK_CUT, None, "", None, self.on_cut_menu_item_activate),
+                ("Cut", None, _("Cut"), "", None, self.on_cut_menu_item_activate),
                 (
                     "Copy",
-                    Gtk.STOCK_COPY,
                     None,
+                    _("Copy"),
                     "",
                     None,
                     self.on_copy_menu_item_activate,
                 ),
                 (
                     "Paste",
-                    Gtk.STOCK_PASTE,
                     None,
+                    _("Paste"),
                     "",
                     None,
                     self.on_paste_menu_item_activate,
                 ),
                 (
                     "Fullscreen",
-                    Gtk.STOCK_FULLSCREEN,
                     None,
+                    _("Fullscreen"),
                     "F11",
                     None,
                     self.on_fullscreen_menuitem_activate,
                 ),
                 (
                     "Find",
-                    Gtk.STOCK_FIND,
                     None,
+                    _("Find"),
                     None,
                     None,
                     self.on_find_menuitem_activate,
@@ -208,8 +208,8 @@ class MainMenuBar:
             [
                 (
                     "CheckSpelling",
-                    Gtk.STOCK_SPELL_CHECK,
                     None,
+                    _("Spell Check"),
                     "F7",
                     _("Underline misspelled words"),
                     self.on_checkspelling_menuitem_toggled,
@@ -220,8 +220,8 @@ class MainMenuBar:
             [
                 (
                     "Options",
-                    Gtk.STOCK_PREFERENCES,
                     None,
+                    _("Preferences"),
                     "<Ctrl><Alt>p",
                     None,
                     self.on_options_menuitem_activate,
@@ -229,7 +229,7 @@ class MainMenuBar:
                 ("HelpMenu", None, _("_Help")),
                 (
                     "Help",
-                    Gtk.STOCK_HELP,
+                    None,
                     _("Contents"),
                     "<Ctrl>h",
                     _("Open the RedNotebook documentation"),
@@ -267,7 +267,7 @@ class MainMenuBar:
                     _("How can we improve RedNotebook?"),
                     self.on_give_feedback,
                 ),
-                ("Info", Gtk.STOCK_ABOUT, None, None, None, self.on_info_activate),
+                ("Info", None, _("About"), None, None, self.on_info_activate),
             ]
         )
         return actiongroup

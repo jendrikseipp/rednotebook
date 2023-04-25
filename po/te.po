@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-28 23:30+0100\n"
+"POT-Creation-Date: 2023-01-21 12:45+0100\n"
 "PO-Revision-Date: 2015-11-01 21:13+0000\n"
 "Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: Telugu <te@li.org>\n"
@@ -18,386 +18,125 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
-#: ../rednotebook/help.py:33 ../rednotebook/util/markup.py:122
-#: ../rednotebook/gui/categories.py:48 ../rednotebook/gui/clouds.py:213
-msgid "Tags"
-msgstr "ట్యాగులు"
+#: ../rednotebook/info.py:30
+msgid "A Desktop Journal"
+msgstr ""
 
-#: ../rednotebook/help.py:35
-msgid "Hello!"
-msgstr "హలో!"
-
-#: ../rednotebook/help.py:37
+#: ../rednotebook/info.py:48
 msgid ""
-"Some example text has been added to help you start and you can erase it "
-"whenever you like."
+"RedNotebook is a modern desktop journal. It lets you format, tag and\n"
+"search your entries. You can also add pictures, links and customizable\n"
+"templates, spell check your notes, and export to plain text, HTML or\n"
+"Latex.\n"
 msgstr ""
 
-#: ../rednotebook/help.py:42
-msgid ""
-"The example text and more documentation is available under \"Help\" -> "
-"\"Contents\"."
+#: ../rednotebook/gui/options.py:81
+msgid "Load RedNotebook at startup"
 msgstr ""
 
-#. Translators: noun
-#. Translators: Verb
-#: ../rednotebook/help.py:47 tmp/main_window.glade.h:17
-msgid "Preview"
-msgstr "మునుజూపు"
+#: ../rednotebook/gui/options.py:165
+msgid "%A, %x, Day %j"
+msgstr "%A, %x, రోజు %j"
 
-#: ../rednotebook/help.py:49
-msgid ""
-"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
-"mode."
+#: ../rednotebook/gui/options.py:167
+msgid "Week %W of Year %Y"
 msgstr ""
 
-#: ../rednotebook/help.py:51
-msgid "Click on Edit above to see the difference."
+#: ../rednotebook/gui/options.py:169
+msgid "Day %j"
 msgstr ""
 
-#: ../rednotebook/help.py:54
-msgid "Tagging is easy."
-msgstr ""
-
-#: ../rednotebook/help.py:55
-msgid "Just use #hashtags like on twitter."
-msgstr ""
-
-#: ../rednotebook/help.py:59
-msgid ""
-"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
-"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
-"watched \"__Life of Brian__\"."
-msgstr ""
-
-#: ../rednotebook/help.py:64
-msgid "Templates"
-msgstr ""
-
-#: ../rednotebook/help.py:65
-msgid "RedNotebook supports templates."
-msgstr ""
-
-#: ../rednotebook/help.py:66
-msgid "Click on the arrow next to the \"Template\" button to see some options."
-msgstr ""
-
-#: ../rednotebook/help.py:68
-msgid ""
-"You can have one template for every day\n"
-"of the week and unlimited arbitrarily named templates."
-msgstr ""
-
-#. Translators: both are verbs
-#: ../rednotebook/help.py:74
-msgid "Save and Export"
-msgstr "దాచు మరియు ఎగుమతిచేయు"
-
-#: ../rednotebook/help.py:76
-msgid ""
-"Everything you enter will be saved automatically at regular intervals and "
-"when you exit the program."
-msgstr ""
-
-#: ../rednotebook/help.py:79
-msgid "To avoid data loss you should backup your journal regularly."
-msgstr ""
-
-#: ../rednotebook/help.py:80
-msgid ""
-"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
-msgstr ""
-
-#: ../rednotebook/help.py:81
-msgid "In the \"Journal\" menu you also find the \"Export\" button."
-msgstr ""
-
-#: ../rednotebook/help.py:82
-msgid ""
-"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
-msgstr ""
-
-#: ../rednotebook/help.py:85
-msgid "If you encounter any errors, please drop me a note so I can fix them."
-msgstr ""
-
-#: ../rednotebook/help.py:86
-msgid "Any feedback is appreciated."
-msgstr ""
-
-#: ../rednotebook/help.py:89
-msgid "Have a nice day!"
-msgstr "శుభదినం!"
-
-#: ../rednotebook/help.py:114
-msgid ""
-"=== Multiple entries ===\n"
-"You can add multiple entries to a single day by separating your entries with "
-"different titles (=== Work ===, === Family ===)."
-msgstr ""
-
-#: ../rednotebook/help.py:121
-msgid ""
-"=== Work ===\n"
-"Here goes the first entry. It is about #work.\n"
-"\n"
-"====================\n"
-"\n"
-"=== Family ===\n"
-"Here comes the entry about my #family."
-msgstr ""
-
-#: ../rednotebook/util/dates.py:60
-msgid "Incorrect date format"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:68 ../rednotebook/util/statistics.py:81
-#: ../rednotebook/gui/clouds.py:215
-msgid "Words"
-msgstr "పదాలు"
-
-#: ../rednotebook/util/statistics.py:69
-msgid "Distinct Words"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:70
-msgid "Edited Days"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:71 ../rednotebook/util/statistics.py:83
-msgid "Letters"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:72
-msgid "Days between first and last Entry"
-msgstr ""
+#: ../rednotebook/gui/options.py:177
+msgid "Help"
+msgstr "సహాయం"
 
-#: ../rednotebook/util/statistics.py:73
-msgid "Average number of Words"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:74
-msgid "Percentage of edited Days"
-msgstr ""
-
-#: ../rednotebook/util/statistics.py:82
-msgid "Lines"
-msgstr ""
-
-#: ../rednotebook/util/utils.py:116
-#, python-format
-msgid "You have version <b>%s</b>."
-msgstr ""
-
-#: ../rednotebook/util/utils.py:118
-#, python-format
-msgid "The latest version is <b>%s</b>."
-msgstr ""
-
-#: ../rednotebook/util/utils.py:121
-msgid "If you like the program, please consider making a donation."
-msgstr ""
-
-#: ../rednotebook/util/utils.py:123
-msgid "Do you want to visit the RedNotebook homepage?"
-msgstr ""
-
-#: ../rednotebook/util/utils.py:131
-msgid "Do not ask again"
-msgstr ""
-
-#: ../rednotebook/util/utils.py:160
-msgid "unknown"
-msgstr ""
-
-#: ../rednotebook/backup.py:58
-#, python-format
-msgid "It has been %d days since you made your last backup."
-msgstr ""
-
-#: ../rednotebook/backup.py:60
-msgid "You can backup your journal to a zip file to avoid data loss."
-msgstr ""
-
-#: ../rednotebook/backup.py:67
-msgid "Backup"
-msgstr ""
-
-#: ../rednotebook/backup.py:70
-msgid "Backup now"
-msgstr ""
-
-#: ../rednotebook/backup.py:72
-msgid "Ask at next start"
-msgstr ""
-
-#: ../rednotebook/backup.py:74
-msgid "Never ask again"
-msgstr ""
-
-#: ../rednotebook/journal.py:247 ../rednotebook/gui/menu.py:292
-msgid "You cannot use this directory for your journal:"
-msgstr ""
-
-#: ../rednotebook/journal.py:250
-msgid "Opening default journal."
-msgstr ""
+#. Translators: Noun
+#: ../rednotebook/gui/options.py:198
+msgid "Preview:"
+msgstr "మునుజూపు:"
 
-#: ../rednotebook/journal.py:377
-#, python-format
-msgid "The content has been saved to %s"
+#: ../rednotebook/gui/options.py:213
+msgid "Choose font ..."
 msgstr ""
 
-#: ../rednotebook/journal.py:382
-msgid "The journal could not be saved"
+#: ../rednotebook/gui/options.py:221
+msgid "Choose font"
 msgstr ""
 
-#: ../rednotebook/journal.py:384
-msgid "Nothing to save"
+#: ../rednotebook/gui/options.py:303
+msgid "Close to system tray"
 msgstr ""
 
-#: ../rednotebook/journal.py:526
-msgid "Error"
+#: ../rednotebook/gui/options.py:305
+msgid "Closing the window will send RedNotebook to the tray"
 msgstr ""
 
-#: ../rednotebook/templates.py:27
-msgid "Monday"
+#: ../rednotebook/gui/options.py:312
+msgid "Switch between edit and preview mode automatically"
 msgstr ""
 
-#: ../rednotebook/templates.py:28
-msgid "Tuesday"
-msgstr ""
-
-#: ../rednotebook/templates.py:29
-msgid "Wednesday"
-msgstr ""
-
-#: ../rednotebook/templates.py:30
-msgid "Thursday"
-msgstr ""
+#: ../rednotebook/gui/options.py:319
+msgid "Check for new version at startup"
+msgstr "కొత్త వెర్షన్ కోసం ప్రారంభంలోనే పరిశీలించు"
 
-#: ../rednotebook/templates.py:31
-msgid "Friday"
+#: ../rednotebook/gui/options.py:322
+msgid "Search as you type"
 msgstr ""
 
-#: ../rednotebook/templates.py:32
-msgid "Saturday"
-msgstr ""
-
-#: ../rednotebook/templates.py:33
-msgid "Sunday"
-msgstr ""
+#: ../rednotebook/gui/options.py:332
+msgid "Check now"
+msgstr "ఇపుడు పరిశీలించు"
 
-#: ../rednotebook/templates.py:114
-msgid ""
-"=== Meeting ===\n"
-"\n"
-"Purpose, date, and place\n"
-"\n"
-"**Present:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Agenda:**\n"
-"+\n"
-"+\n"
-"+\n"
-"\n"
-"\n"
-"**Discussion, Decisions, Assignments:**\n"
-"+\n"
-"+\n"
-"+\n"
-"==================================\n"
+#: ../rednotebook/gui/options.py:339
+msgid "Edit font:"
 msgstr ""
 
-#: ../rednotebook/templates.py:140
-msgid ""
-"=== Journey ===\n"
-"**Date:**\n"
-"\n"
-"**Location:**\n"
-"\n"
-"**Participants:**\n"
-"\n"
-"**The trip:**\n"
-"First we went to xxxxx then we got to yyyyy ...\n"
-"\n"
-"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
+#: ../rednotebook/gui/options.py:341
+msgid "Preview font:"
 msgstr ""
 
-#: ../rednotebook/templates.py:156
-msgid ""
-"==================================\n"
-"=== Phone Call ===\n"
-"- **Person:**\n"
-"- **Time:**\n"
-"- **Topic:**\n"
-"- **Outcome and Follow up:**\n"
-"==================================\n"
+#: ../rednotebook/gui/options.py:344
+msgid "Comma-separated font names"
 msgstr ""
 
-#: ../rednotebook/templates.py:168
-msgid ""
-"=====================================\n"
-"=== Personal ===\n"
-"\n"
-"+\n"
-"+\n"
-"+\n"
-"========================\n"
-"\n"
-"**How was the Day?**\n"
-"\n"
-"\n"
-"========================\n"
-"**What needs to be changed?**\n"
-"+\n"
-"+\n"
-"+\n"
-"=====================================\n"
-msgstr ""
-
-#: ../rednotebook/templates.py:196
-msgid "Template mode"
-msgstr ""
+#: ../rednotebook/gui/options.py:347
+msgid "Date/Time format"
+msgstr "తేదీ/సమయం ఫార్మేట్"
 
-#: ../rednotebook/templates.py:200
-msgid "You are currently editing a template."
+#: ../rednotebook/gui/options.py:349
+msgid "Used by Date/Time button and $date$ template macro."
 msgstr ""
 
-#: ../rednotebook/templates.py:321
-msgid "Choose Template Name"
+#: ../rednotebook/gui/options.py:352
+msgid "Date format"
 msgstr ""
 
-#: ../rednotebook/templates.py:362
-msgid "This template file contains no text or has unreadable content."
+#: ../rednotebook/gui/options.py:354
+msgid "Used for dates in titlebar and exports."
 msgstr ""
 
-#: ../rednotebook/templates.py:424
-msgid "This Weekday's Template"
+#: ../rednotebook/gui/options.py:357
+msgid "Tags in cloud"
 msgstr ""
 
-#: ../rednotebook/templates.py:435
-msgid "Create New Template"
+#: ../rednotebook/gui/options.py:359
+msgid "Maximum number of tags displayed in the cloud"
 msgstr ""
 
-#: ../rednotebook/gui/categories.py:133
-msgid "Empty entries are not allowed"
+#: ../rednotebook/gui/options.py:362
+msgid "Exclude from cloud"
 msgstr ""
 
-#: ../rednotebook/gui/categories.py:334
-msgid "Change this text"
+#: ../rednotebook/gui/options.py:365
+msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr ""
 
-#: ../rednotebook/gui/categories.py:342
-msgid "Add a new entry"
+#: ../rednotebook/gui/options.py:369
+msgid "Include small words in cloud"
 msgstr ""
 
-#: ../rednotebook/gui/categories.py:350
-msgid "Delete this entry"
+#: ../rednotebook/gui/options.py:371
+msgid "Allow these words with 4 letters or less"
 msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:92
@@ -421,8 +160,10 @@ msgid "Strikethrough"
 msgstr ""
 
 #: ../rednotebook/gui/format_menu.py:132
-msgid "Clear format"
-msgstr ""
+#, fuzzy
+#| msgid "Format"
+msgid "Clear Format"
+msgstr "ఫార్మేట్"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:138
@@ -438,181 +179,26 @@ msgstr "ఫార్మేట్"
 msgid "Format the selected text or tag"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:93
-msgid "_Journal"
+#: ../rednotebook/gui/main_window.py:184
+msgid "Preview in Browser"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:99
-msgid "Create a new journal. The old one will be saved"
+#: ../rednotebook/gui/main_window.py:331
+msgid "Show RedNotebook"
+msgstr "రెడ్‌నోట్‌బుక్‌ను చూపించు"
+
+#: ../rednotebook/gui/main_window.py:589
+msgid "No directory selected."
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:107
-msgid "Load an existing journal. The old journal will be saved"
+#: ../rednotebook/gui/main_window.py:683
+#: ../rednotebook/gui/customwidgets.py:336
+msgid "Template"
 msgstr ""
 
-#: ../rednotebook/gui/menu.py:117
+#: ../rednotebook/gui/main_window.py:687
 msgid ""
-"Save journal at a new location. The old journal files will also be saved"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:125
-msgid "Export"
-msgstr "ఎగుమతిచేయి"
-
-#: ../rednotebook/gui/menu.py:127
-msgid "Open the export assistant"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:134
-msgid "_Backup"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:136
-msgid "Save all the data in a zip archive"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:142
-msgid "S_tatistics"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:144
-msgid "Show some statistics about the journal"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:152
-msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:155
-msgid "_Edit"
-msgstr "సవరణ (_E)"
-
-#: ../rednotebook/gui/menu.py:161
-msgid "Undo text or tag edits"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:169
-msgid "Redo text or tag edits"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:214
-msgid "Underline misspelled words"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:229
-msgid "_Help"
-msgstr "సహాయం(_H)"
-
-#: ../rednotebook/gui/menu.py:233
-msgid "Contents"
-msgstr "విషయసూచిక"
-
-#: ../rednotebook/gui/menu.py:235
-msgid "Open the RedNotebook documentation"
-msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణను తెరవండి"
-
-#: ../rednotebook/gui/menu.py:241
-msgid "Donate"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:243
-#, fuzzy
-#| msgid "Open the RedNotebook documentation"
-msgid "Support RedNotebook with a donation"
-msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణను తెరవండి"
-
-#: ../rednotebook/gui/menu.py:249
-msgid "Translate RedNotebook"
-msgstr "రెడ్‌నోట్‌బుక్‌ను  అనువదించండి"
-
-#: ../rednotebook/gui/menu.py:251
-#, fuzzy
-#| msgid "Translate RedNotebook"
-msgid "Help translate RedNotebook to your language"
-msgstr "రెడ్‌నోట్‌బుక్‌ను  అనువదించండి"
-
-#: ../rednotebook/gui/menu.py:257
-msgid "Report a Problem"
-msgstr "సమస్యని నివేదించండి"
-
-#: ../rednotebook/gui/menu.py:259
-msgid "Fill out a short form about the problem"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:265
-msgid "Give Feedback"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:267
-msgid "How can we improve RedNotebook?"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:288
-msgid "Wrong directory"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:299
-msgid "Please select an empty directory."
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:304
-msgid "This directory contains no journal files:"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:323
-msgid "Journals are saved in a directory, not in a single file."
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:324
-msgid "The directory name will be the title of the new journal."
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:327
-msgid "Select an empty folder for your new journal"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:333
-msgid "Select an existing journal directory"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:334
-msgid "The directory should contain your journal's data files"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:347
-msgid "Select an empty folder for the new location of your journal"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:348
-msgid "The directory name will be the new title of the journal"
-msgstr ""
-
-#: ../rednotebook/gui/menu.py:408
-msgid "RedNotebook Documentation"
-msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణ"
-
-#: ../rednotebook/gui/menu.py:436
-msgid "Contributors:"
-msgstr ""
-
-#. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Praveen Illa https://launchpad.net/~telugulinux"
-
-#: ../rednotebook/gui/clouds.py:74
-msgid "filter, these, comma, separated, words, and, #tags"
-msgstr ""
-
-#: ../rednotebook/gui/clouds.py:79
-msgid "mtv, spam, work, job, play"
-msgstr ""
-
-#: ../rednotebook/gui/clouds.py:251
-#, python-format
-msgid "Hide \"%s\" from clouds"
+"Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:105
@@ -727,16 +313,11 @@ msgstr "తేదీ"
 msgid "Text"
 msgstr "పాఠ్యం"
 
-#: ../rednotebook/gui/customwidgets.py:336
-#: ../rednotebook/gui/main_window.py:683
-msgid "Template"
-msgstr ""
-
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
 msgstr ""
 
-#: ../rednotebook/gui/customwidgets.py:341
+#: ../rednotebook/gui/customwidgets.py:341 ../rednotebook/gui/menu.py:110
 msgid "Save"
 msgstr ""
 
@@ -744,130 +325,251 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:81
-msgid "Load RedNotebook at startup"
+#: ../rednotebook/gui/menu.py:93
+msgid "_Journal"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:165
-msgid "%A, %x, Day %j"
-msgstr "%A, %x, రోజు %j"
-
-#: ../rednotebook/gui/options.py:167
-msgid "Week %W of Year %Y"
+#: ../rednotebook/gui/menu.py:97
+msgid "New"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:169
-msgid "Day %j"
+#: ../rednotebook/gui/menu.py:99
+msgid "Create a new journal. The old one will be saved"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:177
-msgid "Help"
-msgstr "సహాయం"
-
-#. Translators: Noun
-#: ../rednotebook/gui/options.py:198
-msgid "Preview:"
-msgstr "మునుజూపు:"
-
-#: ../rednotebook/gui/options.py:213
-msgid "Choose font ..."
+#: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
+msgid "Open"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:221
-msgid "Choose font"
+#: ../rednotebook/gui/menu.py:107
+msgid "Load an existing journal. The old journal will be saved"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:303
-msgid "Close to system tray"
+#: ../rednotebook/gui/menu.py:114
+msgid "Save As"
 msgstr ""
 
-#: ../rednotebook/gui/options.py:305
-msgid "Closing the window will send RedNotebook to the tray"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:312
-msgid "Switch between edit and preview mode automatically"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:319
-msgid "Check for new version at startup"
-msgstr "కొత్త వెర్షన్ కోసం ప్రారంభంలోనే పరిశీలించు"
-
-#: ../rednotebook/gui/options.py:322
-msgid "Search as you type"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:332
-msgid "Check now"
-msgstr "ఇపుడు పరిశీలించు"
-
-#: ../rednotebook/gui/options.py:339
-msgid "Edit font:"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:341
-msgid "Preview font:"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:344
-msgid "Comma-separated font names"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:347
-msgid "Date/Time format"
-msgstr "తేదీ/సమయం ఫార్మేట్"
-
-#: ../rednotebook/gui/options.py:349
-msgid "Used by Date/Time button and $date$ template macro."
-msgstr ""
-
-#: ../rednotebook/gui/options.py:352
-msgid "Date format"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:354
-msgid "Used for dates in titlebar and exports."
-msgstr ""
-
-#: ../rednotebook/gui/options.py:357
-msgid "Tags in cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:359
-msgid "Maximum number of tags displayed in the cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:362
-msgid "Exclude from cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:365
-msgid "Do not show these comma separated words and #tags in the clouds"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:369
-msgid "Include small words in cloud"
-msgstr ""
-
-#: ../rednotebook/gui/options.py:371
-msgid "Allow these words with 4 letters or less"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:184
-msgid "Preview in Browser"
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:331
-msgid "Show RedNotebook"
-msgstr "రెడ్‌నోట్‌బుక్‌ను చూపించు"
-
-#: ../rednotebook/gui/main_window.py:589
-msgid "No directory selected."
-msgstr ""
-
-#: ../rednotebook/gui/main_window.py:687
+#: ../rednotebook/gui/menu.py:117
 msgid ""
-"Insert this weekday's template. Click the arrow on the right for more options"
+"Save journal at a new location. The old journal files will also be saved"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:125
+msgid "Export"
+msgstr "ఎగుమతిచేయి"
+
+#: ../rednotebook/gui/menu.py:127
+msgid "Open the export assistant"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:134
+msgid "_Backup"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:136
+msgid "Save all the data in a zip archive"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:142
+msgid "S_tatistics"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:144
+msgid "Show some statistics about the journal"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:150
+msgid "Quit"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:152
+msgid "Shutdown RedNotebook. It will not be sent to the tray."
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:155
+msgid "_Edit"
+msgstr "సవరణ (_E)"
+
+#: ../rednotebook/gui/menu.py:159
+msgid "Undo"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:161
+msgid "Undo text or tag edits"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:167
+msgid "Redo"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:169
+msgid "Redo text or tag edits"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:172
+msgid "Cut"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:176
+msgid "Copy"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:184
+msgid "Paste"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:192
+msgid "Fullscreen"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:200
+msgid "Find"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:212
+msgid "Spell Check"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:214
+msgid "Underline misspelled words"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:29
+msgid "Preferences"
+msgstr "ప్రాధాన్యతలు"
+
+#: ../rednotebook/gui/menu.py:229
+msgid "_Help"
+msgstr "సహాయం(_H)"
+
+#: ../rednotebook/gui/menu.py:233
+msgid "Contents"
+msgstr "విషయసూచిక"
+
+#: ../rednotebook/gui/menu.py:235
+msgid "Open the RedNotebook documentation"
+msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణను తెరవండి"
+
+#: ../rednotebook/gui/menu.py:241
+msgid "Donate"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:243
+#, fuzzy
+#| msgid "Open the RedNotebook documentation"
+msgid "Support RedNotebook with a donation"
+msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణను తెరవండి"
+
+#: ../rednotebook/gui/menu.py:249
+msgid "Translate RedNotebook"
+msgstr "రెడ్‌నోట్‌బుక్‌ను  అనువదించండి"
+
+#: ../rednotebook/gui/menu.py:251
+#, fuzzy
+#| msgid "Translate RedNotebook"
+msgid "Help translate RedNotebook to your language"
+msgstr "రెడ్‌నోట్‌బుక్‌ను  అనువదించండి"
+
+#: ../rednotebook/gui/menu.py:257
+msgid "Report a Problem"
+msgstr "సమస్యని నివేదించండి"
+
+#: ../rednotebook/gui/menu.py:259
+msgid "Fill out a short form about the problem"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:265
+msgid "Give Feedback"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:267
+msgid "How can we improve RedNotebook?"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:270
+msgid "About"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:288
+msgid "Wrong directory"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:248
+msgid "You cannot use this directory for your journal:"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:299
+msgid "Please select an empty directory."
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:304
+msgid "This directory contains no journal files:"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:323
+msgid "Journals are saved in a directory, not in a single file."
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:324
+msgid "The directory name will be the title of the new journal."
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:327
+msgid "Select an empty folder for your new journal"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:333
+msgid "Select an existing journal directory"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:334
+msgid "The directory should contain your journal's data files"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:347
+msgid "Select an empty folder for the new location of your journal"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:348
+msgid "The directory name will be the new title of the journal"
+msgstr ""
+
+#: ../rednotebook/gui/menu.py:408
+msgid "RedNotebook Documentation"
+msgstr "రెడ్‌నోట్‌బుక్ పత్రీకరణ"
+
+#: ../rednotebook/gui/menu.py:436
+msgid "Contributors:"
+msgstr ""
+
+#. Translators: TRANSLATORS: Replace this string with your names, one name per line.
+#: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Praveen Illa https://launchpad.net/~telugulinux"
+
+#: ../rednotebook/gui/clouds.py:74
+msgid "filter, these, comma, separated, words, and, #tags"
+msgstr ""
+
+#: ../rednotebook/gui/clouds.py:79
+msgid "mtv, spam, work, job, play"
+msgstr ""
+
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/util/markup.py:122 ../rednotebook/help.py:33
+msgid "Tags"
+msgstr "ట్యాగులు"
+
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:68
+#: ../rednotebook/util/statistics.py:81
+msgid "Words"
+msgstr "పదాలు"
+
+#: ../rednotebook/gui/clouds.py:251
+#, python-format
+msgid "Hide \"%s\" from clouds"
 msgstr ""
 
 #: ../rednotebook/gui/exports.py:42 ../rednotebook/gui/exports.py:418
@@ -1025,16 +727,372 @@ msgstr ""
 msgid "Plain Text"
 msgstr ""
 
-#: ../rednotebook/info.py:30
-msgid "A Desktop Journal"
+#: ../rednotebook/gui/categories.py:133
+msgid "Empty entries are not allowed"
 msgstr ""
 
-#: ../rednotebook/info.py:48
+#: ../rednotebook/gui/categories.py:334
+msgid "Change this text"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:342
+msgid "Add a new entry"
+msgstr ""
+
+#: ../rednotebook/gui/categories.py:350
+msgid "Delete this entry"
+msgstr ""
+
+#: ../rednotebook/util/dates.py:60
+msgid "Incorrect date format"
+msgstr ""
+
+#: ../rednotebook/util/utils.py:116
+#, python-format
+msgid "You have version <b>%s</b>."
+msgstr ""
+
+#: ../rednotebook/util/utils.py:118
+#, python-format
+msgid "The latest version is <b>%s</b>."
+msgstr ""
+
+#: ../rednotebook/util/utils.py:121
+msgid "If you like the program, please consider making a donation."
+msgstr ""
+
+#: ../rednotebook/util/utils.py:123
+msgid "Do you want to visit the RedNotebook homepage?"
+msgstr ""
+
+#: ../rednotebook/util/utils.py:131
+msgid "Do not ask again"
+msgstr ""
+
+#: ../rednotebook/util/utils.py:160
+msgid "unknown"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:69
+msgid "Distinct Words"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:70
+msgid "Edited Days"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:71 ../rednotebook/util/statistics.py:83
+msgid "Letters"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:72
+msgid "Days between first and last Entry"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:73
+msgid "Average number of Words"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:74
+msgid "Percentage of edited Days"
+msgstr ""
+
+#: ../rednotebook/util/statistics.py:82
+msgid "Lines"
+msgstr ""
+
+#: ../rednotebook/help.py:35
+msgid "Hello!"
+msgstr "హలో!"
+
+#: ../rednotebook/help.py:37
 msgid ""
-"RedNotebook is a modern desktop journal. It lets you format, tag and\n"
-"search your entries. You can also add pictures, links and customizable\n"
-"templates, spell check your notes, and export to plain text, HTML or\n"
-"Latex.\n"
+"Some example text has been added to help you start and you can erase it "
+"whenever you like."
+msgstr ""
+
+#: ../rednotebook/help.py:42
+msgid ""
+"The example text and more documentation is available under \"Help\" -> "
+"\"Contents\"."
+msgstr ""
+
+#. Translators: noun
+#. Translators: Verb
+#: ../rednotebook/help.py:47 tmp/main_window.glade.h:21
+msgid "Preview"
+msgstr "మునుజూపు"
+
+#: ../rednotebook/help.py:49
+msgid ""
+"There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
+"mode."
+msgstr ""
+
+#: ../rednotebook/help.py:51
+msgid "Click on Edit above to see the difference."
+msgstr ""
+
+#: ../rednotebook/help.py:54
+msgid "Tagging is easy."
+msgstr ""
+
+#: ../rednotebook/help.py:55
+msgid "Just use #hashtags like on twitter."
+msgstr ""
+
+#: ../rednotebook/help.py:59
+msgid ""
+"Today I went to the //pet shop// and bought a **tiger**. Then we went to the "
+"--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
+"watched \"__Life of Brian__\"."
+msgstr ""
+
+#: ../rednotebook/help.py:64
+msgid "Templates"
+msgstr ""
+
+#: ../rednotebook/help.py:65
+msgid "RedNotebook supports templates."
+msgstr ""
+
+#: ../rednotebook/help.py:66
+msgid "Click on the arrow next to the \"Template\" button to see some options."
+msgstr ""
+
+#: ../rednotebook/help.py:68
+msgid ""
+"You can have one template for every day\n"
+"of the week and unlimited arbitrarily named templates."
+msgstr ""
+
+#. Translators: both are verbs
+#: ../rednotebook/help.py:74
+msgid "Save and Export"
+msgstr "దాచు మరియు ఎగుమతిచేయు"
+
+#: ../rednotebook/help.py:76
+msgid ""
+"Everything you enter will be saved automatically at regular intervals and "
+"when you exit the program."
+msgstr ""
+
+#: ../rednotebook/help.py:79
+msgid "To avoid data loss you should backup your journal regularly."
+msgstr ""
+
+#: ../rednotebook/help.py:80
+msgid ""
+"\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
+msgstr ""
+
+#: ../rednotebook/help.py:81
+msgid "In the \"Journal\" menu you also find the \"Export\" button."
+msgstr ""
+
+#: ../rednotebook/help.py:82
+msgid ""
+"Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
+msgstr ""
+
+#: ../rednotebook/help.py:85
+msgid "If you encounter any errors, please drop me a note so I can fix them."
+msgstr ""
+
+#: ../rednotebook/help.py:86
+msgid "Any feedback is appreciated."
+msgstr ""
+
+#: ../rednotebook/help.py:89
+msgid "Have a nice day!"
+msgstr "శుభదినం!"
+
+#: ../rednotebook/help.py:114
+msgid ""
+"=== Multiple entries ===\n"
+"You can add multiple entries to a single day by separating your entries with "
+"different titles (=== Work ===, === Family ===)."
+msgstr ""
+
+#: ../rednotebook/help.py:121
+msgid ""
+"=== Work ===\n"
+"Here goes the first entry. It is about #work.\n"
+"\n"
+"====================\n"
+"\n"
+"=== Family ===\n"
+"Here comes the entry about my #family."
+msgstr ""
+
+#: ../rednotebook/journal.py:251
+msgid "Opening default journal."
+msgstr ""
+
+#: ../rednotebook/journal.py:378
+#, python-format
+msgid "The content has been saved to %s"
+msgstr ""
+
+#: ../rednotebook/journal.py:383
+msgid "The journal could not be saved"
+msgstr ""
+
+#: ../rednotebook/journal.py:385
+msgid "Nothing to save"
+msgstr ""
+
+#: ../rednotebook/journal.py:527
+msgid "Error"
+msgstr ""
+
+#: ../rednotebook/backup.py:58
+#, python-format
+msgid "It has been %d days since you made your last backup."
+msgstr ""
+
+#: ../rednotebook/backup.py:60
+msgid "You can backup your journal to a zip file to avoid data loss."
+msgstr ""
+
+#: ../rednotebook/backup.py:67
+msgid "Backup"
+msgstr ""
+
+#: ../rednotebook/backup.py:70
+msgid "Backup now"
+msgstr ""
+
+#: ../rednotebook/backup.py:72
+msgid "Ask at next start"
+msgstr ""
+
+#: ../rednotebook/backup.py:74
+msgid "Never ask again"
+msgstr ""
+
+#: ../rednotebook/templates.py:27
+msgid "Monday"
+msgstr ""
+
+#: ../rednotebook/templates.py:28
+msgid "Tuesday"
+msgstr ""
+
+#: ../rednotebook/templates.py:29
+msgid "Wednesday"
+msgstr ""
+
+#: ../rednotebook/templates.py:30
+msgid "Thursday"
+msgstr ""
+
+#: ../rednotebook/templates.py:31
+msgid "Friday"
+msgstr ""
+
+#: ../rednotebook/templates.py:32
+msgid "Saturday"
+msgstr ""
+
+#: ../rednotebook/templates.py:33
+msgid "Sunday"
+msgstr ""
+
+#: ../rednotebook/templates.py:114
+msgid ""
+"=== Meeting ===\n"
+"\n"
+"Purpose, date, and place\n"
+"\n"
+"**Present:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Agenda:**\n"
+"+\n"
+"+\n"
+"+\n"
+"\n"
+"\n"
+"**Discussion, Decisions, Assignments:**\n"
+"+\n"
+"+\n"
+"+\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:140
+msgid ""
+"=== Journey ===\n"
+"**Date:**\n"
+"\n"
+"**Location:**\n"
+"\n"
+"**Participants:**\n"
+"\n"
+"**The trip:**\n"
+"First we went to xxxxx then we got to yyyyy ...\n"
+"\n"
+"**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:156
+msgid ""
+"==================================\n"
+"=== Phone Call ===\n"
+"- **Person:**\n"
+"- **Time:**\n"
+"- **Topic:**\n"
+"- **Outcome and Follow up:**\n"
+"==================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:168
+msgid ""
+"=====================================\n"
+"=== Personal ===\n"
+"\n"
+"+\n"
+"+\n"
+"+\n"
+"========================\n"
+"\n"
+"**How was the Day?**\n"
+"\n"
+"\n"
+"========================\n"
+"**What needs to be changed?**\n"
+"+\n"
+"+\n"
+"+\n"
+"=====================================\n"
+msgstr ""
+
+#: ../rednotebook/templates.py:196
+msgid "Template mode"
+msgstr ""
+
+#: ../rednotebook/templates.py:200
+msgid "You are currently editing a template."
+msgstr ""
+
+#: ../rednotebook/templates.py:321
+msgid "Choose Template Name"
+msgstr ""
+
+#: ../rednotebook/templates.py:362
+msgid "This template file contains no text or has unreadable content."
+msgstr ""
+
+#: ../rednotebook/templates.py:424
+msgid "This Weekday's Template"
+msgstr ""
+
+#: ../rednotebook/templates.py:435
+msgid "Create New Template"
 msgstr ""
 
 #: tmp/main_window.glade.h:3
@@ -1042,112 +1100,124 @@ msgid "Select backup filename"
 msgstr ""
 
 #: tmp/main_window.glade.h:4
-msgid "Select a directory"
+msgid "_Cancel"
 msgstr ""
 
 #: tmp/main_window.glade.h:5
-msgid "Select a file"
+msgid "_Save"
 msgstr ""
 
 #: tmp/main_window.glade.h:6
-msgid "Insert Link"
+msgid "Select a directory"
 msgstr ""
 
 #: tmp/main_window.glade.h:7
-msgid "<b>Link location (e.g. https://www.google.com)</b>"
+msgid "_OK"
 msgstr ""
 
 #: tmp/main_window.glade.h:8
-msgid "<b>Link name (optional)</b>"
-msgstr ""
-
-#: tmp/main_window.glade.h:9
-msgid "Go to previous day (Ctrl+PageUp)"
+msgid "Select a file"
 msgstr ""
 
 #: tmp/main_window.glade.h:10
-msgid "Back"
+msgid "Insert Link"
 msgstr ""
 
 #: tmp/main_window.glade.h:11
-msgid "Jump to today (Alt+Home)"
+msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr ""
 
 #: tmp/main_window.glade.h:12
-msgid "Today"
+msgid "<b>Link name (optional)</b>"
 msgstr ""
 
 #: tmp/main_window.glade.h:13
-msgid "Go to next day (Ctrl+PageDown)"
+msgid "Go to previous day (Ctrl+PageUp)"
 msgstr ""
 
 #: tmp/main_window.glade.h:14
-msgid "Forward"
+msgid "Back"
 msgstr ""
 
 #: tmp/main_window.glade.h:15
-msgid "Show a formatted preview of the text (Ctrl+P)"
+msgid "Jump to today (Alt+Home)"
+msgstr ""
+
+#: tmp/main_window.glade.h:16
+msgid "Today"
+msgstr ""
+
+#: tmp/main_window.glade.h:17
+msgid "Go to next day (Ctrl+PageDown)"
 msgstr ""
 
 #: tmp/main_window.glade.h:18
-msgid "Enable text editing (Ctrl+P)"
+msgid "Forward"
 msgstr ""
 
 #: tmp/main_window.glade.h:19
-msgid "Edit"
-msgstr "సవరించు"
-
-#: tmp/main_window.glade.h:20
-msgid "Add a tag or a category entry"
-msgstr ""
-
-#: tmp/main_window.glade.h:21
-msgid "Add Tag"
+msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr ""
 
 #: tmp/main_window.glade.h:22
-msgid "New entry"
+msgid "Enable text editing (Ctrl+P)"
 msgstr ""
 
 #: tmp/main_window.glade.h:23
-msgid "<b>Select existing or new Category</b>"
-msgstr ""
+msgid "Edit"
+msgstr "సవరించు"
 
 #: tmp/main_window.glade.h:24
-msgid "<b>Write entry</b> (optional)"
+msgid "Add a tag or a category entry"
 msgstr ""
 
 #: tmp/main_window.glade.h:25
-msgid "Preferences"
-msgstr "ప్రాధాన్యతలు"
+msgid "Add Tag"
+msgstr ""
+
+#: tmp/main_window.glade.h:26
+msgid "New entry"
+msgstr ""
+
+#: tmp/main_window.glade.h:27
+msgid "<b>Select existing or new Category</b>"
+msgstr ""
+
+#: tmp/main_window.glade.h:28
+msgid "<b>Write entry</b> (optional)"
+msgstr ""
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:31
 msgid "<b>General</b>"
 msgstr "<b>సాధారణ</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:33
 msgid "General"
 msgstr "సాధారణ"
 
-#: tmp/main_window.glade.h:30
+#: tmp/main_window.glade.h:34
 msgid "Select a picture"
 msgstr ""
 
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:35
+msgid "_Open"
+msgstr ""
+
+#: tmp/main_window.glade.h:36
 msgid "Exit without saving"
 msgstr ""
 
-#: tmp/main_window.glade.h:32
+#: tmp/main_window.glade.h:37
 msgid "Statistics"
 msgstr "గణాంకాలు"
 
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:38
 msgid "<b>Selected Day</b>"
 msgstr ""
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"
 msgstr ""
 

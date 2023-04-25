@@ -1,3 +1,20 @@
+# 2.29.5 (2023-04-13)
+* Fix: Don't try to print WebKit2 version on Windows (#686, Jendrik Seipp).
+
+# 2.29.4 (2023-04-11)
+* Accept arbitrary WebKit2 version. Use 4.1 if available (#681, Jendrik Seipp).
+
+# 2.29.3 (2023-01-16)
+* Make all menu items translatable (Jendrik Seipp).
+* Packaging: install translation files under <prefix>/share/locale again (#666, Jendrik Seipp).
+
+# 2.29.2 (2023-01-13)
+* Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
+* Add continuous integration check to ensure that the basic Debian package builds correctly (Jendrik Seipp).
+
+# 2.29.1 (2023-01-12)
+* Remove bundled msgfmt.py module and use msgfmt binary from gettext suite instead. This fixes most of the translations on Windows (Jendrik Seipp).
+
 # 2.29 (2022-12-31)
 * Document alternatives for changing the GTK theme on Windows (Ankur A Sharma, #494).
 * Fix en_GB translations (Jendrik Seipp, #659).
@@ -10,7 +27,7 @@
 * Fix checking for newer versions (Jendrik Seipp).
 * Gracefully handle unsupported locale settings (Jendrik Seipp, #613).
 
-* # 2.27.2 (2022-12-01)
+# 2.27.2 (2022-12-01)
 * Fix passing command line arguments (Jendrik Seipp).
 * Update translation files (Jendrik Seipp).
 

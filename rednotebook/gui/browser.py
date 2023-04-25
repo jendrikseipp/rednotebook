@@ -16,22 +16,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-import logging
-
-import gi
-
-from rednotebook.util import filesystem
-
-
-try:
-    gi.require_version("WebKit2", "4.0")
-    from gi.repository import WebKit2
-except (ImportError, ValueError) as err:
-    WebKit2 = None
-    if not filesystem.IS_WIN:
-        logging.info(
-            f'WebKit2Gtk 4.0 (gir1.2-webkit2-4.0) not found. Please install it if you want in-app previews. Error message: "{err}"'
-        )
+from rednotebook.util.filesystem import WebKit2
 
 
 MAX_HITS = 10**6

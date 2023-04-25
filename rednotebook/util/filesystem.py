@@ -24,6 +24,8 @@ import platform
 import subprocess
 import sys
 
+import gi
+
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
 LANGUAGE = locale.getdefaultlocale()[0]
@@ -33,6 +35,42 @@ IS_WIN = sys.platform.startswith("win")
 IS_MAC = sys.platform == "darwin"
 
 LOCAL_FILE_PEFIX = "file:///" if IS_WIN else "file://"
+
+
+gi.require_version("GIRepository", "2.0")
+from gi.repository import GIRepository
+
+
+repo = GIRepository.Repository.get_default()
+logging.info(
+    f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}"
+)
+
+
+try:
+    gi.require_version("WebKit2", "4.1")
+except ValueError as err:
+    logging.warning(
+        f"WebKit2 4.1 not found. Trying to use arbitrary version. "
+        f"Error message: '{err}'"
+    )
+
+try:
+    from gi.repository import WebKit2
+
+    logging.info(
+        f"Loaded version of the WebKit2 namespace: {repo.get_version('WebKit2')}"
+    )
+except ImportError as err:
+    logging.info("Failed to load the WebKit2 namespace")
+    WebKit2 = None
+    if not IS_WIN:
+        logging.info(
+            f"WebKit2Gtk not found. Please install"
+            f" it if you want in-app previews."
+            f" On Debian/Ubuntu you need the gir1.2-webkit2-4.1 package."
+            f' Error message: "{err}"'
+        )
 
 
 def has_system_tray():
@@ -48,7 +86,7 @@ if main_is_frozen():
 else:
     app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-if IS_WIN:
+if main_is_frozen():
     locale_dir = os.path.join(app_dir, "share", "locale")
 else:
     locale_dir = os.path.join(sys.prefix, "share", "locale")
@@ -229,6 +267,17 @@ def get_platform_info():
             ("YAML", yaml.__version__),
         ]
     )
+    if WebKit2:
+        names_values.append(
+            (
+                "WebKit2",
+                (
+                    WebKit2.get_major_version(),
+                    WebKit2.get_minor_version(),
+                    WebKit2.get_micro_version(),
+                ),
+            )
+        )
 
     vals = [f"{name}: {val}" for name, val in names_values]
     return "System info: " + ", ".join(vals)

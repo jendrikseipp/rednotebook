@@ -1,3 +1,40 @@
+rednotebook (2.29.5-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix: Don't try to print WebKit2 version on Windows (#686, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 13 Apr 2023 10:00:25 +0200
+
+rednotebook (2.29.4-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Accept arbitrary WebKit2 version. Use 4.1 if available (#681, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Tue, 11 Apr 2023 12:40:03 +0200
+
+rednotebook (2.29.3-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Make all menu items translatable (Jendrik Seipp).
+  * Packaging: install translation files under <prefix>/share/locale again (#666, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 16 Jan 2023 22:41:15 +0100
+
+rednotebook (2.29.2-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix `setup.py` script: only build translation files when needed (Jendrik Seipp).
+  * Add continuous integration check to ensure that the basic Debian package builds correctly (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Fri, 13 Jan 2023 00:12:29 +0100
+
+rednotebook (2.29.1-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Remove bundled msgfmt.py module and use msgfmt binary from gettext suite instead. This fixes most of the translations on Windows (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 12 Jan 2023 11:20:30 +0100
+
 rednotebook (2.29-1) UNRELEASED; urgency=low
 
   * New upstream release
