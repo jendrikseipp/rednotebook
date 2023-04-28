@@ -137,16 +137,17 @@ class Cloud(browser.HtmlView):
             delta_count = 1
 
         min_font_size = 10
+        max_font_size = 40
+        font_delta = max_font_size - min_font_size
         html_elements = []
-
-        font_delta = 40 - min_font_size
         for word, count in cloud_words:
             font_factor = (count - min_count) / delta_count
             font_size = int(min_font_size + font_factor * font_delta)
 
             # Add some whitespace to separate words
             html_elements.append(
-                f'<a href="/#search-{self.link_index}"><span style="font-size:{font_size}px">{word}</span></a>&#160;'
+                f'<a href="/#search-{self.link_index}"><span '
+                f'style="font-size:{font_size}px">{word}</span></a>&#160;'
             )
             self.link_index += 1
         return "\n".join(html_elements)

@@ -86,7 +86,7 @@ class AutostartOption(TickOption):
 
     def set(self):
         """Apply the current setting"""
-        if selected := self.get_value():
+        if self.get_value():
             # Add autostart file if it is not present
             filesystem.make_file_with_dir(self.autostart_file, info.desktop_file)
         elif os.path.exists(self.autostart_file):

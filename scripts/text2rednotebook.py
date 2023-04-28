@@ -20,7 +20,6 @@ deactivated.
 """
 
 
-import rednotebook.storage  # pylint: disable=wrong-import-position, unused-import
 import argparse
 import pathlib
 import sys
@@ -35,6 +34,7 @@ for inst in ["/usr/share/rednotebook", "../rednotebook"]:
 
 # must import rednotebook after munging path in order to find it, as it is
 # not (at least in Debian) installed in the default python path
+import rednotebook.storage  # pylint: disable=wrong-import-position, unused-import
 
 
 def list_missing_entries(mindate, maxdate, months, existing_entries):
