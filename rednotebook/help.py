@@ -423,7 +423,7 @@ the same directory.
 | Bold                  | <Ctrl> + B             |
 | Italic                | <Ctrl> + I             |
 | Monospace             | <Ctrl> + M             |
-| Underline             | <Ctrl> + I             |
+| Underline             | <Ctrl> + U             |
 | Strikethrough         | <Ctrl> + K             |
 | Remove format         | <Ctrl> + R             |
 
