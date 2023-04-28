@@ -7,6 +7,7 @@ po/*.mo
 .pc/
 .pybuild/
 .tox/
+rednotebook.egg-info
 debian/rednotebook/
 debian/debhelper-build-stamp
 debian/files

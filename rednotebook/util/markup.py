@@ -404,6 +404,7 @@ def convert(txt, target, data_dir, headers=None, options=None):
 
     # Set the three header fields
     if headers is None:
+        # LaTeX requires a title if \maketitle is used.
         headers = ["RedNotebook", "", ""] if target == "tex" else ["", "", ""]
     config = _get_config(target, options)
 

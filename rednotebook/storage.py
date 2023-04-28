@@ -157,7 +157,7 @@ def _save_month_to_disk(month, journal_dir):
     if os.path.exists(filename):
         mtime = os.path.getmtime(filename)
         if mtime != month.mtime:
-            conflict = get_filename(f".CONFLICT_BACKUP{str(mtime)}")
+            conflict = get_filename(f".CONFLICT_BACKUP{mtime}")
             logging.debug(
                 "Last edit time of %s conflicts with edit time at file load\n"
                 "--> Backing up to %s" % (filename, conflict)
