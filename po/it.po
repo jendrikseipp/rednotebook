@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-21 12:45+0100\n"
-"PO-Revision-Date: 2023-01-16 20:37+0000\n"
+"PO-Revision-Date: 2023-04-29 13:37+0100\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/it/>\n"
@@ -1214,13 +1214,12 @@ msgstr "Seleziona il nome del file di salvataggio"
 
 #: tmp/main_window.glade.h:4
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancella"
 
 #: tmp/main_window.glade.h:5
-#, fuzzy
 #| msgid "Save"
 msgid "_Save"
-msgstr "Salva"
+msgstr "_Salva"
 
 #: tmp/main_window.glade.h:6
 msgid "Select a directory"
@@ -1228,7 +1227,7 @@ msgstr "Seleziona una directory"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1317,10 +1316,9 @@ msgid "Select a picture"
 msgstr "Seleziona un'immagine"
 
 #: tmp/main_window.glade.h:35
-#, fuzzy
 #| msgid "Open"
 msgid "_Open"
-msgstr "Apri"
+msgstr "_Apri"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"
