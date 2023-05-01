@@ -254,6 +254,11 @@ class InsertMenu:
         if not filesystem.IS_MAC:
             picture_chooser.add_filter(file_filter)
 
+        # Add box for copying the picture to the journal folder
+        copy_checkbutton = Gtk.CheckButton()
+        copy_checkbutton.set_label('Copy to journal folder')
+        copy_checkbutton.set_active(True)  # Set copy as default behaviour
+
         # Add box for inserting image width.
         box = Gtk.HBox()
         box.set_spacing(2)
@@ -263,9 +268,15 @@ class InsertMenu:
         width_entry.set_width_chars(6)
         box.pack_start(label, False, False, 0)
         box.pack_start(width_entry, False, False, 0)
-        box.pack_start(Gtk.Label(_("pixels")), True, True, 0)
-        box.show_all()
-        picture_chooser.set_extra_widget(box)
+        box.pack_start(Gtk.Label(_('pixels')), True, True, 0)
+
+        # Add widgets to the window
+        extra_widgets_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        extra_widgets_box.set_spacing(4)
+        extra_widgets_box.pack_start(copy_checkbutton, False, False, 0)
+        extra_widgets_box.pack_start(box, False, False, 0)
+        extra_widgets_box.show_all()
+        picture_chooser.set_extra_widget(extra_widgets_box)
 
         response = picture_chooser.run()
         picture_chooser.hide()
@@ -292,14 +303,26 @@ class InsertMenu:
             if sel_text:
                 sel_text += " "
 
+            # Check if the image is to be copied
+            copy = copy_checkbutton.get_active()
+
             # iterate through all selected images
             lines = []
             for filename in picture_chooser.get_filenames():
+                # If required, copy the file and get relative filename
+                if copy:
+                    filename = self.main_window.journal.add_file(filename)
+                    if filename is None:
+                        # TODO: manage error
+                        return
+
                 base, ext = os.path.splitext(filename)
 
+                # If the file is not to be copied, get file absolute path
                 # On windows firefox accepts absolute filenames only
                 # with the file:// prefix
-                base = urls.get_local_url(base)
+                if not copy:
+                    base = urls.get_local_url(base)
 
                 lines.append(f'[{sel_text}""{base}""{ext}{width_text}]')
 
@@ -311,16 +334,37 @@ class InsertMenu:
         file_chooser = self.main_window.builder.get_object("file_chooser")
         file_chooser.set_current_folder(dirs.last_file_dir)
 
+        # Add box for copying the file to the journal folder
+        copy_checkbutton = Gtk.CheckButton()
+        copy_checkbutton.set_label('Copy to journal folder')
+        copy_checkbutton.set_active(False)  # Set default behaviour
+        copy_checkbutton.show_all()
+        file_chooser.set_extra_widget(copy_checkbutton)
+
         response = file_chooser.run()
         file_chooser.hide()
 
         if response == Gtk.ResponseType.OK:
             folder = file_chooser.get_current_folder()
             # Folder is None if the file was chosen from the "recently used" section.
+
+            # Check if the file is to be copied
+            copy = copy_checkbutton.get_active()
+
             if folder:
                 dirs.last_file_dir = folder
             filename = file_chooser.get_filename()
-            filename = urls.get_local_url(filename)
+
+            # If required, copy the file and get the relative path
+            if copy:
+                filename = self.main_window.journal.add_file(filename)
+                if filename is None:
+                    # TODO: manage error
+                    return
+            # Else, get the sanitized absolute path
+            else:
+                filename = urls.get_local_url(filename)
+
             sel_text = self.main_window.day_text_field.get_selected_text()
             _, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol and the ""s

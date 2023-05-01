@@ -60,8 +60,9 @@ def get_journal_files(data_dir):
             assert month in range(1, 12 + 1)
             path = os.path.join(data_dir, file)
             yield (path, year, month)
-        else:
-            logging.debug("%s is not a valid month filename" % file)
+        # TODO: read media directory name from dirs
+        elif file != 'media':
+            logging.debug('%s is not a valid month filename' % file)
 
 
 def _load_month_from_disk(path, year_number, month_number):

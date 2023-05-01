@@ -320,9 +320,17 @@ class MainMenuBar:
         if not self.check_journal_dir(action, new_dir):
             return
 
-        if action == "saveas":
+        if action == 'saveas':
+            old_media_dir = os.path.join(self.journal.dirs.media_dir)
+
             self.journal.dirs.data_dir = new_dir
             self.journal.save_to_disk(saveas=True)
+
+            # If there is a media dir in the original notebook, copy it
+            if os.path.isdir(old_media_dir):
+                new_media_dir = os.path.join(self.journal.dirs.media_dir)
+                filesystem.copytree(old_media_dir, new_media_dir)
+
         self.journal.open_journal(new_dir)
 
     def on_new_journal_button_activate(self, widget):

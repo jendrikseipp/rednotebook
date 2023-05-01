@@ -23,6 +23,8 @@ import os
 import platform
 import subprocess
 import sys
+import shutil
+import stat
 
 import gi
 
@@ -146,6 +148,10 @@ class Filenames(dict):
 
         return user_dir
 
+    @property
+    def media_dir(self):
+       return os.path.join(self.data_dir, 'media') 
+
     def is_valid_journal_path(self, path):
         return os.path.isdir(path) and os.path.abspath(path) not in self.forbidden_dirs
 
@@ -213,6 +219,38 @@ def make_file_with_dir(file, content):
     dir = os.path.dirname(file)
     make_directory(dir)
     make_file(file, content)
+
+
+def copy(src, dst, change_permissions=True):
+    '''Copy file and make it only writable and readable by user.'''
+    shutil.copy(src, dst)
+    logging.debug(
+        'Copied file from {} to {}.'.format(src, dst))
+
+    # Make file only readable and writable by user
+    if change_permissions:
+        try:
+            os.chmod(dst, stat.S_IRUSR | stat.S_IWUSR)
+        except OSError:
+            pass
+
+    return dst
+
+
+def copytree(src, dst, change_permissions=True):
+    '''Copy directory and make it only writable and readable by user.'''
+    shutil.copytree(src, dst)
+
+    if change_permissions:
+        try:
+            # Make files and folders only writable and readable by user
+            for root, dirs, filenames in os.walk(dst):
+                os.chmod(root, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR)
+                for filename in filenames:
+                    os.chmod(os.path.join(root, filename),
+                             stat.S_IRUSR | stat.S_IWUSR)
+        except OSError:
+            pass
 
 
 def get_relative_path(from_dir, to_dir):
