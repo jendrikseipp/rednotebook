@@ -71,11 +71,17 @@ class install(_install):
             shutil.copy2(lang_file, dest_dir / "rednotebook.mo")
 
 
+installation_note = """\
+Go to https://rednotebook.app/downloads.html to get the
+latest pre-packaged version for your operating system.
+"""
+
+
 parameters = {
     "name": "rednotebook",
     "version": info.version,
     "description": "Graphical daily journal with calendar, templates and keyword searching",
-    "long_description": info.comments,
+    "long_description": info.comments + "\n\n" + installation_note,
     "author": info.author,
     "author_email": info.author_mail,
     "maintainer": info.author,
