@@ -7,6 +7,8 @@ po/*.mo
 .pc/
 .pybuild/
 .tox/
+.DS_Store
+venv/
 debian/rednotebook/
 debian/debhelper-build-stamp
 debian/files
