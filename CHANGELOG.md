@@ -1,6 +1,9 @@
+# next (unreleased)
+* Modernize code (#689, @HighnessAtharva and @laraconda).
+
 # 2.29.6 (2023-04-28)
 * Restore all keyboard shorts (#690, Jendrik Seipp).
-*
+
 # 2.29.5 (2023-04-13)
 * Fix: Don't try to print WebKit2 version on Windows (#686, Jendrik Seipp).
 
