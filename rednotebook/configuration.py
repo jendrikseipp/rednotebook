@@ -23,9 +23,7 @@ from rednotebook.util import filesystem
 
 
 def delete_comment(line):
-    if line.startswith("#"):
-        return ""
-    return line
+    return "" if line.startswith("#") else line
 
 
 class Config(dict):
@@ -139,17 +137,17 @@ class Config(dict):
         self[key] = ", ".join(list)
 
     def changed(self):
-        return not (self == self.old_config)
+        return self != self.old_config
 
     def save_to_disk(self):
         if not self.changed():
             return
 
-        lines = []
-        for key, value in sorted(self.items()):
-            if key not in self.suppressed_keys:
-                lines.append(f"{key}={value}")
-
+        lines = [
+            f"{key}={value}"
+            for key, value in sorted(self.items())
+            if key not in self.suppressed_keys
+        ]
         try:
             filesystem.make_directory(os.path.dirname(self.filename))
             filesystem.write_file(self.filename, "\n".join(lines))
@@ -158,5 +156,5 @@ class Config(dict):
                 "Configuration could not be saved. Please check " "your permissions"
             )
         else:
-            logging.info("Configuration has been saved to %s" % self.filename)
+            logging.info(f"Configuration has been saved to {self.filename}")
             self.save_state()

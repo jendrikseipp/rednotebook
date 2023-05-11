@@ -19,7 +19,9 @@ A list of days with missing entries is also printed by default. This can be
 deactivated.
 """
 
+
 import argparse
+import pathlib
 import sys
 import re
 import datetime
@@ -111,12 +113,10 @@ def main():
             )
             sys.exit()
     else:
-        with open(args.infile) as fin:
-            alltext = fin.read()
-
+        alltext = pathlib.Path(args.infile).read_text()
     # remove non-printable characters
     control_chars = "".join(map(chr, range(0x7F, 0xA0)))
-    control_char_re = re.compile("[%s]" % re.escape(control_chars))
+    control_char_re = re.compile(f"[{re.escape(control_chars)}]")
     alltext = control_char_re.sub("", alltext)
 
     days = re.split(
@@ -143,7 +143,7 @@ def main():
         # strptime seems to be rather lax about parsing day/date combinations,
         # so check manually
         weekday = re.search(r"(\w+day)", days[i])
-        weekday = weekday.group(0)
+        weekday = weekday[0]
         if dateobj.strftime("%A") != weekday:
             raise ValueError(
                 f"'{days[i]}' is not a valid date. {dateobj.strftime('%d %B %Y')} "

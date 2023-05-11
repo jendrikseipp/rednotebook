@@ -129,22 +129,18 @@ class Filenames(dict):
         self.forbidden_dirs = [user_home_dir, self.journal_user_dir]
 
     def get_user_dir(self, config):
-        custom = config.read("userDir")
-
-        if custom:
-            # If a custom user dir has been set,
-            # construct the absolute path (if not absolute already)
-            # and use it
-            if not os.path.isabs(custom):
-                custom = os.path.join(self.app_dir, custom)
-            user_dir = custom
-        else:
-            if self.portable:
-                user_dir = os.path.join(self.app_dir, "user")
-            else:
-                user_dir = os.path.join(self.user_home_dir, ".rednotebook")
-
-        return user_dir
+        if not (custom := config.read("userDir")):
+            return (
+                os.path.join(self.app_dir, "user")
+                if self.portable
+                else os.path.join(self.user_home_dir, ".rednotebook")
+            )
+        # If a custom user dir has been set,
+        # construct the absolute path (if not absolute already)
+        # and use it
+        if not os.path.isabs(custom):
+            custom = os.path.join(self.app_dir, custom)
+        return custom
 
     def is_valid_journal_path(self, path):
         return os.path.isdir(path) and os.path.abspath(path) not in self.forbidden_dirs
@@ -171,8 +167,7 @@ def read_file(filename):
     """
     try:
         with codecs.open(filename, "rb", encoding="utf-8", errors="replace") as file:
-            data = file.read()
-            return data
+            return file.read()
     except ValueError as err:
         logging.info(err)
     except Exception as err:

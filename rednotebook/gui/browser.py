@@ -41,10 +41,7 @@ if WebKit2:
             self.show_all()
 
         def set_font_size(self, size):
-            if size <= 0:
-                zoom = 1.0
-            else:
-                zoom = size / 10.0
+            zoom = 1.0 if size <= 0 else size / 10.0
             # It seems webkit shows text a little bit bigger.
             zoom *= 0.90
             self.set_zoom_level(zoom)

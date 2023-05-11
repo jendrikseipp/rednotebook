@@ -63,8 +63,8 @@ class Editor(GObject.GObject):
 
         self.font = Pango.FontDescription(DEFAULT_FONT)
         self.default_size = self.font.get_size() / Pango.SCALE
-        logging.debug("Default font: %s" % self.font.to_string())
-        logging.debug("Default size: %s" % self.default_size)
+        logging.debug(f"Default font: {self.font.to_string()}")
+        logging.debug(f"Default size: {self.default_size}")
 
     def replace_buffer(self, buffer):
         self.day_text_view.set_buffer(buffer)
@@ -163,8 +163,7 @@ class Editor(GObject.GObject):
             return  # Stop after the first match
 
     def get_selected_text(self):
-        bounds = self.day_text_buffer.get_selection_bounds()
-        if bounds:
+        if bounds := self.day_text_buffer.get_selection_bounds():
             return self.get_text(*bounds)
         else:
             return ""

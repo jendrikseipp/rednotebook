@@ -33,7 +33,7 @@ def find_library(name):
             return fname
         if fname.lower().endswith(".dll"):
             continue
-        fname = fname + ".dll"
+        fname = f"{fname}.dll"
         print("Check filename", fname, os.path.isfile(fname))
         if os.path.isfile(fname):
             return fname

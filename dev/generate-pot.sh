@@ -40,7 +40,7 @@ xgettext    --output=rednotebook.pot \
             --files-from=sourcefiles.txt \
             tmp/main_window.glade.h
 
-for file in `ls *.po`; do
+for file in $(ls *.po); do
     msgmerge --previous --update ${file} rednotebook.pot
 done
 

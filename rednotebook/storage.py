@@ -53,15 +53,14 @@ def get_journal_files(data_dir):
     date_exp = re.compile(r"(\d{4})-(\d{2})\.txt$")
 
     for file in sorted(os.listdir(data_dir)):
-        match = date_exp.match(file)
-        if match:
-            year = int(match.group(1))
-            month = int(match.group(2))
+        if match := date_exp.match(file):
+            year = int(match[1])
+            month = int(match[2])
             assert month in range(1, 12 + 1)
             path = os.path.join(data_dir, file)
             yield (path, year, month)
         else:
-            logging.debug("%s is not a valid month filename" % file)
+            logging.debug(f"{file} is not a valid month filename")
 
 
 def _load_month_from_disk(path, year_number, month_number):
@@ -73,19 +72,21 @@ def _load_month_from_disk(path, year_number, month_number):
     try:
         # Try to read the contents of the file.
         with codecs.open(path, "rb", encoding="utf-8") as month_file:
-            logging.debug('Loading file "%s"' % path)
+            logging.debug(f'Loading file "{path}"')
             month_contents = yaml.load(month_file, Loader=Loader)
-            month = Month(
-                year_number, month_number, month_contents, os.path.getmtime(path)
+            return Month(
+                year_number,
+                month_number,
+                month_contents,
+                os.path.getmtime(path),
             )
-            return month
     except yaml.YAMLError as exc:
         logging.error(f"Error in file {path}:\n{exc}")
     except OSError:
         # If that fails, there is nothing to load, so just display an error message.
-        logging.error("Error: The file %s could not be read" % path)
+        logging.error(f"Error: The file {path} could not be read")
     except Exception:
-        logging.error("An error occurred while reading %s:" % path)
+        logging.error(f"An error occurred while reading {path}:")
         raise
     # If we continued here, the possibly corrupted file would be overwritten.
     sys.exit(1)
@@ -98,22 +99,21 @@ def load_all_months_from_disk(data_dir):
     """
     months = {}
 
-    logging.debug('Starting to load files in dir "%s"' % data_dir)
+    logging.debug(f'Starting to load files in dir "{data_dir}"')
     for path, year_number, month_number in get_journal_files(data_dir):
-        month = _load_month_from_disk(path, year_number, month_number)
-        if month:
+        if month := _load_month_from_disk(path, year_number, month_number):
             months[format_year_and_month(year_number, month_number)] = month
 
-    logging.debug('Finished loading files in dir "%s"' % data_dir)
+    logging.debug(f'Finished loading files in dir "{data_dir}"')
     return months
 
 
 def _get_dict(month):
-    content = {}
-    for day_number, day in month.days.items():
-        if not day.empty:
-            content[day_number] = day.content
-    return content
+    return {
+        day_number: day.content
+        for day_number, day in month.days.items()
+        if not day.empty
+    }
 
 
 def _save_month_to_disk(month, journal_dir):
@@ -157,7 +157,7 @@ def _save_month_to_disk(month, journal_dir):
     if os.path.exists(filename):
         mtime = os.path.getmtime(filename)
         if mtime != month.mtime:
-            conflict = get_filename(".CONFLICT_BACKUP" + str(mtime))
+            conflict = get_filename(f".CONFLICT_BACKUP{mtime}")
             logging.debug(
                 "Last edit time of %s conflicts with edit time at file load\n"
                 "--> Backing up to %s" % (filename, conflict)
@@ -179,7 +179,7 @@ def _save_month_to_disk(month, journal_dir):
 
     month.edited = False
     month.mtime = os.path.getmtime(filename)
-    logging.info("Wrote file %s" % filename)
+    logging.info(f"Wrote file {filename}")
     return True
 
 
