@@ -81,7 +81,7 @@ class Cloud(browser.HtmlView):
         self.include_list = [word.lower() for word in self.include_list]
         logging.info("Cloud include list: %s" % self.include_list)
 
-        # ignoring files and web links in words cloud
+        # Ignore files and web links in words cloud
         self.special_ignore_words_tuple = ("file://.*", "https?://.*")
         logging.info(f"Cloud special ignore regexes: {self.special_ignore_words_tuple}")
 
@@ -129,6 +129,7 @@ class Cloud(browser.HtmlView):
             word_count_dict,
             self.regexes_ignore + self.regexes_special_ignore_words,
             self.regexes_include,
+            self.tags,
         )
 
         self.link_dict = self.tags + self.words
@@ -164,8 +165,8 @@ class Cloud(browser.HtmlView):
     @staticmethod
     def select_most_frequent_words(words_and_frequencies, nwords):
         """
-        Returns the 'nwords' most frequent words in 'words_and_frequences'
-        sorted by the locale
+        Return the 'nwords' most frequent words and their frequencies
+        in 'words_and_frequences' sorted by the locale.
         """
         most_frequent_words = []
         if nwords > 0:
@@ -178,20 +179,20 @@ class Cloud(browser.HtmlView):
         tags_and_frequencies = [
             (tag, freq)
             for (tag, freq) in tag_count_dict
-            if not any(pattern.match(tag) for pattern in ignores)
+            if all(not pattern.match(tag) for pattern in ignores)
         ]
 
         tag_display_limit = self.journal.config.read("cloudMaxTags")
         return self.select_most_frequent_words(tags_and_frequencies, tag_display_limit)
 
-    def _get_words_for_cloud(self, word_count_dict, ignores, includes):
+    def _get_words_for_cloud(self, word_count_dict, ignores, includes, tags_count):
+        tags_set = set(map(lambda tag_count: tag_count[0][1:], tags_count))
         words_and_frequencies = [
             (word, freq)
             for (word, freq) in word_count_dict.items()
             if (len(word) > 4 or any(pattern.match(word) for pattern in includes))
-            and not
-            # filter words and patterns in ignore_list
-            any(pattern.match(word) for pattern in ignores)
+            and all(not pattern.match(word) for pattern in ignores)
+            and word not in tags_set
         ]
         return self.select_most_frequent_words(words_and_frequencies, CLOUD_WORDS)
 
