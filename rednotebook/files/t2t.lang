@@ -243,7 +243,7 @@
     </context>
 
     <context id="bare-url" style-ref="url">
-      <match>\b((https?|ftp|news|telnet|gopher|wais)://|(www[23]?|ftp)\.)[A-Za-z0-9%._/~:,=$@+-]+\b/*(\?[A-Za-z0-9/%&amp;=+:;.,$@*_-]+)?(#[A-Za-z0-9%._-]*)?</match>
+        <match>\b((https?|ftp|news|telnet|gopher|wais)://|(www[23]?|ftp)\.)[A-Za-z0-9%._/~:,=$@+-]+\b/*(\?[A-Za-z0-9/%&amp;=+:;.,$@*_-]+)?(#[/A-Za-z0-9%._-]*)?</match>
     </context>
 
     <context id="bare-email" style-ref="url">
