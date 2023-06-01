@@ -250,8 +250,19 @@
       <match>\b[A-Za-z0-9_.-]+@([A-Za-z0-9_-]+\.)+[A-Za-z]{2,4}\b</match>
     </context>
 
+    <!--
+        The following regular expression is used solely to identify hashtags
+        in the text and style them according to the rules specified.
+
+        This pattern IS NOT used to identify hastags to be added to the 'Tags'
+        section on the left panel or any other functionality.
+        To control the aforementioned behaviour refer to rednotebook/data.py.
+
+        If you make changes to this pattern, is very likely you will have
+        to make changes to rednotebook/data.py.
+    -->
     <context id="hashtag" style-ref="hashtag">
-      <match>(^|[^\w&amp;#])(#|＃)(?![0-9A-F]{6}|include)(\w*[^\W\d_]+\w*)</match>
+      <match>(^|[^\w&amp;#])(#|＃)(?![0-9A-F]{6}|include|define|ifdef|ifndef|endif)(\w*[^\W\d_]+\w*)</match>
     </context>
 
     <context id="entry-reference">
