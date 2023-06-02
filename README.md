@@ -39,6 +39,22 @@ Start RedNotebook:
   * Linux/macOS: `python3 rednotebook/journal.py`
   * Windows: `py rednotebook/journal.py`
 
+## Run tests
+
+Install [tox](https://tox.wiki/en/latest/)
+
+Run all tests:
+
+`tox`
+
+Run style checks:
+
+`tox -e style`
+
+Fix style:
+
+`tox -e fix-style`
+
 
 ## Thanks to
 

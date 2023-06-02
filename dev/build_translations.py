@@ -22,8 +22,10 @@ def build_translation_files(po_dir: Path, locale_dir: Path):
         dest_dir = dest.parent
         if not dest_dir.exists():
             dest_dir.mkdir(parents=True, exist_ok=True)
-        print(f"Compiling {src} to {dest}")
-        subprocess.check_call(["msgfmt", "--output-file", dest, src])
+        try:
+            subprocess.check_call(["msgfmt", "--output-file", dest, src])
+        except subprocess.CalledProcessError:
+            print(f"Compilation failed for {src}")
 
 
 def main():
