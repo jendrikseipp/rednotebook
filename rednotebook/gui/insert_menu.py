@@ -30,6 +30,7 @@ MENUITEMS_XML = """\
     <menuitem action="File"/>
     <menuitem action="Link"/>
     <menuitem action="BulletList"/>
+    <menuitem action="NumberedList"/>
     <menu action="TitleMenu">
         <menuitem action="Title1"/>
         <menuitem action="Title2"/>
@@ -108,6 +109,13 @@ class InsertMenu:
             _("Two blank lines close the list"),
         )
 
+        self.numbered_list = "\n+ {}\n+ {}\n  + {} ({})\n\n\n".format(
+            _("First Item"),
+            _("Second Item"),
+            _("Indented Item"),
+            _("Two blank lines close the list"),
+        )
+
         self.setup()
 
     def setup(self):
@@ -158,6 +166,14 @@ class InsertMenu:
                 None,
                 None,
                 self.on_insert_bullet_list,
+            ),
+            (
+                "NumberedList",
+                None,
+                _("Numbered List"),
+                None,
+                None,
+                self.on_insert_numbered_list,
             ),
             ("TitleMenu", None, _("Title")),
             (
@@ -212,7 +228,7 @@ class InsertMenu:
         # Create a Menu
         menu = uimanager.get_widget("/InsertMenu")
 
-        image_items = "Picture Link BulletList Title Line Date LineBreak Table".split()
+        image_items = "Picture Link BulletList NumberedList Title Line Date LineBreak Table".split()
 
         for item in image_items:
             menu_item = uimanager.get_widget("/InsertMenu/" + item)
@@ -376,6 +392,12 @@ class InsertMenu:
         if sel_text:
             return "\n".join("- %s" % row for row in sel_text.splitlines())
         return self.bullet_list
+
+    @insert_handler
+    def on_insert_numbered_list(self, sel_text):
+        if sel_text:
+            return "\n".join("+ %s" % row for row in sel_text.splitlines())
+        return self.numbered_list
 
     @insert_handler
     def on_insert_title(self, sel_text, level):
