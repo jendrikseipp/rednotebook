@@ -39,21 +39,19 @@ Start RedNotebook:
   * Linux/macOS: `python3 rednotebook/journal.py`
   * Windows: `py rednotebook/journal.py`
 
-## Run tests
+## Run tests and pre-commit hooks
 
-Install [tox](https://tox.wiki/en/latest/)
+Install:
+    * [tox](https://tox.wiki/en/latest/)
+    * [pre-commit](https://pre-commit.com/index.html)
 
 Run all tests:
 
 `tox`
 
-Run style checks:
+Run the pre-commit hooks:
 
-`tox -e style`
-
-Fix style:
-
-`tox -e fix-style`
+`pre-commit run`
 
 
 ## Thanks to
