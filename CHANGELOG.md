@@ -1,3 +1,6 @@
+# next
+* Fix: Correctly coloring url with hashtags symbols in edit mode (#703, @laraconda).
+
 # next (unreleased)
 * Modernize code (#689, @HighnessAtharva and @laraconda).
 
