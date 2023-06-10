@@ -1,5 +1,6 @@
 # next (unreleased)
 * Modernize code (#689, @HighnessAtharva and @laraconda).
+* Fix: Correctly color URLs with hashtags symbols in edit mode (#703, @laraconda).
 
 # 2.29.6 (2023-04-28)
 * Restore all keyboard shorts (#690, Jendrik Seipp).
