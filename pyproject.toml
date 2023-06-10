@@ -38,6 +38,6 @@ skip= "external,journal.py,main_window.py"
 
 [tool.vulture]
 make_whitelist = true
-min_confidence = 80
+min_confidence = 0
 paths = ["rednotebook/", "dev/whitelist.py"]
 exclude = ["external/"]
