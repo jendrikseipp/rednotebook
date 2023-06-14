@@ -396,7 +396,7 @@ class InsertMenu:
     @insert_handler
     def on_insert_numbered_list(self, sel_text):
         if sel_text:
-            return "\n".join("+ %s" % row for row in sel_text.splitlines())
+            return "\n".join(f"+ {row}" for row in sel_text.splitlines())
         return self.numbered_list
 
     @insert_handler
