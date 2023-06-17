@@ -18,9 +18,9 @@
 
 from xml.sax.saxutils import escape
 
-from gi.repository import GObject
+from gi.repository import GObject, Gtk
 
-from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView, ActionButton
 from rednotebook.util import dates
 
 
@@ -77,6 +77,37 @@ class SearchComboBox(CustomComboBoxEntry):
         # search entry lose focus and search phrases are added to a day's text.
         if not self.entry.has_focus():
             self.entry.grab_focus()
+
+
+class ReplaceBox(Gtk.Box):
+    def __init__(self, **properties):
+        super().__init__(**properties)
+
+        self.old_data = ""
+        self.new_data = ""
+
+        self.text_field = Gtk.Entry()
+        self.text_field.set_placeholder_text("Replace")
+        self.text_field.connect("changed", self.on_text_change)
+        self.text_field.connect("activate", self.on_entry_activated)
+        self.text_field.show()
+
+        self.button = ActionButton("Replace all", self.on_entry_activated)
+        self.button.show()
+
+        self.pack_start(self.text_field, True, True, 0)
+        self.pack_start(self.button, True, True, 0)
+        self.set_orientation(Gtk.Orientation.HORIZONTAL)
+
+    def on_text_change(self, _):
+        self.new_data = self.text_field.get_text()
+
+    def on_entry_activated(self, _):
+        print(f"Replacing{self.old_data} with {self.new_data}")
+
+    def clear(self):
+        self.old_data = None
+        self.new_data = None
 
 
 class SearchTreeView(CustomListView):
