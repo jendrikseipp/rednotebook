@@ -42,6 +42,13 @@ class SearchComboBox(CustomComboBoxEntry):
         search_text = self.get_active_text()
         if self.journal.config.read("instantSearch"):
             self.search(search_text)
+            replace_box = self.main_window.replace_box
+            if len(search_text) > 0:
+                replace_box.old_data = search_text
+                replace_box.show()
+            else:
+                replace_box.hide()
+                replace_box.clear()
         elif not search_text:
             self.search("")
 
