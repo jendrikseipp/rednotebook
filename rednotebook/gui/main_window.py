@@ -489,8 +489,10 @@ class MainWindow:
         self.search_scroll.add(self.search_tree_view)
         self.search_box = search.SearchComboBox(Gtk.ComboBox.new_with_entry(), self)
         self.search_box.combo_box.show()
+        self.replace_box = search.ReplaceBox()
         search_container = self.builder.get_object("search_container")
         search_container.pack_start(self.search_box.combo_box, False, False, 0)
+        search_container.pack_start(self.replace_box, False, True, 0)
         search_container.pack_start(self.search_scroll, True, True, 0)
 
     def setup_clouds(self):
