@@ -49,11 +49,6 @@ Run all tests:
 
 `tox`
 
-Run the pre-commit hooks:
-
-`pre-commit run`
-
-
 ## Thanks to
 
   * The authors of the libraries listed under 'Requirements'.
