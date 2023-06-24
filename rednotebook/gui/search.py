@@ -87,11 +87,13 @@ class SearchComboBox(CustomComboBoxEntry):
 
 
 class ReplaceBox(Gtk.Box):
-    def __init__(self, **properties):
+    def __init__(self, main_window, **properties):
         super().__init__(**properties)
 
         self.old_data = ""
         self.new_data = ""
+
+        self.journal = main_window.journal
 
         self.text_field = Gtk.Entry()
         self.text_field.set_placeholder_text("Replace")
@@ -110,7 +112,13 @@ class ReplaceBox(Gtk.Box):
         self.new_data = self.text_field.get_text()
 
     def on_entry_activated(self, _):
-        print(f"Replacing{self.old_data} with {self.new_data}")
+        """Called when either enter is pressed or the button is clicked"""
+
+        if not self.new_data or self.new_data == self.old_data:
+            return
+
+        print(f"Replacing {self.old_data} with {self.new_data}")
+        self.journal.replace_all(self.old_data, self.new_data)
 
     def clear(self):
         self.old_data = None

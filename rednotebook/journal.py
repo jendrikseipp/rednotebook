@@ -555,6 +555,21 @@ class Journal(Gtk.Application):
             results.append(day.search(text, tags))
         return results
 
+    def replace_all(self, old, new):
+        for month_number, month in self.months.items():
+            for day_number, day in month.days.items():
+                is_content_replaced = day.replace_all(old, new)
+                if is_content_replaced:
+                    self.frame.calendar.set_day_edited(day_number, not day.empty)
+
+                # TODO replace frame's day's content
+
+                # TODO reload frame
+                # TODO reload search
+                # TODO reload cloud
+
+        self.save_to_disk()
+
     def get_days_with_tags(self, tags):
         if not tags:
             return self.days
