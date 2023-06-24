@@ -97,7 +97,6 @@ class ReplaceBox(Gtk.Box):
 
         self.text_field = Gtk.Entry()
         self.text_field.set_placeholder_text("Replace")
-        self.text_field.connect("changed", self.on_text_change)
         self.text_field.connect("activate", self.on_entry_activated)
         self.text_field.show()
 
@@ -108,12 +107,10 @@ class ReplaceBox(Gtk.Box):
         self.pack_start(self.button, True, True, 0)
         self.set_orientation(Gtk.Orientation.HORIZONTAL)
 
-    def on_text_change(self, _):
-        self.new_data = self.text_field.get_text()
-
     def on_entry_activated(self, _):
         """Called when either enter is pressed or the button is clicked"""
 
+        self.new_data = self.text_field.get_text()
         if not self.new_data or self.new_data == self.old_data:
             return
 
