@@ -121,6 +121,7 @@ class ReplaceBox(Gtk.Box):
         self.journal.replace_all(self.old_data, self.new_data)
 
     def clear(self):
+        self.text_field.set_text("")
         self.old_data = None
         self.new_data = None
 
