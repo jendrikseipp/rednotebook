@@ -71,7 +71,9 @@ class SearchComboBox(CustomComboBoxEntry):
                 self.main_window.day_text_field.scroll_to_text, search_text
             )
 
-        self.main_window.search_tree_view.update_data(search_text, tags)
+        search_tree_view = self.main_window.search_tree_view
+        search_tree_view.update_data(search_text, tags)
+        search_tree_view.update_search_results()
 
         # Without the following, showing the search results sometimes lets the
         # search entry lose focus and search phrases are added to a day's text.
@@ -131,12 +133,16 @@ class SearchTreeView(CustomListView):
         self.always_show_results = always_show_results
         self.tree_store = self.get_model()
 
+        self.search_text = ""
+        self.tags = ""
+
         self.connect("cursor_changed", self.on_cursor_changed)
 
     def update_data(self, search_text, tags):
-        self.tree_store.clear()
+        self.search_text = search_text
+        self.tags = tags
 
-        if not self.always_show_results and not tags and not search_text:
+        if not self.always_show_results and not self.tags and not self.search_text:
             self.main_window.cloud.show()
             self.main_window.search_scroll.hide()
             return
@@ -144,7 +150,10 @@ class SearchTreeView(CustomListView):
         self.main_window.cloud.hide()
         self.main_window.search_scroll.show()
 
-        for date_string, entries in self.journal.search(search_text, tags):
+    def update_search_results(self):
+        self.tree_store.clear()
+
+        for date_string, entries in self.journal.search(self.search_text, self.tags):
             for entry in entries:
                 entry = escape(entry)
                 entry = entry.replace("STARTBOLD", "<b>").replace("ENDBOLD", "</b>")

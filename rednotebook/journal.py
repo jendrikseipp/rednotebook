@@ -577,6 +577,7 @@ class Journal(Gtk.Application):
         if total_replacements > 0:
             self.save_to_disk()
             self.frame.cloud.update(force_update=True) # TODO: should be a part of an already called function?
+            self.frame.search_tree_view.update_search_results()
             self.show_message(_(f"Total of {total_replacements} replacements"), error=False)
         else:
             self.show_message(_("Nothing was replaced"), error=False)
