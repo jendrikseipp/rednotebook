@@ -556,19 +556,30 @@ class Journal(Gtk.Application):
         return results
 
     def replace_all(self, old, new):
+        total_replacements = 0
+
+        replacements = self.day.replace_all(old, new)
+        if replacements > 0:
+            self.month.edited = True
+            self.frame.set_day_text(self.day.text)
+            self.frame.categories_tree_view.set_day_content(self.day)
+            self.frame.calendar.set_day_edited(self.day, not self.day.empty)
+            total_replacements += replacements
+
         for month_number, month in self.months.items():
             for day_number, day in month.days.items():
-                is_content_replaced = day.replace_all(old, new)
-                if is_content_replaced:
+                replacements = day.replace_all(old, new)
+                if replacements > 0:
+                    month.edited = True
                     self.frame.calendar.set_day_edited(day_number, not day.empty)
+                    total_replacements += replacements
 
-                # TODO replace frame's day's content
-
-                # TODO reload frame
-                # TODO reload search
-                # TODO reload cloud
-
-        self.save_to_disk()
+        if total_replacements > 0:
+            self.save_to_disk()
+            self.frame.cloud.update(force_update=True) # TODO: should be a part of an already called function?
+            self.show_message(_(f"Total of {total_replacements} replacements"), error=False)
+        else:
+            self.show_message(_("Nothing was replaced"), error=False)
 
     def get_days_with_tags(self, tags):
         if not tags:

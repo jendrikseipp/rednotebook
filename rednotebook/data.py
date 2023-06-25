@@ -180,24 +180,11 @@ class Day:
 
     def replace_all(self, old, new):
         """
-        Replaces all occurences of old content with new.
-        Returns True if at least one replacement occured,
-        otherwise returns False.
+        Replaces all occurrences of old content with new.
+        Returns number of replacements.
         """
-        print("=========")
-        old_content = self.content
-        new_content = self.content.copy()
-        new_content["text"] = new_content["text"].replace(old, new)
-
-        print(old_content)
-        print(new_content)
-        if old_content != new_content:
-            print("Replaced")
-            self.content = new_content
-            return True
-        else:
-            print("Not Replaced")
-            return False
+        self.content["text"], replaced_words = re.subn(old, repl=new, string=self.content["text"], flags=re.IGNORECASE)
+        return replaced_words
 
     def search(self, text, tags):
         """

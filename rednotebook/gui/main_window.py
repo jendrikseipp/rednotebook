@@ -722,6 +722,9 @@ class MainWindow:
 
         self.categories_tree_view.set_day_content(day)
 
+    def set_day_text(self, new_text):
+        self.day_text_field.set_text(new_text)
+
     def get_day_text(self):
         return self.day_text_field.get_text()
 
