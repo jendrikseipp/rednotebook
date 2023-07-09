@@ -116,7 +116,6 @@ class ReplaceBox(Gtk.Box):
         if not self.new_data or self.new_data == self.old_data:
             return
 
-        print(f"Replacing {self.old_data} with {self.new_data}")
         self.journal.replace_all(self.old_data, self.new_data)
 
     def clear(self):
