@@ -563,19 +563,17 @@ class Journal(Gtk.Application):
                 replacements = day.replace_all(old, new)
                 if replacements > 0:
                     month.edited = True
-                    self.frame.calendar.set_day_edited(day_number, not day.empty)
 
                     if self.day.date == day.date:
                         self.frame.set_day_text(day.text)
-                        self.frame.categories_tree_view.set_day_content(day)
 
                     total_replacements += replacements
 
         if total_replacements > 0:
             self.frame.day_text_field.clear_buffers()
-            self.save_to_disk()
-            self.frame.cloud.update(force_update=True) # TODO: should be a part of an already called function?
+            self.frame.cloud.update(force_update=True)
             self.frame.search_tree_view.update_search_results()
+
             self.show_message(_(f"Total of {total_replacements} replacements"), error=False)
         else:
             self.show_message(_("Nothing was replaced"), error=False)
