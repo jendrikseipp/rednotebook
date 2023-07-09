@@ -556,18 +556,22 @@ class Journal(Gtk.Application):
         return results
 
     def replace_all(self, old, new):
+        """Replaces all strings matching 'old' with the 'new' string"""
         total_replacements = 0
 
-        for month_number, month in self.months.items():
-            for day_number, day in month.days.items():
-                replacements = day.replace_all(old, new)
-                if replacements > 0:
-                    month.edited = True
+        # Replacement for the current frame.
+        replacements = self.day.replace_all(old, new)
+        if replacements > 0:
+            self.month.edited = True
+            self.frame.set_day_text(self.day.text)
+            total_replacements += replacements
 
-                    if self.day.date == day.date:
-                        self.frame.set_day_text(day.text)
-
-                    total_replacements += replacements
+        # Replacement for all other days
+        for day in self.days:
+            replacements = day.replace_all(old, new)
+            if replacements > 0:
+                day.month.edited = True
+                total_replacements += replacements
 
         if total_replacements > 0:
             self.frame.day_text_field.clear_buffers()
