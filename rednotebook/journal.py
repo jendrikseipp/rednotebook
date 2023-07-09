@@ -558,20 +558,17 @@ class Journal(Gtk.Application):
     def replace_all(self, old, new):
         total_replacements = 0
 
-        replacements = self.day.replace_all(old, new)
-        if replacements > 0:
-            self.month.edited = True
-            self.frame.set_day_text(self.day.text)
-            self.frame.categories_tree_view.set_day_content(self.day)
-            self.frame.calendar.set_day_edited(self.day, not self.day.empty)
-            total_replacements += replacements
-
         for month_number, month in self.months.items():
             for day_number, day in month.days.items():
                 replacements = day.replace_all(old, new)
                 if replacements > 0:
                     month.edited = True
                     self.frame.calendar.set_day_edited(day_number, not day.empty)
+
+                    if self.day.date == day.date:
+                        self.frame.set_day_text(day.text)
+                        self.frame.categories_tree_view.set_day_content(day)
+
                     total_replacements += replacements
 
         if total_replacements > 0:
