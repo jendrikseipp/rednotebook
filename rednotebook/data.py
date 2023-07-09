@@ -22,16 +22,31 @@ import re
 
 TEXT_RESULT_LENGTH = 42
 
+HEX_COLOR = r"[0-9A-F]{6}"
+CPP_DIRECTIVES = "|".join(("include", "define", "ifdef", "ifndef", "endif"))
+HASHTAG_EXCLUDES = "|".join((HEX_COLOR, CPP_DIRECTIVES))
+
 ALPHA = r"[^\W\d_]"
 ALPHA_NUMERIC = r"\w"
-HEX = r"[0-9A-F]{6}"
-HASHTAG_EXCLUDES = r"%(HEX)s|include" % locals()
 HASHTAG_TEXT = r"%(ALPHA_NUMERIC)s*%(ALPHA)s+%(ALPHA_NUMERIC)s*" % locals()
 HASHTAG_PATTERN = (
     r"(^|[^%(ALPHA_NUMERIC)s&#])(#|\uFF03)(?!%(HASHTAG_EXCLUDES)s)"
     "(%(HASHTAG_TEXT)s)" % locals()
 )
-HASHTAG = re.compile(HASHTAG_PATTERN, flags=re.I)
+
+"""
+Note:
+The following regular expression is used to find hashtags in the text
+and add them to the 'Tags' section on the left panel.
+
+This pattern DOES NOT control the styling of hashtags in the text.
+To control this behaviour refer to rednotebook/files/t2t.lang
+(regexes) and rednotebook/files/rednotebook-highlight-style.xml (styles).
+
+If you make changes to this pattern, is very likely you will have to
+make changes to /rednotebook/files/t2t.lang
+"""
+HASHTAG = re.compile(HASHTAG_PATTERN, flags=re.IGNORECASE)
 
 
 def escape_tag(tag):
