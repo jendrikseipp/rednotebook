@@ -92,7 +92,6 @@ class ReplaceBox(Gtk.Box):
         super().__init__(**properties)
 
         self.old_data = ""
-        self.new_data = ""
 
         self.journal = main_window.journal
 
@@ -107,17 +106,15 @@ class ReplaceBox(Gtk.Box):
     def on_entry_activated(self, _):
         """Called when the user hits enter."""
 
-        self.new_data = self.text_field.get_text()
-        if not self.new_data or self.new_data == self.old_data:
+        new_data = self.text_field.get_text()
+        if not new_data or new_data == self.old_data:
             return
 
-        self.journal.replace_all(self.old_data, self.new_data)
+        self.journal.replace_all(self.old_data, new_data)
 
     def clear(self):
         self.text_field.set_text("")
         self.old_data = ""
-        self.new_data = ""
-
 
 class SearchTreeView(CustomListView):
     def __init__(self, main_window, always_show_results):
