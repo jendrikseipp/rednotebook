@@ -115,8 +115,8 @@ class ReplaceBox(Gtk.Box):
 
     def clear(self):
         self.text_field.set_text("")
-        self.old_data = None
-        self.new_data = None
+        self.old_data = ""
+        self.new_data = ""
 
 
 class SearchTreeView(CustomListView):
