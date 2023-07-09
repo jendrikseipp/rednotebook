@@ -133,6 +133,8 @@ class SearchTreeView(CustomListView):
         self.tree_store.clear()
 
     def update_data(self, search_text, tags):
+        self.tree_store.clear()
+
         if not self.always_show_results and not tags and not search_text:
             self.main_window.cloud.show()
             self.main_window.search_scroll.hide()
@@ -140,8 +142,6 @@ class SearchTreeView(CustomListView):
 
         self.main_window.cloud.hide()
         self.main_window.search_scroll.show()
-
-        self.tree_store.clear()
 
         for date_string, entries in self.journal.search(search_text, tags):
             for entry in entries:
