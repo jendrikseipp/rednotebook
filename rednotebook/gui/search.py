@@ -45,6 +45,17 @@ class SearchComboBox(CustomComboBoxEntry):
         elif not search_text:
             self.search("")
 
+        self.show_replace_box(search_text)
+
+    def show_replace_box(self, search_text):
+        replace_box = self.main_window.replace_box
+        if len(search_text) > 0:
+            replace_box.old_data = search_text
+            replace_box.show()
+        else:
+            replace_box.hide()
+            replace_box.clear()
+
     def on_entry_activated(self, entry):
         """Called when the user hits enter."""
         search_text = self.get_active_text()
@@ -79,14 +90,6 @@ class SearchComboBox(CustomComboBoxEntry):
         # search entry lose focus and search phrases are added to a day's text.
         if not self.entry.has_focus():
             self.entry.grab_focus()
-
-        replace_box = self.main_window.replace_box
-        if len(search_text) > 0:
-            replace_box.old_data = search_text
-            replace_box.show()
-        else:
-            replace_box.hide()
-            replace_box.clear()
 
 
 class ReplaceBox(Gtk.Box):
