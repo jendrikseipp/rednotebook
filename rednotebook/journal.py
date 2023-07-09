@@ -576,7 +576,7 @@ class Journal(Gtk.Application):
         if total_replacements > 0:
             self.frame.day_text_field.clear_buffers()
             self.frame.cloud.update(force_update=True)
-            self.frame.search_tree_view.update_search_results()
+            self.frame.search_tree_view.clear_search_results()
 
             self.show_message(_(f"Total of {total_replacements} replacements"), error=False)
         else:
