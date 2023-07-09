@@ -110,7 +110,7 @@ class ReplaceBox(Gtk.Box):
         self.set_orientation(Gtk.Orientation.HORIZONTAL)
 
     def on_entry_activated(self, _):
-        """Called when either enter is pressed or the button is clicked"""
+        """Called when the user hits enter."""
 
         self.new_data = self.text_field.get_text()
         if not self.new_data or self.new_data == self.old_data:
