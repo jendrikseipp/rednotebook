@@ -45,9 +45,6 @@ class SearchComboBox(CustomComboBoxEntry):
         elif not search_text:
             self.search("")
 
-        self.show_replace_box(search_text)
-
-    def show_replace_box(self, search_text):
         replace_box = self.main_window.replace_box
         if len(search_text) > 0:
             replace_box.old_data = search_text
