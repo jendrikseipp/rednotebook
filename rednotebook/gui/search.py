@@ -103,11 +103,7 @@ class ReplaceBox(Gtk.Box):
         self.text_field.connect("activate", self.on_entry_activated)
         self.text_field.show()
 
-        self.button = ActionButton("Replace all", self.on_entry_activated)
-        self.button.show()
-
         self.pack_start(self.text_field, True, True, 0)
-        self.pack_start(self.button, True, True, 0)
         self.set_orientation(Gtk.Orientation.HORIZONTAL)
 
     def on_entry_activated(self, _):
