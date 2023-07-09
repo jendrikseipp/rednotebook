@@ -198,7 +198,7 @@ class Day:
         Replaces all occurrences of old content with new.
         Returns number of replacements.
         """
-        self.content["text"], replaced_words = re.subn(old, repl=new, string=self.content["text"], flags=re.IGNORECASE)
+        self.content["text"], replaced_words = re.subn(re.escape(old), repl=new, string=self.content["text"], flags=re.IGNORECASE)
         return replaced_words
 
     def search(self, text, tags):
