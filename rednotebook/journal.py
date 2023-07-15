@@ -585,7 +585,9 @@ class Journal(Gtk.Application):
             self.frame.cloud.update(force_update=True)
             self.frame.search_tree_view.clear_search_results()
 
-            self.show_message(_(f"Total of {total_replacements} replacements"), error=False)
+            self.show_message(
+                _(f"Total of {total_replacements} replacements"), error=False
+            )
         else:
             self.show_message(_("Nothing was replaced"), error=False)
 

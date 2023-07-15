@@ -20,7 +20,7 @@ from xml.sax.saxutils import escape
 
 from gi.repository import GObject, Gtk
 
-from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView, ActionButton
+from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates
 
 
@@ -115,6 +115,7 @@ class ReplaceBox(Gtk.Box):
     def clear(self):
         self.text_field.set_text("")
         self.old_data = ""
+
 
 class SearchTreeView(CustomListView):
     def __init__(self, main_window, always_show_results):
