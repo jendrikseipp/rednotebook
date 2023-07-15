@@ -564,6 +564,11 @@ class Journal(Gtk.Application):
         if replacements > 0:
             self.month.edited = True
             self.frame.set_day_text(self.day.text)
+
+            # Update the preview if linux
+            if self.frame.preview_mode and self.frame.html_editor.internal:
+                self.frame.html_editor.show_day(self.day)
+
             total_replacements += replacements
 
         # Replacement for all other days
@@ -574,7 +579,9 @@ class Journal(Gtk.Application):
                 total_replacements += replacements
 
         if total_replacements > 0:
+            # Clear buffer to prevent saving of data from the buffer instead of the replaced text
             self.frame.day_text_field.clear_buffers()
+
             self.frame.cloud.update(force_update=True)
             self.frame.search_tree_view.clear_search_results()
 
