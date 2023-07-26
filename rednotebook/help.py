@@ -283,10 +283,9 @@ menu.
 %(save4)s
 %(save5)s
 
-Since version 0.9.2 you can also directly export your journal to PDF.
-If the option does not show up in the export assistant, you need to
-install pywebkitgtk version 1.1.5 or later (the package is sometimes
-called ``python-webkit``).
+To obtain a PDF of your journal, either export to HTML, open the resulting
+file in a browser and print it to PDF, or export to LaTeX and compile the
+file with ``pdflatex``.
 
 **Latex caveats**
 
