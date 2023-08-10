@@ -254,8 +254,7 @@ class MainWindow:
             actions = group.list_actions()
             for action in actions:
                 widgets = action.get_proxies()
-                tooltip = action.get_property("tooltip")
-                if tooltip:
+                if tooltip := action.get_property("tooltip"):
                     for widget in widgets:
                         widget.set_tooltip_markup(tooltip)
 
@@ -291,7 +290,7 @@ class MainWindow:
         self.tray_icon.set_name("RedNotebook")
         visible = self.journal.config.read("closeToTray") == 1
         self.tray_icon.set_visible(visible)
-        logging.debug("Tray icon visible: %s" % visible)
+        logging.debug(f"Tray icon visible: {visible}")
 
         self.tray_icon.set_tooltip_text("RedNotebook")
         icon_file = os.path.join(self.journal.dirs.frame_icon_dir, "rn-32.png")
@@ -436,7 +435,7 @@ class MainWindow:
         self.insert_button.set_sensitive(not preview)
         self.format_button.set_sensitive(not preview)
         for action in ["Cut", "Paste"]:
-            self.uimanager.get_widget("/MainMenuBar/Edit/%s" % action).set_sensitive(
+            self.uimanager.get_widget(f"/MainMenuBar/Edit/{action}").set_sensitive(
                 not preview
             )
 
@@ -461,7 +460,7 @@ class MainWindow:
             html = self.journal.convert(
                 markup_string,
                 "xhtml",
-                headers=[date_string + " - RedNotebook", "", ""],
+                headers=[f"{date_string} - RedNotebook", "", ""],
                 options={"toc": 0},
             )
             utils.show_html_in_browser(
@@ -560,7 +559,7 @@ class MainWindow:
         return True
 
     def navigate_to_uri(self, uri):
-        logging.info('Navigating to URI "%s"' % uri)
+        logging.info(f'Navigating to URI "{uri}"')
         if urls.is_entry_reference_uri(uri):
             self.navigate_to_referenced_entry(uri)
         else:
@@ -576,7 +575,7 @@ class MainWindow:
         dir_chooser.set_transient_for(self.main_frame)
         label = self.builder.get_object("dir_chooser_label")
 
-        label.set_markup("<b>" + message + "</b>")
+        label.set_markup(f"<b>{message}</b>")
         dir_chooser.set_current_folder(os.path.dirname(self.journal.dirs.data_dir))
 
         response = dir_chooser.run()
@@ -894,7 +893,7 @@ class NewEntryDialog:
         response = self.dialog.run()
         self.dialog.hide()
 
-        if not response == Gtk.ResponseType.OK:
+        if response != Gtk.ResponseType.OK:
             return
 
         category_name = self.categories_combo_box.get_active_text()
@@ -927,10 +926,7 @@ class Statusbar:
             self.start_countdown()
 
     def show_message(self, title, msg, msg_type):
-        if title and msg:
-            text = f"{title}: {msg}"
-        else:
-            text = title or msg
+        text = f"{title}: {msg}" if title and msg else title or msg
         self._show_text(text)
 
     def start_countdown(self):
@@ -1014,8 +1010,7 @@ class MainCalendar:
             1, dates.get_number_of_days(cal_year, cal_month) + 1
         ):
             logging.debug(
-                "Non-existent date in calendar: %s.%s.%s"
-                % (day_number, cal_month, cal_year)
+                f"Non-existent date in calendar: {day_number}.{cal_month}.{cal_year}"
             )
             return False
         return True

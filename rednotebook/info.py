@@ -28,7 +28,7 @@ if not hasattr(builtins, "_"):
 
 program_name = "RedNotebook"
 tagline = _("A Desktop Journal")
-version = "2.29.6"
+version = "2.30"
 author = "Jendrik Seipp"
 author_mail = "jendrikseipp@gmail.com"
 copyright_ = "Copyright (c) 2008-2022 Jendrik Seipp"
@@ -70,9 +70,7 @@ def get_commandline_parser():
     parser = argparse.ArgumentParser(
         description=comments, formatter_class=argparse.RawTextHelpFormatter
     )
-    parser.add_argument(
-        "--version", action="version", version="RedNotebook %s" % version
-    )
+    parser.add_argument("--version", action="version", version=f"RedNotebook {version}")
     parser.add_argument(
         "--date", dest="start_date", help="load specified date (format: YYYY-MM-DD)"
     )

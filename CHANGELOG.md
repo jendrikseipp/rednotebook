@@ -1,6 +1,11 @@
+# 2.30 (2023-08-10)
+* Modernize code (#689, @HighnessAtharva and @laraconda).
+* Fix: Correctly color URLs with hashtags symbols in edit mode (#703, @laraconda).
+* Add menu item to insert numbered lists (#526, @curioussushiroll).
+
 # 2.29.6 (2023-04-28)
 * Restore all keyboard shorts (#690, Jendrik Seipp).
-*
+
 # 2.29.5 (2023-04-13)
 * Fix: Don't try to print WebKit2 version on Windows (#686, Jendrik Seipp).
 
