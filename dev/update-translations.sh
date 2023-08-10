@@ -9,13 +9,13 @@ git switch master
 
 # Merge translations before updating po/pot files to avoid merge conflicts.
 # The workflow is based on https://github.com/WeblateOrg/weblate/issues/1847#issuecomment-415715912
-# Ignore returncode if no changes need to be merged.
+# Ignore returncode if no changes need to be merged. Also, ignore if resetting times out.
 wlc lock
 wlc commit
 set +e
 git fetch weblate && git merge --ff --squash weblate/master && git commit po/ -m "Update translations." && git push
-set -e
 wlc reset
+set -e
 wlc unlock
 
 # Regenerate .pot file manually.
