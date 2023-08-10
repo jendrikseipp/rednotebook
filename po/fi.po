@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-21 12:45+0100\n"
-"PO-Revision-Date: 2023-01-08 10:50+0000\n"
+"PO-Revision-Date: 2023-05-16 17:47+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Launchpad-Export-Date: 2019-11-08 05:48+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -335,7 +335,7 @@ msgstr "_Päiväkirja"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "New"
-msgstr ""
+msgstr "Uusi"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
@@ -343,17 +343,15 @@ msgstr "Luo uusi päiväkirja. Vanha tallennetaan."
 
 #: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
-msgstr ""
+msgstr "Avaa"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
 msgstr "Lataa olemassa oleva päiväkirja. Vanha päiväkirja tallennetaan."
 
 #: ../rednotebook/gui/menu.py:114
-#, fuzzy
-#| msgid "Save"
 msgid "Save As"
-msgstr "Tallenna"
+msgstr "Tallenna nimellä"
 
 #: ../rednotebook/gui/menu.py:117
 msgid ""
@@ -388,7 +386,7 @@ msgstr "Näytä tilastoja päiväkirjasta"
 
 #: ../rednotebook/gui/menu.py:150
 msgid "Quit"
-msgstr ""
+msgstr "Lopeta"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -400,7 +398,7 @@ msgstr "_Muokkaa"
 
 #: ../rednotebook/gui/menu.py:159
 msgid "Undo"
-msgstr ""
+msgstr "Kumoa"
 
 #: ../rednotebook/gui/menu.py:161
 msgid "Undo text or tag edits"
@@ -408,7 +406,7 @@ msgstr "Kumoa tekstin tai tunnisteiden muokkaukset"
 
 #: ../rednotebook/gui/menu.py:167
 msgid "Redo"
-msgstr ""
+msgstr "Tee uudelleen"
 
 #: ../rednotebook/gui/menu.py:169
 msgid "Redo text or tag edits"
@@ -416,27 +414,27 @@ msgstr "Tee uudelleen tekstin tai tunnisteiden muokkaukset"
 
 #: ../rednotebook/gui/menu.py:172
 msgid "Cut"
-msgstr ""
+msgstr "Leikkaa"
 
 #: ../rednotebook/gui/menu.py:176
 msgid "Copy"
-msgstr ""
+msgstr "Kopioi"
 
 #: ../rednotebook/gui/menu.py:184
 msgid "Paste"
-msgstr ""
+msgstr "Liitä"
 
 #: ../rednotebook/gui/menu.py:192
 msgid "Fullscreen"
-msgstr ""
+msgstr "Koko näyttö"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "Find"
-msgstr ""
+msgstr "Etsi"
 
 #: ../rednotebook/gui/menu.py:212
 msgid "Spell Check"
-msgstr ""
+msgstr "Oikoluku"
 
 #: ../rednotebook/gui/menu.py:214
 msgid "Underline misspelled words"
@@ -492,7 +490,7 @@ msgstr "Miten voimme parantaa RedNotebookia?"
 
 #: ../rednotebook/gui/menu.py:270
 msgid "About"
-msgstr ""
+msgstr "Tietoja"
 
 #: ../rednotebook/gui/menu.py:288
 msgid "Wrong directory"
@@ -1196,13 +1194,11 @@ msgstr "Valitse varmuuskopiotiedoston nimi"
 
 #: tmp/main_window.glade.h:4
 msgid "_Cancel"
-msgstr ""
+msgstr "_Peru"
 
 #: tmp/main_window.glade.h:5
-#, fuzzy
-#| msgid "Save"
 msgid "_Save"
-msgstr "Tallenna"
+msgstr "_Tallenna"
 
 #: tmp/main_window.glade.h:6
 msgid "Select a directory"
@@ -1210,7 +1206,7 @@ msgstr "Valitse kansio"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1300,7 +1296,7 @@ msgstr "Valitse kuva"
 
 #: tmp/main_window.glade.h:35
 msgid "_Open"
-msgstr ""
+msgstr "_Avaa"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"

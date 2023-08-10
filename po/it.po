@@ -449,6 +449,7 @@ msgid "Underline misspelled words"
 msgstr "Sottolinea le parole errate"
 
 #: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:29
+#: tmp/main_window.glade.h:26
 msgid "Preferences"
 msgstr "Preferenze"
 
@@ -466,7 +467,7 @@ msgstr "Apre la documentazione di RedNotebook"
 
 #: ../rednotebook/gui/menu.py:241
 msgid "Donate"
-msgstr "Danazione"
+msgstr "Donazione"
 
 #: ../rednotebook/gui/menu.py:243
 msgid "Support RedNotebook with a donation"
@@ -848,6 +849,7 @@ msgstr ""
 #. Translators: noun
 #. Translators: Verb
 #: ../rednotebook/help.py:47 tmp/main_window.glade.h:21
+#: tmp/main_window.glade.h:18
 msgid "Preview"
 msgstr "Anteprima"
 
@@ -1217,11 +1219,10 @@ msgid "_Cancel"
 msgstr "_Cancella"
 
 #: tmp/main_window.glade.h:5
-#| msgid "Save"
 msgid "_Save"
 msgstr "_Salva"
 
-#: tmp/main_window.glade.h:6
+#: tmp/main_window.glade.h:6 tmp/main_window.glade.h:5
 msgid "Select a directory"
 msgstr "Seleziona una directory"
 
@@ -1229,110 +1230,109 @@ msgstr "Seleziona una directory"
 msgid "_OK"
 msgstr "_OK"
 
-#: tmp/main_window.glade.h:8
+#: tmp/main_window.glade.h:8 tmp/main_window.glade.h:6
 msgid "Select a file"
 msgstr "Seleziona un file"
 
-#: tmp/main_window.glade.h:10
+#: tmp/main_window.glade.h:10 tmp/main_window.glade.h:7
 msgid "Insert Link"
 msgstr "Inserisci collegamento"
 
-#: tmp/main_window.glade.h:11
+#: tmp/main_window.glade.h:11 tmp/main_window.glade.h:8
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>Posizione del collegamento (ad es. https://www.google.com)</b>"
 
-#: tmp/main_window.glade.h:12
+#: tmp/main_window.glade.h:12 tmp/main_window.glade.h:9
 msgid "<b>Link name (optional)</b>"
 msgstr "<b>Nome del collegamento (opzionale)</b>"
 
-#: tmp/main_window.glade.h:13
+#: tmp/main_window.glade.h:13 tmp/main_window.glade.h:10
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Vai al giorno precedente (Ctrl+PagSu)"
 
-#: tmp/main_window.glade.h:14
+#: tmp/main_window.glade.h:14 tmp/main_window.glade.h:11
 msgid "Back"
 msgstr "Indietro"
 
-#: tmp/main_window.glade.h:15
+#: tmp/main_window.glade.h:15 tmp/main_window.glade.h:12
 msgid "Jump to today (Alt+Home)"
 msgstr "Vai a oggi (Alt+Home)"
 
-#: tmp/main_window.glade.h:16
+#: tmp/main_window.glade.h:16 tmp/main_window.glade.h:13
 msgid "Today"
 msgstr "Oggi"
 
-#: tmp/main_window.glade.h:17
+#: tmp/main_window.glade.h:17 tmp/main_window.glade.h:14
 msgid "Go to next day (Ctrl+PageDown)"
 msgstr "Vai al giorno successivo (Ctrl+PagGiù)"
 
-#: tmp/main_window.glade.h:18
+#: tmp/main_window.glade.h:18 tmp/main_window.glade.h:15
 msgid "Forward"
 msgstr "Avanti"
 
-#: tmp/main_window.glade.h:19
+#: tmp/main_window.glade.h:19 tmp/main_window.glade.h:16
 msgid "Show a formatted preview of the text (Ctrl+P)"
 msgstr "Mostra un'anteprima formattata del testo (Ctrl+P)"
 
-#: tmp/main_window.glade.h:22
+#: tmp/main_window.glade.h:22 tmp/main_window.glade.h:19
 msgid "Enable text editing (Ctrl+P)"
 msgstr "Abilita la modifica del testo (Ctrl+P)"
 
-#: tmp/main_window.glade.h:23
+#: tmp/main_window.glade.h:23 tmp/main_window.glade.h:20
 msgid "Edit"
 msgstr "Modifica"
 
-#: tmp/main_window.glade.h:24
+#: tmp/main_window.glade.h:24 tmp/main_window.glade.h:21
 msgid "Add a tag or a category entry"
 msgstr "Aggiunge un'etichetta o una voce di categoria"
 
-#: tmp/main_window.glade.h:25
+#: tmp/main_window.glade.h:25 tmp/main_window.glade.h:22
 msgid "Add Tag"
 msgstr "Aggiungi etichetta"
 
-#: tmp/main_window.glade.h:26
+#: tmp/main_window.glade.h:26 tmp/main_window.glade.h:23
 msgid "New entry"
 msgstr "Nuova voce"
 
-#: tmp/main_window.glade.h:27
+#: tmp/main_window.glade.h:27 tmp/main_window.glade.h:24
 msgid "<b>Select existing or new Category</b>"
 msgstr "<b>Selezionare una categoria esistente o creane una nuova</b>"
 
-#: tmp/main_window.glade.h:28
+#: tmp/main_window.glade.h:28 tmp/main_window.glade.h:25
 msgid "<b>Write entry</b> (optional)"
 msgstr "<b>Scrivi voce</b> (facoltativo)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:31
+#: tmp/main_window.glade.h:31 tmp/main_window.glade.h:28
 msgid "<b>General</b>"
 msgstr "<b>Generali</b>"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
-#: tmp/main_window.glade.h:33
+#: tmp/main_window.glade.h:33 tmp/main_window.glade.h:30
 msgid "General"
 msgstr "Generali"
 
-#: tmp/main_window.glade.h:34
+#: tmp/main_window.glade.h:34 tmp/main_window.glade.h:31
 msgid "Select a picture"
 msgstr "Seleziona un'immagine"
 
 #: tmp/main_window.glade.h:35
-#| msgid "Open"
 msgid "_Open"
 msgstr "_Apri"
 
-#: tmp/main_window.glade.h:36
+#: tmp/main_window.glade.h:36 tmp/main_window.glade.h:32
 msgid "Exit without saving"
 msgstr "Esce senza salvare"
 
-#: tmp/main_window.glade.h:37
+#: tmp/main_window.glade.h:37 tmp/main_window.glade.h:33
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: tmp/main_window.glade.h:38
+#: tmp/main_window.glade.h:38 tmp/main_window.glade.h:34
 msgid "<b>Selected Day</b>"
 msgstr "<b>Giorno selezionato</b>"
 
-#: tmp/main_window.glade.h:39
+#: tmp/main_window.glade.h:39 tmp/main_window.glade.h:35
 msgid "<b>Overall</b>"
 msgstr "<b>Complessive</b>"
 

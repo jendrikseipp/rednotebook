@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-21 12:45+0100\n"
-"PO-Revision-Date: 2023-01-04 23:49+0000\n"
+"PO-Revision-Date: 2023-07-30 22:06+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/hr/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Launchpad-Export-Date: 2022-10-01 06:31+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -169,8 +169,6 @@ msgid "Strikethrough"
 msgstr "Precrtano"
 
 #: ../rednotebook/gui/format_menu.py:132
-#, fuzzy
-#| msgid "Clear format"
 msgid "Clear Format"
 msgstr "Ukloni format"
 
@@ -341,7 +339,7 @@ msgstr "_Dnevnik"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "New"
-msgstr ""
+msgstr "Novi"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
@@ -349,17 +347,15 @@ msgstr "Stori novi dnevnik. Stari dnevnik će se spremiti"
 
 #: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
-msgstr ""
+msgstr "Otvori"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
 msgstr "Učitaj postojeći dnevnik. Stari dnevnik će se spremiti"
 
 #: ../rednotebook/gui/menu.py:114
-#, fuzzy
-#| msgid "Save"
 msgid "Save As"
-msgstr "Spremi"
+msgstr "Spremi kao"
 
 #: ../rednotebook/gui/menu.py:117
 msgid ""
@@ -392,7 +388,7 @@ msgstr "Prikaži neke statističke podatke o dnevniku"
 
 #: ../rednotebook/gui/menu.py:150
 msgid "Quit"
-msgstr ""
+msgstr "Zatvori program"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -404,7 +400,7 @@ msgstr "_Uredi"
 
 #: ../rednotebook/gui/menu.py:159
 msgid "Undo"
-msgstr ""
+msgstr "Poništi"
 
 #: ../rednotebook/gui/menu.py:161
 msgid "Undo text or tag edits"
@@ -412,35 +408,35 @@ msgstr "Poništi uređivanje teksta ili oznake"
 
 #: ../rednotebook/gui/menu.py:167
 msgid "Redo"
-msgstr ""
+msgstr "Ponovi"
 
 #: ../rednotebook/gui/menu.py:169
 msgid "Redo text or tag edits"
-msgstr "Obnovi uređivanje teksta ili oznake"
+msgstr "Ponovi uređivanje teksta ili oznake"
 
 #: ../rednotebook/gui/menu.py:172
 msgid "Cut"
-msgstr ""
+msgstr "Izreži"
 
 #: ../rednotebook/gui/menu.py:176
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #: ../rednotebook/gui/menu.py:184
 msgid "Paste"
-msgstr ""
+msgstr "Umetni"
 
 #: ../rednotebook/gui/menu.py:192
 msgid "Fullscreen"
-msgstr ""
+msgstr "Cjeloekranski prikaz"
 
 #: ../rednotebook/gui/menu.py:200
 msgid "Find"
-msgstr ""
+msgstr "Pronađi"
 
 #: ../rednotebook/gui/menu.py:212
 msgid "Spell Check"
-msgstr ""
+msgstr "Provjera pravopisa"
 
 #: ../rednotebook/gui/menu.py:214
 msgid "Underline misspelled words"
@@ -496,7 +492,7 @@ msgstr "Kako možemo poboljšati RedNotebook?"
 
 #: ../rednotebook/gui/menu.py:270
 msgid "About"
-msgstr ""
+msgstr "O"
 
 #: ../rednotebook/gui/menu.py:288
 msgid "Wrong directory"
@@ -1015,7 +1011,7 @@ msgstr "Pitaj tijekom sljedećeg pokretanja"
 
 #: ../rednotebook/backup.py:74
 msgid "Never ask again"
-msgstr "Ne pitaj ponovo"
+msgstr "Nikada ne pitaj ponovo"
 
 #: ../rednotebook/templates.py:27
 msgid "Monday"
@@ -1204,13 +1200,11 @@ msgstr "Odaberi ime datoteke sigurnosne kopije"
 
 #: tmp/main_window.glade.h:4
 msgid "_Cancel"
-msgstr ""
+msgstr "_Odustani"
 
 #: tmp/main_window.glade.h:5
-#, fuzzy
-#| msgid "Save"
 msgid "_Save"
-msgstr "Spremi"
+msgstr "_Spremi"
 
 #: tmp/main_window.glade.h:6
 msgid "Select a directory"
@@ -1218,7 +1212,7 @@ msgstr "Odaberi mapu"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr ""
+msgstr "_U redu"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1308,7 +1302,7 @@ msgstr "Odaberi sliku"
 
 #: tmp/main_window.glade.h:35
 msgid "_Open"
-msgstr ""
+msgstr "_Otvori"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"
