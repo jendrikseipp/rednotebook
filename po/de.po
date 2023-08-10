@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-21 12:45+0100\n"
-"PO-Revision-Date: 2023-01-14 14:48+0000\n"
+"PO-Revision-Date: 2023-03-27 13:37+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-Launchpad-Export-Date: 2017-07-08 05:26+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -291,9 +291,8 @@ msgid "_Insert"
 msgstr "_Einfügen"
 
 #: ../rednotebook/gui/insert_menu.py:192
-#, fuzzy
 msgid "Level"
-msgstr "Level"
+msgstr "Grad"
 
 #: ../rednotebook/gui/insert_menu.py:227
 msgid "Insert"
@@ -1241,13 +1240,11 @@ msgstr "Wähle einen Dateinamen für die Sicherung"
 
 #: tmp/main_window.glade.h:4
 msgid "_Cancel"
-msgstr ""
+msgstr "_Abbrechen"
 
 #: tmp/main_window.glade.h:5
-#, fuzzy
-#| msgid "Save"
 msgid "_Save"
-msgstr "Speichern"
+msgstr "_Speichern"
 
 #: tmp/main_window.glade.h:6
 msgid "Select a directory"
@@ -1255,7 +1252,7 @@ msgstr "Wähle ein Verzeichnis"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1344,10 +1341,8 @@ msgid "Select a picture"
 msgstr "Wähle ein Bild"
 
 #: tmp/main_window.glade.h:35
-#, fuzzy
-#| msgid "Open"
 msgid "_Open"
-msgstr "Öffnen"
+msgstr "_Öffnen"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"
