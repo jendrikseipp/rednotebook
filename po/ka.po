@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-21 12:45+0100\n"
-"PO-Revision-Date: 2015-11-01 21:12+0000\n"
-"Last-Translator: Giorgi Maghlakelidze <acidlabz@gmail.com>\n"
-"Language-Team: Georgian <ka@li.org>\n"
+"PO-Revision-Date: 2023-04-11 10:40+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
 
 #: ../rednotebook/info.py:30
 msgid "A Desktop Journal"
@@ -32,7 +34,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
-msgstr "სისტემის  ჩართვასთან ერთად RedNotebook'ის გაშვება"
+msgstr "RedNotebook-ის სისტემის ჩართვასთან ერთად გაშვება"
 
 #: ../rednotebook/gui/options.py:165
 msgid "%A, %x, Day %j"
@@ -160,10 +162,8 @@ msgid "Strikethrough"
 msgstr "გადახაზული"
 
 #: ../rednotebook/gui/format_menu.py:132
-#, fuzzy
-#| msgid "Format"
 msgid "Clear Format"
-msgstr "ფორმატი"
+msgstr "ფორმატის გასუფთავება"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:138
@@ -201,7 +201,7 @@ msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
 "ამ დღის შაბლონის ჩასმა. სხვა შაბლონის გამოყენებისთვის, დააჭირეთ მარჯვნივ "
-"მყოფ ისარს."
+"მყოფ ისარს"
 
 #: ../rednotebook/gui/insert_menu.py:105
 msgid "First Item"
@@ -337,7 +337,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
-msgstr "ახალი დღიურის შექმნა. ძველი დღიური შენარჩუნდება."
+msgstr "ახალი ჟურნალის შექმნა. ძველი ჟურნალი შენარჩუნდება"
 
 #: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
@@ -345,7 +345,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "არსებული დღიურის ჩატვირთვა. ძველი დღიური შენარჩუნდება."
+msgstr "არსებული ჟურნალის ჩატვირთვა. ძველი ჟურნალი შენარჩუნდება"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save As"
@@ -458,20 +458,16 @@ msgid "Donate"
 msgstr ""
 
 #: ../rednotebook/gui/menu.py:243
-#, fuzzy
-#| msgid "Open the RedNotebook documentation"
 msgid "Support RedNotebook with a donation"
-msgstr "RedNotebook'ის დამხმარე მასალის გახსნა"
+msgstr "RedNotebook-ისთვის შეწირულობა"
 
 #: ../rednotebook/gui/menu.py:249
 msgid "Translate RedNotebook"
 msgstr "RedNotebook'ის თარგმნა"
 
 #: ../rednotebook/gui/menu.py:251
-#, fuzzy
-#| msgid "Translate RedNotebook"
 msgid "Help translate RedNotebook to your language"
-msgstr "RedNotebook'ის თარგმნა"
+msgstr "დაგვეხმარეთ RedNotebook-ის თქვენს ენაზე თარგმანში"
 
 #: ../rednotebook/gui/menu.py:257
 msgid "Report a Problem"
@@ -535,7 +531,7 @@ msgstr "აირჩიეთ ცარიელი საქაღალდე 
 
 #: ../rednotebook/gui/menu.py:348
 msgid "The directory name will be the new title of the journal"
-msgstr "საქაღალდის სახელი იქნება დღიურის ახალი დასახელება."
+msgstr "ჟურნალის სახელი ჟურნალის ახალი დასახელება იქნება"
 
 #: ../rednotebook/gui/menu.py:408
 msgid "RedNotebook Documentation"
@@ -548,9 +544,7 @@ msgstr ""
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Giorgi Maghlakelidze https://launchpad.net/~dracid"
+msgstr "Giorgi Maghlakelidze https://launchpad.net/~dracid"
 
 #: ../rednotebook/gui/clouds.py:74
 msgid "filter, these, comma, separated, words, and, #tags"
@@ -641,7 +635,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:285
 msgid "You have selected the following settings:"
-msgstr "თქვენი არჩევანი"
+msgstr "აირჩიეთ შემდეგი პარამეტრები:"
 
 #: ../rednotebook/gui/exports.py:310
 msgid "Export Assistant"
@@ -821,8 +815,8 @@ msgid ""
 "The example text and more documentation is available under \"Help\" -> "
 "\"Contents\"."
 msgstr ""
-"სანიმუშო ტექსტი დამატებით ინფორმაციასთან ერთად ხელმისაწვდომია მენიუს პუნქტში "
-"\"დახმარება\" -> \"სარჩევი\""
+"ნიმუშის ტექსტი დამატებით ინფორმაციასთან ერთად ხელმისაწვდომია მენიუს პუნქტში "
+"\"დახმარება\" -> \"სარჩევი\"."
 
 #. Translators: noun
 #. Translators: Verb
@@ -835,8 +829,7 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
-"RedNotebook-ს აქვს მუშაობის ორი რეჟიმი:  __დამუშავების__ და __გადახედვის__ "
-"რეჟიმი."
+"RedNotebook-ს მუშაობის ორი, __დამუშავების__ და __გადახედვის__ რეჟიმი აქვს."
 
 #: ../rednotebook/help.py:51
 msgid "Click on Edit above to see the difference."
@@ -861,10 +854,8 @@ msgstr ""
 "\"__ჯარისკაცის მამას__\"."
 
 #: ../rednotebook/help.py:64
-#, fuzzy
-#| msgid "Template"
 msgid "Templates"
-msgstr "შაბლონი"
+msgstr "შაბლონები"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
@@ -897,7 +888,7 @@ msgstr ""
 msgid "To avoid data loss you should backup your journal regularly."
 msgstr ""
 "გირჩევთ პერიოდულად შექმნათ ჩანაწერების სამარქაფო ასლი, რათა თავი დაიზღვიოთ "
-"მნიშვნელოვანი ინფორმაციის დაკარგვისაგან"
+"მნიშვნელოვანი ინფორმაციის დაკარგვისაგან."
 
 #: ../rednotebook/help.py:80
 msgid ""
@@ -969,10 +960,9 @@ msgid "Error"
 msgstr ""
 
 #: ../rednotebook/backup.py:58
-#, fuzzy, python-format
-#| msgid "It has been a while since you made your last backup."
+#, python-format
 msgid "It has been %d days since you made your last backup."
-msgstr "ბოლო სამარქაფო ასლი დიდი ხნის წინ იყო გაკეთებული."
+msgstr "ბოლო სამარქაფო ასლი %d დღის წინ გაკეთდა."
 
 #: ../rednotebook/backup.py:60
 msgid "You can backup your journal to a zip file to avoid data loss."
@@ -1153,10 +1143,8 @@ msgstr ""
 "=====================================\n"
 
 #: ../rednotebook/templates.py:196
-#, fuzzy
-#| msgid "Template"
 msgid "Template mode"
-msgstr "შაბლონი"
+msgstr "შაბლონის რეჟიმი"
 
 #: ../rednotebook/templates.py:200
 msgid "You are currently editing a template."
@@ -1207,10 +1195,8 @@ msgid "Insert Link"
 msgstr "ბმულის ჩასმა"
 
 #: tmp/main_window.glade.h:11
-#, fuzzy
-#| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
-msgstr "<b>ვებ-მისამართი (მაგ. http://rednotebook.sf.net)</b>"
+msgstr "<b>ბმულის მისამართი (მაგ: https://www.google.com)</b>"
 
 #: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
@@ -1221,10 +1207,8 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "წინა დღეზე გადასვლა (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:14
-#, fuzzy
-#| msgid "Backup"
 msgid "Back"
-msgstr "სამარქაფო ასლი"
+msgstr "უკან"
 
 #: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
