@@ -4,6 +4,7 @@
 
 To merge .txt files into a destination RedNotebook journal:
 
+0. Install script requirements: "pip install PyYAML"
 1. Click on "Save" within RedNotebook. 
 2. Do a backup.
 3. Quit RedNotebook.
@@ -38,17 +39,19 @@ each item as an 'Added from <my title>: /path/to/xxx.txt' before the merged text
 import argparse
 import os
 import sys
+
 import yaml
 
+
 def doit(argv):
-    """Merge a list of files into another RedNotebook directory
+    """Merge a list of files into another RedNotebook directory.
 
     Args:
         argv (list of str): Program arguments
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--dest-dir', type=str, required=True,
-        help='Rednotebook data directory to merge into')
+        help='RedNotebook data directory to merge into')
     parser.add_argument('-t', '--title', type=str, default='',
         help='Title of source files, to use when merging')
     parser.add_argument('src_files', type=str, nargs='+',
@@ -60,13 +63,13 @@ def doit(argv):
     for fname in args.src_files:
         header = f'Added from {args.title}: {fname}:\n'
 
-        # Load data from the source file
+        # Load data from the source file.
         with open(fname, encoding='utf-8') as inf:
             in_data = yaml.safe_load(inf)
 
         base = os.path.basename(fname)
 
-        # Figure out what the destination filename will be
+        # Figure out what the destination filename will be.
         dest_fname = os.path.join(args.dest_dir, base)
 
         # If it exists, read it in, since we'll need to update it...
@@ -80,7 +83,7 @@ def doit(argv):
             dest_data = {}
             print(f'Adding new file {base}')
 
-        # Work through day by day, merging in the data
+        # Work through day by day, merging in the data.
         for day in sorted(in_data.keys()):
             text = in_data[day]['text']
 
@@ -89,12 +92,12 @@ def doit(argv):
                 print(f'   - merging day {day}')
                 dest_data[day]['text'] += '\n\n' + header + text
 
-            # but if the day does not exist, create it
+            # but if the day does not exist, create it.
             else:
                 print(f'   - added new day {day}')
                 dest_data[day] = {'text': header + text}
 
-        # Write out the resulting file, if requested
+        # Write out the resulting file, if requested.
         if not args.dry_run:
             with open(dest_fname, 'w', encoding='utf-8') as outf:
                 yaml.dump(dest_data, outf)
