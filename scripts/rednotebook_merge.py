@@ -1,15 +1,15 @@
-#!/usr/bin/env python
+#! /usr/bin/env python
 
-"""Merges two rednotebook directories
+"""Merge two RedNotebook directories.
 
-To merge .txt files into a destination rednotebook:
+To merge .txt files into a destination RedNotebook journal:
 
-1. Quit rednoteboot
-2. Run it again and do a backup
-3. Quit it
-4. Merge in your files:
+1. Click on "Save" within RedNotebook. 
+2. Do a backup.
+3. Quit RedNotebook.
+4. Merge in your files (adjust paths):
 
-   rednotebook-merge.py -n -d ~/.rednotebook/data -t "title" /path/to/*.txt
+   rednotebook-merge.py --dry-run --dest-dir ~/.rednotebook/data --title "my title" /path/to/*.txt
 
 You will see a log like this:
 
@@ -29,10 +29,10 @@ You will see a log like this:
 
 If that looks OK, then
 
-5. Run that again but without the -n flag
+5. Run that again but without the --dry-run flag.
 
 It should merge in the files. You can see things that were merged in since
-each item as an 'Added from <title>: /path/to/xxx.txt' before the merged text.
+each item as an 'Added from <my title>: /path/to/xxx.txt' before the merged text.
 """
 
 import argparse
@@ -41,7 +41,7 @@ import sys
 import yaml
 
 def doit(argv):
-    """Merge a list of files into another .rednotebook directory
+    """Merge a list of files into another RedNotebook directory
 
     Args:
         argv (list of str): Program arguments
