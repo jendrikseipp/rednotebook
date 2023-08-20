@@ -55,6 +55,7 @@ Run all tests:
   * Ciaran for creating the RedNotebook icon.
   * The [txt2tags](https://txt2tags.org) team for their markup conversion tool.
   * Dieter Verfaillie for his [elib.intl](https://github.com/dieterv/elib.intl) module.
+  * Maximilian Köhl for his [pygtkspellcheck](https://github.com/koehlma/pygtkspellcheck) project.
   * The Weblate team for hosting [translations for RedNotebook](https://hosted.weblate.org/engage/rednotebook/).
 
 
