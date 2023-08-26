@@ -582,7 +582,7 @@ class Journal(Gtk.Application):
 
             self.show_message(
                 _(f"Replaced {total_replacements} occurrences of the search text"),
-                error=False
+                error=False,
             )
         else:
             self.show_message(_("No text has been replaced"), error=False)
