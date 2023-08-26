@@ -46,7 +46,7 @@ class SearchComboBox(CustomComboBoxEntry):
             self.search("")
 
         replace_box = self.main_window.replace_box
-        if len(search_text) > 0:
+        if search_text:
             replace_box.old_data = search_text
             replace_box.show()
         else:
@@ -96,7 +96,7 @@ class ReplaceBox(Gtk.Box):
         self.journal = main_window.journal
 
         self.text_field = Gtk.Entry()
-        self.text_field.set_placeholder_text("Replace")
+        self.text_field.set_placeholder_text(_("Replace"))
         self.text_field.connect("activate", self.on_entry_activated)
         self.text_field.show()
 
@@ -107,7 +107,7 @@ class ReplaceBox(Gtk.Box):
         """Called when the user hits enter."""
 
         new_data = self.text_field.get_text()
-        if not new_data or new_data == self.old_data:
+        if new_data == self.old_data:
             return
 
         self.journal.replace_all(self.old_data, new_data)
