@@ -568,7 +568,7 @@ class Journal(Gtk.Application):
 
         # Update current frame
         self.frame.set_day_text(self.day.text)
-        
+
         # Update the preview if it's active.
         if self.frame.preview_mode and self.frame.html_editor.internal:
             self.frame.html_editor.show_day(self.day)
@@ -581,7 +581,8 @@ class Journal(Gtk.Application):
             self.frame.search_tree_view.clear_search_results()
 
             self.show_message(
-                _(f"Replaced {total_replacements} occurrences of the search text"), error=False
+                _(f"Replaced {total_replacements} occurrences of the search text"), 
+                error=False
             )
         else:
             self.show_message(_("No text has been replaced"), error=False)
