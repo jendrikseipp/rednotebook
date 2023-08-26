@@ -1,3 +1,12 @@
+rednotebook (2.30-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Modernize code (#689, @HighnessAtharva and @laraconda).
+  * Fix: Correctly color URLs with hashtags symbols in edit mode (#703, @laraconda).
+  * Add menu item to insert numbered lists (#526, @curioussushiroll).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Thu, 10 Aug 2023 17:49:51 +0200
+
 rednotebook (2.29.6-1) UNRELEASED; urgency=low
 
   * New upstream release

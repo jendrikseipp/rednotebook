@@ -1,16 +1,16 @@
 # Roadmap
 
-If you have any suggestions or comments, feel free to contact me on the
-mailing list or directly per mail. Before starting to work on a feature,
-please check back with me briefly about its status.
+If you have any suggestions or comments, feel free to start a
+[discussion](https://github.com/jendrikseipp/rednotebook/discussions). Before
+starting to work on a feature, please check back with me briefly about its
+status.
 
 ## Important features
 
-- [ ] Update GTK stack for Windows: use MinGW and Python >= 3.6.
+- [ ] Support Markdown.
 - [ ] Use separate file for storing CSS to allow users to override styles more easily.
-- [ ] Make default CSS prettier (see private email exchange).
-- [ ] Allow searching for days that contain **multiple** words or tags.
-- [ ] Check that non-ASCII image filenames work (<https://bugs.launchpad.net/bugs/1739701>).
+- [ ] Make default CSS prettier.
+- [ ] Allow searching for days that contain *multiple* words or tags.
 - [ ] Add simple way to show all entries: allow searching for whitespace (i.e., don't strip whitespace from search string).
 - [ ] Copy files and pictures into data subdirectory (#163, #469).
 - [ ] Require minimum width for calendar panel to avoid hiding it by accident.
@@ -21,9 +21,7 @@ please check back with me briefly about its status.
 
 - [ ] Windows:
   - [ ] Make sure we use libyaml and not yaml on Windows.
-  - [ ] Check that the Euro symbol can be used on Windows.
   - [ ] Check that images work on Windows in LaTeX exports.
-  - [ ] Fix drag-and-drop on Windows (confirmed that it doesn't work in version 2.6.1). Might be fixed by now.
 
 ### Remove right-side tags panel (disabled by default)
 
@@ -38,31 +36,22 @@ please check back with me briefly about its status.
 ## Optional features
 
 - [ ] Auto-completion for hashtags.
-- [ ] Use `Gtk.Application` to ensure there's only one RedNotebook instance.
-- [ ] Improve startup time by loading the content after showing the window (except for maybe the current month file).
 - [ ] Add macro system that takes a macro like `{weather}` and renders it for the preview, e.g., an HTML snippet that displays that day's weather symbol.
 - [ ] Live preview of selected font in editor pane.
 - [ ] Allow exporting the entries of a search result.
 - [ ] Translate help page.
-- [ ] When hovering over search result, show day's full text in "hover box".
 - [ ] Allow hashtags with non-alphanumeric characters, e.g., `#c++`.
 - [ ] Add menus to forward and backward buttons to navigate to recently visited days.
 - [ ] Make deleting templates easier.
-- [ ] Enable right-click menu for copying in preview.
-  Since we don't want the default menu with "Reload", we can either
-  - create our own menu: complicated
-  - only show the menu if there's a selection: WebView.has_selection() seems to be broken
 - [ ] Translate templates.
 
 ## Implementation changes
 
 - [ ] Enable faulthandler module (<https://docs.python.org/3/library/faulthandler.html>, added in Python 3.3).
-- [ ] Don't store regexes in Cloud class.
-- [ ] Clouds: don't store link_dict, but use names directly in HTML in Cloud class.
 
 ## Deferred features
 
-After deciding whether to switch to Markdown or not:
+After switching to Markdown, add the following features:
 
 - [X] Insert Latex formulas
   - [X] Preview Latex formulas
