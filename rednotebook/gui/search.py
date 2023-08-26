@@ -46,7 +46,7 @@ class SearchComboBox(CustomComboBoxEntry):
             self.search("")
 
         replace_box = self.main_window.replace_box
-        if search_text:
+        if search_text and self.main_window.search_tree_view.has_results():
             replace_box.old_data = search_text
             replace_box.show()
         else:
@@ -126,6 +126,9 @@ class SearchTreeView(CustomListView):
         self.tree_store = self.get_model()
 
         self.connect("cursor_changed", self.on_cursor_changed)
+
+    def has_results(self):
+        return len(self.tree_store) > 0
 
     def clear_search_results(self):
         self.tree_store.clear()
