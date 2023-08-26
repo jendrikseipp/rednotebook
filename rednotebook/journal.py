@@ -581,7 +581,7 @@ class Journal(Gtk.Application):
             self.frame.search_tree_view.clear_search_results()
 
             self.show_message(
-                _(f"Replaced {total_replacements} occurrences of the search text"), 
+                _(f"Replaced {total_replacements} occurrences of the search text"),
                 error=False
             )
         else:
