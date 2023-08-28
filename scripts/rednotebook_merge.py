@@ -28,6 +28,11 @@ You will see a log like this:
        - added new day 2
        written
 
+It ends with a summary, e.g. Days already present 17, merged 161, added 71
+
+That means that 17 days already had the corresponding contents, 161 days were
+merged in and 71 new days were added.
+
 If that looks OK, then
 
 5. Run that again but without the --dry-run flag.
@@ -70,6 +75,9 @@ def doit(argv):
     )
     args = parser.parse_args(argv[1:])
 
+    present, merged, added = 0, 0, 0
+
+    merged = 0
     for fname in args.src_files:
         header = f"Added from {args.title}: {fname}:\n"
 
@@ -99,19 +107,29 @@ def doit(argv):
 
             # If the day exists, append this text at the end...
             if day in dest_data:
-                print(f"   - merging day {day}")
-                dest_data[day]["text"] += "\n\n" + header + text
+                if text in dest_data[day]["text"]:
+                    print(f"   - already present in day {day}")
+                    present += 1
+                else:
+                    print(f"   - merging day {day}")
+                    dest_data[day]["text"] += "\n\n" + header + text
+                    merged += 1
 
-            # but if the day does not exist, create it.
+            # but if the day does not exist, create it
             else:
                 print(f"   - added new day {day}")
                 dest_data[day] = {"text": header + text}
+                added += 1
 
         # Write out the resulting file, if requested.
         if not args.dry_run:
             with open(dest_fname, "w", encoding="utf-8") as outf:
                 yaml.dump(dest_data, outf)
             print("   written")
+
+    print(f"Days already present {present}, merged {merged}, added {added}")
+    if args.dry_run:
+        print("Dry run - no changes")
 
 
 if __name__ == "__main__":
