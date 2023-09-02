@@ -193,6 +193,16 @@ class Day:
     def get_number_of_words(self):
         return len(self.get_words(with_special_chars=True))
 
+    def replace_all(self, old, new):
+        """
+        Replaces all occurrences of old content with new.
+        Returns number of replacements.
+        """
+        self.content["text"], replaced_words = re.subn(
+            re.escape(old), repl=new, string=self.content["text"], flags=re.IGNORECASE
+        )
+        return replaced_words
+
     def search(self, text, tags):
         """
         This method is only called for days that have all given tags.

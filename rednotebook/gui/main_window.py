@@ -489,8 +489,10 @@ class MainWindow:
         self.search_scroll.add(self.search_tree_view)
         self.search_box = search.SearchComboBox(Gtk.ComboBox.new_with_entry(), self)
         self.search_box.combo_box.show()
+        self.replace_box = search.ReplaceBox(self)
         search_container = self.builder.get_object("search_container")
         search_container.pack_start(self.search_box.combo_box, False, False, 0)
+        search_container.pack_start(self.replace_box, False, True, 0)
         search_container.pack_start(self.search_scroll, True, True, 0)
 
     def setup_clouds(self):
@@ -719,6 +721,9 @@ class MainWindow:
             self.html_editor.show_day(day)
 
         self.categories_tree_view.set_day_content(day)
+
+    def set_day_text(self, new_text):
+        self.day_text_field.set_text(new_text)
 
     def get_day_text(self):
         return self.day_text_field.get_text()
