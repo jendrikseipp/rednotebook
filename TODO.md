@@ -11,7 +11,6 @@ status.
 - [ ] Use separate file for storing CSS to allow users to override styles more easily.
 - [ ] Make default CSS prettier.
 - [ ] Allow searching for days that contain *multiple* words or tags.
-- [ ] Search and replace (useful for renaming tags and other names). Show "replace" text field after search text has been entered.
 - [ ] Add simple way to show all entries: allow searching for whitespace (i.e., don't strip whitespace from search string).
 - [ ] Copy files and pictures into data subdirectory (#163, #469).
 - [ ] Require minimum width for calendar panel to avoid hiding it by accident.

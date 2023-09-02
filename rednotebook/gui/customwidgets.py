@@ -45,6 +45,8 @@ class CustomComboBoxEntry:
         self.combo_box.set_entry_text_column(0)
         self.entry = self.combo_box.get_child()
 
+        self.entry.set_placeholder_text(_("Search"))
+
         # Autocompletion
         entry_completion = Gtk.EntryCompletion()
         entry_completion.set_model(self.liststore)
