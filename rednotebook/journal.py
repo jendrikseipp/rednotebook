@@ -559,14 +559,13 @@ class Journal(Gtk.Application):
         """Replace all strings matching 'old' with the 'new' string."""
         total_replacements = 0
 
-        # Replacement for all other days
         for day in self.days:
             replacements = day.replace_all(old, new)
             if replacements > 0:
                 day.month.edited = True
                 total_replacements += replacements
 
-        # Update current frame
+        # Update current frame.
         self.frame.set_day_text(self.day.text)
 
         # Update the preview if it's active.
@@ -574,11 +573,11 @@ class Journal(Gtk.Application):
             self.frame.html_editor.show_day(self.day)
 
         if total_replacements > 0:
-            # Clear buffer to prevent saving of data from the buffer instead of the replaced text.
+            # Prevent saving data from the buffers instead of the replaced text.
             self.frame.day_text_field.clear_buffers()
 
             self.frame.cloud.update(force_update=True)
-            self.frame.search_tree_view.clear_search_results()
+            self.frame.search_box.update_search_results()
 
             self.show_message(
                 _(f"Replaced {total_replacements} occurrences of the search text"),

@@ -86,6 +86,9 @@ class SearchComboBox(CustomComboBoxEntry):
         if not self.entry.has_focus():
             self.entry.grab_focus()
 
+    def update_search_results(self):
+        self.search(self.get_active_text())
+
 
 class ReplaceBox(Gtk.Box):
     def __init__(self, main_window, **properties):
@@ -125,16 +128,20 @@ class SearchTreeView(CustomListView):
         self.always_show_results = always_show_results
         self.tree_store = self.get_model()
 
-        self.connect("cursor_changed", self.on_cursor_changed)
+        self.cursor_changed_signal = self.connect(
+            "cursor_changed", self.on_cursor_changed
+        )
 
     def has_results(self):
         return len(self.tree_store) > 0
 
     def clear_search_results(self):
-        self.tree_store.clear()
+        # Don't switch the current day while clearing the search results.
+        with GObject.signal_handler_block(self, self.cursor_changed_signal):
+            self.tree_store.clear()
 
     def update_data(self, search_text, tags):
-        self.tree_store.clear()
+        self.clear_search_results()
 
         if not self.always_show_results and not tags and not search_text:
             self.main_window.cloud.show()
@@ -151,7 +158,7 @@ class SearchTreeView(CustomListView):
                 self.tree_store.append([date_string, entry])
 
     def on_cursor_changed(self, treeview):
-        """Move to the selected day when user clicks on it"""
+        """Move to the selected day when user clicks on it."""
         model, paths = self.get_selection().get_selected_rows()
         if not paths:
             return
