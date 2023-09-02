@@ -1,4 +1,4 @@
-# next (unreleased)
+# 2.31 (2023-09-02)
 * Add basic text replace functionality (#715, @curioussushiroll).
 
 # 2.30 (2023-08-10)

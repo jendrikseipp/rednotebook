@@ -16,7 +16,7 @@ Needed for running RedNotebook:
 
   * GTK (3.18+): https://www.gtk.org
   * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
-  * Python (3.6+): https://www.python.org
+  * Python (3.8+): https://www.python.org
   * PyYAML (3.10+): https://pyyaml.org
   * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
   * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/ (optional)
