@@ -16,7 +16,7 @@ Needed for running RedNotebook:
 
   * GTK (3.18+): https://www.gtk.org
   * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
-  * Python (3.6+): https://www.python.org
+  * Python (3.8+): https://www.python.org
   * PyYAML (3.10+): https://pyyaml.org
   * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
   * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/ (optional)
@@ -46,6 +46,7 @@ Start RedNotebook:
   * Ciaran for creating the RedNotebook icon.
   * The [txt2tags](https://txt2tags.org) team for their markup conversion tool.
   * Dieter Verfaillie for his [elib.intl](https://github.com/dieterv/elib.intl) module.
+  * Maximilian Köhl for his [pygtkspellcheck](https://github.com/koehlma/pygtkspellcheck) project.
   * The Weblate team for hosting [translations for RedNotebook](https://hosted.weblate.org/engage/rednotebook/).
 
 
