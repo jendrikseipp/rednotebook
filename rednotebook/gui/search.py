@@ -18,7 +18,7 @@
 
 from xml.sax.saxutils import escape
 
-from gi.repository import GObject
+from gi.repository import GObject, Gtk
 
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates
@@ -44,6 +44,14 @@ class SearchComboBox(CustomComboBoxEntry):
             self.search(search_text)
         elif not search_text:
             self.search("")
+
+        replace_box = self.main_window.replace_box
+        if search_text and self.main_window.search_tree_view.has_results():
+            replace_box.old_data = search_text
+            replace_box.show()
+        else:
+            replace_box.hide()
+            replace_box.clear()
 
     def on_entry_activated(self, entry):
         """Called when the user hits enter."""
@@ -79,6 +87,36 @@ class SearchComboBox(CustomComboBoxEntry):
             self.entry.grab_focus()
 
 
+class ReplaceBox(Gtk.Box):
+    def __init__(self, main_window, **properties):
+        super().__init__(**properties)
+
+        self.old_data = ""
+
+        self.journal = main_window.journal
+
+        self.text_field = Gtk.Entry()
+        self.text_field.set_placeholder_text(_("Replace"))
+        self.text_field.connect("activate", self.on_entry_activated)
+        self.text_field.show()
+
+        self.pack_start(self.text_field, True, True, 0)
+        self.set_orientation(Gtk.Orientation.HORIZONTAL)
+
+    def on_entry_activated(self, _):
+        """Called when the user hits enter."""
+
+        new_data = self.text_field.get_text()
+        if new_data == self.old_data:
+            return
+
+        self.journal.replace_all(self.old_data, new_data)
+
+    def clear(self):
+        self.text_field.set_text("")
+        self.old_data = ""
+
+
 class SearchTreeView(CustomListView):
     def __init__(self, main_window, always_show_results):
         CustomListView.__init__(self, [(_("Date"), str), (_("Text"), str)])
@@ -88,6 +126,12 @@ class SearchTreeView(CustomListView):
         self.tree_store = self.get_model()
 
         self.connect("cursor_changed", self.on_cursor_changed)
+
+    def has_results(self):
+        return len(self.tree_store) > 0
+
+    def clear_search_results(self):
+        self.tree_store.clear()
 
     def update_data(self, search_text, tags):
         self.tree_store.clear()
