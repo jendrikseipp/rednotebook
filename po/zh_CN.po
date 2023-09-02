@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-21 12:45+0100\n"
+"POT-Creation-Date: 2023-09-02 08:57+0200\n"
 "PO-Revision-Date: 2023-01-24 12:47+0000\n"
 "Last-Translator: Daniel Tao <danieltaoys@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -40,108 +40,103 @@ msgstr ""
 msgid "Load RedNotebook at startup"
 msgstr "开机时加载 RedNotebook"
 
-#: ../rednotebook/gui/options.py:165
+#: ../rednotebook/gui/options.py:161
 msgid "%A, %x, Day %j"
 msgstr "%A, %x,第 %j 日"
 
-#: ../rednotebook/gui/options.py:167
+#: ../rednotebook/gui/options.py:163
 msgid "Week %W of Year %Y"
 msgstr "%Y 年 第 %W 周"
 
-#: ../rednotebook/gui/options.py:169
+#: ../rednotebook/gui/options.py:165
 msgid "Day %j"
 msgstr "第 %j 日"
 
-#: ../rednotebook/gui/options.py:177
+#: ../rednotebook/gui/options.py:173
 msgid "Help"
 msgstr "帮助"
 
-#. Translators: Noun
-#: ../rednotebook/gui/options.py:198
-msgid "Preview:"
-msgstr "预览:"
-
-#: ../rednotebook/gui/options.py:213
+#: ../rednotebook/gui/options.py:209
 msgid "Choose font ..."
 msgstr "选择字体..."
 
-#: ../rednotebook/gui/options.py:221
+#: ../rednotebook/gui/options.py:217
 msgid "Choose font"
 msgstr "选择字体"
 
-#: ../rednotebook/gui/options.py:303
+#: ../rednotebook/gui/options.py:299
 msgid "Close to system tray"
 msgstr "关闭并停留在系统托盘"
 
-#: ../rednotebook/gui/options.py:305
+#: ../rednotebook/gui/options.py:301
 msgid "Closing the window will send RedNotebook to the tray"
 msgstr "关闭窗口将 RedNotebook 隐藏到托盘"
 
-#: ../rednotebook/gui/options.py:312
+#: ../rednotebook/gui/options.py:308
 msgid "Switch between edit and preview mode automatically"
 msgstr "自动在编辑和预览模式间切换"
 
-#: ../rednotebook/gui/options.py:319
+#: ../rednotebook/gui/options.py:315
 msgid "Check for new version at startup"
 msgstr "启动时检查新版本"
 
-#: ../rednotebook/gui/options.py:322
+#: ../rednotebook/gui/options.py:318
 msgid "Search as you type"
 msgstr "启用实时搜索"
 
-#: ../rednotebook/gui/options.py:332
+#: ../rednotebook/gui/options.py:328
 msgid "Check now"
 msgstr "立即检查"
 
-#: ../rednotebook/gui/options.py:339
+#: ../rednotebook/gui/options.py:335
 msgid "Edit font:"
 msgstr "编辑字体："
 
-#: ../rednotebook/gui/options.py:341
+#: ../rednotebook/gui/options.py:337
 msgid "Preview font:"
 msgstr "预览字体："
 
-#: ../rednotebook/gui/options.py:344
+#: ../rednotebook/gui/options.py:340
 msgid "Comma-separated font names"
 msgstr "逗号分隔的字体名称"
 
-#: ../rednotebook/gui/options.py:347
+#: ../rednotebook/gui/options.py:343
 msgid "Date/Time format"
 msgstr "日期/时间格式"
 
-#: ../rednotebook/gui/options.py:349
+#: ../rednotebook/gui/options.py:345
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr "由日期/时间按钮和 $date$ 宏模板使用。"
 
-#: ../rednotebook/gui/options.py:352
+#: ../rednotebook/gui/options.py:348
 msgid "Date format"
 msgstr "日期格式"
 
-#: ../rednotebook/gui/options.py:354
+#: ../rednotebook/gui/options.py:350
 msgid "Used for dates in titlebar and exports."
 msgstr "用于标题栏和导出文件的日期。"
 
-#: ../rednotebook/gui/options.py:357
+#: ../rednotebook/gui/options.py:353
 msgid "Tags in cloud"
 msgstr "云标签数量"
 
-#: ../rednotebook/gui/options.py:359
+#: ../rednotebook/gui/options.py:355
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "云存储中显示的最大标签数量"
 
-#: ../rednotebook/gui/options.py:362
+#: ../rednotebook/gui/options.py:358
 msgid "Exclude from cloud"
 msgstr "从云中排除"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:361
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "不要在云中显示这些逗号分隔的单词和#tags"
 
-#: ../rednotebook/gui/options.py:369
+#: ../rednotebook/gui/options.py:365
 msgid "Include small words in cloud"
 msgstr "在云中包含短词"
 
-#: ../rednotebook/gui/options.py:371
+#: ../rednotebook/gui/options.py:367
 msgid "Allow these words with 4 letters or less"
 msgstr "允许这些词语包括 4 个或更少的字母"
 
@@ -175,7 +170,7 @@ msgid "_Format"
 msgstr "格式(_F)"
 
 #. Translators: Noun
-#: ../rednotebook/gui/format_menu.py:156 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/format_menu.py:156 ../rednotebook/gui/exports.py:409
 msgid "Format"
 msgstr "格式"
 
@@ -187,135 +182,146 @@ msgstr "格式化选定的文本或标签"
 msgid "Preview in Browser"
 msgstr "在浏览器中预览"
 
-#: ../rednotebook/gui/main_window.py:331
+#: ../rednotebook/gui/main_window.py:330
 msgid "Show RedNotebook"
 msgstr "显示 RedNotebook"
 
-#: ../rednotebook/gui/main_window.py:589
+#: ../rednotebook/gui/main_window.py:590
 msgid "No directory selected."
 msgstr "没有选中目录。"
 
-#: ../rednotebook/gui/main_window.py:683
-#: ../rednotebook/gui/customwidgets.py:336
+#: ../rednotebook/gui/main_window.py:684
 msgid "Template"
 msgstr "模板"
 
-#: ../rednotebook/gui/main_window.py:687
+#: ../rednotebook/gui/main_window.py:688
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr "插入此工作日模板。点击右边的箭头有更多选项"
 
-#: ../rednotebook/gui/insert_menu.py:105
+#: ../rednotebook/gui/insert_menu.py:106 ../rednotebook/gui/insert_menu.py:113
 msgid "First Item"
 msgstr "第一项"
 
-#: ../rednotebook/gui/insert_menu.py:106
+#: ../rednotebook/gui/insert_menu.py:107 ../rednotebook/gui/insert_menu.py:114
 msgid "Second Item"
 msgstr "第二项"
 
-#: ../rednotebook/gui/insert_menu.py:107
+#: ../rednotebook/gui/insert_menu.py:108 ../rednotebook/gui/insert_menu.py:115
 msgid "Indented Item"
 msgstr "缩进的项目"
 
-#: ../rednotebook/gui/insert_menu.py:108
+#: ../rednotebook/gui/insert_menu.py:109 ../rednotebook/gui/insert_menu.py:116
 msgid "Two blank lines close the list"
 msgstr "两个空行关闭此列表"
 
-#: ../rednotebook/gui/insert_menu.py:132
+#: ../rednotebook/gui/insert_menu.py:140
 msgid "Picture"
 msgstr "图片"
 
-#: ../rednotebook/gui/insert_menu.py:134
+#: ../rednotebook/gui/insert_menu.py:142
 msgid "Insert an image from the harddisk"
 msgstr "插入一张硬盘中的图片"
 
-#: ../rednotebook/gui/insert_menu.py:140
+#: ../rednotebook/gui/insert_menu.py:148
 msgid "File"
 msgstr "文件"
 
-#: ../rednotebook/gui/insert_menu.py:142
+#: ../rednotebook/gui/insert_menu.py:150
 msgid "Insert a link to a file"
 msgstr "插入一个文件链接"
 
-#: ../rednotebook/gui/insert_menu.py:149
+#: ../rednotebook/gui/insert_menu.py:157
 msgid "_Link"
 msgstr "链接(_L)"
 
-#: ../rednotebook/gui/insert_menu.py:151
+#: ../rednotebook/gui/insert_menu.py:159
 msgid "Insert a link to a website"
 msgstr "插入一个网站链接"
 
-#: ../rednotebook/gui/insert_menu.py:157
+#: ../rednotebook/gui/insert_menu.py:165
 msgid "Bullet List"
 msgstr "项目符号列表"
 
-#: ../rednotebook/gui/insert_menu.py:162
+#: ../rednotebook/gui/insert_menu.py:173
+msgid "Numbered List"
+msgstr ""
+
+#: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
 msgstr "标题"
 
-#: ../rednotebook/gui/insert_menu.py:166
+#: ../rednotebook/gui/insert_menu.py:182
 msgid "Line"
 msgstr "直线"
 
-#: ../rednotebook/gui/insert_menu.py:168
+#: ../rednotebook/gui/insert_menu.py:184
 msgid "Insert a separator line"
 msgstr "插入一条分隔线"
 
-#: ../rednotebook/gui/insert_menu.py:174
+#: ../rednotebook/gui/insert_menu.py:190
 msgid "Date/Time"
 msgstr "日期/时间"
 
-#: ../rednotebook/gui/insert_menu.py:176
+#: ../rednotebook/gui/insert_menu.py:192
 msgid "Insert the current date and time (edit format in preferences)"
 msgstr "插入当前日期和时间（在首选项中编辑格式）"
 
-#: ../rednotebook/gui/insert_menu.py:182
+#: ../rednotebook/gui/insert_menu.py:198
 msgid "Line Break"
 msgstr "换行符"
 
-#: ../rednotebook/gui/insert_menu.py:184
+#: ../rednotebook/gui/insert_menu.py:200
 msgid "Insert a manual line break"
 msgstr "插入手动换行符"
 
-#: ../rednotebook/gui/insert_menu.py:187
+#: ../rednotebook/gui/insert_menu.py:203
 msgid "_Insert"
 msgstr "插入(_I)"
 
-#: ../rednotebook/gui/insert_menu.py:192
+#: ../rednotebook/gui/insert_menu.py:208
 msgid "Level"
 msgstr "级别"
 
-#: ../rednotebook/gui/insert_menu.py:227
+#: ../rednotebook/gui/insert_menu.py:243
 msgid "Insert"
 msgstr "插入"
 
-#: ../rednotebook/gui/insert_menu.py:229
+#: ../rednotebook/gui/insert_menu.py:245
 msgid "Insert images, files, links and other content"
 msgstr "插入图片、文件、链接等内容"
 
-#: ../rednotebook/gui/insert_menu.py:260
+#: ../rednotebook/gui/insert_menu.py:276
 msgid "Width (optional):"
 msgstr "宽度(可选)："
 
-#: ../rednotebook/gui/insert_menu.py:266
+#: ../rednotebook/gui/insert_menu.py:282
 msgid "pixels"
 msgstr "像素"
 
-#: ../rednotebook/gui/insert_menu.py:287
+#: ../rednotebook/gui/insert_menu.py:303
 msgid "Width must be an integer."
 msgstr "宽度必须为整数。"
 
-#: ../rednotebook/gui/insert_menu.py:371
+#: ../rednotebook/gui/insert_menu.py:387
 msgid "No link location has been entered"
 msgstr "未输入链接位置"
 
-#: ../rednotebook/gui/search.py:84 ../rednotebook/gui/exports.py:423
+#: ../rednotebook/gui/search.py:102
+msgid "Replace"
+msgstr ""
+
+#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "日期"
 
-#: ../rednotebook/gui/search.py:84
+#: ../rednotebook/gui/search.py:125
 msgid "Text"
 msgstr "文本"
+
+#: ../rednotebook/gui/customwidgets.py:48
+msgid "Search"
+msgstr ""
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -410,140 +416,140 @@ msgstr "重做"
 msgid "Redo text or tag edits"
 msgstr "重做对文本或标签所做的编辑"
 
-#: ../rednotebook/gui/menu.py:172
+#: ../rednotebook/gui/menu.py:175
 msgid "Cut"
 msgstr "剪切"
 
-#: ../rednotebook/gui/menu.py:176
+#: ../rednotebook/gui/menu.py:183
 msgid "Copy"
 msgstr "复制"
 
-#: ../rednotebook/gui/menu.py:184
+#: ../rednotebook/gui/menu.py:191
 msgid "Paste"
 msgstr "粘贴"
 
-#: ../rednotebook/gui/menu.py:192
+#: ../rednotebook/gui/menu.py:199
 msgid "Fullscreen"
 msgstr "全屏模式"
 
-#: ../rednotebook/gui/menu.py:200
+#: ../rednotebook/gui/menu.py:207
 msgid "Find"
 msgstr "查找"
 
-#: ../rednotebook/gui/menu.py:212
+#: ../rednotebook/gui/menu.py:219
 msgid "Spell Check"
 msgstr "拼写检查"
 
-#: ../rednotebook/gui/menu.py:214
+#: ../rednotebook/gui/menu.py:221
 msgid "Underline misspelled words"
 msgstr "给拼错的单词添加下划线"
 
-#: ../rednotebook/gui/menu.py:224 tmp/main_window.glade.h:29
+#: ../rednotebook/gui/menu.py:231 tmp/main_window.glade.h:29
 msgid "Preferences"
 msgstr "首选项"
 
-#: ../rednotebook/gui/menu.py:229
+#: ../rednotebook/gui/menu.py:236
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: ../rednotebook/gui/menu.py:233
+#: ../rednotebook/gui/menu.py:240
 msgid "Contents"
 msgstr "内容"
 
-#: ../rednotebook/gui/menu.py:235
+#: ../rednotebook/gui/menu.py:242
 msgid "Open the RedNotebook documentation"
 msgstr "打开 RedNotebook 文档"
 
-#: ../rednotebook/gui/menu.py:241
+#: ../rednotebook/gui/menu.py:248
 msgid "Donate"
 msgstr "打赏"
 
-#: ../rednotebook/gui/menu.py:243
+#: ../rednotebook/gui/menu.py:250
 msgid "Support RedNotebook with a donation"
 msgstr "通过打赏支持 RedNoteBook 项目"
 
-#: ../rednotebook/gui/menu.py:249
+#: ../rednotebook/gui/menu.py:256
 msgid "Translate RedNotebook"
 msgstr "翻译 RedNotebook"
 
-#: ../rednotebook/gui/menu.py:251
+#: ../rednotebook/gui/menu.py:258
 msgid "Help translate RedNotebook to your language"
 msgstr "帮助把 RedNotebook 翻译成你所使用的语言"
 
-#: ../rednotebook/gui/menu.py:257
+#: ../rednotebook/gui/menu.py:264
 msgid "Report a Problem"
 msgstr "报告问题"
 
-#: ../rednotebook/gui/menu.py:259
+#: ../rednotebook/gui/menu.py:266
 msgid "Fill out a short form about the problem"
 msgstr "填写一个简单的问题表单"
 
-#: ../rednotebook/gui/menu.py:265
+#: ../rednotebook/gui/menu.py:272
 msgid "Give Feedback"
 msgstr "提供反馈"
 
-#: ../rednotebook/gui/menu.py:267
+#: ../rednotebook/gui/menu.py:274
 msgid "How can we improve RedNotebook?"
 msgstr "希望我们如何改进 RedNotebook ？"
 
-#: ../rednotebook/gui/menu.py:270
+#: ../rednotebook/gui/menu.py:277
 msgid "About"
 msgstr "关于"
 
-#: ../rednotebook/gui/menu.py:288
+#: ../rednotebook/gui/menu.py:295
 msgid "Wrong directory"
 msgstr "错误目录"
 
-#: ../rednotebook/gui/menu.py:292 ../rednotebook/journal.py:248
+#: ../rednotebook/gui/menu.py:299 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
 msgstr "您无法使用该目录作为笔记目录："
 
-#: ../rednotebook/gui/menu.py:299
+#: ../rednotebook/gui/menu.py:306
 msgid "Please select an empty directory."
 msgstr "请选择一个空白目录。"
 
-#: ../rednotebook/gui/menu.py:304
+#: ../rednotebook/gui/menu.py:311
 msgid "This directory contains no journal files:"
 msgstr "此目录不包含笔记文件："
 
-#: ../rednotebook/gui/menu.py:323
+#: ../rednotebook/gui/menu.py:330
 msgid "Journals are saved in a directory, not in a single file."
 msgstr "所有笔记不是保存为单个文件中，而是保存在一个目录里。"
 
-#: ../rednotebook/gui/menu.py:324
+#: ../rednotebook/gui/menu.py:331
 msgid "The directory name will be the title of the new journal."
 msgstr "此目录名将作为新笔记的标题。"
 
-#: ../rednotebook/gui/menu.py:327
+#: ../rednotebook/gui/menu.py:334
 msgid "Select an empty folder for your new journal"
 msgstr "请为您的新笔记选择一个空文件夹"
 
-#: ../rednotebook/gui/menu.py:333
+#: ../rednotebook/gui/menu.py:340
 msgid "Select an existing journal directory"
 msgstr "请选择一个现有的笔记目录"
 
-#: ../rednotebook/gui/menu.py:334
+#: ../rednotebook/gui/menu.py:341
 msgid "The directory should contain your journal's data files"
 msgstr "此目录应包含您笔记的数据文件"
 
-#: ../rednotebook/gui/menu.py:347
+#: ../rednotebook/gui/menu.py:354
 msgid "Select an empty folder for the new location of your journal"
 msgstr "选择一个空文件夹作为笔记的新存放位置"
 
-#: ../rednotebook/gui/menu.py:348
+#: ../rednotebook/gui/menu.py:355
 msgid "The directory name will be the new title of the journal"
 msgstr "此目录名将作为新笔记的标题"
 
-#: ../rednotebook/gui/menu.py:408
+#: ../rednotebook/gui/menu.py:415
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook 文档"
 
-#: ../rednotebook/gui/menu.py:436
+#: ../rednotebook/gui/menu.py:443
 msgid "Contributors:"
 msgstr "贡献者："
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:437 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr "翻译者-致谢"
 
@@ -555,22 +561,22 @@ msgstr "筛选器, these, 逗号, 分割符, 词语, and, #tags"
 msgid "mtv, spam, work, job, play"
 msgstr "MTV, 垃圾邮件, 工作, 娱乐"
 
-#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
-#: ../rednotebook/util/markup.py:122 ../rednotebook/help.py:33
+#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "标签"
 
-#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:68
-#: ../rednotebook/util/statistics.py:81
+#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "词"
 
-#: ../rednotebook/gui/clouds.py:251
+#: ../rednotebook/gui/clouds.py:247
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "隐藏云中的 “%s”"
 
-#: ../rednotebook/gui/exports.py:42 ../rednotebook/gui/exports.py:418
+#: ../rednotebook/gui/exports.py:42 ../rednotebook/gui/exports.py:411
 msgid "Export all days"
 msgstr "导出所有日期"
 
@@ -630,98 +636,98 @@ msgstr "选择"
 msgid "Deselect"
 msgstr "取消选择"
 
-#: ../rednotebook/gui/exports.py:262
+#: ../rednotebook/gui/exports.py:258
 msgid "When filtering by tags, you have to select at least one tag."
 msgstr "当使用标签过滤时，您必须至少选中一个标签。"
 
-#: ../rednotebook/gui/exports.py:285
+#: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
 msgstr "您选择了以下设置："
 
-#: ../rednotebook/gui/exports.py:310
+#: ../rednotebook/gui/exports.py:306
 msgid "Export Assistant"
 msgstr "导出助手"
 
-#: ../rednotebook/gui/exports.py:318
+#: ../rednotebook/gui/exports.py:314
 msgid "Welcome to the Export Assistant."
 msgstr "欢迎使用导出助手。"
 
-#: ../rednotebook/gui/exports.py:320
+#: ../rednotebook/gui/exports.py:316
 msgid "This wizard will help you to export your journal to various formats."
 msgstr "该向导会帮助您将日志导出为各种格式。"
 
-#: ../rednotebook/gui/exports.py:323
+#: ../rednotebook/gui/exports.py:319
 msgid ""
 "You can select the days you want to export and where the output will be "
 "saved."
 msgstr "您可以选择要导出的日期及输出文件保存的位置。"
 
-#: ../rednotebook/gui/exports.py:336
+#: ../rednotebook/gui/exports.py:332
 msgid "PDF: export to HTML, open in browser and print to PDF file"
 msgstr "PDF：导出为 HTML格式，在浏览器中打开并输出为 PDF 文件"
 
-#: ../rednotebook/gui/exports.py:341
+#: ../rednotebook/gui/exports.py:337
 msgid "Select Export Format"
 msgstr "选择导出格式"
 
-#: ../rednotebook/gui/exports.py:346
+#: ../rednotebook/gui/exports.py:342
 msgid "Select Date Range"
 msgstr "选择日期范围"
 
-#: ../rednotebook/gui/exports.py:351
+#: ../rednotebook/gui/exports.py:347
 msgid "Select Contents"
 msgstr "选择内容"
 
-#: ../rednotebook/gui/exports.py:357
+#: ../rednotebook/gui/exports.py:353
 msgid "Select Export Path"
 msgstr "选择导出路径"
 
-#: ../rednotebook/gui/exports.py:362
+#: ../rednotebook/gui/exports.py:358
 msgid "Summary"
 msgstr "摘要"
 
-#: ../rednotebook/gui/exports.py:425
+#: ../rednotebook/gui/exports.py:418
 msgid "Export selected text only"
 msgstr "仅导出选中文本"
 
-#: ../rednotebook/gui/exports.py:429
+#: ../rednotebook/gui/exports.py:422
 msgid "Start date"
 msgstr "开始日期"
 
-#: ../rednotebook/gui/exports.py:430
+#: ../rednotebook/gui/exports.py:423
 msgid "End date"
 msgstr "结束日期"
 
-#: ../rednotebook/gui/exports.py:435
+#: ../rednotebook/gui/exports.py:428
 msgid "Include text"
 msgstr "包括文本"
 
-#: ../rednotebook/gui/exports.py:438
+#: ../rednotebook/gui/exports.py:431
 msgid "Include tags"
 msgstr "包含标签"
 
-#: ../rednotebook/gui/exports.py:442
+#: ../rednotebook/gui/exports.py:435
 msgid "Filtered by tags"
 msgstr "已使用标签过滤"
 
-#: ../rednotebook/gui/exports.py:444
+#: ../rednotebook/gui/exports.py:437
 msgid "Export path"
 msgstr "导出路径"
 
-#: ../rednotebook/gui/exports.py:447
+#: ../rednotebook/gui/exports.py:440
 msgid "Yes"
 msgstr "是"
 
-#: ../rednotebook/gui/exports.py:447
+#: ../rednotebook/gui/exports.py:440
 msgid "No"
 msgstr "否"
 
-#: ../rednotebook/gui/exports.py:493
+#: ../rednotebook/gui/exports.py:485
 #, python-format
 msgid "Content exported to %s"
 msgstr "内容已导出到 %s"
 
-#: ../rednotebook/gui/exports.py:531
+#: ../rednotebook/gui/exports.py:523
 msgid "Plain Text"
 msgstr "纯文本"
 
@@ -729,15 +735,15 @@ msgstr "纯文本"
 msgid "Empty entries are not allowed"
 msgstr "不允许空条目"
 
-#: ../rednotebook/gui/categories.py:334
+#: ../rednotebook/gui/categories.py:325
 msgid "Change this text"
 msgstr "更改此文本"
 
-#: ../rednotebook/gui/categories.py:342
+#: ../rednotebook/gui/categories.py:333
 msgid "Add a new entry"
 msgstr "添加新条目"
 
-#: ../rednotebook/gui/categories.py:350
+#: ../rednotebook/gui/categories.py:341
 msgid "Delete this entry"
 msgstr "删除该条目"
 
@@ -771,31 +777,31 @@ msgstr "不要再次询问"
 msgid "unknown"
 msgstr "未知"
 
-#: ../rednotebook/util/statistics.py:69
+#: ../rednotebook/util/statistics.py:63
 msgid "Distinct Words"
 msgstr "不同的词"
 
-#: ../rednotebook/util/statistics.py:70
+#: ../rednotebook/util/statistics.py:64
 msgid "Edited Days"
 msgstr "编辑过的日期"
 
-#: ../rednotebook/util/statistics.py:71 ../rednotebook/util/statistics.py:83
+#: ../rednotebook/util/statistics.py:65 ../rednotebook/util/statistics.py:77
 msgid "Letters"
 msgstr "字母"
 
-#: ../rednotebook/util/statistics.py:72
+#: ../rednotebook/util/statistics.py:66
 msgid "Days between first and last Entry"
 msgstr "第一条和最后一条笔记之间的天数"
 
-#: ../rednotebook/util/statistics.py:73
+#: ../rednotebook/util/statistics.py:67
 msgid "Average number of Words"
 msgstr "平均单词数"
 
-#: ../rednotebook/util/statistics.py:74
+#: ../rednotebook/util/statistics.py:68
 msgid "Percentage of edited Days"
 msgstr "编辑过的日期所占的百分比"
 
-#: ../rednotebook/util/statistics.py:82
+#: ../rednotebook/util/statistics.py:76
 msgid "Lines"
 msgstr "行数"
 
@@ -959,6 +965,17 @@ msgstr "无需保存"
 #: ../rednotebook/journal.py:527
 msgid "Error"
 msgstr "错误"
+
+#: ../rednotebook/journal.py:583
+#, python-brace-format
+msgid "Replaced {total_replacements} occurrences of the search text"
+msgstr ""
+
+#: ../rednotebook/journal.py:587
+#, fuzzy
+#| msgid "No text or tag has been selected."
+msgid "No text has been replaced"
+msgstr "未选定任何文本或标签"
 
 #: ../rednotebook/backup.py:58
 #, python-format
@@ -1291,6 +1308,9 @@ msgstr "<b>当前选择的日期范围内</b>"
 msgid "<b>Overall</b>"
 msgstr "<b>全部</b>"
 
+#~ msgid "Preview:"
+#~ msgstr "预览:"
+
 #~ msgid "Get Help Online"
 #~ msgstr "获取在线帮助"
 
@@ -1299,9 +1319,6 @@ msgstr "<b>全部</b>"
 
 #~ msgid "Connect to the Launchpad website to help translate RedNotebook"
 #~ msgstr "进入 Launchpad 网址帮助翻译 RedNotebook"
-
-#~ msgid "No text or tag has been selected."
-#~ msgstr "未选定任何文本或标签"
 
 #~ msgid "Introduction"
 #~ msgstr "介绍"
