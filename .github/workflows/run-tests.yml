@@ -29,6 +29,7 @@ jobs:
       run: |
         python --version
         python3 --version
+        pip show setuptools
         python3 -c "import multiprocessing as m; print('CPUs:', m.cpu_count())"
 
     - name: Install dependencies (Ubuntu)
