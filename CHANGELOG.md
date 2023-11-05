@@ -1,3 +1,6 @@
+# next (unreleased)
+* Test macOS 12 and 13 instead of 11 and 12 (Jendrik Seipp).
+
 # 2.31 (2023-09-02)
 * Add basic text replace functionality (#715, @curioussushiroll).
 

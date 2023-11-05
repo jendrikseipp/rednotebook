@@ -3,11 +3,11 @@ name: Build macOS installer
 
 on: [push, pull_request]
 env:
-  python_version: '3.11'
+  python_version: '3.12'
 
 jobs:
   macos:
-    runs-on: macos-11
+    runs-on: macos-12
     permissions:
       contents: write
     timeout-minutes: 45
