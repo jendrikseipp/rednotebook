@@ -9,7 +9,7 @@ pycairo @ file:///C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl
 PyGObject @ file:///C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl
 pyinstaller==5.13.1
 pyinstaller-hooks-contrib==2022.4
-pywin32-ctypes==0.2.0
+pywin32-ctypes==0.2.1
 PyYAML==5.4.1
 six==1.16.0
 virtualenv==20.14.0
