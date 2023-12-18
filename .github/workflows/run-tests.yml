@@ -43,6 +43,8 @@ jobs:
         # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
         brew install gettext gtk+3 gobject-introspection glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
         python3 -m pip install pyenchant pygobject pyyaml
+      env:
+        HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: on
 
     - name: Install common dependencies
       run: |
