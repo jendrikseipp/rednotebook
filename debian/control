@@ -17,8 +17,12 @@ Package: rednotebook
 Architecture: all
 Depends: ${python3:Depends},
          ${misc:Depends},
+         gir1.2-gdk-3.0,
          gir1.2-gdkpixbuf-2.0,
+         gir1.2-gio-2.0,
+         gir1.2-girepository-2.0,
          gir1.2-glib-2.0,
+         gir1.2-gobject-2.0,
          gir1.2-gtk-3.0,
          gir1.2-gtksource-4,
          gir1.2-pango-1.0,
