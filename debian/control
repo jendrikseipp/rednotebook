@@ -27,7 +27,6 @@ Depends: ${python3:Depends},
          gir1.2-gtksource-4,
          gir1.2-pango-1.0,
          gir1.2-webkit2-4.1 | gir1.2-webkit2-4.0,
-         gir1.2-webkit2-4.1,
          python3-gi,
          python3-yaml
 Recommends: python3-enchant
