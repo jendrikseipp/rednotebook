@@ -22,6 +22,7 @@
   <url type="faq">https://answers.launchpad.net/rednotebook/+faqs</url>
   <url type="help">https://answers.launchpad.net/rednotebook</url>
   <url type="translate">https://translations.launchpad.net/rednotebook</url>
+  <url type="vcs-browser">https://github.com/jendrikseipp/rednotebook</url>
 
   <!-- https://www.freedesktop.org/software/appstream/docs/sect-Metadata-Application.html#tag-dapp-screenshots -->
   <screenshots>
