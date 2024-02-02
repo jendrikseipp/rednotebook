@@ -4,7 +4,7 @@
   <id>rednotebook</id>
   <metadata_license>CC0-1.0</metadata_license>
   <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-project_license -->
-  <project_license>GPL-3.0+</project_license>
+  <project_license>GPL-2.0+</project_license>
   <name>RedNotebook</name>
   <developer_name>Jendrik Seipp</developer_name>
   <update_contact>jendrikseipp_AT_gmail.com</update_contact>
