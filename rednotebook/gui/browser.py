@@ -67,3 +67,6 @@ if WebKit2:
                     self.highlight(self.search_text)
                 else:
                     webview.get_find_controller().search_finish()
+
+        def copy_to_clipboard(self):
+            self.execute_editing_command(WebKit2.EDITING_COMMAND_COPY)

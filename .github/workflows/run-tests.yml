@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-11, macos-12, ubuntu-20.04, ubuntu-22.04]
+        os: [macos-12, macos-13, ubuntu-20.04, ubuntu-22.04]
 
     steps:
     - uses: actions/checkout@v3
@@ -43,10 +43,12 @@ jobs:
         # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
         brew install gettext gtk+3 gobject-introspection glib libffi cairo gtksourceview3 atk librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
         python3 -m pip install pyenchant pygobject pyyaml
+      env:
+        HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: on
 
     - name: Install common dependencies
       run: |
-        python3 -m pip install setuptools==59.6.0 tox==3.27.1
+        python3 -m pip install setuptools tox
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'

@@ -22,8 +22,10 @@ import re
 
 TEXT_RESULT_LENGTH = 42
 
-HEX_COLOR = r"[0-9A-F]{6}"
-CPP_DIRECTIVES = "|".join(("include", "define", "ifdef", "ifndef", "endif"))
+HEX_COLOR = r"[0-9a-fA-F]{6}\b"
+CPP_DIRECTIVES = "|".join(
+    f"{keyword}\\b" for keyword in ("include", "define", "ifdef", "ifndef", "endif")
+)
 HASHTAG_EXCLUDES = "|".join((HEX_COLOR, CPP_DIRECTIVES))
 
 ALPHA = r"[^\W\d_]"

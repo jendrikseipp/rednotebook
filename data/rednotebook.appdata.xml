@@ -4,7 +4,7 @@
   <id>rednotebook</id>
   <metadata_license>CC0-1.0</metadata_license>
   <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-project_license -->
-  <project_license>GPL-2.0-or-later</project_license>
+  <project_license>GPL-2.0+</project_license>
   <name>RedNotebook</name>
   <developer_name>Jendrik Seipp</developer_name>
   <update_contact>jendrikseipp_AT_gmail.com</update_contact>
@@ -19,9 +19,12 @@
   <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-url -->
   <url type="homepage">https://rednotebook.app</url>
   <url type="bugtracker">https://github.com/jendrikseipp/rednotebook/issues</url>
-  <url type="faq">https://answers.launchpad.net/rednotebook/+faqs</url>
-  <url type="help">https://answers.launchpad.net/rednotebook</url>
-  <url type="translate">https://translations.launchpad.net/rednotebook</url>
+  <url type="faq">https://github.com/jendrikseipp/rednotebook/discussions</url>
+  <url type="help">https://rednotebook.app/help.html</url>
+  <url type="donation">https://rednotebook.app/downloads.html</url>
+  <url type="translate">https://hosted.weblate.org/engage/rednotebook</url>
+  <url type="contribute">https://rednotebook.app/participate.html</url>
+  <url type="vcs-browser">https://github.com/jendrikseipp/rednotebook</url>
 
   <!-- https://www.freedesktop.org/software/appstream/docs/sect-Metadata-Application.html#tag-dapp-screenshots -->
   <screenshots>
@@ -34,6 +37,12 @@
       <image>https://rednotebook.app/screenshots/rednotebook-2.0-2.png</image>
     </screenshot>
   </screenshots>
+  <kudos>
+    <kudo>ModernToolkit</kudo>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>HighContrast</kudo>
+    <kudo>UserDocs</kudo>
+  </kudos>
 
   <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-content_rating -->
   <content_rating type="oars-1.0" />
@@ -51,6 +60,7 @@
 
   <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-releases -->
   <releases>
+    <release version="2.30" date="2023-08-10"/>
     <release version="2.22" date="2021-04-25"/>
     <release version="2.21" date="2020-12-07"/>
     <release version="2.20" date="2020-08-03"/>
