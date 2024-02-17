@@ -1,3 +1,14 @@
+rednotebook (2.32-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Allow copying text in preview mode (#732, Jendrik Seipp).
+  * Allow hashtags that start with (but are longer than) hex colors and preprocessor directives (#738, Jendrik Seipp).
+  * Highlight hashtags and formatting within lists (#744, Jendrik Seipp).
+  * Improve Debian packaging (Phil Wyett).
+  * Test macOS 12 and 13 instead of 11 and 12 (Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sat, 17 Feb 2024 23:08:38 +0100
+
 rednotebook (2.31-1) UNRELEASED; urgency=low
 
   * New upstream release
