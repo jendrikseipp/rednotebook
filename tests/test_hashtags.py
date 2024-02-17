@@ -30,11 +30,13 @@ def test_hashtags():
         ("#hashétag", ["hashétag"]),
         ("test #hashtag école", ["hashtag"]),
         ("hex #11ff22", []),
+        ("hex start #11ff22abc", ["11ff22abc"]),
         ('<font color="#40e0d0">', []),
         ("test &#hashtag", []),
         ("test ##hashtag", []),
         ("test #!/usr/bin/env", []),
-        ("#include", []),
+        ("#include_me", ["include_me"]),
+        ("#include file", []),
     ]
     for text, tags in vals:
         print(repr(text))

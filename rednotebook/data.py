@@ -24,7 +24,7 @@ TEXT_RESULT_LENGTH = 42
 
 HEX_COLOR = r"[0-9a-fA-F]{6}\b"
 CPP_DIRECTIVES = "|".join(
-    f"{keyword}\b" for keyword in ("include", "define", "ifdef", "ifndef", "endif")
+    f"{keyword}\\b" for keyword in ("include", "define", "ifdef", "ifndef", "endif")
 )
 HASHTAG_EXCLUDES = "|".join((HEX_COLOR, CPP_DIRECTIVES))
 
