@@ -262,7 +262,7 @@
         to make changes to rednotebook/data.py.
     -->
     <context id="hashtag" style-ref="hashtag">
-      <match>(^|[^\w&amp;#])(#|＃)(?![0-9A-F]{6}|include|define|ifdef|ifndef|endif)(\w*[^\W\d_]+\w*)</match>
+      <match>(^|[^\w&amp;#])(#|＃)(?![0-9a-fA-F]{6}\b|include\b|define\b|ifdef\b|ifndef\b|endif\b)(\w*[^\W\d_]+\w*)</match>
     </context>
 
     <context id="entry-reference">
