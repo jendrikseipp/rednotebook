@@ -363,20 +363,23 @@ class MainMenuBar:
         editor = self.main_window.day_text_field
         editor.day_text_buffer.redo()
 
-    def _get_active_editor_widget(self):
-        if self.main_window.preview_mode:
-            return self.main_window.html_editor
-        else:
-            return self.main_window.day_text_field.day_text_view
-
     def on_copy_menu_item_activate(self, widget):
-        self._get_active_editor_widget().emit("copy_clipboard")
+        if self.main_window.preview_mode:
+            self.main_window.html_editor.copy_to_clipboard()
+        else:
+            self.main_window.day_text_field.day_text_view.emit("copy_clipboard")
 
     def on_paste_menu_item_activate(self, widget):
-        self._get_active_editor_widget().emit("paste_clipboard")
+        if self.main_window.preview_mode:
+            pass
+        else:
+            self.main_window.day_text_field.day_text_view.emit("paste_clipboard")
 
     def on_cut_menu_item_activate(self, widget):
-        self._get_active_editor_widget().emit("cut_clipboard")
+        if self.main_window.preview_mode:
+            pass
+        else:
+            self.main_window.day_text_field.day_text_view.emit("cut_clipboard")
 
     def on_fullscreen_menuitem_activate(self, widget):
         self.main_window.toggle_fullscreen()
