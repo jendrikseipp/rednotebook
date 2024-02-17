@@ -1,5 +1,6 @@
 # next (unreleased)
 * Allow hashtags that start with (but are longer than) hex color codes and preprocessor directives (#738, Jendrik Seipp).
+* Highlight hashtags and formatting within lists (#744, Jendrik Seipp).
 * Test macOS 12 and 13 instead of 11 and 12 (Jendrik Seipp).
 
 # 2.31 (2023-09-02)

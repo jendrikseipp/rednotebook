@@ -151,7 +151,7 @@
     </context>
 
     <context id="list">
-      <match>^ *(\-|\+) [^ ].*$</match>
+      <match>^ *(\-|\+)</match>
       <include>
         <context sub-pattern="1" style-ref="list-marker"/>
       </include>
