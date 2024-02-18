@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-04-29 13:37+0100\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2024-02-18 19:00+0100\n"
+"Last-Translator: albanobattistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/it/>\n"
 "Language: it\n"
@@ -252,7 +252,7 @@ msgstr "Elenco puntato"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Elenco numerato"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -317,7 +317,7 @@ msgstr "Non è stata inserita la posizione del collegamento"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Sostituisci"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -329,7 +329,7 @@ msgstr "Testo"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -1013,10 +1013,9 @@ msgid "Replaced {total_replacements} occurrences of the search text"
 msgstr ""
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
 #| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "Non è stato selezionato alcun testo o etichetta"
+msgstr "Nessun testo è stato sostituito"
 
 #: ../rednotebook/backup.py:58
 #, python-format
