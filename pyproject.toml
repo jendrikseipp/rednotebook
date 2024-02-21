@@ -35,3 +35,8 @@ lines_after_imports = 2  # -1 puts 2 lines before classes and functions, otherwi
 multi_line_output = 3
 order_by_type = false
 skip= "external,journal.py,main_window.py"
+
+[tool.vulture]
+min_confidence = 0
+paths = ["rednotebook/", "dev/whitelist.py"]
+exclude = ["external/"]

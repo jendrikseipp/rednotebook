@@ -30,12 +30,12 @@ from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
 
+
 REPO = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO))
 
-from rednotebook import info
-
 from dev import build_translations
+from rednotebook import info
 
 
 TMP_LOCALE_DIR = REPO / "build" / "locale"
@@ -116,19 +116,6 @@ parameters = {
         ),
         ("share/metainfo", ["data/rednotebook.appdata.xml"]),
     ],
-    "extras_require": {
-        "dev_style": [
-            "black==22.3.0",
-            "flake8==4.0.1",
-            "flake8-2020==1.6.0",
-            "flake8-bugbear==21.11.28",
-            "flake8-comprehensions==3.7.0",
-            "flake8-executable==2.1.1",
-            "isort==5.10.1",
-            "pyupgrade==2.32.0",
-            "vulture==1.6",
-        ],
-    },
 }
 
 if __name__ == "__main__":
