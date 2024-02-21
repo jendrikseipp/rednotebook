@@ -51,6 +51,7 @@ class Config(dict):
         "leftDividerPosition": 260,
         "rightDividerPosition": None,
         "cloudMaxTags": 1000,
+        "autoindent": 1,
     }
 
     obsolete_keys = {
