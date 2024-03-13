@@ -36,6 +36,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get -y install -qq gettext gir1.2-gdkpixbuf-2.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-gtksource-4 gir1.2-pango-1.0 gir1.2-webkit2-4.0 python3 python3-enchant python3-gi python3-yaml
+        python3 -m pip install setuptools tox
 
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
@@ -47,12 +48,9 @@ jobs:
         sudo rm -r /usr/local/bin/2to3 /usr/local/bin/idle3 /usr/local/bin/pydoc3 /usr/local/bin/python3 /usr/local/bin/python3-config /usr/local/share/man/man1/python3.1 /usr/local/lib/pkgconfig/python3-embed.pc /usr/local/lib/pkgconfig/python3.pc /usr/local/Frameworks/Python.framework/Headers /usr/local/Frameworks/Python.framework/Python /usr/local/Frameworks/Python.framework/Resources /usr/local/Frameworks/Python.framework/Versions/Current
         brew install gettext gobject-introspection gtk+3 libffi cairo gtksourceview3 librsvg adwaita-icon-theme enchant
         python3 -m pip install --break-system-packages pyenchant pygobject pyyaml
+        python3 -m pip install --break-system-packages setuptools tox
       env:
         HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: on
-
-    - name: Install common dependencies
-      run: |
-        python3 -m pip install --break-system-packages setuptools tox
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
