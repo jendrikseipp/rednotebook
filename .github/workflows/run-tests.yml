@@ -41,16 +41,21 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        # Without the --overwrite flag Homebrew complains about python@3.12 files that are overwritten.
         # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
+        # Homebrew complains about python@3.12 files that are overwritten, so we remove them.
+        # Some can be removed by unlinking python@3.12, others need to be removed manually.
         brew unlink python@3.12
         brew link --overwrite python@3.12
         sudo rm -r /usr/local/bin/2to3 /usr/local/bin/idle3 /usr/local/bin/pydoc3 /usr/local/bin/python3 /usr/local/bin/python3-config /usr/local/share/man/man1/python3.1 /usr/local/lib/pkgconfig/python3-embed.pc /usr/local/lib/pkgconfig/python3.pc /usr/local/Frameworks/Python.framework/Headers /usr/local/Frameworks/Python.framework/Python /usr/local/Frameworks/Python.framework/Resources /usr/local/Frameworks/Python.framework/Versions/Current
         brew install gettext gobject-introspection gtk+3 libffi cairo gtksourceview3 librsvg adwaita-icon-theme enchant
+        # Removing the Python files above makes pip complain about "managed environments", so we need to "break system packages".
         python3 -m pip install --break-system-packages pyenchant pygobject pyyaml
         python3 -m pip install --break-system-packages setuptools tox
       env:
+        # https://docs.brew.sh/Manpage#install-options-formulacask-
         HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: on
+        HOMEBREW_NO_INSTALL_CLEANUP: on
+        HOMEBREW_NO_INSTALL_UPGRADE: on
 
     - name: Check style
       if: matrix.os == 'ubuntu-22.04'
@@ -58,6 +63,7 @@ jobs:
         python3 -m tox -v -e style
 
     - name: Run tests
+      if: matrix.os == 'ubuntu-22.04'  # pip on macOS needs --break-system-packages
       run: |
         python3 -c "import gi"
         python3 -m tox -v -e py
