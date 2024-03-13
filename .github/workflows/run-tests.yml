@@ -40,8 +40,8 @@ jobs:
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
       run: |
-        # Homebrew complains about files that are overwritten and recommends to delete them.
-        sudo rm /usr/local/bin/2to3 /usr/local/bin/2to3-3.12
+        # Without the --overwrite flag Homebrew complains about python@3.12 files that are overwritten.
+        brew link --overwrite python@3.12
         # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
         brew install --overwrite gettext gtk+3 gobject-introspection glib libffi cairo gtksourceview3 librsvg gsettings-desktop-schemas adwaita-icon-theme enchant
         python3 -m pip install pyenchant pygobject pyyaml
