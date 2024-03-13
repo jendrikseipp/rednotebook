@@ -42,7 +42,9 @@ jobs:
       run: |
         # Without the --overwrite flag Homebrew complains about python@3.12 files that are overwritten.
         # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
-        brew install dbus ca-certificates readline libxfixes libxi libxtst at-spi2-core gdk-pixbuf gsettings-desktop-schemas hicolor-icon-theme libepoxy fribidi pango
+        brew install sqlite xz
+        brew install --ignore-dependencies at-spi2-core
+        brew install dbus ca-certificates readline libxfixes libxi libxtst gdk-pixbuf gsettings-desktop-schemas hicolor-icon-theme libepoxy fribidi pango
         brew install --ignore-dependencies gtk+3
         brew install gettext gobject-introspection glib libffi cairo gtksourceview3 librsvg adwaita-icon-theme enchant
         python3 -m pip install pyenchant pygobject pyyaml
