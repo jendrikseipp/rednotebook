@@ -44,6 +44,7 @@ jobs:
         # We need pygobject from PyPI. Using only pygobject3 from homebrew leads to "gi module not found".
         brew unlink python@3.12
         brew link --overwrite python@3.12
+        sudo rm -r /usr/local/bin/2to3 /usr/local/bin/idle3 /usr/local/bin/pydoc3 /usr/local/bin/python3 /usr/local/bin/python3-config /usr/local/share/man/man1/python3.1 /usr/local/lib/pkgconfig/python3-embed.pc /usr/local/lib/pkgconfig/python3.pc /usr/local/Frameworks/Python.framework/Headers /usr/local/Frameworks/Python.framework/Python /usr/local/Frameworks/Python.framework/Resources /usr/local/Frameworks/Python.framework/Versions/Current
         brew install sqlite xz
         brew install --ignore-dependencies at-spi2-core
         brew install dbus ca-certificates readline libxfixes libxi libxtst gdk-pixbuf gsettings-desktop-schemas hicolor-icon-theme libepoxy fribidi pango
