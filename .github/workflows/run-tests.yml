@@ -46,7 +46,7 @@ jobs:
         brew link --overwrite python@3.12
         sudo rm -r /usr/local/bin/2to3 /usr/local/bin/idle3 /usr/local/bin/pydoc3 /usr/local/bin/python3 /usr/local/bin/python3-config /usr/local/share/man/man1/python3.1 /usr/local/lib/pkgconfig/python3-embed.pc /usr/local/lib/pkgconfig/python3.pc /usr/local/Frameworks/Python.framework/Headers /usr/local/Frameworks/Python.framework/Python /usr/local/Frameworks/Python.framework/Resources /usr/local/Frameworks/Python.framework/Versions/Current
         brew install gettext gobject-introspection gtk+3 libffi cairo gtksourceview3 librsvg adwaita-icon-theme enchant
-        python3 -m pip install pyenchant pygobject pyyaml
+        python3 -m pip install --break-system-packages pyenchant pygobject pyyaml
       env:
         HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: on
 
