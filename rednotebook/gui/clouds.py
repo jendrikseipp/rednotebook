@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------
-# Copyright (c) 2009  Jendrik Seipp
+# Copyright (c) 2008-2024 Jendrik Seipp
 #
 # RedNotebook is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ CLOUD_CSS = """\
 
 def get_regex(word):
     try:
-        return re.compile(f"{word}$", re.I)
+        return re.compile(f"{word}$", re.IGNORECASE)
     except Exception:
         logging.warning(f'"{word}" is not a valid regular expression')
         return re.compile("^$")
@@ -81,13 +81,20 @@ class Cloud(browser.HtmlView):
         self.include_list = [word.lower() for word in self.include_list]
         logging.info("Cloud include list: %s" % self.include_list)
 
+        # Ignore files and web links in words cloud
+        self.special_ignore_words_tuple = ("file://.*", "https?://.*")
+        logging.info(f"Cloud special ignore regexes: {self.special_ignore_words_tuple}")
+
         self.update_regexes()
 
     def update_regexes(self):
-        logging.debug("Start compiling regexes")
+        logging.debug("Start compiling regexes: ignore, include and special")
         self.regexes_ignore = [get_regex(word) for word in self.ignore_list]
         self.regexes_include = [get_regex(word) for word in self.include_list]
-        logging.debug("Finished")
+        self.regexes_special_ignore_words = [
+            re.compile(regex) for regex in self.special_ignore_words_tuple
+        ]
+        logging.debug("Finished compiling")
 
     def update(self, force_update=False):
         """Public method that calls the private "_update"."""
@@ -119,7 +126,10 @@ class Cloud(browser.HtmlView):
 
         word_count_dict = self.journal.get_word_count_dict()
         self.words = self._get_words_for_cloud(
-            word_count_dict, self.regexes_ignore, self.regexes_include
+            word_count_dict,
+            self.regexes_ignore + self.regexes_special_ignore_words,
+            self.regexes_include,
+            {tag for tag, _freq in self.tags},
         )
 
         self.link_dict = self.tags + self.words
@@ -153,22 +163,17 @@ class Cloud(browser.HtmlView):
         return "\n".join(html_elements)
 
     @staticmethod
-    def select_most_frequent_words(words_and_frequencies, count):
-        if count == 0:
-            return []
-
-        def get_collated_word(word_and_freq):
-            word, freq = word_and_freq
-            return locale.strxfrm(word)
-
-        def get_frequency(word_and_freq):
-            word, freq = word_and_freq
-            return freq
-
-        words_and_frequencies.sort(key=get_frequency, reverse=True)
-        words_and_frequencies = words_and_frequencies[:count]
-        words_and_frequencies.sort(key=get_collated_word)
-        return words_and_frequencies
+    def select_most_frequent_words(words_and_frequencies, nwords):
+        """
+        Return the 'nwords' most frequent words and their frequencies
+        in 'words_and_frequences' sorted by the locale.
+        """
+        most_frequent_words = []
+        if nwords > 0:
+            words_and_frequencies.sort(key=lambda word_freq: word_freq[1], reverse=True)
+            most_frequent_words = words_and_frequencies[:nwords]
+            most_frequent_words.sort(key=lambda word_freq: locale.strxfrm(word_freq[0]))
+        return most_frequent_words
 
     def _get_tags_for_cloud(self, tag_count_dict, ignores):
         tags_and_frequencies = [
@@ -180,14 +185,13 @@ class Cloud(browser.HtmlView):
         tag_display_limit = self.journal.config.read("cloudMaxTags")
         return self.select_most_frequent_words(tags_and_frequencies, tag_display_limit)
 
-    def _get_words_for_cloud(self, word_count_dict, ignores, includes):
+    def _get_words_for_cloud(self, word_count_dict, ignores, includes, tags):
         words_and_frequencies = [
             (word, freq)
             for (word, freq) in word_count_dict.items()
             if (len(word) > 4 or any(pattern.match(word) for pattern in includes))
-            and not
-            # filter words in ignore_list
-            any(pattern.match(word) for pattern in ignores)
+            and all(not pattern.match(word) for pattern in ignores)
+            and f"#{word}" not in tags
         ]
         return self.select_most_frequent_words(words_and_frequencies, CLOUD_WORDS)
 

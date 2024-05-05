@@ -3,6 +3,7 @@
 import argparse
 from pathlib import Path
 import subprocess
+import sys
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -22,8 +23,10 @@ def build_translation_files(po_dir: Path, locale_dir: Path):
         dest_dir = dest.parent
         if not dest_dir.exists():
             dest_dir.mkdir(parents=True, exist_ok=True)
-        print(f"Compiling {src} to {dest}")
-        subprocess.check_call(["msgfmt", "--output-file", dest, src])
+        try:
+            subprocess.check_call(["msgfmt", "--output-file", dest, src])
+        except subprocess.CalledProcessError:
+            sys.exit(f"Compilation failed for {src}")
 
 
 def main():
@@ -33,6 +36,7 @@ def main():
     print("Building translations")
     print(po_dir, "-->", locale_dir)
     build_translation_files(po_dir, locale_dir)
+    print("Finished building translations")
 
 
 if __name__ == "__main__":

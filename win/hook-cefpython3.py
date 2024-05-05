@@ -11,10 +11,12 @@ import os
 import platform
 import re
 import sys
+
 import PyInstaller
-from PyInstaller.utils.hooks import is_module_satisfies, get_package_paths
-from PyInstaller.compat import is_win, is_darwin, is_linux
 from PyInstaller import log as logging
+from PyInstaller.compat import is_darwin, is_linux, is_win
+from PyInstaller.utils.hooks import get_package_paths, is_module_satisfies
+
 
 try:
     # PyInstaller >= 4.0 doesn't support Python 2.7
@@ -127,7 +129,7 @@ def get_cefpython3_datas():
     elif is_darwin or is_linux:
         cefdatadir = "."
     else:
-        assert False, "Unsupported system {}".format(platform.system())
+        assert False, f"Unsupported system {platform.system()}"
 
     # Binaries, licenses and readmes in the cefpython3/ directory
     for filename in os.listdir(CEFPYTHON3_DIR):
@@ -167,7 +169,7 @@ def get_cefpython3_datas():
                 absolute_file_path = os.path.join(path, file)
                 dest_path = os.path.relpath(path, CEFPYTHON3_DIR)
                 ret.append((absolute_file_path, dest_path))
-                logger.info("Include cefpython3 data: {}".format(dest_path))
+                logger.info(f"Include cefpython3 data: {dest_path}")
     elif is_win or is_linux:
         # The .pak files in cefpython3/locales/ directory
         locales_dir = os.path.join(CEFPYTHON3_DIR, "locales")

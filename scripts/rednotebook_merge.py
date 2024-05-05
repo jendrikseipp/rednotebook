@@ -5,7 +5,7 @@
 To merge .txt files into a destination RedNotebook journal:
 
 0. Install script requirements: "pip install PyYAML"
-1. Click on "Save" within RedNotebook. 
+1. Click on "Save" within RedNotebook.
 2. Do a backup.
 3. Quit RedNotebook.
 4. Merge in your files (adjust paths):

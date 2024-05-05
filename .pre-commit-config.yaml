@@ -1,13 +1,49 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 repos:
-  - repo: https://github.com/psf/black
-    rev: 22.3.0
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
     hooks:
-      - id: black
-        language_version: python3
-        exclude: rednotebook/external/.*\.py
+    -   id: trailing-whitespace
+    -   id: check-yaml
+    -   id: check-added-large-files
 
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v2.32.0
+# Static analysis for Python code
+-   repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
     hooks:
-      - id: pyupgrade
-        exclude: rednotebook/external/.*\.py
+    -   id: flake8
+        # E203: whitespace before ':' (not compliant with PEP 8)
+        # E402: module level import not at top of file
+        # F821: undefined name "_"
+        args: ['--extend-ignore=E203,E402,F821', '--max-line-length=110', '--builtins="_"']
+        exclude: ^rednotebook/external/
+
+# Python code formatter
+-   repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+    -   id: black
+        exclude: ^rednotebook/external/
+
+# Imports sorter
+-   repo: https://github.com/pycqa/isort
+    rev: 5.11.5
+    hooks:
+    -   id: isort
+        exclude: ^rednotebook/journal.py
+
+# Upgrades Python code to a target version
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v3.4.0
+    hooks:
+    -   id: pyupgrade
+        args: ['--py36-plus', '--exit-zero']
+        exclude: ^rednotebook/external/
+
+# Finds unused Python code
+-   repo: https://github.com/jendrikseipp/vulture
+    rev: v2.7
+    hooks:
+    -   id: vulture
+        exclude: ^rednotebook/external/

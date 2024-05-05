@@ -1,3 +1,7 @@
+# 2.33 (2024-05-05)
+* Ignore image filenames and web links in word clouds (#537, #696, @laraconda).
+* Add more pre-commit checks (#705, @laraconda).
+
 # 2.32 (2024-02-17)
 * Allow copying text in preview mode (#732, Jendrik Seipp).
 * Allow hashtags that start with (but are longer than) hex colors and preprocessor directives (#738, Jendrik Seipp).
