@@ -1,11 +1,14 @@
 import gi
 
+
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import Gtk  # noqa: F401
+
 
 print("Gtk import works")
 
-from gi.repository import GObject
+from gi.repository import GObject  # noqa: F401
+
 
 print("GObject import works")
 
@@ -15,7 +18,8 @@ try:
 except ValueError:
     gi.require_version("GtkSource", "3.0")
     print("Using GtkSourceView 3.0")
-from gi.repository import GtkSource
+from gi.repository import GtkSource  # noqa: F401
+
 
 print("GtkSource import works")
 
@@ -43,6 +47,7 @@ def find_library(name):
 find_library("libenchant")
 
 import enchant
+
 
 print("Languages:", enchant.list_languages())
 print("Dictionaries:", enchant.list_dicts())

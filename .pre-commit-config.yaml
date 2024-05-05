@@ -15,7 +15,8 @@ repos:
     -   id: flake8
         # E203: whitespace before ':' (not compliant with PEP 8)
         # E402: module level import not at top of file
-        args: ['--extend-ignore=E203,E402', '--max-line-length=110', '--builtins="_"']
+        # F821: undefined name "_"
+        args: ['--extend-ignore=E203,E402,F821', '--max-line-length=110', '--builtins="_"']
         exclude: ^rednotebook/external/
 
 # Python code formatter
@@ -23,6 +24,7 @@ repos:
     rev: 23.3.0
     hooks:
     -   id: black
+        exclude: ^rednotebook/external/
 
 # Imports sorter
 -   repo: https://github.com/pycqa/isort
