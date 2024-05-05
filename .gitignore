@@ -14,3 +14,4 @@ debian/files
 debian/rednotebook.postinst.debhelper
 debian/rednotebook.prerm.debhelper
 debian/rednotebook.substvars
+test-translations/
