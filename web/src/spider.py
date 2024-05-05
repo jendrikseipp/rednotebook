@@ -2,6 +2,7 @@
 
 import os
 
+
 spider_dir = os.path.abspath(os.path.dirname(__file__))
 
 src = spider_dir
@@ -58,7 +59,7 @@ for page in pages:
     filename = page["filename"]
     html = template
     with open(filename) as file:
-        html = html.replace(f"***CONTENT***", file.read())
+        html = html.replace("***CONTENT***", file.read())
     for key in set(page.keys()) | {"scripts"}:
         html = html.replace(f"***{key.upper()}***", page.get(key, ""))
     with open(os.path.join(dest, filename), "w") as f:

@@ -40,6 +40,16 @@ Start RedNotebook:
   * Windows: `py rednotebook/journal.py`
 
 
+## Set up pre-commit hooks
+
+Install [pre-commit](https://pre-commit.com/), then run `pre-commit install`.
+
+
+## Run tests
+
+Install [tox](https://tox.wiki), then run `tox`.
+
+
 ## Thanks to
 
   * The authors of the libraries listed under 'Requirements'.

@@ -3,6 +3,7 @@
 import re
 import sys
 
+
 MAX_RELEASES = 10
 CHANGELOG = sys.argv[1]
 OUTFILE = "news.txt"
