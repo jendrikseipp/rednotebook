@@ -1,3 +1,11 @@
+rednotebook (2.33-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Ignore image filenames and web links in word clouds (#537, #696, @laraconda).
+  * Add more pre-commit checks (#705, @laraconda).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 05 May 2024 19:26:46 +0200
+
 rednotebook (2.32-1) UNRELEASED; urgency=low
 
   * New upstream release
