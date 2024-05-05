@@ -129,7 +129,7 @@ class Cloud(browser.HtmlView):
             word_count_dict,
             self.regexes_ignore + self.regexes_special_ignore_words,
             self.regexes_include,
-            self.tags,
+            {tag for tag, _freq in self.tags},
         )
 
         self.link_dict = self.tags + self.words
@@ -179,20 +179,19 @@ class Cloud(browser.HtmlView):
         tags_and_frequencies = [
             (tag, freq)
             for (tag, freq) in tag_count_dict
-            if all(not pattern.match(tag) for pattern in ignores)
+            if not any(pattern.match(tag) for pattern in ignores)
         ]
 
         tag_display_limit = self.journal.config.read("cloudMaxTags")
         return self.select_most_frequent_words(tags_and_frequencies, tag_display_limit)
 
-    def _get_words_for_cloud(self, word_count_dict, ignores, includes, tags_count):
-        tags_set = set(map(lambda tag_count: tag_count[0][1:], tags_count))
+    def _get_words_for_cloud(self, word_count_dict, ignores, includes, tags):
         words_and_frequencies = [
             (word, freq)
             for (word, freq) in word_count_dict.items()
             if (len(word) > 4 or any(pattern.match(word) for pattern in includes))
             and all(not pattern.match(word) for pattern in ignores)
-            and word not in tags_set
+            and f"#{word}" not in tags
         ]
         return self.select_most_frequent_words(words_and_frequencies, CLOUD_WORDS)
 
