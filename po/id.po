@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2015-11-01 21:12+0000\n"
-"Last-Translator: Hertatijanto Hartono <dvertx@gmail.com>\n"
-"Language-Team: Indonesian <id@li.org>\n"
+"PO-Revision-Date: 2024-01-18 23:00+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.4-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
 
 #: ../rednotebook/info.py:30
 msgid "A Desktop Journal"
@@ -29,6 +31,12 @@ msgid ""
 "templates, spell check your notes, and export to plain text, HTML or\n"
 "Latex.\n"
 msgstr ""
+"RedNotebook adalah jurnal desktop modern. Aplikasi ini memungkinkan Anda "
+"memformat, menandai, \n"
+"dan mencari entri Anda. Anda juga dapat menambahkan gambar, tautan, dan "
+"templat yang dapat disesuaikan,\n"
+" memeriksa ejaan catatan Anda, dan mengekspor ke teks biasa, HTML, \n"
+"atau Latex.\n"
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -76,7 +84,7 @@ msgstr "Periksa keberadaan versi terbaru saat dimulai"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Search as you type"
-msgstr ""
+msgstr "Cari saat Anda mengetik"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Check now"
@@ -100,7 +108,7 @@ msgstr "Format Tanggal/Waktu"
 
 #: ../rednotebook/gui/options.py:345
 msgid "Used by Date/Time button and $date$ template macro."
-msgstr ""
+msgstr "Digunakan oleh tombol Tanggal/Waktu dan makro template $date$."
 
 #: ../rednotebook/gui/options.py:348
 msgid "Date format"
@@ -108,15 +116,15 @@ msgstr "Format tanggal"
 
 #: ../rednotebook/gui/options.py:350
 msgid "Used for dates in titlebar and exports."
-msgstr ""
+msgstr "Digunakan untuk tanggal di judul dan ekspor."
 
 #: ../rednotebook/gui/options.py:353
 msgid "Tags in cloud"
-msgstr ""
+msgstr "Tag di cloud"
 
 #: ../rednotebook/gui/options.py:355
 msgid "Maximum number of tags displayed in the cloud"
-msgstr ""
+msgstr "Jumlah tag maksimum yang ditampilkan di cloud"
 
 #: ../rednotebook/gui/options.py:358
 msgid "Exclude from cloud"
@@ -124,7 +132,7 @@ msgstr "Tidak termasuk dalam awan"
 
 #: ../rednotebook/gui/options.py:361
 msgid "Do not show these comma separated words and #tags in the clouds"
-msgstr ""
+msgstr "Jangan tampilkan kata dan #tag yang dipisahkan koma ini di cloud"
 
 #: ../rednotebook/gui/options.py:365
 msgid "Include small words in cloud"
@@ -144,7 +152,7 @@ msgstr "Miring"
 
 #: ../rednotebook/gui/format_menu.py:108
 msgid "Monospace"
-msgstr ""
+msgstr "Monospace"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Underline"
@@ -155,10 +163,8 @@ msgid "Strikethrough"
 msgstr "Coret tengah huruf"
 
 #: ../rednotebook/gui/format_menu.py:132
-#, fuzzy
-#| msgid "Format"
 msgid "Clear Format"
-msgstr "Format"
+msgstr "Hapus Format"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:138
@@ -176,7 +182,7 @@ msgstr "Format teks atau label terpilih"
 
 #: ../rednotebook/gui/main_window.py:184
 msgid "Preview in Browser"
-msgstr ""
+msgstr "Pratinjau di Browser"
 
 #: ../rednotebook/gui/main_window.py:330
 msgid "Show RedNotebook"
@@ -243,7 +249,7 @@ msgstr "Senarai Bertitik"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Daftar Bernomor"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -279,7 +285,7 @@ msgstr "S_isipkan"
 
 #: ../rednotebook/gui/insert_menu.py:208
 msgid "Level"
-msgstr ""
+msgstr "Tingkat"
 
 #: ../rednotebook/gui/insert_menu.py:243
 msgid "Insert"
@@ -307,7 +313,7 @@ msgstr "Lokasi tautan belum terdefinisi"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Ganti"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"

@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2015-11-08 23:06+0000\n"
-"Last-Translator: Jendrik Seipp <jendrikseipp@web.de>\n"
-"Language-Team: Slovak <sk@li.org>\n"
+"PO-Revision-Date: 2023-10-06 22:11+0000\n"
+"Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 5.1-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
 
 #: ../rednotebook/info.py:30
 msgid "A Desktop Journal"
@@ -52,7 +54,7 @@ msgstr "Pomocník"
 
 #: ../rednotebook/gui/options.py:209
 msgid "Choose font ..."
-msgstr ""
+msgstr "Vyberte písmo"
 
 #: ../rednotebook/gui/options.py:217
 msgid "Choose font"
@@ -463,20 +465,16 @@ msgid "Donate"
 msgstr ""
 
 #: ../rednotebook/gui/menu.py:250
-#, fuzzy
-#| msgid "Open the RedNotebook documentation"
 msgid "Support RedNotebook with a donation"
-msgstr "Otvor dokumentáciu RedNotebook-u"
+msgstr "Podpora RedNotebook s darom"
 
 #: ../rednotebook/gui/menu.py:256
 msgid "Translate RedNotebook"
 msgstr "Prelož RedNotebook"
 
 #: ../rednotebook/gui/menu.py:258
-#, fuzzy
-#| msgid "Translate RedNotebook"
 msgid "Help translate RedNotebook to your language"
-msgstr "Prelož RedNotebook"
+msgstr "Pomoc preložiť RedNotebook na váš jazyk"
 
 #: ../rednotebook/gui/menu.py:264
 msgid "Report a Problem"
@@ -860,10 +858,8 @@ msgid ""
 msgstr ""
 
 #: ../rednotebook/help.py:64
-#, fuzzy
-#| msgid "Template"
 msgid "Templates"
-msgstr "Šablóna"
+msgstr "Šablóny"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
@@ -1099,10 +1095,8 @@ msgid ""
 msgstr ""
 
 #: ../rednotebook/templates.py:196
-#, fuzzy
-#| msgid "Template"
 msgid "Template mode"
-msgstr "Šablóna"
+msgstr "Režim šablóny"
 
 #: ../rednotebook/templates.py:200
 msgid "You are currently editing a template."
@@ -1165,10 +1159,8 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr ""
 
 #: tmp/main_window.glade.h:14
-#, fuzzy
-#| msgid "Backup"
 msgid "Back"
-msgstr "Zálohovať"
+msgstr "Späť"
 
 #: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
@@ -1234,7 +1226,7 @@ msgstr "Vyberte obrázok"
 
 #: tmp/main_window.glade.h:35
 msgid "_Open"
-msgstr ""
+msgstr "Otvorené"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"
@@ -1246,7 +1238,7 @@ msgstr "Štatistiky"
 
 #: tmp/main_window.glade.h:38
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "Vybraný  deň"
 
 #: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-05-16 17:47+0000\n"
+"PO-Revision-Date: 2023-10-19 04:12+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.1\n"
 "X-Launchpad-Export-Date: 2019-11-08 05:48+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -157,8 +157,6 @@ msgid "Strikethrough"
 msgstr "Yliviivattu"
 
 #: ../rednotebook/gui/format_menu.py:132
-#, fuzzy
-#| msgid "Clear format"
 msgid "Clear Format"
 msgstr "Tyhjennä muotoilu"
 
@@ -245,7 +243,7 @@ msgstr "Luettelo"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Järjestetty luettelo"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -309,7 +307,7 @@ msgstr "Linkin sijaintia ei ole annettu"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Korvaa"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -321,7 +319,7 @@ msgstr "Teksti"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -992,10 +990,8 @@ msgid "Replaced {total_replacements} occurrences of the search text"
 msgstr ""
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "Tekstiä tai tunnistetta ei ole valittu."
+msgstr "Tekstiä ei ole korvattu"
 
 #: ../rednotebook/backup.py:58
 #, python-format

@@ -8,15 +8,18 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2015-11-01 21:12+0000\n"
-"Last-Translator: Tony Pratschke <irish.translator@gmail.com>\n"
-"Language-Team: Irish <ga@li.org>\n"
+"PO-Revision-Date: 2024-07-20 20:09+0000\n"
+"Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
+"Language-Team: Irish <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/ga/>\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
+"n>6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.7-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
 
 #: ../rednotebook/info.py:30
 msgid "A Desktop Journal"
@@ -29,6 +32,13 @@ msgid ""
 "templates, spell check your notes, and export to plain text, HTML or\n"
 "Latex.\n"
 msgstr ""
+"Is dialann deisce nua-aimseartha é RedNotebook. Ligeann sé duit formáid, "
+"clib agus\n"
+"cuardaigh d'iontrálacha. Is féidir leat freisin pictiúir, naisc agus "
+"customizable\n"
+"teimpléid, litriú do nótaí a sheiceáil, agus onnmhairiú go gnáth-théacs, "
+"HTML nó\n"
+"LaTeX.\n"
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -76,7 +86,7 @@ msgstr "Seiceáil faoi leagan nua ar thosú"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Search as you type"
-msgstr ""
+msgstr "Cuardaigh mar a chlóscríobhann tú"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Check now"
@@ -84,7 +94,7 @@ msgstr "Seiceáil anois"
 
 #: ../rednotebook/gui/options.py:335
 msgid "Edit font:"
-msgstr "Cuir cló in eagar"
+msgstr "Cuir cló in eagar:"
 
 #: ../rednotebook/gui/options.py:337
 msgid "Preview font:"
@@ -100,7 +110,7 @@ msgstr "Formáid Dáta/Am"
 
 #: ../rednotebook/gui/options.py:345
 msgid "Used by Date/Time button and $date$ template macro."
-msgstr ""
+msgstr "Úsáidte ag an gcnaipe Dáta/Am agus ag macra teimpléad $date$."
 
 #: ../rednotebook/gui/options.py:348
 msgid "Date format"
@@ -108,15 +118,15 @@ msgstr "Formáid an dáta"
 
 #: ../rednotebook/gui/options.py:350
 msgid "Used for dates in titlebar and exports."
-msgstr ""
+msgstr "Úsáidtear é le haghaidh dátaí sa bharra teidil agus easpórtálacha."
 
 #: ../rednotebook/gui/options.py:353
 msgid "Tags in cloud"
-msgstr ""
+msgstr "Clibeanna sa scamall"
 
 #: ../rednotebook/gui/options.py:355
 msgid "Maximum number of tags displayed in the cloud"
-msgstr ""
+msgstr "Uaslíon na gclibeanna ar taispeáint sa scamall"
 
 #: ../rednotebook/gui/options.py:358
 msgid "Exclude from cloud"
@@ -124,7 +134,7 @@ msgstr "Ná cuir san áireamh sa néalríomhaireacht"
 
 #: ../rednotebook/gui/options.py:361
 msgid "Do not show these comma separated words and #tags in the clouds"
-msgstr ""
+msgstr "Ná taispeáin na focail scartha camóg seo agus #clibeanna sna scamaill"
 
 #: ../rednotebook/gui/options.py:365
 msgid "Include small words in cloud"
@@ -144,7 +154,7 @@ msgstr "Iodálach"
 
 #: ../rednotebook/gui/format_menu.py:108
 msgid "Monospace"
-msgstr ""
+msgstr "Monaspás"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Underline"
@@ -155,10 +165,8 @@ msgid "Strikethrough"
 msgstr "Cuir líne trí"
 
 #: ../rednotebook/gui/format_menu.py:132
-#, fuzzy
-#| msgid "Format"
 msgid "Clear Format"
-msgstr "Formáid"
+msgstr "Glan Formáid"
 
 #. Translators: Noun
 #: ../rednotebook/gui/format_menu.py:138
@@ -176,7 +184,7 @@ msgstr "Formáidigh an téacs/an clib roghnaithe"
 
 #: ../rednotebook/gui/main_window.py:184
 msgid "Preview in Browser"
-msgstr ""
+msgstr "Réamhamharc sa Bhrabhsálaí"
 
 #: ../rednotebook/gui/main_window.py:330
 msgid "Show RedNotebook"
@@ -184,7 +192,7 @@ msgstr "Taispeáin RedNoteBook"
 
 #: ../rednotebook/gui/main_window.py:590
 msgid "No directory selected."
-msgstr "Níor roghnaíodh aon chomhadlann"
+msgstr "Níor roghnaíodh aon chomhadlann."
 
 #: ../rednotebook/gui/main_window.py:684
 msgid "Template"
@@ -243,7 +251,7 @@ msgstr "Liosta Urchair"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Liosta Uimhrithe"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -279,7 +287,7 @@ msgstr "Cuir _isteach"
 
 #: ../rednotebook/gui/insert_menu.py:208
 msgid "Level"
-msgstr ""
+msgstr "Leibhéal"
 
 #: ../rednotebook/gui/insert_menu.py:243
 msgid "Insert"
@@ -299,7 +307,7 @@ msgstr "picteilíní"
 
 #: ../rednotebook/gui/insert_menu.py:303
 msgid "Width must be an integer."
-msgstr "Ní foláir don leithead a bheith ina shlánuimhir"
+msgstr "Ní foláir don leithead a bheith ina shlánuimhir."
 
 #: ../rednotebook/gui/insert_menu.py:387
 msgid "No link location has been entered"
@@ -307,7 +315,7 @@ msgstr "Níor cuireadh aon suíomh naisc isteach"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Ionadaigh"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -319,7 +327,7 @@ msgstr "Téacs"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Cuardach"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -327,11 +335,11 @@ msgstr "Cuir i dtaisce agus cuir isteach é"
 
 #: ../rednotebook/gui/customwidgets.py:341 ../rednotebook/gui/menu.py:110
 msgid "Save"
-msgstr ""
+msgstr "Sábháil"
 
 #: ../rednotebook/gui/customwidgets.py:343
 msgid "Close"
-msgstr ""
+msgstr "Dún"
 
 #: ../rednotebook/gui/menu.py:93
 msgid "_Journal"
@@ -339,7 +347,7 @@ msgstr "_Dialann"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "New"
-msgstr ""
+msgstr "Nua"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
@@ -347,7 +355,7 @@ msgstr "Cruthaigh dialann nua. Cuirfear an tseandialann i dtaisce"
 
 #: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
-msgstr ""
+msgstr "Oscail"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
@@ -355,7 +363,7 @@ msgstr "Luchtaigh dialann atá ann. Cuirfear an tsean-dialann i dtaisce"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save As"
-msgstr ""
+msgstr "Sábháil mar"
 
 #: ../rednotebook/gui/menu.py:117
 msgid ""
@@ -390,11 +398,11 @@ msgstr "Léirigh roinnt staidrimh faoin dialann"
 
 #: ../rednotebook/gui/menu.py:150
 msgid "Quit"
-msgstr ""
+msgstr "Scoir"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Múch RedNotebook. Ní sheolfar chuig an tráidire é"
+msgstr "Múch RedNotebook. Ní sheolfar chuig an tráidire é."
 
 #: ../rednotebook/gui/menu.py:155
 msgid "_Edit"
@@ -402,7 +410,7 @@ msgstr "Cuir in _Eagar"
 
 #: ../rednotebook/gui/menu.py:159
 msgid "Undo"
-msgstr ""
+msgstr "Cealaigh"
 
 #: ../rednotebook/gui/menu.py:161
 msgid "Undo text or tag edits"
@@ -410,7 +418,7 @@ msgstr "Cealaigh eagar ar théacs nó ar chlibeanna"
 
 #: ../rednotebook/gui/menu.py:167
 msgid "Redo"
-msgstr ""
+msgstr "Athdhéan"
 
 #: ../rednotebook/gui/menu.py:169
 msgid "Redo text or tag edits"
@@ -418,27 +426,27 @@ msgstr "Athdhéan eagar ar théacs nó ar chlibeanna"
 
 #: ../rednotebook/gui/menu.py:175
 msgid "Cut"
-msgstr ""
+msgstr "Gearr"
 
 #: ../rednotebook/gui/menu.py:183
 msgid "Copy"
-msgstr ""
+msgstr "Cóip"
 
 #: ../rednotebook/gui/menu.py:191
 msgid "Paste"
-msgstr ""
+msgstr "Greamaigh"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Fullscreen"
-msgstr ""
+msgstr "Scáileán iomlán"
 
 #: ../rednotebook/gui/menu.py:207
 msgid "Find"
-msgstr ""
+msgstr "Faigh"
 
 #: ../rednotebook/gui/menu.py:219
 msgid "Spell Check"
-msgstr ""
+msgstr "Seiceáil Litrithe"
 
 #: ../rednotebook/gui/menu.py:221
 msgid "Underline misspelled words"
@@ -462,23 +470,19 @@ msgstr "Oscail doiciméadúchán RedNotebook"
 
 #: ../rednotebook/gui/menu.py:248
 msgid "Donate"
-msgstr ""
+msgstr "Síntiúis"
 
 #: ../rednotebook/gui/menu.py:250
-#, fuzzy
-#| msgid "Open the RedNotebook documentation"
 msgid "Support RedNotebook with a donation"
-msgstr "Oscail doiciméadúchán RedNotebook"
+msgstr "Tacaigh le RedNotebook le síntiús"
 
 #: ../rednotebook/gui/menu.py:256
 msgid "Translate RedNotebook"
 msgstr "Aistrigh RedNotebook"
 
 #: ../rednotebook/gui/menu.py:258
-#, fuzzy
-#| msgid "Translate RedNotebook"
 msgid "Help translate RedNotebook to your language"
-msgstr "Aistrigh RedNotebook"
+msgstr "Cabhraigh le RedNotebook a aistriú go do theanga"
 
 #: ../rednotebook/gui/menu.py:264
 msgid "Report a Problem"
@@ -490,15 +494,15 @@ msgstr "Comhlántar foirm gearr faoin fhadhb"
 
 #: ../rednotebook/gui/menu.py:272
 msgid "Give Feedback"
-msgstr ""
+msgstr "Tabhair Aiseolas"
 
 #: ../rednotebook/gui/menu.py:274
 msgid "How can we improve RedNotebook?"
-msgstr ""
+msgstr "Conas is féidir linn RedNotebook a fheabhsú?"
 
 #: ../rednotebook/gui/menu.py:277
 msgid "About"
-msgstr ""
+msgstr "Faoi"
 
 #: ../rednotebook/gui/menu.py:295
 msgid "Wrong directory"
@@ -506,11 +510,11 @@ msgstr "An chomhadlann mícheart"
 
 #: ../rednotebook/gui/menu.py:299 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
-msgstr "Ní féidir leat an chomhadlann seo a úsáid le haghaidh do dhialann"
+msgstr "Ní féidir leat an chomhadlann seo a úsáid le haghaidh do dhialann:"
 
 #: ../rednotebook/gui/menu.py:306
 msgid "Please select an empty directory."
-msgstr "Roghnaigh comhadlann fholamh, le do thoil"
+msgstr "Roghnaigh comhadlann fholamh, le do thoil."
 
 #: ../rednotebook/gui/menu.py:311
 msgid "This directory contains no journal files:"
@@ -519,7 +523,7 @@ msgstr "Ní aon chomhad dialainne sa chomhadlann seo:"
 #: ../rednotebook/gui/menu.py:330
 msgid "Journals are saved in a directory, not in a single file."
 msgstr ""
-"Cuirtear dialann i dtaisce i gcomhadlann, ní i gcomhad aonair a dhéantar é"
+"Cuirtear dialann i dtaisce i gcomhadlann, ní i gcomhad aonair a dhéantar é."
 
 #: ../rednotebook/gui/menu.py:331
 msgid "The directory name will be the title of the new journal."
@@ -551,18 +555,16 @@ msgstr "Doiciméadúchán RedNotebook"
 
 #: ../rednotebook/gui/menu.py:443
 msgid "Contributors:"
-msgstr ""
+msgstr "Rannpháirtithe:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Tony Pratschke https://launchpad.net/~irish-translator"
+msgstr "creidiúintí aistritheora"
 
 #: ../rednotebook/gui/clouds.py:74
 msgid "filter, these, comma, separated, words, and, #tags"
-msgstr ""
+msgstr "scagaire, iad seo, camóg, scartha, focail, agus, #tags"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "mtv, spam, work, job, play"
@@ -658,7 +660,7 @@ msgstr "Cuntóir Easportála"
 
 #: ../rednotebook/gui/exports.py:314
 msgid "Welcome to the Export Assistant."
-msgstr "Fáilte chuig an Cuntóir Easportála"
+msgstr "Fáilte chuig an Cuntóir Easportála."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "This wizard will help you to export your journal to various formats."
@@ -671,11 +673,12 @@ msgid ""
 "saved."
 msgstr ""
 "D'fhéadfá na laethanta le heasportáil a roghnú maraon leis an áit le hiad a "
-"chur i dtaisce"
+"chur i dtaisce."
 
 #: ../rednotebook/gui/exports.py:332
 msgid "PDF: export to HTML, open in browser and print to PDF file"
 msgstr ""
+"PDF: easpórtáil go HTML, oscail sa bhrabhsálaí agus priontáil go comhad PDF"
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Select Export Format"
@@ -774,7 +777,7 @@ msgstr "Is é <b>%s</b> an leagan is déanaí."
 
 #: ../rednotebook/util/utils.py:121
 msgid "If you like the program, please consider making a donation."
-msgstr ""
+msgstr "Más maith leat an clár, smaoinigh ar síntiús a thabhairt."
 
 #: ../rednotebook/util/utils.py:123
 msgid "Do you want to visit the RedNotebook homepage?"
@@ -818,15 +821,15 @@ msgstr "Línte"
 
 #: ../rednotebook/help.py:35
 msgid "Hello!"
-msgstr "Haló"
+msgstr "Dia dhuit!"
 
 #: ../rednotebook/help.py:37
 msgid ""
 "Some example text has been added to help you start and you can erase it "
 "whenever you like."
 msgstr ""
-"Cuireadh isteach roinnt téacs mar shampla chun cabhair a thabhairt duit "
-"tosú, ach d'fhéadfá é a scrios nuair is mian leat"
+"Cuireadh roinnt téacs samplach leis chun cabhrú leat tosú agus is féidir "
+"leat é a scriosadh aon uair is mian leat."
 
 #: ../rednotebook/help.py:42
 msgid ""
@@ -854,11 +857,11 @@ msgstr "Gliogáil ar Eagar thuas agus féach an difríocht."
 
 #: ../rednotebook/help.py:54
 msgid "Tagging is easy."
-msgstr "Is éasca é clibeáil"
+msgstr "Tá clibeáil éasca."
 
 #: ../rednotebook/help.py:55
 msgid "Just use #hashtags like on twitter."
-msgstr "Bain úsáid as #haischlibeanna díreach mar ar Twitter"
+msgstr "Bain úsáid as #hashtags mar atá ar twitter."
 
 #: ../rednotebook/help.py:59
 msgid ""
@@ -872,24 +875,26 @@ msgstr ""
 "\"__Life of Brian__\"."
 
 #: ../rednotebook/help.py:64
-#, fuzzy
-#| msgid "Template"
 msgid "Templates"
-msgstr "Teimpléad"
+msgstr "Teimpléid"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
-msgstr ""
+msgstr "Tacaíonn RedNotebook le teimpléid."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
 msgstr ""
+"Cliceáil ar an tsaighead in aice leis an gcnaipe \"Teimpléad\" chun roinnt "
+"roghanna a fheiceáil."
 
 #: ../rednotebook/help.py:68
 msgid ""
 "You can have one template for every day\n"
 "of the week and unlimited arbitrarily named templates."
 msgstr ""
+"Is féidir teimpléad amháin a bheith agat le haghaidh gach lá\n"
+"na seachtaine agus teimpléid ainmnithe go treallach gan teorainn."
 
 #. Translators: both are verbs
 #: ../rednotebook/help.py:74
@@ -914,8 +919,8 @@ msgstr ""
 msgid ""
 "\"Backup\" in the \"Journal\" menu saves all your entered data in a zip file."
 msgstr ""
-"Déanann  \"Cúltacaigh\" sa roghchlár \"Dialann\" na sonraí go léir a chuir "
-"tú isteach a chur i dtaisce i gcomhad zip."
+"Sábhálann \"Cúltaca\" sa roghchlár \"Iris\" na sonraí go léir a cuireadh "
+"isteach i gcomhad zip."
 
 #: ../rednotebook/help.py:81
 msgid "In the \"Journal\" menu you also find the \"Export\" button."
@@ -940,26 +945,17 @@ msgstr "Beidh fáilte roimh aon aiseolas."
 
 #: ../rednotebook/help.py:89
 msgid "Have a nice day!"
-msgstr "Bain taitneamh as an lá"
+msgstr "Lá maith agat!"
 
 #: ../rednotebook/help.py:114
-#, fuzzy
-#| msgid ""
-#| "=== Multiple entries ===\n"
-#| "You can add multiple entries to a single day by using different journals "
-#| "(one named \"Work\", the other \"Family\"), separating your entries with "
-#| "different titles (=== Work ===, === Family ===) and using horizontal "
-#| "separator lines (20 “=”s)."
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by separating your entries with "
 "different titles (=== Work ===, === Family ===)."
 msgstr ""
-"===Iontrálacha iolracha===\n"
-" D'fhéadfá iontrálacha iolracha a chur le lá amháin as dialainne éagsula a "
-"úsáid (ceann amháin ainmnithe mar \"Obair\", an dara cheann \"Teaghlach\", "
-"agus na hiontralacha scartha óna chéile le teidil éagsúla (===Obair===, "
-"===Teaghlach===) agus línte deighilte cothromanacha a úsáid (20\"=\"s)."
+"=== Iontrálacha iolracha ===\n"
+"Is féidir leat iontrálacha iolracha a chur le lá amháin trí d’iontrálacha a "
+"scaradh le teidil éagsúla (=== Obair ===, === Teaghlach ===)."
 
 #: ../rednotebook/help.py:121
 msgid ""
@@ -971,17 +967,17 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
-"===Obair===\n"
-"Seo anois an chéad iontráil. Baineann sé le #obair.\n"
+"=== Obair ===\n"
+"Seo a leanas an chéad iontráil. Baineann sé le #obair.\n"
 "\n"
-"====================\n"
+"=================\n"
 "\n"
-"===Teaghlach===\n"
-"agus anois iontráil faoi mo #theaghlach.\""
+"=== Teaghlaigh ===\n"
+"Seo chugainn an iontráil faoi mo #theaghlach."
 
 #: ../rednotebook/journal.py:251
 msgid "Opening default journal."
-msgstr "Dialann réamhshocraithe á oscailt"
+msgstr "Dialann réamhshocraithe a oscailt."
 
 #: ../rednotebook/journal.py:378
 #, python-format
@@ -1003,25 +999,22 @@ msgstr "Dearmad"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Athsholáthar {total_replacements} tarluithe den téacs cuardaigh"
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "Níor roghnaíodh aon téacs ná chlib."
+msgstr "Níl aon téacs curtha ina áit"
 
 #: ../rednotebook/backup.py:58
-#, fuzzy, python-format
-#| msgid "It has been a while since you made your last backup."
+#, python-format
 msgid "It has been %d days since you made your last backup."
-msgstr "Níl aon chúltacú déanta agat le tamall beag anuas"
+msgstr "Tá sé %d lá ó rinne tú do chúltaca is déanaí."
 
 #: ../rednotebook/backup.py:60
 msgid "You can backup your journal to a zip file to avoid data loss."
 msgstr ""
-"D'fhéadfá do dhialann a chúltacú chuig chomhad zip chun caillteanas sonraí a "
-"sheachaint"
+"Is féidir leat do dhialann a chúltaca go zip-chomhad chun cailliúint sonraí "
+"a sheachaint."
 
 #: ../rednotebook/backup.py:67
 msgid "Backup"
@@ -1091,26 +1084,27 @@ msgid ""
 "+\n"
 "==================================\n"
 msgstr ""
-"===Cruinniú ===\n"
+"=== Cruinniú ===\n"
 "\n"
-"Cuspóir, dátá, agus áit\n"
+"Cuspóir, dáta, agus áit\n"
+"\n"
 "**I láthair:**\n"
 "+\n"
 "+\n"
 "+\n"
 "\n"
 "\n"
-"**Clár Oibre:**\n"
+"**Clár:**\n"
 "+\n"
 "+\n"
 "+\n"
 "\n"
 "\n"
-"**Díospóireacht, Cinntí, Tascanna**\n"
+"**Plé, Cinntí, Sannacháin:**\n"
 "+\n"
 "+\n"
 "+\n"
-"==================================\n"
+"===========================\n"
 
 #: ../rednotebook/templates.py:140
 msgid ""
@@ -1195,14 +1189,12 @@ msgstr ""
 "=====================================\n"
 
 #: ../rednotebook/templates.py:196
-#, fuzzy
-#| msgid "Template"
 msgid "Template mode"
-msgstr "Teimpléad"
+msgstr "Modh teimpléad"
 
 #: ../rednotebook/templates.py:200
 msgid "You are currently editing a template."
-msgstr ""
+msgstr "Tá teimpléad á chur in eagar agat faoi láthair."
 
 #: ../rednotebook/templates.py:321
 msgid "Choose Template Name"
@@ -1226,11 +1218,11 @@ msgstr "Roghnaigh ainm comhaid cúltacaithe"
 
 #: tmp/main_window.glade.h:4
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cealaigh"
 
 #: tmp/main_window.glade.h:5
 msgid "_Save"
-msgstr ""
+msgstr "_Sábháil"
 
 #: tmp/main_window.glade.h:6
 msgid "Select a directory"
@@ -1238,7 +1230,7 @@ msgstr "Roghnaigh comhadlann"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr ""
+msgstr "_Ceart go leor"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1249,10 +1241,8 @@ msgid "Insert Link"
 msgstr "Cuir nasc ann"
 
 #: tmp/main_window.glade.h:11
-#, fuzzy
-#| msgid "<b>Link location (e.g. http://rednotebook.sf.net)</b>"
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
-msgstr "<b>Suíomh naisc (m. sh.. http://rednotebook.sf.net)</b>"
+msgstr "<b>Suíomh an naisc (m.sh. https://www.google.com)</b>"
 
 #: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
@@ -1263,10 +1253,8 @@ msgid "Go to previous day (Ctrl+PageUp)"
 msgstr "Téitear chuig an lá roimhe seo (Ctrl+PageUp)"
 
 #: tmp/main_window.glade.h:14
-#, fuzzy
-#| msgid "Backup"
 msgid "Back"
-msgstr "Cultacaigh"
+msgstr "Ar ais"
 
 #: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
@@ -1282,7 +1270,7 @@ msgstr "Téigh go dtí an chéad lá eile (Ctrl+PageDown)"
 
 #: tmp/main_window.glade.h:18
 msgid "Forward"
-msgstr ""
+msgstr "Ar aghaidh"
 
 #: tmp/main_window.glade.h:19
 msgid "Show a formatted preview of the text (Ctrl+P)"
@@ -1332,7 +1320,7 @@ msgstr "Roghnaigh pictiur"
 
 #: tmp/main_window.glade.h:35
 msgid "_Open"
-msgstr ""
+msgstr "_Oscail"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"

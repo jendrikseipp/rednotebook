@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2022-11-19 05:32+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2024-08-05 15:09+0000\n"
+"Last-Translator: Michał Moczulski <michalmoczulski1a@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "rednotebook/desktop-app/en_GB/>\n"
 "Language: en_GB\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:37+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -31,6 +31,10 @@ msgid ""
 "templates, spell check your notes, and export to plain text, HTML or\n"
 "Latex.\n"
 msgstr ""
+"RedNotebook is a modern desktop journal. It lets you format, tag and\n"
+"search your entries. You can also add pictures, links and customizable\n"
+"templates, spell check your notes, and export to plain text, HTML or\n"
+"Latex.\n"
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -78,7 +82,7 @@ msgstr "Check for new version at startup"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Search as you type"
-msgstr ""
+msgstr "Search as you type"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Check now"
