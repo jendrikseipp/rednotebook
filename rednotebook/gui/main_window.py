@@ -667,6 +667,14 @@ class MainWindow:
         )
 
         self.set_font(config.read("mainFont", editor.DEFAULT_FONT))
+        
+        self.set_autoIndent()
+        
+    def set_autoIndent(self):
+        if self.journal.config.read("autoindent") == 1:
+            self.day_text_field.day_text_view.set_auto_indent(True)
+        else:
+            self.day_text_field.day_text_view.set_auto_indent(False)
 
     def set_font(self, font_name):
         self.day_text_field.set_font(font_name)
