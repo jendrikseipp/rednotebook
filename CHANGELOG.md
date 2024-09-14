@@ -1,5 +1,6 @@
 # next (unreleased)
 * Copy/paste text into the correct text field (#677, @jendrikseipp).
+* Code review changes for adding auto-indent feature (#561, #562, Varunjay Varma)
 
 # 2.33 (2024-05-05)
 * Ignore image filenames and web links in word clouds (#537, #696, @laraconda).

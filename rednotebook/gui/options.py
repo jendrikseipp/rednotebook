@@ -317,7 +317,7 @@ class OptionsManager:
 
         self.options.append(TickOption(_("Search as you type"), "instantSearch"))
         
-        self.options.append(TickOption(_("Auto indent"), "autoindent"))
+        self.options.append(TickOption(_("Auto indent"), "autoIndent"))
 
         def check_version_action(widget):
             utils.check_new_version(
@@ -381,7 +381,7 @@ class OptionsManager:
             # Apply some options
             self.main_window.cloud.update_lists()
             self.main_window.cloud.update(force_update=True)
-            self.main_window.set_autoIndent()
+            self.main_window.set_auto_indent()
 
             visible = self.config.read("closeToTray") == 1
             self.main_window.tray_icon.set_visible(visible)
