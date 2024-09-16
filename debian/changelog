@@ -1,3 +1,10 @@
+rednotebook (2.34-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Copy/paste text into the correct text field (#677, @jendrikseipp).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Mon, 16 Sep 2024 08:58:39 +0200
+
 rednotebook (2.33-1) UNRELEASED; urgency=low
 
   * New upstream release
