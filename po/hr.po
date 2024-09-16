@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-07-30 22:06+0000\n"
+"PO-Revision-Date: 2023-09-09 21:49+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/hr/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 "X-Launchpad-Export-Date: 2022-10-01 06:31+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -245,11 +245,11 @@ msgstr "Umetni poveznicu na web stranicu"
 
 #: ../rednotebook/gui/insert_menu.py:165
 msgid "Bullet List"
-msgstr "Popis"
+msgstr "Popis s predznakom"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Popis s brojkama"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -313,7 +313,7 @@ msgstr "Nije upisana nijedna adresa poveznice"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Zamijeni"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -325,7 +325,7 @@ msgstr "Tekst"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Traži"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -995,13 +995,11 @@ msgstr "Greška"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Zamijenjuje {total_replacements} pojavljivanja teksta pretrage"
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "Nije odabran tekst niti oznaka."
+msgstr "Nijedan tekst nije zamijenjen"
 
 #: ../rednotebook/backup.py:58
 #, python-format

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-02-03 23:38+0000\n"
-"Last-Translator: Francisco Cerezo <comitecerezo@gmail.com>\n"
+"PO-Revision-Date: 2023-09-09 21:48+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -249,7 +249,7 @@ msgstr "Lista de viñetas"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Lista numerada"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -313,7 +313,7 @@ msgstr "No se introdujo una dirección para el vínculo"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Sustituir"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -325,7 +325,7 @@ msgstr "Texto"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -408,7 +408,7 @@ msgstr "_Editar"
 
 #: ../rednotebook/gui/menu.py:159
 msgid "Undo"
-msgstr "Rehacer"
+msgstr "Deshacer"
 
 #: ../rednotebook/gui/menu.py:161
 msgid "Undo text or tag edits"
@@ -1016,12 +1016,11 @@ msgstr "Error"
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
 msgstr ""
+"Reemplazadas {total_replacements} ocurrencias en el texto de la búsqueda"
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "No se seleccionó ningún texto o etiqueta."
+msgstr "No se ha sustituido ningún texto"
 
 #: ../rednotebook/backup.py:58
 #, python-format
@@ -1036,7 +1035,7 @@ msgstr ""
 
 #: ../rednotebook/backup.py:67
 msgid "Backup"
-msgstr "Respaldar"
+msgstr "Copia de seguridad"
 
 #: ../rednotebook/backup.py:70
 msgid "Backup now"
@@ -1273,7 +1272,7 @@ msgstr "Ir al día anterior (Ctrl+RePág)"
 
 #: tmp/main_window.glade.h:14
 msgid "Back"
-msgstr "Respaldar"
+msgstr "Atrás"
 
 #: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"

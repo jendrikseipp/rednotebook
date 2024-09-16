@@ -1,3 +1,6 @@
+# 2.34 (2024-09-16)
+* Copy/paste text into the correct text field (#677, @jendrikseipp).
+
 # 2.33 (2024-05-05)
 * Ignore image filenames and web links in word clouds (#537, #696, @laraconda).
 * Add more pre-commit checks (#705, @laraconda).

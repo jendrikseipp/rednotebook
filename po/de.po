@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-03-27 13:37+0000\n"
+"PO-Revision-Date: 2023-09-05 00:52+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 "X-Launchpad-Export-Date: 2017-07-08 05:26+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -252,7 +252,7 @@ msgstr "Liste"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Nummerierte Liste"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -318,7 +318,7 @@ msgstr "Es wurde keine Link Adresse angegeben"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Ersetzen"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -330,7 +330,7 @@ msgstr "Text"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Suchen"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -1039,10 +1039,8 @@ msgid "Replaced {total_replacements} occurrences of the search text"
 msgstr ""
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "Sie haben keinen Text und keine Markierung ausgewählt."
+msgstr "Es wurde kein Text ersetzt"
 
 #: ../rednotebook/backup.py:58
 #, python-format

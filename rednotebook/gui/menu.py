@@ -363,23 +363,28 @@ class MainMenuBar:
         editor = self.main_window.day_text_field
         editor.day_text_buffer.redo()
 
+    def _forward_signal_to_focused_widget(self, signal_name):
+        widget = self.main_window.main_frame.get_focus()
+        try:
+            widget.emit(signal_name)
+        except AttributeError:
+            # No widget in focus.
+            pass
+        except TypeError:
+            # Focus is on a widget that doesn't support this signal.
+            pass
+
     def on_copy_menu_item_activate(self, widget):
         if self.main_window.preview_mode:
             self.main_window.html_editor.copy_to_clipboard()
         else:
-            self.main_window.day_text_field.day_text_view.emit("copy_clipboard")
+            self._forward_signal_to_focused_widget("copy_clipboard")
 
     def on_paste_menu_item_activate(self, widget):
-        if self.main_window.preview_mode:
-            pass
-        else:
-            self.main_window.day_text_field.day_text_view.emit("paste_clipboard")
+        self._forward_signal_to_focused_widget("paste_clipboard")
 
     def on_cut_menu_item_activate(self, widget):
-        if self.main_window.preview_mode:
-            pass
-        else:
-            self.main_window.day_text_field.day_text_view.emit("cut_clipboard")
+        self._forward_signal_to_focused_widget("cut_clipboard")
 
     def on_fullscreen_menuitem_activate(self, widget):
         self.main_window.toggle_fullscreen()

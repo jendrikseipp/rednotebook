@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2022-11-19 05:32+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2023-10-04 12:36+0000\n"
+"Last-Translator: Frederic HUCKEL <frederic.huckel@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/fr/>\n"
 "Language: fr\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
 
 #: ../rednotebook/info.py:30
 msgid "A Desktop Journal"
-msgstr "Un journal de Bureau"
+msgstr "Un journal de bord"
 
 #: ../rednotebook/info.py:48
 msgid ""
@@ -31,6 +31,13 @@ msgid ""
 "templates, spell check your notes, and export to plain text, HTML or\n"
 "Latex.\n"
 msgstr ""
+"RedNotebook est un journal de bord moderne. Il vous permet de formater, "
+"étiqueter et\n"
+"rechercher vos entrées. Vous pouvez également ajouter des images, des liens "
+"et des\n"
+" modèles personnalisables, vérifier l'orthographe de vos notes et les "
+"exporter au format\n"
+" texte, HTML ou Latex.\n"
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -79,7 +86,7 @@ msgstr "Vérifier l'existence d'une nouvelle version au démarrage"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Search as you type"
-msgstr ""
+msgstr "Recherche en cours de saisie"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Check now"
@@ -103,7 +110,7 @@ msgstr "Format de date et d'heure"
 
 #: ../rednotebook/gui/options.py:345
 msgid "Used by Date/Time button and $date$ template macro."
-msgstr ""
+msgstr "Utilisé par le bouton Date/Heure et la macro du modèle $date$."
 
 #: ../rednotebook/gui/options.py:348
 msgid "Date format"
@@ -111,11 +118,11 @@ msgstr "Format de date"
 
 #: ../rednotebook/gui/options.py:350
 msgid "Used for dates in titlebar and exports."
-msgstr ""
+msgstr "Utilisé pour les dates dans la barre de titre et les exportations."
 
 #: ../rednotebook/gui/options.py:353
 msgid "Tags in cloud"
-msgstr ""
+msgstr "Tags dans les clouds"
 
 #: ../rednotebook/gui/options.py:355
 msgid "Maximum number of tags displayed in the cloud"
@@ -160,8 +167,6 @@ msgid "Strikethrough"
 msgstr "Barrer"
 
 #: ../rednotebook/gui/format_menu.py:132
-#, fuzzy
-#| msgid "Clear format"
 msgid "Clear Format"
 msgstr "Effacer le format"
 
@@ -248,7 +253,7 @@ msgstr "Liste à puces"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Liste numérotée"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -313,7 +318,7 @@ msgstr "Aucun contenu de lien n'a été entré"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Remplacer"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -325,16 +330,15 @@ msgstr "Texte"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
 msgstr "Enregistrer et insérer"
 
 #: ../rednotebook/gui/customwidgets.py:341 ../rednotebook/gui/menu.py:110
-#, fuzzy
 msgid "Save"
-msgstr "Enregistrer"
+msgstr "Sauvegarder"
 
 #: ../rednotebook/gui/customwidgets.py:343
 msgid "Close"
@@ -346,7 +350,7 @@ msgstr "_Journal"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
@@ -354,16 +358,15 @@ msgstr "Crée un nouveau journal. L'ancien sera sauvegardé"
 
 #: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
-msgstr ""
+msgstr "Ouvrir"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
 msgstr "Charge un journal existant. L'ancien sera sauvegardé"
 
 #: ../rednotebook/gui/menu.py:114
-#, fuzzy
 msgid "Save As"
-msgstr "Enregistrer"
+msgstr "Enregistrer sous"
 
 #: ../rednotebook/gui/menu.py:117
 msgid ""
@@ -398,7 +401,7 @@ msgstr "Afficher les statistiques du journal"
 
 #: ../rednotebook/gui/menu.py:150
 msgid "Quit"
-msgstr ""
+msgstr "Quitter"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -410,7 +413,7 @@ msgstr "_Édition"
 
 #: ../rednotebook/gui/menu.py:159
 msgid "Undo"
-msgstr ""
+msgstr "Annuler"
 
 #: ../rednotebook/gui/menu.py:161
 msgid "Undo text or tag edits"
@@ -418,7 +421,7 @@ msgstr "Annuler les modifications de texte ou d'étiquette"
 
 #: ../rednotebook/gui/menu.py:167
 msgid "Redo"
-msgstr ""
+msgstr "Refaire"
 
 #: ../rednotebook/gui/menu.py:169
 msgid "Redo text or tag edits"
@@ -426,27 +429,27 @@ msgstr "Refaire les modifications de texte ou d'étiquette"
 
 #: ../rednotebook/gui/menu.py:175
 msgid "Cut"
-msgstr ""
+msgstr "Couper"
 
 #: ../rednotebook/gui/menu.py:183
 msgid "Copy"
-msgstr ""
+msgstr "Copier"
 
 #: ../rednotebook/gui/menu.py:191
 msgid "Paste"
-msgstr ""
+msgstr "Coller"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Fullscreen"
-msgstr ""
+msgstr "Plein écran"
 
 #: ../rednotebook/gui/menu.py:207
 msgid "Find"
-msgstr ""
+msgstr "Trouver"
 
 #: ../rednotebook/gui/menu.py:219
 msgid "Spell Check"
-msgstr ""
+msgstr "Vérification de l'orthographe"
 
 #: ../rednotebook/gui/menu.py:221
 msgid "Underline misspelled words"
@@ -470,21 +473,19 @@ msgstr "Ouvrir la documentation de RedNotebook"
 
 #: ../rednotebook/gui/menu.py:248
 msgid "Donate"
-msgstr ""
+msgstr "Faire un don"
 
 #: ../rednotebook/gui/menu.py:250
-#, fuzzy
 msgid "Support RedNotebook with a donation"
-msgstr "Ouvrir la documentation de RedNotebook"
+msgstr "Soutenir RedNotebook par un don"
 
 #: ../rednotebook/gui/menu.py:256
 msgid "Translate RedNotebook"
 msgstr "Traduire RedNotebook"
 
 #: ../rednotebook/gui/menu.py:258
-#, fuzzy
 msgid "Help translate RedNotebook to your language"
-msgstr "Traduire RedNotebook"
+msgstr "Aidez à traduire RedNotebook dans votre langue"
 
 #: ../rednotebook/gui/menu.py:264
 msgid "Report a Problem"
@@ -496,7 +497,7 @@ msgstr "Remplir un court formulaire relatif à votre problème"
 
 #: ../rednotebook/gui/menu.py:272
 msgid "Give Feedback"
-msgstr ""
+msgstr "Donner son avis"
 
 #: ../rednotebook/gui/menu.py:274
 msgid "How can we improve RedNotebook?"
@@ -504,7 +505,7 @@ msgstr "Comment pourrions-nous améliorer RedNoteBook ?"
 
 #: ../rednotebook/gui/menu.py:277
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #: ../rednotebook/gui/menu.py:295
 msgid "Wrong directory"
@@ -564,36 +565,36 @@ msgstr "Contributeurs :"
 #: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
-"Launchpad Contributions:\n"
-" Baptiste Fontaine https://launchpad.net/~bfontaine\n"
-"  Bryan Mokros https://launchpad.net/~bryanm-pro\n"
-"  Célestin Taramarcaz https://launchpad.net/~celestin\n"
-"  Daniel Kessler https://launchpad.net/~hornord\n"
-"  Emilien Klein https://launchpad.net/~emilien-klein\n"
-"  François Blondel https://launchpad.net/~francoisblondel\n"
-"  François Godbout https://launchpad.net/~jfg4444\n"
-"  Gregory https://launchpad.net/~vylcoyotte\n"
-"  Guillaume Royer https://launchpad.net/~guilro\n"
-"  Jean-Luc Aufranc https://launchpad.net/~jean-luc-aufranc\n"
-"  Jean-Marc https://launchpad.net/~m-balthazar\n"
-"  Jendrik Seipp https://launchpad.net/~jendrikseipp\n"
-"  Léo POUGHON https://launchpad.net/~leo-poughon\n"
-"  Moussouni Mehdi https://launchpad.net/~mmoussouni47\n"
-"  N3k0 https://launchpad.net/~ebk0000\n"
-"  Nicolas DERIVE https://launchpad.net/~kalon33\n"
-"  Nicolas Delvaux https://launchpad.net/~malizor\n"
-"  Pierre Slamich https://launchpad.net/~pierre-slamich\n"
-"  Pierre Tocquin https://launchpad.net/~ptocquin\n"
-"  Quentin Pagès https://launchpad.net/~kwentin\n"
-"  Rodolphe BOUCHIER https://launchpad.net/~ldnpub\n"
-"  Stanislas Michalak https://launchpad.net/~stanislas-michalak\n"
-"  Sylvie Gallet https://launchpad.net/~sylvie-gallet\n"
-"  Thibault Févry https://launchpad.net/~thibaultfevry\n"
-"  Xavier Havez https://launchpad.net/~haxa\n"
-"  fbn69 https://launchpad.net/~fbn69\n"
-"  lann https://launchpad.net/~lann\n"
-"  little jo https://launchpad.net/~littel-jo\n"
-"  londumas https://launchpad.net/~helion331990"
+"Launchpad Contributions :\n"
+" Baptiste Fontaine https ://launchpad.net/~bfontaine\n"
+" Bryan Mokros https ://launchpad.net/~bryanm-pro\n"
+" Célestin Taramarcaz https ://launchpad.net/~celestin\n"
+" Daniel Kessler https ://launchpad.net/~hornord\n"
+" Emilien Klein https ://launchpad.net/~emilien-klein\n"
+" François Blondel https ://launchpad.net/~francoisblondel\n"
+" François Godbout https ://launchpad.net/~jfg4444\n"
+" Gregory https ://launchpad.net/~vylcoyotte\n"
+" Guillaume Royer https ://launchpad.net/~guilro\n"
+" Jean-Luc Aufranc https ://launchpad.net/~jean-luc-aufranc\n"
+" Jean-Marc https ://launchpad.net/~m-balthazar\n"
+" Jendrik Seipp https ://launchpad.net/~jendrikseipp\n"
+" Léo POUGHON https ://launchpad.net/~leo-poughon\n"
+" Moussouni Mehdi https ://launchpad.net/~mmoussouni47\n"
+" N3k0 https ://launchpad.net/~ebk0000\n"
+" Nicolas DERIVE https ://launchpad.net/~kalon33\n"
+" Nicolas Delvaux https ://launchpad.net/~malizor\n"
+" Pierre Slamich https ://launchpad.net/~pierre-slamich\n"
+" Pierre Tocquin https ://launchpad.net/~ptocquin\n"
+" Quentin Pagès https ://launchpad.net/~kwentin\n"
+" Rodolphe BOUCHIER https ://launchpad.net/~ldnpub\n"
+" Stanislas Michalak https ://launchpad.net/~stanislas-michalak\n"
+" Sylvie Gallet https ://launchpad.net/~sylvie-gallet\n"
+" Thibault Févry https ://launchpad.net/~thibaultfevry\n"
+" Xavier Havez https ://launchpad.net/~haxa\n"
+" fbn69 https ://launchpad.net/~fbn69\n"
+" lann https ://launchpad.net/~lann\n"
+" little jo https ://launchpad.net/~littel-jo\n"
+" londumas https ://launchpad.net/~helion331990"
 
 #: ../rednotebook/gui/clouds.py:74
 msgid "filter, these, comma, separated, words, and, #tags"
@@ -820,7 +821,7 @@ msgstr "Voulez-vous visiter le site web de RedNoteBook ?"
 
 #: ../rednotebook/util/utils.py:131
 msgid "Do not ask again"
-msgstr "Ne plus demander"
+msgstr "Ne pas demander à nouveau"
 
 #: ../rednotebook/util/utils.py:160
 msgid "unknown"
@@ -912,23 +913,26 @@ msgstr ""
 "Brian__ »."
 
 #: ../rednotebook/help.py:64
-#, fuzzy
 msgid "Templates"
-msgstr "Modèle"
+msgstr "Modèles"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
-msgstr ""
+msgstr "RedNotebook prend en charge les modèles."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
 msgstr ""
+"Cliquez sur la flèche à côté du bouton \"Template\" pour voir les "
+"différentes options."
 
 #: ../rednotebook/help.py:68
 msgid ""
 "You can have one template for every day\n"
 "of the week and unlimited arbitrarily named templates."
 msgstr ""
+"Vous pouvez avoir un modèle pour chaque jour de la semaine et un \n"
+"nombre illimité de modèles nommés arbitrairement."
 
 #. Translators: both are verbs
 #: ../rednotebook/help.py:74
@@ -1033,13 +1037,11 @@ msgstr "Erreur"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Remplacé {total_replacements} occurrences du texte recherché"
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "Aucun texte ou mot clé n'a été sélectionné."
+msgstr "Aucun texte ou mot clé n'a été sélectionné"
 
 #: ../rednotebook/backup.py:58
 #, python-format
@@ -1066,7 +1068,7 @@ msgstr "Demandez au prochain démarrage"
 
 #: ../rednotebook/backup.py:74
 msgid "Never ask again"
-msgstr "Ne plus demander"
+msgstr "Ne plus jamais demander"
 
 #: ../rednotebook/templates.py:27
 msgid "Monday"
@@ -1225,12 +1227,10 @@ msgstr ""
 "=====================================\n"
 
 #: ../rednotebook/templates.py:196
-#, fuzzy
 msgid "Template mode"
-msgstr "Modèle"
+msgstr "Mode modèle"
 
 #: ../rednotebook/templates.py:200
-#, fuzzy
 msgid "You are currently editing a template."
 msgstr "Vous êtres en train de modifier un modèle."
 
@@ -1256,12 +1256,11 @@ msgstr "Sélectionner un nom d'archive"
 
 #: tmp/main_window.glade.h:4
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annuler"
 
 #: tmp/main_window.glade.h:5
-#, fuzzy
 msgid "_Save"
-msgstr "Enregistrer"
+msgstr "_Enregistrer"
 
 #: tmp/main_window.glade.h:6
 msgid "Select a directory"
@@ -1269,7 +1268,7 @@ msgstr "Sélectionner un répertoire"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1280,7 +1279,6 @@ msgid "Insert Link"
 msgstr "Insérer un lien"
 
 #: tmp/main_window.glade.h:11
-#, fuzzy
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
 msgstr "<b>Localisation du lien (par ex. http://rednotebook.sf.net)</b>"
 
@@ -1360,7 +1358,7 @@ msgstr "Sélectionner une image"
 
 #: tmp/main_window.glade.h:35
 msgid "_Open"
-msgstr ""
+msgstr "_Ouvert"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"

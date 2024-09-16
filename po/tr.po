@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-04-09 11:49+0000\n"
+"PO-Revision-Date: 2024-03-12 06:19+0000\n"
 "Last-Translator: Bora Atıcı <boratici.acc@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -133,15 +133,15 @@ msgstr "Buluttan hariç tut"
 
 #: ../rednotebook/gui/options.py:361
 msgid "Do not show these comma separated words and #tags in the clouds"
-msgstr "Virgülle ayrılmış kelimeleri ve #etiketleri bulutlarda gösterme"
+msgstr "Virgülle ayrılmış sözcükleri ve #etiketleri bulutlarda gösterme"
 
 #: ../rednotebook/gui/options.py:365
 msgid "Include small words in cloud"
-msgstr "Kısa kelimeleri buluta ekleyin"
+msgstr "Kısa sözcükleri buluta ekleyin"
 
 #: ../rednotebook/gui/options.py:367
 msgid "Allow these words with 4 letters or less"
-msgstr "En fazla 4 harfli bu kelimelere izin ver"
+msgstr "Dört veya daha az harften oluşan sözcüklere izin verir"
 
 #: ../rednotebook/gui/format_menu.py:92
 msgid "Bold"
@@ -250,7 +250,7 @@ msgstr "Madde Listesi"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Numaralı Liste"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -314,7 +314,7 @@ msgstr "Bağlantı konumu girilmedi"
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Değiştir"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
@@ -326,7 +326,7 @@ msgstr "Metin"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Ara"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
@@ -416,11 +416,11 @@ msgstr "Metin veya etiket düzenlemelerini geri al"
 
 #: ../rednotebook/gui/menu.py:167
 msgid "Redo"
-msgstr "Geri al"
+msgstr "Yinele"
 
 #: ../rednotebook/gui/menu.py:169
 msgid "Redo text or tag edits"
-msgstr "Metin veya etiket düzenlemelerini tekrar yap"
+msgstr "Metin veya etiket düzenlemelerini yinele"
 
 #: ../rednotebook/gui/menu.py:175
 msgid "Cut"
@@ -524,7 +524,7 @@ msgstr "Günlükler tek bir dosyada değil, bir dizin içinde kaydedilmektedir."
 
 #: ../rednotebook/gui/menu.py:331
 msgid "The directory name will be the title of the new journal."
-msgstr "Yeni günlüğün başlığı, klasörün adı olarak ayarlanacak."
+msgstr "Dizin adı yeni günlüğün başlığı olacaktır."
 
 #: ../rednotebook/gui/menu.py:334
 msgid "Select an empty folder for your new journal"
@@ -671,7 +671,8 @@ msgstr "Dışa Aktarma Yardımcısına Hoş Geldiniz."
 #: ../rednotebook/gui/exports.py:316
 msgid "This wizard will help you to export your journal to various formats."
 msgstr ""
-"Bu sihirbaz, günlüğünüzü çeşitli biçimlerde dışa aktarmanıza yardım edecek."
+"Bu sihirbaz, günlüğünüzü çeşitli biçimlerde dışa aktarmanıza yardımcı "
+"olacaktır."
 
 #: ../rednotebook/gui/exports.py:319
 msgid ""
@@ -748,7 +749,7 @@ msgstr "İçerik %s'e aktarıldı"
 
 #: ../rednotebook/gui/exports.py:523
 msgid "Plain Text"
-msgstr "Metin"
+msgstr "Düz Metin"
 
 #: ../rednotebook/gui/categories.py:133
 msgid "Empty entries are not allowed"
@@ -790,7 +791,7 @@ msgstr "RedNotebook anasayfasını ziyaret etmek ister misin?"
 
 #: ../rednotebook/util/utils.py:131
 msgid "Do not ask again"
-msgstr "Bir daha sorma"
+msgstr "Tekrar sorma"
 
 #: ../rednotebook/util/utils.py:160
 msgid "unknown"
@@ -798,7 +799,7 @@ msgstr "bilinmeyen"
 
 #: ../rednotebook/util/statistics.py:63
 msgid "Distinct Words"
-msgstr "Farklı Kelimeler"
+msgstr "Farklı sözcükler"
 
 #: ../rednotebook/util/statistics.py:64
 msgid "Edited Days"
@@ -810,15 +811,15 @@ msgstr "Harfler"
 
 #: ../rednotebook/util/statistics.py:66
 msgid "Days between first and last Entry"
-msgstr "İlk ve son Girdi arasındaki günler"
+msgstr "İlk ve son girdi arasındaki günler"
 
 #: ../rednotebook/util/statistics.py:67
 msgid "Average number of Words"
-msgstr "Ortalama kelime sayısı"
+msgstr "Ortalama sözcük sayısı"
 
 #: ../rednotebook/util/statistics.py:68
 msgid "Percentage of edited Days"
-msgstr "Düzenlenen Günlerin yüzdesi"
+msgstr "Düzenlenen günlerin yüzdesi"
 
 #: ../rednotebook/util/statistics.py:76
 msgid "Lines"
@@ -848,7 +849,7 @@ msgstr ""
 #. Translators: Verb
 #: ../rednotebook/help.py:47 tmp/main_window.glade.h:21
 msgid "Preview"
-msgstr "Önizleme"
+msgstr "Ön izleme"
 
 #: ../rednotebook/help.py:49
 msgid ""
@@ -875,9 +876,9 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
-"Bugün //petshop//'a gittim ve bir **kaplan** aldım. Sonrasında birlikte --"
-"havuz-- parkına gittik ve frizbi oynarak güzel vakit geçirdik. Daha sonra "
-"\"__Brian'ın Hayatı__\" isimli filmi izledik."
+"Bugün //evcil hayvan dükkanına// gittim ve bir **kaplan** aldım. Daha sonra "
+"--havuz-- parkına gittik ve frizbi oynayarak güzel vakit geçirdik. Daha "
+"sonra \"__Brian'ın Hayatı__\" adlı filmi izledik."
 
 #: ../rednotebook/help.py:64
 msgid "Templates"
@@ -932,7 +933,7 @@ msgstr "\"Günlük\" menüsünde \"Dışarı Aktar\" seçenğini bulacaksınız.
 msgid ""
 "Click on \"Export\" and export your diary to Plain Text, PDF, HTML or Latex."
 msgstr ""
-"Günlüğünüzü Metin, PDF, HTML veya Latex olarak kaydetmek için \"Dışarı "
+"Günlüğünüzü Düz Metin, PDF, HTML veya Latex olarak kaydetmek için \"Dışarı "
 "Aktar\" seçeneğine tıklayın."
 
 #: ../rednotebook/help.py:85
@@ -970,12 +971,12 @@ msgid ""
 "Here comes the entry about my #family."
 msgstr ""
 "=== İş ===\n"
-"Buraya #iş hakkındaki birinci girdi yazılacak.\n"
+"İşte ilk girdi. Bu #işle ilgili.\n"
 "\n"
 "====================\n"
 "\n"
 "=== Aile ===\n"
-"Buraya da #aile hakkındaki girdi girilecek."
+"İşte #ailemle ilgili girdi geliyor."
 
 #: ../rednotebook/journal.py:251
 msgid "Opening default journal."
@@ -1001,22 +1002,21 @@ msgstr "Hata"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Arama metninin {total_replacements} tekrarı değiştirildi"
 
 #: ../rednotebook/journal.py:587
-#, fuzzy
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
-msgstr "Metin veya etiket seçilmedi."
+msgstr "Hiçbir metin değiştirilmedi"
 
 #: ../rednotebook/backup.py:58
 #, python-format
 msgid "It has been %d days since you made your last backup."
-msgstr "Son yedeklemenin üzerinden %d gün geçti."
+msgstr "Son yedeklemenizin üzerinden %d gün geçti."
 
 #: ../rednotebook/backup.py:60
 msgid "You can backup your journal to a zip file to avoid data loss."
-msgstr "Veri kaybını önlemek için günlüğünüzü yedekleyebilirsiniz."
+msgstr ""
+"Veri kaybını önlemek için günlüğünüzü zip dosyasına yedekleyebilirsiniz."
 
 #: ../rednotebook/backup.py:67
 msgid "Backup"
@@ -1232,7 +1232,7 @@ msgstr "Dizin seç"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr "_TAMAM"
+msgstr "_OK"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1248,7 +1248,7 @@ msgstr "<b>Bağlantı konumu (ör. https://www.google.com)</b>"
 
 #: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
-msgstr "<b>Bağlantı adı (opsiyonel)</b>"
+msgstr "<b>Bağlantı adı (isteğe bağlı)</b>"
 
 #: tmp/main_window.glade.h:13
 msgid "Go to previous day (Ctrl+PageUp)"
@@ -1288,7 +1288,7 @@ msgstr "Düzenle"
 
 #: tmp/main_window.glade.h:24
 msgid "Add a tag or a category entry"
-msgstr "Etiket veya kategori girdisi ekle"
+msgstr "Etiket veya kategori girdisi ekleyin"
 
 #: tmp/main_window.glade.h:25
 msgid "Add Tag"
@@ -1304,7 +1304,7 @@ msgstr "<b>Varolan veya yeni Kategori seç</b>"
 
 #: tmp/main_window.glade.h:28
 msgid "<b>Write entry</b> (optional)"
-msgstr "<b>Girdinizi yazın</b> (opsiyonel)"
+msgstr "<b>Girdinizi yazın</b> (isteğe bağlı)"
 
 #. Translators: Refers to the part of the options dialog where the user can select the "General/Overall" Settings
 #: tmp/main_window.glade.h:31
@@ -1338,7 +1338,7 @@ msgstr "<b>Seçilen Gün</b>"
 
 #: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"
-msgstr "<b>Baştan Sona</b>"
+msgstr "<b>Genel</b>"
 
 #~ msgid "Preview:"
 #~ msgstr "Ön izleme:"

@@ -57,6 +57,16 @@ Copyright: Copyright (C) 2012 Maximilian Köhl <linuxmaxi@googlemail.com>
            Copyright (C) 2012 Carlos Jenkins <carlos@jenkins.co.cr>
 License: GPL-3+
 
+Files: rednotebook/files/rednotebook-highlight-style.xml
+Copyright: Copyright (C) 2006-2007 GtkSourceView team
+           Copyright (C) 2018 RedNotebook team
+License: LGPL-2.1+
+
+Files: rednotebook/files/t2t.lang
+Copyright:  Copyright (C) 2008 Yevgen Muntyan <muntyan@tamu.edu>
+            Copyright (C) 2018 RedNotebook team
+License: LGPL-2.1+
+
 License: GPL-3+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -100,3 +110,21 @@ License: GPL-2+
  On Debian systems, the full text of the GNU General Public
  License version 2 can be found in the file
  `/usr/share/common-licenses/GPL-2'.
+
+ License: LGPL-2.1+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; either version 2.1, or (at your option)
+ any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public License along
+ with this program; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License version 2.1 can be found in ‘/usr/share/common-licenses/LGPL-2.1’.

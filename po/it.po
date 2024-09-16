@@ -1010,10 +1010,9 @@ msgstr "Errore"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Sostituite {total_replacements} occorrenze del testo di ricerca"
 
 #: ../rednotebook/journal.py:587
-#| msgid "No text or tag has been selected."
 msgid "No text has been replaced"
 msgstr "Nessun testo è stato sostituito"
 
