@@ -1,7 +1,7 @@
 # next (unreleased)
 * Add feature to auto-indent text in editor (#561, #562, Allen Benter, Varunjay Varma).
 
-* # 2.34 (2024-09-16)
+# 2.34 (2024-09-16)
 * Copy/paste text into the correct text field (#677, @jendrikseipp).
 
 # 2.33 (2024-05-05)
