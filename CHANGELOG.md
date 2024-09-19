@@ -1,5 +1,7 @@
 # 2.34 (2024-09-16)
 * Copy/paste text into the correct text field (#677, @jendrikseipp).
+* added feature to auto-indent text in editor (#561, Allen Benter)
+* Code review changes for adding auto-indent feature (#561, #562, Varunjay Varma)
 
 # 2.33 (2024-05-05)
 * Ignore image filenames and web links in word clouds (#537, #696, @laraconda).
