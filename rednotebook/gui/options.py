@@ -316,7 +316,7 @@ class OptionsManager:
         )
 
         self.options.append(TickOption(_("Search as you type"), "instantSearch"))
-        
+
         self.options.append(TickOption(_("Auto indent"), "autoIndent"))
 
         def check_version_action(widget):
