@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-12, macos-13, ubuntu-20.04, ubuntu-22.04]
+        os: [macos-12, macos-13, ubuntu-20.04, ubuntu-22.04, ubuntu-24.04]
 
     steps:
     - uses: actions/checkout@v4
@@ -58,12 +58,12 @@ jobs:
         HOMEBREW_NO_INSTALL_UPGRADE: on
 
     - name: Check style
-      if: matrix.os == 'ubuntu-22.04'
+      if: matrix.os == 'ubuntu-24.04'
       run: |
         python3 -m tox -v -e style
 
     - name: Run tests
-      if: matrix.os == 'ubuntu-22.04'  # pip on macOS needs --break-system-packages
+      if: matrix.os == 'ubuntu-24.04'  # pip on macOS needs --break-system-packages
       run: |
         python3 -c "import gi"
         python3 -m tox -v -e py
