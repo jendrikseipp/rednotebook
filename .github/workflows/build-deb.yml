@@ -5,19 +5,19 @@ on: [push, pull_request]
 jobs:
   build-deb-package:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
     - uses: actions/checkout@v4
 
     - name: build
-      uses: dawidd6/action-debian-package@v1.4.4
+      uses: dawidd6/action-debian-package@v1.6.0
       with:
         # Optional, relative to workspace directory
         source_directory: .
         # Optional, relative to workspace directory
         artifacts_directory: output
         # Optional, value from `debian/changelog` is used if not defined
-        os_distribution: jammy
+        os_distribution: noble
         # Optional, target architecture, defaults to amd64
         cpu_architecture: amd64

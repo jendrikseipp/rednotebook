@@ -103,7 +103,7 @@ class Editor(GObject.GObject):
         if iter is None:
             self.day_text_buffer.insert_at_cursor(text)
         else:
-            if type(iter) == Gtk.TextMark:
+            if isinstance(iter, Gtk.TextMark):
                 iter = self.day_text_buffer.get_iter_at_mark(iter)
             self.day_text_buffer.insert(iter, text)
 

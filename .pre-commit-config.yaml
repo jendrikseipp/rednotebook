@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
     -   id: trailing-whitespace
     -   id: check-yaml
@@ -10,7 +10,7 @@ repos:
 
 # Static analysis for Python code
 -   repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
+    rev: 7.1.1
     hooks:
     -   id: flake8
         # E203: whitespace before ':' (not compliant with PEP 8)
@@ -21,21 +21,21 @@ repos:
 
 # Python code formatter
 -   repo: https://github.com/psf/black
-    rev: 23.3.0
+    rev: 24.8.0
     hooks:
     -   id: black
         exclude: ^rednotebook/external/
 
 # Imports sorter
 -   repo: https://github.com/pycqa/isort
-    rev: 5.11.5
+    rev: 5.13.2
     hooks:
     -   id: isort
         exclude: ^rednotebook/journal.py
 
 # Upgrades Python code to a target version
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v3.4.0
+    rev: v3.17.0
     hooks:
     -   id: pyupgrade
         args: ['--py36-plus', '--exit-zero']
@@ -43,7 +43,7 @@ repos:
 
 # Finds unused Python code
 -   repo: https://github.com/jendrikseipp/vulture
-    rev: v2.7
+    rev: v2.12
     hooks:
     -   id: vulture
         exclude: ^rednotebook/external/

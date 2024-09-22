@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-12, macos-13, ubuntu-20.04, ubuntu-22.04]
+        os: [macos-13, ubuntu-22.04, ubuntu-24.04]
 
     steps:
     - uses: actions/checkout@v4
@@ -35,8 +35,7 @@ jobs:
       if: startsWith(matrix.os, 'ubuntu')
       run: |
         sudo apt-get update
-        sudo apt-get -y install -qq gettext gir1.2-gdkpixbuf-2.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-gtksource-4 gir1.2-pango-1.0 gir1.2-webkit2-4.0 python3 python3-enchant python3-gi python3-yaml
-        python3 -m pip install setuptools tox
+        sudo apt-get -y install -qq gettext gir1.2-gdkpixbuf-2.0 gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-gtksource-4 gir1.2-pango-1.0 gir1.2-webkit2-4.1 python3 python3-enchant python3-gi python3-setuptools python3-yaml tox
 
     - name: Install dependencies (macOS)
       if: startsWith(matrix.os, 'macos')
@@ -58,13 +57,14 @@ jobs:
         HOMEBREW_NO_INSTALL_UPGRADE: on
 
     - name: Check style
-      if: matrix.os == 'ubuntu-22.04'
+      if: matrix.os == 'ubuntu-24.04'
       run: |
-        python3 -m tox -v -e style
+        tox -v -e style
 
     - name: Run tests
-      if: matrix.os == 'ubuntu-22.04'  # pip on macOS needs --break-system-packages
+      if: matrix.os == 'ubuntu-24.04'  # pip on macOS needs --break-system-packages
       run: |
         python3 -c "import gi"
-        python3 -m tox -v -e py
-        python3 -m pip install .
+        tox -v -e py
+        python3 -m venv .venv
+        ./.venv/bin/pip install .

@@ -99,7 +99,7 @@ class CategoriesTreeView:
         self.categories.sort(key=utils.sort_asc)
 
     def node_on_top_level(self, iter):
-        if type(iter) != Gtk.TreeIter:
+        if isinstance(iter, Gtk.TreeIter):
             # iter is a path -> convert to iter
             iter = self.tree_store.get_iter(iter)
         assert self.tree_store.iter_is_valid(iter)

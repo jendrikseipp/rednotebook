@@ -1,3 +1,10 @@
+rednotebook (2.35-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Add option to auto-indent text in editor and activate it by default (#561, #562, Allen Benter, Varunjay Varma).
+
+ -- Jendrik Seipp <jendrikseipp@web.de>  Sun, 22 Sep 2024 21:24:47 +0200
+
 rednotebook (2.34-1) UNRELEASED; urgency=low
 
   * New upstream release
