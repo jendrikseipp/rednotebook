@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <!-- https://www.freedesktop.org/software/appstream/docs/sect-Metadata-Application.html#tag-id-desktopapp -->
-  <id>app.rednotebook.rednotebook</id>
+  <id>rednotebook</id>
   <metadata_license>CC0-1.0</metadata_license>
   <!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-project_license -->
   <project_license>GPL-2.0+</project_license>
