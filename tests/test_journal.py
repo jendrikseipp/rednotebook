@@ -11,10 +11,12 @@ def mock_month():
     day1 = Day(month, 1, {"text": "Example text", "Aria": {}})
     day2 = Day(month, 2, {"text": "More example text", "Aria": {}, "Opera":{}, "Étude":{}})
     day3 = Day(month, 3, {"text": "Another text", "Sonata": {}, "Prelude": {}, "Opera": {}, "Concerto":{}})
+    day4 = Day(month, 4, {"text": "Regression test for issue 778", "Opera":{}, "المُوَشَّح":{}})
 
     month.days[1] = day1
     month.days[2] = day2
     month.days[3] = day3
+    month.days[3] = day4
     
     yield month
 
