@@ -1,3 +1,6 @@
+# 2.36 (2024-10-24)
+* Fix: Categories with characters incompatible with the current locale opens (#778, Oussama Jarrousse).
+
 # 2.35 (2024-09-22)
 * Add option to auto-indent text in editor and activate it by default (#561, #562, Allen Benter, Varunjay Varma).
 

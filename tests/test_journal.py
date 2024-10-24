@@ -16,7 +16,7 @@ def mock_month():
     month.days[1] = day1
     month.days[2] = day2
     month.days[3] = day3
-    month.days[3] = day4
+    month.days[4] = day4
     
     yield month
 
@@ -35,5 +35,6 @@ def test_categories(mock_month):
     journal.months = { (2024, 10): mock_month }
 
     # Assert the categories property returns expected categories sorted alphabetically
-    expected_categories = ['Aria', 'Concerto', 'Étude', 'Opera', 'Prelude', 'Sonata']
+    expected_categories = ['Aria', 'Concerto', 'Étude', 'Opera', 'Prelude', 'Sonata', 'المُوَشَّح']
+    
     assert journal.categories == expected_categories
