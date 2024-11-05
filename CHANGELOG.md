@@ -1,3 +1,6 @@
+# 2.36 (2024-11-06)
+* Improved bidirectional text support: Enhanced the preview mode to display bidirectional texts (e.g., mixed RTL and LTR languages) correctly for improved readability and compatibility with multilingual content (#781, @metemaddar).
+
 # 2.35 (2024-09-22)
 * Add option to auto-indent text in editor and activate it by default (#561, #562, Allen Benter, Varunjay Varma).
 
