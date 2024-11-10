@@ -25,11 +25,9 @@ status.
 
 ### Remove right-side tags panel (disabled by default)
 
-- [ ] When searching for a hashtag (see #498):
-  - if hashtag is the only text on the line: show text around hashtag.
-  - otherwise, show all content on the line except for the hashtag.
+- [X] When searching for a hashtag (see #498): if hashtag starts the line: show text after hashtag.
 - [ ] When searching for a hashtag, scroll to hashtag and highlight it.
-- [ ] Optional: enable right-side tags panel by default, if journal has right-side tags.
+- [-] Optional: enable right-side tags panel by default, if journal has right-side tags.
 - [ ] Transform existing right-side tags foo:bar to "#foo bar" when loading a journal.
 - [ ] Remove code for right-side tags panel.
 
