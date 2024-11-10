@@ -23,7 +23,7 @@ import os
 from unittest import mock
 import urllib.parse
 
-from gi.repository import Gdk, GdkPixbuf, GObject, Gtk, GtkSource, Pango
+from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk, GtkSource, Pango
 
 from rednotebook.gui.options import OptionsManager
 from rednotebook import info, templates
@@ -446,7 +446,7 @@ class MainWindow:
         self.change_mode(preview=False)
         # Select (not only highlight) previously selected text by giving focus
         # to the day editor.
-        GObject.idle_add(self.day_text_field.day_text_view.grab_focus)
+        GLib.idle_add(self.day_text_field.day_text_view.grab_focus)
 
     def on_preview_button_clicked(self, button):
         self.journal.save_old_day()
@@ -835,8 +835,8 @@ class DayEditor(editor.Editor):
 
         if self.search_text:
             # If a search is currently made, scroll to the text and return.
-            GObject.idle_add(self.scroll_to_text, self.search_text)
-            GObject.idle_add(self.highlight, self.search_text)
+            GLib.idle_add(self.scroll_to_text, self.search_text)
+            GLib.idle_add(self.highlight, self.search_text)
             return
 
     def show_template(self, title, text):

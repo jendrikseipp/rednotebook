@@ -18,7 +18,7 @@
 
 from xml.sax.saxutils import escape
 
-from gi.repository import GObject, Gtk
+from gi.repository import GLib, GObject, Gtk
 
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates
@@ -65,9 +65,7 @@ class SearchComboBox(CustomComboBoxEntry):
 
         # Scroll to query.
         if search_text:
-            GObject.idle_add(
-                self.main_window.day_text_field.scroll_to_text, search_text
-            )
+            GLib.idle_add(self.main_window.day_text_field.scroll_to_text, search_text)
 
         tags = []
         queries = []

@@ -25,7 +25,7 @@ import threading
 from urllib.request import urlopen
 import webbrowser
 
-from gi.repository import GObject, Gtk
+from gi.repository import GLib, Gtk
 
 from rednotebook import info
 from rednotebook.util import filesystem
@@ -165,7 +165,7 @@ def _check_new_version(journal, current_version, startup):
     )
 
     if newer_version_available or not startup:
-        GObject.idle_add(
+        GLib.idle_add(
             _show_update_dialog, journal, current_version, new_version, startup
         )
 
