@@ -60,17 +60,7 @@ class SearchComboBox(CustomComboBoxEntry):
         self.search(search_text)
 
     def search(self, search_text):
-        tags = []
-        queries = []
-        for part in search_text.split():
-            if part.startswith("#"):
-                tags.append(part.lstrip("#").lower())
-            else:
-                queries.append(part)
-
-        search_text = " ".join(queries)
-
-        # Highlight all occurrences in the current day's text
+        # Highlight all occurrences in the current day's text.
         self.main_window.highlight_text(search_text)
 
         # Scroll to query.
@@ -79,7 +69,15 @@ class SearchComboBox(CustomComboBoxEntry):
                 self.main_window.day_text_field.scroll_to_text, search_text
             )
 
-        self.main_window.search_tree_view.update_data(search_text, tags)
+        tags = []
+        queries = []
+        for part in search_text.split():
+            if part.startswith("#"):
+                tags.append(part.lstrip("#").lower())
+            else:
+                queries.append(part)
+
+        self.main_window.search_tree_view.update_data(" ".join(queries), tags)
 
         # Without the following, showing the search results sometimes lets the
         # search entry lose focus and search phrases are added to a day's text.
