@@ -1,5 +1,6 @@
 # 2.36 (unreleased)
 * When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
+* When searching for a hashtag, scroll to hashtag and highlight it. (@jendrikseipp).
 
 # 2.35 (2024-09-22)
 * Add option to auto-indent text in editor and activate it by default (#561, #562, Allen Benter, Varunjay Varma).

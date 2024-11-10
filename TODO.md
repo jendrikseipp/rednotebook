@@ -26,7 +26,7 @@ status.
 ### Remove right-side tags panel (disabled by default)
 
 - [X] When searching for a hashtag (see #498): if hashtag starts the line: show text after hashtag.
-- [ ] When searching for a hashtag, scroll to hashtag and highlight it.
+- [X] When searching for a hashtag, scroll to hashtag and highlight it.
 - [-] Optional: enable right-side tags panel by default, if journal has right-side tags.
 - [ ] Transform existing right-side tags foo:bar to "#foo bar" when loading a journal.
 - [ ] Remove code for right-side tags panel.
