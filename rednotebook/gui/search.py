@@ -76,8 +76,10 @@ class SearchComboBox(CustomComboBoxEntry):
                 tags.append(part.lstrip("#").lower())
             else:
                 queries.append(part)
+        # Preserve original white space if there are no tags.
+        query = " ".join(queries) if tags else search_text
 
-        self.main_window.search_tree_view.update_data(" ".join(queries), tags)
+        self.main_window.search_tree_view.update_data(query, tags)
 
         # Without the following, showing the search results sometimes lets the
         # search entry lose focus and search phrases are added to a day's text.
