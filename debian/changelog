@@ -1,3 +1,12 @@
+rednotebook (2.36-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
+  * When searching for a hashtag, scroll to hashtag and highlight it (@jendrikseipp).
+  * Add simple way for showing all entries: allow searching for whitespace (which should be part of all days) (@jendrikseipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Sun, 24 Nov 2024 19:15:29 +0100
+
 rednotebook (2.35-1) UNRELEASED; urgency=low
 
   * New upstream release

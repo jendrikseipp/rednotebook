@@ -8,19 +8,21 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2015-11-01 21:12+0000\n"
-"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
+"PO-Revision-Date: 2024-08-27 14:09+0000\n"
+"Last-Translator: phlostically <phlostically@mailinator.com>\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/rednotebook/"
+"desktop-app/eo/>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
 
 #: ../rednotebook/info.py:30
 msgid "A Desktop Journal"
-msgstr ""
+msgstr "Komputila taglibro"
 
 #: ../rednotebook/info.py:48
 msgid ""
@@ -36,11 +38,11 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:161
 msgid "%A, %x, Day %j"
-msgstr ""
+msgstr "%A, %x, Tago %j"
 
 #: ../rednotebook/gui/options.py:163
 msgid "Week %W of Year %Y"
-msgstr ""
+msgstr "Semajno %W de la Jaro %Y"
 
 #: ../rednotebook/gui/options.py:165
 msgid "Day %j"
@@ -72,31 +74,31 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:315
 msgid "Check for new version at startup"
-msgstr ""
+msgstr "Kontroli pri nova versio dum lanĉado"
 
 #: ../rednotebook/gui/options.py:318
 msgid "Search as you type"
-msgstr ""
+msgstr "Serĉi dum tajpado"
 
 #: ../rednotebook/gui/options.py:328
 msgid "Check now"
-msgstr ""
+msgstr "Kontroli nun"
 
 #: ../rednotebook/gui/options.py:335
 msgid "Edit font:"
-msgstr ""
+msgstr "Ŝanĝi tiparon:"
 
 #: ../rednotebook/gui/options.py:337
 msgid "Preview font:"
-msgstr ""
+msgstr "Rigardi tiparon:"
 
 #: ../rednotebook/gui/options.py:340
 msgid "Comma-separated font names"
-msgstr ""
+msgstr "Kome apartigitaj nomoj de tiparoj"
 
 #: ../rednotebook/gui/options.py:343
 msgid "Date/Time format"
-msgstr ""
+msgstr "Formo de datoj kaj tempoj"
 
 #: ../rednotebook/gui/options.py:345
 msgid "Used by Date/Time button and $date$ template macro."
@@ -104,7 +106,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:348
 msgid "Date format"
-msgstr ""
+msgstr "Formo de datoj"
 
 #: ../rednotebook/gui/options.py:350
 msgid "Used for dates in titlebar and exports."
@@ -112,7 +114,7 @@ msgstr ""
 
 #: ../rednotebook/gui/options.py:353
 msgid "Tags in cloud"
-msgstr ""
+msgstr "Etikedoj en la nubo"
 
 #: ../rednotebook/gui/options.py:355
 msgid "Maximum number of tags displayed in the cloud"
@@ -144,7 +146,7 @@ msgstr "Kursive"
 
 #: ../rednotebook/gui/format_menu.py:108
 msgid "Monospace"
-msgstr ""
+msgstr "Egallarĝe"
 
 #: ../rednotebook/gui/format_menu.py:116
 msgid "Underline"
@@ -180,7 +182,7 @@ msgstr ""
 
 #: ../rednotebook/gui/main_window.py:330
 msgid "Show RedNotebook"
-msgstr ""
+msgstr "Montri RedNotebook"
 
 #: ../rednotebook/gui/main_window.py:590
 msgid "No directory selected."
@@ -197,11 +199,11 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:106 ../rednotebook/gui/insert_menu.py:113
 msgid "First Item"
-msgstr ""
+msgstr "Unua ero"
 
 #: ../rednotebook/gui/insert_menu.py:107 ../rednotebook/gui/insert_menu.py:114
 msgid "Second Item"
-msgstr ""
+msgstr "Dua ero"
 
 #: ../rednotebook/gui/insert_menu.py:108 ../rednotebook/gui/insert_menu.py:115
 msgid "Indented Item"
@@ -225,7 +227,7 @@ msgstr "Dosiero"
 
 #: ../rednotebook/gui/insert_menu.py:150
 msgid "Insert a link to a file"
-msgstr ""
+msgstr "Enmeti hiperligon al dosiero"
 
 #: ../rednotebook/gui/insert_menu.py:157
 msgid "_Link"
@@ -233,15 +235,15 @@ msgstr "_Ligilo"
 
 #: ../rednotebook/gui/insert_menu.py:159
 msgid "Insert a link to a website"
-msgstr ""
+msgstr "Enmeti hiperligon al retejo"
 
 #: ../rednotebook/gui/insert_menu.py:165
 msgid "Bullet List"
-msgstr ""
+msgstr "Kugla listo"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr ""
+msgstr "Numerita listo"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -257,7 +259,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:190
 msgid "Date/Time"
-msgstr ""
+msgstr "Dato/tempo"
 
 #: ../rednotebook/gui/insert_menu.py:192
 msgid "Insert the current date and time (edit format in preferences)"
@@ -265,7 +267,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:198
 msgid "Line Break"
-msgstr ""
+msgstr "Linifino"
 
 #: ../rednotebook/gui/insert_menu.py:200
 msgid "Insert a manual line break"
@@ -273,15 +275,15 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:203
 msgid "_Insert"
-msgstr ""
+msgstr "_Enmeti"
 
 #: ../rednotebook/gui/insert_menu.py:208
 msgid "Level"
-msgstr ""
+msgstr "Nivelo"
 
 #: ../rednotebook/gui/insert_menu.py:243
 msgid "Insert"
-msgstr ""
+msgstr "Enmeti"
 
 #: ../rednotebook/gui/insert_menu.py:245
 msgid "Insert images, files, links and other content"
@@ -289,7 +291,7 @@ msgstr ""
 
 #: ../rednotebook/gui/insert_menu.py:276
 msgid "Width (optional):"
-msgstr ""
+msgstr "Larĝo (nedeviga):"
 
 #: ../rednotebook/gui/insert_menu.py:282
 msgid "pixels"
@@ -297,7 +299,7 @@ msgstr "bilderoj"
 
 #: ../rednotebook/gui/insert_menu.py:303
 msgid "Width must be an integer."
-msgstr ""
+msgstr "La larĝo devas esti entjero."
 
 #: ../rednotebook/gui/insert_menu.py:387
 msgid "No link location has been entered"
@@ -305,11 +307,11 @@ msgstr ""
 
 #: ../rednotebook/gui/search.py:102
 msgid "Replace"
-msgstr ""
+msgstr "Anstataŭigi"
 
 #: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: ../rednotebook/gui/search.py:125
 msgid "Text"
@@ -317,27 +319,27 @@ msgstr "Teksto"
 
 #: ../rednotebook/gui/customwidgets.py:48
 msgid "Search"
-msgstr ""
+msgstr "Serĉi"
 
 #: ../rednotebook/gui/customwidgets.py:339
 msgid "Save and insert"
-msgstr ""
+msgstr "Konservi kaj enmeti"
 
 #: ../rednotebook/gui/customwidgets.py:341 ../rednotebook/gui/menu.py:110
 msgid "Save"
-msgstr ""
+msgstr "Konservi"
 
 #: ../rednotebook/gui/customwidgets.py:343
 msgid "Close"
-msgstr ""
+msgstr "Fermi"
 
 #: ../rednotebook/gui/menu.py:93
 msgid "_Journal"
-msgstr ""
+msgstr "_Taglibro"
 
 #: ../rednotebook/gui/menu.py:97
 msgid "New"
-msgstr ""
+msgstr "Nova"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
@@ -345,7 +347,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
-msgstr ""
+msgstr "Malfermi"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
@@ -353,7 +355,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save As"
-msgstr ""
+msgstr "Konservi kiel"
 
 #: ../rednotebook/gui/menu.py:117
 msgid ""
@@ -378,7 +380,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:142
 msgid "S_tatistics"
-msgstr ""
+msgstr "S_tatistikoj"
 
 #: ../rednotebook/gui/menu.py:144
 msgid "Show some statistics about the journal"
@@ -386,7 +388,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:150
 msgid "Quit"
-msgstr ""
+msgstr "Forlasi"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
@@ -398,7 +400,7 @@ msgstr "_Redakti"
 
 #: ../rednotebook/gui/menu.py:159
 msgid "Undo"
-msgstr ""
+msgstr "Malfari"
 
 #: ../rednotebook/gui/menu.py:161
 msgid "Undo text or tag edits"
@@ -406,7 +408,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:167
 msgid "Redo"
-msgstr ""
+msgstr "Refari"
 
 #: ../rednotebook/gui/menu.py:169
 msgid "Redo text or tag edits"
@@ -414,27 +416,27 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:175
 msgid "Cut"
-msgstr ""
+msgstr "Eltondi"
 
 #: ../rednotebook/gui/menu.py:183
 msgid "Copy"
-msgstr ""
+msgstr "Kopii"
 
 #: ../rednotebook/gui/menu.py:191
 msgid "Paste"
-msgstr ""
+msgstr "Alglui"
 
 #: ../rednotebook/gui/menu.py:199
 msgid "Fullscreen"
-msgstr ""
+msgstr "Plenekrane"
 
 #: ../rednotebook/gui/menu.py:207
 msgid "Find"
-msgstr ""
+msgstr "Trovi"
 
 #: ../rednotebook/gui/menu.py:219
 msgid "Spell Check"
-msgstr ""
+msgstr "Ortografia kontrolo"
 
 #: ../rednotebook/gui/menu.py:221
 msgid "Underline misspelled words"
@@ -446,11 +448,11 @@ msgstr "Preferoj"
 
 #: ../rednotebook/gui/menu.py:236
 msgid "_Help"
-msgstr ""
+msgstr "_Helpo"
 
 #: ../rednotebook/gui/menu.py:240
 msgid "Contents"
-msgstr ""
+msgstr "Enhavoj"
 
 #: ../rednotebook/gui/menu.py:242
 msgid "Open the RedNotebook documentation"
@@ -458,7 +460,7 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:248
 msgid "Donate"
-msgstr ""
+msgstr "Donaci"
 
 #: ../rednotebook/gui/menu.py:250
 msgid "Support RedNotebook with a donation"
@@ -466,15 +468,15 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:256
 msgid "Translate RedNotebook"
-msgstr ""
+msgstr "Traduki RedNotebook"
 
 #: ../rednotebook/gui/menu.py:258
 msgid "Help translate RedNotebook to your language"
-msgstr ""
+msgstr "Helpi traduki RedNotebook al via lingvo"
 
 #: ../rednotebook/gui/menu.py:264
 msgid "Report a Problem"
-msgstr ""
+msgstr "Raporti problemon"
 
 #: ../rednotebook/gui/menu.py:266
 msgid "Fill out a short form about the problem"
@@ -490,11 +492,11 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:277
 msgid "About"
-msgstr ""
+msgstr "Pri"
 
 #: ../rednotebook/gui/menu.py:295
 msgid "Wrong directory"
-msgstr ""
+msgstr "Malĝusta dosierujo"
 
 #: ../rednotebook/gui/menu.py:299 ../rednotebook/journal.py:248
 msgid "You cannot use this directory for your journal:"
@@ -538,11 +540,11 @@ msgstr ""
 
 #: ../rednotebook/gui/menu.py:415
 msgid "RedNotebook Documentation"
-msgstr ""
+msgstr "Dokumentaro pri RedNotebook"
 
 #: ../rednotebook/gui/menu.py:443
 msgid "Contributors:"
-msgstr ""
+msgstr "Kontribuintoj:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
 #: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
@@ -621,19 +623,19 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:150
 msgid "Available tags"
-msgstr ""
+msgstr "Haveblaj etikedoj"
 
 #: ../rednotebook/gui/exports.py:153
 msgid "Selected tags"
-msgstr ""
+msgstr "Elektitaj etikedoj"
 
 #: ../rednotebook/gui/exports.py:162
 msgid "Select"
-msgstr ""
+msgstr "Elekti"
 
 #: ../rednotebook/gui/exports.py:163
 msgid "Deselect"
-msgstr ""
+msgstr "Malelekti"
 
 #: ../rednotebook/gui/exports.py:258
 msgid "When filtering by tags, you have to select at least one tag."
@@ -645,7 +647,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:306
 msgid "Export Assistant"
-msgstr ""
+msgstr "Elportilo"
 
 #: ../rednotebook/gui/exports.py:314
 msgid "Welcome to the Export Assistant."
@@ -675,7 +677,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:347
 msgid "Select Contents"
-msgstr ""
+msgstr "Elektu enhavojn"
 
 #: ../rednotebook/gui/exports.py:353
 msgid "Select Export Path"
@@ -683,7 +685,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:358
 msgid "Summary"
-msgstr ""
+msgstr "Resumo"
 
 #: ../rednotebook/gui/exports.py:418
 msgid "Export selected text only"
@@ -691,19 +693,19 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:422
 msgid "Start date"
-msgstr ""
+msgstr "Komenca dato"
 
 #: ../rednotebook/gui/exports.py:423
 msgid "End date"
-msgstr ""
+msgstr "Fina dato"
 
 #: ../rednotebook/gui/exports.py:428
 msgid "Include text"
-msgstr ""
+msgstr "Inkluzivi tekston"
 
 #: ../rednotebook/gui/exports.py:431
 msgid "Include tags"
-msgstr ""
+msgstr "Inkluzivi etikedojn"
 
 #: ../rednotebook/gui/exports.py:435
 msgid "Filtered by tags"
@@ -728,7 +730,7 @@ msgstr ""
 
 #: ../rednotebook/gui/exports.py:523
 msgid "Plain Text"
-msgstr ""
+msgstr "Ordinara teksto"
 
 #: ../rednotebook/gui/categories.py:133
 msgid "Empty entries are not allowed"
@@ -753,12 +755,12 @@ msgstr ""
 #: ../rednotebook/util/utils.py:116
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr ""
+msgstr "Via versio estas <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:118
 #, python-format
 msgid "The latest version is <b>%s</b>."
-msgstr ""
+msgstr "La plej nova versio estas <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:121
 msgid "If you like the program, please consider making a donation."
@@ -831,6 +833,8 @@ msgid ""
 "There are two modes in RedNotebook, the __edit__ mode and the __preview__ "
 "mode."
 msgstr ""
+"Jen al du reĝimoj de RedNotebook: la __redakta__ reĝimo kaj la "
+"__antaŭrigarda__ reĝimo."
 
 #: ../rednotebook/help.py:51
 msgid "Click on Edit above to see the difference."
@@ -838,11 +842,11 @@ msgstr ""
 
 #: ../rednotebook/help.py:54
 msgid "Tagging is easy."
-msgstr ""
+msgstr "Uzi etikedojn estas facile."
 
 #: ../rednotebook/help.py:55
 msgid "Just use #hashtags like on twitter."
-msgstr ""
+msgstr "Simple uzu #kradvortojn kiel en X."
 
 #: ../rednotebook/help.py:59
 msgid ""
@@ -852,14 +856,12 @@ msgid ""
 msgstr ""
 
 #: ../rednotebook/help.py:64
-#, fuzzy
-#| msgid "Template"
 msgid "Templates"
-msgstr "Ŝablono"
+msgstr "Ŝablonoj"
 
 #: ../rednotebook/help.py:65
 msgid "RedNotebook supports templates."
-msgstr ""
+msgstr "RedNotebook ebligas ŝablonojn."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
@@ -910,7 +912,7 @@ msgstr ""
 
 #: ../rednotebook/help.py:89
 msgid "Have a nice day!"
-msgstr ""
+msgstr "Bonan tagon!"
 
 #: ../rednotebook/help.py:114
 msgid ""
@@ -945,7 +947,7 @@ msgstr ""
 
 #: ../rednotebook/journal.py:385
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nenio konservota"
 
 #: ../rednotebook/journal.py:527
 msgid "Error"
@@ -971,11 +973,11 @@ msgstr ""
 
 #: ../rednotebook/backup.py:67
 msgid "Backup"
-msgstr ""
+msgstr "Savkopio"
 
 #: ../rednotebook/backup.py:70
 msgid "Backup now"
-msgstr ""
+msgstr "Fari savkopion nun"
 
 #: ../rednotebook/backup.py:72
 msgid "Ask at next start"
@@ -1052,6 +1054,17 @@ msgid ""
 "\n"
 "**Pictures:** [Image folder \"\"/path/to/the/images/\"\"]\n"
 msgstr ""
+"=== Vojaĝo ===\n"
+"**Dato:**\n"
+"\n"
+"**Loko:**\n"
+"\n"
+"**Vojaĝintoj:**\n"
+"\n"
+"**La vojaĝo:**\n"
+"Unue ni iris al xxxxx, kaj poste ni iris al yyyyy …\n"
+"\n"
+"**Bildoj:** [Bildujo \"\"/loko/de/la/bildoj/\"\"]\n"
 
 #: ../rednotebook/templates.py:156
 msgid ""
@@ -1063,6 +1076,13 @@ msgid ""
 "- **Outcome and Follow up:**\n"
 "==================================\n"
 msgstr ""
+"==================================\n"
+"=== Telefona interparolo ===\n"
+"- **Homo:**\n"
+"- **Tempo:**\n"
+"- **Temo:**\n"
+"- **Rezulto kaj farendaĵoj:**\n"
+"==================================\n"
 
 #: ../rednotebook/templates.py:168
 msgid ""
@@ -1086,10 +1106,8 @@ msgid ""
 msgstr ""
 
 #: ../rednotebook/templates.py:196
-#, fuzzy
-#| msgid "Template"
 msgid "Template mode"
-msgstr "Ŝablono"
+msgstr "Ŝablona reĝimo"
 
 #: ../rednotebook/templates.py:200
 msgid "You are currently editing a template."
@@ -1097,7 +1115,7 @@ msgstr ""
 
 #: ../rednotebook/templates.py:321
 msgid "Choose Template Name"
-msgstr ""
+msgstr "Elektu nomon de ŝablono"
 
 #: ../rednotebook/templates.py:362
 msgid "This template file contains no text or has unreadable content."
@@ -1113,23 +1131,23 @@ msgstr "Krei novan ŝablonon"
 
 #: tmp/main_window.glade.h:3
 msgid "Select backup filename"
-msgstr ""
+msgstr "Elektu nomon de savkopio"
 
 #: tmp/main_window.glade.h:4
 msgid "_Cancel"
-msgstr ""
+msgstr "_Nuligi"
 
 #: tmp/main_window.glade.h:5
 msgid "_Save"
-msgstr ""
+msgstr "_Konservi"
 
 #: tmp/main_window.glade.h:6
 msgid "Select a directory"
-msgstr ""
+msgstr "Elektu dosierujon"
 
 #: tmp/main_window.glade.h:7
 msgid "_OK"
-msgstr ""
+msgstr "_Bone"
 
 #: tmp/main_window.glade.h:8
 msgid "Select a file"
@@ -1137,25 +1155,23 @@ msgstr "Elektu dosieron"
 
 #: tmp/main_window.glade.h:10
 msgid "Insert Link"
-msgstr ""
+msgstr "Enmeti hiperligon"
 
 #: tmp/main_window.glade.h:11
 msgid "<b>Link location (e.g. https://www.google.com)</b>"
-msgstr ""
+msgstr "<b>Celo de hiperligo (ekz. https://www.google.com)</b>"
 
 #: tmp/main_window.glade.h:12
 msgid "<b>Link name (optional)</b>"
-msgstr ""
+msgstr "<b>Nomo de hiperligo (nedeviga)</b>"
 
 #: tmp/main_window.glade.h:13
 msgid "Go to previous day (Ctrl+PageUp)"
 msgstr ""
 
 #: tmp/main_window.glade.h:14
-#, fuzzy
-#| msgid "_Backup"
 msgid "Back"
-msgstr "_Sekurkopii"
+msgstr "Reen"
 
 #: tmp/main_window.glade.h:15
 msgid "Jump to today (Alt+Home)"
@@ -1171,7 +1187,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:18
 msgid "Forward"
-msgstr ""
+msgstr "Antaŭen"
 
 #: tmp/main_window.glade.h:19
 msgid "Show a formatted preview of the text (Ctrl+P)"
@@ -1183,7 +1199,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:23
 msgid "Edit"
-msgstr ""
+msgstr "Modifi"
 
 #: tmp/main_window.glade.h:24
 msgid "Add a tag or a category entry"
@@ -1191,7 +1207,7 @@ msgstr ""
 
 #: tmp/main_window.glade.h:25
 msgid "Add Tag"
-msgstr ""
+msgstr "Aldoni etikedon"
 
 #: tmp/main_window.glade.h:26
 msgid "New entry"
@@ -1217,15 +1233,15 @@ msgstr "Ĝenerale"
 
 #: tmp/main_window.glade.h:34
 msgid "Select a picture"
-msgstr ""
+msgstr "Elektu bildon"
 
 #: tmp/main_window.glade.h:35
 msgid "_Open"
-msgstr ""
+msgstr "_Malfermi"
 
 #: tmp/main_window.glade.h:36
 msgid "Exit without saving"
-msgstr ""
+msgstr "Forlasi sen konservado"
 
 #: tmp/main_window.glade.h:37
 msgid "Statistics"
@@ -1233,7 +1249,7 @@ msgstr "Statistikoj"
 
 #: tmp/main_window.glade.h:38
 msgid "<b>Selected Day</b>"
-msgstr ""
+msgstr "<b>Elektita tago</b>"
 
 #: tmp/main_window.glade.h:39
 msgid "<b>Overall</b>"
