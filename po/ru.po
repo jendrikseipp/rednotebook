@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
 "PO-Revision-Date: 2024-01-11 10:06+0000\n"
 "Last-Translator: Umar <umory866b@relay.firefox.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/rednotebook/"
@@ -87,59 +87,63 @@ msgstr "Проверять наличие новых версий при зап�
 msgid "Search as you type"
 msgstr "Поиск при наборе"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "Проверить сейчас"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "Изменить шрифт:"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "Образец шрифта:"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "Список шрифтов через запятую"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "Формат даты/времени"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr "Используется для кнопки «Дату/время» и в макросе $date$ для шаблонов."
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "Формат даты"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
 msgstr "Используется для дат на панелях заголовков и при экспорте."
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "Меток в облаке"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "Максимальное количество меток, показываемых в облаке"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "Исключить из облака"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "Не показывать эти слова (через запятую) и #метки в облаке"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "Показывать в облаке короткие слова"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "Показывать эти слова короче 5 букв"
 
@@ -193,11 +197,11 @@ msgstr "Показать RedNotebook"
 msgid "No directory selected."
 msgstr "Папка не выбрана."
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "Шаблон"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -314,15 +318,15 @@ msgstr "Значение ширины должно быть целым числ�
 msgid "No link location has been entered"
 msgstr "Не был указан адрес для ссылки"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "Заменить"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "Дата"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "Текст"
 
@@ -550,16 +554,16 @@ msgstr "Выберите пустой каталог для вашего нов�
 msgid "The directory name will be the new title of the journal"
 msgstr "Имя каталога станет новым названием дневника"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "Руководство к RedNotebook"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "Участники:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -588,17 +592,17 @@ msgstr "фильтр, этих, разделённых, запятыми, сло
 msgid "mtv, spam, work, job, play"
 msgstr "MTV, флуд, спам, куку, Вася, Катя"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Метки"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "Слова"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Не показывать «%s» в облаке меток"

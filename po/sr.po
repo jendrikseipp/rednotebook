@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
 "PO-Revision-Date: 2023-10-04 12:36+0000\n"
 "Last-Translator: NEXI <nexiphotographer@gmail.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/rednotebook/"
@@ -88,59 +88,63 @@ msgstr "Провери има ли нове верзије при покрета
 msgid "Search as you type"
 msgstr "Претражуј док куцаш"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "Провери сада"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "Измени фонт:"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "Преглед фонта:"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "Називи фонта раздвојени зарезом"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "Формат датума/времена"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr "Користи га дугме „Датум/време“ и макро шаблон $date$."
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "Формат датума"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
 msgstr "Користи се за датуме у насловној траци и извозе."
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "Ознаке у облаку"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "Максималан број ознака приказаних у облаку"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "Искључи из облака"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "Не приказуј ове зарезом раздвојене речи и #ознаке у облацима"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "Укључи кратке речи у облаку"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "Дозволи ове речи од 4 слова или мање"
 
@@ -194,11 +198,11 @@ msgstr "Прикажи RedNotebook"
 msgid "No directory selected."
 msgstr "Није изабран ниједан фолдер."
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "Шаблон"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -313,15 +317,15 @@ msgstr "Ширина мора бити цео број."
 msgid "No link location has been entered"
 msgstr "Локација линка није унета"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "Замени"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "Датум"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "Текст"
 
@@ -548,16 +552,16 @@ msgstr "Изаберите празан фолдер за нову локаци�
 msgid "The directory name will be the new title of the journal"
 msgstr "Назив фолдера биће нови наслов дневника"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook документација"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "Сарадници:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -578,17 +582,17 @@ msgstr "филтер, ове, зарез, раздвојено, речи, и, #�
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, спам, рад, посао, пусти"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Ознаке"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "Речи"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Сакриј „%s“ из облака"
@@ -872,8 +876,8 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
-"Данас сам отишао у //пет шоп// и купио **тигра**. Онда смо отишли на "
-"--базен-- и уживали играјући фризби. Након тога смо гледали филм „__Житије "
+"Данас сам отишао у //пет шоп// и купио **тигра**. Онда смо отишли на --"
+"базен-- и уживали играјући фризби. Након тога смо гледали филм „__Житије "
 "Брајаново__“."
 
 #: ../rednotebook/help.py:64
