@@ -1,10 +1,10 @@
 # next (unreleased)
-* When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
-* When searching for a hashtag, scroll to hashtag and highlight it. (@jendrikseipp).
-* Add simple trick to show all entries: allow searching for whitespace (which should be part of all days) (@jendrikseipp).
+* Improved bidirectional text support: Enhanced the preview mode to display bidirectional texts (e.g., mixed RTL and LTR languages) correctly for improved readability and compatibility with multilingual content (#781, @metemaddar).
 
 # 2.36 (2024-11-06)
-* Improved bidirectional text support: Enhanced the preview mode to display bidirectional texts (e.g., mixed RTL and LTR languages) correctly for improved readability and compatibility with multilingual content (#781, @metemaddar).
+* When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
+* When searching for a hashtag, scroll to hashtag and highlight it (@jendrikseipp).
+* Add simple way for showing all entries: allow searching for whitespace (which should be part of all days) (@jendrikseipp).
 
 # 2.35 (2024-09-22)
 * Add option to auto-indent text in editor and activate it by default (#561, #562, Allen Benter, Varunjay Varma).
