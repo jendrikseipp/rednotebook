@@ -1,4 +1,4 @@
-# next (unreleased)
+# 2.37 (2024-12-18)
 * Improve bidirectional text support in preview mode (#781, @metemaddar).
 
 # 2.36 (2024-11-24)
