@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-24 19:16+0100\n"
-"PO-Revision-Date: 2023-09-05 00:52+0000\n"
+"PO-Revision-Date: 2024-11-25 20:00+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 "X-Launchpad-Export-Date: 2017-07-08 05:26+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -89,7 +89,7 @@ msgstr "Suche während des Tippens"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Auto indent"
-msgstr ""
+msgstr "Automatisches Einrücken"
 
 #: ../rednotebook/gui/options.py:330
 msgid "Check now"
@@ -985,18 +985,15 @@ msgid "Have a nice day!"
 msgstr "Einen schönen Tag noch!"
 
 #: ../rednotebook/help.py:114
-#, fuzzy
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by separating your entries with "
 "different titles (=== Work ===, === Family ===)."
 msgstr ""
 "=== Mehrere Einträge ===\n"
-"Du kannst mehrere Eintrage einem einzelnen Tag hinzufügen, indem du "
-"verschiedene Journale verwendest (das eine \"Arbeit\", das andere "
-"\"Familie\" genannt) und deine Einträge mit verschiedenen Titeln (=== Arbeit "
-"===, === Familie ===) von einander trennst und eine horizontalen Trennlinie "
-"(20 \"=\"s) nutzt."
+"Du kannst mehrere Einträge zu einem einzigen Tag hinzufügen, indem du deine "
+"Einträge mit unterschiedlichen Titeln trennst (=== Arbeit ===, === Familie "
+"===)."
 
 #: ../rednotebook/help.py:121
 msgid ""
@@ -1040,7 +1037,7 @@ msgstr "Fehler"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Es wurden {total_replacements} Vorkommnisse des Suchtexts ersetzt"
 
 #: ../rednotebook/journal.py:587
 msgid "No text has been replaced"
