@@ -1,3 +1,6 @@
+# next (unreleased)
+* Improve bidirectional text support in preview mode (#781, @metemaddar).
+
 # 2.36 (2024-11-24)
 * When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
 * When searching for a hashtag, scroll to hashtag and highlight it (@jendrikseipp).
