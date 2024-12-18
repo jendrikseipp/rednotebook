@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-09-05 00:52+0000\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
+"PO-Revision-Date: 2024-11-25 20:00+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 "X-Launchpad-Export-Date: 2017-07-08 05:26+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -87,61 +87,65 @@ msgstr "Beim Programmstart nach Aktualisierungen suchen"
 msgid "Search as you type"
 msgstr "Suche während des Tippens"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr "Automatisches Einrücken"
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "Jetzt überprüfen"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "Schriftart im Bearbeiten-Modus:"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "Schriftart der Vorschau:"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "Mit Komma getrennte Schriftnamen"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "Datum/Uhrzeit Format"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr ""
 "Wird von der Schaltfläche Datum/Uhrzeit und dem Vorlagenmakro $date$ "
 "verwendet."
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "Datumsformat"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
 msgstr "Wird für Datumsangaben in der Titelleiste und für Exporte verwendet."
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "Schlagwörter in der Cloud"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "Maximale Anzahl von Schlagwörtern, die in der Cloud angezeigt werden"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "Von der Wortwolke ausschließen"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "Diese kommaseparierten Worte und #tags nicht in der Wortwolke anzeigen"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "Erlaube kurze Wörter in der Wortwolke"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "Einbeziehen der hier gelisteten Wörter mit 4 und weniger Zeichen"
 
@@ -195,11 +199,11 @@ msgstr "RedNotebook zeigen"
 msgid "No directory selected."
 msgstr "Kein Ordner ausgewählt."
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "Vorlage"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -316,15 +320,15 @@ msgstr "Die Weite muss als eine Ganzzahl angegeben werden."
 msgid "No link location has been entered"
 msgstr "Es wurde keine Link Adresse angegeben"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "Ersetzen"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "Datum"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "Text"
 
@@ -554,16 +558,16 @@ msgstr "Wähle einen leeren Ordner als neuen Speicherort für das Journal"
 msgid "The directory name will be the new title of the journal"
 msgstr "Der Verzeichnisname wird der neue Name des Journals werden"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook Dokumentation"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "Beitragende:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
 "Jendrik Seipp\n"
@@ -602,17 +606,17 @@ msgstr "filtere, diese, kommaseparierten, Wörter, und, #tags"
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, spam, job, juli"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Markierungen"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "Wörter"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Zeige \"%s\" nicht in den Wortwolken"
@@ -981,18 +985,15 @@ msgid "Have a nice day!"
 msgstr "Einen schönen Tag noch!"
 
 #: ../rednotebook/help.py:114
-#, fuzzy
 msgid ""
 "=== Multiple entries ===\n"
 "You can add multiple entries to a single day by separating your entries with "
 "different titles (=== Work ===, === Family ===)."
 msgstr ""
 "=== Mehrere Einträge ===\n"
-"Du kannst mehrere Eintrage einem einzelnen Tag hinzufügen, indem du "
-"verschiedene Journale verwendest (das eine \"Arbeit\", das andere "
-"\"Familie\" genannt) und deine Einträge mit verschiedenen Titeln (=== Arbeit "
-"===, === Familie ===) von einander trennst und eine horizontalen Trennlinie "
-"(20 \"=\"s) nutzt."
+"Du kannst mehrere Einträge zu einem einzigen Tag hinzufügen, indem du deine "
+"Einträge mit unterschiedlichen Titeln trennst (=== Arbeit ===, === Familie "
+"===)."
 
 #: ../rednotebook/help.py:121
 msgid ""
@@ -1036,7 +1037,7 @@ msgstr "Fehler"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Es wurden {total_replacements} Vorkommnisse des Suchtexts ersetzt"
 
 #: ../rednotebook/journal.py:587
 msgid "No text has been replaced"

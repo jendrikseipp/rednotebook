@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
 "PO-Revision-Date: 2024-10-14 09:15+0000\n"
 "Last-Translator: Yuji S <p510hv@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/rednotebook/"
@@ -84,59 +84,63 @@ msgstr "起動時に新しいバージョンをチェック"
 msgid "Search as you type"
 msgstr "種類から探す"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "今すぐチェック"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "フォント:"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "プレビューのフォント:"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "カンマで区切ったフォント名"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "日付/時間の書式"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr "日付/時刻ボタンと $date$ テンプレート マクロによって使用されます。"
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "日付の書式"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
 msgstr "タイトルバーとエクスポートの日付に使用されます。"
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "クラウド内のタグ"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "クラウドに表示されるタグの最大数"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "クラウドから除外する"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "これらのコンマで区切られた単語とタグをクラウドに表示しません"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "短い単語をクラウドに表示する"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "これらの四文字以下の単語を許可します"
 
@@ -190,11 +194,11 @@ msgstr "RedNotebook を表示"
 msgid "No directory selected."
 msgstr "フォルダーが選択されていません。"
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "テンプレート"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -308,15 +312,15 @@ msgstr "幅は整数。"
 msgid "No link location has been entered"
 msgstr "リンクの場所が入力されていません"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "置き換え"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "日付"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "テキスト"
 
@@ -541,16 +545,16 @@ msgstr "日記の新しい保存先用に空のフォルダーを選んでくだ
 msgid "The directory name will be the new title of the journal"
 msgstr "フォルダー名が新しい日記のタイトルになります"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook ドキュメント"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "貢献者:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr "翻訳者-クレジット"
 
@@ -562,17 +566,17 @@ msgstr "フィルター、カンマ、区切り文字、単語、and、 #タグ"
 msgid "mtv, spam, work, job, play"
 msgstr "MTV、スパム、仕事、遊び"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "タグ"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "単語"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "\"%s\" をクラウドから非表示にする"
@@ -667,7 +671,8 @@ msgstr "エクスポートしたい日付および保存先を選択できます
 
 #: ../rednotebook/gui/exports.py:332
 msgid "PDF: export to HTML, open in browser and print to PDF file"
-msgstr "PDF: HTML にエクスポートし、ブラウザで開いて PDF ファイルにプリントします"
+msgstr ""
+"PDF: HTML にエクスポートし、ブラウザで開いて PDF ファイルにプリントします"
 
 #: ../rednotebook/gui/exports.py:337
 msgid "Select Export Format"
@@ -870,8 +875,9 @@ msgstr "RedNotebook はテンプレートをサポートしています。"
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
-msgstr "[テンプレート] "
-"ボタンの横にある矢印をクリックして、いくつかのオプションを表示します。"
+msgstr ""
+"[テンプレート] ボタンの横にある矢印をクリックして、いくつかのオプションを表示"
+"します。"
 
 #: ../rednotebook/help.py:68
 msgid ""
@@ -933,8 +939,8 @@ msgid ""
 "different titles (=== Work ===, === Family ===)."
 msgstr ""
 "=== 複数のエントリ ===\n"
-"エントリを異なるタイトル (=== 仕事 ===、=== 家族 ===) で区切ることで、1 "
-"日に複数のエントリを追加できます。"
+"エントリを異なるタイトル (=== 仕事 ===、=== 家族 ===) で区切ることで、1 日に"
+"複数のエントリを追加できます。"
 
 #: ../rednotebook/help.py:121
 msgid ""

@@ -1,3 +1,10 @@
+rednotebook (2.37-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Improve bidirectional text support in preview mode (#781, @metemaddar).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Wed, 18 Dec 2024 21:26:07 +0100
+
 rednotebook (2.36-1) UNRELEASED; urgency=low
 
   * New upstream release

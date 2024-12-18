@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
 "PO-Revision-Date: 2023-10-04 12:36+0000\n"
 "Last-Translator: Frederic HUCKEL <frederic.huckel@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/rednotebook/"
@@ -88,61 +88,65 @@ msgstr "Vérifier l'existence d'une nouvelle version au démarrage"
 msgid "Search as you type"
 msgstr "Recherche en cours de saisie"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "Vérifier maintenant"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "Éditer la police de caractères :"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "Aperçu de la police de caractères :"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "Noms de polices de caractères séparés par des virgules"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "Format de date et d'heure"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr "Utilisé par le bouton Date/Heure et la macro du modèle $date$."
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "Format de date"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
 msgstr "Utilisé pour les dates dans la barre de titre et les exportations."
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "Tags dans les clouds"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "Nombre maximum d'étiquettes dans le nuage"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "Exclure du nuage"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr ""
 "Ne pas afficher ces mots séparés par des virgules et ces #étiquettes dans "
 "les nuages"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "Inclure les petits mots dans le nuage"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "Autoriser ces mots de 4 lettres ou moins"
 
@@ -196,11 +200,11 @@ msgstr "Afficher RedNotebook"
 msgid "No directory selected."
 msgstr "Aucun répertoire sélectionné."
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "Modèle"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -316,15 +320,15 @@ msgstr "La largeur doit être un nombre entier."
 msgid "No link location has been entered"
 msgstr "Aucun contenu de lien n'a été entré"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "Remplacer"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "Date"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "Texte"
 
@@ -553,16 +557,16 @@ msgstr ""
 msgid "The directory name will be the new title of the journal"
 msgstr "Le nom du répertoire sera le nouveau titre du journal"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "Documentation de RedNotebook"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "Contributeurs :"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions :\n"
@@ -604,17 +608,17 @@ msgstr "filtrer, ces, mots, séparés par des, virgules, et, #étiquettes"
 msgid "mtv, spam, work, job, play"
 msgstr "tf1, note, vite, job, jeu"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Étiquettes"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "Mots"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Cacher « %s » des nuages"
