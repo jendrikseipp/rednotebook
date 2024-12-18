@@ -1,7 +1,7 @@
 # next (unreleased)
-* Improved bidirectional text support: Enhanced the preview mode to display bidirectional texts (e.g., mixed RTL and LTR languages) correctly for improved readability and compatibility with multilingual content (#781, @metemaddar).
+* Improve bidirectional text support in preview mode (#781, @metemaddar).
 
-# 2.36 (2024-11-06)
+# 2.36 (2024-11-24)
 * When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
 * When searching for a hashtag, scroll to hashtag and highlight it (@jendrikseipp).
 * Add simple way for showing all entries: allow searching for whitespace (which should be part of all days) (@jendrikseipp).

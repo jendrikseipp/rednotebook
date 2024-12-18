@@ -350,11 +350,9 @@ class Journal(Gtk.Application):
             )
             options["bgcolor"] = bgcolor
             options["fgcolor"] = fgcolor
-        html = markup.convert(
+        return markup.convert(
             text, target, self.dirs.data_dir, headers=headers, options=options
         )
-        html = html.replace("<p>",'<p dir="auto">')
-        return html
 
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
         self.save_old_day()

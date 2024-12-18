@@ -220,6 +220,9 @@ def _get_config(target, options):
         # Apply image resizing
         config["postproc"].append([r"src=\"WIDTH(\d+)-", r'width="\1" src="'])
 
+        # Flow paragraph from right to left or left to right depending on the language.
+        config["postproc"].append(["<p>", '<p dir="auto">'])
+
         # {{red text|color:red}} -> <span style="color:red">red text</span>
         config["postproc"].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
 
