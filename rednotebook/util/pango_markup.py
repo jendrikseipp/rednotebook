@@ -28,7 +28,7 @@ def convert_to_pango(txt, headers=None, options=None):
     config = txt2tags.ConfigMaster()._get_defaults()
 
     config["outfile"] = txt2tags.MODULEOUT  # results as list
-    config["target"] = "xhtml"
+    config["target"] = "html"
 
     config["preproc"] = []
     # We need to escape the ampersand here, otherwise "&amp;" would become

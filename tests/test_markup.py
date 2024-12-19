@@ -67,12 +67,12 @@ def test_absolute_path_conversion(tmp_path):
         assert path == _convert_paths(path, tmp_path)
 
 
-class TestGetXHtmlExportConfig:
+class TestGetHtmlExportConfig:
     @staticmethod
     @pytest.fixture
     def process(tmp_path):
         def process(markup):
-            html_document = convert(markup, "xhtml", tmp_path)
+            html_document = convert(markup, "html", tmp_path)
             return html_document.split("\n")
 
         return process
@@ -218,7 +218,7 @@ class TestGetXHtmlExportConfig:
         date = datetime.date(2019, 10, 21)
         day = Day(Month(date.year, date.month), date.day)
 
-        markup = get_markup_for_day(day, "xhtml", date=date.strftime("%d-%m-%Y"))
+        markup = get_markup_for_day(day, "html", date=date.strftime("%d-%m-%Y"))
         document = process(markup)
 
         assert rf'<span id="{date:%Y-%m-%d}"></span>' in document

@@ -18,7 +18,7 @@ from rednotebook.util import markup
 print(
     markup.convert(
         help_text,
-        "xhtml",
+        "html",
         DEFAULT_DATA_DIR,
         headers=["RedNotebook Documentation", version, ""],
         options={"toc": 1},

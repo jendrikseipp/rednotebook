@@ -528,7 +528,7 @@ class PlainTextExporter(Exporter):
 class HtmlExporter(Exporter):
     NAME = "HTML"
     EXTENSION = "html"
-    FORMAT = "xhtml"
+    FORMAT = "html"
 
 
 class LatexExporter(Exporter):
