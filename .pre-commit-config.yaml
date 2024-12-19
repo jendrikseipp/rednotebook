@@ -24,7 +24,7 @@ repos:
     rev: 24.8.0
     hooks:
     -   id: black
-        exclude: ^rednotebook/external/
+        exclude: ^rednotebook/external/(spellcheck|elibintl).py
 
 # Imports sorter
 -   repo: https://github.com/pycqa/isort
