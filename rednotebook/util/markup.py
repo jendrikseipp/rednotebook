@@ -41,8 +41,6 @@ REGEX_NAMED_LINK = re.compile(r'(\[)(.*?)(\s"")(\S.*?\S)(""\])', flags=re.I)
 ESCAPE_COLOR = r"XBEGINCOLORX\1XSEPARATORX\2XENDCOLORX"
 COLOR_ESCAPED = r"XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX"
 
-CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
-
 CSS = """\
 <style type="text/css">
     :root {
@@ -210,9 +208,6 @@ def _get_config(target, options):
         config["encoding"] = "UTF-8"  # document encoding
         config["toc"] = 0
         config["css-sugar"] = 1
-
-        # Fix encoding for export opened in firefox
-        config["postproc"].append([r"<head>", f"<head>{CHARSET_UTF8}"])
 
         # Line breaks
         config["postproc"].append([r"LINEBREAK", "<br />"])

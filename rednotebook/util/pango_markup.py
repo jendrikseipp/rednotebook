@@ -59,8 +59,10 @@ def convert_to_pango(txt, headers=None, options=None):
         result = txt2tags.getUnknownErrorMessage()
         logging.error(result)
 
+    print(result)
+
     # remove unwanted paragraphs
-    result = result.replace("<p>", "").replace("</p>", "")
+    result = result.replace('<div class="body"><p>', "").replace("</p></div>", "")
 
     logging.log(
         5,
@@ -73,6 +75,12 @@ def convert_to_pango(txt, headers=None, options=None):
         return match.group(1)
 
     result = re.sub(REGEX_HTML_LINK, replace_links, result)
+    print(result)
+
+    for new_tag, old_tag in [("del", "s"), ("em", "i"), ("strong", "b")]:
+        result = result.replace(f"<{new_tag}>", f"<{old_tag}>")
+        result = result.replace(f"</{new_tag}>", f"</{old_tag}>")
+    print(result)
 
     try:
         Pango.parse_markup(result, -1, "0")
