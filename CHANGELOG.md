@@ -1,6 +1,6 @@
 # 2.38 (unreleased)
 * Upgrade to txt2tags 3.9 (@jendrikseipp).
-*
+
 # 2.37 (2024-12-18)
 * Improve bidirectional text support in preview mode (#781, @metemaddar).
 
