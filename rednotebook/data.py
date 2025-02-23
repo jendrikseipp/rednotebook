@@ -241,12 +241,16 @@ class Day:
                     # day_tags nonetheless, to escape the day_tags.
                     if escape_tag(day_tag) != tag:
                         continue
+
                     if entries:
                         results.extend(entries)
                     else:
                         add_text_to_results = True
             if add_text_to_results:
                 results.extend(get_search_results_for_tags(self.text, tags))
+                # Handle right-pane tags without subentries.
+                if not results:
+                    results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         elif text in str(self):
             # Date contains searched text.
             results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
