@@ -1,5 +1,5 @@
-# 2.38 (unreleased)
-* Fix: include right-pane tags without subentries in search results (@jendrikseipp).
+# 2.38 (2025-02-23)
+* Fix: include right-pane tags without subentries in search results (#794, @jendrikseipp).
 * Upgrade to txt2tags 3.9 (@jendrikseipp).
 
 # 2.37 (2024-12-18)
