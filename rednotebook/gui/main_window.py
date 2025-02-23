@@ -142,7 +142,7 @@ class MainWindow:
 
                 def show_day(self, new_day):
                     html = self.journal.convert(
-                        new_day.text, "xhtml", use_gtk_theme=True
+                        new_day.text, "html", use_gtk_theme=True
                     )
                     self.load_html(html)
 
@@ -165,7 +165,7 @@ class MainWindow:
 
                 def show_day(self, new_day):
                     html = self.journal.convert(
-                        new_day.text, "xhtml", use_gtk_theme=True
+                        new_day.text, "html", use_gtk_theme=True
                     )
                     self.load_html(html)
 
@@ -456,10 +456,10 @@ class MainWindow:
         else:
             date_format = self.journal.config.read("exportDateFormat")
             date_string = dates.format_date(date_format, self.day.date)
-            markup_string = markup.get_markup_for_day(self.day, "xhtml")
+            markup_string = markup.get_markup_for_day(self.day, "html")
             html = self.journal.convert(
                 markup_string,
-                "xhtml",
+                "html",
                 headers=[f"{date_string} - RedNotebook", "", ""],
                 options={"toc": 0},
             )

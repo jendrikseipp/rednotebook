@@ -1,3 +1,11 @@
+rednotebook (2.38-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix: include right-pane tags without subentries in search results (#794, @jendrikseipp).
+  * Upgrade to txt2tags 3.9 (@jendrikseipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Sun, 23 Feb 2025 22:11:01 +0100
+
 rednotebook (2.37-1) UNRELEASED; urgency=low
 
   * New upstream release

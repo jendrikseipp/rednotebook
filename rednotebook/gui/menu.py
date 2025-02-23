@@ -419,7 +419,7 @@ class MainMenuBar:
         filesystem.write_file(os.path.join(temp_dir, "source.txt"), help_text)
         html = self.journal.convert(
             help_text,
-            "xhtml",
+            "html",
             headers=[_("RedNotebook Documentation"), info.version, ""],
             options={"toc": 1},
         )
