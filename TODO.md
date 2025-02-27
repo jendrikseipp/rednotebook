@@ -7,6 +7,7 @@ status.
 
 ## Important features
 
+- [ ] Add to docs how to use a dark theme (see GitHub issue for Flatpak version).
 - [ ] Support Markdown.
 - [ ] Use separate file for storing CSS to allow users to override styles more easily.
 - [ ] Make default CSS prettier.
