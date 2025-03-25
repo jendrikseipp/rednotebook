@@ -37,11 +37,17 @@ IS_MAC = sys.platform == "darwin"
 LOCAL_FILE_PEFIX = "file:///" if IS_WIN else "file://"
 
 
-gi.require_version("GIRepository", "2.0")
+try:
+    gi.require_version("GIRepository", "3.0")
+except ValueError:
+    try:
+        gi.require_version("GIRepository", "2.0")
+    except ValueError:
+        sys.exit("Please install GIRepository (package gir1.2-glib-* on Ubuntu).")
 from gi.repository import GIRepository
 
 
-repo = GIRepository.Repository.get_default()
+repo = GIRepository.Repository()
 logging.info(
     f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}"
 )
@@ -58,9 +64,10 @@ except ValueError as err:
 try:
     from gi.repository import WebKit2
 
-    logging.info(
-        f"Loaded version of the WebKit2 namespace: {repo.get_version('WebKit2')}"
-    )
+    # Don't log the version as it leads to a warning about a failed assertion.
+    # logging.info(
+    #    f"Loaded version of the WebKit2 namespace: {repo.get_version('WebKit2')}"
+    # )
 except ImportError as err:
     logging.info("Failed to load the WebKit2 namespace")
     WebKit2 = None

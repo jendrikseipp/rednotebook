@@ -1,3 +1,10 @@
+rednotebook (2.39-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Support GIRepository 3.0 (#817, #818, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Tue, 25 Mar 2025 21:10:45 +0100
+
 rednotebook (2.38-1) UNRELEASED; urgency=low
 
   * New upstream release
