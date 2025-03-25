@@ -64,9 +64,10 @@ except ValueError as err:
 try:
     from gi.repository import WebKit2
 
-    logging.info(
-        f"Loaded version of the WebKit2 namespace: {repo.get_version('WebKit2')}"
-    )
+    # Don't log the version as it leads to a warning about a failed assertion.
+    # logging.info(
+    #    f"Loaded version of the WebKit2 namespace: {repo.get_version('WebKit2')}"
+    # )
 except ImportError as err:
     logging.info("Failed to load the WebKit2 namespace")
     WebKit2 = None
