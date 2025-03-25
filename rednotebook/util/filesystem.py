@@ -37,11 +37,17 @@ IS_MAC = sys.platform == "darwin"
 LOCAL_FILE_PEFIX = "file:///" if IS_WIN else "file://"
 
 
-gi.require_version("GIRepository", "2.0")
+try:
+    gi.require_version("GIRepository", "3.0")
+except ValueError:
+    try:
+        gi.require_version("GIRepository", "2.0")
+    except ValueError:
+        sys.exit("Please install GIRepository (package gir1.2-glib-* on Ubuntu).")
 from gi.repository import GIRepository
 
 
-repo = GIRepository.Repository.get_default()
+repo = GIRepository.Repository()
 logging.info(
     f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}"
 )
