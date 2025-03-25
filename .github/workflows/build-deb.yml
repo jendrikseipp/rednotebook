@@ -5,7 +5,11 @@ on: [push, pull_request]
 jobs:
   build-deb-package:
 
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
 
     steps:
     - uses: actions/checkout@v4
@@ -17,7 +21,5 @@ jobs:
         source_directory: .
         # Optional, relative to workspace directory
         artifacts_directory: output
-        # Optional, value from `debian/changelog` is used if not defined
-        os_distribution: noble
         # Optional, target architecture, defaults to amd64
         cpu_architecture: amd64
