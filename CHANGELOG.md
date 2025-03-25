@@ -1,3 +1,6 @@
+# 2.39 (2025-03-25)
+* Support GIRepository 3.0 (#817, #818, Jendrik Seipp).
+
 # 2.38 (2025-02-23)
 * Fix: include right-pane tags without subentries in search results (#794, @jendrikseipp).
 * Upgrade to txt2tags 3.9 (@jendrikseipp).
