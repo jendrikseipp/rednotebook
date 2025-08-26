@@ -103,7 +103,7 @@ def _is_x11_forwarding_detected():
         except (IndexError, ValueError):
             pass
     
-    return has_ssh and display and is_remote_display
+    return has_ssh and bool(display) and is_remote_display
 
 
 def _apply_webkit_x11_forwarding_workaround():
