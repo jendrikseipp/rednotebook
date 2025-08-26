@@ -132,26 +132,7 @@ except ImportError as err:
         )
 
 
-def is_kde_environment():
-    """
-    Detect if we're running on a KDE desktop environment.
 
-    Returns True if any of the following conditions are met:
-    - DESKTOP_SESSION contains 'kde' or 'plasma'
-    - KDE_SESSION_VERSION environment variable is set
-    - XDG_CURRENT_DESKTOP contains 'kde' or 'plasma'
-    """
-    desktop_session = os.environ.get("DESKTOP_SESSION", "").lower()
-    kde_session = os.environ.get("KDE_SESSION_VERSION", "")
-    xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
-
-    return (
-        "kde" in desktop_session
-        or "plasma" in desktop_session
-        or bool(kde_session)
-        or "kde" in xdg_desktop
-        or "plasma" in xdg_desktop
-    )
 
 
 def has_system_tray():

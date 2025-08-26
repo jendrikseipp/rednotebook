@@ -34,10 +34,20 @@ def _fix_webkit_compositing_on_kde():
 
     See: https://github.com/jendrikseipp/rednotebook/issues/828
     """
-    # Import here to avoid circular imports
-    from rednotebook.util.filesystem import is_kde_environment
+    # Check if running in KDE environment
+    desktop_session = os.environ.get("DESKTOP_SESSION", "").lower()
+    kde_session = os.environ.get("KDE_SESSION_VERSION", "")
+    xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
 
-    if is_kde_environment():
+    is_kde = (
+        "kde" in desktop_session
+        or "plasma" in desktop_session
+        or kde_session
+        or "kde" in xdg_desktop
+        or "plasma" in xdg_desktop
+    )
+
+    if is_kde:
         # Note: logging is not yet configured at this point, will be logged later
         os.environ["WEBKIT_DISABLE_COMPOSITING_MODE"] = "1"
 
