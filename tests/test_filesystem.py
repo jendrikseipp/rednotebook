@@ -22,40 +22,40 @@ def test_is_kde_environment():
     original_env = {}
     for key in ["DESKTOP_SESSION", "KDE_SESSION_VERSION", "XDG_CURRENT_DESKTOP"]:
         original_env[key] = os.environ.get(key)
-    
+
     try:
         # Test case 1: No KDE environment variables
         for key in ["DESKTOP_SESSION", "KDE_SESSION_VERSION", "XDG_CURRENT_DESKTOP"]:
             os.environ.pop(key, None)
         assert not is_kde_environment()
-        
+
         # Test case 2: DESKTOP_SESSION contains "kde"
         os.environ["DESKTOP_SESSION"] = "kde"
         assert is_kde_environment()
-        
+
         # Test case 3: DESKTOP_SESSION contains "plasma"
         os.environ["DESKTOP_SESSION"] = "plasma-x11"
         assert is_kde_environment()
-        
+
         # Test case 4: KDE_SESSION_VERSION is set
         os.environ["DESKTOP_SESSION"] = "gnome"
         os.environ["KDE_SESSION_VERSION"] = "5"
         assert is_kde_environment()
-        
+
         # Test case 5: XDG_CURRENT_DESKTOP contains "kde"
         os.environ.pop("KDE_SESSION_VERSION", None)
         os.environ["XDG_CURRENT_DESKTOP"] = "X-Cinnamon:KDE"
         assert is_kde_environment()
-        
+
         # Test case 6: XDG_CURRENT_DESKTOP contains "plasma"
         os.environ["XDG_CURRENT_DESKTOP"] = "plasma:KDE"
         assert is_kde_environment()
-        
+
         # Test case 7: Non-KDE environment
         os.environ["DESKTOP_SESSION"] = "gnome"
         os.environ["XDG_CURRENT_DESKTOP"] = "GNOME"
         assert not is_kde_environment()
-        
+
     finally:
         # Restore original environment
         for key, value in original_env.items():
