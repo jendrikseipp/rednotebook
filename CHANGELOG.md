@@ -1,4 +1,5 @@
 # next (unreleased)
+* Fix empty WebKit preview with Nvidia drivers by auto-applying DMA-BUF workaround (#820, @jendrikseipp).
 * Only instantiate Gtk.StatusIcon on Windows to fix Wayland crash (#840, @jendrikseipp).
 
 # 2.39 (2025-03-25)
