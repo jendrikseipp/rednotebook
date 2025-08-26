@@ -384,7 +384,9 @@ class OptionsManager:
             self.main_window.set_auto_indent()
 
             visible = self.config.read("closeToTray") == 1
-            self.main_window.tray_icon.set_visible(visible)
+            # The tray icon is now only instantiated on Windows.
+            if hasattr(self.main_window, "tray_icon"):
+                self.main_window.tray_icon.set_visible(visible)
         else:
             # Reset some options
             self.main_window.set_font(self.config.read("mainFont", editor.DEFAULT_FONT))
