@@ -102,12 +102,12 @@ else:
 print(f"Adding {base_dir} to sys.path")
 sys.path.insert(0, base_dir)
 
+from rednotebook.external import elibintl
 from rednotebook.util import filesystem
 
 
 # ---------------------- Enable i18n -------------------------------
 
-from rednotebook.external import elibintl
 
 LOCALE_PATH = filesystem.locale_dir
 logging.info(f"Locale path: {LOCALE_PATH}")
@@ -142,12 +142,9 @@ elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH, libintl=None)
 # ------------------- end Enable i18n -------------------------------
 
 
-from rednotebook.util import utils
-from rednotebook.util import markup
+from rednotebook import configuration, data, info
 from rednotebook.help import example_content
-from rednotebook import info
-from rednotebook import configuration
-from rednotebook import data
+from rednotebook.util import markup, utils
 
 
 args = info.get_commandline_parser().parse_args()
@@ -210,22 +207,18 @@ except ImportError:
     pass
 
 try:
-    from gi.repository import Gtk
-    from gi.repository import Gio
-    from gi.repository import GLib
+    from gi.repository import Gio, GLib, Gtk
 except (ImportError, AssertionError) as e:
     logging.error(e)
     logging.error("GTK not found. Please install it (gir1.2-gtk-3.0).")
     sys.exit(1)
 
 
-from rednotebook.util import dates
-from rednotebook import backup
-
-from rednotebook.util.statistics import Statistics
-from rednotebook.gui.main_window import MainWindow
-from rednotebook import storage
+from rednotebook import backup, storage
 from rednotebook.data import Month
+from rednotebook.gui.main_window import MainWindow
+from rednotebook.util import dates
+from rednotebook.util.statistics import Statistics
 
 
 class Journal(Gtk.Application):
@@ -447,7 +440,17 @@ class Journal(Gtk.Application):
         self.frame.search_box.clear()
         self.frame.day_text_field.clear_buffers()
 
-        self.months = storage.load_all_months_from_disk(data_dir)
+        self.months, corrupted_files = storage.load_all_months_from_disk(data_dir)
+
+        # Show error messages for any corrupted files that were found
+        for original_path, corrupted_path in corrupted_files:
+            msg = _(
+                "Month file {original_path} could not be loaded, so it has been "
+                "renamed to {corrupted_path}. We recommend to close RedNotebook "
+                "and manually copy parts from {corrupted_path} to {original_path} "
+                "using a text editor."
+            ).format(original_path=original_path, corrupted_path=corrupted_path)
+            self.show_message(msg, error=True)
 
         # Nothing to save before first day change
         self.load_day(self.actual_date)

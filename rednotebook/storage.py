@@ -67,45 +67,87 @@ def _load_month_from_disk(path, year_number, month_number):
     """
     Load the month file at path and return a month object
 
-    If an error occurs, return None
+    If an error occurs, return None. If the file is corrupted,
+    rename it to have a '_corrupted' suffix and return (None, corrupted_path).
+    For normal errors, return (None, None).
     """
     try:
         # Try to read the contents of the file.
         with codecs.open(path, "rb", encoding="utf-8") as month_file:
             logging.debug(f'Loading file "{path}"')
             month_contents = yaml.load(month_file, Loader=Loader)
-            return Month(
-                year_number,
-                month_number,
-                month_contents,
-                os.path.getmtime(path),
+            return (
+                Month(
+                    year_number,
+                    month_number,
+                    month_contents,
+                    os.path.getmtime(path),
+                ),
+                None,
             )
     except yaml.YAMLError as exc:
         logging.error(f"Error in file {path}:\n{exc}")
+
+        # Check if this is a corrupted file (contains control characters like null bytes)
+        if "control characters are not allowed" in str(exc) or "#x0000" in str(exc):
+            # Handle corrupted files by renaming them and continuing
+            logging.info(f"Detected corrupted file with control characters: {path}")
+
+            # Create corrupted filename
+            base_path, ext = os.path.splitext(path)
+            corrupted_path = f"{base_path}_corrupted{ext}"
+
+            # Make sure we don't overwrite an existing corrupted file
+            counter = 1
+            while os.path.exists(corrupted_path):
+                corrupted_path = f"{base_path}_corrupted_{counter}{ext}"
+                counter += 1
+
+            try:
+                # Rename the corrupted file
+                shutil.move(path, corrupted_path)
+                logging.info(f"Renamed corrupted file {path} to {corrupted_path}")
+                return None, corrupted_path
+            except Exception as rename_exc:
+                logging.error(f"Failed to rename corrupted file {path}: {rename_exc}")
+                return None, None
+        else:
+            # Regular YAML error, not corruption
+            return None, None
     except OSError:
         # If that fails, there is nothing to load, so just display an error message.
         logging.error(f"Error: The file {path} could not be read")
-    except Exception:
-        logging.error(f"An error occurred while reading {path}:")
-        raise
-    # If we continued here, the possibly corrupted file would be overwritten.
-    sys.exit(1)
+        return None, None
+    except Exception as exc:
+        # Handle other types of corruption that might not be caught by YAMLError
+        logging.error(f"Unexpected error while reading {path}: {exc}")
+        return None, None
 
 
 def load_all_months_from_disk(data_dir):
     """
     Load all months and return a directory mapping year-month values
-    to month objects.
+    to month objects, along with a list of corrupted files that were renamed.
+
+    Returns (months_dict, list_of_corrupted_files)
     """
     months = {}
+    corrupted_files = []
 
     logging.debug(f'Starting to load files in dir "{data_dir}"')
     for path, year_number, month_number in get_journal_files(data_dir):
-        if month := _load_month_from_disk(path, year_number, month_number):
-            months[format_year_and_month(year_number, month_number)] = month
+        result = _load_month_from_disk(path, year_number, month_number)
+        if isinstance(result, tuple):
+            month, corrupted_path = result
+            if month:
+                months[format_year_and_month(year_number, month_number)] = month
+            if corrupted_path:
+                corrupted_files.append((path, corrupted_path))
+        elif result:  # Backward compatibility for old return format
+            months[format_year_and_month(year_number, month_number)] = result
 
     logging.debug(f'Finished loading files in dir "{data_dir}"')
-    return months
+    return months, corrupted_files
 
 
 def _get_dict(month):
@@ -146,7 +188,8 @@ def _save_month_to_disk(month, journal_dir):
         yaml.dump(content, f, Dumper=Dumper, allow_unicode=True)
 
     # Check that month file was written to disk successfully.
-    written_month = _load_month_from_disk(new, month.year_number, month.month_number)
+    result = _load_month_from_disk(new, month.year_number, month.month_number)
+    written_month = result[0] if isinstance(result, tuple) else result
     if _get_dict(written_month) != content:
         try:
             os.remove(new)
