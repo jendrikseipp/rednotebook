@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-24 19:16+0100\n"
-"PO-Revision-Date: 2023-10-04 12:36+0000\n"
-"Last-Translator: Frederic HUCKEL <frederic.huckel@gmail.com>\n"
+"PO-Revision-Date: 2025-04-20 13:59+0000\n"
+"Last-Translator: Damien Dijon <damiendij@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.11.1-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -90,7 +90,7 @@ msgstr "Recherche en cours de saisie"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Auto indent"
-msgstr ""
+msgstr "Auto Indentation"
 
 #: ../rednotebook/gui/options.py:330
 msgid "Check now"

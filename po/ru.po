@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-24 19:16+0100\n"
-"PO-Revision-Date: 2024-01-11 10:06+0000\n"
-"Last-Translator: Umar <umory866b@relay.firefox.com>\n"
+"PO-Revision-Date: 2025-05-12 09:03+0000\n"
+"Last-Translator: Sergey Ponomarev <stokito@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:36+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -33,10 +33,10 @@ msgid ""
 "Latex.\n"
 msgstr ""
 "RedNotebook — это современный дневник для домашнего компьютера.\n"
-"Он позволяет форматировать, присваивать метки и производить поиск\n"
-"по записям. Также можно добавлять изображения, ссылки, создавать\n"
-"настраиваемые шаблоны, выполнять проверку орфографии и экспортировать\n"
-"заметки в виде простого текста, HTML-текста или файла Latex.\n"
+"Он позволяет форматировать, присваивать метки и искать по записям.\n"
+"Также можно добавлять изображения, ссылки, создавать настраиваемые\n"
+"шаблоны, выполнять проверку орфографии и экспортировать заметки\n"
+"в виде простого текста, HTML или файла Latex.\n"
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -85,11 +85,11 @@ msgstr "Проверять наличие новых версий при зап�
 
 #: ../rednotebook/gui/options.py:318
 msgid "Search as you type"
-msgstr "Поиск при наборе"
+msgstr "Поиск по мере набора"
 
 #: ../rednotebook/gui/options.py:320
 msgid "Auto indent"
-msgstr ""
+msgstr "Автоматический отступ"
 
 #: ../rednotebook/gui/options.py:330
 msgid "Check now"
@@ -254,7 +254,7 @@ msgstr "Маркированный список"
 
 #: ../rednotebook/gui/insert_menu.py:173
 msgid "Numbered List"
-msgstr "Нумерованный Cписок"
+msgstr "Нумерованный список"
 
 #: ../rednotebook/gui/insert_menu.py:178
 msgid "Title"
@@ -407,7 +407,7 @@ msgstr "Выход"
 
 #: ../rednotebook/gui/menu.py:152
 msgid "Shutdown RedNotebook. It will not be sent to the tray."
-msgstr "Закрыть RedNotebook. Значок в системном лотке тоже пропадёт"
+msgstr "Закрыть RedNotebook. Значок в системном лотке тоже пропадёт."
 
 #: ../rednotebook/gui/menu.py:155
 msgid "_Edit"
@@ -566,7 +566,7 @@ msgstr "Участники:"
 #: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
-"Launchpad Contributions:\n"
+"Внесли вклад:\n"
 "  Alex B https://launchpad.net/~alexandr-baramykov\n"
 "  Alexey Ivanov https://launchpad.net/~alexey-ivanov\n"
 "  Andrey Novoselov https://launchpad.net/~ksynolog\n"
@@ -669,7 +669,7 @@ msgstr "Отменить выбор"
 
 #: ../rednotebook/gui/exports.py:258
 msgid "When filtering by tags, you have to select at least one tag."
-msgstr "Вы должны выбрать хотя бы одну метку для фильтрации!"
+msgstr "Вы должны выбрать хотя бы одну метку для фильтрации."
 
 #: ../rednotebook/gui/exports.py:281
 msgid "You have selected the following settings:"
@@ -681,7 +681,7 @@ msgstr "Мастер экспортирования"
 
 #: ../rednotebook/gui/exports.py:314
 msgid "Welcome to the Export Assistant."
-msgstr "Добро пожаловать в Мастер экспортирования!"
+msgstr "Добро пожаловать в Мастер экспортирования."
 
 #: ../rednotebook/gui/exports.py:316
 msgid "This wizard will help you to export your journal to various formats."
@@ -725,11 +725,11 @@ msgstr "Экспортировать только выделенный текс�
 
 #: ../rednotebook/gui/exports.py:422
 msgid "Start date"
-msgstr "С…"
+msgstr "Начальная дата"
 
 #: ../rednotebook/gui/exports.py:423
 msgid "End date"
-msgstr "По…"
+msgstr "Конечная дата"
 
 #: ../rednotebook/gui/exports.py:428
 msgid "Include text"
@@ -1030,7 +1030,7 @@ msgstr "Текст не был заменен"
 #: ../rednotebook/backup.py:58
 #, python-format
 msgid "It has been %d days since you made your last backup."
-msgstr "Прошло дней с момента создания последней резервной копии: %d"
+msgstr "Прошло %d дней с момента создания последней резервной копии."
 
 #: ../rednotebook/backup.py:60
 msgid "You can backup your journal to a zip file to avoid data loss."
