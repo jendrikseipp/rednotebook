@@ -25,10 +25,49 @@ import os
 import sys
 
 
+def _fix_webkit_compositing_on_kde():
+    """
+    Fix for black word cloud and preview panes on KDE environments.
+    
+    WebKit2 has compositing issues on KDE that cause HTML content to appear black.
+    Setting WEBKIT_DISABLE_COMPOSITING_MODE=1 works around this issue.
+    
+    See: https://github.com/jendrikseipp/rednotebook/issues/828
+    """
+    # Check if running in KDE environment
+    desktop_session = os.environ.get("DESKTOP_SESSION", "").lower()
+    kde_session = os.environ.get("KDE_SESSION_VERSION", "")
+    xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
+    
+    is_kde = (
+        "kde" in desktop_session or
+        "plasma" in desktop_session or
+        kde_session or
+        "kde" in xdg_desktop or
+        "plasma" in xdg_desktop
+    )
+    
+    if is_kde:
+        # Note: logging is not yet configured at this point, will be logged later
+        os.environ["WEBKIT_DISABLE_COMPOSITING_MODE"] = "1"
+
+
+# Apply WebKit compositing fix before any GUI initialization
+_fix_webkit_compositing_on_kde()
+
 # Use basic stdout logging before we can initialize logging correctly.
 logging.basicConfig(
     level=logging.DEBUG, format="%(levelname)-8s %(message)s", stream=sys.stdout
 )
+
+# Log if WebKit compositing workaround was applied
+if os.environ.get("WEBKIT_DISABLE_COMPOSITING_MODE") == "1":
+    desktop_session = os.environ.get("DESKTOP_SESSION", "")
+    xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
+    kde_session = os.environ.get("KDE_SESSION_VERSION", "")
+    logging.info(f"WebKit compositing workaround applied for KDE environment "
+                f"(DESKTOP_SESSION={desktop_session}, XDG_CURRENT_DESKTOP={xdg_desktop}, "
+                f"KDE_SESSION_VERSION={kde_session})")
 
 try:
     import gi
