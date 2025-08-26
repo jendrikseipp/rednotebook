@@ -1,4 +1,5 @@
 # next (unreleased)
+* Fix black WebKit panes on KDE by setting WEBKIT_DISABLE_COMPOSITING_MODE=1 (#828, @jendrikseipp).
 * Only instantiate Gtk.StatusIcon on Windows to fix Wayland crash (#840, @jendrikseipp).
 
 # 2.39 (2025-03-25)
