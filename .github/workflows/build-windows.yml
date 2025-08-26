@@ -12,7 +12,6 @@ on:
 
 env:
   RUNNER_IMAGE: windows-latest
-  DOWNLOAD_DIR: _download_cache
   PYTHON_VERSION: '3.9'
 
 jobs:
@@ -42,11 +41,6 @@ jobs:
         echo "VERSION=$VERSION" >> $env:GITHUB_ENV
         echo "Version: $VERSION"
 
-    - name: Cache downloads
-      uses: actions/cache@v3
-      with:
-        path: ${{ env.DOWNLOAD_DIR }}
-        key: windows-downloads-${{ runner.os }}
 
     - name: Set up GTK stack
       run: |
@@ -67,8 +61,17 @@ jobs:
 
     - name: Install gettext (msgfmt)
       run: |
-        choco install gettext -y
-        where msgfmt || echo "msgfmt not found in PATH"
+        $downloadRoot = $env:RUNNER_TEMP
+        $zip = Join-Path $downloadRoot "gettext.zip"
+        Write-Host "Downloading gettext bundle to $zip"
+        curl -L -o $zip https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.26-v1.17/gettext0.26-iconv1.17-shared-64.zip
+        $dest = Join-Path $downloadRoot "gettext"
+        if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+        7z x $zip ("-o" + $dest) | Out-Null
+        # msgfmt.exe resides in the extracted bin directory
+        $binDir = Join-Path $dest "bin"
+        $binDir | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        Write-Host "Added gettext bin directory to PATH: $binDir"
 
     - name: Patch GtkSourceView hook
       run: |
