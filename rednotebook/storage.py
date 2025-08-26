@@ -67,7 +67,7 @@ def _load_month_from_disk(path, year_number, month_number):
     """
     Load the month file at path and return a month object
 
-    If an error occurs, return None. If the file is corrupted, 
+    If an error occurs, return None. If the file is corrupted,
     rename it to have a '_corrupted' suffix and return (None, corrupted_path).
     For normal errors, return (None, None).
     """
@@ -76,30 +76,33 @@ def _load_month_from_disk(path, year_number, month_number):
         with codecs.open(path, "rb", encoding="utf-8") as month_file:
             logging.debug(f'Loading file "{path}"')
             month_contents = yaml.load(month_file, Loader=Loader)
-            return Month(
-                year_number,
-                month_number,
-                month_contents,
-                os.path.getmtime(path),
-            ), None
+            return (
+                Month(
+                    year_number,
+                    month_number,
+                    month_contents,
+                    os.path.getmtime(path),
+                ),
+                None,
+            )
     except yaml.YAMLError as exc:
         logging.error(f"Error in file {path}:\n{exc}")
-        
+
         # Check if this is a corrupted file (contains control characters like null bytes)
         if "control characters are not allowed" in str(exc) or "#x0000" in str(exc):
             # Handle corrupted files by renaming them and continuing
             logging.info(f"Detected corrupted file with control characters: {path}")
-            
+
             # Create corrupted filename
             base_path, ext = os.path.splitext(path)
             corrupted_path = f"{base_path}_corrupted{ext}"
-            
+
             # Make sure we don't overwrite an existing corrupted file
             counter = 1
             while os.path.exists(corrupted_path):
                 corrupted_path = f"{base_path}_corrupted_{counter}{ext}"
                 counter += 1
-            
+
             try:
                 # Rename the corrupted file
                 shutil.move(path, corrupted_path)
@@ -125,7 +128,7 @@ def load_all_months_from_disk(data_dir):
     """
     Load all months and return a directory mapping year-month values
     to month objects, along with a list of corrupted files that were renamed.
-    
+
     Returns (months_dict, list_of_corrupted_files)
     """
     months = {}
