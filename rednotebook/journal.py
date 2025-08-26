@@ -447,7 +447,17 @@ class Journal(Gtk.Application):
         self.frame.search_box.clear()
         self.frame.day_text_field.clear_buffers()
 
-        self.months = storage.load_all_months_from_disk(data_dir)
+        self.months, corrupted_files = storage.load_all_months_from_disk(data_dir)
+        
+        # Show error messages for any corrupted files that were found
+        for original_path, corrupted_path in corrupted_files:
+            msg = _(
+                "Month file {original_path} could not be loaded, so it has been "
+                "renamed to {corrupted_path}. We recommend to close RedNotebook "
+                "and manually copy parts from {corrupted_path} to {original_path} "
+                "using a text editor."
+            ).format(original_path=original_path, corrupted_path=corrupted_path)
+            self.show_message(msg, error=True)
 
         # Nothing to save before first day change
         self.load_day(self.actual_date)
