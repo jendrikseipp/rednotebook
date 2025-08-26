@@ -6,13 +6,13 @@ Comment: The following files and folders were removed because
  debian: Remove upstream debian folder
 
 Files: *
-Copyright: Copyright (C) 2008-2022 Jendrik Seipp <jendrikseipp@gmail.com>
+Copyright: Copyright (C) 2008-2025 Jendrik Seipp <jendrikseipp@gmail.com>
 License: GPL-2+
 
 Files: debian/*
 Copyright: Copyright (C) 2008, 2009 Jonathan Wiltshire <debian@jwiltshire.org.uk>
            Copyright (C) 2008-2024 Jendrik Seipp <jendrikseipp@gmail.com>
-           Copyright (C) 2017-2024 Phil Wyett <philip.wyett@kathenas.org>
+           Copyright (C) 2017-2025 Phil Wyett <philip.wyett@kathenas.org>
 License: GPL-2+
 
 Files: data/rednotebook.appdata.xml
@@ -44,10 +44,6 @@ License: LGPL-3+
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  Lesser General Public License for more details.
- .
- You should have received a copy of the GNU Lesser General Public
- License along with this package; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
  .
  On Debian systems, the complete text of the GNU Lesser General
  Public License can be found in `/usr/share/common-licenses/LGPL-3'.
@@ -102,11 +98,6 @@ License: GPL-2+
  PURPOSE.  See the GNU General Public License for more
  details.
  .
- You should have received a copy of the GNU General Public
- License along with this package; if not, write to the Free
- Software Foundation, Inc., 51 Franklin St, Fifth Floor,
- Boston, MA  02110-1301 USA
- .
  On Debian systems, the full text of the GNU General Public
  License version 2 can be found in the file
  `/usr/share/common-licenses/GPL-2'.
@@ -121,10 +112,6 @@ License: GPL-2+
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU Lesser General Public License for more details.
- .
- You should have received a copy of the GNU Lesser General Public License along
- with this program; if not, write to the Free Software Foundation,
- Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  .
  On Debian systems, the complete text of the GNU Lesser General Public
  License version 2.1 can be found in ‘/usr/share/common-licenses/LGPL-2.1’.
