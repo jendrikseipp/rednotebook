@@ -98,7 +98,8 @@ jobs:
       run: |
         cd win
         python sampleapp.py
-        python -m PyInstaller --additional-hooks-dir=. --add-data C:/gtk/bin/libenchant.dll;. --add-data C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/ sampleapp.py
+        # Quote --add-data arguments so PowerShell does not split on semicolons.
+        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" sampleapp.py
         Copy-Item -Recurse C:\gtk\share\enchant dist\sampleapp\share\enchant
         Get-ChildItem dist\sampleapp
         Get-ChildItem dist\sampleapp\lib\enchant
