@@ -19,7 +19,6 @@
 from collections import defaultdict
 import datetime
 import itertools
-import locale
 import logging
 import os
 import sys
@@ -575,7 +574,7 @@ class Journal(Gtk.Application):
     def categories(self):
         return sorted(
             set(itertools.chain.from_iterable(day.categories for day in self.days)),
-            key=locale.strxfrm,
+            key=utils.safe_strxfrm,
         )
 
     def get_entries(self, category):

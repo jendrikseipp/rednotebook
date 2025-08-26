@@ -1,4 +1,5 @@
 # 2.41 (unreleased)
+* Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).
 * Replace AppVeyor CI with GitHub Actions workflow for Windows builds (@jendrikseipp).
 
 # 2.40 (2025-08-26)
