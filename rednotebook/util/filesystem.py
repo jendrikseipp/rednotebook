@@ -53,6 +53,58 @@ logging.info(
 )
 
 
+def _is_nvidia_graphics_detected():
+    """
+    Detect if the system has Nvidia graphics drivers that might be affected
+    by the WebKitGTK DMA-BUF renderer bug.
+
+    Returns True if Nvidia graphics are detected, False otherwise.
+    """
+    # Check multiple indicators of Nvidia graphics
+    nvidia_indicators = [
+        # Check for Nvidia kernel module
+        os.path.exists("/proc/driver/nvidia/version"),
+        # Check for Nvidia device files
+        os.path.exists("/dev/nvidia0"),
+        os.path.exists("/dev/nvidiactl"),
+    ]
+
+    # Check if lspci shows Nvidia graphics (if available)
+    try:
+        result = subprocess.run(["lspci"], capture_output=True, text=True, timeout=5)
+        if result.returncode == 0:
+            nvidia_indicators.append("nvidia" in result.stdout.lower())
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        # lspci not available or timed out, ignore
+        pass
+
+    return any(nvidia_indicators)
+
+
+def _apply_webkit_nvidia_workaround():
+    """
+    Apply workaround for WebKitGTK DMA-BUF renderer bug with Nvidia drivers.
+
+    This sets WEBKIT_DISABLE_DMABUF_RENDERER=1 if Nvidia graphics are detected
+    and the environment variable is not already set.
+    """
+    env_var = "WEBKIT_DISABLE_DMABUF_RENDERER"
+
+    # Only apply if not already set by user
+    if env_var not in os.environ:
+        if _is_nvidia_graphics_detected():
+            os.environ[env_var] = "1"
+            logging.info(
+                "Nvidia graphics detected. Setting WEBKIT_DISABLE_DMABUF_RENDERER=1 "
+                "to work around WebKitGTK rendering issues."
+            )
+
+
+# Apply Nvidia workaround before importing WebKit2
+if not IS_WIN:  # Only apply on Linux/Unix systems
+    _apply_webkit_nvidia_workaround()
+
+
 try:
     gi.require_version("WebKit2", "4.1")
 except ValueError as err:
