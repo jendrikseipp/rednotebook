@@ -18,36 +18,36 @@ env:
 jobs:
   build-windows:
     runs-on: windows-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ env.PYTHON_VERSION }}
         architecture: x64
-        
+
     - name: Show environment info
       run: |
         echo "RUNNER_IMAGE=${{ env.RUNNER_IMAGE }}"
         echo "PATH=$env:PATH"
         python --version
         python -c "import platform; print(platform.architecture())"
-        
+
     - name: Set RedNotebook VERSION variable
       run: |
         $VERSION = python -c "from rednotebook import info; print(info.version)"
         echo "VERSION=$VERSION" >> $env:GITHUB_ENV
         echo "Version: $VERSION"
-        
+
     - name: Cache downloads
       uses: actions/cache@v3
       with:
         path: ${{ env.DOWNLOAD_DIR }}
         key: windows-downloads-${{ runner.os }}
-        
+
     - name: Set up GTK stack
       run: |
         curl -Lo gtk-bundle.zip https://www.dropbox.com/s/lo0p8c96cljcc1c/gtk-bundle.zip?dl=1
@@ -55,7 +55,7 @@ jobs:
         Get-ChildItem C:\gtk
         $env:PATH = "$env:PATH;C:\gtk\bin"
         echo "PATH=$env:PATH" >> $env:GITHUB_ENV
-        
+
     - name: Install Python dependencies
       run: |
         python -m pip install --no-warn-script-location -U pip setuptools tox==3.27.1 wheel
@@ -64,7 +64,7 @@ jobs:
         python -m pip install --no-warn-script-location -r win/requirements.txt
         python -m pip freeze
         python -m pip list --outdated
-        
+
     - name: Patch GtkSourceView hook
       run: |
         $hookFile = "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*/x64\Lib\site-packages\pyinstaller\hooks\hook-gi.repository.GtkSource.py"
@@ -76,21 +76,21 @@ jobs:
           echo "Hook file not found, checking available paths..."
           Get-ChildItem "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*/x64\Lib\site-packages\pyinstaller\hooks\" | Where-Object Name -like "*GtkSource*"
         }
-        
+
     - name: Set Pyenchant debug logging
       run: |
         echo "PYENCHANT_VERBOSE_FIND=foobar" >> $env:GITHUB_ENV
-        
+
     - name: Install dictionaries
       run: |
         curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
         tar -xzf dicts.tar.gz
         Move-Item enchant C:\gtk\share\
-        
+
     - name: Run tests
       run: |
         python -m tox -v -e py
-        
+
     - name: Test sample app
       run: |
         cd win
@@ -106,7 +106,7 @@ jobs:
         $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp"
         .\dist\sampleapp\sampleapp.exe
         cd ..
-        
+
     - name: Create executable
       run: |
         cd win
@@ -116,32 +116,32 @@ jobs:
         tar -czf rednotebook.tar.gz -C C:\ dist
         7z a rednotebook.zip C:\dist
         cd ..
-        
+
     - name: Install Inno Setup
       run: |
         choco install innosetup -y
-        
+
     - name: Build installer
       run: |
         cd win
         & "C:\Program Files (x86)\Inno Setup 6\iscc.exe" /Qp /dREDNOTEBOOK_VERSION="$env:VERSION" rednotebook.iss
         cd ..
-        
+
     - name: Prepare artifacts
       run: |
         Move-Item win\rednotebook.tar.gz rednotebook-$env:VERSION.tar.gz
         Move-Item win\rednotebook.zip rednotebook-$env:VERSION.zip
         Move-Item C:\rednotebook.exe rednotebook-$env:VERSION.exe
-        
+
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: windows-artifacts
         path: |
           rednotebook-*.tar.gz
           rednotebook-*.zip
           rednotebook-*.exe
-          
+
     - name: Deploy to GitHub Releases
       if: github.event_name == 'release'
       uses: softprops/action-gh-release@v1
