@@ -88,6 +88,7 @@ else:
 
 
 def code_to_name(code, separator="_"):
+    # Simple fallback implementation for compatibility
     # Escape underscores for GTK menuitems.
     return code.replace(separator, separator * 2)
 
