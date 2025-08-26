@@ -32,7 +32,7 @@ Needed for installing RedNotebook:
 Install all dependencies:
 
   * Linux/macOS: [run-tests.yml](.github/workflows/run-tests.yml)
-  * Windows: [appveyor.yml](appveyor.yml)
+  * Windows: [build-windows.yml](.github/workflows/build-windows.yml)
 
 Start RedNotebook:
 
