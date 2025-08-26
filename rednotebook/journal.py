@@ -48,28 +48,22 @@ def _fix_webkit_compositing_on_kde():
     )
 
     if is_kde:
-        # Note: logging is not yet configured at this point, will be logged later
+        # Logging is not yet configured at this point, so we use a plain print.
         os.environ["WEBKIT_DISABLE_COMPOSITING_MODE"] = "1"
+        print(
+            f"WebKit compositing disabled for KDE environment "
+            f"(DESKTOP_SESSION={desktop_session}, XDG_CURRENT_DESKTOP={xdg_desktop}, "
+            f"KDE_SESSION_VERSION={kde_session})."
+        )
 
 
-# Apply WebKit compositing fix before any GUI initialization
+# Apply WebKit compositing fix before any GUI initialization.
 _fix_webkit_compositing_on_kde()
 
 # Use basic stdout logging before we can initialize logging correctly.
 logging.basicConfig(
     level=logging.DEBUG, format="%(levelname)-8s %(message)s", stream=sys.stdout
 )
-
-# Log if WebKit compositing workaround was applied
-if os.environ.get("WEBKIT_DISABLE_COMPOSITING_MODE") == "1":
-    desktop_session = os.environ.get("DESKTOP_SESSION", "")
-    xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
-    kde_session = os.environ.get("KDE_SESSION_VERSION", "")
-    logging.info(
-        f"WebKit compositing workaround applied for KDE environment "
-        f"(DESKTOP_SESSION={desktop_session}, XDG_CURRENT_DESKTOP={xdg_desktop}, "
-        f"KDE_SESSION_VERSION={kde_session})"
-    )
 
 try:
     import gi

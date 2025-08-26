@@ -132,9 +132,6 @@ except ImportError as err:
         )
 
 
-
-
-
 def has_system_tray():
     return IS_WIN  # A smarter detection is needed here ;)
 
