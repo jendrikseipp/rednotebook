@@ -65,6 +65,11 @@ jobs:
         python -m pip freeze
         python -m pip list --outdated
 
+    - name: Install gettext (msgfmt)
+      run: |
+        choco install gettext -y
+        where msgfmt || echo "msgfmt not found in PATH"
+
     - name: Patch GtkSourceView hook
       run: |
         $hookFile = "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*/x64\Lib\site-packages\pyinstaller\hooks\hook-gi.repository.GtkSource.py"
