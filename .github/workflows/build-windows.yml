@@ -11,7 +11,7 @@ on:
     types: [published]
 
 env:
-  APPVEYOR_BUILD_WORKER_IMAGE: windows-latest
+  RUNNER_IMAGE: windows-latest
   DOWNLOAD_DIR: _download_cache
   PYTHON_VERSION: '3.9'
 
@@ -31,7 +31,7 @@ jobs:
         
     - name: Show environment info
       run: |
-        echo "APPVEYOR_BUILD_WORKER_IMAGE=${{ env.APPVEYOR_BUILD_WORKER_IMAGE }}"
+        echo "RUNNER_IMAGE=${{ env.RUNNER_IMAGE }}"
         echo "PATH=$env:PATH"
         python --version
         python -c "import platform; print(platform.architecture())"
