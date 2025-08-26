@@ -204,6 +204,7 @@ class StreamDuplicator:
         for stream in self.streams:
             stream.close()
 
+
 def safe_strxfrm(value):
     """
     Safely apply locale-aware sorting. If locale.strxfrm fails, fall back to default sorting.
@@ -211,6 +212,4 @@ def safe_strxfrm(value):
     try:
         return locale.strxfrm(value)
     except OSError:
-        return value
-    except:
         return value
