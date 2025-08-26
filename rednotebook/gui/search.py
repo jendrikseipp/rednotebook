@@ -18,7 +18,7 @@
 
 from xml.sax.saxutils import escape
 
-from gi.repository import GObject, Gtk
+from gi.repository import GLib, GObject, Gtk
 
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.util import dates
@@ -60,6 +60,13 @@ class SearchComboBox(CustomComboBoxEntry):
         self.search(search_text)
 
     def search(self, search_text):
+        # Highlight all occurrences in the current day's text.
+        self.main_window.highlight_text(search_text)
+
+        # Scroll to query.
+        if search_text:
+            GLib.idle_add(self.main_window.day_text_field.scroll_to_text, search_text)
+
         tags = []
         queries = []
         for part in search_text.split():
@@ -67,19 +74,10 @@ class SearchComboBox(CustomComboBoxEntry):
                 tags.append(part.lstrip("#").lower())
             else:
                 queries.append(part)
+        # Preserve original white space if there are no tags.
+        query = " ".join(queries) if tags else search_text
 
-        search_text = " ".join(queries)
-
-        # Highlight all occurrences in the current day's text
-        self.main_window.highlight_text(search_text)
-
-        # Scroll to query.
-        if search_text:
-            GObject.idle_add(
-                self.main_window.day_text_field.scroll_to_text, search_text
-            )
-
-        self.main_window.search_tree_view.update_data(search_text, tags)
+        self.main_window.search_tree_view.update_data(query, tags)
 
         # Without the following, showing the search results sometimes lets the
         # search entry lose focus and search phrases are added to a day's text.

@@ -1,4 +1,26 @@
+# 2.41 (unreleased)
 * Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).
+* Replace AppVeyor CI with GitHub Actions workflow for Windows builds (@jendrikseipp).
+
+# 2.40 (2025-08-26)
+* Fix black WebKit panes on KDE by disabling compositing on this platform (#828, @jendrikseipp).
+* Fix empty WebKit preview with Nvidia drivers by auto-applying DMA-BUF workaround (#820, @jendrikseipp).
+* Only instantiate Gtk.StatusIcon on Windows to fix Wayland crash (#840, @jendrikseipp).
+
+# 2.39 (2025-03-25)
+* Support GIRepository 3.0 (#817, #818, Jendrik Seipp).
+
+# 2.38 (2025-02-23)
+* Fix: include right-pane tags without subentries in search results (#794, @jendrikseipp).
+* Upgrade to txt2tags 3.9 (@jendrikseipp).
+
+# 2.37 (2024-12-18)
+* Improve bidirectional text support in preview mode (#781, @metemaddar).
+
+# 2.36 (2024-11-24)
+* When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
+* When searching for a hashtag, scroll to hashtag and highlight it (@jendrikseipp).
+* Add simple way for showing all entries: allow searching for whitespace (which should be part of all days) (@jendrikseipp).
 
 # 2.35 (2024-09-22)
 * Add option to auto-indent text in editor and activate it by default (#561, #562, Allen Benter, Varunjay Varma).

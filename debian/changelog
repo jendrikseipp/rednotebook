@@ -1,3 +1,43 @@
+rednotebook (2.40-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix black WebKit panes on KDE by disabling compositing on this platform (#828, @jendrikseipp).
+  * Fix empty WebKit preview with Nvidia drivers by auto-applying DMA-BUF workaround (#820, @jendrikseipp).
+  * Only instantiate Gtk.StatusIcon on Windows to fix Wayland crash (#840, @jendrikseipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Tue, 26 Aug 2025 19:55:05 +0200
+
+rednotebook (2.39-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Support GIRepository 3.0 (#817, #818, Jendrik Seipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Tue, 25 Mar 2025 21:10:45 +0100
+
+rednotebook (2.38-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix: include right-pane tags without subentries in search results (#794, @jendrikseipp).
+  * Upgrade to txt2tags 3.9 (@jendrikseipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Sun, 23 Feb 2025 22:11:01 +0100
+
+rednotebook (2.37-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Improve bidirectional text support in preview mode (#781, @metemaddar).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Wed, 18 Dec 2024 21:26:07 +0100
+
+rednotebook (2.36-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * When searching for hashtags, show remainder of line after hashtag in search results (@jendrikseipp).
+  * When searching for a hashtag, scroll to hashtag and highlight it (@jendrikseipp).
+  * Add simple way for showing all entries: allow searching for whitespace (which should be part of all days) (@jendrikseipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Sun, 24 Nov 2024 19:15:29 +0100
+
 rednotebook (2.35-1) UNRELEASED; urgency=low
 
   * New upstream release

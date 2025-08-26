@@ -7,11 +7,12 @@ status.
 
 ## Important features
 
+- [ ] Add to docs how to use a dark theme (see GitHub issue for Flatpak version).
 - [ ] Support Markdown.
 - [ ] Use separate file for storing CSS to allow users to override styles more easily.
 - [ ] Make default CSS prettier.
 - [ ] Allow searching for days that contain *multiple* words or tags.
-- [ ] Add simple way to show all entries: allow searching for whitespace (i.e., don't strip whitespace from search string).
+- [X] Add simple way to show all entries: allow searching for whitespace (i.e., don't strip whitespace from search string).
 - [ ] Copy files and pictures into data subdirectory (#163, #469).
 - [ ] Require minimum width for calendar panel to avoid hiding it by accident.
 
@@ -25,11 +26,9 @@ status.
 
 ### Remove right-side tags panel (disabled by default)
 
-- [ ] When searching for a hashtag (see #498):
-  - if hashtag is the only text on the line: show text around hashtag.
-  - otherwise, show all content on the line except for the hashtag.
-- [ ] When searching for a hashtag, scroll to hashtag and highlight it.
-- [ ] Optional: enable right-side tags panel by default, if journal has right-side tags.
+- [X] When searching for a hashtag (see #498): if hashtag starts the line: show text after hashtag.
+- [X] When searching for a hashtag, scroll to hashtag and highlight it.
+- [-] Optional: enable right-side tags panel by default, if journal has right-side tags.
 - [ ] Transform existing right-side tags foo:bar to "#foo bar" when loading a journal.
 - [ ] Remove code for right-side tags panel.
 

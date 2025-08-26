@@ -67,26 +67,19 @@ def test_absolute_path_conversion(tmp_path):
         assert path == _convert_paths(path, tmp_path)
 
 
-class TestGetXHtmlExportConfig:
+class TestGetHtmlExportConfig:
     @staticmethod
     @pytest.fixture
     def process(tmp_path):
         def process(markup):
-            html_document = convert(markup, "xhtml", tmp_path)
+            html_document = convert(markup, "html", tmp_path)
             return html_document.split("\n")
 
         return process
 
     def test_encoding(self, process):
         document = process("Content")
-        assert '      encoding="UTF-8"' in document
-
-    def test_firefox_encoding_bug(self, process):
-        document = process("Content")
-        assert (
-            '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
-            in document
-        )
+        assert '<meta charset="utf-8">' in document
 
     def test_toc(self, process):
         document = process("Content")
@@ -94,7 +87,7 @@ class TestGetXHtmlExportConfig:
 
     def test_css_sugar(self, process):
         document = process("Content")
-        assert '<div class="body" id="body">' in document
+        assert '<div class="body">' in document
 
     @pytest.mark.parametrize(
         "markup,expected",
@@ -139,31 +132,31 @@ class TestGetXHtmlExportConfig:
         [
             (
                 '[""/image"".png?50]',
-                '<img align="middle" width="50" src="/image.png" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.png" alt="">',
             ),
             (
                 '[""/image"".jpg?50]',
-                '<img align="middle" width="50" src="/image.jpg" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.jpg" alt="">',
             ),
             (
                 '[""/image"".jpeg?50]',
-                '<img align="middle" width="50" src="/image.jpeg" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.jpeg" alt="">',
             ),
             (
                 '[""/image"".gif?50]',
-                '<img align="middle" width="50" src="/image.gif" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.gif" alt="">',
             ),
             (
                 '[""/image"".eps?50]',
-                '<img align="middle" width="50" src="/image.eps" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.eps" alt="">',
             ),
             (
                 '[""/image"".bmp?50]',
-                '<img align="middle" width="50" src="/image.bmp" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.bmp" alt="">',
             ),
             (
                 '[""/image"".svg?50]',
-                '<img align="middle" width="50" src="/image.svg" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.svg" alt="">',
             ),
         ],
     )
@@ -176,19 +169,19 @@ class TestGetXHtmlExportConfig:
         [
             (
                 '[""/image"".png?50]',
-                '<img align="middle" width="50" src="/image.png" border="0" alt=""/>',
+                '<img class="center" width="50" src="/image.png" alt="">',
             ),
             (
                 '[""/image"".jpg]',
-                '<img align="middle" src="/image.jpg" border="0" alt=""/>',
+                '<img class="center" src="/image.jpg" alt="">',
             ),
             (
                 '[""file:///image"".png?10]',
-                '<img align="middle" width="10" src="file:///image.png" border="0" alt=""/>',
+                '<img class="center" width="10" src="file:///image.png" alt="">',
             ),
             (
                 '[""file:///image"".jpg]',
-                '<img align="middle" ' 'src="file:///image.jpg" border="0" ' 'alt=""/>',
+                '<img class="center" src="file:///image.jpg" alt="">',
             ),
         ],
     )
@@ -218,7 +211,7 @@ class TestGetXHtmlExportConfig:
         date = datetime.date(2019, 10, 21)
         day = Day(Month(date.year, date.month), date.day)
 
-        markup = get_markup_for_day(day, "xhtml", date=date.strftime("%d-%m-%Y"))
+        markup = get_markup_for_day(day, "html", date=date.strftime("%d-%m-%Y"))
         document = process(markup)
 
         assert rf'<span id="{date:%Y-%m-%d}"></span>' in document

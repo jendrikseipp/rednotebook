@@ -21,7 +21,7 @@ import locale
 import logging
 import re
 
-from gi.repository import GObject, Gtk
+from gi.repository import GLib, Gtk
 
 from rednotebook import data
 from rednotebook.gui import browser
@@ -105,7 +105,7 @@ class Cloud(browser.HtmlView):
         if not force_update:
             return
 
-        GObject.idle_add(self._update)
+        GLib.idle_add(self._update)
 
     def get_categories_counter(self):
         counter = defaultdict(int)

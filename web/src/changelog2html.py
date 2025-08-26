@@ -60,6 +60,7 @@ with open(CHANGELOG) as f:
             html.append(template_start % locals())
             releases += 1
             if releases == 1:
+                print("Newest release in changelog:", version)
                 with open(VERSIONFILE, "w") as f:
                     f.write(version)
         elif line:

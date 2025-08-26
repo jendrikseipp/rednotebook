@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2024-07-20 20:09+0000\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
+"PO-Revision-Date: 2024-11-25 20:00+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/ga/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
 "n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 "X-Launchpad-Export-Date: 2016-08-13 05:35+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -88,59 +88,63 @@ msgstr "Seiceáil faoi leagan nua ar thosú"
 msgid "Search as you type"
 msgstr "Cuardaigh mar a chlóscríobhann tú"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr "Fleasc uathoibríoch"
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "Seiceáil anois"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "Cuir cló in eagar:"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "Réamhamharc ar chló:"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "Ainmneacha chló camóghdheighilte"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "Formáid Dáta/Am"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr "Úsáidte ag an gcnaipe Dáta/Am agus ag macra teimpléad $date$."
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "Formáid an dáta"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
 msgstr "Úsáidtear é le haghaidh dátaí sa bharra teidil agus easpórtálacha."
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "Clibeanna sa scamall"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "Uaslíon na gclibeanna ar taispeáint sa scamall"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "Ná cuir san áireamh sa néalríomhaireacht"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "Ná taispeáin na focail scartha camóg seo agus #clibeanna sna scamaill"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "Cuir na focail bheaga seo san áireamh sa néalríomhaireacht"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "Ceadaigh na focail seo le 4 litir nó níos lú"
 
@@ -194,11 +198,11 @@ msgstr "Taispeáin RedNoteBook"
 msgid "No directory selected."
 msgstr "Níor roghnaíodh aon chomhadlann."
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "Teimpléad"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -313,15 +317,15 @@ msgstr "Ní foláir don leithead a bheith ina shlánuimhir."
 msgid "No link location has been entered"
 msgstr "Níor cuireadh aon suíomh naisc isteach"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "Ionadaigh"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "Dáta"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "Téacs"
 
@@ -549,16 +553,16 @@ msgstr "Roghnaigh fillteán folamh mar shuíomh nua dod' dhialann"
 msgid "The directory name will be the new title of the journal"
 msgstr "Beidh ainm na comhadlainne mar theideal nua ar an dialann"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "Doiciméadúchán RedNotebook"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "Rannpháirtithe:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr "creidiúintí aistritheora"
 
@@ -570,17 +574,17 @@ msgstr "scagaire, iad seo, camóg, scartha, focail, agus, #tags"
 msgid "mtv, spam, work, job, play"
 msgstr "mtv, turscar, obair, beart oibre, imirt"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Clibeanna"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "Focail"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Cuir \"%s\" i dtaisce ó néalríomhaireacht"

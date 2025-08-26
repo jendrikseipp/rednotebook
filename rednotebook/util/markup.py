@@ -41,8 +41,6 @@ REGEX_NAMED_LINK = re.compile(r'(\[)(.*?)(\s"")(\S.*?\S)(""\])', flags=re.I)
 ESCAPE_COLOR = r"XBEGINCOLORX\1XSEPARATORX\2XENDCOLORX"
 COLOR_ESCAPED = r"XBEGINCOLORX(.*?)XSEPARATORX(.*?)XENDCOLORX"
 
-CHARSET_UTF8 = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
-
 CSS = """\
 <style type="text/css">
     :root {
@@ -137,7 +135,7 @@ def get_markup_for_day(
 
     # Add date if it is not None and not the empty string
     if date:
-        if target in ["xhtml", "html"]:
+        if target == "html":
             # Following anchor will be used as a target for every entry reference mentioning
             # this entry's date.
             export_string += f"''<span id=\"{day.date:%Y-%m-%d}\"></span>''\n"
@@ -206,19 +204,19 @@ def _get_config(target, options):
     # Escape color markup.
     config["preproc"].append([r"\{(.*?)\|color:(.+?)\}", ESCAPE_COLOR])
 
-    if target in ["xhtml", "html"]:
+    if target == "html":
         config["encoding"] = "UTF-8"  # document encoding
         config["toc"] = 0
         config["css-sugar"] = 1
-
-        # Fix encoding for export opened in firefox
-        config["postproc"].append([r"<head>", f"<head>{CHARSET_UTF8}"])
 
         # Line breaks
         config["postproc"].append([r"LINEBREAK", "<br />"])
 
         # Apply image resizing
         config["postproc"].append([r"src=\"WIDTH(\d+)-", r'width="\1" src="'])
+
+        # Flow paragraph from right to left or left to right depending on the language.
+        config["postproc"].append(["<p>", '<p dir="auto">'])
 
         # {{red text|color:red}} -> <span style="color:red">red text</span>
         config["postproc"].append([COLOR_ESCAPED, r'<span style="color:\2">\1</span>'])
@@ -304,7 +302,7 @@ def _get_config(target, options):
         config["postproc"].append([r"\[WIDTH(\d+)-(.+)\]", r"[\2?\1]"])
 
     # Entry references
-    if target in ["xhtml", "html"]:
+    if target == "html":
         # txt2tags will generate links to the named entry references because they share common bracket
         # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
         config["preproc"].append(
@@ -321,7 +319,7 @@ def _get_config(target, options):
             [r"\[(?P<date>\d{4}-\d{2}-\d{2})\]", r"[\g<date> #\g<date>]"]
         )
     else:
-        # Links to entry references are not supported for targets other than (X)HTML
+        # Links to entry references are not supported for targets other than HTML
         config["preproc"].append(
             [r"\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\]", r"\g<name> (\g<date>)"]
         )
@@ -428,8 +426,8 @@ def convert(txt, target, data_dir, headers=None, options=None):
             "<b>Error</b>: This day contains invalid "
             '<a href="http://txt2tags.org/markup.html">txt2tags markup</a>. '
             "You can help us fix this by submitting a bugreport in the "
-            '<a href="https://code.google.com/p/txt2tags/issues/list">'
+            '<a href="https://github.com/txt2tags/txt2tags/issues/">'
             "txt2tags bugtracker</a>. Please append the day's text to the issue."
         )
-        logging.error("Invalid markup:\n%s" % txt2tags.getUnknownErrorMessage())
+        logging.error(f"Invalid markup:\n{txt2tags.getUnknownErrorMessage()}")
     return result

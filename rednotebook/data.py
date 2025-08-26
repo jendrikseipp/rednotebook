@@ -100,6 +100,26 @@ def get_text_with_dots(text, start, end, found_text=None):
     return res
 
 
+def get_search_results_for_tags(text, tags):
+    results = []
+    add_text_to_results = False
+    for line in text.splitlines():
+        line = line.strip()
+        if any(f"#{tag}" == line.lower() for tag in tags):
+            add_text_to_results = True
+        elif any(f"#{tag}" in line.lower() for tag in tags):
+            for tag in tags:
+                # TODO: combine into one regex and really ignore case.
+                line = re.sub(rf"^#{tag}: ", "", line, re.IGNORECASE)
+                line = re.sub(rf"^#{tag}:", "", line, re.IGNORECASE)
+                line = re.sub(rf"^#{tag}", "", line, re.IGNORECASE)
+            line = line.strip()
+            results.append(line[:TEXT_RESULT_LENGTH])
+    if add_text_to_results:
+        results.append(get_text_with_dots(text, 0, TEXT_RESULT_LENGTH))
+    return results
+
+
 class Day:
     def __init__(self, month, day_number, day_content=None):
         day_content = day_content or {"text": ""}
@@ -221,12 +241,16 @@ class Day:
                     # day_tags nonetheless, to escape the day_tags.
                     if escape_tag(day_tag) != tag:
                         continue
+
                     if entries:
                         results.extend(entries)
                     else:
                         add_text_to_results = True
             if add_text_to_results:
-                results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
+                results.extend(get_search_results_for_tags(self.text, tags))
+                # Handle right-pane tags without subentries.
+                if not results:
+                    results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))
         elif text in str(self):
             # Date contains searched text.
             results.append(get_text_with_dots(self.text, 0, TEXT_RESULT_LENGTH))

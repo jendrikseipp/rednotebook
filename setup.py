@@ -90,7 +90,11 @@ parameters = {
     "license": "GPL",
     "keywords": "journal, diary",
     "cmdclass": {"build_py": build_py, "install": install},
-    "scripts": ["rednotebook/rednotebook"],
+    "entry_points": {
+        "gui_scripts": [
+            "rednotebook = rednotebook.journal:main",
+        ],
+    },
     "packages": [
         "rednotebook",
         "rednotebook.external",
@@ -117,6 +121,7 @@ parameters = {
         ("share/metainfo", ["data/rednotebook.appdata.xml"]),
     ],
 }
+
 
 if __name__ == "__main__":
     # Additionally use MANIFEST.in for image files

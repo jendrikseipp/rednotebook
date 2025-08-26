@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
 "PO-Revision-Date: 2023-11-01 09:04+0000\n"
 "Last-Translator: Timothy Abwao <abwaomusungu@gmail.com>\n"
 "Language-Team: Swahili <https://hosted.weblate.org/projects/rednotebook/"
@@ -84,63 +84,67 @@ msgstr "Chunguza ikiwa kuna toleo jipya tarakilishi iwakapo"
 msgid "Search as you type"
 msgstr "Tafuta ungali uandikapo"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr ""
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "Chunguza sasa"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "Badili fonti:"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "Fonti ya kusoma:"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "Majina ya fonti yaliyounganishwa kwa alama ya kipumuo"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "Muundo wa Tarehe/Wakati"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
 msgstr "Hutumika na kitufe cha Tarehe/Wakati na kiolezo cha $date$."
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "Muundo wa tarehe"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
 msgstr ""
 "Hutumika katika tarehe kwenye kichwa cha ukurasa na unapohifadhi kwenye "
 "faili za nje."
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "Lebo kwenye wingu"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "Upeo wa idadi ya lebo zionyeshwazo kwenye wingu"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "Ondoa kutoka kwenye wingu"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr ""
 "Usihusishe maneno haya yaliyoungwa kwa alama ya kituo, na #lebo hizi katika "
 "wingu"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "Husisha maneno mafupi katika wingu"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "Husisha maneno haya yenye herufi zisizozidi nne"
 
@@ -194,11 +198,11 @@ msgstr "Onyesha RedNotebook"
 msgid "No directory selected."
 msgstr "Hujachagua pahali pa kuhifadhi."
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "Kiolezo"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -312,15 +316,15 @@ msgstr "Upana lazimu uwe nambari kamili."
 msgid "No link location has been entered"
 msgstr "Kiungo hakijakamilika"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "Badilisha"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "Tarehe"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "Maandishi"
 
@@ -547,16 +551,16 @@ msgstr "Chagua pahali papya pa kuhifadhi jarida lako"
 msgid "The directory name will be the new title of the journal"
 msgstr "Jina la pahali hapa litatumika kama jina la jarida"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "Maelezo ya RedNotebook"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "Wachangiaji:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr "Tim Abwao"
 
@@ -569,17 +573,17 @@ msgstr ""
 msgid "mtv, spam, work, job, play"
 msgstr "mchezo, kazi, porojo, taarifa"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Lebo"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "Maneno"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Ficha \"%s\" katika wingu"
@@ -610,7 +614,8 @@ msgstr "Pakua maandishi yaliyochaguliwa katika faili"
 
 #: ../rednotebook/gui/exports.py:120
 msgid "(Only available when text is selected in edit mode)"
-msgstr "(Inawezekana iwapo tu maandishi yamechaguliwa katika mfumo wa kuhariri)"
+msgstr ""
+"(Inawezekana iwapo tu maandishi yamechaguliwa katika mfumo wa kuhariri)"
 
 #: ../rednotebook/gui/exports.py:134
 msgid "Export text and tags"
@@ -866,8 +871,8 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
-"Leo nilienda //sokoni// kununua **matunda**. Kisha nikaenda kwenye "
-"--bustani-- ya umma kutazama mandhari. Hatimaye nikarudi kwangu na kutazama "
+"Leo nilienda //sokoni// kununua **matunda**. Kisha nikaenda kwenye --"
+"bustani-- ya umma kutazama mandhari. Hatimaye nikarudi kwangu na kutazama "
 "\"__Taarifa ya habari__\"."
 
 #: ../rednotebook/help.py:64
@@ -880,7 +885,8 @@ msgstr "RedNotebook inaweza kutumia violezo."
 
 #: ../rednotebook/help.py:66
 msgid "Click on the arrow next to the \"Template\" button to see some options."
-msgstr "Bofya mshale kando ya kitufe cha \"Violezo\" kuona baadhi ya vichaguzi."
+msgstr ""
+"Bofya mshale kando ya kitufe cha \"Violezo\" kuona baadhi ya vichaguzi."
 
 #: ../rednotebook/help.py:68
 msgid ""
@@ -1121,8 +1127,8 @@ msgstr ""
 "**Mwendo:**\n"
 "Kwanza tulielekea xxxxx kisha tukaenda yyyyy ...\n"
 "\n"
-"**Picha:** [Pahali penye picha zimehifadhiwa \"\"/kiungo/cha/penye/picha/\"\""
-"]\n"
+"**Picha:** [Pahali penye picha zimehifadhiwa \"\"/kiungo/cha/penye/picha/"
+"\"\"]\n"
 
 #: ../rednotebook/templates.py:156
 msgid ""

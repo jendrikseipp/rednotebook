@@ -23,7 +23,7 @@ import os
 from unittest import mock
 import urllib.parse
 
-from gi.repository import Gdk, GdkPixbuf, GObject, Gtk, GtkSource, Pango
+from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk, GtkSource, Pango
 
 from rednotebook.gui.options import OptionsManager
 from rednotebook import info, templates
@@ -142,7 +142,7 @@ class MainWindow:
 
                 def show_day(self, new_day):
                     html = self.journal.convert(
-                        new_day.text, "xhtml", use_gtk_theme=True
+                        new_day.text, "html", use_gtk_theme=True
                     )
                     self.load_html(html)
 
@@ -165,7 +165,7 @@ class MainWindow:
 
                 def show_day(self, new_day):
                     html = self.journal.convert(
-                        new_day.text, "xhtml", use_gtk_theme=True
+                        new_day.text, "html", use_gtk_theme=True
                     )
                     self.load_html(html)
 
@@ -286,18 +286,26 @@ class MainWindow:
     # TRAY-ICON / CLOSE --------------------------------------------------------
 
     def setup_tray_icon(self):
-        self.tray_icon = Gtk.StatusIcon()
-        self.tray_icon.set_name("RedNotebook")
-        visible = self.journal.config.read("closeToTray") == 1
-        self.tray_icon.set_visible(visible)
-        logging.debug(f"Tray icon visible: {visible}")
+        # Only create a tray icon on Windows. Most modern Linux distributions
+        # do not offer a system tray anymore and Gtk.StatusIcon is deprecated
+        # on other platforms. The corresponding option is still available via
+        # the configuration file but we avoid creating the icon.
+        if filesystem.IS_WIN:
+            self.tray_icon = Gtk.StatusIcon()
+            self.tray_icon.set_name("RedNotebook")
+            visible = self.journal.config.read("closeToTray") == 1
+            self.tray_icon.set_visible(visible)
+            logging.debug(f"Tray icon visible: {visible}")
 
-        self.tray_icon.set_tooltip_text("RedNotebook")
-        icon_file = os.path.join(self.journal.dirs.frame_icon_dir, "rn-32.png")
-        self.tray_icon.set_from_file(icon_file)
+            self.tray_icon.set_tooltip_text("RedNotebook")
+            icon_file = os.path.join(self.journal.dirs.frame_icon_dir, "rn-32.png")
+            self.tray_icon.set_from_file(icon_file)
 
-        self.tray_icon.connect("activate", self.on_tray_icon_activated)
-        self.tray_icon.connect("popup-menu", self.on_tray_popup_menu)
+            self.tray_icon.connect("activate", self.on_tray_icon_activated)
+            self.tray_icon.connect("popup-menu", self.on_tray_popup_menu)
+        else:
+            # Provide a dummy attribute so attribute checks succeed.
+            self.tray_icon = None
 
     def on_tray_icon_activated(self, tray_icon):
         if self.main_frame.get_property("visible"):
@@ -362,7 +370,8 @@ class MainWindow:
         """
         logging.debug("Main frame destroyed")
 
-        if self.journal.config.read("closeToTray"):
+        # Only hide to tray if we actually have a tray icon (Windows).
+        if self.journal.config.read("closeToTray") and self.tray_icon:
             self.hide()
         else:
             self.html_editor.shutdown()
@@ -446,7 +455,7 @@ class MainWindow:
         self.change_mode(preview=False)
         # Select (not only highlight) previously selected text by giving focus
         # to the day editor.
-        GObject.idle_add(self.day_text_field.day_text_view.grab_focus)
+        GLib.idle_add(self.day_text_field.day_text_view.grab_focus)
 
     def on_preview_button_clicked(self, button):
         self.journal.save_old_day()
@@ -456,10 +465,10 @@ class MainWindow:
         else:
             date_format = self.journal.config.read("exportDateFormat")
             date_string = dates.format_date(date_format, self.day.date)
-            markup_string = markup.get_markup_for_day(self.day, "xhtml")
+            markup_string = markup.get_markup_for_day(self.day, "html")
             html = self.journal.convert(
                 markup_string,
-                "xhtml",
+                "html",
                 headers=[f"{date_string} - RedNotebook", "", ""],
                 options={"toc": 0},
             )
@@ -835,8 +844,8 @@ class DayEditor(editor.Editor):
 
         if self.search_text:
             # If a search is currently made, scroll to the text and return.
-            GObject.idle_add(self.scroll_to_text, self.search_text)
-            GObject.idle_add(self.highlight, self.search_text)
+            GLib.idle_add(self.scroll_to_text, self.search_text)
+            GLib.idle_add(self.highlight, self.search_text)
             return
 
     def show_template(self, title, text):

@@ -2,14 +2,13 @@ Source: rednotebook
 Maintainer: Jendrik Seipp <jendrikseipp@gmail.com>
 Section: text
 Priority: optional
-Standards-Version: 4.7.0
-Rules-Requires-Root: no
+Standards-Version: 4.7.2
 Homepage: https://rednotebook.app
 Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
 Build-Depends: debhelper-compat (= 13),
                gettext,
-               python3,
+               python3-all,
                python3-setuptools,
                dh-python
 

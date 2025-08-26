@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rednotebook\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 08:57+0200\n"
-"PO-Revision-Date: 2023-10-19 04:12+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"POT-Creation-Date: 2024-11-24 19:16+0100\n"
+"PO-Revision-Date: 2025-02-04 14:02+0000\n"
+"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/rednotebook/"
 "desktop-app/fi/>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Launchpad-Export-Date: 2019-11-08 05:48+0000\n"
 
 #: ../rednotebook/info.py:30
@@ -31,6 +31,12 @@ msgid ""
 "templates, spell check your notes, and export to plain text, HTML or\n"
 "Latex.\n"
 msgstr ""
+"RedNotebook on moderni työpöytäpäiväkirja. Sen avulla voit muotoilla,\n"
+"merkitä ja etsiä merkintöjäsi. Voit myös lisätä kuvia, linkkejä ja "
+"muokattavia\n"
+"malleja, tarkistaa muistiinpanosi oikeinkirjoituksen ja viedä tekstiksi, "
+"HTML-\n"
+"tai Latex-muotoon.\n"
 
 #: ../rednotebook/gui/options.py:81
 msgid "Load RedNotebook at startup"
@@ -80,59 +86,63 @@ msgstr "Tarkista käynnistäessä uudemman version saatavuus"
 msgid "Search as you type"
 msgstr "Etsi kirjoittaessa"
 
-#: ../rednotebook/gui/options.py:328
+#: ../rednotebook/gui/options.py:320
+msgid "Auto indent"
+msgstr "Autom. sisennys"
+
+#: ../rednotebook/gui/options.py:330
 msgid "Check now"
 msgstr "Tarkista nyt"
 
-#: ../rednotebook/gui/options.py:335
+#: ../rednotebook/gui/options.py:337
 msgid "Edit font:"
 msgstr "Muokkauskirjasin:"
 
-#: ../rednotebook/gui/options.py:337
+#: ../rednotebook/gui/options.py:339
 msgid "Preview font:"
 msgstr "Esikatselukirjasin:"
 
-#: ../rednotebook/gui/options.py:340
+#: ../rednotebook/gui/options.py:342
 msgid "Comma-separated font names"
 msgstr "Pilkuin erotetut kirjasinten nimet"
 
-#: ../rednotebook/gui/options.py:343
+#: ../rednotebook/gui/options.py:345
 msgid "Date/Time format"
 msgstr "Päiväyksen/ajan muoto"
 
-#: ../rednotebook/gui/options.py:345
+#: ../rednotebook/gui/options.py:347
 msgid "Used by Date/Time button and $date$ template macro."
-msgstr ""
+msgstr "Päivämäärä/aika-painikkeen ja $date$ mallimakron käyttämä."
 
-#: ../rednotebook/gui/options.py:348
+#: ../rednotebook/gui/options.py:350
 msgid "Date format"
 msgstr "Päiväyksen muoto"
 
-#: ../rednotebook/gui/options.py:350
+#: ../rednotebook/gui/options.py:352
 msgid "Used for dates in titlebar and exports."
-msgstr ""
+msgstr "Käytetään päivämääriin otsikkorivillä ja viennissä."
 
-#: ../rednotebook/gui/options.py:353
+#: ../rednotebook/gui/options.py:355
 msgid "Tags in cloud"
 msgstr "Tunnisteet pilvessä"
 
-#: ../rednotebook/gui/options.py:355
+#: ../rednotebook/gui/options.py:357
 msgid "Maximum number of tags displayed in the cloud"
 msgstr "Pilvessä näytettävien tunnisteiden enimmäismäärä"
 
-#: ../rednotebook/gui/options.py:358
+#: ../rednotebook/gui/options.py:360
 msgid "Exclude from cloud"
 msgstr "Ohita pilvessä"
 
-#: ../rednotebook/gui/options.py:361
+#: ../rednotebook/gui/options.py:363
 msgid "Do not show these comma separated words and #tags in the clouds"
 msgstr "Älä näytä seuraavia pilkuin erotettuja sanoja ja #tunnisteita pilvessä"
 
-#: ../rednotebook/gui/options.py:365
+#: ../rednotebook/gui/options.py:367
 msgid "Include small words in cloud"
 msgstr "Sisällytä pienet sanat pilveen"
 
-#: ../rednotebook/gui/options.py:367
+#: ../rednotebook/gui/options.py:369
 msgid "Allow these words with 4 letters or less"
 msgstr "Salli nämä neljä tai vähemmän merkkejä sisältävät sanat"
 
@@ -186,11 +196,11 @@ msgstr "Näytä RedNotebook"
 msgid "No directory selected."
 msgstr "Kansiota ei ole valittu."
 
-#: ../rednotebook/gui/main_window.py:684
+#: ../rednotebook/gui/main_window.py:690
 msgid "Template"
 msgstr "Mallipohja"
 
-#: ../rednotebook/gui/main_window.py:688
+#: ../rednotebook/gui/main_window.py:694
 msgid ""
 "Insert this weekday's template. Click the arrow on the right for more options"
 msgstr ""
@@ -305,15 +315,15 @@ msgstr "Leveyden tulee olla kokonaisuluku."
 msgid "No link location has been entered"
 msgstr "Linkin sijaintia ei ole annettu"
 
-#: ../rednotebook/gui/search.py:102
+#: ../rednotebook/gui/search.py:100
 msgid "Replace"
 msgstr "Korvaa"
 
-#: ../rednotebook/gui/search.py:125 ../rednotebook/gui/exports.py:416
+#: ../rednotebook/gui/search.py:123 ../rednotebook/gui/exports.py:416
 msgid "Date"
 msgstr "Päiväys"
 
-#: ../rednotebook/gui/search.py:125
+#: ../rednotebook/gui/search.py:123
 msgid "Text"
 msgstr "Teksti"
 
@@ -343,7 +353,7 @@ msgstr "Uusi"
 
 #: ../rednotebook/gui/menu.py:99
 msgid "Create a new journal. The old one will be saved"
-msgstr "Luo uusi päiväkirja. Vanha tallennetaan."
+msgstr "Luo uusi päiväkirja. Vanha tallennetaan"
 
 #: ../rednotebook/gui/menu.py:105 tmp/main_window.glade.h:9
 msgid "Open"
@@ -351,7 +361,7 @@ msgstr "Avaa"
 
 #: ../rednotebook/gui/menu.py:107
 msgid "Load an existing journal. The old journal will be saved"
-msgstr "Lataa olemassa oleva päiväkirja. Vanha päiväkirja tallennetaan."
+msgstr "Lataa olemassa oleva päiväkirja. Vanha päiväkirja tallennetaan"
 
 #: ../rednotebook/gui/menu.py:114
 msgid "Save As"
@@ -362,7 +372,7 @@ msgid ""
 "Save journal at a new location. The old journal files will also be saved"
 msgstr ""
 "Tallenna päiväkirja uuteen sijaintiin. Myös vanhat päiväkirjatiedostot "
-"tallennetaan."
+"tallennetaan"
 
 #: ../rednotebook/gui/menu.py:125
 msgid "Export"
@@ -540,16 +550,16 @@ msgstr "Valitse tyhjä kansio päiväkirjasi uudeksi sijainniksi"
 msgid "The directory name will be the new title of the journal"
 msgstr "Kansion nimi tulee olemaan päiväkirjan uusi nimi"
 
-#: ../rednotebook/gui/menu.py:415
+#: ../rednotebook/gui/menu.py:423
 msgid "RedNotebook Documentation"
 msgstr "RedNotebook-dokumentaatio"
 
-#: ../rednotebook/gui/menu.py:443
+#: ../rednotebook/gui/menu.py:451
 msgid "Contributors:"
 msgstr "Avustajat:"
 
 #. Translators: TRANSLATORS: Replace this string with your names, one name per line.
-#: ../rednotebook/gui/menu.py:444 tmp/main_window.glade.h:2
+#: ../rednotebook/gui/menu.py:452 tmp/main_window.glade.h:2
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -564,23 +574,23 @@ msgstr ""
 
 #: ../rednotebook/gui/clouds.py:74
 msgid "filter, these, comma, separated, words, and, #tags"
-msgstr ""
+msgstr "suodata, nämä, pilkuilla, erotetut, sanat, ja, #tunnisteet"
 
 #: ../rednotebook/gui/clouds.py:79
 msgid "mtv, spam, work, job, play"
-msgstr "mtv, roskaposti, työ, työ, peli"
+msgstr "mtv, roskaposti, työ, ammatti, peli"
 
-#: ../rednotebook/gui/clouds.py:209 ../rednotebook/gui/categories.py:48
+#: ../rednotebook/gui/clouds.py:213 ../rednotebook/gui/categories.py:48
 #: ../rednotebook/util/markup.py:121 ../rednotebook/help.py:33
 msgid "Tags"
 msgstr "Tunnisteet"
 
-#: ../rednotebook/gui/clouds.py:211 ../rednotebook/util/statistics.py:62
+#: ../rednotebook/gui/clouds.py:215 ../rednotebook/util/statistics.py:62
 #: ../rednotebook/util/statistics.py:75
 msgid "Words"
 msgstr "Sanoja"
 
-#: ../rednotebook/gui/clouds.py:247
+#: ../rednotebook/gui/clouds.py:251
 #, python-format
 msgid "Hide \"%s\" from clouds"
 msgstr "Piilota \"%s\" pilvistä"
@@ -765,7 +775,7 @@ msgstr "Virheellinen päiväyksen muoto"
 #: ../rednotebook/util/utils.py:116
 #, python-format
 msgid "You have version <b>%s</b>."
-msgstr "Käytössäsi on versio <b<%s</b>."
+msgstr "Käytössäsi on versio <b>%s</b>."
 
 #: ../rednotebook/util/utils.py:118
 #, python-format
@@ -868,8 +878,8 @@ msgid ""
 "--pool-- park and had a nice time playing ultimate frisbee. Afterwards we "
 "watched \"__Life of Brian__\"."
 msgstr ""
-"Tänään menin //eläinkauppaan// ja ostin **tiikerin**. Sitten menimme --"
-"allas-- puistoon ja vietimme kivaa aikaa pelaten Ultimate liitokiekkoa. \r\n"
+"Tänään menin //eläinkauppaan// ja ostin **tiikerin**. Sitten menimme "
+"--allas-- puistoon ja vietimme kivaa aikaa pelaten Ultimate liitokiekkoa. "
 "Jälkikäteen katsoimme elokuvan nimeltä \"__Brianin elämä__\"."
 
 #: ../rednotebook/help.py:64
@@ -951,6 +961,9 @@ msgid ""
 "You can add multiple entries to a single day by separating your entries with "
 "different titles (=== Work ===, === Family ===)."
 msgstr ""
+"=== Useita merkintöjä ===\n"
+"Voit lisätä useita merkintöjä yhdelle päivälle erottamalla merkinnät eri "
+"otsikoilla (=== Työ ===, === Perhe ===)."
 
 #: ../rednotebook/help.py:121
 msgid ""
@@ -962,6 +975,13 @@ msgid ""
 "=== Family ===\n"
 "Here comes the entry about my #family."
 msgstr ""
+"=== Työ ===\n"
+"Tähän tulee ensimmäinen merkintä. Kyse on #työstä.\n"
+"\n"
+"=====================\n"
+"\n"
+"=== Perhe ===\n"
+"Tähän tulee merkintä minun #perheestäni."
 
 #: ../rednotebook/journal.py:251
 msgid "Opening default journal."
@@ -987,7 +1007,7 @@ msgstr "Virhe"
 #: ../rednotebook/journal.py:583
 #, python-brace-format
 msgid "Replaced {total_replacements} occurrences of the search text"
-msgstr ""
+msgstr "Korvattu {total_replacements} esiintymää hakutekstissä"
 
 #: ../rednotebook/journal.py:587
 msgid "No text has been replaced"
@@ -1073,25 +1093,26 @@ msgid ""
 "==================================\n"
 msgstr ""
 "=== Kokous ===\n"
-"Tarkoitus, päiväys, ja paikka\n"
 "\n"
-"**Läsnä:**\n"
-"+\n"
-"+\n"
-"+\n"
+"Tarkoitus, päivämäärä ja paikka\n"
 "\n"
-"\n"
-"**Esityslista:**\n"
+"**Esittää:**\n"
 "+\n"
 "+\n"
 "+\n"
 "\n"
 "\n"
-"**Keskustelu, päätökset, toimeksiannot:**\n"
+"**Agenda:**\n"
 "+\n"
 "+\n"
 "+\n"
-"==================================\n"
+"\n"
+"\n"
+"**Keskustelu, päätökset, tehtävät:**\n"
+"+\n"
+"+\n"
+"+\n"
+"===================================\n"
 
 #: ../rednotebook/templates.py:140
 msgid ""
