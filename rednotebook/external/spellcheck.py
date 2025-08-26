@@ -88,7 +88,8 @@ else:
 
 
 def code_to_name(code, separator="_"):
-    # Simple fallback implementation for compatibility
+    # JS: We don't bundle pylocales.
+    # Simple fallback implementation for compatibility.
     # Escape underscores for GTK menuitems.
     return code.replace(separator, separator * 2)
 
@@ -804,7 +805,7 @@ class SpellChecker(GObject.Object):
                     def _make_on_activate(word):
                         return lambda *args: self._replace_word(word)
 
-                    item.connect("activate", _make_on_activate(suggestion))
+                    item.connect("activate", _make_on_activate(word))
                 else:
                     escaped = suggestion.replace("'", "\\'")
                     item = Gio.MenuItem.new(
