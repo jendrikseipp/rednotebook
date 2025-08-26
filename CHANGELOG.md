@@ -1,8 +1,10 @@
+# 2.41 (unreleased)
+* Replace AppVeyor CI with GitHub Actions workflow for Windows builds (@jendrikseipp).
+
 # 2.40 (2025-08-26)
 * Fix black WebKit panes on KDE by disabling compositing on this platform (#828, @jendrikseipp).
 * Fix empty WebKit preview with Nvidia drivers by auto-applying DMA-BUF workaround (#820, @jendrikseipp).
 * Only instantiate Gtk.StatusIcon on Windows to fix Wayland crash (#840, @jendrikseipp).
-* Replace AppVeyor CI with GitHub Actions workflow for Windows builds (@jendrikseipp).
 
 # 2.39 (2025-03-25)
 * Support GIRepository 3.0 (#817, #818, Jendrik Seipp).
