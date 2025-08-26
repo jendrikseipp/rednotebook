@@ -50,18 +50,14 @@ logging.basicConfig(
     level=logging.DEBUG, format="%(levelname)-8s %(message)s", stream=sys.stdout
 )
 
-# Log WebKit compositing workaround status
-from rednotebook.util.filesystem import is_kde_environment
-
-if is_kde_environment():
+# Log if WebKit compositing workaround was applied
+if os.environ.get("WEBKIT_DISABLE_COMPOSITING_MODE") == "1":
     desktop_session = os.environ.get("DESKTOP_SESSION", "")
     xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
     kde_session = os.environ.get("KDE_SESSION_VERSION", "")
     logging.info(f"WebKit compositing workaround applied for KDE environment "
                 f"(DESKTOP_SESSION={desktop_session}, XDG_CURRENT_DESKTOP={xdg_desktop}, "
                 f"KDE_SESSION_VERSION={kde_session})")
-else:
-    logging.info("WebKit compositing workaround not applied (non-KDE environment)")
 
 try:
     import gi
