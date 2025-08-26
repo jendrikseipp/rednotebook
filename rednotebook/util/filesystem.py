@@ -60,25 +60,25 @@ def _is_nvidia_graphics_detected():
 
     Returns True if Nvidia graphics are detected, False otherwise.
     """
-    # Check multiple indicators of Nvidia graphics
-    nvidia_indicators = [
-        # Check for Nvidia kernel module
-        os.path.exists("/proc/driver/nvidia/version"),
-        # Check for Nvidia device files
-        os.path.exists("/dev/nvidia0"),
-        os.path.exists("/dev/nvidiactl"),
-    ]
+    # Fast path: check common file indicators and return immediately if any exist.
+    if any(
+        os.path.exists(p)
+        for p in (
+            "/proc/driver/nvidia/version",
+            "/dev/nvidia0",
+            "/dev/nvidiactl",
+        )
+    ):
+        return True
 
-    # Check if lspci shows Nvidia graphics (if available)
+    # Fallback: use lspci output (best effort, ignore errors/timeouts).
     try:
         result = subprocess.run(["lspci"], capture_output=True, text=True, timeout=5)
-        if result.returncode == 0:
-            nvidia_indicators.append("nvidia" in result.stdout.lower())
+        if result.returncode == 0 and "nvidia" in result.stdout.lower():
+            return True
     except (subprocess.TimeoutExpired, FileNotFoundError):
-        # lspci not available or timed out, ignore
         pass
-
-    return any(nvidia_indicators)
+    return False
 
 
 def _apply_webkit_nvidia_workaround():
