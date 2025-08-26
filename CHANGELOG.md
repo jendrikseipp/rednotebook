@@ -1,5 +1,5 @@
-# next (unreleased)
-* Fix black WebKit panes on KDE by setting WEBKIT_DISABLE_COMPOSITING_MODE=1 (#828, @jendrikseipp).
+# 2.40 (2025-08-26)
+* Fix black WebKit panes on KDE by disabling compositing on this platform (#828, @jendrikseipp).
 * Fix empty WebKit preview with Nvidia drivers by auto-applying DMA-BUF workaround (#820, @jendrikseipp).
 * Only instantiate Gtk.StatusIcon on Windows to fix Wayland crash (#840, @jendrikseipp).
 
