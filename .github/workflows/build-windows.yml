@@ -69,13 +69,8 @@ jobs:
       run: |
         $hookFile = "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*/x64\Lib\site-packages\pyinstaller\hooks\hook-gi.repository.GtkSource.py"
         $hookPath = Get-ChildItem $hookFile | Select-Object -First 1 -ExpandProperty FullName
-        if ($hookPath) {
-          (Get-Content $hookPath) -replace '3\.0', '4' | Set-Content $hookPath
-          echo "Patched GtkSourceView hook at: $hookPath"
-        } else {
-          echo "Hook file not found, checking available paths..."
-          Get-ChildItem "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*/x64\Lib\site-packages\pyinstaller\hooks\" | Where-Object Name -like "*GtkSource*"
-        }
+        (Get-Content $hookPath) -replace '3\.0', '4' | Set-Content $hookPath
+        echo "Patched GtkSourceView hook at: $hookPath"
 
     - name: Set Pyenchant debug logging
       run: |
