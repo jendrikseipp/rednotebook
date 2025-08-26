@@ -117,7 +117,6 @@ jobs:
         python -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec
         python ../dev/build_translations.py C:/dist/share/locale
         Copy-Item -Recurse C:\gtk\share\enchant C:\dist\share\enchant
-        tar -czf rednotebook.tar.gz -C C:\ dist
         7z a rednotebook.zip C:\dist
         cd ..
 
@@ -133,7 +132,6 @@ jobs:
 
     - name: Prepare artifacts
       run: |
-        Move-Item win\rednotebook.tar.gz rednotebook-$env:VERSION.tar.gz
         Move-Item win\rednotebook.zip rednotebook-$env:VERSION.zip
         Move-Item C:\rednotebook.exe rednotebook-$env:VERSION.exe
 
@@ -142,14 +140,15 @@ jobs:
       with:
         name: windows-artifacts
         path: |
-          rednotebook-*.tar.gz
           rednotebook-*.zip
           rednotebook-*.exe
 
     - name: Deploy to GitHub Releases
-      if: github.event_name == 'release'
-      uses: softprops/action-gh-release@v1
+      if: github.ref_type == 'tag'
+      uses: softprops/action-gh-release@v2
       with:
-        files: rednotebook-*.exe
+        files: |
+          rednotebook-*.exe
+          rednotebook-*.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
