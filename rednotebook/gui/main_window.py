@@ -20,6 +20,7 @@ from collections import OrderedDict
 import datetime
 import logging
 import os
+import platform
 from unittest import mock
 import urllib.parse
 
@@ -41,6 +42,63 @@ from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.util import dates, filesystem, markup, urls, utils
+
+
+def _is_raspberry_pi_os():
+    """
+    Detect if running on Raspberry Pi OS.
+    
+    This is used to apply workarounds for display issues on Pi OS 64-bit
+    where widgets may not render correctly on startup until window resize.
+    
+    See: https://github.com/jendrikseipp/rednotebook/issues/829
+    """
+    try:
+        # Check for Raspberry Pi in OS release info
+        if os.path.exists('/etc/os-release'):
+            with open('/etc/os-release', 'r') as f:
+                os_release_content = f.read().lower()
+                if 'raspberry' in os_release_content or 'raspbian' in os_release_content:
+                    return True
+        
+        # Check for ARM architecture which is common on Pi
+        machine = platform.machine().lower()
+        if machine in ('aarch64', 'armv7l', 'armv6l'):
+            # Additional check to see if this looks like a Pi system
+            if os.path.exists('/boot/config.txt') or os.path.exists('/boot/firmware/config.txt'):
+                return True
+                
+    except (OSError, IOError):
+        pass
+    
+    return False
+
+
+def _fix_pi_widget_rendering(main_frame, text_vbox):
+    """
+    Fix widget rendering issues on Raspberry Pi OS by forcing layout refresh.
+    
+    On some Pi systems, widgets may not render correctly on startup,
+    showing garbled text until the window is resized. This function
+    forces a layout refresh to work around the issue.
+    """
+    def refresh_widgets():
+        try:
+            # Force widget layout refresh
+            main_frame.queue_resize()
+            main_frame.queue_draw()
+            text_vbox.queue_resize()
+            text_vbox.queue_draw()
+            
+            # Force size allocation
+            allocation = main_frame.get_allocation()
+            main_frame.size_allocate(allocation)
+        except Exception as e:
+            logging.debug(f"Pi widget refresh failed: {e}")
+        return False  # Don't repeat
+    
+    # Defer refresh until after main loop starts
+    GLib.idle_add(refresh_widgets)
 
 
 class MainWindow:
@@ -204,6 +262,11 @@ class MainWindow:
         self.load_values_from_config()
 
         self.main_frame.show()
+
+        # Apply Pi OS rendering fix if needed
+        if _is_raspberry_pi_os():
+            logging.info("Applying Raspberry Pi OS widget rendering fix")
+            _fix_pi_widget_rendering(self.main_frame, self.text_vbox)
 
         self.options_manager = OptionsManager(self)
         self.export_assistant = ExportAssistant(self.journal)
