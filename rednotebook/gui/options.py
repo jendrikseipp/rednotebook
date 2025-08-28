@@ -385,7 +385,7 @@ class OptionsManager:
 
             visible = self.config.read("closeToTray") == 1
             # The tray icon is now only instantiated on Windows.
-            if hasattr(self.main_window, "tray_icon"):
+            if self.main_window.tray_icon:
                 self.main_window.tray_icon.set_visible(visible)
         else:
             # Reset some options
