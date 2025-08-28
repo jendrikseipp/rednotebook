@@ -581,26 +581,49 @@ Numbered titles can be created by using "+" instead of "=". ""+ My
 Title +"" produces a title like "1.", +++++ My Title +++++ produces a
 title like 0.0.0.0.1
 
-=== Insert HTML or Latex code ===
+=== Math Formulas ===
 
-To insert custom code into your entries surround the code with single
-quotes. Use 2 single quotes for inline insertions and 3 single quotes
-if you want to insert a whole paragraph. For paragraphs be sure to put
-the single quotes on their own line.
+RedNotebook supports mathematical formulas in both preview mode and 
+LaTeX export.
+
+==== For preview mode (MathJax) ====
+
+Math formulas are rendered using MathJax in the preview. Use the following syntax:
+
+**Display math** (centered on its own line):
+- ``$$x^2 + y^2 = z^2$$`` 
+- ``\\[x^2 + y^2 = z^2\\]``
+
+**Inline math** (within text):
+- ``\\(x^2\\)`` for inline formulas like \\(x^2\\)
+
+For example, the Pythagorean theorem: $$a^2 + b^2 = c^2$$
+
+And Einstein's equation inline: \\(E = mc^2\\) is famous.
+
+Complex formulas also work: \\[\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}\\]
+
+==== For LaTeX export only ====
+
+To insert custom HTML or LaTeX code that only appears in exports, surround 
+the code with single quotes. Use 2 single quotes for inline insertions 
+and 3 single quotes for paragraphs.
 
 ||   Text                  |   Output                              |
 | ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
-| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' in Latex) |
+| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' in LaTeX export only) |
 
-This feature can be used to insert e.g. Latex formulas:
+This feature can be used for LaTeX-specific formulas:
 
 ```
 '''
-$$\\sum_{i=1}^{n} i =\frac{ncdot (n+1)}{2}$$
+$$\\sum_{i=1}^{n} i = \\frac{n \\cdot (n+1)}{2}$$
 '''
 ```
 
-will produce a nice looking formula in the Latex export.
+**Note:** The single quote syntax (``''$...$''``) only works in LaTeX export,
+not in preview mode. For formulas that work in both preview and export, 
+use the MathJax syntax described above.
 
 === Verbatim text (Preserve format) ===
 
