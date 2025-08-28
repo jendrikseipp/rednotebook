@@ -391,8 +391,13 @@ class OptionsManager:
             # Reset some options
             self.main_window.set_font(self.config.read("mainFont", editor.DEFAULT_FONT))
 
-        # Ensure the dialog is properly hidden by accessing the underlying GTK dialog directly
+        # Ensure the dialog is properly hidden
+        # Use the underlying GTK dialog directly to avoid any wrapper issues
         self.dialog.dialog.hide()
+        
+        # Process any pending GTK events to ensure the dialog is actually hidden
+        while Gtk.events_pending():
+            Gtk.main_iteration()
 
     def add_all_options(self):
         for option in self.options:
