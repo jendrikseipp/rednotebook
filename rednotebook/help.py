@@ -443,6 +443,54 @@ are more likely to be stolen. If you encrypt your home partition all
 RedNotebook data will be encrypted, too.
 
 
+== Dark Mode ==
+
+RedNotebook follows your system's theme settings by default. Here are
+platform-specific instructions for enabling dark mode:
+
+=== Linux (GNOME/GTK environments) ===
+
+On most modern Linux distributions with GNOME, you can enable dark mode
+for GTK applications like RedNotebook:
+
+1. **Using GNOME Tweaks (recommended):**
+   - Install ``gnome-tweaks`` if not already installed
+   - Open GNOME Tweaks
+   - Navigate to "Appearance"
+   - Change "Legacy Applications" to:
+     - "Adwaita-dark" (older systems)
+     - "HighContrastInverse" (Debian 13/Trixie and newer)
+   - Restart RedNotebook
+
+2. **Using environment variables:**
+   - Set ``GTK_THEME=Adwaita:dark`` or ``GTK_THEME=Adwaita-dark``
+   - Start RedNotebook from terminal: ``GTK_THEME=Adwaita-dark rednotebook``
+   - Or add to your shell profile to make it permanent
+
+=== Flatpak installations ===
+
+For RedNotebook installed via Flatpak:
+
+1. Install Flatseal (a permissions manager for Flatpak)
+2. Open Flatseal
+3. Navigate to "All Applications" (global settings)
+4. In the "Environment" section, add: ``GTK_THEME=Adwaita-dark``
+5. Restart RedNotebook
+
+Alternatively, you can use the command line:
+``flatpak override --user --env=GTK_THEME=Adwaita-dark``
+
+=== General method (all platforms) ===
+
+You can force dark mode by setting the GTK_THEME environment variable:
+
+- **Linux/macOS:** ``export GTK_THEME=Adwaita-dark``
+- **Windows:** Set GTK_THEME=Adwaita-dark in system environment variables
+
+Note: The exact theme name may vary depending on your system. Common
+dark theme names include: Adwaita-dark, Adwaita:dark, HighContrastInverse.
+
+
 == Appearance on Windows ==
 
 You can use a GTK3 compatible theme to change the appearance of your

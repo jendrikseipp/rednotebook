@@ -17,6 +17,7 @@
 # -----------------------------------------------------------------------
 
 import http.client
+import locale
 import logging
 import os.path
 import re
@@ -202,3 +203,13 @@ class StreamDuplicator:
     def close(self):
         for stream in self.streams:
             stream.close()
+
+
+def safe_strxfrm(value):
+    """
+    Safely apply locale-aware sorting. If locale.strxfrm fails, fall back to default sorting.
+    """
+    try:
+        return locale.strxfrm(value)
+    except OSError:
+        return value

@@ -1,3 +1,9 @@
+# 2.41 (2025-08-28)
+* Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).
+* Add dark mode instructions to built-in help documentation (#848, @jendrikseipp).
+* Fix options dialog not closing when OK button is clicked (#857, @jendrikseipp).
+* Replace AppVeyor CI with GitHub Actions workflow for Windows builds (@jendrikseipp).
+
 # 2.40 (2025-08-26)
 * Fix black WebKit panes on KDE by disabling compositing on this platform (#828, @jendrikseipp).
 * Fix empty WebKit preview with Nvidia drivers by auto-applying DMA-BUF workaround (#820, @jendrikseipp).

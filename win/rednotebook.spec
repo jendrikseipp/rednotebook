@@ -7,10 +7,10 @@ block_cipher = None
 debug = False
 
 drive_c = DISTPATH
-basedir = os.path.join(drive_c, 'repo')
+repo = "D:\\a\\rednotebook\\rednotebook"
 gtkdir = os.path.join(drive_c, 'gtk')
-srcdir = os.path.join(basedir, 'rednotebook')
-icon = os.path.join(basedir, 'win', 'rednotebook.ico')
+srcdir = os.path.join(repo, 'rednotebook')
+icon = os.path.join(repo, 'win', 'rednotebook.ico')
 
 MISSED_BINARIES = [
     (os.path.join(gtkdir, src), destdir) for src, destdir in [
@@ -20,7 +20,7 @@ MISSED_BINARIES = [
     ]
 ]
 
-for path in [drive_c, basedir, srcdir, icon] + [src for src, _ in MISSED_BINARIES]:
+for path in [drive_c, repo, srcdir, icon] + [src for src, _ in MISSED_BINARIES]:
     assert os.path.exists(path), "{} does not exist".format(path)
 
 print('PATH:', os.environ['PATH'])
@@ -32,7 +32,7 @@ def Dir(path, excludes=None):
 
 a = Analysis(
     [os.path.join(srcdir, 'journal.py')],
-    pathex=[basedir],
+    pathex=[repo],
     binaries=MISSED_BINARIES,
     datas=[],
     hiddenimports=[],
