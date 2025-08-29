@@ -85,9 +85,7 @@ def main():
         help="Don't list the dates with missing entries.",
     )
     parser.add_argument("--data-dir", help="Path to RedNotebook journal.")
-    parser.add_argument(
-        "infile", help="Input file, either plain text, markdown, or odt."
-    )
+    parser.add_argument("infile", help="Input file, either plain text, markdown, or odt.")
     args = parser.parse_args()
 
     # have to import *after* munging argv as rednotebook does its own argv parsing
@@ -108,9 +106,7 @@ def main():
             alltext = [str(para) for para in textdoc.getElementsByType(text.P)]
             alltext = "\n\n".join(alltext)
         except ImportError:
-            print(
-                "Please install 'python3-odf' in order to import entries from an .odt file"
-            )
+            print("Please install 'python3-odf' in order to import entries from an .odt file")
             sys.exit()
     else:
         alltext = pathlib.Path(args.infile).read_text()
@@ -119,12 +115,10 @@ def main():
     control_char_re = re.compile(f"[{re.escape(control_chars)}]")
     alltext = control_char_re.sub("", alltext)
 
-    days = re.split(
-        r"(\w+day[,]?\s*\d+\s+\w+\s+\d+)\.?\s*", alltext, flags=re.IGNORECASE
-    )
+    days = re.split(r"(\w+day[,]?\s*\d+\s+\w+\s+\d+)\.?\s*", alltext, flags=re.IGNORECASE)
     i = 0
     if days:
-        print(f"Found entries for {(len(days)-1)//2} days")
+        print(f"Found entries for {(len(days) - 1) // 2} days")
         if days[0] != "":
             print(f"Ignoring leading text: {days[0]}")
         i += 1
@@ -163,9 +157,7 @@ def main():
         elif monthstr in existing_entries:
             month = existing_entries[monthstr]
         else:
-            month = rednotebook.data.Month(
-                int(dateobj.strftime("%Y")), int(dateobj.strftime("%m"))
-            )
+            month = rednotebook.data.Month(int(dateobj.strftime("%Y")), int(dateobj.strftime("%m")))
         day = month.get_day(daynum)
 
         if not day.empty:
@@ -188,7 +180,7 @@ def main():
         if args.echo_entries:
             print(days[i + 1])
         if not day.empty and args.existing == "append":
-            day.content[text] += f"\n\n{days[i+1]}"
+            day.content[text] += f"\n\n{days[i + 1]}"
         else:
             day.content = {"text": days[i + 1]}
         months[monthstr] = month

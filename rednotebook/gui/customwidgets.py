@@ -333,7 +333,7 @@ class TemplateBar(Gtk.HBox):
     def __init__(self):
         GObject.GObject.__init__(self)
         self.set_spacing(2)
-        label = Gtk.Label(label=f'<b>{_("Template")}</b>:')
+        label = Gtk.Label(label=f"<b>{_('Template')}</b>:")
         label.set_use_markup(True)
         self.pack_start(label, False, False, 0)
         self.save_insert_button = Gtk.Button.new_with_label(_("Save and insert"))

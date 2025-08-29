@@ -59,16 +59,12 @@ def check_pyinstaller_version():
     version = PyInstaller.__version__
     match = re.search(r"^\d+\.\d+(\.\d+)?", version)
     if not match[0] >= PYINSTALLER_MIN_VERSION:
-        raise SystemExit(
-            f"Error: pyinstaller {PYINSTALLER_MIN_VERSION} or higher is required"
-        )
+        raise SystemExit(f"Error: pyinstaller {PYINSTALLER_MIN_VERSION} or higher is required")
 
 
 def check_cefpython3_version():
     if not is_module_satisfies(f"cefpython3 >= {CEFPYTHON_MIN_VERSION}"):
-        raise SystemExit(
-            f"Error: cefpython3 {CEFPYTHON_MIN_VERSION} or higher is required"
-        )
+        raise SystemExit(f"Error: cefpython3 {CEFPYTHON_MIN_VERSION} or higher is required")
 
 
 def get_cefpython_modules():
@@ -157,13 +153,9 @@ def get_cefpython3_datas():
         # "Chromium Embedded Framework.framework/Resources" with subdirectories
         # is required. Contain .pak files and locales (each locale in separate
         # subdirectory).
-        resources_subdir = os.path.join(
-            "Chromium Embedded Framework.framework", "Resources"
-        )
+        resources_subdir = os.path.join("Chromium Embedded Framework.framework", "Resources")
         base_path = os.path.join(CEFPYTHON3_DIR, resources_subdir)
-        assert os.path.exists(
-            base_path
-        ), f"{resources_subdir} dir not found in cefpython3"
+        assert os.path.exists(base_path), f"{resources_subdir} dir not found in cefpython3"
         for path, dirs, files in os.walk(base_path):
             for file in files:
                 absolute_file_path = os.path.join(path, file)
@@ -175,11 +167,7 @@ def get_cefpython3_datas():
         locales_dir = os.path.join(CEFPYTHON3_DIR, "locales")
         assert os.path.exists(locales_dir), "locales/ dir not found in cefpython3"
         for filename in os.listdir(locales_dir):
-            logger.info(
-                "Include cefpython3 data: {}/{}".format(
-                    os.path.basename(locales_dir), filename
-                )
-            )
+            logger.info(f"Include cefpython3 data: {os.path.basename(locales_dir)}/{filename}")
             ret.append(
                 (
                     os.path.join(locales_dir, filename),
@@ -192,9 +180,7 @@ def get_cefpython3_datas():
         if os.path.isdir(swiftshader_dir):
             for filename in os.listdir(swiftshader_dir):
                 logger.info(
-                    "Include cefpython3 data: {}/{}".format(
-                        os.path.basename(swiftshader_dir), filename
-                    )
+                    f"Include cefpython3 data: {os.path.basename(swiftshader_dir)}/{filename}"
                 )
                 ret.append(
                     (
@@ -215,7 +201,7 @@ check_pyinstaller_version()
 check_cefpython3_version()
 
 # Info
-logger.info("CEF Python package directory: %s" % CEFPYTHON3_DIR)
+logger.info(f"CEF Python package directory: {CEFPYTHON3_DIR}")
 
 # Hidden imports.
 # PyInstaller has no way on detecting imports made by Cython

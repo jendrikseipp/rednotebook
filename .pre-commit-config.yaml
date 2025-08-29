@@ -8,38 +8,15 @@ repos:
     -   id: check-yaml
     -   id: check-added-large-files
 
-# Static analysis for Python code
--   repo: https://github.com/PyCQA/flake8
-    rev: 7.1.1
+# Static analysis and formatting for Python code with ruff
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.11
     hooks:
-    -   id: flake8
-        # E203: whitespace before ':' (not compliant with PEP 8)
-        # E402: module level import not at top of file
-        # F821: undefined name "_"
-        args: ['--extend-ignore=E203,E402,F821', '--max-line-length=110', '--builtins="_"']
-        exclude: ^rednotebook/external/
-
-# Python code formatter
--   repo: https://github.com/psf/black
-    rev: 24.8.0
-    hooks:
-    -   id: black
-        exclude: ^rednotebook/external/
-
-# Imports sorter
--   repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-    -   id: isort
-        exclude: ^rednotebook/journal.py
-
-# Upgrades Python code to a target version
--   repo: https://github.com/asottile/pyupgrade
-    rev: v3.17.0
-    hooks:
-    -   id: pyupgrade
-        args: ['--py36-plus', '--exit-zero']
-        exclude: ^rednotebook/external/
+    # Run the linter
+    -   id: ruff-check
+        args: ['--fix']
+    # Run the formatter
+    -   id: ruff-format
 
 # Finds unused Python code
 -   repo: https://github.com/jendrikseipp/vulture

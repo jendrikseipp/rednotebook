@@ -16,10 +16,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from collections import defaultdict
 import locale
 import logging
 import re
+from collections import defaultdict
 
 from gi.repository import GLib, Gtk
 
@@ -74,12 +74,12 @@ class Cloud(browser.HtmlView):
         default_ignore_list = _("filter, these, comma, separated, words, and, #tags")
         self.ignore_list = config.read_list("cloudIgnoreList", default_ignore_list)
         self.ignore_list = [word.lower() for word in self.ignore_list]
-        logging.info("Cloud ignore list: %s" % self.ignore_list)
+        logging.info(f"Cloud ignore list: {self.ignore_list}")
 
         default_include_list = _("mtv, spam, work, job, play")
         self.include_list = config.read_list("cloudIncludeList", default_include_list)
         self.include_list = [word.lower() for word in self.include_list]
-        logging.info("Cloud include list: %s" % self.include_list)
+        logging.info(f"Cloud include list: {self.include_list}")
 
         # Ignore files and web links in words cloud
         self.special_ignore_words_tuple = ("file://.*", "https?://.*")
@@ -200,9 +200,7 @@ class Cloud(browser.HtmlView):
         word_cloud = self._get_cloud_body(word_counter)
         font = self.journal.config.read("previewFont")
         heading = "<h1>&#160;%s</h1>"
-        bgcolor, fgcolor = utils.get_gtk_colors(
-            self.journal.frame.day_text_field.day_text_view
-        )
+        bgcolor, fgcolor = utils.get_gtk_colors(self.journal.frame.day_text_field.day_text_view)
         parts = [
             "<html><head>",
             CLOUD_CSS % {"font": font, "bgcolor": bgcolor, "fgcolor": fgcolor},
@@ -247,9 +245,7 @@ class Cloud(browser.HtmlView):
         tag = hit_test_result.get_link_label()
 
         if tag is not None:
-            action = Gtk.Action.new(
-                "hide", _('Hide "%s" from clouds') % tag, None, None
-            )
+            action = Gtk.Action.new("hide", _('Hide "%s" from clouds') % tag, None, None)
             action.connect("activate", self.on_ignore_menu_activate, tag)
             ignore_menu_item = browser.WebKit2.ContextMenuItem.new(action)
             menu.append(ignore_menu_item)

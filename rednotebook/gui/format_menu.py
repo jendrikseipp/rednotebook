@@ -30,24 +30,18 @@ MENUITEMS_XML = """\
     <menuitem action="Clear"/>
 """
 
-TOOLBAR_XML = (
-    """\
+TOOLBAR_XML = f"""\
 <ui>
 <popup action="FormatMenu">
-%s
+{MENUITEMS_XML}
 </popup>
 </ui>"""
-    % MENUITEMS_XML
-)
 
-MENUBAR_XML = (
-    """\
+MENUBAR_XML = f"""\
 <menu action="FormatMenuBar">
-%s
+{MENUITEMS_XML}
 </menu>
 """
-    % MENUITEMS_XML
-)
 
 
 class FormatMenu:
@@ -149,9 +143,7 @@ class FormatMenu:
         # Create a Menu
         menu = uimanager.get_widget("/FormatMenu")
 
-        self.main_window.format_button = customwidgets.ToolbarMenuButton(
-            "format-text-bold", menu
-        )
+        self.main_window.format_button = customwidgets.ToolbarMenuButton("format-text-bold", menu)
         # Translators: Noun
         self.main_window.format_button.set_label(_("Format"))
         tip = _("Format the selected text or tag")
