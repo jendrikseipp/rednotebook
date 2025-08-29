@@ -1,3 +1,6 @@
+# next (unreleased)
+* Update help concerning math formulas (#97, #855, @jendrikseipp).
+
 # 2.41 (2025-08-28)
 * Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).
 * Add dark mode instructions to built-in help documentation (#848, @jendrikseipp).
