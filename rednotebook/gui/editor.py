@@ -139,9 +139,7 @@ class Editor(GObject.GObject):
             for match_start, match_end in self.iter_search_matches(text):
                 buf.apply_tag_by_name("highlighter", match_start, match_end)
 
-    search_flags = (
-        Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
-    )
+    search_flags = Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
 
     def iter_search_matches(self, text):
         it = self.day_text_buffer.get_start_iter()
@@ -219,9 +217,9 @@ class Editor(GObject.GObject):
         left_markup, right_markup = self._get_markups(format, self.get_selected_text())
 
         # Apply formatting only once.
-        if self.get_text_left_of_selection(
-            len(left_markup)
-        ) == left_markup or selection.startswith(left_markup):
+        if self.get_text_left_of_selection(len(left_markup)) == left_markup or selection.startswith(
+            left_markup
+        ):
             left_markup = ""
         if self.get_text_right_of_selection(
             len(right_markup)
@@ -274,10 +272,7 @@ class Editor(GObject.GObject):
                 logging.warning("No spell checking dictionaries found.")
                 self._spell_checker = None
             except Exception as err:
-                logging.error(
-                    "Spell checking could not be enabled. %s: %s"
-                    % (type(err).__name__, err)
-                )
+                logging.error(f"Spell checking could not be enabled. {type(err).__name__}: {err}")
                 self._spell_checker = None
 
     def _disable_spell_check(self):
@@ -296,9 +291,7 @@ class Editor(GObject.GObject):
 
     # ===========================================================
 
-    def on_drag_data_received(
-        self, widget, drag_context, x, y, selection, info, timestamp
-    ):
+    def on_drag_data_received(self, widget, drag_context, x, y, selection, info, timestamp):
         # We do not want the default behaviour
         self.day_text_view.emit_stop_by_name("drag-data-received")
 

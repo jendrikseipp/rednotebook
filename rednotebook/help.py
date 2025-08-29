@@ -34,20 +34,14 @@ tags = _("Tags")
 
 greeting = _("Hello!")
 intro = _(
-    "Some example text has been added to help you start and "
-    "you can erase it whenever you like."
+    "Some example text has been added to help you start and you can erase it whenever you like."
 )
 # Translators: "Help" -> noun
-help_par = _(
-    "The example text and more documentation is available under "
-    '"Help" -> "Contents".'
-)
+help_par = _('The example text and more documentation is available under "Help" -> "Contents".')
 
 # Translators: noun
 preview = _("Preview")
-preview1 = _(
-    "There are two modes in RedNotebook, the __edit__ mode and the " "__preview__ mode."
-)
+preview1 = _("There are two modes in RedNotebook, the __edit__ mode and the __preview__ mode.")
 preview2 = _("Click on Edit above to see the difference.")
 preview_par = " ".join([preview1, preview2])
 
@@ -88,24 +82,21 @@ error_par = "\n".join([error1, error2])
 
 goodbye_par = _("Have a nice day!")
 
-complete_welcome_text = (
-    """\
-%(greeting)s %(intro)s %(help_par)s
+complete_welcome_text = """\
+{greeting} {intro} {help_par}
 
-=== %(preview)s ===
-%(preview_par)s
+=== {preview} ===
+{preview_par}
 
-=== %(tags)s ===
-%(tags_par)s
+=== {tags} ===
+{tags_par}
 
-=== %(save)s ===
-%(save_par)s
+=== {save} ===
+{save_par}
 
-%(error_par)s
+{error_par}
 
-%(goodbye_par)s"""
-    % globals()
-)
+{goodbye_par}""".format(**globals())
 
 
 welcome_day = {"text": complete_welcome_text}
@@ -129,25 +120,20 @@ Here comes the entry about my #family."""
 )
 
 multiple_entries_day = {
-    "text": multiple_entries_text
-    + "\n\n"
-    + 20 * "="
-    + "\n\n"
-    + multiple_entries_example
+    "text": multiple_entries_text + "\n\n" + 20 * "=" + "\n\n" + multiple_entries_example
 }
 
 example_content = [welcome_day, multiple_entries_day]
 
-help_text = (
-    """
+help_text = """
 == Layout ==
-%(preview1)s
+{preview1}
 
 
 == Text ==
 The main text field is the container for your normal diary entries like this one:
 
-%(example_entry)s
+{example_entry}
 
 
 == Format ==
@@ -175,7 +161,7 @@ instead of "-" you can create a **numbered list**:
 
 
 == Hashtags ==
-%(tags_par)s
+{tags_par}
 
 
 == Images, Files and Links ==
@@ -206,9 +192,9 @@ will be shown as
   [Today 2019-02-14] was a good day.
 
 
-== %(templates)s ==
+== {templates} ==
 
-%(temp_par)s
+{temp_par}
 The files 1.txt to 7.txt in the template directory correspond to the
 templates for each day of the week. The current weekday's template will
 be filled into the text area when you click on "Template". You can open
@@ -273,15 +259,15 @@ menu.
 
 == Save ==
 
-%(save1)s
-%(save2)s
-%(save3)s
+{save1}
+{save2}
+{save3}
 
 
 == Export ==
 
-%(save4)s
-%(save5)s
+{save4}
+{save5}
 
 To obtain a PDF of your journal, either export to HTML, open the resulting
 file in a browser and print it to PDF, or export to LaTeX and compile the
@@ -443,6 +429,54 @@ are more likely to be stolen. If you encrypt your home partition all
 RedNotebook data will be encrypted, too.
 
 
+== Dark Mode ==
+
+RedNotebook follows your system's theme settings by default. Here are
+platform-specific instructions for enabling dark mode:
+
+=== Linux (GNOME/GTK environments) ===
+
+On most modern Linux distributions with GNOME, you can enable dark mode
+for GTK applications like RedNotebook:
+
+1. **Using GNOME Tweaks (recommended):**
+   - Install ``gnome-tweaks`` if not already installed
+   - Open GNOME Tweaks
+   - Navigate to "Appearance"
+   - Change "Legacy Applications" to:
+     - "Adwaita-dark" (older systems)
+     - "HighContrastInverse" (Debian 13/Trixie and newer)
+   - Restart RedNotebook
+
+2. **Using environment variables:**
+   - Set ``GTK_THEME=Adwaita:dark`` or ``GTK_THEME=Adwaita-dark``
+   - Start RedNotebook from terminal: ``GTK_THEME=Adwaita-dark rednotebook``
+   - Or add to your shell profile to make it permanent
+
+=== Flatpak installations ===
+
+For RedNotebook installed via Flatpak:
+
+1. Install Flatseal (a permissions manager for Flatpak)
+2. Open Flatseal
+3. Navigate to "All Applications" (global settings)
+4. In the "Environment" section, add: ``GTK_THEME=Adwaita-dark``
+5. Restart RedNotebook
+
+Alternatively, you can use the command line:
+``flatpak override --user --env=GTK_THEME=Adwaita-dark``
+
+=== General method (all platforms) ===
+
+You can force dark mode by setting the GTK_THEME environment variable:
+
+- **Linux/macOS:** ``export GTK_THEME=Adwaita-dark``
+- **Windows:** Set GTK_THEME=Adwaita-dark in system environment variables
+
+Note: The exact theme name may vary depending on your system. Common
+dark theme names include: Adwaita-dark, Adwaita:dark, HighContrastInverse.
+
+
 == Appearance on Windows ==
 
 You can use a GTK3 compatible theme to change the appearance of your
@@ -489,7 +523,7 @@ app but it does change the shortcut icon to a cmd icon, as expected.
 
 
 == Tips ==
-%(multiple_entries_text)s
+{multiple_entries_text}
 
 === Week numbers ===
 
@@ -533,26 +567,29 @@ Numbered titles can be created by using "+" instead of "=". ""+ My
 Title +"" produces a title like "1.", +++++ My Title +++++ produces a
 title like 0.0.0.0.1
 
-=== Insert HTML or Latex code ===
+=== Math Formulas ===
 
-To insert custom code into your entries surround the code with single
-quotes. Use 2 single quotes for inline insertions and 3 single quotes
-if you want to insert a whole paragraph. For paragraphs be sure to put
-the single quotes on their own line.
+RedNotebook supports mathematical formulas that render in preview (via MathJax)
+and in LaTeX exports:
 
-||   Text                  |   Output                              |
+**Display math** (centered on its own line):
+- ``$$x^2 + y^2 = z^2$$``
+- ``\\[x^2 + y^2 = z^2\\]``
+
+
+**Inline math** (within text):
+- ``\\(x^2\\)`` produces inline math like \\(x^2\\)
+
+
+=== Raw Formatting (export-only) ===
+
+Sometimes you want content that is only inserted into LaTeX (or raw HTML in
+other exports) and not rendered by the preview engine. For this, surround the
+raw snippet with two single quotes:
+
+||   Text                  |   Output (preview)                     |
 | ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
-| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' in Latex) |
-
-This feature can be used to insert e.g. Latex formulas:
-
-```
-'''
-$$\\sum_{i=1}^{n} i =\frac{ncdot (n+1)}{2}$$
-'''
-```
-
-will produce a nice looking formula in the Latex export.
+| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' only appears formatted in LaTeX export) |
 
 === Verbatim text (Preserve format) ===
 
@@ -582,8 +619,8 @@ bold**"").
 
 === Comments ===
 
-Comments can be inserted after percent signs (**%%**). They will not be
-shown in the preview and the exports. The %% has to be the first
+Comments can be inserted after percent signs (**%**). They will not be
+shown in the preview and the exports. The % has to be the first
 character on the line.
 
 === List of all entries ===
@@ -595,7 +632,7 @@ resulting list chronologically by pressing the "Date" button.
 == Command line options ==
 
 ```
-%(commandline_help)s
+{commandline_help}
 ```
 
 
@@ -614,9 +651,9 @@ The text is actually [YAML www.yaml.org] markup. Without the
 (unnecessary) python directives the files look like this:
 
 ```
-24: {text: "This is a normal text entry."}
+24: {{text: "This is a normal text entry."}}
 25:
-  Ideas: {"Invent Anti-Hangover machine": null}
+  Ideas: {{"Invent Anti-Hangover machine": null}}
   text: "This is another text entry, shown in the main text area."
 ```
 
@@ -646,10 +683,8 @@ There is no software without bugs, so if you encounter one please drop
 me a note. This way RedNotebook can get better, not only for you, but
 for all users.
 
-Bug reports should go [here %(bug_url)s],
+Bug reports should go [here {bug_url}],
 but if you don't know how to use that site, a simple mail is equally
 fine.
 
-"""
-    % globals()
-)
+""".format(**globals())

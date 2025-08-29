@@ -217,9 +217,7 @@ class TemplateManager:
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.main_window.template_bar.save_insert_button.connect(
-            "clicked", self.on_save_insert
-        )
+        self.main_window.template_bar.save_insert_button.connect("clicked", self.on_save_insert)
         self.main_window.template_bar.save_button.connect("clicked", self.on_save)
         self.main_window.template_bar.close_button.connect("clicked", self.on_close)
 
@@ -232,9 +230,7 @@ class TemplateManager:
 
         self._template_mode_info_bar = TemplateInfo()
         self._template_mode_info_bar.hide()
-        self.main_window.text_vbox.pack_start(
-            self._template_mode_info_bar, False, False, 0
-        )
+        self.main_window.text_vbox.pack_start(self._template_mode_info_bar, False, False, 0)
         self.main_window.text_vbox.reorder_child(self._template_mode_info_bar, 1)
 
     def set_template_menu_sensitive(self, sensitive):
@@ -245,9 +241,7 @@ class TemplateManager:
 
     def _set_widgets_sensitive(self, sensitive):
         self.main_window.calendar.calendar.set_sensitive(sensitive)
-        journal_menu_item = self.main_window.uimanager.get_widget(
-            "/MainMenuBar/Journal"
-        )
+        journal_menu_item = self.main_window.uimanager.get_widget("/MainMenuBar/Journal")
         for child in journal_menu_item.get_submenu().get_children():
             if isinstance(child, Gtk.MenuItem):
                 child.set_sensitive(sensitive)
@@ -386,7 +380,7 @@ class TemplateManager:
             titles.append(title)
 
         actions_xml = "".join(
-            '<menuitem action="Edit%s"/>' % self._escape_template_name(title)
+            f'<menuitem action="Edit{self._escape_template_name(title)}"/>'
             for title in sorted(titles)
             if title not in "1234567"
         )
@@ -464,9 +458,7 @@ class TemplateManager:
             files.append(
                 (
                     self.get_path(str(day_number)),
-                    example_text.replace(
-                        "template ===", "template for %s ===" % weekday
-                    ),
+                    example_text.replace("template ===", f"template for {weekday} ==="),
                 )
             )
 

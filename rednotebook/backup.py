@@ -36,9 +36,7 @@ def write_archive(archive_file_name, files, base_dir="", arc_base_dir=""):
     Use base_dir for relative filenames, in case you don't
     want your archive to contain '/home/...'
     """
-    archive = zipfile.ZipFile(
-        archive_file_name, mode="w", compression=zipfile.ZIP_DEFLATED
-    )
+    archive = zipfile.ZipFile(archive_file_name, mode="w", compression=zipfile.ZIP_DEFLATED)
     for file in files:
         archive.write(file, os.path.join(arc_base_dir, file[len(base_dir) :]))
     archive.close()
@@ -53,10 +51,8 @@ class Archiver:
         if last_backup_age <= MAX_BACKUP_AGE:
             return
 
-        logging.warning("Last backup is older than %d days." % MAX_BACKUP_AGE)
-        text1 = _(
-            "It has been %d days since you made your last backup." % last_backup_age
-        )
+        logging.warning(f"Last backup is older than {MAX_BACKUP_AGE} days.")
+        text1 = _(f"It has been {last_backup_age} days since you made your last backup.")
         text2 = _("You can backup your journal to a zip file to avoid data loss.")
         dialog = Gtk.MessageDialog(
             parent=self.journal.frame.main_frame,
@@ -82,9 +78,7 @@ class Archiver:
         elif answer == ASK_NEXT_TIME:
             pass
         elif answer == NEVER_ASK_AGAIN:
-            self.journal.config["lastBackupDate"] = datetime.datetime.max.strftime(
-                DATE_FORMAT
-            )
+            self.journal.config["lastBackupDate"] = datetime.datetime.max.strftime(DATE_FORMAT)
 
     def backup(self):
         backup_file = self._get_backup_file()
@@ -102,24 +96,20 @@ class Archiver:
 
         write_archive(backup_file, archive_files, data_dir)
 
-        logging.info("The content has been backed up at %s" % backup_file)
-        self.journal.config["lastBackupDate"] = datetime.datetime.now().strftime(
-            DATE_FORMAT
-        )
+        logging.info(f"The content has been backed up at {backup_file}")
+        self.journal.config["lastBackupDate"] = datetime.datetime.now().strftime(DATE_FORMAT)
         self.journal.config["lastBackupDir"] = os.path.dirname(backup_file)
 
     def _last_backup_age(self):
         now = datetime.datetime.now()
-        date_string = self.journal.config.read(
-            "lastBackupDate", now.strftime(DATE_FORMAT)
-        )
+        date_string = self.journal.config.read("lastBackupDate", now.strftime(DATE_FORMAT))
         try:
             last_backup_date = datetime.datetime.strptime(date_string, DATE_FORMAT)
         except ValueError as err:
-            logging.error("Last backup date could not be read: %s" % err)
+            logging.error(f"Last backup date could not be read: {err}")
             return True
         last_backup_age = (now - last_backup_date).days
-        logging.info("Last backup was made %d days ago" % last_backup_age)
+        logging.info(f"Last backup was made {last_backup_age} days ago")
         return last_backup_age
 
     def _get_backup_file(self):
@@ -128,12 +118,8 @@ class Archiver:
         else:
             name = "-" + self.journal.title
 
-        proposed_filename = "RedNotebook-Backup{}-{}.zip".format(
-            name, datetime.date.today()
-        )
-        proposed_directory = self.journal.config.read(
-            "lastBackupDir", os.path.expanduser("~")
-        )
+        proposed_filename = f"RedNotebook-Backup{name}-{datetime.date.today()}.zip"
+        proposed_directory = self.journal.config.read("lastBackupDir", os.path.expanduser("~"))
 
         backup_dialog = self.journal.frame.builder.get_object("backup_dialog")
         backup_dialog.set_transient_for(self.journal.frame.main_frame)

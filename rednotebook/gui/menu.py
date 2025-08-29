@@ -26,7 +26,7 @@ from rednotebook.help import help_text
 from rednotebook.util import filesystem, utils
 
 
-MENUBAR_XML = """\
+MENUBAR_XML = f"""\
 <ui>
 <menubar name="MainMenuBar">
     <menu action="Journal">
@@ -57,8 +57,8 @@ MENUBAR_XML = """\
         <menuitem action="CheckSpelling"/>
         <menuitem action="Options"/>
     </menu>
-    {}
-    {}
+    {insert_menu.MENUBAR_XML}
+    {format_menu.MENUBAR_XML}
     <menu action="HelpMenu">
         <menuitem action="Help"/>
         <separator/>
@@ -70,10 +70,7 @@ MENUBAR_XML = """\
         <menuitem action="Info"/>
     </menu>
 </menubar>
-</ui>""".format(
-    insert_menu.MENUBAR_XML,
-    format_menu.MENUBAR_XML,
-)
+</ui>"""
 
 
 class MainMenuBar:
@@ -113,9 +110,7 @@ class MainMenuBar:
                     None,
                     _("Save As"),
                     "<Ctrl><Shift>s",
-                    _(
-                        "Save journal at a new location. The old journal files will also be saved"
-                    ),
+                    _("Save journal at a new location. The old journal files will also be saved"),
                     self.on_save_as_menu_item_activate,
                 ),
                 # Translators: Verb
@@ -296,7 +291,7 @@ class MainMenuBar:
         # Check if dir exists and is no forbidden path (e.g. $HOME dir).
         if not self.journal.dirs.is_valid_journal_path(new_dir):
             self.journal.show_message(
-                _("You cannot use this directory for your journal:") + " %s" % new_dir,
+                _("You cannot use this directory for your journal:") + f" {new_dir}",
                 title=title,
                 error=True,
             )
@@ -330,9 +325,7 @@ class MainMenuBar:
             _("Journals are saved in a directory, not in a single file."),
             _("The directory name will be the title of the new journal."),
         )
-        self.select_journal(
-            "new", _("Select an empty folder for your new journal"), msg
-        )
+        self.select_journal("new", _("Select an empty folder for your new journal"), msg)
 
     def on_open_journal_button_activate(self, widget):
         self.select_journal(

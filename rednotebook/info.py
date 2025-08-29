@@ -28,7 +28,7 @@ if not hasattr(builtins, "_"):
 
 program_name = "RedNotebook"
 tagline = _("A Desktop Journal")
-version = "2.40"
+version = "2.41"
 author = "Jendrik Seipp"
 author_mail = "jendrikseipp@gmail.com"
 copyright_ = "Copyright (c) 2008-2024 Jendrik Seipp"
@@ -37,11 +37,13 @@ downloads_url = "https://rednotebook.app/downloads.html"
 donation_url = "https://rednotebook.app/downloads.html"
 translation_url = "https://hosted.weblate.org/engage/rednotebook/"
 bug_url = "https://github.com/jendrikseipp/rednotebook/issues"
-version_url = "https://raw.githubusercontent.com/jendrikseipp/rednotebook/stable/rednotebook/info.py"
+version_url = (
+    "https://raw.githubusercontent.com/jendrikseipp/rednotebook/stable/rednotebook/info.py"
+)
 contributors_url = "https://github.com/jendrikseipp/rednotebook/graphs/contributors"
 discussion_url = "https://github.com/jendrikseipp/rednotebook/discussions"
 
-developers = ["%(author)s <%(author_mail)s>" % locals()]
+developers = ["{author} <{author_mail}>".format(**locals())]
 artists = ["Ciaran"]
 
 comments = _(

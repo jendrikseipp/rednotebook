@@ -9,9 +9,7 @@ CHANGELOG = sys.argv[1]
 OUTFILE = "news.txt"
 VERSIONFILE = "version.txt"
 
-release_header = re.compile(
-    r"^# ([0-9.]+) \(((?:[0-9]{4}|[0-9]{2})-[0-9]{2}-[0-9]{2})\)$"
-)
+release_header = re.compile(r"^# ([0-9.]+) \(((?:[0-9]{4}|[0-9]{2})-[0-9]{2}-[0-9]{2})\)$")
 
 html = []
 
@@ -68,7 +66,7 @@ with open(CHANGELOG) as f:
                 if item_open:
                     html.append("</li>")
                     item_open = False
-                html.append("<li>%s" % line[2:])
+                html.append(f"<li>{line[2:]}")
                 item_open = True
             else:
                 html.append("    " + line)

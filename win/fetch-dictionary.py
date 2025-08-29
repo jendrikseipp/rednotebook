@@ -13,9 +13,7 @@ DICT_DIR = os.path.join(DIR, "dicts")
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "url", help="URL from ftp://ftp.gnu.org/gnu/aspell/dict/0index.html"
-    )
+    parser.add_argument("url", help="URL from ftp://ftp.gnu.org/gnu/aspell/dict/0index.html")
     parser.add_argument("dest", help="Destination directory")
     return parser.parse_args()
 
