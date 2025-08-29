@@ -16,12 +16,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from collections import defaultdict
 import datetime
 import itertools
 import logging
 import os
 import sys
+from collections import defaultdict
 
 
 def _fix_webkit_compositing_on_kde():
@@ -94,12 +94,10 @@ else:
 print(f"Adding {base_dir} to sys.path")
 sys.path.insert(0, base_dir)
 
+# ---------------------- Enable i18n -------------------------------
+from rednotebook.external import elibintl
 from rednotebook.util import filesystem
 
-
-# ---------------------- Enable i18n -------------------------------
-
-from rednotebook.external import elibintl
 
 LOCALE_PATH = filesystem.locale_dir
 logging.info(f"Locale path: {LOCALE_PATH}")
@@ -134,12 +132,9 @@ elibintl.install(GETTEXT_DOMAIN, LOCALE_PATH, libintl=None)
 # ------------------- end Enable i18n -------------------------------
 
 
-from rednotebook.util import utils
-from rednotebook.util import markup
+from rednotebook import configuration, data, info
 from rednotebook.help import example_content
-from rednotebook import info
-from rednotebook import configuration
-from rednotebook import data
+from rednotebook.util import markup, utils
 
 
 args = info.get_commandline_parser().parse_args()
@@ -202,22 +197,18 @@ except ImportError:
     pass
 
 try:
-    from gi.repository import Gtk
-    from gi.repository import Gio
-    from gi.repository import GLib
+    from gi.repository import Gio, GLib, Gtk
 except (ImportError, AssertionError) as e:
     logging.error(e)
     logging.error("GTK not found. Please install it (gir1.2-gtk-3.0).")
     sys.exit(1)
 
 
-from rednotebook.util import dates
-from rednotebook import backup
-
-from rednotebook.util.statistics import Statistics
-from rednotebook.gui.main_window import MainWindow
-from rednotebook import storage
+from rednotebook import backup, storage
 from rednotebook.data import Month
+from rednotebook.gui.main_window import MainWindow
+from rednotebook.util import dates
+from rednotebook.util.statistics import Statistics
 
 
 class Journal(Gtk.Application):
