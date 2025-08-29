@@ -30,10 +30,10 @@ HASHTAG_EXCLUDES = "|".join((HEX_COLOR, CPP_DIRECTIVES))
 
 ALPHA = r"[^\W\d_]"
 ALPHA_NUMERIC = r"\w"
-HASHTAG_TEXT = r"%(ALPHA_NUMERIC)s*%(ALPHA)s+%(ALPHA_NUMERIC)s*" % locals()
+HASHTAG_TEXT = r"{ALPHA_NUMERIC}*{ALPHA}+{ALPHA_NUMERIC}*".format(**locals())
 HASHTAG_PATTERN = (
-    r"(^|[^%(ALPHA_NUMERIC)s&#])(#|\uFF03)(?!%(HASHTAG_EXCLUDES)s)"
-    "(%(HASHTAG_TEXT)s)" % locals()
+    r"(^|[^{ALPHA_NUMERIC}&#])(#|\uFF03)(?!{HASHTAG_EXCLUDES})"
+    "({HASHTAG_TEXT})".format(**locals())
 )
 
 """
@@ -268,9 +268,7 @@ class Day:
             return None
 
         found_text = self.text[occurrence : occurrence + len(search_text)]
-        return get_text_with_dots(
-            self.text, occurrence, occurrence + len(search_text), found_text
-        )
+        return get_text_with_dots(self.text, occurrence, occurrence + len(search_text), found_text)
 
     def search_in_categories(self, text):
         results = []
@@ -279,9 +277,7 @@ class Day:
                 if text.upper() in category.upper():
                     results.extend(content)
                 else:
-                    results.extend(
-                        entry for entry in content if text.upper() in entry.upper()
-                    )
+                    results.extend(entry for entry in content if text.upper() in entry.upper())
             elif text.upper() in category.upper():
                 results.append(category)
         return results
@@ -310,9 +306,7 @@ class Month:
 
     def __str__(self):
         lines = [f"Month {self.year_number} {self.month_number}"]
-        lines.extend(
-            f"{day_number}: {day.text}" for day_number, day in self.days.items()
-        )
+        lines.extend(f"{day_number}: {day.text}" for day_number, day in self.days.items())
         return "\n".join(lines)
 
     @property

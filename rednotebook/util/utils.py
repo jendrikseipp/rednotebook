@@ -23,8 +23,8 @@ import os.path
 import re
 import signal
 import threading
-from urllib.request import urlopen
 import webbrowser
+from urllib.request import urlopen
 
 from gi.repository import GLib, Gtk
 
@@ -65,7 +65,7 @@ def setup_signal_handlers(journal):
                 signal.signal(signal_number, signal_handler)
                 signals.append(signal_number)
             except RuntimeError:
-                logging.info("Could not connect signal number %d" % signal_number)
+                logging.info(f"Could not connect signal number {signal_number}")
 
     logging.info(f"Connected Signals: {signals}")
 
@@ -162,13 +162,12 @@ def _check_new_version(journal, current_version, startup):
         newer_version_available = None
 
     logging.info(
-        f"Current version: {current_version}, latest version: {new_version}, newer: {newer_version_available}"
+        f"Current version: {current_version}, latest version: {new_version}, "
+        f"newer: {newer_version_available}"
     )
 
     if newer_version_available or not startup:
-        GLib.idle_add(
-            _show_update_dialog, journal, current_version, new_version, startup
-        )
+        GLib.idle_add(_show_update_dialog, journal, current_version, new_version, startup)
 
 
 def check_new_version(journal, current_version, startup):

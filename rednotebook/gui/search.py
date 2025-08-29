@@ -126,9 +126,7 @@ class SearchTreeView(CustomListView):
         self.always_show_results = always_show_results
         self.tree_store = self.get_model()
 
-        self.cursor_changed_signal = self.connect(
-            "cursor_changed", self.on_cursor_changed
-        )
+        self.cursor_changed_signal = self.connect("cursor_changed", self.on_cursor_changed)
 
     def has_results(self):
         return len(self.tree_store) > 0

@@ -48,9 +48,7 @@ from gi.repository import GIRepository
 
 
 repo = GIRepository.Repository()
-logging.info(
-    f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}"
-)
+logging.info(f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}")
 
 
 def _is_nvidia_graphics_detected():
@@ -109,8 +107,7 @@ try:
     gi.require_version("WebKit2", "4.1")
 except ValueError as err:
     logging.warning(
-        f"WebKit2 4.1 not found. Trying to use arbitrary version. "
-        f"Error message: '{err}'"
+        f"WebKit2 4.1 not found. Trying to use arbitrary version. Error message: '{err}'"
     )
 
 try:
@@ -177,9 +174,7 @@ class Filenames(dict):
         self.data_dir = self.default_data_dir
 
         # Assert that all dirs and files are in place so that logging can take start
-        make_directories(
-            [self.journal_user_dir, self.data_dir, self.template_dir, self.temp_dir]
-        )
+        make_directories([self.journal_user_dir, self.data_dir, self.template_dir, self.temp_dir])
         make_files([(self.config_file, ""), (self.log_file, "")])
 
         self.last_pic_dir = self.user_home_dir
@@ -298,8 +293,8 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
-    from gi.repository import GObject, Gtk
     import yaml
+    from gi.repository import GObject, Gtk
 
     functions = [
         platform.machine,
