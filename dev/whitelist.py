@@ -39,15 +39,6 @@ Dummy()._get_text
 Dummy()._set_text
 Dummy().insert_handler_wrapper
 
-# CEF Browser
-from ctypes import _CFuncPtr
-
-
-_CFuncPtr.argtypes
-_CFuncPtr.restype
-Dummy().OnBeforeBrowse
-sys.excepthook
-
 Dummy().commandline_help
 Dummy().greeting
 Dummy().intro

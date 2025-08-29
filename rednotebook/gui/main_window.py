@@ -28,7 +28,6 @@ from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk, GtkSource, Pango
 from rednotebook import info, templates
 from rednotebook.gui import (
     browser,
-    browser_cef,
     categories,
     customwidgets,
     editor,
@@ -148,25 +147,6 @@ class MainWindow:
             self.html_editor.connect("decide-policy", self.on_browser_decide_policy)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
             self.html_editor.set_editable(False)
-        elif use_internal_preview and browser_cef.get_html_view_class():
-            HtmlView = browser_cef.get_html_view_class()
-
-            class Preview(HtmlView):
-                def __init__(self, journal):
-                    super().__init__()
-                    self.journal = journal
-                    self.internal = True
-
-                def show_day(self, new_day):
-                    html = self.journal.convert(new_day.text, "html", use_gtk_theme=True)
-                    self.load_html(html)
-
-                def highlight(self, text):
-                    pass
-
-            self.html_editor = Preview(self.journal)
-            self.html_editor.connect("on-url-clicked", lambda _, url: self.navigate_to_uri(url))
-            self.text_vbox.pack_start(self.html_editor, True, True, 0)
         else:
             self.html_editor = mock.MagicMock()
             self.html_editor.internal = False
@@ -421,10 +401,6 @@ class MainWindow:
             edit_button.hide()
 
             self.update_undo_redo_buttons()
-
-        # Interacting with the CEF browser makes the main window inactive, so
-        # we make it active again.
-        self.main_frame.present()
 
         self.template_manager.set_template_menu_sensitive(not preview)
         self.insert_actiongroup.set_sensitive(not preview)
