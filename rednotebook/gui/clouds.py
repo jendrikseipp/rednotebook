@@ -16,10 +16,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from collections import defaultdict
 import locale
 import logging
 import re
+from collections import defaultdict
 
 from gi.repository import GLib, Gtk
 

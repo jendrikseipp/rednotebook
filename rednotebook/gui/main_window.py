@@ -16,12 +16,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from collections import OrderedDict
 import datetime
 import logging
 import os
-from unittest import mock
 import urllib.parse
+from collections import OrderedDict
+from unittest import mock
 
 from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk, GtkSource, Pango
 

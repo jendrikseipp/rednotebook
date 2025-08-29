@@ -23,8 +23,8 @@ import os.path
 import re
 import signal
 import threading
-from urllib.request import urlopen
 import webbrowser
+from urllib.request import urlopen
 
 from gi.repository import GLib, Gtk
 

@@ -22,9 +22,9 @@ This is the installation script for RedNotebook.
 To install RedNotebook, run "pip install ." (note the dot).
 """
 
-from pathlib import Path
 import shutil
 import sys
+from pathlib import Path
 
 from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py

@@ -293,8 +293,8 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
-    from gi.repository import GObject, Gtk
     import yaml
+    from gi.repository import GObject, Gtk
 
     functions = [
         platform.machine,

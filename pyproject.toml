@@ -2,13 +2,6 @@
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-# NOTE: you have to use single-quoted strings in TOML for regular expressions.
-# It's the equivalent of r-strings in Python.  Multiline strings are treated as
-# verbose regular expressions by Black.  Use [ ] to denote a significant space
-# character.
-
-# Configuration moved to [tool.ruff] section above
-
 [tool.ruff]
 line-length = 100
 target-version = "py38"
@@ -35,20 +28,11 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 # Allow certain files to have different rules if needed
-"rednotebook/journal.py" = ["I001"]  # Skip isort for this file (was excluded from isort)
-"rednotebook/main_window.py" = ["I001"]  # Skip isort for this file (was excluded from isort)
+"rednotebook/journal.py" = ["I001"]  # Skip isort for this file
+"rednotebook/main_window.py" = ["I001"]  # Skip isort for this file
 
 [tool.ruff.lint.isort]
-# Match the existing isort configuration
-case-sensitive = false
-force-single-line = false
-force-sort-within-sections = true
-known-first-party = ["rednotebook"]
-known-third-party = ["gi", "pytest"]
 lines-after-imports = 2
-
-[tool.ruff.format]
-# Ruff formatter configuration
 
 [tool.vulture]
 min_confidence = 0
