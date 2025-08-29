@@ -1,3 +1,13 @@
+rednotebook (2.41-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).
+  * Add dark mode instructions to built-in help documentation (#848, @jendrikseipp).
+  * Fix options dialog not closing when OK button is clicked (#857, @jendrikseipp).
+  * Replace AppVeyor CI with GitHub Actions workflow for Windows builds (@jendrikseipp).
+
+ -- Jendrik Seipp <jendrikseipp@gmail.com>  Thu, 28 Aug 2025 23:17:02 +0200
+
 rednotebook (2.40-1) UNRELEASED; urgency=low
 
   * New upstream release

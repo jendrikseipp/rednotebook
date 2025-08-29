@@ -429,6 +429,54 @@ are more likely to be stolen. If you encrypt your home partition all
 RedNotebook data will be encrypted, too.
 
 
+== Dark Mode ==
+
+RedNotebook follows your system's theme settings by default. Here are
+platform-specific instructions for enabling dark mode:
+
+=== Linux (GNOME/GTK environments) ===
+
+On most modern Linux distributions with GNOME, you can enable dark mode
+for GTK applications like RedNotebook:
+
+1. **Using GNOME Tweaks (recommended):**
+   - Install ``gnome-tweaks`` if not already installed
+   - Open GNOME Tweaks
+   - Navigate to "Appearance"
+   - Change "Legacy Applications" to:
+     - "Adwaita-dark" (older systems)
+     - "HighContrastInverse" (Debian 13/Trixie and newer)
+   - Restart RedNotebook
+
+2. **Using environment variables:**
+   - Set ``GTK_THEME=Adwaita:dark`` or ``GTK_THEME=Adwaita-dark``
+   - Start RedNotebook from terminal: ``GTK_THEME=Adwaita-dark rednotebook``
+   - Or add to your shell profile to make it permanent
+
+=== Flatpak installations ===
+
+For RedNotebook installed via Flatpak:
+
+1. Install Flatseal (a permissions manager for Flatpak)
+2. Open Flatseal
+3. Navigate to "All Applications" (global settings)
+4. In the "Environment" section, add: ``GTK_THEME=Adwaita-dark``
+5. Restart RedNotebook
+
+Alternatively, you can use the command line:
+``flatpak override --user --env=GTK_THEME=Adwaita-dark``
+
+=== General method (all platforms) ===
+
+You can force dark mode by setting the GTK_THEME environment variable:
+
+- **Linux/macOS:** ``export GTK_THEME=Adwaita-dark``
+- **Windows:** Set GTK_THEME=Adwaita-dark in system environment variables
+
+Note: The exact theme name may vary depending on your system. Common
+dark theme names include: Adwaita-dark, Adwaita:dark, HighContrastInverse.
+
+
 == Appearance on Windows ==
 
 You can use a GTK3 compatible theme to change the appearance of your
@@ -519,26 +567,29 @@ Numbered titles can be created by using "+" instead of "=". ""+ My
 Title +"" produces a title like "1.", +++++ My Title +++++ produces a
 title like 0.0.0.0.1
 
-=== Insert HTML or Latex code ===
+=== Math Formulas ===
 
-To insert custom code into your entries surround the code with single
-quotes. Use 2 single quotes for inline insertions and 3 single quotes
-if you want to insert a whole paragraph. For paragraphs be sure to put
-the single quotes on their own line.
+RedNotebook supports mathematical formulas that render in preview (via MathJax)
+and in LaTeX exports:
 
-||   Text                  |   Output                              |
+**Display math** (centered on its own line):
+- ``$$x^2 + y^2 = z^2$$``
+- ``\\[x^2 + y^2 = z^2\\]``
+
+
+**Inline math** (within text):
+- ``\\(x^2\\)`` produces inline math like \\(x^2\\)
+
+
+=== Raw Formatting (export-only) ===
+
+Sometimes you want content that is only inserted into LaTeX (or raw HTML in
+other exports) and not rendered by the preview engine. For this, surround the
+raw snippet with two single quotes:
+
+||   Text                  |   Output (preview)                     |
 | ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
-| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' in Latex) |
-
-This feature can be used to insert e.g. Latex formulas:
-
-```
-'''
-$$\\sum_{{i=1}}^{{n}} i =\frac{{ncdot (n+1)}}{{2}}$$
-'''
-```
-
-will produce a nice looking formula in the Latex export.
+| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' only appears formatted in LaTeX export) |
 
 === Verbatim text (Preserve format) ===
 
