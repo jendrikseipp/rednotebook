@@ -1,6 +1,6 @@
-# RedNotebook - Desktop Journal Application
+# RedNotebook - Desktop Journal
 
-RedNotebook is a modern desktop journal application written in Python using GTK3, GtkSourceView, and WebKitGTK. It allows users to format, tag, and search journal entries with support for pictures, links, templates, spell checking, and export to multiple formats.
+RedNotebook is a desktop journal application written in Python using GTK3, GtkSourceView and WebKitGTK. It allows users to format, tag, and search journal entries with support for pictures, links, templates, spell checking and export to multiple formats.
 
 **ALWAYS follow these instructions first and only fallback to additional search and context gathering if the information here is incomplete or found to be in error.**
 
@@ -39,22 +39,13 @@ Xvfb :99 -screen 0 1024x768x24 &
 **NOTE**: RedNotebook requires a graphical environment (GTK3). Use Xvfb for headless testing. Application startup is very fast (<5 seconds).
 
 ### Development Scripts and Testing
+
 ```bash
-# Build translations (~0.3 seconds)
-python3 dev/build_translations.py test-translations
-
-# Validate code with vulture (~0.3 seconds)
-python3 dev/whitelist.py
-
-# Test platform compatibility (~0.1 seconds)
-python3 win/sampleapp.py
-
-# Individual tests (if pytest available)
-# NOTE: Direct pytest has import issues due to argparse in journal.py
-python3 -c "import sys; sys.path.insert(0, '.'); import rednotebook.info; print('Version:', rednotebook.info.version)"
+# Run main test environment (includes pytest + extra scripts from tox.ini)
+tox -e py
 ```
 
-**TIMING**: All development scripts execute very quickly (<1 second each). These are safe to run frequently.
+**TIMING**: All development scripts execute quickly. These are safe to run frequently.
 
 ## Linting and Code Quality
 
@@ -63,9 +54,6 @@ python3 -c "import sys; sys.path.insert(0, '.'); import rednotebook.info; print(
 # Install and set up pre-commit hooks
 pip install pre-commit  # May timeout due to network issues
 pre-commit install
-
-# Alternative: Use system packages for linting tools
-sudo apt-get install python3-flake8
 ```
 
 ### Manual Linting (Validated to Work)
@@ -107,7 +95,7 @@ timeout 5 ./run --version
 # Run style checks (may take 30+ seconds, NEVER CANCEL)
 tox -v -e style
 
-# Run Python tests (may take 60+ seconds, NEVER CANCEL)  
+# Run Python tests (may take 60+ seconds, NEVER CANCEL)
 tox -v -e py
 ```
 
@@ -119,7 +107,7 @@ tox -v -e py
 After making any changes, ALWAYS test the following scenarios:
 
 1. **Application Startup**: `./run --version` should complete without errors
-2. **Help Display**: `./run --help` should show proper usage information  
+2. **Help Display**: `./run --help` should show proper usage information
 3. **Core Import**: Verify core modules can be imported without issues
 4. **Linting**: Code should pass flake8 without errors (excluding external/)
 
@@ -144,7 +132,7 @@ rednotebook/journal.py
 
 # Core application modules
 rednotebook/
-├── gui/              # GTK user interface components  
+├── gui/              # GTK user interface components
 ├── util/             # Utility functions and helpers
 ├── external/         # Third-party code (DO NOT LINT)
 ├── storage.py        # Data storage and journal management
@@ -170,7 +158,7 @@ web/                   # Website build scripts
 
 ### Frequently Modified Files
 - `rednotebook/gui/` - UI components and dialogs
-- `rednotebook/util/` - Utility functions and helpers  
+- `rednotebook/util/` - Utility functions and helpers
 - `rednotebook/storage.py` - Journal data handling
 - `tests/` - Test files (when testing works)
 
@@ -193,7 +181,7 @@ web/                   # Website build scripts
 - For headless environments, ensure Xvfb is running with DISPLAY set
 
 ### Import Errors
-- Ensure you're in the repository root directory  
+- Ensure you're in the repository root directory
 - Add current directory to Python path: `sys.path.insert(0, '.')`
 - Verify all system dependencies are installed
 
