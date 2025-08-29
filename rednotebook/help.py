@@ -583,47 +583,27 @@ title like 0.0.0.0.1
 
 === Math Formulas ===
 
-RedNotebook supports mathematical formulas in both preview mode and 
-LaTeX export.
-
-==== For preview mode (MathJax) ====
-
-Math formulas are rendered using MathJax in the preview. Use the following syntax:
+RedNotebook supports mathematical formulas that render in preview (via MathJax)
+and in LaTeX exports:
 
 **Display math** (centered on its own line):
-- ``$$x^2 + y^2 = z^2$$`` 
+- ``$$x^2 + y^2 = z^2$$``
 - ``\\[x^2 + y^2 = z^2\\]``
 
+
 **Inline math** (within text):
-- ``\\(x^2\\)`` for inline formulas like \\(x^2\\)
+- ``\\(x^2\\)`` produces inline math like \\(x^2\\)
 
-For example, the Pythagorean theorem: $$a^2 + b^2 = c^2$$
 
-And Einstein's equation inline: \\(E = mc^2\\) is famous.
+=== Raw Formatting (export-only) ===
 
-Complex formulas also work: \\[\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}\\]
+Sometimes you want content that is only inserted into LaTeX (or raw HTML in
+other exports) and not rendered by the preview engine. For this, surround the
+raw snippet with two single quotes:
 
-==== For LaTeX export only ====
-
-To insert custom HTML or LaTeX code that only appears in exports, surround 
-the code with single quotes. Use 2 single quotes for inline insertions 
-and 3 single quotes for paragraphs.
-
-||   Text                  |   Output                              |
+||   Text                  |   Output (preview)                     |
 | ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
-| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' in LaTeX export only) |
-
-This feature can be used for LaTeX-specific formulas:
-
-```
-'''
-$$\\sum_{i=1}^{n} i = \\frac{n \\cdot (n+1)}{2}$$
-'''
-```
-
-**Note:** The single quote syntax (``''$...$''``) only works in LaTeX export,
-not in preview mode. For formulas that work in both preview and export, 
-use the MathJax syntax described above.
+| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' only appears formatted in LaTeX export) |
 
 === Verbatim text (Preserve format) ===
 
