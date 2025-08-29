@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 # Configuration moved to [tool.ruff] section above
 
 [tool.ruff]
-line-length = 88
+line-length = 100
 target-version = "py38"
 # Treat "_" as a builtin (same as flake8 config)
 builtins = ["_"]
@@ -21,7 +21,7 @@ exclude = ["rednotebook/external/*"]
 # Enable the same rules that were previously handled by flake8, isort, and pyupgrade
 select = [
     "E",   # pycodestyle errors
-    "W",   # pycodestyle warnings  
+    "W",   # pycodestyle warnings
     "F",   # pyflakes
     "I",   # isort
     "UP",  # pyupgrade

@@ -45,8 +45,7 @@ def _make_html_view_class():
         from cefpython3 import cefpython as cef
     except ImportError as err:
         logging.info(
-            "CEF Python not found. Disabling clouds and"
-            ' in-app previews. Error message: "{}"'.format(err)
+            f'CEF Python not found. Disabling clouds and in-app previews. Error message: "{err}"'
         )
         return None
 
@@ -131,8 +130,9 @@ def _make_html_view_class():
 
         def on_before_browse(self, browser, frame, request, **_):
             url = request.GetUrl()
-            # For some reason GetUrl() appends slash to the returned URL so we need to compensate for it:
-            # (https://bugs.chromium.org/p/chromium/issues/detail?id=339054 might be the cause)
+            # For some reason GetUrl() appends slash to the returned URL so we need to
+            # compensate for it. (https://bugs.chromium.org/p/chromium/issues/detail?id=339054
+            # might be the cause.)
             if url == self.NOTEBOOK_URL + "/":
                 # On first invocation the url points to dummy NOTEBOOK_URL.
                 # There is no reason to emit signal for it.

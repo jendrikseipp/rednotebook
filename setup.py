@@ -64,9 +64,7 @@ class install(_install):
         for lang_dir in TMP_LOCALE_DIR.iterdir():
             lang = lang_dir.name
             lang_file = TMP_LOCALE_DIR / lang / "LC_MESSAGES" / "rednotebook.mo"
-            dest_dir = (
-                Path(self.install_data) / "share" / "locale" / lang / "LC_MESSAGES"
-            )
+            dest_dir = Path(self.install_data) / "share" / "locale" / lang / "LC_MESSAGES"
             dest_dir.mkdir(parents=True, exist_ok=True)
             shutil.copy2(lang_file, dest_dir / "rednotebook.mo")
 

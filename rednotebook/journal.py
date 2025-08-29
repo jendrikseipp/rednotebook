@@ -60,18 +60,12 @@ def _fix_webkit_compositing_on_kde():
 _fix_webkit_compositing_on_kde()
 
 # Use basic stdout logging before we can initialize logging correctly.
-logging.basicConfig(
-    level=logging.DEBUG, format="%(levelname)-8s %(message)s", stream=sys.stdout
-)
+logging.basicConfig(level=logging.DEBUG, format="%(levelname)-8s %(message)s", stream=sys.stdout)
 
 try:
     import gi
 except ImportError as err:
-    logging.error(
-        'pygobject could not be imported: "{}". Please install it (python3-gi).'.format(
-            err
-        )
-    )
+    logging.error(f'pygobject could not be imported: "{err}". Please install it (python3-gi).')
     sys.exit(1)
 
 try:
@@ -88,9 +82,7 @@ except ValueError:
         gi.require_version("GtkSource", "3.0")
         logging.info("Using GtkSourceView 3.0")
     except ValueError:
-        sys.exit(
-            "Please install GtkSource (gir1.2-gtksource-3.0 or gir1.2-gtksource-4)."
-        )
+        sys.exit("Please install GtkSource (gir1.2-gtksource-3.0 or gir1.2-gtksource-4).")
 
 
 if hasattr(sys, "frozen"):
@@ -187,7 +179,7 @@ def setup_logging(log_file):
     # add the handler to the root logger
     root_logger.addHandler(console)
 
-    logging.info('Writing log to file "%s"' % log_file)
+    logging.info(f'Writing log to file "{log_file}"')
 
 
 default_config_file = os.path.join(filesystem.app_dir, "files", "default.cfg")
@@ -198,8 +190,8 @@ setup_logging(dirs.log_file)
 
 # ------------------ end Enable logging -------------------------------
 
-logging.info("System encoding: %s" % filesystem.ENCODING)
-logging.info("Language code: %s" % filesystem.LANGUAGE)
+logging.info(f"System encoding: {filesystem.ENCODING}")
+logging.info(f"Language code: {filesystem.LANGUAGE}")
 
 try:
     import enchant
@@ -252,7 +244,7 @@ class Journal(Gtk.Application):
         self.config = user_config
         self.config.save_state()
 
-        logging.info("Running in portable mode: %s" % self.dirs.portable)
+        logging.info(f"Running in portable mode: {self.dirs.portable}")
 
         self.month = None
         self.date = None
@@ -264,9 +256,9 @@ class Journal(Gtk.Application):
         # show instructions at first start
         self.is_first_start = self.config.read("firstStart")
         self.config["firstStart"] = 0
-        logging.info("First Start: %s" % bool(self.is_first_start))
+        logging.info(f"First Start: {bool(self.is_first_start)}")
 
-        logging.info("RedNotebook version: %s" % info.version)
+        logging.info(f"RedNotebook version: {info.version}")
         logging.info(filesystem.get_platform_info())
 
         self.actual_date = self.get_start_date()
@@ -275,12 +267,10 @@ class Journal(Gtk.Application):
 
         journal_path = self.get_journal_path()
         if not self.dirs.is_valid_journal_path(journal_path):
-            logging.error(
-                "Invalid directory: %s. Using default journal." % journal_path
-            )
+            logging.error(f"Invalid directory: {journal_path}. Using default journal.")
             self.show_message(
                 _("You cannot use this directory for your journal:")
-                + " %s" % journal_path
+                + f" {journal_path}"
                 + ". "
                 + _("Opening default journal."),
                 error=True,
@@ -326,7 +316,7 @@ class Journal(Gtk.Application):
         # absolute or relative location
         path_arg = args.journal
 
-        logging.debug('Trying to find journal "%s"' % path_arg)
+        logging.debug(f'Trying to find journal "{path_arg}"')
 
         paths_to_check = [path_arg, os.path.join(self.dirs.journal_user_dir, path_arg)]
 
@@ -335,13 +325,11 @@ class Journal(Gtk.Application):
                 if os.path.isdir(path):
                     return path
                 else:
-                    logging.warning(
-                        "To open a journal you must specify a " "directory, not a file."
-                    )
+                    logging.warning("To open a journal you must specify a directory, not a file.")
 
         logging.error(
-            'The path "%s" is not a valid journal directory. '
-            'Execute "rednotebook -h" for instructions' % path_arg
+            f'The path "{path_arg}" is not a valid journal directory. '
+            'Execute "rednotebook -h" for instructions'
         )
         sys.exit(2)
 
@@ -355,9 +343,7 @@ class Journal(Gtk.Application):
         try:
             return dates.get_date_from_date_string(args.start_date)
         except ValueError:
-            logging.error(
-                "Invalid date: %s (required format: YYYY-MM-DD)." % args.start_date
-            )
+            logging.error(f"Invalid date: {args.start_date} (required format: YYYY-MM-DD).")
             sys.exit(2)
 
     def exit(self):
@@ -379,14 +365,10 @@ class Journal(Gtk.Application):
         options = options or {}
         options["font"] = self.config.read("previewFont")
         if use_gtk_theme:
-            bgcolor, fgcolor = utils.get_gtk_colors(
-                self.frame.day_text_field.day_text_view
-            )
+            bgcolor, fgcolor = utils.get_gtk_colors(self.frame.day_text_field.day_text_view)
             options["bgcolor"] = bgcolor
             options["fgcolor"] = fgcolor
-        return markup.convert(
-            text, target, self.dirs.data_dir, headers=headers, options=options
-        )
+        return markup.convert(text, target, self.dirs.data_dir, headers=headers, options=options)
 
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
         self.save_old_day()
@@ -411,7 +393,7 @@ class Journal(Gtk.Application):
             self.show_message(
                 _("The content has been saved to %s") % self.dirs.data_dir, error=False
             )
-            logging.info("The content has been saved to %r" % self.dirs.data_dir)
+            logging.info(f"The content has been saved to {self.dirs.data_dir!r}")
         elif something_saved is None:
             # Don't display this as an error, because we already show a dialog.
             self.show_message(_("The journal could not be saved"), error=False)
@@ -431,15 +413,13 @@ class Journal(Gtk.Application):
 
     def open_journal(self, data_dir):
         if not os.path.exists(data_dir):
-            logging.warning(
-                "The dir %s does not exist. Select a different dir." % data_dir
-            )
+            logging.warning(f"The dir {data_dir} does not exist. Select a different dir.")
             return
 
         if self.months:
             self.save_to_disk(changing_journal=True)
 
-        logging.info("Opening journal at %r" % data_dir)
+        logging.info(f"Opening journal at {data_dir!r}")
         self.dirs.data_dir = data_dir
 
         self.month = None
@@ -499,7 +479,7 @@ class Journal(Gtk.Application):
         return self.get_month(date).get_day(date.day)
 
     def get_escaped_tags(self):
-        return ["#%s" % data.escape_tag(tag) for tag in self.categories]
+        return [f"#{data.escape_tag(tag)}" for tag in self.categories]
 
     def save_old_day(self):
         """Order is important"""
@@ -531,9 +511,7 @@ class Journal(Gtk.Application):
 
     def change_date(self, new_date):
         if new_date < datetime.date(1900, 1, 1):
-            self.show_message(
-                "Only dates after 1900 are supported.", title="Too Early", error=True
-            )
+            self.show_message("Only dates after 1900 are supported.", title="Too Early", error=True)
             return
 
         if new_date == self.date:
@@ -683,7 +661,7 @@ class Journal(Gtk.Application):
         self.change_date(datetime.date.today())
         current_date = self.date
 
-        logging.info("Adding example content on %s" % current_date)
+        logging.info(f"Adding example content on {current_date}")
 
         for example_day in example_content:
             self.day.content = example_day

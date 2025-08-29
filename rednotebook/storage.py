@@ -45,7 +45,7 @@ except ImportError:
 
 
 def format_year_and_month(year, month):
-    return "%04d-%02d" % (year, month)
+    return f"{year:04d}-{month:02d}"
 
 
 def get_journal_files(data_dir):
@@ -109,11 +109,7 @@ def load_all_months_from_disk(data_dir):
 
 
 def _get_dict(month):
-    return {
-        day_number: day.content
-        for day_number, day in month.days.items()
-        if not day.empty
-    }
+    return {day_number: day.content for day_number, day in month.days.items() if not day.empty}
 
 
 def _save_month_to_disk(month, journal_dir):
@@ -159,8 +155,8 @@ def _save_month_to_disk(month, journal_dir):
         if mtime != month.mtime:
             conflict = get_filename(f".CONFLICT_BACKUP{mtime}")
             logging.debug(
-                "Last edit time of %s conflicts with edit time at file load\n"
-                "--> Backing up to %s" % (filename, conflict)
+                f"Last edit time of {filename} conflicts with edit time at file load\n"
+                f"--> Backing up to {conflict}"
             )
             shutil.copy2(filename, conflict)
         shutil.copy2(filename, old)

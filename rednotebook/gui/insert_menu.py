@@ -43,25 +43,19 @@ MENUITEMS_XML = """\
     <menuitem action="LineBreak"/>
 """
 
-TOOLBAR_XML = (
-    """\
+TOOLBAR_XML = f"""\
 <ui>
 <popup action="InsertMenu">
-%s
+{MENUITEMS_XML}
 </popup>
 </ui>
 """
-    % MENUITEMS_XML
-)
 
-MENUBAR_XML = (
-    """\
+MENUBAR_XML = f"""\
 <menu action="InsertMenuBar">
-%s
+{MENUITEMS_XML}
 </menu>
 """
-    % MENUITEMS_XML
-)
 
 
 def get_image(name):
@@ -237,9 +231,7 @@ class InsertMenu:
             if menu_item:
                 menu_item.set_image(get_image(filename + ".png"))
 
-        self.main_window.insert_button = customwidgets.ToolbarMenuButton(
-            "list-add", menu
-        )
+        self.main_window.insert_button = customwidgets.ToolbarMenuButton("list-add", menu)
         self.main_window.insert_button.set_label(_("Insert"))
         self.main_window.insert_button.set_tooltip_text(
             _("Insert images, files, links and other content")
@@ -303,7 +295,7 @@ class InsertMenu:
                         _("Width must be an integer."), error=True
                     )
                     return
-                width_text = "?%d" % width
+                width_text = f"?{width:d}"
 
             if sel_text:
                 sel_text += " "
@@ -390,7 +382,7 @@ class InsertMenu:
     @insert_handler
     def on_insert_bullet_list(self, sel_text):
         if sel_text:
-            return "\n".join("- %s" % row for row in sel_text.splitlines())
+            return "\n".join(f"- {row}" for row in sel_text.splitlines())
         return self.bullet_list
 
     @insert_handler

@@ -10,10 +10,10 @@ repos:
 
 # Static analysis and formatting for Python code with ruff
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.10
+    rev: v0.12.11
     hooks:
     # Run the linter
-    -   id: ruff
+    -   id: ruff-check
         args: ['--fix']
     # Run the formatter
     -   id: ruff-format

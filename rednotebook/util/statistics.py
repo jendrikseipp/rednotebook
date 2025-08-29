@@ -49,7 +49,7 @@ class Statistics:
         if total == 0:
             return 0
         percent = round(100 * edited / total, 2)
-        return "%s%%" % percent
+        return f"{percent}%"
 
     def get_average_number_of_words(self):
         if self.get_number_of_entries() == 0:

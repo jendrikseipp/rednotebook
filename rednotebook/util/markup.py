@@ -116,7 +116,7 @@ MATHJAX = f"""\
 
 def convert_categories_to_markup(categories, with_category_title=True):
     # Only add Category title if the text is displayed
-    markup = "== %s ==\n" % _("Tags") if with_category_title else ""
+    markup = "== {} ==\n".format(_("Tags")) if with_category_title else ""
     for category, entry_list in categories.items():
         markup += f"- {category}" + "\n"
         for entry in entry_list:
@@ -125,9 +125,7 @@ def convert_categories_to_markup(categories, with_category_title=True):
     return markup
 
 
-def get_markup_for_day(
-    day, target, with_text=True, with_tags=True, categories=None, date=None
-):
+def get_markup_for_day(day, target, with_text=True, with_tags=True, categories=None, date=None):
     """
     Used for exporting days
     """
@@ -195,9 +193,7 @@ def _get_config(target, options):
 
     # Highlight hashtags.
     if target == "tex":
-        config["preproc"].append(
-            [HASHTAG.pattern, r"\1{\2\3BEGININDEX\3ENDINDEX|color:red}"]
-        )
+        config["preproc"].append([HASHTAG.pattern, r"\1{\2\3BEGININDEX\3ENDINDEX|color:red}"])
     else:
         config["preproc"].append([HASHTAG.pattern, r"\1{\2\3|color:red}"])
 
@@ -247,9 +243,7 @@ def _get_config(target, options):
         scheme = filesystem.LOCAL_FILE_PEFIX
 
         # For images we have to omit the file:// prefix
-        config["postproc"].append(
-            [r'includegraphics\{(.*)"%s' % scheme, r'includegraphics{"\1']
-        )
+        config["postproc"].append([rf'includegraphics\{{(.*)"{scheme}', r'includegraphics{"\1'])
 
         # Special handling for LOCAL file links (Omit scheme, add run:)
         # \htmladdnormallink{file.txt}{file:///home/user/file.txt}
@@ -257,7 +251,7 @@ def _get_config(target, options):
         # \htmladdnormallink{file.txt}{run:/home/user/file.txt}
         config["postproc"].append(
             [
-                r"htmladdnormallink\{(.*)\}\{%s(.*)\}" % scheme,
+                rf"htmladdnormallink\{{(.*)\}}\{{{scheme}(.*)\}}",
                 r"htmladdnormallink{\1}{run:\2}",
             ]
         )
@@ -272,12 +266,8 @@ def _get_config(target, options):
 
         # We want the plain latex formulas unescaped.
         # Allowed formulas: $$...$$, \[...\], \(...\)
-        config["preproc"].append(
-            [r"\\\[\s*(.+?)\s*\\\]", r"BEGINEQUATION''\1''ENDEQUATION"]
-        )
-        config["preproc"].append(
-            [r"\$\$\s*(.+?)\s*\$\$", r"BEGINEQUATION''\1''ENDEQUATION"]
-        )
+        config["preproc"].append([r"\\\[\s*(.+?)\s*\\\]", r"BEGINEQUATION''\1''ENDEQUATION"])
+        config["preproc"].append([r"\$\$\s*(.+?)\s*\$\$", r"BEGINEQUATION''\1''ENDEQUATION"])
         config["postproc"].append([r"BEGINEQUATION(.+)ENDEQUATION", r"$$\1$$"])
 
         config["preproc"].append([r"\\\(\s*(.+?)\s*\\\)", r"BEGINMATH''\1''ENDMATH"])
@@ -303,8 +293,9 @@ def _get_config(target, options):
 
     # Entry references
     if target == "html":
-        # txt2tags will generate links to the named entry references because they share common bracket
-        # notation used by the URIs. We just need to add our internal schema to make it a proper URI.
+        # txt2tags will generate links to the named entry references because they share
+        # common bracket notation used by the URIs. We just need to add our internal
+        # schema to make it a proper URI.
         config["preproc"].append(
             [
                 r"\[(?P<name>.+)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]",
@@ -312,12 +303,10 @@ def _get_config(target, options):
             ]
         )
 
-        # Convert bracketed dates into named references where the date itself is being used as a name.
-        # For example:
+        # Convert bracketed dates into named references where the date itself is being
+        # used as a name. For example:
         # "Today is [2019-10-20]" will be converted into "Today is [2019-10-20 #2019-10-20]"
-        config["preproc"].append(
-            [r"\[(?P<date>\d{4}-\d{2}-\d{2})\]", r"[\g<date> #\g<date>]"]
-        )
+        config["preproc"].append([r"\[(?P<date>\d{4}-\d{2}-\d{2})\]", r"[\g<date> #\g<date>]"])
     else:
         # Links to entry references are not supported for targets other than HTML
         config["preproc"].append(
@@ -330,9 +319,7 @@ def _get_config(target, options):
     img_name = r"\S.*\S|\S"
 
     # Apply this prepoc only after the latex image quotes have been added
-    config["preproc"].append(
-        [rf"\[({img_name}\.({img_ext}))\?(\d+)\]", r"[WIDTH\3-\1]"]
-    )
+    config["preproc"].append([rf"\[({img_name}\.({img_ext}))\?(\d+)\]", r"[WIDTH\3-\1]"])
 
     # Disable colors for all other targets.
     config["postproc"].append([COLOR_ESCAPED, r"\1"])
@@ -388,11 +375,9 @@ def convert(txt, target, data_dir, headers=None, options=None):
 
     # Only add MathJax code if there is a formula.
     options["add_mathjax"] = (
-        FORMULAS_SUPPORTED
-        and "html" in target
-        and any(x in txt for x in MATHJAX_DELIMITERS)
+        FORMULAS_SUPPORTED and "html" in target and any(x in txt for x in MATHJAX_DELIMITERS)
     )
-    logging.debug(f'Add mathjax code: {options["add_mathjax"]}')
+    logging.debug(f"Add mathjax code: {options['add_mathjax']}")
 
     # Turn relative paths into absolute paths.
     txt = _convert_paths(txt, data_dir)
