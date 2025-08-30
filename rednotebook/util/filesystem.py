@@ -82,8 +82,6 @@ def _is_nvidia_graphics_detected():
 def _is_x11_forwarding_detected():
     """
     Detect if we're running in an X11 forwarding environment (e.g., SSH with X11 forwarding).
-
-    Returns True if X11 forwarding is detected, False otherwise.
     """
     # Check for SSH connection indicators
     ssh_indicators = ["SSH_CLIENT", "SSH_CONNECTION", "SSH_TTY"]
@@ -101,7 +99,7 @@ def _is_x11_forwarding_detected():
         except (IndexError, ValueError):
             pass
 
-    return has_ssh and bool(display) and is_remote_display
+    return has_ssh and display and is_remote_display
 
 
 def _apply_webkit_x11_forwarding_workaround():
@@ -113,14 +111,14 @@ def _apply_webkit_x11_forwarding_workaround():
     problematic features.
     """
     if _is_x11_forwarding_detected():
-        # Environment variables to set for better X11 forwarding compatibility
+        # Environment variables to set for better X11 forwarding compatibility.
         webkit_env_vars = {
             "WEBKIT_DISABLE_SANDBOX": "1",  # Disable sandboxing which may not work remotely
             "WEBKIT_DISABLE_DMABUF_RENDERER": "1",  # Disable DMA-BUF renderer
             "WEBKIT_DISABLE_COMPOSITING_MODE": "1",  # Disable compositing
         }
 
-        # Only set variables that aren't already set by user
+        # Only set variables that aren't already set by the user.
         set_vars = []
         for var, value in webkit_env_vars.items():
             if var not in os.environ:
