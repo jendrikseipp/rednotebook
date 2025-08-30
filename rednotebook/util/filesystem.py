@@ -82,13 +82,13 @@ def _is_nvidia_graphics_detected():
 def _is_x11_forwarding_detected():
     """
     Detect if we're running in an X11 forwarding environment (e.g., SSH with X11 forwarding).
-    
+
     Returns True if X11 forwarding is detected, False otherwise.
     """
     # Check for SSH connection indicators
     ssh_indicators = ["SSH_CLIENT", "SSH_CONNECTION", "SSH_TTY"]
     has_ssh = any(var in os.environ for var in ssh_indicators)
-    
+
     # Check if DISPLAY is set to a remote display (contains a colon and number > 0)
     display = os.environ.get("DISPLAY", "")
     is_remote_display = False
@@ -100,14 +100,14 @@ def _is_x11_forwarding_detected():
             is_remote_display = display_num > 0
         except (IndexError, ValueError):
             pass
-    
+
     return has_ssh and bool(display) and is_remote_display
 
 
 def _apply_webkit_x11_forwarding_workaround():
     """
     Apply workarounds for WebKitGTK when running with X11 forwarding.
-    
+
     X11 forwarding often lacks hardware acceleration and can cause WebKit2 to crash
     or fail to initialize. This function sets environment variables to disable
     problematic features.
@@ -119,14 +119,14 @@ def _apply_webkit_x11_forwarding_workaround():
             "WEBKIT_DISABLE_DMABUF_RENDERER": "1",  # Disable DMA-BUF renderer
             "WEBKIT_DISABLE_COMPOSITING_MODE": "1",  # Disable compositing
         }
-        
+
         # Only set variables that aren't already set by user
         set_vars = []
         for var, value in webkit_env_vars.items():
             if var not in os.environ:
                 os.environ[var] = value
                 set_vars.append(var)
-        
+
         if set_vars:
             logging.info(
                 f"X11 forwarding detected. Setting WebKit environment variables "
