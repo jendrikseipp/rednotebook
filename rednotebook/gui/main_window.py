@@ -600,8 +600,22 @@ class MainWindow:
         main_frame_width = config.read("mainFrameWidth")
         main_frame_height = config.read("mainFrameHeight")
 
-        screen_width = Gdk.Screen.width()
-        screen_height = Gdk.Screen.height()
+        # Get screen dimensions in a Wayland-compatible way
+        display = Gdk.Display.get_default()
+        if display:
+            monitor = display.get_primary_monitor()
+            if monitor:
+                geometry = monitor.get_geometry()
+                screen_width = geometry.width
+                screen_height = geometry.height
+            else:
+                # Fallback if no primary monitor found
+                screen_width = 1024
+                screen_height = 768
+        else:
+            # Fallback if no display found
+            screen_width = 1024
+            screen_height = 768
 
         main_frame_width = min(main_frame_width, screen_width)
         main_frame_height = min(main_frame_height, screen_height)
