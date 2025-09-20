@@ -1,6 +1,7 @@
 # next (unreleased)
 * Update help concerning math formulas (#97, #855, @jendrikseipp).
 * Fix X11 forwarding (#726, #847, @jendrikseipp).
+* Don't store/restore window position on Wayland (#806, @jendrikseipp).
 
 # 2.41 (2025-08-28)
 * Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).

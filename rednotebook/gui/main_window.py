@@ -592,16 +592,21 @@ class MainWindow:
 
         # Remember if window was maximized in separate method
 
-        # Remember window position
-        config["mainFrameX"], config["mainFrameY"] = self.main_frame.get_position()
+        # Remember window position (not reliable / meaningful on Wayland; skip there)
+        if not self._is_wayland():
+            config["mainFrameX"], config["mainFrameY"] = self.main_frame.get_position()
 
     def load_values_from_config(self):
         config = self.journal.config
         main_frame_width = config.read("mainFrameWidth")
         main_frame_height = config.read("mainFrameHeight")
-
-        screen_width = Gdk.Screen.width()
-        screen_height = Gdk.Screen.height()
+        display = Gdk.Display.get_default()
+        monitor = display.get_primary_monitor() if display else None
+        if monitor:
+            geometry = monitor.get_geometry()
+            screen_width, screen_height = geometry.width, geometry.height
+        else:
+            screen_width, screen_height = 1024, 768  # safe default
 
         main_frame_width = min(main_frame_width, screen_width)
         main_frame_height = min(main_frame_height, screen_height)
@@ -612,18 +617,20 @@ class MainWindow:
             self.main_frame.maximize()
         else:
             # If window is not maximized, restore last position
-            x = config.read("mainFrameX")
-            y = config.read("mainFrameY")
-            try:
-                x, y = int(x), int(y)
-                # Set to 0 if value is below 0
-                if 0 <= x <= screen_width and 0 <= y <= screen_height:
-                    self.main_frame.move(x, y)
-                else:
-                    self.main_frame.set_position(Gtk.WindowPosition.CENTER)
-            except (ValueError, TypeError):
-                # Values have not been set or are not valid integers
+            if self._is_wayland():
+                # Wayland compositors often ignore manual positioning; just center.
                 self.main_frame.set_position(Gtk.WindowPosition.CENTER)
+            else:
+                x = config.read("mainFrameX")
+                y = config.read("mainFrameY")
+                try:
+                    x, y = int(x), int(y)
+                    if 0 <= x <= screen_width and 0 <= y <= screen_height:
+                        self.main_frame.move(x, y)
+                    else:
+                        self.main_frame.set_position(Gtk.WindowPosition.CENTER)
+                except (ValueError, TypeError):
+                    self.main_frame.set_position(Gtk.WindowPosition.CENTER)
 
         self.builder.get_object("main_pane").set_position(config.read("leftDividerPosition"))
         # By default do not show tags pane.
@@ -632,6 +639,10 @@ class MainWindow:
         self.set_font(config.read("mainFont", editor.DEFAULT_FONT))
 
         self.set_auto_indent()
+
+    def _is_wayland(self):
+        # Standard environment hint for Wayland sessions.
+        return os.environ.get("WAYLAND_DISPLAY") is not None
 
     def set_auto_indent(self):
         auto_indent = self.journal.config.read("autoIndent") == 1
