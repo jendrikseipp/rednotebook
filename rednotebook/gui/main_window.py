@@ -593,7 +593,7 @@ class MainWindow:
         # Remember if window was maximized in separate method
 
         # Remember window position (not reliable / meaningful on Wayland; skip there)
-        if not self._is_wayland():
+        if not filesystem.is_wayland_session():
             config["mainFrameX"], config["mainFrameY"] = self.main_frame.get_position()
 
     def load_values_from_config(self):
@@ -617,7 +617,7 @@ class MainWindow:
             self.main_frame.maximize()
         else:
             # If window is not maximized, restore last position
-            if self._is_wayland():
+            if filesystem.is_wayland_session():
                 # Wayland compositors often ignore manual positioning; just center.
                 self.main_frame.set_position(Gtk.WindowPosition.CENTER)
             else:
@@ -639,10 +639,6 @@ class MainWindow:
         self.set_font(config.read("mainFont", editor.DEFAULT_FONT))
 
         self.set_auto_indent()
-
-    def _is_wayland(self):
-        # Standard environment hint for Wayland sessions.
-        return os.environ.get("WAYLAND_DISPLAY") is not None
 
     def set_auto_indent(self):
         auto_indent = self.journal.config.read("autoIndent") == 1

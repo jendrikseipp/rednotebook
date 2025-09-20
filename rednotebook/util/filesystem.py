@@ -187,6 +187,25 @@ def has_system_tray():
     return IS_WIN  # A smarter detection is needed here ;)
 
 
+def is_wayland_session():
+    """Return True if running under a Wayland session.
+
+    Detection order:
+    1. XDG_SESSION_TYPE explicitly set to 'wayland'.
+    2. Presence of WAYLAND_DISPLAY variable.
+
+    We purposely do NOT treat a session as X11 just because DISPLAY is set,
+    since on Wayland compositors XWayland provides DISPLAY as well. This
+    function is centralised so callers do not need to duplicate environment
+    checks and so behaviour is consistent across the application.
+    """
+    if os.environ.get("XDG_SESSION_TYPE", "").lower() == "wayland":
+        return True
+    if os.environ.get("WAYLAND_DISPLAY"):
+        return True
+    return False
+
+
 def main_is_frozen():
     return hasattr(sys, "frozen")
 
