@@ -281,7 +281,7 @@ class MainWindow:
         else:
             self.show()
 
-    def on_tray_popup_menu(self, _status_icon, button, activate_time):
+    def on_tray_popup_menu(self, _status_icon, _button, _activate_time):
         """
         Called when the user right-clicks the tray icon
         """
@@ -321,7 +321,7 @@ class MainWindow:
         # Create a Menu
         menu = self.uimanager.get_widget("/TrayMenu")
 
-        menu.popup(None, None, None, None, button, activate_time)
+        menu.popup_at_pointer(None)
 
     def show(self):
         self.main_frame.show()
@@ -625,9 +625,17 @@ class MainWindow:
                 if 0 <= x <= screen_width and 0 <= y <= screen_height:
                     self.main_frame.move(x, y)
                 else:
-                    self.main_frame.set_position(Gtk.WindowPosition.CENTER)
+                    # Center window manually using screen dimensions
+                    window_width, window_height = self.main_frame.get_size()
+                    center_x = (screen_width - window_width) // 2
+                    center_y = (screen_height - window_height) // 2
+                    self.main_frame.move(center_x, center_y)
             except (ValueError, TypeError):
-                self.main_frame.set_position(Gtk.WindowPosition.CENTER)
+                # Center window manually using screen dimensions
+                window_width, window_height = self.main_frame.get_size()
+                center_x = (screen_width - window_width) // 2
+                center_y = (screen_height - window_height) // 2
+                self.main_frame.move(center_x, center_y)
 
         self.builder.get_object("main_pane").set_position(config.read("leftDividerPosition"))
         # By default do not show tags pane.

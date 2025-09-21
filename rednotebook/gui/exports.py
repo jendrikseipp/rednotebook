@@ -63,14 +63,14 @@ class DatePage(AssistantPage):
         self.calendar1 = Calendar(week_numbers=show_week_numbers)
         self.calendar2 = Calendar(week_numbers=show_week_numbers)
 
-        vbox1 = Gtk.VBox()
-        vbox2 = Gtk.VBox()
+        vbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        vbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         vbox1.pack_start(label1, False, False, 0)
         vbox1.pack_start(self.calendar1, True, True, 0)
         vbox2.pack_start(label2, False, False, 0)
         vbox2.pack_start(self.calendar2, True, True, 0)
 
-        hbox = Gtk.HBox()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         hbox.pack_start(vbox1, True, True, 0)
         hbox.pack_start(vbox2, True, True, 0)
         self.pack_start(hbox, True, True, 0)
@@ -141,7 +141,7 @@ class ContentsPage(AssistantPage):
         self.pack_start(self.text_and_tags_button, False, False, 0)
         self.pack_start(self.text_only_button, False, False, 0)
         self.pack_start(self.tags_only_button, False, False, 0)
-        self.pack_start(Gtk.HSeparator(), False, False, 0)
+        self.pack_start(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL), False, False, 0)
         self.pack_start(self.filter_tags_button, False, False, 0)
 
         self.available_categories = customwidgets.CustomListView([(_("Available tags"), str)])
@@ -159,14 +159,14 @@ class ContentsPage(AssistantPage):
         self.select_button.connect("clicked", self.on_select_category)
         self.deselect_button.connect("clicked", self.on_deselect_category)
 
-        centered_vbox = Gtk.VBox()
+        centered_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         centered_vbox.pack_start(self.select_button, True, False, 0)
         centered_vbox.pack_start(self.deselect_button, True, False, 0)
 
-        vbox = Gtk.VBox()
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         vbox.pack_start(centered_vbox, True, False, 0)
 
-        hbox = Gtk.HBox()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         hbox.pack_start(left_scroll, True, True, 0)
         hbox.pack_start(vbox, False, False, 0)
         hbox.pack_start(right_scroll, True, True, 0)

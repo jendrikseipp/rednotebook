@@ -263,7 +263,7 @@ class InsertMenu:
             picture_chooser.add_filter(file_filter)
 
         # Add box for inserting image width.
-        box = Gtk.HBox()
+        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         box.set_spacing(2)
         label = Gtk.Label(label=_("Width (optional):"))
         width_entry = Gtk.Entry()
