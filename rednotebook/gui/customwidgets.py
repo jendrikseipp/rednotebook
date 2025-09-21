@@ -140,8 +140,10 @@ class Info(Gtk.InfoBar):
         Gtk.InfoBar.__init__(self)
         self.title_label = Gtk.Label()
         self.msg_label = Gtk.Label()
-        self.title_label.set_alignment(0.0, 0.5)
-        self.msg_label.set_alignment(0.0, 0.5)
+        self.title_label.set_halign(Gtk.Align.START)
+        self.title_label.set_valign(Gtk.Align.CENTER)
+        self.msg_label.set_halign(Gtk.Align.START)
+        self.msg_label.set_valign(Gtk.Align.CENTER)
 
         vbox = Gtk.VBox(spacing=5)
         vbox.pack_start(self.title_label, False, False, 0)
@@ -190,7 +192,8 @@ class AssistantPage(Gtk.VBox):
     def _add_header(self):
         self.header = Gtk.Label()
         self.header.set_markup("Unset")
-        self.header.set_alignment(0.0, 0.5)
+        self.header.set_halign(Gtk.Align.START)
+        self.header.set_valign(Gtk.Align.CENTER)
         self.pack_start(self.header, False, False, 0)
         self.separator = Gtk.HSeparator()
         self.pack_start(self.separator, False, False, 0)
@@ -224,7 +227,8 @@ class RadioButtonPage(AssistantPage):
 
         if tooltip:
             description = Gtk.Label()
-            description.set_alignment(0.0, 0.5)
+            description.set_halign(Gtk.Align.START)
+            description.set_valign(Gtk.Align.CENTER)
             description.set_markup(" " * 10 + tooltip)
             description.set_sensitive(sensitive)
             self.pack_start(description, False, False, 0)

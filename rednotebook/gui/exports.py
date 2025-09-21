@@ -173,7 +173,8 @@ class ContentsPage(AssistantPage):
         self.pack_start(hbox, True, True, 0)
 
         self.error_text = Gtk.Label(label="")
-        self.error_text.set_alignment(0.0, 0.5)
+        self.error_text.set_halign(Gtk.Align.START)
+        self.error_text.set_valign(Gtk.Align.CENTER)
 
         self.pack_end(self.error_text, False, False, 0)
 
@@ -275,7 +276,8 @@ class SummaryPage(AssistantPage):
     def add_setting(self, setting, value):
         label = Gtk.Label()
         label.set_markup(f"<b>{setting}:</b> {value}")
-        label.set_alignment(0.0, 0.5)
+        label.set_halign(Gtk.Align.START)
+        label.set_valign(Gtk.Align.CENTER)
         label.show()
         self.pack_start(label, False, False, 0)
         self.settings.append(label)

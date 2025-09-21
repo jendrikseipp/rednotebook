@@ -615,22 +615,19 @@ class MainWindow:
 
         if config.read("mainFrameMaximized"):
             self.main_frame.maximize()
-        else:
+        # On Wayland, let compositor handle positioning.
+        elif not filesystem.is_wayland_session():
             # If window is not maximized, restore last position
-            if filesystem.is_wayland_session():
-                # Wayland compositors often ignore manual positioning; just center.
-                self.main_frame.set_position(Gtk.WindowPosition.CENTER)
-            else:
-                x = config.read("mainFrameX")
-                y = config.read("mainFrameY")
-                try:
-                    x, y = int(x), int(y)
-                    if 0 <= x <= screen_width and 0 <= y <= screen_height:
-                        self.main_frame.move(x, y)
-                    else:
-                        self.main_frame.set_position(Gtk.WindowPosition.CENTER)
-                except (ValueError, TypeError):
+            x = config.read("mainFrameX")
+            y = config.read("mainFrameY")
+            try:
+                x, y = int(x), int(y)
+                if 0 <= x <= screen_width and 0 <= y <= screen_height:
+                    self.main_frame.move(x, y)
+                else:
                     self.main_frame.set_position(Gtk.WindowPosition.CENTER)
+            except (ValueError, TypeError):
+                self.main_frame.set_position(Gtk.WindowPosition.CENTER)
 
         self.builder.get_object("main_pane").set_position(config.read("leftDividerPosition"))
         # By default do not show tags pane.
