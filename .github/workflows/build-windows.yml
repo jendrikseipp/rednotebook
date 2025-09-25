@@ -101,11 +101,6 @@ jobs:
         # Quote --add-data arguments so PowerShell does not split on semicolons.
         python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" sampleapp.py
         Copy-Item -Recurse C:\gtk\share\enchant dist\sampleapp\share\enchant
-        Get-ChildItem dist\sampleapp
-        Get-ChildItem dist\sampleapp\lib\enchant
-        Get-ChildItem dist\sampleapp\share
-        Get-ChildItem dist\sampleapp\share\enchant\
-        Get-ChildItem dist\sampleapp\share\enchant\myspell
         # Use clean PATH to check that everything has been copied correctly.
         $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp"
         .\dist\sampleapp\sampleapp.exe
