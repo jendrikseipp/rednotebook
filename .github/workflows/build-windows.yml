@@ -75,10 +75,15 @@ jobs:
 
     - name: Patch GtkSourceView hook
       run: |
-        $hookFile = "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*/x64\Lib\site-packages\pyinstaller\hooks\hook-gi.repository.GtkSource.py"
-        $hookPath = Get-ChildItem $hookFile | Select-Object -First 1 -ExpandProperty FullName
-        (Get-Content $hookPath) -replace '3\.0', '4' | Set-Content $hookPath
-        echo "Patched GtkSourceView hook at: $hookPath"
+        $pythonPath = "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*\x64"
+        $hookFile = Get-ChildItem "$pythonPath\Lib\site-packages\pyinstaller\hooks\hook-gi.repository.GtkSource.py" -ErrorAction SilentlyContinue
+        if ($hookFile) {
+          $hookPath = $hookFile.FullName
+          (Get-Content $hookPath) -replace '3\.0', '4' | Set-Content $hookPath
+          echo "Patched GtkSourceView hook at: $hookPath"
+        } else {
+          echo "Warning: GtkSourceView hook file not found"
+        }
 
     - name: Set Pyenchant debug logging
       run: |
@@ -99,21 +104,9 @@ jobs:
         cd win
         python sampleapp.py
         # Quote --add-data arguments so PowerShell does not split on semicolons.
-        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" sampleapp.py
-        Copy-Item -Recurse C:\gtk\share\enchant dist\sampleapp\share\enchant
-        # PyInstaller 6.0: Copy enchant data and libraries to where pyenchant expects them
-        New-Item -ItemType Directory -Path "dist\sampleapp\_internal\enchant\data\mingw64\bin" -Force
-        New-Item -ItemType Directory -Path "dist\sampleapp\_internal\enchant\data\mingw64\lib\enchant" -Force
-        Copy-Item -Recurse C:\gtk\share\enchant\* dist\sampleapp\_internal\enchant\data\mingw64\ -Force
-        Copy-Item C:\gtk\bin\libenchant.dll dist\sampleapp\_internal\enchant\data\mingw64\bin\libenchant-2.dll -Force
-        Copy-Item C:\gtk\lib\enchant\*.dll dist\sampleapp\_internal\enchant\data\mingw64\lib\enchant\ -Force
-        Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64
-        Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\bin
-        Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\lib\enchant
-        Write-Host "Contents of myspell directory:"
-        Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\myspell -Recurse
-        Write-Host "Contents of ispell directory:"
-        Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\ispell -Recurse
+        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" --add-data "C:/gtk/share/enchant;enchant" sampleapp.py
+        # Let PyInstaller 6.16.0 handle the file placement automatically
+        Get-ChildItem dist\sampleapp -Recurse | Where-Object Name -like "*enchant*" | Select-Object FullName
         # Use clean PATH to check that everything has been copied correctly.
         $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp"
         .\dist\sampleapp\sampleapp.exe
