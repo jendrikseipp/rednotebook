@@ -123,8 +123,8 @@ jobs:
           Get-ChildItem dist\sampleapp -Recurse | Where-Object { $_.Name -like "*enchant*" } | Select-Object FullName
           # Use clean PATH to check that everything has been copied correctly.
           $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp"
-          # Set enchant environment variables to help it find dictionaries in PyInstaller bundle
-          $env:PYENCHANT_LIBRARY_PATH = "$pwd\dist\sampleapp\_internal\lib\enchant"
+          # Set enchant environment variables to help it find the library and dictionaries in PyInstaller bundle
+          $env:PYENCHANT_LIBRARY_PATH = "$pwd\dist\sampleapp\_internal\libenchant.dll"
           $env:ENCHANT_DATA_DIR = "$pwd\dist\sampleapp\_internal\share\enchant"
           .\dist\sampleapp\sampleapp.exe
         } else {
