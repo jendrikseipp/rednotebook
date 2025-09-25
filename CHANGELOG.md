@@ -1,6 +1,7 @@
 # next (unreleased)
 * Update help concerning math formulas (#97, #855, @jendrikseipp).
 * Fix X11 forwarding (#726, #847, @jendrikseipp).
+* Upgrade to PyInstaller 6.16 (@jendrikseipp).
 
 # 2.41 (2025-08-28)
 * Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).
