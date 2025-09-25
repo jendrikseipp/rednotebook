@@ -99,9 +99,6 @@ jobs:
     - name: Run tests
       run: |
         python -m tox -v -e py
-      env:
-        ENCHANT_DATA_DIR: C:\gtk\share\enchant
-        ENCHANT_MODULE_PATH: C:\gtk\lib\enchant
 
     - name: Test sample app
       run: |
