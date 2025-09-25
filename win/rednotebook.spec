@@ -20,6 +20,19 @@ MISSED_BINARIES = [
     ]
 ]
 
+# Add enchant dictionary files.
+import glob
+ENCHANT_DICT_FILES = []
+dict_source_dir = os.path.join(gtkdir, "share", "enchant", "myspell", "myspell")
+if os.path.exists(dict_source_dir):
+    for dict_file in glob.glob(os.path.join(dict_source_dir, "*")):
+        if os.path.isfile(dict_file):
+            filename = os.path.basename(dict_file)
+            ENCHANT_DICT_FILES.append((dict_file, "share/enchant/myspell"))
+
+# Ensure at least one dictionary file was found.
+assert ENCHANT_DICT_FILES, "No enchant dictionary files found in {}".format(dict_source_dir)
+
 for path in [drive_c, repo, srcdir, icon] + [src for src, _ in MISSED_BINARIES]:
     assert os.path.exists(path), "{} does not exist".format(path)
 
@@ -34,7 +47,7 @@ a = Analysis(
     [os.path.join(srcdir, 'journal.py')],
     pathex=[repo],
     binaries=MISSED_BINARIES,
-    datas=[],
+    datas=ENCHANT_DICT_FILES,
     hiddenimports=[],
     hookspath=["."],  # To find custom hooks.
     runtime_hooks=[],
