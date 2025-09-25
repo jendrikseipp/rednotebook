@@ -58,7 +58,10 @@ jobs:
         python -m pip install --no-warn-script-location C:\gtk\PyGObject-3.42.0-cp39-cp39-win_amd64.whl
         # Install separately because --no-binary option disables using wheels (leading to problems for Cython).
         python -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2
+        Write-Host "Installing requirements.txt packages..."
         python -m pip install --no-warn-script-location -r win/requirements.txt
+        Write-Host "Checking PyInstaller installation..."
+        python -c "import PyInstaller; print('PyInstaller version:', PyInstaller.__version__)"
         python -m pip freeze
         python -m pip list --outdated
 
@@ -108,7 +111,10 @@ jobs:
       run: |
         cd win
         python sampleapp.py
+        Write-Host "Testing PyInstaller availability..."
+        python -c "import PyInstaller; print('PyInstaller found, version:', PyInstaller.__version__)"
         # Quote --add-data arguments so PowerShell does not split on semicolons.
+        Write-Host "Running PyInstaller build..."
         python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" --add-data "C:/gtk/share/enchant;enchant" sampleapp.py
         # Let PyInstaller 6.16.0 handle the file placement automatically
         if (Test-Path "dist\sampleapp") {
