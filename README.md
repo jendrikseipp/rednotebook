@@ -14,7 +14,7 @@ Latex or PDF.
 
 Needed for running RedNotebook:
 
-  * GTK (3.18+): https://www.gtk.org
+  * GTK (3.24): https://www.gtk.org
   * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
   * Python (3.8+): https://www.python.org
   * PyYAML (3.10+): https://pyyaml.org

@@ -243,8 +243,27 @@ class Editor(GObject.GObject):
         self.day_text_view.grab_focus()
 
     def set_font(self, font_name):
-        font = Pango.FontDescription(font_name)
-        self.day_text_view.modify_font(font)
+        # Parse the Pango font description to extract family and size
+        font_desc = Pango.FontDescription(font_name)
+        family = font_desc.get_family() or "sans-serif"
+        size_pango = font_desc.get_size()
+
+        # Convert Pango units to CSS pixels (Pango units are 1/1024 of a point)
+        if size_pango > 0:
+            if font_desc.get_size_is_absolute():
+                size_px = size_pango / Pango.SCALE
+            else:
+                # Convert points to pixels (1 point = 96/72 pixels in CSS)
+                size_px = (size_pango / Pango.SCALE) * (96.0 / 72.0)
+            font_css = f"textview {{ font-family: '{family}'; font-size: {size_px}px; }}"
+        else:
+            # If no size specified, just set the family
+            font_css = f"textview {{ font-family: '{family}'; }}"
+
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(font_css.encode())
+        context = self.day_text_view.get_style_context()
+        context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
     def hide(self):
         self.day_text_view.hide()

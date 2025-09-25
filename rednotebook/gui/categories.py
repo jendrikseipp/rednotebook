@@ -299,7 +299,7 @@ class CategoriesTreeView:
 
         if event.button == 3:
             # This is a right-click.
-            self.context_menu.popup(None, None, None, None, event.button, event.time)
+            self.context_menu.popup_at_pointer(event)
 
     def _get_context_menu(self):
         context_menu_xml = """

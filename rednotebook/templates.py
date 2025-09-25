@@ -194,13 +194,15 @@ class TemplateInfo(Gtk.InfoBar):
 
         title_label = Gtk.Label()
         title_label.set_markup("<b>{}</b>".format(_("Template mode")))
-        title_label.set_alignment(0.0, 0.5)
+        title_label.set_halign(Gtk.Align.START)
+        title_label.set_valign(Gtk.Align.CENTER)
 
         msg_label = Gtk.Label()
         msg_label.set_markup(_("You are currently editing a template."))
-        msg_label.set_alignment(0.0, 0.5)
+        msg_label.set_halign(Gtk.Align.START)
+        msg_label.set_valign(Gtk.Align.CENTER)
 
-        vbox = Gtk.VBox(spacing=5)
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
         vbox.pack_start(title_label, False, False, 0)
         vbox.pack_start(msg_label, False, False, 0)
 

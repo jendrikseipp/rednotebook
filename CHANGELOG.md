@@ -1,6 +1,8 @@
 # next (unreleased)
 * Update help concerning math formulas (#97, #855, @jendrikseipp).
 * Fix X11 forwarding (#726, #847, @jendrikseipp).
+* Don't store/restore window position on Wayland (#806, @jendrikseipp).
+* Replace deprecated GTK 3 API with modern alternatives (@jendrikseipp).
 * Upgrade to PyInstaller 6.16 (@jendrikseipp).
 
 # 2.41 (2025-08-28)
