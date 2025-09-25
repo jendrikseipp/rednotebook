@@ -6,7 +6,7 @@ pefile==2022.5.30
 platformdirs==2.5.1
 pycairo @ file:///C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl
 PyGObject @ file:///C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl
-pyinstaller==6.0.0
+pyinstaller==6.16.0
 pyinstaller-hooks-contrib==2022.4
 pywin32-ctypes==0.2.1
 PyYAML==5.4.1
