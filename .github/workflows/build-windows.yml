@@ -106,7 +106,7 @@ jobs:
         cd win
         # Debug: Check what's in the GTK directory
         Write-Host "Contents of C:\gtk:"
-        Get-ChildItem C:\gtk -Recurse | Where-Object Name -like "*gi*" -or Name -like "*PyGObject*" | Select-Object FullName
+        Get-ChildItem C:\gtk -Recurse | Where-Object { $_.Name -like "*gi*" -or $_.Name -like "*PyGObject*" } | Select-Object FullName
         Write-Host "Python path:"
         python -c "import sys; print('\n'.join(sys.path))"
         Write-Host "Installed packages:"
