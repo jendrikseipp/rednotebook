@@ -53,6 +53,9 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --no-warn-script-location -U pip setuptools tox==3.27.1 wheel
+        # Install PyGObject and pycairo from the GTK bundle wheels.
+        python -m pip install --no-warn-script-location C:\gtk\pycairo-1.21.0-cp39-cp39-win_amd64.whl
+        python -m pip install --no-warn-script-location C:\gtk\PyGObject-3.42.0-cp39-cp39-win_amd64.whl
         # Install separately because --no-binary option disables using wheels (leading to problems for Cython).
         python -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2
         python -m pip install --no-warn-script-location -r win/requirements.txt
@@ -75,8 +78,9 @@ jobs:
 
     - name: Patch GtkSourceView hook
       run: |
-        $hookFile = "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*/x64\Lib\site-packages\pyinstaller\hooks\hook-gi.repository.GtkSource.py"
-        $hookPath = Get-ChildItem $hookFile | Select-Object -First 1 -ExpandProperty FullName
+        $pythonPath = "C:\hostedtoolcache\windows\Python\${{ env.PYTHON_VERSION }}.*\x64"
+        $hookFile = Get-ChildItem "$pythonPath\Lib\site-packages\pyinstaller\hooks\hook-gi.repository.GtkSource.py"
+        $hookPath = $hookFile.FullName
         (Get-Content $hookPath) -replace '3\.0', '4' | Set-Content $hookPath
         echo "Patched GtkSourceView hook at: $hookPath"
 
@@ -88,7 +92,9 @@ jobs:
       run: |
         curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
         tar -xzf dicts.tar.gz
-        Move-Item enchant C:\gtk\share\
+        # Create enchant directory structure and copy dictionaries.
+        New-Item -ItemType Directory -Force -Path C:\gtk\share\enchant\myspell
+        Copy-Item -Recurse enchant\* C:\gtk\share\enchant\myspell\
 
     - name: Run tests
       run: |
@@ -99,15 +105,11 @@ jobs:
         cd win
         python sampleapp.py
         # Quote --add-data arguments so PowerShell does not split on semicolons.
-        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" sampleapp.py
-        Copy-Item -Recurse C:\gtk\share\enchant dist\sampleapp\share\enchant
-        Get-ChildItem dist\sampleapp
-        Get-ChildItem dist\sampleapp\lib\enchant
-        Get-ChildItem dist\sampleapp\share
-        Get-ChildItem dist\sampleapp\share\enchant\
-        Get-ChildItem dist\sampleapp\share\enchant\myspell
-        # Use clean PATH to check that everything has been copied correctly.
-        $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp"
+        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" --add-data "C:/gtk/share/enchant/myspell/myspell;share/enchant/myspell" sampleapp.py
+        # Set environment variables for enchant library in PyInstaller bundle
+        $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp;$pwd\dist\sampleapp\_internal"
+        $env:ENCHANT_DATA_DIR = "$pwd\dist\sampleapp\_internal\share\enchant"
+        $env:ENCHANT_MODULE_PATH = "$pwd\dist\sampleapp\_internal\lib\enchant"
         .\dist\sampleapp\sampleapp.exe
         cd ..
 
@@ -116,7 +118,6 @@ jobs:
         cd win
         python -m PyInstaller --workpath=C:/build --distpath=C:/ rednotebook.spec
         python ../dev/build_translations.py C:/dist/share/locale
-        Copy-Item -Recurse C:\gtk\share\enchant C:\dist\share\enchant
         7z a rednotebook.zip C:\dist
         cd ..
 
