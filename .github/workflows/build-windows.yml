@@ -53,6 +53,9 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --no-warn-script-location -U pip setuptools tox==3.27.1 wheel
+        # Install PyGObject and pycairo from the GTK bundle wheels
+        python -m pip install --no-warn-script-location C:\gtk\pycairo-1.21.0-cp39-cp39-win_amd64.whl
+        python -m pip install --no-warn-script-location C:\gtk\PyGObject-3.42.0-cp39-cp39-win_amd64.whl
         # Install separately because --no-binary option disables using wheels (leading to problems for Cython).
         python -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2
         python -m pip install --no-warn-script-location -r win/requirements.txt
@@ -104,28 +107,19 @@ jobs:
     - name: Test sample app
       run: |
         cd win
-        # Debug: Check what's in the GTK directory
-        Write-Host "Contents of C:\gtk:"
-        Get-ChildItem C:\gtk -Recurse | Where-Object { $_.Name -like "*gi*" -or $_.Name -like "*PyGObject*" } | Select-Object FullName
-        Write-Host "Python path:"
-        python -c "import sys; print('\n'.join(sys.path))"
-        Write-Host "Installed packages:"
-        python -m pip list | findstr -i "pyinstaller\|pygobject"
-
-        # Try to find where PyGObject was actually installed
-        $pygobjPath = python -c "try: import gi; print(gi.__file__); except: print('gi not found')" 2>$null
-        Write-Host "PyGObject location: $pygobjPath"
-
-        # Set PYTHONPATH to include the GTK lib directory if it exists
-        if (Test-Path "C:\gtk\lib\python3.9\site-packages") {
-          $env:PYTHONPATH = "C:\gtk\lib\python3.9\site-packages;$env:PYTHONPATH"
-        }
-        if (Test-Path "C:\gtk\Lib\site-packages") {
-          $env:PYTHONPATH = "C:\gtk\Lib\site-packages;$env:PYTHONPATH"
-        }
-        Write-Host "PYTHONPATH: $env:PYTHONPATH"
-
         python sampleapp.py
+        # Quote --add-data arguments so PowerShell does not split on semicolons.
+        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" --add-data "C:/gtk/share/enchant;enchant" sampleapp.py
+        # Let PyInstaller 6.16.0 handle the file placement automatically
+        if (Test-Path "dist\sampleapp") {
+          Get-ChildItem dist\sampleapp -Recurse | Where-Object { $_.Name -like "*enchant*" } | Select-Object FullName
+          # Use clean PATH to check that everything has been copied correctly.
+          $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp"
+          .\dist\sampleapp\sampleapp.exe
+        } else {
+          Write-Host "PyInstaller build failed - dist directory not created"
+          exit 1
+        }
         cd ..
 
     - name: Create executable
