@@ -127,6 +127,8 @@ jobs:
           # Add _internal to PATH so pyenchant can find libenchant.dll
           $env:PATH = "$env:PATH;$pwd\dist\sampleapp\_internal"
           $env:ENCHANT_DATA_DIR = "$pwd\dist\sampleapp\_internal\share\enchant"
+          # Set ENCHANT_MODULE_PATH to help enchant find provider DLLs
+          $env:ENCHANT_MODULE_PATH = "$pwd\dist\sampleapp\_internal\lib\enchant"
           .\dist\sampleapp\sampleapp.exe
         } else {
           Write-Host "PyInstaller build failed - dist directory not created"
