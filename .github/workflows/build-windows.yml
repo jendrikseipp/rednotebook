@@ -126,9 +126,12 @@ jobs:
           # Set enchant environment variables to help it find the library and dictionaries in PyInstaller bundle
           # Add _internal to PATH so pyenchant can find libenchant.dll
           $env:PATH = "$env:PATH;$pwd\dist\sampleapp\_internal"
-          $env:ENCHANT_DATA_DIR = "$pwd\dist\sampleapp\_internal\share\enchant"
+          $env:ENCHANT_DATA_DIR = "$pwd\dist\sampleapp\_internal\share\enchant\myspell"
           # Set ENCHANT_MODULE_PATH to help enchant find provider DLLs
           $env:ENCHANT_MODULE_PATH = "$pwd\dist\sampleapp\_internal\lib\enchant"
+          Write-Host "Environment variables:"
+          Write-Host "ENCHANT_DATA_DIR: $env:ENCHANT_DATA_DIR"
+          Write-Host "ENCHANT_MODULE_PATH: $env:ENCHANT_MODULE_PATH"
           Write-Host "Checking enchant files in bundle:"
           Get-ChildItem "$pwd\dist\sampleapp\_internal\share\enchant" -Recurse -ErrorAction SilentlyContinue | Select-Object FullName
           Get-ChildItem "$pwd\dist\sampleapp\_internal\lib\enchant" -Recurse -ErrorAction SilentlyContinue | Select-Object FullName
