@@ -53,15 +53,12 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --no-warn-script-location -U pip setuptools tox==3.27.1 wheel
-        # Install PyGObject and pycairo from the GTK bundle wheels
+        # Install PyGObject and pycairo from the GTK bundle wheels.
         python -m pip install --no-warn-script-location C:\gtk\pycairo-1.21.0-cp39-cp39-win_amd64.whl
         python -m pip install --no-warn-script-location C:\gtk\PyGObject-3.42.0-cp39-cp39-win_amd64.whl
         # Install separately because --no-binary option disables using wheels (leading to problems for Cython).
         python -m pip install --no-warn-script-location -U --no-binary :all: pyenchant==3.2.2
-        Write-Host "Installing requirements.txt packages..."
         python -m pip install --no-warn-script-location -r win/requirements.txt
-        Write-Host "Checking PyInstaller installation..."
-        python -c "import PyInstaller; print('PyInstaller version:', PyInstaller.__version__)"
         python -m pip freeze
         python -m pip list --outdated
 
@@ -91,19 +88,21 @@ jobs:
           echo "Warning: GtkSourceView hook file not found"
         }
 
+    - name: Set Pyenchant debug logging
+      run: |
+        echo "PYENCHANT_VERBOSE_FIND=foobar" >> $env:GITHUB_ENV
+
     - name: Install dictionaries
       run: |
         curl -Lo dicts.tar.gz https://www.dropbox.com/s/f12k20aur6znpmo/myspell-dicts.tar.gz?dl=1
         tar -xzf dicts.tar.gz
-        # Create enchant directory structure and copy dictionaries
+        # Create enchant directory structure and copy dictionaries.
         New-Item -ItemType Directory -Force -Path C:\gtk\share\enchant\myspell
         Copy-Item -Recurse enchant\* C:\gtk\share\enchant\myspell\
 
     - name: Run tests
       run: |
-        # Skip full test suite on Windows due to GTK environment complexity
-        # The main test is whether sampleapp.py works with PyInstaller
-        echo "Skipping full test suite - main test is PyInstaller compatibility"
+        python -m tox -v -e py
 
     - name: Test sample app
       run: |
