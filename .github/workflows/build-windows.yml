@@ -110,6 +110,10 @@ jobs:
         Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64
         Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\bin
         Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\lib\enchant
+        Write-Host "Contents of myspell directory:"
+        Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\myspell -Recurse
+        Write-Host "Contents of ispell directory:"
+        Get-ChildItem dist\sampleapp\_internal\enchant\data\mingw64\ispell -Recurse
         # Use clean PATH to check that everything has been copied correctly.
         $env:PATH = "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;$pwd\dist\sampleapp"
         .\dist\sampleapp\sampleapp.exe
