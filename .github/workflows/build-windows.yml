@@ -98,9 +98,10 @@ jobs:
 
     - name: Run tests
       run: |
-        $env:ENCHANT_DATA_DIR = "C:\gtk\share\enchant"
-        $env:ENCHANT_MODULE_PATH = "C:\gtk\lib\enchant"
         python -m tox -v -e py
+      env:
+        ENCHANT_DATA_DIR: C:\gtk\share\enchant
+        ENCHANT_MODULE_PATH: C:\gtk\lib\enchant
 
     - name: Test sample app
       run: |
