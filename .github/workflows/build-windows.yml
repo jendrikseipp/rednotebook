@@ -117,7 +117,7 @@ jobs:
         python -c "import PyInstaller; print('PyInstaller found, version:', PyInstaller.__version__)"
         # Quote --add-data arguments so PowerShell does not split on semicolons.
         Write-Host "Running PyInstaller build..."
-        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" --add-data "C:/gtk/share/enchant;enchant" sampleapp.py
+        python -m PyInstaller --additional-hooks-dir=. --add-data "C:/gtk/bin/libenchant.dll;." --add-data "C:/gtk/lib/enchant/libenchant_myspell.dll;lib/enchant/" --add-data "C:/gtk/share/enchant/myspell;enchant/myspell" sampleapp.py
         # Let PyInstaller 6.16.0 handle the file placement automatically
         if (Test-Path "dist\sampleapp") {
           Get-ChildItem dist\sampleapp -Recurse | Where-Object { $_.Name -like "*enchant*" } | Select-Object FullName
