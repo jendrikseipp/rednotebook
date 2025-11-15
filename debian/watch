@@ -1,5 +1,5 @@
 Version: 5
-Template: Github
+Template: GitHub
 Owner: jendrikseipp
 Project: rednotebook
 Dversion-Mangle: s/\+ds\d*$//
