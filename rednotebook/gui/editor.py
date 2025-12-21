@@ -33,9 +33,12 @@ except ImportError:
 
 
 try:
-    DEFAULT_FONT = Gtk.Settings.get_default().get_property("gtk-font-name")
-except AttributeError:
-    # Gtk.Settings.get_default() returns None on the CI systems without a screen.
+    _gtk_settings = Gtk.Settings.get_default()
+    if _gtk_settings is None:
+        raise RuntimeError("No GTK settings available")
+    DEFAULT_FONT = _gtk_settings.get_property("gtk-font-name")
+except Exception:
+    # Happens on headless systems (no DISPLAY) or when GTK is not fully initialised.
     DEFAULT_FONT = "Ubuntu 10"
 
 
