@@ -242,12 +242,17 @@ text area (in edit mode) and choosing it from the submenu "Languages".
 
 === Adding custom dictionaries under Windows ===
 
-You can add more aspell dictionary files to the directory <RedNotebook
-Dir>\\lib\\aspell-0.60\\. If RedNotebook is running, you need to restart
-it for new dictionaries to be recognized. You can find aspell
-dictionaries at ftp://ftp.gnu.org/gnu/aspell/dict/0index.html. Please
-read the README files included in the tarballs for information on how to
-compile the necessary files.
+Use Hunspell dictionaries (not Aspell) with RedNotebook on Windows:
+
++ Download the desired language files (.aff and .dic) from a Hunspell source, e.g., https://github.com/wooorm/dictionaries.
++ Place both files into <RedNotebook Dir>\\share\\enchant\\myspell\\.
++ Restart RedNotebook and pick the language via right-click → Languages in the editor.
+
+
+Notes:
+- You do not need prezip-bin or Aspell on Windows.
+- If multiple dictionaries use generic names (like index.aff / index.dic),
+  rename the files before copying so they are unique (e.g., es.aff / es.dic, es_PE.aff / es_PE.dic).
 
 
 == Options ==
