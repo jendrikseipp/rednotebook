@@ -1,4 +1,4 @@
-# next (unreleased)
+# 2.42 (2025-12-28)
 * Update help concerning math formulas (#97, #855, @jendrikseipp).
 * Fix X11 forwarding (#726, #847, @jendrikseipp).
 * Don't store/restore window position on Wayland (#806, @jendrikseipp).
