@@ -88,6 +88,8 @@ parameters = {
     "license": "GPL",
     "keywords": "journal, diary",
     "cmdclass": {"build_py": build_py, "install": install},
+    "install_requires": ["PyGObject", "PyYAML"],
+    "extras_require": {"spellcheck": ["pyenchant"]},
     "entry_points": {
         "gui_scripts": [
             "rednotebook = rednotebook.journal:main",
