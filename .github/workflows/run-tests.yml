@@ -46,5 +46,5 @@ jobs:
       run: |
         python3 -c "import gi"
         tox -v -e py
-        python3 -m venv .venv
+        python3 -m venv --system-site-packages .venv
         ./.venv/bin/pip install .

@@ -3,7 +3,9 @@
 * Fix X11 forwarding (#726, #847, @jendrikseipp).
 * Don't store/restore window position on Wayland (#806, @jendrikseipp).
 * Replace deprecated GTK 3 API with modern alternatives (@jendrikseipp).
-* Upgrade to PyInstaller 6.16 (@jendrikseipp).
+* Upgrade to PyInstaller 6.16 (#871, @jendrikseipp).
+* Declare required and optional Python dependencies to setup.py (#871, @przemub).
+* Simplify instructions for macOS installation (#871, @przemub).
 
 # 2.41 (2025-08-28)
 * Fix sorting words that are incompatible with the current locale (#778, #779, Oussama Jarrousse).
