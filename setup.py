@@ -22,9 +22,9 @@ This is the installation script for RedNotebook.
 To install RedNotebook, run "pip install ." (note the dot).
 """
 
-from pathlib import Path
 import shutil
 import sys
+from pathlib import Path
 
 from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
@@ -64,9 +64,7 @@ class install(_install):
         for lang_dir in TMP_LOCALE_DIR.iterdir():
             lang = lang_dir.name
             lang_file = TMP_LOCALE_DIR / lang / "LC_MESSAGES" / "rednotebook.mo"
-            dest_dir = (
-                Path(self.install_data) / "share" / "locale" / lang / "LC_MESSAGES"
-            )
+            dest_dir = Path(self.install_data) / "share" / "locale" / lang / "LC_MESSAGES"
             dest_dir.mkdir(parents=True, exist_ok=True)
             shutil.copy2(lang_file, dest_dir / "rednotebook.mo")
 
@@ -90,6 +88,8 @@ parameters = {
     "license": "GPL",
     "keywords": "journal, diary",
     "cmdclass": {"build_py": build_py, "install": install},
+    "install_requires": ["PyGObject", "PyYAML"],
+    "extras_require": {"spellcheck": ["pyenchant"]},
     "entry_points": {
         "gui_scripts": [
             "rednotebook = rednotebook.journal:main",

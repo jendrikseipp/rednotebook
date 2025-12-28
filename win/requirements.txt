@@ -1,14 +1,11 @@
 altgraph==0.17.2
-# cefpython3==66.1
 distlib==0.3.4
 filelock==3.6.0
 future==0.18.2
 pefile==2022.5.30
 platformdirs==2.5.1
-pycairo @ file:///C:/gtk/pycairo-1.21.0-cp39-cp39-win_amd64.whl
-PyGObject @ file:///C:/gtk/PyGObject-3.42.0-cp39-cp39-win_amd64.whl
-pyinstaller==5.13.1
-pyinstaller-hooks-contrib==2022.4
+pyinstaller==6.16.0
+pyinstaller-hooks-contrib==2025.8
 pywin32-ctypes==0.2.1
 PyYAML==5.4.1
 six==1.16.0

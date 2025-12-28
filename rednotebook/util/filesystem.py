@@ -48,9 +48,7 @@ from gi.repository import GIRepository
 
 
 repo = GIRepository.Repository()
-logging.info(
-    f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}"
-)
+logging.info(f"Available versions of the WebKit2 namespace: {repo.enumerate_versions('WebKit2')}")
 
 
 def _is_nvidia_graphics_detected():
@@ -81,6 +79,59 @@ def _is_nvidia_graphics_detected():
     return False
 
 
+def _is_x11_forwarding_detected():
+    """
+    Detect if we're running in an X11 forwarding environment (e.g., SSH with X11 forwarding).
+    """
+    # Check for SSH connection indicators
+    ssh_indicators = ["SSH_CLIENT", "SSH_CONNECTION", "SSH_TTY"]
+    has_ssh = any(var in os.environ for var in ssh_indicators)
+
+    # Check if DISPLAY is set to a remote display (contains a colon and number > 0)
+    display = os.environ.get("DISPLAY", "")
+    is_remote_display = False
+    if display and ":" in display:
+        try:
+            # Extract display number (e.g., ":10.0" -> 10)
+            display_num = int(display.split(":")[1].split(".")[0])
+            # Local displays typically use :0, remote X11 forwarding uses higher numbers
+            is_remote_display = display_num > 0
+        except (IndexError, ValueError):
+            pass
+
+    return has_ssh and display and is_remote_display
+
+
+def _apply_webkit_x11_forwarding_workaround():
+    """
+    Apply workarounds for WebKitGTK when running with X11 forwarding.
+
+    X11 forwarding often lacks hardware acceleration and can cause WebKit2 to crash
+    or fail to initialize. This function sets environment variables to disable
+    problematic features.
+    """
+    if _is_x11_forwarding_detected():
+        # Environment variables to set for better X11 forwarding compatibility.
+        webkit_env_vars = {
+            "WEBKIT_DISABLE_SANDBOX": "1",  # Disable sandboxing which may not work remotely
+            "WEBKIT_DISABLE_DMABUF_RENDERER": "1",  # Disable DMA-BUF renderer
+            "WEBKIT_DISABLE_COMPOSITING_MODE": "1",  # Disable compositing
+        }
+
+        # Only set variables that aren't already set by the user.
+        set_vars = []
+        for var, value in webkit_env_vars.items():
+            if var not in os.environ:
+                os.environ[var] = value
+                set_vars.append(var)
+
+        if set_vars:
+            logging.info(
+                f"X11 forwarding detected. Setting WebKit environment variables "
+                f"for remote display compatibility: {', '.join(set_vars)}"
+            )
+
+
 def _apply_webkit_nvidia_workaround():
     """
     Apply workaround for WebKitGTK DMA-BUF renderer bug with Nvidia drivers.
@@ -100,17 +151,17 @@ def _apply_webkit_nvidia_workaround():
             )
 
 
-# Apply Nvidia workaround before importing WebKit2
+# Apply workarounds before importing WebKit2
 if not IS_WIN:  # Only apply on Linux/Unix systems
     _apply_webkit_nvidia_workaround()
+    _apply_webkit_x11_forwarding_workaround()
 
 
 try:
     gi.require_version("WebKit2", "4.1")
 except ValueError as err:
     logging.warning(
-        f"WebKit2 4.1 not found. Trying to use arbitrary version. "
-        f"Error message: '{err}'"
+        f"WebKit2 4.1 not found. Trying to use arbitrary version. Error message: '{err}'"
     )
 
 try:
@@ -134,6 +185,25 @@ except ImportError as err:
 
 def has_system_tray():
     return IS_WIN  # A smarter detection is needed here ;)
+
+
+def is_wayland_session():
+    """Return True if running under a Wayland session.
+
+    Detection order:
+    1. XDG_SESSION_TYPE explicitly set to 'wayland'.
+    2. Presence of WAYLAND_DISPLAY variable.
+
+    We purposely do NOT treat a session as X11 just because DISPLAY is set,
+    since on Wayland compositors XWayland provides DISPLAY as well. This
+    function is centralised so callers do not need to duplicate environment
+    checks and so behaviour is consistent across the application.
+    """
+    if os.environ.get("XDG_SESSION_TYPE", "").lower() == "wayland":
+        return True
+    if os.environ.get("WAYLAND_DISPLAY"):
+        return True
+    return False
 
 
 def main_is_frozen():
@@ -177,9 +247,7 @@ class Filenames(dict):
         self.data_dir = self.default_data_dir
 
         # Assert that all dirs and files are in place so that logging can take start
-        make_directories(
-            [self.journal_user_dir, self.data_dir, self.template_dir, self.temp_dir]
-        )
+        make_directories([self.journal_user_dir, self.data_dir, self.template_dir, self.temp_dir])
         make_files([(self.config_file, ""), (self.log_file, "")])
 
         self.last_pic_dir = self.user_home_dir
@@ -298,8 +366,8 @@ def get_journal_title(dir):
 
 
 def get_platform_info():
-    from gi.repository import GObject, Gtk
     import yaml
+    from gi.repository import GObject, Gtk
 
     functions = [
         platform.machine,

@@ -21,7 +21,7 @@ import logging
 import os
 import webbrowser
 
-from gi.repository import GObject, Gtk
+from gi.repository import Gdk, GObject, Gtk
 
 
 class ActionButton(Gtk.Button):
@@ -140,10 +140,12 @@ class Info(Gtk.InfoBar):
         Gtk.InfoBar.__init__(self)
         self.title_label = Gtk.Label()
         self.msg_label = Gtk.Label()
-        self.title_label.set_alignment(0.0, 0.5)
-        self.msg_label.set_alignment(0.0, 0.5)
+        self.title_label.set_halign(Gtk.Align.START)
+        self.title_label.set_valign(Gtk.Align.CENTER)
+        self.msg_label.set_halign(Gtk.Align.START)
+        self.msg_label.set_valign(Gtk.Align.CENTER)
 
-        vbox = Gtk.VBox(spacing=5)
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
         vbox.pack_start(self.title_label, False, False, 0)
         vbox.pack_start(self.msg_label, False, False, 0)
 
@@ -177,12 +179,13 @@ class Info(Gtk.InfoBar):
 # ------------------------- Assistant Pages ------------------------------------
 
 
-class AssistantPage(Gtk.VBox):
+class AssistantPage(Gtk.Box):
     def __init__(self, *args, **kwargs):
+        # Ensure orientation is set to vertical
+        kwargs.setdefault("orientation", Gtk.Orientation.VERTICAL)
         GObject.GObject.__init__(self, *args, **kwargs)
 
         self.set_spacing(5)
-        self.set_border_width(10)
 
         self.header = None
         self.show_all()
@@ -190,9 +193,10 @@ class AssistantPage(Gtk.VBox):
     def _add_header(self):
         self.header = Gtk.Label()
         self.header.set_markup("Unset")
-        self.header.set_alignment(0.0, 0.5)
+        self.header.set_halign(Gtk.Align.START)
+        self.header.set_valign(Gtk.Align.CENTER)
         self.pack_start(self.header, False, False, 0)
-        self.separator = Gtk.HSeparator()
+        self.separator = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         self.pack_start(self.separator, False, False, 0)
         self.reorder_child(self.header, 0)
         self.reorder_child(self.separator, 1)
@@ -224,7 +228,8 @@ class RadioButtonPage(AssistantPage):
 
         if tooltip:
             description = Gtk.Label()
-            description.set_alignment(0.0, 0.5)
+            description.set_halign(Gtk.Align.START)
+            description.set_valign(Gtk.Align.CENTER)
             description.set_markup(" " * 10 + tooltip)
             description.set_sensitive(sensitive)
             self.pack_start(description, False, False, 0)
@@ -329,11 +334,11 @@ class Assistant(Gtk.Assistant):
         """
 
 
-class TemplateBar(Gtk.HBox):
+class TemplateBar(Gtk.Box):
     def __init__(self):
-        GObject.GObject.__init__(self)
+        GObject.GObject.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
         self.set_spacing(2)
-        label = Gtk.Label(label=f'<b>{_("Template")}</b>:')
+        label = Gtk.Label(label=f"<b>{_('Template')}</b>:")
         label.set_use_markup(True)
         self.pack_start(label, False, False, 0)
         self.save_insert_button = Gtk.Button.new_with_label(_("Save and insert"))
@@ -354,7 +359,7 @@ class ToolbarMenuButton(Gtk.ToolButton):
         self.show_all()
 
     def _on_clicked(self, button):
-        self._menu.popup(None, None, None, None, 0, Gtk.get_current_event_time())
+        self._menu.popup_at_widget(button, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, None)
 
     def set_menu(self, menu):
         self._menu = menu

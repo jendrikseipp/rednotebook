@@ -6,11 +6,12 @@ Standards-Version: 4.7.2
 Homepage: https://rednotebook.app
 Vcs-Git: https://github.com/jendrikseipp/rednotebook.git
 Vcs-Browser: https://github.com/jendrikseipp/rednotebook
-Build-Depends: debhelper-compat (= 11),
+Build-Depends: debhelper-compat (= 13),
+               dh-sequence-python3,
                gettext,
-               python3-all,
-               python3-setuptools,
-               dh-python
+               pybuild-plugin-pyproject,
+               python3,
+               python3-setuptools
 
 Package: rednotebook
 Architecture: all
@@ -19,7 +20,6 @@ Depends: ${python3:Depends},
          gir1.2-gdk-3.0,
          gir1.2-gdkpixbuf-2.0,
          gir1.2-gio-2.0,
-         gir1.2-girepository-2.0,
          gir1.2-glib-2.0,
          gir1.2-gobject-2.0,
          gir1.2-gtk-3.0,

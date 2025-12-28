@@ -153,9 +153,7 @@ class Config(dict):
             filesystem.make_directory(os.path.dirname(self.filename))
             filesystem.write_file(self.filename, "\n".join(lines))
         except OSError:
-            logging.error(
-                "Configuration could not be saved. Please check " "your permissions"
-            )
+            logging.error("Configuration could not be saved. Please check your permissions")
         else:
             logging.info(f"Configuration has been saved to {self.filename}")
             self.save_state()

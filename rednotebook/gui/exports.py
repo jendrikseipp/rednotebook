@@ -63,14 +63,14 @@ class DatePage(AssistantPage):
         self.calendar1 = Calendar(week_numbers=show_week_numbers)
         self.calendar2 = Calendar(week_numbers=show_week_numbers)
 
-        vbox1 = Gtk.VBox()
-        vbox2 = Gtk.VBox()
+        vbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        vbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         vbox1.pack_start(label1, False, False, 0)
         vbox1.pack_start(self.calendar1, True, True, 0)
         vbox2.pack_start(label2, False, False, 0)
         vbox2.pack_start(self.calendar2, True, True, 0)
 
-        hbox = Gtk.HBox()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         hbox.pack_start(vbox1, True, True, 0)
         hbox.pack_start(vbox2, True, True, 0)
         self.pack_start(hbox, True, True, 0)
@@ -115,9 +115,7 @@ class DatePage(AssistantPage):
             self.selected_text_button.set_label(selected_text_label)
         else:
             self.selected_text_button.set_label(
-                selected_text_label
-                + " "
-                + _("(Only available when text is selected in edit mode)")
+                selected_text_label + " " + _("(Only available when text is selected in edit mode)")
             )
             if self.selected_text_button.get_active():
                 self.selected_text_button.set_active(False)
@@ -143,15 +141,11 @@ class ContentsPage(AssistantPage):
         self.pack_start(self.text_and_tags_button, False, False, 0)
         self.pack_start(self.text_only_button, False, False, 0)
         self.pack_start(self.tags_only_button, False, False, 0)
-        self.pack_start(Gtk.HSeparator(), False, False, 0)
+        self.pack_start(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL), False, False, 0)
         self.pack_start(self.filter_tags_button, False, False, 0)
 
-        self.available_categories = customwidgets.CustomListView(
-            [(_("Available tags"), str)]
-        )
-        self.selected_categories = customwidgets.CustomListView(
-            [(_("Selected tags"), str)]
-        )
+        self.available_categories = customwidgets.CustomListView([(_("Available tags"), str)])
+        self.selected_categories = customwidgets.CustomListView([(_("Selected tags"), str)])
 
         left_scroll = Gtk.ScrolledWindow()
         left_scroll.add(self.available_categories)
@@ -165,21 +159,22 @@ class ContentsPage(AssistantPage):
         self.select_button.connect("clicked", self.on_select_category)
         self.deselect_button.connect("clicked", self.on_deselect_category)
 
-        centered_vbox = Gtk.VBox()
+        centered_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         centered_vbox.pack_start(self.select_button, True, False, 0)
         centered_vbox.pack_start(self.deselect_button, True, False, 0)
 
-        vbox = Gtk.VBox()
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         vbox.pack_start(centered_vbox, True, False, 0)
 
-        hbox = Gtk.HBox()
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         hbox.pack_start(left_scroll, True, True, 0)
         hbox.pack_start(vbox, False, False, 0)
         hbox.pack_start(right_scroll, True, True, 0)
         self.pack_start(hbox, True, True, 0)
 
         self.error_text = Gtk.Label(label="")
-        self.error_text.set_alignment(0.0, 0.5)
+        self.error_text.set_halign(Gtk.Align.START)
+        self.error_text.set_valign(Gtk.Align.CENTER)
 
         self.pack_end(self.error_text, False, False, 0)
 
@@ -233,14 +228,10 @@ class ContentsPage(AssistantPage):
         self.error_text.set_markup(f"<b>{text}</b>")
 
     def is_text_included(self):
-        return (
-            self.text_only_button.get_active() or self.text_and_tags_button.get_active()
-        )
+        return self.text_only_button.get_active() or self.text_and_tags_button.get_active()
 
     def is_tags_included(self):
-        return (
-            self.tags_only_button.get_active() or self.text_and_tags_button.get_active()
-        )
+        return self.tags_only_button.get_active() or self.text_and_tags_button.get_active()
 
     def is_filtered(self):
         return self.filter_tags_button.get_active()
@@ -285,7 +276,8 @@ class SummaryPage(AssistantPage):
     def add_setting(self, setting, value):
         label = Gtk.Label()
         label.set_markup(f"<b>{setting}:</b> {value}")
-        label.set_alignment(0.0, 0.5)
+        label.set_halign(Gtk.Align.START)
+        label.set_valign(Gtk.Align.CENTER)
         label.show()
         self.pack_start(label, False, False, 0)
         self.settings.append(label)
@@ -312,12 +304,8 @@ class ExportAssistant(Assistant):
         text = "\n".join(
             [
                 _("Welcome to the Export Assistant."),
-                _(
-                    "This wizard will help you to export your journal to various formats."
-                ),
-                _(
-                    "You can select the days you want to export and where the output will be saved."
-                ),
+                _("This wizard will help you to export your journal to various formats."),
+                _("You can select the days you want to export and where the output will be saved."),
             ]
         )
         welcome_label = Gtk.Label(text)
@@ -328,9 +316,7 @@ class ExportAssistant(Assistant):
             desc = exporter.DESCRIPTION
             self.page1.add_radio_option(exporter, name, desc)
         add_space()
-        pdf_label = Gtk.Label(
-            _("PDF: export to HTML, open in browser and print to PDF file")
-        )
+        pdf_label = Gtk.Label(_("PDF: export to HTML, open in browser and print to PDF file"))
         pdf_label.set_halign(Gtk.Align.START)
         self.page1.pack_start(pdf_label, False, False, 0)
         self.append_page(self.page1)
@@ -407,9 +393,7 @@ class ExportAssistant(Assistant):
             self.exported_categories = self.page3.get_categories()
 
             self.page5.add_setting(_("Format"), self.exporter.NAME)
-            self.page5.add_setting(
-                _("Export all days"), self.yes_no(self.export_all_days)
-            )
+            self.page5.add_setting(_("Export all days"), self.yes_no(self.export_all_days))
             if not self.export_all_days:
                 start_date, end_date = self.page2.get_date_range()
                 if start_date == end_date:
@@ -431,9 +415,7 @@ class ExportAssistant(Assistant):
                     _("Include tags"), self.yes_no(self.page3.is_tags_included())
                 )
             if self.is_filtered:
-                self.page5.add_setting(
-                    _("Filtered by tags"), ", ".join(self.exported_categories)
-                )
+                self.page5.add_setting(_("Filtered by tags"), ", ".join(self.exported_categories))
             self.page5.add_setting(_("Export path"), self.path)
 
     def yes_no(self, value):
@@ -446,9 +428,7 @@ class ExportAssistant(Assistant):
             if self.export_all_days:
                 export_days = self.journal.days
             else:
-                export_days = self.journal.get_days_in_date_range(
-                    *self.page2.get_date_range()
-                )
+                export_days = self.journal.get_days_in_date_range(*self.page2.get_date_range())
 
             selected_categories = self.exported_categories
             logging.debug(f"Selected Categories for Inclusion: {selected_categories}")

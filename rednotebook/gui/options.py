@@ -73,9 +73,7 @@ class TickOption(Option):
 
 class AutostartOption(TickOption):
     def __init__(self):
-        self.autostart_file = os.path.expanduser(
-            "~/.config/autostart/rednotebook.desktop"
-        )
+        self.autostart_file = os.path.expanduser("~/.config/autostart/rednotebook.desktop")
         autostart_file_exists = os.path.exists(self.autostart_file)
         TickOption.__init__(
             self, _("Load RedNotebook at startup"), None, value=autostart_file_exists
@@ -191,7 +189,7 @@ class DateFormatOption(ComboBoxOption):
         format_string = self.get_value()
         date_string = dates.format_date(format_string)
         # Translators: Noun
-        label_text = f'{_("Preview:")} {date_string}'
+        label_text = f"{_('Preview:')} {date_string}"
         self.preview.set_text(label_text)
 
 
@@ -218,9 +216,7 @@ class FontOption(Option):
 
             self.dialog.set_font_name(self.font_name)
             self.dialog.set_modal(True)
-            self.dialog.set_transient_for(
-                Option.main_window.options_manager.dialog.dialog
-            )
+            self.dialog.set_transient_for(Option.main_window.options_manager.dialog.dialog)
             self.dialog.connect("destroy", self.dialog_destroyed)
             self.dialog.get_ok_button().connect("clicked", self.font_selection_ok)
             self.dialog.get_cancel_button().connect_object(
@@ -320,9 +316,7 @@ class OptionsManager:
         self.options.append(TickOption(_("Auto indent"), "autoIndent"))
 
         def check_version_action(widget):
-            utils.check_new_version(
-                self.main_window.journal, info.version, startup=False
-            )
+            utils.check_new_version(self.main_window.journal, info.version, startup=False)
             # Apply changes from dialog to options window
             check = bool(self.journal.config.read("checkForNewVersion"))
             check_version_option.check_button.set_active(check)
@@ -359,9 +353,7 @@ class OptionsManager:
                 TextOption(
                     _("Exclude from cloud"),
                     "cloudIgnoreList",
-                    tooltip=_(
-                        "Do not show these comma separated words and #tags in the clouds"
-                    ),
+                    tooltip=_("Do not show these comma separated words and #tags in the clouds"),
                 ),
                 TextOption(
                     _("Include small words in cloud"),

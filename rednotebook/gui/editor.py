@@ -33,9 +33,12 @@ except ImportError:
 
 
 try:
-    DEFAULT_FONT = Gtk.Settings.get_default().get_property("gtk-font-name")
-except AttributeError:
-    # Gtk.Settings.get_default() returns None on the CI systems without a screen.
+    _gtk_settings = Gtk.Settings.get_default()
+    if _gtk_settings is None:
+        raise RuntimeError("No GTK settings available")
+    DEFAULT_FONT = _gtk_settings.get_property("gtk-font-name")
+except Exception:
+    # Happens on headless systems (no DISPLAY) or when GTK is not fully initialised.
     DEFAULT_FONT = "Ubuntu 10"
 
 
@@ -139,9 +142,7 @@ class Editor(GObject.GObject):
             for match_start, match_end in self.iter_search_matches(text):
                 buf.apply_tag_by_name("highlighter", match_start, match_end)
 
-    search_flags = (
-        Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
-    )
+    search_flags = Gtk.TextSearchFlags.VISIBLE_ONLY | Gtk.TextSearchFlags.CASE_INSENSITIVE
 
     def iter_search_matches(self, text):
         it = self.day_text_buffer.get_start_iter()
@@ -219,9 +220,9 @@ class Editor(GObject.GObject):
         left_markup, right_markup = self._get_markups(format, self.get_selected_text())
 
         # Apply formatting only once.
-        if self.get_text_left_of_selection(
-            len(left_markup)
-        ) == left_markup or selection.startswith(left_markup):
+        if self.get_text_left_of_selection(len(left_markup)) == left_markup or selection.startswith(
+            left_markup
+        ):
             left_markup = ""
         if self.get_text_right_of_selection(
             len(right_markup)
@@ -245,8 +246,27 @@ class Editor(GObject.GObject):
         self.day_text_view.grab_focus()
 
     def set_font(self, font_name):
-        font = Pango.FontDescription(font_name)
-        self.day_text_view.modify_font(font)
+        # Parse the Pango font description to extract family and size
+        font_desc = Pango.FontDescription(font_name)
+        family = font_desc.get_family() or "sans-serif"
+        size_pango = font_desc.get_size()
+
+        # Convert Pango units to CSS pixels (Pango units are 1/1024 of a point)
+        if size_pango > 0:
+            if font_desc.get_size_is_absolute():
+                size_px = size_pango / Pango.SCALE
+            else:
+                # Convert points to pixels (1 point = 96/72 pixels in CSS)
+                size_px = (size_pango / Pango.SCALE) * (96.0 / 72.0)
+            font_css = f"textview {{ font-family: '{family}'; font-size: {size_px}px; }}"
+        else:
+            # If no size specified, just set the family
+            font_css = f"textview {{ font-family: '{family}'; }}"
+
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(font_css.encode())
+        context = self.day_text_view.get_style_context()
+        context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
     def hide(self):
         self.day_text_view.hide()
@@ -274,10 +294,7 @@ class Editor(GObject.GObject):
                 logging.warning("No spell checking dictionaries found.")
                 self._spell_checker = None
             except Exception as err:
-                logging.error(
-                    "Spell checking could not be enabled. %s: %s"
-                    % (type(err).__name__, err)
-                )
+                logging.error(f"Spell checking could not be enabled. {type(err).__name__}: {err}")
                 self._spell_checker = None
 
     def _disable_spell_check(self):
@@ -296,9 +313,7 @@ class Editor(GObject.GObject):
 
     # ===========================================================
 
-    def on_drag_data_received(
-        self, widget, drag_context, x, y, selection, info, timestamp
-    ):
+    def on_drag_data_received(self, widget, drag_context, x, y, selection, info, timestamp):
         # We do not want the default behaviour
         self.day_text_view.emit_stop_by_name("drag-data-received")
 

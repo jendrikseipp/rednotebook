@@ -16,20 +16,18 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # -----------------------------------------------------------------------
 
-from collections import OrderedDict
 import datetime
 import logging
 import os
-from unittest import mock
 import urllib.parse
+from collections import OrderedDict
+from unittest import mock
 
 from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk, GtkSource, Pango
 
-from rednotebook.gui.options import OptionsManager
 from rednotebook import info, templates
 from rednotebook.gui import (
     browser,
-    browser_cef,
     categories,
     customwidgets,
     editor,
@@ -40,6 +38,7 @@ from rednotebook.gui import (
 from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui.menu import MainMenuBar
+from rednotebook.gui.options import OptionsManager
 from rednotebook.util import dates, filesystem, markup, urls, utils
 
 
@@ -75,9 +74,7 @@ class MainWindow:
         self.main_frame = self.builder.get_object("main_frame")
         self.main_frame.set_application(journal)
         self.main_frame.set_title("RedNotebook")
-        icon = GdkPixbuf.Pixbuf.new_from_file(
-            os.path.join(filesystem.frame_icon_dir, "rn-128.png")
-        )
+        icon = GdkPixbuf.Pixbuf.new_from_file(os.path.join(filesystem.frame_icon_dir, "rn-128.png"))
         self.main_frame.set_icon(icon)
 
         self.is_fullscreen = False
@@ -99,9 +96,7 @@ class MainWindow:
 
         self.calendar = MainCalendar(self.journal, self.builder.get_object("calendar"))
         self.day_text_field = DayEditor(self.builder.get_object("day_text_view"))
-        self.day_text_field.connect(
-            "can-undo-redo-changed", self.update_undo_redo_buttons
-        )
+        self.day_text_field.connect("can-undo-redo-changed", self.update_undo_redo_buttons)
         self.update_undo_redo_buttons()
         self.day_text_field.day_text_view.grab_focus()
         can_spell_check = self.day_text_field.can_spell_check()
@@ -141,9 +136,7 @@ class MainWindow:
                     self.internal = True
 
                 def show_day(self, new_day):
-                    html = self.journal.convert(
-                        new_day.text, "html", use_gtk_theme=True
-                    )
+                    html = self.journal.convert(new_day.text, "html", use_gtk_theme=True)
                     self.load_html(html)
 
                 def shutdown(self):
@@ -154,29 +147,6 @@ class MainWindow:
             self.html_editor.connect("decide-policy", self.on_browser_decide_policy)
             self.text_vbox.pack_start(self.html_editor, True, True, 0)
             self.html_editor.set_editable(False)
-        elif use_internal_preview and browser_cef.get_html_view_class():
-            HtmlView = browser_cef.get_html_view_class()
-
-            class Preview(HtmlView):
-                def __init__(self, journal):
-                    super().__init__()
-                    self.journal = journal
-                    self.internal = True
-
-                def show_day(self, new_day):
-                    html = self.journal.convert(
-                        new_day.text, "html", use_gtk_theme=True
-                    )
-                    self.load_html(html)
-
-                def highlight(self, text):
-                    pass
-
-            self.html_editor = Preview(self.journal)
-            self.html_editor.connect(
-                "on-url-clicked", lambda _, url: self.navigate_to_uri(url)
-            )
-            self.text_vbox.pack_start(self.html_editor, True, True, 0)
         else:
             self.html_editor = mock.MagicMock()
             self.html_editor.internal = False
@@ -274,9 +244,7 @@ class MainWindow:
         ]
         for button, signal, shortcut in shortcuts:
             (keyval, mod) = Gtk.accelerator_parse(shortcut)
-            button.add_accelerator(
-                signal, self.accel_group, keyval, mod, Gtk.AccelFlags.VISIBLE
-            )
+            button.add_accelerator(signal, self.accel_group, keyval, mod, Gtk.AccelFlags.VISIBLE)
 
     def _on_key_press_event(self, widget, event):
         # Exit fullscreen mode with ESC.
@@ -313,7 +281,7 @@ class MainWindow:
         else:
             self.show()
 
-    def on_tray_popup_menu(self, _status_icon, button, activate_time):
+    def on_tray_popup_menu(self, _status_icon, _button, _activate_time):
         """
         Called when the user right-clicks the tray icon
         """
@@ -353,7 +321,7 @@ class MainWindow:
         # Create a Menu
         menu = self.uimanager.get_widget("/TrayMenu")
 
-        menu.popup(None, None, None, None, button, activate_time)
+        menu.popup_at_pointer(None)
 
     def show(self):
         self.main_frame.show()
@@ -434,19 +402,13 @@ class MainWindow:
 
             self.update_undo_redo_buttons()
 
-        # Interacting with the CEF browser makes the main window inactive, so
-        # we make it active again.
-        self.main_frame.present()
-
         self.template_manager.set_template_menu_sensitive(not preview)
         self.insert_actiongroup.set_sensitive(not preview)
         self.format_actiongroup.set_sensitive(not preview)
         self.insert_button.set_sensitive(not preview)
         self.format_button.set_sensitive(not preview)
         for action in ["Cut", "Paste"]:
-            self.uimanager.get_widget(f"/MainMenuBar/Edit/{action}").set_sensitive(
-                not preview
-            )
+            self.uimanager.get_widget(f"/MainMenuBar/Edit/{action}").set_sensitive(not preview)
 
         self.preview_mode = preview
 
@@ -472,9 +434,7 @@ class MainWindow:
                 headers=[f"{date_string} - RedNotebook", "", ""],
                 options={"toc": 0},
             )
-            utils.show_html_in_browser(
-                html, os.path.join(self.journal.dirs.temp_dir, "day.html")
-            )
+            utils.show_html_in_browser(html, os.path.join(self.journal.dirs.temp_dir, "day.html"))
 
     def on_browser_clicked(self, webview, event):
         if event.type == Gdk.EventType._2BUTTON_PRESS:
@@ -509,9 +469,7 @@ class MainWindow:
             from rednotebook.gui import clouds
 
             self.cloud = clouds.Cloud(self.journal)
-            self.builder.get_object("search_container").pack_end(
-                self.cloud, True, True, 0
-            )
+            self.builder.get_object("search_container").pack_end(self.cloud, True, True, 0)
         else:
             self.cloud = mock.MagicMock()
 
@@ -634,16 +592,21 @@ class MainWindow:
 
         # Remember if window was maximized in separate method
 
-        # Remember window position
-        config["mainFrameX"], config["mainFrameY"] = self.main_frame.get_position()
+        # Remember window position (not reliable / meaningful on Wayland; skip there)
+        if not filesystem.is_wayland_session():
+            config["mainFrameX"], config["mainFrameY"] = self.main_frame.get_position()
 
     def load_values_from_config(self):
         config = self.journal.config
         main_frame_width = config.read("mainFrameWidth")
         main_frame_height = config.read("mainFrameHeight")
-
-        screen_width = Gdk.Screen.width()
-        screen_height = Gdk.Screen.height()
+        display = Gdk.Display.get_default()
+        monitor = display.get_primary_monitor() if display else None
+        if monitor:
+            geometry = monitor.get_geometry()
+            screen_width, screen_height = geometry.width, geometry.height
+        else:
+            screen_width, screen_height = 1024, 768  # safe default
 
         main_frame_width = min(main_frame_width, screen_width)
         main_frame_height = min(main_frame_height, screen_height)
@@ -652,28 +615,31 @@ class MainWindow:
 
         if config.read("mainFrameMaximized"):
             self.main_frame.maximize()
-        else:
+        # On Wayland, let compositor handle positioning.
+        elif not filesystem.is_wayland_session():
             # If window is not maximized, restore last position
             x = config.read("mainFrameX")
             y = config.read("mainFrameY")
             try:
                 x, y = int(x), int(y)
-                # Set to 0 if value is below 0
                 if 0 <= x <= screen_width and 0 <= y <= screen_height:
                     self.main_frame.move(x, y)
                 else:
-                    self.main_frame.set_position(Gtk.WindowPosition.CENTER)
+                    # Center window manually using screen dimensions
+                    window_width, window_height = self.main_frame.get_size()
+                    center_x = (screen_width - window_width) // 2
+                    center_y = (screen_height - window_height) // 2
+                    self.main_frame.move(center_x, center_y)
             except (ValueError, TypeError):
-                # Values have not been set or are not valid integers
-                self.main_frame.set_position(Gtk.WindowPosition.CENTER)
+                # Center window manually using screen dimensions
+                window_width, window_height = self.main_frame.get_size()
+                center_x = (screen_width - window_width) // 2
+                center_y = (screen_height - window_height) // 2
+                self.main_frame.move(center_x, center_y)
 
-        self.builder.get_object("main_pane").set_position(
-            config.read("leftDividerPosition")
-        )
+        self.builder.get_object("main_pane").set_position(config.read("leftDividerPosition"))
         # By default do not show tags pane.
-        self.edit_pane.set_position(
-            config.read("rightDividerPosition", main_frame_width)
-        )
+        self.edit_pane.set_position(config.read("rightDividerPosition", main_frame_width))
 
         self.set_font(config.read("mainFont", editor.DEFAULT_FONT))
 
@@ -685,9 +651,7 @@ class MainWindow:
 
     def set_font(self, font_name):
         self.day_text_field.set_font(font_name)
-        self.html_editor.set_font_size(
-            Pango.FontDescription(font_name).get_size() / Pango.SCALE
-        )
+        self.html_editor.set_font_size(Pango.FontDescription(font_name).get_size() / Pango.SCALE)
 
     def setup_template_menu(self):
         def update_menu(button):
@@ -699,10 +663,7 @@ class MainWindow:
         self.template_button.set_label(_("Template"))
         self.template_button.connect("clicked", update_menu)
         self.template_button.set_tooltip_text(
-            _(
-                "Insert this weekday's template. "
-                "Click the arrow on the right for more options"
-            )
+            _("Insert this weekday's template. Click the arrow on the right for more options")
         )
         self.builder.get_object("edit_toolbar").insert(self.template_button, 2)
 
@@ -1028,11 +989,7 @@ class MainCalendar:
         """
         cal_year, cal_month, _cal_day = self.calendar.get_date()
         cal_month += 1
-        if day_number not in range(
-            1, dates.get_number_of_days(cal_year, cal_month) + 1
-        ):
-            logging.debug(
-                f"Non-existent date in calendar: {day_number}.{cal_month}.{cal_year}"
-            )
+        if day_number not in range(1, dates.get_number_of_days(cal_year, cal_month) + 1):
+            logging.debug(f"Non-existent date in calendar: {day_number}.{cal_month}.{cal_year}")
             return False
         return True
