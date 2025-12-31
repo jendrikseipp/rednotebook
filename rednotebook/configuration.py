@@ -49,7 +49,7 @@ class Config(dict):
         "mainFrameX": None,
         "mainFrameY": None,
         "leftDividerPosition": 260,
-        "rightDividerPosition": None,
+        "rightDividerPosition": 500,
         "cloudMaxTags": 1000,
         "autoIndent": 1,
     }

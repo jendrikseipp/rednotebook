@@ -638,8 +638,11 @@ class MainWindow:
                 self.main_frame.move(center_x, center_y)
 
         self.builder.get_object("main_pane").set_position(config.read("leftDividerPosition"))
-        # By default do not show tags pane.
-        self.edit_pane.set_position(config.read("rightDividerPosition", main_frame_width))
+        if config.read("showTagsPane"):
+            self.edit_pane.set_position(config.read("rightDividerPosition"))
+        else:
+            # Tags pane is hidden anyway, so skip setting position.
+            pass
 
         self.set_font(config.read("mainFont", editor.DEFAULT_FONT))
 
