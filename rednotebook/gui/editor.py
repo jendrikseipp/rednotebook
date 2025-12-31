@@ -39,7 +39,8 @@ try:
     DEFAULT_FONT = _gtk_settings.get_property("gtk-font-name")
 except Exception:
     # Happens on headless systems (no DISPLAY) or when GTK is not fully initialised.
-    DEFAULT_FONT = "Ubuntu 10"
+    # Don't specify a size - let the system choose an appropriate default.
+    DEFAULT_FONT = "Sans"
 
 
 class Editor(GObject.GObject):
