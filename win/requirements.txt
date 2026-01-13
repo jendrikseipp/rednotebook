@@ -1,6 +1,6 @@
 altgraph==0.17.2
 distlib==0.3.4
-filelock==3.6.0
+filelock==3.20.3
 future==0.18.2
 pefile==2022.5.30
 platformdirs==2.5.1
