@@ -1,4 +1,4 @@
-#2.43 (2026-02-03)
+# 2.43 (2026-02-03)
 * Added notebook file integrity tool to rednotebook scrpits, rednb-verify.py
 
 # 2.42 (2025-12-28)
