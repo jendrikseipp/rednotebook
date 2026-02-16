@@ -1,4 +1,4 @@
-altgraph==0.17.2
+altgraph==0.17.5
 distlib==0.3.4
 filelock==3.6.0
 future==0.18.2
