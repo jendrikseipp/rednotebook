@@ -1,4 +1,4 @@
-altgraph==0.17.2
+altgraph==0.17.5
 distlib==0.3.4
 filelock==3.6.0
 future==0.18.2
@@ -8,6 +8,5 @@ pyinstaller==6.16.0
 pyinstaller-hooks-contrib==2025.8
 pywin32-ctypes==0.2.1
 PyYAML==5.4.1
-setuptools
 six==1.16.0
 virtualenv==20.14.0
