@@ -1,3 +1,5 @@
+* Fix segfault on Wayland when setting the window icon (#806, @sjg20)
+
 # 2.42 (2025-12-28)
 * Update help concerning math formulas (#97, #855, @jendrikseipp).
 * Fix X11 forwarding (#726, #847, @jendrikseipp).

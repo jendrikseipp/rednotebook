@@ -71,10 +71,9 @@ class MainWindow:
             self.builder.add_from_file(self.gladefile)
 
         self.main_frame = self.builder.get_object("main_frame")
-        self.main_frame.set_application(journal)
         self.main_frame.set_title("RedNotebook")
         icon = GdkPixbuf.Pixbuf.new_from_file(os.path.join(filesystem.frame_icon_dir, "rn-128.png"))
-        self.main_frame.set_icon(icon)
+        Gtk.Window.set_default_icon(icon)
 
         self.is_fullscreen = False
 
@@ -173,6 +172,7 @@ class MainWindow:
         self.load_values_from_config()
 
         self.main_frame.show()
+        self.main_frame.set_application(journal)
 
         self.options_manager = OptionsManager(self)
         self.export_assistant = ExportAssistant(self.journal)
