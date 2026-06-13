@@ -352,14 +352,14 @@ class Journal(Gtk.Application):
             logging.shutdown()
             self.quit()
 
-    def convert(self, text, target, headers=None, options=None, use_gtk_theme=False):
+    def convert(self, text, target, options=None, use_gtk_theme=False):
         options = options or {}
         options["font"] = self.config.read("previewFont")
         if use_gtk_theme:
             bgcolor, fgcolor = utils.get_gtk_colors(self.frame.day_text_field.day_text_view)
             options["bgcolor"] = bgcolor
             options["fgcolor"] = fgcolor
-        return markup.convert(text, target, self.dirs.data_dir, headers=headers, options=options)
+        return markup.convert(text, target, self.dirs.data_dir, options=options)
 
     def save_to_disk(self, exit_imminent=False, changing_journal=False, saveas=False):
         self.save_old_day()

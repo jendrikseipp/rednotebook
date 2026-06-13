@@ -152,7 +152,7 @@ def _normalize_math(txt):
     return txt
 
 
-def convert(txt, target, data_dir, headers=None, options=None):
+def convert(txt, target, data_dir, options=None):
     """Convert journal text (Markdown, with txt2tags fallback) to ``target``."""
     data_dir = str(data_dir)
     options = options or {}
