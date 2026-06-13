@@ -1,3 +1,4 @@
+* Format entries with Markdown, rendered by markdown-it-py. Legacy txt2tags entries are converted to Markdown automatically, the editor highlights Markdown syntax, and the format/insert buttons now insert Markdown (@jendrikseipp).
 * Fix segfault on Wayland when setting the window icon (#806, @sjg20)
 
 # 2.42 (2025-12-28)
