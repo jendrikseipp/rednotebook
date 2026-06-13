@@ -24,8 +24,6 @@ from rednotebook.util import filesystem, markdownmarkup, t2t_to_markdown, urls
 
 # A trailing "<a ...>text</a>" link, used by pango_markup to strip links.
 REGEX_HTML_LINK = r"<a.*?>(.*?)</a>"
-# A Markdown hard line break (two trailing spaces), used by pango_markup.
-REGEX_LINEBREAK = r"  $"
 
 # Markdown image/link target: "![alt](url)" or "[text](url)".
 REGEX_MD_LINK = re.compile(r"(!?\[[^\]]*\]\()([^)\s]+)(\))")
