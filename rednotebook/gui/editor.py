@@ -204,10 +204,10 @@ class Editor(GObject.GObject):
     def _get_markups(self, format, selection):
         format_to_markups = {
             "bold": ("**", "**"),
-            "italic": ("//", "//"),
-            "monospace": ("``", "``"),
-            "underline": ("__", "__"),
-            "strikethrough": ("--", "--"),
+            "italic": ("*", "*"),
+            "monospace": ("`", "`"),
+            "underline": ("<u>", "</u>"),
+            "strikethrough": ("~~", "~~"),
         }
 
         left_markup, right_markup = format_to_markups[format]
