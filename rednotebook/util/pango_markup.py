@@ -47,7 +47,7 @@ _HTML_TO_PANGO = [
 ]
 
 
-def convert_to_pango(txt, headers=None, options=None):
+def convert_to_pango(txt):
     """Convert (Markdown) category markup to Pango markup for display."""
     original_txt = txt
 
