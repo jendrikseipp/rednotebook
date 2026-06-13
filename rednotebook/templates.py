@@ -46,7 +46,7 @@ MENU_XML = """\
 
 
 example_text = """\
-=== This is an example template ===
+### This is an example template
 
 It has been created to show you what can be put into a template. \
 You can edit and save it with the buttons above.
@@ -57,39 +57,39 @@ allowed in normal entries.
 Your text can be:
 
 - **bold**
-- //italic//
-- __underlined__
-- --strikethrough--
-- or some **//__combination__//**
+- *italic*
+- <u>underlined</u>
+- ~~strikethrough~~
+- or some ***<u>combination</u>***
 
 
 You can add images to your template:
 
-**Images:** [""/path/to/your/picture"".jpg]
+**Images:** ![](/path/to/your/picture.jpg)
 
 You can link to almost everything:
 
-- **links to files on your computer:** [filename.txt ""/path/to/filename.txt""]
-- **links to directories:** [directory name ""/path/to/directory/""]
-- **links to websites:** [RedNotebook Homepage ""https://rednotebook.app""]
+- **links to files on your computer:** [filename.txt](/path/to/filename.txt)
+- **links to directories:** [directory name](/path/to/directory/)
+- **links to websites:** [RedNotebook Homepage](https://rednotebook.app)
 
 
-As you see, **bullet lists** are also available. As always you have to add two \
-empty lines to end a list.
+As you see, **bullet lists** are also available. As always you have to add an \
+empty line to end a list.
 
 Additionally you can have **titles** and **horizontal lines**:
 
-= Title level 1 =
+# Title level 1
 (The dates in the export will use this level, so it is recommended to use lower
 levels in your entries)
-== Title level 2 ==
-=== Title level 3 ===
+## Title level 2
+### Title level 3
 etc.
 
-====================
+---
 
-% Commentary text can be put on lines starting with a percent sign.
-% Those lines will not show up in the preview and the export.
+<!-- Commentary text can be put inside HTML comment markers. -->
+<!-- Those lines will not show up in the preview and the export. -->
 
 **Macros**:
 
