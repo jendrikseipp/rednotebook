@@ -246,7 +246,8 @@ class LatexRenderer(_TokenRenderer):
         return ""
 
     def paragraph_close(self, token, env):
-        return "\n\n"
+        # Tight list items wrap their text in hidden paragraphs.
+        return "" if token.hidden else "\n\n"
 
     def heading_open(self, token, env):
         return "\\" + _HEADING_TO_TEX.get(token.tag, "section") + "{"
@@ -352,7 +353,8 @@ class PlainRenderer(_TokenRenderer):
         return "\n"
 
     def paragraph_close(self, token, env):
-        return "\n\n"
+        # Tight list items wrap their text in hidden paragraphs.
+        return "" if token.hidden else "\n\n"
 
     def heading_close(self, token, env):
         return "\n\n"
@@ -367,6 +369,12 @@ class PlainRenderer(_TokenRenderer):
 
     def image(self, token, env):
         return f"[{token.attrs.get('src', '')}]"
+
+    def bullet_list_open(self, token, env):
+        # Start nested lists on their own line.
+        return "\n" if token.level else ""
+
+    ordered_list_open = bullet_list_open
 
     def list_item_open(self, token, env):
         return "- "
@@ -468,6 +476,8 @@ def render(text, target, options=None):
         if has_math is None:
             has_math = any(token.type.startswith("math") for token in _walk(tokens))
         return _html_document(body, options, has_math)
+    # Collapse runs of blank lines that arise between block elements.
+    body = re.sub(r"\n{3,}", "\n\n", body)
     if target == "tex":
         return _latex_document(body, options)
     return body.strip() + "\n"
