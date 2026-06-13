@@ -2,6 +2,9 @@ altgraph==0.17.5
 distlib==0.3.4
 filelock==3.6.0
 future==0.18.2
+linkify-it-py==2.0.3
+markdown-it-py==3.0.0
+mdit-py-plugins==0.4.2
 pefile==2022.5.30
 platformdirs==2.5.1
 pyinstaller==6.16.0
