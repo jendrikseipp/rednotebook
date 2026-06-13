@@ -18,6 +18,7 @@ Needed for running RedNotebook:
   * GtkSourceView (3.0+): https://wiki.gnome.org/Projects/GtkSourceView
   * Python (3.8+): https://www.python.org
   * PyYAML (3.10+): https://pyyaml.org
+  * markdown-it-py, mdit-py-plugins and linkify-it-py: https://github.com/executablebooks/markdown-it-py
   * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
   * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/ (optional)
 
