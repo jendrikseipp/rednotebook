@@ -424,13 +424,10 @@ class MainWindow:
             self.html_editor.show_day(self.day)
             self.change_mode(preview=True)
         else:
-            date_format = self.journal.config.read("exportDateFormat")
-            date_string = dates.format_date(date_format, self.day.date)
             markup_string = markup.get_markup_for_day(self.day, "html")
             html = self.journal.convert(
                 markup_string,
                 "html",
-                headers=[f"{date_string} - RedNotebook", "", ""],
                 options={"toc": 0},
             )
             utils.show_html_in_browser(html, os.path.join(self.journal.dirs.temp_dir, "day.html"))
