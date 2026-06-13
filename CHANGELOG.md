@@ -1,3 +1,6 @@
+# 2.44 (unreleased)
+* Format entries with Markdown, rendered by markdown-it-py. Legacy txt2tags entries are converted to Markdown automatically, the editor highlights Markdown syntax, and the format/insert buttons now insert Markdown (@jendrikseipp).
+
 # 2.43 (2026-10-01)
 * Fix applying spell check suggestions, which left the misspelled word unchanged (@gabspeck).
 * Fix segfault on Wayland when setting the window icon (#806, @sjg20).
