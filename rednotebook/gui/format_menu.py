@@ -15,6 +15,8 @@
 # with this program.  If not, see <https://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------
 
+import re
+
 from gi.repository import Gtk
 
 from rednotebook.gui import customwidgets
@@ -44,12 +46,13 @@ MENUBAR_XML = f"""\
 
 
 class FormatMenu:
+    # Markdown markers as (prefix, suffix) pairs.
     FORMAT_TO_MARKUP = {
-        "bold": "**",
-        "italic": "//",
-        "monospace": "``",
-        "underline": "__",
-        "strikethrough": "--",
+        "bold": ("**", "**"),
+        "italic": ("*", "*"),
+        "monospace": ("`", "`"),
+        "underline": ("<u>", "</u>"),
+        "strikethrough": ("~~", "~~"),
     }
 
     def __init__(self, main_window):
@@ -66,9 +69,9 @@ class FormatMenu:
             format_ = action.get_name().lower()
             iter_ = self.main_window.categories_tree_view.get_selected_node()
             if iter_:
-                markup = self.FORMAT_TO_MARKUP[format_]
+                prefix, suffix = self.FORMAT_TO_MARKUP[format_]
                 text = self.main_window.categories_tree_view.get_iter_value(iter_)
-                text = f"{markup}{text}{markup}"
+                text = f"{prefix}{text}{suffix}"
                 self.main_window.categories_tree_view.set_iter_value(iter_, text)
             else:
                 self.main_window.day_text_field.apply_format(format_)
@@ -155,6 +158,9 @@ class FormatMenu:
     def on_clear_format(self, action):
         editor = self.main_window.day_text_field
         sel_text = editor.get_selected_text()
-        for markup in list(self.FORMAT_TO_MARKUP.values()) + ["=== ", " ==="]:
+        markers = [marker for pair in self.FORMAT_TO_MARKUP.values() for marker in pair]
+        for markup in markers:
             sel_text = sel_text.replace(markup, "")
+        # Remove heading markers at the start of each line.
+        sel_text = re.sub(r"(?m)^#{1,6}[ \t]+", "", sel_text)
         editor.replace_selection(sel_text)
