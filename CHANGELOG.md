@@ -1,4 +1,5 @@
 * Fix segfault on Wayland when setting the window icon (#806, @sjg20)
+* Fix reading journal files that store day numbers as strings (#897, @SAY-5)
 
 # 2.42 (2025-12-28)
 * Update help concerning math formulas (#97, #855, @jendrikseipp).
