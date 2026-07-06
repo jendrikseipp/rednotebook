@@ -293,6 +293,7 @@ class Month:
         month_content = month_content or {}
         self.days = {}
         for day_number, day_content in month_content.items():
+            day_number = int(day_number)
             self.days[day_number] = Day(self, day_number, day_content)
 
         self.edited = False
