@@ -165,6 +165,9 @@ class HtmlRenderer(RendererHTML):
     def math_inline(self, tokens, idx, options, env):
         return f"\\({tokens[idx].content}\\)"
 
+    def math_inline_double(self, tokens, idx, options, env):
+        return f"$${tokens[idx].content}$$"
+
     def math_block(self, tokens, idx, options, env):
         return f"$$\n{tokens[idx].content}\n$$\n"
 
@@ -206,6 +209,7 @@ class _TokenRenderer:
 
     def __init__(self, parser=None):
         self.parser = parser
+        self._first_cell_in_row = True
 
     def render(self, tokens, options, env):
         out = []
@@ -233,8 +237,24 @@ class _TokenRenderer:
 
 
 class LatexRenderer(_TokenRenderer):
+    def __init__(self, parser=None):
+        super().__init__(parser)
+        self._open_underlines = 0
+
     def text(self, token, env):
         return tex_escape(token.content)
+
+    def html_inline(self, token, env):
+        # Keep underlining (the format menu inserts "<u>...</u>"), drop
+        # everything else. Stray closing tags are ignored; stray opening
+        # tags are closed in render() below.
+        if token.content == "<u>":
+            self._open_underlines += 1
+            return "\\uline{"
+        if token.content == "</u>" and self._open_underlines:
+            self._open_underlines -= 1
+            return "}"
+        return ""
 
     def softbreak(self, token, env):
         return "\n"
@@ -335,17 +355,38 @@ class LatexRenderer(_TokenRenderer):
     def math_inline(self, token, env):
         return f"${token.content}$"
 
+    def math_inline_double(self, token, env):
+        return f"$${token.content}$$"
+
     def math_block(self, token, env):
         return f"$${token.content}$$\n"
 
-    # Minimal table support: render cells separated by " & " and rows by "\\".
-    def tr_close(self, token, env):
-        return "\\\\\n"
+    # Tables. The column count is stored on the table_open token by
+    # _annotate_table_columns() before rendering starts.
+    def table_open(self, token, env):
+        num_columns = max(token.meta.get("ncols", 1), 1)
+        return "\\begin{tabular}{" + "l" * num_columns + "}\n"
 
-    def td_close(self, token, env):
+    def table_close(self, token, env):
+        return "\\end{tabular}\n\n"
+
+    def thead_close(self, token, env):
+        return "\\hline\n"
+
+    def tr_open(self, token, env):
+        self._first_cell_in_row = True
+        return ""
+
+    def tr_close(self, token, env):
+        return " \\\\\n"
+
+    def td_open(self, token, env):
+        if self._first_cell_in_row:
+            self._first_cell_in_row = False
+            return ""
         return " & "
 
-    th_close = td_close
+    th_open = td_open
 
 
 class PlainRenderer(_TokenRenderer):
@@ -394,8 +435,29 @@ class PlainRenderer(_TokenRenderer):
     def math_inline(self, token, env):
         return token.content
 
+    math_inline_double = math_inline
+
     def math_block(self, token, env):
         return token.content + "\n"
+
+    # Tables: separate cells with " | " and put each row on its own line.
+    def table_close(self, token, env):
+        return "\n"
+
+    def tr_open(self, token, env):
+        self._first_cell_in_row = True
+        return ""
+
+    def tr_close(self, token, env):
+        return "\n"
+
+    def td_open(self, token, env):
+        if self._first_cell_in_row:
+            self._first_cell_in_row = False
+            return ""
+        return " | "
+
+    th_open = td_open
 
 
 _RENDERERS = {"html": HtmlRenderer, "tex": LatexRenderer, "txt": PlainRenderer}
@@ -415,6 +477,80 @@ def _walk(tokens):
         yield token
         if token.children:
             yield from _walk(token.children)
+
+
+def _annotate_table_columns(tokens):
+    """Store the number of columns on each table_open token.
+
+    The LaTeX renderer needs the column count for ``\\begin{tabular}`` before
+    it sees any cells, so count the cells of the first row in advance.
+    """
+    table = None
+    ncols = 0
+    for token in tokens:
+        if token.type == "table_open":
+            table = token
+            ncols = 0
+        elif table is not None:
+            if token.type in ("th_open", "td_open"):
+                ncols += 1
+            elif token.type == "tr_close":
+                table.meta["ncols"] = ncols
+                table = None
+
+
+def _get_heading_text(inline_token):
+    return "".join(
+        child.content
+        for child in _walk(inline_token.children or [])
+        if child.type in ("text", "code_inline", "math_inline", "hashtag")
+    )
+
+
+def _slugify(title):
+    slug = re.sub(r"[^\w\- ]", "", title.lower()).strip().replace(" ", "-")
+    return slug or "section"
+
+
+def _add_heading_anchors(tokens):
+    """Give each heading an id attribute and return (level, title, id) tuples."""
+    entries = []
+    used_slugs = set()
+    for pos, token in enumerate(tokens):
+        if token.type != "heading_open":
+            continue
+        title = _get_heading_text(tokens[pos + 1])
+        slug = base_slug = _slugify(title)
+        counter = 1
+        while slug in used_slugs:
+            counter += 1
+            slug = f"{base_slug}-{counter}"
+        used_slugs.add(slug)
+        token.attrs["id"] = slug
+        entries.append((int(token.tag[1]), title, slug))
+    return entries
+
+
+def _render_toc(entries):
+    """Render a nested list of links to the given headings."""
+    if not entries:
+        return ""
+    min_level = min(level for level, _, _ in entries)
+    parts = ['<nav class="toc">\n']
+    current_level = min_level - 1
+    for level, title, slug in entries:
+        while current_level < level:
+            parts.append("<ul>\n")
+            current_level += 1
+        while current_level > level:
+            parts.append("</ul>\n")
+            current_level -= 1
+        parts.append(f'<li><a href="#{slug}">{escapeHtml(title)}</a></li>\n')
+    while current_level >= min_level:
+        parts.append("</ul>\n")
+        current_level -= 1
+    parts.append("</nav>\n")
+    return "".join(parts)
 
 
 # --------------------------------------------------------------------------
@@ -469,15 +605,24 @@ def render(text, target, options=None):
     md = _get_parser(target)
     env = {}
     tokens = md.parse(text, env)
+
+    toc = ""
+    if target == "html" and options.get("toc"):
+        toc = _render_toc(_add_heading_anchors(tokens))
+    elif target == "tex":
+        _annotate_table_columns(tokens)
+
     body = md.renderer.render(tokens, md.options, env)
 
     if target == "html":
         has_math = options.get("add_mathjax")
         if has_math is None:
             has_math = any(token.type.startswith("math") for token in _walk(tokens))
-        return _html_document(body, options, has_math)
+        return _html_document(toc + body, options, has_math)
     # Collapse runs of blank lines that arise between block elements.
     body = re.sub(r"\n{3,}", "\n\n", body)
     if target == "tex":
+        # Close any "<u>" that was never closed to keep the braces balanced.
+        body += "}" * md.renderer._open_underlines
         return _latex_document(body, options)
     return body.strip() + "\n"

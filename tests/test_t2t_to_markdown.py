@@ -13,6 +13,9 @@ class TestHeadings:
     def test_markdown_heading_untouched(self):
         assert c("# Already Markdown") == "# Already Markdown"
 
+    def test_heading_with_inline_markup(self):
+        assert c("== My //special// day ==") == "## My *special* day"
+
 
 class TestInlineFormatting:
     def test_italic(self):
@@ -48,6 +51,10 @@ class TestHorizontalRule:
         # Three dashes is already a Markdown rule and must survive.
         assert c("---") == "---"
 
+    def test_rule_after_text_gets_blank_line(self):
+        # Without the blank line, "---" would turn "text" into a heading.
+        assert c("text\n====================") == "text\n\n---"
+
 
 class TestLists:
     def test_bullet_unchanged(self):
@@ -58,6 +65,9 @@ class TestLists:
 
     def test_indented_numbered(self):
         assert c("  + item") == "  1. item"
+
+    def test_numbered_with_inline_markup(self):
+        assert c("+ visit //grandma//") == "1. visit *grandma*"
 
 
 class TestLinks:

@@ -96,8 +96,23 @@ class TestHtmlRedNotebookFeatures:
     def test_mathjax_absent_without_formula(self):
         assert "MathJax" not in html("no math here")
 
+    def test_inline_display_math(self):
+        doc = html("around $$x^2$$ text")
+        assert "$$x^2$$" in doc
+        assert "MathJax" in doc
+
     def test_linebreak(self):
         assert "<br" in html("first  \nsecond")
+
+    def test_toc(self):
+        doc = html("# One\n\ntext\n\n## Two", toc=1)
+        assert '<a href="#one">One</a>' in doc
+        assert '<a href="#two">Two</a>' in doc
+        assert '<h1 id="one">One</h1>' in doc
+        assert '<h2 id="two">Two</h2>' in doc
+
+    def test_no_toc_by_default(self):
+        assert "toc" not in html("# One\n\ntext")
 
 
 class TestLatex:
@@ -125,6 +140,24 @@ class TestLatex:
     def test_special_chars_escaped(self):
         assert r"100\%" in tex("100%")
 
+    def test_inline_display_math(self):
+        assert "$$x^2$$" in tex("around $$x^2$$ text")
+
+    def test_table(self):
+        doc = tex("| a | b |\n|---|---|\n| 1 | 2 |")
+        assert "\\begin{tabular}{ll}" in doc
+        assert "a & b \\\\" in doc
+        assert "\\hline" in doc
+        assert "1 & 2 \\\\" in doc
+        assert "\\end{tabular}" in doc
+
+    def test_underline(self):
+        assert r"\uline{text}" in tex("a <u>text</u> b")
+
+    def test_unbalanced_underline_braces(self):
+        doc = tex("a <u>text b")
+        assert doc.count("{") == doc.count("}")
+
 
 class TestPlainText:
     def test_plain_text(self):
@@ -141,3 +174,11 @@ class TestPlainText:
     def test_bullet_list(self):
         out = txt("- a\n- b")
         assert "a" in out and "b" in out
+
+    def test_inline_display_math(self):
+        assert "x^2" in txt("around $$x^2$$ text")
+
+    def test_table(self):
+        out = txt("| a | b |\n|---|---|\n| 1 | 2 |")
+        assert "a | b\n" in out
+        assert "1 | 2\n" in out

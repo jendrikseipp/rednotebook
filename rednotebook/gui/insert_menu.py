@@ -95,18 +95,18 @@ class InsertMenu:
     def __init__(self, main_window):
         self.main_window = main_window
 
-        self.bullet_list = "\n- {}\n- {}\n  - {} ({})\n\n\n".format(
+        self.bullet_list = "\n- {}\n- {}\n  - {} ({})\n\n".format(
             _("First Item"),
             _("Second Item"),
             _("Indented Item"),
-            _("Two blank lines close the list"),
+            _("A blank line closes the list"),
         )
 
-        self.numbered_list = "\n1. {}\n1. {}\n   1. {} ({})\n\n\n".format(
+        self.numbered_list = "\n1. {}\n1. {}\n   1. {} ({})\n\n".format(
             _("First Item"),
             _("Second Item"),
             _("Indented Item"),
-            _("Two blank lines close the list"),
+            _("A blank line closes the list"),
         )
 
         self.setup()
@@ -394,7 +394,9 @@ class InsertMenu:
 
     @insert_handler
     def on_insert_line(self, sel_text):
-        return "\n---\n"
+        # The blank line before "---" keeps it from turning the preceding
+        # text into a setext heading.
+        return "\n\n---\n\n"
 
     @insert_handler
     def on_insert_date_time(self, sel_text):

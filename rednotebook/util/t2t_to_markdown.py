@@ -87,11 +87,11 @@ def _convert_block(line):
     heading = REGEX_HEADING.match(line)
     if heading:
         level = len(heading.group(1))
-        return "#" * level + " " + heading.group(2)
+        return "#" * level + " " + _convert_inline(heading.group(2))
 
     numbered = REGEX_NUMBERED.match(line)
     if numbered:
-        return f"{numbered.group(1)}1. {numbered.group(2)}"
+        return f"{numbered.group(1)}1. {_convert_inline(numbered.group(2))}"
 
     return None
 
@@ -111,6 +111,10 @@ def convert_to_markdown(text):
 
         block = _convert_block(line)
         if block is not None:
+            # A "---" directly below a line of text would turn that line into
+            # a setext heading, so make sure a blank line separates them.
+            if block == "---" and result and result[-1].strip():
+                result.append("")
             result.append(block)
         else:
             result.append(_convert_inline(line))

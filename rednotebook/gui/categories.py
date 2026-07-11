@@ -116,14 +116,14 @@ class CategoriesTreeView:
         self.tvcolumn.clear_attributes(self.cell)
         self.tvcolumn.add_attribute(self.cell, "markup", 0)
 
-        # We want to show txt2tags markup and not pango markup
+        # We want to show Markdown markup and not pango markup
         editable.set_text(convert_from_pango(pango_markup))
 
     def edited_cb(self, cell, path, new_text, liststore):
         """
         Called when text in a cell is changed
 
-        new_text is txt2tags markup
+        new_text is Markdown markup
         """
         if new_text == "text" and self.node_on_top_level(path):
             self._show_error_msg('"text" is a reserved keyword')
@@ -182,8 +182,8 @@ class CategoriesTreeView:
 
         for i in range(model.iter_n_children(element)):
             child = model.iter_nth_child(element, i)
-            txt2tags_markup = self.get_iter_value(child)
-            content[txt2tags_markup] = self._get_element_content(child)
+            markdown_markup = self.get_iter_value(child)
+            content[markdown_markup] = self._get_element_content(child)
 
         return content
 
@@ -212,8 +212,8 @@ class CategoriesTreeView:
 
         return convert_from_pango(pango_markup)
 
-    def set_iter_value(self, iter, txt2tags_markup):
-        pango_markup = convert_to_pango(txt2tags_markup)
+    def set_iter_value(self, iter, markdown_markup):
+        pango_markup = convert_to_pango(markdown_markup)
         self.tree_store.set_value(iter, 0, pango_markup)
 
     def _get_category_iter(self, category_name):

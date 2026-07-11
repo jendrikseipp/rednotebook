@@ -73,6 +73,7 @@ Dummy().list_item_close
 Dummy().list_item_open
 Dummy().math_block
 Dummy().math_inline
+Dummy().math_inline_double
 Dummy().ordered_list_close
 Dummy().ordered_list_open
 Dummy().paragraph_close
@@ -83,5 +84,10 @@ Dummy().s_open
 Dummy().softbreak
 Dummy().strong_close
 Dummy().strong_open
-Dummy().th_close
+Dummy().table_close
+Dummy().table_open
+Dummy().td_open
+Dummy().th_open
+Dummy().thead_close
 Dummy().tr_close
+Dummy().tr_open
