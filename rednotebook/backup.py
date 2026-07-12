@@ -112,12 +112,7 @@ class Archiver:
         return last_backup_age
 
     def _get_backup_file(self):
-        if self.journal.title == "data":
-            name = ""
-        else:
-            name = "-" + self.journal.title
-
-        proposed_filename = f"RedNotebook-Backup{name}-{datetime.date.today()}.zip"
+        proposed_filename = f"RedNotebook-Backup-{datetime.date.today()}.zip"
         proposed_directory = self.journal.config.read("lastBackupDir", os.path.expanduser("~"))
 
         backup_dialog = self.journal.frame.builder.get_object("backup_dialog")
