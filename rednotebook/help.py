@@ -40,7 +40,7 @@ help_par = _('The example text and more documentation is available under "Help" 
 
 # Translators: noun
 preview = _("Preview")
-preview1 = _("There are two modes in RedNotebook, the __edit__ mode and the __preview__ mode.")
+preview1 = _("There are two modes in RedNotebook, the **edit** mode and the **preview** mode.")
 preview2 = _("Click on Edit above to see the difference.")
 preview_par = " ".join([preview1, preview2])
 
@@ -49,9 +49,9 @@ tags2 = _("Just use #hashtags like on twitter.")
 tags_par = " ".join([tags1, tags2])
 
 example_entry = _(
-    "Today I went to the //pet shop// and bought a **tiger**. "
-    "Then we went to the --pool-- park and had a nice time playing "
-    'ultimate frisbee. Afterwards we watched "__Life of Brian__".'
+    "Today I went to the *pet shop* and bought a **tiger**. "
+    "Then we went to the ~~pool~~ park and had a nice time playing "
+    'ultimate frisbee. Afterwards we watched "**Life of Brian**".'
 )
 
 templates = _("Templates")
@@ -102,24 +102,24 @@ welcome_day = {"text": complete_welcome_text}
 
 multiple_entries_text = _(
     """\
-=== Multiple entries ===
+### Multiple entries
 You can add multiple entries to a single day by \
-separating your entries with different titles (=== Work ===, === Family ===)."""
+separating your entries with different titles (### Work, ### Family)."""
 )
 
 multiple_entries_example = _(
     """\
-=== Work ===
+### Work
 Here goes the first entry. It is about #work.
 
-====================
+---
 
-=== Family ===
+### Family
 Here comes the entry about my #family."""
 )
 
 multiple_entries_day = {
-    "text": multiple_entries_text + "\n\n" + 20 * "=" + "\n\n" + multiple_entries_example
+    "text": multiple_entries_text + "\n\n" + "---" + "\n\n" + multiple_entries_example
 }
 
 example_content = [welcome_day, multiple_entries_day]
@@ -137,23 +137,23 @@ The main text field is the container for your normal diary entries like this one
 
 == Format ==
 
-As you see, the text can be formatted **bold**, //italic//, --struck
-through-- and __underlined__. As a convenience there is also the
+RedNotebook entries are written in [Markdown](https://commonmark.org/help/).
+As you see, the text can be formatted **bold**, *italic*, ~~struck
+through~~ and `monospace`. As a convenience there is also the
 "Format" button.
 
-A blank line starts a new **paragraph**, two backslashes \\\\ result in
-a **newline**.
+A blank line starts a new **paragraph**. End a line with two spaces to
+force a **newline**.
 
-To see the result, click on the "Preview" button. You can also see how
-this text was formatted by looking at its [source source.txt].
+To see the result, click on the "Preview" button.
 
-**Lists** can be created by using the following syntax, if you use "+"
-instead of "-" you can create a **numbered list**:
+**Lists** can be created by using the following syntax. Use "1." instead
+of "-" to create a **numbered list**:
 
 ```
 - First Item
   - Indented Item
-- Do not forget two blank lines after a list
+- Leave a blank line after a list
 
 
 ```
@@ -172,8 +172,8 @@ cursor position. Note that currently, the things you insert are only
 linked to, but not copied into your journal directory.
 
 With the insert button you cannot insert **links to directories** on
-your computer. Those can be inserted manually however (``[Home
-""file:///home/""]`` becomes [Home ""file:///home/""]).
+your computer. Those can be inserted manually however (``[Home](file:///home/)``
+becomes [Home](file:///home/)).
 
 
 == Entry references ==
@@ -282,8 +282,8 @@ file with ``pdflatex``.
 Make sure to type all links with the full path including the protocol:
 
 - http://www.wikipedia.org or http://wikipedia.org
-  (--wikipedia.org--, --\"""www.wikipedia.org\"""--)
-- file:///home/sam/myfile.txt (--/home/sam/myfile.txt--)
+  (not wikipedia.org or www.wikipedia.org)
+- file:///home/sam/myfile.txt (not /home/sam/myfile.txt)
 
 
 == Synchronize across multiple computers ==[sync]
@@ -395,26 +395,28 @@ the same directory.
 
 == Keyboard shortcuts ==
 
-|| General              |                        |
-| Show help             | <Ctrl> + H             |
-| Find                  | <Ctrl> + F             |
-| Export                | <Ctrl> + E             |
-| Spellcheck            | F7                     |
-| Fullscreen            | F11                    |
-|| Navigation           |                        |
-| Go back one day       | <Ctrl> + PageUp        |
-| Go forward one day    | <Ctrl> + PageDown      |
-| Go to today           | <Alt> + Home (Pos1)    |
-|| Insert               |                        |
-| Insert link           | <Ctrl> + L             |
-| Insert date/time      | <Ctrl> + D             |
-|| Format               |                        |
-| Bold                  | <Ctrl> + B             |
-| Italic                | <Ctrl> + I             |
-| Monospace             | <Ctrl> + M             |
-| Underline             | <Ctrl> + U             |
-| Strikethrough         | <Ctrl> + K             |
-| Remove format         | <Ctrl> + R             |
+| Action | Shortcut |
+|---|---|
+| **General** | |
+| Show help | `<Ctrl> + H` |
+| Find | `<Ctrl> + F` |
+| Export | `<Ctrl> + E` |
+| Spellcheck | `F7` |
+| Fullscreen | `F11` |
+| **Navigation** | |
+| Go back one day | `<Ctrl> + PageUp` |
+| Go forward one day | `<Ctrl> + PageDown` |
+| Go to today | `<Alt> + Home (Pos1)` |
+| **Insert** | |
+| Insert link | `<Ctrl> + L` |
+| Insert date/time | `<Ctrl> + D` |
+| **Format** | |
+| Bold | `<Ctrl> + B` |
+| Italic | `<Ctrl> + I` |
+| Monospace | `<Ctrl> + M` |
+| Underline | `<Ctrl> + U` |
+| Strikethrough | `<Ctrl> + K` |
+| Remove format | `<Ctrl> + R` |
 
 You can find more shortcuts in the menus in the main menu bar.
 
@@ -562,14 +564,9 @@ desired language code (e.g., de, de_DE or de_DE.UTF-8):
 
 === Titles ===
 
-You can insert titles into your post by adding "="s around your title
-text. = My Title = is the biggest heading, ===== My Title ===== is
-the smallest heading. A title line can only contain the title, nothing
-else.
-
-Numbered titles can be created by using "+" instead of "=". ""+ My
-Title +"" produces a title like "1.", +++++ My Title +++++ produces a
-title like 0.0.0.0.1
+You can insert titles into your post by prefixing your title text with
+"#"s. ``# My Title`` is the biggest heading, ``###### My Title`` is the
+smallest heading. A title line can only contain the title, nothing else.
 
 === Math Formulas ===
 
@@ -585,32 +582,25 @@ and in LaTeX exports:
 - ``\\(x^2\\)`` produces inline math like \\(x^2\\)
 
 
-=== Raw Formatting (export-only) ===
+=== Raw HTML ===
 
-Sometimes you want content that is only inserted into LaTeX (or raw HTML in
-other exports) and not rendered by the preview engine. For this, surround the
-raw snippet with two single quotes:
-
-||   Text                  |   Output (preview)                     |
-| ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
-| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' only appears formatted in LaTeX export) |
+You can embed raw HTML directly in your entries. It is passed through to
+the preview and the HTML export unchanged, for example
+``<font color="red">Red</font>`` produces <font color="red">Red</font>.
 
 === Verbatim text (Preserve format) ===
 
-To insert preformatted text preserving newlines and spaces, you can
-use the backquotes (`). Use 2 backquotes for inline insertions and 3
+To insert preformatted text preserving newlines and spaces, you can use
+backquotes (`). Use single backquotes for inline insertions and three
 backquotes if you want to insert a whole paragraph.
 For paragraphs be sure to put the backquotes on their own line.
 
-Two examples (have a look at the [source source.txt] to see how it's
-done):
-
-To install rednotebook use ``sudo apt-get install rednotebook``.
+To install rednotebook use `sudo apt-get install rednotebook`.
 
 ```
 class Robot:
     def greet(self):
-        print 'Hello World'
+        print('Hello World')
 
 robot = Robot()
 robot.greet()
@@ -618,14 +608,17 @@ robot.greet()
 
 === Unparsed text ===
 
-Formatting commands inside two pairs of "" are not interpreted (""**not
-bold**"").
+Formatting commands inside backquotes are not interpreted (`**not
+bold**`).
 
 === Comments ===
 
-Comments can be inserted after percent signs (**%**). They will not be
-shown in the preview and the exports. The % has to be the first
-character on the line.
+Comments can be inserted with HTML comment markers. They will not be
+shown in the preview or the exports:
+
+```
+<!-- This is a comment. -->
+```
 
 === List of all entries ===
 
@@ -672,7 +665,7 @@ contains a dictionary mapping category entries to the null value.
 In summary the data format is a hierarchy of dictionaries. This way the
 format can be easily extended if the need for that arises.
 
-All textual content can be formatted with http://txt2tags.org markup.
+All textual content can be formatted with [Markdown](https://commonmark.org/help/).
 
 
 == Questions ==

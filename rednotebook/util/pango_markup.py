@@ -1,118 +1,96 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2008-2024 Jendrik Seipp
+#
+# RedNotebook is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# RedNotebook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see <https://www.gnu.org/licenses/>.
+# -----------------------------------------------------------------------
+
 import logging
 import re
 
 import gi
+from markdown_it import MarkdownIt
 
 
 gi.require_version("Pango", "1.0")
 
-from gi.repository import GObject, Pango
+from gi.repository import GObject, Pango  # noqa: E402
 
-from rednotebook.external import txt2tags
-from rednotebook.util.markup import REGEX_HTML_LINK, REGEX_LINEBREAK
+from rednotebook.util import t2t_to_markdown  # noqa: E402
+from rednotebook.util.markup import REGEX_HTML_LINK  # noqa: E402
 
 
-def convert_to_pango(txt, headers=None, options=None):
-    """
-    Code partly taken from txt2tags tarball
-    """
+# Categories are short, single-line strings, so inline rendering is enough.
+_PARSER = MarkdownIt("commonmark").enable("strikethrough")
+
+# Map the (limited) set of HTML tags that markdown-it emits to the Pango tags
+# the category tree understands.
+_HTML_TO_PANGO = [
+    ("<strong>", "<b>"),
+    ("</strong>", "</b>"),
+    ("<em>", "<i>"),
+    ("</em>", "</i>"),
+    ("<s>", "<s>"),
+    ("</s>", "</s>"),
+    ("<code>", "<tt>"),
+    ("</code>", "</tt>"),
+]
+
+
+def convert_to_pango(txt):
+    """Convert (Markdown) category markup to Pango markup for display."""
     original_txt = txt
 
-    # Here is the marked body text, it must be a list.
-    txt = txt.split("\n")
+    txt = t2t_to_markdown.convert_to_markdown(txt)
+    result = _PARSER.renderInline(txt)
 
-    # Set the three header fields
-    if headers is None:
-        headers = ["", "", ""]
+    for html_tag, pango_tag in _HTML_TO_PANGO:
+        result = result.replace(html_tag, pango_tag)
 
-    config = txt2tags.ConfigMaster()._get_defaults()
+    # Pango has no anchor element, so reduce links to their text.
+    result = re.sub(REGEX_HTML_LINK, r"\1", result)
 
-    config["outfile"] = txt2tags.MODULEOUT  # results as list
-    config["target"] = "html"
-
-    config["preproc"] = []
-    # We need to escape the ampersand here, otherwise "&amp;" would become
-    # "&amp;amp;"
-    config["preproc"].append([r"&amp;", "&"])
-
-    # Allow line breaks
-    config["postproc"] = []
-    config["postproc"].append([REGEX_LINEBREAK, "\n"])
-
-    if options is not None:
-        config.update(options)
-
-    # Let's do the conversion
-    try:
-        body, toc = txt2tags.convert(txt, config)
-        full_doc = body
-        finished = txt2tags.finish_him(full_doc, config)
-        result = "".join(finished)
-
-    # Txt2tags error, show the message to the user
-    except txt2tags.error as msg:
-        logging.error(msg)
-        result = msg
-
-    # Unknown error, show the traceback to the user
-    except Exception:
-        result = txt2tags.getUnknownErrorMessage()
-        logging.error(result)
-
-    print(result)
-
-    # remove unwanted paragraphs
-    result = result.replace('<div class="body"><p>', "").replace("</p></div>", "")
-
-    logging.log(
-        5,
-        f'Converted "{repr(original_txt)}" text to "{repr(result)}" txt2tags markup',
-    )
-
-    # Remove unknown tags (<a>)
-    def replace_links(match):
-        """Return the link name."""
-        return match.group(1)
-
-    result = re.sub(REGEX_HTML_LINK, replace_links, result)
-    print(result)
-
-    for new_tag, old_tag in [("del", "s"), ("em", "i"), ("strong", "b")]:
-        result = result.replace(f"<{new_tag}>", f"<{old_tag}>")
-        result = result.replace(f"</{new_tag}>", f"</{old_tag}>")
-    print(result)
+    logging.log(5, f'Converted "{original_txt!r}" to Pango "{result!r}"')
 
     try:
         Pango.parse_markup(result, -1, "0")
-        # result is valid pango markup, return the markup.
-        return result
     except GObject.GError:
-        # There are unknown tags in the markup, return the original text
+        # There are unknown tags in the markup, return the original text.
         logging.debug(f"There are unknown tags in the markup: {result}")
         return original_txt
+    return result
 
 
 def convert_from_pango(pango_markup):
+    """Convert Pango markup back to the Markdown stored in the journal."""
     original_txt = pango_markup
     replacements = {
         "<b>": "**",
         "</b>": "**",
-        "<i>": "//",
-        "</i>": "//",
-        "<s>": "--",
-        "</s>": "--",
-        "<u>": "__",
-        "</u>": "__",
+        "<i>": "*",
+        "</i>": "*",
+        "<s>": "~~",
+        "</s>": "~~",
+        "<u>": "<u>",
+        "</u>": "</u>",
+        "<tt>": "`",
+        "</tt>": "`",
         "&amp;": "&",
         "&lt;": "<",
         "&gt;": ">",
-        "\n": r"\\",
     }
     for orig, repl in replacements.items():
         pango_markup = pango_markup.replace(orig, repl)
 
-    logging.log(
-        5,
-        f'Converted "{repr(original_txt)}" pango to "{repr(pango_markup)}" txt2tags',
-    )
+    logging.log(5, f'Converted Pango "{original_txt!r}" to Markdown "{pango_markup!r}"')
     return pango_markup

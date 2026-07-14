@@ -424,13 +424,10 @@ class MainWindow:
             self.html_editor.show_day(self.day)
             self.change_mode(preview=True)
         else:
-            date_format = self.journal.config.read("exportDateFormat")
-            date_string = dates.format_date(date_format, self.day.date)
             markup_string = markup.get_markup_for_day(self.day, "html")
             html = self.journal.convert(
                 markup_string,
                 "html",
-                headers=[f"{date_string} - RedNotebook", "", ""],
                 options={"toc": 0},
             )
             utils.show_html_in_browser(html, os.path.join(self.journal.dirs.temp_dir, "day.html"))
@@ -734,7 +731,7 @@ class MainWindow:
 
 class DayEditor(editor.Editor):
     n_recent_buffers = 10  # How many recent buffers to store
-    _t2t_highlighting = None
+    _highlighting = None
     _style_scheme = None
 
     def __init__(self, *args, **kwargs):
@@ -745,16 +742,16 @@ class DayEditor(editor.Editor):
         # recreated: at this point, the cursor and undo are lost.
         self.recent_buffers = OrderedDict()
 
-    def _get_t2t_highlighting(self):
-        if self._t2t_highlighting is None:
-            # Load our own copy of t2t syntax highlighting
+    def _get_highlighting(self):
+        if self._highlighting is None:
+            # Load our own copy of the Markdown syntax highlighting
             lm = GtkSource.LanguageManager.get_default()
             search_path = lm.get_search_path()
             if filesystem.files_dir not in search_path:
                 search_path.insert(0, filesystem.files_dir)
                 lm.set_search_path(search_path)
-            self._t2t_highlighting = lm.get_language("t2t")
-        return self._t2t_highlighting
+            self._highlighting = lm.get_language("markdown")
+        return self._highlighting
 
     def _get_style_scheme(self):
         if self._style_scheme is None:
@@ -777,7 +774,7 @@ class DayEditor(editor.Editor):
 
         buf = self.recent_buffers[key] = GtkSource.Buffer.new()
         buf.set_style_scheme(self._get_style_scheme())
-        buf.set_language(self._get_t2t_highlighting())
+        buf.set_language(self._get_highlighting())
         # Use butter1 (yellow) from Tango theme for highlighting.
         # I couldn't find a way to take the background color from the theme directly.
         buf.create_tag("highlighter", background="#fce94f")

@@ -204,10 +204,10 @@ class Editor(GObject.GObject):
     def _get_markups(self, format, selection):
         format_to_markups = {
             "bold": ("**", "**"),
-            "italic": ("//", "//"),
-            "monospace": ("``", "``"),
-            "underline": ("__", "__"),
-            "strikethrough": ("--", "--"),
+            "italic": ("*", "*"),
+            "monospace": ("`", "`"),
+            "underline": ("<u>", "</u>"),
+            "strikethrough": ("~~", "~~"),
         }
 
         left_markup, right_markup = format_to_markups[format]
@@ -333,10 +333,10 @@ class Editor(GObject.GObject):
             dirs, filename = os.path.split(uri)
             uri_without_ext, ext = os.path.splitext(uri)
             if is_pic(uri):
-                self.insert(f'[""{uri_without_ext}""{ext}]\n', iter)
+                self.insert(f"![]({uri_without_ext}{ext})\n", iter)
             else:
-                # It is always safer to add the "file://" protocol and the ""s
-                self.insert(f'[{filename} ""{uri}""]\n', iter)
+                # It is always safer to add the "file://" protocol.
+                self.insert(f"[{filename}]({uri})\n", iter)
 
         drag_context.finish(True, False, timestamp)
         # No further processing

@@ -102,7 +102,7 @@ class InsertMenu:
             _("Two blank lines close the list"),
         )
 
-        self.numbered_list = "\n+ {}\n+ {}\n  + {} ({})\n\n\n".format(
+        self.numbered_list = "\n1. {}\n1. {}\n   1. {} ({})\n\n\n".format(
             _("First Item"),
             _("Second Item"),
             _("Indented Item"),
@@ -296,9 +296,6 @@ class InsertMenu:
                     return
                 width_text = f"?{width:d}"
 
-            if sel_text:
-                sel_text += " "
-
             # iterate through all selected images
             lines = []
             for filename in picture_chooser.get_filenames():
@@ -308,7 +305,7 @@ class InsertMenu:
                 # with the file:// prefix
                 base = urls.get_local_url(base)
 
-                lines.append(f'[{sel_text}""{base}""{ext}{width_text}]')
+                lines.append(f"![{sel_text}]({base}{ext}{width_text})")
 
             return "\n".join(lines)
 
@@ -330,8 +327,8 @@ class InsertMenu:
             filename = urls.get_local_url(filename)
             sel_text = self.main_window.day_text_field.get_selected_text()
             _, tail = os.path.split(filename)
-            # It is always safer to add the "file://" protocol and the ""s
-            return f'[{sel_text or tail} ""{filename}""]'
+            # It is always safer to add the "file://" protocol.
+            return f"[{sel_text or tail}]({filename})"
 
     @insert_handler
     def on_insert_link(self, sel_text):
@@ -370,7 +367,7 @@ class InsertMenu:
             link_name = link_name_entry.get_text()
 
             if link_location and link_name:
-                return f'[{link_name} ""{link_location}""]'
+                return f"[{link_name}]({link_location})"
             elif link_location:
                 return link_location
             else:
@@ -387,17 +384,17 @@ class InsertMenu:
     @insert_handler
     def on_insert_numbered_list(self, sel_text):
         if sel_text:
-            return "\n".join(f"+ {row}" for row in sel_text.splitlines())
+            return "\n".join(f"1. {row}" for row in sel_text.splitlines())
         return self.numbered_list
 
     @insert_handler
     def on_insert_title(self, sel_text, level):
-        markup = "=" * level
-        return markup + " ", sel_text, " " + markup
+        markup = "#" * level
+        return markup + " ", sel_text, ""
 
     @insert_handler
     def on_insert_line(self, sel_text):
-        return "\n====================\n"
+        return "\n---\n"
 
     @insert_handler
     def on_insert_date_time(self, sel_text):
@@ -406,4 +403,5 @@ class InsertMenu:
 
     @insert_handler
     def on_insert_line_break(self, sel_text):
-        return "\\\\\n"
+        # Two trailing spaces are a Markdown hard line break.
+        return "  \n"
