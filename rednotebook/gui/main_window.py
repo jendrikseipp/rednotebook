@@ -249,7 +249,34 @@ class MainWindow:
         # Exit fullscreen mode with ESC.
         if event.keyval == Gdk.KEY_Escape and self.is_fullscreen:
             self.toggle_fullscreen()
+        
+        # Handle keyboard shortcuts that work even if buttons are hidden
+        # due to window resizing
+        shortcuts = {
+            # Navigation shortcuts
+            (Gdk.ModifierType.CONTROL_MASK, Gdk.KEY_Page_Up): self.on_back_one_day_button_clicked,
+            (Gdk.ModifierType.CONTROL_MASK, Gdk.KEY_Page_Down): self.on_forward_one_day_button_clicked,
+            (Gdk.ModifierType.MOD1_MASK, Gdk.KEY_Home): self.on_today_button_clicked,
+            # Preview/Edit shortcuts
+            (Gdk.ModifierType.CONTROL_MASK, Gdk.KEY_p): self.on_preview_or_edit_toggle,
+            # Find shortcut
+            (Gdk.ModifierType.CONTROL_MASK, Gdk.KEY_F): self.on_find_activated,
+        }
+        for (modifier, keyval), callback in shortcuts.items():
+            if (event.state & modifier) == modifier and event.keyval == keyval:
+                callback(None)
+                return True
+        return False
 
+    def on_preview_or_edit_toggle(self, widget):
+        """Toggle between preview and edit mode (Ctrl+P)"""
+        self.change_mode(preview=not self.preview_mode)
+    
+    def on_find_activated(self, widget):
+        """Activate find/search (Ctrl+F)"""
+        self.search_box.entry.grab_focus()
+
+    
     # TRAY-ICON / CLOSE --------------------------------------------------------
 
     def setup_tray_icon(self):
