@@ -1,3 +1,4 @@
+* Make days with notes in the calendar more visually distinct (#904, @Zeli8)
 * Fix segfault on Wayland when setting the window icon (#806, @sjg20)
 * Fix reading journal files that store day numbers as strings (#897, @SAY-5)
 * Restore the old backup filename format, dropping the journal title suffix (#884, @jendrikseipp)

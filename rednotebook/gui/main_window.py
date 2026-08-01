@@ -930,7 +930,12 @@ class MainCalendar:
     def __init__(self, journal, calendar):
         self.journal = journal
         self.calendar = calendar
+    
+        self.calendar.set_detail_func(self._get_day_detail)
 
+        self.calendar.set_detail_height_rows(1)
+        self.calendar.set_detail_width_chars(1)
+       
         if self.journal.config.read("weekNumbers"):
             calendar.set_property("show-week-numbers", True)
 
@@ -995,3 +1000,10 @@ class MainCalendar:
             logging.debug(f"Non-existent date in calendar: {day_number}.{cal_month}.{cal_year}")
             return False
         return True
+    
+    def _get_day_detail(self, calendar, year, month, day):
+        shown_year, shown_month, _shown_day = calendar.get_date()
+        if year == shown_year and month == shown_month:
+            if calendar.get_day_is_marked(day):
+                return "<span foreground='blue'>●</span>"
+        return None    
