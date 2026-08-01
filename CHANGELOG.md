@@ -1,3 +1,4 @@
+* Make days with notes in the calendar more visually distinct (#900, @Zeli8)
 * Fix segfault on Wayland when setting the window icon (#806, @sjg20)
 
 # 2.42 (2025-12-28)
