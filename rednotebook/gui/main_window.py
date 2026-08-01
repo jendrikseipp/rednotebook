@@ -930,7 +930,7 @@ class MainCalendar:
     def __init__(self, journal, calendar):
         self.journal = journal
         self.calendar = calendar
-        #
+    
         self.calendar.set_detail_func(self._get_day_detail)
 
         self.calendar.set_detail_height_rows(1)
