@@ -203,7 +203,7 @@ except (ImportError, AssertionError) as e:
     sys.exit(1)
 
 
-from rednotebook import backup, storage
+from rednotebook import backup, storage, sync
 from rednotebook.data import Month
 from rednotebook.gui.main_window import MainWindow
 from rednotebook.util import dates
@@ -399,6 +399,17 @@ class Journal(Gtk.Application):
             for tag in self.get_escaped_tags():
                 self.frame.search_box.add_entry(tag)
 
+        # Sync to remote after saving
+        if something_saved and self.config.read("syncEnabled") and self.config.read("syncAuto"):
+            sync_branch = self.config.read("syncBranch") or None
+            sync_url = self.config.read("syncRemoteUrl", "") or None
+            if not sync.sync(
+                self.dirs.data_dir,
+                remote_url=sync_url,
+                branch=sync_branch,
+            ):
+                logging.warning("Sync failed after save")
+
         # tell gobject to keep saving the content in regular intervals
         return True
 
@@ -412,6 +423,18 @@ class Journal(Gtk.Application):
 
         logging.info(f"Opening journal at {data_dir!r}")
         self.dirs.data_dir = data_dir
+
+        # Pull remote changes before loading if sync is enabled
+        if self.config.read("syncEnabled"):
+            sync.init_repo(data_dir)
+            sync_branch = self.config.read("syncBranch") or None
+            sync_url = self.config.read("syncRemoteUrl", "") or None
+            if not sync.pull_on_open(
+                data_dir,
+                remote_url=sync_url,
+                branch=sync_branch,
+            ):
+                logging.warning("Sync pull failed; opening with local data")
 
         self.month = None
         self.months.clear()

@@ -51,6 +51,10 @@ class Config(dict):
         "rightDividerPosition": 500,
         "cloudMaxTags": 1000,
         "autoIndent": 1,
+        "syncEnabled": 0,
+        "syncRemoteUrl": "",
+        "syncBranch": "master",
+        "syncAuto": 1,
     }
 
     obsolete_keys = {

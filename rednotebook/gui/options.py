@@ -21,7 +21,7 @@ import platform
 
 from gi.repository import Gtk
 
-from rednotebook import info
+from rednotebook import info, sync
 from rednotebook.configuration import Config
 from rednotebook.gui import editor
 from rednotebook.gui.customwidgets import ActionButton, CustomComboBoxEntry, UrlButton
@@ -237,6 +237,82 @@ class FontOption(Option):
         return self.font_name
 
 
+class SyncStatusOption(Option):
+    """Displays the current sync status and provides a manual sync button.
+
+    The 'Save and sync now' button acts on the values currently typed
+    into the sync fields in this dialog - not on whatever was last
+    saved to config - so it always does what the user just typed even
+    if they have not clicked OK yet.
+    """
+
+    def __init__(self, journal, get_current_settings):
+        Option.__init__(self, "", None)
+        self.journal = journal
+        self.data_dir = journal.dirs.data_dir
+        # Callback that returns (enabled, url, branch) from the current
+        # dialog field values, not from the saved config.
+        self.get_current_settings = get_current_settings
+
+        self.status_label = Gtk.Label()
+        self.status_label.set_xalign(0)
+        self._update_status()
+        self.pack_start(self.status_label, True, True, 0)
+
+        sync_now_button = Gtk.Button(_("Save and sync now"))
+        sync_now_button.set_tooltip_text(_("Save the settings above and run a sync immediately"))
+        sync_now_button.connect("clicked", self._on_sync_now)
+        self.pack_start(sync_now_button, False, False, 0)
+
+    def _update_status(self):
+        if not sync._is_git_repo(self.data_dir):
+            self.status_label.set_text(_("Not initialised"))
+        elif not sync._has_remote(self.data_dir):
+            self.status_label.set_text(_("No remote configured"))
+        else:
+            result = sync._run_git(
+                self.data_dir,
+                "remote",
+                "get-url",
+                "origin",
+                check=False,
+            )
+            url = result.stdout.strip() if result.returncode == 0 else "?"
+            self.status_label.set_text(_("Remote: %s") % url)
+
+    def _on_sync_now(self, widget):
+        enabled, url, branch = self.get_current_settings()
+
+        # Persist the values from the dialog so the next auto-sync sees
+        # them, and so cancelling the dialog does not discard them.
+        config = self.journal.config
+        config["syncEnabled"] = int(bool(enabled))
+        config["syncRemoteUrl"] = url or ""
+        config["syncBranch"] = branch or ""
+        config.save_to_disk()
+
+        if not enabled:
+            self.status_label.set_text(_("Sync is not enabled"))
+            return
+        if not url:
+            self.status_label.set_text(_("No Remote URL set"))
+            return
+
+        result = sync.sync(
+            self.data_dir,
+            remote_url=url,
+            branch=(branch or None),
+        )
+        if not result:
+            self.status_label.set_text(_("Sync failed - check the log"))
+        else:
+            self.status_label.set_text(_("Sync completed"))
+            self._update_status()  # Refresh remote line
+
+    def get_value(self):
+        return None
+
+
 class OptionsDialog:
     def __init__(self, dialog):
         self.dialog = dialog
@@ -270,6 +346,7 @@ class OptionsManager:
         self.dialog.set_transient_for(self.main_window.main_frame)
         self.dialog.set_default_size(600, 300)
         self.dialog.add_category("general", self.builder.get_object("general_vbox"))
+        self.dialog.add_category("sync", self.builder.get_object("sync_vbox"))
 
     def on_options_dialog(self):
         self.dialog.clear()
@@ -362,6 +439,60 @@ class OptionsManager:
             ]
         )
 
+        # Sync options
+        self.sync_options = []
+
+        self.sync_enabled_option = TickOption(
+            _("Enable sync"),
+            "syncEnabled",
+            tooltip=_(
+                "Synchronise journal data across machines using git. Requires git to be installed."
+            ),
+        )
+        self.sync_options.append(self.sync_enabled_option)
+
+        self.sync_url_option = TextOption(
+            _("Remote URL:"),
+            "syncRemoteUrl",
+            tooltip=_(
+                "Git remote URL. SSH is recommended for sync "
+                "(no password prompts, no token expiry): "
+                "e.g. git@github.com:user/journal.git. "
+                "HTTPS also works but needs a cached personal access "
+                "token or credential helper: "
+                "e.g. https://github.com/user/journal.git."
+            ),
+        )
+        test_button = Gtk.Button(_("Test"))
+        test_button.set_tooltip_text(_("Check the URL is reachable without modifying anything"))
+        test_button.connect("clicked", self._on_test_remote)
+        self.sync_url_option.pack_start(test_button, False, False, 0)
+        self.sync_options.append(self.sync_url_option)
+
+        self.sync_branch_option = TextOption(
+            _("Branch:"),
+            "syncBranch",
+            tooltip=_("Git branch to sync against. Defaults to 'master'."),
+        )
+        self.sync_options.append(self.sync_branch_option)
+
+        self.sync_options.append(
+            TickOption(
+                _("Sync automatically on save"),
+                "syncAuto",
+                tooltip=_("Commit and push after every save, pull on open"),
+            )
+        )
+
+        def get_current_sync_settings():
+            return (
+                self.sync_enabled_option.get_value(),
+                self.sync_url_option.get_value().strip(),
+                self.sync_branch_option.get_value().strip(),
+            )
+
+        self.sync_options.append(SyncStatusOption(self.journal, get_current_sync_settings))
+
         self.add_all_options()
 
         response = self.dialog.run()
@@ -387,14 +518,74 @@ class OptionsManager:
     def add_all_options(self):
         for option in self.options:
             self.dialog.add_option("general", option)
+        for option in self.sync_options:
+            self.dialog.add_option("sync", option)
 
     def save_options(self):
         logging.debug("Saving Options")
-        for option in self.options:
+        for option in self.options + self.sync_options:
             value = option.get_value()
             if option.option_name is not None:
                 logging.debug(f"Setting {option.option_name} = {repr(value)}")
                 self.config[option.option_name] = value
-            else:
+            elif hasattr(option, "set"):
                 # We don't save the autostart setting in the config file
                 option.set()
+
+        self._apply_sync_settings()
+
+    def _on_test_remote(self, widget):
+        """Test the URL currently in the sync URL field."""
+        url = self.sync_url_option.get_value().strip()
+        ok, message = sync.test_remote(url)
+
+        dialog = Gtk.MessageDialog(
+            transient_for=self.dialog.dialog,
+            modal=True,
+            message_type=Gtk.MessageType.INFO if ok else Gtk.MessageType.ERROR,
+            buttons=Gtk.ButtonsType.OK,
+            text=_("Remote reachable") if ok else _("Remote test failed"),
+        )
+        dialog.format_secondary_text(message)
+        dialog.run()
+        dialog.destroy()
+
+    def _apply_sync_settings(self):
+        """Initialise the git sync repo and run a sync now."""
+        if not self.config.read("syncEnabled"):
+            return
+
+        data_dir = self.journal.dirs.data_dir
+
+        if not sync.init_repo(data_dir):
+            self.journal.show_message(
+                _("Sync setup failed - could not initialise git repository"),
+                error=True,
+            )
+            return
+
+        remote_url = self.config.read("syncRemoteUrl", "")
+        if not remote_url:
+            self.journal.show_message(
+                _(
+                    "Sync is enabled but no remote URL is set. "
+                    "Nothing will be pushed until you add one."
+                ),
+                error=True,
+            )
+            return
+
+        # Run a full sync now so the user does not have to save + reopen
+        # preferences to trigger the first push. sync() will (re)set the
+        # remote from the URL before pulling/pushing.
+        branch = self.config.read("syncBranch") or None
+        if sync.sync(data_dir, remote_url=remote_url, branch=branch):
+            self.journal.show_message(
+                _("Sync completed - journal pushed to %s") % remote_url,
+                error=False,
+            )
+        else:
+            self.journal.show_message(
+                _("Sync failed - check the log for details"),
+                error=True,
+            )
