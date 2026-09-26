@@ -38,7 +38,7 @@ from rednotebook.gui.customwidgets import CustomComboBoxEntry, CustomListView
 from rednotebook.gui.exports import ExportAssistant
 from rednotebook.gui.menu import MainMenuBar
 from rednotebook.gui.options import OptionsManager
-from rednotebook.util import dates, filesystem, markup, urls, utils
+from rednotebook.util import dates, filesystem, markup, migration, urls, utils
 
 
 class MainWindow:
@@ -201,6 +201,8 @@ class MainWindow:
         self.setup_stats_dialog()
 
         self.template_manager = templates.TemplateManager(self)
+        # Templates from older versions use txt2tags markup.
+        migration.convert_templates(self.journal.dirs.template_dir, self.journal.config)
         self.template_manager.make_empty_template_files()
         self.setup_template_menu()
 
@@ -706,6 +708,18 @@ class MainWindow:
     def highlight_text(self, search_text):
         self.html_editor.highlight(search_text)
         self.day_text_field.highlight(search_text)
+
+    def show_info_dialog(self, title, msg):
+        dialog = Gtk.MessageDialog(
+            transient_for=self.main_frame,
+            modal=True,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text=title,
+        )
+        dialog.format_secondary_text(msg)
+        dialog.run()
+        dialog.destroy()
 
     def show_message(self, title, msg, msg_type):
         if msg_type == Gtk.MessageType.ERROR:

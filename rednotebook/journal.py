@@ -206,7 +206,7 @@ except (ImportError, AssertionError) as e:
 from rednotebook import backup, storage
 from rednotebook.data import Month
 from rednotebook.gui.main_window import MainWindow
-from rednotebook.util import dates
+from rednotebook.util import dates, migration
 from rednotebook.util.statistics import Statistics
 
 
@@ -239,6 +239,8 @@ class Journal(Gtk.Application):
         self.month = None
         self.date = None
         self.months = {}
+        # Settings stored in the directory of the open journal.
+        self.journal_config = None
 
         # The dir name is the title
         self.title = ""
@@ -380,6 +382,13 @@ class Journal(Gtk.Application):
             self.frame.show_save_error_dialog(exit_imminent)
             something_saved = None
 
+        # Write the settings of new journals and to the new directory after "Save As".
+        if something_saved is not None and self.journal_config is not None:
+            try:
+                self.journal_config.save_to(self.dirs.data_dir)
+            except OSError as err:
+                logging.error(f"Writing {configuration.JournalConfig.FILENAME} failed: {err}")
+
         if something_saved:
             self.show_message(
                 _("The content has been saved to %s") % self.dirs.data_dir, error=False
@@ -418,12 +427,16 @@ class Journal(Gtk.Application):
         self.frame.search_box.clear()
         self.frame.day_text_field.clear_buffers()
 
+        is_empty = not os.listdir(data_dir)
         self.months = storage.load_all_months_from_disk(data_dir)
+        self.journal_config = configuration.JournalConfig(data_dir)
+        if migration.needs_conversion(self.journal_config):
+            self.convert_journal_to_markdown(data_dir)
 
         # Nothing to save before first day change
         self.load_day(self.actual_date)
 
-        if self.is_first_start and not os.listdir(data_dir) and not self.days:
+        if self.is_first_start and is_empty and not self.days:
             self.add_instruction_content()
 
         self.stats = Statistics(self)
@@ -444,6 +457,27 @@ class Journal(Gtk.Application):
         else:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config["dataDir"] = rel_data_dir
+
+    def convert_journal_to_markdown(self, data_dir):
+        """Convert a journal written with txt2tags markup to Markdown once."""
+        try:
+            backup_file = migration.convert_journal(self.months, data_dir, self.journal_config)
+        except OSError as err:
+            logging.error(f"Converting the journal to Markdown failed: {err}")
+            self.show_message(
+                _("The journal could not be converted to Markdown:") + f" {err}", error=True
+            )
+            return
+        if backup_file:
+            self.frame.show_info_dialog(
+                _("Your journal now uses Markdown"),
+                _(
+                    "RedNotebook now formats entries with Markdown instead of txt2tags, "
+                    "so your entries have been converted to Markdown. A backup of the "
+                    "original files has been saved to"
+                )
+                + f"\n\n{backup_file}",
+            )
 
     def set_frame_title(self):
         parts = ["RedNotebook"]

@@ -4,7 +4,12 @@ import pytest
 
 from rednotebook.data import Day, Month
 from rednotebook.util import urls
-from rednotebook.util.markup import _convert_uri, convert, get_markup_for_day
+from rednotebook.util.markup import (
+    _convert_uri,
+    convert,
+    convert_categories_to_markup,
+    get_markup_for_day,
+)
 from rednotebook.util.pango_markup import convert_to_pango
 
 
@@ -69,10 +74,10 @@ class TestHtml:
     def test_encoding(self, process):
         assert '<meta charset="utf-8">' in process("Content")
 
-    def test_legacy_txt2tags_input(self, process):
+    def test_txt2tags_markup_is_not_converted_anymore(self, process):
+        # Journals are converted once when they are opened (see migration.py).
         document = process("//italic// and --struck--")
-        assert "<em>italic</em>" in document
-        assert "<s>struck</s>" in document
+        assert "//italic// and --struck--" in document
 
     @pytest.mark.parametrize(
         "markup,expected",
@@ -137,8 +142,8 @@ class TestLatex:
         assert r"\documentclass" in document
         assert r"\begin{document}" in document
 
-    def test_legacy_heading(self, process):
-        assert r"\section{Title}" in process("= Title =")
+    def test_heading(self, process):
+        assert r"\section{Title}" in process("# Title")
 
     @pytest.mark.parametrize(
         "markup,expected",
@@ -173,3 +178,30 @@ class TestPlainText:
 
     def test_entry_reference(self, process):
         assert "named reference (2019-08-01)" in process("A [named reference 2019-08-01]")
+
+
+def test_categories_markup():
+    markup = convert_categories_to_markup({"Work": ["Meeting", "Call"], "Idea": []})
+    assert markup == "## Tags\n- Work\n  - Meeting\n  - Call\n- Idea\n\n\n"
+    assert convert_categories_to_markup({"Idea": []}, with_category_title=False) == "- Idea\n\n\n"
+
+
+def test_export_markup_for_day():
+    month = Month(2024, 5, {3: {"text": "Hello", "Work": {"Meeting": None}}})
+    day = month.days[3]
+    markup = get_markup_for_day(day, "html", categories=["work"], date="3 May")
+    assert markup.startswith('<span id="2024-05-03"></span>\n\n# 3 May\n\nHello')
+    assert "## Tags\n- Work\n  - Meeting" in markup
+    assert get_markup_for_day(day, "tex", with_text=False, with_tags=False) == ""
+    html = convert(markup, "html", "/tmp")
+    assert "<h1>3 May</h1>" in html and "<li>Meeting</li>" in html
+
+
+def test_conversion_error_is_reported(monkeypatch):
+    from rednotebook.util import markdownmarkup
+
+    def fail(*args, **kwargs):
+        raise ValueError("broken")
+
+    monkeypatch.setattr(markdownmarkup, "render", fail)
+    assert "could not convert" in convert("text", "html", "/tmp")

@@ -21,7 +21,7 @@ import re
 from urllib.parse import urlsplit
 from urllib.request import url2pathname
 
-from rednotebook.util import markdownmarkup, t2t_to_markdown, urls
+from rednotebook.util import markdownmarkup, urls
 
 
 # A trailing "<a ...>text</a>" link, used by pango_markup to strip links.
@@ -117,12 +117,9 @@ def _convert_uri(uri, data_dir, is_image=False):
 
 
 def convert(txt, target, data_dir, options=None):
-    """Convert journal text (Markdown, with txt2tags fallback) to ``target``."""
+    """Convert Markdown journal text to ``target``."""
     data_dir = str(data_dir)
     options = options or {}
-
-    # Translate any legacy txt2tags markup to Markdown first.
-    txt = t2t_to_markdown.convert_to_markdown(txt)
 
     try:
         return markdownmarkup.render(

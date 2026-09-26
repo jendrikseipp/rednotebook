@@ -58,6 +58,11 @@ Copyright: Copyright (C) 2006-2007 GtkSourceView team
            Copyright (C) 2018 RedNotebook team
 License: LGPL-2.1+
 
+Files: rednotebook/util/t2t_to_markdown.py
+Copyright: Copyright (C) 2001-2010 Aurelio Jargas <aurelio@aurelio.net>
+           Copyright (C) 2008-2024 Jendrik Seipp <jendrikseipp@gmail.com>
+License: GPL-2+
+
 Files: rednotebook/files/markdown.lang
 Copyright:  Copyright (C) 2011 Jean-Philippe Fleury <contact@jpfleury.net>
             Copyright (C) 2024 RedNotebook team

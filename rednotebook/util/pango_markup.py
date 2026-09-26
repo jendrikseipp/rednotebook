@@ -26,7 +26,6 @@ gi.require_version("Pango", "1.0")
 
 from gi.repository import GObject, Pango  # noqa: E402
 
-from rednotebook.util import t2t_to_markdown  # noqa: E402
 from rednotebook.util.markup import REGEX_HTML_LINK  # noqa: E402
 
 
@@ -51,7 +50,6 @@ def convert_to_pango(txt):
     """Convert (Markdown) category markup to Pango markup for display."""
     original_txt = txt
 
-    txt = t2t_to_markdown.convert_to_markdown(txt, inline=True)
     result = _PARSER.renderInline(txt)
 
     for html_tag, pango_tag in _HTML_TO_PANGO:

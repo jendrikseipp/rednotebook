@@ -1,5 +1,6 @@
 # 2.44 (unreleased)
-* Format entries with Markdown, rendered by markdown-it-py. Legacy txt2tags entries are converted to Markdown automatically, the editor highlights Markdown syntax, and the format/insert buttons now insert Markdown (@jendrikseipp).
+* Format entries with Markdown, rendered by markdown-it-py. When RedNotebook opens a journal or the template directory for the first time, it converts the txt2tags markup to Markdown once, saves a zip backup of the original files in the directory and stores `markup=markdown` in the new `journal.cfg` file for journal settings (or in the configuration file for the templates). Older RedNotebook versions show converted entries without Markdown formatting (@jendrikseipp).
+* Only treat `$$...$$`, `\(...\)` and `\[...\]` as math, so prices like $5 are shown as text (@jendrikseipp).
 
 # 2.43 (2026-10-01)
 * Fix applying spell check suggestions, which left the misspelled word unchanged (@gabspeck).
