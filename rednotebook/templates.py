@@ -111,33 +111,35 @@ visit the templates directory.
 
 meeting = _(
     """\
-=== Meeting ===
+### Meeting
 
 Purpose, date, and place
 
 **Present:**
-+
-+
-+
 
+1.
+1.
+1.
 
 **Agenda:**
-+
-+
-+
 
+1.
+1.
+1.
 
 **Discussion, Decisions, Assignments:**
-+
-+
-+
-==================================
+
+1.
+1.
+1.
+
+---
 """
 )
 
 journey = _(
     """\
-=== Journey ===
+### Journey
 **Date:**
 
 **Location:**
@@ -147,41 +149,48 @@ journey = _(
 **The trip:**
 First we went to xxxxx then we got to yyyyy ...
 
-**Pictures:** [Image folder ""/path/to/the/images/""]
+**Pictures:** [Image folder](/path/to/the/images/)
 """
 )
 
 call = _(
     """\
-==================================
-=== Phone Call ===
+---
+
+### Phone Call
 - **Person:**
 - **Time:**
 - **Topic:**
 - **Outcome and Follow up:**
-==================================
+
+---
 """
 )
 
 personal = _(
     """\
-=====================================
-=== Personal ===
+---
 
-+
-+
-+
-========================
+### Personal
+
+1.
+1.
+1.
+
+---
 
 **How was the Day?**
 
 
-========================
+---
+
 **What needs to be changed?**
-+
-+
-+
-=====================================
+
+1.
+1.
+1.
+
+---
 """
 )
 
@@ -459,7 +468,7 @@ class TemplateManager:
             files.append(
                 (
                     self.get_path(str(day_number)),
-                    example_text.replace("template ===", f"template for {weekday} ==="),
+                    example_text.replace("example template", f"example template for {weekday}", 1),
                 )
             )
 
