@@ -1,5 +1,5 @@
-"""Verify that the editor's syntax-highlighting patterns match both Markdown
-and legacy txt2tags constructs.
+"""Verify that the editor's syntax-highlighting patterns match Markdown and
+RedNotebook constructs.
 
 GtkSourceView applies these regexes (in GRegex/PCRE syntax) line by line. We
 cannot easily exercise the highlighter headlessly, but we can read the patterns
@@ -64,16 +64,8 @@ def _search(context_id, text):
         ("color", "{important|color:red}"),
         ("entry-reference", "[2019-02-14]"),
         ("named-entry-reference", "[my day 2019-02-14]"),
-        # txt2tags constructs.
-        ("t2t-italic", "a //italic// b"),
-        ("t2t-strikethrough", "a --gone-- b"),
-        ("t2t-heading", "= Title ="),
-        ("t2t-heading", "=== Sub ==="),
-        ("t2t-heading", "== Clouds ==[anchor]"),
-        ("t2t-image", "[foo.png]"),
-        ("t2t-image-quoted", '[""/path to/foo"".png?50]'),
-        ("t2t-link", "[heise http://heise.de]"),
-        ("t2t-link-quoted", '[my file ""file:///home/me/f.txt""]'),
+        ("atx-header", "#"),
+        ("atx-header", "   ## Indented heading"),
     ],
 )
 def test_pattern_matches(context_id, text):
@@ -83,14 +75,11 @@ def test_pattern_matches(context_id, text):
 @pytest.mark.parametrize(
     "context_id,text",
     [
-        # A bare URL must not be mistaken for //italic//.
-        ("t2t-italic", "visit http://example.com today"),
-        # A horizontal rule must not be mistaken for --strikethrough--.
-        ("t2t-strikethrough", "--------------------"),
         # A plain hashtag-less number is not a hashtag.
         ("hashtag", "issue 1234 done"),
-        # A Markdown heading is not a txt2tags heading.
-        ("t2t-heading", "# Markdown heading"),
+        # A hashtag at the start of a line is not a heading.
+        ("atx-header", "#work was fine"),
+        ("atx-header", "####### Too many"),
     ],
 )
 def test_pattern_rejects(context_id, text):
@@ -98,19 +87,19 @@ def test_pattern_rejects(context_id, text):
 
 
 def test_expected_contexts_present():
-    # Both Markdown and txt2tags contexts must exist.
-    for cid in [
-        "atx-header",
-        "strikethrough",
-        "hashtag",
-        "color",
-        "entry-reference",
-        "t2t-italic",
-        "t2t-strikethrough",
-        "t2t-heading",
-        "t2t-link",
-        "t2t-link-quoted",
-        "t2t-image",
-        "t2t-image-quoted",
-    ]:
+    for cid in ["atx-header", "strikethrough", "hashtag", "color", "entry-reference"]:
         assert cid in PATTERNS
+
+
+def test_no_txt2tags_contexts():
+    assert not [cid for cid in PATTERNS if cid.startswith("t2t")]
+
+
+def test_fenced_code_end_matches_its_start():
+    # The end pattern refers back to the opening fence, e.g. "````" or "~~~".
+    context = next(
+        c for c in ET.parse(LANG_FILE).iter("context") if c.get("id") == "3-backticks-code-span"
+    )
+    assert re.match(context.find("start").text, "````python")
+    assert re.match(context.find("start").text, "~~~")
+    assert "\\%{1@start}" in context.find("end").text
