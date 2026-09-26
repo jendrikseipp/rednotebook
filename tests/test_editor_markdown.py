@@ -105,7 +105,9 @@ def test_insert_image_escapes_destination_and_label(monkeypatch):
 
     expected = urls.get_local_url("/tmp/my photo).jpg") + "?80"
     assert inserted_target(text, "image", "src") == expected
-    assert inline_tokens(text)[0].children[0].content == label
+    # Newer markdown-it versions split escaped characters into "text_special" tokens.
+    alt = "".join(child.content for child in inline_tokens(text)[0].children)
+    assert alt == label
     assert rendered_element(text, "img")["src"] == expected.rsplit("?", 1)[0]
 
 

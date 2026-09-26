@@ -24,7 +24,9 @@ standard Markdown equivalent:
 * ``#hashtags`` are coloured (and indexed in LaTeX),
 * ``{text|color:value}`` colours arbitrary text,
 * image links may carry a ``?width`` suffix, and
-* ``$...$`` / ``$$...$$`` math is rendered for MathJax/LaTeX.
+* ``$$...$$``, ``\\[...\\]`` and ``\\(...\\)`` math is rendered for
+  MathJax/LaTeX. A single ``$`` is plain text, since it is mostly used for
+  prices.
 """
 
 import re
@@ -34,7 +36,7 @@ from markdown_it import MarkdownIt
 from markdown_it.common.normalize_url import validateLink
 from markdown_it.common.utils import escapeHtml
 from markdown_it.renderer import RendererHTML
-from mdit_py_plugins.dollarmath import dollarmath_plugin
+from markdown_it.token import Token
 
 
 CSS = """\
@@ -94,7 +96,9 @@ MATHJAX = f"""\
 HASHTAG_BODY = re.compile(
     r"(?![0-9a-fA-F]{6}\b|include\b|define\b|ifdef\b|ifndef\b|endif\b)(\w*[^\W\d_]+\w*)"
 )
-COLOR = re.compile(r"\{([^{}|]+)\|color:([^{}]+)\}")
+FULLWIDTH_HASHTAG = re.compile(r"(^|[^\w&#])(\uff03" + HASHTAG_BODY.pattern + ")")
+# Inside table cells, the "|" has to be escaped.
+COLOR = re.compile(r"\{([^{}|]+)\\?\|color:([^{}]+)\}")
 IMAGE_WIDTH = re.compile(r"\?(\d+)$")
 ENTRY_REFERENCE = re.compile(r"\[(?:(?P<name>[^\[\]\n]+?)\s+)?(?P<date>\d{4}-\d{2}-\d{2})\s*\]")
 
@@ -123,6 +127,17 @@ def _hashtag_rule(state, silent):
     return True
 
 
+def _parse_children(state, text):
+    children = []
+    state.md.inline.parse(text, state.md, state.env, children)
+    # Newer markdown-it versions only merge escaped characters into text
+    # tokens at the top level.
+    for child in children:
+        if child.type == "text_special":
+            child.type = "text"
+    return children
+
+
 def _color_rule(state, silent):
     if state.src[state.pos] != "{":
         return False
@@ -132,8 +147,41 @@ def _color_rule(state, silent):
     if not silent:
         token = state.push("rn_color", "", 0)
         token.meta = {"text": match.group(1), "color": match.group(2)}
+        token.children = _parse_children(state, match.group(1))
     state.pos = match.end()
     return True
+
+
+def _fullwidth_hashtags(state):
+    """Split text tokens at fullwidth hashtags, which the inline parser skips."""
+    for block in state.tokens:
+        if block.type != "inline" or "\uff03" not in block.content:
+            continue
+        children = []
+        for token in block.children:
+            if token.type != "text" or "\uff03" not in token.content:
+                children.append(token)
+                continue
+            text = token.content
+            pos = 0
+            for match in FULLWIDTH_HASHTAG.finditer(text):
+                start = match.start(2)
+                if start > pos:
+                    children.append(_text_token(text[pos:start]))
+                hashtag = Token("hashtag", "", 0)
+                hashtag.content = text[start : match.end()]
+                hashtag.meta = {"tag": match.group(3)}
+                children.append(hashtag)
+                pos = match.end()
+            if pos < len(text):
+                children.append(_text_token(text[pos:]))
+        block.children = children
+
+
+def _text_token(content):
+    token = Token("text", "", 0)
+    token.content = content
+    return token
 
 
 def _entry_reference_rule(state, silent):
@@ -150,46 +198,64 @@ def _entry_reference_rule(state, silent):
     token = state.push("entry_reference", "", 0)
     token.content = match.group("name") or match.group("date")
     token.meta = {"date": match.group("date"), "named": bool(match.group("name"))}
-    token.children = []
-    state.md.inline.parse(token.content, state.md, state.env, token.children)
     # Keep label formatting while preventing nested autolinks.
-    token.children = [child for child in token.children if child.tag != "a"]
+    token.children = [child for child in _parse_children(state, token.content) if child.tag != "a"]
     state.pos = match.end()
     return True
 
 
-def _math_brackets_rule(state, silent):
+_MATH_DELIMITERS = {"$$": "$$", "\\(": "\\)", "\\[": "\\]"}
+
+
+def _math_inline_rule(state, silent):
     opening = state.src[state.pos : state.pos + 2]
-    if opening not in (r"\(", r"\["):
+    closing = _MATH_DELIMITERS.get(opening)
+    if closing is None:
         return False
-    closing = r"\)" if opening == r"\(" else r"\]"
     end = state.src.find(closing, state.pos + 2, state.posMax)
-    if end < 0:
+    if end <= state.pos + 2:
         return False
     if not silent:
-        kind = "math_inline" if opening == r"\(" else "math_inline_double"
+        kind = "math_inline" if opening == "\\(" else "math_inline_double"
         token = state.push(kind, "math", 0)
         token.content = state.src[state.pos + 2 : end]
+        token.markup = opening
     state.pos = end + 2
     return True
 
 
-def _math_brackets_block(state, start_line, end_line, silent):
+def _math_block_rule(state, start_line, end_line, silent):
+    """Parse display math that starts a line and ends at the end of a line.
+
+    Blank lines are only allowed if the delimiters are on lines of their own.
+    """
     if state.sCount[start_line] - state.blkIndent >= 4:
         return False
     start = state.bMarks[start_line] + state.tShift[start_line]
-    if not state.src.startswith(r"\[", start):
+    opening = state.src[start : start + 2]
+    if opening not in ("$$", "\\["):
         return False
+    closing = _MATH_DELIMITERS[opening]
+    first_line = state.src[start : state.eMarks[start_line]].rstrip()
+    allow_blank_lines = first_line == opening
     for line in range(start_line, end_line):
-        end = state.eMarks[line]
-        if not state.src[state.bMarks[line] : end].rstrip().endswith(r"\]"):
+        line_start = state.bMarks[line] + state.tShift[line]
+        text = state.src[line_start : state.eMarks[line]].rstrip()
+        if not text:
+            if allow_blank_lines:
+                continue
+            return False
+        if line == start_line:
+            text = text[2:]
+        if not text.endswith(closing):
             continue
         if silent:
             return True
         content = state.getLines(start_line, line + 1, state.blkIndent, False).strip()
         token = state.push("math_block", "math", 0)
         token.block = True
-        token.content = content[2:-2]
+        token.content = content[2:-2].strip("\n")
+        token.markup = opening
         token.map = [start_line, line + 1]
         state.line = line + 1
         return True
@@ -201,13 +267,14 @@ def _rednotebook_plugin(md):
     md.inline.ruler.before("emphasis", "rn_color", _color_rule)
     # Standard Markdown links take precedence over journal date references.
     md.inline.ruler.after("link", "entry_reference", _entry_reference_rule)
-    md.inline.ruler.before("escape", "math_brackets", _math_brackets_rule)
+    md.inline.ruler.before("escape", "math", _math_inline_rule)
     md.block.ruler.before(
-        "paragraph",
-        "math_brackets",
-        _math_brackets_block,
+        "fence",
+        "math",
+        _math_block_rule,
         {"alt": ["paragraph", "reference", "blockquote", "list"]},
     )
+    md.core.ruler.push("fullwidth_hashtags", _fullwidth_hashtags)
 
 
 # --------------------------------------------------------------------------
@@ -230,8 +297,9 @@ class HtmlRenderer(RendererHTML):
         return f'<span style="color:red">{escapeHtml(tokens[idx].content)}</span>'
 
     def rn_color(self, tokens, idx, options, env):
-        meta = tokens[idx].meta
-        return f'<span style="color:{escapeHtml(meta["color"])}">{escapeHtml(meta["text"])}</span>'
+        token = tokens[idx]
+        text = self.renderInline(token.children, options, env)
+        return f'<span style="color:{escapeHtml(token.meta["color"])}">{text}</span>'
 
     def image(self, tokens, idx, options, env):
         token = tokens[idx]
@@ -254,6 +322,9 @@ class HtmlRenderer(RendererHTML):
 
     def math_block(self, tokens, idx, options, env):
         return f"$$\n{escapeHtml(tokens[idx].content)}\n$$\n"
+
+    def text_special(self, tokens, idx, options, env):
+        return escapeHtml(tokens[idx].content)
 
 
 # --------------------------------------------------------------------------
@@ -282,6 +353,18 @@ _TEX_ESCAPES = {
     "^": r"\textasciicircum{}",
 }
 _TEX_ESCAPE_RE = re.compile("|".join(re.escape(key) for key in _TEX_ESCAPES))
+
+
+_HTML_TO_TEX = {
+    "u": "uline",
+    "b": "textbf",
+    "strong": "textbf",
+    "i": "textit",
+    "em": "textit",
+    "s": "sout",
+    "del": "sout",
+}
+_TEX_HTML_TAG = re.compile(r"<(/?)(" + "|".join(_HTML_TO_TEX) + r")>")
 
 
 def tex_escape(text):
@@ -338,6 +421,9 @@ class _TokenRenderer:
     def text(self, token, env):
         return token.content
 
+    def text_special(self, token, env):
+        return self.text(token, env)
+
     def softbreak(self, token, env):
         return "\n"
 
@@ -357,22 +443,29 @@ class _TokenRenderer:
 class LatexRenderer(_TokenRenderer):
     def __init__(self, parser=None):
         super().__init__(parser)
-        self._open_underlines = 0
+        self._open_tags = []
 
     def text(self, token, env):
         return tex_escape(token.content)
 
     def html_inline(self, token, env):
-        # Keep underlining (the format menu inserts "<u>...</u>"), drop
-        # everything else. Stray closing tags are ignored; stray opening
-        # tags are closed in render() below.
-        if token.content == "<u>":
-            self._open_underlines += 1
-            return "\\uline{"
-        if token.content == "</u>" and self._open_underlines:
-            self._open_underlines -= 1
-            return "}"
-        return ""
+        # Keep basic formatting tags (the format menu inserts "<u>...</u>"),
+        # drop everything else. Stray closing tags are ignored; stray
+        # opening tags are closed in render() below.
+        match = _TEX_HTML_TAG.fullmatch(token.content.lower())
+        if not match:
+            return ""
+        closing, tag = match.groups()
+        if not closing:
+            self._open_tags.append(tag)
+            return "\\" + _HTML_TO_TEX[tag] + "{"
+        if tag not in self._open_tags:
+            return ""
+        # Close tags that were opened later, too, to keep braces balanced.
+        index = len(self._open_tags) - 1 - self._open_tags[::-1].index(tag)
+        closed = len(self._open_tags) - index
+        del self._open_tags[index:]
+        return "}" * closed
 
     def softbreak(self, token, env):
         return "\n"
@@ -425,6 +518,9 @@ class LatexRenderer(_TokenRenderer):
         href = token.attrs.get("href", "")
         if href.lower().startswith("file://"):
             href = "run:" + _tex_local_link_path(_file_uri_path(href))
+        else:
+            # Escape characters that break \href inside other commands.
+            href = re.sub(r"([#%{}\\])", r"\\\1", href)
         return "\\href{" + href + "}{"
 
     def link_close(self, token, env):
@@ -471,12 +567,12 @@ class LatexRenderer(_TokenRenderer):
 
     def hashtag(self, token, env):
         display = tex_escape(token.content.lstrip("#＃"))
-        index = token.meta["tag"]
+        index = tex_escape(token.meta["tag"])
         return f"\\textcolor{{red}}{{\\#{display}\\index{{{index}}}}}"
 
     def rn_color(self, token, env):
-        meta = token.meta
-        return f"\\textcolor{{{tex_escape(meta['color'])}}}{{{tex_escape(meta['text'])}}}"
+        text = self.render(token.children, self.parser.options, env)
+        return f"\\textcolor{{{tex_escape(token.meta['color'])}}}{{{text}}}"
 
     def math_inline(self, token, env):
         return f"${token.content}$"
@@ -485,7 +581,7 @@ class LatexRenderer(_TokenRenderer):
         return f"$${token.content}$$"
 
     def math_block(self, token, env):
-        return f"$${token.content}$$\n"
+        return f"$$\n{token.content}\n$$\n\n"
 
     # Tables. The column count is stored on the table_open token by
     # _annotate_table_columns() before rendering starts.
@@ -570,7 +666,7 @@ class PlainRenderer(_TokenRenderer):
         return token.content
 
     def rn_color(self, token, env):
-        return token.meta["text"]
+        return self.render(token.children, self.parser.options, env)
 
     def math_inline(self, token, env):
         return token.content
@@ -603,13 +699,12 @@ class PlainRenderer(_TokenRenderer):
 _RENDERERS = {"html": HtmlRenderer, "tex": LatexRenderer, "txt": PlainRenderer}
 
 
-def _get_parser(target):
+def get_parser(target):
     md = MarkdownIt("commonmark", {"html": True, "linkify": True, "breaks": False})
     # Journal attachments are local files. Retain the default checks for other
     # schemes, especially javascript:, vbscript:, and non-image data: URLs.
     md.validateLink = lambda url: url.lower().startswith("file://") or validateLink(url)
     md.enable(["table", "strikethrough", "linkify"])
-    md.use(dollarmath_plugin, double_inline=True)
     md.use(_rednotebook_plugin)
     md.renderer = _RENDERERS[target](md)
     return md
@@ -642,11 +737,28 @@ def _annotate_table_columns(tokens):
                 table = None
 
 
+def _remove_empty_table_headers(tokens):
+    """Drop header rows without content, e.g. from converted txt2tags tables."""
+    result = []
+    pos = 0
+    while pos < len(tokens):
+        token = tokens[pos]
+        if token.type == "thead_open":
+            end = next(i for i in range(pos, len(tokens)) if tokens[i].type == "thead_close")
+            header = tokens[pos : end + 1]
+            if all(t.type != "inline" or not t.content.strip() for t in header):
+                pos = end + 1
+                continue
+        result.append(token)
+        pos += 1
+    return result
+
+
 def _get_inline_text(inline_token):
     return "".join(
         child.content
         for child in _walk(inline_token.children or [])
-        if child.type in ("text", "code_inline", "math_inline", "hashtag")
+        if child.type in ("text", "text_special", "code_inline", "math_inline", "hashtag")
     )
 
 
@@ -747,7 +859,7 @@ def _latex_document(body, options):
 def render(text, target, options=None, *, resolve_link=None):
     """Render Markdown, optionally resolving parsed link/image destinations."""
     options = options or {}
-    md = _get_parser(target)
+    md = get_parser(target)
     env = {}
     tokens = md.parse(text, env)
 
@@ -757,6 +869,8 @@ def render(text, target, options=None, *, resolve_link=None):
                 is_image = token.type == "image"
                 attribute = "src" if is_image else "href"
                 token.attrs[attribute] = resolve_link(token.attrs[attribute], is_image)
+
+    tokens = _remove_empty_table_headers(tokens)
 
     toc = ""
     if target == "html" and options.get("toc"):
@@ -772,7 +886,7 @@ def render(text, target, options=None, *, resolve_link=None):
             has_math = any(token.type.startswith("math") for token in _walk(tokens))
         return _html_document(toc + body, options, has_math)
     if target == "tex":
-        # Close any "<u>" that was never closed to keep the braces balanced.
-        body += "}" * md.renderer._open_underlines
+        # Close any "<u>" etc. that was never closed to keep the braces balanced.
+        body += "}" * len(md.renderer._open_tags)
         return _latex_document(body, options)
     return body.strip() + "\n"

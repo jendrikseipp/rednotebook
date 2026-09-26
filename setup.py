@@ -91,7 +91,6 @@ parameters = {
         "PyGObject",
         "PyYAML",
         "markdown-it-py",
-        "mdit-py-plugins",
         "linkify-it-py",
     ],
     "extras_require": {"spellcheck": ["pyenchant"]},

@@ -86,7 +86,7 @@ def test_preprocessing_preserves_literal_code(tmp_path, wrapper, literal):
     assert "<a href=" not in output
 
 
-@pytest.mark.parametrize("delimiter", [("$", "$"), ("$$", "$$"), (r"\(", r"\)"), (r"\[", r"\]")])
+@pytest.mark.parametrize("delimiter", [("$$", "$$"), (r"\(", r"\)"), (r"\[", r"\]")])
 def test_math_is_html_text(tmp_path, delimiter):
     class FormulaParser(HTMLParser):
         def __init__(self):
@@ -104,11 +104,22 @@ def test_math_is_html_text(tmp_path, delimiter):
     assert "MathJax included" in output
 
 
-@pytest.mark.parametrize(
-    "source", ["[Example](https://example.com)", "[Example https://example.com]"]
-)
-def test_plain_export_keeps_named_link_destinations(tmp_path, source):
-    assert convert(source, "txt", tmp_path) == "Example (https://example.com)\n"
+def test_plain_export_keeps_named_link_destinations(tmp_path):
+    assert convert("[Example](https://example.com)", "txt", tmp_path) == (
+        "Example (https://example.com)\n"
+    )
+
+
+@pytest.mark.parametrize("target", ["html", "tex", "txt"])
+def test_single_dollar_signs_are_text(tmp_path, target):
+    output = convert("It costs $5 and $10 today", target, tmp_path)
+    if target == "html":
+        assert "<p>It costs $5 and $10 today</p>" in output
+        assert "MathJax included" not in output
+    elif target == "tex":
+        assert r"It costs \$5 and \$10 today" in output
+    else:
+        assert output == "It costs $5 and $10 today\n"
 
 
 @pytest.mark.parametrize("source", ["https://example.com", "<https://example.com>"])

@@ -88,6 +88,7 @@ Dummy().strong_open
 Dummy().table_close
 Dummy().table_open
 Dummy().td_open
+Dummy().text_special
 Dummy().th_open
 Dummy().thead_close
 Dummy().tr_close
