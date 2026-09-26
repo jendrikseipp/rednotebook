@@ -28,8 +28,10 @@ standard Markdown equivalent:
 """
 
 import re
+from urllib.parse import unquote, urlsplit
 
 from markdown_it import MarkdownIt
+from markdown_it.common.normalize_url import validateLink
 from markdown_it.common.utils import escapeHtml
 from markdown_it.renderer import RendererHTML
 from mdit_py_plugins.dollarmath import dollarmath_plugin
@@ -94,6 +96,7 @@ HASHTAG_BODY = re.compile(
 )
 COLOR = re.compile(r"\{([^{}|]+)\|color:([^{}]+)\}")
 IMAGE_WIDTH = re.compile(r"\?(\d+)$")
+ENTRY_REFERENCE = re.compile(r"\[(?:(?P<name>[^\[\]\n]+?)\s+)?(?P<date>\d{4}-\d{2}-\d{2})\s*\]")
 
 
 # --------------------------------------------------------------------------
@@ -133,9 +136,78 @@ def _color_rule(state, silent):
     return True
 
 
+def _entry_reference_rule(state, silent):
+    # Markdown probes labels in silent mode to reject nested links. Let it
+    # finish recognizing an outer link before considering date references.
+    if silent:
+        return False
+    match = ENTRY_REFERENCE.match(state.src, state.pos, state.posMax)
+    if not match:
+        return False
+    # A reference inside a Markdown link label must not create a nested link.
+    if sum(token.nesting for token in state.tokens if token.tag == "a"):
+        return False
+    token = state.push("entry_reference", "", 0)
+    token.content = match.group("name") or match.group("date")
+    token.meta = {"date": match.group("date"), "named": bool(match.group("name"))}
+    token.children = []
+    state.md.inline.parse(token.content, state.md, state.env, token.children)
+    # Keep label formatting while preventing nested autolinks.
+    token.children = [child for child in token.children if child.tag != "a"]
+    state.pos = match.end()
+    return True
+
+
+def _math_brackets_rule(state, silent):
+    opening = state.src[state.pos : state.pos + 2]
+    if opening not in (r"\(", r"\["):
+        return False
+    closing = r"\)" if opening == r"\(" else r"\]"
+    end = state.src.find(closing, state.pos + 2, state.posMax)
+    if end < 0:
+        return False
+    if not silent:
+        kind = "math_inline" if opening == r"\(" else "math_inline_double"
+        token = state.push(kind, "math", 0)
+        token.content = state.src[state.pos + 2 : end]
+    state.pos = end + 2
+    return True
+
+
+def _math_brackets_block(state, start_line, end_line, silent):
+    if state.sCount[start_line] - state.blkIndent >= 4:
+        return False
+    start = state.bMarks[start_line] + state.tShift[start_line]
+    if not state.src.startswith(r"\[", start):
+        return False
+    for line in range(start_line, end_line):
+        end = state.eMarks[line]
+        if not state.src[state.bMarks[line] : end].rstrip().endswith(r"\]"):
+            continue
+        if silent:
+            return True
+        content = state.getLines(start_line, line + 1, state.blkIndent, False).strip()
+        token = state.push("math_block", "math", 0)
+        token.block = True
+        token.content = content[2:-2]
+        token.map = [start_line, line + 1]
+        state.line = line + 1
+        return True
+    return False
+
+
 def _rednotebook_plugin(md):
     md.inline.ruler.before("emphasis", "hashtag", _hashtag_rule)
     md.inline.ruler.before("emphasis", "rn_color", _color_rule)
+    # Standard Markdown links take precedence over journal date references.
+    md.inline.ruler.after("link", "entry_reference", _entry_reference_rule)
+    md.inline.ruler.before("escape", "math_brackets", _math_brackets_rule)
+    md.block.ruler.before(
+        "paragraph",
+        "math_brackets",
+        _math_brackets_block,
+        {"alt": ["paragraph", "reference", "blockquote", "list"]},
+    )
 
 
 # --------------------------------------------------------------------------
@@ -144,6 +216,16 @@ def _rednotebook_plugin(md):
 
 
 class HtmlRenderer(RendererHTML):
+    def fence(self, tokens, idx, options, env):
+        if tokens[idx].info.strip() == "rednotebook-raw":
+            return tokens[idx].content
+        return super().fence(tokens, idx, options, env)
+
+    def entry_reference(self, tokens, idx, options, env):
+        token = tokens[idx]
+        label = self.renderInline(token.children, options, env)
+        return f'<a href="#{token.meta["date"]}">{label}</a>'
+
     def hashtag(self, tokens, idx, options, env):
         return f'<span style="color:red">{escapeHtml(tokens[idx].content)}</span>'
 
@@ -159,17 +241,19 @@ class HtmlRenderer(RendererHTML):
         if match:
             width = f' width="{match.group(1)}"'
             src = src[: match.start()]
-        alt = escapeHtml(token.content)
-        return f'<img src="{escapeHtml(src)}"{width} alt="{alt}">'
+        alt = escapeHtml(_get_inline_text(token))
+        title = token.attrs.get("title")
+        title_attr = f' title="{escapeHtml(title)}"' if title is not None else ""
+        return f'<img src="{escapeHtml(src)}"{width} alt="{alt}"{title_attr}>'
 
     def math_inline(self, tokens, idx, options, env):
-        return f"\\({tokens[idx].content}\\)"
+        return f"\\({escapeHtml(tokens[idx].content)}\\)"
 
     def math_inline_double(self, tokens, idx, options, env):
-        return f"$${tokens[idx].content}$$"
+        return f"$${escapeHtml(tokens[idx].content)}$$"
 
     def math_block(self, tokens, idx, options, env):
-        return f"$$\n{tokens[idx].content}\n$$\n"
+        return f"$$\n{escapeHtml(tokens[idx].content)}\n$$\n"
 
 
 # --------------------------------------------------------------------------
@@ -204,6 +288,34 @@ def tex_escape(text):
     return _TEX_ESCAPE_RE.sub(lambda m: _TEX_ESCAPES[m.group()], text)
 
 
+def _file_uri_path(uri):
+    parts = urlsplit(uri)
+    path = unquote(parts.path)
+    if parts.netloc:
+        path = f"//{parts.netloc}{path}"
+    # A Windows drive letter is not preceded by a slash in a filesystem path.
+    return path[1:] if re.match(r"^/[A-Za-z]:/", path) else path
+
+
+def _tex_local_link_path(path):
+    # Hyperref loads ltxcmds, whose character macros expand without adding
+    # backslashes to the filename. Delay them until after hyperref splits off
+    # URL fragments, otherwise a literal filename '#' becomes a fragment.
+    characters = {
+        "#": "hashchar",
+        "%": "percentchar",
+        "{": "leftbracechar",
+        "}": "rightbracechar",
+        "\\": "backslashchar",
+    }
+    return "".join(
+        r"\unexpanded{\csname ltx@" + characters[char] + r"\endcsname}"
+        if char in characters
+        else char
+        for char in path
+    )
+
+
 class _TokenRenderer:
     """Walk the markdown-it token stream and dispatch by token type."""
 
@@ -234,6 +346,12 @@ class _TokenRenderer:
 
     def html_block(self, token, env):
         return ""
+
+    def entry_reference(self, token, env):
+        label = self.render(token.children, self.parser.options, env)
+        if token.meta["named"]:
+            return f"{label} ({token.meta['date']})"
+        return label
 
 
 class LatexRenderer(_TokenRenderer):
@@ -297,12 +415,17 @@ class LatexRenderer(_TokenRenderer):
         return "\\texttt{" + tex_escape(token.content) + "}"
 
     def fence(self, token, env):
+        if token.info.strip() == "rednotebook-raw":
+            return token.content
         return "\\begin{verbatim}\n" + token.content + "\\end{verbatim}\n\n"
 
     code_block = fence
 
     def link_open(self, token, env):
-        return "\\href{" + token.attrs.get("href", "") + "}{"
+        href = token.attrs.get("href", "")
+        if href.lower().startswith("file://"):
+            href = "run:" + _tex_local_link_path(_file_uri_path(href))
+        return "\\href{" + href + "}{"
 
     def link_close(self, token, env):
         return "}"
@@ -314,6 +437,9 @@ class LatexRenderer(_TokenRenderer):
         if match:
             options = f"[width={match.group(1)}px]"
             src = src[: match.start()]
+        src = _file_uri_path(src) if src.lower().startswith("file://") else unquote(src)
+        if any(char in src for char in "#%{}"):
+            src = r"\detokenize{" + re.sub(r"([#%{}])", r"\\\1", src) + "}"
         return f'\\includegraphics{options}{{"{src}"}}'
 
     def bullet_list_open(self, token, env):
@@ -390,6 +516,18 @@ class LatexRenderer(_TokenRenderer):
 
 
 class PlainRenderer(_TokenRenderer):
+    def __init__(self, parser=None):
+        super().__init__(parser)
+        self._links = []
+
+    def link_open(self, token, env):
+        self._links.append("" if token.info == "auto" else token.attrs.get("href", ""))
+        return ""
+
+    def link_close(self, token, env):
+        href = self._links.pop()
+        return f" ({href})" if href else ""
+
     def hardbreak(self, token, env):
         return "\n"
 
@@ -404,6 +542,8 @@ class PlainRenderer(_TokenRenderer):
         return token.content
 
     def fence(self, token, env):
+        if token.info.strip() == "rednotebook-raw":
+            return token.content
         return token.content + "\n"
 
     code_block = fence
@@ -465,6 +605,9 @@ _RENDERERS = {"html": HtmlRenderer, "tex": LatexRenderer, "txt": PlainRenderer}
 
 def _get_parser(target):
     md = MarkdownIt("commonmark", {"html": True, "linkify": True, "breaks": False})
+    # Journal attachments are local files. Retain the default checks for other
+    # schemes, especially javascript:, vbscript:, and non-image data: URLs.
+    md.validateLink = lambda url: url.lower().startswith("file://") or validateLink(url)
     md.enable(["table", "strikethrough", "linkify"])
     md.use(dollarmath_plugin, double_inline=True)
     md.use(_rednotebook_plugin)
@@ -499,7 +642,7 @@ def _annotate_table_columns(tokens):
                 table = None
 
 
-def _get_heading_text(inline_token):
+def _get_inline_text(inline_token):
     return "".join(
         child.content
         for child in _walk(inline_token.children or [])
@@ -519,7 +662,7 @@ def _add_heading_anchors(tokens):
     for pos, token in enumerate(tokens):
         if token.type != "heading_open":
             continue
-        title = _get_heading_text(tokens[pos + 1])
+        title = _get_inline_text(tokens[pos + 1])
         slug = base_slug = _slugify(title)
         counter = 1
         while slug in used_slugs:
@@ -584,9 +727,11 @@ def _html_document(body, options, has_math):
         "fgcolor": options.get("fgcolor", "black"),
     }
     mathjax = MATHJAX if has_math else ""
+    title = escapeHtml(options.get("title", "RedNotebook"))
     return (
         "<!DOCTYPE html>\n<html>\n<head>\n"
         '<meta charset="utf-8">\n'
+        f"<title>{title}</title>\n"
         f"{css}{mathjax}"
         "</head>\n<body>\n"
         f"{body}"
@@ -599,12 +744,19 @@ def _latex_document(body, options):
     return LATEX_PREAMBLE % {"title": title} + body + LATEX_FOOTER
 
 
-def render(text, target, options=None):
-    """Render Markdown ``text`` to ``target`` (``html``, ``tex`` or ``txt``)."""
+def render(text, target, options=None, *, resolve_link=None):
+    """Render Markdown, optionally resolving parsed link/image destinations."""
     options = options or {}
     md = _get_parser(target)
     env = {}
     tokens = md.parse(text, env)
+
+    if resolve_link is not None:
+        for token in _walk(tokens):
+            if token.type in ("link_open", "image"):
+                is_image = token.type == "image"
+                attribute = "src" if is_image else "href"
+                token.attrs[attribute] = resolve_link(token.attrs[attribute], is_image)
 
     toc = ""
     if target == "html" and options.get("toc"):
@@ -619,8 +771,6 @@ def render(text, target, options=None):
         if has_math is None:
             has_math = any(token.type.startswith("math") for token in _walk(tokens))
         return _html_document(toc + body, options, has_math)
-    # Collapse runs of blank lines that arise between block elements.
-    body = re.sub(r"\n{3,}", "\n\n", body)
     if target == "tex":
         # Close any "<u>" that was never closed to keep the braces balanced.
         body += "}" * md.renderer._open_underlines

@@ -18,25 +18,17 @@
 import logging
 import os
 import re
+from urllib.parse import urlsplit
+from urllib.request import url2pathname
 
-from rednotebook.util import filesystem, markdownmarkup, t2t_to_markdown, urls
+from rednotebook.util import markdownmarkup, t2t_to_markdown, urls
 
 
 # A trailing "<a ...>text</a>" link, used by pango_markup to strip links.
 REGEX_HTML_LINK = r"<a.*?>(.*?)</a>"
 
-# Markdown image/link target: "![alt](url)" or "[text](url)".
-REGEX_MD_LINK = re.compile(r"(!?\[[^\]]*\]\()([^)\s]+)(\))")
 # Optional image width suffix.
 REGEX_IMAGE_WIDTH = re.compile(r"\?(\d+)$")
-
-# Entry references such as "[2019-08-01]" or "[my day 2019-08-01]".
-REGEX_NAMED_REFERENCE = re.compile(r"\[(?P<name>.+?)\s+(?P<date>\d{4}-\d{2}-\d{2})\s*\]")
-REGEX_DATE_REFERENCE = re.compile(r"\[(?P<date>\d{4}-\d{2}-\d{2})\]")
-
-# Math delimiters that MathJax understands besides "$"/"$$".
-REGEX_MATH_DISPLAY = re.compile(r"\\\[(.+?)\\\]", flags=re.DOTALL)
-REGEX_MATH_INLINE = re.compile(r"\\\((.+?)\\\)", flags=re.DOTALL)
 
 
 def convert_categories_to_markup(categories, with_category_title=True):
@@ -99,55 +91,29 @@ def get_markup_for_day(day, target, with_text=True, with_tags=True, categories=N
     return ""
 
 
-def _convert_uri(uri, data_dir):
-    path = uri[len("file://") :] if uri.startswith("file://") else uri
-    # Check if relative file exists and convert it if it does.
-    if not any(
-        uri.startswith(proto) for proto in filesystem.REMOTE_PROTOCOLS
-    ) and not os.path.isabs(path):
+def _convert_uri(uri, data_dir, is_image=False):
+    """Resolve a parsed local destination against the journal directory."""
+    width = ""
+    match = REGEX_IMAGE_WIDTH.search(uri) if is_image else None
+    if match:
+        width = match.group(0)
+        uri = uri[: match.start()]
+    # Old journals also use file://relative/path, so remove that prefix before
+    # checking whether the path is absolute.
+    local = uri[7:] if uri.lower().startswith("file://") else uri
+    parts = urlsplit(local)
+    if uri.startswith("#") or parts.scheme or parts.netloc or not parts.path:
+        return uri + width
+    path = url2pathname(parts.path)
+    if not os.path.isabs(path):
         path = os.path.join(data_dir, path)
-        assert os.path.isabs(path), path
         if os.path.exists(path):
             uri = urls.get_local_url(path)
-    return uri
-
-
-def _convert_paths(txt, data_dir):
-    """Turn relative paths in Markdown links and images into absolute URLs."""
-    data_dir = str(data_dir)
-
-    def repl(match):
-        prefix, url, suffix = match.groups()
-        width = ""
-        is_image = prefix.startswith("!")
-        width_match = REGEX_IMAGE_WIDTH.search(url)
-        if is_image and width_match:
-            width = width_match.group(0)
-            url = url[: width_match.start()]
-        # Leave fragment-only references (entry references) untouched.
-        if url.startswith("#"):
-            return match.group(0)
-        return prefix + _convert_uri(url, data_dir) + width + suffix
-
-    return REGEX_MD_LINK.sub(repl, txt)
-
-
-def _convert_entry_references(txt, target):
-    """Turn date references into links (HTML) or plain text (other targets)."""
-    if target == "html":
-        txt = REGEX_NAMED_REFERENCE.sub(r"[\g<name>](#\g<date>)", txt)
-        txt = REGEX_DATE_REFERENCE.sub(r"[\g<date>](#\g<date>)", txt)
-    else:
-        txt = REGEX_NAMED_REFERENCE.sub(r"\g<name> (\g<date>)", txt)
-        txt = REGEX_DATE_REFERENCE.sub(r"\g<date>", txt)
-    return txt
-
-
-def _normalize_math(txt):
-    """Rewrite "\\(...\\)" and "\\[...\\]" to the "$" delimiters MathJax uses."""
-    txt = REGEX_MATH_DISPLAY.sub(r"$$\1$$", txt)
-    txt = REGEX_MATH_INLINE.sub(r"$\1$", txt)
-    return txt
+            if parts.query:
+                uri += "?" + parts.query
+            if parts.fragment:
+                uri += "#" + parts.fragment
+    return uri + width
 
 
 def convert(txt, target, data_dir, options=None):
@@ -158,15 +124,13 @@ def convert(txt, target, data_dir, options=None):
     # Translate any legacy txt2tags markup to Markdown first.
     txt = t2t_to_markdown.convert_to_markdown(txt)
 
-    # Turn relative paths into absolute paths.
-    txt = _convert_paths(txt, data_dir)
-
-    # Handle RedNotebook-specific constructs.
-    txt = _convert_entry_references(txt, target)
-    txt = _normalize_math(txt)
-
     try:
-        return markdownmarkup.render(txt, target, options)
+        return markdownmarkup.render(
+            txt,
+            target,
+            options,
+            resolve_link=lambda uri, is_image: _convert_uri(uri, data_dir, is_image),
+        )
     except Exception:
         logging.exception("Markdown conversion failed")
         return (

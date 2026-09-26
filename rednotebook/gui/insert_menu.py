@@ -22,6 +22,7 @@ from gi.repository import Gtk
 
 from rednotebook.gui import customwidgets
 from rednotebook.util import dates, filesystem, urls
+from rednotebook.util.markdownlinks import escape_destination, escape_label
 
 
 MENUITEMS_XML = """\
@@ -299,13 +300,10 @@ class InsertMenu:
             # iterate through all selected images
             lines = []
             for filename in picture_chooser.get_filenames():
-                base, ext = os.path.splitext(filename)
-
                 # On windows firefox accepts absolute filenames only
                 # with the file:// prefix
-                base = urls.get_local_url(base)
-
-                lines.append(f"![{sel_text}]({base}{ext}{width_text})")
+                destination = escape_destination(urls.get_local_url(filename) + width_text)
+                lines.append(f"![{escape_label(sel_text)}]({destination})")
 
             return "\n".join(lines)
 
@@ -324,11 +322,11 @@ class InsertMenu:
             if folder:
                 dirs.last_file_dir = folder
             filename = file_chooser.get_filename()
+            _, tail = os.path.split(filename)
             filename = urls.get_local_url(filename)
             sel_text = self.main_window.day_text_field.get_selected_text()
-            _, tail = os.path.split(filename)
             # It is always safer to add the "file://" protocol.
-            return f"[{sel_text or tail}]({filename})"
+            return f"[{escape_label(sel_text or tail)}]({escape_destination(filename)})"
 
     @insert_handler
     def on_insert_link(self, sel_text):
@@ -367,9 +365,9 @@ class InsertMenu:
             link_name = link_name_entry.get_text()
 
             if link_location and link_name:
-                return f"[{link_name}]({link_location})"
+                return f"[{escape_label(link_name)}]({escape_destination(link_location)})"
             elif link_location:
-                return link_location
+                return f"<{escape_destination(link_location)}>"
             else:
                 self.main_window.journal.show_message(
                     _("No link location has been entered"), error=True

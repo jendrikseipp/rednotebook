@@ -4,8 +4,8 @@ import pytest
 
 from rednotebook.data import Day, Month
 from rednotebook.util import urls
-from rednotebook.util.markup import _convert_paths, convert, get_markup_for_day
-from rednotebook.util.pango_markup import convert_from_pango, convert_to_pango
+from rednotebook.util.markup import _convert_uri, convert, get_markup_for_day
+from rednotebook.util.pango_markup import convert_to_pango
 
 
 @pytest.mark.parametrize(
@@ -20,7 +20,6 @@ from rednotebook.util.pango_markup import convert_from_pango, convert_to_pango
 )
 def test_pango(markdown, pango):
     assert convert_to_pango(markdown) == pango
-    assert convert_from_pango(pango) == markdown
 
 
 def test_pango_strips_links():
@@ -35,27 +34,27 @@ def test_relative_path_conversion(tmp_path):
         return urls.get_local_url(str(tmp_path / name))
 
     rel_paths = [
-        ("![](rel.jpg)", f"![]({url('rel.jpg')})"),
-        ("[doc](rel.pdf)", f"[doc]({url('rel.pdf')})"),
-        ("![](rel.png?50)", f"![]({url('rel.png')}?50)"),
+        ("rel.jpg", url("rel.jpg")),
+        ("rel.pdf", url("rel.pdf")),
+        ("rel.png?50", f"{url('rel.png')}?50"),
     ]
     for markup, expected in rel_paths:
-        assert _convert_paths(markup, tmp_path) == expected
+        assert _convert_uri(markup, tmp_path, is_image=True) == expected
 
 
 def test_absolute_path_conversion(tmp_path):
     abs_paths = [
-        "![](file:///abs.jpg)",
-        f"![]({tmp_path}/aha.jpg)",
-        "[doc](file:///abs.pdf)",
-        "[site](http://www.google.com)",
+        "file:///abs.jpg",
+        f"{tmp_path}/aha.jpg",
+        "file:///abs.pdf",
+        "http://www.google.com",
     ]
     for path in abs_paths:
-        assert path == _convert_paths(path, tmp_path)
+        assert path == _convert_uri(path, tmp_path)
 
 
 def test_entry_reference_fragment_untouched(tmp_path):
-    assert _convert_paths("[2019-08-01](#2019-08-01)", tmp_path) == "[2019-08-01](#2019-08-01)"
+    assert _convert_uri("#2019-08-01", tmp_path) == "#2019-08-01"
 
 
 class TestHtml:

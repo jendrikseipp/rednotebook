@@ -61,6 +61,7 @@ Dummy().code_block
 Dummy().code_inline
 Dummy().em_close
 Dummy().em_open
+Dummy().entry_reference
 Dummy().hardbreak
 Dummy().heading_close
 Dummy().heading_open

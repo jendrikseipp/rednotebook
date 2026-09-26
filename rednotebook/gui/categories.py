@@ -20,7 +20,7 @@ import logging
 from gi.repository import Gdk, Gtk, Pango
 
 from rednotebook.util import utils
-from rednotebook.util.pango_markup import convert_from_pango, convert_to_pango
+from rednotebook.util.pango_markup import convert_to_pango
 
 
 class CategoriesTreeView:
@@ -35,8 +35,9 @@ class CategoriesTreeView:
 
         self.statusbar = self.main_window.statusbar
 
-        # create a TreeStore with one string column to use as the model
-        self.tree_store = Gtk.TreeStore(str)
+        # Keep the source alongside the display markup. Rendering is lossy,
+        # so reconstructing the source from Pango would change category keys.
+        self.tree_store = Gtk.TreeStore(str, str)
 
         # create the TreeView using tree_store
         self.tree_view.set_model(self.tree_store)
@@ -98,26 +99,14 @@ class CategoriesTreeView:
         self.categories.sort(key=utils.sort_asc)
 
     def node_on_top_level(self, iter):
-        if isinstance(iter, Gtk.TreeIter):
+        if not isinstance(iter, Gtk.TreeIter):
             # iter is a path -> convert to iter
             iter = self.tree_store.get_iter(iter)
         assert self.tree_store.iter_is_valid(iter)
         return self.tree_store.iter_depth(iter) == 0
 
     def on_editing_started(self, cell, editable, path):
-        # Let the renderer use text not markup temporarily
-        self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, "text", 0)
-
-        # Fetch the markup
-        pango_markup = self.tree_store[path][0]
-
-        # Tell the renderer NOT to use markup
-        self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, "markup", 0)
-
-        # We want to show Markdown markup and not pango markup
-        editable.set_text(convert_from_pango(pango_markup))
+        editable.set_text(self.tree_store[path][1])
 
     def edited_cb(self, cell, path, new_text, liststore):
         """
@@ -132,7 +121,7 @@ class CategoriesTreeView:
             self._show_error_msg(_("Empty entries are not allowed"))
             return
 
-        liststore[path][0] = convert_to_pango(new_text)
+        liststore[path] = [convert_to_pango(new_text), new_text]
 
         # Category name changed
         if self.node_on_top_level(path):
@@ -157,7 +146,7 @@ class CategoriesTreeView:
         ):
             if key is not None:
                 key_pango = convert_to_pango(key)
-            new_child = self.tree_store.append(parent, [key_pango])
+            new_child = self.tree_store.append(parent, [key_pango, key])
             if value is not None:
                 self.add_element(new_child, value)
 
@@ -200,21 +189,11 @@ class CategoriesTreeView:
         assert self.empty(), self.tree_store.iter_n_children(None)
 
     def get_iter_value(self, iter):
-        # Let the renderer use text not markup temporarily
-        self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, "text", 0)
-
-        pango_markup = self.tree_store.get_value(iter, 0)
-
-        # Reset the renderer to use markup
-        self.tvcolumn.clear_attributes(self.cell)
-        self.tvcolumn.add_attribute(self.cell, "markup", 0)
-
-        return convert_from_pango(pango_markup)
+        return self.tree_store.get_value(iter, 1)
 
     def set_iter_value(self, iter, markdown_markup):
         pango_markup = convert_to_pango(markdown_markup)
-        self.tree_store.set_value(iter, 0, pango_markup)
+        self.tree_store[iter] = [pango_markup, markdown_markup]
 
     def _get_category_iter(self, category_name):
         for iter_index in range(self.tree_store.iter_n_children(None)):
@@ -237,11 +216,11 @@ class CategoriesTreeView:
 
         # If category exists add entry to existing category, else add new category
         if category_iter is None:
-            category_iter = self.tree_store.append(None, [category_pango])
+            category_iter = self.tree_store.append(None, [category_pango, category])
 
         # Only add entry if there is one
         if entry_pango:
-            self.tree_store.append(category_iter, [entry_pango])
+            self.tree_store.append(category_iter, [entry_pango, entry])
 
         self.tree_view.expand_all()
 

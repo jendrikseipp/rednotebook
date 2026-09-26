@@ -11,7 +11,6 @@ DEFAULT_DATA_DIR = Path.home() / ".rednotebook" / "data"
 sys.path.insert(0, str(REPO))
 
 from rednotebook.help import help_text
-from rednotebook.info import version
 from rednotebook.util import markup
 
 
@@ -20,7 +19,6 @@ print(
         help_text,
         "html",
         DEFAULT_DATA_DIR,
-        headers=["RedNotebook Documentation", version, ""],
-        options={"toc": 1},
+        options={"toc": 1, "title": "RedNotebook Documentation"},
     )
 )

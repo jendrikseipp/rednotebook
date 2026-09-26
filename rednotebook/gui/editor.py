@@ -18,11 +18,13 @@
 
 import logging
 import os
-import urllib.request
+import re
+import urllib.parse
 
 from gi.repository import GObject, Gtk, Pango
 
 from rednotebook.util import filesystem
+from rednotebook.util.markdownlinks import escape_destination, escape_label
 
 
 try:
@@ -211,23 +213,48 @@ class Editor(GObject.GObject):
         }
 
         left_markup, right_markup = format_to_markups[format]
-        if format == "monospace" and "\n" in selection:
-            left_markup = "\n```\n"
-            right_markup = "\n```\n"
+        if format == "monospace":
+            runs = re.findall(r"`+", selection)
+            length = max(map(len, runs), default=0) + 1
+            if "\n" in selection:
+                fence = "`" * max(3, length)
+                left_markup = right_markup = f"\n{fence}\n"
+            else:
+                existing = re.fullmatch(r"(`+)(?!`)(.*?)\1", selection)
+                if existing and len(existing.group(1)) not in map(
+                    len, re.findall(r"`+", existing.group(2))
+                ):
+                    # A complete selected code span is already formatted.
+                    left_markup = right_markup = existing.group(1)
+                else:
+                    left_markup = right_markup = "`" * length
+                    if selection.startswith("`") or selection.endswith("`"):
+                        # Separate literal backticks from the surrounding delimiters.
+                        left_markup += " "
+                        right_markup = " " + right_markup
         return left_markup, right_markup
 
     def apply_format(self, format):
         selection = self.get_selected_text()
         left_markup, right_markup = self._get_markups(format, self.get_selected_text())
 
-        # Apply formatting only once.
-        if self.get_text_left_of_selection(len(left_markup)) == left_markup or selection.startswith(
-            left_markup
+        def starts_with_markup(text, marker):
+            if marker in ("*", "**"):
+                stars = len(text) - len(text.lstrip("*"))
+                return bool(stars % 2) if marker == "*" else stars >= 2
+            return text.startswith(marker)
+
+        # Check complete emphasis delimiters, since **bold** is not italic yet.
+        context_length = max(3, len(left_markup), len(right_markup))
+        left_context = self.get_text_left_of_selection(context_length)[::-1]
+        right_context = self.get_text_right_of_selection(context_length)
+        if starts_with_markup(left_context, left_markup[::-1]) or starts_with_markup(
+            selection, left_markup
         ):
             left_markup = ""
-        if self.get_text_right_of_selection(
-            len(right_markup)
-        ) == right_markup or selection.endswith(right_markup):
+        if starts_with_markup(right_context, right_markup) or starts_with_markup(
+            selection[::-1], right_markup[::-1]
+        ):
             right_markup = ""
 
         # Don't add unneeded newlines.
@@ -329,14 +356,14 @@ class Editor(GObject.GObject):
         logging.debug(f"URIs: {uris}")
         for uri in uris:
             uri = uri.strip()
-            uri = urllib.request.url2pathname(uri)
-            dirs, filename = os.path.split(uri)
-            uri_without_ext, ext = os.path.splitext(uri)
-            if is_pic(uri):
-                self.insert(f"![]({uri_without_ext}{ext})\n", iter)
+            path = urllib.parse.unquote(urllib.parse.urlsplit(uri).path)
+            filename = os.path.basename(path)
+            destination = escape_destination(uri)
+            if is_pic(path):
+                self.insert(f"![]({destination})\n", iter)
             else:
                 # It is always safer to add the "file://" protocol.
-                self.insert(f"[{filename}]({uri})\n", iter)
+                self.insert(f"[{escape_label(filename)}]({destination})\n", iter)
 
         drag_context.finish(True, False, timestamp)
         # No further processing

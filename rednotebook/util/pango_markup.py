@@ -51,7 +51,7 @@ def convert_to_pango(txt):
     """Convert (Markdown) category markup to Pango markup for display."""
     original_txt = txt
 
-    txt = t2t_to_markdown.convert_to_markdown(txt)
+    txt = t2t_to_markdown.convert_to_markdown(txt, inline=True)
     result = _PARSER.renderInline(txt)
 
     for html_tag, pango_tag in _HTML_TO_PANGO:
@@ -69,28 +69,3 @@ def convert_to_pango(txt):
         logging.debug(f"There are unknown tags in the markup: {result}")
         return original_txt
     return result
-
-
-def convert_from_pango(pango_markup):
-    """Convert Pango markup back to the Markdown stored in the journal."""
-    original_txt = pango_markup
-    replacements = {
-        "<b>": "**",
-        "</b>": "**",
-        "<i>": "*",
-        "</i>": "*",
-        "<s>": "~~",
-        "</s>": "~~",
-        "<u>": "<u>",
-        "</u>": "</u>",
-        "<tt>": "`",
-        "</tt>": "`",
-        "&amp;": "&",
-        "&lt;": "<",
-        "&gt;": ">",
-    }
-    for orig, repl in replacements.items():
-        pango_markup = pango_markup.replace(orig, repl)
-
-    logging.log(5, f'Converted Pango "{original_txt!r}" to Markdown "{pango_markup!r}"')
-    return pango_markup
