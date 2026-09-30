@@ -220,6 +220,7 @@ class Journal(Gtk.Application):
         )
         # Let components check if the MainWindow has been created.
         self.frame = None
+        self.syncer = sync.AsyncSyncer(GLib.idle_add)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -403,23 +404,24 @@ class Journal(Gtk.Application):
         if something_saved and self.config.read("syncEnabled") and self.config.read("syncAuto"):
             sync_branch = self.config.read("syncBranch") or None
             sync_url = self.config.read("syncRemoteUrl", "") or None
-            result = sync.sync(
-                self.dirs.data_dir,
-                remote_url=sync_url,
-                branch=sync_branch,
-            )
-            if not result:
-                logging.warning("Sync failed after save")
+            if exit_imminent:
+                # On exit, run sync synchronously so we do not lose data
+                # in a background thread that would be killed with the
+                # process.
+                result = sync.sync(
+                    self.dirs.data_dir,
+                    remote_url=sync_url,
+                    branch=sync_branch,
+                )
+                if not result:
+                    logging.warning("Sync failed on exit")
             else:
-                if result.conflicts:
-                    self._record_sync_conflicts(result.conflicts)
-                    self.show_message(
-                        _("Sync merged remote changes. Days with conflicts (please review): %s")
-                        % ", ".join(result.conflicts),
-                        error=False,
-                    )
-                if result.pulled_new_data and not exit_imminent:
-                    self._reload_after_sync()
+                self.syncer.run(
+                    self.dirs.data_dir,
+                    remote_url=sync_url,
+                    branch=sync_branch,
+                    on_done=self._on_auto_sync_done,
+                )
 
         # tell gobject to keep saving the content in regular intervals
         return True
@@ -490,6 +492,23 @@ class Journal(Gtk.Application):
         else:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config["dataDir"] = rel_data_dir
+
+    def _on_auto_sync_done(self, result):
+        """Handle the result of a background auto-sync on the UI thread."""
+        if result is None:
+            return  # Skipped because another sync was in flight
+        if not result:
+            logging.warning("Sync failed after save")
+            return
+        if result.conflicts:
+            self._record_sync_conflicts(result.conflicts)
+            self.show_message(
+                _("Sync merged remote changes. Days with conflicts (please review): %s")
+                % ", ".join(result.conflicts),
+                error=False,
+            )
+        if result.pulled_new_data:
+            self._reload_after_sync()
 
     def _reload_after_sync(self):
         """Refresh in-memory journal state from disk after a pull.

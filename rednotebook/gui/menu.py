@@ -19,7 +19,7 @@ import webbrowser
 
 from gi.repository import GdkPixbuf, Gtk
 
-from rednotebook import info, storage, sync
+from rednotebook import info, storage
 from rednotebook.gui import format_menu, insert_menu
 from rednotebook.help import help_text
 from rednotebook.util import filesystem, utils
@@ -421,7 +421,21 @@ class MainMenuBar:
 
         branch = self.journal.config.read("syncBranch") or None
         url = self.journal.config.read("syncRemoteUrl", "") or None
-        result = sync.sync(self.journal.dirs.data_dir, remote_url=url, branch=branch)
+        self.journal.show_message(_("Syncing..."), error=False)
+        self.journal.syncer.run(
+            self.journal.dirs.data_dir,
+            remote_url=url,
+            branch=branch,
+            on_done=self._on_manual_sync_done,
+        )
+
+    def _on_manual_sync_done(self, result):
+        if result is None:
+            self.journal.show_message(
+                _("Another sync is already in progress"),
+                error=False,
+            )
+            return
         if not result:
             self.journal.show_message(
                 _("Sync failed - check the log for details"),

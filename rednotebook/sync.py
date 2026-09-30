@@ -34,6 +34,7 @@ import logging
 import os
 import re
 import subprocess
+import threading
 
 import yaml
 
@@ -698,3 +699,52 @@ def pull_on_open(data_dir, remote_url=None, remote="origin", branch=None):
         commit_changes(data_dir, "Auto-commit before pull (uncommitted changes found)")
 
     return pull_and_merge(data_dir, remote, branch)
+
+
+class AsyncSyncer:
+    """Run sync() on a background thread.
+
+    A second request that arrives while a sync is running is dropped, not
+    queued. Results are handed to 'dispatch', which must run its callback
+    on the UI thread (the app passes GLib.idle_add), so on_done callbacks
+    can safely touch the UI. Taking 'dispatch' as a parameter keeps this
+    module free of GTK imports.
+    """
+
+    def __init__(self, dispatch):
+        self._dispatch = dispatch
+        self._lock = threading.Lock()
+        self._running = False
+
+    def is_running(self):
+        with self._lock:
+            return self._running
+
+    def run(self, data_dir, remote_url=None, branch=None, on_done=None):
+        """Start a sync on a background thread.
+
+        on_done is dispatched with the SyncResult, or with None if the
+        request was dropped because a sync was already in flight, so
+        callers can tell 'skipped' from 'ran'.
+        """
+        with self._lock:
+            if self._running:
+                logging.debug("sync: another sync is already running, skipping")
+                if on_done:
+                    self._dispatch(on_done, None)
+                return
+            self._running = True
+
+        def worker():
+            try:
+                result = sync(data_dir, remote_url=remote_url, branch=branch)
+            except Exception:
+                logging.exception("sync: unexpected error in background sync")
+                result = SyncResult(False)
+            finally:
+                with self._lock:
+                    self._running = False
+            if on_done:
+                self._dispatch(on_done, result)
+
+        threading.Thread(target=worker, daemon=True, name="sync-worker").start()

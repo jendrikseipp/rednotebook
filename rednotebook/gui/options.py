@@ -298,11 +298,18 @@ class SyncStatusOption(Option):
             self.status_label.set_text(_("No Remote URL set"))
             return
 
-        result = sync.sync(
+        self.status_label.set_text(_("Syncing..."))
+        self.journal.syncer.run(
             self.data_dir,
             remote_url=url,
             branch=(branch or None),
+            on_done=self._on_sync_result,
         )
+
+    def _on_sync_result(self, result):
+        if result is None:
+            self.status_label.set_text(_("Another sync is already in progress"))
+            return
         if not result:
             self.status_label.set_text(_("Sync failed - check the log"))
             return
@@ -588,11 +595,25 @@ class OptionsManager:
             )
             return
 
-        # Run a full sync now so the user does not have to save + reopen
-        # preferences to trigger the first push. sync() will (re)set the
-        # remote from the URL before pulling/pushing.
+        # Run a full sync in the background so the user is not blocked
+        # while it runs. sync() (re)sets the remote from the URL before
+        # pulling/pushing.
         branch = self.config.read("syncBranch") or None
-        result = sync.sync(data_dir, remote_url=remote_url, branch=branch)
+        self.journal.show_message(_("Syncing in background..."), error=False)
+        self.journal.syncer.run(
+            data_dir,
+            remote_url=remote_url,
+            branch=branch,
+            on_done=lambda r: self._on_apply_sync_done(r, remote_url),
+        )
+
+    def _on_apply_sync_done(self, result, remote_url):
+        if result is None:
+            self.journal.show_message(
+                _("Another sync is already in progress"),
+                error=False,
+            )
+            return
         if not result:
             self.journal.show_message(
                 _("Sync failed - check the log for details"),

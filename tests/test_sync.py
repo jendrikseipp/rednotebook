@@ -3,6 +3,7 @@
 import os
 import subprocess
 import tempfile
+import threading
 
 import yaml
 
@@ -867,6 +868,76 @@ class TestPulledNewData:
             result = sync.sync(b_dir)
             assert result
             assert not result.pulled_new_data
+
+
+class TestAsyncSyncer:
+    """The real sync.AsyncSyncer, dispatching inline instead of via GLib."""
+
+    @staticmethod
+    def _inline(fn, *args):
+        fn(*args)
+
+    def test_result_is_dispatched(self, monkeypatch):
+        monkeypatch.setattr(sync, "sync", lambda *args, **kwargs: sync.SyncResult(True))
+        done = threading.Event()
+        results = []
+
+        def on_done(result):
+            results.append(result)
+            done.set()
+
+        sync.AsyncSyncer(self._inline).run("/tmp/x", on_done=on_done)
+        assert done.wait(5)
+        assert len(results) == 1 and results[0]
+
+    def test_second_call_while_running_is_dropped(self, monkeypatch):
+        started = threading.Event()
+        release = threading.Event()
+
+        def blocking_sync(*args, **kwargs):
+            started.set()
+            release.wait(5)
+            return sync.SyncResult(True)
+
+        monkeypatch.setattr(sync, "sync", blocking_sync)
+        syncer = sync.AsyncSyncer(self._inline)
+        first_done = threading.Event()
+        results = []
+
+        def on_first(result):
+            results.append(("first", result))
+            first_done.set()
+
+        syncer.run("/tmp/x", on_done=on_first)
+        assert started.wait(5)
+        assert syncer.is_running()
+
+        # The second request is dropped and reported straight away
+        syncer.run("/tmp/x", on_done=lambda result: results.append(("second", result)))
+        assert results == [("second", None)]
+
+        release.set()
+        assert first_done.wait(5)
+        assert not syncer.is_running()
+        assert results[1][0] == "first" and results[1][1]
+
+    def test_exception_in_sync_reports_failure(self, monkeypatch):
+        def failing_sync(*args, **kwargs):
+            raise RuntimeError("boom")
+
+        monkeypatch.setattr(sync, "sync", failing_sync)
+        done = threading.Event()
+        results = []
+
+        def on_done(result):
+            results.append(result)
+            done.set()
+
+        syncer = sync.AsyncSyncer(self._inline)
+        syncer.run("/tmp/x", on_done=on_done)
+        assert done.wait(5)
+        assert not results[0]
+        assert not syncer.is_running()
 
 
 class TestNestedRepo:
