@@ -106,9 +106,26 @@ def _run_git(data_dir, *args, check=True):
 
 
 def _is_git_repo(data_dir):
-    """Check whether data_dir is already a git repository."""
-    result = _run_git(data_dir, "rev-parse", "--is-inside-work-tree", check=False)
-    return result.returncode == 0 and result.stdout.strip() == "true"
+    """Check whether data_dir is itself a git repository.
+
+    Note: this returns False when data_dir is *inside* another git repo's
+    working tree but is not itself the repo root. This matters because
+    RedNotebook's default data dir (~/.rednotebook/data) sometimes lives
+    inside a stray ~/.rednotebook/.git created by earlier sync attempts
+    or manual setup - and if we accepted that as our repo we would end
+    up committing/pushing files from the parent directory instead of the
+    journal data.
+    """
+    result = _run_git(data_dir, "rev-parse", "--show-toplevel", check=False)
+    if result.returncode != 0:
+        return False
+    toplevel = result.stdout.strip()
+    if not toplevel:
+        return False
+    try:
+        return os.path.samefile(toplevel, data_dir)
+    except OSError:
+        return False
 
 
 def _has_commits(data_dir):

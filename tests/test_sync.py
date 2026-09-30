@@ -869,6 +869,59 @@ class TestPulledNewData:
             assert not result.pulled_new_data
 
 
+class TestNestedRepo:
+    """Regression: _is_git_repo must not accept a parent git repo.
+
+    If ~/.rednotebook/ was set up as a git repo by a previous manual
+    sync attempt, ~/.rednotebook/data/ is inside that repo's working
+    tree. Old code treated data/ as 'already a git repo' and every
+    sync operated on the parent, silently pushing the wrong files.
+    """
+
+    def test_child_dir_not_treated_as_parent_repo(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            parent = os.path.join(tmpdir, "parent")
+            child = os.path.join(parent, "data")
+            os.makedirs(child)
+            _git(parent, "init")
+
+            # Sanity: git considers child to be inside the parent repo
+            result = subprocess.run(
+                ["git", "-C", child, "rev-parse", "--is-inside-work-tree"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            assert result.stdout.strip() == "true"
+
+            # But our check must say child is not itself a repo
+            assert not sync._is_git_repo(child)
+            # And parent should be recognised as a repo
+            assert sync._is_git_repo(parent)
+
+    def test_init_repo_creates_child_repo_inside_parent(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            parent = os.path.join(tmpdir, "parent")
+            child = os.path.join(parent, "data")
+            os.makedirs(child)
+            _git(parent, "init")
+            _write_month(child, "2024-03.txt", {1: {"text": "hi"}})
+
+            assert sync.init_repo(child)
+            # child now has its own .git and is its own repo
+            assert os.path.isdir(os.path.join(child, ".git"))
+            assert sync._is_git_repo(child)
+
+            # And its git top-level is child, not parent
+            result = subprocess.run(
+                ["git", "-C", child, "rev-parse", "--show-toplevel"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            assert os.path.realpath(result.stdout.strip()) == os.path.realpath(child)
+
+
 class TestUnrelatedHistories:
     """First sync from a new machine: local and remote share no ancestor."""
 
