@@ -334,6 +334,372 @@ class TestPullAndMerge:
             assert "edited on other machine" in data[1]["text"]
 
 
+class TestAppendConflictNote:
+    """The helper that adds a to-do note to today's entry."""
+
+    def test_empty_conflicts_returns_text_unchanged(self):
+        assert sync.append_conflict_note("hello", []) == "hello"
+        assert sync.append_conflict_note("", []) == ""
+        assert sync.append_conflict_note(None, []) is None
+
+    def test_appended_to_empty(self):
+        result = sync.append_conflict_note("", ["2024-03-01"])
+        assert "2024-03-01" in result
+        assert not result.startswith("\n")
+
+    def test_appended_to_none(self):
+        result = sync.append_conflict_note(None, ["2024-03-01"])
+        assert "2024-03-01" in result
+
+    def test_separator_added_after_existing_content(self):
+        result = sync.append_conflict_note("Today I wrote", ["2024-03-01"])
+        assert result.startswith("Today I wrote\n\n[Sync:")
+
+    def test_multiple_conflicts_listed(self):
+        result = sync.append_conflict_note("", ["2024-03-01", "2024-05-20"])
+        assert "2024-03-01" in result
+        assert "2024-05-20" in result
+
+    def test_idempotent_same_note(self):
+        first = sync.append_conflict_note("hi", ["2024-03-01"])
+        second = sync.append_conflict_note(first, ["2024-03-01"])
+        assert first == second
+
+    def test_different_conflicts_appended_separately(self):
+        first = sync.append_conflict_note("", ["2024-03-01"])
+        second = sync.append_conflict_note(first, ["2024-05-20"])
+        assert "2024-03-01" in second
+        assert "2024-05-20" in second
+        # Two separate notes
+        assert second.count("[Sync:") == 2
+
+
+class TestConflictReporting:
+    """sync() must report which days had genuine content conflicts."""
+
+    def _setup(self, tmpdir):
+        remote_dir = os.path.join(tmpdir, "remote.git")
+        os.makedirs(remote_dir)
+        _git(remote_dir, "init", "--bare")
+
+        a_dir = os.path.join(tmpdir, "a")
+        _make_repo(a_dir)
+        _git(a_dir, "remote", "add", "origin", remote_dir)
+        _write_month(
+            a_dir,
+            "2024-03.txt",
+            {
+                1: {"text": "baseline"},
+                5: {"text": "baseline day 5"},
+            },
+        )
+        _write_month(
+            a_dir,
+            "2024-04.txt",
+            {
+                2: {"text": "baseline april"},
+            },
+        )
+        _git(a_dir, "add", "-A")
+        _git(a_dir, "commit", "-m", "baseline")
+        _git(a_dir, "push", "-u", "origin", "master")
+
+        b_dir = os.path.join(tmpdir, "b")
+        _git(tmpdir, "clone", remote_dir, "b")
+        _git(b_dir, "config", "user.email", "test@test.com")
+        _git(b_dir, "config", "user.name", "Test")
+        return a_dir, b_dir
+
+    def test_no_conflicts_reported_for_clean_sync(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._setup(tmpdir)
+            data = _read_month(b_dir, "2024-03.txt")
+            data[10] = {"text": "new day, no conflict"}
+            _write_month(b_dir, "2024-03.txt", data)
+            result = sync.sync(b_dir)
+            assert result
+            assert result.conflicts == []
+
+    def test_single_conflict_reported(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._setup(tmpdir)
+
+            data = _read_month(a_dir, "2024-03.txt")
+            data[1] = {"text": "A's version of day 1"}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {"text": "B's version of day 1"}
+            _write_month(b_dir, "2024-03.txt", data)
+            result = sync.sync(b_dir)
+            assert result
+            assert result.conflicts == ["2024-03-01"]
+
+    def test_multiple_conflicts_across_files_reported(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._setup(tmpdir)
+
+            # A modifies days 1 and 5 in March, and day 2 in April
+            data = _read_month(a_dir, "2024-03.txt")
+            data[1] = {"text": "A day 1"}
+            data[5] = {"text": "A day 5"}
+            _write_month(a_dir, "2024-03.txt", data)
+            data = _read_month(a_dir, "2024-04.txt")
+            data[2] = {"text": "A april"}
+            _write_month(a_dir, "2024-04.txt", data)
+            assert sync.sync(a_dir)
+
+            # B independently modifies the same three days differently
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {"text": "B day 1"}
+            data[5] = {"text": "B day 5"}
+            _write_month(b_dir, "2024-03.txt", data)
+            data = _read_month(b_dir, "2024-04.txt")
+            data[2] = {"text": "B april"}
+            _write_month(b_dir, "2024-04.txt", data)
+
+            result = sync.sync(b_dir)
+            assert result
+            assert sorted(result.conflicts) == [
+                "2024-03-01",
+                "2024-03-05",
+                "2024-04-02",
+            ]
+
+    def test_disjoint_edits_are_not_conflicts(self):
+        """Edits to different days on each side do not count as conflicts."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._setup(tmpdir)
+
+            data = _read_month(a_dir, "2024-03.txt")
+            data[10] = {"text": "A only"}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            data = _read_month(b_dir, "2024-03.txt")
+            data[20] = {"text": "B only"}
+            _write_month(b_dir, "2024-03.txt", data)
+            result = sync.sync(b_dir)
+            assert result
+            # Same file was touched on both sides but no day overlaps
+            assert result.conflicts == []
+
+    def test_pull_on_open_returns_conflicts(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._setup(tmpdir)
+
+            data = _read_month(a_dir, "2024-03.txt")
+            data[1] = {"text": "A"}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            # B has a competing local commit but hasn't pushed
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {"text": "B"}
+            _write_month(b_dir, "2024-03.txt", data)
+            _git(b_dir, "add", "-A")
+            _git(b_dir, "commit", "-m", "b day 1")
+
+            result = sync.pull_on_open(b_dir)
+            assert result
+            assert result.conflicts == ["2024-03-01"]
+
+
+class TestConflictScenarios:
+    """End-to-end conflict scenarios that mirror real two-machine use.
+
+    Each test simulates two machines editing the same journal via two
+    clones of a bare remote, then verifies exactly what ends up in the
+    merged YAML.
+    """
+
+    def _three_repos(self, tmpdir):
+        """Create bare remote + two clones ('a' and 'b')."""
+        remote_dir = os.path.join(tmpdir, "remote.git")
+        os.makedirs(remote_dir)
+        _git(remote_dir, "init", "--bare")
+
+        a_dir = os.path.join(tmpdir, "a")
+        _make_repo(a_dir)
+        _git(a_dir, "remote", "add", "origin", remote_dir)
+        _write_month(
+            a_dir,
+            "2024-03.txt",
+            {
+                1: {"text": "Baseline day 1"},
+                2: {"text": "Baseline day 2"},
+            },
+        )
+        _git(a_dir, "add", "-A")
+        _git(a_dir, "commit", "-m", "baseline")
+        _git(a_dir, "push", "-u", "origin", "master")
+
+        b_dir = os.path.join(tmpdir, "b")
+        _git(tmpdir, "clone", remote_dir, "b")
+        _git(b_dir, "config", "user.email", "test@test.com")
+        _git(b_dir, "config", "user.name", "Test")
+
+        return remote_dir, a_dir, b_dir
+
+    def test_disjoint_days_merge_cleanly(self):
+        """A edits day 5, B edits day 10. Both entries survive verbatim."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            _, a_dir, b_dir = self._three_repos(tmpdir)
+
+            data = _read_month(a_dir, "2024-03.txt")
+            data[5] = {"text": "New from A"}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            data = _read_month(b_dir, "2024-03.txt")
+            data[10] = {"text": "New from B"}
+            _write_month(b_dir, "2024-03.txt", data)
+            assert sync.sync(b_dir)
+
+            # A pulls what B pushed
+            assert sync.sync(a_dir)
+
+            result = _read_month(a_dir, "2024-03.txt")
+            assert result[1]["text"] == "Baseline day 1"
+            assert result[2]["text"] == "Baseline day 2"
+            assert result[5]["text"] == "New from A"
+            assert result[10]["text"] == "New from B"
+
+    def test_same_day_both_texts_kept(self):
+        """A and B both rewrite day 1. Both texts land, with the marker."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            _, a_dir, b_dir = self._three_repos(tmpdir)
+
+            data = _read_month(a_dir, "2024-03.txt")
+            data[1] = {"text": "Rewritten by A"}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {"text": "Rewritten by B"}
+            _write_month(b_dir, "2024-03.txt", data)
+            # B must pull first (A pushed), which triggers the conflict
+            assert sync.sync(b_dir)
+
+            result = _read_month(b_dir, "2024-03.txt")
+            merged = result[1]["text"]
+            assert "Rewritten by A" in merged
+            assert "Rewritten by B" in merged
+            assert sync.MERGE_MARKER in merged
+            # Other days are untouched
+            assert result[2]["text"] == "Baseline day 2"
+
+    def test_same_day_identical_text_deduplicated(self):
+        """If A and B independently type the same text, no marker appears."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            _, a_dir, b_dir = self._three_repos(tmpdir)
+
+            same = "Both machines wrote this identical text"
+            data = _read_month(a_dir, "2024-03.txt")
+            data[1] = {"text": same}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {"text": same}
+            _write_month(b_dir, "2024-03.txt", data)
+            assert sync.sync(b_dir)
+
+            result = _read_month(b_dir, "2024-03.txt")
+            assert result[1]["text"] == same
+            assert sync.MERGE_MARKER not in result[1]["text"]
+
+    def test_same_day_one_is_extension_of_other(self):
+        """If one side just appended, the longer text is kept without marker."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            _, a_dir, b_dir = self._three_repos(tmpdir)
+
+            # A keeps day 1 as baseline. B extends it.
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {"text": "Baseline day 1\n\nExtra thought from B"}
+            _write_month(b_dir, "2024-03.txt", data)
+            assert sync.sync(b_dir)
+
+            # A adds day 3, doesn't touch day 1
+            data = _read_month(a_dir, "2024-03.txt")
+            data[3] = {"text": "Something on day 3 from A"}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            result = _read_month(a_dir, "2024-03.txt")
+            assert result[1]["text"] == "Baseline day 1\n\nExtra thought from B"
+            assert sync.MERGE_MARKER not in result[1]["text"]
+            assert result[3]["text"] == "Something on day 3 from A"
+
+    def test_categories_from_both_sides_kept(self):
+        """Same day, different tag categories — union of both is kept."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            _, a_dir, b_dir = self._three_repos(tmpdir)
+
+            data = _read_month(a_dir, "2024-03.txt")
+            data[1] = {"text": "Day 1 with A tags", "tags": {"work": None}}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {
+                "text": "Day 1 with B tags",
+                "tags": {"personal": None},
+                "mood": {"happy": None},
+            }
+            _write_month(b_dir, "2024-03.txt", data)
+            assert sync.sync(b_dir)
+
+            result = _read_month(b_dir, "2024-03.txt")
+            assert "work" in result[1]["tags"]
+            assert "personal" in result[1]["tags"]
+            assert "happy" in result[1]["mood"]
+
+    def test_new_month_files_from_each_side(self):
+        """A creates April, B creates May — both files land on both."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            _, a_dir, b_dir = self._three_repos(tmpdir)
+
+            _write_month(a_dir, "2024-04.txt", {1: {"text": "April from A"}})
+            assert sync.sync(a_dir)
+
+            _write_month(b_dir, "2024-05.txt", {1: {"text": "May from B"}})
+            assert sync.sync(b_dir)
+            assert sync.sync(a_dir)
+
+            assert _read_month(a_dir, "2024-04.txt")[1]["text"] == "April from A"
+            assert _read_month(a_dir, "2024-05.txt")[1]["text"] == "May from B"
+
+    def test_three_way_pingpong(self):
+        """A -> B -> A -> B, each side adding one day each round."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            _, a_dir, b_dir = self._three_repos(tmpdir)
+
+            for day, machine, label in [
+                (5, a_dir, "A round 1"),
+                (6, b_dir, "B round 1"),
+                (7, a_dir, "A round 2"),
+                (8, b_dir, "B round 2"),
+            ]:
+                data = _read_month(machine, "2024-03.txt")
+                data[day] = {"text": label}
+                _write_month(machine, "2024-03.txt", data)
+                assert sync.sync(machine)
+
+            # Final sync so A gets B's round 2 push
+            assert sync.sync(a_dir)
+
+            result = _read_month(a_dir, "2024-03.txt")
+            for day, expected in [
+                (5, "A round 1"),
+                (6, "B round 1"),
+                (7, "A round 2"),
+                (8, "B round 2"),
+            ]:
+                assert result[day]["text"] == expected, f"day {day}: got {result.get(day)}"
+
+
 class TestSync:
     def test_full_sync_no_remote_fails(self):
         """Sync without a remote configured must fail loudly, not silently.

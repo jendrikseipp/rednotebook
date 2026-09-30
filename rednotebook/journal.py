@@ -403,12 +403,20 @@ class Journal(Gtk.Application):
         if something_saved and self.config.read("syncEnabled") and self.config.read("syncAuto"):
             sync_branch = self.config.read("syncBranch") or None
             sync_url = self.config.read("syncRemoteUrl", "") or None
-            if not sync.sync(
+            result = sync.sync(
                 self.dirs.data_dir,
                 remote_url=sync_url,
                 branch=sync_branch,
-            ):
+            )
+            if not result:
                 logging.warning("Sync failed after save")
+            elif result.conflicts:
+                self._record_sync_conflicts(result.conflicts)
+                self.show_message(
+                    _("Sync merged remote changes. Days with conflicts (please review): %s")
+                    % ", ".join(result.conflicts),
+                    error=False,
+                )
 
         # tell gobject to keep saving the content in regular intervals
         return True
@@ -425,16 +433,20 @@ class Journal(Gtk.Application):
         self.dirs.data_dir = data_dir
 
         # Pull remote changes before loading if sync is enabled
+        pull_conflicts = []
         if self.config.read("syncEnabled"):
             sync.init_repo(data_dir)
             sync_branch = self.config.read("syncBranch") or None
             sync_url = self.config.read("syncRemoteUrl", "") or None
-            if not sync.pull_on_open(
+            result = sync.pull_on_open(
                 data_dir,
                 remote_url=sync_url,
                 branch=sync_branch,
-            ):
+            )
+            if not result:
                 logging.warning("Sync pull failed; opening with local data")
+            else:
+                pull_conflicts = result.conflicts
 
         self.month = None
         self.months.clear()
@@ -461,12 +473,40 @@ class Journal(Gtk.Application):
         # Set frame title
         self.set_frame_title()
 
+        if pull_conflicts:
+            self._record_sync_conflicts(pull_conflicts)
+            self.show_message(
+                _("Sync merged remote changes. Days with conflicts (please review): %s")
+                % ", ".join(pull_conflicts),
+                error=False,
+            )
+
         # Save the folder for next start
         if not self.dirs.portable:
             self.config["dataDir"] = data_dir
         else:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config["dataDir"] = rel_data_dir
+
+    def _record_sync_conflicts(self, conflicts):
+        """Append a note listing conflicted days to today's journal entry.
+
+        The note is a persistent to-do so the user notices it later even
+        after the transient status message has cleared. Idempotent - if
+        the same list is passed twice (e.g. auto-sync followed by manual
+        sync in the same session) the note is only added once.
+        """
+        if not conflicts:
+            return
+        today_date = datetime.date.today()
+        today = self.get_day(today_date)
+        new_text = sync.append_conflict_note(today.text, conflicts)
+        if new_text == today.text:
+            return
+        today.text = new_text
+        today.month.edited = True
+        if self.date == today_date and self.frame:
+            self.frame.set_day_text(today.text)
 
     def set_frame_title(self):
         parts = ["RedNotebook"]

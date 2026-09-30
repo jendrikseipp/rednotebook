@@ -305,6 +305,12 @@ class SyncStatusOption(Option):
         )
         if not result:
             self.status_label.set_text(_("Sync failed - check the log"))
+        elif result.conflicts:
+            self.journal._record_sync_conflicts(result.conflicts)
+            self.status_label.set_text(
+                _("Sync completed with %d day conflict(s): %s")
+                % (len(result.conflicts), ", ".join(result.conflicts))
+            )
         else:
             self.status_label.set_text(_("Sync completed"))
             self._update_status()  # Refresh remote line
@@ -579,13 +585,21 @@ class OptionsManager:
         # preferences to trigger the first push. sync() will (re)set the
         # remote from the URL before pulling/pushing.
         branch = self.config.read("syncBranch") or None
-        if sync.sync(data_dir, remote_url=remote_url, branch=branch):
+        result = sync.sync(data_dir, remote_url=remote_url, branch=branch)
+        if not result:
             self.journal.show_message(
-                _("Sync completed - journal pushed to %s") % remote_url,
+                _("Sync failed - check the log for details"),
+                error=True,
+            )
+        elif result.conflicts:
+            self.journal._record_sync_conflicts(result.conflicts)
+            self.journal.show_message(
+                _("Sync completed. Days with conflicts (please review): %s")
+                % ", ".join(result.conflicts),
                 error=False,
             )
         else:
             self.journal.show_message(
-                _("Sync failed - check the log for details"),
-                error=True,
+                _("Sync completed - journal pushed to %s") % remote_url,
+                error=False,
             )

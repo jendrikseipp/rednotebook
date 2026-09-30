@@ -421,13 +421,21 @@ class MainMenuBar:
 
         branch = self.journal.config.read("syncBranch") or None
         url = self.journal.config.read("syncRemoteUrl", "") or None
-        if sync.sync(self.journal.dirs.data_dir, remote_url=url, branch=branch):
-            self.journal.show_message(_("Sync completed"), error=False)
-        else:
+        result = sync.sync(self.journal.dirs.data_dir, remote_url=url, branch=branch)
+        if not result:
             self.journal.show_message(
                 _("Sync failed - check the log for details"),
                 error=True,
             )
+        elif result.conflicts:
+            self.journal._record_sync_conflicts(result.conflicts)
+            self.journal.show_message(
+                _("Sync completed. Days with conflicts (please review): %s")
+                % ", ".join(result.conflicts),
+                error=False,
+            )
+        else:
+            self.journal.show_message(_("Sync completed"), error=False)
 
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()

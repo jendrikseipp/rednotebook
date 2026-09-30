@@ -53,18 +53,19 @@ class SyncResult:
     """Outcome of a sync/pull operation.
 
     Truthy on success so `if sync.sync(...)` and `assert sync.sync(...)`
-    work. Later changes extend this with extra fields (conflicts,
-    pulled_new_data, error) as those features are added.
+    work. Carries the list of days ('YYYY-MM-DD' strings) that had
+    content modified on both sides during the merge.
     """
 
-    def __init__(self, success):
+    def __init__(self, success, conflicts=None):
         self.success = success
+        self.conflicts = list(conflicts) if conflicts else []
 
     def __bool__(self):
         return self.success
 
     def __repr__(self):
-        return f"SyncResult(success={self.success})"
+        return f"SyncResult(success={self.success}, conflicts={self.conflicts!r})"
 
 
 def _run_git(data_dir, *args, check=True):
@@ -183,7 +184,9 @@ def _resolve_month_file(data_dir, filename):
     merges day-by-day. Days that exist only on one side are kept.
     Days that differ are merged with _merge_yaml_content().
 
-    Returns True if the conflict was resolved, False otherwise.
+    Returns (success, conflict_days) where conflict_days is the list of
+    day numbers (ints) whose content was modified on both sides and had
+    to be merged together (not just picked up from one side).
     """
     filepath = os.path.join(data_dir, filename)
 
@@ -208,11 +211,12 @@ def _resolve_month_file(data_dir, filename):
         theirs_data = theirs_data or {}
     except yaml.YAMLError as exc:
         logging.error("sync: failed to parse YAML during conflict resolution: %s", exc)
-        return False
+        return False, []
 
     # Merge day by day
     all_days = set(ours_data.keys()) | set(theirs_data.keys())
     merged = {}
+    conflict_days = []
 
     for day in sorted(all_days):
         ours_day = ours_data.get(day)
@@ -227,16 +231,17 @@ def _resolve_month_file(data_dir, filename):
         else:
             # Both sides modified the same day - merge content
             merged[day] = _merge_yaml_content(ours_day, theirs_day)
+            conflict_days.append(day)
 
     # Write the resolved file
     try:
         with open(filepath, "w", encoding="utf-8") as f:
             yaml.dump(merged, f, Dumper=Dumper, allow_unicode=True)
         _run_git(data_dir, "add", filename)
-        return True
+        return True, conflict_days
     except OSError as exc:
         logging.error("sync: failed to write resolved file %s: %s", filepath, exc)
-        return False
+        return False, []
 
 
 def _write_gitignore(data_dir):
@@ -356,6 +361,34 @@ def commit_changes(data_dir, message=None):
         return False
 
 
+def format_conflict_note(conflicts):
+    """Return the note text to append to today's entry for a conflict list."""
+    return f"[Sync: please review conflicts on {', '.join(conflicts)}]"
+
+
+def append_conflict_note(existing_text, conflicts):
+    """Return existing_text with a conflict note appended.
+
+    Idempotent: if the same note is already present, returns
+    existing_text unchanged. If conflicts is empty, returns
+    existing_text unchanged.
+    """
+    if not conflicts:
+        return existing_text
+    note = format_conflict_note(conflicts)
+    existing = existing_text or ""
+    if note in existing:
+        return existing
+    separator = "\n\n" if existing.strip() else ""
+    return existing + separator + note
+
+
+def _month_from_filename(filename):
+    """Return (year, month) parsed from 'YYYY-MM.txt'."""
+    base = os.path.basename(filename)
+    return base[:4], base[5:7]
+
+
 def pull_and_merge(data_dir, remote="origin", branch=None):
     """Pull from the remote and merge, resolving conflicts in YAML files.
 
@@ -364,8 +397,8 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
         remote: Remote name (default "origin").
         branch: Branch to pull. If None, uses the current branch.
 
-    Returns a SyncResult. Truthy if the pull succeeded (including
-    conflict resolution), falsy on unresolvable errors.
+    Returns a SyncResult. SyncResult.conflicts holds the list of days
+    ('YYYY-MM-DD' strings) whose content was modified on both sides.
     """
     if not _has_remote(data_dir, remote):
         logging.debug("sync: no remote '%s' configured, skipping pull", remote)
@@ -407,10 +440,19 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
     logging.info("sync: resolving %d conflicted file(s)", len(conflicted))
 
     all_resolved = True
+    all_conflicts = []
     for filename in conflicted:
         if _is_month_file(filename):
-            if _resolve_month_file(data_dir, filename):
-                logging.info("sync: resolved conflict in %s", filename)
+            resolved, days = _resolve_month_file(data_dir, filename)
+            if resolved:
+                year, month = _month_from_filename(filename)
+                for day in days:
+                    all_conflicts.append(f"{year}-{month}-{int(day):02d}")
+                logging.info(
+                    "sync: resolved conflict in %s (days: %s)",
+                    filename,
+                    days or "none",
+                )
             else:
                 logging.error("sync: failed to resolve conflict in %s", filename)
                 all_resolved = False
@@ -422,8 +464,14 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
 
     if all_resolved:
         _run_git(data_dir, "commit", "--no-edit")
-        logging.info("sync: merge conflict resolution committed")
-        return SyncResult(True)
+        if all_conflicts:
+            logging.warning(
+                "sync: merged remote changes; days with content conflicts: %s",
+                ", ".join(all_conflicts),
+            )
+        else:
+            logging.info("sync: merge conflict resolution committed")
+        return SyncResult(True, all_conflicts)
     else:
         _run_git(data_dir, "merge", "--abort", check=False)
         logging.error("sync: could not resolve all conflicts, merge aborted")
@@ -510,19 +558,15 @@ def test_remote(url, timeout=15):
 def sync(data_dir, remote_url=None, remote="origin", branch=None):
     """Perform a full sync cycle: commit, pull+merge, push.
 
-    This is the main entry point for the sync system. Call it after
-    saving journal data to disk.
-
     Args:
         data_dir: Path to the journal data directory.
         remote_url: If given, ensure the named git remote points at this
-            URL before syncing. Callers should always pass the URL from
-            configuration so the git remote stays in step with it.
+            URL before syncing.
         remote: Remote name.
         branch: Branch name. If None, uses the current branch.
 
-    Returns a SyncResult. Truthy if sync completed successfully,
-    falsy on any failure.
+    Returns a SyncResult. SyncResult.conflicts lists any days that had
+    content merged from both sides during the pull step.
     """
     logging.info("sync: starting sync cycle")
 
@@ -548,14 +592,14 @@ def sync(data_dir, remote_url=None, remote="origin", branch=None):
     # 2. Pull and merge remote changes
     pull_result = pull_and_merge(data_dir, remote, branch)
     if not pull_result:
-        return pull_result
+        return SyncResult(False)
 
     # 3. Push our changes
     if not push(data_dir, remote, branch):
-        return SyncResult(False)
+        return SyncResult(False, pull_result.conflicts)
 
     logging.info("sync: sync cycle complete")
-    return SyncResult(True)
+    return SyncResult(True, pull_result.conflicts)
 
 
 def pull_on_open(data_dir, remote_url=None, remote="origin", branch=None):
@@ -571,7 +615,7 @@ def pull_on_open(data_dir, remote_url=None, remote="origin", branch=None):
         remote: Remote name.
         branch: Branch to pull. If None, uses the current branch.
 
-    Returns a SyncResult, truthy on success.
+    Returns a SyncResult carrying any conflict day strings.
     """
     if not _is_git_repo(data_dir):
         return SyncResult(True)  # Not a sync-enabled journal
