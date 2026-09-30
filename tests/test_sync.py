@@ -794,6 +794,52 @@ class TestSyncSetsRemote:
             assert result.stdout.strip()
 
 
+class TestUnrelatedHistories:
+    """First sync from a new machine: local and remote share no ancestor."""
+
+    def test_pull_with_unrelated_histories(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            # Remote: bare repo with its own initial commit
+            remote_dir = os.path.join(tmpdir, "remote.git")
+            os.makedirs(remote_dir)
+            _git(remote_dir, "init", "--bare")
+
+            seed_dir = os.path.join(tmpdir, "seed")
+            _make_repo(seed_dir)
+            _git(seed_dir, "remote", "add", "origin", remote_dir)
+            _write_month(seed_dir, "2024-01.txt", {1: {"text": "Seed from other machine"}})
+            _git(seed_dir, "add", "-A")
+            _git(seed_dir, "commit", "-m", "seed")
+            _git(seed_dir, "push", "-u", "origin", "master")
+
+            # Local: independently initialised, with its own history
+            local_dir = os.path.join(tmpdir, "local")
+            os.makedirs(local_dir)
+            _write_month(local_dir, "2024-03.txt", {1: {"text": "Local existing entry"}})
+            assert sync.init_repo(local_dir)
+            _git(local_dir, "config", "user.email", "test@test.com")
+            _git(local_dir, "config", "user.name", "Test")
+
+            # First sync: merge two unrelated histories
+            assert sync.sync(local_dir, remote_url=remote_dir)
+
+            # Both files should now be present locally
+            data_jan = _read_month(local_dir, "2024-01.txt")
+            assert data_jan[1]["text"] == "Seed from other machine"
+            data_mar = _read_month(local_dir, "2024-03.txt")
+            assert data_mar[1]["text"] == "Local existing entry"
+
+            # And the remote should have both files after push
+            result = subprocess.run(
+                ["git", "-C", remote_dir, "ls-tree", "-r", "HEAD"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            assert "2024-01.txt" in result.stdout
+            assert "2024-03.txt" in result.stdout
+
+
 class TestFirstPush:
     """Regression: first push to a fresh empty remote must succeed."""
 

@@ -426,6 +426,23 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
     # Try the merge
     merge_result = _run_git(data_dir, "merge", remote_ref, check=False)
 
+    # First-sync case: local and remote were both initialised
+    # independently and share no ancestor. Retry with the flag that
+    # tells git it is OK to merge two separate histories - that is
+    # exactly what we want when combining machines for the first time.
+    if merge_result.returncode != 0 and "unrelated histories" in merge_result.stderr:
+        logging.info(
+            "sync: local and remote have unrelated histories; "
+            "retrying with --allow-unrelated-histories"
+        )
+        merge_result = _run_git(
+            data_dir,
+            "merge",
+            "--allow-unrelated-histories",
+            remote_ref,
+            check=False,
+        )
+
     if merge_result.returncode == 0:
         logging.info("sync: pull and merge succeeded")
         return SyncResult(True)
