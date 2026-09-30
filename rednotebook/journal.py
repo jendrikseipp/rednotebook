@@ -410,13 +410,16 @@ class Journal(Gtk.Application):
             )
             if not result:
                 logging.warning("Sync failed after save")
-            elif result.conflicts:
-                self._record_sync_conflicts(result.conflicts)
-                self.show_message(
-                    _("Sync merged remote changes. Days with conflicts (please review): %s")
-                    % ", ".join(result.conflicts),
-                    error=False,
-                )
+            else:
+                if result.conflicts:
+                    self._record_sync_conflicts(result.conflicts)
+                    self.show_message(
+                        _("Sync merged remote changes. Days with conflicts (please review): %s")
+                        % ", ".join(result.conflicts),
+                        error=False,
+                    )
+                if result.pulled_new_data and not exit_imminent:
+                    self._reload_after_sync()
 
         # tell gobject to keep saving the content in regular intervals
         return True
@@ -487,6 +490,29 @@ class Journal(Gtk.Application):
         else:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config["dataDir"] = rel_data_dir
+
+    def _reload_after_sync(self):
+        """Refresh in-memory journal state from disk after a pull.
+
+        A sync that fetches new commits changes the .txt files on disk
+        but not the Month/Day objects RedNotebook has already loaded, so
+        without this refresh pulled entries stay invisible until the app
+        is restarted.
+
+        Called after save_to_disk has already flushed the current buffer,
+        so there is nothing unsaved to lose.
+        """
+        data_dir = self.dirs.data_dir
+        self.month = None
+        self.months.clear()
+        self.frame.search_box.clear()
+        self.frame.day_text_field.clear_buffers()
+        self.months = storage.load_all_months_from_disk(data_dir)
+        self.load_day(self.date)
+        self.stats = Statistics(self)
+        self.frame.cloud.update(force_update=True)
+        self.frame.categories_tree_view.categories = self.categories
+        self.frame.search_box.set_entries(self.get_escaped_tags())
 
     def _record_sync_conflicts(self, conflicts):
         """Append a note listing conflicted days to today's journal entry.

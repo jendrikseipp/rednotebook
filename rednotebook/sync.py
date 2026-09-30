@@ -54,18 +54,25 @@ class SyncResult:
 
     Truthy on success so `if sync.sync(...)` and `assert sync.sync(...)`
     work. Carries the list of days ('YYYY-MM-DD' strings) that had
-    content modified on both sides during the merge.
+    content modified on both sides during the merge, and a flag telling
+    callers whether the pull actually brought in new commits (so they
+    know when to reload data from disk).
     """
 
-    def __init__(self, success, conflicts=None):
+    def __init__(self, success, conflicts=None, pulled_new_data=False):
         self.success = success
         self.conflicts = list(conflicts) if conflicts else []
+        self.pulled_new_data = pulled_new_data
 
     def __bool__(self):
         return self.success
 
     def __repr__(self):
-        return f"SyncResult(success={self.success}, conflicts={self.conflicts!r})"
+        return (
+            f"SyncResult(success={self.success}, "
+            f"conflicts={self.conflicts!r}, "
+            f"pulled_new_data={self.pulled_new_data})"
+        )
 
 
 def _run_git(data_dir, *args, check=True):
@@ -423,6 +430,12 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
         logging.debug("sync: remote branch %s does not exist yet", remote_ref)
         return SyncResult(True)
 
+    # Record HEAD before merging so we can tell whether the merge
+    # actually brought in new commits. Callers use this to decide
+    # whether to reload the journal data from disk.
+    head_before = _run_git(data_dir, "rev-parse", "HEAD", check=False)
+    head_before_sha = head_before.stdout.strip() if head_before.returncode == 0 else ""
+
     # Try the merge
     merge_result = _run_git(data_dir, "merge", remote_ref, check=False)
 
@@ -443,9 +456,18 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
             check=False,
         )
 
+    def _pulled_new_data():
+        head_after = _run_git(data_dir, "rev-parse", "HEAD", check=False)
+        head_after_sha = head_after.stdout.strip() if head_after.returncode == 0 else ""
+        return bool(head_after_sha) and head_after_sha != head_before_sha
+
     if merge_result.returncode == 0:
-        logging.info("sync: pull and merge succeeded")
-        return SyncResult(True)
+        pulled = _pulled_new_data()
+        if pulled:
+            logging.info("sync: pull and merge succeeded, new data pulled")
+        else:
+            logging.info("sync: pull and merge succeeded, already up to date")
+        return SyncResult(True, pulled_new_data=pulled)
 
     # Handle conflicts
     conflicted = _get_conflicted_files(data_dir)
@@ -488,7 +510,8 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
             )
         else:
             logging.info("sync: merge conflict resolution committed")
-        return SyncResult(True, all_conflicts)
+        # Reached here because a merge happened - HEAD definitely moved.
+        return SyncResult(True, all_conflicts, pulled_new_data=True)
     else:
         _run_git(data_dir, "merge", "--abort", check=False)
         logging.error("sync: could not resolve all conflicts, merge aborted")
@@ -613,10 +636,18 @@ def sync(data_dir, remote_url=None, remote="origin", branch=None):
 
     # 3. Push our changes
     if not push(data_dir, remote, branch):
-        return SyncResult(False, pull_result.conflicts)
+        return SyncResult(
+            False,
+            pull_result.conflicts,
+            pulled_new_data=pull_result.pulled_new_data,
+        )
 
     logging.info("sync: sync cycle complete")
-    return SyncResult(True, pull_result.conflicts)
+    return SyncResult(
+        True,
+        pull_result.conflicts,
+        pulled_new_data=pull_result.pulled_new_data,
+    )
 
 
 def pull_on_open(data_dir, remote_url=None, remote="origin", branch=None):

@@ -794,6 +794,81 @@ class TestSyncSetsRemote:
             assert result.stdout.strip()
 
 
+class TestPulledNewData:
+    """sync() must report whether the pull actually brought new commits."""
+
+    def _pair(self, tmpdir):
+        remote_dir = os.path.join(tmpdir, "remote.git")
+        os.makedirs(remote_dir)
+        _git(remote_dir, "init", "--bare")
+
+        a_dir = os.path.join(tmpdir, "a")
+        _make_repo(a_dir)
+        _git(a_dir, "remote", "add", "origin", remote_dir)
+        _write_month(a_dir, "2024-03.txt", {1: {"text": "seed"}})
+        _git(a_dir, "add", "-A")
+        _git(a_dir, "commit", "-m", "seed")
+        _git(a_dir, "push", "-u", "origin", "master")
+
+        b_dir = os.path.join(tmpdir, "b")
+        _git(tmpdir, "clone", remote_dir, "b")
+        _git(b_dir, "config", "user.email", "test@test.com")
+        _git(b_dir, "config", "user.name", "Test")
+        return a_dir, b_dir
+
+    def test_already_up_to_date_reports_no_new_data(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._pair(tmpdir)
+            result = sync.sync(b_dir)
+            assert result
+            assert not result.pulled_new_data
+
+    def test_fast_forward_pull_reports_new_data(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._pair(tmpdir)
+
+            # A adds a new file and pushes
+            _write_month(a_dir, "2024-04.txt", {1: {"text": "new"}})
+            _git(a_dir, "add", "-A")
+            _git(a_dir, "commit", "-m", "add april")
+            _git(a_dir, "push")
+
+            # B pulls -- should report new data
+            result = sync.sync(b_dir)
+            assert result
+            assert result.pulled_new_data
+            # And the file lands on B's disk
+            assert os.path.exists(os.path.join(b_dir, "2024-04.txt"))
+
+    def test_conflict_merge_reports_new_data(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._pair(tmpdir)
+
+            data = _read_month(a_dir, "2024-03.txt")
+            data[1] = {"text": "A version"}
+            _write_month(a_dir, "2024-03.txt", data)
+            assert sync.sync(a_dir)
+
+            data = _read_month(b_dir, "2024-03.txt")
+            data[1] = {"text": "B version"}
+            _write_month(b_dir, "2024-03.txt", data)
+            result = sync.sync(b_dir)
+            assert result
+            assert result.pulled_new_data
+            assert result.conflicts == ["2024-03-01"]
+
+    def test_only_pushing_reports_no_new_data(self):
+        """If B only pushes local changes and doesn't pull anything new."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            a_dir, b_dir = self._pair(tmpdir)
+            data = _read_month(b_dir, "2024-03.txt")
+            data[15] = {"text": "B local"}
+            _write_month(b_dir, "2024-03.txt", data)
+            result = sync.sync(b_dir)
+            assert result
+            assert not result.pulled_new_data
+
+
 class TestUnrelatedHistories:
     """First sync from a new machine: local and remote share no ancestor."""
 

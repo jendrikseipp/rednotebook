@@ -305,15 +305,22 @@ class SyncStatusOption(Option):
         )
         if not result:
             self.status_label.set_text(_("Sync failed - check the log"))
-        elif result.conflicts:
+            return
+
+        if result.conflicts:
             self.journal._record_sync_conflicts(result.conflicts)
             self.status_label.set_text(
                 _("Sync completed with %d day conflict(s): %s")
                 % (len(result.conflicts), ", ".join(result.conflicts))
             )
+        elif result.pulled_new_data:
+            self.status_label.set_text(_("Sync completed - new entries pulled"))
         else:
             self.status_label.set_text(_("Sync completed"))
             self._update_status()  # Refresh remote line
+
+        if result.pulled_new_data:
+            self.journal._reload_after_sync()
 
     def get_value(self):
         return None
@@ -591,11 +598,18 @@ class OptionsManager:
                 _("Sync failed - check the log for details"),
                 error=True,
             )
-        elif result.conflicts:
+            return
+
+        if result.conflicts:
             self.journal._record_sync_conflicts(result.conflicts)
             self.journal.show_message(
                 _("Sync completed. Days with conflicts (please review): %s")
                 % ", ".join(result.conflicts),
+                error=False,
+            )
+        elif result.pulled_new_data:
+            self.journal.show_message(
+                _("Sync completed - new entries pulled from remote"),
                 error=False,
             )
         else:
@@ -603,3 +617,6 @@ class OptionsManager:
                 _("Sync completed - journal pushed to %s") % remote_url,
                 error=False,
             )
+
+        if result.pulled_new_data:
+            self.journal._reload_after_sync()
