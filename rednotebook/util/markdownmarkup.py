@@ -618,9 +618,70 @@ class LatexRenderer(_TokenRenderer):
 
 
 class PlainRenderer(_TokenRenderer):
+    """Render plain text, indenting nested blocks like txt2tags did.
+
+    Block tokens are rendered as a tree of blocks, so that list items and
+    quotes can indent all lines of their content. Inline tokens use the
+    token-type dispatch of _TokenRenderer.
+    """
+
     def __init__(self, parser=None):
         super().__init__(parser)
         self._links = []
+
+    def render(self, tokens, options, env):
+        if tokens and tokens[0].block:
+            return "\n\n".join(self._blocks(tokens, env)) + "\n"
+        return super().render(tokens, options, env)
+
+    def _blocks(self, tokens, env):
+        """Return the text of each block in a sequence of sibling block tokens."""
+        return [
+            text
+            for token, children in _sibling_blocks(tokens)
+            if (text := self._block(token, children, env)) is not None
+        ]
+
+    def _inline(self, tokens, env):
+        return "".join(self.render(t.children or [], self.parser.options, env) for t in tokens)
+
+    def _block(self, token, children, env):
+        kind = token.type
+        if kind in ("paragraph_open", "heading_open"):
+            return self._inline(children, env)
+        if kind in ("bullet_list_open", "ordered_list_open"):
+            return self._list(token, children, env)
+        if kind == "blockquote_open":
+            text = "\n\n".join(self._blocks(children, env))
+            return "\n".join("\t" + line if line else "" for line in text.split("\n"))
+        if kind == "table_open":
+            rows = [cells for _row, cells in _rows(children)]
+            return "\n".join(" | ".join(self._inline([c], env) for c in row) for row in rows)
+        if kind in ("fence", "code_block"):
+            return token.content.rstrip("\n")
+        if kind == "math_block":
+            return token.content
+        if kind == "hr":
+            return "=" * 20
+        return None
+
+    def _list(self, token, children, env):
+        number = int(token.attrGet("start") or 1)
+        # Tight lists hide the paragraphs of their items.
+        tight = all(t.hidden for t in children if t.type == "paragraph_open")
+        items = []
+        for _item, content in _sibling_blocks(children):
+            if token.type == "ordered_list_open":
+                marker = f"{number}. "
+                number += 1
+            else:
+                marker = "- "
+            text = ("\n" if tight else "\n\n").join(self._blocks(content, env))
+            first, *rest = text.split("\n")
+            indent = " " * len(marker)
+            rest = [indent + line if line else "" for line in rest]
+            items.append("\n".join([marker + first, *rest]))
+        return ("\n" if tight else "\n\n").join(items)
 
     def link_open(self, token, env):
         self._links.append("" if token.info == "auto" else token.attrs.get("href", ""))
@@ -633,40 +694,11 @@ class PlainRenderer(_TokenRenderer):
     def hardbreak(self, token, env):
         return "\n"
 
-    def paragraph_close(self, token, env):
-        # Tight list items wrap their text in hidden paragraphs.
-        return "" if token.hidden else "\n\n"
-
-    def heading_close(self, token, env):
-        return "\n\n"
-
     def code_inline(self, token, env):
         return token.content
 
-    def fence(self, token, env):
-        if token.info.strip() == "rednotebook-raw":
-            return token.content
-        return token.content + "\n"
-
-    code_block = fence
-
     def image(self, token, env):
         return f"[{token.attrs.get('src', '')}]"
-
-    def bullet_list_open(self, token, env):
-        # Start nested lists on their own line.
-        return "\n" if token.level else ""
-
-    ordered_list_open = bullet_list_open
-
-    def list_item_open(self, token, env):
-        return "- "
-
-    def list_item_close(self, token, env):
-        return "\n"
-
-    def hr(self, token, env):
-        return "\n" + "=" * 20 + "\n\n"
 
     def hashtag(self, token, env):
         return token.content
@@ -679,27 +711,37 @@ class PlainRenderer(_TokenRenderer):
 
     math_inline_double = math_inline
 
-    def math_block(self, token, env):
-        return token.content + "\n"
 
-    # Tables: separate cells with " | " and put each row on its own line.
-    def table_close(self, token, env):
-        return "\n"
+def _sibling_blocks(tokens):
+    """Yield (opening token, tokens inside) for each top-level block in tokens.
 
-    def tr_open(self, token, env):
-        self._first_cell_in_row = True
-        return ""
+    For blocks without closing token, e.g. fences, the content is empty.
+    """
+    pos = 0
+    while pos < len(tokens):
+        token = tokens[pos]
+        end = pos
+        if token.nesting == 1:
+            closing = token.type[: -len("_open")] + "_close"
+            end = next(
+                i
+                for i in range(pos + 1, len(tokens))
+                if tokens[i].type == closing and tokens[i].level == token.level
+            )
+        yield token, tokens[pos + 1 : end]
+        pos = end + 1
 
-    def tr_close(self, token, env):
-        return "\n"
 
-    def td_open(self, token, env):
-        if self._first_cell_in_row:
-            self._first_cell_in_row = False
-            return ""
-        return " | "
-
-    th_open = td_open
+def _rows(table_tokens):
+    """Yield (row token, inline tokens of the cells) for each table row."""
+    row = None
+    for token in table_tokens:
+        if token.type == "tr_open":
+            row, cells = token, []
+        elif token.type == "inline" and row is not None:
+            cells.append(token)
+        elif token.type == "tr_close":
+            yield row, cells
 
 
 _RENDERERS = {"html": HtmlRenderer, "tex": LatexRenderer, "txt": PlainRenderer}
@@ -895,4 +937,5 @@ def render(text, target, options=None, *, resolve_link=None):
         # Close any "<u>" etc. that was never closed to keep the braces balanced.
         body += "}" * len(md.renderer._open_tags)
         return _latex_document(body, options)
-    return body.strip() + "\n"
+    # Keep leading tabs of quotes.
+    return body.strip("\n") + "\n"

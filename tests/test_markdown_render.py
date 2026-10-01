@@ -339,8 +339,27 @@ class TestPlainTextConstructs:
     def test_headings_and_rules(self):
         assert (
             txt("# Title\n\ntext\n\n---\n\nmore")
-            == "Title\n\ntext\n\n\n====================\n\nmore\n"
+            == "Title\n\ntext\n\n====================\n\nmore\n"
         )
+
+    @pytest.mark.parametrize(
+        "markup, expected",
+        [
+            (
+                "1. first\n2. second\n   1. nested\n3. third",
+                "1. first\n2. second\n   1. nested\n3. third",
+            ),
+            ("3. three\n4. four", "3. three\n4. four"),
+            ("- a\n  - b\n    - c\n- d", "- a\n  - b\n    - c\n- d"),
+            ("1. one\n   - bullet\n1. two", "1. one\n   - bullet\n2. two"),
+            ("- a\n\n  more a\n- b", "- a\n\n  more a\n\n- b"),
+            ("- a\n  ```\n  code\n  ```\n- b", "- a\n  code\n- b"),
+            ("> quote\n> > nested\n\nafter", "\tquote\n\n\t\tnested\n\nafter"),
+            ("## Tags\n- Work\n  - Meeting", "Tags\n\n- Work\n  - Meeting"),
+        ],
+    )
+    def test_nested_blocks(self, markup, expected):
+        assert txt(markup) == expected + "\n"
 
     def test_images_and_links(self):
         assert txt("![](pic.png) [x](http://e.com) http://e.com") == (
