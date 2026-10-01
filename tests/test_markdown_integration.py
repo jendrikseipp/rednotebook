@@ -114,7 +114,7 @@ def test_plain_export_keeps_named_link_destinations(tmp_path):
 def test_single_dollar_signs_are_text(tmp_path, target):
     output = convert("It costs $5 and $10 today", target, tmp_path)
     if target == "html":
-        assert "<p>It costs $5 and $10 today</p>" in output
+        assert '<p dir="auto">It costs $5 and $10 today</p>' in output
         assert "MathJax included" not in output
     elif target == "tex":
         assert r"It costs \$5 and \$10 today" in output

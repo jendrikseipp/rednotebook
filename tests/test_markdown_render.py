@@ -22,7 +22,7 @@ class TestHtmlBasics:
         doc = html("Content")
         assert "<!DOCTYPE html>" in doc
         assert '<meta charset="utf-8">' in doc
-        assert "<p>Content</p>" in doc
+        assert '<p dir="auto">Content</p>' in doc
 
     def test_emphasis(self):
         doc = html("**b** and *i* and ~~s~~ and `c`")
@@ -187,7 +187,7 @@ class TestPlainText:
 class TestMath:
     @pytest.mark.parametrize("markup", ["It costs $5 and $10 today", "$x$ stays text", "a $ b $ c"])
     def test_single_dollar_signs_are_text(self, markup):
-        assert f"<p>{markup}</p>" in html(markup)
+        assert f'<p dir="auto">{markup}</p>' in html(markup)
         assert "MathJax" not in html(markup)
 
     @pytest.mark.parametrize(
@@ -200,25 +200,25 @@ class TestMath:
         ],
     )
     def test_inline_math(self, markup, expected):
-        assert f"<p>{expected}</p>" in html(markup)
+        assert f'<p dir="auto">{expected}</p>' in html(markup)
 
     @pytest.mark.parametrize(
         "markup", ["$$\nx\n$$", "\\[\nx\n\\]", "$$x$$", "$$\nx = 1\n\ny = 2\n$$"]
     )
     def test_display_math(self, markup):
         doc = html(markup)
-        assert "<p>" not in doc.split("<body>")[1]
+        assert "<p" not in doc.split("<body>")[1]
         assert "MathJax" in doc
 
     def test_display_math_after_text_stops_at_blank_lines(self):
         doc = html("$$ money\n\nlater $$")
-        assert "<p>$$ money</p>" in doc and "MathJax" not in doc
+        assert '<p dir="auto">$$ money</p>' in doc and "MathJax" not in doc
 
     def test_text_after_math_is_kept(self):
         assert "$$x$$ (eq1)" in html("$$x$$ (eq1)")
 
     def test_escaped_dollars(self):
-        assert "<p>$$x$$</p>" in html("\\$$x\\$$")
+        assert '<p dir="auto">$$x$$</p>' in html("\\$$x\\$$")
         assert "MathJax" not in html("\\$$x\\$$")
 
     def test_latex(self):
@@ -356,3 +356,10 @@ class TestToc:
 
     def test_heading_without_text(self):
         assert '<h1 id="section">' in html("# !!!", toc=1)
+
+
+def test_paragraph_direction_follows_the_text():
+    doc = html("مرحبا بالعالم\n\nHello\n\n- tight list item")
+    assert '<p dir="auto">مرحبا بالعالم</p>' in doc
+    assert '<p dir="auto">Hello</p>' in doc
+    assert "<li>tight list item</li>" in doc

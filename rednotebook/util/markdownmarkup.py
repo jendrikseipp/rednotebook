@@ -283,6 +283,12 @@ def _rednotebook_plugin(md):
 
 
 class HtmlRenderer(RendererHTML):
+    def paragraph_open(self, tokens, idx, options, env):
+        # Flow paragraphs from right to left or left to right depending on the
+        # language of their text.
+        tokens[idx].attrSet("dir", "auto")
+        return self.renderToken(tokens, idx, options, env)
+
     def fence(self, tokens, idx, options, env):
         if tokens[idx].info.strip() == "rednotebook-raw":
             return tokens[idx].content

@@ -145,7 +145,7 @@ class TestEscaping:
     )
     def test_escaped_text_renders_unchanged(self, source):
         html = body(source)
-        assert html.startswith("<p>") and html.count("<") == 2
+        assert html.startswith('<p dir="auto">') and html.count("<") == 2
         assert source.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;") in html
 
 
@@ -332,7 +332,7 @@ class TestQuotes:
         assert c(source) == expected
 
     def test_space_indented_text_is_a_paragraph(self):
-        assert body("    four spaces") == "<p>four spaces</p>\n"
+        assert body("    four spaces") == '<p dir="auto">four spaces</p>\n'
 
 
 class TestTables:
@@ -418,7 +418,7 @@ class TestComments:
             assert "private" not in result
 
     def test_comment_keeps_paragraph(self):
-        assert body("line1\n% c\nline2").startswith("<p>line1\nline2</p>")
+        assert body("line1\n% c\nline2").startswith('<p dir="auto">line1\nline2</p>')
 
 
 class TestMath:
