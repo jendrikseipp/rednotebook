@@ -30,6 +30,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install python3-linkify-it python3-markdown-it
       - name: Build page
         run: ./web/build.sh
       - name: Setup Pages

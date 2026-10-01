@@ -40,7 +40,7 @@ help_par = _('The example text and more documentation is available under "Help" 
 
 # Translators: noun
 preview = _("Preview")
-preview1 = _("There are two modes in RedNotebook, the __edit__ mode and the __preview__ mode.")
+preview1 = _("There are two modes in RedNotebook, the **edit** mode and the **preview** mode.")
 preview2 = _("Click on Edit above to see the difference.")
 preview_par = " ".join([preview1, preview2])
 
@@ -49,9 +49,9 @@ tags2 = _("Just use #hashtags like on twitter.")
 tags_par = " ".join([tags1, tags2])
 
 example_entry = _(
-    "Today I went to the //pet shop// and bought a **tiger**. "
-    "Then we went to the --pool-- park and had a nice time playing "
-    'ultimate frisbee. Afterwards we watched "__Life of Brian__".'
+    "Today I went to the *pet shop* and bought a **tiger**. "
+    "Then we went to the ~~pool~~ park and had a nice time playing "
+    'ultimate frisbee. Afterwards we watched "**Life of Brian**".'
 )
 
 templates = _("Templates")
@@ -87,13 +87,13 @@ goodbye_par = _("Have a nice day!")
 complete_welcome_text = """\
 {greeting} {intro} {help_par}
 
-=== {preview} ===
+### {preview}
 {preview_par}
 
-=== {tags} ===
+### {tags}
 {tags_par}
 
-=== {save} ===
+### {save}
 {save_par}
 
 {error_par}
@@ -105,68 +105,76 @@ welcome_day = {"text": complete_welcome_text}
 
 multiple_entries_text = _(
     """\
-=== Multiple entries ===
+### Multiple entries
 You can add multiple entries to a single day by \
-separating your entries with different titles (=== Work ===, === Family ===)."""
+separating your entries with different titles (### Work, ### Family)."""
 )
 
 multiple_entries_example = _(
     """\
-=== Work ===
+### Work
 Here goes the first entry. It is about #work.
 
-====================
+---
 
-=== Family ===
+### Family
 Here comes the entry about my #family."""
 )
 
 multiple_entries_day = {
-    "text": multiple_entries_text + "\n\n" + 20 * "=" + "\n\n" + multiple_entries_example
+    "text": multiple_entries_text + "\n\n" + "---" + "\n\n" + multiple_entries_example
 }
 
 example_content = [welcome_day, multiple_entries_day]
 
 help_text = """
-== Layout ==
+## Layout
 {preview1}
 
 
-== Text ==
+## Text
 The main text field is the container for your normal diary entries like this one:
 
 {example_entry}
 
 
-== Format ==
+## Format
 
-As you see, the text can be formatted **bold**, //italic//, --struck
-through-- and __underlined__. As a convenience there is also the
-"Format" button.
+RedNotebook entries are written in [Markdown](https://commonmark.org/help/).
+As you see, the text can be formatted **bold**, *italic*, ~~struck
+through~~, <u>underlined</u> and `monospace`. As a convenience there is also
+the "Format" button.
 
-A blank line starts a new **paragraph**, two backslashes \\\\ result in
-a **newline**.
+A blank line starts a new **paragraph**. End a line with two spaces or a
+backslash (\\) to force a **newline**.
 
-To see the result, click on the "Preview" button. You can also see how
-this text was formatted by looking at its [source source.txt].
+To see the result, click on the "Preview" button.
 
-**Lists** can be created by using the following syntax, if you use "+"
-instead of "-" you can create a **numbered list**:
+**Lists** can be created by using the following syntax. Use "1." instead
+of "-" to create a **numbered list**:
 
 ```
 - First Item
   - Indented Item
-- Do not forget two blank lines after a list
+- Leave a blank line after a list
+```
 
+**Tables** consist of rows with cells separated by "|". The second line
+separates the header from the other rows:
 
+```
+| Day     | Activity |
+|---------|----------|
+| Monday  | Hiking   |
+| Tuesday | Reading  |
 ```
 
 
-== Hashtags ==
+## Hashtags
 {tags_par}
 
 
-== Images, Files and Links ==
+## Images, Files and Links
 
 RedNotebook lets you insert images, files and links into your entries.
 To do so, select the appropriate option in the "Insert" pull-down menu
@@ -175,11 +183,14 @@ cursor position. Note that currently, the things you insert are only
 linked to, but not copied into your journal directory.
 
 With the insert button you cannot insert **links to directories** on
-your computer. Those can be inserted manually however (``[Home
-""file:///home/""]`` becomes [Home ""file:///home/""]).
+your computer. Those can be inserted manually however (`[Home](file:///home/)`
+becomes [Home](file:///home/)).
+
+You can resize an image by adding its width in pixels to the image path,
+e.g. `![](file:///home/me/picture.jpg?300)`.
 
 
-== Entry references ==
+## Entry references
 
 You can reference days in your journal by simply writing the date in
 [YYYY-MM-DD] format. A date like [2019-02-14] will be rendered as a clickable
@@ -187,14 +198,14 @@ link in preview mode.
 
 Alternatively, you can name your references. For example,
 
-  ``[Today 2019-02-14] was a good day.``
+    [Today 2019-02-14] was a good day.
 
 will be shown as
 
-  [Today 2019-02-14] was a good day.
+> [Today 2019-02-14] was a good day.
 
 
-== {templates} ==
+## {templates}
 
 {temp_par}
 The files 1.txt to 7.txt in the template directory correspond to the
@@ -204,7 +215,7 @@ the template files from inside RedNotebook by opening the menu next to
 the "Template" button.
 
 
-== Search ==
+## Search
 
 On the left you find the search box. Double-clicking on a day in the
 search results lets you jump to it.
@@ -212,7 +223,7 @@ search results lets you jump to it.
 You can search for text or dates (e.g. 2014, 2014-01, 2014-01-19).
 
 
-== Clouds ==[clouds]
+## Clouds
 
 The most frequently used words will appear in the word cloud on the
 left. Its contents are only refreshed when RedNotebook starts and when
@@ -222,49 +233,49 @@ If a word appears in the cloud that you don't want to see there,
 right-click and select to hide it. Alternatively, you can open the
 Preferences dialog and add the word to the cloud blacklist. Short words
 with less than five letters can be white-listed there as well. [Regular
-expressions http://docs.python.org/library/re.html] are allowed in the
+expressions](http://docs.python.org/library/re.html) are allowed in the
 lists. If you want to hide words with special characters, you can
-escape them with a backslash: 3\\.50\\?
+escape them with a backslash: `3\\.50\\?`
 
 You can limit the number of displayed words by tweaking the 'Tags in cloud'
 configuration option. If this option is set to 0, no tags are displayed.
 
-You can **hide the word cloud** by adding the regular expression .* to
+You can **hide the word cloud** by adding the regular expression `.*` to
 the blacklist. This will filter out all words.
 
 
-== Spellcheck ==
+## Spellcheck
 
 RedNotebook supports spellchecking your entries. This feature needs the
-pyenchant library (``python-enchant`` on Ubuntu). Spellchecking can be
+pyenchant library (`python-enchant` on Ubuntu). Spellchecking can be
 turned on and off by toggling the menu item in the "Edit" menu.
 
 You can select the spellchecking language by right-clicking on the main
 text area (in edit mode) and choosing it from the submenu "Languages".
 
-=== Adding custom dictionaries under Windows ===
+### Adding custom dictionaries under Windows
 
 Use Hunspell dictionaries (not Aspell) with RedNotebook on Windows:
 
-+ Download the desired language files (.aff and .dic) from a Hunspell source, e.g., https://github.com/wooorm/dictionaries.
-+ Place both files into <RedNotebook Dir>\\share\\enchant\\myspell\\.
-+ Restart RedNotebook and pick the language via right-click → Languages in the editor.
-
+1. Download the desired language files (.aff and .dic) from a Hunspell source, e.g., https://github.com/wooorm/dictionaries.
+2. Place both files into `<RedNotebook Dir>\\share\\enchant\\myspell\\`.
+3. Restart RedNotebook and pick the language via right-click → Languages in the editor.
 
 Notes:
+
 - You do not need prezip-bin or Aspell on Windows.
 - If multiple dictionaries use generic names (like index.aff / index.dic),
   rename the files before copying so they are unique (e.g., es.aff / es.dic, es_PE.aff / es_PE.dic).
 
 
-== Options ==
+## Options
 
 Make sure you check out the customizable options in the preferences
 dialog. You can open this dialog by clicking on the entry in the "Edit"
 menu.
 
 
-== Save ==
+## Save
 
 {save1}
 {save2}
@@ -276,12 +287,12 @@ only linked to, but not copied into your journal directory. If they are
 stored somewhere else, you need to back them up separately.
 
 
-== Export ==
+## Export
 
 {save4}
 {save5}
 
-For compiling the Latex export with ``pdflatex``, see "Convert Latex
+For compiling the Latex export with `pdflatex`, see "Convert Latex
 output to PDF" below.
 
 **Latex caveats**
@@ -289,24 +300,24 @@ output to PDF" below.
 Make sure to type all links with the full path including the protocol:
 
 - http://www.wikipedia.org or http://wikipedia.org
-  (--wikipedia.org--, --\"""www.wikipedia.org\"""--)
-- file:///home/sam/myfile.txt (--/home/sam/myfile.txt--)
+  (not wikipedia.org or www.wikipedia.org)
+- file:///home/sam/myfile.txt (not /home/sam/myfile.txt)
 
 
-== Synchronize across multiple computers ==[sync]
+## Synchronize across multiple computers
 
 Syncing RedNotebook with a remote server is easy. You can either use a
 cloud service like Dropbox or save your journal to your own server.
 
-=== Dropbox ===
+### Dropbox
 
-If you have a [Dropbox https://www.dropbox.com] account, you can just
+If you have a [Dropbox](https://www.dropbox.com) account, you can just
 save your journal in a subdirectory of the Dropbox folder in your home
 directory. Alternatives to Dropbox, which give you complete control over
 your where your data is stored, include
-[Syncthing https://syncthing.net].
+[Syncthing](https://syncthing.net).
 
-=== Directly save to remote FTP or SSH server ===
+### Directly save to remote FTP or SSH server
 
 With Linux you can have your journal directory on a remote server. To
 use the feature you have to connect your computer to the remote server.
@@ -317,11 +328,11 @@ time you open RedNotebook you will find your server in the "New",
 "Open" and "Save As" dialogs. There you can select a new folder on the
 server for your journal.
 
-=== External sync with remote server ===
+### External sync with remote server
 
 If you have your own server, you might want to try
-[Conduit http://www.conduit-project.org] or
-[Unison http://www.cis.upenn.edu/~bcpierce/unison]. To sync or backup
+[Conduit](http://www.conduit-project.org) or
+[Unison](http://www.cis.upenn.edu/~bcpierce/unison). To sync or backup
 your journal you have to sync your journal folder (default is
 "$HOME/.rednotebook/data/") with a folder on your server.
 
@@ -330,7 +341,7 @@ Be sure to backup your data regularly if you plan to save your content
 remotely. There are always more pitfalls when an internet connection is
 involved.
 
-=== Dual boot ===
+### Dual boot
 
 Using RedNotebook from multiple operating systems on the same computer
 is also possible. Save your journal with "Journal->Save As" in a
@@ -339,11 +350,11 @@ open the journal with "Journal->Open".
 
 Optionally, you can also **share your settings** and templates. The
 relevant setting is found in the file "rednotebook/files/default.cfg".
-There you can set the value of ``userDir`` to the path where you want
+There you can set the value of `userDir` to the path where you want
 to share your settings between the systems.
 
 
-== Portable mode ==
+## Portable mode
 
 RedNotebook can be run in portable mode. In this mode, the template
 directory, the configuration and the log file are saved in the
@@ -360,13 +371,13 @@ To **activate portable mode**, change into the files/ directory and in
 the default.cfg file set portable=1.
 
 
-== Convert Latex output to PDF ==
+## Convert Latex output to PDF
 
 RedNotebook can't export directly to PDF. Besides printing the HTML
 export from your browser, you can export your journal to Latex and
 convert the result to PDF. Here is how you do it:
 
-=== Linux ===
+### Linux
 
 For the conversion on Linux you need some extra packages:
 texlive-latex-base and texlive-latex-recommended. Maybe you also need
@@ -384,12 +395,11 @@ pdflatex your-rednotebook-export.tex
 If you omit the last two commands, your PDF won't have an index of tags.
 
 If you run into any problems during the conversion, the easiest way to
-solve them is to install a latex editor (e.g. [Kile
-http://kile.sourceforge.net]) and do the conversion with it. That way
-you can see the errors right away and get rid of them by editing the
-file.
+solve them is to install a latex editor (e.g. [Kile](http://kile.sourceforge.net))
+and do the conversion with it. That way you can see the errors right away and
+get rid of them by editing the file.
 
-=== Windows ===
+### Windows
 
 You can open an exported Latex file with Texniccenter and convert it to
 PDF with MikTex. Visit www.texniccenter.org and www.miktex.org for the
@@ -399,35 +409,37 @@ Output" from the "Output" menu. The program will then create the PDF in
 the same directory.
 
 
-== Keyboard shortcuts ==
+## Keyboard shortcuts
 
-|| General              |                        |
-| Show help             | <Ctrl> + H             |
-| Find                  | <Ctrl> + F             |
-| Export                | <Ctrl> + E             |
-| Spellcheck            | F7                     |
-| Fullscreen            | F11                    |
-|| Navigation           |                        |
-| Go back one day       | <Ctrl> + PageUp        |
-| Go forward one day    | <Ctrl> + PageDown      |
-| Go to today           | <Alt> + Home (Pos1)    |
-|| Insert               |                        |
-| Insert link           | <Ctrl> + L             |
-| Insert date/time      | <Ctrl> + D             |
-|| Format               |                        |
-| Bold                  | <Ctrl> + B             |
-| Italic                | <Ctrl> + I             |
-| Monospace             | <Ctrl> + M             |
-| Underline             | <Ctrl> + U             |
-| Strikethrough         | <Ctrl> + K             |
-| Remove format         | <Ctrl> + R             |
+| Action | Shortcut |
+|---|---|
+| **General** | |
+| Show help | `<Ctrl> + H` |
+| Find | `<Ctrl> + F` |
+| Export | `<Ctrl> + E` |
+| Spellcheck | `F7` |
+| Fullscreen | `F11` |
+| **Navigation** | |
+| Go back one day | `<Ctrl> + PageUp` |
+| Go forward one day | `<Ctrl> + PageDown` |
+| Go to today | `<Alt> + Home (Pos1)` |
+| **Insert** | |
+| Insert link | `<Ctrl> + L` |
+| Insert date/time | `<Ctrl> + D` |
+| **Format** | |
+| Bold | `<Ctrl> + B` |
+| Italic | `<Ctrl> + I` |
+| Monospace | `<Ctrl> + M` |
+| Underline | `<Ctrl> + U` |
+| Strikethrough | `<Ctrl> + K` |
+| Remove format | `<Ctrl> + R` |
 
 You can find more shortcuts in the menus in the main menu bar.
 
 
-== Encryption ==
+## Encryption
 
-You can use e.g. [TrueCrypt http://www.truecrypt.org] to encrypt your
+You can use e.g. [TrueCrypt](http://www.truecrypt.org) to encrypt your
 journal. The general idea is to create and mount an encrypted folder
 with TrueCrypt and put your journal files in there.
 
@@ -439,18 +451,18 @@ are more likely to be stolen. If you encrypt your home partition all
 RedNotebook data will be encrypted, too.
 
 
-== Dark Mode ==
+## Dark Mode
 
 RedNotebook follows your system's theme settings by default. Here are
 platform-specific instructions for enabling dark mode:
 
-=== Linux (GNOME/GTK environments) ===
+### Linux (GNOME/GTK environments)
 
 On most modern Linux distributions with GNOME, you can enable dark mode
 for GTK applications like RedNotebook:
 
 1. **Using GNOME Tweaks (recommended):**
-   - Install ``gnome-tweaks`` if not already installed
+   - Install `gnome-tweaks` if not already installed
    - Open GNOME Tweaks
    - Navigate to "Appearance"
    - Change "Legacy Applications" to:
@@ -459,50 +471,50 @@ for GTK applications like RedNotebook:
    - Restart RedNotebook
 
 2. **Using environment variables:**
-   - Set ``GTK_THEME=Adwaita:dark`` or ``GTK_THEME=Adwaita-dark``
-   - Start RedNotebook from terminal: ``GTK_THEME=Adwaita-dark rednotebook``
+   - Set `GTK_THEME=Adwaita:dark` or `GTK_THEME=Adwaita-dark`
+   - Start RedNotebook from terminal: `GTK_THEME=Adwaita-dark rednotebook`
    - Or add to your shell profile to make it permanent
 
-=== Flatpak installations ===
+### Flatpak installations
 
 For RedNotebook installed via Flatpak:
 
 1. Install Flatseal (a permissions manager for Flatpak)
 2. Open Flatseal
 3. Navigate to "All Applications" (global settings)
-4. In the "Environment" section, add: ``GTK_THEME=Adwaita-dark``
+4. In the "Environment" section, add: `GTK_THEME=Adwaita-dark`
 5. Restart RedNotebook
 
 Alternatively, you can use the command line:
-``flatpak override --user --env=GTK_THEME=Adwaita-dark``
+`flatpak override --user --env=GTK_THEME=Adwaita-dark`
 
-=== General method (all platforms) ===
+### General method (all platforms)
 
 You can force dark mode by setting the GTK_THEME environment variable:
 
-- **Linux/macOS:** ``export GTK_THEME=Adwaita-dark``
+- **Linux/macOS:** `export GTK_THEME=Adwaita-dark`
 - **Windows:** Set GTK_THEME=Adwaita-dark in system environment variables
 
 Note: The exact theme name may vary depending on your system. Common
 dark theme names include: Adwaita-dark, Adwaita:dark, HighContrastInverse.
 
 
-== Appearance on Windows ==
+## Appearance on Windows
 
 You can use a GTK3 compatible theme to change the appearance of your
 RedNotebook installation. Once you find a GTK3 compatible theme, copy
-the theme into ``<RedNotebook Dir>\\share\\themes``, e.g.,
-``C:\\Program Files (x86)\\RedNotebook\\share\\themes`` and then edit
-``C:\\Program Files (x86)\\RedNotebook\\etc\\gtk-3.0\\settings.ini`` to
+the theme into `<RedNotebook Dir>\\share\\themes`, e.g.,
+`C:\\Program Files (x86)\\RedNotebook\\share\\themes` and then edit
+`C:\\Program Files (x86)\\RedNotebook\\etc\\gtk-3.0\\settings.ini` to
 comment out the current theme setting and add your own.
 
-For example, for using the [FlatStudio https://www.gnome-look.org/p/1013733/]
-theme, download the ``*.tar.gz``
+For example, for using the [FlatStudio](https://www.gnome-look.org/p/1013733/)
+theme, download the `*.tar.gz`
 file and extract it. Out of the four themes -- FlatStudio,
 FlatStudioDark, FlatStudioLight, FlatStudioGray -- pick one of the
 folders (e.g., FlatStudioDark) and copy it into
-``<RedNotebook Dir>\\share\\themes``. Then edit
-``etc\\gtk-3.0\\settings.ini`` so it looks similar to this:
+`<RedNotebook Dir>\\share\\themes`. Then edit
+`etc\\gtk-3.0\\settings.ini` so it looks similar to this:
 
 ```
 [Settings]
@@ -514,34 +526,34 @@ Finally, relaunch RedNotebook.
 
 
 Alternative 1: set GTK_THEME=FlatStudioDark in user environment variables.
-This overrides the theme set in ``settings.ini`` and persists even after
+This overrides the theme set in `settings.ini` and persists even after
 reinstalling RedNotebook. However, this might change the theme of every GTK
 application on Windows.
 
 Alternative 2: set GTK_THEME=FlatStudioDark in the
-[application shortcut ""https://stackoverflow.com/a/34769146/1176315""] as follows:
+[application shortcut](https://stackoverflow.com/a/34769146/1176315) as follows:
 
 ```
 C:\\Windows\\System32\\cmd.exe /c "SET GTK_THEME=FlatStudioDark&& ^
 START /D ^"C:\\Program Files (x86)\\RedNotebook^" rednotebook.exe"
 ```
 
-Then set application to ``Run: Minimized`` (in application shortcut properties).
-This also overrides the theme set in ``settings.ini``. This won't affect any other
+Then set application to `Run: Minimized` (in application shortcut properties).
+This also overrides the theme set in `settings.ini`. This won't affect any other
 app but it does change the shortcut icon to a cmd icon, as expected.
 
 
 
-== Tips ==
+## Tips
 {multiple_entries_text}
 
-=== Week numbers ===
+### Week numbers
 
 If you'd like to see the week numbers in the calendar, you can set the
 value of weekNumbers to 1 in the configuration file. This file normally
 resides at $HOME/.rednotebook/configuration.cfg.
 
-=== Language ===
+### Language
 
 To change the language on **Linux**, use the environment
 variables LANGUAGE, LC_CTYPE and/or LC_TIME:
@@ -550,114 +562,113 @@ variables LANGUAGE, LC_CTYPE and/or LC_TIME:
 - LC_CTYPE sets the language for the spell checker.
 - LC_TIME sets the language for the date strings (weekday names, month names, etc.).
 
-
 The environment variable LC_ALL sets both LC_CTYPE and LC_TIME simultaneously.
 For example, to have a German interface, start a terminal and call
-``LANGUAGE=de_DE.utf8 rednotebook``.
+`LANGUAGE=de_DE.utf8 rednotebook`.
 
 On **Windows**, set or create the LANGUAGE environment variable with the
 desired language code (e.g., de, de_DE or de_DE.UTF-8):
 
-+ Right-click My Computer and click Properties.
-+ In the System Properties window, click on the Advanced tab
-  (Windows XP) or go to Advanced System Settings (Windows 7).
-+ In the Advanced section, click the Environment Variables button.
-+ Click the New button and insert LANGUAGE at the top and your
-  [language code ""http://en.wikipedia.org/wiki/ISO_639-1""] at the bottom.
+1. Right-click My Computer and click Properties.
+2. In the System Properties window, click on the Advanced tab
+   (Windows XP) or go to Advanced System Settings (Windows 7).
+3. In the Advanced section, click the Environment Variables button.
+4. Click the New button and insert LANGUAGE at the top and your
+   [language code](http://en.wikipedia.org/wiki/ISO_639-1) at the bottom.
 
 
-=== Titles ===
+### Titles
 
-You can insert titles into your post by adding "="s around your title
-text. = My Title = is the biggest heading, ===== My Title ===== is
-the smallest heading. A title line can only contain the title, nothing
-else.
+You can insert titles into your post by prefixing your title text with
+"#"s. `# My Title` is the biggest heading, `###### My Title` is the
+smallest heading. A title line can only contain the title, nothing else.
 
-Numbered titles can be created by using "+" instead of "=". ""+ My
-Title +"" produces a title like "1.", +++++ My Title +++++ produces a
-title like 0.0.0.0.1
-
-=== Math Formulas ===
+### Math Formulas
 
 RedNotebook supports mathematical formulas that render in preview (via MathJax)
 and in LaTeX exports:
 
 **Display math** (centered on its own line):
-- ``$$x^2 + y^2 = z^2$$``
-- ``\\[x^2 + y^2 = z^2\\]``
 
+- `$$x^2 + y^2 = z^2$$`
+- `\\[x^2 + y^2 = z^2\\]`
 
 **Inline math** (within text):
-- ``\\(x^2\\)`` produces inline math like \\(x^2\\)
 
+- `\\(x^2\\)` produces inline math like \\(x^2\\)
 
-=== Raw Formatting (export-only) ===
+Single dollar signs are shown as they are, so you can write about prices
+like $5 and $10 without escaping them.
 
-Sometimes you want content that is only inserted into LaTeX (or raw HTML in
-other exports) and not rendered by the preview engine. For this, surround the
-raw snippet with two single quotes:
+### Raw HTML
 
-||   Text                  |   Output (preview)                     |
-| ``''<font color="red">Red</font>''`` | ''<font color="red">Red</font>'' |
-| ``''$a^2$''``            | ''$a^2$'' (''a<sup>2</sup>'' only appears formatted in LaTeX export) |
+You can embed raw HTML directly in your entries. It is passed through to
+the preview and the HTML export unchanged, for example
+`<font color="red">Red</font>` produces <font color="red">Red</font>.
 
-=== Verbatim text (Preserve format) ===
+### Colored text
 
-To insert preformatted text preserving newlines and spaces, you can
-use the backquotes (`). Use 2 backquotes for inline insertions and 3
+You can color text by writing `{{important|color:red}}`, which produces
+{{important|color:red}}.
+
+### Verbatim text (Preserve format)
+
+To insert preformatted text preserving newlines and spaces, you can use
+backquotes (`). Use single backquotes for inline insertions and three
 backquotes if you want to insert a whole paragraph.
 For paragraphs be sure to put the backquotes on their own line.
 
-Two examples (have a look at the [source source.txt] to see how it's
-done):
-
-To install rednotebook use ``sudo apt-get install rednotebook``.
+To install rednotebook use `sudo apt-get install rednotebook`.
 
 ```
 class Robot:
     def greet(self):
-        print 'Hello World'
+        print('Hello World')
 
 robot = Robot()
 robot.greet()
 ```
 
-=== Unparsed text ===
+### Unparsed text
 
-Formatting commands inside two pairs of "" are not interpreted (""**not
-bold**"").
+Formatting commands inside backquotes are not interpreted (`**not
+bold**`). You can also put a backslash in front of a special character to
+show it as it is, e.g. `\\*not italic\\*` produces \\*not italic\\*.
 
-=== Comments ===
+### Comments
 
-Comments can be inserted after percent signs (**%**). They will not be
-shown in the preview and the exports. The % has to be the first
-character on the line.
+Comments can be inserted with HTML comment markers. They will not be
+shown in the preview or the exports:
 
-=== List of all entries ===
+```
+<!-- This is a comment. -->
+```
+
+### List of all entries
 
 To get a list of your entries search for "-". You can sort the
 resulting list chronologically by pressing the "Date" button.
 
 
-== Command line options ==
+## Command line options
 
 ```
 {commandline_help}
 ```
 
 
-== Data format ==
+## Data format
 
 The content of a RedNotebook journal is saved in a directory with many
 files, not just one file. The directory name is used as a name for the
 journal.
 
 In the directory there are several files all conforming to the naming
-scheme <year>-<month>.txt (e.g. 2010-05.txt). Obviously these files
+scheme `<year>-<month>.txt` (e.g. 2010-05.txt). Obviously these files
 correspond to months (e.g. May 2010).
 
 Each month file contains plain text for the days of that month.
-The text is actually [YAML www.yaml.org] markup. Without the
+The text is actually [YAML](http://www.yaml.org) markup. Without the
 (unnecessary) python directives the files look like this:
 
 ```
@@ -678,22 +689,27 @@ contains a dictionary mapping category entries to the null value.
 In summary the data format is a hierarchy of dictionaries. This way the
 format can be easily extended if the need for that arises.
 
-All textual content can be formatted with http://txt2tags.org markup.
+All textual content can be formatted with [Markdown](https://commonmark.org/help/).
+The file journal.cfg stores settings of the journal, e.g., that it uses
+Markdown. Journals from older RedNotebook versions use txt2tags markup
+instead. They are converted to Markdown automatically when you open them for
+the first time, and a backup of the original files is saved in the journal
+directory.
 
 
-== Questions ==
+## Questions
 
 If you have any questions or comments, feel free to post them on the
 mailing list or contact me directly.
 
 
-== Bugs ==
+## Bugs
 
 There is no software without bugs, so if you encounter one please drop
 me a note. This way RedNotebook can get better, not only for you, but
 for all users.
 
-Bug reports should go [here {bug_url}],
+Bug reports should go [here]({bug_url}),
 but if you don't know how to use that site, a simple mail is equally
 fine.
 
