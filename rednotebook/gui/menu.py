@@ -422,6 +422,7 @@ class MainMenuBar:
         branch = self.journal.config.read("syncBranch") or None
         url = self.journal.config.read("syncRemoteUrl", "") or None
         self.journal.show_message(_("Syncing..."), error=False)
+        self.journal._update_sync_indicator(_("Sync: syncing…"))
         self.journal.syncer.run(
             self.journal.dirs.data_dir,
             remote_url=url,
@@ -430,36 +431,9 @@ class MainMenuBar:
         )
 
     def _on_manual_sync_done(self, result):
-        if result is None:
-            self.journal.show_message(
-                _("Another sync is already in progress"),
-                error=False,
-            )
-            return
-        if not result:
-            self.journal.show_message(
-                _("Sync failed - check the log for details"),
-                error=True,
-            )
-            return
-
-        if result.conflicts:
-            self.journal._record_sync_conflicts(result.conflicts)
-            self.journal.show_message(
-                _("Sync completed. Days with conflicts (please review): %s")
-                % ", ".join(result.conflicts),
-                error=False,
-            )
-        elif result.pulled_new_data:
-            self.journal.show_message(
-                _("Sync completed - new entries pulled from remote"),
-                error=False,
-            )
-        else:
-            self.journal.show_message(_("Sync completed"), error=False)
-
-        if result.pulled_new_data:
-            self.journal._reload_after_sync()
+        # Delegate to Journal's completion handler so the indicator +
+        # error dialog stay consistent with the auto-sync path.
+        self.journal._on_auto_sync_done(result)
 
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()

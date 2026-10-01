@@ -414,8 +414,9 @@ class Journal(Gtk.Application):
                     branch=sync_branch,
                 )
                 if not result:
-                    logging.warning("Sync failed on exit")
+                    logging.warning("Sync failed on exit: %s", result.error)
             else:
+                self._update_sync_indicator(_("Sync: syncing…"))
                 self.syncer.run(
                     self.dirs.data_dir,
                     remote_url=sync_url,
@@ -485,6 +486,14 @@ class Journal(Gtk.Application):
                 % ", ".join(pull_conflicts),
                 error=False,
             )
+            self._update_sync_indicator(
+                _("Sync: %d conflict(s)") % len(pull_conflicts),
+                tooltip=", ".join(pull_conflicts),
+            )
+        elif self.config.read("syncEnabled"):
+            self._update_sync_indicator(_("Sync: ok"))
+        else:
+            self._refresh_sync_indicator()
 
         # Save the folder for next start
         if not self.dirs.portable:
@@ -493,12 +502,63 @@ class Journal(Gtk.Application):
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config["dataDir"] = rel_data_dir
 
+    def _update_sync_indicator(self, text, tooltip=""):
+        """Set the persistent sync-status widget in the statusbar."""
+        if self.frame and hasattr(self.frame, "statusbar"):
+            self.frame.statusbar.set_sync_status(text, tooltip=tooltip)
+
+    def _refresh_sync_indicator(self):
+        """Show the current sync state, or hide if sync is off."""
+        if not self.config.read("syncEnabled"):
+            self._update_sync_indicator("")
+            return
+        if self.syncer.is_running():
+            self._update_sync_indicator(_("Sync: syncing…"))
+            return
+        remote_url = self.config.read("syncRemoteUrl", "")
+        if not remote_url:
+            self._update_sync_indicator(
+                _("Sync: no URL"),
+                tooltip=_("Set a Remote URL in Preferences > Sync"),
+            )
+
+    def _show_sync_error(self, result):
+        """Show sync failure in statusbar, plus a dialog for auth errors."""
+        msg = _("Sync error: %s") % result.error if result.error else _("Sync failed")
+        self.show_message(msg, error=False)  # statusbar, auto-dismiss
+        logging.warning("sync error surfaced: %s", result.error)
+        if sync.is_auth_error(result.error):
+            hint = sync.auth_help_text(result.error)
+            body = result.error
+            if hint:
+                body = f"{body}\n\n{hint}"
+            dialog = Gtk.MessageDialog(
+                transient_for=self.frame.main_frame if self.frame else None,
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Sync authentication failed"),
+            )
+            dialog.format_secondary_text(body)
+            dialog.run()
+            dialog.destroy()
+
     def _on_auto_sync_done(self, result):
         """Handle the result of a background auto-sync on the UI thread."""
         if result is None:
             return  # Skipped because another sync was in flight
         if not result:
-            logging.warning("Sync failed after save")
+            self._show_sync_error(result)
+            if sync.is_auth_error(result.error):
+                self._update_sync_indicator(
+                    _("Sync: auth error"),
+                    tooltip=result.error,
+                )
+            else:
+                self._update_sync_indicator(
+                    _("Sync: error"),
+                    tooltip=result.error or "",
+                )
             return
         if result.conflicts:
             self._record_sync_conflicts(result.conflicts)
@@ -507,6 +567,12 @@ class Journal(Gtk.Application):
                 % ", ".join(result.conflicts),
                 error=False,
             )
+            self._update_sync_indicator(
+                _("Sync: %d conflict(s)") % len(result.conflicts),
+                tooltip=", ".join(result.conflicts),
+            )
+        else:
+            self._update_sync_indicator(_("Sync: ok"))
         if result.pulled_new_data:
             self._reload_after_sync()
 

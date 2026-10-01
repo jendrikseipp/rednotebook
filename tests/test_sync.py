@@ -5,6 +5,7 @@ import subprocess
 import tempfile
 import threading
 
+import pytest
 import yaml
 
 from rednotebook import sync
@@ -47,6 +48,44 @@ def _make_repo(path):
         f.write("*.new.txt\n*.old.txt\n")
     _git(path, "add", "-A")
     _git(path, "commit", "-m", "init")
+
+
+class TestMissingGit:
+    """When git is missing from PATH, sync surfaces a clear error."""
+
+    def _without_git(self, monkeypatch):
+        # Point PATH at an empty directory so 'git' cannot be found
+        empty = tempfile.mkdtemp()
+        monkeypatch.setenv("PATH", empty)
+
+    def test_sync_without_git_reports_error(self, monkeypatch, tmp_path):
+        self._without_git(monkeypatch)
+        data = tmp_path / "data"
+        data.mkdir()
+        result = sync.sync(str(data))
+        assert not result
+        assert "git is not installed" in result.error.lower()
+        assert "git-scm.com" in result.error
+
+    def test_pull_on_open_without_git_reports_error(self, monkeypatch, tmp_path):
+        self._without_git(monkeypatch)
+        data = tmp_path / "data"
+        data.mkdir()
+        # pull_on_open calls _is_git_repo first which fails cleanly
+        result = sync.pull_on_open(str(data))
+        assert not result
+        assert "git is not installed" in result.error.lower()
+
+    def test_test_remote_without_git(self, monkeypatch):
+        self._without_git(monkeypatch)
+        ok, message = sync.test_remote("git@example.com:x/y.git")
+        assert not ok
+        assert "git is not installed" in message.lower()
+
+    def test_is_git_repo_raises_without_git(self, monkeypatch, tmp_path):
+        self._without_git(monkeypatch)
+        with pytest.raises(sync.GitNotInstalledError):
+            sync._is_git_repo(str(tmp_path))
 
 
 class TestSyncResult:
@@ -381,7 +420,7 @@ class TestConflictReporting:
     def _setup(self, tmpdir):
         remote_dir = os.path.join(tmpdir, "remote.git")
         os.makedirs(remote_dir)
-        _git(remote_dir, "init", "--bare")
+        _git(remote_dir, "init", "--bare", "-b", "master")
 
         a_dir = os.path.join(tmpdir, "a")
         _make_repo(a_dir)
@@ -519,7 +558,7 @@ class TestConflictScenarios:
         """Create bare remote + two clones ('a' and 'b')."""
         remote_dir = os.path.join(tmpdir, "remote.git")
         os.makedirs(remote_dir)
-        _git(remote_dir, "init", "--bare")
+        _git(remote_dir, "init", "--bare", "-b", "master")
 
         a_dir = os.path.join(tmpdir, "a")
         _make_repo(a_dir)
@@ -795,13 +834,111 @@ class TestSyncSetsRemote:
             assert result.stdout.strip()
 
 
+class TestAuthErrorDetection:
+    def test_ssh_publickey_denied(self):
+        assert sync.is_auth_error("git@github.com: Permission denied (publickey).")
+        hint = sync.auth_help_text("Permission denied (publickey).")
+        assert "SSH key" in hint
+
+    def test_https_password_deprecated(self):
+        err = "remote: Password authentication is not supported for Git operations."
+        assert sync.is_auth_error(err)
+        hint = sync.auth_help_text(err)
+        assert "personal access token" in hint.lower() or "token" in hint.lower()
+
+    def test_no_credentials(self):
+        err = "fatal: could not read Username for 'https://github.com': No such device"
+        assert sync.is_auth_error(err)
+        hint = sync.auth_help_text(err)
+        assert "credential" in hint.lower() or "token" in hint.lower()
+
+    def test_repository_not_found(self):
+        err = "fatal: repository 'https://github.com/x/y.git' not found"
+        assert sync.is_auth_error(err)
+        hint = sync.auth_help_text(err)
+        assert "url" in hint.lower() or "credentials" in hint.lower()
+
+    def test_authentication_failed(self):
+        err = "remote: Authentication failed"
+        assert sync.is_auth_error(err)
+        assert sync.auth_help_text(err)
+
+    def test_not_an_auth_error(self):
+        assert not sync.is_auth_error("")
+        assert not sync.is_auth_error("fatal: refusing to merge unrelated histories")
+        assert not sync.is_auth_error(
+            "Updates were rejected because the tip of your current branch is behind"
+        )
+        assert not sync.is_auth_error(None)
+
+    def test_hint_empty_for_generic_error(self):
+        assert sync.auth_help_text("some random error") == ""
+
+
+class TestErrorReporting:
+    """SyncResult.error must contain a useful message on failure."""
+
+    def test_no_remote_reports_error(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            data_dir = os.path.join(tmpdir, "data")
+            os.makedirs(data_dir)
+            _write_month(data_dir, "2024-03.txt", {1: {"text": "hi"}})
+            assert sync.init_repo(data_dir)
+            _git(data_dir, "config", "user.email", "test@test.com")
+            _git(data_dir, "config", "user.name", "Test")
+
+            result = sync.sync(data_dir)
+            assert not result
+            assert "no remote" in result.error.lower()
+
+    def test_push_failure_reports_git_stderr(self):
+        """A push to a nonexistent remote should surface the git error."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            data_dir = os.path.join(tmpdir, "data")
+            os.makedirs(data_dir)
+            _write_month(data_dir, "2024-03.txt", {1: {"text": "hi"}})
+            assert sync.init_repo(data_dir)
+            _git(data_dir, "config", "user.email", "test@test.com")
+            _git(data_dir, "config", "user.name", "Test")
+
+            # Point origin at a nonexistent local path so push fails
+            fake_remote = os.path.join(tmpdir, "does-not-exist.git")
+            sync.set_remote(data_dir, fake_remote)
+
+            result = sync.sync(data_dir, remote_url=fake_remote)
+            assert not result
+            assert result.error  # not empty
+            # Git will complain about the remote in some way
+            assert any(
+                word in result.error.lower()
+                for word in ("does not appear", "not a git", "fetch failed", "unable")
+            ), f"unexpected error: {result.error!r}"
+
+    def test_successful_sync_has_empty_error(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            remote_dir = os.path.join(tmpdir, "remote.git")
+            local_dir = os.path.join(tmpdir, "local")
+            os.makedirs(remote_dir)
+            _git(remote_dir, "init", "--bare", "-b", "master")
+
+            os.makedirs(local_dir)
+            _write_month(local_dir, "2024-03.txt", {1: {"text": "hi"}})
+            assert sync.init_repo(local_dir)
+            _git(local_dir, "config", "user.email", "test@test.com")
+            _git(local_dir, "config", "user.name", "Test")
+
+            result = sync.sync(local_dir, remote_url=remote_dir)
+            assert result
+            assert result.error == ""
+
+
 class TestPulledNewData:
     """sync() must report whether the pull actually brought new commits."""
 
     def _pair(self, tmpdir):
         remote_dir = os.path.join(tmpdir, "remote.git")
         os.makedirs(remote_dir)
-        _git(remote_dir, "init", "--bare")
+        _git(remote_dir, "init", "--bare", "-b", "master")
 
         a_dir = os.path.join(tmpdir, "a")
         _make_repo(a_dir)
@@ -1001,7 +1138,7 @@ class TestUnrelatedHistories:
             # Remote: bare repo with its own initial commit
             remote_dir = os.path.join(tmpdir, "remote.git")
             os.makedirs(remote_dir)
-            _git(remote_dir, "init", "--bare")
+            _git(remote_dir, "init", "--bare", "-b", "master")
 
             seed_dir = os.path.join(tmpdir, "seed")
             _make_repo(seed_dir)

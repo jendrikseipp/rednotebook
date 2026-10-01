@@ -900,6 +900,26 @@ class Statusbar:
         self.last_message_id = None
         self.timespan = 10
 
+        # Persistent sync status label packed at the right of the bar.
+        # GtkStatusbar is itself a GtkBox so we can add extra widgets.
+        self.sync_label = Gtk.Label()
+        self.sync_label.set_margin_start(8)
+        self.sync_label.set_margin_end(8)
+        self.sync_label.set_no_show_all(True)  # stays hidden until set
+        self.statusbar.pack_end(self.sync_label, False, False, 0)
+
+    def set_sync_status(self, text, tooltip=""):
+        """Set the persistent sync-status label on the right of the bar.
+
+        Pass '' to hide the label entirely.
+        """
+        if text:
+            self.sync_label.set_text(text)
+            self.sync_label.set_tooltip_text(tooltip or "")
+            self.sync_label.show()
+        else:
+            self.sync_label.hide()
+
     def remove_message(self):
         self.statusbar.remove(self.context_id, self.last_message_id)
 

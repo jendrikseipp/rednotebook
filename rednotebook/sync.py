@@ -49,21 +49,36 @@ except ImportError:
 # Merge marker for text appended from a remote machine
 MERGE_MARKER = "--- synced from remote ---\n"
 
+# Shown when the git binary is missing. Install hints are platform-specific
+# so we keep the message short; callers follow it with a help URL.
+GIT_NOT_INSTALLED = (
+    "git is not installed or not on PATH. "
+    "Install it from https://git-scm.com and restart RedNotebook."
+)
+
+
+class GitNotInstalledError(FileNotFoundError):
+    """Raised when the 'git' binary cannot be found on PATH."""
+
 
 class SyncResult:
     """Outcome of a sync/pull operation.
 
     Truthy on success so `if sync.sync(...)` and `assert sync.sync(...)`
-    work. Carries the list of days ('YYYY-MM-DD' strings) that had
-    content modified on both sides during the merge, and a flag telling
-    callers whether the pull actually brought in new commits (so they
-    know when to reload data from disk).
+    work. Carries:
+      - conflicts: 'YYYY-MM-DD' strings for days whose content was
+        modified on both sides during the merge
+      - pulled_new_data: True when a pull brought in new commits so
+        callers know when to reload data from disk
+      - error: on failure, a short human-readable string (git stderr
+        where available). Empty on success.
     """
 
-    def __init__(self, success, conflicts=None, pulled_new_data=False):
+    def __init__(self, success, conflicts=None, pulled_new_data=False, error=""):
         self.success = success
         self.conflicts = list(conflicts) if conflicts else []
         self.pulled_new_data = pulled_new_data
+        self.error = error or ""
 
     def __bool__(self):
         return self.success
@@ -72,7 +87,8 @@ class SyncResult:
         return (
             f"SyncResult(success={self.success}, "
             f"conflicts={self.conflicts!r}, "
-            f"pulled_new_data={self.pulled_new_data})"
+            f"pulled_new_data={self.pulled_new_data}, "
+            f"error={self.error!r})"
         )
 
 
@@ -89,12 +105,16 @@ def _run_git(data_dir, *args, check=True):
     """
     cmd = ["git", "-C", data_dir] + list(args)
     logging.debug("sync: running %s", " ".join(cmd))
-    result = subprocess.run(
-        cmd,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except FileNotFoundError as exc:
+        logging.error("sync: %s", GIT_NOT_INSTALLED)
+        raise GitNotInstalledError(GIT_NOT_INSTALLED) from exc
     if check and result.returncode != 0:
         logging.error("sync: git command failed: %s\n%s", " ".join(cmd), result.stderr)
         raise subprocess.CalledProcessError(
@@ -116,6 +136,9 @@ def _is_git_repo(data_dir):
     or manual setup - and if we accepted that as our repo we would end
     up committing/pushing files from the parent directory instead of the
     journal data.
+
+    Raises GitNotInstalledError when git is missing - callers that just
+    want a status probe should catch it.
     """
     result = _run_git(data_dir, "rev-parse", "--show-toplevel", check=False)
     if result.returncode != 0:
@@ -336,6 +359,10 @@ def init_repo(data_dir):
             logging.info("sync: created initial commit")
 
         return True
+    except GitNotInstalledError:
+        # Propagate so the outer sync() handler can produce the
+        # 'git is not installed' SyncResult with its install URL.
+        raise
     except (subprocess.CalledProcessError, OSError) as exc:
         logging.error("sync: failed to initialise repo: %s", exc)
         return False
@@ -386,6 +413,67 @@ def commit_changes(data_dir, message=None):
         return False
 
 
+def is_auth_error(error_text):
+    """Heuristic: does this git error look like an authentication failure?"""
+    if not error_text:
+        return False
+    lowered = error_text.lower()
+    patterns = [
+        "permission denied (publickey)",
+        "permission denied, please try again",
+        "authentication failed",
+        "could not read username",
+        "could not read password",
+        "invalid username or token",
+        "password authentication is not supported",
+        "public key denied",
+        "git@github.com: permission denied",
+        "repository not found",  # GitHub's message
+    ]
+    if any(p in lowered for p in patterns):
+        return True
+    # Git's own 'fatal: repository '...' not found' - checked separately
+    # because the URL sits between the two words.
+    if "repository" in lowered and "not found" in lowered:
+        return True
+    return False
+
+
+def auth_help_text(error_text):
+    """Return a short user-facing hint for an auth failure."""
+    if not error_text:
+        return ""
+    lowered = error_text.lower()
+    if "publickey" in lowered or "public key" in lowered:
+        return (
+            "The SSH key on this machine is not authorised for the remote. "
+            "Add its public key to your GitHub/GitLab account, or switch to "
+            "an HTTPS URL with a personal access token."
+        )
+    if (
+        "password authentication is not supported" in lowered
+        or "invalid username or token" in lowered
+        or "authentication failed" in lowered
+    ):
+        return (
+            "GitHub no longer accepts passwords over HTTPS. Use a personal "
+            "access token, or switch to an SSH URL like "
+            "git@github.com:user/repo.git."
+        )
+    if "could not read username" in lowered or "could not read password" in lowered:
+        return (
+            "No credentials are available for this remote. Configure a git "
+            "credential helper, use an SSH URL with a set-up SSH key, or "
+            "embed a personal access token in the URL."
+        )
+    if "repository" in lowered and "not found" in lowered:
+        return (
+            "The remote repository could not be found. Check the URL is "
+            "correct, and that your credentials give you access to it."
+        )
+    return ""
+
+
 def format_conflict_note(conflicts):
     """Return the note text to append to today's entry for a conflict list."""
     return f"[Sync: please review conflicts on {', '.join(conflicts)}]"
@@ -433,8 +521,9 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
         # Fetch first so we can check if there is anything new
         _run_git(data_dir, "fetch", remote)
     except subprocess.CalledProcessError as exc:
-        logging.warning("sync: fetch failed (network unavailable?): %s", exc)
-        return SyncResult(False)
+        err = (exc.stderr or "").strip() or str(exc)
+        logging.warning("sync: fetch failed (network unavailable?): %s", err)
+        return SyncResult(False, error=f"fetch failed: {err}")
 
     # Determine the branch to merge
     if not branch:
@@ -490,9 +579,10 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
     # Handle conflicts
     conflicted = _get_conflicted_files(data_dir)
     if not conflicted:
-        logging.error("sync: merge failed but no conflicts found:\n%s", merge_result.stderr)
+        err = (merge_result.stderr or "").strip() or "unknown merge error"
+        logging.error("sync: merge failed but no conflicts found:\n%s", err)
         _run_git(data_dir, "merge", "--abort", check=False)
-        return SyncResult(False)
+        return SyncResult(False, error=f"merge failed: {err}")
 
     logging.info("sync: resolving %d conflicted file(s)", len(conflicted))
 
@@ -533,22 +623,19 @@ def pull_and_merge(data_dir, remote="origin", branch=None):
     else:
         _run_git(data_dir, "merge", "--abort", check=False)
         logging.error("sync: could not resolve all conflicts, merge aborted")
-        return SyncResult(False)
+        return SyncResult(False, error="could not resolve all merge conflicts")
 
 
 def push(data_dir, remote="origin", branch=None):
     """Push committed changes to the remote.
 
-    Args:
-        data_dir: Path to the journal data directory.
-        remote: Remote name (default "origin").
-        branch: Branch to push. If None, pushes the current branch.
-
-    Returns True on success, False on failure.
+    Returns (success, error_message). error_message is empty on success
+    and set to git's stderr text on failure so the caller can display
+    it to the user (auth failures, non-fast-forward pushes, etc.).
     """
     if not _has_remote(data_dir, remote):
         logging.debug("sync: no remote '%s' configured, skipping push", remote)
-        return True
+        return True, ""
 
     # Always pass an explicit refspec: 'git push -u origin' fails on the
     # first push because git refuses to guess the branch. 'HEAD' resolves
@@ -558,15 +645,15 @@ def push(data_dir, remote="origin", branch=None):
         result = _run_git(data_dir, "push", "-u", remote, ref, check=False)
     except OSError as exc:
         logging.warning("sync: push failed: %s", exc)
-        return False
+        return False, str(exc)
 
     if result.returncode == 0:
         logging.info("sync: pushed to %s", remote)
-        return True
+        return True, ""
 
     err = result.stderr.strip() or result.stdout.strip() or "unknown error"
     logging.error("sync: push failed:\n%s", err)
-    return False
+    return False, err
 
 
 def test_remote(url, timeout=15):
@@ -601,7 +688,7 @@ def test_remote(url, timeout=15):
     except subprocess.TimeoutExpired:
         return False, f"Timed out after {timeout}s"
     except FileNotFoundError:
-        return False, "git command not found - please install git"
+        return False, GIT_NOT_INSTALLED
 
     if result.returncode == 0:
         refs = [line for line in result.stdout.strip().splitlines() if line]
@@ -626,11 +713,18 @@ def sync(data_dir, remote_url=None, remote="origin", branch=None):
     Returns a SyncResult. SyncResult.conflicts lists any days that had
     content merged from both sides during the pull step.
     """
+    try:
+        return _sync(data_dir, remote_url, remote, branch)
+    except GitNotInstalledError as exc:
+        return SyncResult(False, error=str(exc))
+
+
+def _sync(data_dir, remote_url, remote, branch):
     logging.info("sync: starting sync cycle")
 
     if not _is_git_repo(data_dir):
         if not init_repo(data_dir):
-            return SyncResult(False)
+            return SyncResult(False, error="could not initialise git repository")
 
     if remote_url:
         set_remote(data_dir, remote_url, remote)
@@ -642,7 +736,7 @@ def sync(data_dir, remote_url=None, remote="origin", branch=None):
         logging.error(
             "sync: no remote URL configured. Set 'Remote URL' in Preferences > Sync and click OK."
         )
-        return SyncResult(False)
+        return SyncResult(False, error="no remote URL configured")
 
     # 1. Commit any local changes
     commit_changes(data_dir)
@@ -650,14 +744,16 @@ def sync(data_dir, remote_url=None, remote="origin", branch=None):
     # 2. Pull and merge remote changes
     pull_result = pull_and_merge(data_dir, remote, branch)
     if not pull_result:
-        return SyncResult(False)
+        return pull_result
 
     # 3. Push our changes
-    if not push(data_dir, remote, branch):
+    pushed, push_error = push(data_dir, remote, branch)
+    if not pushed:
         return SyncResult(
             False,
             pull_result.conflicts,
             pulled_new_data=pull_result.pulled_new_data,
+            error=f"push failed: {push_error}" if push_error else "push failed",
         )
 
     logging.info("sync: sync cycle complete")
@@ -683,6 +779,13 @@ def pull_on_open(data_dir, remote_url=None, remote="origin", branch=None):
 
     Returns a SyncResult carrying any conflict day strings.
     """
+    try:
+        return _pull_on_open(data_dir, remote_url, remote, branch)
+    except GitNotInstalledError as exc:
+        return SyncResult(False, error=str(exc))
+
+
+def _pull_on_open(data_dir, remote_url, remote, branch):
     if not _is_git_repo(data_dir):
         return SyncResult(True)  # Not a sync-enabled journal
 

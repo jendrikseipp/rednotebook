@@ -256,7 +256,10 @@ class SyncStatusOption(Option):
 
         self.status_label = Gtk.Label()
         self.status_label.set_xalign(0)
-        self._update_status()
+        # Probe git on a background thread so dialog init is not blocked
+        # by 2-3 subprocess spawns (each ~300ms on Windows).
+        self.status_label.set_text(_("Checking…"))
+        self._start_status_probe()
         self.pack_start(self.status_label, True, True, 0)
 
         sync_now_button = Gtk.Button(_("Save and sync now"))
@@ -264,12 +267,13 @@ class SyncStatusOption(Option):
         sync_now_button.connect("clicked", self._on_sync_now)
         self.pack_start(sync_now_button, False, False, 0)
 
-    def _update_status(self):
-        if not sync._is_git_repo(self.data_dir):
-            self.status_label.set_text(_("Not initialised"))
-        elif not sync._has_remote(self.data_dir):
-            self.status_label.set_text(_("No remote configured"))
-        else:
+    def _probe_status(self):
+        """Run git probes off the UI thread; return the status text."""
+        try:
+            if not sync._is_git_repo(self.data_dir):
+                return _("Not initialised")
+            if not sync._has_remote(self.data_dir):
+                return _("No remote configured")
             result = sync._run_git(
                 self.data_dir,
                 "remote",
@@ -278,7 +282,24 @@ class SyncStatusOption(Option):
                 check=False,
             )
             url = result.stdout.strip() if result.returncode == 0 else "?"
-            self.status_label.set_text(_("Remote: %s") % url)
+            return _("Remote: %s") % url
+        except sync.GitNotInstalledError:
+            return _("git is not installed")
+
+    def _start_status_probe(self):
+        """Run _probe_status in a background thread and set the label."""
+        import threading
+
+        def worker():
+            text = self._probe_status()
+            GLib.idle_add(self.status_label.set_text, text)
+
+        threading.Thread(target=worker, daemon=True, name="sync-status").start()
+
+    def _update_status(self):
+        # Kept for callers that trigger a manual status refresh.
+        self.status_label.set_text(_("Checking…"))
+        self._start_status_probe()
 
     def _on_sync_now(self, widget):
         enabled, url, branch = self.get_current_settings()
@@ -299,6 +320,7 @@ class SyncStatusOption(Option):
             return
 
         self.status_label.set_text(_("Syncing..."))
+        self.journal._update_sync_indicator(_("Sync: syncing…"))
         self.journal.syncer.run(
             self.data_dir,
             remote_url=url,
@@ -310,12 +332,14 @@ class SyncStatusOption(Option):
         if result is None:
             self.status_label.set_text(_("Another sync is already in progress"))
             return
+        # Delegate to Journal so indicator + reload behave the same as
+        # elsewhere. Additionally reflect the outcome in our local label.
+        self.journal._on_auto_sync_done(result)
         if not result:
-            self.status_label.set_text(_("Sync failed - check the log"))
+            msg = _("Sync error: %s") % result.error if result.error else _("Sync failed")
+            self.status_label.set_text(msg)
             return
-
         if result.conflicts:
-            self.journal._record_sync_conflicts(result.conflicts)
             self.status_label.set_text(
                 _("Sync completed with %d day conflict(s): %s")
                 % (len(result.conflicts), ", ".join(result.conflicts))
@@ -324,10 +348,7 @@ class SyncStatusOption(Option):
             self.status_label.set_text(_("Sync completed - new entries pulled"))
         else:
             self.status_label.set_text(_("Sync completed"))
-            self._update_status()  # Refresh remote line
-
-        if result.pulled_new_data:
-            self.journal._reload_after_sync()
+            self._update_status()
 
     def get_value(self):
         return None
@@ -600,6 +621,7 @@ class OptionsManager:
         # pulling/pushing.
         branch = self.config.read("syncBranch") or None
         self.journal.show_message(_("Syncing in background..."), error=False)
+        self.journal._update_sync_indicator(_("Sync: syncing…"))
         self.journal.syncer.run(
             data_dir,
             remote_url=remote_url,
@@ -614,30 +636,11 @@ class OptionsManager:
                 error=False,
             )
             return
-        if not result:
-            self.journal.show_message(
-                _("Sync failed - check the log for details"),
-                error=True,
-            )
-            return
-
-        if result.conflicts:
-            self.journal._record_sync_conflicts(result.conflicts)
-            self.journal.show_message(
-                _("Sync completed. Days with conflicts (please review): %s")
-                % ", ".join(result.conflicts),
-                error=False,
-            )
-        elif result.pulled_new_data:
-            self.journal.show_message(
-                _("Sync completed - new entries pulled from remote"),
-                error=False,
-            )
-        else:
+        # Route through Journal so indicator/error dialog/reload all
+        # behave the same as an auto-sync.
+        self.journal._on_auto_sync_done(result)
+        if result and not result.conflicts and not result.pulled_new_data:
             self.journal.show_message(
                 _("Sync completed - journal pushed to %s") % remote_url,
                 error=False,
             )
-
-        if result.pulled_new_data:
-            self.journal._reload_after_sync()
