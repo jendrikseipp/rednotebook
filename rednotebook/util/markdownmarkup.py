@@ -891,6 +891,7 @@ def _html_document(body, options, has_math):
     return (
         "<!DOCTYPE html>\n<html>\n<head>\n"
         '<meta charset="utf-8">\n'
+        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         f"<title>{title}</title>\n"
         f"{css}{mathjax}"
         "</head>\n<body>\n"

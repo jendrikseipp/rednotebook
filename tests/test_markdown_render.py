@@ -22,6 +22,7 @@ class TestHtmlBasics:
         doc = html("Content")
         assert "<!DOCTYPE html>" in doc
         assert '<meta charset="utf-8">' in doc
+        assert '<meta name="viewport" content="width=device-width, initial-scale=1">' in doc
         assert '<p dir="auto">Content</p>' in doc
 
     def test_emphasis(self):
@@ -76,9 +77,7 @@ class TestHtmlRedNotebookFeatures:
         assert 'width="50"' in doc
 
     def test_image_no_width(self):
-        doc = html("![](/image.jpg)")
-        assert 'src="/image.jpg"' in doc
-        assert "width=" not in doc
+        assert '<img src="/image.jpg" alt="">' in html("![](/image.jpg)")
 
     @pytest.mark.parametrize(
         "markup,expected",
