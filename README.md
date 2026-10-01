@@ -7,7 +7,9 @@ Latex or PDF.
 
 
 **Installers for Linux and Windows**:
-[rednotebook.app/downloads.html](https://www.rednotebook.app/downloads.html)
+[rednotebook.app/downloads.html](https://www.rednotebook.app/downloads.html).
+macOS does not have an official installer yet; see
+[Install on macOS](#install-on-macos) below.
 
 
 ## Requirements
@@ -20,6 +22,7 @@ Needed for running RedNotebook:
   * PyYAML (3.10+): https://pyyaml.org
   * WebKitGTK (2.16+): https://webkitgtk.org (only on Linux and macOS)
   * PyEnchant for spell checking (1.6+): https://pypi.org/project/pyenchant/ (optional)
+  * Git (2.x+): https://git-scm.com (optional, only for cloud sync)
 
 Needed for installing RedNotebook:
 
@@ -31,13 +34,77 @@ Needed for installing RedNotebook:
 
 Install all dependencies:
 
-  * Linux/macOS: [run-tests.yml](.github/workflows/run-tests.yml)
-  * Windows: [build-windows.yml](.github/workflows/build-windows.yml)
+  * Linux: [run-tests.yml](.github/workflows/run-tests.yml) lists the
+    apt packages used by CI.
+  * macOS: see [Install on macOS](#install-on-macos) below.
+  * Windows: [build-windows.yml](.github/workflows/build-windows.yml).
 
 Start RedNotebook:
 
   * Linux/macOS: `python3 rednotebook/journal.py`
   * Windows: `py rednotebook/journal.py`
+
+
+## Install on macOS
+
+There is no notarised .app or .dmg yet, so macOS users install from
+source via [Homebrew](https://brew.sh). The whole thing takes 20-40
+minutes on a fresh Mac (most of it waiting for Homebrew to fetch or
+build the GTK stack).
+
+### 1. Install Homebrew (skip if you already have it)
+
+Run this in Terminal and follow the prompts. It will ask for your
+login password to install into `/usr/local` or `/opt/homebrew`:
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Full instructions: <https://brew.sh>.
+
+### 2. Install the GTK stack and tooling
+
+```sh
+brew install adwaita-icon-theme enchant gobject-introspection \
+    gsettings-desktop-schemas gtk+3 gtk-mac-integration gtksourceview4 \
+    git pipx
+```
+
+Omit `git` if you already have it (`git --version` to check — Xcode
+command-line tools ship it). It is only required if you plan to use
+cloud sync.
+
+### 3. Install RedNotebook
+
+```sh
+pipx install 'git+https://github.com/jendrikseipp/rednotebook#egg=rednotebook[spellcheck]'
+pipx ensurepath
+```
+
+### 4. Run it
+
+Open a new Terminal (so `pipx ensurepath` is in effect) and run:
+
+```sh
+rednotebook
+```
+
+To upgrade later, `pipx upgrade rednotebook`.
+
+To add a Dock/Spotlight shortcut, create an Automator "Application"
+containing the shell action:
+
+```sh
+export LC_ALL=en_US.UTF-8  # or your language
+/Users/$(whoami)/.local/bin/rednotebook
+```
+
+Save the Automator app to `/Applications` and it will appear in
+Spotlight and Launchpad.
+
+Full details, including troubleshooting notes, are in
+[dev/mac-homebrew.md](dev/mac-homebrew.md).
 
 
 ## Cloud sync
@@ -48,7 +115,18 @@ entries from all machines are merged together.
 
 ### Requirements
 
-  * Git must be installed and available on your `PATH`.
+Sync is optional. It only runs when you enable it; the rest of
+RedNotebook works without any of this.
+
+  * **Git must be installed and available on your `PATH`.**
+    - Linux: usually pre-installed, otherwise `sudo apt install git`
+      (or your distribution's equivalent).
+    - macOS: comes with the Xcode command-line tools; install them
+      with `xcode-select --install`, or install git separately with
+      `brew install git`.
+    - Windows: install [Git for Windows](https://git-scm.com/download/win)
+      and make sure 'git' is on your `PATH` (the default installer
+      option).
   * A remote git repository that all machines can access (e.g. a
     private repo on GitHub, GitLab, or a self-hosted server).
 
