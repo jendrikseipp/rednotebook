@@ -1,3 +1,4 @@
+# 2.43 (2026-10-01)
 * Fix applying spell check suggestions, which left the misspelled word unchanged (@gabspeck)
 * Fix segfault on Wayland when setting the window icon (#806, @sjg20)
 * Fix reading journal files that store day numbers as strings (#897, @SAY-5)
