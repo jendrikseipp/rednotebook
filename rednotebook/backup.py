@@ -12,8 +12,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# with this program.  If not, see <https://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------
 
 import datetime
@@ -113,12 +112,7 @@ class Archiver:
         return last_backup_age
 
     def _get_backup_file(self):
-        if self.journal.title == "data":
-            name = ""
-        else:
-            name = "-" + self.journal.title
-
-        proposed_filename = f"RedNotebook-Backup{name}-{datetime.date.today()}.zip"
+        proposed_filename = f"RedNotebook-Backup-{datetime.date.today()}.zip"
         proposed_directory = self.journal.config.read("lastBackupDir", os.path.expanduser("~"))
 
         backup_dialog = self.journal.frame.builder.get_object("backup_dialog")

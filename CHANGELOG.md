@@ -1,3 +1,9 @@
+# 2.43 (2026-10-01)
+* Fix applying spell check suggestions, which left the misspelled word unchanged (@gabspeck).
+* Fix segfault on Wayland when setting the window icon (#806, @sjg20).
+* Fix reading journal files that store day numbers as strings (#897, @SAY-5).
+* Restore the old backup filename format, dropping the journal title suffix (#884, @jendrikseipp).
+
 # 2.42 (2025-12-28)
 * Update help concerning math formulas (#97, #855, @jendrikseipp).
 * Fix X11 forwarding (#726, #847, @jendrikseipp).

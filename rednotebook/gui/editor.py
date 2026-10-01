@@ -12,9 +12,9 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# with this program.  If not, see <https://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------
+
 
 import logging
 import os
@@ -39,7 +39,8 @@ try:
     DEFAULT_FONT = _gtk_settings.get_property("gtk-font-name")
 except Exception:
     # Happens on headless systems (no DISPLAY) or when GTK is not fully initialised.
-    DEFAULT_FONT = "Ubuntu 10"
+    # Don't specify a size - let the system choose an appropriate default.
+    DEFAULT_FONT = "Sans"
 
 
 class Editor(GObject.GObject):

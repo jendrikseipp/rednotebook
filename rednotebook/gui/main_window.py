@@ -12,8 +12,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# with this program.  If not, see <https://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------
 
 import datetime
@@ -72,10 +71,9 @@ class MainWindow:
             self.builder.add_from_file(self.gladefile)
 
         self.main_frame = self.builder.get_object("main_frame")
-        self.main_frame.set_application(journal)
         self.main_frame.set_title("RedNotebook")
         icon = GdkPixbuf.Pixbuf.new_from_file(os.path.join(filesystem.frame_icon_dir, "rn-128.png"))
-        self.main_frame.set_icon(icon)
+        Gtk.Window.set_default_icon(icon)
 
         self.is_fullscreen = False
 
@@ -174,6 +172,7 @@ class MainWindow:
         self.load_values_from_config()
 
         self.main_frame.show()
+        self.main_frame.set_application(journal)
 
         self.options_manager = OptionsManager(self)
         self.export_assistant = ExportAssistant(self.journal)
@@ -638,8 +637,11 @@ class MainWindow:
                 self.main_frame.move(center_x, center_y)
 
         self.builder.get_object("main_pane").set_position(config.read("leftDividerPosition"))
-        # By default do not show tags pane.
-        self.edit_pane.set_position(config.read("rightDividerPosition", main_frame_width))
+        if config.read("showTagsPane"):
+            self.edit_pane.set_position(config.read("rightDividerPosition"))
+        else:
+            # Tags pane is hidden anyway, so skip setting position.
+            pass
 
         self.set_font(config.read("mainFont", editor.DEFAULT_FONT))
 

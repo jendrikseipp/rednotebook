@@ -12,8 +12,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with RedNotebook; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# with this program.  If not, see <https://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------
 
 import datetime
@@ -254,7 +253,13 @@ class Journal(Gtk.Application):
 
         self.actual_date = self.get_start_date()
 
-        self.do_activate()
+    def do_activate(self):
+        if self.frame:
+            self.frame.main_frame.present()
+            return
+
+        self.frame = MainWindow(self)
+        self.frame.main_frame.present()
 
         journal_path = self.get_journal_path()
         if not self.dirs.is_valid_journal_path(journal_path):
@@ -278,11 +283,6 @@ class Journal(Gtk.Application):
 
         # Automatically save the content after a period of time
         GLib.timeout_add_seconds(600, self.save_to_disk)
-
-    def do_activate(self):
-        if not self.frame:
-            self.frame = MainWindow(self)
-        self.frame.main_frame.present()
 
     def do_command_line(self, _command_line):
         # Arguments are parsed elsewhere, so we only show the window here.

@@ -12,6 +12,12 @@ def test_to_string():
     assert str(day) == str_version
 
 
+def test_string_day_keys():
+    month = Month(2026, 7, {"1": {"text": "hello"}})
+    assert list(month.days) == [1]
+    assert month.get_day(1).text == "hello"
+
+
 def test_hashtags():
     month = Month(2000, 10)
     day = Day(month, 20)
