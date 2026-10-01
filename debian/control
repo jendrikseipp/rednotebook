@@ -28,7 +28,7 @@ Depends: ${python3:Depends},
          gir1.2-webkit2-4.1 | gir1.2-webkit2-4.0,
          python3-gi,
          python3-linkify-it,
-         python3-markdown-it,
+         python3-markdown-it (>= 2.0),
          python3-yaml
 Recommends: python3-enchant
 Description: Modern desktop diary and personal journaling tool

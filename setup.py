@@ -90,7 +90,7 @@ parameters = {
     "install_requires": [
         "PyGObject",
         "PyYAML",
-        "markdown-it-py",
+        "markdown-it-py>=2.0",
         "linkify-it-py",
     ],
     "extras_require": {"spellcheck": ["pyenchant"]},
