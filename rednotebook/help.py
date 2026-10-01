@@ -72,7 +72,10 @@ save1 = _(
 save2 = _("To avoid data loss you should backup your journal regularly.")
 save3 = _('"Backup" in the "Journal" menu saves all your entered data in a zip file.')
 save4 = _('In the "Journal" menu you also find the "Export" button.')
-save5 = _('Click on "Export" and export your diary to Plain Text, PDF, HTML or Latex.')
+save5 = _(
+    'Click on "Export" and export your diary to Plain Text, HTML or Latex. '
+    "To get a PDF, print the HTML export from your browser or compile the Latex export."
+)
 save_par = "\n".join([save1, save2, save3, save4, save5])
 
 error1 = _("If you encounter any errors, please drop me a note so I can fix them.")
@@ -267,15 +270,19 @@ menu.
 {save2}
 {save3}
 
+The backup only contains your journal directory. As explained in
+"Images, Files and Links" above, images and files that you insert are
+only linked to, but not copied into your journal directory. If they are
+stored somewhere else, you need to back them up separately.
+
 
 == Export ==
 
 {save4}
 {save5}
 
-To obtain a PDF of your journal, either export to HTML, open the resulting
-file in a browser and print it to PDF, or export to LaTeX and compile the
-file with ``pdflatex``.
+For compiling the Latex export with ``pdflatex``, see "Convert Latex
+output to PDF" below.
 
 **Latex caveats**
 
@@ -355,10 +362,9 @@ the default.cfg file set portable=1.
 
 == Convert Latex output to PDF ==
 
-In recent RedNotebook versions you can export your journal directly to
-PDF, so this section may be obsolete. However, some people may prefer
-to export their journal to Latex first and convert it to PDF later.
-Here is how you do it:
+RedNotebook can't export directly to PDF. Besides printing the HTML
+export from your browser, you can export your journal to Latex and
+convert the result to PDF. Here is how you do it:
 
 === Linux ===
 
