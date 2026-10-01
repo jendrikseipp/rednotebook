@@ -14,6 +14,8 @@ from rednotebook.help import help_text
 from rednotebook.util import markup
 
 
+# Write UTF-8 regardless of the console encoding (e.g., cp1252 on Windows).
+sys.stdout.reconfigure(encoding="utf-8")
 print(
     markup.convert(
         help_text,
