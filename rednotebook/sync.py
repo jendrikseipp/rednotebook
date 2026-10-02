@@ -664,6 +664,69 @@ def push(data_dir, remote="origin", branch=None):
     return False, err
 
 
+def _default_ssh_key_path():
+    """Return the path RedNotebook will use for its SSH key.
+
+    This is the standard ~/.ssh/id_ed25519 location so other git tooling
+    on the same account picks it up automatically.
+    """
+    return os.path.join(os.path.expanduser("~"), ".ssh", "id_ed25519")
+
+
+def ensure_ssh_key(path=None, comment="rednotebook"):
+    """Generate an ed25519 SSH key if 'path' doesn't exist yet.
+
+    Returns the path to the public key ('path' + '.pub') on success.
+    Raises OSError if ssh-keygen fails or isn't installed.
+    """
+    if path is None:
+        path = _default_ssh_key_path()
+    pub = path + ".pub"
+    if os.path.exists(pub):
+        return pub
+
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    cmd = [
+        "ssh-keygen",
+        "-t",
+        "ed25519",
+        "-f",
+        path,
+        "-N",
+        "",
+        "-C",
+        comment,
+        "-q",
+    ]
+    logging.info("sync: generating SSH key with %s", " ".join(cmd))
+    try:
+        subprocess.run(
+            cmd,
+            check=True,
+            capture_output=True,
+            text=True,
+            creationflags=_SUBPROCESS_FLAGS,
+        )
+    except FileNotFoundError as exc:
+        raise OSError(
+            "ssh-keygen is not installed. On Windows it ships with "
+            "Git for Windows; on Linux/macOS install the openssh-client "
+            "package."
+        ) from exc
+    except subprocess.CalledProcessError as exc:
+        err = (exc.stderr or "").strip() or str(exc)
+        raise OSError(f"ssh-keygen failed: {err}") from exc
+    return pub
+
+
+def read_public_key(path=None):
+    """Read the public key file, returning its single line of text."""
+    if path is None:
+        path = _default_ssh_key_path() + ".pub"
+    with open(path, encoding="utf-8") as f:
+        return f.read().strip()
+
+
 def test_remote(url, timeout=60):
     """Test whether a git remote URL is reachable and authorised.
 

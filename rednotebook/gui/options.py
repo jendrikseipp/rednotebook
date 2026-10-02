@@ -19,7 +19,7 @@ import logging
 import os
 import platform
 
-from gi.repository import GLib, Gtk
+from gi.repository import Gdk, GLib, Gtk, Pango
 
 from rednotebook import info, sync
 from rednotebook.configuration import Config
@@ -607,10 +607,86 @@ class OptionsManager:
             transient_for=self.dialog.dialog,
             modal=True,
             message_type=Gtk.MessageType.INFO if ok else Gtk.MessageType.ERROR,
-            buttons=Gtk.ButtonsType.OK,
+            buttons=Gtk.ButtonsType.NONE,
             text=_("Remote reachable") if ok else _("Remote test failed"),
         )
         dialog.format_secondary_text(body)
+
+        # For SSH publickey errors, offer a one-click SSH setup helper.
+        looks_like_ssh_auth = (
+            not ok
+            and "publickey" in message.lower()
+            and self.sync_url_option.get_value().strip().startswith("git@")
+        )
+        if looks_like_ssh_auth:
+            dialog.add_button(_("Set up SSH key for GitHub..."), 1)
+        dialog.add_button(_("OK"), Gtk.ResponseType.OK)
+
+        response = dialog.run()
+        dialog.destroy()
+        if response == 1:
+            self._run_ssh_setup_helper()
+
+    def _run_ssh_setup_helper(self):
+        """Generate an SSH key if needed, copy pub key, open GitHub."""
+        try:
+            pub_path = sync.ensure_ssh_key()
+            pub_key = sync.read_public_key(pub_path)
+        except OSError as exc:
+            self.journal.show_message(
+                _("SSH key setup failed: %s") % exc,
+                error=True,
+            )
+            return
+
+        # Copy to clipboard
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+        clipboard.set_text(pub_key, -1)
+        # Open GitHub's add-SSH-key page
+        import webbrowser
+
+        webbrowser.open("https://github.com/settings/ssh/new")
+
+        self._show_ssh_setup_instructions(pub_key)
+
+    def _show_ssh_setup_instructions(self, pub_key):
+        dialog = Gtk.MessageDialog(
+            transient_for=self.dialog.dialog,
+            modal=True,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text=_("SSH key ready to paste"),
+        )
+        dialog.format_secondary_text(
+            _(
+                "Your SSH public key is already copied to the clipboard. "
+                "A browser window should have opened at "
+                "github.com/settings/ssh/new - paste the key there, give "
+                "it a title (e.g. 'this computer'), and click Add SSH key. "
+                "Then come back here and click Test again."
+            )
+            + "\n\n"
+            + _(
+                "If the browser did not open or you need to copy the key "
+                "again, here it is (click to select, Ctrl+C to copy):"
+            )
+        )
+        # Add a selectable, monospace, read-only entry showing the key
+        # so the user can copy it manually if the clipboard set failed.
+        key_entry = Gtk.Entry()
+        key_entry.set_text(pub_key)
+        key_entry.set_editable(False)
+        key_entry.set_can_focus(True)
+        key_entry.set_width_chars(60)
+        # Monospace is easier for scanning a long key.
+        key_entry.override_font(Pango.FontDescription("monospace"))
+        key_entry.set_margin_top(8)
+        key_entry.set_margin_start(16)
+        key_entry.set_margin_end(16)
+        key_entry.set_margin_bottom(8)
+        dialog.get_message_area().pack_start(key_entry, False, False, 0)
+        key_entry.show()
+        key_entry.select_region(0, -1)  # Pre-select so Ctrl+C works immediately
         dialog.run()
         dialog.destroy()
 

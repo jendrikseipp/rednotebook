@@ -50,6 +50,34 @@ def _make_repo(path):
     _git(path, "commit", "-m", "init")
 
 
+class TestSshKey:
+    """ensure_ssh_key() generates a key only when missing; read_public_key reads it."""
+
+    def test_generates_when_missing(self, tmp_path):
+        key = str(tmp_path / "id_ed25519")
+        pub_path = sync.ensure_ssh_key(path=key, comment="test@test")
+        assert pub_path == key + ".pub"
+        assert os.path.exists(key)
+        assert os.path.exists(pub_path)
+
+    def test_idempotent(self, tmp_path):
+        key = str(tmp_path / "id_ed25519")
+        sync.ensure_ssh_key(path=key, comment="test@test")
+        with open(key + ".pub") as f:
+            first = f.read()
+        # Second call must not regenerate (keeps same bytes)
+        sync.ensure_ssh_key(path=key, comment="test@test")
+        with open(key + ".pub") as f:
+            assert f.read() == first
+
+    def test_read_public_key_returns_single_line(self, tmp_path):
+        key = str(tmp_path / "id_ed25519")
+        sync.ensure_ssh_key(path=key, comment="test@test")
+        pub = sync.read_public_key(key + ".pub")
+        assert pub.startswith("ssh-ed25519 ")
+        assert "\n" not in pub
+
+
 class TestMissingGit:
     """When git is missing from PATH, sync surfaces a clear error."""
 
