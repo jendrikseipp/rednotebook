@@ -19,7 +19,7 @@ import logging
 import os
 import platform
 
-from gi.repository import Gtk
+from gi.repository import GLib, Gtk
 
 from rednotebook import info, sync
 from rednotebook.configuration import Config
@@ -576,10 +576,33 @@ class OptionsManager:
         self._apply_sync_settings()
 
     def _on_test_remote(self, widget):
-        """Test the URL currently in the sync URL field."""
-        url = self.sync_url_option.get_value().strip()
-        ok, message = sync.test_remote(url)
+        """Test the URL currently in the sync URL field.
 
+        Runs 'git ls-remote' on a background thread so a slow or stuck
+        probe (e.g. a credential helper waiting on a browser) doesn't
+        freeze the preferences dialog.
+        """
+        url = self.sync_url_option.get_value().strip()
+        self.journal.show_message(
+            _("Testing remote (may open a browser for login)..."),
+            error=False,
+        )
+
+        import threading
+
+        def worker():
+            ok, message = sync.test_remote(url)
+            GLib.idle_add(self._show_test_result, ok, message)
+
+        threading.Thread(target=worker, daemon=True, name="sync-test").start()
+
+    def _show_test_result(self, ok, message):
+        body = message
+        # Append a targeted hint if the git error looks like auth.
+        if not ok and sync.is_auth_error(message):
+            hint = sync.auth_help_text(message)
+            if hint:
+                body = f"{message}\n\n{hint}"
         dialog = Gtk.MessageDialog(
             transient_for=self.dialog.dialog,
             modal=True,
@@ -587,7 +610,7 @@ class OptionsManager:
             buttons=Gtk.ButtonsType.OK,
             text=_("Remote reachable") if ok else _("Remote test failed"),
         )
-        dialog.format_secondary_text(message)
+        dialog.format_secondary_text(body)
         dialog.run()
         dialog.destroy()
 

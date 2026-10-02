@@ -92,6 +92,13 @@ class SyncResult:
         )
 
 
+# On Windows, spawning a console-mode child (git.exe) from a GUI app
+# briefly pops a black console window for every call. CREATE_NO_WINDOW
+# suppresses that flicker; the flag is a no-op on non-Windows platforms
+# because subprocess exposes it only on Windows.
+_SUBPROCESS_FLAGS = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+
+
 def _run_git(data_dir, *args, check=True):
     """Run a git command in the data directory.
 
@@ -111,6 +118,7 @@ def _run_git(data_dir, *args, check=True):
             capture_output=True,
             text=True,
             check=False,
+            creationflags=_SUBPROCESS_FLAGS,
         )
     except FileNotFoundError as exc:
         logging.error("sync: %s", GIT_NOT_INSTALLED)
@@ -656,7 +664,7 @@ def push(data_dir, remote="origin", branch=None):
     return False, err
 
 
-def test_remote(url, timeout=15):
+def test_remote(url, timeout=60):
     """Test whether a git remote URL is reachable and authorised.
 
     Runs 'git ls-remote' against the URL without touching any local
@@ -675,6 +683,12 @@ def test_remote(url, timeout=15):
     if not url:
         return False, "No URL provided"
 
+    # Let git use its configured credential helpers so a Test on a
+    # private HTTPS remote can trigger the usual auth flow (e.g. Git
+    # Credential Manager opening a browser on Windows). The UI runs
+    # test_remote on a background thread, so a slow interactive helper
+    # does not freeze the dialog; subprocess.run's timeout still bounds
+    # the wait.
     cmd = ["git", "ls-remote", "--heads", url]
     logging.debug("sync: testing remote with %s", " ".join(cmd))
     try:
@@ -684,6 +698,7 @@ def test_remote(url, timeout=15):
             text=True,
             check=False,
             timeout=timeout,
+            creationflags=_SUBPROCESS_FLAGS,
         )
     except subprocess.TimeoutExpired:
         return False, f"Timed out after {timeout}s"

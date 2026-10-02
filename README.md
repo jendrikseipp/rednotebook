@@ -126,7 +126,15 @@ RedNotebook works without any of this.
       `brew install git`.
     - Windows: install [Git for Windows](https://git-scm.com/download/win)
       and make sure 'git' is on your `PATH` (the default installer
-      option).
+      option). Or from a PowerShell prompt:
+
+      ```
+      winget install --id Git.Git -e --silent `
+        --accept-source-agreements --accept-package-agreements
+      ```
+
+      After installing, log off and back on (or restart Windows
+      Explorer) so running apps pick up the new `PATH`.
   * A remote git repository that all machines can access (e.g. a
     private repo on GitHub, GitLab, or a self-hosted server).
 
