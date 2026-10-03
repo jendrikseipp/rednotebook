@@ -37,6 +37,7 @@ MENUBAR_XML = f"""\
         <separator/>
         <menuitem action="Export"/>
         <menuitem action="Backup"/>
+        <menuitem action="Sync"/>
         <menuitem action="Statistics"/>
         <separator/>
         <menuitem action="Quit"/>
@@ -129,6 +130,14 @@ class MainMenuBar:
                     None,
                     _("Save all the data in a zip archive"),
                     self.on_backup_activate,
+                ),
+                (
+                    "Sync",
+                    None,
+                    _("S_ync now"),
+                    "<Ctrl><Shift>y",
+                    _("Commit changes and sync with the remote git repository"),
+                    self.on_sync_activate,
                 ),
                 (
                     "Statistics",
@@ -398,6 +407,33 @@ class MainMenuBar:
 
     def on_backup_activate(self, widget):
         self.journal.archiver.backup()
+
+    def on_sync_activate(self, widget):
+        if not self.journal.config.read("syncEnabled"):
+            self.journal.show_message(
+                _("Sync is not enabled. Turn it on in Preferences > Sync."),
+                error=True,
+            )
+            return
+
+        # Save first so any current edits are included in the sync
+        self.journal.save_to_disk()
+
+        branch = self.journal.config.read("syncBranch") or None
+        url = self.journal.config.read("syncRemoteUrl", "") or None
+        self.journal.show_message(_("Syncing..."), error=False)
+        self.journal._update_sync_indicator(_("Sync: syncing…"))
+        self.journal.syncer.run(
+            self.journal.dirs.data_dir,
+            remote_url=url,
+            branch=branch,
+            on_done=self._on_manual_sync_done,
+        )
+
+    def _on_manual_sync_done(self, result):
+        # Delegate to Journal's completion handler so the indicator +
+        # error dialog stay consistent with the auto-sync path.
+        self.journal._on_auto_sync_done(result)
 
     def on_export_menu_item_activate(self, widget):
         self.journal.save_old_day()

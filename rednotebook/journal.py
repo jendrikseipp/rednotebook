@@ -203,7 +203,7 @@ except (ImportError, AssertionError) as e:
     sys.exit(1)
 
 
-from rednotebook import backup, storage
+from rednotebook import backup, storage, sync
 from rednotebook.data import Month
 from rednotebook.gui.main_window import MainWindow
 from rednotebook.util import dates
@@ -220,6 +220,7 @@ class Journal(Gtk.Application):
         )
         # Let components check if the MainWindow has been created.
         self.frame = None
+        self.syncer = sync.AsyncSyncer(GLib.idle_add)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -399,6 +400,30 @@ class Journal(Gtk.Application):
             for tag in self.get_escaped_tags():
                 self.frame.search_box.add_entry(tag)
 
+        # Sync to remote after saving
+        if something_saved and self.config.read("syncEnabled") and self.config.read("syncAuto"):
+            sync_branch = self.config.read("syncBranch") or None
+            sync_url = self.config.read("syncRemoteUrl", "") or None
+            if exit_imminent:
+                # On exit, run sync synchronously so we do not lose data
+                # in a background thread that would be killed with the
+                # process.
+                result = sync.sync(
+                    self.dirs.data_dir,
+                    remote_url=sync_url,
+                    branch=sync_branch,
+                )
+                if not result:
+                    logging.warning("Sync failed on exit: %s", result.error)
+            else:
+                self._update_sync_indicator(_("Sync: syncing…"))
+                self.syncer.run(
+                    self.dirs.data_dir,
+                    remote_url=sync_url,
+                    branch=sync_branch,
+                    on_done=self._on_auto_sync_done,
+                )
+
         # tell gobject to keep saving the content in regular intervals
         return True
 
@@ -412,6 +437,22 @@ class Journal(Gtk.Application):
 
         logging.info(f"Opening journal at {data_dir!r}")
         self.dirs.data_dir = data_dir
+
+        # Pull remote changes before loading if sync is enabled
+        pull_conflicts = []
+        if self.config.read("syncEnabled"):
+            sync.init_repo(data_dir)
+            sync_branch = self.config.read("syncBranch") or None
+            sync_url = self.config.read("syncRemoteUrl", "") or None
+            result = sync.pull_on_open(
+                data_dir,
+                remote_url=sync_url,
+                branch=sync_branch,
+            )
+            if not result:
+                logging.warning("Sync pull failed; opening with local data")
+            else:
+                pull_conflicts = result.conflicts
 
         self.month = None
         self.months.clear()
@@ -438,12 +479,145 @@ class Journal(Gtk.Application):
         # Set frame title
         self.set_frame_title()
 
+        if pull_conflicts:
+            self._record_sync_conflicts(pull_conflicts)
+            self.show_message(
+                _("Sync merged remote changes. Days with conflicts (please review): %s")
+                % ", ".join(pull_conflicts),
+                error=False,
+            )
+            self._update_sync_indicator(
+                _("Sync: %d conflict(s)") % len(pull_conflicts),
+                tooltip=", ".join(pull_conflicts),
+            )
+        elif self.config.read("syncEnabled"):
+            self._update_sync_indicator(_("Sync: ok"))
+        else:
+            self._refresh_sync_indicator()
+
         # Save the folder for next start
         if not self.dirs.portable:
             self.config["dataDir"] = data_dir
         else:
             rel_data_dir = filesystem.get_relative_path(self.dirs.app_dir, data_dir)
             self.config["dataDir"] = rel_data_dir
+
+    def _update_sync_indicator(self, text, tooltip=""):
+        """Set the persistent sync-status widget in the statusbar."""
+        if self.frame and hasattr(self.frame, "statusbar"):
+            self.frame.statusbar.set_sync_status(text, tooltip=tooltip)
+
+    def _refresh_sync_indicator(self):
+        """Show the current sync state, or hide if sync is off."""
+        if not self.config.read("syncEnabled"):
+            self._update_sync_indicator("")
+            return
+        if self.syncer.is_running():
+            self._update_sync_indicator(_("Sync: syncing…"))
+            return
+        remote_url = self.config.read("syncRemoteUrl", "")
+        if not remote_url:
+            self._update_sync_indicator(
+                _("Sync: no URL"),
+                tooltip=_("Set a Remote URL in Preferences > Sync"),
+            )
+
+    def _show_sync_error(self, result):
+        """Show sync failure in statusbar, plus a dialog for auth errors."""
+        msg = _("Sync error: %s") % result.error if result.error else _("Sync failed")
+        self.show_message(msg, error=False)  # statusbar, auto-dismiss
+        logging.warning("sync error surfaced: %s", result.error)
+        if sync.is_auth_error(result.error):
+            hint = sync.auth_help_text(result.error)
+            body = result.error
+            if hint:
+                body = f"{body}\n\n{hint}"
+            dialog = Gtk.MessageDialog(
+                transient_for=self.frame.main_frame if self.frame else None,
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Sync authentication failed"),
+            )
+            dialog.format_secondary_text(body)
+            dialog.run()
+            dialog.destroy()
+
+    def _on_auto_sync_done(self, result):
+        """Handle the result of a background auto-sync on the UI thread."""
+        if result is None:
+            return  # Skipped because another sync was in flight
+        if not result:
+            self._show_sync_error(result)
+            if sync.is_auth_error(result.error):
+                self._update_sync_indicator(
+                    _("Sync: auth error"),
+                    tooltip=result.error,
+                )
+            else:
+                self._update_sync_indicator(
+                    _("Sync: error"),
+                    tooltip=result.error or "",
+                )
+            return
+        if result.conflicts:
+            self._record_sync_conflicts(result.conflicts)
+            self.show_message(
+                _("Sync merged remote changes. Days with conflicts (please review): %s")
+                % ", ".join(result.conflicts),
+                error=False,
+            )
+            self._update_sync_indicator(
+                _("Sync: %d conflict(s)") % len(result.conflicts),
+                tooltip=", ".join(result.conflicts),
+            )
+        else:
+            self._update_sync_indicator(_("Sync: ok"))
+        if result.pulled_new_data:
+            self._reload_after_sync()
+
+    def _reload_after_sync(self):
+        """Refresh in-memory journal state from disk after a pull.
+
+        A sync that fetches new commits changes the .txt files on disk
+        but not the Month/Day objects RedNotebook has already loaded, so
+        without this refresh pulled entries stay invisible until the app
+        is restarted.
+
+        Called after save_to_disk has already flushed the current buffer,
+        so there is nothing unsaved to lose.
+        """
+        data_dir = self.dirs.data_dir
+        self.month = None
+        self.months.clear()
+        self.frame.search_box.clear()
+        self.frame.day_text_field.clear_buffers()
+        self.months = storage.load_all_months_from_disk(data_dir)
+        self.load_day(self.date)
+        self.stats = Statistics(self)
+        self.frame.cloud.update(force_update=True)
+        self.frame.categories_tree_view.categories = self.categories
+        self.frame.search_box.set_entries(self.get_escaped_tags())
+
+    def _record_sync_conflicts(self, conflicts):
+        """Append a note listing conflicted days to today's journal entry.
+
+        The note is a persistent to-do so the user notices it later even
+        after the transient status message has cleared. Idempotent - if
+        the same list is passed twice (e.g. auto-sync followed by manual
+        sync in the same session) the note is only added once.
+        """
+        if not conflicts:
+            return
+        today_date = datetime.date.today()
+        today = self.get_day(today_date)
+        new_text = sync.append_conflict_note(today.text, conflicts)
+        if new_text == today.text:
+            return
+        today.text = new_text
+        today.month.edited = True
+        if self.date == today_date and self.frame:
+            self.frame.set_day_text(today.text)
 
     def set_frame_title(self):
         parts = ["RedNotebook"]
