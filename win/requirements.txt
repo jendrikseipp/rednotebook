@@ -9,4 +9,4 @@ pyinstaller-hooks-contrib==2025.8
 pywin32-ctypes==0.2.1
 PyYAML==5.4.1
 six==1.16.0
-virtualenv==20.14.0
+virtualenv==20.36.1
