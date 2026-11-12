@@ -412,7 +412,6 @@ class MainMenuBar:
         html = self.journal.convert(
             help_text,
             "html",
-            headers=[_("RedNotebook Documentation"), info.version, ""],
             options={"toc": 1},
         )
         utils.show_html_in_browser(html, os.path.join(temp_dir, "help.html"))

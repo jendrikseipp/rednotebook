@@ -41,11 +41,11 @@ The following regular expression is used to find hashtags in the text
 and add them to the 'Tags' section on the left panel.
 
 This pattern DOES NOT control the styling of hashtags in the text.
-To control this behaviour refer to rednotebook/files/t2t.lang
+To control this behaviour refer to rednotebook/files/markdown.lang
 (regexes) and rednotebook/files/rednotebook-highlight-style.xml (styles).
 
 If you make changes to this pattern, is very likely you will have to
-make changes to /rednotebook/files/t2t.lang
+make changes to /rednotebook/files/markdown.lang
 """
 HASHTAG = re.compile(HASHTAG_PATTERN, flags=re.IGNORECASE)
 

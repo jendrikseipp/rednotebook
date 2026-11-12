@@ -23,12 +23,14 @@ def get_local_url(url):
     """
     orig_url = url
     if url.startswith("file:///") and IS_WIN:
-        url = url.replace("file:///", "")
-    if url.startswith("file://"):
-        url = url.replace("file://", "")
+        url = urllib.parse.unquote(url[len("file:///") :])
+    elif url.startswith("file://"):
+        url = urllib.parse.unquote(url[len("file://") :])
     url = os.path.normpath(url)
+    if IS_WIN:
+        url = url.replace("\\", "/")
 
-    url = LOCAL_FILE_PEFIX + url
+    url = LOCAL_FILE_PEFIX + urllib.parse.quote(url, safe="/:")
     logging.debug(f"Transformed local URI {orig_url} to {url}")
     return url
 
@@ -66,9 +68,10 @@ def open_url(url):
     # Try opening the file locally
     if IS_WIN:
         try:
-            url = unquote_url(url)
             if url.startswith("file:") or os.path.exists(url):
                 url = get_local_url(url)
+            else:
+                url = unquote_url(url)
             logging.info(f'Trying to open {url} with "os.startfile"')
             # os.startfile is only available on windows
             os.startfile(url)

@@ -12,6 +12,8 @@ on:
 
 env:
   RUNNER_IMAGE: windows-latest
+  # RedNotebook requires Python 3.10, but the GTK bundle only contains pycairo and
+  # PyGObject wheels for Python 3.9. Update once the bundle provides newer wheels.
   PYTHON_VERSION: '3.9'
 
 jobs:

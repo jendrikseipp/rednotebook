@@ -156,3 +156,35 @@ class Config(dict):
         else:
             logging.info(f"Configuration has been saved to {self.filename}")
             self.save_state()
+
+
+class JournalConfig(Config):
+    """Settings that belong to a journal and are stored in its directory.
+
+    Unlike the user configuration, these settings travel with the journal,
+    e.g., when it is synced between computers.
+    """
+
+    FILENAME = "journal.cfg"
+    HEADER = "# Settings for the RedNotebook journal in this directory. Don't delete this file."
+    defaults = {}
+
+    def __init__(self, journal_dir):
+        super().__init__(os.path.join(journal_dir, self.FILENAME))
+
+    def _read_file(self, filename):
+        # Journals from older versions have no settings file.
+        return super()._read_file(filename) if os.path.exists(filename) else {}
+
+    def save_to(self, journal_dir):
+        """Write the settings to journal_dir if needed. Unlike Config, raise OSError."""
+        filename = os.path.join(journal_dir, self.FILENAME)
+        if not self or (
+            filename == self.filename and os.path.exists(filename) and not self.changed()
+        ):
+            return
+        lines = [self.HEADER] + [f"{key}={value}" for key, value in sorted(self.items())]
+        with open(filename, "w", encoding="utf-8") as config_file:
+            config_file.write("\n".join(lines) + "\n")
+        self.filename = filename
+        self.save_state()

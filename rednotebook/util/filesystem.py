@@ -28,7 +28,6 @@ import gi
 
 ENCODING = sys.getfilesystemencoding() or locale.getlocale()[1] or "UTF-8"
 LANGUAGE = locale.getdefaultlocale()[0]
-REMOTE_PROTOCOLS = ["http", "ftp", "irc"]
 
 IS_WIN = sys.platform.startswith("win")
 IS_MAC = sys.platform == "darwin"
